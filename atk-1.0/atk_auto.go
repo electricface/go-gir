@@ -759,6 +759,8 @@ type GObjectAccessible struct {
 	Object
 }
 
+func WrapGObjectAccessible(p unsafe.Pointer) (r GObjectAccessible) { r.P = p; return }
+
 // atk_gobject_accessible_for_object
 // container is not nil, container is GObjectAccessible
 // is method
@@ -800,6 +802,8 @@ type Hyperlink struct {
 	ActionIfc
 	gobject.Object
 }
+
+func WrapHyperlink(p unsafe.Pointer) (r Hyperlink) { r.P = p; return }
 
 // atk_hyperlink_get_end_index
 // container is not nil, container is Hyperlink
@@ -1194,6 +1198,8 @@ type Misc struct {
 	gobject.Object
 }
 
+func WrapMisc(p unsafe.Pointer) (r Misc) { r.P = p; return }
+
 // atk_misc_get_instance
 // container is not nil, container is Misc
 // num arg is 0
@@ -1243,6 +1249,8 @@ type NoOpObject struct {
 	Object
 }
 
+func WrapNoOpObject(p unsafe.Pointer) (r NoOpObject) { r.P = p; return }
+
 // atk_no_op_object_new
 // container is not nil, container is NoOpObject
 // is constructor
@@ -1266,6 +1274,8 @@ type NoOpObjectFactory struct {
 	ObjectFactory
 }
 
+func WrapNoOpObjectFactory(p unsafe.Pointer) (r NoOpObjectFactory) { r.P = p; return }
+
 // atk_no_op_object_factory_new
 // container is not nil, container is NoOpObjectFactory
 // is constructor
@@ -1286,6 +1296,8 @@ func NewNoOpObjectFactory() (result ObjectFactory) {
 type Object struct {
 	gobject.Object
 }
+
+func WrapObject(p unsafe.Pointer) (r Object) { r.P = p; return }
 
 // atk_object_add_relationship
 // container is not nil, container is Object
@@ -1680,6 +1692,8 @@ type ObjectFactory struct {
 	gobject.Object
 }
 
+func WrapObjectFactory(p unsafe.Pointer) (r ObjectFactory) { r.P = p; return }
+
 // atk_object_factory_create_accessible
 // container is not nil, container is ObjectFactory
 // is method
@@ -1735,6 +1749,8 @@ type Plug struct {
 	ComponentIfc
 	Object
 }
+
+func WrapPlug(p unsafe.Pointer) (r Plug) { r.P = p; return }
 
 // atk_plug_new
 // container is not nil, container is Plug
@@ -1892,6 +1908,8 @@ type Registry struct {
 	gobject.Object
 }
 
+func WrapRegistry(p unsafe.Pointer) (r Registry) { r.P = p; return }
+
 // atk_registry_get_factory
 // container is not nil, container is Registry
 // is method
@@ -1949,6 +1967,8 @@ func (v Registry) SetFactoryType(type1 int /*TODO_TYPE isPtr: false, tag: GType*
 type Relation struct {
 	gobject.Object
 }
+
+func WrapRelation(p unsafe.Pointer) (r Relation) { r.P = p; return }
 
 // atk_relation_new
 // container is not nil, container is Relation
@@ -2041,6 +2061,8 @@ func (v Relation) RemoveTarget(target Object) (result bool) {
 type RelationSet struct {
 	gobject.Object
 }
+
+func WrapRelationSet(p unsafe.Pointer) (r RelationSet) { r.P = p; return }
 
 // atk_relation_set_new
 // container is not nil, container is RelationSet
@@ -2499,6 +2521,8 @@ type Socket struct {
 	Object
 }
 
+func WrapSocket(p unsafe.Pointer) (r Socket) { r.P = p; return }
+
 // atk_socket_new
 // container is not nil, container is Socket
 // is constructor
@@ -2553,6 +2577,8 @@ func (v Socket) IsOccupied() (result bool) {
 type StateSet struct {
 	gobject.Object
 }
+
+func WrapStateSet(p unsafe.Pointer) (r StateSet) { r.P = p; return }
 
 // atk_state_set_new
 // container is not nil, container is StateSet
@@ -4050,6 +4076,8 @@ type TextRectangle struct {
 type Util struct {
 	gobject.Object
 }
+
+func WrapUtil(p unsafe.Pointer) (r Util) { r.P = p; return }
 
 // ignore GType struct UtilClass
 // Interface Value

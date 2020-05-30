@@ -491,6 +491,8 @@ type Context struct {
 	gobject.Object
 }
 
+func WrapContext(p unsafe.Pointer) (r Context) { r.P = p; return }
+
 // pango_context_new
 // container is not nil, container is Context
 // is constructor
@@ -978,6 +980,8 @@ type Engine struct {
 	gobject.Object
 }
 
+func WrapEngine(p unsafe.Pointer) (r Engine) { r.P = p; return }
+
 // ignore GType struct EngineClass
 // Struct EngineInfo
 type EngineInfo struct {
@@ -988,6 +992,8 @@ type EngineInfo struct {
 type EngineLang struct {
 	Engine
 }
+
+func WrapEngineLang(p unsafe.Pointer) (r EngineLang) { r.P = p; return }
 
 // ignore GType struct EngineLangClass
 // Struct EngineScriptInfo
@@ -1000,11 +1006,15 @@ type EngineShape struct {
 	Engine
 }
 
+func WrapEngineShape(p unsafe.Pointer) (r EngineShape) { r.P = p; return }
+
 // ignore GType struct EngineShapeClass
 // Object Font
 type Font struct {
 	gobject.Object
 }
+
+func WrapFont(p unsafe.Pointer) (r Font) { r.P = p; return }
 
 // pango_font_descriptions_free
 // container is not nil, container is Font
@@ -1703,6 +1713,8 @@ type FontFace struct {
 	gobject.Object
 }
 
+func WrapFontFace(p unsafe.Pointer) (r FontFace) { r.P = p; return }
+
 // pango_font_face_describe
 // container is not nil, container is FontFace
 // is method
@@ -1780,6 +1792,8 @@ type FontFamily struct {
 	gobject.Object
 }
 
+func WrapFontFamily(p unsafe.Pointer) (r FontFamily) { r.P = p; return }
+
 // pango_font_family_get_name
 // container is not nil, container is FontFamily
 // is method
@@ -1839,6 +1853,8 @@ func (v FontFamily) ListFaces() (faces int /*TODO_TYPE*/, n_faces int32) {
 type FontMap struct {
 	gobject.Object
 }
+
+func WrapFontMap(p unsafe.Pointer) (r FontMap) { r.P = p; return }
 
 // pango_font_map_changed
 // container is not nil, container is FontMap
@@ -2170,6 +2186,8 @@ type Fontset struct {
 	gobject.Object
 }
 
+func WrapFontset(p unsafe.Pointer) (r Fontset) { r.P = p; return }
+
 // pango_fontset_foreach
 // container is not nil, container is Fontset
 // is method
@@ -2226,6 +2244,8 @@ func (v Fontset) GetMetrics() (result FontMetrics) {
 type FontsetSimple struct {
 	Fontset
 }
+
+func WrapFontsetSimple(p unsafe.Pointer) (r FontsetSimple) { r.P = p; return }
 
 // pango_fontset_simple_new
 // container is not nil, container is FontsetSimple
@@ -2933,6 +2953,8 @@ func LanguageFromString1(language string) (result Language) {
 type Layout struct {
 	gobject.Object
 }
+
+func WrapLayout(p unsafe.Pointer) (r Layout) { r.P = p; return }
 
 // pango_layout_new
 // container is not nil, container is Layout
@@ -4654,6 +4676,8 @@ const (
 type Renderer struct {
 	gobject.Object
 }
+
+func WrapRenderer(p unsafe.Pointer) (r Renderer) { r.P = p; return }
 
 // pango_renderer_activate
 // container is not nil, container is Renderer

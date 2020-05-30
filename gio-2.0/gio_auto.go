@@ -1246,6 +1246,8 @@ type AppInfoMonitor struct {
 	gobject.Object
 }
 
+func WrapAppInfoMonitor(p unsafe.Pointer) (r AppInfoMonitor) { r.P = p; return }
+
 // g_app_info_monitor_get
 // container is not nil, container is AppInfoMonitor
 // num arg is 0
@@ -1253,6 +1255,8 @@ type AppInfoMonitor struct {
 type AppLaunchContext struct {
 	gobject.Object
 }
+
+func WrapAppLaunchContext(p unsafe.Pointer) (r AppLaunchContext) { r.P = p; return }
 
 // g_app_launch_context_new
 // container is not nil, container is AppLaunchContext
@@ -1390,6 +1394,8 @@ type Application struct {
 	ActionMapIfc
 	gobject.Object
 }
+
+func WrapApplication(p unsafe.Pointer) (r Application) { r.P = p; return }
 
 // g_application_new
 // container is not nil, container is Application
@@ -2006,6 +2012,8 @@ type ApplicationCommandLine struct {
 	gobject.Object
 }
 
+func WrapApplicationCommandLine(p unsafe.Pointer) (r ApplicationCommandLine) { r.P = p; return }
+
 // g_application_command_line_create_file_for_arg
 // container is not nil, container is ApplicationCommandLine
 // is method
@@ -2402,6 +2410,8 @@ type BufferedInputStream struct {
 	FilterInputStream
 }
 
+func WrapBufferedInputStream(p unsafe.Pointer) (r BufferedInputStream) { r.P = p; return }
+
 // g_buffered_input_stream_new
 // container is not nil, container is BufferedInputStream
 // is constructor
@@ -2618,6 +2628,8 @@ type BufferedOutputStream struct {
 	FilterOutputStream
 }
 
+func WrapBufferedOutputStream(p unsafe.Pointer) (r BufferedOutputStream) { r.P = p; return }
+
 // g_buffered_output_stream_new
 // container is not nil, container is BufferedOutputStream
 // is constructor
@@ -2754,6 +2766,8 @@ type BytesIcon struct {
 	gobject.Object
 }
 
+func WrapBytesIcon(p unsafe.Pointer) (r BytesIcon) { r.P = p; return }
+
 // g_bytes_icon_new
 // container is not nil, container is BytesIcon
 // is constructor
@@ -2792,6 +2806,8 @@ func (v BytesIcon) GetBytes() (result glib.Bytes) {
 type Cancellable struct {
 	gobject.Object
 }
+
+func WrapCancellable(p unsafe.Pointer) (r Cancellable) { r.P = p; return }
 
 // g_cancellable_new
 // container is not nil, container is Cancellable
@@ -3000,6 +3016,8 @@ type CharsetConverter struct {
 	gobject.Object
 }
 
+func WrapCharsetConverter(p unsafe.Pointer) (r CharsetConverter) { r.P = p; return }
+
 // g_charset_converter_new
 // container is not nil, container is CharsetConverter
 // is constructor
@@ -3138,6 +3156,8 @@ type ConverterInputStream struct {
 	FilterInputStream
 }
 
+func WrapConverterInputStream(p unsafe.Pointer) (r ConverterInputStream) { r.P = p; return }
+
 // g_converter_input_stream_new
 // container is not nil, container is ConverterInputStream
 // is constructor
@@ -3184,6 +3204,8 @@ type ConverterOutputStream struct {
 	PollableOutputStreamIfc
 	FilterOutputStream
 }
+
+func WrapConverterOutputStream(p unsafe.Pointer) (r ConverterOutputStream) { r.P = p; return }
 
 // g_converter_output_stream_new
 // container is not nil, container is ConverterOutputStream
@@ -3238,6 +3260,8 @@ const (
 type Credentials struct {
 	gobject.Object
 }
+
+func WrapCredentials(p unsafe.Pointer) (r Credentials) { r.P = p; return }
 
 // g_credentials_new
 // container is not nil, container is Credentials
@@ -3384,6 +3408,8 @@ type DBusActionGroup struct {
 	gobject.Object
 }
 
+func WrapDBusActionGroup(p unsafe.Pointer) (r DBusActionGroup) { r.P = p; return }
+
 // g_dbus_action_group_get
 // container is not nil, container is DBusActionGroup
 // is method
@@ -3506,6 +3532,8 @@ type DBusAuthObserver struct {
 	gobject.Object
 }
 
+func WrapDBusAuthObserver(p unsafe.Pointer) (r DBusAuthObserver) { r.P = p; return }
+
 // g_dbus_auth_observer_new
 // container is not nil, container is DBusAuthObserver
 // is constructor
@@ -3581,6 +3609,8 @@ type DBusConnection struct {
 	InitableIfc
 	gobject.Object
 }
+
+func WrapDBusConnection(p unsafe.Pointer) (r DBusConnection) { r.P = p; return }
 
 // g_dbus_connection_new_finish
 // container is not nil, container is DBusConnection
@@ -4820,6 +4850,8 @@ type DBusInterfaceSkeleton struct {
 	gobject.Object
 }
 
+func WrapDBusInterfaceSkeleton(p unsafe.Pointer) (r DBusInterfaceSkeleton) { r.P = p; return }
+
 // g_dbus_interface_skeleton_export
 // container is not nil, container is DBusInterfaceSkeleton
 // is method
@@ -5044,6 +5076,8 @@ type DBusMenuModel struct {
 	MenuModel
 }
 
+func WrapDBusMenuModel(p unsafe.Pointer) (r DBusMenuModel) { r.P = p; return }
+
 // g_dbus_menu_model_get
 // container is not nil, container is DBusMenuModel
 // is method
@@ -5072,6 +5106,8 @@ func DBusMenuModelGet1(connection DBusConnection, bus_name string, object_path s
 type DBusMessage struct {
 	gobject.Object
 }
+
+func WrapDBusMessage(p unsafe.Pointer) (r DBusMessage) { r.P = p; return }
 
 // g_dbus_message_new
 // container is not nil, container is DBusMessage
@@ -5976,6 +6012,8 @@ type DBusMethodInvocation struct {
 	gobject.Object
 }
 
+func WrapDBusMethodInvocation(p unsafe.Pointer) (r DBusMethodInvocation) { r.P = p; return }
+
 // g_dbus_method_invocation_get_connection
 // container is not nil, container is DBusMethodInvocation
 // is method
@@ -6461,6 +6499,8 @@ type DBusObjectManagerClient struct {
 	gobject.Object
 }
 
+func WrapDBusObjectManagerClient(p unsafe.Pointer) (r DBusObjectManagerClient) { r.P = p; return }
+
 // g_dbus_object_manager_client_new_finish
 // container is not nil, container is DBusObjectManagerClient
 // is constructor
@@ -6703,6 +6743,8 @@ type DBusObjectManagerServer struct {
 	gobject.Object
 }
 
+func WrapDBusObjectManagerServer(p unsafe.Pointer) (r DBusObjectManagerServer) { r.P = p; return }
+
 // g_dbus_object_manager_server_new
 // container is not nil, container is DBusObjectManagerServer
 // is constructor
@@ -6834,6 +6876,8 @@ type DBusObjectProxy struct {
 	gobject.Object
 }
 
+func WrapDBusObjectProxy(p unsafe.Pointer) (r DBusObjectProxy) { r.P = p; return }
+
 // g_dbus_object_proxy_new
 // container is not nil, container is DBusObjectProxy
 // is constructor
@@ -6882,6 +6926,8 @@ type DBusObjectSkeleton struct {
 	DBusObjectIfc
 	gobject.Object
 }
+
+func WrapDBusObjectSkeleton(p unsafe.Pointer) (r DBusObjectSkeleton) { r.P = p; return }
 
 // g_dbus_object_skeleton_new
 // container is not nil, container is DBusObjectSkeleton
@@ -7037,6 +7083,8 @@ type DBusProxy struct {
 	InitableIfc
 	gobject.Object
 }
+
+func WrapDBusProxy(p unsafe.Pointer) (r DBusProxy) { r.P = p; return }
 
 // g_dbus_proxy_new_finish
 // container is not nil, container is DBusProxy
@@ -7590,6 +7638,8 @@ type DBusServer struct {
 	gobject.Object
 }
 
+func WrapDBusServer(p unsafe.Pointer) (r DBusServer) { r.P = p; return }
+
 // g_dbus_server_new_sync
 // container is not nil, container is DBusServer
 // is constructor
@@ -7783,6 +7833,8 @@ type DataInputStream struct {
 	SeekableIfc
 	BufferedInputStream
 }
+
+func WrapDataInputStream(p unsafe.Pointer) (r DataInputStream) { r.P = p; return }
 
 // g_data_input_stream_new
 // container is not nil, container is DataInputStream
@@ -8261,6 +8313,8 @@ type DataOutputStream struct {
 	FilterOutputStream
 }
 
+func WrapDataOutputStream(p unsafe.Pointer) (r DataOutputStream) { r.P = p; return }
+
 // g_data_output_stream_new
 // container is not nil, container is DataOutputStream
 // is constructor
@@ -8622,6 +8676,8 @@ type DesktopAppInfo struct {
 	AppInfoIfc
 	gobject.Object
 }
+
+func WrapDesktopAppInfo(p unsafe.Pointer) (r DesktopAppInfo) { r.P = p; return }
 
 // g_desktop_app_info_new
 // container is not nil, container is DesktopAppInfo
@@ -10162,6 +10218,8 @@ type Emblem struct {
 	gobject.Object
 }
 
+func WrapEmblem(p unsafe.Pointer) (r Emblem) { r.P = p; return }
+
 // g_emblem_new
 // container is not nil, container is Emblem
 // is constructor
@@ -10246,6 +10304,8 @@ type EmblemedIcon struct {
 	IconIfc
 	gobject.Object
 }
+
+func WrapEmblemedIcon(p unsafe.Pointer) (r EmblemedIcon) { r.P = p; return }
 
 // g_emblemed_icon_new
 // container is not nil, container is EmblemedIcon
@@ -13278,6 +13338,8 @@ type FileEnumerator struct {
 	gobject.Object
 }
 
+func WrapFileEnumerator(p unsafe.Pointer) (r FileEnumerator) { r.P = p; return }
+
 // g_file_enumerator_close
 // container is not nil, container is FileEnumerator
 // is method
@@ -13515,6 +13577,8 @@ type FileIOStream struct {
 	IOStream
 }
 
+func WrapFileIOStream(p unsafe.Pointer) (r FileIOStream) { r.P = p; return }
+
 // g_file_io_stream_get_etag
 // container is not nil, container is FileIOStream
 // is method
@@ -13609,6 +13673,8 @@ type FileIcon struct {
 	gobject.Object
 }
 
+func WrapFileIcon(p unsafe.Pointer) (r FileIcon) { r.P = p; return }
+
 // g_file_icon_new
 // container is not nil, container is FileIcon
 // is constructor
@@ -13649,6 +13715,8 @@ func (v FileIcon) GetFile() (result File) {
 type FileInfo struct {
 	gobject.Object
 }
+
+func WrapFileInfo(p unsafe.Pointer) (r FileInfo) { r.P = p; return }
 
 // g_file_info_new
 // container is not nil, container is FileInfo
@@ -14775,6 +14843,8 @@ type FileInputStream struct {
 	InputStream
 }
 
+func WrapFileInputStream(p unsafe.Pointer) (r FileInputStream) { r.P = p; return }
+
 // g_file_input_stream_query_info
 // container is not nil, container is FileInputStream
 // is method
@@ -14857,6 +14927,8 @@ const (
 type FileMonitor struct {
 	gobject.Object
 }
+
+func WrapFileMonitor(p unsafe.Pointer) (r FileMonitor) { r.P = p; return }
 
 // g_file_monitor_cancel
 // container is not nil, container is FileMonitor
@@ -14961,6 +15033,8 @@ type FileOutputStream struct {
 	SeekableIfc
 	OutputStream
 }
+
+func WrapFileOutputStream(p unsafe.Pointer) (r FileOutputStream) { r.P = p; return }
 
 // g_file_output_stream_get_etag
 // container is not nil, container is FileOutputStream
@@ -15072,6 +15146,8 @@ type FilenameCompleter struct {
 	gobject.Object
 }
 
+func WrapFilenameCompleter(p unsafe.Pointer) (r FilenameCompleter) { r.P = p; return }
+
 // g_filename_completer_new
 // container is not nil, container is FilenameCompleter
 // is constructor
@@ -15156,6 +15232,8 @@ type FilterInputStream struct {
 	InputStream
 }
 
+func WrapFilterInputStream(p unsafe.Pointer) (r FilterInputStream) { r.P = p; return }
+
 // g_filter_input_stream_get_base_stream
 // container is not nil, container is FilterInputStream
 // is method
@@ -15210,6 +15288,8 @@ func (v FilterInputStream) SetCloseBaseStream(close_base bool) {
 type FilterOutputStream struct {
 	OutputStream
 }
+
+func WrapFilterOutputStream(p unsafe.Pointer) (r FilterOutputStream) { r.P = p; return }
 
 // g_filter_output_stream_get_base_stream
 // container is not nil, container is FilterOutputStream
@@ -15515,6 +15595,8 @@ type IOModule struct {
 	gobject.TypeModule
 }
 
+func WrapIOModule(p unsafe.Pointer) (r IOModule) { r.P = p; return }
+
 // g_io_module_new
 // container is not nil, container is IOModule
 // is constructor
@@ -15655,6 +15737,8 @@ func (v IOSchedulerJob) SendToMainloopAsync(func1 int /*TODO_TYPE isPtr: false, 
 type IOStream struct {
 	gobject.Object
 }
+
+func WrapIOStream(p unsafe.Pointer) (r IOStream) { r.P = p; return }
 
 // g_io_stream_splice_finish
 // container is not nil, container is IOStream
@@ -15997,6 +16081,8 @@ type InetAddress struct {
 	gobject.Object
 }
 
+func WrapInetAddress(p unsafe.Pointer) (r InetAddress) { r.P = p; return }
+
 // g_inet_address_new_any
 // container is not nil, container is InetAddress
 // is constructor
@@ -16314,6 +16400,8 @@ type InetAddressMask struct {
 	gobject.Object
 }
 
+func WrapInetAddressMask(p unsafe.Pointer) (r InetAddressMask) { r.P = p; return }
+
 // g_inet_address_mask_new
 // container is not nil, container is InetAddressMask
 // is constructor
@@ -16475,6 +16563,8 @@ type InetSocketAddress struct {
 	SocketConnectableIfc
 	SocketAddress
 }
+
+func WrapInetSocketAddress(p unsafe.Pointer) (r InetSocketAddress) { r.P = p; return }
 
 // g_inet_socket_address_new
 // container is not nil, container is InetSocketAddress
@@ -16648,6 +16738,8 @@ type InputMessage struct {
 type InputStream struct {
 	gobject.Object
 }
+
+func WrapInputStream(p unsafe.Pointer) (r InputStream) { r.P = p; return }
 
 // g_input_stream_clear_pending
 // container is not nil, container is InputStream
@@ -17116,6 +17208,8 @@ type ListStore struct {
 	gobject.Object
 }
 
+func WrapListStore(p unsafe.Pointer) (r ListStore) { r.P = p; return }
+
 // g_list_store_new
 // container is not nil, container is ListStore
 // is constructor
@@ -17326,6 +17420,8 @@ type MemoryInputStream struct {
 	InputStream
 }
 
+func WrapMemoryInputStream(p unsafe.Pointer) (r MemoryInputStream) { r.P = p; return }
+
 // g_memory_input_stream_new
 // container is not nil, container is MemoryInputStream
 // is constructor
@@ -17421,6 +17517,8 @@ type MemoryOutputStream struct {
 	SeekableIfc
 	OutputStream
 }
+
+func WrapMemoryOutputStream(p unsafe.Pointer) (r MemoryOutputStream) { r.P = p; return }
 
 // g_memory_output_stream_new_resizable
 // container is not nil, container is MemoryOutputStream
@@ -17526,6 +17624,8 @@ type MemoryOutputStreamPrivate struct {
 type Menu struct {
 	MenuModel
 }
+
+func WrapMenu(p unsafe.Pointer) (r Menu) { r.P = p; return }
 
 // g_menu_new
 // container is not nil, container is Menu
@@ -17807,6 +17907,8 @@ type MenuAttributeIter struct {
 	gobject.Object
 }
 
+func WrapMenuAttributeIter(p unsafe.Pointer) (r MenuAttributeIter) { r.P = p; return }
+
 // g_menu_attribute_iter_get_name
 // container is not nil, container is MenuAttributeIter
 // is method
@@ -17890,6 +17992,8 @@ type MenuAttributeIterPrivate struct {
 type MenuItem struct {
 	gobject.Object
 }
+
+func WrapMenuItem(p unsafe.Pointer) (r MenuItem) { r.P = p; return }
 
 // g_menu_item_new
 // container is not nil, container is MenuItem
@@ -18150,6 +18254,8 @@ type MenuLinkIter struct {
 	gobject.Object
 }
 
+func WrapMenuLinkIter(p unsafe.Pointer) (r MenuLinkIter) { r.P = p; return }
+
 // g_menu_link_iter_get_name
 // container is not nil, container is MenuLinkIter
 // is method
@@ -18233,6 +18339,8 @@ type MenuLinkIterPrivate struct {
 type MenuModel struct {
 	gobject.Object
 }
+
+func WrapMenuModel(p unsafe.Pointer) (r MenuModel) { r.P = p; return }
 
 // g_menu_model_get_item_attribute_value
 // container is not nil, container is MenuModel
@@ -18873,6 +18981,8 @@ type MountOperation struct {
 	gobject.Object
 }
 
+func WrapMountOperation(p unsafe.Pointer) (r MountOperation) { r.P = p; return }
+
 // g_mount_operation_new
 // container is not nil, container is MountOperation
 // is constructor
@@ -19227,12 +19337,16 @@ type NativeVolumeMonitor struct {
 	VolumeMonitor
 }
 
+func WrapNativeVolumeMonitor(p unsafe.Pointer) (r NativeVolumeMonitor) { r.P = p; return }
+
 // ignore GType struct NativeVolumeMonitorClass
 // Object NetworkAddress
 type NetworkAddress struct {
 	SocketConnectableIfc
 	gobject.Object
 }
+
+func WrapNetworkAddress(p unsafe.Pointer) (r NetworkAddress) { r.P = p; return }
 
 // g_network_address_new
 // container is not nil, container is NetworkAddress
@@ -19509,6 +19623,8 @@ type NetworkService struct {
 	gobject.Object
 }
 
+func WrapNetworkService(p unsafe.Pointer) (r NetworkService) { r.P = p; return }
+
 // g_network_service_new
 // container is not nil, container is NetworkService
 // is constructor
@@ -19629,6 +19745,8 @@ type NetworkServicePrivate struct {
 type Notification struct {
 	gobject.Object
 }
+
+func WrapNotification(p unsafe.Pointer) (r Notification) { r.P = p; return }
 
 // g_notification_new
 // container is not nil, container is Notification
@@ -19822,6 +19940,8 @@ type OutputMessage struct {
 type OutputStream struct {
 	gobject.Object
 }
+
+func WrapOutputStream(p unsafe.Pointer) (r OutputStream) { r.P = p; return }
 
 // g_output_stream_clear_pending
 // container is not nil, container is OutputStream
@@ -20303,6 +20423,8 @@ type Permission struct {
 	gobject.Object
 }
 
+func WrapPermission(p unsafe.Pointer) (r Permission) { r.P = p; return }
+
 // g_permission_acquire
 // container is not nil, container is Permission
 // is method
@@ -20661,6 +20783,8 @@ type PropertyAction struct {
 	gobject.Object
 }
 
+func WrapPropertyAction(p unsafe.Pointer) (r PropertyAction) { r.P = p; return }
+
 // g_property_action_new
 // container is not nil, container is PropertyAction
 // is constructor
@@ -20794,6 +20918,8 @@ type ProxyAddress struct {
 	SocketConnectableIfc
 	InetSocketAddress
 }
+
+func WrapProxyAddress(p unsafe.Pointer) (r ProxyAddress) { r.P = p; return }
 
 // g_proxy_address_new
 // container is not nil, container is ProxyAddress
@@ -20951,6 +21077,8 @@ type ProxyAddressEnumerator struct {
 	SocketAddressEnumerator
 }
 
+func WrapProxyAddressEnumerator(p unsafe.Pointer) (r ProxyAddressEnumerator) { r.P = p; return }
+
 // ignore GType struct ProxyAddressEnumeratorClass
 // Struct ProxyAddressEnumeratorPrivate
 type ProxyAddressEnumeratorPrivate struct {
@@ -21104,6 +21232,8 @@ func (v *RemoteActionGroupIfc) ChangeActionStateFull(action_name string, value g
 type Resolver struct {
 	gobject.Object
 }
+
+func WrapResolver(p unsafe.Pointer) (r Resolver) { r.P = p; return }
 
 // g_resolver_get_default
 // container is not nil, container is Resolver
@@ -21734,6 +21864,8 @@ func (v *SeekableIfc) Truncate(offset int64, cancellable Cancellable) (result bo
 type Settings struct {
 	gobject.Object
 }
+
+func WrapSettings(p unsafe.Pointer) (r Settings) { r.P = p; return }
 
 // g_settings_new
 // container is not nil, container is Settings
@@ -22639,6 +22771,8 @@ type SettingsBackend struct {
 	gobject.Object
 }
 
+func WrapSettingsBackend(p unsafe.Pointer) (r SettingsBackend) { r.P = p; return }
+
 // g_settings_backend_flatten_tree
 // container is not nil, container is SettingsBackend
 // is method
@@ -23202,6 +23336,8 @@ type SimpleAction struct {
 	gobject.Object
 }
 
+func WrapSimpleAction(p unsafe.Pointer) (r SimpleAction) { r.P = p; return }
+
 // g_simple_action_new
 // container is not nil, container is SimpleAction
 // is constructor
@@ -23294,6 +23430,8 @@ type SimpleActionGroup struct {
 	ActionMapIfc
 	gobject.Object
 }
+
+func WrapSimpleActionGroup(p unsafe.Pointer) (r SimpleActionGroup) { r.P = p; return }
 
 // g_simple_action_group_new
 // container is not nil, container is SimpleActionGroup
@@ -23390,6 +23528,8 @@ type SimpleAsyncResult struct {
 	AsyncResultIfc
 	gobject.Object
 }
+
+func WrapSimpleAsyncResult(p unsafe.Pointer) (r SimpleAsyncResult) { r.P = p; return }
 
 // g_simple_async_result_new
 // container is not nil, container is SimpleAsyncResult
@@ -23613,6 +23753,8 @@ type SimpleIOStream struct {
 	IOStream
 }
 
+func WrapSimpleIOStream(p unsafe.Pointer) (r SimpleIOStream) { r.P = p; return }
+
 // g_simple_io_stream_new
 // container is not nil, container is SimpleIOStream
 // is constructor
@@ -23636,6 +23778,8 @@ type SimplePermission struct {
 	Permission
 }
 
+func WrapSimplePermission(p unsafe.Pointer) (r SimplePermission) { r.P = p; return }
+
 // g_simple_permission_new
 // container is not nil, container is SimplePermission
 // is constructor
@@ -23658,6 +23802,8 @@ type SimpleProxyResolver struct {
 	ProxyResolverIfc
 	gobject.Object
 }
+
+func WrapSimpleProxyResolver(p unsafe.Pointer) (r SimpleProxyResolver) { r.P = p; return }
 
 // g_simple_proxy_resolver_new
 // container is not nil, container is SimpleProxyResolver
@@ -23748,6 +23894,8 @@ type Socket struct {
 	InitableIfc
 	gobject.Object
 }
+
+func WrapSocket(p unsafe.Pointer) (r Socket) { r.P = p; return }
 
 // g_socket_new
 // container is not nil, container is Socket
@@ -24840,6 +24988,8 @@ type SocketAddress struct {
 	gobject.Object
 }
 
+func WrapSocketAddress(p unsafe.Pointer) (r SocketAddress) { r.P = p; return }
+
 // g_socket_address_new_from_native
 // container is not nil, container is SocketAddress
 // is constructor
@@ -24919,6 +25069,8 @@ type SocketAddressEnumerator struct {
 	gobject.Object
 }
 
+func WrapSocketAddressEnumerator(p unsafe.Pointer) (r SocketAddressEnumerator) { r.P = p; return }
+
 // g_socket_address_enumerator_next
 // container is not nil, container is SocketAddressEnumerator
 // is method
@@ -24982,6 +25134,8 @@ func (v SocketAddressEnumerator) NextFinish(result AsyncResult) (result1 SocketA
 type SocketClient struct {
 	gobject.Object
 }
+
+func WrapSocketClient(p unsafe.Pointer) (r SocketClient) { r.P = p; return }
 
 // g_socket_client_new
 // container is not nil, container is SocketClient
@@ -25645,6 +25799,8 @@ type SocketConnection struct {
 	IOStream
 }
 
+func WrapSocketConnection(p unsafe.Pointer) (r SocketConnection) { r.P = p; return }
+
 // g_socket_connection_factory_lookup_type
 // container is not nil, container is SocketConnection
 // is method
@@ -25825,6 +25981,8 @@ type SocketControlMessage struct {
 	gobject.Object
 }
 
+func WrapSocketControlMessage(p unsafe.Pointer) (r SocketControlMessage) { r.P = p; return }
+
 // g_socket_control_message_deserialize
 // container is not nil, container is SocketControlMessage
 // is method
@@ -25930,6 +26088,8 @@ const (
 type SocketListener struct {
 	gobject.Object
 }
+
+func WrapSocketListener(p unsafe.Pointer) (r SocketListener) { r.P = p; return }
 
 // g_socket_listener_new
 // container is not nil, container is SocketListener
@@ -26226,6 +26386,8 @@ type SocketService struct {
 	SocketListener
 }
 
+func WrapSocketService(p unsafe.Pointer) (r SocketService) { r.P = p; return }
+
 // g_socket_service_new
 // container is not nil, container is SocketService
 // is constructor
@@ -26481,6 +26643,8 @@ type Subprocess struct {
 	InitableIfc
 	gobject.Object
 }
+
+func WrapSubprocess(p unsafe.Pointer) (r Subprocess) { r.P = p; return }
 
 // g_subprocess_newv
 // container is not nil, container is Subprocess
@@ -26972,6 +27136,8 @@ type SubprocessLauncher struct {
 	gobject.Object
 }
 
+func WrapSubprocessLauncher(p unsafe.Pointer) (r SubprocessLauncher) { r.P = p; return }
+
 // g_subprocess_launcher_new
 // container is not nil, container is SubprocessLauncher
 // is constructor
@@ -27231,6 +27397,8 @@ type Task struct {
 	AsyncResultIfc
 	gobject.Object
 }
+
+func WrapTask(p unsafe.Pointer) (r Task) { r.P = p; return }
 
 // g_task_new
 // container is not nil, container is Task
@@ -27672,6 +27840,8 @@ type TcpConnection struct {
 	SocketConnection
 }
 
+func WrapTcpConnection(p unsafe.Pointer) (r TcpConnection) { r.P = p; return }
+
 // g_tcp_connection_get_graceful_disconnect
 // container is not nil, container is TcpConnection
 // is method
@@ -27714,6 +27884,8 @@ type TcpConnectionPrivate struct {
 type TcpWrapperConnection struct {
 	TcpConnection
 }
+
+func WrapTcpWrapperConnection(p unsafe.Pointer) (r TcpWrapperConnection) { r.P = p; return }
 
 // g_tcp_wrapper_connection_new
 // container is not nil, container is TcpWrapperConnection
@@ -27760,6 +27932,8 @@ type TcpWrapperConnectionPrivate struct {
 type TestDBus struct {
 	gobject.Object
 }
+
+func WrapTestDBus(p unsafe.Pointer) (r TestDBus) { r.P = p; return }
 
 // g_test_dbus_new
 // container is not nil, container is TestDBus
@@ -27886,6 +28060,8 @@ type ThemedIcon struct {
 	gobject.Object
 }
 
+func WrapThemedIcon(p unsafe.Pointer) (r ThemedIcon) { r.P = p; return }
+
 // g_themed_icon_new
 // container is not nil, container is ThemedIcon
 // is constructor
@@ -27998,6 +28174,8 @@ func (v ThemedIcon) PrependName(iconname string) {
 type ThreadedSocketService struct {
 	SocketService
 }
+
+func WrapThreadedSocketService(p unsafe.Pointer) (r ThreadedSocketService) { r.P = p; return }
 
 // g_threaded_socket_service_new
 // container is not nil, container is ThreadedSocketService
@@ -28197,6 +28375,8 @@ func (v *TlsBackendIfc) SupportsTls() (result bool) {
 type TlsCertificate struct {
 	gobject.Object
 }
+
+func WrapTlsCertificate(p unsafe.Pointer) (r TlsCertificate) { r.P = p; return }
 
 // g_tls_certificate_new_from_file
 // container is not nil, container is TlsCertificate
@@ -28527,6 +28707,8 @@ type TlsConnection struct {
 	IOStream
 }
 
+func WrapTlsConnection(p unsafe.Pointer) (r TlsConnection) { r.P = p; return }
+
 // g_tls_connection_emit_accept_certificate
 // container is not nil, container is TlsConnection
 // is method
@@ -28840,6 +29022,8 @@ type TlsConnectionPrivate struct {
 type TlsDatabase struct {
 	gobject.Object
 }
+
+func WrapTlsDatabase(p unsafe.Pointer) (r TlsDatabase) { r.P = p; return }
 
 // g_tls_database_create_certificate_handle
 // container is not nil, container is TlsDatabase
@@ -29188,6 +29372,8 @@ type TlsInteraction struct {
 	gobject.Object
 }
 
+func WrapTlsInteraction(p unsafe.Pointer) (r TlsInteraction) { r.P = p; return }
+
 // g_tls_interaction_ask_password
 // container is not nil, container is TlsInteraction
 // is method
@@ -29368,6 +29554,8 @@ const (
 type TlsPassword struct {
 	gobject.Object
 }
+
+func WrapTlsPassword(p unsafe.Pointer) (r TlsPassword) { r.P = p; return }
 
 // g_tls_password_new
 // container is not nil, container is TlsPassword
@@ -29596,6 +29784,8 @@ type UnixConnection struct {
 	SocketConnection
 }
 
+func WrapUnixConnection(p unsafe.Pointer) (r UnixConnection) { r.P = p; return }
+
 // g_unix_connection_receive_credentials
 // container is not nil, container is UnixConnection
 // is method
@@ -29762,6 +29952,8 @@ type UnixCredentialsMessage struct {
 	SocketControlMessage
 }
 
+func WrapUnixCredentialsMessage(p unsafe.Pointer) (r UnixCredentialsMessage) { r.P = p; return }
+
 // g_unix_credentials_message_new
 // container is not nil, container is UnixCredentialsMessage
 // is constructor
@@ -29824,6 +30016,8 @@ type UnixCredentialsMessagePrivate struct {
 type UnixFDList struct {
 	gobject.Object
 }
+
+func WrapUnixFDList(p unsafe.Pointer) (r UnixFDList) { r.P = p; return }
 
 // g_unix_fd_list_new
 // container is not nil, container is UnixFDList
@@ -29966,6 +30160,8 @@ type UnixFDMessage struct {
 	SocketControlMessage
 }
 
+func WrapUnixFDMessage(p unsafe.Pointer) (r UnixFDMessage) { r.P = p; return }
+
 // g_unix_fd_message_new
 // container is not nil, container is UnixFDMessage
 // is constructor
@@ -30068,6 +30264,8 @@ type UnixInputStream struct {
 	InputStream
 }
 
+func WrapUnixInputStream(p unsafe.Pointer) (r UnixInputStream) { r.P = p; return }
+
 // g_unix_input_stream_new
 // container is not nil, container is UnixInputStream
 // is constructor
@@ -30150,6 +30348,8 @@ type UnixMountEntry struct {
 type UnixMountMonitor struct {
 	gobject.Object
 }
+
+func WrapUnixMountMonitor(p unsafe.Pointer) (r UnixMountMonitor) { r.P = p; return }
 
 // g_unix_mount_monitor_new
 // container is not nil, container is UnixMountMonitor
@@ -30433,6 +30633,8 @@ type UnixOutputStream struct {
 	OutputStream
 }
 
+func WrapUnixOutputStream(p unsafe.Pointer) (r UnixOutputStream) { r.P = p; return }
+
 // g_unix_output_stream_new
 // container is not nil, container is UnixOutputStream
 // is constructor
@@ -30511,6 +30713,8 @@ type UnixSocketAddress struct {
 	SocketConnectableIfc
 	SocketAddress
 }
+
+func WrapUnixSocketAddress(p unsafe.Pointer) (r UnixSocketAddress) { r.P = p; return }
 
 // g_unix_socket_address_new
 // container is not nil, container is UnixSocketAddress
@@ -30658,6 +30862,8 @@ const (
 type Vfs struct {
 	gobject.Object
 }
+
+func WrapVfs(p unsafe.Pointer) (r Vfs) { r.P = p; return }
 
 // g_vfs_get_default
 // container is not nil, container is Vfs
@@ -31159,6 +31365,8 @@ type VolumeMonitor struct {
 	gobject.Object
 }
 
+func WrapVolumeMonitor(p unsafe.Pointer) (r VolumeMonitor) { r.P = p; return }
+
 // g_volume_monitor_adopt_orphan_mount
 // container is not nil, container is VolumeMonitor
 // is method
@@ -31278,6 +31486,8 @@ type ZlibCompressor struct {
 	gobject.Object
 }
 
+func WrapZlibCompressor(p unsafe.Pointer) (r ZlibCompressor) { r.P = p; return }
+
 // g_zlib_compressor_new
 // container is not nil, container is ZlibCompressor
 // is constructor
@@ -31342,6 +31552,8 @@ type ZlibDecompressor struct {
 	ConverterIfc
 	gobject.Object
 }
+
+func WrapZlibDecompressor(p unsafe.Pointer) (r ZlibDecompressor) { r.P = p; return }
 
 // g_zlib_decompressor_new
 // container is not nil, container is ZlibDecompressor

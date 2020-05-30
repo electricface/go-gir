@@ -21,6 +21,8 @@ type Client struct {
 	gobject.Object
 }
 
+func WrapClient(p unsafe.Pointer) (r Client) { r.P = p; return }
+
 // g_udev_client_new
 // container is not nil, container is Client
 // is constructor
@@ -150,6 +152,8 @@ type ClientPrivate struct {
 type Device struct {
 	gobject.Object
 }
+
+func WrapDevice(p unsafe.Pointer) (r Device) { r.P = p; return }
 
 // g_udev_device_get_action
 // container is not nil, container is Device
@@ -777,6 +781,8 @@ const (
 type Enumerator struct {
 	gobject.Object
 }
+
+func WrapEnumerator(p unsafe.Pointer) (r Enumerator) { r.P = p; return }
 
 // g_udev_enumerator_new
 // container is not nil, container is Enumerator

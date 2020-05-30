@@ -21,6 +21,8 @@ type Binding struct {
 	Object
 }
 
+func WrapBinding(p unsafe.Pointer) (r Binding) { r.P = p; return }
+
 // g_binding_get_flags
 // container is not nil, container is Binding
 // is method
@@ -751,6 +753,8 @@ type InitiallyUnowned struct {
 	Object
 }
 
+func WrapInitiallyUnowned(p unsafe.Pointer) (r InitiallyUnowned) { r.P = p; return }
+
 // ignore GType struct InitiallyUnownedClass
 // Struct InterfaceInfo
 type InterfaceInfo struct {
@@ -1407,15 +1411,21 @@ type ParamSpecBoolean struct {
 	ParamSpec
 }
 
+func WrapParamSpecBoolean(p unsafe.Pointer) (r ParamSpecBoolean) { r.P = p; return }
+
 // Object ParamSpecBoxed
 type ParamSpecBoxed struct {
 	ParamSpec
 }
 
+func WrapParamSpecBoxed(p unsafe.Pointer) (r ParamSpecBoxed) { r.P = p; return }
+
 // Object ParamSpecChar
 type ParamSpecChar struct {
 	ParamSpec
 }
+
+func WrapParamSpecChar(p unsafe.Pointer) (r ParamSpecChar) { r.P = p; return }
 
 // ignore GType struct ParamSpecClass
 // Object ParamSpecDouble
@@ -1423,60 +1433,84 @@ type ParamSpecDouble struct {
 	ParamSpec
 }
 
+func WrapParamSpecDouble(p unsafe.Pointer) (r ParamSpecDouble) { r.P = p; return }
+
 // Object ParamSpecEnum
 type ParamSpecEnum struct {
 	ParamSpec
 }
+
+func WrapParamSpecEnum(p unsafe.Pointer) (r ParamSpecEnum) { r.P = p; return }
 
 // Object ParamSpecFlags
 type ParamSpecFlags struct {
 	ParamSpec
 }
 
+func WrapParamSpecFlags(p unsafe.Pointer) (r ParamSpecFlags) { r.P = p; return }
+
 // Object ParamSpecFloat
 type ParamSpecFloat struct {
 	ParamSpec
 }
+
+func WrapParamSpecFloat(p unsafe.Pointer) (r ParamSpecFloat) { r.P = p; return }
 
 // Object ParamSpecGType
 type ParamSpecGType struct {
 	ParamSpec
 }
 
+func WrapParamSpecGType(p unsafe.Pointer) (r ParamSpecGType) { r.P = p; return }
+
 // Object ParamSpecInt
 type ParamSpecInt struct {
 	ParamSpec
 }
+
+func WrapParamSpecInt(p unsafe.Pointer) (r ParamSpecInt) { r.P = p; return }
 
 // Object ParamSpecInt64
 type ParamSpecInt64 struct {
 	ParamSpec
 }
 
+func WrapParamSpecInt64(p unsafe.Pointer) (r ParamSpecInt64) { r.P = p; return }
+
 // Object ParamSpecLong
 type ParamSpecLong struct {
 	ParamSpec
 }
+
+func WrapParamSpecLong(p unsafe.Pointer) (r ParamSpecLong) { r.P = p; return }
 
 // Object ParamSpecObject
 type ParamSpecObject struct {
 	ParamSpec
 }
 
+func WrapParamSpecObject(p unsafe.Pointer) (r ParamSpecObject) { r.P = p; return }
+
 // Object ParamSpecOverride
 type ParamSpecOverride struct {
 	ParamSpec
 }
+
+func WrapParamSpecOverride(p unsafe.Pointer) (r ParamSpecOverride) { r.P = p; return }
 
 // Object ParamSpecParam
 type ParamSpecParam struct {
 	ParamSpec
 }
 
+func WrapParamSpecParam(p unsafe.Pointer) (r ParamSpecParam) { r.P = p; return }
+
 // Object ParamSpecPointer
 type ParamSpecPointer struct {
 	ParamSpec
 }
+
+func WrapParamSpecPointer(p unsafe.Pointer) (r ParamSpecPointer) { r.P = p; return }
 
 // Struct ParamSpecPool
 type ParamSpecPool struct {
@@ -1598,6 +1632,8 @@ type ParamSpecString struct {
 	ParamSpec
 }
 
+func WrapParamSpecString(p unsafe.Pointer) (r ParamSpecString) { r.P = p; return }
+
 // Struct ParamSpecTypeInfo
 type ParamSpecTypeInfo struct {
 	P unsafe.Pointer
@@ -1608,35 +1644,49 @@ type ParamSpecUChar struct {
 	ParamSpec
 }
 
+func WrapParamSpecUChar(p unsafe.Pointer) (r ParamSpecUChar) { r.P = p; return }
+
 // Object ParamSpecUInt
 type ParamSpecUInt struct {
 	ParamSpec
 }
+
+func WrapParamSpecUInt(p unsafe.Pointer) (r ParamSpecUInt) { r.P = p; return }
 
 // Object ParamSpecUInt64
 type ParamSpecUInt64 struct {
 	ParamSpec
 }
 
+func WrapParamSpecUInt64(p unsafe.Pointer) (r ParamSpecUInt64) { r.P = p; return }
+
 // Object ParamSpecULong
 type ParamSpecULong struct {
 	ParamSpec
 }
+
+func WrapParamSpecULong(p unsafe.Pointer) (r ParamSpecULong) { r.P = p; return }
 
 // Object ParamSpecUnichar
 type ParamSpecUnichar struct {
 	ParamSpec
 }
 
+func WrapParamSpecUnichar(p unsafe.Pointer) (r ParamSpecUnichar) { r.P = p; return }
+
 // Object ParamSpecValueArray
 type ParamSpecValueArray struct {
 	ParamSpec
 }
 
+func WrapParamSpecValueArray(p unsafe.Pointer) (r ParamSpecValueArray) { r.P = p; return }
+
 // Object ParamSpecVariant
 type ParamSpecVariant struct {
 	ParamSpec
 }
+
+func WrapParamSpecVariant(p unsafe.Pointer) (r ParamSpecVariant) { r.P = p; return }
 
 // Struct Parameter
 type Parameter struct {
@@ -1975,6 +2025,8 @@ type TypeModule struct {
 	TypePluginIfc
 	Object
 }
+
+func WrapTypeModule(p unsafe.Pointer) (r TypeModule) { r.P = p; return }
 
 // g_type_module_add_interface
 // container is not nil, container is TypeModule

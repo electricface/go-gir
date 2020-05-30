@@ -30,6 +30,8 @@ type AboutDialog struct {
 	Dialog
 }
 
+func WrapAboutDialog(p unsafe.Pointer) (r AboutDialog) { r.P = p; return }
+
 // gtk_about_dialog_new
 // container is not nil, container is AboutDialog
 // is constructor
@@ -579,6 +581,8 @@ type AccelGroup struct {
 	gobject.Object
 }
 
+func WrapAccelGroup(p unsafe.Pointer) (r AccelGroup) { r.P = p; return }
+
 // gtk_accel_group_new
 // container is not nil, container is AccelGroup
 // is constructor
@@ -832,6 +836,8 @@ type AccelLabel struct {
 	Label
 }
 
+func WrapAccelLabel(p unsafe.Pointer) (r AccelLabel) { r.P = p; return }
+
 // gtk_accel_label_new
 // container is not nil, container is AccelLabel
 // is constructor
@@ -978,6 +984,8 @@ type AccelLabelPrivate struct {
 type AccelMap struct {
 	gobject.Object
 }
+
+func WrapAccelMap(p unsafe.Pointer) (r AccelMap) { r.P = p; return }
 
 // gtk_accel_map_add_entry
 // container is not nil, container is AccelMap
@@ -1215,6 +1223,8 @@ type Accessible struct {
 	atk.Object
 }
 
+func WrapAccessible(p unsafe.Pointer) (r Accessible) { r.P = p; return }
+
 // gtk_accessible_connect_widget_destroyed
 // container is not nil, container is Accessible
 // is method
@@ -1272,6 +1282,8 @@ type Action struct {
 	BuildableIfc
 	gobject.Object
 }
+
+func WrapAction(p unsafe.Pointer) (r Action) { r.P = p; return }
 
 // gtk_action_new
 // container is not nil, container is Action
@@ -1975,6 +1987,8 @@ type ActionBar struct {
 	Bin
 }
 
+func WrapActionBar(p unsafe.Pointer) (r ActionBar) { r.P = p; return }
+
 // gtk_action_bar_new
 // container is not nil, container is ActionBar
 // is constructor
@@ -2069,6 +2083,8 @@ type ActionGroup struct {
 	BuildableIfc
 	gobject.Object
 }
+
+func WrapActionGroup(p unsafe.Pointer) (r ActionGroup) { r.P = p; return }
 
 // gtk_action_group_new
 // container is not nil, container is ActionGroup
@@ -2550,6 +2566,8 @@ type Adjustment struct {
 	gobject.InitiallyUnowned
 }
 
+func WrapAdjustment(p unsafe.Pointer) (r Adjustment) { r.P = p; return }
+
 // gtk_adjustment_new
 // container is not nil, container is Adjustment
 // is constructor
@@ -2867,6 +2885,8 @@ type Alignment struct {
 	Bin
 }
 
+func WrapAlignment(p unsafe.Pointer) (r Alignment) { r.P = p; return }
+
 // gtk_alignment_new
 // container is not nil, container is Alignment
 // is constructor
@@ -3017,6 +3037,8 @@ type AppChooserButton struct {
 	CellLayoutIfc
 	ComboBox
 }
+
+func WrapAppChooserButton(p unsafe.Pointer) (r AppChooserButton) { r.P = p; return }
 
 // gtk_app_chooser_button_new
 // container is not nil, container is AppChooserButton
@@ -3201,6 +3223,8 @@ type AppChooserDialog struct {
 	Dialog
 }
 
+func WrapAppChooserDialog(p unsafe.Pointer) (r AppChooserDialog) { r.P = p; return }
+
 // gtk_app_chooser_dialog_new
 // container is not nil, container is AppChooserDialog
 // is constructor
@@ -3306,6 +3330,8 @@ type AppChooserWidget struct {
 	OrientableIfc
 	Box
 }
+
+func WrapAppChooserWidget(p unsafe.Pointer) (r AppChooserWidget) { r.P = p; return }
 
 // gtk_app_chooser_widget_new
 // container is not nil, container is AppChooserWidget
@@ -3532,6 +3558,8 @@ type Application struct {
 	gio.ActionMapIfc
 	gio.Application
 }
+
+func WrapApplication(p unsafe.Pointer) (r Application) { r.P = p; return }
 
 // gtk_application_new
 // container is not nil, container is Application
@@ -3929,6 +3957,8 @@ type ApplicationWindow struct {
 	Window
 }
 
+func WrapApplicationWindow(p unsafe.Pointer) (r ApplicationWindow) { r.P = p; return }
+
 // gtk_application_window_new
 // container is not nil, container is ApplicationWindow
 // is constructor
@@ -4040,6 +4070,8 @@ type Arrow struct {
 	Misc
 }
 
+func WrapArrow(p unsafe.Pointer) (r Arrow) { r.P = p; return }
+
 // gtk_arrow_new
 // container is not nil, container is Arrow
 // is constructor
@@ -4081,6 +4113,8 @@ type ArrowAccessible struct {
 	WidgetAccessible
 }
 
+func WrapArrowAccessible(p unsafe.Pointer) (r ArrowAccessible) { r.P = p; return }
+
 // ignore GType struct ArrowAccessibleClass
 // Struct ArrowAccessiblePrivate
 type ArrowAccessiblePrivate struct {
@@ -4116,6 +4150,8 @@ type AspectFrame struct {
 	BuildableIfc
 	Frame
 }
+
+func WrapAspectFrame(p unsafe.Pointer) (r AspectFrame) { r.P = p; return }
 
 // gtk_aspect_frame_new
 // container is not nil, container is AspectFrame
@@ -4170,6 +4206,8 @@ type Assistant struct {
 	BuildableIfc
 	Window
 }
+
+func WrapAssistant(p unsafe.Pointer) (r Assistant) { r.P = p; return }
 
 // gtk_assistant_new
 // container is not nil, container is Assistant
@@ -4671,6 +4709,8 @@ type Bin struct {
 	Container
 }
 
+func WrapBin(p unsafe.Pointer) (r Bin) { r.P = p; return }
+
 // gtk_bin_get_child
 // container is not nil, container is Bin
 // is method
@@ -4857,6 +4897,8 @@ type BooleanCellAccessible struct {
 	RendererCellAccessible
 }
 
+func WrapBooleanCellAccessible(p unsafe.Pointer) (r BooleanCellAccessible) { r.P = p; return }
+
 // ignore GType struct BooleanCellAccessibleClass
 // Struct BooleanCellAccessiblePrivate
 type BooleanCellAccessiblePrivate struct {
@@ -4936,6 +4978,8 @@ type Box struct {
 	OrientableIfc
 	Container
 }
+
+func WrapBox(p unsafe.Pointer) (r Box) { r.P = p; return }
 
 // gtk_box_new
 // container is not nil, container is Box
@@ -5393,6 +5437,8 @@ func (v *BuildableIfc) SetName(name string) {
 type Builder struct {
 	gobject.Object
 }
+
+func WrapBuilder(p unsafe.Pointer) (r Builder) { r.P = p; return }
 
 // gtk_builder_new
 // container is not nil, container is Builder
@@ -5903,6 +5949,8 @@ type Button struct {
 	Bin
 }
 
+func WrapButton(p unsafe.Pointer) (r Button) { r.P = p; return }
+
 // gtk_button_new
 // container is not nil, container is Button
 // is constructor
@@ -6384,6 +6432,8 @@ type ButtonAccessible struct {
 	ContainerAccessible
 }
 
+func WrapButtonAccessible(p unsafe.Pointer) (r ButtonAccessible) { r.P = p; return }
+
 // ignore GType struct ButtonAccessibleClass
 // Struct ButtonAccessiblePrivate
 type ButtonAccessiblePrivate struct {
@@ -6397,6 +6447,8 @@ type ButtonBox struct {
 	OrientableIfc
 	Box
 }
+
+func WrapButtonBox(p unsafe.Pointer) (r ButtonBox) { r.P = p; return }
 
 // gtk_button_box_new
 // container is not nil, container is ButtonBox
@@ -6561,6 +6613,8 @@ type Calendar struct {
 	BuildableIfc
 	Widget
 }
+
+func WrapCalendar(p unsafe.Pointer) (r Calendar) { r.P = p; return }
 
 // gtk_calendar_new
 // container is not nil, container is Calendar
@@ -6829,6 +6883,8 @@ type CellAccessible struct {
 	Accessible
 }
 
+func WrapCellAccessible(p unsafe.Pointer) (r CellAccessible) { r.P = p; return }
+
 // ignore GType struct CellAccessibleClass
 // Interface CellAccessibleParent
 type CellAccessibleParent struct {
@@ -7053,6 +7109,8 @@ type CellArea struct {
 	CellLayoutIfc
 	gobject.InitiallyUnowned
 }
+
+func WrapCellArea(p unsafe.Pointer) (r CellArea) { r.P = p; return }
 
 // gtk_cell_area_activate
 // container is not nil, container is CellArea
@@ -7800,6 +7858,8 @@ type CellAreaBox struct {
 	CellArea
 }
 
+func WrapCellAreaBox(p unsafe.Pointer) (r CellAreaBox) { r.P = p; return }
+
 // gtk_cell_area_box_new
 // container is not nil, container is CellAreaBox
 // is constructor
@@ -7894,6 +7954,8 @@ type CellAreaBoxPrivate struct {
 type CellAreaContext struct {
 	gobject.Object
 }
+
+func WrapCellAreaContext(p unsafe.Pointer) (r CellAreaContext) { r.P = p; return }
 
 // gtk_cell_area_context_allocate
 // container is not nil, container is CellAreaContext
@@ -8298,6 +8360,8 @@ func (v *CellLayoutIfc) SetCellDataFunc(cell CellRenderer, func1 int /*TODO_TYPE
 type CellRenderer struct {
 	gobject.InitiallyUnowned
 }
+
+func WrapCellRenderer(p unsafe.Pointer) (r CellRenderer) { r.P = p; return }
 
 // gtk_cell_renderer_activate
 // container is not nil, container is CellRenderer
@@ -8767,6 +8831,8 @@ type CellRendererAccel struct {
 	CellRendererText
 }
 
+func WrapCellRendererAccel(p unsafe.Pointer) (r CellRendererAccel) { r.P = p; return }
+
 // gtk_cell_renderer_accel_new
 // container is not nil, container is CellRendererAccel
 // is constructor
@@ -8806,6 +8872,8 @@ type CellRendererCombo struct {
 	CellRendererText
 }
 
+func WrapCellRendererCombo(p unsafe.Pointer) (r CellRendererCombo) { r.P = p; return }
+
 // gtk_cell_renderer_combo_new
 // container is not nil, container is CellRendererCombo
 // is constructor
@@ -8839,6 +8907,8 @@ type CellRendererPixbuf struct {
 	CellRenderer
 }
 
+func WrapCellRendererPixbuf(p unsafe.Pointer) (r CellRendererPixbuf) { r.P = p; return }
+
 // gtk_cell_renderer_pixbuf_new
 // container is not nil, container is CellRendererPixbuf
 // is constructor
@@ -8871,6 +8941,8 @@ type CellRendererProgress struct {
 	CellRenderer
 }
 
+func WrapCellRendererProgress(p unsafe.Pointer) (r CellRendererProgress) { r.P = p; return }
+
 // gtk_cell_renderer_progress_new
 // container is not nil, container is CellRendererProgress
 // is constructor
@@ -8897,6 +8969,8 @@ type CellRendererSpin struct {
 	CellRendererText
 }
 
+func WrapCellRendererSpin(p unsafe.Pointer) (r CellRendererSpin) { r.P = p; return }
+
 // gtk_cell_renderer_spin_new
 // container is not nil, container is CellRendererSpin
 // is constructor
@@ -8922,6 +8996,8 @@ type CellRendererSpinPrivate struct {
 type CellRendererSpinner struct {
 	CellRenderer
 }
+
+func WrapCellRendererSpinner(p unsafe.Pointer) (r CellRendererSpinner) { r.P = p; return }
 
 // gtk_cell_renderer_spinner_new
 // container is not nil, container is CellRendererSpinner
@@ -8959,6 +9035,8 @@ const (
 type CellRendererText struct {
 	CellRenderer
 }
+
+func WrapCellRendererText(p unsafe.Pointer) (r CellRendererText) { r.P = p; return }
 
 // gtk_cell_renderer_text_new
 // container is not nil, container is CellRendererText
@@ -9000,6 +9078,8 @@ type CellRendererTextPrivate struct {
 type CellRendererToggle struct {
 	CellRenderer
 }
+
+func WrapCellRendererToggle(p unsafe.Pointer) (r CellRendererToggle) { r.P = p; return }
 
 // gtk_cell_renderer_toggle_new
 // container is not nil, container is CellRendererToggle
@@ -9126,6 +9206,8 @@ type CellView struct {
 	OrientableIfc
 	Widget
 }
+
+func WrapCellView(p unsafe.Pointer) (r CellView) { r.P = p; return }
 
 // gtk_cell_view_new
 // container is not nil, container is CellView
@@ -9409,6 +9491,8 @@ type CheckButton struct {
 	ToggleButton
 }
 
+func WrapCheckButton(p unsafe.Pointer) (r CheckButton) { r.P = p; return }
+
 // gtk_check_button_new
 // container is not nil, container is CheckButton
 // is constructor
@@ -9471,6 +9555,8 @@ type CheckMenuItem struct {
 	BuildableIfc
 	MenuItem
 }
+
+func WrapCheckMenuItem(p unsafe.Pointer) (r CheckMenuItem) { r.P = p; return }
 
 // gtk_check_menu_item_new
 // container is not nil, container is CheckMenuItem
@@ -9643,6 +9729,8 @@ type CheckMenuItemAccessible struct {
 	MenuItemAccessible
 }
 
+func WrapCheckMenuItemAccessible(p unsafe.Pointer) (r CheckMenuItemAccessible) { r.P = p; return }
+
 // ignore GType struct CheckMenuItemAccessibleClass
 // Struct CheckMenuItemAccessiblePrivate
 type CheckMenuItemAccessiblePrivate struct {
@@ -9659,6 +9747,8 @@ type CheckMenuItemPrivate struct {
 type Clipboard struct {
 	gobject.Object
 }
+
+func WrapClipboard(p unsafe.Pointer) (r Clipboard) { r.P = p; return }
 
 // gtk_clipboard_get
 // container is not nil, container is Clipboard
@@ -10135,6 +10225,8 @@ type ColorButton struct {
 	Button
 }
 
+func WrapColorButton(p unsafe.Pointer) (r ColorButton) { r.P = p; return }
+
 // gtk_color_button_new
 // container is not nil, container is ColorButton
 // is constructor
@@ -10419,6 +10511,8 @@ type ColorChooserDialog struct {
 	Dialog
 }
 
+func WrapColorChooserDialog(p unsafe.Pointer) (r ColorChooserDialog) { r.P = p; return }
+
 // gtk_color_chooser_dialog_new
 // container is not nil, container is ColorChooserDialog
 // is constructor
@@ -10455,6 +10549,8 @@ type ColorChooserWidget struct {
 	Box
 }
 
+func WrapColorChooserWidget(p unsafe.Pointer) (r ColorChooserWidget) { r.P = p; return }
+
 // gtk_color_chooser_widget_new
 // container is not nil, container is ColorChooserWidget
 // is constructor
@@ -10483,6 +10579,8 @@ type ColorSelection struct {
 	OrientableIfc
 	Box
 }
+
+func WrapColorSelection(p unsafe.Pointer) (r ColorSelection) { r.P = p; return }
 
 // gtk_color_selection_new
 // container is not nil, container is ColorSelection
@@ -10828,6 +10926,8 @@ type ColorSelectionDialog struct {
 	Dialog
 }
 
+func WrapColorSelectionDialog(p unsafe.Pointer) (r ColorSelectionDialog) { r.P = p; return }
+
 // gtk_color_selection_dialog_new
 // container is not nil, container is ColorSelectionDialog
 // is constructor
@@ -10883,6 +10983,8 @@ type ComboBox struct {
 	CellLayoutIfc
 	Bin
 }
+
+func WrapComboBox(p unsafe.Pointer) (r ComboBox) { r.P = p; return }
 
 // gtk_combo_box_new
 // container is not nil, container is ComboBox
@@ -11542,6 +11644,8 @@ type ComboBoxAccessible struct {
 	ContainerAccessible
 }
 
+func WrapComboBoxAccessible(p unsafe.Pointer) (r ComboBoxAccessible) { r.P = p; return }
+
 // ignore GType struct ComboBoxAccessibleClass
 // Struct ComboBoxAccessiblePrivate
 type ComboBoxAccessiblePrivate struct {
@@ -11562,6 +11666,8 @@ type ComboBoxText struct {
 	CellLayoutIfc
 	ComboBox
 }
+
+func WrapComboBoxText(p unsafe.Pointer) (r ComboBoxText) { r.P = p; return }
 
 // gtk_combo_box_text_new
 // container is not nil, container is ComboBoxText
@@ -11764,6 +11870,8 @@ type Container struct {
 	BuildableIfc
 	Widget
 }
+
+func WrapContainer(p unsafe.Pointer) (r Container) { r.P = p; return }
 
 // gtk_container_add
 // container is not nil, container is Container
@@ -12225,6 +12333,8 @@ type ContainerAccessible struct {
 	WidgetAccessible
 }
 
+func WrapContainerAccessible(p unsafe.Pointer) (r ContainerAccessible) { r.P = p; return }
+
 // ignore GType struct ContainerAccessibleClass
 // Struct ContainerAccessiblePrivate
 type ContainerAccessiblePrivate struct {
@@ -12238,6 +12348,8 @@ type ContainerCellAccessible struct {
 	atk.TableCellIfc
 	CellAccessible
 }
+
+func WrapContainerCellAccessible(p unsafe.Pointer) (r ContainerCellAccessible) { r.P = p; return }
 
 // gtk_container_cell_accessible_new
 // container is not nil, container is ContainerCellAccessible
@@ -12326,6 +12438,8 @@ type CssProvider struct {
 	StyleProviderIfc
 	gobject.Object
 }
+
+func WrapCssProvider(p unsafe.Pointer) (r CssProvider) { r.P = p; return }
 
 // gtk_css_provider_new
 // container is not nil, container is CssProvider
@@ -12707,6 +12821,8 @@ type Dialog struct {
 	Window
 }
 
+func WrapDialog(p unsafe.Pointer) (r Dialog) { r.P = p; return }
+
 // gtk_dialog_new
 // container is not nil, container is Dialog
 // is constructor
@@ -12967,6 +13083,8 @@ type DrawingArea struct {
 	Widget
 }
 
+func WrapDrawingArea(p unsafe.Pointer) (r DrawingArea) { r.P = p; return }
+
 // gtk_drawing_area_new
 // container is not nil, container is DrawingArea
 // is constructor
@@ -13211,6 +13329,8 @@ type Entry struct {
 	EditableIfc
 	Widget
 }
+
+func WrapEntry(p unsafe.Pointer) (r Entry) { r.P = p; return }
 
 // gtk_entry_new
 // container is not nil, container is Entry
@@ -14481,6 +14601,8 @@ type EntryAccessible struct {
 	WidgetAccessible
 }
 
+func WrapEntryAccessible(p unsafe.Pointer) (r EntryAccessible) { r.P = p; return }
+
 // ignore GType struct EntryAccessibleClass
 // Struct EntryAccessiblePrivate
 type EntryAccessiblePrivate struct {
@@ -14491,6 +14613,8 @@ type EntryAccessiblePrivate struct {
 type EntryBuffer struct {
 	gobject.Object
 }
+
+func WrapEntryBuffer(p unsafe.Pointer) (r EntryBuffer) { r.P = p; return }
 
 // gtk_entry_buffer_new
 // container is not nil, container is EntryBuffer
@@ -14702,6 +14826,8 @@ type EntryCompletion struct {
 	CellLayoutIfc
 	gobject.Object
 }
+
+func WrapEntryCompletion(p unsafe.Pointer) (r EntryCompletion) { r.P = p; return }
 
 // gtk_entry_completion_new
 // container is not nil, container is EntryCompletion
@@ -15153,6 +15279,9 @@ type EntryIconAccessible struct {
 	atk.ComponentIfc
 	atk.Object
 }
+
+func WrapEntryIconAccessible(p unsafe.Pointer) (r EntryIconAccessible) { r.P = p; return }
+
 type EntryIconPositionEnum int
 
 const (
@@ -15171,6 +15300,8 @@ type EventBox struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapEventBox(p unsafe.Pointer) (r EventBox) { r.P = p; return }
 
 // gtk_event_box_new
 // container is not nil, container is EventBox
@@ -15262,6 +15393,8 @@ type EventController struct {
 	gobject.Object
 }
 
+func WrapEventController(p unsafe.Pointer) (r EventController) { r.P = p; return }
+
 // gtk_event_controller_get_propagation_phase
 // container is not nil, container is EventController
 // is method
@@ -15348,6 +15481,8 @@ func (v EventController) SetPropagationPhase(phase int /*TODO_TYPE isPtr: false,
 type EventControllerKey struct {
 	EventController
 }
+
+func WrapEventControllerKey(p unsafe.Pointer) (r EventControllerKey) { r.P = p; return }
 
 // gtk_event_controller_key_new
 // container is not nil, container is EventControllerKey
@@ -15439,6 +15574,8 @@ type EventControllerMotion struct {
 	EventController
 }
 
+func WrapEventControllerMotion(p unsafe.Pointer) (r EventControllerMotion) { r.P = p; return }
+
 // gtk_event_controller_motion_new
 // container is not nil, container is EventControllerMotion
 // is constructor
@@ -15461,6 +15598,8 @@ func NewEventControllerMotion(widget Widget) (result EventController) {
 type EventControllerScroll struct {
 	EventController
 }
+
+func WrapEventControllerScroll(p unsafe.Pointer) (r EventControllerScroll) { r.P = p; return }
 
 // gtk_event_controller_scroll_new
 // container is not nil, container is EventControllerScroll
@@ -15538,6 +15677,8 @@ type Expander struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapExpander(p unsafe.Pointer) (r Expander) { r.P = p; return }
 
 // gtk_expander_new
 // container is not nil, container is Expander
@@ -15841,6 +15982,8 @@ type ExpanderAccessible struct {
 	atk.ComponentIfc
 	ContainerAccessible
 }
+
+func WrapExpanderAccessible(p unsafe.Pointer) (r ExpanderAccessible) { r.P = p; return }
 
 // ignore GType struct ExpanderAccessibleClass
 // Struct ExpanderAccessiblePrivate
@@ -16982,6 +17125,8 @@ type FileChooserButton struct {
 	Box
 }
 
+func WrapFileChooserButton(p unsafe.Pointer) (r FileChooserButton) { r.P = p; return }
+
 // gtk_file_chooser_button_new
 // container is not nil, container is FileChooserButton
 // is constructor
@@ -17138,6 +17283,8 @@ type FileChooserDialog struct {
 	Dialog
 }
 
+func WrapFileChooserDialog(p unsafe.Pointer) (r FileChooserDialog) { r.P = p; return }
+
 // ignore GType struct FileChooserDialogClass
 // Struct FileChooserDialogPrivate
 type FileChooserDialogPrivate struct {
@@ -17157,6 +17304,8 @@ type FileChooserNative struct {
 	FileChooserIfc
 	NativeDialog
 }
+
+func WrapFileChooserNative(p unsafe.Pointer) (r FileChooserNative) { r.P = p; return }
 
 // gtk_file_chooser_native_new
 // container is not nil, container is FileChooserNative
@@ -17263,6 +17412,8 @@ type FileChooserWidget struct {
 	Box
 }
 
+func WrapFileChooserWidget(p unsafe.Pointer) (r FileChooserWidget) { r.P = p; return }
+
 // gtk_file_chooser_widget_new
 // container is not nil, container is FileChooserWidget
 // is constructor
@@ -17291,6 +17442,8 @@ type FileFilter struct {
 	BuildableIfc
 	gobject.InitiallyUnowned
 }
+
+func WrapFileFilter(p unsafe.Pointer) (r FileFilter) { r.P = p; return }
 
 // gtk_file_filter_new
 // container is not nil, container is FileFilter
@@ -17497,6 +17650,8 @@ type Fixed struct {
 	Container
 }
 
+func WrapFixed(p unsafe.Pointer) (r Fixed) { r.P = p; return }
+
 // gtk_fixed_new
 // container is not nil, container is Fixed
 // is constructor
@@ -17564,6 +17719,8 @@ type FlowBox struct {
 	OrientableIfc
 	Container
 }
+
+func WrapFlowBox(p unsafe.Pointer) (r FlowBox) { r.P = p; return }
 
 // gtk_flow_box_new
 // container is not nil, container is FlowBox
@@ -18065,6 +18222,8 @@ type FlowBoxAccessible struct {
 	ContainerAccessible
 }
 
+func WrapFlowBoxAccessible(p unsafe.Pointer) (r FlowBoxAccessible) { r.P = p; return }
+
 // ignore GType struct FlowBoxAccessibleClass
 // Struct FlowBoxAccessiblePrivate
 type FlowBoxAccessiblePrivate struct {
@@ -18077,6 +18236,8 @@ type FlowBoxChild struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapFlowBoxChild(p unsafe.Pointer) (r FlowBoxChild) { r.P = p; return }
 
 // gtk_flow_box_child_new
 // container is not nil, container is FlowBoxChild
@@ -18147,6 +18308,8 @@ type FlowBoxChildAccessible struct {
 	ContainerAccessible
 }
 
+func WrapFlowBoxChildAccessible(p unsafe.Pointer) (r FlowBoxChildAccessible) { r.P = p; return }
+
 // ignore GType struct FlowBoxChildAccessibleClass
 // ignore GType struct FlowBoxChildClass
 // ignore GType struct FlowBoxClass
@@ -18159,6 +18322,8 @@ type FontButton struct {
 	FontChooserIfc
 	Button
 }
+
+func WrapFontButton(p unsafe.Pointer) (r FontButton) { r.P = p; return }
 
 // gtk_font_button_new
 // container is not nil, container is FontButton
@@ -18729,6 +18894,8 @@ type FontChooserDialog struct {
 	Dialog
 }
 
+func WrapFontChooserDialog(p unsafe.Pointer) (r FontChooserDialog) { r.P = p; return }
+
 // gtk_font_chooser_dialog_new
 // container is not nil, container is FontChooserDialog
 // is constructor
@@ -18775,6 +18942,8 @@ type FontChooserWidget struct {
 	Box
 }
 
+func WrapFontChooserWidget(p unsafe.Pointer) (r FontChooserWidget) { r.P = p; return }
+
 // gtk_font_chooser_widget_new
 // container is not nil, container is FontChooserWidget
 // is constructor
@@ -18803,6 +18972,8 @@ type FontSelection struct {
 	OrientableIfc
 	Box
 }
+
+func WrapFontSelection(p unsafe.Pointer) (r FontSelection) { r.P = p; return }
 
 // gtk_font_selection_new
 // container is not nil, container is FontSelection
@@ -19034,6 +19205,8 @@ type FontSelectionDialog struct {
 	Dialog
 }
 
+func WrapFontSelectionDialog(p unsafe.Pointer) (r FontSelectionDialog) { r.P = p; return }
+
 // gtk_font_selection_dialog_new
 // container is not nil, container is FontSelectionDialog
 // is constructor
@@ -19192,6 +19365,8 @@ type Frame struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapFrame(p unsafe.Pointer) (r Frame) { r.P = p; return }
 
 // gtk_frame_new
 // container is not nil, container is Frame
@@ -19352,6 +19527,8 @@ type FrameAccessible struct {
 	ContainerAccessible
 }
 
+func WrapFrameAccessible(p unsafe.Pointer) (r FrameAccessible) { r.P = p; return }
+
 // ignore GType struct FrameAccessibleClass
 // Struct FrameAccessiblePrivate
 type FrameAccessiblePrivate struct {
@@ -19370,6 +19547,8 @@ type GLArea struct {
 	BuildableIfc
 	Widget
 }
+
+func WrapGLArea(p unsafe.Pointer) (r GLArea) { r.P = p; return }
 
 // gtk_gl_area_new
 // container is not nil, container is GLArea
@@ -19678,6 +19857,8 @@ func (v GLArea) SetUseEs(use_es bool) {
 type Gesture struct {
 	EventController
 }
+
+func WrapGesture(p unsafe.Pointer) (r Gesture) { r.P = p; return }
 
 // gtk_gesture_get_bounding_box
 // container is not nil, container is Gesture
@@ -20022,6 +20203,8 @@ type GestureDrag struct {
 	GestureSingle
 }
 
+func WrapGestureDrag(p unsafe.Pointer) (r GestureDrag) { r.P = p; return }
+
 // gtk_gesture_drag_new
 // container is not nil, container is GestureDrag
 // is constructor
@@ -20089,6 +20272,8 @@ type GestureLongPress struct {
 	GestureSingle
 }
 
+func WrapGestureLongPress(p unsafe.Pointer) (r GestureLongPress) { r.P = p; return }
+
 // gtk_gesture_long_press_new
 // container is not nil, container is GestureLongPress
 // is constructor
@@ -20111,6 +20296,8 @@ func NewGestureLongPress(widget Widget) (result Gesture) {
 type GestureMultiPress struct {
 	GestureSingle
 }
+
+func WrapGestureMultiPress(p unsafe.Pointer) (r GestureMultiPress) { r.P = p; return }
 
 // gtk_gesture_multi_press_new
 // container is not nil, container is GestureMultiPress
@@ -20170,6 +20357,8 @@ type GesturePan struct {
 	GestureDrag
 }
 
+func WrapGesturePan(p unsafe.Pointer) (r GesturePan) { r.P = p; return }
+
 // gtk_gesture_pan_new
 // container is not nil, container is GesturePan
 // is constructor
@@ -20226,6 +20415,8 @@ type GestureRotate struct {
 	Gesture
 }
 
+func WrapGestureRotate(p unsafe.Pointer) (r GestureRotate) { r.P = p; return }
+
 // gtk_gesture_rotate_new
 // container is not nil, container is GestureRotate
 // is constructor
@@ -20265,6 +20456,8 @@ func (v GestureRotate) GetAngleDelta() (result float64) {
 type GestureSingle struct {
 	Gesture
 }
+
+func WrapGestureSingle(p unsafe.Pointer) (r GestureSingle) { r.P = p; return }
 
 // gtk_gesture_single_get_button
 // container is not nil, container is GestureSingle
@@ -20402,6 +20595,8 @@ type GestureStylus struct {
 	GestureSingle
 }
 
+func WrapGestureStylus(p unsafe.Pointer) (r GestureStylus) { r.P = p; return }
+
 // gtk_gesture_stylus_new
 // container is not nil, container is GestureStylus
 // is constructor
@@ -20484,6 +20679,8 @@ type GestureSwipe struct {
 	GestureSingle
 }
 
+func WrapGestureSwipe(p unsafe.Pointer) (r GestureSwipe) { r.P = p; return }
+
 // gtk_gesture_swipe_new
 // container is not nil, container is GestureSwipe
 // is constructor
@@ -20528,6 +20725,8 @@ func (v GestureSwipe) GetVelocity() (result bool, velocity_x float64, velocity_y
 type GestureZoom struct {
 	Gesture
 }
+
+func WrapGestureZoom(p unsafe.Pointer) (r GestureZoom) { r.P = p; return }
 
 // gtk_gesture_zoom_new
 // container is not nil, container is GestureZoom
@@ -20721,6 +20920,8 @@ type Grid struct {
 	OrientableIfc
 	Container
 }
+
+func WrapGrid(p unsafe.Pointer) (r Grid) { r.P = p; return }
 
 // gtk_grid_new
 // container is not nil, container is Grid
@@ -21078,6 +21279,8 @@ type HBox struct {
 	Box
 }
 
+func WrapHBox(p unsafe.Pointer) (r HBox) { r.P = p; return }
+
 // gtk_hbox_new
 // container is not nil, container is HBox
 // is constructor
@@ -21105,6 +21308,8 @@ type HButtonBox struct {
 	ButtonBox
 }
 
+func WrapHButtonBox(p unsafe.Pointer) (r HButtonBox) { r.P = p; return }
+
 // gtk_hbutton_box_new
 // container is not nil, container is HButtonBox
 // is constructor
@@ -21129,6 +21334,8 @@ type HPaned struct {
 	Paned
 }
 
+func WrapHPaned(p unsafe.Pointer) (r HPaned) { r.P = p; return }
+
 // gtk_hpaned_new
 // container is not nil, container is HPaned
 // is constructor
@@ -21151,6 +21358,8 @@ type HSV struct {
 	BuildableIfc
 	Widget
 }
+
+func WrapHSV(p unsafe.Pointer) (r HSV) { r.P = p; return }
 
 // gtk_hsv_new
 // container is not nil, container is HSV
@@ -21298,6 +21507,8 @@ type HScale struct {
 	Scale
 }
 
+func WrapHScale(p unsafe.Pointer) (r HScale) { r.P = p; return }
+
 // gtk_hscale_new
 // container is not nil, container is HScale
 // is constructor
@@ -21343,6 +21554,8 @@ type HScrollbar struct {
 	Scrollbar
 }
 
+func WrapHScrollbar(p unsafe.Pointer) (r HScrollbar) { r.P = p; return }
+
 // gtk_hscrollbar_new
 // container is not nil, container is HScrollbar
 // is constructor
@@ -21369,6 +21582,8 @@ type HSeparator struct {
 	Separator
 }
 
+func WrapHSeparator(p unsafe.Pointer) (r HSeparator) { r.P = p; return }
+
 // gtk_hseparator_new
 // container is not nil, container is HSeparator
 // is constructor
@@ -21391,6 +21606,8 @@ type HandleBox struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapHandleBox(p unsafe.Pointer) (r HandleBox) { r.P = p; return }
 
 // gtk_handle_box_new
 // container is not nil, container is HandleBox
@@ -21532,6 +21749,8 @@ type HeaderBar struct {
 	BuildableIfc
 	Container
 }
+
+func WrapHeaderBar(p unsafe.Pointer) (r HeaderBar) { r.P = p; return }
 
 // gtk_header_bar_new
 // container is not nil, container is HeaderBar
@@ -21787,6 +22006,8 @@ type IMContext struct {
 	gobject.Object
 }
 
+func WrapIMContext(p unsafe.Pointer) (r IMContext) { r.P = p; return }
+
 // gtk_im_context_delete_surrounding
 // container is not nil, container is IMContext
 // is method
@@ -21985,6 +22206,8 @@ type IMContextSimple struct {
 	IMContext
 }
 
+func WrapIMContextSimple(p unsafe.Pointer) (r IMContextSimple) { r.P = p; return }
+
 // gtk_im_context_simple_new
 // container is not nil, container is IMContextSimple
 // is constructor
@@ -22027,6 +22250,8 @@ type IMContextSimplePrivate struct {
 type IMMulticontext struct {
 	IMContext
 }
+
+func WrapIMMulticontext(p unsafe.Pointer) (r IMMulticontext) { r.P = p; return }
 
 // gtk_im_multicontext_new
 // container is not nil, container is IMMulticontext
@@ -22118,6 +22343,8 @@ type IconFactory struct {
 	BuildableIfc
 	gobject.Object
 }
+
+func WrapIconFactory(p unsafe.Pointer) (r IconFactory) { r.P = p; return }
 
 // gtk_icon_factory_new
 // container is not nil, container is IconFactory
@@ -22230,6 +22457,8 @@ type IconFactoryPrivate struct {
 type IconInfo struct {
 	gobject.Object
 }
+
+func WrapIconInfo(p unsafe.Pointer) (r IconInfo) { r.P = p; return }
 
 // gtk_icon_info_new_for_pixbuf
 // container is not nil, container is IconInfo
@@ -23197,6 +23426,8 @@ type IconTheme struct {
 	gobject.Object
 }
 
+func WrapIconTheme(p unsafe.Pointer) (r IconTheme) { r.P = p; return }
+
 // gtk_icon_theme_new
 // container is not nil, container is IconTheme
 // is constructor
@@ -23705,6 +23936,8 @@ type IconView struct {
 	ScrollableIfc
 	Container
 }
+
+func WrapIconView(p unsafe.Pointer) (r IconView) { r.P = p; return }
 
 // gtk_icon_view_new
 // container is not nil, container is IconView
@@ -24799,6 +25032,8 @@ type IconViewAccessible struct {
 	ContainerAccessible
 }
 
+func WrapIconViewAccessible(p unsafe.Pointer) (r IconViewAccessible) { r.P = p; return }
+
 // ignore GType struct IconViewAccessibleClass
 // Struct IconViewAccessiblePrivate
 type IconViewAccessiblePrivate struct {
@@ -24828,6 +25063,8 @@ type Image struct {
 	BuildableIfc
 	Misc
 }
+
+func WrapImage(p unsafe.Pointer) (r Image) { r.P = p; return }
 
 // gtk_image_new
 // container is not nil, container is Image
@@ -25340,6 +25577,8 @@ type ImageAccessible struct {
 	WidgetAccessible
 }
 
+func WrapImageAccessible(p unsafe.Pointer) (r ImageAccessible) { r.P = p; return }
+
 // ignore GType struct ImageAccessibleClass
 // Struct ImageAccessiblePrivate
 type ImageAccessiblePrivate struct {
@@ -25354,6 +25593,8 @@ type ImageCellAccessible struct {
 	atk.TableCellIfc
 	RendererCellAccessible
 }
+
+func WrapImageCellAccessible(p unsafe.Pointer) (r ImageCellAccessible) { r.P = p; return }
 
 // ignore GType struct ImageCellAccessibleClass
 // Struct ImageCellAccessiblePrivate
@@ -25370,6 +25611,8 @@ type ImageMenuItem struct {
 	BuildableIfc
 	MenuItem
 }
+
+func WrapImageMenuItem(p unsafe.Pointer) (r ImageMenuItem) { r.P = p; return }
 
 // gtk_image_menu_item_new
 // container is not nil, container is ImageMenuItem
@@ -25585,6 +25828,8 @@ type InfoBar struct {
 	OrientableIfc
 	Box
 }
+
+func WrapInfoBar(p unsafe.Pointer) (r InfoBar) { r.P = p; return }
 
 // gtk_info_bar_new
 // container is not nil, container is InfoBar
@@ -25858,6 +26103,8 @@ type Invisible struct {
 	Widget
 }
 
+func WrapInvisible(p unsafe.Pointer) (r Invisible) { r.P = p; return }
+
 // gtk_invisible_new
 // container is not nil, container is Invisible
 // is constructor
@@ -25956,6 +26203,8 @@ type Label struct {
 	BuildableIfc
 	Misc
 }
+
+func WrapLabel(p unsafe.Pointer) (r Label) { r.P = p; return }
 
 // gtk_label_new
 // container is not nil, container is Label
@@ -26792,6 +27041,8 @@ type LabelAccessible struct {
 	WidgetAccessible
 }
 
+func WrapLabelAccessible(p unsafe.Pointer) (r LabelAccessible) { r.P = p; return }
+
 // ignore GType struct LabelAccessibleClass
 // Struct LabelAccessiblePrivate
 type LabelAccessiblePrivate struct {
@@ -26816,6 +27067,8 @@ type Layout struct {
 	ScrollableIfc
 	Container
 }
+
+func WrapLayout(p unsafe.Pointer) (r Layout) { r.P = p; return }
 
 // gtk_layout_new
 // container is not nil, container is Layout
@@ -26999,6 +27252,8 @@ type LevelBar struct {
 	OrientableIfc
 	Widget
 }
+
+func WrapLevelBar(p unsafe.Pointer) (r LevelBar) { r.P = p; return }
 
 // gtk_level_bar_new
 // container is not nil, container is LevelBar
@@ -27258,6 +27513,8 @@ type LevelBarAccessible struct {
 	WidgetAccessible
 }
 
+func WrapLevelBarAccessible(p unsafe.Pointer) (r LevelBarAccessible) { r.P = p; return }
+
 // ignore GType struct LevelBarAccessibleClass
 // Struct LevelBarAccessiblePrivate
 type LevelBarAccessiblePrivate struct {
@@ -27304,6 +27561,8 @@ type LinkButton struct {
 	BuildableIfc
 	Button
 }
+
+func WrapLinkButton(p unsafe.Pointer) (r LinkButton) { r.P = p; return }
 
 // gtk_link_button_new
 // container is not nil, container is LinkButton
@@ -27421,6 +27680,8 @@ type LinkButtonAccessible struct {
 	ButtonAccessible
 }
 
+func WrapLinkButtonAccessible(p unsafe.Pointer) (r LinkButtonAccessible) { r.P = p; return }
+
 // ignore GType struct LinkButtonAccessibleClass
 // Struct LinkButtonAccessiblePrivate
 type LinkButtonAccessiblePrivate struct {
@@ -27439,6 +27700,8 @@ type ListBox struct {
 	BuildableIfc
 	Container
 }
+
+func WrapListBox(p unsafe.Pointer) (r ListBox) { r.P = p; return }
 
 // gtk_list_box_new
 // container is not nil, container is ListBox
@@ -27888,6 +28151,8 @@ type ListBoxAccessible struct {
 	ContainerAccessible
 }
 
+func WrapListBoxAccessible(p unsafe.Pointer) (r ListBoxAccessible) { r.P = p; return }
+
 // ignore GType struct ListBoxAccessibleClass
 // Struct ListBoxAccessiblePrivate
 type ListBoxAccessiblePrivate struct {
@@ -27902,6 +28167,8 @@ type ListBoxRow struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapListBoxRow(p unsafe.Pointer) (r ListBoxRow) { r.P = p; return }
 
 // gtk_list_box_row_new
 // container is not nil, container is ListBoxRow
@@ -28068,6 +28335,8 @@ type ListBoxRowAccessible struct {
 	ContainerAccessible
 }
 
+func WrapListBoxRowAccessible(p unsafe.Pointer) (r ListBoxRowAccessible) { r.P = p; return }
+
 // ignore GType struct ListBoxRowAccessibleClass
 // ignore GType struct ListBoxRowClass
 // Object ListStore
@@ -28079,6 +28348,8 @@ type ListStore struct {
 	TreeSortableIfc
 	gobject.Object
 }
+
+func WrapListStore(p unsafe.Pointer) (r ListStore) { r.P = p; return }
 
 // gtk_list_store_newv
 // container is not nil, container is ListStore
@@ -28392,6 +28663,8 @@ type LockButton struct {
 	Button
 }
 
+func WrapLockButton(p unsafe.Pointer) (r LockButton) { r.P = p; return }
+
 // gtk_lock_button_new
 // container is not nil, container is LockButton
 // is constructor
@@ -28449,6 +28722,8 @@ type LockButtonAccessible struct {
 	ButtonAccessible
 }
 
+func WrapLockButtonAccessible(p unsafe.Pointer) (r LockButtonAccessible) { r.P = p; return }
+
 // ignore GType struct LockButtonAccessibleClass
 // Struct LockButtonAccessiblePrivate
 type LockButtonAccessiblePrivate struct {
@@ -28467,6 +28742,8 @@ type Menu struct {
 	BuildableIfc
 	MenuShell
 }
+
+func WrapMenu(p unsafe.Pointer) (r Menu) { r.P = p; return }
 
 // gtk_menu_new
 // container is not nil, container is Menu
@@ -28987,6 +29264,8 @@ type MenuAccessible struct {
 	MenuShellAccessible
 }
 
+func WrapMenuAccessible(p unsafe.Pointer) (r MenuAccessible) { r.P = p; return }
+
 // ignore GType struct MenuAccessibleClass
 // Struct MenuAccessiblePrivate
 type MenuAccessiblePrivate struct {
@@ -28999,6 +29278,8 @@ type MenuBar struct {
 	BuildableIfc
 	MenuShell
 }
+
+func WrapMenuBar(p unsafe.Pointer) (r MenuBar) { r.P = p; return }
 
 // gtk_menu_bar_new
 // container is not nil, container is MenuBar
@@ -29110,6 +29391,8 @@ type MenuButton struct {
 	BuildableIfc
 	ToggleButton
 }
+
+func WrapMenuButton(p unsafe.Pointer) (r MenuButton) { r.P = p; return }
 
 // gtk_menu_button_new
 // container is not nil, container is MenuButton
@@ -29326,6 +29609,8 @@ type MenuButtonAccessible struct {
 	ToggleButtonAccessible
 }
 
+func WrapMenuButtonAccessible(p unsafe.Pointer) (r MenuButtonAccessible) { r.P = p; return }
+
 // ignore GType struct MenuButtonAccessibleClass
 // Struct MenuButtonAccessiblePrivate
 type MenuButtonAccessiblePrivate struct {
@@ -29356,6 +29641,8 @@ type MenuItem struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapMenuItem(p unsafe.Pointer) (r MenuItem) { r.P = p; return }
 
 // gtk_menu_item_new
 // container is not nil, container is MenuItem
@@ -29686,6 +29973,8 @@ type MenuItemAccessible struct {
 	ContainerAccessible
 }
 
+func WrapMenuItemAccessible(p unsafe.Pointer) (r MenuItemAccessible) { r.P = p; return }
+
 // ignore GType struct MenuItemAccessibleClass
 // Struct MenuItemAccessiblePrivate
 type MenuItemAccessiblePrivate struct {
@@ -29709,6 +29998,8 @@ type MenuShell struct {
 	BuildableIfc
 	Container
 }
+
+func WrapMenuShell(p unsafe.Pointer) (r MenuShell) { r.P = p; return }
 
 // gtk_menu_shell_activate_item
 // container is not nil, container is MenuShell
@@ -29936,6 +30227,8 @@ type MenuShellAccessible struct {
 	ContainerAccessible
 }
 
+func WrapMenuShellAccessible(p unsafe.Pointer) (r MenuShellAccessible) { r.P = p; return }
+
 // ignore GType struct MenuShellAccessibleClass
 // Struct MenuShellAccessiblePrivate
 type MenuShellAccessiblePrivate struct {
@@ -29956,6 +30249,8 @@ type MenuToolButton struct {
 	BuildableIfc
 	ToolButton
 }
+
+func WrapMenuToolButton(p unsafe.Pointer) (r MenuToolButton) { r.P = p; return }
 
 // gtk_menu_tool_button_new
 // container is not nil, container is MenuToolButton
@@ -30075,6 +30370,8 @@ type MessageDialog struct {
 	Dialog
 }
 
+func WrapMessageDialog(p unsafe.Pointer) (r MessageDialog) { r.P = p; return }
+
 // gtk_message_dialog_get_image
 // container is not nil, container is MessageDialog
 // is method
@@ -30163,6 +30460,8 @@ type Misc struct {
 	Widget
 }
 
+func WrapMisc(p unsafe.Pointer) (r Misc) { r.P = p; return }
+
 // gtk_misc_get_alignment
 // container is not nil, container is Misc
 // is method
@@ -30250,6 +30549,8 @@ type ModelButton struct {
 	Button
 }
 
+func WrapModelButton(p unsafe.Pointer) (r ModelButton) { r.P = p; return }
+
 // gtk_model_button_new
 // container is not nil, container is ModelButton
 // is constructor
@@ -30269,6 +30570,8 @@ func NewModelButton() (result Widget) {
 type MountOperation struct {
 	gio.MountOperation
 }
+
+func WrapMountOperation(p unsafe.Pointer) (r MountOperation) { r.P = p; return }
 
 // gtk_mount_operation_new
 // container is not nil, container is MountOperation
@@ -30392,6 +30695,8 @@ const (
 type NativeDialog struct {
 	gobject.Object
 }
+
+func WrapNativeDialog(p unsafe.Pointer) (r NativeDialog) { r.P = p; return }
 
 // gtk_native_dialog_destroy
 // container is not nil, container is NativeDialog
@@ -30574,6 +30879,8 @@ type Notebook struct {
 	BuildableIfc
 	Container
 }
+
+func WrapNotebook(p unsafe.Pointer) (r Notebook) { r.P = p; return }
 
 // gtk_notebook_new
 // container is not nil, container is Notebook
@@ -31341,6 +31648,8 @@ type NotebookAccessible struct {
 	ContainerAccessible
 }
 
+func WrapNotebookAccessible(p unsafe.Pointer) (r NotebookAccessible) { r.P = p; return }
+
 // ignore GType struct NotebookAccessibleClass
 // Struct NotebookAccessiblePrivate
 type NotebookAccessiblePrivate struct {
@@ -31353,6 +31662,8 @@ type NotebookPageAccessible struct {
 	atk.ComponentIfc
 	atk.Object
 }
+
+func WrapNotebookPageAccessible(p unsafe.Pointer) (r NotebookPageAccessible) { r.P = p; return }
 
 // gtk_notebook_page_accessible_new
 // container is not nil, container is NotebookPageAccessible
@@ -31421,6 +31732,8 @@ type NumerableIcon struct {
 	gio.IconIfc
 	gio.EmblemedIcon
 }
+
+func WrapNumerableIcon(p unsafe.Pointer) (r NumerableIcon) { r.P = p; return }
 
 // gtk_numerable_icon_new
 // container is not nil, container is NumerableIcon
@@ -31636,6 +31949,8 @@ type OffscreenWindow struct {
 	Window
 }
 
+func WrapOffscreenWindow(p unsafe.Pointer) (r OffscreenWindow) { r.P = p; return }
+
 // gtk_offscreen_window_new
 // container is not nil, container is OffscreenWindow
 // is constructor
@@ -31739,6 +32054,8 @@ type Overlay struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapOverlay(p unsafe.Pointer) (r Overlay) { r.P = p; return }
 
 // gtk_overlay_new
 // container is not nil, container is Overlay
@@ -31858,6 +32175,8 @@ type PadController struct {
 	EventController
 }
 
+func WrapPadController(p unsafe.Pointer) (r PadController) { r.P = p; return }
+
 // gtk_pad_controller_new
 // container is not nil, container is PadController
 // is constructor
@@ -31942,6 +32261,8 @@ const (
 type PageSetup struct {
 	gobject.Object
 }
+
+func WrapPageSetup(p unsafe.Pointer) (r PageSetup) { r.P = p; return }
 
 // gtk_page_setup_new
 // container is not nil, container is PageSetup
@@ -32441,6 +32762,8 @@ type Paned struct {
 	Container
 }
 
+func WrapPaned(p unsafe.Pointer) (r Paned) { r.P = p; return }
+
 // gtk_paned_new
 // container is not nil, container is Paned
 // is constructor
@@ -32643,6 +32966,8 @@ type PanedAccessible struct {
 	atk.ValueIfc
 	ContainerAccessible
 }
+
+func WrapPanedAccessible(p unsafe.Pointer) (r PanedAccessible) { r.P = p; return }
 
 // ignore GType struct PanedAccessibleClass
 // Struct PanedAccessiblePrivate
@@ -33138,6 +33463,8 @@ type PlacesSidebar struct {
 	ScrolledWindow
 }
 
+func WrapPlacesSidebar(p unsafe.Pointer) (r PlacesSidebar) { r.P = p; return }
+
 // gtk_places_sidebar_new
 // container is not nil, container is PlacesSidebar
 // is constructor
@@ -33562,6 +33889,8 @@ type Plug struct {
 	Window
 }
 
+func WrapPlug(p unsafe.Pointer) (r Plug) { r.P = p; return }
+
 // gtk_plug_new
 // container is not nil, container is Plug
 // is constructor
@@ -33699,6 +34028,8 @@ type Popover struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapPopover(p unsafe.Pointer) (r Popover) { r.P = p; return }
 
 // gtk_popover_new
 // container is not nil, container is Popover
@@ -34014,6 +34345,8 @@ type PopoverAccessible struct {
 	ContainerAccessible
 }
 
+func WrapPopoverAccessible(p unsafe.Pointer) (r PopoverAccessible) { r.P = p; return }
+
 // ignore GType struct PopoverAccessibleClass
 // ignore GType struct PopoverClass
 type PopoverConstraintEnum int
@@ -34029,6 +34362,8 @@ type PopoverMenu struct {
 	BuildableIfc
 	Popover
 }
+
+func WrapPopoverMenu(p unsafe.Pointer) (r PopoverMenu) { r.P = p; return }
 
 // gtk_popover_menu_new
 // container is not nil, container is PopoverMenu
@@ -34080,6 +34415,8 @@ const (
 type PrintContext struct {
 	gobject.Object
 }
+
+func WrapPrintContext(p unsafe.Pointer) (r PrintContext) { r.P = p; return }
 
 // gtk_print_context_create_pango_context
 // container is not nil, container is PrintContext
@@ -34299,6 +34636,8 @@ type PrintOperation struct {
 	PrintOperationPreviewIfc
 	gobject.Object
 }
+
+func WrapPrintOperation(p unsafe.Pointer) (r PrintOperation) { r.P = p; return }
 
 // gtk_print_operation_new
 // container is not nil, container is PrintOperation
@@ -34879,6 +35218,8 @@ const (
 type PrintSettings struct {
 	gobject.Object
 }
+
+func WrapPrintSettings(p unsafe.Pointer) (r PrintSettings) { r.P = p; return }
 
 // gtk_print_settings_new
 // container is not nil, container is PrintSettings
@@ -36223,6 +36564,8 @@ type ProgressBar struct {
 	Widget
 }
 
+func WrapProgressBar(p unsafe.Pointer) (r ProgressBar) { r.P = p; return }
+
 // gtk_progress_bar_new
 // container is not nil, container is ProgressBar
 // is constructor
@@ -36453,6 +36796,8 @@ type ProgressBarAccessible struct {
 	WidgetAccessible
 }
 
+func WrapProgressBarAccessible(p unsafe.Pointer) (r ProgressBarAccessible) { r.P = p; return }
+
 // ignore GType struct ProgressBarAccessibleClass
 // Struct ProgressBarAccessiblePrivate
 type ProgressBarAccessiblePrivate struct {
@@ -36478,6 +36823,8 @@ type RadioAction struct {
 	BuildableIfc
 	ToggleAction
 }
+
+func WrapRadioAction(p unsafe.Pointer) (r RadioAction) { r.P = p; return }
 
 // gtk_radio_action_new
 // container is not nil, container is RadioAction
@@ -36606,6 +36953,8 @@ type RadioButton struct {
 	BuildableIfc
 	CheckButton
 }
+
+func WrapRadioButton(p unsafe.Pointer) (r RadioButton) { r.P = p; return }
 
 // gtk_radio_button_new
 // container is not nil, container is RadioButton
@@ -36776,6 +37125,8 @@ type RadioButtonAccessible struct {
 	ToggleButtonAccessible
 }
 
+func WrapRadioButtonAccessible(p unsafe.Pointer) (r RadioButtonAccessible) { r.P = p; return }
+
 // ignore GType struct RadioButtonAccessibleClass
 // Struct RadioButtonAccessiblePrivate
 type RadioButtonAccessiblePrivate struct {
@@ -36796,6 +37147,8 @@ type RadioMenuItem struct {
 	BuildableIfc
 	CheckMenuItem
 }
+
+func WrapRadioMenuItem(p unsafe.Pointer) (r RadioMenuItem) { r.P = p; return }
 
 // gtk_radio_menu_item_new
 // container is not nil, container is RadioMenuItem
@@ -36966,6 +37319,8 @@ type RadioMenuItemAccessible struct {
 	CheckMenuItemAccessible
 }
 
+func WrapRadioMenuItemAccessible(p unsafe.Pointer) (r RadioMenuItemAccessible) { r.P = p; return }
+
 // ignore GType struct RadioMenuItemAccessibleClass
 // Struct RadioMenuItemAccessiblePrivate
 type RadioMenuItemAccessiblePrivate struct {
@@ -36986,6 +37341,8 @@ type RadioToolButton struct {
 	BuildableIfc
 	ToggleToolButton
 }
+
+func WrapRadioToolButton(p unsafe.Pointer) (r RadioToolButton) { r.P = p; return }
 
 // gtk_radio_tool_button_new
 // container is not nil, container is RadioToolButton
@@ -37101,6 +37458,8 @@ type Range struct {
 	OrientableIfc
 	Widget
 }
+
+func WrapRange(p unsafe.Pointer) (r Range) { r.P = p; return }
 
 // gtk_range_get_adjustment
 // container is not nil, container is Range
@@ -37563,6 +37922,8 @@ type RangeAccessible struct {
 	WidgetAccessible
 }
 
+func WrapRangeAccessible(p unsafe.Pointer) (r RangeAccessible) { r.P = p; return }
+
 // ignore GType struct RangeAccessibleClass
 // Struct RangeAccessiblePrivate
 type RangeAccessiblePrivate struct {
@@ -37698,6 +38059,8 @@ type RcStyle struct {
 	gobject.Object
 }
 
+func WrapRcStyle(p unsafe.Pointer) (r RcStyle) { r.P = p; return }
+
 // gtk_rc_style_new
 // container is not nil, container is RcStyle
 // is constructor
@@ -37782,6 +38145,8 @@ type RecentAction struct {
 	RecentChooserIfc
 	Action
 }
+
+func WrapRecentAction(p unsafe.Pointer) (r RecentAction) { r.P = p; return }
 
 // gtk_recent_action_new
 // container is not nil, container is RecentAction
@@ -38405,6 +38770,8 @@ type RecentChooserDialog struct {
 	Dialog
 }
 
+func WrapRecentChooserDialog(p unsafe.Pointer) (r RecentChooserDialog) { r.P = p; return }
+
 // ignore GType struct RecentChooserDialogClass
 // Struct RecentChooserDialogPrivate
 type RecentChooserDialogPrivate struct {
@@ -38426,6 +38793,8 @@ type RecentChooserMenu struct {
 	RecentChooserIfc
 	Menu
 }
+
+func WrapRecentChooserMenu(p unsafe.Pointer) (r RecentChooserMenu) { r.P = p; return }
 
 // gtk_recent_chooser_menu_new
 // container is not nil, container is RecentChooserMenu
@@ -38506,6 +38875,8 @@ type RecentChooserWidget struct {
 	Box
 }
 
+func WrapRecentChooserWidget(p unsafe.Pointer) (r RecentChooserWidget) { r.P = p; return }
+
 // gtk_recent_chooser_widget_new
 // container is not nil, container is RecentChooserWidget
 // is constructor
@@ -38554,6 +38925,8 @@ type RecentFilter struct {
 	BuildableIfc
 	gobject.InitiallyUnowned
 }
+
+func WrapRecentFilter(p unsafe.Pointer) (r RecentFilter) { r.P = p; return }
 
 // gtk_recent_filter_new
 // container is not nil, container is RecentFilter
@@ -39231,6 +39604,8 @@ type RecentManager struct {
 	gobject.Object
 }
 
+func WrapRecentManager(p unsafe.Pointer) (r RecentManager) { r.P = p; return }
+
 // gtk_recent_manager_new
 // container is not nil, container is RecentManager
 // is constructor
@@ -39468,6 +39843,8 @@ type RendererCellAccessible struct {
 	CellAccessible
 }
 
+func WrapRendererCellAccessible(p unsafe.Pointer) (r RendererCellAccessible) { r.P = p; return }
+
 // gtk_renderer_cell_accessible_new
 // container is not nil, container is RendererCellAccessible
 // is constructor
@@ -39577,6 +39954,8 @@ type Revealer struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapRevealer(p unsafe.Pointer) (r Revealer) { r.P = p; return }
 
 // gtk_revealer_new
 // container is not nil, container is Revealer
@@ -39725,6 +40104,8 @@ type Scale struct {
 	OrientableIfc
 	Range
 }
+
+func WrapScale(p unsafe.Pointer) (r Scale) { r.P = p; return }
 
 // gtk_scale_new
 // container is not nil, container is Scale
@@ -39969,6 +40350,8 @@ type ScaleAccessible struct {
 	RangeAccessible
 }
 
+func WrapScaleAccessible(p unsafe.Pointer) (r ScaleAccessible) { r.P = p; return }
+
 // ignore GType struct ScaleAccessibleClass
 // Struct ScaleAccessiblePrivate
 type ScaleAccessiblePrivate struct {
@@ -39984,6 +40367,8 @@ type ScaleButton struct {
 	OrientableIfc
 	Button
 }
+
+func WrapScaleButton(p unsafe.Pointer) (r ScaleButton) { r.P = p; return }
 
 // gtk_scale_button_new
 // container is not nil, container is ScaleButton
@@ -40144,6 +40529,8 @@ type ScaleButtonAccessible struct {
 	atk.ValueIfc
 	ButtonAccessible
 }
+
+func WrapScaleButtonAccessible(p unsafe.Pointer) (r ScaleButtonAccessible) { r.P = p; return }
 
 // ignore GType struct ScaleButtonAccessibleClass
 // Struct ScaleButtonAccessiblePrivate
@@ -40365,6 +40752,8 @@ type Scrollbar struct {
 	Range
 }
 
+func WrapScrollbar(p unsafe.Pointer) (r Scrollbar) { r.P = p; return }
+
 // gtk_scrollbar_new
 // container is not nil, container is Scrollbar
 // is constructor
@@ -40390,6 +40779,8 @@ type ScrolledWindow struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapScrolledWindow(p unsafe.Pointer) (r ScrolledWindow) { r.P = p; return }
 
 // gtk_scrolled_window_new
 // container is not nil, container is ScrolledWindow
@@ -40930,6 +41321,8 @@ type ScrolledWindowAccessible struct {
 	ContainerAccessible
 }
 
+func WrapScrolledWindowAccessible(p unsafe.Pointer) (r ScrolledWindowAccessible) { r.P = p; return }
+
 // ignore GType struct ScrolledWindowAccessibleClass
 // Struct ScrolledWindowAccessiblePrivate
 type ScrolledWindowAccessiblePrivate struct {
@@ -40948,6 +41341,8 @@ type SearchBar struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapSearchBar(p unsafe.Pointer) (r SearchBar) { r.P = p; return }
 
 // gtk_search_bar_new
 // container is not nil, container is SearchBar
@@ -41070,6 +41465,8 @@ type SearchEntry struct {
 	EditableIfc
 	Entry
 }
+
+func WrapSearchEntry(p unsafe.Pointer) (r SearchEntry) { r.P = p; return }
 
 // gtk_search_entry_new
 // container is not nil, container is SearchEntry
@@ -41506,6 +41903,8 @@ type Separator struct {
 	Widget
 }
 
+func WrapSeparator(p unsafe.Pointer) (r Separator) { r.P = p; return }
+
 // gtk_separator_new
 // container is not nil, container is Separator
 // is constructor
@@ -41532,6 +41931,8 @@ type SeparatorMenuItem struct {
 	BuildableIfc
 	MenuItem
 }
+
+func WrapSeparatorMenuItem(p unsafe.Pointer) (r SeparatorMenuItem) { r.P = p; return }
 
 // gtk_separator_menu_item_new
 // container is not nil, container is SeparatorMenuItem
@@ -41561,6 +41962,8 @@ type SeparatorToolItem struct {
 	BuildableIfc
 	ToolItem
 }
+
+func WrapSeparatorToolItem(p unsafe.Pointer) (r SeparatorToolItem) { r.P = p; return }
 
 // gtk_separator_tool_item_new
 // container is not nil, container is SeparatorToolItem
@@ -41620,6 +42023,8 @@ type Settings struct {
 	StyleProviderIfc
 	gobject.Object
 }
+
+func WrapSettings(p unsafe.Pointer) (r Settings) { r.P = p; return }
 
 // gtk_settings_get_default
 // container is not nil, container is Settings
@@ -41801,6 +42206,8 @@ type ShortcutLabel struct {
 	Box
 }
 
+func WrapShortcutLabel(p unsafe.Pointer) (r ShortcutLabel) { r.P = p; return }
+
 // gtk_shortcut_label_new
 // container is not nil, container is ShortcutLabel
 // is constructor
@@ -41910,6 +42317,8 @@ type ShortcutsGroup struct {
 	Box
 }
 
+func WrapShortcutsGroup(p unsafe.Pointer) (r ShortcutsGroup) { r.P = p; return }
+
 // ignore GType struct ShortcutsGroupClass
 // Object ShortcutsSection
 type ShortcutsSection struct {
@@ -41918,6 +42327,8 @@ type ShortcutsSection struct {
 	OrientableIfc
 	Box
 }
+
+func WrapShortcutsSection(p unsafe.Pointer) (r ShortcutsSection) { r.P = p; return }
 
 // ignore GType struct ShortcutsSectionClass
 // Object ShortcutsShortcut
@@ -41928,6 +42339,8 @@ type ShortcutsShortcut struct {
 	Box
 }
 
+func WrapShortcutsShortcut(p unsafe.Pointer) (r ShortcutsShortcut) { r.P = p; return }
+
 // ignore GType struct ShortcutsShortcutClass
 // Object ShortcutsWindow
 type ShortcutsWindow struct {
@@ -41936,12 +42349,16 @@ type ShortcutsWindow struct {
 	Window
 }
 
+func WrapShortcutsWindow(p unsafe.Pointer) (r ShortcutsWindow) { r.P = p; return }
+
 // ignore GType struct ShortcutsWindowClass
 // Object SizeGroup
 type SizeGroup struct {
 	BuildableIfc
 	gobject.Object
 }
+
+func WrapSizeGroup(p unsafe.Pointer) (r SizeGroup) { r.P = p; return }
 
 // gtk_size_group_new
 // container is not nil, container is SizeGroup
@@ -42100,6 +42517,8 @@ type Socket struct {
 	Container
 }
 
+func WrapSocket(p unsafe.Pointer) (r Socket) { r.P = p; return }
+
 // gtk_socket_new
 // container is not nil, container is Socket
 // is constructor
@@ -42185,6 +42604,8 @@ type SpinButton struct {
 	OrientableIfc
 	Entry
 }
+
+func WrapSpinButton(p unsafe.Pointer) (r SpinButton) { r.P = p; return }
 
 // gtk_spin_button_new
 // container is not nil, container is SpinButton
@@ -42594,6 +43015,8 @@ type SpinButtonAccessible struct {
 	EntryAccessible
 }
 
+func WrapSpinButtonAccessible(p unsafe.Pointer) (r SpinButtonAccessible) { r.P = p; return }
+
 // ignore GType struct SpinButtonAccessibleClass
 // Struct SpinButtonAccessiblePrivate
 type SpinButtonAccessiblePrivate struct {
@@ -42630,6 +43053,8 @@ type Spinner struct {
 	BuildableIfc
 	Widget
 }
+
+func WrapSpinner(p unsafe.Pointer) (r Spinner) { r.P = p; return }
 
 // gtk_spinner_new
 // container is not nil, container is Spinner
@@ -42681,6 +43106,8 @@ type SpinnerAccessible struct {
 	WidgetAccessible
 }
 
+func WrapSpinnerAccessible(p unsafe.Pointer) (r SpinnerAccessible) { r.P = p; return }
+
 // ignore GType struct SpinnerAccessibleClass
 // Struct SpinnerAccessiblePrivate
 type SpinnerAccessiblePrivate struct {
@@ -42699,6 +43126,8 @@ type Stack struct {
 	BuildableIfc
 	Container
 }
+
+func WrapStack(p unsafe.Pointer) (r Stack) { r.P = p; return }
 
 // gtk_stack_new
 // container is not nil, container is Stack
@@ -43073,6 +43502,8 @@ type StackAccessible struct {
 	ContainerAccessible
 }
 
+func WrapStackAccessible(p unsafe.Pointer) (r StackAccessible) { r.P = p; return }
+
 // ignore GType struct StackAccessibleClass
 // ignore GType struct StackClass
 // Object StackSidebar
@@ -43081,6 +43512,8 @@ type StackSidebar struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapStackSidebar(p unsafe.Pointer) (r StackSidebar) { r.P = p; return }
 
 // gtk_stack_sidebar_new
 // container is not nil, container is StackSidebar
@@ -43142,6 +43575,8 @@ type StackSwitcher struct {
 	OrientableIfc
 	Box
 }
+
+func WrapStackSwitcher(p unsafe.Pointer) (r StackSwitcher) { r.P = p; return }
 
 // gtk_stack_switcher_new
 // container is not nil, container is StackSwitcher
@@ -43251,6 +43686,8 @@ const (
 type StatusIcon struct {
 	gobject.Object
 }
+
+func WrapStatusIcon(p unsafe.Pointer) (r StatusIcon) { r.P = p; return }
 
 // gtk_status_icon_new
 // container is not nil, container is StatusIcon
@@ -43848,6 +44285,8 @@ type Statusbar struct {
 	Box
 }
 
+func WrapStatusbar(p unsafe.Pointer) (r Statusbar) { r.P = p; return }
+
 // gtk_statusbar_new
 // container is not nil, container is Statusbar
 // is constructor
@@ -43973,6 +44412,8 @@ type StatusbarAccessible struct {
 	ContainerAccessible
 }
 
+func WrapStatusbarAccessible(p unsafe.Pointer) (r StatusbarAccessible) { r.P = p; return }
+
 // ignore GType struct StatusbarAccessibleClass
 // Struct StatusbarAccessiblePrivate
 type StatusbarAccessiblePrivate struct {
@@ -44008,6 +44449,8 @@ func (v StockItem) Free() {
 type Style struct {
 	gobject.Object
 }
+
+func WrapStyle(p unsafe.Pointer) (r Style) { r.P = p; return }
 
 // gtk_style_new
 // container is not nil, container is Style
@@ -44204,6 +44647,8 @@ func (v Style) SetBackground(window gdk.Window, state_type int /*TODO_TYPE isPtr
 type StyleContext struct {
 	gobject.Object
 }
+
+func WrapStyleContext(p unsafe.Pointer) (r StyleContext) { r.P = p; return }
 
 // gtk_style_context_new
 // container is not nil, container is StyleContext
@@ -45131,6 +45576,8 @@ type StyleProperties struct {
 	gobject.Object
 }
 
+func WrapStyleProperties(p unsafe.Pointer) (r StyleProperties) { r.P = p; return }
+
 // gtk_style_properties_new
 // container is not nil, container is StyleProperties
 // is constructor
@@ -45357,6 +45804,8 @@ type Switch struct {
 	Widget
 }
 
+func WrapSwitch(p unsafe.Pointer) (r Switch) { r.P = p; return }
+
 // gtk_switch_new
 // container is not nil, container is Switch
 // is constructor
@@ -45442,6 +45891,8 @@ type SwitchAccessible struct {
 	atk.ComponentIfc
 	WidgetAccessible
 }
+
+func WrapSwitchAccessible(p unsafe.Pointer) (r SwitchAccessible) { r.P = p; return }
 
 // ignore GType struct SwitchAccessibleClass
 // Struct SwitchAccessiblePrivate
@@ -45646,6 +46097,8 @@ type Table struct {
 	BuildableIfc
 	Container
 }
+
+func WrapTable(p unsafe.Pointer) (r Table) { r.P = p; return }
 
 // gtk_table_new
 // container is not nil, container is Table
@@ -46190,6 +46643,8 @@ type TearoffMenuItem struct {
 	MenuItem
 }
 
+func WrapTearoffMenuItem(p unsafe.Pointer) (r TearoffMenuItem) { r.P = p; return }
+
 // gtk_tearoff_menu_item_new
 // container is not nil, container is TearoffMenuItem
 // is constructor
@@ -46308,6 +46763,8 @@ type TextBTree struct {
 type TextBuffer struct {
 	gobject.Object
 }
+
+func WrapTextBuffer(p unsafe.Pointer) (r TextBuffer) { r.P = p; return }
 
 // gtk_text_buffer_new
 // container is not nil, container is TextBuffer
@@ -47619,6 +48076,8 @@ type TextCellAccessible struct {
 	RendererCellAccessible
 }
 
+func WrapTextCellAccessible(p unsafe.Pointer) (r TextCellAccessible) { r.P = p; return }
+
 // ignore GType struct TextCellAccessibleClass
 // Struct TextCellAccessiblePrivate
 type TextCellAccessiblePrivate struct {
@@ -47629,6 +48088,8 @@ type TextCellAccessiblePrivate struct {
 type TextChildAnchor struct {
 	gobject.Object
 }
+
+func WrapTextChildAnchor(p unsafe.Pointer) (r TextChildAnchor) { r.P = p; return }
 
 // gtk_text_child_anchor_new
 // container is not nil, container is TextChildAnchor
@@ -49310,6 +49771,8 @@ type TextMark struct {
 	gobject.Object
 }
 
+func WrapTextMark(p unsafe.Pointer) (r TextMark) { r.P = p; return }
+
 // gtk_text_mark_new
 // container is not nil, container is TextMark
 // is constructor
@@ -49444,6 +49907,8 @@ type TextTag struct {
 	gobject.Object
 }
 
+func WrapTextTag(p unsafe.Pointer) (r TextTag) { r.P = p; return }
+
 // gtk_text_tag_new
 // container is not nil, container is TextTag
 // is constructor
@@ -49541,6 +50006,8 @@ type TextTagTable struct {
 	BuildableIfc
 	gobject.Object
 }
+
+func WrapTextTagTable(p unsafe.Pointer) (r TextTagTable) { r.P = p; return }
 
 // gtk_text_tag_table_new
 // container is not nil, container is TextTagTable
@@ -49656,6 +50123,8 @@ type TextView struct {
 	ScrollableIfc
 	Container
 }
+
+func WrapTextView(p unsafe.Pointer) (r TextView) { r.P = p; return }
 
 // gtk_text_view_new
 // container is not nil, container is TextView
@@ -50916,6 +51385,8 @@ type TextViewAccessible struct {
 	ContainerAccessible
 }
 
+func WrapTextViewAccessible(p unsafe.Pointer) (r TextViewAccessible) { r.P = p; return }
+
 // ignore GType struct TextViewAccessibleClass
 // Struct TextViewAccessiblePrivate
 type TextViewAccessiblePrivate struct {
@@ -50957,6 +51428,8 @@ type ThemeEngine struct {
 type ThemingEngine struct {
 	gobject.Object
 }
+
+func WrapThemingEngine(p unsafe.Pointer) (r ThemingEngine) { r.P = p; return }
 
 // gtk_theming_engine_load
 // container is not nil, container is ThemingEngine
@@ -51337,6 +51810,8 @@ type ToggleAction struct {
 	Action
 }
 
+func WrapToggleAction(p unsafe.Pointer) (r ToggleAction) { r.P = p; return }
+
 // gtk_toggle_action_new
 // container is not nil, container is ToggleAction
 // is constructor
@@ -51462,6 +51937,8 @@ type ToggleButton struct {
 	BuildableIfc
 	Button
 }
+
+func WrapToggleButton(p unsafe.Pointer) (r ToggleButton) { r.P = p; return }
 
 // gtk_toggle_button_new
 // container is not nil, container is ToggleButton
@@ -51634,6 +52111,8 @@ type ToggleButtonAccessible struct {
 	ButtonAccessible
 }
 
+func WrapToggleButtonAccessible(p unsafe.Pointer) (r ToggleButtonAccessible) { r.P = p; return }
+
 // ignore GType struct ToggleButtonAccessibleClass
 // Struct ToggleButtonAccessiblePrivate
 type ToggleButtonAccessiblePrivate struct {
@@ -51654,6 +52133,8 @@ type ToggleToolButton struct {
 	BuildableIfc
 	ToolButton
 }
+
+func WrapToggleToolButton(p unsafe.Pointer) (r ToggleToolButton) { r.P = p; return }
 
 // gtk_toggle_tool_button_new
 // container is not nil, container is ToggleToolButton
@@ -51735,6 +52216,8 @@ type ToolButton struct {
 	BuildableIfc
 	ToolItem
 }
+
+func WrapToolButton(p unsafe.Pointer) (r ToolButton) { r.P = p; return }
 
 // gtk_tool_button_new
 // container is not nil, container is ToolButton
@@ -51986,6 +52469,8 @@ type ToolItem struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapToolItem(p unsafe.Pointer) (r ToolItem) { r.P = p; return }
 
 // gtk_tool_item_new
 // container is not nil, container is ToolItem
@@ -52456,6 +52941,8 @@ type ToolItemGroup struct {
 	Container
 }
 
+func WrapToolItemGroup(p unsafe.Pointer) (r ToolItemGroup) { r.P = p; return }
+
 // gtk_tool_item_group_new
 // container is not nil, container is ToolItemGroup
 // is constructor
@@ -52760,6 +53247,8 @@ type ToolPalette struct {
 	ScrollableIfc
 	Container
 }
+
+func WrapToolPalette(p unsafe.Pointer) (r ToolPalette) { r.P = p; return }
 
 // gtk_tool_palette_new
 // container is not nil, container is ToolPalette
@@ -53279,6 +53768,8 @@ type Toolbar struct {
 	Container
 }
 
+func WrapToolbar(p unsafe.Pointer) (r Toolbar) { r.P = p; return }
+
 // gtk_toolbar_new
 // container is not nil, container is Toolbar
 // is constructor
@@ -53565,6 +54056,8 @@ type Tooltip struct {
 	gobject.Object
 }
 
+func WrapTooltip(p unsafe.Pointer) (r Tooltip) { r.P = p; return }
+
 // gtk_tooltip_trigger_tooltip_query
 // container is not nil, container is Tooltip
 // is method
@@ -53715,6 +54208,8 @@ func (v Tooltip) SetTipArea(rect gdk.Rectangle) {
 type ToplevelAccessible struct {
 	atk.Object
 }
+
+func WrapToplevelAccessible(p unsafe.Pointer) (r ToplevelAccessible) { r.P = p; return }
 
 // gtk_toplevel_accessible_get_children
 // container is not nil, container is ToplevelAccessible
@@ -54368,6 +54863,8 @@ type TreeModelFilter struct {
 	gobject.Object
 }
 
+func WrapTreeModelFilter(p unsafe.Pointer) (r TreeModelFilter) { r.P = p; return }
+
 // gtk_tree_model_filter_clear_cache
 // container is not nil, container is TreeModelFilter
 // is method
@@ -54560,6 +55057,8 @@ type TreeModelSort struct {
 	TreeSortableIfc
 	gobject.Object
 }
+
+func WrapTreeModelSort(p unsafe.Pointer) (r TreeModelSort) { r.P = p; return }
 
 // gtk_tree_model_sort_clear_cache
 // container is not nil, container is TreeModelSort
@@ -55170,6 +55669,8 @@ type TreeSelection struct {
 	gobject.Object
 }
 
+func WrapTreeSelection(p unsafe.Pointer) (r TreeSelection) { r.P = p; return }
+
 // gtk_tree_selection_count_selected_rows
 // container is not nil, container is TreeSelection
 // is method
@@ -55595,6 +56096,8 @@ type TreeStore struct {
 	gobject.Object
 }
 
+func WrapTreeStore(p unsafe.Pointer) (r TreeStore) { r.P = p; return }
+
 // gtk_tree_store_newv
 // container is not nil, container is TreeStore
 // is constructor
@@ -55933,6 +56436,8 @@ type TreeView struct {
 	ScrollableIfc
 	Container
 }
+
+func WrapTreeView(p unsafe.Pointer) (r TreeView) { r.P = p; return }
 
 // gtk_tree_view_new
 // container is not nil, container is TreeView
@@ -57633,6 +58138,8 @@ type TreeViewAccessible struct {
 	ContainerAccessible
 }
 
+func WrapTreeViewAccessible(p unsafe.Pointer) (r TreeViewAccessible) { r.P = p; return }
+
 // ignore GType struct TreeViewAccessibleClass
 // Struct TreeViewAccessiblePrivate
 type TreeViewAccessiblePrivate struct {
@@ -57646,6 +58153,8 @@ type TreeViewColumn struct {
 	CellLayoutIfc
 	gobject.InitiallyUnowned
 }
+
+func WrapTreeViewColumn(p unsafe.Pointer) (r TreeViewColumn) { r.P = p; return }
 
 // gtk_tree_view_column_new
 // container is not nil, container is TreeViewColumn
@@ -58527,6 +59036,8 @@ type UIManager struct {
 	gobject.Object
 }
 
+func WrapUIManager(p unsafe.Pointer) (r UIManager) { r.P = p; return }
+
 // gtk_ui_manager_new
 // container is not nil, container is UIManager
 // is constructor
@@ -58891,6 +59402,8 @@ type VBox struct {
 	Box
 }
 
+func WrapVBox(p unsafe.Pointer) (r VBox) { r.P = p; return }
+
 // gtk_vbox_new
 // container is not nil, container is VBox
 // is constructor
@@ -58918,6 +59431,8 @@ type VButtonBox struct {
 	ButtonBox
 }
 
+func WrapVButtonBox(p unsafe.Pointer) (r VButtonBox) { r.P = p; return }
+
 // gtk_vbutton_box_new
 // container is not nil, container is VButtonBox
 // is constructor
@@ -58942,6 +59457,8 @@ type VPaned struct {
 	Paned
 }
 
+func WrapVPaned(p unsafe.Pointer) (r VPaned) { r.P = p; return }
+
 // gtk_vpaned_new
 // container is not nil, container is VPaned
 // is constructor
@@ -58965,6 +59482,8 @@ type VScale struct {
 	OrientableIfc
 	Scale
 }
+
+func WrapVScale(p unsafe.Pointer) (r VScale) { r.P = p; return }
 
 // gtk_vscale_new
 // container is not nil, container is VScale
@@ -59011,6 +59530,8 @@ type VScrollbar struct {
 	Scrollbar
 }
 
+func WrapVScrollbar(p unsafe.Pointer) (r VScrollbar) { r.P = p; return }
+
 // gtk_vscrollbar_new
 // container is not nil, container is VScrollbar
 // is constructor
@@ -59037,6 +59558,8 @@ type VSeparator struct {
 	Separator
 }
 
+func WrapVSeparator(p unsafe.Pointer) (r VSeparator) { r.P = p; return }
+
 // gtk_vseparator_new
 // container is not nil, container is VSeparator
 // is constructor
@@ -59060,6 +59583,8 @@ type Viewport struct {
 	ScrollableIfc
 	Bin
 }
+
+func WrapViewport(p unsafe.Pointer) (r Viewport) { r.P = p; return }
 
 // gtk_viewport_new
 // container is not nil, container is Viewport
@@ -59225,6 +59750,8 @@ type VolumeButton struct {
 	ScaleButton
 }
 
+func WrapVolumeButton(p unsafe.Pointer) (r VolumeButton) { r.P = p; return }
+
 // gtk_volume_button_new
 // container is not nil, container is VolumeButton
 // is constructor
@@ -59247,6 +59774,8 @@ type Widget struct {
 	BuildableIfc
 	gobject.InitiallyUnowned
 }
+
+func WrapWidget(p unsafe.Pointer) (r Widget) { r.P = p; return }
 
 // gtk_widget_get_default_direction
 // container is not nil, container is Widget
@@ -63593,6 +64122,8 @@ type WidgetAccessible struct {
 	Accessible
 }
 
+func WrapWidgetAccessible(p unsafe.Pointer) (r WidgetAccessible) { r.P = p; return }
+
 // ignore GType struct WidgetAccessibleClass
 // Struct WidgetAccessiblePrivate
 type WidgetAccessiblePrivate struct {
@@ -64302,6 +64833,8 @@ type Window struct {
 	BuildableIfc
 	Bin
 }
+
+func WrapWindow(p unsafe.Pointer) (r Window) { r.P = p; return }
 
 // gtk_window_new
 // container is not nil, container is Window
@@ -66209,6 +66742,8 @@ type WindowAccessible struct {
 	ContainerAccessible
 }
 
+func WrapWindowAccessible(p unsafe.Pointer) (r WindowAccessible) { r.P = p; return }
+
 // ignore GType struct WindowAccessibleClass
 // Struct WindowAccessiblePrivate
 type WindowAccessiblePrivate struct {
@@ -66225,6 +66760,8 @@ type WindowGeometryInfo struct {
 type WindowGroup struct {
 	gobject.Object
 }
+
+func WrapWindowGroup(p unsafe.Pointer) (r WindowGroup) { r.P = p; return }
 
 // gtk_window_group_new
 // container is not nil, container is WindowGroup

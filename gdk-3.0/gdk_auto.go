@@ -40,6 +40,8 @@ type AppLaunchContext struct {
 	gio.AppLaunchContext
 }
 
+func WrapAppLaunchContext(p unsafe.Pointer) (r AppLaunchContext) { r.P = p; return }
+
 // gdk_app_launch_context_new
 // container is not nil, container is AppLaunchContext
 // is constructor
@@ -377,6 +379,8 @@ type Cursor struct {
 	gobject.Object
 }
 
+func WrapCursor(p unsafe.Pointer) (r Cursor) { r.P = p; return }
+
 // gdk_cursor_new
 // container is not nil, container is Cursor
 // is constructor
@@ -665,6 +669,8 @@ const (
 type Device struct {
 	gobject.Object
 }
+
+func WrapDevice(p unsafe.Pointer) (r Device) { r.P = p; return }
 
 // gdk_device_grab_info_libgtk_only
 // container is not nil, container is Device
@@ -1202,6 +1208,8 @@ type DeviceManager struct {
 	gobject.Object
 }
 
+func WrapDeviceManager(p unsafe.Pointer) (r DeviceManager) { r.P = p; return }
+
 // gdk_device_manager_get_client_pointer
 // container is not nil, container is DeviceManager
 // is method
@@ -1347,6 +1355,8 @@ type DeviceTool struct {
 	gobject.Object
 }
 
+func WrapDeviceTool(p unsafe.Pointer) (r DeviceTool) { r.P = p; return }
+
 // gdk_device_tool_get_hardware_id
 // container is not nil, container is DeviceTool
 // is method
@@ -1423,6 +1433,8 @@ const (
 type Display struct {
 	gobject.Object
 }
+
+func WrapDisplay(p unsafe.Pointer) (r Display) { r.P = p; return }
 
 // gdk_display_get_default
 // container is not nil, container is Display
@@ -2221,6 +2233,8 @@ type DisplayManager struct {
 	gobject.Object
 }
 
+func WrapDisplayManager(p unsafe.Pointer) (r DisplayManager) { r.P = p; return }
+
 // gdk_display_manager_get
 // container is not nil, container is DisplayManager
 // num arg is 0
@@ -2316,6 +2330,8 @@ const (
 type DragContext struct {
 	gobject.Object
 }
+
+func WrapDragContext(p unsafe.Pointer) (r DragContext) { r.P = p; return }
 
 // gdk_drag_context_get_actions
 // container is not nil, container is DragContext
@@ -2537,6 +2553,8 @@ const (
 type DrawingContext struct {
 	gobject.Object
 }
+
+func WrapDrawingContext(p unsafe.Pointer) (r DrawingContext) { r.P = p; return }
 
 // gdk_drawing_context_get_cairo_context
 // container is not nil, container is DrawingContext
@@ -3487,6 +3505,8 @@ type FrameClock struct {
 	gobject.Object
 }
 
+func WrapFrameClock(p unsafe.Pointer) (r FrameClock) { r.P = p; return }
+
 // gdk_frame_clock_begin_updating
 // container is not nil, container is FrameClock
 // is method
@@ -3805,6 +3825,8 @@ const (
 type GLContext struct {
 	gobject.Object
 }
+
+func WrapGLContext(p unsafe.Pointer) (r GLContext) { r.P = p; return }
 
 // gdk_gl_context_clear_current
 // container is not nil, container is GLContext
@@ -4138,6 +4160,8 @@ type Keymap struct {
 	gobject.Object
 }
 
+func WrapKeymap(p unsafe.Pointer) (r Keymap) { r.P = p; return }
+
 // gdk_keymap_get_default
 // container is not nil, container is Keymap
 // num arg is 0
@@ -4464,6 +4488,8 @@ const (
 type Monitor struct {
 	gobject.Object
 }
+
+func WrapMonitor(p unsafe.Pointer) (r Monitor) { r.P = p; return }
 
 // gdk_monitor_get_display
 // container is not nil, container is Monitor
@@ -4868,6 +4894,8 @@ func (v Rectangle) Union(src2 Rectangle) (dest int /*TODO_TYPE*/) {
 type Screen struct {
 	gobject.Object
 }
+
+func WrapScreen(p unsafe.Pointer) (r Screen) { r.P = p; return }
 
 // gdk_screen_get_default
 // container is not nil, container is Screen
@@ -5420,6 +5448,8 @@ type Seat struct {
 	gobject.Object
 }
 
+func WrapSeat(p unsafe.Pointer) (r Seat) { r.P = p; return }
+
 // gdk_seat_get_capabilities
 // container is not nil, container is Seat
 // is method
@@ -5610,6 +5640,8 @@ const (
 type Visual struct {
 	gobject.Object
 }
+
+func WrapVisual(p unsafe.Pointer) (r Visual) { r.P = p; return }
 
 // gdk_visual_get_best
 // container is not nil, container is Visual
@@ -5884,6 +5916,8 @@ const (
 type Window struct {
 	gobject.Object
 }
+
+func WrapWindow(p unsafe.Pointer) (r Window) { r.P = p; return }
 
 // gdk_window_new
 // container is not nil, container is Window

@@ -40,6 +40,8 @@ type Pixbuf struct {
 	gobject.Object
 }
 
+func WrapPixbuf(p unsafe.Pointer) (r Pixbuf) { r.P = p; return }
+
 // gdk_pixbuf_new
 // container is not nil, container is Pixbuf
 // is constructor
@@ -1193,6 +1195,8 @@ type PixbufAnimation struct {
 	gobject.Object
 }
 
+func WrapPixbufAnimation(p unsafe.Pointer) (r PixbufAnimation) { r.P = p; return }
+
 // gdk_pixbuf_animation_new_from_file
 // container is not nil, container is PixbufAnimation
 // is constructor
@@ -1382,6 +1386,8 @@ func (v PixbufAnimation) IsStaticImage() (result bool) {
 type PixbufAnimationIter struct {
 	gobject.Object
 }
+
+func WrapPixbufAnimationIter(p unsafe.Pointer) (r PixbufAnimationIter) { r.P = p; return }
 
 // gdk_pixbuf_animation_iter_advance
 // container is not nil, container is PixbufAnimationIter
@@ -1676,6 +1682,8 @@ type PixbufLoader struct {
 	gobject.Object
 }
 
+func WrapPixbufLoader(p unsafe.Pointer) (r PixbufLoader) { r.P = p; return }
+
 // gdk_pixbuf_loader_new
 // container is not nil, container is PixbufLoader
 // is constructor
@@ -1875,6 +1883,8 @@ type PixbufSimpleAnim struct {
 	PixbufAnimation
 }
 
+func WrapPixbufSimpleAnim(p unsafe.Pointer) (r PixbufSimpleAnim) { r.P = p; return }
+
 // gdk_pixbuf_simple_anim_new
 // container is not nil, container is PixbufSimpleAnim
 // is constructor
@@ -1946,6 +1956,8 @@ func (v PixbufSimpleAnim) SetLoop(loop bool) {
 type PixbufSimpleAnimIter struct {
 	PixbufAnimationIter
 }
+
+func WrapPixbufSimpleAnimIter(p unsafe.Pointer) (r PixbufSimpleAnimIter) { r.P = p; return }
 
 // gdk_pixbuf_error_quark
 // container is nil
