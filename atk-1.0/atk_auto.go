@@ -183,7 +183,7 @@ type ComponentIfc struct{}
 // atk_component_contains
 // container is not nil, container is Component
 // is method
-func (v *ComponentIfc) Contains(x int32, y int32, coord_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v *ComponentIfc) Contains(x int32, y int32, coord_type CoordTypeEnum) (result bool) {
 	iv, err := _I.Get(8, "Component", "contains")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -192,7 +192,7 @@ func (v *ComponentIfc) Contains(x int32, y int32, coord_type int /*TODO_TYPE isP
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
-	arg_coord_type := gi.NewIntArgument(coord_type) /*TODO*/
+	arg_coord_type := gi.NewIntArgument(int(coord_type))
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_coord_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -220,7 +220,7 @@ func (v *ComponentIfc) GetAlpha() (result float64) {
 // atk_component_get_extents
 // container is not nil, container is Component
 // is method
-func (v *ComponentIfc) GetExtents(coord_type int /*TODO_TYPE isPtr: false, tag: interface*/) (x int32, y int32, width int32, height int32) {
+func (v *ComponentIfc) GetExtents(coord_type CoordTypeEnum) (x int32, y int32, width int32, height int32) {
 	iv, err := _I.Get(10, "Component", "get_extents")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -232,7 +232,7 @@ func (v *ComponentIfc) GetExtents(coord_type int /*TODO_TYPE isPtr: false, tag: 
 	arg_y := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
 	arg_height := gi.NewPointerArgument(unsafe.Pointer(&outArgs[3]))
-	arg_coord_type := gi.NewIntArgument(coord_type) /*TODO*/
+	arg_coord_type := gi.NewIntArgument(int(coord_type))
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_width, arg_height, arg_coord_type}
 	iv.Call(args, nil, &outArgs[0])
 	x = outArgs[0].Int32()
@@ -245,7 +245,7 @@ func (v *ComponentIfc) GetExtents(coord_type int /*TODO_TYPE isPtr: false, tag: 
 // atk_component_get_layer
 // container is not nil, container is Component
 // is method
-func (v *ComponentIfc) GetLayer() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *ComponentIfc) GetLayer() (result LayerEnum) {
 	iv, err := _I.Get(11, "Component", "get_layer")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -255,7 +255,7 @@ func (v *ComponentIfc) GetLayer() (result int /*TODO_TYPE isPtr: false, tag: int
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = LayerEnum(ret.Int())
 	return
 }
 
@@ -279,7 +279,7 @@ func (v *ComponentIfc) GetMdiZorder() (result int32) {
 // atk_component_get_position
 // container is not nil, container is Component
 // is method
-func (v *ComponentIfc) GetPosition(coord_type int /*TODO_TYPE isPtr: false, tag: interface*/) (x int32, y int32) {
+func (v *ComponentIfc) GetPosition(coord_type CoordTypeEnum) (x int32, y int32) {
 	iv, err := _I.Get(13, "Component", "get_position")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -289,7 +289,7 @@ func (v *ComponentIfc) GetPosition(coord_type int /*TODO_TYPE isPtr: false, tag:
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_x := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_y := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
-	arg_coord_type := gi.NewIntArgument(coord_type) /*TODO*/
+	arg_coord_type := gi.NewIntArgument(int(coord_type))
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_coord_type}
 	iv.Call(args, nil, &outArgs[0])
 	x = outArgs[0].Int32()
@@ -337,7 +337,7 @@ func (v *ComponentIfc) GrabFocus() (result bool) {
 // atk_component_ref_accessible_at_point
 // container is not nil, container is Component
 // is method
-func (v *ComponentIfc) RefAccessibleAtPoint(x int32, y int32, coord_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result Object) {
+func (v *ComponentIfc) RefAccessibleAtPoint(x int32, y int32, coord_type CoordTypeEnum) (result Object) {
 	iv, err := _I.Get(16, "Component", "ref_accessible_at_point")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -346,7 +346,7 @@ func (v *ComponentIfc) RefAccessibleAtPoint(x int32, y int32, coord_type int /*T
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
-	arg_coord_type := gi.NewIntArgument(coord_type) /*TODO*/
+	arg_coord_type := gi.NewIntArgument(int(coord_type))
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_coord_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -372,14 +372,14 @@ func (v *ComponentIfc) RemoveFocusHandler(handler_id uint32) {
 // atk_component_scroll_to
 // container is not nil, container is Component
 // is method
-func (v *ComponentIfc) ScrollTo(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v *ComponentIfc) ScrollTo(type1 ScrollTypeEnum) (result bool) {
 	iv, err := _I.Get(18, "Component", "scroll_to")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_v, arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -390,14 +390,14 @@ func (v *ComponentIfc) ScrollTo(type1 int /*TODO_TYPE isPtr: false, tag: interfa
 // atk_component_scroll_to_point
 // container is not nil, container is Component
 // is method
-func (v *ComponentIfc) ScrollToPoint(coords int /*TODO_TYPE isPtr: false, tag: interface*/, x int32, y int32) (result bool) {
+func (v *ComponentIfc) ScrollToPoint(coords CoordTypeEnum, x int32, y int32) (result bool) {
 	iv, err := _I.Get(19, "Component", "scroll_to_point")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_coords := gi.NewIntArgument(coords) /*TODO*/
+	arg_coords := gi.NewIntArgument(int(coords))
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_v, arg_coords, arg_x, arg_y}
@@ -410,7 +410,7 @@ func (v *ComponentIfc) ScrollToPoint(coords int /*TODO_TYPE isPtr: false, tag: i
 // atk_component_set_extents
 // container is not nil, container is Component
 // is method
-func (v *ComponentIfc) SetExtents(x int32, y int32, width int32, height int32, coord_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v *ComponentIfc) SetExtents(x int32, y int32, width int32, height int32, coord_type CoordTypeEnum) (result bool) {
 	iv, err := _I.Get(20, "Component", "set_extents")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -421,7 +421,7 @@ func (v *ComponentIfc) SetExtents(x int32, y int32, width int32, height int32, c
 	arg_y := gi.NewInt32Argument(y)
 	arg_width := gi.NewInt32Argument(width)
 	arg_height := gi.NewInt32Argument(height)
-	arg_coord_type := gi.NewIntArgument(coord_type) /*TODO*/
+	arg_coord_type := gi.NewIntArgument(int(coord_type))
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_width, arg_height, arg_coord_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -432,7 +432,7 @@ func (v *ComponentIfc) SetExtents(x int32, y int32, width int32, height int32, c
 // atk_component_set_position
 // container is not nil, container is Component
 // is method
-func (v *ComponentIfc) SetPosition(x int32, y int32, coord_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v *ComponentIfc) SetPosition(x int32, y int32, coord_type CoordTypeEnum) (result bool) {
 	iv, err := _I.Get(21, "Component", "set_position")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -441,7 +441,7 @@ func (v *ComponentIfc) SetPosition(x int32, y int32, coord_type int /*TODO_TYPE 
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
-	arg_coord_type := gi.NewIntArgument(coord_type) /*TODO*/
+	arg_coord_type := gi.NewIntArgument(int(coord_type))
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_coord_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -469,6 +469,7 @@ func (v *ComponentIfc) SetSize(width int32, height int32) (result bool) {
 }
 
 // ignore GType struct ComponentIface
+// Enum CoordType
 type CoordTypeEnum int
 
 const (
@@ -761,17 +762,21 @@ type GObjectAccessible struct {
 
 func WrapGObjectAccessible(p unsafe.Pointer) (r GObjectAccessible) { r.P = p; return }
 
+type IGObjectAccessible interface{ P_GObjectAccessible() unsafe.Pointer }
+
+func (v GObjectAccessible) P_GObjectAccessible() unsafe.Pointer { return v.P }
+
 // atk_gobject_accessible_for_object
 // container is not nil, container is GObjectAccessible
 // is method
 // arg0Type tag: interface, isPtr: true
-func GObjectAccessibleForObject1(obj gobject.Object) (result Object) {
+func GObjectAccessibleForObject1(obj gobject.IObject) (result Object) {
 	iv, err := _I.Get(38, "GObjectAccessible", "for_object")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_obj := gi.NewPointerArgument(obj.P)
+	arg_obj := gi.NewPointerArgument(obj.P_Object())
 	args := []gi.Argument{arg_obj}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -804,6 +809,10 @@ type Hyperlink struct {
 }
 
 func WrapHyperlink(p unsafe.Pointer) (r Hyperlink) { r.P = p; return }
+
+type IHyperlink interface{ P_Hyperlink() unsafe.Pointer }
+
+func (v Hyperlink) P_Hyperlink() unsafe.Pointer { return v.P }
 
 // atk_hyperlink_get_end_index
 // container is not nil, container is Hyperlink
@@ -969,6 +978,7 @@ func (v *HyperlinkImplIfc) GetHyperlink() (result Hyperlink) {
 }
 
 // ignore GType struct HyperlinkImplIface
+// Flags HyperlinkStateFlags
 type HyperlinkStateFlags int
 
 const (
@@ -1080,7 +1090,7 @@ func (v *ImageIfc) GetImageLocale() (result string) {
 // atk_image_get_image_position
 // container is not nil, container is Image
 // is method
-func (v *ImageIfc) GetImagePosition(coord_type int /*TODO_TYPE isPtr: false, tag: interface*/) (x int32, y int32) {
+func (v *ImageIfc) GetImagePosition(coord_type CoordTypeEnum) (x int32, y int32) {
 	iv, err := _I.Get(54, "Image", "get_image_position")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1090,7 +1100,7 @@ func (v *ImageIfc) GetImagePosition(coord_type int /*TODO_TYPE isPtr: false, tag
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_x := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_y := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
-	arg_coord_type := gi.NewIntArgument(coord_type) /*TODO*/
+	arg_coord_type := gi.NewIntArgument(int(coord_type))
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_coord_type}
 	iv.Call(args, nil, &outArgs[0])
 	x = outArgs[0].Int32()
@@ -1172,6 +1182,8 @@ type ImplementorIfaceIfc struct{}
 type KeyEventStruct struct {
 	P unsafe.Pointer
 }
+
+// Enum KeyEventType
 type KeyEventTypeEnum int
 
 const (
@@ -1180,6 +1192,7 @@ const (
 	KeyEventTypeLastDefined                  = 2
 )
 
+// Enum Layer
 type LayerEnum int
 
 const (
@@ -1199,6 +1212,10 @@ type Misc struct {
 }
 
 func WrapMisc(p unsafe.Pointer) (r Misc) { r.P = p; return }
+
+type IMisc interface{ P_Misc() unsafe.Pointer }
+
+func (v Misc) P_Misc() unsafe.Pointer { return v.P }
 
 // atk_misc_get_instance
 // container is not nil, container is Misc
@@ -1251,16 +1268,20 @@ type NoOpObject struct {
 
 func WrapNoOpObject(p unsafe.Pointer) (r NoOpObject) { r.P = p; return }
 
+type INoOpObject interface{ P_NoOpObject() unsafe.Pointer }
+
+func (v NoOpObject) P_NoOpObject() unsafe.Pointer { return v.P }
+
 // atk_no_op_object_new
 // container is not nil, container is NoOpObject
 // is constructor
-func NewNoOpObject(obj gobject.Object) (result Object) {
+func NewNoOpObject(obj gobject.IObject) (result Object) {
 	iv, err := _I.Get(61, "NoOpObject", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_obj := gi.NewPointerArgument(obj.P)
+	arg_obj := gi.NewPointerArgument(obj.P_Object())
 	args := []gi.Argument{arg_obj}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1275,6 +1296,10 @@ type NoOpObjectFactory struct {
 }
 
 func WrapNoOpObjectFactory(p unsafe.Pointer) (r NoOpObjectFactory) { r.P = p; return }
+
+type INoOpObjectFactory interface{ P_NoOpObjectFactory() unsafe.Pointer }
+
+func (v NoOpObjectFactory) P_NoOpObjectFactory() unsafe.Pointer { return v.P }
 
 // atk_no_op_object_factory_new
 // container is not nil, container is NoOpObjectFactory
@@ -1299,18 +1324,22 @@ type Object struct {
 
 func WrapObject(p unsafe.Pointer) (r Object) { r.P = p; return }
 
+type IObject interface{ P_Object() unsafe.Pointer }
+
+func (v Object) P_Object() unsafe.Pointer { return v.P }
+
 // atk_object_add_relationship
 // container is not nil, container is Object
 // is method
-func (v Object) AddRelationship(relationship int /*TODO_TYPE isPtr: false, tag: interface*/, target Object) (result bool) {
+func (v Object) AddRelationship(relationship RelationTypeEnum, target IObject) (result bool) {
 	iv, err := _I.Get(63, "Object", "add_relationship")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relationship := gi.NewIntArgument(relationship) /*TODO*/
-	arg_target := gi.NewPointerArgument(target.P)
+	arg_relationship := gi.NewIntArgument(int(relationship))
+	arg_target := gi.NewPointerArgument(target.P_Object())
 	args := []gi.Argument{arg_v, arg_relationship, arg_target}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1372,7 +1401,7 @@ func (v Object) GetIndexInParent() (result int32) {
 // atk_object_get_layer
 // container is not nil, container is Object
 // is method
-func (v Object) GetLayer() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Object) GetLayer() (result LayerEnum) {
 	iv, err := _I.Get(67, "Object", "get_layer")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1382,7 +1411,7 @@ func (v Object) GetLayer() (result int /*TODO_TYPE isPtr: false, tag: interface*
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = LayerEnum(ret.Int())
 	return
 }
 
@@ -1474,7 +1503,7 @@ func (v Object) GetParent() (result Object) {
 // atk_object_get_role
 // container is not nil, container is Object
 // is method
-func (v Object) GetRole() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Object) GetRole() (result RoleEnum) {
 	iv, err := _I.Get(73, "Object", "get_role")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1484,7 +1513,7 @@ func (v Object) GetRole() (result int /*TODO_TYPE isPtr: false, tag: interface*/
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = RoleEnum(ret.Int())
 	return
 }
 
@@ -1606,15 +1635,15 @@ func (v Object) RemovePropertyChangeHandler(handler_id uint32) {
 // atk_object_remove_relationship
 // container is not nil, container is Object
 // is method
-func (v Object) RemoveRelationship(relationship int /*TODO_TYPE isPtr: false, tag: interface*/, target Object) (result bool) {
+func (v Object) RemoveRelationship(relationship RelationTypeEnum, target IObject) (result bool) {
 	iv, err := _I.Get(81, "Object", "remove_relationship")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relationship := gi.NewIntArgument(relationship) /*TODO*/
-	arg_target := gi.NewPointerArgument(target.P)
+	arg_relationship := gi.NewIntArgument(int(relationship))
+	arg_target := gi.NewPointerArgument(target.P_Object())
 	args := []gi.Argument{arg_v, arg_relationship, arg_target}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1659,14 +1688,14 @@ func (v Object) SetName(name string) {
 // atk_object_set_parent
 // container is not nil, container is Object
 // is method
-func (v Object) SetParent(parent Object) {
+func (v Object) SetParent(parent IObject) {
 	iv, err := _I.Get(84, "Object", "set_parent")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent := gi.NewPointerArgument(parent.P)
+	arg_parent := gi.NewPointerArgument(parent.P_Object())
 	args := []gi.Argument{arg_v, arg_parent}
 	iv.Call(args, nil, nil)
 }
@@ -1674,14 +1703,14 @@ func (v Object) SetParent(parent Object) {
 // atk_object_set_role
 // container is not nil, container is Object
 // is method
-func (v Object) SetRole(role int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Object) SetRole(role RoleEnum) {
 	iv, err := _I.Get(85, "Object", "set_role")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_role := gi.NewIntArgument(role) /*TODO*/
+	arg_role := gi.NewIntArgument(int(role))
 	args := []gi.Argument{arg_v, arg_role}
 	iv.Call(args, nil, nil)
 }
@@ -1694,17 +1723,21 @@ type ObjectFactory struct {
 
 func WrapObjectFactory(p unsafe.Pointer) (r ObjectFactory) { r.P = p; return }
 
+type IObjectFactory interface{ P_ObjectFactory() unsafe.Pointer }
+
+func (v ObjectFactory) P_ObjectFactory() unsafe.Pointer { return v.P }
+
 // atk_object_factory_create_accessible
 // container is not nil, container is ObjectFactory
 // is method
-func (v ObjectFactory) CreateAccessible(obj gobject.Object) (result Object) {
+func (v ObjectFactory) CreateAccessible(obj gobject.IObject) (result Object) {
 	iv, err := _I.Get(86, "ObjectFactory", "create_accessible")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_obj := gi.NewPointerArgument(obj.P)
+	arg_obj := gi.NewPointerArgument(obj.P_Object())
 	args := []gi.Argument{arg_v, arg_obj}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1751,6 +1784,10 @@ type Plug struct {
 }
 
 func WrapPlug(p unsafe.Pointer) (r Plug) { r.P = p; return }
+
+type IPlug interface{ P_Plug() unsafe.Pointer }
+
+func (v Plug) P_Plug() unsafe.Pointer { return v.P }
 
 // atk_plug_new
 // container is not nil, container is Plug
@@ -1910,6 +1947,10 @@ type Registry struct {
 
 func WrapRegistry(p unsafe.Pointer) (r Registry) { r.P = p; return }
 
+type IRegistry interface{ P_Registry() unsafe.Pointer }
+
+func (v Registry) P_Registry() unsafe.Pointer { return v.P }
+
 // atk_registry_get_factory
 // container is not nil, container is Registry
 // is method
@@ -1970,10 +2011,14 @@ type Relation struct {
 
 func WrapRelation(p unsafe.Pointer) (r Relation) { r.P = p; return }
 
+type IRelation interface{ P_Relation() unsafe.Pointer }
+
+func (v Relation) P_Relation() unsafe.Pointer { return v.P }
+
 // atk_relation_new
 // container is not nil, container is Relation
 // is constructor
-func NewRelation(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, relationship int /*TODO_TYPE isPtr: false, tag: interface*/) (result Relation) {
+func NewRelation(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, relationship RelationTypeEnum) (result Relation) {
 	iv, err := _I.Get(100, "Relation", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1981,7 +2026,7 @@ func NewRelation(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets in
 	}
 	arg_targets := gi.NewIntArgument(targets) /*TODO*/
 	arg_n_targets := gi.NewInt32Argument(n_targets)
-	arg_relationship := gi.NewIntArgument(relationship) /*TODO*/
+	arg_relationship := gi.NewIntArgument(int(relationship))
 	args := []gi.Argument{arg_targets, arg_n_targets, arg_relationship}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1992,14 +2037,14 @@ func NewRelation(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets in
 // atk_relation_add_target
 // container is not nil, container is Relation
 // is method
-func (v Relation) AddTarget(target Object) {
+func (v Relation) AddTarget(target IObject) {
 	iv, err := _I.Get(101, "Relation", "add_target")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_target := gi.NewPointerArgument(target.P)
+	arg_target := gi.NewPointerArgument(target.P_Object())
 	args := []gi.Argument{arg_v, arg_target}
 	iv.Call(args, nil, nil)
 }
@@ -2007,7 +2052,7 @@ func (v Relation) AddTarget(target Object) {
 // atk_relation_get_relation_type
 // container is not nil, container is Relation
 // is method
-func (v Relation) GetRelationType() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Relation) GetRelationType() (result RelationTypeEnum) {
 	iv, err := _I.Get(102, "Relation", "get_relation_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2017,7 +2062,7 @@ func (v Relation) GetRelationType() (result int /*TODO_TYPE isPtr: false, tag: i
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = RelationTypeEnum(ret.Int())
 	return
 }
 
@@ -2041,14 +2086,14 @@ func (v Relation) GetTarget() (result int /*TODO_TYPE isPtr: true, tag: array*/)
 // atk_relation_remove_target
 // container is not nil, container is Relation
 // is method
-func (v Relation) RemoveTarget(target Object) (result bool) {
+func (v Relation) RemoveTarget(target IObject) (result bool) {
 	iv, err := _I.Get(104, "Relation", "remove_target")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_target := gi.NewPointerArgument(target.P)
+	arg_target := gi.NewPointerArgument(target.P_Object())
 	args := []gi.Argument{arg_v, arg_target}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2063,6 +2108,10 @@ type RelationSet struct {
 }
 
 func WrapRelationSet(p unsafe.Pointer) (r RelationSet) { r.P = p; return }
+
+type IRelationSet interface{ P_RelationSet() unsafe.Pointer }
+
+func (v RelationSet) P_RelationSet() unsafe.Pointer { return v.P }
 
 // atk_relation_set_new
 // container is not nil, container is RelationSet
@@ -2082,14 +2131,14 @@ func NewRelationSet() (result RelationSet) {
 // atk_relation_set_add
 // container is not nil, container is RelationSet
 // is method
-func (v RelationSet) Add(relation Relation) {
+func (v RelationSet) Add(relation IRelation) {
 	iv, err := _I.Get(106, "RelationSet", "add")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relation := gi.NewPointerArgument(relation.P)
+	arg_relation := gi.NewPointerArgument(relation.P_Relation())
 	args := []gi.Argument{arg_v, arg_relation}
 	iv.Call(args, nil, nil)
 }
@@ -2097,15 +2146,15 @@ func (v RelationSet) Add(relation Relation) {
 // atk_relation_set_add_relation_by_type
 // container is not nil, container is RelationSet
 // is method
-func (v RelationSet) AddRelationByType(relationship int /*TODO_TYPE isPtr: false, tag: interface*/, target Object) {
+func (v RelationSet) AddRelationByType(relationship RelationTypeEnum, target IObject) {
 	iv, err := _I.Get(107, "RelationSet", "add_relation_by_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relationship := gi.NewIntArgument(relationship) /*TODO*/
-	arg_target := gi.NewPointerArgument(target.P)
+	arg_relationship := gi.NewIntArgument(int(relationship))
+	arg_target := gi.NewPointerArgument(target.P_Object())
 	args := []gi.Argument{arg_v, arg_relationship, arg_target}
 	iv.Call(args, nil, nil)
 }
@@ -2113,14 +2162,14 @@ func (v RelationSet) AddRelationByType(relationship int /*TODO_TYPE isPtr: false
 // atk_relation_set_contains
 // container is not nil, container is RelationSet
 // is method
-func (v RelationSet) Contains(relationship int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v RelationSet) Contains(relationship RelationTypeEnum) (result bool) {
 	iv, err := _I.Get(108, "RelationSet", "contains")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relationship := gi.NewIntArgument(relationship) /*TODO*/
+	arg_relationship := gi.NewIntArgument(int(relationship))
 	args := []gi.Argument{arg_v, arg_relationship}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2131,15 +2180,15 @@ func (v RelationSet) Contains(relationship int /*TODO_TYPE isPtr: false, tag: in
 // atk_relation_set_contains_target
 // container is not nil, container is RelationSet
 // is method
-func (v RelationSet) ContainsTarget(relationship int /*TODO_TYPE isPtr: false, tag: interface*/, target Object) (result bool) {
+func (v RelationSet) ContainsTarget(relationship RelationTypeEnum, target IObject) (result bool) {
 	iv, err := _I.Get(109, "RelationSet", "contains_target")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relationship := gi.NewIntArgument(relationship) /*TODO*/
-	arg_target := gi.NewPointerArgument(target.P)
+	arg_relationship := gi.NewIntArgument(int(relationship))
+	arg_target := gi.NewPointerArgument(target.P_Object())
 	args := []gi.Argument{arg_v, arg_relationship, arg_target}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2185,14 +2234,14 @@ func (v RelationSet) GetRelation(i int32) (result Relation) {
 // atk_relation_set_get_relation_by_type
 // container is not nil, container is RelationSet
 // is method
-func (v RelationSet) GetRelationByType(relationship int /*TODO_TYPE isPtr: false, tag: interface*/) (result Relation) {
+func (v RelationSet) GetRelationByType(relationship RelationTypeEnum) (result Relation) {
 	iv, err := _I.Get(112, "RelationSet", "get_relation_by_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relationship := gi.NewIntArgument(relationship) /*TODO*/
+	arg_relationship := gi.NewIntArgument(int(relationship))
 	args := []gi.Argument{arg_v, arg_relationship}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2203,19 +2252,20 @@ func (v RelationSet) GetRelationByType(relationship int /*TODO_TYPE isPtr: false
 // atk_relation_set_remove
 // container is not nil, container is RelationSet
 // is method
-func (v RelationSet) Remove(relation Relation) {
+func (v RelationSet) Remove(relation IRelation) {
 	iv, err := _I.Get(113, "RelationSet", "remove")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relation := gi.NewPointerArgument(relation.P)
+	arg_relation := gi.NewPointerArgument(relation.P_Relation())
 	args := []gi.Argument{arg_v, arg_relation}
 	iv.Call(args, nil, nil)
 }
 
 // ignore GType struct RelationSetClass
+// Enum RelationType
 type RelationTypeEnum int
 
 const (
@@ -2243,6 +2293,7 @@ const (
 	RelationTypeLastDefined                     = 21
 )
 
+// Enum Role
 type RoleEnum int
 
 const (
@@ -2372,6 +2423,7 @@ const (
 	RoleLastDefined                   = 123
 )
 
+// Enum ScrollType
 type ScrollTypeEnum int
 
 const (
@@ -2523,6 +2575,10 @@ type Socket struct {
 
 func WrapSocket(p unsafe.Pointer) (r Socket) { r.P = p; return }
 
+type ISocket interface{ P_Socket() unsafe.Pointer }
+
+func (v Socket) P_Socket() unsafe.Pointer { return v.P }
+
 // atk_socket_new
 // container is not nil, container is Socket
 // is constructor
@@ -2580,6 +2636,10 @@ type StateSet struct {
 
 func WrapStateSet(p unsafe.Pointer) (r StateSet) { r.P = p; return }
 
+type IStateSet interface{ P_StateSet() unsafe.Pointer }
+
+func (v StateSet) P_StateSet() unsafe.Pointer { return v.P }
+
 // atk_state_set_new
 // container is not nil, container is StateSet
 // is constructor
@@ -2598,14 +2658,14 @@ func NewStateSet() (result StateSet) {
 // atk_state_set_add_state
 // container is not nil, container is StateSet
 // is method
-func (v StateSet) AddState(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v StateSet) AddState(type1 StateTypeEnum) (result bool) {
 	iv, err := _I.Get(125, "StateSet", "add_state")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_v, arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2632,14 +2692,14 @@ func (v StateSet) AddStates(types int /*TODO_TYPE isPtr: true, tag: array*/, n_t
 // atk_state_set_and_sets
 // container is not nil, container is StateSet
 // is method
-func (v StateSet) AndSets(compare_set StateSet) (result StateSet) {
+func (v StateSet) AndSets(compare_set IStateSet) (result StateSet) {
 	iv, err := _I.Get(127, "StateSet", "and_sets")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_compare_set := gi.NewPointerArgument(compare_set.P)
+	arg_compare_set := gi.NewPointerArgument(compare_set.P_StateSet())
 	args := []gi.Argument{arg_v, arg_compare_set}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2664,14 +2724,14 @@ func (v StateSet) ClearStates() {
 // atk_state_set_contains_state
 // container is not nil, container is StateSet
 // is method
-func (v StateSet) ContainsState(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v StateSet) ContainsState(type1 StateTypeEnum) (result bool) {
 	iv, err := _I.Get(129, "StateSet", "contains_state")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_v, arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2718,14 +2778,14 @@ func (v StateSet) IsEmpty() (result bool) {
 // atk_state_set_or_sets
 // container is not nil, container is StateSet
 // is method
-func (v StateSet) OrSets(compare_set StateSet) (result StateSet) {
+func (v StateSet) OrSets(compare_set IStateSet) (result StateSet) {
 	iv, err := _I.Get(132, "StateSet", "or_sets")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_compare_set := gi.NewPointerArgument(compare_set.P)
+	arg_compare_set := gi.NewPointerArgument(compare_set.P_StateSet())
 	args := []gi.Argument{arg_v, arg_compare_set}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2736,14 +2796,14 @@ func (v StateSet) OrSets(compare_set StateSet) (result StateSet) {
 // atk_state_set_remove_state
 // container is not nil, container is StateSet
 // is method
-func (v StateSet) RemoveState(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v StateSet) RemoveState(type1 StateTypeEnum) (result bool) {
 	iv, err := _I.Get(133, "StateSet", "remove_state")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_v, arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2754,14 +2814,14 @@ func (v StateSet) RemoveState(type1 int /*TODO_TYPE isPtr: false, tag: interface
 // atk_state_set_xor_sets
 // container is not nil, container is StateSet
 // is method
-func (v StateSet) XorSets(compare_set StateSet) (result StateSet) {
+func (v StateSet) XorSets(compare_set IStateSet) (result StateSet) {
 	iv, err := _I.Get(134, "StateSet", "xor_sets")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_compare_set := gi.NewPointerArgument(compare_set.P)
+	arg_compare_set := gi.NewPointerArgument(compare_set.P_StateSet())
 	args := []gi.Argument{arg_v, arg_compare_set}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2770,6 +2830,7 @@ func (v StateSet) XorSets(compare_set StateSet) (result StateSet) {
 }
 
 // ignore GType struct StateSetClass
+// Enum StateType
 type StateTypeEnum int
 
 const (
@@ -3327,14 +3388,14 @@ func (v *TableIfc) RemoveRowSelection(row int32) (result bool) {
 // atk_table_set_caption
 // container is not nil, container is Table
 // is method
-func (v *TableIfc) SetCaption(caption Object) {
+func (v *TableIfc) SetCaption(caption IObject) {
 	iv, err := _I.Get(162, "Table", "set_caption")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_caption := gi.NewPointerArgument(caption.P)
+	arg_caption := gi.NewPointerArgument(caption.P_Object())
 	args := []gi.Argument{arg_v, arg_caption}
 	iv.Call(args, nil, nil)
 }
@@ -3360,7 +3421,7 @@ func (v *TableIfc) SetColumnDescription(column int32, description string) {
 // atk_table_set_column_header
 // container is not nil, container is Table
 // is method
-func (v *TableIfc) SetColumnHeader(column int32, header Object) {
+func (v *TableIfc) SetColumnHeader(column int32, header IObject) {
 	iv, err := _I.Get(164, "Table", "set_column_header")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3368,7 +3429,7 @@ func (v *TableIfc) SetColumnHeader(column int32, header Object) {
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_column := gi.NewInt32Argument(column)
-	arg_header := gi.NewPointerArgument(header.P)
+	arg_header := gi.NewPointerArgument(header.P_Object())
 	args := []gi.Argument{arg_v, arg_column, arg_header}
 	iv.Call(args, nil, nil)
 }
@@ -3394,7 +3455,7 @@ func (v *TableIfc) SetRowDescription(row int32, description string) {
 // atk_table_set_row_header
 // container is not nil, container is Table
 // is method
-func (v *TableIfc) SetRowHeader(row int32, header Object) {
+func (v *TableIfc) SetRowHeader(row int32, header IObject) {
 	iv, err := _I.Get(166, "Table", "set_row_header")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3402,7 +3463,7 @@ func (v *TableIfc) SetRowHeader(row int32, header Object) {
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_row := gi.NewInt32Argument(row)
-	arg_header := gi.NewPointerArgument(header.P)
+	arg_header := gi.NewPointerArgument(header.P_Object())
 	args := []gi.Argument{arg_v, arg_row, arg_header}
 	iv.Call(args, nil, nil)
 }
@@ -3410,14 +3471,14 @@ func (v *TableIfc) SetRowHeader(row int32, header Object) {
 // atk_table_set_summary
 // container is not nil, container is Table
 // is method
-func (v *TableIfc) SetSummary(accessible Object) {
+func (v *TableIfc) SetSummary(accessible IObject) {
 	iv, err := _I.Get(167, "Table", "set_summary")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_accessible := gi.NewPointerArgument(accessible.P)
+	arg_accessible := gi.NewPointerArgument(accessible.P_Object())
 	args := []gi.Argument{arg_v, arg_accessible}
 	iv.Call(args, nil, nil)
 }
@@ -3608,7 +3669,7 @@ func (v *TextIfc) AddSelection(start_offset int32, end_offset int32) (result boo
 // atk_text_get_bounded_ranges
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetBoundedRanges(rect TextRectangle, coord_type int /*TODO_TYPE isPtr: false, tag: interface*/, x_clip_type int /*TODO_TYPE isPtr: false, tag: interface*/, y_clip_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *TextIfc) GetBoundedRanges(rect TextRectangle, coord_type CoordTypeEnum, x_clip_type TextClipTypeEnum, y_clip_type TextClipTypeEnum) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
 	iv, err := _I.Get(177, "Text", "get_bounded_ranges")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3616,9 +3677,9 @@ func (v *TextIfc) GetBoundedRanges(rect TextRectangle, coord_type int /*TODO_TYP
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_rect := gi.NewPointerArgument(rect.P)
-	arg_coord_type := gi.NewIntArgument(coord_type)   /*TODO*/
-	arg_x_clip_type := gi.NewIntArgument(x_clip_type) /*TODO*/
-	arg_y_clip_type := gi.NewIntArgument(y_clip_type) /*TODO*/
+	arg_coord_type := gi.NewIntArgument(int(coord_type))
+	arg_x_clip_type := gi.NewIntArgument(int(x_clip_type))
+	arg_y_clip_type := gi.NewIntArgument(int(y_clip_type))
 	args := []gi.Argument{arg_v, arg_rect, arg_coord_type, arg_x_clip_type, arg_y_clip_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3646,7 +3707,7 @@ func (v *TextIfc) GetCaretOffset() (result int32) {
 // atk_text_get_character_at_offset
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetCharacterAtOffset(offset int32) (result int /*TODO_TYPE isPtr: false, tag: gunichar*/) {
+func (v *TextIfc) GetCharacterAtOffset(offset int32) (result rune) {
 	iv, err := _I.Get(179, "Text", "get_character_at_offset")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3657,7 +3718,7 @@ func (v *TextIfc) GetCharacterAtOffset(offset int32) (result int /*TODO_TYPE isP
 	args := []gi.Argument{arg_v, arg_offset}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = rune(ret.Uint32())
 	return
 }
 
@@ -3681,7 +3742,7 @@ func (v *TextIfc) GetCharacterCount() (result int32) {
 // atk_text_get_character_extents
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetCharacterExtents(offset int32, coords int /*TODO_TYPE isPtr: false, tag: interface*/) (x int32, y int32, width int32, height int32) {
+func (v *TextIfc) GetCharacterExtents(offset int32, coords CoordTypeEnum) (x int32, y int32, width int32, height int32) {
 	iv, err := _I.Get(181, "Text", "get_character_extents")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3694,7 +3755,7 @@ func (v *TextIfc) GetCharacterExtents(offset int32, coords int /*TODO_TYPE isPtr
 	arg_y := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
 	arg_height := gi.NewPointerArgument(unsafe.Pointer(&outArgs[3]))
-	arg_coords := gi.NewIntArgument(coords) /*TODO*/
+	arg_coords := gi.NewIntArgument(int(coords))
 	args := []gi.Argument{arg_v, arg_offset, arg_x, arg_y, arg_width, arg_height, arg_coords}
 	iv.Call(args, nil, &outArgs[0])
 	x = outArgs[0].Int32()
@@ -3741,7 +3802,7 @@ func (v *TextIfc) GetNSelections() (result int32) {
 // atk_text_get_offset_at_point
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetOffsetAtPoint(x int32, y int32, coords int /*TODO_TYPE isPtr: false, tag: interface*/) (result int32) {
+func (v *TextIfc) GetOffsetAtPoint(x int32, y int32, coords CoordTypeEnum) (result int32) {
 	iv, err := _I.Get(184, "Text", "get_offset_at_point")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3750,7 +3811,7 @@ func (v *TextIfc) GetOffsetAtPoint(x int32, y int32, coords int /*TODO_TYPE isPt
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
-	arg_coords := gi.NewIntArgument(coords) /*TODO*/
+	arg_coords := gi.NewIntArgument(int(coords))
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_coords}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3761,7 +3822,7 @@ func (v *TextIfc) GetOffsetAtPoint(x int32, y int32, coords int /*TODO_TYPE isPt
 // atk_text_get_range_extents
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, coord_type int /*TODO_TYPE isPtr: false, tag: interface*/) (rect int /*TODO_TYPE*/) {
+func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, coord_type CoordTypeEnum) (rect int /*TODO_TYPE*/) {
 	iv, err := _I.Get(185, "Text", "get_range_extents")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3771,7 +3832,7 @@ func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, coord_ty
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_start_offset := gi.NewInt32Argument(start_offset)
 	arg_end_offset := gi.NewInt32Argument(end_offset)
-	arg_coord_type := gi.NewIntArgument(coord_type) /*TODO*/
+	arg_coord_type := gi.NewIntArgument(int(coord_type))
 	arg_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_start_offset, arg_end_offset, arg_coord_type, arg_rect}
 	iv.Call(args, nil, &outArgs[0])
@@ -3828,7 +3889,7 @@ func (v *TextIfc) GetSelection(selection_num int32) (result string, start_offset
 // atk_text_get_string_at_offset
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetStringAtOffset(offset int32, granularity int /*TODO_TYPE isPtr: false, tag: interface*/) (result string, start_offset int32, end_offset int32) {
+func (v *TextIfc) GetStringAtOffset(offset int32, granularity TextGranularityEnum) (result string, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(188, "Text", "get_string_at_offset")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3837,7 +3898,7 @@ func (v *TextIfc) GetStringAtOffset(offset int32, granularity int /*TODO_TYPE is
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_offset := gi.NewInt32Argument(offset)
-	arg_granularity := gi.NewIntArgument(granularity) /*TODO*/
+	arg_granularity := gi.NewIntArgument(int(granularity))
 	arg_start_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_end_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_offset, arg_granularity, arg_start_offset, arg_end_offset}
@@ -3871,7 +3932,7 @@ func (v *TextIfc) GetText(start_offset int32, end_offset int32) (result string) 
 // atk_text_get_text_after_offset
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetTextAfterOffset(offset int32, boundary_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result string, start_offset int32, end_offset int32) {
+func (v *TextIfc) GetTextAfterOffset(offset int32, boundary_type TextBoundaryEnum) (result string, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(190, "Text", "get_text_after_offset")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3880,7 +3941,7 @@ func (v *TextIfc) GetTextAfterOffset(offset int32, boundary_type int /*TODO_TYPE
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_offset := gi.NewInt32Argument(offset)
-	arg_boundary_type := gi.NewIntArgument(boundary_type) /*TODO*/
+	arg_boundary_type := gi.NewIntArgument(int(boundary_type))
 	arg_start_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_end_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_offset, arg_boundary_type, arg_start_offset, arg_end_offset}
@@ -3895,7 +3956,7 @@ func (v *TextIfc) GetTextAfterOffset(offset int32, boundary_type int /*TODO_TYPE
 // atk_text_get_text_at_offset
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetTextAtOffset(offset int32, boundary_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result string, start_offset int32, end_offset int32) {
+func (v *TextIfc) GetTextAtOffset(offset int32, boundary_type TextBoundaryEnum) (result string, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(191, "Text", "get_text_at_offset")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3904,7 +3965,7 @@ func (v *TextIfc) GetTextAtOffset(offset int32, boundary_type int /*TODO_TYPE is
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_offset := gi.NewInt32Argument(offset)
-	arg_boundary_type := gi.NewIntArgument(boundary_type) /*TODO*/
+	arg_boundary_type := gi.NewIntArgument(int(boundary_type))
 	arg_start_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_end_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_offset, arg_boundary_type, arg_start_offset, arg_end_offset}
@@ -3919,7 +3980,7 @@ func (v *TextIfc) GetTextAtOffset(offset int32, boundary_type int /*TODO_TYPE is
 // atk_text_get_text_before_offset
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetTextBeforeOffset(offset int32, boundary_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result string, start_offset int32, end_offset int32) {
+func (v *TextIfc) GetTextBeforeOffset(offset int32, boundary_type TextBoundaryEnum) (result string, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(192, "Text", "get_text_before_offset")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3928,7 +3989,7 @@ func (v *TextIfc) GetTextBeforeOffset(offset int32, boundary_type int /*TODO_TYP
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_offset := gi.NewInt32Argument(offset)
-	arg_boundary_type := gi.NewIntArgument(boundary_type) /*TODO*/
+	arg_boundary_type := gi.NewIntArgument(int(boundary_type))
 	arg_start_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_end_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_offset, arg_boundary_type, arg_start_offset, arg_end_offset}
@@ -3996,6 +4057,7 @@ func (v *TextIfc) SetSelection(selection_num int32, start_offset int32, end_offs
 	return
 }
 
+// Enum TextAttribute
 type TextAttributeEnum int
 
 const (
@@ -4030,6 +4092,7 @@ const (
 	TextAttributeLastDefined                        = 28
 )
 
+// Enum TextBoundary
 type TextBoundaryEnum int
 
 const (
@@ -4042,6 +4105,7 @@ const (
 	TextBoundaryLineEnd                        = 6
 )
 
+// Enum TextClipType
 type TextClipTypeEnum int
 
 const (
@@ -4051,6 +4115,7 @@ const (
 	TextClipTypeBoth                  = 3
 )
 
+// Enum TextGranularity
 type TextGranularityEnum int
 
 const (
@@ -4078,6 +4143,10 @@ type Util struct {
 }
 
 func WrapUtil(p unsafe.Pointer) (r Util) { r.P = p; return }
+
+type IUtil interface{ P_Util() unsafe.Pointer }
+
+func (v Util) P_Util() unsafe.Pointer { return v.P }
 
 // ignore GType struct UtilClass
 // Interface Value
@@ -4264,6 +4333,7 @@ func (v *ValueIfc) SetValue(new_value float64) {
 }
 
 // ignore GType struct ValueIface
+// Enum ValueType
 type ValueTypeEnum int
 
 const (
@@ -4308,13 +4378,13 @@ func AttributeSetFree(attrib_set int /*TODO_TYPE isPtr: true, tag: gslist*/) {
 
 // atk_focus_tracker_notify
 // container is nil
-func FocusTrackerNotify(object Object) {
+func FocusTrackerNotify(object IObject) {
 	iv, err := _I.Get(207, "focus_tracker_notify", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_Object())
 	args := []gi.Argument{arg_object}
 	iv.Call(args, nil, nil)
 }
@@ -4475,7 +4545,7 @@ func GetVersion() (result string) {
 
 // atk_relation_type_for_name
 // container is nil
-func RelationTypeForName(name string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func RelationTypeForName(name string) (result RelationTypeEnum) {
 	iv, err := _I.Get(219, "relation_type_for_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4486,20 +4556,20 @@ func RelationTypeForName(name string) (result int /*TODO_TYPE isPtr: false, tag:
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = RelationTypeEnum(ret.Int())
 	gi.Free(c_name)
 	return
 }
 
 // atk_relation_type_get_name
 // container is nil
-func RelationTypeGetName(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func RelationTypeGetName(type1 RelationTypeEnum) (result string) {
 	iv, err := _I.Get(220, "relation_type_get_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4509,7 +4579,7 @@ func RelationTypeGetName(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (
 
 // atk_relation_type_register
 // container is nil
-func RelationTypeRegister(name string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func RelationTypeRegister(name string) (result RelationTypeEnum) {
 	iv, err := _I.Get(221, "relation_type_register", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4520,7 +4590,7 @@ func RelationTypeRegister(name string) (result int /*TODO_TYPE isPtr: false, tag
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = RelationTypeEnum(ret.Int())
 	gi.Free(c_name)
 	return
 }
@@ -4566,7 +4636,7 @@ func RemoveKeyEventListener(listener_id uint32) {
 
 // atk_role_for_name
 // container is nil
-func RoleForName(name string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func RoleForName(name string) (result RoleEnum) {
 	iv, err := _I.Get(225, "role_for_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4577,20 +4647,20 @@ func RoleForName(name string) (result int /*TODO_TYPE isPtr: false, tag: interfa
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = RoleEnum(ret.Int())
 	gi.Free(c_name)
 	return
 }
 
 // atk_role_get_localized_name
 // container is nil
-func RoleGetLocalizedName(role int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func RoleGetLocalizedName(role RoleEnum) (result string) {
 	iv, err := _I.Get(226, "role_get_localized_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_role := gi.NewIntArgument(role) /*TODO*/
+	arg_role := gi.NewIntArgument(int(role))
 	args := []gi.Argument{arg_role}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4600,13 +4670,13 @@ func RoleGetLocalizedName(role int /*TODO_TYPE isPtr: false, tag: interface*/) (
 
 // atk_role_get_name
 // container is nil
-func RoleGetName(role int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func RoleGetName(role RoleEnum) (result string) {
 	iv, err := _I.Get(227, "role_get_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_role := gi.NewIntArgument(role) /*TODO*/
+	arg_role := gi.NewIntArgument(int(role))
 	args := []gi.Argument{arg_role}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4616,7 +4686,7 @@ func RoleGetName(role int /*TODO_TYPE isPtr: false, tag: interface*/) (result st
 
 // atk_role_register
 // container is nil
-func RoleRegister(name string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func RoleRegister(name string) (result RoleEnum) {
 	iv, err := _I.Get(228, "role_register", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4627,14 +4697,14 @@ func RoleRegister(name string) (result int /*TODO_TYPE isPtr: false, tag: interf
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = RoleEnum(ret.Int())
 	gi.Free(c_name)
 	return
 }
 
 // atk_state_type_for_name
 // container is nil
-func StateTypeForName(name string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func StateTypeForName(name string) (result StateTypeEnum) {
 	iv, err := _I.Get(229, "state_type_for_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4645,20 +4715,20 @@ func StateTypeForName(name string) (result int /*TODO_TYPE isPtr: false, tag: in
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = StateTypeEnum(ret.Int())
 	gi.Free(c_name)
 	return
 }
 
 // atk_state_type_get_name
 // container is nil
-func StateTypeGetName(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func StateTypeGetName(type1 StateTypeEnum) (result string) {
 	iv, err := _I.Get(230, "state_type_get_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4668,7 +4738,7 @@ func StateTypeGetName(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (res
 
 // atk_state_type_register
 // container is nil
-func StateTypeRegister(name string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func StateTypeRegister(name string) (result StateTypeEnum) {
 	iv, err := _I.Get(231, "state_type_register", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4679,14 +4749,14 @@ func StateTypeRegister(name string) (result int /*TODO_TYPE isPtr: false, tag: i
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = StateTypeEnum(ret.Int())
 	gi.Free(c_name)
 	return
 }
 
 // atk_text_attribute_for_name
 // container is nil
-func TextAttributeForName(name string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func TextAttributeForName(name string) (result TextAttributeEnum) {
 	iv, err := _I.Get(232, "text_attribute_for_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4697,20 +4767,20 @@ func TextAttributeForName(name string) (result int /*TODO_TYPE isPtr: false, tag
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TextAttributeEnum(ret.Int())
 	gi.Free(c_name)
 	return
 }
 
 // atk_text_attribute_get_name
 // container is nil
-func TextAttributeGetName(attr int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func TextAttributeGetName(attr TextAttributeEnum) (result string) {
 	iv, err := _I.Get(233, "text_attribute_get_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_attr := gi.NewIntArgument(attr) /*TODO*/
+	arg_attr := gi.NewIntArgument(int(attr))
 	args := []gi.Argument{arg_attr}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4720,13 +4790,13 @@ func TextAttributeGetName(attr int /*TODO_TYPE isPtr: false, tag: interface*/) (
 
 // atk_text_attribute_get_value
 // container is nil
-func TextAttributeGetValue(attr int /*TODO_TYPE isPtr: false, tag: interface*/, index_ int32) (result string) {
+func TextAttributeGetValue(attr TextAttributeEnum, index_ int32) (result string) {
 	iv, err := _I.Get(234, "text_attribute_get_value", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_attr := gi.NewIntArgument(attr) /*TODO*/
+	arg_attr := gi.NewIntArgument(int(attr))
 	arg_index_ := gi.NewInt32Argument(index_)
 	args := []gi.Argument{arg_attr, arg_index_}
 	var ret gi.Argument
@@ -4737,7 +4807,7 @@ func TextAttributeGetValue(attr int /*TODO_TYPE isPtr: false, tag: interface*/, 
 
 // atk_text_attribute_register
 // container is nil
-func TextAttributeRegister(name string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func TextAttributeRegister(name string) (result TextAttributeEnum) {
 	iv, err := _I.Get(235, "text_attribute_register", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4748,7 +4818,7 @@ func TextAttributeRegister(name string) (result int /*TODO_TYPE isPtr: false, ta
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TextAttributeEnum(ret.Int())
 	gi.Free(c_name)
 	return
 }
@@ -4768,13 +4838,13 @@ func TextFreeRanges(ranges int /*TODO_TYPE isPtr: true, tag: array*/) {
 
 // atk_value_type_get_localized_name
 // container is nil
-func ValueTypeGetLocalizedName(value_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func ValueTypeGetLocalizedName(value_type ValueTypeEnum) (result string) {
 	iv, err := _I.Get(237, "value_type_get_localized_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_value_type := gi.NewIntArgument(value_type) /*TODO*/
+	arg_value_type := gi.NewIntArgument(int(value_type))
 	args := []gi.Argument{arg_value_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4784,13 +4854,13 @@ func ValueTypeGetLocalizedName(value_type int /*TODO_TYPE isPtr: false, tag: int
 
 // atk_value_type_get_name
 // container is nil
-func ValueTypeGetName(value_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func ValueTypeGetName(value_type ValueTypeEnum) (result string) {
 	iv, err := _I.Get(238, "value_type_get_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_value_type := gi.NewIntArgument(value_type) /*TODO*/
+	arg_value_type := gi.NewIntArgument(int(value_type))
 	args := []gi.Argument{arg_value_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

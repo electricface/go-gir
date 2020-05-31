@@ -23,6 +23,10 @@ type Client struct {
 
 func WrapClient(p unsafe.Pointer) (r Client) { r.P = p; return }
 
+type IClient interface{ P_Client() unsafe.Pointer }
+
+func (v Client) P_Client() unsafe.Pointer { return v.P }
+
 // g_udev_client_new
 // container is not nil, container is Client
 // is constructor
@@ -63,14 +67,14 @@ func (v Client) QueryByDeviceFile(device_file string) (result Device) {
 // g_udev_client_query_by_device_number
 // container is not nil, container is Client
 // is method
-func (v Client) QueryByDeviceNumber(type1 int /*TODO_TYPE isPtr: false, tag: interface*/, number uint64) (result Device) {
+func (v Client) QueryByDeviceNumber(type1 DeviceTypeEnum, number uint64) (result Device) {
 	iv, err := _I.Get(2, "Client", "query_by_device_number")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	arg_number := gi.NewUint64Argument(number)
 	args := []gi.Argument{arg_v, arg_type1, arg_number}
 	var ret gi.Argument
@@ -155,6 +159,10 @@ type Device struct {
 
 func WrapDevice(p unsafe.Pointer) (r Device) { r.P = p; return }
 
+type IDevice interface{ P_Device() unsafe.Pointer }
+
+func (v Device) P_Device() unsafe.Pointer { return v.P }
+
 // g_udev_device_get_action
 // container is not nil, container is Device
 // is method
@@ -226,7 +234,7 @@ func (v Device) GetDeviceNumber() (result uint64) {
 // g_udev_device_get_device_type
 // container is not nil, container is Device
 // is method
-func (v Device) GetDeviceType() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Device) GetDeviceType() (result DeviceTypeEnum) {
 	iv, err := _I.Get(10, "Device", "get_device_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -236,7 +244,7 @@ func (v Device) GetDeviceType() (result int /*TODO_TYPE isPtr: false, tag: inter
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DeviceTypeEnum(ret.Int())
 	return
 }
 
@@ -769,6 +777,8 @@ func (v Device) HasSysfsAttr(key string) (result bool) {
 type DevicePrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum DeviceType
 type DeviceTypeEnum int
 
 const (
@@ -784,16 +794,20 @@ type Enumerator struct {
 
 func WrapEnumerator(p unsafe.Pointer) (r Enumerator) { r.P = p; return }
 
+type IEnumerator interface{ P_Enumerator() unsafe.Pointer }
+
+func (v Enumerator) P_Enumerator() unsafe.Pointer { return v.P }
+
 // g_udev_enumerator_new
 // container is not nil, container is Enumerator
 // is constructor
-func NewEnumerator(client Client) (result Enumerator) {
+func NewEnumerator(client IClient) (result Enumerator) {
 	iv, err := _I.Get(39, "Enumerator", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_client := gi.NewPointerArgument(client.P)
+	arg_client := gi.NewPointerArgument(client.P_Client())
 	args := []gi.Argument{arg_client}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

@@ -44,6 +44,8 @@ type Pattern struct {
 type Region struct {
 	P unsafe.Pointer
 }
+
+// Enum Status
 type StatusEnum int
 
 const (
@@ -88,6 +90,7 @@ const (
 	StatusJbig2GlobalMissing                 = 38
 )
 
+// Enum Content
 type ContentEnum int
 
 const (
@@ -96,6 +99,7 @@ const (
 	ContentColorAlpha             = 12288
 )
 
+// Enum Operator
 type OperatorEnum int
 
 const (
@@ -130,6 +134,7 @@ const (
 	OperatorHslLuminosity              = 28
 )
 
+// Enum Antialias
 type AntialiasEnum int
 
 const (
@@ -142,6 +147,7 @@ const (
 	AntialiasBest                   = 6
 )
 
+// Enum FillRule
 type FillRuleEnum int
 
 const (
@@ -149,6 +155,7 @@ const (
 	FillRuleEvenOdd              = 1
 )
 
+// Enum LineCap
 type LineCapEnum int
 
 const (
@@ -157,6 +164,7 @@ const (
 	LineCapSquare             = 2
 )
 
+// Enum LineJoin
 type LineJoinEnum int
 
 const (
@@ -165,12 +173,14 @@ const (
 	LineJoinBevel              = 2
 )
 
+// Enum TextClusterFlags
 type TextClusterFlagsEnum int
 
 const (
 	TextClusterFlagsBackward TextClusterFlagsEnum = 1
 )
 
+// Enum FontSlant
 type FontSlantEnum int
 
 const (
@@ -179,6 +189,7 @@ const (
 	FontSlantOblique               = 2
 )
 
+// Enum FontWeight
 type FontWeightEnum int
 
 const (
@@ -186,6 +197,7 @@ const (
 	FontWeightBold                  = 1
 )
 
+// Enum SubpixelOrder
 type SubpixelOrderEnum int
 
 const (
@@ -196,6 +208,7 @@ const (
 	SubpixelOrderVbgr                      = 4
 )
 
+// Enum HintStyle
 type HintStyleEnum int
 
 const (
@@ -206,6 +219,7 @@ const (
 	HintStyleFull                  = 4
 )
 
+// Enum HintMetrics
 type HintMetricsEnum int
 
 const (
@@ -218,6 +232,8 @@ const (
 type FontOptions struct {
 	P unsafe.Pointer
 }
+
+// Enum FontType
 type FontTypeEnum int
 
 const (
@@ -228,6 +244,7 @@ const (
 	FontTypeUser                = 4
 )
 
+// Enum PathDataType
 type PathDataTypeEnum int
 
 const (
@@ -237,6 +254,7 @@ const (
 	PathDataTypeClosePath                  = 3
 )
 
+// Enum DeviceType
 type DeviceTypeEnum int
 
 const (
@@ -251,6 +269,7 @@ const (
 	DeviceTypeInvalid                = -1
 )
 
+// Enum SurfaceType
 type SurfaceTypeEnum int
 
 const (
@@ -281,6 +300,7 @@ const (
 	SurfaceTypeCogl                          = 24
 )
 
+// Enum Format
 type FormatEnum int
 
 const (
@@ -293,6 +313,7 @@ const (
 	FormatRgb30               = 5
 )
 
+// Enum PatternType
 type PatternTypeEnum int
 
 const (
@@ -304,6 +325,7 @@ const (
 	PatternTypeRasterSource                 = 5
 )
 
+// Enum Extend
 type ExtendEnum int
 
 const (
@@ -313,6 +335,7 @@ const (
 	ExtendPad                = 3
 )
 
+// Enum Filter
 type FilterEnum int
 
 const (
@@ -324,6 +347,7 @@ const (
 	FilterGaussian            = 5
 )
 
+// Enum RegionOverlap
 type RegionOverlapEnum int
 
 const (

@@ -19,6 +19,8 @@ func init() {
 type Array struct {
 	P unsafe.Pointer
 }
+
+// Flags AsciiType
 type AsciiTypeFlags int
 
 const (
@@ -1198,6 +1200,7 @@ func (v BookmarkFile) ToFile(filename string) (result bool, err error) {
 // g_bookmark_file_error_quark
 // container is not nil, container is BookmarkFile
 // num arg is 0
+// Enum BookmarkFileError
 type BookmarkFileErrorEnum int
 
 const (
@@ -1516,13 +1519,13 @@ type Checksum struct {
 // g_checksum_new
 // container is not nil, container is Checksum
 // is constructor
-func NewChecksum(checksum_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result Checksum) {
+func NewChecksum(checksum_type ChecksumTypeEnum) (result Checksum) {
 	iv, err := _I.Get(77, "Checksum", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_checksum_type := gi.NewIntArgument(checksum_type) /*TODO*/
+	arg_checksum_type := gi.NewIntArgument(int(checksum_type))
 	args := []gi.Argument{arg_checksum_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1612,13 +1615,13 @@ func (v Checksum) Update(data int /*TODO_TYPE isPtr: true, tag: array*/, length 
 // container is not nil, container is Checksum
 // is method
 // arg0Type tag: interface, isPtr: false
-func ChecksumTypeGetLength1(checksum_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result int64) {
+func ChecksumTypeGetLength1(checksum_type ChecksumTypeEnum) (result int64) {
 	iv, err := _I.Get(83, "Checksum", "type_get_length")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_checksum_type := gi.NewIntArgument(checksum_type) /*TODO*/
+	arg_checksum_type := gi.NewIntArgument(int(checksum_type))
 	args := []gi.Argument{arg_checksum_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1626,6 +1629,7 @@ func ChecksumTypeGetLength1(checksum_type int /*TODO_TYPE isPtr: false, tag: int
 	return
 }
 
+// Enum ChecksumType
 type ChecksumTypeEnum int
 
 const (
@@ -1731,6 +1735,7 @@ func (v Cond) WaitUntil(mutex Mutex, end_time int64) (result bool) {
 	return
 }
 
+// Enum ConvertError
 type ConvertErrorEnum int
 
 const (
@@ -1772,14 +1777,14 @@ func NewDate() (result Date) {
 // g_date_new_dmy
 // container is not nil, container is Date
 // is constructor
-func NewDateDmy(day uint8, month int /*TODO_TYPE isPtr: false, tag: interface*/, year uint16) (result Date) {
+func NewDateDmy(day uint8, month DateMonthEnum, year uint16) (result Date) {
 	iv, err := _I.Get(91, "Date", "new_dmy")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_day := gi.NewUint8Argument(day)
-	arg_month := gi.NewIntArgument(month) /*TODO*/
+	arg_month := gi.NewIntArgument(int(month))
 	arg_year := gi.NewUint16Argument(year)
 	args := []gi.Argument{arg_day, arg_month, arg_year}
 	var ret gi.Argument
@@ -2036,7 +2041,7 @@ func (v Date) GetMondayWeekOfYear() (result uint32) {
 // g_date_get_month
 // container is not nil, container is Date
 // is method
-func (v Date) GetMonth() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Date) GetMonth() (result DateMonthEnum) {
 	iv, err := _I.Get(107, "Date", "get_month")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2046,7 +2051,7 @@ func (v Date) GetMonth() (result int /*TODO_TYPE isPtr: false, tag: interface*/)
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DateMonthEnum(ret.Int())
 	return
 }
 
@@ -2070,7 +2075,7 @@ func (v Date) GetSundayWeekOfYear() (result uint32) {
 // g_date_get_weekday
 // container is not nil, container is Date
 // is method
-func (v Date) GetWeekday() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Date) GetWeekday() (result DateWeekdayEnum) {
 	iv, err := _I.Get(109, "Date", "get_weekday")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2080,7 +2085,7 @@ func (v Date) GetWeekday() (result int /*TODO_TYPE isPtr: false, tag: interface*
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DateWeekdayEnum(ret.Int())
 	return
 }
 
@@ -2168,7 +2173,7 @@ func (v Date) SetDay(day uint8) {
 // g_date_set_dmy
 // container is not nil, container is Date
 // is method
-func (v Date) SetDmy(day uint8, month int /*TODO_TYPE isPtr: false, tag: interface*/, y uint16) {
+func (v Date) SetDmy(day uint8, month DateMonthEnum, y uint16) {
 	iv, err := _I.Get(115, "Date", "set_dmy")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2176,7 +2181,7 @@ func (v Date) SetDmy(day uint8, month int /*TODO_TYPE isPtr: false, tag: interfa
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_day := gi.NewUint8Argument(day)
-	arg_month := gi.NewIntArgument(month) /*TODO*/
+	arg_month := gi.NewIntArgument(int(month))
 	arg_y := gi.NewUint16Argument(y)
 	args := []gi.Argument{arg_v, arg_day, arg_month, arg_y}
 	iv.Call(args, nil, nil)
@@ -2200,14 +2205,14 @@ func (v Date) SetJulian(julian_date uint32) {
 // g_date_set_month
 // container is not nil, container is Date
 // is method
-func (v Date) SetMonth(month int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Date) SetMonth(month DateMonthEnum) {
 	iv, err := _I.Get(117, "Date", "set_month")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_month := gi.NewIntArgument(month) /*TODO*/
+	arg_month := gi.NewIntArgument(int(month))
 	args := []gi.Argument{arg_v, arg_month}
 	iv.Call(args, nil, nil)
 }
@@ -2370,13 +2375,13 @@ func (v Date) Valid() (result bool) {
 // container is not nil, container is Date
 // is method
 // arg0Type tag: interface, isPtr: false
-func DateGetDaysInMonth1(month int /*TODO_TYPE isPtr: false, tag: interface*/, year uint16) (result uint8) {
+func DateGetDaysInMonth1(month DateMonthEnum, year uint16) (result uint8) {
 	iv, err := _I.Get(128, "Date", "get_days_in_month")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_month := gi.NewIntArgument(month) /*TODO*/
+	arg_month := gi.NewIntArgument(int(month))
 	arg_year := gi.NewUint16Argument(year)
 	args := []gi.Argument{arg_month, arg_year}
 	var ret gi.Argument
@@ -2486,14 +2491,14 @@ func DateValidDay1(day uint8) (result bool) {
 // container is not nil, container is Date
 // is method
 // arg0Type tag: guint8, isPtr: false
-func DateValidDmy1(day uint8, month int /*TODO_TYPE isPtr: false, tag: interface*/, year uint16) (result bool) {
+func DateValidDmy1(day uint8, month DateMonthEnum, year uint16) (result bool) {
 	iv, err := _I.Get(134, "Date", "valid_dmy")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_day := gi.NewUint8Argument(day)
-	arg_month := gi.NewIntArgument(month) /*TODO*/
+	arg_month := gi.NewIntArgument(int(month))
 	arg_year := gi.NewUint16Argument(year)
 	args := []gi.Argument{arg_day, arg_month, arg_year}
 	var ret gi.Argument
@@ -2524,13 +2529,13 @@ func DateValidJulian1(julian_date uint32) (result bool) {
 // container is not nil, container is Date
 // is method
 // arg0Type tag: interface, isPtr: false
-func DateValidMonth1(month int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func DateValidMonth1(month DateMonthEnum) (result bool) {
 	iv, err := _I.Get(136, "Date", "valid_month")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_month := gi.NewIntArgument(month) /*TODO*/
+	arg_month := gi.NewIntArgument(int(month))
 	args := []gi.Argument{arg_month}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2542,13 +2547,13 @@ func DateValidMonth1(month int /*TODO_TYPE isPtr: false, tag: interface*/) (resu
 // container is not nil, container is Date
 // is method
 // arg0Type tag: interface, isPtr: false
-func DateValidWeekday1(weekday int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func DateValidWeekday1(weekday DateWeekdayEnum) (result bool) {
 	iv, err := _I.Get(137, "Date", "valid_weekday")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_weekday := gi.NewIntArgument(weekday) /*TODO*/
+	arg_weekday := gi.NewIntArgument(int(weekday))
 	args := []gi.Argument{arg_weekday}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2574,6 +2579,7 @@ func DateValidYear1(year uint16) (result bool) {
 	return
 }
 
+// Enum DateDMY
 type DateDMYEnum int
 
 const (
@@ -2582,6 +2588,7 @@ const (
 	DateDMYYear              = 2
 )
 
+// Enum DateMonth
 type DateMonthEnum int
 
 const (
@@ -3480,6 +3487,7 @@ func DateTimeHash1(datetime unsafe.Pointer) (result uint32) {
 	return
 }
 
+// Enum DateWeekday
 type DateWeekdayEnum int
 
 const (
@@ -3651,6 +3659,7 @@ func (v Error) Matches(domain uint32, code int32) (result bool) {
 	return
 }
 
+// Enum ErrorType
 type ErrorTypeEnum int
 
 const (
@@ -3664,6 +3673,7 @@ const (
 	ErrorTypeFloatMalformed                  = 7
 )
 
+// Enum FileError
 type FileErrorEnum int
 
 const (
@@ -3694,6 +3704,7 @@ const (
 	FileErrorFailed                    = 24
 )
 
+// Flags FileTest
 type FileTestFlags int
 
 const (
@@ -3708,6 +3719,8 @@ const (
 type FloatIEEE754 struct {
 	P unsafe.Pointer
 }
+
+// Flags FormatSizeFlags
 type FormatSizeFlags int
 
 const (
@@ -4256,6 +4269,7 @@ func HookUnref1(hook_list HookList, hook Hook) {
 	iv.Call(args, nil, nil)
 }
 
+// Flags HookFlagMask
 type HookFlagMaskFlags int
 
 const (
@@ -4391,7 +4405,7 @@ func (v IOChannel) Close() {
 // g_io_channel_flush
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) Flush() (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v IOChannel) Flush() (result IOStatusEnum, err error) {
 	iv, err := _I.Get(233, "IOChannel", "flush")
 	if err != nil {
 		return
@@ -4402,7 +4416,7 @@ func (v IOChannel) Flush() (result int /*TODO_TYPE isPtr: false, tag: interface*
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -4410,7 +4424,7 @@ func (v IOChannel) Flush() (result int /*TODO_TYPE isPtr: false, tag: interface*
 // g_io_channel_get_buffer_condition
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) GetBufferCondition() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v IOChannel) GetBufferCondition() (result IOConditionFlags) {
 	iv, err := _I.Get(234, "IOChannel", "get_buffer_condition")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4420,7 +4434,7 @@ func (v IOChannel) GetBufferCondition() (result int /*TODO_TYPE isPtr: false, ta
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = IOConditionFlags(ret.Int())
 	return
 }
 
@@ -4495,7 +4509,7 @@ func (v IOChannel) GetEncoding() (result string) {
 // g_io_channel_get_flags
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v IOChannel) GetFlags() (result IOFlags) {
 	iv, err := _I.Get(239, "IOChannel", "get_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4505,7 +4519,7 @@ func (v IOChannel) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interfa
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = IOFlags(ret.Int())
 	return
 }
 
@@ -4544,7 +4558,7 @@ func (v IOChannel) Init() {
 // g_io_channel_read
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) Read(buf string, count uint64, bytes_read uint64) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v IOChannel) Read(buf string, count uint64, bytes_read uint64) (result IOErrorEnum) {
 	iv, err := _I.Get(242, "IOChannel", "read")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4558,7 +4572,7 @@ func (v IOChannel) Read(buf string, count uint64, bytes_read uint64) (result int
 	args := []gi.Argument{arg_v, arg_buf, arg_count, arg_bytes_read}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = IOErrorEnum(ret.Int())
 	gi.Free(c_buf)
 	return
 }
@@ -4566,7 +4580,7 @@ func (v IOChannel) Read(buf string, count uint64, bytes_read uint64) (result int
 // g_io_channel_read_chars
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) ReadChars(count uint64) (result int /*TODO_TYPE isPtr: false, tag: interface*/, buf int /*TODO_TYPE*/, bytes_read uint64, err error) {
+func (v IOChannel) ReadChars(count uint64) (result IOStatusEnum, buf int /*TODO_TYPE*/, bytes_read uint64, err error) {
 	iv, err := _I.Get(243, "IOChannel", "read_chars")
 	if err != nil {
 		return
@@ -4580,7 +4594,7 @@ func (v IOChannel) ReadChars(count uint64) (result int /*TODO_TYPE isPtr: false,
 	args := []gi.Argument{arg_v, arg_buf, arg_count, arg_bytes_read, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int()     /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	buf = outArgs[0].Int() /*TODO*/
 	bytes_read = outArgs[1].Uint64()
 	err = gi.ToError(outArgs[2].Pointer())
@@ -4590,7 +4604,7 @@ func (v IOChannel) ReadChars(count uint64) (result int /*TODO_TYPE isPtr: false,
 // g_io_channel_read_line
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) ReadLine() (result int /*TODO_TYPE isPtr: false, tag: interface*/, str_return string, length uint64, terminator_pos uint64, err error) {
+func (v IOChannel) ReadLine() (result IOStatusEnum, str_return string, length uint64, terminator_pos uint64, err error) {
 	iv, err := _I.Get(244, "IOChannel", "read_line")
 	if err != nil {
 		return
@@ -4604,7 +4618,7 @@ func (v IOChannel) ReadLine() (result int /*TODO_TYPE isPtr: false, tag: interfa
 	args := []gi.Argument{arg_v, arg_str_return, arg_length, arg_terminator_pos, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	str_return = outArgs[0].String().Take()
 	length = outArgs[1].Uint64()
 	terminator_pos = outArgs[2].Uint64()
@@ -4615,7 +4629,7 @@ func (v IOChannel) ReadLine() (result int /*TODO_TYPE isPtr: false, tag: interfa
 // g_io_channel_read_line_string
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) ReadLineString(buffer String, terminator_pos uint64) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v IOChannel) ReadLineString(buffer String, terminator_pos uint64) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(245, "IOChannel", "read_line_string")
 	if err != nil {
 		return
@@ -4628,7 +4642,7 @@ func (v IOChannel) ReadLineString(buffer String, terminator_pos uint64) (result 
 	args := []gi.Argument{arg_v, arg_buffer, arg_terminator_pos, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -4636,7 +4650,7 @@ func (v IOChannel) ReadLineString(buffer String, terminator_pos uint64) (result 
 // g_io_channel_read_to_end
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) ReadToEnd() (result int /*TODO_TYPE isPtr: false, tag: interface*/, str_return int /*TODO_TYPE*/, length uint64, err error) {
+func (v IOChannel) ReadToEnd() (result IOStatusEnum, str_return int /*TODO_TYPE*/, length uint64, err error) {
 	iv, err := _I.Get(246, "IOChannel", "read_to_end")
 	if err != nil {
 		return
@@ -4649,7 +4663,7 @@ func (v IOChannel) ReadToEnd() (result int /*TODO_TYPE isPtr: false, tag: interf
 	args := []gi.Argument{arg_v, arg_str_return, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int()            /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	str_return = outArgs[0].Int() /*TODO*/
 	length = outArgs[1].Uint64()
 	err = gi.ToError(outArgs[2].Pointer())
@@ -4659,7 +4673,7 @@ func (v IOChannel) ReadToEnd() (result int /*TODO_TYPE isPtr: false, tag: interf
 // g_io_channel_read_unichar
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) ReadUnichar() (result int /*TODO_TYPE isPtr: false, tag: interface*/, thechar int /*TODO_TYPE*/, err error) {
+func (v IOChannel) ReadUnichar() (result IOStatusEnum, thechar rune, err error) {
 	iv, err := _I.Get(247, "IOChannel", "read_unichar")
 	if err != nil {
 		return
@@ -4671,8 +4685,8 @@ func (v IOChannel) ReadUnichar() (result int /*TODO_TYPE isPtr: false, tag: inte
 	args := []gi.Argument{arg_v, arg_thechar, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int()         /*TODO*/
-	thechar = outArgs[0].Int() /*TODO*/
+	result = IOStatusEnum(ret.Int())
+	thechar = rune(outArgs[0].Uint32())
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -4697,7 +4711,7 @@ func (v IOChannel) Ref() (result IOChannel) {
 // g_io_channel_seek
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) Seek(offset int64, type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v IOChannel) Seek(offset int64, type1 SeekTypeEnum) (result IOErrorEnum) {
 	iv, err := _I.Get(249, "IOChannel", "seek")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4705,18 +4719,18 @@ func (v IOChannel) Seek(offset int64, type1 int /*TODO_TYPE isPtr: false, tag: i
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_offset := gi.NewInt64Argument(offset)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_v, arg_offset, arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = IOErrorEnum(ret.Int())
 	return
 }
 
 // g_io_channel_seek_position
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) SeekPosition(offset int64, type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v IOChannel) SeekPosition(offset int64, type1 SeekTypeEnum) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(250, "IOChannel", "seek_position")
 	if err != nil {
 		return
@@ -4724,12 +4738,12 @@ func (v IOChannel) SeekPosition(offset int64, type1 int /*TODO_TYPE isPtr: false
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_offset := gi.NewInt64Argument(offset)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_offset, arg_type1, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -4782,7 +4796,7 @@ func (v IOChannel) SetCloseOnUnref(do_close bool) {
 // g_io_channel_set_encoding
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) SetEncoding(encoding string) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v IOChannel) SetEncoding(encoding string) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(254, "IOChannel", "set_encoding")
 	if err != nil {
 		return
@@ -4795,7 +4809,7 @@ func (v IOChannel) SetEncoding(encoding string) (result int /*TODO_TYPE isPtr: f
 	args := []gi.Argument{arg_v, arg_encoding, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	gi.Free(c_encoding)
 	err = gi.ToError(outArgs[0].Pointer())
 	return
@@ -4804,19 +4818,19 @@ func (v IOChannel) SetEncoding(encoding string) (result int /*TODO_TYPE isPtr: f
 // g_io_channel_set_flags
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) SetFlags(flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v IOChannel) SetFlags(flags IOFlags) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(255, "IOChannel", "set_flags")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -4842,7 +4856,7 @@ func (v IOChannel) SetLineTerm(line_term string, length int32) {
 // g_io_channel_shutdown
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) Shutdown(flush bool) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v IOChannel) Shutdown(flush bool) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(257, "IOChannel", "shutdown")
 	if err != nil {
 		return
@@ -4854,7 +4868,7 @@ func (v IOChannel) Shutdown(flush bool) (result int /*TODO_TYPE isPtr: false, ta
 	args := []gi.Argument{arg_v, arg_flush, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -4893,7 +4907,7 @@ func (v IOChannel) Unref() {
 // g_io_channel_write
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) Write(buf string, count uint64, bytes_written uint64) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v IOChannel) Write(buf string, count uint64, bytes_written uint64) (result IOErrorEnum) {
 	iv, err := _I.Get(260, "IOChannel", "write")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4907,7 +4921,7 @@ func (v IOChannel) Write(buf string, count uint64, bytes_written uint64) (result
 	args := []gi.Argument{arg_v, arg_buf, arg_count, arg_bytes_written}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = IOErrorEnum(ret.Int())
 	gi.Free(c_buf)
 	return
 }
@@ -4915,7 +4929,7 @@ func (v IOChannel) Write(buf string, count uint64, bytes_written uint64) (result
 // g_io_channel_write_chars
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) WriteChars(buf int /*TODO_TYPE isPtr: true, tag: array*/, count int64) (result int /*TODO_TYPE isPtr: false, tag: interface*/, bytes_written uint64, err error) {
+func (v IOChannel) WriteChars(buf int /*TODO_TYPE isPtr: true, tag: array*/, count int64) (result IOStatusEnum, bytes_written uint64, err error) {
 	iv, err := _I.Get(261, "IOChannel", "write_chars")
 	if err != nil {
 		return
@@ -4929,7 +4943,7 @@ func (v IOChannel) WriteChars(buf int /*TODO_TYPE isPtr: true, tag: array*/, cou
 	args := []gi.Argument{arg_v, arg_buf, arg_count, arg_bytes_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	bytes_written = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
@@ -4938,19 +4952,19 @@ func (v IOChannel) WriteChars(buf int /*TODO_TYPE isPtr: true, tag: array*/, cou
 // g_io_channel_write_unichar
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) WriteUnichar(thechar int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v IOChannel) WriteUnichar(thechar rune) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(262, "IOChannel", "write_unichar")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_thechar := gi.NewIntArgument(thechar) /*TODO*/
+	arg_thechar := gi.NewUint32Argument(uint32(thechar))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_thechar, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = IOStatusEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -4959,7 +4973,7 @@ func (v IOChannel) WriteUnichar(thechar int /*TODO_TYPE isPtr: false, tag: gunic
 // container is not nil, container is IOChannel
 // is method
 // arg0Type tag: gint32, isPtr: false
-func IOChannelErrorFromErrno1(en int32) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func IOChannelErrorFromErrno1(en int32) (result IOChannelErrorEnum) {
 	iv, err := _I.Get(263, "IOChannel", "error_from_errno")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4969,13 +4983,14 @@ func IOChannelErrorFromErrno1(en int32) (result int /*TODO_TYPE isPtr: false, ta
 	args := []gi.Argument{arg_en}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = IOChannelErrorEnum(ret.Int())
 	return
 }
 
 // g_io_channel_error_quark
 // container is not nil, container is IOChannel
 // num arg is 0
+// Enum IOChannelError
 type IOChannelErrorEnum int
 
 const (
@@ -4990,6 +5005,7 @@ const (
 	IOChannelErrorFailed                      = 8
 )
 
+// Flags IOCondition
 type IOConditionFlags int
 
 const (
@@ -5001,6 +5017,7 @@ const (
 	IOConditionNval                  = 32
 )
 
+// Enum IOError
 type IOErrorEnum int
 
 const (
@@ -5010,6 +5027,7 @@ const (
 	IOErrorUnknown             = 3
 )
 
+// Flags IOFlags
 type IOFlags int
 
 const (
@@ -5028,6 +5046,8 @@ const (
 type IOFuncs struct {
 	P unsafe.Pointer
 }
+
+// Enum IOStatus
 type IOStatusEnum int
 
 const (
@@ -5533,7 +5553,7 @@ func (v KeyFile) HasGroup(group_name string) (result bool) {
 // g_key_file_load_from_bytes
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) LoadFromBytes(bytes Bytes, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, err error) {
+func (v KeyFile) LoadFromBytes(bytes Bytes, flags KeyFileFlags) (result bool, err error) {
 	iv, err := _I.Get(285, "KeyFile", "load_from_bytes")
 	if err != nil {
 		return
@@ -5541,7 +5561,7 @@ func (v KeyFile) LoadFromBytes(bytes Bytes, flags int /*TODO_TYPE isPtr: false, 
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_bytes := gi.NewPointerArgument(bytes.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_bytes, arg_flags, arg_err}
 	var ret gi.Argument
@@ -5554,7 +5574,7 @@ func (v KeyFile) LoadFromBytes(bytes Bytes, flags int /*TODO_TYPE isPtr: false, 
 // g_key_file_load_from_data
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) LoadFromData(data string, length uint64, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, err error) {
+func (v KeyFile) LoadFromData(data string, length uint64, flags KeyFileFlags) (result bool, err error) {
 	iv, err := _I.Get(286, "KeyFile", "load_from_data")
 	if err != nil {
 		return
@@ -5564,7 +5584,7 @@ func (v KeyFile) LoadFromData(data string, length uint64, flags int /*TODO_TYPE 
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_data := gi.NewStringArgument(c_data)
 	arg_length := gi.NewUint64Argument(length)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data, arg_length, arg_flags, arg_err}
 	var ret gi.Argument
@@ -5578,7 +5598,7 @@ func (v KeyFile) LoadFromData(data string, length uint64, flags int /*TODO_TYPE 
 // g_key_file_load_from_data_dirs
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) LoadFromDataDirs(file string, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, full_path string, err error) {
+func (v KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (result bool, full_path string, err error) {
 	iv, err := _I.Get(287, "KeyFile", "load_from_data_dirs")
 	if err != nil {
 		return
@@ -5588,7 +5608,7 @@ func (v KeyFile) LoadFromDataDirs(file string, flags int /*TODO_TYPE isPtr: fals
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_file := gi.NewStringArgument(c_file)
 	arg_full_path := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_file, arg_full_path, arg_flags, arg_err}
 	var ret gi.Argument
@@ -5603,7 +5623,7 @@ func (v KeyFile) LoadFromDataDirs(file string, flags int /*TODO_TYPE isPtr: fals
 // g_key_file_load_from_dirs
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) LoadFromDirs(file string, search_dirs int /*TODO_TYPE isPtr: true, tag: array*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, full_path string, err error) {
+func (v KeyFile) LoadFromDirs(file string, search_dirs int /*TODO_TYPE isPtr: true, tag: array*/, flags KeyFileFlags) (result bool, full_path string, err error) {
 	iv, err := _I.Get(288, "KeyFile", "load_from_dirs")
 	if err != nil {
 		return
@@ -5614,7 +5634,7 @@ func (v KeyFile) LoadFromDirs(file string, search_dirs int /*TODO_TYPE isPtr: tr
 	arg_file := gi.NewStringArgument(c_file)
 	arg_search_dirs := gi.NewIntArgument(search_dirs) /*TODO*/
 	arg_full_path := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_file, arg_search_dirs, arg_full_path, arg_flags, arg_err}
 	var ret gi.Argument
@@ -5629,7 +5649,7 @@ func (v KeyFile) LoadFromDirs(file string, search_dirs int /*TODO_TYPE isPtr: tr
 // g_key_file_load_from_file
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) LoadFromFile(file string, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, err error) {
+func (v KeyFile) LoadFromFile(file string, flags KeyFileFlags) (result bool, err error) {
 	iv, err := _I.Get(289, "KeyFile", "load_from_file")
 	if err != nil {
 		return
@@ -5638,7 +5658,7 @@ func (v KeyFile) LoadFromFile(file string, flags int /*TODO_TYPE isPtr: false, t
 	c_file := gi.CString(file)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_file := gi.NewStringArgument(c_file)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_file, arg_flags, arg_err}
 	var ret gi.Argument
@@ -6114,6 +6134,7 @@ func (v KeyFile) Unref() {
 // g_key_file_error_quark
 // container is not nil, container is KeyFile
 // num arg is 0
+// Enum KeyFileError
 type KeyFileErrorEnum int
 
 const (
@@ -6125,6 +6146,7 @@ const (
 	KeyFileErrorInvalidValue                     = 5
 )
 
+// Flags KeyFileFlags
 type KeyFileFlags int
 
 const (
@@ -6142,6 +6164,8 @@ type List struct {
 type LogField struct {
 	P unsafe.Pointer
 }
+
+// Flags LogLevelFlags
 type LogLevelFlags int
 
 const (
@@ -6156,6 +6180,7 @@ const (
 	LogLevelFlagsLevelMask                   = -4
 )
 
+// Enum LogWriterOutput
 type LogWriterOutputEnum int
 
 const (
@@ -6806,6 +6831,7 @@ func (v MappedFile) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Flags MarkupCollectType
 type MarkupCollectTypeFlags int
 
 const (
@@ -6817,6 +6843,7 @@ const (
 	MarkupCollectTypeOptional                        = 65536
 )
 
+// Enum MarkupError
 type MarkupErrorEnum int
 
 const (
@@ -6837,14 +6864,14 @@ type MarkupParseContext struct {
 // g_markup_parse_context_new
 // container is not nil, container is MarkupParseContext
 // is constructor
-func NewMarkupParseContext(parser MarkupParser, flags int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, user_data_dnotify int /*TODO_TYPE isPtr: false, tag: interface*/) (result MarkupParseContext) {
+func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_data unsafe.Pointer, user_data_dnotify int /*TODO_TYPE isPtr: false, tag: interface*/) (result MarkupParseContext) {
 	iv, err := _I.Get(352, "MarkupParseContext", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_parser := gi.NewPointerArgument(parser.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_user_data_dnotify := gi.NewIntArgument(user_data_dnotify) /*TODO*/
 	args := []gi.Argument{arg_parser, arg_flags, arg_user_data, arg_user_data_dnotify}
@@ -7018,6 +7045,7 @@ func (v MarkupParseContext) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Flags MarkupParseFlags
 type MarkupParseFlags int
 
 const (
@@ -7521,14 +7549,14 @@ func (v Node) NChildren() (result uint32) {
 // g_node_n_nodes
 // container is not nil, container is Node
 // is method
-func (v Node) NNodes(flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func (v Node) NNodes(flags TraverseFlags) (result uint32) {
 	iv, err := _I.Get(390, "Node", "n_nodes")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7564,6 +7592,7 @@ func (v Node) Unlink() {
 	iv.Call(args, nil, nil)
 }
 
+// Enum NormalizeMode
 type NormalizeModeEnum int
 
 const (
@@ -7577,6 +7606,7 @@ const (
 	NormalizeModeNfkc                             = 3
 )
 
+// Enum NumberParserError
 type NumberParserErrorEnum int
 
 const (
@@ -7623,6 +7653,7 @@ func OnceInitLeave1(location unsafe.Pointer, result uint64) {
 	iv.Call(args, nil, nil)
 }
 
+// Enum OnceStatus
 type OnceStatusEnum int
 
 const (
@@ -7631,6 +7662,7 @@ const (
 	OnceStatusReady                    = 2
 )
 
+// Enum OptionArg
 type OptionArgEnum int
 
 const (
@@ -7988,6 +8020,8 @@ func (v OptionContext) SetTranslationDomain(domain string) {
 type OptionEntry struct {
 	P unsafe.Pointer
 }
+
+// Enum OptionError
 type OptionErrorEnum int
 
 const (
@@ -7996,6 +8030,7 @@ const (
 	OptionErrorFailed                        = 2
 )
 
+// Flags OptionFlags
 type OptionFlags int
 
 const (
@@ -8858,7 +8893,7 @@ type Regex struct {
 // g_regex_new
 // container is not nil, container is Regex
 // is constructor
-func NewRegex(pattern string, compile_options int /*TODO_TYPE isPtr: false, tag: interface*/, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result Regex, err error) {
+func NewRegex(pattern string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result Regex, err error) {
 	iv, err := _I.Get(466, "Regex", "new")
 	if err != nil {
 		return
@@ -8866,8 +8901,8 @@ func NewRegex(pattern string, compile_options int /*TODO_TYPE isPtr: false, tag:
 	var outArgs [1]gi.Argument
 	c_pattern := gi.CString(pattern)
 	arg_pattern := gi.NewStringArgument(c_pattern)
-	arg_compile_options := gi.NewIntArgument(compile_options) /*TODO*/
-	arg_match_options := gi.NewIntArgument(match_options)     /*TODO*/
+	arg_compile_options := gi.NewIntArgument(int(compile_options))
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_pattern, arg_compile_options, arg_match_options, arg_err}
 	var ret gi.Argument
@@ -8898,7 +8933,7 @@ func (v Regex) GetCaptureCount() (result int32) {
 // g_regex_get_compile_flags
 // container is not nil, container is Regex
 // is method
-func (v Regex) GetCompileFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Regex) GetCompileFlags() (result RegexCompileFlags) {
 	iv, err := _I.Get(468, "Regex", "get_compile_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8908,7 +8943,7 @@ func (v Regex) GetCompileFlags() (result int /*TODO_TYPE isPtr: false, tag: inte
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = RegexCompileFlags(ret.Int())
 	return
 }
 
@@ -8932,7 +8967,7 @@ func (v Regex) GetHasCrOrLf() (result bool) {
 // g_regex_get_match_flags
 // container is not nil, container is Regex
 // is method
-func (v Regex) GetMatchFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Regex) GetMatchFlags() (result RegexMatchFlags) {
 	iv, err := _I.Get(470, "Regex", "get_match_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8942,7 +8977,7 @@ func (v Regex) GetMatchFlags() (result int /*TODO_TYPE isPtr: false, tag: interf
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = RegexMatchFlags(ret.Int())
 	return
 }
 
@@ -9020,7 +9055,7 @@ func (v Regex) GetStringNumber(name string) (result int32) {
 // g_regex_match
 // container is not nil, container is Regex
 // is method
-func (v Regex) Match(string string, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, match_info int /*TODO_TYPE*/) {
+func (v Regex) Match(string string, match_options RegexMatchFlags) (result bool, match_info MatchInfo) {
 	iv, err := _I.Get(475, "Regex", "match")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9030,21 +9065,21 @@ func (v Regex) Match(string string, match_options int /*TODO_TYPE isPtr: false, 
 	c_string := gi.CString(string)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_string := gi.NewStringArgument(c_string)
-	arg_match_options := gi.NewIntArgument(match_options) /*TODO*/
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	arg_match_info := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_string, arg_match_options, arg_match_info}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
 	gi.Free(c_string)
-	match_info = outArgs[0].Int() /*TODO*/
+	match_info.P = outArgs[0].Pointer()
 	return
 }
 
 // g_regex_match_all
 // container is not nil, container is Regex
 // is method
-func (v Regex) MatchAll(string string, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, match_info int /*TODO_TYPE*/) {
+func (v Regex) MatchAll(string string, match_options RegexMatchFlags) (result bool, match_info MatchInfo) {
 	iv, err := _I.Get(476, "Regex", "match_all")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9054,21 +9089,21 @@ func (v Regex) MatchAll(string string, match_options int /*TODO_TYPE isPtr: fals
 	c_string := gi.CString(string)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_string := gi.NewStringArgument(c_string)
-	arg_match_options := gi.NewIntArgument(match_options) /*TODO*/
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	arg_match_info := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_string, arg_match_options, arg_match_info}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
 	gi.Free(c_string)
-	match_info = outArgs[0].Int() /*TODO*/
+	match_info.P = outArgs[0].Pointer()
 	return
 }
 
 // g_regex_match_all_full
 // container is not nil, container is Regex
 // is method
-func (v Regex) MatchAllFull(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, match_info int /*TODO_TYPE*/, err error) {
+func (v Regex) MatchAllFull(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
 	iv, err := _I.Get(477, "Regex", "match_all_full")
 	if err != nil {
 		return
@@ -9078,14 +9113,14 @@ func (v Regex) MatchAllFull(string int /*TODO_TYPE isPtr: true, tag: array*/, st
 	arg_string := gi.NewIntArgument(string) /*TODO*/
 	arg_string_len := gi.NewInt64Argument(string_len)
 	arg_start_position := gi.NewInt32Argument(start_position)
-	arg_match_options := gi.NewIntArgument(match_options) /*TODO*/
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	arg_match_info := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_string, arg_string_len, arg_start_position, arg_match_options, arg_match_info, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
-	match_info = outArgs[0].Int() /*TODO*/
+	match_info.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -9093,7 +9128,7 @@ func (v Regex) MatchAllFull(string int /*TODO_TYPE isPtr: true, tag: array*/, st
 // g_regex_match_full
 // container is not nil, container is Regex
 // is method
-func (v Regex) MatchFull(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, match_info int /*TODO_TYPE*/, err error) {
+func (v Regex) MatchFull(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
 	iv, err := _I.Get(478, "Regex", "match_full")
 	if err != nil {
 		return
@@ -9103,14 +9138,14 @@ func (v Regex) MatchFull(string int /*TODO_TYPE isPtr: true, tag: array*/, strin
 	arg_string := gi.NewIntArgument(string) /*TODO*/
 	arg_string_len := gi.NewInt64Argument(string_len)
 	arg_start_position := gi.NewInt32Argument(start_position)
-	arg_match_options := gi.NewIntArgument(match_options) /*TODO*/
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	arg_match_info := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_string, arg_string_len, arg_start_position, arg_match_options, arg_match_info, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
-	match_info = outArgs[0].Int() /*TODO*/
+	match_info.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -9135,7 +9170,7 @@ func (v Regex) Ref() (result Regex) {
 // g_regex_replace
 // container is not nil, container is Regex
 // is method
-func (v Regex) Replace(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, replacement string, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result string, err error) {
+func (v Regex) Replace(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
 	iv, err := _I.Get(480, "Regex", "replace")
 	if err != nil {
 		return
@@ -9147,7 +9182,7 @@ func (v Regex) Replace(string int /*TODO_TYPE isPtr: true, tag: array*/, string_
 	arg_string_len := gi.NewInt64Argument(string_len)
 	arg_start_position := gi.NewInt32Argument(start_position)
 	arg_replacement := gi.NewStringArgument(c_replacement)
-	arg_match_options := gi.NewIntArgument(match_options) /*TODO*/
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_string, arg_string_len, arg_start_position, arg_replacement, arg_match_options, arg_err}
 	var ret gi.Argument
@@ -9161,7 +9196,7 @@ func (v Regex) Replace(string int /*TODO_TYPE isPtr: true, tag: array*/, string_
 // g_regex_replace_literal
 // container is not nil, container is Regex
 // is method
-func (v Regex) ReplaceLiteral(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, replacement string, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result string, err error) {
+func (v Regex) ReplaceLiteral(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
 	iv, err := _I.Get(481, "Regex", "replace_literal")
 	if err != nil {
 		return
@@ -9173,7 +9208,7 @@ func (v Regex) ReplaceLiteral(string int /*TODO_TYPE isPtr: true, tag: array*/, 
 	arg_string_len := gi.NewInt64Argument(string_len)
 	arg_start_position := gi.NewInt32Argument(start_position)
 	arg_replacement := gi.NewStringArgument(c_replacement)
-	arg_match_options := gi.NewIntArgument(match_options) /*TODO*/
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_string, arg_string_len, arg_start_position, arg_replacement, arg_match_options, arg_err}
 	var ret gi.Argument
@@ -9187,7 +9222,7 @@ func (v Regex) ReplaceLiteral(string int /*TODO_TYPE isPtr: true, tag: array*/, 
 // g_regex_split
 // container is not nil, container is Regex
 // is method
-func (v Regex) Split(string string, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Regex) Split(string string, match_options RegexMatchFlags) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
 	iv, err := _I.Get(482, "Regex", "split")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9196,7 +9231,7 @@ func (v Regex) Split(string string, match_options int /*TODO_TYPE isPtr: false, 
 	c_string := gi.CString(string)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_string := gi.NewStringArgument(c_string)
-	arg_match_options := gi.NewIntArgument(match_options) /*TODO*/
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	args := []gi.Argument{arg_v, arg_string, arg_match_options}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9208,7 +9243,7 @@ func (v Regex) Split(string string, match_options int /*TODO_TYPE isPtr: false, 
 // g_regex_split_full
 // container is not nil, container is Regex
 // is method
-func (v Regex) SplitFull(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, match_options int /*TODO_TYPE isPtr: false, tag: interface*/, max_tokens int32) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func (v Regex) SplitFull(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, match_options RegexMatchFlags, max_tokens int32) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
 	iv, err := _I.Get(483, "Regex", "split_full")
 	if err != nil {
 		return
@@ -9218,7 +9253,7 @@ func (v Regex) SplitFull(string int /*TODO_TYPE isPtr: true, tag: array*/, strin
 	arg_string := gi.NewIntArgument(string) /*TODO*/
 	arg_string_len := gi.NewInt64Argument(string_len)
 	arg_start_position := gi.NewInt32Argument(start_position)
-	arg_match_options := gi.NewIntArgument(match_options) /*TODO*/
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	arg_max_tokens := gi.NewInt32Argument(max_tokens)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_string, arg_string_len, arg_start_position, arg_match_options, arg_max_tokens, arg_err}
@@ -9314,7 +9349,7 @@ func RegexEscapeString1(string int /*TODO_TYPE isPtr: true, tag: array*/, length
 // container is not nil, container is Regex
 // is method
 // arg0Type tag: utf8, isPtr: true
-func RegexMatchSimple1(pattern string, string string, compile_options int /*TODO_TYPE isPtr: false, tag: interface*/, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func RegexMatchSimple1(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result bool) {
 	iv, err := _I.Get(489, "Regex", "match_simple")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9324,8 +9359,8 @@ func RegexMatchSimple1(pattern string, string string, compile_options int /*TODO
 	c_string := gi.CString(string)
 	arg_pattern := gi.NewStringArgument(c_pattern)
 	arg_string := gi.NewStringArgument(c_string)
-	arg_compile_options := gi.NewIntArgument(compile_options) /*TODO*/
-	arg_match_options := gi.NewIntArgument(match_options)     /*TODO*/
+	arg_compile_options := gi.NewIntArgument(int(compile_options))
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	args := []gi.Argument{arg_pattern, arg_string, arg_compile_options, arg_match_options}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9339,7 +9374,7 @@ func RegexMatchSimple1(pattern string, string string, compile_options int /*TODO
 // container is not nil, container is Regex
 // is method
 // arg0Type tag: utf8, isPtr: true
-func RegexSplitSimple1(pattern string, string string, compile_options int /*TODO_TYPE isPtr: false, tag: interface*/, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func RegexSplitSimple1(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
 	iv, err := _I.Get(490, "Regex", "split_simple")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9349,8 +9384,8 @@ func RegexSplitSimple1(pattern string, string string, compile_options int /*TODO
 	c_string := gi.CString(string)
 	arg_pattern := gi.NewStringArgument(c_pattern)
 	arg_string := gi.NewStringArgument(c_string)
-	arg_compile_options := gi.NewIntArgument(compile_options) /*TODO*/
-	arg_match_options := gi.NewIntArgument(match_options)     /*TODO*/
+	arg_compile_options := gi.NewIntArgument(int(compile_options))
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	args := []gi.Argument{arg_pattern, arg_string, arg_compile_options, arg_match_options}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9360,6 +9395,7 @@ func RegexSplitSimple1(pattern string, string string, compile_options int /*TODO
 	return
 }
 
+// Flags RegexCompileFlags
 type RegexCompileFlags int
 
 const (
@@ -9383,6 +9419,7 @@ const (
 	RegexCompileFlagsJavascriptCompat                   = 33554432
 )
 
+// Enum RegexError
 type RegexErrorEnum int
 
 const (
@@ -9445,6 +9482,7 @@ const (
 	RegexErrorCharacterValueTooLarge                                  = 176
 )
 
+// Flags RegexMatchFlags
 type RegexMatchFlags int
 
 const (
@@ -9512,7 +9550,7 @@ func (v Scanner) CurPosition() (result uint32) {
 // g_scanner_cur_token
 // container is not nil, container is Scanner
 // is method
-func (v Scanner) CurToken() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Scanner) CurToken() (result TokenTypeEnum) {
 	iv, err := _I.Get(493, "Scanner", "cur_token")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9522,7 +9560,7 @@ func (v Scanner) CurToken() (result int /*TODO_TYPE isPtr: false, tag: interface
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TokenTypeEnum(ret.Int())
 	return
 }
 
@@ -9560,7 +9598,7 @@ func (v Scanner) Eof() (result bool) {
 // g_scanner_get_next_token
 // container is not nil, container is Scanner
 // is method
-func (v Scanner) GetNextToken() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Scanner) GetNextToken() (result TokenTypeEnum) {
 	iv, err := _I.Get(496, "Scanner", "get_next_token")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9570,7 +9608,7 @@ func (v Scanner) GetNextToken() (result int /*TODO_TYPE isPtr: false, tag: inter
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TokenTypeEnum(ret.Int())
 	return
 }
 
@@ -9627,7 +9665,7 @@ func (v Scanner) LookupSymbol(symbol string) {
 // g_scanner_peek_next_token
 // container is not nil, container is Scanner
 // is method
-func (v Scanner) PeekNextToken() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Scanner) PeekNextToken() (result TokenTypeEnum) {
 	iv, err := _I.Get(500, "Scanner", "peek_next_token")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9637,7 +9675,7 @@ func (v Scanner) PeekNextToken() (result int /*TODO_TYPE isPtr: false, tag: inte
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TokenTypeEnum(ret.Int())
 	return
 }
 
@@ -9731,7 +9769,7 @@ func (v Scanner) SyncFileOffset() {
 // g_scanner_unexp_token
 // container is not nil, container is Scanner
 // is method
-func (v Scanner) UnexpToken(expected_token int /*TODO_TYPE isPtr: false, tag: interface*/, identifier_spec string, symbol_spec string, symbol_name string, message string, is_error int32) {
+func (v Scanner) UnexpToken(expected_token TokenTypeEnum, identifier_spec string, symbol_spec string, symbol_name string, message string, is_error int32) {
 	iv, err := _I.Get(506, "Scanner", "unexp_token")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9742,7 +9780,7 @@ func (v Scanner) UnexpToken(expected_token int /*TODO_TYPE isPtr: false, tag: in
 	c_symbol_name := gi.CString(symbol_name)
 	c_message := gi.CString(message)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_expected_token := gi.NewIntArgument(expected_token) /*TODO*/
+	arg_expected_token := gi.NewIntArgument(int(expected_token))
 	arg_identifier_spec := gi.NewStringArgument(c_identifier_spec)
 	arg_symbol_spec := gi.NewStringArgument(c_symbol_spec)
 	arg_symbol_name := gi.NewStringArgument(c_symbol_name)
@@ -9760,6 +9798,8 @@ func (v Scanner) UnexpToken(expected_token int /*TODO_TYPE isPtr: false, tag: in
 type ScannerConfig struct {
 	P unsafe.Pointer
 }
+
+// Enum SeekType
 type SeekTypeEnum int
 
 const (
@@ -10201,6 +10241,7 @@ func (v SequenceIter) Prev() (result SequenceIter) {
 	return
 }
 
+// Enum ShellError
 type ShellErrorEnum int
 
 const (
@@ -10209,6 +10250,7 @@ const (
 	ShellErrorFailed                     = 2
 )
 
+// Enum SliceConfig
 type SliceConfigEnum int
 
 const (
@@ -10276,7 +10318,7 @@ func (v Source) AddPoll(fd PollFD) {
 // g_source_add_unix_fd
 // container is not nil, container is Source
 // is method
-func (v Source) AddUnixFd(fd int32, events int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Source) AddUnixFd(fd int32, events IOConditionFlags) {
 	iv, err := _I.Get(535, "Source", "add_unix_fd")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10284,7 +10326,7 @@ func (v Source) AddUnixFd(fd int32, events int /*TODO_TYPE isPtr: false, tag: in
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_fd := gi.NewInt32Argument(fd)
-	arg_events := gi.NewIntArgument(events) /*TODO*/
+	arg_events := gi.NewIntArgument(int(events))
 	args := []gi.Argument{arg_v, arg_fd, arg_events}
 	iv.Call(args, nil, nil)
 }
@@ -10475,7 +10517,7 @@ func (v Source) IsDestroyed() (result bool) {
 // g_source_modify_unix_fd
 // container is not nil, container is Source
 // is method
-func (v Source) ModifyUnixFd(tag unsafe.Pointer, new_events int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Source) ModifyUnixFd(tag unsafe.Pointer, new_events IOConditionFlags) {
 	iv, err := _I.Get(547, "Source", "modify_unix_fd")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10483,7 +10525,7 @@ func (v Source) ModifyUnixFd(tag unsafe.Pointer, new_events int /*TODO_TYPE isPt
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_tag := gi.NewPointerArgument(tag)
-	arg_new_events := gi.NewIntArgument(new_events) /*TODO*/
+	arg_new_events := gi.NewIntArgument(int(new_events))
 	args := []gi.Argument{arg_v, arg_tag, arg_new_events}
 	iv.Call(args, nil, nil)
 }
@@ -10491,7 +10533,7 @@ func (v Source) ModifyUnixFd(tag unsafe.Pointer, new_events int /*TODO_TYPE isPt
 // g_source_query_unix_fd
 // container is not nil, container is Source
 // is method
-func (v Source) QueryUnixFd(tag unsafe.Pointer) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Source) QueryUnixFd(tag unsafe.Pointer) (result IOConditionFlags) {
 	iv, err := _I.Get(548, "Source", "query_unix_fd")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10502,7 +10544,7 @@ func (v Source) QueryUnixFd(tag unsafe.Pointer) (result int /*TODO_TYPE isPtr: f
 	args := []gi.Argument{arg_v, arg_tag}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = IOConditionFlags(ret.Int())
 	return
 }
 
@@ -10779,6 +10821,8 @@ type SourceFuncs struct {
 type SourcePrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum SpawnError
 type SpawnErrorEnum int
 
 const (
@@ -10805,6 +10849,7 @@ const (
 	SpawnErrorFailed                     = 19
 )
 
+// Flags SpawnFlags
 type SpawnFlags int
 
 const (
@@ -10892,14 +10937,14 @@ func (v String) AppendLen(val string, len1 int64) (result String) {
 // g_string_append_unichar
 // container is not nil, container is String
 // is method
-func (v String) AppendUnichar(wc int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result String) {
+func (v String) AppendUnichar(wc rune) (result String) {
 	iv, err := _I.Get(568, "String", "append_unichar")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_wc := gi.NewIntArgument(wc) /*TODO*/
+	arg_wc := gi.NewUint32Argument(uint32(wc))
 	args := []gi.Argument{arg_v, arg_wc}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -11156,7 +11201,7 @@ func (v String) InsertLen(pos int64, val string, len1 int64) (result String) {
 // g_string_insert_unichar
 // container is not nil, container is String
 // is method
-func (v String) InsertUnichar(pos int64, wc int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result String) {
+func (v String) InsertUnichar(pos int64, wc rune) (result String) {
 	iv, err := _I.Get(582, "String", "insert_unichar")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11164,7 +11209,7 @@ func (v String) InsertUnichar(pos int64, wc int /*TODO_TYPE isPtr: false, tag: g
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_pos := gi.NewInt64Argument(pos)
-	arg_wc := gi.NewIntArgument(wc) /*TODO*/
+	arg_wc := gi.NewUint32Argument(uint32(wc))
 	args := []gi.Argument{arg_v, arg_pos, arg_wc}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -11277,14 +11322,14 @@ func (v String) PrependLen(val string, len1 int64) (result String) {
 // g_string_prepend_unichar
 // container is not nil, container is String
 // is method
-func (v String) PrependUnichar(wc int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result String) {
+func (v String) PrependUnichar(wc rune) (result String) {
 	iv, err := _I.Get(588, "String", "prepend_unichar")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_wc := gi.NewIntArgument(wc) /*TODO*/
+	arg_wc := gi.NewUint32Argument(uint32(wc))
 	args := []gi.Argument{arg_v, arg_wc}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -11448,6 +11493,8 @@ type TestCase struct {
 type TestConfig struct {
 	P unsafe.Pointer
 }
+
+// Enum TestFileType
 type TestFileTypeEnum int
 
 const (
@@ -11509,6 +11556,7 @@ func (v TestLogMsg) Free() {
 	iv.Call(args, nil, nil)
 }
 
+// Enum TestLogType
 type TestLogTypeEnum int
 
 const (
@@ -11526,6 +11574,7 @@ const (
 	TestLogTypeStopSuite                   = 11
 )
 
+// Enum TestResult
 type TestResultEnum int
 
 const (
@@ -11535,6 +11584,7 @@ const (
 	TestResultIncomplete                = 3
 )
 
+// Flags TestSubprocessFlags
 type TestSubprocessFlags int
 
 const (
@@ -11578,6 +11628,7 @@ func (v TestSuite) AddSuite(nestedsuite TestSuite) {
 	iv.Call(args, nil, nil)
 }
 
+// Flags TestTrapFlags
 type TestTrapFlags int
 
 const (
@@ -11660,6 +11711,7 @@ func ThreadExit1(retval unsafe.Pointer) {
 // g_thread_yield
 // container is not nil, container is Thread
 // num arg is 0
+// Enum ThreadError
 type ThreadErrorEnum int
 
 const (
@@ -11838,6 +11890,7 @@ func ThreadPoolSetMaxUnusedThreads1(max_threads int32) {
 // g_thread_pool_stop_unused_threads
 // container is not nil, container is ThreadPool
 // num arg is 0
+// Enum TimeType
 type TimeTypeEnum int
 
 const (
@@ -11980,14 +12033,14 @@ func NewTimeZoneUtc() (result TimeZone) {
 // g_time_zone_adjust_time
 // container is not nil, container is TimeZone
 // is method
-func (v TimeZone) AdjustTime(type1 int /*TODO_TYPE isPtr: false, tag: interface*/, time_ int64) (result int32) {
+func (v TimeZone) AdjustTime(type1 TimeTypeEnum, time_ int64) (result int32) {
 	iv, err := _I.Get(629, "TimeZone", "adjust_time")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	arg_time_ := gi.NewInt64Argument(time_)
 	args := []gi.Argument{arg_v, arg_type1, arg_time_}
 	var ret gi.Argument
@@ -11999,14 +12052,14 @@ func (v TimeZone) AdjustTime(type1 int /*TODO_TYPE isPtr: false, tag: interface*
 // g_time_zone_find_interval
 // container is not nil, container is TimeZone
 // is method
-func (v TimeZone) FindInterval(type1 int /*TODO_TYPE isPtr: false, tag: interface*/, time_ int64) (result int32) {
+func (v TimeZone) FindInterval(type1 TimeTypeEnum, time_ int64) (result int32) {
 	iv, err := _I.Get(630, "TimeZone", "find_interval")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	arg_time_ := gi.NewInt64Argument(time_)
 	args := []gi.Argument{arg_v, arg_type1, arg_time_}
 	var ret gi.Argument
@@ -12210,6 +12263,7 @@ func (v Timer) Stop() {
 	iv.Call(args, nil, nil)
 }
 
+// Enum TokenType
 type TokenTypeEnum int
 
 const (
@@ -12312,6 +12366,7 @@ func (v TrashStack) Push(data_p unsafe.Pointer) {
 	iv.Call(args, nil, nil)
 }
 
+// Flags TraverseFlags
 type TraverseFlags int
 
 const (
@@ -12323,6 +12378,7 @@ const (
 	TraverseFlagsNonLeafs                = 2
 )
 
+// Enum TraverseType
 type TraverseTypeEnum int
 
 const (
@@ -12502,6 +12558,7 @@ func (v Tree) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Enum UnicodeBreakType
 type UnicodeBreakTypeEnum int
 
 const (
@@ -12550,6 +12607,7 @@ const (
 	UnicodeBreakTypeZeroWidthJoiner                                 = 42
 )
 
+// Enum UnicodeScript
 type UnicodeScriptEnum int
 
 const (
@@ -12705,6 +12763,7 @@ const (
 	UnicodeScriptSogdian                                 = 148
 )
 
+// Enum UnicodeType
 type UnicodeTypeEnum int
 
 const (
@@ -12740,6 +12799,7 @@ const (
 	UnicodeTypeSpaceSeparator                     = 29
 )
 
+// Enum UserDirectory
 type UserDirectoryEnum int
 
 const (
@@ -13249,7 +13309,7 @@ func (v Variant) CheckFormatString(format_string string, copy_only bool) (result
 // g_variant_classify
 // container is not nil, container is Variant
 // is method
-func (v Variant) Classify() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Variant) Classify() (result VariantClassEnum) {
 	iv, err := _I.Get(684, "Variant", "classify")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13259,7 +13319,7 @@ func (v Variant) Classify() (result int /*TODO_TYPE isPtr: false, tag: interface
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = VariantClassEnum(ret.Int())
 	return
 }
 
@@ -14249,6 +14309,7 @@ func (v VariantBuilder) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Enum VariantClass
 type VariantClassEnum int
 
 const (
@@ -14435,6 +14496,7 @@ func (v VariantDict) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Enum VariantParseError
 type VariantParseErrorEnum int
 
 const (
@@ -16262,13 +16324,13 @@ func CheckVersion(required_major uint32, required_minor uint32, required_micro u
 
 // g_checksum_type_get_length
 // container is nil
-func ChecksumTypeGetLength(checksum_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result int64) {
+func ChecksumTypeGetLength(checksum_type ChecksumTypeEnum) (result int64) {
 	iv, err := _I.Get(853, "checksum_type_get_length", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_checksum_type := gi.NewIntArgument(checksum_type) /*TODO*/
+	arg_checksum_type := gi.NewIntArgument(int(checksum_type))
 	args := []gi.Argument{arg_checksum_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -16347,13 +16409,13 @@ func Close(fd int32) (result bool, err error) {
 
 // g_compute_checksum_for_bytes
 // container is nil
-func ComputeChecksumForBytes(checksum_type int /*TODO_TYPE isPtr: false, tag: interface*/, data Bytes) (result string) {
+func ComputeChecksumForBytes(checksum_type ChecksumTypeEnum, data Bytes) (result string) {
 	iv, err := _I.Get(858, "compute_checksum_for_bytes", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_checksum_type := gi.NewIntArgument(checksum_type) /*TODO*/
+	arg_checksum_type := gi.NewIntArgument(int(checksum_type))
 	arg_data := gi.NewPointerArgument(data.P)
 	args := []gi.Argument{arg_checksum_type, arg_data}
 	var ret gi.Argument
@@ -16364,14 +16426,14 @@ func ComputeChecksumForBytes(checksum_type int /*TODO_TYPE isPtr: false, tag: in
 
 // g_compute_checksum_for_data
 // container is nil
-func ComputeChecksumForData(checksum_type int /*TODO_TYPE isPtr: false, tag: interface*/, data int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) (result string) {
+func ComputeChecksumForData(checksum_type ChecksumTypeEnum, data int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) (result string) {
 	iv, err := _I.Get(859, "compute_checksum_for_data", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_checksum_type := gi.NewIntArgument(checksum_type) /*TODO*/
-	arg_data := gi.NewIntArgument(data)                   /*TODO*/
+	arg_checksum_type := gi.NewIntArgument(int(checksum_type))
+	arg_data := gi.NewIntArgument(data) /*TODO*/
 	arg_length := gi.NewUint64Argument(length)
 	args := []gi.Argument{arg_checksum_type, arg_data, arg_length}
 	var ret gi.Argument
@@ -16382,14 +16444,14 @@ func ComputeChecksumForData(checksum_type int /*TODO_TYPE isPtr: false, tag: int
 
 // g_compute_checksum_for_string
 // container is nil
-func ComputeChecksumForString(checksum_type int /*TODO_TYPE isPtr: false, tag: interface*/, str string, length int64) (result string) {
+func ComputeChecksumForString(checksum_type ChecksumTypeEnum, str string, length int64) (result string) {
 	iv, err := _I.Get(860, "compute_checksum_for_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_str := gi.CString(str)
-	arg_checksum_type := gi.NewIntArgument(checksum_type) /*TODO*/
+	arg_checksum_type := gi.NewIntArgument(int(checksum_type))
 	arg_str := gi.NewStringArgument(c_str)
 	arg_length := gi.NewInt64Argument(length)
 	args := []gi.Argument{arg_checksum_type, arg_str, arg_length}
@@ -16402,13 +16464,13 @@ func ComputeChecksumForString(checksum_type int /*TODO_TYPE isPtr: false, tag: i
 
 // g_compute_hmac_for_bytes
 // container is nil
-func ComputeHmacForBytes(digest_type int /*TODO_TYPE isPtr: false, tag: interface*/, key Bytes, data Bytes) (result string) {
+func ComputeHmacForBytes(digest_type ChecksumTypeEnum, key Bytes, data Bytes) (result string) {
 	iv, err := _I.Get(861, "compute_hmac_for_bytes", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_digest_type := gi.NewIntArgument(digest_type) /*TODO*/
+	arg_digest_type := gi.NewIntArgument(int(digest_type))
 	arg_key := gi.NewPointerArgument(key.P)
 	arg_data := gi.NewPointerArgument(data.P)
 	args := []gi.Argument{arg_digest_type, arg_key, arg_data}
@@ -16420,14 +16482,14 @@ func ComputeHmacForBytes(digest_type int /*TODO_TYPE isPtr: false, tag: interfac
 
 // g_compute_hmac_for_data
 // container is nil
-func ComputeHmacForData(digest_type int /*TODO_TYPE isPtr: false, tag: interface*/, key int /*TODO_TYPE isPtr: true, tag: array*/, key_len uint64, data int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) (result string) {
+func ComputeHmacForData(digest_type ChecksumTypeEnum, key int /*TODO_TYPE isPtr: true, tag: array*/, key_len uint64, data int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) (result string) {
 	iv, err := _I.Get(862, "compute_hmac_for_data", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_digest_type := gi.NewIntArgument(digest_type) /*TODO*/
-	arg_key := gi.NewIntArgument(key)                 /*TODO*/
+	arg_digest_type := gi.NewIntArgument(int(digest_type))
+	arg_key := gi.NewIntArgument(key) /*TODO*/
 	arg_key_len := gi.NewUint64Argument(key_len)
 	arg_data := gi.NewIntArgument(data) /*TODO*/
 	arg_length := gi.NewUint64Argument(length)
@@ -16440,15 +16502,15 @@ func ComputeHmacForData(digest_type int /*TODO_TYPE isPtr: false, tag: interface
 
 // g_compute_hmac_for_string
 // container is nil
-func ComputeHmacForString(digest_type int /*TODO_TYPE isPtr: false, tag: interface*/, key int /*TODO_TYPE isPtr: true, tag: array*/, key_len uint64, str string, length int64) (result string) {
+func ComputeHmacForString(digest_type ChecksumTypeEnum, key int /*TODO_TYPE isPtr: true, tag: array*/, key_len uint64, str string, length int64) (result string) {
 	iv, err := _I.Get(863, "compute_hmac_for_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_str := gi.CString(str)
-	arg_digest_type := gi.NewIntArgument(digest_type) /*TODO*/
-	arg_key := gi.NewIntArgument(key)                 /*TODO*/
+	arg_digest_type := gi.NewIntArgument(int(digest_type))
+	arg_key := gi.NewIntArgument(key) /*TODO*/
 	arg_key_len := gi.NewUint64Argument(key_len)
 	arg_str := gi.NewStringArgument(c_str)
 	arg_length := gi.NewInt64Argument(length)
@@ -16668,13 +16730,13 @@ func DatasetIdGetData(dataset_location unsafe.Pointer, key_id uint32) {
 
 // g_date_get_days_in_month
 // container is nil
-func DateGetDaysInMonth(month int /*TODO_TYPE isPtr: false, tag: interface*/, year uint16) (result uint8) {
+func DateGetDaysInMonth(month DateMonthEnum, year uint16) (result uint8) {
 	iv, err := _I.Get(876, "date_get_days_in_month", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_month := gi.NewIntArgument(month) /*TODO*/
+	arg_month := gi.NewIntArgument(int(month))
 	arg_year := gi.NewUint16Argument(year)
 	args := []gi.Argument{arg_month, arg_year}
 	var ret gi.Argument
@@ -16822,14 +16884,14 @@ func DateValidDay(day uint8) (result bool) {
 
 // g_date_valid_dmy
 // container is nil
-func DateValidDmy(day uint8, month int /*TODO_TYPE isPtr: false, tag: interface*/, year uint16) (result bool) {
+func DateValidDmy(day uint8, month DateMonthEnum, year uint16) (result bool) {
 	iv, err := _I.Get(885, "date_valid_dmy", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_day := gi.NewUint8Argument(day)
-	arg_month := gi.NewIntArgument(month) /*TODO*/
+	arg_month := gi.NewIntArgument(int(month))
 	arg_year := gi.NewUint16Argument(year)
 	args := []gi.Argument{arg_day, arg_month, arg_year}
 	var ret gi.Argument
@@ -16856,13 +16918,13 @@ func DateValidJulian(julian_date uint32) (result bool) {
 
 // g_date_valid_month
 // container is nil
-func DateValidMonth(month int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func DateValidMonth(month DateMonthEnum) (result bool) {
 	iv, err := _I.Get(887, "date_valid_month", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_month := gi.NewIntArgument(month) /*TODO*/
+	arg_month := gi.NewIntArgument(int(month))
 	args := []gi.Argument{arg_month}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -16872,13 +16934,13 @@ func DateValidMonth(month int /*TODO_TYPE isPtr: false, tag: interface*/) (resul
 
 // g_date_valid_weekday
 // container is nil
-func DateValidWeekday(weekday int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func DateValidWeekday(weekday DateWeekdayEnum) (result bool) {
 	iv, err := _I.Get(888, "date_valid_weekday", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_weekday := gi.NewIntArgument(weekday) /*TODO*/
+	arg_weekday := gi.NewIntArgument(int(weekday))
 	args := []gi.Argument{arg_weekday}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -17165,7 +17227,7 @@ func EnvironUnsetenv(envp int /*TODO_TYPE isPtr: true, tag: array*/, variable st
 
 // g_file_error_from_errno
 // container is nil
-func FileErrorFromErrno(err_no int32) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func FileErrorFromErrno(err_no int32) (result FileErrorEnum) {
 	iv, err := _I.Get(903, "file_error_from_errno", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17175,7 +17237,7 @@ func FileErrorFromErrno(err_no int32) (result int /*TODO_TYPE isPtr: false, tag:
 	args := []gi.Argument{arg_err_no}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = FileErrorEnum(ret.Int())
 	return
 }
 
@@ -17283,7 +17345,7 @@ func FileSetContents(filename string, contents int /*TODO_TYPE isPtr: true, tag:
 
 // g_file_test
 // container is nil
-func FileTest(filename string, test int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func FileTest(filename string, test FileTestFlags) (result bool) {
 	iv, err := _I.Get(909, "file_test", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17291,7 +17353,7 @@ func FileTest(filename string, test int /*TODO_TYPE isPtr: false, tag: interface
 	}
 	c_filename := gi.CString(filename)
 	arg_filename := gi.NewStringArgument(c_filename)
-	arg_test := gi.NewIntArgument(test) /*TODO*/
+	arg_test := gi.NewIntArgument(int(test))
 	args := []gi.Argument{arg_filename, arg_test}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -17483,14 +17545,14 @@ func FormatSizeForDisplay(size int64) (result string) {
 
 // g_format_size_full
 // container is nil
-func FormatSizeFull(size uint64, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func FormatSizeFull(size uint64, flags FormatSizeFlags) (result string) {
 	iv, err := _I.Get(919, "format_size_full", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_size := gi.NewUint64Argument(size)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_size, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -17878,13 +17940,13 @@ func GetUserRuntimeDir() (result string) {
 
 // g_get_user_special_dir
 // container is nil
-func GetUserSpecialDir(directory int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func GetUserSpecialDir(directory UserDirectoryEnum) (result string) {
 	iv, err := _I.Get(946, "get_user_special_dir", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_directory := gi.NewIntArgument(directory) /*TODO*/
+	arg_directory := gi.NewIntArgument(int(directory))
 	args := []gi.Argument{arg_directory}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -18471,7 +18533,7 @@ func InternString(string string) (result string) {
 
 // g_io_add_watch_full
 // container is nil
-func IoAddWatch(channel IOChannel, priority int32, condition int /*TODO_TYPE isPtr: false, tag: interface*/, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
 	iv, err := _I.Get(982, "io_add_watch", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18479,8 +18541,8 @@ func IoAddWatch(channel IOChannel, priority int32, condition int /*TODO_TYPE isP
 	}
 	arg_channel := gi.NewPointerArgument(channel.P)
 	arg_priority := gi.NewInt32Argument(priority)
-	arg_condition := gi.NewIntArgument(condition) /*TODO*/
-	arg_func1 := gi.NewIntArgument(func1)         /*TODO*/
+	arg_condition := gi.NewIntArgument(int(condition))
+	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_notify := gi.NewIntArgument(notify) /*TODO*/
 	args := []gi.Argument{arg_channel, arg_priority, arg_condition, arg_func1, arg_user_data, arg_notify}
@@ -18492,7 +18554,7 @@ func IoAddWatch(channel IOChannel, priority int32, condition int /*TODO_TYPE isP
 
 // g_io_channel_error_from_errno
 // container is nil
-func IoChannelErrorFromErrno(en int32) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func IoChannelErrorFromErrno(en int32) (result IOChannelErrorEnum) {
 	iv, err := _I.Get(983, "io_channel_error_from_errno", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18502,7 +18564,7 @@ func IoChannelErrorFromErrno(en int32) (result int /*TODO_TYPE isPtr: false, tag
 	args := []gi.Argument{arg_en}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = IOChannelErrorEnum(ret.Int())
 	return
 }
 
@@ -18522,14 +18584,14 @@ func IoChannelErrorQuark() (result uint32) {
 
 // g_io_create_watch
 // container is nil
-func IoCreateWatch(channel IOChannel, condition int /*TODO_TYPE isPtr: false, tag: interface*/) (result Source) {
+func IoCreateWatch(channel IOChannel, condition IOConditionFlags) (result Source) {
 	iv, err := _I.Get(985, "io_create_watch", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_channel := gi.NewPointerArgument(channel.P)
-	arg_condition := gi.NewIntArgument(condition) /*TODO*/
+	arg_condition := gi.NewIntArgument(int(condition))
 	args := []gi.Argument{arg_channel, arg_condition}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -18615,7 +18677,7 @@ func LocaleToUtf8(opsysstring int /*TODO_TYPE isPtr: true, tag: array*/, len1 in
 
 // g_log_default_handler
 // container is nil
-func LogDefaultHandler(log_domain string, log_level int /*TODO_TYPE isPtr: false, tag: interface*/, message string, unused_data unsafe.Pointer) {
+func LogDefaultHandler(log_domain string, log_level LogLevelFlags, message string, unused_data unsafe.Pointer) {
 	iv, err := _I.Get(990, "log_default_handler", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18624,7 +18686,7 @@ func LogDefaultHandler(log_domain string, log_level int /*TODO_TYPE isPtr: false
 	c_log_domain := gi.CString(log_domain)
 	c_message := gi.CString(message)
 	arg_log_domain := gi.NewStringArgument(c_log_domain)
-	arg_log_level := gi.NewIntArgument(log_level) /*TODO*/
+	arg_log_level := gi.NewIntArgument(int(log_level))
 	arg_message := gi.NewStringArgument(c_message)
 	arg_unused_data := gi.NewPointerArgument(unused_data)
 	args := []gi.Argument{arg_log_domain, arg_log_level, arg_message, arg_unused_data}
@@ -18651,23 +18713,23 @@ func LogRemoveHandler(log_domain string, handler_id uint32) {
 
 // g_log_set_always_fatal
 // container is nil
-func LogSetAlwaysFatal(fatal_mask int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func LogSetAlwaysFatal(fatal_mask LogLevelFlags) (result LogLevelFlags) {
 	iv, err := _I.Get(992, "log_set_always_fatal", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_fatal_mask := gi.NewIntArgument(fatal_mask) /*TODO*/
+	arg_fatal_mask := gi.NewIntArgument(int(fatal_mask))
 	args := []gi.Argument{arg_fatal_mask}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = LogLevelFlags(ret.Int())
 	return
 }
 
 // g_log_set_fatal_mask
 // container is nil
-func LogSetFatalMask(log_domain string, fatal_mask int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func LogSetFatalMask(log_domain string, fatal_mask LogLevelFlags) (result LogLevelFlags) {
 	iv, err := _I.Get(993, "log_set_fatal_mask", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18675,18 +18737,18 @@ func LogSetFatalMask(log_domain string, fatal_mask int /*TODO_TYPE isPtr: false,
 	}
 	c_log_domain := gi.CString(log_domain)
 	arg_log_domain := gi.NewStringArgument(c_log_domain)
-	arg_fatal_mask := gi.NewIntArgument(fatal_mask) /*TODO*/
+	arg_fatal_mask := gi.NewIntArgument(int(fatal_mask))
 	args := []gi.Argument{arg_log_domain, arg_fatal_mask}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = LogLevelFlags(ret.Int())
 	gi.Free(c_log_domain)
 	return
 }
 
 // g_log_set_handler_full
 // container is nil
-func LogSetHandler(log_domain string, log_levels int /*TODO_TYPE isPtr: false, tag: interface*/, log_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func LogSetHandler(log_domain string, log_levels LogLevelFlags, log_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
 	iv, err := _I.Get(994, "log_set_handler", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18694,8 +18756,8 @@ func LogSetHandler(log_domain string, log_levels int /*TODO_TYPE isPtr: false, t
 	}
 	c_log_domain := gi.CString(log_domain)
 	arg_log_domain := gi.NewStringArgument(c_log_domain)
-	arg_log_levels := gi.NewIntArgument(log_levels) /*TODO*/
-	arg_log_func := gi.NewIntArgument(log_func)     /*TODO*/
+	arg_log_levels := gi.NewIntArgument(int(log_levels))
+	arg_log_func := gi.NewIntArgument(log_func) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_destroy := gi.NewIntArgument(destroy) /*TODO*/
 	args := []gi.Argument{arg_log_domain, arg_log_levels, arg_log_func, arg_user_data, arg_destroy}
@@ -18723,14 +18785,14 @@ func LogSetWriterFunc(func1 int /*TODO_TYPE isPtr: false, tag: interface*/, user
 
 // g_log_structured_array
 // container is nil
-func LogStructuredArray(log_level int /*TODO_TYPE isPtr: false, tag: interface*/, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64) {
+func LogStructuredArray(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64) {
 	iv, err := _I.Get(996, "log_structured_array", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_log_level := gi.NewIntArgument(log_level) /*TODO*/
-	arg_fields := gi.NewIntArgument(fields)       /*TODO*/
+	arg_log_level := gi.NewIntArgument(int(log_level))
+	arg_fields := gi.NewIntArgument(fields) /*TODO*/
 	arg_n_fields := gi.NewUint64Argument(n_fields)
 	args := []gi.Argument{arg_log_level, arg_fields, arg_n_fields}
 	iv.Call(args, nil, nil)
@@ -18738,7 +18800,7 @@ func LogStructuredArray(log_level int /*TODO_TYPE isPtr: false, tag: interface*/
 
 // g_log_variant
 // container is nil
-func LogVariant(log_domain string, log_level int /*TODO_TYPE isPtr: false, tag: interface*/, fields Variant) {
+func LogVariant(log_domain string, log_level LogLevelFlags, fields Variant) {
 	iv, err := _I.Get(997, "log_variant", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18746,7 +18808,7 @@ func LogVariant(log_domain string, log_level int /*TODO_TYPE isPtr: false, tag: 
 	}
 	c_log_domain := gi.CString(log_domain)
 	arg_log_domain := gi.NewStringArgument(c_log_domain)
-	arg_log_level := gi.NewIntArgument(log_level) /*TODO*/
+	arg_log_level := gi.NewIntArgument(int(log_level))
 	arg_fields := gi.NewPointerArgument(fields.P)
 	args := []gi.Argument{arg_log_domain, arg_log_level, arg_fields}
 	iv.Call(args, nil, nil)
@@ -18755,33 +18817,33 @@ func LogVariant(log_domain string, log_level int /*TODO_TYPE isPtr: false, tag: 
 
 // g_log_writer_default
 // container is nil
-func LogWriterDefault(log_level int /*TODO_TYPE isPtr: false, tag: interface*/, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, user_data unsafe.Pointer) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func LogWriterDefault(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(998, "log_writer_default", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_log_level := gi.NewIntArgument(log_level) /*TODO*/
-	arg_fields := gi.NewIntArgument(fields)       /*TODO*/
+	arg_log_level := gi.NewIntArgument(int(log_level))
+	arg_fields := gi.NewIntArgument(fields) /*TODO*/
 	arg_n_fields := gi.NewUint64Argument(n_fields)
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_log_level, arg_fields, arg_n_fields, arg_user_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = LogWriterOutputEnum(ret.Int())
 	return
 }
 
 // g_log_writer_format_fields
 // container is nil
-func LogWriterFormatFields(log_level int /*TODO_TYPE isPtr: false, tag: interface*/, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, use_color bool) (result string) {
+func LogWriterFormatFields(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, use_color bool) (result string) {
 	iv, err := _I.Get(999, "log_writer_format_fields", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_log_level := gi.NewIntArgument(log_level) /*TODO*/
-	arg_fields := gi.NewIntArgument(fields)       /*TODO*/
+	arg_log_level := gi.NewIntArgument(int(log_level))
+	arg_fields := gi.NewIntArgument(fields) /*TODO*/
 	arg_n_fields := gi.NewUint64Argument(n_fields)
 	arg_use_color := gi.NewBoolArgument(use_color)
 	args := []gi.Argument{arg_log_level, arg_fields, arg_n_fields, arg_use_color}
@@ -18809,39 +18871,39 @@ func LogWriterIsJournald(output_fd int32) (result bool) {
 
 // g_log_writer_journald
 // container is nil
-func LogWriterJournald(log_level int /*TODO_TYPE isPtr: false, tag: interface*/, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, user_data unsafe.Pointer) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func LogWriterJournald(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(1001, "log_writer_journald", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_log_level := gi.NewIntArgument(log_level) /*TODO*/
-	arg_fields := gi.NewIntArgument(fields)       /*TODO*/
+	arg_log_level := gi.NewIntArgument(int(log_level))
+	arg_fields := gi.NewIntArgument(fields) /*TODO*/
 	arg_n_fields := gi.NewUint64Argument(n_fields)
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_log_level, arg_fields, arg_n_fields, arg_user_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = LogWriterOutputEnum(ret.Int())
 	return
 }
 
 // g_log_writer_standard_streams
 // container is nil
-func LogWriterStandardStreams(log_level int /*TODO_TYPE isPtr: false, tag: interface*/, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, user_data unsafe.Pointer) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func LogWriterStandardStreams(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(1002, "log_writer_standard_streams", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_log_level := gi.NewIntArgument(log_level) /*TODO*/
-	arg_fields := gi.NewIntArgument(fields)       /*TODO*/
+	arg_log_level := gi.NewIntArgument(int(log_level))
+	arg_fields := gi.NewIntArgument(fields) /*TODO*/
 	arg_n_fields := gi.NewUint64Argument(n_fields)
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_log_level, arg_fields, arg_n_fields, arg_user_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = LogWriterOutputEnum(ret.Int())
 	return
 }
 
@@ -19934,7 +19996,7 @@ func RegexEscapeString(string int /*TODO_TYPE isPtr: true, tag: array*/, length 
 
 // g_regex_match_simple
 // container is nil
-func RegexMatchSimple(pattern string, string string, compile_options int /*TODO_TYPE isPtr: false, tag: interface*/, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func RegexMatchSimple(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result bool) {
 	iv, err := _I.Get(1072, "regex_match_simple", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19944,8 +20006,8 @@ func RegexMatchSimple(pattern string, string string, compile_options int /*TODO_
 	c_string := gi.CString(string)
 	arg_pattern := gi.NewStringArgument(c_pattern)
 	arg_string := gi.NewStringArgument(c_string)
-	arg_compile_options := gi.NewIntArgument(compile_options) /*TODO*/
-	arg_match_options := gi.NewIntArgument(match_options)     /*TODO*/
+	arg_compile_options := gi.NewIntArgument(int(compile_options))
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	args := []gi.Argument{arg_pattern, arg_string, arg_compile_options, arg_match_options}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -19957,7 +20019,7 @@ func RegexMatchSimple(pattern string, string string, compile_options int /*TODO_
 
 // g_regex_split_simple
 // container is nil
-func RegexSplitSimple(pattern string, string string, compile_options int /*TODO_TYPE isPtr: false, tag: interface*/, match_options int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func RegexSplitSimple(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
 	iv, err := _I.Get(1073, "regex_split_simple", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19967,8 +20029,8 @@ func RegexSplitSimple(pattern string, string string, compile_options int /*TODO_
 	c_string := gi.CString(string)
 	arg_pattern := gi.NewStringArgument(c_pattern)
 	arg_string := gi.NewStringArgument(c_string)
-	arg_compile_options := gi.NewIntArgument(compile_options) /*TODO*/
-	arg_match_options := gi.NewIntArgument(match_options)     /*TODO*/
+	arg_compile_options := gi.NewIntArgument(int(compile_options))
+	arg_match_options := gi.NewIntArgument(int(match_options))
 	args := []gi.Argument{arg_pattern, arg_string, arg_compile_options, arg_match_options}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -20358,13 +20420,13 @@ func SliceFreeChainWithOffset(block_size uint64, mem_chain unsafe.Pointer, next_
 
 // g_slice_get_config
 // container is nil
-func SliceGetConfig(ckey int /*TODO_TYPE isPtr: false, tag: interface*/) (result int64) {
+func SliceGetConfig(ckey SliceConfigEnum) (result int64) {
 	iv, err := _I.Get(1098, "slice_get_config", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ckey := gi.NewIntArgument(ckey) /*TODO*/
+	arg_ckey := gi.NewIntArgument(int(ckey))
 	args := []gi.Argument{arg_ckey}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -20374,13 +20436,13 @@ func SliceGetConfig(ckey int /*TODO_TYPE isPtr: false, tag: interface*/) (result
 
 // g_slice_get_config_state
 // container is nil
-func SliceGetConfigState(ckey int /*TODO_TYPE isPtr: false, tag: interface*/, address int64, n_values uint32) (result int64) {
+func SliceGetConfigState(ckey SliceConfigEnum, address int64, n_values uint32) (result int64) {
 	iv, err := _I.Get(1099, "slice_get_config_state", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ckey := gi.NewIntArgument(ckey) /*TODO*/
+	arg_ckey := gi.NewIntArgument(int(ckey))
 	arg_address := gi.NewInt64Argument(address)
 	arg_n_values := gi.NewUint32Argument(n_values)
 	args := []gi.Argument{arg_ckey, arg_address, arg_n_values}
@@ -20392,13 +20454,13 @@ func SliceGetConfigState(ckey int /*TODO_TYPE isPtr: false, tag: interface*/, ad
 
 // g_slice_set_config
 // container is nil
-func SliceSetConfig(ckey int /*TODO_TYPE isPtr: false, tag: interface*/, value int64) {
+func SliceSetConfig(ckey SliceConfigEnum, value int64) {
 	iv, err := _I.Get(1100, "slice_set_config", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ckey := gi.NewIntArgument(ckey) /*TODO*/
+	arg_ckey := gi.NewIntArgument(int(ckey))
 	arg_value := gi.NewInt64Argument(value)
 	args := []gi.Argument{arg_ckey, arg_value}
 	iv.Call(args, nil, nil)
@@ -20487,7 +20549,7 @@ func SpacedPrimesClosest(num uint32) (result uint32) {
 
 // g_spawn_async
 // container is nil
-func SpawnAsync(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, err error) {
+func SpawnAsync(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1106, "spawn_async", "")
 	if err != nil {
 		return
@@ -20495,9 +20557,9 @@ func SpawnAsync(working_directory string, argv int /*TODO_TYPE isPtr: true, tag:
 	var outArgs [2]gi.Argument
 	c_working_directory := gi.CString(working_directory)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
-	arg_argv := gi.NewIntArgument(argv)               /*TODO*/
-	arg_envp := gi.NewIntArgument(envp)               /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)             /*TODO*/
+	arg_argv := gi.NewIntArgument(argv) /*TODO*/
+	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -20514,7 +20576,7 @@ func SpawnAsync(working_directory string, argv int /*TODO_TYPE isPtr: true, tag:
 
 // g_spawn_async_with_fds
 // container is nil
-func SpawnAsyncWithFds(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
+func SpawnAsyncWithFds(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1107, "spawn_async_with_fds", "")
 	if err != nil {
 		return
@@ -20522,9 +20584,9 @@ func SpawnAsyncWithFds(working_directory string, argv int /*TODO_TYPE isPtr: tru
 	var outArgs [2]gi.Argument
 	c_working_directory := gi.CString(working_directory)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
-	arg_argv := gi.NewIntArgument(argv)               /*TODO*/
-	arg_envp := gi.NewIntArgument(envp)               /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)             /*TODO*/
+	arg_argv := gi.NewIntArgument(argv) /*TODO*/
+	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -20544,7 +20606,7 @@ func SpawnAsyncWithFds(working_directory string, argv int /*TODO_TYPE isPtr: tru
 
 // g_spawn_async_with_pipes
 // container is nil
-func SpawnAsyncWithPipes(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
+func SpawnAsyncWithPipes(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
 	iv, err := _I.Get(1108, "spawn_async_with_pipes", "")
 	if err != nil {
 		return
@@ -20552,9 +20614,9 @@ func SpawnAsyncWithPipes(working_directory string, argv int /*TODO_TYPE isPtr: t
 	var outArgs [5]gi.Argument
 	c_working_directory := gi.CString(working_directory)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
-	arg_argv := gi.NewIntArgument(argv)               /*TODO*/
-	arg_envp := gi.NewIntArgument(envp)               /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)             /*TODO*/
+	arg_argv := gi.NewIntArgument(argv) /*TODO*/
+	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -20682,7 +20744,7 @@ func SpawnExitErrorQuark() (result uint32) {
 
 // g_spawn_sync
 // container is nil
-func SpawnSync(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, standard_output int /*TODO_TYPE*/, standard_error int /*TODO_TYPE*/, exit_status int32, err error) {
+func SpawnSync(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, standard_output int /*TODO_TYPE*/, standard_error int /*TODO_TYPE*/, exit_status int32, err error) {
 	iv, err := _I.Get(1115, "spawn_sync", "")
 	if err != nil {
 		return
@@ -20690,9 +20752,9 @@ func SpawnSync(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: 
 	var outArgs [4]gi.Argument
 	c_working_directory := gi.CString(working_directory)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
-	arg_argv := gi.NewIntArgument(argv)               /*TODO*/
-	arg_envp := gi.NewIntArgument(envp)               /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)             /*TODO*/
+	arg_argv := gi.NewIntArgument(argv) /*TODO*/
+	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_standard_output := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -21613,7 +21675,7 @@ func TestBugBase(uri_pattern string) {
 
 // g_test_expect_message
 // container is nil
-func TestExpectMessage(log_domain string, log_level int /*TODO_TYPE isPtr: false, tag: interface*/, pattern string) {
+func TestExpectMessage(log_domain string, log_level LogLevelFlags, pattern string) {
 	iv, err := _I.Get(1163, "test_expect_message", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21622,7 +21684,7 @@ func TestExpectMessage(log_domain string, log_level int /*TODO_TYPE isPtr: false
 	c_log_domain := gi.CString(log_domain)
 	c_pattern := gi.CString(pattern)
 	arg_log_domain := gi.NewStringArgument(c_log_domain)
-	arg_log_level := gi.NewIntArgument(log_level) /*TODO*/
+	arg_log_level := gi.NewIntArgument(int(log_level))
 	arg_pattern := gi.NewStringArgument(c_pattern)
 	args := []gi.Argument{arg_log_domain, arg_log_level, arg_pattern}
 	iv.Call(args, nil, nil)
@@ -21657,13 +21719,13 @@ func TestFailed() (result bool) {
 
 // g_test_get_dir
 // container is nil
-func TestGetDir(file_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func TestGetDir(file_type TestFileTypeEnum) (result string) {
 	iv, err := _I.Get(1166, "test_get_dir", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_file_type := gi.NewIntArgument(file_type) /*TODO*/
+	arg_file_type := gi.NewIntArgument(int(file_type))
 	args := []gi.Argument{arg_file_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21688,13 +21750,13 @@ func TestIncomplete(msg string) {
 
 // g_test_log_type_name
 // container is nil
-func TestLogTypeName(log_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func TestLogTypeName(log_type TestLogTypeEnum) (result string) {
 	iv, err := _I.Get(1168, "test_log_type_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_log_type := gi.NewIntArgument(log_type) /*TODO*/
+	arg_log_type := gi.NewIntArgument(int(log_type))
 	args := []gi.Argument{arg_log_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21928,14 +21990,14 @@ func TestTrapAssertions(domain string, file string, line int32, func1 string, as
 
 // g_test_trap_fork
 // container is nil
-func TestTrapFork(usec_timeout uint64, test_trap_flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func TestTrapFork(usec_timeout uint64, test_trap_flags TestTrapFlags) (result bool) {
 	iv, err := _I.Get(1184, "test_trap_fork", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_usec_timeout := gi.NewUint64Argument(usec_timeout)
-	arg_test_trap_flags := gi.NewIntArgument(test_trap_flags) /*TODO*/
+	arg_test_trap_flags := gi.NewIntArgument(int(test_trap_flags))
 	args := []gi.Argument{arg_usec_timeout, arg_test_trap_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21973,7 +22035,7 @@ func TestTrapReachedTimeout() (result bool) {
 
 // g_test_trap_subprocess
 // container is nil
-func TestTrapSubprocess(test_path string, usec_timeout uint64, test_flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func TestTrapSubprocess(test_path string, usec_timeout uint64, test_flags TestSubprocessFlags) {
 	iv, err := _I.Get(1187, "test_trap_subprocess", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21982,7 +22044,7 @@ func TestTrapSubprocess(test_path string, usec_timeout uint64, test_flags int /*
 	c_test_path := gi.CString(test_path)
 	arg_test_path := gi.NewStringArgument(c_test_path)
 	arg_usec_timeout := gi.NewUint64Argument(usec_timeout)
-	arg_test_flags := gi.NewIntArgument(test_flags) /*TODO*/
+	arg_test_flags := gi.NewIntArgument(int(test_flags))
 	args := []gi.Argument{arg_test_path, arg_usec_timeout, arg_test_flags}
 	iv.Call(args, nil, nil)
 	gi.Free(c_test_path)
@@ -22353,13 +22415,13 @@ func TryReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) {
 
 // g_ucs4_to_utf16
 // container is nil
-func Ucs4ToUtf16(str int /*TODO_TYPE isPtr: true, tag: gunichar*/, len1 int64) (result uint16, items_read int64, items_written int64, err error) {
+func Ucs4ToUtf16(str rune, len1 int64) (result uint16, items_read int64, items_written int64, err error) {
 	iv, err := _I.Get(1213, "ucs4_to_utf16", "")
 	if err != nil {
 		return
 	}
 	var outArgs [3]gi.Argument
-	arg_str := gi.NewIntArgument(str) /*TODO*/
+	arg_str := gi.NewUint32Argument(uint32(str))
 	arg_len1 := gi.NewInt64Argument(len1)
 	arg_items_read := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_items_written := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -22376,13 +22438,13 @@ func Ucs4ToUtf16(str int /*TODO_TYPE isPtr: true, tag: gunichar*/, len1 int64) (
 
 // g_ucs4_to_utf8
 // container is nil
-func Ucs4ToUtf8(str int /*TODO_TYPE isPtr: true, tag: gunichar*/, len1 int64) (result string, items_read int64, items_written int64, err error) {
+func Ucs4ToUtf8(str rune, len1 int64) (result string, items_read int64, items_written int64, err error) {
 	iv, err := _I.Get(1214, "ucs4_to_utf8", "")
 	if err != nil {
 		return
 	}
 	var outArgs [3]gi.Argument
-	arg_str := gi.NewIntArgument(str) /*TODO*/
+	arg_str := gi.NewUint32Argument(uint32(str))
 	arg_len1 := gi.NewInt64Argument(len1)
 	arg_items_read := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_items_written := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -22399,29 +22461,29 @@ func Ucs4ToUtf8(str int /*TODO_TYPE isPtr: true, tag: gunichar*/, len1 int64) (r
 
 // g_unichar_break_type
 // container is nil
-func UnicharBreakType(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func UnicharBreakType(c rune) (result UnicodeBreakTypeEnum) {
 	iv, err := _I.Get(1215, "unichar_break_type", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = UnicodeBreakTypeEnum(ret.Int())
 	return
 }
 
 // g_unichar_combining_class
 // container is nil
-func UnicharCombiningClass(uc int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int32) {
+func UnicharCombiningClass(uc rune) (result int32) {
 	iv, err := _I.Get(1216, "unichar_combining_class", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_uc := gi.NewIntArgument(uc) /*TODO*/
+	arg_uc := gi.NewUint32Argument(uint32(uc))
 	args := []gi.Argument{arg_uc}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22431,15 +22493,15 @@ func UnicharCombiningClass(uc int /*TODO_TYPE isPtr: false, tag: gunichar*/) (re
 
 // g_unichar_compose
 // container is nil
-func UnicharCompose(a int /*TODO_TYPE isPtr: false, tag: gunichar*/, b int /*TODO_TYPE isPtr: false, tag: gunichar*/, ch int /*TODO_TYPE isPtr: true, tag: gunichar*/) (result bool) {
+func UnicharCompose(a rune, b rune, ch rune) (result bool) {
 	iv, err := _I.Get(1217, "unichar_compose", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_a := gi.NewIntArgument(a)   /*TODO*/
-	arg_b := gi.NewIntArgument(b)   /*TODO*/
-	arg_ch := gi.NewIntArgument(ch) /*TODO*/
+	arg_a := gi.NewUint32Argument(uint32(a))
+	arg_b := gi.NewUint32Argument(uint32(b))
+	arg_ch := gi.NewUint32Argument(uint32(ch))
 	args := []gi.Argument{arg_a, arg_b, arg_ch}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22449,15 +22511,15 @@ func UnicharCompose(a int /*TODO_TYPE isPtr: false, tag: gunichar*/, b int /*TOD
 
 // g_unichar_decompose
 // container is nil
-func UnicharDecompose(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/, a int /*TODO_TYPE isPtr: true, tag: gunichar*/, b int /*TODO_TYPE isPtr: true, tag: gunichar*/) (result bool) {
+func UnicharDecompose(ch rune, a rune, b rune) (result bool) {
 	iv, err := _I.Get(1218, "unichar_decompose", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch) /*TODO*/
-	arg_a := gi.NewIntArgument(a)   /*TODO*/
-	arg_b := gi.NewIntArgument(b)   /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
+	arg_a := gi.NewUint32Argument(uint32(a))
+	arg_b := gi.NewUint32Argument(uint32(b))
 	args := []gi.Argument{arg_ch, arg_a, arg_b}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22467,13 +22529,13 @@ func UnicharDecompose(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/, a int /*
 
 // g_unichar_digit_value
 // container is nil
-func UnicharDigitValue(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int32) {
+func UnicharDigitValue(c rune) (result int32) {
 	iv, err := _I.Get(1219, "unichar_digit_value", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22483,15 +22545,15 @@ func UnicharDigitValue(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result 
 
 // g_unichar_fully_decompose
 // container is nil
-func UnicharFullyDecompose(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/, compat bool, result int /*TODO_TYPE isPtr: true, tag: gunichar*/, result_len uint64) (result1 uint64) {
+func UnicharFullyDecompose(ch rune, compat bool, result rune, result_len uint64) (result1 uint64) {
 	iv, err := _I.Get(1220, "unichar_fully_decompose", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch) /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
 	arg_compat := gi.NewBoolArgument(compat)
-	arg_result := gi.NewIntArgument(result) /*TODO*/
+	arg_result := gi.NewUint32Argument(uint32(result))
 	arg_result_len := gi.NewUint64Argument(result_len)
 	args := []gi.Argument{arg_ch, arg_compat, arg_result, arg_result_len}
 	var ret gi.Argument
@@ -22502,14 +22564,14 @@ func UnicharFullyDecompose(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/, com
 
 // g_unichar_get_mirror_char
 // container is nil
-func UnicharGetMirrorChar(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/, mirrored_ch int /*TODO_TYPE isPtr: true, tag: gunichar*/) (result bool) {
+func UnicharGetMirrorChar(ch rune, mirrored_ch rune) (result bool) {
 	iv, err := _I.Get(1221, "unichar_get_mirror_char", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch)                   /*TODO*/
-	arg_mirrored_ch := gi.NewIntArgument(mirrored_ch) /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
+	arg_mirrored_ch := gi.NewUint32Argument(uint32(mirrored_ch))
 	args := []gi.Argument{arg_ch, arg_mirrored_ch}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22519,29 +22581,29 @@ func UnicharGetMirrorChar(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/, mirr
 
 // g_unichar_get_script
 // container is nil
-func UnicharGetScript(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func UnicharGetScript(ch rune) (result UnicodeScriptEnum) {
 	iv, err := _I.Get(1222, "unichar_get_script", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch) /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
 	args := []gi.Argument{arg_ch}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = UnicodeScriptEnum(ret.Int())
 	return
 }
 
 // g_unichar_isalnum
 // container is nil
-func UnicharIsalnum(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIsalnum(c rune) (result bool) {
 	iv, err := _I.Get(1223, "unichar_isalnum", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22551,13 +22613,13 @@ func UnicharIsalnum(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_isalpha
 // container is nil
-func UnicharIsalpha(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIsalpha(c rune) (result bool) {
 	iv, err := _I.Get(1224, "unichar_isalpha", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22567,13 +22629,13 @@ func UnicharIsalpha(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_iscntrl
 // container is nil
-func UnicharIscntrl(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIscntrl(c rune) (result bool) {
 	iv, err := _I.Get(1225, "unichar_iscntrl", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22583,13 +22645,13 @@ func UnicharIscntrl(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_isdefined
 // container is nil
-func UnicharIsdefined(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIsdefined(c rune) (result bool) {
 	iv, err := _I.Get(1226, "unichar_isdefined", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22599,13 +22661,13 @@ func UnicharIsdefined(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result b
 
 // g_unichar_isdigit
 // container is nil
-func UnicharIsdigit(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIsdigit(c rune) (result bool) {
 	iv, err := _I.Get(1227, "unichar_isdigit", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22615,13 +22677,13 @@ func UnicharIsdigit(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_isgraph
 // container is nil
-func UnicharIsgraph(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIsgraph(c rune) (result bool) {
 	iv, err := _I.Get(1228, "unichar_isgraph", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22631,13 +22693,13 @@ func UnicharIsgraph(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_islower
 // container is nil
-func UnicharIslower(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIslower(c rune) (result bool) {
 	iv, err := _I.Get(1229, "unichar_islower", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22647,13 +22709,13 @@ func UnicharIslower(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_ismark
 // container is nil
-func UnicharIsmark(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIsmark(c rune) (result bool) {
 	iv, err := _I.Get(1230, "unichar_ismark", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22663,13 +22725,13 @@ func UnicharIsmark(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool
 
 // g_unichar_isprint
 // container is nil
-func UnicharIsprint(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIsprint(c rune) (result bool) {
 	iv, err := _I.Get(1231, "unichar_isprint", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22679,13 +22741,13 @@ func UnicharIsprint(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_ispunct
 // container is nil
-func UnicharIspunct(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIspunct(c rune) (result bool) {
 	iv, err := _I.Get(1232, "unichar_ispunct", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22695,13 +22757,13 @@ func UnicharIspunct(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_isspace
 // container is nil
-func UnicharIsspace(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIsspace(c rune) (result bool) {
 	iv, err := _I.Get(1233, "unichar_isspace", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22711,13 +22773,13 @@ func UnicharIsspace(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_istitle
 // container is nil
-func UnicharIstitle(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIstitle(c rune) (result bool) {
 	iv, err := _I.Get(1234, "unichar_istitle", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22727,13 +22789,13 @@ func UnicharIstitle(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_isupper
 // container is nil
-func UnicharIsupper(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIsupper(c rune) (result bool) {
 	iv, err := _I.Get(1235, "unichar_isupper", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22743,13 +22805,13 @@ func UnicharIsupper(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result boo
 
 // g_unichar_iswide
 // container is nil
-func UnicharIswide(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIswide(c rune) (result bool) {
 	iv, err := _I.Get(1236, "unichar_iswide", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22759,13 +22821,13 @@ func UnicharIswide(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool
 
 // g_unichar_iswide_cjk
 // container is nil
-func UnicharIswideCjk(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIswideCjk(c rune) (result bool) {
 	iv, err := _I.Get(1237, "unichar_iswide_cjk", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22775,13 +22837,13 @@ func UnicharIswideCjk(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result b
 
 // g_unichar_isxdigit
 // container is nil
-func UnicharIsxdigit(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIsxdigit(c rune) (result bool) {
 	iv, err := _I.Get(1238, "unichar_isxdigit", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22791,13 +22853,13 @@ func UnicharIsxdigit(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bo
 
 // g_unichar_iszerowidth
 // container is nil
-func UnicharIszerowidth(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharIszerowidth(c rune) (result bool) {
 	iv, err := _I.Get(1239, "unichar_iszerowidth", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22807,14 +22869,14 @@ func UnicharIszerowidth(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result
 
 // g_unichar_to_utf8
 // container is nil
-func UnicharToUtf8(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int32, outbuf string) {
+func UnicharToUtf8(c rune) (result int32, outbuf string) {
 	iv, err := _I.Get(1240, "unichar_to_utf8", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	arg_outbuf := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_c, arg_outbuf}
 	var ret gi.Argument
@@ -22826,77 +22888,77 @@ func UnicharToUtf8(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int3
 
 // g_unichar_tolower
 // container is nil
-func UnicharTolower(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int /*TODO_TYPE isPtr: false, tag: gunichar*/) {
+func UnicharTolower(c rune) (result rune) {
 	iv, err := _I.Get(1241, "unichar_tolower", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = rune(ret.Uint32())
 	return
 }
 
 // g_unichar_totitle
 // container is nil
-func UnicharTotitle(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int /*TODO_TYPE isPtr: false, tag: gunichar*/) {
+func UnicharTotitle(c rune) (result rune) {
 	iv, err := _I.Get(1242, "unichar_totitle", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = rune(ret.Uint32())
 	return
 }
 
 // g_unichar_toupper
 // container is nil
-func UnicharToupper(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int /*TODO_TYPE isPtr: false, tag: gunichar*/) {
+func UnicharToupper(c rune) (result rune) {
 	iv, err := _I.Get(1243, "unichar_toupper", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = rune(ret.Uint32())
 	return
 }
 
 // g_unichar_type
 // container is nil
-func UnicharType(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func UnicharType(c rune) (result UnicodeTypeEnum) {
 	iv, err := _I.Get(1244, "unichar_type", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = UnicodeTypeEnum(ret.Int())
 	return
 }
 
 // g_unichar_validate
 // container is nil
-func UnicharValidate(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func UnicharValidate(ch rune) (result bool) {
 	iv, err := _I.Get(1245, "unichar_validate", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch) /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
 	args := []gi.Argument{arg_ch}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22906,13 +22968,13 @@ func UnicharValidate(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result b
 
 // g_unichar_xdigit_value
 // container is nil
-func UnicharXdigitValue(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int32) {
+func UnicharXdigitValue(c rune) (result int32) {
 	iv, err := _I.Get(1246, "unichar_xdigit_value", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22922,30 +22984,30 @@ func UnicharXdigitValue(c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result
 
 // g_unicode_canonical_decomposition
 // container is nil
-func UnicodeCanonicalDecomposition(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/, result_len uint64) (result int /*TODO_TYPE isPtr: true, tag: gunichar*/) {
+func UnicodeCanonicalDecomposition(ch rune, result_len uint64) (result rune) {
 	iv, err := _I.Get(1247, "unicode_canonical_decomposition", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch) /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
 	arg_result_len := gi.NewUint64Argument(result_len)
 	args := []gi.Argument{arg_ch, arg_result_len}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = rune(ret.Uint32())
 	return
 }
 
 // g_unicode_canonical_ordering
 // container is nil
-func UnicodeCanonicalOrdering(string int /*TODO_TYPE isPtr: true, tag: gunichar*/, len1 uint64) {
+func UnicodeCanonicalOrdering(string rune, len1 uint64) {
 	iv, err := _I.Get(1248, "unicode_canonical_ordering", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_string := gi.NewIntArgument(string) /*TODO*/
+	arg_string := gi.NewUint32Argument(uint32(string))
 	arg_len1 := gi.NewUint64Argument(len1)
 	args := []gi.Argument{arg_string, arg_len1}
 	iv.Call(args, nil, nil)
@@ -22953,7 +23015,7 @@ func UnicodeCanonicalOrdering(string int /*TODO_TYPE isPtr: true, tag: gunichar*
 
 // g_unicode_script_from_iso15924
 // container is nil
-func UnicodeScriptFromIso15924(iso15924 uint32) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func UnicodeScriptFromIso15924(iso15924 uint32) (result UnicodeScriptEnum) {
 	iv, err := _I.Get(1249, "unicode_script_from_iso15924", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22963,19 +23025,19 @@ func UnicodeScriptFromIso15924(iso15924 uint32) (result int /*TODO_TYPE isPtr: f
 	args := []gi.Argument{arg_iso15924}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = UnicodeScriptEnum(ret.Int())
 	return
 }
 
 // g_unicode_script_to_iso15924
 // container is nil
-func UnicodeScriptToIso15924(script int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func UnicodeScriptToIso15924(script UnicodeScriptEnum) (result uint32) {
 	iv, err := _I.Get(1250, "unicode_script_to_iso15924", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_script := gi.NewIntArgument(script) /*TODO*/
+	arg_script := gi.NewIntArgument(int(script))
 	args := []gi.Argument{arg_script}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22999,7 +23061,7 @@ func UnixErrorQuark() (result uint32) {
 
 // g_unix_fd_add_full
 // container is nil
-func UnixFdAddFull(priority int32, fd int32, condition int /*TODO_TYPE isPtr: false, tag: interface*/, function int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, function int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
 	iv, err := _I.Get(1252, "unix_fd_add_full", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23007,8 +23069,8 @@ func UnixFdAddFull(priority int32, fd int32, condition int /*TODO_TYPE isPtr: fa
 	}
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_fd := gi.NewInt32Argument(fd)
-	arg_condition := gi.NewIntArgument(condition) /*TODO*/
-	arg_function := gi.NewIntArgument(function)   /*TODO*/
+	arg_condition := gi.NewIntArgument(int(condition))
+	arg_function := gi.NewIntArgument(function) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_notify := gi.NewIntArgument(notify) /*TODO*/
 	args := []gi.Argument{arg_priority, arg_fd, arg_condition, arg_function, arg_user_data, arg_notify}
@@ -23020,14 +23082,14 @@ func UnixFdAddFull(priority int32, fd int32, condition int /*TODO_TYPE isPtr: fa
 
 // g_unix_fd_source_new
 // container is nil
-func UnixFdSourceNew(fd int32, condition int /*TODO_TYPE isPtr: false, tag: interface*/) (result Source) {
+func UnixFdSourceNew(fd int32, condition IOConditionFlags) (result Source) {
 	iv, err := _I.Get(1253, "unix_fd_source_new", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_fd := gi.NewInt32Argument(fd)
-	arg_condition := gi.NewIntArgument(condition) /*TODO*/
+	arg_condition := gi.NewIntArgument(int(condition))
 	args := []gi.Argument{arg_fd, arg_condition}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23260,7 +23322,7 @@ func Usleep(microseconds uint64) {
 
 // g_utf16_to_ucs4
 // container is nil
-func Utf16ToUcs4(str uint16, len1 int64) (result int /*TODO_TYPE isPtr: true, tag: gunichar*/, items_read int64, items_written int64, err error) {
+func Utf16ToUcs4(str uint16, len1 int64) (result rune, items_read int64, items_written int64, err error) {
 	iv, err := _I.Get(1266, "utf16_to_ucs4", "")
 	if err != nil {
 		return
@@ -23274,7 +23336,7 @@ func Utf16ToUcs4(str uint16, len1 int64) (result int /*TODO_TYPE isPtr: true, ta
 	args := []gi.Argument{arg_str, arg_len1, arg_items_read, arg_items_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = rune(ret.Uint32())
 	items_read = outArgs[0].Int64()
 	items_written = outArgs[1].Int64()
 	err = gi.ToError(outArgs[2].Pointer())
@@ -23426,7 +23488,7 @@ func Utf8FindPrevChar(str string, p string) (result string) {
 
 // g_utf8_get_char
 // container is nil
-func Utf8GetChar(p string) (result int /*TODO_TYPE isPtr: false, tag: gunichar*/) {
+func Utf8GetChar(p string) (result rune) {
 	iv, err := _I.Get(1274, "utf8_get_char", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23437,14 +23499,14 @@ func Utf8GetChar(p string) (result int /*TODO_TYPE isPtr: false, tag: gunichar*/
 	args := []gi.Argument{arg_p}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = rune(ret.Uint32())
 	gi.Free(c_p)
 	return
 }
 
 // g_utf8_get_char_validated
 // container is nil
-func Utf8GetCharValidated(p string, max_len int64) (result int /*TODO_TYPE isPtr: false, tag: gunichar*/) {
+func Utf8GetCharValidated(p string, max_len int64) (result rune) {
 	iv, err := _I.Get(1275, "utf8_get_char_validated", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23456,7 +23518,7 @@ func Utf8GetCharValidated(p string, max_len int64) (result int /*TODO_TYPE isPtr
 	args := []gi.Argument{arg_p, arg_max_len}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = rune(ret.Uint32())
 	gi.Free(c_p)
 	return
 }
@@ -23482,7 +23544,7 @@ func Utf8MakeValid(str string, len1 int64) (result string) {
 
 // g_utf8_normalize
 // container is nil
-func Utf8Normalize(str string, len1 int64, mode int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func Utf8Normalize(str string, len1 int64, mode NormalizeModeEnum) (result string) {
 	iv, err := _I.Get(1277, "utf8_normalize", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23491,7 +23553,7 @@ func Utf8Normalize(str string, len1 int64, mode int /*TODO_TYPE isPtr: false, ta
 	c_str := gi.CString(str)
 	arg_str := gi.NewStringArgument(c_str)
 	arg_len1 := gi.NewInt64Argument(len1)
-	arg_mode := gi.NewIntArgument(mode) /*TODO*/
+	arg_mode := gi.NewIntArgument(int(mode))
 	args := []gi.Argument{arg_str, arg_len1, arg_mode}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23560,7 +23622,7 @@ func Utf8PrevChar(p string) (result string) {
 
 // g_utf8_strchr
 // container is nil
-func Utf8Strchr(p string, len1 int64, c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result string) {
+func Utf8Strchr(p string, len1 int64, c rune) (result string) {
 	iv, err := _I.Get(1281, "utf8_strchr", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23569,7 +23631,7 @@ func Utf8Strchr(p string, len1 int64, c int /*TODO_TYPE isPtr: false, tag: gunic
 	c_p := gi.CString(p)
 	arg_p := gi.NewStringArgument(c_p)
 	arg_len1 := gi.NewInt64Argument(len1)
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_p, arg_len1, arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23640,7 +23702,7 @@ func Utf8Strncpy(dest string, src string, n uint64) (result string) {
 
 // g_utf8_strrchr
 // container is nil
-func Utf8Strrchr(p string, len1 int64, c int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result string) {
+func Utf8Strrchr(p string, len1 int64, c rune) (result string) {
 	iv, err := _I.Get(1285, "utf8_strrchr", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23649,7 +23711,7 @@ func Utf8Strrchr(p string, len1 int64, c int /*TODO_TYPE isPtr: false, tag: guni
 	c_p := gi.CString(p)
 	arg_p := gi.NewStringArgument(c_p)
 	arg_len1 := gi.NewInt64Argument(len1)
-	arg_c := gi.NewIntArgument(c) /*TODO*/
+	arg_c := gi.NewUint32Argument(uint32(c))
 	args := []gi.Argument{arg_p, arg_len1, arg_c}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23718,7 +23780,7 @@ func Utf8Substring(str string, start_pos int64, end_pos int64) (result string) {
 
 // g_utf8_to_ucs4
 // container is nil
-func Utf8ToUcs4(str string, len1 int64) (result int /*TODO_TYPE isPtr: true, tag: gunichar*/, items_read int64, items_written int64, err error) {
+func Utf8ToUcs4(str string, len1 int64) (result rune, items_read int64, items_written int64, err error) {
 	iv, err := _I.Get(1289, "utf8_to_ucs4", "")
 	if err != nil {
 		return
@@ -23733,7 +23795,7 @@ func Utf8ToUcs4(str string, len1 int64) (result int /*TODO_TYPE isPtr: true, tag
 	args := []gi.Argument{arg_str, arg_len1, arg_items_read, arg_items_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = rune(ret.Uint32())
 	gi.Free(c_str)
 	items_read = outArgs[0].Int64()
 	items_written = outArgs[1].Int64()
@@ -23743,7 +23805,7 @@ func Utf8ToUcs4(str string, len1 int64) (result int /*TODO_TYPE isPtr: true, tag
 
 // g_utf8_to_ucs4_fast
 // container is nil
-func Utf8ToUcs4Fast(str string, len1 int64) (result int /*TODO_TYPE isPtr: true, tag: gunichar*/, items_written int64) {
+func Utf8ToUcs4Fast(str string, len1 int64) (result rune, items_written int64) {
 	iv, err := _I.Get(1290, "utf8_to_ucs4_fast", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23757,7 +23819,7 @@ func Utf8ToUcs4Fast(str string, len1 int64) (result int /*TODO_TYPE isPtr: true,
 	args := []gi.Argument{arg_str, arg_len1, arg_items_written}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = rune(ret.Uint32())
 	gi.Free(c_str)
 	items_written = outArgs[0].Int64()
 	return

@@ -23,10 +23,14 @@ type Binding struct {
 
 func WrapBinding(p unsafe.Pointer) (r Binding) { r.P = p; return }
 
+type IBinding interface{ P_Binding() unsafe.Pointer }
+
+func (v Binding) P_Binding() unsafe.Pointer { return v.P }
+
 // g_binding_get_flags
 // container is not nil, container is Binding
 // is method
-func (v Binding) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Binding) GetFlags() (result BindingFlags) {
 	iv, err := _I.Get(0, "Binding", "get_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -36,7 +40,7 @@ func (v Binding) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = BindingFlags(ret.Int())
 	return
 }
 
@@ -122,6 +126,7 @@ func (v Binding) Unbind() {
 	iv.Call(args, nil, nil)
 }
 
+// Flags BindingFlags
 type BindingFlags int
 
 const (
@@ -604,14 +609,14 @@ type Closure struct {
 // g_closure_new_object
 // container is not nil, container is Closure
 // is constructor
-func NewClosureObject(sizeof_closure uint32, object Object) (result Closure) {
+func NewClosureObject(sizeof_closure uint32, object IObject) (result Closure) {
 	iv, err := _I.Get(29, "Closure", "new_object")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_sizeof_closure := gi.NewUint32Argument(sizeof_closure)
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_Object())
 	args := []gi.Argument{arg_sizeof_closure, arg_object}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -721,6 +726,8 @@ func (v Closure) Unref() {
 type ClosureNotifyData struct {
 	P unsafe.Pointer
 }
+
+// Flags ConnectFlags
 type ConnectFlags int
 
 const (
@@ -755,6 +762,10 @@ type InitiallyUnowned struct {
 
 func WrapInitiallyUnowned(p unsafe.Pointer) (r InitiallyUnowned) { r.P = p; return }
 
+type IInitiallyUnowned interface{ P_InitiallyUnowned() unsafe.Pointer }
+
+func (v InitiallyUnowned) P_InitiallyUnowned() unsafe.Pointer { return v.P }
+
 // ignore GType struct InitiallyUnownedClass
 // Struct InterfaceInfo
 type InterfaceInfo struct {
@@ -765,6 +776,9 @@ type InterfaceInfo struct {
 type Object struct {
 	P unsafe.Pointer
 }
+type IObject interface{ P_Object() unsafe.Pointer }
+
+func (v Object) P_Object() unsafe.Pointer { return v.P }
 
 // g_object_newv
 // container is not nil, container is Object
@@ -829,14 +843,14 @@ func ObjectInterfaceFindProperty1(g_iface TypeInterface, property_name string) (
 // container is not nil, container is Object
 // is method
 // arg0Type tag: interface, isPtr: true
-func ObjectInterfaceInstallProperty1(g_iface TypeInterface, pspec ParamSpec) {
+func ObjectInterfaceInstallProperty1(g_iface TypeInterface, pspec IParamSpec) {
 	iv, err := _I.Get(39, "Object", "interface_install_property")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_g_iface := gi.NewPointerArgument(g_iface.P)
-	arg_pspec := gi.NewPointerArgument(pspec.P)
+	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
 	args := []gi.Argument{arg_g_iface, arg_pspec}
 	iv.Call(args, nil, nil)
 }
@@ -865,7 +879,7 @@ func ObjectInterfaceListProperties1(g_iface TypeInterface) (result int /*TODO_TY
 // g_object_bind_property
 // container is not nil, container is Object
 // is method
-func (v Object) BindProperty(source_property string, target Object, target_property string, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result Binding) {
+func (v Object) BindProperty(source_property string, target IObject, target_property string, flags BindingFlags) (result Binding) {
 	iv, err := _I.Get(41, "Object", "bind_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -875,9 +889,9 @@ func (v Object) BindProperty(source_property string, target Object, target_prope
 	c_target_property := gi.CString(target_property)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_source_property := gi.NewStringArgument(c_source_property)
-	arg_target := gi.NewPointerArgument(target.P)
+	arg_target := gi.NewPointerArgument(target.P_Object())
 	arg_target_property := gi.NewStringArgument(c_target_property)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_source_property, arg_target, arg_target_property, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -890,7 +904,7 @@ func (v Object) BindProperty(source_property string, target Object, target_prope
 // g_object_bind_property_with_closures
 // container is not nil, container is Object
 // is method
-func (v Object) BindPropertyFull(source_property string, target Object, target_property string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, transform_to Closure, transform_from Closure) (result Binding) {
+func (v Object) BindPropertyFull(source_property string, target IObject, target_property string, flags BindingFlags, transform_to Closure, transform_from Closure) (result Binding) {
 	iv, err := _I.Get(42, "Object", "bind_property_full")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -900,9 +914,9 @@ func (v Object) BindPropertyFull(source_property string, target Object, target_p
 	c_target_property := gi.CString(target_property)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_source_property := gi.NewStringArgument(c_source_property)
-	arg_target := gi.NewPointerArgument(target.P)
+	arg_target := gi.NewPointerArgument(target.P_Object())
 	arg_target_property := gi.NewStringArgument(c_target_property)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_transform_to := gi.NewPointerArgument(transform_to.P)
 	arg_transform_from := gi.NewPointerArgument(transform_from.P)
 	args := []gi.Argument{arg_v, arg_source_property, arg_target, arg_target_property, arg_flags, arg_transform_to, arg_transform_from}
@@ -1046,14 +1060,14 @@ func (v Object) Notify(property_name string) {
 // g_object_notify_by_pspec
 // container is not nil, container is Object
 // is method
-func (v Object) NotifyByPspec(pspec ParamSpec) {
+func (v Object) NotifyByPspec(pspec IParamSpec) {
 	iv, err := _I.Get(51, "Object", "notify_by_pspec")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pspec := gi.NewPointerArgument(pspec.P)
+	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
 	args := []gi.Argument{arg_v, arg_pspec}
 	iv.Call(args, nil, nil)
 }
@@ -1222,6 +1236,8 @@ func (v Object) WatchClosure(closure Closure) {
 type ObjectConstructParam struct {
 	P unsafe.Pointer
 }
+
+// Flags ParamFlags
 type ParamFlags int
 
 const (
@@ -1243,6 +1259,9 @@ const (
 type ParamSpec struct {
 	P unsafe.Pointer
 }
+type IParamSpec interface{ P_ParamSpec() unsafe.Pointer }
+
+func (v ParamSpec) P_ParamSpec() unsafe.Pointer { return v.P }
 
 // g_param_spec_get_blurb
 // container is not nil, container is ParamSpec
@@ -1413,6 +1432,10 @@ type ParamSpecBoolean struct {
 
 func WrapParamSpecBoolean(p unsafe.Pointer) (r ParamSpecBoolean) { r.P = p; return }
 
+type IParamSpecBoolean interface{ P_ParamSpecBoolean() unsafe.Pointer }
+
+func (v ParamSpecBoolean) P_ParamSpecBoolean() unsafe.Pointer { return v.P }
+
 // Object ParamSpecBoxed
 type ParamSpecBoxed struct {
 	ParamSpec
@@ -1420,12 +1443,20 @@ type ParamSpecBoxed struct {
 
 func WrapParamSpecBoxed(p unsafe.Pointer) (r ParamSpecBoxed) { r.P = p; return }
 
+type IParamSpecBoxed interface{ P_ParamSpecBoxed() unsafe.Pointer }
+
+func (v ParamSpecBoxed) P_ParamSpecBoxed() unsafe.Pointer { return v.P }
+
 // Object ParamSpecChar
 type ParamSpecChar struct {
 	ParamSpec
 }
 
 func WrapParamSpecChar(p unsafe.Pointer) (r ParamSpecChar) { r.P = p; return }
+
+type IParamSpecChar interface{ P_ParamSpecChar() unsafe.Pointer }
+
+func (v ParamSpecChar) P_ParamSpecChar() unsafe.Pointer { return v.P }
 
 // ignore GType struct ParamSpecClass
 // Object ParamSpecDouble
@@ -1435,12 +1466,20 @@ type ParamSpecDouble struct {
 
 func WrapParamSpecDouble(p unsafe.Pointer) (r ParamSpecDouble) { r.P = p; return }
 
+type IParamSpecDouble interface{ P_ParamSpecDouble() unsafe.Pointer }
+
+func (v ParamSpecDouble) P_ParamSpecDouble() unsafe.Pointer { return v.P }
+
 // Object ParamSpecEnum
 type ParamSpecEnum struct {
 	ParamSpec
 }
 
 func WrapParamSpecEnum(p unsafe.Pointer) (r ParamSpecEnum) { r.P = p; return }
+
+type IParamSpecEnum interface{ P_ParamSpecEnum() unsafe.Pointer }
+
+func (v ParamSpecEnum) P_ParamSpecEnum() unsafe.Pointer { return v.P }
 
 // Object ParamSpecFlags
 type ParamSpecFlags struct {
@@ -1449,12 +1488,20 @@ type ParamSpecFlags struct {
 
 func WrapParamSpecFlags(p unsafe.Pointer) (r ParamSpecFlags) { r.P = p; return }
 
+type IParamSpecFlags interface{ P_ParamSpecFlags() unsafe.Pointer }
+
+func (v ParamSpecFlags) P_ParamSpecFlags() unsafe.Pointer { return v.P }
+
 // Object ParamSpecFloat
 type ParamSpecFloat struct {
 	ParamSpec
 }
 
 func WrapParamSpecFloat(p unsafe.Pointer) (r ParamSpecFloat) { r.P = p; return }
+
+type IParamSpecFloat interface{ P_ParamSpecFloat() unsafe.Pointer }
+
+func (v ParamSpecFloat) P_ParamSpecFloat() unsafe.Pointer { return v.P }
 
 // Object ParamSpecGType
 type ParamSpecGType struct {
@@ -1463,12 +1510,20 @@ type ParamSpecGType struct {
 
 func WrapParamSpecGType(p unsafe.Pointer) (r ParamSpecGType) { r.P = p; return }
 
+type IParamSpecGType interface{ P_ParamSpecGType() unsafe.Pointer }
+
+func (v ParamSpecGType) P_ParamSpecGType() unsafe.Pointer { return v.P }
+
 // Object ParamSpecInt
 type ParamSpecInt struct {
 	ParamSpec
 }
 
 func WrapParamSpecInt(p unsafe.Pointer) (r ParamSpecInt) { r.P = p; return }
+
+type IParamSpecInt interface{ P_ParamSpecInt() unsafe.Pointer }
+
+func (v ParamSpecInt) P_ParamSpecInt() unsafe.Pointer { return v.P }
 
 // Object ParamSpecInt64
 type ParamSpecInt64 struct {
@@ -1477,12 +1532,20 @@ type ParamSpecInt64 struct {
 
 func WrapParamSpecInt64(p unsafe.Pointer) (r ParamSpecInt64) { r.P = p; return }
 
+type IParamSpecInt64 interface{ P_ParamSpecInt64() unsafe.Pointer }
+
+func (v ParamSpecInt64) P_ParamSpecInt64() unsafe.Pointer { return v.P }
+
 // Object ParamSpecLong
 type ParamSpecLong struct {
 	ParamSpec
 }
 
 func WrapParamSpecLong(p unsafe.Pointer) (r ParamSpecLong) { r.P = p; return }
+
+type IParamSpecLong interface{ P_ParamSpecLong() unsafe.Pointer }
+
+func (v ParamSpecLong) P_ParamSpecLong() unsafe.Pointer { return v.P }
 
 // Object ParamSpecObject
 type ParamSpecObject struct {
@@ -1491,12 +1554,20 @@ type ParamSpecObject struct {
 
 func WrapParamSpecObject(p unsafe.Pointer) (r ParamSpecObject) { r.P = p; return }
 
+type IParamSpecObject interface{ P_ParamSpecObject() unsafe.Pointer }
+
+func (v ParamSpecObject) P_ParamSpecObject() unsafe.Pointer { return v.P }
+
 // Object ParamSpecOverride
 type ParamSpecOverride struct {
 	ParamSpec
 }
 
 func WrapParamSpecOverride(p unsafe.Pointer) (r ParamSpecOverride) { r.P = p; return }
+
+type IParamSpecOverride interface{ P_ParamSpecOverride() unsafe.Pointer }
+
+func (v ParamSpecOverride) P_ParamSpecOverride() unsafe.Pointer { return v.P }
 
 // Object ParamSpecParam
 type ParamSpecParam struct {
@@ -1505,12 +1576,20 @@ type ParamSpecParam struct {
 
 func WrapParamSpecParam(p unsafe.Pointer) (r ParamSpecParam) { r.P = p; return }
 
+type IParamSpecParam interface{ P_ParamSpecParam() unsafe.Pointer }
+
+func (v ParamSpecParam) P_ParamSpecParam() unsafe.Pointer { return v.P }
+
 // Object ParamSpecPointer
 type ParamSpecPointer struct {
 	ParamSpec
 }
 
 func WrapParamSpecPointer(p unsafe.Pointer) (r ParamSpecPointer) { r.P = p; return }
+
+type IParamSpecPointer interface{ P_ParamSpecPointer() unsafe.Pointer }
+
+func (v ParamSpecPointer) P_ParamSpecPointer() unsafe.Pointer { return v.P }
 
 // Struct ParamSpecPool
 type ParamSpecPool struct {
@@ -1520,14 +1599,14 @@ type ParamSpecPool struct {
 // g_param_spec_pool_insert
 // container is not nil, container is ParamSpecPool
 // is method
-func (v ParamSpecPool) Insert(pspec ParamSpec, owner_type int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v ParamSpecPool) Insert(pspec IParamSpec, owner_type int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	iv, err := _I.Get(72, "ParamSpecPool", "insert")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pspec := gi.NewPointerArgument(pspec.P)
+	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
 	arg_owner_type := gi.NewIntArgument(owner_type) /*TODO*/
 	args := []gi.Argument{arg_v, arg_pspec, arg_owner_type}
 	iv.Call(args, nil, nil)
@@ -1597,14 +1676,14 @@ func (v ParamSpecPool) Lookup(param_name string, owner_type int /*TODO_TYPE isPt
 // g_param_spec_pool_remove
 // container is not nil, container is ParamSpecPool
 // is method
-func (v ParamSpecPool) Remove(pspec ParamSpec) {
+func (v ParamSpecPool) Remove(pspec IParamSpec) {
 	iv, err := _I.Get(76, "ParamSpecPool", "remove")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pspec := gi.NewPointerArgument(pspec.P)
+	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
 	args := []gi.Argument{arg_v, arg_pspec}
 	iv.Call(args, nil, nil)
 }
@@ -1634,6 +1713,10 @@ type ParamSpecString struct {
 
 func WrapParamSpecString(p unsafe.Pointer) (r ParamSpecString) { r.P = p; return }
 
+type IParamSpecString interface{ P_ParamSpecString() unsafe.Pointer }
+
+func (v ParamSpecString) P_ParamSpecString() unsafe.Pointer { return v.P }
+
 // Struct ParamSpecTypeInfo
 type ParamSpecTypeInfo struct {
 	P unsafe.Pointer
@@ -1646,12 +1729,20 @@ type ParamSpecUChar struct {
 
 func WrapParamSpecUChar(p unsafe.Pointer) (r ParamSpecUChar) { r.P = p; return }
 
+type IParamSpecUChar interface{ P_ParamSpecUChar() unsafe.Pointer }
+
+func (v ParamSpecUChar) P_ParamSpecUChar() unsafe.Pointer { return v.P }
+
 // Object ParamSpecUInt
 type ParamSpecUInt struct {
 	ParamSpec
 }
 
 func WrapParamSpecUInt(p unsafe.Pointer) (r ParamSpecUInt) { r.P = p; return }
+
+type IParamSpecUInt interface{ P_ParamSpecUInt() unsafe.Pointer }
+
+func (v ParamSpecUInt) P_ParamSpecUInt() unsafe.Pointer { return v.P }
 
 // Object ParamSpecUInt64
 type ParamSpecUInt64 struct {
@@ -1660,12 +1751,20 @@ type ParamSpecUInt64 struct {
 
 func WrapParamSpecUInt64(p unsafe.Pointer) (r ParamSpecUInt64) { r.P = p; return }
 
+type IParamSpecUInt64 interface{ P_ParamSpecUInt64() unsafe.Pointer }
+
+func (v ParamSpecUInt64) P_ParamSpecUInt64() unsafe.Pointer { return v.P }
+
 // Object ParamSpecULong
 type ParamSpecULong struct {
 	ParamSpec
 }
 
 func WrapParamSpecULong(p unsafe.Pointer) (r ParamSpecULong) { r.P = p; return }
+
+type IParamSpecULong interface{ P_ParamSpecULong() unsafe.Pointer }
+
+func (v ParamSpecULong) P_ParamSpecULong() unsafe.Pointer { return v.P }
 
 // Object ParamSpecUnichar
 type ParamSpecUnichar struct {
@@ -1674,12 +1773,20 @@ type ParamSpecUnichar struct {
 
 func WrapParamSpecUnichar(p unsafe.Pointer) (r ParamSpecUnichar) { r.P = p; return }
 
+type IParamSpecUnichar interface{ P_ParamSpecUnichar() unsafe.Pointer }
+
+func (v ParamSpecUnichar) P_ParamSpecUnichar() unsafe.Pointer { return v.P }
+
 // Object ParamSpecValueArray
 type ParamSpecValueArray struct {
 	ParamSpec
 }
 
 func WrapParamSpecValueArray(p unsafe.Pointer) (r ParamSpecValueArray) { r.P = p; return }
+
+type IParamSpecValueArray interface{ P_ParamSpecValueArray() unsafe.Pointer }
+
+func (v ParamSpecValueArray) P_ParamSpecValueArray() unsafe.Pointer { return v.P }
 
 // Object ParamSpecVariant
 type ParamSpecVariant struct {
@@ -1688,10 +1795,16 @@ type ParamSpecVariant struct {
 
 func WrapParamSpecVariant(p unsafe.Pointer) (r ParamSpecVariant) { r.P = p; return }
 
+type IParamSpecVariant interface{ P_ParamSpecVariant() unsafe.Pointer }
+
+func (v ParamSpecVariant) P_ParamSpecVariant() unsafe.Pointer { return v.P }
+
 // Struct Parameter
 type Parameter struct {
 	P unsafe.Pointer
 }
+
+// Flags SignalFlags
 type SignalFlags int
 
 const (
@@ -1710,6 +1823,8 @@ const (
 type SignalInvocationHint struct {
 	P unsafe.Pointer
 }
+
+// Flags SignalMatchType
 type SignalMatchTypeFlags int
 
 const (
@@ -1867,6 +1982,7 @@ func TypeClassRef1(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result Typ
 	return
 }
 
+// Flags TypeDebugFlags
 type TypeDebugFlags int
 
 const (
@@ -1877,6 +1993,7 @@ const (
 	TypeDebugFlagsMask                         = 7
 )
 
+// Flags TypeFlags
 type TypeFlags int
 
 const (
@@ -1884,6 +2001,7 @@ const (
 	TypeFlagsValueAbstract           = 32
 )
 
+// Flags TypeFundamentalFlags
 type TypeFundamentalFlags int
 
 const (
@@ -2028,6 +2146,10 @@ type TypeModule struct {
 
 func WrapTypeModule(p unsafe.Pointer) (r TypeModule) { r.P = p; return }
 
+type ITypeModule interface{ P_TypeModule() unsafe.Pointer }
+
+func (v TypeModule) P_TypeModule() unsafe.Pointer { return v.P }
+
 // g_type_module_add_interface
 // container is not nil, container is TypeModule
 // is method
@@ -2090,7 +2212,7 @@ func (v TypeModule) RegisterFlags(name string, const_static_values FlagsValue) (
 // g_type_module_register_type
 // container is not nil, container is TypeModule
 // is method
-func (v TypeModule) RegisterType(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, type_info TypeInfo, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v TypeModule) RegisterType(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, type_info TypeInfo, flags TypeFlags) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	iv, err := _I.Get(95, "TypeModule", "register_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2101,7 +2223,7 @@ func (v TypeModule) RegisterType(parent_type int /*TODO_TYPE isPtr: false, tag: 
 	arg_parent_type := gi.NewIntArgument(parent_type) /*TODO*/
 	arg_type_name := gi.NewStringArgument(c_type_name)
 	arg_type_info := gi.NewPointerArgument(type_info.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_parent_type, arg_type_name, arg_type_info, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2940,14 +3062,14 @@ func (v Value) SetLong(v_long int64) {
 // g_value_set_object
 // container is not nil, container is Value
 // is method
-func (v Value) SetObject(v_object Object) {
+func (v Value) SetObject(v_object IObject) {
 	iv, err := _I.Get(146, "Value", "set_object")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_v_object := gi.NewPointerArgument(v_object.P)
+	arg_v_object := gi.NewPointerArgument(v_object.P_Object())
 	args := []gi.Argument{arg_v, arg_v_object}
 	iv.Call(args, nil, nil)
 }
@@ -2955,14 +3077,14 @@ func (v Value) SetObject(v_object Object) {
 // g_value_set_param
 // container is not nil, container is Value
 // is method
-func (v Value) SetParam(param ParamSpec) {
+func (v Value) SetParam(param IParamSpec) {
 	iv, err := _I.Get(147, "Value", "set_param")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_param := gi.NewPointerArgument(param.P)
+	arg_param := gi.NewPointerArgument(param.P_ParamSpec())
 	args := []gi.Argument{arg_v, arg_param}
 	iv.Call(args, nil, nil)
 }
@@ -4090,7 +4212,7 @@ func GtypeGetType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 
 // g_param_spec_boolean
 // container is nil
-func ParamSpecBooleanF(name string, nick string, blurb string, default_value bool, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecBooleanF(name string, nick string, blurb string, default_value bool, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(212, "param_spec_boolean", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4103,7 +4225,7 @@ func ParamSpecBooleanF(name string, nick string, blurb string, default_value boo
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
 	arg_default_value := gi.NewBoolArgument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4116,7 +4238,7 @@ func ParamSpecBooleanF(name string, nick string, blurb string, default_value boo
 
 // g_param_spec_boxed
 // container is nil
-func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(213, "param_spec_boxed", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4129,7 +4251,7 @@ func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type int /*TO
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
 	arg_boxed_type := gi.NewIntArgument(boxed_type) /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)           /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_boxed_type, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4142,7 +4264,7 @@ func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type int /*TO
 
 // g_param_spec_char
 // container is nil
-func ParamSpecCharF(name string, nick string, blurb string, minimum int8, maximum int8, default_value int8, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecCharF(name string, nick string, blurb string, minimum int8, maximum int8, default_value int8, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(214, "param_spec_char", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4157,7 +4279,7 @@ func ParamSpecCharF(name string, nick string, blurb string, minimum int8, maximu
 	arg_minimum := gi.NewInt8Argument(minimum)
 	arg_maximum := gi.NewInt8Argument(maximum)
 	arg_default_value := gi.NewInt8Argument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_minimum, arg_maximum, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4170,7 +4292,7 @@ func ParamSpecCharF(name string, nick string, blurb string, minimum int8, maximu
 
 // g_param_spec_double
 // container is nil
-func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, maximum float64, default_value float64, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, maximum float64, default_value float64, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(215, "param_spec_double", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4185,7 +4307,7 @@ func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, m
 	arg_minimum := gi.NewDoubleArgument(minimum)
 	arg_maximum := gi.NewDoubleArgument(maximum)
 	arg_default_value := gi.NewDoubleArgument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_minimum, arg_maximum, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4198,7 +4320,7 @@ func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, m
 
 // g_param_spec_enum
 // container is nil
-func ParamSpecEnumF(name string, nick string, blurb string, enum_type int /*TODO_TYPE isPtr: false, tag: GType*/, default_value int32, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecEnumF(name string, nick string, blurb string, enum_type int /*TODO_TYPE isPtr: false, tag: GType*/, default_value int32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(216, "param_spec_enum", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4212,7 +4334,7 @@ func ParamSpecEnumF(name string, nick string, blurb string, enum_type int /*TODO
 	arg_blurb := gi.NewStringArgument(c_blurb)
 	arg_enum_type := gi.NewIntArgument(enum_type) /*TODO*/
 	arg_default_value := gi.NewInt32Argument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_enum_type, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4225,7 +4347,7 @@ func ParamSpecEnumF(name string, nick string, blurb string, enum_type int /*TODO
 
 // g_param_spec_flags
 // container is nil
-func ParamSpecFlagsF(name string, nick string, blurb string, flags_type int /*TODO_TYPE isPtr: false, tag: GType*/, default_value uint32, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecFlagsF(name string, nick string, blurb string, flags_type int /*TODO_TYPE isPtr: false, tag: GType*/, default_value uint32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(217, "param_spec_flags", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4239,7 +4361,7 @@ func ParamSpecFlagsF(name string, nick string, blurb string, flags_type int /*TO
 	arg_blurb := gi.NewStringArgument(c_blurb)
 	arg_flags_type := gi.NewIntArgument(flags_type) /*TODO*/
 	arg_default_value := gi.NewUint32Argument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_flags_type, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4252,7 +4374,7 @@ func ParamSpecFlagsF(name string, nick string, blurb string, flags_type int /*TO
 
 // g_param_spec_float
 // container is nil
-func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, maximum float32, default_value float32, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, maximum float32, default_value float32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(218, "param_spec_float", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4267,7 +4389,7 @@ func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, ma
 	arg_minimum := gi.NewFloatArgument(minimum)
 	arg_maximum := gi.NewFloatArgument(maximum)
 	arg_default_value := gi.NewFloatArgument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_minimum, arg_maximum, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4280,7 +4402,7 @@ func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, ma
 
 // g_param_spec_gtype
 // container is nil
-func ParamSpecGtype(name string, nick string, blurb string, is_a_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecGtype(name string, nick string, blurb string, is_a_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(219, "param_spec_gtype", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4293,7 +4415,7 @@ func ParamSpecGtype(name string, nick string, blurb string, is_a_type int /*TODO
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
 	arg_is_a_type := gi.NewIntArgument(is_a_type) /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)         /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_is_a_type, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4306,7 +4428,7 @@ func ParamSpecGtype(name string, nick string, blurb string, is_a_type int /*TODO
 
 // g_param_spec_int
 // container is nil
-func ParamSpecIntF(name string, nick string, blurb string, minimum int32, maximum int32, default_value int32, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecIntF(name string, nick string, blurb string, minimum int32, maximum int32, default_value int32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(220, "param_spec_int", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4321,7 +4443,7 @@ func ParamSpecIntF(name string, nick string, blurb string, minimum int32, maximu
 	arg_minimum := gi.NewInt32Argument(minimum)
 	arg_maximum := gi.NewInt32Argument(maximum)
 	arg_default_value := gi.NewInt32Argument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_minimum, arg_maximum, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4334,7 +4456,7 @@ func ParamSpecIntF(name string, nick string, blurb string, minimum int32, maximu
 
 // g_param_spec_int64
 // container is nil
-func ParamSpecInt64F(name string, nick string, blurb string, minimum int64, maximum int64, default_value int64, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecInt64F(name string, nick string, blurb string, minimum int64, maximum int64, default_value int64, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(221, "param_spec_int64", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4349,7 +4471,7 @@ func ParamSpecInt64F(name string, nick string, blurb string, minimum int64, maxi
 	arg_minimum := gi.NewInt64Argument(minimum)
 	arg_maximum := gi.NewInt64Argument(maximum)
 	arg_default_value := gi.NewInt64Argument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_minimum, arg_maximum, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4362,7 +4484,7 @@ func ParamSpecInt64F(name string, nick string, blurb string, minimum int64, maxi
 
 // g_param_spec_long
 // container is nil
-func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maximum int64, default_value int64, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maximum int64, default_value int64, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(222, "param_spec_long", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4377,7 +4499,7 @@ func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maxim
 	arg_minimum := gi.NewInt64Argument(minimum)
 	arg_maximum := gi.NewInt64Argument(maximum)
 	arg_default_value := gi.NewInt64Argument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_minimum, arg_maximum, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4390,7 +4512,7 @@ func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maxim
 
 // g_param_spec_object
 // container is nil
-func ParamSpecObjectF(name string, nick string, blurb string, object_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecObjectF(name string, nick string, blurb string, object_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(223, "param_spec_object", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4403,7 +4525,7 @@ func ParamSpecObjectF(name string, nick string, blurb string, object_type int /*
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
 	arg_object_type := gi.NewIntArgument(object_type) /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)             /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_object_type, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4416,7 +4538,7 @@ func ParamSpecObjectF(name string, nick string, blurb string, object_type int /*
 
 // g_param_spec_param
 // container is nil
-func ParamSpecParamF(name string, nick string, blurb string, param_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecParamF(name string, nick string, blurb string, param_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(224, "param_spec_param", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4429,7 +4551,7 @@ func ParamSpecParamF(name string, nick string, blurb string, param_type int /*TO
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
 	arg_param_type := gi.NewIntArgument(param_type) /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)           /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_param_type, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4442,7 +4564,7 @@ func ParamSpecParamF(name string, nick string, blurb string, param_type int /*TO
 
 // g_param_spec_pointer
 // container is nil
-func ParamSpecPointerF(name string, nick string, blurb string, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecPointerF(name string, nick string, blurb string, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(225, "param_spec_pointer", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4454,7 +4576,7 @@ func ParamSpecPointerF(name string, nick string, blurb string, flags int /*TODO_
 	arg_name := gi.NewStringArgument(c_name)
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4483,7 +4605,7 @@ func ParamSpecPoolNew(type_prefixing bool) (result ParamSpecPool) {
 
 // g_param_spec_string
 // container is nil
-func ParamSpecStringF(name string, nick string, blurb string, default_value string, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecStringF(name string, nick string, blurb string, default_value string, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(227, "param_spec_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4497,7 +4619,7 @@ func ParamSpecStringF(name string, nick string, blurb string, default_value stri
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
 	arg_default_value := gi.NewStringArgument(c_default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4511,7 +4633,7 @@ func ParamSpecStringF(name string, nick string, blurb string, default_value stri
 
 // g_param_spec_uchar
 // container is nil
-func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, default_value uint8, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, default_value uint8, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(228, "param_spec_uchar", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4526,7 +4648,7 @@ func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maxim
 	arg_minimum := gi.NewUint8Argument(minimum)
 	arg_maximum := gi.NewUint8Argument(maximum)
 	arg_default_value := gi.NewUint8Argument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_minimum, arg_maximum, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4539,7 +4661,7 @@ func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maxim
 
 // g_param_spec_uint
 // container is nil
-func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maximum uint32, default_value uint32, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maximum uint32, default_value uint32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(229, "param_spec_uint", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4554,7 +4676,7 @@ func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maxim
 	arg_minimum := gi.NewUint32Argument(minimum)
 	arg_maximum := gi.NewUint32Argument(maximum)
 	arg_default_value := gi.NewUint32Argument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_minimum, arg_maximum, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4567,7 +4689,7 @@ func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maxim
 
 // g_param_spec_uint64
 // container is nil
-func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, default_value uint64, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, default_value uint64, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(230, "param_spec_uint64", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4582,7 +4704,7 @@ func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, max
 	arg_minimum := gi.NewUint64Argument(minimum)
 	arg_maximum := gi.NewUint64Argument(maximum)
 	arg_default_value := gi.NewUint64Argument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_minimum, arg_maximum, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4595,7 +4717,7 @@ func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, max
 
 // g_param_spec_ulong
 // container is nil
-func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, default_value uint64, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, default_value uint64, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(231, "param_spec_ulong", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4610,7 +4732,7 @@ func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maxi
 	arg_minimum := gi.NewUint64Argument(minimum)
 	arg_maximum := gi.NewUint64Argument(maximum)
 	arg_default_value := gi.NewUint64Argument(default_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_minimum, arg_maximum, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4623,7 +4745,7 @@ func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maxi
 
 // g_param_spec_unichar
 // container is nil
-func ParamSpecUnicharF(name string, nick string, blurb string, default_value int /*TODO_TYPE isPtr: false, tag: gunichar*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecUnicharF(name string, nick string, blurb string, default_value rune, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(232, "param_spec_unichar", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4635,8 +4757,8 @@ func ParamSpecUnicharF(name string, nick string, blurb string, default_value int
 	arg_name := gi.NewStringArgument(c_name)
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
-	arg_default_value := gi.NewIntArgument(default_value) /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)                 /*TODO*/
+	arg_default_value := gi.NewUint32Argument(uint32(default_value))
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4649,7 +4771,7 @@ func ParamSpecUnicharF(name string, nick string, blurb string, default_value int
 
 // g_param_spec_variant
 // container is nil
-func ParamSpecVariantF(name string, nick string, blurb string, type1 glib.VariantType, default_value glib.Variant, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result ParamSpec) {
+func ParamSpecVariantF(name string, nick string, blurb string, type1 glib.VariantType, default_value glib.Variant, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(233, "param_spec_variant", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4663,7 +4785,7 @@ func ParamSpecVariantF(name string, nick string, blurb string, type1 glib.Varian
 	arg_blurb := gi.NewStringArgument(c_blurb)
 	arg_type1 := gi.NewPointerArgument(type1.P)
 	arg_default_value := gi.NewPointerArgument(default_value.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_type1, arg_default_value, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4695,13 +4817,13 @@ func ParamTypeRegisterStatic(name string, pspec_info ParamSpecTypeInfo) (result 
 
 // g_param_value_convert
 // container is nil
-func ParamValueConvert(pspec ParamSpec, src_value Value, dest_value Value, strict_validation bool) (result bool) {
+func ParamValueConvert(pspec IParamSpec, src_value Value, dest_value Value, strict_validation bool) (result bool) {
 	iv, err := _I.Get(235, "param_value_convert", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P)
+	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
 	arg_src_value := gi.NewPointerArgument(src_value.P)
 	arg_dest_value := gi.NewPointerArgument(dest_value.P)
 	arg_strict_validation := gi.NewBoolArgument(strict_validation)
@@ -4714,13 +4836,13 @@ func ParamValueConvert(pspec ParamSpec, src_value Value, dest_value Value, stric
 
 // g_param_value_defaults
 // container is nil
-func ParamValueDefaults(pspec ParamSpec, value Value) (result bool) {
+func ParamValueDefaults(pspec IParamSpec, value Value) (result bool) {
 	iv, err := _I.Get(236, "param_value_defaults", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P)
+	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_pspec, arg_value}
 	var ret gi.Argument
@@ -4731,13 +4853,13 @@ func ParamValueDefaults(pspec ParamSpec, value Value) (result bool) {
 
 // g_param_value_set_default
 // container is nil
-func ParamValueSetDefault(pspec ParamSpec, value Value) {
+func ParamValueSetDefault(pspec IParamSpec, value Value) {
 	iv, err := _I.Get(237, "param_value_set_default", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P)
+	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_pspec, arg_value}
 	iv.Call(args, nil, nil)
@@ -4745,13 +4867,13 @@ func ParamValueSetDefault(pspec ParamSpec, value Value) {
 
 // g_param_value_validate
 // container is nil
-func ParamValueValidate(pspec ParamSpec, value Value) (result bool) {
+func ParamValueValidate(pspec IParamSpec, value Value) (result bool) {
 	iv, err := _I.Get(238, "param_value_validate", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P)
+	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_pspec, arg_value}
 	var ret gi.Argument
@@ -4762,13 +4884,13 @@ func ParamValueValidate(pspec ParamSpec, value Value) (result bool) {
 
 // g_param_values_cmp
 // container is nil
-func ParamValuesCmp(pspec ParamSpec, value1 Value, value2 Value) (result int32) {
+func ParamValuesCmp(pspec IParamSpec, value1 Value, value2 Value) (result int32) {
 	iv, err := _I.Get(239, "param_values_cmp", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P)
+	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
 	arg_value1 := gi.NewPointerArgument(value1.P)
 	arg_value2 := gi.NewPointerArgument(value2.P)
 	args := []gi.Argument{arg_pspec, arg_value1, arg_value2}
@@ -4870,14 +4992,14 @@ func SignalChainFromOverridden(instance_and_params int /*TODO_TYPE isPtr: true, 
 
 // g_signal_connect_closure
 // container is nil
-func SignalConnectClosure(instance Object, detailed_signal string, closure Closure, after bool) (result uint64) {
+func SignalConnectClosure(instance IObject, detailed_signal string, closure Closure, after bool) (result uint64) {
 	iv, err := _I.Get(245, "signal_connect_closure", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_detailed_signal := gi.CString(detailed_signal)
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	arg_detailed_signal := gi.NewStringArgument(c_detailed_signal)
 	arg_closure := gi.NewPointerArgument(closure.P)
 	arg_after := gi.NewBoolArgument(after)
@@ -4891,13 +5013,13 @@ func SignalConnectClosure(instance Object, detailed_signal string, closure Closu
 
 // g_signal_connect_closure_by_id
 // container is nil
-func SignalConnectClosureById(instance Object, signal_id uint32, detail uint32, closure Closure, after bool) (result uint64) {
+func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32, closure Closure, after bool) (result uint64) {
 	iv, err := _I.Get(246, "signal_connect_closure_by_id", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_closure := gi.NewPointerArgument(closure.P)
@@ -4927,13 +5049,13 @@ func SignalEmitv(instance_and_params int /*TODO_TYPE isPtr: true, tag: array*/, 
 
 // g_signal_get_invocation_hint
 // container is nil
-func SignalGetInvocationHint(instance Object) (result SignalInvocationHint) {
+func SignalGetInvocationHint(instance IObject) (result SignalInvocationHint) {
 	iv, err := _I.Get(248, "signal_get_invocation_hint", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	args := []gi.Argument{arg_instance}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4943,13 +5065,13 @@ func SignalGetInvocationHint(instance Object) (result SignalInvocationHint) {
 
 // g_signal_handler_block
 // container is nil
-func SignalHandlerBlock(instance Object, handler_id uint64) {
+func SignalHandlerBlock(instance IObject, handler_id uint64) {
 	iv, err := _I.Get(249, "signal_handler_block", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	arg_handler_id := gi.NewUint64Argument(handler_id)
 	args := []gi.Argument{arg_instance, arg_handler_id}
 	iv.Call(args, nil, nil)
@@ -4957,13 +5079,13 @@ func SignalHandlerBlock(instance Object, handler_id uint64) {
 
 // g_signal_handler_disconnect
 // container is nil
-func SignalHandlerDisconnect(instance Object, handler_id uint64) {
+func SignalHandlerDisconnect(instance IObject, handler_id uint64) {
 	iv, err := _I.Get(250, "signal_handler_disconnect", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	arg_handler_id := gi.NewUint64Argument(handler_id)
 	args := []gi.Argument{arg_instance, arg_handler_id}
 	iv.Call(args, nil, nil)
@@ -4971,14 +5093,14 @@ func SignalHandlerDisconnect(instance Object, handler_id uint64) {
 
 // g_signal_handler_find
 // container is nil
-func SignalHandlerFind(instance Object, mask int /*TODO_TYPE isPtr: false, tag: interface*/, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint64) {
+func SignalHandlerFind(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint64) {
 	iv, err := _I.Get(251, "signal_handler_find", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
-	arg_mask := gi.NewIntArgument(mask) /*TODO*/
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	arg_mask := gi.NewIntArgument(int(mask))
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_closure := gi.NewPointerArgument(closure.P)
@@ -4993,13 +5115,13 @@ func SignalHandlerFind(instance Object, mask int /*TODO_TYPE isPtr: false, tag: 
 
 // g_signal_handler_is_connected
 // container is nil
-func SignalHandlerIsConnected(instance Object, handler_id uint64) (result bool) {
+func SignalHandlerIsConnected(instance IObject, handler_id uint64) (result bool) {
 	iv, err := _I.Get(252, "signal_handler_is_connected", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	arg_handler_id := gi.NewUint64Argument(handler_id)
 	args := []gi.Argument{arg_instance, arg_handler_id}
 	var ret gi.Argument
@@ -5010,13 +5132,13 @@ func SignalHandlerIsConnected(instance Object, handler_id uint64) (result bool) 
 
 // g_signal_handler_unblock
 // container is nil
-func SignalHandlerUnblock(instance Object, handler_id uint64) {
+func SignalHandlerUnblock(instance IObject, handler_id uint64) {
 	iv, err := _I.Get(253, "signal_handler_unblock", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	arg_handler_id := gi.NewUint64Argument(handler_id)
 	args := []gi.Argument{arg_instance, arg_handler_id}
 	iv.Call(args, nil, nil)
@@ -5024,14 +5146,14 @@ func SignalHandlerUnblock(instance Object, handler_id uint64) {
 
 // g_signal_handlers_block_matched
 // container is nil
-func SignalHandlersBlockMatched(instance Object, mask int /*TODO_TYPE isPtr: false, tag: interface*/, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
+func SignalHandlersBlockMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(254, "signal_handlers_block_matched", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
-	arg_mask := gi.NewIntArgument(mask) /*TODO*/
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	arg_mask := gi.NewIntArgument(int(mask))
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_closure := gi.NewPointerArgument(closure.P)
@@ -5046,27 +5168,27 @@ func SignalHandlersBlockMatched(instance Object, mask int /*TODO_TYPE isPtr: fal
 
 // g_signal_handlers_destroy
 // container is nil
-func SignalHandlersDestroy(instance Object) {
+func SignalHandlersDestroy(instance IObject) {
 	iv, err := _I.Get(255, "signal_handlers_destroy", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	args := []gi.Argument{arg_instance}
 	iv.Call(args, nil, nil)
 }
 
 // g_signal_handlers_disconnect_matched
 // container is nil
-func SignalHandlersDisconnectMatched(instance Object, mask int /*TODO_TYPE isPtr: false, tag: interface*/, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
+func SignalHandlersDisconnectMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(256, "signal_handlers_disconnect_matched", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
-	arg_mask := gi.NewIntArgument(mask) /*TODO*/
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	arg_mask := gi.NewIntArgument(int(mask))
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_closure := gi.NewPointerArgument(closure.P)
@@ -5081,14 +5203,14 @@ func SignalHandlersDisconnectMatched(instance Object, mask int /*TODO_TYPE isPtr
 
 // g_signal_handlers_unblock_matched
 // container is nil
-func SignalHandlersUnblockMatched(instance Object, mask int /*TODO_TYPE isPtr: false, tag: interface*/, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
+func SignalHandlersUnblockMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(257, "signal_handlers_unblock_matched", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
-	arg_mask := gi.NewIntArgument(mask) /*TODO*/
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	arg_mask := gi.NewIntArgument(int(mask))
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_closure := gi.NewPointerArgument(closure.P)
@@ -5103,13 +5225,13 @@ func SignalHandlersUnblockMatched(instance Object, mask int /*TODO_TYPE isPtr: f
 
 // g_signal_has_handler_pending
 // container is nil
-func SignalHasHandlerPending(instance Object, signal_id uint32, detail uint32, may_be_blocked bool) (result bool) {
+func SignalHasHandlerPending(instance IObject, signal_id uint32, detail uint32, may_be_blocked bool) (result bool) {
 	iv, err := _I.Get(258, "signal_has_handler_pending", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_may_be_blocked := gi.NewBoolArgument(may_be_blocked)
@@ -5262,13 +5384,13 @@ func SignalSetVaMarshaller(signal_id uint32, instance_type int /*TODO_TYPE isPtr
 
 // g_signal_stop_emission
 // container is nil
-func SignalStopEmission(instance Object, signal_id uint32, detail uint32) {
+func SignalStopEmission(instance IObject, signal_id uint32, detail uint32) {
 	iv, err := _I.Get(267, "signal_stop_emission", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	args := []gi.Argument{arg_instance, arg_signal_id, arg_detail}
@@ -5277,14 +5399,14 @@ func SignalStopEmission(instance Object, signal_id uint32, detail uint32) {
 
 // g_signal_stop_emission_by_name
 // container is nil
-func SignalStopEmissionByName(instance Object, detailed_signal string) {
+func SignalStopEmissionByName(instance IObject, detailed_signal string) {
 	iv, err := _I.Get(268, "signal_stop_emission_by_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_detailed_signal := gi.CString(detailed_signal)
-	arg_instance := gi.NewPointerArgument(instance.P)
+	arg_instance := gi.NewPointerArgument(instance.P_Object())
 	arg_detailed_signal := gi.NewStringArgument(c_detailed_signal)
 	args := []gi.Argument{arg_instance, arg_detailed_signal}
 	iv.Call(args, nil, nil)
@@ -5817,13 +5939,13 @@ func TypeInit() {
 
 // g_type_init_with_debug_flags
 // container is nil
-func TypeInitWithDebugFlags(debug_flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func TypeInitWithDebugFlags(debug_flags TypeDebugFlags) {
 	iv, err := _I.Get(303, "type_init_with_debug_flags", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_debug_flags := gi.NewIntArgument(debug_flags) /*TODO*/
+	arg_debug_flags := gi.NewIntArgument(int(debug_flags))
 	args := []gi.Argument{arg_debug_flags}
 	iv.Call(args, nil, nil)
 }
@@ -6047,7 +6169,7 @@ func TypeQueryF(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (query int /*T
 
 // g_type_register_dynamic
 // container is nil
-func TypeRegisterDynamic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, plugin TypePlugin, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeRegisterDynamic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, plugin TypePlugin, flags TypeFlags) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	iv, err := _I.Get(317, "type_register_dynamic", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6057,7 +6179,7 @@ func TypeRegisterDynamic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/,
 	arg_parent_type := gi.NewIntArgument(parent_type) /*TODO*/
 	arg_type_name := gi.NewStringArgument(c_type_name)
 	arg_plugin := gi.NewPointerArgument(plugin.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_parent_type, arg_type_name, arg_plugin, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6068,7 +6190,7 @@ func TypeRegisterDynamic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/,
 
 // g_type_register_fundamental
 // container is nil
-func TypeRegisterFundamental(type_id int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, info TypeInfo, finfo TypeFundamentalInfo, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeRegisterFundamental(type_id int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, info TypeInfo, finfo TypeFundamentalInfo, flags TypeFlags) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	iv, err := _I.Get(318, "type_register_fundamental", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6079,7 +6201,7 @@ func TypeRegisterFundamental(type_id int /*TODO_TYPE isPtr: false, tag: GType*/,
 	arg_type_name := gi.NewStringArgument(c_type_name)
 	arg_info := gi.NewPointerArgument(info.P)
 	arg_finfo := gi.NewPointerArgument(finfo.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_type_id, arg_type_name, arg_info, arg_finfo, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6090,7 +6212,7 @@ func TypeRegisterFundamental(type_id int /*TODO_TYPE isPtr: false, tag: GType*/,
 
 // g_type_register_static
 // container is nil
-func TypeRegisterStatic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, info TypeInfo, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeRegisterStatic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, info TypeInfo, flags TypeFlags) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	iv, err := _I.Get(319, "type_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6100,7 +6222,7 @@ func TypeRegisterStatic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, 
 	arg_parent_type := gi.NewIntArgument(parent_type) /*TODO*/
 	arg_type_name := gi.NewStringArgument(c_type_name)
 	arg_info := gi.NewPointerArgument(info.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_parent_type, arg_type_name, arg_info, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

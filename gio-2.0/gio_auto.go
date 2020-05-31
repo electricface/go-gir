@@ -48,7 +48,7 @@ func ActionNameIsValid1(action_name string) (result bool) {
 // container is not nil, container is Action
 // is method
 // arg0Type tag: utf8, isPtr: true
-func ActionParseDetailedName1(detailed_name string) (result bool, action_name string, target_value int /*TODO_TYPE*/, err error) {
+func ActionParseDetailedName1(detailed_name string) (result bool, action_name string, target_value glib.Variant, err error) {
 	iv, err := _I.Get(1, "Action", "parse_detailed_name")
 	if err != nil {
 		return
@@ -65,7 +65,7 @@ func ActionParseDetailedName1(detailed_name string) (result bool, action_name st
 	result = ret.Bool()
 	gi.Free(c_detailed_name)
 	action_name = outArgs[0].String().Take()
-	target_value = outArgs[1].Int() /*TODO*/
+	target_value.P = outArgs[1].Pointer()
 	err = gi.ToError(outArgs[2].Pointer())
 	return
 }
@@ -481,7 +481,7 @@ func (v *ActionGroupIfc) ListActions() (result int /*TODO_TYPE isPtr: true, tag:
 // g_action_group_query_action
 // container is not nil, container is ActionGroup
 // is method
-func (v *ActionGroupIfc) QueryAction(action_name string) (result bool, enabled bool, parameter_type int /*TODO_TYPE*/, state_type int /*TODO_TYPE*/, state_hint int /*TODO_TYPE*/, state int /*TODO_TYPE*/) {
+func (v *ActionGroupIfc) QueryAction(action_name string) (result bool, enabled bool, parameter_type glib.VariantType, state_type glib.VariantType, state_hint glib.Variant, state glib.Variant) {
 	iv, err := _I.Get(24, "ActionGroup", "query_action")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -502,10 +502,10 @@ func (v *ActionGroupIfc) QueryAction(action_name string) (result bool, enabled b
 	result = ret.Bool()
 	gi.Free(c_action_name)
 	enabled = outArgs[0].Bool()
-	parameter_type = outArgs[1].Int() /*TODO*/
-	state_type = outArgs[2].Int()     /*TODO*/
-	state_hint = outArgs[3].Int()     /*TODO*/
-	state = outArgs[4].Int()          /*TODO*/
+	parameter_type.P = outArgs[1].Pointer()
+	state_type.P = outArgs[2].Pointer()
+	state_hint.P = outArgs[3].Pointer()
+	state.P = outArgs[4].Pointer()
 	return
 }
 
@@ -599,7 +599,7 @@ type AppInfoIfc struct{}
 // container is not nil, container is AppInfo
 // is method
 // arg0Type tag: filename, isPtr: true
-func AppInfoCreateFromCommandline1(commandline string, application_name string, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result AppInfo, err error) {
+func AppInfoCreateFromCommandline1(commandline string, application_name string, flags AppInfoCreateFlags) (result AppInfo, err error) {
 	iv, err := _I.Get(29, "AppInfo", "create_from_commandline")
 	if err != nil {
 		return
@@ -609,7 +609,7 @@ func AppInfoCreateFromCommandline1(commandline string, application_name string, 
 	c_application_name := gi.CString(application_name)
 	arg_commandline := gi.NewStringArgument(c_commandline)
 	arg_application_name := gi.NewStringArgument(c_application_name)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_commandline, arg_application_name, arg_flags, arg_err}
 	var ret gi.Argument
@@ -729,7 +729,7 @@ func AppInfoGetRecommendedForType1(content_type string) (result int /*TODO_TYPE 
 // container is not nil, container is AppInfo
 // is method
 // arg0Type tag: utf8, isPtr: true
-func AppInfoLaunchDefaultForUri1(uri string, context AppLaunchContext) (result bool, err error) {
+func AppInfoLaunchDefaultForUri1(uri string, context IAppLaunchContext) (result bool, err error) {
 	iv, err := _I.Get(36, "AppInfo", "launch_default_for_uri")
 	if err != nil {
 		return
@@ -737,7 +737,7 @@ func AppInfoLaunchDefaultForUri1(uri string, context AppLaunchContext) (result b
 	var outArgs [1]gi.Argument
 	c_uri := gi.CString(uri)
 	arg_uri := gi.NewStringArgument(c_uri)
-	arg_context := gi.NewPointerArgument(context.P)
+	arg_context := gi.NewPointerArgument(context.P_AppLaunchContext())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_uri, arg_context, arg_err}
 	var ret gi.Argument
@@ -752,7 +752,7 @@ func AppInfoLaunchDefaultForUri1(uri string, context AppLaunchContext) (result b
 // container is not nil, container is AppInfo
 // is method
 // arg0Type tag: utf8, isPtr: true
-func AppInfoLaunchDefaultForUriAsync1(uri string, context AppLaunchContext, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func AppInfoLaunchDefaultForUriAsync1(uri string, context IAppLaunchContext, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(37, "AppInfo", "launch_default_for_uri_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -760,8 +760,8 @@ func AppInfoLaunchDefaultForUriAsync1(uri string, context AppLaunchContext, canc
 	}
 	c_uri := gi.CString(uri)
 	arg_uri := gi.NewStringArgument(c_uri)
-	arg_context := gi.NewPointerArgument(context.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_context := gi.NewPointerArgument(context.P_AppLaunchContext())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_uri, arg_context, arg_cancellable, arg_callback, arg_user_data}
@@ -1053,7 +1053,7 @@ func (v *AppInfoIfc) GetSupportedTypes() (result int /*TODO_TYPE isPtr: true, ta
 // g_app_info_launch
 // container is not nil, container is AppInfo
 // is method
-func (v *AppInfoIfc) Launch(files int /*TODO_TYPE isPtr: true, tag: glist*/, context AppLaunchContext) (result bool, err error) {
+func (v *AppInfoIfc) Launch(files int /*TODO_TYPE isPtr: true, tag: glist*/, context IAppLaunchContext) (result bool, err error) {
 	iv, err := _I.Get(54, "AppInfo", "launch")
 	if err != nil {
 		return
@@ -1061,7 +1061,7 @@ func (v *AppInfoIfc) Launch(files int /*TODO_TYPE isPtr: true, tag: glist*/, con
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_files := gi.NewIntArgument(files) /*TODO*/
-	arg_context := gi.NewPointerArgument(context.P)
+	arg_context := gi.NewPointerArgument(context.P_AppLaunchContext())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_files, arg_context, arg_err}
 	var ret gi.Argument
@@ -1074,7 +1074,7 @@ func (v *AppInfoIfc) Launch(files int /*TODO_TYPE isPtr: true, tag: glist*/, con
 // g_app_info_launch_uris
 // container is not nil, container is AppInfo
 // is method
-func (v *AppInfoIfc) LaunchUris(uris int /*TODO_TYPE isPtr: true, tag: glist*/, context AppLaunchContext) (result bool, err error) {
+func (v *AppInfoIfc) LaunchUris(uris int /*TODO_TYPE isPtr: true, tag: glist*/, context IAppLaunchContext) (result bool, err error) {
 	iv, err := _I.Get(55, "AppInfo", "launch_uris")
 	if err != nil {
 		return
@@ -1082,7 +1082,7 @@ func (v *AppInfoIfc) LaunchUris(uris int /*TODO_TYPE isPtr: true, tag: glist*/, 
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_uris := gi.NewIntArgument(uris) /*TODO*/
-	arg_context := gi.NewPointerArgument(context.P)
+	arg_context := gi.NewPointerArgument(context.P_AppLaunchContext())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_uris, arg_context, arg_err}
 	var ret gi.Argument
@@ -1231,6 +1231,7 @@ func (v *AppInfoIfc) SupportsUris() (result bool) {
 	return
 }
 
+// Flags AppInfoCreateFlags
 type AppInfoCreateFlags int
 
 const (
@@ -1248,6 +1249,10 @@ type AppInfoMonitor struct {
 
 func WrapAppInfoMonitor(p unsafe.Pointer) (r AppInfoMonitor) { r.P = p; return }
 
+type IAppInfoMonitor interface{ P_AppInfoMonitor() unsafe.Pointer }
+
+func (v AppInfoMonitor) P_AppInfoMonitor() unsafe.Pointer { return v.P }
+
 // g_app_info_monitor_get
 // container is not nil, container is AppInfoMonitor
 // num arg is 0
@@ -1257,6 +1262,10 @@ type AppLaunchContext struct {
 }
 
 func WrapAppLaunchContext(p unsafe.Pointer) (r AppLaunchContext) { r.P = p; return }
+
+type IAppLaunchContext interface{ P_AppLaunchContext() unsafe.Pointer }
+
+func (v AppLaunchContext) P_AppLaunchContext() unsafe.Pointer { return v.P }
 
 // g_app_launch_context_new
 // container is not nil, container is AppLaunchContext
@@ -1397,10 +1406,14 @@ type Application struct {
 
 func WrapApplication(p unsafe.Pointer) (r Application) { r.P = p; return }
 
+type IApplication interface{ P_Application() unsafe.Pointer }
+
+func (v Application) P_Application() unsafe.Pointer { return v.P }
+
 // g_application_new
 // container is not nil, container is Application
 // is constructor
-func NewApplication(application_id string, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result Application) {
+func NewApplication(application_id string, flags ApplicationFlags) (result Application) {
 	iv, err := _I.Get(71, "Application", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1408,7 +1421,7 @@ func NewApplication(application_id string, flags int /*TODO_TYPE isPtr: false, t
 	}
 	c_application_id := gi.CString(application_id)
 	arg_application_id := gi.NewStringArgument(c_application_id)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_application_id, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1457,7 +1470,7 @@ func (v Application) Activate() {
 // g_application_add_main_option
 // container is not nil, container is Application
 // is method
-func (v Application) AddMainOption(long_name string, short_name int8, flags int /*TODO_TYPE isPtr: false, tag: interface*/, arg int /*TODO_TYPE isPtr: false, tag: interface*/, description string, arg_description1 string) {
+func (v Application) AddMainOption(long_name string, short_name int8, flags glib.OptionFlags, arg glib.OptionArgEnum, description string, arg_description1 string) {
 	iv, err := _I.Get(75, "Application", "add_main_option")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1469,8 +1482,8 @@ func (v Application) AddMainOption(long_name string, short_name int8, flags int 
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_long_name := gi.NewStringArgument(c_long_name)
 	arg_short_name := gi.NewInt8Argument(short_name)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_arg := gi.NewIntArgument(arg)     /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_arg := gi.NewIntArgument(int(arg))
 	arg_description := gi.NewStringArgument(c_description)
 	arg_arg_description1 := gi.NewStringArgument(c_arg_description1)
 	args := []gi.Argument{arg_v, arg_long_name, arg_short_name, arg_flags, arg_arg, arg_description, arg_arg_description1}
@@ -1513,7 +1526,7 @@ func (v Application) AddOptionGroup(group glib.OptionGroup) {
 // g_application_bind_busy_property
 // container is not nil, container is Application
 // is method
-func (v Application) BindBusyProperty(object gobject.Object, property string) {
+func (v Application) BindBusyProperty(object gobject.IObject, property string) {
 	iv, err := _I.Get(78, "Application", "bind_busy_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1521,7 +1534,7 @@ func (v Application) BindBusyProperty(object gobject.Object, property string) {
 	}
 	c_property := gi.CString(property)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_Object())
 	arg_property := gi.NewStringArgument(c_property)
 	args := []gi.Argument{arg_v, arg_object, arg_property}
 	iv.Call(args, nil, nil)
@@ -1582,7 +1595,7 @@ func (v Application) GetDbusObjectPath() (result string) {
 // g_application_get_flags
 // container is not nil, container is Application
 // is method
-func (v Application) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Application) GetFlags() (result ApplicationFlags) {
 	iv, err := _I.Get(82, "Application", "get_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1592,7 +1605,7 @@ func (v Application) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: inter
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = ApplicationFlags(ret.Int())
 	return
 }
 
@@ -1745,14 +1758,14 @@ func (v Application) Quit() {
 // g_application_register
 // container is not nil, container is Application
 // is method
-func (v Application) Register(cancellable Cancellable) (result bool, err error) {
+func (v Application) Register(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(92, "Application", "register")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -1798,7 +1811,7 @@ func (v Application) Run(argc int32, argv int /*TODO_TYPE isPtr: true, tag: arra
 // g_application_send_notification
 // container is not nil, container is Application
 // is method
-func (v Application) SendNotification(id string, notification Notification) {
+func (v Application) SendNotification(id string, notification INotification) {
 	iv, err := _I.Get(95, "Application", "send_notification")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1807,7 +1820,7 @@ func (v Application) SendNotification(id string, notification Notification) {
 	c_id := gi.CString(id)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_id := gi.NewStringArgument(c_id)
-	arg_notification := gi.NewPointerArgument(notification.P)
+	arg_notification := gi.NewPointerArgument(notification.P_Notification())
 	args := []gi.Argument{arg_v, arg_id, arg_notification}
 	iv.Call(args, nil, nil)
 	gi.Free(c_id)
@@ -1862,14 +1875,14 @@ func (v Application) SetDefault() {
 // g_application_set_flags
 // container is not nil, container is Application
 // is method
-func (v Application) SetFlags(flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Application) SetFlags(flags ApplicationFlags) {
 	iv, err := _I.Get(99, "Application", "set_flags")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_flags}
 	iv.Call(args, nil, nil)
 }
@@ -1960,7 +1973,7 @@ func (v Application) SetResourceBasePath(resource_path string) {
 // g_application_unbind_busy_property
 // container is not nil, container is Application
 // is method
-func (v Application) UnbindBusyProperty(object gobject.Object, property string) {
+func (v Application) UnbindBusyProperty(object gobject.IObject, property string) {
 	iv, err := _I.Get(105, "Application", "unbind_busy_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1968,7 +1981,7 @@ func (v Application) UnbindBusyProperty(object gobject.Object, property string) 
 	}
 	c_property := gi.CString(property)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_Object())
 	arg_property := gi.NewStringArgument(c_property)
 	args := []gi.Argument{arg_v, arg_object, arg_property}
 	iv.Call(args, nil, nil)
@@ -2013,6 +2026,10 @@ type ApplicationCommandLine struct {
 }
 
 func WrapApplicationCommandLine(p unsafe.Pointer) (r ApplicationCommandLine) { r.P = p; return }
+
+type IApplicationCommandLine interface{ P_ApplicationCommandLine() unsafe.Pointer }
+
+func (v ApplicationCommandLine) P_ApplicationCommandLine() unsafe.Pointer { return v.P }
 
 // g_application_command_line_create_file_for_arg
 // container is not nil, container is ApplicationCommandLine
@@ -2213,6 +2230,8 @@ func (v ApplicationCommandLine) SetExitStatus(exit_status int32) {
 type ApplicationCommandLinePrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags ApplicationFlags
 type ApplicationFlags int
 
 const (
@@ -2230,6 +2249,8 @@ const (
 type ApplicationPrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags AskPasswordFlags
 type AskPasswordFlags int
 
 const (
@@ -2252,7 +2273,7 @@ type AsyncInitableIfc struct{}
 // container is not nil, container is AsyncInitable
 // is method
 // arg0Type tag: GType, isPtr: false
-func AsyncInitableNewvAsync1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters gobject.Parameter, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func AsyncInitableNewvAsync1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters gobject.Parameter, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(119, "AsyncInitable", "newv_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2262,7 +2283,7 @@ func AsyncInitableNewvAsync1(object_type int /*TODO_TYPE isPtr: false, tag: GTyp
 	arg_n_parameters := gi.NewUint32Argument(n_parameters)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_object_type, arg_n_parameters, arg_parameters, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -2272,7 +2293,7 @@ func AsyncInitableNewvAsync1(object_type int /*TODO_TYPE isPtr: false, tag: GTyp
 // g_async_initable_init_async
 // container is not nil, container is AsyncInitable
 // is method
-func (v *AsyncInitableIfc) InitAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *AsyncInitableIfc) InitAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(120, "AsyncInitable", "init_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2280,7 +2301,7 @@ func (v *AsyncInitableIfc) InitAsync(io_priority int32, cancellable Cancellable,
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -2412,16 +2433,20 @@ type BufferedInputStream struct {
 
 func WrapBufferedInputStream(p unsafe.Pointer) (r BufferedInputStream) { r.P = p; return }
 
+type IBufferedInputStream interface{ P_BufferedInputStream() unsafe.Pointer }
+
+func (v BufferedInputStream) P_BufferedInputStream() unsafe.Pointer { return v.P }
+
 // g_buffered_input_stream_new
 // container is not nil, container is BufferedInputStream
 // is constructor
-func NewBufferedInputStream(base_stream InputStream) (result InputStream) {
+func NewBufferedInputStream(base_stream IInputStream) (result InputStream) {
 	iv, err := _I.Get(127, "BufferedInputStream", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_stream := gi.NewPointerArgument(base_stream.P)
+	arg_base_stream := gi.NewPointerArgument(base_stream.P_InputStream())
 	args := []gi.Argument{arg_base_stream}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2432,13 +2457,13 @@ func NewBufferedInputStream(base_stream InputStream) (result InputStream) {
 // g_buffered_input_stream_new_sized
 // container is not nil, container is BufferedInputStream
 // is constructor
-func NewBufferedInputStreamSized(base_stream InputStream, size uint64) (result InputStream) {
+func NewBufferedInputStreamSized(base_stream IInputStream, size uint64) (result InputStream) {
 	iv, err := _I.Get(128, "BufferedInputStream", "new_sized")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_stream := gi.NewPointerArgument(base_stream.P)
+	arg_base_stream := gi.NewPointerArgument(base_stream.P_InputStream())
 	arg_size := gi.NewUint64Argument(size)
 	args := []gi.Argument{arg_base_stream, arg_size}
 	var ret gi.Argument
@@ -2450,7 +2475,7 @@ func NewBufferedInputStreamSized(base_stream InputStream, size uint64) (result I
 // g_buffered_input_stream_fill
 // container is not nil, container is BufferedInputStream
 // is method
-func (v BufferedInputStream) Fill(count int64, cancellable Cancellable) (result int64, err error) {
+func (v BufferedInputStream) Fill(count int64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(129, "BufferedInputStream", "fill")
 	if err != nil {
 		return
@@ -2458,7 +2483,7 @@ func (v BufferedInputStream) Fill(count int64, cancellable Cancellable) (result 
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_count := gi.NewInt64Argument(count)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -2471,7 +2496,7 @@ func (v BufferedInputStream) Fill(count int64, cancellable Cancellable) (result 
 // g_buffered_input_stream_fill_async
 // container is not nil, container is BufferedInputStream
 // is method
-func (v BufferedInputStream) FillAsync(count int64, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v BufferedInputStream) FillAsync(count int64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(130, "BufferedInputStream", "fill_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2480,7 +2505,7 @@ func (v BufferedInputStream) FillAsync(count int64, io_priority int32, cancellab
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_count := gi.NewInt64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -2584,14 +2609,14 @@ func (v BufferedInputStream) PeekBuffer() (result int /*TODO_TYPE isPtr: true, t
 // g_buffered_input_stream_read_byte
 // container is not nil, container is BufferedInputStream
 // is method
-func (v BufferedInputStream) ReadByte(cancellable Cancellable) (result int32, err error) {
+func (v BufferedInputStream) ReadByte(cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(136, "BufferedInputStream", "read_byte")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -2630,16 +2655,20 @@ type BufferedOutputStream struct {
 
 func WrapBufferedOutputStream(p unsafe.Pointer) (r BufferedOutputStream) { r.P = p; return }
 
+type IBufferedOutputStream interface{ P_BufferedOutputStream() unsafe.Pointer }
+
+func (v BufferedOutputStream) P_BufferedOutputStream() unsafe.Pointer { return v.P }
+
 // g_buffered_output_stream_new
 // container is not nil, container is BufferedOutputStream
 // is constructor
-func NewBufferedOutputStream(base_stream OutputStream) (result OutputStream) {
+func NewBufferedOutputStream(base_stream IOutputStream) (result OutputStream) {
 	iv, err := _I.Get(138, "BufferedOutputStream", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_stream := gi.NewPointerArgument(base_stream.P)
+	arg_base_stream := gi.NewPointerArgument(base_stream.P_OutputStream())
 	args := []gi.Argument{arg_base_stream}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2650,13 +2679,13 @@ func NewBufferedOutputStream(base_stream OutputStream) (result OutputStream) {
 // g_buffered_output_stream_new_sized
 // container is not nil, container is BufferedOutputStream
 // is constructor
-func NewBufferedOutputStreamSized(base_stream OutputStream, size uint64) (result OutputStream) {
+func NewBufferedOutputStreamSized(base_stream IOutputStream, size uint64) (result OutputStream) {
 	iv, err := _I.Get(139, "BufferedOutputStream", "new_sized")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_stream := gi.NewPointerArgument(base_stream.P)
+	arg_base_stream := gi.NewPointerArgument(base_stream.P_OutputStream())
 	arg_size := gi.NewUint64Argument(size)
 	args := []gi.Argument{arg_base_stream, arg_size}
 	var ret gi.Argument
@@ -2734,6 +2763,8 @@ func (v BufferedOutputStream) SetBufferSize(size uint64) {
 type BufferedOutputStreamPrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags BusNameOwnerFlags
 type BusNameOwnerFlags int
 
 const (
@@ -2743,6 +2774,7 @@ const (
 	BusNameOwnerFlagsDoNotQueue                         = 4
 )
 
+// Flags BusNameWatcherFlags
 type BusNameWatcherFlags int
 
 const (
@@ -2750,6 +2782,7 @@ const (
 	BusNameWatcherFlagsAutoStart                     = 1
 )
 
+// Enum BusType
 type BusTypeEnum int
 
 const (
@@ -2767,6 +2800,10 @@ type BytesIcon struct {
 }
 
 func WrapBytesIcon(p unsafe.Pointer) (r BytesIcon) { r.P = p; return }
+
+type IBytesIcon interface{ P_BytesIcon() unsafe.Pointer }
+
+func (v BytesIcon) P_BytesIcon() unsafe.Pointer { return v.P }
 
 // g_bytes_icon_new
 // container is not nil, container is BytesIcon
@@ -2808,6 +2845,10 @@ type Cancellable struct {
 }
 
 func WrapCancellable(p unsafe.Pointer) (r Cancellable) { r.P = p; return }
+
+type ICancellable interface{ P_Cancellable() unsafe.Pointer }
+
+func (v Cancellable) P_Cancellable() unsafe.Pointer { return v.P }
 
 // g_cancellable_new
 // container is not nil, container is Cancellable
@@ -3018,6 +3059,10 @@ type CharsetConverter struct {
 
 func WrapCharsetConverter(p unsafe.Pointer) (r CharsetConverter) { r.P = p; return }
 
+type ICharsetConverter interface{ P_CharsetConverter() unsafe.Pointer }
+
+func (v CharsetConverter) P_CharsetConverter() unsafe.Pointer { return v.P }
+
 // g_charset_converter_new
 // container is not nil, container is CharsetConverter
 // is constructor
@@ -3102,7 +3147,7 @@ type ConverterIfc struct{}
 // g_converter_convert
 // container is not nil, container is Converter
 // is method
-func (v *ConverterIfc) Convert(inbuf int /*TODO_TYPE isPtr: true, tag: array*/, inbuf_size uint64, outbuf int /*TODO_TYPE isPtr: true, tag: array*/, outbuf_size uint64, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/, bytes_read uint64, bytes_written uint64, err error) {
+func (v *ConverterIfc) Convert(inbuf int /*TODO_TYPE isPtr: true, tag: array*/, inbuf_size uint64, outbuf int /*TODO_TYPE isPtr: true, tag: array*/, outbuf_size uint64, flags ConverterFlags) (result ConverterResultEnum, bytes_read uint64, bytes_written uint64, err error) {
 	iv, err := _I.Get(163, "Converter", "convert")
 	if err != nil {
 		return
@@ -3113,14 +3158,14 @@ func (v *ConverterIfc) Convert(inbuf int /*TODO_TYPE isPtr: true, tag: array*/, 
 	arg_inbuf_size := gi.NewUint64Argument(inbuf_size)
 	arg_outbuf := gi.NewIntArgument(outbuf) /*TODO*/
 	arg_outbuf_size := gi.NewUint64Argument(outbuf_size)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_bytes_read := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_bytes_written := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
 	args := []gi.Argument{arg_v, arg_inbuf, arg_inbuf_size, arg_outbuf, arg_outbuf_size, arg_flags, arg_bytes_read, arg_bytes_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = ConverterResultEnum(ret.Int())
 	bytes_read = outArgs[0].Uint64()
 	bytes_written = outArgs[1].Uint64()
 	err = gi.ToError(outArgs[2].Pointer())
@@ -3141,6 +3186,7 @@ func (v *ConverterIfc) Reset() {
 	iv.Call(args, nil, nil)
 }
 
+// Flags ConverterFlags
 type ConverterFlags int
 
 const (
@@ -3158,16 +3204,20 @@ type ConverterInputStream struct {
 
 func WrapConverterInputStream(p unsafe.Pointer) (r ConverterInputStream) { r.P = p; return }
 
+type IConverterInputStream interface{ P_ConverterInputStream() unsafe.Pointer }
+
+func (v ConverterInputStream) P_ConverterInputStream() unsafe.Pointer { return v.P }
+
 // g_converter_input_stream_new
 // container is not nil, container is ConverterInputStream
 // is constructor
-func NewConverterInputStream(base_stream InputStream, converter Converter) (result InputStream) {
+func NewConverterInputStream(base_stream IInputStream, converter Converter) (result InputStream) {
 	iv, err := _I.Get(165, "ConverterInputStream", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_stream := gi.NewPointerArgument(base_stream.P)
+	arg_base_stream := gi.NewPointerArgument(base_stream.P_InputStream())
 	arg_converter := gi.NewPointerArgument(converter.P)
 	args := []gi.Argument{arg_base_stream, arg_converter}
 	var ret gi.Argument
@@ -3207,16 +3257,20 @@ type ConverterOutputStream struct {
 
 func WrapConverterOutputStream(p unsafe.Pointer) (r ConverterOutputStream) { r.P = p; return }
 
+type IConverterOutputStream interface{ P_ConverterOutputStream() unsafe.Pointer }
+
+func (v ConverterOutputStream) P_ConverterOutputStream() unsafe.Pointer { return v.P }
+
 // g_converter_output_stream_new
 // container is not nil, container is ConverterOutputStream
 // is constructor
-func NewConverterOutputStream(base_stream OutputStream, converter Converter) (result OutputStream) {
+func NewConverterOutputStream(base_stream IOutputStream, converter Converter) (result OutputStream) {
 	iv, err := _I.Get(167, "ConverterOutputStream", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_stream := gi.NewPointerArgument(base_stream.P)
+	arg_base_stream := gi.NewPointerArgument(base_stream.P_OutputStream())
 	arg_converter := gi.NewPointerArgument(converter.P)
 	args := []gi.Argument{arg_base_stream, arg_converter}
 	var ret gi.Argument
@@ -3247,6 +3301,8 @@ func (v ConverterOutputStream) GetConverter() (result Converter) {
 type ConverterOutputStreamPrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum ConverterResult
 type ConverterResultEnum int
 
 const (
@@ -3262,6 +3318,10 @@ type Credentials struct {
 }
 
 func WrapCredentials(p unsafe.Pointer) (r Credentials) { r.P = p; return }
+
+type ICredentials interface{ P_Credentials() unsafe.Pointer }
+
+func (v Credentials) P_Credentials() unsafe.Pointer { return v.P }
 
 // g_credentials_new
 // container is not nil, container is Credentials
@@ -3319,14 +3379,14 @@ func (v Credentials) GetUnixUser() (result uint32, err error) {
 // g_credentials_is_same_user
 // container is not nil, container is Credentials
 // is method
-func (v Credentials) IsSameUser(other_credentials Credentials) (result bool, err error) {
+func (v Credentials) IsSameUser(other_credentials ICredentials) (result bool, err error) {
 	iv, err := _I.Get(172, "Credentials", "is_same_user")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_other_credentials := gi.NewPointerArgument(other_credentials.P)
+	arg_other_credentials := gi.NewPointerArgument(other_credentials.P_Credentials())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_other_credentials, arg_err}
 	var ret gi.Argument
@@ -3339,14 +3399,14 @@ func (v Credentials) IsSameUser(other_credentials Credentials) (result bool, err
 // g_credentials_set_native
 // container is not nil, container is Credentials
 // is method
-func (v Credentials) SetNative(native_type int /*TODO_TYPE isPtr: false, tag: interface*/, native unsafe.Pointer) {
+func (v Credentials) SetNative(native_type CredentialsTypeEnum, native unsafe.Pointer) {
 	iv, err := _I.Get(173, "Credentials", "set_native")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_native_type := gi.NewIntArgument(native_type) /*TODO*/
+	arg_native_type := gi.NewIntArgument(int(native_type))
 	arg_native := gi.NewPointerArgument(native)
 	args := []gi.Argument{arg_v, arg_native_type, arg_native}
 	iv.Call(args, nil, nil)
@@ -3390,6 +3450,7 @@ func (v Credentials) ToString() (result string) {
 }
 
 // ignore GType struct CredentialsClass
+// Enum CredentialsType
 type CredentialsTypeEnum int
 
 const (
@@ -3410,11 +3471,15 @@ type DBusActionGroup struct {
 
 func WrapDBusActionGroup(p unsafe.Pointer) (r DBusActionGroup) { r.P = p; return }
 
+type IDBusActionGroup interface{ P_DBusActionGroup() unsafe.Pointer }
+
+func (v DBusActionGroup) P_DBusActionGroup() unsafe.Pointer { return v.P }
+
 // g_dbus_action_group_get
 // container is not nil, container is DBusActionGroup
 // is method
 // arg0Type tag: interface, isPtr: true
-func DBusActionGroupGet1(connection DBusConnection, bus_name string, object_path string) (result DBusActionGroup) {
+func DBusActionGroupGet1(connection IDBusConnection, bus_name string, object_path string) (result DBusActionGroup) {
 	iv, err := _I.Get(176, "DBusActionGroup", "get")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3422,7 +3487,7 @@ func DBusActionGroupGet1(connection DBusConnection, bus_name string, object_path
 	}
 	c_bus_name := gi.CString(bus_name)
 	c_object_path := gi.CString(object_path)
-	arg_connection := gi.NewPointerArgument(connection.P)
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
 	arg_bus_name := gi.NewStringArgument(c_bus_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	args := []gi.Argument{arg_connection, arg_bus_name, arg_object_path}
@@ -3534,6 +3599,10 @@ type DBusAuthObserver struct {
 
 func WrapDBusAuthObserver(p unsafe.Pointer) (r DBusAuthObserver) { r.P = p; return }
 
+type IDBusAuthObserver interface{ P_DBusAuthObserver() unsafe.Pointer }
+
+func (v DBusAuthObserver) P_DBusAuthObserver() unsafe.Pointer { return v.P }
+
 // g_dbus_auth_observer_new
 // container is not nil, container is DBusAuthObserver
 // is constructor
@@ -3572,15 +3641,15 @@ func (v DBusAuthObserver) AllowMechanism(mechanism string) (result bool) {
 // g_dbus_auth_observer_authorize_authenticated_peer
 // container is not nil, container is DBusAuthObserver
 // is method
-func (v DBusAuthObserver) AuthorizeAuthenticatedPeer(stream IOStream, credentials Credentials) (result bool) {
+func (v DBusAuthObserver) AuthorizeAuthenticatedPeer(stream IIOStream, credentials ICredentials) (result bool) {
 	iv, err := _I.Get(184, "DBusAuthObserver", "authorize_authenticated_peer")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_stream := gi.NewPointerArgument(stream.P)
-	arg_credentials := gi.NewPointerArgument(credentials.P)
+	arg_stream := gi.NewPointerArgument(stream.P_IOStream())
+	arg_credentials := gi.NewPointerArgument(credentials.P_Credentials())
 	args := []gi.Argument{arg_v, arg_stream, arg_credentials}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3588,6 +3657,7 @@ func (v DBusAuthObserver) AuthorizeAuthenticatedPeer(stream IOStream, credential
 	return
 }
 
+// Flags DBusCallFlags
 type DBusCallFlags int
 
 const (
@@ -3596,6 +3666,7 @@ const (
 	DBusCallFlagsAllowInteractiveAuthorization               = 2
 )
 
+// Flags DBusCapabilityFlags
 type DBusCapabilityFlags int
 
 const (
@@ -3611,6 +3682,10 @@ type DBusConnection struct {
 }
 
 func WrapDBusConnection(p unsafe.Pointer) (r DBusConnection) { r.P = p; return }
+
+type IDBusConnection interface{ P_DBusConnection() unsafe.Pointer }
+
+func (v DBusConnection) P_DBusConnection() unsafe.Pointer { return v.P }
 
 // g_dbus_connection_new_finish
 // container is not nil, container is DBusConnection
@@ -3653,7 +3728,7 @@ func NewDBusConnectionForAddressFinish(res AsyncResult) (result DBusConnection, 
 // g_dbus_connection_new_for_address_sync
 // container is not nil, container is DBusConnection
 // is constructor
-func NewDBusConnectionForAddressSync(address string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, observer DBusAuthObserver, cancellable Cancellable) (result DBusConnection, err error) {
+func NewDBusConnectionForAddressSync(address string, flags DBusConnectionFlags, observer IDBusAuthObserver, cancellable ICancellable) (result DBusConnection, err error) {
 	iv, err := _I.Get(187, "DBusConnection", "new_for_address_sync")
 	if err != nil {
 		return
@@ -3661,9 +3736,9 @@ func NewDBusConnectionForAddressSync(address string, flags int /*TODO_TYPE isPtr
 	var outArgs [1]gi.Argument
 	c_address := gi.CString(address)
 	arg_address := gi.NewStringArgument(c_address)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_observer := gi.NewPointerArgument(observer.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_observer := gi.NewPointerArgument(observer.P_DBusAuthObserver())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_address, arg_flags, arg_observer, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -3677,18 +3752,18 @@ func NewDBusConnectionForAddressSync(address string, flags int /*TODO_TYPE isPtr
 // g_dbus_connection_new_sync
 // container is not nil, container is DBusConnection
 // is constructor
-func NewDBusConnectionSync(stream IOStream, guid string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, observer DBusAuthObserver, cancellable Cancellable) (result DBusConnection, err error) {
+func NewDBusConnectionSync(stream IIOStream, guid string, flags DBusConnectionFlags, observer IDBusAuthObserver, cancellable ICancellable) (result DBusConnection, err error) {
 	iv, err := _I.Get(188, "DBusConnection", "new_sync")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	c_guid := gi.CString(guid)
-	arg_stream := gi.NewPointerArgument(stream.P)
+	arg_stream := gi.NewPointerArgument(stream.P_IOStream())
 	arg_guid := gi.NewStringArgument(c_guid)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_observer := gi.NewPointerArgument(observer.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_observer := gi.NewPointerArgument(observer.P_DBusAuthObserver())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_stream, arg_guid, arg_flags, arg_observer, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -3703,18 +3778,18 @@ func NewDBusConnectionSync(stream IOStream, guid string, flags int /*TODO_TYPE i
 // container is not nil, container is DBusConnection
 // is method
 // arg0Type tag: interface, isPtr: true
-func DBusConnectionNew1(stream IOStream, guid string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, observer DBusAuthObserver, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func DBusConnectionNew1(stream IIOStream, guid string, flags DBusConnectionFlags, observer IDBusAuthObserver, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(189, "DBusConnection", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_guid := gi.CString(guid)
-	arg_stream := gi.NewPointerArgument(stream.P)
+	arg_stream := gi.NewPointerArgument(stream.P_IOStream())
 	arg_guid := gi.NewStringArgument(c_guid)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_observer := gi.NewPointerArgument(observer.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_observer := gi.NewPointerArgument(observer.P_DBusAuthObserver())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_stream, arg_guid, arg_flags, arg_observer, arg_cancellable, arg_callback, arg_user_data}
@@ -3726,7 +3801,7 @@ func DBusConnectionNew1(stream IOStream, guid string, flags int /*TODO_TYPE isPt
 // container is not nil, container is DBusConnection
 // is method
 // arg0Type tag: utf8, isPtr: true
-func DBusConnectionNewForAddress1(address string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, observer DBusAuthObserver, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func DBusConnectionNewForAddress1(address string, flags DBusConnectionFlags, observer IDBusAuthObserver, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(190, "DBusConnection", "new_for_address")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3734,9 +3809,9 @@ func DBusConnectionNewForAddress1(address string, flags int /*TODO_TYPE isPtr: f
 	}
 	c_address := gi.CString(address)
 	arg_address := gi.NewStringArgument(c_address)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_observer := gi.NewPointerArgument(observer.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_observer := gi.NewPointerArgument(observer.P_DBusAuthObserver())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_address, arg_flags, arg_observer, arg_cancellable, arg_callback, arg_user_data}
@@ -3767,7 +3842,7 @@ func (v DBusConnection) AddFilter(filter_function int /*TODO_TYPE isPtr: false, 
 // g_dbus_connection_call
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) Call(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags int /*TODO_TYPE isPtr: false, tag: interface*/, timeout_msec int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v DBusConnection) Call(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags DBusCallFlags, timeout_msec int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(192, "DBusConnection", "call")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3784,9 +3859,9 @@ func (v DBusConnection) Call(bus_name string, object_path string, interface_name
 	arg_method_name := gi.NewStringArgument(c_method_name)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
 	arg_reply_type := gi.NewPointerArgument(reply_type.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_timeout_msec := gi.NewInt32Argument(timeout_msec)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_bus_name, arg_object_path, arg_interface_name, arg_method_name, arg_parameters, arg_reply_type, arg_flags, arg_timeout_msec, arg_cancellable, arg_callback, arg_user_data}
@@ -3820,7 +3895,7 @@ func (v DBusConnection) CallFinish(res AsyncResult) (result glib.Variant, err er
 // g_dbus_connection_call_sync
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) CallSync(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags int /*TODO_TYPE isPtr: false, tag: interface*/, timeout_msec int32, cancellable Cancellable) (result glib.Variant, err error) {
+func (v DBusConnection) CallSync(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags DBusCallFlags, timeout_msec int32, cancellable ICancellable) (result glib.Variant, err error) {
 	iv, err := _I.Get(194, "DBusConnection", "call_sync")
 	if err != nil {
 		return
@@ -3837,9 +3912,9 @@ func (v DBusConnection) CallSync(bus_name string, object_path string, interface_
 	arg_method_name := gi.NewStringArgument(c_method_name)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
 	arg_reply_type := gi.NewPointerArgument(reply_type.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_timeout_msec := gi.NewInt32Argument(timeout_msec)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_bus_name, arg_object_path, arg_interface_name, arg_method_name, arg_parameters, arg_reply_type, arg_flags, arg_timeout_msec, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -3856,7 +3931,7 @@ func (v DBusConnection) CallSync(bus_name string, object_path string, interface_
 // g_dbus_connection_call_with_unix_fd_list
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) CallWithUnixFdList(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags int /*TODO_TYPE isPtr: false, tag: interface*/, timeout_msec int32, fd_list UnixFDList, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v DBusConnection) CallWithUnixFdList(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags DBusCallFlags, timeout_msec int32, fd_list IUnixFDList, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(195, "DBusConnection", "call_with_unix_fd_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3873,10 +3948,10 @@ func (v DBusConnection) CallWithUnixFdList(bus_name string, object_path string, 
 	arg_method_name := gi.NewStringArgument(c_method_name)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
 	arg_reply_type := gi.NewPointerArgument(reply_type.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_timeout_msec := gi.NewInt32Argument(timeout_msec)
-	arg_fd_list := gi.NewPointerArgument(fd_list.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_fd_list := gi.NewPointerArgument(fd_list.P_UnixFDList())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_bus_name, arg_object_path, arg_interface_name, arg_method_name, arg_parameters, arg_reply_type, arg_flags, arg_timeout_msec, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
@@ -3890,7 +3965,7 @@ func (v DBusConnection) CallWithUnixFdList(bus_name string, object_path string, 
 // g_dbus_connection_call_with_unix_fd_list_finish
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) CallWithUnixFdListFinish(res AsyncResult) (result glib.Variant, out_fd_list int /*TODO_TYPE*/, err error) {
+func (v DBusConnection) CallWithUnixFdListFinish(res AsyncResult) (result glib.Variant, out_fd_list UnixFDList, err error) {
 	iv, err := _I.Get(196, "DBusConnection", "call_with_unix_fd_list_finish")
 	if err != nil {
 		return
@@ -3904,7 +3979,7 @@ func (v DBusConnection) CallWithUnixFdListFinish(res AsyncResult) (result glib.V
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result.P = ret.Pointer()
-	out_fd_list = outArgs[0].Int() /*TODO*/
+	out_fd_list.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -3912,7 +3987,7 @@ func (v DBusConnection) CallWithUnixFdListFinish(res AsyncResult) (result glib.V
 // g_dbus_connection_call_with_unix_fd_list_sync
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) CallWithUnixFdListSync(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags int /*TODO_TYPE isPtr: false, tag: interface*/, timeout_msec int32, fd_list UnixFDList, cancellable Cancellable) (result glib.Variant, out_fd_list int /*TODO_TYPE*/, err error) {
+func (v DBusConnection) CallWithUnixFdListSync(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags DBusCallFlags, timeout_msec int32, fd_list IUnixFDList, cancellable ICancellable) (result glib.Variant, out_fd_list UnixFDList, err error) {
 	iv, err := _I.Get(197, "DBusConnection", "call_with_unix_fd_list_sync")
 	if err != nil {
 		return
@@ -3929,11 +4004,11 @@ func (v DBusConnection) CallWithUnixFdListSync(bus_name string, object_path stri
 	arg_method_name := gi.NewStringArgument(c_method_name)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
 	arg_reply_type := gi.NewPointerArgument(reply_type.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_timeout_msec := gi.NewInt32Argument(timeout_msec)
-	arg_fd_list := gi.NewPointerArgument(fd_list.P)
+	arg_fd_list := gi.NewPointerArgument(fd_list.P_UnixFDList())
 	arg_out_fd_list := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_bus_name, arg_object_path, arg_interface_name, arg_method_name, arg_parameters, arg_reply_type, arg_flags, arg_timeout_msec, arg_fd_list, arg_out_fd_list, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -3943,7 +4018,7 @@ func (v DBusConnection) CallWithUnixFdListSync(bus_name string, object_path stri
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
 	gi.Free(c_method_name)
-	out_fd_list = outArgs[0].Int() /*TODO*/
+	out_fd_list.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -3951,14 +4026,14 @@ func (v DBusConnection) CallWithUnixFdListSync(bus_name string, object_path stri
 // g_dbus_connection_close
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) Close(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v DBusConnection) Close(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(198, "DBusConnection", "close")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -3988,14 +4063,14 @@ func (v DBusConnection) CloseFinish(res AsyncResult) (result bool, err error) {
 // g_dbus_connection_close_sync
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) CloseSync(cancellable Cancellable) (result bool, err error) {
+func (v DBusConnection) CloseSync(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(200, "DBusConnection", "close_sync")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -4063,7 +4138,7 @@ func (v DBusConnection) ExportActionGroup(object_path string, action_group Actio
 // g_dbus_connection_export_menu_model
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) ExportMenuModel(object_path string, menu MenuModel) (result uint32, err error) {
+func (v DBusConnection) ExportMenuModel(object_path string, menu IMenuModel) (result uint32, err error) {
 	iv, err := _I.Get(203, "DBusConnection", "export_menu_model")
 	if err != nil {
 		return
@@ -4072,7 +4147,7 @@ func (v DBusConnection) ExportMenuModel(object_path string, menu MenuModel) (res
 	c_object_path := gi.CString(object_path)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_object_path := gi.NewStringArgument(c_object_path)
-	arg_menu := gi.NewPointerArgument(menu.P)
+	arg_menu := gi.NewPointerArgument(menu.P_MenuModel())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_object_path, arg_menu, arg_err}
 	var ret gi.Argument
@@ -4086,14 +4161,14 @@ func (v DBusConnection) ExportMenuModel(object_path string, menu MenuModel) (res
 // g_dbus_connection_flush
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) Flush(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v DBusConnection) Flush(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(204, "DBusConnection", "flush")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -4123,14 +4198,14 @@ func (v DBusConnection) FlushFinish(res AsyncResult) (result bool, err error) {
 // g_dbus_connection_flush_sync
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) FlushSync(cancellable Cancellable) (result bool, err error) {
+func (v DBusConnection) FlushSync(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(206, "DBusConnection", "flush_sync")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -4143,7 +4218,7 @@ func (v DBusConnection) FlushSync(cancellable Cancellable) (result bool, err err
 // g_dbus_connection_get_capabilities
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) GetCapabilities() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusConnection) GetCapabilities() (result DBusCapabilityFlags) {
 	iv, err := _I.Get(207, "DBusConnection", "get_capabilities")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4153,7 +4228,7 @@ func (v DBusConnection) GetCapabilities() (result int /*TODO_TYPE isPtr: false, 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DBusCapabilityFlags(ret.Int())
 	return
 }
 
@@ -4305,7 +4380,7 @@ func (v DBusConnection) RegisterObject(object_path string, interface_info DBusIn
 // g_dbus_connection_register_subtree
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) RegisterSubtree(object_path string, vtable DBusSubtreeVTable, flags int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32, err error) {
+func (v DBusConnection) RegisterSubtree(object_path string, vtable DBusSubtreeVTable, flags DBusSubtreeFlags, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32, err error) {
 	iv, err := _I.Get(216, "DBusConnection", "register_subtree")
 	if err != nil {
 		return
@@ -4315,7 +4390,7 @@ func (v DBusConnection) RegisterSubtree(object_path string, vtable DBusSubtreeVT
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_vtable := gi.NewPointerArgument(vtable.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_user_data_free_func := gi.NewIntArgument(user_data_free_func) /*TODO*/
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -4346,15 +4421,15 @@ func (v DBusConnection) RemoveFilter(filter_id uint32) {
 // g_dbus_connection_send_message
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) SendMessage(message DBusMessage, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, out_serial uint32, err error) {
+func (v DBusConnection) SendMessage(message IDBusMessage, flags DBusSendMessageFlags) (result bool, out_serial uint32, err error) {
 	iv, err := _I.Get(218, "DBusConnection", "send_message")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_message := gi.NewPointerArgument(message.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_message := gi.NewPointerArgument(message.P_DBusMessage())
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_out_serial := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_message, arg_flags, arg_out_serial, arg_err}
@@ -4369,7 +4444,7 @@ func (v DBusConnection) SendMessage(message DBusMessage, flags int /*TODO_TYPE i
 // g_dbus_connection_send_message_with_reply
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) SendMessageWithReply(message DBusMessage, flags int /*TODO_TYPE isPtr: false, tag: interface*/, timeout_msec int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (out_serial uint32) {
+func (v DBusConnection) SendMessageWithReply(message IDBusMessage, flags DBusSendMessageFlags, timeout_msec int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (out_serial uint32) {
 	iv, err := _I.Get(219, "DBusConnection", "send_message_with_reply")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4377,11 +4452,11 @@ func (v DBusConnection) SendMessageWithReply(message DBusMessage, flags int /*TO
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_message := gi.NewPointerArgument(message.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_message := gi.NewPointerArgument(message.P_DBusMessage())
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_timeout_msec := gi.NewInt32Argument(timeout_msec)
 	arg_out_serial := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_message, arg_flags, arg_timeout_msec, arg_out_serial, arg_cancellable, arg_callback, arg_user_data}
@@ -4413,18 +4488,18 @@ func (v DBusConnection) SendMessageWithReplyFinish(res AsyncResult) (result DBus
 // g_dbus_connection_send_message_with_reply_sync
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) SendMessageWithReplySync(message DBusMessage, flags int /*TODO_TYPE isPtr: false, tag: interface*/, timeout_msec int32, cancellable Cancellable) (result DBusMessage, out_serial uint32, err error) {
+func (v DBusConnection) SendMessageWithReplySync(message IDBusMessage, flags DBusSendMessageFlags, timeout_msec int32, cancellable ICancellable) (result DBusMessage, out_serial uint32, err error) {
 	iv, err := _I.Get(221, "DBusConnection", "send_message_with_reply_sync")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_message := gi.NewPointerArgument(message.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_message := gi.NewPointerArgument(message.P_DBusMessage())
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_timeout_msec := gi.NewInt32Argument(timeout_msec)
 	arg_out_serial := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_message, arg_flags, arg_timeout_msec, arg_out_serial, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -4453,7 +4528,7 @@ func (v DBusConnection) SetExitOnClose(exit_on_close bool) {
 // g_dbus_connection_signal_subscribe
 // container is not nil, container is DBusConnection
 // is method
-func (v DBusConnection) SignalSubscribe(sender string, interface_name string, member string, object_path string, arg0 string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func (v DBusConnection) SignalSubscribe(sender string, interface_name string, member string, object_path string, arg0 string, flags DBusSignalFlags, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
 	iv, err := _I.Get(223, "DBusConnection", "signal_subscribe")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4470,7 +4545,7 @@ func (v DBusConnection) SignalSubscribe(sender string, interface_name string, me
 	arg_member := gi.NewStringArgument(c_member)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_arg0 := gi.NewStringArgument(c_arg0)
-	arg_flags := gi.NewIntArgument(flags)       /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_user_data_free_func := gi.NewIntArgument(user_data_free_func) /*TODO*/
@@ -4581,6 +4656,7 @@ func (v DBusConnection) UnregisterSubtree(registration_id uint32) (result bool) 
 	return
 }
 
+// Flags DBusConnectionFlags
 type DBusConnectionFlags int
 
 const (
@@ -4592,6 +4668,7 @@ const (
 	DBusConnectionFlagsDelayMessageProcessing                           = 16
 )
 
+// Enum DBusError
 type DBusErrorEnum int
 
 const (
@@ -4852,10 +4929,14 @@ type DBusInterfaceSkeleton struct {
 
 func WrapDBusInterfaceSkeleton(p unsafe.Pointer) (r DBusInterfaceSkeleton) { r.P = p; return }
 
+type IDBusInterfaceSkeleton interface{ P_DBusInterfaceSkeleton() unsafe.Pointer }
+
+func (v DBusInterfaceSkeleton) P_DBusInterfaceSkeleton() unsafe.Pointer { return v.P }
+
 // g_dbus_interface_skeleton_export
 // container is not nil, container is DBusInterfaceSkeleton
 // is method
-func (v DBusInterfaceSkeleton) Export(connection DBusConnection, object_path string) (result bool, err error) {
+func (v DBusInterfaceSkeleton) Export(connection IDBusConnection, object_path string) (result bool, err error) {
 	iv, err := _I.Get(241, "DBusInterfaceSkeleton", "export")
 	if err != nil {
 		return
@@ -4863,7 +4944,7 @@ func (v DBusInterfaceSkeleton) Export(connection DBusConnection, object_path str
 	var outArgs [1]gi.Argument
 	c_object_path := gi.CString(object_path)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_connection := gi.NewPointerArgument(connection.P)
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_connection, arg_object_path, arg_err}
@@ -4926,7 +5007,7 @@ func (v DBusInterfaceSkeleton) GetConnections() (result int /*TODO_TYPE isPtr: t
 // g_dbus_interface_skeleton_get_flags
 // container is not nil, container is DBusInterfaceSkeleton
 // is method
-func (v DBusInterfaceSkeleton) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusInterfaceSkeleton) GetFlags() (result DBusInterfaceSkeletonFlags) {
 	iv, err := _I.Get(245, "DBusInterfaceSkeleton", "get_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4936,7 +5017,7 @@ func (v DBusInterfaceSkeleton) GetFlags() (result int /*TODO_TYPE isPtr: false, 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DBusInterfaceSkeletonFlags(ret.Int())
 	return
 }
 
@@ -4994,14 +5075,14 @@ func (v DBusInterfaceSkeleton) GetProperties() (result glib.Variant) {
 // g_dbus_interface_skeleton_has_connection
 // container is not nil, container is DBusInterfaceSkeleton
 // is method
-func (v DBusInterfaceSkeleton) HasConnection(connection DBusConnection) (result bool) {
+func (v DBusInterfaceSkeleton) HasConnection(connection IDBusConnection) (result bool) {
 	iv, err := _I.Get(249, "DBusInterfaceSkeleton", "has_connection")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_connection := gi.NewPointerArgument(connection.P)
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
 	args := []gi.Argument{arg_v, arg_connection}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5012,14 +5093,14 @@ func (v DBusInterfaceSkeleton) HasConnection(connection DBusConnection) (result 
 // g_dbus_interface_skeleton_set_flags
 // container is not nil, container is DBusInterfaceSkeleton
 // is method
-func (v DBusInterfaceSkeleton) SetFlags(flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusInterfaceSkeleton) SetFlags(flags DBusInterfaceSkeletonFlags) {
 	iv, err := _I.Get(250, "DBusInterfaceSkeleton", "set_flags")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_flags}
 	iv.Call(args, nil, nil)
 }
@@ -5041,19 +5122,20 @@ func (v DBusInterfaceSkeleton) Unexport() {
 // g_dbus_interface_skeleton_unexport_from_connection
 // container is not nil, container is DBusInterfaceSkeleton
 // is method
-func (v DBusInterfaceSkeleton) UnexportFromConnection(connection DBusConnection) {
+func (v DBusInterfaceSkeleton) UnexportFromConnection(connection IDBusConnection) {
 	iv, err := _I.Get(252, "DBusInterfaceSkeleton", "unexport_from_connection")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_connection := gi.NewPointerArgument(connection.P)
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
 	args := []gi.Argument{arg_v, arg_connection}
 	iv.Call(args, nil, nil)
 }
 
 // ignore GType struct DBusInterfaceSkeletonClass
+// Flags DBusInterfaceSkeletonFlags
 type DBusInterfaceSkeletonFlags int
 
 const (
@@ -5078,11 +5160,15 @@ type DBusMenuModel struct {
 
 func WrapDBusMenuModel(p unsafe.Pointer) (r DBusMenuModel) { r.P = p; return }
 
+type IDBusMenuModel interface{ P_DBusMenuModel() unsafe.Pointer }
+
+func (v DBusMenuModel) P_DBusMenuModel() unsafe.Pointer { return v.P }
+
 // g_dbus_menu_model_get
 // container is not nil, container is DBusMenuModel
 // is method
 // arg0Type tag: interface, isPtr: true
-func DBusMenuModelGet1(connection DBusConnection, bus_name string, object_path string) (result DBusMenuModel) {
+func DBusMenuModelGet1(connection IDBusConnection, bus_name string, object_path string) (result DBusMenuModel) {
 	iv, err := _I.Get(253, "DBusMenuModel", "get")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5090,7 +5176,7 @@ func DBusMenuModelGet1(connection DBusConnection, bus_name string, object_path s
 	}
 	c_bus_name := gi.CString(bus_name)
 	c_object_path := gi.CString(object_path)
-	arg_connection := gi.NewPointerArgument(connection.P)
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
 	arg_bus_name := gi.NewStringArgument(c_bus_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	args := []gi.Argument{arg_connection, arg_bus_name, arg_object_path}
@@ -5108,6 +5194,10 @@ type DBusMessage struct {
 }
 
 func WrapDBusMessage(p unsafe.Pointer) (r DBusMessage) { r.P = p; return }
+
+type IDBusMessage interface{ P_DBusMessage() unsafe.Pointer }
+
+func (v DBusMessage) P_DBusMessage() unsafe.Pointer { return v.P }
 
 // g_dbus_message_new
 // container is not nil, container is DBusMessage
@@ -5127,7 +5217,7 @@ func NewDBusMessage() (result DBusMessage) {
 // g_dbus_message_new_from_blob
 // container is not nil, container is DBusMessage
 // is constructor
-func NewDBusMessageFromBlob(blob int /*TODO_TYPE isPtr: true, tag: array*/, blob_len uint64, capabilities int /*TODO_TYPE isPtr: false, tag: interface*/) (result DBusMessage, err error) {
+func NewDBusMessageFromBlob(blob int /*TODO_TYPE isPtr: true, tag: array*/, blob_len uint64, capabilities DBusCapabilityFlags) (result DBusMessage, err error) {
 	iv, err := _I.Get(255, "DBusMessage", "new_from_blob")
 	if err != nil {
 		return
@@ -5135,7 +5225,7 @@ func NewDBusMessageFromBlob(blob int /*TODO_TYPE isPtr: true, tag: array*/, blob
 	var outArgs [1]gi.Argument
 	arg_blob := gi.NewIntArgument(blob) /*TODO*/
 	arg_blob_len := gi.NewUint64Argument(blob_len)
-	arg_capabilities := gi.NewIntArgument(capabilities) /*TODO*/
+	arg_capabilities := gi.NewIntArgument(int(capabilities))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_blob, arg_blob_len, arg_capabilities, arg_err}
 	var ret gi.Argument
@@ -5275,7 +5365,7 @@ func (v DBusMessage) GetBody() (result glib.Variant) {
 // g_dbus_message_get_byte_order
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) GetByteOrder() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusMessage) GetByteOrder() (result DBusMessageByteOrderEnum) {
 	iv, err := _I.Get(262, "DBusMessage", "get_byte_order")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5285,7 +5375,7 @@ func (v DBusMessage) GetByteOrder() (result int /*TODO_TYPE isPtr: false, tag: i
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DBusMessageByteOrderEnum(ret.Int())
 	return
 }
 
@@ -5326,7 +5416,7 @@ func (v DBusMessage) GetErrorName() (result string) {
 // g_dbus_message_get_flags
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusMessage) GetFlags() (result DBusMessageFlags) {
 	iv, err := _I.Get(265, "DBusMessage", "get_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5336,21 +5426,21 @@ func (v DBusMessage) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: inter
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DBusMessageFlags(ret.Int())
 	return
 }
 
 // g_dbus_message_get_header
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) GetHeader(header_field int /*TODO_TYPE isPtr: false, tag: interface*/) (result glib.Variant) {
+func (v DBusMessage) GetHeader(header_field DBusMessageHeaderFieldEnum) (result glib.Variant) {
 	iv, err := _I.Get(266, "DBusMessage", "get_header")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_header_field := gi.NewIntArgument(header_field) /*TODO*/
+	arg_header_field := gi.NewIntArgument(int(header_field))
 	args := []gi.Argument{arg_v, arg_header_field}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5429,7 +5519,7 @@ func (v DBusMessage) GetMember() (result string) {
 // g_dbus_message_get_message_type
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) GetMessageType() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusMessage) GetMessageType() (result DBusMessageTypeEnum) {
 	iv, err := _I.Get(271, "DBusMessage", "get_message_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5439,7 +5529,7 @@ func (v DBusMessage) GetMessageType() (result int /*TODO_TYPE isPtr: false, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DBusMessageTypeEnum(ret.Int())
 	return
 }
 
@@ -5652,14 +5742,14 @@ func (v DBusMessage) SetBody(body glib.Variant) {
 // g_dbus_message_set_byte_order
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) SetByteOrder(byte_order int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusMessage) SetByteOrder(byte_order DBusMessageByteOrderEnum) {
 	iv, err := _I.Get(284, "DBusMessage", "set_byte_order")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_byte_order := gi.NewIntArgument(byte_order) /*TODO*/
+	arg_byte_order := gi.NewIntArgument(int(byte_order))
 	args := []gi.Argument{arg_v, arg_byte_order}
 	iv.Call(args, nil, nil)
 }
@@ -5701,14 +5791,14 @@ func (v DBusMessage) SetErrorName(value string) {
 // g_dbus_message_set_flags
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) SetFlags(flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusMessage) SetFlags(flags DBusMessageFlags) {
 	iv, err := _I.Get(287, "DBusMessage", "set_flags")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_flags}
 	iv.Call(args, nil, nil)
 }
@@ -5716,14 +5806,14 @@ func (v DBusMessage) SetFlags(flags int /*TODO_TYPE isPtr: false, tag: interface
 // g_dbus_message_set_header
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) SetHeader(header_field int /*TODO_TYPE isPtr: false, tag: interface*/, value glib.Variant) {
+func (v DBusMessage) SetHeader(header_field DBusMessageHeaderFieldEnum, value glib.Variant) {
 	iv, err := _I.Get(288, "DBusMessage", "set_header")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_header_field := gi.NewIntArgument(header_field) /*TODO*/
+	arg_header_field := gi.NewIntArgument(int(header_field))
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_v, arg_header_field, arg_value}
 	iv.Call(args, nil, nil)
@@ -5766,14 +5856,14 @@ func (v DBusMessage) SetMember(value string) {
 // g_dbus_message_set_message_type
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) SetMessageType(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusMessage) SetMessageType(type1 DBusMessageTypeEnum) {
 	iv, err := _I.Get(291, "DBusMessage", "set_message_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_v, arg_type1}
 	iv.Call(args, nil, nil)
 }
@@ -5877,14 +5967,14 @@ func (v DBusMessage) SetSignature(value string) {
 // g_dbus_message_set_unix_fd_list
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) SetUnixFdList(fd_list UnixFDList) {
+func (v DBusMessage) SetUnixFdList(fd_list IUnixFDList) {
 	iv, err := _I.Get(298, "DBusMessage", "set_unix_fd_list")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_fd_list := gi.NewPointerArgument(fd_list.P)
+	arg_fd_list := gi.NewPointerArgument(fd_list.P_UnixFDList())
 	args := []gi.Argument{arg_v, arg_fd_list}
 	iv.Call(args, nil, nil)
 }
@@ -5892,7 +5982,7 @@ func (v DBusMessage) SetUnixFdList(fd_list UnixFDList) {
 // g_dbus_message_to_blob
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) ToBlob(capabilities int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: true, tag: array*/, out_size uint64, err error) {
+func (v DBusMessage) ToBlob(capabilities DBusCapabilityFlags) (result int /*TODO_TYPE isPtr: true, tag: array*/, out_size uint64, err error) {
 	iv, err := _I.Get(299, "DBusMessage", "to_blob")
 	if err != nil {
 		return
@@ -5900,7 +5990,7 @@ func (v DBusMessage) ToBlob(capabilities int /*TODO_TYPE isPtr: false, tag: inte
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_out_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_capabilities := gi.NewIntArgument(capabilities) /*TODO*/
+	arg_capabilities := gi.NewIntArgument(int(capabilities))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_out_size, arg_capabilities, arg_err}
 	var ret gi.Argument
@@ -5930,6 +6020,7 @@ func (v DBusMessage) ToGerror() (result bool, err error) {
 	return
 }
 
+// Enum DBusMessageByteOrder
 type DBusMessageByteOrderEnum int
 
 const (
@@ -5937,6 +6028,7 @@ const (
 	DBusMessageByteOrderLittleEndian                          = 108
 )
 
+// Flags DBusMessageFlags
 type DBusMessageFlags int
 
 const (
@@ -5946,6 +6038,7 @@ const (
 	DBusMessageFlagsAllowInteractiveAuthorization                  = 4
 )
 
+// Enum DBusMessageHeaderField
 type DBusMessageHeaderFieldEnum int
 
 const (
@@ -5961,6 +6054,7 @@ const (
 	DBusMessageHeaderFieldNumUnixFds                             = 9
 )
 
+// Enum DBusMessageType
 type DBusMessageTypeEnum int
 
 const (
@@ -6013,6 +6107,10 @@ type DBusMethodInvocation struct {
 }
 
 func WrapDBusMethodInvocation(p unsafe.Pointer) (r DBusMethodInvocation) { r.P = p; return }
+
+type IDBusMethodInvocation interface{ P_DBusMethodInvocation() unsafe.Pointer }
+
+func (v DBusMethodInvocation) P_DBusMethodInvocation() unsafe.Pointer { return v.P }
 
 // g_dbus_method_invocation_get_connection
 // container is not nil, container is DBusMethodInvocation
@@ -6239,7 +6337,7 @@ func (v DBusMethodInvocation) ReturnValue(parameters glib.Variant) {
 // g_dbus_method_invocation_return_value_with_unix_fd_list
 // container is not nil, container is DBusMethodInvocation
 // is method
-func (v DBusMethodInvocation) ReturnValueWithUnixFdList(parameters glib.Variant, fd_list UnixFDList) {
+func (v DBusMethodInvocation) ReturnValueWithUnixFdList(parameters glib.Variant, fd_list IUnixFDList) {
 	iv, err := _I.Get(316, "DBusMethodInvocation", "return_value_with_unix_fd_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6247,7 +6345,7 @@ func (v DBusMethodInvocation) ReturnValueWithUnixFdList(parameters glib.Variant,
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
-	arg_fd_list := gi.NewPointerArgument(fd_list.P)
+	arg_fd_list := gi.NewPointerArgument(fd_list.P_UnixFDList())
 	args := []gi.Argument{arg_v, arg_parameters, arg_fd_list}
 	iv.Call(args, nil, nil)
 }
@@ -6501,6 +6599,10 @@ type DBusObjectManagerClient struct {
 
 func WrapDBusObjectManagerClient(p unsafe.Pointer) (r DBusObjectManagerClient) { r.P = p; return }
 
+type IDBusObjectManagerClient interface{ P_DBusObjectManagerClient() unsafe.Pointer }
+
+func (v DBusObjectManagerClient) P_DBusObjectManagerClient() unsafe.Pointer { return v.P }
+
 // g_dbus_object_manager_client_new_finish
 // container is not nil, container is DBusObjectManagerClient
 // is constructor
@@ -6542,7 +6644,7 @@ func NewDBusObjectManagerClientForBusFinish(res AsyncResult) (result DBusObjectM
 // g_dbus_object_manager_client_new_for_bus_sync
 // container is not nil, container is DBusObjectManagerClient
 // is constructor
-func NewDBusObjectManagerClientForBusSync(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/, name string, object_path string, get_proxy_type_func int /*TODO_TYPE isPtr: false, tag: interface*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result DBusObjectManagerClient, err error) {
+func NewDBusObjectManagerClientForBusSync(bus_type BusTypeEnum, flags DBusObjectManagerClientFlags, name string, object_path string, get_proxy_type_func int /*TODO_TYPE isPtr: false, tag: interface*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable ICancellable) (result DBusObjectManagerClient, err error) {
 	iv, err := _I.Get(331, "DBusObjectManagerClient", "new_for_bus_sync")
 	if err != nil {
 		return
@@ -6550,14 +6652,14 @@ func NewDBusObjectManagerClientForBusSync(bus_type int /*TODO_TYPE isPtr: false,
 	var outArgs [1]gi.Argument
 	c_name := gi.CString(name)
 	c_object_path := gi.CString(object_path)
-	arg_bus_type := gi.NewIntArgument(bus_type) /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)       /*TODO*/
+	arg_bus_type := gi.NewIntArgument(int(bus_type))
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_get_proxy_type_func := gi.NewIntArgument(get_proxy_type_func) /*TODO*/
 	arg_get_proxy_type_user_data := gi.NewPointerArgument(get_proxy_type_user_data)
 	arg_get_proxy_type_destroy_notify := gi.NewIntArgument(get_proxy_type_destroy_notify) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_get_proxy_type_func, arg_get_proxy_type_user_data, arg_get_proxy_type_destroy_notify, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -6572,7 +6674,7 @@ func NewDBusObjectManagerClientForBusSync(bus_type int /*TODO_TYPE isPtr: false,
 // g_dbus_object_manager_client_new_sync
 // container is not nil, container is DBusObjectManagerClient
 // is constructor
-func NewDBusObjectManagerClientSync(connection DBusConnection, flags int /*TODO_TYPE isPtr: false, tag: interface*/, name string, object_path string, get_proxy_type_func int /*TODO_TYPE isPtr: false, tag: interface*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result DBusObjectManagerClient, err error) {
+func NewDBusObjectManagerClientSync(connection IDBusConnection, flags DBusObjectManagerClientFlags, name string, object_path string, get_proxy_type_func int /*TODO_TYPE isPtr: false, tag: interface*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable ICancellable) (result DBusObjectManagerClient, err error) {
 	iv, err := _I.Get(332, "DBusObjectManagerClient", "new_sync")
 	if err != nil {
 		return
@@ -6580,14 +6682,14 @@ func NewDBusObjectManagerClientSync(connection DBusConnection, flags int /*TODO_
 	var outArgs [1]gi.Argument
 	c_name := gi.CString(name)
 	c_object_path := gi.CString(object_path)
-	arg_connection := gi.NewPointerArgument(connection.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_get_proxy_type_func := gi.NewIntArgument(get_proxy_type_func) /*TODO*/
 	arg_get_proxy_type_user_data := gi.NewPointerArgument(get_proxy_type_user_data)
 	arg_get_proxy_type_destroy_notify := gi.NewIntArgument(get_proxy_type_destroy_notify) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_get_proxy_type_func, arg_get_proxy_type_user_data, arg_get_proxy_type_destroy_notify, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -6603,7 +6705,7 @@ func NewDBusObjectManagerClientSync(connection DBusConnection, flags int /*TODO_
 // container is not nil, container is DBusObjectManagerClient
 // is method
 // arg0Type tag: interface, isPtr: true
-func DBusObjectManagerClientNew1(connection DBusConnection, flags int /*TODO_TYPE isPtr: false, tag: interface*/, name string, object_path string, get_proxy_type_func int /*TODO_TYPE isPtr: false, tag: interface*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func DBusObjectManagerClientNew1(connection IDBusConnection, flags DBusObjectManagerClientFlags, name string, object_path string, get_proxy_type_func int /*TODO_TYPE isPtr: false, tag: interface*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(333, "DBusObjectManagerClient", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6611,14 +6713,14 @@ func DBusObjectManagerClientNew1(connection DBusConnection, flags int /*TODO_TYP
 	}
 	c_name := gi.CString(name)
 	c_object_path := gi.CString(object_path)
-	arg_connection := gi.NewPointerArgument(connection.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_get_proxy_type_func := gi.NewIntArgument(get_proxy_type_func) /*TODO*/
 	arg_get_proxy_type_user_data := gi.NewPointerArgument(get_proxy_type_user_data)
 	arg_get_proxy_type_destroy_notify := gi.NewIntArgument(get_proxy_type_destroy_notify) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_get_proxy_type_func, arg_get_proxy_type_user_data, arg_get_proxy_type_destroy_notify, arg_cancellable, arg_callback, arg_user_data}
@@ -6631,7 +6733,7 @@ func DBusObjectManagerClientNew1(connection DBusConnection, flags int /*TODO_TYP
 // container is not nil, container is DBusObjectManagerClient
 // is method
 // arg0Type tag: interface, isPtr: false
-func DBusObjectManagerClientNewForBus1(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/, name string, object_path string, get_proxy_type_func int /*TODO_TYPE isPtr: false, tag: interface*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func DBusObjectManagerClientNewForBus1(bus_type BusTypeEnum, flags DBusObjectManagerClientFlags, name string, object_path string, get_proxy_type_func int /*TODO_TYPE isPtr: false, tag: interface*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(334, "DBusObjectManagerClient", "new_for_bus")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6639,14 +6741,14 @@ func DBusObjectManagerClientNewForBus1(bus_type int /*TODO_TYPE isPtr: false, ta
 	}
 	c_name := gi.CString(name)
 	c_object_path := gi.CString(object_path)
-	arg_bus_type := gi.NewIntArgument(bus_type) /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)       /*TODO*/
+	arg_bus_type := gi.NewIntArgument(int(bus_type))
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_get_proxy_type_func := gi.NewIntArgument(get_proxy_type_func) /*TODO*/
 	arg_get_proxy_type_user_data := gi.NewPointerArgument(get_proxy_type_user_data)
 	arg_get_proxy_type_destroy_notify := gi.NewIntArgument(get_proxy_type_destroy_notify) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_get_proxy_type_func, arg_get_proxy_type_user_data, arg_get_proxy_type_destroy_notify, arg_cancellable, arg_callback, arg_user_data}
@@ -6675,7 +6777,7 @@ func (v DBusObjectManagerClient) GetConnection() (result DBusConnection) {
 // g_dbus_object_manager_client_get_flags
 // container is not nil, container is DBusObjectManagerClient
 // is method
-func (v DBusObjectManagerClient) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusObjectManagerClient) GetFlags() (result DBusObjectManagerClientFlags) {
 	iv, err := _I.Get(336, "DBusObjectManagerClient", "get_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6685,7 +6787,7 @@ func (v DBusObjectManagerClient) GetFlags() (result int /*TODO_TYPE isPtr: false
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DBusObjectManagerClientFlags(ret.Int())
 	return
 }
 
@@ -6724,6 +6826,7 @@ func (v DBusObjectManagerClient) GetNameOwner() (result string) {
 }
 
 // ignore GType struct DBusObjectManagerClientClass
+// Flags DBusObjectManagerClientFlags
 type DBusObjectManagerClientFlags int
 
 const (
@@ -6744,6 +6847,10 @@ type DBusObjectManagerServer struct {
 }
 
 func WrapDBusObjectManagerServer(p unsafe.Pointer) (r DBusObjectManagerServer) { r.P = p; return }
+
+type IDBusObjectManagerServer interface{ P_DBusObjectManagerServer() unsafe.Pointer }
+
+func (v DBusObjectManagerServer) P_DBusObjectManagerServer() unsafe.Pointer { return v.P }
 
 // g_dbus_object_manager_server_new
 // container is not nil, container is DBusObjectManagerServer
@@ -6767,14 +6874,14 @@ func NewDBusObjectManagerServer(object_path string) (result DBusObjectManagerSer
 // g_dbus_object_manager_server_export
 // container is not nil, container is DBusObjectManagerServer
 // is method
-func (v DBusObjectManagerServer) Export(object DBusObjectSkeleton) {
+func (v DBusObjectManagerServer) Export(object IDBusObjectSkeleton) {
 	iv, err := _I.Get(340, "DBusObjectManagerServer", "export")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_DBusObjectSkeleton())
 	args := []gi.Argument{arg_v, arg_object}
 	iv.Call(args, nil, nil)
 }
@@ -6782,14 +6889,14 @@ func (v DBusObjectManagerServer) Export(object DBusObjectSkeleton) {
 // g_dbus_object_manager_server_export_uniquely
 // container is not nil, container is DBusObjectManagerServer
 // is method
-func (v DBusObjectManagerServer) ExportUniquely(object DBusObjectSkeleton) {
+func (v DBusObjectManagerServer) ExportUniquely(object IDBusObjectSkeleton) {
 	iv, err := _I.Get(341, "DBusObjectManagerServer", "export_uniquely")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_DBusObjectSkeleton())
 	args := []gi.Argument{arg_v, arg_object}
 	iv.Call(args, nil, nil)
 }
@@ -6814,14 +6921,14 @@ func (v DBusObjectManagerServer) GetConnection() (result DBusConnection) {
 // g_dbus_object_manager_server_is_exported
 // container is not nil, container is DBusObjectManagerServer
 // is method
-func (v DBusObjectManagerServer) IsExported(object DBusObjectSkeleton) (result bool) {
+func (v DBusObjectManagerServer) IsExported(object IDBusObjectSkeleton) (result bool) {
 	iv, err := _I.Get(343, "DBusObjectManagerServer", "is_exported")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_DBusObjectSkeleton())
 	args := []gi.Argument{arg_v, arg_object}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6832,14 +6939,14 @@ func (v DBusObjectManagerServer) IsExported(object DBusObjectSkeleton) (result b
 // g_dbus_object_manager_server_set_connection
 // container is not nil, container is DBusObjectManagerServer
 // is method
-func (v DBusObjectManagerServer) SetConnection(connection DBusConnection) {
+func (v DBusObjectManagerServer) SetConnection(connection IDBusConnection) {
 	iv, err := _I.Get(344, "DBusObjectManagerServer", "set_connection")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_connection := gi.NewPointerArgument(connection.P)
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
 	args := []gi.Argument{arg_v, arg_connection}
 	iv.Call(args, nil, nil)
 }
@@ -6878,17 +6985,21 @@ type DBusObjectProxy struct {
 
 func WrapDBusObjectProxy(p unsafe.Pointer) (r DBusObjectProxy) { r.P = p; return }
 
+type IDBusObjectProxy interface{ P_DBusObjectProxy() unsafe.Pointer }
+
+func (v DBusObjectProxy) P_DBusObjectProxy() unsafe.Pointer { return v.P }
+
 // g_dbus_object_proxy_new
 // container is not nil, container is DBusObjectProxy
 // is constructor
-func NewDBusObjectProxy(connection DBusConnection, object_path string) (result DBusObjectProxy) {
+func NewDBusObjectProxy(connection IDBusConnection, object_path string) (result DBusObjectProxy) {
 	iv, err := _I.Get(346, "DBusObjectProxy", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_object_path := gi.CString(object_path)
-	arg_connection := gi.NewPointerArgument(connection.P)
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	args := []gi.Argument{arg_connection, arg_object_path}
 	var ret gi.Argument
@@ -6929,6 +7040,10 @@ type DBusObjectSkeleton struct {
 
 func WrapDBusObjectSkeleton(p unsafe.Pointer) (r DBusObjectSkeleton) { r.P = p; return }
 
+type IDBusObjectSkeleton interface{ P_DBusObjectSkeleton() unsafe.Pointer }
+
+func (v DBusObjectSkeleton) P_DBusObjectSkeleton() unsafe.Pointer { return v.P }
+
 // g_dbus_object_skeleton_new
 // container is not nil, container is DBusObjectSkeleton
 // is constructor
@@ -6951,14 +7066,14 @@ func NewDBusObjectSkeleton(object_path string) (result DBusObjectSkeleton) {
 // g_dbus_object_skeleton_add_interface
 // container is not nil, container is DBusObjectSkeleton
 // is method
-func (v DBusObjectSkeleton) AddInterface(interface_ DBusInterfaceSkeleton) {
+func (v DBusObjectSkeleton) AddInterface(interface_ IDBusInterfaceSkeleton) {
 	iv, err := _I.Get(349, "DBusObjectSkeleton", "add_interface")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_interface_ := gi.NewPointerArgument(interface_.P)
+	arg_interface_ := gi.NewPointerArgument(interface_.P_DBusInterfaceSkeleton())
 	args := []gi.Argument{arg_v, arg_interface_}
 	iv.Call(args, nil, nil)
 }
@@ -6980,14 +7095,14 @@ func (v DBusObjectSkeleton) Flush() {
 // g_dbus_object_skeleton_remove_interface
 // container is not nil, container is DBusObjectSkeleton
 // is method
-func (v DBusObjectSkeleton) RemoveInterface(interface_ DBusInterfaceSkeleton) {
+func (v DBusObjectSkeleton) RemoveInterface(interface_ IDBusInterfaceSkeleton) {
 	iv, err := _I.Get(351, "DBusObjectSkeleton", "remove_interface")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_interface_ := gi.NewPointerArgument(interface_.P)
+	arg_interface_ := gi.NewPointerArgument(interface_.P_DBusInterfaceSkeleton())
 	args := []gi.Argument{arg_v, arg_interface_}
 	iv.Call(args, nil, nil)
 }
@@ -7068,6 +7183,7 @@ func (v DBusPropertyInfo) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Flags DBusPropertyInfoFlags
 type DBusPropertyInfoFlags int
 
 const (
@@ -7085,6 +7201,10 @@ type DBusProxy struct {
 }
 
 func WrapDBusProxy(p unsafe.Pointer) (r DBusProxy) { r.P = p; return }
+
+type IDBusProxy interface{ P_DBusProxy() unsafe.Pointer }
+
+func (v DBusProxy) P_DBusProxy() unsafe.Pointer { return v.P }
 
 // g_dbus_proxy_new_finish
 // container is not nil, container is DBusProxy
@@ -7127,7 +7247,7 @@ func NewDBusProxyForBusFinish(res AsyncResult) (result DBusProxy, err error) {
 // g_dbus_proxy_new_for_bus_sync
 // container is not nil, container is DBusProxy
 // is constructor
-func NewDBusProxyForBusSync(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable Cancellable) (result DBusProxy, err error) {
+func NewDBusProxyForBusSync(bus_type BusTypeEnum, flags DBusProxyFlags, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable ICancellable) (result DBusProxy, err error) {
 	iv, err := _I.Get(358, "DBusProxy", "new_for_bus_sync")
 	if err != nil {
 		return
@@ -7136,13 +7256,13 @@ func NewDBusProxyForBusSync(bus_type int /*TODO_TYPE isPtr: false, tag: interfac
 	c_name := gi.CString(name)
 	c_object_path := gi.CString(object_path)
 	c_interface_name := gi.CString(interface_name)
-	arg_bus_type := gi.NewIntArgument(bus_type) /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)       /*TODO*/
+	arg_bus_type := gi.NewIntArgument(int(bus_type))
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_info := gi.NewPointerArgument(info.P)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_interface_name := gi.NewStringArgument(c_interface_name)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_info, arg_name, arg_object_path, arg_interface_name, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -7158,7 +7278,7 @@ func NewDBusProxyForBusSync(bus_type int /*TODO_TYPE isPtr: false, tag: interfac
 // g_dbus_proxy_new_sync
 // container is not nil, container is DBusProxy
 // is constructor
-func NewDBusProxySync(connection DBusConnection, flags int /*TODO_TYPE isPtr: false, tag: interface*/, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable Cancellable) (result DBusProxy, err error) {
+func NewDBusProxySync(connection IDBusConnection, flags DBusProxyFlags, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable ICancellable) (result DBusProxy, err error) {
 	iv, err := _I.Get(359, "DBusProxy", "new_sync")
 	if err != nil {
 		return
@@ -7167,13 +7287,13 @@ func NewDBusProxySync(connection DBusConnection, flags int /*TODO_TYPE isPtr: fa
 	c_name := gi.CString(name)
 	c_object_path := gi.CString(object_path)
 	c_interface_name := gi.CString(interface_name)
-	arg_connection := gi.NewPointerArgument(connection.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_info := gi.NewPointerArgument(info.P)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_interface_name := gi.NewStringArgument(c_interface_name)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_connection, arg_flags, arg_info, arg_name, arg_object_path, arg_interface_name, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -7190,7 +7310,7 @@ func NewDBusProxySync(connection DBusConnection, flags int /*TODO_TYPE isPtr: fa
 // container is not nil, container is DBusProxy
 // is method
 // arg0Type tag: interface, isPtr: true
-func DBusProxyNew1(connection DBusConnection, flags int /*TODO_TYPE isPtr: false, tag: interface*/, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func DBusProxyNew1(connection IDBusConnection, flags DBusProxyFlags, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(360, "DBusProxy", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7199,13 +7319,13 @@ func DBusProxyNew1(connection DBusConnection, flags int /*TODO_TYPE isPtr: false
 	c_name := gi.CString(name)
 	c_object_path := gi.CString(object_path)
 	c_interface_name := gi.CString(interface_name)
-	arg_connection := gi.NewPointerArgument(connection.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_info := gi.NewPointerArgument(info.P)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_interface_name := gi.NewStringArgument(c_interface_name)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_info, arg_name, arg_object_path, arg_interface_name, arg_cancellable, arg_callback, arg_user_data}
@@ -7219,7 +7339,7 @@ func DBusProxyNew1(connection DBusConnection, flags int /*TODO_TYPE isPtr: false
 // container is not nil, container is DBusProxy
 // is method
 // arg0Type tag: interface, isPtr: false
-func DBusProxyNewForBus1(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func DBusProxyNewForBus1(bus_type BusTypeEnum, flags DBusProxyFlags, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(361, "DBusProxy", "new_for_bus")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7228,13 +7348,13 @@ func DBusProxyNewForBus1(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/
 	c_name := gi.CString(name)
 	c_object_path := gi.CString(object_path)
 	c_interface_name := gi.CString(interface_name)
-	arg_bus_type := gi.NewIntArgument(bus_type) /*TODO*/
-	arg_flags := gi.NewIntArgument(flags)       /*TODO*/
+	arg_bus_type := gi.NewIntArgument(int(bus_type))
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_info := gi.NewPointerArgument(info.P)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_interface_name := gi.NewStringArgument(c_interface_name)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_info, arg_name, arg_object_path, arg_interface_name, arg_cancellable, arg_callback, arg_user_data}
@@ -7247,7 +7367,7 @@ func DBusProxyNewForBus1(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/
 // g_dbus_proxy_call
 // container is not nil, container is DBusProxy
 // is method
-func (v DBusProxy) Call(method_name string, parameters glib.Variant, flags int /*TODO_TYPE isPtr: false, tag: interface*/, timeout_msec int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v DBusProxy) Call(method_name string, parameters glib.Variant, flags DBusCallFlags, timeout_msec int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(362, "DBusProxy", "call")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7257,9 +7377,9 @@ func (v DBusProxy) Call(method_name string, parameters glib.Variant, flags int /
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_method_name := gi.NewStringArgument(c_method_name)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_timeout_msec := gi.NewInt32Argument(timeout_msec)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_method_name, arg_parameters, arg_flags, arg_timeout_msec, arg_cancellable, arg_callback, arg_user_data}
@@ -7290,7 +7410,7 @@ func (v DBusProxy) CallFinish(res AsyncResult) (result glib.Variant, err error) 
 // g_dbus_proxy_call_sync
 // container is not nil, container is DBusProxy
 // is method
-func (v DBusProxy) CallSync(method_name string, parameters glib.Variant, flags int /*TODO_TYPE isPtr: false, tag: interface*/, timeout_msec int32, cancellable Cancellable) (result glib.Variant, err error) {
+func (v DBusProxy) CallSync(method_name string, parameters glib.Variant, flags DBusCallFlags, timeout_msec int32, cancellable ICancellable) (result glib.Variant, err error) {
 	iv, err := _I.Get(364, "DBusProxy", "call_sync")
 	if err != nil {
 		return
@@ -7300,9 +7420,9 @@ func (v DBusProxy) CallSync(method_name string, parameters glib.Variant, flags i
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_method_name := gi.NewStringArgument(c_method_name)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_timeout_msec := gi.NewInt32Argument(timeout_msec)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_method_name, arg_parameters, arg_flags, arg_timeout_msec, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -7316,7 +7436,7 @@ func (v DBusProxy) CallSync(method_name string, parameters glib.Variant, flags i
 // g_dbus_proxy_call_with_unix_fd_list
 // container is not nil, container is DBusProxy
 // is method
-func (v DBusProxy) CallWithUnixFdList(method_name string, parameters glib.Variant, flags int /*TODO_TYPE isPtr: false, tag: interface*/, timeout_msec int32, fd_list UnixFDList, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v DBusProxy) CallWithUnixFdList(method_name string, parameters glib.Variant, flags DBusCallFlags, timeout_msec int32, fd_list IUnixFDList, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(365, "DBusProxy", "call_with_unix_fd_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7326,10 +7446,10 @@ func (v DBusProxy) CallWithUnixFdList(method_name string, parameters glib.Varian
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_method_name := gi.NewStringArgument(c_method_name)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_timeout_msec := gi.NewInt32Argument(timeout_msec)
-	arg_fd_list := gi.NewPointerArgument(fd_list.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_fd_list := gi.NewPointerArgument(fd_list.P_UnixFDList())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_method_name, arg_parameters, arg_flags, arg_timeout_msec, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
@@ -7340,7 +7460,7 @@ func (v DBusProxy) CallWithUnixFdList(method_name string, parameters glib.Varian
 // g_dbus_proxy_call_with_unix_fd_list_finish
 // container is not nil, container is DBusProxy
 // is method
-func (v DBusProxy) CallWithUnixFdListFinish(res AsyncResult) (result glib.Variant, out_fd_list int /*TODO_TYPE*/, err error) {
+func (v DBusProxy) CallWithUnixFdListFinish(res AsyncResult) (result glib.Variant, out_fd_list UnixFDList, err error) {
 	iv, err := _I.Get(366, "DBusProxy", "call_with_unix_fd_list_finish")
 	if err != nil {
 		return
@@ -7354,7 +7474,7 @@ func (v DBusProxy) CallWithUnixFdListFinish(res AsyncResult) (result glib.Varian
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result.P = ret.Pointer()
-	out_fd_list = outArgs[0].Int() /*TODO*/
+	out_fd_list.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -7362,7 +7482,7 @@ func (v DBusProxy) CallWithUnixFdListFinish(res AsyncResult) (result glib.Varian
 // g_dbus_proxy_call_with_unix_fd_list_sync
 // container is not nil, container is DBusProxy
 // is method
-func (v DBusProxy) CallWithUnixFdListSync(method_name string, parameters glib.Variant, flags int /*TODO_TYPE isPtr: false, tag: interface*/, timeout_msec int32, fd_list UnixFDList, cancellable Cancellable) (result glib.Variant, out_fd_list int /*TODO_TYPE*/, err error) {
+func (v DBusProxy) CallWithUnixFdListSync(method_name string, parameters glib.Variant, flags DBusCallFlags, timeout_msec int32, fd_list IUnixFDList, cancellable ICancellable) (result glib.Variant, out_fd_list UnixFDList, err error) {
 	iv, err := _I.Get(367, "DBusProxy", "call_with_unix_fd_list_sync")
 	if err != nil {
 		return
@@ -7372,18 +7492,18 @@ func (v DBusProxy) CallWithUnixFdListSync(method_name string, parameters glib.Va
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_method_name := gi.NewStringArgument(c_method_name)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_timeout_msec := gi.NewInt32Argument(timeout_msec)
-	arg_fd_list := gi.NewPointerArgument(fd_list.P)
+	arg_fd_list := gi.NewPointerArgument(fd_list.P_UnixFDList())
 	arg_out_fd_list := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_method_name, arg_parameters, arg_flags, arg_timeout_msec, arg_fd_list, arg_out_fd_list, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result.P = ret.Pointer()
 	gi.Free(c_method_name)
-	out_fd_list = outArgs[0].Int() /*TODO*/
+	out_fd_list.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -7462,7 +7582,7 @@ func (v DBusProxy) GetDefaultTimeout() (result int32) {
 // g_dbus_proxy_get_flags
 // container is not nil, container is DBusProxy
 // is method
-func (v DBusProxy) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusProxy) GetFlags() (result DBusProxyFlags) {
 	iv, err := _I.Get(372, "DBusProxy", "get_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7472,7 +7592,7 @@ func (v DBusProxy) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interfa
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DBusProxyFlags(ret.Int())
 	return
 }
 
@@ -7610,6 +7730,7 @@ func (v DBusProxy) SetInterfaceInfo(info DBusInterfaceInfo) {
 }
 
 // ignore GType struct DBusProxyClass
+// Flags DBusProxyFlags
 type DBusProxyFlags int
 
 const (
@@ -7625,6 +7746,8 @@ const (
 type DBusProxyPrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags DBusSendMessageFlags
 type DBusSendMessageFlags int
 
 const (
@@ -7640,10 +7763,14 @@ type DBusServer struct {
 
 func WrapDBusServer(p unsafe.Pointer) (r DBusServer) { r.P = p; return }
 
+type IDBusServer interface{ P_DBusServer() unsafe.Pointer }
+
+func (v DBusServer) P_DBusServer() unsafe.Pointer { return v.P }
+
 // g_dbus_server_new_sync
 // container is not nil, container is DBusServer
 // is constructor
-func NewDBusServerSync(address string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, guid string, observer DBusAuthObserver, cancellable Cancellable) (result DBusServer, err error) {
+func NewDBusServerSync(address string, flags DBusServerFlags, guid string, observer IDBusAuthObserver, cancellable ICancellable) (result DBusServer, err error) {
 	iv, err := _I.Get(381, "DBusServer", "new_sync")
 	if err != nil {
 		return
@@ -7652,10 +7779,10 @@ func NewDBusServerSync(address string, flags int /*TODO_TYPE isPtr: false, tag: 
 	c_address := gi.CString(address)
 	c_guid := gi.CString(guid)
 	arg_address := gi.NewStringArgument(c_address)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_guid := gi.NewStringArgument(c_guid)
-	arg_observer := gi.NewPointerArgument(observer.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_observer := gi.NewPointerArgument(observer.P_DBusAuthObserver())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_address, arg_flags, arg_guid, arg_observer, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -7687,7 +7814,7 @@ func (v DBusServer) GetClientAddress() (result string) {
 // g_dbus_server_get_flags
 // container is not nil, container is DBusServer
 // is method
-func (v DBusServer) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DBusServer) GetFlags() (result DBusServerFlags) {
 	iv, err := _I.Get(383, "DBusServer", "get_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7697,7 +7824,7 @@ func (v DBusServer) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interf
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DBusServerFlags(ret.Int())
 	return
 }
 
@@ -7763,6 +7890,7 @@ func (v DBusServer) Stop() {
 	iv.Call(args, nil, nil)
 }
 
+// Flags DBusServerFlags
 type DBusServerFlags int
 
 const (
@@ -7771,6 +7899,7 @@ const (
 	DBusServerFlagsAuthenticationAllowAnonymous                 = 2
 )
 
+// Flags DBusSignalFlags
 type DBusSignalFlags int
 
 const (
@@ -7816,6 +7945,7 @@ func (v DBusSignalInfo) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Flags DBusSubtreeFlags
 type DBusSubtreeFlags int
 
 const (
@@ -7836,16 +7966,20 @@ type DataInputStream struct {
 
 func WrapDataInputStream(p unsafe.Pointer) (r DataInputStream) { r.P = p; return }
 
+type IDataInputStream interface{ P_DataInputStream() unsafe.Pointer }
+
+func (v DataInputStream) P_DataInputStream() unsafe.Pointer { return v.P }
+
 // g_data_input_stream_new
 // container is not nil, container is DataInputStream
 // is constructor
-func NewDataInputStream(base_stream InputStream) (result DataInputStream) {
+func NewDataInputStream(base_stream IInputStream) (result DataInputStream) {
 	iv, err := _I.Get(390, "DataInputStream", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_stream := gi.NewPointerArgument(base_stream.P)
+	arg_base_stream := gi.NewPointerArgument(base_stream.P_InputStream())
 	args := []gi.Argument{arg_base_stream}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7856,7 +7990,7 @@ func NewDataInputStream(base_stream InputStream) (result DataInputStream) {
 // g_data_input_stream_get_byte_order
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) GetByteOrder() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DataInputStream) GetByteOrder() (result DataStreamByteOrderEnum) {
 	iv, err := _I.Get(391, "DataInputStream", "get_byte_order")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7866,14 +8000,14 @@ func (v DataInputStream) GetByteOrder() (result int /*TODO_TYPE isPtr: false, ta
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DataStreamByteOrderEnum(ret.Int())
 	return
 }
 
 // g_data_input_stream_get_newline_type
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) GetNewlineType() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DataInputStream) GetNewlineType() (result DataStreamNewlineTypeEnum) {
 	iv, err := _I.Get(392, "DataInputStream", "get_newline_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7883,21 +8017,21 @@ func (v DataInputStream) GetNewlineType() (result int /*TODO_TYPE isPtr: false, 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DataStreamNewlineTypeEnum(ret.Int())
 	return
 }
 
 // g_data_input_stream_read_byte
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadByte(cancellable Cancellable) (result uint8, err error) {
+func (v DataInputStream) ReadByte(cancellable ICancellable) (result uint8, err error) {
 	iv, err := _I.Get(393, "DataInputStream", "read_byte")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -7910,14 +8044,14 @@ func (v DataInputStream) ReadByte(cancellable Cancellable) (result uint8, err er
 // g_data_input_stream_read_int16
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadInt16(cancellable Cancellable) (result int16, err error) {
+func (v DataInputStream) ReadInt16(cancellable ICancellable) (result int16, err error) {
 	iv, err := _I.Get(394, "DataInputStream", "read_int16")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -7930,14 +8064,14 @@ func (v DataInputStream) ReadInt16(cancellable Cancellable) (result int16, err e
 // g_data_input_stream_read_int32
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadInt32(cancellable Cancellable) (result int32, err error) {
+func (v DataInputStream) ReadInt32(cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(395, "DataInputStream", "read_int32")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -7950,14 +8084,14 @@ func (v DataInputStream) ReadInt32(cancellable Cancellable) (result int32, err e
 // g_data_input_stream_read_int64
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadInt64(cancellable Cancellable) (result int64, err error) {
+func (v DataInputStream) ReadInt64(cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(396, "DataInputStream", "read_int64")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -7970,7 +8104,7 @@ func (v DataInputStream) ReadInt64(cancellable Cancellable) (result int64, err e
 // g_data_input_stream_read_line
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadLine(cancellable Cancellable) (result int /*TODO_TYPE isPtr: true, tag: array*/, length uint64, err error) {
+func (v DataInputStream) ReadLine(cancellable ICancellable) (result int /*TODO_TYPE isPtr: true, tag: array*/, length uint64, err error) {
 	iv, err := _I.Get(397, "DataInputStream", "read_line")
 	if err != nil {
 		return
@@ -7978,7 +8112,7 @@ func (v DataInputStream) ReadLine(cancellable Cancellable) (result int /*TODO_TY
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_length := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_length, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -7992,7 +8126,7 @@ func (v DataInputStream) ReadLine(cancellable Cancellable) (result int /*TODO_TY
 // g_data_input_stream_read_line_async
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadLineAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v DataInputStream) ReadLineAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(398, "DataInputStream", "read_line_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8000,7 +8134,7 @@ func (v DataInputStream) ReadLineAsync(io_priority int32, cancellable Cancellabl
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -8054,7 +8188,7 @@ func (v DataInputStream) ReadLineFinishUtf8(result AsyncResult) (result1 string,
 // g_data_input_stream_read_line_utf8
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadLineUtf8(cancellable Cancellable) (result string, length uint64, err error) {
+func (v DataInputStream) ReadLineUtf8(cancellable ICancellable) (result string, length uint64, err error) {
 	iv, err := _I.Get(401, "DataInputStream", "read_line_utf8")
 	if err != nil {
 		return
@@ -8062,7 +8196,7 @@ func (v DataInputStream) ReadLineUtf8(cancellable Cancellable) (result string, l
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_length := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_length, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8076,14 +8210,14 @@ func (v DataInputStream) ReadLineUtf8(cancellable Cancellable) (result string, l
 // g_data_input_stream_read_uint16
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadUint16(cancellable Cancellable) (result uint16, err error) {
+func (v DataInputStream) ReadUint16(cancellable ICancellable) (result uint16, err error) {
 	iv, err := _I.Get(402, "DataInputStream", "read_uint16")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8096,14 +8230,14 @@ func (v DataInputStream) ReadUint16(cancellable Cancellable) (result uint16, err
 // g_data_input_stream_read_uint32
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadUint32(cancellable Cancellable) (result uint32, err error) {
+func (v DataInputStream) ReadUint32(cancellable ICancellable) (result uint32, err error) {
 	iv, err := _I.Get(403, "DataInputStream", "read_uint32")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8116,14 +8250,14 @@ func (v DataInputStream) ReadUint32(cancellable Cancellable) (result uint32, err
 // g_data_input_stream_read_uint64
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadUint64(cancellable Cancellable) (result uint64, err error) {
+func (v DataInputStream) ReadUint64(cancellable ICancellable) (result uint64, err error) {
 	iv, err := _I.Get(404, "DataInputStream", "read_uint64")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8136,7 +8270,7 @@ func (v DataInputStream) ReadUint64(cancellable Cancellable) (result uint64, err
 // g_data_input_stream_read_until
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadUntil(stop_chars string, cancellable Cancellable) (result string, length uint64, err error) {
+func (v DataInputStream) ReadUntil(stop_chars string, cancellable ICancellable) (result string, length uint64, err error) {
 	iv, err := _I.Get(405, "DataInputStream", "read_until")
 	if err != nil {
 		return
@@ -8146,7 +8280,7 @@ func (v DataInputStream) ReadUntil(stop_chars string, cancellable Cancellable) (
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_stop_chars := gi.NewStringArgument(c_stop_chars)
 	arg_length := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_stop_chars, arg_length, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8161,7 +8295,7 @@ func (v DataInputStream) ReadUntil(stop_chars string, cancellable Cancellable) (
 // g_data_input_stream_read_until_async
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadUntilAsync(stop_chars string, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v DataInputStream) ReadUntilAsync(stop_chars string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(406, "DataInputStream", "read_until_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8171,7 +8305,7 @@ func (v DataInputStream) ReadUntilAsync(stop_chars string, io_priority int32, ca
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_stop_chars := gi.NewStringArgument(c_stop_chars)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_stop_chars, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -8204,7 +8338,7 @@ func (v DataInputStream) ReadUntilFinish(result AsyncResult) (result1 string, le
 // g_data_input_stream_read_upto
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadUpto(stop_chars string, stop_chars_len int64, cancellable Cancellable) (result string, length uint64, err error) {
+func (v DataInputStream) ReadUpto(stop_chars string, stop_chars_len int64, cancellable ICancellable) (result string, length uint64, err error) {
 	iv, err := _I.Get(408, "DataInputStream", "read_upto")
 	if err != nil {
 		return
@@ -8215,7 +8349,7 @@ func (v DataInputStream) ReadUpto(stop_chars string, stop_chars_len int64, cance
 	arg_stop_chars := gi.NewStringArgument(c_stop_chars)
 	arg_stop_chars_len := gi.NewInt64Argument(stop_chars_len)
 	arg_length := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_stop_chars, arg_stop_chars_len, arg_length, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8230,7 +8364,7 @@ func (v DataInputStream) ReadUpto(stop_chars string, stop_chars_len int64, cance
 // g_data_input_stream_read_upto_async
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadUptoAsync(stop_chars string, stop_chars_len int64, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v DataInputStream) ReadUptoAsync(stop_chars string, stop_chars_len int64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(409, "DataInputStream", "read_upto_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8241,7 +8375,7 @@ func (v DataInputStream) ReadUptoAsync(stop_chars string, stop_chars_len int64, 
 	arg_stop_chars := gi.NewStringArgument(c_stop_chars)
 	arg_stop_chars_len := gi.NewInt64Argument(stop_chars_len)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_stop_chars, arg_stop_chars_len, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -8274,14 +8408,14 @@ func (v DataInputStream) ReadUptoFinish(result AsyncResult) (result1 string, len
 // g_data_input_stream_set_byte_order
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) SetByteOrder(order int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DataInputStream) SetByteOrder(order DataStreamByteOrderEnum) {
 	iv, err := _I.Get(411, "DataInputStream", "set_byte_order")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_order := gi.NewIntArgument(order) /*TODO*/
+	arg_order := gi.NewIntArgument(int(order))
 	args := []gi.Argument{arg_v, arg_order}
 	iv.Call(args, nil, nil)
 }
@@ -8289,14 +8423,14 @@ func (v DataInputStream) SetByteOrder(order int /*TODO_TYPE isPtr: false, tag: i
 // g_data_input_stream_set_newline_type
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) SetNewlineType(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DataInputStream) SetNewlineType(type1 DataStreamNewlineTypeEnum) {
 	iv, err := _I.Get(412, "DataInputStream", "set_newline_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_v, arg_type1}
 	iv.Call(args, nil, nil)
 }
@@ -8315,16 +8449,20 @@ type DataOutputStream struct {
 
 func WrapDataOutputStream(p unsafe.Pointer) (r DataOutputStream) { r.P = p; return }
 
+type IDataOutputStream interface{ P_DataOutputStream() unsafe.Pointer }
+
+func (v DataOutputStream) P_DataOutputStream() unsafe.Pointer { return v.P }
+
 // g_data_output_stream_new
 // container is not nil, container is DataOutputStream
 // is constructor
-func NewDataOutputStream(base_stream OutputStream) (result DataOutputStream) {
+func NewDataOutputStream(base_stream IOutputStream) (result DataOutputStream) {
 	iv, err := _I.Get(413, "DataOutputStream", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_stream := gi.NewPointerArgument(base_stream.P)
+	arg_base_stream := gi.NewPointerArgument(base_stream.P_OutputStream())
 	args := []gi.Argument{arg_base_stream}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -8335,7 +8473,7 @@ func NewDataOutputStream(base_stream OutputStream) (result DataOutputStream) {
 // g_data_output_stream_get_byte_order
 // container is not nil, container is DataOutputStream
 // is method
-func (v DataOutputStream) GetByteOrder() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DataOutputStream) GetByteOrder() (result DataStreamByteOrderEnum) {
 	iv, err := _I.Get(414, "DataOutputStream", "get_byte_order")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8345,14 +8483,14 @@ func (v DataOutputStream) GetByteOrder() (result int /*TODO_TYPE isPtr: false, t
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DataStreamByteOrderEnum(ret.Int())
 	return
 }
 
 // g_data_output_stream_put_byte
 // container is not nil, container is DataOutputStream
 // is method
-func (v DataOutputStream) PutByte(data uint8, cancellable Cancellable) (result bool, err error) {
+func (v DataOutputStream) PutByte(data uint8, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(415, "DataOutputStream", "put_byte")
 	if err != nil {
 		return
@@ -8360,7 +8498,7 @@ func (v DataOutputStream) PutByte(data uint8, cancellable Cancellable) (result b
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_data := gi.NewUint8Argument(data)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8373,7 +8511,7 @@ func (v DataOutputStream) PutByte(data uint8, cancellable Cancellable) (result b
 // g_data_output_stream_put_int16
 // container is not nil, container is DataOutputStream
 // is method
-func (v DataOutputStream) PutInt16(data int16, cancellable Cancellable) (result bool, err error) {
+func (v DataOutputStream) PutInt16(data int16, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(416, "DataOutputStream", "put_int16")
 	if err != nil {
 		return
@@ -8381,7 +8519,7 @@ func (v DataOutputStream) PutInt16(data int16, cancellable Cancellable) (result 
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_data := gi.NewInt16Argument(data)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8394,7 +8532,7 @@ func (v DataOutputStream) PutInt16(data int16, cancellable Cancellable) (result 
 // g_data_output_stream_put_int32
 // container is not nil, container is DataOutputStream
 // is method
-func (v DataOutputStream) PutInt32(data int32, cancellable Cancellable) (result bool, err error) {
+func (v DataOutputStream) PutInt32(data int32, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(417, "DataOutputStream", "put_int32")
 	if err != nil {
 		return
@@ -8402,7 +8540,7 @@ func (v DataOutputStream) PutInt32(data int32, cancellable Cancellable) (result 
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_data := gi.NewInt32Argument(data)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8415,7 +8553,7 @@ func (v DataOutputStream) PutInt32(data int32, cancellable Cancellable) (result 
 // g_data_output_stream_put_int64
 // container is not nil, container is DataOutputStream
 // is method
-func (v DataOutputStream) PutInt64(data int64, cancellable Cancellable) (result bool, err error) {
+func (v DataOutputStream) PutInt64(data int64, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(418, "DataOutputStream", "put_int64")
 	if err != nil {
 		return
@@ -8423,7 +8561,7 @@ func (v DataOutputStream) PutInt64(data int64, cancellable Cancellable) (result 
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_data := gi.NewInt64Argument(data)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8436,7 +8574,7 @@ func (v DataOutputStream) PutInt64(data int64, cancellable Cancellable) (result 
 // g_data_output_stream_put_string
 // container is not nil, container is DataOutputStream
 // is method
-func (v DataOutputStream) PutString(str string, cancellable Cancellable) (result bool, err error) {
+func (v DataOutputStream) PutString(str string, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(419, "DataOutputStream", "put_string")
 	if err != nil {
 		return
@@ -8445,7 +8583,7 @@ func (v DataOutputStream) PutString(str string, cancellable Cancellable) (result
 	c_str := gi.CString(str)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_str := gi.NewStringArgument(c_str)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_str, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8459,7 +8597,7 @@ func (v DataOutputStream) PutString(str string, cancellable Cancellable) (result
 // g_data_output_stream_put_uint16
 // container is not nil, container is DataOutputStream
 // is method
-func (v DataOutputStream) PutUint16(data uint16, cancellable Cancellable) (result bool, err error) {
+func (v DataOutputStream) PutUint16(data uint16, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(420, "DataOutputStream", "put_uint16")
 	if err != nil {
 		return
@@ -8467,7 +8605,7 @@ func (v DataOutputStream) PutUint16(data uint16, cancellable Cancellable) (resul
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_data := gi.NewUint16Argument(data)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8480,7 +8618,7 @@ func (v DataOutputStream) PutUint16(data uint16, cancellable Cancellable) (resul
 // g_data_output_stream_put_uint32
 // container is not nil, container is DataOutputStream
 // is method
-func (v DataOutputStream) PutUint32(data uint32, cancellable Cancellable) (result bool, err error) {
+func (v DataOutputStream) PutUint32(data uint32, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(421, "DataOutputStream", "put_uint32")
 	if err != nil {
 		return
@@ -8488,7 +8626,7 @@ func (v DataOutputStream) PutUint32(data uint32, cancellable Cancellable) (resul
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_data := gi.NewUint32Argument(data)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8501,7 +8639,7 @@ func (v DataOutputStream) PutUint32(data uint32, cancellable Cancellable) (resul
 // g_data_output_stream_put_uint64
 // container is not nil, container is DataOutputStream
 // is method
-func (v DataOutputStream) PutUint64(data uint64, cancellable Cancellable) (result bool, err error) {
+func (v DataOutputStream) PutUint64(data uint64, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(422, "DataOutputStream", "put_uint64")
 	if err != nil {
 		return
@@ -8509,7 +8647,7 @@ func (v DataOutputStream) PutUint64(data uint64, cancellable Cancellable) (resul
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_data := gi.NewUint64Argument(data)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8522,14 +8660,14 @@ func (v DataOutputStream) PutUint64(data uint64, cancellable Cancellable) (resul
 // g_data_output_stream_set_byte_order
 // container is not nil, container is DataOutputStream
 // is method
-func (v DataOutputStream) SetByteOrder(order int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v DataOutputStream) SetByteOrder(order DataStreamByteOrderEnum) {
 	iv, err := _I.Get(423, "DataOutputStream", "set_byte_order")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_order := gi.NewIntArgument(order) /*TODO*/
+	arg_order := gi.NewIntArgument(int(order))
 	args := []gi.Argument{arg_v, arg_order}
 	iv.Call(args, nil, nil)
 }
@@ -8539,6 +8677,8 @@ func (v DataOutputStream) SetByteOrder(order int /*TODO_TYPE isPtr: false, tag: 
 type DataOutputStreamPrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum DataStreamByteOrder
 type DataStreamByteOrderEnum int
 
 const (
@@ -8547,6 +8687,7 @@ const (
 	DataStreamByteOrderHostEndian                           = 2
 )
 
+// Enum DataStreamNewlineType
 type DataStreamNewlineTypeEnum int
 
 const (
@@ -8566,34 +8707,34 @@ type DatagramBasedIfc struct{}
 // g_datagram_based_condition_check
 // container is not nil, container is DatagramBased
 // is method
-func (v *DatagramBasedIfc) ConditionCheck(condition int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *DatagramBasedIfc) ConditionCheck(condition glib.IOConditionFlags) (result glib.IOConditionFlags) {
 	iv, err := _I.Get(424, "DatagramBased", "condition_check")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_condition := gi.NewIntArgument(condition) /*TODO*/
+	arg_condition := gi.NewIntArgument(int(condition))
 	args := []gi.Argument{arg_v, arg_condition}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = glib.IOConditionFlags(ret.Int())
 	return
 }
 
 // g_datagram_based_condition_wait
 // container is not nil, container is DatagramBased
 // is method
-func (v *DatagramBasedIfc) ConditionWait(condition int /*TODO_TYPE isPtr: false, tag: interface*/, timeout int64, cancellable Cancellable) (result bool, err error) {
+func (v *DatagramBasedIfc) ConditionWait(condition glib.IOConditionFlags, timeout int64, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(425, "DatagramBased", "condition_wait")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_condition := gi.NewIntArgument(condition) /*TODO*/
+	arg_condition := gi.NewIntArgument(int(condition))
 	arg_timeout := gi.NewInt64Argument(timeout)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_condition, arg_timeout, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8606,15 +8747,15 @@ func (v *DatagramBasedIfc) ConditionWait(condition int /*TODO_TYPE isPtr: false,
 // g_datagram_based_create_source
 // container is not nil, container is DatagramBased
 // is method
-func (v *DatagramBasedIfc) CreateSource(condition int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result glib.Source) {
+func (v *DatagramBasedIfc) CreateSource(condition glib.IOConditionFlags, cancellable ICancellable) (result glib.Source) {
 	iv, err := _I.Get(426, "DatagramBased", "create_source")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_condition := gi.NewIntArgument(condition) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_condition := gi.NewIntArgument(int(condition))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	args := []gi.Argument{arg_v, arg_condition, arg_cancellable}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -8625,7 +8766,7 @@ func (v *DatagramBasedIfc) CreateSource(condition int /*TODO_TYPE isPtr: false, 
 // g_datagram_based_receive_messages
 // container is not nil, container is DatagramBased
 // is method
-func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, timeout int64, cancellable Cancellable) (result int32, err error) {
+func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(427, "DatagramBased", "receive_messages")
 	if err != nil {
 		return
@@ -8636,7 +8777,7 @@ func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE isPtr: true,
 	arg_num_messages := gi.NewUint32Argument(num_messages)
 	arg_flags := gi.NewInt32Argument(flags)
 	arg_timeout := gi.NewInt64Argument(timeout)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_messages, arg_num_messages, arg_flags, arg_timeout, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8649,7 +8790,7 @@ func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE isPtr: true,
 // g_datagram_based_send_messages
 // container is not nil, container is DatagramBased
 // is method
-func (v *DatagramBasedIfc) SendMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, timeout int64, cancellable Cancellable) (result int32, err error) {
+func (v *DatagramBasedIfc) SendMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(428, "DatagramBased", "send_messages")
 	if err != nil {
 		return
@@ -8660,7 +8801,7 @@ func (v *DatagramBasedIfc) SendMessages(messages int /*TODO_TYPE isPtr: true, ta
 	arg_num_messages := gi.NewUint32Argument(num_messages)
 	arg_flags := gi.NewInt32Argument(flags)
 	arg_timeout := gi.NewInt64Argument(timeout)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_messages, arg_num_messages, arg_flags, arg_timeout, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -8678,6 +8819,10 @@ type DesktopAppInfo struct {
 }
 
 func WrapDesktopAppInfo(p unsafe.Pointer) (r DesktopAppInfo) { r.P = p; return }
+
+type IDesktopAppInfo interface{ P_DesktopAppInfo() unsafe.Pointer }
+
+func (v DesktopAppInfo) P_DesktopAppInfo() unsafe.Pointer { return v.P }
 
 // g_desktop_app_info_new
 // container is not nil, container is DesktopAppInfo
@@ -9033,7 +9178,7 @@ func (v DesktopAppInfo) HasKey(key string) (result bool) {
 // g_desktop_app_info_launch_action
 // container is not nil, container is DesktopAppInfo
 // is method
-func (v DesktopAppInfo) LaunchAction(action_name string, launch_context AppLaunchContext) {
+func (v DesktopAppInfo) LaunchAction(action_name string, launch_context IAppLaunchContext) {
 	iv, err := _I.Get(448, "DesktopAppInfo", "launch_action")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9042,7 +9187,7 @@ func (v DesktopAppInfo) LaunchAction(action_name string, launch_context AppLaunc
 	c_action_name := gi.CString(action_name)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_action_name := gi.NewStringArgument(c_action_name)
-	arg_launch_context := gi.NewPointerArgument(launch_context.P)
+	arg_launch_context := gi.NewPointerArgument(launch_context.P_AppLaunchContext())
 	args := []gi.Argument{arg_v, arg_action_name, arg_launch_context}
 	iv.Call(args, nil, nil)
 	gi.Free(c_action_name)
@@ -9051,7 +9196,7 @@ func (v DesktopAppInfo) LaunchAction(action_name string, launch_context AppLaunc
 // g_desktop_app_info_launch_uris_as_manager
 // container is not nil, container is DesktopAppInfo
 // is method
-func (v DesktopAppInfo) LaunchUrisAsManager(uris int /*TODO_TYPE isPtr: true, tag: glist*/, launch_context AppLaunchContext, spawn_flags int /*TODO_TYPE isPtr: false, tag: interface*/, user_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_setup_data unsafe.Pointer, pid_callback int /*TODO_TYPE isPtr: false, tag: interface*/, pid_callback_data unsafe.Pointer) (result bool, err error) {
+func (v DesktopAppInfo) LaunchUrisAsManager(uris int /*TODO_TYPE isPtr: true, tag: glist*/, launch_context IAppLaunchContext, spawn_flags glib.SpawnFlags, user_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_setup_data unsafe.Pointer, pid_callback int /*TODO_TYPE isPtr: false, tag: interface*/, pid_callback_data unsafe.Pointer) (result bool, err error) {
 	iv, err := _I.Get(449, "DesktopAppInfo", "launch_uris_as_manager")
 	if err != nil {
 		return
@@ -9059,9 +9204,9 @@ func (v DesktopAppInfo) LaunchUrisAsManager(uris int /*TODO_TYPE isPtr: true, ta
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_uris := gi.NewIntArgument(uris) /*TODO*/
-	arg_launch_context := gi.NewPointerArgument(launch_context.P)
-	arg_spawn_flags := gi.NewIntArgument(spawn_flags) /*TODO*/
-	arg_user_setup := gi.NewIntArgument(user_setup)   /*TODO*/
+	arg_launch_context := gi.NewPointerArgument(launch_context.P_AppLaunchContext())
+	arg_spawn_flags := gi.NewIntArgument(int(spawn_flags))
+	arg_user_setup := gi.NewIntArgument(user_setup) /*TODO*/
 	arg_user_setup_data := gi.NewPointerArgument(user_setup_data)
 	arg_pid_callback := gi.NewIntArgument(pid_callback) /*TODO*/
 	arg_pid_callback_data := gi.NewPointerArgument(pid_callback_data)
@@ -9077,7 +9222,7 @@ func (v DesktopAppInfo) LaunchUrisAsManager(uris int /*TODO_TYPE isPtr: true, ta
 // g_desktop_app_info_launch_uris_as_manager_with_fds
 // container is not nil, container is DesktopAppInfo
 // is method
-func (v DesktopAppInfo) LaunchUrisAsManagerWithFds(uris int /*TODO_TYPE isPtr: true, tag: glist*/, launch_context AppLaunchContext, spawn_flags int /*TODO_TYPE isPtr: false, tag: interface*/, user_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_setup_data unsafe.Pointer, pid_callback int /*TODO_TYPE isPtr: false, tag: interface*/, pid_callback_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, err error) {
+func (v DesktopAppInfo) LaunchUrisAsManagerWithFds(uris int /*TODO_TYPE isPtr: true, tag: glist*/, launch_context IAppLaunchContext, spawn_flags glib.SpawnFlags, user_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_setup_data unsafe.Pointer, pid_callback int /*TODO_TYPE isPtr: false, tag: interface*/, pid_callback_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, err error) {
 	iv, err := _I.Get(450, "DesktopAppInfo", "launch_uris_as_manager_with_fds")
 	if err != nil {
 		return
@@ -9085,9 +9230,9 @@ func (v DesktopAppInfo) LaunchUrisAsManagerWithFds(uris int /*TODO_TYPE isPtr: t
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_uris := gi.NewIntArgument(uris) /*TODO*/
-	arg_launch_context := gi.NewPointerArgument(launch_context.P)
-	arg_spawn_flags := gi.NewIntArgument(spawn_flags) /*TODO*/
-	arg_user_setup := gi.NewIntArgument(user_setup)   /*TODO*/
+	arg_launch_context := gi.NewPointerArgument(launch_context.P_AppLaunchContext())
+	arg_spawn_flags := gi.NewIntArgument(int(spawn_flags))
+	arg_user_setup := gi.NewIntArgument(user_setup) /*TODO*/
 	arg_user_setup_data := gi.NewPointerArgument(user_setup_data)
 	arg_pid_callback := gi.NewIntArgument(pid_callback) /*TODO*/
 	arg_pid_callback_data := gi.NewPointerArgument(pid_callback_data)
@@ -9244,15 +9389,15 @@ func (v *DriveIfc) CanStop() (result bool) {
 // g_drive_eject
 // container is not nil, container is Drive
 // is method
-func (v *DriveIfc) Eject(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *DriveIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(458, "Drive", "eject")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -9282,16 +9427,16 @@ func (v *DriveIfc) EjectFinish(result AsyncResult) (result1 bool, err error) {
 // g_drive_eject_with_operation
 // container is not nil, container is Drive
 // is method
-func (v *DriveIfc) EjectWithOperation(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *DriveIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(460, "Drive", "eject_with_operation")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -9409,7 +9554,7 @@ func (v *DriveIfc) GetSortKey() (result string) {
 // g_drive_get_start_stop_type
 // container is not nil, container is Drive
 // is method
-func (v *DriveIfc) GetStartStopType() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *DriveIfc) GetStartStopType() (result DriveStartStopTypeEnum) {
 	iv, err := _I.Get(467, "Drive", "get_start_stop_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9419,7 +9564,7 @@ func (v *DriveIfc) GetStartStopType() (result int /*TODO_TYPE isPtr: false, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DriveStartStopTypeEnum(ret.Int())
 	return
 }
 
@@ -9545,14 +9690,14 @@ func (v *DriveIfc) IsRemovable() (result bool) {
 // g_drive_poll_for_media
 // container is not nil, container is Drive
 // is method
-func (v *DriveIfc) PollForMedia(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *DriveIfc) PollForMedia(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(475, "Drive", "poll_for_media")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -9582,16 +9727,16 @@ func (v *DriveIfc) PollForMediaFinish(result AsyncResult) (result1 bool, err err
 // g_drive_start
 // container is not nil, container is Drive
 // is method
-func (v *DriveIfc) Start(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *DriveIfc) Start(flags DriveStartFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(477, "Drive", "start")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -9621,16 +9766,16 @@ func (v *DriveIfc) StartFinish(result AsyncResult) (result1 bool, err error) {
 // g_drive_stop
 // container is not nil, container is Drive
 // is method
-func (v *DriveIfc) Stop(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *DriveIfc) Stop(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(479, "Drive", "stop")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -9658,12 +9803,14 @@ func (v *DriveIfc) StopFinish(result AsyncResult) (result1 bool, err error) {
 }
 
 // ignore GType struct DriveIface
+// Flags DriveStartFlags
 type DriveStartFlags int
 
 const (
 	DriveStartFlagsNone DriveStartFlags = 0
 )
 
+// Enum DriveStartStopType
 type DriveStartStopTypeEnum int
 
 const (
@@ -9739,7 +9886,7 @@ func (v *DtlsClientConnectionIfc) GetServerIdentity() (result SocketConnectable)
 // g_dtls_client_connection_get_validation_flags
 // container is not nil, container is DtlsClientConnection
 // is method
-func (v *DtlsClientConnectionIfc) GetValidationFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *DtlsClientConnectionIfc) GetValidationFlags() (result TlsCertificateFlags) {
 	iv, err := _I.Get(484, "DtlsClientConnection", "get_validation_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9749,7 +9896,7 @@ func (v *DtlsClientConnectionIfc) GetValidationFlags() (result int /*TODO_TYPE i
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TlsCertificateFlags(ret.Int())
 	return
 }
 
@@ -9771,14 +9918,14 @@ func (v *DtlsClientConnectionIfc) SetServerIdentity(identity SocketConnectable) 
 // g_dtls_client_connection_set_validation_flags
 // container is not nil, container is DtlsClientConnection
 // is method
-func (v *DtlsClientConnectionIfc) SetValidationFlags(flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *DtlsClientConnectionIfc) SetValidationFlags(flags TlsCertificateFlags) {
 	iv, err := _I.Get(486, "DtlsClientConnection", "set_validation_flags")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_flags}
 	iv.Call(args, nil, nil)
 }
@@ -9794,14 +9941,14 @@ type DtlsConnectionIfc struct{}
 // g_dtls_connection_close
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) Close(cancellable Cancellable) (result bool, err error) {
+func (v *DtlsConnectionIfc) Close(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(487, "DtlsConnection", "close")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -9814,7 +9961,7 @@ func (v *DtlsConnectionIfc) Close(cancellable Cancellable) (result bool, err err
 // g_dtls_connection_close_async
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) CloseAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *DtlsConnectionIfc) CloseAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(488, "DtlsConnection", "close_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9822,7 +9969,7 @@ func (v *DtlsConnectionIfc) CloseAsync(io_priority int32, cancellable Cancellabl
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -9852,15 +9999,15 @@ func (v *DtlsConnectionIfc) CloseFinish(result AsyncResult) (result1 bool, err e
 // g_dtls_connection_emit_accept_certificate
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) EmitAcceptCertificate(peer_cert TlsCertificate, errors int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v *DtlsConnectionIfc) EmitAcceptCertificate(peer_cert ITlsCertificate, errors TlsCertificateFlags) (result bool) {
 	iv, err := _I.Get(490, "DtlsConnection", "emit_accept_certificate")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_peer_cert := gi.NewPointerArgument(peer_cert.P)
-	arg_errors := gi.NewIntArgument(errors) /*TODO*/
+	arg_peer_cert := gi.NewPointerArgument(peer_cert.P_TlsCertificate())
+	arg_errors := gi.NewIntArgument(int(errors))
 	args := []gi.Argument{arg_v, arg_peer_cert, arg_errors}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9939,7 +10086,7 @@ func (v *DtlsConnectionIfc) GetPeerCertificate() (result TlsCertificate) {
 // g_dtls_connection_get_peer_certificate_errors
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) GetPeerCertificateErrors() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *DtlsConnectionIfc) GetPeerCertificateErrors() (result TlsCertificateFlags) {
 	iv, err := _I.Get(495, "DtlsConnection", "get_peer_certificate_errors")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9949,14 +10096,14 @@ func (v *DtlsConnectionIfc) GetPeerCertificateErrors() (result int /*TODO_TYPE i
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TlsCertificateFlags(ret.Int())
 	return
 }
 
 // g_dtls_connection_get_rehandshake_mode
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) GetRehandshakeMode() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *DtlsConnectionIfc) GetRehandshakeMode() (result TlsRehandshakeModeEnum) {
 	iv, err := _I.Get(496, "DtlsConnection", "get_rehandshake_mode")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9966,7 +10113,7 @@ func (v *DtlsConnectionIfc) GetRehandshakeMode() (result int /*TODO_TYPE isPtr: 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TlsRehandshakeModeEnum(ret.Int())
 	return
 }
 
@@ -9990,14 +10137,14 @@ func (v *DtlsConnectionIfc) GetRequireCloseNotify() (result bool) {
 // g_dtls_connection_handshake
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) Handshake(cancellable Cancellable) (result bool, err error) {
+func (v *DtlsConnectionIfc) Handshake(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(498, "DtlsConnection", "handshake")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -10010,7 +10157,7 @@ func (v *DtlsConnectionIfc) Handshake(cancellable Cancellable) (result bool, err
 // g_dtls_connection_handshake_async
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) HandshakeAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *DtlsConnectionIfc) HandshakeAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(499, "DtlsConnection", "handshake_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10018,7 +10165,7 @@ func (v *DtlsConnectionIfc) HandshakeAsync(io_priority int32, cancellable Cancel
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -10048,14 +10195,14 @@ func (v *DtlsConnectionIfc) HandshakeFinish(result AsyncResult) (result1 bool, e
 // g_dtls_connection_set_certificate
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) SetCertificate(certificate TlsCertificate) {
+func (v *DtlsConnectionIfc) SetCertificate(certificate ITlsCertificate) {
 	iv, err := _I.Get(501, "DtlsConnection", "set_certificate")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_certificate := gi.NewPointerArgument(certificate.P)
+	arg_certificate := gi.NewPointerArgument(certificate.P_TlsCertificate())
 	args := []gi.Argument{arg_v, arg_certificate}
 	iv.Call(args, nil, nil)
 }
@@ -10063,14 +10210,14 @@ func (v *DtlsConnectionIfc) SetCertificate(certificate TlsCertificate) {
 // g_dtls_connection_set_database
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) SetDatabase(database TlsDatabase) {
+func (v *DtlsConnectionIfc) SetDatabase(database ITlsDatabase) {
 	iv, err := _I.Get(502, "DtlsConnection", "set_database")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_database := gi.NewPointerArgument(database.P)
+	arg_database := gi.NewPointerArgument(database.P_TlsDatabase())
 	args := []gi.Argument{arg_v, arg_database}
 	iv.Call(args, nil, nil)
 }
@@ -10078,14 +10225,14 @@ func (v *DtlsConnectionIfc) SetDatabase(database TlsDatabase) {
 // g_dtls_connection_set_interaction
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) SetInteraction(interaction TlsInteraction) {
+func (v *DtlsConnectionIfc) SetInteraction(interaction ITlsInteraction) {
 	iv, err := _I.Get(503, "DtlsConnection", "set_interaction")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_interaction := gi.NewPointerArgument(interaction.P)
+	arg_interaction := gi.NewPointerArgument(interaction.P_TlsInteraction())
 	args := []gi.Argument{arg_v, arg_interaction}
 	iv.Call(args, nil, nil)
 }
@@ -10093,14 +10240,14 @@ func (v *DtlsConnectionIfc) SetInteraction(interaction TlsInteraction) {
 // g_dtls_connection_set_rehandshake_mode
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) SetRehandshakeMode(mode int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *DtlsConnectionIfc) SetRehandshakeMode(mode TlsRehandshakeModeEnum) {
 	iv, err := _I.Get(504, "DtlsConnection", "set_rehandshake_mode")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_mode := gi.NewIntArgument(mode) /*TODO*/
+	arg_mode := gi.NewIntArgument(int(mode))
 	args := []gi.Argument{arg_v, arg_mode}
 	iv.Call(args, nil, nil)
 }
@@ -10123,7 +10270,7 @@ func (v *DtlsConnectionIfc) SetRequireCloseNotify(require_close_notify bool) {
 // g_dtls_connection_shutdown
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) Shutdown(shutdown_read bool, shutdown_write bool, cancellable Cancellable) (result bool, err error) {
+func (v *DtlsConnectionIfc) Shutdown(shutdown_read bool, shutdown_write bool, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(506, "DtlsConnection", "shutdown")
 	if err != nil {
 		return
@@ -10132,7 +10279,7 @@ func (v *DtlsConnectionIfc) Shutdown(shutdown_read bool, shutdown_write bool, ca
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_shutdown_read := gi.NewBoolArgument(shutdown_read)
 	arg_shutdown_write := gi.NewBoolArgument(shutdown_write)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_shutdown_read, arg_shutdown_write, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -10145,7 +10292,7 @@ func (v *DtlsConnectionIfc) Shutdown(shutdown_read bool, shutdown_write bool, ca
 // g_dtls_connection_shutdown_async
 // container is not nil, container is DtlsConnection
 // is method
-func (v *DtlsConnectionIfc) ShutdownAsync(shutdown_read bool, shutdown_write bool, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *DtlsConnectionIfc) ShutdownAsync(shutdown_read bool, shutdown_write bool, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(507, "DtlsConnection", "shutdown_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10155,7 +10302,7 @@ func (v *DtlsConnectionIfc) ShutdownAsync(shutdown_read bool, shutdown_write boo
 	arg_shutdown_read := gi.NewBoolArgument(shutdown_read)
 	arg_shutdown_write := gi.NewBoolArgument(shutdown_write)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_shutdown_read, arg_shutdown_write, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -10194,14 +10341,14 @@ type DtlsServerConnectionIfc struct{}
 // container is not nil, container is DtlsServerConnection
 // is method
 // arg0Type tag: interface, isPtr: true
-func DtlsServerConnectionNew1(base_socket DatagramBased, certificate TlsCertificate) (result DtlsServerConnection, err error) {
+func DtlsServerConnectionNew1(base_socket DatagramBased, certificate ITlsCertificate) (result DtlsServerConnection, err error) {
 	iv, err := _I.Get(509, "DtlsServerConnection", "new")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_base_socket := gi.NewPointerArgument(base_socket.P)
-	arg_certificate := gi.NewPointerArgument(certificate.P)
+	arg_certificate := gi.NewPointerArgument(certificate.P_TlsCertificate())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_base_socket, arg_certificate, arg_err}
 	var ret gi.Argument
@@ -10219,6 +10366,10 @@ type Emblem struct {
 }
 
 func WrapEmblem(p unsafe.Pointer) (r Emblem) { r.P = p; return }
+
+type IEmblem interface{ P_Emblem() unsafe.Pointer }
+
+func (v Emblem) P_Emblem() unsafe.Pointer { return v.P }
 
 // g_emblem_new
 // container is not nil, container is Emblem
@@ -10240,14 +10391,14 @@ func NewEmblem(icon Icon) (result Emblem) {
 // g_emblem_new_with_origin
 // container is not nil, container is Emblem
 // is constructor
-func NewEmblemWithOrigin(icon Icon, origin int /*TODO_TYPE isPtr: false, tag: interface*/) (result Emblem) {
+func NewEmblemWithOrigin(icon Icon, origin EmblemOriginEnum) (result Emblem) {
 	iv, err := _I.Get(511, "Emblem", "new_with_origin")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_icon := gi.NewPointerArgument(icon.P)
-	arg_origin := gi.NewIntArgument(origin) /*TODO*/
+	arg_origin := gi.NewIntArgument(int(origin))
 	args := []gi.Argument{arg_icon, arg_origin}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -10275,7 +10426,7 @@ func (v Emblem) GetIcon() (result Icon) {
 // g_emblem_get_origin
 // container is not nil, container is Emblem
 // is method
-func (v Emblem) GetOrigin() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Emblem) GetOrigin() (result EmblemOriginEnum) {
 	iv, err := _I.Get(513, "Emblem", "get_origin")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10285,11 +10436,12 @@ func (v Emblem) GetOrigin() (result int /*TODO_TYPE isPtr: false, tag: interface
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = EmblemOriginEnum(ret.Int())
 	return
 }
 
 // ignore GType struct EmblemClass
+// Enum EmblemOrigin
 type EmblemOriginEnum int
 
 const (
@@ -10307,17 +10459,21 @@ type EmblemedIcon struct {
 
 func WrapEmblemedIcon(p unsafe.Pointer) (r EmblemedIcon) { r.P = p; return }
 
+type IEmblemedIcon interface{ P_EmblemedIcon() unsafe.Pointer }
+
+func (v EmblemedIcon) P_EmblemedIcon() unsafe.Pointer { return v.P }
+
 // g_emblemed_icon_new
 // container is not nil, container is EmblemedIcon
 // is constructor
-func NewEmblemedIcon(icon Icon, emblem Emblem) (result EmblemedIcon) {
+func NewEmblemedIcon(icon Icon, emblem IEmblem) (result EmblemedIcon) {
 	iv, err := _I.Get(514, "EmblemedIcon", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_icon := gi.NewPointerArgument(icon.P)
-	arg_emblem := gi.NewPointerArgument(emblem.P)
+	arg_emblem := gi.NewPointerArgument(emblem.P_Emblem())
 	args := []gi.Argument{arg_icon, arg_emblem}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -10328,14 +10484,14 @@ func NewEmblemedIcon(icon Icon, emblem Emblem) (result EmblemedIcon) {
 // g_emblemed_icon_add_emblem
 // container is not nil, container is EmblemedIcon
 // is method
-func (v EmblemedIcon) AddEmblem(emblem Emblem) {
+func (v EmblemedIcon) AddEmblem(emblem IEmblem) {
 	iv, err := _I.Get(515, "EmblemedIcon", "add_emblem")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_emblem := gi.NewPointerArgument(emblem.P)
+	arg_emblem := gi.NewPointerArgument(emblem.P_Emblem())
 	args := []gi.Argument{arg_v, arg_emblem}
 	iv.Call(args, nil, nil)
 }
@@ -10488,7 +10644,7 @@ func FileNewForUri1(uri string) (result File) {
 // container is not nil, container is File
 // is method
 // arg0Type tag: filename, isPtr: true
-func FileNewTmp1(tmpl string) (result File, iostream int /*TODO_TYPE*/, err error) {
+func FileNewTmp1(tmpl string) (result File, iostream FileIOStream, err error) {
 	iv, err := _I.Get(523, "File", "new_tmp")
 	if err != nil {
 		return
@@ -10503,7 +10659,7 @@ func FileNewTmp1(tmpl string) (result File, iostream int /*TODO_TYPE*/, err erro
 	iv.Call(args, &ret, &outArgs[0])
 	result.P = ret.Pointer()
 	gi.Free(c_tmpl)
-	iostream = outArgs[0].Int() /*TODO*/
+	iostream.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -10531,15 +10687,15 @@ func FileParseName1(parse_name string) (result File) {
 // g_file_append_to
 // container is not nil, container is File
 // is method
-func (v *FileIfc) AppendTo(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result FileOutputStream, err error) {
+func (v *FileIfc) AppendTo(flags FileCreateFlags, cancellable ICancellable) (result FileOutputStream, err error) {
 	iv, err := _I.Get(525, "File", "append_to")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -10552,16 +10708,16 @@ func (v *FileIfc) AppendTo(flags int /*TODO_TYPE isPtr: false, tag: interface*/,
 // g_file_append_to_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) AppendToAsync(flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) AppendToAsync(flags FileCreateFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(526, "File", "append_to_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -10591,7 +10747,7 @@ func (v *FileIfc) AppendToFinish(res AsyncResult) (result FileOutputStream, err 
 // g_file_copy
 // container is not nil, container is File
 // is method
-func (v *FileIfc) Copy(destination File, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, progress_callback int /*TODO_TYPE isPtr: false, tag: interface*/, progress_callback_data unsafe.Pointer) (result bool, err error) {
+func (v *FileIfc) Copy(destination File, flags FileCopyFlags, cancellable ICancellable, progress_callback int /*TODO_TYPE isPtr: false, tag: interface*/, progress_callback_data unsafe.Pointer) (result bool, err error) {
 	iv, err := _I.Get(528, "File", "copy")
 	if err != nil {
 		return
@@ -10599,8 +10755,8 @@ func (v *FileIfc) Copy(destination File, flags int /*TODO_TYPE isPtr: false, tag
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_destination := gi.NewPointerArgument(destination.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_progress_callback := gi.NewIntArgument(progress_callback) /*TODO*/
 	arg_progress_callback_data := gi.NewPointerArgument(progress_callback_data)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -10615,7 +10771,7 @@ func (v *FileIfc) Copy(destination File, flags int /*TODO_TYPE isPtr: false, tag
 // g_file_copy_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) CopyAsync(destination File, flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, progress_callback int /*TODO_TYPE isPtr: false, tag: interface*/, progress_callback_data unsafe.Pointer, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) CopyAsync(destination File, flags FileCopyFlags, io_priority int32, cancellable ICancellable, progress_callback int /*TODO_TYPE isPtr: false, tag: interface*/, progress_callback_data unsafe.Pointer, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(529, "File", "copy_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10623,9 +10779,9 @@ func (v *FileIfc) CopyAsync(destination File, flags int /*TODO_TYPE isPtr: false
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_destination := gi.NewPointerArgument(destination.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_progress_callback := gi.NewIntArgument(progress_callback) /*TODO*/
 	arg_progress_callback_data := gi.NewPointerArgument(progress_callback_data)
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
@@ -10637,7 +10793,7 @@ func (v *FileIfc) CopyAsync(destination File, flags int /*TODO_TYPE isPtr: false
 // g_file_copy_attributes
 // container is not nil, container is File
 // is method
-func (v *FileIfc) CopyAttributes(destination File, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) CopyAttributes(destination File, flags FileCopyFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(530, "File", "copy_attributes")
 	if err != nil {
 		return
@@ -10645,8 +10801,8 @@ func (v *FileIfc) CopyAttributes(destination File, flags int /*TODO_TYPE isPtr: 
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_destination := gi.NewPointerArgument(destination.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_destination, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -10679,15 +10835,15 @@ func (v *FileIfc) CopyFinish(res AsyncResult) (result bool, err error) {
 // g_file_create
 // container is not nil, container is File
 // is method
-func (v *FileIfc) Create(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result FileOutputStream, err error) {
+func (v *FileIfc) Create(flags FileCreateFlags, cancellable ICancellable) (result FileOutputStream, err error) {
 	iv, err := _I.Get(532, "File", "create")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -10700,16 +10856,16 @@ func (v *FileIfc) Create(flags int /*TODO_TYPE isPtr: false, tag: interface*/, c
 // g_file_create_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) CreateAsync(flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) CreateAsync(flags FileCreateFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(533, "File", "create_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -10739,15 +10895,15 @@ func (v *FileIfc) CreateFinish(res AsyncResult) (result FileOutputStream, err er
 // g_file_create_readwrite
 // container is not nil, container is File
 // is method
-func (v *FileIfc) CreateReadwrite(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result FileIOStream, err error) {
+func (v *FileIfc) CreateReadwrite(flags FileCreateFlags, cancellable ICancellable) (result FileIOStream, err error) {
 	iv, err := _I.Get(535, "File", "create_readwrite")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -10760,16 +10916,16 @@ func (v *FileIfc) CreateReadwrite(flags int /*TODO_TYPE isPtr: false, tag: inter
 // g_file_create_readwrite_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) CreateReadwriteAsync(flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) CreateReadwriteAsync(flags FileCreateFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(536, "File", "create_readwrite_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -10799,14 +10955,14 @@ func (v *FileIfc) CreateReadwriteFinish(res AsyncResult) (result FileIOStream, e
 // g_file_delete
 // container is not nil, container is File
 // is method
-func (v *FileIfc) Delete(cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) Delete(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(538, "File", "delete")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -10819,7 +10975,7 @@ func (v *FileIfc) Delete(cancellable Cancellable) (result bool, err error) {
 // g_file_delete_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) DeleteAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) DeleteAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(539, "File", "delete_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10827,7 +10983,7 @@ func (v *FileIfc) DeleteAsync(io_priority int32, cancellable Cancellable, callba
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -10874,15 +11030,15 @@ func (v *FileIfc) Dup() (result File) {
 // g_file_eject_mountable
 // container is not nil, container is File
 // is method
-func (v *FileIfc) EjectMountable(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) EjectMountable(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(542, "File", "eject_mountable")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -10912,16 +11068,16 @@ func (v *FileIfc) EjectMountableFinish(result AsyncResult) (result1 bool, err er
 // g_file_eject_mountable_with_operation
 // container is not nil, container is File
 // is method
-func (v *FileIfc) EjectMountableWithOperation(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) EjectMountableWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(544, "File", "eject_mountable_with_operation")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -10951,7 +11107,7 @@ func (v *FileIfc) EjectMountableWithOperationFinish(result AsyncResult) (result1
 // g_file_enumerate_children
 // container is not nil, container is File
 // is method
-func (v *FileIfc) EnumerateChildren(attributes string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result FileEnumerator, err error) {
+func (v *FileIfc) EnumerateChildren(attributes string, flags FileQueryInfoFlags, cancellable ICancellable) (result FileEnumerator, err error) {
 	iv, err := _I.Get(546, "File", "enumerate_children")
 	if err != nil {
 		return
@@ -10960,8 +11116,8 @@ func (v *FileIfc) EnumerateChildren(attributes string, flags int /*TODO_TYPE isP
 	c_attributes := gi.CString(attributes)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attributes := gi.NewStringArgument(c_attributes)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attributes, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -10975,7 +11131,7 @@ func (v *FileIfc) EnumerateChildren(attributes string, flags int /*TODO_TYPE isP
 // g_file_enumerate_children_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) EnumerateChildrenAsync(attributes string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) EnumerateChildrenAsync(attributes string, flags FileQueryInfoFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(547, "File", "enumerate_children_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10984,9 +11140,9 @@ func (v *FileIfc) EnumerateChildrenAsync(attributes string, flags int /*TODO_TYP
 	c_attributes := gi.CString(attributes)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attributes := gi.NewStringArgument(c_attributes)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_attributes, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -11035,14 +11191,14 @@ func (v *FileIfc) Equal(file2 File) (result bool) {
 // g_file_find_enclosing_mount
 // container is not nil, container is File
 // is method
-func (v *FileIfc) FindEnclosingMount(cancellable Cancellable) (result Mount, err error) {
+func (v *FileIfc) FindEnclosingMount(cancellable ICancellable) (result Mount, err error) {
 	iv, err := _I.Get(550, "File", "find_enclosing_mount")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -11055,7 +11211,7 @@ func (v *FileIfc) FindEnclosingMount(cancellable Cancellable) (result Mount, err
 // g_file_find_enclosing_mount_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) FindEnclosingMountAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) FindEnclosingMountAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(551, "File", "find_enclosing_mount_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11063,7 +11219,7 @@ func (v *FileIfc) FindEnclosingMountAsync(io_priority int32, cancellable Cancell
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -11345,14 +11501,14 @@ func (v *FileIfc) IsNative() (result bool) {
 // g_file_load_bytes
 // container is not nil, container is File
 // is method
-func (v *FileIfc) LoadBytes(cancellable Cancellable) (result glib.Bytes, etag_out string, err error) {
+func (v *FileIfc) LoadBytes(cancellable ICancellable) (result glib.Bytes, etag_out string, err error) {
 	iv, err := _I.Get(567, "File", "load_bytes")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_etag_out := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_etag_out, arg_err}
@@ -11367,14 +11523,14 @@ func (v *FileIfc) LoadBytes(cancellable Cancellable) (result glib.Bytes, etag_ou
 // g_file_load_bytes_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) LoadBytesAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) LoadBytesAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(568, "File", "load_bytes_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -11406,14 +11562,14 @@ func (v *FileIfc) LoadBytesFinish(result AsyncResult) (result1 glib.Bytes, etag_
 // g_file_load_contents
 // container is not nil, container is File
 // is method
-func (v *FileIfc) LoadContents(cancellable Cancellable) (result bool, contents int /*TODO_TYPE*/, length uint64, etag_out string, err error) {
+func (v *FileIfc) LoadContents(cancellable ICancellable) (result bool, contents int /*TODO_TYPE*/, length uint64, etag_out string, err error) {
 	iv, err := _I.Get(570, "File", "load_contents")
 	if err != nil {
 		return
 	}
 	var outArgs [4]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_contents := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_length := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_etag_out := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -11432,14 +11588,14 @@ func (v *FileIfc) LoadContents(cancellable Cancellable) (result bool, contents i
 // g_file_load_contents_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) LoadContentsAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) LoadContentsAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(571, "File", "load_contents_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -11501,14 +11657,14 @@ func (v *FileIfc) LoadPartialContentsFinish(res AsyncResult) (result bool, conte
 // g_file_make_directory
 // container is not nil, container is File
 // is method
-func (v *FileIfc) MakeDirectory(cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) MakeDirectory(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(574, "File", "make_directory")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -11521,7 +11677,7 @@ func (v *FileIfc) MakeDirectory(cancellable Cancellable) (result bool, err error
 // g_file_make_directory_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) MakeDirectoryAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) MakeDirectoryAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(575, "File", "make_directory_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11529,7 +11685,7 @@ func (v *FileIfc) MakeDirectoryAsync(io_priority int32, cancellable Cancellable,
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -11559,14 +11715,14 @@ func (v *FileIfc) MakeDirectoryFinish(result AsyncResult) (result1 bool, err err
 // g_file_make_directory_with_parents
 // container is not nil, container is File
 // is method
-func (v *FileIfc) MakeDirectoryWithParents(cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) MakeDirectoryWithParents(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(577, "File", "make_directory_with_parents")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -11579,7 +11735,7 @@ func (v *FileIfc) MakeDirectoryWithParents(cancellable Cancellable) (result bool
 // g_file_make_symbolic_link
 // container is not nil, container is File
 // is method
-func (v *FileIfc) MakeSymbolicLink(symlink_value string, cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) MakeSymbolicLink(symlink_value string, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(578, "File", "make_symbolic_link")
 	if err != nil {
 		return
@@ -11588,7 +11744,7 @@ func (v *FileIfc) MakeSymbolicLink(symlink_value string, cancellable Cancellable
 	c_symlink_value := gi.CString(symlink_value)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_symlink_value := gi.NewStringArgument(c_symlink_value)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_symlink_value, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -11628,15 +11784,15 @@ func (v *FileIfc) MeasureDiskUsageFinish(result AsyncResult) (result1 bool, disk
 // g_file_monitor
 // container is not nil, container is File
 // is method
-func (v *FileIfc) Monitor(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result FileMonitor, err error) {
+func (v *FileIfc) Monitor(flags FileMonitorFlags, cancellable ICancellable) (result FileMonitor, err error) {
 	iv, err := _I.Get(580, "File", "monitor")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -11649,15 +11805,15 @@ func (v *FileIfc) Monitor(flags int /*TODO_TYPE isPtr: false, tag: interface*/, 
 // g_file_monitor_directory
 // container is not nil, container is File
 // is method
-func (v *FileIfc) MonitorDirectory(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result FileMonitor, err error) {
+func (v *FileIfc) MonitorDirectory(flags FileMonitorFlags, cancellable ICancellable) (result FileMonitor, err error) {
 	iv, err := _I.Get(581, "File", "monitor_directory")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -11670,15 +11826,15 @@ func (v *FileIfc) MonitorDirectory(flags int /*TODO_TYPE isPtr: false, tag: inte
 // g_file_monitor_file
 // container is not nil, container is File
 // is method
-func (v *FileIfc) MonitorFile(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result FileMonitor, err error) {
+func (v *FileIfc) MonitorFile(flags FileMonitorFlags, cancellable ICancellable) (result FileMonitor, err error) {
 	iv, err := _I.Get(582, "File", "monitor_file")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -11691,16 +11847,16 @@ func (v *FileIfc) MonitorFile(flags int /*TODO_TYPE isPtr: false, tag: interface
 // g_file_mount_enclosing_volume
 // container is not nil, container is File
 // is method
-func (v *FileIfc) MountEnclosingVolume(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) MountEnclosingVolume(flags MountMountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(583, "File", "mount_enclosing_volume")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -11730,16 +11886,16 @@ func (v *FileIfc) MountEnclosingVolumeFinish(result AsyncResult) (result1 bool, 
 // g_file_mount_mountable
 // container is not nil, container is File
 // is method
-func (v *FileIfc) MountMountable(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) MountMountable(flags MountMountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(585, "File", "mount_mountable")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -11769,7 +11925,7 @@ func (v *FileIfc) MountMountableFinish(result AsyncResult) (result1 File, err er
 // g_file_move
 // container is not nil, container is File
 // is method
-func (v *FileIfc) Move(destination File, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, progress_callback int /*TODO_TYPE isPtr: false, tag: interface*/, progress_callback_data unsafe.Pointer) (result bool, err error) {
+func (v *FileIfc) Move(destination File, flags FileCopyFlags, cancellable ICancellable, progress_callback int /*TODO_TYPE isPtr: false, tag: interface*/, progress_callback_data unsafe.Pointer) (result bool, err error) {
 	iv, err := _I.Get(587, "File", "move")
 	if err != nil {
 		return
@@ -11777,8 +11933,8 @@ func (v *FileIfc) Move(destination File, flags int /*TODO_TYPE isPtr: false, tag
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_destination := gi.NewPointerArgument(destination.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_progress_callback := gi.NewIntArgument(progress_callback) /*TODO*/
 	arg_progress_callback_data := gi.NewPointerArgument(progress_callback_data)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -11793,14 +11949,14 @@ func (v *FileIfc) Move(destination File, flags int /*TODO_TYPE isPtr: false, tag
 // g_file_open_readwrite
 // container is not nil, container is File
 // is method
-func (v *FileIfc) OpenReadwrite(cancellable Cancellable) (result FileIOStream, err error) {
+func (v *FileIfc) OpenReadwrite(cancellable ICancellable) (result FileIOStream, err error) {
 	iv, err := _I.Get(588, "File", "open_readwrite")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -11813,7 +11969,7 @@ func (v *FileIfc) OpenReadwrite(cancellable Cancellable) (result FileIOStream, e
 // g_file_open_readwrite_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) OpenReadwriteAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) OpenReadwriteAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(589, "File", "open_readwrite_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11821,7 +11977,7 @@ func (v *FileIfc) OpenReadwriteAsync(io_priority int32, cancellable Cancellable,
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -11868,14 +12024,14 @@ func (v *FileIfc) PeekPath() (result string) {
 // g_file_poll_mountable
 // container is not nil, container is File
 // is method
-func (v *FileIfc) PollMountable(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) PollMountable(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(592, "File", "poll_mountable")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -11905,14 +12061,14 @@ func (v *FileIfc) PollMountableFinish(result AsyncResult) (result1 bool, err err
 // g_file_query_default_handler
 // container is not nil, container is File
 // is method
-func (v *FileIfc) QueryDefaultHandler(cancellable Cancellable) (result AppInfo, err error) {
+func (v *FileIfc) QueryDefaultHandler(cancellable ICancellable) (result AppInfo, err error) {
 	iv, err := _I.Get(594, "File", "query_default_handler")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -11925,14 +12081,14 @@ func (v *FileIfc) QueryDefaultHandler(cancellable Cancellable) (result AppInfo, 
 // g_file_query_exists
 // container is not nil, container is File
 // is method
-func (v *FileIfc) QueryExists(cancellable Cancellable) (result bool) {
+func (v *FileIfc) QueryExists(cancellable ICancellable) (result bool) {
 	iv, err := _I.Get(595, "File", "query_exists")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	args := []gi.Argument{arg_v, arg_cancellable}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -11943,26 +12099,26 @@ func (v *FileIfc) QueryExists(cancellable Cancellable) (result bool) {
 // g_file_query_file_type
 // container is not nil, container is File
 // is method
-func (v *FileIfc) QueryFileType(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *FileIfc) QueryFileType(flags FileQueryInfoFlags, cancellable ICancellable) (result FileTypeEnum) {
 	iv, err := _I.Get(596, "File", "query_file_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = FileTypeEnum(ret.Int())
 	return
 }
 
 // g_file_query_filesystem_info
 // container is not nil, container is File
 // is method
-func (v *FileIfc) QueryFilesystemInfo(attributes string, cancellable Cancellable) (result FileInfo, err error) {
+func (v *FileIfc) QueryFilesystemInfo(attributes string, cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(597, "File", "query_filesystem_info")
 	if err != nil {
 		return
@@ -11971,7 +12127,7 @@ func (v *FileIfc) QueryFilesystemInfo(attributes string, cancellable Cancellable
 	c_attributes := gi.CString(attributes)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attributes := gi.NewStringArgument(c_attributes)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attributes, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -11985,7 +12141,7 @@ func (v *FileIfc) QueryFilesystemInfo(attributes string, cancellable Cancellable
 // g_file_query_filesystem_info_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) QueryFilesystemInfoAsync(attributes string, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) QueryFilesystemInfoAsync(attributes string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(598, "File", "query_filesystem_info_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11995,7 +12151,7 @@ func (v *FileIfc) QueryFilesystemInfoAsync(attributes string, io_priority int32,
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attributes := gi.NewStringArgument(c_attributes)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_attributes, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -12026,7 +12182,7 @@ func (v *FileIfc) QueryFilesystemInfoFinish(res AsyncResult) (result FileInfo, e
 // g_file_query_info
 // container is not nil, container is File
 // is method
-func (v *FileIfc) QueryInfo(attributes string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result FileInfo, err error) {
+func (v *FileIfc) QueryInfo(attributes string, flags FileQueryInfoFlags, cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(600, "File", "query_info")
 	if err != nil {
 		return
@@ -12035,8 +12191,8 @@ func (v *FileIfc) QueryInfo(attributes string, flags int /*TODO_TYPE isPtr: fals
 	c_attributes := gi.CString(attributes)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attributes := gi.NewStringArgument(c_attributes)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attributes, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12050,7 +12206,7 @@ func (v *FileIfc) QueryInfo(attributes string, flags int /*TODO_TYPE isPtr: fals
 // g_file_query_info_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) QueryInfoAsync(attributes string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) QueryInfoAsync(attributes string, flags FileQueryInfoFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(601, "File", "query_info_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12059,9 +12215,9 @@ func (v *FileIfc) QueryInfoAsync(attributes string, flags int /*TODO_TYPE isPtr:
 	c_attributes := gi.CString(attributes)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attributes := gi.NewStringArgument(c_attributes)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_attributes, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -12092,14 +12248,14 @@ func (v *FileIfc) QueryInfoFinish(res AsyncResult) (result FileInfo, err error) 
 // g_file_query_settable_attributes
 // container is not nil, container is File
 // is method
-func (v *FileIfc) QuerySettableAttributes(cancellable Cancellable) (result FileAttributeInfoList, err error) {
+func (v *FileIfc) QuerySettableAttributes(cancellable ICancellable) (result FileAttributeInfoList, err error) {
 	iv, err := _I.Get(603, "File", "query_settable_attributes")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12112,14 +12268,14 @@ func (v *FileIfc) QuerySettableAttributes(cancellable Cancellable) (result FileA
 // g_file_query_writable_namespaces
 // container is not nil, container is File
 // is method
-func (v *FileIfc) QueryWritableNamespaces(cancellable Cancellable) (result FileAttributeInfoList, err error) {
+func (v *FileIfc) QueryWritableNamespaces(cancellable ICancellable) (result FileAttributeInfoList, err error) {
 	iv, err := _I.Get(604, "File", "query_writable_namespaces")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12132,14 +12288,14 @@ func (v *FileIfc) QueryWritableNamespaces(cancellable Cancellable) (result FileA
 // g_file_read
 // container is not nil, container is File
 // is method
-func (v *FileIfc) Read(cancellable Cancellable) (result FileInputStream, err error) {
+func (v *FileIfc) Read(cancellable ICancellable) (result FileInputStream, err error) {
 	iv, err := _I.Get(605, "File", "read")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12152,7 +12308,7 @@ func (v *FileIfc) Read(cancellable Cancellable) (result FileInputStream, err err
 // g_file_read_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) ReadAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) ReadAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(606, "File", "read_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12160,7 +12316,7 @@ func (v *FileIfc) ReadAsync(io_priority int32, cancellable Cancellable, callback
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -12190,7 +12346,7 @@ func (v *FileIfc) ReadFinish(res AsyncResult) (result FileInputStream, err error
 // g_file_replace
 // container is not nil, container is File
 // is method
-func (v *FileIfc) Replace(etag string, make_backup bool, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result FileOutputStream, err error) {
+func (v *FileIfc) Replace(etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable) (result FileOutputStream, err error) {
 	iv, err := _I.Get(608, "File", "replace")
 	if err != nil {
 		return
@@ -12200,8 +12356,8 @@ func (v *FileIfc) Replace(etag string, make_backup bool, flags int /*TODO_TYPE i
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_etag := gi.NewStringArgument(c_etag)
 	arg_make_backup := gi.NewBoolArgument(make_backup)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_etag, arg_make_backup, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12215,7 +12371,7 @@ func (v *FileIfc) Replace(etag string, make_backup bool, flags int /*TODO_TYPE i
 // g_file_replace_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) ReplaceAsync(etag string, make_backup bool, flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) ReplaceAsync(etag string, make_backup bool, flags FileCreateFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(609, "File", "replace_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12225,9 +12381,9 @@ func (v *FileIfc) ReplaceAsync(etag string, make_backup bool, flags int /*TODO_T
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_etag := gi.NewStringArgument(c_etag)
 	arg_make_backup := gi.NewBoolArgument(make_backup)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_etag, arg_make_backup, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -12238,7 +12394,7 @@ func (v *FileIfc) ReplaceAsync(etag string, make_backup bool, flags int /*TODO_T
 // g_file_replace_contents
 // container is not nil, container is File
 // is method
-func (v *FileIfc) ReplaceContents(contents int /*TODO_TYPE isPtr: true, tag: array*/, length uint64, etag string, make_backup bool, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, new_etag string, err error) {
+func (v *FileIfc) ReplaceContents(contents int /*TODO_TYPE isPtr: true, tag: array*/, length uint64, etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable) (result bool, new_etag string, err error) {
 	iv, err := _I.Get(610, "File", "replace_contents")
 	if err != nil {
 		return
@@ -12250,9 +12406,9 @@ func (v *FileIfc) ReplaceContents(contents int /*TODO_TYPE isPtr: true, tag: arr
 	arg_length := gi.NewUint64Argument(length)
 	arg_etag := gi.NewStringArgument(c_etag)
 	arg_make_backup := gi.NewBoolArgument(make_backup)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_new_etag := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_contents, arg_length, arg_etag, arg_make_backup, arg_flags, arg_new_etag, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12267,7 +12423,7 @@ func (v *FileIfc) ReplaceContents(contents int /*TODO_TYPE isPtr: true, tag: arr
 // g_file_replace_contents_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) ReplaceContentsAsync(contents int /*TODO_TYPE isPtr: true, tag: array*/, length uint64, etag string, make_backup bool, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) ReplaceContentsAsync(contents int /*TODO_TYPE isPtr: true, tag: array*/, length uint64, etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(611, "File", "replace_contents_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12279,8 +12435,8 @@ func (v *FileIfc) ReplaceContentsAsync(contents int /*TODO_TYPE isPtr: true, tag
 	arg_length := gi.NewUint64Argument(length)
 	arg_etag := gi.NewStringArgument(c_etag)
 	arg_make_backup := gi.NewBoolArgument(make_backup)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_contents, arg_length, arg_etag, arg_make_backup, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -12291,7 +12447,7 @@ func (v *FileIfc) ReplaceContentsAsync(contents int /*TODO_TYPE isPtr: true, tag
 // g_file_replace_contents_bytes_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) ReplaceContentsBytesAsync(contents glib.Bytes, etag string, make_backup bool, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) ReplaceContentsBytesAsync(contents glib.Bytes, etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(612, "File", "replace_contents_bytes_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12302,8 +12458,8 @@ func (v *FileIfc) ReplaceContentsBytesAsync(contents glib.Bytes, etag string, ma
 	arg_contents := gi.NewPointerArgument(contents.P)
 	arg_etag := gi.NewStringArgument(c_etag)
 	arg_make_backup := gi.NewBoolArgument(make_backup)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_contents, arg_etag, arg_make_backup, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -12356,7 +12512,7 @@ func (v *FileIfc) ReplaceFinish(res AsyncResult) (result FileOutputStream, err e
 // g_file_replace_readwrite
 // container is not nil, container is File
 // is method
-func (v *FileIfc) ReplaceReadwrite(etag string, make_backup bool, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result FileIOStream, err error) {
+func (v *FileIfc) ReplaceReadwrite(etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable) (result FileIOStream, err error) {
 	iv, err := _I.Get(615, "File", "replace_readwrite")
 	if err != nil {
 		return
@@ -12366,8 +12522,8 @@ func (v *FileIfc) ReplaceReadwrite(etag string, make_backup bool, flags int /*TO
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_etag := gi.NewStringArgument(c_etag)
 	arg_make_backup := gi.NewBoolArgument(make_backup)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_etag, arg_make_backup, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12381,7 +12537,7 @@ func (v *FileIfc) ReplaceReadwrite(etag string, make_backup bool, flags int /*TO
 // g_file_replace_readwrite_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) ReplaceReadwriteAsync(etag string, make_backup bool, flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) ReplaceReadwriteAsync(etag string, make_backup bool, flags FileCreateFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(616, "File", "replace_readwrite_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12391,9 +12547,9 @@ func (v *FileIfc) ReplaceReadwriteAsync(etag string, make_backup bool, flags int
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_etag := gi.NewStringArgument(c_etag)
 	arg_make_backup := gi.NewBoolArgument(make_backup)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_etag, arg_make_backup, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -12444,7 +12600,7 @@ func (v *FileIfc) ResolveRelativePath(relative_path string) (result File) {
 // g_file_set_attribute
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetAttribute(attribute string, type1 int /*TODO_TYPE isPtr: false, tag: interface*/, value_p unsafe.Pointer, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) SetAttribute(attribute string, type1 FileAttributeTypeEnum, value_p unsafe.Pointer, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(619, "File", "set_attribute")
 	if err != nil {
 		return
@@ -12453,10 +12609,10 @@ func (v *FileIfc) SetAttribute(attribute string, type1 int /*TODO_TYPE isPtr: fa
 	c_attribute := gi.CString(attribute)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attribute := gi.NewStringArgument(c_attribute)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	arg_value_p := gi.NewPointerArgument(value_p)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attribute, arg_type1, arg_value_p, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12470,7 +12626,7 @@ func (v *FileIfc) SetAttribute(attribute string, type1 int /*TODO_TYPE isPtr: fa
 // g_file_set_attribute_byte_string
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetAttributeByteString(attribute string, value string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) SetAttributeByteString(attribute string, value string, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(620, "File", "set_attribute_byte_string")
 	if err != nil {
 		return
@@ -12481,8 +12637,8 @@ func (v *FileIfc) SetAttributeByteString(attribute string, value string, flags i
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	arg_value := gi.NewStringArgument(c_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12497,7 +12653,7 @@ func (v *FileIfc) SetAttributeByteString(attribute string, value string, flags i
 // g_file_set_attribute_int32
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetAttributeInt32(attribute string, value int32, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) SetAttributeInt32(attribute string, value int32, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(621, "File", "set_attribute_int32")
 	if err != nil {
 		return
@@ -12507,8 +12663,8 @@ func (v *FileIfc) SetAttributeInt32(attribute string, value int32, flags int /*T
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	arg_value := gi.NewInt32Argument(value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12522,7 +12678,7 @@ func (v *FileIfc) SetAttributeInt32(attribute string, value int32, flags int /*T
 // g_file_set_attribute_int64
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetAttributeInt64(attribute string, value int64, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) SetAttributeInt64(attribute string, value int64, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(622, "File", "set_attribute_int64")
 	if err != nil {
 		return
@@ -12532,8 +12688,8 @@ func (v *FileIfc) SetAttributeInt64(attribute string, value int64, flags int /*T
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	arg_value := gi.NewInt64Argument(value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12547,7 +12703,7 @@ func (v *FileIfc) SetAttributeInt64(attribute string, value int64, flags int /*T
 // g_file_set_attribute_string
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetAttributeString(attribute string, value string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) SetAttributeString(attribute string, value string, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(623, "File", "set_attribute_string")
 	if err != nil {
 		return
@@ -12558,8 +12714,8 @@ func (v *FileIfc) SetAttributeString(attribute string, value string, flags int /
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	arg_value := gi.NewStringArgument(c_value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12574,7 +12730,7 @@ func (v *FileIfc) SetAttributeString(attribute string, value string, flags int /
 // g_file_set_attribute_uint32
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetAttributeUint32(attribute string, value uint32, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) SetAttributeUint32(attribute string, value uint32, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(624, "File", "set_attribute_uint32")
 	if err != nil {
 		return
@@ -12584,8 +12740,8 @@ func (v *FileIfc) SetAttributeUint32(attribute string, value uint32, flags int /
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	arg_value := gi.NewUint32Argument(value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12599,7 +12755,7 @@ func (v *FileIfc) SetAttributeUint32(attribute string, value uint32, flags int /
 // g_file_set_attribute_uint64
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetAttributeUint64(attribute string, value uint64, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) SetAttributeUint64(attribute string, value uint64, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(625, "File", "set_attribute_uint64")
 	if err != nil {
 		return
@@ -12609,8 +12765,8 @@ func (v *FileIfc) SetAttributeUint64(attribute string, value uint64, flags int /
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	arg_value := gi.NewUint64Argument(value)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12624,17 +12780,17 @@ func (v *FileIfc) SetAttributeUint64(attribute string, value uint64, flags int /
 // g_file_set_attributes_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetAttributesAsync(info FileInfo, flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) SetAttributesAsync(info IFileInfo, flags FileQueryInfoFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(626, "File", "set_attributes_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_info := gi.NewPointerArgument(info.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_info := gi.NewPointerArgument(info.P_FileInfo())
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_info, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -12644,7 +12800,7 @@ func (v *FileIfc) SetAttributesAsync(info FileInfo, flags int /*TODO_TYPE isPtr:
 // g_file_set_attributes_finish
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetAttributesFinish(result AsyncResult) (result1 bool, info int /*TODO_TYPE*/, err error) {
+func (v *FileIfc) SetAttributesFinish(result AsyncResult) (result1 bool, info FileInfo, err error) {
 	iv, err := _I.Get(627, "File", "set_attributes_finish")
 	if err != nil {
 		return
@@ -12658,7 +12814,7 @@ func (v *FileIfc) SetAttributesFinish(result AsyncResult) (result1 bool, info in
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result1 = ret.Bool()
-	info = outArgs[0].Int() /*TODO*/
+	info.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -12666,16 +12822,16 @@ func (v *FileIfc) SetAttributesFinish(result AsyncResult) (result1 bool, info in
 // g_file_set_attributes_from_info
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetAttributesFromInfo(info FileInfo, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) SetAttributesFromInfo(info IFileInfo, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(628, "File", "set_attributes_from_info")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_info := gi.NewPointerArgument(info.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_info := gi.NewPointerArgument(info.P_FileInfo())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_info, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12688,7 +12844,7 @@ func (v *FileIfc) SetAttributesFromInfo(info FileInfo, flags int /*TODO_TYPE isP
 // g_file_set_display_name
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetDisplayName(display_name string, cancellable Cancellable) (result File, err error) {
+func (v *FileIfc) SetDisplayName(display_name string, cancellable ICancellable) (result File, err error) {
 	iv, err := _I.Get(629, "File", "set_display_name")
 	if err != nil {
 		return
@@ -12697,7 +12853,7 @@ func (v *FileIfc) SetDisplayName(display_name string, cancellable Cancellable) (
 	c_display_name := gi.CString(display_name)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_display_name := gi.NewStringArgument(c_display_name)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_display_name, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12711,7 +12867,7 @@ func (v *FileIfc) SetDisplayName(display_name string, cancellable Cancellable) (
 // g_file_set_display_name_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) SetDisplayNameAsync(display_name string, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) SetDisplayNameAsync(display_name string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(630, "File", "set_display_name_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12721,7 +12877,7 @@ func (v *FileIfc) SetDisplayNameAsync(display_name string, io_priority int32, ca
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_display_name := gi.NewStringArgument(c_display_name)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_display_name, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -12752,16 +12908,16 @@ func (v *FileIfc) SetDisplayNameFinish(res AsyncResult) (result File, err error)
 // g_file_start_mountable
 // container is not nil, container is File
 // is method
-func (v *FileIfc) StartMountable(flags int /*TODO_TYPE isPtr: false, tag: interface*/, start_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) StartMountable(flags DriveStartFlags, start_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(632, "File", "start_mountable")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_start_operation := gi.NewPointerArgument(start_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_start_operation := gi.NewPointerArgument(start_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_start_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -12791,16 +12947,16 @@ func (v *FileIfc) StartMountableFinish(result AsyncResult) (result1 bool, err er
 // g_file_stop_mountable
 // container is not nil, container is File
 // is method
-func (v *FileIfc) StopMountable(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) StopMountable(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(634, "File", "stop_mountable")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -12847,14 +13003,14 @@ func (v *FileIfc) SupportsThreadContexts() (result bool) {
 // g_file_trash
 // container is not nil, container is File
 // is method
-func (v *FileIfc) Trash(cancellable Cancellable) (result bool, err error) {
+func (v *FileIfc) Trash(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(637, "File", "trash")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -12867,7 +13023,7 @@ func (v *FileIfc) Trash(cancellable Cancellable) (result bool, err error) {
 // g_file_trash_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) TrashAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) TrashAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(638, "File", "trash_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12875,7 +13031,7 @@ func (v *FileIfc) TrashAsync(io_priority int32, cancellable Cancellable, callbac
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -12905,15 +13061,15 @@ func (v *FileIfc) TrashFinish(result AsyncResult) (result1 bool, err error) {
 // g_file_unmount_mountable
 // container is not nil, container is File
 // is method
-func (v *FileIfc) UnmountMountable(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) UnmountMountable(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(640, "File", "unmount_mountable")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -12943,16 +13099,16 @@ func (v *FileIfc) UnmountMountableFinish(result AsyncResult) (result1 bool, err 
 // g_file_unmount_mountable_with_operation
 // container is not nil, container is File
 // is method
-func (v *FileIfc) UnmountMountableWithOperation(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) UnmountMountableWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(642, "File", "unmount_mountable_with_operation")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -12983,6 +13139,8 @@ func (v *FileIfc) UnmountMountableWithOperationFinish(result AsyncResult) (resul
 type FileAttributeInfo struct {
 	P unsafe.Pointer
 }
+
+// Flags FileAttributeInfoFlags
 type FileAttributeInfoFlags int
 
 const (
@@ -13014,7 +13172,7 @@ func NewFileAttributeInfoList() (result FileAttributeInfoList) {
 // g_file_attribute_info_list_add
 // container is not nil, container is FileAttributeInfoList
 // is method
-func (v FileAttributeInfoList) Add(name string, type1 int /*TODO_TYPE isPtr: false, tag: interface*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FileAttributeInfoList) Add(name string, type1 FileAttributeTypeEnum, flags FileAttributeInfoFlags) {
 	iv, err := _I.Get(645, "FileAttributeInfoList", "add")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13023,8 +13181,8 @@ func (v FileAttributeInfoList) Add(name string, type1 int /*TODO_TYPE isPtr: fal
 	c_name := gi.CString(name)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_name := gi.NewStringArgument(c_name)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_name, arg_type1, arg_flags}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -13265,6 +13423,7 @@ func (v FileAttributeMatcher) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Enum FileAttributeStatus
 type FileAttributeStatusEnum int
 
 const (
@@ -13273,6 +13432,7 @@ const (
 	FileAttributeStatusErrorSetting                         = 2
 )
 
+// Enum FileAttributeType
 type FileAttributeTypeEnum int
 
 const (
@@ -13288,6 +13448,7 @@ const (
 	FileAttributeTypeStringv                          = 9
 )
 
+// Flags FileCopyFlags
 type FileCopyFlags int
 
 const (
@@ -13300,6 +13461,7 @@ const (
 	FileCopyFlagsTargetDefaultPerms               = 32
 )
 
+// Flags FileCreateFlags
 type FileCreateFlags int
 
 const (
@@ -13340,17 +13502,21 @@ type FileEnumerator struct {
 
 func WrapFileEnumerator(p unsafe.Pointer) (r FileEnumerator) { r.P = p; return }
 
+type IFileEnumerator interface{ P_FileEnumerator() unsafe.Pointer }
+
+func (v FileEnumerator) P_FileEnumerator() unsafe.Pointer { return v.P }
+
 // g_file_enumerator_close
 // container is not nil, container is FileEnumerator
 // is method
-func (v FileEnumerator) Close(cancellable Cancellable) (result bool, err error) {
+func (v FileEnumerator) Close(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(660, "FileEnumerator", "close")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -13363,7 +13529,7 @@ func (v FileEnumerator) Close(cancellable Cancellable) (result bool, err error) 
 // g_file_enumerator_close_async
 // container is not nil, container is FileEnumerator
 // is method
-func (v FileEnumerator) CloseAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v FileEnumerator) CloseAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(661, "FileEnumerator", "close_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13371,7 +13537,7 @@ func (v FileEnumerator) CloseAsync(io_priority int32, cancellable Cancellable, c
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -13401,14 +13567,14 @@ func (v FileEnumerator) CloseFinish(result AsyncResult) (result1 bool, err error
 // g_file_enumerator_get_child
 // container is not nil, container is FileEnumerator
 // is method
-func (v FileEnumerator) GetChild(info FileInfo) (result File) {
+func (v FileEnumerator) GetChild(info IFileInfo) (result File) {
 	iv, err := _I.Get(663, "FileEnumerator", "get_child")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_info := gi.NewPointerArgument(info.P)
+	arg_info := gi.NewPointerArgument(info.P_FileInfo())
 	args := []gi.Argument{arg_v, arg_info}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -13470,7 +13636,7 @@ func (v FileEnumerator) IsClosed() (result bool) {
 // g_file_enumerator_iterate
 // container is not nil, container is FileEnumerator
 // is method
-func (v FileEnumerator) Iterate(cancellable Cancellable) (result bool, out_info int /*TODO_TYPE*/, out_child int /*TODO_TYPE*/, err error) {
+func (v FileEnumerator) Iterate(cancellable ICancellable) (result bool, out_info FileInfo, out_child File, err error) {
 	iv, err := _I.Get(667, "FileEnumerator", "iterate")
 	if err != nil {
 		return
@@ -13479,14 +13645,14 @@ func (v FileEnumerator) Iterate(cancellable Cancellable) (result bool, out_info 
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_out_info := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_out_child := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
 	args := []gi.Argument{arg_v, arg_out_info, arg_out_child, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
-	out_info = outArgs[0].Int()  /*TODO*/
-	out_child = outArgs[1].Int() /*TODO*/
+	out_info.P = outArgs[0].Pointer()
+	out_child.P = outArgs[1].Pointer()
 	err = gi.ToError(outArgs[2].Pointer())
 	return
 }
@@ -13494,14 +13660,14 @@ func (v FileEnumerator) Iterate(cancellable Cancellable) (result bool, out_info 
 // g_file_enumerator_next_file
 // container is not nil, container is FileEnumerator
 // is method
-func (v FileEnumerator) NextFile(cancellable Cancellable) (result FileInfo, err error) {
+func (v FileEnumerator) NextFile(cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(668, "FileEnumerator", "next_file")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -13514,7 +13680,7 @@ func (v FileEnumerator) NextFile(cancellable Cancellable) (result FileInfo, err 
 // g_file_enumerator_next_files_async
 // container is not nil, container is FileEnumerator
 // is method
-func (v FileEnumerator) NextFilesAsync(num_files int32, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v FileEnumerator) NextFilesAsync(num_files int32, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(669, "FileEnumerator", "next_files_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13523,7 +13689,7 @@ func (v FileEnumerator) NextFilesAsync(num_files int32, io_priority int32, cance
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_num_files := gi.NewInt32Argument(num_files)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_num_files, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -13579,6 +13745,10 @@ type FileIOStream struct {
 
 func WrapFileIOStream(p unsafe.Pointer) (r FileIOStream) { r.P = p; return }
 
+type IFileIOStream interface{ P_FileIOStream() unsafe.Pointer }
+
+func (v FileIOStream) P_FileIOStream() unsafe.Pointer { return v.P }
+
 // g_file_io_stream_get_etag
 // container is not nil, container is FileIOStream
 // is method
@@ -13599,7 +13769,7 @@ func (v FileIOStream) GetEtag() (result string) {
 // g_file_io_stream_query_info
 // container is not nil, container is FileIOStream
 // is method
-func (v FileIOStream) QueryInfo(attributes string, cancellable Cancellable) (result FileInfo, err error) {
+func (v FileIOStream) QueryInfo(attributes string, cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(673, "FileIOStream", "query_info")
 	if err != nil {
 		return
@@ -13608,7 +13778,7 @@ func (v FileIOStream) QueryInfo(attributes string, cancellable Cancellable) (res
 	c_attributes := gi.CString(attributes)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_attributes := gi.NewStringArgument(c_attributes)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attributes, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -13622,7 +13792,7 @@ func (v FileIOStream) QueryInfo(attributes string, cancellable Cancellable) (res
 // g_file_io_stream_query_info_async
 // container is not nil, container is FileIOStream
 // is method
-func (v FileIOStream) QueryInfoAsync(attributes string, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v FileIOStream) QueryInfoAsync(attributes string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(674, "FileIOStream", "query_info_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13632,7 +13802,7 @@ func (v FileIOStream) QueryInfoAsync(attributes string, io_priority int32, cance
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_attributes := gi.NewStringArgument(c_attributes)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_attributes, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -13674,6 +13844,10 @@ type FileIcon struct {
 }
 
 func WrapFileIcon(p unsafe.Pointer) (r FileIcon) { r.P = p; return }
+
+type IFileIcon interface{ P_FileIcon() unsafe.Pointer }
+
+func (v FileIcon) P_FileIcon() unsafe.Pointer { return v.P }
 
 // g_file_icon_new
 // container is not nil, container is FileIcon
@@ -13718,6 +13892,10 @@ type FileInfo struct {
 
 func WrapFileInfo(p unsafe.Pointer) (r FileInfo) { r.P = p; return }
 
+type IFileInfo interface{ P_FileInfo() unsafe.Pointer }
+
+func (v FileInfo) P_FileInfo() unsafe.Pointer { return v.P }
+
 // g_file_info_new
 // container is not nil, container is FileInfo
 // is constructor
@@ -13750,14 +13928,14 @@ func (v FileInfo) ClearStatus() {
 // g_file_info_copy_into
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) CopyInto(dest_info FileInfo) {
+func (v FileInfo) CopyInto(dest_info IFileInfo) {
 	iv, err := _I.Get(680, "FileInfo", "copy_into")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_dest_info := gi.NewPointerArgument(dest_info.P)
+	arg_dest_info := gi.NewPointerArgument(dest_info.P_FileInfo())
 	args := []gi.Argument{arg_v, arg_dest_info}
 	iv.Call(args, nil, nil)
 }
@@ -13842,7 +14020,7 @@ func (v FileInfo) GetAttributeByteString(attribute string) (result string) {
 // g_file_info_get_attribute_data
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) GetAttributeData(attribute string) (result bool, type1 int /*TODO_TYPE*/, value_pp int /*TODO_TYPE*/, status int /*TODO_TYPE*/) {
+func (v FileInfo) GetAttributeData(attribute string) (result bool, type1 FileAttributeTypeEnum, value_pp int /*TODO_TYPE*/, status FileAttributeStatusEnum) {
 	iv, err := _I.Get(685, "FileInfo", "get_attribute_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13860,9 +14038,9 @@ func (v FileInfo) GetAttributeData(attribute string) (result bool, type1 int /*T
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
 	gi.Free(c_attribute)
-	type1 = outArgs[0].Int()    /*TODO*/
+	type1 = FileAttributeTypeEnum(outArgs[0].Int())
 	value_pp = outArgs[1].Int() /*TODO*/
-	status = outArgs[2].Int()   /*TODO*/
+	status = FileAttributeStatusEnum(outArgs[2].Int())
 	return
 }
 
@@ -13929,7 +14107,7 @@ func (v FileInfo) GetAttributeObject(attribute string) (result gobject.Object) {
 // g_file_info_get_attribute_status
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) GetAttributeStatus(attribute string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FileInfo) GetAttributeStatus(attribute string) (result FileAttributeStatusEnum) {
 	iv, err := _I.Get(689, "FileInfo", "get_attribute_status")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13941,7 +14119,7 @@ func (v FileInfo) GetAttributeStatus(attribute string) (result int /*TODO_TYPE i
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = FileAttributeStatusEnum(ret.Int())
 	gi.Free(c_attribute)
 	return
 }
@@ -13989,7 +14167,7 @@ func (v FileInfo) GetAttributeStringv(attribute string) (result int /*TODO_TYPE 
 // g_file_info_get_attribute_type
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) GetAttributeType(attribute string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FileInfo) GetAttributeType(attribute string) (result FileAttributeTypeEnum) {
 	iv, err := _I.Get(692, "FileInfo", "get_attribute_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14001,7 +14179,7 @@ func (v FileInfo) GetAttributeType(attribute string) (result int /*TODO_TYPE isP
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = FileAttributeTypeEnum(ret.Int())
 	gi.Free(c_attribute)
 	return
 }
@@ -14134,7 +14312,7 @@ func (v FileInfo) GetEtag() (result string) {
 // g_file_info_get_file_type
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) GetFileType() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FileInfo) GetFileType() (result FileTypeEnum) {
 	iv, err := _I.Get(700, "FileInfo", "get_file_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14144,7 +14322,7 @@ func (v FileInfo) GetFileType() (result int /*TODO_TYPE isPtr: false, tag: inter
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = FileTypeEnum(ret.Int())
 	return
 }
 
@@ -14399,7 +14577,7 @@ func (v FileInfo) RemoveAttribute(attribute string) {
 // g_file_info_set_attribute
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) SetAttribute(attribute string, type1 int /*TODO_TYPE isPtr: false, tag: interface*/, value_p unsafe.Pointer) {
+func (v FileInfo) SetAttribute(attribute string, type1 FileAttributeTypeEnum, value_p unsafe.Pointer) {
 	iv, err := _I.Get(715, "FileInfo", "set_attribute")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14408,7 +14586,7 @@ func (v FileInfo) SetAttribute(attribute string, type1 int /*TODO_TYPE isPtr: fa
 	c_attribute := gi.CString(attribute)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_attribute := gi.NewStringArgument(c_attribute)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	arg_value_p := gi.NewPointerArgument(value_p)
 	args := []gi.Argument{arg_v, arg_attribute, arg_type1, arg_value_p}
 	iv.Call(args, nil, nil)
@@ -14507,7 +14685,7 @@ func (v FileInfo) SetAttributeMask(mask FileAttributeMatcher) {
 // g_file_info_set_attribute_object
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) SetAttributeObject(attribute string, attr_value gobject.Object) {
+func (v FileInfo) SetAttributeObject(attribute string, attr_value gobject.IObject) {
 	iv, err := _I.Get(721, "FileInfo", "set_attribute_object")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14516,7 +14694,7 @@ func (v FileInfo) SetAttributeObject(attribute string, attr_value gobject.Object
 	c_attribute := gi.CString(attribute)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_attribute := gi.NewStringArgument(c_attribute)
-	arg_attr_value := gi.NewPointerArgument(attr_value.P)
+	arg_attr_value := gi.NewPointerArgument(attr_value.P_Object())
 	args := []gi.Argument{arg_v, arg_attribute, arg_attr_value}
 	iv.Call(args, nil, nil)
 	gi.Free(c_attribute)
@@ -14525,7 +14703,7 @@ func (v FileInfo) SetAttributeObject(attribute string, attr_value gobject.Object
 // g_file_info_set_attribute_status
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) SetAttributeStatus(attribute string, status int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v FileInfo) SetAttributeStatus(attribute string, status FileAttributeStatusEnum) (result bool) {
 	iv, err := _I.Get(722, "FileInfo", "set_attribute_status")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14534,7 +14712,7 @@ func (v FileInfo) SetAttributeStatus(attribute string, status int /*TODO_TYPE is
 	c_attribute := gi.CString(attribute)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_attribute := gi.NewStringArgument(c_attribute)
-	arg_status := gi.NewIntArgument(status) /*TODO*/
+	arg_status := gi.NewIntArgument(int(status))
 	args := []gi.Argument{arg_v, arg_attribute, arg_status}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -14671,14 +14849,14 @@ func (v FileInfo) SetEditName(edit_name string) {
 // g_file_info_set_file_type
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) SetFileType(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FileInfo) SetFileType(type1 FileTypeEnum) {
 	iv, err := _I.Get(730, "FileInfo", "set_file_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_v, arg_type1}
 	iv.Call(args, nil, nil)
 }
@@ -14845,10 +15023,14 @@ type FileInputStream struct {
 
 func WrapFileInputStream(p unsafe.Pointer) (r FileInputStream) { r.P = p; return }
 
+type IFileInputStream interface{ P_FileInputStream() unsafe.Pointer }
+
+func (v FileInputStream) P_FileInputStream() unsafe.Pointer { return v.P }
+
 // g_file_input_stream_query_info
 // container is not nil, container is FileInputStream
 // is method
-func (v FileInputStream) QueryInfo(attributes string, cancellable Cancellable) (result FileInfo, err error) {
+func (v FileInputStream) QueryInfo(attributes string, cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(741, "FileInputStream", "query_info")
 	if err != nil {
 		return
@@ -14857,7 +15039,7 @@ func (v FileInputStream) QueryInfo(attributes string, cancellable Cancellable) (
 	c_attributes := gi.CString(attributes)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_attributes := gi.NewStringArgument(c_attributes)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attributes, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -14871,7 +15053,7 @@ func (v FileInputStream) QueryInfo(attributes string, cancellable Cancellable) (
 // g_file_input_stream_query_info_async
 // container is not nil, container is FileInputStream
 // is method
-func (v FileInputStream) QueryInfoAsync(attributes string, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v FileInputStream) QueryInfoAsync(attributes string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(742, "FileInputStream", "query_info_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14881,7 +15063,7 @@ func (v FileInputStream) QueryInfoAsync(attributes string, io_priority int32, ca
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_attributes := gi.NewStringArgument(c_attributes)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_attributes, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -14914,6 +15096,8 @@ func (v FileInputStream) QueryInfoFinish(result AsyncResult) (result1 FileInfo, 
 type FileInputStreamPrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags FileMeasureFlags
 type FileMeasureFlags int
 
 const (
@@ -14929,6 +15113,10 @@ type FileMonitor struct {
 }
 
 func WrapFileMonitor(p unsafe.Pointer) (r FileMonitor) { r.P = p; return }
+
+type IFileMonitor interface{ P_FileMonitor() unsafe.Pointer }
+
+func (v FileMonitor) P_FileMonitor() unsafe.Pointer { return v.P }
 
 // g_file_monitor_cancel
 // container is not nil, container is FileMonitor
@@ -14950,7 +15138,7 @@ func (v FileMonitor) Cancel() (result bool) {
 // g_file_monitor_emit_event
 // container is not nil, container is FileMonitor
 // is method
-func (v FileMonitor) EmitEvent(child File, other_file File, event_type int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FileMonitor) EmitEvent(child File, other_file File, event_type FileMonitorEventEnum) {
 	iv, err := _I.Get(745, "FileMonitor", "emit_event")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14959,7 +15147,7 @@ func (v FileMonitor) EmitEvent(child File, other_file File, event_type int /*TOD
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_child := gi.NewPointerArgument(child.P)
 	arg_other_file := gi.NewPointerArgument(other_file.P)
-	arg_event_type := gi.NewIntArgument(event_type) /*TODO*/
+	arg_event_type := gi.NewIntArgument(int(event_type))
 	args := []gi.Argument{arg_v, arg_child, arg_other_file, arg_event_type}
 	iv.Call(args, nil, nil)
 }
@@ -14997,6 +15185,7 @@ func (v FileMonitor) SetRateLimit(limit_msecs int32) {
 }
 
 // ignore GType struct FileMonitorClass
+// Enum FileMonitorEvent
 type FileMonitorEventEnum int
 
 const (
@@ -15013,6 +15202,7 @@ const (
 	FileMonitorEventMovedOut                              = 10
 )
 
+// Flags FileMonitorFlags
 type FileMonitorFlags int
 
 const (
@@ -15036,6 +15226,10 @@ type FileOutputStream struct {
 
 func WrapFileOutputStream(p unsafe.Pointer) (r FileOutputStream) { r.P = p; return }
 
+type IFileOutputStream interface{ P_FileOutputStream() unsafe.Pointer }
+
+func (v FileOutputStream) P_FileOutputStream() unsafe.Pointer { return v.P }
+
 // g_file_output_stream_get_etag
 // container is not nil, container is FileOutputStream
 // is method
@@ -15056,7 +15250,7 @@ func (v FileOutputStream) GetEtag() (result string) {
 // g_file_output_stream_query_info
 // container is not nil, container is FileOutputStream
 // is method
-func (v FileOutputStream) QueryInfo(attributes string, cancellable Cancellable) (result FileInfo, err error) {
+func (v FileOutputStream) QueryInfo(attributes string, cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(749, "FileOutputStream", "query_info")
 	if err != nil {
 		return
@@ -15065,7 +15259,7 @@ func (v FileOutputStream) QueryInfo(attributes string, cancellable Cancellable) 
 	c_attributes := gi.CString(attributes)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_attributes := gi.NewStringArgument(c_attributes)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_attributes, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -15079,7 +15273,7 @@ func (v FileOutputStream) QueryInfo(attributes string, cancellable Cancellable) 
 // g_file_output_stream_query_info_async
 // container is not nil, container is FileOutputStream
 // is method
-func (v FileOutputStream) QueryInfoAsync(attributes string, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v FileOutputStream) QueryInfoAsync(attributes string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(750, "FileOutputStream", "query_info_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15089,7 +15283,7 @@ func (v FileOutputStream) QueryInfoAsync(attributes string, io_priority int32, c
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_attributes := gi.NewStringArgument(c_attributes)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_attributes, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -15122,6 +15316,8 @@ func (v FileOutputStream) QueryInfoFinish(result AsyncResult) (result1 FileInfo,
 type FileOutputStreamPrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags FileQueryInfoFlags
 type FileQueryInfoFlags int
 
 const (
@@ -15129,6 +15325,7 @@ const (
 	FileQueryInfoFlagsNofollowSymlinks                    = 1
 )
 
+// Enum FileType
 type FileTypeEnum int
 
 const (
@@ -15147,6 +15344,10 @@ type FilenameCompleter struct {
 }
 
 func WrapFilenameCompleter(p unsafe.Pointer) (r FilenameCompleter) { r.P = p; return }
+
+type IFilenameCompleter interface{ P_FilenameCompleter() unsafe.Pointer }
+
+func (v FilenameCompleter) P_FilenameCompleter() unsafe.Pointer { return v.P }
 
 // g_filename_completer_new
 // container is not nil, container is FilenameCompleter
@@ -15219,6 +15420,7 @@ func (v FilenameCompleter) SetDirsOnly(dirs_only bool) {
 }
 
 // ignore GType struct FilenameCompleterClass
+// Enum FilesystemPreviewType
 type FilesystemPreviewTypeEnum int
 
 const (
@@ -15233,6 +15435,10 @@ type FilterInputStream struct {
 }
 
 func WrapFilterInputStream(p unsafe.Pointer) (r FilterInputStream) { r.P = p; return }
+
+type IFilterInputStream interface{ P_FilterInputStream() unsafe.Pointer }
+
+func (v FilterInputStream) P_FilterInputStream() unsafe.Pointer { return v.P }
 
 // g_filter_input_stream_get_base_stream
 // container is not nil, container is FilterInputStream
@@ -15291,6 +15497,10 @@ type FilterOutputStream struct {
 
 func WrapFilterOutputStream(p unsafe.Pointer) (r FilterOutputStream) { r.P = p; return }
 
+type IFilterOutputStream interface{ P_FilterOutputStream() unsafe.Pointer }
+
+func (v FilterOutputStream) P_FilterOutputStream() unsafe.Pointer { return v.P }
+
 // g_filter_output_stream_get_base_stream
 // container is not nil, container is FilterOutputStream
 // is method
@@ -15341,6 +15551,7 @@ func (v FilterOutputStream) SetCloseBaseStream(close_base bool) {
 }
 
 // ignore GType struct FilterOutputStreamClass
+// Enum IOErrorEnum
 type IOErrorEnumEnum int
 
 const (
@@ -15597,6 +15808,10 @@ type IOModule struct {
 
 func WrapIOModule(p unsafe.Pointer) (r IOModule) { r.P = p; return }
 
+type IIOModule interface{ P_IOModule() unsafe.Pointer }
+
+func (v IOModule) P_IOModule() unsafe.Pointer { return v.P }
+
 // g_io_module_new
 // container is not nil, container is IOModule
 // is constructor
@@ -15684,6 +15899,7 @@ func (v IOModuleScope) Free() {
 	iv.Call(args, nil, nil)
 }
 
+// Enum IOModuleScopeFlags
 type IOModuleScopeFlagsEnum int
 
 const (
@@ -15740,6 +15956,10 @@ type IOStream struct {
 
 func WrapIOStream(p unsafe.Pointer) (r IOStream) { r.P = p; return }
 
+type IIOStream interface{ P_IOStream() unsafe.Pointer }
+
+func (v IOStream) P_IOStream() unsafe.Pointer { return v.P }
+
 // g_io_stream_splice_finish
 // container is not nil, container is IOStream
 // is method
@@ -15777,14 +15997,14 @@ func (v IOStream) ClearPending() {
 // g_io_stream_close
 // container is not nil, container is IOStream
 // is method
-func (v IOStream) Close(cancellable Cancellable) (result bool, err error) {
+func (v IOStream) Close(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(782, "IOStream", "close")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -15797,7 +16017,7 @@ func (v IOStream) Close(cancellable Cancellable) (result bool, err error) {
 // g_io_stream_close_async
 // container is not nil, container is IOStream
 // is method
-func (v IOStream) CloseAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v IOStream) CloseAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(783, "IOStream", "close_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15805,7 +16025,7 @@ func (v IOStream) CloseAsync(io_priority int32, cancellable Cancellable, callbac
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -15922,17 +16142,17 @@ func (v IOStream) SetPending() (result bool, err error) {
 // g_io_stream_splice_async
 // container is not nil, container is IOStream
 // is method
-func (v IOStream) SpliceAsync(stream2 IOStream, flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v IOStream) SpliceAsync(stream2 IIOStream, flags IOStreamSpliceFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(790, "IOStream", "splice_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_stream2 := gi.NewPointerArgument(stream2.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_stream2 := gi.NewPointerArgument(stream2.P_IOStream())
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_stream2, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -15949,6 +16169,8 @@ type IOStreamAdapter struct {
 type IOStreamPrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags IOStreamSpliceFlags
 type IOStreamSpliceFlags int
 
 const (
@@ -16083,16 +16305,20 @@ type InetAddress struct {
 
 func WrapInetAddress(p unsafe.Pointer) (r InetAddress) { r.P = p; return }
 
+type IInetAddress interface{ P_InetAddress() unsafe.Pointer }
+
+func (v InetAddress) P_InetAddress() unsafe.Pointer { return v.P }
+
 // g_inet_address_new_any
 // container is not nil, container is InetAddress
 // is constructor
-func NewInetAddressAny(family int /*TODO_TYPE isPtr: false, tag: interface*/) (result InetAddress) {
+func NewInetAddressAny(family SocketFamilyEnum) (result InetAddress) {
 	iv, err := _I.Get(797, "InetAddress", "new_any")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_family := gi.NewIntArgument(family) /*TODO*/
+	arg_family := gi.NewIntArgument(int(family))
 	args := []gi.Argument{arg_family}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -16103,14 +16329,14 @@ func NewInetAddressAny(family int /*TODO_TYPE isPtr: false, tag: interface*/) (r
 // g_inet_address_new_from_bytes
 // container is not nil, container is InetAddress
 // is constructor
-func NewInetAddressFromBytes(bytes int /*TODO_TYPE isPtr: true, tag: array*/, family int /*TODO_TYPE isPtr: false, tag: interface*/) (result InetAddress) {
+func NewInetAddressFromBytes(bytes int /*TODO_TYPE isPtr: true, tag: array*/, family SocketFamilyEnum) (result InetAddress) {
 	iv, err := _I.Get(798, "InetAddress", "new_from_bytes")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_bytes := gi.NewIntArgument(bytes)   /*TODO*/
-	arg_family := gi.NewIntArgument(family) /*TODO*/
+	arg_bytes := gi.NewIntArgument(bytes) /*TODO*/
+	arg_family := gi.NewIntArgument(int(family))
 	args := []gi.Argument{arg_bytes, arg_family}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -16140,13 +16366,13 @@ func NewInetAddressFromString(string string) (result InetAddress) {
 // g_inet_address_new_loopback
 // container is not nil, container is InetAddress
 // is constructor
-func NewInetAddressLoopback(family int /*TODO_TYPE isPtr: false, tag: interface*/) (result InetAddress) {
+func NewInetAddressLoopback(family SocketFamilyEnum) (result InetAddress) {
 	iv, err := _I.Get(800, "InetAddress", "new_loopback")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_family := gi.NewIntArgument(family) /*TODO*/
+	arg_family := gi.NewIntArgument(int(family))
 	args := []gi.Argument{arg_family}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -16157,14 +16383,14 @@ func NewInetAddressLoopback(family int /*TODO_TYPE isPtr: false, tag: interface*
 // g_inet_address_equal
 // container is not nil, container is InetAddress
 // is method
-func (v InetAddress) Equal(other_address InetAddress) (result bool) {
+func (v InetAddress) Equal(other_address IInetAddress) (result bool) {
 	iv, err := _I.Get(801, "InetAddress", "equal")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_other_address := gi.NewPointerArgument(other_address.P)
+	arg_other_address := gi.NewPointerArgument(other_address.P_InetAddress())
 	args := []gi.Argument{arg_v, arg_other_address}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -16175,7 +16401,7 @@ func (v InetAddress) Equal(other_address InetAddress) (result bool) {
 // g_inet_address_get_family
 // container is not nil, container is InetAddress
 // is method
-func (v InetAddress) GetFamily() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v InetAddress) GetFamily() (result SocketFamilyEnum) {
 	iv, err := _I.Get(802, "InetAddress", "get_family")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16185,7 +16411,7 @@ func (v InetAddress) GetFamily() (result int /*TODO_TYPE isPtr: false, tag: inte
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = SocketFamilyEnum(ret.Int())
 	return
 }
 
@@ -16402,16 +16628,20 @@ type InetAddressMask struct {
 
 func WrapInetAddressMask(p unsafe.Pointer) (r InetAddressMask) { r.P = p; return }
 
+type IInetAddressMask interface{ P_InetAddressMask() unsafe.Pointer }
+
+func (v InetAddressMask) P_InetAddressMask() unsafe.Pointer { return v.P }
+
 // g_inet_address_mask_new
 // container is not nil, container is InetAddressMask
 // is constructor
-func NewInetAddressMask(addr InetAddress, length uint32) (result InetAddressMask, err error) {
+func NewInetAddressMask(addr IInetAddress, length uint32) (result InetAddressMask, err error) {
 	iv, err := _I.Get(815, "InetAddressMask", "new")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_addr := gi.NewPointerArgument(addr.P)
+	arg_addr := gi.NewPointerArgument(addr.P_InetAddress())
 	arg_length := gi.NewUint32Argument(length)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_addr, arg_length, arg_err}
@@ -16446,14 +16676,14 @@ func NewInetAddressMaskFromString(mask_string string) (result InetAddressMask, e
 // g_inet_address_mask_equal
 // container is not nil, container is InetAddressMask
 // is method
-func (v InetAddressMask) Equal(mask2 InetAddressMask) (result bool) {
+func (v InetAddressMask) Equal(mask2 IInetAddressMask) (result bool) {
 	iv, err := _I.Get(817, "InetAddressMask", "equal")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_mask2 := gi.NewPointerArgument(mask2.P)
+	arg_mask2 := gi.NewPointerArgument(mask2.P_InetAddressMask())
 	args := []gi.Argument{arg_v, arg_mask2}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -16481,7 +16711,7 @@ func (v InetAddressMask) GetAddress() (result InetAddress) {
 // g_inet_address_mask_get_family
 // container is not nil, container is InetAddressMask
 // is method
-func (v InetAddressMask) GetFamily() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v InetAddressMask) GetFamily() (result SocketFamilyEnum) {
 	iv, err := _I.Get(819, "InetAddressMask", "get_family")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16491,7 +16721,7 @@ func (v InetAddressMask) GetFamily() (result int /*TODO_TYPE isPtr: false, tag: 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = SocketFamilyEnum(ret.Int())
 	return
 }
 
@@ -16515,14 +16745,14 @@ func (v InetAddressMask) GetLength() (result uint32) {
 // g_inet_address_mask_matches
 // container is not nil, container is InetAddressMask
 // is method
-func (v InetAddressMask) Matches(address InetAddress) (result bool) {
+func (v InetAddressMask) Matches(address IInetAddress) (result bool) {
 	iv, err := _I.Get(821, "InetAddressMask", "matches")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
+	arg_address := gi.NewPointerArgument(address.P_InetAddress())
 	args := []gi.Argument{arg_v, arg_address}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -16566,16 +16796,20 @@ type InetSocketAddress struct {
 
 func WrapInetSocketAddress(p unsafe.Pointer) (r InetSocketAddress) { r.P = p; return }
 
+type IInetSocketAddress interface{ P_InetSocketAddress() unsafe.Pointer }
+
+func (v InetSocketAddress) P_InetSocketAddress() unsafe.Pointer { return v.P }
+
 // g_inet_socket_address_new
 // container is not nil, container is InetSocketAddress
 // is constructor
-func NewInetSocketAddress(address InetAddress, port uint16) (result SocketAddress) {
+func NewInetSocketAddress(address IInetAddress, port uint16) (result SocketAddress) {
 	iv, err := _I.Get(823, "InetSocketAddress", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_address := gi.NewPointerArgument(address.P)
+	arg_address := gi.NewPointerArgument(address.P_InetAddress())
 	arg_port := gi.NewUint16Argument(port)
 	args := []gi.Argument{arg_address, arg_port}
 	var ret gi.Argument
@@ -16689,7 +16923,7 @@ type InitableIfc struct{}
 // container is not nil, container is Initable
 // is method
 // arg0Type tag: GType, isPtr: false
-func InitableNewv1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE isPtr: true, tag: array*/, cancellable Cancellable) (result gobject.Object, err error) {
+func InitableNewv1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE isPtr: true, tag: array*/, cancellable ICancellable) (result gobject.Object, err error) {
 	iv, err := _I.Get(829, "Initable", "newv")
 	if err != nil {
 		return
@@ -16698,7 +16932,7 @@ func InitableNewv1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_par
 	arg_object_type := gi.NewIntArgument(object_type) /*TODO*/
 	arg_n_parameters := gi.NewUint32Argument(n_parameters)
 	arg_parameters := gi.NewIntArgument(parameters) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_object_type, arg_n_parameters, arg_parameters, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -16711,14 +16945,14 @@ func InitableNewv1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_par
 // g_initable_init
 // container is not nil, container is Initable
 // is method
-func (v *InitableIfc) Init(cancellable Cancellable) (result bool, err error) {
+func (v *InitableIfc) Init(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(830, "Initable", "init")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -16741,6 +16975,10 @@ type InputStream struct {
 
 func WrapInputStream(p unsafe.Pointer) (r InputStream) { r.P = p; return }
 
+type IInputStream interface{ P_InputStream() unsafe.Pointer }
+
+func (v InputStream) P_InputStream() unsafe.Pointer { return v.P }
+
 // g_input_stream_clear_pending
 // container is not nil, container is InputStream
 // is method
@@ -16758,14 +16996,14 @@ func (v InputStream) ClearPending() {
 // g_input_stream_close
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) Close(cancellable Cancellable) (result bool, err error) {
+func (v InputStream) Close(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(832, "InputStream", "close")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -16778,7 +17016,7 @@ func (v InputStream) Close(cancellable Cancellable) (result bool, err error) {
 // g_input_stream_close_async
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) CloseAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v InputStream) CloseAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(833, "InputStream", "close_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16786,7 +17024,7 @@ func (v InputStream) CloseAsync(io_priority int32, cancellable Cancellable, call
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -16850,7 +17088,7 @@ func (v InputStream) IsClosed() (result bool) {
 // g_input_stream_read
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) Read(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable Cancellable) (result int64, err error) {
+func (v InputStream) Read(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(837, "InputStream", "read")
 	if err != nil {
 		return
@@ -16859,7 +17097,7 @@ func (v InputStream) Read(buffer int /*TODO_TYPE isPtr: true, tag: array*/, coun
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -16872,7 +17110,7 @@ func (v InputStream) Read(buffer int /*TODO_TYPE isPtr: true, tag: array*/, coun
 // g_input_stream_read_all
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) ReadAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable Cancellable) (result bool, bytes_read uint64, err error) {
+func (v InputStream) ReadAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result bool, bytes_read uint64, err error) {
 	iv, err := _I.Get(838, "InputStream", "read_all")
 	if err != nil {
 		return
@@ -16882,7 +17120,7 @@ func (v InputStream) ReadAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/, c
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
 	arg_bytes_read := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_bytes_read, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -16896,7 +17134,7 @@ func (v InputStream) ReadAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/, c
 // g_input_stream_read_all_async
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) ReadAllAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v InputStream) ReadAllAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(839, "InputStream", "read_all_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16906,7 +17144,7 @@ func (v InputStream) ReadAllAsync(buffer int /*TODO_TYPE isPtr: true, tag: array
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -16938,7 +17176,7 @@ func (v InputStream) ReadAllFinish(result AsyncResult) (result1 bool, bytes_read
 // g_input_stream_read_async
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) ReadAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v InputStream) ReadAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(841, "InputStream", "read_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16948,7 +17186,7 @@ func (v InputStream) ReadAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/,
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -16958,7 +17196,7 @@ func (v InputStream) ReadAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/,
 // g_input_stream_read_bytes
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) ReadBytes(count uint64, cancellable Cancellable) (result glib.Bytes, err error) {
+func (v InputStream) ReadBytes(count uint64, cancellable ICancellable) (result glib.Bytes, err error) {
 	iv, err := _I.Get(842, "InputStream", "read_bytes")
 	if err != nil {
 		return
@@ -16966,7 +17204,7 @@ func (v InputStream) ReadBytes(count uint64, cancellable Cancellable) (result gl
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_count := gi.NewUint64Argument(count)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -16979,7 +17217,7 @@ func (v InputStream) ReadBytes(count uint64, cancellable Cancellable) (result gl
 // g_input_stream_read_bytes_async
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) ReadBytesAsync(count uint64, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v InputStream) ReadBytesAsync(count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(843, "InputStream", "read_bytes_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16988,7 +17226,7 @@ func (v InputStream) ReadBytesAsync(count uint64, io_priority int32, cancellable
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -17057,7 +17295,7 @@ func (v InputStream) SetPending() (result bool, err error) {
 // g_input_stream_skip
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) Skip(count uint64, cancellable Cancellable) (result int64, err error) {
+func (v InputStream) Skip(count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(847, "InputStream", "skip")
 	if err != nil {
 		return
@@ -17065,7 +17303,7 @@ func (v InputStream) Skip(count uint64, cancellable Cancellable) (result int64, 
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_count := gi.NewUint64Argument(count)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -17078,7 +17316,7 @@ func (v InputStream) Skip(count uint64, cancellable Cancellable) (result int64, 
 // g_input_stream_skip_async
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) SkipAsync(count uint64, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v InputStream) SkipAsync(count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(848, "InputStream", "skip_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17087,7 +17325,7 @@ func (v InputStream) SkipAsync(count uint64, io_priority int32, cancellable Canc
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -17210,6 +17448,10 @@ type ListStore struct {
 
 func WrapListStore(p unsafe.Pointer) (r ListStore) { r.P = p; return }
 
+type IListStore interface{ P_ListStore() unsafe.Pointer }
+
+func (v ListStore) P_ListStore() unsafe.Pointer { return v.P }
+
 // g_list_store_new
 // container is not nil, container is ListStore
 // is constructor
@@ -17230,14 +17472,14 @@ func NewListStore(item_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result 
 // g_list_store_append
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) Append(item gobject.Object) {
+func (v ListStore) Append(item gobject.IObject) {
 	iv, err := _I.Get(855, "ListStore", "append")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_item := gi.NewPointerArgument(item.P)
+	arg_item := gi.NewPointerArgument(item.P_Object())
 	args := []gi.Argument{arg_v, arg_item}
 	iv.Call(args, nil, nil)
 }
@@ -17245,7 +17487,7 @@ func (v ListStore) Append(item gobject.Object) {
 // g_list_store_insert
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) Insert(position uint32, item gobject.Object) {
+func (v ListStore) Insert(position uint32, item gobject.IObject) {
 	iv, err := _I.Get(856, "ListStore", "insert")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17253,7 +17495,7 @@ func (v ListStore) Insert(position uint32, item gobject.Object) {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_position := gi.NewUint32Argument(position)
-	arg_item := gi.NewPointerArgument(item.P)
+	arg_item := gi.NewPointerArgument(item.P_Object())
 	args := []gi.Argument{arg_v, arg_position, arg_item}
 	iv.Call(args, nil, nil)
 }
@@ -17261,14 +17503,14 @@ func (v ListStore) Insert(position uint32, item gobject.Object) {
 // g_list_store_insert_sorted
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) InsertSorted(item gobject.Object, compare_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result uint32) {
+func (v ListStore) InsertSorted(item gobject.IObject, compare_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(857, "ListStore", "insert_sorted")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_item := gi.NewPointerArgument(item.P)
+	arg_item := gi.NewPointerArgument(item.P_Object())
 	arg_compare_func := gi.NewIntArgument(compare_func) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_item, arg_compare_func, arg_user_data}
@@ -17352,7 +17594,7 @@ type LoadableIconIfc struct{}
 // g_loadable_icon_load
 // container is not nil, container is LoadableIcon
 // is method
-func (v *LoadableIconIfc) Load(size int32, cancellable Cancellable) (result InputStream, type1 string, err error) {
+func (v *LoadableIconIfc) Load(size int32, cancellable ICancellable) (result InputStream, type1 string, err error) {
 	iv, err := _I.Get(862, "LoadableIcon", "load")
 	if err != nil {
 		return
@@ -17361,7 +17603,7 @@ func (v *LoadableIconIfc) Load(size int32, cancellable Cancellable) (result Inpu
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_size := gi.NewInt32Argument(size)
 	arg_type1 := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_size, arg_type1, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -17375,7 +17617,7 @@ func (v *LoadableIconIfc) Load(size int32, cancellable Cancellable) (result Inpu
 // g_loadable_icon_load_async
 // container is not nil, container is LoadableIcon
 // is method
-func (v *LoadableIconIfc) LoadAsync(size int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *LoadableIconIfc) LoadAsync(size int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(863, "LoadableIcon", "load_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17383,7 +17625,7 @@ func (v *LoadableIconIfc) LoadAsync(size int32, cancellable Cancellable, callbac
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_size := gi.NewInt32Argument(size)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_size, arg_cancellable, arg_callback, arg_user_data}
@@ -17421,6 +17663,10 @@ type MemoryInputStream struct {
 }
 
 func WrapMemoryInputStream(p unsafe.Pointer) (r MemoryInputStream) { r.P = p; return }
+
+type IMemoryInputStream interface{ P_MemoryInputStream() unsafe.Pointer }
+
+func (v MemoryInputStream) P_MemoryInputStream() unsafe.Pointer { return v.P }
 
 // g_memory_input_stream_new
 // container is not nil, container is MemoryInputStream
@@ -17519,6 +17765,10 @@ type MemoryOutputStream struct {
 }
 
 func WrapMemoryOutputStream(p unsafe.Pointer) (r MemoryOutputStream) { r.P = p; return }
+
+type IMemoryOutputStream interface{ P_MemoryOutputStream() unsafe.Pointer }
+
+func (v MemoryOutputStream) P_MemoryOutputStream() unsafe.Pointer { return v.P }
 
 // g_memory_output_stream_new_resizable
 // container is not nil, container is MemoryOutputStream
@@ -17627,6 +17877,10 @@ type Menu struct {
 
 func WrapMenu(p unsafe.Pointer) (r Menu) { r.P = p; return }
 
+type IMenu interface{ P_Menu() unsafe.Pointer }
+
+func (v Menu) P_Menu() unsafe.Pointer { return v.P }
+
 // g_menu_new
 // container is not nil, container is Menu
 // is constructor
@@ -17665,14 +17919,14 @@ func (v Menu) Append(label string, detailed_action string) {
 // g_menu_append_item
 // container is not nil, container is Menu
 // is method
-func (v Menu) AppendItem(item MenuItem) {
+func (v Menu) AppendItem(item IMenuItem) {
 	iv, err := _I.Get(878, "Menu", "append_item")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_item := gi.NewPointerArgument(item.P)
+	arg_item := gi.NewPointerArgument(item.P_MenuItem())
 	args := []gi.Argument{arg_v, arg_item}
 	iv.Call(args, nil, nil)
 }
@@ -17680,7 +17934,7 @@ func (v Menu) AppendItem(item MenuItem) {
 // g_menu_append_section
 // container is not nil, container is Menu
 // is method
-func (v Menu) AppendSection(label string, section MenuModel) {
+func (v Menu) AppendSection(label string, section IMenuModel) {
 	iv, err := _I.Get(879, "Menu", "append_section")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17689,7 +17943,7 @@ func (v Menu) AppendSection(label string, section MenuModel) {
 	c_label := gi.CString(label)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_label := gi.NewStringArgument(c_label)
-	arg_section := gi.NewPointerArgument(section.P)
+	arg_section := gi.NewPointerArgument(section.P_MenuModel())
 	args := []gi.Argument{arg_v, arg_label, arg_section}
 	iv.Call(args, nil, nil)
 	gi.Free(c_label)
@@ -17698,7 +17952,7 @@ func (v Menu) AppendSection(label string, section MenuModel) {
 // g_menu_append_submenu
 // container is not nil, container is Menu
 // is method
-func (v Menu) AppendSubmenu(label string, submenu MenuModel) {
+func (v Menu) AppendSubmenu(label string, submenu IMenuModel) {
 	iv, err := _I.Get(880, "Menu", "append_submenu")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17707,7 +17961,7 @@ func (v Menu) AppendSubmenu(label string, submenu MenuModel) {
 	c_label := gi.CString(label)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_label := gi.NewStringArgument(c_label)
-	arg_submenu := gi.NewPointerArgument(submenu.P)
+	arg_submenu := gi.NewPointerArgument(submenu.P_MenuModel())
 	args := []gi.Argument{arg_v, arg_label, arg_submenu}
 	iv.Call(args, nil, nil)
 	gi.Free(c_label)
@@ -17751,7 +18005,7 @@ func (v Menu) Insert(position int32, label string, detailed_action string) {
 // g_menu_insert_item
 // container is not nil, container is Menu
 // is method
-func (v Menu) InsertItem(position int32, item MenuItem) {
+func (v Menu) InsertItem(position int32, item IMenuItem) {
 	iv, err := _I.Get(883, "Menu", "insert_item")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17759,7 +18013,7 @@ func (v Menu) InsertItem(position int32, item MenuItem) {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_position := gi.NewInt32Argument(position)
-	arg_item := gi.NewPointerArgument(item.P)
+	arg_item := gi.NewPointerArgument(item.P_MenuItem())
 	args := []gi.Argument{arg_v, arg_position, arg_item}
 	iv.Call(args, nil, nil)
 }
@@ -17767,7 +18021,7 @@ func (v Menu) InsertItem(position int32, item MenuItem) {
 // g_menu_insert_section
 // container is not nil, container is Menu
 // is method
-func (v Menu) InsertSection(position int32, label string, section MenuModel) {
+func (v Menu) InsertSection(position int32, label string, section IMenuModel) {
 	iv, err := _I.Get(884, "Menu", "insert_section")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17777,7 +18031,7 @@ func (v Menu) InsertSection(position int32, label string, section MenuModel) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_position := gi.NewInt32Argument(position)
 	arg_label := gi.NewStringArgument(c_label)
-	arg_section := gi.NewPointerArgument(section.P)
+	arg_section := gi.NewPointerArgument(section.P_MenuModel())
 	args := []gi.Argument{arg_v, arg_position, arg_label, arg_section}
 	iv.Call(args, nil, nil)
 	gi.Free(c_label)
@@ -17786,7 +18040,7 @@ func (v Menu) InsertSection(position int32, label string, section MenuModel) {
 // g_menu_insert_submenu
 // container is not nil, container is Menu
 // is method
-func (v Menu) InsertSubmenu(position int32, label string, submenu MenuModel) {
+func (v Menu) InsertSubmenu(position int32, label string, submenu IMenuModel) {
 	iv, err := _I.Get(885, "Menu", "insert_submenu")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17796,7 +18050,7 @@ func (v Menu) InsertSubmenu(position int32, label string, submenu MenuModel) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_position := gi.NewInt32Argument(position)
 	arg_label := gi.NewStringArgument(c_label)
-	arg_submenu := gi.NewPointerArgument(submenu.P)
+	arg_submenu := gi.NewPointerArgument(submenu.P_MenuModel())
 	args := []gi.Argument{arg_v, arg_position, arg_label, arg_submenu}
 	iv.Call(args, nil, nil)
 	gi.Free(c_label)
@@ -17825,14 +18079,14 @@ func (v Menu) Prepend(label string, detailed_action string) {
 // g_menu_prepend_item
 // container is not nil, container is Menu
 // is method
-func (v Menu) PrependItem(item MenuItem) {
+func (v Menu) PrependItem(item IMenuItem) {
 	iv, err := _I.Get(887, "Menu", "prepend_item")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_item := gi.NewPointerArgument(item.P)
+	arg_item := gi.NewPointerArgument(item.P_MenuItem())
 	args := []gi.Argument{arg_v, arg_item}
 	iv.Call(args, nil, nil)
 }
@@ -17840,7 +18094,7 @@ func (v Menu) PrependItem(item MenuItem) {
 // g_menu_prepend_section
 // container is not nil, container is Menu
 // is method
-func (v Menu) PrependSection(label string, section MenuModel) {
+func (v Menu) PrependSection(label string, section IMenuModel) {
 	iv, err := _I.Get(888, "Menu", "prepend_section")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17849,7 +18103,7 @@ func (v Menu) PrependSection(label string, section MenuModel) {
 	c_label := gi.CString(label)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_label := gi.NewStringArgument(c_label)
-	arg_section := gi.NewPointerArgument(section.P)
+	arg_section := gi.NewPointerArgument(section.P_MenuModel())
 	args := []gi.Argument{arg_v, arg_label, arg_section}
 	iv.Call(args, nil, nil)
 	gi.Free(c_label)
@@ -17858,7 +18112,7 @@ func (v Menu) PrependSection(label string, section MenuModel) {
 // g_menu_prepend_submenu
 // container is not nil, container is Menu
 // is method
-func (v Menu) PrependSubmenu(label string, submenu MenuModel) {
+func (v Menu) PrependSubmenu(label string, submenu IMenuModel) {
 	iv, err := _I.Get(889, "Menu", "prepend_submenu")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17867,7 +18121,7 @@ func (v Menu) PrependSubmenu(label string, submenu MenuModel) {
 	c_label := gi.CString(label)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_label := gi.NewStringArgument(c_label)
-	arg_submenu := gi.NewPointerArgument(submenu.P)
+	arg_submenu := gi.NewPointerArgument(submenu.P_MenuModel())
 	args := []gi.Argument{arg_v, arg_label, arg_submenu}
 	iv.Call(args, nil, nil)
 	gi.Free(c_label)
@@ -17909,6 +18163,10 @@ type MenuAttributeIter struct {
 
 func WrapMenuAttributeIter(p unsafe.Pointer) (r MenuAttributeIter) { r.P = p; return }
 
+type IMenuAttributeIter interface{ P_MenuAttributeIter() unsafe.Pointer }
+
+func (v MenuAttributeIter) P_MenuAttributeIter() unsafe.Pointer { return v.P }
+
 // g_menu_attribute_iter_get_name
 // container is not nil, container is MenuAttributeIter
 // is method
@@ -17929,7 +18187,7 @@ func (v MenuAttributeIter) GetName() (result string) {
 // g_menu_attribute_iter_get_next
 // container is not nil, container is MenuAttributeIter
 // is method
-func (v MenuAttributeIter) GetNext() (result bool, out_name string, value int /*TODO_TYPE*/) {
+func (v MenuAttributeIter) GetNext() (result bool, out_name string, value glib.Variant) {
 	iv, err := _I.Get(893, "MenuAttributeIter", "get_next")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17944,7 +18202,7 @@ func (v MenuAttributeIter) GetNext() (result bool, out_name string, value int /*
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
 	out_name = outArgs[0].String().Take()
-	value = outArgs[1].Int() /*TODO*/
+	value.P = outArgs[1].Pointer()
 	return
 }
 
@@ -17995,6 +18253,10 @@ type MenuItem struct {
 
 func WrapMenuItem(p unsafe.Pointer) (r MenuItem) { r.P = p; return }
 
+type IMenuItem interface{ P_MenuItem() unsafe.Pointer }
+
+func (v MenuItem) P_MenuItem() unsafe.Pointer { return v.P }
+
 // g_menu_item_new
 // container is not nil, container is MenuItem
 // is constructor
@@ -18020,13 +18282,13 @@ func NewMenuItem(label string, detailed_action string) (result MenuItem) {
 // g_menu_item_new_from_model
 // container is not nil, container is MenuItem
 // is constructor
-func NewMenuItemFromModel(model MenuModel, item_index int32) (result MenuItem) {
+func NewMenuItemFromModel(model IMenuModel, item_index int32) (result MenuItem) {
 	iv, err := _I.Get(897, "MenuItem", "new_from_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_model := gi.NewPointerArgument(model.P)
+	arg_model := gi.NewPointerArgument(model.P_MenuModel())
 	arg_item_index := gi.NewInt32Argument(item_index)
 	args := []gi.Argument{arg_model, arg_item_index}
 	var ret gi.Argument
@@ -18038,7 +18300,7 @@ func NewMenuItemFromModel(model MenuModel, item_index int32) (result MenuItem) {
 // g_menu_item_new_section
 // container is not nil, container is MenuItem
 // is constructor
-func NewMenuItemSection(label string, section MenuModel) (result MenuItem) {
+func NewMenuItemSection(label string, section IMenuModel) (result MenuItem) {
 	iv, err := _I.Get(898, "MenuItem", "new_section")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18046,7 +18308,7 @@ func NewMenuItemSection(label string, section MenuModel) (result MenuItem) {
 	}
 	c_label := gi.CString(label)
 	arg_label := gi.NewStringArgument(c_label)
-	arg_section := gi.NewPointerArgument(section.P)
+	arg_section := gi.NewPointerArgument(section.P_MenuModel())
 	args := []gi.Argument{arg_label, arg_section}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -18058,7 +18320,7 @@ func NewMenuItemSection(label string, section MenuModel) (result MenuItem) {
 // g_menu_item_new_submenu
 // container is not nil, container is MenuItem
 // is constructor
-func NewMenuItemSubmenu(label string, submenu MenuModel) (result MenuItem) {
+func NewMenuItemSubmenu(label string, submenu IMenuModel) (result MenuItem) {
 	iv, err := _I.Get(899, "MenuItem", "new_submenu")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18066,7 +18328,7 @@ func NewMenuItemSubmenu(label string, submenu MenuModel) (result MenuItem) {
 	}
 	c_label := gi.CString(label)
 	arg_label := gi.NewStringArgument(c_label)
-	arg_submenu := gi.NewPointerArgument(submenu.P)
+	arg_submenu := gi.NewPointerArgument(submenu.P_MenuModel())
 	args := []gi.Argument{arg_label, arg_submenu}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -18204,7 +18466,7 @@ func (v MenuItem) SetLabel(label string) {
 // g_menu_item_set_link
 // container is not nil, container is MenuItem
 // is method
-func (v MenuItem) SetLink(link string, model MenuModel) {
+func (v MenuItem) SetLink(link string, model IMenuModel) {
 	iv, err := _I.Get(907, "MenuItem", "set_link")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18213,7 +18475,7 @@ func (v MenuItem) SetLink(link string, model MenuModel) {
 	c_link := gi.CString(link)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_link := gi.NewStringArgument(c_link)
-	arg_model := gi.NewPointerArgument(model.P)
+	arg_model := gi.NewPointerArgument(model.P_MenuModel())
 	args := []gi.Argument{arg_v, arg_link, arg_model}
 	iv.Call(args, nil, nil)
 	gi.Free(c_link)
@@ -18222,14 +18484,14 @@ func (v MenuItem) SetLink(link string, model MenuModel) {
 // g_menu_item_set_section
 // container is not nil, container is MenuItem
 // is method
-func (v MenuItem) SetSection(section MenuModel) {
+func (v MenuItem) SetSection(section IMenuModel) {
 	iv, err := _I.Get(908, "MenuItem", "set_section")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_section := gi.NewPointerArgument(section.P)
+	arg_section := gi.NewPointerArgument(section.P_MenuModel())
 	args := []gi.Argument{arg_v, arg_section}
 	iv.Call(args, nil, nil)
 }
@@ -18237,14 +18499,14 @@ func (v MenuItem) SetSection(section MenuModel) {
 // g_menu_item_set_submenu
 // container is not nil, container is MenuItem
 // is method
-func (v MenuItem) SetSubmenu(submenu MenuModel) {
+func (v MenuItem) SetSubmenu(submenu IMenuModel) {
 	iv, err := _I.Get(909, "MenuItem", "set_submenu")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_submenu := gi.NewPointerArgument(submenu.P)
+	arg_submenu := gi.NewPointerArgument(submenu.P_MenuModel())
 	args := []gi.Argument{arg_v, arg_submenu}
 	iv.Call(args, nil, nil)
 }
@@ -18255,6 +18517,10 @@ type MenuLinkIter struct {
 }
 
 func WrapMenuLinkIter(p unsafe.Pointer) (r MenuLinkIter) { r.P = p; return }
+
+type IMenuLinkIter interface{ P_MenuLinkIter() unsafe.Pointer }
+
+func (v MenuLinkIter) P_MenuLinkIter() unsafe.Pointer { return v.P }
 
 // g_menu_link_iter_get_name
 // container is not nil, container is MenuLinkIter
@@ -18276,7 +18542,7 @@ func (v MenuLinkIter) GetName() (result string) {
 // g_menu_link_iter_get_next
 // container is not nil, container is MenuLinkIter
 // is method
-func (v MenuLinkIter) GetNext() (result bool, out_link string, value int /*TODO_TYPE*/) {
+func (v MenuLinkIter) GetNext() (result bool, out_link string, value MenuModel) {
 	iv, err := _I.Get(911, "MenuLinkIter", "get_next")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18291,7 +18557,7 @@ func (v MenuLinkIter) GetNext() (result bool, out_link string, value int /*TODO_
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
 	out_link = outArgs[0].String().Take()
-	value = outArgs[1].Int() /*TODO*/
+	value.P = outArgs[1].Pointer()
 	return
 }
 
@@ -18341,6 +18607,10 @@ type MenuModel struct {
 }
 
 func WrapMenuModel(p unsafe.Pointer) (r MenuModel) { r.P = p; return }
+
+type IMenuModel interface{ P_MenuModel() unsafe.Pointer }
+
+func (v MenuModel) P_MenuModel() unsafe.Pointer { return v.P }
 
 // g_menu_model_get_item_attribute_value
 // container is not nil, container is MenuModel
@@ -18522,15 +18792,15 @@ func (v *MountIfc) CanUnmount() (result bool) {
 // g_mount_eject
 // container is not nil, container is Mount
 // is method
-func (v *MountIfc) Eject(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *MountIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(923, "Mount", "eject")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -18560,16 +18830,16 @@ func (v *MountIfc) EjectFinish(result AsyncResult) (result1 bool, err error) {
 // g_mount_eject_with_operation
 // container is not nil, container is Mount
 // is method
-func (v *MountIfc) EjectWithOperation(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *MountIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(925, "Mount", "eject_with_operation")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -18752,7 +19022,7 @@ func (v *MountIfc) GetVolume() (result Volume) {
 // g_mount_guess_content_type
 // container is not nil, container is Mount
 // is method
-func (v *MountIfc) GuessContentType(force_rescan bool, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *MountIfc) GuessContentType(force_rescan bool, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(936, "Mount", "guess_content_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18760,7 +19030,7 @@ func (v *MountIfc) GuessContentType(force_rescan bool, cancellable Cancellable, 
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_force_rescan := gi.NewBoolArgument(force_rescan)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_force_rescan, arg_cancellable, arg_callback, arg_user_data}
@@ -18790,7 +19060,7 @@ func (v *MountIfc) GuessContentTypeFinish(result AsyncResult) (result1 int /*TOD
 // g_mount_guess_content_type_sync
 // container is not nil, container is Mount
 // is method
-func (v *MountIfc) GuessContentTypeSync(force_rescan bool, cancellable Cancellable) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func (v *MountIfc) GuessContentTypeSync(force_rescan bool, cancellable ICancellable) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
 	iv, err := _I.Get(938, "Mount", "guess_content_type_sync")
 	if err != nil {
 		return
@@ -18798,7 +19068,7 @@ func (v *MountIfc) GuessContentTypeSync(force_rescan bool, cancellable Cancellab
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_force_rescan := gi.NewBoolArgument(force_rescan)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_force_rescan, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -18828,16 +19098,16 @@ func (v *MountIfc) IsShadowed() (result bool) {
 // g_mount_remount
 // container is not nil, container is Mount
 // is method
-func (v *MountIfc) Remount(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *MountIfc) Remount(flags MountMountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(940, "Mount", "remount")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -18881,15 +19151,15 @@ func (v *MountIfc) Shadow() {
 // g_mount_unmount
 // container is not nil, container is Mount
 // is method
-func (v *MountIfc) Unmount(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *MountIfc) Unmount(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(943, "Mount", "unmount")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -18919,16 +19189,16 @@ func (v *MountIfc) UnmountFinish(result AsyncResult) (result1 bool, err error) {
 // g_mount_unmount_with_operation
 // container is not nil, container is Mount
 // is method
-func (v *MountIfc) UnmountWithOperation(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *MountIfc) UnmountWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(945, "Mount", "unmount_with_operation")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -18970,6 +19240,7 @@ func (v *MountIfc) Unshadow() {
 }
 
 // ignore GType struct MountIface
+// Flags MountMountFlags
 type MountMountFlags int
 
 const (
@@ -18982,6 +19253,10 @@ type MountOperation struct {
 }
 
 func WrapMountOperation(p unsafe.Pointer) (r MountOperation) { r.P = p; return }
+
+type IMountOperation interface{ P_MountOperation() unsafe.Pointer }
+
+func (v MountOperation) P_MountOperation() unsafe.Pointer { return v.P }
 
 // g_mount_operation_new
 // container is not nil, container is MountOperation
@@ -19103,7 +19378,7 @@ func (v MountOperation) GetPassword() (result string) {
 // g_mount_operation_get_password_save
 // container is not nil, container is MountOperation
 // is method
-func (v MountOperation) GetPasswordSave() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v MountOperation) GetPasswordSave() (result PasswordSaveEnum) {
 	iv, err := _I.Get(955, "MountOperation", "get_password_save")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19113,7 +19388,7 @@ func (v MountOperation) GetPasswordSave() (result int /*TODO_TYPE isPtr: false, 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = PasswordSaveEnum(ret.Int())
 	return
 }
 
@@ -19154,14 +19429,14 @@ func (v MountOperation) GetUsername() (result string) {
 // g_mount_operation_reply
 // container is not nil, container is MountOperation
 // is method
-func (v MountOperation) Reply(result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v MountOperation) Reply(result MountOperationResultEnum) {
 	iv, err := _I.Get(958, "MountOperation", "reply")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_result := gi.NewIntArgument(result) /*TODO*/
+	arg_result := gi.NewIntArgument(int(result))
 	args := []gi.Argument{arg_v, arg_result}
 	iv.Call(args, nil, nil)
 }
@@ -19263,14 +19538,14 @@ func (v MountOperation) SetPassword(password string) {
 // g_mount_operation_set_password_save
 // container is not nil, container is MountOperation
 // is method
-func (v MountOperation) SetPasswordSave(save int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v MountOperation) SetPasswordSave(save PasswordSaveEnum) {
 	iv, err := _I.Get(965, "MountOperation", "set_password_save")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_save := gi.NewIntArgument(save) /*TODO*/
+	arg_save := gi.NewIntArgument(int(save))
 	args := []gi.Argument{arg_v, arg_save}
 	iv.Call(args, nil, nil)
 }
@@ -19312,6 +19587,8 @@ func (v MountOperation) SetUsername(username string) {
 type MountOperationPrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum MountOperationResult
 type MountOperationResultEnum int
 
 const (
@@ -19320,6 +19597,7 @@ const (
 	MountOperationResultUnhandled                          = 2
 )
 
+// Flags MountUnmountFlags
 type MountUnmountFlags int
 
 const (
@@ -19339,6 +19617,10 @@ type NativeVolumeMonitor struct {
 
 func WrapNativeVolumeMonitor(p unsafe.Pointer) (r NativeVolumeMonitor) { r.P = p; return }
 
+type INativeVolumeMonitor interface{ P_NativeVolumeMonitor() unsafe.Pointer }
+
+func (v NativeVolumeMonitor) P_NativeVolumeMonitor() unsafe.Pointer { return v.P }
+
 // ignore GType struct NativeVolumeMonitorClass
 // Object NetworkAddress
 type NetworkAddress struct {
@@ -19347,6 +19629,10 @@ type NetworkAddress struct {
 }
 
 func WrapNetworkAddress(p unsafe.Pointer) (r NetworkAddress) { r.P = p; return }
+
+type INetworkAddress interface{ P_NetworkAddress() unsafe.Pointer }
+
+func (v NetworkAddress) P_NetworkAddress() unsafe.Pointer { return v.P }
 
 // g_network_address_new
 // container is not nil, container is NetworkAddress
@@ -19487,6 +19773,8 @@ func (v NetworkAddress) GetScheme() (result string) {
 type NetworkAddressPrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum NetworkConnectivity
 type NetworkConnectivityEnum int
 
 const (
@@ -19509,7 +19797,7 @@ type NetworkMonitorIfc struct{}
 // g_network_monitor_can_reach
 // container is not nil, container is NetworkMonitor
 // is method
-func (v *NetworkMonitorIfc) CanReach(connectable SocketConnectable, cancellable Cancellable) (result bool, err error) {
+func (v *NetworkMonitorIfc) CanReach(connectable SocketConnectable, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(976, "NetworkMonitor", "can_reach")
 	if err != nil {
 		return
@@ -19517,7 +19805,7 @@ func (v *NetworkMonitorIfc) CanReach(connectable SocketConnectable, cancellable 
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_connectable := gi.NewPointerArgument(connectable.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_connectable, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -19530,7 +19818,7 @@ func (v *NetworkMonitorIfc) CanReach(connectable SocketConnectable, cancellable 
 // g_network_monitor_can_reach_async
 // container is not nil, container is NetworkMonitor
 // is method
-func (v *NetworkMonitorIfc) CanReachAsync(connectable SocketConnectable, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *NetworkMonitorIfc) CanReachAsync(connectable SocketConnectable, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(977, "NetworkMonitor", "can_reach_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19538,7 +19826,7 @@ func (v *NetworkMonitorIfc) CanReachAsync(connectable SocketConnectable, cancell
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_connectable := gi.NewPointerArgument(connectable.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_connectable, arg_cancellable, arg_callback, arg_user_data}
@@ -19568,7 +19856,7 @@ func (v *NetworkMonitorIfc) CanReachFinish(result AsyncResult) (result1 bool, er
 // g_network_monitor_get_connectivity
 // container is not nil, container is NetworkMonitor
 // is method
-func (v *NetworkMonitorIfc) GetConnectivity() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *NetworkMonitorIfc) GetConnectivity() (result NetworkConnectivityEnum) {
 	iv, err := _I.Get(979, "NetworkMonitor", "get_connectivity")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19578,7 +19866,7 @@ func (v *NetworkMonitorIfc) GetConnectivity() (result int /*TODO_TYPE isPtr: fal
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = NetworkConnectivityEnum(ret.Int())
 	return
 }
 
@@ -19624,6 +19912,10 @@ type NetworkService struct {
 }
 
 func WrapNetworkService(p unsafe.Pointer) (r NetworkService) { r.P = p; return }
+
+type INetworkService interface{ P_NetworkService() unsafe.Pointer }
+
+func (v NetworkService) P_NetworkService() unsafe.Pointer { return v.P }
 
 // g_network_service_new
 // container is not nil, container is NetworkService
@@ -19747,6 +20039,10 @@ type Notification struct {
 }
 
 func WrapNotification(p unsafe.Pointer) (r Notification) { r.P = p; return }
+
+type INotification interface{ P_Notification() unsafe.Pointer }
+
+func (v Notification) P_Notification() unsafe.Pointer { return v.P }
 
 // g_notification_new
 // container is not nil, container is Notification
@@ -19878,14 +20174,14 @@ func (v Notification) SetIcon(icon Icon) {
 // g_notification_set_priority
 // container is not nil, container is Notification
 // is method
-func (v Notification) SetPriority(priority int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Notification) SetPriority(priority NotificationPriorityEnum) {
 	iv, err := _I.Get(995, "Notification", "set_priority")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_priority := gi.NewIntArgument(priority) /*TODO*/
+	arg_priority := gi.NewIntArgument(int(priority))
 	args := []gi.Argument{arg_v, arg_priority}
 	iv.Call(args, nil, nil)
 }
@@ -19922,6 +20218,7 @@ func (v Notification) SetUrgent(urgent bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Enum NotificationPriority
 type NotificationPriorityEnum int
 
 const (
@@ -19943,6 +20240,10 @@ type OutputStream struct {
 
 func WrapOutputStream(p unsafe.Pointer) (r OutputStream) { r.P = p; return }
 
+type IOutputStream interface{ P_OutputStream() unsafe.Pointer }
+
+func (v OutputStream) P_OutputStream() unsafe.Pointer { return v.P }
+
 // g_output_stream_clear_pending
 // container is not nil, container is OutputStream
 // is method
@@ -19960,14 +20261,14 @@ func (v OutputStream) ClearPending() {
 // g_output_stream_close
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) Close(cancellable Cancellable) (result bool, err error) {
+func (v OutputStream) Close(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(999, "OutputStream", "close")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -19980,7 +20281,7 @@ func (v OutputStream) Close(cancellable Cancellable) (result bool, err error) {
 // g_output_stream_close_async
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) CloseAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v OutputStream) CloseAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1000, "OutputStream", "close_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19988,7 +20289,7 @@ func (v OutputStream) CloseAsync(io_priority int32, cancellable Cancellable, cal
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -20018,14 +20319,14 @@ func (v OutputStream) CloseFinish(result AsyncResult) (result1 bool, err error) 
 // g_output_stream_flush
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) Flush(cancellable Cancellable) (result bool, err error) {
+func (v OutputStream) Flush(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1002, "OutputStream", "flush")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -20038,7 +20339,7 @@ func (v OutputStream) Flush(cancellable Cancellable) (result bool, err error) {
 // g_output_stream_flush_async
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) FlushAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v OutputStream) FlushAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1003, "OutputStream", "flush_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20046,7 +20347,7 @@ func (v OutputStream) FlushAsync(io_priority int32, cancellable Cancellable, cal
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -20146,16 +20447,16 @@ func (v OutputStream) SetPending() (result bool, err error) {
 // g_output_stream_splice
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) Splice(source InputStream, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result int64, err error) {
+func (v OutputStream) Splice(source IInputStream, flags OutputStreamSpliceFlags, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1009, "OutputStream", "splice")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_source := gi.NewPointerArgument(source.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_source := gi.NewPointerArgument(source.P_InputStream())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_source, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -20168,17 +20469,17 @@ func (v OutputStream) Splice(source InputStream, flags int /*TODO_TYPE isPtr: fa
 // g_output_stream_splice_async
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) SpliceAsync(source InputStream, flags int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v OutputStream) SpliceAsync(source IInputStream, flags OutputStreamSpliceFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1010, "OutputStream", "splice_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_source := gi.NewPointerArgument(source.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_source := gi.NewPointerArgument(source.P_InputStream())
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_source, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -20208,7 +20509,7 @@ func (v OutputStream) SpliceFinish(result AsyncResult) (result1 int64, err error
 // g_output_stream_write
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) Write(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable Cancellable) (result int64, err error) {
+func (v OutputStream) Write(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1012, "OutputStream", "write")
 	if err != nil {
 		return
@@ -20217,7 +20518,7 @@ func (v OutputStream) Write(buffer int /*TODO_TYPE isPtr: true, tag: array*/, co
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -20230,7 +20531,7 @@ func (v OutputStream) Write(buffer int /*TODO_TYPE isPtr: true, tag: array*/, co
 // g_output_stream_write_all
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) WriteAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable Cancellable) (result bool, bytes_written uint64, err error) {
+func (v OutputStream) WriteAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result bool, bytes_written uint64, err error) {
 	iv, err := _I.Get(1013, "OutputStream", "write_all")
 	if err != nil {
 		return
@@ -20240,7 +20541,7 @@ func (v OutputStream) WriteAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/,
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
 	arg_bytes_written := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_bytes_written, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -20254,7 +20555,7 @@ func (v OutputStream) WriteAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/,
 // g_output_stream_write_all_async
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) WriteAllAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v OutputStream) WriteAllAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1014, "OutputStream", "write_all_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20264,7 +20565,7 @@ func (v OutputStream) WriteAllAsync(buffer int /*TODO_TYPE isPtr: true, tag: arr
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -20296,7 +20597,7 @@ func (v OutputStream) WriteAllFinish(result AsyncResult) (result1 bool, bytes_wr
 // g_output_stream_write_async
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) WriteAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v OutputStream) WriteAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1016, "OutputStream", "write_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20306,7 +20607,7 @@ func (v OutputStream) WriteAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -20316,7 +20617,7 @@ func (v OutputStream) WriteAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*
 // g_output_stream_write_bytes
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) WriteBytes(bytes glib.Bytes, cancellable Cancellable) (result int64, err error) {
+func (v OutputStream) WriteBytes(bytes glib.Bytes, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1017, "OutputStream", "write_bytes")
 	if err != nil {
 		return
@@ -20324,7 +20625,7 @@ func (v OutputStream) WriteBytes(bytes glib.Bytes, cancellable Cancellable) (res
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_bytes := gi.NewPointerArgument(bytes.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_bytes, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -20337,7 +20638,7 @@ func (v OutputStream) WriteBytes(bytes glib.Bytes, cancellable Cancellable) (res
 // g_output_stream_write_bytes_async
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) WriteBytesAsync(bytes glib.Bytes, io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v OutputStream) WriteBytesAsync(bytes glib.Bytes, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1018, "OutputStream", "write_bytes_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20346,7 +20647,7 @@ func (v OutputStream) WriteBytesAsync(bytes glib.Bytes, io_priority int32, cance
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_bytes := gi.NewPointerArgument(bytes.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_bytes, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -20398,6 +20699,8 @@ func (v OutputStream) WriteFinish(result AsyncResult) (result1 int64, err error)
 type OutputStreamPrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags OutputStreamSpliceFlags
 type OutputStreamSpliceFlags int
 
 const (
@@ -20410,6 +20713,8 @@ const (
 type OutputVector struct {
 	P unsafe.Pointer
 }
+
+// Enum PasswordSave
 type PasswordSaveEnum int
 
 const (
@@ -20425,17 +20730,21 @@ type Permission struct {
 
 func WrapPermission(p unsafe.Pointer) (r Permission) { r.P = p; return }
 
+type IPermission interface{ P_Permission() unsafe.Pointer }
+
+func (v Permission) P_Permission() unsafe.Pointer { return v.P }
+
 // g_permission_acquire
 // container is not nil, container is Permission
 // is method
-func (v Permission) Acquire(cancellable Cancellable) (result bool, err error) {
+func (v Permission) Acquire(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1021, "Permission", "acquire")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -20448,14 +20757,14 @@ func (v Permission) Acquire(cancellable Cancellable) (result bool, err error) {
 // g_permission_acquire_async
 // container is not nil, container is Permission
 // is method
-func (v Permission) AcquireAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Permission) AcquireAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1022, "Permission", "acquire_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -20553,14 +20862,14 @@ func (v Permission) ImplUpdate(allowed bool, can_acquire bool, can_release bool)
 // g_permission_release
 // container is not nil, container is Permission
 // is method
-func (v Permission) Release(cancellable Cancellable) (result bool, err error) {
+func (v Permission) Release(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1028, "Permission", "release")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -20573,14 +20882,14 @@ func (v Permission) Release(cancellable Cancellable) (result bool, err error) {
 // g_permission_release_async
 // container is not nil, container is Permission
 // is method
-func (v Permission) ReleaseAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Permission) ReleaseAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1029, "Permission", "release_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -20640,14 +20949,14 @@ func (v *PollableInputStreamIfc) CanPoll() (result bool) {
 // g_pollable_input_stream_create_source
 // container is not nil, container is PollableInputStream
 // is method
-func (v *PollableInputStreamIfc) CreateSource(cancellable Cancellable) (result glib.Source) {
+func (v *PollableInputStreamIfc) CreateSource(cancellable ICancellable) (result glib.Source) {
 	iv, err := _I.Get(1032, "PollableInputStream", "create_source")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	args := []gi.Argument{arg_v, arg_cancellable}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -20675,7 +20984,7 @@ func (v *PollableInputStreamIfc) IsReadable() (result bool) {
 // g_pollable_input_stream_read_nonblocking
 // container is not nil, container is PollableInputStream
 // is method
-func (v *PollableInputStreamIfc) ReadNonblocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable Cancellable) (result int64, err error) {
+func (v *PollableInputStreamIfc) ReadNonblocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1034, "PollableInputStream", "read_nonblocking")
 	if err != nil {
 		return
@@ -20684,7 +20993,7 @@ func (v *PollableInputStreamIfc) ReadNonblocking(buffer int /*TODO_TYPE isPtr: t
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -20722,14 +21031,14 @@ func (v *PollableOutputStreamIfc) CanPoll() (result bool) {
 // g_pollable_output_stream_create_source
 // container is not nil, container is PollableOutputStream
 // is method
-func (v *PollableOutputStreamIfc) CreateSource(cancellable Cancellable) (result glib.Source) {
+func (v *PollableOutputStreamIfc) CreateSource(cancellable ICancellable) (result glib.Source) {
 	iv, err := _I.Get(1036, "PollableOutputStream", "create_source")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	args := []gi.Argument{arg_v, arg_cancellable}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -20757,7 +21066,7 @@ func (v *PollableOutputStreamIfc) IsWritable() (result bool) {
 // g_pollable_output_stream_write_nonblocking
 // container is not nil, container is PollableOutputStream
 // is method
-func (v *PollableOutputStreamIfc) WriteNonblocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable Cancellable) (result int64, err error) {
+func (v *PollableOutputStreamIfc) WriteNonblocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1038, "PollableOutputStream", "write_nonblocking")
 	if err != nil {
 		return
@@ -20766,7 +21075,7 @@ func (v *PollableOutputStreamIfc) WriteNonblocking(buffer int /*TODO_TYPE isPtr:
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -20785,10 +21094,14 @@ type PropertyAction struct {
 
 func WrapPropertyAction(p unsafe.Pointer) (r PropertyAction) { r.P = p; return }
 
+type IPropertyAction interface{ P_PropertyAction() unsafe.Pointer }
+
+func (v PropertyAction) P_PropertyAction() unsafe.Pointer { return v.P }
+
 // g_property_action_new
 // container is not nil, container is PropertyAction
 // is constructor
-func NewPropertyAction(name string, object gobject.Object, property_name string) (result PropertyAction) {
+func NewPropertyAction(name string, object gobject.IObject, property_name string) (result PropertyAction) {
 	iv, err := _I.Get(1039, "PropertyAction", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20797,7 +21110,7 @@ func NewPropertyAction(name string, object gobject.Object, property_name string)
 	c_name := gi.CString(name)
 	c_property_name := gi.CString(property_name)
 	arg_name := gi.NewStringArgument(c_name)
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_Object())
 	arg_property_name := gi.NewStringArgument(c_property_name)
 	args := []gi.Argument{arg_name, arg_object, arg_property_name}
 	var ret gi.Argument
@@ -20838,16 +21151,16 @@ func ProxyGetDefaultForProtocol1(protocol string) (result Proxy) {
 // g_proxy_connect
 // container is not nil, container is Proxy
 // is method
-func (v *ProxyIfc) Connect(connection IOStream, proxy_address ProxyAddress, cancellable Cancellable) (result IOStream, err error) {
+func (v *ProxyIfc) Connect(connection IIOStream, proxy_address IProxyAddress, cancellable ICancellable) (result IOStream, err error) {
 	iv, err := _I.Get(1041, "Proxy", "connect")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_connection := gi.NewPointerArgument(connection.P)
-	arg_proxy_address := gi.NewPointerArgument(proxy_address.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_connection := gi.NewPointerArgument(connection.P_IOStream())
+	arg_proxy_address := gi.NewPointerArgument(proxy_address.P_ProxyAddress())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_connection, arg_proxy_address, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -20860,16 +21173,16 @@ func (v *ProxyIfc) Connect(connection IOStream, proxy_address ProxyAddress, canc
 // g_proxy_connect_async
 // container is not nil, container is Proxy
 // is method
-func (v *ProxyIfc) ConnectAsync(connection IOStream, proxy_address ProxyAddress, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *ProxyIfc) ConnectAsync(connection IIOStream, proxy_address IProxyAddress, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1042, "Proxy", "connect_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_connection := gi.NewPointerArgument(connection.P)
-	arg_proxy_address := gi.NewPointerArgument(proxy_address.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_connection := gi.NewPointerArgument(connection.P_IOStream())
+	arg_proxy_address := gi.NewPointerArgument(proxy_address.P_ProxyAddress())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_connection, arg_proxy_address, arg_cancellable, arg_callback, arg_user_data}
@@ -20921,10 +21234,14 @@ type ProxyAddress struct {
 
 func WrapProxyAddress(p unsafe.Pointer) (r ProxyAddress) { r.P = p; return }
 
+type IProxyAddress interface{ P_ProxyAddress() unsafe.Pointer }
+
+func (v ProxyAddress) P_ProxyAddress() unsafe.Pointer { return v.P }
+
 // g_proxy_address_new
 // container is not nil, container is ProxyAddress
 // is constructor
-func NewProxyAddress(inetaddr InetAddress, port uint16, protocol string, dest_hostname string, dest_port uint16, username string, password string) (result SocketAddress) {
+func NewProxyAddress(inetaddr IInetAddress, port uint16, protocol string, dest_hostname string, dest_port uint16, username string, password string) (result SocketAddress) {
 	iv, err := _I.Get(1045, "ProxyAddress", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20934,7 +21251,7 @@ func NewProxyAddress(inetaddr InetAddress, port uint16, protocol string, dest_ho
 	c_dest_hostname := gi.CString(dest_hostname)
 	c_username := gi.CString(username)
 	c_password := gi.CString(password)
-	arg_inetaddr := gi.NewPointerArgument(inetaddr.P)
+	arg_inetaddr := gi.NewPointerArgument(inetaddr.P_InetAddress())
 	arg_port := gi.NewUint16Argument(port)
 	arg_protocol := gi.NewStringArgument(c_protocol)
 	arg_dest_hostname := gi.NewStringArgument(c_dest_hostname)
@@ -21079,6 +21396,10 @@ type ProxyAddressEnumerator struct {
 
 func WrapProxyAddressEnumerator(p unsafe.Pointer) (r ProxyAddressEnumerator) { r.P = p; return }
 
+type IProxyAddressEnumerator interface{ P_ProxyAddressEnumerator() unsafe.Pointer }
+
+func (v ProxyAddressEnumerator) P_ProxyAddressEnumerator() unsafe.Pointer { return v.P }
+
 // ignore GType struct ProxyAddressEnumeratorClass
 // Struct ProxyAddressEnumeratorPrivate
 type ProxyAddressEnumeratorPrivate struct {
@@ -21121,7 +21442,7 @@ func (v *ProxyResolverIfc) IsSupported() (result bool) {
 // g_proxy_resolver_lookup
 // container is not nil, container is ProxyResolver
 // is method
-func (v *ProxyResolverIfc) Lookup(uri string, cancellable Cancellable) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func (v *ProxyResolverIfc) Lookup(uri string, cancellable ICancellable) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
 	iv, err := _I.Get(1055, "ProxyResolver", "lookup")
 	if err != nil {
 		return
@@ -21130,7 +21451,7 @@ func (v *ProxyResolverIfc) Lookup(uri string, cancellable Cancellable) (result i
 	c_uri := gi.CString(uri)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_uri := gi.NewStringArgument(c_uri)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_uri, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -21144,7 +21465,7 @@ func (v *ProxyResolverIfc) Lookup(uri string, cancellable Cancellable) (result i
 // g_proxy_resolver_lookup_async
 // container is not nil, container is ProxyResolver
 // is method
-func (v *ProxyResolverIfc) LookupAsync(uri string, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *ProxyResolverIfc) LookupAsync(uri string, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1056, "ProxyResolver", "lookup_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21153,7 +21474,7 @@ func (v *ProxyResolverIfc) LookupAsync(uri string, cancellable Cancellable, call
 	c_uri := gi.CString(uri)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_uri := gi.NewStringArgument(c_uri)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_uri, arg_cancellable, arg_callback, arg_user_data}
@@ -21235,21 +21556,25 @@ type Resolver struct {
 
 func WrapResolver(p unsafe.Pointer) (r Resolver) { r.P = p; return }
 
+type IResolver interface{ P_Resolver() unsafe.Pointer }
+
+func (v Resolver) P_Resolver() unsafe.Pointer { return v.P }
+
 // g_resolver_get_default
 // container is not nil, container is Resolver
 // num arg is 0
 // g_resolver_lookup_by_address
 // container is not nil, container is Resolver
 // is method
-func (v Resolver) LookupByAddress(address InetAddress, cancellable Cancellable) (result string, err error) {
+func (v Resolver) LookupByAddress(address IInetAddress, cancellable ICancellable) (result string, err error) {
 	iv, err := _I.Get(1061, "Resolver", "lookup_by_address")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_address := gi.NewPointerArgument(address.P_InetAddress())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_address, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -21262,15 +21587,15 @@ func (v Resolver) LookupByAddress(address InetAddress, cancellable Cancellable) 
 // g_resolver_lookup_by_address_async
 // container is not nil, container is Resolver
 // is method
-func (v Resolver) LookupByAddressAsync(address InetAddress, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Resolver) LookupByAddressAsync(address IInetAddress, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1062, "Resolver", "lookup_by_address_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_address := gi.NewPointerArgument(address.P_InetAddress())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_address, arg_cancellable, arg_callback, arg_user_data}
@@ -21300,7 +21625,7 @@ func (v Resolver) LookupByAddressFinish(result AsyncResult) (result1 string, err
 // g_resolver_lookup_by_name
 // container is not nil, container is Resolver
 // is method
-func (v Resolver) LookupByName(hostname string, cancellable Cancellable) (result int /*TODO_TYPE isPtr: true, tag: glist*/, err error) {
+func (v Resolver) LookupByName(hostname string, cancellable ICancellable) (result int /*TODO_TYPE isPtr: true, tag: glist*/, err error) {
 	iv, err := _I.Get(1064, "Resolver", "lookup_by_name")
 	if err != nil {
 		return
@@ -21309,7 +21634,7 @@ func (v Resolver) LookupByName(hostname string, cancellable Cancellable) (result
 	c_hostname := gi.CString(hostname)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_hostname := gi.NewStringArgument(c_hostname)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_hostname, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -21323,7 +21648,7 @@ func (v Resolver) LookupByName(hostname string, cancellable Cancellable) (result
 // g_resolver_lookup_by_name_async
 // container is not nil, container is Resolver
 // is method
-func (v Resolver) LookupByNameAsync(hostname string, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Resolver) LookupByNameAsync(hostname string, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1065, "Resolver", "lookup_by_name_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21332,7 +21657,7 @@ func (v Resolver) LookupByNameAsync(hostname string, cancellable Cancellable, ca
 	c_hostname := gi.CString(hostname)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_hostname := gi.NewStringArgument(c_hostname)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_hostname, arg_cancellable, arg_callback, arg_user_data}
@@ -21363,7 +21688,7 @@ func (v Resolver) LookupByNameFinish(result AsyncResult) (result1 int /*TODO_TYP
 // g_resolver_lookup_records
 // container is not nil, container is Resolver
 // is method
-func (v Resolver) LookupRecords(rrname string, record_type int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result int /*TODO_TYPE isPtr: true, tag: glist*/, err error) {
+func (v Resolver) LookupRecords(rrname string, record_type ResolverRecordTypeEnum, cancellable ICancellable) (result int /*TODO_TYPE isPtr: true, tag: glist*/, err error) {
 	iv, err := _I.Get(1067, "Resolver", "lookup_records")
 	if err != nil {
 		return
@@ -21372,8 +21697,8 @@ func (v Resolver) LookupRecords(rrname string, record_type int /*TODO_TYPE isPtr
 	c_rrname := gi.CString(rrname)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_rrname := gi.NewStringArgument(c_rrname)
-	arg_record_type := gi.NewIntArgument(record_type) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_record_type := gi.NewIntArgument(int(record_type))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_rrname, arg_record_type, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -21387,7 +21712,7 @@ func (v Resolver) LookupRecords(rrname string, record_type int /*TODO_TYPE isPtr
 // g_resolver_lookup_records_async
 // container is not nil, container is Resolver
 // is method
-func (v Resolver) LookupRecordsAsync(rrname string, record_type int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Resolver) LookupRecordsAsync(rrname string, record_type ResolverRecordTypeEnum, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1068, "Resolver", "lookup_records_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21396,8 +21721,8 @@ func (v Resolver) LookupRecordsAsync(rrname string, record_type int /*TODO_TYPE 
 	c_rrname := gi.CString(rrname)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_rrname := gi.NewStringArgument(c_rrname)
-	arg_record_type := gi.NewIntArgument(record_type) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_record_type := gi.NewIntArgument(int(record_type))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_rrname, arg_record_type, arg_cancellable, arg_callback, arg_user_data}
@@ -21428,7 +21753,7 @@ func (v Resolver) LookupRecordsFinish(result AsyncResult) (result1 int /*TODO_TY
 // g_resolver_lookup_service
 // container is not nil, container is Resolver
 // is method
-func (v Resolver) LookupService(service string, protocol string, domain string, cancellable Cancellable) (result int /*TODO_TYPE isPtr: true, tag: glist*/, err error) {
+func (v Resolver) LookupService(service string, protocol string, domain string, cancellable ICancellable) (result int /*TODO_TYPE isPtr: true, tag: glist*/, err error) {
 	iv, err := _I.Get(1070, "Resolver", "lookup_service")
 	if err != nil {
 		return
@@ -21441,7 +21766,7 @@ func (v Resolver) LookupService(service string, protocol string, domain string, 
 	arg_service := gi.NewStringArgument(c_service)
 	arg_protocol := gi.NewStringArgument(c_protocol)
 	arg_domain := gi.NewStringArgument(c_domain)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_service, arg_protocol, arg_domain, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -21457,7 +21782,7 @@ func (v Resolver) LookupService(service string, protocol string, domain string, 
 // g_resolver_lookup_service_async
 // container is not nil, container is Resolver
 // is method
-func (v Resolver) LookupServiceAsync(service string, protocol string, domain string, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Resolver) LookupServiceAsync(service string, protocol string, domain string, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1071, "Resolver", "lookup_service_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21470,7 +21795,7 @@ func (v Resolver) LookupServiceAsync(service string, protocol string, domain str
 	arg_service := gi.NewStringArgument(c_service)
 	arg_protocol := gi.NewStringArgument(c_protocol)
 	arg_domain := gi.NewStringArgument(c_domain)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_service, arg_protocol, arg_domain, arg_cancellable, arg_callback, arg_user_data}
@@ -21515,6 +21840,7 @@ func (v Resolver) SetDefault() {
 }
 
 // ignore GType struct ResolverClass
+// Enum ResolverError
 type ResolverErrorEnum int
 
 const (
@@ -21527,6 +21853,8 @@ const (
 type ResolverPrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum ResolverRecordType
 type ResolverRecordTypeEnum int
 
 const (
@@ -21592,7 +21920,7 @@ func (v Resource) _Unregister() {
 // g_resource_enumerate_children
 // container is not nil, container is Resource
 // is method
-func (v Resource) EnumerateChildren(path string, lookup_flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func (v Resource) EnumerateChildren(path string, lookup_flags ResourceLookupFlags) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
 	iv, err := _I.Get(1077, "Resource", "enumerate_children")
 	if err != nil {
 		return
@@ -21601,7 +21929,7 @@ func (v Resource) EnumerateChildren(path string, lookup_flags int /*TODO_TYPE is
 	c_path := gi.CString(path)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewStringArgument(c_path)
-	arg_lookup_flags := gi.NewIntArgument(lookup_flags) /*TODO*/
+	arg_lookup_flags := gi.NewIntArgument(int(lookup_flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
@@ -21615,7 +21943,7 @@ func (v Resource) EnumerateChildren(path string, lookup_flags int /*TODO_TYPE is
 // g_resource_get_info
 // container is not nil, container is Resource
 // is method
-func (v Resource) GetInfo(path string, lookup_flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, size uint64, flags uint32, err error) {
+func (v Resource) GetInfo(path string, lookup_flags ResourceLookupFlags) (result bool, size uint64, flags uint32, err error) {
 	iv, err := _I.Get(1078, "Resource", "get_info")
 	if err != nil {
 		return
@@ -21624,7 +21952,7 @@ func (v Resource) GetInfo(path string, lookup_flags int /*TODO_TYPE isPtr: false
 	c_path := gi.CString(path)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewStringArgument(c_path)
-	arg_lookup_flags := gi.NewIntArgument(lookup_flags) /*TODO*/
+	arg_lookup_flags := gi.NewIntArgument(int(lookup_flags))
 	arg_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_flags := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -21642,7 +21970,7 @@ func (v Resource) GetInfo(path string, lookup_flags int /*TODO_TYPE isPtr: false
 // g_resource_lookup_data
 // container is not nil, container is Resource
 // is method
-func (v Resource) LookupData(path string, lookup_flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result glib.Bytes, err error) {
+func (v Resource) LookupData(path string, lookup_flags ResourceLookupFlags) (result glib.Bytes, err error) {
 	iv, err := _I.Get(1079, "Resource", "lookup_data")
 	if err != nil {
 		return
@@ -21651,7 +21979,7 @@ func (v Resource) LookupData(path string, lookup_flags int /*TODO_TYPE isPtr: fa
 	c_path := gi.CString(path)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewStringArgument(c_path)
-	arg_lookup_flags := gi.NewIntArgument(lookup_flags) /*TODO*/
+	arg_lookup_flags := gi.NewIntArgument(int(lookup_flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
@@ -21665,7 +21993,7 @@ func (v Resource) LookupData(path string, lookup_flags int /*TODO_TYPE isPtr: fa
 // g_resource_open_stream
 // container is not nil, container is Resource
 // is method
-func (v Resource) OpenStream(path string, lookup_flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result InputStream, err error) {
+func (v Resource) OpenStream(path string, lookup_flags ResourceLookupFlags) (result InputStream, err error) {
 	iv, err := _I.Get(1080, "Resource", "open_stream")
 	if err != nil {
 		return
@@ -21674,7 +22002,7 @@ func (v Resource) OpenStream(path string, lookup_flags int /*TODO_TYPE isPtr: fa
 	c_path := gi.CString(path)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewStringArgument(c_path)
-	arg_lookup_flags := gi.NewIntArgument(lookup_flags) /*TODO*/
+	arg_lookup_flags := gi.NewIntArgument(int(lookup_flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
@@ -21738,6 +22066,7 @@ func ResourceLoad1(filename string) (result Resource, err error) {
 	return
 }
 
+// Enum ResourceError
 type ResourceErrorEnum int
 
 const (
@@ -21745,6 +22074,7 @@ const (
 	ResourceErrorInternal                   = 1
 )
 
+// Flags ResourceFlags
 type ResourceFlags int
 
 const (
@@ -21752,6 +22082,7 @@ const (
 	ResourceFlagsCompressed               = 1
 )
 
+// Flags ResourceLookupFlags
 type ResourceLookupFlags int
 
 const (
@@ -21802,7 +22133,7 @@ func (v *SeekableIfc) CanTruncate() (result bool) {
 // g_seekable_seek
 // container is not nil, container is Seekable
 // is method
-func (v *SeekableIfc) Seek(offset int64, type1 int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v *SeekableIfc) Seek(offset int64, type1 glib.SeekTypeEnum, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1086, "Seekable", "seek")
 	if err != nil {
 		return
@@ -21810,8 +22141,8 @@ func (v *SeekableIfc) Seek(offset int64, type1 int /*TODO_TYPE isPtr: false, tag
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_offset := gi.NewInt64Argument(offset)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_type1 := gi.NewIntArgument(int(type1))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_offset, arg_type1, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -21841,7 +22172,7 @@ func (v *SeekableIfc) Tell() (result int64) {
 // g_seekable_truncate
 // container is not nil, container is Seekable
 // is method
-func (v *SeekableIfc) Truncate(offset int64, cancellable Cancellable) (result bool, err error) {
+func (v *SeekableIfc) Truncate(offset int64, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1088, "Seekable", "truncate")
 	if err != nil {
 		return
@@ -21849,7 +22180,7 @@ func (v *SeekableIfc) Truncate(offset int64, cancellable Cancellable) (result bo
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_offset := gi.NewInt64Argument(offset)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_offset, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -21866,6 +22197,10 @@ type Settings struct {
 }
 
 func WrapSettings(p unsafe.Pointer) (r Settings) { r.P = p; return }
+
+type ISettings interface{ P_Settings() unsafe.Pointer }
+
+func (v Settings) P_Settings() unsafe.Pointer { return v.P }
 
 // g_settings_new
 // container is not nil, container is Settings
@@ -21889,7 +22224,7 @@ func NewSettings(schema_id string) (result Settings) {
 // g_settings_new_full
 // container is not nil, container is Settings
 // is constructor
-func NewSettingsFull(schema SettingsSchema, backend SettingsBackend, path string) (result Settings) {
+func NewSettingsFull(schema SettingsSchema, backend ISettingsBackend, path string) (result Settings) {
 	iv, err := _I.Get(1090, "Settings", "new_full")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21897,7 +22232,7 @@ func NewSettingsFull(schema SettingsSchema, backend SettingsBackend, path string
 	}
 	c_path := gi.CString(path)
 	arg_schema := gi.NewPointerArgument(schema.P)
-	arg_backend := gi.NewPointerArgument(backend.P)
+	arg_backend := gi.NewPointerArgument(backend.P_SettingsBackend())
 	arg_path := gi.NewStringArgument(c_path)
 	args := []gi.Argument{arg_schema, arg_backend, arg_path}
 	var ret gi.Argument
@@ -21910,7 +22245,7 @@ func NewSettingsFull(schema SettingsSchema, backend SettingsBackend, path string
 // g_settings_new_with_backend
 // container is not nil, container is Settings
 // is constructor
-func NewSettingsWithBackend(schema_id string, backend SettingsBackend) (result Settings) {
+func NewSettingsWithBackend(schema_id string, backend ISettingsBackend) (result Settings) {
 	iv, err := _I.Get(1091, "Settings", "new_with_backend")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21918,7 +22253,7 @@ func NewSettingsWithBackend(schema_id string, backend SettingsBackend) (result S
 	}
 	c_schema_id := gi.CString(schema_id)
 	arg_schema_id := gi.NewStringArgument(c_schema_id)
-	arg_backend := gi.NewPointerArgument(backend.P)
+	arg_backend := gi.NewPointerArgument(backend.P_SettingsBackend())
 	args := []gi.Argument{arg_schema_id, arg_backend}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21930,7 +22265,7 @@ func NewSettingsWithBackend(schema_id string, backend SettingsBackend) (result S
 // g_settings_new_with_backend_and_path
 // container is not nil, container is Settings
 // is constructor
-func NewSettingsWithBackendAndPath(schema_id string, backend SettingsBackend, path string) (result Settings) {
+func NewSettingsWithBackendAndPath(schema_id string, backend ISettingsBackend, path string) (result Settings) {
 	iv, err := _I.Get(1092, "Settings", "new_with_backend_and_path")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21939,7 +22274,7 @@ func NewSettingsWithBackendAndPath(schema_id string, backend SettingsBackend, pa
 	c_schema_id := gi.CString(schema_id)
 	c_path := gi.CString(path)
 	arg_schema_id := gi.NewStringArgument(c_schema_id)
-	arg_backend := gi.NewPointerArgument(backend.P)
+	arg_backend := gi.NewPointerArgument(backend.P_SettingsBackend())
 	arg_path := gi.NewStringArgument(c_path)
 	args := []gi.Argument{arg_schema_id, arg_backend, arg_path}
 	var ret gi.Argument
@@ -21985,14 +22320,14 @@ func NewSettingsWithPath(schema_id string, path string) (result Settings) {
 // container is not nil, container is Settings
 // is method
 // arg0Type tag: interface, isPtr: true
-func SettingsUnbind1(object gobject.Object, property string) {
+func SettingsUnbind1(object gobject.IObject, property string) {
 	iv, err := _I.Get(1097, "Settings", "unbind")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_property := gi.CString(property)
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_Object())
 	arg_property := gi.NewStringArgument(c_property)
 	args := []gi.Argument{arg_object, arg_property}
 	iv.Call(args, nil, nil)
@@ -22016,7 +22351,7 @@ func (v Settings) Apply() {
 // g_settings_bind
 // container is not nil, container is Settings
 // is method
-func (v Settings) Bind(key string, object gobject.Object, property string, flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Settings) Bind(key string, object gobject.IObject, property string, flags SettingsBindFlags) {
 	iv, err := _I.Get(1099, "Settings", "bind")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22026,9 +22361,9 @@ func (v Settings) Bind(key string, object gobject.Object, property string, flags
 	c_property := gi.CString(property)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_key := gi.NewStringArgument(c_key)
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_Object())
 	arg_property := gi.NewStringArgument(c_property)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_key, arg_object, arg_property, arg_flags}
 	iv.Call(args, nil, nil)
 	gi.Free(c_key)
@@ -22038,7 +22373,7 @@ func (v Settings) Bind(key string, object gobject.Object, property string, flags
 // g_settings_bind_writable
 // container is not nil, container is Settings
 // is method
-func (v Settings) BindWritable(key string, object gobject.Object, property string, inverted bool) {
+func (v Settings) BindWritable(key string, object gobject.IObject, property string, inverted bool) {
 	iv, err := _I.Get(1100, "Settings", "bind_writable")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22048,7 +22383,7 @@ func (v Settings) BindWritable(key string, object gobject.Object, property strin
 	c_property := gi.CString(property)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_key := gi.NewStringArgument(c_key)
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_Object())
 	arg_property := gi.NewStringArgument(c_property)
 	arg_inverted := gi.NewBoolArgument(inverted)
 	args := []gi.Argument{arg_v, arg_key, arg_object, arg_property, arg_inverted}
@@ -22773,6 +23108,10 @@ type SettingsBackend struct {
 
 func WrapSettingsBackend(p unsafe.Pointer) (r SettingsBackend) { r.P = p; return }
 
+type ISettingsBackend interface{ P_SettingsBackend() unsafe.Pointer }
+
+func (v SettingsBackend) P_SettingsBackend() unsafe.Pointer { return v.P }
+
 // g_settings_backend_flatten_tree
 // container is not nil, container is SettingsBackend
 // is method
@@ -22909,6 +23248,8 @@ func (v SettingsBackend) WritableChanged(key string) {
 type SettingsBackendPrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags SettingsBindFlags
 type SettingsBindFlags int
 
 const (
@@ -23338,6 +23679,10 @@ type SimpleAction struct {
 
 func WrapSimpleAction(p unsafe.Pointer) (r SimpleAction) { r.P = p; return }
 
+type ISimpleAction interface{ P_SimpleAction() unsafe.Pointer }
+
+func (v SimpleAction) P_SimpleAction() unsafe.Pointer { return v.P }
+
 // g_simple_action_new
 // container is not nil, container is SimpleAction
 // is constructor
@@ -23432,6 +23777,10 @@ type SimpleActionGroup struct {
 }
 
 func WrapSimpleActionGroup(p unsafe.Pointer) (r SimpleActionGroup) { r.P = p; return }
+
+type ISimpleActionGroup interface{ P_SimpleActionGroup() unsafe.Pointer }
+
+func (v SimpleActionGroup) P_SimpleActionGroup() unsafe.Pointer { return v.P }
 
 // g_simple_action_group_new
 // container is not nil, container is SimpleActionGroup
@@ -23531,16 +23880,20 @@ type SimpleAsyncResult struct {
 
 func WrapSimpleAsyncResult(p unsafe.Pointer) (r SimpleAsyncResult) { r.P = p; return }
 
+type ISimpleAsyncResult interface{ P_SimpleAsyncResult() unsafe.Pointer }
+
+func (v SimpleAsyncResult) P_SimpleAsyncResult() unsafe.Pointer { return v.P }
+
 // g_simple_async_result_new
 // container is not nil, container is SimpleAsyncResult
 // is constructor
-func NewSimpleAsyncResult(source_object gobject.Object, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, source_tag unsafe.Pointer) (result SimpleAsyncResult) {
+func NewSimpleAsyncResult(source_object gobject.IObject, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, source_tag unsafe.Pointer) (result SimpleAsyncResult) {
 	iv, err := _I.Get(1178, "SimpleAsyncResult", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_source_object := gi.NewPointerArgument(source_object.P)
+	arg_source_object := gi.NewPointerArgument(source_object.P_Object())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_source_tag := gi.NewPointerArgument(source_tag)
@@ -23554,13 +23907,13 @@ func NewSimpleAsyncResult(source_object gobject.Object, callback int /*TODO_TYPE
 // g_simple_async_result_new_from_error
 // container is not nil, container is SimpleAsyncResult
 // is constructor
-func NewSimpleAsyncResultFromError(source_object gobject.Object, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, error int /*TODO_TYPE isPtr: true, tag: error*/) (result SimpleAsyncResult) {
+func NewSimpleAsyncResultFromError(source_object gobject.IObject, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, error int /*TODO_TYPE isPtr: true, tag: error*/) (result SimpleAsyncResult) {
 	iv, err := _I.Get(1179, "SimpleAsyncResult", "new_from_error")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_source_object := gi.NewPointerArgument(source_object.P)
+	arg_source_object := gi.NewPointerArgument(source_object.P_Object())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_error := gi.NewIntArgument(error) /*TODO*/
@@ -23575,14 +23928,14 @@ func NewSimpleAsyncResultFromError(source_object gobject.Object, callback int /*
 // container is not nil, container is SimpleAsyncResult
 // is method
 // arg0Type tag: interface, isPtr: true
-func SimpleAsyncResultIsValid1(result AsyncResult, source gobject.Object, source_tag unsafe.Pointer) (result1 bool) {
+func SimpleAsyncResultIsValid1(result AsyncResult, source gobject.IObject, source_tag unsafe.Pointer) (result1 bool) {
 	iv, err := _I.Get(1180, "SimpleAsyncResult", "is_valid")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_result := gi.NewPointerArgument(result.P)
-	arg_source := gi.NewPointerArgument(source.P)
+	arg_source := gi.NewPointerArgument(source.P_Object())
 	arg_source_tag := gi.NewPointerArgument(source_tag)
 	args := []gi.Argument{arg_result, arg_source, arg_source_tag}
 	var ret gi.Argument
@@ -23675,14 +24028,14 @@ func (v SimpleAsyncResult) PropagateError() (result bool, err error) {
 // g_simple_async_result_set_check_cancellable
 // container is not nil, container is SimpleAsyncResult
 // is method
-func (v SimpleAsyncResult) SetCheckCancellable(check_cancellable Cancellable) {
+func (v SimpleAsyncResult) SetCheckCancellable(check_cancellable ICancellable) {
 	iv, err := _I.Get(1186, "SimpleAsyncResult", "set_check_cancellable")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_check_cancellable := gi.NewPointerArgument(check_cancellable.P)
+	arg_check_cancellable := gi.NewPointerArgument(check_cancellable.P_Cancellable())
 	args := []gi.Argument{arg_v, arg_check_cancellable}
 	iv.Call(args, nil, nil)
 }
@@ -23755,17 +24108,21 @@ type SimpleIOStream struct {
 
 func WrapSimpleIOStream(p unsafe.Pointer) (r SimpleIOStream) { r.P = p; return }
 
+type ISimpleIOStream interface{ P_SimpleIOStream() unsafe.Pointer }
+
+func (v SimpleIOStream) P_SimpleIOStream() unsafe.Pointer { return v.P }
+
 // g_simple_io_stream_new
 // container is not nil, container is SimpleIOStream
 // is constructor
-func NewSimpleIOStream(input_stream InputStream, output_stream OutputStream) (result IOStream) {
+func NewSimpleIOStream(input_stream IInputStream, output_stream IOutputStream) (result IOStream) {
 	iv, err := _I.Get(1191, "SimpleIOStream", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_input_stream := gi.NewPointerArgument(input_stream.P)
-	arg_output_stream := gi.NewPointerArgument(output_stream.P)
+	arg_input_stream := gi.NewPointerArgument(input_stream.P_InputStream())
+	arg_output_stream := gi.NewPointerArgument(output_stream.P_OutputStream())
 	args := []gi.Argument{arg_input_stream, arg_output_stream}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23779,6 +24136,10 @@ type SimplePermission struct {
 }
 
 func WrapSimplePermission(p unsafe.Pointer) (r SimplePermission) { r.P = p; return }
+
+type ISimplePermission interface{ P_SimplePermission() unsafe.Pointer }
+
+func (v SimplePermission) P_SimplePermission() unsafe.Pointer { return v.P }
 
 // g_simple_permission_new
 // container is not nil, container is SimplePermission
@@ -23804,6 +24165,10 @@ type SimpleProxyResolver struct {
 }
 
 func WrapSimpleProxyResolver(p unsafe.Pointer) (r SimpleProxyResolver) { r.P = p; return }
+
+type ISimpleProxyResolver interface{ P_SimpleProxyResolver() unsafe.Pointer }
+
+func (v SimpleProxyResolver) P_SimpleProxyResolver() unsafe.Pointer { return v.P }
 
 // g_simple_proxy_resolver_new
 // container is not nil, container is SimpleProxyResolver
@@ -23897,18 +24262,22 @@ type Socket struct {
 
 func WrapSocket(p unsafe.Pointer) (r Socket) { r.P = p; return }
 
+type ISocket interface{ P_Socket() unsafe.Pointer }
+
+func (v Socket) P_Socket() unsafe.Pointer { return v.P }
+
 // g_socket_new
 // container is not nil, container is Socket
 // is constructor
-func NewSocket(family int /*TODO_TYPE isPtr: false, tag: interface*/, type1 int /*TODO_TYPE isPtr: false, tag: interface*/, protocol int /*TODO_TYPE isPtr: false, tag: interface*/) (result Socket, err error) {
+func NewSocket(family SocketFamilyEnum, type1 SocketTypeEnum, protocol SocketProtocolEnum) (result Socket, err error) {
 	iv, err := _I.Get(1197, "Socket", "new")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_family := gi.NewIntArgument(family)     /*TODO*/
-	arg_type1 := gi.NewIntArgument(type1)       /*TODO*/
-	arg_protocol := gi.NewIntArgument(protocol) /*TODO*/
+	arg_family := gi.NewIntArgument(int(family))
+	arg_type1 := gi.NewIntArgument(int(type1))
+	arg_protocol := gi.NewIntArgument(int(protocol))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_family, arg_type1, arg_protocol, arg_err}
 	var ret gi.Argument
@@ -23940,14 +24309,14 @@ func NewSocketFromFd(fd int32) (result Socket, err error) {
 // g_socket_accept
 // container is not nil, container is Socket
 // is method
-func (v Socket) Accept(cancellable Cancellable) (result Socket, err error) {
+func (v Socket) Accept(cancellable ICancellable) (result Socket, err error) {
 	iv, err := _I.Get(1199, "Socket", "accept")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -23960,14 +24329,14 @@ func (v Socket) Accept(cancellable Cancellable) (result Socket, err error) {
 // g_socket_bind
 // container is not nil, container is Socket
 // is method
-func (v Socket) Bind(address SocketAddress, allow_reuse bool) (result bool, err error) {
+func (v Socket) Bind(address ISocketAddress, allow_reuse bool) (result bool, err error) {
 	iv, err := _I.Get(1200, "Socket", "bind")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
+	arg_address := gi.NewPointerArgument(address.P_SocketAddress())
 	arg_allow_reuse := gi.NewBoolArgument(allow_reuse)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_address, arg_allow_reuse, arg_err}
@@ -24019,34 +24388,34 @@ func (v Socket) Close() (result bool, err error) {
 // g_socket_condition_check
 // container is not nil, container is Socket
 // is method
-func (v Socket) ConditionCheck(condition int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Socket) ConditionCheck(condition glib.IOConditionFlags) (result glib.IOConditionFlags) {
 	iv, err := _I.Get(1203, "Socket", "condition_check")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_condition := gi.NewIntArgument(condition) /*TODO*/
+	arg_condition := gi.NewIntArgument(int(condition))
 	args := []gi.Argument{arg_v, arg_condition}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = glib.IOConditionFlags(ret.Int())
 	return
 }
 
 // g_socket_condition_timed_wait
 // container is not nil, container is Socket
 // is method
-func (v Socket) ConditionTimedWait(condition int /*TODO_TYPE isPtr: false, tag: interface*/, timeout int64, cancellable Cancellable) (result bool, err error) {
+func (v Socket) ConditionTimedWait(condition glib.IOConditionFlags, timeout int64, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1204, "Socket", "condition_timed_wait")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_condition := gi.NewIntArgument(condition) /*TODO*/
+	arg_condition := gi.NewIntArgument(int(condition))
 	arg_timeout := gi.NewInt64Argument(timeout)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_condition, arg_timeout, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24059,15 +24428,15 @@ func (v Socket) ConditionTimedWait(condition int /*TODO_TYPE isPtr: false, tag: 
 // g_socket_condition_wait
 // container is not nil, container is Socket
 // is method
-func (v Socket) ConditionWait(condition int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result bool, err error) {
+func (v Socket) ConditionWait(condition glib.IOConditionFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1205, "Socket", "condition_wait")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_condition := gi.NewIntArgument(condition) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_condition := gi.NewIntArgument(int(condition))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_condition, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24080,15 +24449,15 @@ func (v Socket) ConditionWait(condition int /*TODO_TYPE isPtr: false, tag: inter
 // g_socket_connect
 // container is not nil, container is Socket
 // is method
-func (v Socket) Connect(address SocketAddress, cancellable Cancellable) (result bool, err error) {
+func (v Socket) Connect(address ISocketAddress, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1206, "Socket", "connect")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_address := gi.NewPointerArgument(address.P_SocketAddress())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_address, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24188,7 +24557,7 @@ func (v Socket) GetCredentials() (result Credentials, err error) {
 // g_socket_get_family
 // container is not nil, container is Socket
 // is method
-func (v Socket) GetFamily() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Socket) GetFamily() (result SocketFamilyEnum) {
 	iv, err := _I.Get(1212, "Socket", "get_family")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24198,7 +24567,7 @@ func (v Socket) GetFamily() (result int /*TODO_TYPE isPtr: false, tag: interface
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = SocketFamilyEnum(ret.Int())
 	return
 }
 
@@ -24332,7 +24701,7 @@ func (v Socket) GetOption(level int32, optname int32) (result bool, value int32,
 // g_socket_get_protocol
 // container is not nil, container is Socket
 // is method
-func (v Socket) GetProtocol() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Socket) GetProtocol() (result SocketProtocolEnum) {
 	iv, err := _I.Get(1220, "Socket", "get_protocol")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24342,7 +24711,7 @@ func (v Socket) GetProtocol() (result int /*TODO_TYPE isPtr: false, tag: interfa
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = SocketProtocolEnum(ret.Int())
 	return
 }
 
@@ -24368,7 +24737,7 @@ func (v Socket) GetRemoteAddress() (result SocketAddress, err error) {
 // g_socket_get_socket_type
 // container is not nil, container is Socket
 // is method
-func (v Socket) GetSocketType() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Socket) GetSocketType() (result SocketTypeEnum) {
 	iv, err := _I.Get(1222, "Socket", "get_socket_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24378,7 +24747,7 @@ func (v Socket) GetSocketType() (result int /*TODO_TYPE isPtr: false, tag: inter
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = SocketTypeEnum(ret.Int())
 	return
 }
 
@@ -24453,7 +24822,7 @@ func (v Socket) IsConnected() (result bool) {
 // g_socket_join_multicast_group
 // container is not nil, container is Socket
 // is method
-func (v Socket) JoinMulticastGroup(group InetAddress, source_specific bool, iface string) (result bool, err error) {
+func (v Socket) JoinMulticastGroup(group IInetAddress, source_specific bool, iface string) (result bool, err error) {
 	iv, err := _I.Get(1227, "Socket", "join_multicast_group")
 	if err != nil {
 		return
@@ -24461,7 +24830,7 @@ func (v Socket) JoinMulticastGroup(group InetAddress, source_specific bool, ifac
 	var outArgs [1]gi.Argument
 	c_iface := gi.CString(iface)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewPointerArgument(group.P)
+	arg_group := gi.NewPointerArgument(group.P_InetAddress())
 	arg_source_specific := gi.NewBoolArgument(source_specific)
 	arg_iface := gi.NewStringArgument(c_iface)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -24477,7 +24846,7 @@ func (v Socket) JoinMulticastGroup(group InetAddress, source_specific bool, ifac
 // g_socket_join_multicast_group_ssm
 // container is not nil, container is Socket
 // is method
-func (v Socket) JoinMulticastGroupSsm(group InetAddress, source_specific InetAddress, iface string) (result bool, err error) {
+func (v Socket) JoinMulticastGroupSsm(group IInetAddress, source_specific IInetAddress, iface string) (result bool, err error) {
 	iv, err := _I.Get(1228, "Socket", "join_multicast_group_ssm")
 	if err != nil {
 		return
@@ -24485,8 +24854,8 @@ func (v Socket) JoinMulticastGroupSsm(group InetAddress, source_specific InetAdd
 	var outArgs [1]gi.Argument
 	c_iface := gi.CString(iface)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewPointerArgument(group.P)
-	arg_source_specific := gi.NewPointerArgument(source_specific.P)
+	arg_group := gi.NewPointerArgument(group.P_InetAddress())
+	arg_source_specific := gi.NewPointerArgument(source_specific.P_InetAddress())
 	arg_iface := gi.NewStringArgument(c_iface)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_group, arg_source_specific, arg_iface, arg_err}
@@ -24501,7 +24870,7 @@ func (v Socket) JoinMulticastGroupSsm(group InetAddress, source_specific InetAdd
 // g_socket_leave_multicast_group
 // container is not nil, container is Socket
 // is method
-func (v Socket) LeaveMulticastGroup(group InetAddress, source_specific bool, iface string) (result bool, err error) {
+func (v Socket) LeaveMulticastGroup(group IInetAddress, source_specific bool, iface string) (result bool, err error) {
 	iv, err := _I.Get(1229, "Socket", "leave_multicast_group")
 	if err != nil {
 		return
@@ -24509,7 +24878,7 @@ func (v Socket) LeaveMulticastGroup(group InetAddress, source_specific bool, ifa
 	var outArgs [1]gi.Argument
 	c_iface := gi.CString(iface)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewPointerArgument(group.P)
+	arg_group := gi.NewPointerArgument(group.P_InetAddress())
 	arg_source_specific := gi.NewBoolArgument(source_specific)
 	arg_iface := gi.NewStringArgument(c_iface)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -24525,7 +24894,7 @@ func (v Socket) LeaveMulticastGroup(group InetAddress, source_specific bool, ifa
 // g_socket_leave_multicast_group_ssm
 // container is not nil, container is Socket
 // is method
-func (v Socket) LeaveMulticastGroupSsm(group InetAddress, source_specific InetAddress, iface string) (result bool, err error) {
+func (v Socket) LeaveMulticastGroupSsm(group IInetAddress, source_specific IInetAddress, iface string) (result bool, err error) {
 	iv, err := _I.Get(1230, "Socket", "leave_multicast_group_ssm")
 	if err != nil {
 		return
@@ -24533,8 +24902,8 @@ func (v Socket) LeaveMulticastGroupSsm(group InetAddress, source_specific InetAd
 	var outArgs [1]gi.Argument
 	c_iface := gi.CString(iface)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewPointerArgument(group.P)
-	arg_source_specific := gi.NewPointerArgument(source_specific.P)
+	arg_group := gi.NewPointerArgument(group.P_InetAddress())
+	arg_source_specific := gi.NewPointerArgument(source_specific.P_InetAddress())
 	arg_iface := gi.NewStringArgument(c_iface)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_group, arg_source_specific, arg_iface, arg_err}
@@ -24568,7 +24937,7 @@ func (v Socket) Listen() (result bool, err error) {
 // g_socket_receive
 // container is not nil, container is Socket
 // is method
-func (v Socket) Receive(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable Cancellable) (result int64, err error) {
+func (v Socket) Receive(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1232, "Socket", "receive")
 	if err != nil {
 		return
@@ -24577,7 +24946,7 @@ func (v Socket) Receive(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size u
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_size := gi.NewUint64Argument(size)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_size, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24590,7 +24959,7 @@ func (v Socket) Receive(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size u
 // g_socket_receive_from
 // container is not nil, container is Socket
 // is method
-func (v Socket) ReceiveFrom(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable Cancellable) (result int64, address int /*TODO_TYPE*/, err error) {
+func (v Socket) ReceiveFrom(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable ICancellable) (result int64, address SocketAddress, err error) {
 	iv, err := _I.Get(1233, "Socket", "receive_from")
 	if err != nil {
 		return
@@ -24600,13 +24969,13 @@ func (v Socket) ReceiveFrom(buffer int /*TODO_TYPE isPtr: true, tag: array*/, si
 	arg_address := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_size := gi.NewUint64Argument(size)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_address, arg_buffer, arg_size, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Int64()
-	address = outArgs[0].Int() /*TODO*/
+	address.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -24614,7 +24983,7 @@ func (v Socket) ReceiveFrom(buffer int /*TODO_TYPE isPtr: true, tag: array*/, si
 // g_socket_receive_message
 // container is not nil, container is Socket
 // is method
-func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE isPtr: true, tag: array*/, num_vectors int32, flags int, cancellable Cancellable) (result int64, address int /*TODO_TYPE*/, messages int /*TODO_TYPE*/, num_messages int32, err error) {
+func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE isPtr: true, tag: array*/, num_vectors int32, flags int, cancellable ICancellable) (result int64, address SocketAddress, messages int /*TODO_TYPE*/, num_messages int32, err error) {
 	iv, err := _I.Get(1234, "Socket", "receive_message")
 	if err != nil {
 		return
@@ -24626,13 +24995,13 @@ func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE isPtr: true, tag: array*/
 	arg_num_vectors := gi.NewInt32Argument(num_vectors)
 	arg_messages := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_num_messages := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[3]))
 	args := []gi.Argument{arg_v, arg_address, arg_vectors, arg_num_vectors, arg_messages, arg_num_messages, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Int64()
-	address = outArgs[0].Int()  /*TODO*/
+	address.P = outArgs[0].Pointer()
 	messages = outArgs[1].Int() /*TODO*/
 	num_messages = outArgs[2].Int32()
 	err = gi.ToError(outArgs[3].Pointer())
@@ -24642,7 +25011,7 @@ func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE isPtr: true, tag: array*/
 // g_socket_receive_messages
 // container is not nil, container is Socket
 // is method
-func (v Socket) ReceiveMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, cancellable Cancellable) (result int32, err error) {
+func (v Socket) ReceiveMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1235, "Socket", "receive_messages")
 	if err != nil {
 		return
@@ -24652,7 +25021,7 @@ func (v Socket) ReceiveMessages(messages int /*TODO_TYPE isPtr: true, tag: array
 	arg_messages := gi.NewIntArgument(messages) /*TODO*/
 	arg_num_messages := gi.NewUint32Argument(num_messages)
 	arg_flags := gi.NewInt32Argument(flags)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_messages, arg_num_messages, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24665,7 +25034,7 @@ func (v Socket) ReceiveMessages(messages int /*TODO_TYPE isPtr: true, tag: array
 // g_socket_receive_with_blocking
 // container is not nil, container is Socket
 // is method
-func (v Socket) ReceiveWithBlocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, blocking bool, cancellable Cancellable) (result int64, err error) {
+func (v Socket) ReceiveWithBlocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1236, "Socket", "receive_with_blocking")
 	if err != nil {
 		return
@@ -24675,7 +25044,7 @@ func (v Socket) ReceiveWithBlocking(buffer int /*TODO_TYPE isPtr: true, tag: arr
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_size := gi.NewUint64Argument(size)
 	arg_blocking := gi.NewBoolArgument(blocking)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_size, arg_blocking, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24688,7 +25057,7 @@ func (v Socket) ReceiveWithBlocking(buffer int /*TODO_TYPE isPtr: true, tag: arr
 // g_socket_send
 // container is not nil, container is Socket
 // is method
-func (v Socket) Send(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable Cancellable) (result int64, err error) {
+func (v Socket) Send(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1237, "Socket", "send")
 	if err != nil {
 		return
@@ -24697,7 +25066,7 @@ func (v Socket) Send(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_size := gi.NewUint64Argument(size)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_size, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24710,20 +25079,20 @@ func (v Socket) Send(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint
 // g_socket_send_message
 // container is not nil, container is Socket
 // is method
-func (v Socket) SendMessage(address SocketAddress, vectors int /*TODO_TYPE isPtr: true, tag: array*/, num_vectors int32, messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages int32, flags int32, cancellable Cancellable) (result int64, err error) {
+func (v Socket) SendMessage(address ISocketAddress, vectors int /*TODO_TYPE isPtr: true, tag: array*/, num_vectors int32, messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages int32, flags int32, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1238, "Socket", "send_message")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
+	arg_address := gi.NewPointerArgument(address.P_SocketAddress())
 	arg_vectors := gi.NewIntArgument(vectors) /*TODO*/
 	arg_num_vectors := gi.NewInt32Argument(num_vectors)
 	arg_messages := gi.NewIntArgument(messages) /*TODO*/
 	arg_num_messages := gi.NewInt32Argument(num_messages)
 	arg_flags := gi.NewInt32Argument(flags)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_address, arg_vectors, arg_num_vectors, arg_messages, arg_num_messages, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24736,7 +25105,7 @@ func (v Socket) SendMessage(address SocketAddress, vectors int /*TODO_TYPE isPtr
 // g_socket_send_messages
 // container is not nil, container is Socket
 // is method
-func (v Socket) SendMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, cancellable Cancellable) (result int32, err error) {
+func (v Socket) SendMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1239, "Socket", "send_messages")
 	if err != nil {
 		return
@@ -24746,7 +25115,7 @@ func (v Socket) SendMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/,
 	arg_messages := gi.NewIntArgument(messages) /*TODO*/
 	arg_num_messages := gi.NewUint32Argument(num_messages)
 	arg_flags := gi.NewInt32Argument(flags)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_messages, arg_num_messages, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24759,17 +25128,17 @@ func (v Socket) SendMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/,
 // g_socket_send_to
 // container is not nil, container is Socket
 // is method
-func (v Socket) SendTo(address SocketAddress, buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable Cancellable) (result int64, err error) {
+func (v Socket) SendTo(address ISocketAddress, buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1240, "Socket", "send_to")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
+	arg_address := gi.NewPointerArgument(address.P_SocketAddress())
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_size := gi.NewUint64Argument(size)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_address, arg_buffer, arg_size, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24782,7 +25151,7 @@ func (v Socket) SendTo(address SocketAddress, buffer int /*TODO_TYPE isPtr: true
 // g_socket_send_with_blocking
 // container is not nil, container is Socket
 // is method
-func (v Socket) SendWithBlocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, blocking bool, cancellable Cancellable) (result int64, err error) {
+func (v Socket) SendWithBlocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1241, "Socket", "send_with_blocking")
 	if err != nil {
 		return
@@ -24792,7 +25161,7 @@ func (v Socket) SendWithBlocking(buffer int /*TODO_TYPE isPtr: true, tag: array*
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_size := gi.NewUint64Argument(size)
 	arg_blocking := gi.NewBoolArgument(blocking)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_size, arg_blocking, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -24990,6 +25359,10 @@ type SocketAddress struct {
 
 func WrapSocketAddress(p unsafe.Pointer) (r SocketAddress) { r.P = p; return }
 
+type ISocketAddress interface{ P_SocketAddress() unsafe.Pointer }
+
+func (v SocketAddress) P_SocketAddress() unsafe.Pointer { return v.P }
+
 // g_socket_address_new_from_native
 // container is not nil, container is SocketAddress
 // is constructor
@@ -25011,7 +25384,7 @@ func NewSocketAddressFromNative(native unsafe.Pointer, len1 uint64) (result Sock
 // g_socket_address_get_family
 // container is not nil, container is SocketAddress
 // is method
-func (v SocketAddress) GetFamily() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v SocketAddress) GetFamily() (result SocketFamilyEnum) {
 	iv, err := _I.Get(1254, "SocketAddress", "get_family")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25021,7 +25394,7 @@ func (v SocketAddress) GetFamily() (result int /*TODO_TYPE isPtr: false, tag: in
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = SocketFamilyEnum(ret.Int())
 	return
 }
 
@@ -25071,17 +25444,21 @@ type SocketAddressEnumerator struct {
 
 func WrapSocketAddressEnumerator(p unsafe.Pointer) (r SocketAddressEnumerator) { r.P = p; return }
 
+type ISocketAddressEnumerator interface{ P_SocketAddressEnumerator() unsafe.Pointer }
+
+func (v SocketAddressEnumerator) P_SocketAddressEnumerator() unsafe.Pointer { return v.P }
+
 // g_socket_address_enumerator_next
 // container is not nil, container is SocketAddressEnumerator
 // is method
-func (v SocketAddressEnumerator) Next(cancellable Cancellable) (result SocketAddress, err error) {
+func (v SocketAddressEnumerator) Next(cancellable ICancellable) (result SocketAddress, err error) {
 	iv, err := _I.Get(1257, "SocketAddressEnumerator", "next")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -25094,14 +25471,14 @@ func (v SocketAddressEnumerator) Next(cancellable Cancellable) (result SocketAdd
 // g_socket_address_enumerator_next_async
 // container is not nil, container is SocketAddressEnumerator
 // is method
-func (v SocketAddressEnumerator) NextAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v SocketAddressEnumerator) NextAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1258, "SocketAddressEnumerator", "next_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -25136,6 +25513,10 @@ type SocketClient struct {
 }
 
 func WrapSocketClient(p unsafe.Pointer) (r SocketClient) { r.P = p; return }
+
+type ISocketClient interface{ P_SocketClient() unsafe.Pointer }
+
+func (v SocketClient) P_SocketClient() unsafe.Pointer { return v.P }
 
 // g_socket_client_new
 // container is not nil, container is SocketClient
@@ -25172,7 +25553,7 @@ func (v SocketClient) AddApplicationProxy(protocol string) {
 // g_socket_client_connect
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) Connect(connectable SocketConnectable, cancellable Cancellable) (result SocketConnection, err error) {
+func (v SocketClient) Connect(connectable SocketConnectable, cancellable ICancellable) (result SocketConnection, err error) {
 	iv, err := _I.Get(1262, "SocketClient", "connect")
 	if err != nil {
 		return
@@ -25180,7 +25561,7 @@ func (v SocketClient) Connect(connectable SocketConnectable, cancellable Cancell
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_connectable := gi.NewPointerArgument(connectable.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_connectable, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -25193,7 +25574,7 @@ func (v SocketClient) Connect(connectable SocketConnectable, cancellable Cancell
 // g_socket_client_connect_async
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) ConnectAsync(connectable SocketConnectable, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v SocketClient) ConnectAsync(connectable SocketConnectable, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1263, "SocketClient", "connect_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25201,7 +25582,7 @@ func (v SocketClient) ConnectAsync(connectable SocketConnectable, cancellable Ca
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_connectable := gi.NewPointerArgument(connectable.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_connectable, arg_cancellable, arg_callback, arg_user_data}
@@ -25231,7 +25612,7 @@ func (v SocketClient) ConnectFinish(result AsyncResult) (result1 SocketConnectio
 // g_socket_client_connect_to_host
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) ConnectToHost(host_and_port string, default_port uint16, cancellable Cancellable) (result SocketConnection, err error) {
+func (v SocketClient) ConnectToHost(host_and_port string, default_port uint16, cancellable ICancellable) (result SocketConnection, err error) {
 	iv, err := _I.Get(1265, "SocketClient", "connect_to_host")
 	if err != nil {
 		return
@@ -25241,7 +25622,7 @@ func (v SocketClient) ConnectToHost(host_and_port string, default_port uint16, c
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_host_and_port := gi.NewStringArgument(c_host_and_port)
 	arg_default_port := gi.NewUint16Argument(default_port)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_host_and_port, arg_default_port, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -25255,7 +25636,7 @@ func (v SocketClient) ConnectToHost(host_and_port string, default_port uint16, c
 // g_socket_client_connect_to_host_async
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) ConnectToHostAsync(host_and_port string, default_port uint16, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v SocketClient) ConnectToHostAsync(host_and_port string, default_port uint16, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1266, "SocketClient", "connect_to_host_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25265,7 +25646,7 @@ func (v SocketClient) ConnectToHostAsync(host_and_port string, default_port uint
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_host_and_port := gi.NewStringArgument(c_host_and_port)
 	arg_default_port := gi.NewUint16Argument(default_port)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_host_and_port, arg_default_port, arg_cancellable, arg_callback, arg_user_data}
@@ -25296,7 +25677,7 @@ func (v SocketClient) ConnectToHostFinish(result AsyncResult) (result1 SocketCon
 // g_socket_client_connect_to_service
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) ConnectToService(domain string, service string, cancellable Cancellable) (result SocketConnection, err error) {
+func (v SocketClient) ConnectToService(domain string, service string, cancellable ICancellable) (result SocketConnection, err error) {
 	iv, err := _I.Get(1268, "SocketClient", "connect_to_service")
 	if err != nil {
 		return
@@ -25307,7 +25688,7 @@ func (v SocketClient) ConnectToService(domain string, service string, cancellabl
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_domain := gi.NewStringArgument(c_domain)
 	arg_service := gi.NewStringArgument(c_service)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_domain, arg_service, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -25322,7 +25703,7 @@ func (v SocketClient) ConnectToService(domain string, service string, cancellabl
 // g_socket_client_connect_to_service_async
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) ConnectToServiceAsync(domain string, service string, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v SocketClient) ConnectToServiceAsync(domain string, service string, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1269, "SocketClient", "connect_to_service_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25333,7 +25714,7 @@ func (v SocketClient) ConnectToServiceAsync(domain string, service string, cance
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_domain := gi.NewStringArgument(c_domain)
 	arg_service := gi.NewStringArgument(c_service)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_domain, arg_service, arg_cancellable, arg_callback, arg_user_data}
@@ -25365,7 +25746,7 @@ func (v SocketClient) ConnectToServiceFinish(result AsyncResult) (result1 Socket
 // g_socket_client_connect_to_uri
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) ConnectToUri(uri string, default_port uint16, cancellable Cancellable) (result SocketConnection, err error) {
+func (v SocketClient) ConnectToUri(uri string, default_port uint16, cancellable ICancellable) (result SocketConnection, err error) {
 	iv, err := _I.Get(1271, "SocketClient", "connect_to_uri")
 	if err != nil {
 		return
@@ -25375,7 +25756,7 @@ func (v SocketClient) ConnectToUri(uri string, default_port uint16, cancellable 
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_uri := gi.NewStringArgument(c_uri)
 	arg_default_port := gi.NewUint16Argument(default_port)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_uri, arg_default_port, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -25389,7 +25770,7 @@ func (v SocketClient) ConnectToUri(uri string, default_port uint16, cancellable 
 // g_socket_client_connect_to_uri_async
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) ConnectToUriAsync(uri string, default_port uint16, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v SocketClient) ConnectToUriAsync(uri string, default_port uint16, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1272, "SocketClient", "connect_to_uri_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25399,7 +25780,7 @@ func (v SocketClient) ConnectToUriAsync(uri string, default_port uint16, cancell
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_uri := gi.NewStringArgument(c_uri)
 	arg_default_port := gi.NewUint16Argument(default_port)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_uri, arg_default_port, arg_cancellable, arg_callback, arg_user_data}
@@ -25447,7 +25828,7 @@ func (v SocketClient) GetEnableProxy() (result bool) {
 // g_socket_client_get_family
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) GetFamily() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v SocketClient) GetFamily() (result SocketFamilyEnum) {
 	iv, err := _I.Get(1275, "SocketClient", "get_family")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25457,7 +25838,7 @@ func (v SocketClient) GetFamily() (result int /*TODO_TYPE isPtr: false, tag: int
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = SocketFamilyEnum(ret.Int())
 	return
 }
 
@@ -25481,7 +25862,7 @@ func (v SocketClient) GetLocalAddress() (result SocketAddress) {
 // g_socket_client_get_protocol
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) GetProtocol() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v SocketClient) GetProtocol() (result SocketProtocolEnum) {
 	iv, err := _I.Get(1277, "SocketClient", "get_protocol")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25491,7 +25872,7 @@ func (v SocketClient) GetProtocol() (result int /*TODO_TYPE isPtr: false, tag: i
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = SocketProtocolEnum(ret.Int())
 	return
 }
 
@@ -25515,7 +25896,7 @@ func (v SocketClient) GetProxyResolver() (result ProxyResolver) {
 // g_socket_client_get_socket_type
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) GetSocketType() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v SocketClient) GetSocketType() (result SocketTypeEnum) {
 	iv, err := _I.Get(1279, "SocketClient", "get_socket_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25525,7 +25906,7 @@ func (v SocketClient) GetSocketType() (result int /*TODO_TYPE isPtr: false, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = SocketTypeEnum(ret.Int())
 	return
 }
 
@@ -25566,7 +25947,7 @@ func (v SocketClient) GetTls() (result bool) {
 // g_socket_client_get_tls_validation_flags
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) GetTlsValidationFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v SocketClient) GetTlsValidationFlags() (result TlsCertificateFlags) {
 	iv, err := _I.Get(1282, "SocketClient", "get_tls_validation_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25576,7 +25957,7 @@ func (v SocketClient) GetTlsValidationFlags() (result int /*TODO_TYPE isPtr: fal
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TlsCertificateFlags(ret.Int())
 	return
 }
 
@@ -25598,14 +25979,14 @@ func (v SocketClient) SetEnableProxy(enable bool) {
 // g_socket_client_set_family
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) SetFamily(family int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v SocketClient) SetFamily(family SocketFamilyEnum) {
 	iv, err := _I.Get(1284, "SocketClient", "set_family")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_family := gi.NewIntArgument(family) /*TODO*/
+	arg_family := gi.NewIntArgument(int(family))
 	args := []gi.Argument{arg_v, arg_family}
 	iv.Call(args, nil, nil)
 }
@@ -25613,14 +25994,14 @@ func (v SocketClient) SetFamily(family int /*TODO_TYPE isPtr: false, tag: interf
 // g_socket_client_set_local_address
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) SetLocalAddress(address SocketAddress) {
+func (v SocketClient) SetLocalAddress(address ISocketAddress) {
 	iv, err := _I.Get(1285, "SocketClient", "set_local_address")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
+	arg_address := gi.NewPointerArgument(address.P_SocketAddress())
 	args := []gi.Argument{arg_v, arg_address}
 	iv.Call(args, nil, nil)
 }
@@ -25628,14 +26009,14 @@ func (v SocketClient) SetLocalAddress(address SocketAddress) {
 // g_socket_client_set_protocol
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) SetProtocol(protocol int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v SocketClient) SetProtocol(protocol SocketProtocolEnum) {
 	iv, err := _I.Get(1286, "SocketClient", "set_protocol")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_protocol := gi.NewIntArgument(protocol) /*TODO*/
+	arg_protocol := gi.NewIntArgument(int(protocol))
 	args := []gi.Argument{arg_v, arg_protocol}
 	iv.Call(args, nil, nil)
 }
@@ -25658,14 +26039,14 @@ func (v SocketClient) SetProxyResolver(proxy_resolver ProxyResolver) {
 // g_socket_client_set_socket_type
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) SetSocketType(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v SocketClient) SetSocketType(type1 SocketTypeEnum) {
 	iv, err := _I.Get(1288, "SocketClient", "set_socket_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_v, arg_type1}
 	iv.Call(args, nil, nil)
 }
@@ -25703,19 +26084,20 @@ func (v SocketClient) SetTls(tls bool) {
 // g_socket_client_set_tls_validation_flags
 // container is not nil, container is SocketClient
 // is method
-func (v SocketClient) SetTlsValidationFlags(flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 	iv, err := _I.Get(1291, "SocketClient", "set_tls_validation_flags")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_flags}
 	iv.Call(args, nil, nil)
 }
 
 // ignore GType struct SocketClientClass
+// Enum SocketClientEvent
 type SocketClientEventEnum int
 
 const (
@@ -25801,18 +26183,22 @@ type SocketConnection struct {
 
 func WrapSocketConnection(p unsafe.Pointer) (r SocketConnection) { r.P = p; return }
 
+type ISocketConnection interface{ P_SocketConnection() unsafe.Pointer }
+
+func (v SocketConnection) P_SocketConnection() unsafe.Pointer { return v.P }
+
 // g_socket_connection_factory_lookup_type
 // container is not nil, container is SocketConnection
 // is method
 // arg0Type tag: interface, isPtr: false
-func SocketConnectionFactoryLookupType1(family int /*TODO_TYPE isPtr: false, tag: interface*/, type1 int /*TODO_TYPE isPtr: false, tag: interface*/, protocol_id int32) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func SocketConnectionFactoryLookupType1(family SocketFamilyEnum, type1 SocketTypeEnum, protocol_id int32) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	iv, err := _I.Get(1295, "SocketConnection", "factory_lookup_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_family := gi.NewIntArgument(family) /*TODO*/
-	arg_type1 := gi.NewIntArgument(type1)   /*TODO*/
+	arg_family := gi.NewIntArgument(int(family))
+	arg_type1 := gi.NewIntArgument(int(type1))
 	arg_protocol_id := gi.NewInt32Argument(protocol_id)
 	args := []gi.Argument{arg_family, arg_type1, arg_protocol_id}
 	var ret gi.Argument
@@ -25825,15 +26211,15 @@ func SocketConnectionFactoryLookupType1(family int /*TODO_TYPE isPtr: false, tag
 // container is not nil, container is SocketConnection
 // is method
 // arg0Type tag: GType, isPtr: false
-func SocketConnectionFactoryRegisterType1(g_type int /*TODO_TYPE isPtr: false, tag: GType*/, family int /*TODO_TYPE isPtr: false, tag: interface*/, type1 int /*TODO_TYPE isPtr: false, tag: interface*/, protocol int32) {
+func SocketConnectionFactoryRegisterType1(g_type int /*TODO_TYPE isPtr: false, tag: GType*/, family SocketFamilyEnum, type1 SocketTypeEnum, protocol int32) {
 	iv, err := _I.Get(1296, "SocketConnection", "factory_register_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_g_type := gi.NewIntArgument(g_type) /*TODO*/
-	arg_family := gi.NewIntArgument(family) /*TODO*/
-	arg_type1 := gi.NewIntArgument(type1)   /*TODO*/
+	arg_family := gi.NewIntArgument(int(family))
+	arg_type1 := gi.NewIntArgument(int(type1))
 	arg_protocol := gi.NewInt32Argument(protocol)
 	args := []gi.Argument{arg_g_type, arg_family, arg_type1, arg_protocol}
 	iv.Call(args, nil, nil)
@@ -25842,15 +26228,15 @@ func SocketConnectionFactoryRegisterType1(g_type int /*TODO_TYPE isPtr: false, t
 // g_socket_connection_connect
 // container is not nil, container is SocketConnection
 // is method
-func (v SocketConnection) Connect(address SocketAddress, cancellable Cancellable) (result bool, err error) {
+func (v SocketConnection) Connect(address ISocketAddress, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1297, "SocketConnection", "connect")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_address := gi.NewPointerArgument(address.P_SocketAddress())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_address, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -25863,15 +26249,15 @@ func (v SocketConnection) Connect(address SocketAddress, cancellable Cancellable
 // g_socket_connection_connect_async
 // container is not nil, container is SocketConnection
 // is method
-func (v SocketConnection) ConnectAsync(address SocketAddress, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v SocketConnection) ConnectAsync(address ISocketAddress, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1298, "SocketConnection", "connect_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_address := gi.NewPointerArgument(address.P_SocketAddress())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_address, arg_cancellable, arg_callback, arg_user_data}
@@ -25983,6 +26369,10 @@ type SocketControlMessage struct {
 
 func WrapSocketControlMessage(p unsafe.Pointer) (r SocketControlMessage) { r.P = p; return }
 
+type ISocketControlMessage interface{ P_SocketControlMessage() unsafe.Pointer }
+
+func (v SocketControlMessage) P_SocketControlMessage() unsafe.Pointer { return v.P }
+
 // g_socket_control_message_deserialize
 // container is not nil, container is SocketControlMessage
 // is method
@@ -26075,6 +26465,8 @@ func (v SocketControlMessage) Serialize(data unsafe.Pointer) {
 type SocketControlMessagePrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum SocketFamily
 type SocketFamilyEnum int
 
 const (
@@ -26090,6 +26482,10 @@ type SocketListener struct {
 }
 
 func WrapSocketListener(p unsafe.Pointer) (r SocketListener) { r.P = p; return }
+
+type ISocketListener interface{ P_SocketListener() unsafe.Pointer }
+
+func (v SocketListener) P_SocketListener() unsafe.Pointer { return v.P }
 
 // g_socket_listener_new
 // container is not nil, container is SocketListener
@@ -26109,7 +26505,7 @@ func NewSocketListener() (result SocketListener) {
 // g_socket_listener_accept
 // container is not nil, container is SocketListener
 // is method
-func (v SocketListener) Accept(cancellable Cancellable) (result SocketConnection, source_object int /*TODO_TYPE*/, err error) {
+func (v SocketListener) Accept(cancellable ICancellable) (result SocketConnection, source_object gobject.Object, err error) {
 	iv, err := _I.Get(1310, "SocketListener", "accept")
 	if err != nil {
 		return
@@ -26117,13 +26513,13 @@ func (v SocketListener) Accept(cancellable Cancellable) (result SocketConnection
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_source_object := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_source_object, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result.P = ret.Pointer()
-	source_object = outArgs[0].Int() /*TODO*/
+	source_object.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -26131,14 +26527,14 @@ func (v SocketListener) Accept(cancellable Cancellable) (result SocketConnection
 // g_socket_listener_accept_async
 // container is not nil, container is SocketListener
 // is method
-func (v SocketListener) AcceptAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v SocketListener) AcceptAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1311, "SocketListener", "accept_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -26148,7 +26544,7 @@ func (v SocketListener) AcceptAsync(cancellable Cancellable, callback int /*TODO
 // g_socket_listener_accept_finish
 // container is not nil, container is SocketListener
 // is method
-func (v SocketListener) AcceptFinish(result AsyncResult) (result1 SocketConnection, source_object int /*TODO_TYPE*/, err error) {
+func (v SocketListener) AcceptFinish(result AsyncResult) (result1 SocketConnection, source_object gobject.Object, err error) {
 	iv, err := _I.Get(1312, "SocketListener", "accept_finish")
 	if err != nil {
 		return
@@ -26162,7 +26558,7 @@ func (v SocketListener) AcceptFinish(result AsyncResult) (result1 SocketConnecti
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result1.P = ret.Pointer()
-	source_object = outArgs[0].Int() /*TODO*/
+	source_object.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -26170,7 +26566,7 @@ func (v SocketListener) AcceptFinish(result AsyncResult) (result1 SocketConnecti
 // g_socket_listener_accept_socket
 // container is not nil, container is SocketListener
 // is method
-func (v SocketListener) AcceptSocket(cancellable Cancellable) (result Socket, source_object int /*TODO_TYPE*/, err error) {
+func (v SocketListener) AcceptSocket(cancellable ICancellable) (result Socket, source_object gobject.Object, err error) {
 	iv, err := _I.Get(1313, "SocketListener", "accept_socket")
 	if err != nil {
 		return
@@ -26178,13 +26574,13 @@ func (v SocketListener) AcceptSocket(cancellable Cancellable) (result Socket, so
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_source_object := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_source_object, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result.P = ret.Pointer()
-	source_object = outArgs[0].Int() /*TODO*/
+	source_object.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -26192,14 +26588,14 @@ func (v SocketListener) AcceptSocket(cancellable Cancellable) (result Socket, so
 // g_socket_listener_accept_socket_async
 // container is not nil, container is SocketListener
 // is method
-func (v SocketListener) AcceptSocketAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v SocketListener) AcceptSocketAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1314, "SocketListener", "accept_socket_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -26209,7 +26605,7 @@ func (v SocketListener) AcceptSocketAsync(cancellable Cancellable, callback int 
 // g_socket_listener_accept_socket_finish
 // container is not nil, container is SocketListener
 // is method
-func (v SocketListener) AcceptSocketFinish(result AsyncResult) (result1 Socket, source_object int /*TODO_TYPE*/, err error) {
+func (v SocketListener) AcceptSocketFinish(result AsyncResult) (result1 Socket, source_object gobject.Object, err error) {
 	iv, err := _I.Get(1315, "SocketListener", "accept_socket_finish")
 	if err != nil {
 		return
@@ -26223,7 +26619,7 @@ func (v SocketListener) AcceptSocketFinish(result AsyncResult) (result1 Socket, 
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result1.P = ret.Pointer()
-	source_object = outArgs[0].Int() /*TODO*/
+	source_object.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -26231,24 +26627,24 @@ func (v SocketListener) AcceptSocketFinish(result AsyncResult) (result1 Socket, 
 // g_socket_listener_add_address
 // container is not nil, container is SocketListener
 // is method
-func (v SocketListener) AddAddress(address SocketAddress, type1 int /*TODO_TYPE isPtr: false, tag: interface*/, protocol int /*TODO_TYPE isPtr: false, tag: interface*/, source_object gobject.Object) (result bool, effective_address int /*TODO_TYPE*/, err error) {
+func (v SocketListener) AddAddress(address ISocketAddress, type1 SocketTypeEnum, protocol SocketProtocolEnum, source_object gobject.IObject) (result bool, effective_address SocketAddress, err error) {
 	iv, err := _I.Get(1316, "SocketListener", "add_address")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_address := gi.NewPointerArgument(address.P)
-	arg_type1 := gi.NewIntArgument(type1)       /*TODO*/
-	arg_protocol := gi.NewIntArgument(protocol) /*TODO*/
-	arg_source_object := gi.NewPointerArgument(source_object.P)
+	arg_address := gi.NewPointerArgument(address.P_SocketAddress())
+	arg_type1 := gi.NewIntArgument(int(type1))
+	arg_protocol := gi.NewIntArgument(int(protocol))
+	arg_source_object := gi.NewPointerArgument(source_object.P_Object())
 	arg_effective_address := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_address, arg_type1, arg_protocol, arg_source_object, arg_effective_address, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
-	effective_address = outArgs[0].Int() /*TODO*/
+	effective_address.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -26256,14 +26652,14 @@ func (v SocketListener) AddAddress(address SocketAddress, type1 int /*TODO_TYPE 
 // g_socket_listener_add_any_inet_port
 // container is not nil, container is SocketListener
 // is method
-func (v SocketListener) AddAnyInetPort(source_object gobject.Object) (result uint16, err error) {
+func (v SocketListener) AddAnyInetPort(source_object gobject.IObject) (result uint16, err error) {
 	iv, err := _I.Get(1317, "SocketListener", "add_any_inet_port")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_source_object := gi.NewPointerArgument(source_object.P)
+	arg_source_object := gi.NewPointerArgument(source_object.P_Object())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_source_object, arg_err}
 	var ret gi.Argument
@@ -26276,7 +26672,7 @@ func (v SocketListener) AddAnyInetPort(source_object gobject.Object) (result uin
 // g_socket_listener_add_inet_port
 // container is not nil, container is SocketListener
 // is method
-func (v SocketListener) AddInetPort(port uint16, source_object gobject.Object) (result bool, err error) {
+func (v SocketListener) AddInetPort(port uint16, source_object gobject.IObject) (result bool, err error) {
 	iv, err := _I.Get(1318, "SocketListener", "add_inet_port")
 	if err != nil {
 		return
@@ -26284,7 +26680,7 @@ func (v SocketListener) AddInetPort(port uint16, source_object gobject.Object) (
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_port := gi.NewUint16Argument(port)
-	arg_source_object := gi.NewPointerArgument(source_object.P)
+	arg_source_object := gi.NewPointerArgument(source_object.P_Object())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_port, arg_source_object, arg_err}
 	var ret gi.Argument
@@ -26297,15 +26693,15 @@ func (v SocketListener) AddInetPort(port uint16, source_object gobject.Object) (
 // g_socket_listener_add_socket
 // container is not nil, container is SocketListener
 // is method
-func (v SocketListener) AddSocket(socket Socket, source_object gobject.Object) (result bool, err error) {
+func (v SocketListener) AddSocket(socket ISocket, source_object gobject.IObject) (result bool, err error) {
 	iv, err := _I.Get(1319, "SocketListener", "add_socket")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_socket := gi.NewPointerArgument(socket.P)
-	arg_source_object := gi.NewPointerArgument(source_object.P)
+	arg_socket := gi.NewPointerArgument(socket.P_Socket())
+	arg_source_object := gi.NewPointerArgument(source_object.P_Object())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_socket, arg_source_object, arg_err}
 	var ret gi.Argument
@@ -26345,6 +26741,7 @@ func (v SocketListener) SetBacklog(listen_backlog int32) {
 }
 
 // ignore GType struct SocketListenerClass
+// Enum SocketListenerEvent
 type SocketListenerEventEnum int
 
 const (
@@ -26358,6 +26755,8 @@ const (
 type SocketListenerPrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags SocketMsgFlags
 type SocketMsgFlags int
 
 const (
@@ -26371,6 +26770,8 @@ const (
 type SocketPrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum SocketProtocol
 type SocketProtocolEnum int
 
 const (
@@ -26387,6 +26788,10 @@ type SocketService struct {
 }
 
 func WrapSocketService(p unsafe.Pointer) (r SocketService) { r.P = p; return }
+
+type ISocketService interface{ P_SocketService() unsafe.Pointer }
+
+func (v SocketService) P_SocketService() unsafe.Pointer { return v.P }
 
 // g_socket_service_new
 // container is not nil, container is SocketService
@@ -26453,6 +26858,8 @@ func (v SocketService) Stop() {
 type SocketServicePrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum SocketType
 type SocketTypeEnum int
 
 const (
@@ -26646,17 +27053,21 @@ type Subprocess struct {
 
 func WrapSubprocess(p unsafe.Pointer) (r Subprocess) { r.P = p; return }
 
+type ISubprocess interface{ P_Subprocess() unsafe.Pointer }
+
+func (v Subprocess) P_Subprocess() unsafe.Pointer { return v.P }
+
 // g_subprocess_newv
 // container is not nil, container is Subprocess
 // is constructor
-func NewSubprocess(argv int /*TODO_TYPE isPtr: true, tag: array*/, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result Subprocess, err error) {
+func NewSubprocess(argv int /*TODO_TYPE isPtr: true, tag: array*/, flags SubprocessFlags) (result Subprocess, err error) {
 	iv, err := _I.Get(1336, "Subprocess", "new")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_argv := gi.NewIntArgument(argv)   /*TODO*/
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_argv := gi.NewIntArgument(argv) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_argv, arg_flags, arg_err}
 	var ret gi.Argument
@@ -26669,7 +27080,7 @@ func NewSubprocess(argv int /*TODO_TYPE isPtr: true, tag: array*/, flags int /*T
 // g_subprocess_communicate
 // container is not nil, container is Subprocess
 // is method
-func (v Subprocess) Communicate(stdin_buf glib.Bytes, cancellable Cancellable) (result bool, stdout_buf int /*TODO_TYPE*/, stderr_buf int /*TODO_TYPE*/, err error) {
+func (v Subprocess) Communicate(stdin_buf glib.Bytes, cancellable ICancellable) (result bool, stdout_buf glib.Bytes, stderr_buf glib.Bytes, err error) {
 	iv, err := _I.Get(1337, "Subprocess", "communicate")
 	if err != nil {
 		return
@@ -26677,7 +27088,7 @@ func (v Subprocess) Communicate(stdin_buf glib.Bytes, cancellable Cancellable) (
 	var outArgs [3]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_stdin_buf := gi.NewPointerArgument(stdin_buf.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_stdout_buf := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_stderr_buf := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -26685,8 +27096,8 @@ func (v Subprocess) Communicate(stdin_buf glib.Bytes, cancellable Cancellable) (
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
-	stdout_buf = outArgs[0].Int() /*TODO*/
-	stderr_buf = outArgs[1].Int() /*TODO*/
+	stdout_buf.P = outArgs[0].Pointer()
+	stderr_buf.P = outArgs[1].Pointer()
 	err = gi.ToError(outArgs[2].Pointer())
 	return
 }
@@ -26694,7 +27105,7 @@ func (v Subprocess) Communicate(stdin_buf glib.Bytes, cancellable Cancellable) (
 // g_subprocess_communicate_async
 // container is not nil, container is Subprocess
 // is method
-func (v Subprocess) CommunicateAsync(stdin_buf glib.Bytes, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Subprocess) CommunicateAsync(stdin_buf glib.Bytes, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1338, "Subprocess", "communicate_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -26702,7 +27113,7 @@ func (v Subprocess) CommunicateAsync(stdin_buf glib.Bytes, cancellable Cancellab
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_stdin_buf := gi.NewPointerArgument(stdin_buf.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_stdin_buf, arg_cancellable, arg_callback, arg_user_data}
@@ -26712,7 +27123,7 @@ func (v Subprocess) CommunicateAsync(stdin_buf glib.Bytes, cancellable Cancellab
 // g_subprocess_communicate_finish
 // container is not nil, container is Subprocess
 // is method
-func (v Subprocess) CommunicateFinish(result AsyncResult) (result1 bool, stdout_buf int /*TODO_TYPE*/, stderr_buf int /*TODO_TYPE*/, err error) {
+func (v Subprocess) CommunicateFinish(result AsyncResult) (result1 bool, stdout_buf glib.Bytes, stderr_buf glib.Bytes, err error) {
 	iv, err := _I.Get(1339, "Subprocess", "communicate_finish")
 	if err != nil {
 		return
@@ -26727,8 +27138,8 @@ func (v Subprocess) CommunicateFinish(result AsyncResult) (result1 bool, stdout_
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result1 = ret.Bool()
-	stdout_buf = outArgs[0].Int() /*TODO*/
-	stderr_buf = outArgs[1].Int() /*TODO*/
+	stdout_buf.P = outArgs[0].Pointer()
+	stderr_buf.P = outArgs[1].Pointer()
 	err = gi.ToError(outArgs[2].Pointer())
 	return
 }
@@ -26736,7 +27147,7 @@ func (v Subprocess) CommunicateFinish(result AsyncResult) (result1 bool, stdout_
 // g_subprocess_communicate_utf8
 // container is not nil, container is Subprocess
 // is method
-func (v Subprocess) CommunicateUtf8(stdin_buf string, cancellable Cancellable) (result bool, stdout_buf string, stderr_buf string, err error) {
+func (v Subprocess) CommunicateUtf8(stdin_buf string, cancellable ICancellable) (result bool, stdout_buf string, stderr_buf string, err error) {
 	iv, err := _I.Get(1340, "Subprocess", "communicate_utf8")
 	if err != nil {
 		return
@@ -26745,7 +27156,7 @@ func (v Subprocess) CommunicateUtf8(stdin_buf string, cancellable Cancellable) (
 	c_stdin_buf := gi.CString(stdin_buf)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_stdin_buf := gi.NewStringArgument(c_stdin_buf)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_stdout_buf := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_stderr_buf := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -26763,7 +27174,7 @@ func (v Subprocess) CommunicateUtf8(stdin_buf string, cancellable Cancellable) (
 // g_subprocess_communicate_utf8_async
 // container is not nil, container is Subprocess
 // is method
-func (v Subprocess) CommunicateUtf8Async(stdin_buf string, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Subprocess) CommunicateUtf8Async(stdin_buf string, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1341, "Subprocess", "communicate_utf8_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -26772,7 +27183,7 @@ func (v Subprocess) CommunicateUtf8Async(stdin_buf string, cancellable Cancellab
 	c_stdin_buf := gi.CString(stdin_buf)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_stdin_buf := gi.NewStringArgument(c_stdin_buf)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_stdin_buf, arg_cancellable, arg_callback, arg_user_data}
@@ -27006,14 +27417,14 @@ func (v Subprocess) SendSignal(signal_num int32) {
 // g_subprocess_wait
 // container is not nil, container is Subprocess
 // is method
-func (v Subprocess) Wait(cancellable Cancellable) (result bool, err error) {
+func (v Subprocess) Wait(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1355, "Subprocess", "wait")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -27026,14 +27437,14 @@ func (v Subprocess) Wait(cancellable Cancellable) (result bool, err error) {
 // g_subprocess_wait_async
 // container is not nil, container is Subprocess
 // is method
-func (v Subprocess) WaitAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Subprocess) WaitAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1356, "Subprocess", "wait_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -27043,14 +27454,14 @@ func (v Subprocess) WaitAsync(cancellable Cancellable, callback int /*TODO_TYPE 
 // g_subprocess_wait_check
 // container is not nil, container is Subprocess
 // is method
-func (v Subprocess) WaitCheck(cancellable Cancellable) (result bool, err error) {
+func (v Subprocess) WaitCheck(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1357, "Subprocess", "wait_check")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -27063,14 +27474,14 @@ func (v Subprocess) WaitCheck(cancellable Cancellable) (result bool, err error) 
 // g_subprocess_wait_check_async
 // container is not nil, container is Subprocess
 // is method
-func (v Subprocess) WaitCheckAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Subprocess) WaitCheckAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1358, "Subprocess", "wait_check_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -27117,6 +27528,7 @@ func (v Subprocess) WaitFinish(result AsyncResult) (result1 bool, err error) {
 	return
 }
 
+// Flags SubprocessFlags
 type SubprocessFlags int
 
 const (
@@ -27138,16 +27550,20 @@ type SubprocessLauncher struct {
 
 func WrapSubprocessLauncher(p unsafe.Pointer) (r SubprocessLauncher) { r.P = p; return }
 
+type ISubprocessLauncher interface{ P_SubprocessLauncher() unsafe.Pointer }
+
+func (v SubprocessLauncher) P_SubprocessLauncher() unsafe.Pointer { return v.P }
+
 // g_subprocess_launcher_new
 // container is not nil, container is SubprocessLauncher
 // is constructor
-func NewSubprocessLauncher(flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result SubprocessLauncher) {
+func NewSubprocessLauncher(flags SubprocessFlags) (result SubprocessLauncher) {
 	iv, err := _I.Get(1361, "SubprocessLauncher", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -27210,14 +27626,14 @@ func (v SubprocessLauncher) SetEnviron(env int /*TODO_TYPE isPtr: true, tag: arr
 // g_subprocess_launcher_set_flags
 // container is not nil, container is SubprocessLauncher
 // is method
-func (v SubprocessLauncher) SetFlags(flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v SubprocessLauncher) SetFlags(flags SubprocessFlags) {
 	iv, err := _I.Get(1365, "SubprocessLauncher", "set_flags")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_flags}
 	iv.Call(args, nil, nil)
 }
@@ -27400,17 +27816,21 @@ type Task struct {
 
 func WrapTask(p unsafe.Pointer) (r Task) { r.P = p; return }
 
+type ITask interface{ P_Task() unsafe.Pointer }
+
+func (v Task) P_Task() unsafe.Pointer { return v.P }
+
 // g_task_new
 // container is not nil, container is Task
 // is constructor
-func NewTask(source_object gobject.Object, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, callback_data unsafe.Pointer) (result Task) {
+func NewTask(source_object gobject.IObject, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, callback_data unsafe.Pointer) (result Task) {
 	iv, err := _I.Get(1376, "Task", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_source_object := gi.NewPointerArgument(source_object.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_source_object := gi.NewPointerArgument(source_object.P_Object())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_callback_data := gi.NewPointerArgument(callback_data)
 	args := []gi.Argument{arg_source_object, arg_cancellable, arg_callback, arg_callback_data}
@@ -27424,14 +27844,14 @@ func NewTask(source_object gobject.Object, cancellable Cancellable, callback int
 // container is not nil, container is Task
 // is method
 // arg0Type tag: interface, isPtr: true
-func TaskIsValid1(result AsyncResult, source_object gobject.Object) (result1 bool) {
+func TaskIsValid1(result AsyncResult, source_object gobject.IObject) (result1 bool) {
 	iv, err := _I.Get(1377, "Task", "is_valid")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_result := gi.NewPointerArgument(result.P)
-	arg_source_object := gi.NewPointerArgument(source_object.P)
+	arg_source_object := gi.NewPointerArgument(source_object.P_Object())
 	args := []gi.Argument{arg_result, arg_source_object}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -27443,13 +27863,13 @@ func TaskIsValid1(result AsyncResult, source_object gobject.Object) (result1 boo
 // container is not nil, container is Task
 // is method
 // arg0Type tag: interface, isPtr: true
-func TaskReportError1(source_object gobject.Object, callback int /*TODO_TYPE isPtr: false, tag: interface*/, callback_data unsafe.Pointer, source_tag unsafe.Pointer, error int /*TODO_TYPE isPtr: true, tag: error*/) {
+func TaskReportError1(source_object gobject.IObject, callback int /*TODO_TYPE isPtr: false, tag: interface*/, callback_data unsafe.Pointer, source_tag unsafe.Pointer, error int /*TODO_TYPE isPtr: true, tag: error*/) {
 	iv, err := _I.Get(1378, "Task", "report_error")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_source_object := gi.NewPointerArgument(source_object.P)
+	arg_source_object := gi.NewPointerArgument(source_object.P_Object())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_callback_data := gi.NewPointerArgument(callback_data)
 	arg_source_tag := gi.NewPointerArgument(source_tag)
@@ -27842,6 +28262,10 @@ type TcpConnection struct {
 
 func WrapTcpConnection(p unsafe.Pointer) (r TcpConnection) { r.P = p; return }
 
+type ITcpConnection interface{ P_TcpConnection() unsafe.Pointer }
+
+func (v TcpConnection) P_TcpConnection() unsafe.Pointer { return v.P }
+
 // g_tcp_connection_get_graceful_disconnect
 // container is not nil, container is TcpConnection
 // is method
@@ -27887,17 +28311,21 @@ type TcpWrapperConnection struct {
 
 func WrapTcpWrapperConnection(p unsafe.Pointer) (r TcpWrapperConnection) { r.P = p; return }
 
+type ITcpWrapperConnection interface{ P_TcpWrapperConnection() unsafe.Pointer }
+
+func (v TcpWrapperConnection) P_TcpWrapperConnection() unsafe.Pointer { return v.P }
+
 // g_tcp_wrapper_connection_new
 // container is not nil, container is TcpWrapperConnection
 // is constructor
-func NewTcpWrapperConnection(base_io_stream IOStream, socket Socket) (result SocketConnection) {
+func NewTcpWrapperConnection(base_io_stream IIOStream, socket ISocket) (result SocketConnection) {
 	iv, err := _I.Get(1404, "TcpWrapperConnection", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_io_stream := gi.NewPointerArgument(base_io_stream.P)
-	arg_socket := gi.NewPointerArgument(socket.P)
+	arg_base_io_stream := gi.NewPointerArgument(base_io_stream.P_IOStream())
+	arg_socket := gi.NewPointerArgument(socket.P_Socket())
 	args := []gi.Argument{arg_base_io_stream, arg_socket}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -27935,16 +28363,20 @@ type TestDBus struct {
 
 func WrapTestDBus(p unsafe.Pointer) (r TestDBus) { r.P = p; return }
 
+type ITestDBus interface{ P_TestDBus() unsafe.Pointer }
+
+func (v TestDBus) P_TestDBus() unsafe.Pointer { return v.P }
+
 // g_test_dbus_new
 // container is not nil, container is TestDBus
 // is constructor
-func NewTestDBus(flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result TestDBus) {
+func NewTestDBus(flags TestDBusFlags) (result TestDBus) {
 	iv, err := _I.Get(1406, "TestDBus", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -28006,7 +28438,7 @@ func (v TestDBus) GetBusAddress() (result string) {
 // g_test_dbus_get_flags
 // container is not nil, container is TestDBus
 // is method
-func (v TestDBus) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TestDBus) GetFlags() (result TestDBusFlags) {
 	iv, err := _I.Get(1411, "TestDBus", "get_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28016,7 +28448,7 @@ func (v TestDBus) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interfac
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TestDBusFlags(ret.Int())
 	return
 }
 
@@ -28048,6 +28480,7 @@ func (v TestDBus) Up() {
 	iv.Call(args, nil, nil)
 }
 
+// Flags TestDBusFlags
 type TestDBusFlags int
 
 const (
@@ -28061,6 +28494,10 @@ type ThemedIcon struct {
 }
 
 func WrapThemedIcon(p unsafe.Pointer) (r ThemedIcon) { r.P = p; return }
+
+type IThemedIcon interface{ P_ThemedIcon() unsafe.Pointer }
+
+func (v ThemedIcon) P_ThemedIcon() unsafe.Pointer { return v.P }
 
 // g_themed_icon_new
 // container is not nil, container is ThemedIcon
@@ -28177,6 +28614,10 @@ type ThreadedSocketService struct {
 
 func WrapThreadedSocketService(p unsafe.Pointer) (r ThreadedSocketService) { r.P = p; return }
 
+type IThreadedSocketService interface{ P_ThreadedSocketService() unsafe.Pointer }
+
+func (v ThreadedSocketService) P_ThreadedSocketService() unsafe.Pointer { return v.P }
+
 // g_threaded_socket_service_new
 // container is not nil, container is ThreadedSocketService
 // is constructor
@@ -28199,6 +28640,8 @@ func NewThreadedSocketService(max_threads int32) (result SocketService) {
 type ThreadedSocketServicePrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum TlsAuthenticationMode
 type TlsAuthenticationModeEnum int
 
 const (
@@ -28378,6 +28821,10 @@ type TlsCertificate struct {
 
 func WrapTlsCertificate(p unsafe.Pointer) (r TlsCertificate) { r.P = p; return }
 
+type ITlsCertificate interface{ P_TlsCertificate() unsafe.Pointer }
+
+func (v TlsCertificate) P_TlsCertificate() unsafe.Pointer { return v.P }
+
 // g_tls_certificate_new_from_file
 // container is not nil, container is TlsCertificate
 // is constructor
@@ -28487,14 +28934,14 @@ func (v TlsCertificate) GetIssuer() (result TlsCertificate) {
 // g_tls_certificate_is_same
 // container is not nil, container is TlsCertificate
 // is method
-func (v TlsCertificate) IsSame(cert_two TlsCertificate) (result bool) {
+func (v TlsCertificate) IsSame(cert_two ITlsCertificate) (result bool) {
 	iv, err := _I.Get(1436, "TlsCertificate", "is_same")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cert_two := gi.NewPointerArgument(cert_two.P)
+	arg_cert_two := gi.NewPointerArgument(cert_two.P_TlsCertificate())
 	args := []gi.Argument{arg_v, arg_cert_two}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -28505,7 +28952,7 @@ func (v TlsCertificate) IsSame(cert_two TlsCertificate) (result bool) {
 // g_tls_certificate_verify
 // container is not nil, container is TlsCertificate
 // is method
-func (v TlsCertificate) Verify(identity SocketConnectable, trusted_ca TlsCertificate) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TlsCertificate) Verify(identity SocketConnectable, trusted_ca ITlsCertificate) (result TlsCertificateFlags) {
 	iv, err := _I.Get(1437, "TlsCertificate", "verify")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28513,15 +28960,16 @@ func (v TlsCertificate) Verify(identity SocketConnectable, trusted_ca TlsCertifi
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_identity := gi.NewPointerArgument(identity.P)
-	arg_trusted_ca := gi.NewPointerArgument(trusted_ca.P)
+	arg_trusted_ca := gi.NewPointerArgument(trusted_ca.P_TlsCertificate())
 	args := []gi.Argument{arg_v, arg_identity, arg_trusted_ca}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TlsCertificateFlags(ret.Int())
 	return
 }
 
 // ignore GType struct TlsCertificateClass
+// Flags TlsCertificateFlags
 type TlsCertificateFlags int
 
 const (
@@ -28539,6 +28987,8 @@ const (
 type TlsCertificatePrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum TlsCertificateRequestFlags
 type TlsCertificateRequestFlagsEnum int
 
 const (
@@ -28556,13 +29006,13 @@ type TlsClientConnectionIfc struct{}
 // container is not nil, container is TlsClientConnection
 // is method
 // arg0Type tag: interface, isPtr: true
-func TlsClientConnectionNew1(base_io_stream IOStream, server_identity SocketConnectable) (result TlsClientConnection, err error) {
+func TlsClientConnectionNew1(base_io_stream IIOStream, server_identity SocketConnectable) (result TlsClientConnection, err error) {
 	iv, err := _I.Get(1438, "TlsClientConnection", "new")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_base_io_stream := gi.NewPointerArgument(base_io_stream.P)
+	arg_base_io_stream := gi.NewPointerArgument(base_io_stream.P_IOStream())
 	arg_server_identity := gi.NewPointerArgument(server_identity.P)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_base_io_stream, arg_server_identity, arg_err}
@@ -28642,7 +29092,7 @@ func (v *TlsClientConnectionIfc) GetUseSsl3() (result bool) {
 // g_tls_client_connection_get_validation_flags
 // container is not nil, container is TlsClientConnection
 // is method
-func (v *TlsClientConnectionIfc) GetValidationFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *TlsClientConnectionIfc) GetValidationFlags() (result TlsCertificateFlags) {
 	iv, err := _I.Get(1443, "TlsClientConnection", "get_validation_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28652,7 +29102,7 @@ func (v *TlsClientConnectionIfc) GetValidationFlags() (result int /*TODO_TYPE is
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TlsCertificateFlags(ret.Int())
 	return
 }
 
@@ -28689,14 +29139,14 @@ func (v *TlsClientConnectionIfc) SetUseSsl3(use_ssl3 bool) {
 // g_tls_client_connection_set_validation_flags
 // container is not nil, container is TlsClientConnection
 // is method
-func (v *TlsClientConnectionIfc) SetValidationFlags(flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v *TlsClientConnectionIfc) SetValidationFlags(flags TlsCertificateFlags) {
 	iv, err := _I.Get(1446, "TlsClientConnection", "set_validation_flags")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_flags}
 	iv.Call(args, nil, nil)
 }
@@ -28709,18 +29159,22 @@ type TlsConnection struct {
 
 func WrapTlsConnection(p unsafe.Pointer) (r TlsConnection) { r.P = p; return }
 
+type ITlsConnection interface{ P_TlsConnection() unsafe.Pointer }
+
+func (v TlsConnection) P_TlsConnection() unsafe.Pointer { return v.P }
+
 // g_tls_connection_emit_accept_certificate
 // container is not nil, container is TlsConnection
 // is method
-func (v TlsConnection) EmitAcceptCertificate(peer_cert TlsCertificate, errors int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v TlsConnection) EmitAcceptCertificate(peer_cert ITlsCertificate, errors TlsCertificateFlags) (result bool) {
 	iv, err := _I.Get(1447, "TlsConnection", "emit_accept_certificate")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_peer_cert := gi.NewPointerArgument(peer_cert.P)
-	arg_errors := gi.NewIntArgument(errors) /*TODO*/
+	arg_peer_cert := gi.NewPointerArgument(peer_cert.P_TlsCertificate())
+	arg_errors := gi.NewIntArgument(int(errors))
 	args := []gi.Argument{arg_v, arg_peer_cert, arg_errors}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -28799,7 +29253,7 @@ func (v TlsConnection) GetPeerCertificate() (result TlsCertificate) {
 // g_tls_connection_get_peer_certificate_errors
 // container is not nil, container is TlsConnection
 // is method
-func (v TlsConnection) GetPeerCertificateErrors() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TlsConnection) GetPeerCertificateErrors() (result TlsCertificateFlags) {
 	iv, err := _I.Get(1452, "TlsConnection", "get_peer_certificate_errors")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28809,14 +29263,14 @@ func (v TlsConnection) GetPeerCertificateErrors() (result int /*TODO_TYPE isPtr:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TlsCertificateFlags(ret.Int())
 	return
 }
 
 // g_tls_connection_get_rehandshake_mode
 // container is not nil, container is TlsConnection
 // is method
-func (v TlsConnection) GetRehandshakeMode() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TlsConnection) GetRehandshakeMode() (result TlsRehandshakeModeEnum) {
 	iv, err := _I.Get(1453, "TlsConnection", "get_rehandshake_mode")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28826,7 +29280,7 @@ func (v TlsConnection) GetRehandshakeMode() (result int /*TODO_TYPE isPtr: false
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TlsRehandshakeModeEnum(ret.Int())
 	return
 }
 
@@ -28867,14 +29321,14 @@ func (v TlsConnection) GetUseSystemCertdb() (result bool) {
 // g_tls_connection_handshake
 // container is not nil, container is TlsConnection
 // is method
-func (v TlsConnection) Handshake(cancellable Cancellable) (result bool, err error) {
+func (v TlsConnection) Handshake(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1456, "TlsConnection", "handshake")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -28887,7 +29341,7 @@ func (v TlsConnection) Handshake(cancellable Cancellable) (result bool, err erro
 // g_tls_connection_handshake_async
 // container is not nil, container is TlsConnection
 // is method
-func (v TlsConnection) HandshakeAsync(io_priority int32, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v TlsConnection) HandshakeAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1457, "TlsConnection", "handshake_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28895,7 +29349,7 @@ func (v TlsConnection) HandshakeAsync(io_priority int32, cancellable Cancellable
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
@@ -28925,14 +29379,14 @@ func (v TlsConnection) HandshakeFinish(result AsyncResult) (result1 bool, err er
 // g_tls_connection_set_certificate
 // container is not nil, container is TlsConnection
 // is method
-func (v TlsConnection) SetCertificate(certificate TlsCertificate) {
+func (v TlsConnection) SetCertificate(certificate ITlsCertificate) {
 	iv, err := _I.Get(1459, "TlsConnection", "set_certificate")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_certificate := gi.NewPointerArgument(certificate.P)
+	arg_certificate := gi.NewPointerArgument(certificate.P_TlsCertificate())
 	args := []gi.Argument{arg_v, arg_certificate}
 	iv.Call(args, nil, nil)
 }
@@ -28940,14 +29394,14 @@ func (v TlsConnection) SetCertificate(certificate TlsCertificate) {
 // g_tls_connection_set_database
 // container is not nil, container is TlsConnection
 // is method
-func (v TlsConnection) SetDatabase(database TlsDatabase) {
+func (v TlsConnection) SetDatabase(database ITlsDatabase) {
 	iv, err := _I.Get(1460, "TlsConnection", "set_database")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_database := gi.NewPointerArgument(database.P)
+	arg_database := gi.NewPointerArgument(database.P_TlsDatabase())
 	args := []gi.Argument{arg_v, arg_database}
 	iv.Call(args, nil, nil)
 }
@@ -28955,14 +29409,14 @@ func (v TlsConnection) SetDatabase(database TlsDatabase) {
 // g_tls_connection_set_interaction
 // container is not nil, container is TlsConnection
 // is method
-func (v TlsConnection) SetInteraction(interaction TlsInteraction) {
+func (v TlsConnection) SetInteraction(interaction ITlsInteraction) {
 	iv, err := _I.Get(1461, "TlsConnection", "set_interaction")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_interaction := gi.NewPointerArgument(interaction.P)
+	arg_interaction := gi.NewPointerArgument(interaction.P_TlsInteraction())
 	args := []gi.Argument{arg_v, arg_interaction}
 	iv.Call(args, nil, nil)
 }
@@ -28970,14 +29424,14 @@ func (v TlsConnection) SetInteraction(interaction TlsInteraction) {
 // g_tls_connection_set_rehandshake_mode
 // container is not nil, container is TlsConnection
 // is method
-func (v TlsConnection) SetRehandshakeMode(mode int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TlsConnection) SetRehandshakeMode(mode TlsRehandshakeModeEnum) {
 	iv, err := _I.Get(1462, "TlsConnection", "set_rehandshake_mode")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_mode := gi.NewIntArgument(mode) /*TODO*/
+	arg_mode := gi.NewIntArgument(int(mode))
 	args := []gi.Argument{arg_v, arg_mode}
 	iv.Call(args, nil, nil)
 }
@@ -29025,17 +29479,21 @@ type TlsDatabase struct {
 
 func WrapTlsDatabase(p unsafe.Pointer) (r TlsDatabase) { r.P = p; return }
 
+type ITlsDatabase interface{ P_TlsDatabase() unsafe.Pointer }
+
+func (v TlsDatabase) P_TlsDatabase() unsafe.Pointer { return v.P }
+
 // g_tls_database_create_certificate_handle
 // container is not nil, container is TlsDatabase
 // is method
-func (v TlsDatabase) CreateCertificateHandle(certificate TlsCertificate) (result string) {
+func (v TlsDatabase) CreateCertificateHandle(certificate ITlsCertificate) (result string) {
 	iv, err := _I.Get(1465, "TlsDatabase", "create_certificate_handle")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_certificate := gi.NewPointerArgument(certificate.P)
+	arg_certificate := gi.NewPointerArgument(certificate.P_TlsCertificate())
 	args := []gi.Argument{arg_v, arg_certificate}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -29046,7 +29504,7 @@ func (v TlsDatabase) CreateCertificateHandle(certificate TlsCertificate) (result
 // g_tls_database_lookup_certificate_for_handle
 // container is not nil, container is TlsDatabase
 // is method
-func (v TlsDatabase) LookupCertificateForHandle(handle string, interaction TlsInteraction, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result TlsCertificate, err error) {
+func (v TlsDatabase) LookupCertificateForHandle(handle string, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable) (result TlsCertificate, err error) {
 	iv, err := _I.Get(1466, "TlsDatabase", "lookup_certificate_for_handle")
 	if err != nil {
 		return
@@ -29055,9 +29513,9 @@ func (v TlsDatabase) LookupCertificateForHandle(handle string, interaction TlsIn
 	c_handle := gi.CString(handle)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_handle := gi.NewStringArgument(c_handle)
-	arg_interaction := gi.NewPointerArgument(interaction.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_interaction := gi.NewPointerArgument(interaction.P_TlsInteraction())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_handle, arg_interaction, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -29071,7 +29529,7 @@ func (v TlsDatabase) LookupCertificateForHandle(handle string, interaction TlsIn
 // g_tls_database_lookup_certificate_for_handle_async
 // container is not nil, container is TlsDatabase
 // is method
-func (v TlsDatabase) LookupCertificateForHandleAsync(handle string, interaction TlsInteraction, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v TlsDatabase) LookupCertificateForHandleAsync(handle string, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1467, "TlsDatabase", "lookup_certificate_for_handle_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29080,9 +29538,9 @@ func (v TlsDatabase) LookupCertificateForHandleAsync(handle string, interaction 
 	c_handle := gi.CString(handle)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_handle := gi.NewStringArgument(c_handle)
-	arg_interaction := gi.NewPointerArgument(interaction.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_interaction := gi.NewPointerArgument(interaction.P_TlsInteraction())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_handle, arg_interaction, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -29113,17 +29571,17 @@ func (v TlsDatabase) LookupCertificateForHandleFinish(result AsyncResult) (resul
 // g_tls_database_lookup_certificate_issuer
 // container is not nil, container is TlsDatabase
 // is method
-func (v TlsDatabase) LookupCertificateIssuer(certificate TlsCertificate, interaction TlsInteraction, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result TlsCertificate, err error) {
+func (v TlsDatabase) LookupCertificateIssuer(certificate ITlsCertificate, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable) (result TlsCertificate, err error) {
 	iv, err := _I.Get(1469, "TlsDatabase", "lookup_certificate_issuer")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_certificate := gi.NewPointerArgument(certificate.P)
-	arg_interaction := gi.NewPointerArgument(interaction.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_certificate := gi.NewPointerArgument(certificate.P_TlsCertificate())
+	arg_interaction := gi.NewPointerArgument(interaction.P_TlsInteraction())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_certificate, arg_interaction, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -29136,17 +29594,17 @@ func (v TlsDatabase) LookupCertificateIssuer(certificate TlsCertificate, interac
 // g_tls_database_lookup_certificate_issuer_async
 // container is not nil, container is TlsDatabase
 // is method
-func (v TlsDatabase) LookupCertificateIssuerAsync(certificate TlsCertificate, interaction TlsInteraction, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v TlsDatabase) LookupCertificateIssuerAsync(certificate ITlsCertificate, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1470, "TlsDatabase", "lookup_certificate_issuer_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_certificate := gi.NewPointerArgument(certificate.P)
-	arg_interaction := gi.NewPointerArgument(interaction.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_certificate := gi.NewPointerArgument(certificate.P_TlsCertificate())
+	arg_interaction := gi.NewPointerArgument(interaction.P_TlsInteraction())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_certificate, arg_interaction, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -29176,7 +29634,7 @@ func (v TlsDatabase) LookupCertificateIssuerFinish(result AsyncResult) (result1 
 // g_tls_database_lookup_certificates_issued_by
 // container is not nil, container is TlsDatabase
 // is method
-func (v TlsDatabase) LookupCertificatesIssuedBy(issuer_raw_dn int /*TODO_TYPE isPtr: true, tag: array*/, interaction TlsInteraction, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result int /*TODO_TYPE isPtr: true, tag: glist*/, err error) {
+func (v TlsDatabase) LookupCertificatesIssuedBy(issuer_raw_dn int /*TODO_TYPE isPtr: true, tag: array*/, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable) (result int /*TODO_TYPE isPtr: true, tag: glist*/, err error) {
 	iv, err := _I.Get(1472, "TlsDatabase", "lookup_certificates_issued_by")
 	if err != nil {
 		return
@@ -29184,9 +29642,9 @@ func (v TlsDatabase) LookupCertificatesIssuedBy(issuer_raw_dn int /*TODO_TYPE is
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_issuer_raw_dn := gi.NewIntArgument(issuer_raw_dn) /*TODO*/
-	arg_interaction := gi.NewPointerArgument(interaction.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_interaction := gi.NewPointerArgument(interaction.P_TlsInteraction())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_issuer_raw_dn, arg_interaction, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -29199,7 +29657,7 @@ func (v TlsDatabase) LookupCertificatesIssuedBy(issuer_raw_dn int /*TODO_TYPE is
 // g_tls_database_lookup_certificates_issued_by_async
 // container is not nil, container is TlsDatabase
 // is method
-func (v TlsDatabase) LookupCertificatesIssuedByAsync(issuer_raw_dn int /*TODO_TYPE isPtr: true, tag: array*/, interaction TlsInteraction, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v TlsDatabase) LookupCertificatesIssuedByAsync(issuer_raw_dn int /*TODO_TYPE isPtr: true, tag: array*/, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1473, "TlsDatabase", "lookup_certificates_issued_by_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29207,9 +29665,9 @@ func (v TlsDatabase) LookupCertificatesIssuedByAsync(issuer_raw_dn int /*TODO_TY
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_issuer_raw_dn := gi.NewIntArgument(issuer_raw_dn) /*TODO*/
-	arg_interaction := gi.NewPointerArgument(interaction.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_interaction := gi.NewPointerArgument(interaction.P_TlsInteraction())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_issuer_raw_dn, arg_interaction, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -29239,7 +29697,7 @@ func (v TlsDatabase) LookupCertificatesIssuedByFinish(result AsyncResult) (resul
 // g_tls_database_verify_chain
 // container is not nil, container is TlsDatabase
 // is method
-func (v TlsDatabase) VerifyChain(chain TlsCertificate, purpose string, identity SocketConnectable, interaction TlsInteraction, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v TlsDatabase) VerifyChain(chain ITlsCertificate, purpose string, identity SocketConnectable, interaction ITlsInteraction, flags TlsDatabaseVerifyFlags, cancellable ICancellable) (result TlsCertificateFlags, err error) {
 	iv, err := _I.Get(1475, "TlsDatabase", "verify_chain")
 	if err != nil {
 		return
@@ -29247,17 +29705,17 @@ func (v TlsDatabase) VerifyChain(chain TlsCertificate, purpose string, identity 
 	var outArgs [1]gi.Argument
 	c_purpose := gi.CString(purpose)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_chain := gi.NewPointerArgument(chain.P)
+	arg_chain := gi.NewPointerArgument(chain.P_TlsCertificate())
 	arg_purpose := gi.NewStringArgument(c_purpose)
 	arg_identity := gi.NewPointerArgument(identity.P)
-	arg_interaction := gi.NewPointerArgument(interaction.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_interaction := gi.NewPointerArgument(interaction.P_TlsInteraction())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_chain, arg_purpose, arg_identity, arg_interaction, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = TlsCertificateFlags(ret.Int())
 	gi.Free(c_purpose)
 	err = gi.ToError(outArgs[0].Pointer())
 	return
@@ -29266,7 +29724,7 @@ func (v TlsDatabase) VerifyChain(chain TlsCertificate, purpose string, identity 
 // g_tls_database_verify_chain_async
 // container is not nil, container is TlsDatabase
 // is method
-func (v TlsDatabase) VerifyChainAsync(chain TlsCertificate, purpose string, identity SocketConnectable, interaction TlsInteraction, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v TlsDatabase) VerifyChainAsync(chain ITlsCertificate, purpose string, identity SocketConnectable, interaction ITlsInteraction, flags TlsDatabaseVerifyFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1476, "TlsDatabase", "verify_chain_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29274,12 +29732,12 @@ func (v TlsDatabase) VerifyChainAsync(chain TlsCertificate, purpose string, iden
 	}
 	c_purpose := gi.CString(purpose)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_chain := gi.NewPointerArgument(chain.P)
+	arg_chain := gi.NewPointerArgument(chain.P_TlsCertificate())
 	arg_purpose := gi.NewStringArgument(c_purpose)
 	arg_identity := gi.NewPointerArgument(identity.P)
-	arg_interaction := gi.NewPointerArgument(interaction.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_interaction := gi.NewPointerArgument(interaction.P_TlsInteraction())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_chain, arg_purpose, arg_identity, arg_interaction, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -29290,7 +29748,7 @@ func (v TlsDatabase) VerifyChainAsync(chain TlsCertificate, purpose string, iden
 // g_tls_database_verify_chain_finish
 // container is not nil, container is TlsDatabase
 // is method
-func (v TlsDatabase) VerifyChainFinish(result AsyncResult) (result1 int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v TlsDatabase) VerifyChainFinish(result AsyncResult) (result1 TlsCertificateFlags, err error) {
 	iv, err := _I.Get(1477, "TlsDatabase", "verify_chain_finish")
 	if err != nil {
 		return
@@ -29302,12 +29760,13 @@ func (v TlsDatabase) VerifyChainFinish(result AsyncResult) (result1 int /*TODO_T
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
+	result1 = TlsCertificateFlags(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
 
 // ignore GType struct TlsDatabaseClass
+// Enum TlsDatabaseLookupFlags
 type TlsDatabaseLookupFlagsEnum int
 
 const (
@@ -29319,12 +29778,15 @@ const (
 type TlsDatabasePrivate struct {
 	P unsafe.Pointer
 }
+
+// Flags TlsDatabaseVerifyFlags
 type TlsDatabaseVerifyFlags int
 
 const (
 	TlsDatabaseVerifyFlagsNone TlsDatabaseVerifyFlags = 0
 )
 
+// Enum TlsError
 type TlsErrorEnum int
 
 const (
@@ -29374,23 +29836,27 @@ type TlsInteraction struct {
 
 func WrapTlsInteraction(p unsafe.Pointer) (r TlsInteraction) { r.P = p; return }
 
+type ITlsInteraction interface{ P_TlsInteraction() unsafe.Pointer }
+
+func (v TlsInteraction) P_TlsInteraction() unsafe.Pointer { return v.P }
+
 // g_tls_interaction_ask_password
 // container is not nil, container is TlsInteraction
 // is method
-func (v TlsInteraction) AskPassword(password TlsPassword, cancellable Cancellable) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v TlsInteraction) AskPassword(password ITlsPassword, cancellable ICancellable) (result TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1479, "TlsInteraction", "ask_password")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_password := gi.NewPointerArgument(password.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_password := gi.NewPointerArgument(password.P_TlsPassword())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_password, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -29398,15 +29864,15 @@ func (v TlsInteraction) AskPassword(password TlsPassword, cancellable Cancellabl
 // g_tls_interaction_ask_password_async
 // container is not nil, container is TlsInteraction
 // is method
-func (v TlsInteraction) AskPasswordAsync(password TlsPassword, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v TlsInteraction) AskPasswordAsync(password ITlsPassword, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1480, "TlsInteraction", "ask_password_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_password := gi.NewPointerArgument(password.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_password := gi.NewPointerArgument(password.P_TlsPassword())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_password, arg_cancellable, arg_callback, arg_user_data}
@@ -29416,7 +29882,7 @@ func (v TlsInteraction) AskPasswordAsync(password TlsPassword, cancellable Cance
 // g_tls_interaction_ask_password_finish
 // container is not nil, container is TlsInteraction
 // is method
-func (v TlsInteraction) AskPasswordFinish(result AsyncResult) (result1 int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v TlsInteraction) AskPasswordFinish(result AsyncResult) (result1 TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1481, "TlsInteraction", "ask_password_finish")
 	if err != nil {
 		return
@@ -29428,7 +29894,7 @@ func (v TlsInteraction) AskPasswordFinish(result AsyncResult) (result1 int /*TOD
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
+	result1 = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -29436,20 +29902,20 @@ func (v TlsInteraction) AskPasswordFinish(result AsyncResult) (result1 int /*TOD
 // g_tls_interaction_invoke_ask_password
 // container is not nil, container is TlsInteraction
 // is method
-func (v TlsInteraction) InvokeAskPassword(password TlsPassword, cancellable Cancellable) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v TlsInteraction) InvokeAskPassword(password ITlsPassword, cancellable ICancellable) (result TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1482, "TlsInteraction", "invoke_ask_password")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_password := gi.NewPointerArgument(password.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_password := gi.NewPointerArgument(password.P_TlsPassword())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_password, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -29457,21 +29923,21 @@ func (v TlsInteraction) InvokeAskPassword(password TlsPassword, cancellable Canc
 // g_tls_interaction_invoke_request_certificate
 // container is not nil, container is TlsInteraction
 // is method
-func (v TlsInteraction) InvokeRequestCertificate(connection TlsConnection, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v TlsInteraction) InvokeRequestCertificate(connection ITlsConnection, flags TlsCertificateRequestFlagsEnum, cancellable ICancellable) (result TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1483, "TlsInteraction", "invoke_request_certificate")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_connection := gi.NewPointerArgument(connection.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_connection := gi.NewPointerArgument(connection.P_TlsConnection())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_connection, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -29479,21 +29945,21 @@ func (v TlsInteraction) InvokeRequestCertificate(connection TlsConnection, flags
 // g_tls_interaction_request_certificate
 // container is not nil, container is TlsInteraction
 // is method
-func (v TlsInteraction) RequestCertificate(connection TlsConnection, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v TlsInteraction) RequestCertificate(connection ITlsConnection, flags TlsCertificateRequestFlagsEnum, cancellable ICancellable) (result TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1484, "TlsInteraction", "request_certificate")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_connection := gi.NewPointerArgument(connection.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_connection := gi.NewPointerArgument(connection.P_TlsConnection())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_connection, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
+	result = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -29501,16 +29967,16 @@ func (v TlsInteraction) RequestCertificate(connection TlsConnection, flags int /
 // g_tls_interaction_request_certificate_async
 // container is not nil, container is TlsInteraction
 // is method
-func (v TlsInteraction) RequestCertificateAsync(connection TlsConnection, flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v TlsInteraction) RequestCertificateAsync(connection ITlsConnection, flags TlsCertificateRequestFlagsEnum, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1485, "TlsInteraction", "request_certificate_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_connection := gi.NewPointerArgument(connection.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_connection := gi.NewPointerArgument(connection.P_TlsConnection())
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_connection, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -29520,7 +29986,7 @@ func (v TlsInteraction) RequestCertificateAsync(connection TlsConnection, flags 
 // g_tls_interaction_request_certificate_finish
 // container is not nil, container is TlsInteraction
 // is method
-func (v TlsInteraction) RequestCertificateFinish(result AsyncResult) (result1 int /*TODO_TYPE isPtr: false, tag: interface*/, err error) {
+func (v TlsInteraction) RequestCertificateFinish(result AsyncResult) (result1 TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1486, "TlsInteraction", "request_certificate_finish")
 	if err != nil {
 		return
@@ -29532,7 +29998,7 @@ func (v TlsInteraction) RequestCertificateFinish(result AsyncResult) (result1 in
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
+	result1 = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
 	return
 }
@@ -29542,6 +30008,8 @@ func (v TlsInteraction) RequestCertificateFinish(result AsyncResult) (result1 in
 type TlsInteractionPrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum TlsInteractionResult
 type TlsInteractionResultEnum int
 
 const (
@@ -29557,17 +30025,21 @@ type TlsPassword struct {
 
 func WrapTlsPassword(p unsafe.Pointer) (r TlsPassword) { r.P = p; return }
 
+type ITlsPassword interface{ P_TlsPassword() unsafe.Pointer }
+
+func (v TlsPassword) P_TlsPassword() unsafe.Pointer { return v.P }
+
 // g_tls_password_new
 // container is not nil, container is TlsPassword
 // is constructor
-func NewTlsPassword(flags int /*TODO_TYPE isPtr: false, tag: interface*/, description string) (result TlsPassword) {
+func NewTlsPassword(flags TlsPasswordFlags, description string) (result TlsPassword) {
 	iv, err := _I.Get(1487, "TlsPassword", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_description := gi.CString(description)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_description := gi.NewStringArgument(c_description)
 	args := []gi.Argument{arg_flags, arg_description}
 	var ret gi.Argument
@@ -29597,7 +30069,7 @@ func (v TlsPassword) GetDescription() (result string) {
 // g_tls_password_get_flags
 // container is not nil, container is TlsPassword
 // is method
-func (v TlsPassword) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TlsPassword) GetFlags() (result TlsPasswordFlags) {
 	iv, err := _I.Get(1489, "TlsPassword", "get_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29607,7 +30079,7 @@ func (v TlsPassword) GetFlags() (result int /*TODO_TYPE isPtr: false, tag: inter
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = TlsPasswordFlags(ret.Int())
 	return
 }
 
@@ -29666,14 +30138,14 @@ func (v TlsPassword) SetDescription(description string) {
 // g_tls_password_set_flags
 // container is not nil, container is TlsPassword
 // is method
-func (v TlsPassword) SetFlags(flags int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TlsPassword) SetFlags(flags TlsPasswordFlags) {
 	iv, err := _I.Get(1493, "TlsPassword", "set_flags")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_flags}
 	iv.Call(args, nil, nil)
 }
@@ -29729,6 +30201,7 @@ func (v TlsPassword) SetWarning(warning string) {
 }
 
 // ignore GType struct TlsPasswordClass
+// Flags TlsPasswordFlags
 type TlsPasswordFlags int
 
 const (
@@ -29742,6 +30215,8 @@ const (
 type TlsPasswordPrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum TlsRehandshakeMode
 type TlsRehandshakeModeEnum int
 
 const (
@@ -29761,14 +30236,14 @@ type TlsServerConnectionIfc struct{}
 // container is not nil, container is TlsServerConnection
 // is method
 // arg0Type tag: interface, isPtr: true
-func TlsServerConnectionNew1(base_io_stream IOStream, certificate TlsCertificate) (result TlsServerConnection, err error) {
+func TlsServerConnectionNew1(base_io_stream IIOStream, certificate ITlsCertificate) (result TlsServerConnection, err error) {
 	iv, err := _I.Get(1497, "TlsServerConnection", "new")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_base_io_stream := gi.NewPointerArgument(base_io_stream.P)
-	arg_certificate := gi.NewPointerArgument(certificate.P)
+	arg_base_io_stream := gi.NewPointerArgument(base_io_stream.P_IOStream())
+	arg_certificate := gi.NewPointerArgument(certificate.P_TlsCertificate())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_base_io_stream, arg_certificate, arg_err}
 	var ret gi.Argument
@@ -29786,17 +30261,21 @@ type UnixConnection struct {
 
 func WrapUnixConnection(p unsafe.Pointer) (r UnixConnection) { r.P = p; return }
 
+type IUnixConnection interface{ P_UnixConnection() unsafe.Pointer }
+
+func (v UnixConnection) P_UnixConnection() unsafe.Pointer { return v.P }
+
 // g_unix_connection_receive_credentials
 // container is not nil, container is UnixConnection
 // is method
-func (v UnixConnection) ReceiveCredentials(cancellable Cancellable) (result Credentials, err error) {
+func (v UnixConnection) ReceiveCredentials(cancellable ICancellable) (result Credentials, err error) {
 	iv, err := _I.Get(1498, "UnixConnection", "receive_credentials")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -29809,14 +30288,14 @@ func (v UnixConnection) ReceiveCredentials(cancellable Cancellable) (result Cred
 // g_unix_connection_receive_credentials_async
 // container is not nil, container is UnixConnection
 // is method
-func (v UnixConnection) ReceiveCredentialsAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v UnixConnection) ReceiveCredentialsAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1499, "UnixConnection", "receive_credentials_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -29846,14 +30325,14 @@ func (v UnixConnection) ReceiveCredentialsFinish(result AsyncResult) (result1 Cr
 // g_unix_connection_receive_fd
 // container is not nil, container is UnixConnection
 // is method
-func (v UnixConnection) ReceiveFd(cancellable Cancellable) (result int32, err error) {
+func (v UnixConnection) ReceiveFd(cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1501, "UnixConnection", "receive_fd")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -29866,14 +30345,14 @@ func (v UnixConnection) ReceiveFd(cancellable Cancellable) (result int32, err er
 // g_unix_connection_send_credentials
 // container is not nil, container is UnixConnection
 // is method
-func (v UnixConnection) SendCredentials(cancellable Cancellable) (result bool, err error) {
+func (v UnixConnection) SendCredentials(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1502, "UnixConnection", "send_credentials")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -29886,14 +30365,14 @@ func (v UnixConnection) SendCredentials(cancellable Cancellable) (result bool, e
 // g_unix_connection_send_credentials_async
 // container is not nil, container is UnixConnection
 // is method
-func (v UnixConnection) SendCredentialsAsync(cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v UnixConnection) SendCredentialsAsync(cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1503, "UnixConnection", "send_credentials_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -29923,7 +30402,7 @@ func (v UnixConnection) SendCredentialsFinish(result AsyncResult) (result1 bool,
 // g_unix_connection_send_fd
 // container is not nil, container is UnixConnection
 // is method
-func (v UnixConnection) SendFd(fd int32, cancellable Cancellable) (result bool, err error) {
+func (v UnixConnection) SendFd(fd int32, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1505, "UnixConnection", "send_fd")
 	if err != nil {
 		return
@@ -29931,7 +30410,7 @@ func (v UnixConnection) SendFd(fd int32, cancellable Cancellable) (result bool, 
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_fd := gi.NewInt32Argument(fd)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_fd, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -29954,6 +30433,10 @@ type UnixCredentialsMessage struct {
 
 func WrapUnixCredentialsMessage(p unsafe.Pointer) (r UnixCredentialsMessage) { r.P = p; return }
 
+type IUnixCredentialsMessage interface{ P_UnixCredentialsMessage() unsafe.Pointer }
+
+func (v UnixCredentialsMessage) P_UnixCredentialsMessage() unsafe.Pointer { return v.P }
+
 // g_unix_credentials_message_new
 // container is not nil, container is UnixCredentialsMessage
 // is constructor
@@ -29972,13 +30455,13 @@ func NewUnixCredentialsMessage() (result SocketControlMessage) {
 // g_unix_credentials_message_new_with_credentials
 // container is not nil, container is UnixCredentialsMessage
 // is constructor
-func NewUnixCredentialsMessageWithCredentials(credentials Credentials) (result SocketControlMessage) {
+func NewUnixCredentialsMessageWithCredentials(credentials ICredentials) (result SocketControlMessage) {
 	iv, err := _I.Get(1507, "UnixCredentialsMessage", "new_with_credentials")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_credentials := gi.NewPointerArgument(credentials.P)
+	arg_credentials := gi.NewPointerArgument(credentials.P_Credentials())
 	args := []gi.Argument{arg_credentials}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -30018,6 +30501,10 @@ type UnixFDList struct {
 }
 
 func WrapUnixFDList(p unsafe.Pointer) (r UnixFDList) { r.P = p; return }
+
+type IUnixFDList interface{ P_UnixFDList() unsafe.Pointer }
+
+func (v UnixFDList) P_UnixFDList() unsafe.Pointer { return v.P }
 
 // g_unix_fd_list_new
 // container is not nil, container is UnixFDList
@@ -30162,6 +30649,10 @@ type UnixFDMessage struct {
 
 func WrapUnixFDMessage(p unsafe.Pointer) (r UnixFDMessage) { r.P = p; return }
 
+type IUnixFDMessage interface{ P_UnixFDMessage() unsafe.Pointer }
+
+func (v UnixFDMessage) P_UnixFDMessage() unsafe.Pointer { return v.P }
+
 // g_unix_fd_message_new
 // container is not nil, container is UnixFDMessage
 // is constructor
@@ -30180,13 +30671,13 @@ func NewUnixFDMessage() (result SocketControlMessage) {
 // g_unix_fd_message_new_with_fd_list
 // container is not nil, container is UnixFDMessage
 // is constructor
-func NewUnixFDMessageWithFdList(fd_list UnixFDList) (result SocketControlMessage) {
+func NewUnixFDMessageWithFdList(fd_list IUnixFDList) (result SocketControlMessage) {
 	iv, err := _I.Get(1518, "UnixFDMessage", "new_with_fd_list")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_fd_list := gi.NewPointerArgument(fd_list.P)
+	arg_fd_list := gi.NewPointerArgument(fd_list.P_UnixFDList())
 	args := []gi.Argument{arg_fd_list}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -30265,6 +30756,10 @@ type UnixInputStream struct {
 }
 
 func WrapUnixInputStream(p unsafe.Pointer) (r UnixInputStream) { r.P = p; return }
+
+type IUnixInputStream interface{ P_UnixInputStream() unsafe.Pointer }
+
+func (v UnixInputStream) P_UnixInputStream() unsafe.Pointer { return v.P }
 
 // g_unix_input_stream_new
 // container is not nil, container is UnixInputStream
@@ -30350,6 +30845,10 @@ type UnixMountMonitor struct {
 }
 
 func WrapUnixMountMonitor(p unsafe.Pointer) (r UnixMountMonitor) { r.P = p; return }
+
+type IUnixMountMonitor interface{ P_UnixMountMonitor() unsafe.Pointer }
+
+func (v UnixMountMonitor) P_UnixMountMonitor() unsafe.Pointer { return v.P }
 
 // g_unix_mount_monitor_new
 // container is not nil, container is UnixMountMonitor
@@ -30635,6 +31134,10 @@ type UnixOutputStream struct {
 
 func WrapUnixOutputStream(p unsafe.Pointer) (r UnixOutputStream) { r.P = p; return }
 
+type IUnixOutputStream interface{ P_UnixOutputStream() unsafe.Pointer }
+
+func (v UnixOutputStream) P_UnixOutputStream() unsafe.Pointer { return v.P }
+
 // g_unix_output_stream_new
 // container is not nil, container is UnixOutputStream
 // is constructor
@@ -30716,6 +31219,10 @@ type UnixSocketAddress struct {
 
 func WrapUnixSocketAddress(p unsafe.Pointer) (r UnixSocketAddress) { r.P = p; return }
 
+type IUnixSocketAddress interface{ P_UnixSocketAddress() unsafe.Pointer }
+
+func (v UnixSocketAddress) P_UnixSocketAddress() unsafe.Pointer { return v.P }
+
 // g_unix_socket_address_new
 // container is not nil, container is UnixSocketAddress
 // is constructor
@@ -30756,7 +31263,7 @@ func NewUnixSocketAddressAbstract(path int /*TODO_TYPE isPtr: true, tag: array*/
 // g_unix_socket_address_new_with_type
 // container is not nil, container is UnixSocketAddress
 // is constructor
-func NewUnixSocketAddressWithType(path int /*TODO_TYPE isPtr: true, tag: array*/, path_len int32, type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (result SocketAddress) {
+func NewUnixSocketAddressWithType(path int /*TODO_TYPE isPtr: true, tag: array*/, path_len int32, type1 UnixSocketAddressTypeEnum) (result SocketAddress) {
 	iv, err := _I.Get(1549, "UnixSocketAddress", "new_with_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30764,7 +31271,7 @@ func NewUnixSocketAddressWithType(path int /*TODO_TYPE isPtr: true, tag: array*/
 	}
 	arg_path := gi.NewIntArgument(path) /*TODO*/
 	arg_path_len := gi.NewInt32Argument(path_len)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_path, arg_path_len, arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -30778,7 +31285,7 @@ func NewUnixSocketAddressWithType(path int /*TODO_TYPE isPtr: true, tag: array*/
 // g_unix_socket_address_get_address_type
 // container is not nil, container is UnixSocketAddress
 // is method
-func (v UnixSocketAddress) GetAddressType() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v UnixSocketAddress) GetAddressType() (result UnixSocketAddressTypeEnum) {
 	iv, err := _I.Get(1551, "UnixSocketAddress", "get_address_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30788,7 +31295,7 @@ func (v UnixSocketAddress) GetAddressType() (result int /*TODO_TYPE isPtr: false
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = UnixSocketAddressTypeEnum(ret.Int())
 	return
 }
 
@@ -30848,6 +31355,8 @@ func (v UnixSocketAddress) GetPathLen() (result uint64) {
 type UnixSocketAddressPrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum UnixSocketAddressType
 type UnixSocketAddressTypeEnum int
 
 const (
@@ -30864,6 +31373,10 @@ type Vfs struct {
 }
 
 func WrapVfs(p unsafe.Pointer) (r Vfs) { r.P = p; return }
+
+type IVfs interface{ P_Vfs() unsafe.Pointer }
+
+func (v Vfs) P_Vfs() unsafe.Pointer { return v.P }
 
 // g_vfs_get_default
 // container is not nil, container is Vfs
@@ -31056,15 +31569,15 @@ func (v *VolumeIfc) CanMount() (result bool) {
 // g_volume_eject
 // container is not nil, container is Volume
 // is method
-func (v *VolumeIfc) Eject(flags int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *VolumeIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1566, "Volume", "eject")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
@@ -31094,16 +31607,16 @@ func (v *VolumeIfc) EjectFinish(result AsyncResult) (result1 bool, err error) {
 // g_volume_eject_with_operation
 // container is not nil, container is Volume
 // is method
-func (v *VolumeIfc) EjectWithOperation(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *VolumeIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1568, "Volume", "eject_with_operation")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -31306,16 +31819,16 @@ func (v *VolumeIfc) GetUuid() (result string) {
 // g_volume_mount
 // container is not nil, container is Volume
 // is method
-func (v *VolumeIfc) MountF(flags int /*TODO_TYPE isPtr: false, tag: interface*/, mount_operation MountOperation, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *VolumeIfc) MountF(flags MountMountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1580, "Volume", "mount")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
-	arg_mount_operation := gi.NewPointerArgument(mount_operation.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_flags := gi.NewIntArgument(int(flags))
+	arg_mount_operation := gi.NewPointerArgument(mount_operation.P_MountOperation())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
@@ -31366,6 +31879,10 @@ type VolumeMonitor struct {
 }
 
 func WrapVolumeMonitor(p unsafe.Pointer) (r VolumeMonitor) { r.P = p; return }
+
+type IVolumeMonitor interface{ P_VolumeMonitor() unsafe.Pointer }
+
+func (v VolumeMonitor) P_VolumeMonitor() unsafe.Pointer { return v.P }
 
 // g_volume_monitor_adopt_orphan_mount
 // container is not nil, container is VolumeMonitor
@@ -31488,16 +32005,20 @@ type ZlibCompressor struct {
 
 func WrapZlibCompressor(p unsafe.Pointer) (r ZlibCompressor) { r.P = p; return }
 
+type IZlibCompressor interface{ P_ZlibCompressor() unsafe.Pointer }
+
+func (v ZlibCompressor) P_ZlibCompressor() unsafe.Pointer { return v.P }
+
 // g_zlib_compressor_new
 // container is not nil, container is ZlibCompressor
 // is constructor
-func NewZlibCompressor(format int /*TODO_TYPE isPtr: false, tag: interface*/, level int32) (result ZlibCompressor) {
+func NewZlibCompressor(format ZlibCompressorFormatEnum, level int32) (result ZlibCompressor) {
 	iv, err := _I.Get(1590, "ZlibCompressor", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_format := gi.NewIntArgument(format) /*TODO*/
+	arg_format := gi.NewIntArgument(int(format))
 	arg_level := gi.NewInt32Argument(level)
 	args := []gi.Argument{arg_format, arg_level}
 	var ret gi.Argument
@@ -31526,19 +32047,20 @@ func (v ZlibCompressor) GetFileInfo() (result FileInfo) {
 // g_zlib_compressor_set_file_info
 // container is not nil, container is ZlibCompressor
 // is method
-func (v ZlibCompressor) SetFileInfo(file_info FileInfo) {
+func (v ZlibCompressor) SetFileInfo(file_info IFileInfo) {
 	iv, err := _I.Get(1592, "ZlibCompressor", "set_file_info")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_file_info := gi.NewPointerArgument(file_info.P)
+	arg_file_info := gi.NewPointerArgument(file_info.P_FileInfo())
 	args := []gi.Argument{arg_v, arg_file_info}
 	iv.Call(args, nil, nil)
 }
 
 // ignore GType struct ZlibCompressorClass
+// Enum ZlibCompressorFormat
 type ZlibCompressorFormatEnum int
 
 const (
@@ -31555,16 +32077,20 @@ type ZlibDecompressor struct {
 
 func WrapZlibDecompressor(p unsafe.Pointer) (r ZlibDecompressor) { r.P = p; return }
 
+type IZlibDecompressor interface{ P_ZlibDecompressor() unsafe.Pointer }
+
+func (v ZlibDecompressor) P_ZlibDecompressor() unsafe.Pointer { return v.P }
+
 // g_zlib_decompressor_new
 // container is not nil, container is ZlibDecompressor
 // is constructor
-func NewZlibDecompressor(format int /*TODO_TYPE isPtr: false, tag: interface*/) (result ZlibDecompressor) {
+func NewZlibDecompressor(format ZlibCompressorFormatEnum) (result ZlibDecompressor) {
 	iv, err := _I.Get(1593, "ZlibDecompressor", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_format := gi.NewIntArgument(format) /*TODO*/
+	arg_format := gi.NewIntArgument(int(format))
 	args := []gi.Argument{arg_format}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -31610,7 +32136,7 @@ func ActionNameIsValid(action_name string) (result bool) {
 
 // g_action_parse_detailed_name
 // container is nil
-func ActionParseDetailedName(detailed_name string) (result bool, action_name string, target_value int /*TODO_TYPE*/, err error) {
+func ActionParseDetailedName(detailed_name string) (result bool, action_name string, target_value glib.Variant, err error) {
 	iv, err := _I.Get(1596, "action_parse_detailed_name", "")
 	if err != nil {
 		return
@@ -31627,7 +32153,7 @@ func ActionParseDetailedName(detailed_name string) (result bool, action_name str
 	result = ret.Bool()
 	gi.Free(c_detailed_name)
 	action_name = outArgs[0].String().Take()
-	target_value = outArgs[1].Int() /*TODO*/
+	target_value.P = outArgs[1].Pointer()
 	err = gi.ToError(outArgs[2].Pointer())
 	return
 }
@@ -31653,7 +32179,7 @@ func ActionPrintDetailedName(action_name string, target_value glib.Variant) (res
 
 // g_app_info_create_from_commandline
 // container is nil
-func AppInfoCreateFromCommandline(commandline string, application_name string, flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result AppInfo, err error) {
+func AppInfoCreateFromCommandline(commandline string, application_name string, flags AppInfoCreateFlags) (result AppInfo, err error) {
 	iv, err := _I.Get(1598, "app_info_create_from_commandline", "")
 	if err != nil {
 		return
@@ -31663,7 +32189,7 @@ func AppInfoCreateFromCommandline(commandline string, application_name string, f
 	c_application_name := gi.CString(application_name)
 	arg_commandline := gi.NewStringArgument(c_commandline)
 	arg_application_name := gi.NewStringArgument(c_application_name)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_commandline, arg_application_name, arg_flags, arg_err}
 	var ret gi.Argument
@@ -31782,7 +32308,7 @@ func AppInfoGetRecommendedForType(content_type string) (result int /*TODO_TYPE i
 
 // g_app_info_launch_default_for_uri
 // container is nil
-func AppInfoLaunchDefaultForUri(uri string, context AppLaunchContext) (result bool, err error) {
+func AppInfoLaunchDefaultForUri(uri string, context IAppLaunchContext) (result bool, err error) {
 	iv, err := _I.Get(1605, "app_info_launch_default_for_uri", "")
 	if err != nil {
 		return
@@ -31790,7 +32316,7 @@ func AppInfoLaunchDefaultForUri(uri string, context AppLaunchContext) (result bo
 	var outArgs [1]gi.Argument
 	c_uri := gi.CString(uri)
 	arg_uri := gi.NewStringArgument(c_uri)
-	arg_context := gi.NewPointerArgument(context.P)
+	arg_context := gi.NewPointerArgument(context.P_AppLaunchContext())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_uri, arg_context, arg_err}
 	var ret gi.Argument
@@ -31803,7 +32329,7 @@ func AppInfoLaunchDefaultForUri(uri string, context AppLaunchContext) (result bo
 
 // g_app_info_launch_default_for_uri_async
 // container is nil
-func AppInfoLaunchDefaultForUriAsync(uri string, context AppLaunchContext, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func AppInfoLaunchDefaultForUriAsync(uri string, context IAppLaunchContext, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1606, "app_info_launch_default_for_uri_async", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31811,8 +32337,8 @@ func AppInfoLaunchDefaultForUriAsync(uri string, context AppLaunchContext, cance
 	}
 	c_uri := gi.CString(uri)
 	arg_uri := gi.NewStringArgument(c_uri)
-	arg_context := gi.NewPointerArgument(context.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_context := gi.NewPointerArgument(context.P_AppLaunchContext())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_uri, arg_context, arg_cancellable, arg_callback, arg_user_data}
@@ -31857,14 +32383,14 @@ func AppInfoResetTypeAssociations(content_type string) {
 
 // g_bus_get
 // container is nil
-func BusGet(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func BusGet(bus_type BusTypeEnum, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1609, "bus_get", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_bus_type := gi.NewIntArgument(bus_type) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_bus_type := gi.NewIntArgument(int(bus_type))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_cancellable, arg_callback, arg_user_data}
@@ -31891,14 +32417,14 @@ func BusGetFinish(res AsyncResult) (result DBusConnection, err error) {
 
 // g_bus_get_sync
 // container is nil
-func BusGetSync(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result DBusConnection, err error) {
+func BusGetSync(bus_type BusTypeEnum, cancellable ICancellable) (result DBusConnection, err error) {
 	iv, err := _I.Get(1611, "bus_get_sync", "")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_bus_type := gi.NewIntArgument(bus_type) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_bus_type := gi.NewIntArgument(int(bus_type))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_bus_type, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -31910,16 +32436,16 @@ func BusGetSync(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/, cancell
 
 // g_bus_own_name_on_connection_with_closures
 // container is nil
-func BusOwnNameOnConnection(connection DBusConnection, name string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, name_acquired_closure gobject.Closure, name_lost_closure gobject.Closure) (result uint32) {
+func BusOwnNameOnConnection(connection IDBusConnection, name string, flags BusNameOwnerFlags, name_acquired_closure gobject.Closure, name_lost_closure gobject.Closure) (result uint32) {
 	iv, err := _I.Get(1612, "bus_own_name_on_connection", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_name := gi.CString(name)
-	arg_connection := gi.NewPointerArgument(connection.P)
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
 	arg_name := gi.NewStringArgument(c_name)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name_acquired_closure := gi.NewPointerArgument(name_acquired_closure.P)
 	arg_name_lost_closure := gi.NewPointerArgument(name_lost_closure.P)
 	args := []gi.Argument{arg_connection, arg_name, arg_flags, arg_name_acquired_closure, arg_name_lost_closure}
@@ -31932,16 +32458,16 @@ func BusOwnNameOnConnection(connection DBusConnection, name string, flags int /*
 
 // g_bus_own_name_with_closures
 // container is nil
-func BusOwnName(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/, name string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, bus_acquired_closure gobject.Closure, name_acquired_closure gobject.Closure, name_lost_closure gobject.Closure) (result uint32) {
+func BusOwnName(bus_type BusTypeEnum, name string, flags BusNameOwnerFlags, bus_acquired_closure gobject.Closure, name_acquired_closure gobject.Closure, name_lost_closure gobject.Closure) (result uint32) {
 	iv, err := _I.Get(1613, "bus_own_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_name := gi.CString(name)
-	arg_bus_type := gi.NewIntArgument(bus_type) /*TODO*/
+	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_name := gi.NewStringArgument(c_name)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_bus_acquired_closure := gi.NewPointerArgument(bus_acquired_closure.P)
 	arg_name_acquired_closure := gi.NewPointerArgument(name_acquired_closure.P)
 	arg_name_lost_closure := gi.NewPointerArgument(name_lost_closure.P)
@@ -31981,16 +32507,16 @@ func BusUnwatchName(watcher_id uint32) {
 
 // g_bus_watch_name_on_connection_with_closures
 // container is nil
-func BusWatchNameOnConnection(connection DBusConnection, name string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, name_appeared_closure gobject.Closure, name_vanished_closure gobject.Closure) (result uint32) {
+func BusWatchNameOnConnection(connection IDBusConnection, name string, flags BusNameWatcherFlags, name_appeared_closure gobject.Closure, name_vanished_closure gobject.Closure) (result uint32) {
 	iv, err := _I.Get(1616, "bus_watch_name_on_connection", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_name := gi.CString(name)
-	arg_connection := gi.NewPointerArgument(connection.P)
+	arg_connection := gi.NewPointerArgument(connection.P_DBusConnection())
 	arg_name := gi.NewStringArgument(c_name)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name_appeared_closure := gi.NewPointerArgument(name_appeared_closure.P)
 	arg_name_vanished_closure := gi.NewPointerArgument(name_vanished_closure.P)
 	args := []gi.Argument{arg_connection, arg_name, arg_flags, arg_name_appeared_closure, arg_name_vanished_closure}
@@ -32003,16 +32529,16 @@ func BusWatchNameOnConnection(connection DBusConnection, name string, flags int 
 
 // g_bus_watch_name_with_closures
 // container is nil
-func BusWatchName(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/, name string, flags int /*TODO_TYPE isPtr: false, tag: interface*/, name_appeared_closure gobject.Closure, name_vanished_closure gobject.Closure) (result uint32) {
+func BusWatchName(bus_type BusTypeEnum, name string, flags BusNameWatcherFlags, name_appeared_closure gobject.Closure, name_vanished_closure gobject.Closure) (result uint32) {
 	iv, err := _I.Get(1617, "bus_watch_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_name := gi.CString(name)
-	arg_bus_type := gi.NewIntArgument(bus_type) /*TODO*/
+	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_name := gi.NewStringArgument(c_name)
-	arg_flags := gi.NewIntArgument(flags) /*TODO*/
+	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name_appeared_closure := gi.NewPointerArgument(name_appeared_closure.P)
 	arg_name_vanished_closure := gi.NewPointerArgument(name_vanished_closure.P)
 	args := []gi.Argument{arg_bus_type, arg_name, arg_flags, arg_name_appeared_closure, arg_name_vanished_closure}
@@ -32303,14 +32829,14 @@ func DbusAddressEscapeValue(string string) (result string) {
 
 // g_dbus_address_get_for_bus_sync
 // container is nil
-func DbusAddressGetForBusSync(bus_type int /*TODO_TYPE isPtr: false, tag: interface*/, cancellable Cancellable) (result string, err error) {
+func DbusAddressGetForBusSync(bus_type BusTypeEnum, cancellable ICancellable) (result string, err error) {
 	iv, err := _I.Get(1633, "dbus_address_get_for_bus_sync", "")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_bus_type := gi.NewIntArgument(bus_type) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_bus_type := gi.NewIntArgument(int(bus_type))
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_bus_type, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -32322,7 +32848,7 @@ func DbusAddressGetForBusSync(bus_type int /*TODO_TYPE isPtr: false, tag: interf
 
 // g_dbus_address_get_stream
 // container is nil
-func DbusAddressGetStream(address string, cancellable Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func DbusAddressGetStream(address string, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1634, "dbus_address_get_stream", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -32330,7 +32856,7 @@ func DbusAddressGetStream(address string, cancellable Cancellable, callback int 
 	}
 	c_address := gi.CString(address)
 	arg_address := gi.NewStringArgument(c_address)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_address, arg_cancellable, arg_callback, arg_user_data}
@@ -32360,7 +32886,7 @@ func DbusAddressGetStreamFinish(res AsyncResult) (result IOStream, out_guid stri
 
 // g_dbus_address_get_stream_sync
 // container is nil
-func DbusAddressGetStreamSync(address string, cancellable Cancellable) (result IOStream, out_guid string, err error) {
+func DbusAddressGetStreamSync(address string, cancellable ICancellable) (result IOStream, out_guid string, err error) {
 	iv, err := _I.Get(1636, "dbus_address_get_stream_sync", "")
 	if err != nil {
 		return
@@ -32369,7 +32895,7 @@ func DbusAddressGetStreamSync(address string, cancellable Cancellable) (result I
 	c_address := gi.CString(address)
 	arg_address := gi.NewStringArgument(c_address)
 	arg_out_guid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_address, arg_out_guid, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -32754,14 +33280,14 @@ func DtlsClientConnectionNew(base_socket DatagramBased, server_identity SocketCo
 
 // g_dtls_server_connection_new
 // container is nil
-func DtlsServerConnectionNew(base_socket DatagramBased, certificate TlsCertificate) (result DtlsServerConnection, err error) {
+func DtlsServerConnectionNew(base_socket DatagramBased, certificate ITlsCertificate) (result DtlsServerConnection, err error) {
 	iv, err := _I.Get(1658, "dtls_server_connection_new", "")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_base_socket := gi.NewPointerArgument(base_socket.P)
-	arg_certificate := gi.NewPointerArgument(certificate.P)
+	arg_certificate := gi.NewPointerArgument(certificate.P_TlsCertificate())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_base_socket, arg_certificate, arg_err}
 	var ret gi.Argument
@@ -32848,7 +33374,7 @@ func FileNewForUri(uri string) (result File) {
 
 // g_file_new_tmp
 // container is nil
-func FileNewTmp(tmpl string) (result File, iostream int /*TODO_TYPE*/, err error) {
+func FileNewTmp(tmpl string) (result File, iostream FileIOStream, err error) {
 	iv, err := _I.Get(1663, "file_new_tmp", "")
 	if err != nil {
 		return
@@ -32863,7 +33389,7 @@ func FileNewTmp(tmpl string) (result File, iostream int /*TODO_TYPE*/, err error
 	iv.Call(args, &ret, &outArgs[0])
 	result.P = ret.Pointer()
 	gi.Free(c_tmpl)
-	iostream = outArgs[0].Int() /*TODO*/
+	iostream.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
 	return
 }
@@ -32940,7 +33466,7 @@ func IconNewForString(str string) (result Icon, err error) {
 
 // g_initable_newv
 // container is nil
-func InitableNewv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE isPtr: true, tag: array*/, cancellable Cancellable) (result gobject.Object, err error) {
+func InitableNewv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE isPtr: true, tag: array*/, cancellable ICancellable) (result gobject.Object, err error) {
 	iv, err := _I.Get(1668, "initable_newv", "")
 	if err != nil {
 		return
@@ -32949,7 +33475,7 @@ func InitableNewv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_para
 	arg_object_type := gi.NewIntArgument(object_type) /*TODO*/
 	arg_n_parameters := gi.NewUint32Argument(n_parameters)
 	arg_parameters := gi.NewIntArgument(parameters) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_object_type, arg_n_parameters, arg_parameters, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -32961,7 +33487,7 @@ func InitableNewv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_para
 
 // g_io_error_from_errno
 // container is nil
-func IoErrorFromErrno(err_no int32) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func IoErrorFromErrno(err_no int32) (result IOErrorEnumEnum) {
 	iv, err := _I.Get(1669, "io_error_from_errno", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -32971,7 +33497,7 @@ func IoErrorFromErrno(err_no int32) (result int /*TODO_TYPE isPtr: false, tag: i
 	args := []gi.Argument{arg_err_no}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = IOErrorEnumEnum(ret.Int())
 	return
 }
 
@@ -33129,7 +33655,7 @@ func IoSchedulerCancelAllJobs() {
 
 // g_io_scheduler_push_job
 // container is nil
-func IoSchedulerPushJob(job_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable Cancellable) {
+func IoSchedulerPushJob(job_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/, io_priority int32, cancellable ICancellable) {
 	iv, err := _I.Get(1679, "io_scheduler_push_job", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -33139,7 +33665,7 @@ func IoSchedulerPushJob(job_func int /*TODO_TYPE isPtr: false, tag: interface*/,
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_notify := gi.NewIntArgument(notify) /*TODO*/
 	arg_io_priority := gi.NewInt32Argument(io_priority)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	args := []gi.Argument{arg_job_func, arg_user_data, arg_notify, arg_io_priority, arg_cancellable}
 	iv.Call(args, nil, nil)
 }
@@ -33223,13 +33749,13 @@ func NullSettingsBackendNew() (result SettingsBackend) {
 
 // g_pollable_source_new
 // container is nil
-func PollableSourceNew(pollable_stream gobject.Object) (result glib.Source) {
+func PollableSourceNew(pollable_stream gobject.IObject) (result glib.Source) {
 	iv, err := _I.Get(1685, "pollable_source_new", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pollable_stream := gi.NewPointerArgument(pollable_stream.P)
+	arg_pollable_stream := gi.NewPointerArgument(pollable_stream.P_Object())
 	args := []gi.Argument{arg_pollable_stream}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -33239,15 +33765,15 @@ func PollableSourceNew(pollable_stream gobject.Object) (result glib.Source) {
 
 // g_pollable_source_new_full
 // container is nil
-func PollableSourceNewFull(pollable_stream gobject.Object, child_source glib.Source, cancellable Cancellable) (result glib.Source) {
+func PollableSourceNewFull(pollable_stream gobject.IObject, child_source glib.Source, cancellable ICancellable) (result glib.Source) {
 	iv, err := _I.Get(1686, "pollable_source_new_full", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pollable_stream := gi.NewPointerArgument(pollable_stream.P)
+	arg_pollable_stream := gi.NewPointerArgument(pollable_stream.P_Object())
 	arg_child_source := gi.NewPointerArgument(child_source.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	args := []gi.Argument{arg_pollable_stream, arg_child_source, arg_cancellable}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -33257,17 +33783,17 @@ func PollableSourceNewFull(pollable_stream gobject.Object, child_source glib.Sou
 
 // g_pollable_stream_read
 // container is nil
-func PollableStreamRead(stream InputStream, buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, blocking bool, cancellable Cancellable) (result int64, err error) {
+func PollableStreamRead(stream IInputStream, buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1687, "pollable_stream_read", "")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_stream := gi.NewPointerArgument(stream.P)
+	arg_stream := gi.NewPointerArgument(stream.P_InputStream())
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
 	arg_blocking := gi.NewBoolArgument(blocking)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_stream, arg_buffer, arg_count, arg_blocking, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -33279,17 +33805,17 @@ func PollableStreamRead(stream InputStream, buffer int /*TODO_TYPE isPtr: true, 
 
 // g_pollable_stream_write
 // container is nil
-func PollableStreamWrite(stream OutputStream, buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, blocking bool, cancellable Cancellable) (result int64, err error) {
+func PollableStreamWrite(stream IOutputStream, buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1688, "pollable_stream_write", "")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_stream := gi.NewPointerArgument(stream.P)
+	arg_stream := gi.NewPointerArgument(stream.P_OutputStream())
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
 	arg_blocking := gi.NewBoolArgument(blocking)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_stream, arg_buffer, arg_count, arg_blocking, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -33301,18 +33827,18 @@ func PollableStreamWrite(stream OutputStream, buffer int /*TODO_TYPE isPtr: true
 
 // g_pollable_stream_write_all
 // container is nil
-func PollableStreamWriteAll(stream OutputStream, buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, blocking bool, cancellable Cancellable) (result bool, bytes_written uint64, err error) {
+func PollableStreamWriteAll(stream IOutputStream, buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, blocking bool, cancellable ICancellable) (result bool, bytes_written uint64, err error) {
 	iv, err := _I.Get(1689, "pollable_stream_write_all", "")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
-	arg_stream := gi.NewPointerArgument(stream.P)
+	arg_stream := gi.NewPointerArgument(stream.P_OutputStream())
 	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
 	arg_count := gi.NewUint64Argument(count)
 	arg_blocking := gi.NewBoolArgument(blocking)
 	arg_bytes_written := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_stream, arg_buffer, arg_count, arg_blocking, arg_bytes_written, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -33405,7 +33931,7 @@ func ResourceLoad(filename string) (result Resource, err error) {
 
 // g_resources_enumerate_children
 // container is nil
-func ResourcesEnumerateChildren(path string, lookup_flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func ResourcesEnumerateChildren(path string, lookup_flags ResourceLookupFlags) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
 	iv, err := _I.Get(1695, "resources_enumerate_children", "")
 	if err != nil {
 		return
@@ -33413,7 +33939,7 @@ func ResourcesEnumerateChildren(path string, lookup_flags int /*TODO_TYPE isPtr:
 	var outArgs [1]gi.Argument
 	c_path := gi.CString(path)
 	arg_path := gi.NewStringArgument(c_path)
-	arg_lookup_flags := gi.NewIntArgument(lookup_flags) /*TODO*/
+	arg_lookup_flags := gi.NewIntArgument(int(lookup_flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
@@ -33426,7 +33952,7 @@ func ResourcesEnumerateChildren(path string, lookup_flags int /*TODO_TYPE isPtr:
 
 // g_resources_get_info
 // container is nil
-func ResourcesGetInfo(path string, lookup_flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool, size uint64, flags uint32, err error) {
+func ResourcesGetInfo(path string, lookup_flags ResourceLookupFlags) (result bool, size uint64, flags uint32, err error) {
 	iv, err := _I.Get(1696, "resources_get_info", "")
 	if err != nil {
 		return
@@ -33434,7 +33960,7 @@ func ResourcesGetInfo(path string, lookup_flags int /*TODO_TYPE isPtr: false, ta
 	var outArgs [3]gi.Argument
 	c_path := gi.CString(path)
 	arg_path := gi.NewStringArgument(c_path)
-	arg_lookup_flags := gi.NewIntArgument(lookup_flags) /*TODO*/
+	arg_lookup_flags := gi.NewIntArgument(int(lookup_flags))
 	arg_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_flags := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -33451,7 +33977,7 @@ func ResourcesGetInfo(path string, lookup_flags int /*TODO_TYPE isPtr: false, ta
 
 // g_resources_lookup_data
 // container is nil
-func ResourcesLookupData(path string, lookup_flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result glib.Bytes, err error) {
+func ResourcesLookupData(path string, lookup_flags ResourceLookupFlags) (result glib.Bytes, err error) {
 	iv, err := _I.Get(1697, "resources_lookup_data", "")
 	if err != nil {
 		return
@@ -33459,7 +33985,7 @@ func ResourcesLookupData(path string, lookup_flags int /*TODO_TYPE isPtr: false,
 	var outArgs [1]gi.Argument
 	c_path := gi.CString(path)
 	arg_path := gi.NewStringArgument(c_path)
-	arg_lookup_flags := gi.NewIntArgument(lookup_flags) /*TODO*/
+	arg_lookup_flags := gi.NewIntArgument(int(lookup_flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
@@ -33472,7 +33998,7 @@ func ResourcesLookupData(path string, lookup_flags int /*TODO_TYPE isPtr: false,
 
 // g_resources_open_stream
 // container is nil
-func ResourcesOpenStream(path string, lookup_flags int /*TODO_TYPE isPtr: false, tag: interface*/) (result InputStream, err error) {
+func ResourcesOpenStream(path string, lookup_flags ResourceLookupFlags) (result InputStream, err error) {
 	iv, err := _I.Get(1698, "resources_open_stream", "")
 	if err != nil {
 		return
@@ -33480,7 +34006,7 @@ func ResourcesOpenStream(path string, lookup_flags int /*TODO_TYPE isPtr: false,
 	var outArgs [1]gi.Argument
 	c_path := gi.CString(path)
 	arg_path := gi.NewStringArgument(c_path)
-	arg_lookup_flags := gi.NewIntArgument(lookup_flags) /*TODO*/
+	arg_lookup_flags := gi.NewIntArgument(int(lookup_flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
@@ -33533,13 +34059,13 @@ func SettingsSchemaSourceGetDefault() (result SettingsSchemaSource) {
 
 // g_simple_async_report_gerror_in_idle
 // container is nil
-func SimpleAsyncReportGerrorInIdle(object gobject.Object, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, error int /*TODO_TYPE isPtr: true, tag: error*/) {
+func SimpleAsyncReportGerrorInIdle(object gobject.IObject, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, error int /*TODO_TYPE isPtr: true, tag: error*/) {
 	iv, err := _I.Get(1702, "simple_async_report_gerror_in_idle", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_object := gi.NewPointerArgument(object.P)
+	arg_object := gi.NewPointerArgument(object.P_Object())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_error := gi.NewIntArgument(error) /*TODO*/
@@ -33563,13 +34089,13 @@ func TlsBackendGetDefault() (result TlsBackend) {
 
 // g_tls_client_connection_new
 // container is nil
-func TlsClientConnectionNew(base_io_stream IOStream, server_identity SocketConnectable) (result TlsClientConnection, err error) {
+func TlsClientConnectionNew(base_io_stream IIOStream, server_identity SocketConnectable) (result TlsClientConnection, err error) {
 	iv, err := _I.Get(1704, "tls_client_connection_new", "")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_base_io_stream := gi.NewPointerArgument(base_io_stream.P)
+	arg_base_io_stream := gi.NewPointerArgument(base_io_stream.P_IOStream())
 	arg_server_identity := gi.NewPointerArgument(server_identity.P)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_base_io_stream, arg_server_identity, arg_err}
@@ -33616,14 +34142,14 @@ func TlsFileDatabaseNew(anchors string) (result TlsFileDatabase, err error) {
 
 // g_tls_server_connection_new
 // container is nil
-func TlsServerConnectionNew(base_io_stream IOStream, certificate TlsCertificate) (result TlsServerConnection, err error) {
+func TlsServerConnectionNew(base_io_stream IIOStream, certificate ITlsCertificate) (result TlsServerConnection, err error) {
 	iv, err := _I.Get(1707, "tls_server_connection_new", "")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_base_io_stream := gi.NewPointerArgument(base_io_stream.P)
-	arg_certificate := gi.NewPointerArgument(certificate.P)
+	arg_base_io_stream := gi.NewPointerArgument(base_io_stream.P_IOStream())
+	arg_certificate := gi.NewPointerArgument(certificate.P_TlsCertificate())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_base_io_stream, arg_certificate, arg_err}
 	var ret gi.Argument

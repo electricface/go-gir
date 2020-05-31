@@ -18,12 +18,14 @@ func init() {
 	}
 }
 
+// Enum Colorspace
 type ColorspaceEnum int
 
 const (
 	ColorspaceRgb ColorspaceEnum = 0
 )
 
+// Enum InterpType
 type InterpTypeEnum int
 
 const (
@@ -42,16 +44,20 @@ type Pixbuf struct {
 
 func WrapPixbuf(p unsafe.Pointer) (r Pixbuf) { r.P = p; return }
 
+type IPixbuf interface{ P_Pixbuf() unsafe.Pointer }
+
+func (v Pixbuf) P_Pixbuf() unsafe.Pointer { return v.P }
+
 // gdk_pixbuf_new
 // container is not nil, container is Pixbuf
 // is constructor
-func NewPixbuf(colorspace int /*TODO_TYPE isPtr: false, tag: interface*/, has_alpha bool, bits_per_sample int32, width int32, height int32) (result Pixbuf) {
+func NewPixbuf(colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32) (result Pixbuf) {
 	iv, err := _I.Get(0, "Pixbuf", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_colorspace := gi.NewIntArgument(colorspace) /*TODO*/
+	arg_colorspace := gi.NewIntArgument(int(colorspace))
 	arg_has_alpha := gi.NewBoolArgument(has_alpha)
 	arg_bits_per_sample := gi.NewInt32Argument(bits_per_sample)
 	arg_width := gi.NewInt32Argument(width)
@@ -66,14 +72,14 @@ func NewPixbuf(colorspace int /*TODO_TYPE isPtr: false, tag: interface*/, has_al
 // gdk_pixbuf_new_from_bytes
 // container is not nil, container is Pixbuf
 // is constructor
-func NewPixbufFromBytes(data glib.Bytes, colorspace int /*TODO_TYPE isPtr: false, tag: interface*/, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32) (result Pixbuf) {
+func NewPixbufFromBytes(data glib.Bytes, colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32) (result Pixbuf) {
 	iv, err := _I.Get(1, "Pixbuf", "new_from_bytes")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_data := gi.NewPointerArgument(data.P)
-	arg_colorspace := gi.NewIntArgument(colorspace) /*TODO*/
+	arg_colorspace := gi.NewIntArgument(int(colorspace))
 	arg_has_alpha := gi.NewBoolArgument(has_alpha)
 	arg_bits_per_sample := gi.NewInt32Argument(bits_per_sample)
 	arg_width := gi.NewInt32Argument(width)
@@ -89,14 +95,14 @@ func NewPixbufFromBytes(data glib.Bytes, colorspace int /*TODO_TYPE isPtr: false
 // gdk_pixbuf_new_from_data
 // container is not nil, container is Pixbuf
 // is constructor
-func NewPixbufFromData(data int /*TODO_TYPE isPtr: true, tag: array*/, colorspace int /*TODO_TYPE isPtr: false, tag: interface*/, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32, destroy_fn int /*TODO_TYPE isPtr: false, tag: interface*/, destroy_fn_data unsafe.Pointer) (result Pixbuf) {
+func NewPixbufFromData(data int /*TODO_TYPE isPtr: true, tag: array*/, colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32, destroy_fn int /*TODO_TYPE isPtr: false, tag: interface*/, destroy_fn_data unsafe.Pointer) (result Pixbuf) {
 	iv, err := _I.Get(2, "Pixbuf", "new_from_data")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_data := gi.NewIntArgument(data)             /*TODO*/
-	arg_colorspace := gi.NewIntArgument(colorspace) /*TODO*/
+	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_colorspace := gi.NewIntArgument(int(colorspace))
 	arg_has_alpha := gi.NewBoolArgument(has_alpha)
 	arg_bits_per_sample := gi.NewInt32Argument(bits_per_sample)
 	arg_width := gi.NewInt32Argument(width)
@@ -248,14 +254,14 @@ func NewPixbufFromResourceAtScale(resource_path string, width int32, height int3
 // gdk_pixbuf_new_from_stream
 // container is not nil, container is Pixbuf
 // is constructor
-func NewPixbufFromStream(stream gio.InputStream, cancellable gio.Cancellable) (result Pixbuf, err error) {
+func NewPixbufFromStream(stream gio.IInputStream, cancellable gio.ICancellable) (result Pixbuf, err error) {
 	iv, err := _I.Get(9, "Pixbuf", "new_from_stream")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_stream := gi.NewPointerArgument(stream.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_stream := gi.NewPointerArgument(stream.P_InputStream())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -268,17 +274,17 @@ func NewPixbufFromStream(stream gio.InputStream, cancellable gio.Cancellable) (r
 // gdk_pixbuf_new_from_stream_at_scale
 // container is not nil, container is Pixbuf
 // is constructor
-func NewPixbufFromStreamAtScale(stream gio.InputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable gio.Cancellable) (result Pixbuf, err error) {
+func NewPixbufFromStreamAtScale(stream gio.IInputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable gio.ICancellable) (result Pixbuf, err error) {
 	iv, err := _I.Get(10, "Pixbuf", "new_from_stream_at_scale")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_stream := gi.NewPointerArgument(stream.P)
+	arg_stream := gi.NewPointerArgument(stream.P_InputStream())
 	arg_width := gi.NewInt32Argument(width)
 	arg_height := gi.NewInt32Argument(height)
 	arg_preserve_aspect_ratio := gi.NewBoolArgument(preserve_aspect_ratio)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_stream, arg_width, arg_height, arg_preserve_aspect_ratio, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -328,13 +334,13 @@ func NewPixbufFromXpmData(data int /*TODO_TYPE isPtr: true, tag: array*/) (resul
 // container is not nil, container is Pixbuf
 // is method
 // arg0Type tag: interface, isPtr: false
-func PixbufCalculateRowstride1(colorspace int /*TODO_TYPE isPtr: false, tag: interface*/, has_alpha bool, bits_per_sample int32, width int32, height int32) (result int32) {
+func PixbufCalculateRowstride1(colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32) (result int32) {
 	iv, err := _I.Get(13, "Pixbuf", "calculate_rowstride")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_colorspace := gi.NewIntArgument(colorspace) /*TODO*/
+	arg_colorspace := gi.NewIntArgument(int(colorspace))
 	arg_has_alpha := gi.NewBoolArgument(has_alpha)
 	arg_bits_per_sample := gi.NewInt32Argument(bits_per_sample)
 	arg_width := gi.NewInt32Argument(width)
@@ -375,7 +381,7 @@ func PixbufGetFileInfo1(filename string) (result PixbufFormat, width int32, heig
 // container is not nil, container is Pixbuf
 // is method
 // arg0Type tag: filename, isPtr: true
-func PixbufGetFileInfoAsync1(filename string, cancellable gio.Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func PixbufGetFileInfoAsync1(filename string, cancellable gio.ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(15, "Pixbuf", "get_file_info_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -383,7 +389,7 @@ func PixbufGetFileInfoAsync1(filename string, cancellable gio.Cancellable, callb
 	}
 	c_filename := gi.CString(filename)
 	arg_filename := gi.NewStringArgument(c_filename)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_filename, arg_cancellable, arg_callback, arg_user_data}
@@ -422,14 +428,14 @@ func PixbufGetFileInfoFinish1(async_result gio.AsyncResult) (result PixbufFormat
 // container is not nil, container is Pixbuf
 // is method
 // arg0Type tag: interface, isPtr: true
-func PixbufNewFromStreamAsync1(stream gio.InputStream, cancellable gio.Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func PixbufNewFromStreamAsync1(stream gio.IInputStream, cancellable gio.ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(18, "Pixbuf", "new_from_stream_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_stream := gi.NewPointerArgument(stream.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_stream := gi.NewPointerArgument(stream.P_InputStream())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_callback, arg_user_data}
@@ -440,17 +446,17 @@ func PixbufNewFromStreamAsync1(stream gio.InputStream, cancellable gio.Cancellab
 // container is not nil, container is Pixbuf
 // is method
 // arg0Type tag: interface, isPtr: true
-func PixbufNewFromStreamAtScaleAsync1(stream gio.InputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable gio.Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func PixbufNewFromStreamAtScaleAsync1(stream gio.IInputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable gio.ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(19, "Pixbuf", "new_from_stream_at_scale_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_stream := gi.NewPointerArgument(stream.P)
+	arg_stream := gi.NewPointerArgument(stream.P_InputStream())
 	arg_width := gi.NewInt32Argument(width)
 	arg_height := gi.NewInt32Argument(height)
 	arg_preserve_aspect_ratio := gi.NewBoolArgument(preserve_aspect_ratio)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_stream, arg_width, arg_height, arg_preserve_aspect_ratio, arg_cancellable, arg_callback, arg_user_data}
@@ -518,14 +524,14 @@ func (v Pixbuf) ApplyEmbeddedOrientation() (result Pixbuf) {
 // gdk_pixbuf_composite
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) Composite(dest Pixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type int /*TODO_TYPE isPtr: false, tag: interface*/, overall_alpha int32) {
+func (v Pixbuf) Composite(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type InterpTypeEnum, overall_alpha int32) {
 	iv, err := _I.Get(23, "Pixbuf", "composite")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_dest := gi.NewPointerArgument(dest.P)
+	arg_dest := gi.NewPointerArgument(dest.P_Pixbuf())
 	arg_dest_x := gi.NewInt32Argument(dest_x)
 	arg_dest_y := gi.NewInt32Argument(dest_y)
 	arg_dest_width := gi.NewInt32Argument(dest_width)
@@ -534,7 +540,7 @@ func (v Pixbuf) Composite(dest Pixbuf, dest_x int32, dest_y int32, dest_width in
 	arg_offset_y := gi.NewDoubleArgument(offset_y)
 	arg_scale_x := gi.NewDoubleArgument(scale_x)
 	arg_scale_y := gi.NewDoubleArgument(scale_y)
-	arg_interp_type := gi.NewIntArgument(interp_type) /*TODO*/
+	arg_interp_type := gi.NewIntArgument(int(interp_type))
 	arg_overall_alpha := gi.NewInt32Argument(overall_alpha)
 	args := []gi.Argument{arg_v, arg_dest, arg_dest_x, arg_dest_y, arg_dest_width, arg_dest_height, arg_offset_x, arg_offset_y, arg_scale_x, arg_scale_y, arg_interp_type, arg_overall_alpha}
 	iv.Call(args, nil, nil)
@@ -543,14 +549,14 @@ func (v Pixbuf) Composite(dest Pixbuf, dest_x int32, dest_y int32, dest_width in
 // gdk_pixbuf_composite_color
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) CompositeColor(dest Pixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type int /*TODO_TYPE isPtr: false, tag: interface*/, overall_alpha int32, check_x int32, check_y int32, check_size int32, color1 uint32, color2 uint32) {
+func (v Pixbuf) CompositeColor(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type InterpTypeEnum, overall_alpha int32, check_x int32, check_y int32, check_size int32, color1 uint32, color2 uint32) {
 	iv, err := _I.Get(24, "Pixbuf", "composite_color")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_dest := gi.NewPointerArgument(dest.P)
+	arg_dest := gi.NewPointerArgument(dest.P_Pixbuf())
 	arg_dest_x := gi.NewInt32Argument(dest_x)
 	arg_dest_y := gi.NewInt32Argument(dest_y)
 	arg_dest_width := gi.NewInt32Argument(dest_width)
@@ -559,7 +565,7 @@ func (v Pixbuf) CompositeColor(dest Pixbuf, dest_x int32, dest_y int32, dest_wid
 	arg_offset_y := gi.NewDoubleArgument(offset_y)
 	arg_scale_x := gi.NewDoubleArgument(scale_x)
 	arg_scale_y := gi.NewDoubleArgument(scale_y)
-	arg_interp_type := gi.NewIntArgument(interp_type) /*TODO*/
+	arg_interp_type := gi.NewIntArgument(int(interp_type))
 	arg_overall_alpha := gi.NewInt32Argument(overall_alpha)
 	arg_check_x := gi.NewInt32Argument(check_x)
 	arg_check_y := gi.NewInt32Argument(check_y)
@@ -573,7 +579,7 @@ func (v Pixbuf) CompositeColor(dest Pixbuf, dest_x int32, dest_y int32, dest_wid
 // gdk_pixbuf_composite_color_simple
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) CompositeColorSimple(dest_width int32, dest_height int32, interp_type int /*TODO_TYPE isPtr: false, tag: interface*/, overall_alpha int32, check_size int32, color1 uint32, color2 uint32) (result Pixbuf) {
+func (v Pixbuf) CompositeColorSimple(dest_width int32, dest_height int32, interp_type InterpTypeEnum, overall_alpha int32, check_size int32, color1 uint32, color2 uint32) (result Pixbuf) {
 	iv, err := _I.Get(25, "Pixbuf", "composite_color_simple")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -582,7 +588,7 @@ func (v Pixbuf) CompositeColorSimple(dest_width int32, dest_height int32, interp
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_dest_width := gi.NewInt32Argument(dest_width)
 	arg_dest_height := gi.NewInt32Argument(dest_height)
-	arg_interp_type := gi.NewIntArgument(interp_type) /*TODO*/
+	arg_interp_type := gi.NewIntArgument(int(interp_type))
 	arg_overall_alpha := gi.NewInt32Argument(overall_alpha)
 	arg_check_size := gi.NewInt32Argument(check_size)
 	arg_color1 := gi.NewUint32Argument(color1)
@@ -614,7 +620,7 @@ func (v Pixbuf) Copy() (result Pixbuf) {
 // gdk_pixbuf_copy_area
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) CopyArea(src_x int32, src_y int32, width int32, height int32, dest_pixbuf Pixbuf, dest_x int32, dest_y int32) {
+func (v Pixbuf) CopyArea(src_x int32, src_y int32, width int32, height int32, dest_pixbuf IPixbuf, dest_x int32, dest_y int32) {
 	iv, err := _I.Get(27, "Pixbuf", "copy_area")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -625,7 +631,7 @@ func (v Pixbuf) CopyArea(src_x int32, src_y int32, width int32, height int32, de
 	arg_src_y := gi.NewInt32Argument(src_y)
 	arg_width := gi.NewInt32Argument(width)
 	arg_height := gi.NewInt32Argument(height)
-	arg_dest_pixbuf := gi.NewPointerArgument(dest_pixbuf.P)
+	arg_dest_pixbuf := gi.NewPointerArgument(dest_pixbuf.P_Pixbuf())
 	arg_dest_x := gi.NewInt32Argument(dest_x)
 	arg_dest_y := gi.NewInt32Argument(dest_y)
 	args := []gi.Argument{arg_v, arg_src_x, arg_src_y, arg_width, arg_height, arg_dest_pixbuf, arg_dest_x, arg_dest_y}
@@ -635,14 +641,14 @@ func (v Pixbuf) CopyArea(src_x int32, src_y int32, width int32, height int32, de
 // gdk_pixbuf_copy_options
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) CopyOptions(dest_pixbuf Pixbuf) (result bool) {
+func (v Pixbuf) CopyOptions(dest_pixbuf IPixbuf) (result bool) {
 	iv, err := _I.Get(28, "Pixbuf", "copy_options")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_dest_pixbuf := gi.NewPointerArgument(dest_pixbuf.P)
+	arg_dest_pixbuf := gi.NewPointerArgument(dest_pixbuf.P_Pixbuf())
 	args := []gi.Argument{arg_v, arg_dest_pixbuf}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -720,7 +726,7 @@ func (v Pixbuf) GetByteLength() (result uint64) {
 // gdk_pixbuf_get_colorspace
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) GetColorspace() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Pixbuf) GetColorspace() (result ColorspaceEnum) {
 	iv, err := _I.Get(33, "Pixbuf", "get_colorspace")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -730,7 +736,7 @@ func (v Pixbuf) GetColorspace() (result int /*TODO_TYPE isPtr: false, tag: inter
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = ColorspaceEnum(ret.Int())
 	return
 }
 
@@ -954,14 +960,14 @@ func (v Pixbuf) RemoveOption(key string) (result bool) {
 // gdk_pixbuf_rotate_simple
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) RotateSimple(angle int /*TODO_TYPE isPtr: false, tag: interface*/) (result Pixbuf) {
+func (v Pixbuf) RotateSimple(angle PixbufRotationEnum) (result Pixbuf) {
 	iv, err := _I.Get(46, "Pixbuf", "rotate_simple")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_angle := gi.NewIntArgument(angle) /*TODO*/
+	arg_angle := gi.NewIntArgument(int(angle))
 	args := []gi.Argument{arg_v, arg_angle}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -972,14 +978,14 @@ func (v Pixbuf) RotateSimple(angle int /*TODO_TYPE isPtr: false, tag: interface*
 // gdk_pixbuf_saturate_and_pixelate
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) SaturateAndPixelate(dest Pixbuf, saturation float32, pixelate bool) {
+func (v Pixbuf) SaturateAndPixelate(dest IPixbuf, saturation float32, pixelate bool) {
 	iv, err := _I.Get(47, "Pixbuf", "saturate_and_pixelate")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_dest := gi.NewPointerArgument(dest.P)
+	arg_dest := gi.NewPointerArgument(dest.P_Pixbuf())
 	arg_saturation := gi.NewFloatArgument(saturation)
 	arg_pixelate := gi.NewBoolArgument(pixelate)
 	args := []gi.Argument{arg_v, arg_dest, arg_saturation, arg_pixelate}
@@ -1043,7 +1049,7 @@ func (v Pixbuf) SaveToCallbackv(save_func int /*TODO_TYPE isPtr: false, tag: int
 // gdk_pixbuf_save_to_streamv
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) SaveToStreamv(stream gio.OutputStream, type1 string, option_keys int /*TODO_TYPE isPtr: true, tag: array*/, option_values int /*TODO_TYPE isPtr: true, tag: array*/, cancellable gio.Cancellable) (result bool, err error) {
+func (v Pixbuf) SaveToStreamv(stream gio.IOutputStream, type1 string, option_keys int /*TODO_TYPE isPtr: true, tag: array*/, option_values int /*TODO_TYPE isPtr: true, tag: array*/, cancellable gio.ICancellable) (result bool, err error) {
 	iv, err := _I.Get(50, "Pixbuf", "save_to_streamv")
 	if err != nil {
 		return
@@ -1051,11 +1057,11 @@ func (v Pixbuf) SaveToStreamv(stream gio.OutputStream, type1 string, option_keys
 	var outArgs [1]gi.Argument
 	c_type1 := gi.CString(type1)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_stream := gi.NewPointerArgument(stream.P)
+	arg_stream := gi.NewPointerArgument(stream.P_OutputStream())
 	arg_type1 := gi.NewStringArgument(c_type1)
 	arg_option_keys := gi.NewIntArgument(option_keys)     /*TODO*/
 	arg_option_values := gi.NewIntArgument(option_values) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_stream, arg_type1, arg_option_keys, arg_option_values, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -1069,7 +1075,7 @@ func (v Pixbuf) SaveToStreamv(stream gio.OutputStream, type1 string, option_keys
 // gdk_pixbuf_save_to_streamv_async
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) SaveToStreamvAsync(stream gio.OutputStream, type1 string, option_keys int /*TODO_TYPE isPtr: true, tag: array*/, option_values int /*TODO_TYPE isPtr: true, tag: array*/, cancellable gio.Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Pixbuf) SaveToStreamvAsync(stream gio.IOutputStream, type1 string, option_keys int /*TODO_TYPE isPtr: true, tag: array*/, option_values int /*TODO_TYPE isPtr: true, tag: array*/, cancellable gio.ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(51, "Pixbuf", "save_to_streamv_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1077,11 +1083,11 @@ func (v Pixbuf) SaveToStreamvAsync(stream gio.OutputStream, type1 string, option
 	}
 	c_type1 := gi.CString(type1)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_stream := gi.NewPointerArgument(stream.P)
+	arg_stream := gi.NewPointerArgument(stream.P_OutputStream())
 	arg_type1 := gi.NewStringArgument(c_type1)
 	arg_option_keys := gi.NewIntArgument(option_keys)     /*TODO*/
 	arg_option_values := gi.NewIntArgument(option_values) /*TODO*/
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_stream, arg_type1, arg_option_keys, arg_option_values, arg_cancellable, arg_callback, arg_user_data}
@@ -1119,14 +1125,14 @@ func (v Pixbuf) Savev(filename string, type1 string, option_keys int /*TODO_TYPE
 // gdk_pixbuf_scale
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) Scale(dest Pixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Pixbuf) Scale(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type InterpTypeEnum) {
 	iv, err := _I.Get(53, "Pixbuf", "scale")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_dest := gi.NewPointerArgument(dest.P)
+	arg_dest := gi.NewPointerArgument(dest.P_Pixbuf())
 	arg_dest_x := gi.NewInt32Argument(dest_x)
 	arg_dest_y := gi.NewInt32Argument(dest_y)
 	arg_dest_width := gi.NewInt32Argument(dest_width)
@@ -1135,7 +1141,7 @@ func (v Pixbuf) Scale(dest Pixbuf, dest_x int32, dest_y int32, dest_width int32,
 	arg_offset_y := gi.NewDoubleArgument(offset_y)
 	arg_scale_x := gi.NewDoubleArgument(scale_x)
 	arg_scale_y := gi.NewDoubleArgument(scale_y)
-	arg_interp_type := gi.NewIntArgument(interp_type) /*TODO*/
+	arg_interp_type := gi.NewIntArgument(int(interp_type))
 	args := []gi.Argument{arg_v, arg_dest, arg_dest_x, arg_dest_y, arg_dest_width, arg_dest_height, arg_offset_x, arg_offset_y, arg_scale_x, arg_scale_y, arg_interp_type}
 	iv.Call(args, nil, nil)
 }
@@ -1143,7 +1149,7 @@ func (v Pixbuf) Scale(dest Pixbuf, dest_x int32, dest_y int32, dest_width int32,
 // gdk_pixbuf_scale_simple
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) ScaleSimple(dest_width int32, dest_height int32, interp_type int /*TODO_TYPE isPtr: false, tag: interface*/) (result Pixbuf) {
+func (v Pixbuf) ScaleSimple(dest_width int32, dest_height int32, interp_type InterpTypeEnum) (result Pixbuf) {
 	iv, err := _I.Get(54, "Pixbuf", "scale_simple")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1152,7 +1158,7 @@ func (v Pixbuf) ScaleSimple(dest_width int32, dest_height int32, interp_type int
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_dest_width := gi.NewInt32Argument(dest_width)
 	arg_dest_height := gi.NewInt32Argument(dest_height)
-	arg_interp_type := gi.NewIntArgument(interp_type) /*TODO*/
+	arg_interp_type := gi.NewIntArgument(int(interp_type))
 	args := []gi.Argument{arg_v, arg_dest_width, arg_dest_height, arg_interp_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1183,6 +1189,7 @@ func (v Pixbuf) SetOption(key string, value string) (result bool) {
 	return
 }
 
+// Enum PixbufAlphaMode
 type PixbufAlphaModeEnum int
 
 const (
@@ -1196,6 +1203,10 @@ type PixbufAnimation struct {
 }
 
 func WrapPixbufAnimation(p unsafe.Pointer) (r PixbufAnimation) { r.P = p; return }
+
+type IPixbufAnimation interface{ P_PixbufAnimation() unsafe.Pointer }
+
+func (v PixbufAnimation) P_PixbufAnimation() unsafe.Pointer { return v.P }
 
 // gdk_pixbuf_animation_new_from_file
 // container is not nil, container is PixbufAnimation
@@ -1242,14 +1253,14 @@ func NewPixbufAnimationFromResource(resource_path string) (result PixbufAnimatio
 // gdk_pixbuf_animation_new_from_stream
 // container is not nil, container is PixbufAnimation
 // is constructor
-func NewPixbufAnimationFromStream(stream gio.InputStream, cancellable gio.Cancellable) (result PixbufAnimation, err error) {
+func NewPixbufAnimationFromStream(stream gio.IInputStream, cancellable gio.ICancellable) (result PixbufAnimation, err error) {
 	iv, err := _I.Get(58, "PixbufAnimation", "new_from_stream")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_stream := gi.NewPointerArgument(stream.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_stream := gi.NewPointerArgument(stream.P_InputStream())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_err}
 	var ret gi.Argument
@@ -1282,14 +1293,14 @@ func NewPixbufAnimationFromStreamFinish(async_result gio.AsyncResult) (result Pi
 // container is not nil, container is PixbufAnimation
 // is method
 // arg0Type tag: interface, isPtr: true
-func PixbufAnimationNewFromStreamAsync1(stream gio.InputStream, cancellable gio.Cancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func PixbufAnimationNewFromStreamAsync1(stream gio.IInputStream, cancellable gio.ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(60, "PixbufAnimation", "new_from_stream_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_stream := gi.NewPointerArgument(stream.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P)
+	arg_stream := gi.NewPointerArgument(stream.P_InputStream())
+	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_callback, arg_user_data}
@@ -1389,6 +1400,10 @@ type PixbufAnimationIter struct {
 
 func WrapPixbufAnimationIter(p unsafe.Pointer) (r PixbufAnimationIter) { r.P = p; return }
 
+type IPixbufAnimationIter interface{ P_PixbufAnimationIter() unsafe.Pointer }
+
+func (v PixbufAnimationIter) P_PixbufAnimationIter() unsafe.Pointer { return v.P }
+
 // gdk_pixbuf_animation_iter_advance
 // container is not nil, container is PixbufAnimationIter
 // is method
@@ -1458,6 +1473,7 @@ func (v PixbufAnimationIter) OnCurrentlyLoadingFrame() (result bool) {
 	return
 }
 
+// Enum PixbufError
 type PixbufErrorEnum int
 
 const (
@@ -1684,6 +1700,10 @@ type PixbufLoader struct {
 
 func WrapPixbufLoader(p unsafe.Pointer) (r PixbufLoader) { r.P = p; return }
 
+type IPixbufLoader interface{ P_PixbufLoader() unsafe.Pointer }
+
+func (v PixbufLoader) P_PixbufLoader() unsafe.Pointer { return v.P }
+
 // gdk_pixbuf_loader_new
 // container is not nil, container is PixbufLoader
 // is constructor
@@ -1869,6 +1889,7 @@ func (v PixbufLoader) WriteBytes(buffer glib.Bytes) (result bool, err error) {
 }
 
 // ignore GType struct PixbufLoaderClass
+// Enum PixbufRotation
 type PixbufRotationEnum int
 
 const (
@@ -1884,6 +1905,10 @@ type PixbufSimpleAnim struct {
 }
 
 func WrapPixbufSimpleAnim(p unsafe.Pointer) (r PixbufSimpleAnim) { r.P = p; return }
+
+type IPixbufSimpleAnim interface{ P_PixbufSimpleAnim() unsafe.Pointer }
+
+func (v PixbufSimpleAnim) P_PixbufSimpleAnim() unsafe.Pointer { return v.P }
 
 // gdk_pixbuf_simple_anim_new
 // container is not nil, container is PixbufSimpleAnim
@@ -1907,14 +1932,14 @@ func NewPixbufSimpleAnim(width int32, height int32, rate float32) (result Pixbuf
 // gdk_pixbuf_simple_anim_add_frame
 // container is not nil, container is PixbufSimpleAnim
 // is method
-func (v PixbufSimpleAnim) AddFrame(pixbuf Pixbuf) {
+func (v PixbufSimpleAnim) AddFrame(pixbuf IPixbuf) {
 	iv, err := _I.Get(93, "PixbufSimpleAnim", "add_frame")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P)
+	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
 	args := []gi.Argument{arg_v, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -1958,6 +1983,10 @@ type PixbufSimpleAnimIter struct {
 }
 
 func WrapPixbufSimpleAnimIter(p unsafe.Pointer) (r PixbufSimpleAnimIter) { r.P = p; return }
+
+type IPixbufSimpleAnimIter interface{ P_PixbufSimpleAnimIter() unsafe.Pointer }
+
+func (v PixbufSimpleAnimIter) P_PixbufSimpleAnimIter() unsafe.Pointer { return v.P }
 
 // gdk_pixbuf_error_quark
 // container is nil

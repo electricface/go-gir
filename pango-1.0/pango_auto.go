@@ -17,6 +17,7 @@ func init() {
 	}
 }
 
+// Enum Alignment
 type AlignmentEnum int
 
 const (
@@ -306,6 +307,8 @@ type AttrSize struct {
 type AttrString struct {
 	P unsafe.Pointer
 }
+
+// Enum AttrType
 type AttrTypeEnum int
 
 const (
@@ -389,6 +392,7 @@ func (v Attribute) Init(klass AttrClass) {
 	iv.Call(args, nil, nil)
 }
 
+// Enum BidiType
 type BidiTypeEnum int
 
 const (
@@ -493,6 +497,10 @@ type Context struct {
 
 func WrapContext(p unsafe.Pointer) (r Context) { r.P = p; return }
 
+type IContext interface{ P_Context() unsafe.Pointer }
+
+func (v Context) P_Context() unsafe.Pointer { return v.P }
+
 // pango_context_new
 // container is not nil, container is Context
 // is constructor
@@ -525,7 +533,7 @@ func (v Context) Changed() {
 // pango_context_get_base_dir
 // container is not nil, container is Context
 // is method
-func (v Context) GetBaseDir() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Context) GetBaseDir() (result DirectionEnum) {
 	iv, err := _I.Get(22, "Context", "get_base_dir")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -535,14 +543,14 @@ func (v Context) GetBaseDir() (result int /*TODO_TYPE isPtr: false, tag: interfa
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DirectionEnum(ret.Int())
 	return
 }
 
 // pango_context_get_base_gravity
 // container is not nil, container is Context
 // is method
-func (v Context) GetBaseGravity() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Context) GetBaseGravity() (result GravityEnum) {
 	iv, err := _I.Get(23, "Context", "get_base_gravity")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -552,7 +560,7 @@ func (v Context) GetBaseGravity() (result int /*TODO_TYPE isPtr: false, tag: int
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = GravityEnum(ret.Int())
 	return
 }
 
@@ -593,7 +601,7 @@ func (v Context) GetFontMap() (result FontMap) {
 // pango_context_get_gravity
 // container is not nil, container is Context
 // is method
-func (v Context) GetGravity() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Context) GetGravity() (result GravityEnum) {
 	iv, err := _I.Get(26, "Context", "get_gravity")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -603,14 +611,14 @@ func (v Context) GetGravity() (result int /*TODO_TYPE isPtr: false, tag: interfa
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = GravityEnum(ret.Int())
 	return
 }
 
 // pango_context_get_gravity_hint
 // container is not nil, container is Context
 // is method
-func (v Context) GetGravityHint() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Context) GetGravityHint() (result GravityHintEnum) {
 	iv, err := _I.Get(27, "Context", "get_gravity_hint")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -620,7 +628,7 @@ func (v Context) GetGravityHint() (result int /*TODO_TYPE isPtr: false, tag: int
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = GravityHintEnum(ret.Int())
 	return
 }
 
@@ -754,14 +762,14 @@ func (v Context) LoadFontset(desc FontDescription, language Language) (result Fo
 // pango_context_set_base_dir
 // container is not nil, container is Context
 // is method
-func (v Context) SetBaseDir(direction int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Context) SetBaseDir(direction DirectionEnum) {
 	iv, err := _I.Get(35, "Context", "set_base_dir")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_direction := gi.NewIntArgument(direction) /*TODO*/
+	arg_direction := gi.NewIntArgument(int(direction))
 	args := []gi.Argument{arg_v, arg_direction}
 	iv.Call(args, nil, nil)
 }
@@ -769,14 +777,14 @@ func (v Context) SetBaseDir(direction int /*TODO_TYPE isPtr: false, tag: interfa
 // pango_context_set_base_gravity
 // container is not nil, container is Context
 // is method
-func (v Context) SetBaseGravity(gravity int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Context) SetBaseGravity(gravity GravityEnum) {
 	iv, err := _I.Get(36, "Context", "set_base_gravity")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_gravity := gi.NewIntArgument(gravity) /*TODO*/
+	arg_gravity := gi.NewIntArgument(int(gravity))
 	args := []gi.Argument{arg_v, arg_gravity}
 	iv.Call(args, nil, nil)
 }
@@ -799,14 +807,14 @@ func (v Context) SetFontDescription(desc FontDescription) {
 // pango_context_set_font_map
 // container is not nil, container is Context
 // is method
-func (v Context) SetFontMap(font_map FontMap) {
+func (v Context) SetFontMap(font_map IFontMap) {
 	iv, err := _I.Get(38, "Context", "set_font_map")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font_map := gi.NewPointerArgument(font_map.P)
+	arg_font_map := gi.NewPointerArgument(font_map.P_FontMap())
 	args := []gi.Argument{arg_v, arg_font_map}
 	iv.Call(args, nil, nil)
 }
@@ -814,14 +822,14 @@ func (v Context) SetFontMap(font_map FontMap) {
 // pango_context_set_gravity_hint
 // container is not nil, container is Context
 // is method
-func (v Context) SetGravityHint(hint int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Context) SetGravityHint(hint GravityHintEnum) {
 	iv, err := _I.Get(39, "Context", "set_gravity_hint")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_hint := gi.NewIntArgument(hint) /*TODO*/
+	arg_hint := gi.NewIntArgument(int(hint))
 	args := []gi.Argument{arg_v, arg_hint}
 	iv.Call(args, nil, nil)
 }
@@ -865,7 +873,7 @@ type Coverage struct {
 // pango_coverage_get
 // container is not nil, container is Coverage
 // is method
-func (v Coverage) Get(index_ int32) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Coverage) Get(index_ int32) (result CoverageLevelEnum) {
 	iv, err := _I.Get(42, "Coverage", "get")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -876,7 +884,7 @@ func (v Coverage) Get(index_ int32) (result int /*TODO_TYPE isPtr: false, tag: i
 	args := []gi.Argument{arg_v, arg_index_}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = CoverageLevelEnum(ret.Int())
 	return
 }
 
@@ -898,7 +906,7 @@ func (v Coverage) Max(other Coverage) {
 // pango_coverage_set
 // container is not nil, container is Coverage
 // is method
-func (v Coverage) Set(index_ int32, level int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Coverage) Set(index_ int32, level CoverageLevelEnum) {
 	iv, err := _I.Get(44, "Coverage", "set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -906,7 +914,7 @@ func (v Coverage) Set(index_ int32, level int /*TODO_TYPE isPtr: false, tag: int
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_index_ := gi.NewInt32Argument(index_)
-	arg_level := gi.NewIntArgument(level) /*TODO*/
+	arg_level := gi.NewIntArgument(int(level))
 	args := []gi.Argument{arg_v, arg_index_, arg_level}
 	iv.Call(args, nil, nil)
 }
@@ -945,6 +953,7 @@ func (v Coverage) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Enum CoverageLevel
 type CoverageLevelEnum int
 
 const (
@@ -954,6 +963,7 @@ const (
 	CoverageLevelExact                         = 3
 )
 
+// Enum Direction
 type DirectionEnum int
 
 const (
@@ -966,6 +976,7 @@ const (
 	DirectionNeutral               = 6
 )
 
+// Enum EllipsizeMode
 type EllipsizeModeEnum int
 
 const (
@@ -982,6 +993,10 @@ type Engine struct {
 
 func WrapEngine(p unsafe.Pointer) (r Engine) { r.P = p; return }
 
+type IEngine interface{ P_Engine() unsafe.Pointer }
+
+func (v Engine) P_Engine() unsafe.Pointer { return v.P }
+
 // ignore GType struct EngineClass
 // Struct EngineInfo
 type EngineInfo struct {
@@ -994,6 +1009,10 @@ type EngineLang struct {
 }
 
 func WrapEngineLang(p unsafe.Pointer) (r EngineLang) { r.P = p; return }
+
+type IEngineLang interface{ P_EngineLang() unsafe.Pointer }
+
+func (v EngineLang) P_EngineLang() unsafe.Pointer { return v.P }
 
 // ignore GType struct EngineLangClass
 // Struct EngineScriptInfo
@@ -1008,6 +1027,10 @@ type EngineShape struct {
 
 func WrapEngineShape(p unsafe.Pointer) (r EngineShape) { r.P = p; return }
 
+type IEngineShape interface{ P_EngineShape() unsafe.Pointer }
+
+func (v EngineShape) P_EngineShape() unsafe.Pointer { return v.P }
+
 // ignore GType struct EngineShapeClass
 // Object Font
 type Font struct {
@@ -1015,6 +1038,10 @@ type Font struct {
 }
 
 func WrapFont(p unsafe.Pointer) (r Font) { r.P = p; return }
+
+type IFont interface{ P_Font() unsafe.Pointer }
+
+func (v Font) P_Font() unsafe.Pointer { return v.P }
 
 // pango_font_descriptions_free
 // container is not nil, container is Font
@@ -1267,7 +1294,7 @@ func (v FontDescription) GetFamily() (result string) {
 // pango_font_description_get_gravity
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) GetGravity() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) GetGravity() (result GravityEnum) {
 	iv, err := _I.Get(61, "FontDescription", "get_gravity")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1277,14 +1304,14 @@ func (v FontDescription) GetGravity() (result int /*TODO_TYPE isPtr: false, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = GravityEnum(ret.Int())
 	return
 }
 
 // pango_font_description_get_set_fields
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) GetSetFields() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) GetSetFields() (result FontMaskFlags) {
 	iv, err := _I.Get(62, "FontDescription", "get_set_fields")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1294,7 +1321,7 @@ func (v FontDescription) GetSetFields() (result int /*TODO_TYPE isPtr: false, ta
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = FontMaskFlags(ret.Int())
 	return
 }
 
@@ -1335,7 +1362,7 @@ func (v FontDescription) GetSizeIsAbsolute() (result bool) {
 // pango_font_description_get_stretch
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) GetStretch() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) GetStretch() (result StretchEnum) {
 	iv, err := _I.Get(65, "FontDescription", "get_stretch")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1345,14 +1372,14 @@ func (v FontDescription) GetStretch() (result int /*TODO_TYPE isPtr: false, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = StretchEnum(ret.Int())
 	return
 }
 
 // pango_font_description_get_style
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) GetStyle() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) GetStyle() (result StyleEnum) {
 	iv, err := _I.Get(66, "FontDescription", "get_style")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1362,14 +1389,14 @@ func (v FontDescription) GetStyle() (result int /*TODO_TYPE isPtr: false, tag: i
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = StyleEnum(ret.Int())
 	return
 }
 
 // pango_font_description_get_variant
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) GetVariant() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) GetVariant() (result VariantEnum) {
 	iv, err := _I.Get(67, "FontDescription", "get_variant")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1379,7 +1406,7 @@ func (v FontDescription) GetVariant() (result int /*TODO_TYPE isPtr: false, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = VariantEnum(ret.Int())
 	return
 }
 
@@ -1403,7 +1430,7 @@ func (v FontDescription) GetVariations() (result string) {
 // pango_font_description_get_weight
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) GetWeight() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) GetWeight() (result WeightEnum) {
 	iv, err := _I.Get(69, "FontDescription", "get_weight")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1413,7 +1440,7 @@ func (v FontDescription) GetWeight() (result int /*TODO_TYPE isPtr: false, tag: 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = WeightEnum(ret.Int())
 	return
 }
 
@@ -1518,14 +1545,14 @@ func (v FontDescription) SetFamilyStatic(family string) {
 // pango_font_description_set_gravity
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) SetGravity(gravity int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) SetGravity(gravity GravityEnum) {
 	iv, err := _I.Get(76, "FontDescription", "set_gravity")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_gravity := gi.NewIntArgument(gravity) /*TODO*/
+	arg_gravity := gi.NewIntArgument(int(gravity))
 	args := []gi.Argument{arg_v, arg_gravity}
 	iv.Call(args, nil, nil)
 }
@@ -1548,14 +1575,14 @@ func (v FontDescription) SetSize(size int32) {
 // pango_font_description_set_stretch
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) SetStretch(stretch int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) SetStretch(stretch StretchEnum) {
 	iv, err := _I.Get(78, "FontDescription", "set_stretch")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_stretch := gi.NewIntArgument(stretch) /*TODO*/
+	arg_stretch := gi.NewIntArgument(int(stretch))
 	args := []gi.Argument{arg_v, arg_stretch}
 	iv.Call(args, nil, nil)
 }
@@ -1563,14 +1590,14 @@ func (v FontDescription) SetStretch(stretch int /*TODO_TYPE isPtr: false, tag: i
 // pango_font_description_set_style
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) SetStyle(style int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) SetStyle(style StyleEnum) {
 	iv, err := _I.Get(79, "FontDescription", "set_style")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_style := gi.NewIntArgument(style) /*TODO*/
+	arg_style := gi.NewIntArgument(int(style))
 	args := []gi.Argument{arg_v, arg_style}
 	iv.Call(args, nil, nil)
 }
@@ -1578,14 +1605,14 @@ func (v FontDescription) SetStyle(style int /*TODO_TYPE isPtr: false, tag: inter
 // pango_font_description_set_variant
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) SetVariant(variant int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) SetVariant(variant VariantEnum) {
 	iv, err := _I.Get(80, "FontDescription", "set_variant")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_variant := gi.NewIntArgument(variant) /*TODO*/
+	arg_variant := gi.NewIntArgument(int(variant))
 	args := []gi.Argument{arg_v, arg_variant}
 	iv.Call(args, nil, nil)
 }
@@ -1627,14 +1654,14 @@ func (v FontDescription) SetVariationsStatic(settings string) {
 // pango_font_description_set_weight
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) SetWeight(weight int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) SetWeight(weight WeightEnum) {
 	iv, err := _I.Get(83, "FontDescription", "set_weight")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_weight := gi.NewIntArgument(weight) /*TODO*/
+	arg_weight := gi.NewIntArgument(int(weight))
 	args := []gi.Argument{arg_v, arg_weight}
 	iv.Call(args, nil, nil)
 }
@@ -1676,14 +1703,14 @@ func (v FontDescription) ToString() (result string) {
 // pango_font_description_unset_fields
 // container is not nil, container is FontDescription
 // is method
-func (v FontDescription) UnsetFields(to_unset int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FontDescription) UnsetFields(to_unset FontMaskFlags) {
 	iv, err := _I.Get(86, "FontDescription", "unset_fields")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_to_unset := gi.NewIntArgument(to_unset) /*TODO*/
+	arg_to_unset := gi.NewIntArgument(int(to_unset))
 	args := []gi.Argument{arg_v, arg_to_unset}
 	iv.Call(args, nil, nil)
 }
@@ -1714,6 +1741,10 @@ type FontFace struct {
 }
 
 func WrapFontFace(p unsafe.Pointer) (r FontFace) { r.P = p; return }
+
+type IFontFace interface{ P_FontFace() unsafe.Pointer }
+
+func (v FontFace) P_FontFace() unsafe.Pointer { return v.P }
 
 // pango_font_face_describe
 // container is not nil, container is FontFace
@@ -1794,6 +1825,10 @@ type FontFamily struct {
 
 func WrapFontFamily(p unsafe.Pointer) (r FontFamily) { r.P = p; return }
 
+type IFontFamily interface{ P_FontFamily() unsafe.Pointer }
+
+func (v FontFamily) P_FontFamily() unsafe.Pointer { return v.P }
+
 // pango_font_family_get_name
 // container is not nil, container is FontFamily
 // is method
@@ -1855,6 +1890,10 @@ type FontMap struct {
 }
 
 func WrapFontMap(p unsafe.Pointer) (r FontMap) { r.P = p; return }
+
+type IFontMap interface{ P_FontMap() unsafe.Pointer }
+
+func (v FontMap) P_FontMap() unsafe.Pointer { return v.P }
 
 // pango_font_map_changed
 // container is not nil, container is FontMap
@@ -1944,14 +1983,14 @@ func (v FontMap) ListFamilies() (families int /*TODO_TYPE*/, n_families int32) {
 // pango_font_map_load_font
 // container is not nil, container is FontMap
 // is method
-func (v FontMap) LoadFont(context Context, desc FontDescription) (result Font) {
+func (v FontMap) LoadFont(context IContext, desc FontDescription) (result Font) {
 	iv, err := _I.Get(100, "FontMap", "load_font")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P)
+	arg_context := gi.NewPointerArgument(context.P_Context())
 	arg_desc := gi.NewPointerArgument(desc.P)
 	args := []gi.Argument{arg_v, arg_context, arg_desc}
 	var ret gi.Argument
@@ -1963,14 +2002,14 @@ func (v FontMap) LoadFont(context Context, desc FontDescription) (result Font) {
 // pango_font_map_load_fontset
 // container is not nil, container is FontMap
 // is method
-func (v FontMap) LoadFontset(context Context, desc FontDescription, language Language) (result Fontset) {
+func (v FontMap) LoadFontset(context IContext, desc FontDescription, language Language) (result Fontset) {
 	iv, err := _I.Get(101, "FontMap", "load_fontset")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P)
+	arg_context := gi.NewPointerArgument(context.P_Context())
 	arg_desc := gi.NewPointerArgument(desc.P)
 	arg_language := gi.NewPointerArgument(language.P)
 	args := []gi.Argument{arg_v, arg_context, arg_desc, arg_language}
@@ -1981,6 +2020,7 @@ func (v FontMap) LoadFontset(context Context, desc FontDescription, language Lan
 }
 
 // ignore GType struct FontMapClass
+// Flags FontMask
 type FontMaskFlags int
 
 const (
@@ -2188,6 +2228,10 @@ type Fontset struct {
 
 func WrapFontset(p unsafe.Pointer) (r Fontset) { r.P = p; return }
 
+type IFontset interface{ P_Fontset() unsafe.Pointer }
+
+func (v Fontset) P_Fontset() unsafe.Pointer { return v.P }
+
 // pango_fontset_foreach
 // container is not nil, container is Fontset
 // is method
@@ -2247,6 +2291,10 @@ type FontsetSimple struct {
 
 func WrapFontsetSimple(p unsafe.Pointer) (r FontsetSimple) { r.P = p; return }
 
+type IFontsetSimple interface{ P_FontsetSimple() unsafe.Pointer }
+
+func (v FontsetSimple) P_FontsetSimple() unsafe.Pointer { return v.P }
+
 // pango_fontset_simple_new
 // container is not nil, container is FontsetSimple
 // is constructor
@@ -2267,14 +2315,14 @@ func NewFontsetSimple(language Language) (result FontsetSimple) {
 // pango_fontset_simple_append
 // container is not nil, container is FontsetSimple
 // is method
-func (v FontsetSimple) Append(font Font) {
+func (v FontsetSimple) Append(font IFont) {
 	iv, err := _I.Get(117, "FontsetSimple", "append")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font := gi.NewPointerArgument(font.P)
+	arg_font := gi.NewPointerArgument(font.P_Font())
 	args := []gi.Argument{arg_v, arg_font}
 	iv.Call(args, nil, nil)
 }
@@ -2574,7 +2622,7 @@ func (v GlyphString) Copy() (result GlyphString) {
 // pango_glyph_string_extents
 // container is not nil, container is GlyphString
 // is method
-func (v GlyphString) Extents(font Font) (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v GlyphString) Extents(font IFont) (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
 	iv, err := _I.Get(133, "GlyphString", "extents")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2582,7 +2630,7 @@ func (v GlyphString) Extents(font Font) (ink_rect int /*TODO_TYPE*/, logical_rec
 	}
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font := gi.NewPointerArgument(font.P)
+	arg_font := gi.NewPointerArgument(font.P_Font())
 	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_font, arg_ink_rect, arg_logical_rect}
@@ -2595,7 +2643,7 @@ func (v GlyphString) Extents(font Font) (ink_rect int /*TODO_TYPE*/, logical_rec
 // pango_glyph_string_extents_range
 // container is not nil, container is GlyphString
 // is method
-func (v GlyphString) ExtentsRange(start int32, end int32, font Font) (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v GlyphString) ExtentsRange(start int32, end int32, font IFont) (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
 	iv, err := _I.Get(134, "GlyphString", "extents_range")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2605,7 +2653,7 @@ func (v GlyphString) ExtentsRange(start int32, end int32, font Font) (ink_rect i
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_start := gi.NewInt32Argument(start)
 	arg_end := gi.NewInt32Argument(end)
-	arg_font := gi.NewPointerArgument(font.P)
+	arg_font := gi.NewPointerArgument(font.P_Font())
 	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_start, arg_end, arg_font, arg_ink_rect, arg_logical_rect}
@@ -2736,6 +2784,8 @@ func (v GlyphString) XToIndex(text string, length int32, analysis Analysis, x_po
 type GlyphVisAttr struct {
 	P unsafe.Pointer
 }
+
+// Enum Gravity
 type GravityEnum int
 
 const (
@@ -2746,6 +2796,7 @@ const (
 	GravityAuto              = 4
 )
 
+// Enum GravityHint
 type GravityHintEnum int
 
 const (
@@ -2874,14 +2925,14 @@ func (v Language) GetScripts() (result int /*TODO_TYPE isPtr: true, tag: array*/
 // pango_language_includes_script
 // container is not nil, container is Language
 // is method
-func (v Language) IncludesScript(script int /*TODO_TYPE isPtr: false, tag: interface*/) (result bool) {
+func (v Language) IncludesScript(script ScriptEnum) (result bool) {
 	iv, err := _I.Get(147, "Language", "includes_script")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_script := gi.NewIntArgument(script) /*TODO*/
+	arg_script := gi.NewIntArgument(int(script))
 	args := []gi.Argument{arg_v, arg_script}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2956,16 +3007,20 @@ type Layout struct {
 
 func WrapLayout(p unsafe.Pointer) (r Layout) { r.P = p; return }
 
+type ILayout interface{ P_Layout() unsafe.Pointer }
+
+func (v Layout) P_Layout() unsafe.Pointer { return v.P }
+
 // pango_layout_new
 // container is not nil, container is Layout
 // is constructor
-func NewLayout(context Context) (result Layout) {
+func NewLayout(context IContext) (result Layout) {
 	iv, err := _I.Get(152, "Layout", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P)
+	arg_context := gi.NewPointerArgument(context.P_Context())
 	args := []gi.Argument{arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3007,7 +3062,7 @@ func (v Layout) Copy() (result Layout) {
 // pango_layout_get_alignment
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetAlignment() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Layout) GetAlignment() (result AlignmentEnum) {
 	iv, err := _I.Get(155, "Layout", "get_alignment")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3017,7 +3072,7 @@ func (v Layout) GetAlignment() (result int /*TODO_TYPE isPtr: false, tag: interf
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = AlignmentEnum(ret.Int())
 	return
 }
 
@@ -3130,7 +3185,7 @@ func (v Layout) GetCursorPos(index_ int32) (strong_pos int /*TODO_TYPE*/, weak_p
 // pango_layout_get_ellipsize
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetEllipsize() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Layout) GetEllipsize() (result EllipsizeModeEnum) {
 	iv, err := _I.Get(162, "Layout", "get_ellipsize")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3140,7 +3195,7 @@ func (v Layout) GetEllipsize() (result int /*TODO_TYPE isPtr: false, tag: interf
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = EllipsizeModeEnum(ret.Int())
 	return
 }
 
@@ -3558,7 +3613,7 @@ func (v Layout) GetWidth() (result int32) {
 // pango_layout_get_wrap
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetWrap() (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Layout) GetWrap() (result WrapModeEnum) {
 	iv, err := _I.Get(186, "Layout", "get_wrap")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3568,7 +3623,7 @@ func (v Layout) GetWrap() (result int /*TODO_TYPE isPtr: false, tag: interface*/
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = WrapModeEnum(ret.Int())
 	return
 }
 
@@ -3674,14 +3729,14 @@ func (v Layout) MoveCursorVisually(strong bool, old_index int32, old_trailing in
 // pango_layout_set_alignment
 // container is not nil, container is Layout
 // is method
-func (v Layout) SetAlignment(alignment int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Layout) SetAlignment(alignment AlignmentEnum) {
 	iv, err := _I.Get(192, "Layout", "set_alignment")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_alignment := gi.NewIntArgument(alignment) /*TODO*/
+	arg_alignment := gi.NewIntArgument(int(alignment))
 	args := []gi.Argument{arg_v, arg_alignment}
 	iv.Call(args, nil, nil)
 }
@@ -3719,14 +3774,14 @@ func (v Layout) SetAutoDir(auto_dir bool) {
 // pango_layout_set_ellipsize
 // container is not nil, container is Layout
 // is method
-func (v Layout) SetEllipsize(ellipsize int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Layout) SetEllipsize(ellipsize EllipsizeModeEnum) {
 	iv, err := _I.Get(195, "Layout", "set_ellipsize")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ellipsize := gi.NewIntArgument(ellipsize) /*TODO*/
+	arg_ellipsize := gi.NewIntArgument(int(ellipsize))
 	args := []gi.Argument{arg_v, arg_ellipsize}
 	iv.Call(args, nil, nil)
 }
@@ -3812,7 +3867,7 @@ func (v Layout) SetMarkup(markup string, length int32) {
 // pango_layout_set_markup_with_accel
 // container is not nil, container is Layout
 // is method
-func (v Layout) SetMarkupWithAccel(markup string, length int32, accel_marker int /*TODO_TYPE isPtr: false, tag: gunichar*/) (accel_char int /*TODO_TYPE*/) {
+func (v Layout) SetMarkupWithAccel(markup string, length int32, accel_marker rune) (accel_char rune) {
 	iv, err := _I.Get(201, "Layout", "set_markup_with_accel")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3823,12 +3878,12 @@ func (v Layout) SetMarkupWithAccel(markup string, length int32, accel_marker int
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_markup := gi.NewStringArgument(c_markup)
 	arg_length := gi.NewInt32Argument(length)
-	arg_accel_marker := gi.NewIntArgument(accel_marker) /*TODO*/
+	arg_accel_marker := gi.NewUint32Argument(uint32(accel_marker))
 	arg_accel_char := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_markup, arg_length, arg_accel_marker, arg_accel_char}
 	iv.Call(args, nil, &outArgs[0])
 	gi.Free(c_markup)
-	accel_char = outArgs[0].Int() /*TODO*/
+	accel_char = rune(outArgs[0].Uint32())
 	return
 }
 
@@ -3913,14 +3968,14 @@ func (v Layout) SetWidth(width int32) {
 // pango_layout_set_wrap
 // container is not nil, container is Layout
 // is method
-func (v Layout) SetWrap(wrap int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Layout) SetWrap(wrap WrapModeEnum) {
 	iv, err := _I.Get(207, "Layout", "set_wrap")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_wrap := gi.NewIntArgument(wrap) /*TODO*/
+	arg_wrap := gi.NewIntArgument(int(wrap))
 	args := []gi.Argument{arg_v, arg_wrap}
 	iv.Call(args, nil, nil)
 }
@@ -4663,6 +4718,8 @@ func (v Matrix) Translate(tx float64, ty float64) {
 type Rectangle struct {
 	P unsafe.Pointer
 }
+
+// Enum RenderPart
 type RenderPartEnum int
 
 const (
@@ -4678,6 +4735,10 @@ type Renderer struct {
 }
 
 func WrapRenderer(p unsafe.Pointer) (r Renderer) { r.P = p; return }
+
+type IRenderer interface{ P_Renderer() unsafe.Pointer }
+
+func (v Renderer) P_Renderer() unsafe.Pointer { return v.P }
 
 // pango_renderer_activate
 // container is not nil, container is Renderer
@@ -4728,14 +4789,14 @@ func (v Renderer) DrawErrorUnderline(x int32, y int32, width int32, height int32
 // pango_renderer_draw_glyph
 // container is not nil, container is Renderer
 // is method
-func (v Renderer) DrawGlyph(font Font, glyph uint32, x float64, y float64) {
+func (v Renderer) DrawGlyph(font IFont, glyph uint32, x float64, y float64) {
 	iv, err := _I.Get(251, "Renderer", "draw_glyph")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font := gi.NewPointerArgument(font.P)
+	arg_font := gi.NewPointerArgument(font.P_Font())
 	arg_glyph := gi.NewUint32Argument(glyph)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -4766,14 +4827,14 @@ func (v Renderer) DrawGlyphItem(text string, glyph_item GlyphItem, x int32, y in
 // pango_renderer_draw_glyphs
 // container is not nil, container is Renderer
 // is method
-func (v Renderer) DrawGlyphs(font Font, glyphs GlyphString, x int32, y int32) {
+func (v Renderer) DrawGlyphs(font IFont, glyphs GlyphString, x int32, y int32) {
 	iv, err := _I.Get(253, "Renderer", "draw_glyphs")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font := gi.NewPointerArgument(font.P)
+	arg_font := gi.NewPointerArgument(font.P_Font())
 	arg_glyphs := gi.NewPointerArgument(glyphs.P)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -4784,14 +4845,14 @@ func (v Renderer) DrawGlyphs(font Font, glyphs GlyphString, x int32, y int32) {
 // pango_renderer_draw_layout
 // container is not nil, container is Renderer
 // is method
-func (v Renderer) DrawLayout(layout Layout, x int32, y int32) {
+func (v Renderer) DrawLayout(layout ILayout, x int32, y int32) {
 	iv, err := _I.Get(254, "Renderer", "draw_layout")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_layout := gi.NewPointerArgument(layout.P)
+	arg_layout := gi.NewPointerArgument(layout.P_Layout())
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_v, arg_layout, arg_x, arg_y}
@@ -4818,14 +4879,14 @@ func (v Renderer) DrawLayoutLine(line LayoutLine, x int32, y int32) {
 // pango_renderer_draw_rectangle
 // container is not nil, container is Renderer
 // is method
-func (v Renderer) DrawRectangle(part int /*TODO_TYPE isPtr: false, tag: interface*/, x int32, y int32, width int32, height int32) {
+func (v Renderer) DrawRectangle(part RenderPartEnum, x int32, y int32, width int32, height int32) {
 	iv, err := _I.Get(256, "Renderer", "draw_rectangle")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_part := gi.NewIntArgument(part) /*TODO*/
+	arg_part := gi.NewIntArgument(int(part))
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	arg_width := gi.NewInt32Argument(width)
@@ -4837,14 +4898,14 @@ func (v Renderer) DrawRectangle(part int /*TODO_TYPE isPtr: false, tag: interfac
 // pango_renderer_draw_trapezoid
 // container is not nil, container is Renderer
 // is method
-func (v Renderer) DrawTrapezoid(part int /*TODO_TYPE isPtr: false, tag: interface*/, y1_ float64, x11 float64, x21 float64, y2 float64, x12 float64, x22 float64) {
+func (v Renderer) DrawTrapezoid(part RenderPartEnum, y1_ float64, x11 float64, x21 float64, y2 float64, x12 float64, x22 float64) {
 	iv, err := _I.Get(257, "Renderer", "draw_trapezoid")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_part := gi.NewIntArgument(part) /*TODO*/
+	arg_part := gi.NewIntArgument(int(part))
 	arg_y1_ := gi.NewDoubleArgument(y1_)
 	arg_x11 := gi.NewDoubleArgument(x11)
 	arg_x21 := gi.NewDoubleArgument(x21)
@@ -4858,14 +4919,14 @@ func (v Renderer) DrawTrapezoid(part int /*TODO_TYPE isPtr: false, tag: interfac
 // pango_renderer_get_alpha
 // container is not nil, container is Renderer
 // is method
-func (v Renderer) GetAlpha(part int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint16) {
+func (v Renderer) GetAlpha(part RenderPartEnum) (result uint16) {
 	iv, err := _I.Get(258, "Renderer", "get_alpha")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_part := gi.NewIntArgument(part) /*TODO*/
+	arg_part := gi.NewIntArgument(int(part))
 	args := []gi.Argument{arg_v, arg_part}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4876,14 +4937,14 @@ func (v Renderer) GetAlpha(part int /*TODO_TYPE isPtr: false, tag: interface*/) 
 // pango_renderer_get_color
 // container is not nil, container is Renderer
 // is method
-func (v Renderer) GetColor(part int /*TODO_TYPE isPtr: false, tag: interface*/) (result Color) {
+func (v Renderer) GetColor(part RenderPartEnum) (result Color) {
 	iv, err := _I.Get(259, "Renderer", "get_color")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_part := gi.NewIntArgument(part) /*TODO*/
+	arg_part := gi.NewIntArgument(int(part))
 	args := []gi.Argument{arg_v, arg_part}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4945,14 +5006,14 @@ func (v Renderer) GetMatrix() (result Matrix) {
 // pango_renderer_part_changed
 // container is not nil, container is Renderer
 // is method
-func (v Renderer) PartChanged(part int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Renderer) PartChanged(part RenderPartEnum) {
 	iv, err := _I.Get(263, "Renderer", "part_changed")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_part := gi.NewIntArgument(part) /*TODO*/
+	arg_part := gi.NewIntArgument(int(part))
 	args := []gi.Argument{arg_v, arg_part}
 	iv.Call(args, nil, nil)
 }
@@ -4960,14 +5021,14 @@ func (v Renderer) PartChanged(part int /*TODO_TYPE isPtr: false, tag: interface*
 // pango_renderer_set_alpha
 // container is not nil, container is Renderer
 // is method
-func (v Renderer) SetAlpha(part int /*TODO_TYPE isPtr: false, tag: interface*/, alpha uint16) {
+func (v Renderer) SetAlpha(part RenderPartEnum, alpha uint16) {
 	iv, err := _I.Get(264, "Renderer", "set_alpha")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_part := gi.NewIntArgument(part) /*TODO*/
+	arg_part := gi.NewIntArgument(int(part))
 	arg_alpha := gi.NewUint16Argument(alpha)
 	args := []gi.Argument{arg_v, arg_part, arg_alpha}
 	iv.Call(args, nil, nil)
@@ -4976,14 +5037,14 @@ func (v Renderer) SetAlpha(part int /*TODO_TYPE isPtr: false, tag: interface*/, 
 // pango_renderer_set_color
 // container is not nil, container is Renderer
 // is method
-func (v Renderer) SetColor(part int /*TODO_TYPE isPtr: false, tag: interface*/, color Color) {
+func (v Renderer) SetColor(part RenderPartEnum, color Color) {
 	iv, err := _I.Get(265, "Renderer", "set_color")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_part := gi.NewIntArgument(part) /*TODO*/
+	arg_part := gi.NewIntArgument(int(part))
 	arg_color := gi.NewPointerArgument(color.P)
 	args := []gi.Argument{arg_v, arg_part, arg_color}
 	iv.Call(args, nil, nil)
@@ -5009,6 +5070,8 @@ func (v Renderer) SetMatrix(matrix Matrix) {
 type RendererPrivate struct {
 	P unsafe.Pointer
 }
+
+// Enum Script
 type ScriptEnum int
 
 const (
@@ -5154,7 +5217,7 @@ func (v ScriptIter) Free() {
 // pango_script_iter_get_range
 // container is not nil, container is ScriptIter
 // is method
-func (v ScriptIter) GetRange() (start string, end string, script int /*TODO_TYPE*/) {
+func (v ScriptIter) GetRange() (start string, end string, script ScriptEnum) {
 	iv, err := _I.Get(268, "ScriptIter", "get_range")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5169,7 +5232,7 @@ func (v ScriptIter) GetRange() (start string, end string, script int /*TODO_TYPE
 	iv.Call(args, nil, &outArgs[0])
 	start = outArgs[0].String().Take()
 	end = outArgs[1].String().Take()
-	script = outArgs[2].Int() /*TODO*/
+	script = ScriptEnum(outArgs[2].Int())
 	return
 }
 
@@ -5190,6 +5253,7 @@ func (v ScriptIter) Next() (result bool) {
 	return
 }
 
+// Enum Stretch
 type StretchEnum int
 
 const (
@@ -5204,6 +5268,7 @@ const (
 	StretchUltraExpanded              = 8
 )
 
+// Enum Style
 type StyleEnum int
 
 const (
@@ -5212,6 +5277,7 @@ const (
 	StyleItalic            = 2
 )
 
+// Enum TabAlign
 type TabAlignEnum int
 
 const (
@@ -5309,7 +5375,7 @@ func (v TabArray) GetSize() (result int32) {
 // pango_tab_array_get_tab
 // container is not nil, container is TabArray
 // is method
-func (v TabArray) GetTab(tab_index int32) (alignment int /*TODO_TYPE*/, location int32) {
+func (v TabArray) GetTab(tab_index int32) (alignment TabAlignEnum, location int32) {
 	iv, err := _I.Get(275, "TabArray", "get_tab")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5322,7 +5388,7 @@ func (v TabArray) GetTab(tab_index int32) (alignment int /*TODO_TYPE*/, location
 	arg_location := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_tab_index, arg_alignment, arg_location}
 	iv.Call(args, nil, &outArgs[0])
-	alignment = outArgs[0].Int() /*TODO*/
+	alignment = TabAlignEnum(outArgs[0].Int())
 	location = outArgs[1].Int32()
 	return
 }
@@ -5342,7 +5408,7 @@ func (v TabArray) GetTabs() (alignments int /*TODO_TYPE*/, locations int /*TODO_
 	arg_locations := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_alignments, arg_locations}
 	iv.Call(args, nil, &outArgs[0])
-	alignments = outArgs[0].Int() /*TODO*/
+	alignments = outArgs[0].Int() /*TODO tagIfc biType: enum*/
 	locations = outArgs[1].Int()  /*TODO*/
 	return
 }
@@ -5365,7 +5431,7 @@ func (v TabArray) Resize(new_size int32) {
 // pango_tab_array_set_tab
 // container is not nil, container is TabArray
 // is method
-func (v TabArray) SetTab(tab_index int32, alignment int /*TODO_TYPE isPtr: false, tag: interface*/, location int32) {
+func (v TabArray) SetTab(tab_index int32, alignment TabAlignEnum, location int32) {
 	iv, err := _I.Get(278, "TabArray", "set_tab")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5373,12 +5439,13 @@ func (v TabArray) SetTab(tab_index int32, alignment int /*TODO_TYPE isPtr: false
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_tab_index := gi.NewInt32Argument(tab_index)
-	arg_alignment := gi.NewIntArgument(alignment) /*TODO*/
+	arg_alignment := gi.NewIntArgument(int(alignment))
 	arg_location := gi.NewInt32Argument(location)
 	args := []gi.Argument{arg_v, arg_tab_index, arg_alignment, arg_location}
 	iv.Call(args, nil, nil)
 }
 
+// Enum Underline
 type UnderlineEnum int
 
 const (
@@ -5389,6 +5456,7 @@ const (
 	UnderlineError                = 4
 )
 
+// Enum Variant
 type VariantEnum int
 
 const (
@@ -5396,6 +5464,7 @@ const (
 	VariantSmallCaps             = 1
 )
 
+// Enum Weight
 type WeightEnum int
 
 const (
@@ -5413,6 +5482,7 @@ const (
 	WeightUltraheavy            = 1000
 )
 
+// Enum WrapMode
 type WrapModeEnum int
 
 const (
@@ -5423,13 +5493,13 @@ const (
 
 // pango_attr_type_get_name
 // container is nil
-func AttrTypeGetName(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (result string) {
+func AttrTypeGetName(type1 AttrTypeEnum) (result string) {
 	iv, err := _I.Get(279, "attr_type_get_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5439,7 +5509,7 @@ func AttrTypeGetName(type1 int /*TODO_TYPE isPtr: false, tag: interface*/) (resu
 
 // pango_attr_type_register
 // container is nil
-func AttrTypeRegister(name string) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func AttrTypeRegister(name string) (result AttrTypeEnum) {
 	iv, err := _I.Get(280, "attr_type_register", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5450,24 +5520,24 @@ func AttrTypeRegister(name string) (result int /*TODO_TYPE isPtr: false, tag: in
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = AttrTypeEnum(ret.Int())
 	gi.Free(c_name)
 	return
 }
 
 // pango_bidi_type_for_unichar
 // container is nil
-func BidiTypeForUnichar(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func BidiTypeForUnichar(ch rune) (result BidiTypeEnum) {
 	iv, err := _I.Get(281, "bidi_type_for_unichar", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch) /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
 	args := []gi.Argument{arg_ch}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = BidiTypeEnum(ret.Int())
 	return
 }
 
@@ -5561,7 +5631,7 @@ func ExtentsToPixels(inclusive Rectangle, nearest Rectangle) {
 
 // pango_find_base_dir
 // container is nil
-func FindBaseDir(text string, length int32) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func FindBaseDir(text string, length int32) (result DirectionEnum) {
 	iv, err := _I.Get(287, "find_base_dir", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5573,7 +5643,7 @@ func FindBaseDir(text string, length int32) (result int /*TODO_TYPE isPtr: false
 	args := []gi.Argument{arg_text, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DirectionEnum(ret.Int())
 	gi.Free(c_text)
 	return
 }
@@ -5654,14 +5724,14 @@ func GetLogAttrs(text string, length int32, level int32, language Language, log_
 
 // pango_get_mirror_char
 // container is nil
-func GetMirrorChar(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/, mirrored_ch int /*TODO_TYPE isPtr: true, tag: gunichar*/) (result bool) {
+func GetMirrorChar(ch rune, mirrored_ch rune) (result bool) {
 	iv, err := _I.Get(292, "get_mirror_char", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch)                   /*TODO*/
-	arg_mirrored_ch := gi.NewIntArgument(mirrored_ch) /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
+	arg_mirrored_ch := gi.NewUint32Argument(uint32(mirrored_ch))
 	args := []gi.Argument{arg_ch, arg_mirrored_ch}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5685,7 +5755,7 @@ func GetSysconfSubdirectory() (result string) {
 
 // pango_gravity_get_for_matrix
 // container is nil
-func GravityGetForMatrix(matrix Matrix) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func GravityGetForMatrix(matrix Matrix) (result GravityEnum) {
 	iv, err := _I.Get(294, "gravity_get_for_matrix", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5695,56 +5765,56 @@ func GravityGetForMatrix(matrix Matrix) (result int /*TODO_TYPE isPtr: false, ta
 	args := []gi.Argument{arg_matrix}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = GravityEnum(ret.Int())
 	return
 }
 
 // pango_gravity_get_for_script
 // container is nil
-func GravityGetForScript(script int /*TODO_TYPE isPtr: false, tag: interface*/, base_gravity int /*TODO_TYPE isPtr: false, tag: interface*/, hint int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func GravityGetForScript(script ScriptEnum, base_gravity GravityEnum, hint GravityHintEnum) (result GravityEnum) {
 	iv, err := _I.Get(295, "gravity_get_for_script", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_script := gi.NewIntArgument(script)             /*TODO*/
-	arg_base_gravity := gi.NewIntArgument(base_gravity) /*TODO*/
-	arg_hint := gi.NewIntArgument(hint)                 /*TODO*/
+	arg_script := gi.NewIntArgument(int(script))
+	arg_base_gravity := gi.NewIntArgument(int(base_gravity))
+	arg_hint := gi.NewIntArgument(int(hint))
 	args := []gi.Argument{arg_script, arg_base_gravity, arg_hint}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = GravityEnum(ret.Int())
 	return
 }
 
 // pango_gravity_get_for_script_and_width
 // container is nil
-func GravityGetForScriptAndWidth(script int /*TODO_TYPE isPtr: false, tag: interface*/, wide bool, base_gravity int /*TODO_TYPE isPtr: false, tag: interface*/, hint int /*TODO_TYPE isPtr: false, tag: interface*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func GravityGetForScriptAndWidth(script ScriptEnum, wide bool, base_gravity GravityEnum, hint GravityHintEnum) (result GravityEnum) {
 	iv, err := _I.Get(296, "gravity_get_for_script_and_width", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_script := gi.NewIntArgument(script) /*TODO*/
+	arg_script := gi.NewIntArgument(int(script))
 	arg_wide := gi.NewBoolArgument(wide)
-	arg_base_gravity := gi.NewIntArgument(base_gravity) /*TODO*/
-	arg_hint := gi.NewIntArgument(hint)                 /*TODO*/
+	arg_base_gravity := gi.NewIntArgument(int(base_gravity))
+	arg_hint := gi.NewIntArgument(int(hint))
 	args := []gi.Argument{arg_script, arg_wide, arg_base_gravity, arg_hint}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = GravityEnum(ret.Int())
 	return
 }
 
 // pango_gravity_to_rotation
 // container is nil
-func GravityToRotation(gravity int /*TODO_TYPE isPtr: false, tag: interface*/) (result float64) {
+func GravityToRotation(gravity GravityEnum) (result float64) {
 	iv, err := _I.Get(297, "gravity_to_rotation", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_gravity := gi.NewIntArgument(gravity) /*TODO*/
+	arg_gravity := gi.NewIntArgument(int(gravity))
 	args := []gi.Argument{arg_gravity}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5754,13 +5824,13 @@ func GravityToRotation(gravity int /*TODO_TYPE isPtr: false, tag: interface*/) (
 
 // pango_is_zero_width
 // container is nil
-func IsZeroWidth(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool) {
+func IsZeroWidth(ch rune) (result bool) {
 	iv, err := _I.Get(298, "is_zero_width", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch) /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
 	args := []gi.Argument{arg_ch}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5770,14 +5840,14 @@ func IsZeroWidth(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool)
 
 // pango_itemize
 // container is nil
-func Itemize(context Context, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func Itemize(context IContext, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
 	iv, err := _I.Get(299, "itemize", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_text := gi.CString(text)
-	arg_context := gi.NewPointerArgument(context.P)
+	arg_context := gi.NewPointerArgument(context.P_Context())
 	arg_text := gi.NewStringArgument(c_text)
 	arg_start_index := gi.NewInt32Argument(start_index)
 	arg_length := gi.NewInt32Argument(length)
@@ -5793,15 +5863,15 @@ func Itemize(context Context, text string, start_index int32, length int32, attr
 
 // pango_itemize_with_base_dir
 // container is nil
-func ItemizeWithBaseDir(context Context, base_dir int /*TODO_TYPE isPtr: false, tag: interface*/, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func ItemizeWithBaseDir(context IContext, base_dir DirectionEnum, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
 	iv, err := _I.Get(300, "itemize_with_base_dir", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_text := gi.CString(text)
-	arg_context := gi.NewPointerArgument(context.P)
-	arg_base_dir := gi.NewIntArgument(base_dir) /*TODO*/
+	arg_context := gi.NewPointerArgument(context.P_Context())
+	arg_base_dir := gi.NewIntArgument(int(base_dir))
 	arg_text := gi.NewStringArgument(c_text)
 	arg_start_index := gi.NewInt32Argument(start_index)
 	arg_length := gi.NewInt32Argument(length)
@@ -5872,7 +5942,7 @@ func LookupAliases(fontname string) (families int /*TODO_TYPE*/, n_families int3
 
 // pango_markup_parser_finish
 // container is nil
-func MarkupParserFinish(context glib.MarkupParseContext) (result bool, attr_list int /*TODO_TYPE*/, text string, accel_char int /*TODO_TYPE*/, err error) {
+func MarkupParserFinish(context glib.MarkupParseContext) (result bool, attr_list AttrList, text string, accel_char rune, err error) {
 	iv, err := _I.Get(304, "markup_parser_finish", "")
 	if err != nil {
 		return
@@ -5887,22 +5957,22 @@ func MarkupParserFinish(context glib.MarkupParseContext) (result bool, attr_list
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
-	attr_list = outArgs[0].Int() /*TODO*/
+	attr_list.P = outArgs[0].Pointer()
 	text = outArgs[1].String().Take()
-	accel_char = outArgs[2].Int() /*TODO*/
+	accel_char = rune(outArgs[2].Uint32())
 	err = gi.ToError(outArgs[3].Pointer())
 	return
 }
 
 // pango_markup_parser_new
 // container is nil
-func MarkupParserNew(accel_marker int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result glib.MarkupParseContext) {
+func MarkupParserNew(accel_marker rune) (result glib.MarkupParseContext) {
 	iv, err := _I.Get(305, "markup_parser_new", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_accel_marker := gi.NewIntArgument(accel_marker) /*TODO*/
+	arg_accel_marker := gi.NewUint32Argument(uint32(accel_marker))
 	args := []gi.Argument{arg_accel_marker}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5950,7 +6020,7 @@ func ParseEnum(type1 int /*TODO_TYPE isPtr: false, tag: GType*/, str string, war
 
 // pango_parse_markup
 // container is nil
-func ParseMarkup(markup_text string, length int32, accel_marker int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result bool, attr_list int /*TODO_TYPE*/, text string, accel_char int /*TODO_TYPE*/, err error) {
+func ParseMarkup(markup_text string, length int32, accel_marker rune) (result bool, attr_list AttrList, text string, accel_char rune, err error) {
 	iv, err := _I.Get(308, "parse_markup", "")
 	if err != nil {
 		return
@@ -5959,7 +6029,7 @@ func ParseMarkup(markup_text string, length int32, accel_marker int /*TODO_TYPE 
 	c_markup_text := gi.CString(markup_text)
 	arg_markup_text := gi.NewStringArgument(c_markup_text)
 	arg_length := gi.NewInt32Argument(length)
-	arg_accel_marker := gi.NewIntArgument(accel_marker) /*TODO*/
+	arg_accel_marker := gi.NewUint32Argument(uint32(accel_marker))
 	arg_attr_list := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_text := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_accel_char := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -5969,16 +6039,16 @@ func ParseMarkup(markup_text string, length int32, accel_marker int /*TODO_TYPE 
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
 	gi.Free(c_markup_text)
-	attr_list = outArgs[0].Int() /*TODO*/
+	attr_list.P = outArgs[0].Pointer()
 	text = outArgs[1].String().Take()
-	accel_char = outArgs[2].Int() /*TODO*/
+	accel_char = rune(outArgs[2].Uint32())
 	err = gi.ToError(outArgs[3].Pointer())
 	return
 }
 
 // pango_parse_stretch
 // container is nil
-func ParseStretch(str string, warn bool) (result bool, stretch int /*TODO_TYPE*/) {
+func ParseStretch(str string, warn bool) (result bool, stretch StretchEnum) {
 	iv, err := _I.Get(309, "parse_stretch", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5994,13 +6064,13 @@ func ParseStretch(str string, warn bool) (result bool, stretch int /*TODO_TYPE*/
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
 	gi.Free(c_str)
-	stretch = outArgs[0].Int() /*TODO*/
+	stretch = StretchEnum(outArgs[0].Int())
 	return
 }
 
 // pango_parse_style
 // container is nil
-func ParseStyle(str string, warn bool) (result bool, style int /*TODO_TYPE*/) {
+func ParseStyle(str string, warn bool) (result bool, style StyleEnum) {
 	iv, err := _I.Get(310, "parse_style", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6016,13 +6086,13 @@ func ParseStyle(str string, warn bool) (result bool, style int /*TODO_TYPE*/) {
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
 	gi.Free(c_str)
-	style = outArgs[0].Int() /*TODO*/
+	style = StyleEnum(outArgs[0].Int())
 	return
 }
 
 // pango_parse_variant
 // container is nil
-func ParseVariant(str string, warn bool) (result bool, variant int /*TODO_TYPE*/) {
+func ParseVariant(str string, warn bool) (result bool, variant VariantEnum) {
 	iv, err := _I.Get(311, "parse_variant", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6038,13 +6108,13 @@ func ParseVariant(str string, warn bool) (result bool, variant int /*TODO_TYPE*/
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
 	gi.Free(c_str)
-	variant = outArgs[0].Int() /*TODO*/
+	variant = VariantEnum(outArgs[0].Int())
 	return
 }
 
 // pango_parse_weight
 // container is nil
-func ParseWeight(str string, warn bool) (result bool, weight int /*TODO_TYPE*/) {
+func ParseWeight(str string, warn bool) (result bool, weight WeightEnum) {
 	iv, err := _I.Get(312, "parse_weight", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6060,7 +6130,7 @@ func ParseWeight(str string, warn bool) (result bool, weight int /*TODO_TYPE*/) 
 	iv.Call(args, &ret, &outArgs[0])
 	result = ret.Bool()
 	gi.Free(c_str)
-	weight = outArgs[0].Int() /*TODO*/
+	weight = WeightEnum(outArgs[0].Int())
 	return
 }
 
@@ -6167,29 +6237,29 @@ func ScanWord(pos int) (result bool, out int /*TODO_TYPE*/) {
 
 // pango_script_for_unichar
 // container is nil
-func ScriptForUnichar(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func ScriptForUnichar(ch rune) (result ScriptEnum) {
 	iv, err := _I.Get(319, "script_for_unichar", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch) /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
 	args := []gi.Argument{arg_ch}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = ScriptEnum(ret.Int())
 	return
 }
 
 // pango_script_get_sample_language
 // container is nil
-func ScriptGetSampleLanguage(script int /*TODO_TYPE isPtr: false, tag: interface*/) (result Language) {
+func ScriptGetSampleLanguage(script ScriptEnum) (result Language) {
 	iv, err := _I.Get(320, "script_get_sample_language", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_script := gi.NewIntArgument(script) /*TODO*/
+	arg_script := gi.NewIntArgument(int(script))
 	args := []gi.Argument{arg_script}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6290,17 +6360,17 @@ func TrimString(str string) (result string) {
 
 // pango_unichar_direction
 // container is nil
-func UnicharDirection(ch int /*TODO_TYPE isPtr: false, tag: gunichar*/) (result int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func UnicharDirection(ch rune) (result DirectionEnum) {
 	iv, err := _I.Get(326, "unichar_direction", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_ch := gi.NewIntArgument(ch) /*TODO*/
+	arg_ch := gi.NewUint32Argument(uint32(ch))
 	args := []gi.Argument{arg_ch}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = DirectionEnum(ret.Int())
 	return
 }
 
