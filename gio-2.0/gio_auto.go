@@ -8,6 +8,7 @@ import "unsafe"
 
 var _I = gi.NewInvokerCache("Gio")
 var _ unsafe.Pointer
+var _ *log.Logger
 
 func init() {
 	repo := gi.DefaultRepository()
@@ -536,7 +537,7 @@ func (v *ActionMapIfc) AddAction(action Action) {
 // g_action_map_add_action_entries
 // container is not nil, container is ActionMap
 // is method
-func (v *ActionMapIfc) AddActionEntries(entries int /*TODO_TYPE isPtr: true, tag: array*/, n_entries int32, user_data unsafe.Pointer) {
+func (v *ActionMapIfc) AddActionEntries(entries int /*TODO_TYPE array type c, p0tag: interface*/, n_entries int32, user_data unsafe.Pointer) {
 	iv, err := _I.Get(26, "ActionMap", "add_action_entries")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -621,9 +622,6 @@ func AppInfoCreateFromCommandline1(commandline string, application_name string, 
 	return
 }
 
-// g_app_info_get_all
-// container is not nil, container is AppInfo
-// num arg is 0
 // g_app_info_get_all_for_type
 // container is not nil, container is AppInfo
 // is method
@@ -1236,9 +1234,9 @@ type AppInfoCreateFlags int
 
 const (
 	AppInfoCreateFlagsNone                        AppInfoCreateFlags = 0
-	AppInfoCreateFlagsNeedsTerminal                                  = 1
-	AppInfoCreateFlagsSupportsUris                                   = 2
-	AppInfoCreateFlagsSupportsStartupNotification                    = 4
+	AppInfoCreateFlagsNeedsTerminal               AppInfoCreateFlags = 1
+	AppInfoCreateFlagsSupportsUris                AppInfoCreateFlags = 2
+	AppInfoCreateFlagsSupportsStartupNotification AppInfoCreateFlags = 4
 )
 
 // ignore GType struct AppInfoIface
@@ -1253,9 +1251,6 @@ type IAppInfoMonitor interface{ P_AppInfoMonitor() unsafe.Pointer }
 
 func (v AppInfoMonitor) P_AppInfoMonitor() unsafe.Pointer { return v.P }
 
-// g_app_info_monitor_get
-// container is not nil, container is AppInfoMonitor
-// num arg is 0
 // Object AppLaunchContext
 type AppLaunchContext struct {
 	gobject.Object
@@ -1430,9 +1425,6 @@ func NewApplication(application_id string, flags ApplicationFlags) (result Appli
 	return
 }
 
-// g_application_get_default
-// container is not nil, container is Application
-// num arg is 0
 // g_application_id_is_valid
 // container is not nil, container is Application
 // is method
@@ -1496,7 +1488,7 @@ func (v Application) AddMainOption(long_name string, short_name int8, flags glib
 // g_application_add_main_option_entries
 // container is not nil, container is Application
 // is method
-func (v Application) AddMainOptionEntries(entries int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Application) AddMainOptionEntries(entries int /*TODO_TYPE array type c, p0tag: interface*/) {
 	iv, err := _I.Get(76, "Application", "add_main_option_entries")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1725,7 +1717,7 @@ func (v Application) MarkBusy() {
 // g_application_open
 // container is not nil, container is Application
 // is method
-func (v Application) Open(files int /*TODO_TYPE isPtr: true, tag: array*/, n_files int32, hint string) {
+func (v Application) Open(files int /*TODO_TYPE array type c, p0tag: interface*/, n_files int32, hint string) {
 	iv, err := _I.Get(90, "Application", "open")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1792,7 +1784,7 @@ func (v Application) Release() {
 // g_application_run
 // container is not nil, container is Application
 // is method
-func (v Application) Run(argc int32, argv int /*TODO_TYPE isPtr: true, tag: array*/) (result int32) {
+func (v Application) Run(argc int32, argv int /*TODO_TYPE array type c, p0tag: filename*/) (result int32) {
 	iv, err := _I.Get(94, "Application", "run")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2236,13 +2228,13 @@ type ApplicationFlags int
 
 const (
 	ApplicationFlagsFlagsNone          ApplicationFlags = 0
-	ApplicationFlagsIsService                           = 1
-	ApplicationFlagsIsLauncher                          = 2
-	ApplicationFlagsHandlesOpen                         = 4
-	ApplicationFlagsHandlesCommandLine                  = 8
-	ApplicationFlagsSendEnvironment                     = 16
-	ApplicationFlagsNonUnique                           = 32
-	ApplicationFlagsCanOverrideAppId                    = 64
+	ApplicationFlagsIsService          ApplicationFlags = 1
+	ApplicationFlagsIsLauncher         ApplicationFlags = 2
+	ApplicationFlagsHandlesOpen        ApplicationFlags = 4
+	ApplicationFlagsHandlesCommandLine ApplicationFlags = 8
+	ApplicationFlagsSendEnvironment    ApplicationFlags = 16
+	ApplicationFlagsNonUnique          ApplicationFlags = 32
+	ApplicationFlagsCanOverrideAppId   ApplicationFlags = 64
 )
 
 // Struct ApplicationPrivate
@@ -2255,11 +2247,11 @@ type AskPasswordFlags int
 
 const (
 	AskPasswordFlagsNeedPassword       AskPasswordFlags = 1
-	AskPasswordFlagsNeedUsername                        = 2
-	AskPasswordFlagsNeedDomain                          = 4
-	AskPasswordFlagsSavingSupported                     = 8
-	AskPasswordFlagsAnonymousSupported                  = 16
-	AskPasswordFlagsTcrypt                              = 32
+	AskPasswordFlagsNeedUsername       AskPasswordFlags = 2
+	AskPasswordFlagsNeedDomain         AskPasswordFlags = 4
+	AskPasswordFlagsSavingSupported    AskPasswordFlags = 8
+	AskPasswordFlagsAnonymousSupported AskPasswordFlags = 16
+	AskPasswordFlagsTcrypt             AskPasswordFlags = 32
 )
 
 // Interface AsyncInitable
@@ -2569,14 +2561,14 @@ func (v BufferedInputStream) GetBufferSize() (result uint64) {
 // g_buffered_input_stream_peek
 // container is not nil, container is BufferedInputStream
 // is method
-func (v BufferedInputStream) Peek(buffer int /*TODO_TYPE isPtr: true, tag: array*/, offset uint64, count uint64) (result uint64) {
+func (v BufferedInputStream) Peek(buffer gi.Uint8Array, offset uint64, count uint64) (result uint64) {
 	iv, err := _I.Get(134, "BufferedInputStream", "peek")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_offset := gi.NewUint64Argument(offset)
 	arg_count := gi.NewUint64Argument(count)
 	args := []gi.Argument{arg_v, arg_buffer, arg_offset, arg_count}
@@ -2769,9 +2761,9 @@ type BusNameOwnerFlags int
 
 const (
 	BusNameOwnerFlagsNone             BusNameOwnerFlags = 0
-	BusNameOwnerFlagsAllowReplacement                   = 1
-	BusNameOwnerFlagsReplace                            = 2
-	BusNameOwnerFlagsDoNotQueue                         = 4
+	BusNameOwnerFlagsAllowReplacement BusNameOwnerFlags = 1
+	BusNameOwnerFlagsReplace          BusNameOwnerFlags = 2
+	BusNameOwnerFlagsDoNotQueue       BusNameOwnerFlags = 4
 )
 
 // Flags BusNameWatcherFlags
@@ -2779,7 +2771,7 @@ type BusNameWatcherFlags int
 
 const (
 	BusNameWatcherFlagsNone      BusNameWatcherFlags = 0
-	BusNameWatcherFlagsAutoStart                     = 1
+	BusNameWatcherFlagsAutoStart BusNameWatcherFlags = 1
 )
 
 // Enum BusType
@@ -2787,9 +2779,9 @@ type BusTypeEnum int
 
 const (
 	BusTypeStarter BusTypeEnum = -1
-	BusTypeNone                = 0
-	BusTypeSystem              = 1
-	BusTypeSession             = 2
+	BusTypeNone    BusTypeEnum = 0
+	BusTypeSystem  BusTypeEnum = 1
+	BusTypeSession BusTypeEnum = 2
 )
 
 // Object BytesIcon
@@ -2865,9 +2857,6 @@ func NewCancellable() (result Cancellable) {
 	return
 }
 
-// g_cancellable_get_current
-// container is not nil, container is Cancellable
-// num arg is 0
 // g_cancellable_cancel
 // container is not nil, container is Cancellable
 // is method
@@ -3147,16 +3136,16 @@ type ConverterIfc struct{}
 // g_converter_convert
 // container is not nil, container is Converter
 // is method
-func (v *ConverterIfc) Convert(inbuf int /*TODO_TYPE isPtr: true, tag: array*/, inbuf_size uint64, outbuf int /*TODO_TYPE isPtr: true, tag: array*/, outbuf_size uint64, flags ConverterFlags) (result ConverterResultEnum, bytes_read uint64, bytes_written uint64, err error) {
+func (v *ConverterIfc) Convert(inbuf gi.Uint8Array, inbuf_size uint64, outbuf gi.Uint8Array, outbuf_size uint64, flags ConverterFlags) (result ConverterResultEnum, bytes_read uint64, bytes_written uint64, err error) {
 	iv, err := _I.Get(163, "Converter", "convert")
 	if err != nil {
 		return
 	}
 	var outArgs [3]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_inbuf := gi.NewIntArgument(inbuf) /*TODO*/
+	arg_inbuf := gi.NewPointerArgument(inbuf.P)
 	arg_inbuf_size := gi.NewUint64Argument(inbuf_size)
-	arg_outbuf := gi.NewIntArgument(outbuf) /*TODO*/
+	arg_outbuf := gi.NewPointerArgument(outbuf.P)
 	arg_outbuf_size := gi.NewUint64Argument(outbuf_size)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_bytes_read := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -3191,8 +3180,8 @@ type ConverterFlags int
 
 const (
 	ConverterFlagsNone       ConverterFlags = 0
-	ConverterFlagsInputAtEnd                = 1
-	ConverterFlagsFlush                     = 2
+	ConverterFlagsInputAtEnd ConverterFlags = 1
+	ConverterFlagsFlush      ConverterFlags = 2
 )
 
 // ignore GType struct ConverterIface
@@ -3307,9 +3296,9 @@ type ConverterResultEnum int
 
 const (
 	ConverterResultError     ConverterResultEnum = 0
-	ConverterResultConverted                     = 1
-	ConverterResultFinished                      = 2
-	ConverterResultFlushed                       = 3
+	ConverterResultConverted ConverterResultEnum = 1
+	ConverterResultFinished  ConverterResultEnum = 2
+	ConverterResultFlushed   ConverterResultEnum = 3
 )
 
 // Object Credentials
@@ -3455,11 +3444,11 @@ type CredentialsTypeEnum int
 
 const (
 	CredentialsTypeInvalid             CredentialsTypeEnum = 0
-	CredentialsTypeLinuxUcred                              = 1
-	CredentialsTypeFreebsdCmsgcred                         = 2
-	CredentialsTypeOpenbsdSockpeercred                     = 3
-	CredentialsTypeSolarisUcred                            = 4
-	CredentialsTypeNetbsdUnpcbid                           = 5
+	CredentialsTypeLinuxUcred          CredentialsTypeEnum = 1
+	CredentialsTypeFreebsdCmsgcred     CredentialsTypeEnum = 2
+	CredentialsTypeOpenbsdSockpeercred CredentialsTypeEnum = 3
+	CredentialsTypeSolarisUcred        CredentialsTypeEnum = 4
+	CredentialsTypeNetbsdUnpcbid       CredentialsTypeEnum = 5
 )
 
 // Object DBusActionGroup
@@ -3539,7 +3528,7 @@ func (v DBusAnnotationInfo) Unref() {
 // container is not nil, container is DBusAnnotationInfo
 // is method
 // arg0Type tag: array, isPtr: true
-func DBusAnnotationInfoLookup1(annotations int /*TODO_TYPE isPtr: true, tag: array*/, name string) (result string) {
+func DBusAnnotationInfoLookup1(annotations int /*TODO_TYPE array type c, p0tag: interface*/, name string) (result string) {
 	iv, err := _I.Get(179, "DBusAnnotationInfo", "lookup")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3662,8 +3651,8 @@ type DBusCallFlags int
 
 const (
 	DBusCallFlagsNone                          DBusCallFlags = 0
-	DBusCallFlagsNoAutoStart                                 = 1
-	DBusCallFlagsAllowInteractiveAuthorization               = 2
+	DBusCallFlagsNoAutoStart                   DBusCallFlags = 1
+	DBusCallFlagsAllowInteractiveAuthorization DBusCallFlags = 2
 )
 
 // Flags DBusCapabilityFlags
@@ -3671,7 +3660,7 @@ type DBusCapabilityFlags int
 
 const (
 	DBusCapabilityFlagsNone          DBusCapabilityFlags = 0
-	DBusCapabilityFlagsUnixFdPassing                     = 1
+	DBusCapabilityFlagsUnixFdPassing DBusCapabilityFlags = 1
 )
 
 // Object DBusConnection
@@ -4661,11 +4650,11 @@ type DBusConnectionFlags int
 
 const (
 	DBusConnectionFlagsNone                         DBusConnectionFlags = 0
-	DBusConnectionFlagsAuthenticationClient                             = 1
-	DBusConnectionFlagsAuthenticationServer                             = 2
-	DBusConnectionFlagsAuthenticationAllowAnonymous                     = 4
-	DBusConnectionFlagsMessageBusConnection                             = 8
-	DBusConnectionFlagsDelayMessageProcessing                           = 16
+	DBusConnectionFlagsAuthenticationClient         DBusConnectionFlags = 1
+	DBusConnectionFlagsAuthenticationServer         DBusConnectionFlags = 2
+	DBusConnectionFlagsAuthenticationAllowAnonymous DBusConnectionFlags = 4
+	DBusConnectionFlagsMessageBusConnection         DBusConnectionFlags = 8
+	DBusConnectionFlagsDelayMessageProcessing       DBusConnectionFlags = 16
 )
 
 // Enum DBusError
@@ -4673,50 +4662,50 @@ type DBusErrorEnum int
 
 const (
 	DBusErrorFailed                        DBusErrorEnum = 0
-	DBusErrorNoMemory                                    = 1
-	DBusErrorServiceUnknown                              = 2
-	DBusErrorNameHasNoOwner                              = 3
-	DBusErrorNoReply                                     = 4
-	DBusErrorIoError                                     = 5
-	DBusErrorBadAddress                                  = 6
-	DBusErrorNotSupported                                = 7
-	DBusErrorLimitsExceeded                              = 8
-	DBusErrorAccessDenied                                = 9
-	DBusErrorAuthFailed                                  = 10
-	DBusErrorNoServer                                    = 11
-	DBusErrorTimeout                                     = 12
-	DBusErrorNoNetwork                                   = 13
-	DBusErrorAddressInUse                                = 14
-	DBusErrorDisconnected                                = 15
-	DBusErrorInvalidArgs                                 = 16
-	DBusErrorFileNotFound                                = 17
-	DBusErrorFileExists                                  = 18
-	DBusErrorUnknownMethod                               = 19
-	DBusErrorTimedOut                                    = 20
-	DBusErrorMatchRuleNotFound                           = 21
-	DBusErrorMatchRuleInvalid                            = 22
-	DBusErrorSpawnExecFailed                             = 23
-	DBusErrorSpawnForkFailed                             = 24
-	DBusErrorSpawnChildExited                            = 25
-	DBusErrorSpawnChildSignaled                          = 26
-	DBusErrorSpawnFailed                                 = 27
-	DBusErrorSpawnSetupFailed                            = 28
-	DBusErrorSpawnConfigInvalid                          = 29
-	DBusErrorSpawnServiceInvalid                         = 30
-	DBusErrorSpawnServiceNotFound                        = 31
-	DBusErrorSpawnPermissionsInvalid                     = 32
-	DBusErrorSpawnFileInvalid                            = 33
-	DBusErrorSpawnNoMemory                               = 34
-	DBusErrorUnixProcessIdUnknown                        = 35
-	DBusErrorInvalidSignature                            = 36
-	DBusErrorInvalidFileContent                          = 37
-	DBusErrorSelinuxSecurityContextUnknown               = 38
-	DBusErrorAdtAuditDataUnknown                         = 39
-	DBusErrorObjectPathInUse                             = 40
-	DBusErrorUnknownObject                               = 41
-	DBusErrorUnknownInterface                            = 42
-	DBusErrorUnknownProperty                             = 43
-	DBusErrorPropertyReadOnly                            = 44
+	DBusErrorNoMemory                      DBusErrorEnum = 1
+	DBusErrorServiceUnknown                DBusErrorEnum = 2
+	DBusErrorNameHasNoOwner                DBusErrorEnum = 3
+	DBusErrorNoReply                       DBusErrorEnum = 4
+	DBusErrorIoError                       DBusErrorEnum = 5
+	DBusErrorBadAddress                    DBusErrorEnum = 6
+	DBusErrorNotSupported                  DBusErrorEnum = 7
+	DBusErrorLimitsExceeded                DBusErrorEnum = 8
+	DBusErrorAccessDenied                  DBusErrorEnum = 9
+	DBusErrorAuthFailed                    DBusErrorEnum = 10
+	DBusErrorNoServer                      DBusErrorEnum = 11
+	DBusErrorTimeout                       DBusErrorEnum = 12
+	DBusErrorNoNetwork                     DBusErrorEnum = 13
+	DBusErrorAddressInUse                  DBusErrorEnum = 14
+	DBusErrorDisconnected                  DBusErrorEnum = 15
+	DBusErrorInvalidArgs                   DBusErrorEnum = 16
+	DBusErrorFileNotFound                  DBusErrorEnum = 17
+	DBusErrorFileExists                    DBusErrorEnum = 18
+	DBusErrorUnknownMethod                 DBusErrorEnum = 19
+	DBusErrorTimedOut                      DBusErrorEnum = 20
+	DBusErrorMatchRuleNotFound             DBusErrorEnum = 21
+	DBusErrorMatchRuleInvalid              DBusErrorEnum = 22
+	DBusErrorSpawnExecFailed               DBusErrorEnum = 23
+	DBusErrorSpawnForkFailed               DBusErrorEnum = 24
+	DBusErrorSpawnChildExited              DBusErrorEnum = 25
+	DBusErrorSpawnChildSignaled            DBusErrorEnum = 26
+	DBusErrorSpawnFailed                   DBusErrorEnum = 27
+	DBusErrorSpawnSetupFailed              DBusErrorEnum = 28
+	DBusErrorSpawnConfigInvalid            DBusErrorEnum = 29
+	DBusErrorSpawnServiceInvalid           DBusErrorEnum = 30
+	DBusErrorSpawnServiceNotFound          DBusErrorEnum = 31
+	DBusErrorSpawnPermissionsInvalid       DBusErrorEnum = 32
+	DBusErrorSpawnFileInvalid              DBusErrorEnum = 33
+	DBusErrorSpawnNoMemory                 DBusErrorEnum = 34
+	DBusErrorUnixProcessIdUnknown          DBusErrorEnum = 35
+	DBusErrorInvalidSignature              DBusErrorEnum = 36
+	DBusErrorInvalidFileContent            DBusErrorEnum = 37
+	DBusErrorSelinuxSecurityContextUnknown DBusErrorEnum = 38
+	DBusErrorAdtAuditDataUnknown           DBusErrorEnum = 39
+	DBusErrorObjectPathInUse               DBusErrorEnum = 40
+	DBusErrorUnknownObject                 DBusErrorEnum = 41
+	DBusErrorUnknownInterface              DBusErrorEnum = 42
+	DBusErrorUnknownProperty               DBusErrorEnum = 43
+	DBusErrorPropertyReadOnly              DBusErrorEnum = 44
 )
 
 // Struct DBusErrorEntry
@@ -5140,7 +5129,7 @@ type DBusInterfaceSkeletonFlags int
 
 const (
 	DBusInterfaceSkeletonFlagsNone                            DBusInterfaceSkeletonFlags = 0
-	DBusInterfaceSkeletonFlagsHandleMethodInvocationsInThread                            = 1
+	DBusInterfaceSkeletonFlagsHandleMethodInvocationsInThread DBusInterfaceSkeletonFlags = 1
 )
 
 // Struct DBusInterfaceSkeletonPrivate
@@ -5217,13 +5206,13 @@ func NewDBusMessage() (result DBusMessage) {
 // g_dbus_message_new_from_blob
 // container is not nil, container is DBusMessage
 // is constructor
-func NewDBusMessageFromBlob(blob int /*TODO_TYPE isPtr: true, tag: array*/, blob_len uint64, capabilities DBusCapabilityFlags) (result DBusMessage, err error) {
+func NewDBusMessageFromBlob(blob gi.Uint8Array, blob_len uint64, capabilities DBusCapabilityFlags) (result DBusMessage, err error) {
 	iv, err := _I.Get(255, "DBusMessage", "new_from_blob")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_blob := gi.NewIntArgument(blob) /*TODO*/
+	arg_blob := gi.NewPointerArgument(blob.P)
 	arg_blob_len := gi.NewUint64Argument(blob_len)
 	arg_capabilities := gi.NewIntArgument(int(capabilities))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -5292,13 +5281,13 @@ func NewDBusMessageSignal(path string, interface_ string, signal string) (result
 // container is not nil, container is DBusMessage
 // is method
 // arg0Type tag: array, isPtr: true
-func DBusMessageBytesNeeded1(blob int /*TODO_TYPE isPtr: true, tag: array*/, blob_len uint64) (result int64, err error) {
+func DBusMessageBytesNeeded1(blob gi.Uint8Array, blob_len uint64) (result int64, err error) {
 	iv, err := _I.Get(258, "DBusMessage", "bytes_needed")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_blob := gi.NewIntArgument(blob) /*TODO*/
+	arg_blob := gi.NewPointerArgument(blob.P)
 	arg_blob_len := gi.NewUint64Argument(blob_len)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_blob, arg_blob_len, arg_err}
@@ -6025,7 +6014,7 @@ type DBusMessageByteOrderEnum int
 
 const (
 	DBusMessageByteOrderBigEndian    DBusMessageByteOrderEnum = 66
-	DBusMessageByteOrderLittleEndian                          = 108
+	DBusMessageByteOrderLittleEndian DBusMessageByteOrderEnum = 108
 )
 
 // Flags DBusMessageFlags
@@ -6033,9 +6022,9 @@ type DBusMessageFlags int
 
 const (
 	DBusMessageFlagsNone                          DBusMessageFlags = 0
-	DBusMessageFlagsNoReplyExpected                                = 1
-	DBusMessageFlagsNoAutoStart                                    = 2
-	DBusMessageFlagsAllowInteractiveAuthorization                  = 4
+	DBusMessageFlagsNoReplyExpected               DBusMessageFlags = 1
+	DBusMessageFlagsNoAutoStart                   DBusMessageFlags = 2
+	DBusMessageFlagsAllowInteractiveAuthorization DBusMessageFlags = 4
 )
 
 // Enum DBusMessageHeaderField
@@ -6043,15 +6032,15 @@ type DBusMessageHeaderFieldEnum int
 
 const (
 	DBusMessageHeaderFieldInvalid     DBusMessageHeaderFieldEnum = 0
-	DBusMessageHeaderFieldPath                                   = 1
-	DBusMessageHeaderFieldInterface                              = 2
-	DBusMessageHeaderFieldMember                                 = 3
-	DBusMessageHeaderFieldErrorName                              = 4
-	DBusMessageHeaderFieldReplySerial                            = 5
-	DBusMessageHeaderFieldDestination                            = 6
-	DBusMessageHeaderFieldSender                                 = 7
-	DBusMessageHeaderFieldSignature                              = 8
-	DBusMessageHeaderFieldNumUnixFds                             = 9
+	DBusMessageHeaderFieldPath        DBusMessageHeaderFieldEnum = 1
+	DBusMessageHeaderFieldInterface   DBusMessageHeaderFieldEnum = 2
+	DBusMessageHeaderFieldMember      DBusMessageHeaderFieldEnum = 3
+	DBusMessageHeaderFieldErrorName   DBusMessageHeaderFieldEnum = 4
+	DBusMessageHeaderFieldReplySerial DBusMessageHeaderFieldEnum = 5
+	DBusMessageHeaderFieldDestination DBusMessageHeaderFieldEnum = 6
+	DBusMessageHeaderFieldSender      DBusMessageHeaderFieldEnum = 7
+	DBusMessageHeaderFieldSignature   DBusMessageHeaderFieldEnum = 8
+	DBusMessageHeaderFieldNumUnixFds  DBusMessageHeaderFieldEnum = 9
 )
 
 // Enum DBusMessageType
@@ -6059,10 +6048,10 @@ type DBusMessageTypeEnum int
 
 const (
 	DBusMessageTypeInvalid      DBusMessageTypeEnum = 0
-	DBusMessageTypeMethodCall                       = 1
-	DBusMessageTypeMethodReturn                     = 2
-	DBusMessageTypeError                            = 3
-	DBusMessageTypeSignal                           = 4
+	DBusMessageTypeMethodCall   DBusMessageTypeEnum = 1
+	DBusMessageTypeMethodReturn DBusMessageTypeEnum = 2
+	DBusMessageTypeError        DBusMessageTypeEnum = 3
+	DBusMessageTypeSignal       DBusMessageTypeEnum = 4
 )
 
 // Struct DBusMethodInfo
@@ -6831,7 +6820,7 @@ type DBusObjectManagerClientFlags int
 
 const (
 	DBusObjectManagerClientFlagsNone           DBusObjectManagerClientFlags = 0
-	DBusObjectManagerClientFlagsDoNotAutoStart                              = 1
+	DBusObjectManagerClientFlagsDoNotAutoStart DBusObjectManagerClientFlags = 1
 )
 
 // Struct DBusObjectManagerClientPrivate
@@ -7188,8 +7177,8 @@ type DBusPropertyInfoFlags int
 
 const (
 	DBusPropertyInfoFlagsNone     DBusPropertyInfoFlags = 0
-	DBusPropertyInfoFlagsReadable                       = 1
-	DBusPropertyInfoFlagsWritable                       = 2
+	DBusPropertyInfoFlagsReadable DBusPropertyInfoFlags = 1
+	DBusPropertyInfoFlagsWritable DBusPropertyInfoFlags = 2
 )
 
 // Object DBusProxy
@@ -7735,11 +7724,11 @@ type DBusProxyFlags int
 
 const (
 	DBusProxyFlagsNone                         DBusProxyFlags = 0
-	DBusProxyFlagsDoNotLoadProperties                         = 1
-	DBusProxyFlagsDoNotConnectSignals                         = 2
-	DBusProxyFlagsDoNotAutoStart                              = 4
-	DBusProxyFlagsGetInvalidatedProperties                    = 8
-	DBusProxyFlagsDoNotAutoStartAtConstruction                = 16
+	DBusProxyFlagsDoNotLoadProperties          DBusProxyFlags = 1
+	DBusProxyFlagsDoNotConnectSignals          DBusProxyFlags = 2
+	DBusProxyFlagsDoNotAutoStart               DBusProxyFlags = 4
+	DBusProxyFlagsGetInvalidatedProperties     DBusProxyFlags = 8
+	DBusProxyFlagsDoNotAutoStartAtConstruction DBusProxyFlags = 16
 )
 
 // Struct DBusProxyPrivate
@@ -7752,7 +7741,7 @@ type DBusSendMessageFlags int
 
 const (
 	DBusSendMessageFlagsNone           DBusSendMessageFlags = 0
-	DBusSendMessageFlagsPreserveSerial                      = 1
+	DBusSendMessageFlagsPreserveSerial DBusSendMessageFlags = 1
 )
 
 // Object DBusServer
@@ -7895,8 +7884,8 @@ type DBusServerFlags int
 
 const (
 	DBusServerFlagsNone                         DBusServerFlags = 0
-	DBusServerFlagsRunInThread                                  = 1
-	DBusServerFlagsAuthenticationAllowAnonymous                 = 2
+	DBusServerFlagsRunInThread                  DBusServerFlags = 1
+	DBusServerFlagsAuthenticationAllowAnonymous DBusServerFlags = 2
 )
 
 // Flags DBusSignalFlags
@@ -7904,9 +7893,9 @@ type DBusSignalFlags int
 
 const (
 	DBusSignalFlagsNone               DBusSignalFlags = 0
-	DBusSignalFlagsNoMatchRule                        = 1
-	DBusSignalFlagsMatchArg0Namespace                 = 2
-	DBusSignalFlagsMatchArg0Path                      = 4
+	DBusSignalFlagsNoMatchRule        DBusSignalFlags = 1
+	DBusSignalFlagsMatchArg0Namespace DBusSignalFlags = 2
+	DBusSignalFlagsMatchArg0Path      DBusSignalFlags = 4
 )
 
 // Struct DBusSignalInfo
@@ -7950,7 +7939,7 @@ type DBusSubtreeFlags int
 
 const (
 	DBusSubtreeFlagsNone                        DBusSubtreeFlags = 0
-	DBusSubtreeFlagsDispatchToUnenumeratedNodes                  = 1
+	DBusSubtreeFlagsDispatchToUnenumeratedNodes DBusSubtreeFlags = 1
 )
 
 // Struct DBusSubtreeVTable
@@ -8683,8 +8672,8 @@ type DataStreamByteOrderEnum int
 
 const (
 	DataStreamByteOrderBigEndian    DataStreamByteOrderEnum = 0
-	DataStreamByteOrderLittleEndian                         = 1
-	DataStreamByteOrderHostEndian                           = 2
+	DataStreamByteOrderLittleEndian DataStreamByteOrderEnum = 1
+	DataStreamByteOrderHostEndian   DataStreamByteOrderEnum = 2
 )
 
 // Enum DataStreamNewlineType
@@ -8692,9 +8681,9 @@ type DataStreamNewlineTypeEnum int
 
 const (
 	DataStreamNewlineTypeLf   DataStreamNewlineTypeEnum = 0
-	DataStreamNewlineTypeCr                             = 1
-	DataStreamNewlineTypeCrLf                           = 2
-	DataStreamNewlineTypeAny                            = 3
+	DataStreamNewlineTypeCr   DataStreamNewlineTypeEnum = 1
+	DataStreamNewlineTypeCrLf DataStreamNewlineTypeEnum = 2
+	DataStreamNewlineTypeAny  DataStreamNewlineTypeEnum = 3
 )
 
 // Interface DatagramBased
@@ -8766,7 +8755,7 @@ func (v *DatagramBasedIfc) CreateSource(condition glib.IOConditionFlags, cancell
 // g_datagram_based_receive_messages
 // container is not nil, container is DatagramBased
 // is method
-func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
+func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE array type c, p0tag: interface*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(427, "DatagramBased", "receive_messages")
 	if err != nil {
 		return
@@ -8790,7 +8779,7 @@ func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE isPtr: true,
 // g_datagram_based_send_messages
 // container is not nil, container is DatagramBased
 // is method
-func (v *DatagramBasedIfc) SendMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
+func (v *DatagramBasedIfc) SendMessages(messages int /*TODO_TYPE array type c, p0tag: interface*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(428, "DatagramBased", "send_messages")
 	if err != nil {
 		return
@@ -9815,10 +9804,10 @@ type DriveStartStopTypeEnum int
 
 const (
 	DriveStartStopTypeUnknown   DriveStartStopTypeEnum = 0
-	DriveStartStopTypeShutdown                         = 1
-	DriveStartStopTypeNetwork                          = 2
-	DriveStartStopTypeMultidisk                        = 3
-	DriveStartStopTypePassword                         = 4
+	DriveStartStopTypeShutdown  DriveStartStopTypeEnum = 1
+	DriveStartStopTypeNetwork   DriveStartStopTypeEnum = 2
+	DriveStartStopTypeMultidisk DriveStartStopTypeEnum = 3
+	DriveStartStopTypePassword  DriveStartStopTypeEnum = 4
 )
 
 // Interface DtlsClientConnection
@@ -10446,9 +10435,9 @@ type EmblemOriginEnum int
 
 const (
 	EmblemOriginUnknown      EmblemOriginEnum = 0
-	EmblemOriginDevice                        = 1
-	EmblemOriginLivemetadata                  = 2
-	EmblemOriginTag                           = 3
+	EmblemOriginDevice       EmblemOriginEnum = 1
+	EmblemOriginLivemetadata EmblemOriginEnum = 2
+	EmblemOriginTag          EmblemOriginEnum = 3
 )
 
 // Object EmblemedIcon
@@ -12394,7 +12383,7 @@ func (v *FileIfc) ReplaceAsync(etag string, make_backup bool, flags FileCreateFl
 // g_file_replace_contents
 // container is not nil, container is File
 // is method
-func (v *FileIfc) ReplaceContents(contents int /*TODO_TYPE isPtr: true, tag: array*/, length uint64, etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable) (result bool, new_etag string, err error) {
+func (v *FileIfc) ReplaceContents(contents gi.Uint8Array, length uint64, etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable) (result bool, new_etag string, err error) {
 	iv, err := _I.Get(610, "File", "replace_contents")
 	if err != nil {
 		return
@@ -12402,7 +12391,7 @@ func (v *FileIfc) ReplaceContents(contents int /*TODO_TYPE isPtr: true, tag: arr
 	var outArgs [2]gi.Argument
 	c_etag := gi.CString(etag)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_contents := gi.NewIntArgument(contents) /*TODO*/
+	arg_contents := gi.NewPointerArgument(contents.P)
 	arg_length := gi.NewUint64Argument(length)
 	arg_etag := gi.NewStringArgument(c_etag)
 	arg_make_backup := gi.NewBoolArgument(make_backup)
@@ -12423,7 +12412,7 @@ func (v *FileIfc) ReplaceContents(contents int /*TODO_TYPE isPtr: true, tag: arr
 // g_file_replace_contents_async
 // container is not nil, container is File
 // is method
-func (v *FileIfc) ReplaceContentsAsync(contents int /*TODO_TYPE isPtr: true, tag: array*/, length uint64, etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v *FileIfc) ReplaceContentsAsync(contents gi.Uint8Array, length uint64, etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(611, "File", "replace_contents_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12431,7 +12420,7 @@ func (v *FileIfc) ReplaceContentsAsync(contents int /*TODO_TYPE isPtr: true, tag
 	}
 	c_etag := gi.CString(etag)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_contents := gi.NewIntArgument(contents) /*TODO*/
+	arg_contents := gi.NewPointerArgument(contents.P)
 	arg_length := gi.NewUint64Argument(length)
 	arg_etag := gi.NewStringArgument(c_etag)
 	arg_make_backup := gi.NewBoolArgument(make_backup)
@@ -13145,8 +13134,8 @@ type FileAttributeInfoFlags int
 
 const (
 	FileAttributeInfoFlagsNone          FileAttributeInfoFlags = 0
-	FileAttributeInfoFlagsCopyWithFile                         = 1
-	FileAttributeInfoFlagsCopyWhenMoved                        = 2
+	FileAttributeInfoFlagsCopyWithFile  FileAttributeInfoFlags = 1
+	FileAttributeInfoFlagsCopyWhenMoved FileAttributeInfoFlags = 2
 )
 
 // Struct FileAttributeInfoList
@@ -13428,8 +13417,8 @@ type FileAttributeStatusEnum int
 
 const (
 	FileAttributeStatusUnset        FileAttributeStatusEnum = 0
-	FileAttributeStatusSet                                  = 1
-	FileAttributeStatusErrorSetting                         = 2
+	FileAttributeStatusSet          FileAttributeStatusEnum = 1
+	FileAttributeStatusErrorSetting FileAttributeStatusEnum = 2
 )
 
 // Enum FileAttributeType
@@ -13437,15 +13426,15 @@ type FileAttributeTypeEnum int
 
 const (
 	FileAttributeTypeInvalid    FileAttributeTypeEnum = 0
-	FileAttributeTypeString                           = 1
-	FileAttributeTypeByteString                       = 2
-	FileAttributeTypeBoolean                          = 3
-	FileAttributeTypeUint32                           = 4
-	FileAttributeTypeInt32                            = 5
-	FileAttributeTypeUint64                           = 6
-	FileAttributeTypeInt64                            = 7
-	FileAttributeTypeObject                           = 8
-	FileAttributeTypeStringv                          = 9
+	FileAttributeTypeString     FileAttributeTypeEnum = 1
+	FileAttributeTypeByteString FileAttributeTypeEnum = 2
+	FileAttributeTypeBoolean    FileAttributeTypeEnum = 3
+	FileAttributeTypeUint32     FileAttributeTypeEnum = 4
+	FileAttributeTypeInt32      FileAttributeTypeEnum = 5
+	FileAttributeTypeUint64     FileAttributeTypeEnum = 6
+	FileAttributeTypeInt64      FileAttributeTypeEnum = 7
+	FileAttributeTypeObject     FileAttributeTypeEnum = 8
+	FileAttributeTypeStringv    FileAttributeTypeEnum = 9
 )
 
 // Flags FileCopyFlags
@@ -13453,12 +13442,12 @@ type FileCopyFlags int
 
 const (
 	FileCopyFlagsNone               FileCopyFlags = 0
-	FileCopyFlagsOverwrite                        = 1
-	FileCopyFlagsBackup                           = 2
-	FileCopyFlagsNofollowSymlinks                 = 4
-	FileCopyFlagsAllMetadata                      = 8
-	FileCopyFlagsNoFallbackForMove                = 16
-	FileCopyFlagsTargetDefaultPerms               = 32
+	FileCopyFlagsOverwrite          FileCopyFlags = 1
+	FileCopyFlagsBackup             FileCopyFlags = 2
+	FileCopyFlagsNofollowSymlinks   FileCopyFlags = 4
+	FileCopyFlagsAllMetadata        FileCopyFlags = 8
+	FileCopyFlagsNoFallbackForMove  FileCopyFlags = 16
+	FileCopyFlagsTargetDefaultPerms FileCopyFlags = 32
 )
 
 // Flags FileCreateFlags
@@ -13466,8 +13455,8 @@ type FileCreateFlags int
 
 const (
 	FileCreateFlagsNone               FileCreateFlags = 0
-	FileCreateFlagsPrivate                            = 1
-	FileCreateFlagsReplaceDestination                 = 2
+	FileCreateFlagsPrivate            FileCreateFlags = 1
+	FileCreateFlagsReplaceDestination FileCreateFlags = 2
 )
 
 // Interface FileDescriptorBased
@@ -14744,7 +14733,7 @@ func (v FileInfo) SetAttributeString(attribute string, attr_value string) {
 // g_file_info_set_attribute_stringv
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) SetAttributeStringv(attribute string, attr_value int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v FileInfo) SetAttributeStringv(attribute string, attr_value int /*TODO_TYPE array type c, p0tag: utf8*/) {
 	iv, err := _I.Get(724, "FileInfo", "set_attribute_stringv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15102,9 +15091,9 @@ type FileMeasureFlags int
 
 const (
 	FileMeasureFlagsNone           FileMeasureFlags = 0
-	FileMeasureFlagsReportAnyError                  = 2
-	FileMeasureFlagsApparentSize                    = 4
-	FileMeasureFlagsNoXdev                          = 8
+	FileMeasureFlagsReportAnyError FileMeasureFlags = 2
+	FileMeasureFlagsApparentSize   FileMeasureFlags = 4
+	FileMeasureFlagsNoXdev         FileMeasureFlags = 8
 )
 
 // Object FileMonitor
@@ -15190,16 +15179,16 @@ type FileMonitorEventEnum int
 
 const (
 	FileMonitorEventChanged          FileMonitorEventEnum = 0
-	FileMonitorEventChangesDoneHint                       = 1
-	FileMonitorEventDeleted                               = 2
-	FileMonitorEventCreated                               = 3
-	FileMonitorEventAttributeChanged                      = 4
-	FileMonitorEventPreUnmount                            = 5
-	FileMonitorEventUnmounted                             = 6
-	FileMonitorEventMoved                                 = 7
-	FileMonitorEventRenamed                               = 8
-	FileMonitorEventMovedIn                               = 9
-	FileMonitorEventMovedOut                              = 10
+	FileMonitorEventChangesDoneHint  FileMonitorEventEnum = 1
+	FileMonitorEventDeleted          FileMonitorEventEnum = 2
+	FileMonitorEventCreated          FileMonitorEventEnum = 3
+	FileMonitorEventAttributeChanged FileMonitorEventEnum = 4
+	FileMonitorEventPreUnmount       FileMonitorEventEnum = 5
+	FileMonitorEventUnmounted        FileMonitorEventEnum = 6
+	FileMonitorEventMoved            FileMonitorEventEnum = 7
+	FileMonitorEventRenamed          FileMonitorEventEnum = 8
+	FileMonitorEventMovedIn          FileMonitorEventEnum = 9
+	FileMonitorEventMovedOut         FileMonitorEventEnum = 10
 )
 
 // Flags FileMonitorFlags
@@ -15207,10 +15196,10 @@ type FileMonitorFlags int
 
 const (
 	FileMonitorFlagsNone           FileMonitorFlags = 0
-	FileMonitorFlagsWatchMounts                     = 1
-	FileMonitorFlagsSendMoved                       = 2
-	FileMonitorFlagsWatchHardLinks                  = 4
-	FileMonitorFlagsWatchMoves                      = 8
+	FileMonitorFlagsWatchMounts    FileMonitorFlags = 1
+	FileMonitorFlagsSendMoved      FileMonitorFlags = 2
+	FileMonitorFlagsWatchHardLinks FileMonitorFlags = 4
+	FileMonitorFlagsWatchMoves     FileMonitorFlags = 8
 )
 
 // Struct FileMonitorPrivate
@@ -15322,7 +15311,7 @@ type FileQueryInfoFlags int
 
 const (
 	FileQueryInfoFlagsNone             FileQueryInfoFlags = 0
-	FileQueryInfoFlagsNofollowSymlinks                    = 1
+	FileQueryInfoFlagsNofollowSymlinks FileQueryInfoFlags = 1
 )
 
 // Enum FileType
@@ -15330,12 +15319,12 @@ type FileTypeEnum int
 
 const (
 	FileTypeUnknown      FileTypeEnum = 0
-	FileTypeRegular                   = 1
-	FileTypeDirectory                 = 2
-	FileTypeSymbolicLink              = 3
-	FileTypeSpecial                   = 4
-	FileTypeShortcut                  = 5
-	FileTypeMountable                 = 6
+	FileTypeRegular      FileTypeEnum = 1
+	FileTypeDirectory    FileTypeEnum = 2
+	FileTypeSymbolicLink FileTypeEnum = 3
+	FileTypeSpecial      FileTypeEnum = 4
+	FileTypeShortcut     FileTypeEnum = 5
+	FileTypeMountable    FileTypeEnum = 6
 )
 
 // Object FilenameCompleter
@@ -15425,8 +15414,8 @@ type FilesystemPreviewTypeEnum int
 
 const (
 	FilesystemPreviewTypeIfAlways FilesystemPreviewTypeEnum = 0
-	FilesystemPreviewTypeIfLocal                            = 1
-	FilesystemPreviewTypeNever                              = 2
+	FilesystemPreviewTypeIfLocal  FilesystemPreviewTypeEnum = 1
+	FilesystemPreviewTypeNever    FilesystemPreviewTypeEnum = 2
 )
 
 // Object FilterInputStream
@@ -15556,53 +15545,53 @@ type IOErrorEnumEnum int
 
 const (
 	IOErrorEnumFailed             IOErrorEnumEnum = 0
-	IOErrorEnumNotFound                           = 1
-	IOErrorEnumExists                             = 2
-	IOErrorEnumIsDirectory                        = 3
-	IOErrorEnumNotDirectory                       = 4
-	IOErrorEnumNotEmpty                           = 5
-	IOErrorEnumNotRegularFile                     = 6
-	IOErrorEnumNotSymbolicLink                    = 7
-	IOErrorEnumNotMountableFile                   = 8
-	IOErrorEnumFilenameTooLong                    = 9
-	IOErrorEnumInvalidFilename                    = 10
-	IOErrorEnumTooManyLinks                       = 11
-	IOErrorEnumNoSpace                            = 12
-	IOErrorEnumInvalidArgument                    = 13
-	IOErrorEnumPermissionDenied                   = 14
-	IOErrorEnumNotSupported                       = 15
-	IOErrorEnumNotMounted                         = 16
-	IOErrorEnumAlreadyMounted                     = 17
-	IOErrorEnumClosed                             = 18
-	IOErrorEnumCancelled                          = 19
-	IOErrorEnumPending                            = 20
-	IOErrorEnumReadOnly                           = 21
-	IOErrorEnumCantCreateBackup                   = 22
-	IOErrorEnumWrongEtag                          = 23
-	IOErrorEnumTimedOut                           = 24
-	IOErrorEnumWouldRecurse                       = 25
-	IOErrorEnumBusy                               = 26
-	IOErrorEnumWouldBlock                         = 27
-	IOErrorEnumHostNotFound                       = 28
-	IOErrorEnumWouldMerge                         = 29
-	IOErrorEnumFailedHandled                      = 30
-	IOErrorEnumTooManyOpenFiles                   = 31
-	IOErrorEnumNotInitialized                     = 32
-	IOErrorEnumAddressInUse                       = 33
-	IOErrorEnumPartialInput                       = 34
-	IOErrorEnumInvalidData                        = 35
-	IOErrorEnumDbusError                          = 36
-	IOErrorEnumHostUnreachable                    = 37
-	IOErrorEnumNetworkUnreachable                 = 38
-	IOErrorEnumConnectionRefused                  = 39
-	IOErrorEnumProxyFailed                        = 40
-	IOErrorEnumProxyAuthFailed                    = 41
-	IOErrorEnumProxyNeedAuth                      = 42
-	IOErrorEnumProxyNotAllowed                    = 43
-	IOErrorEnumBrokenPipe                         = 44
-	IOErrorEnumConnectionClosed                   = 44
-	IOErrorEnumNotConnected                       = 45
-	IOErrorEnumMessageTooLarge                    = 46
+	IOErrorEnumNotFound           IOErrorEnumEnum = 1
+	IOErrorEnumExists             IOErrorEnumEnum = 2
+	IOErrorEnumIsDirectory        IOErrorEnumEnum = 3
+	IOErrorEnumNotDirectory       IOErrorEnumEnum = 4
+	IOErrorEnumNotEmpty           IOErrorEnumEnum = 5
+	IOErrorEnumNotRegularFile     IOErrorEnumEnum = 6
+	IOErrorEnumNotSymbolicLink    IOErrorEnumEnum = 7
+	IOErrorEnumNotMountableFile   IOErrorEnumEnum = 8
+	IOErrorEnumFilenameTooLong    IOErrorEnumEnum = 9
+	IOErrorEnumInvalidFilename    IOErrorEnumEnum = 10
+	IOErrorEnumTooManyLinks       IOErrorEnumEnum = 11
+	IOErrorEnumNoSpace            IOErrorEnumEnum = 12
+	IOErrorEnumInvalidArgument    IOErrorEnumEnum = 13
+	IOErrorEnumPermissionDenied   IOErrorEnumEnum = 14
+	IOErrorEnumNotSupported       IOErrorEnumEnum = 15
+	IOErrorEnumNotMounted         IOErrorEnumEnum = 16
+	IOErrorEnumAlreadyMounted     IOErrorEnumEnum = 17
+	IOErrorEnumClosed             IOErrorEnumEnum = 18
+	IOErrorEnumCancelled          IOErrorEnumEnum = 19
+	IOErrorEnumPending            IOErrorEnumEnum = 20
+	IOErrorEnumReadOnly           IOErrorEnumEnum = 21
+	IOErrorEnumCantCreateBackup   IOErrorEnumEnum = 22
+	IOErrorEnumWrongEtag          IOErrorEnumEnum = 23
+	IOErrorEnumTimedOut           IOErrorEnumEnum = 24
+	IOErrorEnumWouldRecurse       IOErrorEnumEnum = 25
+	IOErrorEnumBusy               IOErrorEnumEnum = 26
+	IOErrorEnumWouldBlock         IOErrorEnumEnum = 27
+	IOErrorEnumHostNotFound       IOErrorEnumEnum = 28
+	IOErrorEnumWouldMerge         IOErrorEnumEnum = 29
+	IOErrorEnumFailedHandled      IOErrorEnumEnum = 30
+	IOErrorEnumTooManyOpenFiles   IOErrorEnumEnum = 31
+	IOErrorEnumNotInitialized     IOErrorEnumEnum = 32
+	IOErrorEnumAddressInUse       IOErrorEnumEnum = 33
+	IOErrorEnumPartialInput       IOErrorEnumEnum = 34
+	IOErrorEnumInvalidData        IOErrorEnumEnum = 35
+	IOErrorEnumDbusError          IOErrorEnumEnum = 36
+	IOErrorEnumHostUnreachable    IOErrorEnumEnum = 37
+	IOErrorEnumNetworkUnreachable IOErrorEnumEnum = 38
+	IOErrorEnumConnectionRefused  IOErrorEnumEnum = 39
+	IOErrorEnumProxyFailed        IOErrorEnumEnum = 40
+	IOErrorEnumProxyAuthFailed    IOErrorEnumEnum = 41
+	IOErrorEnumProxyNeedAuth      IOErrorEnumEnum = 42
+	IOErrorEnumProxyNotAllowed    IOErrorEnumEnum = 43
+	IOErrorEnumBrokenPipe         IOErrorEnumEnum = 44
+	IOErrorEnumConnectionClosed   IOErrorEnumEnum = 44
+	IOErrorEnumNotConnected       IOErrorEnumEnum = 45
+	IOErrorEnumMessageTooLarge    IOErrorEnumEnum = 46
 )
 
 // Struct IOExtension
@@ -15831,9 +15820,6 @@ func NewIOModule(filename string) (result IOModule) {
 	return
 }
 
-// g_io_module_query
-// container is not nil, container is IOModule
-// num arg is 0
 // g_io_module_load
 // container is not nil, container is IOModule
 // is method
@@ -15904,7 +15890,7 @@ type IOModuleScopeFlagsEnum int
 
 const (
 	IOModuleScopeFlagsNone            IOModuleScopeFlagsEnum = 0
-	IOModuleScopeFlagsBlockDuplicates                        = 1
+	IOModuleScopeFlagsBlockDuplicates IOModuleScopeFlagsEnum = 1
 )
 
 // Struct IOSchedulerJob
@@ -16175,9 +16161,9 @@ type IOStreamSpliceFlags int
 
 const (
 	IOStreamSpliceFlagsNone         IOStreamSpliceFlags = 0
-	IOStreamSpliceFlagsCloseStream1                     = 1
-	IOStreamSpliceFlagsCloseStream2                     = 2
-	IOStreamSpliceFlagsWaitForBoth                      = 4
+	IOStreamSpliceFlagsCloseStream1 IOStreamSpliceFlags = 1
+	IOStreamSpliceFlagsCloseStream2 IOStreamSpliceFlags = 2
+	IOStreamSpliceFlagsWaitForBoth  IOStreamSpliceFlags = 4
 )
 
 // Interface Icon
@@ -16329,13 +16315,13 @@ func NewInetAddressAny(family SocketFamilyEnum) (result InetAddress) {
 // g_inet_address_new_from_bytes
 // container is not nil, container is InetAddress
 // is constructor
-func NewInetAddressFromBytes(bytes int /*TODO_TYPE isPtr: true, tag: array*/, family SocketFamilyEnum) (result InetAddress) {
+func NewInetAddressFromBytes(bytes gi.Uint8Array, family SocketFamilyEnum) (result InetAddress) {
 	iv, err := _I.Get(798, "InetAddress", "new_from_bytes")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_bytes := gi.NewIntArgument(bytes) /*TODO*/
+	arg_bytes := gi.NewPointerArgument(bytes.P)
 	arg_family := gi.NewIntArgument(int(family))
 	args := []gi.Argument{arg_bytes, arg_family}
 	var ret gi.Argument
@@ -16923,7 +16909,7 @@ type InitableIfc struct{}
 // container is not nil, container is Initable
 // is method
 // arg0Type tag: GType, isPtr: false
-func InitableNewv1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE isPtr: true, tag: array*/, cancellable ICancellable) (result gobject.Object, err error) {
+func InitableNewv1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, p0tag: interface*/, cancellable ICancellable) (result gobject.Object, err error) {
 	iv, err := _I.Get(829, "Initable", "newv")
 	if err != nil {
 		return
@@ -17088,14 +17074,14 @@ func (v InputStream) IsClosed() (result bool) {
 // g_input_stream_read
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) Read(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result int64, err error) {
+func (v InputStream) Read(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(837, "InputStream", "read")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -17110,14 +17096,14 @@ func (v InputStream) Read(buffer int /*TODO_TYPE isPtr: true, tag: array*/, coun
 // g_input_stream_read_all
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) ReadAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result bool, bytes_read uint64, err error) {
+func (v InputStream) ReadAll(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result bool, bytes_read uint64, err error) {
 	iv, err := _I.Get(838, "InputStream", "read_all")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_bytes_read := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -17134,14 +17120,14 @@ func (v InputStream) ReadAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/, c
 // g_input_stream_read_all_async
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) ReadAllAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v InputStream) ReadAllAsync(buffer gi.Uint8Array, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(839, "InputStream", "read_all_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -17176,14 +17162,14 @@ func (v InputStream) ReadAllFinish(result AsyncResult) (result1 bool, bytes_read
 // g_input_stream_read_async
 // container is not nil, container is InputStream
 // is method
-func (v InputStream) ReadAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v InputStream) ReadAsync(buffer gi.Uint8Array, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(841, "InputStream", "read_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -17568,7 +17554,7 @@ func (v ListStore) Sort(compare_func int /*TODO_TYPE isPtr: false, tag: interfac
 // g_list_store_splice
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) Splice(position uint32, n_removals uint32, additions int /*TODO_TYPE isPtr: true, tag: array*/, n_additions uint32) {
+func (v ListStore) Splice(position uint32, n_removals uint32, additions int /*TODO_TYPE array type c, p0tag: interface*/, n_additions uint32) {
 	iv, err := _I.Get(861, "ListStore", "splice")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17703,13 +17689,13 @@ func NewMemoryInputStreamFromBytes(bytes glib.Bytes) (result InputStream) {
 // g_memory_input_stream_new_from_data
 // container is not nil, container is MemoryInputStream
 // is constructor
-func NewMemoryInputStreamFromData(data int /*TODO_TYPE isPtr: true, tag: array*/, len1 int64, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) (result InputStream) {
+func NewMemoryInputStreamFromData(data gi.Uint8Array, len1 int64, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) (result InputStream) {
 	iv, err := _I.Get(867, "MemoryInputStream", "new_from_data")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_len1 := gi.NewInt64Argument(len1)
 	arg_destroy := gi.NewIntArgument(destroy) /*TODO*/
 	args := []gi.Argument{arg_data, arg_len1, arg_destroy}
@@ -17737,14 +17723,14 @@ func (v MemoryInputStream) AddBytes(bytes glib.Bytes) {
 // g_memory_input_stream_add_data
 // container is not nil, container is MemoryInputStream
 // is method
-func (v MemoryInputStream) AddData(data int /*TODO_TYPE isPtr: true, tag: array*/, len1 int64, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v MemoryInputStream) AddData(data gi.Uint8Array, len1 int64, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) {
 	iv, err := _I.Get(869, "MemoryInputStream", "add_data")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_len1 := gi.NewInt64Argument(len1)
 	arg_destroy := gi.NewIntArgument(destroy) /*TODO*/
 	args := []gi.Argument{arg_v, arg_data, arg_len1, arg_destroy}
@@ -19593,8 +19579,8 @@ type MountOperationResultEnum int
 
 const (
 	MountOperationResultHandled   MountOperationResultEnum = 0
-	MountOperationResultAborted                            = 1
-	MountOperationResultUnhandled                          = 2
+	MountOperationResultAborted   MountOperationResultEnum = 1
+	MountOperationResultUnhandled MountOperationResultEnum = 2
 )
 
 // Flags MountUnmountFlags
@@ -19602,7 +19588,7 @@ type MountUnmountFlags int
 
 const (
 	MountUnmountFlagsNone  MountUnmountFlags = 0
-	MountUnmountFlagsForce                   = 1
+	MountUnmountFlagsForce MountUnmountFlags = 1
 )
 
 // Struct NativeSocketAddress
@@ -19779,9 +19765,9 @@ type NetworkConnectivityEnum int
 
 const (
 	NetworkConnectivityLocal   NetworkConnectivityEnum = 1
-	NetworkConnectivityLimited                         = 2
-	NetworkConnectivityPortal                          = 3
-	NetworkConnectivityFull                            = 4
+	NetworkConnectivityLimited NetworkConnectivityEnum = 2
+	NetworkConnectivityPortal  NetworkConnectivityEnum = 3
+	NetworkConnectivityFull    NetworkConnectivityEnum = 4
 )
 
 // Interface NetworkMonitor
@@ -19791,9 +19777,6 @@ type NetworkMonitor struct {
 }
 type NetworkMonitorIfc struct{}
 
-// g_network_monitor_get_default
-// container is not nil, container is NetworkMonitor
-// num arg is 0
 // g_network_monitor_can_reach
 // container is not nil, container is NetworkMonitor
 // is method
@@ -20223,9 +20206,9 @@ type NotificationPriorityEnum int
 
 const (
 	NotificationPriorityNormal NotificationPriorityEnum = 0
-	NotificationPriorityLow                             = 1
-	NotificationPriorityHigh                            = 2
-	NotificationPriorityUrgent                          = 3
+	NotificationPriorityLow    NotificationPriorityEnum = 1
+	NotificationPriorityHigh   NotificationPriorityEnum = 2
+	NotificationPriorityUrgent NotificationPriorityEnum = 3
 )
 
 // Struct OutputMessage
@@ -20509,14 +20492,14 @@ func (v OutputStream) SpliceFinish(result AsyncResult) (result1 int64, err error
 // g_output_stream_write
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) Write(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result int64, err error) {
+func (v OutputStream) Write(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1012, "OutputStream", "write")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -20531,14 +20514,14 @@ func (v OutputStream) Write(buffer int /*TODO_TYPE isPtr: true, tag: array*/, co
 // g_output_stream_write_all
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) WriteAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result bool, bytes_written uint64, err error) {
+func (v OutputStream) WriteAll(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result bool, bytes_written uint64, err error) {
 	iv, err := _I.Get(1013, "OutputStream", "write_all")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_bytes_written := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -20555,14 +20538,14 @@ func (v OutputStream) WriteAll(buffer int /*TODO_TYPE isPtr: true, tag: array*/,
 // g_output_stream_write_all_async
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) WriteAllAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v OutputStream) WriteAllAsync(buffer gi.Uint8Array, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1014, "OutputStream", "write_all_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -20597,14 +20580,14 @@ func (v OutputStream) WriteAllFinish(result AsyncResult) (result1 bool, bytes_wr
 // g_output_stream_write_async
 // container is not nil, container is OutputStream
 // is method
-func (v OutputStream) WriteAsync(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v OutputStream) WriteAsync(buffer gi.Uint8Array, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1016, "OutputStream", "write_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -20705,8 +20688,8 @@ type OutputStreamSpliceFlags int
 
 const (
 	OutputStreamSpliceFlagsNone        OutputStreamSpliceFlags = 0
-	OutputStreamSpliceFlagsCloseSource                         = 1
-	OutputStreamSpliceFlagsCloseTarget                         = 2
+	OutputStreamSpliceFlagsCloseSource OutputStreamSpliceFlags = 1
+	OutputStreamSpliceFlagsCloseTarget OutputStreamSpliceFlags = 2
 )
 
 // Struct OutputVector
@@ -20719,8 +20702,8 @@ type PasswordSaveEnum int
 
 const (
 	PasswordSaveNever       PasswordSaveEnum = 0
-	PasswordSaveForSession                   = 1
-	PasswordSavePermanently                  = 2
+	PasswordSaveForSession  PasswordSaveEnum = 1
+	PasswordSavePermanently PasswordSaveEnum = 2
 )
 
 // Object Permission
@@ -20984,14 +20967,14 @@ func (v *PollableInputStreamIfc) IsReadable() (result bool) {
 // g_pollable_input_stream_read_nonblocking
 // container is not nil, container is PollableInputStream
 // is method
-func (v *PollableInputStreamIfc) ReadNonblocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result int64, err error) {
+func (v *PollableInputStreamIfc) ReadNonblocking(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1034, "PollableInputStream", "read_nonblocking")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -21066,14 +21049,14 @@ func (v *PollableOutputStreamIfc) IsWritable() (result bool) {
 // g_pollable_output_stream_write_nonblocking
 // container is not nil, container is PollableOutputStream
 // is method
-func (v *PollableOutputStreamIfc) WriteNonblocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, cancellable ICancellable) (result int64, err error) {
+func (v *PollableOutputStreamIfc) WriteNonblocking(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1038, "PollableOutputStream", "write_nonblocking")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -21419,9 +21402,6 @@ type ProxyResolver struct {
 }
 type ProxyResolverIfc struct{}
 
-// g_proxy_resolver_get_default
-// container is not nil, container is ProxyResolver
-// num arg is 0
 // g_proxy_resolver_is_supported
 // container is not nil, container is ProxyResolver
 // is method
@@ -21560,9 +21540,6 @@ type IResolver interface{ P_Resolver() unsafe.Pointer }
 
 func (v Resolver) P_Resolver() unsafe.Pointer { return v.P }
 
-// g_resolver_get_default
-// container is not nil, container is Resolver
-// num arg is 0
 // g_resolver_lookup_by_address
 // container is not nil, container is Resolver
 // is method
@@ -21845,8 +21822,8 @@ type ResolverErrorEnum int
 
 const (
 	ResolverErrorNotFound         ResolverErrorEnum = 0
-	ResolverErrorTemporaryFailure                   = 1
-	ResolverErrorInternal                           = 2
+	ResolverErrorTemporaryFailure ResolverErrorEnum = 1
+	ResolverErrorInternal         ResolverErrorEnum = 2
 )
 
 // Struct ResolverPrivate
@@ -21859,10 +21836,10 @@ type ResolverRecordTypeEnum int
 
 const (
 	ResolverRecordTypeSrv ResolverRecordTypeEnum = 1
-	ResolverRecordTypeMx                         = 2
-	ResolverRecordTypeTxt                        = 3
-	ResolverRecordTypeSoa                        = 4
-	ResolverRecordTypeNs                         = 5
+	ResolverRecordTypeMx  ResolverRecordTypeEnum = 2
+	ResolverRecordTypeTxt ResolverRecordTypeEnum = 3
+	ResolverRecordTypeSoa ResolverRecordTypeEnum = 4
+	ResolverRecordTypeNs  ResolverRecordTypeEnum = 5
 )
 
 // Struct Resource
@@ -22071,7 +22048,7 @@ type ResourceErrorEnum int
 
 const (
 	ResourceErrorNotFound ResourceErrorEnum = 0
-	ResourceErrorInternal                   = 1
+	ResourceErrorInternal ResourceErrorEnum = 1
 )
 
 // Flags ResourceFlags
@@ -22079,7 +22056,7 @@ type ResourceFlags int
 
 const (
 	ResourceFlagsNone       ResourceFlags = 0
-	ResourceFlagsCompressed               = 1
+	ResourceFlagsCompressed ResourceFlags = 1
 )
 
 // Flags ResourceLookupFlags
@@ -22307,15 +22284,6 @@ func NewSettingsWithPath(schema_id string, path string) (result Settings) {
 	return
 }
 
-// g_settings_list_relocatable_schemas
-// container is not nil, container is Settings
-// num arg is 0
-// g_settings_list_schemas
-// container is not nil, container is Settings
-// num arg is 0
-// g_settings_sync
-// container is not nil, container is Settings
-// num arg is 0
 // g_settings_unbind
 // container is not nil, container is Settings
 // is method
@@ -23020,7 +22988,7 @@ func (v Settings) SetString(key string, value string) (result bool) {
 // g_settings_set_strv
 // container is not nil, container is Settings
 // is method
-func (v Settings) SetStrv(key string, value int /*TODO_TYPE isPtr: true, tag: array*/) (result bool) {
+func (v Settings) SetStrv(key string, value int /*TODO_TYPE array type c, p0tag: utf8*/) (result bool) {
 	iv, err := _I.Get(1133, "Settings", "set_strv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23135,9 +23103,6 @@ func SettingsBackendFlattenTree1(tree glib.Tree) (path string, keys int /*TODO_T
 	return
 }
 
-// g_settings_backend_get_default
-// container is not nil, container is SettingsBackend
-// num arg is 0
 // g_settings_backend_changed
 // container is not nil, container is SettingsBackend
 // is method
@@ -23175,7 +23140,7 @@ func (v SettingsBackend) ChangedTree(tree glib.Tree, origin_tag unsafe.Pointer) 
 // g_settings_backend_keys_changed
 // container is not nil, container is SettingsBackend
 // is method
-func (v SettingsBackend) KeysChanged(path string, items int /*TODO_TYPE isPtr: true, tag: array*/, origin_tag unsafe.Pointer) {
+func (v SettingsBackend) KeysChanged(path string, items int /*TODO_TYPE array type c, p0tag: utf8*/, origin_tag unsafe.Pointer) {
 	iv, err := _I.Get(1141, "SettingsBackend", "keys_changed")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23254,11 +23219,11 @@ type SettingsBindFlags int
 
 const (
 	SettingsBindFlagsDefault       SettingsBindFlags = 0
-	SettingsBindFlagsGet                             = 1
-	SettingsBindFlagsSet                             = 2
-	SettingsBindFlagsNoSensitivity                   = 4
-	SettingsBindFlagsGetNoChanges                    = 8
-	SettingsBindFlagsInvertBoolean                   = 16
+	SettingsBindFlagsGet           SettingsBindFlags = 1
+	SettingsBindFlagsSet           SettingsBindFlags = 2
+	SettingsBindFlagsNoSensitivity SettingsBindFlags = 4
+	SettingsBindFlagsGetNoChanges  SettingsBindFlags = 8
+	SettingsBindFlagsInvertBoolean SettingsBindFlags = 16
 )
 
 // ignore GType struct SettingsClass
@@ -23668,9 +23633,6 @@ func (v SettingsSchemaSource) Unref() {
 	iv.Call(args, nil, nil)
 }
 
-// g_settings_schema_source_get_default
-// container is not nil, container is SettingsSchemaSource
-// num arg is 0
 // Object SimpleAction
 type SimpleAction struct {
 	ActionIfc
@@ -23800,7 +23762,7 @@ func NewSimpleActionGroup() (result SimpleActionGroup) {
 // g_simple_action_group_add_entries
 // container is not nil, container is SimpleActionGroup
 // is method
-func (v SimpleActionGroup) AddEntries(entries int /*TODO_TYPE isPtr: true, tag: array*/, n_entries int32, user_data unsafe.Pointer) {
+func (v SimpleActionGroup) AddEntries(entries int /*TODO_TYPE array type c, p0tag: interface*/, n_entries int32, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1174, "SimpleActionGroup", "add_entries")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24937,14 +24899,14 @@ func (v Socket) Listen() (result bool, err error) {
 // g_socket_receive
 // container is not nil, container is Socket
 // is method
-func (v Socket) Receive(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable ICancellable) (result int64, err error) {
+func (v Socket) Receive(buffer gi.Uint8Array, size uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1232, "Socket", "receive")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -24959,7 +24921,7 @@ func (v Socket) Receive(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size u
 // g_socket_receive_from
 // container is not nil, container is Socket
 // is method
-func (v Socket) ReceiveFrom(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable ICancellable) (result int64, address SocketAddress, err error) {
+func (v Socket) ReceiveFrom(buffer gi.Uint8Array, size uint64, cancellable ICancellable) (result int64, address SocketAddress, err error) {
 	iv, err := _I.Get(1233, "Socket", "receive_from")
 	if err != nil {
 		return
@@ -24967,7 +24929,7 @@ func (v Socket) ReceiveFrom(buffer int /*TODO_TYPE isPtr: true, tag: array*/, si
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_address := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -24983,7 +24945,7 @@ func (v Socket) ReceiveFrom(buffer int /*TODO_TYPE isPtr: true, tag: array*/, si
 // g_socket_receive_message
 // container is not nil, container is Socket
 // is method
-func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE isPtr: true, tag: array*/, num_vectors int32, flags int, cancellable ICancellable) (result int64, address SocketAddress, messages int /*TODO_TYPE*/, num_messages int32, err error) {
+func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE array type c, p0tag: interface*/, num_vectors int32, flags int /*TODO:TYPE*/, cancellable ICancellable) (result int64, address SocketAddress, messages int /*TODO_TYPE*/, num_messages int32, err error) {
 	iv, err := _I.Get(1234, "Socket", "receive_message")
 	if err != nil {
 		return
@@ -25011,7 +24973,7 @@ func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE isPtr: true, tag: array*/
 // g_socket_receive_messages
 // container is not nil, container is Socket
 // is method
-func (v Socket) ReceiveMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
+func (v Socket) ReceiveMessages(messages int /*TODO_TYPE array type c, p0tag: interface*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1235, "Socket", "receive_messages")
 	if err != nil {
 		return
@@ -25034,14 +24996,14 @@ func (v Socket) ReceiveMessages(messages int /*TODO_TYPE isPtr: true, tag: array
 // g_socket_receive_with_blocking
 // container is not nil, container is Socket
 // is method
-func (v Socket) ReceiveWithBlocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
+func (v Socket) ReceiveWithBlocking(buffer gi.Uint8Array, size uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1236, "Socket", "receive_with_blocking")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_blocking := gi.NewBoolArgument(blocking)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -25057,14 +25019,14 @@ func (v Socket) ReceiveWithBlocking(buffer int /*TODO_TYPE isPtr: true, tag: arr
 // g_socket_send
 // container is not nil, container is Socket
 // is method
-func (v Socket) Send(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable ICancellable) (result int64, err error) {
+func (v Socket) Send(buffer gi.Uint8Array, size uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1237, "Socket", "send")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -25079,7 +25041,7 @@ func (v Socket) Send(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint
 // g_socket_send_message
 // container is not nil, container is Socket
 // is method
-func (v Socket) SendMessage(address ISocketAddress, vectors int /*TODO_TYPE isPtr: true, tag: array*/, num_vectors int32, messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages int32, flags int32, cancellable ICancellable) (result int64, err error) {
+func (v Socket) SendMessage(address ISocketAddress, vectors int /*TODO_TYPE array type c, p0tag: interface*/, num_vectors int32, messages int /*TODO_TYPE array type c, p0tag: interface*/, num_messages int32, flags int32, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1238, "Socket", "send_message")
 	if err != nil {
 		return
@@ -25105,7 +25067,7 @@ func (v Socket) SendMessage(address ISocketAddress, vectors int /*TODO_TYPE isPt
 // g_socket_send_messages
 // container is not nil, container is Socket
 // is method
-func (v Socket) SendMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
+func (v Socket) SendMessages(messages int /*TODO_TYPE array type c, p0tag: interface*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1239, "Socket", "send_messages")
 	if err != nil {
 		return
@@ -25128,7 +25090,7 @@ func (v Socket) SendMessages(messages int /*TODO_TYPE isPtr: true, tag: array*/,
 // g_socket_send_to
 // container is not nil, container is Socket
 // is method
-func (v Socket) SendTo(address ISocketAddress, buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, cancellable ICancellable) (result int64, err error) {
+func (v Socket) SendTo(address ISocketAddress, buffer gi.Uint8Array, size uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1240, "Socket", "send_to")
 	if err != nil {
 		return
@@ -25136,7 +25098,7 @@ func (v Socket) SendTo(address ISocketAddress, buffer int /*TODO_TYPE isPtr: tru
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_address := gi.NewPointerArgument(address.P_SocketAddress())
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -25151,14 +25113,14 @@ func (v Socket) SendTo(address ISocketAddress, buffer int /*TODO_TYPE isPtr: tru
 // g_socket_send_with_blocking
 // container is not nil, container is Socket
 // is method
-func (v Socket) SendWithBlocking(buffer int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
+func (v Socket) SendWithBlocking(buffer gi.Uint8Array, size uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1241, "Socket", "send_with_blocking")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_blocking := gi.NewBoolArgument(blocking)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -26102,14 +26064,14 @@ type SocketClientEventEnum int
 
 const (
 	SocketClientEventResolving        SocketClientEventEnum = 0
-	SocketClientEventResolved                               = 1
-	SocketClientEventConnecting                             = 2
-	SocketClientEventConnected                              = 3
-	SocketClientEventProxyNegotiating                       = 4
-	SocketClientEventProxyNegotiated                        = 5
-	SocketClientEventTlsHandshaking                         = 6
-	SocketClientEventTlsHandshaked                          = 7
-	SocketClientEventComplete                               = 8
+	SocketClientEventResolved         SocketClientEventEnum = 1
+	SocketClientEventConnecting       SocketClientEventEnum = 2
+	SocketClientEventConnected        SocketClientEventEnum = 3
+	SocketClientEventProxyNegotiating SocketClientEventEnum = 4
+	SocketClientEventProxyNegotiated  SocketClientEventEnum = 5
+	SocketClientEventTlsHandshaking   SocketClientEventEnum = 6
+	SocketClientEventTlsHandshaked    SocketClientEventEnum = 7
+	SocketClientEventComplete         SocketClientEventEnum = 8
 )
 
 // Struct SocketClientPrivate
@@ -26377,7 +26339,7 @@ func (v SocketControlMessage) P_SocketControlMessage() unsafe.Pointer { return v
 // container is not nil, container is SocketControlMessage
 // is method
 // arg0Type tag: gint32, isPtr: false
-func SocketControlMessageDeserialize1(level int32, type1 int32, size uint64, data int /*TODO_TYPE isPtr: true, tag: array*/) (result SocketControlMessage) {
+func SocketControlMessageDeserialize1(level int32, type1 int32, size uint64, data gi.Uint8Array) (result SocketControlMessage) {
 	iv, err := _I.Get(1304, "SocketControlMessage", "deserialize")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -26386,7 +26348,7 @@ func SocketControlMessageDeserialize1(level int32, type1 int32, size uint64, dat
 	arg_level := gi.NewInt32Argument(level)
 	arg_type1 := gi.NewInt32Argument(type1)
 	arg_size := gi.NewUint64Argument(size)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	args := []gi.Argument{arg_level, arg_type1, arg_size, arg_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -26471,9 +26433,9 @@ type SocketFamilyEnum int
 
 const (
 	SocketFamilyInvalid SocketFamilyEnum = 0
-	SocketFamilyUnix                     = 1
-	SocketFamilyIpv4                     = 2
-	SocketFamilyIpv6                     = 10
+	SocketFamilyUnix    SocketFamilyEnum = 1
+	SocketFamilyIpv4    SocketFamilyEnum = 2
+	SocketFamilyIpv6    SocketFamilyEnum = 10
 )
 
 // Object SocketListener
@@ -26746,9 +26708,9 @@ type SocketListenerEventEnum int
 
 const (
 	SocketListenerEventBinding   SocketListenerEventEnum = 0
-	SocketListenerEventBound                             = 1
-	SocketListenerEventListening                         = 2
-	SocketListenerEventListened                          = 3
+	SocketListenerEventBound     SocketListenerEventEnum = 1
+	SocketListenerEventListening SocketListenerEventEnum = 2
+	SocketListenerEventListened  SocketListenerEventEnum = 3
 )
 
 // Struct SocketListenerPrivate
@@ -26761,9 +26723,9 @@ type SocketMsgFlags int
 
 const (
 	SocketMsgFlagsNone      SocketMsgFlags = 0
-	SocketMsgFlagsOob                      = 1
-	SocketMsgFlagsPeek                     = 2
-	SocketMsgFlagsDontroute                = 4
+	SocketMsgFlagsOob       SocketMsgFlags = 1
+	SocketMsgFlagsPeek      SocketMsgFlags = 2
+	SocketMsgFlagsDontroute SocketMsgFlags = 4
 )
 
 // Struct SocketPrivate
@@ -26776,10 +26738,10 @@ type SocketProtocolEnum int
 
 const (
 	SocketProtocolUnknown SocketProtocolEnum = -1
-	SocketProtocolDefault                    = 0
-	SocketProtocolTcp                        = 6
-	SocketProtocolUdp                        = 17
-	SocketProtocolSctp                       = 132
+	SocketProtocolDefault SocketProtocolEnum = 0
+	SocketProtocolTcp     SocketProtocolEnum = 6
+	SocketProtocolUdp     SocketProtocolEnum = 17
+	SocketProtocolSctp    SocketProtocolEnum = 132
 )
 
 // Object SocketService
@@ -26864,9 +26826,9 @@ type SocketTypeEnum int
 
 const (
 	SocketTypeInvalid   SocketTypeEnum = 0
-	SocketTypeStream                   = 1
-	SocketTypeDatagram                 = 2
-	SocketTypeSeqpacket                = 3
+	SocketTypeStream    SocketTypeEnum = 1
+	SocketTypeDatagram  SocketTypeEnum = 2
+	SocketTypeSeqpacket SocketTypeEnum = 3
 )
 
 // Struct SrvTarget
@@ -27060,7 +27022,7 @@ func (v Subprocess) P_Subprocess() unsafe.Pointer { return v.P }
 // g_subprocess_newv
 // container is not nil, container is Subprocess
 // is constructor
-func NewSubprocess(argv int /*TODO_TYPE isPtr: true, tag: array*/, flags SubprocessFlags) (result Subprocess, err error) {
+func NewSubprocess(argv int /*TODO_TYPE array type c, p0tag: filename*/, flags SubprocessFlags) (result Subprocess, err error) {
 	iv, err := _I.Get(1336, "Subprocess", "new")
 	if err != nil {
 		return
@@ -27533,14 +27495,14 @@ type SubprocessFlags int
 
 const (
 	SubprocessFlagsNone          SubprocessFlags = 0
-	SubprocessFlagsStdinPipe                     = 1
-	SubprocessFlagsStdinInherit                  = 2
-	SubprocessFlagsStdoutPipe                    = 4
-	SubprocessFlagsStdoutSilence                 = 8
-	SubprocessFlagsStderrPipe                    = 16
-	SubprocessFlagsStderrSilence                 = 32
-	SubprocessFlagsStderrMerge                   = 64
-	SubprocessFlagsInheritFds                    = 128
+	SubprocessFlagsStdinPipe     SubprocessFlags = 1
+	SubprocessFlagsStdinInherit  SubprocessFlags = 2
+	SubprocessFlagsStdoutPipe    SubprocessFlags = 4
+	SubprocessFlagsStdoutSilence SubprocessFlags = 8
+	SubprocessFlagsStderrPipe    SubprocessFlags = 16
+	SubprocessFlagsStderrSilence SubprocessFlags = 32
+	SubprocessFlagsStderrMerge   SubprocessFlags = 64
+	SubprocessFlagsInheritFds    SubprocessFlags = 128
 )
 
 // Object SubprocessLauncher
@@ -27611,7 +27573,7 @@ func (v SubprocessLauncher) SetCwd(cwd string) {
 // g_subprocess_launcher_set_environ
 // container is not nil, container is SubprocessLauncher
 // is method
-func (v SubprocessLauncher) SetEnviron(env int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v SubprocessLauncher) SetEnviron(env int /*TODO_TYPE array type c, p0tag: filename*/) {
 	iv, err := _I.Get(1364, "SubprocessLauncher", "set_environ")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -27713,7 +27675,7 @@ func (v SubprocessLauncher) Setenv(variable string, value string, overwrite bool
 // g_subprocess_launcher_spawnv
 // container is not nil, container is SubprocessLauncher
 // is method
-func (v SubprocessLauncher) Spawnv(argv int /*TODO_TYPE isPtr: true, tag: array*/) (result Subprocess, err error) {
+func (v SubprocessLauncher) Spawnv(argv int /*TODO_TYPE array type c, p0tag: filename*/) (result Subprocess, err error) {
 	iv, err := _I.Get(1370, "SubprocessLauncher", "spawnv")
 	if err != nil {
 		return
@@ -28384,9 +28346,6 @@ func NewTestDBus(flags TestDBusFlags) (result TestDBus) {
 	return
 }
 
-// g_test_dbus_unset
-// container is not nil, container is TestDBus
-// num arg is 0
 // g_test_dbus_add_service_dir
 // container is not nil, container is TestDBus
 // is method
@@ -28521,7 +28480,7 @@ func NewThemedIcon(iconname string) (result ThemedIcon) {
 // g_themed_icon_new_from_names
 // container is not nil, container is ThemedIcon
 // is constructor
-func NewThemedIconFromNames(iconnames int /*TODO_TYPE isPtr: true, tag: array*/, len1 int32) (result ThemedIcon) {
+func NewThemedIconFromNames(iconnames int /*TODO_TYPE array type c, p0tag: utf8*/, len1 int32) (result ThemedIcon) {
 	iv, err := _I.Get(1415, "ThemedIcon", "new_from_names")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28646,8 +28605,8 @@ type TlsAuthenticationModeEnum int
 
 const (
 	TlsAuthenticationModeNone      TlsAuthenticationModeEnum = 0
-	TlsAuthenticationModeRequested                           = 1
-	TlsAuthenticationModeRequired                            = 2
+	TlsAuthenticationModeRequested TlsAuthenticationModeEnum = 1
+	TlsAuthenticationModeRequired  TlsAuthenticationModeEnum = 2
 )
 
 // Interface TlsBackend
@@ -28657,9 +28616,6 @@ type TlsBackend struct {
 }
 type TlsBackendIfc struct{}
 
-// g_tls_backend_get_default
-// container is not nil, container is TlsBackend
-// num arg is 0
 // g_tls_backend_get_certificate_type
 // container is not nil, container is TlsBackend
 // is method
@@ -28974,13 +28930,13 @@ type TlsCertificateFlags int
 
 const (
 	TlsCertificateFlagsUnknownCa    TlsCertificateFlags = 1
-	TlsCertificateFlagsBadIdentity                      = 2
-	TlsCertificateFlagsNotActivated                     = 4
-	TlsCertificateFlagsExpired                          = 8
-	TlsCertificateFlagsRevoked                          = 16
-	TlsCertificateFlagsInsecure                         = 32
-	TlsCertificateFlagsGenericError                     = 64
-	TlsCertificateFlagsValidateAll                      = 127
+	TlsCertificateFlagsBadIdentity  TlsCertificateFlags = 2
+	TlsCertificateFlagsNotActivated TlsCertificateFlags = 4
+	TlsCertificateFlagsExpired      TlsCertificateFlags = 8
+	TlsCertificateFlagsRevoked      TlsCertificateFlags = 16
+	TlsCertificateFlagsInsecure     TlsCertificateFlags = 32
+	TlsCertificateFlagsGenericError TlsCertificateFlags = 64
+	TlsCertificateFlagsValidateAll  TlsCertificateFlags = 127
 )
 
 // Struct TlsCertificatePrivate
@@ -29771,7 +29727,7 @@ type TlsDatabaseLookupFlagsEnum int
 
 const (
 	TlsDatabaseLookupFlagsNone    TlsDatabaseLookupFlagsEnum = 0
-	TlsDatabaseLookupFlagsKeypair                            = 1
+	TlsDatabaseLookupFlagsKeypair TlsDatabaseLookupFlagsEnum = 1
 )
 
 // Struct TlsDatabasePrivate
@@ -29791,12 +29747,12 @@ type TlsErrorEnum int
 
 const (
 	TlsErrorUnavailable         TlsErrorEnum = 0
-	TlsErrorMisc                             = 1
-	TlsErrorBadCertificate                   = 2
-	TlsErrorNotTls                           = 3
-	TlsErrorHandshake                        = 4
-	TlsErrorCertificateRequired              = 5
-	TlsErrorEof                              = 6
+	TlsErrorMisc                TlsErrorEnum = 1
+	TlsErrorBadCertificate      TlsErrorEnum = 2
+	TlsErrorNotTls              TlsErrorEnum = 3
+	TlsErrorHandshake           TlsErrorEnum = 4
+	TlsErrorCertificateRequired TlsErrorEnum = 5
+	TlsErrorEof                 TlsErrorEnum = 6
 )
 
 // Interface TlsFileDatabase
@@ -30014,8 +29970,8 @@ type TlsInteractionResultEnum int
 
 const (
 	TlsInteractionResultUnhandled TlsInteractionResultEnum = 0
-	TlsInteractionResultHandled                            = 1
-	TlsInteractionResultFailed                             = 2
+	TlsInteractionResultHandled   TlsInteractionResultEnum = 1
+	TlsInteractionResultFailed    TlsInteractionResultEnum = 2
 )
 
 // Object TlsPassword
@@ -30153,14 +30109,14 @@ func (v TlsPassword) SetFlags(flags TlsPasswordFlags) {
 // g_tls_password_set_value
 // container is not nil, container is TlsPassword
 // is method
-func (v TlsPassword) SetValue(value int /*TODO_TYPE isPtr: true, tag: array*/, length int64) {
+func (v TlsPassword) SetValue(value gi.Uint8Array, length int64) {
 	iv, err := _I.Get(1494, "TlsPassword", "set_value")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_value := gi.NewIntArgument(value) /*TODO*/
+	arg_value := gi.NewPointerArgument(value.P)
 	arg_length := gi.NewInt64Argument(length)
 	args := []gi.Argument{arg_v, arg_value, arg_length}
 	iv.Call(args, nil, nil)
@@ -30169,14 +30125,14 @@ func (v TlsPassword) SetValue(value int /*TODO_TYPE isPtr: true, tag: array*/, l
 // g_tls_password_set_value_full
 // container is not nil, container is TlsPassword
 // is method
-func (v TlsPassword) SetValueFull(value int /*TODO_TYPE isPtr: true, tag: array*/, length int64, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TlsPassword) SetValueFull(value gi.Uint8Array, length int64, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) {
 	iv, err := _I.Get(1495, "TlsPassword", "set_value_full")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_value := gi.NewIntArgument(value) /*TODO*/
+	arg_value := gi.NewPointerArgument(value.P)
 	arg_length := gi.NewInt64Argument(length)
 	arg_destroy := gi.NewIntArgument(destroy) /*TODO*/
 	args := []gi.Argument{arg_v, arg_value, arg_length, arg_destroy}
@@ -30206,9 +30162,9 @@ type TlsPasswordFlags int
 
 const (
 	TlsPasswordFlagsNone      TlsPasswordFlags = 0
-	TlsPasswordFlagsRetry                      = 2
-	TlsPasswordFlagsManyTries                  = 4
-	TlsPasswordFlagsFinalTry                   = 8
+	TlsPasswordFlagsRetry     TlsPasswordFlags = 2
+	TlsPasswordFlagsManyTries TlsPasswordFlags = 4
+	TlsPasswordFlagsFinalTry  TlsPasswordFlags = 8
 )
 
 // Struct TlsPasswordPrivate
@@ -30221,8 +30177,8 @@ type TlsRehandshakeModeEnum int
 
 const (
 	TlsRehandshakeModeNever    TlsRehandshakeModeEnum = 0
-	TlsRehandshakeModeSafely                          = 1
-	TlsRehandshakeModeUnsafely                        = 2
+	TlsRehandshakeModeSafely   TlsRehandshakeModeEnum = 1
+	TlsRehandshakeModeUnsafely TlsRehandshakeModeEnum = 2
 )
 
 // Interface TlsServerConnection
@@ -30469,9 +30425,6 @@ func NewUnixCredentialsMessageWithCredentials(credentials ICredentials) (result 
 	return
 }
 
-// g_unix_credentials_message_is_supported
-// container is not nil, container is UnixCredentialsMessage
-// num arg is 0
 // g_unix_credentials_message_get_credentials
 // container is not nil, container is UnixCredentialsMessage
 // is method
@@ -30524,13 +30477,13 @@ func NewUnixFDList() (result UnixFDList) {
 // g_unix_fd_list_new_from_array
 // container is not nil, container is UnixFDList
 // is constructor
-func NewUnixFDListFromArray(fds int /*TODO_TYPE isPtr: true, tag: array*/, n_fds int32) (result UnixFDList) {
+func NewUnixFDListFromArray(fds gi.Int32Array, n_fds int32) (result UnixFDList) {
 	iv, err := _I.Get(1511, "UnixFDList", "new_from_array")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_fds := gi.NewIntArgument(fds) /*TODO*/
+	arg_fds := gi.NewPointerArgument(fds.P)
 	arg_n_fds := gi.NewInt32Argument(n_fds)
 	args := []gi.Argument{arg_fds, arg_n_fds}
 	var ret gi.Argument
@@ -30865,9 +30818,6 @@ func NewUnixMountMonitor() (result UnixMountMonitor) {
 	return
 }
 
-// g_unix_mount_monitor_get
-// container is not nil, container is UnixMountMonitor
-// num arg is 0
 // g_unix_mount_monitor_set_rate_limit
 // container is not nil, container is UnixMountMonitor
 // is method
@@ -31245,13 +31195,13 @@ func NewUnixSocketAddress(path string) (result SocketAddress) {
 // g_unix_socket_address_new_abstract
 // container is not nil, container is UnixSocketAddress
 // is constructor
-func NewUnixSocketAddressAbstract(path int /*TODO_TYPE isPtr: true, tag: array*/, path_len int32) (result SocketAddress) {
+func NewUnixSocketAddressAbstract(path gi.Int8Array, path_len int32) (result SocketAddress) {
 	iv, err := _I.Get(1548, "UnixSocketAddress", "new_abstract")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_path := gi.NewIntArgument(path) /*TODO*/
+	arg_path := gi.NewPointerArgument(path.P)
 	arg_path_len := gi.NewInt32Argument(path_len)
 	args := []gi.Argument{arg_path, arg_path_len}
 	var ret gi.Argument
@@ -31263,13 +31213,13 @@ func NewUnixSocketAddressAbstract(path int /*TODO_TYPE isPtr: true, tag: array*/
 // g_unix_socket_address_new_with_type
 // container is not nil, container is UnixSocketAddress
 // is constructor
-func NewUnixSocketAddressWithType(path int /*TODO_TYPE isPtr: true, tag: array*/, path_len int32, type1 UnixSocketAddressTypeEnum) (result SocketAddress) {
+func NewUnixSocketAddressWithType(path gi.Int8Array, path_len int32, type1 UnixSocketAddressTypeEnum) (result SocketAddress) {
 	iv, err := _I.Get(1549, "UnixSocketAddress", "new_with_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_path := gi.NewIntArgument(path) /*TODO*/
+	arg_path := gi.NewPointerArgument(path.P)
 	arg_path_len := gi.NewInt32Argument(path_len)
 	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_path, arg_path_len, arg_type1}
@@ -31279,9 +31229,6 @@ func NewUnixSocketAddressWithType(path int /*TODO_TYPE isPtr: true, tag: array*/
 	return
 }
 
-// g_unix_socket_address_abstract_names_supported
-// container is not nil, container is UnixSocketAddress
-// num arg is 0
 // g_unix_socket_address_get_address_type
 // container is not nil, container is UnixSocketAddress
 // is method
@@ -31361,10 +31308,10 @@ type UnixSocketAddressTypeEnum int
 
 const (
 	UnixSocketAddressTypeInvalid        UnixSocketAddressTypeEnum = 0
-	UnixSocketAddressTypeAnonymous                                = 1
-	UnixSocketAddressTypePath                                     = 2
-	UnixSocketAddressTypeAbstract                                 = 3
-	UnixSocketAddressTypeAbstractPadded                           = 4
+	UnixSocketAddressTypeAnonymous      UnixSocketAddressTypeEnum = 1
+	UnixSocketAddressTypePath           UnixSocketAddressTypeEnum = 2
+	UnixSocketAddressTypeAbstract       UnixSocketAddressTypeEnum = 3
+	UnixSocketAddressTypeAbstractPadded UnixSocketAddressTypeEnum = 4
 )
 
 // Object Vfs
@@ -31378,12 +31325,6 @@ type IVfs interface{ P_Vfs() unsafe.Pointer }
 
 func (v Vfs) P_Vfs() unsafe.Pointer { return v.P }
 
-// g_vfs_get_default
-// container is not nil, container is Vfs
-// num arg is 0
-// g_vfs_get_local
-// container is not nil, container is Vfs
-// num arg is 0
 // g_vfs_get_file_for_path
 // container is not nil, container is Vfs
 // is method
@@ -31902,9 +31843,6 @@ func VolumeMonitorAdoptOrphanMount1(mount Mount) (result Volume) {
 	return
 }
 
-// g_volume_monitor_get
-// container is not nil, container is VolumeMonitor
-// num arg is 0
 // g_volume_monitor_get_connected_drives
 // container is not nil, container is VolumeMonitor
 // is method
@@ -32065,8 +32003,8 @@ type ZlibCompressorFormatEnum int
 
 const (
 	ZlibCompressorFormatZlib ZlibCompressorFormatEnum = 0
-	ZlibCompressorFormatGzip                          = 1
-	ZlibCompressorFormatRaw                           = 2
+	ZlibCompressorFormatGzip ZlibCompressorFormatEnum = 1
+	ZlibCompressorFormatRaw  ZlibCompressorFormatEnum = 2
 )
 
 // Object ZlibDecompressor
@@ -32378,8 +32316,6 @@ func AppInfoResetTypeAssociations(content_type string) {
 	iv.Call(args, nil, nil)
 	gi.Free(c_content_type)
 }
-
-// black function async_initable_newv_async
 
 // g_bus_get
 // container is nil
@@ -32698,7 +32634,7 @@ func ContentTypeGetSymbolicIcon(type1 string) (result Icon) {
 
 // g_content_type_guess
 // container is nil
-func ContentTypeGuess(filename string, data int /*TODO_TYPE isPtr: true, tag: array*/, data_size uint64) (result string, result_uncertain bool) {
+func ContentTypeGuess(filename string, data gi.Uint8Array, data_size uint64) (result string, result_uncertain bool) {
 	iv, err := _I.Get(1626, "content_type_guess", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -32707,7 +32643,7 @@ func ContentTypeGuess(filename string, data int /*TODO_TYPE isPtr: true, tag: ar
 	var outArgs [1]gi.Argument
 	c_filename := gi.CString(filename)
 	arg_filename := gi.NewStringArgument(c_filename)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_data_size := gi.NewUint64Argument(data_size)
 	arg_result_uncertain := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_filename, arg_data, arg_data_size, arg_result_uncertain}
@@ -32909,7 +32845,7 @@ func DbusAddressGetStreamSync(address string, cancellable ICancellable) (result 
 
 // g_dbus_annotation_info_lookup
 // container is nil
-func DbusAnnotationInfoLookup(annotations int /*TODO_TYPE isPtr: true, tag: array*/, name string) (result string) {
+func DbusAnnotationInfoLookup(annotations int /*TODO_TYPE array type c, p0tag: interface*/, name string) (result string) {
 	iv, err := _I.Get(1637, "dbus_annotation_info_lookup", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -33031,7 +32967,7 @@ func DbusErrorRegisterError(error_domain uint32, error_code int32, dbus_error_na
 
 // g_dbus_error_register_error_domain
 // container is nil
-func DbusErrorRegisterErrorDomain(error_domain_quark_name string, quark_volatile uint64, entries int /*TODO_TYPE isPtr: true, tag: array*/, num_entries uint32) {
+func DbusErrorRegisterErrorDomain(error_domain_quark_name string, quark_volatile uint64, entries int /*TODO_TYPE array type c, p0tag: interface*/, num_entries uint32) {
 	iv, err := _I.Get(1644, "dbus_error_register_error_domain", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -33466,7 +33402,7 @@ func IconNewForString(str string) (result Icon, err error) {
 
 // g_initable_newv
 // container is nil
-func InitableNewv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE isPtr: true, tag: array*/, cancellable ICancellable) (result gobject.Object, err error) {
+func InitableNewv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, p0tag: interface*/, cancellable ICancellable) (result gobject.Object, err error) {
 	iv, err := _I.Get(1668, "initable_newv", "")
 	if err != nil {
 		return
@@ -33783,14 +33719,14 @@ func PollableSourceNewFull(pollable_stream gobject.IObject, child_source glib.So
 
 // g_pollable_stream_read
 // container is nil
-func PollableStreamRead(stream IInputStream, buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
+func PollableStreamRead(stream IInputStream, buffer gi.Uint8Array, count uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1687, "pollable_stream_read", "")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_stream := gi.NewPointerArgument(stream.P_InputStream())
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_blocking := gi.NewBoolArgument(blocking)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -33805,14 +33741,14 @@ func PollableStreamRead(stream IInputStream, buffer int /*TODO_TYPE isPtr: true,
 
 // g_pollable_stream_write
 // container is nil
-func PollableStreamWrite(stream IOutputStream, buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
+func PollableStreamWrite(stream IOutputStream, buffer gi.Uint8Array, count uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1688, "pollable_stream_write", "")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_stream := gi.NewPointerArgument(stream.P_OutputStream())
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_blocking := gi.NewBoolArgument(blocking)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -33827,14 +33763,14 @@ func PollableStreamWrite(stream IOutputStream, buffer int /*TODO_TYPE isPtr: tru
 
 // g_pollable_stream_write_all
 // container is nil
-func PollableStreamWriteAll(stream IOutputStream, buffer int /*TODO_TYPE isPtr: true, tag: array*/, count uint64, blocking bool, cancellable ICancellable) (result bool, bytes_written uint64, err error) {
+func PollableStreamWriteAll(stream IOutputStream, buffer gi.Uint8Array, count uint64, blocking bool, cancellable ICancellable) (result bool, bytes_written uint64, err error) {
 	iv, err := _I.Get(1689, "pollable_stream_write_all", "")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	arg_stream := gi.NewPointerArgument(stream.P_OutputStream())
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_blocking := gi.NewBoolArgument(blocking)
 	arg_bytes_written := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))

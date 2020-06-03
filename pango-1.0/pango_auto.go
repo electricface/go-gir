@@ -8,6 +8,7 @@ import "unsafe"
 
 var _I = gi.NewInvokerCache("Pango")
 var _ unsafe.Pointer
+var _ *log.Logger
 
 func init() {
 	repo := gi.DefaultRepository()
@@ -22,8 +23,8 @@ type AlignmentEnum int
 
 const (
 	AlignmentLeft   AlignmentEnum = 0
-	AlignmentCenter               = 1
-	AlignmentRight                = 2
+	AlignmentCenter AlignmentEnum = 1
+	AlignmentRight  AlignmentEnum = 2
 )
 
 // Struct Analysis
@@ -65,8 +66,6 @@ type AttrInt struct {
 type AttrIterator struct {
 	P unsafe.Pointer
 }
-
-// black function AttrIterator.destroy
 
 // pango_attr_iterator_get_attrs
 // container is not nil, container is AttrIterator
@@ -313,31 +312,31 @@ type AttrTypeEnum int
 
 const (
 	AttrTypeInvalid            AttrTypeEnum = 0
-	AttrTypeLanguage                        = 1
-	AttrTypeFamily                          = 2
-	AttrTypeStyle                           = 3
-	AttrTypeWeight                          = 4
-	AttrTypeVariant                         = 5
-	AttrTypeStretch                         = 6
-	AttrTypeSize                            = 7
-	AttrTypeFontDesc                        = 8
-	AttrTypeForeground                      = 9
-	AttrTypeBackground                      = 10
-	AttrTypeUnderline                       = 11
-	AttrTypeStrikethrough                   = 12
-	AttrTypeRise                            = 13
-	AttrTypeShape                           = 14
-	AttrTypeScale                           = 15
-	AttrTypeFallback                        = 16
-	AttrTypeLetterSpacing                   = 17
-	AttrTypeUnderlineColor                  = 18
-	AttrTypeStrikethroughColor              = 19
-	AttrTypeAbsoluteSize                    = 20
-	AttrTypeGravity                         = 21
-	AttrTypeGravityHint                     = 22
-	AttrTypeFontFeatures                    = 23
-	AttrTypeForegroundAlpha                 = 24
-	AttrTypeBackgroundAlpha                 = 25
+	AttrTypeLanguage           AttrTypeEnum = 1
+	AttrTypeFamily             AttrTypeEnum = 2
+	AttrTypeStyle              AttrTypeEnum = 3
+	AttrTypeWeight             AttrTypeEnum = 4
+	AttrTypeVariant            AttrTypeEnum = 5
+	AttrTypeStretch            AttrTypeEnum = 6
+	AttrTypeSize               AttrTypeEnum = 7
+	AttrTypeFontDesc           AttrTypeEnum = 8
+	AttrTypeForeground         AttrTypeEnum = 9
+	AttrTypeBackground         AttrTypeEnum = 10
+	AttrTypeUnderline          AttrTypeEnum = 11
+	AttrTypeStrikethrough      AttrTypeEnum = 12
+	AttrTypeRise               AttrTypeEnum = 13
+	AttrTypeShape              AttrTypeEnum = 14
+	AttrTypeScale              AttrTypeEnum = 15
+	AttrTypeFallback           AttrTypeEnum = 16
+	AttrTypeLetterSpacing      AttrTypeEnum = 17
+	AttrTypeUnderlineColor     AttrTypeEnum = 18
+	AttrTypeStrikethroughColor AttrTypeEnum = 19
+	AttrTypeAbsoluteSize       AttrTypeEnum = 20
+	AttrTypeGravity            AttrTypeEnum = 21
+	AttrTypeGravityHint        AttrTypeEnum = 22
+	AttrTypeFontFeatures       AttrTypeEnum = 23
+	AttrTypeForegroundAlpha    AttrTypeEnum = 24
+	AttrTypeBackgroundAlpha    AttrTypeEnum = 25
 )
 
 // Struct Attribute
@@ -397,24 +396,24 @@ type BidiTypeEnum int
 
 const (
 	BidiTypeL   BidiTypeEnum = 0
-	BidiTypeLre              = 1
-	BidiTypeLro              = 2
-	BidiTypeR                = 3
-	BidiTypeAl               = 4
-	BidiTypeRle              = 5
-	BidiTypeRlo              = 6
-	BidiTypePdf              = 7
-	BidiTypeEn               = 8
-	BidiTypeEs               = 9
-	BidiTypeEt               = 10
-	BidiTypeAn               = 11
-	BidiTypeCs               = 12
-	BidiTypeNsm              = 13
-	BidiTypeBn               = 14
-	BidiTypeB                = 15
-	BidiTypeS                = 16
-	BidiTypeWs               = 17
-	BidiTypeOn               = 18
+	BidiTypeLre BidiTypeEnum = 1
+	BidiTypeLro BidiTypeEnum = 2
+	BidiTypeR   BidiTypeEnum = 3
+	BidiTypeAl  BidiTypeEnum = 4
+	BidiTypeRle BidiTypeEnum = 5
+	BidiTypeRlo BidiTypeEnum = 6
+	BidiTypePdf BidiTypeEnum = 7
+	BidiTypeEn  BidiTypeEnum = 8
+	BidiTypeEs  BidiTypeEnum = 9
+	BidiTypeEt  BidiTypeEnum = 10
+	BidiTypeAn  BidiTypeEnum = 11
+	BidiTypeCs  BidiTypeEnum = 12
+	BidiTypeNsm BidiTypeEnum = 13
+	BidiTypeBn  BidiTypeEnum = 14
+	BidiTypeB   BidiTypeEnum = 15
+	BidiTypeS   BidiTypeEnum = 16
+	BidiTypeWs  BidiTypeEnum = 17
+	BidiTypeOn  BidiTypeEnum = 18
 )
 
 // Struct Color
@@ -958,9 +957,9 @@ type CoverageLevelEnum int
 
 const (
 	CoverageLevelNone        CoverageLevelEnum = 0
-	CoverageLevelFallback                      = 1
-	CoverageLevelApproximate                   = 2
-	CoverageLevelExact                         = 3
+	CoverageLevelFallback    CoverageLevelEnum = 1
+	CoverageLevelApproximate CoverageLevelEnum = 2
+	CoverageLevelExact       CoverageLevelEnum = 3
 )
 
 // Enum Direction
@@ -968,12 +967,12 @@ type DirectionEnum int
 
 const (
 	DirectionLtr     DirectionEnum = 0
-	DirectionRtl                   = 1
-	DirectionTtbLtr                = 2
-	DirectionTtbRtl                = 3
-	DirectionWeakLtr               = 4
-	DirectionWeakRtl               = 5
-	DirectionNeutral               = 6
+	DirectionRtl     DirectionEnum = 1
+	DirectionTtbLtr  DirectionEnum = 2
+	DirectionTtbRtl  DirectionEnum = 3
+	DirectionWeakLtr DirectionEnum = 4
+	DirectionWeakRtl DirectionEnum = 5
+	DirectionNeutral DirectionEnum = 6
 )
 
 // Enum EllipsizeMode
@@ -981,9 +980,9 @@ type EllipsizeModeEnum int
 
 const (
 	EllipsizeModeNone   EllipsizeModeEnum = 0
-	EllipsizeModeStart                    = 1
-	EllipsizeModeMiddle                   = 2
-	EllipsizeModeEnd                      = 3
+	EllipsizeModeStart  EllipsizeModeEnum = 1
+	EllipsizeModeMiddle EllipsizeModeEnum = 2
+	EllipsizeModeEnd    EllipsizeModeEnum = 3
 )
 
 // Object Engine
@@ -1047,7 +1046,7 @@ func (v Font) P_Font() unsafe.Pointer { return v.P }
 // container is not nil, container is Font
 // is method
 // arg0Type tag: array, isPtr: true
-func FontDescriptionsFree1(descs int /*TODO_TYPE isPtr: true, tag: array*/, n_descs int32) {
+func FontDescriptionsFree1(descs int /*TODO_TYPE array type c, p0tag: interface*/, n_descs int32) {
 	iv, err := _I.Get(47, "Font", "descriptions_free")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2025,13 +2024,13 @@ type FontMaskFlags int
 
 const (
 	FontMaskFamily     FontMaskFlags = 1
-	FontMaskStyle                    = 2
-	FontMaskVariant                  = 4
-	FontMaskWeight                   = 8
-	FontMaskStretch                  = 16
-	FontMaskSize                     = 32
-	FontMaskGravity                  = 64
-	FontMaskVariations               = 128
+	FontMaskStyle      FontMaskFlags = 2
+	FontMaskVariant    FontMaskFlags = 4
+	FontMaskWeight     FontMaskFlags = 8
+	FontMaskStretch    FontMaskFlags = 16
+	FontMaskSize       FontMaskFlags = 32
+	FontMaskGravity    FontMaskFlags = 64
+	FontMaskVariations FontMaskFlags = 128
 )
 
 // Struct FontMetrics
@@ -2415,7 +2414,7 @@ func (v GlyphItem) Free() {
 // pango_glyph_item_get_logical_widths
 // container is not nil, container is GlyphItem
 // is method
-func (v GlyphItem) GetLogicalWidths(text string, logical_widths int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v GlyphItem) GetLogicalWidths(text string, logical_widths gi.Int32Array) {
 	iv, err := _I.Get(122, "GlyphItem", "get_logical_widths")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2424,7 +2423,7 @@ func (v GlyphItem) GetLogicalWidths(text string, logical_widths int /*TODO_TYPE 
 	c_text := gi.CString(text)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_text := gi.NewStringArgument(c_text)
-	arg_logical_widths := gi.NewIntArgument(logical_widths) /*TODO*/
+	arg_logical_widths := gi.NewPointerArgument(logical_widths.P)
 	args := []gi.Argument{arg_v, arg_text, arg_logical_widths}
 	iv.Call(args, nil, nil)
 	gi.Free(c_text)
@@ -2433,7 +2432,7 @@ func (v GlyphItem) GetLogicalWidths(text string, logical_widths int /*TODO_TYPE 
 // pango_glyph_item_letter_space
 // container is not nil, container is GlyphItem
 // is method
-func (v GlyphItem) LetterSpace(text string, log_attrs int /*TODO_TYPE isPtr: true, tag: array*/, letter_spacing int32) {
+func (v GlyphItem) LetterSpace(text string, log_attrs int /*TODO_TYPE array type c, p0tag: interface*/, letter_spacing int32) {
 	iv, err := _I.Get(123, "GlyphItem", "letter_space")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2680,7 +2679,7 @@ func (v GlyphString) Free() {
 // pango_glyph_string_get_logical_widths
 // container is not nil, container is GlyphString
 // is method
-func (v GlyphString) GetLogicalWidths(text string, length int32, embedding_level int32, logical_widths int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v GlyphString) GetLogicalWidths(text string, length int32, embedding_level int32, logical_widths gi.Int32Array) {
 	iv, err := _I.Get(136, "GlyphString", "get_logical_widths")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2691,7 +2690,7 @@ func (v GlyphString) GetLogicalWidths(text string, length int32, embedding_level
 	arg_text := gi.NewStringArgument(c_text)
 	arg_length := gi.NewInt32Argument(length)
 	arg_embedding_level := gi.NewInt32Argument(embedding_level)
-	arg_logical_widths := gi.NewIntArgument(logical_widths) /*TODO*/
+	arg_logical_widths := gi.NewPointerArgument(logical_widths.P)
 	args := []gi.Argument{arg_v, arg_text, arg_length, arg_embedding_level, arg_logical_widths}
 	iv.Call(args, nil, nil)
 	gi.Free(c_text)
@@ -2790,10 +2789,10 @@ type GravityEnum int
 
 const (
 	GravitySouth GravityEnum = 0
-	GravityEast              = 1
-	GravityNorth             = 2
-	GravityWest              = 3
-	GravityAuto              = 4
+	GravityEast  GravityEnum = 1
+	GravityNorth GravityEnum = 2
+	GravityWest  GravityEnum = 3
+	GravityAuto  GravityEnum = 4
 )
 
 // Enum GravityHint
@@ -2801,8 +2800,8 @@ type GravityHintEnum int
 
 const (
 	GravityHintNatural GravityHintEnum = 0
-	GravityHintStrong                  = 1
-	GravityHintLine                    = 2
+	GravityHintStrong  GravityHintEnum = 1
+	GravityHintLine    GravityHintEnum = 2
 )
 
 // Struct IncludedModule
@@ -2997,9 +2996,6 @@ func LanguageFromString1(language string) (result Language) {
 	return
 }
 
-// pango_language_get_default
-// container is not nil, container is Language
-// num arg is 0
 // Object Layout
 type Layout struct {
 	gobject.Object
@@ -4641,7 +4637,7 @@ func (v Matrix) Scale(scale_x float64, scale_y float64) {
 // pango_matrix_transform_distance
 // container is not nil, container is Matrix
 // is method
-func (v Matrix) TransformDistance(dx int, dy int) {
+func (v Matrix) TransformDistance(dx int /*TODO:TYPE*/, dy int /*TODO:TYPE*/) {
 	iv, err := _I.Get(243, "Matrix", "transform_distance")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4656,7 +4652,7 @@ func (v Matrix) TransformDistance(dx int, dy int) {
 // pango_matrix_transform_pixel_rectangle
 // container is not nil, container is Matrix
 // is method
-func (v Matrix) TransformPixelRectangle(rect int) {
+func (v Matrix) TransformPixelRectangle(rect int /*TODO:TYPE*/) {
 	iv, err := _I.Get(244, "Matrix", "transform_pixel_rectangle")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4671,7 +4667,7 @@ func (v Matrix) TransformPixelRectangle(rect int) {
 // pango_matrix_transform_point
 // container is not nil, container is Matrix
 // is method
-func (v Matrix) TransformPoint(x int, y int) {
+func (v Matrix) TransformPoint(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/) {
 	iv, err := _I.Get(245, "Matrix", "transform_point")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4686,7 +4682,7 @@ func (v Matrix) TransformPoint(x int, y int) {
 // pango_matrix_transform_rectangle
 // container is not nil, container is Matrix
 // is method
-func (v Matrix) TransformRectangle(rect int) {
+func (v Matrix) TransformRectangle(rect int /*TODO:TYPE*/) {
 	iv, err := _I.Get(246, "Matrix", "transform_rectangle")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4724,9 +4720,9 @@ type RenderPartEnum int
 
 const (
 	RenderPartForeground    RenderPartEnum = 0
-	RenderPartBackground                   = 1
-	RenderPartUnderline                    = 2
-	RenderPartStrikethrough                = 3
+	RenderPartBackground    RenderPartEnum = 1
+	RenderPartUnderline     RenderPartEnum = 2
+	RenderPartStrikethrough RenderPartEnum = 3
 )
 
 // Object Renderer
@@ -5076,123 +5072,123 @@ type ScriptEnum int
 
 const (
 	ScriptInvalidCode          ScriptEnum = -1
-	ScriptCommon                          = 0
-	ScriptInherited                       = 1
-	ScriptArabic                          = 2
-	ScriptArmenian                        = 3
-	ScriptBengali                         = 4
-	ScriptBopomofo                        = 5
-	ScriptCherokee                        = 6
-	ScriptCoptic                          = 7
-	ScriptCyrillic                        = 8
-	ScriptDeseret                         = 9
-	ScriptDevanagari                      = 10
-	ScriptEthiopic                        = 11
-	ScriptGeorgian                        = 12
-	ScriptGothic                          = 13
-	ScriptGreek                           = 14
-	ScriptGujarati                        = 15
-	ScriptGurmukhi                        = 16
-	ScriptHan                             = 17
-	ScriptHangul                          = 18
-	ScriptHebrew                          = 19
-	ScriptHiragana                        = 20
-	ScriptKannada                         = 21
-	ScriptKatakana                        = 22
-	ScriptKhmer                           = 23
-	ScriptLao                             = 24
-	ScriptLatin                           = 25
-	ScriptMalayalam                       = 26
-	ScriptMongolian                       = 27
-	ScriptMyanmar                         = 28
-	ScriptOgham                           = 29
-	ScriptOldItalic                       = 30
-	ScriptOriya                           = 31
-	ScriptRunic                           = 32
-	ScriptSinhala                         = 33
-	ScriptSyriac                          = 34
-	ScriptTamil                           = 35
-	ScriptTelugu                          = 36
-	ScriptThaana                          = 37
-	ScriptThai                            = 38
-	ScriptTibetan                         = 39
-	ScriptCanadianAboriginal              = 40
-	ScriptYi                              = 41
-	ScriptTagalog                         = 42
-	ScriptHanunoo                         = 43
-	ScriptBuhid                           = 44
-	ScriptTagbanwa                        = 45
-	ScriptBraille                         = 46
-	ScriptCypriot                         = 47
-	ScriptLimbu                           = 48
-	ScriptOsmanya                         = 49
-	ScriptShavian                         = 50
-	ScriptLinearB                         = 51
-	ScriptTaiLe                           = 52
-	ScriptUgaritic                        = 53
-	ScriptNewTaiLue                       = 54
-	ScriptBuginese                        = 55
-	ScriptGlagolitic                      = 56
-	ScriptTifinagh                        = 57
-	ScriptSylotiNagri                     = 58
-	ScriptOldPersian                      = 59
-	ScriptKharoshthi                      = 60
-	ScriptUnknown                         = 61
-	ScriptBalinese                        = 62
-	ScriptCuneiform                       = 63
-	ScriptPhoenician                      = 64
-	ScriptPhagsPa                         = 65
-	ScriptNko                             = 66
-	ScriptKayahLi                         = 67
-	ScriptLepcha                          = 68
-	ScriptRejang                          = 69
-	ScriptSundanese                       = 70
-	ScriptSaurashtra                      = 71
-	ScriptCham                            = 72
-	ScriptOlChiki                         = 73
-	ScriptVai                             = 74
-	ScriptCarian                          = 75
-	ScriptLycian                          = 76
-	ScriptLydian                          = 77
-	ScriptBatak                           = 78
-	ScriptBrahmi                          = 79
-	ScriptMandaic                         = 80
-	ScriptChakma                          = 81
-	ScriptMeroiticCursive                 = 82
-	ScriptMeroiticHieroglyphs             = 83
-	ScriptMiao                            = 84
-	ScriptSharada                         = 85
-	ScriptSoraSompeng                     = 86
-	ScriptTakri                           = 87
-	ScriptBassaVah                        = 88
-	ScriptCaucasianAlbanian               = 89
-	ScriptDuployan                        = 90
-	ScriptElbasan                         = 91
-	ScriptGrantha                         = 92
-	ScriptKhojki                          = 93
-	ScriptKhudawadi                       = 94
-	ScriptLinearA                         = 95
-	ScriptMahajani                        = 96
-	ScriptManichaean                      = 97
-	ScriptMendeKikakui                    = 98
-	ScriptModi                            = 99
-	ScriptMro                             = 100
-	ScriptNabataean                       = 101
-	ScriptOldNorthArabian                 = 102
-	ScriptOldPermic                       = 103
-	ScriptPahawhHmong                     = 104
-	ScriptPalmyrene                       = 105
-	ScriptPauCinHau                       = 106
-	ScriptPsalterPahlavi                  = 107
-	ScriptSiddham                         = 108
-	ScriptTirhuta                         = 109
-	ScriptWarangCiti                      = 110
-	ScriptAhom                            = 111
-	ScriptAnatolianHieroglyphs            = 112
-	ScriptHatran                          = 113
-	ScriptMultani                         = 114
-	ScriptOldHungarian                    = 115
-	ScriptSignwriting                     = 116
+	ScriptCommon               ScriptEnum = 0
+	ScriptInherited            ScriptEnum = 1
+	ScriptArabic               ScriptEnum = 2
+	ScriptArmenian             ScriptEnum = 3
+	ScriptBengali              ScriptEnum = 4
+	ScriptBopomofo             ScriptEnum = 5
+	ScriptCherokee             ScriptEnum = 6
+	ScriptCoptic               ScriptEnum = 7
+	ScriptCyrillic             ScriptEnum = 8
+	ScriptDeseret              ScriptEnum = 9
+	ScriptDevanagari           ScriptEnum = 10
+	ScriptEthiopic             ScriptEnum = 11
+	ScriptGeorgian             ScriptEnum = 12
+	ScriptGothic               ScriptEnum = 13
+	ScriptGreek                ScriptEnum = 14
+	ScriptGujarati             ScriptEnum = 15
+	ScriptGurmukhi             ScriptEnum = 16
+	ScriptHan                  ScriptEnum = 17
+	ScriptHangul               ScriptEnum = 18
+	ScriptHebrew               ScriptEnum = 19
+	ScriptHiragana             ScriptEnum = 20
+	ScriptKannada              ScriptEnum = 21
+	ScriptKatakana             ScriptEnum = 22
+	ScriptKhmer                ScriptEnum = 23
+	ScriptLao                  ScriptEnum = 24
+	ScriptLatin                ScriptEnum = 25
+	ScriptMalayalam            ScriptEnum = 26
+	ScriptMongolian            ScriptEnum = 27
+	ScriptMyanmar              ScriptEnum = 28
+	ScriptOgham                ScriptEnum = 29
+	ScriptOldItalic            ScriptEnum = 30
+	ScriptOriya                ScriptEnum = 31
+	ScriptRunic                ScriptEnum = 32
+	ScriptSinhala              ScriptEnum = 33
+	ScriptSyriac               ScriptEnum = 34
+	ScriptTamil                ScriptEnum = 35
+	ScriptTelugu               ScriptEnum = 36
+	ScriptThaana               ScriptEnum = 37
+	ScriptThai                 ScriptEnum = 38
+	ScriptTibetan              ScriptEnum = 39
+	ScriptCanadianAboriginal   ScriptEnum = 40
+	ScriptYi                   ScriptEnum = 41
+	ScriptTagalog              ScriptEnum = 42
+	ScriptHanunoo              ScriptEnum = 43
+	ScriptBuhid                ScriptEnum = 44
+	ScriptTagbanwa             ScriptEnum = 45
+	ScriptBraille              ScriptEnum = 46
+	ScriptCypriot              ScriptEnum = 47
+	ScriptLimbu                ScriptEnum = 48
+	ScriptOsmanya              ScriptEnum = 49
+	ScriptShavian              ScriptEnum = 50
+	ScriptLinearB              ScriptEnum = 51
+	ScriptTaiLe                ScriptEnum = 52
+	ScriptUgaritic             ScriptEnum = 53
+	ScriptNewTaiLue            ScriptEnum = 54
+	ScriptBuginese             ScriptEnum = 55
+	ScriptGlagolitic           ScriptEnum = 56
+	ScriptTifinagh             ScriptEnum = 57
+	ScriptSylotiNagri          ScriptEnum = 58
+	ScriptOldPersian           ScriptEnum = 59
+	ScriptKharoshthi           ScriptEnum = 60
+	ScriptUnknown              ScriptEnum = 61
+	ScriptBalinese             ScriptEnum = 62
+	ScriptCuneiform            ScriptEnum = 63
+	ScriptPhoenician           ScriptEnum = 64
+	ScriptPhagsPa              ScriptEnum = 65
+	ScriptNko                  ScriptEnum = 66
+	ScriptKayahLi              ScriptEnum = 67
+	ScriptLepcha               ScriptEnum = 68
+	ScriptRejang               ScriptEnum = 69
+	ScriptSundanese            ScriptEnum = 70
+	ScriptSaurashtra           ScriptEnum = 71
+	ScriptCham                 ScriptEnum = 72
+	ScriptOlChiki              ScriptEnum = 73
+	ScriptVai                  ScriptEnum = 74
+	ScriptCarian               ScriptEnum = 75
+	ScriptLycian               ScriptEnum = 76
+	ScriptLydian               ScriptEnum = 77
+	ScriptBatak                ScriptEnum = 78
+	ScriptBrahmi               ScriptEnum = 79
+	ScriptMandaic              ScriptEnum = 80
+	ScriptChakma               ScriptEnum = 81
+	ScriptMeroiticCursive      ScriptEnum = 82
+	ScriptMeroiticHieroglyphs  ScriptEnum = 83
+	ScriptMiao                 ScriptEnum = 84
+	ScriptSharada              ScriptEnum = 85
+	ScriptSoraSompeng          ScriptEnum = 86
+	ScriptTakri                ScriptEnum = 87
+	ScriptBassaVah             ScriptEnum = 88
+	ScriptCaucasianAlbanian    ScriptEnum = 89
+	ScriptDuployan             ScriptEnum = 90
+	ScriptElbasan              ScriptEnum = 91
+	ScriptGrantha              ScriptEnum = 92
+	ScriptKhojki               ScriptEnum = 93
+	ScriptKhudawadi            ScriptEnum = 94
+	ScriptLinearA              ScriptEnum = 95
+	ScriptMahajani             ScriptEnum = 96
+	ScriptManichaean           ScriptEnum = 97
+	ScriptMendeKikakui         ScriptEnum = 98
+	ScriptModi                 ScriptEnum = 99
+	ScriptMro                  ScriptEnum = 100
+	ScriptNabataean            ScriptEnum = 101
+	ScriptOldNorthArabian      ScriptEnum = 102
+	ScriptOldPermic            ScriptEnum = 103
+	ScriptPahawhHmong          ScriptEnum = 104
+	ScriptPalmyrene            ScriptEnum = 105
+	ScriptPauCinHau            ScriptEnum = 106
+	ScriptPsalterPahlavi       ScriptEnum = 107
+	ScriptSiddham              ScriptEnum = 108
+	ScriptTirhuta              ScriptEnum = 109
+	ScriptWarangCiti           ScriptEnum = 110
+	ScriptAhom                 ScriptEnum = 111
+	ScriptAnatolianHieroglyphs ScriptEnum = 112
+	ScriptHatran               ScriptEnum = 113
+	ScriptMultani              ScriptEnum = 114
+	ScriptOldHungarian         ScriptEnum = 115
+	ScriptSignwriting          ScriptEnum = 116
 )
 
 // Struct ScriptIter
@@ -5258,14 +5254,14 @@ type StretchEnum int
 
 const (
 	StretchUltraCondensed StretchEnum = 0
-	StretchExtraCondensed             = 1
-	StretchCondensed                  = 2
-	StretchSemiCondensed              = 3
-	StretchNormal                     = 4
-	StretchSemiExpanded               = 5
-	StretchExpanded                   = 6
-	StretchExtraExpanded              = 7
-	StretchUltraExpanded              = 8
+	StretchExtraCondensed StretchEnum = 1
+	StretchCondensed      StretchEnum = 2
+	StretchSemiCondensed  StretchEnum = 3
+	StretchNormal         StretchEnum = 4
+	StretchSemiExpanded   StretchEnum = 5
+	StretchExpanded       StretchEnum = 6
+	StretchExtraExpanded  StretchEnum = 7
+	StretchUltraExpanded  StretchEnum = 8
 )
 
 // Enum Style
@@ -5273,8 +5269,8 @@ type StyleEnum int
 
 const (
 	StyleNormal  StyleEnum = 0
-	StyleOblique           = 1
-	StyleItalic            = 2
+	StyleOblique StyleEnum = 1
+	StyleItalic  StyleEnum = 2
 )
 
 // Enum TabAlign
@@ -5450,10 +5446,10 @@ type UnderlineEnum int
 
 const (
 	UnderlineNone   UnderlineEnum = 0
-	UnderlineSingle               = 1
-	UnderlineDouble               = 2
-	UnderlineLow                  = 3
-	UnderlineError                = 4
+	UnderlineSingle UnderlineEnum = 1
+	UnderlineDouble UnderlineEnum = 2
+	UnderlineLow    UnderlineEnum = 3
+	UnderlineError  UnderlineEnum = 4
 )
 
 // Enum Variant
@@ -5461,7 +5457,7 @@ type VariantEnum int
 
 const (
 	VariantNormal    VariantEnum = 0
-	VariantSmallCaps             = 1
+	VariantSmallCaps VariantEnum = 1
 )
 
 // Enum Weight
@@ -5469,17 +5465,17 @@ type WeightEnum int
 
 const (
 	WeightThin       WeightEnum = 100
-	WeightUltralight            = 200
-	WeightLight                 = 300
-	WeightSemilight             = 350
-	WeightBook                  = 380
-	WeightNormal                = 400
-	WeightMedium                = 500
-	WeightSemibold              = 600
-	WeightBold                  = 700
-	WeightUltrabold             = 800
-	WeightHeavy                 = 900
-	WeightUltraheavy            = 1000
+	WeightUltralight WeightEnum = 200
+	WeightLight      WeightEnum = 300
+	WeightSemilight  WeightEnum = 350
+	WeightBook       WeightEnum = 380
+	WeightNormal     WeightEnum = 400
+	WeightMedium     WeightEnum = 500
+	WeightSemibold   WeightEnum = 600
+	WeightBold       WeightEnum = 700
+	WeightUltrabold  WeightEnum = 800
+	WeightHeavy      WeightEnum = 900
+	WeightUltraheavy WeightEnum = 1000
 )
 
 // Enum WrapMode
@@ -5487,8 +5483,8 @@ type WrapModeEnum int
 
 const (
 	WrapModeWord     WrapModeEnum = 0
-	WrapModeChar                  = 1
-	WrapModeWordChar              = 2
+	WrapModeChar     WrapModeEnum = 1
+	WrapModeWordChar WrapModeEnum = 2
 )
 
 // pango_attr_type_get_name
@@ -5543,7 +5539,7 @@ func BidiTypeForUnichar(ch rune) (result BidiTypeEnum) {
 
 // pango_break
 // container is nil
-func Break(text string, length int32, analysis Analysis, attrs int /*TODO_TYPE isPtr: true, tag: array*/, attrs_len int32) {
+func Break(text string, length int32, analysis Analysis, attrs int /*TODO_TYPE array type c, p0tag: interface*/, attrs_len int32) {
 	iv, err := _I.Get(282, "break", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5704,7 +5700,7 @@ func GetLibSubdirectory() (result string) {
 
 // pango_get_log_attrs
 // container is nil
-func GetLogAttrs(text string, length int32, level int32, language Language, log_attrs int /*TODO_TYPE isPtr: true, tag: array*/, attrs_len int32) {
+func GetLogAttrs(text string, length int32, level int32, language Language, log_attrs int /*TODO_TYPE array type c, p0tag: interface*/, attrs_len int32) {
 	iv, err := _I.Get(291, "get_log_attrs", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5916,8 +5912,6 @@ func LanguageGetDefault() (result Language) {
 	result.P = ret.Pointer()
 	return
 }
-
-// black function log2vis_get_embedding_levels
 
 // pango_lookup_aliases
 // container is nil
@@ -6136,7 +6130,7 @@ func ParseWeight(str string, warn bool) (result bool, weight WeightEnum) {
 
 // pango_quantize_line_geometry
 // container is nil
-func QuantizeLineGeometry(thickness int, position int) {
+func QuantizeLineGeometry(thickness int /*TODO:TYPE*/, position int /*TODO:TYPE*/) {
 	iv, err := _I.Get(313, "quantize_line_geometry", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6183,7 +6177,7 @@ func ReorderItems(logical_items int /*TODO_TYPE isPtr: true, tag: glist*/) (resu
 
 // pango_scan_int
 // container is nil
-func ScanInt(pos int) (result bool, out int32) {
+func ScanInt(pos int /*TODO:TYPE*/) (result bool, out int32) {
 	iv, err := _I.Get(316, "scan_int", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6201,7 +6195,7 @@ func ScanInt(pos int) (result bool, out int32) {
 
 // pango_scan_string
 // container is nil
-func ScanString(pos int) (result bool, out int /*TODO_TYPE*/) {
+func ScanString(pos int /*TODO:TYPE*/) (result bool, out int /*TODO_TYPE*/) {
 	iv, err := _I.Get(317, "scan_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6219,7 +6213,7 @@ func ScanString(pos int) (result bool, out int /*TODO_TYPE*/) {
 
 // pango_scan_word
 // container is nil
-func ScanWord(pos int) (result bool, out int /*TODO_TYPE*/) {
+func ScanWord(pos int /*TODO:TYPE*/) (result bool, out int /*TODO_TYPE*/) {
 	iv, err := _I.Get(318, "scan_word", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6309,7 +6303,7 @@ func ShapeFull(item_text string, item_length int32, paragraph_text string, parag
 
 // pango_skip_space
 // container is nil
-func SkipSpace(pos int) (result bool) {
+func SkipSpace(pos int /*TODO:TYPE*/) (result bool) {
 	iv, err := _I.Get(323, "skip_space", "")
 	if err != nil {
 		log.Println("WARN:", err)

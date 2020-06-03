@@ -12,6 +12,7 @@ import "unsafe"
 
 var _I = gi.NewInvokerCache("Gdk")
 var _ unsafe.Pointer
+var _ *log.Logger
 
 func init() {
 	repo := gi.DefaultRepository()
@@ -26,14 +27,14 @@ type AnchorHintsFlags int
 
 const (
 	AnchorHintsFlipX   AnchorHintsFlags = 1
-	AnchorHintsFlipY                    = 2
-	AnchorHintsSlideX                   = 4
-	AnchorHintsSlideY                   = 8
-	AnchorHintsResizeX                  = 16
-	AnchorHintsResizeY                  = 32
-	AnchorHintsFlip                     = 3
-	AnchorHintsSlide                    = 12
-	AnchorHintsResize                   = 48
+	AnchorHintsFlipY   AnchorHintsFlags = 2
+	AnchorHintsSlideX  AnchorHintsFlags = 4
+	AnchorHintsSlideY  AnchorHintsFlags = 8
+	AnchorHintsResizeX AnchorHintsFlags = 16
+	AnchorHintsResizeY AnchorHintsFlags = 32
+	AnchorHintsFlip    AnchorHintsFlags = 3
+	AnchorHintsSlide   AnchorHintsFlags = 12
+	AnchorHintsResize  AnchorHintsFlags = 48
 )
 
 // Object AppLaunchContext
@@ -222,14 +223,14 @@ type AxisFlags int
 
 const (
 	AxisFlagsX        AxisFlags = 2
-	AxisFlagsY                  = 4
-	AxisFlagsPressure           = 8
-	AxisFlagsXtilt              = 16
-	AxisFlagsYtilt              = 32
-	AxisFlagsWheel              = 64
-	AxisFlagsDistance           = 128
-	AxisFlagsRotation           = 256
-	AxisFlagsSlider             = 512
+	AxisFlagsY        AxisFlags = 4
+	AxisFlagsPressure AxisFlags = 8
+	AxisFlagsXtilt    AxisFlags = 16
+	AxisFlagsYtilt    AxisFlags = 32
+	AxisFlagsWheel    AxisFlags = 64
+	AxisFlagsDistance AxisFlags = 128
+	AxisFlagsRotation AxisFlags = 256
+	AxisFlagsSlider   AxisFlags = 512
 )
 
 // Enum AxisUse
@@ -237,16 +238,16 @@ type AxisUseEnum int
 
 const (
 	AxisUseIgnore   AxisUseEnum = 0
-	AxisUseX                    = 1
-	AxisUseY                    = 2
-	AxisUsePressure             = 3
-	AxisUseXtilt                = 4
-	AxisUseYtilt                = 5
-	AxisUseWheel                = 6
-	AxisUseDistance             = 7
-	AxisUseRotation             = 8
-	AxisUseSlider               = 9
-	AxisUseLast                 = 10
+	AxisUseX        AxisUseEnum = 1
+	AxisUseY        AxisUseEnum = 2
+	AxisUsePressure AxisUseEnum = 3
+	AxisUseXtilt    AxisUseEnum = 4
+	AxisUseYtilt    AxisUseEnum = 5
+	AxisUseWheel    AxisUseEnum = 6
+	AxisUseDistance AxisUseEnum = 7
+	AxisUseRotation AxisUseEnum = 8
+	AxisUseSlider   AxisUseEnum = 9
+	AxisUseLast     AxisUseEnum = 10
 )
 
 // Enum ByteOrder
@@ -254,7 +255,7 @@ type ByteOrderEnum int
 
 const (
 	ByteOrderLsbFirst ByteOrderEnum = 0
-	ByteOrderMsbFirst               = 1
+	ByteOrderMsbFirst ByteOrderEnum = 1
 )
 
 // Struct Color
@@ -373,14 +374,14 @@ type CrossingModeEnum int
 
 const (
 	CrossingModeNormal       CrossingModeEnum = 0
-	CrossingModeGrab                          = 1
-	CrossingModeUngrab                        = 2
-	CrossingModeGtkGrab                       = 3
-	CrossingModeGtkUngrab                     = 4
-	CrossingModeStateChanged                  = 5
-	CrossingModeTouchBegin                    = 6
-	CrossingModeTouchEnd                      = 7
-	CrossingModeDeviceSwitch                  = 8
+	CrossingModeGrab         CrossingModeEnum = 1
+	CrossingModeUngrab       CrossingModeEnum = 2
+	CrossingModeGtkGrab      CrossingModeEnum = 3
+	CrossingModeGtkUngrab    CrossingModeEnum = 4
+	CrossingModeStateChanged CrossingModeEnum = 5
+	CrossingModeTouchBegin   CrossingModeEnum = 6
+	CrossingModeTouchEnd     CrossingModeEnum = 7
+	CrossingModeDeviceSwitch CrossingModeEnum = 8
 )
 
 // Object Cursor
@@ -598,85 +599,85 @@ type CursorTypeEnum int
 
 const (
 	CursorTypeXCursor           CursorTypeEnum = 0
-	CursorTypeArrow                            = 2
-	CursorTypeBasedArrowDown                   = 4
-	CursorTypeBasedArrowUp                     = 6
-	CursorTypeBoat                             = 8
-	CursorTypeBogosity                         = 10
-	CursorTypeBottomLeftCorner                 = 12
-	CursorTypeBottomRightCorner                = 14
-	CursorTypeBottomSide                       = 16
-	CursorTypeBottomTee                        = 18
-	CursorTypeBoxSpiral                        = 20
-	CursorTypeCenterPtr                        = 22
-	CursorTypeCircle                           = 24
-	CursorTypeClock                            = 26
-	CursorTypeCoffeeMug                        = 28
-	CursorTypeCross                            = 30
-	CursorTypeCrossReverse                     = 32
-	CursorTypeCrosshair                        = 34
-	CursorTypeDiamondCross                     = 36
-	CursorTypeDot                              = 38
-	CursorTypeDotbox                           = 40
-	CursorTypeDoubleArrow                      = 42
-	CursorTypeDraftLarge                       = 44
-	CursorTypeDraftSmall                       = 46
-	CursorTypeDrapedBox                        = 48
-	CursorTypeExchange                         = 50
-	CursorTypeFleur                            = 52
-	CursorTypeGobbler                          = 54
-	CursorTypeGumby                            = 56
-	CursorTypeHand1                            = 58
-	CursorTypeHand2                            = 60
-	CursorTypeHeart                            = 62
-	CursorTypeIcon                             = 64
-	CursorTypeIronCross                        = 66
-	CursorTypeLeftPtr                          = 68
-	CursorTypeLeftSide                         = 70
-	CursorTypeLeftTee                          = 72
-	CursorTypeLeftbutton                       = 74
-	CursorTypeLlAngle                          = 76
-	CursorTypeLrAngle                          = 78
-	CursorTypeMan                              = 80
-	CursorTypeMiddlebutton                     = 82
-	CursorTypeMouse                            = 84
-	CursorTypePencil                           = 86
-	CursorTypePirate                           = 88
-	CursorTypePlus                             = 90
-	CursorTypeQuestionArrow                    = 92
-	CursorTypeRightPtr                         = 94
-	CursorTypeRightSide                        = 96
-	CursorTypeRightTee                         = 98
-	CursorTypeRightbutton                      = 100
-	CursorTypeRtlLogo                          = 102
-	CursorTypeSailboat                         = 104
-	CursorTypeSbDownArrow                      = 106
-	CursorTypeSbHDoubleArrow                   = 108
-	CursorTypeSbLeftArrow                      = 110
-	CursorTypeSbRightArrow                     = 112
-	CursorTypeSbUpArrow                        = 114
-	CursorTypeSbVDoubleArrow                   = 116
-	CursorTypeShuttle                          = 118
-	CursorTypeSizing                           = 120
-	CursorTypeSpider                           = 122
-	CursorTypeSpraycan                         = 124
-	CursorTypeStar                             = 126
-	CursorTypeTarget                           = 128
-	CursorTypeTcross                           = 130
-	CursorTypeTopLeftArrow                     = 132
-	CursorTypeTopLeftCorner                    = 134
-	CursorTypeTopRightCorner                   = 136
-	CursorTypeTopSide                          = 138
-	CursorTypeTopTee                           = 140
-	CursorTypeTrek                             = 142
-	CursorTypeUlAngle                          = 144
-	CursorTypeUmbrella                         = 146
-	CursorTypeUrAngle                          = 148
-	CursorTypeWatch                            = 150
-	CursorTypeXterm                            = 152
-	CursorTypeLastCursor                       = 153
-	CursorTypeBlankCursor                      = -2
-	CursorTypeCursorIsPixmap                   = -1
+	CursorTypeArrow             CursorTypeEnum = 2
+	CursorTypeBasedArrowDown    CursorTypeEnum = 4
+	CursorTypeBasedArrowUp      CursorTypeEnum = 6
+	CursorTypeBoat              CursorTypeEnum = 8
+	CursorTypeBogosity          CursorTypeEnum = 10
+	CursorTypeBottomLeftCorner  CursorTypeEnum = 12
+	CursorTypeBottomRightCorner CursorTypeEnum = 14
+	CursorTypeBottomSide        CursorTypeEnum = 16
+	CursorTypeBottomTee         CursorTypeEnum = 18
+	CursorTypeBoxSpiral         CursorTypeEnum = 20
+	CursorTypeCenterPtr         CursorTypeEnum = 22
+	CursorTypeCircle            CursorTypeEnum = 24
+	CursorTypeClock             CursorTypeEnum = 26
+	CursorTypeCoffeeMug         CursorTypeEnum = 28
+	CursorTypeCross             CursorTypeEnum = 30
+	CursorTypeCrossReverse      CursorTypeEnum = 32
+	CursorTypeCrosshair         CursorTypeEnum = 34
+	CursorTypeDiamondCross      CursorTypeEnum = 36
+	CursorTypeDot               CursorTypeEnum = 38
+	CursorTypeDotbox            CursorTypeEnum = 40
+	CursorTypeDoubleArrow       CursorTypeEnum = 42
+	CursorTypeDraftLarge        CursorTypeEnum = 44
+	CursorTypeDraftSmall        CursorTypeEnum = 46
+	CursorTypeDrapedBox         CursorTypeEnum = 48
+	CursorTypeExchange          CursorTypeEnum = 50
+	CursorTypeFleur             CursorTypeEnum = 52
+	CursorTypeGobbler           CursorTypeEnum = 54
+	CursorTypeGumby             CursorTypeEnum = 56
+	CursorTypeHand1             CursorTypeEnum = 58
+	CursorTypeHand2             CursorTypeEnum = 60
+	CursorTypeHeart             CursorTypeEnum = 62
+	CursorTypeIcon              CursorTypeEnum = 64
+	CursorTypeIronCross         CursorTypeEnum = 66
+	CursorTypeLeftPtr           CursorTypeEnum = 68
+	CursorTypeLeftSide          CursorTypeEnum = 70
+	CursorTypeLeftTee           CursorTypeEnum = 72
+	CursorTypeLeftbutton        CursorTypeEnum = 74
+	CursorTypeLlAngle           CursorTypeEnum = 76
+	CursorTypeLrAngle           CursorTypeEnum = 78
+	CursorTypeMan               CursorTypeEnum = 80
+	CursorTypeMiddlebutton      CursorTypeEnum = 82
+	CursorTypeMouse             CursorTypeEnum = 84
+	CursorTypePencil            CursorTypeEnum = 86
+	CursorTypePirate            CursorTypeEnum = 88
+	CursorTypePlus              CursorTypeEnum = 90
+	CursorTypeQuestionArrow     CursorTypeEnum = 92
+	CursorTypeRightPtr          CursorTypeEnum = 94
+	CursorTypeRightSide         CursorTypeEnum = 96
+	CursorTypeRightTee          CursorTypeEnum = 98
+	CursorTypeRightbutton       CursorTypeEnum = 100
+	CursorTypeRtlLogo           CursorTypeEnum = 102
+	CursorTypeSailboat          CursorTypeEnum = 104
+	CursorTypeSbDownArrow       CursorTypeEnum = 106
+	CursorTypeSbHDoubleArrow    CursorTypeEnum = 108
+	CursorTypeSbLeftArrow       CursorTypeEnum = 110
+	CursorTypeSbRightArrow      CursorTypeEnum = 112
+	CursorTypeSbUpArrow         CursorTypeEnum = 114
+	CursorTypeSbVDoubleArrow    CursorTypeEnum = 116
+	CursorTypeShuttle           CursorTypeEnum = 118
+	CursorTypeSizing            CursorTypeEnum = 120
+	CursorTypeSpider            CursorTypeEnum = 122
+	CursorTypeSpraycan          CursorTypeEnum = 124
+	CursorTypeStar              CursorTypeEnum = 126
+	CursorTypeTarget            CursorTypeEnum = 128
+	CursorTypeTcross            CursorTypeEnum = 130
+	CursorTypeTopLeftArrow      CursorTypeEnum = 132
+	CursorTypeTopLeftCorner     CursorTypeEnum = 134
+	CursorTypeTopRightCorner    CursorTypeEnum = 136
+	CursorTypeTopSide           CursorTypeEnum = 138
+	CursorTypeTopTee            CursorTypeEnum = 140
+	CursorTypeTrek              CursorTypeEnum = 142
+	CursorTypeUlAngle           CursorTypeEnum = 144
+	CursorTypeUmbrella          CursorTypeEnum = 146
+	CursorTypeUrAngle           CursorTypeEnum = 148
+	CursorTypeWatch             CursorTypeEnum = 150
+	CursorTypeXterm             CursorTypeEnum = 152
+	CursorTypeLastCursor        CursorTypeEnum = 153
+	CursorTypeBlankCursor       CursorTypeEnum = -2
+	CursorTypeCursorIsPixmap    CursorTypeEnum = -1
 )
 
 // Object Device
@@ -1368,8 +1369,8 @@ type DevicePadFeatureEnum int
 
 const (
 	DevicePadFeatureButton DevicePadFeatureEnum = 0
-	DevicePadFeatureRing                        = 1
-	DevicePadFeatureStrip                       = 2
+	DevicePadFeatureRing   DevicePadFeatureEnum = 1
+	DevicePadFeatureStrip  DevicePadFeatureEnum = 2
 )
 
 // ignore GType struct DevicePadInterface
@@ -1440,13 +1441,13 @@ type DeviceToolTypeEnum int
 
 const (
 	DeviceToolTypeUnknown  DeviceToolTypeEnum = 0
-	DeviceToolTypePen                         = 1
-	DeviceToolTypeEraser                      = 2
-	DeviceToolTypeBrush                       = 3
-	DeviceToolTypePencil                      = 4
-	DeviceToolTypeAirbrush                    = 5
-	DeviceToolTypeMouse                       = 6
-	DeviceToolTypeLens                        = 7
+	DeviceToolTypePen      DeviceToolTypeEnum = 1
+	DeviceToolTypeEraser   DeviceToolTypeEnum = 2
+	DeviceToolTypeBrush    DeviceToolTypeEnum = 3
+	DeviceToolTypePencil   DeviceToolTypeEnum = 4
+	DeviceToolTypeAirbrush DeviceToolTypeEnum = 5
+	DeviceToolTypeMouse    DeviceToolTypeEnum = 6
+	DeviceToolTypeLens     DeviceToolTypeEnum = 7
 )
 
 // Enum DeviceType
@@ -1454,8 +1455,8 @@ type DeviceTypeEnum int
 
 const (
 	DeviceTypeMaster   DeviceTypeEnum = 0
-	DeviceTypeSlave                   = 1
-	DeviceTypeFloating                = 2
+	DeviceTypeSlave    DeviceTypeEnum = 1
+	DeviceTypeFloating DeviceTypeEnum = 2
 )
 
 // Object Display
@@ -1469,9 +1470,6 @@ type IDisplay interface{ P_Display() unsafe.Pointer }
 
 func (v Display) P_Display() unsafe.Pointer { return v.P }
 
-// gdk_display_get_default
-// container is not nil, container is Display
-// num arg is 0
 // gdk_display_open
 // container is not nil, container is Display
 // is method
@@ -1492,9 +1490,6 @@ func DisplayOpen1(display_name string) (result Display) {
 	return
 }
 
-// gdk_display_open_default_libgtk_only
-// container is not nil, container is Display
-// num arg is 0
 // gdk_display_beep
 // container is not nil, container is Display
 // is method
@@ -2096,7 +2091,7 @@ func (v Display) SetDoubleClickTime(msec uint32) {
 // gdk_display_store_clipboard
 // container is not nil, container is Display
 // is method
-func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32) {
+func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32) {
 	iv, err := _I.Get(104, "Display", "store_clipboard")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2272,9 +2267,6 @@ type IDisplayManager interface{ P_DisplayManager() unsafe.Pointer }
 
 func (v DisplayManager) P_DisplayManager() unsafe.Pointer { return v.P }
 
-// gdk_display_manager_get
-// container is not nil, container is DisplayManager
-// num arg is 0
 // gdk_display_manager_get_default_display
 // container is not nil, container is DisplayManager
 // is method
@@ -2349,11 +2341,11 @@ type DragActionFlags int
 
 const (
 	DragActionDefault DragActionFlags = 1
-	DragActionCopy                    = 2
-	DragActionMove                    = 4
-	DragActionLink                    = 8
-	DragActionPrivate                 = 16
-	DragActionAsk                     = 32
+	DragActionCopy    DragActionFlags = 2
+	DragActionMove    DragActionFlags = 4
+	DragActionLink    DragActionFlags = 8
+	DragActionPrivate DragActionFlags = 16
+	DragActionAsk     DragActionFlags = 32
 )
 
 // Enum DragCancelReason
@@ -2361,8 +2353,8 @@ type DragCancelReasonEnum int
 
 const (
 	DragCancelReasonNoTarget      DragCancelReasonEnum = 0
-	DragCancelReasonUserCancelled                      = 1
-	DragCancelReasonError                              = 2
+	DragCancelReasonUserCancelled DragCancelReasonEnum = 1
+	DragCancelReasonError         DragCancelReasonEnum = 2
 )
 
 // Object DragContext
@@ -2584,13 +2576,13 @@ type DragProtocolEnum int
 
 const (
 	DragProtocolNone           DragProtocolEnum = 0
-	DragProtocolMotif                           = 1
-	DragProtocolXdnd                            = 2
-	DragProtocolRootwin                         = 3
-	DragProtocolWin32Dropfiles                  = 4
-	DragProtocolOle2                            = 5
-	DragProtocolLocal                           = 6
-	DragProtocolWayland                         = 7
+	DragProtocolMotif          DragProtocolEnum = 1
+	DragProtocolXdnd           DragProtocolEnum = 2
+	DragProtocolRootwin        DragProtocolEnum = 3
+	DragProtocolWin32Dropfiles DragProtocolEnum = 4
+	DragProtocolOle2           DragProtocolEnum = 5
+	DragProtocolLocal          DragProtocolEnum = 6
+	DragProtocolWayland        DragProtocolEnum = 7
 )
 
 // Object DrawingContext
@@ -3293,9 +3285,6 @@ func (v Event) TriggersContextMenu() (result bool) {
 	return
 }
 
-// gdk_event_get
-// container is not nil, container is Event
-// num arg is 0
 // gdk_event_handler_set
 // container is not nil, container is Event
 // is method
@@ -3313,9 +3302,6 @@ func EventHandlerSet1(func1 int /*TODO_TYPE isPtr: false, tag: interface*/, data
 	iv.Call(args, nil, nil)
 }
 
-// gdk_event_peek
-// container is not nil, container is Event
-// num arg is 0
 // gdk_event_request_motions
 // container is not nil, container is Event
 // is method
@@ -3381,31 +3367,31 @@ type EventMaskFlags int
 
 const (
 	EventMaskExposureMask          EventMaskFlags = 2
-	EventMaskPointerMotionMask                    = 4
-	EventMaskPointerMotionHintMask                = 8
-	EventMaskButtonMotionMask                     = 16
-	EventMaskButton1MotionMask                    = 32
-	EventMaskButton2MotionMask                    = 64
-	EventMaskButton3MotionMask                    = 128
-	EventMaskButtonPressMask                      = 256
-	EventMaskButtonReleaseMask                    = 512
-	EventMaskKeyPressMask                         = 1024
-	EventMaskKeyReleaseMask                       = 2048
-	EventMaskEnterNotifyMask                      = 4096
-	EventMaskLeaveNotifyMask                      = 8192
-	EventMaskFocusChangeMask                      = 16384
-	EventMaskStructureMask                        = 32768
-	EventMaskPropertyChangeMask                   = 65536
-	EventMaskVisibilityNotifyMask                 = 131072
-	EventMaskProximityInMask                      = 262144
-	EventMaskProximityOutMask                     = 524288
-	EventMaskSubstructureMask                     = 1048576
-	EventMaskScrollMask                           = 2097152
-	EventMaskTouchMask                            = 4194304
-	EventMaskSmoothScrollMask                     = 8388608
-	EventMaskTouchpadGestureMask                  = 16777216
-	EventMaskTabletPadMask                        = 33554432
-	EventMaskAllEventsMask                        = 67108862
+	EventMaskPointerMotionMask     EventMaskFlags = 4
+	EventMaskPointerMotionHintMask EventMaskFlags = 8
+	EventMaskButtonMotionMask      EventMaskFlags = 16
+	EventMaskButton1MotionMask     EventMaskFlags = 32
+	EventMaskButton2MotionMask     EventMaskFlags = 64
+	EventMaskButton3MotionMask     EventMaskFlags = 128
+	EventMaskButtonPressMask       EventMaskFlags = 256
+	EventMaskButtonReleaseMask     EventMaskFlags = 512
+	EventMaskKeyPressMask          EventMaskFlags = 1024
+	EventMaskKeyReleaseMask        EventMaskFlags = 2048
+	EventMaskEnterNotifyMask       EventMaskFlags = 4096
+	EventMaskLeaveNotifyMask       EventMaskFlags = 8192
+	EventMaskFocusChangeMask       EventMaskFlags = 16384
+	EventMaskStructureMask         EventMaskFlags = 32768
+	EventMaskPropertyChangeMask    EventMaskFlags = 65536
+	EventMaskVisibilityNotifyMask  EventMaskFlags = 131072
+	EventMaskProximityInMask       EventMaskFlags = 262144
+	EventMaskProximityOutMask      EventMaskFlags = 524288
+	EventMaskSubstructureMask      EventMaskFlags = 1048576
+	EventMaskScrollMask            EventMaskFlags = 2097152
+	EventMaskTouchMask             EventMaskFlags = 4194304
+	EventMaskSmoothScrollMask      EventMaskFlags = 8388608
+	EventMaskTouchpadGestureMask   EventMaskFlags = 16777216
+	EventMaskTabletPadMask         EventMaskFlags = 33554432
+	EventMaskAllEventsMask         EventMaskFlags = 67108862
 )
 
 // Struct EventMotion
@@ -3483,56 +3469,56 @@ type EventTypeEnum int
 
 const (
 	EventTypeNothing           EventTypeEnum = -1
-	EventTypeDelete                          = 0
-	EventTypeDestroy                         = 1
-	EventTypeExpose                          = 2
-	EventTypeMotionNotify                    = 3
-	EventTypeButtonPress                     = 4
-	EventType2buttonPress                    = 5
-	EventTypeDoubleButtonPress               = 5
-	EventType3buttonPress                    = 6
-	EventTypeTripleButtonPress               = 6
-	EventTypeButtonRelease                   = 7
-	EventTypeKeyPress                        = 8
-	EventTypeKeyRelease                      = 9
-	EventTypeEnterNotify                     = 10
-	EventTypeLeaveNotify                     = 11
-	EventTypeFocusChange                     = 12
-	EventTypeConfigure                       = 13
-	EventTypeMap                             = 14
-	EventTypeUnmap                           = 15
-	EventTypePropertyNotify                  = 16
-	EventTypeSelectionClear                  = 17
-	EventTypeSelectionRequest                = 18
-	EventTypeSelectionNotify                 = 19
-	EventTypeProximityIn                     = 20
-	EventTypeProximityOut                    = 21
-	EventTypeDragEnter                       = 22
-	EventTypeDragLeave                       = 23
-	EventTypeDragMotion                      = 24
-	EventTypeDragStatus                      = 25
-	EventTypeDropStart                       = 26
-	EventTypeDropFinished                    = 27
-	EventTypeClientEvent                     = 28
-	EventTypeVisibilityNotify                = 29
-	EventTypeScroll                          = 31
-	EventTypeWindowState                     = 32
-	EventTypeSetting                         = 33
-	EventTypeOwnerChange                     = 34
-	EventTypeGrabBroken                      = 35
-	EventTypeDamage                          = 36
-	EventTypeTouchBegin                      = 37
-	EventTypeTouchUpdate                     = 38
-	EventTypeTouchEnd                        = 39
-	EventTypeTouchCancel                     = 40
-	EventTypeTouchpadSwipe                   = 41
-	EventTypeTouchpadPinch                   = 42
-	EventTypePadButtonPress                  = 43
-	EventTypePadButtonRelease                = 44
-	EventTypePadRing                         = 45
-	EventTypePadStrip                        = 46
-	EventTypePadGroupMode                    = 47
-	EventTypeEventLast                       = 48
+	EventTypeDelete            EventTypeEnum = 0
+	EventTypeDestroy           EventTypeEnum = 1
+	EventTypeExpose            EventTypeEnum = 2
+	EventTypeMotionNotify      EventTypeEnum = 3
+	EventTypeButtonPress       EventTypeEnum = 4
+	EventType2buttonPress      EventTypeEnum = 5
+	EventTypeDoubleButtonPress EventTypeEnum = 5
+	EventType3buttonPress      EventTypeEnum = 6
+	EventTypeTripleButtonPress EventTypeEnum = 6
+	EventTypeButtonRelease     EventTypeEnum = 7
+	EventTypeKeyPress          EventTypeEnum = 8
+	EventTypeKeyRelease        EventTypeEnum = 9
+	EventTypeEnterNotify       EventTypeEnum = 10
+	EventTypeLeaveNotify       EventTypeEnum = 11
+	EventTypeFocusChange       EventTypeEnum = 12
+	EventTypeConfigure         EventTypeEnum = 13
+	EventTypeMap               EventTypeEnum = 14
+	EventTypeUnmap             EventTypeEnum = 15
+	EventTypePropertyNotify    EventTypeEnum = 16
+	EventTypeSelectionClear    EventTypeEnum = 17
+	EventTypeSelectionRequest  EventTypeEnum = 18
+	EventTypeSelectionNotify   EventTypeEnum = 19
+	EventTypeProximityIn       EventTypeEnum = 20
+	EventTypeProximityOut      EventTypeEnum = 21
+	EventTypeDragEnter         EventTypeEnum = 22
+	EventTypeDragLeave         EventTypeEnum = 23
+	EventTypeDragMotion        EventTypeEnum = 24
+	EventTypeDragStatus        EventTypeEnum = 25
+	EventTypeDropStart         EventTypeEnum = 26
+	EventTypeDropFinished      EventTypeEnum = 27
+	EventTypeClientEvent       EventTypeEnum = 28
+	EventTypeVisibilityNotify  EventTypeEnum = 29
+	EventTypeScroll            EventTypeEnum = 31
+	EventTypeWindowState       EventTypeEnum = 32
+	EventTypeSetting           EventTypeEnum = 33
+	EventTypeOwnerChange       EventTypeEnum = 34
+	EventTypeGrabBroken        EventTypeEnum = 35
+	EventTypeDamage            EventTypeEnum = 36
+	EventTypeTouchBegin        EventTypeEnum = 37
+	EventTypeTouchUpdate       EventTypeEnum = 38
+	EventTypeTouchEnd          EventTypeEnum = 39
+	EventTypeTouchCancel       EventTypeEnum = 40
+	EventTypeTouchpadSwipe     EventTypeEnum = 41
+	EventTypeTouchpadPinch     EventTypeEnum = 42
+	EventTypePadButtonPress    EventTypeEnum = 43
+	EventTypePadButtonRelease  EventTypeEnum = 44
+	EventTypePadRing           EventTypeEnum = 45
+	EventTypePadStrip          EventTypeEnum = 46
+	EventTypePadGroupMode      EventTypeEnum = 47
+	EventTypeEventLast         EventTypeEnum = 48
 )
 
 // Struct EventVisibility
@@ -3550,8 +3536,8 @@ type FilterReturnEnum int
 
 const (
 	FilterReturnContinue  FilterReturnEnum = 0
-	FilterReturnTranslate                  = 1
-	FilterReturnRemove                     = 2
+	FilterReturnTranslate FilterReturnEnum = 1
+	FilterReturnRemove    FilterReturnEnum = 2
 )
 
 // Object FrameClock
@@ -3721,13 +3707,13 @@ type FrameClockPhaseFlags int
 
 const (
 	FrameClockPhaseNone         FrameClockPhaseFlags = 0
-	FrameClockPhaseFlushEvents                       = 1
-	FrameClockPhaseBeforePaint                       = 2
-	FrameClockPhaseUpdate                            = 4
-	FrameClockPhaseLayout                            = 8
-	FrameClockPhasePaint                             = 16
-	FrameClockPhaseResumeEvents                      = 32
-	FrameClockPhaseAfterPaint                        = 64
+	FrameClockPhaseFlushEvents  FrameClockPhaseFlags = 1
+	FrameClockPhaseBeforePaint  FrameClockPhaseFlags = 2
+	FrameClockPhaseUpdate       FrameClockPhaseFlags = 4
+	FrameClockPhaseLayout       FrameClockPhaseFlags = 8
+	FrameClockPhasePaint        FrameClockPhaseFlags = 16
+	FrameClockPhaseResumeEvents FrameClockPhaseFlags = 32
+	FrameClockPhaseAfterPaint   FrameClockPhaseFlags = 64
 )
 
 // Struct FrameClockPrivate
@@ -3878,7 +3864,7 @@ type FullscreenModeEnum int
 
 const (
 	FullscreenModeCurrentMonitor FullscreenModeEnum = 0
-	FullscreenModeAllMonitors                       = 1
+	FullscreenModeAllMonitors    FullscreenModeEnum = 1
 )
 
 // Object GLContext
@@ -3892,12 +3878,6 @@ type IGLContext interface{ P_GLContext() unsafe.Pointer }
 
 func (v GLContext) P_GLContext() unsafe.Pointer { return v.P }
 
-// gdk_gl_context_clear_current
-// container is not nil, container is GLContext
-// num arg is 0
-// gdk_gl_context_get_current
-// container is not nil, container is GLContext
-// num arg is 0
 // gdk_gl_context_get_debug_enabled
 // container is not nil, container is GLContext
 // is method
@@ -4156,8 +4136,8 @@ type GLErrorEnum int
 
 const (
 	GLErrorNotAvailable       GLErrorEnum = 0
-	GLErrorUnsupportedFormat              = 1
-	GLErrorUnsupportedProfile             = 2
+	GLErrorUnsupportedFormat  GLErrorEnum = 1
+	GLErrorUnsupportedProfile GLErrorEnum = 2
 )
 
 // Struct Geometry
@@ -4170,8 +4150,8 @@ type GrabOwnershipEnum int
 
 const (
 	GrabOwnershipNone        GrabOwnershipEnum = 0
-	GrabOwnershipWindow                        = 1
-	GrabOwnershipApplication                   = 2
+	GrabOwnershipWindow      GrabOwnershipEnum = 1
+	GrabOwnershipApplication GrabOwnershipEnum = 2
 )
 
 // Enum GrabStatus
@@ -4179,11 +4159,11 @@ type GrabStatusEnum int
 
 const (
 	GrabStatusSuccess        GrabStatusEnum = 0
-	GrabStatusAlreadyGrabbed                = 1
-	GrabStatusInvalidTime                   = 2
-	GrabStatusNotViewable                   = 3
-	GrabStatusFrozen                        = 4
-	GrabStatusFailed                        = 5
+	GrabStatusAlreadyGrabbed GrabStatusEnum = 1
+	GrabStatusInvalidTime    GrabStatusEnum = 2
+	GrabStatusNotViewable    GrabStatusEnum = 3
+	GrabStatusFrozen         GrabStatusEnum = 4
+	GrabStatusFailed         GrabStatusEnum = 5
 )
 
 // Enum Gravity
@@ -4191,15 +4171,15 @@ type GravityEnum int
 
 const (
 	GravityNorthWest GravityEnum = 1
-	GravityNorth                 = 2
-	GravityNorthEast             = 3
-	GravityWest                  = 4
-	GravityCenter                = 5
-	GravityEast                  = 6
-	GravitySouthWest             = 7
-	GravitySouth                 = 8
-	GravitySouthEast             = 9
-	GravityStatic                = 10
+	GravityNorth     GravityEnum = 2
+	GravityNorthEast GravityEnum = 3
+	GravityWest      GravityEnum = 4
+	GravityCenter    GravityEnum = 5
+	GravityEast      GravityEnum = 6
+	GravitySouthWest GravityEnum = 7
+	GravitySouth     GravityEnum = 8
+	GravitySouthEast GravityEnum = 9
+	GravityStatic    GravityEnum = 10
 )
 
 // Enum InputMode
@@ -4207,8 +4187,8 @@ type InputModeEnum int
 
 const (
 	InputModeDisabled InputModeEnum = 0
-	InputModeScreen                 = 1
-	InputModeWindow                 = 2
+	InputModeScreen   InputModeEnum = 1
+	InputModeWindow   InputModeEnum = 2
 )
 
 // Enum InputSource
@@ -4216,14 +4196,14 @@ type InputSourceEnum int
 
 const (
 	InputSourceMouse       InputSourceEnum = 0
-	InputSourcePen                         = 1
-	InputSourceEraser                      = 2
-	InputSourceCursor                      = 3
-	InputSourceKeyboard                    = 4
-	InputSourceTouchscreen                 = 5
-	InputSourceTouchpad                    = 6
-	InputSourceTrackpoint                  = 7
-	InputSourceTabletPad                   = 8
+	InputSourcePen         InputSourceEnum = 1
+	InputSourceEraser      InputSourceEnum = 2
+	InputSourceCursor      InputSourceEnum = 3
+	InputSourceKeyboard    InputSourceEnum = 4
+	InputSourceTouchscreen InputSourceEnum = 5
+	InputSourceTouchpad    InputSourceEnum = 6
+	InputSourceTrackpoint  InputSourceEnum = 7
+	InputSourceTabletPad   InputSourceEnum = 8
 )
 
 // Object Keymap
@@ -4237,9 +4217,6 @@ type IKeymap interface{ P_Keymap() unsafe.Pointer }
 
 func (v Keymap) P_Keymap() unsafe.Pointer { return v.P }
 
-// gdk_keymap_get_default
-// container is not nil, container is Keymap
-// num arg is 0
 // gdk_keymap_get_for_display
 // container is not nil, container is Keymap
 // is method
@@ -4261,7 +4238,7 @@ func KeymapGetForDisplay1(display IDisplay) (result Keymap) {
 // gdk_keymap_add_virtual_modifiers
 // container is not nil, container is Keymap
 // is method
-func (v Keymap) AddVirtualModifiers(state int) {
+func (v Keymap) AddVirtualModifiers(state int /*TODO:TYPE*/) {
 	iv, err := _I.Get(209, "Keymap", "add_virtual_modifiers")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4462,7 +4439,7 @@ func (v Keymap) LookupKey(key KeymapKey) (result uint32) {
 // gdk_keymap_map_virtual_modifiers
 // container is not nil, container is Keymap
 // is method
-func (v Keymap) MapVirtualModifiers(state int) (result bool) {
+func (v Keymap) MapVirtualModifiers(state int /*TODO:TYPE*/) (result bool) {
 	iv, err := _I.Get(220, "Keymap", "map_virtual_modifiers")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4516,12 +4493,12 @@ type ModifierIntentEnum int
 
 const (
 	ModifierIntentPrimaryAccelerator ModifierIntentEnum = 0
-	ModifierIntentContextMenu                           = 1
-	ModifierIntentExtendSelection                       = 2
-	ModifierIntentModifySelection                       = 3
-	ModifierIntentNoTextInput                           = 4
-	ModifierIntentShiftGroup                            = 5
-	ModifierIntentDefaultModMask                        = 6
+	ModifierIntentContextMenu        ModifierIntentEnum = 1
+	ModifierIntentExtendSelection    ModifierIntentEnum = 2
+	ModifierIntentModifySelection    ModifierIntentEnum = 3
+	ModifierIntentNoTextInput        ModifierIntentEnum = 4
+	ModifierIntentShiftGroup         ModifierIntentEnum = 5
+	ModifierIntentDefaultModMask     ModifierIntentEnum = 6
 )
 
 // Flags ModifierType
@@ -4529,37 +4506,37 @@ type ModifierTypeFlags int
 
 const (
 	ModifierTypeShiftMask              ModifierTypeFlags = 1
-	ModifierTypeLockMask                                 = 2
-	ModifierTypeControlMask                              = 4
-	ModifierTypeMod1Mask                                 = 8
-	ModifierTypeMod2Mask                                 = 16
-	ModifierTypeMod3Mask                                 = 32
-	ModifierTypeMod4Mask                                 = 64
-	ModifierTypeMod5Mask                                 = 128
-	ModifierTypeButton1Mask                              = 256
-	ModifierTypeButton2Mask                              = 512
-	ModifierTypeButton3Mask                              = 1024
-	ModifierTypeButton4Mask                              = 2048
-	ModifierTypeButton5Mask                              = 4096
-	ModifierTypeModifierReserved13Mask                   = 8192
-	ModifierTypeModifierReserved14Mask                   = 16384
-	ModifierTypeModifierReserved15Mask                   = 32768
-	ModifierTypeModifierReserved16Mask                   = 65536
-	ModifierTypeModifierReserved17Mask                   = 131072
-	ModifierTypeModifierReserved18Mask                   = 262144
-	ModifierTypeModifierReserved19Mask                   = 524288
-	ModifierTypeModifierReserved20Mask                   = 1048576
-	ModifierTypeModifierReserved21Mask                   = 2097152
-	ModifierTypeModifierReserved22Mask                   = 4194304
-	ModifierTypeModifierReserved23Mask                   = 8388608
-	ModifierTypeModifierReserved24Mask                   = 16777216
-	ModifierTypeModifierReserved25Mask                   = 33554432
-	ModifierTypeSuperMask                                = 67108864
-	ModifierTypeHyperMask                                = 134217728
-	ModifierTypeMetaMask                                 = 268435456
-	ModifierTypeModifierReserved29Mask                   = 536870912
-	ModifierTypeReleaseMask                              = 1073741824
-	ModifierTypeModifierMask                             = 1543512063
+	ModifierTypeLockMask               ModifierTypeFlags = 2
+	ModifierTypeControlMask            ModifierTypeFlags = 4
+	ModifierTypeMod1Mask               ModifierTypeFlags = 8
+	ModifierTypeMod2Mask               ModifierTypeFlags = 16
+	ModifierTypeMod3Mask               ModifierTypeFlags = 32
+	ModifierTypeMod4Mask               ModifierTypeFlags = 64
+	ModifierTypeMod5Mask               ModifierTypeFlags = 128
+	ModifierTypeButton1Mask            ModifierTypeFlags = 256
+	ModifierTypeButton2Mask            ModifierTypeFlags = 512
+	ModifierTypeButton3Mask            ModifierTypeFlags = 1024
+	ModifierTypeButton4Mask            ModifierTypeFlags = 2048
+	ModifierTypeButton5Mask            ModifierTypeFlags = 4096
+	ModifierTypeModifierReserved13Mask ModifierTypeFlags = 8192
+	ModifierTypeModifierReserved14Mask ModifierTypeFlags = 16384
+	ModifierTypeModifierReserved15Mask ModifierTypeFlags = 32768
+	ModifierTypeModifierReserved16Mask ModifierTypeFlags = 65536
+	ModifierTypeModifierReserved17Mask ModifierTypeFlags = 131072
+	ModifierTypeModifierReserved18Mask ModifierTypeFlags = 262144
+	ModifierTypeModifierReserved19Mask ModifierTypeFlags = 524288
+	ModifierTypeModifierReserved20Mask ModifierTypeFlags = 1048576
+	ModifierTypeModifierReserved21Mask ModifierTypeFlags = 2097152
+	ModifierTypeModifierReserved22Mask ModifierTypeFlags = 4194304
+	ModifierTypeModifierReserved23Mask ModifierTypeFlags = 8388608
+	ModifierTypeModifierReserved24Mask ModifierTypeFlags = 16777216
+	ModifierTypeModifierReserved25Mask ModifierTypeFlags = 33554432
+	ModifierTypeSuperMask              ModifierTypeFlags = 67108864
+	ModifierTypeHyperMask              ModifierTypeFlags = 134217728
+	ModifierTypeMetaMask               ModifierTypeFlags = 268435456
+	ModifierTypeModifierReserved29Mask ModifierTypeFlags = 536870912
+	ModifierTypeReleaseMask            ModifierTypeFlags = 1073741824
+	ModifierTypeModifierMask           ModifierTypeFlags = 1543512063
 )
 
 // Object Monitor
@@ -4768,11 +4745,11 @@ type NotifyTypeEnum int
 
 const (
 	NotifyTypeAncestor         NotifyTypeEnum = 0
-	NotifyTypeVirtual                         = 1
-	NotifyTypeInferior                        = 2
-	NotifyTypeNonlinear                       = 3
-	NotifyTypeNonlinearVirtual                = 4
-	NotifyTypeUnknown                         = 5
+	NotifyTypeVirtual          NotifyTypeEnum = 1
+	NotifyTypeInferior         NotifyTypeEnum = 2
+	NotifyTypeNonlinear        NotifyTypeEnum = 3
+	NotifyTypeNonlinearVirtual NotifyTypeEnum = 4
+	NotifyTypeUnknown          NotifyTypeEnum = 5
 )
 
 // Enum OwnerChange
@@ -4780,8 +4757,8 @@ type OwnerChangeEnum int
 
 const (
 	OwnerChangeNewOwner OwnerChangeEnum = 0
-	OwnerChangeDestroy                  = 1
-	OwnerChangeClose                    = 2
+	OwnerChangeDestroy  OwnerChangeEnum = 1
+	OwnerChangeClose    OwnerChangeEnum = 2
 )
 
 // Struct Point
@@ -4794,8 +4771,8 @@ type PropModeEnum int
 
 const (
 	PropModeReplace PropModeEnum = 0
-	PropModePrepend              = 1
-	PropModeAppend               = 2
+	PropModePrepend PropModeEnum = 1
+	PropModeAppend  PropModeEnum = 2
 )
 
 // Enum PropertyState
@@ -4803,7 +4780,7 @@ type PropertyStateEnum int
 
 const (
 	PropertyStateNewValue PropertyStateEnum = 0
-	PropertyStateDelete                     = 1
+	PropertyStateDelete   PropertyStateEnum = 1
 )
 
 // Struct RGBA
@@ -4988,21 +4965,6 @@ type IScreen interface{ P_Screen() unsafe.Pointer }
 
 func (v Screen) P_Screen() unsafe.Pointer { return v.P }
 
-// gdk_screen_get_default
-// container is not nil, container is Screen
-// num arg is 0
-// gdk_screen_height
-// container is not nil, container is Screen
-// num arg is 0
-// gdk_screen_height_mm
-// container is not nil, container is Screen
-// num arg is 0
-// gdk_screen_width
-// container is not nil, container is Screen
-// num arg is 0
-// gdk_screen_width_mm
-// container is not nil, container is Screen
-// num arg is 0
 // gdk_screen_get_active_window
 // container is not nil, container is Screen
 // is method
@@ -5529,10 +5491,10 @@ type ScrollDirectionEnum int
 
 const (
 	ScrollDirectionUp     ScrollDirectionEnum = 0
-	ScrollDirectionDown                       = 1
-	ScrollDirectionLeft                       = 2
-	ScrollDirectionRight                      = 3
-	ScrollDirectionSmooth                     = 4
+	ScrollDirectionDown   ScrollDirectionEnum = 1
+	ScrollDirectionLeft   ScrollDirectionEnum = 2
+	ScrollDirectionRight  ScrollDirectionEnum = 3
+	ScrollDirectionSmooth ScrollDirectionEnum = 4
 )
 
 // Object Seat
@@ -5675,12 +5637,12 @@ type SeatCapabilitiesFlags int
 
 const (
 	SeatCapabilitiesNone         SeatCapabilitiesFlags = 0
-	SeatCapabilitiesPointer                            = 1
-	SeatCapabilitiesTouch                              = 2
-	SeatCapabilitiesTabletStylus                       = 4
-	SeatCapabilitiesKeyboard                           = 8
-	SeatCapabilitiesAllPointing                        = 7
-	SeatCapabilitiesAll                                = 15
+	SeatCapabilitiesPointer      SeatCapabilitiesFlags = 1
+	SeatCapabilitiesTouch        SeatCapabilitiesFlags = 2
+	SeatCapabilitiesTabletStylus SeatCapabilitiesFlags = 4
+	SeatCapabilitiesKeyboard     SeatCapabilitiesFlags = 8
+	SeatCapabilitiesAllPointing  SeatCapabilitiesFlags = 7
+	SeatCapabilitiesAll          SeatCapabilitiesFlags = 15
 )
 
 // Enum SettingAction
@@ -5688,8 +5650,8 @@ type SettingActionEnum int
 
 const (
 	SettingActionNew     SettingActionEnum = 0
-	SettingActionChanged                   = 1
-	SettingActionDeleted                   = 2
+	SettingActionChanged SettingActionEnum = 1
+	SettingActionDeleted SettingActionEnum = 2
 )
 
 // Enum Status
@@ -5697,10 +5659,10 @@ type StatusEnum int
 
 const (
 	StatusOk         StatusEnum = 0
-	StatusError                 = -1
-	StatusErrorParam            = -2
-	StatusErrorFile             = -3
-	StatusErrorMem              = -4
+	StatusError      StatusEnum = -1
+	StatusErrorParam StatusEnum = -2
+	StatusErrorFile  StatusEnum = -3
+	StatusErrorMem   StatusEnum = -4
 )
 
 // Enum SubpixelLayout
@@ -5708,11 +5670,11 @@ type SubpixelLayoutEnum int
 
 const (
 	SubpixelLayoutUnknown       SubpixelLayoutEnum = 0
-	SubpixelLayoutNone                             = 1
-	SubpixelLayoutHorizontalRgb                    = 2
-	SubpixelLayoutHorizontalBgr                    = 3
-	SubpixelLayoutVerticalRgb                      = 4
-	SubpixelLayoutVerticalBgr                      = 5
+	SubpixelLayoutNone          SubpixelLayoutEnum = 1
+	SubpixelLayoutHorizontalRgb SubpixelLayoutEnum = 2
+	SubpixelLayoutHorizontalBgr SubpixelLayoutEnum = 3
+	SubpixelLayoutVerticalRgb   SubpixelLayoutEnum = 4
+	SubpixelLayoutVerticalBgr   SubpixelLayoutEnum = 5
 )
 
 // Struct TimeCoord
@@ -5725,9 +5687,9 @@ type TouchpadGesturePhaseEnum int
 
 const (
 	TouchpadGesturePhaseBegin  TouchpadGesturePhaseEnum = 0
-	TouchpadGesturePhaseUpdate                          = 1
-	TouchpadGesturePhaseEnd                             = 2
-	TouchpadGesturePhaseCancel                          = 3
+	TouchpadGesturePhaseUpdate TouchpadGesturePhaseEnum = 1
+	TouchpadGesturePhaseEnd    TouchpadGesturePhaseEnum = 2
+	TouchpadGesturePhaseCancel TouchpadGesturePhaseEnum = 3
 )
 
 // Enum VisibilityState
@@ -5735,8 +5697,8 @@ type VisibilityStateEnum int
 
 const (
 	VisibilityStateUnobscured    VisibilityStateEnum = 0
-	VisibilityStatePartial                           = 1
-	VisibilityStateFullyObscured                     = 2
+	VisibilityStatePartial       VisibilityStateEnum = 1
+	VisibilityStateFullyObscured VisibilityStateEnum = 2
 )
 
 // Object Visual
@@ -5750,15 +5712,6 @@ type IVisual interface{ P_Visual() unsafe.Pointer }
 
 func (v Visual) P_Visual() unsafe.Pointer { return v.P }
 
-// gdk_visual_get_best
-// container is not nil, container is Visual
-// num arg is 0
-// gdk_visual_get_best_depth
-// container is not nil, container is Visual
-// num arg is 0
-// gdk_visual_get_best_type
-// container is not nil, container is Visual
-// num arg is 0
 // gdk_visual_get_best_with_both
 // container is not nil, container is Visual
 // is method
@@ -5814,9 +5767,6 @@ func VisualGetBestWithType1(visual_type VisualTypeEnum) (result Visual) {
 	return
 }
 
-// gdk_visual_get_system
-// container is not nil, container is Visual
-// num arg is 0
 // gdk_visual_get_bits_per_rgb
 // container is not nil, container is Visual
 // is method
@@ -5990,11 +5940,11 @@ type VisualTypeEnum int
 
 const (
 	VisualTypeStaticGray  VisualTypeEnum = 0
-	VisualTypeGrayscale                  = 1
-	VisualTypeStaticColor                = 2
-	VisualTypePseudoColor                = 3
-	VisualTypeTrueColor                  = 4
-	VisualTypeDirectColor                = 5
+	VisualTypeGrayscale   VisualTypeEnum = 1
+	VisualTypeStaticColor VisualTypeEnum = 2
+	VisualTypePseudoColor VisualTypeEnum = 3
+	VisualTypeTrueColor   VisualTypeEnum = 4
+	VisualTypeDirectColor VisualTypeEnum = 5
 )
 
 // Flags WMDecoration
@@ -6002,12 +5952,12 @@ type WMDecorationFlags int
 
 const (
 	WMDecorationAll      WMDecorationFlags = 1
-	WMDecorationBorder                     = 2
-	WMDecorationResizeh                    = 4
-	WMDecorationTitle                      = 8
-	WMDecorationMenu                       = 16
-	WMDecorationMinimize                   = 32
-	WMDecorationMaximize                   = 64
+	WMDecorationBorder   WMDecorationFlags = 2
+	WMDecorationResizeh  WMDecorationFlags = 4
+	WMDecorationTitle    WMDecorationFlags = 8
+	WMDecorationMenu     WMDecorationFlags = 16
+	WMDecorationMinimize WMDecorationFlags = 32
+	WMDecorationMaximize WMDecorationFlags = 64
 )
 
 // Flags WMFunction
@@ -6015,11 +5965,11 @@ type WMFunctionFlags int
 
 const (
 	WMFunctionAll      WMFunctionFlags = 1
-	WMFunctionResize                   = 2
-	WMFunctionMove                     = 4
-	WMFunctionMinimize                 = 8
-	WMFunctionMaximize                 = 16
-	WMFunctionClose                    = 32
+	WMFunctionResize   WMFunctionFlags = 2
+	WMFunctionMove     WMFunctionFlags = 4
+	WMFunctionMinimize WMFunctionFlags = 8
+	WMFunctionMaximize WMFunctionFlags = 16
+	WMFunctionClose    WMFunctionFlags = 32
 )
 
 // Object Window
@@ -6098,9 +6048,6 @@ func WindowConstrainSize1(geometry Geometry, flags WindowHintsFlags, width int32
 	return
 }
 
-// gdk_window_process_all_updates
-// container is not nil, container is Window
-// num arg is 0
 // gdk_window_set_debug_updates
 // container is not nil, container is Window
 // is method
@@ -8664,13 +8611,13 @@ type WindowAttributesTypeFlags int
 
 const (
 	WindowAttributesTypeTitle    WindowAttributesTypeFlags = 2
-	WindowAttributesTypeX                                  = 4
-	WindowAttributesTypeY                                  = 8
-	WindowAttributesTypeCursor                             = 16
-	WindowAttributesTypeVisual                             = 32
-	WindowAttributesTypeWmclass                            = 64
-	WindowAttributesTypeNoredir                            = 128
-	WindowAttributesTypeTypeHint                           = 256
+	WindowAttributesTypeX        WindowAttributesTypeFlags = 4
+	WindowAttributesTypeY        WindowAttributesTypeFlags = 8
+	WindowAttributesTypeCursor   WindowAttributesTypeFlags = 16
+	WindowAttributesTypeVisual   WindowAttributesTypeFlags = 32
+	WindowAttributesTypeWmclass  WindowAttributesTypeFlags = 64
+	WindowAttributesTypeNoredir  WindowAttributesTypeFlags = 128
+	WindowAttributesTypeTypeHint WindowAttributesTypeFlags = 256
 )
 
 // ignore GType struct WindowClass
@@ -8679,13 +8626,13 @@ type WindowEdgeEnum int
 
 const (
 	WindowEdgeNorthWest WindowEdgeEnum = 0
-	WindowEdgeNorth                    = 1
-	WindowEdgeNorthEast                = 2
-	WindowEdgeWest                     = 3
-	WindowEdgeEast                     = 4
-	WindowEdgeSouthWest                = 5
-	WindowEdgeSouth                    = 6
-	WindowEdgeSouthEast                = 7
+	WindowEdgeNorth     WindowEdgeEnum = 1
+	WindowEdgeNorthEast WindowEdgeEnum = 2
+	WindowEdgeWest      WindowEdgeEnum = 3
+	WindowEdgeEast      WindowEdgeEnum = 4
+	WindowEdgeSouthWest WindowEdgeEnum = 5
+	WindowEdgeSouth     WindowEdgeEnum = 6
+	WindowEdgeSouthEast WindowEdgeEnum = 7
 )
 
 // Flags WindowHints
@@ -8693,14 +8640,14 @@ type WindowHintsFlags int
 
 const (
 	WindowHintsPos        WindowHintsFlags = 1
-	WindowHintsMinSize                     = 2
-	WindowHintsMaxSize                     = 4
-	WindowHintsBaseSize                    = 8
-	WindowHintsAspect                      = 16
-	WindowHintsResizeInc                   = 32
-	WindowHintsWinGravity                  = 64
-	WindowHintsUserPos                     = 128
-	WindowHintsUserSize                    = 256
+	WindowHintsMinSize    WindowHintsFlags = 2
+	WindowHintsMaxSize    WindowHintsFlags = 4
+	WindowHintsBaseSize   WindowHintsFlags = 8
+	WindowHintsAspect     WindowHintsFlags = 16
+	WindowHintsResizeInc  WindowHintsFlags = 32
+	WindowHintsWinGravity WindowHintsFlags = 64
+	WindowHintsUserPos    WindowHintsFlags = 128
+	WindowHintsUserSize   WindowHintsFlags = 256
 )
 
 // Struct WindowRedirect
@@ -8713,22 +8660,22 @@ type WindowStateFlags int
 
 const (
 	WindowStateWithdrawn       WindowStateFlags = 1
-	WindowStateIconified                        = 2
-	WindowStateMaximized                        = 4
-	WindowStateSticky                           = 8
-	WindowStateFullscreen                       = 16
-	WindowStateAbove                            = 32
-	WindowStateBelow                            = 64
-	WindowStateFocused                          = 128
-	WindowStateTiled                            = 256
-	WindowStateTopTiled                         = 512
-	WindowStateTopResizable                     = 1024
-	WindowStateRightTiled                       = 2048
-	WindowStateRightResizable                   = 4096
-	WindowStateBottomTiled                      = 8192
-	WindowStateBottomResizable                  = 16384
-	WindowStateLeftTiled                        = 32768
-	WindowStateLeftResizable                    = 65536
+	WindowStateIconified       WindowStateFlags = 2
+	WindowStateMaximized       WindowStateFlags = 4
+	WindowStateSticky          WindowStateFlags = 8
+	WindowStateFullscreen      WindowStateFlags = 16
+	WindowStateAbove           WindowStateFlags = 32
+	WindowStateBelow           WindowStateFlags = 64
+	WindowStateFocused         WindowStateFlags = 128
+	WindowStateTiled           WindowStateFlags = 256
+	WindowStateTopTiled        WindowStateFlags = 512
+	WindowStateTopResizable    WindowStateFlags = 1024
+	WindowStateRightTiled      WindowStateFlags = 2048
+	WindowStateRightResizable  WindowStateFlags = 4096
+	WindowStateBottomTiled     WindowStateFlags = 8192
+	WindowStateBottomResizable WindowStateFlags = 16384
+	WindowStateLeftTiled       WindowStateFlags = 32768
+	WindowStateLeftResizable   WindowStateFlags = 65536
 )
 
 // Enum WindowType
@@ -8736,12 +8683,12 @@ type WindowTypeEnum int
 
 const (
 	WindowTypeRoot       WindowTypeEnum = 0
-	WindowTypeToplevel                  = 1
-	WindowTypeChild                     = 2
-	WindowTypeTemp                      = 3
-	WindowTypeForeign                   = 4
-	WindowTypeOffscreen                 = 5
-	WindowTypeSubsurface                = 6
+	WindowTypeToplevel   WindowTypeEnum = 1
+	WindowTypeChild      WindowTypeEnum = 2
+	WindowTypeTemp       WindowTypeEnum = 3
+	WindowTypeForeign    WindowTypeEnum = 4
+	WindowTypeOffscreen  WindowTypeEnum = 5
+	WindowTypeSubsurface WindowTypeEnum = 6
 )
 
 // Enum WindowTypeHint
@@ -8749,19 +8696,19 @@ type WindowTypeHintEnum int
 
 const (
 	WindowTypeHintNormal       WindowTypeHintEnum = 0
-	WindowTypeHintDialog                          = 1
-	WindowTypeHintMenu                            = 2
-	WindowTypeHintToolbar                         = 3
-	WindowTypeHintSplashscreen                    = 4
-	WindowTypeHintUtility                         = 5
-	WindowTypeHintDock                            = 6
-	WindowTypeHintDesktop                         = 7
-	WindowTypeHintDropdownMenu                    = 8
-	WindowTypeHintPopupMenu                       = 9
-	WindowTypeHintTooltip                         = 10
-	WindowTypeHintNotification                    = 11
-	WindowTypeHintCombo                           = 12
-	WindowTypeHintDnd                             = 13
+	WindowTypeHintDialog       WindowTypeHintEnum = 1
+	WindowTypeHintMenu         WindowTypeHintEnum = 2
+	WindowTypeHintToolbar      WindowTypeHintEnum = 3
+	WindowTypeHintSplashscreen WindowTypeHintEnum = 4
+	WindowTypeHintUtility      WindowTypeHintEnum = 5
+	WindowTypeHintDock         WindowTypeHintEnum = 6
+	WindowTypeHintDesktop      WindowTypeHintEnum = 7
+	WindowTypeHintDropdownMenu WindowTypeHintEnum = 8
+	WindowTypeHintPopupMenu    WindowTypeHintEnum = 9
+	WindowTypeHintTooltip      WindowTypeHintEnum = 10
+	WindowTypeHintNotification WindowTypeHintEnum = 11
+	WindowTypeHintCombo        WindowTypeHintEnum = 12
+	WindowTypeHintDnd          WindowTypeHintEnum = 13
 )
 
 // Enum WindowWindowClass
@@ -8769,7 +8716,7 @@ type WindowWindowClassEnum int
 
 const (
 	WindowWindowClassInputOutput WindowWindowClassEnum = 0
-	WindowWindowClassInputOnly                         = 1
+	WindowWindowClassInputOnly   WindowWindowClassEnum = 1
 )
 
 // gdk_add_option_entries_libgtk_only
@@ -9544,7 +9491,7 @@ func GlErrorQuark() (result uint32) {
 
 // gdk_init
 // container is nil
-func Init(argc int, argv int) {
+func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 	iv, err := _I.Get(508, "init", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9556,7 +9503,7 @@ func Init(argc int, argv int) {
 
 // gdk_init_check
 // container is nil
-func InitCheck(argc int, argv int) (result bool) {
+func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 	iv, err := _I.Get(509, "init_check", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9867,7 +9814,7 @@ func PangoContextGetForScreen(screen IScreen) (result pango.Context) {
 
 // gdk_parse_args
 // container is nil
-func ParseArgs(argc int, argv int) {
+func ParseArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 	iv, err := _I.Get(529, "parse_args", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10326,7 +10273,7 @@ func TestSimulateKey(window IWindow, x int32, y int32, keyval uint32, modifiers 
 
 // gdk_text_property_to_utf8_list_for_display
 // container is nil
-func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format int32, text int /*TODO_TYPE isPtr: true, tag: array*/, length int32) (result int32, list int /*TODO_TYPE*/) {
+func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format int32, text gi.Uint8Array, length int32) (result int32, list int /*TODO_TYPE*/) {
 	iv, err := _I.Get(556, "text_property_to_utf8_list_for_display", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10336,7 +10283,7 @@ func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format in
 	arg_display := gi.NewPointerArgument(display.P_Display())
 	arg_encoding := gi.NewPointerArgument(encoding.P)
 	arg_format := gi.NewInt32Argument(format)
-	arg_text := gi.NewIntArgument(text) /*TODO*/
+	arg_text := gi.NewPointerArgument(text.P)
 	arg_length := gi.NewInt32Argument(length)
 	arg_list := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_display, arg_encoding, arg_format, arg_text, arg_length, arg_list}

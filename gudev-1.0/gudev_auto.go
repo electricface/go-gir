@@ -7,6 +7,7 @@ import "unsafe"
 
 var _I = gi.NewInvokerCache("GUdev")
 var _ unsafe.Pointer
+var _ *log.Logger
 
 func init() {
 	repo := gi.DefaultRepository()
@@ -30,7 +31,7 @@ func (v Client) P_Client() unsafe.Pointer { return v.P }
 // g_udev_client_new
 // container is not nil, container is Client
 // is constructor
-func NewClient(subsystems int /*TODO_TYPE isPtr: true, tag: array*/) (result Client) {
+func NewClient(subsystems int /*TODO_TYPE array type c, p0tag: utf8*/) (result Client) {
 	iv, err := _I.Get(0, "Client", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -783,8 +784,8 @@ type DeviceTypeEnum int
 
 const (
 	DeviceTypeNone  DeviceTypeEnum = 0
-	DeviceTypeBlock                = 98
-	DeviceTypeChar                 = 99
+	DeviceTypeBlock DeviceTypeEnum = 98
+	DeviceTypeChar  DeviceTypeEnum = 99
 )
 
 // Object Enumerator

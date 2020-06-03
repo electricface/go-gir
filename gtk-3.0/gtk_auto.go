@@ -14,6 +14,7 @@ import "unsafe"
 
 var _I = gi.NewInvokerCache("Gtk")
 var _ unsafe.Pointer
+var _ *log.Logger
 
 func init() {
 	repo := gi.DefaultRepository()
@@ -54,7 +55,7 @@ func NewAboutDialog() (result Widget) {
 // gtk_about_dialog_add_credit_section
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) AddCreditSection(section_name string, people int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v AboutDialog) AddCreditSection(section_name string, people int /*TODO_TYPE array type c, p0tag: utf8*/) {
 	iv, err := _I.Get(1, "AboutDialog", "add_credit_section")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -327,7 +328,7 @@ func (v AboutDialog) GetWrapLicense() (result bool) {
 // gtk_about_dialog_set_artists
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) SetArtists(artists int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v AboutDialog) SetArtists(artists int /*TODO_TYPE array type c, p0tag: utf8*/) {
 	iv, err := _I.Get(17, "AboutDialog", "set_artists")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -342,7 +343,7 @@ func (v AboutDialog) SetArtists(artists int /*TODO_TYPE isPtr: true, tag: array*
 // gtk_about_dialog_set_authors
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) SetAuthors(authors int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v AboutDialog) SetAuthors(authors int /*TODO_TYPE array type c, p0tag: utf8*/) {
 	iv, err := _I.Get(18, "AboutDialog", "set_authors")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -391,7 +392,7 @@ func (v AboutDialog) SetCopyright(copyright string) {
 // gtk_about_dialog_set_documenters
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) SetDocumenters(documenters int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v AboutDialog) SetDocumenters(documenters int /*TODO_TYPE array type c, p0tag: utf8*/) {
 	iv, err := _I.Get(21, "AboutDialog", "set_documenters")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -578,8 +579,8 @@ type AccelFlags int
 
 const (
 	AccelFlagsVisible AccelFlags = 1
-	AccelFlagsLocked             = 2
-	AccelFlagsMask               = 7
+	AccelFlagsLocked  AccelFlags = 2
+	AccelFlagsMask    AccelFlags = 7
 )
 
 // Object AccelGroup
@@ -1096,9 +1097,6 @@ func AccelMapForeachUnfiltered1(data unsafe.Pointer, foreach_func int /*TODO_TYP
 	iv.Call(args, nil, nil)
 }
 
-// gtk_accel_map_get
-// container is not nil, container is AccelMap
-// num arg is 0
 // gtk_accel_map_load
 // container is not nil, container is AccelMap
 // is method
@@ -2912,10 +2910,10 @@ type AlignEnum int
 
 const (
 	AlignFill     AlignEnum = 0
-	AlignStart              = 1
-	AlignEnd                = 2
-	AlignCenter             = 3
-	AlignBaseline           = 4
+	AlignStart    AlignEnum = 1
+	AlignEnd      AlignEnum = 2
+	AlignCenter   AlignEnum = 3
+	AlignBaseline AlignEnum = 4
 )
 
 // Object Alignment
@@ -3933,7 +3931,7 @@ func (v Application) RemoveWindow(window IWindow) {
 // gtk_application_set_accels_for_action
 // container is not nil, container is Application
 // is method
-func (v Application) SetAccelsForAction(detailed_action_name string, accels int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Application) SetAccelsForAction(detailed_action_name string, accels int /*TODO_TYPE array type c, p0tag: utf8*/) {
 	iv, err := _I.Get(214, "Application", "set_accels_for_action")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3999,9 +3997,9 @@ type ApplicationInhibitFlags int
 
 const (
 	ApplicationInhibitFlagsLogout  ApplicationInhibitFlags = 1
-	ApplicationInhibitFlagsSwitch                          = 2
-	ApplicationInhibitFlagsSuspend                         = 4
-	ApplicationInhibitFlagsIdle                            = 8
+	ApplicationInhibitFlagsSwitch  ApplicationInhibitFlags = 2
+	ApplicationInhibitFlagsSuspend ApplicationInhibitFlags = 4
+	ApplicationInhibitFlagsIdle    ApplicationInhibitFlags = 8
 )
 
 // Struct ApplicationPrivate
@@ -4200,8 +4198,8 @@ type ArrowPlacementEnum int
 
 const (
 	ArrowPlacementBoth  ArrowPlacementEnum = 0
-	ArrowPlacementStart                    = 1
-	ArrowPlacementEnd                      = 2
+	ArrowPlacementStart ArrowPlacementEnum = 1
+	ArrowPlacementEnd   ArrowPlacementEnum = 2
 )
 
 // Struct ArrowPrivate
@@ -4214,10 +4212,10 @@ type ArrowTypeEnum int
 
 const (
 	ArrowTypeUp    ArrowTypeEnum = 0
-	ArrowTypeDown                = 1
-	ArrowTypeLeft                = 2
-	ArrowTypeRight               = 3
-	ArrowTypeNone                = 4
+	ArrowTypeDown  ArrowTypeEnum = 1
+	ArrowTypeLeft  ArrowTypeEnum = 2
+	ArrowTypeRight ArrowTypeEnum = 3
+	ArrowTypeNone  ArrowTypeEnum = 4
 )
 
 // Object AspectFrame
@@ -4760,11 +4758,11 @@ type AssistantPageTypeEnum int
 
 const (
 	AssistantPageTypeContent  AssistantPageTypeEnum = 0
-	AssistantPageTypeIntro                          = 1
-	AssistantPageTypeConfirm                        = 2
-	AssistantPageTypeSummary                        = 3
-	AssistantPageTypeProgress                       = 4
-	AssistantPageTypeCustom                         = 5
+	AssistantPageTypeIntro    AssistantPageTypeEnum = 1
+	AssistantPageTypeConfirm  AssistantPageTypeEnum = 2
+	AssistantPageTypeSummary  AssistantPageTypeEnum = 3
+	AssistantPageTypeProgress AssistantPageTypeEnum = 4
+	AssistantPageTypeCustom   AssistantPageTypeEnum = 5
 )
 
 // Struct AssistantPrivate
@@ -4777,8 +4775,8 @@ type AttachOptionsFlags int
 
 const (
 	AttachOptionsExpand AttachOptionsFlags = 1
-	AttachOptionsShrink                    = 2
-	AttachOptionsFill                      = 4
+	AttachOptionsShrink AttachOptionsFlags = 2
+	AttachOptionsFill   AttachOptionsFlags = 4
 )
 
 // Enum BaselinePosition
@@ -4786,8 +4784,8 @@ type BaselinePositionEnum int
 
 const (
 	BaselinePositionTop    BaselinePositionEnum = 0
-	BaselinePositionCenter                      = 1
-	BaselinePositionBottom                      = 2
+	BaselinePositionCenter BaselinePositionEnum = 1
+	BaselinePositionBottom BaselinePositionEnum = 2
 )
 
 // Object Bin
@@ -5057,15 +5055,15 @@ type BorderStyleEnum int
 
 const (
 	BorderStyleNone   BorderStyleEnum = 0
-	BorderStyleSolid                  = 1
-	BorderStyleInset                  = 2
-	BorderStyleOutset                 = 3
-	BorderStyleHidden                 = 4
-	BorderStyleDotted                 = 5
-	BorderStyleDashed                 = 6
-	BorderStyleDouble                 = 7
-	BorderStyleGroove                 = 8
-	BorderStyleRidge                  = 9
+	BorderStyleSolid  BorderStyleEnum = 1
+	BorderStyleInset  BorderStyleEnum = 2
+	BorderStyleOutset BorderStyleEnum = 3
+	BorderStyleHidden BorderStyleEnum = 4
+	BorderStyleDotted BorderStyleEnum = 5
+	BorderStyleDashed BorderStyleEnum = 6
+	BorderStyleDouble BorderStyleEnum = 7
+	BorderStyleGroove BorderStyleEnum = 8
+	BorderStyleRidge  BorderStyleEnum = 9
 )
 
 // Object Box
@@ -5706,7 +5704,7 @@ func (v Builder) AddFromString(buffer string, length uint64) (result uint32, err
 // gtk_builder_add_objects_from_file
 // container is not nil, container is Builder
 // is method
-func (v Builder) AddObjectsFromFile(filename string, object_ids int /*TODO_TYPE isPtr: true, tag: array*/) (result uint32, err error) {
+func (v Builder) AddObjectsFromFile(filename string, object_ids int /*TODO_TYPE array type c, p0tag: utf8*/) (result uint32, err error) {
 	iv, err := _I.Get(299, "Builder", "add_objects_from_file")
 	if err != nil {
 		return
@@ -5729,7 +5727,7 @@ func (v Builder) AddObjectsFromFile(filename string, object_ids int /*TODO_TYPE 
 // gtk_builder_add_objects_from_resource
 // container is not nil, container is Builder
 // is method
-func (v Builder) AddObjectsFromResource(resource_path string, object_ids int /*TODO_TYPE isPtr: true, tag: array*/) (result uint32, err error) {
+func (v Builder) AddObjectsFromResource(resource_path string, object_ids int /*TODO_TYPE array type c, p0tag: utf8*/) (result uint32, err error) {
 	iv, err := _I.Get(300, "Builder", "add_objects_from_resource")
 	if err != nil {
 		return
@@ -5752,7 +5750,7 @@ func (v Builder) AddObjectsFromResource(resource_path string, object_ids int /*T
 // gtk_builder_add_objects_from_string
 // container is not nil, container is Builder
 // is method
-func (v Builder) AddObjectsFromString(buffer string, length uint64, object_ids int /*TODO_TYPE isPtr: true, tag: array*/) (result uint32, err error) {
+func (v Builder) AddObjectsFromString(buffer string, length uint64, object_ids int /*TODO_TYPE array type c, p0tag: utf8*/) (result uint32, err error) {
 	iv, err := _I.Get(301, "Builder", "add_objects_from_string")
 	if err != nil {
 		return
@@ -6026,19 +6024,19 @@ type BuilderErrorEnum int
 
 const (
 	BuilderErrorInvalidTypeFunction  BuilderErrorEnum = 0
-	BuilderErrorUnhandledTag                          = 1
-	BuilderErrorMissingAttribute                      = 2
-	BuilderErrorInvalidAttribute                      = 3
-	BuilderErrorInvalidTag                            = 4
-	BuilderErrorMissingPropertyValue                  = 5
-	BuilderErrorInvalidValue                          = 6
-	BuilderErrorVersionMismatch                       = 7
-	BuilderErrorDuplicateId                           = 8
-	BuilderErrorObjectTypeRefused                     = 9
-	BuilderErrorTemplateMismatch                      = 10
-	BuilderErrorInvalidProperty                       = 11
-	BuilderErrorInvalidSignal                         = 12
-	BuilderErrorInvalidId                             = 13
+	BuilderErrorUnhandledTag         BuilderErrorEnum = 1
+	BuilderErrorMissingAttribute     BuilderErrorEnum = 2
+	BuilderErrorInvalidAttribute     BuilderErrorEnum = 3
+	BuilderErrorInvalidTag           BuilderErrorEnum = 4
+	BuilderErrorMissingPropertyValue BuilderErrorEnum = 5
+	BuilderErrorInvalidValue         BuilderErrorEnum = 6
+	BuilderErrorVersionMismatch      BuilderErrorEnum = 7
+	BuilderErrorDuplicateId          BuilderErrorEnum = 8
+	BuilderErrorObjectTypeRefused    BuilderErrorEnum = 9
+	BuilderErrorTemplateMismatch     BuilderErrorEnum = 10
+	BuilderErrorInvalidProperty      BuilderErrorEnum = 11
+	BuilderErrorInvalidSignal        BuilderErrorEnum = 12
+	BuilderErrorInvalidId            BuilderErrorEnum = 13
 )
 
 // Struct BuilderPrivate
@@ -6696,11 +6694,11 @@ type ButtonBoxStyleEnum int
 
 const (
 	ButtonBoxStyleSpread ButtonBoxStyleEnum = 1
-	ButtonBoxStyleEdge                      = 2
-	ButtonBoxStyleStart                     = 3
-	ButtonBoxStyleEnd                       = 4
-	ButtonBoxStyleCenter                    = 5
-	ButtonBoxStyleExpand                    = 6
+	ButtonBoxStyleEdge   ButtonBoxStyleEnum = 2
+	ButtonBoxStyleStart  ButtonBoxStyleEnum = 3
+	ButtonBoxStyleEnd    ButtonBoxStyleEnum = 4
+	ButtonBoxStyleCenter ButtonBoxStyleEnum = 5
+	ButtonBoxStyleExpand ButtonBoxStyleEnum = 6
 )
 
 // ignore GType struct ButtonClass
@@ -6714,8 +6712,8 @@ type ButtonRoleEnum int
 
 const (
 	ButtonRoleNormal ButtonRoleEnum = 0
-	ButtonRoleCheck                 = 1
-	ButtonRoleRadio                 = 2
+	ButtonRoleCheck  ButtonRoleEnum = 1
+	ButtonRoleRadio  ButtonRoleEnum = 2
 )
 
 // Enum ButtonsType
@@ -6723,11 +6721,11 @@ type ButtonsTypeEnum int
 
 const (
 	ButtonsTypeNone     ButtonsTypeEnum = 0
-	ButtonsTypeOk                       = 1
-	ButtonsTypeClose                    = 2
-	ButtonsTypeCancel                   = 3
-	ButtonsTypeYesNo                    = 4
-	ButtonsTypeOkCancel                 = 5
+	ButtonsTypeOk       ButtonsTypeEnum = 1
+	ButtonsTypeClose    ButtonsTypeEnum = 2
+	ButtonsTypeCancel   ButtonsTypeEnum = 3
+	ButtonsTypeYesNo    ButtonsTypeEnum = 4
+	ButtonsTypeOkCancel ButtonsTypeEnum = 5
 )
 
 // Object Calendar
@@ -6992,10 +6990,10 @@ type CalendarDisplayOptionsFlags int
 
 const (
 	CalendarDisplayOptionsShowHeading     CalendarDisplayOptionsFlags = 1
-	CalendarDisplayOptionsShowDayNames                                = 2
-	CalendarDisplayOptionsNoMonthChange                               = 4
-	CalendarDisplayOptionsShowWeekNumbers                             = 8
-	CalendarDisplayOptionsShowDetails                                 = 32
+	CalendarDisplayOptionsShowDayNames    CalendarDisplayOptionsFlags = 2
+	CalendarDisplayOptionsNoMonthChange   CalendarDisplayOptionsFlags = 4
+	CalendarDisplayOptionsShowWeekNumbers CalendarDisplayOptionsFlags = 8
+	CalendarDisplayOptionsShowDetails     CalendarDisplayOptionsFlags = 32
 )
 
 // Struct CalendarPrivate
@@ -9006,7 +9004,7 @@ type CellRendererAccelModeEnum int
 
 const (
 	CellRendererAccelModeGtk   CellRendererAccelModeEnum = 0
-	CellRendererAccelModeOther                           = 1
+	CellRendererAccelModeOther CellRendererAccelModeEnum = 1
 )
 
 // Struct CellRendererAccelPrivate
@@ -9057,8 +9055,8 @@ type CellRendererModeEnum int
 
 const (
 	CellRendererModeInert       CellRendererModeEnum = 0
-	CellRendererModeActivatable                      = 1
-	CellRendererModeEditable                         = 2
+	CellRendererModeActivatable CellRendererModeEnum = 1
+	CellRendererModeEditable    CellRendererModeEnum = 2
 )
 
 // Object CellRendererPixbuf
@@ -9200,12 +9198,12 @@ type CellRendererStateFlags int
 
 const (
 	CellRendererStateSelected    CellRendererStateFlags = 1
-	CellRendererStatePrelit                             = 2
-	CellRendererStateInsensitive                        = 4
-	CellRendererStateSorted                             = 8
-	CellRendererStateFocused                            = 16
-	CellRendererStateExpandable                         = 32
-	CellRendererStateExpanded                           = 64
+	CellRendererStatePrelit      CellRendererStateFlags = 2
+	CellRendererStateInsensitive CellRendererStateFlags = 4
+	CellRendererStateSorted      CellRendererStateFlags = 8
+	CellRendererStateFocused     CellRendererStateFlags = 16
+	CellRendererStateExpandable  CellRendererStateFlags = 32
+	CellRendererStateExpanded    CellRendererStateFlags = 64
 )
 
 // Object CellRendererText
@@ -10159,7 +10157,7 @@ func (v Clipboard) RequestUris(callback int /*TODO_TYPE isPtr: false, tag: inter
 // gtk_clipboard_set_can_store
 // container is not nil, container is Clipboard
 // is method
-func (v Clipboard) SetCanStore(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32) {
+func (v Clipboard) SetCanStore(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32) {
 	iv, err := _I.Get(524, "Clipboard", "set_can_store")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10632,7 +10630,7 @@ type ColorChooserIfc struct{}
 // gtk_color_chooser_add_palette
 // container is not nil, container is ColorChooser
 // is method
-func (v *ColorChooserIfc) AddPalette(orientation OrientationEnum, colors_per_line int32, n_colors int32, colors int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *ColorChooserIfc) AddPalette(orientation OrientationEnum, colors_per_line int32, n_colors int32, colors int /*TODO_TYPE array type c, p0tag: interface*/) {
 	iv, err := _I.Get(550, "ColorChooser", "add_palette")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10847,7 +10845,7 @@ func ColorSelectionPaletteFromString1(str string) (result bool, colors int /*TOD
 // container is not nil, container is ColorSelection
 // is method
 // arg0Type tag: array, isPtr: true
-func ColorSelectionPaletteToString1(colors int /*TODO_TYPE isPtr: true, tag: array*/, n_colors int32) (result string) {
+func ColorSelectionPaletteToString1(colors int /*TODO_TYPE array type c, p0tag: interface*/, n_colors int32) (result string) {
 	iv, err := _I.Get(559, "ColorSelection", "palette_to_string")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12679,9 +12677,9 @@ type CornerTypeEnum int
 
 const (
 	CornerTypeTopLeft     CornerTypeEnum = 0
-	CornerTypeBottomLeft                 = 1
-	CornerTypeTopRight                   = 2
-	CornerTypeBottomRight                = 3
+	CornerTypeBottomLeft  CornerTypeEnum = 1
+	CornerTypeTopRight    CornerTypeEnum = 2
+	CornerTypeBottomRight CornerTypeEnum = 3
 )
 
 // Object CssProvider
@@ -12711,9 +12709,6 @@ func NewCssProvider() (result CssProvider) {
 	return
 }
 
-// gtk_css_provider_get_default
-// container is not nil, container is CssProvider
-// num arg is 0
 // gtk_css_provider_get_named
 // container is not nil, container is CssProvider
 // is method
@@ -12740,14 +12735,14 @@ func CssProviderGetNamed1(name string, variant string) (result CssProvider) {
 // gtk_css_provider_load_from_data
 // container is not nil, container is CssProvider
 // is method
-func (v CssProvider) LoadFromData(data int /*TODO_TYPE isPtr: true, tag: array*/, length int64) (result bool, err error) {
+func (v CssProvider) LoadFromData(data gi.Uint8Array, length int64) (result bool, err error) {
 	iv, err := _I.Get(665, "CssProvider", "load_from_data")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_length := gi.NewInt64Argument(length)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data, arg_length, arg_err}
@@ -12840,11 +12835,11 @@ type CssProviderErrorEnum int
 
 const (
 	CssProviderErrorFailed       CssProviderErrorEnum = 0
-	CssProviderErrorSyntax                            = 1
-	CssProviderErrorImport                            = 2
-	CssProviderErrorName                              = 3
-	CssProviderErrorDeprecated                        = 4
-	CssProviderErrorUnknownValue                      = 5
+	CssProviderErrorSyntax       CssProviderErrorEnum = 1
+	CssProviderErrorImport       CssProviderErrorEnum = 2
+	CssProviderErrorName         CssProviderErrorEnum = 3
+	CssProviderErrorDeprecated   CssProviderErrorEnum = 4
+	CssProviderErrorUnknownValue CssProviderErrorEnum = 5
 )
 
 // Struct CssProviderPrivate
@@ -13012,14 +13007,14 @@ type CssSectionTypeEnum int
 
 const (
 	CssSectionTypeDocument        CssSectionTypeEnum = 0
-	CssSectionTypeImport                             = 1
-	CssSectionTypeColorDefinition                    = 2
-	CssSectionTypeBindingSet                         = 3
-	CssSectionTypeRuleset                            = 4
-	CssSectionTypeSelector                           = 5
-	CssSectionTypeDeclaration                        = 6
-	CssSectionTypeValue                              = 7
-	CssSectionTypeKeyframes                          = 8
+	CssSectionTypeImport          CssSectionTypeEnum = 1
+	CssSectionTypeColorDefinition CssSectionTypeEnum = 2
+	CssSectionTypeBindingSet      CssSectionTypeEnum = 3
+	CssSectionTypeRuleset         CssSectionTypeEnum = 4
+	CssSectionTypeSelector        CssSectionTypeEnum = 5
+	CssSectionTypeDeclaration     CssSectionTypeEnum = 6
+	CssSectionTypeValue           CssSectionTypeEnum = 7
+	CssSectionTypeKeyframes       CssSectionTypeEnum = 8
 )
 
 // Flags DebugFlag
@@ -13027,27 +13022,27 @@ type DebugFlagFlags int
 
 const (
 	DebugFlagMisc         DebugFlagFlags = 1
-	DebugFlagPlugsocket                  = 2
-	DebugFlagText                        = 4
-	DebugFlagTree                        = 8
-	DebugFlagUpdates                     = 16
-	DebugFlagKeybindings                 = 32
-	DebugFlagMultihead                   = 64
-	DebugFlagModules                     = 128
-	DebugFlagGeometry                    = 256
-	DebugFlagIcontheme                   = 512
-	DebugFlagPrinting                    = 1024
-	DebugFlagBuilder                     = 2048
-	DebugFlagSizeRequest                 = 4096
-	DebugFlagNoCssCache                  = 8192
-	DebugFlagBaselines                   = 16384
-	DebugFlagPixelCache                  = 32768
-	DebugFlagNoPixelCache                = 65536
-	DebugFlagInteractive                 = 131072
-	DebugFlagTouchscreen                 = 262144
-	DebugFlagActions                     = 524288
-	DebugFlagResize                      = 1048576
-	DebugFlagLayout                      = 2097152
+	DebugFlagPlugsocket   DebugFlagFlags = 2
+	DebugFlagText         DebugFlagFlags = 4
+	DebugFlagTree         DebugFlagFlags = 8
+	DebugFlagUpdates      DebugFlagFlags = 16
+	DebugFlagKeybindings  DebugFlagFlags = 32
+	DebugFlagMultihead    DebugFlagFlags = 64
+	DebugFlagModules      DebugFlagFlags = 128
+	DebugFlagGeometry     DebugFlagFlags = 256
+	DebugFlagIcontheme    DebugFlagFlags = 512
+	DebugFlagPrinting     DebugFlagFlags = 1024
+	DebugFlagBuilder      DebugFlagFlags = 2048
+	DebugFlagSizeRequest  DebugFlagFlags = 4096
+	DebugFlagNoCssCache   DebugFlagFlags = 8192
+	DebugFlagBaselines    DebugFlagFlags = 16384
+	DebugFlagPixelCache   DebugFlagFlags = 32768
+	DebugFlagNoPixelCache DebugFlagFlags = 65536
+	DebugFlagInteractive  DebugFlagFlags = 131072
+	DebugFlagTouchscreen  DebugFlagFlags = 262144
+	DebugFlagActions      DebugFlagFlags = 524288
+	DebugFlagResize       DebugFlagFlags = 1048576
+	DebugFlagLayout       DebugFlagFlags = 2097152
 )
 
 // Enum DeleteType
@@ -13055,13 +13050,13 @@ type DeleteTypeEnum int
 
 const (
 	DeleteTypeChars           DeleteTypeEnum = 0
-	DeleteTypeWordEnds                       = 1
-	DeleteTypeWords                          = 2
-	DeleteTypeDisplayLines                   = 3
-	DeleteTypeDisplayLineEnds                = 4
-	DeleteTypeParagraphEnds                  = 5
-	DeleteTypeParagraphs                     = 6
-	DeleteTypeWhitespace                     = 7
+	DeleteTypeWordEnds        DeleteTypeEnum = 1
+	DeleteTypeWords           DeleteTypeEnum = 2
+	DeleteTypeDisplayLines    DeleteTypeEnum = 3
+	DeleteTypeDisplayLineEnds DeleteTypeEnum = 4
+	DeleteTypeParagraphEnds   DeleteTypeEnum = 5
+	DeleteTypeParagraphs      DeleteTypeEnum = 6
+	DeleteTypeWhitespace      DeleteTypeEnum = 7
 )
 
 // Flags DestDefaults
@@ -13069,9 +13064,9 @@ type DestDefaultsFlags int
 
 const (
 	DestDefaultsMotion    DestDefaultsFlags = 1
-	DestDefaultsHighlight                   = 2
-	DestDefaultsDrop                        = 4
-	DestDefaultsAll                         = 7
+	DestDefaultsHighlight DestDefaultsFlags = 2
+	DestDefaultsDrop      DestDefaultsFlags = 4
+	DestDefaultsAll       DestDefaultsFlags = 7
 )
 
 // Object Dialog
@@ -13261,7 +13256,7 @@ func (v Dialog) Run() (result int32) {
 // gtk_dialog_set_alternative_button_order_from_array
 // container is not nil, container is Dialog
 // is method
-func (v Dialog) SetAlternativeButtonOrderFromArray(n_params int32, new_order int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Dialog) SetAlternativeButtonOrderFromArray(n_params int32, new_order gi.Int32Array) {
 	iv, err := _I.Get(689, "Dialog", "set_alternative_button_order_from_array")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13269,7 +13264,7 @@ func (v Dialog) SetAlternativeButtonOrderFromArray(n_params int32, new_order int
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_n_params := gi.NewInt32Argument(n_params)
-	arg_new_order := gi.NewIntArgument(new_order) /*TODO*/
+	arg_new_order := gi.NewPointerArgument(new_order.P)
 	args := []gi.Argument{arg_v, arg_n_params, arg_new_order}
 	iv.Call(args, nil, nil)
 }
@@ -13311,8 +13306,8 @@ type DialogFlags int
 
 const (
 	DialogFlagsModal             DialogFlags = 1
-	DialogFlagsDestroyWithParent             = 2
-	DialogFlagsUseHeaderBar                  = 4
+	DialogFlagsDestroyWithParent DialogFlags = 2
+	DialogFlagsUseHeaderBar      DialogFlags = 4
 )
 
 // Struct DialogPrivate
@@ -13325,11 +13320,11 @@ type DirectionTypeEnum int
 
 const (
 	DirectionTypeTabForward  DirectionTypeEnum = 0
-	DirectionTypeTabBackward                   = 1
-	DirectionTypeUp                            = 2
-	DirectionTypeDown                          = 3
-	DirectionTypeLeft                          = 4
-	DirectionTypeRight                         = 5
+	DirectionTypeTabBackward DirectionTypeEnum = 1
+	DirectionTypeUp          DirectionTypeEnum = 2
+	DirectionTypeDown        DirectionTypeEnum = 3
+	DirectionTypeLeft        DirectionTypeEnum = 4
+	DirectionTypeRight       DirectionTypeEnum = 5
 )
 
 // Enum DragResult
@@ -13337,11 +13332,11 @@ type DragResultEnum int
 
 const (
 	DragResultSuccess        DragResultEnum = 0
-	DragResultNoTarget                      = 1
-	DragResultUserCancelled                 = 2
-	DragResultTimeoutExpired                = 3
-	DragResultGrabBroken                    = 4
-	DragResultError                         = 5
+	DragResultNoTarget       DragResultEnum = 1
+	DragResultUserCancelled  DragResultEnum = 2
+	DragResultTimeoutExpired DragResultEnum = 3
+	DragResultGrabBroken     DragResultEnum = 4
+	DragResultError          DragResultEnum = 5
 )
 
 // Object DrawingArea
@@ -13516,7 +13511,7 @@ func (v *EditableIfc) GetSelectionBounds() (result bool, start_pos int32, end_po
 // gtk_editable_insert_text
 // container is not nil, container is Editable
 // is method
-func (v *EditableIfc) InsertText(new_text string, new_text_length int32, position int) {
+func (v *EditableIfc) InsertText(new_text string, new_text_length int32, position int /*TODO:TYPE*/) {
 	iv, err := _I.Get(701, "Editable", "insert_text")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15579,7 +15574,7 @@ type EntryIconPositionEnum int
 
 const (
 	EntryIconPositionPrimary   EntryIconPositionEnum = 0
-	EntryIconPositionSecondary                       = 1
+	EntryIconPositionSecondary EntryIconPositionEnum = 1
 )
 
 // Struct EntryPrivate
@@ -15970,11 +15965,11 @@ type EventControllerScrollFlags int
 
 const (
 	EventControllerScrollFlagsNone       EventControllerScrollFlags = 0
-	EventControllerScrollFlagsVertical                              = 1
-	EventControllerScrollFlagsHorizontal                            = 2
-	EventControllerScrollFlagsDiscrete                              = 4
-	EventControllerScrollFlagsKinetic                               = 8
-	EventControllerScrollFlagsBothAxes                              = 3
+	EventControllerScrollFlagsVertical   EventControllerScrollFlags = 1
+	EventControllerScrollFlagsHorizontal EventControllerScrollFlags = 2
+	EventControllerScrollFlagsDiscrete   EventControllerScrollFlags = 4
+	EventControllerScrollFlagsKinetic    EventControllerScrollFlags = 8
+	EventControllerScrollFlagsBothAxes   EventControllerScrollFlags = 3
 )
 
 // Enum EventSequenceState
@@ -15982,8 +15977,8 @@ type EventSequenceStateEnum int
 
 const (
 	EventSequenceStateNone    EventSequenceStateEnum = 0
-	EventSequenceStateClaimed                        = 1
-	EventSequenceStateDenied                         = 2
+	EventSequenceStateClaimed EventSequenceStateEnum = 1
+	EventSequenceStateDenied  EventSequenceStateEnum = 2
 )
 
 // Object Expander
@@ -16325,9 +16320,9 @@ type ExpanderStyleEnum int
 
 const (
 	ExpanderStyleCollapsed     ExpanderStyleEnum = 0
-	ExpanderStyleSemiCollapsed                   = 1
-	ExpanderStyleSemiExpanded                    = 2
-	ExpanderStyleExpanded                        = 3
+	ExpanderStyleSemiCollapsed ExpanderStyleEnum = 1
+	ExpanderStyleSemiExpanded  ExpanderStyleEnum = 2
+	ExpanderStyleExpanded      ExpanderStyleEnum = 3
 )
 
 // Interface FileChooser
@@ -16340,7 +16335,7 @@ type FileChooserIfc struct{}
 // gtk_file_chooser_add_choice
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) AddChoice(id string, label string, options int /*TODO_TYPE isPtr: true, tag: array*/, option_labels int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *FileChooserIfc) AddChoice(id string, label string, options int /*TODO_TYPE array type c, p0tag: utf8*/, option_labels int /*TODO_TYPE array type c, p0tag: utf8*/) {
 	iv, err := _I.Get(857, "FileChooser", "add_choice")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17437,9 +17432,9 @@ type FileChooserActionEnum int
 
 const (
 	FileChooserActionOpen         FileChooserActionEnum = 0
-	FileChooserActionSave                               = 1
-	FileChooserActionSelectFolder                       = 2
-	FileChooserActionCreateFolder                       = 3
+	FileChooserActionSave         FileChooserActionEnum = 1
+	FileChooserActionSelectFolder FileChooserActionEnum = 2
+	FileChooserActionCreateFolder FileChooserActionEnum = 3
 )
 
 // Object FileChooserButton
@@ -17603,8 +17598,8 @@ type FileChooserConfirmationEnum int
 
 const (
 	FileChooserConfirmationConfirm        FileChooserConfirmationEnum = 0
-	FileChooserConfirmationAcceptFilename                             = 1
-	FileChooserConfirmationSelectAgain                                = 2
+	FileChooserConfirmationAcceptFilename FileChooserConfirmationEnum = 1
+	FileChooserConfirmationSelectAgain    FileChooserConfirmationEnum = 2
 )
 
 // Object FileChooserDialog
@@ -17632,9 +17627,9 @@ type FileChooserErrorEnum int
 
 const (
 	FileChooserErrorNonexistent        FileChooserErrorEnum = 0
-	FileChooserErrorBadFilename                             = 1
-	FileChooserErrorAlreadyExists                           = 2
-	FileChooserErrorIncompleteHostname                      = 3
+	FileChooserErrorBadFilename        FileChooserErrorEnum = 1
+	FileChooserErrorAlreadyExists      FileChooserErrorEnum = 2
+	FileChooserErrorIncompleteHostname FileChooserErrorEnum = 3
 )
 
 // Object FileChooserNative
@@ -17984,9 +17979,9 @@ type FileFilterFlags int
 
 const (
 	FileFilterFlagsFilename    FileFilterFlags = 1
-	FileFilterFlagsUri                         = 2
-	FileFilterFlagsDisplayName                 = 4
-	FileFilterFlagsMimeType                    = 8
+	FileFilterFlagsUri         FileFilterFlags = 2
+	FileFilterFlagsDisplayName FileFilterFlags = 4
+	FileFilterFlagsMimeType    FileFilterFlags = 8
 )
 
 // Struct FileFilterInfo
@@ -19307,10 +19302,10 @@ type FontChooserLevelFlags int
 
 const (
 	FontChooserLevelFamily     FontChooserLevelFlags = 0
-	FontChooserLevelStyle                            = 1
-	FontChooserLevelSize                             = 2
-	FontChooserLevelVariations                       = 4
-	FontChooserLevelFeatures                         = 8
+	FontChooserLevelStyle      FontChooserLevelFlags = 1
+	FontChooserLevelSize       FontChooserLevelFlags = 2
+	FontChooserLevelVariations FontChooserLevelFlags = 4
+	FontChooserLevelFeatures   FontChooserLevelFlags = 8
 )
 
 // Object FontChooserWidget
@@ -21053,7 +21048,7 @@ func NewGestureStylus(widget IWidget) (result Gesture) {
 // gtk_gesture_stylus_get_axes
 // container is not nil, container is GestureStylus
 // is method
-func (v GestureStylus) GetAxes(axes int /*TODO_TYPE isPtr: true, tag: array*/) (result bool, values int /*TODO_TYPE*/) {
+func (v GestureStylus) GetAxes(axes int /*TODO_TYPE array type c, p0tag: interface*/) (result bool, values int /*TODO_TYPE*/) {
 	iv, err := _I.Get(1107, "GestureStylus", "get_axes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22824,8 +22819,8 @@ type IMPreeditStyleEnum int
 
 const (
 	IMPreeditStyleNothing  IMPreeditStyleEnum = 0
-	IMPreeditStyleCallback                    = 1
-	IMPreeditStyleNone                        = 2
+	IMPreeditStyleCallback IMPreeditStyleEnum = 1
+	IMPreeditStyleNone     IMPreeditStyleEnum = 2
 )
 
 // Enum IMStatusStyle
@@ -22833,8 +22828,8 @@ type IMStatusStyleEnum int
 
 const (
 	IMStatusStyleNothing  IMStatusStyleEnum = 0
-	IMStatusStyleCallback                   = 1
-	IMStatusStyleNone                       = 2
+	IMStatusStyleCallback IMStatusStyleEnum = 1
+	IMStatusStyleNone     IMStatusStyleEnum = 2
 )
 
 // Object IconFactory
@@ -23379,14 +23374,14 @@ type IconLookupFlags int
 
 const (
 	IconLookupFlagsNoSvg           IconLookupFlags = 1
-	IconLookupFlagsForceSvg                        = 2
-	IconLookupFlagsUseBuiltin                      = 4
-	IconLookupFlagsGenericFallback                 = 8
-	IconLookupFlagsForceSize                       = 16
-	IconLookupFlagsForceRegular                    = 32
-	IconLookupFlagsForceSymbolic                   = 64
-	IconLookupFlagsDirLtr                          = 128
-	IconLookupFlagsDirRtl                          = 256
+	IconLookupFlagsForceSvg        IconLookupFlags = 2
+	IconLookupFlagsUseBuiltin      IconLookupFlags = 4
+	IconLookupFlagsGenericFallback IconLookupFlags = 8
+	IconLookupFlagsForceSize       IconLookupFlags = 16
+	IconLookupFlagsForceRegular    IconLookupFlags = 32
+	IconLookupFlagsForceSymbolic   IconLookupFlags = 64
+	IconLookupFlagsDirLtr          IconLookupFlags = 128
+	IconLookupFlagsDirRtl          IconLookupFlags = 256
 )
 
 // Struct IconSet
@@ -23579,12 +23574,12 @@ type IconSizeEnum int
 
 const (
 	IconSizeInvalid      IconSizeEnum = 0
-	IconSizeMenu                      = 1
-	IconSizeSmallToolbar              = 2
-	IconSizeLargeToolbar              = 3
-	IconSizeButton                    = 4
-	IconSizeDnd                       = 5
-	IconSizeDialog                    = 6
+	IconSizeMenu         IconSizeEnum = 1
+	IconSizeSmallToolbar IconSizeEnum = 2
+	IconSizeLargeToolbar IconSizeEnum = 3
+	IconSizeButton       IconSizeEnum = 4
+	IconSizeDnd          IconSizeEnum = 5
+	IconSizeDialog       IconSizeEnum = 6
 )
 
 // Struct IconSource
@@ -23975,9 +23970,6 @@ func IconThemeAddBuiltinIcon1(icon_name string, size int32, pixbuf gdkpixbuf.IPi
 	gi.Free(c_icon_name)
 }
 
-// gtk_icon_theme_get_default
-// container is not nil, container is IconTheme
-// num arg is 0
 // gtk_icon_theme_get_for_screen
 // container is not nil, container is IconTheme
 // is method
@@ -24033,7 +24025,7 @@ func (v IconTheme) AppendSearchPath(path string) {
 // gtk_icon_theme_choose_icon
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) ChooseIcon(icon_names int /*TODO_TYPE isPtr: true, tag: array*/, size int32, flags IconLookupFlags) (result IconInfo) {
+func (v IconTheme) ChooseIcon(icon_names int /*TODO_TYPE array type c, p0tag: utf8*/, size int32, flags IconLookupFlags) (result IconInfo) {
 	iv, err := _I.Get(1261, "IconTheme", "choose_icon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24053,7 +24045,7 @@ func (v IconTheme) ChooseIcon(icon_names int /*TODO_TYPE isPtr: true, tag: array
 // gtk_icon_theme_choose_icon_for_scale
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) ChooseIconForScale(icon_names int /*TODO_TYPE isPtr: true, tag: array*/, size int32, scale int32, flags IconLookupFlags) (result IconInfo) {
+func (v IconTheme) ChooseIconForScale(icon_names int /*TODO_TYPE array type c, p0tag: utf8*/, size int32, scale int32, flags IconLookupFlags) (result IconInfo) {
 	iv, err := _I.Get(1262, "IconTheme", "choose_icon_for_scale")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24415,7 +24407,7 @@ func (v IconTheme) SetScreen(screen gdk.IScreen) {
 // gtk_icon_theme_set_search_path
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) SetSearchPath(path int /*TODO_TYPE isPtr: true, tag: array*/, n_elements int32) {
+func (v IconTheme) SetSearchPath(path int /*TODO_TYPE array type c, p0tag: filename*/, n_elements int32) {
 	iv, err := _I.Get(1280, "IconTheme", "set_search_path")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24434,7 +24426,7 @@ type IconThemeErrorEnum int
 
 const (
 	IconThemeErrorNotFound IconThemeErrorEnum = 0
-	IconThemeErrorFailed                      = 1
+	IconThemeErrorFailed   IconThemeErrorEnum = 1
 )
 
 // Struct IconThemePrivate
@@ -24549,7 +24541,7 @@ func (v IconView) CreateDragIcon(path TreePath) (result cairo.Surface) {
 // gtk_icon_view_enable_model_drag_dest
 // container is not nil, container is IconView
 // is method
-func (v IconView) EnableModelDragDest(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v IconView) EnableModelDragDest(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(1286, "IconView", "enable_model_drag_dest")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24566,7 +24558,7 @@ func (v IconView) EnableModelDragDest(targets int /*TODO_TYPE isPtr: true, tag: 
 // gtk_icon_view_enable_model_drag_source
 // container is not nil, container is IconView
 // is method
-func (v IconView) EnableModelDragSource(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v IconView) EnableModelDragSource(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(1287, "IconView", "enable_model_drag_source")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25040,7 +25032,7 @@ func (v IconView) GetTooltipColumn() (result int32) {
 // gtk_icon_view_get_tooltip_context
 // container is not nil, container is IconView
 // is method
-func (v IconView) GetTooltipContext(x int, y int, keyboard_tip bool) (result bool, model TreeModel, path TreePath, iter int /*TODO_TYPE*/) {
+func (v IconView) GetTooltipContext(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/, keyboard_tip bool) (result bool, model TreeModel, path TreePath, iter int /*TODO_TYPE*/) {
 	iv, err := _I.Get(1313, "IconView", "get_tooltip_context")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25568,11 +25560,11 @@ type IconViewDropPositionEnum int
 
 const (
 	IconViewDropPositionNoDrop    IconViewDropPositionEnum = 0
-	IconViewDropPositionDropInto                           = 1
-	IconViewDropPositionDropLeft                           = 2
-	IconViewDropPositionDropRight                          = 3
-	IconViewDropPositionDropAbove                          = 4
-	IconViewDropPositionDropBelow                          = 5
+	IconViewDropPositionDropInto  IconViewDropPositionEnum = 1
+	IconViewDropPositionDropLeft  IconViewDropPositionEnum = 2
+	IconViewDropPositionDropRight IconViewDropPositionEnum = 3
+	IconViewDropPositionDropAbove IconViewDropPositionEnum = 4
+	IconViewDropPositionDropBelow IconViewDropPositionEnum = 5
 )
 
 // Struct IconViewPrivate
@@ -26353,13 +26345,13 @@ type ImageTypeEnum int
 
 const (
 	ImageTypeEmpty     ImageTypeEnum = 0
-	ImageTypePixbuf                  = 1
-	ImageTypeStock                   = 2
-	ImageTypeIconSet                 = 3
-	ImageTypeAnimation               = 4
-	ImageTypeIconName                = 5
-	ImageTypeGicon                   = 6
-	ImageTypeSurface                 = 7
+	ImageTypePixbuf    ImageTypeEnum = 1
+	ImageTypeStock     ImageTypeEnum = 2
+	ImageTypeIconSet   ImageTypeEnum = 3
+	ImageTypeAnimation ImageTypeEnum = 4
+	ImageTypeIconName  ImageTypeEnum = 5
+	ImageTypeGicon     ImageTypeEnum = 6
+	ImageTypeSurface   ImageTypeEnum = 7
 )
 
 // Object InfoBar
@@ -26615,17 +26607,17 @@ type InputHintsFlags int
 
 const (
 	InputHintsNone               InputHintsFlags = 0
-	InputHintsSpellcheck                         = 1
-	InputHintsNoSpellcheck                       = 2
-	InputHintsWordCompletion                     = 4
-	InputHintsLowercase                          = 8
-	InputHintsUppercaseChars                     = 16
-	InputHintsUppercaseWords                     = 32
-	InputHintsUppercaseSentences                 = 64
-	InputHintsInhibitOsk                         = 128
-	InputHintsVerticalWriting                    = 256
-	InputHintsEmoji                              = 512
-	InputHintsNoEmoji                            = 1024
+	InputHintsSpellcheck         InputHintsFlags = 1
+	InputHintsNoSpellcheck       InputHintsFlags = 2
+	InputHintsWordCompletion     InputHintsFlags = 4
+	InputHintsLowercase          InputHintsFlags = 8
+	InputHintsUppercaseChars     InputHintsFlags = 16
+	InputHintsUppercaseWords     InputHintsFlags = 32
+	InputHintsUppercaseSentences InputHintsFlags = 64
+	InputHintsInhibitOsk         InputHintsFlags = 128
+	InputHintsVerticalWriting    InputHintsFlags = 256
+	InputHintsEmoji              InputHintsFlags = 512
+	InputHintsNoEmoji            InputHintsFlags = 1024
 )
 
 // Enum InputPurpose
@@ -26633,15 +26625,15 @@ type InputPurposeEnum int
 
 const (
 	InputPurposeFreeForm InputPurposeEnum = 0
-	InputPurposeAlpha                     = 1
-	InputPurposeDigits                    = 2
-	InputPurposeNumber                    = 3
-	InputPurposePhone                     = 4
-	InputPurposeUrl                       = 5
-	InputPurposeEmail                     = 6
-	InputPurposeName                      = 7
-	InputPurposePassword                  = 8
-	InputPurposePin                       = 9
+	InputPurposeAlpha    InputPurposeEnum = 1
+	InputPurposeDigits   InputPurposeEnum = 2
+	InputPurposeNumber   InputPurposeEnum = 3
+	InputPurposePhone    InputPurposeEnum = 4
+	InputPurposeUrl      InputPurposeEnum = 5
+	InputPurposeEmail    InputPurposeEnum = 6
+	InputPurposeName     InputPurposeEnum = 7
+	InputPurposePassword InputPurposeEnum = 8
+	InputPurposePin      InputPurposeEnum = 9
 )
 
 // Object Invisible
@@ -26732,14 +26724,14 @@ type JunctionSidesFlags int
 
 const (
 	JunctionSidesNone              JunctionSidesFlags = 0
-	JunctionSidesCornerTopleft                        = 1
-	JunctionSidesCornerTopright                       = 2
-	JunctionSidesCornerBottomleft                     = 4
-	JunctionSidesCornerBottomright                    = 8
-	JunctionSidesTop                                  = 3
-	JunctionSidesBottom                               = 12
-	JunctionSidesLeft                                 = 5
-	JunctionSidesRight                                = 10
+	JunctionSidesCornerTopleft     JunctionSidesFlags = 1
+	JunctionSidesCornerTopright    JunctionSidesFlags = 2
+	JunctionSidesCornerBottomleft  JunctionSidesFlags = 4
+	JunctionSidesCornerBottomright JunctionSidesFlags = 8
+	JunctionSidesTop               JunctionSidesFlags = 3
+	JunctionSidesBottom            JunctionSidesFlags = 12
+	JunctionSidesLeft              JunctionSidesFlags = 5
+	JunctionSidesRight             JunctionSidesFlags = 10
 )
 
 // Enum Justification
@@ -26747,9 +26739,9 @@ type JustificationEnum int
 
 const (
 	JustificationLeft   JustificationEnum = 0
-	JustificationRight                    = 1
-	JustificationCenter                   = 2
-	JustificationFill                     = 3
+	JustificationRight  JustificationEnum = 1
+	JustificationCenter JustificationEnum = 2
+	JustificationFill   JustificationEnum = 3
 )
 
 // Object Label
@@ -28102,7 +28094,7 @@ type LevelBarModeEnum int
 
 const (
 	LevelBarModeContinuous LevelBarModeEnum = 0
-	LevelBarModeDiscrete                    = 1
+	LevelBarModeDiscrete   LevelBarModeEnum = 1
 )
 
 // Struct LevelBarPrivate
@@ -28115,20 +28107,20 @@ type LicenseEnum int
 
 const (
 	LicenseUnknown    LicenseEnum = 0
-	LicenseCustom                 = 1
-	LicenseGpl20                  = 2
-	LicenseGpl30                  = 3
-	LicenseLgpl21                 = 4
-	LicenseLgpl30                 = 5
-	LicenseBsd                    = 6
-	LicenseMitX11                 = 7
-	LicenseArtistic               = 8
-	LicenseGpl20Only              = 9
-	LicenseGpl30Only              = 10
-	LicenseLgpl21Only             = 11
-	LicenseLgpl30Only             = 12
-	LicenseAgpl30                 = 13
-	LicenseAgpl30Only             = 14
+	LicenseCustom     LicenseEnum = 1
+	LicenseGpl20      LicenseEnum = 2
+	LicenseGpl30      LicenseEnum = 3
+	LicenseLgpl21     LicenseEnum = 4
+	LicenseLgpl30     LicenseEnum = 5
+	LicenseBsd        LicenseEnum = 6
+	LicenseMitX11     LicenseEnum = 7
+	LicenseArtistic   LicenseEnum = 8
+	LicenseGpl20Only  LicenseEnum = 9
+	LicenseGpl30Only  LicenseEnum = 10
+	LicenseLgpl21Only LicenseEnum = 11
+	LicenseLgpl30Only LicenseEnum = 12
+	LicenseAgpl30     LicenseEnum = 13
+	LicenseAgpl30Only LicenseEnum = 14
 )
 
 // Object LinkButton
@@ -28960,7 +28952,7 @@ func (v ListStore) P_ListStore() unsafe.Pointer { return v.P }
 // gtk_list_store_newv
 // container is not nil, container is ListStore
 // is constructor
-func NewListStore(n_columns int32, types int /*TODO_TYPE isPtr: true, tag: array*/) (result ListStore) {
+func NewListStore(n_columns int32, types int /*TODO_TYPE array type c, p0tag: GType*/) (result ListStore) {
 	iv, err := _I.Get(1522, "ListStore", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29067,7 +29059,7 @@ func (v ListStore) InsertBefore(sibling TreeIter) (iter int /*TODO_TYPE*/) {
 // gtk_list_store_insert_with_valuesv
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) InsertWithValuesv(position int32, columns int /*TODO_TYPE isPtr: true, tag: array*/, values int /*TODO_TYPE isPtr: true, tag: array*/, n_values int32) (iter int /*TODO_TYPE*/) {
+func (v ListStore) InsertWithValuesv(position int32, columns gi.Int32Array, values int /*TODO_TYPE array type c, p0tag: interface*/, n_values int32) (iter int /*TODO_TYPE*/) {
 	iv, err := _I.Get(1528, "ListStore", "insert_with_valuesv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29077,8 +29069,8 @@ func (v ListStore) InsertWithValuesv(position int32, columns int /*TODO_TYPE isP
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_position := gi.NewInt32Argument(position)
-	arg_columns := gi.NewIntArgument(columns) /*TODO*/
-	arg_values := gi.NewIntArgument(values)   /*TODO*/
+	arg_columns := gi.NewPointerArgument(columns.P)
+	arg_values := gi.NewIntArgument(values) /*TODO*/
 	arg_n_values := gi.NewInt32Argument(n_values)
 	args := []gi.Argument{arg_v, arg_iter, arg_position, arg_columns, arg_values, arg_n_values}
 	iv.Call(args, nil, &outArgs[0])
@@ -29175,14 +29167,14 @@ func (v ListStore) Remove(iter TreeIter) (result bool) {
 // gtk_list_store_reorder
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) Reorder(new_order int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v ListStore) Reorder(new_order gi.Int32Array) {
 	iv, err := _I.Get(1534, "ListStore", "reorder")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_new_order := gi.NewIntArgument(new_order) /*TODO*/
+	arg_new_order := gi.NewPointerArgument(new_order.P)
 	args := []gi.Argument{arg_v, arg_new_order}
 	iv.Call(args, nil, nil)
 }
@@ -29190,7 +29182,7 @@ func (v ListStore) Reorder(new_order int /*TODO_TYPE isPtr: true, tag: array*/) 
 // gtk_list_store_set_column_types
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v ListStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE array type c, p0tag: GType*/) {
 	iv, err := _I.Get(1535, "ListStore", "set_column_types")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29223,7 +29215,7 @@ func (v ListStore) SetValue(iter TreeIter, column int32, value gobject.Value) {
 // gtk_list_store_set_valuesv
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) Set(iter TreeIter, columns int /*TODO_TYPE isPtr: true, tag: array*/, values int /*TODO_TYPE isPtr: true, tag: array*/, n_values int32) {
+func (v ListStore) Set(iter TreeIter, columns gi.Int32Array, values int /*TODO_TYPE array type c, p0tag: interface*/, n_values int32) {
 	iv, err := _I.Get(1537, "ListStore", "set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29231,8 +29223,8 @@ func (v ListStore) Set(iter TreeIter, columns int /*TODO_TYPE isPtr: true, tag: 
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
-	arg_columns := gi.NewIntArgument(columns) /*TODO*/
-	arg_values := gi.NewIntArgument(values)   /*TODO*/
+	arg_columns := gi.NewPointerArgument(columns.P)
+	arg_values := gi.NewIntArgument(values) /*TODO*/
 	arg_n_values := gi.NewInt32Argument(n_values)
 	args := []gi.Argument{arg_v, arg_iter, arg_columns, arg_values, arg_n_values}
 	iv.Call(args, nil, nil)
@@ -30263,9 +30255,9 @@ type MenuDirectionTypeEnum int
 
 const (
 	MenuDirectionTypeParent MenuDirectionTypeEnum = 0
-	MenuDirectionTypeChild                        = 1
-	MenuDirectionTypeNext                         = 2
-	MenuDirectionTypePrev                         = 3
+	MenuDirectionTypeChild  MenuDirectionTypeEnum = 1
+	MenuDirectionTypeNext   MenuDirectionTypeEnum = 2
+	MenuDirectionTypePrev   MenuDirectionTypeEnum = 3
 )
 
 // Object MenuItem
@@ -30592,7 +30584,7 @@ func (v MenuItem) ToggleSizeAllocate(allocation int32) {
 // gtk_menu_item_toggle_size_request
 // container is not nil, container is MenuItem
 // is method
-func (v MenuItem) ToggleSizeRequest(requisition int) {
+func (v MenuItem) ToggleSizeRequest(requisition int /*TODO:TYPE*/) {
 	iv, err := _I.Get(1611, "MenuItem", "toggle_size_request")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31108,10 +31100,10 @@ type MessageTypeEnum int
 
 const (
 	MessageTypeInfo     MessageTypeEnum = 0
-	MessageTypeWarning                  = 1
-	MessageTypeQuestion                 = 2
-	MessageTypeError                    = 3
-	MessageTypeOther                    = 4
+	MessageTypeWarning  MessageTypeEnum = 1
+	MessageTypeQuestion MessageTypeEnum = 2
+	MessageTypeError    MessageTypeEnum = 3
+	MessageTypeOther    MessageTypeEnum = 4
 )
 
 // Object Misc
@@ -31355,15 +31347,15 @@ type MovementStepEnum int
 
 const (
 	MovementStepLogicalPositions MovementStepEnum = 0
-	MovementStepVisualPositions                   = 1
-	MovementStepWords                             = 2
-	MovementStepDisplayLines                      = 3
-	MovementStepDisplayLineEnds                   = 4
-	MovementStepParagraphs                        = 5
-	MovementStepParagraphEnds                     = 6
-	MovementStepPages                             = 7
-	MovementStepBufferEnds                        = 8
-	MovementStepHorizontalPages                   = 9
+	MovementStepVisualPositions  MovementStepEnum = 1
+	MovementStepWords            MovementStepEnum = 2
+	MovementStepDisplayLines     MovementStepEnum = 3
+	MovementStepDisplayLineEnds  MovementStepEnum = 4
+	MovementStepParagraphs       MovementStepEnum = 5
+	MovementStepParagraphEnds    MovementStepEnum = 6
+	MovementStepPages            MovementStepEnum = 7
+	MovementStepBufferEnds       MovementStepEnum = 8
+	MovementStepHorizontalPages  MovementStepEnum = 9
 )
 
 // Object NativeDialog
@@ -32404,7 +32396,7 @@ type NotebookTabEnum int
 
 const (
 	NotebookTabFirst NotebookTabEnum = 0
-	NotebookTabLast                  = 1
+	NotebookTabLast  NotebookTabEnum = 1
 )
 
 // Enum NumberUpLayout
@@ -32412,13 +32404,13 @@ type NumberUpLayoutEnum int
 
 const (
 	NumberUpLayoutLrtb NumberUpLayoutEnum = 0
-	NumberUpLayoutLrbt                    = 1
-	NumberUpLayoutRltb                    = 2
-	NumberUpLayoutRlbt                    = 3
-	NumberUpLayoutTblr                    = 4
-	NumberUpLayoutTbrl                    = 5
-	NumberUpLayoutBtlr                    = 6
-	NumberUpLayoutBtrl                    = 7
+	NumberUpLayoutLrbt NumberUpLayoutEnum = 1
+	NumberUpLayoutRltb NumberUpLayoutEnum = 2
+	NumberUpLayoutRlbt NumberUpLayoutEnum = 3
+	NumberUpLayoutTblr NumberUpLayoutEnum = 4
+	NumberUpLayoutTbrl NumberUpLayoutEnum = 5
+	NumberUpLayoutBtlr NumberUpLayoutEnum = 6
+	NumberUpLayoutBtrl NumberUpLayoutEnum = 7
 )
 
 // Object NumerableIcon
@@ -32748,7 +32740,7 @@ type OrientationEnum int
 
 const (
 	OrientationHorizontal OrientationEnum = 0
-	OrientationVertical                   = 1
+	OrientationVertical   OrientationEnum = 1
 )
 
 // Object Overlay
@@ -32855,9 +32847,9 @@ type PackDirectionEnum int
 
 const (
 	PackDirectionLtr PackDirectionEnum = 0
-	PackDirectionRtl                   = 1
-	PackDirectionTtb                   = 2
-	PackDirectionBtt                   = 3
+	PackDirectionRtl PackDirectionEnum = 1
+	PackDirectionTtb PackDirectionEnum = 2
+	PackDirectionBtt PackDirectionEnum = 3
 )
 
 // Enum PackType
@@ -32865,7 +32857,7 @@ type PackTypeEnum int
 
 const (
 	PackTypeStart PackTypeEnum = 0
-	PackTypeEnd                = 1
+	PackTypeEnd   PackTypeEnum = 1
 )
 
 // Struct PadActionEntry
@@ -32878,8 +32870,8 @@ type PadActionTypeEnum int
 
 const (
 	PadActionTypeButton PadActionTypeEnum = 0
-	PadActionTypeRing                     = 1
-	PadActionTypeStrip                    = 2
+	PadActionTypeRing   PadActionTypeEnum = 1
+	PadActionTypeStrip  PadActionTypeEnum = 2
 )
 
 // Object PadController
@@ -32938,7 +32930,7 @@ func (v PadController) SetAction(type1 PadActionTypeEnum, index int32, mode int3
 // gtk_pad_controller_set_action_entries
 // container is not nil, container is PadController
 // is method
-func (v PadController) SetActionEntries(entries int /*TODO_TYPE isPtr: true, tag: array*/, n_entries int32) {
+func (v PadController) SetActionEntries(entries int /*TODO_TYPE array type c, p0tag: interface*/, n_entries int32) {
 	iv, err := _I.Get(1729, "PadController", "set_action_entries")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -32957,9 +32949,9 @@ type PageOrientationEnum int
 
 const (
 	PageOrientationPortrait         PageOrientationEnum = 0
-	PageOrientationLandscape                            = 1
-	PageOrientationReversePortrait                      = 2
-	PageOrientationReverseLandscape                     = 3
+	PageOrientationLandscape        PageOrientationEnum = 1
+	PageOrientationReversePortrait  PageOrientationEnum = 2
+	PageOrientationReverseLandscape PageOrientationEnum = 3
 )
 
 // Struct PageRange
@@ -32972,8 +32964,8 @@ type PageSetEnum int
 
 const (
 	PageSetAll  PageSetEnum = 0
-	PageSetEven             = 1
-	PageSetOdd              = 2
+	PageSetEven PageSetEnum = 1
+	PageSetOdd  PageSetEnum = 2
 )
 
 // Object PageSetup
@@ -33473,9 +33465,9 @@ type PanDirectionEnum int
 
 const (
 	PanDirectionLeft  PanDirectionEnum = 0
-	PanDirectionRight                  = 1
-	PanDirectionUp                     = 2
-	PanDirectionDown                   = 3
+	PanDirectionRight PanDirectionEnum = 1
+	PanDirectionUp    PanDirectionEnum = 2
+	PanDirectionDown  PanDirectionEnum = 3
 )
 
 // Object Paned
@@ -34140,9 +34132,6 @@ func (v PaperSize) ToKeyFile(key_file glib.KeyFile, group_name string) {
 	gi.Free(c_group_name)
 }
 
-// gtk_paper_size_get_default
-// container is not nil, container is PaperSize
-// num arg is 0
 // gtk_paper_size_get_paper_sizes
 // container is not nil, container is PaperSize
 // is method
@@ -34166,11 +34155,11 @@ type PathPriorityTypeEnum int
 
 const (
 	PathPriorityTypeLowest      PathPriorityTypeEnum = 0
-	PathPriorityTypeGtk                              = 4
-	PathPriorityTypeApplication                      = 8
-	PathPriorityTypeTheme                            = 10
-	PathPriorityTypeRc                               = 12
-	PathPriorityTypeHighest                          = 15
+	PathPriorityTypeGtk         PathPriorityTypeEnum = 4
+	PathPriorityTypeApplication PathPriorityTypeEnum = 8
+	PathPriorityTypeTheme       PathPriorityTypeEnum = 10
+	PathPriorityTypeRc          PathPriorityTypeEnum = 12
+	PathPriorityTypeHighest     PathPriorityTypeEnum = 15
 )
 
 // Enum PathType
@@ -34178,8 +34167,8 @@ type PathTypeEnum int
 
 const (
 	PathTypeWidget      PathTypeEnum = 0
-	PathTypeWidgetClass              = 1
-	PathTypeClass                    = 2
+	PathTypeWidgetClass PathTypeEnum = 1
+	PathTypeClass       PathTypeEnum = 2
 )
 
 // Flags PlacesOpenFlags
@@ -34187,8 +34176,8 @@ type PlacesOpenFlags int
 
 const (
 	PlacesOpenFlagsNormal    PlacesOpenFlags = 1
-	PlacesOpenFlagsNewTab                    = 2
-	PlacesOpenFlagsNewWindow                 = 4
+	PlacesOpenFlagsNewTab    PlacesOpenFlags = 2
+	PlacesOpenFlagsNewWindow PlacesOpenFlags = 4
 )
 
 // Object PlacesSidebar
@@ -34762,9 +34751,9 @@ type PolicyTypeEnum int
 
 const (
 	PolicyTypeAlways    PolicyTypeEnum = 0
-	PolicyTypeAutomatic                = 1
-	PolicyTypeNever                    = 2
-	PolicyTypeExternal                 = 3
+	PolicyTypeAutomatic PolicyTypeEnum = 1
+	PolicyTypeNever     PolicyTypeEnum = 2
+	PolicyTypeExternal  PolicyTypeEnum = 3
 )
 
 // Object Popover
@@ -35107,7 +35096,7 @@ type PopoverConstraintEnum int
 
 const (
 	PopoverConstraintNone   PopoverConstraintEnum = 0
-	PopoverConstraintWindow                       = 1
+	PopoverConstraintWindow PopoverConstraintEnum = 1
 )
 
 // Object PopoverMenu
@@ -35166,9 +35155,9 @@ type PositionTypeEnum int
 
 const (
 	PositionTypeLeft   PositionTypeEnum = 0
-	PositionTypeRight                   = 1
-	PositionTypeTop                     = 2
-	PositionTypeBottom                  = 3
+	PositionTypeRight  PositionTypeEnum = 1
+	PositionTypeTop    PositionTypeEnum = 2
+	PositionTypeBottom PositionTypeEnum = 3
 )
 
 // Object PrintContext
@@ -35383,8 +35372,8 @@ type PrintDuplexEnum int
 
 const (
 	PrintDuplexSimplex    PrintDuplexEnum = 0
-	PrintDuplexHorizontal                 = 1
-	PrintDuplexVertical                   = 2
+	PrintDuplexHorizontal PrintDuplexEnum = 1
+	PrintDuplexVertical   PrintDuplexEnum = 2
 )
 
 // Enum PrintError
@@ -35392,9 +35381,9 @@ type PrintErrorEnum int
 
 const (
 	PrintErrorGeneral       PrintErrorEnum = 0
-	PrintErrorInternalError                = 1
-	PrintErrorNomem                        = 2
-	PrintErrorInvalidFile                  = 3
+	PrintErrorInternalError PrintErrorEnum = 1
+	PrintErrorNomem         PrintErrorEnum = 2
+	PrintErrorInvalidFile   PrintErrorEnum = 3
 )
 
 // Object PrintOperation
@@ -35893,9 +35882,9 @@ type PrintOperationActionEnum int
 
 const (
 	PrintOperationActionPrintDialog PrintOperationActionEnum = 0
-	PrintOperationActionPrint                                = 1
-	PrintOperationActionPreview                              = 2
-	PrintOperationActionExport                               = 3
+	PrintOperationActionPrint       PrintOperationActionEnum = 1
+	PrintOperationActionPreview     PrintOperationActionEnum = 2
+	PrintOperationActionExport      PrintOperationActionEnum = 3
 )
 
 // ignore GType struct PrintOperationClass
@@ -35964,9 +35953,9 @@ type PrintOperationResultEnum int
 
 const (
 	PrintOperationResultError      PrintOperationResultEnum = 0
-	PrintOperationResultApply                               = 1
-	PrintOperationResultCancel                              = 2
-	PrintOperationResultInProgress                          = 3
+	PrintOperationResultApply      PrintOperationResultEnum = 1
+	PrintOperationResultCancel     PrintOperationResultEnum = 2
+	PrintOperationResultInProgress PrintOperationResultEnum = 3
 )
 
 // Enum PrintPages
@@ -35974,9 +35963,9 @@ type PrintPagesEnum int
 
 const (
 	PrintPagesAll       PrintPagesEnum = 0
-	PrintPagesCurrent                  = 1
-	PrintPagesRanges                   = 2
-	PrintPagesSelection                = 3
+	PrintPagesCurrent   PrintPagesEnum = 1
+	PrintPagesRanges    PrintPagesEnum = 2
+	PrintPagesSelection PrintPagesEnum = 3
 )
 
 // Enum PrintQuality
@@ -35984,9 +35973,9 @@ type PrintQualityEnum int
 
 const (
 	PrintQualityLow    PrintQualityEnum = 0
-	PrintQualityNormal                  = 1
-	PrintQualityHigh                    = 2
-	PrintQualityDraft                   = 3
+	PrintQualityNormal PrintQualityEnum = 1
+	PrintQualityHigh   PrintQualityEnum = 2
+	PrintQualityDraft  PrintQualityEnum = 3
 )
 
 // Object PrintSettings
@@ -37034,7 +37023,7 @@ func (v PrintSettings) SetOutputBin(output_bin string) {
 // gtk_print_settings_set_page_ranges
 // container is not nil, container is PrintSettings
 // is method
-func (v PrintSettings) SetPageRanges(page_ranges int /*TODO_TYPE isPtr: true, tag: array*/, num_ranges int32) {
+func (v PrintSettings) SetPageRanges(page_ranges int /*TODO_TYPE array type c, p0tag: interface*/, num_ranges int32) {
 	iv, err := _I.Get(1950, "PrintSettings", "set_page_ranges")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -37326,14 +37315,14 @@ type PrintStatusEnum int
 
 const (
 	PrintStatusInitial         PrintStatusEnum = 0
-	PrintStatusPreparing                       = 1
-	PrintStatusGeneratingData                  = 2
-	PrintStatusSendingData                     = 3
-	PrintStatusPending                         = 4
-	PrintStatusPendingIssue                    = 5
-	PrintStatusPrinting                        = 6
-	PrintStatusFinished                        = 7
-	PrintStatusFinishedAborted                 = 8
+	PrintStatusPreparing       PrintStatusEnum = 1
+	PrintStatusGeneratingData  PrintStatusEnum = 2
+	PrintStatusSendingData     PrintStatusEnum = 3
+	PrintStatusPending         PrintStatusEnum = 4
+	PrintStatusPendingIssue    PrintStatusEnum = 5
+	PrintStatusPrinting        PrintStatusEnum = 6
+	PrintStatusFinished        PrintStatusEnum = 7
+	PrintStatusFinishedAborted PrintStatusEnum = 8
 )
 
 // Object ProgressBar
@@ -37603,9 +37592,9 @@ type PropagationPhaseEnum int
 
 const (
 	PropagationPhaseNone    PropagationPhaseEnum = 0
-	PropagationPhaseCapture                      = 1
-	PropagationPhaseBubble                       = 2
-	PropagationPhaseTarget                       = 3
+	PropagationPhaseCapture PropagationPhaseEnum = 1
+	PropagationPhaseBubble  PropagationPhaseEnum = 2
+	PropagationPhaseTarget  PropagationPhaseEnum = 3
 )
 
 // Object RadioAction
@@ -38768,9 +38757,9 @@ type RcFlags int
 
 const (
 	RcFlagsFg   RcFlags = 1
-	RcFlagsBg           = 2
-	RcFlagsText         = 4
-	RcFlagsBase         = 8
+	RcFlagsBg   RcFlags = 2
+	RcFlagsText RcFlags = 4
+	RcFlagsBase RcFlags = 8
 )
 
 // Struct RcProperty
@@ -38927,45 +38916,45 @@ type RcTokenTypeEnum int
 
 const (
 	RcTokenTypeInvalid      RcTokenTypeEnum = 270
-	RcTokenTypeInclude                      = 271
-	RcTokenTypeNormal                       = 272
-	RcTokenTypeActive                       = 273
-	RcTokenTypePrelight                     = 274
-	RcTokenTypeSelected                     = 275
-	RcTokenTypeInsensitive                  = 276
-	RcTokenTypeFg                           = 277
-	RcTokenTypeBg                           = 278
-	RcTokenTypeText                         = 279
-	RcTokenTypeBase                         = 280
-	RcTokenTypeXthickness                   = 281
-	RcTokenTypeYthickness                   = 282
-	RcTokenTypeFont                         = 283
-	RcTokenTypeFontset                      = 284
-	RcTokenTypeFontName                     = 285
-	RcTokenTypeBgPixmap                     = 286
-	RcTokenTypePixmapPath                   = 287
-	RcTokenTypeStyle                        = 288
-	RcTokenTypeBinding                      = 289
-	RcTokenTypeBind                         = 290
-	RcTokenTypeWidget                       = 291
-	RcTokenTypeWidgetClass                  = 292
-	RcTokenTypeClass                        = 293
-	RcTokenTypeLowest                       = 294
-	RcTokenTypeGtk                          = 295
-	RcTokenTypeApplication                  = 296
-	RcTokenTypeTheme                        = 297
-	RcTokenTypeRc                           = 298
-	RcTokenTypeHighest                      = 299
-	RcTokenTypeEngine                       = 300
-	RcTokenTypeModulePath                   = 301
-	RcTokenTypeImModulePath                 = 302
-	RcTokenTypeImModuleFile                 = 303
-	RcTokenTypeStock                        = 304
-	RcTokenTypeLtr                          = 305
-	RcTokenTypeRtl                          = 306
-	RcTokenTypeColor                        = 307
-	RcTokenTypeUnbind                       = 308
-	RcTokenTypeLast                         = 309
+	RcTokenTypeInclude      RcTokenTypeEnum = 271
+	RcTokenTypeNormal       RcTokenTypeEnum = 272
+	RcTokenTypeActive       RcTokenTypeEnum = 273
+	RcTokenTypePrelight     RcTokenTypeEnum = 274
+	RcTokenTypeSelected     RcTokenTypeEnum = 275
+	RcTokenTypeInsensitive  RcTokenTypeEnum = 276
+	RcTokenTypeFg           RcTokenTypeEnum = 277
+	RcTokenTypeBg           RcTokenTypeEnum = 278
+	RcTokenTypeText         RcTokenTypeEnum = 279
+	RcTokenTypeBase         RcTokenTypeEnum = 280
+	RcTokenTypeXthickness   RcTokenTypeEnum = 281
+	RcTokenTypeYthickness   RcTokenTypeEnum = 282
+	RcTokenTypeFont         RcTokenTypeEnum = 283
+	RcTokenTypeFontset      RcTokenTypeEnum = 284
+	RcTokenTypeFontName     RcTokenTypeEnum = 285
+	RcTokenTypeBgPixmap     RcTokenTypeEnum = 286
+	RcTokenTypePixmapPath   RcTokenTypeEnum = 287
+	RcTokenTypeStyle        RcTokenTypeEnum = 288
+	RcTokenTypeBinding      RcTokenTypeEnum = 289
+	RcTokenTypeBind         RcTokenTypeEnum = 290
+	RcTokenTypeWidget       RcTokenTypeEnum = 291
+	RcTokenTypeWidgetClass  RcTokenTypeEnum = 292
+	RcTokenTypeClass        RcTokenTypeEnum = 293
+	RcTokenTypeLowest       RcTokenTypeEnum = 294
+	RcTokenTypeGtk          RcTokenTypeEnum = 295
+	RcTokenTypeApplication  RcTokenTypeEnum = 296
+	RcTokenTypeTheme        RcTokenTypeEnum = 297
+	RcTokenTypeRc           RcTokenTypeEnum = 298
+	RcTokenTypeHighest      RcTokenTypeEnum = 299
+	RcTokenTypeEngine       RcTokenTypeEnum = 300
+	RcTokenTypeModulePath   RcTokenTypeEnum = 301
+	RcTokenTypeImModulePath RcTokenTypeEnum = 302
+	RcTokenTypeImModuleFile RcTokenTypeEnum = 303
+	RcTokenTypeStock        RcTokenTypeEnum = 304
+	RcTokenTypeLtr          RcTokenTypeEnum = 305
+	RcTokenTypeRtl          RcTokenTypeEnum = 306
+	RcTokenTypeColor        RcTokenTypeEnum = 307
+	RcTokenTypeUnbind       RcTokenTypeEnum = 308
+	RcTokenTypeLast         RcTokenTypeEnum = 309
 )
 
 // Object RecentAction
@@ -39620,7 +39609,7 @@ type RecentChooserErrorEnum int
 
 const (
 	RecentChooserErrorNotFound   RecentChooserErrorEnum = 0
-	RecentChooserErrorInvalidUri                        = 1
+	RecentChooserErrorInvalidUri RecentChooserErrorEnum = 1
 )
 
 // ignore GType struct RecentChooserIface
@@ -39983,11 +39972,11 @@ type RecentFilterFlags int
 
 const (
 	RecentFilterFlagsUri         RecentFilterFlags = 1
-	RecentFilterFlagsDisplayName                   = 2
-	RecentFilterFlagsMimeType                      = 4
-	RecentFilterFlagsApplication                   = 8
-	RecentFilterFlagsGroup                         = 16
-	RecentFilterFlagsAge                           = 32
+	RecentFilterFlagsDisplayName RecentFilterFlags = 2
+	RecentFilterFlagsMimeType    RecentFilterFlags = 4
+	RecentFilterFlagsApplication RecentFilterFlags = 8
+	RecentFilterFlagsGroup       RecentFilterFlags = 16
+	RecentFilterFlagsAge         RecentFilterFlags = 32
 )
 
 // Struct RecentFilterInfo
@@ -40477,9 +40466,6 @@ func NewRecentManager() (result RecentManager) {
 	return
 }
 
-// gtk_recent_manager_get_default
-// container is not nil, container is RecentManager
-// num arg is 0
 // gtk_recent_manager_add_full
 // container is not nil, container is RecentManager
 // is method
@@ -40652,12 +40638,12 @@ type RecentManagerErrorEnum int
 
 const (
 	RecentManagerErrorNotFound        RecentManagerErrorEnum = 0
-	RecentManagerErrorInvalidUri                             = 1
-	RecentManagerErrorInvalidEncoding                        = 2
-	RecentManagerErrorNotRegistered                          = 3
-	RecentManagerErrorRead                                   = 4
-	RecentManagerErrorWrite                                  = 5
-	RecentManagerErrorUnknown                                = 6
+	RecentManagerErrorInvalidUri      RecentManagerErrorEnum = 1
+	RecentManagerErrorInvalidEncoding RecentManagerErrorEnum = 2
+	RecentManagerErrorNotRegistered   RecentManagerErrorEnum = 3
+	RecentManagerErrorRead            RecentManagerErrorEnum = 4
+	RecentManagerErrorWrite           RecentManagerErrorEnum = 5
+	RecentManagerErrorUnknown         RecentManagerErrorEnum = 6
 )
 
 // Struct RecentManagerPrivate
@@ -40670,9 +40656,9 @@ type RecentSortTypeEnum int
 
 const (
 	RecentSortTypeNone   RecentSortTypeEnum = 0
-	RecentSortTypeMru                       = 1
-	RecentSortTypeLru                       = 2
-	RecentSortTypeCustom                    = 3
+	RecentSortTypeMru    RecentSortTypeEnum = 1
+	RecentSortTypeLru    RecentSortTypeEnum = 2
+	RecentSortTypeCustom RecentSortTypeEnum = 3
 )
 
 // Flags RegionFlags
@@ -40680,11 +40666,11 @@ type RegionFlags int
 
 const (
 	RegionFlagsEven   RegionFlags = 1
-	RegionFlagsOdd                = 2
-	RegionFlagsFirst              = 4
-	RegionFlagsLast               = 8
-	RegionFlagsOnly               = 16
-	RegionFlagsSorted             = 32
+	RegionFlagsOdd    RegionFlags = 2
+	RegionFlagsFirst  RegionFlags = 4
+	RegionFlagsLast   RegionFlags = 8
+	RegionFlagsOnly   RegionFlags = 16
+	RegionFlagsSorted RegionFlags = 32
 )
 
 // Enum ReliefStyle
@@ -40692,8 +40678,8 @@ type ReliefStyleEnum int
 
 const (
 	ReliefStyleNormal ReliefStyleEnum = 0
-	ReliefStyleHalf                   = 1
-	ReliefStyleNone                   = 2
+	ReliefStyleHalf   ReliefStyleEnum = 1
+	ReliefStyleNone   ReliefStyleEnum = 2
 )
 
 // Object RendererCellAccessible
@@ -40794,8 +40780,8 @@ type ResizeModeEnum int
 
 const (
 	ResizeModeParent    ResizeModeEnum = 0
-	ResizeModeQueue                    = 1
-	ResizeModeImmediate                = 2
+	ResizeModeQueue     ResizeModeEnum = 1
+	ResizeModeImmediate ResizeModeEnum = 2
 )
 
 // Enum ResponseType
@@ -40803,16 +40789,16 @@ type ResponseTypeEnum int
 
 const (
 	ResponseTypeNone        ResponseTypeEnum = -1
-	ResponseTypeReject                       = -2
-	ResponseTypeAccept                       = -3
-	ResponseTypeDeleteEvent                  = -4
-	ResponseTypeOk                           = -5
-	ResponseTypeCancel                       = -6
-	ResponseTypeClose                        = -7
-	ResponseTypeYes                          = -8
-	ResponseTypeNo                           = -9
-	ResponseTypeApply                        = -10
-	ResponseTypeHelp                         = -11
+	ResponseTypeReject      ResponseTypeEnum = -2
+	ResponseTypeAccept      ResponseTypeEnum = -3
+	ResponseTypeDeleteEvent ResponseTypeEnum = -4
+	ResponseTypeOk          ResponseTypeEnum = -5
+	ResponseTypeCancel      ResponseTypeEnum = -6
+	ResponseTypeClose       ResponseTypeEnum = -7
+	ResponseTypeYes         ResponseTypeEnum = -8
+	ResponseTypeNo          ResponseTypeEnum = -9
+	ResponseTypeApply       ResponseTypeEnum = -10
+	ResponseTypeHelp        ResponseTypeEnum = -11
 )
 
 // Object Revealer
@@ -40962,11 +40948,11 @@ type RevealerTransitionTypeEnum int
 
 const (
 	RevealerTransitionTypeNone       RevealerTransitionTypeEnum = 0
-	RevealerTransitionTypeCrossfade                             = 1
-	RevealerTransitionTypeSlideRight                            = 2
-	RevealerTransitionTypeSlideLeft                             = 3
-	RevealerTransitionTypeSlideUp                               = 4
-	RevealerTransitionTypeSlideDown                             = 5
+	RevealerTransitionTypeCrossfade  RevealerTransitionTypeEnum = 1
+	RevealerTransitionTypeSlideRight RevealerTransitionTypeEnum = 2
+	RevealerTransitionTypeSlideLeft  RevealerTransitionTypeEnum = 3
+	RevealerTransitionTypeSlideUp    RevealerTransitionTypeEnum = 4
+	RevealerTransitionTypeSlideDown  RevealerTransitionTypeEnum = 5
 )
 
 // Object Scale
@@ -41257,7 +41243,7 @@ func (v ScaleButton) P_ScaleButton() unsafe.Pointer { return v.P }
 // gtk_scale_button_new
 // container is not nil, container is ScaleButton
 // is constructor
-func NewScaleButton(size int32, min float64, max float64, step float64, icons int /*TODO_TYPE isPtr: true, tag: array*/) (result Widget) {
+func NewScaleButton(size int32, min float64, max float64, step float64, icons int /*TODO_TYPE array type c, p0tag: utf8*/) (result Widget) {
 	iv, err := _I.Get(2161, "ScaleButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -41378,7 +41364,7 @@ func (v ScaleButton) SetAdjustment(adjustment IAdjustment) {
 // gtk_scale_button_set_icons
 // container is not nil, container is ScaleButton
 // is method
-func (v ScaleButton) SetIcons(icons int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v ScaleButton) SetIcons(icons int /*TODO_TYPE array type c, p0tag: utf8*/) {
 	iv, err := _I.Get(2168, "ScaleButton", "set_icons")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -41443,11 +41429,11 @@ type ScrollStepEnum int
 
 const (
 	ScrollStepSteps           ScrollStepEnum = 0
-	ScrollStepPages                          = 1
-	ScrollStepEnds                           = 2
-	ScrollStepHorizontalSteps                = 3
-	ScrollStepHorizontalPages                = 4
-	ScrollStepHorizontalEnds                 = 5
+	ScrollStepPages           ScrollStepEnum = 1
+	ScrollStepEnds            ScrollStepEnum = 2
+	ScrollStepHorizontalSteps ScrollStepEnum = 3
+	ScrollStepHorizontalPages ScrollStepEnum = 4
+	ScrollStepHorizontalEnds  ScrollStepEnum = 5
 )
 
 // Enum ScrollType
@@ -41455,21 +41441,21 @@ type ScrollTypeEnum int
 
 const (
 	ScrollTypeNone         ScrollTypeEnum = 0
-	ScrollTypeJump                        = 1
-	ScrollTypeStepBackward                = 2
-	ScrollTypeStepForward                 = 3
-	ScrollTypePageBackward                = 4
-	ScrollTypePageForward                 = 5
-	ScrollTypeStepUp                      = 6
-	ScrollTypeStepDown                    = 7
-	ScrollTypePageUp                      = 8
-	ScrollTypePageDown                    = 9
-	ScrollTypeStepLeft                    = 10
-	ScrollTypeStepRight                   = 11
-	ScrollTypePageLeft                    = 12
-	ScrollTypePageRight                   = 13
-	ScrollTypeStart                       = 14
-	ScrollTypeEnd                         = 15
+	ScrollTypeJump         ScrollTypeEnum = 1
+	ScrollTypeStepBackward ScrollTypeEnum = 2
+	ScrollTypeStepForward  ScrollTypeEnum = 3
+	ScrollTypePageBackward ScrollTypeEnum = 4
+	ScrollTypePageForward  ScrollTypeEnum = 5
+	ScrollTypeStepUp       ScrollTypeEnum = 6
+	ScrollTypeStepDown     ScrollTypeEnum = 7
+	ScrollTypePageUp       ScrollTypeEnum = 8
+	ScrollTypePageDown     ScrollTypeEnum = 9
+	ScrollTypeStepLeft     ScrollTypeEnum = 10
+	ScrollTypeStepRight    ScrollTypeEnum = 11
+	ScrollTypePageLeft     ScrollTypeEnum = 12
+	ScrollTypePageRight    ScrollTypeEnum = 13
+	ScrollTypeStart        ScrollTypeEnum = 14
+	ScrollTypeEnd          ScrollTypeEnum = 15
 )
 
 // Interface Scrollable
@@ -41633,7 +41619,7 @@ type ScrollablePolicyEnum int
 
 const (
 	ScrollablePolicyMinimum ScrollablePolicyEnum = 0
-	ScrollablePolicyNatural                      = 1
+	ScrollablePolicyNatural ScrollablePolicyEnum = 1
 )
 
 // Object Scrollbar
@@ -42648,7 +42634,7 @@ func (v SelectionData) GetUris() (result int /*TODO_TYPE isPtr: true, tag: array
 // gtk_selection_data_set
 // container is not nil, container is SelectionData
 // is method
-func (v SelectionData) Set(type1 gdk.Atom, format int32, data int /*TODO_TYPE isPtr: true, tag: array*/, length int32) {
+func (v SelectionData) Set(type1 gdk.Atom, format int32, data gi.Uint8Array, length int32) {
 	iv, err := _I.Get(2235, "SelectionData", "set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42657,7 +42643,7 @@ func (v SelectionData) Set(type1 gdk.Atom, format int32, data int /*TODO_TYPE is
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_type1 := gi.NewPointerArgument(type1.P)
 	arg_format := gi.NewInt32Argument(format)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_length := gi.NewInt32Argument(length)
 	args := []gi.Argument{arg_v, arg_type1, arg_format, arg_data, arg_length}
 	iv.Call(args, nil, nil)
@@ -42705,7 +42691,7 @@ func (v SelectionData) SetText(str string, len1 int32) (result bool) {
 // gtk_selection_data_set_uris
 // container is not nil, container is SelectionData
 // is method
-func (v SelectionData) SetUris(uris int /*TODO_TYPE isPtr: true, tag: array*/) (result bool) {
+func (v SelectionData) SetUris(uris int /*TODO_TYPE array type c, p0tag: utf8*/) (result bool) {
 	iv, err := _I.Get(2238, "SelectionData", "set_uris")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42795,9 +42781,9 @@ type SelectionModeEnum int
 
 const (
 	SelectionModeNone     SelectionModeEnum = 0
-	SelectionModeSingle                     = 1
-	SelectionModeBrowse                     = 2
-	SelectionModeMultiple                   = 3
+	SelectionModeSingle   SelectionModeEnum = 1
+	SelectionModeBrowse   SelectionModeEnum = 2
+	SelectionModeMultiple SelectionModeEnum = 3
 )
 
 // Enum SensitivityType
@@ -42805,8 +42791,8 @@ type SensitivityTypeEnum int
 
 const (
 	SensitivityTypeAuto SensitivityTypeEnum = 0
-	SensitivityTypeOn                       = 1
-	SensitivityTypeOff                      = 2
+	SensitivityTypeOn   SensitivityTypeEnum = 1
+	SensitivityTypeOff  SensitivityTypeEnum = 2
 )
 
 // Object Separator
@@ -42956,9 +42942,6 @@ type ISettings interface{ P_Settings() unsafe.Pointer }
 
 func (v Settings) P_Settings() unsafe.Pointer { return v.P }
 
-// gtk_settings_get_default
-// container is not nil, container is Settings
-// num arg is 0
 // gtk_settings_get_for_screen
 // container is not nil, container is Settings
 // is method
@@ -43124,10 +43107,10 @@ type ShadowTypeEnum int
 
 const (
 	ShadowTypeNone      ShadowTypeEnum = 0
-	ShadowTypeIn                       = 1
-	ShadowTypeOut                      = 2
-	ShadowTypeEtchedIn                 = 3
-	ShadowTypeEtchedOut                = 4
+	ShadowTypeIn        ShadowTypeEnum = 1
+	ShadowTypeOut       ShadowTypeEnum = 2
+	ShadowTypeEtchedIn  ShadowTypeEnum = 3
+	ShadowTypeEtchedOut ShadowTypeEnum = 4
 )
 
 // Object ShortcutLabel
@@ -43237,13 +43220,13 @@ type ShortcutTypeEnum int
 
 const (
 	ShortcutTypeAccelerator                   ShortcutTypeEnum = 0
-	ShortcutTypeGesturePinch                                   = 1
-	ShortcutTypeGestureStretch                                 = 2
-	ShortcutTypeGestureRotateClockwise                         = 3
-	ShortcutTypeGestureRotateCounterclockwise                  = 4
-	ShortcutTypeGestureTwoFingerSwipeLeft                      = 5
-	ShortcutTypeGestureTwoFingerSwipeRight                     = 6
-	ShortcutTypeGesture                                        = 7
+	ShortcutTypeGesturePinch                  ShortcutTypeEnum = 1
+	ShortcutTypeGestureStretch                ShortcutTypeEnum = 2
+	ShortcutTypeGestureRotateClockwise        ShortcutTypeEnum = 3
+	ShortcutTypeGestureRotateCounterclockwise ShortcutTypeEnum = 4
+	ShortcutTypeGestureTwoFingerSwipeLeft     ShortcutTypeEnum = 5
+	ShortcutTypeGestureTwoFingerSwipeRight    ShortcutTypeEnum = 6
+	ShortcutTypeGesture                       ShortcutTypeEnum = 7
 )
 
 // Object ShortcutsGroup
@@ -43451,9 +43434,9 @@ type SizeGroupModeEnum int
 
 const (
 	SizeGroupModeNone       SizeGroupModeEnum = 0
-	SizeGroupModeHorizontal                   = 1
-	SizeGroupModeVertical                     = 2
-	SizeGroupModeBoth                         = 3
+	SizeGroupModeHorizontal SizeGroupModeEnum = 1
+	SizeGroupModeVertical   SizeGroupModeEnum = 2
+	SizeGroupModeBoth       SizeGroupModeEnum = 3
 )
 
 // Struct SizeGroupPrivate
@@ -43466,8 +43449,8 @@ type SizeRequestModeEnum int
 
 const (
 	SizeRequestModeHeightForWidth SizeRequestModeEnum = 0
-	SizeRequestModeWidthForHeight                     = 1
-	SizeRequestModeConstantSize                       = 2
+	SizeRequestModeWidthForHeight SizeRequestModeEnum = 1
+	SizeRequestModeConstantSize   SizeRequestModeEnum = 2
 )
 
 // Object Socket
@@ -43558,7 +43541,7 @@ type SortTypeEnum int
 
 const (
 	SortTypeAscending  SortTypeEnum = 0
-	SortTypeDescending              = 1
+	SortTypeDescending SortTypeEnum = 1
 )
 
 // Object SpinButton
@@ -44008,7 +43991,7 @@ type SpinButtonUpdatePolicyEnum int
 
 const (
 	SpinButtonUpdatePolicyAlways  SpinButtonUpdatePolicyEnum = 0
-	SpinButtonUpdatePolicyIfValid                            = 1
+	SpinButtonUpdatePolicyIfValid SpinButtonUpdatePolicyEnum = 1
 )
 
 // Enum SpinType
@@ -44016,12 +43999,12 @@ type SpinTypeEnum int
 
 const (
 	SpinTypeStepForward  SpinTypeEnum = 0
-	SpinTypeStepBackward              = 1
-	SpinTypePageForward               = 2
-	SpinTypePageBackward              = 3
-	SpinTypeHome                      = 4
-	SpinTypeEnd                       = 5
-	SpinTypeUserDefined               = 6
+	SpinTypeStepBackward SpinTypeEnum = 1
+	SpinTypePageForward  SpinTypeEnum = 2
+	SpinTypePageBackward SpinTypeEnum = 3
+	SpinTypeHome         SpinTypeEnum = 4
+	SpinTypeEnd          SpinTypeEnum = 5
+	SpinTypeUserDefined  SpinTypeEnum = 6
 )
 
 // Object Spinner
@@ -44632,25 +44615,25 @@ type StackTransitionTypeEnum int
 
 const (
 	StackTransitionTypeNone           StackTransitionTypeEnum = 0
-	StackTransitionTypeCrossfade                              = 1
-	StackTransitionTypeSlideRight                             = 2
-	StackTransitionTypeSlideLeft                              = 3
-	StackTransitionTypeSlideUp                                = 4
-	StackTransitionTypeSlideDown                              = 5
-	StackTransitionTypeSlideLeftRight                         = 6
-	StackTransitionTypeSlideUpDown                            = 7
-	StackTransitionTypeOverUp                                 = 8
-	StackTransitionTypeOverDown                               = 9
-	StackTransitionTypeOverLeft                               = 10
-	StackTransitionTypeOverRight                              = 11
-	StackTransitionTypeUnderUp                                = 12
-	StackTransitionTypeUnderDown                              = 13
-	StackTransitionTypeUnderLeft                              = 14
-	StackTransitionTypeUnderRight                             = 15
-	StackTransitionTypeOverUpDown                             = 16
-	StackTransitionTypeOverDownUp                             = 17
-	StackTransitionTypeOverLeftRight                          = 18
-	StackTransitionTypeOverRightLeft                          = 19
+	StackTransitionTypeCrossfade      StackTransitionTypeEnum = 1
+	StackTransitionTypeSlideRight     StackTransitionTypeEnum = 2
+	StackTransitionTypeSlideLeft      StackTransitionTypeEnum = 3
+	StackTransitionTypeSlideUp        StackTransitionTypeEnum = 4
+	StackTransitionTypeSlideDown      StackTransitionTypeEnum = 5
+	StackTransitionTypeSlideLeftRight StackTransitionTypeEnum = 6
+	StackTransitionTypeSlideUpDown    StackTransitionTypeEnum = 7
+	StackTransitionTypeOverUp         StackTransitionTypeEnum = 8
+	StackTransitionTypeOverDown       StackTransitionTypeEnum = 9
+	StackTransitionTypeOverLeft       StackTransitionTypeEnum = 10
+	StackTransitionTypeOverRight      StackTransitionTypeEnum = 11
+	StackTransitionTypeUnderUp        StackTransitionTypeEnum = 12
+	StackTransitionTypeUnderDown      StackTransitionTypeEnum = 13
+	StackTransitionTypeUnderLeft      StackTransitionTypeEnum = 14
+	StackTransitionTypeUnderRight     StackTransitionTypeEnum = 15
+	StackTransitionTypeOverUpDown     StackTransitionTypeEnum = 16
+	StackTransitionTypeOverDownUp     StackTransitionTypeEnum = 17
+	StackTransitionTypeOverLeftRight  StackTransitionTypeEnum = 18
+	StackTransitionTypeOverRightLeft  StackTransitionTypeEnum = 19
 )
 
 // Flags StateFlags
@@ -44658,19 +44641,19 @@ type StateFlags int
 
 const (
 	StateFlagsNormal       StateFlags = 0
-	StateFlagsActive                  = 1
-	StateFlagsPrelight                = 2
-	StateFlagsSelected                = 4
-	StateFlagsInsensitive             = 8
-	StateFlagsInconsistent            = 16
-	StateFlagsFocused                 = 32
-	StateFlagsBackdrop                = 64
-	StateFlagsDirLtr                  = 128
-	StateFlagsDirRtl                  = 256
-	StateFlagsLink                    = 512
-	StateFlagsVisited                 = 1024
-	StateFlagsChecked                 = 2048
-	StateFlagsDropActive              = 4096
+	StateFlagsActive       StateFlags = 1
+	StateFlagsPrelight     StateFlags = 2
+	StateFlagsSelected     StateFlags = 4
+	StateFlagsInsensitive  StateFlags = 8
+	StateFlagsInconsistent StateFlags = 16
+	StateFlagsFocused      StateFlags = 32
+	StateFlagsBackdrop     StateFlags = 64
+	StateFlagsDirLtr       StateFlags = 128
+	StateFlagsDirRtl       StateFlags = 256
+	StateFlagsLink         StateFlags = 512
+	StateFlagsVisited      StateFlags = 1024
+	StateFlagsChecked      StateFlags = 2048
+	StateFlagsDropActive   StateFlags = 4096
 )
 
 // Enum StateType
@@ -44678,12 +44661,12 @@ type StateTypeEnum int
 
 const (
 	StateTypeNormal       StateTypeEnum = 0
-	StateTypeActive                     = 1
-	StateTypePrelight                   = 2
-	StateTypeSelected                   = 3
-	StateTypeInsensitive                = 4
-	StateTypeInconsistent               = 5
-	StateTypeFocused                    = 6
+	StateTypeActive       StateTypeEnum = 1
+	StateTypePrelight     StateTypeEnum = 2
+	StateTypeSelected     StateTypeEnum = 3
+	StateTypeInsensitive  StateTypeEnum = 4
+	StateTypeInconsistent StateTypeEnum = 5
+	StateTypeFocused      StateTypeEnum = 6
 )
 
 // Object StatusIcon
@@ -44807,7 +44790,7 @@ func NewStatusIconFromStock(stock_id string) (result StatusIcon) {
 // container is not nil, container is StatusIcon
 // is method
 // arg0Type tag: interface, isPtr: true
-func StatusIconPositionMenu1(menu IMenu, x int, y int, user_data IStatusIcon) (push_in bool) {
+func StatusIconPositionMenu1(menu IMenu, x int /*TODO:TYPE*/, y int /*TODO:TYPE*/, user_data IStatusIcon) (push_in bool) {
 	iv, err := _I.Get(2335, "StatusIcon", "position_menu")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46586,8 +46569,8 @@ type StyleContextPrintFlags int
 
 const (
 	StyleContextPrintFlagsNone      StyleContextPrintFlags = 0
-	StyleContextPrintFlagsRecurse                          = 1
-	StyleContextPrintFlagsShowStyle                        = 2
+	StyleContextPrintFlagsRecurse   StyleContextPrintFlags = 1
+	StyleContextPrintFlagsShowStyle StyleContextPrintFlags = 2
 )
 
 // Struct StyleContextPrivate
@@ -47480,9 +47463,9 @@ type TargetFlags int
 
 const (
 	TargetFlagsSameApp     TargetFlags = 1
-	TargetFlagsSameWidget              = 2
-	TargetFlagsOtherApp                = 4
-	TargetFlagsOtherWidget             = 8
+	TargetFlagsSameWidget  TargetFlags = 2
+	TargetFlagsOtherApp    TargetFlags = 4
+	TargetFlagsOtherWidget TargetFlags = 8
 )
 
 // Struct TargetList
@@ -47493,7 +47476,7 @@ type TargetList struct {
 // gtk_target_list_new
 // container is not nil, container is TargetList
 // is constructor
-func NewTargetList(targets int /*TODO_TYPE isPtr: true, tag: array*/, ntargets uint32) (result TargetList) {
+func NewTargetList(targets int /*TODO_TYPE array type c, p0tag: interface*/, ntargets uint32) (result TargetList) {
 	iv, err := _I.Get(2478, "TargetList", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47561,7 +47544,7 @@ func (v TargetList) AddRichTextTargets(info uint32, deserializable bool, buffer 
 // gtk_target_list_add_table
 // container is not nil, container is TargetList
 // is method
-func (v TargetList) AddTable(targets int /*TODO_TYPE isPtr: true, tag: array*/, ntargets uint32) {
+func (v TargetList) AddTable(targets int /*TODO_TYPE array type c, p0tag: interface*/, ntargets uint32) {
 	iv, err := _I.Get(2482, "TargetList", "add_table")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -48095,7 +48078,7 @@ func (v TextBuffer) DeleteSelection(interactive bool, default_editable bool) (re
 // gtk_text_buffer_deserialize
 // container is not nil, container is TextBuffer
 // is method
-func (v TextBuffer) Deserialize(content_buffer ITextBuffer, format gdk.Atom, iter TextIter, data int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) (result bool, err error) {
+func (v TextBuffer) Deserialize(content_buffer ITextBuffer, format gdk.Atom, iter TextIter, data gi.Uint8Array, length uint64) (result bool, err error) {
 	iv, err := _I.Get(2511, "TextBuffer", "deserialize")
 	if err != nil {
 		return
@@ -48105,7 +48088,7 @@ func (v TextBuffer) Deserialize(content_buffer ITextBuffer, format gdk.Atom, ite
 	arg_content_buffer := gi.NewPointerArgument(content_buffer.P_TextBuffer())
 	arg_format := gi.NewPointerArgument(format.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_length := gi.NewUint64Argument(length)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_content_buffer, arg_format, arg_iter, arg_data, arg_length, arg_err}
@@ -49115,8 +49098,8 @@ type TextBufferTargetInfoEnum int
 
 const (
 	TextBufferTargetInfoBufferContents TextBufferTargetInfoEnum = -1
-	TextBufferTargetInfoRichText                                = -2
-	TextBufferTargetInfoText                                    = -3
+	TextBufferTargetInfoRichText       TextBufferTargetInfoEnum = -2
+	TextBufferTargetInfoText           TextBufferTargetInfoEnum = -3
 )
 
 // Object TextCellAccessible
@@ -49206,8 +49189,8 @@ type TextDirectionEnum int
 
 const (
 	TextDirectionNone TextDirectionEnum = 0
-	TextDirectionLtr                    = 1
-	TextDirectionRtl                    = 2
+	TextDirectionLtr  TextDirectionEnum = 1
+	TextDirectionRtl  TextDirectionEnum = 2
 )
 
 // Enum TextExtendSelection
@@ -49215,7 +49198,7 @@ type TextExtendSelectionEnum int
 
 const (
 	TextExtendSelectionWord TextExtendSelectionEnum = 0
-	TextExtendSelectionLine                         = 1
+	TextExtendSelectionLine TextExtendSelectionEnum = 1
 )
 
 // Struct TextIter
@@ -50965,8 +50948,8 @@ type TextSearchFlags int
 
 const (
 	TextSearchFlagsVisibleOnly     TextSearchFlags = 1
-	TextSearchFlagsTextOnly                        = 2
-	TextSearchFlagsCaseInsensitive                 = 4
+	TextSearchFlagsTextOnly        TextSearchFlags = 2
+	TextSearchFlagsCaseInsensitive TextSearchFlags = 4
 )
 
 // Object TextTag
@@ -52482,9 +52465,9 @@ type TextViewLayerEnum int
 
 const (
 	TextViewLayerBelow     TextViewLayerEnum = 0
-	TextViewLayerAbove                       = 1
-	TextViewLayerBelowText                   = 2
-	TextViewLayerAboveText                   = 3
+	TextViewLayerAbove     TextViewLayerEnum = 1
+	TextViewLayerBelowText TextViewLayerEnum = 2
+	TextViewLayerAboveText TextViewLayerEnum = 3
 )
 
 // Struct TextViewPrivate
@@ -52497,12 +52480,12 @@ type TextWindowTypeEnum int
 
 const (
 	TextWindowTypePrivate TextWindowTypeEnum = 0
-	TextWindowTypeWidget                     = 1
-	TextWindowTypeText                       = 2
-	TextWindowTypeLeft                       = 3
-	TextWindowTypeRight                      = 4
-	TextWindowTypeTop                        = 5
-	TextWindowTypeBottom                     = 6
+	TextWindowTypeWidget  TextWindowTypeEnum = 1
+	TextWindowTypeText    TextWindowTypeEnum = 2
+	TextWindowTypeLeft    TextWindowTypeEnum = 3
+	TextWindowTypeRight   TextWindowTypeEnum = 4
+	TextWindowTypeTop     TextWindowTypeEnum = 5
+	TextWindowTypeBottom  TextWindowTypeEnum = 6
 )
 
 // Struct ThemeEngine
@@ -54387,12 +54370,6 @@ func NewToolPalette() (result Widget) {
 	return
 }
 
-// gtk_tool_palette_get_drag_target_group
-// container is not nil, container is ToolPalette
-// num arg is 0
-// gtk_tool_palette_get_drag_target_item
-// container is not nil, container is ToolPalette
-// num arg is 0
 // gtk_tool_palette_add_drag_dest
 // container is not nil, container is ToolPalette
 // is method
@@ -54716,7 +54693,7 @@ type ToolPaletteDragTargetsFlags int
 
 const (
 	ToolPaletteDragTargetsItems  ToolPaletteDragTargetsFlags = 1
-	ToolPaletteDragTargetsGroups                             = 2
+	ToolPaletteDragTargetsGroups ToolPaletteDragTargetsFlags = 2
 )
 
 // Struct ToolPalettePrivate
@@ -55168,7 +55145,7 @@ type ToolbarSpaceStyleEnum int
 
 const (
 	ToolbarSpaceStyleEmpty ToolbarSpaceStyleEnum = 0
-	ToolbarSpaceStyleLine                        = 1
+	ToolbarSpaceStyleLine  ToolbarSpaceStyleEnum = 1
 )
 
 // Enum ToolbarStyle
@@ -55176,9 +55153,9 @@ type ToolbarStyleEnum int
 
 const (
 	ToolbarStyleIcons     ToolbarStyleEnum = 0
-	ToolbarStyleText                       = 1
-	ToolbarStyleBoth                       = 2
-	ToolbarStyleBothHoriz                  = 3
+	ToolbarStyleText      ToolbarStyleEnum = 1
+	ToolbarStyleBoth      ToolbarStyleEnum = 2
+	ToolbarStyleBothHoriz ToolbarStyleEnum = 3
 )
 
 // Object Tooltip
@@ -55947,7 +55924,7 @@ func (v *TreeModelIfc) RowInserted(path TreePath, iter TreeIter) {
 // gtk_tree_model_rows_reordered_with_length
 // container is not nil, container is TreeModel
 // is method
-func (v *TreeModelIfc) RowsReordered(path TreePath, iter TreeIter, new_order int /*TODO_TYPE isPtr: true, tag: array*/, length int32) {
+func (v *TreeModelIfc) RowsReordered(path TreePath, iter TreeIter, new_order gi.Int32Array, length int32) {
 	iv, err := _I.Get(2937, "TreeModel", "rows_reordered")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -55956,7 +55933,7 @@ func (v *TreeModelIfc) RowsReordered(path TreePath, iter TreeIter, new_order int
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_path := gi.NewPointerArgument(path.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
-	arg_new_order := gi.NewIntArgument(new_order) /*TODO*/
+	arg_new_order := gi.NewPointerArgument(new_order.P)
 	arg_length := gi.NewInt32Argument(length)
 	args := []gi.Argument{arg_v, arg_path, arg_iter, arg_new_order, arg_length}
 	iv.Call(args, nil, nil)
@@ -56131,7 +56108,7 @@ func (v TreeModelFilter) Refilter() {
 // gtk_tree_model_filter_set_modify_func
 // container is not nil, container is TreeModelFilter
 // is method
-func (v TreeModelFilter) SetModifyFunc(n_columns int32, types int /*TODO_TYPE isPtr: true, tag: array*/, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TreeModelFilter) SetModifyFunc(n_columns int32, types int /*TODO_TYPE array type c, p0tag: GType*/, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) {
 	iv, err := _I.Get(2947, "TreeModelFilter", "set_modify_func")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -56190,7 +56167,7 @@ type TreeModelFlags int
 
 const (
 	TreeModelFlagsItersPersist TreeModelFlags = 1
-	TreeModelFlagsListOnly                    = 2
+	TreeModelFlagsListOnly     TreeModelFlags = 2
 )
 
 // ignore GType struct TreeModelIface
@@ -56391,13 +56368,13 @@ func NewTreePathFirst() (result TreePath) {
 // gtk_tree_path_new_from_indicesv
 // container is not nil, container is TreePath
 // is constructor
-func NewTreePathFromIndices(indices int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) (result TreePath) {
+func NewTreePathFromIndices(indices gi.Int32Array, length uint64) (result TreePath) {
 	iv, err := _I.Get(2960, "TreePath", "new_from_indices")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_indices := gi.NewIntArgument(indices) /*TODO*/
+	arg_indices := gi.NewPointerArgument(indices.P)
 	arg_length := gi.NewUint64Argument(length)
 	args := []gi.Argument{arg_indices, arg_length}
 	var ret gi.Argument
@@ -57257,7 +57234,7 @@ func (v TreeStore) P_TreeStore() unsafe.Pointer { return v.P }
 // gtk_tree_store_newv
 // container is not nil, container is TreeStore
 // is constructor
-func NewTreeStore(n_columns int32, types int /*TODO_TYPE isPtr: true, tag: array*/) (result TreeStore) {
+func NewTreeStore(n_columns int32, types int /*TODO_TYPE array type c, p0tag: GType*/) (result TreeStore) {
 	iv, err := _I.Get(3009, "TreeStore", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57368,7 +57345,7 @@ func (v TreeStore) InsertBefore(parent TreeIter, sibling TreeIter) (iter int /*T
 // gtk_tree_store_insert_with_valuesv
 // container is not nil, container is TreeStore
 // is method
-func (v TreeStore) InsertWithValues(parent TreeIter, position int32, columns int /*TODO_TYPE isPtr: true, tag: array*/, values int /*TODO_TYPE isPtr: true, tag: array*/, n_values int32) (iter int /*TODO_TYPE*/) {
+func (v TreeStore) InsertWithValues(parent TreeIter, position int32, columns gi.Int32Array, values int /*TODO_TYPE array type c, p0tag: interface*/, n_values int32) (iter int /*TODO_TYPE*/) {
 	iv, err := _I.Get(3015, "TreeStore", "insert_with_values")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57379,8 +57356,8 @@ func (v TreeStore) InsertWithValues(parent TreeIter, position int32, columns int
 	arg_iter := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_parent := gi.NewPointerArgument(parent.P)
 	arg_position := gi.NewInt32Argument(position)
-	arg_columns := gi.NewIntArgument(columns) /*TODO*/
-	arg_values := gi.NewIntArgument(values)   /*TODO*/
+	arg_columns := gi.NewPointerArgument(columns.P)
+	arg_values := gi.NewIntArgument(values) /*TODO*/
 	arg_n_values := gi.NewInt32Argument(n_values)
 	args := []gi.Argument{arg_v, arg_iter, arg_parent, arg_position, arg_columns, arg_values, arg_n_values}
 	iv.Call(args, nil, &outArgs[0])
@@ -57515,7 +57492,7 @@ func (v TreeStore) Remove(iter TreeIter) (result bool) {
 // gtk_tree_store_set_column_types
 // container is not nil, container is TreeStore
 // is method
-func (v TreeStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v TreeStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE array type c, p0tag: GType*/) {
 	iv, err := _I.Get(3023, "TreeStore", "set_column_types")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57548,7 +57525,7 @@ func (v TreeStore) SetValue(iter TreeIter, column int32, value gobject.Value) {
 // gtk_tree_store_set_valuesv
 // container is not nil, container is TreeStore
 // is method
-func (v TreeStore) Set(iter TreeIter, columns int /*TODO_TYPE isPtr: true, tag: array*/, values int /*TODO_TYPE isPtr: true, tag: array*/, n_values int32) {
+func (v TreeStore) Set(iter TreeIter, columns gi.Int32Array, values int /*TODO_TYPE array type c, p0tag: interface*/, n_values int32) {
 	iv, err := _I.Get(3025, "TreeStore", "set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57556,8 +57533,8 @@ func (v TreeStore) Set(iter TreeIter, columns int /*TODO_TYPE isPtr: true, tag: 
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
-	arg_columns := gi.NewIntArgument(columns) /*TODO*/
-	arg_values := gi.NewIntArgument(values)   /*TODO*/
+	arg_columns := gi.NewPointerArgument(columns.P)
+	arg_values := gi.NewIntArgument(values) /*TODO*/
 	arg_n_values := gi.NewInt32Argument(n_values)
 	args := []gi.Argument{arg_v, arg_iter, arg_columns, arg_values, arg_n_values}
 	iv.Call(args, nil, nil)
@@ -57848,7 +57825,7 @@ func (v TreeView) CreateRowDragIcon(path TreePath) (result cairo.Surface) {
 // gtk_tree_view_enable_model_drag_dest
 // container is not nil, container is TreeView
 // is method
-func (v TreeView) EnableModelDragDest(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v TreeView) EnableModelDragDest(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(3040, "TreeView", "enable_model_drag_dest")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57865,7 +57842,7 @@ func (v TreeView) EnableModelDragDest(targets int /*TODO_TYPE isPtr: true, tag: 
 // gtk_tree_view_enable_model_drag_source
 // container is not nil, container is TreeView
 // is method
-func (v TreeView) EnableModelDragSource(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v TreeView) EnableModelDragSource(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(3041, "TreeView", "enable_model_drag_source")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -58489,7 +58466,7 @@ func (v TreeView) GetTooltipColumn() (result int32) {
 // gtk_tree_view_get_tooltip_context
 // container is not nil, container is TreeView
 // is method
-func (v TreeView) GetTooltipContext(x int, y int, keyboard_tip bool) (result bool, model TreeModel, path TreePath, iter int /*TODO_TYPE*/) {
+func (v TreeView) GetTooltipContext(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/, keyboard_tip bool) (result bool, model TreeModel, path TreePath, iter int /*TODO_TYPE*/) {
 	iv, err := _I.Get(3076, "TreeView", "get_tooltip_context")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -60173,8 +60150,8 @@ type TreeViewColumnSizingEnum int
 
 const (
 	TreeViewColumnSizingGrowOnly TreeViewColumnSizingEnum = 0
-	TreeViewColumnSizingAutosize                          = 1
-	TreeViewColumnSizingFixed                             = 2
+	TreeViewColumnSizingAutosize TreeViewColumnSizingEnum = 1
+	TreeViewColumnSizingFixed    TreeViewColumnSizingEnum = 2
 )
 
 // Enum TreeViewDropPosition
@@ -60182,9 +60159,9 @@ type TreeViewDropPositionEnum int
 
 const (
 	TreeViewDropPositionBefore       TreeViewDropPositionEnum = 0
-	TreeViewDropPositionAfter                                 = 1
-	TreeViewDropPositionIntoOrBefore                          = 2
-	TreeViewDropPositionIntoOrAfter                           = 3
+	TreeViewDropPositionAfter        TreeViewDropPositionEnum = 1
+	TreeViewDropPositionIntoOrBefore TreeViewDropPositionEnum = 2
+	TreeViewDropPositionIntoOrAfter  TreeViewDropPositionEnum = 3
 )
 
 // Enum TreeViewGridLines
@@ -60192,9 +60169,9 @@ type TreeViewGridLinesEnum int
 
 const (
 	TreeViewGridLinesNone       TreeViewGridLinesEnum = 0
-	TreeViewGridLinesHorizontal                       = 1
-	TreeViewGridLinesVertical                         = 2
-	TreeViewGridLinesBoth                             = 3
+	TreeViewGridLinesHorizontal TreeViewGridLinesEnum = 1
+	TreeViewGridLinesVertical   TreeViewGridLinesEnum = 2
+	TreeViewGridLinesBoth       TreeViewGridLinesEnum = 3
 )
 
 // Struct TreeViewPrivate
@@ -60546,16 +60523,16 @@ type UIManagerItemTypeFlags int
 
 const (
 	UIManagerItemTypeAuto            UIManagerItemTypeFlags = 0
-	UIManagerItemTypeMenubar                                = 1
-	UIManagerItemTypeMenu                                   = 2
-	UIManagerItemTypeToolbar                                = 4
-	UIManagerItemTypePlaceholder                            = 8
-	UIManagerItemTypePopup                                  = 16
-	UIManagerItemTypeMenuitem                               = 32
-	UIManagerItemTypeToolitem                               = 64
-	UIManagerItemTypeSeparator                              = 128
-	UIManagerItemTypeAccelerator                            = 256
-	UIManagerItemTypePopupWithAccels                        = 512
+	UIManagerItemTypeMenubar         UIManagerItemTypeFlags = 1
+	UIManagerItemTypeMenu            UIManagerItemTypeFlags = 2
+	UIManagerItemTypeToolbar         UIManagerItemTypeFlags = 4
+	UIManagerItemTypePlaceholder     UIManagerItemTypeFlags = 8
+	UIManagerItemTypePopup           UIManagerItemTypeFlags = 16
+	UIManagerItemTypeMenuitem        UIManagerItemTypeFlags = 32
+	UIManagerItemTypeToolitem        UIManagerItemTypeFlags = 64
+	UIManagerItemTypeSeparator       UIManagerItemTypeFlags = 128
+	UIManagerItemTypeAccelerator     UIManagerItemTypeFlags = 256
+	UIManagerItemTypePopupWithAccels UIManagerItemTypeFlags = 512
 )
 
 // Struct UIManagerPrivate
@@ -60568,9 +60545,9 @@ type UnitEnum int
 
 const (
 	UnitNone   UnitEnum = 0
-	UnitPoints          = 1
-	UnitInch            = 2
-	UnitMm              = 3
+	UnitPoints UnitEnum = 1
+	UnitInch   UnitEnum = 2
+	UnitMm     UnitEnum = 3
 )
 
 // Object VBox
@@ -60992,18 +60969,6 @@ type IWidget interface{ P_Widget() unsafe.Pointer }
 
 func (v Widget) P_Widget() unsafe.Pointer { return v.P }
 
-// gtk_widget_get_default_direction
-// container is not nil, container is Widget
-// num arg is 0
-// gtk_widget_get_default_style
-// container is not nil, container is Widget
-// num arg is 0
-// gtk_widget_pop_composite_child
-// container is not nil, container is Widget
-// num arg is 0
-// gtk_widget_push_composite_child
-// container is not nil, container is Widget
-// num arg is 0
 // gtk_widget_set_default_direction
 // container is not nil, container is Widget
 // is method
@@ -61270,7 +61235,7 @@ func (v Widget) Destroy() {
 // gtk_widget_destroyed
 // container is not nil, container is Widget
 // is method
-func (v Widget) Destroyed(widget_pointer int) {
+func (v Widget) Destroyed(widget_pointer int /*TODO:TYPE*/) {
 	iv, err := _I.Get(3229, "Widget", "destroyed")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -61463,7 +61428,7 @@ func (v Widget) DragDestGetTrackMotion() (result bool) {
 // gtk_drag_dest_set
 // container is not nil, container is Widget
 // is method
-func (v Widget) DragDestSet(flags DestDefaultsFlags, targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v Widget) DragDestSet(flags DestDefaultsFlags, targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(3240, "Widget", "drag_dest_set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -61632,7 +61597,7 @@ func (v Widget) DragSourceGetTargetList() (result TargetList) {
 // gtk_drag_source_set
 // container is not nil, container is Widget
 // is method
-func (v Widget) DragSourceSet(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v Widget) DragSourceSet(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(3251, "Widget", "drag_source_set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -65360,7 +65325,7 @@ type WidgetHelpTypeEnum int
 
 const (
 	WidgetHelpTypeTooltip   WidgetHelpTypeEnum = 0
-	WidgetHelpTypeWhatsThis                    = 1
+	WidgetHelpTypeWhatsThis WidgetHelpTypeEnum = 1
 )
 
 // Struct WidgetPath
@@ -66078,15 +66043,6 @@ func NewWindow(type1 WindowTypeEnum) (result Widget) {
 	return
 }
 
-// gtk_window_get_default_icon_list
-// container is not nil, container is Window
-// num arg is 0
-// gtk_window_get_default_icon_name
-// container is not nil, container is Window
-// num arg is 0
-// gtk_window_list_toplevels
-// container is not nil, container is Window
-// num arg is 0
 // gtk_window_set_auto_startup_notification
 // container is not nil, container is Window
 // is method
@@ -68104,10 +68060,10 @@ type WindowPositionEnum int
 
 const (
 	WindowPositionNone           WindowPositionEnum = 0
-	WindowPositionCenter                            = 1
-	WindowPositionMouse                             = 2
-	WindowPositionCenterAlways                      = 3
-	WindowPositionCenterOnParent                    = 4
+	WindowPositionCenter         WindowPositionEnum = 1
+	WindowPositionMouse          WindowPositionEnum = 2
+	WindowPositionCenterAlways   WindowPositionEnum = 3
+	WindowPositionCenterOnParent WindowPositionEnum = 4
 )
 
 // Struct WindowPrivate
@@ -68120,7 +68076,7 @@ type WindowTypeEnum int
 
 const (
 	WindowTypeToplevel WindowTypeEnum = 0
-	WindowTypePopup                   = 1
+	WindowTypePopup    WindowTypeEnum = 1
 )
 
 // Enum WrapMode
@@ -68128,9 +68084,9 @@ type WrapModeEnum int
 
 const (
 	WrapModeNone     WrapModeEnum = 0
-	WrapModeChar                  = 1
-	WrapModeWord                  = 2
-	WrapModeWordChar              = 3
+	WrapModeChar     WrapModeEnum = 1
+	WrapModeWord     WrapModeEnum = 2
+	WrapModeWordChar WrapModeEnum = 3
 )
 
 // gtk_accel_groups_activate
@@ -69161,11 +69117,9 @@ func IconThemeErrorQuark() (result uint32) {
 	return
 }
 
-// black function init
-
 // gtk_init_check
 // container is nil
-func InitCheck(argc int, argv int) (result bool) {
+func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 	iv, err := _I.Get(3703, "init_check", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -69180,7 +69134,7 @@ func InitCheck(argc int, argv int) (result bool) {
 
 // gtk_init_with_args
 // container is nil
-func InitWithArgs(argc int, argv int, parameter_string string, entries int /*TODO_TYPE isPtr: true, tag: array*/, translation_domain string) (result bool, err error) {
+func InitWithArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/, parameter_string string, entries int /*TODO_TYPE array type c, p0tag: interface*/, translation_domain string) (result bool, err error) {
 	iv, err := _I.Get(3704, "init_with_args", "")
 	if err != nil {
 		return
@@ -69809,7 +69763,7 @@ func PaperSizeGetPaperSizes(include_custom bool) (result int /*TODO_TYPE isPtr: 
 
 // gtk_parse_args
 // container is nil
-func ParseArgs(argc int, argv int) (result bool) {
+func ParseArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 	iv, err := _I.Get(3734, "parse_args", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70101,8 +70055,6 @@ func RcParseColorFull(scanner glib.Scanner, style IRcStyle) (result uint32, colo
 	return
 }
 
-// black function rc_parse_priority
-
 // gtk_rc_parse_state
 // container is nil
 func RcParseState(scanner glib.Scanner) (result uint32, state StateTypeEnum) {
@@ -70273,7 +70225,7 @@ func RcResetStyles(settings ISettings) {
 
 // gtk_rc_set_default_files
 // container is nil
-func RcSetDefaultFiles(filenames int /*TODO_TYPE isPtr: true, tag: array*/) {
+func RcSetDefaultFiles(filenames int /*TODO_TYPE array type c, p0tag: filename*/) {
 	iv, err := _I.Get(3762, "rc_set_default_files", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70701,7 +70653,7 @@ func SelectionAddTarget(widget IWidget, selection gdk.Atom, target gdk.Atom, inf
 
 // gtk_selection_add_targets
 // container is nil
-func SelectionAddTargets(widget IWidget, selection gdk.Atom, targets int /*TODO_TYPE isPtr: true, tag: array*/, ntargets uint32) {
+func SelectionAddTargets(widget IWidget, selection gdk.Atom, targets int /*TODO_TYPE array type c, p0tag: interface*/, ntargets uint32) {
 	iv, err := _I.Get(3786, "selection_add_targets", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70857,7 +70809,7 @@ func ShowUriOnWindow(parent IWindow, uri string, timestamp uint32) (result bool,
 
 // gtk_stock_add
 // container is nil
-func StockAdd(items int /*TODO_TYPE isPtr: true, tag: array*/, n_items uint32) {
+func StockAdd(items int /*TODO_TYPE array type c, p0tag: interface*/, n_items uint32) {
 	iv, err := _I.Get(3795, "stock_add", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70871,7 +70823,7 @@ func StockAdd(items int /*TODO_TYPE isPtr: true, tag: array*/, n_items uint32) {
 
 // gtk_stock_add_static
 // container is nil
-func StockAddStatic(items int /*TODO_TYPE isPtr: true, tag: array*/, n_items uint32) {
+func StockAddStatic(items int /*TODO_TYPE array type c, p0tag: interface*/, n_items uint32) {
 	iv, err := _I.Get(3796, "stock_add_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70938,7 +70890,7 @@ func StockSetTranslateFunc(domain string, func1 int /*TODO_TYPE isPtr: false, ta
 
 // gtk_target_table_free
 // container is nil
-func TargetTableFree(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32) {
+func TargetTableFree(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32) {
 	iv, err := _I.Get(3800, "target_table_free", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70971,7 +70923,7 @@ func TargetTableNewFromList(list TargetList) (result int /*TODO_TYPE isPtr: true
 
 // gtk_targets_include_image
 // container is nil
-func TargetsIncludeImage(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, writable bool) (result bool) {
+func TargetsIncludeImage(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, writable bool) (result bool) {
 	iv, err := _I.Get(3802, "targets_include_image", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70989,7 +70941,7 @@ func TargetsIncludeImage(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_ta
 
 // gtk_targets_include_rich_text
 // container is nil
-func TargetsIncludeRichText(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, buffer ITextBuffer) (result bool) {
+func TargetsIncludeRichText(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, buffer ITextBuffer) (result bool) {
 	iv, err := _I.Get(3803, "targets_include_rich_text", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -71007,7 +70959,7 @@ func TargetsIncludeRichText(targets int /*TODO_TYPE isPtr: true, tag: array*/, n
 
 // gtk_targets_include_text
 // container is nil
-func TargetsIncludeText(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32) (result bool) {
+func TargetsIncludeText(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32) (result bool) {
 	iv, err := _I.Get(3804, "targets_include_text", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -71024,7 +70976,7 @@ func TargetsIncludeText(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_tar
 
 // gtk_targets_include_uri
 // container is nil
-func TargetsIncludeUri(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32) (result bool) {
+func TargetsIncludeUri(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32) (result bool) {
 	iv, err := _I.Get(3805, "targets_include_uri", "")
 	if err != nil {
 		log.Println("WARN:", err)

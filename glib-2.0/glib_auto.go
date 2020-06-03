@@ -6,6 +6,7 @@ import "unsafe"
 
 var _I = gi.NewInvokerCache("GLib")
 var _ unsafe.Pointer
+var _ *log.Logger
 
 func init() {
 	repo := gi.DefaultRepository()
@@ -25,16 +26,16 @@ type AsciiTypeFlags int
 
 const (
 	AsciiTypeAlnum  AsciiTypeFlags = 1
-	AsciiTypeAlpha                 = 2
-	AsciiTypeCntrl                 = 4
-	AsciiTypeDigit                 = 8
-	AsciiTypeGraph                 = 16
-	AsciiTypeLower                 = 32
-	AsciiTypePrint                 = 64
-	AsciiTypePunct                 = 128
-	AsciiTypeSpace                 = 256
-	AsciiTypeUpper                 = 512
-	AsciiTypeXdigit                = 1024
+	AsciiTypeAlpha  AsciiTypeFlags = 2
+	AsciiTypeCntrl  AsciiTypeFlags = 4
+	AsciiTypeDigit  AsciiTypeFlags = 8
+	AsciiTypeGraph  AsciiTypeFlags = 16
+	AsciiTypeLower  AsciiTypeFlags = 32
+	AsciiTypePrint  AsciiTypeFlags = 64
+	AsciiTypePunct  AsciiTypeFlags = 128
+	AsciiTypeSpace  AsciiTypeFlags = 256
+	AsciiTypeUpper  AsciiTypeFlags = 512
+	AsciiTypeXdigit AsciiTypeFlags = 1024
 )
 
 // Struct AsyncQueue
@@ -789,14 +790,14 @@ func (v BookmarkFile) HasItem(uri string) (result bool) {
 // g_bookmark_file_load_from_data
 // container is not nil, container is BookmarkFile
 // is method
-func (v BookmarkFile) LoadFromData(data int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) (result bool, err error) {
+func (v BookmarkFile) LoadFromData(data gi.Uint8Array, length uint64) (result bool, err error) {
 	iv, err := _I.Get(40, "BookmarkFile", "load_from_data")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_length := gi.NewUint64Argument(length)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data, arg_length, arg_err}
@@ -1021,7 +1022,7 @@ func (v BookmarkFile) SetDescription(uri string, description string) {
 // g_bookmark_file_set_groups
 // container is not nil, container is BookmarkFile
 // is method
-func (v BookmarkFile) SetGroups(uri string, groups int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) {
+func (v BookmarkFile) SetGroups(uri string, groups int /*TODO_TYPE array type c, p0tag: utf8*/, length uint64) {
 	iv, err := _I.Get(50, "BookmarkFile", "set_groups")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1197,21 +1198,18 @@ func (v BookmarkFile) ToFile(filename string) (result bool, err error) {
 	return
 }
 
-// g_bookmark_file_error_quark
-// container is not nil, container is BookmarkFile
-// num arg is 0
 // Enum BookmarkFileError
 type BookmarkFileErrorEnum int
 
 const (
 	BookmarkFileErrorInvalidUri       BookmarkFileErrorEnum = 0
-	BookmarkFileErrorInvalidValue                           = 1
-	BookmarkFileErrorAppNotRegistered                       = 2
-	BookmarkFileErrorUriNotFound                            = 3
-	BookmarkFileErrorRead                                   = 4
-	BookmarkFileErrorUnknownEncoding                        = 5
-	BookmarkFileErrorWrite                                  = 6
-	BookmarkFileErrorFileNotFound                           = 7
+	BookmarkFileErrorInvalidValue     BookmarkFileErrorEnum = 1
+	BookmarkFileErrorAppNotRegistered BookmarkFileErrorEnum = 2
+	BookmarkFileErrorUriNotFound      BookmarkFileErrorEnum = 3
+	BookmarkFileErrorRead             BookmarkFileErrorEnum = 4
+	BookmarkFileErrorUnknownEncoding  BookmarkFileErrorEnum = 5
+	BookmarkFileErrorWrite            BookmarkFileErrorEnum = 6
+	BookmarkFileErrorFileNotFound     BookmarkFileErrorEnum = 7
 )
 
 // Struct ByteArray
@@ -1256,20 +1254,17 @@ func ByteArrayFreeToBytes1(array int /*TODO_TYPE isPtr: true, tag: array*/) (res
 	return
 }
 
-// g_byte_array_new
-// container is not nil, container is ByteArray
-// num arg is 0
 // g_byte_array_new_take
 // container is not nil, container is ByteArray
 // is method
 // arg0Type tag: array, isPtr: true
-func ByteArrayNewTake1(data int /*TODO_TYPE isPtr: true, tag: array*/, len1 uint64) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func ByteArrayNewTake1(data gi.Uint8Array, len1 uint64) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
 	iv, err := _I.Get(63, "ByteArray", "new_take")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_len1 := gi.NewUint64Argument(len1)
 	args := []gi.Argument{arg_data, arg_len1}
 	var ret gi.Argument
@@ -1301,13 +1296,13 @@ type Bytes struct {
 // g_bytes_new
 // container is not nil, container is Bytes
 // is constructor
-func NewBytes(data int /*TODO_TYPE isPtr: true, tag: array*/, size uint64) (result Bytes) {
+func NewBytes(data gi.Uint8Array, size uint64) (result Bytes) {
 	iv, err := _I.Get(65, "Bytes", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_size := gi.NewUint64Argument(size)
 	args := []gi.Argument{arg_data, arg_size}
 	var ret gi.Argument
@@ -1319,13 +1314,13 @@ func NewBytes(data int /*TODO_TYPE isPtr: true, tag: array*/, size uint64) (resu
 // g_bytes_new_take
 // container is not nil, container is Bytes
 // is constructor
-func NewBytesTake(data int /*TODO_TYPE isPtr: true, tag: array*/, size uint64) (result Bytes) {
+func NewBytesTake(data gi.Uint8Array, size uint64) (result Bytes) {
 	iv, err := _I.Get(66, "Bytes", "new_take")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_size := gi.NewUint64Argument(size)
 	args := []gi.Argument{arg_data, arg_size}
 	var ret gi.Argument
@@ -1598,14 +1593,14 @@ func (v Checksum) Reset() {
 // g_checksum_update
 // container is not nil, container is Checksum
 // is method
-func (v Checksum) Update(data int /*TODO_TYPE isPtr: true, tag: array*/, length int64) {
+func (v Checksum) Update(data gi.Uint8Array, length int64) {
 	iv, err := _I.Get(82, "Checksum", "update")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_length := gi.NewInt64Argument(length)
 	args := []gi.Argument{arg_v, arg_data, arg_length}
 	iv.Call(args, nil, nil)
@@ -1634,10 +1629,10 @@ type ChecksumTypeEnum int
 
 const (
 	ChecksumTypeMd5    ChecksumTypeEnum = 0
-	ChecksumTypeSha1                    = 1
-	ChecksumTypeSha256                  = 2
-	ChecksumTypeSha512                  = 3
-	ChecksumTypeSha384                  = 4
+	ChecksumTypeSha1   ChecksumTypeEnum = 1
+	ChecksumTypeSha256 ChecksumTypeEnum = 2
+	ChecksumTypeSha512 ChecksumTypeEnum = 3
+	ChecksumTypeSha384 ChecksumTypeEnum = 4
 )
 
 // Struct Cond
@@ -1740,13 +1735,13 @@ type ConvertErrorEnum int
 
 const (
 	ConvertErrorNoConversion    ConvertErrorEnum = 0
-	ConvertErrorIllegalSequence                  = 1
-	ConvertErrorFailed                           = 2
-	ConvertErrorPartialInput                     = 3
-	ConvertErrorBadUri                           = 4
-	ConvertErrorNotAbsolutePath                  = 5
-	ConvertErrorNoMemory                         = 6
-	ConvertErrorEmbeddedNul                      = 7
+	ConvertErrorIllegalSequence ConvertErrorEnum = 1
+	ConvertErrorFailed          ConvertErrorEnum = 2
+	ConvertErrorPartialInput    ConvertErrorEnum = 3
+	ConvertErrorBadUri          ConvertErrorEnum = 4
+	ConvertErrorNotAbsolutePath ConvertErrorEnum = 5
+	ConvertErrorNoMemory        ConvertErrorEnum = 6
+	ConvertErrorEmbeddedNul     ConvertErrorEnum = 7
 )
 
 // Struct Data
@@ -2584,8 +2579,8 @@ type DateDMYEnum int
 
 const (
 	DateDMYDay   DateDMYEnum = 0
-	DateDMYMonth             = 1
-	DateDMYYear              = 2
+	DateDMYMonth DateDMYEnum = 1
+	DateDMYYear  DateDMYEnum = 2
 )
 
 // Enum DateMonth
@@ -2593,18 +2588,18 @@ type DateMonthEnum int
 
 const (
 	DateMonthBadMonth  DateMonthEnum = 0
-	DateMonthJanuary                 = 1
-	DateMonthFebruary                = 2
-	DateMonthMarch                   = 3
-	DateMonthApril                   = 4
-	DateMonthMay                     = 5
-	DateMonthJune                    = 6
-	DateMonthJuly                    = 7
-	DateMonthAugust                  = 8
-	DateMonthSeptember               = 9
-	DateMonthOctober                 = 10
-	DateMonthNovember                = 11
-	DateMonthDecember                = 12
+	DateMonthJanuary   DateMonthEnum = 1
+	DateMonthFebruary  DateMonthEnum = 2
+	DateMonthMarch     DateMonthEnum = 3
+	DateMonthApril     DateMonthEnum = 4
+	DateMonthMay       DateMonthEnum = 5
+	DateMonthJune      DateMonthEnum = 6
+	DateMonthJuly      DateMonthEnum = 7
+	DateMonthAugust    DateMonthEnum = 8
+	DateMonthSeptember DateMonthEnum = 9
+	DateMonthOctober   DateMonthEnum = 10
+	DateMonthNovember  DateMonthEnum = 11
+	DateMonthDecember  DateMonthEnum = 12
 )
 
 // Struct DateTime
@@ -3492,13 +3487,13 @@ type DateWeekdayEnum int
 
 const (
 	DateWeekdayBadWeekday DateWeekdayEnum = 0
-	DateWeekdayMonday                     = 1
-	DateWeekdayTuesday                    = 2
-	DateWeekdayWednesday                  = 3
-	DateWeekdayThursday                   = 4
-	DateWeekdayFriday                     = 5
-	DateWeekdaySaturday                   = 6
-	DateWeekdaySunday                     = 7
+	DateWeekdayMonday     DateWeekdayEnum = 1
+	DateWeekdayTuesday    DateWeekdayEnum = 2
+	DateWeekdayWednesday  DateWeekdayEnum = 3
+	DateWeekdayThursday   DateWeekdayEnum = 4
+	DateWeekdayFriday     DateWeekdayEnum = 5
+	DateWeekdaySaturday   DateWeekdayEnum = 6
+	DateWeekdaySunday     DateWeekdayEnum = 7
 )
 
 // Struct DebugKey
@@ -3664,13 +3659,13 @@ type ErrorTypeEnum int
 
 const (
 	ErrorTypeUnknown           ErrorTypeEnum = 0
-	ErrorTypeUnexpEof                        = 1
-	ErrorTypeUnexpEofInString                = 2
-	ErrorTypeUnexpEofInComment               = 3
-	ErrorTypeNonDigitInConst                 = 4
-	ErrorTypeDigitRadix                      = 5
-	ErrorTypeFloatRadix                      = 6
-	ErrorTypeFloatMalformed                  = 7
+	ErrorTypeUnexpEof          ErrorTypeEnum = 1
+	ErrorTypeUnexpEofInString  ErrorTypeEnum = 2
+	ErrorTypeUnexpEofInComment ErrorTypeEnum = 3
+	ErrorTypeNonDigitInConst   ErrorTypeEnum = 4
+	ErrorTypeDigitRadix        ErrorTypeEnum = 5
+	ErrorTypeFloatRadix        ErrorTypeEnum = 6
+	ErrorTypeFloatMalformed    ErrorTypeEnum = 7
 )
 
 // Enum FileError
@@ -3678,30 +3673,30 @@ type FileErrorEnum int
 
 const (
 	FileErrorExist       FileErrorEnum = 0
-	FileErrorIsdir                     = 1
-	FileErrorAcces                     = 2
-	FileErrorNametoolong               = 3
-	FileErrorNoent                     = 4
-	FileErrorNotdir                    = 5
-	FileErrorNxio                      = 6
-	FileErrorNodev                     = 7
-	FileErrorRofs                      = 8
-	FileErrorTxtbsy                    = 9
-	FileErrorFault                     = 10
-	FileErrorLoop                      = 11
-	FileErrorNospc                     = 12
-	FileErrorNomem                     = 13
-	FileErrorMfile                     = 14
-	FileErrorNfile                     = 15
-	FileErrorBadf                      = 16
-	FileErrorInval                     = 17
-	FileErrorPipe                      = 18
-	FileErrorAgain                     = 19
-	FileErrorIntr                      = 20
-	FileErrorIo                        = 21
-	FileErrorPerm                      = 22
-	FileErrorNosys                     = 23
-	FileErrorFailed                    = 24
+	FileErrorIsdir       FileErrorEnum = 1
+	FileErrorAcces       FileErrorEnum = 2
+	FileErrorNametoolong FileErrorEnum = 3
+	FileErrorNoent       FileErrorEnum = 4
+	FileErrorNotdir      FileErrorEnum = 5
+	FileErrorNxio        FileErrorEnum = 6
+	FileErrorNodev       FileErrorEnum = 7
+	FileErrorRofs        FileErrorEnum = 8
+	FileErrorTxtbsy      FileErrorEnum = 9
+	FileErrorFault       FileErrorEnum = 10
+	FileErrorLoop        FileErrorEnum = 11
+	FileErrorNospc       FileErrorEnum = 12
+	FileErrorNomem       FileErrorEnum = 13
+	FileErrorMfile       FileErrorEnum = 14
+	FileErrorNfile       FileErrorEnum = 15
+	FileErrorBadf        FileErrorEnum = 16
+	FileErrorInval       FileErrorEnum = 17
+	FileErrorPipe        FileErrorEnum = 18
+	FileErrorAgain       FileErrorEnum = 19
+	FileErrorIntr        FileErrorEnum = 20
+	FileErrorIo          FileErrorEnum = 21
+	FileErrorPerm        FileErrorEnum = 22
+	FileErrorNosys       FileErrorEnum = 23
+	FileErrorFailed      FileErrorEnum = 24
 )
 
 // Flags FileTest
@@ -3709,10 +3704,10 @@ type FileTestFlags int
 
 const (
 	FileTestIsRegular    FileTestFlags = 1
-	FileTestIsSymlink                  = 2
-	FileTestIsDir                      = 4
-	FileTestIsExecutable               = 8
-	FileTestExists                     = 16
+	FileTestIsSymlink    FileTestFlags = 2
+	FileTestIsDir        FileTestFlags = 4
+	FileTestIsExecutable FileTestFlags = 8
+	FileTestExists       FileTestFlags = 16
 )
 
 // Union FloatIEEE754
@@ -3725,9 +3720,9 @@ type FormatSizeFlags int
 
 const (
 	FormatSizeFlagsDefault    FormatSizeFlags = 0
-	FormatSizeFlagsLongFormat                 = 1
-	FormatSizeFlagsIecUnits                   = 2
-	FormatSizeFlagsBits                       = 4
+	FormatSizeFlagsLongFormat FormatSizeFlags = 1
+	FormatSizeFlagsIecUnits   FormatSizeFlags = 2
+	FormatSizeFlagsBits       FormatSizeFlags = 4
 )
 
 // Struct HashTable
@@ -4086,7 +4081,7 @@ type Hmac struct {
 // g_hmac_get_digest
 // container is not nil, container is Hmac
 // is method
-func (v Hmac) GetDigest(buffer int /*TODO_TYPE isPtr: true, tag: array*/, digest_len int) {
+func (v Hmac) GetDigest(buffer gi.Uint8Array, digest_len int /*TODO:TYPE*/) {
 	iv, err := _I.Get(215, "Hmac", "get_digest")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4094,7 +4089,7 @@ func (v Hmac) GetDigest(buffer int /*TODO_TYPE isPtr: true, tag: array*/, digest
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewIntArgument(buffer) /*TODO*/
+	arg_buffer := gi.NewPointerArgument(buffer.P)
 	args := []gi.Argument{arg_v, arg_buffer}
 	iv.Call(args, nil, &outArgs[0])
 }
@@ -4133,14 +4128,14 @@ func (v Hmac) Unref() {
 // g_hmac_update
 // container is not nil, container is Hmac
 // is method
-func (v Hmac) Update(data int /*TODO_TYPE isPtr: true, tag: array*/, length int64) {
+func (v Hmac) Update(data gi.Uint8Array, length int64) {
 	iv, err := _I.Get(218, "Hmac", "update")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_length := gi.NewInt64Argument(length)
 	args := []gi.Argument{arg_v, arg_data, arg_length}
 	iv.Call(args, nil, nil)
@@ -4274,8 +4269,8 @@ type HookFlagMaskFlags int
 
 const (
 	HookFlagMaskActive HookFlagMaskFlags = 1
-	HookFlagMaskInCall                   = 2
-	HookFlagMaskMask                     = 15
+	HookFlagMaskInCall HookFlagMaskFlags = 2
+	HookFlagMaskMask   HookFlagMaskFlags = 15
 )
 
 // Struct HookList
@@ -4929,14 +4924,14 @@ func (v IOChannel) Write(buf string, count uint64, bytes_written uint64) (result
 // g_io_channel_write_chars
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) WriteChars(buf int /*TODO_TYPE isPtr: true, tag: array*/, count int64) (result IOStatusEnum, bytes_written uint64, err error) {
+func (v IOChannel) WriteChars(buf gi.Uint8Array, count int64) (result IOStatusEnum, bytes_written uint64, err error) {
 	iv, err := _I.Get(261, "IOChannel", "write_chars")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buf := gi.NewIntArgument(buf) /*TODO*/
+	arg_buf := gi.NewPointerArgument(buf.P)
 	arg_count := gi.NewInt64Argument(count)
 	arg_bytes_written := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -4987,22 +4982,19 @@ func IOChannelErrorFromErrno1(en int32) (result IOChannelErrorEnum) {
 	return
 }
 
-// g_io_channel_error_quark
-// container is not nil, container is IOChannel
-// num arg is 0
 // Enum IOChannelError
 type IOChannelErrorEnum int
 
 const (
 	IOChannelErrorFbig     IOChannelErrorEnum = 0
-	IOChannelErrorInval                       = 1
-	IOChannelErrorIo                          = 2
-	IOChannelErrorIsdir                       = 3
-	IOChannelErrorNospc                       = 4
-	IOChannelErrorNxio                        = 5
-	IOChannelErrorOverflow                    = 6
-	IOChannelErrorPipe                        = 7
-	IOChannelErrorFailed                      = 8
+	IOChannelErrorInval    IOChannelErrorEnum = 1
+	IOChannelErrorIo       IOChannelErrorEnum = 2
+	IOChannelErrorIsdir    IOChannelErrorEnum = 3
+	IOChannelErrorNospc    IOChannelErrorEnum = 4
+	IOChannelErrorNxio     IOChannelErrorEnum = 5
+	IOChannelErrorOverflow IOChannelErrorEnum = 6
+	IOChannelErrorPipe     IOChannelErrorEnum = 7
+	IOChannelErrorFailed   IOChannelErrorEnum = 8
 )
 
 // Flags IOCondition
@@ -5010,11 +5002,11 @@ type IOConditionFlags int
 
 const (
 	IOConditionIn   IOConditionFlags = 1
-	IOConditionOut                   = 4
-	IOConditionPri                   = 2
-	IOConditionErr                   = 8
-	IOConditionHup                   = 16
-	IOConditionNval                  = 32
+	IOConditionOut  IOConditionFlags = 4
+	IOConditionPri  IOConditionFlags = 2
+	IOConditionErr  IOConditionFlags = 8
+	IOConditionHup  IOConditionFlags = 16
+	IOConditionNval IOConditionFlags = 32
 )
 
 // Enum IOError
@@ -5022,9 +5014,9 @@ type IOErrorEnum int
 
 const (
 	IOErrorNone    IOErrorEnum = 0
-	IOErrorAgain               = 1
-	IOErrorInval               = 2
-	IOErrorUnknown             = 3
+	IOErrorAgain   IOErrorEnum = 1
+	IOErrorInval   IOErrorEnum = 2
+	IOErrorUnknown IOErrorEnum = 3
 )
 
 // Flags IOFlags
@@ -5032,14 +5024,14 @@ type IOFlags int
 
 const (
 	IOFlagsAppend      IOFlags = 1
-	IOFlagsNonblock            = 2
-	IOFlagsIsReadable          = 4
-	IOFlagsIsWritable          = 8
-	IOFlagsIsWriteable         = 8
-	IOFlagsIsSeekable          = 16
-	IOFlagsMask                = 31
-	IOFlagsGetMask             = 31
-	IOFlagsSetMask             = 3
+	IOFlagsNonblock    IOFlags = 2
+	IOFlagsIsReadable  IOFlags = 4
+	IOFlagsIsWritable  IOFlags = 8
+	IOFlagsIsWriteable IOFlags = 8
+	IOFlagsIsSeekable  IOFlags = 16
+	IOFlagsMask        IOFlags = 31
+	IOFlagsGetMask     IOFlags = 31
+	IOFlagsSetMask     IOFlags = 3
 )
 
 // Struct IOFuncs
@@ -5052,9 +5044,9 @@ type IOStatusEnum int
 
 const (
 	IOStatusError  IOStatusEnum = 0
-	IOStatusNormal              = 1
-	IOStatusEof                 = 2
-	IOStatusAgain               = 3
+	IOStatusNormal IOStatusEnum = 1
+	IOStatusEof    IOStatusEnum = 2
+	IOStatusAgain  IOStatusEnum = 3
 )
 
 // Struct KeyFile
@@ -5623,7 +5615,7 @@ func (v KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (result bool,
 // g_key_file_load_from_dirs
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) LoadFromDirs(file string, search_dirs int /*TODO_TYPE isPtr: true, tag: array*/, flags KeyFileFlags) (result bool, full_path string, err error) {
+func (v KeyFile) LoadFromDirs(file string, search_dirs int /*TODO_TYPE array type c, p0tag: filename*/, flags KeyFileFlags) (result bool, full_path string, err error) {
 	iv, err := _I.Get(288, "KeyFile", "load_from_dirs")
 	if err != nil {
 		return
@@ -5787,7 +5779,7 @@ func (v KeyFile) SetBoolean(group_name string, key string, value bool) {
 // g_key_file_set_boolean_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) SetBooleanList(group_name string, key string, list int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) {
+func (v KeyFile) SetBooleanList(group_name string, key string, list gi.BoolArray, length uint64) {
 	iv, err := _I.Get(295, "KeyFile", "set_boolean_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5798,7 +5790,7 @@ func (v KeyFile) SetBooleanList(group_name string, key string, list int /*TODO_T
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_group_name := gi.NewStringArgument(c_group_name)
 	arg_key := gi.NewStringArgument(c_key)
-	arg_list := gi.NewIntArgument(list) /*TODO*/
+	arg_list := gi.NewPointerArgument(list.P)
 	arg_length := gi.NewUint64Argument(length)
 	args := []gi.Argument{arg_v, arg_group_name, arg_key, arg_list, arg_length}
 	iv.Call(args, nil, nil)
@@ -5858,7 +5850,7 @@ func (v KeyFile) SetDouble(group_name string, key string, value float64) {
 // g_key_file_set_double_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) SetDoubleList(group_name string, key string, list int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) {
+func (v KeyFile) SetDoubleList(group_name string, key string, list gi.DoubleArray, length uint64) {
 	iv, err := _I.Get(298, "KeyFile", "set_double_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5869,7 +5861,7 @@ func (v KeyFile) SetDoubleList(group_name string, key string, list int /*TODO_TY
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_group_name := gi.NewStringArgument(c_group_name)
 	arg_key := gi.NewStringArgument(c_key)
-	arg_list := gi.NewIntArgument(list) /*TODO*/
+	arg_list := gi.NewPointerArgument(list.P)
 	arg_length := gi.NewUint64Argument(length)
 	args := []gi.Argument{arg_v, arg_group_name, arg_key, arg_list, arg_length}
 	iv.Call(args, nil, nil)
@@ -5922,7 +5914,7 @@ func (v KeyFile) SetInteger(group_name string, key string, value int32) {
 // g_key_file_set_integer_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) SetIntegerList(group_name string, key string, list int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) {
+func (v KeyFile) SetIntegerList(group_name string, key string, list gi.Int32Array, length uint64) {
 	iv, err := _I.Get(301, "KeyFile", "set_integer_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5933,7 +5925,7 @@ func (v KeyFile) SetIntegerList(group_name string, key string, list int /*TODO_T
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_group_name := gi.NewStringArgument(c_group_name)
 	arg_key := gi.NewStringArgument(c_key)
-	arg_list := gi.NewIntArgument(list) /*TODO*/
+	arg_list := gi.NewPointerArgument(list.P)
 	arg_length := gi.NewUint64Argument(length)
 	args := []gi.Argument{arg_v, arg_group_name, arg_key, arg_list, arg_length}
 	iv.Call(args, nil, nil)
@@ -5985,7 +5977,7 @@ func (v KeyFile) SetLocaleString(group_name string, key string, locale string, s
 // g_key_file_set_locale_string_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) SetLocaleStringList(group_name string, key string, locale string, list int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) {
+func (v KeyFile) SetLocaleStringList(group_name string, key string, locale string, list int /*TODO_TYPE array type c, p0tag: utf8*/, length uint64) {
 	iv, err := _I.Get(304, "KeyFile", "set_locale_string_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6033,7 +6025,7 @@ func (v KeyFile) SetString(group_name string, key string, string string) {
 // g_key_file_set_string_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) SetStringList(group_name string, key string, list int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) {
+func (v KeyFile) SetStringList(group_name string, key string, list int /*TODO_TYPE array type c, p0tag: utf8*/, length uint64) {
 	iv, err := _I.Get(306, "KeyFile", "set_string_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6131,19 +6123,16 @@ func (v KeyFile) Unref() {
 	iv.Call(args, nil, nil)
 }
 
-// g_key_file_error_quark
-// container is not nil, container is KeyFile
-// num arg is 0
 // Enum KeyFileError
 type KeyFileErrorEnum int
 
 const (
 	KeyFileErrorUnknownEncoding KeyFileErrorEnum = 0
-	KeyFileErrorParse                            = 1
-	KeyFileErrorNotFound                         = 2
-	KeyFileErrorKeyNotFound                      = 3
-	KeyFileErrorGroupNotFound                    = 4
-	KeyFileErrorInvalidValue                     = 5
+	KeyFileErrorParse           KeyFileErrorEnum = 1
+	KeyFileErrorNotFound        KeyFileErrorEnum = 2
+	KeyFileErrorKeyNotFound     KeyFileErrorEnum = 3
+	KeyFileErrorGroupNotFound   KeyFileErrorEnum = 4
+	KeyFileErrorInvalidValue    KeyFileErrorEnum = 5
 )
 
 // Flags KeyFileFlags
@@ -6151,8 +6140,8 @@ type KeyFileFlags int
 
 const (
 	KeyFileFlagsNone             KeyFileFlags = 0
-	KeyFileFlagsKeepComments                  = 1
-	KeyFileFlagsKeepTranslations              = 2
+	KeyFileFlagsKeepComments     KeyFileFlags = 1
+	KeyFileFlagsKeepTranslations KeyFileFlags = 2
 )
 
 // Struct List
@@ -6170,14 +6159,14 @@ type LogLevelFlags int
 
 const (
 	LogLevelFlagsFlagRecursion LogLevelFlags = 1
-	LogLevelFlagsFlagFatal                   = 2
-	LogLevelFlagsLevelError                  = 4
-	LogLevelFlagsLevelCritical               = 8
-	LogLevelFlagsLevelWarning                = 16
-	LogLevelFlagsLevelMessage                = 32
-	LogLevelFlagsLevelInfo                   = 64
-	LogLevelFlagsLevelDebug                  = 128
-	LogLevelFlagsLevelMask                   = -4
+	LogLevelFlagsFlagFatal     LogLevelFlags = 2
+	LogLevelFlagsLevelError    LogLevelFlags = 4
+	LogLevelFlagsLevelCritical LogLevelFlags = 8
+	LogLevelFlagsLevelWarning  LogLevelFlags = 16
+	LogLevelFlagsLevelMessage  LogLevelFlags = 32
+	LogLevelFlagsLevelInfo     LogLevelFlags = 64
+	LogLevelFlagsLevelDebug    LogLevelFlags = 128
+	LogLevelFlagsLevelMask     LogLevelFlags = -4
 )
 
 // Enum LogWriterOutput
@@ -6185,7 +6174,7 @@ type LogWriterOutputEnum int
 
 const (
 	LogWriterOutputHandled   LogWriterOutputEnum = 1
-	LogWriterOutputUnhandled                     = 0
+	LogWriterOutputUnhandled LogWriterOutputEnum = 0
 )
 
 // Struct MainContext
@@ -6244,7 +6233,7 @@ func (v MainContext) AddPoll(fd PollFD, priority int32) {
 // g_main_context_check
 // container is not nil, container is MainContext
 // is method
-func (v MainContext) Check(max_priority int32, fds int /*TODO_TYPE isPtr: true, tag: array*/, n_fds int32) (result bool) {
+func (v MainContext) Check(max_priority int32, fds int /*TODO_TYPE array type c, p0tag: interface*/, n_fds int32) (result bool) {
 	iv, err := _I.Get(315, "MainContext", "check")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6563,15 +6552,6 @@ func (v MainContext) Wakeup() {
 	iv.Call(args, nil, nil)
 }
 
-// g_main_context_default
-// container is not nil, container is MainContext
-// num arg is 0
-// g_main_context_get_thread_default
-// container is not nil, container is MainContext
-// num arg is 0
-// g_main_context_ref_thread_default
-// container is not nil, container is MainContext
-// num arg is 0
 // Struct MainLoop
 type MainLoop struct {
 	P unsafe.Pointer
@@ -6836,11 +6816,11 @@ type MarkupCollectTypeFlags int
 
 const (
 	MarkupCollectTypeInvalid  MarkupCollectTypeFlags = 0
-	MarkupCollectTypeString                          = 1
-	MarkupCollectTypeStrdup                          = 2
-	MarkupCollectTypeBoolean                         = 3
-	MarkupCollectTypeTristate                        = 4
-	MarkupCollectTypeOptional                        = 65536
+	MarkupCollectTypeString   MarkupCollectTypeFlags = 1
+	MarkupCollectTypeStrdup   MarkupCollectTypeFlags = 2
+	MarkupCollectTypeBoolean  MarkupCollectTypeFlags = 3
+	MarkupCollectTypeTristate MarkupCollectTypeFlags = 4
+	MarkupCollectTypeOptional MarkupCollectTypeFlags = 65536
 )
 
 // Enum MarkupError
@@ -6848,12 +6828,12 @@ type MarkupErrorEnum int
 
 const (
 	MarkupErrorBadUtf8          MarkupErrorEnum = 0
-	MarkupErrorEmpty                            = 1
-	MarkupErrorParse                            = 2
-	MarkupErrorUnknownElement                   = 3
-	MarkupErrorUnknownAttribute                 = 4
-	MarkupErrorInvalidContent                   = 5
-	MarkupErrorMissingAttribute                 = 6
+	MarkupErrorEmpty            MarkupErrorEnum = 1
+	MarkupErrorParse            MarkupErrorEnum = 2
+	MarkupErrorUnknownElement   MarkupErrorEnum = 3
+	MarkupErrorUnknownAttribute MarkupErrorEnum = 4
+	MarkupErrorInvalidContent   MarkupErrorEnum = 5
+	MarkupErrorMissingAttribute MarkupErrorEnum = 6
 )
 
 // Struct MarkupParseContext
@@ -7050,9 +7030,9 @@ type MarkupParseFlags int
 
 const (
 	MarkupParseFlagsDoNotUseThisUnsupportedFlag MarkupParseFlags = 1
-	MarkupParseFlagsTreatCdataAsText                             = 2
-	MarkupParseFlagsPrefixErrorPosition                          = 4
-	MarkupParseFlagsIgnoreQualified                              = 8
+	MarkupParseFlagsTreatCdataAsText            MarkupParseFlags = 2
+	MarkupParseFlagsPrefixErrorPosition         MarkupParseFlags = 4
+	MarkupParseFlagsIgnoreQualified             MarkupParseFlags = 8
 )
 
 // Struct MarkupParser
@@ -7597,13 +7577,13 @@ type NormalizeModeEnum int
 
 const (
 	NormalizeModeDefault        NormalizeModeEnum = 0
-	NormalizeModeNfd                              = 0
-	NormalizeModeDefaultCompose                   = 1
-	NormalizeModeNfc                              = 1
-	NormalizeModeAll                              = 2
-	NormalizeModeNfkd                             = 2
-	NormalizeModeAllCompose                       = 3
-	NormalizeModeNfkc                             = 3
+	NormalizeModeNfd            NormalizeModeEnum = 0
+	NormalizeModeDefaultCompose NormalizeModeEnum = 1
+	NormalizeModeNfc            NormalizeModeEnum = 1
+	NormalizeModeAll            NormalizeModeEnum = 2
+	NormalizeModeNfkd           NormalizeModeEnum = 2
+	NormalizeModeAllCompose     NormalizeModeEnum = 3
+	NormalizeModeNfkc           NormalizeModeEnum = 3
 )
 
 // Enum NumberParserError
@@ -7611,7 +7591,7 @@ type NumberParserErrorEnum int
 
 const (
 	NumberParserErrorInvalid     NumberParserErrorEnum = 0
-	NumberParserErrorOutOfBounds                       = 1
+	NumberParserErrorOutOfBounds NumberParserErrorEnum = 1
 )
 
 // Struct Once
@@ -7658,8 +7638,8 @@ type OnceStatusEnum int
 
 const (
 	OnceStatusNotcalled OnceStatusEnum = 0
-	OnceStatusProgress                 = 1
-	OnceStatusReady                    = 2
+	OnceStatusProgress  OnceStatusEnum = 1
+	OnceStatusReady     OnceStatusEnum = 2
 )
 
 // Enum OptionArg
@@ -7667,14 +7647,14 @@ type OptionArgEnum int
 
 const (
 	OptionArgNone          OptionArgEnum = 0
-	OptionArgString                      = 1
-	OptionArgInt                         = 2
-	OptionArgCallback                    = 3
-	OptionArgFilename                    = 4
-	OptionArgStringArray                 = 5
-	OptionArgFilenameArray               = 6
-	OptionArgDouble                      = 7
-	OptionArgInt64                       = 8
+	OptionArgString        OptionArgEnum = 1
+	OptionArgInt           OptionArgEnum = 2
+	OptionArgCallback      OptionArgEnum = 3
+	OptionArgFilename      OptionArgEnum = 4
+	OptionArgStringArray   OptionArgEnum = 5
+	OptionArgFilenameArray OptionArgEnum = 6
+	OptionArgDouble        OptionArgEnum = 7
+	OptionArgInt64         OptionArgEnum = 8
 )
 
 // Struct OptionContext
@@ -7853,7 +7833,7 @@ func (v OptionContext) GetSummary() (result string) {
 // g_option_context_parse
 // container is not nil, container is OptionContext
 // is method
-func (v OptionContext) Parse(argc int, argv int) (result bool, err error) {
+func (v OptionContext) Parse(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool, err error) {
 	iv, err := _I.Get(405, "OptionContext", "parse")
 	if err != nil {
 		return
@@ -7872,7 +7852,7 @@ func (v OptionContext) Parse(argc int, argv int) (result bool, err error) {
 // g_option_context_parse_strv
 // container is not nil, container is OptionContext
 // is method
-func (v OptionContext) ParseStrv(arguments int) (result bool, err error) {
+func (v OptionContext) ParseStrv(arguments int /*TODO:TYPE*/) (result bool, err error) {
 	iv, err := _I.Get(406, "OptionContext", "parse_strv")
 	if err != nil {
 		return
@@ -8026,8 +8006,8 @@ type OptionErrorEnum int
 
 const (
 	OptionErrorUnknownOption OptionErrorEnum = 0
-	OptionErrorBadValue                      = 1
-	OptionErrorFailed                        = 2
+	OptionErrorBadValue      OptionErrorEnum = 1
+	OptionErrorFailed        OptionErrorEnum = 2
 )
 
 // Flags OptionFlags
@@ -8035,13 +8015,13 @@ type OptionFlags int
 
 const (
 	OptionFlagsNone        OptionFlags = 0
-	OptionFlagsHidden                  = 1
-	OptionFlagsInMain                  = 2
-	OptionFlagsReverse                 = 4
-	OptionFlagsNoArg                   = 8
-	OptionFlagsFilename                = 16
-	OptionFlagsOptionalArg             = 32
-	OptionFlagsNoalias                 = 64
+	OptionFlagsHidden      OptionFlags = 1
+	OptionFlagsInMain      OptionFlags = 2
+	OptionFlagsReverse     OptionFlags = 4
+	OptionFlagsNoArg       OptionFlags = 8
+	OptionFlagsFilename    OptionFlags = 16
+	OptionFlagsOptionalArg OptionFlags = 32
+	OptionFlagsNoalias     OptionFlags = 64
 )
 
 // Struct OptionGroup
@@ -9103,7 +9083,7 @@ func (v Regex) MatchAll(string string, match_options RegexMatchFlags) (result bo
 // g_regex_match_all_full
 // container is not nil, container is Regex
 // is method
-func (v Regex) MatchAllFull(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
+func (v Regex) MatchAllFull(string int /*TODO_TYPE array type c, p0tag: utf8*/, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
 	iv, err := _I.Get(477, "Regex", "match_all_full")
 	if err != nil {
 		return
@@ -9128,7 +9108,7 @@ func (v Regex) MatchAllFull(string int /*TODO_TYPE isPtr: true, tag: array*/, st
 // g_regex_match_full
 // container is not nil, container is Regex
 // is method
-func (v Regex) MatchFull(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
+func (v Regex) MatchFull(string int /*TODO_TYPE array type c, p0tag: utf8*/, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
 	iv, err := _I.Get(478, "Regex", "match_full")
 	if err != nil {
 		return
@@ -9170,7 +9150,7 @@ func (v Regex) Ref() (result Regex) {
 // g_regex_replace
 // container is not nil, container is Regex
 // is method
-func (v Regex) Replace(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
+func (v Regex) Replace(string int /*TODO_TYPE array type c, p0tag: utf8*/, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
 	iv, err := _I.Get(480, "Regex", "replace")
 	if err != nil {
 		return
@@ -9196,7 +9176,7 @@ func (v Regex) Replace(string int /*TODO_TYPE isPtr: true, tag: array*/, string_
 // g_regex_replace_literal
 // container is not nil, container is Regex
 // is method
-func (v Regex) ReplaceLiteral(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
+func (v Regex) ReplaceLiteral(string int /*TODO_TYPE array type c, p0tag: utf8*/, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
 	iv, err := _I.Get(481, "Regex", "replace_literal")
 	if err != nil {
 		return
@@ -9243,7 +9223,7 @@ func (v Regex) Split(string string, match_options RegexMatchFlags) (result int /
 // g_regex_split_full
 // container is not nil, container is Regex
 // is method
-func (v Regex) SplitFull(string int /*TODO_TYPE isPtr: true, tag: array*/, string_len int64, start_position int32, match_options RegexMatchFlags, max_tokens int32) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func (v Regex) SplitFull(string int /*TODO_TYPE array type c, p0tag: utf8*/, string_len int64, start_position int32, match_options RegexMatchFlags, max_tokens int32) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
 	iv, err := _I.Get(483, "Regex", "split_full")
 	if err != nil {
 		return
@@ -9302,9 +9282,6 @@ func RegexCheckReplacement1(replacement string) (result bool, has_references boo
 	return
 }
 
-// g_regex_error_quark
-// container is not nil, container is Regex
-// num arg is 0
 // g_regex_escape_nul
 // container is not nil, container is Regex
 // is method
@@ -9330,7 +9307,7 @@ func RegexEscapeNul1(string string, length int32) (result string) {
 // container is not nil, container is Regex
 // is method
 // arg0Type tag: array, isPtr: true
-func RegexEscapeString1(string int /*TODO_TYPE isPtr: true, tag: array*/, length int32) (result string) {
+func RegexEscapeString1(string int /*TODO_TYPE array type c, p0tag: utf8*/, length int32) (result string) {
 	iv, err := _I.Get(488, "Regex", "escape_string")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9400,23 +9377,23 @@ type RegexCompileFlags int
 
 const (
 	RegexCompileFlagsCaseless         RegexCompileFlags = 1
-	RegexCompileFlagsMultiline                          = 2
-	RegexCompileFlagsDotall                             = 4
-	RegexCompileFlagsExtended                           = 8
-	RegexCompileFlagsAnchored                           = 16
-	RegexCompileFlagsDollarEndonly                      = 32
-	RegexCompileFlagsUngreedy                           = 512
-	RegexCompileFlagsRaw                                = 2048
-	RegexCompileFlagsNoAutoCapture                      = 4096
-	RegexCompileFlagsOptimize                           = 8192
-	RegexCompileFlagsFirstline                          = 262144
-	RegexCompileFlagsDupnames                           = 524288
-	RegexCompileFlagsNewlineCr                          = 1048576
-	RegexCompileFlagsNewlineLf                          = 2097152
-	RegexCompileFlagsNewlineCrlf                        = 3145728
-	RegexCompileFlagsNewlineAnycrlf                     = 5242880
-	RegexCompileFlagsBsrAnycrlf                         = 8388608
-	RegexCompileFlagsJavascriptCompat                   = 33554432
+	RegexCompileFlagsMultiline        RegexCompileFlags = 2
+	RegexCompileFlagsDotall           RegexCompileFlags = 4
+	RegexCompileFlagsExtended         RegexCompileFlags = 8
+	RegexCompileFlagsAnchored         RegexCompileFlags = 16
+	RegexCompileFlagsDollarEndonly    RegexCompileFlags = 32
+	RegexCompileFlagsUngreedy         RegexCompileFlags = 512
+	RegexCompileFlagsRaw              RegexCompileFlags = 2048
+	RegexCompileFlagsNoAutoCapture    RegexCompileFlags = 4096
+	RegexCompileFlagsOptimize         RegexCompileFlags = 8192
+	RegexCompileFlagsFirstline        RegexCompileFlags = 262144
+	RegexCompileFlagsDupnames         RegexCompileFlags = 524288
+	RegexCompileFlagsNewlineCr        RegexCompileFlags = 1048576
+	RegexCompileFlagsNewlineLf        RegexCompileFlags = 2097152
+	RegexCompileFlagsNewlineCrlf      RegexCompileFlags = 3145728
+	RegexCompileFlagsNewlineAnycrlf   RegexCompileFlags = 5242880
+	RegexCompileFlagsBsrAnycrlf       RegexCompileFlags = 8388608
+	RegexCompileFlagsJavascriptCompat RegexCompileFlags = 33554432
 )
 
 // Enum RegexError
@@ -9424,62 +9401,62 @@ type RegexErrorEnum int
 
 const (
 	RegexErrorCompile                                  RegexErrorEnum = 0
-	RegexErrorOptimize                                                = 1
-	RegexErrorReplace                                                 = 2
-	RegexErrorMatch                                                   = 3
-	RegexErrorInternal                                                = 4
-	RegexErrorStrayBackslash                                          = 101
-	RegexErrorMissingControlChar                                      = 102
-	RegexErrorUnrecognizedEscape                                      = 103
-	RegexErrorQuantifiersOutOfOrder                                   = 104
-	RegexErrorQuantifierTooBig                                        = 105
-	RegexErrorUnterminatedCharacterClass                              = 106
-	RegexErrorInvalidEscapeInCharacterClass                           = 107
-	RegexErrorRangeOutOfOrder                                         = 108
-	RegexErrorNothingToRepeat                                         = 109
-	RegexErrorUnrecognizedCharacter                                   = 112
-	RegexErrorPosixNamedClassOutsideClass                             = 113
-	RegexErrorUnmatchedParenthesis                                    = 114
-	RegexErrorInexistentSubpatternReference                           = 115
-	RegexErrorUnterminatedComment                                     = 118
-	RegexErrorExpressionTooLarge                                      = 120
-	RegexErrorMemoryError                                             = 121
-	RegexErrorVariableLengthLookbehind                                = 125
-	RegexErrorMalformedCondition                                      = 126
-	RegexErrorTooManyConditionalBranches                              = 127
-	RegexErrorAssertionExpected                                       = 128
-	RegexErrorUnknownPosixClassName                                   = 130
-	RegexErrorPosixCollatingElementsNotSupported                      = 131
-	RegexErrorHexCodeTooLarge                                         = 134
-	RegexErrorInvalidCondition                                        = 135
-	RegexErrorSingleByteMatchInLookbehind                             = 136
-	RegexErrorInfiniteLoop                                            = 140
-	RegexErrorMissingSubpatternNameTerminator                         = 142
-	RegexErrorDuplicateSubpatternName                                 = 143
-	RegexErrorMalformedProperty                                       = 146
-	RegexErrorUnknownProperty                                         = 147
-	RegexErrorSubpatternNameTooLong                                   = 148
-	RegexErrorTooManySubpatterns                                      = 149
-	RegexErrorInvalidOctalValue                                       = 151
-	RegexErrorTooManyBranchesInDefine                                 = 154
-	RegexErrorDefineRepetion                                          = 155
-	RegexErrorInconsistentNewlineOptions                              = 156
-	RegexErrorMissingBackReference                                    = 157
-	RegexErrorInvalidRelativeReference                                = 158
-	RegexErrorBacktrackingControlVerbArgumentForbidden                = 159
-	RegexErrorUnknownBacktrackingControlVerb                          = 160
-	RegexErrorNumberTooBig                                            = 161
-	RegexErrorMissingSubpatternName                                   = 162
-	RegexErrorMissingDigit                                            = 163
-	RegexErrorInvalidDataCharacter                                    = 164
-	RegexErrorExtraSubpatternName                                     = 165
-	RegexErrorBacktrackingControlVerbArgumentRequired                 = 166
-	RegexErrorInvalidControlChar                                      = 168
-	RegexErrorMissingName                                             = 169
-	RegexErrorNotSupportedInClass                                     = 171
-	RegexErrorTooManyForwardReferences                                = 172
-	RegexErrorNameTooLong                                             = 175
-	RegexErrorCharacterValueTooLarge                                  = 176
+	RegexErrorOptimize                                 RegexErrorEnum = 1
+	RegexErrorReplace                                  RegexErrorEnum = 2
+	RegexErrorMatch                                    RegexErrorEnum = 3
+	RegexErrorInternal                                 RegexErrorEnum = 4
+	RegexErrorStrayBackslash                           RegexErrorEnum = 101
+	RegexErrorMissingControlChar                       RegexErrorEnum = 102
+	RegexErrorUnrecognizedEscape                       RegexErrorEnum = 103
+	RegexErrorQuantifiersOutOfOrder                    RegexErrorEnum = 104
+	RegexErrorQuantifierTooBig                         RegexErrorEnum = 105
+	RegexErrorUnterminatedCharacterClass               RegexErrorEnum = 106
+	RegexErrorInvalidEscapeInCharacterClass            RegexErrorEnum = 107
+	RegexErrorRangeOutOfOrder                          RegexErrorEnum = 108
+	RegexErrorNothingToRepeat                          RegexErrorEnum = 109
+	RegexErrorUnrecognizedCharacter                    RegexErrorEnum = 112
+	RegexErrorPosixNamedClassOutsideClass              RegexErrorEnum = 113
+	RegexErrorUnmatchedParenthesis                     RegexErrorEnum = 114
+	RegexErrorInexistentSubpatternReference            RegexErrorEnum = 115
+	RegexErrorUnterminatedComment                      RegexErrorEnum = 118
+	RegexErrorExpressionTooLarge                       RegexErrorEnum = 120
+	RegexErrorMemoryError                              RegexErrorEnum = 121
+	RegexErrorVariableLengthLookbehind                 RegexErrorEnum = 125
+	RegexErrorMalformedCondition                       RegexErrorEnum = 126
+	RegexErrorTooManyConditionalBranches               RegexErrorEnum = 127
+	RegexErrorAssertionExpected                        RegexErrorEnum = 128
+	RegexErrorUnknownPosixClassName                    RegexErrorEnum = 130
+	RegexErrorPosixCollatingElementsNotSupported       RegexErrorEnum = 131
+	RegexErrorHexCodeTooLarge                          RegexErrorEnum = 134
+	RegexErrorInvalidCondition                         RegexErrorEnum = 135
+	RegexErrorSingleByteMatchInLookbehind              RegexErrorEnum = 136
+	RegexErrorInfiniteLoop                             RegexErrorEnum = 140
+	RegexErrorMissingSubpatternNameTerminator          RegexErrorEnum = 142
+	RegexErrorDuplicateSubpatternName                  RegexErrorEnum = 143
+	RegexErrorMalformedProperty                        RegexErrorEnum = 146
+	RegexErrorUnknownProperty                          RegexErrorEnum = 147
+	RegexErrorSubpatternNameTooLong                    RegexErrorEnum = 148
+	RegexErrorTooManySubpatterns                       RegexErrorEnum = 149
+	RegexErrorInvalidOctalValue                        RegexErrorEnum = 151
+	RegexErrorTooManyBranchesInDefine                  RegexErrorEnum = 154
+	RegexErrorDefineRepetion                           RegexErrorEnum = 155
+	RegexErrorInconsistentNewlineOptions               RegexErrorEnum = 156
+	RegexErrorMissingBackReference                     RegexErrorEnum = 157
+	RegexErrorInvalidRelativeReference                 RegexErrorEnum = 158
+	RegexErrorBacktrackingControlVerbArgumentForbidden RegexErrorEnum = 159
+	RegexErrorUnknownBacktrackingControlVerb           RegexErrorEnum = 160
+	RegexErrorNumberTooBig                             RegexErrorEnum = 161
+	RegexErrorMissingSubpatternName                    RegexErrorEnum = 162
+	RegexErrorMissingDigit                             RegexErrorEnum = 163
+	RegexErrorInvalidDataCharacter                     RegexErrorEnum = 164
+	RegexErrorExtraSubpatternName                      RegexErrorEnum = 165
+	RegexErrorBacktrackingControlVerbArgumentRequired  RegexErrorEnum = 166
+	RegexErrorInvalidControlChar                       RegexErrorEnum = 168
+	RegexErrorMissingName                              RegexErrorEnum = 169
+	RegexErrorNotSupportedInClass                      RegexErrorEnum = 171
+	RegexErrorTooManyForwardReferences                 RegexErrorEnum = 172
+	RegexErrorNameTooLong                              RegexErrorEnum = 175
+	RegexErrorCharacterValueTooLarge                   RegexErrorEnum = 176
 )
 
 // Flags RegexMatchFlags
@@ -9487,20 +9464,20 @@ type RegexMatchFlags int
 
 const (
 	RegexMatchFlagsAnchored        RegexMatchFlags = 16
-	RegexMatchFlagsNotbol                          = 128
-	RegexMatchFlagsNoteol                          = 256
-	RegexMatchFlagsNotempty                        = 1024
-	RegexMatchFlagsPartial                         = 32768
-	RegexMatchFlagsNewlineCr                       = 1048576
-	RegexMatchFlagsNewlineLf                       = 2097152
-	RegexMatchFlagsNewlineCrlf                     = 3145728
-	RegexMatchFlagsNewlineAny                      = 4194304
-	RegexMatchFlagsNewlineAnycrlf                  = 5242880
-	RegexMatchFlagsBsrAnycrlf                      = 8388608
-	RegexMatchFlagsBsrAny                          = 16777216
-	RegexMatchFlagsPartialSoft                     = 32768
-	RegexMatchFlagsPartialHard                     = 134217728
-	RegexMatchFlagsNotemptyAtstart                 = 268435456
+	RegexMatchFlagsNotbol          RegexMatchFlags = 128
+	RegexMatchFlagsNoteol          RegexMatchFlags = 256
+	RegexMatchFlagsNotempty        RegexMatchFlags = 1024
+	RegexMatchFlagsPartial         RegexMatchFlags = 32768
+	RegexMatchFlagsNewlineCr       RegexMatchFlags = 1048576
+	RegexMatchFlagsNewlineLf       RegexMatchFlags = 2097152
+	RegexMatchFlagsNewlineCrlf     RegexMatchFlags = 3145728
+	RegexMatchFlagsNewlineAny      RegexMatchFlags = 4194304
+	RegexMatchFlagsNewlineAnycrlf  RegexMatchFlags = 5242880
+	RegexMatchFlagsBsrAnycrlf      RegexMatchFlags = 8388608
+	RegexMatchFlagsBsrAny          RegexMatchFlags = 16777216
+	RegexMatchFlagsPartialSoft     RegexMatchFlags = 32768
+	RegexMatchFlagsPartialHard     RegexMatchFlags = 134217728
+	RegexMatchFlagsNotemptyAtstart RegexMatchFlags = 268435456
 )
 
 // Struct SList
@@ -9804,8 +9781,8 @@ type SeekTypeEnum int
 
 const (
 	SeekTypeCur SeekTypeEnum = 0
-	SeekTypeSet              = 1
-	SeekTypeEnd              = 2
+	SeekTypeSet SeekTypeEnum = 1
+	SeekTypeEnd SeekTypeEnum = 2
 )
 
 // Struct Sequence
@@ -10246,8 +10223,8 @@ type ShellErrorEnum int
 
 const (
 	ShellErrorBadQuoting  ShellErrorEnum = 0
-	ShellErrorEmptyString                = 1
-	ShellErrorFailed                     = 2
+	ShellErrorEmptyString ShellErrorEnum = 1
+	ShellErrorFailed      ShellErrorEnum = 2
 )
 
 // Enum SliceConfig
@@ -10255,11 +10232,11 @@ type SliceConfigEnum int
 
 const (
 	SliceConfigAlwaysMalloc      SliceConfigEnum = 1
-	SliceConfigBypassMagazines                   = 2
-	SliceConfigWorkingSetMsecs                   = 3
-	SliceConfigColorIncrement                    = 4
-	SliceConfigChunkSizes                        = 5
-	SliceConfigContentionCounter                 = 6
+	SliceConfigBypassMagazines   SliceConfigEnum = 2
+	SliceConfigWorkingSetMsecs   SliceConfigEnum = 3
+	SliceConfigColorIncrement    SliceConfigEnum = 4
+	SliceConfigChunkSizes        SliceConfigEnum = 5
+	SliceConfigContentionCounter SliceConfigEnum = 6
 )
 
 // Struct Source
@@ -10827,26 +10804,26 @@ type SpawnErrorEnum int
 
 const (
 	SpawnErrorFork        SpawnErrorEnum = 0
-	SpawnErrorRead                       = 1
-	SpawnErrorChdir                      = 2
-	SpawnErrorAcces                      = 3
-	SpawnErrorPerm                       = 4
-	SpawnErrorTooBig                     = 5
-	SpawnError2big                       = 5
-	SpawnErrorNoexec                     = 6
-	SpawnErrorNametoolong                = 7
-	SpawnErrorNoent                      = 8
-	SpawnErrorNomem                      = 9
-	SpawnErrorNotdir                     = 10
-	SpawnErrorLoop                       = 11
-	SpawnErrorTxtbusy                    = 12
-	SpawnErrorIo                         = 13
-	SpawnErrorNfile                      = 14
-	SpawnErrorMfile                      = 15
-	SpawnErrorInval                      = 16
-	SpawnErrorIsdir                      = 17
-	SpawnErrorLibbad                     = 18
-	SpawnErrorFailed                     = 19
+	SpawnErrorRead        SpawnErrorEnum = 1
+	SpawnErrorChdir       SpawnErrorEnum = 2
+	SpawnErrorAcces       SpawnErrorEnum = 3
+	SpawnErrorPerm        SpawnErrorEnum = 4
+	SpawnErrorTooBig      SpawnErrorEnum = 5
+	SpawnError2big        SpawnErrorEnum = 5
+	SpawnErrorNoexec      SpawnErrorEnum = 6
+	SpawnErrorNametoolong SpawnErrorEnum = 7
+	SpawnErrorNoent       SpawnErrorEnum = 8
+	SpawnErrorNomem       SpawnErrorEnum = 9
+	SpawnErrorNotdir      SpawnErrorEnum = 10
+	SpawnErrorLoop        SpawnErrorEnum = 11
+	SpawnErrorTxtbusy     SpawnErrorEnum = 12
+	SpawnErrorIo          SpawnErrorEnum = 13
+	SpawnErrorNfile       SpawnErrorEnum = 14
+	SpawnErrorMfile       SpawnErrorEnum = 15
+	SpawnErrorInval       SpawnErrorEnum = 16
+	SpawnErrorIsdir       SpawnErrorEnum = 17
+	SpawnErrorLibbad      SpawnErrorEnum = 18
+	SpawnErrorFailed      SpawnErrorEnum = 19
 )
 
 // Flags SpawnFlags
@@ -10854,15 +10831,15 @@ type SpawnFlags int
 
 const (
 	SpawnFlagsDefault              SpawnFlags = 0
-	SpawnFlagsLeaveDescriptorsOpen            = 1
-	SpawnFlagsDoNotReapChild                  = 2
-	SpawnFlagsSearchPath                      = 4
-	SpawnFlagsStdoutToDevNull                 = 8
-	SpawnFlagsStderrToDevNull                 = 16
-	SpawnFlagsChildInheritsStdin              = 32
-	SpawnFlagsFileAndArgvZero                 = 64
-	SpawnFlagsSearchPathFromEnvp              = 128
-	SpawnFlagsCloexecPipes                    = 256
+	SpawnFlagsLeaveDescriptorsOpen SpawnFlags = 1
+	SpawnFlagsDoNotReapChild       SpawnFlags = 2
+	SpawnFlagsSearchPath           SpawnFlags = 4
+	SpawnFlagsStdoutToDevNull      SpawnFlags = 8
+	SpawnFlagsStderrToDevNull      SpawnFlags = 16
+	SpawnFlagsChildInheritsStdin   SpawnFlags = 32
+	SpawnFlagsFileAndArgvZero      SpawnFlags = 64
+	SpawnFlagsSearchPathFromEnvp   SpawnFlags = 128
+	SpawnFlagsCloexecPipes         SpawnFlags = 256
 )
 
 // Struct StatBuf
@@ -11499,7 +11476,7 @@ type TestFileTypeEnum int
 
 const (
 	TestFileTypeDist  TestFileTypeEnum = 0
-	TestFileTypeBuilt                  = 1
+	TestFileTypeBuilt TestFileTypeEnum = 1
 )
 
 // Struct TestLogBuffer
@@ -11561,17 +11538,17 @@ type TestLogTypeEnum int
 
 const (
 	TestLogTypeNone        TestLogTypeEnum = 0
-	TestLogTypeError                       = 1
-	TestLogTypeStartBinary                 = 2
-	TestLogTypeListCase                    = 3
-	TestLogTypeSkipCase                    = 4
-	TestLogTypeStartCase                   = 5
-	TestLogTypeStopCase                    = 6
-	TestLogTypeMinResult                   = 7
-	TestLogTypeMaxResult                   = 8
-	TestLogTypeMessage                     = 9
-	TestLogTypeStartSuite                  = 10
-	TestLogTypeStopSuite                   = 11
+	TestLogTypeError       TestLogTypeEnum = 1
+	TestLogTypeStartBinary TestLogTypeEnum = 2
+	TestLogTypeListCase    TestLogTypeEnum = 3
+	TestLogTypeSkipCase    TestLogTypeEnum = 4
+	TestLogTypeStartCase   TestLogTypeEnum = 5
+	TestLogTypeStopCase    TestLogTypeEnum = 6
+	TestLogTypeMinResult   TestLogTypeEnum = 7
+	TestLogTypeMaxResult   TestLogTypeEnum = 8
+	TestLogTypeMessage     TestLogTypeEnum = 9
+	TestLogTypeStartSuite  TestLogTypeEnum = 10
+	TestLogTypeStopSuite   TestLogTypeEnum = 11
 )
 
 // Enum TestResult
@@ -11579,9 +11556,9 @@ type TestResultEnum int
 
 const (
 	TestResultSuccess    TestResultEnum = 0
-	TestResultSkipped                   = 1
-	TestResultFailure                   = 2
-	TestResultIncomplete                = 3
+	TestResultSkipped    TestResultEnum = 1
+	TestResultFailure    TestResultEnum = 2
+	TestResultIncomplete TestResultEnum = 3
 )
 
 // Flags TestSubprocessFlags
@@ -11589,8 +11566,8 @@ type TestSubprocessFlags int
 
 const (
 	TestSubprocessFlagsStdin  TestSubprocessFlags = 1
-	TestSubprocessFlagsStdout                     = 2
-	TestSubprocessFlagsStderr                     = 4
+	TestSubprocessFlagsStdout TestSubprocessFlags = 2
+	TestSubprocessFlagsStderr TestSubprocessFlags = 4
 )
 
 // Struct TestSuite
@@ -11633,8 +11610,8 @@ type TestTrapFlags int
 
 const (
 	TestTrapFlagsSilenceStdout TestTrapFlags = 128
-	TestTrapFlagsSilenceStderr               = 256
-	TestTrapFlagsInheritStdin                = 512
+	TestTrapFlagsSilenceStderr TestTrapFlags = 256
+	TestTrapFlagsInheritStdin  TestTrapFlags = 512
 )
 
 // Struct Thread
@@ -11687,9 +11664,6 @@ func (v Thread) Unref() {
 	iv.Call(args, nil, nil)
 }
 
-// g_thread_error_quark
-// container is not nil, container is Thread
-// num arg is 0
 // g_thread_exit
 // container is not nil, container is Thread
 // is method
@@ -11705,12 +11679,6 @@ func ThreadExit1(retval unsafe.Pointer) {
 	iv.Call(args, nil, nil)
 }
 
-// g_thread_self
-// container is not nil, container is Thread
-// num arg is 0
-// g_thread_yield
-// container is not nil, container is Thread
-// num arg is 0
 // Enum ThreadError
 type ThreadErrorEnum int
 
@@ -11848,15 +11816,6 @@ func (v ThreadPool) Unprocessed() (result uint32) {
 	return
 }
 
-// g_thread_pool_get_max_idle_time
-// container is not nil, container is ThreadPool
-// num arg is 0
-// g_thread_pool_get_max_unused_threads
-// container is not nil, container is ThreadPool
-// num arg is 0
-// g_thread_pool_get_num_unused_threads
-// container is not nil, container is ThreadPool
-// num arg is 0
 // g_thread_pool_set_max_idle_time
 // container is not nil, container is ThreadPool
 // is method
@@ -11887,16 +11846,13 @@ func ThreadPoolSetMaxUnusedThreads1(max_threads int32) {
 	iv.Call(args, nil, nil)
 }
 
-// g_thread_pool_stop_unused_threads
-// container is not nil, container is ThreadPool
-// num arg is 0
 // Enum TimeType
 type TimeTypeEnum int
 
 const (
 	TimeTypeStandard  TimeTypeEnum = 0
-	TimeTypeDaylight               = 1
-	TimeTypeUniversal              = 2
+	TimeTypeDaylight  TimeTypeEnum = 1
+	TimeTypeUniversal TimeTypeEnum = 2
 )
 
 // Struct TimeVal
@@ -12268,28 +12224,28 @@ type TokenTypeEnum int
 
 const (
 	TokenTypeEof            TokenTypeEnum = 0
-	TokenTypeLeftParen                    = 40
-	TokenTypeRightParen                   = 41
-	TokenTypeLeftCurly                    = 123
-	TokenTypeRightCurly                   = 125
-	TokenTypeLeftBrace                    = 91
-	TokenTypeRightBrace                   = 93
-	TokenTypeEqualSign                    = 61
-	TokenTypeComma                        = 44
-	TokenTypeNone                         = 256
-	TokenTypeError                        = 257
-	TokenTypeChar                         = 258
-	TokenTypeBinary                       = 259
-	TokenTypeOctal                        = 260
-	TokenTypeInt                          = 261
-	TokenTypeHex                          = 262
-	TokenTypeFloat                        = 263
-	TokenTypeString                       = 264
-	TokenTypeSymbol                       = 265
-	TokenTypeIdentifier                   = 266
-	TokenTypeIdentifierNull               = 267
-	TokenTypeCommentSingle                = 268
-	TokenTypeCommentMulti                 = 269
+	TokenTypeLeftParen      TokenTypeEnum = 40
+	TokenTypeRightParen     TokenTypeEnum = 41
+	TokenTypeLeftCurly      TokenTypeEnum = 123
+	TokenTypeRightCurly     TokenTypeEnum = 125
+	TokenTypeLeftBrace      TokenTypeEnum = 91
+	TokenTypeRightBrace     TokenTypeEnum = 93
+	TokenTypeEqualSign      TokenTypeEnum = 61
+	TokenTypeComma          TokenTypeEnum = 44
+	TokenTypeNone           TokenTypeEnum = 256
+	TokenTypeError          TokenTypeEnum = 257
+	TokenTypeChar           TokenTypeEnum = 258
+	TokenTypeBinary         TokenTypeEnum = 259
+	TokenTypeOctal          TokenTypeEnum = 260
+	TokenTypeInt            TokenTypeEnum = 261
+	TokenTypeHex            TokenTypeEnum = 262
+	TokenTypeFloat          TokenTypeEnum = 263
+	TokenTypeString         TokenTypeEnum = 264
+	TokenTypeSymbol         TokenTypeEnum = 265
+	TokenTypeIdentifier     TokenTypeEnum = 266
+	TokenTypeIdentifierNull TokenTypeEnum = 267
+	TokenTypeCommentSingle  TokenTypeEnum = 268
+	TokenTypeCommentMulti   TokenTypeEnum = 269
 )
 
 // Union TokenValue
@@ -12371,11 +12327,11 @@ type TraverseFlags int
 
 const (
 	TraverseFlagsLeaves    TraverseFlags = 1
-	TraverseFlagsNonLeaves               = 2
-	TraverseFlagsAll                     = 3
-	TraverseFlagsMask                    = 3
-	TraverseFlagsLeafs                   = 1
-	TraverseFlagsNonLeafs                = 2
+	TraverseFlagsNonLeaves TraverseFlags = 2
+	TraverseFlagsAll       TraverseFlags = 3
+	TraverseFlagsMask      TraverseFlags = 3
+	TraverseFlagsLeafs     TraverseFlags = 1
+	TraverseFlagsNonLeafs  TraverseFlags = 2
 )
 
 // Enum TraverseType
@@ -12383,9 +12339,9 @@ type TraverseTypeEnum int
 
 const (
 	TraverseTypeInOrder    TraverseTypeEnum = 0
-	TraverseTypePreOrder                    = 1
-	TraverseTypePostOrder                   = 2
-	TraverseTypeLevelOrder                  = 3
+	TraverseTypePreOrder   TraverseTypeEnum = 1
+	TraverseTypePostOrder  TraverseTypeEnum = 2
+	TraverseTypeLevelOrder TraverseTypeEnum = 3
 )
 
 // Struct Tree
@@ -12563,48 +12519,48 @@ type UnicodeBreakTypeEnum int
 
 const (
 	UnicodeBreakTypeMandatory                  UnicodeBreakTypeEnum = 0
-	UnicodeBreakTypeCarriageReturn                                  = 1
-	UnicodeBreakTypeLineFeed                                        = 2
-	UnicodeBreakTypeCombiningMark                                   = 3
-	UnicodeBreakTypeSurrogate                                       = 4
-	UnicodeBreakTypeZeroWidthSpace                                  = 5
-	UnicodeBreakTypeInseparable                                     = 6
-	UnicodeBreakTypeNonBreakingGlue                                 = 7
-	UnicodeBreakTypeContingent                                      = 8
-	UnicodeBreakTypeSpace                                           = 9
-	UnicodeBreakTypeAfter                                           = 10
-	UnicodeBreakTypeBefore                                          = 11
-	UnicodeBreakTypeBeforeAndAfter                                  = 12
-	UnicodeBreakTypeHyphen                                          = 13
-	UnicodeBreakTypeNonStarter                                      = 14
-	UnicodeBreakTypeOpenPunctuation                                 = 15
-	UnicodeBreakTypeClosePunctuation                                = 16
-	UnicodeBreakTypeQuotation                                       = 17
-	UnicodeBreakTypeExclamation                                     = 18
-	UnicodeBreakTypeIdeographic                                     = 19
-	UnicodeBreakTypeNumeric                                         = 20
-	UnicodeBreakTypeInfixSeparator                                  = 21
-	UnicodeBreakTypeSymbol                                          = 22
-	UnicodeBreakTypeAlphabetic                                      = 23
-	UnicodeBreakTypePrefix                                          = 24
-	UnicodeBreakTypePostfix                                         = 25
-	UnicodeBreakTypeComplexContext                                  = 26
-	UnicodeBreakTypeAmbiguous                                       = 27
-	UnicodeBreakTypeUnknown                                         = 28
-	UnicodeBreakTypeNextLine                                        = 29
-	UnicodeBreakTypeWordJoiner                                      = 30
-	UnicodeBreakTypeHangulLJamo                                     = 31
-	UnicodeBreakTypeHangulVJamo                                     = 32
-	UnicodeBreakTypeHangulTJamo                                     = 33
-	UnicodeBreakTypeHangulLvSyllable                                = 34
-	UnicodeBreakTypeHangulLvtSyllable                               = 35
-	UnicodeBreakTypeCloseParanthesis                                = 36
-	UnicodeBreakTypeConditionalJapaneseStarter                      = 37
-	UnicodeBreakTypeHebrewLetter                                    = 38
-	UnicodeBreakTypeRegionalIndicator                               = 39
-	UnicodeBreakTypeEmojiBase                                       = 40
-	UnicodeBreakTypeEmojiModifier                                   = 41
-	UnicodeBreakTypeZeroWidthJoiner                                 = 42
+	UnicodeBreakTypeCarriageReturn             UnicodeBreakTypeEnum = 1
+	UnicodeBreakTypeLineFeed                   UnicodeBreakTypeEnum = 2
+	UnicodeBreakTypeCombiningMark              UnicodeBreakTypeEnum = 3
+	UnicodeBreakTypeSurrogate                  UnicodeBreakTypeEnum = 4
+	UnicodeBreakTypeZeroWidthSpace             UnicodeBreakTypeEnum = 5
+	UnicodeBreakTypeInseparable                UnicodeBreakTypeEnum = 6
+	UnicodeBreakTypeNonBreakingGlue            UnicodeBreakTypeEnum = 7
+	UnicodeBreakTypeContingent                 UnicodeBreakTypeEnum = 8
+	UnicodeBreakTypeSpace                      UnicodeBreakTypeEnum = 9
+	UnicodeBreakTypeAfter                      UnicodeBreakTypeEnum = 10
+	UnicodeBreakTypeBefore                     UnicodeBreakTypeEnum = 11
+	UnicodeBreakTypeBeforeAndAfter             UnicodeBreakTypeEnum = 12
+	UnicodeBreakTypeHyphen                     UnicodeBreakTypeEnum = 13
+	UnicodeBreakTypeNonStarter                 UnicodeBreakTypeEnum = 14
+	UnicodeBreakTypeOpenPunctuation            UnicodeBreakTypeEnum = 15
+	UnicodeBreakTypeClosePunctuation           UnicodeBreakTypeEnum = 16
+	UnicodeBreakTypeQuotation                  UnicodeBreakTypeEnum = 17
+	UnicodeBreakTypeExclamation                UnicodeBreakTypeEnum = 18
+	UnicodeBreakTypeIdeographic                UnicodeBreakTypeEnum = 19
+	UnicodeBreakTypeNumeric                    UnicodeBreakTypeEnum = 20
+	UnicodeBreakTypeInfixSeparator             UnicodeBreakTypeEnum = 21
+	UnicodeBreakTypeSymbol                     UnicodeBreakTypeEnum = 22
+	UnicodeBreakTypeAlphabetic                 UnicodeBreakTypeEnum = 23
+	UnicodeBreakTypePrefix                     UnicodeBreakTypeEnum = 24
+	UnicodeBreakTypePostfix                    UnicodeBreakTypeEnum = 25
+	UnicodeBreakTypeComplexContext             UnicodeBreakTypeEnum = 26
+	UnicodeBreakTypeAmbiguous                  UnicodeBreakTypeEnum = 27
+	UnicodeBreakTypeUnknown                    UnicodeBreakTypeEnum = 28
+	UnicodeBreakTypeNextLine                   UnicodeBreakTypeEnum = 29
+	UnicodeBreakTypeWordJoiner                 UnicodeBreakTypeEnum = 30
+	UnicodeBreakTypeHangulLJamo                UnicodeBreakTypeEnum = 31
+	UnicodeBreakTypeHangulVJamo                UnicodeBreakTypeEnum = 32
+	UnicodeBreakTypeHangulTJamo                UnicodeBreakTypeEnum = 33
+	UnicodeBreakTypeHangulLvSyllable           UnicodeBreakTypeEnum = 34
+	UnicodeBreakTypeHangulLvtSyllable          UnicodeBreakTypeEnum = 35
+	UnicodeBreakTypeCloseParanthesis           UnicodeBreakTypeEnum = 36
+	UnicodeBreakTypeConditionalJapaneseStarter UnicodeBreakTypeEnum = 37
+	UnicodeBreakTypeHebrewLetter               UnicodeBreakTypeEnum = 38
+	UnicodeBreakTypeRegionalIndicator          UnicodeBreakTypeEnum = 39
+	UnicodeBreakTypeEmojiBase                  UnicodeBreakTypeEnum = 40
+	UnicodeBreakTypeEmojiModifier              UnicodeBreakTypeEnum = 41
+	UnicodeBreakTypeZeroWidthJoiner            UnicodeBreakTypeEnum = 42
 )
 
 // Enum UnicodeScript
@@ -12612,155 +12568,155 @@ type UnicodeScriptEnum int
 
 const (
 	UnicodeScriptInvalidCode           UnicodeScriptEnum = -1
-	UnicodeScriptCommon                                  = 0
-	UnicodeScriptInherited                               = 1
-	UnicodeScriptArabic                                  = 2
-	UnicodeScriptArmenian                                = 3
-	UnicodeScriptBengali                                 = 4
-	UnicodeScriptBopomofo                                = 5
-	UnicodeScriptCherokee                                = 6
-	UnicodeScriptCoptic                                  = 7
-	UnicodeScriptCyrillic                                = 8
-	UnicodeScriptDeseret                                 = 9
-	UnicodeScriptDevanagari                              = 10
-	UnicodeScriptEthiopic                                = 11
-	UnicodeScriptGeorgian                                = 12
-	UnicodeScriptGothic                                  = 13
-	UnicodeScriptGreek                                   = 14
-	UnicodeScriptGujarati                                = 15
-	UnicodeScriptGurmukhi                                = 16
-	UnicodeScriptHan                                     = 17
-	UnicodeScriptHangul                                  = 18
-	UnicodeScriptHebrew                                  = 19
-	UnicodeScriptHiragana                                = 20
-	UnicodeScriptKannada                                 = 21
-	UnicodeScriptKatakana                                = 22
-	UnicodeScriptKhmer                                   = 23
-	UnicodeScriptLao                                     = 24
-	UnicodeScriptLatin                                   = 25
-	UnicodeScriptMalayalam                               = 26
-	UnicodeScriptMongolian                               = 27
-	UnicodeScriptMyanmar                                 = 28
-	UnicodeScriptOgham                                   = 29
-	UnicodeScriptOldItalic                               = 30
-	UnicodeScriptOriya                                   = 31
-	UnicodeScriptRunic                                   = 32
-	UnicodeScriptSinhala                                 = 33
-	UnicodeScriptSyriac                                  = 34
-	UnicodeScriptTamil                                   = 35
-	UnicodeScriptTelugu                                  = 36
-	UnicodeScriptThaana                                  = 37
-	UnicodeScriptThai                                    = 38
-	UnicodeScriptTibetan                                 = 39
-	UnicodeScriptCanadianAboriginal                      = 40
-	UnicodeScriptYi                                      = 41
-	UnicodeScriptTagalog                                 = 42
-	UnicodeScriptHanunoo                                 = 43
-	UnicodeScriptBuhid                                   = 44
-	UnicodeScriptTagbanwa                                = 45
-	UnicodeScriptBraille                                 = 46
-	UnicodeScriptCypriot                                 = 47
-	UnicodeScriptLimbu                                   = 48
-	UnicodeScriptOsmanya                                 = 49
-	UnicodeScriptShavian                                 = 50
-	UnicodeScriptLinearB                                 = 51
-	UnicodeScriptTaiLe                                   = 52
-	UnicodeScriptUgaritic                                = 53
-	UnicodeScriptNewTaiLue                               = 54
-	UnicodeScriptBuginese                                = 55
-	UnicodeScriptGlagolitic                              = 56
-	UnicodeScriptTifinagh                                = 57
-	UnicodeScriptSylotiNagri                             = 58
-	UnicodeScriptOldPersian                              = 59
-	UnicodeScriptKharoshthi                              = 60
-	UnicodeScriptUnknown                                 = 61
-	UnicodeScriptBalinese                                = 62
-	UnicodeScriptCuneiform                               = 63
-	UnicodeScriptPhoenician                              = 64
-	UnicodeScriptPhagsPa                                 = 65
-	UnicodeScriptNko                                     = 66
-	UnicodeScriptKayahLi                                 = 67
-	UnicodeScriptLepcha                                  = 68
-	UnicodeScriptRejang                                  = 69
-	UnicodeScriptSundanese                               = 70
-	UnicodeScriptSaurashtra                              = 71
-	UnicodeScriptCham                                    = 72
-	UnicodeScriptOlChiki                                 = 73
-	UnicodeScriptVai                                     = 74
-	UnicodeScriptCarian                                  = 75
-	UnicodeScriptLycian                                  = 76
-	UnicodeScriptLydian                                  = 77
-	UnicodeScriptAvestan                                 = 78
-	UnicodeScriptBamum                                   = 79
-	UnicodeScriptEgyptianHieroglyphs                     = 80
-	UnicodeScriptImperialAramaic                         = 81
-	UnicodeScriptInscriptionalPahlavi                    = 82
-	UnicodeScriptInscriptionalParthian                   = 83
-	UnicodeScriptJavanese                                = 84
-	UnicodeScriptKaithi                                  = 85
-	UnicodeScriptLisu                                    = 86
-	UnicodeScriptMeeteiMayek                             = 87
-	UnicodeScriptOldSouthArabian                         = 88
-	UnicodeScriptOldTurkic                               = 89
-	UnicodeScriptSamaritan                               = 90
-	UnicodeScriptTaiTham                                 = 91
-	UnicodeScriptTaiViet                                 = 92
-	UnicodeScriptBatak                                   = 93
-	UnicodeScriptBrahmi                                  = 94
-	UnicodeScriptMandaic                                 = 95
-	UnicodeScriptChakma                                  = 96
-	UnicodeScriptMeroiticCursive                         = 97
-	UnicodeScriptMeroiticHieroglyphs                     = 98
-	UnicodeScriptMiao                                    = 99
-	UnicodeScriptSharada                                 = 100
-	UnicodeScriptSoraSompeng                             = 101
-	UnicodeScriptTakri                                   = 102
-	UnicodeScriptBassaVah                                = 103
-	UnicodeScriptCaucasianAlbanian                       = 104
-	UnicodeScriptDuployan                                = 105
-	UnicodeScriptElbasan                                 = 106
-	UnicodeScriptGrantha                                 = 107
-	UnicodeScriptKhojki                                  = 108
-	UnicodeScriptKhudawadi                               = 109
-	UnicodeScriptLinearA                                 = 110
-	UnicodeScriptMahajani                                = 111
-	UnicodeScriptManichaean                              = 112
-	UnicodeScriptMendeKikakui                            = 113
-	UnicodeScriptModi                                    = 114
-	UnicodeScriptMro                                     = 115
-	UnicodeScriptNabataean                               = 116
-	UnicodeScriptOldNorthArabian                         = 117
-	UnicodeScriptOldPermic                               = 118
-	UnicodeScriptPahawhHmong                             = 119
-	UnicodeScriptPalmyrene                               = 120
-	UnicodeScriptPauCinHau                               = 121
-	UnicodeScriptPsalterPahlavi                          = 122
-	UnicodeScriptSiddham                                 = 123
-	UnicodeScriptTirhuta                                 = 124
-	UnicodeScriptWarangCiti                              = 125
-	UnicodeScriptAhom                                    = 126
-	UnicodeScriptAnatolianHieroglyphs                    = 127
-	UnicodeScriptHatran                                  = 128
-	UnicodeScriptMultani                                 = 129
-	UnicodeScriptOldHungarian                            = 130
-	UnicodeScriptSignwriting                             = 131
-	UnicodeScriptAdlam                                   = 132
-	UnicodeScriptBhaiksuki                               = 133
-	UnicodeScriptMarchen                                 = 134
-	UnicodeScriptNewa                                    = 135
-	UnicodeScriptOsage                                   = 136
-	UnicodeScriptTangut                                  = 137
-	UnicodeScriptMasaramGondi                            = 138
-	UnicodeScriptNushu                                   = 139
-	UnicodeScriptSoyombo                                 = 140
-	UnicodeScriptZanabazarSquare                         = 141
-	UnicodeScriptDogra                                   = 142
-	UnicodeScriptGunjalaGondi                            = 143
-	UnicodeScriptHanifiRohingya                          = 144
-	UnicodeScriptMakasar                                 = 145
-	UnicodeScriptMedefaidrin                             = 146
-	UnicodeScriptOldSogdian                              = 147
-	UnicodeScriptSogdian                                 = 148
+	UnicodeScriptCommon                UnicodeScriptEnum = 0
+	UnicodeScriptInherited             UnicodeScriptEnum = 1
+	UnicodeScriptArabic                UnicodeScriptEnum = 2
+	UnicodeScriptArmenian              UnicodeScriptEnum = 3
+	UnicodeScriptBengali               UnicodeScriptEnum = 4
+	UnicodeScriptBopomofo              UnicodeScriptEnum = 5
+	UnicodeScriptCherokee              UnicodeScriptEnum = 6
+	UnicodeScriptCoptic                UnicodeScriptEnum = 7
+	UnicodeScriptCyrillic              UnicodeScriptEnum = 8
+	UnicodeScriptDeseret               UnicodeScriptEnum = 9
+	UnicodeScriptDevanagari            UnicodeScriptEnum = 10
+	UnicodeScriptEthiopic              UnicodeScriptEnum = 11
+	UnicodeScriptGeorgian              UnicodeScriptEnum = 12
+	UnicodeScriptGothic                UnicodeScriptEnum = 13
+	UnicodeScriptGreek                 UnicodeScriptEnum = 14
+	UnicodeScriptGujarati              UnicodeScriptEnum = 15
+	UnicodeScriptGurmukhi              UnicodeScriptEnum = 16
+	UnicodeScriptHan                   UnicodeScriptEnum = 17
+	UnicodeScriptHangul                UnicodeScriptEnum = 18
+	UnicodeScriptHebrew                UnicodeScriptEnum = 19
+	UnicodeScriptHiragana              UnicodeScriptEnum = 20
+	UnicodeScriptKannada               UnicodeScriptEnum = 21
+	UnicodeScriptKatakana              UnicodeScriptEnum = 22
+	UnicodeScriptKhmer                 UnicodeScriptEnum = 23
+	UnicodeScriptLao                   UnicodeScriptEnum = 24
+	UnicodeScriptLatin                 UnicodeScriptEnum = 25
+	UnicodeScriptMalayalam             UnicodeScriptEnum = 26
+	UnicodeScriptMongolian             UnicodeScriptEnum = 27
+	UnicodeScriptMyanmar               UnicodeScriptEnum = 28
+	UnicodeScriptOgham                 UnicodeScriptEnum = 29
+	UnicodeScriptOldItalic             UnicodeScriptEnum = 30
+	UnicodeScriptOriya                 UnicodeScriptEnum = 31
+	UnicodeScriptRunic                 UnicodeScriptEnum = 32
+	UnicodeScriptSinhala               UnicodeScriptEnum = 33
+	UnicodeScriptSyriac                UnicodeScriptEnum = 34
+	UnicodeScriptTamil                 UnicodeScriptEnum = 35
+	UnicodeScriptTelugu                UnicodeScriptEnum = 36
+	UnicodeScriptThaana                UnicodeScriptEnum = 37
+	UnicodeScriptThai                  UnicodeScriptEnum = 38
+	UnicodeScriptTibetan               UnicodeScriptEnum = 39
+	UnicodeScriptCanadianAboriginal    UnicodeScriptEnum = 40
+	UnicodeScriptYi                    UnicodeScriptEnum = 41
+	UnicodeScriptTagalog               UnicodeScriptEnum = 42
+	UnicodeScriptHanunoo               UnicodeScriptEnum = 43
+	UnicodeScriptBuhid                 UnicodeScriptEnum = 44
+	UnicodeScriptTagbanwa              UnicodeScriptEnum = 45
+	UnicodeScriptBraille               UnicodeScriptEnum = 46
+	UnicodeScriptCypriot               UnicodeScriptEnum = 47
+	UnicodeScriptLimbu                 UnicodeScriptEnum = 48
+	UnicodeScriptOsmanya               UnicodeScriptEnum = 49
+	UnicodeScriptShavian               UnicodeScriptEnum = 50
+	UnicodeScriptLinearB               UnicodeScriptEnum = 51
+	UnicodeScriptTaiLe                 UnicodeScriptEnum = 52
+	UnicodeScriptUgaritic              UnicodeScriptEnum = 53
+	UnicodeScriptNewTaiLue             UnicodeScriptEnum = 54
+	UnicodeScriptBuginese              UnicodeScriptEnum = 55
+	UnicodeScriptGlagolitic            UnicodeScriptEnum = 56
+	UnicodeScriptTifinagh              UnicodeScriptEnum = 57
+	UnicodeScriptSylotiNagri           UnicodeScriptEnum = 58
+	UnicodeScriptOldPersian            UnicodeScriptEnum = 59
+	UnicodeScriptKharoshthi            UnicodeScriptEnum = 60
+	UnicodeScriptUnknown               UnicodeScriptEnum = 61
+	UnicodeScriptBalinese              UnicodeScriptEnum = 62
+	UnicodeScriptCuneiform             UnicodeScriptEnum = 63
+	UnicodeScriptPhoenician            UnicodeScriptEnum = 64
+	UnicodeScriptPhagsPa               UnicodeScriptEnum = 65
+	UnicodeScriptNko                   UnicodeScriptEnum = 66
+	UnicodeScriptKayahLi               UnicodeScriptEnum = 67
+	UnicodeScriptLepcha                UnicodeScriptEnum = 68
+	UnicodeScriptRejang                UnicodeScriptEnum = 69
+	UnicodeScriptSundanese             UnicodeScriptEnum = 70
+	UnicodeScriptSaurashtra            UnicodeScriptEnum = 71
+	UnicodeScriptCham                  UnicodeScriptEnum = 72
+	UnicodeScriptOlChiki               UnicodeScriptEnum = 73
+	UnicodeScriptVai                   UnicodeScriptEnum = 74
+	UnicodeScriptCarian                UnicodeScriptEnum = 75
+	UnicodeScriptLycian                UnicodeScriptEnum = 76
+	UnicodeScriptLydian                UnicodeScriptEnum = 77
+	UnicodeScriptAvestan               UnicodeScriptEnum = 78
+	UnicodeScriptBamum                 UnicodeScriptEnum = 79
+	UnicodeScriptEgyptianHieroglyphs   UnicodeScriptEnum = 80
+	UnicodeScriptImperialAramaic       UnicodeScriptEnum = 81
+	UnicodeScriptInscriptionalPahlavi  UnicodeScriptEnum = 82
+	UnicodeScriptInscriptionalParthian UnicodeScriptEnum = 83
+	UnicodeScriptJavanese              UnicodeScriptEnum = 84
+	UnicodeScriptKaithi                UnicodeScriptEnum = 85
+	UnicodeScriptLisu                  UnicodeScriptEnum = 86
+	UnicodeScriptMeeteiMayek           UnicodeScriptEnum = 87
+	UnicodeScriptOldSouthArabian       UnicodeScriptEnum = 88
+	UnicodeScriptOldTurkic             UnicodeScriptEnum = 89
+	UnicodeScriptSamaritan             UnicodeScriptEnum = 90
+	UnicodeScriptTaiTham               UnicodeScriptEnum = 91
+	UnicodeScriptTaiViet               UnicodeScriptEnum = 92
+	UnicodeScriptBatak                 UnicodeScriptEnum = 93
+	UnicodeScriptBrahmi                UnicodeScriptEnum = 94
+	UnicodeScriptMandaic               UnicodeScriptEnum = 95
+	UnicodeScriptChakma                UnicodeScriptEnum = 96
+	UnicodeScriptMeroiticCursive       UnicodeScriptEnum = 97
+	UnicodeScriptMeroiticHieroglyphs   UnicodeScriptEnum = 98
+	UnicodeScriptMiao                  UnicodeScriptEnum = 99
+	UnicodeScriptSharada               UnicodeScriptEnum = 100
+	UnicodeScriptSoraSompeng           UnicodeScriptEnum = 101
+	UnicodeScriptTakri                 UnicodeScriptEnum = 102
+	UnicodeScriptBassaVah              UnicodeScriptEnum = 103
+	UnicodeScriptCaucasianAlbanian     UnicodeScriptEnum = 104
+	UnicodeScriptDuployan              UnicodeScriptEnum = 105
+	UnicodeScriptElbasan               UnicodeScriptEnum = 106
+	UnicodeScriptGrantha               UnicodeScriptEnum = 107
+	UnicodeScriptKhojki                UnicodeScriptEnum = 108
+	UnicodeScriptKhudawadi             UnicodeScriptEnum = 109
+	UnicodeScriptLinearA               UnicodeScriptEnum = 110
+	UnicodeScriptMahajani              UnicodeScriptEnum = 111
+	UnicodeScriptManichaean            UnicodeScriptEnum = 112
+	UnicodeScriptMendeKikakui          UnicodeScriptEnum = 113
+	UnicodeScriptModi                  UnicodeScriptEnum = 114
+	UnicodeScriptMro                   UnicodeScriptEnum = 115
+	UnicodeScriptNabataean             UnicodeScriptEnum = 116
+	UnicodeScriptOldNorthArabian       UnicodeScriptEnum = 117
+	UnicodeScriptOldPermic             UnicodeScriptEnum = 118
+	UnicodeScriptPahawhHmong           UnicodeScriptEnum = 119
+	UnicodeScriptPalmyrene             UnicodeScriptEnum = 120
+	UnicodeScriptPauCinHau             UnicodeScriptEnum = 121
+	UnicodeScriptPsalterPahlavi        UnicodeScriptEnum = 122
+	UnicodeScriptSiddham               UnicodeScriptEnum = 123
+	UnicodeScriptTirhuta               UnicodeScriptEnum = 124
+	UnicodeScriptWarangCiti            UnicodeScriptEnum = 125
+	UnicodeScriptAhom                  UnicodeScriptEnum = 126
+	UnicodeScriptAnatolianHieroglyphs  UnicodeScriptEnum = 127
+	UnicodeScriptHatran                UnicodeScriptEnum = 128
+	UnicodeScriptMultani               UnicodeScriptEnum = 129
+	UnicodeScriptOldHungarian          UnicodeScriptEnum = 130
+	UnicodeScriptSignwriting           UnicodeScriptEnum = 131
+	UnicodeScriptAdlam                 UnicodeScriptEnum = 132
+	UnicodeScriptBhaiksuki             UnicodeScriptEnum = 133
+	UnicodeScriptMarchen               UnicodeScriptEnum = 134
+	UnicodeScriptNewa                  UnicodeScriptEnum = 135
+	UnicodeScriptOsage                 UnicodeScriptEnum = 136
+	UnicodeScriptTangut                UnicodeScriptEnum = 137
+	UnicodeScriptMasaramGondi          UnicodeScriptEnum = 138
+	UnicodeScriptNushu                 UnicodeScriptEnum = 139
+	UnicodeScriptSoyombo               UnicodeScriptEnum = 140
+	UnicodeScriptZanabazarSquare       UnicodeScriptEnum = 141
+	UnicodeScriptDogra                 UnicodeScriptEnum = 142
+	UnicodeScriptGunjalaGondi          UnicodeScriptEnum = 143
+	UnicodeScriptHanifiRohingya        UnicodeScriptEnum = 144
+	UnicodeScriptMakasar               UnicodeScriptEnum = 145
+	UnicodeScriptMedefaidrin           UnicodeScriptEnum = 146
+	UnicodeScriptOldSogdian            UnicodeScriptEnum = 147
+	UnicodeScriptSogdian               UnicodeScriptEnum = 148
 )
 
 // Enum UnicodeType
@@ -12768,35 +12724,35 @@ type UnicodeTypeEnum int
 
 const (
 	UnicodeTypeControl            UnicodeTypeEnum = 0
-	UnicodeTypeFormat                             = 1
-	UnicodeTypeUnassigned                         = 2
-	UnicodeTypePrivateUse                         = 3
-	UnicodeTypeSurrogate                          = 4
-	UnicodeTypeLowercaseLetter                    = 5
-	UnicodeTypeModifierLetter                     = 6
-	UnicodeTypeOtherLetter                        = 7
-	UnicodeTypeTitlecaseLetter                    = 8
-	UnicodeTypeUppercaseLetter                    = 9
-	UnicodeTypeSpacingMark                        = 10
-	UnicodeTypeEnclosingMark                      = 11
-	UnicodeTypeNonSpacingMark                     = 12
-	UnicodeTypeDecimalNumber                      = 13
-	UnicodeTypeLetterNumber                       = 14
-	UnicodeTypeOtherNumber                        = 15
-	UnicodeTypeConnectPunctuation                 = 16
-	UnicodeTypeDashPunctuation                    = 17
-	UnicodeTypeClosePunctuation                   = 18
-	UnicodeTypeFinalPunctuation                   = 19
-	UnicodeTypeInitialPunctuation                 = 20
-	UnicodeTypeOtherPunctuation                   = 21
-	UnicodeTypeOpenPunctuation                    = 22
-	UnicodeTypeCurrencySymbol                     = 23
-	UnicodeTypeModifierSymbol                     = 24
-	UnicodeTypeMathSymbol                         = 25
-	UnicodeTypeOtherSymbol                        = 26
-	UnicodeTypeLineSeparator                      = 27
-	UnicodeTypeParagraphSeparator                 = 28
-	UnicodeTypeSpaceSeparator                     = 29
+	UnicodeTypeFormat             UnicodeTypeEnum = 1
+	UnicodeTypeUnassigned         UnicodeTypeEnum = 2
+	UnicodeTypePrivateUse         UnicodeTypeEnum = 3
+	UnicodeTypeSurrogate          UnicodeTypeEnum = 4
+	UnicodeTypeLowercaseLetter    UnicodeTypeEnum = 5
+	UnicodeTypeModifierLetter     UnicodeTypeEnum = 6
+	UnicodeTypeOtherLetter        UnicodeTypeEnum = 7
+	UnicodeTypeTitlecaseLetter    UnicodeTypeEnum = 8
+	UnicodeTypeUppercaseLetter    UnicodeTypeEnum = 9
+	UnicodeTypeSpacingMark        UnicodeTypeEnum = 10
+	UnicodeTypeEnclosingMark      UnicodeTypeEnum = 11
+	UnicodeTypeNonSpacingMark     UnicodeTypeEnum = 12
+	UnicodeTypeDecimalNumber      UnicodeTypeEnum = 13
+	UnicodeTypeLetterNumber       UnicodeTypeEnum = 14
+	UnicodeTypeOtherNumber        UnicodeTypeEnum = 15
+	UnicodeTypeConnectPunctuation UnicodeTypeEnum = 16
+	UnicodeTypeDashPunctuation    UnicodeTypeEnum = 17
+	UnicodeTypeClosePunctuation   UnicodeTypeEnum = 18
+	UnicodeTypeFinalPunctuation   UnicodeTypeEnum = 19
+	UnicodeTypeInitialPunctuation UnicodeTypeEnum = 20
+	UnicodeTypeOtherPunctuation   UnicodeTypeEnum = 21
+	UnicodeTypeOpenPunctuation    UnicodeTypeEnum = 22
+	UnicodeTypeCurrencySymbol     UnicodeTypeEnum = 23
+	UnicodeTypeModifierSymbol     UnicodeTypeEnum = 24
+	UnicodeTypeMathSymbol         UnicodeTypeEnum = 25
+	UnicodeTypeOtherSymbol        UnicodeTypeEnum = 26
+	UnicodeTypeLineSeparator      UnicodeTypeEnum = 27
+	UnicodeTypeParagraphSeparator UnicodeTypeEnum = 28
+	UnicodeTypeSpaceSeparator     UnicodeTypeEnum = 29
 )
 
 // Enum UserDirectory
@@ -12804,14 +12760,14 @@ type UserDirectoryEnum int
 
 const (
 	UserDirectoryDirectoryDesktop     UserDirectoryEnum = 0
-	UserDirectoryDirectoryDocuments                     = 1
-	UserDirectoryDirectoryDownload                      = 2
-	UserDirectoryDirectoryMusic                         = 3
-	UserDirectoryDirectoryPictures                      = 4
-	UserDirectoryDirectoryPublicShare                   = 5
-	UserDirectoryDirectoryTemplates                     = 6
-	UserDirectoryDirectoryVideos                        = 7
-	UserDirectoryNDirectories                           = 8
+	UserDirectoryDirectoryDocuments   UserDirectoryEnum = 1
+	UserDirectoryDirectoryDownload    UserDirectoryEnum = 2
+	UserDirectoryDirectoryMusic       UserDirectoryEnum = 3
+	UserDirectoryDirectoryPictures    UserDirectoryEnum = 4
+	UserDirectoryDirectoryPublicShare UserDirectoryEnum = 5
+	UserDirectoryDirectoryTemplates   UserDirectoryEnum = 6
+	UserDirectoryDirectoryVideos      UserDirectoryEnum = 7
+	UserDirectoryNDirectories         UserDirectoryEnum = 8
 )
 
 // Struct Variant
@@ -12822,7 +12778,7 @@ type Variant struct {
 // g_variant_new_array
 // container is not nil, container is Variant
 // is constructor
-func NewVariantArray(child_type VariantType, children int /*TODO_TYPE isPtr: true, tag: array*/, n_children uint64) (result Variant) {
+func NewVariantArray(child_type VariantType, children int /*TODO_TYPE array type c, p0tag: interface*/, n_children uint64) (result Variant) {
 	iv, err := _I.Get(657, "Variant", "new_array")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12875,13 +12831,13 @@ func NewVariantByte(value uint8) (result Variant) {
 // g_variant_new_bytestring
 // container is not nil, container is Variant
 // is constructor
-func NewVariantBytestring(string int /*TODO_TYPE isPtr: true, tag: array*/) (result Variant) {
+func NewVariantBytestring(string gi.Uint8Array) (result Variant) {
 	iv, err := _I.Get(660, "Variant", "new_bytestring")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_string := gi.NewIntArgument(string) /*TODO*/
+	arg_string := gi.NewPointerArgument(string.P)
 	args := []gi.Argument{arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -12892,7 +12848,7 @@ func NewVariantBytestring(string int /*TODO_TYPE isPtr: true, tag: array*/) (res
 // g_variant_new_bytestring_array
 // container is not nil, container is Variant
 // is constructor
-func NewVariantBytestringArray(strv int /*TODO_TYPE isPtr: true, tag: array*/, length int64) (result Variant) {
+func NewVariantBytestringArray(strv int /*TODO_TYPE array type c, p0tag: utf8*/, length int64) (result Variant) {
 	iv, err := _I.Get(661, "Variant", "new_bytestring_array")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12984,14 +12940,14 @@ func NewVariantFromBytes(type1 VariantType, bytes Bytes, trusted bool) (result V
 // g_variant_new_from_data
 // container is not nil, container is Variant
 // is constructor
-func NewVariantFromData(type1 VariantType, data int /*TODO_TYPE isPtr: true, tag: array*/, size uint64, trusted bool, notify int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result Variant) {
+func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trusted bool, notify int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result Variant) {
 	iv, err := _I.Get(666, "Variant", "new_from_data")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_type1 := gi.NewPointerArgument(type1.P)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_trusted := gi.NewBoolArgument(trusted)
 	arg_notify := gi.NewIntArgument(notify) /*TODO*/
@@ -13111,7 +13067,7 @@ func NewVariantObjectPath(object_path string) (result Variant) {
 // g_variant_new_objv
 // container is not nil, container is Variant
 // is constructor
-func NewVariantObjv(strv int /*TODO_TYPE isPtr: true, tag: array*/, length int64) (result Variant) {
+func NewVariantObjv(strv int /*TODO_TYPE array type c, p0tag: utf8*/, length int64) (result Variant) {
 	iv, err := _I.Get(673, "Variant", "new_objv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13167,7 +13123,7 @@ func NewVariantString(string string) (result Variant) {
 // g_variant_new_strv
 // container is not nil, container is Variant
 // is constructor
-func NewVariantStrv(strv int /*TODO_TYPE isPtr: true, tag: array*/, length int64) (result Variant) {
+func NewVariantStrv(strv int /*TODO_TYPE array type c, p0tag: utf8*/, length int64) (result Variant) {
 	iv, err := _I.Get(676, "Variant", "new_strv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13185,7 +13141,7 @@ func NewVariantStrv(strv int /*TODO_TYPE isPtr: true, tag: array*/, length int64
 // g_variant_new_tuple
 // container is not nil, container is Variant
 // is constructor
-func NewVariantTuple(children int /*TODO_TYPE isPtr: true, tag: array*/, n_children uint64) (result Variant) {
+func NewVariantTuple(children int /*TODO_TYPE array type c, p0tag: interface*/, n_children uint64) (result Variant) {
 	iv, err := _I.Get(677, "Variant", "new_tuple")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14189,12 +14145,6 @@ func VariantParseErrorPrintContext1(error int /*TODO_TYPE isPtr: true, tag: erro
 	return
 }
 
-// g_variant_parse_error_quark
-// container is not nil, container is Variant
-// num arg is 0
-// g_variant_parser_get_error_quark
-// container is not nil, container is Variant
-// num arg is 0
 // Struct VariantBuilder
 type VariantBuilder struct {
 	P unsafe.Pointer
@@ -14314,23 +14264,23 @@ type VariantClassEnum int
 
 const (
 	VariantClassBoolean    VariantClassEnum = 98
-	VariantClassByte                        = 121
-	VariantClassInt16                       = 110
-	VariantClassUint16                      = 113
-	VariantClassInt32                       = 105
-	VariantClassUint32                      = 117
-	VariantClassInt64                       = 120
-	VariantClassUint64                      = 116
-	VariantClassHandle                      = 104
-	VariantClassDouble                      = 100
-	VariantClassString                      = 115
-	VariantClassObjectPath                  = 111
-	VariantClassSignature                   = 103
-	VariantClassVariant                     = 118
-	VariantClassMaybe                       = 109
-	VariantClassArray                       = 97
-	VariantClassTuple                       = 40
-	VariantClassDictEntry                   = 123
+	VariantClassByte       VariantClassEnum = 121
+	VariantClassInt16      VariantClassEnum = 110
+	VariantClassUint16     VariantClassEnum = 113
+	VariantClassInt32      VariantClassEnum = 105
+	VariantClassUint32     VariantClassEnum = 117
+	VariantClassInt64      VariantClassEnum = 120
+	VariantClassUint64     VariantClassEnum = 116
+	VariantClassHandle     VariantClassEnum = 104
+	VariantClassDouble     VariantClassEnum = 100
+	VariantClassString     VariantClassEnum = 115
+	VariantClassObjectPath VariantClassEnum = 111
+	VariantClassSignature  VariantClassEnum = 103
+	VariantClassVariant    VariantClassEnum = 118
+	VariantClassMaybe      VariantClassEnum = 109
+	VariantClassArray      VariantClassEnum = 97
+	VariantClassTuple      VariantClassEnum = 40
+	VariantClassDictEntry  VariantClassEnum = 123
 )
 
 // Struct VariantDict
@@ -14501,23 +14451,23 @@ type VariantParseErrorEnum int
 
 const (
 	VariantParseErrorFailed                     VariantParseErrorEnum = 0
-	VariantParseErrorBasicTypeExpected                                = 1
-	VariantParseErrorCannotInferType                                  = 2
-	VariantParseErrorDefiniteTypeExpected                             = 3
-	VariantParseErrorInputNotAtEnd                                    = 4
-	VariantParseErrorInvalidCharacter                                 = 5
-	VariantParseErrorInvalidFormatString                              = 6
-	VariantParseErrorInvalidObjectPath                                = 7
-	VariantParseErrorInvalidSignature                                 = 8
-	VariantParseErrorInvalidTypeString                                = 9
-	VariantParseErrorNoCommonType                                     = 10
-	VariantParseErrorNumberOutOfRange                                 = 11
-	VariantParseErrorNumberTooBig                                     = 12
-	VariantParseErrorTypeError                                        = 13
-	VariantParseErrorUnexpectedToken                                  = 14
-	VariantParseErrorUnknownKeyword                                   = 15
-	VariantParseErrorUnterminatedStringConstant                       = 16
-	VariantParseErrorValueExpected                                    = 17
+	VariantParseErrorBasicTypeExpected          VariantParseErrorEnum = 1
+	VariantParseErrorCannotInferType            VariantParseErrorEnum = 2
+	VariantParseErrorDefiniteTypeExpected       VariantParseErrorEnum = 3
+	VariantParseErrorInputNotAtEnd              VariantParseErrorEnum = 4
+	VariantParseErrorInvalidCharacter           VariantParseErrorEnum = 5
+	VariantParseErrorInvalidFormatString        VariantParseErrorEnum = 6
+	VariantParseErrorInvalidObjectPath          VariantParseErrorEnum = 7
+	VariantParseErrorInvalidSignature           VariantParseErrorEnum = 8
+	VariantParseErrorInvalidTypeString          VariantParseErrorEnum = 9
+	VariantParseErrorNoCommonType               VariantParseErrorEnum = 10
+	VariantParseErrorNumberOutOfRange           VariantParseErrorEnum = 11
+	VariantParseErrorNumberTooBig               VariantParseErrorEnum = 12
+	VariantParseErrorTypeError                  VariantParseErrorEnum = 13
+	VariantParseErrorUnexpectedToken            VariantParseErrorEnum = 14
+	VariantParseErrorUnknownKeyword             VariantParseErrorEnum = 15
+	VariantParseErrorUnterminatedStringConstant VariantParseErrorEnum = 16
+	VariantParseErrorValueExpected              VariantParseErrorEnum = 17
 )
 
 // Struct VariantType
@@ -14599,7 +14549,7 @@ func NewVariantTypeMaybe(element VariantType) (result VariantType) {
 // g_variant_type_new_tuple
 // container is not nil, container is VariantType
 // is constructor
-func NewVariantTypeTuple(items int /*TODO_TYPE isPtr: true, tag: array*/, length int32) (result VariantType) {
+func NewVariantTypeTuple(items int /*TODO_TYPE array type c, p0tag: interface*/, length int32) (result VariantType) {
 	iv, err := _I.Get(755, "VariantType", "new_tuple")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15956,7 +15906,7 @@ func Base64Decode(text string) (result int /*TODO_TYPE isPtr: true, tag: array*/
 
 // g_base64_decode_inplace
 // container is nil
-func Base64DecodeInplace(text int, out_len int) (result uint8) {
+func Base64DecodeInplace(text int /*TODO:TYPE*/, out_len int /*TODO:TYPE*/) (result uint8) {
 	iv, err := _I.Get(831, "base64_decode_inplace", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15971,13 +15921,13 @@ func Base64DecodeInplace(text int, out_len int) (result uint8) {
 
 // g_base64_encode
 // container is nil
-func Base64Encode(data int /*TODO_TYPE isPtr: true, tag: array*/, len1 uint64) (result string) {
+func Base64Encode(data gi.Uint8Array, len1 uint64) (result string) {
 	iv, err := _I.Get(832, "base64_encode", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_len1 := gi.NewUint64Argument(len1)
 	args := []gi.Argument{arg_data, arg_len1}
 	var ret gi.Argument
@@ -15988,7 +15938,7 @@ func Base64Encode(data int /*TODO_TYPE isPtr: true, tag: array*/, len1 uint64) (
 
 // g_base64_encode_close
 // container is nil
-func Base64EncodeClose(break_lines bool, state int, save int) (result uint64, out int /*TODO_TYPE*/) {
+func Base64EncodeClose(break_lines bool, state int /*TODO:TYPE*/, save int /*TODO:TYPE*/) (result uint64, out int /*TODO_TYPE*/) {
 	iv, err := _I.Get(833, "base64_encode_close", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16007,14 +15957,14 @@ func Base64EncodeClose(break_lines bool, state int, save int) (result uint64, ou
 
 // g_base64_encode_step
 // container is nil
-func Base64EncodeStep(in int /*TODO_TYPE isPtr: true, tag: array*/, len1 uint64, break_lines bool, state int, save int) (result uint64, out int /*TODO_TYPE*/) {
+func Base64EncodeStep(in gi.Uint8Array, len1 uint64, break_lines bool, state int /*TODO:TYPE*/, save int /*TODO:TYPE*/) (result uint64, out int /*TODO_TYPE*/) {
 	iv, err := _I.Get(834, "base64_encode_step", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [3]gi.Argument
-	arg_in := gi.NewIntArgument(in) /*TODO*/
+	arg_in := gi.NewPointerArgument(in.P)
 	arg_len1 := gi.NewUint64Argument(len1)
 	arg_break_lines := gi.NewBoolArgument(break_lines)
 	arg_out := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -16155,7 +16105,7 @@ func BookmarkFileErrorQuark() (result uint32) {
 
 // g_build_filenamev
 // container is nil
-func BuildFilenamev(args int /*TODO_TYPE isPtr: true, tag: array*/) (result string) {
+func BuildFilenamev(args int /*TODO_TYPE array type c, p0tag: filename*/) (result string) {
 	iv, err := _I.Get(843, "build_filenamev", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16171,7 +16121,7 @@ func BuildFilenamev(args int /*TODO_TYPE isPtr: true, tag: array*/) (result stri
 
 // g_build_pathv
 // container is nil
-func BuildPathv(separator string, args int /*TODO_TYPE isPtr: true, tag: array*/) (result string) {
+func BuildPathv(separator string, args int /*TODO_TYPE array type c, p0tag: filename*/) (result string) {
 	iv, err := _I.Get(844, "build_pathv", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16237,13 +16187,13 @@ func ByteArrayNew() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
 
 // g_byte_array_new_take
 // container is nil
-func ByteArrayNewTake(data int /*TODO_TYPE isPtr: true, tag: array*/, len1 uint64) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func ByteArrayNewTake(data gi.Uint8Array, len1 uint64) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
 	iv, err := _I.Get(848, "byte_array_new_take", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_len1 := gi.NewUint64Argument(len1)
 	args := []gi.Argument{arg_data, arg_len1}
 	var ret gi.Argument
@@ -16426,14 +16376,14 @@ func ComputeChecksumForBytes(checksum_type ChecksumTypeEnum, data Bytes) (result
 
 // g_compute_checksum_for_data
 // container is nil
-func ComputeChecksumForData(checksum_type ChecksumTypeEnum, data int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) (result string) {
+func ComputeChecksumForData(checksum_type ChecksumTypeEnum, data gi.Uint8Array, length uint64) (result string) {
 	iv, err := _I.Get(859, "compute_checksum_for_data", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_checksum_type := gi.NewIntArgument(int(checksum_type))
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_length := gi.NewUint64Argument(length)
 	args := []gi.Argument{arg_checksum_type, arg_data, arg_length}
 	var ret gi.Argument
@@ -16482,16 +16432,16 @@ func ComputeHmacForBytes(digest_type ChecksumTypeEnum, key Bytes, data Bytes) (r
 
 // g_compute_hmac_for_data
 // container is nil
-func ComputeHmacForData(digest_type ChecksumTypeEnum, key int /*TODO_TYPE isPtr: true, tag: array*/, key_len uint64, data int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) (result string) {
+func ComputeHmacForData(digest_type ChecksumTypeEnum, key gi.Uint8Array, key_len uint64, data gi.Uint8Array, length uint64) (result string) {
 	iv, err := _I.Get(862, "compute_hmac_for_data", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_digest_type := gi.NewIntArgument(int(digest_type))
-	arg_key := gi.NewIntArgument(key) /*TODO*/
+	arg_key := gi.NewPointerArgument(key.P)
 	arg_key_len := gi.NewUint64Argument(key_len)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_length := gi.NewUint64Argument(length)
 	args := []gi.Argument{arg_digest_type, arg_key, arg_key_len, arg_data, arg_length}
 	var ret gi.Argument
@@ -16502,7 +16452,7 @@ func ComputeHmacForData(digest_type ChecksumTypeEnum, key int /*TODO_TYPE isPtr:
 
 // g_compute_hmac_for_string
 // container is nil
-func ComputeHmacForString(digest_type ChecksumTypeEnum, key int /*TODO_TYPE isPtr: true, tag: array*/, key_len uint64, str string, length int64) (result string) {
+func ComputeHmacForString(digest_type ChecksumTypeEnum, key gi.Uint8Array, key_len uint64, str string, length int64) (result string) {
 	iv, err := _I.Get(863, "compute_hmac_for_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16510,7 +16460,7 @@ func ComputeHmacForString(digest_type ChecksumTypeEnum, key int /*TODO_TYPE isPt
 	}
 	c_str := gi.CString(str)
 	arg_digest_type := gi.NewIntArgument(int(digest_type))
-	arg_key := gi.NewIntArgument(key) /*TODO*/
+	arg_key := gi.NewPointerArgument(key.P)
 	arg_key_len := gi.NewUint64Argument(key_len)
 	arg_str := gi.NewStringArgument(c_str)
 	arg_length := gi.NewInt64Argument(length)
@@ -16524,7 +16474,7 @@ func ComputeHmacForString(digest_type ChecksumTypeEnum, key int /*TODO_TYPE isPt
 
 // g_convert
 // container is nil
-func Convert(str int /*TODO_TYPE isPtr: true, tag: array*/, len1 int64, to_codeset string, from_codeset string) (result int /*TODO_TYPE isPtr: true, tag: array*/, bytes_read uint64, bytes_written uint64, err error) {
+func Convert(str gi.Uint8Array, len1 int64, to_codeset string, from_codeset string) (result int /*TODO_TYPE isPtr: true, tag: array*/, bytes_read uint64, bytes_written uint64, err error) {
 	iv, err := _I.Get(864, "convert", "")
 	if err != nil {
 		return
@@ -16532,7 +16482,7 @@ func Convert(str int /*TODO_TYPE isPtr: true, tag: array*/, len1 int64, to_codes
 	var outArgs [3]gi.Argument
 	c_to_codeset := gi.CString(to_codeset)
 	c_from_codeset := gi.CString(from_codeset)
-	arg_str := gi.NewIntArgument(str) /*TODO*/
+	arg_str := gi.NewPointerArgument(str.P)
 	arg_len1 := gi.NewInt64Argument(len1)
 	arg_to_codeset := gi.NewStringArgument(c_to_codeset)
 	arg_from_codeset := gi.NewStringArgument(c_from_codeset)
@@ -16567,7 +16517,7 @@ func ConvertErrorQuark() (result uint32) {
 
 // g_convert_with_fallback
 // container is nil
-func ConvertWithFallback(str int /*TODO_TYPE isPtr: true, tag: array*/, len1 int64, to_codeset string, from_codeset string, fallback string) (result int /*TODO_TYPE isPtr: true, tag: array*/, bytes_read uint64, bytes_written uint64, err error) {
+func ConvertWithFallback(str gi.Uint8Array, len1 int64, to_codeset string, from_codeset string, fallback string) (result int /*TODO_TYPE isPtr: true, tag: array*/, bytes_read uint64, bytes_written uint64, err error) {
 	iv, err := _I.Get(866, "convert_with_fallback", "")
 	if err != nil {
 		return
@@ -16576,7 +16526,7 @@ func ConvertWithFallback(str int /*TODO_TYPE isPtr: true, tag: array*/, len1 int
 	c_to_codeset := gi.CString(to_codeset)
 	c_from_codeset := gi.CString(from_codeset)
 	c_fallback := gi.CString(fallback)
-	arg_str := gi.NewIntArgument(str) /*TODO*/
+	arg_str := gi.NewPointerArgument(str.P)
 	arg_len1 := gi.NewInt64Argument(len1)
 	arg_to_codeset := gi.NewStringArgument(c_to_codeset)
 	arg_from_codeset := gi.NewStringArgument(c_from_codeset)
@@ -17166,7 +17116,7 @@ func Dpgettext2(domain string, context string, msgid string) (result string) {
 
 // g_environ_getenv
 // container is nil
-func EnvironGetenv(envp int /*TODO_TYPE isPtr: true, tag: array*/, variable string) (result string) {
+func EnvironGetenv(envp int /*TODO_TYPE array type c, p0tag: filename*/, variable string) (result string) {
 	iv, err := _I.Get(900, "environ_getenv", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17185,7 +17135,7 @@ func EnvironGetenv(envp int /*TODO_TYPE isPtr: true, tag: array*/, variable stri
 
 // g_environ_setenv
 // container is nil
-func EnvironSetenv(envp int /*TODO_TYPE isPtr: true, tag: array*/, variable string, value string, overwrite bool) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func EnvironSetenv(envp int /*TODO_TYPE array type c, p0tag: filename*/, variable string, value string, overwrite bool) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
 	iv, err := _I.Get(901, "environ_setenv", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17208,7 +17158,7 @@ func EnvironSetenv(envp int /*TODO_TYPE isPtr: true, tag: array*/, variable stri
 
 // g_environ_unsetenv
 // container is nil
-func EnvironUnsetenv(envp int /*TODO_TYPE isPtr: true, tag: array*/, variable string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func EnvironUnsetenv(envp int /*TODO_TYPE array type c, p0tag: filename*/, variable string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
 	iv, err := _I.Get(902, "environ_unsetenv", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17323,7 +17273,7 @@ func FileReadLink(filename string) (result string, err error) {
 
 // g_file_set_contents
 // container is nil
-func FileSetContents(filename string, contents int /*TODO_TYPE isPtr: true, tag: array*/, length int64) (result bool, err error) {
+func FileSetContents(filename string, contents gi.Uint8Array, length int64) (result bool, err error) {
 	iv, err := _I.Get(908, "file_set_contents", "")
 	if err != nil {
 		return
@@ -17331,7 +17281,7 @@ func FileSetContents(filename string, contents int /*TODO_TYPE isPtr: true, tag:
 	var outArgs [1]gi.Argument
 	c_filename := gi.CString(filename)
 	arg_filename := gi.NewStringArgument(c_filename)
-	arg_contents := gi.NewIntArgument(contents) /*TODO*/
+	arg_contents := gi.NewPointerArgument(contents.P)
 	arg_length := gi.NewInt64Argument(length)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_filename, arg_contents, arg_length, arg_err}
@@ -18654,13 +18604,13 @@ func LocaleFromUtf8(utf8string string, len1 int64) (result int /*TODO_TYPE isPtr
 
 // g_locale_to_utf8
 // container is nil
-func LocaleToUtf8(opsysstring int /*TODO_TYPE isPtr: true, tag: array*/, len1 int64) (result string, bytes_read uint64, bytes_written uint64, err error) {
+func LocaleToUtf8(opsysstring gi.Uint8Array, len1 int64) (result string, bytes_read uint64, bytes_written uint64, err error) {
 	iv, err := _I.Get(989, "locale_to_utf8", "")
 	if err != nil {
 		return
 	}
 	var outArgs [3]gi.Argument
-	arg_opsysstring := gi.NewIntArgument(opsysstring) /*TODO*/
+	arg_opsysstring := gi.NewPointerArgument(opsysstring.P)
 	arg_len1 := gi.NewInt64Argument(len1)
 	arg_bytes_read := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_bytes_written := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -18785,7 +18735,7 @@ func LogSetWriterFunc(func1 int /*TODO_TYPE isPtr: false, tag: interface*/, user
 
 // g_log_structured_array
 // container is nil
-func LogStructuredArray(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64) {
+func LogStructuredArray(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, p0tag: interface*/, n_fields uint64) {
 	iv, err := _I.Get(996, "log_structured_array", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18817,7 +18767,7 @@ func LogVariant(log_domain string, log_level LogLevelFlags, fields Variant) {
 
 // g_log_writer_default
 // container is nil
-func LogWriterDefault(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
+func LogWriterDefault(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, p0tag: interface*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(998, "log_writer_default", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18836,7 +18786,7 @@ func LogWriterDefault(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: tru
 
 // g_log_writer_format_fields
 // container is nil
-func LogWriterFormatFields(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, use_color bool) (result string) {
+func LogWriterFormatFields(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, p0tag: interface*/, n_fields uint64, use_color bool) (result string) {
 	iv, err := _I.Get(999, "log_writer_format_fields", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18871,7 +18821,7 @@ func LogWriterIsJournald(output_fd int32) (result bool) {
 
 // g_log_writer_journald
 // container is nil
-func LogWriterJournald(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
+func LogWriterJournald(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, p0tag: interface*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(1001, "log_writer_journald", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18890,7 +18840,7 @@ func LogWriterJournald(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: tr
 
 // g_log_writer_standard_streams
 // container is nil
-func LogWriterStandardStreams(log_level LogLevelFlags, fields int /*TODO_TYPE isPtr: true, tag: array*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
+func LogWriterStandardStreams(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, p0tag: interface*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(1002, "log_writer_standard_streams", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19254,7 +19204,7 @@ func OptionErrorQuark() (result uint32) {
 
 // g_parse_debug_string
 // container is nil
-func ParseDebugString(string string, keys int /*TODO_TYPE isPtr: true, tag: array*/, nkeys uint32) (result uint32) {
+func ParseDebugString(string string, keys int /*TODO_TYPE array type c, p0tag: interface*/, nkeys uint32) (result uint32) {
 	iv, err := _I.Get(1027, "parse_debug_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19979,7 +19929,7 @@ func RegexEscapeNul(string string, length int32) (result string) {
 
 // g_regex_escape_string
 // container is nil
-func RegexEscapeString(string int /*TODO_TYPE isPtr: true, tag: array*/, length int32) (result string) {
+func RegexEscapeString(string int /*TODO_TYPE array type c, p0tag: utf8*/, length int32) (result string) {
 	iv, err := _I.Get(1071, "regex_escape_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20549,7 +20499,7 @@ func SpacedPrimesClosest(num uint32) (result uint32) {
 
 // g_spawn_async
 // container is nil
-func SpawnAsync(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, err error) {
+func SpawnAsync(working_directory string, argv int /*TODO_TYPE array type c, p0tag: filename*/, envp int /*TODO_TYPE array type c, p0tag: filename*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1106, "spawn_async", "")
 	if err != nil {
 		return
@@ -20576,7 +20526,7 @@ func SpawnAsync(working_directory string, argv int /*TODO_TYPE isPtr: true, tag:
 
 // g_spawn_async_with_fds
 // container is nil
-func SpawnAsyncWithFds(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
+func SpawnAsyncWithFds(working_directory string, argv int /*TODO_TYPE array type c, p0tag: utf8*/, envp int /*TODO_TYPE array type c, p0tag: utf8*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1107, "spawn_async_with_fds", "")
 	if err != nil {
 		return
@@ -20606,7 +20556,7 @@ func SpawnAsyncWithFds(working_directory string, argv int /*TODO_TYPE isPtr: tru
 
 // g_spawn_async_with_pipes
 // container is nil
-func SpawnAsyncWithPipes(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
+func SpawnAsyncWithPipes(working_directory string, argv int /*TODO_TYPE array type c, p0tag: filename*/, envp int /*TODO_TYPE array type c, p0tag: filename*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
 	iv, err := _I.Get(1108, "spawn_async_with_pipes", "")
 	if err != nil {
 		return
@@ -20744,7 +20694,7 @@ func SpawnExitErrorQuark() (result uint32) {
 
 // g_spawn_sync
 // container is nil
-func SpawnSync(working_directory string, argv int /*TODO_TYPE isPtr: true, tag: array*/, envp int /*TODO_TYPE isPtr: true, tag: array*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, standard_output int /*TODO_TYPE*/, standard_error int /*TODO_TYPE*/, exit_status int32, err error) {
+func SpawnSync(working_directory string, argv int /*TODO_TYPE array type c, p0tag: filename*/, envp int /*TODO_TYPE array type c, p0tag: filename*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, standard_output int /*TODO_TYPE*/, standard_error int /*TODO_TYPE*/, exit_status int32, err error) {
 	iv, err := _I.Get(1115, "spawn_sync", "")
 	if err != nil {
 		return
@@ -23852,14 +23802,14 @@ func Utf8ToUtf16(str string, len1 int64) (result uint16, items_read int64, items
 
 // g_utf8_validate
 // container is nil
-func Utf8Validate(str int /*TODO_TYPE isPtr: true, tag: array*/, max_len int64) (result bool, end string) {
+func Utf8Validate(str gi.Uint8Array, max_len int64) (result bool, end string) {
 	iv, err := _I.Get(1292, "utf8_validate", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_str := gi.NewIntArgument(str) /*TODO*/
+	arg_str := gi.NewPointerArgument(str.P)
 	arg_max_len := gi.NewInt64Argument(max_len)
 	arg_end := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_str, arg_max_len, arg_end}

@@ -9,6 +9,7 @@ import "unsafe"
 
 var _I = gi.NewInvokerCache("GdkPixbuf")
 var _ unsafe.Pointer
+var _ *log.Logger
 
 func init() {
 	repo := gi.DefaultRepository()
@@ -30,9 +31,9 @@ type InterpTypeEnum int
 
 const (
 	InterpTypeNearest  InterpTypeEnum = 0
-	InterpTypeTiles                   = 1
-	InterpTypeBilinear                = 2
-	InterpTypeHyper                   = 3
+	InterpTypeTiles    InterpTypeEnum = 1
+	InterpTypeBilinear InterpTypeEnum = 2
+	InterpTypeHyper    InterpTypeEnum = 3
 )
 
 // Object Pixbuf
@@ -95,13 +96,13 @@ func NewPixbufFromBytes(data glib.Bytes, colorspace ColorspaceEnum, has_alpha bo
 // gdk_pixbuf_new_from_data
 // container is not nil, container is Pixbuf
 // is constructor
-func NewPixbufFromData(data int /*TODO_TYPE isPtr: true, tag: array*/, colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32, destroy_fn int /*TODO_TYPE isPtr: false, tag: interface*/, destroy_fn_data unsafe.Pointer) (result Pixbuf) {
+func NewPixbufFromData(data gi.Uint8Array, colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32, destroy_fn int /*TODO_TYPE isPtr: false, tag: interface*/, destroy_fn_data unsafe.Pointer) (result Pixbuf) {
 	iv, err := _I.Get(2, "Pixbuf", "new_from_data")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_colorspace := gi.NewIntArgument(int(colorspace))
 	arg_has_alpha := gi.NewBoolArgument(has_alpha)
 	arg_bits_per_sample := gi.NewInt32Argument(bits_per_sample)
@@ -188,14 +189,14 @@ func NewPixbufFromFileAtSize(filename string, width int32, height int32) (result
 // gdk_pixbuf_new_from_inline
 // container is not nil, container is Pixbuf
 // is constructor
-func NewPixbufFromInline(data_length int32, data int /*TODO_TYPE isPtr: true, tag: array*/, copy_pixels bool) (result Pixbuf, err error) {
+func NewPixbufFromInline(data_length int32, data gi.Uint8Array, copy_pixels bool) (result Pixbuf, err error) {
 	iv, err := _I.Get(6, "Pixbuf", "new_from_inline")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_data_length := gi.NewInt32Argument(data_length)
-	arg_data := gi.NewIntArgument(data) /*TODO*/
+	arg_data := gi.NewPointerArgument(data.P)
 	arg_copy_pixels := gi.NewBoolArgument(copy_pixels)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_data_length, arg_data, arg_copy_pixels, arg_err}
@@ -316,7 +317,7 @@ func NewPixbufFromStreamFinish(async_result gio.AsyncResult) (result Pixbuf, err
 // gdk_pixbuf_new_from_xpm_data
 // container is not nil, container is Pixbuf
 // is constructor
-func NewPixbufFromXpmData(data int /*TODO_TYPE isPtr: true, tag: array*/) (result Pixbuf) {
+func NewPixbufFromXpmData(data int /*TODO_TYPE array type c, p0tag: utf8*/) (result Pixbuf) {
 	iv, err := _I.Get(12, "Pixbuf", "new_from_xpm_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -421,9 +422,6 @@ func PixbufGetFileInfoFinish1(async_result gio.AsyncResult) (result PixbufFormat
 	return
 }
 
-// gdk_pixbuf_get_formats
-// container is not nil, container is Pixbuf
-// num arg is 0
 // gdk_pixbuf_new_from_stream_async
 // container is not nil, container is Pixbuf
 // is method
@@ -995,7 +993,7 @@ func (v Pixbuf) SaturateAndPixelate(dest IPixbuf, saturation float32, pixelate b
 // gdk_pixbuf_save_to_bufferv
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) SaveToBufferv(type1 string, option_keys int /*TODO_TYPE isPtr: true, tag: array*/, option_values int /*TODO_TYPE isPtr: true, tag: array*/) (result bool, buffer int /*TODO_TYPE*/, buffer_size uint64, err error) {
+func (v Pixbuf) SaveToBufferv(type1 string, option_keys int /*TODO_TYPE array type c, p0tag: utf8*/, option_values int /*TODO_TYPE array type c, p0tag: utf8*/) (result bool, buffer int /*TODO_TYPE*/, buffer_size uint64, err error) {
 	iv, err := _I.Get(48, "Pixbuf", "save_to_bufferv")
 	if err != nil {
 		return
@@ -1023,7 +1021,7 @@ func (v Pixbuf) SaveToBufferv(type1 string, option_keys int /*TODO_TYPE isPtr: t
 // gdk_pixbuf_save_to_callbackv
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) SaveToCallbackv(save_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, type1 string, option_keys int /*TODO_TYPE isPtr: true, tag: array*/, option_values int /*TODO_TYPE isPtr: true, tag: array*/) (result bool, err error) {
+func (v Pixbuf) SaveToCallbackv(save_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, type1 string, option_keys int /*TODO_TYPE array type c, p0tag: utf8*/, option_values int /*TODO_TYPE array type c, p0tag: utf8*/) (result bool, err error) {
 	iv, err := _I.Get(49, "Pixbuf", "save_to_callbackv")
 	if err != nil {
 		return
@@ -1049,7 +1047,7 @@ func (v Pixbuf) SaveToCallbackv(save_func int /*TODO_TYPE isPtr: false, tag: int
 // gdk_pixbuf_save_to_streamv
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) SaveToStreamv(stream gio.IOutputStream, type1 string, option_keys int /*TODO_TYPE isPtr: true, tag: array*/, option_values int /*TODO_TYPE isPtr: true, tag: array*/, cancellable gio.ICancellable) (result bool, err error) {
+func (v Pixbuf) SaveToStreamv(stream gio.IOutputStream, type1 string, option_keys int /*TODO_TYPE array type c, p0tag: utf8*/, option_values int /*TODO_TYPE array type c, p0tag: utf8*/, cancellable gio.ICancellable) (result bool, err error) {
 	iv, err := _I.Get(50, "Pixbuf", "save_to_streamv")
 	if err != nil {
 		return
@@ -1075,7 +1073,7 @@ func (v Pixbuf) SaveToStreamv(stream gio.IOutputStream, type1 string, option_key
 // gdk_pixbuf_save_to_streamv_async
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) SaveToStreamvAsync(stream gio.IOutputStream, type1 string, option_keys int /*TODO_TYPE isPtr: true, tag: array*/, option_values int /*TODO_TYPE isPtr: true, tag: array*/, cancellable gio.ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v Pixbuf) SaveToStreamvAsync(stream gio.IOutputStream, type1 string, option_keys int /*TODO_TYPE array type c, p0tag: utf8*/, option_values int /*TODO_TYPE array type c, p0tag: utf8*/, cancellable gio.ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(51, "Pixbuf", "save_to_streamv_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1098,7 +1096,7 @@ func (v Pixbuf) SaveToStreamvAsync(stream gio.IOutputStream, type1 string, optio
 // gdk_pixbuf_savev
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) Savev(filename string, type1 string, option_keys int /*TODO_TYPE isPtr: true, tag: array*/, option_values int /*TODO_TYPE isPtr: true, tag: array*/) (result bool, err error) {
+func (v Pixbuf) Savev(filename string, type1 string, option_keys int /*TODO_TYPE array type c, p0tag: utf8*/, option_values int /*TODO_TYPE array type c, p0tag: utf8*/) (result bool, err error) {
 	iv, err := _I.Get(52, "Pixbuf", "savev")
 	if err != nil {
 		return
@@ -1194,7 +1192,7 @@ type PixbufAlphaModeEnum int
 
 const (
 	PixbufAlphaModeBilevel PixbufAlphaModeEnum = 0
-	PixbufAlphaModeFull                        = 1
+	PixbufAlphaModeFull    PixbufAlphaModeEnum = 1
 )
 
 // Object PixbufAnimation
@@ -1478,12 +1476,12 @@ type PixbufErrorEnum int
 
 const (
 	PixbufErrorCorruptImage         PixbufErrorEnum = 0
-	PixbufErrorInsufficientMemory                   = 1
-	PixbufErrorBadOption                            = 2
-	PixbufErrorUnknownType                          = 3
-	PixbufErrorUnsupportedOperation                 = 4
-	PixbufErrorFailed                               = 5
-	PixbufErrorIncompleteAnimation                  = 6
+	PixbufErrorInsufficientMemory   PixbufErrorEnum = 1
+	PixbufErrorBadOption            PixbufErrorEnum = 2
+	PixbufErrorUnknownType          PixbufErrorEnum = 3
+	PixbufErrorUnsupportedOperation PixbufErrorEnum = 4
+	PixbufErrorFailed               PixbufErrorEnum = 5
+	PixbufErrorIncompleteAnimation  PixbufErrorEnum = 6
 )
 
 // Struct PixbufFormat
@@ -1850,14 +1848,14 @@ func (v PixbufLoader) SetSize(width int32, height int32) {
 // gdk_pixbuf_loader_write
 // container is not nil, container is PixbufLoader
 // is method
-func (v PixbufLoader) Write(buf int /*TODO_TYPE isPtr: true, tag: array*/, count uint64) (result bool, err error) {
+func (v PixbufLoader) Write(buf gi.Uint8Array, count uint64) (result bool, err error) {
 	iv, err := _I.Get(90, "PixbufLoader", "write")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buf := gi.NewIntArgument(buf) /*TODO*/
+	arg_buf := gi.NewPointerArgument(buf.P)
 	arg_count := gi.NewUint64Argument(count)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_buf, arg_count, arg_err}
@@ -1894,9 +1892,9 @@ type PixbufRotationEnum int
 
 const (
 	PixbufRotationNone             PixbufRotationEnum = 0
-	PixbufRotationCounterclockwise                    = 90
-	PixbufRotationUpsidedown                          = 180
-	PixbufRotationClockwise                           = 270
+	PixbufRotationCounterclockwise PixbufRotationEnum = 90
+	PixbufRotationUpsidedown       PixbufRotationEnum = 180
+	PixbufRotationClockwise        PixbufRotationEnum = 270
 )
 
 // Object PixbufSimpleAnim

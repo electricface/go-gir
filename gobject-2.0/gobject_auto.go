@@ -7,6 +7,7 @@ import "unsafe"
 
 var _I = gi.NewInvokerCache("GObject")
 var _ unsafe.Pointer
+var _ *log.Logger
 
 func init() {
 	repo := gi.DefaultRepository()
@@ -131,9 +132,9 @@ type BindingFlags int
 
 const (
 	BindingFlagsDefault       BindingFlags = 0
-	BindingFlagsBidirectional              = 1
-	BindingFlagsSyncCreate                 = 2
-	BindingFlagsInvertBoolean              = 4
+	BindingFlagsBidirectional BindingFlags = 1
+	BindingFlagsSyncCreate    BindingFlags = 2
+	BindingFlagsInvertBoolean BindingFlags = 4
 )
 
 // Struct CClosure
@@ -659,7 +660,7 @@ func (v Closure) Invalidate() {
 // g_closure_invoke
 // container is not nil, container is Closure
 // is method
-func (v Closure) Invoke(n_param_values uint32, param_values int /*TODO_TYPE isPtr: true, tag: array*/, invocation_hint unsafe.Pointer) (return_value int /*TODO_TYPE*/) {
+func (v Closure) Invoke(n_param_values uint32, param_values int /*TODO_TYPE array type c, p0tag: interface*/, invocation_hint unsafe.Pointer) (return_value int /*TODO_TYPE*/) {
 	iv, err := _I.Get(32, "Closure", "invoke")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -732,7 +733,7 @@ type ConnectFlags int
 
 const (
 	ConnectFlagsAfter   ConnectFlags = 1
-	ConnectFlagsSwapped              = 2
+	ConnectFlagsSwapped ConnectFlags = 2
 )
 
 // Struct EnumClass
@@ -783,7 +784,7 @@ func (v Object) P_Object() unsafe.Pointer { return v.P }
 // g_object_newv
 // container is not nil, container is Object
 // is constructor
-func NewObjectv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE isPtr: true, tag: array*/) (result Object) {
+func NewObjectv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, p0tag: interface*/) (result Object) {
 	iv, err := _I.Get(36, "Object", "newv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1009,7 +1010,7 @@ func (v Object) GetQdata(quark uint32) {
 // g_object_getv
 // container is not nil, container is Object
 // is method
-func (v Object) Getv(n_properties uint32, names int /*TODO_TYPE isPtr: true, tag: array*/, values int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Object) Getv(n_properties uint32, names int /*TODO_TYPE array type c, p0tag: utf8*/, values int /*TODO_TYPE array type c, p0tag: interface*/) {
 	iv, err := _I.Get(48, "Object", "getv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1242,17 +1243,17 @@ type ParamFlags int
 
 const (
 	ParamFlagsReadable       ParamFlags = 1
-	ParamFlagsWritable                  = 2
-	ParamFlagsReadwrite                 = 3
-	ParamFlagsConstruct                 = 4
-	ParamFlagsConstructOnly             = 8
-	ParamFlagsLaxValidation             = 16
-	ParamFlagsStaticName                = 32
-	ParamFlagsPrivate                   = 32
-	ParamFlagsStaticNick                = 64
-	ParamFlagsStaticBlurb               = 128
-	ParamFlagsExplicitNotify            = 1073741824
-	ParamFlagsDeprecated                = 2147483648
+	ParamFlagsWritable       ParamFlags = 2
+	ParamFlagsReadwrite      ParamFlags = 3
+	ParamFlagsConstruct      ParamFlags = 4
+	ParamFlagsConstructOnly  ParamFlags = 8
+	ParamFlagsLaxValidation  ParamFlags = 16
+	ParamFlagsStaticName     ParamFlags = 32
+	ParamFlagsPrivate        ParamFlags = 32
+	ParamFlagsStaticNick     ParamFlags = 64
+	ParamFlagsStaticBlurb    ParamFlags = 128
+	ParamFlagsExplicitNotify ParamFlags = 1073741824
+	ParamFlagsDeprecated     ParamFlags = 2147483648
 )
 
 // Object ParamSpec
@@ -1809,14 +1810,14 @@ type SignalFlags int
 
 const (
 	SignalFlagsRunFirst    SignalFlags = 1
-	SignalFlagsRunLast                 = 2
-	SignalFlagsRunCleanup              = 4
-	SignalFlagsNoRecurse               = 8
-	SignalFlagsDetailed                = 16
-	SignalFlagsAction                  = 32
-	SignalFlagsNoHooks                 = 64
-	SignalFlagsMustCollect             = 128
-	SignalFlagsDeprecated              = 256
+	SignalFlagsRunLast     SignalFlags = 2
+	SignalFlagsRunCleanup  SignalFlags = 4
+	SignalFlagsNoRecurse   SignalFlags = 8
+	SignalFlagsDetailed    SignalFlags = 16
+	SignalFlagsAction      SignalFlags = 32
+	SignalFlagsNoHooks     SignalFlags = 64
+	SignalFlagsMustCollect SignalFlags = 128
+	SignalFlagsDeprecated  SignalFlags = 256
 )
 
 // Struct SignalInvocationHint
@@ -1829,11 +1830,11 @@ type SignalMatchTypeFlags int
 
 const (
 	SignalMatchTypeId        SignalMatchTypeFlags = 1
-	SignalMatchTypeDetail                         = 2
-	SignalMatchTypeClosure                        = 4
-	SignalMatchTypeFunc                           = 8
-	SignalMatchTypeData                           = 16
-	SignalMatchTypeUnblocked                      = 32
+	SignalMatchTypeDetail    SignalMatchTypeFlags = 2
+	SignalMatchTypeClosure   SignalMatchTypeFlags = 4
+	SignalMatchTypeFunc      SignalMatchTypeFlags = 8
+	SignalMatchTypeData      SignalMatchTypeFlags = 16
+	SignalMatchTypeUnblocked SignalMatchTypeFlags = 32
 )
 
 // Struct SignalQuery
@@ -1987,10 +1988,10 @@ type TypeDebugFlags int
 
 const (
 	TypeDebugFlagsNone          TypeDebugFlags = 0
-	TypeDebugFlagsObjects                      = 1
-	TypeDebugFlagsSignals                      = 2
-	TypeDebugFlagsInstanceCount                = 4
-	TypeDebugFlagsMask                         = 7
+	TypeDebugFlagsObjects       TypeDebugFlags = 1
+	TypeDebugFlagsSignals       TypeDebugFlags = 2
+	TypeDebugFlagsInstanceCount TypeDebugFlags = 4
+	TypeDebugFlagsMask          TypeDebugFlags = 7
 )
 
 // Flags TypeFlags
@@ -1998,7 +1999,7 @@ type TypeFlags int
 
 const (
 	TypeFlagsAbstract      TypeFlags = 16
-	TypeFlagsValueAbstract           = 32
+	TypeFlagsValueAbstract TypeFlags = 32
 )
 
 // Flags TypeFundamentalFlags
@@ -2006,9 +2007,9 @@ type TypeFundamentalFlags int
 
 const (
 	TypeFundamentalFlagsClassed        TypeFundamentalFlags = 1
-	TypeFundamentalFlagsInstantiatable                      = 2
-	TypeFundamentalFlagsDerivable                           = 4
-	TypeFundamentalFlagsDeepDerivable                       = 8
+	TypeFundamentalFlagsInstantiatable TypeFundamentalFlags = 2
+	TypeFundamentalFlagsDerivable      TypeFundamentalFlags = 4
+	TypeFundamentalFlagsDeepDerivable  TypeFundamentalFlags = 8
 )
 
 // Struct TypeFundamentalInfo
@@ -4978,7 +4979,7 @@ func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func int /*TODO
 
 // g_signal_chain_from_overridden
 // container is nil
-func SignalChainFromOverridden(instance_and_params int /*TODO_TYPE isPtr: true, tag: array*/, return_value Value) {
+func SignalChainFromOverridden(instance_and_params int /*TODO_TYPE array type c, p0tag: interface*/, return_value Value) {
 	iv, err := _I.Get(244, "signal_chain_from_overridden", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5033,7 +5034,7 @@ func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32,
 
 // g_signal_emitv
 // container is nil
-func SignalEmitv(instance_and_params int /*TODO_TYPE isPtr: true, tag: array*/, signal_id uint32, detail uint32, return_value int) {
+func SignalEmitv(instance_and_params int /*TODO_TYPE array type c, p0tag: interface*/, signal_id uint32, detail uint32, return_value int /*TODO:TYPE*/) {
 	iv, err := _I.Get(247, "signal_emitv", "")
 	if err != nil {
 		log.Println("WARN:", err)

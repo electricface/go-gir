@@ -8,6 +8,7 @@ import "unsafe"
 
 var _I = gi.NewInvokerCache("Atk")
 var _ unsafe.Pointer
+var _ *log.Logger
 
 func init() {
 	repo := gi.DefaultRepository()
@@ -474,8 +475,8 @@ type CoordTypeEnum int
 
 const (
 	CoordTypeScreen CoordTypeEnum = 0
-	CoordTypeWindow               = 1
-	CoordTypeParent               = 2
+	CoordTypeWindow CoordTypeEnum = 1
+	CoordTypeParent CoordTypeEnum = 2
 )
 
 // Interface Document
@@ -1188,8 +1189,8 @@ type KeyEventTypeEnum int
 
 const (
 	KeyEventTypePress       KeyEventTypeEnum = 0
-	KeyEventTypeRelease                      = 1
-	KeyEventTypeLastDefined                  = 2
+	KeyEventTypeRelease     KeyEventTypeEnum = 1
+	KeyEventTypeLastDefined KeyEventTypeEnum = 2
 )
 
 // Enum Layer
@@ -1197,13 +1198,13 @@ type LayerEnum int
 
 const (
 	LayerInvalid    LayerEnum = 0
-	LayerBackground           = 1
-	LayerCanvas               = 2
-	LayerWidget               = 3
-	LayerMdi                  = 4
-	LayerPopup                = 5
-	LayerOverlay              = 6
-	LayerWindow               = 7
+	LayerBackground LayerEnum = 1
+	LayerCanvas     LayerEnum = 2
+	LayerWidget     LayerEnum = 3
+	LayerMdi        LayerEnum = 4
+	LayerPopup      LayerEnum = 5
+	LayerOverlay    LayerEnum = 6
+	LayerWindow     LayerEnum = 7
 )
 
 // Object Misc
@@ -1217,9 +1218,6 @@ type IMisc interface{ P_Misc() unsafe.Pointer }
 
 func (v Misc) P_Misc() unsafe.Pointer { return v.P }
 
-// atk_misc_get_instance
-// container is not nil, container is Misc
-// num arg is 0
 // atk_misc_threads_enter
 // container is not nil, container is Misc
 // is method
@@ -2018,7 +2016,7 @@ func (v Relation) P_Relation() unsafe.Pointer { return v.P }
 // atk_relation_new
 // container is not nil, container is Relation
 // is constructor
-func NewRelation(targets int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32, relationship RelationTypeEnum) (result Relation) {
+func NewRelation(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, relationship RelationTypeEnum) (result Relation) {
 	iv, err := _I.Get(100, "Relation", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2270,27 +2268,27 @@ type RelationTypeEnum int
 
 const (
 	RelationTypeNull           RelationTypeEnum = 0
-	RelationTypeControlledBy                    = 1
-	RelationTypeControllerFor                   = 2
-	RelationTypeLabelFor                        = 3
-	RelationTypeLabelledBy                      = 4
-	RelationTypeMemberOf                        = 5
-	RelationTypeNodeChildOf                     = 6
-	RelationTypeFlowsTo                         = 7
-	RelationTypeFlowsFrom                       = 8
-	RelationTypeSubwindowOf                     = 9
-	RelationTypeEmbeds                          = 10
-	RelationTypeEmbeddedBy                      = 11
-	RelationTypePopupFor                        = 12
-	RelationTypeParentWindowOf                  = 13
-	RelationTypeDescribedBy                     = 14
-	RelationTypeDescriptionFor                  = 15
-	RelationTypeNodeParentOf                    = 16
-	RelationTypeDetails                         = 17
-	RelationTypeDetailsFor                      = 18
-	RelationTypeErrorMessage                    = 19
-	RelationTypeErrorFor                        = 20
-	RelationTypeLastDefined                     = 21
+	RelationTypeControlledBy   RelationTypeEnum = 1
+	RelationTypeControllerFor  RelationTypeEnum = 2
+	RelationTypeLabelFor       RelationTypeEnum = 3
+	RelationTypeLabelledBy     RelationTypeEnum = 4
+	RelationTypeMemberOf       RelationTypeEnum = 5
+	RelationTypeNodeChildOf    RelationTypeEnum = 6
+	RelationTypeFlowsTo        RelationTypeEnum = 7
+	RelationTypeFlowsFrom      RelationTypeEnum = 8
+	RelationTypeSubwindowOf    RelationTypeEnum = 9
+	RelationTypeEmbeds         RelationTypeEnum = 10
+	RelationTypeEmbeddedBy     RelationTypeEnum = 11
+	RelationTypePopupFor       RelationTypeEnum = 12
+	RelationTypeParentWindowOf RelationTypeEnum = 13
+	RelationTypeDescribedBy    RelationTypeEnum = 14
+	RelationTypeDescriptionFor RelationTypeEnum = 15
+	RelationTypeNodeParentOf   RelationTypeEnum = 16
+	RelationTypeDetails        RelationTypeEnum = 17
+	RelationTypeDetailsFor     RelationTypeEnum = 18
+	RelationTypeErrorMessage   RelationTypeEnum = 19
+	RelationTypeErrorFor       RelationTypeEnum = 20
+	RelationTypeLastDefined    RelationTypeEnum = 21
 )
 
 // Enum Role
@@ -2298,129 +2296,129 @@ type RoleEnum int
 
 const (
 	RoleInvalid              RoleEnum = 0
-	RoleAcceleratorLabel              = 1
-	RoleAlert                         = 2
-	RoleAnimation                     = 3
-	RoleArrow                         = 4
-	RoleCalendar                      = 5
-	RoleCanvas                        = 6
-	RoleCheckBox                      = 7
-	RoleCheckMenuItem                 = 8
-	RoleColorChooser                  = 9
-	RoleColumnHeader                  = 10
-	RoleComboBox                      = 11
-	RoleDateEditor                    = 12
-	RoleDesktopIcon                   = 13
-	RoleDesktopFrame                  = 14
-	RoleDial                          = 15
-	RoleDialog                        = 16
-	RoleDirectoryPane                 = 17
-	RoleDrawingArea                   = 18
-	RoleFileChooser                   = 19
-	RoleFiller                        = 20
-	RoleFontChooser                   = 21
-	RoleFrame                         = 22
-	RoleGlassPane                     = 23
-	RoleHtmlContainer                 = 24
-	RoleIcon                          = 25
-	RoleImage                         = 26
-	RoleInternalFrame                 = 27
-	RoleLabel                         = 28
-	RoleLayeredPane                   = 29
-	RoleList                          = 30
-	RoleListItem                      = 31
-	RoleMenu                          = 32
-	RoleMenuBar                       = 33
-	RoleMenuItem                      = 34
-	RoleOptionPane                    = 35
-	RolePageTab                       = 36
-	RolePageTabList                   = 37
-	RolePanel                         = 38
-	RolePasswordText                  = 39
-	RolePopupMenu                     = 40
-	RoleProgressBar                   = 41
-	RolePushButton                    = 42
-	RoleRadioButton                   = 43
-	RoleRadioMenuItem                 = 44
-	RoleRootPane                      = 45
-	RoleRowHeader                     = 46
-	RoleScrollBar                     = 47
-	RoleScrollPane                    = 48
-	RoleSeparator                     = 49
-	RoleSlider                        = 50
-	RoleSplitPane                     = 51
-	RoleSpinButton                    = 52
-	RoleStatusbar                     = 53
-	RoleTable                         = 54
-	RoleTableCell                     = 55
-	RoleTableColumnHeader             = 56
-	RoleTableRowHeader                = 57
-	RoleTearOffMenuItem               = 58
-	RoleTerminal                      = 59
-	RoleText                          = 60
-	RoleToggleButton                  = 61
-	RoleToolBar                       = 62
-	RoleToolTip                       = 63
-	RoleTree                          = 64
-	RoleTreeTable                     = 65
-	RoleUnknown                       = 66
-	RoleViewport                      = 67
-	RoleWindow                        = 68
-	RoleHeader                        = 69
-	RoleFooter                        = 70
-	RoleParagraph                     = 71
-	RoleRuler                         = 72
-	RoleApplication                   = 73
-	RoleAutocomplete                  = 74
-	RoleEditBar                       = 75
-	RoleEmbedded                      = 76
-	RoleEntry                         = 77
-	RoleChart                         = 78
-	RoleCaption                       = 79
-	RoleDocumentFrame                 = 80
-	RoleHeading                       = 81
-	RolePage                          = 82
-	RoleSection                       = 83
-	RoleRedundantObject               = 84
-	RoleForm                          = 85
-	RoleLink                          = 86
-	RoleInputMethodWindow             = 87
-	RoleTableRow                      = 88
-	RoleTreeItem                      = 89
-	RoleDocumentSpreadsheet           = 90
-	RoleDocumentPresentation          = 91
-	RoleDocumentText                  = 92
-	RoleDocumentWeb                   = 93
-	RoleDocumentEmail                 = 94
-	RoleComment                       = 95
-	RoleListBox                       = 96
-	RoleGrouping                      = 97
-	RoleImageMap                      = 98
-	RoleNotification                  = 99
-	RoleInfoBar                       = 100
-	RoleLevelBar                      = 101
-	RoleTitleBar                      = 102
-	RoleBlockQuote                    = 103
-	RoleAudio                         = 104
-	RoleVideo                         = 105
-	RoleDefinition                    = 106
-	RoleArticle                       = 107
-	RoleLandmark                      = 108
-	RoleLog                           = 109
-	RoleMarquee                       = 110
-	RoleMath                          = 111
-	RoleRating                        = 112
-	RoleTimer                         = 113
-	RoleDescriptionList               = 114
-	RoleDescriptionTerm               = 115
-	RoleDescriptionValue              = 116
-	RoleStatic                        = 117
-	RoleMathFraction                  = 118
-	RoleMathRoot                      = 119
-	RoleSubscript                     = 120
-	RoleSuperscript                   = 121
-	RoleFootnote                      = 122
-	RoleLastDefined                   = 123
+	RoleAcceleratorLabel     RoleEnum = 1
+	RoleAlert                RoleEnum = 2
+	RoleAnimation            RoleEnum = 3
+	RoleArrow                RoleEnum = 4
+	RoleCalendar             RoleEnum = 5
+	RoleCanvas               RoleEnum = 6
+	RoleCheckBox             RoleEnum = 7
+	RoleCheckMenuItem        RoleEnum = 8
+	RoleColorChooser         RoleEnum = 9
+	RoleColumnHeader         RoleEnum = 10
+	RoleComboBox             RoleEnum = 11
+	RoleDateEditor           RoleEnum = 12
+	RoleDesktopIcon          RoleEnum = 13
+	RoleDesktopFrame         RoleEnum = 14
+	RoleDial                 RoleEnum = 15
+	RoleDialog               RoleEnum = 16
+	RoleDirectoryPane        RoleEnum = 17
+	RoleDrawingArea          RoleEnum = 18
+	RoleFileChooser          RoleEnum = 19
+	RoleFiller               RoleEnum = 20
+	RoleFontChooser          RoleEnum = 21
+	RoleFrame                RoleEnum = 22
+	RoleGlassPane            RoleEnum = 23
+	RoleHtmlContainer        RoleEnum = 24
+	RoleIcon                 RoleEnum = 25
+	RoleImage                RoleEnum = 26
+	RoleInternalFrame        RoleEnum = 27
+	RoleLabel                RoleEnum = 28
+	RoleLayeredPane          RoleEnum = 29
+	RoleList                 RoleEnum = 30
+	RoleListItem             RoleEnum = 31
+	RoleMenu                 RoleEnum = 32
+	RoleMenuBar              RoleEnum = 33
+	RoleMenuItem             RoleEnum = 34
+	RoleOptionPane           RoleEnum = 35
+	RolePageTab              RoleEnum = 36
+	RolePageTabList          RoleEnum = 37
+	RolePanel                RoleEnum = 38
+	RolePasswordText         RoleEnum = 39
+	RolePopupMenu            RoleEnum = 40
+	RoleProgressBar          RoleEnum = 41
+	RolePushButton           RoleEnum = 42
+	RoleRadioButton          RoleEnum = 43
+	RoleRadioMenuItem        RoleEnum = 44
+	RoleRootPane             RoleEnum = 45
+	RoleRowHeader            RoleEnum = 46
+	RoleScrollBar            RoleEnum = 47
+	RoleScrollPane           RoleEnum = 48
+	RoleSeparator            RoleEnum = 49
+	RoleSlider               RoleEnum = 50
+	RoleSplitPane            RoleEnum = 51
+	RoleSpinButton           RoleEnum = 52
+	RoleStatusbar            RoleEnum = 53
+	RoleTable                RoleEnum = 54
+	RoleTableCell            RoleEnum = 55
+	RoleTableColumnHeader    RoleEnum = 56
+	RoleTableRowHeader       RoleEnum = 57
+	RoleTearOffMenuItem      RoleEnum = 58
+	RoleTerminal             RoleEnum = 59
+	RoleText                 RoleEnum = 60
+	RoleToggleButton         RoleEnum = 61
+	RoleToolBar              RoleEnum = 62
+	RoleToolTip              RoleEnum = 63
+	RoleTree                 RoleEnum = 64
+	RoleTreeTable            RoleEnum = 65
+	RoleUnknown              RoleEnum = 66
+	RoleViewport             RoleEnum = 67
+	RoleWindow               RoleEnum = 68
+	RoleHeader               RoleEnum = 69
+	RoleFooter               RoleEnum = 70
+	RoleParagraph            RoleEnum = 71
+	RoleRuler                RoleEnum = 72
+	RoleApplication          RoleEnum = 73
+	RoleAutocomplete         RoleEnum = 74
+	RoleEditBar              RoleEnum = 75
+	RoleEmbedded             RoleEnum = 76
+	RoleEntry                RoleEnum = 77
+	RoleChart                RoleEnum = 78
+	RoleCaption              RoleEnum = 79
+	RoleDocumentFrame        RoleEnum = 80
+	RoleHeading              RoleEnum = 81
+	RolePage                 RoleEnum = 82
+	RoleSection              RoleEnum = 83
+	RoleRedundantObject      RoleEnum = 84
+	RoleForm                 RoleEnum = 85
+	RoleLink                 RoleEnum = 86
+	RoleInputMethodWindow    RoleEnum = 87
+	RoleTableRow             RoleEnum = 88
+	RoleTreeItem             RoleEnum = 89
+	RoleDocumentSpreadsheet  RoleEnum = 90
+	RoleDocumentPresentation RoleEnum = 91
+	RoleDocumentText         RoleEnum = 92
+	RoleDocumentWeb          RoleEnum = 93
+	RoleDocumentEmail        RoleEnum = 94
+	RoleComment              RoleEnum = 95
+	RoleListBox              RoleEnum = 96
+	RoleGrouping             RoleEnum = 97
+	RoleImageMap             RoleEnum = 98
+	RoleNotification         RoleEnum = 99
+	RoleInfoBar              RoleEnum = 100
+	RoleLevelBar             RoleEnum = 101
+	RoleTitleBar             RoleEnum = 102
+	RoleBlockQuote           RoleEnum = 103
+	RoleAudio                RoleEnum = 104
+	RoleVideo                RoleEnum = 105
+	RoleDefinition           RoleEnum = 106
+	RoleArticle              RoleEnum = 107
+	RoleLandmark             RoleEnum = 108
+	RoleLog                  RoleEnum = 109
+	RoleMarquee              RoleEnum = 110
+	RoleMath                 RoleEnum = 111
+	RoleRating               RoleEnum = 112
+	RoleTimer                RoleEnum = 113
+	RoleDescriptionList      RoleEnum = 114
+	RoleDescriptionTerm      RoleEnum = 115
+	RoleDescriptionValue     RoleEnum = 116
+	RoleStatic               RoleEnum = 117
+	RoleMathFraction         RoleEnum = 118
+	RoleMathRoot             RoleEnum = 119
+	RoleSubscript            RoleEnum = 120
+	RoleSuperscript          RoleEnum = 121
+	RoleFootnote             RoleEnum = 122
+	RoleLastDefined          RoleEnum = 123
 )
 
 // Enum ScrollType
@@ -2428,12 +2426,12 @@ type ScrollTypeEnum int
 
 const (
 	ScrollTypeTopLeft     ScrollTypeEnum = 0
-	ScrollTypeBottomRight                = 1
-	ScrollTypeTopEdge                    = 2
-	ScrollTypeBottomEdge                 = 3
-	ScrollTypeLeftEdge                   = 4
-	ScrollTypeRightEdge                  = 5
-	ScrollTypeAnywhere                   = 6
+	ScrollTypeBottomRight ScrollTypeEnum = 1
+	ScrollTypeTopEdge     ScrollTypeEnum = 2
+	ScrollTypeBottomEdge  ScrollTypeEnum = 3
+	ScrollTypeLeftEdge    ScrollTypeEnum = 4
+	ScrollTypeRightEdge   ScrollTypeEnum = 5
+	ScrollTypeAnywhere    ScrollTypeEnum = 6
 )
 
 // Interface Selection
@@ -2676,7 +2674,7 @@ func (v StateSet) AddState(type1 StateTypeEnum) (result bool) {
 // atk_state_set_add_states
 // container is not nil, container is StateSet
 // is method
-func (v StateSet) AddStates(types int /*TODO_TYPE isPtr: true, tag: array*/, n_types int32) {
+func (v StateSet) AddStates(types int /*TODO_TYPE array type c, p0tag: interface*/, n_types int32) {
 	iv, err := _I.Get(126, "StateSet", "add_states")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2742,7 +2740,7 @@ func (v StateSet) ContainsState(type1 StateTypeEnum) (result bool) {
 // atk_state_set_contains_states
 // container is not nil, container is StateSet
 // is method
-func (v StateSet) ContainsStates(types int /*TODO_TYPE isPtr: true, tag: array*/, n_types int32) (result bool) {
+func (v StateSet) ContainsStates(types int /*TODO_TYPE array type c, p0tag: interface*/, n_types int32) (result bool) {
 	iv, err := _I.Get(130, "StateSet", "contains_states")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2835,49 +2833,49 @@ type StateTypeEnum int
 
 const (
 	StateTypeInvalid                StateTypeEnum = 0
-	StateTypeActive                               = 1
-	StateTypeArmed                                = 2
-	StateTypeBusy                                 = 3
-	StateTypeChecked                              = 4
-	StateTypeDefunct                              = 5
-	StateTypeEditable                             = 6
-	StateTypeEnabled                              = 7
-	StateTypeExpandable                           = 8
-	StateTypeExpanded                             = 9
-	StateTypeFocusable                            = 10
-	StateTypeFocused                              = 11
-	StateTypeHorizontal                           = 12
-	StateTypeIconified                            = 13
-	StateTypeModal                                = 14
-	StateTypeMultiLine                            = 15
-	StateTypeMultiselectable                      = 16
-	StateTypeOpaque                               = 17
-	StateTypePressed                              = 18
-	StateTypeResizable                            = 19
-	StateTypeSelectable                           = 20
-	StateTypeSelected                             = 21
-	StateTypeSensitive                            = 22
-	StateTypeShowing                              = 23
-	StateTypeSingleLine                           = 24
-	StateTypeStale                                = 25
-	StateTypeTransient                            = 26
-	StateTypeVertical                             = 27
-	StateTypeVisible                              = 28
-	StateTypeManagesDescendants                   = 29
-	StateTypeIndeterminate                        = 30
-	StateTypeTruncated                            = 31
-	StateTypeRequired                             = 32
-	StateTypeInvalidEntry                         = 33
-	StateTypeSupportsAutocompletion               = 34
-	StateTypeSelectableText                       = 35
-	StateTypeDefault                              = 36
-	StateTypeAnimated                             = 37
-	StateTypeVisited                              = 38
-	StateTypeCheckable                            = 39
-	StateTypeHasPopup                             = 40
-	StateTypeHasTooltip                           = 41
-	StateTypeReadOnly                             = 42
-	StateTypeLastDefined                          = 43
+	StateTypeActive                 StateTypeEnum = 1
+	StateTypeArmed                  StateTypeEnum = 2
+	StateTypeBusy                   StateTypeEnum = 3
+	StateTypeChecked                StateTypeEnum = 4
+	StateTypeDefunct                StateTypeEnum = 5
+	StateTypeEditable               StateTypeEnum = 6
+	StateTypeEnabled                StateTypeEnum = 7
+	StateTypeExpandable             StateTypeEnum = 8
+	StateTypeExpanded               StateTypeEnum = 9
+	StateTypeFocusable              StateTypeEnum = 10
+	StateTypeFocused                StateTypeEnum = 11
+	StateTypeHorizontal             StateTypeEnum = 12
+	StateTypeIconified              StateTypeEnum = 13
+	StateTypeModal                  StateTypeEnum = 14
+	StateTypeMultiLine              StateTypeEnum = 15
+	StateTypeMultiselectable        StateTypeEnum = 16
+	StateTypeOpaque                 StateTypeEnum = 17
+	StateTypePressed                StateTypeEnum = 18
+	StateTypeResizable              StateTypeEnum = 19
+	StateTypeSelectable             StateTypeEnum = 20
+	StateTypeSelected               StateTypeEnum = 21
+	StateTypeSensitive              StateTypeEnum = 22
+	StateTypeShowing                StateTypeEnum = 23
+	StateTypeSingleLine             StateTypeEnum = 24
+	StateTypeStale                  StateTypeEnum = 25
+	StateTypeTransient              StateTypeEnum = 26
+	StateTypeVertical               StateTypeEnum = 27
+	StateTypeVisible                StateTypeEnum = 28
+	StateTypeManagesDescendants     StateTypeEnum = 29
+	StateTypeIndeterminate          StateTypeEnum = 30
+	StateTypeTruncated              StateTypeEnum = 31
+	StateTypeRequired               StateTypeEnum = 32
+	StateTypeInvalidEntry           StateTypeEnum = 33
+	StateTypeSupportsAutocompletion StateTypeEnum = 34
+	StateTypeSelectableText         StateTypeEnum = 35
+	StateTypeDefault                StateTypeEnum = 36
+	StateTypeAnimated               StateTypeEnum = 37
+	StateTypeVisited                StateTypeEnum = 38
+	StateTypeCheckable              StateTypeEnum = 39
+	StateTypeHasPopup               StateTypeEnum = 40
+	StateTypeHasTooltip             StateTypeEnum = 41
+	StateTypeReadOnly               StateTypeEnum = 42
+	StateTypeLastDefined            StateTypeEnum = 43
 )
 
 // Interface StreamableContent
@@ -3636,7 +3634,7 @@ type TextIfc struct{}
 // container is not nil, container is Text
 // is method
 // arg0Type tag: array, isPtr: true
-func TextFreeRanges1(ranges int /*TODO_TYPE isPtr: true, tag: array*/) {
+func TextFreeRanges1(ranges int /*TODO_TYPE array type c, p0tag: interface*/) {
 	iv, err := _I.Get(175, "Text", "free_ranges")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4062,34 +4060,34 @@ type TextAttributeEnum int
 
 const (
 	TextAttributeInvalid          TextAttributeEnum = 0
-	TextAttributeLeftMargin                         = 1
-	TextAttributeRightMargin                        = 2
-	TextAttributeIndent                             = 3
-	TextAttributeInvisible                          = 4
-	TextAttributeEditable                           = 5
-	TextAttributePixelsAboveLines                   = 6
-	TextAttributePixelsBelowLines                   = 7
-	TextAttributePixelsInsideWrap                   = 8
-	TextAttributeBgFullHeight                       = 9
-	TextAttributeRise                               = 10
-	TextAttributeUnderline                          = 11
-	TextAttributeStrikethrough                      = 12
-	TextAttributeSize                               = 13
-	TextAttributeScale                              = 14
-	TextAttributeWeight                             = 15
-	TextAttributeLanguage                           = 16
-	TextAttributeFamilyName                         = 17
-	TextAttributeBgColor                            = 18
-	TextAttributeFgColor                            = 19
-	TextAttributeBgStipple                          = 20
-	TextAttributeFgStipple                          = 21
-	TextAttributeWrapMode                           = 22
-	TextAttributeDirection                          = 23
-	TextAttributeJustification                      = 24
-	TextAttributeStretch                            = 25
-	TextAttributeVariant                            = 26
-	TextAttributeStyle                              = 27
-	TextAttributeLastDefined                        = 28
+	TextAttributeLeftMargin       TextAttributeEnum = 1
+	TextAttributeRightMargin      TextAttributeEnum = 2
+	TextAttributeIndent           TextAttributeEnum = 3
+	TextAttributeInvisible        TextAttributeEnum = 4
+	TextAttributeEditable         TextAttributeEnum = 5
+	TextAttributePixelsAboveLines TextAttributeEnum = 6
+	TextAttributePixelsBelowLines TextAttributeEnum = 7
+	TextAttributePixelsInsideWrap TextAttributeEnum = 8
+	TextAttributeBgFullHeight     TextAttributeEnum = 9
+	TextAttributeRise             TextAttributeEnum = 10
+	TextAttributeUnderline        TextAttributeEnum = 11
+	TextAttributeStrikethrough    TextAttributeEnum = 12
+	TextAttributeSize             TextAttributeEnum = 13
+	TextAttributeScale            TextAttributeEnum = 14
+	TextAttributeWeight           TextAttributeEnum = 15
+	TextAttributeLanguage         TextAttributeEnum = 16
+	TextAttributeFamilyName       TextAttributeEnum = 17
+	TextAttributeBgColor          TextAttributeEnum = 18
+	TextAttributeFgColor          TextAttributeEnum = 19
+	TextAttributeBgStipple        TextAttributeEnum = 20
+	TextAttributeFgStipple        TextAttributeEnum = 21
+	TextAttributeWrapMode         TextAttributeEnum = 22
+	TextAttributeDirection        TextAttributeEnum = 23
+	TextAttributeJustification    TextAttributeEnum = 24
+	TextAttributeStretch          TextAttributeEnum = 25
+	TextAttributeVariant          TextAttributeEnum = 26
+	TextAttributeStyle            TextAttributeEnum = 27
+	TextAttributeLastDefined      TextAttributeEnum = 28
 )
 
 // Enum TextBoundary
@@ -4097,12 +4095,12 @@ type TextBoundaryEnum int
 
 const (
 	TextBoundaryChar          TextBoundaryEnum = 0
-	TextBoundaryWordStart                      = 1
-	TextBoundaryWordEnd                        = 2
-	TextBoundarySentenceStart                  = 3
-	TextBoundarySentenceEnd                    = 4
-	TextBoundaryLineStart                      = 5
-	TextBoundaryLineEnd                        = 6
+	TextBoundaryWordStart     TextBoundaryEnum = 1
+	TextBoundaryWordEnd       TextBoundaryEnum = 2
+	TextBoundarySentenceStart TextBoundaryEnum = 3
+	TextBoundarySentenceEnd   TextBoundaryEnum = 4
+	TextBoundaryLineStart     TextBoundaryEnum = 5
+	TextBoundaryLineEnd       TextBoundaryEnum = 6
 )
 
 // Enum TextClipType
@@ -4110,9 +4108,9 @@ type TextClipTypeEnum int
 
 const (
 	TextClipTypeNone TextClipTypeEnum = 0
-	TextClipTypeMin                   = 1
-	TextClipTypeMax                   = 2
-	TextClipTypeBoth                  = 3
+	TextClipTypeMin  TextClipTypeEnum = 1
+	TextClipTypeMax  TextClipTypeEnum = 2
+	TextClipTypeBoth TextClipTypeEnum = 3
 )
 
 // Enum TextGranularity
@@ -4120,10 +4118,10 @@ type TextGranularityEnum int
 
 const (
 	TextGranularityChar      TextGranularityEnum = 0
-	TextGranularityWord                          = 1
-	TextGranularitySentence                      = 2
-	TextGranularityLine                          = 3
-	TextGranularityParagraph                     = 4
+	TextGranularityWord      TextGranularityEnum = 1
+	TextGranularitySentence  TextGranularityEnum = 2
+	TextGranularityLine      TextGranularityEnum = 3
+	TextGranularityParagraph TextGranularityEnum = 4
 )
 
 // ignore GType struct TextIface
@@ -4338,21 +4336,21 @@ type ValueTypeEnum int
 
 const (
 	ValueTypeVeryWeak    ValueTypeEnum = 0
-	ValueTypeWeak                      = 1
-	ValueTypeAcceptable                = 2
-	ValueTypeStrong                    = 3
-	ValueTypeVeryStrong                = 4
-	ValueTypeVeryLow                   = 5
-	ValueTypeLow                       = 6
-	ValueTypeMedium                    = 7
-	ValueTypeHigh                      = 8
-	ValueTypeVeryHigh                  = 9
-	ValueTypeVeryBad                   = 10
-	ValueTypeBad                       = 11
-	ValueTypeGood                      = 12
-	ValueTypeVeryGood                  = 13
-	ValueTypeBest                      = 14
-	ValueTypeLastDefined               = 15
+	ValueTypeWeak        ValueTypeEnum = 1
+	ValueTypeAcceptable  ValueTypeEnum = 2
+	ValueTypeStrong      ValueTypeEnum = 3
+	ValueTypeVeryStrong  ValueTypeEnum = 4
+	ValueTypeVeryLow     ValueTypeEnum = 5
+	ValueTypeLow         ValueTypeEnum = 6
+	ValueTypeMedium      ValueTypeEnum = 7
+	ValueTypeHigh        ValueTypeEnum = 8
+	ValueTypeVeryHigh    ValueTypeEnum = 9
+	ValueTypeVeryBad     ValueTypeEnum = 10
+	ValueTypeBad         ValueTypeEnum = 11
+	ValueTypeGood        ValueTypeEnum = 12
+	ValueTypeVeryGood    ValueTypeEnum = 13
+	ValueTypeBest        ValueTypeEnum = 14
+	ValueTypeLastDefined ValueTypeEnum = 15
 )
 
 // Interface Window
@@ -4825,7 +4823,7 @@ func TextAttributeRegister(name string) (result TextAttributeEnum) {
 
 // atk_text_free_ranges
 // container is nil
-func TextFreeRanges(ranges int /*TODO_TYPE isPtr: true, tag: array*/) {
+func TextFreeRanges(ranges int /*TODO_TYPE array type c, p0tag: interface*/) {
 	iv, err := _I.Get(236, "text_free_ranges", "")
 	if err != nil {
 		log.Println("WARN:", err)
