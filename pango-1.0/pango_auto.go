@@ -467,8 +467,8 @@ func (v Color) Parse(spec string) (result bool) {
 	args := []gi.Argument{arg_v, arg_spec}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_spec)
+	result = ret.Bool()
 	return
 }
 
@@ -1046,7 +1046,7 @@ func (v Font) P_Font() unsafe.Pointer { return v.P }
 // container is not nil, container is Font
 // is method
 // arg0Type tag: array, isPtr: true
-func FontDescriptionsFree1(descs int /*TODO_TYPE array type c, p0tag: interface*/, n_descs int32) {
+func FontDescriptionsFree1(descs int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_descs int32) {
 	iv, err := _I.Get(47, "Font", "descriptions_free")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1729,8 +1729,8 @@ func FontDescriptionFromString1(str string) (result FontDescription) {
 	args := []gi.Argument{arg_str}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_str)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2375,8 +2375,8 @@ func (v GlyphItem) ApplyAttrs(text string, list AttrList) (result int /*TODO_TYP
 	args := []gi.Argument{arg_v, arg_text, arg_list}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_text)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -2432,7 +2432,7 @@ func (v GlyphItem) GetLogicalWidths(text string, logical_widths gi.Int32Array) {
 // pango_glyph_item_letter_space
 // container is not nil, container is GlyphItem
 // is method
-func (v GlyphItem) LetterSpace(text string, log_attrs int /*TODO_TYPE array type c, p0tag: interface*/, letter_spacing int32) {
+func (v GlyphItem) LetterSpace(text string, log_attrs int /*TODO_TYPE array type c, elemTypeTag: interface*/, letter_spacing int32) {
 	iv, err := _I.Get(123, "GlyphItem", "letter_space")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2464,8 +2464,8 @@ func (v GlyphItem) Split(text string, split_index int32) (result GlyphItem) {
 	args := []gi.Argument{arg_v, arg_text, arg_split_index}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_text)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2521,8 +2521,8 @@ func (v GlyphItemIter) InitEnd(glyph_item GlyphItem, text string) (result bool) 
 	args := []gi.Argument{arg_v, arg_glyph_item, arg_text}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_text)
+	result = ret.Bool()
 	return
 }
 
@@ -2542,8 +2542,8 @@ func (v GlyphItemIter) InitStart(glyph_item GlyphItem, text string) (result bool
 	args := []gi.Argument{arg_v, arg_glyph_item, arg_text}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_text)
+	result = ret.Bool()
 	return
 }
 
@@ -2904,7 +2904,7 @@ func (v Language) GetSampleString() (result string) {
 // pango_language_get_scripts
 // container is not nil, container is Language
 // is method
-func (v Language) GetScripts() (result int /*TODO_TYPE isPtr: true, tag: array*/, num_scripts int32) {
+func (v Language) GetScripts() (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 0*/, num_scripts int32) {
 	iv, err := _I.Get(146, "Language", "get_scripts")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2916,8 +2916,8 @@ func (v Language) GetScripts() (result int /*TODO_TYPE isPtr: true, tag: array*/
 	args := []gi.Argument{arg_v, arg_num_scripts}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	num_scripts = outArgs[0].Int32()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -2954,8 +2954,8 @@ func (v Language) Matches(range_list string) (result bool) {
 	args := []gi.Argument{arg_v, arg_range_list}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_range_list)
+	result = ret.Bool()
 	return
 }
 
@@ -2991,8 +2991,8 @@ func LanguageFromString1(language string) (result Language) {
 	args := []gi.Argument{arg_language}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_language)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3410,7 +3410,7 @@ func (v Layout) GetLogAttrs() (attrs int /*TODO_TYPE*/, n_attrs int32) {
 // pango_layout_get_log_attrs_readonly
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetLogAttrsReadonly() (result int /*TODO_TYPE isPtr: true, tag: array*/, n_attrs int32) {
+func (v Layout) GetLogAttrsReadonly() (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 0*/, n_attrs int32) {
 	iv, err := _I.Get(175, "Layout", "get_log_attrs_readonly")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3422,8 +3422,8 @@ func (v Layout) GetLogAttrsReadonly() (result int /*TODO_TYPE isPtr: true, tag: 
 	args := []gi.Argument{arg_v, arg_n_attrs}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	n_attrs = outArgs[0].Int32()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -3994,9 +3994,9 @@ func (v Layout) XyToIndex(x int32, y int32) (result bool, index_ int32, trailing
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_index_, arg_trailing}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	index_ = outArgs[0].Int32()
 	trailing = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -4494,9 +4494,9 @@ func (v LayoutLine) XToIndex(x_pos int32) (result bool, index_ int32, trailing i
 	args := []gi.Argument{arg_v, arg_x_pos, arg_index_, arg_trailing}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	index_ = outArgs[0].Int32()
 	trailing = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -5516,8 +5516,8 @@ func AttrTypeRegister(name string) (result AttrTypeEnum) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = AttrTypeEnum(ret.Int())
 	gi.Free(c_name)
+	result = AttrTypeEnum(ret.Int())
 	return
 }
 
@@ -5539,7 +5539,7 @@ func BidiTypeForUnichar(ch rune) (result BidiTypeEnum) {
 
 // pango_break
 // container is nil
-func Break(text string, length int32, analysis Analysis, attrs int /*TODO_TYPE array type c, p0tag: interface*/, attrs_len int32) {
+func Break(text string, length int32, analysis Analysis, attrs int /*TODO_TYPE array type c, elemTypeTag: interface*/, attrs_len int32) {
 	iv, err := _I.Get(282, "break", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5569,8 +5569,8 @@ func ConfigKeyGet(key string) (result string) {
 	args := []gi.Argument{arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_key)
+	result = ret.String().Take()
 	return
 }
 
@@ -5587,8 +5587,8 @@ func ConfigKeyGetSystem(key string) (result string) {
 	args := []gi.Argument{arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_key)
+	result = ret.String().Take()
 	return
 }
 
@@ -5639,8 +5639,8 @@ func FindBaseDir(text string, length int32) (result DirectionEnum) {
 	args := []gi.Argument{arg_text, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = DirectionEnum(ret.Int())
 	gi.Free(c_text)
+	result = DirectionEnum(ret.Int())
 	return
 }
 
@@ -5679,8 +5679,8 @@ func FontDescriptionFromString(str string) (result FontDescription) {
 	args := []gi.Argument{arg_str}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_str)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5700,7 +5700,7 @@ func GetLibSubdirectory() (result string) {
 
 // pango_get_log_attrs
 // container is nil
-func GetLogAttrs(text string, length int32, level int32, language Language, log_attrs int /*TODO_TYPE array type c, p0tag: interface*/, attrs_len int32) {
+func GetLogAttrs(text string, length int32, level int32, language Language, log_attrs int /*TODO_TYPE array type c, elemTypeTag: interface*/, attrs_len int32) {
 	iv, err := _I.Get(291, "get_log_attrs", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5852,8 +5852,8 @@ func Itemize(context IContext, text string, start_index int32, length int32, att
 	args := []gi.Argument{arg_context, arg_text, arg_start_index, arg_length, arg_attrs, arg_cached_iter}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_text)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -5876,8 +5876,8 @@ func ItemizeWithBaseDir(context IContext, base_dir DirectionEnum, text string, s
 	args := []gi.Argument{arg_context, arg_base_dir, arg_text, arg_start_index, arg_length, arg_attrs, arg_cached_iter}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_text)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -5894,8 +5894,8 @@ func LanguageFromString(language string) (result Language) {
 	args := []gi.Argument{arg_language}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_language)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5950,11 +5950,11 @@ func MarkupParserFinish(context glib.MarkupParseContext) (result bool, attr_list
 	args := []gi.Argument{arg_context, arg_attr_list, arg_text, arg_accel_char, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	attr_list.P = outArgs[0].Pointer()
 	text = outArgs[1].String().Take()
 	accel_char = rune(outArgs[2].Uint32())
 	err = gi.ToError(outArgs[3].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -6005,10 +6005,10 @@ func ParseEnum(type1 int /*TODO_TYPE isPtr: false, tag: GType*/, str string, war
 	args := []gi.Argument{arg_type1, arg_str, arg_value, arg_warn, arg_possible_values}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_str)
 	value = outArgs[0].Int32()
 	possible_values = outArgs[1].String().Take()
+	result = ret.Bool()
 	return
 }
 
@@ -6031,12 +6031,12 @@ func ParseMarkup(markup_text string, length int32, accel_marker rune) (result bo
 	args := []gi.Argument{arg_markup_text, arg_length, arg_accel_marker, arg_attr_list, arg_text, arg_accel_char, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_markup_text)
 	attr_list.P = outArgs[0].Pointer()
 	text = outArgs[1].String().Take()
 	accel_char = rune(outArgs[2].Uint32())
 	err = gi.ToError(outArgs[3].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -6056,9 +6056,9 @@ func ParseStretch(str string, warn bool) (result bool, stretch StretchEnum) {
 	args := []gi.Argument{arg_str, arg_stretch, arg_warn}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_str)
 	stretch = StretchEnum(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -6078,9 +6078,9 @@ func ParseStyle(str string, warn bool) (result bool, style StyleEnum) {
 	args := []gi.Argument{arg_str, arg_style, arg_warn}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_str)
 	style = StyleEnum(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -6100,9 +6100,9 @@ func ParseVariant(str string, warn bool) (result bool, variant VariantEnum) {
 	args := []gi.Argument{arg_str, arg_variant, arg_warn}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_str)
 	variant = VariantEnum(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -6122,9 +6122,9 @@ func ParseWeight(str string, warn bool) (result bool, weight WeightEnum) {
 	args := []gi.Argument{arg_str, arg_weight, arg_warn}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_str)
 	weight = WeightEnum(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -6154,8 +6154,8 @@ func ReadLine(stream unsafe.Pointer) (result int32, str int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_stream, arg_str}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	str = outArgs[0].Int() /*TODO*/
+	result = ret.Int32()
 	return
 }
 
@@ -6188,8 +6188,8 @@ func ScanInt(pos int /*TODO:TYPE*/) (result bool, out int32) {
 	args := []gi.Argument{arg_out}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	out = outArgs[0].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -6206,8 +6206,8 @@ func ScanString(pos int /*TODO:TYPE*/) (result bool, out int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_out}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	out = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -6224,8 +6224,8 @@ func ScanWord(pos int /*TODO:TYPE*/) (result bool, out int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_out}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	out = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -6318,7 +6318,7 @@ func SkipSpace(pos int /*TODO:TYPE*/) (result bool) {
 
 // pango_split_file_list
 // container is nil
-func SplitFileList(str string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func SplitFileList(str string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(324, "split_file_list", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6329,8 +6329,8 @@ func SplitFileList(str string) (result int /*TODO_TYPE isPtr: true, tag: array*/
 	args := []gi.Argument{arg_str}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_str)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -6347,8 +6347,8 @@ func TrimString(str string) (result string) {
 	args := []gi.Argument{arg_str}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_str)
+	result = ret.String().Take()
 	return
 }
 

@@ -193,8 +193,8 @@ func AtomIntern1(atom_name string, only_if_exists bool) (result Atom) {
 	args := []gi.Argument{arg_atom_name, arg_only_if_exists}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_atom_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -213,8 +213,8 @@ func AtomInternStaticString1(atom_name string) (result Atom) {
 	args := []gi.Argument{arg_atom_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_atom_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -363,9 +363,9 @@ func ColorParse1(spec string) (result bool, color int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_spec, arg_color}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_spec)
 	color = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -445,8 +445,8 @@ func NewCursorFromName(display IDisplay, name string) (result Cursor) {
 	args := []gi.Argument{arg_display, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -557,9 +557,9 @@ func (v Cursor) GetSurface() (result cairo.Surface, x_hot float64, y_hot float64
 	args := []gi.Argument{arg_v, arg_x_hot, arg_y_hot}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	x_hot = outArgs[0].Double()
 	y_hot = outArgs[1].Double()
+	result.P = ret.Pointer()
 	return
 }
 
@@ -709,9 +709,9 @@ func DeviceGrabInfoLibgtkOnly1(display IDisplay, device IDevice) (result bool, g
 	args := []gi.Argument{arg_display, arg_device, arg_grab_window, arg_owner_events}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	grab_window.P = outArgs[0].Pointer()
 	owner_events = outArgs[1].Bool()
+	result = ret.Bool()
 	return
 }
 
@@ -835,9 +835,9 @@ func (v Device) GetKey(index_ uint32) (result bool, keyval uint32, modifiers Mod
 	args := []gi.Argument{arg_v, arg_index_, arg_keyval, arg_modifiers}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	keyval = outArgs[0].Uint32()
 	modifiers = ModifierTypeFlags(outArgs[1].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -1054,9 +1054,9 @@ func (v Device) GetWindowAtPosition() (result Window, win_x int32, win_y int32) 
 	args := []gi.Argument{arg_v, arg_win_x, arg_win_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	win_x = outArgs[0].Int32()
 	win_y = outArgs[1].Int32()
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1076,9 +1076,9 @@ func (v Device) GetWindowAtPositionDouble() (result Window, win_x float64, win_y
 	args := []gi.Argument{arg_v, arg_win_x, arg_win_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	win_x = outArgs[0].Double()
 	win_y = outArgs[1].Double()
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1485,8 +1485,8 @@ func DisplayOpen1(display_name string) (result Display) {
 	args := []gi.Argument{arg_display_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_display_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1870,9 +1870,9 @@ func (v Display) GetWindowAtPointer() (result Window, win_x int32, win_y int32) 
 	args := []gi.Argument{arg_v, arg_win_x, arg_win_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	win_x = outArgs[0].Int32()
 	win_y = outArgs[1].Int32()
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2091,7 +2091,7 @@ func (v Display) SetDoubleClickTime(msec uint32) {
 // gdk_display_store_clipboard
 // container is not nil, container is Display
 // is method
-func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32) {
+func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32) {
 	iv, err := _I.Get(104, "Display", "store_clipboard")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2316,8 +2316,8 @@ func (v DisplayManager) OpenDisplay(name string) (result Display) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2703,8 +2703,8 @@ func (v Event) _GetAngle(event2 Event) (result bool, angle float64) {
 	args := []gi.Argument{arg_v, arg_event2, arg_angle}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	angle = outArgs[0].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -2725,9 +2725,9 @@ func (v Event) _GetCenter(event2 Event) (result bool, x float64, y float64) {
 	args := []gi.Argument{arg_v, arg_event2, arg_x, arg_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	x = outArgs[0].Double()
 	y = outArgs[1].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -2747,8 +2747,8 @@ func (v Event) _GetDistance(event2 Event) (result bool, distance float64) {
 	args := []gi.Argument{arg_v, arg_event2, arg_distance}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	distance = outArgs[0].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -2799,8 +2799,8 @@ func (v Event) GetAxis(axis_use AxisUseEnum) (result bool, value float64) {
 	args := []gi.Argument{arg_v, arg_axis_use, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	value = outArgs[0].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -2819,8 +2819,8 @@ func (v Event) GetButton() (result bool, button uint32) {
 	args := []gi.Argument{arg_v, arg_button}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	button = outArgs[0].Uint32()
+	result = ret.Bool()
 	return
 }
 
@@ -2839,8 +2839,8 @@ func (v Event) GetClickCount() (result bool, click_count uint32) {
 	args := []gi.Argument{arg_v, arg_click_count}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	click_count = outArgs[0].Uint32()
+	result = ret.Bool()
 	return
 }
 
@@ -2860,9 +2860,9 @@ func (v Event) GetCoords() (result bool, x_win float64, y_win float64) {
 	args := []gi.Argument{arg_v, arg_x_win, arg_y_win}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	x_win = outArgs[0].Double()
 	y_win = outArgs[1].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -2949,8 +2949,8 @@ func (v Event) GetKeycode() (result bool, keycode uint16) {
 	args := []gi.Argument{arg_v, arg_keycode}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	keycode = outArgs[0].Uint16()
+	result = ret.Bool()
 	return
 }
 
@@ -2969,8 +2969,8 @@ func (v Event) GetKeyval() (result bool, keyval uint32) {
 	args := []gi.Argument{arg_v, arg_keyval}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	keyval = outArgs[0].Uint32()
+	result = ret.Bool()
 	return
 }
 
@@ -3007,9 +3007,9 @@ func (v Event) GetRootCoords() (result bool, x_root float64, y_root float64) {
 	args := []gi.Argument{arg_v, arg_x_root, arg_y_root}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	x_root = outArgs[0].Double()
 	y_root = outArgs[1].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -3063,9 +3063,9 @@ func (v Event) GetScrollDeltas() (result bool, delta_x float64, delta_y float64)
 	args := []gi.Argument{arg_v, arg_delta_x, arg_delta_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	delta_x = outArgs[0].Double()
 	delta_y = outArgs[1].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -3084,8 +3084,8 @@ func (v Event) GetScrollDirection() (result bool, direction ScrollDirectionEnum)
 	args := []gi.Argument{arg_v, arg_direction}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	direction = ScrollDirectionEnum(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -3138,8 +3138,8 @@ func (v Event) GetState() (result bool, state ModifierTypeFlags) {
 	args := []gi.Argument{arg_v, arg_state}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	state = ModifierTypeFlags(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -4065,8 +4065,8 @@ func (v GLContext) Realize() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -4302,10 +4302,10 @@ func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys
 	args := []gi.Argument{arg_v, arg_hardware_keycode, arg_keys, arg_keyvals, arg_n_entries}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	keys = outArgs[0].Int()    /*TODO*/
 	keyvals = outArgs[1].Int() /*TODO*/
 	n_entries = outArgs[2].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -4326,9 +4326,9 @@ func (v Keymap) GetEntriesForKeyval(keyval uint32) (result bool, keys int /*TODO
 	args := []gi.Argument{arg_v, arg_keyval, arg_keys, arg_n_keys}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	keys = outArgs[0].Int() /*TODO*/
 	n_keys = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -4475,11 +4475,11 @@ func (v Keymap) TranslateKeyboardState(hardware_keycode uint32, state ModifierTy
 	args := []gi.Argument{arg_v, arg_hardware_keycode, arg_state, arg_group, arg_keyval, arg_effective_group, arg_level, arg_consumed_modifiers}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	keyval = outArgs[0].Uint32()
 	effective_group = outArgs[1].Int32()
 	level = outArgs[2].Int32()
 	consumed_modifiers = ModifierTypeFlags(outArgs[3].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -4869,8 +4869,8 @@ func (v RGBA) Parse(spec string) (result bool) {
 	args := []gi.Argument{arg_v, arg_spec}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_spec)
+	result = ret.Bool()
 	return
 }
 
@@ -4930,8 +4930,8 @@ func (v Rectangle) Intersect(src2 Rectangle) (result bool, dest int /*TODO_TYPE*
 	args := []gi.Argument{arg_v, arg_src2, arg_dest}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	dest = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -5315,8 +5315,8 @@ func (v Screen) GetSetting(name string, value gobject.Value) (result bool) {
 	args := []gi.Argument{arg_v, arg_name, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_name)
+	result = ret.Bool()
 	return
 }
 
@@ -6018,9 +6018,9 @@ func WindowAtPointer1() (result Window, win_x int32, win_y int32) {
 	args := []gi.Argument{arg_win_x, arg_win_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	win_x = outArgs[0].Int32()
 	win_y = outArgs[1].Int32()
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6273,8 +6273,8 @@ func (v Window) CreateGlContext() (result GLContext, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6656,8 +6656,8 @@ func (v Window) GetDecorations() (result bool, decorations WMDecorationFlags) {
 	args := []gi.Argument{arg_v, arg_decorations}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	decorations = WMDecorationFlags(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -6715,10 +6715,10 @@ func (v Window) GetDevicePosition(device IDevice) (result Window, x int32, y int
 	args := []gi.Argument{arg_v, arg_device, arg_x, arg_y, arg_mask}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	x = outArgs[0].Int32()
 	y = outArgs[1].Int32()
 	mask = ModifierTypeFlags(outArgs[2].Int())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6740,10 +6740,10 @@ func (v Window) GetDevicePositionDouble(device IDevice) (result Window, x float6
 	args := []gi.Argument{arg_v, arg_device, arg_x, arg_y, arg_mask}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	x = outArgs[0].Double()
 	y = outArgs[1].Double()
 	mask = ModifierTypeFlags(outArgs[2].Int())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6779,8 +6779,8 @@ func (v Window) GetDragProtocol() (result DragProtocolEnum, target Window) {
 	args := []gi.Argument{arg_v, arg_target}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = DragProtocolEnum(ret.Int())
 	target.P = outArgs[0].Pointer()
+	result = DragProtocolEnum(ret.Int())
 	return
 }
 
@@ -7012,9 +7012,9 @@ func (v Window) GetOrigin() (result int32, x int32, y int32) {
 	args := []gi.Argument{arg_v, arg_x, arg_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	x = outArgs[0].Int32()
 	y = outArgs[1].Int32()
+	result = ret.Int32()
 	return
 }
 
@@ -7069,10 +7069,10 @@ func (v Window) GetPointer() (result Window, x int32, y int32, mask ModifierType
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_mask}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	x = outArgs[0].Int32()
 	y = outArgs[1].Int32()
 	mask = ModifierTypeFlags(outArgs[2].Int())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -8746,8 +8746,8 @@ func AtomIntern(atom_name string, only_if_exists bool) (result Atom) {
 	args := []gi.Argument{arg_atom_name, arg_only_if_exists}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_atom_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -8764,8 +8764,8 @@ func AtomInternStaticString(atom_name string) (result Atom) {
 	args := []gi.Argument{arg_atom_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_atom_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -8831,8 +8831,8 @@ func CairoGetClipRectangle(cr cairo.Context) (result bool, rect int /*TODO_TYPE*
 	args := []gi.Argument{arg_cr, arg_rect}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	rect = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -8989,9 +8989,9 @@ func ColorParse(spec string) (result bool, color int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_spec, arg_color}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_spec)
 	color = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -9333,8 +9333,8 @@ func EventsGetAngle(event1 Event, event2 Event) (result bool, angle float64) {
 	args := []gi.Argument{arg_event1, arg_event2, arg_angle}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	angle = outArgs[0].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -9354,9 +9354,9 @@ func EventsGetCenter(event1 Event, event2 Event) (result bool, x float64, y floa
 	args := []gi.Argument{arg_event1, arg_event2, arg_x, arg_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	x = outArgs[0].Double()
 	y = outArgs[1].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -9375,8 +9375,8 @@ func EventsGetDistance(event1 Event, event2 Event) (result bool, distance float6
 	args := []gi.Argument{arg_event1, arg_event2, arg_distance}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	distance = outArgs[0].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -9579,8 +9579,8 @@ func KeyvalFromName(keyval_name string) (result uint32) {
 	args := []gi.Argument{arg_keyval_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_keyval_name)
+	result = ret.Uint32()
 	return
 }
 
@@ -9959,11 +9959,11 @@ func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, lengt
 	args := []gi.Argument{arg_window, arg_property, arg_type1, arg_offset, arg_length, arg_pdelete, arg_actual_property_type, arg_actual_format, arg_actual_length, arg_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	actual_property_type.P = outArgs[0].Pointer()
 	actual_format = outArgs[1].Int32()
 	actual_length = outArgs[2].Int32()
 	data = outArgs[3].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -10196,8 +10196,8 @@ func SettingGet(name string, value gobject.Value) (result bool) {
 	args := []gi.Argument{arg_name, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_name)
+	result = ret.Bool()
 	return
 }
 
@@ -10289,8 +10289,8 @@ func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format in
 	args := []gi.Argument{arg_display, arg_encoding, arg_format, arg_text, arg_length, arg_list}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	list = outArgs[0].Int() /*TODO*/
+	result = ret.Int32()
 	return
 }
 
@@ -10415,8 +10415,8 @@ func Utf8ToStringTarget(str string) (result string) {
 	args := []gi.Argument{arg_str}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_str)
+	result = ret.String().Take()
 	return
 }
 

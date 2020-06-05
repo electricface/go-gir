@@ -148,8 +148,8 @@ func (v *ActionIfc) SetDescription(i int32, desc string) (result bool) {
 	args := []gi.Argument{arg_v, arg_i, arg_desc}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_desc)
+	result = ret.Bool()
 	return
 }
 
@@ -501,8 +501,8 @@ func (v *DocumentIfc) GetAttributeValue(attribute_name string) (result string) {
 	args := []gi.Argument{arg_v, arg_attribute_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_attribute_name)
+	result = ret.String().Take()
 	return
 }
 
@@ -622,9 +622,9 @@ func (v *DocumentIfc) SetAttributeValue(attribute_name string, attribute_value s
 	args := []gi.Argument{arg_v, arg_attribute_name, arg_attribute_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_attribute_name)
 	gi.Free(c_attribute_value)
+	result = ret.Bool()
 	return
 }
 
@@ -1144,8 +1144,8 @@ func (v *ImageIfc) SetImageDescription(description string) (result bool) {
 	args := []gi.Argument{arg_v, arg_description}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_description)
+	result = ret.Bool()
 	return
 }
 
@@ -1846,8 +1846,8 @@ func NewRange(lower_limit float64, upper_limit float64, description string) (res
 	args := []gi.Argument{arg_lower_limit, arg_upper_limit, arg_description}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_description)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2016,7 +2016,7 @@ func (v Relation) P_Relation() unsafe.Pointer { return v.P }
 // atk_relation_new
 // container is not nil, container is Relation
 // is constructor
-func NewRelation(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, relationship RelationTypeEnum) (result Relation) {
+func NewRelation(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32, relationship RelationTypeEnum) (result Relation) {
 	iv, err := _I.Get(100, "Relation", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2067,7 +2067,7 @@ func (v Relation) GetRelationType() (result RelationTypeEnum) {
 // atk_relation_get_target
 // container is not nil, container is Relation
 // is method
-func (v Relation) GetTarget() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Relation) GetTarget() (result int /*TODO_TYPE array type: 2*/) {
 	iv, err := _I.Get(103, "Relation", "get_target")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2674,7 +2674,7 @@ func (v StateSet) AddState(type1 StateTypeEnum) (result bool) {
 // atk_state_set_add_states
 // container is not nil, container is StateSet
 // is method
-func (v StateSet) AddStates(types int /*TODO_TYPE array type c, p0tag: interface*/, n_types int32) {
+func (v StateSet) AddStates(types int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_types int32) {
 	iv, err := _I.Get(126, "StateSet", "add_states")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2740,7 +2740,7 @@ func (v StateSet) ContainsState(type1 StateTypeEnum) (result bool) {
 // atk_state_set_contains_states
 // container is not nil, container is StateSet
 // is method
-func (v StateSet) ContainsStates(types int /*TODO_TYPE array type c, p0tag: interface*/, n_types int32) (result bool) {
+func (v StateSet) ContainsStates(types int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_types int32) (result bool) {
 	iv, err := _I.Get(130, "StateSet", "contains_states")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2935,8 +2935,8 @@ func (v *StreamableContentIfc) GetStream(mime_type string) (result glib.IOChanne
 	args := []gi.Argument{arg_v, arg_mime_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_mime_type)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2955,8 +2955,8 @@ func (v *StreamableContentIfc) GetUri(mime_type string) (result string) {
 	args := []gi.Argument{arg_v, arg_mime_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_mime_type)
+	result = ret.String().Take()
 	return
 }
 
@@ -3491,7 +3491,7 @@ type TableCellIfc struct{}
 // atk_table_cell_get_column_header_cells
 // container is not nil, container is TableCell
 // is method
-func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type: 2*/) {
 	iv, err := _I.Get(168, "TableCell", "get_column_header_cells")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3538,9 +3538,9 @@ func (v *TableCellIfc) GetPosition() (result bool, row int32, column int32) {
 	args := []gi.Argument{arg_v, arg_row, arg_column}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	row = outArgs[0].Int32()
 	column = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -3562,18 +3562,18 @@ func (v *TableCellIfc) GetRowColumnSpan() (result bool, row int32, column int32,
 	args := []gi.Argument{arg_v, arg_row, arg_column, arg_row_span, arg_column_span}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	row = outArgs[0].Int32()
 	column = outArgs[1].Int32()
 	row_span = outArgs[2].Int32()
 	column_span = outArgs[3].Int32()
+	result = ret.Bool()
 	return
 }
 
 // atk_table_cell_get_row_header_cells
 // container is not nil, container is TableCell
 // is method
-func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2*/) {
 	iv, err := _I.Get(172, "TableCell", "get_row_header_cells")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3634,7 +3634,7 @@ type TextIfc struct{}
 // container is not nil, container is Text
 // is method
 // arg0Type tag: array, isPtr: true
-func TextFreeRanges1(ranges int /*TODO_TYPE array type c, p0tag: interface*/) {
+func TextFreeRanges1(ranges int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(175, "Text", "free_ranges")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3667,7 +3667,7 @@ func (v *TextIfc) AddSelection(start_offset int32, end_offset int32) (result boo
 // atk_text_get_bounded_ranges
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetBoundedRanges(rect TextRectangle, coord_type CoordTypeEnum, x_clip_type TextClipTypeEnum, y_clip_type TextClipTypeEnum) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *TextIfc) GetBoundedRanges(rect TextRectangle, coord_type CoordTypeEnum, x_clip_type TextClipTypeEnum, y_clip_type TextClipTypeEnum) (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: -1*/) {
 	iv, err := _I.Get(177, "Text", "get_bounded_ranges")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3855,9 +3855,9 @@ func (v *TextIfc) GetRunAttributes(offset int32) (result int /*TODO_TYPE isPtr: 
 	args := []gi.Argument{arg_v, arg_offset, arg_start_offset, arg_end_offset}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	start_offset = outArgs[0].Int32()
 	end_offset = outArgs[1].Int32()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -3878,9 +3878,9 @@ func (v *TextIfc) GetSelection(selection_num int32) (result string, start_offset
 	args := []gi.Argument{arg_v, arg_selection_num, arg_start_offset, arg_end_offset}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	start_offset = outArgs[0].Int32()
 	end_offset = outArgs[1].Int32()
+	result = ret.String().Take()
 	return
 }
 
@@ -3902,9 +3902,9 @@ func (v *TextIfc) GetStringAtOffset(offset int32, granularity TextGranularityEnu
 	args := []gi.Argument{arg_v, arg_offset, arg_granularity, arg_start_offset, arg_end_offset}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	start_offset = outArgs[0].Int32()
 	end_offset = outArgs[1].Int32()
+	result = ret.String().Take()
 	return
 }
 
@@ -3945,9 +3945,9 @@ func (v *TextIfc) GetTextAfterOffset(offset int32, boundary_type TextBoundaryEnu
 	args := []gi.Argument{arg_v, arg_offset, arg_boundary_type, arg_start_offset, arg_end_offset}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	start_offset = outArgs[0].Int32()
 	end_offset = outArgs[1].Int32()
+	result = ret.String().Take()
 	return
 }
 
@@ -3969,9 +3969,9 @@ func (v *TextIfc) GetTextAtOffset(offset int32, boundary_type TextBoundaryEnum) 
 	args := []gi.Argument{arg_v, arg_offset, arg_boundary_type, arg_start_offset, arg_end_offset}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	start_offset = outArgs[0].Int32()
 	end_offset = outArgs[1].Int32()
+	result = ret.String().Take()
 	return
 }
 
@@ -3993,9 +3993,9 @@ func (v *TextIfc) GetTextBeforeOffset(offset int32, boundary_type TextBoundaryEn
 	args := []gi.Argument{arg_v, arg_offset, arg_boundary_type, arg_start_offset, arg_end_offset}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	start_offset = outArgs[0].Int32()
 	end_offset = outArgs[1].Int32()
+	result = ret.String().Take()
 	return
 }
 
@@ -4554,8 +4554,8 @@ func RelationTypeForName(name string) (result RelationTypeEnum) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = RelationTypeEnum(ret.Int())
 	gi.Free(c_name)
+	result = RelationTypeEnum(ret.Int())
 	return
 }
 
@@ -4588,8 +4588,8 @@ func RelationTypeRegister(name string) (result RelationTypeEnum) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = RelationTypeEnum(ret.Int())
 	gi.Free(c_name)
+	result = RelationTypeEnum(ret.Int())
 	return
 }
 
@@ -4645,8 +4645,8 @@ func RoleForName(name string) (result RoleEnum) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = RoleEnum(ret.Int())
 	gi.Free(c_name)
+	result = RoleEnum(ret.Int())
 	return
 }
 
@@ -4695,8 +4695,8 @@ func RoleRegister(name string) (result RoleEnum) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = RoleEnum(ret.Int())
 	gi.Free(c_name)
+	result = RoleEnum(ret.Int())
 	return
 }
 
@@ -4713,8 +4713,8 @@ func StateTypeForName(name string) (result StateTypeEnum) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = StateTypeEnum(ret.Int())
 	gi.Free(c_name)
+	result = StateTypeEnum(ret.Int())
 	return
 }
 
@@ -4747,8 +4747,8 @@ func StateTypeRegister(name string) (result StateTypeEnum) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = StateTypeEnum(ret.Int())
 	gi.Free(c_name)
+	result = StateTypeEnum(ret.Int())
 	return
 }
 
@@ -4765,8 +4765,8 @@ func TextAttributeForName(name string) (result TextAttributeEnum) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = TextAttributeEnum(ret.Int())
 	gi.Free(c_name)
+	result = TextAttributeEnum(ret.Int())
 	return
 }
 
@@ -4816,14 +4816,14 @@ func TextAttributeRegister(name string) (result TextAttributeEnum) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = TextAttributeEnum(ret.Int())
 	gi.Free(c_name)
+	result = TextAttributeEnum(ret.Int())
 	return
 }
 
 // atk_text_free_ranges
 // container is nil
-func TextFreeRanges(ranges int /*TODO_TYPE array type c, p0tag: interface*/) {
+func TextFreeRanges(ranges int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(236, "text_free_ranges", "")
 	if err != nil {
 		log.Println("WARN:", err)

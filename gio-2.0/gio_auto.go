@@ -40,8 +40,8 @@ func ActionNameIsValid1(action_name string) (result bool) {
 	args := []gi.Argument{arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_action_name)
+	result = ret.Bool()
 	return
 }
 
@@ -63,11 +63,11 @@ func ActionParseDetailedName1(detailed_name string) (result bool, action_name st
 	args := []gi.Argument{arg_detailed_name, arg_action_name, arg_target_value, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_detailed_name)
 	action_name = outArgs[0].String().Take()
 	target_value.P = outArgs[1].Pointer()
 	err = gi.ToError(outArgs[2].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -87,8 +87,8 @@ func ActionPrintDetailedName1(action_name string, target_value glib.Variant) (re
 	args := []gi.Argument{arg_action_name, arg_target_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_action_name)
+	result = ret.String().Take()
 	return
 }
 
@@ -357,8 +357,8 @@ func (v *ActionGroupIfc) GetActionEnabled(action_name string) (result bool) {
 	args := []gi.Argument{arg_v, arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_action_name)
+	result = ret.Bool()
 	return
 }
 
@@ -377,8 +377,8 @@ func (v *ActionGroupIfc) GetActionParameterType(action_name string) (result glib
 	args := []gi.Argument{arg_v, arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_action_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -397,8 +397,8 @@ func (v *ActionGroupIfc) GetActionState(action_name string) (result glib.Variant
 	args := []gi.Argument{arg_v, arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_action_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -417,8 +417,8 @@ func (v *ActionGroupIfc) GetActionStateHint(action_name string) (result glib.Var
 	args := []gi.Argument{arg_v, arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_action_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -437,8 +437,8 @@ func (v *ActionGroupIfc) GetActionStateType(action_name string) (result glib.Var
 	args := []gi.Argument{arg_v, arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_action_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -457,15 +457,15 @@ func (v *ActionGroupIfc) HasAction(action_name string) (result bool) {
 	args := []gi.Argument{arg_v, arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_action_name)
+	result = ret.Bool()
 	return
 }
 
 // g_action_group_list_actions
 // container is not nil, container is ActionGroup
 // is method
-func (v *ActionGroupIfc) ListActions() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *ActionGroupIfc) ListActions() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(23, "ActionGroup", "list_actions")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -500,13 +500,13 @@ func (v *ActionGroupIfc) QueryAction(action_name string) (result bool, enabled b
 	args := []gi.Argument{arg_v, arg_action_name, arg_enabled, arg_parameter_type, arg_state_type, arg_state_hint, arg_state}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_action_name)
 	enabled = outArgs[0].Bool()
 	parameter_type.P = outArgs[1].Pointer()
 	state_type.P = outArgs[2].Pointer()
 	state_hint.P = outArgs[3].Pointer()
 	state.P = outArgs[4].Pointer()
+	result = ret.Bool()
 	return
 }
 
@@ -537,7 +537,7 @@ func (v *ActionMapIfc) AddAction(action Action) {
 // g_action_map_add_action_entries
 // container is not nil, container is ActionMap
 // is method
-func (v *ActionMapIfc) AddActionEntries(entries int /*TODO_TYPE array type c, p0tag: interface*/, n_entries int32, user_data unsafe.Pointer) {
+func (v *ActionMapIfc) AddActionEntries(entries int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_entries int32, user_data unsafe.Pointer) {
 	iv, err := _I.Get(26, "ActionMap", "add_action_entries")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -566,8 +566,8 @@ func (v *ActionMapIfc) LookupAction(action_name string) (result Action) {
 	args := []gi.Argument{arg_v, arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_action_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -615,10 +615,10 @@ func AppInfoCreateFromCommandline1(commandline string, application_name string, 
 	args := []gi.Argument{arg_commandline, arg_application_name, arg_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_commandline)
 	gi.Free(c_application_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -637,8 +637,8 @@ func AppInfoGetAllForType1(content_type string) (result int /*TODO_TYPE isPtr: t
 	args := []gi.Argument{arg_content_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_content_type)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -658,8 +658,8 @@ func AppInfoGetDefaultForType1(content_type string, must_support_uris bool) (res
 	args := []gi.Argument{arg_content_type, arg_must_support_uris}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_content_type)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -678,8 +678,8 @@ func AppInfoGetDefaultForUriScheme1(uri_scheme string) (result AppInfo) {
 	args := []gi.Argument{arg_uri_scheme}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_uri_scheme)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -698,8 +698,8 @@ func AppInfoGetFallbackForType1(content_type string) (result int /*TODO_TYPE isP
 	args := []gi.Argument{arg_content_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_content_type)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -718,8 +718,8 @@ func AppInfoGetRecommendedForType1(content_type string) (result int /*TODO_TYPE 
 	args := []gi.Argument{arg_content_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_content_type)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -740,9 +740,9 @@ func AppInfoLaunchDefaultForUri1(uri string, context IAppLaunchContext) (result 
 	args := []gi.Argument{arg_uri, arg_context, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -782,8 +782,8 @@ func AppInfoLaunchDefaultForUriFinish1(result AsyncResult) (result1 bool, err er
 	args := []gi.Argument{arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -820,9 +820,9 @@ func (v *AppInfoIfc) AddSupportsType(content_type string) (result bool, err erro
 	args := []gi.Argument{arg_v, arg_content_type, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_content_type)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -1034,7 +1034,7 @@ func (v *AppInfoIfc) GetName() (result string) {
 // g_app_info_get_supported_types
 // container is not nil, container is AppInfo
 // is method
-func (v *AppInfoIfc) GetSupportedTypes() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *AppInfoIfc) GetSupportedTypes() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(53, "AppInfo", "get_supported_types")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1064,8 +1064,8 @@ func (v *AppInfoIfc) Launch(files int /*TODO_TYPE isPtr: true, tag: glist*/, con
 	args := []gi.Argument{arg_v, arg_files, arg_context, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -1085,8 +1085,8 @@ func (v *AppInfoIfc) LaunchUris(uris int /*TODO_TYPE isPtr: true, tag: glist*/, 
 	args := []gi.Argument{arg_v, arg_uris, arg_context, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -1106,9 +1106,9 @@ func (v *AppInfoIfc) RemoveSupportsType(content_type string) (result bool, err e
 	args := []gi.Argument{arg_v, arg_content_type, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_content_type)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -1128,9 +1128,9 @@ func (v *AppInfoIfc) SetAsDefaultForExtension(extension string) (result bool, er
 	args := []gi.Argument{arg_v, arg_extension, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_extension)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -1150,9 +1150,9 @@ func (v *AppInfoIfc) SetAsDefaultForType(content_type string) (result bool, err 
 	args := []gi.Argument{arg_v, arg_content_type, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_content_type)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -1172,9 +1172,9 @@ func (v *AppInfoIfc) SetAsLastUsedForType(content_type string) (result bool, err
 	args := []gi.Argument{arg_v, arg_content_type, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_content_type)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -1299,7 +1299,7 @@ func (v AppLaunchContext) GetDisplay(info AppInfo, files int /*TODO_TYPE isPtr: 
 // g_app_launch_context_get_environment
 // container is not nil, container is AppLaunchContext
 // is method
-func (v AppLaunchContext) GetEnvironment() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v AppLaunchContext) GetEnvironment() (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrLen: -1*/) {
 	iv, err := _I.Get(66, "AppLaunchContext", "get_environment")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1420,8 +1420,8 @@ func NewApplication(application_id string, flags ApplicationFlags) (result Appli
 	args := []gi.Argument{arg_application_id, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_application_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1440,8 +1440,8 @@ func ApplicationIdIsValid1(application_id string) (result bool) {
 	args := []gi.Argument{arg_application_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_application_id)
+	result = ret.Bool()
 	return
 }
 
@@ -1488,7 +1488,7 @@ func (v Application) AddMainOption(long_name string, short_name int8, flags glib
 // g_application_add_main_option_entries
 // container is not nil, container is Application
 // is method
-func (v Application) AddMainOptionEntries(entries int /*TODO_TYPE array type c, p0tag: interface*/) {
+func (v Application) AddMainOptionEntries(entries int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(76, "Application", "add_main_option_entries")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1717,7 +1717,7 @@ func (v Application) MarkBusy() {
 // g_application_open
 // container is not nil, container is Application
 // is method
-func (v Application) Open(files int /*TODO_TYPE array type c, p0tag: interface*/, n_files int32, hint string) {
+func (v Application) Open(files int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_files int32, hint string) {
 	iv, err := _I.Get(90, "Application", "open")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1762,8 +1762,8 @@ func (v Application) Register(cancellable ICancellable) (result bool, err error)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -1784,7 +1784,7 @@ func (v Application) Release() {
 // g_application_run
 // container is not nil, container is Application
 // is method
-func (v Application) Run(argc int32, argv int /*TODO_TYPE array type c, p0tag: filename*/) (result int32) {
+func (v Application) Run(argc int32, argv int /*TODO_TYPE array type c, elemTypeTag: filename*/) (result int32) {
 	iv, err := _I.Get(94, "Application", "run")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2038,15 +2038,15 @@ func (v ApplicationCommandLine) CreateFileForArg(arg string) (result File) {
 	args := []gi.Argument{arg_v, arg_arg}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_arg)
+	result.P = ret.Pointer()
 	return
 }
 
 // g_application_command_line_get_arguments
 // container is not nil, container is ApplicationCommandLine
 // is method
-func (v ApplicationCommandLine) GetArguments() (result int /*TODO_TYPE isPtr: true, tag: array*/, argc int32) {
+func (v ApplicationCommandLine) GetArguments() (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrLen: 0*/, argc int32) {
 	iv, err := _I.Get(109, "ApplicationCommandLine", "get_arguments")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2058,8 +2058,8 @@ func (v ApplicationCommandLine) GetArguments() (result int /*TODO_TYPE isPtr: tr
 	args := []gi.Argument{arg_v, arg_argc}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	argc = outArgs[0].Int32()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -2083,7 +2083,7 @@ func (v ApplicationCommandLine) GetCwd() (result string) {
 // g_application_command_line_get_environ
 // container is not nil, container is ApplicationCommandLine
 // is method
-func (v ApplicationCommandLine) GetEnviron() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v ApplicationCommandLine) GetEnviron() (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrLen: -1*/) {
 	iv, err := _I.Get(111, "ApplicationCommandLine", "get_environ")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2197,8 +2197,8 @@ func (v ApplicationCommandLine) Getenv(name string) (result string) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_name)
+	result = ret.String().Take()
 	return
 }
 
@@ -2315,8 +2315,8 @@ func (v *AsyncInitableIfc) InitFinish(res AsyncResult) (result bool, err error) 
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -2335,8 +2335,8 @@ func (v *AsyncInitableIfc) NewFinish(res AsyncResult) (result gobject.Object, er
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2411,8 +2411,8 @@ func (v *AsyncResultIfc) LegacyPropagateError() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -2480,8 +2480,8 @@ func (v BufferedInputStream) Fill(count int64, cancellable ICancellable) (result
 	args := []gi.Argument{arg_v, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -2519,8 +2519,8 @@ func (v BufferedInputStream) FillFinish(result AsyncResult) (result1 int64, err 
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int64()
 	return
 }
 
@@ -2581,7 +2581,7 @@ func (v BufferedInputStream) Peek(buffer gi.Uint8Array, offset uint64, count uin
 // g_buffered_input_stream_peek_buffer
 // container is not nil, container is BufferedInputStream
 // is method
-func (v BufferedInputStream) PeekBuffer() (result int /*TODO_TYPE isPtr: true, tag: array*/, count uint64) {
+func (v BufferedInputStream) PeekBuffer() (result gi.Uint8Array, count uint64) {
 	iv, err := _I.Get(135, "BufferedInputStream", "peek_buffer")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2593,8 +2593,8 @@ func (v BufferedInputStream) PeekBuffer() (result int /*TODO_TYPE isPtr: true, t
 	args := []gi.Argument{arg_v, arg_count}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	count = outArgs[0].Uint64()
+	result = gi.Uint8Array{P: ret.Pointer(), Len: int(count)}
 	return
 }
 
@@ -2613,8 +2613,8 @@ func (v BufferedInputStream) ReadByte(cancellable ICancellable) (result int32, e
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
@@ -3028,8 +3028,8 @@ func (v Cancellable) SetErrorIfCancelled() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -3069,10 +3069,10 @@ func NewCharsetConverter(to_charset string, from_charset string) (result Charset
 	args := []gi.Argument{arg_to_charset, arg_from_charset, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_to_charset)
 	gi.Free(c_from_charset)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3154,10 +3154,10 @@ func (v *ConverterIfc) Convert(inbuf gi.Uint8Array, inbuf_size uint64, outbuf gi
 	args := []gi.Argument{arg_v, arg_inbuf, arg_inbuf_size, arg_outbuf, arg_outbuf_size, arg_flags, arg_bytes_read, arg_bytes_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ConverterResultEnum(ret.Int())
 	bytes_read = outArgs[0].Uint64()
 	bytes_written = outArgs[1].Uint64()
 	err = gi.ToError(outArgs[2].Pointer())
+	result = ConverterResultEnum(ret.Int())
 	return
 }
 
@@ -3341,8 +3341,8 @@ func (v Credentials) GetUnixPid() (result int32, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
@@ -3360,8 +3360,8 @@ func (v Credentials) GetUnixUser() (result uint32, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -3380,8 +3380,8 @@ func (v Credentials) IsSameUser(other_credentials ICredentials) (result bool, er
 	args := []gi.Argument{arg_v, arg_other_credentials, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -3416,8 +3416,8 @@ func (v Credentials) SetUnixUser(uid uint32) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_uid, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -3482,9 +3482,9 @@ func DBusActionGroupGet1(connection IDBusConnection, bus_name string, object_pat
 	args := []gi.Argument{arg_connection, arg_bus_name, arg_object_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_bus_name)
 	gi.Free(c_object_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3528,7 +3528,7 @@ func (v DBusAnnotationInfo) Unref() {
 // container is not nil, container is DBusAnnotationInfo
 // is method
 // arg0Type tag: array, isPtr: true
-func DBusAnnotationInfoLookup1(annotations int /*TODO_TYPE array type c, p0tag: interface*/, name string) (result string) {
+func DBusAnnotationInfoLookup1(annotations int /*TODO_TYPE array type c, elemTypeTag: interface*/, name string) (result string) {
 	iv, err := _I.Get(179, "DBusAnnotationInfo", "lookup")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3540,8 +3540,8 @@ func DBusAnnotationInfoLookup1(annotations int /*TODO_TYPE array type c, p0tag: 
 	args := []gi.Argument{arg_annotations, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_name)
+	result = ret.String().Take()
 	return
 }
 
@@ -3622,8 +3622,8 @@ func (v DBusAuthObserver) AllowMechanism(mechanism string) (result bool) {
 	args := []gi.Argument{arg_v, arg_mechanism}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_mechanism)
+	result = ret.Bool()
 	return
 }
 
@@ -3690,8 +3690,8 @@ func NewDBusConnectionFinish(res AsyncResult) (result DBusConnection, err error)
 	args := []gi.Argument{arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3709,8 +3709,8 @@ func NewDBusConnectionForAddressFinish(res AsyncResult) (result DBusConnection, 
 	args := []gi.Argument{arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3732,9 +3732,9 @@ func NewDBusConnectionForAddressSync(address string, flags DBusConnectionFlags, 
 	args := []gi.Argument{arg_address, arg_flags, arg_observer, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_address)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3757,9 +3757,9 @@ func NewDBusConnectionSync(stream IIOStream, guid string, flags DBusConnectionFl
 	args := []gi.Argument{arg_stream, arg_guid, arg_flags, arg_observer, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_guid)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3876,8 +3876,8 @@ func (v DBusConnection) CallFinish(res AsyncResult) (result glib.Variant, err er
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3908,12 +3908,12 @@ func (v DBusConnection) CallSync(bus_name string, object_path string, interface_
 	args := []gi.Argument{arg_v, arg_bus_name, arg_object_path, arg_interface_name, arg_method_name, arg_parameters, arg_reply_type, arg_flags, arg_timeout_msec, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_bus_name)
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
 	gi.Free(c_method_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3967,9 +3967,9 @@ func (v DBusConnection) CallWithUnixFdListFinish(res AsyncResult) (result glib.V
 	args := []gi.Argument{arg_v, arg_out_fd_list, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	out_fd_list.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4002,13 +4002,13 @@ func (v DBusConnection) CallWithUnixFdListSync(bus_name string, object_path stri
 	args := []gi.Argument{arg_v, arg_bus_name, arg_object_path, arg_interface_name, arg_method_name, arg_parameters, arg_reply_type, arg_flags, arg_timeout_msec, arg_fd_list, arg_out_fd_list, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_bus_name)
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
 	gi.Free(c_method_name)
 	out_fd_list.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4044,8 +4044,8 @@ func (v DBusConnection) CloseFinish(res AsyncResult) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -4064,8 +4064,8 @@ func (v DBusConnection) CloseSync(cancellable ICancellable) (result bool, err er
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -4092,12 +4092,12 @@ func (v DBusConnection) EmitSignal(destination_bus_name string, object_path stri
 	args := []gi.Argument{arg_v, arg_destination_bus_name, arg_object_path, arg_interface_name, arg_signal_name, arg_parameters, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_destination_bus_name)
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
 	gi.Free(c_signal_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -4118,9 +4118,9 @@ func (v DBusConnection) ExportActionGroup(object_path string, action_group Actio
 	args := []gi.Argument{arg_v, arg_object_path, arg_action_group, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_object_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -4141,9 +4141,9 @@ func (v DBusConnection) ExportMenuModel(object_path string, menu IMenuModel) (re
 	args := []gi.Argument{arg_v, arg_object_path, arg_menu, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_object_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -4179,8 +4179,8 @@ func (v DBusConnection) FlushFinish(res AsyncResult) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -4199,8 +4199,8 @@ func (v DBusConnection) FlushSync(cancellable ICancellable) (result bool, err er
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -4360,9 +4360,9 @@ func (v DBusConnection) RegisterObject(object_path string, interface_info DBusIn
 	args := []gi.Argument{arg_v, arg_object_path, arg_interface_info, arg_method_call_closure, arg_get_property_closure, arg_set_property_closure, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_object_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -4386,9 +4386,9 @@ func (v DBusConnection) RegisterSubtree(object_path string, vtable DBusSubtreeVT
 	args := []gi.Argument{arg_v, arg_object_path, arg_vtable, arg_flags, arg_user_data, arg_user_data_free_func, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_object_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -4424,9 +4424,9 @@ func (v DBusConnection) SendMessage(message IDBusMessage, flags DBusSendMessageF
 	args := []gi.Argument{arg_v, arg_message, arg_flags, arg_out_serial, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	out_serial = outArgs[0].Uint32()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -4469,8 +4469,8 @@ func (v DBusConnection) SendMessageWithReplyFinish(res AsyncResult) (result DBus
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4493,9 +4493,9 @@ func (v DBusConnection) SendMessageWithReplySync(message IDBusMessage, flags DBu
 	args := []gi.Argument{arg_v, arg_message, arg_flags, arg_timeout_msec, arg_out_serial, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	out_serial = outArgs[0].Uint32()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4541,12 +4541,12 @@ func (v DBusConnection) SignalSubscribe(sender string, interface_name string, me
 	args := []gi.Argument{arg_v, arg_sender, arg_interface_name, arg_member, arg_object_path, arg_arg0, arg_flags, arg_callback, arg_user_data, arg_user_data_free_func}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_sender)
 	gi.Free(c_interface_name)
 	gi.Free(c_member)
 	gi.Free(c_object_path)
 	gi.Free(c_arg0)
+	result = ret.Uint32()
 	return
 }
 
@@ -4834,8 +4834,8 @@ func (v DBusInterfaceInfo) LookupMethod(name string) (result DBusMethodInfo) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4854,8 +4854,8 @@ func (v DBusInterfaceInfo) LookupProperty(name string) (result DBusPropertyInfo)
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4874,8 +4874,8 @@ func (v DBusInterfaceInfo) LookupSignal(name string) (result DBusSignalInfo) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4939,9 +4939,9 @@ func (v DBusInterfaceSkeleton) Export(connection IDBusConnection, object_path st
 	args := []gi.Argument{arg_v, arg_connection, arg_object_path, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_object_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -5171,9 +5171,9 @@ func DBusMenuModelGet1(connection IDBusConnection, bus_name string, object_path 
 	args := []gi.Argument{arg_connection, arg_bus_name, arg_object_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_bus_name)
 	gi.Free(c_object_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5219,8 +5219,8 @@ func NewDBusMessageFromBlob(blob gi.Uint8Array, blob_len uint64, capabilities DB
 	args := []gi.Argument{arg_blob, arg_blob_len, arg_capabilities, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5244,11 +5244,11 @@ func NewDBusMessageMethodCall(name string, path string, interface_ string, metho
 	args := []gi.Argument{arg_name, arg_path, arg_interface_, arg_method}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_path)
 	gi.Free(c_interface_)
 	gi.Free(c_method)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5270,10 +5270,10 @@ func NewDBusMessageSignal(path string, interface_ string, signal string) (result
 	args := []gi.Argument{arg_path, arg_interface_, arg_signal}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_path)
 	gi.Free(c_interface_)
 	gi.Free(c_signal)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5293,8 +5293,8 @@ func DBusMessageBytesNeeded1(blob gi.Uint8Array, blob_len uint64) (result int64,
 	args := []gi.Argument{arg_blob, arg_blob_len, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -5312,8 +5312,8 @@ func (v DBusMessage) Copy() (result DBusMessage, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5440,7 +5440,7 @@ func (v DBusMessage) GetHeader(header_field DBusMessageHeaderFieldEnum) (result 
 // g_dbus_message_get_header_fields
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) GetHeaderFields() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v DBusMessage) GetHeaderFields() (result gi.Uint8Array) {
 	iv, err := _I.Get(267, "DBusMessage", "get_header_fields")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5450,7 +5450,7 @@ func (v DBusMessage) GetHeaderFields() (result int /*TODO_TYPE isPtr: true, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.Uint8Array{P: ret.Pointer(), Len: int(0)}
 	return
 }
 
@@ -5672,9 +5672,9 @@ func (v DBusMessage) NewMethodErrorLiteral(error_name string, error_message stri
 	args := []gi.Argument{arg_v, arg_error_name, arg_error_message}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_error_name)
 	gi.Free(c_error_message)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5971,7 +5971,7 @@ func (v DBusMessage) SetUnixFdList(fd_list IUnixFDList) {
 // g_dbus_message_to_blob
 // container is not nil, container is DBusMessage
 // is method
-func (v DBusMessage) ToBlob(capabilities DBusCapabilityFlags) (result int /*TODO_TYPE isPtr: true, tag: array*/, out_size uint64, err error) {
+func (v DBusMessage) ToBlob(capabilities DBusCapabilityFlags) (result gi.Uint8Array, out_size uint64, err error) {
 	iv, err := _I.Get(299, "DBusMessage", "to_blob")
 	if err != nil {
 		return
@@ -5984,9 +5984,9 @@ func (v DBusMessage) ToBlob(capabilities DBusCapabilityFlags) (result int /*TODO
 	args := []gi.Argument{arg_v, arg_out_size, arg_capabilities, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	out_size = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = gi.Uint8Array{P: ret.Pointer(), Len: int(out_size)}
 	return
 }
 
@@ -6004,8 +6004,8 @@ func (v DBusMessage) ToGerror() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -6359,9 +6359,9 @@ func NewDBusNodeInfoForXml(xml_data string) (result DBusNodeInfo, err error) {
 	args := []gi.Argument{arg_xml_data, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_xml_data)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6396,8 +6396,8 @@ func (v DBusNodeInfo) LookupInterface(name string) (result DBusInterfaceInfo) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6454,8 +6454,8 @@ func (v *DBusObjectIfc) GetInterface(interface_name string) (result DBusInterfac
 	args := []gi.Argument{arg_v, arg_interface_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_interface_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6518,9 +6518,9 @@ func (v *DBusObjectManagerIfc) GetInterface(object_path string, interface_name s
 	args := []gi.Argument{arg_v, arg_object_path, arg_interface_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6539,8 +6539,8 @@ func (v *DBusObjectManagerIfc) GetObject(object_path string) (result DBusObject)
 	args := []gi.Argument{arg_v, arg_object_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_object_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6606,8 +6606,8 @@ func NewDBusObjectManagerClientFinish(res AsyncResult) (result DBusObjectManager
 	args := []gi.Argument{arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6625,8 +6625,8 @@ func NewDBusObjectManagerClientForBusFinish(res AsyncResult) (result DBusObjectM
 	args := []gi.Argument{arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6653,10 +6653,10 @@ func NewDBusObjectManagerClientForBusSync(bus_type BusTypeEnum, flags DBusObject
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_get_proxy_type_func, arg_get_proxy_type_user_data, arg_get_proxy_type_destroy_notify, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_object_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6683,10 +6683,10 @@ func NewDBusObjectManagerClientSync(connection IDBusConnection, flags DBusObject
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_get_proxy_type_func, arg_get_proxy_type_user_data, arg_get_proxy_type_destroy_notify, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_object_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6855,8 +6855,8 @@ func NewDBusObjectManagerServer(object_path string) (result DBusObjectManagerSer
 	args := []gi.Argument{arg_object_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_object_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6955,8 +6955,8 @@ func (v DBusObjectManagerServer) Unexport(object_path string) (result bool) {
 	args := []gi.Argument{arg_v, arg_object_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_object_path)
+	result = ret.Bool()
 	return
 }
 
@@ -6993,8 +6993,8 @@ func NewDBusObjectProxy(connection IDBusConnection, object_path string) (result 
 	args := []gi.Argument{arg_connection, arg_object_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_object_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7047,8 +7047,8 @@ func NewDBusObjectSkeleton(object_path string) (result DBusObjectSkeleton) {
 	args := []gi.Argument{arg_object_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_object_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7209,8 +7209,8 @@ func NewDBusProxyFinish(res AsyncResult) (result DBusProxy, err error) {
 	args := []gi.Argument{arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7228,8 +7228,8 @@ func NewDBusProxyForBusFinish(res AsyncResult) (result DBusProxy, err error) {
 	args := []gi.Argument{arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7256,11 +7256,11 @@ func NewDBusProxyForBusSync(bus_type BusTypeEnum, flags DBusProxyFlags, info DBu
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_info, arg_name, arg_object_path, arg_interface_name, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7287,11 +7287,11 @@ func NewDBusProxySync(connection IDBusConnection, flags DBusProxyFlags, info DBu
 	args := []gi.Argument{arg_connection, arg_flags, arg_info, arg_name, arg_object_path, arg_interface_name, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7391,8 +7391,8 @@ func (v DBusProxy) CallFinish(res AsyncResult) (result glib.Variant, err error) 
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7416,9 +7416,9 @@ func (v DBusProxy) CallSync(method_name string, parameters glib.Variant, flags D
 	args := []gi.Argument{arg_v, arg_method_name, arg_parameters, arg_flags, arg_timeout_msec, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_method_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7462,9 +7462,9 @@ func (v DBusProxy) CallWithUnixFdListFinish(res AsyncResult) (result glib.Varian
 	args := []gi.Argument{arg_v, arg_out_fd_list, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	out_fd_list.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7490,10 +7490,10 @@ func (v DBusProxy) CallWithUnixFdListSync(method_name string, parameters glib.Va
 	args := []gi.Argument{arg_v, arg_method_name, arg_parameters, arg_flags, arg_timeout_msec, arg_fd_list, arg_out_fd_list, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_method_name)
 	out_fd_list.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7512,15 +7512,15 @@ func (v DBusProxy) GetCachedProperty(property_name string) (result glib.Variant)
 	args := []gi.Argument{arg_v, arg_property_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_property_name)
+	result.P = ret.Pointer()
 	return
 }
 
 // g_dbus_proxy_get_cached_property_names
 // container is not nil, container is DBusProxy
 // is method
-func (v DBusProxy) GetCachedPropertyNames() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v DBusProxy) GetCachedPropertyNames() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(369, "DBusProxy", "get_cached_property_names")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7776,10 +7776,10 @@ func NewDBusServerSync(address string, flags DBusServerFlags, guid string, obser
 	args := []gi.Argument{arg_address, arg_flags, arg_guid, arg_observer, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_address)
 	gi.Free(c_guid)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -8025,8 +8025,8 @@ func (v DataInputStream) ReadByte(cancellable ICancellable) (result uint8, err e
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint8()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint8()
 	return
 }
 
@@ -8045,8 +8045,8 @@ func (v DataInputStream) ReadInt16(cancellable ICancellable) (result int16, err 
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int16()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int16()
 	return
 }
 
@@ -8065,8 +8065,8 @@ func (v DataInputStream) ReadInt32(cancellable ICancellable) (result int32, err 
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
@@ -8085,15 +8085,15 @@ func (v DataInputStream) ReadInt64(cancellable ICancellable) (result int64, err 
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
 // g_data_input_stream_read_line
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadLine(cancellable ICancellable) (result int /*TODO_TYPE isPtr: true, tag: array*/, length uint64, err error) {
+func (v DataInputStream) ReadLine(cancellable ICancellable) (result gi.Uint8Array, length uint64, err error) {
 	iv, err := _I.Get(397, "DataInputStream", "read_line")
 	if err != nil {
 		return
@@ -8106,9 +8106,9 @@ func (v DataInputStream) ReadLine(cancellable ICancellable) (result int /*TODO_T
 	args := []gi.Argument{arg_v, arg_length, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	length = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = gi.Uint8Array{P: ret.Pointer(), Len: int(0)}
 	return
 }
 
@@ -8133,7 +8133,7 @@ func (v DataInputStream) ReadLineAsync(io_priority int32, cancellable ICancellab
 // g_data_input_stream_read_line_finish
 // container is not nil, container is DataInputStream
 // is method
-func (v DataInputStream) ReadLineFinish(result AsyncResult) (result1 int /*TODO_TYPE isPtr: true, tag: array*/, length uint64, err error) {
+func (v DataInputStream) ReadLineFinish(result AsyncResult) (result1 gi.Uint8Array, length uint64, err error) {
 	iv, err := _I.Get(399, "DataInputStream", "read_line_finish")
 	if err != nil {
 		return
@@ -8146,9 +8146,9 @@ func (v DataInputStream) ReadLineFinish(result AsyncResult) (result1 int /*TODO_
 	args := []gi.Argument{arg_v, arg_result, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
 	length = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result1 = gi.Uint8Array{P: ret.Pointer(), Len: int(0)}
 	return
 }
 
@@ -8168,9 +8168,9 @@ func (v DataInputStream) ReadLineFinishUtf8(result AsyncResult) (result1 string,
 	args := []gi.Argument{arg_v, arg_result, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.String().Take()
 	length = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result1 = ret.String().Take()
 	return
 }
 
@@ -8190,9 +8190,9 @@ func (v DataInputStream) ReadLineUtf8(cancellable ICancellable) (result string, 
 	args := []gi.Argument{arg_v, arg_length, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	length = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.String().Take()
 	return
 }
 
@@ -8211,8 +8211,8 @@ func (v DataInputStream) ReadUint16(cancellable ICancellable) (result uint16, er
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint16()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint16()
 	return
 }
 
@@ -8231,8 +8231,8 @@ func (v DataInputStream) ReadUint32(cancellable ICancellable) (result uint32, er
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -8251,8 +8251,8 @@ func (v DataInputStream) ReadUint64(cancellable ICancellable) (result uint64, er
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint64()
 	return
 }
 
@@ -8274,10 +8274,10 @@ func (v DataInputStream) ReadUntil(stop_chars string, cancellable ICancellable) 
 	args := []gi.Argument{arg_v, arg_stop_chars, arg_length, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	gi.Free(c_stop_chars)
 	length = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.String().Take()
 	return
 }
 
@@ -8318,9 +8318,9 @@ func (v DataInputStream) ReadUntilFinish(result AsyncResult) (result1 string, le
 	args := []gi.Argument{arg_v, arg_result, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.String().Take()
 	length = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result1 = ret.String().Take()
 	return
 }
 
@@ -8343,10 +8343,10 @@ func (v DataInputStream) ReadUpto(stop_chars string, stop_chars_len int64, cance
 	args := []gi.Argument{arg_v, arg_stop_chars, arg_stop_chars_len, arg_length, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	gi.Free(c_stop_chars)
 	length = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.String().Take()
 	return
 }
 
@@ -8388,9 +8388,9 @@ func (v DataInputStream) ReadUptoFinish(result AsyncResult) (result1 string, len
 	args := []gi.Argument{arg_v, arg_result, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.String().Take()
 	length = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result1 = ret.String().Take()
 	return
 }
 
@@ -8492,8 +8492,8 @@ func (v DataOutputStream) PutByte(data uint8, cancellable ICancellable) (result 
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -8513,8 +8513,8 @@ func (v DataOutputStream) PutInt16(data int16, cancellable ICancellable) (result
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -8534,8 +8534,8 @@ func (v DataOutputStream) PutInt32(data int32, cancellable ICancellable) (result
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -8555,8 +8555,8 @@ func (v DataOutputStream) PutInt64(data int64, cancellable ICancellable) (result
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -8577,9 +8577,9 @@ func (v DataOutputStream) PutString(str string, cancellable ICancellable) (resul
 	args := []gi.Argument{arg_v, arg_str, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_str)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -8599,8 +8599,8 @@ func (v DataOutputStream) PutUint16(data uint16, cancellable ICancellable) (resu
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -8620,8 +8620,8 @@ func (v DataOutputStream) PutUint32(data uint32, cancellable ICancellable) (resu
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -8641,8 +8641,8 @@ func (v DataOutputStream) PutUint64(data uint64, cancellable ICancellable) (resu
 	args := []gi.Argument{arg_v, arg_data, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -8728,8 +8728,8 @@ func (v *DatagramBasedIfc) ConditionWait(condition glib.IOConditionFlags, timeou
 	args := []gi.Argument{arg_v, arg_condition, arg_timeout, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -8755,7 +8755,7 @@ func (v *DatagramBasedIfc) CreateSource(condition glib.IOConditionFlags, cancell
 // g_datagram_based_receive_messages
 // container is not nil, container is DatagramBased
 // is method
-func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE array type c, p0tag: interface*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
+func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(427, "DatagramBased", "receive_messages")
 	if err != nil {
 		return
@@ -8771,15 +8771,15 @@ func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE array type c
 	args := []gi.Argument{arg_v, arg_messages, arg_num_messages, arg_flags, arg_timeout, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
 // g_datagram_based_send_messages
 // container is not nil, container is DatagramBased
 // is method
-func (v *DatagramBasedIfc) SendMessages(messages int /*TODO_TYPE array type c, p0tag: interface*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
+func (v *DatagramBasedIfc) SendMessages(messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(428, "DatagramBased", "send_messages")
 	if err != nil {
 		return
@@ -8795,8 +8795,8 @@ func (v *DatagramBasedIfc) SendMessages(messages int /*TODO_TYPE array type c, p
 	args := []gi.Argument{arg_v, arg_messages, arg_num_messages, arg_flags, arg_timeout, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
@@ -8827,8 +8827,8 @@ func NewDesktopAppInfo(desktop_id string) (result DesktopAppInfo) {
 	args := []gi.Argument{arg_desktop_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_desktop_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -8846,8 +8846,8 @@ func NewDesktopAppInfoFromFilename(filename string) (result DesktopAppInfo) {
 	args := []gi.Argument{arg_filename}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_filename)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -8883,8 +8883,8 @@ func DesktopAppInfoGetImplementations1(interface1 string) (result int /*TODO_TYP
 	args := []gi.Argument{arg_interface1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_interface1)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -8892,7 +8892,7 @@ func DesktopAppInfoGetImplementations1(interface1 string) (result int /*TODO_TYP
 // container is not nil, container is DesktopAppInfo
 // is method
 // arg0Type tag: utf8, isPtr: true
-func DesktopAppInfoSearch1(search_string string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func DesktopAppInfoSearch1(search_string string) (result int /*TODO_TYPE array type c, elemTypeTag: array, arrLen: -1*/) {
 	iv, err := _I.Get(433, "DesktopAppInfo", "search")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8903,8 +8903,8 @@ func DesktopAppInfoSearch1(search_string string) (result int /*TODO_TYPE isPtr: 
 	args := []gi.Argument{arg_search_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_search_string)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -8940,8 +8940,8 @@ func (v DesktopAppInfo) GetActionName(action_name string) (result string) {
 	args := []gi.Argument{arg_v, arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_action_name)
+	result = ret.String().Take()
 	return
 }
 
@@ -8960,8 +8960,8 @@ func (v DesktopAppInfo) GetBoolean(key string) (result bool) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -9036,7 +9036,7 @@ func (v DesktopAppInfo) GetIsHidden() (result bool) {
 // g_desktop_app_info_get_keywords
 // container is not nil, container is DesktopAppInfo
 // is method
-func (v DesktopAppInfo) GetKeywords() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v DesktopAppInfo) GetKeywords() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(441, "DesktopAppInfo", "get_keywords")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9065,8 +9065,8 @@ func (v DesktopAppInfo) GetLocaleString(key string) (result string) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_key)
+	result = ret.String().Take()
 	return
 }
 
@@ -9102,8 +9102,8 @@ func (v DesktopAppInfo) GetShowIn(desktop_env string) (result bool) {
 	args := []gi.Argument{arg_v, arg_desktop_env}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_desktop_env)
+	result = ret.Bool()
 	return
 }
 
@@ -9139,8 +9139,8 @@ func (v DesktopAppInfo) GetString(key string) (result string) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_key)
+	result = ret.String().Take()
 	return
 }
 
@@ -9159,8 +9159,8 @@ func (v DesktopAppInfo) HasKey(key string) (result bool) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -9203,8 +9203,8 @@ func (v DesktopAppInfo) LaunchUrisAsManager(uris int /*TODO_TYPE isPtr: true, ta
 	args := []gi.Argument{arg_v, arg_uris, arg_launch_context, arg_spawn_flags, arg_user_setup, arg_user_setup_data, arg_pid_callback, arg_pid_callback_data, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -9232,15 +9232,15 @@ func (v DesktopAppInfo) LaunchUrisAsManagerWithFds(uris int /*TODO_TYPE isPtr: t
 	args := []gi.Argument{arg_v, arg_uris, arg_launch_context, arg_spawn_flags, arg_user_setup, arg_user_setup_data, arg_pid_callback, arg_pid_callback_data, arg_stdin_fd, arg_stdout_fd, arg_stderr_fd, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
 // g_desktop_app_info_list_actions
 // container is not nil, container is DesktopAppInfo
 // is method
-func (v DesktopAppInfo) ListActions() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v DesktopAppInfo) ListActions() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(451, "DesktopAppInfo", "list_actions")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9277,8 +9277,8 @@ func (v *DesktopAppInfoLookupIfc) GetDefaultForUriScheme(uri_scheme string) (res
 	args := []gi.Argument{arg_v, arg_uri_scheme}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_uri_scheme)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9408,8 +9408,8 @@ func (v *DriveIfc) EjectFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -9447,15 +9447,15 @@ func (v *DriveIfc) EjectWithOperationFinish(result AsyncResult) (result1 bool, e
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
 // g_drive_enumerate_identifiers
 // container is not nil, container is Drive
 // is method
-func (v *DriveIfc) EnumerateIdentifiers() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *DriveIfc) EnumerateIdentifiers() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(462, "Drive", "enumerate_identifiers")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9501,8 +9501,8 @@ func (v *DriveIfc) GetIdentifier(kind string) (result string) {
 	args := []gi.Argument{arg_v, arg_kind}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_kind)
+	result = ret.String().Take()
 	return
 }
 
@@ -9708,8 +9708,8 @@ func (v *DriveIfc) PollForMediaFinish(result AsyncResult) (result1 bool, err err
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -9747,8 +9747,8 @@ func (v *DriveIfc) StartFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -9786,8 +9786,8 @@ func (v *DriveIfc) StopFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -9833,8 +9833,8 @@ func DtlsClientConnectionNew1(base_socket DatagramBased, server_identity SocketC
 	args := []gi.Argument{arg_base_socket, arg_server_identity, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9942,8 +9942,8 @@ func (v *DtlsConnectionIfc) Close(cancellable ICancellable) (result bool, err er
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -9980,8 +9980,8 @@ func (v *DtlsConnectionIfc) CloseFinish(result AsyncResult) (result1 bool, err e
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -10138,8 +10138,8 @@ func (v *DtlsConnectionIfc) Handshake(cancellable ICancellable) (result bool, er
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -10176,8 +10176,8 @@ func (v *DtlsConnectionIfc) HandshakeFinish(result AsyncResult) (result1 bool, e
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -10273,8 +10273,8 @@ func (v *DtlsConnectionIfc) Shutdown(shutdown_read bool, shutdown_write bool, ca
 	args := []gi.Argument{arg_v, arg_shutdown_read, arg_shutdown_write, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -10313,8 +10313,8 @@ func (v *DtlsConnectionIfc) ShutdownFinish(result AsyncResult) (result1 bool, er
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -10342,8 +10342,8 @@ func DtlsServerConnectionNew1(base_socket DatagramBased, certificate ITlsCertifi
 	args := []gi.Argument{arg_base_socket, arg_certificate, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10561,8 +10561,8 @@ func FileNewForCommandlineArg1(arg string) (result File) {
 	args := []gi.Argument{arg_arg}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_arg)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10583,9 +10583,9 @@ func FileNewForCommandlineArgAndCwd1(arg string, cwd string) (result File) {
 	args := []gi.Argument{arg_arg, arg_cwd}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_arg)
 	gi.Free(c_cwd)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10604,8 +10604,8 @@ func FileNewForPath1(path string) (result File) {
 	args := []gi.Argument{arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10624,8 +10624,8 @@ func FileNewForUri1(uri string) (result File) {
 	args := []gi.Argument{arg_uri}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_uri)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10646,10 +10646,10 @@ func FileNewTmp1(tmpl string) (result File, iostream FileIOStream, err error) {
 	args := []gi.Argument{arg_tmpl, arg_iostream, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_tmpl)
 	iostream.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10668,8 +10668,8 @@ func FileParseName1(parse_name string) (result File) {
 	args := []gi.Argument{arg_parse_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_parse_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10689,8 +10689,8 @@ func (v *FileIfc) AppendTo(flags FileCreateFlags, cancellable ICancellable) (res
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10728,8 +10728,8 @@ func (v *FileIfc) AppendToFinish(res AsyncResult) (result FileOutputStream, err 
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10752,8 +10752,8 @@ func (v *FileIfc) Copy(destination File, flags FileCopyFlags, cancellable ICance
 	args := []gi.Argument{arg_v, arg_destination, arg_flags, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -10796,8 +10796,8 @@ func (v *FileIfc) CopyAttributes(destination File, flags FileCopyFlags, cancella
 	args := []gi.Argument{arg_v, arg_destination, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -10816,8 +10816,8 @@ func (v *FileIfc) CopyFinish(res AsyncResult) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -10837,8 +10837,8 @@ func (v *FileIfc) Create(flags FileCreateFlags, cancellable ICancellable) (resul
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10876,8 +10876,8 @@ func (v *FileIfc) CreateFinish(res AsyncResult) (result FileOutputStream, err er
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10897,8 +10897,8 @@ func (v *FileIfc) CreateReadwrite(flags FileCreateFlags, cancellable ICancellabl
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10936,8 +10936,8 @@ func (v *FileIfc) CreateReadwriteFinish(res AsyncResult) (result FileIOStream, e
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10956,8 +10956,8 @@ func (v *FileIfc) Delete(cancellable ICancellable) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -10994,8 +10994,8 @@ func (v *FileIfc) DeleteFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -11049,8 +11049,8 @@ func (v *FileIfc) EjectMountableFinish(result AsyncResult) (result1 bool, err er
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -11088,8 +11088,8 @@ func (v *FileIfc) EjectMountableWithOperationFinish(result AsyncResult) (result1
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -11111,9 +11111,9 @@ func (v *FileIfc) EnumerateChildren(attributes string, flags FileQueryInfoFlags,
 	args := []gi.Argument{arg_v, arg_attributes, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_attributes)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11154,8 +11154,8 @@ func (v *FileIfc) EnumerateChildrenFinish(res AsyncResult) (result FileEnumerato
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11192,8 +11192,8 @@ func (v *FileIfc) FindEnclosingMount(cancellable ICancellable) (result Mount, er
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11230,8 +11230,8 @@ func (v *FileIfc) FindEnclosingMountFinish(res AsyncResult) (result Mount, err e
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11267,8 +11267,8 @@ func (v *FileIfc) GetChild(name string) (result File) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11288,9 +11288,9 @@ func (v *FileIfc) GetChildForDisplayName(display_name string) (result File, err 
 	args := []gi.Argument{arg_v, arg_display_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_display_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11448,8 +11448,8 @@ func (v *FileIfc) HasUriScheme(uri_scheme string) (result bool) {
 	args := []gi.Argument{arg_v, arg_uri_scheme}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_uri_scheme)
+	result = ret.Bool()
 	return
 }
 
@@ -11503,9 +11503,9 @@ func (v *FileIfc) LoadBytes(cancellable ICancellable) (result glib.Bytes, etag_o
 	args := []gi.Argument{arg_v, arg_cancellable, arg_etag_out, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	etag_out = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11542,9 +11542,9 @@ func (v *FileIfc) LoadBytesFinish(result AsyncResult) (result1 glib.Bytes, etag_
 	args := []gi.Argument{arg_v, arg_result, arg_etag_out, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	etag_out = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -11566,11 +11566,11 @@ func (v *FileIfc) LoadContents(cancellable ICancellable) (result bool, contents 
 	args := []gi.Argument{arg_v, arg_cancellable, arg_contents, arg_length, arg_etag_out, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	contents = outArgs[0].Int() /*TODO*/
 	length = outArgs[1].Uint64()
 	etag_out = outArgs[2].String().Take()
 	err = gi.ToError(outArgs[3].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -11609,11 +11609,11 @@ func (v *FileIfc) LoadContentsFinish(res AsyncResult) (result bool, contents int
 	args := []gi.Argument{arg_v, arg_res, arg_contents, arg_length, arg_etag_out, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	contents = outArgs[0].Int() /*TODO*/
 	length = outArgs[1].Uint64()
 	etag_out = outArgs[2].String().Take()
 	err = gi.ToError(outArgs[3].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -11635,11 +11635,11 @@ func (v *FileIfc) LoadPartialContentsFinish(res AsyncResult) (result bool, conte
 	args := []gi.Argument{arg_v, arg_res, arg_contents, arg_length, arg_etag_out, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	contents = outArgs[0].Int() /*TODO*/
 	length = outArgs[1].Uint64()
 	etag_out = outArgs[2].String().Take()
 	err = gi.ToError(outArgs[3].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -11658,8 +11658,8 @@ func (v *FileIfc) MakeDirectory(cancellable ICancellable) (result bool, err erro
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -11696,8 +11696,8 @@ func (v *FileIfc) MakeDirectoryFinish(result AsyncResult) (result1 bool, err err
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -11716,8 +11716,8 @@ func (v *FileIfc) MakeDirectoryWithParents(cancellable ICancellable) (result boo
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -11738,9 +11738,9 @@ func (v *FileIfc) MakeSymbolicLink(symlink_value string, cancellable ICancellabl
 	args := []gi.Argument{arg_v, arg_symlink_value, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_symlink_value)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -11762,11 +11762,11 @@ func (v *FileIfc) MeasureDiskUsageFinish(result AsyncResult) (result1 bool, disk
 	args := []gi.Argument{arg_v, arg_result, arg_disk_usage, arg_num_dirs, arg_num_files, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	disk_usage = outArgs[0].Uint64()
 	num_dirs = outArgs[1].Uint64()
 	num_files = outArgs[2].Uint64()
 	err = gi.ToError(outArgs[3].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -11786,8 +11786,8 @@ func (v *FileIfc) Monitor(flags FileMonitorFlags, cancellable ICancellable) (res
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11807,8 +11807,8 @@ func (v *FileIfc) MonitorDirectory(flags FileMonitorFlags, cancellable ICancella
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11828,8 +11828,8 @@ func (v *FileIfc) MonitorFile(flags FileMonitorFlags, cancellable ICancellable) 
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11867,8 +11867,8 @@ func (v *FileIfc) MountEnclosingVolumeFinish(result AsyncResult) (result1 bool, 
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -11906,8 +11906,8 @@ func (v *FileIfc) MountMountableFinish(result AsyncResult) (result1 File, err er
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -11930,8 +11930,8 @@ func (v *FileIfc) Move(destination File, flags FileCopyFlags, cancellable ICance
 	args := []gi.Argument{arg_v, arg_destination, arg_flags, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -11950,8 +11950,8 @@ func (v *FileIfc) OpenReadwrite(cancellable ICancellable) (result FileIOStream, 
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11988,8 +11988,8 @@ func (v *FileIfc) OpenReadwriteFinish(res AsyncResult) (result FileIOStream, err
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12042,8 +12042,8 @@ func (v *FileIfc) PollMountableFinish(result AsyncResult) (result1 bool, err err
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -12062,8 +12062,8 @@ func (v *FileIfc) QueryDefaultHandler(cancellable ICancellable) (result AppInfo,
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12121,9 +12121,9 @@ func (v *FileIfc) QueryFilesystemInfo(attributes string, cancellable ICancellabl
 	args := []gi.Argument{arg_v, arg_attributes, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_attributes)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12163,8 +12163,8 @@ func (v *FileIfc) QueryFilesystemInfoFinish(res AsyncResult) (result FileInfo, e
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12186,9 +12186,9 @@ func (v *FileIfc) QueryInfo(attributes string, flags FileQueryInfoFlags, cancell
 	args := []gi.Argument{arg_v, arg_attributes, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_attributes)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12229,8 +12229,8 @@ func (v *FileIfc) QueryInfoFinish(res AsyncResult) (result FileInfo, err error) 
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12249,8 +12249,8 @@ func (v *FileIfc) QuerySettableAttributes(cancellable ICancellable) (result File
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12269,8 +12269,8 @@ func (v *FileIfc) QueryWritableNamespaces(cancellable ICancellable) (result File
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12289,8 +12289,8 @@ func (v *FileIfc) Read(cancellable ICancellable) (result FileInputStream, err er
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12327,8 +12327,8 @@ func (v *FileIfc) ReadFinish(res AsyncResult) (result FileInputStream, err error
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12351,9 +12351,9 @@ func (v *FileIfc) Replace(etag string, make_backup bool, flags FileCreateFlags, 
 	args := []gi.Argument{arg_v, arg_etag, arg_make_backup, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_etag)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12402,10 +12402,10 @@ func (v *FileIfc) ReplaceContents(contents gi.Uint8Array, length uint64, etag st
 	args := []gi.Argument{arg_v, arg_contents, arg_length, arg_etag, arg_make_backup, arg_flags, arg_new_etag, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_etag)
 	new_etag = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12472,9 +12472,9 @@ func (v *FileIfc) ReplaceContentsFinish(res AsyncResult) (result bool, new_etag 
 	args := []gi.Argument{arg_v, arg_res, arg_new_etag, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	new_etag = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12493,8 +12493,8 @@ func (v *FileIfc) ReplaceFinish(res AsyncResult) (result FileOutputStream, err e
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12517,9 +12517,9 @@ func (v *FileIfc) ReplaceReadwrite(etag string, make_backup bool, flags FileCrea
 	args := []gi.Argument{arg_v, arg_etag, arg_make_backup, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_etag)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12561,8 +12561,8 @@ func (v *FileIfc) ReplaceReadwriteFinish(res AsyncResult) (result FileIOStream, 
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12581,8 +12581,8 @@ func (v *FileIfc) ResolveRelativePath(relative_path string) (result File) {
 	args := []gi.Argument{arg_v, arg_relative_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_relative_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12606,9 +12606,9 @@ func (v *FileIfc) SetAttribute(attribute string, type1 FileAttributeTypeEnum, va
 	args := []gi.Argument{arg_v, arg_attribute, arg_type1, arg_value_p, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_attribute)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12632,10 +12632,10 @@ func (v *FileIfc) SetAttributeByteString(attribute string, value string, flags F
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_attribute)
 	gi.Free(c_value)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12658,9 +12658,9 @@ func (v *FileIfc) SetAttributeInt32(attribute string, value int32, flags FileQue
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_attribute)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12683,9 +12683,9 @@ func (v *FileIfc) SetAttributeInt64(attribute string, value int64, flags FileQue
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_attribute)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12709,10 +12709,10 @@ func (v *FileIfc) SetAttributeString(attribute string, value string, flags FileQ
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_attribute)
 	gi.Free(c_value)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12735,9 +12735,9 @@ func (v *FileIfc) SetAttributeUint32(attribute string, value uint32, flags FileQ
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_attribute)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12760,9 +12760,9 @@ func (v *FileIfc) SetAttributeUint64(attribute string, value uint64, flags FileQ
 	args := []gi.Argument{arg_v, arg_attribute, arg_value, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_attribute)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12802,9 +12802,9 @@ func (v *FileIfc) SetAttributesFinish(result AsyncResult) (result1 bool, info Fi
 	args := []gi.Argument{arg_v, arg_result, arg_info, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	info.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -12825,8 +12825,8 @@ func (v *FileIfc) SetAttributesFromInfo(info IFileInfo, flags FileQueryInfoFlags
 	args := []gi.Argument{arg_v, arg_info, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12847,9 +12847,9 @@ func (v *FileIfc) SetDisplayName(display_name string, cancellable ICancellable) 
 	args := []gi.Argument{arg_v, arg_display_name, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_display_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12889,8 +12889,8 @@ func (v *FileIfc) SetDisplayNameFinish(res AsyncResult) (result File, err error)
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12928,8 +12928,8 @@ func (v *FileIfc) StartMountableFinish(result AsyncResult) (result1 bool, err er
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -12967,8 +12967,8 @@ func (v *FileIfc) StopMountableFinish(result AsyncResult) (result1 bool, err err
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -13004,8 +13004,8 @@ func (v *FileIfc) Trash(cancellable ICancellable) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -13042,8 +13042,8 @@ func (v *FileIfc) TrashFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -13080,8 +13080,8 @@ func (v *FileIfc) UnmountMountableFinish(result AsyncResult) (result1 bool, err 
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -13119,8 +13119,8 @@ func (v *FileIfc) UnmountMountableWithOperationFinish(result AsyncResult) (resul
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -13209,8 +13209,8 @@ func (v FileAttributeInfoList) Lookup(name string) (result FileAttributeInfo) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -13264,8 +13264,8 @@ func NewFileAttributeMatcher(attributes string) (result FileAttributeMatcher) {
 	args := []gi.Argument{arg_attributes}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_attributes)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -13284,8 +13284,8 @@ func (v FileAttributeMatcher) EnumerateNamespace(ns string) (result bool) {
 	args := []gi.Argument{arg_v, arg_ns}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_ns)
+	result = ret.Bool()
 	return
 }
 
@@ -13321,8 +13321,8 @@ func (v FileAttributeMatcher) Matches(attribute string) (result bool) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_attribute)
+	result = ret.Bool()
 	return
 }
 
@@ -13341,8 +13341,8 @@ func (v FileAttributeMatcher) MatchesOnly(attribute string) (result bool) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_attribute)
+	result = ret.Bool()
 	return
 }
 
@@ -13510,8 +13510,8 @@ func (v FileEnumerator) Close(cancellable ICancellable) (result bool, err error)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -13548,8 +13548,8 @@ func (v FileEnumerator) CloseFinish(result AsyncResult) (result1 bool, err error
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -13639,10 +13639,10 @@ func (v FileEnumerator) Iterate(cancellable ICancellable) (result bool, out_info
 	args := []gi.Argument{arg_v, arg_out_info, arg_out_child, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	out_info.P = outArgs[0].Pointer()
 	out_child.P = outArgs[1].Pointer()
 	err = gi.ToError(outArgs[2].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -13661,8 +13661,8 @@ func (v FileEnumerator) NextFile(cancellable ICancellable) (result FileInfo, err
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -13700,8 +13700,8 @@ func (v FileEnumerator) NextFilesFinish(result AsyncResult) (result1 int /*TODO_
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int() /*TODO*/
 	return
 }
 
@@ -13772,9 +13772,9 @@ func (v FileIOStream) QueryInfo(attributes string, cancellable ICancellable) (re
 	args := []gi.Argument{arg_v, arg_attributes, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_attributes)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -13814,8 +13814,8 @@ func (v FileIOStream) QueryInfoFinish(result AsyncResult) (result1 FileInfo, err
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -13961,8 +13961,8 @@ func (v FileInfo) GetAttributeAsString(attribute string) (result string) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_attribute)
+	result = ret.String().Take()
 	return
 }
 
@@ -13981,8 +13981,8 @@ func (v FileInfo) GetAttributeBoolean(attribute string) (result bool) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_attribute)
+	result = ret.Bool()
 	return
 }
 
@@ -14001,8 +14001,8 @@ func (v FileInfo) GetAttributeByteString(attribute string) (result string) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_attribute)
+	result = ret.String().Take()
 	return
 }
 
@@ -14025,11 +14025,11 @@ func (v FileInfo) GetAttributeData(attribute string) (result bool, type1 FileAtt
 	args := []gi.Argument{arg_v, arg_attribute, arg_type1, arg_value_pp, arg_status}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_attribute)
 	type1 = FileAttributeTypeEnum(outArgs[0].Int())
 	value_pp = outArgs[1].Int() /*TODO*/
 	status = FileAttributeStatusEnum(outArgs[2].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -14048,8 +14048,8 @@ func (v FileInfo) GetAttributeInt32(attribute string) (result int32) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int32()
 	gi.Free(c_attribute)
+	result = ret.Int32()
 	return
 }
 
@@ -14068,8 +14068,8 @@ func (v FileInfo) GetAttributeInt64(attribute string) (result int64) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int64()
 	gi.Free(c_attribute)
+	result = ret.Int64()
 	return
 }
 
@@ -14088,8 +14088,8 @@ func (v FileInfo) GetAttributeObject(attribute string) (result gobject.Object) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_attribute)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -14108,8 +14108,8 @@ func (v FileInfo) GetAttributeStatus(attribute string) (result FileAttributeStat
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = FileAttributeStatusEnum(ret.Int())
 	gi.Free(c_attribute)
+	result = FileAttributeStatusEnum(ret.Int())
 	return
 }
 
@@ -14128,15 +14128,15 @@ func (v FileInfo) GetAttributeString(attribute string) (result string) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_attribute)
+	result = ret.String().Take()
 	return
 }
 
 // g_file_info_get_attribute_stringv
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) GetAttributeStringv(attribute string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v FileInfo) GetAttributeStringv(attribute string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(691, "FileInfo", "get_attribute_stringv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14148,8 +14148,8 @@ func (v FileInfo) GetAttributeStringv(attribute string) (result int /*TODO_TYPE 
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_attribute)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -14168,8 +14168,8 @@ func (v FileInfo) GetAttributeType(attribute string) (result FileAttributeTypeEn
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = FileAttributeTypeEnum(ret.Int())
 	gi.Free(c_attribute)
+	result = FileAttributeTypeEnum(ret.Int())
 	return
 }
 
@@ -14188,8 +14188,8 @@ func (v FileInfo) GetAttributeUint32(attribute string) (result uint32) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_attribute)
+	result = ret.Uint32()
 	return
 }
 
@@ -14208,8 +14208,8 @@ func (v FileInfo) GetAttributeUint64(attribute string) (result uint64) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint64()
 	gi.Free(c_attribute)
+	result = ret.Uint64()
 	return
 }
 
@@ -14501,8 +14501,8 @@ func (v FileInfo) HasAttribute(attribute string) (result bool) {
 	args := []gi.Argument{arg_v, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_attribute)
+	result = ret.Bool()
 	return
 }
 
@@ -14521,15 +14521,15 @@ func (v FileInfo) HasNamespace(name_space string) (result bool) {
 	args := []gi.Argument{arg_v, arg_name_space}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_name_space)
+	result = ret.Bool()
 	return
 }
 
 // g_file_info_list_attributes
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) ListAttributes(name_space string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v FileInfo) ListAttributes(name_space string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(713, "FileInfo", "list_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14541,8 +14541,8 @@ func (v FileInfo) ListAttributes(name_space string) (result int /*TODO_TYPE isPt
 	args := []gi.Argument{arg_v, arg_name_space}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_name_space)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -14705,8 +14705,8 @@ func (v FileInfo) SetAttributeStatus(attribute string, status FileAttributeStatu
 	args := []gi.Argument{arg_v, arg_attribute, arg_status}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_attribute)
+	result = ret.Bool()
 	return
 }
 
@@ -14733,7 +14733,7 @@ func (v FileInfo) SetAttributeString(attribute string, attr_value string) {
 // g_file_info_set_attribute_stringv
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) SetAttributeStringv(attribute string, attr_value int /*TODO_TYPE array type c, p0tag: utf8*/) {
+func (v FileInfo) SetAttributeStringv(attribute string, attr_value int /*TODO_TYPE array type c, elemTypeTag: utf8*/) {
 	iv, err := _I.Get(724, "FileInfo", "set_attribute_stringv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15033,9 +15033,9 @@ func (v FileInputStream) QueryInfo(attributes string, cancellable ICancellable) 
 	args := []gi.Argument{arg_v, arg_attributes, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_attributes)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -15075,8 +15075,8 @@ func (v FileInputStream) QueryInfoFinish(result AsyncResult) (result1 FileInfo, 
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -15253,9 +15253,9 @@ func (v FileOutputStream) QueryInfo(attributes string, cancellable ICancellable)
 	args := []gi.Argument{arg_v, arg_attributes, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_attributes)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -15295,8 +15295,8 @@ func (v FileOutputStream) QueryInfoFinish(result AsyncResult) (result1 FileInfo,
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -15368,15 +15368,15 @@ func (v FilenameCompleter) GetCompletionSuffix(initial_text string) (result stri
 	args := []gi.Argument{arg_v, arg_initial_text}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_initial_text)
+	result = ret.String().Take()
 	return
 }
 
 // g_filename_completer_get_completions
 // container is not nil, container is FilenameCompleter
 // is method
-func (v FilenameCompleter) GetCompletions(initial_text string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v FilenameCompleter) GetCompletions(initial_text string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(754, "FilenameCompleter", "get_completions")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15388,8 +15388,8 @@ func (v FilenameCompleter) GetCompletions(initial_text string) (result int /*TOD
 	args := []gi.Argument{arg_v, arg_initial_text}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_initial_text)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -15670,8 +15670,8 @@ func (v IOExtensionPoint) GetExtensionByName(name string) (result IOExtension) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -15743,9 +15743,9 @@ func IOExtensionPointImplement1(extension_point_name string, type1 int /*TODO_TY
 	args := []gi.Argument{arg_extension_point_name, arg_type1, arg_extension_name, arg_priority}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_extension_point_name)
 	gi.Free(c_extension_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -15764,8 +15764,8 @@ func IOExtensionPointLookup1(name string) (result IOExtensionPoint) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -15784,8 +15784,8 @@ func IOExtensionPointRegister1(name string) (result IOExtensionPoint) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -15815,8 +15815,8 @@ func NewIOModule(filename string) (result IOModule) {
 	args := []gi.Argument{arg_filename}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_filename)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -15961,8 +15961,8 @@ func IOStreamSpliceFinish1(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -15995,8 +15995,8 @@ func (v IOStream) Close(cancellable ICancellable) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -16033,8 +16033,8 @@ func (v IOStream) CloseFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -16120,8 +16120,8 @@ func (v IOStream) SetPending() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -16225,9 +16225,9 @@ func IconNewForString1(str string) (result Icon, err error) {
 	args := []gi.Argument{arg_str, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_str)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16344,8 +16344,8 @@ func NewInetAddressFromString(string string) (result InetAddress) {
 	args := []gi.Argument{arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_string)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16633,8 +16633,8 @@ func NewInetAddressMask(addr IInetAddress, length uint32) (result InetAddressMas
 	args := []gi.Argument{arg_addr, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16653,9 +16653,9 @@ func NewInetAddressMaskFromString(mask_string string) (result InetAddressMask, e
 	args := []gi.Argument{arg_mask_string, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_mask_string)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16819,8 +16819,8 @@ func NewInetSocketAddressFromString(address string, port uint32) (result SocketA
 	args := []gi.Argument{arg_address, arg_port}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_address)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16909,7 +16909,7 @@ type InitableIfc struct{}
 // container is not nil, container is Initable
 // is method
 // arg0Type tag: GType, isPtr: false
-func InitableNewv1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, p0tag: interface*/, cancellable ICancellable) (result gobject.Object, err error) {
+func InitableNewv1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, elemTypeTag: interface*/, cancellable ICancellable) (result gobject.Object, err error) {
 	iv, err := _I.Get(829, "Initable", "newv")
 	if err != nil {
 		return
@@ -16923,8 +16923,8 @@ func InitableNewv1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_par
 	args := []gi.Argument{arg_object_type, arg_n_parameters, arg_parameters, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16943,8 +16943,8 @@ func (v *InitableIfc) Init(cancellable ICancellable) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -16994,8 +16994,8 @@ func (v InputStream) Close(cancellable ICancellable) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -17032,8 +17032,8 @@ func (v InputStream) CloseFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -17088,8 +17088,8 @@ func (v InputStream) Read(buffer gi.Uint8Array, count uint64, cancellable ICance
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -17111,9 +17111,9 @@ func (v InputStream) ReadAll(buffer gi.Uint8Array, count uint64, cancellable ICa
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_bytes_read, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	bytes_read = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -17153,9 +17153,9 @@ func (v InputStream) ReadAllFinish(result AsyncResult) (result1 bool, bytes_read
 	args := []gi.Argument{arg_v, arg_result, arg_bytes_read, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	bytes_read = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -17195,8 +17195,8 @@ func (v InputStream) ReadBytes(count uint64, cancellable ICancellable) (result g
 	args := []gi.Argument{arg_v, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -17234,8 +17234,8 @@ func (v InputStream) ReadBytesFinish(result AsyncResult) (result1 glib.Bytes, er
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -17254,8 +17254,8 @@ func (v InputStream) ReadFinish(result AsyncResult) (result1 int64, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int64()
 	return
 }
 
@@ -17273,8 +17273,8 @@ func (v InputStream) SetPending() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -17294,8 +17294,8 @@ func (v InputStream) Skip(count uint64, cancellable ICancellable) (result int64,
 	args := []gi.Argument{arg_v, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -17333,8 +17333,8 @@ func (v InputStream) SkipFinish(result AsyncResult) (result1 int64, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int64()
 	return
 }
 
@@ -17554,7 +17554,7 @@ func (v ListStore) Sort(compare_func int /*TODO_TYPE isPtr: false, tag: interfac
 // g_list_store_splice
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) Splice(position uint32, n_removals uint32, additions int /*TODO_TYPE array type c, p0tag: interface*/, n_additions uint32) {
+func (v ListStore) Splice(position uint32, n_removals uint32, additions int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_additions uint32) {
 	iv, err := _I.Get(861, "ListStore", "splice")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17594,9 +17594,9 @@ func (v *LoadableIconIfc) Load(size int32, cancellable ICancellable) (result Inp
 	args := []gi.Argument{arg_v, arg_size, arg_type1, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	type1 = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -17634,9 +17634,9 @@ func (v *LoadableIconIfc) LoadFinish(res AsyncResult) (result InputStream, type1
 	args := []gi.Argument{arg_v, arg_res, arg_type1, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	type1 = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18186,9 +18186,9 @@ func (v MenuAttributeIter) GetNext() (result bool, out_name string, value glib.V
 	args := []gi.Argument{arg_v, arg_out_name, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	out_name = outArgs[0].String().Take()
 	value.P = outArgs[1].Pointer()
+	result = ret.Bool()
 	return
 }
 
@@ -18259,9 +18259,9 @@ func NewMenuItem(label string, detailed_action string) (result MenuItem) {
 	args := []gi.Argument{arg_label, arg_detailed_action}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
 	gi.Free(c_detailed_action)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18298,8 +18298,8 @@ func NewMenuItemSection(label string, section IMenuModel) (result MenuItem) {
 	args := []gi.Argument{arg_label, arg_section}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18318,8 +18318,8 @@ func NewMenuItemSubmenu(label string, submenu IMenuModel) (result MenuItem) {
 	args := []gi.Argument{arg_label, arg_submenu}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18339,8 +18339,8 @@ func (v MenuItem) GetAttributeValue(attribute string, expected_type glib.Variant
 	args := []gi.Argument{arg_v, arg_attribute, arg_expected_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_attribute)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18359,8 +18359,8 @@ func (v MenuItem) GetLink(link string) (result MenuModel) {
 	args := []gi.Argument{arg_v, arg_link}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_link)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18541,9 +18541,9 @@ func (v MenuLinkIter) GetNext() (result bool, out_link string, value MenuModel) 
 	args := []gi.Argument{arg_v, arg_out_link, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	out_link = outArgs[0].String().Take()
 	value.P = outArgs[1].Pointer()
+	result = ret.Bool()
 	return
 }
 
@@ -18615,8 +18615,8 @@ func (v MenuModel) GetItemAttributeValue(item_index int32, attribute string, exp
 	args := []gi.Argument{arg_v, arg_item_index, arg_attribute, arg_expected_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_attribute)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18636,8 +18636,8 @@ func (v MenuModel) GetItemLink(item_index int32, link string) (result MenuModel)
 	args := []gi.Argument{arg_v, arg_item_index, arg_link}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_link)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18808,8 +18808,8 @@ func (v *MountIfc) EjectFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -18847,8 +18847,8 @@ func (v *MountIfc) EjectWithOperationFinish(result AsyncResult) (result1 bool, e
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -19026,7 +19026,7 @@ func (v *MountIfc) GuessContentType(force_rescan bool, cancellable ICancellable,
 // g_mount_guess_content_type_finish
 // container is not nil, container is Mount
 // is method
-func (v *MountIfc) GuessContentTypeFinish(result AsyncResult) (result1 int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func (v *MountIfc) GuessContentTypeFinish(result AsyncResult) (result1 int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/, err error) {
 	iv, err := _I.Get(937, "Mount", "guess_content_type_finish")
 	if err != nil {
 		return
@@ -19038,15 +19038,15 @@ func (v *MountIfc) GuessContentTypeFinish(result AsyncResult) (result1 int /*TOD
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int() /*TODO*/
 	return
 }
 
 // g_mount_guess_content_type_sync
 // container is not nil, container is Mount
 // is method
-func (v *MountIfc) GuessContentTypeSync(force_rescan bool, cancellable ICancellable) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func (v *MountIfc) GuessContentTypeSync(force_rescan bool, cancellable ICancellable) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/, err error) {
 	iv, err := _I.Get(938, "Mount", "guess_content_type_sync")
 	if err != nil {
 		return
@@ -19059,8 +19059,8 @@ func (v *MountIfc) GuessContentTypeSync(force_rescan bool, cancellable ICancella
 	args := []gi.Argument{arg_v, arg_force_rescan, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -19115,8 +19115,8 @@ func (v *MountIfc) RemountFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -19167,8 +19167,8 @@ func (v *MountIfc) UnmountFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -19206,8 +19206,8 @@ func (v *MountIfc) UnmountWithOperationFinish(result AsyncResult) (result1 bool,
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -19635,8 +19635,8 @@ func NewNetworkAddress(hostname string, port uint16) (result NetworkAddress) {
 	args := []gi.Argument{arg_hostname, arg_port}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_hostname)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -19674,9 +19674,9 @@ func NetworkAddressParse1(host_and_port string, default_port uint16) (result Net
 	args := []gi.Argument{arg_host_and_port, arg_default_port, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_host_and_port)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -19697,9 +19697,9 @@ func NetworkAddressParseUri1(uri string, default_port uint16) (result NetworkAdd
 	args := []gi.Argument{arg_uri, arg_default_port, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -19793,8 +19793,8 @@ func (v *NetworkMonitorIfc) CanReach(connectable SocketConnectable, cancellable 
 	args := []gi.Argument{arg_v, arg_connectable, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -19831,8 +19831,8 @@ func (v *NetworkMonitorIfc) CanReachFinish(result AsyncResult) (result1 bool, er
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -19918,10 +19918,10 @@ func NewNetworkService(service string, protocol string, domain string) (result N
 	args := []gi.Argument{arg_service, arg_protocol, arg_domain}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_service)
 	gi.Free(c_protocol)
 	gi.Free(c_domain)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -20041,8 +20041,8 @@ func NewNotification(title string) (result Notification) {
 	args := []gi.Argument{arg_title}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_title)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -20256,8 +20256,8 @@ func (v OutputStream) Close(cancellable ICancellable) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -20294,8 +20294,8 @@ func (v OutputStream) CloseFinish(result AsyncResult) (result1 bool, err error) 
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -20314,8 +20314,8 @@ func (v OutputStream) Flush(cancellable ICancellable) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -20352,8 +20352,8 @@ func (v OutputStream) FlushFinish(result AsyncResult) (result1 bool, err error) 
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -20422,8 +20422,8 @@ func (v OutputStream) SetPending() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -20444,8 +20444,8 @@ func (v OutputStream) Splice(source IInputStream, flags OutputStreamSpliceFlags,
 	args := []gi.Argument{arg_v, arg_source, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -20484,8 +20484,8 @@ func (v OutputStream) SpliceFinish(result AsyncResult) (result1 int64, err error
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int64()
 	return
 }
 
@@ -20506,8 +20506,8 @@ func (v OutputStream) Write(buffer gi.Uint8Array, count uint64, cancellable ICan
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -20529,9 +20529,9 @@ func (v OutputStream) WriteAll(buffer gi.Uint8Array, count uint64, cancellable I
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_bytes_written, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	bytes_written = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -20571,9 +20571,9 @@ func (v OutputStream) WriteAllFinish(result AsyncResult) (result1 bool, bytes_wr
 	args := []gi.Argument{arg_v, arg_result, arg_bytes_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	bytes_written = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -20613,8 +20613,8 @@ func (v OutputStream) WriteBytes(bytes glib.Bytes, cancellable ICancellable) (re
 	args := []gi.Argument{arg_v, arg_bytes, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -20652,8 +20652,8 @@ func (v OutputStream) WriteBytesFinish(result AsyncResult) (result1 int64, err e
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int64()
 	return
 }
 
@@ -20672,8 +20672,8 @@ func (v OutputStream) WriteFinish(result AsyncResult) (result1 int64, err error)
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int64()
 	return
 }
 
@@ -20732,8 +20732,8 @@ func (v Permission) Acquire(cancellable ICancellable) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -20769,8 +20769,8 @@ func (v Permission) AcquireFinish(result AsyncResult) (result1 bool, err error) 
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -20857,8 +20857,8 @@ func (v Permission) Release(cancellable ICancellable) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -20894,8 +20894,8 @@ func (v Permission) ReleaseFinish(result AsyncResult) (result1 bool, err error) 
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -20981,8 +20981,8 @@ func (v *PollableInputStreamIfc) ReadNonblocking(buffer gi.Uint8Array, count uin
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -21063,8 +21063,8 @@ func (v *PollableOutputStreamIfc) WriteNonblocking(buffer gi.Uint8Array, count u
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -21098,9 +21098,9 @@ func NewPropertyAction(name string, object gobject.IObject, property_name string
 	args := []gi.Argument{arg_name, arg_object, arg_property_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_property_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -21126,8 +21126,8 @@ func ProxyGetDefaultForProtocol1(protocol string) (result Proxy) {
 	args := []gi.Argument{arg_protocol}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_protocol)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -21148,8 +21148,8 @@ func (v *ProxyIfc) Connect(connection IIOStream, proxy_address IProxyAddress, ca
 	args := []gi.Argument{arg_v, arg_connection, arg_proxy_address, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -21187,8 +21187,8 @@ func (v *ProxyIfc) ConnectFinish(result AsyncResult) (result1 IOStream, err erro
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -21244,11 +21244,11 @@ func NewProxyAddress(inetaddr IInetAddress, port uint16, protocol string, dest_h
 	args := []gi.Argument{arg_inetaddr, arg_port, arg_protocol, arg_dest_hostname, arg_dest_port, arg_username, arg_password}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_protocol)
 	gi.Free(c_dest_hostname)
 	gi.Free(c_username)
 	gi.Free(c_password)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -21422,7 +21422,7 @@ func (v *ProxyResolverIfc) IsSupported() (result bool) {
 // g_proxy_resolver_lookup
 // container is not nil, container is ProxyResolver
 // is method
-func (v *ProxyResolverIfc) Lookup(uri string, cancellable ICancellable) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func (v *ProxyResolverIfc) Lookup(uri string, cancellable ICancellable) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/, err error) {
 	iv, err := _I.Get(1055, "ProxyResolver", "lookup")
 	if err != nil {
 		return
@@ -21436,9 +21436,9 @@ func (v *ProxyResolverIfc) Lookup(uri string, cancellable ICancellable) (result 
 	args := []gi.Argument{arg_v, arg_uri, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -21465,7 +21465,7 @@ func (v *ProxyResolverIfc) LookupAsync(uri string, cancellable ICancellable, cal
 // g_proxy_resolver_lookup_finish
 // container is not nil, container is ProxyResolver
 // is method
-func (v *ProxyResolverIfc) LookupFinish(result AsyncResult) (result1 int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func (v *ProxyResolverIfc) LookupFinish(result AsyncResult) (result1 int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/, err error) {
 	iv, err := _I.Get(1057, "ProxyResolver", "lookup_finish")
 	if err != nil {
 		return
@@ -21477,8 +21477,8 @@ func (v *ProxyResolverIfc) LookupFinish(result AsyncResult) (result1 int /*TODO_
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int() /*TODO*/
 	return
 }
 
@@ -21556,8 +21556,8 @@ func (v Resolver) LookupByAddress(address IInetAddress, cancellable ICancellable
 	args := []gi.Argument{arg_v, arg_address, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.String().Take()
 	return
 }
 
@@ -21594,8 +21594,8 @@ func (v Resolver) LookupByAddressFinish(result AsyncResult) (result1 string, err
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.String().Take()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.String().Take()
 	return
 }
 
@@ -21616,9 +21616,9 @@ func (v Resolver) LookupByName(hostname string, cancellable ICancellable) (resul
 	args := []gi.Argument{arg_v, arg_hostname, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	gi.Free(c_hostname)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -21657,8 +21657,8 @@ func (v Resolver) LookupByNameFinish(result AsyncResult) (result1 int /*TODO_TYP
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int() /*TODO*/
 	return
 }
 
@@ -21680,9 +21680,9 @@ func (v Resolver) LookupRecords(rrname string, record_type ResolverRecordTypeEnu
 	args := []gi.Argument{arg_v, arg_rrname, arg_record_type, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	gi.Free(c_rrname)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -21722,8 +21722,8 @@ func (v Resolver) LookupRecordsFinish(result AsyncResult) (result1 int /*TODO_TY
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int() /*TODO*/
 	return
 }
 
@@ -21748,11 +21748,11 @@ func (v Resolver) LookupService(service string, protocol string, domain string, 
 	args := []gi.Argument{arg_v, arg_service, arg_protocol, arg_domain, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	gi.Free(c_service)
 	gi.Free(c_protocol)
 	gi.Free(c_domain)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -21797,8 +21797,8 @@ func (v Resolver) LookupServiceFinish(result AsyncResult) (result1 int /*TODO_TY
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int() /*TODO*/
 	return
 }
 
@@ -21861,8 +21861,8 @@ func NewResourceFromData(data glib.Bytes) (result Resource, err error) {
 	args := []gi.Argument{arg_data, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -21897,7 +21897,7 @@ func (v Resource) _Unregister() {
 // g_resource_enumerate_children
 // container is not nil, container is Resource
 // is method
-func (v Resource) EnumerateChildren(path string, lookup_flags ResourceLookupFlags) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func (v Resource) EnumerateChildren(path string, lookup_flags ResourceLookupFlags) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/, err error) {
 	iv, err := _I.Get(1077, "Resource", "enumerate_children")
 	if err != nil {
 		return
@@ -21911,9 +21911,9 @@ func (v Resource) EnumerateChildren(path string, lookup_flags ResourceLookupFlag
 	args := []gi.Argument{arg_v, arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	gi.Free(c_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -21936,11 +21936,11 @@ func (v Resource) GetInfo(path string, lookup_flags ResourceLookupFlags) (result
 	args := []gi.Argument{arg_v, arg_path, arg_lookup_flags, arg_size, arg_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_path)
 	size = outArgs[0].Uint64()
 	flags = outArgs[1].Uint32()
 	err = gi.ToError(outArgs[2].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -21961,9 +21961,9 @@ func (v Resource) LookupData(path string, lookup_flags ResourceLookupFlags) (res
 	args := []gi.Argument{arg_v, arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -21984,9 +21984,9 @@ func (v Resource) OpenStream(path string, lookup_flags ResourceLookupFlags) (res
 	args := []gi.Argument{arg_v, arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22037,9 +22037,9 @@ func ResourceLoad1(filename string) (result Resource, err error) {
 	args := []gi.Argument{arg_filename, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_filename)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22124,8 +22124,8 @@ func (v *SeekableIfc) Seek(offset int64, type1 glib.SeekTypeEnum, cancellable IC
 	args := []gi.Argument{arg_v, arg_offset, arg_type1, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -22162,8 +22162,8 @@ func (v *SeekableIfc) Truncate(offset int64, cancellable ICancellable) (result b
 	args := []gi.Argument{arg_v, arg_offset, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -22193,8 +22193,8 @@ func NewSettings(schema_id string) (result Settings) {
 	args := []gi.Argument{arg_schema_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_schema_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22214,8 +22214,8 @@ func NewSettingsFull(schema SettingsSchema, backend ISettingsBackend, path strin
 	args := []gi.Argument{arg_schema, arg_backend, arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22234,8 +22234,8 @@ func NewSettingsWithBackend(schema_id string, backend ISettingsBackend) (result 
 	args := []gi.Argument{arg_schema_id, arg_backend}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_schema_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22256,9 +22256,9 @@ func NewSettingsWithBackendAndPath(schema_id string, backend ISettingsBackend, p
 	args := []gi.Argument{arg_schema_id, arg_backend, arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_schema_id)
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22278,9 +22278,9 @@ func NewSettingsWithPath(schema_id string, path string) (result Settings) {
 	args := []gi.Argument{arg_schema_id, arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_schema_id)
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22375,8 +22375,8 @@ func (v Settings) CreateAction(key string) (result Action) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_key)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22409,8 +22409,8 @@ func (v Settings) GetBoolean(key string) (result bool) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -22429,8 +22429,8 @@ func (v Settings) GetChild(name string) (result Settings) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22449,8 +22449,8 @@ func (v Settings) GetDefaultValue(key string) (result glib.Variant) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_key)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22469,8 +22469,8 @@ func (v Settings) GetDouble(key string) (result float64) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Double()
 	gi.Free(c_key)
+	result = ret.Double()
 	return
 }
 
@@ -22489,8 +22489,8 @@ func (v Settings) GetEnum(key string) (result int32) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int32()
 	gi.Free(c_key)
+	result = ret.Int32()
 	return
 }
 
@@ -22509,8 +22509,8 @@ func (v Settings) GetFlags(key string) (result uint32) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_key)
+	result = ret.Uint32()
 	return
 }
 
@@ -22546,8 +22546,8 @@ func (v Settings) GetInt(key string) (result int32) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int32()
 	gi.Free(c_key)
+	result = ret.Int32()
 	return
 }
 
@@ -22566,8 +22566,8 @@ func (v Settings) GetInt64(key string) (result int64) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int64()
 	gi.Free(c_key)
+	result = ret.Int64()
 	return
 }
 
@@ -22605,8 +22605,8 @@ func (v Settings) GetRange(key string) (result glib.Variant) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_key)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22625,15 +22625,15 @@ func (v Settings) GetString(key string) (result string) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_key)
+	result = ret.String().Take()
 	return
 }
 
 // g_settings_get_strv
 // container is not nil, container is Settings
 // is method
-func (v Settings) GetStrv(key string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Settings) GetStrv(key string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(1115, "Settings", "get_strv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22645,8 +22645,8 @@ func (v Settings) GetStrv(key string) (result int /*TODO_TYPE isPtr: true, tag: 
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_key)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -22665,8 +22665,8 @@ func (v Settings) GetUint(key string) (result uint32) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_key)
+	result = ret.Uint32()
 	return
 }
 
@@ -22685,8 +22685,8 @@ func (v Settings) GetUint64(key string) (result uint64) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint64()
 	gi.Free(c_key)
+	result = ret.Uint64()
 	return
 }
 
@@ -22705,8 +22705,8 @@ func (v Settings) GetUserValue(key string) (result glib.Variant) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_key)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22725,8 +22725,8 @@ func (v Settings) GetValue(key string) (result glib.Variant) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_key)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22745,15 +22745,15 @@ func (v Settings) IsWritable(name string) (result bool) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_name)
+	result = ret.Bool()
 	return
 }
 
 // g_settings_list_children
 // container is not nil, container is Settings
 // is method
-func (v Settings) ListChildren() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Settings) ListChildren() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(1121, "Settings", "list_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22770,7 +22770,7 @@ func (v Settings) ListChildren() (result int /*TODO_TYPE isPtr: true, tag: array
 // g_settings_list_keys
 // container is not nil, container is Settings
 // is method
-func (v Settings) ListKeys() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Settings) ListKeys() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(1122, "Settings", "list_keys")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22800,8 +22800,8 @@ func (v Settings) RangeCheck(key string, value glib.Variant) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -22852,8 +22852,8 @@ func (v Settings) SetBoolean(key string, value bool) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -22873,8 +22873,8 @@ func (v Settings) SetDouble(key string, value float64) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -22894,8 +22894,8 @@ func (v Settings) SetEnum(key string, value int32) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -22915,8 +22915,8 @@ func (v Settings) SetFlags(key string, value uint32) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -22936,8 +22936,8 @@ func (v Settings) SetInt(key string, value int32) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -22957,8 +22957,8 @@ func (v Settings) SetInt64(key string, value int64) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -22979,16 +22979,16 @@ func (v Settings) SetString(key string, value string) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
 	gi.Free(c_value)
+	result = ret.Bool()
 	return
 }
 
 // g_settings_set_strv
 // container is not nil, container is Settings
 // is method
-func (v Settings) SetStrv(key string, value int /*TODO_TYPE array type c, p0tag: utf8*/) (result bool) {
+func (v Settings) SetStrv(key string, value int /*TODO_TYPE array type c, elemTypeTag: utf8*/) (result bool) {
 	iv, err := _I.Get(1133, "Settings", "set_strv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23001,8 +23001,8 @@ func (v Settings) SetStrv(key string, value int /*TODO_TYPE array type c, p0tag:
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -23022,8 +23022,8 @@ func (v Settings) SetUint(key string, value uint32) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -23043,8 +23043,8 @@ func (v Settings) SetUint64(key string, value uint64) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -23064,8 +23064,8 @@ func (v Settings) SetValue(key string, value glib.Variant) (result bool) {
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -23140,7 +23140,7 @@ func (v SettingsBackend) ChangedTree(tree glib.Tree, origin_tag unsafe.Pointer) 
 // g_settings_backend_keys_changed
 // container is not nil, container is SettingsBackend
 // is method
-func (v SettingsBackend) KeysChanged(path string, items int /*TODO_TYPE array type c, p0tag: utf8*/, origin_tag unsafe.Pointer) {
+func (v SettingsBackend) KeysChanged(path string, items int /*TODO_TYPE array type c, elemTypeTag: utf8*/, origin_tag unsafe.Pointer) {
 	iv, err := _I.Get(1141, "SettingsBackend", "keys_changed")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23269,8 +23269,8 @@ func (v SettingsSchema) GetKey(name string) (result SettingsSchemaKey) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23306,15 +23306,15 @@ func (v SettingsSchema) HasKey(name string) (result bool) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_name)
+	result = ret.Bool()
 	return
 }
 
 // g_settings_schema_list_children
 // container is not nil, container is SettingsSchema
 // is method
-func (v SettingsSchema) ListChildren() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v SettingsSchema) ListChildren() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(1149, "SettingsSchema", "list_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23331,7 +23331,7 @@ func (v SettingsSchema) ListChildren() (result int /*TODO_TYPE isPtr: true, tag:
 // g_settings_schema_list_keys
 // container is not nil, container is SettingsSchema
 // is method
-func (v SettingsSchema) ListKeys() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v SettingsSchema) ListKeys() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(1150, "SettingsSchema", "list_keys")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23554,9 +23554,9 @@ func NewSettingsSchemaSourceFromDirectory(directory string, parent SettingsSchem
 	args := []gi.Argument{arg_directory, arg_parent, arg_trusted, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_directory)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23597,8 +23597,8 @@ func (v SettingsSchemaSource) Lookup(schema_id string, recursive bool) (result S
 	args := []gi.Argument{arg_v, arg_schema_id, arg_recursive}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_schema_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23660,8 +23660,8 @@ func NewSimpleAction(name string, parameter_type glib.VariantType) (result Simpl
 	args := []gi.Argument{arg_name, arg_parameter_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23681,8 +23681,8 @@ func NewSimpleActionStateful(name string, parameter_type glib.VariantType, state
 	args := []gi.Argument{arg_name, arg_parameter_type, arg_state}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23762,7 +23762,7 @@ func NewSimpleActionGroup() (result SimpleActionGroup) {
 // g_simple_action_group_add_entries
 // container is not nil, container is SimpleActionGroup
 // is method
-func (v SimpleActionGroup) AddEntries(entries int /*TODO_TYPE array type c, p0tag: interface*/, n_entries int32, user_data unsafe.Pointer) {
+func (v SimpleActionGroup) AddEntries(entries int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_entries int32, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1174, "SimpleActionGroup", "add_entries")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23806,8 +23806,8 @@ func (v SimpleActionGroup) Lookup(action_name string) (result Action) {
 	args := []gi.Argument{arg_v, arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_action_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23982,8 +23982,8 @@ func (v SimpleAsyncResult) PropagateError() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24149,9 +24149,9 @@ func SimpleProxyResolverNew1(default_proxy string, ignore_hosts string) (result 
 	args := []gi.Argument{arg_default_proxy, arg_ignore_hosts}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_default_proxy)
 	gi.Free(c_ignore_hosts)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24244,8 +24244,8 @@ func NewSocket(family SocketFamilyEnum, type1 SocketTypeEnum, protocol SocketPro
 	args := []gi.Argument{arg_family, arg_type1, arg_protocol, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24263,8 +24263,8 @@ func NewSocketFromFd(fd int32) (result Socket, err error) {
 	args := []gi.Argument{arg_fd, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24283,8 +24283,8 @@ func (v Socket) Accept(cancellable ICancellable) (result Socket, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24304,8 +24304,8 @@ func (v Socket) Bind(address ISocketAddress, allow_reuse bool) (result bool, err
 	args := []gi.Argument{arg_v, arg_address, arg_allow_reuse, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24323,8 +24323,8 @@ func (v Socket) CheckConnectResult() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24342,8 +24342,8 @@ func (v Socket) Close() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24382,8 +24382,8 @@ func (v Socket) ConditionTimedWait(condition glib.IOConditionFlags, timeout int6
 	args := []gi.Argument{arg_v, arg_condition, arg_timeout, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24403,8 +24403,8 @@ func (v Socket) ConditionWait(condition glib.IOConditionFlags, cancellable ICanc
 	args := []gi.Argument{arg_v, arg_condition, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24424,8 +24424,8 @@ func (v Socket) Connect(address ISocketAddress, cancellable ICancellable) (resul
 	args := []gi.Argument{arg_v, arg_address, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24511,8 +24511,8 @@ func (v Socket) GetCredentials() (result Credentials, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24598,8 +24598,8 @@ func (v Socket) GetLocalAddress() (result SocketAddress, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24654,9 +24654,9 @@ func (v Socket) GetOption(level int32, optname int32) (result bool, value int32,
 	args := []gi.Argument{arg_v, arg_level, arg_optname, arg_value, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	value = outArgs[0].Int32()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24691,8 +24691,8 @@ func (v Socket) GetRemoteAddress() (result SocketAddress, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24799,9 +24799,9 @@ func (v Socket) JoinMulticastGroup(group IInetAddress, source_specific bool, ifa
 	args := []gi.Argument{arg_v, arg_group, arg_source_specific, arg_iface, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_iface)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24823,9 +24823,9 @@ func (v Socket) JoinMulticastGroupSsm(group IInetAddress, source_specific IInetA
 	args := []gi.Argument{arg_v, arg_group, arg_source_specific, arg_iface, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_iface)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24847,9 +24847,9 @@ func (v Socket) LeaveMulticastGroup(group IInetAddress, source_specific bool, if
 	args := []gi.Argument{arg_v, arg_group, arg_source_specific, arg_iface, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_iface)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24871,9 +24871,9 @@ func (v Socket) LeaveMulticastGroupSsm(group IInetAddress, source_specific IInet
 	args := []gi.Argument{arg_v, arg_group, arg_source_specific, arg_iface, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_iface)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24891,8 +24891,8 @@ func (v Socket) Listen() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -24913,8 +24913,8 @@ func (v Socket) Receive(buffer gi.Uint8Array, size uint64, cancellable ICancella
 	args := []gi.Argument{arg_v, arg_buffer, arg_size, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -24936,16 +24936,16 @@ func (v Socket) ReceiveFrom(buffer gi.Uint8Array, size uint64, cancellable ICanc
 	args := []gi.Argument{arg_v, arg_address, arg_buffer, arg_size, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	address.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Int64()
 	return
 }
 
 // g_socket_receive_message
 // container is not nil, container is Socket
 // is method
-func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE array type c, p0tag: interface*/, num_vectors int32, flags int /*TODO:TYPE*/, cancellable ICancellable) (result int64, address SocketAddress, messages int /*TODO_TYPE*/, num_messages int32, err error) {
+func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_vectors int32, flags int /*TODO:TYPE*/, cancellable ICancellable) (result int64, address SocketAddress, messages int /*TODO_TYPE*/, num_messages int32, err error) {
 	iv, err := _I.Get(1234, "Socket", "receive_message")
 	if err != nil {
 		return
@@ -24962,18 +24962,18 @@ func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE array type c, p0tag: inte
 	args := []gi.Argument{arg_v, arg_address, arg_vectors, arg_num_vectors, arg_messages, arg_num_messages, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	address.P = outArgs[0].Pointer()
 	messages = outArgs[1].Int() /*TODO*/
 	num_messages = outArgs[2].Int32()
 	err = gi.ToError(outArgs[3].Pointer())
+	result = ret.Int64()
 	return
 }
 
 // g_socket_receive_messages
 // container is not nil, container is Socket
 // is method
-func (v Socket) ReceiveMessages(messages int /*TODO_TYPE array type c, p0tag: interface*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
+func (v Socket) ReceiveMessages(messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1235, "Socket", "receive_messages")
 	if err != nil {
 		return
@@ -24988,8 +24988,8 @@ func (v Socket) ReceiveMessages(messages int /*TODO_TYPE array type c, p0tag: in
 	args := []gi.Argument{arg_v, arg_messages, arg_num_messages, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
@@ -25011,8 +25011,8 @@ func (v Socket) ReceiveWithBlocking(buffer gi.Uint8Array, size uint64, blocking 
 	args := []gi.Argument{arg_v, arg_buffer, arg_size, arg_blocking, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -25033,15 +25033,15 @@ func (v Socket) Send(buffer gi.Uint8Array, size uint64, cancellable ICancellable
 	args := []gi.Argument{arg_v, arg_buffer, arg_size, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
 // g_socket_send_message
 // container is not nil, container is Socket
 // is method
-func (v Socket) SendMessage(address ISocketAddress, vectors int /*TODO_TYPE array type c, p0tag: interface*/, num_vectors int32, messages int /*TODO_TYPE array type c, p0tag: interface*/, num_messages int32, flags int32, cancellable ICancellable) (result int64, err error) {
+func (v Socket) SendMessage(address ISocketAddress, vectors int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_vectors int32, messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_messages int32, flags int32, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1238, "Socket", "send_message")
 	if err != nil {
 		return
@@ -25059,15 +25059,15 @@ func (v Socket) SendMessage(address ISocketAddress, vectors int /*TODO_TYPE arra
 	args := []gi.Argument{arg_v, arg_address, arg_vectors, arg_num_vectors, arg_messages, arg_num_messages, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
 // g_socket_send_messages
 // container is not nil, container is Socket
 // is method
-func (v Socket) SendMessages(messages int /*TODO_TYPE array type c, p0tag: interface*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
+func (v Socket) SendMessages(messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1239, "Socket", "send_messages")
 	if err != nil {
 		return
@@ -25082,8 +25082,8 @@ func (v Socket) SendMessages(messages int /*TODO_TYPE array type c, p0tag: inter
 	args := []gi.Argument{arg_v, arg_messages, arg_num_messages, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
@@ -25105,8 +25105,8 @@ func (v Socket) SendTo(address ISocketAddress, buffer gi.Uint8Array, size uint64
 	args := []gi.Argument{arg_v, arg_address, arg_buffer, arg_size, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -25128,8 +25128,8 @@ func (v Socket) SendWithBlocking(buffer gi.Uint8Array, size uint64, blocking boo
 	args := []gi.Argument{arg_v, arg_buffer, arg_size, arg_blocking, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -25240,8 +25240,8 @@ func (v Socket) SetOption(level int32, optname int32, value int32) (result bool,
 	args := []gi.Argument{arg_v, arg_level, arg_optname, arg_value, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -25291,8 +25291,8 @@ func (v Socket) Shutdown(shutdown_read bool, shutdown_write bool) (result bool, 
 	args := []gi.Argument{arg_v, arg_shutdown_read, arg_shutdown_write, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -25393,8 +25393,8 @@ func (v SocketAddress) ToNative(dest unsafe.Pointer, destlen uint64) (result boo
 	args := []gi.Argument{arg_v, arg_dest, arg_destlen, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -25425,8 +25425,8 @@ func (v SocketAddressEnumerator) Next(cancellable ICancellable) (result SocketAd
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -25462,8 +25462,8 @@ func (v SocketAddressEnumerator) NextFinish(result AsyncResult) (result1 SocketA
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -25528,8 +25528,8 @@ func (v SocketClient) Connect(connectable SocketConnectable, cancellable ICancel
 	args := []gi.Argument{arg_v, arg_connectable, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -25566,8 +25566,8 @@ func (v SocketClient) ConnectFinish(result AsyncResult) (result1 SocketConnectio
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -25589,9 +25589,9 @@ func (v SocketClient) ConnectToHost(host_and_port string, default_port uint16, c
 	args := []gi.Argument{arg_v, arg_host_and_port, arg_default_port, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_host_and_port)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -25631,8 +25631,8 @@ func (v SocketClient) ConnectToHostFinish(result AsyncResult) (result1 SocketCon
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -25655,10 +25655,10 @@ func (v SocketClient) ConnectToService(domain string, service string, cancellabl
 	args := []gi.Argument{arg_v, arg_domain, arg_service, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_domain)
 	gi.Free(c_service)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -25700,8 +25700,8 @@ func (v SocketClient) ConnectToServiceFinish(result AsyncResult) (result1 Socket
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -25723,9 +25723,9 @@ func (v SocketClient) ConnectToUri(uri string, default_port uint16, cancellable 
 	args := []gi.Argument{arg_v, arg_uri, arg_default_port, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -25765,8 +25765,8 @@ func (v SocketClient) ConnectToUriFinish(result AsyncResult) (result1 SocketConn
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -26203,8 +26203,8 @@ func (v SocketConnection) Connect(address ISocketAddress, cancellable ICancellab
 	args := []gi.Argument{arg_v, arg_address, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -26241,8 +26241,8 @@ func (v SocketConnection) ConnectFinish(result AsyncResult) (result1 bool, err e
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -26260,8 +26260,8 @@ func (v SocketConnection) GetLocalAddress() (result SocketAddress, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -26279,8 +26279,8 @@ func (v SocketConnection) GetRemoteAddress() (result SocketAddress, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -26480,9 +26480,9 @@ func (v SocketListener) Accept(cancellable ICancellable) (result SocketConnectio
 	args := []gi.Argument{arg_v, arg_source_object, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	source_object.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -26519,9 +26519,9 @@ func (v SocketListener) AcceptFinish(result AsyncResult) (result1 SocketConnecti
 	args := []gi.Argument{arg_v, arg_result, arg_source_object, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	source_object.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -26541,9 +26541,9 @@ func (v SocketListener) AcceptSocket(cancellable ICancellable) (result Socket, s
 	args := []gi.Argument{arg_v, arg_source_object, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	source_object.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -26580,9 +26580,9 @@ func (v SocketListener) AcceptSocketFinish(result AsyncResult) (result1 Socket, 
 	args := []gi.Argument{arg_v, arg_result, arg_source_object, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	source_object.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -26605,9 +26605,9 @@ func (v SocketListener) AddAddress(address ISocketAddress, type1 SocketTypeEnum,
 	args := []gi.Argument{arg_v, arg_address, arg_type1, arg_protocol, arg_source_object, arg_effective_address, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	effective_address.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -26626,8 +26626,8 @@ func (v SocketListener) AddAnyInetPort(source_object gobject.IObject) (result ui
 	args := []gi.Argument{arg_v, arg_source_object, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint16()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint16()
 	return
 }
 
@@ -26647,8 +26647,8 @@ func (v SocketListener) AddInetPort(port uint16, source_object gobject.IObject) 
 	args := []gi.Argument{arg_v, arg_port, arg_source_object, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -26668,8 +26668,8 @@ func (v SocketListener) AddSocket(socket ISocket, source_object gobject.IObject)
 	args := []gi.Argument{arg_v, arg_socket, arg_source_object, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -26853,8 +26853,8 @@ func NewSrvTarget(hostname string, port uint16, priority uint16, weight uint16) 
 	args := []gi.Argument{arg_hostname, arg_port, arg_priority, arg_weight}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_hostname)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -27022,7 +27022,7 @@ func (v Subprocess) P_Subprocess() unsafe.Pointer { return v.P }
 // g_subprocess_newv
 // container is not nil, container is Subprocess
 // is constructor
-func NewSubprocess(argv int /*TODO_TYPE array type c, p0tag: filename*/, flags SubprocessFlags) (result Subprocess, err error) {
+func NewSubprocess(argv int /*TODO_TYPE array type c, elemTypeTag: filename*/, flags SubprocessFlags) (result Subprocess, err error) {
 	iv, err := _I.Get(1336, "Subprocess", "new")
 	if err != nil {
 		return
@@ -27034,8 +27034,8 @@ func NewSubprocess(argv int /*TODO_TYPE array type c, p0tag: filename*/, flags S
 	args := []gi.Argument{arg_argv, arg_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -27057,10 +27057,10 @@ func (v Subprocess) Communicate(stdin_buf glib.Bytes, cancellable ICancellable) 
 	args := []gi.Argument{arg_v, arg_stdin_buf, arg_cancellable, arg_stdout_buf, arg_stderr_buf, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	stdout_buf.P = outArgs[0].Pointer()
 	stderr_buf.P = outArgs[1].Pointer()
 	err = gi.ToError(outArgs[2].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -27099,10 +27099,10 @@ func (v Subprocess) CommunicateFinish(result AsyncResult) (result1 bool, stdout_
 	args := []gi.Argument{arg_v, arg_result, arg_stdout_buf, arg_stderr_buf, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	stdout_buf.P = outArgs[0].Pointer()
 	stderr_buf.P = outArgs[1].Pointer()
 	err = gi.ToError(outArgs[2].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -27125,11 +27125,11 @@ func (v Subprocess) CommunicateUtf8(stdin_buf string, cancellable ICancellable) 
 	args := []gi.Argument{arg_v, arg_stdin_buf, arg_cancellable, arg_stdout_buf, arg_stderr_buf, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_stdin_buf)
 	stdout_buf = outArgs[0].String().Take()
 	stderr_buf = outArgs[1].String().Take()
 	err = gi.ToError(outArgs[2].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -27170,10 +27170,10 @@ func (v Subprocess) CommunicateUtf8Finish(result AsyncResult) (result1 bool, std
 	args := []gi.Argument{arg_v, arg_result, arg_stdout_buf, arg_stderr_buf, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	stdout_buf = outArgs[0].String().Take()
 	stderr_buf = outArgs[1].String().Take()
 	err = gi.ToError(outArgs[2].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -27391,8 +27391,8 @@ func (v Subprocess) Wait(cancellable ICancellable) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -27428,8 +27428,8 @@ func (v Subprocess) WaitCheck(cancellable ICancellable) (result bool, err error)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -27465,8 +27465,8 @@ func (v Subprocess) WaitCheckFinish(result AsyncResult) (result1 bool, err error
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -27485,8 +27485,8 @@ func (v Subprocess) WaitFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -27548,8 +27548,8 @@ func (v SubprocessLauncher) Getenv(variable string) (result string) {
 	args := []gi.Argument{arg_v, arg_variable}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_variable)
+	result = ret.String().Take()
 	return
 }
 
@@ -27573,7 +27573,7 @@ func (v SubprocessLauncher) SetCwd(cwd string) {
 // g_subprocess_launcher_set_environ
 // container is not nil, container is SubprocessLauncher
 // is method
-func (v SubprocessLauncher) SetEnviron(env int /*TODO_TYPE array type c, p0tag: filename*/) {
+func (v SubprocessLauncher) SetEnviron(env int /*TODO_TYPE array type c, elemTypeTag: filename*/) {
 	iv, err := _I.Get(1364, "SubprocessLauncher", "set_environ")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -27675,7 +27675,7 @@ func (v SubprocessLauncher) Setenv(variable string, value string, overwrite bool
 // g_subprocess_launcher_spawnv
 // container is not nil, container is SubprocessLauncher
 // is method
-func (v SubprocessLauncher) Spawnv(argv int /*TODO_TYPE array type c, p0tag: filename*/) (result Subprocess, err error) {
+func (v SubprocessLauncher) Spawnv(argv int /*TODO_TYPE array type c, elemTypeTag: filename*/) (result Subprocess, err error) {
 	iv, err := _I.Get(1370, "SubprocessLauncher", "spawnv")
 	if err != nil {
 		return
@@ -27687,8 +27687,8 @@ func (v SubprocessLauncher) Spawnv(argv int /*TODO_TYPE array type c, p0tag: fil
 	args := []gi.Argument{arg_v, arg_argv, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -28018,8 +28018,8 @@ func (v Task) PropagateBoolean() (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -28037,8 +28037,8 @@ func (v Task) PropagateInt() (result int64, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -28472,15 +28472,15 @@ func NewThemedIcon(iconname string) (result ThemedIcon) {
 	args := []gi.Argument{arg_iconname}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_iconname)
+	result.P = ret.Pointer()
 	return
 }
 
 // g_themed_icon_new_from_names
 // container is not nil, container is ThemedIcon
 // is constructor
-func NewThemedIconFromNames(iconnames int /*TODO_TYPE array type c, p0tag: utf8*/, len1 int32) (result ThemedIcon) {
+func NewThemedIconFromNames(iconnames int /*TODO_TYPE array type c, elemTypeTag: utf8*/, len1 int32) (result ThemedIcon) {
 	iv, err := _I.Get(1415, "ThemedIcon", "new_from_names")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28509,8 +28509,8 @@ func NewThemedIconWithDefaultFallbacks(iconname string) (result ThemedIcon) {
 	args := []gi.Argument{arg_iconname}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_iconname)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -28534,7 +28534,7 @@ func (v ThemedIcon) AppendName(iconname string) {
 // g_themed_icon_get_names
 // container is not nil, container is ThemedIcon
 // is method
-func (v ThemedIcon) GetNames() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v ThemedIcon) GetNames() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(1418, "ThemedIcon", "get_names")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28796,9 +28796,9 @@ func NewTlsCertificateFromFile(file string) (result TlsCertificate, err error) {
 	args := []gi.Argument{arg_file, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_file)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -28819,10 +28819,10 @@ func NewTlsCertificateFromFiles(cert_file string, key_file string) (result TlsCe
 	args := []gi.Argument{arg_cert_file, arg_key_file, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_cert_file)
 	gi.Free(c_key_file)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -28842,9 +28842,9 @@ func NewTlsCertificateFromPem(data string, length int64) (result TlsCertificate,
 	args := []gi.Argument{arg_data, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_data)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -28864,9 +28864,9 @@ func TlsCertificateListNewFromFile1(file string) (result int /*TODO_TYPE isPtr: 
 	args := []gi.Argument{arg_file, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	gi.Free(c_file)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -28974,8 +28974,8 @@ func TlsClientConnectionNew1(base_io_stream IIOStream, server_identity SocketCon
 	args := []gi.Argument{arg_base_io_stream, arg_server_identity, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -29289,8 +29289,8 @@ func (v TlsConnection) Handshake(cancellable ICancellable) (result bool, err err
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -29327,8 +29327,8 @@ func (v TlsConnection) HandshakeFinish(result AsyncResult) (result1 bool, err er
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -29476,9 +29476,9 @@ func (v TlsDatabase) LookupCertificateForHandle(handle string, interaction ITlsI
 	args := []gi.Argument{arg_v, arg_handle, arg_interaction, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_handle)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -29519,8 +29519,8 @@ func (v TlsDatabase) LookupCertificateForHandleFinish(result AsyncResult) (resul
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -29542,8 +29542,8 @@ func (v TlsDatabase) LookupCertificateIssuer(certificate ITlsCertificate, intera
 	args := []gi.Argument{arg_v, arg_certificate, arg_interaction, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -29582,8 +29582,8 @@ func (v TlsDatabase) LookupCertificateIssuerFinish(result AsyncResult) (result1 
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -29605,8 +29605,8 @@ func (v TlsDatabase) LookupCertificatesIssuedBy(issuer_raw_dn int /*TODO_TYPE is
 	args := []gi.Argument{arg_v, arg_issuer_raw_dn, arg_interaction, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -29645,8 +29645,8 @@ func (v TlsDatabase) LookupCertificatesIssuedByFinish(result AsyncResult) (resul
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Int() /*TODO*/
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Int() /*TODO*/
 	return
 }
 
@@ -29671,9 +29671,9 @@ func (v TlsDatabase) VerifyChain(chain ITlsCertificate, purpose string, identity
 	args := []gi.Argument{arg_v, arg_chain, arg_purpose, arg_identity, arg_interaction, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = TlsCertificateFlags(ret.Int())
 	gi.Free(c_purpose)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = TlsCertificateFlags(ret.Int())
 	return
 }
 
@@ -29716,8 +29716,8 @@ func (v TlsDatabase) VerifyChainFinish(result AsyncResult) (result1 TlsCertifica
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = TlsCertificateFlags(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = TlsCertificateFlags(ret.Int())
 	return
 }
 
@@ -29778,9 +29778,9 @@ func TlsFileDatabaseNew1(anchors string) (result TlsFileDatabase, err error) {
 	args := []gi.Argument{arg_anchors, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_anchors)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -29812,8 +29812,8 @@ func (v TlsInteraction) AskPassword(password ITlsPassword, cancellable ICancella
 	args := []gi.Argument{arg_v, arg_password, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
+	result = TlsInteractionResultEnum(ret.Int())
 	return
 }
 
@@ -29850,8 +29850,8 @@ func (v TlsInteraction) AskPasswordFinish(result AsyncResult) (result1 TlsIntera
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = TlsInteractionResultEnum(ret.Int())
 	return
 }
 
@@ -29871,8 +29871,8 @@ func (v TlsInteraction) InvokeAskPassword(password ITlsPassword, cancellable ICa
 	args := []gi.Argument{arg_v, arg_password, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
+	result = TlsInteractionResultEnum(ret.Int())
 	return
 }
 
@@ -29893,8 +29893,8 @@ func (v TlsInteraction) InvokeRequestCertificate(connection ITlsConnection, flag
 	args := []gi.Argument{arg_v, arg_connection, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
+	result = TlsInteractionResultEnum(ret.Int())
 	return
 }
 
@@ -29915,8 +29915,8 @@ func (v TlsInteraction) RequestCertificate(connection ITlsConnection, flags TlsC
 	args := []gi.Argument{arg_v, arg_connection, arg_flags, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
+	result = TlsInteractionResultEnum(ret.Int())
 	return
 }
 
@@ -29954,8 +29954,8 @@ func (v TlsInteraction) RequestCertificateFinish(result AsyncResult) (result1 Tl
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = TlsInteractionResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = TlsInteractionResultEnum(ret.Int())
 	return
 }
 
@@ -30000,8 +30000,8 @@ func NewTlsPassword(flags TlsPasswordFlags, description string) (result TlsPassw
 	args := []gi.Argument{arg_flags, arg_description}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_description)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -30204,8 +30204,8 @@ func TlsServerConnectionNew1(base_io_stream IIOStream, certificate ITlsCertifica
 	args := []gi.Argument{arg_base_io_stream, arg_certificate, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -30236,8 +30236,8 @@ func (v UnixConnection) ReceiveCredentials(cancellable ICancellable) (result Cre
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -30273,8 +30273,8 @@ func (v UnixConnection) ReceiveCredentialsFinish(result AsyncResult) (result1 Cr
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1.P = ret.Pointer()
 	return
 }
 
@@ -30293,8 +30293,8 @@ func (v UnixConnection) ReceiveFd(cancellable ICancellable) (result int32, err e
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
@@ -30313,8 +30313,8 @@ func (v UnixConnection) SendCredentials(cancellable ICancellable) (result bool, 
 	args := []gi.Argument{arg_v, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -30350,8 +30350,8 @@ func (v UnixConnection) SendCredentialsFinish(result AsyncResult) (result1 bool,
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -30371,8 +30371,8 @@ func (v UnixConnection) SendFd(fd int32, cancellable ICancellable) (result bool,
 	args := []gi.Argument{arg_v, arg_fd, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -30507,8 +30507,8 @@ func (v UnixFDList) Append(fd int32) (result int32, err error) {
 	args := []gi.Argument{arg_v, arg_fd, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
@@ -30527,8 +30527,8 @@ func (v UnixFDList) Get(index_ int32) (result int32, err error) {
 	args := []gi.Argument{arg_v, arg_index_, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
@@ -30552,7 +30552,7 @@ func (v UnixFDList) GetLength() (result int32) {
 // g_unix_fd_list_peek_fds
 // container is not nil, container is UnixFDList
 // is method
-func (v UnixFDList) PeekFds() (result int /*TODO_TYPE isPtr: true, tag: array*/, length int32) {
+func (v UnixFDList) PeekFds() (result gi.Int32Array, length int32) {
 	iv, err := _I.Get(1515, "UnixFDList", "peek_fds")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30564,15 +30564,15 @@ func (v UnixFDList) PeekFds() (result int /*TODO_TYPE isPtr: true, tag: array*/,
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	length = outArgs[0].Int32()
+	result = gi.Int32Array{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
 // g_unix_fd_list_steal_fds
 // container is not nil, container is UnixFDList
 // is method
-func (v UnixFDList) StealFds() (result int /*TODO_TYPE isPtr: true, tag: array*/, length int32) {
+func (v UnixFDList) StealFds() (result gi.Int32Array, length int32) {
 	iv, err := _I.Get(1516, "UnixFDList", "steal_fds")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30584,8 +30584,8 @@ func (v UnixFDList) StealFds() (result int /*TODO_TYPE isPtr: true, tag: array*/
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	length = outArgs[0].Int32()
+	result = gi.Int32Array{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
@@ -30653,8 +30653,8 @@ func (v UnixFDMessage) AppendFd(fd int32) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_fd, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -30678,7 +30678,7 @@ func (v UnixFDMessage) GetFdList() (result UnixFDList) {
 // g_unix_fd_message_steal_fds
 // container is not nil, container is UnixFDMessage
 // is method
-func (v UnixFDMessage) StealFds() (result int /*TODO_TYPE isPtr: true, tag: array*/, length int32) {
+func (v UnixFDMessage) StealFds() (result gi.Int32Array, length int32) {
 	iv, err := _I.Get(1521, "UnixFDMessage", "steal_fds")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30690,8 +30690,8 @@ func (v UnixFDMessage) StealFds() (result int /*TODO_TYPE isPtr: true, tag: arra
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	length = outArgs[0].Int32()
+	result = gi.Int32Array{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
@@ -31187,8 +31187,8 @@ func NewUnixSocketAddress(path string) (result SocketAddress) {
 	args := []gi.Argument{arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -31340,8 +31340,8 @@ func (v Vfs) GetFileForPath(path string) (result File) {
 	args := []gi.Argument{arg_v, arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -31360,15 +31360,15 @@ func (v Vfs) GetFileForUri(uri string) (result File) {
 	args := []gi.Argument{arg_v, arg_uri}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_uri)
+	result.P = ret.Pointer()
 	return
 }
 
 // g_vfs_get_supported_uri_schemes
 // container is not nil, container is Vfs
 // is method
-func (v Vfs) GetSupportedUriSchemes() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Vfs) GetSupportedUriSchemes() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(1559, "Vfs", "get_supported_uri_schemes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31414,8 +31414,8 @@ func (v Vfs) ParseName(parse_name string) (result File) {
 	args := []gi.Argument{arg_v, arg_parse_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_parse_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -31440,8 +31440,8 @@ func (v Vfs) RegisterUriScheme(scheme string, uri_func int /*TODO_TYPE isPtr: fa
 	args := []gi.Argument{arg_v, arg_scheme, arg_uri_func, arg_uri_data, arg_uri_destroy, arg_parse_name_func, arg_parse_name_data, arg_parse_name_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_scheme)
+	result = ret.Bool()
 	return
 }
 
@@ -31460,8 +31460,8 @@ func (v Vfs) UnregisterUriScheme(scheme string) (result bool) {
 	args := []gi.Argument{arg_v, arg_scheme}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_scheme)
+	result = ret.Bool()
 	return
 }
 
@@ -31540,8 +31540,8 @@ func (v *VolumeIfc) EjectFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -31579,15 +31579,15 @@ func (v *VolumeIfc) EjectWithOperationFinish(result AsyncResult) (result1 bool, 
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
 // g_volume_enumerate_identifiers
 // container is not nil, container is Volume
 // is method
-func (v *VolumeIfc) EnumerateIdentifiers() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *VolumeIfc) EnumerateIdentifiers() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(1570, "Volume", "enumerate_identifiers")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31667,8 +31667,8 @@ func (v *VolumeIfc) GetIdentifier(kind string) (result string) {
 	args := []gi.Argument{arg_v, arg_kind}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_kind)
+	result = ret.String().Take()
 	return
 }
 
@@ -31791,8 +31791,8 @@ func (v *VolumeIfc) MountFinish(result AsyncResult) (result1 bool, err error) {
 	args := []gi.Argument{arg_v, arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -31875,8 +31875,8 @@ func (v VolumeMonitor) GetMountForUuid(uuid string) (result Mount) {
 	args := []gi.Argument{arg_v, arg_uuid}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_uuid)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -31912,8 +31912,8 @@ func (v VolumeMonitor) GetVolumeForUuid(uuid string) (result Volume) {
 	args := []gi.Argument{arg_v, arg_uuid}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_uuid)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -32067,8 +32067,8 @@ func ActionNameIsValid(action_name string) (result bool) {
 	args := []gi.Argument{arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_action_name)
+	result = ret.Bool()
 	return
 }
 
@@ -32088,11 +32088,11 @@ func ActionParseDetailedName(detailed_name string) (result bool, action_name str
 	args := []gi.Argument{arg_detailed_name, arg_action_name, arg_target_value, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_detailed_name)
 	action_name = outArgs[0].String().Take()
 	target_value.P = outArgs[1].Pointer()
 	err = gi.ToError(outArgs[2].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -32110,8 +32110,8 @@ func ActionPrintDetailedName(action_name string, target_value glib.Variant) (res
 	args := []gi.Argument{arg_action_name, arg_target_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_action_name)
+	result = ret.String().Take()
 	return
 }
 
@@ -32132,10 +32132,10 @@ func AppInfoCreateFromCommandline(commandline string, application_name string, f
 	args := []gi.Argument{arg_commandline, arg_application_name, arg_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_commandline)
 	gi.Free(c_application_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -32166,8 +32166,8 @@ func AppInfoGetAllForType(content_type string) (result int /*TODO_TYPE isPtr: tr
 	args := []gi.Argument{arg_content_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_content_type)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -32185,8 +32185,8 @@ func AppInfoGetDefaultForType(content_type string, must_support_uris bool) (resu
 	args := []gi.Argument{arg_content_type, arg_must_support_uris}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_content_type)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -32203,8 +32203,8 @@ func AppInfoGetDefaultForUriScheme(uri_scheme string) (result AppInfo) {
 	args := []gi.Argument{arg_uri_scheme}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_uri_scheme)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -32221,8 +32221,8 @@ func AppInfoGetFallbackForType(content_type string) (result int /*TODO_TYPE isPt
 	args := []gi.Argument{arg_content_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_content_type)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -32239,8 +32239,8 @@ func AppInfoGetRecommendedForType(content_type string) (result int /*TODO_TYPE i
 	args := []gi.Argument{arg_content_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_content_type)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -32259,9 +32259,9 @@ func AppInfoLaunchDefaultForUri(uri string, context IAppLaunchContext) (result b
 	args := []gi.Argument{arg_uri, arg_context, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -32297,8 +32297,8 @@ func AppInfoLaunchDefaultForUriFinish(result AsyncResult) (result1 bool, err err
 	args := []gi.Argument{arg_result, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result1 = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result1 = ret.Bool()
 	return
 }
 
@@ -32346,8 +32346,8 @@ func BusGetFinish(res AsyncResult) (result DBusConnection, err error) {
 	args := []gi.Argument{arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -32365,8 +32365,8 @@ func BusGetSync(bus_type BusTypeEnum, cancellable ICancellable) (result DBusConn
 	args := []gi.Argument{arg_bus_type, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -32387,8 +32387,8 @@ func BusOwnNameOnConnection(connection IDBusConnection, name string, flags BusNa
 	args := []gi.Argument{arg_connection, arg_name, arg_flags, arg_name_acquired_closure, arg_name_lost_closure}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_name)
+	result = ret.Uint32()
 	return
 }
 
@@ -32410,8 +32410,8 @@ func BusOwnName(bus_type BusTypeEnum, name string, flags BusNameOwnerFlags, bus_
 	args := []gi.Argument{arg_bus_type, arg_name, arg_flags, arg_bus_acquired_closure, arg_name_acquired_closure, arg_name_lost_closure}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_name)
+	result = ret.Uint32()
 	return
 }
 
@@ -32458,8 +32458,8 @@ func BusWatchNameOnConnection(connection IDBusConnection, name string, flags Bus
 	args := []gi.Argument{arg_connection, arg_name, arg_flags, arg_name_appeared_closure, arg_name_vanished_closure}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_name)
+	result = ret.Uint32()
 	return
 }
 
@@ -32480,8 +32480,8 @@ func BusWatchName(bus_type BusTypeEnum, name string, flags BusNameWatcherFlags, 
 	args := []gi.Argument{arg_bus_type, arg_name, arg_flags, arg_name_appeared_closure, arg_name_vanished_closure}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_name)
+	result = ret.Uint32()
 	return
 }
 
@@ -32498,8 +32498,8 @@ func ContentTypeCanBeExecutable(type1 string) (result bool) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_type1)
+	result = ret.Bool()
 	return
 }
 
@@ -32518,9 +32518,9 @@ func ContentTypeEquals(type1 string, type2 string) (result bool) {
 	args := []gi.Argument{arg_type1, arg_type2}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_type1)
 	gi.Free(c_type2)
+	result = ret.Bool()
 	return
 }
 
@@ -32537,8 +32537,8 @@ func ContentTypeFromMimeType(mime_type string) (result string) {
 	args := []gi.Argument{arg_mime_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_mime_type)
+	result = ret.String().Take()
 	return
 }
 
@@ -32555,8 +32555,8 @@ func ContentTypeGetDescription(type1 string) (result string) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_type1)
+	result = ret.String().Take()
 	return
 }
 
@@ -32573,8 +32573,8 @@ func ContentTypeGetGenericIconName(type1 string) (result string) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_type1)
+	result = ret.String().Take()
 	return
 }
 
@@ -32591,8 +32591,8 @@ func ContentTypeGetIcon(type1 string) (result Icon) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_type1)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -32609,8 +32609,8 @@ func ContentTypeGetMimeType(type1 string) (result string) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_type1)
+	result = ret.String().Take()
 	return
 }
 
@@ -32627,8 +32627,8 @@ func ContentTypeGetSymbolicIcon(type1 string) (result Icon) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_type1)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -32649,15 +32649,15 @@ func ContentTypeGuess(filename string, data gi.Uint8Array, data_size uint64) (re
 	args := []gi.Argument{arg_filename, arg_data, arg_data_size, arg_result_uncertain}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	gi.Free(c_filename)
 	result_uncertain = outArgs[0].Bool()
+	result = ret.String().Take()
 	return
 }
 
 // g_content_type_guess_for_tree
 // container is nil
-func ContentTypeGuessForTree(root File) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func ContentTypeGuessForTree(root File) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(1627, "content_type_guess_for_tree", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -32686,9 +32686,9 @@ func ContentTypeIsA(type1 string, supertype string) (result bool) {
 	args := []gi.Argument{arg_type1, arg_supertype}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_type1)
 	gi.Free(c_supertype)
+	result = ret.Bool()
 	return
 }
 
@@ -32707,9 +32707,9 @@ func ContentTypeIsMimeType(type1 string, mime_type string) (result bool) {
 	args := []gi.Argument{arg_type1, arg_mime_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_type1)
 	gi.Free(c_mime_type)
+	result = ret.Bool()
 	return
 }
 
@@ -32726,8 +32726,8 @@ func ContentTypeIsUnknown(type1 string) (result bool) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_type1)
+	result = ret.Bool()
 	return
 }
 
@@ -32758,8 +32758,8 @@ func DbusAddressEscapeValue(string string) (result string) {
 	args := []gi.Argument{arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_string)
+	result = ret.String().Take()
 	return
 }
 
@@ -32777,8 +32777,8 @@ func DbusAddressGetForBusSync(bus_type BusTypeEnum, cancellable ICancellable) (r
 	args := []gi.Argument{arg_bus_type, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.String().Take()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.String().Take()
 	return
 }
 
@@ -32814,9 +32814,9 @@ func DbusAddressGetStreamFinish(res AsyncResult) (result IOStream, out_guid stri
 	args := []gi.Argument{arg_res, arg_out_guid, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	out_guid = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -32836,16 +32836,16 @@ func DbusAddressGetStreamSync(address string, cancellable ICancellable) (result 
 	args := []gi.Argument{arg_address, arg_out_guid, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_address)
 	out_guid = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
 // g_dbus_annotation_info_lookup
 // container is nil
-func DbusAnnotationInfoLookup(annotations int /*TODO_TYPE array type c, p0tag: interface*/, name string) (result string) {
+func DbusAnnotationInfoLookup(annotations int /*TODO_TYPE array type c, elemTypeTag: interface*/, name string) (result string) {
 	iv, err := _I.Get(1637, "dbus_annotation_info_lookup", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -32857,8 +32857,8 @@ func DbusAnnotationInfoLookup(annotations int /*TODO_TYPE array type c, p0tag: i
 	args := []gi.Argument{arg_annotations, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_name)
+	result = ret.String().Take()
 	return
 }
 
@@ -32925,9 +32925,9 @@ func DbusErrorNewForDbusError(dbus_error_name string, dbus_error_message string)
 	args := []gi.Argument{arg_dbus_error_name, arg_dbus_error_message}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_dbus_error_name)
 	gi.Free(c_dbus_error_message)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -32960,14 +32960,14 @@ func DbusErrorRegisterError(error_domain uint32, error_code int32, dbus_error_na
 	args := []gi.Argument{arg_error_domain, arg_error_code, arg_dbus_error_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_dbus_error_name)
+	result = ret.Bool()
 	return
 }
 
 // g_dbus_error_register_error_domain
 // container is nil
-func DbusErrorRegisterErrorDomain(error_domain_quark_name string, quark_volatile uint64, entries int /*TODO_TYPE array type c, p0tag: interface*/, num_entries uint32) {
+func DbusErrorRegisterErrorDomain(error_domain_quark_name string, quark_volatile uint64, entries int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_entries uint32) {
 	iv, err := _I.Get(1644, "dbus_error_register_error_domain", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -33014,8 +33014,8 @@ func DbusErrorUnregisterError(error_domain uint32, error_code int32, dbus_error_
 	args := []gi.Argument{arg_error_domain, arg_error_code, arg_dbus_error_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_dbus_error_name)
+	result = ret.Bool()
 	return
 }
 
@@ -33080,8 +33080,8 @@ func DbusIsAddress(string string) (result bool) {
 	args := []gi.Argument{arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_string)
+	result = ret.Bool()
 	return
 }
 
@@ -33098,8 +33098,8 @@ func DbusIsGuid(string string) (result bool) {
 	args := []gi.Argument{arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_string)
+	result = ret.Bool()
 	return
 }
 
@@ -33116,8 +33116,8 @@ func DbusIsInterfaceName(string string) (result bool) {
 	args := []gi.Argument{arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_string)
+	result = ret.Bool()
 	return
 }
 
@@ -33134,8 +33134,8 @@ func DbusIsMemberName(string string) (result bool) {
 	args := []gi.Argument{arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_string)
+	result = ret.Bool()
 	return
 }
 
@@ -33152,8 +33152,8 @@ func DbusIsName(string string) (result bool) {
 	args := []gi.Argument{arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_string)
+	result = ret.Bool()
 	return
 }
 
@@ -33171,9 +33171,9 @@ func DbusIsSupportedAddress(string string) (result bool, err error) {
 	args := []gi.Argument{arg_string, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_string)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -33190,8 +33190,8 @@ func DbusIsUniqueName(string string) (result bool) {
 	args := []gi.Argument{arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_string)
+	result = ret.Bool()
 	return
 }
 
@@ -33209,8 +33209,8 @@ func DtlsClientConnectionNew(base_socket DatagramBased, server_identity SocketCo
 	args := []gi.Argument{arg_base_socket, arg_server_identity, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33228,8 +33228,8 @@ func DtlsServerConnectionNew(base_socket DatagramBased, certificate ITlsCertific
 	args := []gi.Argument{arg_base_socket, arg_certificate, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33246,8 +33246,8 @@ func FileNewForCommandlineArg(arg string) (result File) {
 	args := []gi.Argument{arg_arg}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_arg)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33266,9 +33266,9 @@ func FileNewForCommandlineArgAndCwd(arg string, cwd string) (result File) {
 	args := []gi.Argument{arg_arg, arg_cwd}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_arg)
 	gi.Free(c_cwd)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33285,8 +33285,8 @@ func FileNewForPath(path string) (result File) {
 	args := []gi.Argument{arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33303,8 +33303,8 @@ func FileNewForUri(uri string) (result File) {
 	args := []gi.Argument{arg_uri}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_uri)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33323,10 +33323,10 @@ func FileNewTmp(tmpl string) (result File, iostream FileIOStream, err error) {
 	args := []gi.Argument{arg_tmpl, arg_iostream, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_tmpl)
 	iostream.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33343,8 +33343,8 @@ func FileParseName(parse_name string) (result File) {
 	args := []gi.Argument{arg_parse_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_parse_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33394,15 +33394,15 @@ func IconNewForString(str string) (result Icon, err error) {
 	args := []gi.Argument{arg_str, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_str)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
 // g_initable_newv
 // container is nil
-func InitableNewv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, p0tag: interface*/, cancellable ICancellable) (result gobject.Object, err error) {
+func InitableNewv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, elemTypeTag: interface*/, cancellable ICancellable) (result gobject.Object, err error) {
 	iv, err := _I.Get(1668, "initable_newv", "")
 	if err != nil {
 		return
@@ -33416,8 +33416,8 @@ func InitableNewv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_para
 	args := []gi.Argument{arg_object_type, arg_n_parameters, arg_parameters, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33468,9 +33468,9 @@ func IoExtensionPointImplement(extension_point_name string, type1 int /*TODO_TYP
 	args := []gi.Argument{arg_extension_point_name, arg_type1, arg_extension_name, arg_priority}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_extension_point_name)
 	gi.Free(c_extension_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33487,8 +33487,8 @@ func IoExtensionPointLookup(name string) (result IOExtensionPoint) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33505,8 +33505,8 @@ func IoExtensionPointRegister(name string) (result IOExtensionPoint) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33523,8 +33523,8 @@ func IoModulesLoadAllInDirectory(dirname string) (result int /*TODO_TYPE isPtr: 
 	args := []gi.Argument{arg_dirname}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_dirname)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -33542,8 +33542,8 @@ func IoModulesLoadAllInDirectoryWithScope(dirname string, scope IOModuleScope) (
 	args := []gi.Argument{arg_dirname, arg_scope}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_dirname)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -33623,10 +33623,10 @@ func KeyfileSettingsBackendNew(filename string, root_path string, root_group str
 	args := []gi.Argument{arg_filename, arg_root_path, arg_root_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_filename)
 	gi.Free(c_root_path)
 	gi.Free(c_root_group)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33734,8 +33734,8 @@ func PollableStreamRead(stream IInputStream, buffer gi.Uint8Array, count uint64,
 	args := []gi.Argument{arg_stream, arg_buffer, arg_count, arg_blocking, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -33756,8 +33756,8 @@ func PollableStreamWrite(stream IOutputStream, buffer gi.Uint8Array, count uint6
 	args := []gi.Argument{arg_stream, arg_buffer, arg_count, arg_blocking, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int64()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int64()
 	return
 }
 
@@ -33779,9 +33779,9 @@ func PollableStreamWriteAll(stream IOutputStream, buffer gi.Uint8Array, count ui
 	args := []gi.Argument{arg_stream, arg_buffer, arg_count, arg_blocking, arg_bytes_written, arg_cancellable, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	bytes_written = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -33798,8 +33798,8 @@ func ProxyGetDefaultForProtocol(protocol string) (result Proxy) {
 	args := []gi.Argument{arg_protocol}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_protocol)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33859,15 +33859,15 @@ func ResourceLoad(filename string) (result Resource, err error) {
 	args := []gi.Argument{arg_filename, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_filename)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
 // g_resources_enumerate_children
 // container is nil
-func ResourcesEnumerateChildren(path string, lookup_flags ResourceLookupFlags) (result int /*TODO_TYPE isPtr: true, tag: array*/, err error) {
+func ResourcesEnumerateChildren(path string, lookup_flags ResourceLookupFlags) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/, err error) {
 	iv, err := _I.Get(1695, "resources_enumerate_children", "")
 	if err != nil {
 		return
@@ -33880,9 +33880,9 @@ func ResourcesEnumerateChildren(path string, lookup_flags ResourceLookupFlags) (
 	args := []gi.Argument{arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	gi.Free(c_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -33903,11 +33903,11 @@ func ResourcesGetInfo(path string, lookup_flags ResourceLookupFlags) (result boo
 	args := []gi.Argument{arg_path, arg_lookup_flags, arg_size, arg_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_path)
 	size = outArgs[0].Uint64()
 	flags = outArgs[1].Uint32()
 	err = gi.ToError(outArgs[2].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -33926,9 +33926,9 @@ func ResourcesLookupData(path string, lookup_flags ResourceLookupFlags) (result 
 	args := []gi.Argument{arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33947,9 +33947,9 @@ func ResourcesOpenStream(path string, lookup_flags ResourceLookupFlags) (result 
 	args := []gi.Argument{arg_path, arg_lookup_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -34037,8 +34037,8 @@ func TlsClientConnectionNew(base_io_stream IIOStream, server_identity SocketConn
 	args := []gi.Argument{arg_base_io_stream, arg_server_identity, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -34070,9 +34070,9 @@ func TlsFileDatabaseNew(anchors string) (result TlsFileDatabase, err error) {
 	args := []gi.Argument{arg_anchors, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_anchors)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -34090,8 +34090,8 @@ func TlsServerConnectionNew(base_io_stream IIOStream, certificate ITlsCertificat
 	args := []gi.Argument{arg_base_io_stream, arg_certificate, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -34108,8 +34108,8 @@ func UnixIsMountPathSystemInternal(mount_path string) (result bool) {
 	args := []gi.Argument{arg_mount_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_mount_path)
+	result = ret.Bool()
 	return
 }
 
@@ -34126,8 +34126,8 @@ func UnixIsSystemDevicePath(device_path string) (result bool) {
 	args := []gi.Argument{arg_device_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_device_path)
+	result = ret.Bool()
 	return
 }
 
@@ -34144,8 +34144,8 @@ func UnixIsSystemFsType(fs_type string) (result bool) {
 	args := []gi.Argument{arg_fs_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_fs_type)
+	result = ret.Bool()
 	return
 }
 
@@ -34164,9 +34164,9 @@ func UnixMountAt(mount_path string) (result UnixMountEntry, time_read uint64) {
 	args := []gi.Argument{arg_mount_path, arg_time_read}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_mount_path)
 	time_read = outArgs[0].Uint64()
+	result.P = ret.Pointer()
 	return
 }
 
@@ -34218,9 +34218,9 @@ func UnixMountFor(file_path string) (result UnixMountEntry, time_read uint64) {
 	args := []gi.Argument{arg_file_path, arg_time_read}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_file_path)
 	time_read = outArgs[0].Uint64()
+	result.P = ret.Pointer()
 	return
 }
 
@@ -34442,8 +34442,8 @@ func UnixMountPointsGet() (result int /*TODO_TYPE isPtr: true, tag: glist*/, tim
 	args := []gi.Argument{arg_time_read}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	time_read = outArgs[0].Uint64()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -34476,8 +34476,8 @@ func UnixMountsGet() (result int /*TODO_TYPE isPtr: true, tag: glist*/, time_rea
 	args := []gi.Argument{arg_time_read}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	time_read = outArgs[0].Uint64()
+	result = ret.Int() /*TODO*/
 	return
 }
 

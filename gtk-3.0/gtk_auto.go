@@ -55,7 +55,7 @@ func NewAboutDialog() (result Widget) {
 // gtk_about_dialog_add_credit_section
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) AddCreditSection(section_name string, people int /*TODO_TYPE array type c, p0tag: utf8*/) {
+func (v AboutDialog) AddCreditSection(section_name string, people int /*TODO_TYPE array type c, elemTypeTag: utf8*/) {
 	iv, err := _I.Get(1, "AboutDialog", "add_credit_section")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -73,7 +73,7 @@ func (v AboutDialog) AddCreditSection(section_name string, people int /*TODO_TYP
 // gtk_about_dialog_get_artists
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) GetArtists() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v AboutDialog) GetArtists() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(2, "AboutDialog", "get_artists")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -90,7 +90,7 @@ func (v AboutDialog) GetArtists() (result int /*TODO_TYPE isPtr: true, tag: arra
 // gtk_about_dialog_get_authors
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) GetAuthors() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v AboutDialog) GetAuthors() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(3, "AboutDialog", "get_authors")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -141,7 +141,7 @@ func (v AboutDialog) GetCopyright() (result string) {
 // gtk_about_dialog_get_documenters
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) GetDocumenters() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v AboutDialog) GetDocumenters() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(6, "AboutDialog", "get_documenters")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -328,7 +328,7 @@ func (v AboutDialog) GetWrapLicense() (result bool) {
 // gtk_about_dialog_set_artists
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) SetArtists(artists int /*TODO_TYPE array type c, p0tag: utf8*/) {
+func (v AboutDialog) SetArtists(artists int /*TODO_TYPE array type c, elemTypeTag: utf8*/) {
 	iv, err := _I.Get(17, "AboutDialog", "set_artists")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -343,7 +343,7 @@ func (v AboutDialog) SetArtists(artists int /*TODO_TYPE array type c, p0tag: utf
 // gtk_about_dialog_set_authors
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) SetAuthors(authors int /*TODO_TYPE array type c, p0tag: utf8*/) {
+func (v AboutDialog) SetAuthors(authors int /*TODO_TYPE array type c, elemTypeTag: utf8*/) {
 	iv, err := _I.Get(18, "AboutDialog", "set_authors")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -392,7 +392,7 @@ func (v AboutDialog) SetCopyright(copyright string) {
 // gtk_about_dialog_set_documenters
 // container is not nil, container is AboutDialog
 // is method
-func (v AboutDialog) SetDocumenters(documenters int /*TODO_TYPE array type c, p0tag: utf8*/) {
+func (v AboutDialog) SetDocumenters(documenters int /*TODO_TYPE array type c, elemTypeTag: utf8*/) {
 	iv, err := _I.Get(21, "AboutDialog", "set_documenters")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -791,7 +791,7 @@ func (v AccelGroup) Lock() {
 // gtk_accel_group_query
 // container is not nil, container is AccelGroup
 // is method
-func (v AccelGroup) Query(accel_key uint32, accel_mods gdk.ModifierTypeFlags) (result int /*TODO_TYPE isPtr: true, tag: array*/, n_entries uint32) {
+func (v AccelGroup) Query(accel_key uint32, accel_mods gdk.ModifierTypeFlags) (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 2*/, n_entries uint32) {
 	iv, err := _I.Get(43, "AccelGroup", "query")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -805,8 +805,8 @@ func (v AccelGroup) Query(accel_key uint32, accel_mods gdk.ModifierTypeFlags) (r
 	args := []gi.Argument{arg_v, arg_accel_key, arg_accel_mods, arg_n_entries}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	n_entries = outArgs[0].Uint32()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -867,8 +867,8 @@ func NewAccelLabel(string string) (result Widget) {
 	args := []gi.Argument{arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_string)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1060,8 +1060,8 @@ func AccelMapChangeEntry1(accel_path string, accel_key uint32, accel_mods gdk.Mo
 	args := []gi.Argument{arg_accel_path, arg_accel_key, arg_accel_mods, arg_replace}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_accel_path)
+	result = ret.Bool()
 	return
 }
 
@@ -1178,9 +1178,9 @@ func AccelMapLookupEntry1(accel_path string) (result bool, key int /*TODO_TYPE*/
 	args := []gi.Argument{arg_accel_path, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_accel_path)
 	key = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -1329,11 +1329,11 @@ func NewAction(name string, label string, tooltip string, stock_id string) (resu
 	args := []gi.Argument{arg_name, arg_label, arg_tooltip, arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_label)
 	gi.Free(c_tooltip)
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2132,8 +2132,8 @@ func NewActionGroup(name string) (result ActionGroup) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2202,8 +2202,8 @@ func (v ActionGroup) GetAction(action_name string) (result Action) {
 	args := []gi.Argument{arg_v, arg_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_action_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2384,8 +2384,8 @@ func (v ActionGroup) TranslateString(string string) (result string) {
 	args := []gi.Argument{arg_v, arg_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_string)
+	result = ret.String().Take()
 	return
 }
 
@@ -3100,8 +3100,8 @@ func NewAppChooserButton(content_type string) (result Widget) {
 	args := []gi.Argument{arg_content_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_content_type)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3310,8 +3310,8 @@ func NewAppChooserDialogForContentType(parent IWindow, flags DialogFlags, conten
 	args := []gi.Argument{arg_parent, arg_flags, arg_content_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_content_type)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3401,8 +3401,8 @@ func NewAppChooserWidget(content_type string) (result Widget) {
 	args := []gi.Argument{arg_content_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_content_type)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3634,8 +3634,8 @@ func NewApplication(application_id string, flags gio.ApplicationFlags) (result A
 	args := []gi.Argument{arg_application_id, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_application_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3678,7 +3678,7 @@ func (v Application) AddWindow(window IWindow) {
 // gtk_application_get_accels_for_action
 // container is not nil, container is Application
 // is method
-func (v Application) GetAccelsForAction(detailed_action_name string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Application) GetAccelsForAction(detailed_action_name string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(200, "Application", "get_accels_for_action")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3690,15 +3690,15 @@ func (v Application) GetAccelsForAction(detailed_action_name string) (result int
 	args := []gi.Argument{arg_v, arg_detailed_action_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_detailed_action_name)
+	result = ret.Int() /*TODO*/
 	return
 }
 
 // gtk_application_get_actions_for_accel
 // container is not nil, container is Application
 // is method
-func (v Application) GetActionsForAccel(accel string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Application) GetActionsForAccel(accel string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(201, "Application", "get_actions_for_accel")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3710,8 +3710,8 @@ func (v Application) GetActionsForAccel(accel string) (result int /*TODO_TYPE is
 	args := []gi.Argument{arg_v, arg_accel}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_accel)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -3764,8 +3764,8 @@ func (v Application) GetMenuById(id string) (result gio.Menu) {
 	args := []gi.Argument{arg_v, arg_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3838,8 +3838,8 @@ func (v Application) Inhibit(window IWindow, flags ApplicationInhibitFlags, reas
 	args := []gi.Argument{arg_v, arg_window, arg_flags, arg_reason}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_reason)
+	result = ret.Uint32()
 	return
 }
 
@@ -3864,7 +3864,7 @@ func (v Application) IsInhibited(flags ApplicationInhibitFlags) (result bool) {
 // gtk_application_list_action_descriptions
 // container is not nil, container is Application
 // is method
-func (v Application) ListActionDescriptions() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Application) ListActionDescriptions() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(210, "Application", "list_action_descriptions")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3931,7 +3931,7 @@ func (v Application) RemoveWindow(window IWindow) {
 // gtk_application_set_accels_for_action
 // container is not nil, container is Application
 // is method
-func (v Application) SetAccelsForAction(detailed_action_name string, accels int /*TODO_TYPE array type c, p0tag: utf8*/) {
+func (v Application) SetAccelsForAction(detailed_action_name string, accels int /*TODO_TYPE array type c, elemTypeTag: utf8*/) {
 	iv, err := _I.Get(214, "Application", "set_accels_for_action")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4249,8 +4249,8 @@ func NewAspectFrame(label string, xalign float32, yalign float32, ratio float32,
 	args := []gi.Argument{arg_label, arg_xalign, arg_yalign, arg_ratio, arg_obey_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4850,8 +4850,8 @@ func BindingEntryAddSignalFromString1(binding_set BindingSet, signal_desc string
 	args := []gi.Argument{arg_binding_set, arg_signal_desc}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = glib.TokenTypeEnum(ret.Int())
 	gi.Free(c_signal_desc)
+	result = glib.TokenTypeEnum(ret.Int())
 	return
 }
 
@@ -4969,8 +4969,8 @@ func BindingSetFind1(set_name string) (result BindingSet) {
 	args := []gi.Argument{arg_set_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_set_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5370,8 +5370,8 @@ func (v *BuildableIfc) ConstructChild(builder IBuilder, name string) (result gob
 	args := []gi.Argument{arg_v, arg_builder, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5435,10 +5435,10 @@ func (v *BuildableIfc) CustomTagStart(builder IBuilder, child gobject.IObject, t
 	args := []gi.Argument{arg_v, arg_builder, arg_child, arg_tagname, arg_parser, arg_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_tagname)
 	parser = outArgs[0].Int() /*TODO*/
 	data = outArgs[1].Int()   /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -5458,8 +5458,8 @@ func (v *BuildableIfc) GetInternalChild(builder IBuilder, childname string) (res
 	args := []gi.Argument{arg_v, arg_builder, arg_childname}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_childname)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5572,8 +5572,8 @@ func NewBuilderFromFile(filename string) (result Builder) {
 	args := []gi.Argument{arg_filename}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_filename)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5591,8 +5591,8 @@ func NewBuilderFromResource(resource_path string) (result Builder) {
 	args := []gi.Argument{arg_resource_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_resource_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5611,8 +5611,8 @@ func NewBuilderFromString(string string, length int64) (result Builder) {
 	args := []gi.Argument{arg_string, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_string)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5650,9 +5650,9 @@ func (v Builder) AddFromFile(filename string) (result uint32, err error) {
 	args := []gi.Argument{arg_v, arg_filename, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_filename)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -5672,9 +5672,9 @@ func (v Builder) AddFromResource(resource_path string) (result uint32, err error
 	args := []gi.Argument{arg_v, arg_resource_path, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_resource_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -5695,16 +5695,16 @@ func (v Builder) AddFromString(buffer string, length uint64) (result uint32, err
 	args := []gi.Argument{arg_v, arg_buffer, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_buffer)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
 // gtk_builder_add_objects_from_file
 // container is not nil, container is Builder
 // is method
-func (v Builder) AddObjectsFromFile(filename string, object_ids int /*TODO_TYPE array type c, p0tag: utf8*/) (result uint32, err error) {
+func (v Builder) AddObjectsFromFile(filename string, object_ids int /*TODO_TYPE array type c, elemTypeTag: utf8*/) (result uint32, err error) {
 	iv, err := _I.Get(299, "Builder", "add_objects_from_file")
 	if err != nil {
 		return
@@ -5718,16 +5718,16 @@ func (v Builder) AddObjectsFromFile(filename string, object_ids int /*TODO_TYPE 
 	args := []gi.Argument{arg_v, arg_filename, arg_object_ids, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_filename)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
 // gtk_builder_add_objects_from_resource
 // container is not nil, container is Builder
 // is method
-func (v Builder) AddObjectsFromResource(resource_path string, object_ids int /*TODO_TYPE array type c, p0tag: utf8*/) (result uint32, err error) {
+func (v Builder) AddObjectsFromResource(resource_path string, object_ids int /*TODO_TYPE array type c, elemTypeTag: utf8*/) (result uint32, err error) {
 	iv, err := _I.Get(300, "Builder", "add_objects_from_resource")
 	if err != nil {
 		return
@@ -5741,16 +5741,16 @@ func (v Builder) AddObjectsFromResource(resource_path string, object_ids int /*T
 	args := []gi.Argument{arg_v, arg_resource_path, arg_object_ids, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_resource_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
 // gtk_builder_add_objects_from_string
 // container is not nil, container is Builder
 // is method
-func (v Builder) AddObjectsFromString(buffer string, length uint64, object_ids int /*TODO_TYPE array type c, p0tag: utf8*/) (result uint32, err error) {
+func (v Builder) AddObjectsFromString(buffer string, length uint64, object_ids int /*TODO_TYPE array type c, elemTypeTag: utf8*/) (result uint32, err error) {
 	iv, err := _I.Get(301, "Builder", "add_objects_from_string")
 	if err != nil {
 		return
@@ -5765,9 +5765,9 @@ func (v Builder) AddObjectsFromString(buffer string, length uint64, object_ids i
 	args := []gi.Argument{arg_v, arg_buffer, arg_length, arg_object_ids, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_buffer)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -5839,9 +5839,9 @@ func (v Builder) ExtendWithTemplate(widget IWidget, template_type int /*TODO_TYP
 	args := []gi.Argument{arg_v, arg_widget, arg_template_type, arg_buffer, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_buffer)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -5877,8 +5877,8 @@ func (v Builder) GetObject(name string) (result gobject.Object) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5931,8 +5931,8 @@ func (v Builder) GetTypeFromName(type_name string) (result int /*TODO_TYPE isPtr
 	args := []gi.Argument{arg_v, arg_type_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_type_name)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -5986,10 +5986,10 @@ func (v Builder) ValueFromString(pspec gobject.IParamSpec, string string) (resul
 	args := []gi.Argument{arg_v, arg_pspec, arg_string, arg_value, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_string)
 	value = outArgs[0].Int() /*TODO*/
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -6011,10 +6011,10 @@ func (v Builder) ValueFromStringType(type1 int /*TODO_TYPE isPtr: false, tag: GT
 	args := []gi.Argument{arg_v, arg_type1, arg_string, arg_value, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_string)
 	value = outArgs[0].Int() /*TODO*/
 	err = gi.ToError(outArgs[1].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -6089,8 +6089,8 @@ func NewButtonFromIconName(icon_name string, size int32) (result Widget) {
 	args := []gi.Argument{arg_icon_name, arg_size}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_icon_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6108,8 +6108,8 @@ func NewButtonFromStock(stock_id string) (result Widget) {
 	args := []gi.Argument{arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6127,8 +6127,8 @@ func NewButtonWithLabel(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6146,8 +6146,8 @@ func NewButtonWithMnemonic(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7142,7 +7142,7 @@ func (v *CellAccessibleParentIfc) GetChildIndex(cell ICellAccessible) (result in
 // gtk_cell_accessible_parent_get_column_header_cells
 // container is not nil, container is CellAccessibleParent
 // is method
-func (v *CellAccessibleParentIfc) GetColumnHeaderCells(cell ICellAccessible) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *CellAccessibleParentIfc) GetColumnHeaderCells(cell ICellAccessible) (result int /*TODO_TYPE array type: 2*/) {
 	iv, err := _I.Get(373, "CellAccessibleParent", "get_column_header_cells")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7178,7 +7178,7 @@ func (v *CellAccessibleParentIfc) GetRendererState(cell ICellAccessible) (result
 // gtk_cell_accessible_parent_get_row_header_cells
 // container is not nil, container is CellAccessibleParent
 // is method
-func (v *CellAccessibleParentIfc) GetRowHeaderCells(cell ICellAccessible) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v *CellAccessibleParentIfc) GetRowHeaderCells(cell ICellAccessible) (result int /*TODO_TYPE array type: 2*/) {
 	iv, err := _I.Get(375, "CellAccessibleParent", "get_row_header_cells")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7392,8 +7392,8 @@ func (v CellArea) AttributeGetColumn(renderer ICellRenderer, attribute string) (
 	args := []gi.Argument{arg_v, arg_renderer, arg_attribute}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int32()
 	gi.Free(c_attribute)
+	result = ret.Int32()
 	return
 }
 
@@ -7588,8 +7588,8 @@ func (v CellArea) GetCellAtPosition(context ICellAreaContext, widget IWidget, ce
 	args := []gi.Argument{arg_v, arg_context, arg_widget, arg_cell_area, arg_x, arg_y, arg_alloc_area}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	alloc_area = outArgs[0].Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -8529,8 +8529,8 @@ func (v CellRenderer) Activate(event gdk.Event, widget IWidget, path string, bac
 	args := []gi.Argument{arg_v, arg_event, arg_widget, arg_path, arg_background_area, arg_cell_area, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_path)
+	result = ret.Bool()
 	return
 }
 
@@ -8952,8 +8952,8 @@ func (v CellRenderer) StartEditing(event gdk.Event, widget IWidget, path string,
 	args := []gi.Argument{arg_v, arg_event, arg_widget, arg_path, arg_background_area, arg_cell_area, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9443,8 +9443,8 @@ func NewCellViewWithMarkup(markup string) (result Widget) {
 	args := []gi.Argument{arg_markup}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_markup)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9479,8 +9479,8 @@ func NewCellViewWithText(text string) (result Widget) {
 	args := []gi.Argument{arg_text}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_text)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9568,8 +9568,8 @@ func (v CellView) GetSizeOfRow(path TreePath) (result bool, requisition int /*TO
 	args := []gi.Argument{arg_v, arg_path, arg_requisition}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	requisition = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -9713,8 +9713,8 @@ func NewCheckButtonWithLabel(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9732,8 +9732,8 @@ func NewCheckButtonWithMnemonic(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9782,8 +9782,8 @@ func NewCheckMenuItemWithLabel(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9801,8 +9801,8 @@ func NewCheckMenuItemWithMnemonic(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10157,7 +10157,7 @@ func (v Clipboard) RequestUris(callback int /*TODO_TYPE isPtr: false, tag: inter
 // gtk_clipboard_set_can_store
 // container is not nil, container is Clipboard
 // is method
-func (v Clipboard) SetCanStore(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32) {
+func (v Clipboard) SetCanStore(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32) {
 	iv, err := _I.Get(524, "Clipboard", "set_can_store")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10255,7 +10255,7 @@ func (v Clipboard) WaitForImage() (result gdkpixbuf.Pixbuf) {
 // gtk_clipboard_wait_for_rich_text
 // container is not nil, container is Clipboard
 // is method
-func (v Clipboard) WaitForRichText(buffer ITextBuffer) (result int /*TODO_TYPE isPtr: true, tag: array*/, format gdk.Atom, length uint64) {
+func (v Clipboard) WaitForRichText(buffer ITextBuffer) (result gi.Uint8Array, format gdk.Atom, length uint64) {
 	iv, err := _I.Get(530, "Clipboard", "wait_for_rich_text")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10269,9 +10269,9 @@ func (v Clipboard) WaitForRichText(buffer ITextBuffer) (result int /*TODO_TYPE i
 	args := []gi.Argument{arg_v, arg_buffer, arg_format, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	format.P = outArgs[0].Pointer()
 	length = outArgs[1].Uint64()
+	result = gi.Uint8Array{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
@@ -10291,9 +10291,9 @@ func (v Clipboard) WaitForTargets() (result bool, targets int /*TODO_TYPE*/, n_t
 	args := []gi.Argument{arg_v, arg_targets, arg_n_targets}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	targets = outArgs[0].Int() /*TODO*/
 	n_targets = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -10317,7 +10317,7 @@ func (v Clipboard) WaitForText() (result string) {
 // gtk_clipboard_wait_for_uris
 // container is not nil, container is Clipboard
 // is method
-func (v Clipboard) WaitForUris() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Clipboard) WaitForUris() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(533, "Clipboard", "wait_for_uris")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10630,7 +10630,7 @@ type ColorChooserIfc struct{}
 // gtk_color_chooser_add_palette
 // container is not nil, container is ColorChooser
 // is method
-func (v *ColorChooserIfc) AddPalette(orientation OrientationEnum, colors_per_line int32, n_colors int32, colors int /*TODO_TYPE array type c, p0tag: interface*/) {
+func (v *ColorChooserIfc) AddPalette(orientation OrientationEnum, colors_per_line int32, n_colors int32, colors int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(550, "ColorChooser", "add_palette")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10739,8 +10739,8 @@ func NewColorChooserDialog(title string, parent IWindow) (result Widget) {
 	args := []gi.Argument{arg_title, arg_parent}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_title)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -10834,10 +10834,10 @@ func ColorSelectionPaletteFromString1(str string) (result bool, colors int /*TOD
 	args := []gi.Argument{arg_str, arg_colors, arg_n_colors}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_str)
 	colors = outArgs[0].Int() /*TODO*/
 	n_colors = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -10845,7 +10845,7 @@ func ColorSelectionPaletteFromString1(str string) (result bool, colors int /*TOD
 // container is not nil, container is ColorSelection
 // is method
 // arg0Type tag: array, isPtr: true
-func ColorSelectionPaletteToString1(colors int /*TODO_TYPE array type c, p0tag: interface*/, n_colors int32) (result string) {
+func ColorSelectionPaletteToString1(colors int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_colors int32) (result string) {
 	iv, err := _I.Get(559, "ColorSelection", "palette_to_string")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11165,8 +11165,8 @@ func NewColorSelectionDialog(title string) (result Widget) {
 	args := []gi.Argument{arg_title}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_title)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -11360,8 +11360,8 @@ func (v ComboBox) GetActiveIter() (result bool, iter int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_v, arg_iter}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	iter = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -11659,8 +11659,8 @@ func (v ComboBox) SetActiveId(active_id string) (result bool) {
 	args := []gi.Argument{arg_v, arg_active_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_active_id)
+	result = ret.Bool()
 	return
 }
 
@@ -12311,8 +12311,8 @@ func (v Container) GetFocusChain() (result bool, focusable_widgets int /*TODO_TY
 	args := []gi.Argument{arg_v, arg_focusable_widgets}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	focusable_widgets = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -12726,9 +12726,9 @@ func CssProviderGetNamed1(name string, variant string) (result CssProvider) {
 	args := []gi.Argument{arg_name, arg_variant}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_variant)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12748,8 +12748,8 @@ func (v CssProvider) LoadFromData(data gi.Uint8Array, length int64) (result bool
 	args := []gi.Argument{arg_v, arg_data, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12768,8 +12768,8 @@ func (v CssProvider) LoadFromFile(file gio.File) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_file, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -12789,9 +12789,9 @@ func (v CssProvider) LoadFromPath(path string) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_path, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -13129,8 +13129,8 @@ func (v Dialog) AddButton(button_text string, response_id int32) (result Widget)
 	args := []gi.Argument{arg_v, arg_button_text, arg_response_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_button_text)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -13502,9 +13502,9 @@ func (v *EditableIfc) GetSelectionBounds() (result bool, start_pos int32, end_po
 	args := []gi.Argument{arg_v, arg_start_pos, arg_end_pos}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	start_pos = outArgs[0].Int32()
 	end_pos = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -14910,8 +14910,8 @@ func NewEntryBuffer(initial_chars string, n_initial_chars int32) (result EntryBu
 	args := []gi.Argument{arg_initial_chars, arg_n_initial_chars}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_initial_chars)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -15054,8 +15054,8 @@ func (v EntryBuffer) InsertText(position uint32, chars string, n_chars int32) (r
 	args := []gi.Argument{arg_v, arg_position, arg_chars, arg_n_chars}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_chars)
+	result = ret.Uint32()
 	return
 }
 
@@ -15173,8 +15173,8 @@ func (v EntryCompletion) ComputePrefix(key string) (result string) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_key)
+	result = ret.String().Take()
 	return
 }
 
@@ -16008,8 +16008,8 @@ func NewExpander(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16027,8 +16027,8 @@ func NewExpanderWithMnemonic(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16335,7 +16335,7 @@ type FileChooserIfc struct{}
 // gtk_file_chooser_add_choice
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) AddChoice(id string, label string, options int /*TODO_TYPE array type c, p0tag: utf8*/, option_labels int /*TODO_TYPE array type c, p0tag: utf8*/) {
+func (v *FileChooserIfc) AddChoice(id string, label string, options int /*TODO_TYPE array type c, elemTypeTag: utf8*/, option_labels int /*TODO_TYPE array type c, elemTypeTag: utf8*/) {
 	iv, err := _I.Get(857, "FileChooser", "add_choice")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16385,9 +16385,9 @@ func (v *FileChooserIfc) AddShortcutFolder(folder string) (result bool, err erro
 	args := []gi.Argument{arg_v, arg_folder, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_folder)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -16407,9 +16407,9 @@ func (v *FileChooserIfc) AddShortcutFolderUri(uri string) (result bool, err erro
 	args := []gi.Argument{arg_v, arg_uri, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -16445,8 +16445,8 @@ func (v *FileChooserIfc) GetChoice(id string) (result string) {
 	args := []gi.Argument{arg_v, arg_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_id)
+	result = ret.String().Take()
 	return
 }
 
@@ -16940,9 +16940,9 @@ func (v *FileChooserIfc) RemoveShortcutFolder(folder string) (result bool, err e
 	args := []gi.Argument{arg_v, arg_folder, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_folder)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -16962,9 +16962,9 @@ func (v *FileChooserIfc) RemoveShortcutFolderUri(uri string) (result bool, err e
 	args := []gi.Argument{arg_v, arg_uri, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -16997,8 +16997,8 @@ func (v *FileChooserIfc) SelectFile(file gio.File) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_file, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -17017,8 +17017,8 @@ func (v *FileChooserIfc) SelectFilename(filename string) (result bool) {
 	args := []gi.Argument{arg_v, arg_filename}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_filename)
+	result = ret.Bool()
 	return
 }
 
@@ -17037,8 +17037,8 @@ func (v *FileChooserIfc) SelectUri(uri string) (result bool) {
 	args := []gi.Argument{arg_v, arg_uri}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_uri)
+	result = ret.Bool()
 	return
 }
 
@@ -17107,8 +17107,8 @@ func (v *FileChooserIfc) SetCurrentFolder(filename string) (result bool) {
 	args := []gi.Argument{arg_v, arg_filename}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_filename)
+	result = ret.Bool()
 	return
 }
 
@@ -17127,8 +17127,8 @@ func (v *FileChooserIfc) SetCurrentFolderFile(file gio.File) (result bool, err e
 	args := []gi.Argument{arg_v, arg_file, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -17147,8 +17147,8 @@ func (v *FileChooserIfc) SetCurrentFolderUri(uri string) (result bool) {
 	args := []gi.Argument{arg_v, arg_uri}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_uri)
+	result = ret.Bool()
 	return
 }
 
@@ -17214,8 +17214,8 @@ func (v *FileChooserIfc) SetFile(file gio.File) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_file, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -17234,8 +17234,8 @@ func (v *FileChooserIfc) SetFilename(filename string) (result bool) {
 	args := []gi.Argument{arg_v, arg_filename}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_filename)
+	result = ret.Bool()
 	return
 }
 
@@ -17344,8 +17344,8 @@ func (v *FileChooserIfc) SetUri(uri string) (result bool) {
 	args := []gi.Argument{arg_v, arg_uri}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_uri)
+	result = ret.Bool()
 	return
 }
 
@@ -17467,8 +17467,8 @@ func NewFileChooserButton(title string, action FileChooserActionEnum) (result Wi
 	args := []gi.Argument{arg_title, arg_action}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_title)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -17664,10 +17664,10 @@ func NewFileChooserNative(title string, parent IWindow, action FileChooserAction
 	args := []gi.Argument{arg_title, arg_parent, arg_action, arg_accept_label, arg_cancel_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_title)
 	gi.Free(c_accept_label)
 	gi.Free(c_cancel_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18724,8 +18724,8 @@ func NewFontButtonWithFont(fontname string) (result Widget) {
 	args := []gi.Argument{arg_fontname}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_fontname)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18846,8 +18846,8 @@ func (v FontButton) SetFontName(fontname string) (result bool) {
 	args := []gi.Argument{arg_v, arg_fontname}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_fontname)
+	result = ret.Bool()
 	return
 }
 
@@ -19285,8 +19285,8 @@ func NewFontChooserDialog(title string, parent IWindow) (result Widget) {
 	args := []gi.Argument{arg_title, arg_parent}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_title)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -19558,8 +19558,8 @@ func (v FontSelection) SetFontName(fontname string) (result bool) {
 	args := []gi.Argument{arg_v, arg_fontname}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_fontname)
+	result = ret.Bool()
 	return
 }
 
@@ -19608,8 +19608,8 @@ func NewFontSelectionDialog(title string) (result Widget) {
 	args := []gi.Argument{arg_title}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_title)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -19713,8 +19713,8 @@ func (v FontSelectionDialog) SetFontName(fontname string) (result bool) {
 	args := []gi.Argument{arg_v, arg_fontname}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_fontname)
+	result = ret.Bool()
 	return
 }
 
@@ -19773,8 +19773,8 @@ func NewFrame(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -20278,8 +20278,8 @@ func (v Gesture) GetBoundingBox() (result bool, rect int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_v, arg_rect}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	rect = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -20299,9 +20299,9 @@ func (v Gesture) GetBoundingBoxCenter() (result bool, x float64, y float64) {
 	args := []gi.Argument{arg_v, arg_x, arg_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	x = outArgs[0].Double()
 	y = outArgs[1].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -20391,9 +20391,9 @@ func (v Gesture) GetPoint(sequence gdk.EventSequence) (result bool, x float64, y
 	args := []gi.Argument{arg_v, arg_sequence, arg_x, arg_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	x = outArgs[0].Double()
 	y = outArgs[1].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -20645,9 +20645,9 @@ func (v GestureDrag) GetOffset() (result bool, x float64, y float64) {
 	args := []gi.Argument{arg_v, arg_x, arg_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	x = outArgs[0].Double()
 	y = outArgs[1].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -20667,9 +20667,9 @@ func (v GestureDrag) GetStartPoint() (result bool, x float64, y float64) {
 	args := []gi.Argument{arg_v, arg_x, arg_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	x = outArgs[0].Double()
 	y = outArgs[1].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -20746,8 +20746,8 @@ func (v GestureMultiPress) GetArea() (result bool, rect int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_v, arg_rect}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	rect = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -21048,7 +21048,7 @@ func NewGestureStylus(widget IWidget) (result Gesture) {
 // gtk_gesture_stylus_get_axes
 // container is not nil, container is GestureStylus
 // is method
-func (v GestureStylus) GetAxes(axes int /*TODO_TYPE array type c, p0tag: interface*/) (result bool, values int /*TODO_TYPE*/) {
+func (v GestureStylus) GetAxes(axes int /*TODO_TYPE array type c, elemTypeTag: interface*/) (result bool, values int /*TODO_TYPE*/) {
 	iv, err := _I.Get(1107, "GestureStylus", "get_axes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21061,8 +21061,8 @@ func (v GestureStylus) GetAxes(axes int /*TODO_TYPE array type c, p0tag: interfa
 	args := []gi.Argument{arg_v, arg_axes, arg_values}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	values = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -21082,8 +21082,8 @@ func (v GestureStylus) GetAxis(axis gdk.AxisUseEnum) (result bool, value float64
 	args := []gi.Argument{arg_v, arg_axis, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	value = outArgs[0].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -21149,9 +21149,9 @@ func (v GestureSwipe) GetVelocity() (result bool, velocity_x float64, velocity_y
 	args := []gi.Argument{arg_v, arg_velocity_x, arg_velocity_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	velocity_x = outArgs[0].Double()
 	velocity_y = outArgs[1].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -21298,8 +21298,8 @@ func (v Gradient) Resolve(props IStyleProperties) (result bool, resolved_gradien
 	args := []gi.Argument{arg_v, arg_props, arg_resolved_gradient}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	resolved_gradient.P = outArgs[0].Pointer()
+	result = ret.Bool()
 	return
 }
 
@@ -22594,9 +22594,9 @@ func (v IMContext) GetSurrounding() (result bool, text string, cursor_index int3
 	args := []gi.Argument{arg_v, arg_text, arg_cursor_index}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	text = outArgs[0].String().Take()
 	cursor_index = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -22874,8 +22874,8 @@ func IconFactoryLookupDefault1(stock_id string) (result IconSet) {
 	args := []gi.Argument{arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22926,8 +22926,8 @@ func (v IconFactory) Lookup(stock_id string) (result IconSet) {
 	args := []gi.Argument{arg_v, arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -22996,9 +22996,9 @@ func (v IconInfo) GetAttachPoints() (result bool, points int /*TODO_TYPE*/, n_po
 	args := []gi.Argument{arg_v, arg_points, arg_n_points}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	points = outArgs[0].Int() /*TODO*/
 	n_points = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -23085,8 +23085,8 @@ func (v IconInfo) GetEmbeddedRect() (result bool, rectangle int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_v, arg_rectangle}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	rectangle = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -23138,8 +23138,8 @@ func (v IconInfo) LoadIcon() (result gdkpixbuf.Pixbuf, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23175,8 +23175,8 @@ func (v IconInfo) LoadIconFinish(res gio.AsyncResult) (result gdkpixbuf.Pixbuf, 
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23195,8 +23195,8 @@ func (v IconInfo) LoadSurface(for_window gdk.IWindow) (result cairo.Surface, err
 	args := []gi.Argument{arg_v, arg_for_window, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23219,9 +23219,9 @@ func (v IconInfo) LoadSymbolic(fg gdk.RGBA, success_color gdk.RGBA, warning_colo
 	args := []gi.Argument{arg_v, arg_fg, arg_success_color, arg_warning_color, arg_error_color, arg_was_symbolic, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	was_symbolic = outArgs[0].Bool()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23262,9 +23262,9 @@ func (v IconInfo) LoadSymbolicFinish(res gio.AsyncResult) (result gdkpixbuf.Pixb
 	args := []gi.Argument{arg_v, arg_res, arg_was_symbolic, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	was_symbolic = outArgs[0].Bool()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23284,9 +23284,9 @@ func (v IconInfo) LoadSymbolicForContext(context IStyleContext) (result gdkpixbu
 	args := []gi.Argument{arg_v, arg_context, arg_was_symbolic, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	was_symbolic = outArgs[0].Bool()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23324,9 +23324,9 @@ func (v IconInfo) LoadSymbolicForContextFinish(res gio.AsyncResult) (result gdkp
 	args := []gi.Argument{arg_v, arg_res, arg_was_symbolic, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	was_symbolic = outArgs[0].Bool()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23347,9 +23347,9 @@ func (v IconInfo) LoadSymbolicForStyle(style IStyle, state StateTypeEnum) (resul
 	args := []gi.Argument{arg_v, arg_style, arg_state, arg_was_symbolic, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	was_symbolic = outArgs[0].Bool()
 	err = gi.ToError(outArgs[1].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -23510,8 +23510,8 @@ func (v IconSet) RenderIcon(style IStyle, direction TextDirectionEnum, state Sta
 	args := []gi.Argument{arg_v, arg_style, arg_direction, arg_state, arg_size, arg_widget, arg_detail}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_detail)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24025,7 +24025,7 @@ func (v IconTheme) AppendSearchPath(path string) {
 // gtk_icon_theme_choose_icon
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) ChooseIcon(icon_names int /*TODO_TYPE array type c, p0tag: utf8*/, size int32, flags IconLookupFlags) (result IconInfo) {
+func (v IconTheme) ChooseIcon(icon_names int /*TODO_TYPE array type c, elemTypeTag: utf8*/, size int32, flags IconLookupFlags) (result IconInfo) {
 	iv, err := _I.Get(1261, "IconTheme", "choose_icon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24045,7 +24045,7 @@ func (v IconTheme) ChooseIcon(icon_names int /*TODO_TYPE array type c, p0tag: ut
 // gtk_icon_theme_choose_icon_for_scale
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) ChooseIconForScale(icon_names int /*TODO_TYPE array type c, p0tag: utf8*/, size int32, scale int32, flags IconLookupFlags) (result IconInfo) {
+func (v IconTheme) ChooseIconForScale(icon_names int /*TODO_TYPE array type c, elemTypeTag: utf8*/, size int32, scale int32, flags IconLookupFlags) (result IconInfo) {
 	iv, err := _I.Get(1262, "IconTheme", "choose_icon_for_scale")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24083,7 +24083,7 @@ func (v IconTheme) GetExampleIconName() (result string) {
 // gtk_icon_theme_get_icon_sizes
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) GetIconSizes(icon_name string) (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v IconTheme) GetIconSizes(icon_name string) (result gi.Int32Array) {
 	iv, err := _I.Get(1264, "IconTheme", "get_icon_sizes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24095,8 +24095,8 @@ func (v IconTheme) GetIconSizes(icon_name string) (result int /*TODO_TYPE isPtr:
 	args := []gi.Argument{arg_v, arg_icon_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_icon_name)
+	result = gi.Int32Array{P: ret.Pointer(), Len: int(0)}
 	return
 }
 
@@ -24135,8 +24135,8 @@ func (v IconTheme) HasIcon(icon_name string) (result bool) {
 	args := []gi.Argument{arg_v, arg_icon_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_icon_name)
+	result = ret.Bool()
 	return
 }
 
@@ -24172,8 +24172,8 @@ func (v IconTheme) ListIcons(context string) (result int /*TODO_TYPE isPtr: true
 	args := []gi.Argument{arg_v, arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
 	gi.Free(c_context)
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -24195,9 +24195,9 @@ func (v IconTheme) LoadIcon(icon_name string, size int32, flags IconLookupFlags)
 	args := []gi.Argument{arg_v, arg_icon_name, arg_size, arg_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_icon_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24220,9 +24220,9 @@ func (v IconTheme) LoadIconForScale(icon_name string, size int32, scale int32, f
 	args := []gi.Argument{arg_v, arg_icon_name, arg_size, arg_scale, arg_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_icon_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24246,9 +24246,9 @@ func (v IconTheme) LoadSurface(icon_name string, size int32, scale int32, for_wi
 	args := []gi.Argument{arg_v, arg_icon_name, arg_size, arg_scale, arg_for_window, arg_flags, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_icon_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24310,8 +24310,8 @@ func (v IconTheme) LookupIcon(icon_name string, size int32, flags IconLookupFlag
 	args := []gi.Argument{arg_v, arg_icon_name, arg_size, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_icon_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24333,8 +24333,8 @@ func (v IconTheme) LookupIconForScale(icon_name string, size int32, scale int32,
 	args := []gi.Argument{arg_v, arg_icon_name, arg_size, arg_scale, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_icon_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24407,7 +24407,7 @@ func (v IconTheme) SetScreen(screen gdk.IScreen) {
 // gtk_icon_theme_set_search_path
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) SetSearchPath(path int /*TODO_TYPE array type c, p0tag: filename*/, n_elements int32) {
+func (v IconTheme) SetSearchPath(path int /*TODO_TYPE array type c, elemTypeTag: filename*/, n_elements int32) {
 	iv, err := _I.Get(1280, "IconTheme", "set_search_path")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24541,7 +24541,7 @@ func (v IconView) CreateDragIcon(path TreePath) (result cairo.Surface) {
 // gtk_icon_view_enable_model_drag_dest
 // container is not nil, container is IconView
 // is method
-func (v IconView) EnableModelDragDest(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v IconView) EnableModelDragDest(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(1286, "IconView", "enable_model_drag_dest")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24558,7 +24558,7 @@ func (v IconView) EnableModelDragDest(targets int /*TODO_TYPE array type c, p0ta
 // gtk_icon_view_enable_model_drag_source
 // container is not nil, container is IconView
 // is method
-func (v IconView) EnableModelDragSource(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v IconView) EnableModelDragSource(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(1287, "IconView", "enable_model_drag_source")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24607,8 +24607,8 @@ func (v IconView) GetCellRect(path TreePath, cell ICellRenderer) (result bool, r
 	args := []gi.Argument{arg_v, arg_path, arg_cell, arg_rect}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	rect = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -24662,9 +24662,9 @@ func (v IconView) GetCursor() (result bool, path TreePath, cell CellRenderer) {
 	args := []gi.Argument{arg_v, arg_path, arg_cell}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	path.P = outArgs[0].Pointer()
 	cell.P = outArgs[1].Pointer()
+	result = ret.Bool()
 	return
 }
 
@@ -24686,9 +24686,9 @@ func (v IconView) GetDestItemAtPos(drag_x int32, drag_y int32) (result bool, pat
 	args := []gi.Argument{arg_v, arg_drag_x, arg_drag_y, arg_path, arg_pos}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	path.P = outArgs[0].Pointer()
 	pos = IconViewDropPositionEnum(outArgs[1].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -24730,9 +24730,9 @@ func (v IconView) GetItemAtPos(x int32, y int32) (result bool, path TreePath, ce
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_path, arg_cell}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	path.P = outArgs[0].Pointer()
 	cell.P = outArgs[1].Pointer()
+	result = ret.Bool()
 	return
 }
 
@@ -25047,10 +25047,10 @@ func (v IconView) GetTooltipContext(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/, ke
 	args := []gi.Argument{arg_v, arg_keyboard_tip, arg_model, arg_path, arg_iter}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	model.P = outArgs[0].Pointer()
 	path.P = outArgs[1].Pointer()
 	iter = outArgs[2].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -25070,9 +25070,9 @@ func (v IconView) GetVisibleRange() (result bool, start_path TreePath, end_path 
 	args := []gi.Argument{arg_v, arg_start_path, arg_end_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	start_path.P = outArgs[0].Pointer()
 	end_path.P = outArgs[1].Pointer()
+	result = ret.Bool()
 	return
 }
 
@@ -25631,8 +25631,8 @@ func NewImageFromFile(filename string) (result Widget) {
 	args := []gi.Argument{arg_filename}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_filename)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -25669,8 +25669,8 @@ func NewImageFromIconName(icon_name string, size int32) (result Widget) {
 	args := []gi.Argument{arg_icon_name, arg_size}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_icon_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -25723,8 +25723,8 @@ func NewImageFromResource(resource_path string) (result Widget) {
 	args := []gi.Argument{arg_resource_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_resource_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -25743,8 +25743,8 @@ func NewImageFromStock(stock_id string, size int32) (result Widget) {
 	args := []gi.Argument{arg_stock_id, arg_size}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -26175,8 +26175,8 @@ func NewImageMenuItemFromStock(stock_id string, accel_group IAccelGroup) (result
 	args := []gi.Argument{arg_stock_id, arg_accel_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -26194,8 +26194,8 @@ func NewImageMenuItemWithLabel(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -26213,8 +26213,8 @@ func NewImageMenuItemWithMnemonic(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -26415,8 +26415,8 @@ func (v InfoBar) AddButton(button_text string, response_id int32) (result Button
 	args := []gi.Argument{arg_v, arg_button_text, arg_response_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_button_text)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -26771,8 +26771,8 @@ func NewLabel(str string) (result Widget) {
 	args := []gi.Argument{arg_str}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_str)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -26790,8 +26790,8 @@ func NewLabelWithMnemonic(str string) (result Widget) {
 	args := []gi.Argument{arg_str}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_str)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -27069,9 +27069,9 @@ func (v Label) GetSelectionBounds() (result bool, start int32, end int32) {
 	args := []gi.Argument{arg_v, arg_start, arg_end}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	start = outArgs[0].Int32()
 	end = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -27954,9 +27954,9 @@ func (v LevelBar) GetOffsetValue(name string) (result bool, value float64) {
 	args := []gi.Argument{arg_v, arg_name, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_name)
 	value = outArgs[0].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -28152,8 +28152,8 @@ func NewLinkButton(uri string) (result Widget) {
 	args := []gi.Argument{arg_uri}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_uri)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -28173,9 +28173,9 @@ func NewLinkButtonWithLabel(uri string, label string) (result Widget) {
 	args := []gi.Argument{arg_uri, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_uri)
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -28952,7 +28952,7 @@ func (v ListStore) P_ListStore() unsafe.Pointer { return v.P }
 // gtk_list_store_newv
 // container is not nil, container is ListStore
 // is constructor
-func NewListStore(n_columns int32, types int /*TODO_TYPE array type c, p0tag: GType*/) (result ListStore) {
+func NewListStore(n_columns int32, types int /*TODO_TYPE array type c, elemTypeTag: GType*/) (result ListStore) {
 	iv, err := _I.Get(1522, "ListStore", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29059,7 +29059,7 @@ func (v ListStore) InsertBefore(sibling TreeIter) (iter int /*TODO_TYPE*/) {
 // gtk_list_store_insert_with_valuesv
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) InsertWithValuesv(position int32, columns gi.Int32Array, values int /*TODO_TYPE array type c, p0tag: interface*/, n_values int32) (iter int /*TODO_TYPE*/) {
+func (v ListStore) InsertWithValuesv(position int32, columns gi.Int32Array, values int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_values int32) (iter int /*TODO_TYPE*/) {
 	iv, err := _I.Get(1528, "ListStore", "insert_with_valuesv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29182,7 +29182,7 @@ func (v ListStore) Reorder(new_order gi.Int32Array) {
 // gtk_list_store_set_column_types
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE array type c, p0tag: GType*/) {
+func (v ListStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE array type c, elemTypeTag: GType*/) {
 	iv, err := _I.Get(1535, "ListStore", "set_column_types")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29215,7 +29215,7 @@ func (v ListStore) SetValue(iter TreeIter, column int32, value gobject.Value) {
 // gtk_list_store_set_valuesv
 // container is not nil, container is ListStore
 // is method
-func (v ListStore) Set(iter TreeIter, columns gi.Int32Array, values int /*TODO_TYPE array type c, p0tag: interface*/, n_values int32) {
+func (v ListStore) Set(iter TreeIter, columns gi.Int32Array, values int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_values int32) {
 	iv, err := _I.Get(1537, "ListStore", "set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30304,8 +30304,8 @@ func NewMenuItemWithLabel(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -30323,8 +30323,8 @@ func NewMenuItemWithMnemonic(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -30914,8 +30914,8 @@ func NewMenuToolButton(icon_widget IWidget, label string) (result ToolItem) {
 	args := []gi.Argument{arg_icon_widget, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -30933,8 +30933,8 @@ func NewMenuToolButtonFromStock(stock_id string) (result ToolItem) {
 	args := []gi.Argument{arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -32930,7 +32930,7 @@ func (v PadController) SetAction(type1 PadActionTypeEnum, index int32, mode int3
 // gtk_pad_controller_set_action_entries
 // container is not nil, container is PadController
 // is method
-func (v PadController) SetActionEntries(entries int /*TODO_TYPE array type c, p0tag: interface*/, n_entries int32) {
+func (v PadController) SetActionEntries(entries int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_entries int32) {
 	iv, err := _I.Get(1729, "PadController", "set_action_entries")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -33009,9 +33009,9 @@ func NewPageSetupFromFile(file_name string) (result PageSetup, err error) {
 	args := []gi.Argument{arg_file_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_file_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33048,9 +33048,9 @@ func NewPageSetupFromKeyFile(key_file glib.KeyFile, group_name string) (result P
 	args := []gi.Argument{arg_key_file, arg_group_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_group_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33265,9 +33265,9 @@ func (v PageSetup) LoadFile(file_name string) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_file_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_file_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -33288,9 +33288,9 @@ func (v PageSetup) LoadKeyFile(key_file glib.KeyFile, group_name string) (result
 	args := []gi.Argument{arg_v, arg_key_file, arg_group_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_group_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -33419,9 +33419,9 @@ func (v PageSetup) ToFile(file_name string) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_file_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_file_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -33724,8 +33724,8 @@ func NewPaperSize(name string) (result PaperSize) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33748,9 +33748,9 @@ func NewPaperSizeCustom(name string, display_name string, width float64, height 
 	args := []gi.Argument{arg_name, arg_display_name, arg_width, arg_height, arg_unit}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_display_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33787,8 +33787,8 @@ func NewPaperSizeFromIpp(ipp_name string, width float64, height float64) (result
 	args := []gi.Argument{arg_ipp_name, arg_width, arg_height}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_ipp_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33808,9 +33808,9 @@ func NewPaperSizeFromKeyFile(key_file glib.KeyFile, group_name string) (result P
 	args := []gi.Argument{arg_key_file, arg_group_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_group_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33832,9 +33832,9 @@ func NewPaperSizeFromPpd(ppd_name string, ppd_display_name string, width float64
 	args := []gi.Argument{arg_ppd_name, arg_ppd_display_name, arg_width, arg_height}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_ppd_name)
 	gi.Free(c_ppd_display_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -34888,8 +34888,8 @@ func (v Popover) GetPointingTo() (result bool, rect int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_v, arg_rect}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	rect = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -35274,11 +35274,11 @@ func (v PrintContext) GetHardMargins() (result bool, top float64, bottom float64
 	args := []gi.Argument{arg_v, arg_top, arg_bottom, arg_left, arg_right}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	top = outArgs[0].Double()
 	bottom = outArgs[1].Double()
 	left = outArgs[2].Double()
 	right = outArgs[3].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -35627,8 +35627,8 @@ func (v PrintOperation) Run(action PrintOperationActionEnum, parent IWindow) (re
 	args := []gi.Argument{arg_v, arg_action, arg_parent, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = PrintOperationResultEnum(ret.Int())
 	err = gi.ToError(outArgs[0].Pointer())
+	result = PrintOperationResultEnum(ret.Int())
 	return
 }
 
@@ -36019,9 +36019,9 @@ func NewPrintSettingsFromFile(file_name string) (result PrintSettings, err error
 	args := []gi.Argument{arg_file_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_file_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -36058,9 +36058,9 @@ func NewPrintSettingsFromKeyFile(key_file glib.KeyFile, group_name string) (resu
 	args := []gi.Argument{arg_key_file, arg_group_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_group_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -36112,8 +36112,8 @@ func (v PrintSettings) Get(key string) (result string) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_key)
+	result = ret.String().Take()
 	return
 }
 
@@ -36132,8 +36132,8 @@ func (v PrintSettings) GetBool(key string) (result bool) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -36203,8 +36203,8 @@ func (v PrintSettings) GetDouble(key string) (result float64) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Double()
 	gi.Free(c_key)
+	result = ret.Double()
 	return
 }
 
@@ -36224,8 +36224,8 @@ func (v PrintSettings) GetDoubleWithDefault(key string, def float64) (result flo
 	args := []gi.Argument{arg_v, arg_key, arg_def}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Double()
 	gi.Free(c_key)
+	result = ret.Double()
 	return
 }
 
@@ -36278,8 +36278,8 @@ func (v PrintSettings) GetInt(key string) (result int32) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int32()
 	gi.Free(c_key)
+	result = ret.Int32()
 	return
 }
 
@@ -36299,8 +36299,8 @@ func (v PrintSettings) GetIntWithDefault(key string, def int32) (result int32) {
 	args := []gi.Argument{arg_v, arg_key, arg_def}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int32()
 	gi.Free(c_key)
+	result = ret.Int32()
 	return
 }
 
@@ -36320,8 +36320,8 @@ func (v PrintSettings) GetLength(key string, unit UnitEnum) (result float64) {
 	args := []gi.Argument{arg_v, arg_key, arg_unit}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Double()
 	gi.Free(c_key)
+	result = ret.Double()
 	return
 }
 
@@ -36430,7 +36430,7 @@ func (v PrintSettings) GetOutputBin() (result string) {
 // gtk_print_settings_get_page_ranges
 // container is not nil, container is PrintSettings
 // is method
-func (v PrintSettings) GetPageRanges() (result int /*TODO_TYPE isPtr: true, tag: array*/, num_ranges int32) {
+func (v PrintSettings) GetPageRanges() (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 0*/, num_ranges int32) {
 	iv, err := _I.Get(1916, "PrintSettings", "get_page_ranges")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -36442,8 +36442,8 @@ func (v PrintSettings) GetPageRanges() (result int /*TODO_TYPE isPtr: true, tag:
 	args := []gi.Argument{arg_v, arg_num_ranges}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	num_ranges = outArgs[0].Int32()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -36702,8 +36702,8 @@ func (v PrintSettings) HasKey(key string) (result bool) {
 	args := []gi.Argument{arg_v, arg_key}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_key)
+	result = ret.Bool()
 	return
 }
 
@@ -36723,9 +36723,9 @@ func (v PrintSettings) LoadFile(file_name string) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_file_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_file_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -36746,9 +36746,9 @@ func (v PrintSettings) LoadKeyFile(key_file glib.KeyFile, group_name string) (re
 	args := []gi.Argument{arg_v, arg_key_file, arg_group_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_group_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -37023,7 +37023,7 @@ func (v PrintSettings) SetOutputBin(output_bin string) {
 // gtk_print_settings_set_page_ranges
 // container is not nil, container is PrintSettings
 // is method
-func (v PrintSettings) SetPageRanges(page_ranges int /*TODO_TYPE array type c, p0tag: interface*/, num_ranges int32) {
+func (v PrintSettings) SetPageRanges(page_ranges int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_ranges int32) {
 	iv, err := _I.Get(1950, "PrintSettings", "set_page_ranges")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -37252,9 +37252,9 @@ func (v PrintSettings) ToFile(file_name string) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_file_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_file_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -37630,11 +37630,11 @@ func NewRadioAction(name string, label string, tooltip string, stock_id string, 
 	args := []gi.Argument{arg_name, arg_label, arg_tooltip, arg_stock_id, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_label)
 	gi.Free(c_tooltip)
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -37792,8 +37792,8 @@ func NewRadioButtonWithLabel(group int /*TODO_TYPE isPtr: true, tag: gslist*/, l
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -37812,8 +37812,8 @@ func NewRadioButtonWithLabelFromWidget(radio_group_member IRadioButton, label st
 	args := []gi.Argument{arg_radio_group_member, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -37832,8 +37832,8 @@ func NewRadioButtonWithMnemonic(group int /*TODO_TYPE isPtr: true, tag: gslist*/
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -37852,8 +37852,8 @@ func NewRadioButtonWithMnemonicFromWidget(radio_group_member IRadioButton, label
 	args := []gi.Argument{arg_radio_group_member, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -37994,8 +37994,8 @@ func NewRadioMenuItemWithLabel(group int /*TODO_TYPE isPtr: true, tag: gslist*/,
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -38014,8 +38014,8 @@ func NewRadioMenuItemWithLabelFromWidget(group IRadioMenuItem, label string) (re
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -38034,8 +38034,8 @@ func NewRadioMenuItemWithMnemonic(group int /*TODO_TYPE isPtr: true, tag: gslist
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -38054,8 +38054,8 @@ func NewRadioMenuItemWithMnemonicFromWidget(group IRadioMenuItem, label string) 
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -38179,8 +38179,8 @@ func NewRadioToolButtonFromStock(group int /*TODO_TYPE isPtr: true, tag: gslist*
 	args := []gi.Argument{arg_group, arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -38216,8 +38216,8 @@ func NewRadioToolButtonWithStockFromWidget(group IRadioToolButton, stock_id stri
 	args := []gi.Argument{arg_group, arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -38990,11 +38990,11 @@ func NewRecentAction(name string, label string, tooltip string, stock_id string)
 	args := []gi.Argument{arg_name, arg_label, arg_tooltip, arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_label)
 	gi.Free(c_tooltip)
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -39019,11 +39019,11 @@ func NewRecentActionForManager(name string, label string, tooltip string, stock_
 	args := []gi.Argument{arg_name, arg_label, arg_tooltip, arg_stock_id, arg_manager}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_label)
 	gi.Free(c_tooltip)
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -39294,7 +39294,7 @@ func (v *RecentChooserIfc) GetSortType() (result RecentSortTypeEnum) {
 // gtk_recent_chooser_get_uris
 // container is not nil, container is RecentChooser
 // is method
-func (v *RecentChooserIfc) GetUris() (result int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) {
+func (v *RecentChooserIfc) GetUris() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 0*/, length uint64) {
 	iv, err := _I.Get(2064, "RecentChooser", "get_uris")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -39306,8 +39306,8 @@ func (v *RecentChooserIfc) GetUris() (result int /*TODO_TYPE isPtr: true, tag: a
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	length = outArgs[0].Uint64()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -39373,9 +39373,9 @@ func (v *RecentChooserIfc) SelectUri(uri string) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_uri, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -39395,9 +39395,9 @@ func (v *RecentChooserIfc) SetCurrentUri(uri string) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_uri, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -40005,9 +40005,9 @@ func (v RecentInfo) CreateAppInfo(app_name string) (result gio.AppInfo, err erro
 	args := []gi.Argument{arg_v, arg_app_name, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_app_name)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -40081,18 +40081,18 @@ func (v RecentInfo) GetApplicationInfo(app_name string) (result bool, app_exec s
 	args := []gi.Argument{arg_v, arg_app_name, arg_app_exec, arg_count, arg_time_}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_app_name)
 	app_exec = outArgs[0].String().Take()
 	count = outArgs[1].Uint32()
 	time_ = outArgs[2].Int64()
+	result = ret.Bool()
 	return
 }
 
 // gtk_recent_info_get_applications
 // container is not nil, container is RecentInfo
 // is method
-func (v RecentInfo) GetApplications() (result int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) {
+func (v RecentInfo) GetApplications() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 0*/, length uint64) {
 	iv, err := _I.Get(2105, "RecentInfo", "get_applications")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -40104,8 +40104,8 @@ func (v RecentInfo) GetApplications() (result int /*TODO_TYPE isPtr: true, tag: 
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	length = outArgs[0].Uint64()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -40163,7 +40163,7 @@ func (v RecentInfo) GetGicon() (result gio.Icon) {
 // gtk_recent_info_get_groups
 // container is not nil, container is RecentInfo
 // is method
-func (v RecentInfo) GetGroups() (result int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) {
+func (v RecentInfo) GetGroups() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 0*/, length uint64) {
 	iv, err := _I.Get(2109, "RecentInfo", "get_groups")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -40175,8 +40175,8 @@ func (v RecentInfo) GetGroups() (result int /*TODO_TYPE isPtr: true, tag: array*
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	length = outArgs[0].Uint64()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -40332,8 +40332,8 @@ func (v RecentInfo) HasApplication(app_name string) (result bool) {
 	args := []gi.Argument{arg_v, arg_app_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_app_name)
+	result = ret.Bool()
 	return
 }
 
@@ -40352,8 +40352,8 @@ func (v RecentInfo) HasGroup(group_name string) (result bool) {
 	args := []gi.Argument{arg_v, arg_group_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_group_name)
+	result = ret.Bool()
 	return
 }
 
@@ -40482,8 +40482,8 @@ func (v RecentManager) AddFull(uri string, recent_data RecentData) (result bool)
 	args := []gi.Argument{arg_v, arg_uri, arg_recent_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_uri)
+	result = ret.Bool()
 	return
 }
 
@@ -40502,8 +40502,8 @@ func (v RecentManager) AddItem(uri string) (result bool) {
 	args := []gi.Argument{arg_v, arg_uri}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_uri)
+	result = ret.Bool()
 	return
 }
 
@@ -40539,8 +40539,8 @@ func (v RecentManager) HasItem(uri string) (result bool) {
 	args := []gi.Argument{arg_v, arg_uri}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_uri)
+	result = ret.Bool()
 	return
 }
 
@@ -40560,9 +40560,9 @@ func (v RecentManager) LookupItem(uri string) (result RecentInfo, err error) {
 	args := []gi.Argument{arg_v, arg_uri, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result.P = ret.Pointer()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result.P = ret.Pointer()
 	return
 }
 
@@ -40584,10 +40584,10 @@ func (v RecentManager) MoveItem(uri string, new_uri string) (result bool, err er
 	args := []gi.Argument{arg_v, arg_uri, arg_new_uri, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_uri)
 	gi.Free(c_new_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -40605,8 +40605,8 @@ func (v RecentManager) PurgeItems() (result int32, err error) {
 	args := []gi.Argument{arg_v, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int32()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Int32()
 	return
 }
 
@@ -40626,9 +40626,9 @@ func (v RecentManager) RemoveItem(uri string) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_uri, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -41243,7 +41243,7 @@ func (v ScaleButton) P_ScaleButton() unsafe.Pointer { return v.P }
 // gtk_scale_button_new
 // container is not nil, container is ScaleButton
 // is constructor
-func NewScaleButton(size int32, min float64, max float64, step float64, icons int /*TODO_TYPE array type c, p0tag: utf8*/) (result Widget) {
+func NewScaleButton(size int32, min float64, max float64, step float64, icons int /*TODO_TYPE array type c, elemTypeTag: utf8*/) (result Widget) {
 	iv, err := _I.Get(2161, "ScaleButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -41364,7 +41364,7 @@ func (v ScaleButton) SetAdjustment(adjustment IAdjustment) {
 // gtk_scale_button_set_icons
 // container is not nil, container is ScaleButton
 // is method
-func (v ScaleButton) SetIcons(icons int /*TODO_TYPE array type c, p0tag: utf8*/) {
+func (v ScaleButton) SetIcons(icons int /*TODO_TYPE array type c, elemTypeTag: utf8*/) {
 	iv, err := _I.Get(2168, "ScaleButton", "set_icons")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -41480,8 +41480,8 @@ func (v *ScrollableIfc) GetBorder() (result bool, border int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_v, arg_border}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	border = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -42456,7 +42456,7 @@ func (v SelectionData) GetDataType() (result gdk.Atom) {
 // gtk_selection_data_get_data_with_length
 // container is not nil, container is SelectionData
 // is method
-func (v SelectionData) GetData() (result int /*TODO_TYPE isPtr: true, tag: array*/, length int32) {
+func (v SelectionData) GetData() (result gi.Uint8Array, length int32) {
 	iv, err := _I.Get(2225, "SelectionData", "get_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42468,8 +42468,8 @@ func (v SelectionData) GetData() (result int /*TODO_TYPE isPtr: true, tag: array
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	length = outArgs[0].Int32()
+	result = gi.Uint8Array{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
@@ -42591,9 +42591,9 @@ func (v SelectionData) GetTargets() (result bool, targets int /*TODO_TYPE*/, n_a
 	args := []gi.Argument{arg_v, arg_targets, arg_n_atoms}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	targets = outArgs[0].Int() /*TODO*/
 	n_atoms = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -42617,7 +42617,7 @@ func (v SelectionData) GetText() (result string) {
 // gtk_selection_data_get_uris
 // container is not nil, container is SelectionData
 // is method
-func (v SelectionData) GetUris() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v SelectionData) GetUris() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(2234, "SelectionData", "get_uris")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42683,15 +42683,15 @@ func (v SelectionData) SetText(str string, len1 int32) (result bool) {
 	args := []gi.Argument{arg_v, arg_str, arg_len1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_str)
+	result = ret.Bool()
 	return
 }
 
 // gtk_selection_data_set_uris
 // container is not nil, container is SelectionData
 // is method
-func (v SelectionData) SetUris(uris int /*TODO_TYPE array type c, p0tag: utf8*/) (result bool) {
+func (v SelectionData) SetUris(uris int /*TODO_TYPE array type c, elemTypeTag: utf8*/) (result bool) {
 	iv, err := _I.Get(2238, "SelectionData", "set_uris")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -43141,8 +43141,8 @@ func NewShortcutLabel(accelerator string) (result Widget) {
 	args := []gi.Argument{arg_accelerator}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_accelerator)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -44170,8 +44170,8 @@ func (v Stack) GetChildByName(name string) (result Widget) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -44709,8 +44709,8 @@ func NewStatusIconFromFile(filename string) (result StatusIcon) {
 	args := []gi.Argument{arg_filename}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_filename)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -44745,8 +44745,8 @@ func NewStatusIconFromIconName(icon_name string) (result StatusIcon) {
 	args := []gi.Argument{arg_icon_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_icon_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -44781,8 +44781,8 @@ func NewStatusIconFromStock(stock_id string) (result StatusIcon) {
 	args := []gi.Argument{arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -44823,10 +44823,10 @@ func (v StatusIcon) GetGeometry() (result bool, screen gdk.Screen, area int /*TO
 	args := []gi.Argument{arg_v, arg_screen, arg_area, arg_orientation}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	screen.P = outArgs[0].Pointer()
 	area = outArgs[1].Int() /*TODO*/
 	orientation = OrientationEnum(outArgs[2].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -45312,8 +45312,8 @@ func (v Statusbar) GetContextId(context_description string) (result uint32) {
 	args := []gi.Argument{arg_v, arg_context_description}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_context_description)
+	result = ret.Uint32()
 	return
 }
 
@@ -45365,8 +45365,8 @@ func (v Statusbar) Push(context_id uint32, text string) (result uint32) {
 	args := []gi.Argument{arg_v, arg_context_id, arg_text}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
 	gi.Free(c_text)
+	result = ret.Uint32()
 	return
 }
 
@@ -45578,9 +45578,9 @@ func (v Style) LookupColor(color_name string) (result bool, color int /*TODO_TYP
 	args := []gi.Argument{arg_v, arg_color_name, arg_color}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_color_name)
 	color = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -45599,8 +45599,8 @@ func (v Style) LookupIconSet(stock_id string) (result IconSet) {
 	args := []gi.Argument{arg_v, arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -45624,8 +45624,8 @@ func (v Style) RenderIcon(source IconSource, direction TextDirectionEnum, state 
 	args := []gi.Argument{arg_v, arg_source, arg_direction, arg_state, arg_size, arg_widget, arg_detail}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_detail)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -46074,8 +46074,8 @@ func (v StyleContext) GetSection(property string) (result CssSection) {
 	args := []gi.Argument{arg_v, arg_property}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_property)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -46129,8 +46129,8 @@ func (v StyleContext) HasClass(class_name string) (result bool) {
 	args := []gi.Argument{arg_v, arg_class_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_class_name)
+	result = ret.Bool()
 	return
 }
 
@@ -46151,9 +46151,9 @@ func (v StyleContext) HasRegion(region_name string) (result bool, flags_return R
 	args := []gi.Argument{arg_v, arg_region_name, arg_flags_return}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_region_name)
 	flags_return = RegionFlags(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -46222,9 +46222,9 @@ func (v StyleContext) LookupColor(color_name string) (result bool, color int /*T
 	args := []gi.Argument{arg_v, arg_color_name, arg_color}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_color_name)
 	color = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -46243,8 +46243,8 @@ func (v StyleContext) LookupIconSet(stock_id string) (result IconSet) {
 	args := []gi.Argument{arg_v, arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -46540,8 +46540,8 @@ func (v StyleContext) StateIsRunning(state StateTypeEnum) (result bool, progress
 	args := []gi.Argument{arg_v, arg_state, arg_progress}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	progress = outArgs[0].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -46637,9 +46637,9 @@ func (v StyleProperties) GetProperty(property string, state StateFlags) (result 
 	args := []gi.Argument{arg_v, arg_property, arg_state, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_property)
 	value = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -46658,8 +46658,8 @@ func (v StyleProperties) LookupColor(name string) (result SymbolicColor) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -46801,8 +46801,8 @@ func (v *StyleProviderIfc) GetStyleProperty(path WidgetPath, state StateFlags, p
 	args := []gi.Argument{arg_v, arg_path, arg_state, arg_pspec, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	value = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -46999,8 +46999,8 @@ func NewSymbolicColorName(name string) (result SymbolicColor) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -47037,8 +47037,8 @@ func NewSymbolicColorWin32(theme_class string, id int32) (result SymbolicColor) 
 	args := []gi.Argument{arg_theme_class, arg_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_theme_class)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -47075,8 +47075,8 @@ func (v SymbolicColor) Resolve(props IStyleProperties) (result bool, resolved_co
 	args := []gi.Argument{arg_v, arg_props, arg_resolved_color}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	resolved_color = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -47422,8 +47422,8 @@ func NewTargetEntry(target string, flags uint32, info uint32) (result TargetEntr
 	args := []gi.Argument{arg_target, arg_flags, arg_info}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_target)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -47476,7 +47476,7 @@ type TargetList struct {
 // gtk_target_list_new
 // container is not nil, container is TargetList
 // is constructor
-func NewTargetList(targets int /*TODO_TYPE array type c, p0tag: interface*/, ntargets uint32) (result TargetList) {
+func NewTargetList(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, ntargets uint32) (result TargetList) {
 	iv, err := _I.Get(2478, "TargetList", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47544,7 +47544,7 @@ func (v TargetList) AddRichTextTargets(info uint32, deserializable bool, buffer 
 // gtk_target_list_add_table
 // container is not nil, container is TargetList
 // is method
-func (v TargetList) AddTable(targets int /*TODO_TYPE array type c, p0tag: interface*/, ntargets uint32) {
+func (v TargetList) AddTable(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, ntargets uint32) {
 	iv, err := _I.Get(2482, "TargetList", "add_table")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47603,8 +47603,8 @@ func (v TargetList) Find(target gdk.Atom) (result bool, info uint32) {
 	args := []gi.Argument{arg_v, arg_target, arg_info}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	info = outArgs[0].Uint32()
+	result = ret.Bool()
 	return
 }
 
@@ -47967,8 +47967,8 @@ func (v TextBuffer) CreateMark(mark_name string, where TextIter, left_gravity bo
 	args := []gi.Argument{arg_v, arg_mark_name, arg_where, arg_left_gravity}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_mark_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -48094,8 +48094,8 @@ func (v TextBuffer) Deserialize(content_buffer ITextBuffer, format gdk.Atom, ite
 	args := []gi.Argument{arg_v, arg_content_buffer, arg_format, arg_iter, arg_data, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -48204,7 +48204,7 @@ func (v TextBuffer) GetCopyTargetList() (result TargetList) {
 // gtk_text_buffer_get_deserialize_formats
 // container is not nil, container is TextBuffer
 // is method
-func (v TextBuffer) GetDeserializeFormats() (result int /*TODO_TYPE isPtr: true, tag: array*/, n_formats int32) {
+func (v TextBuffer) GetDeserializeFormats() (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 0*/, n_formats int32) {
 	iv, err := _I.Get(2518, "TextBuffer", "get_deserialize_formats")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -48216,8 +48216,8 @@ func (v TextBuffer) GetDeserializeFormats() (result int /*TODO_TYPE isPtr: true,
 	args := []gi.Argument{arg_v, arg_n_formats}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	n_formats = outArgs[0].Int32()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -48421,8 +48421,8 @@ func (v TextBuffer) GetMark(name string) (result TextMark) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -48493,16 +48493,16 @@ func (v TextBuffer) GetSelectionBounds() (result bool, start int /*TODO_TYPE*/, 
 	args := []gi.Argument{arg_v, arg_start, arg_end}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	start = outArgs[0].Int() /*TODO*/
 	end = outArgs[1].Int()   /*TODO*/
+	result = ret.Bool()
 	return
 }
 
 // gtk_text_buffer_get_serialize_formats
 // container is not nil, container is TextBuffer
 // is method
-func (v TextBuffer) GetSerializeFormats() (result int /*TODO_TYPE isPtr: true, tag: array*/, n_formats int32) {
+func (v TextBuffer) GetSerializeFormats() (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 0*/, n_formats int32) {
 	iv, err := _I.Get(2534, "TextBuffer", "get_serialize_formats")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -48514,8 +48514,8 @@ func (v TextBuffer) GetSerializeFormats() (result int /*TODO_TYPE isPtr: true, t
 	args := []gi.Argument{arg_v, arg_n_formats}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	n_formats = outArgs[0].Int32()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -48665,8 +48665,8 @@ func (v TextBuffer) InsertInteractive(iter TextIter, text string, len1 int32, de
 	args := []gi.Argument{arg_v, arg_iter, arg_text, arg_len1, arg_default_editable}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_text)
+	result = ret.Bool()
 	return
 }
 
@@ -48687,8 +48687,8 @@ func (v TextBuffer) InsertInteractiveAtCursor(text string, len1 int32, default_e
 	args := []gi.Argument{arg_v, arg_text, arg_len1, arg_default_editable}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_text)
+	result = ret.Bool()
 	return
 }
 
@@ -48849,8 +48849,8 @@ func (v TextBuffer) RegisterDeserializeFormat(mime_type string, function int /*T
 	args := []gi.Argument{arg_v, arg_mime_type, arg_function, arg_user_data, arg_user_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_mime_type)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -48869,8 +48869,8 @@ func (v TextBuffer) RegisterDeserializeTagset(tagset_name string) (result gdk.At
 	args := []gi.Argument{arg_v, arg_tagset_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_tagset_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -48892,8 +48892,8 @@ func (v TextBuffer) RegisterSerializeFormat(mime_type string, function int /*TOD
 	args := []gi.Argument{arg_v, arg_mime_type, arg_function, arg_user_data, arg_user_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_mime_type)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -48912,8 +48912,8 @@ func (v TextBuffer) RegisterSerializeTagset(tagset_name string) (result gdk.Atom
 	args := []gi.Argument{arg_v, arg_tagset_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_tagset_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -49003,7 +49003,7 @@ func (v TextBuffer) SelectRange(ins TextIter, bound TextIter) {
 // gtk_text_buffer_serialize
 // container is not nil, container is TextBuffer
 // is method
-func (v TextBuffer) Serialize(content_buffer ITextBuffer, format gdk.Atom, start TextIter, end TextIter) (result int /*TODO_TYPE isPtr: true, tag: array*/, length uint64) {
+func (v TextBuffer) Serialize(content_buffer ITextBuffer, format gdk.Atom, start TextIter, end TextIter) (result gi.Uint8Array, length uint64) {
 	iv, err := _I.Get(2561, "TextBuffer", "serialize")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -49019,8 +49019,8 @@ func (v TextBuffer) Serialize(content_buffer ITextBuffer, format gdk.Atom, start
 	args := []gi.Argument{arg_v, arg_content_buffer, arg_format, arg_start, arg_end, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	length = outArgs[0].Uint64()
+	result = gi.Uint8Array{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
@@ -49366,10 +49366,10 @@ func (v TextIter) BackwardSearch(str string, flags TextSearchFlags, limit TextIt
 	args := []gi.Argument{arg_v, arg_str, arg_flags, arg_match_start, arg_match_end, arg_limit}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_str)
 	match_start = outArgs[0].Int() /*TODO*/
 	match_end = outArgs[1].Int()   /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -49887,10 +49887,10 @@ func (v TextIter) ForwardSearch(str string, flags TextSearchFlags, limit TextIte
 	args := []gi.Argument{arg_v, arg_str, arg_flags, arg_match_start, arg_match_end, arg_limit}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_str)
 	match_start = outArgs[0].Int() /*TODO*/
 	match_end = outArgs[1].Int()   /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -50147,8 +50147,8 @@ func (v TextIter) GetAttributes() (result bool, values int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_v, arg_values}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	values = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -50837,8 +50837,8 @@ func NewTextMark(name string, left_gravity bool) (result TextMark) {
 	args := []gi.Argument{arg_name, arg_left_gravity}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -50977,8 +50977,8 @@ func NewTextTag(name string) (result TextTag) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -51148,8 +51148,8 @@ func (v TextTagTable) Lookup(name string) (result TextTag) {
 	args := []gi.Argument{arg_v, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -51575,8 +51575,8 @@ func (v TextView) GetIterAtLocation(x int32, y int32) (result bool, iter int /*T
 	args := []gi.Argument{arg_v, arg_iter, arg_x, arg_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	iter = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -51598,9 +51598,9 @@ func (v TextView) GetIterAtPosition(x int32, y int32) (result bool, iter int /*T
 	args := []gi.Argument{arg_v, arg_iter, arg_trailing, arg_x, arg_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	iter = outArgs[0].Int() /*TODO*/
 	trailing = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -52519,8 +52519,8 @@ func ThemingEngineLoad1(name string) (result ThemingEngine) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -52799,8 +52799,8 @@ func (v ThemingEngine) HasClass(style_class string) (result bool) {
 	args := []gi.Argument{arg_v, arg_style_class}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_style_class)
+	result = ret.Bool()
 	return
 }
 
@@ -52821,9 +52821,9 @@ func (v ThemingEngine) HasRegion(style_region string) (result bool, flags Region
 	args := []gi.Argument{arg_v, arg_style_region, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_style_region)
 	flags = RegionFlags(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -52844,9 +52844,9 @@ func (v ThemingEngine) LookupColor(color_name string) (result bool, color int /*
 	args := []gi.Argument{arg_v, arg_color_name, arg_color}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_color_name)
 	color = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -52866,8 +52866,8 @@ func (v ThemingEngine) StateIsRunning(state StateTypeEnum) (result bool, progres
 	args := []gi.Argument{arg_v, arg_state, arg_progress}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	progress = outArgs[0].Double()
+	result = ret.Bool()
 	return
 }
 
@@ -52909,11 +52909,11 @@ func NewToggleAction(name string, label string, tooltip string, stock_id string)
 	args := []gi.Argument{arg_name, arg_label, arg_tooltip, arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
 	gi.Free(c_label)
 	gi.Free(c_tooltip)
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -53050,8 +53050,8 @@ func NewToggleButtonWithLabel(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -53069,8 +53069,8 @@ func NewToggleButtonWithMnemonic(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -53254,8 +53254,8 @@ func NewToggleToolButtonFromStock(stock_id string) (result ToolItem) {
 	args := []gi.Argument{arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -53327,8 +53327,8 @@ func NewToolButton(icon_widget IWidget, label string) (result ToolItem) {
 	args := []gi.Argument{arg_icon_widget, arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -53346,8 +53346,8 @@ func NewToolButtonFromStock(stock_id string) (result ToolItem) {
 	args := []gi.Argument{arg_stock_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -53701,8 +53701,8 @@ func (v ToolItem) GetProxyMenuItem(menu_item_id string) (result Widget) {
 	args := []gi.Argument{arg_v, arg_menu_item_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_menu_item_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -54058,8 +54058,8 @@ func NewToolItemGroup(label string) (result Widget) {
 	args := []gi.Argument{arg_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -55586,8 +55586,8 @@ func (v *TreeModelIfc) GetIter(path TreePath) (result bool, iter int /*TODO_TYPE
 	args := []gi.Argument{arg_v, arg_iter, arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	iter = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -55606,8 +55606,8 @@ func (v *TreeModelIfc) GetIterFirst() (result bool, iter int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_v, arg_iter}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	iter = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -55628,9 +55628,9 @@ func (v *TreeModelIfc) GetIterFromString(path_string string) (result bool, iter 
 	args := []gi.Argument{arg_v, arg_iter, arg_path_string}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	iter = outArgs[0].Int() /*TODO*/
 	gi.Free(c_path_string)
+	result = ret.Bool()
 	return
 }
 
@@ -55723,8 +55723,8 @@ func (v *TreeModelIfc) IterChildren(parent TreeIter) (result bool, iter int /*TO
 	args := []gi.Argument{arg_v, arg_iter, arg_parent}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	iter = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -55799,8 +55799,8 @@ func (v *TreeModelIfc) IterNthChild(parent TreeIter, n int32) (result bool, iter
 	args := []gi.Argument{arg_v, arg_iter, arg_parent, arg_n}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	iter = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -55820,8 +55820,8 @@ func (v *TreeModelIfc) IterParent(child TreeIter) (result bool, iter int /*TODO_
 	args := []gi.Argument{arg_v, arg_iter, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	iter = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -56014,8 +56014,8 @@ func (v TreeModelFilter) ConvertChildIterToIter(child_iter TreeIter) (result boo
 	args := []gi.Argument{arg_v, arg_filter_iter, arg_child_iter}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	filter_iter = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -56108,7 +56108,7 @@ func (v TreeModelFilter) Refilter() {
 // gtk_tree_model_filter_set_modify_func
 // container is not nil, container is TreeModelFilter
 // is method
-func (v TreeModelFilter) SetModifyFunc(n_columns int32, types int /*TODO_TYPE array type c, p0tag: GType*/, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TreeModelFilter) SetModifyFunc(n_columns int32, types int /*TODO_TYPE array type c, elemTypeTag: GType*/, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) {
 	iv, err := _I.Get(2947, "TreeModelFilter", "set_modify_func")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -56215,8 +56215,8 @@ func (v TreeModelSort) ConvertChildIterToIter(child_iter TreeIter) (result bool,
 	args := []gi.Argument{arg_v, arg_sort_iter, arg_child_iter}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	sort_iter = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -56397,8 +56397,8 @@ func NewTreePathFromString(path string) (result TreePath) {
 	args := []gi.Argument{arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -56500,7 +56500,7 @@ func (v TreePath) GetDepth() (result int32) {
 // gtk_tree_path_get_indices_with_depth
 // container is not nil, container is TreePath
 // is method
-func (v TreePath) GetIndices() (result int /*TODO_TYPE isPtr: true, tag: array*/, depth int32) {
+func (v TreePath) GetIndices() (result gi.Int32Array, depth int32) {
 	iv, err := _I.Get(2968, "TreePath", "get_indices")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -56512,8 +56512,8 @@ func (v TreePath) GetIndices() (result int /*TODO_TYPE isPtr: true, tag: array*/
 	args := []gi.Argument{arg_v, arg_depth}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	depth = outArgs[0].Int32()
+	result = gi.Int32Array{P: ret.Pointer(), Len: int(depth)}
 	return
 }
 
@@ -56850,9 +56850,9 @@ func (v TreeSelection) GetSelected() (result bool, model TreeModel, iter int /*T
 	args := []gi.Argument{arg_v, arg_model, arg_iter}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	model.P = outArgs[0].Pointer()
 	iter = outArgs[1].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -56871,8 +56871,8 @@ func (v TreeSelection) GetSelectedRows() (result int /*TODO_TYPE isPtr: true, ta
 	args := []gi.Argument{arg_v, arg_model}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	model.P = outArgs[0].Pointer()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -57126,9 +57126,9 @@ func (v *TreeSortableIfc) GetSortColumnId() (result bool, sort_column_id int32, 
 	args := []gi.Argument{arg_v, arg_sort_column_id, arg_order}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	sort_column_id = outArgs[0].Int32()
 	order = SortTypeEnum(outArgs[1].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -57234,7 +57234,7 @@ func (v TreeStore) P_TreeStore() unsafe.Pointer { return v.P }
 // gtk_tree_store_newv
 // container is not nil, container is TreeStore
 // is constructor
-func NewTreeStore(n_columns int32, types int /*TODO_TYPE array type c, p0tag: GType*/) (result TreeStore) {
+func NewTreeStore(n_columns int32, types int /*TODO_TYPE array type c, elemTypeTag: GType*/) (result TreeStore) {
 	iv, err := _I.Get(3009, "TreeStore", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57345,7 +57345,7 @@ func (v TreeStore) InsertBefore(parent TreeIter, sibling TreeIter) (iter int /*T
 // gtk_tree_store_insert_with_valuesv
 // container is not nil, container is TreeStore
 // is method
-func (v TreeStore) InsertWithValues(parent TreeIter, position int32, columns gi.Int32Array, values int /*TODO_TYPE array type c, p0tag: interface*/, n_values int32) (iter int /*TODO_TYPE*/) {
+func (v TreeStore) InsertWithValues(parent TreeIter, position int32, columns gi.Int32Array, values int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_values int32) (iter int /*TODO_TYPE*/) {
 	iv, err := _I.Get(3015, "TreeStore", "insert_with_values")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57492,7 +57492,7 @@ func (v TreeStore) Remove(iter TreeIter) (result bool) {
 // gtk_tree_store_set_column_types
 // container is not nil, container is TreeStore
 // is method
-func (v TreeStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE array type c, p0tag: GType*/) {
+func (v TreeStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE array type c, elemTypeTag: GType*/) {
 	iv, err := _I.Get(3023, "TreeStore", "set_column_types")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57525,7 +57525,7 @@ func (v TreeStore) SetValue(iter TreeIter, column int32, value gobject.Value) {
 // gtk_tree_store_set_valuesv
 // container is not nil, container is TreeStore
 // is method
-func (v TreeStore) Set(iter TreeIter, columns gi.Int32Array, values int /*TODO_TYPE array type c, p0tag: interface*/, n_values int32) {
+func (v TreeStore) Set(iter TreeIter, columns gi.Int32Array, values int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_values int32) {
 	iv, err := _I.Get(3025, "TreeStore", "set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57825,7 +57825,7 @@ func (v TreeView) CreateRowDragIcon(path TreePath) (result cairo.Surface) {
 // gtk_tree_view_enable_model_drag_dest
 // container is not nil, container is TreeView
 // is method
-func (v TreeView) EnableModelDragDest(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v TreeView) EnableModelDragDest(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(3040, "TreeView", "enable_model_drag_dest")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57842,7 +57842,7 @@ func (v TreeView) EnableModelDragDest(targets int /*TODO_TYPE array type c, p0ta
 // gtk_tree_view_enable_model_drag_source
 // container is not nil, container is TreeView
 // is method
-func (v TreeView) EnableModelDragSource(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v TreeView) EnableModelDragSource(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(3041, "TreeView", "enable_model_drag_source")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -58052,9 +58052,9 @@ func (v TreeView) GetDestRowAtPos(drag_x int32, drag_y int32) (result bool, path
 	args := []gi.Argument{arg_v, arg_drag_x, arg_drag_y, arg_path, arg_pos}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	path.P = outArgs[0].Pointer()
 	pos = TreeViewDropPositionEnum(outArgs[1].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -58319,11 +58319,11 @@ func (v TreeView) GetPathAtPos(x int32, y int32) (result bool, path TreePath, co
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_path, arg_column, arg_cell_x, arg_cell_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	path.P = outArgs[0].Pointer()
 	column.P = outArgs[1].Pointer()
 	cell_x = outArgs[2].Int32()
 	cell_y = outArgs[3].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -58481,10 +58481,10 @@ func (v TreeView) GetTooltipContext(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/, ke
 	args := []gi.Argument{arg_v, arg_keyboard_tip, arg_model, arg_path, arg_iter}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	model.P = outArgs[0].Pointer()
 	path.P = outArgs[1].Pointer()
 	iter = outArgs[2].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -58521,9 +58521,9 @@ func (v TreeView) GetVisibleRange() (result bool, start_path TreePath, end_path 
 	args := []gi.Argument{arg_v, arg_start_path, arg_end_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	start_path.P = outArgs[0].Pointer()
 	end_path.P = outArgs[1].Pointer()
+	result = ret.Bool()
 	return
 }
 
@@ -58584,8 +58584,8 @@ func (v TreeView) InsertColumnWithDataFunc(position int32, title string, cell IC
 	args := []gi.Argument{arg_v, arg_position, arg_title, arg_cell, arg_func1, arg_data, arg_dnotify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int32()
 	gi.Free(c_title)
+	result = ret.Int32()
 	return
 }
 
@@ -58609,11 +58609,11 @@ func (v TreeView) IsBlankAtPos(x int32, y int32) (result bool, path TreePath, co
 	args := []gi.Argument{arg_v, arg_x, arg_y, arg_path, arg_column, arg_cell_x, arg_cell_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	path.P = outArgs[0].Pointer()
 	column.P = outArgs[1].Pointer()
 	cell_x = outArgs[2].Int32()
 	cell_y = outArgs[3].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -59369,9 +59369,9 @@ func (v TreeViewColumn) CellGetPosition(cell_renderer ICellRenderer) (result boo
 	args := []gi.Argument{arg_v, arg_cell_renderer, arg_x_offset, arg_width}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	x_offset = outArgs[0].Int32()
 	width = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -60248,9 +60248,9 @@ func (v UIManager) AddUiFromFile(filename string) (result uint32, err error) {
 	args := []gi.Argument{arg_v, arg_filename, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_filename)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -60270,9 +60270,9 @@ func (v UIManager) AddUiFromResource(resource_path string) (result uint32, err e
 	args := []gi.Argument{arg_v, arg_resource_path, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_resource_path)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -60293,9 +60293,9 @@ func (v UIManager) AddUiFromString(buffer string, length int64) (result uint32, 
 	args := []gi.Argument{arg_v, arg_buffer, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	gi.Free(c_buffer)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Uint32()
 	return
 }
 
@@ -60345,8 +60345,8 @@ func (v UIManager) GetAction(path string) (result Action) {
 	args := []gi.Argument{arg_v, arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -60434,8 +60434,8 @@ func (v UIManager) GetWidget(path string) (result Widget) {
 	args := []gi.Argument{arg_v, arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -61213,8 +61213,8 @@ func (v Widget) CreatePangoLayout(text string) (result pango.Layout) {
 	args := []gi.Argument{arg_v, arg_text}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_text)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -61428,7 +61428,7 @@ func (v Widget) DragDestGetTrackMotion() (result bool) {
 // gtk_drag_dest_set
 // container is not nil, container is Widget
 // is method
-func (v Widget) DragDestSet(flags DestDefaultsFlags, targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v Widget) DragDestSet(flags DestDefaultsFlags, targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(3240, "Widget", "drag_dest_set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -61597,7 +61597,7 @@ func (v Widget) DragSourceGetTargetList() (result TargetList) {
 // gtk_drag_source_set
 // container is not nil, container is Widget
 // is method
-func (v Widget) DragSourceSet(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
+func (v Widget) DragSourceSet(start_button_mask gdk.ModifierTypeFlags, targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32, actions gdk.DragActionFlags) {
 	iv, err := _I.Get(3251, "Widget", "drag_source_set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -61826,8 +61826,8 @@ func (v Widget) GetActionGroup(prefix string) (result gio.ActionGroup) {
 	args := []gi.Argument{arg_v, arg_prefix}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_prefix)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -63029,8 +63029,8 @@ func (v Widget) GetTemplateChild(widget_type int /*TODO_TYPE isPtr: false, tag: 
 	args := []gi.Argument{arg_v, arg_widget_type, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -63490,8 +63490,8 @@ func (v Widget) Intersect(area gdk.Rectangle) (result bool, intersection int /*T
 	args := []gi.Argument{arg_v, arg_area, arg_intersection}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	intersection = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -63653,7 +63653,7 @@ func (v Widget) ListAccelClosures() (result int /*TODO_TYPE isPtr: true, tag: gl
 // gtk_widget_list_action_prefixes
 // container is not nil, container is Widget
 // is method
-func (v Widget) ListActionPrefixes() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func (v Widget) ListActionPrefixes() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
 	iv, err := _I.Get(3371, "Widget", "list_action_prefixes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -64147,9 +64147,9 @@ func (v Widget) RenderIcon(stock_id string, size int32, detail string) (result g
 	args := []gi.Argument{arg_v, arg_stock_id, arg_size, arg_detail}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
 	gi.Free(c_detail)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -64169,8 +64169,8 @@ func (v Widget) RenderIconPixbuf(stock_id string, size int32) (result gdkpixbuf.
 	args := []gi.Argument{arg_v, arg_stock_id, arg_size}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_stock_id)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -65204,9 +65204,9 @@ func (v Widget) TranslateCoordinates(dest_widget IWidget, src_x int32, src_y int
 	args := []gi.Argument{arg_v, arg_dest_widget, arg_src_x, arg_src_y, arg_dest_x, arg_dest_y}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	dest_x = outArgs[0].Int32()
 	dest_y = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -65678,8 +65678,8 @@ func (v WidgetPath) IterHasClass(pos int32, name string) (result bool) {
 	args := []gi.Argument{arg_v, arg_pos, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_name)
+	result = ret.Bool()
 	return
 }
 
@@ -65699,8 +65699,8 @@ func (v WidgetPath) IterHasName(pos int32, name string) (result bool) {
 	args := []gi.Argument{arg_v, arg_pos, arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_name)
+	result = ret.Bool()
 	return
 }
 
@@ -65759,8 +65759,8 @@ func (v WidgetPath) IterHasQregion(pos int32, qname uint32) (result bool, flags 
 	args := []gi.Argument{arg_v, arg_pos, arg_qname, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	flags = RegionFlags(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -65782,9 +65782,9 @@ func (v WidgetPath) IterHasRegion(pos int32, name string) (result bool, flags Re
 	args := []gi.Argument{arg_v, arg_pos, arg_name, arg_flags}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_name)
 	flags = RegionFlags(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -66089,9 +66089,9 @@ func WindowSetDefaultIconFromFile1(filename string) (result bool, err error) {
 	args := []gi.Argument{arg_filename, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_filename)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -66749,8 +66749,8 @@ func (v Window) GetResizeGripArea() (result bool, rect int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_v, arg_rect}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	rect = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -67090,8 +67090,8 @@ func (v Window) ParseGeometry(geometry string) (result bool) {
 	args := []gi.Argument{arg_v, arg_geometry}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Bool()
 	gi.Free(c_geometry)
+	result = ret.Bool()
 	return
 }
 
@@ -67526,9 +67526,9 @@ func (v Window) SetIconFromFile(filename string) (result bool, err error) {
 	args := []gi.Argument{arg_v, arg_filename, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_filename)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -68313,8 +68313,8 @@ func BindingEntryAddSignalFromString(binding_set BindingSet, signal_desc string)
 	args := []gi.Argument{arg_binding_set, arg_signal_desc}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = glib.TokenTypeEnum(ret.Int())
 	gi.Free(c_signal_desc)
+	result = glib.TokenTypeEnum(ret.Int())
 	return
 }
 
@@ -68380,8 +68380,8 @@ func BindingSetFind(set_name string) (result BindingSet) {
 	args := []gi.Argument{arg_set_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_set_name)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -68827,8 +68827,8 @@ func GetCurrentEventState() (result bool, state gdk.ModifierTypeFlags) {
 	args := []gi.Argument{arg_state}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	state = gdk.ModifierTypeFlags(outArgs[0].Int())
+	result = ret.Bool()
 	return
 }
 
@@ -69003,8 +69003,8 @@ func IconSizeFromName(name string) (result int32) {
 	args := []gi.Argument{arg_name}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int32()
 	gi.Free(c_name)
+	result = ret.Int32()
 	return
 }
 
@@ -69039,9 +69039,9 @@ func IconSizeLookup(size int32) (result bool, width int32, height int32) {
 	args := []gi.Argument{arg_size, arg_width, arg_height}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	width = outArgs[0].Int32()
 	height = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -69061,9 +69061,9 @@ func IconSizeLookupForSettings(settings ISettings, size int32) (result bool, wid
 	args := []gi.Argument{arg_settings, arg_size, arg_width, arg_height}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	width = outArgs[0].Int32()
 	height = outArgs[1].Int32()
+	result = ret.Bool()
 	return
 }
 
@@ -69082,8 +69082,8 @@ func IconSizeRegister(name string, width int32, height int32) (result int32) {
 	args := []gi.Argument{arg_name, arg_width, arg_height}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int32()
 	gi.Free(c_name)
+	result = ret.Int32()
 	return
 }
 
@@ -69134,7 +69134,7 @@ func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 
 // gtk_init_with_args
 // container is nil
-func InitWithArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/, parameter_string string, entries int /*TODO_TYPE array type c, p0tag: interface*/, translation_domain string) (result bool, err error) {
+func InitWithArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/, parameter_string string, entries int /*TODO_TYPE array type c, elemTypeTag: interface*/, translation_domain string) (result bool, err error) {
 	iv, err := _I.Get(3704, "init_with_args", "")
 	if err != nil {
 		return
@@ -69149,10 +69149,10 @@ func InitWithArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/, parameter_stri
 	args := []gi.Argument{arg_parameter_string, arg_entries, arg_translation_domain, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_parameter_string)
 	gi.Free(c_translation_domain)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -69867,8 +69867,8 @@ func RcFindModuleInPath(module_file string) (result string) {
 	args := []gi.Argument{arg_module_file}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_module_file)
+	result = ret.String().Take()
 	return
 }
 
@@ -69887,14 +69887,14 @@ func RcFindPixmapInPath(settings ISettings, scanner glib.Scanner, pixmap_file st
 	args := []gi.Argument{arg_settings, arg_scanner, arg_pixmap_file}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
 	gi.Free(c_pixmap_file)
+	result = ret.String().Take()
 	return
 }
 
 // gtk_rc_get_default_files
 // container is nil
-func RcGetDefaultFiles() (result int /*TODO_TYPE isPtr: true, tag: array*/) {
+func RcGetDefaultFiles() (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrLen: -1*/) {
 	iv, err := _I.Get(3742, "rc_get_default_files", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -69981,9 +69981,9 @@ func RcGetStyleByPaths(settings ISettings, widget_path string, class_path string
 	args := []gi.Argument{arg_settings, arg_widget_path, arg_class_path, arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_widget_path)
 	gi.Free(c_class_path)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -70030,8 +70030,8 @@ func RcParseColor(scanner glib.Scanner) (result uint32, color int /*TODO_TYPE*/)
 	args := []gi.Argument{arg_scanner, arg_color}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	color = outArgs[0].Int() /*TODO*/
+	result = ret.Uint32()
 	return
 }
 
@@ -70050,8 +70050,8 @@ func RcParseColorFull(scanner glib.Scanner, style IRcStyle) (result uint32, colo
 	args := []gi.Argument{arg_scanner, arg_style, arg_color}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	color = outArgs[0].Int() /*TODO*/
+	result = ret.Uint32()
 	return
 }
 
@@ -70069,8 +70069,8 @@ func RcParseState(scanner glib.Scanner) (result uint32, state StateTypeEnum) {
 	args := []gi.Argument{arg_scanner, arg_state}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Uint32()
 	state = StateTypeEnum(outArgs[0].Int())
+	result = ret.Uint32()
 	return
 }
 
@@ -70225,7 +70225,7 @@ func RcResetStyles(settings ISettings) {
 
 // gtk_rc_set_default_files
 // container is nil
-func RcSetDefaultFiles(filenames int /*TODO_TYPE array type c, p0tag: filename*/) {
+func RcSetDefaultFiles(filenames int /*TODO_TYPE array type c, elemTypeTag: filename*/) {
 	iv, err := _I.Get(3762, "rc_set_default_files", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70653,7 +70653,7 @@ func SelectionAddTarget(widget IWidget, selection gdk.Atom, target gdk.Atom, inf
 
 // gtk_selection_add_targets
 // container is nil
-func SelectionAddTargets(widget IWidget, selection gdk.Atom, targets int /*TODO_TYPE array type c, p0tag: interface*/, ntargets uint32) {
+func SelectionAddTargets(widget IWidget, selection gdk.Atom, targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, ntargets uint32) {
 	iv, err := _I.Get(3786, "selection_add_targets", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70779,9 +70779,9 @@ func ShowUri(screen gdk.IScreen, uri string, timestamp uint32) (result bool, err
 	args := []gi.Argument{arg_screen, arg_uri, arg_timestamp, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
@@ -70801,15 +70801,15 @@ func ShowUriOnWindow(parent IWindow, uri string, timestamp uint32) (result bool,
 	args := []gi.Argument{arg_parent, arg_uri, arg_timestamp, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_uri)
 	err = gi.ToError(outArgs[0].Pointer())
+	result = ret.Bool()
 	return
 }
 
 // gtk_stock_add
 // container is nil
-func StockAdd(items int /*TODO_TYPE array type c, p0tag: interface*/, n_items uint32) {
+func StockAdd(items int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_items uint32) {
 	iv, err := _I.Get(3795, "stock_add", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70823,7 +70823,7 @@ func StockAdd(items int /*TODO_TYPE array type c, p0tag: interface*/, n_items ui
 
 // gtk_stock_add_static
 // container is nil
-func StockAddStatic(items int /*TODO_TYPE array type c, p0tag: interface*/, n_items uint32) {
+func StockAddStatic(items int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_items uint32) {
 	iv, err := _I.Get(3796, "stock_add_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70864,9 +70864,9 @@ func StockLookup(stock_id string) (result bool, item int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_stock_id, arg_item}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	gi.Free(c_stock_id)
 	item = outArgs[0].Int() /*TODO*/
+	result = ret.Bool()
 	return
 }
 
@@ -70890,7 +70890,7 @@ func StockSetTranslateFunc(domain string, func1 int /*TODO_TYPE isPtr: false, ta
 
 // gtk_target_table_free
 // container is nil
-func TargetTableFree(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32) {
+func TargetTableFree(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32) {
 	iv, err := _I.Get(3800, "target_table_free", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70904,7 +70904,7 @@ func TargetTableFree(targets int /*TODO_TYPE array type c, p0tag: interface*/, n
 
 // gtk_target_table_new_from_list
 // container is nil
-func TargetTableNewFromList(list TargetList) (result int /*TODO_TYPE isPtr: true, tag: array*/, n_targets int32) {
+func TargetTableNewFromList(list TargetList) (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 1*/, n_targets int32) {
 	iv, err := _I.Get(3801, "target_table_new_from_list", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70916,14 +70916,14 @@ func TargetTableNewFromList(list TargetList) (result int /*TODO_TYPE isPtr: true
 	args := []gi.Argument{arg_list, arg_n_targets}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	n_targets = outArgs[0].Int32()
+	result = ret.Int() /*TODO*/
 	return
 }
 
 // gtk_targets_include_image
 // container is nil
-func TargetsIncludeImage(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, writable bool) (result bool) {
+func TargetsIncludeImage(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32, writable bool) (result bool) {
 	iv, err := _I.Get(3802, "targets_include_image", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70941,7 +70941,7 @@ func TargetsIncludeImage(targets int /*TODO_TYPE array type c, p0tag: interface*
 
 // gtk_targets_include_rich_text
 // container is nil
-func TargetsIncludeRichText(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32, buffer ITextBuffer) (result bool) {
+func TargetsIncludeRichText(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32, buffer ITextBuffer) (result bool) {
 	iv, err := _I.Get(3803, "targets_include_rich_text", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70959,7 +70959,7 @@ func TargetsIncludeRichText(targets int /*TODO_TYPE array type c, p0tag: interfa
 
 // gtk_targets_include_text
 // container is nil
-func TargetsIncludeText(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32) (result bool) {
+func TargetsIncludeText(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32) (result bool) {
 	iv, err := _I.Get(3804, "targets_include_text", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70976,7 +70976,7 @@ func TargetsIncludeText(targets int /*TODO_TYPE array type c, p0tag: interface*/
 
 // gtk_targets_include_uri
 // container is nil
-func TargetsIncludeUri(targets int /*TODO_TYPE array type c, p0tag: interface*/, n_targets int32) (result bool) {
+func TargetsIncludeUri(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32) (result bool) {
 	iv, err := _I.Get(3805, "targets_include_uri", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -71006,9 +71006,9 @@ func TestCreateSimpleWindow(window_title string, dialog_text string) (result Wid
 	args := []gi.Argument{arg_window_title, arg_dialog_text}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_window_title)
 	gi.Free(c_dialog_text)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -71026,8 +71026,8 @@ func TestFindLabel(widget IWidget, label_pattern string) (result Widget) {
 	args := []gi.Argument{arg_widget, arg_label_pattern}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label_pattern)
+	result.P = ret.Pointer()
 	return
 }
 
@@ -71063,14 +71063,14 @@ func TestFindWidget(widget IWidget, label_pattern string, widget_type int /*TODO
 	args := []gi.Argument{arg_widget, arg_label_pattern, arg_widget_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
 	gi.Free(c_label_pattern)
+	result.P = ret.Pointer()
 	return
 }
 
 // gtk_test_list_all_types
 // container is nil
-func TestListAllTypes() (result int /*TODO_TYPE isPtr: true, tag: array*/, n_types uint32) {
+func TestListAllTypes() (result int /*TODO_TYPE array type c, elemTypeTag: GType, arrLen: 0*/, n_types uint32) {
 	iv, err := _I.Get(3810, "test_list_all_types", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -71081,8 +71081,8 @@ func TestListAllTypes() (result int /*TODO_TYPE isPtr: true, tag: array*/, n_typ
 	args := []gi.Argument{arg_n_types}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Int() /*TODO*/
 	n_types = outArgs[0].Uint32()
+	result = ret.Int() /*TODO*/
 	return
 }
 
@@ -71241,9 +71241,9 @@ func TreeGetRowDragData(selection_data SelectionData) (result bool, tree_model T
 	args := []gi.Argument{arg_selection_data, arg_tree_model, arg_path}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	result = ret.Bool()
 	tree_model.P = outArgs[0].Pointer()
 	path.P = outArgs[1].Pointer()
+	result = ret.Bool()
 	return
 }
 
