@@ -661,7 +661,7 @@ func (v Closure) Invalidate() {
 // container is not nil, container is Closure
 // is method
 // arg 2 param_values lenArgIdx 1
-func (v Closure) Invoke(n_param_values uint32, param_values int /*TODO_TYPE array type c, elemTypeTag: interface*/, invocation_hint unsafe.Pointer) (return_value int /*TODO_TYPE*/) {
+func (v Closure) Invoke(n_param_values uint32, param_values unsafe.Pointer, invocation_hint unsafe.Pointer) (return_value int /*TODO_TYPE*/) {
 	iv, err := _I.Get(32, "Closure", "invoke")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -671,7 +671,7 @@ func (v Closure) Invoke(n_param_values uint32, param_values int /*TODO_TYPE arra
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_return_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_n_param_values := gi.NewUint32Argument(n_param_values)
-	arg_param_values := gi.NewIntArgument(param_values) /*TODO*/
+	arg_param_values := gi.NewPointerArgument(param_values)
 	arg_invocation_hint := gi.NewPointerArgument(invocation_hint)
 	args := []gi.Argument{arg_v, arg_return_value, arg_n_param_values, arg_param_values, arg_invocation_hint}
 	iv.Call(args, nil, &outArgs[0])
@@ -786,15 +786,15 @@ func (v Object) P_Object() unsafe.Pointer { return v.P }
 // container is not nil, container is Object
 // is constructor
 // arg 2 parameters lenArgIdx 1
-func NewObjectv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, elemTypeTag: interface*/) (result Object) {
+func NewObjectv(object_type gi.GType, n_parameters uint32, parameters unsafe.Pointer) (result Object) {
 	iv, err := _I.Get(36, "Object", "newv")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_object_type := gi.NewIntArgument(object_type) /*TODO*/
+	arg_object_type := gi.NewUintArgument(uint(object_type))
 	arg_n_parameters := gi.NewUint32Argument(n_parameters)
-	arg_parameters := gi.NewIntArgument(parameters) /*TODO*/
+	arg_parameters := gi.NewPointerArgument(parameters)
 	args := []gi.Argument{arg_object_type, arg_n_parameters, arg_parameters}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -863,7 +863,7 @@ func ObjectInterfaceInstallProperty1(g_iface TypeInterface, pspec IParamSpec) {
 // is method
 // arg0Type tag: interface, isPtr: true
 // ret lenArgIdx 1
-func ObjectInterfaceListProperties1(g_iface TypeInterface) (result int /*TODO_TYPE array type c, elemTypeTag: interface, isPtr: true*/) {
+func ObjectInterfaceListProperties1(g_iface TypeInterface) (result gi.PointerArray) {
 	iv, err := _I.Get(40, "Object", "interface_list_properties")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -878,7 +878,7 @@ func ObjectInterfaceListProperties1(g_iface TypeInterface) (result int /*TODO_TY
 	var n_properties_p uint32
 	_ = n_properties_p
 	n_properties_p = outArgs[0].Uint32()
-	result = ret.Int() /*TODO*/
+	result = gi.PointerArray{P: ret.Pointer(), Len: int(n_properties_p)}
 	return
 }
 
@@ -1017,7 +1017,7 @@ func (v Object) GetQdata(quark uint32) {
 // is method
 // arg 1 names lenArgIdx 0
 // arg 2 values lenArgIdx 0
-func (v Object) Getv(n_properties uint32, names gi.CStrArray, values int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
+func (v Object) Getv(n_properties uint32, names gi.CStrArray, values unsafe.Pointer) {
 	iv, err := _I.Get(48, "Object", "getv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1026,7 +1026,7 @@ func (v Object) Getv(n_properties uint32, names gi.CStrArray, values int /*TODO_
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_n_properties := gi.NewUint32Argument(n_properties)
 	arg_names := gi.NewPointerArgument(names.P)
-	arg_values := gi.NewIntArgument(values) /*TODO*/
+	arg_values := gi.NewPointerArgument(values)
 	args := []gi.Argument{arg_v, arg_n_properties, arg_names, arg_values}
 	iv.Call(args, nil, nil)
 }
@@ -1607,7 +1607,7 @@ type ParamSpecPool struct {
 // g_param_spec_pool_insert
 // container is not nil, container is ParamSpecPool
 // is method
-func (v ParamSpecPool) Insert(pspec IParamSpec, owner_type int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v ParamSpecPool) Insert(pspec IParamSpec, owner_type gi.GType) {
 	iv, err := _I.Get(72, "ParamSpecPool", "insert")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1615,7 +1615,7 @@ func (v ParamSpecPool) Insert(pspec IParamSpec, owner_type int /*TODO_TYPE isPtr
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
-	arg_owner_type := gi.NewIntArgument(owner_type) /*TODO*/
+	arg_owner_type := gi.NewUintArgument(uint(owner_type))
 	args := []gi.Argument{arg_v, arg_pspec, arg_owner_type}
 	iv.Call(args, nil, nil)
 }
@@ -1624,7 +1624,7 @@ func (v ParamSpecPool) Insert(pspec IParamSpec, owner_type int /*TODO_TYPE isPtr
 // container is not nil, container is ParamSpecPool
 // is method
 // ret lenArgIdx 1
-func (v ParamSpecPool) List(owner_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: interface, isPtr: true*/) {
+func (v ParamSpecPool) List(owner_type gi.GType) (result gi.PointerArray) {
 	iv, err := _I.Get(73, "ParamSpecPool", "list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1632,7 +1632,7 @@ func (v ParamSpecPool) List(owner_type int /*TODO_TYPE isPtr: false, tag: GType*
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_owner_type := gi.NewIntArgument(owner_type) /*TODO*/
+	arg_owner_type := gi.NewUintArgument(uint(owner_type))
 	arg_n_pspecs_p := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_owner_type, arg_n_pspecs_p}
 	var ret gi.Argument
@@ -1640,21 +1640,21 @@ func (v ParamSpecPool) List(owner_type int /*TODO_TYPE isPtr: false, tag: GType*
 	var n_pspecs_p uint32
 	_ = n_pspecs_p
 	n_pspecs_p = outArgs[0].Uint32()
-	result = ret.Int() /*TODO*/
+	result = gi.PointerArray{P: ret.Pointer(), Len: int(n_pspecs_p)}
 	return
 }
 
 // g_param_spec_pool_list_owned
 // container is not nil, container is ParamSpecPool
 // is method
-func (v ParamSpecPool) ListOwned(owner_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v ParamSpecPool) ListOwned(owner_type gi.GType) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
 	iv, err := _I.Get(74, "ParamSpecPool", "list_owned")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_owner_type := gi.NewIntArgument(owner_type) /*TODO*/
+	arg_owner_type := gi.NewUintArgument(uint(owner_type))
 	args := []gi.Argument{arg_v, arg_owner_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1665,7 +1665,7 @@ func (v ParamSpecPool) ListOwned(owner_type int /*TODO_TYPE isPtr: false, tag: G
 // g_param_spec_pool_lookup
 // container is not nil, container is ParamSpecPool
 // is method
-func (v ParamSpecPool) Lookup(param_name string, owner_type int /*TODO_TYPE isPtr: false, tag: GType*/, walk_ancestors bool) (result ParamSpec) {
+func (v ParamSpecPool) Lookup(param_name string, owner_type gi.GType, walk_ancestors bool) (result ParamSpec) {
 	iv, err := _I.Get(75, "ParamSpecPool", "lookup")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1674,7 +1674,7 @@ func (v ParamSpecPool) Lookup(param_name string, owner_type int /*TODO_TYPE isPt
 	c_param_name := gi.CString(param_name)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_param_name := gi.NewStringArgument(c_param_name)
-	arg_owner_type := gi.NewIntArgument(owner_type) /*TODO*/
+	arg_owner_type := gi.NewUintArgument(uint(owner_type))
 	arg_walk_ancestors := gi.NewBoolArgument(walk_ancestors)
 	args := []gi.Argument{arg_v, arg_param_name, arg_owner_type, arg_walk_ancestors}
 	var ret gi.Argument
@@ -1880,14 +1880,14 @@ func (v TypeClass) AddPrivate(private_size uint64) {
 // g_type_class_get_private
 // container is not nil, container is TypeClass
 // is method
-func (v TypeClass) GetPrivate(private_type int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v TypeClass) GetPrivate(private_type gi.GType) {
 	iv, err := _I.Get(79, "TypeClass", "get_private")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_private_type := gi.NewIntArgument(private_type) /*TODO*/
+	arg_private_type := gi.NewUintArgument(uint(private_type))
 	args := []gi.Argument{arg_v, arg_private_type}
 	iv.Call(args, nil, nil)
 }
@@ -1943,13 +1943,13 @@ func TypeClassAdjustPrivateOffset1(g_class unsafe.Pointer, private_size_or_offse
 // container is not nil, container is TypeClass
 // is method
 // arg0Type tag: GType, isPtr: false
-func TypeClassPeek1(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypeClass) {
+func TypeClassPeek1(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(83, "TypeClass", "peek")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1961,13 +1961,13 @@ func TypeClassPeek1(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result Ty
 // container is not nil, container is TypeClass
 // is method
 // arg0Type tag: GType, isPtr: false
-func TypeClassPeekStatic1(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypeClass) {
+func TypeClassPeekStatic1(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(84, "TypeClass", "peek_static")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1979,13 +1979,13 @@ func TypeClassPeekStatic1(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (res
 // container is not nil, container is TypeClass
 // is method
 // arg0Type tag: GType, isPtr: false
-func TypeClassRef1(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypeClass) {
+func TypeClassRef1(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(85, "TypeClass", "ref")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2040,14 +2040,14 @@ type TypeInstance struct {
 // g_type_instance_get_private
 // container is not nil, container is TypeInstance
 // is method
-func (v TypeInstance) GetPrivate(private_type int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v TypeInstance) GetPrivate(private_type gi.GType) {
 	iv, err := _I.Get(86, "TypeInstance", "get_private")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_private_type := gi.NewIntArgument(private_type) /*TODO*/
+	arg_private_type := gi.NewUintArgument(uint(private_type))
 	args := []gi.Argument{arg_v, arg_private_type}
 	iv.Call(args, nil, nil)
 }
@@ -2078,14 +2078,14 @@ func (v TypeInterface) PeekParent() (result TypeInterface) {
 // container is not nil, container is TypeInterface
 // is method
 // arg0Type tag: GType, isPtr: false
-func TypeInterfaceAddPrerequisite1(interface_type int /*TODO_TYPE isPtr: false, tag: GType*/, prerequisite_type int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeInterfaceAddPrerequisite1(interface_type gi.GType, prerequisite_type gi.GType) {
 	iv, err := _I.Get(88, "TypeInterface", "add_prerequisite")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_interface_type := gi.NewIntArgument(interface_type)       /*TODO*/
-	arg_prerequisite_type := gi.NewIntArgument(prerequisite_type) /*TODO*/
+	arg_interface_type := gi.NewUintArgument(uint(interface_type))
+	arg_prerequisite_type := gi.NewUintArgument(uint(prerequisite_type))
 	args := []gi.Argument{arg_interface_type, arg_prerequisite_type}
 	iv.Call(args, nil, nil)
 }
@@ -2094,14 +2094,14 @@ func TypeInterfaceAddPrerequisite1(interface_type int /*TODO_TYPE isPtr: false, 
 // container is not nil, container is TypeInterface
 // is method
 // arg0Type tag: GType, isPtr: false
-func TypeInterfaceGetPlugin1(instance_type int /*TODO_TYPE isPtr: false, tag: GType*/, interface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypePlugin) {
+func TypeInterfaceGetPlugin1(instance_type gi.GType, interface_type gi.GType) (result TypePlugin) {
 	iv, err := _I.Get(89, "TypeInterface", "get_plugin")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance_type := gi.NewIntArgument(instance_type)   /*TODO*/
-	arg_interface_type := gi.NewIntArgument(interface_type) /*TODO*/
+	arg_instance_type := gi.NewUintArgument(uint(instance_type))
+	arg_interface_type := gi.NewUintArgument(uint(interface_type))
 	args := []gi.Argument{arg_instance_type, arg_interface_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2113,14 +2113,14 @@ func TypeInterfaceGetPlugin1(instance_type int /*TODO_TYPE isPtr: false, tag: GT
 // container is not nil, container is TypeInterface
 // is method
 // arg0Type tag: interface, isPtr: true
-func TypeInterfacePeek1(instance_class TypeClass, iface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypeInterface) {
+func TypeInterfacePeek1(instance_class TypeClass, iface_type gi.GType) (result TypeInterface) {
 	iv, err := _I.Get(90, "TypeInterface", "peek")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_instance_class := gi.NewPointerArgument(instance_class.P)
-	arg_iface_type := gi.NewIntArgument(iface_type) /*TODO*/
+	arg_iface_type := gi.NewUintArgument(uint(iface_type))
 	args := []gi.Argument{arg_instance_class, arg_iface_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2133,14 +2133,14 @@ func TypeInterfacePeek1(instance_class TypeClass, iface_type int /*TODO_TYPE isP
 // is method
 // arg0Type tag: GType, isPtr: false
 // ret lenArgIdx 1
-func TypeInterfacePrerequisites1(interface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
+func TypeInterfacePrerequisites1(interface_type gi.GType) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
 	iv, err := _I.Get(91, "TypeInterface", "prerequisites")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_interface_type := gi.NewIntArgument(interface_type) /*TODO*/
+	arg_interface_type := gi.NewUintArgument(uint(interface_type))
 	arg_n_prerequisites := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_interface_type, arg_n_prerequisites}
 	var ret gi.Argument
@@ -2167,15 +2167,15 @@ func (v TypeModule) P_TypeModule() unsafe.Pointer { return v.P }
 // g_type_module_add_interface
 // container is not nil, container is TypeModule
 // is method
-func (v TypeModule) AddInterface(instance_type int /*TODO_TYPE isPtr: false, tag: GType*/, interface_type int /*TODO_TYPE isPtr: false, tag: GType*/, interface_info InterfaceInfo) {
+func (v TypeModule) AddInterface(instance_type gi.GType, interface_type gi.GType, interface_info InterfaceInfo) {
 	iv, err := _I.Get(92, "TypeModule", "add_interface")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_instance_type := gi.NewIntArgument(instance_type)   /*TODO*/
-	arg_interface_type := gi.NewIntArgument(interface_type) /*TODO*/
+	arg_instance_type := gi.NewUintArgument(uint(instance_type))
+	arg_interface_type := gi.NewUintArgument(uint(interface_type))
 	arg_interface_info := gi.NewPointerArgument(interface_info.P)
 	args := []gi.Argument{arg_v, arg_instance_type, arg_interface_type, arg_interface_info}
 	iv.Call(args, nil, nil)
@@ -2184,7 +2184,7 @@ func (v TypeModule) AddInterface(instance_type int /*TODO_TYPE isPtr: false, tag
 // g_type_module_register_enum
 // container is not nil, container is TypeModule
 // is method
-func (v TypeModule) RegisterEnum(name string, const_static_values EnumValue) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v TypeModule) RegisterEnum(name string, const_static_values EnumValue) (result gi.GType) {
 	iv, err := _I.Get(93, "TypeModule", "register_enum")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2198,14 +2198,14 @@ func (v TypeModule) RegisterEnum(name string, const_static_values EnumValue) (re
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_type_module_register_flags
 // container is not nil, container is TypeModule
 // is method
-func (v TypeModule) RegisterFlags(name string, const_static_values FlagsValue) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v TypeModule) RegisterFlags(name string, const_static_values FlagsValue) (result gi.GType) {
 	iv, err := _I.Get(94, "TypeModule", "register_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2219,14 +2219,14 @@ func (v TypeModule) RegisterFlags(name string, const_static_values FlagsValue) (
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_type_module_register_type
 // container is not nil, container is TypeModule
 // is method
-func (v TypeModule) RegisterType(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, type_info TypeInfo, flags TypeFlags) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v TypeModule) RegisterType(parent_type gi.GType, type_name string, type_info TypeInfo, flags TypeFlags) (result gi.GType) {
 	iv, err := _I.Get(95, "TypeModule", "register_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2234,7 +2234,7 @@ func (v TypeModule) RegisterType(parent_type int /*TODO_TYPE isPtr: false, tag: 
 	}
 	c_type_name := gi.CString(type_name)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent_type := gi.NewIntArgument(parent_type) /*TODO*/
+	arg_parent_type := gi.NewUintArgument(uint(parent_type))
 	arg_type_name := gi.NewStringArgument(c_type_name)
 	arg_type_info := gi.NewPointerArgument(type_info.P)
 	arg_flags := gi.NewIntArgument(int(flags))
@@ -2242,7 +2242,7 @@ func (v TypeModule) RegisterType(parent_type int /*TODO_TYPE isPtr: false, tag: 
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_type_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -2305,15 +2305,15 @@ type TypePluginIfc struct{}
 // g_type_plugin_complete_interface_info
 // container is not nil, container is TypePlugin
 // is method
-func (v *TypePluginIfc) CompleteInterfaceInfo(instance_type int /*TODO_TYPE isPtr: false, tag: GType*/, interface_type int /*TODO_TYPE isPtr: false, tag: GType*/, info InterfaceInfo) {
+func (v *TypePluginIfc) CompleteInterfaceInfo(instance_type gi.GType, interface_type gi.GType, info InterfaceInfo) {
 	iv, err := _I.Get(99, "TypePlugin", "complete_interface_info")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_instance_type := gi.NewIntArgument(instance_type)   /*TODO*/
-	arg_interface_type := gi.NewIntArgument(interface_type) /*TODO*/
+	arg_instance_type := gi.NewUintArgument(uint(instance_type))
+	arg_interface_type := gi.NewUintArgument(uint(interface_type))
 	arg_info := gi.NewPointerArgument(info.P)
 	args := []gi.Argument{arg_v, arg_instance_type, arg_interface_type, arg_info}
 	iv.Call(args, nil, nil)
@@ -2322,14 +2322,14 @@ func (v *TypePluginIfc) CompleteInterfaceInfo(instance_type int /*TODO_TYPE isPt
 // g_type_plugin_complete_type_info
 // container is not nil, container is TypePlugin
 // is method
-func (v *TypePluginIfc) CompleteTypeInfo(g_type int /*TODO_TYPE isPtr: false, tag: GType*/, info TypeInfo, value_table TypeValueTable) {
+func (v *TypePluginIfc) CompleteTypeInfo(g_type gi.GType, info TypeInfo, value_table TypeValueTable) {
 	iv, err := _I.Get(100, "TypePlugin", "complete_type_info")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_g_type := gi.NewIntArgument(g_type) /*TODO*/
+	arg_g_type := gi.NewUintArgument(uint(g_type))
 	arg_info := gi.NewPointerArgument(info.P)
 	arg_value_table := gi.NewPointerArgument(value_table.P)
 	args := []gi.Argument{arg_v, arg_g_type, arg_info, arg_value_table}
@@ -2582,7 +2582,7 @@ func (v Value) GetFloat() (result float32) {
 // g_value_get_gtype
 // container is not nil, container is Value
 // is method
-func (v Value) GetGtype() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v Value) GetGtype() (result gi.GType) {
 	iv, err := _I.Get(115, "Value", "get_gtype")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2592,7 +2592,7 @@ func (v Value) GetGtype() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -2817,14 +2817,14 @@ func (v Value) GetVariant() (result glib.Variant) {
 // g_value_init
 // container is not nil, container is Value
 // is method
-func (v Value) Init(g_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result Value) {
+func (v Value) Init(g_type gi.GType) (result Value) {
 	iv, err := _I.Get(129, "Value", "init")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_g_type := gi.NewIntArgument(g_type) /*TODO*/
+	arg_g_type := gi.NewUintArgument(uint(g_type))
 	args := []gi.Argument{arg_v, arg_g_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3001,14 +3001,14 @@ func (v Value) SetFloat(v_float float32) {
 // g_value_set_gtype
 // container is not nil, container is Value
 // is method
-func (v Value) SetGtype(v_gtype int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v Value) SetGtype(v_gtype gi.GType) {
 	iv, err := _I.Get(141, "Value", "set_gtype")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_v_gtype := gi.NewIntArgument(v_gtype) /*TODO*/
+	arg_v_gtype := gi.NewUintArgument(uint(v_gtype))
 	args := []gi.Argument{arg_v, arg_v_gtype}
 	iv.Call(args, nil, nil)
 }
@@ -3357,14 +3357,14 @@ func (v Value) Unset() {
 // container is not nil, container is Value
 // is method
 // arg0Type tag: GType, isPtr: false
-func ValueTypeCompatible1(src_type int /*TODO_TYPE isPtr: false, tag: GType*/, dest_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result bool) {
+func ValueTypeCompatible1(src_type gi.GType, dest_type gi.GType) (result bool) {
 	iv, err := _I.Get(164, "Value", "type_compatible")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_src_type := gi.NewIntArgument(src_type)   /*TODO*/
-	arg_dest_type := gi.NewIntArgument(dest_type) /*TODO*/
+	arg_src_type := gi.NewUintArgument(uint(src_type))
+	arg_dest_type := gi.NewUintArgument(uint(dest_type))
 	args := []gi.Argument{arg_src_type, arg_dest_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3376,14 +3376,14 @@ func ValueTypeCompatible1(src_type int /*TODO_TYPE isPtr: false, tag: GType*/, d
 // container is not nil, container is Value
 // is method
 // arg0Type tag: GType, isPtr: false
-func ValueTypeTransformable1(src_type int /*TODO_TYPE isPtr: false, tag: GType*/, dest_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result bool) {
+func ValueTypeTransformable1(src_type gi.GType, dest_type gi.GType) (result bool) {
 	iv, err := _I.Get(165, "Value", "type_transformable")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_src_type := gi.NewIntArgument(src_type)   /*TODO*/
-	arg_dest_type := gi.NewIntArgument(dest_type) /*TODO*/
+	arg_src_type := gi.NewUintArgument(uint(src_type))
+	arg_dest_type := gi.NewUintArgument(uint(dest_type))
 	args := []gi.Argument{arg_src_type, arg_dest_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3552,13 +3552,13 @@ type _Value__data__union struct {
 
 // g_boxed_copy
 // container is nil
-func BoxedCopy(boxed_type int /*TODO_TYPE isPtr: false, tag: GType*/, src_boxed unsafe.Pointer) {
+func BoxedCopy(boxed_type gi.GType, src_boxed unsafe.Pointer) {
 	iv, err := _I.Get(174, "boxed_copy", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_boxed_type := gi.NewIntArgument(boxed_type) /*TODO*/
+	arg_boxed_type := gi.NewUintArgument(uint(boxed_type))
 	arg_src_boxed := gi.NewPointerArgument(src_boxed)
 	args := []gi.Argument{arg_boxed_type, arg_src_boxed}
 	iv.Call(args, nil, nil)
@@ -3566,13 +3566,13 @@ func BoxedCopy(boxed_type int /*TODO_TYPE isPtr: false, tag: GType*/, src_boxed 
 
 // g_boxed_free
 // container is nil
-func BoxedFree(boxed_type int /*TODO_TYPE isPtr: false, tag: GType*/, boxed unsafe.Pointer) {
+func BoxedFree(boxed_type gi.GType, boxed unsafe.Pointer) {
 	iv, err := _I.Get(175, "boxed_free", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_boxed_type := gi.NewIntArgument(boxed_type) /*TODO*/
+	arg_boxed_type := gi.NewUintArgument(uint(boxed_type))
 	arg_boxed := gi.NewPointerArgument(boxed)
 	args := []gi.Argument{arg_boxed_type, arg_boxed}
 	iv.Call(args, nil, nil)
@@ -3994,14 +3994,14 @@ func CclosureMarshalGeneric(closure Closure, return_gvalue Value, n_param_values
 
 // g_enum_complete_type_info
 // container is nil
-func EnumCompleteTypeInfo(g_enum_type int /*TODO_TYPE isPtr: false, tag: GType*/, const_values EnumValue) (info int /*TODO_TYPE*/) {
+func EnumCompleteTypeInfo(g_enum_type gi.GType, const_values EnumValue) (info int /*TODO_TYPE*/) {
 	iv, err := _I.Get(199, "enum_complete_type_info", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_g_enum_type := gi.NewIntArgument(g_enum_type) /*TODO*/
+	arg_g_enum_type := gi.NewUintArgument(uint(g_enum_type))
 	arg_info := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_const_values := gi.NewPointerArgument(const_values.P)
 	args := []gi.Argument{arg_g_enum_type, arg_info, arg_const_values}
@@ -4067,7 +4067,7 @@ func EnumGetValueByNick(enum_class EnumClass, nick string) (result EnumValue) {
 
 // g_enum_register_static
 // container is nil
-func EnumRegisterStatic(name string, const_static_values EnumValue) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func EnumRegisterStatic(name string, const_static_values EnumValue) (result gi.GType) {
 	iv, err := _I.Get(203, "enum_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4080,19 +4080,19 @@ func EnumRegisterStatic(name string, const_static_values EnumValue) (result int 
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_enum_to_string
 // container is nil
-func EnumToString(g_enum_type int /*TODO_TYPE isPtr: false, tag: GType*/, value int32) (result string) {
+func EnumToString(g_enum_type gi.GType, value int32) (result string) {
 	iv, err := _I.Get(204, "enum_to_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_g_enum_type := gi.NewIntArgument(g_enum_type) /*TODO*/
+	arg_g_enum_type := gi.NewUintArgument(uint(g_enum_type))
 	arg_value := gi.NewInt32Argument(value)
 	args := []gi.Argument{arg_g_enum_type, arg_value}
 	var ret gi.Argument
@@ -4103,14 +4103,14 @@ func EnumToString(g_enum_type int /*TODO_TYPE isPtr: false, tag: GType*/, value 
 
 // g_flags_complete_type_info
 // container is nil
-func FlagsCompleteTypeInfo(g_flags_type int /*TODO_TYPE isPtr: false, tag: GType*/, const_values FlagsValue) (info int /*TODO_TYPE*/) {
+func FlagsCompleteTypeInfo(g_flags_type gi.GType, const_values FlagsValue) (info int /*TODO_TYPE*/) {
 	iv, err := _I.Get(205, "flags_complete_type_info", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_g_flags_type := gi.NewIntArgument(g_flags_type) /*TODO*/
+	arg_g_flags_type := gi.NewUintArgument(uint(g_flags_type))
 	arg_info := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_const_values := gi.NewPointerArgument(const_values.P)
 	args := []gi.Argument{arg_g_flags_type, arg_info, arg_const_values}
@@ -4176,7 +4176,7 @@ func FlagsGetValueByNick(flags_class FlagsClass, nick string) (result FlagsValue
 
 // g_flags_register_static
 // container is nil
-func FlagsRegisterStatic(name string, const_static_values FlagsValue) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func FlagsRegisterStatic(name string, const_static_values FlagsValue) (result gi.GType) {
 	iv, err := _I.Get(209, "flags_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4189,19 +4189,19 @@ func FlagsRegisterStatic(name string, const_static_values FlagsValue) (result in
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_flags_to_string
 // container is nil
-func FlagsToString(flags_type int /*TODO_TYPE isPtr: false, tag: GType*/, value uint32) (result string) {
+func FlagsToString(flags_type gi.GType, value uint32) (result string) {
 	iv, err := _I.Get(210, "flags_to_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_flags_type := gi.NewIntArgument(flags_type) /*TODO*/
+	arg_flags_type := gi.NewUintArgument(uint(flags_type))
 	arg_value := gi.NewUint32Argument(value)
 	args := []gi.Argument{arg_flags_type, arg_value}
 	var ret gi.Argument
@@ -4212,7 +4212,7 @@ func FlagsToString(flags_type int /*TODO_TYPE isPtr: false, tag: GType*/, value 
 
 // g_gtype_get_type
 // container is nil
-func GtypeGetType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func GtypeGetType() (result gi.GType) {
 	iv, err := _I.Get(211, "gtype_get_type", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4220,7 +4220,7 @@ func GtypeGetType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -4252,7 +4252,7 @@ func ParamSpecBooleanF(name string, nick string, blurb string, default_value boo
 
 // g_param_spec_boxed
 // container is nil
-func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags ParamFlags) (result ParamSpec) {
+func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type gi.GType, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(213, "param_spec_boxed", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4264,7 +4264,7 @@ func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type int /*TO
 	arg_name := gi.NewStringArgument(c_name)
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
-	arg_boxed_type := gi.NewIntArgument(boxed_type) /*TODO*/
+	arg_boxed_type := gi.NewUintArgument(uint(boxed_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_boxed_type, arg_flags}
 	var ret gi.Argument
@@ -4334,7 +4334,7 @@ func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, m
 
 // g_param_spec_enum
 // container is nil
-func ParamSpecEnumF(name string, nick string, blurb string, enum_type int /*TODO_TYPE isPtr: false, tag: GType*/, default_value int32, flags ParamFlags) (result ParamSpec) {
+func ParamSpecEnumF(name string, nick string, blurb string, enum_type gi.GType, default_value int32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(216, "param_spec_enum", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4346,7 +4346,7 @@ func ParamSpecEnumF(name string, nick string, blurb string, enum_type int /*TODO
 	arg_name := gi.NewStringArgument(c_name)
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
-	arg_enum_type := gi.NewIntArgument(enum_type) /*TODO*/
+	arg_enum_type := gi.NewUintArgument(uint(enum_type))
 	arg_default_value := gi.NewInt32Argument(default_value)
 	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_enum_type, arg_default_value, arg_flags}
@@ -4361,7 +4361,7 @@ func ParamSpecEnumF(name string, nick string, blurb string, enum_type int /*TODO
 
 // g_param_spec_flags
 // container is nil
-func ParamSpecFlagsF(name string, nick string, blurb string, flags_type int /*TODO_TYPE isPtr: false, tag: GType*/, default_value uint32, flags ParamFlags) (result ParamSpec) {
+func ParamSpecFlagsF(name string, nick string, blurb string, flags_type gi.GType, default_value uint32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(217, "param_spec_flags", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4373,7 +4373,7 @@ func ParamSpecFlagsF(name string, nick string, blurb string, flags_type int /*TO
 	arg_name := gi.NewStringArgument(c_name)
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
-	arg_flags_type := gi.NewIntArgument(flags_type) /*TODO*/
+	arg_flags_type := gi.NewUintArgument(uint(flags_type))
 	arg_default_value := gi.NewUint32Argument(default_value)
 	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_flags_type, arg_default_value, arg_flags}
@@ -4416,7 +4416,7 @@ func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, ma
 
 // g_param_spec_gtype
 // container is nil
-func ParamSpecGtype(name string, nick string, blurb string, is_a_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags ParamFlags) (result ParamSpec) {
+func ParamSpecGtype(name string, nick string, blurb string, is_a_type gi.GType, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(219, "param_spec_gtype", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4428,7 +4428,7 @@ func ParamSpecGtype(name string, nick string, blurb string, is_a_type int /*TODO
 	arg_name := gi.NewStringArgument(c_name)
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
-	arg_is_a_type := gi.NewIntArgument(is_a_type) /*TODO*/
+	arg_is_a_type := gi.NewUintArgument(uint(is_a_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_is_a_type, arg_flags}
 	var ret gi.Argument
@@ -4526,7 +4526,7 @@ func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maxim
 
 // g_param_spec_object
 // container is nil
-func ParamSpecObjectF(name string, nick string, blurb string, object_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags ParamFlags) (result ParamSpec) {
+func ParamSpecObjectF(name string, nick string, blurb string, object_type gi.GType, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(223, "param_spec_object", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4538,7 +4538,7 @@ func ParamSpecObjectF(name string, nick string, blurb string, object_type int /*
 	arg_name := gi.NewStringArgument(c_name)
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
-	arg_object_type := gi.NewIntArgument(object_type) /*TODO*/
+	arg_object_type := gi.NewUintArgument(uint(object_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_object_type, arg_flags}
 	var ret gi.Argument
@@ -4552,7 +4552,7 @@ func ParamSpecObjectF(name string, nick string, blurb string, object_type int /*
 
 // g_param_spec_param
 // container is nil
-func ParamSpecParamF(name string, nick string, blurb string, param_type int /*TODO_TYPE isPtr: false, tag: GType*/, flags ParamFlags) (result ParamSpec) {
+func ParamSpecParamF(name string, nick string, blurb string, param_type gi.GType, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(224, "param_spec_param", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4564,7 +4564,7 @@ func ParamSpecParamF(name string, nick string, blurb string, param_type int /*TO
 	arg_name := gi.NewStringArgument(c_name)
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
-	arg_param_type := gi.NewIntArgument(param_type) /*TODO*/
+	arg_param_type := gi.NewUintArgument(uint(param_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_name, arg_nick, arg_blurb, arg_param_type, arg_flags}
 	var ret gi.Argument
@@ -4812,7 +4812,7 @@ func ParamSpecVariantF(name string, nick string, blurb string, type1 glib.Varian
 
 // g_param_type_register_static
 // container is nil
-func ParamTypeRegisterStatic(name string, pspec_info ParamSpecTypeInfo) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func ParamTypeRegisterStatic(name string, pspec_info ParamSpecTypeInfo) (result gi.GType) {
 	iv, err := _I.Get(234, "param_type_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4825,7 +4825,7 @@ func ParamTypeRegisterStatic(name string, pspec_info ParamSpecTypeInfo) (result 
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -4916,7 +4916,7 @@ func ParamValuesCmp(pspec IParamSpec, value1 Value, value2 Value) (result int32)
 
 // g_pointer_type_register_static
 // container is nil
-func PointerTypeRegisterStatic(name string) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func PointerTypeRegisterStatic(name string) (result gi.GType) {
 	iv, err := _I.Get(240, "pointer_type_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4928,7 +4928,7 @@ func PointerTypeRegisterStatic(name string) (result int /*TODO_TYPE isPtr: false
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -4992,13 +4992,13 @@ func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func int /*TODO
 
 // g_signal_chain_from_overridden
 // container is nil
-func SignalChainFromOverridden(instance_and_params int /*TODO_TYPE array type c, elemTypeTag: interface*/, return_value Value) {
+func SignalChainFromOverridden(instance_and_params unsafe.Pointer, return_value Value) {
 	iv, err := _I.Get(244, "signal_chain_from_overridden", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance_and_params := gi.NewIntArgument(instance_and_params) /*TODO*/
+	arg_instance_and_params := gi.NewPointerArgument(instance_and_params)
 	arg_return_value := gi.NewPointerArgument(return_value.P)
 	args := []gi.Argument{arg_instance_and_params, arg_return_value}
 	iv.Call(args, nil, nil)
@@ -5047,14 +5047,14 @@ func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32,
 
 // g_signal_emitv
 // container is nil
-func SignalEmitv(instance_and_params int /*TODO_TYPE array type c, elemTypeTag: interface*/, signal_id uint32, detail uint32, return_value int /*TODO:TYPE*/) {
+func SignalEmitv(instance_and_params unsafe.Pointer, signal_id uint32, detail uint32, return_value int /*TODO:TYPE*/) {
 	iv, err := _I.Get(247, "signal_emitv", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_instance_and_params := gi.NewIntArgument(instance_and_params) /*TODO*/
+	arg_instance_and_params := gi.NewPointerArgument(instance_and_params)
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	args := []gi.Argument{arg_instance_and_params, arg_signal_id, arg_detail}
@@ -5259,14 +5259,14 @@ func SignalHasHandlerPending(instance IObject, signal_id uint32, detail uint32, 
 // g_signal_list_ids
 // container is nil
 // ret lenArgIdx 1
-func SignalListIds(itype int /*TODO_TYPE isPtr: false, tag: GType*/) (result gi.Uint32Array) {
+func SignalListIds(itype gi.GType) (result gi.Uint32Array) {
 	iv, err := _I.Get(259, "signal_list_ids", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_itype := gi.NewIntArgument(itype) /*TODO*/
+	arg_itype := gi.NewUintArgument(uint(itype))
 	arg_n_ids := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_itype, arg_n_ids}
 	var ret gi.Argument
@@ -5280,7 +5280,7 @@ func SignalListIds(itype int /*TODO_TYPE isPtr: false, tag: GType*/) (result gi.
 
 // g_signal_lookup
 // container is nil
-func SignalLookup(name string, itype int /*TODO_TYPE isPtr: false, tag: GType*/) (result uint32) {
+func SignalLookup(name string, itype gi.GType) (result uint32) {
 	iv, err := _I.Get(260, "signal_lookup", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5288,7 +5288,7 @@ func SignalLookup(name string, itype int /*TODO_TYPE isPtr: false, tag: GType*/)
 	}
 	c_name := gi.CString(name)
 	arg_name := gi.NewStringArgument(c_name)
-	arg_itype := gi.NewIntArgument(itype) /*TODO*/
+	arg_itype := gi.NewUintArgument(uint(itype))
 	args := []gi.Argument{arg_name, arg_itype}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5315,14 +5315,14 @@ func SignalName(signal_id uint32) (result string) {
 
 // g_signal_override_class_closure
 // container is nil
-func SignalOverrideClassClosure(signal_id uint32, instance_type int /*TODO_TYPE isPtr: false, tag: GType*/, class_closure Closure) {
+func SignalOverrideClassClosure(signal_id uint32, instance_type gi.GType, class_closure Closure) {
 	iv, err := _I.Get(262, "signal_override_class_closure", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_signal_id := gi.NewUint32Argument(signal_id)
-	arg_instance_type := gi.NewIntArgument(instance_type) /*TODO*/
+	arg_instance_type := gi.NewUintArgument(uint(instance_type))
 	arg_class_closure := gi.NewPointerArgument(class_closure.P)
 	args := []gi.Argument{arg_signal_id, arg_instance_type, arg_class_closure}
 	iv.Call(args, nil, nil)
@@ -5330,7 +5330,7 @@ func SignalOverrideClassClosure(signal_id uint32, instance_type int /*TODO_TYPE 
 
 // g_signal_parse_name
 // container is nil
-func SignalParseName(detailed_signal string, itype int /*TODO_TYPE isPtr: false, tag: GType*/, force_detail_quark bool) (result bool, signal_id_p uint32, detail_p uint32) {
+func SignalParseName(detailed_signal string, itype gi.GType, force_detail_quark bool) (result bool, signal_id_p uint32, detail_p uint32) {
 	iv, err := _I.Get(263, "signal_parse_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5339,7 +5339,7 @@ func SignalParseName(detailed_signal string, itype int /*TODO_TYPE isPtr: false,
 	var outArgs [2]gi.Argument
 	c_detailed_signal := gi.CString(detailed_signal)
 	arg_detailed_signal := gi.NewStringArgument(c_detailed_signal)
-	arg_itype := gi.NewIntArgument(itype) /*TODO*/
+	arg_itype := gi.NewUintArgument(uint(itype))
 	arg_signal_id_p := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_detail_p := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_force_detail_quark := gi.NewBoolArgument(force_detail_quark)
@@ -5386,14 +5386,14 @@ func SignalRemoveEmissionHook(signal_id uint32, hook_id uint64) {
 
 // g_signal_set_va_marshaller
 // container is nil
-func SignalSetVaMarshaller(signal_id uint32, instance_type int /*TODO_TYPE isPtr: false, tag: GType*/, va_marshaller int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func SignalSetVaMarshaller(signal_id uint32, instance_type gi.GType, va_marshaller int /*TODO_TYPE isPtr: false, tag: interface*/) {
 	iv, err := _I.Get(266, "signal_set_va_marshaller", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_signal_id := gi.NewUint32Argument(signal_id)
-	arg_instance_type := gi.NewIntArgument(instance_type) /*TODO*/
+	arg_instance_type := gi.NewUintArgument(uint(instance_type))
 	arg_va_marshaller := gi.NewIntArgument(va_marshaller) /*TODO*/
 	args := []gi.Argument{arg_signal_id, arg_instance_type, arg_va_marshaller}
 	iv.Call(args, nil, nil)
@@ -5432,13 +5432,13 @@ func SignalStopEmissionByName(instance IObject, detailed_signal string) {
 
 // g_signal_type_cclosure_new
 // container is nil
-func SignalTypeCclosureNew(itype int /*TODO_TYPE isPtr: false, tag: GType*/, struct_offset uint32) (result Closure) {
+func SignalTypeCclosureNew(itype gi.GType, struct_offset uint32) (result Closure) {
 	iv, err := _I.Get(269, "signal_type_cclosure_new", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_itype := gi.NewIntArgument(itype) /*TODO*/
+	arg_itype := gi.NewUintArgument(uint(itype))
 	arg_struct_offset := gi.NewUint32Argument(struct_offset)
 	args := []gi.Argument{arg_itype, arg_struct_offset}
 	var ret gi.Argument
@@ -5492,13 +5492,13 @@ func StrdupValueContents(value Value) (result string) {
 
 // g_type_add_class_private
 // container is nil
-func TypeAddClassPrivate(class_type int /*TODO_TYPE isPtr: false, tag: GType*/, private_size uint64) {
+func TypeAddClassPrivate(class_type gi.GType, private_size uint64) {
 	iv, err := _I.Get(273, "type_add_class_private", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_class_type := gi.NewIntArgument(class_type) /*TODO*/
+	arg_class_type := gi.NewUintArgument(uint(class_type))
 	arg_private_size := gi.NewUint64Argument(private_size)
 	args := []gi.Argument{arg_class_type, arg_private_size}
 	iv.Call(args, nil, nil)
@@ -5506,13 +5506,13 @@ func TypeAddClassPrivate(class_type int /*TODO_TYPE isPtr: false, tag: GType*/, 
 
 // g_type_add_instance_private
 // container is nil
-func TypeAddInstancePrivate(class_type int /*TODO_TYPE isPtr: false, tag: GType*/, private_size uint64) (result int32) {
+func TypeAddInstancePrivate(class_type gi.GType, private_size uint64) (result int32) {
 	iv, err := _I.Get(274, "type_add_instance_private", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_class_type := gi.NewIntArgument(class_type) /*TODO*/
+	arg_class_type := gi.NewUintArgument(uint(class_type))
 	arg_private_size := gi.NewUint64Argument(private_size)
 	args := []gi.Argument{arg_class_type, arg_private_size}
 	var ret gi.Argument
@@ -5523,14 +5523,14 @@ func TypeAddInstancePrivate(class_type int /*TODO_TYPE isPtr: false, tag: GType*
 
 // g_type_add_interface_dynamic
 // container is nil
-func TypeAddInterfaceDynamic(instance_type int /*TODO_TYPE isPtr: false, tag: GType*/, interface_type int /*TODO_TYPE isPtr: false, tag: GType*/, plugin TypePlugin) {
+func TypeAddInterfaceDynamic(instance_type gi.GType, interface_type gi.GType, plugin TypePlugin) {
 	iv, err := _I.Get(275, "type_add_interface_dynamic", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance_type := gi.NewIntArgument(instance_type)   /*TODO*/
-	arg_interface_type := gi.NewIntArgument(interface_type) /*TODO*/
+	arg_instance_type := gi.NewUintArgument(uint(instance_type))
+	arg_interface_type := gi.NewUintArgument(uint(interface_type))
 	arg_plugin := gi.NewPointerArgument(plugin.P)
 	args := []gi.Argument{arg_instance_type, arg_interface_type, arg_plugin}
 	iv.Call(args, nil, nil)
@@ -5538,14 +5538,14 @@ func TypeAddInterfaceDynamic(instance_type int /*TODO_TYPE isPtr: false, tag: GT
 
 // g_type_add_interface_static
 // container is nil
-func TypeAddInterfaceStatic(instance_type int /*TODO_TYPE isPtr: false, tag: GType*/, interface_type int /*TODO_TYPE isPtr: false, tag: GType*/, info InterfaceInfo) {
+func TypeAddInterfaceStatic(instance_type gi.GType, interface_type gi.GType, info InterfaceInfo) {
 	iv, err := _I.Get(276, "type_add_interface_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance_type := gi.NewIntArgument(instance_type)   /*TODO*/
-	arg_interface_type := gi.NewIntArgument(interface_type) /*TODO*/
+	arg_instance_type := gi.NewUintArgument(uint(instance_type))
+	arg_interface_type := gi.NewUintArgument(uint(interface_type))
 	arg_info := gi.NewPointerArgument(info.P)
 	args := []gi.Argument{arg_instance_type, arg_interface_type, arg_info}
 	iv.Call(args, nil, nil)
@@ -5553,14 +5553,14 @@ func TypeAddInterfaceStatic(instance_type int /*TODO_TYPE isPtr: false, tag: GTy
 
 // g_type_check_class_is_a
 // container is nil
-func TypeCheckClassIsA(g_class TypeClass, is_a_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result bool) {
+func TypeCheckClassIsA(g_class TypeClass, is_a_type gi.GType) (result bool) {
 	iv, err := _I.Get(277, "type_check_class_is_a", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_g_class := gi.NewPointerArgument(g_class.P)
-	arg_is_a_type := gi.NewIntArgument(is_a_type) /*TODO*/
+	arg_is_a_type := gi.NewUintArgument(uint(is_a_type))
 	args := []gi.Argument{arg_g_class, arg_is_a_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5586,14 +5586,14 @@ func TypeCheckInstance(instance TypeInstance) (result bool) {
 
 // g_type_check_instance_is_a
 // container is nil
-func TypeCheckInstanceIsA(instance TypeInstance, iface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result bool) {
+func TypeCheckInstanceIsA(instance TypeInstance, iface_type gi.GType) (result bool) {
 	iv, err := _I.Get(279, "type_check_instance_is_a", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_instance := gi.NewPointerArgument(instance.P)
-	arg_iface_type := gi.NewIntArgument(iface_type) /*TODO*/
+	arg_iface_type := gi.NewUintArgument(uint(iface_type))
 	args := []gi.Argument{arg_instance, arg_iface_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5603,14 +5603,14 @@ func TypeCheckInstanceIsA(instance TypeInstance, iface_type int /*TODO_TYPE isPt
 
 // g_type_check_instance_is_fundamentally_a
 // container is nil
-func TypeCheckInstanceIsFundamentallyA(instance TypeInstance, fundamental_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result bool) {
+func TypeCheckInstanceIsFundamentallyA(instance TypeInstance, fundamental_type gi.GType) (result bool) {
 	iv, err := _I.Get(280, "type_check_instance_is_fundamentally_a", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_instance := gi.NewPointerArgument(instance.P)
-	arg_fundamental_type := gi.NewIntArgument(fundamental_type) /*TODO*/
+	arg_fundamental_type := gi.NewUintArgument(uint(fundamental_type))
 	args := []gi.Argument{arg_instance, arg_fundamental_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5620,13 +5620,13 @@ func TypeCheckInstanceIsFundamentallyA(instance TypeInstance, fundamental_type i
 
 // g_type_check_is_value_type
 // container is nil
-func TypeCheckIsValueType(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result bool) {
+func TypeCheckIsValueType(type1 gi.GType) (result bool) {
 	iv, err := _I.Get(281, "type_check_is_value_type", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5652,14 +5652,14 @@ func TypeCheckValue(value Value) (result bool) {
 
 // g_type_check_value_holds
 // container is nil
-func TypeCheckValueHolds(value Value, type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result bool) {
+func TypeCheckValueHolds(value Value, type1 gi.GType) (result bool) {
 	iv, err := _I.Get(283, "type_check_value_holds", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_value := gi.NewPointerArgument(value.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_value, arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5670,14 +5670,14 @@ func TypeCheckValueHolds(value Value, type1 int /*TODO_TYPE isPtr: false, tag: G
 // g_type_children
 // container is nil
 // ret lenArgIdx 1
-func TypeChildren(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
+func TypeChildren(type1 gi.GType) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
 	iv, err := _I.Get(284, "type_children", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_n_children := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_type1, arg_n_children}
 	var ret gi.Argument
@@ -5705,13 +5705,13 @@ func TypeClassAdjustPrivateOffset(g_class unsafe.Pointer, private_size_or_offset
 
 // g_type_class_peek
 // container is nil
-func TypeClassPeek(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypeClass) {
+func TypeClassPeek(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(286, "type_class_peek", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5721,13 +5721,13 @@ func TypeClassPeek(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result Typ
 
 // g_type_class_peek_static
 // container is nil
-func TypeClassPeekStatic(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypeClass) {
+func TypeClassPeekStatic(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(287, "type_class_peek_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5737,13 +5737,13 @@ func TypeClassPeekStatic(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (resu
 
 // g_type_class_ref
 // container is nil
-func TypeClassRef(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypeClass) {
+func TypeClassRef(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(288, "type_class_ref", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5753,13 +5753,13 @@ func TypeClassRef(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result Type
 
 // g_type_default_interface_peek
 // container is nil
-func TypeDefaultInterfacePeek(g_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypeInterface) {
+func TypeDefaultInterfacePeek(g_type gi.GType) (result TypeInterface) {
 	iv, err := _I.Get(289, "type_default_interface_peek", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_g_type := gi.NewIntArgument(g_type) /*TODO*/
+	arg_g_type := gi.NewUintArgument(uint(g_type))
 	args := []gi.Argument{arg_g_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5769,13 +5769,13 @@ func TypeDefaultInterfacePeek(g_type int /*TODO_TYPE isPtr: false, tag: GType*/)
 
 // g_type_default_interface_ref
 // container is nil
-func TypeDefaultInterfaceRef(g_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypeInterface) {
+func TypeDefaultInterfaceRef(g_type gi.GType) (result TypeInterface) {
 	iv, err := _I.Get(290, "type_default_interface_ref", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_g_type := gi.NewIntArgument(g_type) /*TODO*/
+	arg_g_type := gi.NewUintArgument(uint(g_type))
 	args := []gi.Argument{arg_g_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5798,13 +5798,13 @@ func TypeDefaultInterfaceUnref(g_iface TypeInterface) {
 
 // g_type_depth
 // container is nil
-func TypeDepth(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result uint32) {
+func TypeDepth(type1 gi.GType) (result uint32) {
 	iv, err := _I.Get(292, "type_depth", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5814,13 +5814,13 @@ func TypeDepth(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result uint32)
 
 // g_type_ensure
 // container is nil
-func TypeEnsure(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeEnsure(type1 gi.GType) {
 	iv, err := _I.Get(293, "type_ensure", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	iv.Call(args, nil, nil)
 }
@@ -5840,7 +5840,7 @@ func TypeFreeInstance(instance TypeInstance) {
 
 // g_type_from_name
 // container is nil
-func TypeFromName(name string) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeFromName(name string) (result gi.GType) {
 	iv, err := _I.Get(295, "type_from_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5852,29 +5852,29 @@ func TypeFromName(name string) (result int /*TODO_TYPE isPtr: false, tag: GType*
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_type_fundamental
 // container is nil
-func TypeFundamental(type_id int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeFundamental(type_id gi.GType) (result gi.GType) {
 	iv, err := _I.Get(296, "type_fundamental", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type_id := gi.NewIntArgument(type_id) /*TODO*/
+	arg_type_id := gi.NewUintArgument(uint(type_id))
 	args := []gi.Argument{arg_type_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_type_fundamental_next
 // container is nil
-func TypeFundamentalNext() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeFundamentalNext() (result gi.GType) {
 	iv, err := _I.Get(297, "type_fundamental_next", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5882,19 +5882,19 @@ func TypeFundamentalNext() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_type_get_instance_count
 // container is nil
-func TypeGetInstanceCount(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result int32) {
+func TypeGetInstanceCount(type1 gi.GType) (result int32) {
 	iv, err := _I.Get(298, "type_get_instance_count", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5904,13 +5904,13 @@ func TypeGetInstanceCount(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (res
 
 // g_type_get_plugin
 // container is nil
-func TypeGetPlugin(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypePlugin) {
+func TypeGetPlugin(type1 gi.GType) (result TypePlugin) {
 	iv, err := _I.Get(299, "type_get_plugin", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5920,13 +5920,13 @@ func TypeGetPlugin(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result Typ
 
 // g_type_get_qdata
 // container is nil
-func TypeGetQdata(type1 int /*TODO_TYPE isPtr: false, tag: GType*/, quark uint32) {
+func TypeGetQdata(type1 gi.GType, quark uint32) {
 	iv, err := _I.Get(300, "type_get_qdata", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_quark := gi.NewUint32Argument(quark)
 	args := []gi.Argument{arg_type1, arg_quark}
 	iv.Call(args, nil, nil)
@@ -5972,28 +5972,28 @@ func TypeInitWithDebugFlags(debug_flags TypeDebugFlags) {
 
 // g_type_interface_add_prerequisite
 // container is nil
-func TypeInterfaceAddPrerequisite(interface_type int /*TODO_TYPE isPtr: false, tag: GType*/, prerequisite_type int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeInterfaceAddPrerequisite(interface_type gi.GType, prerequisite_type gi.GType) {
 	iv, err := _I.Get(304, "type_interface_add_prerequisite", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_interface_type := gi.NewIntArgument(interface_type)       /*TODO*/
-	arg_prerequisite_type := gi.NewIntArgument(prerequisite_type) /*TODO*/
+	arg_interface_type := gi.NewUintArgument(uint(interface_type))
+	arg_prerequisite_type := gi.NewUintArgument(uint(prerequisite_type))
 	args := []gi.Argument{arg_interface_type, arg_prerequisite_type}
 	iv.Call(args, nil, nil)
 }
 
 // g_type_interface_get_plugin
 // container is nil
-func TypeInterfaceGetPlugin(instance_type int /*TODO_TYPE isPtr: false, tag: GType*/, interface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypePlugin) {
+func TypeInterfaceGetPlugin(instance_type gi.GType, interface_type gi.GType) (result TypePlugin) {
 	iv, err := _I.Get(305, "type_interface_get_plugin", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance_type := gi.NewIntArgument(instance_type)   /*TODO*/
-	arg_interface_type := gi.NewIntArgument(interface_type) /*TODO*/
+	arg_instance_type := gi.NewUintArgument(uint(instance_type))
+	arg_interface_type := gi.NewUintArgument(uint(interface_type))
 	args := []gi.Argument{arg_instance_type, arg_interface_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6003,14 +6003,14 @@ func TypeInterfaceGetPlugin(instance_type int /*TODO_TYPE isPtr: false, tag: GTy
 
 // g_type_interface_peek
 // container is nil
-func TypeInterfacePeek(instance_class TypeClass, iface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result TypeInterface) {
+func TypeInterfacePeek(instance_class TypeClass, iface_type gi.GType) (result TypeInterface) {
 	iv, err := _I.Get(306, "type_interface_peek", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_instance_class := gi.NewPointerArgument(instance_class.P)
-	arg_iface_type := gi.NewIntArgument(iface_type) /*TODO*/
+	arg_iface_type := gi.NewUintArgument(uint(iface_type))
 	args := []gi.Argument{arg_instance_class, arg_iface_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6021,14 +6021,14 @@ func TypeInterfacePeek(instance_class TypeClass, iface_type int /*TODO_TYPE isPt
 // g_type_interface_prerequisites
 // container is nil
 // ret lenArgIdx 1
-func TypeInterfacePrerequisites(interface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
+func TypeInterfacePrerequisites(interface_type gi.GType) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
 	iv, err := _I.Get(307, "type_interface_prerequisites", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_interface_type := gi.NewIntArgument(interface_type) /*TODO*/
+	arg_interface_type := gi.NewUintArgument(uint(interface_type))
 	arg_n_prerequisites := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_interface_type, arg_n_prerequisites}
 	var ret gi.Argument
@@ -6043,14 +6043,14 @@ func TypeInterfacePrerequisites(interface_type int /*TODO_TYPE isPtr: false, tag
 // g_type_interfaces
 // container is nil
 // ret lenArgIdx 1
-func TypeInterfaces(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
+func TypeInterfaces(type1 gi.GType) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
 	iv, err := _I.Get(308, "type_interfaces", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_n_interfaces := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_type1, arg_n_interfaces}
 	var ret gi.Argument
@@ -6064,14 +6064,14 @@ func TypeInterfaces(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result in
 
 // g_type_is_a
 // container is nil
-func TypeIsA(type1 int /*TODO_TYPE isPtr: false, tag: GType*/, is_a_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result bool) {
+func TypeIsA(type1 gi.GType, is_a_type gi.GType) (result bool) {
 	iv, err := _I.Get(309, "type_is_a", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1)         /*TODO*/
-	arg_is_a_type := gi.NewIntArgument(is_a_type) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
+	arg_is_a_type := gi.NewUintArgument(uint(is_a_type))
 	args := []gi.Argument{arg_type1, arg_is_a_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6081,13 +6081,13 @@ func TypeIsA(type1 int /*TODO_TYPE isPtr: false, tag: GType*/, is_a_type int /*T
 
 // g_type_name
 // container is nil
-func TypeName(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result string) {
+func TypeName(type1 gi.GType) (result string) {
 	iv, err := _I.Get(310, "type_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6129,46 +6129,46 @@ func TypeNameFromInstance(instance TypeInstance) (result string) {
 
 // g_type_next_base
 // container is nil
-func TypeNextBase(leaf_type int /*TODO_TYPE isPtr: false, tag: GType*/, root_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeNextBase(leaf_type gi.GType, root_type gi.GType) (result gi.GType) {
 	iv, err := _I.Get(313, "type_next_base", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_leaf_type := gi.NewIntArgument(leaf_type) /*TODO*/
-	arg_root_type := gi.NewIntArgument(root_type) /*TODO*/
+	arg_leaf_type := gi.NewUintArgument(uint(leaf_type))
+	arg_root_type := gi.NewUintArgument(uint(root_type))
 	args := []gi.Argument{arg_leaf_type, arg_root_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_type_parent
 // container is nil
-func TypeParent(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeParent(type1 gi.GType) (result gi.GType) {
 	iv, err := _I.Get(314, "type_parent", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_type_qname
 // container is nil
-func TypeQname(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result uint32) {
+func TypeQname(type1 gi.GType) (result uint32) {
 	iv, err := _I.Get(315, "type_qname", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6178,14 +6178,14 @@ func TypeQname(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result uint32)
 
 // g_type_query
 // container is nil
-func TypeQueryF(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (query int /*TODO_TYPE*/) {
+func TypeQueryF(type1 gi.GType) (query int /*TODO_TYPE*/) {
 	iv, err := _I.Get(316, "type_query", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_query := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_type1, arg_query}
 	iv.Call(args, nil, &outArgs[0])
@@ -6195,14 +6195,14 @@ func TypeQueryF(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (query int /*T
 
 // g_type_register_dynamic
 // container is nil
-func TypeRegisterDynamic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, plugin TypePlugin, flags TypeFlags) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeRegisterDynamic(parent_type gi.GType, type_name string, plugin TypePlugin, flags TypeFlags) (result gi.GType) {
 	iv, err := _I.Get(317, "type_register_dynamic", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_type_name := gi.CString(type_name)
-	arg_parent_type := gi.NewIntArgument(parent_type) /*TODO*/
+	arg_parent_type := gi.NewUintArgument(uint(parent_type))
 	arg_type_name := gi.NewStringArgument(c_type_name)
 	arg_plugin := gi.NewPointerArgument(plugin.P)
 	arg_flags := gi.NewIntArgument(int(flags))
@@ -6210,20 +6210,20 @@ func TypeRegisterDynamic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/,
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_type_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_type_register_fundamental
 // container is nil
-func TypeRegisterFundamental(type_id int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, info TypeInfo, finfo TypeFundamentalInfo, flags TypeFlags) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeRegisterFundamental(type_id gi.GType, type_name string, info TypeInfo, finfo TypeFundamentalInfo, flags TypeFlags) (result gi.GType) {
 	iv, err := _I.Get(318, "type_register_fundamental", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_type_name := gi.CString(type_name)
-	arg_type_id := gi.NewIntArgument(type_id) /*TODO*/
+	arg_type_id := gi.NewUintArgument(uint(type_id))
 	arg_type_name := gi.NewStringArgument(c_type_name)
 	arg_info := gi.NewPointerArgument(info.P)
 	arg_finfo := gi.NewPointerArgument(finfo.P)
@@ -6232,20 +6232,20 @@ func TypeRegisterFundamental(type_id int /*TODO_TYPE isPtr: false, tag: GType*/,
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_type_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_type_register_static
 // container is nil
-func TypeRegisterStatic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, type_name string, info TypeInfo, flags TypeFlags) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func TypeRegisterStatic(parent_type gi.GType, type_name string, info TypeInfo, flags TypeFlags) (result gi.GType) {
 	iv, err := _I.Get(319, "type_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_type_name := gi.CString(type_name)
-	arg_parent_type := gi.NewIntArgument(parent_type) /*TODO*/
+	arg_parent_type := gi.NewUintArgument(uint(parent_type))
 	arg_type_name := gi.NewStringArgument(c_type_name)
 	arg_info := gi.NewPointerArgument(info.P)
 	arg_flags := gi.NewIntArgument(int(flags))
@@ -6253,19 +6253,19 @@ func TypeRegisterStatic(parent_type int /*TODO_TYPE isPtr: false, tag: GType*/, 
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_type_name)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_type_set_qdata
 // container is nil
-func TypeSetQdata(type1 int /*TODO_TYPE isPtr: false, tag: GType*/, quark uint32, data unsafe.Pointer) {
+func TypeSetQdata(type1 gi.GType, quark uint32, data unsafe.Pointer) {
 	iv, err := _I.Get(320, "type_set_qdata", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_quark := gi.NewUint32Argument(quark)
 	arg_data := gi.NewPointerArgument(data)
 	args := []gi.Argument{arg_type1, arg_quark, arg_data}
@@ -6274,13 +6274,13 @@ func TypeSetQdata(type1 int /*TODO_TYPE isPtr: false, tag: GType*/, quark uint32
 
 // g_type_test_flags
 // container is nil
-func TypeTestFlags(type1 int /*TODO_TYPE isPtr: false, tag: GType*/, flags uint32) (result bool) {
+func TypeTestFlags(type1 gi.GType, flags uint32) (result bool) {
 	iv, err := _I.Get(321, "type_test_flags", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_flags := gi.NewUint32Argument(flags)
 	args := []gi.Argument{arg_type1, arg_flags}
 	var ret gi.Argument
@@ -6291,14 +6291,14 @@ func TypeTestFlags(type1 int /*TODO_TYPE isPtr: false, tag: GType*/, flags uint3
 
 // g_value_type_compatible
 // container is nil
-func ValueTypeCompatible(src_type int /*TODO_TYPE isPtr: false, tag: GType*/, dest_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result bool) {
+func ValueTypeCompatible(src_type gi.GType, dest_type gi.GType) (result bool) {
 	iv, err := _I.Get(322, "value_type_compatible", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_src_type := gi.NewIntArgument(src_type)   /*TODO*/
-	arg_dest_type := gi.NewIntArgument(dest_type) /*TODO*/
+	arg_src_type := gi.NewUintArgument(uint(src_type))
+	arg_dest_type := gi.NewUintArgument(uint(dest_type))
 	args := []gi.Argument{arg_src_type, arg_dest_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6308,14 +6308,14 @@ func ValueTypeCompatible(src_type int /*TODO_TYPE isPtr: false, tag: GType*/, de
 
 // g_value_type_transformable
 // container is nil
-func ValueTypeTransformable(src_type int /*TODO_TYPE isPtr: false, tag: GType*/, dest_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result bool) {
+func ValueTypeTransformable(src_type gi.GType, dest_type gi.GType) (result bool) {
 	iv, err := _I.Get(323, "value_type_transformable", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_src_type := gi.NewIntArgument(src_type)   /*TODO*/
-	arg_dest_type := gi.NewIntArgument(dest_type) /*TODO*/
+	arg_src_type := gi.NewUintArgument(uint(src_type))
+	arg_dest_type := gi.NewUintArgument(uint(dest_type))
 	args := []gi.Argument{arg_src_type, arg_dest_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

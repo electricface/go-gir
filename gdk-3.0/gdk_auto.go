@@ -2092,7 +2092,7 @@ func (v Display) SetDoubleClickTime(msec uint32) {
 // container is not nil, container is Display
 // is method
 // arg 2 targets lenArgIdx 3
-func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32) {
+func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets gi.PointerArray, n_targets int32) {
 	iv, err := _I.Get(104, "Display", "store_clipboard")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2101,7 +2101,7 @@ func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets 
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_clipboard_window := gi.NewPointerArgument(clipboard_window.P_Window())
 	arg_time_ := gi.NewUint32Argument(time_)
-	arg_targets := gi.NewIntArgument(targets) /*TODO*/
+	arg_targets := gi.NewPointerArgument(targets.P)
 	arg_n_targets := gi.NewInt32Argument(n_targets)
 	args := []gi.Argument{arg_v, arg_clipboard_window, arg_time_, arg_targets, arg_n_targets}
 	iv.Call(args, nil, nil)
@@ -4290,7 +4290,7 @@ func (v Keymap) GetDirection() (result pango.DirectionEnum) {
 // is method
 // arg 1 keys lenArgIdx 3
 // arg 2 keyvals lenArgIdx 3
-func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys int /*TODO_TYPE array type c, elemTypeTag: interface*/, keyvals gi.Uint32Array) {
+func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys unsafe.Pointer, keyvals gi.Uint32Array) {
 	iv, err := _I.Get(212, "Keymap", "get_entries_for_keycode")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4307,7 +4307,7 @@ func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys
 	iv.Call(args, &ret, &outArgs[0])
 	var n_entries int32
 	_ = n_entries
-	keys = outArgs[0].Int() /*TODO*/
+	keys = outArgs[0].Pointer()
 	keyvals.P = outArgs[1].Pointer()
 	n_entries = outArgs[2].Int32()
 	result = ret.Bool()
@@ -4319,7 +4319,7 @@ func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys
 // container is not nil, container is Keymap
 // is method
 // arg 1 keys lenArgIdx 2
-func (v Keymap) GetEntriesForKeyval(keyval uint32) (result bool, keys int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
+func (v Keymap) GetEntriesForKeyval(keyval uint32) (result bool, keys unsafe.Pointer) {
 	iv, err := _I.Get(213, "Keymap", "get_entries_for_keyval")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4335,7 +4335,7 @@ func (v Keymap) GetEntriesForKeyval(keyval uint32) (result bool, keys int /*TODO
 	iv.Call(args, &ret, &outArgs[0])
 	var n_keys int32
 	_ = n_keys
-	keys = outArgs[0].Int() /*TODO*/
+	keys = outArgs[0].Pointer()
 	n_keys = outArgs[1].Int32()
 	result = ret.Bool()
 	return
@@ -7287,7 +7287,7 @@ func (v Window) GetUpdateArea() (result cairo.Region) {
 // gdk_window_get_user_data
 // container is not nil, container is Window
 // is method
-func (v Window) GetUserData() (data int /*TODO_TYPE*/) {
+func (v Window) GetUserData() (data unsafe.Pointer) {
 	iv, err := _I.Get(374, "Window", "get_user_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7298,7 +7298,7 @@ func (v Window) GetUserData() (data int /*TODO_TYPE*/) {
 	arg_data := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_data}
 	iv.Call(args, nil, &outArgs[0])
-	data = outArgs[0].Int() /*TODO*/
+	data = outArgs[0].Pointer()
 	return
 }
 
@@ -10008,7 +10008,7 @@ func QueryDepths() (depths gi.Int32Array) {
 // gdk_query_visual_types
 // container is nil
 // arg 0 visual_types lenArgIdx 1
-func QueryVisualTypes() (visual_types int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
+func QueryVisualTypes() (visual_types unsafe.Pointer) {
 	iv, err := _I.Get(539, "query_visual_types", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10021,7 +10021,7 @@ func QueryVisualTypes() (visual_types int /*TODO_TYPE array type c, elemTypeTag:
 	iv.Call(args, nil, &outArgs[0])
 	var count int32
 	_ = count
-	visual_types = outArgs[0].Int() /*TODO*/
+	visual_types = outArgs[0].Pointer()
 	count = outArgs[1].Int32()
 	return
 }

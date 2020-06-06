@@ -813,7 +813,7 @@ func (v Pixbuf) GetOption(key string) (result string) {
 // gdk_pixbuf_get_options
 // container is not nil, container is Pixbuf
 // is method
-func (v Pixbuf) GetOptions() (result int /*TODO_TYPE isPtr: true, tag: ghash*/) {
+func (v Pixbuf) GetOptions() (result glib.HashTable) {
 	iv, err := _I.Get(38, "Pixbuf", "get_options")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -823,7 +823,7 @@ func (v Pixbuf) GetOptions() (result int /*TODO_TYPE isPtr: true, tag: ghash*/) 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 

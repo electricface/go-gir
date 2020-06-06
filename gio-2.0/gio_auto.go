@@ -539,14 +539,14 @@ func (v *ActionMapIfc) AddAction(action Action) {
 // container is not nil, container is ActionMap
 // is method
 // arg 0 entries lenArgIdx 1
-func (v *ActionMapIfc) AddActionEntries(entries int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_entries int32, user_data unsafe.Pointer) {
+func (v *ActionMapIfc) AddActionEntries(entries unsafe.Pointer, n_entries int32, user_data unsafe.Pointer) {
 	iv, err := _I.Get(26, "ActionMap", "add_action_entries")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_entries := gi.NewIntArgument(entries) /*TODO*/
+	arg_entries := gi.NewPointerArgument(entries)
 	arg_n_entries := gi.NewInt32Argument(n_entries)
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_entries, arg_n_entries, arg_user_data}
@@ -1492,14 +1492,14 @@ func (v Application) AddMainOption(long_name string, short_name int8, flags glib
 // g_application_add_main_option_entries
 // container is not nil, container is Application
 // is method
-func (v Application) AddMainOptionEntries(entries int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
+func (v Application) AddMainOptionEntries(entries unsafe.Pointer) {
 	iv, err := _I.Get(76, "Application", "add_main_option_entries")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_entries := gi.NewIntArgument(entries) /*TODO*/
+	arg_entries := gi.NewPointerArgument(entries)
 	args := []gi.Argument{arg_v, arg_entries}
 	iv.Call(args, nil, nil)
 }
@@ -1722,7 +1722,7 @@ func (v Application) MarkBusy() {
 // container is not nil, container is Application
 // is method
 // arg 0 files lenArgIdx 1
-func (v Application) Open(files int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_files int32, hint string) {
+func (v Application) Open(files gi.PointerArray, n_files int32, hint string) {
 	iv, err := _I.Get(90, "Application", "open")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1730,7 +1730,7 @@ func (v Application) Open(files int /*TODO_TYPE array type c, elemTypeTag: inter
 	}
 	c_hint := gi.CString(hint)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_files := gi.NewIntArgument(files) /*TODO*/
+	arg_files := gi.NewPointerArgument(files.P)
 	arg_n_files := gi.NewInt32Argument(n_files)
 	arg_hint := gi.NewStringArgument(c_hint)
 	args := []gi.Argument{arg_v, arg_files, arg_n_files, arg_hint}
@@ -2275,13 +2275,13 @@ type AsyncInitableIfc struct{}
 // container is not nil, container is AsyncInitable
 // is method
 // arg0Type tag: GType, isPtr: false
-func AsyncInitableNewvAsync1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters gobject.Parameter, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func AsyncInitableNewvAsync1(object_type gi.GType, n_parameters uint32, parameters gobject.Parameter, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(119, "AsyncInitable", "newv_async")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_object_type := gi.NewIntArgument(object_type) /*TODO*/
+	arg_object_type := gi.NewUintArgument(uint(object_type))
 	arg_n_parameters := gi.NewUint32Argument(n_parameters)
 	arg_parameters := gi.NewPointerArgument(parameters.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
@@ -3544,14 +3544,14 @@ func (v DBusAnnotationInfo) Unref() {
 // container is not nil, container is DBusAnnotationInfo
 // is method
 // arg0Type tag: array, isPtr: true
-func DBusAnnotationInfoLookup1(annotations int /*TODO_TYPE array type c, elemTypeTag: interface*/, name string) (result string) {
+func DBusAnnotationInfoLookup1(annotations gi.PointerArray, name string) (result string) {
 	iv, err := _I.Get(179, "DBusAnnotationInfo", "lookup")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_name := gi.CString(name)
-	arg_annotations := gi.NewIntArgument(annotations) /*TODO*/
+	arg_annotations := gi.NewPointerArgument(annotations.P)
 	arg_name := gi.NewStringArgument(c_name)
 	args := []gi.Argument{arg_annotations, arg_name}
 	var ret gi.Argument
@@ -6317,14 +6317,14 @@ func (v DBusMethodInvocation) ReturnErrorLiteral(domain uint32, code int32, mess
 // g_dbus_method_invocation_return_gerror
 // container is not nil, container is DBusMethodInvocation
 // is method
-func (v DBusMethodInvocation) ReturnGerror(error int /*TODO_TYPE isPtr: true, tag: error*/) {
+func (v DBusMethodInvocation) ReturnGerror(error glib.Error) {
 	iv, err := _I.Get(314, "DBusMethodInvocation", "return_gerror")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_v, arg_error}
 	iv.Call(args, nil, nil)
 }
@@ -8778,14 +8778,14 @@ func (v *DatagramBasedIfc) CreateSource(condition glib.IOConditionFlags, cancell
 // container is not nil, container is DatagramBased
 // is method
 // arg 0 messages lenArgIdx 1
-func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
+func (v *DatagramBasedIfc) ReceiveMessages(messages unsafe.Pointer, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(427, "DatagramBased", "receive_messages")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_messages := gi.NewIntArgument(messages) /*TODO*/
+	arg_messages := gi.NewPointerArgument(messages)
 	arg_num_messages := gi.NewUint32Argument(num_messages)
 	arg_flags := gi.NewInt32Argument(flags)
 	arg_timeout := gi.NewInt64Argument(timeout)
@@ -8803,14 +8803,14 @@ func (v *DatagramBasedIfc) ReceiveMessages(messages int /*TODO_TYPE array type c
 // container is not nil, container is DatagramBased
 // is method
 // arg 0 messages lenArgIdx 1
-func (v *DatagramBasedIfc) SendMessages(messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
+func (v *DatagramBasedIfc) SendMessages(messages unsafe.Pointer, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(428, "DatagramBased", "send_messages")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_messages := gi.NewIntArgument(messages) /*TODO*/
+	arg_messages := gi.NewPointerArgument(messages)
 	arg_num_messages := gi.NewUint32Argument(num_messages)
 	arg_flags := gi.NewInt32Argument(flags)
 	arg_timeout := gi.NewInt64Argument(timeout)
@@ -14050,7 +14050,7 @@ func (v FileInfo) GetAttributeByteString(attribute string) (result string) {
 // g_file_info_get_attribute_data
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) GetAttributeData(attribute string) (result bool, type1 FileAttributeTypeEnum, value_pp int /*TODO_TYPE*/, status FileAttributeStatusEnum) {
+func (v FileInfo) GetAttributeData(attribute string) (result bool, type1 FileAttributeTypeEnum, value_pp unsafe.Pointer, status FileAttributeStatusEnum) {
 	iv, err := _I.Get(685, "FileInfo", "get_attribute_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14068,7 +14068,7 @@ func (v FileInfo) GetAttributeData(attribute string) (result bool, type1 FileAtt
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_attribute)
 	type1 = FileAttributeTypeEnum(outArgs[0].Int())
-	value_pp = outArgs[1].Int() /*TODO*/
+	value_pp = outArgs[1].Pointer()
 	status = FileAttributeStatusEnum(outArgs[2].Int())
 	result = ret.Bool()
 	return
@@ -15680,7 +15680,7 @@ func (v IOExtension) GetPriority() (result int32) {
 // g_io_extension_get_type
 // container is not nil, container is IOExtension
 // is method
-func (v IOExtension) GetType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v IOExtension) GetType() (result gi.GType) {
 	iv, err := _I.Get(764, "IOExtension", "get_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15690,7 +15690,7 @@ func (v IOExtension) GetType() (result int /*TODO_TYPE isPtr: false, tag: GType*
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -15739,7 +15739,7 @@ func (v IOExtensionPoint) GetExtensions() (result int /*TODO_TYPE isPtr: true, t
 // g_io_extension_point_get_required_type
 // container is not nil, container is IOExtensionPoint
 // is method
-func (v IOExtensionPoint) GetRequiredType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v IOExtensionPoint) GetRequiredType() (result gi.GType) {
 	iv, err := _I.Get(767, "IOExtensionPoint", "get_required_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15749,21 +15749,21 @@ func (v IOExtensionPoint) GetRequiredType() (result int /*TODO_TYPE isPtr: false
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_io_extension_point_set_required_type
 // container is not nil, container is IOExtensionPoint
 // is method
-func (v IOExtensionPoint) SetRequiredType(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v IOExtensionPoint) SetRequiredType(type1 gi.GType) {
 	iv, err := _I.Get(768, "IOExtensionPoint", "set_required_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	args := []gi.Argument{arg_v, arg_type1}
 	iv.Call(args, nil, nil)
 }
@@ -15772,7 +15772,7 @@ func (v IOExtensionPoint) SetRequiredType(type1 int /*TODO_TYPE isPtr: false, ta
 // container is not nil, container is IOExtensionPoint
 // is method
 // arg0Type tag: utf8, isPtr: true
-func IOExtensionPointImplement1(extension_point_name string, type1 int /*TODO_TYPE isPtr: false, tag: GType*/, extension_name string, priority int32) (result IOExtension) {
+func IOExtensionPointImplement1(extension_point_name string, type1 gi.GType, extension_name string, priority int32) (result IOExtension) {
 	iv, err := _I.Get(769, "IOExtensionPoint", "implement")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15781,7 +15781,7 @@ func IOExtensionPointImplement1(extension_point_name string, type1 int /*TODO_TY
 	c_extension_point_name := gi.CString(extension_point_name)
 	c_extension_name := gi.CString(extension_name)
 	arg_extension_point_name := gi.NewStringArgument(c_extension_point_name)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_extension_name := gi.NewStringArgument(c_extension_name)
 	arg_priority := gi.NewInt32Argument(priority)
 	args := []gi.Argument{arg_extension_point_name, arg_type1, arg_extension_name, arg_priority}
@@ -16954,15 +16954,15 @@ type InitableIfc struct{}
 // is method
 // arg0Type tag: GType, isPtr: false
 // arg 2 parameters lenArgIdx 1
-func InitableNewv1(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, elemTypeTag: interface*/, cancellable ICancellable) (result gobject.Object, err error) {
+func InitableNewv1(object_type gi.GType, n_parameters uint32, parameters unsafe.Pointer, cancellable ICancellable) (result gobject.Object, err error) {
 	iv, err := _I.Get(829, "Initable", "newv")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_object_type := gi.NewIntArgument(object_type) /*TODO*/
+	arg_object_type := gi.NewUintArgument(uint(object_type))
 	arg_n_parameters := gi.NewUint32Argument(n_parameters)
-	arg_parameters := gi.NewIntArgument(parameters) /*TODO*/
+	arg_parameters := gi.NewPointerArgument(parameters)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_object_type, arg_n_parameters, arg_parameters, arg_cancellable, arg_err}
@@ -17408,7 +17408,7 @@ type ListModelIfc struct{}
 // g_list_model_get_item_type
 // container is not nil, container is ListModel
 // is method
-func (v *ListModelIfc) GetItemType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v *ListModelIfc) GetItemType() (result gi.GType) {
 	iv, err := _I.Get(850, "ListModel", "get_item_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17418,7 +17418,7 @@ func (v *ListModelIfc) GetItemType() (result int /*TODO_TYPE isPtr: false, tag: 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -17490,13 +17490,13 @@ func (v ListStore) P_ListStore() unsafe.Pointer { return v.P }
 // g_list_store_new
 // container is not nil, container is ListStore
 // is constructor
-func NewListStore(item_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result ListStore) {
+func NewListStore(item_type gi.GType) (result ListStore) {
 	iv, err := _I.Get(854, "ListStore", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_item_type := gi.NewIntArgument(item_type) /*TODO*/
+	arg_item_type := gi.NewUintArgument(uint(item_type))
 	args := []gi.Argument{arg_item_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -17604,7 +17604,7 @@ func (v ListStore) Sort(compare_func int /*TODO_TYPE isPtr: false, tag: interfac
 // container is not nil, container is ListStore
 // is method
 // arg 2 additions lenArgIdx 3
-func (v ListStore) Splice(position uint32, n_removals uint32, additions int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_additions uint32) {
+func (v ListStore) Splice(position uint32, n_removals uint32, additions unsafe.Pointer, n_additions uint32) {
 	iv, err := _I.Get(861, "ListStore", "splice")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17613,7 +17613,7 @@ func (v ListStore) Splice(position uint32, n_removals uint32, additions int /*TO
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_position := gi.NewUint32Argument(position)
 	arg_n_removals := gi.NewUint32Argument(n_removals)
-	arg_additions := gi.NewIntArgument(additions) /*TODO*/
+	arg_additions := gi.NewPointerArgument(additions)
 	arg_n_additions := gi.NewUint32Argument(n_additions)
 	args := []gi.Argument{arg_v, arg_position, arg_n_removals, arg_additions, arg_n_additions}
 	iv.Call(args, nil, nil)
@@ -23150,7 +23150,7 @@ func (v SettingsBackend) P_SettingsBackend() unsafe.Pointer { return v.P }
 // container is not nil, container is SettingsBackend
 // is method
 // arg0Type tag: interface, isPtr: true
-func SettingsBackendFlattenTree1(tree glib.Tree) (path string, keys gi.CStrArray, values int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
+func SettingsBackendFlattenTree1(tree glib.Tree) (path string, keys gi.CStrArray, values gi.PointerArray) {
 	iv, err := _I.Get(1137, "SettingsBackend", "flatten_tree")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23165,7 +23165,9 @@ func SettingsBackendFlattenTree1(tree glib.Tree) (path string, keys gi.CStrArray
 	iv.Call(args, nil, &outArgs[0])
 	path = outArgs[0].String().Take()
 	keys.P = outArgs[1].Pointer()
-	values = outArgs[2].Int() /*TODO*/
+	values.P = outArgs[2].Pointer()
+	values.Len = -1
+	values.SetLenZT()
 	return
 }
 
@@ -23831,14 +23833,14 @@ func NewSimpleActionGroup() (result SimpleActionGroup) {
 // container is not nil, container is SimpleActionGroup
 // is method
 // arg 0 entries lenArgIdx 1
-func (v SimpleActionGroup) AddEntries(entries int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_entries int32, user_data unsafe.Pointer) {
+func (v SimpleActionGroup) AddEntries(entries unsafe.Pointer, n_entries int32, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1174, "SimpleActionGroup", "add_entries")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_entries := gi.NewIntArgument(entries) /*TODO*/
+	arg_entries := gi.NewPointerArgument(entries)
 	arg_n_entries := gi.NewInt32Argument(n_entries)
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_entries, arg_n_entries, arg_user_data}
@@ -23938,7 +23940,7 @@ func NewSimpleAsyncResult(source_object gobject.IObject, callback int /*TODO_TYP
 // g_simple_async_result_new_from_error
 // container is not nil, container is SimpleAsyncResult
 // is constructor
-func NewSimpleAsyncResultFromError(source_object gobject.IObject, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, error int /*TODO_TYPE isPtr: true, tag: error*/) (result SimpleAsyncResult) {
+func NewSimpleAsyncResultFromError(source_object gobject.IObject, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, error glib.Error) (result SimpleAsyncResult) {
 	iv, err := _I.Get(1179, "SimpleAsyncResult", "new_from_error")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23947,7 +23949,7 @@ func NewSimpleAsyncResultFromError(source_object gobject.IObject, callback int /
 	arg_source_object := gi.NewPointerArgument(source_object.P_Object())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_source_object, arg_callback, arg_user_data, arg_error}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -24074,14 +24076,14 @@ func (v SimpleAsyncResult) SetCheckCancellable(check_cancellable ICancellable) {
 // g_simple_async_result_set_from_error
 // container is not nil, container is SimpleAsyncResult
 // is method
-func (v SimpleAsyncResult) SetFromError(error int /*TODO_TYPE isPtr: true, tag: error*/) {
+func (v SimpleAsyncResult) SetFromError(error glib.Error) {
 	iv, err := _I.Get(1187, "SimpleAsyncResult", "set_from_error")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_v, arg_error}
 	iv.Call(args, nil, nil)
 }
@@ -25018,7 +25020,7 @@ func (v Socket) ReceiveFrom(buffer gi.Uint8Array, size uint64, cancellable ICanc
 // is method
 // arg 1 vectors lenArgIdx 2
 // arg 3 messages lenArgIdx 4
-func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_vectors int32, flags int /*TODO:TYPE*/, cancellable ICancellable) (result int64, address SocketAddress, messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, err error) {
+func (v Socket) ReceiveMessage(vectors unsafe.Pointer, num_vectors int32, flags int /*TODO:TYPE*/, cancellable ICancellable) (result int64, address SocketAddress, messages gi.PointerArray, err error) {
 	iv, err := _I.Get(1234, "Socket", "receive_message")
 	if err != nil {
 		return
@@ -25026,7 +25028,7 @@ func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE array type c, elemTypeTag
 	var outArgs [5]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_address := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_vectors := gi.NewIntArgument(vectors) /*TODO*/
+	arg_vectors := gi.NewPointerArgument(vectors)
 	arg_num_vectors := gi.NewInt32Argument(num_vectors)
 	arg_messages := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_num_messages := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -25039,9 +25041,10 @@ func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE array type c, elemTypeTag
 	_ = num_messages
 	err = gi.ToError(outArgs[3].Pointer())
 	address.P = outArgs[0].Pointer()
-	messages = outArgs[1].Int() /*TODO*/
+	messages.P = outArgs[1].Pointer()
 	num_messages = outArgs[2].Int32()
 	result = ret.Int64()
+	messages.Len = int(num_messages)
 	return
 }
 
@@ -25049,14 +25052,14 @@ func (v Socket) ReceiveMessage(vectors int /*TODO_TYPE array type c, elemTypeTag
 // container is not nil, container is Socket
 // is method
 // arg 0 messages lenArgIdx 1
-func (v Socket) ReceiveMessages(messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
+func (v Socket) ReceiveMessages(messages unsafe.Pointer, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1235, "Socket", "receive_messages")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_messages := gi.NewIntArgument(messages) /*TODO*/
+	arg_messages := gi.NewPointerArgument(messages)
 	arg_num_messages := gi.NewUint32Argument(num_messages)
 	arg_flags := gi.NewInt32Argument(flags)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -25121,7 +25124,7 @@ func (v Socket) Send(buffer gi.Uint8Array, size uint64, cancellable ICancellable
 // is method
 // arg 1 vectors lenArgIdx 2
 // arg 3 messages lenArgIdx 4
-func (v Socket) SendMessage(address ISocketAddress, vectors int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_vectors int32, messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_messages int32, flags int32, cancellable ICancellable) (result int64, err error) {
+func (v Socket) SendMessage(address ISocketAddress, vectors unsafe.Pointer, num_vectors int32, messages gi.PointerArray, num_messages int32, flags int32, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1238, "Socket", "send_message")
 	if err != nil {
 		return
@@ -25129,9 +25132,9 @@ func (v Socket) SendMessage(address ISocketAddress, vectors int /*TODO_TYPE arra
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_address := gi.NewPointerArgument(address.P_SocketAddress())
-	arg_vectors := gi.NewIntArgument(vectors) /*TODO*/
+	arg_vectors := gi.NewPointerArgument(vectors)
 	arg_num_vectors := gi.NewInt32Argument(num_vectors)
-	arg_messages := gi.NewIntArgument(messages) /*TODO*/
+	arg_messages := gi.NewPointerArgument(messages.P)
 	arg_num_messages := gi.NewInt32Argument(num_messages)
 	arg_flags := gi.NewInt32Argument(flags)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -25148,14 +25151,14 @@ func (v Socket) SendMessage(address ISocketAddress, vectors int /*TODO_TYPE arra
 // container is not nil, container is Socket
 // is method
 // arg 0 messages lenArgIdx 1
-func (v Socket) SendMessages(messages int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
+func (v Socket) SendMessages(messages unsafe.Pointer, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1239, "Socket", "send_messages")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_messages := gi.NewIntArgument(messages) /*TODO*/
+	arg_messages := gi.NewPointerArgument(messages)
 	arg_num_messages := gi.NewUint32Argument(num_messages)
 	arg_flags := gi.NewInt32Argument(flags)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
@@ -26236,7 +26239,7 @@ func (v SocketConnection) P_SocketConnection() unsafe.Pointer { return v.P }
 // container is not nil, container is SocketConnection
 // is method
 // arg0Type tag: interface, isPtr: false
-func SocketConnectionFactoryLookupType1(family SocketFamilyEnum, type1 SocketTypeEnum, protocol_id int32) (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func SocketConnectionFactoryLookupType1(family SocketFamilyEnum, type1 SocketTypeEnum, protocol_id int32) (result gi.GType) {
 	iv, err := _I.Get(1295, "SocketConnection", "factory_lookup_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -26248,7 +26251,7 @@ func SocketConnectionFactoryLookupType1(family SocketFamilyEnum, type1 SocketTyp
 	args := []gi.Argument{arg_family, arg_type1, arg_protocol_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -26256,13 +26259,13 @@ func SocketConnectionFactoryLookupType1(family SocketFamilyEnum, type1 SocketTyp
 // container is not nil, container is SocketConnection
 // is method
 // arg0Type tag: GType, isPtr: false
-func SocketConnectionFactoryRegisterType1(g_type int /*TODO_TYPE isPtr: false, tag: GType*/, family SocketFamilyEnum, type1 SocketTypeEnum, protocol int32) {
+func SocketConnectionFactoryRegisterType1(g_type gi.GType, family SocketFamilyEnum, type1 SocketTypeEnum, protocol int32) {
 	iv, err := _I.Get(1296, "SocketConnection", "factory_register_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_g_type := gi.NewIntArgument(g_type) /*TODO*/
+	arg_g_type := gi.NewUintArgument(uint(g_type))
 	arg_family := gi.NewIntArgument(int(family))
 	arg_type1 := gi.NewIntArgument(int(type1))
 	arg_protocol := gi.NewInt32Argument(protocol)
@@ -27909,7 +27912,7 @@ func TaskIsValid1(result AsyncResult, source_object gobject.IObject) (result1 bo
 // container is not nil, container is Task
 // is method
 // arg0Type tag: interface, isPtr: true
-func TaskReportError1(source_object gobject.IObject, callback int /*TODO_TYPE isPtr: false, tag: interface*/, callback_data unsafe.Pointer, source_tag unsafe.Pointer, error int /*TODO_TYPE isPtr: true, tag: error*/) {
+func TaskReportError1(source_object gobject.IObject, callback int /*TODO_TYPE isPtr: false, tag: interface*/, callback_data unsafe.Pointer, source_tag unsafe.Pointer, error glib.Error) {
 	iv, err := _I.Get(1378, "Task", "report_error")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -27919,7 +27922,7 @@ func TaskReportError1(source_object gobject.IObject, callback int /*TODO_TYPE is
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_callback_data := gi.NewPointerArgument(callback_data)
 	arg_source_tag := gi.NewPointerArgument(source_tag)
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_source_object, arg_callback, arg_callback_data, arg_source_tag, arg_error}
 	iv.Call(args, nil, nil)
 }
@@ -28161,14 +28164,14 @@ func (v Task) ReturnBoolean(result bool) {
 // g_task_return_error
 // container is not nil, container is Task
 // is method
-func (v Task) ReturnError(error int /*TODO_TYPE isPtr: true, tag: error*/) {
+func (v Task) ReturnError(error glib.Error) {
 	iv, err := _I.Get(1393, "Task", "return_error")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_v, arg_error}
 	iv.Call(args, nil, nil)
 }
@@ -28705,7 +28708,7 @@ type TlsBackendIfc struct{}
 // g_tls_backend_get_certificate_type
 // container is not nil, container is TlsBackend
 // is method
-func (v *TlsBackendIfc) GetCertificateType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v *TlsBackendIfc) GetCertificateType() (result gi.GType) {
 	iv, err := _I.Get(1422, "TlsBackend", "get_certificate_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28715,14 +28718,14 @@ func (v *TlsBackendIfc) GetCertificateType() (result int /*TODO_TYPE isPtr: fals
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_tls_backend_get_client_connection_type
 // container is not nil, container is TlsBackend
 // is method
-func (v *TlsBackendIfc) GetClientConnectionType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v *TlsBackendIfc) GetClientConnectionType() (result gi.GType) {
 	iv, err := _I.Get(1423, "TlsBackend", "get_client_connection_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28732,7 +28735,7 @@ func (v *TlsBackendIfc) GetClientConnectionType() (result int /*TODO_TYPE isPtr:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -28756,7 +28759,7 @@ func (v *TlsBackendIfc) GetDefaultDatabase() (result TlsDatabase) {
 // g_tls_backend_get_dtls_client_connection_type
 // container is not nil, container is TlsBackend
 // is method
-func (v *TlsBackendIfc) GetDtlsClientConnectionType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v *TlsBackendIfc) GetDtlsClientConnectionType() (result gi.GType) {
 	iv, err := _I.Get(1425, "TlsBackend", "get_dtls_client_connection_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28766,14 +28769,14 @@ func (v *TlsBackendIfc) GetDtlsClientConnectionType() (result int /*TODO_TYPE is
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_tls_backend_get_dtls_server_connection_type
 // container is not nil, container is TlsBackend
 // is method
-func (v *TlsBackendIfc) GetDtlsServerConnectionType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v *TlsBackendIfc) GetDtlsServerConnectionType() (result gi.GType) {
 	iv, err := _I.Get(1426, "TlsBackend", "get_dtls_server_connection_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28783,14 +28786,14 @@ func (v *TlsBackendIfc) GetDtlsServerConnectionType() (result int /*TODO_TYPE is
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_tls_backend_get_file_database_type
 // container is not nil, container is TlsBackend
 // is method
-func (v *TlsBackendIfc) GetFileDatabaseType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v *TlsBackendIfc) GetFileDatabaseType() (result gi.GType) {
 	iv, err := _I.Get(1427, "TlsBackend", "get_file_database_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28800,14 +28803,14 @@ func (v *TlsBackendIfc) GetFileDatabaseType() (result int /*TODO_TYPE isPtr: fal
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
 // g_tls_backend_get_server_connection_type
 // container is not nil, container is TlsBackend
 // is method
-func (v *TlsBackendIfc) GetServerConnectionType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func (v *TlsBackendIfc) GetServerConnectionType() (result gi.GType) {
 	iv, err := _I.Get(1428, "TlsBackend", "get_server_connection_type")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28817,7 +28820,7 @@ func (v *TlsBackendIfc) GetServerConnectionType() (result int /*TODO_TYPE isPtr:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -32949,14 +32952,14 @@ func DbusAddressGetStreamSync(address string, cancellable ICancellable) (result 
 
 // g_dbus_annotation_info_lookup
 // container is nil
-func DbusAnnotationInfoLookup(annotations int /*TODO_TYPE array type c, elemTypeTag: interface*/, name string) (result string) {
+func DbusAnnotationInfoLookup(annotations gi.PointerArray, name string) (result string) {
 	iv, err := _I.Get(1637, "dbus_annotation_info_lookup", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_name := gi.CString(name)
-	arg_annotations := gi.NewIntArgument(annotations) /*TODO*/
+	arg_annotations := gi.NewPointerArgument(annotations.P)
 	arg_name := gi.NewStringArgument(c_name)
 	args := []gi.Argument{arg_annotations, arg_name}
 	var ret gi.Argument
@@ -32968,13 +32971,13 @@ func DbusAnnotationInfoLookup(annotations int /*TODO_TYPE array type c, elemType
 
 // g_dbus_error_encode_gerror
 // container is nil
-func DbusErrorEncodeGerror(error int /*TODO_TYPE isPtr: true, tag: error*/) (result string) {
+func DbusErrorEncodeGerror(error glib.Error) (result string) {
 	iv, err := _I.Get(1638, "dbus_error_encode_gerror", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_error}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -32984,13 +32987,13 @@ func DbusErrorEncodeGerror(error int /*TODO_TYPE isPtr: true, tag: error*/) (res
 
 // g_dbus_error_get_remote_error
 // container is nil
-func DbusErrorGetRemoteError(error int /*TODO_TYPE isPtr: true, tag: error*/) (result string) {
+func DbusErrorGetRemoteError(error glib.Error) (result string) {
 	iv, err := _I.Get(1639, "dbus_error_get_remote_error", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_error}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -33000,13 +33003,13 @@ func DbusErrorGetRemoteError(error int /*TODO_TYPE isPtr: true, tag: error*/) (r
 
 // g_dbus_error_is_remote_error
 // container is nil
-func DbusErrorIsRemoteError(error int /*TODO_TYPE isPtr: true, tag: error*/) (result bool) {
+func DbusErrorIsRemoteError(error glib.Error) (result bool) {
 	iv, err := _I.Get(1640, "dbus_error_is_remote_error", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_error}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -33016,7 +33019,7 @@ func DbusErrorIsRemoteError(error int /*TODO_TYPE isPtr: true, tag: error*/) (re
 
 // g_dbus_error_new_for_dbus_error
 // container is nil
-func DbusErrorNewForDbusError(dbus_error_name string, dbus_error_message string) (result int /*TODO_TYPE isPtr: true, tag: error*/) {
+func DbusErrorNewForDbusError(dbus_error_name string, dbus_error_message string) (result glib.Error) {
 	iv, err := _I.Get(1641, "dbus_error_new_for_dbus_error", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -33031,7 +33034,7 @@ func DbusErrorNewForDbusError(dbus_error_name string, dbus_error_message string)
 	iv.Call(args, &ret, nil)
 	gi.Free(c_dbus_error_name)
 	gi.Free(c_dbus_error_message)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -33072,7 +33075,7 @@ func DbusErrorRegisterError(error_domain uint32, error_code int32, dbus_error_na
 // g_dbus_error_register_error_domain
 // container is nil
 // arg 2 entries lenArgIdx 3
-func DbusErrorRegisterErrorDomain(error_domain_quark_name string, quark_volatile uint64, entries int /*TODO_TYPE array type c, elemTypeTag: interface*/, num_entries uint32) {
+func DbusErrorRegisterErrorDomain(error_domain_quark_name string, quark_volatile uint64, entries unsafe.Pointer, num_entries uint32) {
 	iv, err := _I.Get(1644, "dbus_error_register_error_domain", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -33081,7 +33084,7 @@ func DbusErrorRegisterErrorDomain(error_domain_quark_name string, quark_volatile
 	c_error_domain_quark_name := gi.CString(error_domain_quark_name)
 	arg_error_domain_quark_name := gi.NewStringArgument(c_error_domain_quark_name)
 	arg_quark_volatile := gi.NewUint64Argument(quark_volatile)
-	arg_entries := gi.NewIntArgument(entries) /*TODO*/
+	arg_entries := gi.NewPointerArgument(entries)
 	arg_num_entries := gi.NewUint32Argument(num_entries)
 	args := []gi.Argument{arg_error_domain_quark_name, arg_quark_volatile, arg_entries, arg_num_entries}
 	iv.Call(args, nil, nil)
@@ -33090,13 +33093,13 @@ func DbusErrorRegisterErrorDomain(error_domain_quark_name string, quark_volatile
 
 // g_dbus_error_strip_remote_error
 // container is nil
-func DbusErrorStripRemoteError(error int /*TODO_TYPE isPtr: true, tag: error*/) (result bool) {
+func DbusErrorStripRemoteError(error glib.Error) (result bool) {
 	iv, err := _I.Get(1645, "dbus_error_strip_remote_error", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_error}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -33508,15 +33511,15 @@ func IconNewForString(str string) (result Icon, err error) {
 // g_initable_newv
 // container is nil
 // arg 2 parameters lenArgIdx 1
-func InitableNewv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, elemTypeTag: interface*/, cancellable ICancellable) (result gobject.Object, err error) {
+func InitableNewv(object_type gi.GType, n_parameters uint32, parameters unsafe.Pointer, cancellable ICancellable) (result gobject.Object, err error) {
 	iv, err := _I.Get(1668, "initable_newv", "")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_object_type := gi.NewIntArgument(object_type) /*TODO*/
+	arg_object_type := gi.NewUintArgument(uint(object_type))
 	arg_n_parameters := gi.NewUint32Argument(n_parameters)
-	arg_parameters := gi.NewIntArgument(parameters) /*TODO*/
+	arg_parameters := gi.NewPointerArgument(parameters)
 	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_object_type, arg_n_parameters, arg_parameters, arg_cancellable, arg_err}
@@ -33559,7 +33562,7 @@ func IoErrorQuark() (result uint32) {
 
 // g_io_extension_point_implement
 // container is nil
-func IoExtensionPointImplement(extension_point_name string, type1 int /*TODO_TYPE isPtr: false, tag: GType*/, extension_name string, priority int32) (result IOExtension) {
+func IoExtensionPointImplement(extension_point_name string, type1 gi.GType, extension_name string, priority int32) (result IOExtension) {
 	iv, err := _I.Get(1671, "io_extension_point_implement", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -33568,7 +33571,7 @@ func IoExtensionPointImplement(extension_point_name string, type1 int /*TODO_TYP
 	c_extension_point_name := gi.CString(extension_point_name)
 	c_extension_name := gi.CString(extension_name)
 	arg_extension_point_name := gi.NewStringArgument(c_extension_point_name)
-	arg_type1 := gi.NewIntArgument(type1) /*TODO*/
+	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_extension_name := gi.NewStringArgument(c_extension_name)
 	arg_priority := gi.NewInt32Argument(priority)
 	args := []gi.Argument{arg_extension_point_name, arg_type1, arg_extension_name, arg_priority}
@@ -34105,7 +34108,7 @@ func SettingsSchemaSourceGetDefault() (result SettingsSchemaSource) {
 
 // g_simple_async_report_gerror_in_idle
 // container is nil
-func SimpleAsyncReportGerrorInIdle(object gobject.IObject, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, error int /*TODO_TYPE isPtr: true, tag: error*/) {
+func SimpleAsyncReportGerrorInIdle(object gobject.IObject, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, error glib.Error) {
 	iv, err := _I.Get(1702, "simple_async_report_gerror_in_idle", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -34114,7 +34117,7 @@ func SimpleAsyncReportGerrorInIdle(object gobject.IObject, callback int /*TODO_T
 	arg_object := gi.NewPointerArgument(object.P_Object())
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_object, arg_callback, arg_user_data, arg_error}
 	iv.Call(args, nil, nil)
 }

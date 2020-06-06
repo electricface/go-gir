@@ -3610,7 +3610,7 @@ type Error struct {
 // g_error_new_literal
 // container is not nil, container is Error
 // is constructor
-func NewErrorLiteral(domain uint32, code int32, message string) (result int /*TODO_TYPE isPtr: true, tag: error*/) {
+func NewErrorLiteral(domain uint32, code int32, message string) (result Error) {
 	iv, err := _I.Get(192, "Error", "new_literal")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3624,14 +3624,14 @@ func NewErrorLiteral(domain uint32, code int32, message string) (result int /*TO
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_message)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // g_error_copy
 // container is not nil, container is Error
 // is method
-func (v Error) Copy() (result int /*TODO_TYPE isPtr: true, tag: error*/) {
+func (v Error) Copy() (result Error) {
 	iv, err := _I.Get(193, "Error", "copy")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3641,7 +3641,7 @@ func (v Error) Copy() (result int /*TODO_TYPE isPtr: true, tag: error*/) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3758,13 +3758,13 @@ type HashTable struct {
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableAdd1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer) (result bool) {
+func HashTableAdd1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(196, "HashTable", "add")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
 	var ret gi.Argument
@@ -3777,13 +3777,13 @@ func HashTableAdd1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key uns
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableContains1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer) (result bool) {
+func HashTableContains1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(197, "HashTable", "contains")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
 	var ret gi.Argument
@@ -3796,13 +3796,13 @@ func HashTableContains1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, ke
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableDestroy1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
+func HashTableDestroy1(hash_table HashTable) {
 	iv, err := _I.Get(198, "HashTable", "destroy")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_hash_table}
 	iv.Call(args, nil, nil)
 }
@@ -3811,13 +3811,13 @@ func HashTableDestroy1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableInsert1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
+func HashTableInsert1(hash_table HashTable, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(199, "HashTable", "insert")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	arg_value := gi.NewPointerArgument(value)
 	args := []gi.Argument{arg_hash_table, arg_key, arg_value}
@@ -3831,13 +3831,13 @@ func HashTableInsert1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key 
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableLookup1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer) {
+func HashTableLookup1(hash_table HashTable, key unsafe.Pointer) {
 	iv, err := _I.Get(200, "HashTable", "lookup")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
 	iv.Call(args, nil, nil)
@@ -3847,22 +3847,22 @@ func HashTableLookup1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key 
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableLookupExtended1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, lookup_key unsafe.Pointer) (result bool, orig_key int /*TODO_TYPE*/, value int /*TODO_TYPE*/) {
+func HashTableLookupExtended1(hash_table HashTable, lookup_key unsafe.Pointer) (result bool, orig_key unsafe.Pointer, value unsafe.Pointer) {
 	iv, err := _I.Get(201, "HashTable", "lookup_extended")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [2]gi.Argument
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_lookup_key := gi.NewPointerArgument(lookup_key)
 	arg_orig_key := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_hash_table, arg_lookup_key, arg_orig_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	orig_key = outArgs[0].Int() /*TODO*/
-	value = outArgs[1].Int()    /*TODO*/
+	orig_key = outArgs[0].Pointer()
+	value = outArgs[1].Pointer()
 	result = ret.Bool()
 	return
 }
@@ -3871,13 +3871,13 @@ func HashTableLookupExtended1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableRemove1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer) (result bool) {
+func HashTableRemove1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(202, "HashTable", "remove")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
 	var ret gi.Argument
@@ -3890,13 +3890,13 @@ func HashTableRemove1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key 
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableRemoveAll1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
+func HashTableRemoveAll1(hash_table HashTable) {
 	iv, err := _I.Get(203, "HashTable", "remove_all")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_hash_table}
 	iv.Call(args, nil, nil)
 }
@@ -3905,13 +3905,13 @@ func HashTableRemoveAll1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableReplace1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
+func HashTableReplace1(hash_table HashTable, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(204, "HashTable", "replace")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	arg_value := gi.NewPointerArgument(value)
 	args := []gi.Argument{arg_hash_table, arg_key, arg_value}
@@ -3925,13 +3925,13 @@ func HashTableReplace1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableSize1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) (result uint32) {
+func HashTableSize1(hash_table HashTable) (result uint32) {
 	iv, err := _I.Get(205, "HashTable", "size")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_hash_table}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3943,13 +3943,13 @@ func HashTableSize1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) (resul
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableSteal1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer) (result bool) {
+func HashTableSteal1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(206, "HashTable", "steal")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
 	var ret gi.Argument
@@ -3962,13 +3962,13 @@ func HashTableSteal1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key u
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableStealAll1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
+func HashTableStealAll1(hash_table HashTable) {
 	iv, err := _I.Get(207, "HashTable", "steal_all")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_hash_table}
 	iv.Call(args, nil, nil)
 }
@@ -3977,22 +3977,22 @@ func HashTableStealAll1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableStealExtended1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, lookup_key unsafe.Pointer) (result bool, stolen_key int /*TODO_TYPE*/, stolen_value int /*TODO_TYPE*/) {
+func HashTableStealExtended1(hash_table HashTable, lookup_key unsafe.Pointer) (result bool, stolen_key unsafe.Pointer, stolen_value unsafe.Pointer) {
 	iv, err := _I.Get(208, "HashTable", "steal_extended")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [2]gi.Argument
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_lookup_key := gi.NewPointerArgument(lookup_key)
 	arg_stolen_key := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_stolen_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_hash_table, arg_lookup_key, arg_stolen_key, arg_stolen_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	stolen_key = outArgs[0].Int()   /*TODO*/
-	stolen_value = outArgs[1].Int() /*TODO*/
+	stolen_key = outArgs[0].Pointer()
+	stolen_value = outArgs[1].Pointer()
 	result = ret.Bool()
 	return
 }
@@ -4001,13 +4001,13 @@ func HashTableStealExtended1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableUnref1(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
+func HashTableUnref1(hash_table HashTable) {
 	iv, err := _I.Get(209, "HashTable", "unref")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_hash_table}
 	iv.Call(args, nil, nil)
 }
@@ -4020,14 +4020,14 @@ type HashTableIter struct {
 // g_hash_table_iter_init
 // container is not nil, container is HashTableIter
 // is method
-func (v HashTableIter) Init(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
+func (v HashTableIter) Init(hash_table HashTable) {
 	iv, err := _I.Get(210, "HashTableIter", "init")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_v, arg_hash_table}
 	iv.Call(args, nil, nil)
 }
@@ -4035,7 +4035,7 @@ func (v HashTableIter) Init(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/
 // g_hash_table_iter_next
 // container is not nil, container is HashTableIter
 // is method
-func (v HashTableIter) Next() (result bool, key int /*TODO_TYPE*/, value int /*TODO_TYPE*/) {
+func (v HashTableIter) Next() (result bool, key unsafe.Pointer, value unsafe.Pointer) {
 	iv, err := _I.Get(211, "HashTableIter", "next")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4048,8 +4048,8 @@ func (v HashTableIter) Next() (result bool, key int /*TODO_TYPE*/, value int /*T
 	args := []gi.Argument{arg_v, arg_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	key = outArgs[0].Int()   /*TODO*/
-	value = outArgs[1].Int() /*TODO*/
+	key = outArgs[0].Pointer()
+	value = outArgs[1].Pointer()
 	result = ret.Bool()
 	return
 }
@@ -6290,7 +6290,7 @@ func (v MainContext) AddPoll(fd PollFD, priority int32) {
 // container is not nil, container is MainContext
 // is method
 // arg 1 fds lenArgIdx 2
-func (v MainContext) Check(max_priority int32, fds int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fds int32) (result bool) {
+func (v MainContext) Check(max_priority int32, fds unsafe.Pointer, n_fds int32) (result bool) {
 	iv, err := _I.Get(315, "MainContext", "check")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6298,7 +6298,7 @@ func (v MainContext) Check(max_priority int32, fds int /*TODO_TYPE array type c,
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_max_priority := gi.NewInt32Argument(max_priority)
-	arg_fds := gi.NewIntArgument(fds) /*TODO*/
+	arg_fds := gi.NewPointerArgument(fds)
 	arg_n_fds := gi.NewInt32Argument(n_fds)
 	args := []gi.Argument{arg_v, arg_max_priority, arg_fds, arg_n_fds}
 	var ret gi.Argument
@@ -6496,7 +6496,7 @@ func (v MainContext) PushThreadDefault() {
 // container is not nil, container is MainContext
 // is method
 // arg 2 fds lenArgIdx 3
-func (v MainContext) Query(max_priority int32, n_fds int32) (result int32, timeout_ int32, fds int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
+func (v MainContext) Query(max_priority int32, n_fds int32) (result int32, timeout_ int32, fds unsafe.Pointer) {
 	iv, err := _I.Get(327, "MainContext", "query")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6512,7 +6512,7 @@ func (v MainContext) Query(max_priority int32, n_fds int32) (result int32, timeo
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	timeout_ = outArgs[0].Int32()
-	fds = outArgs[1].Int() /*TODO*/
+	fds = outArgs[1].Pointer()
 	result = ret.Int32()
 	return
 }
@@ -12848,14 +12848,14 @@ type Variant struct {
 // container is not nil, container is Variant
 // is constructor
 // arg 1 children lenArgIdx 2
-func NewVariantArray(child_type VariantType, children int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_children uint64) (result Variant) {
+func NewVariantArray(child_type VariantType, children gi.PointerArray, n_children uint64) (result Variant) {
 	iv, err := _I.Get(657, "Variant", "new_array")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_child_type := gi.NewPointerArgument(child_type.P)
-	arg_children := gi.NewIntArgument(children) /*TODO*/
+	arg_children := gi.NewPointerArgument(children.P)
 	arg_n_children := gi.NewUint64Argument(n_children)
 	args := []gi.Argument{arg_child_type, arg_children, arg_n_children}
 	var ret gi.Argument
@@ -13216,13 +13216,13 @@ func NewVariantStrv(strv gi.CStrArray, length int64) (result Variant) {
 // container is not nil, container is Variant
 // is constructor
 // arg 0 children lenArgIdx 1
-func NewVariantTuple(children int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_children uint64) (result Variant) {
+func NewVariantTuple(children gi.PointerArray, n_children uint64) (result Variant) {
 	iv, err := _I.Get(677, "Variant", "new_tuple")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_children := gi.NewIntArgument(children) /*TODO*/
+	arg_children := gi.NewPointerArgument(children.P)
 	arg_n_children := gi.NewUint64Argument(n_children)
 	args := []gi.Argument{arg_children, arg_n_children}
 	var ret gi.Argument
@@ -14228,14 +14228,14 @@ func VariantParse1(type1 VariantType, text string, limit string, endptr string) 
 // container is not nil, container is Variant
 // is method
 // arg0Type tag: error, isPtr: true
-func VariantParseErrorPrintContext1(error int /*TODO_TYPE isPtr: true, tag: error*/, source_str string) (result string) {
+func VariantParseErrorPrintContext1(error Error, source_str string) (result string) {
 	iv, err := _I.Get(732, "Variant", "parse_error_print_context")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_source_str := gi.CString(source_str)
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	arg_source_str := gi.NewStringArgument(c_source_str)
 	args := []gi.Argument{arg_error, arg_source_str}
 	var ret gi.Argument
@@ -14650,13 +14650,13 @@ func NewVariantTypeMaybe(element VariantType) (result VariantType) {
 // container is not nil, container is VariantType
 // is constructor
 // arg 0 items lenArgIdx 1
-func NewVariantTypeTuple(items int /*TODO_TYPE array type c, elemTypeTag: interface*/, length int32) (result VariantType) {
+func NewVariantTypeTuple(items gi.PointerArray, length int32) (result VariantType) {
 	iv, err := _I.Get(755, "VariantType", "new_tuple")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_items := gi.NewIntArgument(items) /*TODO*/
+	arg_items := gi.NewPointerArgument(items.P)
 	arg_length := gi.NewInt32Argument(length)
 	args := []gi.Argument{arg_items, arg_length}
 	var ret gi.Argument
@@ -15515,7 +15515,7 @@ func AssertionMessageCmpstr(domain string, file string, line int32, func1 string
 
 // g_assertion_message_error
 // container is nil
-func AssertionMessageError(domain string, file string, line int32, func1 string, expr string, error int /*TODO_TYPE isPtr: true, tag: error*/, error_domain uint32, error_code int32) {
+func AssertionMessageError(domain string, file string, line int32, func1 string, expr string, error Error, error_domain uint32, error_code int32) {
 	iv, err := _I.Get(800, "assertion_message_error", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15530,7 +15530,7 @@ func AssertionMessageError(domain string, file string, line int32, func1 string,
 	arg_line := gi.NewInt32Argument(line)
 	arg_func1 := gi.NewStringArgument(c_func1)
 	arg_expr := gi.NewStringArgument(c_expr)
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	arg_error_domain := gi.NewUint32Argument(error_domain)
 	arg_error_code := gi.NewInt32Argument(error_code)
 	args := []gi.Argument{arg_domain, arg_file, arg_line, arg_func1, arg_expr, arg_error, arg_error_domain, arg_error_code}
@@ -18057,13 +18057,13 @@ func Getenv(variable string) (result string) {
 
 // g_hash_table_add
 // container is nil
-func HashTableAdd(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer) (result bool) {
+func HashTableAdd(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(948, "hash_table_add", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
 	var ret gi.Argument
@@ -18074,13 +18074,13 @@ func HashTableAdd(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsa
 
 // g_hash_table_contains
 // container is nil
-func HashTableContains(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer) (result bool) {
+func HashTableContains(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(949, "hash_table_contains", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
 	var ret gi.Argument
@@ -18091,26 +18091,26 @@ func HashTableContains(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key
 
 // g_hash_table_destroy
 // container is nil
-func HashTableDestroy(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
+func HashTableDestroy(hash_table HashTable) {
 	iv, err := _I.Get(950, "hash_table_destroy", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_hash_table}
 	iv.Call(args, nil, nil)
 }
 
 // g_hash_table_insert
 // container is nil
-func HashTableInsert(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
+func HashTableInsert(hash_table HashTable, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(951, "hash_table_insert", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	arg_value := gi.NewPointerArgument(value)
 	args := []gi.Argument{arg_hash_table, arg_key, arg_value}
@@ -18122,13 +18122,13 @@ func HashTableInsert(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key u
 
 // g_hash_table_lookup
 // container is nil
-func HashTableLookup(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer) {
+func HashTableLookup(hash_table HashTable, key unsafe.Pointer) {
 	iv, err := _I.Get(952, "hash_table_lookup", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
 	iv.Call(args, nil, nil)
@@ -18136,35 +18136,35 @@ func HashTableLookup(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key u
 
 // g_hash_table_lookup_extended
 // container is nil
-func HashTableLookupExtended(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, lookup_key unsafe.Pointer) (result bool, orig_key int /*TODO_TYPE*/, value int /*TODO_TYPE*/) {
+func HashTableLookupExtended(hash_table HashTable, lookup_key unsafe.Pointer) (result bool, orig_key unsafe.Pointer, value unsafe.Pointer) {
 	iv, err := _I.Get(953, "hash_table_lookup_extended", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [2]gi.Argument
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_lookup_key := gi.NewPointerArgument(lookup_key)
 	arg_orig_key := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_hash_table, arg_lookup_key, arg_orig_key, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	orig_key = outArgs[0].Int() /*TODO*/
-	value = outArgs[1].Int()    /*TODO*/
+	orig_key = outArgs[0].Pointer()
+	value = outArgs[1].Pointer()
 	result = ret.Bool()
 	return
 }
 
 // g_hash_table_remove
 // container is nil
-func HashTableRemove(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer) (result bool) {
+func HashTableRemove(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(954, "hash_table_remove", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
 	var ret gi.Argument
@@ -18175,26 +18175,26 @@ func HashTableRemove(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key u
 
 // g_hash_table_remove_all
 // container is nil
-func HashTableRemoveAll(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
+func HashTableRemoveAll(hash_table HashTable) {
 	iv, err := _I.Get(955, "hash_table_remove_all", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_hash_table}
 	iv.Call(args, nil, nil)
 }
 
 // g_hash_table_replace
 // container is nil
-func HashTableReplace(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
+func HashTableReplace(hash_table HashTable, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(956, "hash_table_replace", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	arg_value := gi.NewPointerArgument(value)
 	args := []gi.Argument{arg_hash_table, arg_key, arg_value}
@@ -18206,13 +18206,13 @@ func HashTableReplace(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key 
 
 // g_hash_table_size
 // container is nil
-func HashTableSize(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) (result uint32) {
+func HashTableSize(hash_table HashTable) (result uint32) {
 	iv, err := _I.Get(957, "hash_table_size", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_hash_table}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -18222,13 +18222,13 @@ func HashTableSize(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) (result
 
 // g_hash_table_steal
 // container is nil
-func HashTableSteal(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key unsafe.Pointer) (result bool) {
+func HashTableSteal(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(958, "hash_table_steal", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
 	var ret gi.Argument
@@ -18239,48 +18239,48 @@ func HashTableSteal(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, key un
 
 // g_hash_table_steal_all
 // container is nil
-func HashTableStealAll(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
+func HashTableStealAll(hash_table HashTable) {
 	iv, err := _I.Get(959, "hash_table_steal_all", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_hash_table}
 	iv.Call(args, nil, nil)
 }
 
 // g_hash_table_steal_extended
 // container is nil
-func HashTableStealExtended(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/, lookup_key unsafe.Pointer) (result bool, stolen_key int /*TODO_TYPE*/, stolen_value int /*TODO_TYPE*/) {
+func HashTableStealExtended(hash_table HashTable, lookup_key unsafe.Pointer) (result bool, stolen_key unsafe.Pointer, stolen_value unsafe.Pointer) {
 	iv, err := _I.Get(960, "hash_table_steal_extended", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var outArgs [2]gi.Argument
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_lookup_key := gi.NewPointerArgument(lookup_key)
 	arg_stolen_key := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_stolen_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_hash_table, arg_lookup_key, arg_stolen_key, arg_stolen_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	stolen_key = outArgs[0].Int()   /*TODO*/
-	stolen_value = outArgs[1].Int() /*TODO*/
+	stolen_key = outArgs[0].Pointer()
+	stolen_value = outArgs[1].Pointer()
 	result = ret.Bool()
 	return
 }
 
 // g_hash_table_unref
 // container is nil
-func HashTableUnref(hash_table int /*TODO_TYPE isPtr: true, tag: ghash*/) {
+func HashTableUnref(hash_table HashTable) {
 	iv, err := _I.Get(961, "hash_table_unref", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hash_table := gi.NewIntArgument(hash_table) /*TODO*/
+	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	args := []gi.Argument{arg_hash_table}
 	iv.Call(args, nil, nil)
 }
@@ -18874,14 +18874,14 @@ func LogSetWriterFunc(func1 int /*TODO_TYPE isPtr: false, tag: interface*/, user
 // g_log_structured_array
 // container is nil
 // arg 1 fields lenArgIdx 2
-func LogStructuredArray(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fields uint64) {
+func LogStructuredArray(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64) {
 	iv, err := _I.Get(996, "log_structured_array", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_log_level := gi.NewIntArgument(int(log_level))
-	arg_fields := gi.NewIntArgument(fields) /*TODO*/
+	arg_fields := gi.NewPointerArgument(fields)
 	arg_n_fields := gi.NewUint64Argument(n_fields)
 	args := []gi.Argument{arg_log_level, arg_fields, arg_n_fields}
 	iv.Call(args, nil, nil)
@@ -18907,14 +18907,14 @@ func LogVariant(log_domain string, log_level LogLevelFlags, fields Variant) {
 // g_log_writer_default
 // container is nil
 // arg 1 fields lenArgIdx 2
-func LogWriterDefault(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
+func LogWriterDefault(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(998, "log_writer_default", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_log_level := gi.NewIntArgument(int(log_level))
-	arg_fields := gi.NewIntArgument(fields) /*TODO*/
+	arg_fields := gi.NewPointerArgument(fields)
 	arg_n_fields := gi.NewUint64Argument(n_fields)
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_log_level, arg_fields, arg_n_fields, arg_user_data}
@@ -18927,14 +18927,14 @@ func LogWriterDefault(log_level LogLevelFlags, fields int /*TODO_TYPE array type
 // g_log_writer_format_fields
 // container is nil
 // arg 1 fields lenArgIdx 2
-func LogWriterFormatFields(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fields uint64, use_color bool) (result string) {
+func LogWriterFormatFields(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64, use_color bool) (result string) {
 	iv, err := _I.Get(999, "log_writer_format_fields", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_log_level := gi.NewIntArgument(int(log_level))
-	arg_fields := gi.NewIntArgument(fields) /*TODO*/
+	arg_fields := gi.NewPointerArgument(fields)
 	arg_n_fields := gi.NewUint64Argument(n_fields)
 	arg_use_color := gi.NewBoolArgument(use_color)
 	args := []gi.Argument{arg_log_level, arg_fields, arg_n_fields, arg_use_color}
@@ -18963,14 +18963,14 @@ func LogWriterIsJournald(output_fd int32) (result bool) {
 // g_log_writer_journald
 // container is nil
 // arg 1 fields lenArgIdx 2
-func LogWriterJournald(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
+func LogWriterJournald(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(1001, "log_writer_journald", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_log_level := gi.NewIntArgument(int(log_level))
-	arg_fields := gi.NewIntArgument(fields) /*TODO*/
+	arg_fields := gi.NewPointerArgument(fields)
 	arg_n_fields := gi.NewUint64Argument(n_fields)
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_log_level, arg_fields, arg_n_fields, arg_user_data}
@@ -18983,14 +18983,14 @@ func LogWriterJournald(log_level LogLevelFlags, fields int /*TODO_TYPE array typ
 // g_log_writer_standard_streams
 // container is nil
 // arg 1 fields lenArgIdx 2
-func LogWriterStandardStreams(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
+func LogWriterStandardStreams(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(1002, "log_writer_standard_streams", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_log_level := gi.NewIntArgument(int(log_level))
-	arg_fields := gi.NewIntArgument(fields) /*TODO*/
+	arg_fields := gi.NewPointerArgument(fields)
 	arg_n_fields := gi.NewUint64Argument(n_fields)
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_log_level, arg_fields, arg_n_fields, arg_user_data}
@@ -19348,7 +19348,7 @@ func OptionErrorQuark() (result uint32) {
 // g_parse_debug_string
 // container is nil
 // arg 1 keys lenArgIdx 2
-func ParseDebugString(string string, keys int /*TODO_TYPE array type c, elemTypeTag: interface*/, nkeys uint32) (result uint32) {
+func ParseDebugString(string string, keys unsafe.Pointer, nkeys uint32) (result uint32) {
 	iv, err := _I.Get(1027, "parse_debug_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19356,7 +19356,7 @@ func ParseDebugString(string string, keys int /*TODO_TYPE array type c, elemType
 	}
 	c_string := gi.CString(string)
 	arg_string := gi.NewStringArgument(c_string)
-	arg_keys := gi.NewIntArgument(keys) /*TODO*/
+	arg_keys := gi.NewPointerArgument(keys)
 	arg_nkeys := gi.NewUint32Argument(nkeys)
 	args := []gi.Argument{arg_string, arg_keys, arg_nkeys}
 	var ret gi.Argument
@@ -19566,7 +19566,7 @@ func Poll(fds PollFD, nfds uint32, timeout int32) (result int32) {
 
 // g_propagate_error
 // container is nil
-func PropagateError(src int /*TODO_TYPE isPtr: true, tag: error*/) (dest int /*TODO_TYPE*/) {
+func PropagateError(src Error) (dest Error) {
 	iv, err := _I.Get(1039, "propagate_error", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19574,10 +19574,10 @@ func PropagateError(src int /*TODO_TYPE isPtr: true, tag: error*/) (dest int /*T
 	}
 	var outArgs [1]gi.Argument
 	arg_dest := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_src := gi.NewIntArgument(src) /*TODO*/
+	arg_src := gi.NewPointerArgument(src.P)
 	args := []gi.Argument{arg_dest, arg_src}
 	iv.Call(args, nil, &outArgs[0])
-	dest = outArgs[0].Int() /*TODO*/
+	dest.P = outArgs[0].Pointer()
 	return
 }
 
@@ -20313,7 +20313,7 @@ func SetApplicationName(application_name string) {
 
 // g_set_error_literal
 // container is nil
-func SetErrorLiteral(domain uint32, code int32, message string) (err1 int /*TODO_TYPE*/) {
+func SetErrorLiteral(domain uint32, code int32, message string) (err1 Error) {
 	iv, err := _I.Get(1086, "set_error_literal", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20328,7 +20328,7 @@ func SetErrorLiteral(domain uint32, code int32, message string) (err1 int /*TODO
 	args := []gi.Argument{arg_err1, arg_domain, arg_code, arg_message}
 	iv.Call(args, nil, &outArgs[0])
 	gi.Free(c_message)
-	err1 = outArgs[0].Int() /*TODO*/
+	err1.P = outArgs[0].Pointer()
 	return
 }
 
@@ -21640,7 +21640,7 @@ func StrvContains(strv string, str string) (result bool) {
 
 // g_strv_get_type
 // container is nil
-func StrvGetType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func StrvGetType() (result gi.GType) {
 	iv, err := _I.Get(1155, "strv_get_type", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21648,7 +21648,7 @@ func StrvGetType() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -24006,7 +24006,7 @@ func UuidStringRandom() (result string) {
 
 // g_variant_get_gtype
 // container is nil
-func VariantGetGtype() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
+func VariantGetGtype() (result gi.GType) {
 	iv, err := _I.Get(1295, "variant_get_gtype", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24014,7 +24014,7 @@ func VariantGetGtype() (result int /*TODO_TYPE isPtr: false, tag: GType*/) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.GType(ret.Uint())
 	return
 }
 
@@ -24083,14 +24083,14 @@ func VariantParse(type1 VariantType, text string, limit string, endptr string) (
 
 // g_variant_parse_error_print_context
 // container is nil
-func VariantParseErrorPrintContext(error int /*TODO_TYPE isPtr: true, tag: error*/, source_str string) (result string) {
+func VariantParseErrorPrintContext(error Error, source_str string) (result string) {
 	iv, err := _I.Get(1299, "variant_parse_error_print_context", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_source_str := gi.CString(source_str)
-	arg_error := gi.NewIntArgument(error) /*TODO*/
+	arg_error := gi.NewPointerArgument(error.P)
 	arg_source_str := gi.NewStringArgument(c_source_str)
 	args := []gi.Argument{arg_error, arg_source_str}
 	var ret gi.Argument
