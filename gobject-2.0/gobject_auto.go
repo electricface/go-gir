@@ -660,6 +660,7 @@ func (v Closure) Invalidate() {
 // g_closure_invoke
 // container is not nil, container is Closure
 // is method
+// arg 2 param_values lenArgIdx 1
 func (v Closure) Invoke(n_param_values uint32, param_values int /*TODO_TYPE array type c, elemTypeTag: interface*/, invocation_hint unsafe.Pointer) (return_value int /*TODO_TYPE*/) {
 	iv, err := _I.Get(32, "Closure", "invoke")
 	if err != nil {
@@ -784,6 +785,7 @@ func (v Object) P_Object() unsafe.Pointer { return v.P }
 // g_object_newv
 // container is not nil, container is Object
 // is constructor
+// arg 2 parameters lenArgIdx 1
 func NewObjectv(object_type int /*TODO_TYPE isPtr: false, tag: GType*/, n_parameters uint32, parameters int /*TODO_TYPE array type c, elemTypeTag: interface*/) (result Object) {
 	iv, err := _I.Get(36, "Object", "newv")
 	if err != nil {
@@ -860,7 +862,8 @@ func ObjectInterfaceInstallProperty1(g_iface TypeInterface, pspec IParamSpec) {
 // container is not nil, container is Object
 // is method
 // arg0Type tag: interface, isPtr: true
-func ObjectInterfaceListProperties1(g_iface TypeInterface) (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 1*/, n_properties_p uint32) {
+// ret lenArgIdx 1
+func ObjectInterfaceListProperties1(g_iface TypeInterface) (result int /*TODO_TYPE array type c, elemTypeTag: interface, isPtr: true*/) {
 	iv, err := _I.Get(40, "Object", "interface_list_properties")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -872,6 +875,8 @@ func ObjectInterfaceListProperties1(g_iface TypeInterface) (result int /*TODO_TY
 	args := []gi.Argument{arg_g_iface, arg_n_properties_p}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var n_properties_p uint32
+	_ = n_properties_p
 	n_properties_p = outArgs[0].Uint32()
 	result = ret.Int() /*TODO*/
 	return
@@ -1010,7 +1015,9 @@ func (v Object) GetQdata(quark uint32) {
 // g_object_getv
 // container is not nil, container is Object
 // is method
-func (v Object) Getv(n_properties uint32, names int /*TODO_TYPE array type c, elemTypeTag: utf8*/, values int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
+// arg 1 names lenArgIdx 0
+// arg 2 values lenArgIdx 0
+func (v Object) Getv(n_properties uint32, names gi.CStrArray, values int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(48, "Object", "getv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1018,7 +1025,7 @@ func (v Object) Getv(n_properties uint32, names int /*TODO_TYPE array type c, el
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_n_properties := gi.NewUint32Argument(n_properties)
-	arg_names := gi.NewIntArgument(names)   /*TODO*/
+	arg_names := gi.NewPointerArgument(names.P)
 	arg_values := gi.NewIntArgument(values) /*TODO*/
 	args := []gi.Argument{arg_v, arg_n_properties, arg_names, arg_values}
 	iv.Call(args, nil, nil)
@@ -1616,7 +1623,8 @@ func (v ParamSpecPool) Insert(pspec IParamSpec, owner_type int /*TODO_TYPE isPtr
 // g_param_spec_pool_list
 // container is not nil, container is ParamSpecPool
 // is method
-func (v ParamSpecPool) List(owner_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 1*/, n_pspecs_p uint32) {
+// ret lenArgIdx 1
+func (v ParamSpecPool) List(owner_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: interface, isPtr: true*/) {
 	iv, err := _I.Get(73, "ParamSpecPool", "list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1629,6 +1637,8 @@ func (v ParamSpecPool) List(owner_type int /*TODO_TYPE isPtr: false, tag: GType*
 	args := []gi.Argument{arg_v, arg_owner_type, arg_n_pspecs_p}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var n_pspecs_p uint32
+	_ = n_pspecs_p
 	n_pspecs_p = outArgs[0].Uint32()
 	result = ret.Int() /*TODO*/
 	return
@@ -2122,7 +2132,8 @@ func TypeInterfacePeek1(instance_class TypeClass, iface_type int /*TODO_TYPE isP
 // container is not nil, container is TypeInterface
 // is method
 // arg0Type tag: GType, isPtr: false
-func TypeInterfacePrerequisites1(interface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, arrLen: 1*/, n_prerequisites uint32) {
+// ret lenArgIdx 1
+func TypeInterfacePrerequisites1(interface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
 	iv, err := _I.Get(91, "TypeInterface", "prerequisites")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2134,6 +2145,8 @@ func TypeInterfacePrerequisites1(interface_type int /*TODO_TYPE isPtr: false, ta
 	args := []gi.Argument{arg_interface_type, arg_n_prerequisites}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var n_prerequisites uint32
+	_ = n_prerequisites
 	n_prerequisites = outArgs[0].Uint32()
 	result = ret.Int() /*TODO*/
 	return
@@ -5245,7 +5258,8 @@ func SignalHasHandlerPending(instance IObject, signal_id uint32, detail uint32, 
 
 // g_signal_list_ids
 // container is nil
-func SignalListIds(itype int /*TODO_TYPE isPtr: false, tag: GType*/) (result gi.Uint32Array, n_ids uint32) {
+// ret lenArgIdx 1
+func SignalListIds(itype int /*TODO_TYPE isPtr: false, tag: GType*/) (result gi.Uint32Array) {
 	iv, err := _I.Get(259, "signal_list_ids", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5257,6 +5271,8 @@ func SignalListIds(itype int /*TODO_TYPE isPtr: false, tag: GType*/) (result gi.
 	args := []gi.Argument{arg_itype, arg_n_ids}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var n_ids uint32
+	_ = n_ids
 	n_ids = outArgs[0].Uint32()
 	result = gi.Uint32Array{P: ret.Pointer(), Len: int(n_ids)}
 	return
@@ -5653,7 +5669,8 @@ func TypeCheckValueHolds(value Value, type1 int /*TODO_TYPE isPtr: false, tag: G
 
 // g_type_children
 // container is nil
-func TypeChildren(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, arrLen: 1*/, n_children uint32) {
+// ret lenArgIdx 1
+func TypeChildren(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
 	iv, err := _I.Get(284, "type_children", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5665,6 +5682,8 @@ func TypeChildren(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result int 
 	args := []gi.Argument{arg_type1, arg_n_children}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var n_children uint32
+	_ = n_children
 	n_children = outArgs[0].Uint32()
 	result = ret.Int() /*TODO*/
 	return
@@ -6001,7 +6020,8 @@ func TypeInterfacePeek(instance_class TypeClass, iface_type int /*TODO_TYPE isPt
 
 // g_type_interface_prerequisites
 // container is nil
-func TypeInterfacePrerequisites(interface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, arrLen: 1*/, n_prerequisites uint32) {
+// ret lenArgIdx 1
+func TypeInterfacePrerequisites(interface_type int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
 	iv, err := _I.Get(307, "type_interface_prerequisites", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6013,6 +6033,8 @@ func TypeInterfacePrerequisites(interface_type int /*TODO_TYPE isPtr: false, tag
 	args := []gi.Argument{arg_interface_type, arg_n_prerequisites}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var n_prerequisites uint32
+	_ = n_prerequisites
 	n_prerequisites = outArgs[0].Uint32()
 	result = ret.Int() /*TODO*/
 	return
@@ -6020,7 +6042,8 @@ func TypeInterfacePrerequisites(interface_type int /*TODO_TYPE isPtr: false, tag
 
 // g_type_interfaces
 // container is nil
-func TypeInterfaces(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, arrLen: 1*/, n_interfaces uint32) {
+// ret lenArgIdx 1
+func TypeInterfaces(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
 	iv, err := _I.Get(308, "type_interfaces", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6032,6 +6055,8 @@ func TypeInterfaces(type1 int /*TODO_TYPE isPtr: false, tag: GType*/) (result in
 	args := []gi.Argument{arg_type1, arg_n_interfaces}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var n_interfaces uint32
+	_ = n_interfaces
 	n_interfaces = outArgs[0].Uint32()
 	result = ret.Int() /*TODO*/
 	return

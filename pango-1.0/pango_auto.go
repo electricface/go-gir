@@ -704,7 +704,8 @@ func (v Context) GetSerial() (result uint32) {
 // pango_context_list_families
 // container is not nil, container is Context
 // is method
-func (v Context) ListFamilies() (families int /*TODO_TYPE*/, n_families int32) {
+// arg 0 families lenArgIdx 1
+func (v Context) ListFamilies() (families int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(32, "Context", "list_families")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -716,6 +717,8 @@ func (v Context) ListFamilies() (families int /*TODO_TYPE*/, n_families int32) {
 	arg_n_families := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_families, arg_n_families}
 	iv.Call(args, nil, &outArgs[0])
+	var n_families int32
+	_ = n_families
 	families = outArgs[0].Int() /*TODO*/
 	n_families = outArgs[1].Int32()
 	return
@@ -921,7 +924,8 @@ func (v Coverage) Set(index_ int32, level CoverageLevelEnum) {
 // pango_coverage_to_bytes
 // container is not nil, container is Coverage
 // is method
-func (v Coverage) ToBytes() (bytes int /*TODO_TYPE*/, n_bytes int32) {
+// arg 0 bytes lenArgIdx 1
+func (v Coverage) ToBytes() (bytes gi.Uint8Array) {
 	iv, err := _I.Get(45, "Coverage", "to_bytes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -933,8 +937,11 @@ func (v Coverage) ToBytes() (bytes int /*TODO_TYPE*/, n_bytes int32) {
 	arg_n_bytes := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_bytes, arg_n_bytes}
 	iv.Call(args, nil, &outArgs[0])
-	bytes = outArgs[0].Int() /*TODO*/
+	var n_bytes int32
+	_ = n_bytes
+	bytes.P = outArgs[0].Pointer()
 	n_bytes = outArgs[1].Int32()
+	bytes.Len = int(n_bytes)
 	return
 }
 
@@ -1046,6 +1053,7 @@ func (v Font) P_Font() unsafe.Pointer { return v.P }
 // container is not nil, container is Font
 // is method
 // arg0Type tag: array, isPtr: true
+// arg 0 descs lenArgIdx 1
 func FontDescriptionsFree1(descs int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_descs int32) {
 	iv, err := _I.Get(47, "Font", "descriptions_free")
 	if err != nil {
@@ -1799,7 +1807,8 @@ func (v FontFace) IsSynthesized() (result bool) {
 // pango_font_face_list_sizes
 // container is not nil, container is FontFace
 // is method
-func (v FontFace) ListSizes() (sizes int /*TODO_TYPE*/, n_sizes int32) {
+// arg 0 sizes lenArgIdx 1
+func (v FontFace) ListSizes() (sizes gi.Int32Array) {
 	iv, err := _I.Get(91, "FontFace", "list_sizes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1811,8 +1820,11 @@ func (v FontFace) ListSizes() (sizes int /*TODO_TYPE*/, n_sizes int32) {
 	arg_n_sizes := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_sizes, arg_n_sizes}
 	iv.Call(args, nil, &outArgs[0])
-	sizes = outArgs[0].Int() /*TODO*/
+	var n_sizes int32
+	_ = n_sizes
+	sizes.P = outArgs[0].Pointer()
 	n_sizes = outArgs[1].Int32()
+	sizes.Len = int(n_sizes)
 	return
 }
 
@@ -1865,7 +1877,8 @@ func (v FontFamily) IsMonospace() (result bool) {
 // pango_font_family_list_faces
 // container is not nil, container is FontFamily
 // is method
-func (v FontFamily) ListFaces() (faces int /*TODO_TYPE*/, n_faces int32) {
+// arg 0 faces lenArgIdx 1
+func (v FontFamily) ListFaces() (faces int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(94, "FontFamily", "list_faces")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1877,6 +1890,8 @@ func (v FontFamily) ListFaces() (faces int /*TODO_TYPE*/, n_faces int32) {
 	arg_n_faces := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_faces, arg_n_faces}
 	iv.Call(args, nil, &outArgs[0])
+	var n_faces int32
+	_ = n_faces
 	faces = outArgs[0].Int() /*TODO*/
 	n_faces = outArgs[1].Int32()
 	return
@@ -1962,7 +1977,8 @@ func (v FontMap) GetShapeEngineType() (result string) {
 // pango_font_map_list_families
 // container is not nil, container is FontMap
 // is method
-func (v FontMap) ListFamilies() (families int /*TODO_TYPE*/, n_families int32) {
+// arg 0 families lenArgIdx 1
+func (v FontMap) ListFamilies() (families int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(99, "FontMap", "list_families")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1974,6 +1990,8 @@ func (v FontMap) ListFamilies() (families int /*TODO_TYPE*/, n_families int32) {
 	arg_n_families := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_families, arg_n_families}
 	iv.Call(args, nil, &outArgs[0])
+	var n_families int32
+	_ = n_families
 	families = outArgs[0].Int() /*TODO*/
 	n_families = outArgs[1].Int32()
 	return
@@ -2904,7 +2922,8 @@ func (v Language) GetSampleString() (result string) {
 // pango_language_get_scripts
 // container is not nil, container is Language
 // is method
-func (v Language) GetScripts() (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 0*/, num_scripts int32) {
+// ret lenArgIdx 0
+func (v Language) GetScripts() (result int /*TODO_TYPE array type c, elemTypeTag: interface, isPtr: false*/) {
 	iv, err := _I.Get(146, "Language", "get_scripts")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2916,6 +2935,8 @@ func (v Language) GetScripts() (result int /*TODO_TYPE array type c, elemTypeTag
 	args := []gi.Argument{arg_v, arg_num_scripts}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var num_scripts int32
+	_ = num_scripts
 	num_scripts = outArgs[0].Int32()
 	result = ret.Int() /*TODO*/
 	return
@@ -3390,7 +3411,8 @@ func (v Layout) GetLinesReadonly() (result int /*TODO_TYPE isPtr: true, tag: gsl
 // pango_layout_get_log_attrs
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetLogAttrs() (attrs int /*TODO_TYPE*/, n_attrs int32) {
+// arg 0 attrs lenArgIdx 1
+func (v Layout) GetLogAttrs() (attrs int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(174, "Layout", "get_log_attrs")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3402,6 +3424,8 @@ func (v Layout) GetLogAttrs() (attrs int /*TODO_TYPE*/, n_attrs int32) {
 	arg_n_attrs := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_attrs, arg_n_attrs}
 	iv.Call(args, nil, &outArgs[0])
+	var n_attrs int32
+	_ = n_attrs
 	attrs = outArgs[0].Int() /*TODO*/
 	n_attrs = outArgs[1].Int32()
 	return
@@ -3410,7 +3434,8 @@ func (v Layout) GetLogAttrs() (attrs int /*TODO_TYPE*/, n_attrs int32) {
 // pango_layout_get_log_attrs_readonly
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetLogAttrsReadonly() (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: 0*/, n_attrs int32) {
+// ret lenArgIdx 0
+func (v Layout) GetLogAttrsReadonly() (result int /*TODO_TYPE array type c, elemTypeTag: interface, isPtr: false*/) {
 	iv, err := _I.Get(175, "Layout", "get_log_attrs_readonly")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3422,6 +3447,8 @@ func (v Layout) GetLogAttrsReadonly() (result int /*TODO_TYPE array type c, elem
 	args := []gi.Argument{arg_v, arg_n_attrs}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var n_attrs int32
+	_ = n_attrs
 	n_attrs = outArgs[0].Int32()
 	result = ret.Int() /*TODO*/
 	return
@@ -4407,7 +4434,8 @@ func (v LayoutLine) GetPixelExtents() (ink_rect int /*TODO_TYPE*/, logical_rect 
 // pango_layout_line_get_x_ranges
 // container is not nil, container is LayoutLine
 // is method
-func (v LayoutLine) GetXRanges(start_index int32, end_index int32) (ranges int /*TODO_TYPE*/, n_ranges int32) {
+// arg 2 ranges lenArgIdx 3
+func (v LayoutLine) GetXRanges(start_index int32, end_index int32) (ranges gi.Int32Array) {
 	iv, err := _I.Get(231, "LayoutLine", "get_x_ranges")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4421,8 +4449,11 @@ func (v LayoutLine) GetXRanges(start_index int32, end_index int32) (ranges int /
 	arg_n_ranges := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_start_index, arg_end_index, arg_ranges, arg_n_ranges}
 	iv.Call(args, nil, &outArgs[0])
-	ranges = outArgs[0].Int() /*TODO*/
+	var n_ranges int32
+	_ = n_ranges
+	ranges.P = outArgs[0].Pointer()
 	n_ranges = outArgs[1].Int32()
+	ranges.Len = int(n_ranges)
 	return
 }
 
@@ -5392,7 +5423,7 @@ func (v TabArray) GetTab(tab_index int32) (alignment TabAlignEnum, location int3
 // pango_tab_array_get_tabs
 // container is not nil, container is TabArray
 // is method
-func (v TabArray) GetTabs() (alignments int /*TODO_TYPE*/, locations int /*TODO_TYPE*/) {
+func (v TabArray) GetTabs() (alignments int /*TODO_TYPE*/, locations gi.Int32Array) {
 	iv, err := _I.Get(276, "TabArray", "get_tabs")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5405,7 +5436,7 @@ func (v TabArray) GetTabs() (alignments int /*TODO_TYPE*/, locations int /*TODO_
 	args := []gi.Argument{arg_v, arg_alignments, arg_locations}
 	iv.Call(args, nil, &outArgs[0])
 	alignments = outArgs[0].Int() /*TODO tagIfc biType: enum*/
-	locations = outArgs[1].Int()  /*TODO*/
+	locations.P = outArgs[1].Pointer()
 	return
 }
 
@@ -5539,6 +5570,7 @@ func BidiTypeForUnichar(ch rune) (result BidiTypeEnum) {
 
 // pango_break
 // container is nil
+// arg 3 attrs lenArgIdx 4
 func Break(text string, length int32, analysis Analysis, attrs int /*TODO_TYPE array type c, elemTypeTag: interface*/, attrs_len int32) {
 	iv, err := _I.Get(282, "break", "")
 	if err != nil {
@@ -5700,6 +5732,7 @@ func GetLibSubdirectory() (result string) {
 
 // pango_get_log_attrs
 // container is nil
+// arg 4 log_attrs lenArgIdx 5
 func GetLogAttrs(text string, length int32, level int32, language Language, log_attrs int /*TODO_TYPE array type c, elemTypeTag: interface*/, attrs_len int32) {
 	iv, err := _I.Get(291, "get_log_attrs", "")
 	if err != nil {
@@ -5915,7 +5948,8 @@ func LanguageGetDefault() (result Language) {
 
 // pango_lookup_aliases
 // container is nil
-func LookupAliases(fontname string) (families int /*TODO_TYPE*/, n_families int32) {
+// arg 1 families lenArgIdx 2
+func LookupAliases(fontname string) (families gi.CStrArray) {
 	iv, err := _I.Get(303, "lookup_aliases", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5929,7 +5963,9 @@ func LookupAliases(fontname string) (families int /*TODO_TYPE*/, n_families int3
 	args := []gi.Argument{arg_fontname, arg_families, arg_n_families}
 	iv.Call(args, nil, &outArgs[0])
 	gi.Free(c_fontname)
-	families = outArgs[0].Int() /*TODO*/
+	var n_families int32
+	_ = n_families
+	families.P = outArgs[0].Pointer()
 	n_families = outArgs[1].Int32()
 	return
 }
@@ -5950,10 +5986,10 @@ func MarkupParserFinish(context glib.MarkupParseContext) (result bool, attr_list
 	args := []gi.Argument{arg_context, arg_attr_list, arg_text, arg_accel_char, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	err = gi.ToError(outArgs[3].Pointer())
 	attr_list.P = outArgs[0].Pointer()
 	text = outArgs[1].String().Take()
 	accel_char = rune(outArgs[2].Uint32())
-	err = gi.ToError(outArgs[3].Pointer())
 	result = ret.Bool()
 	return
 }
@@ -6032,10 +6068,10 @@ func ParseMarkup(markup_text string, length int32, accel_marker rune) (result bo
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_markup_text)
+	err = gi.ToError(outArgs[3].Pointer())
 	attr_list.P = outArgs[0].Pointer()
 	text = outArgs[1].String().Take()
 	accel_char = rune(outArgs[2].Uint32())
-	err = gi.ToError(outArgs[3].Pointer())
 	result = ret.Bool()
 	return
 }
@@ -6318,7 +6354,7 @@ func SkipSpace(pos int /*TODO:TYPE*/) (result bool) {
 
 // pango_split_file_list
 // container is nil
-func SplitFileList(str string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func SplitFileList(str string) (result gi.CStrArray) {
 	iv, err := _I.Get(324, "split_file_list", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6330,7 +6366,8 @@ func SplitFileList(str string) (result int /*TODO_TYPE array type c, elemTypeTag
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_str)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 

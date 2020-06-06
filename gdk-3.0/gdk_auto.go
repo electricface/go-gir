@@ -2091,6 +2091,7 @@ func (v Display) SetDoubleClickTime(msec uint32) {
 // gdk_display_store_clipboard
 // container is not nil, container is Display
 // is method
+// arg 2 targets lenArgIdx 3
 func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32) {
 	iv, err := _I.Get(104, "Display", "store_clipboard")
 	if err != nil {
@@ -4287,7 +4288,9 @@ func (v Keymap) GetDirection() (result pango.DirectionEnum) {
 // gdk_keymap_get_entries_for_keycode
 // container is not nil, container is Keymap
 // is method
-func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys int /*TODO_TYPE*/, keyvals int /*TODO_TYPE*/, n_entries int32) {
+// arg 1 keys lenArgIdx 3
+// arg 2 keyvals lenArgIdx 3
+func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys int /*TODO_TYPE array type c, elemTypeTag: interface*/, keyvals gi.Uint32Array) {
 	iv, err := _I.Get(212, "Keymap", "get_entries_for_keycode")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4302,17 +4305,21 @@ func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys
 	args := []gi.Argument{arg_v, arg_hardware_keycode, arg_keys, arg_keyvals, arg_n_entries}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	keys = outArgs[0].Int()    /*TODO*/
-	keyvals = outArgs[1].Int() /*TODO*/
+	var n_entries int32
+	_ = n_entries
+	keys = outArgs[0].Int() /*TODO*/
+	keyvals.P = outArgs[1].Pointer()
 	n_entries = outArgs[2].Int32()
 	result = ret.Bool()
+	keyvals.Len = int(n_entries)
 	return
 }
 
 // gdk_keymap_get_entries_for_keyval
 // container is not nil, container is Keymap
 // is method
-func (v Keymap) GetEntriesForKeyval(keyval uint32) (result bool, keys int /*TODO_TYPE*/, n_keys int32) {
+// arg 1 keys lenArgIdx 2
+func (v Keymap) GetEntriesForKeyval(keyval uint32) (result bool, keys int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(213, "Keymap", "get_entries_for_keyval")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4326,6 +4333,8 @@ func (v Keymap) GetEntriesForKeyval(keyval uint32) (result bool, keys int /*TODO
 	args := []gi.Argument{arg_v, arg_keyval, arg_keys, arg_n_keys}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var n_keys int32
+	_ = n_keys
 	keys = outArgs[0].Int() /*TODO*/
 	n_keys = outArgs[1].Int32()
 	result = ret.Bool()
@@ -9491,6 +9500,7 @@ func GlErrorQuark() (result uint32) {
 
 // gdk_init
 // container is nil
+// arg 1 argv lenArgIdx 0
 func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 	iv, err := _I.Get(508, "init", "")
 	if err != nil {
@@ -9503,6 +9513,7 @@ func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 
 // gdk_init_check
 // container is nil
+// arg 1 argv lenArgIdx 0
 func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 	iv, err := _I.Get(509, "init_check", "")
 	if err != nil {
@@ -9814,6 +9825,7 @@ func PangoContextGetForScreen(screen IScreen) (result pango.Context) {
 
 // gdk_parse_args
 // container is nil
+// arg 1 argv lenArgIdx 0
 func ParseArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 	iv, err := _I.Get(529, "parse_args", "")
 	if err != nil {
@@ -9939,7 +9951,8 @@ func PropertyDelete(window IWindow, property Atom) {
 
 // gdk_property_get
 // container is nil
-func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, length uint64, pdelete int32) (result bool, actual_property_type Atom, actual_format int32, actual_length int32, data int /*TODO_TYPE*/) {
+// arg 9 data lenArgIdx 8
+func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, length uint64, pdelete int32) (result bool, actual_property_type Atom, actual_format int32, data gi.Uint8Array) {
 	iv, err := _I.Get(537, "property_get", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9959,17 +9972,21 @@ func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, lengt
 	args := []gi.Argument{arg_window, arg_property, arg_type1, arg_offset, arg_length, arg_pdelete, arg_actual_property_type, arg_actual_format, arg_actual_length, arg_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var actual_length int32
+	_ = actual_length
 	actual_property_type.P = outArgs[0].Pointer()
 	actual_format = outArgs[1].Int32()
 	actual_length = outArgs[2].Int32()
-	data = outArgs[3].Int() /*TODO*/
+	data.P = outArgs[3].Pointer()
 	result = ret.Bool()
+	data.Len = int(actual_length)
 	return
 }
 
 // gdk_query_depths
 // container is nil
-func QueryDepths() (depths int /*TODO_TYPE*/, count int32) {
+// arg 0 depths lenArgIdx 1
+func QueryDepths() (depths gi.Int32Array) {
 	iv, err := _I.Get(538, "query_depths", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9980,14 +9997,18 @@ func QueryDepths() (depths int /*TODO_TYPE*/, count int32) {
 	arg_count := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_depths, arg_count}
 	iv.Call(args, nil, &outArgs[0])
-	depths = outArgs[0].Int() /*TODO*/
+	var count int32
+	_ = count
+	depths.P = outArgs[0].Pointer()
 	count = outArgs[1].Int32()
+	depths.Len = int(count)
 	return
 }
 
 // gdk_query_visual_types
 // container is nil
-func QueryVisualTypes() (visual_types int /*TODO_TYPE*/, count int32) {
+// arg 0 visual_types lenArgIdx 1
+func QueryVisualTypes() (visual_types int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(539, "query_visual_types", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9998,6 +10019,8 @@ func QueryVisualTypes() (visual_types int /*TODO_TYPE*/, count int32) {
 	arg_count := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_visual_types, arg_count}
 	iv.Call(args, nil, &outArgs[0])
+	var count int32
+	_ = count
 	visual_types = outArgs[0].Int() /*TODO*/
 	count = outArgs[1].Int32()
 	return
@@ -10273,7 +10296,8 @@ func TestSimulateKey(window IWindow, x int32, y int32, keyval uint32, modifiers 
 
 // gdk_text_property_to_utf8_list_for_display
 // container is nil
-func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format int32, text gi.Uint8Array, length int32) (result int32, list int /*TODO_TYPE*/) {
+// arg 3 text lenArgIdx 4
+func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format int32, text gi.Uint8Array, length int32) (result int32, list gi.CStrArray) {
 	iv, err := _I.Get(556, "text_property_to_utf8_list_for_display", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10289,7 +10313,7 @@ func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format in
 	args := []gi.Argument{arg_display, arg_encoding, arg_format, arg_text, arg_length, arg_list}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	list = outArgs[0].Int() /*TODO*/
+	list.P = outArgs[0].Pointer()
 	result = ret.Int32()
 	return
 }

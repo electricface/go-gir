@@ -2016,6 +2016,7 @@ func (v Relation) P_Relation() unsafe.Pointer { return v.P }
 // atk_relation_new
 // container is not nil, container is Relation
 // is constructor
+// arg 0 targets lenArgIdx 1
 func NewRelation(targets int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_targets int32, relationship RelationTypeEnum) (result Relation) {
 	iv, err := _I.Get(100, "Relation", "new")
 	if err != nil {
@@ -2067,7 +2068,7 @@ func (v Relation) GetRelationType() (result RelationTypeEnum) {
 // atk_relation_get_target
 // container is not nil, container is Relation
 // is method
-func (v Relation) GetTarget() (result int /*TODO_TYPE array type: 2*/) {
+func (v Relation) GetTarget() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
 	iv, err := _I.Get(103, "Relation", "get_target")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2674,6 +2675,7 @@ func (v StateSet) AddState(type1 StateTypeEnum) (result bool) {
 // atk_state_set_add_states
 // container is not nil, container is StateSet
 // is method
+// arg 0 types lenArgIdx 1
 func (v StateSet) AddStates(types int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_types int32) {
 	iv, err := _I.Get(126, "StateSet", "add_states")
 	if err != nil {
@@ -2740,6 +2742,7 @@ func (v StateSet) ContainsState(type1 StateTypeEnum) (result bool) {
 // atk_state_set_contains_states
 // container is not nil, container is StateSet
 // is method
+// arg 0 types lenArgIdx 1
 func (v StateSet) ContainsStates(types int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_types int32) (result bool) {
 	iv, err := _I.Get(130, "StateSet", "contains_states")
 	if err != nil {
@@ -3491,7 +3494,7 @@ type TableCellIfc struct{}
 // atk_table_cell_get_column_header_cells
 // container is not nil, container is TableCell
 // is method
-func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type: 2*/) {
+func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
 	iv, err := _I.Get(168, "TableCell", "get_column_header_cells")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3573,7 +3576,7 @@ func (v *TableCellIfc) GetRowColumnSpan() (result bool, row int32, column int32,
 // atk_table_cell_get_row_header_cells
 // container is not nil, container is TableCell
 // is method
-func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2*/) {
+func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
 	iv, err := _I.Get(172, "TableCell", "get_row_header_cells")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3667,7 +3670,7 @@ func (v *TextIfc) AddSelection(start_offset int32, end_offset int32) (result boo
 // atk_text_get_bounded_ranges
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetBoundedRanges(rect TextRectangle, coord_type CoordTypeEnum, x_clip_type TextClipTypeEnum, y_clip_type TextClipTypeEnum) (result int /*TODO_TYPE array type c, elemTypeTag: interface, arrLen: -1*/) {
+func (v *TextIfc) GetBoundedRanges(rect TextRectangle, coord_type CoordTypeEnum, x_clip_type TextClipTypeEnum, y_clip_type TextClipTypeEnum) (result int /*TODO_TYPE array type c, elemTypeTag: interface, isPtr: true*/) {
 	iv, err := _I.Get(177, "Text", "get_bounded_ranges")
 	if err != nil {
 		log.Println("WARN:", err)

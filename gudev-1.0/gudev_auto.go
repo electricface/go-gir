@@ -31,13 +31,13 @@ func (v Client) P_Client() unsafe.Pointer { return v.P }
 // g_udev_client_new
 // container is not nil, container is Client
 // is constructor
-func NewClient(subsystems int /*TODO_TYPE array type c, elemTypeTag: utf8*/) (result Client) {
+func NewClient(subsystems gi.CStrArray) (result Client) {
 	iv, err := _I.Get(0, "Client", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_subsystems := gi.NewIntArgument(subsystems) /*TODO*/
+	arg_subsystems := gi.NewPointerArgument(subsystems.P)
 	args := []gi.Argument{arg_subsystems}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -201,7 +201,7 @@ func (v Device) GetDeviceFile() (result string) {
 // g_udev_device_get_device_file_symlinks
 // container is not nil, container is Device
 // is method
-func (v Device) GetDeviceFileSymlinks() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func (v Device) GetDeviceFileSymlinks() (result gi.CStrArray) {
 	iv, err := _I.Get(8, "Device", "get_device_file_symlinks")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -211,7 +211,8 @@ func (v Device) GetDeviceFileSymlinks() (result int /*TODO_TYPE array type c, el
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -457,7 +458,7 @@ func (v Device) GetPropertyAsInt(key string) (result int32) {
 // g_udev_device_get_property_as_strv
 // container is not nil, container is Device
 // is method
-func (v Device) GetPropertyAsStrv(key string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func (v Device) GetPropertyAsStrv(key string) (result gi.CStrArray) {
 	iv, err := _I.Get(22, "Device", "get_property_as_strv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -470,7 +471,8 @@ func (v Device) GetPropertyAsStrv(key string) (result int /*TODO_TYPE array type
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_key)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -497,7 +499,7 @@ func (v Device) GetPropertyAsUint64(key string) (result uint64) {
 // g_udev_device_get_property_keys
 // container is not nil, container is Device
 // is method
-func (v Device) GetPropertyKeys() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func (v Device) GetPropertyKeys() (result gi.CStrArray) {
 	iv, err := _I.Get(24, "Device", "get_property_keys")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -507,7 +509,8 @@ func (v Device) GetPropertyKeys() (result int /*TODO_TYPE array type c, elemType
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -628,7 +631,7 @@ func (v Device) GetSysfsAttrAsInt(name string) (result int32) {
 // g_udev_device_get_sysfs_attr_as_strv
 // container is not nil, container is Device
 // is method
-func (v Device) GetSysfsAttrAsStrv(name string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func (v Device) GetSysfsAttrAsStrv(name string) (result gi.CStrArray) {
 	iv, err := _I.Get(31, "Device", "get_sysfs_attr_as_strv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -641,7 +644,8 @@ func (v Device) GetSysfsAttrAsStrv(name string) (result int /*TODO_TYPE array ty
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -668,7 +672,7 @@ func (v Device) GetSysfsAttrAsUint64(name string) (result uint64) {
 // g_udev_device_get_sysfs_attr_keys
 // container is not nil, container is Device
 // is method
-func (v Device) GetSysfsAttrKeys() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func (v Device) GetSysfsAttrKeys() (result gi.CStrArray) {
 	iv, err := _I.Get(33, "Device", "get_sysfs_attr_keys")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -678,7 +682,8 @@ func (v Device) GetSysfsAttrKeys() (result int /*TODO_TYPE array type c, elemTyp
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -702,7 +707,7 @@ func (v Device) GetSysfsPath() (result string) {
 // g_udev_device_get_tags
 // container is not nil, container is Device
 // is method
-func (v Device) GetTags() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func (v Device) GetTags() (result gi.CStrArray) {
 	iv, err := _I.Get(35, "Device", "get_tags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -712,7 +717,8 @@ func (v Device) GetTags() (result int /*TODO_TYPE array type c, elemTypeTag: utf
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 

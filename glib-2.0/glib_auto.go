@@ -466,10 +466,10 @@ func (v BookmarkFile) GetAppInfo(uri string, name string) (result bool, exec str
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_uri)
 	gi.Free(c_name)
+	err = gi.ToError(outArgs[3].Pointer())
 	exec = outArgs[0].String().Take()
 	count = outArgs[1].Uint32()
 	stamp = outArgs[2].Int64()
-	err = gi.ToError(outArgs[3].Pointer())
 	result = ret.Bool()
 	return
 }
@@ -477,7 +477,8 @@ func (v BookmarkFile) GetAppInfo(uri string, name string) (result bool, exec str
 // g_bookmark_file_get_applications
 // container is not nil, container is BookmarkFile
 // is method
-func (v BookmarkFile) GetApplications(uri string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 1*/, length uint64, err error) {
+// ret lenArgIdx 1
+func (v BookmarkFile) GetApplications(uri string) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(26, "BookmarkFile", "get_applications")
 	if err != nil {
 		return
@@ -492,9 +493,11 @@ func (v BookmarkFile) GetApplications(uri string) (result int /*TODO_TYPE array 
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_uri)
-	length = outArgs[0].Uint64()
+	var length uint64
+	_ = length
 	err = gi.ToError(outArgs[1].Pointer())
-	result = ret.Int() /*TODO*/
+	length = outArgs[0].Uint64()
+	result = gi.CStrArray{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
@@ -523,7 +526,8 @@ func (v BookmarkFile) GetDescription(uri string) (result string, err error) {
 // g_bookmark_file_get_groups
 // container is not nil, container is BookmarkFile
 // is method
-func (v BookmarkFile) GetGroups(uri string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 1*/, length uint64, err error) {
+// ret lenArgIdx 1
+func (v BookmarkFile) GetGroups(uri string) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(28, "BookmarkFile", "get_groups")
 	if err != nil {
 		return
@@ -538,9 +542,11 @@ func (v BookmarkFile) GetGroups(uri string) (result int /*TODO_TYPE array type c
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_uri)
-	length = outArgs[0].Uint64()
+	var length uint64
+	_ = length
 	err = gi.ToError(outArgs[1].Pointer())
-	result = ret.Int() /*TODO*/
+	length = outArgs[0].Uint64()
+	result = gi.CStrArray{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
@@ -563,9 +569,9 @@ func (v BookmarkFile) GetIcon(uri string) (result bool, href string, mime_type s
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_uri)
+	err = gi.ToError(outArgs[2].Pointer())
 	href = outArgs[0].String().Take()
 	mime_type = outArgs[1].String().Take()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = ret.Bool()
 	return
 }
@@ -678,7 +684,8 @@ func (v BookmarkFile) GetTitle(uri string) (result string, err error) {
 // g_bookmark_file_get_uris
 // container is not nil, container is BookmarkFile
 // is method
-func (v BookmarkFile) GetUris() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 0*/, length uint64) {
+// ret lenArgIdx 0
+func (v BookmarkFile) GetUris() (result gi.CStrArray) {
 	iv, err := _I.Get(35, "BookmarkFile", "get_uris")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -690,8 +697,10 @@ func (v BookmarkFile) GetUris() (result int /*TODO_TYPE array type c, elemTypeTa
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var length uint64
+	_ = length
 	length = outArgs[0].Uint64()
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
@@ -790,6 +799,7 @@ func (v BookmarkFile) HasItem(uri string) (result bool) {
 // g_bookmark_file_load_from_data
 // container is not nil, container is BookmarkFile
 // is method
+// arg 0 data lenArgIdx 1
 func (v BookmarkFile) LoadFromData(data gi.Uint8Array, length uint64) (result bool, err error) {
 	iv, err := _I.Get(40, "BookmarkFile", "load_from_data")
 	if err != nil {
@@ -826,8 +836,8 @@ func (v BookmarkFile) LoadFromDataDirs(file string) (result bool, full_path stri
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_file)
-	full_path = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	full_path = outArgs[0].String().Take()
 	result = ret.Bool()
 	return
 }
@@ -1022,7 +1032,8 @@ func (v BookmarkFile) SetDescription(uri string, description string) {
 // g_bookmark_file_set_groups
 // container is not nil, container is BookmarkFile
 // is method
-func (v BookmarkFile) SetGroups(uri string, groups int /*TODO_TYPE array type c, elemTypeTag: utf8*/, length uint64) {
+// arg 1 groups lenArgIdx 2
+func (v BookmarkFile) SetGroups(uri string, groups gi.CStrArray, length uint64) {
 	iv, err := _I.Get(50, "BookmarkFile", "set_groups")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1031,7 +1042,7 @@ func (v BookmarkFile) SetGroups(uri string, groups int /*TODO_TYPE array type c,
 	c_uri := gi.CString(uri)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_uri := gi.NewStringArgument(c_uri)
-	arg_groups := gi.NewIntArgument(groups) /*TODO*/
+	arg_groups := gi.NewPointerArgument(groups.P)
 	arg_length := gi.NewUint64Argument(length)
 	args := []gi.Argument{arg_v, arg_uri, arg_groups, arg_length}
 	iv.Call(args, nil, nil)
@@ -1158,7 +1169,8 @@ func (v BookmarkFile) SetVisited(uri string, visited int64) {
 // g_bookmark_file_to_data
 // container is not nil, container is BookmarkFile
 // is method
-func (v BookmarkFile) ToData() (result gi.Uint8Array, length uint64, err error) {
+// ret lenArgIdx 0
+func (v BookmarkFile) ToData() (result gi.Uint8Array, err error) {
 	iv, err := _I.Get(57, "BookmarkFile", "to_data")
 	if err != nil {
 		return
@@ -1170,8 +1182,10 @@ func (v BookmarkFile) ToData() (result gi.Uint8Array, length uint64, err error) 
 	args := []gi.Argument{arg_v, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	length = outArgs[0].Uint64()
+	var length uint64
+	_ = length
 	err = gi.ToError(outArgs[1].Pointer())
+	length = outArgs[0].Uint64()
 	result = gi.Uint8Array{P: ret.Pointer(), Len: int(length)}
 	return
 }
@@ -1221,13 +1235,13 @@ type ByteArray struct {
 // container is not nil, container is ByteArray
 // is method
 // arg0Type tag: array, isPtr: true
-func ByteArrayFree1(array int /*TODO_TYPE isPtr: true, tag: array*/, free_segment bool) (result uint8) {
+func ByteArrayFree1(array ByteArray, free_segment bool) (result uint8) {
 	iv, err := _I.Get(60, "ByteArray", "free")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_array := gi.NewIntArgument(array) /*TODO*/
+	arg_array := gi.NewPointerArgument(array.P)
 	arg_free_segment := gi.NewBoolArgument(free_segment)
 	args := []gi.Argument{arg_array, arg_free_segment}
 	var ret gi.Argument
@@ -1240,13 +1254,13 @@ func ByteArrayFree1(array int /*TODO_TYPE isPtr: true, tag: array*/, free_segmen
 // container is not nil, container is ByteArray
 // is method
 // arg0Type tag: array, isPtr: true
-func ByteArrayFreeToBytes1(array int /*TODO_TYPE isPtr: true, tag: array*/) (result Bytes) {
+func ByteArrayFreeToBytes1(array ByteArray) (result Bytes) {
 	iv, err := _I.Get(61, "ByteArray", "free_to_bytes")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_array := gi.NewIntArgument(array) /*TODO*/
+	arg_array := gi.NewPointerArgument(array.P)
 	args := []gi.Argument{arg_array}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1258,7 +1272,8 @@ func ByteArrayFreeToBytes1(array int /*TODO_TYPE isPtr: true, tag: array*/) (res
 // container is not nil, container is ByteArray
 // is method
 // arg0Type tag: array, isPtr: true
-func ByteArrayNewTake1(data gi.Uint8Array, len1 uint64) (result int /*TODO_TYPE array type: 3*/) {
+// arg 0 data lenArgIdx 1
+func ByteArrayNewTake1(data gi.Uint8Array, len1 uint64) (result ByteArray) {
 	iv, err := _I.Get(63, "ByteArray", "new_take")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1269,7 +1284,7 @@ func ByteArrayNewTake1(data gi.Uint8Array, len1 uint64) (result int /*TODO_TYPE 
 	args := []gi.Argument{arg_data, arg_len1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1277,13 +1292,13 @@ func ByteArrayNewTake1(data gi.Uint8Array, len1 uint64) (result int /*TODO_TYPE 
 // container is not nil, container is ByteArray
 // is method
 // arg0Type tag: array, isPtr: true
-func ByteArrayUnref1(array int /*TODO_TYPE isPtr: true, tag: array*/) {
+func ByteArrayUnref1(array ByteArray) {
 	iv, err := _I.Get(64, "ByteArray", "unref")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_array := gi.NewIntArgument(array) /*TODO*/
+	arg_array := gi.NewPointerArgument(array.P)
 	args := []gi.Argument{arg_array}
 	iv.Call(args, nil, nil)
 }
@@ -1296,6 +1311,7 @@ type Bytes struct {
 // g_bytes_new
 // container is not nil, container is Bytes
 // is constructor
+// arg 0 data lenArgIdx 1
 func NewBytes(data gi.Uint8Array, size uint64) (result Bytes) {
 	iv, err := _I.Get(65, "Bytes", "new")
 	if err != nil {
@@ -1314,6 +1330,7 @@ func NewBytes(data gi.Uint8Array, size uint64) (result Bytes) {
 // g_bytes_new_take
 // container is not nil, container is Bytes
 // is constructor
+// arg 0 data lenArgIdx 1
 func NewBytesTake(data gi.Uint8Array, size uint64) (result Bytes) {
 	iv, err := _I.Get(66, "Bytes", "new_take")
 	if err != nil {
@@ -1368,7 +1385,8 @@ func (v Bytes) Equal(bytes2 Bytes) (result bool) {
 // g_bytes_get_data
 // container is not nil, container is Bytes
 // is method
-func (v Bytes) GetData() (result gi.Uint8Array, size uint64) {
+// ret lenArgIdx 0
+func (v Bytes) GetData() (result gi.Uint8Array) {
 	iv, err := _I.Get(69, "Bytes", "get_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1380,6 +1398,8 @@ func (v Bytes) GetData() (result gi.Uint8Array, size uint64) {
 	args := []gi.Argument{arg_v, arg_size}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var size uint64
+	_ = size
 	size = outArgs[0].Uint64()
 	result = gi.Uint8Array{P: ret.Pointer(), Len: int(size)}
 	return
@@ -1472,7 +1492,7 @@ func (v Bytes) Unref() {
 // g_bytes_unref_to_array
 // container is not nil, container is Bytes
 // is method
-func (v Bytes) UnrefToArray() (result int /*TODO_TYPE array type: 3*/) {
+func (v Bytes) UnrefToArray() (result ByteArray) {
 	iv, err := _I.Get(75, "Bytes", "unref_to_array")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1482,14 +1502,15 @@ func (v Bytes) UnrefToArray() (result int /*TODO_TYPE array type: 3*/) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // g_bytes_unref_to_data
 // container is not nil, container is Bytes
 // is method
-func (v Bytes) UnrefToData() (result gi.Uint8Array, size uint64) {
+// ret lenArgIdx 0
+func (v Bytes) UnrefToData() (result gi.Uint8Array) {
 	iv, err := _I.Get(76, "Bytes", "unref_to_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1501,6 +1522,8 @@ func (v Bytes) UnrefToData() (result gi.Uint8Array, size uint64) {
 	args := []gi.Argument{arg_v, arg_size}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var size uint64
+	_ = size
 	size = outArgs[0].Uint64()
 	result = gi.Uint8Array{P: ret.Pointer(), Len: int(size)}
 	return
@@ -1593,6 +1616,7 @@ func (v Checksum) Reset() {
 // g_checksum_update
 // container is not nil, container is Checksum
 // is method
+// arg 0 data lenArgIdx 1
 func (v Checksum) Update(data gi.Uint8Array, length int64) {
 	iv, err := _I.Get(82, "Checksum", "update")
 	if err != nil {
@@ -4081,6 +4105,7 @@ type Hmac struct {
 // g_hmac_get_digest
 // container is not nil, container is Hmac
 // is method
+// arg 0 buffer lenArgIdx 1
 func (v Hmac) GetDigest(buffer gi.Uint8Array, digest_len int /*TODO:TYPE*/) {
 	iv, err := _I.Get(215, "Hmac", "get_digest")
 	if err != nil {
@@ -4128,6 +4153,7 @@ func (v Hmac) Unref() {
 // g_hmac_update
 // container is not nil, container is Hmac
 // is method
+// arg 0 data lenArgIdx 1
 func (v Hmac) Update(data gi.Uint8Array, length int64) {
 	iv, err := _I.Get(218, "Hmac", "update")
 	if err != nil {
@@ -4575,7 +4601,8 @@ func (v IOChannel) Read(buf string, count uint64, bytes_read uint64) (result IOE
 // g_io_channel_read_chars
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) ReadChars(count uint64) (result IOStatusEnum, buf int /*TODO_TYPE*/, bytes_read uint64, err error) {
+// arg 0 buf lenArgIdx 1
+func (v IOChannel) ReadChars(count uint64) (result IOStatusEnum, buf gi.Uint8Array, bytes_read uint64, err error) {
 	iv, err := _I.Get(243, "IOChannel", "read_chars")
 	if err != nil {
 		return
@@ -4589,10 +4616,11 @@ func (v IOChannel) ReadChars(count uint64) (result IOStatusEnum, buf int /*TODO_
 	args := []gi.Argument{arg_v, arg_buf, arg_count, arg_bytes_read, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	buf = outArgs[0].Int() /*TODO*/
-	bytes_read = outArgs[1].Uint64()
 	err = gi.ToError(outArgs[2].Pointer())
+	buf.P = outArgs[0].Pointer()
+	bytes_read = outArgs[1].Uint64()
 	result = IOStatusEnum(ret.Int())
+	buf.Len = int(count)
 	return
 }
 
@@ -4613,10 +4641,10 @@ func (v IOChannel) ReadLine() (result IOStatusEnum, str_return string, length ui
 	args := []gi.Argument{arg_v, arg_str_return, arg_length, arg_terminator_pos, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	err = gi.ToError(outArgs[3].Pointer())
 	str_return = outArgs[0].String().Take()
 	length = outArgs[1].Uint64()
 	terminator_pos = outArgs[2].Uint64()
-	err = gi.ToError(outArgs[3].Pointer())
 	result = IOStatusEnum(ret.Int())
 	return
 }
@@ -4645,7 +4673,8 @@ func (v IOChannel) ReadLineString(buffer String, terminator_pos uint64) (result 
 // g_io_channel_read_to_end
 // container is not nil, container is IOChannel
 // is method
-func (v IOChannel) ReadToEnd() (result IOStatusEnum, str_return int /*TODO_TYPE*/, length uint64, err error) {
+// arg 0 str_return lenArgIdx 1
+func (v IOChannel) ReadToEnd() (result IOStatusEnum, str_return gi.Uint8Array, err error) {
 	iv, err := _I.Get(246, "IOChannel", "read_to_end")
 	if err != nil {
 		return
@@ -4658,10 +4687,13 @@ func (v IOChannel) ReadToEnd() (result IOStatusEnum, str_return int /*TODO_TYPE*
 	args := []gi.Argument{arg_v, arg_str_return, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	str_return = outArgs[0].Int() /*TODO*/
-	length = outArgs[1].Uint64()
+	var length uint64
+	_ = length
 	err = gi.ToError(outArgs[2].Pointer())
+	str_return.P = outArgs[0].Pointer()
+	length = outArgs[1].Uint64()
 	result = IOStatusEnum(ret.Int())
+	str_return.Len = int(length)
 	return
 }
 
@@ -4680,8 +4712,8 @@ func (v IOChannel) ReadUnichar() (result IOStatusEnum, thechar rune, err error) 
 	args := []gi.Argument{arg_v, arg_thechar, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	thechar = rune(outArgs[0].Uint32())
 	err = gi.ToError(outArgs[1].Pointer())
+	thechar = rune(outArgs[0].Uint32())
 	result = IOStatusEnum(ret.Int())
 	return
 }
@@ -4938,8 +4970,8 @@ func (v IOChannel) WriteChars(buf gi.Uint8Array, count int64) (result IOStatusEn
 	args := []gi.Argument{arg_v, arg_buf, arg_count, arg_bytes_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	bytes_written = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	bytes_written = outArgs[0].Uint64()
 	result = IOStatusEnum(ret.Int())
 	return
 }
@@ -5097,7 +5129,8 @@ func (v KeyFile) GetBoolean(group_name string, key string) (result bool, err err
 // g_key_file_get_boolean_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) GetBooleanList(group_name string, key string) (result gi.BoolArray, length uint64, err error) {
+// ret lenArgIdx 2
+func (v KeyFile) GetBooleanList(group_name string, key string) (result gi.BoolArray, err error) {
 	iv, err := _I.Get(267, "KeyFile", "get_boolean_list")
 	if err != nil {
 		return
@@ -5115,8 +5148,10 @@ func (v KeyFile) GetBooleanList(group_name string, key string) (result gi.BoolAr
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_group_name)
 	gi.Free(c_key)
-	length = outArgs[0].Uint64()
+	var length uint64
+	_ = length
 	err = gi.ToError(outArgs[1].Pointer())
+	length = outArgs[0].Uint64()
 	result = gi.BoolArray{P: ret.Pointer(), Len: int(length)}
 	return
 }
@@ -5174,7 +5209,8 @@ func (v KeyFile) GetDouble(group_name string, key string) (result float64, err e
 // g_key_file_get_double_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) GetDoubleList(group_name string, key string) (result gi.DoubleArray, length uint64, err error) {
+// ret lenArgIdx 2
+func (v KeyFile) GetDoubleList(group_name string, key string) (result gi.DoubleArray, err error) {
 	iv, err := _I.Get(270, "KeyFile", "get_double_list")
 	if err != nil {
 		return
@@ -5192,8 +5228,10 @@ func (v KeyFile) GetDoubleList(group_name string, key string) (result gi.DoubleA
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_group_name)
 	gi.Free(c_key)
-	length = outArgs[0].Uint64()
+	var length uint64
+	_ = length
 	err = gi.ToError(outArgs[1].Pointer())
+	length = outArgs[0].Uint64()
 	result = gi.DoubleArray{P: ret.Pointer(), Len: int(length)}
 	return
 }
@@ -5201,7 +5239,7 @@ func (v KeyFile) GetDoubleList(group_name string, key string) (result gi.DoubleA
 // g_key_file_get_groups
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) GetGroups() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/, length uint64) {
+func (v KeyFile) GetGroups() (result gi.CStrArray, length uint64) {
 	iv, err := _I.Get(271, "KeyFile", "get_groups")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5214,7 +5252,8 @@ func (v KeyFile) GetGroups() (result int /*TODO_TYPE array type c, elemTypeTag: 
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	length = outArgs[0].Uint64()
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -5271,7 +5310,8 @@ func (v KeyFile) GetInteger(group_name string, key string) (result int32, err er
 // g_key_file_get_integer_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) GetIntegerList(group_name string, key string) (result gi.Int32Array, length uint64, err error) {
+// ret lenArgIdx 2
+func (v KeyFile) GetIntegerList(group_name string, key string) (result gi.Int32Array, err error) {
 	iv, err := _I.Get(274, "KeyFile", "get_integer_list")
 	if err != nil {
 		return
@@ -5289,8 +5329,10 @@ func (v KeyFile) GetIntegerList(group_name string, key string) (result gi.Int32A
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_group_name)
 	gi.Free(c_key)
-	length = outArgs[0].Uint64()
+	var length uint64
+	_ = length
 	err = gi.ToError(outArgs[1].Pointer())
+	length = outArgs[0].Uint64()
 	result = gi.Int32Array{P: ret.Pointer(), Len: int(length)}
 	return
 }
@@ -5298,7 +5340,7 @@ func (v KeyFile) GetIntegerList(group_name string, key string) (result gi.Int32A
 // g_key_file_get_keys
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) GetKeys(group_name string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/, length uint64, err error) {
+func (v KeyFile) GetKeys(group_name string) (result gi.CStrArray, length uint64, err error) {
 	iv, err := _I.Get(275, "KeyFile", "get_keys")
 	if err != nil {
 		return
@@ -5313,9 +5355,10 @@ func (v KeyFile) GetKeys(group_name string) (result int /*TODO_TYPE array type c
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_group_name)
-	length = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
-	result = ret.Int() /*TODO*/
+	length = outArgs[0].Uint64()
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -5376,7 +5419,8 @@ func (v KeyFile) GetLocaleString(group_name string, key string, locale string) (
 // g_key_file_get_locale_string_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) GetLocaleStringList(group_name string, key string, locale string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 3*/, length uint64, err error) {
+// ret lenArgIdx 3
+func (v KeyFile) GetLocaleStringList(group_name string, key string, locale string) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(278, "KeyFile", "get_locale_string_list")
 	if err != nil {
 		return
@@ -5397,9 +5441,12 @@ func (v KeyFile) GetLocaleStringList(group_name string, key string, locale strin
 	gi.Free(c_group_name)
 	gi.Free(c_key)
 	gi.Free(c_locale)
-	length = outArgs[0].Uint64()
+	var length uint64
+	_ = length
 	err = gi.ToError(outArgs[1].Pointer())
-	result = ret.Int() /*TODO*/
+	length = outArgs[0].Uint64()
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -5448,7 +5495,8 @@ func (v KeyFile) GetString(group_name string, key string) (result string, err er
 // g_key_file_get_string_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) GetStringList(group_name string, key string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 2*/, length uint64, err error) {
+// ret lenArgIdx 2
+func (v KeyFile) GetStringList(group_name string, key string) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(281, "KeyFile", "get_string_list")
 	if err != nil {
 		return
@@ -5466,9 +5514,12 @@ func (v KeyFile) GetStringList(group_name string, key string) (result int /*TODO
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_group_name)
 	gi.Free(c_key)
-	length = outArgs[0].Uint64()
+	var length uint64
+	_ = length
 	err = gi.ToError(outArgs[1].Pointer())
-	result = ret.Int() /*TODO*/
+	length = outArgs[0].Uint64()
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -5606,8 +5657,8 @@ func (v KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (result bool,
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_file)
-	full_path = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	full_path = outArgs[0].String().Take()
 	result = ret.Bool()
 	return
 }
@@ -5615,7 +5666,7 @@ func (v KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (result bool,
 // g_key_file_load_from_dirs
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) LoadFromDirs(file string, search_dirs int /*TODO_TYPE array type c, elemTypeTag: filename*/, flags KeyFileFlags) (result bool, full_path string, err error) {
+func (v KeyFile) LoadFromDirs(file string, search_dirs gi.CStrArray, flags KeyFileFlags) (result bool, full_path string, err error) {
 	iv, err := _I.Get(288, "KeyFile", "load_from_dirs")
 	if err != nil {
 		return
@@ -5624,7 +5675,7 @@ func (v KeyFile) LoadFromDirs(file string, search_dirs int /*TODO_TYPE array typ
 	c_file := gi.CString(file)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_file := gi.NewStringArgument(c_file)
-	arg_search_dirs := gi.NewIntArgument(search_dirs) /*TODO*/
+	arg_search_dirs := gi.NewPointerArgument(search_dirs.P)
 	arg_full_path := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -5632,8 +5683,8 @@ func (v KeyFile) LoadFromDirs(file string, search_dirs int /*TODO_TYPE array typ
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_file)
-	full_path = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	full_path = outArgs[0].String().Take()
 	result = ret.Bool()
 	return
 }
@@ -5779,6 +5830,7 @@ func (v KeyFile) SetBoolean(group_name string, key string, value bool) {
 // g_key_file_set_boolean_list
 // container is not nil, container is KeyFile
 // is method
+// arg 2 list lenArgIdx 3
 func (v KeyFile) SetBooleanList(group_name string, key string, list gi.BoolArray, length uint64) {
 	iv, err := _I.Get(295, "KeyFile", "set_boolean_list")
 	if err != nil {
@@ -5850,6 +5902,7 @@ func (v KeyFile) SetDouble(group_name string, key string, value float64) {
 // g_key_file_set_double_list
 // container is not nil, container is KeyFile
 // is method
+// arg 2 list lenArgIdx 3
 func (v KeyFile) SetDoubleList(group_name string, key string, list gi.DoubleArray, length uint64) {
 	iv, err := _I.Get(298, "KeyFile", "set_double_list")
 	if err != nil {
@@ -5914,6 +5967,7 @@ func (v KeyFile) SetInteger(group_name string, key string, value int32) {
 // g_key_file_set_integer_list
 // container is not nil, container is KeyFile
 // is method
+// arg 2 list lenArgIdx 3
 func (v KeyFile) SetIntegerList(group_name string, key string, list gi.Int32Array, length uint64) {
 	iv, err := _I.Get(301, "KeyFile", "set_integer_list")
 	if err != nil {
@@ -5977,7 +6031,8 @@ func (v KeyFile) SetLocaleString(group_name string, key string, locale string, s
 // g_key_file_set_locale_string_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) SetLocaleStringList(group_name string, key string, locale string, list int /*TODO_TYPE array type c, elemTypeTag: utf8*/, length uint64) {
+// arg 3 list lenArgIdx 4
+func (v KeyFile) SetLocaleStringList(group_name string, key string, locale string, list gi.CStrArray, length uint64) {
 	iv, err := _I.Get(304, "KeyFile", "set_locale_string_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5990,7 +6045,7 @@ func (v KeyFile) SetLocaleStringList(group_name string, key string, locale strin
 	arg_group_name := gi.NewStringArgument(c_group_name)
 	arg_key := gi.NewStringArgument(c_key)
 	arg_locale := gi.NewStringArgument(c_locale)
-	arg_list := gi.NewIntArgument(list) /*TODO*/
+	arg_list := gi.NewPointerArgument(list.P)
 	arg_length := gi.NewUint64Argument(length)
 	args := []gi.Argument{arg_v, arg_group_name, arg_key, arg_locale, arg_list, arg_length}
 	iv.Call(args, nil, nil)
@@ -6025,7 +6080,8 @@ func (v KeyFile) SetString(group_name string, key string, string string) {
 // g_key_file_set_string_list
 // container is not nil, container is KeyFile
 // is method
-func (v KeyFile) SetStringList(group_name string, key string, list int /*TODO_TYPE array type c, elemTypeTag: utf8*/, length uint64) {
+// arg 2 list lenArgIdx 3
+func (v KeyFile) SetStringList(group_name string, key string, list gi.CStrArray, length uint64) {
 	iv, err := _I.Get(306, "KeyFile", "set_string_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6036,7 +6092,7 @@ func (v KeyFile) SetStringList(group_name string, key string, list int /*TODO_TY
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_group_name := gi.NewStringArgument(c_group_name)
 	arg_key := gi.NewStringArgument(c_key)
-	arg_list := gi.NewIntArgument(list) /*TODO*/
+	arg_list := gi.NewPointerArgument(list.P)
 	arg_length := gi.NewUint64Argument(length)
 	args := []gi.Argument{arg_v, arg_group_name, arg_key, arg_list, arg_length}
 	iv.Call(args, nil, nil)
@@ -6103,8 +6159,8 @@ func (v KeyFile) ToData() (result string, length uint64, err error) {
 	args := []gi.Argument{arg_v, arg_length, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	length = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	length = outArgs[0].Uint64()
 	result = ret.String().Take()
 	return
 }
@@ -6233,6 +6289,7 @@ func (v MainContext) AddPoll(fd PollFD, priority int32) {
 // g_main_context_check
 // container is not nil, container is MainContext
 // is method
+// arg 1 fds lenArgIdx 2
 func (v MainContext) Check(max_priority int32, fds int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fds int32) (result bool) {
 	iv, err := _I.Get(315, "MainContext", "check")
 	if err != nil {
@@ -6438,7 +6495,8 @@ func (v MainContext) PushThreadDefault() {
 // g_main_context_query
 // container is not nil, container is MainContext
 // is method
-func (v MainContext) Query(max_priority int32, n_fds int32) (result int32, timeout_ int32, fds int /*TODO_TYPE*/) {
+// arg 2 fds lenArgIdx 3
+func (v MainContext) Query(max_priority int32, n_fds int32) (result int32, timeout_ int32, fds int /*TODO_TYPE array type c, elemTypeTag: interface*/) {
 	iv, err := _I.Get(327, "MainContext", "query")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7088,7 +7146,7 @@ func (v MatchInfo) Fetch(match_num int32) (result string) {
 // g_match_info_fetch_all
 // container is not nil, container is MatchInfo
 // is method
-func (v MatchInfo) FetchAll() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func (v MatchInfo) FetchAll() (result gi.CStrArray) {
 	iv, err := _I.Get(365, "MatchInfo", "fetch_all")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7098,7 +7156,8 @@ func (v MatchInfo) FetchAll() (result int /*TODO_TYPE array type c, elemTypeTag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -7833,6 +7892,7 @@ func (v OptionContext) GetSummary() (result string) {
 // g_option_context_parse
 // container is not nil, container is OptionContext
 // is method
+// arg 1 argv lenArgIdx 0
 func (v OptionContext) Parse(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool, err error) {
 	iv, err := _I.Get(405, "OptionContext", "parse")
 	if err != nil {
@@ -9083,14 +9143,15 @@ func (v Regex) MatchAll(string string, match_options RegexMatchFlags) (result bo
 // g_regex_match_all_full
 // container is not nil, container is Regex
 // is method
-func (v Regex) MatchAllFull(string int /*TODO_TYPE array type c, elemTypeTag: utf8*/, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
+// arg 0 string lenArgIdx 1
+func (v Regex) MatchAllFull(string gi.CStrArray, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
 	iv, err := _I.Get(477, "Regex", "match_all_full")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_string := gi.NewIntArgument(string) /*TODO*/
+	arg_string := gi.NewPointerArgument(string.P)
 	arg_string_len := gi.NewInt64Argument(string_len)
 	arg_start_position := gi.NewInt32Argument(start_position)
 	arg_match_options := gi.NewIntArgument(int(match_options))
@@ -9099,8 +9160,8 @@ func (v Regex) MatchAllFull(string int /*TODO_TYPE array type c, elemTypeTag: ut
 	args := []gi.Argument{arg_v, arg_string, arg_string_len, arg_start_position, arg_match_options, arg_match_info, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	match_info.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	match_info.P = outArgs[0].Pointer()
 	result = ret.Bool()
 	return
 }
@@ -9108,14 +9169,15 @@ func (v Regex) MatchAllFull(string int /*TODO_TYPE array type c, elemTypeTag: ut
 // g_regex_match_full
 // container is not nil, container is Regex
 // is method
-func (v Regex) MatchFull(string int /*TODO_TYPE array type c, elemTypeTag: utf8*/, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
+// arg 0 string lenArgIdx 1
+func (v Regex) MatchFull(string gi.CStrArray, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
 	iv, err := _I.Get(478, "Regex", "match_full")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_string := gi.NewIntArgument(string) /*TODO*/
+	arg_string := gi.NewPointerArgument(string.P)
 	arg_string_len := gi.NewInt64Argument(string_len)
 	arg_start_position := gi.NewInt32Argument(start_position)
 	arg_match_options := gi.NewIntArgument(int(match_options))
@@ -9124,8 +9186,8 @@ func (v Regex) MatchFull(string int /*TODO_TYPE array type c, elemTypeTag: utf8*
 	args := []gi.Argument{arg_v, arg_string, arg_string_len, arg_start_position, arg_match_options, arg_match_info, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	match_info.P = outArgs[0].Pointer()
 	err = gi.ToError(outArgs[1].Pointer())
+	match_info.P = outArgs[0].Pointer()
 	result = ret.Bool()
 	return
 }
@@ -9150,7 +9212,8 @@ func (v Regex) Ref() (result Regex) {
 // g_regex_replace
 // container is not nil, container is Regex
 // is method
-func (v Regex) Replace(string int /*TODO_TYPE array type c, elemTypeTag: utf8*/, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
+// arg 0 string lenArgIdx 1
+func (v Regex) Replace(string gi.CStrArray, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
 	iv, err := _I.Get(480, "Regex", "replace")
 	if err != nil {
 		return
@@ -9158,7 +9221,7 @@ func (v Regex) Replace(string int /*TODO_TYPE array type c, elemTypeTag: utf8*/,
 	var outArgs [1]gi.Argument
 	c_replacement := gi.CString(replacement)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_string := gi.NewIntArgument(string) /*TODO*/
+	arg_string := gi.NewPointerArgument(string.P)
 	arg_string_len := gi.NewInt64Argument(string_len)
 	arg_start_position := gi.NewInt32Argument(start_position)
 	arg_replacement := gi.NewStringArgument(c_replacement)
@@ -9176,7 +9239,8 @@ func (v Regex) Replace(string int /*TODO_TYPE array type c, elemTypeTag: utf8*/,
 // g_regex_replace_literal
 // container is not nil, container is Regex
 // is method
-func (v Regex) ReplaceLiteral(string int /*TODO_TYPE array type c, elemTypeTag: utf8*/, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
+// arg 0 string lenArgIdx 1
+func (v Regex) ReplaceLiteral(string gi.CStrArray, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
 	iv, err := _I.Get(481, "Regex", "replace_literal")
 	if err != nil {
 		return
@@ -9184,7 +9248,7 @@ func (v Regex) ReplaceLiteral(string int /*TODO_TYPE array type c, elemTypeTag: 
 	var outArgs [1]gi.Argument
 	c_replacement := gi.CString(replacement)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_string := gi.NewIntArgument(string) /*TODO*/
+	arg_string := gi.NewPointerArgument(string.P)
 	arg_string_len := gi.NewInt64Argument(string_len)
 	arg_start_position := gi.NewInt32Argument(start_position)
 	arg_replacement := gi.NewStringArgument(c_replacement)
@@ -9202,7 +9266,7 @@ func (v Regex) ReplaceLiteral(string int /*TODO_TYPE array type c, elemTypeTag: 
 // g_regex_split
 // container is not nil, container is Regex
 // is method
-func (v Regex) Split(string string, match_options RegexMatchFlags) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func (v Regex) Split(string string, match_options RegexMatchFlags) (result gi.CStrArray) {
 	iv, err := _I.Get(482, "Regex", "split")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9216,21 +9280,23 @@ func (v Regex) Split(string string, match_options RegexMatchFlags) (result int /
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_string)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
 // g_regex_split_full
 // container is not nil, container is Regex
 // is method
-func (v Regex) SplitFull(string int /*TODO_TYPE array type c, elemTypeTag: utf8*/, string_len int64, start_position int32, match_options RegexMatchFlags, max_tokens int32) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/, err error) {
+// arg 0 string lenArgIdx 1
+func (v Regex) SplitFull(string gi.CStrArray, string_len int64, start_position int32, match_options RegexMatchFlags, max_tokens int32) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(483, "Regex", "split_full")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_string := gi.NewIntArgument(string) /*TODO*/
+	arg_string := gi.NewPointerArgument(string.P)
 	arg_string_len := gi.NewInt64Argument(string_len)
 	arg_start_position := gi.NewInt32Argument(start_position)
 	arg_match_options := gi.NewIntArgument(int(match_options))
@@ -9240,7 +9306,8 @@ func (v Regex) SplitFull(string int /*TODO_TYPE array type c, elemTypeTag: utf8*
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	err = gi.ToError(outArgs[0].Pointer())
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -9276,8 +9343,8 @@ func RegexCheckReplacement1(replacement string) (result bool, has_references boo
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_replacement)
-	has_references = outArgs[0].Bool()
 	err = gi.ToError(outArgs[1].Pointer())
+	has_references = outArgs[0].Bool()
 	result = ret.Bool()
 	return
 }
@@ -9307,13 +9374,14 @@ func RegexEscapeNul1(string string, length int32) (result string) {
 // container is not nil, container is Regex
 // is method
 // arg0Type tag: array, isPtr: true
-func RegexEscapeString1(string int /*TODO_TYPE array type c, elemTypeTag: utf8*/, length int32) (result string) {
+// arg 0 string lenArgIdx 1
+func RegexEscapeString1(string gi.CStrArray, length int32) (result string) {
 	iv, err := _I.Get(488, "Regex", "escape_string")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_string := gi.NewIntArgument(string) /*TODO*/
+	arg_string := gi.NewPointerArgument(string.P)
 	arg_length := gi.NewInt32Argument(length)
 	args := []gi.Argument{arg_string, arg_length}
 	var ret gi.Argument
@@ -9351,7 +9419,7 @@ func RegexMatchSimple1(pattern string, string string, compile_options RegexCompi
 // container is not nil, container is Regex
 // is method
 // arg0Type tag: utf8, isPtr: true
-func RegexSplitSimple1(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func RegexSplitSimple1(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result gi.CStrArray) {
 	iv, err := _I.Get(490, "Regex", "split_simple")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9368,7 +9436,8 @@ func RegexSplitSimple1(pattern string, string string, compile_options RegexCompi
 	iv.Call(args, &ret, nil)
 	gi.Free(c_pattern)
 	gi.Free(c_string)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -12778,6 +12847,7 @@ type Variant struct {
 // g_variant_new_array
 // container is not nil, container is Variant
 // is constructor
+// arg 1 children lenArgIdx 2
 func NewVariantArray(child_type VariantType, children int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_children uint64) (result Variant) {
 	iv, err := _I.Get(657, "Variant", "new_array")
 	if err != nil {
@@ -12848,13 +12918,14 @@ func NewVariantBytestring(string gi.Uint8Array) (result Variant) {
 // g_variant_new_bytestring_array
 // container is not nil, container is Variant
 // is constructor
-func NewVariantBytestringArray(strv int /*TODO_TYPE array type c, elemTypeTag: utf8*/, length int64) (result Variant) {
+// arg 0 strv lenArgIdx 1
+func NewVariantBytestringArray(strv gi.CStrArray, length int64) (result Variant) {
 	iv, err := _I.Get(661, "Variant", "new_bytestring_array")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_strv := gi.NewIntArgument(strv) /*TODO*/
+	arg_strv := gi.NewPointerArgument(strv.P)
 	arg_length := gi.NewInt64Argument(length)
 	args := []gi.Argument{arg_strv, arg_length}
 	var ret gi.Argument
@@ -12940,6 +13011,7 @@ func NewVariantFromBytes(type1 VariantType, bytes Bytes, trusted bool) (result V
 // g_variant_new_from_data
 // container is not nil, container is Variant
 // is constructor
+// arg 1 data lenArgIdx 2
 func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trusted bool, notify int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result Variant) {
 	iv, err := _I.Get(666, "Variant", "new_from_data")
 	if err != nil {
@@ -13067,13 +13139,14 @@ func NewVariantObjectPath(object_path string) (result Variant) {
 // g_variant_new_objv
 // container is not nil, container is Variant
 // is constructor
-func NewVariantObjv(strv int /*TODO_TYPE array type c, elemTypeTag: utf8*/, length int64) (result Variant) {
+// arg 0 strv lenArgIdx 1
+func NewVariantObjv(strv gi.CStrArray, length int64) (result Variant) {
 	iv, err := _I.Get(673, "Variant", "new_objv")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_strv := gi.NewIntArgument(strv) /*TODO*/
+	arg_strv := gi.NewPointerArgument(strv.P)
 	arg_length := gi.NewInt64Argument(length)
 	args := []gi.Argument{arg_strv, arg_length}
 	var ret gi.Argument
@@ -13123,13 +13196,14 @@ func NewVariantString(string string) (result Variant) {
 // g_variant_new_strv
 // container is not nil, container is Variant
 // is constructor
-func NewVariantStrv(strv int /*TODO_TYPE array type c, elemTypeTag: utf8*/, length int64) (result Variant) {
+// arg 0 strv lenArgIdx 1
+func NewVariantStrv(strv gi.CStrArray, length int64) (result Variant) {
 	iv, err := _I.Get(676, "Variant", "new_strv")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_strv := gi.NewIntArgument(strv) /*TODO*/
+	arg_strv := gi.NewPointerArgument(strv.P)
 	arg_length := gi.NewInt64Argument(length)
 	args := []gi.Argument{arg_strv, arg_length}
 	var ret gi.Argument
@@ -13141,6 +13215,7 @@ func NewVariantStrv(strv int /*TODO_TYPE array type c, elemTypeTag: utf8*/, leng
 // g_variant_new_tuple
 // container is not nil, container is Variant
 // is constructor
+// arg 0 children lenArgIdx 1
 func NewVariantTuple(children int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_children uint64) (result Variant) {
 	iv, err := _I.Get(677, "Variant", "new_tuple")
 	if err != nil {
@@ -13300,7 +13375,8 @@ func (v Variant) Compare(two Variant) (result int32) {
 // g_variant_dup_bytestring
 // container is not nil, container is Variant
 // is method
-func (v Variant) DupBytestring() (result gi.Uint8Array, length uint64) {
+// ret lenArgIdx 0
+func (v Variant) DupBytestring() (result gi.Uint8Array) {
 	iv, err := _I.Get(686, "Variant", "dup_bytestring")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13312,6 +13388,8 @@ func (v Variant) DupBytestring() (result gi.Uint8Array, length uint64) {
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var length uint64
+	_ = length
 	length = outArgs[0].Uint64()
 	result = gi.Uint8Array{P: ret.Pointer(), Len: int(length)}
 	return
@@ -13320,7 +13398,8 @@ func (v Variant) DupBytestring() (result gi.Uint8Array, length uint64) {
 // g_variant_dup_bytestring_array
 // container is not nil, container is Variant
 // is method
-func (v Variant) DupBytestringArray() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 0*/, length uint64) {
+// ret lenArgIdx 0
+func (v Variant) DupBytestringArray() (result gi.CStrArray) {
 	iv, err := _I.Get(687, "Variant", "dup_bytestring_array")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13332,15 +13411,18 @@ func (v Variant) DupBytestringArray() (result int /*TODO_TYPE array type c, elem
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var length uint64
+	_ = length
 	length = outArgs[0].Uint64()
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
 // g_variant_dup_objv
 // container is not nil, container is Variant
 // is method
-func (v Variant) DupObjv() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 0*/, length uint64) {
+// ret lenArgIdx 0
+func (v Variant) DupObjv() (result gi.CStrArray) {
 	iv, err := _I.Get(688, "Variant", "dup_objv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13352,8 +13434,11 @@ func (v Variant) DupObjv() (result int /*TODO_TYPE array type c, elemTypeTag: ut
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var length uint64
+	_ = length
 	length = outArgs[0].Uint64()
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -13380,7 +13465,8 @@ func (v Variant) DupString() (result string, length uint64) {
 // g_variant_dup_strv
 // container is not nil, container is Variant
 // is method
-func (v Variant) DupStrv() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 0*/, length uint64) {
+// ret lenArgIdx 0
+func (v Variant) DupStrv() (result gi.CStrArray) {
 	iv, err := _I.Get(690, "Variant", "dup_strv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13392,8 +13478,11 @@ func (v Variant) DupStrv() (result int /*TODO_TYPE array type c, elemTypeTag: ut
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var length uint64
+	_ = length
 	length = outArgs[0].Uint64()
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -13469,7 +13558,8 @@ func (v Variant) GetBytestring() (result gi.Uint8Array) {
 // g_variant_get_bytestring_array
 // container is not nil, container is Variant
 // is method
-func (v Variant) GetBytestringArray() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 0*/, length uint64) {
+// ret lenArgIdx 0
+func (v Variant) GetBytestringArray() (result gi.CStrArray) {
 	iv, err := _I.Get(695, "Variant", "get_bytestring_array")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13481,8 +13571,10 @@ func (v Variant) GetBytestringArray() (result int /*TODO_TYPE array type c, elem
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var length uint64
+	_ = length
 	length = outArgs[0].Uint64()
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: int(length)}
 	return
 }
 
@@ -13657,7 +13749,8 @@ func (v Variant) GetNormalForm() (result Variant) {
 // g_variant_get_objv
 // container is not nil, container is Variant
 // is method
-func (v Variant) GetObjv() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 0*/, length uint64) {
+// ret lenArgIdx 0
+func (v Variant) GetObjv() (result gi.CStrArray) {
 	iv, err := _I.Get(706, "Variant", "get_objv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13669,8 +13762,11 @@ func (v Variant) GetObjv() (result int /*TODO_TYPE array type c, elemTypeTag: ut
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var length uint64
+	_ = length
 	length = outArgs[0].Uint64()
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -13714,7 +13810,8 @@ func (v Variant) GetString() (result string, length uint64) {
 // g_variant_get_strv
 // container is not nil, container is Variant
 // is method
-func (v Variant) GetStrv() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: 0*/, length uint64) {
+// ret lenArgIdx 0
+func (v Variant) GetStrv() (result gi.CStrArray) {
 	iv, err := _I.Get(709, "Variant", "get_strv")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13726,8 +13823,11 @@ func (v Variant) GetStrv() (result int /*TODO_TYPE array type c, elemTypeTag: ut
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	var length uint64
+	_ = length
 	length = outArgs[0].Uint64()
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -14549,6 +14649,7 @@ func NewVariantTypeMaybe(element VariantType) (result VariantType) {
 // g_variant_type_new_tuple
 // container is not nil, container is VariantType
 // is constructor
+// arg 0 items lenArgIdx 1
 func NewVariantTypeTuple(items int /*TODO_TYPE array type c, elemTypeTag: interface*/, length int32) (result VariantType) {
 	iv, err := _I.Get(755, "VariantType", "new_tuple")
 	if err != nil {
@@ -15143,8 +15244,8 @@ func AsciiStringToSigned(str string, base uint32, min int64, max int64) (result 
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_str)
-	out_num = outArgs[0].Int64()
 	err = gi.ToError(outArgs[1].Pointer())
+	out_num = outArgs[0].Int64()
 	result = ret.Bool()
 	return
 }
@@ -15168,8 +15269,8 @@ func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (res
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_str)
-	out_num = outArgs[0].Uint64()
 	err = gi.ToError(outArgs[1].Pointer())
+	out_num = outArgs[0].Uint64()
 	result = ret.Bool()
 	return
 }
@@ -15885,7 +15986,8 @@ func AtomicRefCountInit(arc int32) {
 
 // g_base64_decode
 // container is nil
-func Base64Decode(text string) (result gi.Uint8Array, out_len uint64) {
+// ret lenArgIdx 1
+func Base64Decode(text string) (result gi.Uint8Array) {
 	iv, err := _I.Get(830, "base64_decode", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15899,6 +16001,8 @@ func Base64Decode(text string) (result gi.Uint8Array, out_len uint64) {
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_text)
+	var out_len uint64
+	_ = out_len
 	out_len = outArgs[0].Uint64()
 	result = gi.Uint8Array{P: ret.Pointer(), Len: int(out_len)}
 	return
@@ -15906,6 +16010,7 @@ func Base64Decode(text string) (result gi.Uint8Array, out_len uint64) {
 
 // g_base64_decode_inplace
 // container is nil
+// arg 0 text lenArgIdx 1
 func Base64DecodeInplace(text int /*TODO:TYPE*/, out_len int /*TODO:TYPE*/) (result uint8) {
 	iv, err := _I.Get(831, "base64_decode_inplace", "")
 	if err != nil {
@@ -15921,6 +16026,7 @@ func Base64DecodeInplace(text int /*TODO:TYPE*/, out_len int /*TODO:TYPE*/) (res
 
 // g_base64_encode
 // container is nil
+// arg 0 data lenArgIdx 1
 func Base64Encode(data gi.Uint8Array, len1 uint64) (result string) {
 	iv, err := _I.Get(832, "base64_encode", "")
 	if err != nil {
@@ -15938,7 +16044,7 @@ func Base64Encode(data gi.Uint8Array, len1 uint64) (result string) {
 
 // g_base64_encode_close
 // container is nil
-func Base64EncodeClose(break_lines bool, state int /*TODO:TYPE*/, save int /*TODO:TYPE*/) (result uint64, out int /*TODO_TYPE*/) {
+func Base64EncodeClose(break_lines bool, state int /*TODO:TYPE*/, save int /*TODO:TYPE*/) (result uint64, out gi.Uint8Array) {
 	iv, err := _I.Get(833, "base64_encode_close", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15950,14 +16056,15 @@ func Base64EncodeClose(break_lines bool, state int /*TODO:TYPE*/, save int /*TOD
 	args := []gi.Argument{arg_break_lines, arg_out}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	out = outArgs[0].Int() /*TODO*/
+	out.P = outArgs[0].Pointer()
 	result = ret.Uint64()
 	return
 }
 
 // g_base64_encode_step
 // container is nil
-func Base64EncodeStep(in gi.Uint8Array, len1 uint64, break_lines bool, state int /*TODO:TYPE*/, save int /*TODO:TYPE*/) (result uint64, out int /*TODO_TYPE*/) {
+// arg 0 in lenArgIdx 1
+func Base64EncodeStep(in gi.Uint8Array, len1 uint64, break_lines bool, state int /*TODO:TYPE*/, save int /*TODO:TYPE*/) (result uint64, out gi.Uint8Array) {
 	iv, err := _I.Get(834, "base64_encode_step", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15971,7 +16078,7 @@ func Base64EncodeStep(in gi.Uint8Array, len1 uint64, break_lines bool, state int
 	args := []gi.Argument{arg_in, arg_len1, arg_break_lines, arg_out}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	out = outArgs[0].Int() /*TODO*/
+	out.P = outArgs[0].Pointer()
 	result = ret.Uint64()
 	return
 }
@@ -16105,13 +16212,13 @@ func BookmarkFileErrorQuark() (result uint32) {
 
 // g_build_filenamev
 // container is nil
-func BuildFilenamev(args int /*TODO_TYPE array type c, elemTypeTag: filename*/) (result string) {
+func BuildFilenamev(args gi.CStrArray) (result string) {
 	iv, err := _I.Get(843, "build_filenamev", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_args := gi.NewIntArgument(args) /*TODO*/
+	arg_args := gi.NewPointerArgument(args.P)
 	args1 := []gi.Argument{arg_args}
 	var ret gi.Argument
 	iv.Call(args1, &ret, nil)
@@ -16121,7 +16228,7 @@ func BuildFilenamev(args int /*TODO_TYPE array type c, elemTypeTag: filename*/) 
 
 // g_build_pathv
 // container is nil
-func BuildPathv(separator string, args int /*TODO_TYPE array type c, elemTypeTag: filename*/) (result string) {
+func BuildPathv(separator string, args gi.CStrArray) (result string) {
 	iv, err := _I.Get(844, "build_pathv", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16129,7 +16236,7 @@ func BuildPathv(separator string, args int /*TODO_TYPE array type c, elemTypeTag
 	}
 	c_separator := gi.CString(separator)
 	arg_separator := gi.NewStringArgument(c_separator)
-	arg_args := gi.NewIntArgument(args) /*TODO*/
+	arg_args := gi.NewPointerArgument(args.P)
 	args1 := []gi.Argument{arg_separator, arg_args}
 	var ret gi.Argument
 	iv.Call(args1, &ret, nil)
@@ -16140,13 +16247,13 @@ func BuildPathv(separator string, args int /*TODO_TYPE array type c, elemTypeTag
 
 // g_byte_array_free
 // container is nil
-func ByteArrayFree(array int /*TODO_TYPE isPtr: true, tag: array*/, free_segment bool) (result uint8) {
+func ByteArrayFree(array ByteArray, free_segment bool) (result uint8) {
 	iv, err := _I.Get(845, "byte_array_free", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_array := gi.NewIntArgument(array) /*TODO*/
+	arg_array := gi.NewPointerArgument(array.P)
 	arg_free_segment := gi.NewBoolArgument(free_segment)
 	args := []gi.Argument{arg_array, arg_free_segment}
 	var ret gi.Argument
@@ -16157,13 +16264,13 @@ func ByteArrayFree(array int /*TODO_TYPE isPtr: true, tag: array*/, free_segment
 
 // g_byte_array_free_to_bytes
 // container is nil
-func ByteArrayFreeToBytes(array int /*TODO_TYPE isPtr: true, tag: array*/) (result Bytes) {
+func ByteArrayFreeToBytes(array ByteArray) (result Bytes) {
 	iv, err := _I.Get(846, "byte_array_free_to_bytes", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_array := gi.NewIntArgument(array) /*TODO*/
+	arg_array := gi.NewPointerArgument(array.P)
 	args := []gi.Argument{arg_array}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -16173,7 +16280,7 @@ func ByteArrayFreeToBytes(array int /*TODO_TYPE isPtr: true, tag: array*/) (resu
 
 // g_byte_array_new
 // container is nil
-func ByteArrayNew() (result int /*TODO_TYPE array type: 3*/) {
+func ByteArrayNew() (result ByteArray) {
 	iv, err := _I.Get(847, "byte_array_new", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16181,13 +16288,14 @@ func ByteArrayNew() (result int /*TODO_TYPE array type: 3*/) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // g_byte_array_new_take
 // container is nil
-func ByteArrayNewTake(data gi.Uint8Array, len1 uint64) (result int /*TODO_TYPE array type: 3*/) {
+// arg 0 data lenArgIdx 1
+func ByteArrayNewTake(data gi.Uint8Array, len1 uint64) (result ByteArray) {
 	iv, err := _I.Get(848, "byte_array_new_take", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16198,19 +16306,19 @@ func ByteArrayNewTake(data gi.Uint8Array, len1 uint64) (result int /*TODO_TYPE a
 	args := []gi.Argument{arg_data, arg_len1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // g_byte_array_unref
 // container is nil
-func ByteArrayUnref(array int /*TODO_TYPE isPtr: true, tag: array*/) {
+func ByteArrayUnref(array ByteArray) {
 	iv, err := _I.Get(849, "byte_array_unref", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_array := gi.NewIntArgument(array) /*TODO*/
+	arg_array := gi.NewPointerArgument(array.P)
 	args := []gi.Argument{arg_array}
 	iv.Call(args, nil, nil)
 }
@@ -16376,6 +16484,7 @@ func ComputeChecksumForBytes(checksum_type ChecksumTypeEnum, data Bytes) (result
 
 // g_compute_checksum_for_data
 // container is nil
+// arg 1 data lenArgIdx 2
 func ComputeChecksumForData(checksum_type ChecksumTypeEnum, data gi.Uint8Array, length uint64) (result string) {
 	iv, err := _I.Get(859, "compute_checksum_for_data", "")
 	if err != nil {
@@ -16432,6 +16541,8 @@ func ComputeHmacForBytes(digest_type ChecksumTypeEnum, key Bytes, data Bytes) (r
 
 // g_compute_hmac_for_data
 // container is nil
+// arg 1 key lenArgIdx 2
+// arg 3 data lenArgIdx 4
 func ComputeHmacForData(digest_type ChecksumTypeEnum, key gi.Uint8Array, key_len uint64, data gi.Uint8Array, length uint64) (result string) {
 	iv, err := _I.Get(862, "compute_hmac_for_data", "")
 	if err != nil {
@@ -16452,6 +16563,7 @@ func ComputeHmacForData(digest_type ChecksumTypeEnum, key gi.Uint8Array, key_len
 
 // g_compute_hmac_for_string
 // container is nil
+// arg 1 key lenArgIdx 2
 func ComputeHmacForString(digest_type ChecksumTypeEnum, key gi.Uint8Array, key_len uint64, str string, length int64) (result string) {
 	iv, err := _I.Get(863, "compute_hmac_for_string", "")
 	if err != nil {
@@ -16474,7 +16586,9 @@ func ComputeHmacForString(digest_type ChecksumTypeEnum, key gi.Uint8Array, key_l
 
 // g_convert
 // container is nil
-func Convert(str gi.Uint8Array, len1 int64, to_codeset string, from_codeset string) (result gi.Uint8Array, bytes_read uint64, bytes_written uint64, err error) {
+// arg 0 str lenArgIdx 1
+// ret lenArgIdx 5
+func Convert(str gi.Uint8Array, len1 int64, to_codeset string, from_codeset string) (result gi.Uint8Array, bytes_read uint64, err error) {
 	iv, err := _I.Get(864, "convert", "")
 	if err != nil {
 		return
@@ -16494,9 +16608,11 @@ func Convert(str gi.Uint8Array, len1 int64, to_codeset string, from_codeset stri
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_to_codeset)
 	gi.Free(c_from_codeset)
+	var bytes_written uint64
+	_ = bytes_written
+	err = gi.ToError(outArgs[2].Pointer())
 	bytes_read = outArgs[0].Uint64()
 	bytes_written = outArgs[1].Uint64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = gi.Uint8Array{P: ret.Pointer(), Len: int(bytes_written)}
 	return
 }
@@ -16517,7 +16633,9 @@ func ConvertErrorQuark() (result uint32) {
 
 // g_convert_with_fallback
 // container is nil
-func ConvertWithFallback(str gi.Uint8Array, len1 int64, to_codeset string, from_codeset string, fallback string) (result gi.Uint8Array, bytes_read uint64, bytes_written uint64, err error) {
+// arg 0 str lenArgIdx 1
+// ret lenArgIdx 6
+func ConvertWithFallback(str gi.Uint8Array, len1 int64, to_codeset string, from_codeset string, fallback string) (result gi.Uint8Array, bytes_read uint64, err error) {
 	iv, err := _I.Get(866, "convert_with_fallback", "")
 	if err != nil {
 		return
@@ -16540,9 +16658,11 @@ func ConvertWithFallback(str gi.Uint8Array, len1 int64, to_codeset string, from_
 	gi.Free(c_to_codeset)
 	gi.Free(c_from_codeset)
 	gi.Free(c_fallback)
+	var bytes_written uint64
+	_ = bytes_written
+	err = gi.ToError(outArgs[2].Pointer())
 	bytes_read = outArgs[0].Uint64()
 	bytes_written = outArgs[1].Uint64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = gi.Uint8Array{P: ret.Pointer(), Len: int(bytes_written)}
 	return
 }
@@ -17116,14 +17236,14 @@ func Dpgettext2(domain string, context string, msgid string) (result string) {
 
 // g_environ_getenv
 // container is nil
-func EnvironGetenv(envp int /*TODO_TYPE array type c, elemTypeTag: filename*/, variable string) (result string) {
+func EnvironGetenv(envp gi.CStrArray, variable string) (result string) {
 	iv, err := _I.Get(900, "environ_getenv", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_variable := gi.CString(variable)
-	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_variable := gi.NewStringArgument(c_variable)
 	args := []gi.Argument{arg_envp, arg_variable}
 	var ret gi.Argument
@@ -17135,7 +17255,7 @@ func EnvironGetenv(envp int /*TODO_TYPE array type c, elemTypeTag: filename*/, v
 
 // g_environ_setenv
 // container is nil
-func EnvironSetenv(envp int /*TODO_TYPE array type c, elemTypeTag: filename*/, variable string, value string, overwrite bool) (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrLen: -1*/) {
+func EnvironSetenv(envp gi.CStrArray, variable string, value string, overwrite bool) (result gi.CStrArray) {
 	iv, err := _I.Get(901, "environ_setenv", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17143,7 +17263,7 @@ func EnvironSetenv(envp int /*TODO_TYPE array type c, elemTypeTag: filename*/, v
 	}
 	c_variable := gi.CString(variable)
 	c_value := gi.CString(value)
-	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_variable := gi.NewStringArgument(c_variable)
 	arg_value := gi.NewStringArgument(c_value)
 	arg_overwrite := gi.NewBoolArgument(overwrite)
@@ -17152,26 +17272,28 @@ func EnvironSetenv(envp int /*TODO_TYPE array type c, elemTypeTag: filename*/, v
 	iv.Call(args, &ret, nil)
 	gi.Free(c_variable)
 	gi.Free(c_value)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
 // g_environ_unsetenv
 // container is nil
-func EnvironUnsetenv(envp int /*TODO_TYPE array type c, elemTypeTag: filename*/, variable string) (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrLen: -1*/) {
+func EnvironUnsetenv(envp gi.CStrArray, variable string) (result gi.CStrArray) {
 	iv, err := _I.Get(902, "environ_unsetenv", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_variable := gi.CString(variable)
-	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_variable := gi.NewStringArgument(c_variable)
 	args := []gi.Argument{arg_envp, arg_variable}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_variable)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -17207,7 +17329,8 @@ func FileErrorQuark() (result uint32) {
 
 // g_file_get_contents
 // container is nil
-func FileGetContents(filename string) (result bool, contents int /*TODO_TYPE*/, length uint64, err error) {
+// arg 1 contents lenArgIdx 2
+func FileGetContents(filename string) (result bool, contents gi.Uint8Array, err error) {
 	iv, err := _I.Get(905, "file_get_contents", "")
 	if err != nil {
 		return
@@ -17222,10 +17345,13 @@ func FileGetContents(filename string) (result bool, contents int /*TODO_TYPE*/, 
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_filename)
-	contents = outArgs[0].Int() /*TODO*/
-	length = outArgs[1].Uint64()
+	var length uint64
+	_ = length
 	err = gi.ToError(outArgs[2].Pointer())
+	contents.P = outArgs[0].Pointer()
+	length = outArgs[1].Uint64()
 	result = ret.Bool()
+	contents.Len = int(length)
 	return
 }
 
@@ -17245,8 +17371,8 @@ func FileOpenTmp(tmpl string) (result int32, name_used string, err error) {
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_tmpl)
-	name_used = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	name_used = outArgs[0].String().Take()
 	result = ret.Int32()
 	return
 }
@@ -17273,6 +17399,7 @@ func FileReadLink(filename string) (result string, err error) {
 
 // g_file_set_contents
 // container is nil
+// arg 1 contents lenArgIdx 2
 func FileSetContents(filename string, contents gi.Uint8Array, length int64) (result bool, err error) {
 	iv, err := _I.Get(908, "file_set_contents", "")
 	if err != nil {
@@ -17364,8 +17491,8 @@ func FilenameFromUri(uri string) (result string, hostname string, err error) {
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_uri)
-	hostname = outArgs[0].String().Take()
 	err = gi.ToError(outArgs[1].Pointer())
+	hostname = outArgs[0].String().Take()
 	result = ret.String().Take()
 	return
 }
@@ -17388,9 +17515,9 @@ func FilenameFromUtf8(utf8string string, len1 int64) (result string, bytes_read 
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_utf8string)
+	err = gi.ToError(outArgs[2].Pointer())
 	bytes_read = outArgs[0].Uint64()
 	bytes_written = outArgs[1].Uint64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = ret.String().Take()
 	return
 }
@@ -17436,9 +17563,9 @@ func FilenameToUtf8(opsysstring string, len1 int64) (result string, bytes_read u
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_opsysstring)
+	err = gi.ToError(outArgs[2].Pointer())
 	bytes_read = outArgs[0].Uint64()
 	bytes_written = outArgs[1].Uint64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = ret.String().Take()
 	return
 }
@@ -17598,7 +17725,7 @@ func GetCurrentTime(result TimeVal) {
 
 // g_get_environ
 // container is nil
-func GetEnviron() (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrLen: -1*/) {
+func GetEnviron() (result gi.CStrArray) {
 	iv, err := _I.Get(926, "get_environ", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17606,13 +17733,14 @@ func GetEnviron() (result int /*TODO_TYPE array type c, elemTypeTag: filename, a
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
 // g_get_filename_charsets
 // container is nil
-func GetFilenameCharsets() (result bool, filename_charsets int /*TODO_TYPE*/) {
+func GetFilenameCharsets() (result bool, filename_charsets gi.CStrArray) {
 	iv, err := _I.Get(927, "get_filename_charsets", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17623,7 +17751,7 @@ func GetFilenameCharsets() (result bool, filename_charsets int /*TODO_TYPE*/) {
 	args := []gi.Argument{arg_filename_charsets}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	filename_charsets = outArgs[0].Int() /*TODO*/
+	filename_charsets.P = outArgs[0].Pointer()
 	result = ret.Bool()
 	return
 }
@@ -17658,7 +17786,7 @@ func GetHostName() (result string) {
 
 // g_get_language_names
 // container is nil
-func GetLanguageNames() (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func GetLanguageNames() (result gi.CStrArray) {
 	iv, err := _I.Get(930, "get_language_names", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17666,13 +17794,14 @@ func GetLanguageNames() (result int /*TODO_TYPE array type c, elemTypeTag: utf8,
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
 // g_get_language_names_with_category
 // container is nil
-func GetLanguageNamesWithCategory(category_name string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func GetLanguageNamesWithCategory(category_name string) (result gi.CStrArray) {
 	iv, err := _I.Get(931, "get_language_names_with_category", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17684,13 +17813,14 @@ func GetLanguageNamesWithCategory(category_name string) (result int /*TODO_TYPE 
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_category_name)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
 // g_get_locale_variants
 // container is nil
-func GetLocaleVariants(locale string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func GetLocaleVariants(locale string) (result gi.CStrArray) {
 	iv, err := _I.Get(932, "get_locale_variants", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17702,7 +17832,8 @@ func GetLocaleVariants(locale string) (result int /*TODO_TYPE array type c, elem
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_locale)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -17778,7 +17909,7 @@ func GetRealTime() (result int64) {
 
 // g_get_system_config_dirs
 // container is nil
-func GetSystemConfigDirs() (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrLen: -1*/) {
+func GetSystemConfigDirs() (result gi.CStrArray) {
 	iv, err := _I.Get(938, "get_system_config_dirs", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17786,13 +17917,14 @@ func GetSystemConfigDirs() (result int /*TODO_TYPE array type c, elemTypeTag: fi
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
 // g_get_system_data_dirs
 // container is nil
-func GetSystemDataDirs() (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrLen: -1*/) {
+func GetSystemDataDirs() (result gi.CStrArray) {
 	iv, err := _I.Get(939, "get_system_data_dirs", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17800,7 +17932,8 @@ func GetSystemDataDirs() (result int /*TODO_TYPE array type c, elemTypeTag: file
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -18565,7 +18698,7 @@ func KeyFileErrorQuark() (result uint32) {
 
 // g_listenv
 // container is nil
-func Listenv() (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrLen: -1*/) {
+func Listenv() (result gi.CStrArray) {
 	iv, err := _I.Get(987, "listenv", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18573,13 +18706,15 @@ func Listenv() (result int /*TODO_TYPE array type c, elemTypeTag: filename, arrL
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
 // g_locale_from_utf8
 // container is nil
-func LocaleFromUtf8(utf8string string, len1 int64) (result gi.Uint8Array, bytes_read uint64, bytes_written uint64, err error) {
+// ret lenArgIdx 3
+func LocaleFromUtf8(utf8string string, len1 int64) (result gi.Uint8Array, bytes_read uint64, err error) {
 	iv, err := _I.Get(988, "locale_from_utf8", "")
 	if err != nil {
 		return
@@ -18595,15 +18730,18 @@ func LocaleFromUtf8(utf8string string, len1 int64) (result gi.Uint8Array, bytes_
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_utf8string)
+	var bytes_written uint64
+	_ = bytes_written
+	err = gi.ToError(outArgs[2].Pointer())
 	bytes_read = outArgs[0].Uint64()
 	bytes_written = outArgs[1].Uint64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = gi.Uint8Array{P: ret.Pointer(), Len: int(bytes_written)}
 	return
 }
 
 // g_locale_to_utf8
 // container is nil
+// arg 0 opsysstring lenArgIdx 1
 func LocaleToUtf8(opsysstring gi.Uint8Array, len1 int64) (result string, bytes_read uint64, bytes_written uint64, err error) {
 	iv, err := _I.Get(989, "locale_to_utf8", "")
 	if err != nil {
@@ -18618,9 +18756,9 @@ func LocaleToUtf8(opsysstring gi.Uint8Array, len1 int64) (result string, bytes_r
 	args := []gi.Argument{arg_opsysstring, arg_len1, arg_bytes_read, arg_bytes_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	err = gi.ToError(outArgs[2].Pointer())
 	bytes_read = outArgs[0].Uint64()
 	bytes_written = outArgs[1].Uint64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = ret.String().Take()
 	return
 }
@@ -18735,6 +18873,7 @@ func LogSetWriterFunc(func1 int /*TODO_TYPE isPtr: false, tag: interface*/, user
 
 // g_log_structured_array
 // container is nil
+// arg 1 fields lenArgIdx 2
 func LogStructuredArray(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fields uint64) {
 	iv, err := _I.Get(996, "log_structured_array", "")
 	if err != nil {
@@ -18767,6 +18906,7 @@ func LogVariant(log_domain string, log_level LogLevelFlags, fields Variant) {
 
 // g_log_writer_default
 // container is nil
+// arg 1 fields lenArgIdx 2
 func LogWriterDefault(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(998, "log_writer_default", "")
 	if err != nil {
@@ -18786,6 +18926,7 @@ func LogWriterDefault(log_level LogLevelFlags, fields int /*TODO_TYPE array type
 
 // g_log_writer_format_fields
 // container is nil
+// arg 1 fields lenArgIdx 2
 func LogWriterFormatFields(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fields uint64, use_color bool) (result string) {
 	iv, err := _I.Get(999, "log_writer_format_fields", "")
 	if err != nil {
@@ -18821,6 +18962,7 @@ func LogWriterIsJournald(output_fd int32) (result bool) {
 
 // g_log_writer_journald
 // container is nil
+// arg 1 fields lenArgIdx 2
 func LogWriterJournald(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(1001, "log_writer_journald", "")
 	if err != nil {
@@ -18840,6 +18982,7 @@ func LogWriterJournald(log_level LogLevelFlags, fields int /*TODO_TYPE array typ
 
 // g_log_writer_standard_streams
 // container is nil
+// arg 1 fields lenArgIdx 2
 func LogWriterStandardStreams(log_level LogLevelFlags, fields int /*TODO_TYPE array type c, elemTypeTag: interface*/, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(1002, "log_writer_standard_streams", "")
 	if err != nil {
@@ -19204,6 +19347,7 @@ func OptionErrorQuark() (result uint32) {
 
 // g_parse_debug_string
 // container is nil
+// arg 1 keys lenArgIdx 2
 func ParseDebugString(string string, keys int /*TODO_TYPE array type c, elemTypeTag: interface*/, nkeys uint32) (result uint32) {
 	iv, err := _I.Get(1027, "parse_debug_string", "")
 	if err != nil {
@@ -19888,8 +20032,8 @@ func RegexCheckReplacement(replacement string) (result bool, has_references bool
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_replacement)
-	has_references = outArgs[0].Bool()
 	err = gi.ToError(outArgs[1].Pointer())
+	has_references = outArgs[0].Bool()
 	result = ret.Bool()
 	return
 }
@@ -19929,13 +20073,14 @@ func RegexEscapeNul(string string, length int32) (result string) {
 
 // g_regex_escape_string
 // container is nil
-func RegexEscapeString(string int /*TODO_TYPE array type c, elemTypeTag: utf8*/, length int32) (result string) {
+// arg 0 string lenArgIdx 1
+func RegexEscapeString(string gi.CStrArray, length int32) (result string) {
 	iv, err := _I.Get(1071, "regex_escape_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_string := gi.NewIntArgument(string) /*TODO*/
+	arg_string := gi.NewPointerArgument(string.P)
 	arg_length := gi.NewInt32Argument(length)
 	args := []gi.Argument{arg_string, arg_length}
 	var ret gi.Argument
@@ -19969,7 +20114,7 @@ func RegexMatchSimple(pattern string, string string, compile_options RegexCompil
 
 // g_regex_split_simple
 // container is nil
-func RegexSplitSimple(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func RegexSplitSimple(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result gi.CStrArray) {
 	iv, err := _I.Get(1073, "regex_split_simple", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19986,7 +20131,8 @@ func RegexSplitSimple(pattern string, string string, compile_options RegexCompil
 	iv.Call(args, &ret, nil)
 	gi.Free(c_pattern)
 	gi.Free(c_string)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -20181,8 +20327,8 @@ func SetErrorLiteral(domain uint32, code int32, message string) (err1 int /*TODO
 	arg_message := gi.NewStringArgument(c_message)
 	args := []gi.Argument{arg_err1, arg_domain, arg_code, arg_message}
 	iv.Call(args, nil, &outArgs[0])
-	err1 = outArgs[0].Int() /*TODO*/
 	gi.Free(c_message)
+	err1 = outArgs[0].Int() /*TODO*/
 	return
 }
 
@@ -20239,7 +20385,8 @@ func ShellErrorQuark() (result uint32) {
 
 // g_shell_parse_argv
 // container is nil
-func ShellParseArgv(command_line string) (result bool, argcp int32, argvp int /*TODO_TYPE*/, err error) {
+// arg 2 argvp lenArgIdx 1
+func ShellParseArgv(command_line string) (result bool, argvp gi.CStrArray, err error) {
 	iv, err := _I.Get(1090, "shell_parse_argv", "")
 	if err != nil {
 		return
@@ -20254,9 +20401,11 @@ func ShellParseArgv(command_line string) (result bool, argcp int32, argvp int /*
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_command_line)
-	argcp = outArgs[0].Int32()
-	argvp = outArgs[1].Int() /*TODO*/
+	var argcp int32
+	_ = argcp
 	err = gi.ToError(outArgs[2].Pointer())
+	argcp = outArgs[0].Int32()
+	argvp.P = outArgs[1].Pointer()
 	result = ret.Bool()
 	return
 }
@@ -20499,7 +20648,7 @@ func SpacedPrimesClosest(num uint32) (result uint32) {
 
 // g_spawn_async
 // container is nil
-func SpawnAsync(working_directory string, argv int /*TODO_TYPE array type c, elemTypeTag: filename*/, envp int /*TODO_TYPE array type c, elemTypeTag: filename*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, err error) {
+func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1106, "spawn_async", "")
 	if err != nil {
 		return
@@ -20507,8 +20656,8 @@ func SpawnAsync(working_directory string, argv int /*TODO_TYPE array type c, ele
 	var outArgs [2]gi.Argument
 	c_working_directory := gi.CString(working_directory)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
-	arg_argv := gi.NewIntArgument(argv) /*TODO*/
-	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_argv := gi.NewPointerArgument(argv.P)
+	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
@@ -20518,15 +20667,15 @@ func SpawnAsync(working_directory string, argv int /*TODO_TYPE array type c, ele
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
-	child_pid = outArgs[0].Int32()
 	err = gi.ToError(outArgs[1].Pointer())
+	child_pid = outArgs[0].Int32()
 	result = ret.Bool()
 	return
 }
 
 // g_spawn_async_with_fds
 // container is nil
-func SpawnAsyncWithFds(working_directory string, argv int /*TODO_TYPE array type c, elemTypeTag: utf8*/, envp int /*TODO_TYPE array type c, elemTypeTag: utf8*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
+func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1107, "spawn_async_with_fds", "")
 	if err != nil {
 		return
@@ -20534,8 +20683,8 @@ func SpawnAsyncWithFds(working_directory string, argv int /*TODO_TYPE array type
 	var outArgs [2]gi.Argument
 	c_working_directory := gi.CString(working_directory)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
-	arg_argv := gi.NewIntArgument(argv) /*TODO*/
-	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_argv := gi.NewPointerArgument(argv.P)
+	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
@@ -20548,15 +20697,15 @@ func SpawnAsyncWithFds(working_directory string, argv int /*TODO_TYPE array type
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
-	child_pid = outArgs[0].Int32()
 	err = gi.ToError(outArgs[1].Pointer())
+	child_pid = outArgs[0].Int32()
 	result = ret.Bool()
 	return
 }
 
 // g_spawn_async_with_pipes
 // container is nil
-func SpawnAsyncWithPipes(working_directory string, argv int /*TODO_TYPE array type c, elemTypeTag: filename*/, envp int /*TODO_TYPE array type c, elemTypeTag: filename*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
+func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
 	iv, err := _I.Get(1108, "spawn_async_with_pipes", "")
 	if err != nil {
 		return
@@ -20564,8 +20713,8 @@ func SpawnAsyncWithPipes(working_directory string, argv int /*TODO_TYPE array ty
 	var outArgs [5]gi.Argument
 	c_working_directory := gi.CString(working_directory)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
-	arg_argv := gi.NewIntArgument(argv) /*TODO*/
-	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_argv := gi.NewPointerArgument(argv.P)
+	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
@@ -20578,11 +20727,11 @@ func SpawnAsyncWithPipes(working_directory string, argv int /*TODO_TYPE array ty
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
+	err = gi.ToError(outArgs[4].Pointer())
 	child_pid = outArgs[0].Int32()
 	standard_input = outArgs[1].Int32()
 	standard_output = outArgs[2].Int32()
 	standard_error = outArgs[3].Int32()
-	err = gi.ToError(outArgs[4].Pointer())
 	result = ret.Bool()
 	return
 }
@@ -20640,7 +20789,7 @@ func SpawnCommandLineAsync(command_line string) (result bool, err error) {
 
 // g_spawn_command_line_sync
 // container is nil
-func SpawnCommandLineSync(command_line string) (result bool, standard_output int /*TODO_TYPE*/, standard_error int /*TODO_TYPE*/, exit_status int32, err error) {
+func SpawnCommandLineSync(command_line string) (result bool, standard_output gi.Uint8Array, standard_error gi.Uint8Array, exit_status int32, err error) {
 	iv, err := _I.Get(1112, "spawn_command_line_sync", "")
 	if err != nil {
 		return
@@ -20656,10 +20805,10 @@ func SpawnCommandLineSync(command_line string) (result bool, standard_output int
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_command_line)
-	standard_output = outArgs[0].Int() /*TODO*/
-	standard_error = outArgs[1].Int()  /*TODO*/
-	exit_status = outArgs[2].Int32()
 	err = gi.ToError(outArgs[3].Pointer())
+	standard_output.P = outArgs[0].Pointer()
+	standard_error.P = outArgs[1].Pointer()
+	exit_status = outArgs[2].Int32()
 	result = ret.Bool()
 	return
 }
@@ -20694,7 +20843,7 @@ func SpawnExitErrorQuark() (result uint32) {
 
 // g_spawn_sync
 // container is nil
-func SpawnSync(working_directory string, argv int /*TODO_TYPE array type c, elemTypeTag: filename*/, envp int /*TODO_TYPE array type c, elemTypeTag: filename*/, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, standard_output int /*TODO_TYPE*/, standard_error int /*TODO_TYPE*/, exit_status int32, err error) {
+func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, standard_output gi.Uint8Array, standard_error gi.Uint8Array, exit_status int32, err error) {
 	iv, err := _I.Get(1115, "spawn_sync", "")
 	if err != nil {
 		return
@@ -20702,8 +20851,8 @@ func SpawnSync(working_directory string, argv int /*TODO_TYPE array type c, elem
 	var outArgs [4]gi.Argument
 	c_working_directory := gi.CString(working_directory)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
-	arg_argv := gi.NewIntArgument(argv) /*TODO*/
-	arg_envp := gi.NewIntArgument(envp) /*TODO*/
+	arg_argv := gi.NewPointerArgument(argv.P)
+	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
@@ -20715,10 +20864,10 @@ func SpawnSync(working_directory string, argv int /*TODO_TYPE array type c, elem
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
-	standard_output = outArgs[0].Int() /*TODO*/
-	standard_error = outArgs[1].Int()  /*TODO*/
-	exit_status = outArgs[2].Int32()
 	err = gi.ToError(outArgs[3].Pointer())
+	standard_output.P = outArgs[0].Pointer()
+	standard_error.P = outArgs[1].Pointer()
+	exit_status = outArgs[2].Int32()
 	result = ret.Bool()
 	return
 }
@@ -20882,7 +21031,7 @@ func StrToAscii(str string, from_locale string) (result string) {
 
 // g_str_tokenize_and_fold
 // container is nil
-func StrTokenizeAndFold(string string, translit_locale string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/, ascii_alternates int /*TODO_TYPE*/) {
+func StrTokenizeAndFold(string string, translit_locale string) (result gi.CStrArray, ascii_alternates gi.CStrArray) {
 	iv, err := _I.Get(1124, "str_tokenize_and_fold", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20899,8 +21048,9 @@ func StrTokenizeAndFold(string string, translit_locale string) (result int /*TOD
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_string)
 	gi.Free(c_translit_locale)
-	ascii_alternates = outArgs[0].Int() /*TODO*/
-	result = ret.Int()                  /*TODO*/
+	ascii_alternates.P = outArgs[0].Pointer()
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -22379,9 +22529,9 @@ func Ucs4ToUtf16(str rune, len1 int64) (result uint16, items_read int64, items_w
 	args := []gi.Argument{arg_str, arg_len1, arg_items_read, arg_items_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	err = gi.ToError(outArgs[2].Pointer())
 	items_read = outArgs[0].Int64()
 	items_written = outArgs[1].Int64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = ret.Uint16()
 	return
 }
@@ -22402,9 +22552,9 @@ func Ucs4ToUtf8(str rune, len1 int64) (result string, items_read int64, items_wr
 	args := []gi.Argument{arg_str, arg_len1, arg_items_read, arg_items_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	err = gi.ToError(outArgs[2].Pointer())
 	items_read = outArgs[0].Int64()
 	items_written = outArgs[1].Int64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = ret.String().Take()
 	return
 }
@@ -23178,7 +23328,7 @@ func UriEscapeString(unescaped string, reserved_chars_allowed string, allow_utf8
 
 // g_uri_list_extract_uris
 // container is nil
-func UriListExtractUris(uri_list string) (result int /*TODO_TYPE array type c, elemTypeTag: utf8, arrLen: -1*/) {
+func UriListExtractUris(uri_list string) (result gi.CStrArray) {
 	iv, err := _I.Get(1261, "uri_list_extract_uris", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23190,7 +23340,8 @@ func UriListExtractUris(uri_list string) (result int /*TODO_TYPE array type c, e
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_uri_list)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
 	return
 }
 
@@ -23286,9 +23437,9 @@ func Utf16ToUcs4(str uint16, len1 int64) (result rune, items_read int64, items_w
 	args := []gi.Argument{arg_str, arg_len1, arg_items_read, arg_items_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	err = gi.ToError(outArgs[2].Pointer())
 	items_read = outArgs[0].Int64()
 	items_written = outArgs[1].Int64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = rune(ret.Uint32())
 	return
 }
@@ -23309,9 +23460,9 @@ func Utf16ToUtf8(str uint16, len1 int64) (result string, items_read int64, items
 	args := []gi.Argument{arg_str, arg_len1, arg_items_read, arg_items_written, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	err = gi.ToError(outArgs[2].Pointer())
 	items_read = outArgs[0].Int64()
 	items_written = outArgs[1].Int64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = ret.String().Take()
 	return
 }
@@ -23746,9 +23897,9 @@ func Utf8ToUcs4(str string, len1 int64) (result rune, items_read int64, items_wr
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_str)
+	err = gi.ToError(outArgs[2].Pointer())
 	items_read = outArgs[0].Int64()
 	items_written = outArgs[1].Int64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = rune(ret.Uint32())
 	return
 }
@@ -23793,15 +23944,16 @@ func Utf8ToUtf16(str string, len1 int64) (result uint16, items_read int64, items
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_str)
+	err = gi.ToError(outArgs[2].Pointer())
 	items_read = outArgs[0].Int64()
 	items_written = outArgs[1].Int64()
-	err = gi.ToError(outArgs[2].Pointer())
 	result = ret.Uint16()
 	return
 }
 
 // g_utf8_validate
 // container is nil
+// arg 0 str lenArgIdx 1
 func Utf8Validate(str gi.Uint8Array, max_len int64) (result bool, end string) {
 	iv, err := _I.Get(1292, "utf8_validate", "")
 	if err != nil {
