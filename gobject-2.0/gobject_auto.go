@@ -965,7 +965,7 @@ func (v Object) FreezeNotify() {
 // g_object_get_data
 // container is not nil, container is Object
 // is method
-func (v Object) GetData(key string) {
+func (v Object) GetData(key string) (result unsafe.Pointer) {
 	iv, err := _I.Get(45, "Object", "get_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -975,8 +975,11 @@ func (v Object) GetData(key string) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_key := gi.NewStringArgument(c_key)
 	args := []gi.Argument{arg_v, arg_key}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
 	gi.Free(c_key)
+	result = ret.Pointer()
+	return
 }
 
 // g_object_get_property
@@ -1000,7 +1003,7 @@ func (v Object) GetProperty(property_name string, value Value) {
 // g_object_get_qdata
 // container is not nil, container is Object
 // is method
-func (v Object) GetQdata(quark uint32) {
+func (v Object) GetQdata(quark uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(47, "Object", "get_qdata")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1009,7 +1012,10 @@ func (v Object) GetQdata(quark uint32) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_quark := gi.NewUint32Argument(quark)
 	args := []gi.Argument{arg_v, arg_quark}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_object_getv
@@ -1167,7 +1173,7 @@ func (v Object) SetProperty(property_name string, value Value) {
 // g_object_steal_data
 // container is not nil, container is Object
 // is method
-func (v Object) StealData(key string) {
+func (v Object) StealData(key string) (result unsafe.Pointer) {
 	iv, err := _I.Get(57, "Object", "steal_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1177,14 +1183,17 @@ func (v Object) StealData(key string) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_key := gi.NewStringArgument(c_key)
 	args := []gi.Argument{arg_v, arg_key}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
 	gi.Free(c_key)
+	result = ret.Pointer()
+	return
 }
 
 // g_object_steal_qdata
 // container is not nil, container is Object
 // is method
-func (v Object) StealQdata(quark uint32) {
+func (v Object) StealQdata(quark uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(58, "Object", "steal_qdata")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1193,7 +1202,10 @@ func (v Object) StealQdata(quark uint32) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_quark := gi.NewUint32Argument(quark)
 	args := []gi.Argument{arg_v, arg_quark}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_object_thaw_notify
@@ -1359,7 +1371,7 @@ func (v ParamSpec) GetNick() (result string) {
 // g_param_spec_get_qdata
 // container is not nil, container is ParamSpec
 // is method
-func (v ParamSpec) GetQdata(quark uint32) {
+func (v ParamSpec) GetQdata(quark uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(67, "ParamSpec", "get_qdata")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1368,7 +1380,10 @@ func (v ParamSpec) GetQdata(quark uint32) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_quark := gi.NewUint32Argument(quark)
 	args := []gi.Argument{arg_v, arg_quark}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_param_spec_get_redirect_target
@@ -1421,7 +1436,7 @@ func (v ParamSpec) Sink() {
 // g_param_spec_steal_qdata
 // container is not nil, container is ParamSpec
 // is method
-func (v ParamSpec) StealQdata(quark uint32) {
+func (v ParamSpec) StealQdata(quark uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(71, "ParamSpec", "steal_qdata")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1430,7 +1445,10 @@ func (v ParamSpec) StealQdata(quark uint32) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_quark := gi.NewUint32Argument(quark)
 	args := []gi.Argument{arg_v, arg_quark}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // Object ParamSpecBoolean
@@ -1880,7 +1898,7 @@ func (v TypeClass) AddPrivate(private_size uint64) {
 // g_type_class_get_private
 // container is not nil, container is TypeClass
 // is method
-func (v TypeClass) GetPrivate(private_type gi.GType) {
+func (v TypeClass) GetPrivate(private_type gi.GType) (result unsafe.Pointer) {
 	iv, err := _I.Get(79, "TypeClass", "get_private")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1889,7 +1907,10 @@ func (v TypeClass) GetPrivate(private_type gi.GType) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_private_type := gi.NewUintArgument(uint(private_type))
 	args := []gi.Argument{arg_v, arg_private_type}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_type_class_peek_parent
@@ -2040,7 +2061,7 @@ type TypeInstance struct {
 // g_type_instance_get_private
 // container is not nil, container is TypeInstance
 // is method
-func (v TypeInstance) GetPrivate(private_type gi.GType) {
+func (v TypeInstance) GetPrivate(private_type gi.GType) (result unsafe.Pointer) {
 	iv, err := _I.Get(86, "TypeInstance", "get_private")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2049,7 +2070,10 @@ func (v TypeInstance) GetPrivate(private_type gi.GType) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_private_type := gi.NewUintArgument(uint(private_type))
 	args := []gi.Argument{arg_v, arg_private_type}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // Struct TypeInterface
@@ -2483,7 +2507,7 @@ func (v Value) GetBoolean() (result bool) {
 // g_value_get_boxed
 // container is not nil, container is Value
 // is method
-func (v Value) GetBoxed() {
+func (v Value) GetBoxed() (result unsafe.Pointer) {
 	iv, err := _I.Get(109, "Value", "get_boxed")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2491,7 +2515,10 @@ func (v Value) GetBoxed() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_value_get_char
@@ -2684,7 +2711,7 @@ func (v Value) GetParam() (result ParamSpec) {
 // g_value_get_pointer
 // container is not nil, container is Value
 // is method
-func (v Value) GetPointer() {
+func (v Value) GetPointer() (result unsafe.Pointer) {
 	iv, err := _I.Get(121, "Value", "get_pointer")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2692,7 +2719,10 @@ func (v Value) GetPointer() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_value_get_schar
@@ -2850,7 +2880,7 @@ func (v Value) InitFromInstance(instance TypeInstance) {
 // g_value_peek_pointer
 // container is not nil, container is Value
 // is method
-func (v Value) PeekPointer() {
+func (v Value) PeekPointer() (result unsafe.Pointer) {
 	iv, err := _I.Get(131, "Value", "peek_pointer")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2858,7 +2888,10 @@ func (v Value) PeekPointer() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_value_reset
@@ -3552,7 +3585,7 @@ type _Value__data__union struct {
 
 // g_boxed_copy
 // container is nil
-func BoxedCopy(boxed_type gi.GType, src_boxed unsafe.Pointer) {
+func BoxedCopy(boxed_type gi.GType, src_boxed unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(174, "boxed_copy", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3561,7 +3594,10 @@ func BoxedCopy(boxed_type gi.GType, src_boxed unsafe.Pointer) {
 	arg_boxed_type := gi.NewUintArgument(uint(boxed_type))
 	arg_src_boxed := gi.NewPointerArgument(src_boxed)
 	args := []gi.Argument{arg_boxed_type, arg_src_boxed}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_boxed_free
@@ -5920,7 +5956,7 @@ func TypeGetPlugin(type1 gi.GType) (result TypePlugin) {
 
 // g_type_get_qdata
 // container is nil
-func TypeGetQdata(type1 gi.GType, quark uint32) {
+func TypeGetQdata(type1 gi.GType, quark uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(300, "type_get_qdata", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5929,7 +5965,10 @@ func TypeGetQdata(type1 gi.GType, quark uint32) {
 	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_quark := gi.NewUint32Argument(quark)
 	args := []gi.Argument{arg_type1, arg_quark}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_type_get_type_registration_serial
