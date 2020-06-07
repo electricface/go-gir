@@ -87,8 +87,12 @@ func (v AppLaunchContext) SetDisplay(display IDisplay) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	arg_display := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_display}
 	iv.Call(args, nil, nil)
 }
@@ -134,8 +138,12 @@ func (v AppLaunchContext) SetScreen(screen IScreen) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_screen}
 	iv.Call(args, nil, nil)
 }
@@ -421,7 +429,11 @@ func NewCursorForDisplay(display IDisplay, cursor_type CursorTypeEnum) (result C
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	arg_cursor_type := gi.NewIntArgument(int(cursor_type))
 	args := []gi.Argument{arg_display, arg_cursor_type}
 	var ret gi.Argument
@@ -439,8 +451,12 @@ func NewCursorFromName(display IDisplay, name string) (result Cursor) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
 	c_name := gi.CString(name)
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	arg_display := gi.NewPointerArgument(tmp)
 	arg_name := gi.NewStringArgument(c_name)
 	args := []gi.Argument{arg_display, arg_name}
 	var ret gi.Argument
@@ -459,8 +475,16 @@ func NewCursorFromPixbuf(display IDisplay, pixbuf gdkpixbuf.IPixbuf, x int32, y 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	var tmp1 unsafe.Pointer
+	if pixbuf != nil {
+		tmp1 = pixbuf.P_Pixbuf()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
+	arg_pixbuf := gi.NewPointerArgument(tmp1)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_display, arg_pixbuf, arg_x, arg_y}
@@ -479,7 +503,11 @@ func NewCursorFromSurface(display IDisplay, surface cairo.Surface, x float64, y 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	arg_surface := gi.NewPointerArgument(surface.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -702,8 +730,16 @@ func DeviceGrabInfoLibgtkOnly1(display IDisplay, device IDevice) (result bool, g
 		return
 	}
 	var outArgs [2]gi.Argument
-	arg_display := gi.NewPointerArgument(display.P_Display())
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	var tmp1 unsafe.Pointer
+	if device != nil {
+		tmp1 = device.P_Device()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
+	arg_device := gi.NewPointerArgument(tmp1)
 	arg_grab_window := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_owner_events := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_display, arg_device, arg_grab_window, arg_owner_events}
@@ -1091,12 +1127,20 @@ func (v Device) Grab(window IWindow, grab_ownership GrabOwnershipEnum, owner_eve
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	var tmp1 unsafe.Pointer
+	if cursor != nil {
+		tmp1 = cursor.P_Cursor()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_grab_ownership := gi.NewIntArgument(int(grab_ownership))
 	arg_owner_events := gi.NewBoolArgument(owner_events)
 	arg_event_mask := gi.NewIntArgument(int(event_mask))
-	arg_cursor := gi.NewPointerArgument(cursor.P_Cursor())
+	arg_cursor := gi.NewPointerArgument(tmp1)
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_v, arg_window, arg_grab_ownership, arg_owner_events, arg_event_mask, arg_cursor, arg_time_}
 	var ret gi.Argument
@@ -1108,7 +1152,7 @@ func (v Device) Grab(window IWindow, grab_ownership GrabOwnershipEnum, owner_eve
 // gdk_device_list_axes
 // container is not nil, container is Device
 // is method
-func (v Device) ListAxes() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Device) ListAxes() (result glib.List) {
 	iv, err := _I.Get(49, "Device", "list_axes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1118,14 +1162,14 @@ func (v Device) ListAxes() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gdk_device_list_slave_devices
 // container is not nil, container is Device
 // is method
-func (v Device) ListSlaveDevices() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Device) ListSlaveDevices() (result glib.List) {
 	iv, err := _I.Get(50, "Device", "list_slave_devices")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1135,7 +1179,7 @@ func (v Device) ListSlaveDevices() (result int /*TODO_TYPE isPtr: true, tag: gli
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1214,8 +1258,12 @@ func (v Device) Warp(screen IScreen, x int32, y int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_v, arg_screen, arg_x, arg_y}
@@ -1270,7 +1318,7 @@ func (v DeviceManager) GetDisplay() (result Display) {
 // gdk_device_manager_list_devices
 // container is not nil, container is DeviceManager
 // is method
-func (v DeviceManager) ListDevices(type1 DeviceTypeEnum) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v DeviceManager) ListDevices(type1 DeviceTypeEnum) (result glib.List) {
 	iv, err := _I.Get(58, "DeviceManager", "list_devices")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1281,7 +1329,7 @@ func (v DeviceManager) ListDevices(type1 DeviceTypeEnum) (result int /*TODO_TYPE
 	args := []gi.Argument{arg_v, arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1527,8 +1575,12 @@ func (v Display) DeviceIsGrabbed(device IDevice) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1735,8 +1787,12 @@ func (v Display) GetMonitorAtWindow(window IWindow) (result Monitor) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1928,7 +1984,7 @@ func (v Display) KeyboardUngrab(time_ uint32) {
 // gdk_display_list_devices
 // container is not nil, container is Display
 // is method
-func (v Display) ListDevices() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Display) ListDevices() (result glib.List) {
 	iv, err := _I.Get(94, "Display", "list_devices")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1938,14 +1994,14 @@ func (v Display) ListDevices() (result int /*TODO_TYPE isPtr: true, tag: glist*/
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gdk_display_list_seats
 // container is not nil, container is Display
 // is method
-func (v Display) ListSeats() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Display) ListSeats() (result glib.List) {
 	iv, err := _I.Get(95, "Display", "list_seats")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1955,7 +2011,7 @@ func (v Display) ListSeats() (result int /*TODO_TYPE isPtr: true, tag: glist*/) 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2098,8 +2154,12 @@ func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if clipboard_window != nil {
+		tmp = clipboard_window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_clipboard_window := gi.NewPointerArgument(clipboard_window.P_Window())
+	arg_clipboard_window := gi.NewPointerArgument(tmp)
 	arg_time_ := gi.NewUint32Argument(time_)
 	arg_targets := gi.NewPointerArgument(targets.P)
 	arg_n_targets := gi.NewInt32Argument(n_targets)
@@ -2249,8 +2309,12 @@ func (v Display) WarpPointer(screen IScreen, x int32, y int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_v, arg_screen, arg_x, arg_y}
@@ -2288,7 +2352,7 @@ func (v DisplayManager) GetDefaultDisplay() (result Display) {
 // gdk_display_manager_list_displays
 // container is not nil, container is DisplayManager
 // is method
-func (v DisplayManager) ListDisplays() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v DisplayManager) ListDisplays() (result glib.SList) {
 	iv, err := _I.Get(116, "DisplayManager", "list_displays")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2298,7 +2362,7 @@ func (v DisplayManager) ListDisplays() (result int /*TODO_TYPE isPtr: true, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2331,8 +2395,12 @@ func (v DisplayManager) SetDefaultDisplay(display IDisplay) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	arg_display := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_display}
 	iv.Call(args, nil, nil)
 }
@@ -2508,7 +2576,7 @@ func (v DragContext) GetSuggestedAction() (result DragActionFlags) {
 // gdk_drag_context_list_targets
 // container is not nil, container is DragContext
 // is method
-func (v DragContext) ListTargets() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v DragContext) ListTargets() (result glib.List) {
 	iv, err := _I.Get(127, "DragContext", "list_targets")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2518,7 +2586,7 @@ func (v DragContext) ListTargets() (result int /*TODO_TYPE isPtr: true, tag: gli
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2531,8 +2599,12 @@ func (v DragContext) ManageDnd(ipc_window IWindow, actions DragActionFlags) (res
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if ipc_window != nil {
+		tmp = ipc_window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ipc_window := gi.NewPointerArgument(ipc_window.P_Window())
+	arg_ipc_window := gi.NewPointerArgument(tmp)
 	arg_actions := gi.NewIntArgument(int(actions))
 	args := []gi.Argument{arg_v, arg_ipc_window, arg_actions}
 	var ret gi.Argument
@@ -2550,8 +2622,12 @@ func (v DragContext) SetDevice(device IDevice) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	iv.Call(args, nil, nil)
 }
@@ -3218,8 +3294,12 @@ func (v Event) SetDevice(device IDevice) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	iv.Call(args, nil, nil)
 }
@@ -3233,8 +3313,12 @@ func (v Event) SetDeviceTool(tool IDeviceTool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tool != nil {
+		tmp = tool.P_DeviceTool()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tool := gi.NewPointerArgument(tool.P_DeviceTool())
+	arg_tool := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_tool}
 	iv.Call(args, nil, nil)
 }
@@ -3248,8 +3332,12 @@ func (v Event) SetScreen(screen IScreen) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_screen}
 	iv.Call(args, nil, nil)
 }
@@ -3263,8 +3351,12 @@ func (v Event) SetSourceDevice(device IDevice) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	iv.Call(args, nil, nil)
 }
@@ -4228,7 +4320,11 @@ func KeymapGetForDisplay1(display IDisplay) (result Keymap) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_display}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5087,8 +5183,12 @@ func (v Screen) GetMonitorAtWindow(window IWindow) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5349,7 +5449,7 @@ func (v Screen) GetSystemVisual() (result Visual) {
 // gdk_screen_get_toplevel_windows
 // container is not nil, container is Screen
 // is method
-func (v Screen) GetToplevelWindows() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Screen) GetToplevelWindows() (result glib.List) {
 	iv, err := _I.Get(268, "Screen", "get_toplevel_windows")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5359,7 +5459,7 @@ func (v Screen) GetToplevelWindows() (result int /*TODO_TYPE isPtr: true, tag: g
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5400,7 +5500,7 @@ func (v Screen) GetWidthMm() (result int32) {
 // gdk_screen_get_window_stack
 // container is not nil, container is Screen
 // is method
-func (v Screen) GetWindowStack() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Screen) GetWindowStack() (result glib.List) {
 	iv, err := _I.Get(271, "Screen", "get_window_stack")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5410,7 +5510,7 @@ func (v Screen) GetWindowStack() (result int /*TODO_TYPE isPtr: true, tag: glist
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5434,7 +5534,7 @@ func (v Screen) IsComposited() (result bool) {
 // gdk_screen_list_visuals
 // container is not nil, container is Screen
 // is method
-func (v Screen) ListVisuals() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Screen) ListVisuals() (result glib.List) {
 	iv, err := _I.Get(273, "Screen", "list_visuals")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5444,7 +5544,7 @@ func (v Screen) ListVisuals() (result int /*TODO_TYPE isPtr: true, tag: glist*/)
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5588,7 +5688,7 @@ func (v Seat) GetPointer() (result Device) {
 // gdk_seat_get_slaves
 // container is not nil, container is Seat
 // is method
-func (v Seat) GetSlaves(capabilities SeatCapabilitiesFlags) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Seat) GetSlaves(capabilities SeatCapabilitiesFlags) (result glib.List) {
 	iv, err := _I.Get(281, "Seat", "get_slaves")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5599,7 +5699,7 @@ func (v Seat) GetSlaves(capabilities SeatCapabilitiesFlags) (result int /*TODO_T
 	args := []gi.Argument{arg_v, arg_capabilities}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5612,11 +5712,19 @@ func (v Seat) Grab(window IWindow, capabilities SeatCapabilitiesFlags, owner_eve
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	var tmp1 unsafe.Pointer
+	if cursor != nil {
+		tmp1 = cursor.P_Cursor()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_capabilities := gi.NewIntArgument(int(capabilities))
 	arg_owner_events := gi.NewBoolArgument(owner_events)
-	arg_cursor := gi.NewPointerArgument(cursor.P_Cursor())
+	arg_cursor := gi.NewPointerArgument(tmp1)
 	arg_event := gi.NewPointerArgument(event.P)
 	arg_prepare_func := gi.NewIntArgument(prepare_func) /*TODO*/
 	arg_prepare_func_data := gi.NewPointerArgument(prepare_func_data)
@@ -6001,7 +6109,11 @@ func NewWindow(parent IWindow, attributes WindowAttr, attributes_mask WindowAttr
 		log.Println("WARN:", err)
 		return
 	}
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
+	arg_parent := gi.NewPointerArgument(tmp)
 	arg_attributes := gi.NewPointerArgument(attributes.P)
 	arg_attributes_mask := gi.NewIntArgument(int(attributes_mask))
 	args := []gi.Argument{arg_parent, arg_attributes, arg_attributes_mask}
@@ -6131,8 +6243,12 @@ func (v Window) BeginMoveDragForDevice(device IDevice, button int32, root_x int3
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	arg_button := gi.NewInt32Argument(button)
 	arg_root_x := gi.NewInt32Argument(root_x)
 	arg_root_y := gi.NewInt32Argument(root_y)
@@ -6199,9 +6315,13 @@ func (v Window) BeginResizeDragForDevice(edge WindowEdgeEnum, device IDevice, bu
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_edge := gi.NewIntArgument(int(edge))
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	arg_button := gi.NewInt32Argument(button)
 	arg_root_x := gi.NewInt32Argument(root_x)
 	arg_root_y := gi.NewInt32Argument(root_y)
@@ -6393,8 +6513,12 @@ func (v Window) EndDrawFrame(context IDrawingContext) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DrawingContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_DrawingContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_context}
 	iv.Call(args, nil, nil)
 }
@@ -6567,7 +6691,7 @@ func (v Window) GetBackgroundPattern() (result cairo.Pattern) {
 // gdk_window_get_children
 // container is not nil, container is Window
 // is method
-func (v Window) GetChildren() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Window) GetChildren() (result glib.List) {
 	iv, err := _I.Get(335, "Window", "get_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6577,14 +6701,14 @@ func (v Window) GetChildren() (result int /*TODO_TYPE isPtr: true, tag: glist*/)
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gdk_window_get_children_with_user_data
 // container is not nil, container is Window
 // is method
-func (v Window) GetChildrenWithUserData(user_data unsafe.Pointer) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Window) GetChildrenWithUserData(user_data unsafe.Pointer) (result glib.List) {
 	iv, err := _I.Get(336, "Window", "get_children_with_user_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6595,7 +6719,7 @@ func (v Window) GetChildrenWithUserData(user_data unsafe.Pointer) (result int /*
 	args := []gi.Argument{arg_v, arg_user_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6679,8 +6803,12 @@ func (v Window) GetDeviceCursor(device IDevice) (result Cursor) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6697,8 +6825,12 @@ func (v Window) GetDeviceEvents(device IDevice) (result EventMaskFlags) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6716,8 +6848,12 @@ func (v Window) GetDevicePosition(device IDevice) (result Window, x int32, y int
 		return
 	}
 	var outArgs [3]gi.Argument
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_y := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_mask := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -6741,8 +6877,12 @@ func (v Window) GetDevicePositionDouble(device IDevice) (result Window, x float6
 		return
 	}
 	var outArgs [3]gi.Argument
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_y := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_mask := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -7711,7 +7851,7 @@ func (v Window) MoveToRect(rect Rectangle, rect_anchor GravityEnum, window_ancho
 // gdk_window_peek_children
 // container is not nil, container is Window
 // is method
-func (v Window) PeekChildren() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Window) PeekChildren() (result glib.List) {
 	iv, err := _I.Get(400, "Window", "peek_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7721,7 +7861,7 @@ func (v Window) PeekChildren() (result int /*TODO_TYPE isPtr: true, tag: glist*/
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7777,8 +7917,12 @@ func (v Window) Reparent(new_parent IWindow, x int32, y int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if new_parent != nil {
+		tmp = new_parent.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_new_parent := gi.NewPointerArgument(new_parent.P_Window())
+	arg_new_parent := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_v, arg_new_parent, arg_x, arg_y}
@@ -7810,8 +7954,12 @@ func (v Window) Restack(sibling IWindow, above bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if sibling != nil {
+		tmp = sibling.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_sibling := gi.NewPointerArgument(sibling.P_Window())
+	arg_sibling := gi.NewPointerArgument(tmp)
 	arg_above := gi.NewBoolArgument(above)
 	args := []gi.Argument{arg_v, arg_sibling, arg_above}
 	iv.Call(args, nil, nil)
@@ -7945,8 +8093,12 @@ func (v Window) SetCursor(cursor ICursor) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cursor != nil {
+		tmp = cursor.P_Cursor()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cursor := gi.NewPointerArgument(cursor.P_Cursor())
+	arg_cursor := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cursor}
 	iv.Call(args, nil, nil)
 }
@@ -7975,9 +8127,17 @@ func (v Window) SetDeviceCursor(device IDevice, cursor ICursor) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
+	var tmp1 unsafe.Pointer
+	if cursor != nil {
+		tmp1 = cursor.P_Cursor()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
-	arg_cursor := gi.NewPointerArgument(cursor.P_Cursor())
+	arg_device := gi.NewPointerArgument(tmp)
+	arg_cursor := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_device, arg_cursor}
 	iv.Call(args, nil, nil)
 }
@@ -7991,8 +8151,12 @@ func (v Window) SetDeviceEvents(device IDevice, event_mask EventMaskFlags) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	arg_event_mask := gi.NewIntArgument(int(event_mask))
 	args := []gi.Argument{arg_v, arg_device, arg_event_mask}
 	iv.Call(args, nil, nil)
@@ -8098,8 +8262,12 @@ func (v Window) SetGroup(leader IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if leader != nil {
+		tmp = leader.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_leader := gi.NewPointerArgument(leader.P_Window())
+	arg_leader := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_leader}
 	iv.Call(args, nil, nil)
 }
@@ -8107,14 +8275,14 @@ func (v Window) SetGroup(leader IWindow) {
 // gdk_window_set_icon_list
 // container is not nil, container is Window
 // is method
-func (v Window) SetIconList(pixbufs int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Window) SetIconList(pixbufs glib.List) {
 	iv, err := _I.Get(426, "Window", "set_icon_list")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pixbufs := gi.NewIntArgument(pixbufs) /*TODO*/
+	arg_pixbufs := gi.NewPointerArgument(pixbufs.P)
 	args := []gi.Argument{arg_v, arg_pixbufs}
 	iv.Call(args, nil, nil)
 }
@@ -8398,8 +8566,12 @@ func (v Window) SetTransientFor(parent IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	arg_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_parent}
 	iv.Call(args, nil, nil)
 }
@@ -8443,8 +8615,12 @@ func (v Window) SetUserData(user_data gobject.IObject) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if user_data != nil {
+		tmp = user_data.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_user_data := gi.NewPointerArgument(user_data.P_Object())
+	arg_user_data := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -8797,7 +8973,11 @@ func CairoCreate(window IWindow) (result cairo.Context) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_window}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -8813,8 +8993,12 @@ func CairoDrawFromGl(cr cairo.Context, window IWindow, source int32, source_type
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_cr := gi.NewPointerArgument(cr.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_source := gi.NewInt32Argument(source)
 	arg_source_type := gi.NewInt32Argument(source_type)
 	arg_buffer_scale := gi.NewInt32Argument(buffer_scale)
@@ -8927,8 +9111,12 @@ func CairoSetSourcePixbuf(cr cairo.Context, pixbuf gdkpixbuf.IPixbuf, pixbuf_x f
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_cr := gi.NewPointerArgument(cr.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	arg_pixbuf_x := gi.NewDoubleArgument(pixbuf_x)
 	arg_pixbuf_y := gi.NewDoubleArgument(pixbuf_y)
 	args := []gi.Argument{arg_cr, arg_pixbuf, arg_pixbuf_x, arg_pixbuf_y}
@@ -8957,8 +9145,12 @@ func CairoSetSourceWindow(cr cairo.Context, window IWindow, x float64, y float64
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_cr := gi.NewPointerArgument(cr.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
 	args := []gi.Argument{arg_cr, arg_window, arg_x, arg_y}
@@ -8973,9 +9165,17 @@ func CairoSurfaceCreateFromPixbuf(pixbuf gdkpixbuf.IPixbuf, scale int32, for_win
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
+	var tmp1 unsafe.Pointer
+	if for_window != nil {
+		tmp1 = for_window.P_Window()
+	}
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	arg_scale := gi.NewInt32Argument(scale)
-	arg_for_window := gi.NewPointerArgument(for_window.P_Window())
+	arg_for_window := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_pixbuf, arg_scale, arg_for_window}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9023,7 +9223,11 @@ func DragAbort(context IDragContext, time_ uint32) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_context, arg_time_}
 	iv.Call(args, nil, nil)
@@ -9031,14 +9235,18 @@ func DragAbort(context IDragContext, time_ uint32) {
 
 // gdk_drag_begin
 // container is nil
-func DragBegin(window IWindow, targets int /*TODO_TYPE isPtr: true, tag: glist*/) (result DragContext) {
+func DragBegin(window IWindow, targets glib.List) (result DragContext) {
 	iv, err := _I.Get(478, "drag_begin", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
-	arg_targets := gi.NewIntArgument(targets) /*TODO*/
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
+	arg_targets := gi.NewPointerArgument(targets.P)
 	args := []gi.Argument{arg_window, arg_targets}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9048,15 +9256,23 @@ func DragBegin(window IWindow, targets int /*TODO_TYPE isPtr: true, tag: glist*/
 
 // gdk_drag_begin_for_device
 // container is nil
-func DragBeginForDevice(window IWindow, device IDevice, targets int /*TODO_TYPE isPtr: true, tag: glist*/) (result DragContext) {
+func DragBeginForDevice(window IWindow, device IDevice, targets glib.List) (result DragContext) {
 	iv, err := _I.Get(479, "drag_begin_for_device", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
-	arg_device := gi.NewPointerArgument(device.P_Device())
-	arg_targets := gi.NewIntArgument(targets) /*TODO*/
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	var tmp1 unsafe.Pointer
+	if device != nil {
+		tmp1 = device.P_Device()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
+	arg_device := gi.NewPointerArgument(tmp1)
+	arg_targets := gi.NewPointerArgument(targets.P)
 	args := []gi.Argument{arg_window, arg_device, arg_targets}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9066,15 +9282,23 @@ func DragBeginForDevice(window IWindow, device IDevice, targets int /*TODO_TYPE 
 
 // gdk_drag_begin_from_point
 // container is nil
-func DragBeginFromPoint(window IWindow, device IDevice, targets int /*TODO_TYPE isPtr: true, tag: glist*/, x_root int32, y_root int32) (result DragContext) {
+func DragBeginFromPoint(window IWindow, device IDevice, targets glib.List, x_root int32, y_root int32) (result DragContext) {
 	iv, err := _I.Get(480, "drag_begin_from_point", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
-	arg_device := gi.NewPointerArgument(device.P_Device())
-	arg_targets := gi.NewIntArgument(targets) /*TODO*/
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	var tmp1 unsafe.Pointer
+	if device != nil {
+		tmp1 = device.P_Device()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
+	arg_device := gi.NewPointerArgument(tmp1)
+	arg_targets := gi.NewPointerArgument(targets.P)
 	arg_x_root := gi.NewInt32Argument(x_root)
 	arg_y_root := gi.NewInt32Argument(y_root)
 	args := []gi.Argument{arg_window, arg_device, arg_targets, arg_x_root, arg_y_root}
@@ -9092,7 +9316,11 @@ func DragDrop(context IDragContext, time_ uint32) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_context, arg_time_}
 	iv.Call(args, nil, nil)
@@ -9106,7 +9334,11 @@ func DragDropDone(context IDragContext, success bool) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_success := gi.NewBoolArgument(success)
 	args := []gi.Argument{arg_context, arg_success}
 	iv.Call(args, nil, nil)
@@ -9120,7 +9352,11 @@ func DragDropSucceeded(context IDragContext) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9137,9 +9373,21 @@ func DragFindWindowForScreen(context IDragContext, drag_window IWindow, screen I
 		return
 	}
 	var outArgs [2]gi.Argument
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
-	arg_drag_window := gi.NewPointerArgument(drag_window.P_Window())
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	var tmp1 unsafe.Pointer
+	if drag_window != nil {
+		tmp1 = drag_window.P_Window()
+	}
+	var tmp2 unsafe.Pointer
+	if screen != nil {
+		tmp2 = screen.P_Screen()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_drag_window := gi.NewPointerArgument(tmp1)
+	arg_screen := gi.NewPointerArgument(tmp2)
 	arg_x_root := gi.NewInt32Argument(x_root)
 	arg_y_root := gi.NewInt32Argument(y_root)
 	arg_dest_window := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -9159,7 +9407,11 @@ func DragGetSelection(context IDragContext) (result Atom) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9175,8 +9427,16 @@ func DragMotion(context IDragContext, dest_window IWindow, protocol DragProtocol
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
-	arg_dest_window := gi.NewPointerArgument(dest_window.P_Window())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	var tmp1 unsafe.Pointer
+	if dest_window != nil {
+		tmp1 = dest_window.P_Window()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_dest_window := gi.NewPointerArgument(tmp1)
 	arg_protocol := gi.NewIntArgument(int(protocol))
 	arg_x_root := gi.NewInt32Argument(x_root)
 	arg_y_root := gi.NewInt32Argument(y_root)
@@ -9198,7 +9458,11 @@ func DragStatus(context IDragContext, action DragActionFlags, time_ uint32) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_action := gi.NewIntArgument(int(action))
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_context, arg_action, arg_time_}
@@ -9213,7 +9477,11 @@ func DropFinish(context IDragContext, success bool, time_ uint32) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_success := gi.NewBoolArgument(success)
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_context, arg_success, arg_time_}
@@ -9228,7 +9496,11 @@ func DropReply(context IDragContext, accepted bool, time_ uint32) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_accepted := gi.NewBoolArgument(accepted)
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_context, arg_accepted, arg_time_}
@@ -9535,7 +9807,11 @@ func KeyboardGrab(window IWindow, owner_events bool, time_ uint32) (result GrabS
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_owner_events := gi.NewBoolArgument(owner_events)
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_window, arg_owner_events, arg_time_}
@@ -9693,7 +9969,7 @@ func KeyvalToUpper(keyval uint32) (result uint32) {
 
 // gdk_list_visuals
 // container is nil
-func ListVisuals() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func ListVisuals() (result glib.List) {
 	iv, err := _I.Get(520, "list_visuals", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9701,7 +9977,7 @@ func ListVisuals() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9739,7 +10015,11 @@ func OffscreenWindowGetEmbedder(window IWindow) (result Window) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_window}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9755,7 +10035,11 @@ func OffscreenWindowGetSurface(window IWindow) (result cairo.Surface) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_window}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9771,8 +10055,16 @@ func OffscreenWindowSetEmbedder(window IWindow, embedder IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
-	arg_embedder := gi.NewPointerArgument(embedder.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	var tmp1 unsafe.Pointer
+	if embedder != nil {
+		tmp1 = embedder.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
+	arg_embedder := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_window, arg_embedder}
 	iv.Call(args, nil, nil)
 }
@@ -9799,7 +10091,11 @@ func PangoContextGetForDisplay(display IDisplay) (result pango.Context) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_display}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9815,7 +10111,11 @@ func PangoContextGetForScreen(screen IScreen) (result pango.Context) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_screen}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9864,7 +10164,11 @@ func PixbufGetFromWindow(window IWindow, src_x int32, src_y int32, width int32, 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_src_x := gi.NewInt32Argument(src_x)
 	arg_src_y := gi.NewInt32Argument(src_y)
 	arg_width := gi.NewInt32Argument(width)
@@ -9884,11 +10188,23 @@ func PointerGrab(window IWindow, owner_events bool, event_mask EventMaskFlags, c
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	var tmp1 unsafe.Pointer
+	if confine_to != nil {
+		tmp1 = confine_to.P_Window()
+	}
+	var tmp2 unsafe.Pointer
+	if cursor != nil {
+		tmp2 = cursor.P_Cursor()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_owner_events := gi.NewBoolArgument(owner_events)
 	arg_event_mask := gi.NewIntArgument(int(event_mask))
-	arg_confine_to := gi.NewPointerArgument(confine_to.P_Window())
-	arg_cursor := gi.NewPointerArgument(cursor.P_Cursor())
+	arg_confine_to := gi.NewPointerArgument(tmp1)
+	arg_cursor := gi.NewPointerArgument(tmp2)
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_window, arg_owner_events, arg_event_mask, arg_confine_to, arg_cursor, arg_time_}
 	var ret gi.Argument
@@ -9943,7 +10259,11 @@ func PropertyDelete(window IWindow, property Atom) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_property := gi.NewPointerArgument(property.P)
 	args := []gi.Argument{arg_window, arg_property}
 	iv.Call(args, nil, nil)
@@ -9959,7 +10279,11 @@ func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, lengt
 		return
 	}
 	var outArgs [4]gi.Argument
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_property := gi.NewPointerArgument(property.P)
 	arg_type1 := gi.NewPointerArgument(type1.P)
 	arg_offset := gi.NewUint64Argument(offset)
@@ -10034,7 +10358,11 @@ func SelectionConvert(requestor IWindow, selection Atom, target Atom, time_ uint
 		log.Println("WARN:", err)
 		return
 	}
-	arg_requestor := gi.NewPointerArgument(requestor.P_Window())
+	var tmp unsafe.Pointer
+	if requestor != nil {
+		tmp = requestor.P_Window()
+	}
+	arg_requestor := gi.NewPointerArgument(tmp)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	arg_target := gi.NewPointerArgument(target.P)
 	arg_time_ := gi.NewUint32Argument(time_)
@@ -10066,7 +10394,11 @@ func SelectionOwnerGetForDisplay(display IDisplay, selection Atom) (result Windo
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	args := []gi.Argument{arg_display, arg_selection}
 	var ret gi.Argument
@@ -10083,7 +10415,11 @@ func SelectionOwnerSet(owner IWindow, selection Atom, time_ uint32, send_event b
 		log.Println("WARN:", err)
 		return
 	}
-	arg_owner := gi.NewPointerArgument(owner.P_Window())
+	var tmp unsafe.Pointer
+	if owner != nil {
+		tmp = owner.P_Window()
+	}
+	arg_owner := gi.NewPointerArgument(tmp)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	arg_time_ := gi.NewUint32Argument(time_)
 	arg_send_event := gi.NewBoolArgument(send_event)
@@ -10102,8 +10438,16 @@ func SelectionOwnerSetForDisplay(display IDisplay, owner IWindow, selection Atom
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
-	arg_owner := gi.NewPointerArgument(owner.P_Window())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	var tmp1 unsafe.Pointer
+	if owner != nil {
+		tmp1 = owner.P_Window()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
+	arg_owner := gi.NewPointerArgument(tmp1)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	arg_time_ := gi.NewUint32Argument(time_)
 	arg_send_event := gi.NewBoolArgument(send_event)
@@ -10122,7 +10466,11 @@ func SelectionSendNotify(requestor IWindow, selection Atom, target Atom, propert
 		log.Println("WARN:", err)
 		return
 	}
-	arg_requestor := gi.NewPointerArgument(requestor.P_Window())
+	var tmp unsafe.Pointer
+	if requestor != nil {
+		tmp = requestor.P_Window()
+	}
+	arg_requestor := gi.NewPointerArgument(tmp)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	arg_target := gi.NewPointerArgument(target.P)
 	arg_property := gi.NewPointerArgument(property.P)
@@ -10139,8 +10487,16 @@ func SelectionSendNotifyForDisplay(display IDisplay, requestor IWindow, selectio
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
-	arg_requestor := gi.NewPointerArgument(requestor.P_Window())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	var tmp1 unsafe.Pointer
+	if requestor != nil {
+		tmp1 = requestor.P_Window()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
+	arg_requestor := gi.NewPointerArgument(tmp1)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	arg_target := gi.NewPointerArgument(target.P)
 	arg_property := gi.NewPointerArgument(property.P)
@@ -10232,7 +10588,11 @@ func SynthesizeWindowState(window IWindow, unset_flags WindowStateFlags, set_fla
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_unset_flags := gi.NewIntArgument(int(unset_flags))
 	arg_set_flags := gi.NewIntArgument(int(set_flags))
 	args := []gi.Argument{arg_window, arg_unset_flags, arg_set_flags}
@@ -10247,7 +10607,11 @@ func TestRenderSync(window IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -10260,7 +10624,11 @@ func TestSimulateButton(window IWindow, x int32, y int32, button uint32, modifie
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	arg_button := gi.NewUint32Argument(button)
@@ -10281,7 +10649,11 @@ func TestSimulateKey(window IWindow, x int32, y int32, keyval uint32, modifiers 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	arg_keyval := gi.NewUint32Argument(keyval)
@@ -10304,7 +10676,11 @@ func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format in
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	arg_encoding := gi.NewPointerArgument(encoding.P)
 	arg_format := gi.NewInt32Argument(format)
 	arg_text := gi.NewPointerArgument(text.P)

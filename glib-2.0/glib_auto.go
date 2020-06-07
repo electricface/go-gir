@@ -94,7 +94,7 @@ func (v AsyncQueue) Lock() {
 // g_async_queue_pop
 // container is not nil, container is AsyncQueue
 // is method
-func (v AsyncQueue) Pop() {
+func (v AsyncQueue) Pop() (result unsafe.Pointer) {
 	iv, err := _I.Get(3, "AsyncQueue", "pop")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -102,13 +102,16 @@ func (v AsyncQueue) Pop() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_async_queue_pop_unlocked
 // container is not nil, container is AsyncQueue
 // is method
-func (v AsyncQueue) PopUnlocked() {
+func (v AsyncQueue) PopUnlocked() (result unsafe.Pointer) {
 	iv, err := _I.Get(4, "AsyncQueue", "pop_unlocked")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -116,7 +119,10 @@ func (v AsyncQueue) PopUnlocked() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_async_queue_push
@@ -232,7 +238,7 @@ func (v AsyncQueue) RemoveUnlocked(item unsafe.Pointer) (result bool) {
 // g_async_queue_timed_pop
 // container is not nil, container is AsyncQueue
 // is method
-func (v AsyncQueue) TimedPop(end_time TimeVal) {
+func (v AsyncQueue) TimedPop(end_time TimeVal) (result unsafe.Pointer) {
 	iv, err := _I.Get(12, "AsyncQueue", "timed_pop")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -241,13 +247,16 @@ func (v AsyncQueue) TimedPop(end_time TimeVal) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_end_time := gi.NewPointerArgument(end_time.P)
 	args := []gi.Argument{arg_v, arg_end_time}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_async_queue_timed_pop_unlocked
 // container is not nil, container is AsyncQueue
 // is method
-func (v AsyncQueue) TimedPopUnlocked(end_time TimeVal) {
+func (v AsyncQueue) TimedPopUnlocked(end_time TimeVal) (result unsafe.Pointer) {
 	iv, err := _I.Get(13, "AsyncQueue", "timed_pop_unlocked")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -256,13 +265,16 @@ func (v AsyncQueue) TimedPopUnlocked(end_time TimeVal) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_end_time := gi.NewPointerArgument(end_time.P)
 	args := []gi.Argument{arg_v, arg_end_time}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_async_queue_timeout_pop
 // container is not nil, container is AsyncQueue
 // is method
-func (v AsyncQueue) TimeoutPop(timeout uint64) {
+func (v AsyncQueue) TimeoutPop(timeout uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(14, "AsyncQueue", "timeout_pop")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -271,13 +283,16 @@ func (v AsyncQueue) TimeoutPop(timeout uint64) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_timeout := gi.NewUint64Argument(timeout)
 	args := []gi.Argument{arg_v, arg_timeout}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_async_queue_timeout_pop_unlocked
 // container is not nil, container is AsyncQueue
 // is method
-func (v AsyncQueue) TimeoutPopUnlocked(timeout uint64) {
+func (v AsyncQueue) TimeoutPopUnlocked(timeout uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(15, "AsyncQueue", "timeout_pop_unlocked")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -286,13 +301,16 @@ func (v AsyncQueue) TimeoutPopUnlocked(timeout uint64) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_timeout := gi.NewUint64Argument(timeout)
 	args := []gi.Argument{arg_v, arg_timeout}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_async_queue_try_pop
 // container is not nil, container is AsyncQueue
 // is method
-func (v AsyncQueue) TryPop() {
+func (v AsyncQueue) TryPop() (result unsafe.Pointer) {
 	iv, err := _I.Get(16, "AsyncQueue", "try_pop")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -300,13 +318,16 @@ func (v AsyncQueue) TryPop() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_async_queue_try_pop_unlocked
 // container is not nil, container is AsyncQueue
 // is method
-func (v AsyncQueue) TryPopUnlocked() {
+func (v AsyncQueue) TryPopUnlocked() (result unsafe.Pointer) {
 	iv, err := _I.Get(17, "AsyncQueue", "try_pop_unlocked")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -314,7 +335,10 @@ func (v AsyncQueue) TryPopUnlocked() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_async_queue_unlock
@@ -3831,7 +3855,7 @@ func HashTableInsert1(hash_table HashTable, key unsafe.Pointer, value unsafe.Poi
 // container is not nil, container is HashTable
 // is method
 // arg0Type tag: ghash, isPtr: true
-func HashTableLookup1(hash_table HashTable, key unsafe.Pointer) {
+func HashTableLookup1(hash_table HashTable, key unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(200, "HashTable", "lookup")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3840,7 +3864,10 @@ func HashTableLookup1(hash_table HashTable, key unsafe.Pointer) {
 	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_hash_table_lookup_extended
@@ -6988,7 +7015,7 @@ func (v MarkupParseContext) GetPosition(line_number int32, char_number int32) {
 // g_markup_parse_context_get_user_data
 // container is not nil, container is MarkupParseContext
 // is method
-func (v MarkupParseContext) GetUserData() {
+func (v MarkupParseContext) GetUserData() (result unsafe.Pointer) {
 	iv, err := _I.Get(357, "MarkupParseContext", "get_user_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6996,7 +7023,10 @@ func (v MarkupParseContext) GetUserData() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_markup_parse_context_parse
@@ -7025,7 +7055,7 @@ func (v MarkupParseContext) Parse(text string, text_len int64) (result bool, err
 // g_markup_parse_context_pop
 // container is not nil, container is MarkupParseContext
 // is method
-func (v MarkupParseContext) Pop() {
+func (v MarkupParseContext) Pop() (result unsafe.Pointer) {
 	iv, err := _I.Get(359, "MarkupParseContext", "pop")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7033,7 +7063,10 @@ func (v MarkupParseContext) Pop() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_markup_parse_context_push
@@ -8260,7 +8293,7 @@ type Private struct {
 // g_private_get
 // container is not nil, container is Private
 // is method
-func (v Private) Get() {
+func (v Private) Get() (result unsafe.Pointer) {
 	iv, err := _I.Get(424, "Private", "get")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8268,7 +8301,10 @@ func (v Private) Get() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_private_replace
@@ -8423,7 +8459,7 @@ func (v Queue) IsEmpty() (result bool) {
 // g_queue_peek_head
 // container is not nil, container is Queue
 // is method
-func (v Queue) PeekHead() {
+func (v Queue) PeekHead() (result unsafe.Pointer) {
 	iv, err := _I.Get(434, "Queue", "peek_head")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8431,13 +8467,16 @@ func (v Queue) PeekHead() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_queue_peek_nth
 // container is not nil, container is Queue
 // is method
-func (v Queue) PeekNth(n uint32) {
+func (v Queue) PeekNth(n uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(435, "Queue", "peek_nth")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8446,13 +8485,16 @@ func (v Queue) PeekNth(n uint32) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_n := gi.NewUint32Argument(n)
 	args := []gi.Argument{arg_v, arg_n}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_queue_peek_tail
 // container is not nil, container is Queue
 // is method
-func (v Queue) PeekTail() {
+func (v Queue) PeekTail() (result unsafe.Pointer) {
 	iv, err := _I.Get(436, "Queue", "peek_tail")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8460,13 +8502,16 @@ func (v Queue) PeekTail() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_queue_pop_head
 // container is not nil, container is Queue
 // is method
-func (v Queue) PopHead() {
+func (v Queue) PopHead() (result unsafe.Pointer) {
 	iv, err := _I.Get(437, "Queue", "pop_head")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8474,13 +8519,16 @@ func (v Queue) PopHead() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_queue_pop_nth
 // container is not nil, container is Queue
 // is method
-func (v Queue) PopNth(n uint32) {
+func (v Queue) PopNth(n uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(438, "Queue", "pop_nth")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8489,13 +8537,16 @@ func (v Queue) PopNth(n uint32) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_n := gi.NewUint32Argument(n)
 	args := []gi.Argument{arg_v, arg_n}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_queue_pop_tail
 // container is not nil, container is Queue
 // is method
-func (v Queue) PopTail() {
+func (v Queue) PopTail() (result unsafe.Pointer) {
 	iv, err := _I.Get(439, "Queue", "pop_tail")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8503,7 +8554,10 @@ func (v Queue) PopTail() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_queue_push_head
@@ -9694,7 +9748,7 @@ func (v Scanner) InputText(text string, text_len uint32) {
 // g_scanner_lookup_symbol
 // container is not nil, container is Scanner
 // is method
-func (v Scanner) LookupSymbol(symbol string) {
+func (v Scanner) LookupSymbol(symbol string) (result unsafe.Pointer) {
 	iv, err := _I.Get(499, "Scanner", "lookup_symbol")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9704,8 +9758,11 @@ func (v Scanner) LookupSymbol(symbol string) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_symbol := gi.NewStringArgument(c_symbol)
 	args := []gi.Argument{arg_v, arg_symbol}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
 	gi.Free(c_symbol)
+	result = ret.Pointer()
+	return
 }
 
 // g_scanner_peek_next_token
@@ -9747,7 +9804,7 @@ func (v Scanner) ScopeAddSymbol(scope_id uint32, symbol string, value unsafe.Poi
 // g_scanner_scope_lookup_symbol
 // container is not nil, container is Scanner
 // is method
-func (v Scanner) ScopeLookupSymbol(scope_id uint32, symbol string) {
+func (v Scanner) ScopeLookupSymbol(scope_id uint32, symbol string) (result unsafe.Pointer) {
 	iv, err := _I.Get(502, "Scanner", "scope_lookup_symbol")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9758,8 +9815,11 @@ func (v Scanner) ScopeLookupSymbol(scope_id uint32, symbol string) {
 	arg_scope_id := gi.NewUint32Argument(scope_id)
 	arg_symbol := gi.NewStringArgument(c_symbol)
 	args := []gi.Argument{arg_v, arg_scope_id, arg_symbol}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
 	gi.Free(c_symbol)
+	result = ret.Pointer()
+	return
 }
 
 // g_scanner_scope_remove_symbol
@@ -9999,7 +10059,7 @@ func (v Sequence) Prepend(data unsafe.Pointer) (result SequenceIter) {
 // container is not nil, container is Sequence
 // is method
 // arg0Type tag: interface, isPtr: true
-func SequenceGet1(iter SequenceIter) {
+func SequenceGet1(iter SequenceIter) (result unsafe.Pointer) {
 	iv, err := _I.Get(515, "Sequence", "get")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10007,7 +10067,10 @@ func SequenceGet1(iter SequenceIter) {
 	}
 	arg_iter := gi.NewPointerArgument(iter.P)
 	args := []gi.Argument{arg_iter}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_sequence_insert_before
@@ -10364,7 +10427,7 @@ func (v Source) AddPoll(fd PollFD) {
 // g_source_add_unix_fd
 // container is not nil, container is Source
 // is method
-func (v Source) AddUnixFd(fd int32, events IOConditionFlags) {
+func (v Source) AddUnixFd(fd int32, events IOConditionFlags) (result unsafe.Pointer) {
 	iv, err := _I.Get(535, "Source", "add_unix_fd")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10374,7 +10437,10 @@ func (v Source) AddUnixFd(fd int32, events IOConditionFlags) {
 	arg_fd := gi.NewInt32Argument(fd)
 	arg_events := gi.NewIntArgument(int(events))
 	args := []gi.Argument{arg_v, arg_fd, arg_events}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_source_attach
@@ -11691,7 +11757,7 @@ type Thread struct {
 // g_thread_join
 // container is not nil, container is Thread
 // is method
-func (v Thread) Join() {
+func (v Thread) Join() (result unsafe.Pointer) {
 	iv, err := _I.Get(602, "Thread", "join")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11699,7 +11765,10 @@ func (v Thread) Join() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_thread_ref
@@ -12349,7 +12418,7 @@ func (v TrashStack) Height() (result uint32) {
 // container is not nil, container is TrashStack
 // is method
 // arg0Type tag: interface, isPtr: true
-func (v TrashStack) Peek() {
+func (v TrashStack) Peek() (result unsafe.Pointer) {
 	iv, err := _I.Get(644, "TrashStack", "peek")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12357,14 +12426,17 @@ func (v TrashStack) Peek() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_trash_stack_pop
 // container is not nil, container is TrashStack
 // is method
 // arg0Type tag: interface, isPtr: true
-func (v TrashStack) Pop() {
+func (v TrashStack) Pop() (result unsafe.Pointer) {
 	iv, err := _I.Get(645, "TrashStack", "pop")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12372,7 +12444,10 @@ func (v TrashStack) Pop() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_trash_stack_push
@@ -12468,7 +12543,7 @@ func (v Tree) Insert(key unsafe.Pointer, value unsafe.Pointer) {
 // g_tree_lookup
 // container is not nil, container is Tree
 // is method
-func (v Tree) Lookup(key unsafe.Pointer) {
+func (v Tree) Lookup(key unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(650, "Tree", "lookup")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12477,7 +12552,10 @@ func (v Tree) Lookup(key unsafe.Pointer) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_v, arg_key}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_tree_lookup_extended
@@ -13599,7 +13677,7 @@ func (v Variant) GetChildValue(index_ uint64) (result Variant) {
 // g_variant_get_data
 // container is not nil, container is Variant
 // is method
-func (v Variant) GetData() {
+func (v Variant) GetData() (result unsafe.Pointer) {
 	iv, err := _I.Get(697, "Variant", "get_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13607,7 +13685,10 @@ func (v Variant) GetData() {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_variant_get_data_as_bytes
@@ -15770,7 +15851,7 @@ func AtomicPointerCompareAndExchange(atomic unsafe.Pointer, oldval unsafe.Pointe
 
 // g_atomic_pointer_get
 // container is nil
-func AtomicPointerGet(atomic unsafe.Pointer) {
+func AtomicPointerGet(atomic unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(815, "atomic_pointer_get", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15778,7 +15859,10 @@ func AtomicPointerGet(atomic unsafe.Pointer) {
 	}
 	arg_atomic := gi.NewPointerArgument(atomic)
 	args := []gi.Argument{arg_atomic}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_atomic_pointer_or
@@ -15831,7 +15915,7 @@ func AtomicPointerXor(atomic unsafe.Pointer, val uint64) (result uint64) {
 
 // g_atomic_rc_box_acquire
 // container is nil
-func AtomicRcBoxAcquire(mem_block unsafe.Pointer) {
+func AtomicRcBoxAcquire(mem_block unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(819, "atomic_rc_box_acquire", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15839,12 +15923,15 @@ func AtomicRcBoxAcquire(mem_block unsafe.Pointer) {
 	}
 	arg_mem_block := gi.NewPointerArgument(mem_block)
 	args := []gi.Argument{arg_mem_block}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_atomic_rc_box_alloc
 // container is nil
-func AtomicRcBoxAlloc(block_size uint64) {
+func AtomicRcBoxAlloc(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(820, "atomic_rc_box_alloc", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15852,12 +15939,15 @@ func AtomicRcBoxAlloc(block_size uint64) {
 	}
 	arg_block_size := gi.NewUint64Argument(block_size)
 	args := []gi.Argument{arg_block_size}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_atomic_rc_box_alloc0
 // container is nil
-func AtomicRcBoxAlloc0(block_size uint64) {
+func AtomicRcBoxAlloc0(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(821, "atomic_rc_box_alloc0", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15865,12 +15955,15 @@ func AtomicRcBoxAlloc0(block_size uint64) {
 	}
 	arg_block_size := gi.NewUint64Argument(block_size)
 	args := []gi.Argument{arg_block_size}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_atomic_rc_box_dup
 // container is nil
-func AtomicRcBoxDup(block_size uint64, mem_block unsafe.Pointer) {
+func AtomicRcBoxDup(block_size uint64, mem_block unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(822, "atomic_rc_box_dup", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15879,7 +15972,10 @@ func AtomicRcBoxDup(block_size uint64, mem_block unsafe.Pointer) {
 	arg_block_size := gi.NewUint64Argument(block_size)
 	arg_mem_block := gi.NewPointerArgument(mem_block)
 	args := []gi.Argument{arg_block_size, arg_mem_block}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_atomic_rc_box_get_size
@@ -16684,7 +16780,7 @@ func DatalistForeach(datalist Data, func1 int /*TODO_TYPE isPtr: false, tag: int
 
 // g_datalist_get_data
 // container is nil
-func DatalistGetData(datalist Data, key string) {
+func DatalistGetData(datalist Data, key string) (result unsafe.Pointer) {
 	iv, err := _I.Get(868, "datalist_get_data", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16694,8 +16790,11 @@ func DatalistGetData(datalist Data, key string) {
 	arg_datalist := gi.NewPointerArgument(datalist.P)
 	arg_key := gi.NewStringArgument(c_key)
 	args := []gi.Argument{arg_datalist, arg_key}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
 	gi.Free(c_key)
+	result = ret.Pointer()
+	return
 }
 
 // g_datalist_get_flags
@@ -16716,7 +16815,7 @@ func DatalistGetFlags(datalist Data) (result uint32) {
 
 // g_datalist_id_get_data
 // container is nil
-func DatalistIdGetData(datalist Data, key_id uint32) {
+func DatalistIdGetData(datalist Data, key_id uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(870, "datalist_id_get_data", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16725,7 +16824,10 @@ func DatalistIdGetData(datalist Data, key_id uint32) {
 	arg_datalist := gi.NewPointerArgument(datalist.P)
 	arg_key_id := gi.NewUint32Argument(key_id)
 	args := []gi.Argument{arg_datalist, arg_key_id}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_datalist_set_flags
@@ -16786,7 +16888,7 @@ func DatasetForeach(dataset_location unsafe.Pointer, func1 int /*TODO_TYPE isPtr
 
 // g_dataset_id_get_data
 // container is nil
-func DatasetIdGetData(dataset_location unsafe.Pointer, key_id uint32) {
+func DatasetIdGetData(dataset_location unsafe.Pointer, key_id uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(875, "dataset_id_get_data", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16795,7 +16897,10 @@ func DatasetIdGetData(dataset_location unsafe.Pointer, key_id uint32) {
 	arg_dataset_location := gi.NewPointerArgument(dataset_location)
 	arg_key_id := gi.NewUint32Argument(key_id)
 	args := []gi.Argument{arg_dataset_location, arg_key_id}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_date_get_days_in_month
@@ -18122,7 +18227,7 @@ func HashTableInsert(hash_table HashTable, key unsafe.Pointer, value unsafe.Poin
 
 // g_hash_table_lookup
 // container is nil
-func HashTableLookup(hash_table HashTable, key unsafe.Pointer) {
+func HashTableLookup(hash_table HashTable, key unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(952, "hash_table_lookup", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18131,7 +18236,10 @@ func HashTableLookup(hash_table HashTable, key unsafe.Pointer) {
 	arg_hash_table := gi.NewPointerArgument(hash_table.P)
 	arg_key := gi.NewPointerArgument(key)
 	args := []gi.Argument{arg_hash_table, arg_key}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_hash_table_lookup_extended
@@ -19088,7 +19196,7 @@ func MainDepth() (result int32) {
 
 // g_malloc
 // container is nil
-func Malloc(n_bytes uint64) {
+func Malloc(n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1009, "malloc", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19096,12 +19204,15 @@ func Malloc(n_bytes uint64) {
 	}
 	arg_n_bytes := gi.NewUint64Argument(n_bytes)
 	args := []gi.Argument{arg_n_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_malloc0
 // container is nil
-func Malloc0(n_bytes uint64) {
+func Malloc0(n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1010, "malloc0", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19109,12 +19220,15 @@ func Malloc0(n_bytes uint64) {
 	}
 	arg_n_bytes := gi.NewUint64Argument(n_bytes)
 	args := []gi.Argument{arg_n_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_malloc0_n
 // container is nil
-func Malloc0N(n_blocks uint64, n_block_bytes uint64) {
+func Malloc0N(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1011, "malloc0_n", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19123,12 +19237,15 @@ func Malloc0N(n_blocks uint64, n_block_bytes uint64) {
 	arg_n_blocks := gi.NewUint64Argument(n_blocks)
 	arg_n_block_bytes := gi.NewUint64Argument(n_block_bytes)
 	args := []gi.Argument{arg_n_blocks, arg_n_block_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_malloc_n
 // container is nil
-func MallocN(n_blocks uint64, n_block_bytes uint64) {
+func MallocN(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1012, "malloc_n", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19137,7 +19254,10 @@ func MallocN(n_blocks uint64, n_block_bytes uint64) {
 	arg_n_blocks := gi.NewUint64Argument(n_blocks)
 	arg_n_block_bytes := gi.NewUint64Argument(n_block_bytes)
 	args := []gi.Argument{arg_n_blocks, arg_n_block_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_markup_error_quark
@@ -19213,7 +19333,7 @@ func MemSetVtable(vtable MemVTable) {
 
 // g_memdup
 // container is nil
-func Memdup(mem unsafe.Pointer, byte_size uint32) {
+func Memdup(mem unsafe.Pointer, byte_size uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(1018, "memdup", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19222,7 +19342,10 @@ func Memdup(mem unsafe.Pointer, byte_size uint32) {
 	arg_mem := gi.NewPointerArgument(mem)
 	arg_byte_size := gi.NewUint32Argument(byte_size)
 	args := []gi.Argument{arg_mem, arg_byte_size}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_mkdir_with_parents
@@ -19728,7 +19851,7 @@ func RandomSetSeed(seed uint32) {
 
 // g_rc_box_acquire
 // container is nil
-func RcBoxAcquire(mem_block unsafe.Pointer) {
+func RcBoxAcquire(mem_block unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(1049, "rc_box_acquire", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19736,12 +19859,15 @@ func RcBoxAcquire(mem_block unsafe.Pointer) {
 	}
 	arg_mem_block := gi.NewPointerArgument(mem_block)
 	args := []gi.Argument{arg_mem_block}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_rc_box_alloc
 // container is nil
-func RcBoxAlloc(block_size uint64) {
+func RcBoxAlloc(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1050, "rc_box_alloc", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19749,12 +19875,15 @@ func RcBoxAlloc(block_size uint64) {
 	}
 	arg_block_size := gi.NewUint64Argument(block_size)
 	args := []gi.Argument{arg_block_size}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_rc_box_alloc0
 // container is nil
-func RcBoxAlloc0(block_size uint64) {
+func RcBoxAlloc0(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1051, "rc_box_alloc0", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19762,12 +19891,15 @@ func RcBoxAlloc0(block_size uint64) {
 	}
 	arg_block_size := gi.NewUint64Argument(block_size)
 	args := []gi.Argument{arg_block_size}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_rc_box_dup
 // container is nil
-func RcBoxDup(block_size uint64, mem_block unsafe.Pointer) {
+func RcBoxDup(block_size uint64, mem_block unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(1052, "rc_box_dup", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19776,7 +19908,10 @@ func RcBoxDup(block_size uint64, mem_block unsafe.Pointer) {
 	arg_block_size := gi.NewUint64Argument(block_size)
 	arg_mem_block := gi.NewPointerArgument(mem_block)
 	args := []gi.Argument{arg_block_size, arg_mem_block}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_rc_box_get_size
@@ -19824,7 +19959,7 @@ func RcBoxReleaseFull(mem_block unsafe.Pointer, clear_func int /*TODO_TYPE isPtr
 
 // g_realloc
 // container is nil
-func Realloc(mem unsafe.Pointer, n_bytes uint64) {
+func Realloc(mem unsafe.Pointer, n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1056, "realloc", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19833,12 +19968,15 @@ func Realloc(mem unsafe.Pointer, n_bytes uint64) {
 	arg_mem := gi.NewPointerArgument(mem)
 	arg_n_bytes := gi.NewUint64Argument(n_bytes)
 	args := []gi.Argument{arg_mem, arg_n_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_realloc_n
 // container is nil
-func ReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) {
+func ReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1057, "realloc_n", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19848,7 +19986,10 @@ func ReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) {
 	arg_n_blocks := gi.NewUint64Argument(n_blocks)
 	arg_n_block_bytes := gi.NewUint64Argument(n_block_bytes)
 	args := []gi.Argument{arg_mem, arg_n_blocks, arg_n_block_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_ref_count_compare
@@ -20167,7 +20308,7 @@ func Rmdir(filename string) (result int32) {
 
 // g_sequence_get
 // container is nil
-func SequenceGet(iter SequenceIter) {
+func SequenceGet(iter SequenceIter) (result unsafe.Pointer) {
 	iv, err := _I.Get(1076, "sequence_get", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20175,7 +20316,10 @@ func SequenceGet(iter SequenceIter) {
 	}
 	arg_iter := gi.NewPointerArgument(iter.P)
 	args := []gi.Argument{arg_iter}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_sequence_insert_before
@@ -20450,7 +20594,7 @@ func ShellUnquote(quoted_string string) (result string, err error) {
 
 // g_slice_alloc
 // container is nil
-func SliceAlloc(block_size uint64) {
+func SliceAlloc(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1093, "slice_alloc", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20458,12 +20602,15 @@ func SliceAlloc(block_size uint64) {
 	}
 	arg_block_size := gi.NewUint64Argument(block_size)
 	args := []gi.Argument{arg_block_size}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_slice_alloc0
 // container is nil
-func SliceAlloc0(block_size uint64) {
+func SliceAlloc0(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1094, "slice_alloc0", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20471,12 +20618,15 @@ func SliceAlloc0(block_size uint64) {
 	}
 	arg_block_size := gi.NewUint64Argument(block_size)
 	args := []gi.Argument{arg_block_size}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_slice_copy
 // container is nil
-func SliceCopy(block_size uint64, mem_block unsafe.Pointer) {
+func SliceCopy(block_size uint64, mem_block unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(1095, "slice_copy", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20485,7 +20635,10 @@ func SliceCopy(block_size uint64, mem_block unsafe.Pointer) {
 	arg_block_size := gi.NewUint64Argument(block_size)
 	arg_mem_block := gi.NewPointerArgument(mem_block)
 	args := []gi.Argument{arg_block_size, arg_mem_block}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_slice_free1
@@ -22392,7 +22545,7 @@ func TrashStackHeight(stack_p TrashStack) (result uint32) {
 
 // g_trash_stack_peek
 // container is nil
-func TrashStackPeek(stack_p TrashStack) {
+func TrashStackPeek(stack_p TrashStack) (result unsafe.Pointer) {
 	iv, err := _I.Get(1204, "trash_stack_peek", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22400,12 +22553,15 @@ func TrashStackPeek(stack_p TrashStack) {
 	}
 	arg_stack_p := gi.NewPointerArgument(stack_p.P)
 	args := []gi.Argument{arg_stack_p}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_trash_stack_pop
 // container is nil
-func TrashStackPop(stack_p TrashStack) {
+func TrashStackPop(stack_p TrashStack) (result unsafe.Pointer) {
 	iv, err := _I.Get(1205, "trash_stack_pop", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22413,7 +22569,10 @@ func TrashStackPop(stack_p TrashStack) {
 	}
 	arg_stack_p := gi.NewPointerArgument(stack_p.P)
 	args := []gi.Argument{arg_stack_p}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_trash_stack_push
@@ -22432,7 +22591,7 @@ func TrashStackPush(stack_p TrashStack, data_p unsafe.Pointer) {
 
 // g_try_malloc
 // container is nil
-func TryMalloc(n_bytes uint64) {
+func TryMalloc(n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1207, "try_malloc", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22440,12 +22599,15 @@ func TryMalloc(n_bytes uint64) {
 	}
 	arg_n_bytes := gi.NewUint64Argument(n_bytes)
 	args := []gi.Argument{arg_n_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_try_malloc0
 // container is nil
-func TryMalloc0(n_bytes uint64) {
+func TryMalloc0(n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1208, "try_malloc0", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22453,12 +22615,15 @@ func TryMalloc0(n_bytes uint64) {
 	}
 	arg_n_bytes := gi.NewUint64Argument(n_bytes)
 	args := []gi.Argument{arg_n_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_try_malloc0_n
 // container is nil
-func TryMalloc0N(n_blocks uint64, n_block_bytes uint64) {
+func TryMalloc0N(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1209, "try_malloc0_n", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22467,12 +22632,15 @@ func TryMalloc0N(n_blocks uint64, n_block_bytes uint64) {
 	arg_n_blocks := gi.NewUint64Argument(n_blocks)
 	arg_n_block_bytes := gi.NewUint64Argument(n_block_bytes)
 	args := []gi.Argument{arg_n_blocks, arg_n_block_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_try_malloc_n
 // container is nil
-func TryMallocN(n_blocks uint64, n_block_bytes uint64) {
+func TryMallocN(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1210, "try_malloc_n", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22481,12 +22649,15 @@ func TryMallocN(n_blocks uint64, n_block_bytes uint64) {
 	arg_n_blocks := gi.NewUint64Argument(n_blocks)
 	arg_n_block_bytes := gi.NewUint64Argument(n_block_bytes)
 	args := []gi.Argument{arg_n_blocks, arg_n_block_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_try_realloc
 // container is nil
-func TryRealloc(mem unsafe.Pointer, n_bytes uint64) {
+func TryRealloc(mem unsafe.Pointer, n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1211, "try_realloc", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22495,12 +22666,15 @@ func TryRealloc(mem unsafe.Pointer, n_bytes uint64) {
 	arg_mem := gi.NewPointerArgument(mem)
 	arg_n_bytes := gi.NewUint64Argument(n_bytes)
 	args := []gi.Argument{arg_mem, arg_n_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_try_realloc_n
 // container is nil
-func TryReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) {
+func TryReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1212, "try_realloc_n", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22510,7 +22684,10 @@ func TryReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) {
 	arg_n_blocks := gi.NewUint64Argument(n_blocks)
 	arg_n_block_bytes := gi.NewUint64Argument(n_block_bytes)
 	args := []gi.Argument{arg_mem, arg_n_blocks, arg_n_block_bytes}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // g_ucs4_to_utf16

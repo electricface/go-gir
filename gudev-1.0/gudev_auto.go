@@ -1,5 +1,6 @@
 package gudev
 
+import "github.com/electricface/go-gir/glib-2.0"
 import "github.com/electricface/go-gir/gobject-2.0"
 import "github.com/electricface/go-gir3/gi"
 import "log"
@@ -87,7 +88,7 @@ func (v Client) QueryByDeviceNumber(type1 DeviceTypeEnum, number uint64) (result
 // g_udev_client_query_by_subsystem
 // container is not nil, container is Client
 // is method
-func (v Client) QueryBySubsystem(subsystem string) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Client) QueryBySubsystem(subsystem string) (result glib.List) {
 	iv, err := _I.Get(3, "Client", "query_by_subsystem")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -100,7 +101,7 @@ func (v Client) QueryBySubsystem(subsystem string) (result int /*TODO_TYPE isPtr
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_subsystem)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -814,7 +815,11 @@ func NewEnumerator(client IClient) (result Enumerator) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_client := gi.NewPointerArgument(client.P_Client())
+	var tmp unsafe.Pointer
+	if client != nil {
+		tmp = client.P_Client()
+	}
+	arg_client := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_client}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1011,7 +1016,7 @@ func (v Enumerator) AddSysfsPath(sysfs_path string) (result Enumerator) {
 // g_udev_enumerator_execute
 // container is not nil, container is Enumerator
 // is method
-func (v Enumerator) Execute() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Enumerator) Execute() (result glib.List) {
 	iv, err := _I.Get(49, "Enumerator", "execute")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1021,7 +1026,7 @@ func (v Enumerator) Execute() (result int /*TODO_TYPE isPtr: true, tag: glist*/)
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 

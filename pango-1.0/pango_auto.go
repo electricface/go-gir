@@ -70,7 +70,7 @@ type AttrIterator struct {
 // pango_attr_iterator_get_attrs
 // container is not nil, container is AttrIterator
 // is method
-func (v AttrIterator) GetAttrs() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v AttrIterator) GetAttrs() (result glib.SList) {
 	iv, err := _I.Get(0, "AttrIterator", "get_attrs")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -80,14 +80,14 @@ func (v AttrIterator) GetAttrs() (result int /*TODO_TYPE isPtr: true, tag: gslis
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // pango_attr_iterator_get_font
 // container is not nil, container is AttrIterator
 // is method
-func (v AttrIterator) GetFont(desc FontDescription, language Language, extra_attrs int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v AttrIterator) GetFont(desc FontDescription, language Language, extra_attrs glib.SList) {
 	iv, err := _I.Get(1, "AttrIterator", "get_font")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -96,7 +96,7 @@ func (v AttrIterator) GetFont(desc FontDescription, language Language, extra_att
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_desc := gi.NewPointerArgument(desc.P)
 	arg_language := gi.NewPointerArgument(language.P)
-	arg_extra_attrs := gi.NewIntArgument(extra_attrs) /*TODO*/
+	arg_extra_attrs := gi.NewPointerArgument(extra_attrs.P)
 	args := []gi.Argument{arg_v, arg_desc, arg_language, arg_extra_attrs}
 	iv.Call(args, nil, nil)
 }
@@ -816,8 +816,12 @@ func (v Context) SetFontMap(font_map IFontMap) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if font_map != nil {
+		tmp = font_map.P_FontMap()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font_map := gi.NewPointerArgument(font_map.P_FontMap())
+	arg_font_map := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_font_map}
 	iv.Call(args, nil, nil)
 }
@@ -2009,8 +2013,12 @@ func (v FontMap) LoadFont(context IContext, desc FontDescription) (result Font) 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_Context()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_Context())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_desc := gi.NewPointerArgument(desc.P)
 	args := []gi.Argument{arg_v, arg_context, arg_desc}
 	var ret gi.Argument
@@ -2028,8 +2036,12 @@ func (v FontMap) LoadFontset(context IContext, desc FontDescription, language La
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_Context()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_Context())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_desc := gi.NewPointerArgument(desc.P)
 	arg_language := gi.NewPointerArgument(language.P)
 	args := []gi.Argument{arg_v, arg_context, arg_desc, arg_language}
@@ -2341,8 +2353,12 @@ func (v FontsetSimple) Append(font IFont) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if font != nil {
+		tmp = font.P_Font()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font := gi.NewPointerArgument(font.P_Font())
+	arg_font := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_font}
 	iv.Call(args, nil, nil)
 }
@@ -2383,7 +2399,7 @@ type GlyphItem struct {
 // pango_glyph_item_apply_attrs
 // container is not nil, container is GlyphItem
 // is method
-func (v GlyphItem) ApplyAttrs(text string, list AttrList) (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v GlyphItem) ApplyAttrs(text string, list AttrList) (result glib.SList) {
 	iv, err := _I.Get(119, "GlyphItem", "apply_attrs")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2397,7 +2413,7 @@ func (v GlyphItem) ApplyAttrs(text string, list AttrList) (result int /*TODO_TYP
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_text)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2649,8 +2665,12 @@ func (v GlyphString) Extents(font IFont) (ink_rect int /*TODO_TYPE*/, logical_re
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if font != nil {
+		tmp = font.P_Font()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font := gi.NewPointerArgument(font.P_Font())
+	arg_font := gi.NewPointerArgument(tmp)
 	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_font, arg_ink_rect, arg_logical_rect}
@@ -2670,10 +2690,14 @@ func (v GlyphString) ExtentsRange(start int32, end int32, font IFont) (ink_rect 
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if font != nil {
+		tmp = font.P_Font()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_start := gi.NewInt32Argument(start)
 	arg_end := gi.NewInt32Argument(end)
-	arg_font := gi.NewPointerArgument(font.P_Font())
+	arg_font := gi.NewPointerArgument(tmp)
 	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_start, arg_end, arg_font, arg_ink_rect, arg_logical_rect}
@@ -3040,7 +3064,11 @@ func NewLayout(context IContext) (result Layout) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_Context())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_Context()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3380,7 +3408,7 @@ func (v Layout) GetLineReadonly(line int32) (result LayoutLine) {
 // pango_layout_get_lines
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetLines() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v Layout) GetLines() (result glib.SList) {
 	iv, err := _I.Get(172, "Layout", "get_lines")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3390,14 +3418,14 @@ func (v Layout) GetLines() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // pango_layout_get_lines_readonly
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetLinesReadonly() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v Layout) GetLinesReadonly() (result glib.SList) {
 	iv, err := _I.Get(173, "Layout", "get_lines_readonly")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3407,7 +3435,7 @@ func (v Layout) GetLinesReadonly() (result int /*TODO_TYPE isPtr: true, tag: gsl
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4825,8 +4853,12 @@ func (v Renderer) DrawGlyph(font IFont, glyph uint32, x float64, y float64) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if font != nil {
+		tmp = font.P_Font()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font := gi.NewPointerArgument(font.P_Font())
+	arg_font := gi.NewPointerArgument(tmp)
 	arg_glyph := gi.NewUint32Argument(glyph)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -4863,8 +4895,12 @@ func (v Renderer) DrawGlyphs(font IFont, glyphs GlyphString, x int32, y int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if font != nil {
+		tmp = font.P_Font()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font := gi.NewPointerArgument(font.P_Font())
+	arg_font := gi.NewPointerArgument(tmp)
 	arg_glyphs := gi.NewPointerArgument(glyphs.P)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -4881,8 +4917,12 @@ func (v Renderer) DrawLayout(layout ILayout, x int32, y int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if layout != nil {
+		tmp = layout.P_Layout()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_layout := gi.NewPointerArgument(layout.P_Layout())
+	arg_layout := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_v, arg_layout, arg_x, arg_y}
@@ -5872,14 +5912,18 @@ func IsZeroWidth(ch rune) (result bool) {
 
 // pango_itemize
 // container is nil
-func Itemize(context IContext, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func Itemize(context IContext, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result glib.List) {
 	iv, err := _I.Get(299, "itemize", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_Context()
+	}
 	c_text := gi.CString(text)
-	arg_context := gi.NewPointerArgument(context.P_Context())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_text := gi.NewStringArgument(c_text)
 	arg_start_index := gi.NewInt32Argument(start_index)
 	arg_length := gi.NewInt32Argument(length)
@@ -5889,20 +5933,24 @@ func Itemize(context IContext, text string, start_index int32, length int32, att
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_text)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // pango_itemize_with_base_dir
 // container is nil
-func ItemizeWithBaseDir(context IContext, base_dir DirectionEnum, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func ItemizeWithBaseDir(context IContext, base_dir DirectionEnum, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result glib.List) {
 	iv, err := _I.Get(300, "itemize_with_base_dir", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_Context()
+	}
 	c_text := gi.CString(text)
-	arg_context := gi.NewPointerArgument(context.P_Context())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_base_dir := gi.NewIntArgument(int(base_dir))
 	arg_text := gi.NewStringArgument(c_text)
 	arg_start_index := gi.NewInt32Argument(start_index)
@@ -5913,7 +5961,7 @@ func ItemizeWithBaseDir(context IContext, base_dir DirectionEnum, text string, s
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_text)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -6200,17 +6248,17 @@ func ReadLine(stream unsafe.Pointer) (result int32, str int /*TODO_TYPE*/) {
 
 // pango_reorder_items
 // container is nil
-func ReorderItems(logical_items int /*TODO_TYPE isPtr: true, tag: glist*/) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func ReorderItems(logical_items glib.List) (result glib.List) {
 	iv, err := _I.Get(315, "reorder_items", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_logical_items := gi.NewIntArgument(logical_items) /*TODO*/
+	arg_logical_items := gi.NewPointerArgument(logical_items.P)
 	args := []gi.Argument{arg_logical_items}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 

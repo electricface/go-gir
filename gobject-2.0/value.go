@@ -286,7 +286,7 @@ func (v Value) GetWithType(reflectType reflect.Type) (interface{}, error) {
 
 		newValPtr := reflect.New(reflectType)
 		newVal := newValPtr.Elem()
-		ptrFieldVal := newVal.FieldByName("Ptr")
+		ptrFieldVal := newVal.FieldByName("P")
 		ptrFieldVal.SetPointer(val)
 
 		return newVal.Interface(), nil

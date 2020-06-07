@@ -163,13 +163,13 @@ type Attribute struct {
 // container is not nil, container is Attribute
 // is method
 // arg0Type tag: gslist, isPtr: true
-func AttributeSetFree1(attrib_set int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func AttributeSetFree1(attrib_set glib.SList) {
 	iv, err := _I.Get(7, "Attribute", "set_free")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_attrib_set := gi.NewIntArgument(attrib_set) /*TODO*/
+	arg_attrib_set := gi.NewPointerArgument(attrib_set.P)
 	args := []gi.Argument{arg_attrib_set}
 	iv.Call(args, nil, nil)
 }
@@ -509,7 +509,7 @@ func (v *DocumentIfc) GetAttributeValue(attribute_name string) (result string) {
 // atk_document_get_attributes
 // container is not nil, container is Document
 // is method
-func (v *DocumentIfc) GetAttributes() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v *DocumentIfc) GetAttributes() (result glib.SList) {
 	iv, err := _I.Get(24, "Document", "get_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -519,7 +519,7 @@ func (v *DocumentIfc) GetAttributes() (result int /*TODO_TYPE isPtr: true, tag: 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -543,7 +543,7 @@ func (v *DocumentIfc) GetCurrentPageNumber() (result int32) {
 // atk_document_get_document
 // container is not nil, container is Document
 // is method
-func (v *DocumentIfc) GetDocument() {
+func (v *DocumentIfc) GetDocument() (result unsafe.Pointer) {
 	iv, err := _I.Get(26, "Document", "get_document")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -551,7 +551,10 @@ func (v *DocumentIfc) GetDocument() {
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
+	var ret gi.Argument
+	iv.Call(args, &ret, nil)
+	result = ret.Pointer()
+	return
 }
 
 // atk_document_get_document_type
@@ -721,14 +724,14 @@ func (v *EditableTextIfc) PasteText(position int32) {
 // atk_editable_text_set_run_attributes
 // container is not nil, container is EditableText
 // is method
-func (v *EditableTextIfc) SetRunAttributes(attrib_set int /*TODO_TYPE isPtr: true, tag: gslist*/, start_offset int32, end_offset int32) (result bool) {
+func (v *EditableTextIfc) SetRunAttributes(attrib_set glib.SList, start_offset int32, end_offset int32) (result bool) {
 	iv, err := _I.Get(36, "EditableText", "set_run_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_attrib_set := gi.NewIntArgument(attrib_set) /*TODO*/
+	arg_attrib_set := gi.NewPointerArgument(attrib_set.P)
 	arg_start_offset := gi.NewInt32Argument(start_offset)
 	arg_end_offset := gi.NewInt32Argument(end_offset)
 	args := []gi.Argument{arg_v, arg_attrib_set, arg_start_offset, arg_end_offset}
@@ -777,7 +780,11 @@ func GObjectAccessibleForObject1(obj gobject.IObject) (result Object) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_obj := gi.NewPointerArgument(obj.P_Object())
+	var tmp unsafe.Pointer
+	if obj != nil {
+		tmp = obj.P_Object()
+	}
+	arg_obj := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_obj}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1273,13 +1280,17 @@ func (v NoOpObject) P_NoOpObject() unsafe.Pointer { return v.P }
 // atk_no_op_object_new
 // container is not nil, container is NoOpObject
 // is constructor
-func NewNoOpObject(obj gobject.IObject) (result Object) {
+func NewNoOpObject(obj gobject.IObject) (result NoOpObject) {
 	iv, err := _I.Get(61, "NoOpObject", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_obj := gi.NewPointerArgument(obj.P_Object())
+	var tmp unsafe.Pointer
+	if obj != nil {
+		tmp = obj.P_Object()
+	}
+	arg_obj := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_obj}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1302,7 +1313,7 @@ func (v NoOpObjectFactory) P_NoOpObjectFactory() unsafe.Pointer { return v.P }
 // atk_no_op_object_factory_new
 // container is not nil, container is NoOpObjectFactory
 // is constructor
-func NewNoOpObjectFactory() (result ObjectFactory) {
+func NewNoOpObjectFactory() (result NoOpObjectFactory) {
 	iv, err := _I.Get(62, "NoOpObjectFactory", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1335,9 +1346,13 @@ func (v Object) AddRelationship(relationship RelationTypeEnum, target IObject) (
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if target != nil {
+		tmp = target.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_relationship := gi.NewIntArgument(int(relationship))
-	arg_target := gi.NewPointerArgument(target.P_Object())
+	arg_target := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_relationship, arg_target}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1348,7 +1363,7 @@ func (v Object) AddRelationship(relationship RelationTypeEnum, target IObject) (
 // atk_object_get_attributes
 // container is not nil, container is Object
 // is method
-func (v Object) GetAttributes() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v Object) GetAttributes() (result glib.SList) {
 	iv, err := _I.Get(64, "Object", "get_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1358,7 +1373,7 @@ func (v Object) GetAttributes() (result int /*TODO_TYPE isPtr: true, tag: gslist
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1639,9 +1654,13 @@ func (v Object) RemoveRelationship(relationship RelationTypeEnum, target IObject
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if target != nil {
+		tmp = target.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_relationship := gi.NewIntArgument(int(relationship))
-	arg_target := gi.NewPointerArgument(target.P_Object())
+	arg_target := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_relationship, arg_target}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1692,8 +1711,12 @@ func (v Object) SetParent(parent IObject) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent := gi.NewPointerArgument(parent.P_Object())
+	arg_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_parent}
 	iv.Call(args, nil, nil)
 }
@@ -1734,8 +1757,12 @@ func (v ObjectFactory) CreateAccessible(obj gobject.IObject) (result Object) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if obj != nil {
+		tmp = obj.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_obj := gi.NewPointerArgument(obj.P_Object())
+	arg_obj := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_obj}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1790,7 +1817,7 @@ func (v Plug) P_Plug() unsafe.Pointer { return v.P }
 // atk_plug_new
 // container is not nil, container is Plug
 // is constructor
-func NewPlug() (result Object) {
+func NewPlug() (result Plug) {
 	iv, err := _I.Get(89, "Plug", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2042,8 +2069,12 @@ func (v Relation) AddTarget(target IObject) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if target != nil {
+		tmp = target.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_target := gi.NewPointerArgument(target.P_Object())
+	arg_target := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_target}
 	iv.Call(args, nil, nil)
 }
@@ -2091,8 +2122,12 @@ func (v Relation) RemoveTarget(target IObject) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if target != nil {
+		tmp = target.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_target := gi.NewPointerArgument(target.P_Object())
+	arg_target := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_target}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2136,8 +2171,12 @@ func (v RelationSet) Add(relation IRelation) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if relation != nil {
+		tmp = relation.P_Relation()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relation := gi.NewPointerArgument(relation.P_Relation())
+	arg_relation := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_relation}
 	iv.Call(args, nil, nil)
 }
@@ -2151,9 +2190,13 @@ func (v RelationSet) AddRelationByType(relationship RelationTypeEnum, target IOb
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if target != nil {
+		tmp = target.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_relationship := gi.NewIntArgument(int(relationship))
-	arg_target := gi.NewPointerArgument(target.P_Object())
+	arg_target := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_relationship, arg_target}
 	iv.Call(args, nil, nil)
 }
@@ -2185,9 +2228,13 @@ func (v RelationSet) ContainsTarget(relationship RelationTypeEnum, target IObjec
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if target != nil {
+		tmp = target.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_relationship := gi.NewIntArgument(int(relationship))
-	arg_target := gi.NewPointerArgument(target.P_Object())
+	arg_target := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_relationship, arg_target}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2257,8 +2304,12 @@ func (v RelationSet) Remove(relation IRelation) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if relation != nil {
+		tmp = relation.P_Relation()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relation := gi.NewPointerArgument(relation.P_Relation())
+	arg_relation := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_relation}
 	iv.Call(args, nil, nil)
 }
@@ -2581,7 +2632,7 @@ func (v Socket) P_Socket() unsafe.Pointer { return v.P }
 // atk_socket_new
 // container is not nil, container is Socket
 // is constructor
-func NewSocket() (result Object) {
+func NewSocket() (result Socket) {
 	iv, err := _I.Get(121, "Socket", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2698,8 +2749,12 @@ func (v StateSet) AndSets(compare_set IStateSet) (result StateSet) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if compare_set != nil {
+		tmp = compare_set.P_StateSet()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_compare_set := gi.NewPointerArgument(compare_set.P_StateSet())
+	arg_compare_set := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_compare_set}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2785,8 +2840,12 @@ func (v StateSet) OrSets(compare_set IStateSet) (result StateSet) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if compare_set != nil {
+		tmp = compare_set.P_StateSet()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_compare_set := gi.NewPointerArgument(compare_set.P_StateSet())
+	arg_compare_set := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_compare_set}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2821,8 +2880,12 @@ func (v StateSet) XorSets(compare_set IStateSet) (result StateSet) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if compare_set != nil {
+		tmp = compare_set.P_StateSet()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_compare_set := gi.NewPointerArgument(compare_set.P_StateSet())
+	arg_compare_set := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_compare_set}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3395,8 +3458,12 @@ func (v *TableIfc) SetCaption(caption IObject) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if caption != nil {
+		tmp = caption.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_caption := gi.NewPointerArgument(caption.P_Object())
+	arg_caption := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_caption}
 	iv.Call(args, nil, nil)
 }
@@ -3428,9 +3495,13 @@ func (v *TableIfc) SetColumnHeader(column int32, header IObject) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if header != nil {
+		tmp = header.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_column := gi.NewInt32Argument(column)
-	arg_header := gi.NewPointerArgument(header.P_Object())
+	arg_header := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_column, arg_header}
 	iv.Call(args, nil, nil)
 }
@@ -3462,9 +3533,13 @@ func (v *TableIfc) SetRowHeader(row int32, header IObject) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if header != nil {
+		tmp = header.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_row := gi.NewInt32Argument(row)
-	arg_header := gi.NewPointerArgument(header.P_Object())
+	arg_header := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_row, arg_header}
 	iv.Call(args, nil, nil)
 }
@@ -3478,8 +3553,12 @@ func (v *TableIfc) SetSummary(accessible IObject) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if accessible != nil {
+		tmp = accessible.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_accessible := gi.NewPointerArgument(accessible.P_Object())
+	arg_accessible := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_accessible}
 	iv.Call(args, nil, nil)
 }
@@ -3770,7 +3849,7 @@ func (v *TextIfc) GetCharacterExtents(offset int32, coords CoordTypeEnum) (x int
 // atk_text_get_default_attributes
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetDefaultAttributes() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v *TextIfc) GetDefaultAttributes() (result glib.SList) {
 	iv, err := _I.Get(182, "Text", "get_default_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3780,7 +3859,7 @@ func (v *TextIfc) GetDefaultAttributes() (result int /*TODO_TYPE isPtr: true, ta
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3845,7 +3924,7 @@ func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, coord_ty
 // atk_text_get_run_attributes
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetRunAttributes(offset int32) (result int /*TODO_TYPE isPtr: true, tag: gslist*/, start_offset int32, end_offset int32) {
+func (v *TextIfc) GetRunAttributes(offset int32) (result glib.SList, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(186, "Text", "get_run_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3861,7 +3940,7 @@ func (v *TextIfc) GetRunAttributes(offset int32) (result int /*TODO_TYPE isPtr: 
 	iv.Call(args, &ret, &outArgs[0])
 	start_offset = outArgs[0].Int32()
 	end_offset = outArgs[1].Int32()
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4267,7 +4346,7 @@ func (v *ValueIfc) GetRange() (result Range) {
 // atk_value_get_sub_ranges
 // container is not nil, container is Value
 // is method
-func (v *ValueIfc) GetSubRanges() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v *ValueIfc) GetSubRanges() (result glib.SList) {
 	iv, err := _I.Get(202, "Value", "get_sub_ranges")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4277,7 +4356,7 @@ func (v *ValueIfc) GetSubRanges() (result int /*TODO_TYPE isPtr: true, tag: gsli
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4367,13 +4446,13 @@ type WindowIfc struct{}
 // ignore GType struct WindowIface
 // atk_attribute_set_free
 // container is nil
-func AttributeSetFree(attrib_set int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func AttributeSetFree(attrib_set glib.SList) {
 	iv, err := _I.Get(206, "attribute_set_free", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_attrib_set := gi.NewIntArgument(attrib_set) /*TODO*/
+	arg_attrib_set := gi.NewPointerArgument(attrib_set.P)
 	args := []gi.Argument{arg_attrib_set}
 	iv.Call(args, nil, nil)
 }
@@ -4386,7 +4465,11 @@ func FocusTrackerNotify(object IObject) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_object := gi.NewPointerArgument(object.P_Object())
+	var tmp unsafe.Pointer
+	if object != nil {
+		tmp = object.P_Object()
+	}
+	arg_object := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_object}
 	iv.Call(args, nil, nil)
 }

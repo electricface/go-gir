@@ -616,8 +616,12 @@ func NewClosureObject(sizeof_closure uint32, object IObject) (result Closure) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if object != nil {
+		tmp = object.P_Object()
+	}
 	arg_sizeof_closure := gi.NewUint32Argument(sizeof_closure)
-	arg_object := gi.NewPointerArgument(object.P_Object())
+	arg_object := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_sizeof_closure, arg_object}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -852,8 +856,12 @@ func ObjectInterfaceInstallProperty1(g_iface TypeInterface, pspec IParamSpec) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
 	arg_g_iface := gi.NewPointerArgument(g_iface.P)
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	arg_pspec := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_g_iface, arg_pspec}
 	iv.Call(args, nil, nil)
 }
@@ -892,10 +900,14 @@ func (v Object) BindProperty(source_property string, target IObject, target_prop
 		return
 	}
 	c_source_property := gi.CString(source_property)
+	var tmp unsafe.Pointer
+	if target != nil {
+		tmp = target.P_Object()
+	}
 	c_target_property := gi.CString(target_property)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_source_property := gi.NewStringArgument(c_source_property)
-	arg_target := gi.NewPointerArgument(target.P_Object())
+	arg_target := gi.NewPointerArgument(tmp)
 	arg_target_property := gi.NewStringArgument(c_target_property)
 	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_source_property, arg_target, arg_target_property, arg_flags}
@@ -917,10 +929,14 @@ func (v Object) BindPropertyFull(source_property string, target IObject, target_
 		return
 	}
 	c_source_property := gi.CString(source_property)
+	var tmp unsafe.Pointer
+	if target != nil {
+		tmp = target.P_Object()
+	}
 	c_target_property := gi.CString(target_property)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_source_property := gi.NewStringArgument(c_source_property)
-	arg_target := gi.NewPointerArgument(target.P_Object())
+	arg_target := gi.NewPointerArgument(tmp)
 	arg_target_property := gi.NewStringArgument(c_target_property)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_transform_to := gi.NewPointerArgument(transform_to.P)
@@ -1080,8 +1096,12 @@ func (v Object) NotifyByPspec(pspec IParamSpec) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	arg_pspec := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_pspec}
 	iv.Call(args, nil, nil)
 }
@@ -1631,8 +1651,12 @@ func (v ParamSpecPool) Insert(pspec IParamSpec, owner_type gi.GType) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_owner_type := gi.NewUintArgument(uint(owner_type))
 	args := []gi.Argument{arg_v, arg_pspec, arg_owner_type}
 	iv.Call(args, nil, nil)
@@ -1665,7 +1689,7 @@ func (v ParamSpecPool) List(owner_type gi.GType) (result gi.PointerArray) {
 // g_param_spec_pool_list_owned
 // container is not nil, container is ParamSpecPool
 // is method
-func (v ParamSpecPool) ListOwned(owner_type gi.GType) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v ParamSpecPool) ListOwned(owner_type gi.GType) (result glib.List) {
 	iv, err := _I.Get(74, "ParamSpecPool", "list_owned")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1676,7 +1700,7 @@ func (v ParamSpecPool) ListOwned(owner_type gi.GType) (result int /*TODO_TYPE is
 	args := []gi.Argument{arg_v, arg_owner_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1711,8 +1735,12 @@ func (v ParamSpecPool) Remove(pspec IParamSpec) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	arg_pspec := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_pspec}
 	iv.Call(args, nil, nil)
 }
@@ -3115,8 +3143,12 @@ func (v Value) SetObject(v_object IObject) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if v_object != nil {
+		tmp = v_object.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_v_object := gi.NewPointerArgument(v_object.P_Object())
+	arg_v_object := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_v_object}
 	iv.Call(args, nil, nil)
 }
@@ -3130,8 +3162,12 @@ func (v Value) SetParam(param IParamSpec) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if param != nil {
+		tmp = param.P_ParamSpec()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_param := gi.NewPointerArgument(param.P_ParamSpec())
+	arg_param := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_param}
 	iv.Call(args, nil, nil)
 }
@@ -4873,7 +4909,11 @@ func ParamValueConvert(pspec IParamSpec, src_value Value, dest_value Value, stri
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_src_value := gi.NewPointerArgument(src_value.P)
 	arg_dest_value := gi.NewPointerArgument(dest_value.P)
 	arg_strict_validation := gi.NewBoolArgument(strict_validation)
@@ -4892,7 +4932,11 @@ func ParamValueDefaults(pspec IParamSpec, value Value) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_pspec, arg_value}
 	var ret gi.Argument
@@ -4909,7 +4953,11 @@ func ParamValueSetDefault(pspec IParamSpec, value Value) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_pspec, arg_value}
 	iv.Call(args, nil, nil)
@@ -4923,7 +4971,11 @@ func ParamValueValidate(pspec IParamSpec, value Value) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_pspec, arg_value}
 	var ret gi.Argument
@@ -4940,7 +4992,11 @@ func ParamValuesCmp(pspec IParamSpec, value1 Value, value2 Value) (result int32)
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_value1 := gi.NewPointerArgument(value1.P)
 	arg_value2 := gi.NewPointerArgument(value2.P)
 	args := []gi.Argument{arg_pspec, arg_value1, arg_value2}
@@ -5048,8 +5104,12 @@ func SignalConnectClosure(instance IObject, detailed_signal string, closure Clos
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
 	c_detailed_signal := gi.CString(detailed_signal)
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_detailed_signal := gi.NewStringArgument(c_detailed_signal)
 	arg_closure := gi.NewPointerArgument(closure.P)
 	arg_after := gi.NewBoolArgument(after)
@@ -5069,7 +5129,11 @@ func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32,
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_closure := gi.NewPointerArgument(closure.P)
@@ -5105,7 +5169,11 @@ func SignalGetInvocationHint(instance IObject) (result SignalInvocationHint) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_instance}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5121,7 +5189,11 @@ func SignalHandlerBlock(instance IObject, handler_id uint64) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_handler_id := gi.NewUint64Argument(handler_id)
 	args := []gi.Argument{arg_instance, arg_handler_id}
 	iv.Call(args, nil, nil)
@@ -5135,7 +5207,11 @@ func SignalHandlerDisconnect(instance IObject, handler_id uint64) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_handler_id := gi.NewUint64Argument(handler_id)
 	args := []gi.Argument{arg_instance, arg_handler_id}
 	iv.Call(args, nil, nil)
@@ -5149,7 +5225,11 @@ func SignalHandlerFind(instance IObject, mask SignalMatchTypeFlags, signal_id ui
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_mask := gi.NewIntArgument(int(mask))
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
@@ -5171,7 +5251,11 @@ func SignalHandlerIsConnected(instance IObject, handler_id uint64) (result bool)
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_handler_id := gi.NewUint64Argument(handler_id)
 	args := []gi.Argument{arg_instance, arg_handler_id}
 	var ret gi.Argument
@@ -5188,7 +5272,11 @@ func SignalHandlerUnblock(instance IObject, handler_id uint64) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_handler_id := gi.NewUint64Argument(handler_id)
 	args := []gi.Argument{arg_instance, arg_handler_id}
 	iv.Call(args, nil, nil)
@@ -5202,7 +5290,11 @@ func SignalHandlersBlockMatched(instance IObject, mask SignalMatchTypeFlags, sig
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_mask := gi.NewIntArgument(int(mask))
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
@@ -5224,7 +5316,11 @@ func SignalHandlersDestroy(instance IObject) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_instance}
 	iv.Call(args, nil, nil)
 }
@@ -5237,7 +5333,11 @@ func SignalHandlersDisconnectMatched(instance IObject, mask SignalMatchTypeFlags
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_mask := gi.NewIntArgument(int(mask))
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
@@ -5259,7 +5359,11 @@ func SignalHandlersUnblockMatched(instance IObject, mask SignalMatchTypeFlags, s
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_mask := gi.NewIntArgument(int(mask))
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
@@ -5281,7 +5385,11 @@ func SignalHasHandlerPending(instance IObject, signal_id uint32, detail uint32, 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_may_be_blocked := gi.NewBoolArgument(may_be_blocked)
@@ -5443,7 +5551,11 @@ func SignalStopEmission(instance IObject, signal_id uint32, detail uint32) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	args := []gi.Argument{arg_instance, arg_signal_id, arg_detail}
@@ -5458,8 +5570,12 @@ func SignalStopEmissionByName(instance IObject, detailed_signal string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if instance != nil {
+		tmp = instance.P_Object()
+	}
 	c_detailed_signal := gi.CString(detailed_signal)
-	arg_instance := gi.NewPointerArgument(instance.P_Object())
+	arg_instance := gi.NewPointerArgument(tmp)
 	arg_detailed_signal := gi.NewStringArgument(c_detailed_signal)
 	args := []gi.Argument{arg_instance, arg_detailed_signal}
 	iv.Call(args, nil, nil)

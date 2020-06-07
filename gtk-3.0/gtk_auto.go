@@ -40,7 +40,7 @@ func (v AboutDialog) P_AboutDialog() unsafe.Pointer { return v.P }
 // gtk_about_dialog_new
 // container is not nil, container is AboutDialog
 // is constructor
-func NewAboutDialog() (result Widget) {
+func NewAboutDialog() (result AboutDialog) {
 	iv, err := _I.Get(0, "AboutDialog", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -448,8 +448,12 @@ func (v AboutDialog) SetLogo(logo gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if logo != nil {
+		tmp = logo.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_logo := gi.NewPointerArgument(logo.P_Pixbuf())
+	arg_logo := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_logo}
 	iv.Call(args, nil, nil)
 }
@@ -639,9 +643,13 @@ func (v AccelGroup) Activate(accel_quark uint32, acceleratable gobject.IObject, 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if acceleratable != nil {
+		tmp = acceleratable.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_accel_quark := gi.NewUint32Argument(accel_quark)
-	arg_acceleratable := gi.NewPointerArgument(acceleratable.P_Object())
+	arg_acceleratable := gi.NewPointerArgument(tmp)
 	arg_accel_key := gi.NewUint32Argument(accel_key)
 	arg_accel_mods := gi.NewIntArgument(int(accel_mods))
 	args := []gi.Argument{arg_v, arg_accel_quark, arg_acceleratable, arg_accel_key, arg_accel_mods}
@@ -862,7 +870,7 @@ func (v AccelLabel) P_AccelLabel() unsafe.Pointer { return v.P }
 // gtk_accel_label_new
 // container is not nil, container is AccelLabel
 // is constructor
-func NewAccelLabel(string string) (result Widget) {
+func NewAccelLabel(string string) (result AccelLabel) {
 	iv, err := _I.Get(45, "AccelLabel", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -989,8 +997,12 @@ func (v AccelLabel) SetAccelWidget(accel_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if accel_widget != nil {
+		tmp = accel_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_accel_widget := gi.NewPointerArgument(accel_widget.P_Widget())
+	arg_accel_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_accel_widget}
 	iv.Call(args, nil, nil)
 }
@@ -1291,8 +1303,12 @@ func (v Accessible) SetWidget(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -1607,7 +1623,7 @@ func (v Action) GetName() (result string) {
 // gtk_action_get_proxies
 // container is not nil, container is Action
 // is method
-func (v Action) GetProxies() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v Action) GetProxies() (result glib.SList) {
 	iv, err := _I.Get(87, "Action", "get_proxies")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1617,7 +1633,7 @@ func (v Action) GetProxies() (result int /*TODO_TYPE isPtr: true, tag: gslist*/)
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -1783,8 +1799,12 @@ func (v Action) SetAccelGroup(accel_group IAccelGroup) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if accel_group != nil {
+		tmp = accel_group.P_AccelGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_accel_group := gi.NewPointerArgument(accel_group.P_AccelGroup())
+	arg_accel_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_accel_group}
 	iv.Call(args, nil, nil)
 }
@@ -2026,7 +2046,7 @@ func (v ActionBar) P_ActionBar() unsafe.Pointer { return v.P }
 // gtk_action_bar_new
 // container is not nil, container is ActionBar
 // is constructor
-func NewActionBar() (result Widget) {
+func NewActionBar() (result ActionBar) {
 	iv, err := _I.Get(112, "ActionBar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2064,8 +2084,12 @@ func (v ActionBar) PackEnd(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -2079,8 +2103,12 @@ func (v ActionBar) PackStart(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -2094,8 +2122,12 @@ func (v ActionBar) SetCenterWidget(center_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if center_widget != nil {
+		tmp = center_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_center_widget := gi.NewPointerArgument(center_widget.P_Widget())
+	arg_center_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_center_widget}
 	iv.Call(args, nil, nil)
 }
@@ -2152,8 +2184,12 @@ func (v ActionGroup) AddAction(action IAction) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if action != nil {
+		tmp = action.P_Action()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_action := gi.NewPointerArgument(action.P_Action())
+	arg_action := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_action}
 	iv.Call(args, nil, nil)
 }
@@ -2167,9 +2203,13 @@ func (v ActionGroup) AddActionWithAccel(action IAction, accelerator string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if action != nil {
+		tmp = action.P_Action()
+	}
 	c_accelerator := gi.CString(accelerator)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_action := gi.NewPointerArgument(action.P_Action())
+	arg_action := gi.NewPointerArgument(tmp)
 	arg_accelerator := gi.NewStringArgument(c_accelerator)
 	args := []gi.Argument{arg_v, arg_action, arg_accelerator}
 	iv.Call(args, nil, nil)
@@ -2267,7 +2307,7 @@ func (v ActionGroup) GetVisible() (result bool) {
 // gtk_action_group_list_actions
 // container is not nil, container is ActionGroup
 // is method
-func (v ActionGroup) ListActions() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v ActionGroup) ListActions() (result glib.List) {
 	iv, err := _I.Get(125, "ActionGroup", "list_actions")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2277,7 +2317,7 @@ func (v ActionGroup) ListActions() (result int /*TODO_TYPE isPtr: true, tag: gli
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -2290,8 +2330,12 @@ func (v ActionGroup) RemoveAction(action IAction) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if action != nil {
+		tmp = action.P_Action()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_action := gi.NewPointerArgument(action.P_Action())
+	arg_action := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_action}
 	iv.Call(args, nil, nil)
 }
@@ -2305,8 +2349,12 @@ func (v ActionGroup) SetAccelGroup(accel_group IAccelGroup) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if accel_group != nil {
+		tmp = accel_group.P_AccelGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_accel_group := gi.NewPointerArgument(accel_group.P_AccelGroup())
+	arg_accel_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_accel_group}
 	iv.Call(args, nil, nil)
 }
@@ -2513,8 +2561,12 @@ func (v *ActivatableIfc) DoSetRelatedAction(action IAction) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if action != nil {
+		tmp = action.P_Action()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_action := gi.NewPointerArgument(action.P_Action())
+	arg_action := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_action}
 	iv.Call(args, nil, nil)
 }
@@ -2562,8 +2614,12 @@ func (v *ActivatableIfc) SetRelatedAction(action IAction) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if action != nil {
+		tmp = action.P_Action()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_action := gi.NewPointerArgument(action.P_Action())
+	arg_action := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_action}
 	iv.Call(args, nil, nil)
 }
@@ -2592,8 +2648,12 @@ func (v *ActivatableIfc) SyncActionProperties(action IAction) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if action != nil {
+		tmp = action.P_Action()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_action := gi.NewPointerArgument(action.P_Action())
+	arg_action := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_action}
 	iv.Call(args, nil, nil)
 }
@@ -2938,7 +2998,7 @@ func (v Alignment) P_Alignment() unsafe.Pointer { return v.P }
 // gtk_alignment_new
 // container is not nil, container is Alignment
 // is constructor
-func NewAlignment(xalign float32, yalign float32, xscale float32, yscale float32) (result Widget) {
+func NewAlignment(xalign float32, yalign float32, xscale float32, yscale float32) (result Alignment) {
 	iv, err := _I.Get(162, "Alignment", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3095,7 +3155,7 @@ func (v AppChooserButton) P_AppChooserButton() unsafe.Pointer { return v.P }
 // gtk_app_chooser_button_new
 // container is not nil, container is AppChooserButton
 // is constructor
-func NewAppChooserButton(content_type string) (result Widget) {
+func NewAppChooserButton(content_type string) (result AppChooserButton) {
 	iv, err := _I.Get(169, "AppChooserButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3284,13 +3344,17 @@ func (v AppChooserDialog) P_AppChooserDialog() unsafe.Pointer { return v.P }
 // gtk_app_chooser_dialog_new
 // container is not nil, container is AppChooserDialog
 // is constructor
-func NewAppChooserDialog(parent IWindow, flags DialogFlags, file gio.File) (result Widget) {
+func NewAppChooserDialog(parent IWindow, flags DialogFlags, file gio.File) (result AppChooserDialog) {
 	iv, err := _I.Get(179, "AppChooserDialog", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
+	arg_parent := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_file := gi.NewPointerArgument(file.P)
 	args := []gi.Argument{arg_parent, arg_flags, arg_file}
@@ -3303,14 +3367,18 @@ func NewAppChooserDialog(parent IWindow, flags DialogFlags, file gio.File) (resu
 // gtk_app_chooser_dialog_new_for_content_type
 // container is not nil, container is AppChooserDialog
 // is constructor
-func NewAppChooserDialogForContentType(parent IWindow, flags DialogFlags, content_type string) (result Widget) {
+func NewAppChooserDialogForContentType(parent IWindow, flags DialogFlags, content_type string) (result AppChooserDialog) {
 	iv, err := _I.Get(180, "AppChooserDialog", "new_for_content_type")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
 	c_content_type := gi.CString(content_type)
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	arg_parent := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_content_type := gi.NewStringArgument(c_content_type)
 	args := []gi.Argument{arg_parent, arg_flags, arg_content_type}
@@ -3396,7 +3464,7 @@ func (v AppChooserWidget) P_AppChooserWidget() unsafe.Pointer { return v.P }
 // gtk_app_chooser_widget_new
 // container is not nil, container is AppChooserWidget
 // is constructor
-func NewAppChooserWidget(content_type string) (result Widget) {
+func NewAppChooserWidget(content_type string) (result AppChooserWidget) {
 	iv, err := _I.Get(184, "AppChooserWidget", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3675,8 +3743,12 @@ func (v Application) AddWindow(window IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -3815,7 +3887,7 @@ func (v Application) GetWindowById(id uint32) (result Window) {
 // gtk_application_get_windows
 // container is not nil, container is Application
 // is method
-func (v Application) GetWindows() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Application) GetWindows() (result glib.List) {
 	iv, err := _I.Get(207, "Application", "get_windows")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3825,7 +3897,7 @@ func (v Application) GetWindows() (result int /*TODO_TYPE isPtr: true, tag: glis
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -3838,9 +3910,13 @@ func (v Application) Inhibit(window IWindow, flags ApplicationInhibitFlags, reas
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	c_reason := gi.CString(reason)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_reason := gi.NewStringArgument(c_reason)
 	args := []gi.Argument{arg_v, arg_window, arg_flags, arg_reason}
@@ -3931,8 +4007,12 @@ func (v Application) RemoveWindow(window IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -3964,8 +4044,12 @@ func (v Application) SetAppMenu(app_menu gio.IMenuModel) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if app_menu != nil {
+		tmp = app_menu.P_MenuModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_app_menu := gi.NewPointerArgument(app_menu.P_MenuModel())
+	arg_app_menu := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_app_menu}
 	iv.Call(args, nil, nil)
 }
@@ -3979,8 +4063,12 @@ func (v Application) SetMenubar(menubar gio.IMenuModel) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if menubar != nil {
+		tmp = menubar.P_MenuModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_menubar := gi.NewPointerArgument(menubar.P_MenuModel())
+	arg_menubar := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_menubar}
 	iv.Call(args, nil, nil)
 }
@@ -4034,13 +4122,17 @@ func (v ApplicationWindow) P_ApplicationWindow() unsafe.Pointer { return v.P }
 // gtk_application_window_new
 // container is not nil, container is ApplicationWindow
 // is constructor
-func NewApplicationWindow(application IApplication) (result Widget) {
+func NewApplicationWindow(application IApplication) (result ApplicationWindow) {
 	iv, err := _I.Get(218, "ApplicationWindow", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_application := gi.NewPointerArgument(application.P_Application())
+	var tmp unsafe.Pointer
+	if application != nil {
+		tmp = application.P_Application()
+	}
+	arg_application := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_application}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4108,8 +4200,12 @@ func (v ApplicationWindow) SetHelpOverlay(help_overlay IShortcutsWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if help_overlay != nil {
+		tmp = help_overlay.P_ShortcutsWindow()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_help_overlay := gi.NewPointerArgument(help_overlay.P_ShortcutsWindow())
+	arg_help_overlay := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_help_overlay}
 	iv.Call(args, nil, nil)
 }
@@ -4151,7 +4247,7 @@ func (v Arrow) P_Arrow() unsafe.Pointer { return v.P }
 // gtk_arrow_new
 // container is not nil, container is Arrow
 // is constructor
-func NewArrow(arrow_type ArrowTypeEnum, shadow_type ShadowTypeEnum) (result Widget) {
+func NewArrow(arrow_type ArrowTypeEnum, shadow_type ShadowTypeEnum) (result Arrow) {
 	iv, err := _I.Get(224, "Arrow", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4243,7 +4339,7 @@ func (v AspectFrame) P_AspectFrame() unsafe.Pointer { return v.P }
 // gtk_aspect_frame_new
 // container is not nil, container is AspectFrame
 // is constructor
-func NewAspectFrame(label string, xalign float32, yalign float32, ratio float32, obey_child bool) (result Widget) {
+func NewAspectFrame(label string, xalign float32, yalign float32, ratio float32, obey_child bool) (result AspectFrame) {
 	iv, err := _I.Get(226, "AspectFrame", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4303,7 +4399,7 @@ func (v Assistant) P_Assistant() unsafe.Pointer { return v.P }
 // gtk_assistant_new
 // container is not nil, container is Assistant
 // is constructor
-func NewAssistant() (result Widget) {
+func NewAssistant() (result Assistant) {
 	iv, err := _I.Get(228, "Assistant", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4324,8 +4420,12 @@ func (v Assistant) AddActionWidget(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -4339,8 +4439,12 @@ func (v Assistant) AppendPage(page IWidget) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_page}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4423,8 +4527,12 @@ func (v Assistant) GetPageComplete(page IWidget) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_page}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4441,8 +4549,12 @@ func (v Assistant) GetPageHasPadding(page IWidget) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_page}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4459,8 +4571,12 @@ func (v Assistant) GetPageHeaderImage(page IWidget) (result gdkpixbuf.Pixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_page}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4477,8 +4593,12 @@ func (v Assistant) GetPageSideImage(page IWidget) (result gdkpixbuf.Pixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_page}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4495,8 +4615,12 @@ func (v Assistant) GetPageTitle(page IWidget) (result string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_page}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4513,8 +4637,12 @@ func (v Assistant) GetPageType(page IWidget) (result AssistantPageTypeEnum) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_page}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4531,8 +4659,12 @@ func (v Assistant) InsertPage(page IWidget, position int32) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_page, arg_position}
 	var ret gi.Argument
@@ -4564,8 +4696,12 @@ func (v Assistant) PrependPage(page IWidget) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_page}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4596,8 +4732,12 @@ func (v Assistant) RemoveActionWidget(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -4658,8 +4798,12 @@ func (v Assistant) SetPageComplete(page IWidget, complete bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	arg_complete := gi.NewBoolArgument(complete)
 	args := []gi.Argument{arg_v, arg_page, arg_complete}
 	iv.Call(args, nil, nil)
@@ -4674,8 +4818,12 @@ func (v Assistant) SetPageHasPadding(page IWidget, has_padding bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	arg_has_padding := gi.NewBoolArgument(has_padding)
 	args := []gi.Argument{arg_v, arg_page, arg_has_padding}
 	iv.Call(args, nil, nil)
@@ -4690,9 +4838,17 @@ func (v Assistant) SetPageHeaderImage(page IWidget, pixbuf gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if pixbuf != nil {
+		tmp1 = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_page := gi.NewPointerArgument(tmp)
+	arg_pixbuf := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_page, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -4706,9 +4862,17 @@ func (v Assistant) SetPageSideImage(page IWidget, pixbuf gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if pixbuf != nil {
+		tmp1 = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_page := gi.NewPointerArgument(tmp)
+	arg_pixbuf := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_page, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -4722,9 +4886,13 @@ func (v Assistant) SetPageTitle(page IWidget, title string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	c_title := gi.CString(title)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	arg_title := gi.NewStringArgument(c_title)
 	args := []gi.Argument{arg_v, arg_page, arg_title}
 	iv.Call(args, nil, nil)
@@ -4740,8 +4908,12 @@ func (v Assistant) SetPageType(page IWidget, type1 AssistantPageTypeEnum) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if page != nil {
+		tmp = page.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page := gi.NewPointerArgument(page.P_Widget())
+	arg_page := gi.NewPointerArgument(tmp)
 	arg_type1 := gi.NewIntArgument(int(type1))
 	args := []gi.Argument{arg_v, arg_page, arg_type1}
 	iv.Call(args, nil, nil)
@@ -4868,7 +5040,7 @@ func BindingEntryAddSignalFromString1(binding_set BindingSet, signal_desc string
 // container is not nil, container is BindingEntry
 // is method
 // arg0Type tag: interface, isPtr: true
-func BindingEntryAddSignall1(binding_set BindingSet, keyval uint32, modifiers gdk.ModifierTypeFlags, signal_name string, binding_args int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func BindingEntryAddSignall1(binding_set BindingSet, keyval uint32, modifiers gdk.ModifierTypeFlags, signal_name string, binding_args glib.SList) {
 	iv, err := _I.Get(258, "BindingEntry", "add_signall")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4879,7 +5051,7 @@ func BindingEntryAddSignall1(binding_set BindingSet, keyval uint32, modifiers gd
 	arg_keyval := gi.NewUint32Argument(keyval)
 	arg_modifiers := gi.NewIntArgument(int(modifiers))
 	arg_signal_name := gi.NewStringArgument(c_signal_name)
-	arg_binding_args := gi.NewIntArgument(binding_args) /*TODO*/
+	arg_binding_args := gi.NewPointerArgument(binding_args.P)
 	args := []gi.Argument{arg_binding_set, arg_keyval, arg_modifiers, arg_signal_name, arg_binding_args}
 	iv.Call(args, nil, nil)
 	gi.Free(c_signal_name)
@@ -4933,10 +5105,14 @@ func (v BindingSet) Activate(keyval uint32, modifiers gdk.ModifierTypeFlags, obj
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if object != nil {
+		tmp = object.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_keyval := gi.NewUint32Argument(keyval)
 	arg_modifiers := gi.NewIntArgument(int(modifiers))
-	arg_object := gi.NewPointerArgument(object.P_Object())
+	arg_object := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_keyval, arg_modifiers, arg_object}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5092,7 +5268,7 @@ func (v Box) P_Box() unsafe.Pointer { return v.P }
 // gtk_box_new
 // container is not nil, container is Box
 // is constructor
-func NewBox(orientation OrientationEnum, spacing int32) (result Widget) {
+func NewBox(orientation OrientationEnum, spacing int32) (result Box) {
 	iv, err := _I.Get(267, "Box", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5184,8 +5360,12 @@ func (v Box) PackEnd(child IWidget, expand bool, fill bool, padding uint32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewBoolArgument(expand)
 	arg_fill := gi.NewBoolArgument(fill)
 	arg_padding := gi.NewUint32Argument(padding)
@@ -5202,8 +5382,12 @@ func (v Box) PackStart(child IWidget, expand bool, fill bool, padding uint32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewBoolArgument(expand)
 	arg_fill := gi.NewBoolArgument(fill)
 	arg_padding := gi.NewUint32Argument(padding)
@@ -5221,8 +5405,12 @@ func (v Box) QueryChildPacking(child IWidget) (expand bool, fill bool, padding u
 		return
 	}
 	var outArgs [4]gi.Argument
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_fill := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_padding := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -5245,8 +5433,12 @@ func (v Box) ReorderChild(child IWidget, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_child, arg_position}
 	iv.Call(args, nil, nil)
@@ -5276,8 +5468,12 @@ func (v Box) SetCenterWidget(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -5291,8 +5487,12 @@ func (v Box) SetChildPacking(child IWidget, expand bool, fill bool, padding uint
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewBoolArgument(expand)
 	arg_fill := gi.NewBoolArgument(fill)
 	arg_padding := gi.NewUint32Argument(padding)
@@ -5353,10 +5553,18 @@ func (v *BuildableIfc) AddChild(builder IBuilder, child gobject.IObject, type1 s
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if builder != nil {
+		tmp = builder.P_Builder()
+	}
+	var tmp1 unsafe.Pointer
+	if child != nil {
+		tmp1 = child.P_Object()
+	}
 	c_type1 := gi.CString(type1)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_builder := gi.NewPointerArgument(builder.P_Builder())
-	arg_child := gi.NewPointerArgument(child.P_Object())
+	arg_builder := gi.NewPointerArgument(tmp)
+	arg_child := gi.NewPointerArgument(tmp1)
 	arg_type1 := gi.NewStringArgument(c_type1)
 	args := []gi.Argument{arg_v, arg_builder, arg_child, arg_type1}
 	iv.Call(args, nil, nil)
@@ -5372,9 +5580,13 @@ func (v *BuildableIfc) ConstructChild(builder IBuilder, name string) (result gob
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if builder != nil {
+		tmp = builder.P_Builder()
+	}
 	c_name := gi.CString(name)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_builder := gi.NewPointerArgument(builder.P_Builder())
+	arg_builder := gi.NewPointerArgument(tmp)
 	arg_name := gi.NewStringArgument(c_name)
 	args := []gi.Argument{arg_v, arg_builder, arg_name}
 	var ret gi.Argument
@@ -5393,10 +5605,18 @@ func (v *BuildableIfc) CustomFinished(builder IBuilder, child gobject.IObject, t
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if builder != nil {
+		tmp = builder.P_Builder()
+	}
+	var tmp1 unsafe.Pointer
+	if child != nil {
+		tmp1 = child.P_Object()
+	}
 	c_tagname := gi.CString(tagname)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_builder := gi.NewPointerArgument(builder.P_Builder())
-	arg_child := gi.NewPointerArgument(child.P_Object())
+	arg_builder := gi.NewPointerArgument(tmp)
+	arg_child := gi.NewPointerArgument(tmp1)
 	arg_tagname := gi.NewStringArgument(c_tagname)
 	arg_data := gi.NewPointerArgument(data)
 	args := []gi.Argument{arg_v, arg_builder, arg_child, arg_tagname, arg_data}
@@ -5413,10 +5633,18 @@ func (v *BuildableIfc) CustomTagEnd(builder IBuilder, child gobject.IObject, tag
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if builder != nil {
+		tmp = builder.P_Builder()
+	}
+	var tmp1 unsafe.Pointer
+	if child != nil {
+		tmp1 = child.P_Object()
+	}
 	c_tagname := gi.CString(tagname)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_builder := gi.NewPointerArgument(builder.P_Builder())
-	arg_child := gi.NewPointerArgument(child.P_Object())
+	arg_builder := gi.NewPointerArgument(tmp)
+	arg_child := gi.NewPointerArgument(tmp1)
 	arg_tagname := gi.NewStringArgument(c_tagname)
 	arg_data := gi.NewPointerArgument(data)
 	args := []gi.Argument{arg_v, arg_builder, arg_child, arg_tagname, arg_data}
@@ -5434,10 +5662,18 @@ func (v *BuildableIfc) CustomTagStart(builder IBuilder, child gobject.IObject, t
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if builder != nil {
+		tmp = builder.P_Builder()
+	}
+	var tmp1 unsafe.Pointer
+	if child != nil {
+		tmp1 = child.P_Object()
+	}
 	c_tagname := gi.CString(tagname)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_builder := gi.NewPointerArgument(builder.P_Builder())
-	arg_child := gi.NewPointerArgument(child.P_Object())
+	arg_builder := gi.NewPointerArgument(tmp)
+	arg_child := gi.NewPointerArgument(tmp1)
 	arg_tagname := gi.NewStringArgument(c_tagname)
 	arg_parser := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_data := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -5460,9 +5696,13 @@ func (v *BuildableIfc) GetInternalChild(builder IBuilder, childname string) (res
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if builder != nil {
+		tmp = builder.P_Builder()
+	}
 	c_childname := gi.CString(childname)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_builder := gi.NewPointerArgument(builder.P_Builder())
+	arg_builder := gi.NewPointerArgument(tmp)
 	arg_childname := gi.NewStringArgument(c_childname)
 	args := []gi.Argument{arg_v, arg_builder, arg_childname}
 	var ret gi.Argument
@@ -5498,8 +5738,12 @@ func (v *BuildableIfc) ParserFinished(builder IBuilder) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if builder != nil {
+		tmp = builder.P_Builder()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_builder := gi.NewPointerArgument(builder.P_Builder())
+	arg_builder := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_builder}
 	iv.Call(args, nil, nil)
 }
@@ -5513,9 +5757,13 @@ func (v *BuildableIfc) SetBuildableProperty(builder IBuilder, name string, value
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if builder != nil {
+		tmp = builder.P_Builder()
+	}
 	c_name := gi.CString(name)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_builder := gi.NewPointerArgument(builder.P_Builder())
+	arg_builder := gi.NewPointerArgument(tmp)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_v, arg_builder, arg_name, arg_value}
@@ -5821,9 +6069,13 @@ func (v Builder) ExposeObject(name string, object gobject.IObject) {
 		return
 	}
 	c_name := gi.CString(name)
+	var tmp unsafe.Pointer
+	if object != nil {
+		tmp = object.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_name := gi.NewStringArgument(c_name)
-	arg_object := gi.NewPointerArgument(object.P_Object())
+	arg_object := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_name, arg_object}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -5838,9 +6090,13 @@ func (v Builder) ExtendWithTemplate(widget IWidget, template_type gi.GType, buff
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	c_buffer := gi.CString(buffer)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_template_type := gi.NewUintArgument(uint(template_type))
 	arg_buffer := gi.NewStringArgument(c_buffer)
 	arg_length := gi.NewUint64Argument(length)
@@ -5894,7 +6150,7 @@ func (v Builder) GetObject(name string) (result gobject.Object) {
 // gtk_builder_get_objects
 // container is not nil, container is Builder
 // is method
-func (v Builder) GetObjects() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v Builder) GetObjects() (result glib.SList) {
 	iv, err := _I.Get(308, "Builder", "get_objects")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5904,7 +6160,7 @@ func (v Builder) GetObjects() (result int /*TODO_TYPE isPtr: true, tag: gslist*/
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -5954,8 +6210,12 @@ func (v Builder) SetApplication(application IApplication) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if application != nil {
+		tmp = application.P_Application()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_application := gi.NewPointerArgument(application.P_Application())
+	arg_application := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_application}
 	iv.Call(args, nil, nil)
 }
@@ -5986,9 +6246,13 @@ func (v Builder) ValueFromString(pspec gobject.IParamSpec, string string) (resul
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
 	c_string := gi.CString(string)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_string := gi.NewStringArgument(c_string)
 	arg_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -6071,7 +6335,7 @@ func (v Button) P_Button() unsafe.Pointer { return v.P }
 // gtk_button_new
 // container is not nil, container is Button
 // is constructor
-func NewButton() (result Widget) {
+func NewButton() (result Button) {
 	iv, err := _I.Get(315, "Button", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6086,7 +6350,7 @@ func NewButton() (result Widget) {
 // gtk_button_new_from_icon_name
 // container is not nil, container is Button
 // is constructor
-func NewButtonFromIconName(icon_name string, size int32) (result Widget) {
+func NewButtonFromIconName(icon_name string, size int32) (result Button) {
 	iv, err := _I.Get(316, "Button", "new_from_icon_name")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6106,7 +6370,7 @@ func NewButtonFromIconName(icon_name string, size int32) (result Widget) {
 // gtk_button_new_from_stock
 // container is not nil, container is Button
 // is constructor
-func NewButtonFromStock(stock_id string) (result Widget) {
+func NewButtonFromStock(stock_id string) (result Button) {
 	iv, err := _I.Get(317, "Button", "new_from_stock")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6125,7 +6389,7 @@ func NewButtonFromStock(stock_id string) (result Widget) {
 // gtk_button_new_with_label
 // container is not nil, container is Button
 // is constructor
-func NewButtonWithLabel(label string) (result Widget) {
+func NewButtonWithLabel(label string) (result Button) {
 	iv, err := _I.Get(318, "Button", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6144,7 +6408,7 @@ func NewButtonWithLabel(label string) (result Widget) {
 // gtk_button_new_with_mnemonic
 // container is not nil, container is Button
 // is constructor
-func NewButtonWithMnemonic(label string) (result Widget) {
+func NewButtonWithMnemonic(label string) (result Button) {
 	iv, err := _I.Get(319, "Button", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6458,8 +6722,12 @@ func (v Button) SetImage(image IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if image != nil {
+		tmp = image.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_image := gi.NewPointerArgument(image.P_Widget())
+	arg_image := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_image}
 	iv.Call(args, nil, nil)
 }
@@ -6578,7 +6846,7 @@ func (v ButtonBox) P_ButtonBox() unsafe.Pointer { return v.P }
 // gtk_button_box_new
 // container is not nil, container is ButtonBox
 // is constructor
-func NewButtonBox(orientation OrientationEnum) (result Widget) {
+func NewButtonBox(orientation OrientationEnum) (result ButtonBox) {
 	iv, err := _I.Get(344, "ButtonBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6601,8 +6869,12 @@ func (v ButtonBox) GetChildNonHomogeneous(child IWidget) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6619,8 +6891,12 @@ func (v ButtonBox) GetChildSecondary(child IWidget) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -6654,8 +6930,12 @@ func (v ButtonBox) SetChildNonHomogeneous(child IWidget, non_homogeneous bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_non_homogeneous := gi.NewBoolArgument(non_homogeneous)
 	args := []gi.Argument{arg_v, arg_child, arg_non_homogeneous}
 	iv.Call(args, nil, nil)
@@ -6670,8 +6950,12 @@ func (v ButtonBox) SetChildSecondary(child IWidget, is_secondary bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_is_secondary := gi.NewBoolArgument(is_secondary)
 	args := []gi.Argument{arg_v, arg_child, arg_is_secondary}
 	iv.Call(args, nil, nil)
@@ -6753,7 +7037,7 @@ func (v Calendar) P_Calendar() unsafe.Pointer { return v.P }
 // gtk_calendar_new
 // container is not nil, container is Calendar
 // is constructor
-func NewCalendar() (result Widget) {
+func NewCalendar() (result Calendar) {
 	iv, err := _I.Get(351, "Calendar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7041,8 +7325,12 @@ func (v *CellAccessibleParentIfc) Activate(cell ICellAccessible) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell}
 	iv.Call(args, nil, nil)
 }
@@ -7056,8 +7344,12 @@ func (v *CellAccessibleParentIfc) Edit(cell ICellAccessible) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell}
 	iv.Call(args, nil, nil)
 }
@@ -7071,8 +7363,12 @@ func (v *CellAccessibleParentIfc) ExpandCollapse(cell ICellAccessible) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell}
 	iv.Call(args, nil, nil)
 }
@@ -7086,8 +7382,12 @@ func (v *CellAccessibleParentIfc) GetCellArea(cell ICellAccessible, cell_rect gd
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_cell_rect := gi.NewPointerArgument(cell_rect.P)
 	args := []gi.Argument{arg_v, arg_cell, arg_cell_rect}
 	iv.Call(args, nil, nil)
@@ -7102,8 +7402,12 @@ func (v *CellAccessibleParentIfc) GetCellExtents(cell ICellAccessible, x int32, 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	arg_width := gi.NewInt32Argument(width)
@@ -7122,8 +7426,12 @@ func (v *CellAccessibleParentIfc) GetCellPosition(cell ICellAccessible, row int3
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_row := gi.NewInt32Argument(row)
 	arg_column := gi.NewInt32Argument(column)
 	args := []gi.Argument{arg_v, arg_cell, arg_row, arg_column}
@@ -7139,8 +7447,12 @@ func (v *CellAccessibleParentIfc) GetChildIndex(cell ICellAccessible) (result in
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7157,8 +7469,12 @@ func (v *CellAccessibleParentIfc) GetColumnHeaderCells(cell ICellAccessible) (re
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7175,8 +7491,12 @@ func (v *CellAccessibleParentIfc) GetRendererState(cell ICellAccessible) (result
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7193,8 +7513,12 @@ func (v *CellAccessibleParentIfc) GetRowHeaderCells(cell ICellAccessible) (resul
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7211,8 +7535,12 @@ func (v *CellAccessibleParentIfc) GrabFocus(cell ICellAccessible) (result bool) 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
+	arg_cell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7229,9 +7557,17 @@ func (v *CellAccessibleParentIfc) UpdateRelationset(cell ICellAccessible, relati
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellAccessible()
+	}
+	var tmp1 unsafe.Pointer
+	if relationset != nil {
+		tmp1 = relationset.P_RelationSet()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellAccessible())
-	arg_relationset := gi.NewPointerArgument(relationset.P_RelationSet())
+	arg_cell := gi.NewPointerArgument(tmp)
+	arg_relationset := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_cell, arg_relationset}
 	iv.Call(args, nil, nil)
 }
@@ -7264,9 +7600,17 @@ func (v CellArea) Activate(context ICellAreaContext, widget IWidget, cell_area g
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_edit_only := gi.NewBoolArgument(edit_only)
@@ -7286,9 +7630,17 @@ func (v CellArea) ActivateCell(widget IWidget, renderer ICellRenderer, event gdk
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if renderer != nil {
+		tmp1 = renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_widget := gi.NewPointerArgument(tmp)
+	arg_renderer := gi.NewPointerArgument(tmp1)
 	arg_event := gi.NewPointerArgument(event.P)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_flags := gi.NewIntArgument(int(flags))
@@ -7308,8 +7660,12 @@ func (v CellArea) Add(renderer ICellRenderer) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_renderer}
 	iv.Call(args, nil, nil)
 }
@@ -7323,9 +7679,17 @@ func (v CellArea) AddFocusSibling(renderer ICellRenderer, sibling ICellRenderer)
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
+	var tmp1 unsafe.Pointer
+	if sibling != nil {
+		tmp1 = sibling.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
-	arg_sibling := gi.NewPointerArgument(sibling.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
+	arg_sibling := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_renderer, arg_sibling}
 	iv.Call(args, nil, nil)
 }
@@ -7357,9 +7721,13 @@ func (v CellArea) AttributeConnect(renderer ICellRenderer, attribute string, col
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	c_attribute := gi.CString(attribute)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	arg_column := gi.NewInt32Argument(column)
 	args := []gi.Argument{arg_v, arg_renderer, arg_attribute, arg_column}
@@ -7376,9 +7744,13 @@ func (v CellArea) AttributeDisconnect(renderer ICellRenderer, attribute string) 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	c_attribute := gi.CString(attribute)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	args := []gi.Argument{arg_v, arg_renderer, arg_attribute}
 	iv.Call(args, nil, nil)
@@ -7394,9 +7766,13 @@ func (v CellArea) AttributeGetColumn(renderer ICellRenderer, attribute string) (
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	c_attribute := gi.CString(attribute)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	args := []gi.Argument{arg_v, arg_renderer, arg_attribute}
 	var ret gi.Argument
@@ -7415,9 +7791,13 @@ func (v CellArea) CellGetProperty(renderer ICellRenderer, property_name string, 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	c_property_name := gi.CString(property_name)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	arg_property_name := gi.NewStringArgument(c_property_name)
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_v, arg_renderer, arg_property_name, arg_value}
@@ -7434,9 +7814,13 @@ func (v CellArea) CellSetProperty(renderer ICellRenderer, property_name string, 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	c_property_name := gi.CString(property_name)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	arg_property_name := gi.NewStringArgument(c_property_name)
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_v, arg_renderer, arg_property_name, arg_value}
@@ -7453,8 +7837,12 @@ func (v CellArea) CopyContext(context ICellAreaContext) (result CellAreaContext)
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7488,9 +7876,17 @@ func (v CellArea) Event(context ICellAreaContext, widget IWidget, event gdk.Even
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_event := gi.NewPointerArgument(event.P)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_flags := gi.NewIntArgument(int(flags))
@@ -7544,9 +7940,17 @@ func (v CellArea) ForeachAlloc(context ICellAreaContext, widget IWidget, cell_ar
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_background_area := gi.NewPointerArgument(background_area.P)
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
@@ -7565,10 +7969,22 @@ func (v CellArea) GetCellAllocation(context ICellAreaContext, widget IWidget, re
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
+	var tmp2 unsafe.Pointer
+	if renderer != nil {
+		tmp2 = renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
+	arg_renderer := gi.NewPointerArgument(tmp2)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_allocation := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_context, arg_widget, arg_renderer, arg_cell_area, arg_allocation}
@@ -7587,9 +8003,17 @@ func (v CellArea) GetCellAtPosition(context ICellAreaContext, widget IWidget, ce
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -7679,8 +8103,12 @@ func (v CellArea) GetFocusFromSibling(renderer ICellRenderer) (result CellRender
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_renderer}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7691,18 +8119,22 @@ func (v CellArea) GetFocusFromSibling(renderer ICellRenderer) (result CellRender
 // gtk_cell_area_get_focus_siblings
 // container is not nil, container is CellArea
 // is method
-func (v CellArea) GetFocusSiblings(renderer ICellRenderer) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v CellArea) GetFocusSiblings(renderer ICellRenderer) (result glib.List) {
 	iv, err := _I.Get(401, "CellArea", "get_focus_siblings")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_renderer}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -7716,9 +8148,17 @@ func (v CellArea) GetPreferredHeight(context ICellAreaContext, widget IWidget) (
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_minimum_height := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_natural_height := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_context, arg_widget, arg_minimum_height, arg_natural_height}
@@ -7738,9 +8178,17 @@ func (v CellArea) GetPreferredHeightForWidth(context ICellAreaContext, widget IW
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_width := gi.NewInt32Argument(width)
 	arg_minimum_height := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_natural_height := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -7761,9 +8209,17 @@ func (v CellArea) GetPreferredWidth(context ICellAreaContext, widget IWidget) (m
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_minimum_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_natural_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_context, arg_widget, arg_minimum_width, arg_natural_width}
@@ -7783,9 +8239,17 @@ func (v CellArea) GetPreferredWidthForHeight(context ICellAreaContext, widget IW
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_height := gi.NewInt32Argument(height)
 	arg_minimum_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_natural_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -7822,8 +8286,12 @@ func (v CellArea) HasRenderer(renderer ICellRenderer) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_renderer}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7841,8 +8309,12 @@ func (v CellArea) InnerCellArea(widget IWidget, cell_area gdk.Rectangle) (inner_
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_inner_area := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_widget, arg_cell_area, arg_inner_area}
@@ -7877,9 +8349,17 @@ func (v CellArea) IsFocusSibling(renderer ICellRenderer, sibling ICellRenderer) 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
+	var tmp1 unsafe.Pointer
+	if sibling != nil {
+		tmp1 = sibling.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
-	arg_sibling := gi.NewPointerArgument(sibling.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
+	arg_sibling := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_renderer, arg_sibling}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7896,8 +8376,12 @@ func (v CellArea) Remove(renderer ICellRenderer) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_renderer}
 	iv.Call(args, nil, nil)
 }
@@ -7911,9 +8395,17 @@ func (v CellArea) RemoveFocusSibling(renderer ICellRenderer, sibling ICellRender
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
+	var tmp1 unsafe.Pointer
+	if sibling != nil {
+		tmp1 = sibling.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
-	arg_sibling := gi.NewPointerArgument(sibling.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
+	arg_sibling := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_renderer, arg_sibling}
 	iv.Call(args, nil, nil)
 }
@@ -7927,9 +8419,17 @@ func (v CellArea) Render(context ICellAreaContext, widget IWidget, cr cairo.Cont
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_CellAreaContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_background_area := gi.NewPointerArgument(background_area.P)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
@@ -7949,10 +8449,18 @@ func (v CellArea) RequestRenderer(renderer ICellRenderer, orientation Orientatio
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	arg_orientation := gi.NewIntArgument(int(orientation))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_for_size := gi.NewInt32Argument(for_size)
 	arg_minimum_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_natural_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -7972,8 +8480,12 @@ func (v CellArea) SetFocusCell(renderer ICellRenderer) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_renderer}
 	iv.Call(args, nil, nil)
 }
@@ -8010,7 +8522,7 @@ func (v CellAreaBox) P_CellAreaBox() unsafe.Pointer { return v.P }
 // gtk_cell_area_box_new
 // container is not nil, container is CellAreaBox
 // is constructor
-func NewCellAreaBox() (result CellArea) {
+func NewCellAreaBox() (result CellAreaBox) {
 	iv, err := _I.Get(417, "CellAreaBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8048,8 +8560,12 @@ func (v CellAreaBox) PackEnd(renderer ICellRenderer, expand bool, align bool, fi
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewBoolArgument(expand)
 	arg_align := gi.NewBoolArgument(align)
 	arg_fixed := gi.NewBoolArgument(fixed)
@@ -8066,8 +8582,12 @@ func (v CellAreaBox) PackStart(renderer ICellRenderer, expand bool, align bool, 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	arg_renderer := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewBoolArgument(expand)
 	arg_align := gi.NewBoolArgument(align)
 	arg_fixed := gi.NewBoolArgument(fixed)
@@ -8367,9 +8887,13 @@ func (v *CellLayoutIfc) AddAttribute(cell ICellRenderer, attribute string, colum
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	c_attribute := gi.CString(attribute)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	arg_column := gi.NewInt32Argument(column)
 	args := []gi.Argument{arg_v, arg_cell, arg_attribute, arg_column}
@@ -8400,8 +8924,12 @@ func (v *CellLayoutIfc) ClearAttributes(cell ICellRenderer) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell}
 	iv.Call(args, nil, nil)
 }
@@ -8426,7 +8954,7 @@ func (v *CellLayoutIfc) GetArea() (result CellArea) {
 // gtk_cell_layout_get_cells
 // container is not nil, container is CellLayout
 // is method
-func (v *CellLayoutIfc) GetCells() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v *CellLayoutIfc) GetCells() (result glib.List) {
 	iv, err := _I.Get(439, "CellLayout", "get_cells")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8436,7 +8964,7 @@ func (v *CellLayoutIfc) GetCells() (result int /*TODO_TYPE isPtr: true, tag: gli
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -8449,8 +8977,12 @@ func (v *CellLayoutIfc) PackEnd(cell ICellRenderer, expand bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewBoolArgument(expand)
 	args := []gi.Argument{arg_v, arg_cell, arg_expand}
 	iv.Call(args, nil, nil)
@@ -8465,8 +8997,12 @@ func (v *CellLayoutIfc) PackStart(cell ICellRenderer, expand bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewBoolArgument(expand)
 	args := []gi.Argument{arg_v, arg_cell, arg_expand}
 	iv.Call(args, nil, nil)
@@ -8481,8 +9017,12 @@ func (v *CellLayoutIfc) Reorder(cell ICellRenderer, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_cell, arg_position}
 	iv.Call(args, nil, nil)
@@ -8497,8 +9037,12 @@ func (v *CellLayoutIfc) SetCellDataFunc(cell ICellRenderer, func1 int /*TODO_TYP
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
 	arg_func_data := gi.NewPointerArgument(func_data)
 	arg_destroy := gi.NewIntArgument(destroy) /*TODO*/
@@ -8527,10 +9071,14 @@ func (v CellRenderer) Activate(event gdk.Event, widget IWidget, path string, bac
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	c_path := gi.CString(path)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_event := gi.NewPointerArgument(event.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewStringArgument(c_path)
 	arg_background_area := gi.NewPointerArgument(background_area.P)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
@@ -8553,8 +9101,12 @@ func (v CellRenderer) GetAlignedArea(widget IWidget, flags CellRendererStateFlag
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_aligned_area := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -8634,8 +9186,12 @@ func (v CellRenderer) GetPreferredHeight(widget IWidget) (minimum_size int32, na
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_minimum_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_natural_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_widget, arg_minimum_size, arg_natural_size}
@@ -8655,8 +9211,12 @@ func (v CellRenderer) GetPreferredHeightForWidth(widget IWidget, width int32) (m
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_width := gi.NewInt32Argument(width)
 	arg_minimum_height := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_natural_height := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -8677,8 +9237,12 @@ func (v CellRenderer) GetPreferredSize(widget IWidget) (minimum_size int /*TODO_
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_minimum_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_natural_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_widget, arg_minimum_size, arg_natural_size}
@@ -8698,8 +9262,12 @@ func (v CellRenderer) GetPreferredWidth(widget IWidget) (minimum_size int32, nat
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_minimum_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_natural_size := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_widget, arg_minimum_size, arg_natural_size}
@@ -8719,8 +9287,12 @@ func (v CellRenderer) GetPreferredWidthForHeight(widget IWidget, height int32) (
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_height := gi.NewInt32Argument(height)
 	arg_minimum_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_natural_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -8775,8 +9347,12 @@ func (v CellRenderer) GetSize(widget IWidget, cell_area gdk.Rectangle) (x_offset
 		return
 	}
 	var outArgs [4]gi.Argument
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_x_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_y_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -8800,8 +9376,12 @@ func (v CellRenderer) GetState(widget IWidget, cell_state CellRendererStateFlags
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_cell_state := gi.NewIntArgument(int(cell_state))
 	args := []gi.Argument{arg_v, arg_widget, arg_cell_state}
 	var ret gi.Argument
@@ -8853,9 +9433,13 @@ func (v CellRenderer) Render(cr cairo.Context, widget IWidget, background_area g
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_cr := gi.NewPointerArgument(cr.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_background_area := gi.NewPointerArgument(background_area.P)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_flags := gi.NewIntArgument(int(flags))
@@ -8950,10 +9534,14 @@ func (v CellRenderer) StartEditing(event gdk.Event, widget IWidget, path string,
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	c_path := gi.CString(path)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_event := gi.NewPointerArgument(event.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewStringArgument(c_path)
 	arg_background_area := gi.NewPointerArgument(background_area.P)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
@@ -8995,7 +9583,7 @@ func (v CellRendererAccel) P_CellRendererAccel() unsafe.Pointer { return v.P }
 // gtk_cell_renderer_accel_new
 // container is not nil, container is CellRendererAccel
 // is constructor
-func NewCellRendererAccel() (result CellRenderer) {
+func NewCellRendererAccel() (result CellRendererAccel) {
 	iv, err := _I.Get(468, "CellRendererAccel", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9041,7 +9629,7 @@ func (v CellRendererCombo) P_CellRendererCombo() unsafe.Pointer { return v.P }
 // gtk_cell_renderer_combo_new
 // container is not nil, container is CellRendererCombo
 // is constructor
-func NewCellRendererCombo() (result CellRenderer) {
+func NewCellRendererCombo() (result CellRendererCombo) {
 	iv, err := _I.Get(469, "CellRendererCombo", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9082,7 +9670,7 @@ func (v CellRendererPixbuf) P_CellRendererPixbuf() unsafe.Pointer { return v.P }
 // gtk_cell_renderer_pixbuf_new
 // container is not nil, container is CellRendererPixbuf
 // is constructor
-func NewCellRendererPixbuf() (result CellRenderer) {
+func NewCellRendererPixbuf() (result CellRendererPixbuf) {
 	iv, err := _I.Get(470, "CellRendererPixbuf", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9120,7 +9708,7 @@ func (v CellRendererProgress) P_CellRendererProgress() unsafe.Pointer { return v
 // gtk_cell_renderer_progress_new
 // container is not nil, container is CellRendererProgress
 // is constructor
-func NewCellRendererProgress() (result CellRenderer) {
+func NewCellRendererProgress() (result CellRendererProgress) {
 	iv, err := _I.Get(471, "CellRendererProgress", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9152,7 +9740,7 @@ func (v CellRendererSpin) P_CellRendererSpin() unsafe.Pointer { return v.P }
 // gtk_cell_renderer_spin_new
 // container is not nil, container is CellRendererSpin
 // is constructor
-func NewCellRendererSpin() (result CellRenderer) {
+func NewCellRendererSpin() (result CellRendererSpin) {
 	iv, err := _I.Get(472, "CellRendererSpin", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9184,7 +9772,7 @@ func (v CellRendererSpinner) P_CellRendererSpinner() unsafe.Pointer { return v.P
 // gtk_cell_renderer_spinner_new
 // container is not nil, container is CellRendererSpinner
 // is constructor
-func NewCellRendererSpinner() (result CellRenderer) {
+func NewCellRendererSpinner() (result CellRendererSpinner) {
 	iv, err := _I.Get(473, "CellRendererSpinner", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9229,7 +9817,7 @@ func (v CellRendererText) P_CellRendererText() unsafe.Pointer { return v.P }
 // gtk_cell_renderer_text_new
 // container is not nil, container is CellRendererText
 // is constructor
-func NewCellRendererText() (result CellRenderer) {
+func NewCellRendererText() (result CellRendererText) {
 	iv, err := _I.Get(474, "CellRendererText", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9276,7 +9864,7 @@ func (v CellRendererToggle) P_CellRendererToggle() unsafe.Pointer { return v.P }
 // gtk_cell_renderer_toggle_new
 // container is not nil, container is CellRendererToggle
 // is constructor
-func NewCellRendererToggle() (result CellRenderer) {
+func NewCellRendererToggle() (result CellRendererToggle) {
 	iv, err := _I.Get(476, "CellRendererToggle", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9408,7 +9996,7 @@ func (v CellView) P_CellView() unsafe.Pointer { return v.P }
 // gtk_cell_view_new
 // container is not nil, container is CellView
 // is constructor
-func NewCellView() (result Widget) {
+func NewCellView() (result CellView) {
 	iv, err := _I.Get(483, "CellView", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9423,14 +10011,22 @@ func NewCellView() (result Widget) {
 // gtk_cell_view_new_with_context
 // container is not nil, container is CellView
 // is constructor
-func NewCellViewWithContext(area ICellArea, context ICellAreaContext) (result Widget) {
+func NewCellViewWithContext(area ICellArea, context ICellAreaContext) (result CellView) {
 	iv, err := _I.Get(484, "CellView", "new_with_context")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_area := gi.NewPointerArgument(area.P_CellArea())
-	arg_context := gi.NewPointerArgument(context.P_CellAreaContext())
+	var tmp unsafe.Pointer
+	if area != nil {
+		tmp = area.P_CellArea()
+	}
+	var tmp1 unsafe.Pointer
+	if context != nil {
+		tmp1 = context.P_CellAreaContext()
+	}
+	arg_area := gi.NewPointerArgument(tmp)
+	arg_context := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_area, arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9441,7 +10037,7 @@ func NewCellViewWithContext(area ICellArea, context ICellAreaContext) (result Wi
 // gtk_cell_view_new_with_markup
 // container is not nil, container is CellView
 // is constructor
-func NewCellViewWithMarkup(markup string) (result Widget) {
+func NewCellViewWithMarkup(markup string) (result CellView) {
 	iv, err := _I.Get(485, "CellView", "new_with_markup")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9460,13 +10056,17 @@ func NewCellViewWithMarkup(markup string) (result Widget) {
 // gtk_cell_view_new_with_pixbuf
 // container is not nil, container is CellView
 // is constructor
-func NewCellViewWithPixbuf(pixbuf gdkpixbuf.IPixbuf) (result Widget) {
+func NewCellViewWithPixbuf(pixbuf gdkpixbuf.IPixbuf) (result CellView) {
 	iv, err := _I.Get(486, "CellView", "new_with_pixbuf")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_pixbuf}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9477,7 +10077,7 @@ func NewCellViewWithPixbuf(pixbuf gdkpixbuf.IPixbuf) (result Widget) {
 // gtk_cell_view_new_with_text
 // container is not nil, container is CellView
 // is constructor
-func NewCellViewWithText(text string) (result Widget) {
+func NewCellViewWithText(text string) (result CellView) {
 	iv, err := _I.Get(487, "CellView", "new_with_text")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9696,7 +10296,7 @@ func (v CheckButton) P_CheckButton() unsafe.Pointer { return v.P }
 // gtk_check_button_new
 // container is not nil, container is CheckButton
 // is constructor
-func NewCheckButton() (result Widget) {
+func NewCheckButton() (result CheckButton) {
 	iv, err := _I.Get(499, "CheckButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9711,7 +10311,7 @@ func NewCheckButton() (result Widget) {
 // gtk_check_button_new_with_label
 // container is not nil, container is CheckButton
 // is constructor
-func NewCheckButtonWithLabel(label string) (result Widget) {
+func NewCheckButtonWithLabel(label string) (result CheckButton) {
 	iv, err := _I.Get(500, "CheckButton", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9730,7 +10330,7 @@ func NewCheckButtonWithLabel(label string) (result Widget) {
 // gtk_check_button_new_with_mnemonic
 // container is not nil, container is CheckButton
 // is constructor
-func NewCheckButtonWithMnemonic(label string) (result Widget) {
+func NewCheckButtonWithMnemonic(label string) (result CheckButton) {
 	iv, err := _I.Get(501, "CheckButton", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9765,7 +10365,7 @@ func (v CheckMenuItem) P_CheckMenuItem() unsafe.Pointer { return v.P }
 // gtk_check_menu_item_new
 // container is not nil, container is CheckMenuItem
 // is constructor
-func NewCheckMenuItem() (result Widget) {
+func NewCheckMenuItem() (result CheckMenuItem) {
 	iv, err := _I.Get(502, "CheckMenuItem", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9780,7 +10380,7 @@ func NewCheckMenuItem() (result Widget) {
 // gtk_check_menu_item_new_with_label
 // container is not nil, container is CheckMenuItem
 // is constructor
-func NewCheckMenuItemWithLabel(label string) (result Widget) {
+func NewCheckMenuItemWithLabel(label string) (result CheckMenuItem) {
 	iv, err := _I.Get(503, "CheckMenuItem", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9799,7 +10399,7 @@ func NewCheckMenuItemWithLabel(label string) (result Widget) {
 // gtk_check_menu_item_new_with_mnemonic
 // container is not nil, container is CheckMenuItem
 // is constructor
-func NewCheckMenuItemWithMnemonic(label string) (result Widget) {
+func NewCheckMenuItemWithMnemonic(label string) (result CheckMenuItem) {
 	iv, err := _I.Get(504, "CheckMenuItem", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9990,7 +10590,11 @@ func ClipboardGetDefault1(display gdk.IDisplay) (result Clipboard) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_display}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -10008,7 +10612,11 @@ func ClipboardGetForDisplay1(display gdk.IDisplay, selection gdk.Atom) (result C
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	args := []gi.Argument{arg_display, arg_selection}
 	var ret gi.Argument
@@ -10107,8 +10715,12 @@ func (v Clipboard) RequestRichText(buffer ITextBuffer, callback int /*TODO_TYPE 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if buffer != nil {
+		tmp = buffer.P_TextBuffer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewPointerArgument(buffer.P_TextBuffer())
+	arg_buffer := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_buffer, arg_callback, arg_user_data}
@@ -10189,8 +10801,12 @@ func (v Clipboard) SetImage(pixbuf gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -10273,8 +10889,12 @@ func (v Clipboard) WaitForRichText(buffer ITextBuffer) (result gi.Uint8Array, fo
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if buffer != nil {
+		tmp = buffer.P_TextBuffer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewPointerArgument(buffer.P_TextBuffer())
+	arg_buffer := gi.NewPointerArgument(tmp)
 	arg_format := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_length := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_buffer, arg_format, arg_length}
@@ -10375,8 +10995,12 @@ func (v Clipboard) WaitIsRichTextAvailable(buffer ITextBuffer) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if buffer != nil {
+		tmp = buffer.P_TextBuffer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewPointerArgument(buffer.P_TextBuffer())
+	arg_buffer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_buffer}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -10455,7 +11079,7 @@ func (v ColorButton) P_ColorButton() unsafe.Pointer { return v.P }
 // gtk_color_button_new
 // container is not nil, container is ColorButton
 // is constructor
-func NewColorButton() (result Widget) {
+func NewColorButton() (result ColorButton) {
 	iv, err := _I.Get(539, "ColorButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10470,7 +11094,7 @@ func NewColorButton() (result Widget) {
 // gtk_color_button_new_with_color
 // container is not nil, container is ColorButton
 // is constructor
-func NewColorButtonWithColor(color gdk.Color) (result Widget) {
+func NewColorButtonWithColor(color gdk.Color) (result ColorButton) {
 	iv, err := _I.Get(540, "ColorButton", "new_with_color")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10487,7 +11111,7 @@ func NewColorButtonWithColor(color gdk.Color) (result Widget) {
 // gtk_color_button_new_with_rgba
 // container is not nil, container is ColorButton
 // is constructor
-func NewColorButtonWithRgba(rgba gdk.RGBA) (result Widget) {
+func NewColorButtonWithRgba(rgba gdk.RGBA) (result ColorButton) {
 	iv, err := _I.Get(541, "ColorButton", "new_with_rgba")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10746,15 +11370,19 @@ func (v ColorChooserDialog) P_ColorChooserDialog() unsafe.Pointer { return v.P }
 // gtk_color_chooser_dialog_new
 // container is not nil, container is ColorChooserDialog
 // is constructor
-func NewColorChooserDialog(title string, parent IWindow) (result Widget) {
+func NewColorChooserDialog(title string, parent IWindow) (result ColorChooserDialog) {
 	iv, err := _I.Get(555, "ColorChooserDialog", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_title := gi.CString(title)
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
 	arg_title := gi.NewStringArgument(c_title)
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	arg_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_title, arg_parent}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -10788,7 +11416,7 @@ func (v ColorChooserWidget) P_ColorChooserWidget() unsafe.Pointer { return v.P }
 // gtk_color_chooser_widget_new
 // container is not nil, container is ColorChooserWidget
 // is constructor
-func NewColorChooserWidget() (result Widget) {
+func NewColorChooserWidget() (result ColorChooserWidget) {
 	iv, err := _I.Get(556, "ColorChooserWidget", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10823,7 +11451,7 @@ func (v ColorSelection) P_ColorSelection() unsafe.Pointer { return v.P }
 // gtk_color_selection_new
 // container is not nil, container is ColorSelection
 // is constructor
-func NewColorSelection() (result Widget) {
+func NewColorSelection() (result ColorSelection) {
 	iv, err := _I.Get(557, "ColorSelection", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11177,7 +11805,7 @@ func (v ColorSelectionDialog) P_ColorSelectionDialog() unsafe.Pointer { return v
 // gtk_color_selection_dialog_new
 // container is not nil, container is ColorSelectionDialog
 // is constructor
-func NewColorSelectionDialog(title string) (result Widget) {
+func NewColorSelectionDialog(title string) (result ColorSelectionDialog) {
 	iv, err := _I.Get(577, "ColorSelectionDialog", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11239,7 +11867,7 @@ func (v ComboBox) P_ComboBox() unsafe.Pointer { return v.P }
 // gtk_combo_box_new
 // container is not nil, container is ComboBox
 // is constructor
-func NewComboBox() (result Widget) {
+func NewComboBox() (result ComboBox) {
 	iv, err := _I.Get(579, "ComboBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11254,13 +11882,17 @@ func NewComboBox() (result Widget) {
 // gtk_combo_box_new_with_area
 // container is not nil, container is ComboBox
 // is constructor
-func NewComboBoxWithArea(area ICellArea) (result Widget) {
+func NewComboBoxWithArea(area ICellArea) (result ComboBox) {
 	iv, err := _I.Get(580, "ComboBox", "new_with_area")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_area := gi.NewPointerArgument(area.P_CellArea())
+	var tmp unsafe.Pointer
+	if area != nil {
+		tmp = area.P_CellArea()
+	}
+	arg_area := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_area}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -11271,13 +11903,17 @@ func NewComboBoxWithArea(area ICellArea) (result Widget) {
 // gtk_combo_box_new_with_area_and_entry
 // container is not nil, container is ComboBox
 // is constructor
-func NewComboBoxWithAreaAndEntry(area ICellArea) (result Widget) {
+func NewComboBoxWithAreaAndEntry(area ICellArea) (result ComboBox) {
 	iv, err := _I.Get(581, "ComboBox", "new_with_area_and_entry")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_area := gi.NewPointerArgument(area.P_CellArea())
+	var tmp unsafe.Pointer
+	if area != nil {
+		tmp = area.P_CellArea()
+	}
+	arg_area := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_area}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -11288,7 +11924,7 @@ func NewComboBoxWithAreaAndEntry(area ICellArea) (result Widget) {
 // gtk_combo_box_new_with_entry
 // container is not nil, container is ComboBox
 // is constructor
-func NewComboBoxWithEntry() (result Widget) {
+func NewComboBoxWithEntry() (result ComboBox) {
 	iv, err := _I.Get(582, "ComboBox", "new_with_entry")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11303,7 +11939,7 @@ func NewComboBoxWithEntry() (result Widget) {
 // gtk_combo_box_new_with_model
 // container is not nil, container is ComboBox
 // is constructor
-func NewComboBoxWithModel(model TreeModel) (result Widget) {
+func NewComboBoxWithModel(model TreeModel) (result ComboBox) {
 	iv, err := _I.Get(583, "ComboBox", "new_with_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11320,7 +11956,7 @@ func NewComboBoxWithModel(model TreeModel) (result Widget) {
 // gtk_combo_box_new_with_model_and_entry
 // container is not nil, container is ComboBox
 // is constructor
-func NewComboBoxWithModelAndEntry(model TreeModel) (result Widget) {
+func NewComboBoxWithModelAndEntry(model TreeModel) (result ComboBox) {
 	iv, err := _I.Get(584, "ComboBox", "new_with_model_and_entry")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11646,8 +12282,12 @@ func (v ComboBox) PopupForDevice(device gdk.IDevice) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	iv.Call(args, nil, nil)
 }
@@ -11930,7 +12570,7 @@ func (v ComboBoxText) P_ComboBoxText() unsafe.Pointer { return v.P }
 // gtk_combo_box_text_new
 // container is not nil, container is ComboBoxText
 // is constructor
-func NewComboBoxText() (result Widget) {
+func NewComboBoxText() (result ComboBoxText) {
 	iv, err := _I.Get(619, "ComboBoxText", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11945,7 +12585,7 @@ func NewComboBoxText() (result Widget) {
 // gtk_combo_box_text_new_with_entry
 // container is not nil, container is ComboBoxText
 // is constructor
-func NewComboBoxTextWithEntry() (result Widget) {
+func NewComboBoxTextWithEntry() (result ComboBoxText) {
 	iv, err := _I.Get(620, "ComboBoxText", "new_with_entry")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12144,8 +12784,12 @@ func (v Container) Add(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -12173,9 +12817,13 @@ func (v Container) ChildGetProperty(child IWidget, property_name string, value g
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	c_property_name := gi.CString(property_name)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_property_name := gi.NewStringArgument(c_property_name)
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_v, arg_child, arg_property_name, arg_value}
@@ -12192,9 +12840,13 @@ func (v Container) ChildNotify(child IWidget, child_property string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	c_child_property := gi.CString(child_property)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_child_property := gi.NewStringArgument(c_child_property)
 	args := []gi.Argument{arg_v, arg_child, arg_child_property}
 	iv.Call(args, nil, nil)
@@ -12210,9 +12862,17 @@ func (v Container) ChildNotifyByPspec(child IWidget, pspec gobject.IParamSpec) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if pspec != nil {
+		tmp1 = pspec.P_ParamSpec()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_pspec := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_child, arg_pspec}
 	iv.Call(args, nil, nil)
 }
@@ -12226,9 +12886,13 @@ func (v Container) ChildSetProperty(child IWidget, property_name string, value g
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	c_property_name := gi.CString(property_name)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_property_name := gi.NewStringArgument(c_property_name)
 	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_v, arg_child, arg_property_name, arg_value}
@@ -12305,7 +12969,7 @@ func (v Container) GetBorderWidth() (result uint32) {
 // gtk_container_get_children
 // container is not nil, container is Container
 // is method
-func (v Container) GetChildren() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Container) GetChildren() (result glib.List) {
 	iv, err := _I.Get(640, "Container", "get_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12315,14 +12979,14 @@ func (v Container) GetChildren() (result int /*TODO_TYPE isPtr: true, tag: glist
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gtk_container_get_focus_chain
 // container is not nil, container is Container
 // is method
-func (v Container) GetFocusChain() (result bool, focusable_widgets int /*TODO_TYPE*/) {
+func (v Container) GetFocusChain() (result bool, focusable_widgets glib.List) {
 	iv, err := _I.Get(641, "Container", "get_focus_chain")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12334,7 +12998,7 @@ func (v Container) GetFocusChain() (result bool, focusable_widgets int /*TODO_TY
 	args := []gi.Argument{arg_v, arg_focusable_widgets}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	focusable_widgets = outArgs[0].Int() /*TODO*/
+	focusable_widgets.P = outArgs[0].Pointer()
 	result = ret.Bool()
 	return
 }
@@ -12399,8 +13063,12 @@ func (v Container) GetPathForChild(child IWidget) (result WidgetPath) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -12434,8 +13102,12 @@ func (v Container) PropagateDraw(child IWidget, cr cairo.Context) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	args := []gi.Argument{arg_v, arg_child, arg_cr}
 	iv.Call(args, nil, nil)
@@ -12450,8 +13122,12 @@ func (v Container) Remove(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -12488,14 +13164,14 @@ func (v Container) SetBorderWidth(border_width uint32) {
 // gtk_container_set_focus_chain
 // container is not nil, container is Container
 // is method
-func (v Container) SetFocusChain(focusable_widgets int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Container) SetFocusChain(focusable_widgets glib.List) {
 	iv, err := _I.Get(651, "Container", "set_focus_chain")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_focusable_widgets := gi.NewIntArgument(focusable_widgets) /*TODO*/
+	arg_focusable_widgets := gi.NewPointerArgument(focusable_widgets.P)
 	args := []gi.Argument{arg_v, arg_focusable_widgets}
 	iv.Call(args, nil, nil)
 }
@@ -12509,8 +13185,12 @@ func (v Container) SetFocusChild(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -12524,8 +13204,12 @@ func (v Container) SetFocusHadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -12539,8 +13223,12 @@ func (v Container) SetFocusVadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -12645,8 +13333,12 @@ func (v ContainerCellAccessible) AddChild(child ICellAccessible) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_CellAccessible())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -12654,7 +13346,7 @@ func (v ContainerCellAccessible) AddChild(child ICellAccessible) {
 // gtk_container_cell_accessible_get_children
 // container is not nil, container is ContainerCellAccessible
 // is method
-func (v ContainerCellAccessible) GetChildren() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v ContainerCellAccessible) GetChildren() (result glib.List) {
 	iv, err := _I.Get(660, "ContainerCellAccessible", "get_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12664,7 +13356,7 @@ func (v ContainerCellAccessible) GetChildren() (result int /*TODO_TYPE isPtr: tr
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -12677,8 +13369,12 @@ func (v ContainerCellAccessible) RemoveChild(child ICellAccessible) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_CellAccessible()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_CellAccessible())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -13109,7 +13805,7 @@ func (v Dialog) P_Dialog() unsafe.Pointer { return v.P }
 // gtk_dialog_new
 // container is not nil, container is Dialog
 // is constructor
-func NewDialog() (result Widget) {
+func NewDialog() (result Dialog) {
 	iv, err := _I.Get(679, "Dialog", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13130,8 +13826,12 @@ func (v Dialog) AddActionWidget(child IWidget, response_id int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_response_id := gi.NewInt32Argument(response_id)
 	args := []gi.Argument{arg_v, arg_child, arg_response_id}
 	iv.Call(args, nil, nil)
@@ -13218,8 +13918,12 @@ func (v Dialog) GetResponseForWidget(widget IWidget) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -13380,7 +14084,7 @@ func (v DrawingArea) P_DrawingArea() unsafe.Pointer { return v.P }
 // gtk_drawing_area_new
 // container is not nil, container is DrawingArea
 // is constructor
-func NewDrawingArea() (result Widget) {
+func NewDrawingArea() (result DrawingArea) {
 	iv, err := _I.Get(692, "DrawingArea", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13631,7 +14335,7 @@ func (v Entry) P_Entry() unsafe.Pointer { return v.P }
 // gtk_entry_new
 // container is not nil, container is Entry
 // is constructor
-func NewEntry() (result Widget) {
+func NewEntry() (result Entry) {
 	iv, err := _I.Get(706, "Entry", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13646,13 +14350,17 @@ func NewEntry() (result Widget) {
 // gtk_entry_new_with_buffer
 // container is not nil, container is Entry
 // is constructor
-func NewEntryWithBuffer(buffer IEntryBuffer) (result Widget) {
+func NewEntryWithBuffer(buffer IEntryBuffer) (result Entry) {
 	iv, err := _I.Get(707, "Entry", "new_with_buffer")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_buffer := gi.NewPointerArgument(buffer.P_EntryBuffer())
+	var tmp unsafe.Pointer
+	if buffer != nil {
+		tmp = buffer.P_EntryBuffer()
+	}
+	arg_buffer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_buffer}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -14438,8 +15146,12 @@ func (v Entry) SetBuffer(buffer IEntryBuffer) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if buffer != nil {
+		tmp = buffer.P_EntryBuffer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewPointerArgument(buffer.P_EntryBuffer())
+	arg_buffer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_buffer}
 	iv.Call(args, nil, nil)
 }
@@ -14453,8 +15165,12 @@ func (v Entry) SetCompletion(completion IEntryCompletion) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if completion != nil {
+		tmp = completion.P_EntryCompletion()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_completion := gi.NewPointerArgument(completion.P_EntryCompletion())
+	arg_completion := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_completion}
 	iv.Call(args, nil, nil)
 }
@@ -14468,8 +15184,12 @@ func (v Entry) SetCursorHadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -14565,9 +15285,13 @@ func (v Entry) SetIconFromPixbuf(icon_pos EntryIconPositionEnum, pixbuf gdkpixbu
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_icon_pos := gi.NewIntArgument(int(icon_pos))
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_icon_pos, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -15161,7 +15885,11 @@ func NewEntryCompletionWithArea(area ICellArea) (result EntryCompletion) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_area := gi.NewPointerArgument(area.P_CellArea())
+	var tmp unsafe.Pointer
+	if area != nil {
+		tmp = area.P_CellArea()
+	}
+	arg_area := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_area}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -15623,7 +16351,7 @@ func (v EventBox) P_EventBox() unsafe.Pointer { return v.P }
 // gtk_event_box_new
 // container is not nil, container is EventBox
 // is constructor
-func NewEventBox() (result Widget) {
+func NewEventBox() (result EventBox) {
 	iv, err := _I.Get(820, "EventBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15812,13 +16540,17 @@ func (v EventControllerKey) P_EventControllerKey() unsafe.Pointer { return v.P }
 // gtk_event_controller_key_new
 // container is not nil, container is EventControllerKey
 // is constructor
-func NewEventControllerKey(widget IWidget) (result EventController) {
+func NewEventControllerKey(widget IWidget) (result EventControllerKey) {
 	iv, err := _I.Get(830, "EventControllerKey", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -15835,8 +16567,12 @@ func (v EventControllerKey) Forward(widget IWidget) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -15887,8 +16623,12 @@ func (v EventControllerKey) SetImContext(im_context IIMContext) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if im_context != nil {
+		tmp = im_context.P_IMContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_im_context := gi.NewPointerArgument(im_context.P_IMContext())
+	arg_im_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_im_context}
 	iv.Call(args, nil, nil)
 }
@@ -15908,13 +16648,17 @@ func (v EventControllerMotion) P_EventControllerMotion() unsafe.Pointer { return
 // gtk_event_controller_motion_new
 // container is not nil, container is EventControllerMotion
 // is constructor
-func NewEventControllerMotion(widget IWidget) (result EventController) {
+func NewEventControllerMotion(widget IWidget) (result EventControllerMotion) {
 	iv, err := _I.Get(835, "EventControllerMotion", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -15937,13 +16681,17 @@ func (v EventControllerScroll) P_EventControllerScroll() unsafe.Pointer { return
 // gtk_event_controller_scroll_new
 // container is not nil, container is EventControllerScroll
 // is constructor
-func NewEventControllerScroll(widget IWidget, flags EventControllerScrollFlags) (result EventController) {
+func NewEventControllerScroll(widget IWidget, flags EventControllerScrollFlags) (result EventControllerScroll) {
 	iv, err := _I.Get(836, "EventControllerScroll", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_widget, arg_flags}
 	var ret gi.Argument
@@ -16022,7 +16770,7 @@ func (v Expander) P_Expander() unsafe.Pointer { return v.P }
 // gtk_expander_new
 // container is not nil, container is Expander
 // is constructor
-func NewExpander(label string) (result Widget) {
+func NewExpander(label string) (result Expander) {
 	iv, err := _I.Get(839, "Expander", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16041,7 +16789,7 @@ func NewExpander(label string) (result Widget) {
 // gtk_expander_new_with_mnemonic
 // container is not nil, container is Expander
 // is constructor
-func NewExpanderWithMnemonic(label string) (result Widget) {
+func NewExpanderWithMnemonic(label string) (result Expander) {
 	iv, err := _I.Get(840, "Expander", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16249,8 +16997,12 @@ func (v Expander) SetLabelWidget(label_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if label_widget != nil {
+		tmp = label_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_label_widget := gi.NewPointerArgument(label_widget.P_Widget())
+	arg_label_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_label_widget}
 	iv.Call(args, nil, nil)
 }
@@ -16388,8 +17140,12 @@ func (v *FileChooserIfc) AddFilter(filter IFileFilter) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if filter != nil {
+		tmp = filter.P_FileFilter()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_filter := gi.NewPointerArgument(filter.P_FileFilter())
+	arg_filter := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_filter}
 	iv.Call(args, nil, nil)
 }
@@ -16631,7 +17387,7 @@ func (v *FileChooserIfc) GetFilename() (result string) {
 // gtk_file_chooser_get_filenames
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) GetFilenames() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v *FileChooserIfc) GetFilenames() (result glib.SList) {
 	iv, err := _I.Get(872, "FileChooser", "get_filenames")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16641,14 +17397,14 @@ func (v *FileChooserIfc) GetFilenames() (result int /*TODO_TYPE isPtr: true, tag
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gtk_file_chooser_get_files
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) GetFiles() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v *FileChooserIfc) GetFiles() (result glib.SList) {
 	iv, err := _I.Get(873, "FileChooser", "get_files")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16658,7 +17414,7 @@ func (v *FileChooserIfc) GetFiles() (result int /*TODO_TYPE isPtr: true, tag: gs
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16835,7 +17591,7 @@ func (v *FileChooserIfc) GetUri() (result string) {
 // gtk_file_chooser_get_uris
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) GetUris() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v *FileChooserIfc) GetUris() (result glib.SList) {
 	iv, err := _I.Get(884, "FileChooser", "get_uris")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16845,7 +17601,7 @@ func (v *FileChooserIfc) GetUris() (result int /*TODO_TYPE isPtr: true, tag: gsl
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16869,7 +17625,7 @@ func (v *FileChooserIfc) GetUsePreviewLabel() (result bool) {
 // gtk_file_chooser_list_filters
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) ListFilters() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v *FileChooserIfc) ListFilters() (result glib.SList) {
 	iv, err := _I.Get(886, "FileChooser", "list_filters")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16879,14 +17635,14 @@ func (v *FileChooserIfc) ListFilters() (result int /*TODO_TYPE isPtr: true, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gtk_file_chooser_list_shortcut_folder_uris
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) ListShortcutFolderUris() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v *FileChooserIfc) ListShortcutFolderUris() (result glib.SList) {
 	iv, err := _I.Get(887, "FileChooser", "list_shortcut_folder_uris")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16896,14 +17652,14 @@ func (v *FileChooserIfc) ListShortcutFolderUris() (result int /*TODO_TYPE isPtr:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gtk_file_chooser_list_shortcut_folders
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) ListShortcutFolders() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v *FileChooserIfc) ListShortcutFolders() (result glib.SList) {
 	iv, err := _I.Get(888, "FileChooser", "list_shortcut_folders")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16913,7 +17669,7 @@ func (v *FileChooserIfc) ListShortcutFolders() (result int /*TODO_TYPE isPtr: tr
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -16943,8 +17699,12 @@ func (v *FileChooserIfc) RemoveFilter(filter IFileFilter) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if filter != nil {
+		tmp = filter.P_FileFilter()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_filter := gi.NewPointerArgument(filter.P_FileFilter())
+	arg_filter := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_filter}
 	iv.Call(args, nil, nil)
 }
@@ -17218,8 +17978,12 @@ func (v *FileChooserIfc) SetExtraWidget(extra_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if extra_widget != nil {
+		tmp = extra_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_extra_widget := gi.NewPointerArgument(extra_widget.P_Widget())
+	arg_extra_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_extra_widget}
 	iv.Call(args, nil, nil)
 }
@@ -17273,8 +18037,12 @@ func (v *FileChooserIfc) SetFilter(filter IFileFilter) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if filter != nil {
+		tmp = filter.P_FileFilter()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_filter := gi.NewPointerArgument(filter.P_FileFilter())
+	arg_filter := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_filter}
 	iv.Call(args, nil, nil)
 }
@@ -17303,8 +18071,12 @@ func (v *FileChooserIfc) SetPreviewWidget(preview_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if preview_widget != nil {
+		tmp = preview_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_preview_widget := gi.NewPointerArgument(preview_widget.P_Widget())
+	arg_preview_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_preview_widget}
 	iv.Call(args, nil, nil)
 }
@@ -17480,7 +18252,7 @@ func (v FileChooserButton) P_FileChooserButton() unsafe.Pointer { return v.P }
 // gtk_file_chooser_button_new
 // container is not nil, container is FileChooserButton
 // is constructor
-func NewFileChooserButton(title string, action FileChooserActionEnum) (result Widget) {
+func NewFileChooserButton(title string, action FileChooserActionEnum) (result FileChooserButton) {
 	iv, err := _I.Get(920, "FileChooserButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17500,13 +18272,17 @@ func NewFileChooserButton(title string, action FileChooserActionEnum) (result Wi
 // gtk_file_chooser_button_new_with_dialog
 // container is not nil, container is FileChooserButton
 // is constructor
-func NewFileChooserButtonWithDialog(dialog IDialog) (result Widget) {
+func NewFileChooserButtonWithDialog(dialog IDialog) (result FileChooserButton) {
 	iv, err := _I.Get(921, "FileChooserButton", "new_with_dialog")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_dialog := gi.NewPointerArgument(dialog.P_Dialog())
+	var tmp unsafe.Pointer
+	if dialog != nil {
+		tmp = dialog.P_Dialog()
+	}
+	arg_dialog := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_dialog}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -17679,10 +18455,14 @@ func NewFileChooserNative(title string, parent IWindow, action FileChooserAction
 		return
 	}
 	c_title := gi.CString(title)
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
 	c_accept_label := gi.CString(accept_label)
 	c_cancel_label := gi.CString(cancel_label)
 	arg_title := gi.NewStringArgument(c_title)
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	arg_parent := gi.NewPointerArgument(tmp)
 	arg_action := gi.NewIntArgument(int(action))
 	arg_accept_label := gi.NewStringArgument(c_accept_label)
 	arg_cancel_label := gi.NewStringArgument(c_cancel_label)
@@ -17783,7 +18563,7 @@ func (v FileChooserWidget) P_FileChooserWidget() unsafe.Pointer { return v.P }
 // gtk_file_chooser_widget_new
 // container is not nil, container is FileChooserWidget
 // is constructor
-func NewFileChooserWidget(action FileChooserActionEnum) (result Widget) {
+func NewFileChooserWidget(action FileChooserActionEnum) (result FileChooserWidget) {
 	iv, err := _I.Get(933, "FileChooserWidget", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18030,7 +18810,7 @@ func (v Fixed) P_Fixed() unsafe.Pointer { return v.P }
 // gtk_fixed_new
 // container is not nil, container is Fixed
 // is constructor
-func NewFixed() (result Widget) {
+func NewFixed() (result Fixed) {
 	iv, err := _I.Get(945, "Fixed", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18051,8 +18831,12 @@ func (v Fixed) Move(widget IWidget, x int32, y int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_v, arg_widget, arg_x, arg_y}
@@ -18068,8 +18852,12 @@ func (v Fixed) Put(widget IWidget, x int32, y int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_v, arg_widget, arg_x, arg_y}
@@ -18104,7 +18892,7 @@ func (v FlowBox) P_FlowBox() unsafe.Pointer { return v.P }
 // gtk_flow_box_new
 // container is not nil, container is FlowBox
 // is constructor
-func NewFlowBox() (result Widget) {
+func NewFlowBox() (result FlowBox) {
 	iv, err := _I.Get(948, "FlowBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18276,7 +19064,7 @@ func (v FlowBox) GetRowSpacing() (result uint32) {
 // gtk_flow_box_get_selected_children
 // container is not nil, container is FlowBox
 // is method
-func (v FlowBox) GetSelectedChildren() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v FlowBox) GetSelectedChildren() (result glib.List) {
 	iv, err := _I.Get(958, "FlowBox", "get_selected_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18286,7 +19074,7 @@ func (v FlowBox) GetSelectedChildren() (result int /*TODO_TYPE isPtr: true, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -18316,8 +19104,12 @@ func (v FlowBox) Insert(widget IWidget, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_widget, arg_position}
 	iv.Call(args, nil, nil)
@@ -18374,8 +19166,12 @@ func (v FlowBox) SelectChild(child IFlowBoxChild) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_FlowBoxChild()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_FlowBoxChild())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -18452,8 +19248,12 @@ func (v FlowBox) SetHadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -18559,8 +19359,12 @@ func (v FlowBox) SetVadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -18588,8 +19392,12 @@ func (v FlowBox) UnselectChild(child IFlowBoxChild) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_FlowBoxChild()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_FlowBoxChild())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -18629,7 +19437,7 @@ func (v FlowBoxChild) P_FlowBoxChild() unsafe.Pointer { return v.P }
 // gtk_flow_box_child_new
 // container is not nil, container is FlowBoxChild
 // is constructor
-func NewFlowBoxChild() (result Widget) {
+func NewFlowBoxChild() (result FlowBoxChild) {
 	iv, err := _I.Get(979, "FlowBoxChild", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18723,7 +19531,7 @@ func (v FontButton) P_FontButton() unsafe.Pointer { return v.P }
 // gtk_font_button_new
 // container is not nil, container is FontButton
 // is constructor
-func NewFontButton() (result Widget) {
+func NewFontButton() (result FontButton) {
 	iv, err := _I.Get(983, "FontButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18738,7 +19546,7 @@ func NewFontButton() (result Widget) {
 // gtk_font_button_new_with_font
 // container is not nil, container is FontButton
 // is constructor
-func NewFontButtonWithFont(fontname string) (result Widget) {
+func NewFontButtonWithFont(fontname string) (result FontButton) {
 	iv, err := _I.Get(984, "FontButton", "new_with_font")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19211,8 +20019,12 @@ func (v *FontChooserIfc) SetFontMap(fontmap pango.IFontMap) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if fontmap != nil {
+		tmp = fontmap.P_FontMap()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_fontmap := gi.NewPointerArgument(fontmap.P_FontMap())
+	arg_fontmap := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_fontmap}
 	iv.Call(args, nil, nil)
 }
@@ -19298,15 +20110,19 @@ func (v FontChooserDialog) P_FontChooserDialog() unsafe.Pointer { return v.P }
 // gtk_font_chooser_dialog_new
 // container is not nil, container is FontChooserDialog
 // is constructor
-func NewFontChooserDialog(title string, parent IWindow) (result Widget) {
+func NewFontChooserDialog(title string, parent IWindow) (result FontChooserDialog) {
 	iv, err := _I.Get(1016, "FontChooserDialog", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_title := gi.CString(title)
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
 	arg_title := gi.NewStringArgument(c_title)
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	arg_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_title, arg_parent}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -19351,7 +20167,7 @@ func (v FontChooserWidget) P_FontChooserWidget() unsafe.Pointer { return v.P }
 // gtk_font_chooser_widget_new
 // container is not nil, container is FontChooserWidget
 // is constructor
-func NewFontChooserWidget() (result Widget) {
+func NewFontChooserWidget() (result FontChooserWidget) {
 	iv, err := _I.Get(1017, "FontChooserWidget", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19386,7 +20202,7 @@ func (v FontSelection) P_FontSelection() unsafe.Pointer { return v.P }
 // gtk_font_selection_new
 // container is not nil, container is FontSelection
 // is constructor
-func NewFontSelection() (result Widget) {
+func NewFontSelection() (result FontSelection) {
 	iv, err := _I.Get(1018, "FontSelection", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19622,7 +20438,7 @@ func (v FontSelectionDialog) P_FontSelectionDialog() unsafe.Pointer { return v.P
 // gtk_font_selection_dialog_new
 // container is not nil, container is FontSelectionDialog
 // is constructor
-func NewFontSelectionDialog(title string) (result Widget) {
+func NewFontSelectionDialog(title string) (result FontSelectionDialog) {
 	iv, err := _I.Get(1031, "FontSelectionDialog", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19787,7 +20603,7 @@ func (v Frame) P_Frame() unsafe.Pointer { return v.P }
 // gtk_frame_new
 // container is not nil, container is Frame
 // is constructor
-func NewFrame(label string) (result Widget) {
+func NewFrame(label string) (result Frame) {
 	iv, err := _I.Get(1039, "Frame", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19916,8 +20732,12 @@ func (v Frame) SetLabelWidget(label_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if label_widget != nil {
+		tmp = label_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_label_widget := gi.NewPointerArgument(label_widget.P_Widget())
+	arg_label_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_label_widget}
 	iv.Call(args, nil, nil)
 }
@@ -19977,7 +20797,7 @@ func (v GLArea) P_GLArea() unsafe.Pointer { return v.P }
 // gtk_gl_area_new
 // container is not nil, container is GLArea
 // is constructor
-func NewGLArea() (result Widget) {
+func NewGLArea() (result GLArea) {
 	iv, err := _I.Get(1048, "GLArea", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20350,7 +21170,7 @@ func (v Gesture) GetDevice() (result gdk.Device) {
 // gtk_gesture_get_group
 // container is not nil, container is Gesture
 // is method
-func (v Gesture) GetGroup() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Gesture) GetGroup() (result glib.List) {
 	iv, err := _I.Get(1070, "Gesture", "get_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20360,7 +21180,7 @@ func (v Gesture) GetGroup() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -20443,7 +21263,7 @@ func (v Gesture) GetSequenceState(sequence gdk.EventSequence) (result EventSeque
 // gtk_gesture_get_sequences
 // container is not nil, container is Gesture
 // is method
-func (v Gesture) GetSequences() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Gesture) GetSequences() (result glib.List) {
 	iv, err := _I.Get(1075, "Gesture", "get_sequences")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20453,7 +21273,7 @@ func (v Gesture) GetSequences() (result int /*TODO_TYPE isPtr: true, tag: glist*
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -20483,8 +21303,12 @@ func (v Gesture) Group(gesture IGesture) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if gesture != nil {
+		tmp = gesture.P_Gesture()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_gesture := gi.NewPointerArgument(gesture.P_Gesture())
+	arg_gesture := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_gesture}
 	iv.Call(args, nil, nil)
 }
@@ -20533,8 +21357,12 @@ func (v Gesture) IsGroupedWith(other IGesture) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if other != nil {
+		tmp = other.P_Gesture()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_other := gi.NewPointerArgument(other.P_Gesture())
+	arg_other := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_other}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -20605,8 +21433,12 @@ func (v Gesture) SetWindow(window gdk.IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -20640,13 +21472,17 @@ func (v GestureDrag) P_GestureDrag() unsafe.Pointer { return v.P }
 // gtk_gesture_drag_new
 // container is not nil, container is GestureDrag
 // is constructor
-func NewGestureDrag(widget IWidget) (result Gesture) {
+func NewGestureDrag(widget IWidget) (result GestureDrag) {
 	iv, err := _I.Get(1086, "GestureDrag", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -20713,13 +21549,17 @@ func (v GestureLongPress) P_GestureLongPress() unsafe.Pointer { return v.P }
 // gtk_gesture_long_press_new
 // container is not nil, container is GestureLongPress
 // is constructor
-func NewGestureLongPress(widget IWidget) (result Gesture) {
+func NewGestureLongPress(widget IWidget) (result GestureLongPress) {
 	iv, err := _I.Get(1089, "GestureLongPress", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -20742,13 +21582,17 @@ func (v GestureMultiPress) P_GestureMultiPress() unsafe.Pointer { return v.P }
 // gtk_gesture_multi_press_new
 // container is not nil, container is GestureMultiPress
 // is constructor
-func NewGestureMultiPress(widget IWidget) (result Gesture) {
+func NewGestureMultiPress(widget IWidget) (result GestureMultiPress) {
 	iv, err := _I.Get(1090, "GestureMultiPress", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -20806,13 +21650,17 @@ func (v GesturePan) P_GesturePan() unsafe.Pointer { return v.P }
 // gtk_gesture_pan_new
 // container is not nil, container is GesturePan
 // is constructor
-func NewGesturePan(widget IWidget, orientation OrientationEnum) (result Gesture) {
+func NewGesturePan(widget IWidget, orientation OrientationEnum) (result GesturePan) {
 	iv, err := _I.Get(1093, "GesturePan", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_orientation := gi.NewIntArgument(int(orientation))
 	args := []gi.Argument{arg_widget, arg_orientation}
 	var ret gi.Argument
@@ -20868,13 +21716,17 @@ func (v GestureRotate) P_GestureRotate() unsafe.Pointer { return v.P }
 // gtk_gesture_rotate_new
 // container is not nil, container is GestureRotate
 // is constructor
-func NewGestureRotate(widget IWidget) (result Gesture) {
+func NewGestureRotate(widget IWidget) (result GestureRotate) {
 	iv, err := _I.Get(1096, "GestureRotate", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21056,13 +21908,17 @@ func (v GestureStylus) P_GestureStylus() unsafe.Pointer { return v.P }
 // gtk_gesture_stylus_new
 // container is not nil, container is GestureStylus
 // is constructor
-func NewGestureStylus(widget IWidget) (result Gesture) {
+func NewGestureStylus(widget IWidget) (result GestureStylus) {
 	iv, err := _I.Get(1106, "GestureStylus", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21144,13 +22000,17 @@ func (v GestureSwipe) P_GestureSwipe() unsafe.Pointer { return v.P }
 // gtk_gesture_swipe_new
 // container is not nil, container is GestureSwipe
 // is constructor
-func NewGestureSwipe(widget IWidget) (result Gesture) {
+func NewGestureSwipe(widget IWidget) (result GestureSwipe) {
 	iv, err := _I.Get(1110, "GestureSwipe", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21195,13 +22055,17 @@ func (v GestureZoom) P_GestureZoom() unsafe.Pointer { return v.P }
 // gtk_gesture_zoom_new
 // container is not nil, container is GestureZoom
 // is constructor
-func NewGestureZoom(widget IWidget) (result Gesture) {
+func NewGestureZoom(widget IWidget) (result GestureZoom) {
 	iv, err := _I.Get(1112, "GestureZoom", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21317,8 +22181,12 @@ func (v Gradient) Resolve(props IStyleProperties) (result bool, resolved_gradien
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if props != nil {
+		tmp = props.P_StyleProperties()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_props := gi.NewPointerArgument(props.P_StyleProperties())
+	arg_props := gi.NewPointerArgument(tmp)
 	arg_resolved_gradient := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_props, arg_resolved_gradient}
 	var ret gi.Argument
@@ -21337,8 +22205,12 @@ func (v Gradient) ResolveForContext(context IStyleContext) (result cairo.Pattern
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21394,7 +22266,7 @@ func (v Grid) P_Grid() unsafe.Pointer { return v.P }
 // gtk_grid_new
 // container is not nil, container is Grid
 // is constructor
-func NewGrid() (result Widget) {
+func NewGrid() (result Grid) {
 	iv, err := _I.Get(1122, "Grid", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21415,8 +22287,12 @@ func (v Grid) Attach(child IWidget, left int32, top int32, width int32, height i
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_left := gi.NewInt32Argument(left)
 	arg_top := gi.NewInt32Argument(top)
 	arg_width := gi.NewInt32Argument(width)
@@ -21434,9 +22310,17 @@ func (v Grid) AttachNextTo(child IWidget, sibling IWidget, side PositionTypeEnum
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if sibling != nil {
+		tmp1 = sibling.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_sibling := gi.NewPointerArgument(sibling.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_sibling := gi.NewPointerArgument(tmp1)
 	arg_side := gi.NewIntArgument(int(side))
 	arg_width := gi.NewInt32Argument(width)
 	arg_height := gi.NewInt32Argument(height)
@@ -21590,8 +22474,12 @@ func (v Grid) InsertNextTo(sibling IWidget, side PositionTypeEnum) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if sibling != nil {
+		tmp = sibling.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_sibling := gi.NewPointerArgument(sibling.P_Widget())
+	arg_sibling := gi.NewPointerArgument(tmp)
 	arg_side := gi.NewIntArgument(int(side))
 	args := []gi.Argument{arg_v, arg_sibling, arg_side}
 	iv.Call(args, nil, nil)
@@ -21756,7 +22644,7 @@ func (v HBox) P_HBox() unsafe.Pointer { return v.P }
 // gtk_hbox_new
 // container is not nil, container is HBox
 // is constructor
-func NewHBox(homogeneous bool, spacing int32) (result Widget) {
+func NewHBox(homogeneous bool, spacing int32) (result HBox) {
 	iv, err := _I.Get(1143, "HBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21789,7 +22677,7 @@ func (v HButtonBox) P_HButtonBox() unsafe.Pointer { return v.P }
 // gtk_hbutton_box_new
 // container is not nil, container is HButtonBox
 // is constructor
-func NewHButtonBox() (result Widget) {
+func NewHButtonBox() (result HButtonBox) {
 	iv, err := _I.Get(1144, "HButtonBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21819,7 +22707,7 @@ func (v HPaned) P_HPaned() unsafe.Pointer { return v.P }
 // gtk_hpaned_new
 // container is not nil, container is HPaned
 // is constructor
-func NewHPaned() (result Widget) {
+func NewHPaned() (result HPaned) {
 	iv, err := _I.Get(1145, "HPaned", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21848,7 +22736,7 @@ func (v HSV) P_HSV() unsafe.Pointer { return v.P }
 // gtk_hsv_new
 // container is not nil, container is HSV
 // is constructor
-func NewHSV() (result Widget) {
+func NewHSV() (result HSV) {
 	iv, err := _I.Get(1146, "HSV", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22000,13 +22888,17 @@ func (v HScale) P_HScale() unsafe.Pointer { return v.P }
 // gtk_hscale_new
 // container is not nil, container is HScale
 // is constructor
-func NewHScale(adjustment IAdjustment) (result Widget) {
+func NewHScale(adjustment IAdjustment) (result HScale) {
 	iv, err := _I.Get(1153, "HScale", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_adjustment}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22017,7 +22909,7 @@ func NewHScale(adjustment IAdjustment) (result Widget) {
 // gtk_hscale_new_with_range
 // container is not nil, container is HScale
 // is constructor
-func NewHScaleWithRange(min float64, max float64, step float64) (result Widget) {
+func NewHScaleWithRange(min float64, max float64, step float64) (result HScale) {
 	iv, err := _I.Get(1154, "HScale", "new_with_range")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22051,13 +22943,17 @@ func (v HScrollbar) P_HScrollbar() unsafe.Pointer { return v.P }
 // gtk_hscrollbar_new
 // container is not nil, container is HScrollbar
 // is constructor
-func NewHScrollbar(adjustment IAdjustment) (result Widget) {
+func NewHScrollbar(adjustment IAdjustment) (result HScrollbar) {
 	iv, err := _I.Get(1155, "HScrollbar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_adjustment}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -22083,7 +22979,7 @@ func (v HSeparator) P_HSeparator() unsafe.Pointer { return v.P }
 // gtk_hseparator_new
 // container is not nil, container is HSeparator
 // is constructor
-func NewHSeparator() (result Widget) {
+func NewHSeparator() (result HSeparator) {
 	iv, err := _I.Get(1156, "HSeparator", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22112,7 +23008,7 @@ func (v HandleBox) P_HandleBox() unsafe.Pointer { return v.P }
 // gtk_handle_box_new
 // container is not nil, container is HandleBox
 // is constructor
-func NewHandleBox() (result Widget) {
+func NewHandleBox() (result HandleBox) {
 	iv, err := _I.Get(1157, "HandleBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22259,7 +23155,7 @@ func (v HeaderBar) P_HeaderBar() unsafe.Pointer { return v.P }
 // gtk_header_bar_new
 // container is not nil, container is HeaderBar
 // is constructor
-func NewHeaderBar() (result Widget) {
+func NewHeaderBar() (result HeaderBar) {
 	iv, err := _I.Get(1165, "HeaderBar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22382,8 +23278,12 @@ func (v HeaderBar) PackEnd(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -22397,8 +23297,12 @@ func (v HeaderBar) PackStart(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -22412,8 +23316,12 @@ func (v HeaderBar) SetCustomTitle(title_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if title_widget != nil {
+		tmp = title_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_title_widget := gi.NewPointerArgument(title_widget.P_Widget())
+	arg_title_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_title_widget}
 	iv.Call(args, nil, nil)
 }
@@ -22648,8 +23556,12 @@ func (v IMContext) SetClientWindow(window gdk.IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -22723,7 +23635,7 @@ func (v IMContextSimple) P_IMContextSimple() unsafe.Pointer { return v.P }
 // gtk_im_context_simple_new
 // container is not nil, container is IMContextSimple
 // is constructor
-func NewIMContextSimple() (result IMContext) {
+func NewIMContextSimple() (result IMContextSimple) {
 	iv, err := _I.Get(1191, "IMContextSimple", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22772,7 +23684,7 @@ func (v IMMulticontext) P_IMMulticontext() unsafe.Pointer { return v.P }
 // gtk_im_multicontext_new
 // container is not nil, container is IMMulticontext
 // is constructor
-func NewIMMulticontext() (result IMContext) {
+func NewIMMulticontext() (result IMMulticontext) {
 	iv, err := _I.Get(1193, "IMMulticontext", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22793,8 +23705,12 @@ func (v IMMulticontext) AppendMenuitems(menushell IMenuShell) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if menushell != nil {
+		tmp = menushell.P_MenuShell()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_menushell := gi.NewPointerArgument(menushell.P_MenuShell())
+	arg_menushell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_menushell}
 	iv.Call(args, nil, nil)
 }
@@ -22996,8 +23912,16 @@ func NewIconInfoForPixbuf(icon_theme IIconTheme, pixbuf gdkpixbuf.IPixbuf) (resu
 		log.Println("WARN:", err)
 		return
 	}
-	arg_icon_theme := gi.NewPointerArgument(icon_theme.P_IconTheme())
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	var tmp unsafe.Pointer
+	if icon_theme != nil {
+		tmp = icon_theme.P_IconTheme()
+	}
+	var tmp1 unsafe.Pointer
+	if pixbuf != nil {
+		tmp1 = pixbuf.P_Pixbuf()
+	}
+	arg_icon_theme := gi.NewPointerArgument(tmp)
+	arg_pixbuf := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_icon_theme, arg_pixbuf}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23180,8 +24104,12 @@ func (v IconInfo) LoadIconAsync(cancellable gio.ICancellable, callback int /*TOD
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cancellable != nil {
+		tmp = cancellable.P_Cancellable()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
+	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
@@ -23217,8 +24145,12 @@ func (v IconInfo) LoadSurface(for_window gdk.IWindow) (result cairo.Surface, err
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if for_window != nil {
+		tmp = for_window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_for_window := gi.NewPointerArgument(for_window.P_Window())
+	arg_for_window := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_for_window, arg_err}
 	var ret gi.Argument
@@ -23262,12 +24194,16 @@ func (v IconInfo) LoadSymbolicAsync(fg gdk.RGBA, success_color gdk.RGBA, warning
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cancellable != nil {
+		tmp = cancellable.P_Cancellable()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_fg := gi.NewPointerArgument(fg.P)
 	arg_success_color := gi.NewPointerArgument(success_color.P)
 	arg_warning_color := gi.NewPointerArgument(warning_color.P)
 	arg_error_color := gi.NewPointerArgument(error_color.P)
-	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
+	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_fg, arg_success_color, arg_warning_color, arg_error_color, arg_cancellable, arg_callback, arg_user_data}
@@ -23305,8 +24241,12 @@ func (v IconInfo) LoadSymbolicForContext(context IStyleContext) (result gdkpixbu
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_was_symbolic := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_context, arg_was_symbolic, arg_err}
@@ -23327,9 +24267,17 @@ func (v IconInfo) LoadSymbolicForContextAsync(context IStyleContext, cancellable
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	var tmp1 unsafe.Pointer
+	if cancellable != nil {
+		tmp1 = cancellable.P_Cancellable()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
-	arg_cancellable := gi.NewPointerArgument(cancellable.P_Cancellable())
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_cancellable := gi.NewPointerArgument(tmp1)
 	arg_callback := gi.NewIntArgument(callback) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_context, arg_cancellable, arg_callback, arg_user_data}
@@ -23367,8 +24315,12 @@ func (v IconInfo) LoadSymbolicForStyle(style IStyle, state StateTypeEnum) (resul
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_state := gi.NewIntArgument(int(state))
 	arg_was_symbolic := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -23441,7 +24393,11 @@ func NewIconSetFromPixbuf(pixbuf gdkpixbuf.IPixbuf) (result IconSet) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_pixbuf}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23531,13 +24487,21 @@ func (v IconSet) RenderIcon(style IStyle, direction TextDirectionEnum, state Sta
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_direction := gi.NewIntArgument(int(direction))
 	arg_state := gi.NewIntArgument(int(state))
 	arg_size := gi.NewInt32Argument(size)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	args := []gi.Argument{arg_v, arg_style, arg_direction, arg_state, arg_size, arg_widget, arg_detail}
 	var ret gi.Argument
@@ -23556,8 +24520,12 @@ func (v IconSet) RenderIconPixbuf(context IStyleContext, size int32) (result gdk
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_size := gi.NewInt32Argument(size)
 	args := []gi.Argument{arg_v, arg_context, arg_size}
 	var ret gi.Argument
@@ -23575,11 +24543,19 @@ func (v IconSet) RenderIconSurface(context IStyleContext, size int32, scale int3
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	var tmp1 unsafe.Pointer
+	if for_window != nil {
+		tmp1 = for_window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_size := gi.NewInt32Argument(size)
 	arg_scale := gi.NewInt32Argument(scale)
-	arg_for_window := gi.NewPointerArgument(for_window.P_Window())
+	arg_for_window := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_context, arg_size, arg_scale, arg_for_window}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23891,8 +24867,12 @@ func (v IconSource) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -23994,9 +24974,13 @@ func IconThemeAddBuiltinIcon1(icon_name string, size int32, pixbuf gdkpixbuf.IPi
 		return
 	}
 	c_icon_name := gi.CString(icon_name)
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_icon_name := gi.NewStringArgument(c_icon_name)
 	arg_size := gi.NewInt32Argument(size)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_icon_name, arg_size, arg_pixbuf}
 	iv.Call(args, nil, nil)
 	gi.Free(c_icon_name)
@@ -24012,7 +24996,11 @@ func IconThemeGetForScreen1(screen gdk.IScreen) (result IconTheme) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_screen}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -24178,7 +25166,7 @@ func (v IconTheme) HasIcon(icon_name string) (result bool) {
 // gtk_icon_theme_list_contexts
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) ListContexts() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v IconTheme) ListContexts() (result glib.List) {
 	iv, err := _I.Get(1267, "IconTheme", "list_contexts")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24188,14 +25176,14 @@ func (v IconTheme) ListContexts() (result int /*TODO_TYPE isPtr: true, tag: glis
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gtk_icon_theme_list_icons
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) ListIcons(context string) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v IconTheme) ListIcons(context string) (result glib.List) {
 	iv, err := _I.Get(1268, "IconTheme", "list_icons")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24208,7 +25196,7 @@ func (v IconTheme) ListIcons(context string) (result int /*TODO_TYPE isPtr: true
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_context)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -24271,11 +25259,15 @@ func (v IconTheme) LoadSurface(icon_name string, size int32, scale int32, for_wi
 	}
 	var outArgs [1]gi.Argument
 	c_icon_name := gi.CString(icon_name)
+	var tmp unsafe.Pointer
+	if for_window != nil {
+		tmp = for_window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_icon_name := gi.NewStringArgument(c_icon_name)
 	arg_size := gi.NewInt32Argument(size)
 	arg_scale := gi.NewInt32Argument(scale)
-	arg_for_window := gi.NewPointerArgument(for_window.P_Window())
+	arg_for_window := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_icon_name, arg_size, arg_scale, arg_for_window, arg_flags, arg_err}
@@ -24433,8 +25425,12 @@ func (v IconTheme) SetScreen(screen gdk.IScreen) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_screen}
 	iv.Call(args, nil, nil)
 }
@@ -24488,7 +25484,7 @@ func (v IconView) P_IconView() unsafe.Pointer { return v.P }
 // gtk_icon_view_new
 // container is not nil, container is IconView
 // is constructor
-func NewIconView() (result Widget) {
+func NewIconView() (result IconView) {
 	iv, err := _I.Get(1281, "IconView", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24503,13 +25499,17 @@ func NewIconView() (result Widget) {
 // gtk_icon_view_new_with_area
 // container is not nil, container is IconView
 // is constructor
-func NewIconViewWithArea(area ICellArea) (result Widget) {
+func NewIconViewWithArea(area ICellArea) (result IconView) {
 	iv, err := _I.Get(1282, "IconView", "new_with_area")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_area := gi.NewPointerArgument(area.P_CellArea())
+	var tmp unsafe.Pointer
+	if area != nil {
+		tmp = area.P_CellArea()
+	}
+	arg_area := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_area}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -24520,7 +25520,7 @@ func NewIconViewWithArea(area ICellArea) (result Widget) {
 // gtk_icon_view_new_with_model
 // container is not nil, container is IconView
 // is constructor
-func NewIconViewWithModel(model TreeModel) (result Widget) {
+func NewIconViewWithModel(model TreeModel) (result IconView) {
 	iv, err := _I.Get(1283, "IconView", "new_with_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24638,9 +25638,13 @@ func (v IconView) GetCellRect(path TreePath, cell ICellRenderer) (result bool, r
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewPointerArgument(path.P)
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_path, arg_cell, arg_rect}
 	var ret gi.Argument
@@ -24985,7 +25989,7 @@ func (v IconView) GetRowSpacing() (result int32) {
 // gtk_icon_view_get_selected_items
 // container is not nil, container is IconView
 // is method
-func (v IconView) GetSelectedItems() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v IconView) GetSelectedItems() (result glib.List) {
 	iv, err := _I.Get(1308, "IconView", "get_selected_items")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24995,7 +25999,7 @@ func (v IconView) GetSelectedItems() (result int /*TODO_TYPE isPtr: true, tag: g
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -25264,9 +26268,13 @@ func (v IconView) SetCursor(path TreePath, cell ICellRenderer, start_editing boo
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewPointerArgument(path.P)
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_start_editing := gi.NewBoolArgument(start_editing)
 	args := []gi.Argument{arg_v, arg_path, arg_cell, arg_start_editing}
 	iv.Call(args, nil, nil)
@@ -25477,10 +26485,18 @@ func (v IconView) SetTooltipCell(tooltip ITooltip, path TreePath, cell ICellRend
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tooltip != nil {
+		tmp = tooltip.P_Tooltip()
+	}
+	var tmp1 unsafe.Pointer
+	if cell != nil {
+		tmp1 = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tooltip := gi.NewPointerArgument(tooltip.P_Tooltip())
+	arg_tooltip := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewPointerArgument(path.P)
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_tooltip, arg_path, arg_cell}
 	iv.Call(args, nil, nil)
 }
@@ -25509,8 +26525,12 @@ func (v IconView) SetTooltipItem(tooltip ITooltip, path TreePath) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tooltip != nil {
+		tmp = tooltip.P_Tooltip()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tooltip := gi.NewPointerArgument(tooltip.P_Tooltip())
+	arg_tooltip := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewPointerArgument(path.P)
 	args := []gi.Argument{arg_v, arg_tooltip, arg_path}
 	iv.Call(args, nil, nil)
@@ -25626,7 +26646,7 @@ func (v Image) P_Image() unsafe.Pointer { return v.P }
 // gtk_image_new
 // container is not nil, container is Image
 // is constructor
-func NewImage() (result Widget) {
+func NewImage() (result Image) {
 	iv, err := _I.Get(1345, "Image", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25641,13 +26661,17 @@ func NewImage() (result Widget) {
 // gtk_image_new_from_animation
 // container is not nil, container is Image
 // is constructor
-func NewImageFromAnimation(animation gdkpixbuf.IPixbufAnimation) (result Widget) {
+func NewImageFromAnimation(animation gdkpixbuf.IPixbufAnimation) (result Image) {
 	iv, err := _I.Get(1346, "Image", "new_from_animation")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_animation := gi.NewPointerArgument(animation.P_PixbufAnimation())
+	var tmp unsafe.Pointer
+	if animation != nil {
+		tmp = animation.P_PixbufAnimation()
+	}
+	arg_animation := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_animation}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -25658,7 +26682,7 @@ func NewImageFromAnimation(animation gdkpixbuf.IPixbufAnimation) (result Widget)
 // gtk_image_new_from_file
 // container is not nil, container is Image
 // is constructor
-func NewImageFromFile(filename string) (result Widget) {
+func NewImageFromFile(filename string) (result Image) {
 	iv, err := _I.Get(1347, "Image", "new_from_file")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25677,7 +26701,7 @@ func NewImageFromFile(filename string) (result Widget) {
 // gtk_image_new_from_gicon
 // container is not nil, container is Image
 // is constructor
-func NewImageFromGicon(icon gio.Icon, size int32) (result Widget) {
+func NewImageFromGicon(icon gio.Icon, size int32) (result Image) {
 	iv, err := _I.Get(1348, "Image", "new_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25695,7 +26719,7 @@ func NewImageFromGicon(icon gio.Icon, size int32) (result Widget) {
 // gtk_image_new_from_icon_name
 // container is not nil, container is Image
 // is constructor
-func NewImageFromIconName(icon_name string, size int32) (result Widget) {
+func NewImageFromIconName(icon_name string, size int32) (result Image) {
 	iv, err := _I.Get(1349, "Image", "new_from_icon_name")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25715,7 +26739,7 @@ func NewImageFromIconName(icon_name string, size int32) (result Widget) {
 // gtk_image_new_from_icon_set
 // container is not nil, container is Image
 // is constructor
-func NewImageFromIconSet(icon_set IconSet, size int32) (result Widget) {
+func NewImageFromIconSet(icon_set IconSet, size int32) (result Image) {
 	iv, err := _I.Get(1350, "Image", "new_from_icon_set")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25733,13 +26757,17 @@ func NewImageFromIconSet(icon_set IconSet, size int32) (result Widget) {
 // gtk_image_new_from_pixbuf
 // container is not nil, container is Image
 // is constructor
-func NewImageFromPixbuf(pixbuf gdkpixbuf.IPixbuf) (result Widget) {
+func NewImageFromPixbuf(pixbuf gdkpixbuf.IPixbuf) (result Image) {
 	iv, err := _I.Get(1351, "Image", "new_from_pixbuf")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_pixbuf}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -25750,7 +26778,7 @@ func NewImageFromPixbuf(pixbuf gdkpixbuf.IPixbuf) (result Widget) {
 // gtk_image_new_from_resource
 // container is not nil, container is Image
 // is constructor
-func NewImageFromResource(resource_path string) (result Widget) {
+func NewImageFromResource(resource_path string) (result Image) {
 	iv, err := _I.Get(1352, "Image", "new_from_resource")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25769,7 +26797,7 @@ func NewImageFromResource(resource_path string) (result Widget) {
 // gtk_image_new_from_stock
 // container is not nil, container is Image
 // is constructor
-func NewImageFromStock(stock_id string, size int32) (result Widget) {
+func NewImageFromStock(stock_id string, size int32) (result Image) {
 	iv, err := _I.Get(1353, "Image", "new_from_stock")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25789,7 +26817,7 @@ func NewImageFromStock(stock_id string, size int32) (result Widget) {
 // gtk_image_new_from_surface
 // container is not nil, container is Image
 // is constructor
-func NewImageFromSurface(surface cairo.Surface) (result Widget) {
+func NewImageFromSurface(surface cairo.Surface) (result Image) {
 	iv, err := _I.Get(1354, "Image", "new_from_surface")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25974,8 +27002,12 @@ func (v Image) SetFromAnimation(animation gdkpixbuf.IPixbufAnimation) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if animation != nil {
+		tmp = animation.P_PixbufAnimation()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_animation := gi.NewPointerArgument(animation.P_PixbufAnimation())
+	arg_animation := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_animation}
 	iv.Call(args, nil, nil)
 }
@@ -26056,8 +27088,12 @@ func (v Image) SetFromPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -26186,7 +27222,7 @@ func (v ImageMenuItem) P_ImageMenuItem() unsafe.Pointer { return v.P }
 // gtk_image_menu_item_new
 // container is not nil, container is ImageMenuItem
 // is constructor
-func NewImageMenuItem() (result Widget) {
+func NewImageMenuItem() (result ImageMenuItem) {
 	iv, err := _I.Get(1374, "ImageMenuItem", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -26201,15 +27237,19 @@ func NewImageMenuItem() (result Widget) {
 // gtk_image_menu_item_new_from_stock
 // container is not nil, container is ImageMenuItem
 // is constructor
-func NewImageMenuItemFromStock(stock_id string, accel_group IAccelGroup) (result Widget) {
+func NewImageMenuItemFromStock(stock_id string, accel_group IAccelGroup) (result ImageMenuItem) {
 	iv, err := _I.Get(1375, "ImageMenuItem", "new_from_stock")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_stock_id := gi.CString(stock_id)
+	var tmp unsafe.Pointer
+	if accel_group != nil {
+		tmp = accel_group.P_AccelGroup()
+	}
 	arg_stock_id := gi.NewStringArgument(c_stock_id)
-	arg_accel_group := gi.NewPointerArgument(accel_group.P_AccelGroup())
+	arg_accel_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_stock_id, arg_accel_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -26221,7 +27261,7 @@ func NewImageMenuItemFromStock(stock_id string, accel_group IAccelGroup) (result
 // gtk_image_menu_item_new_with_label
 // container is not nil, container is ImageMenuItem
 // is constructor
-func NewImageMenuItemWithLabel(label string) (result Widget) {
+func NewImageMenuItemWithLabel(label string) (result ImageMenuItem) {
 	iv, err := _I.Get(1376, "ImageMenuItem", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -26240,7 +27280,7 @@ func NewImageMenuItemWithLabel(label string) (result Widget) {
 // gtk_image_menu_item_new_with_mnemonic
 // container is not nil, container is ImageMenuItem
 // is constructor
-func NewImageMenuItemWithMnemonic(label string) (result Widget) {
+func NewImageMenuItemWithMnemonic(label string) (result ImageMenuItem) {
 	iv, err := _I.Get(1377, "ImageMenuItem", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -26316,8 +27356,12 @@ func (v ImageMenuItem) SetAccelGroup(accel_group IAccelGroup) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if accel_group != nil {
+		tmp = accel_group.P_AccelGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_accel_group := gi.NewPointerArgument(accel_group.P_AccelGroup())
+	arg_accel_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_accel_group}
 	iv.Call(args, nil, nil)
 }
@@ -26346,8 +27390,12 @@ func (v ImageMenuItem) SetImage(image IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if image != nil {
+		tmp = image.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_image := gi.NewPointerArgument(image.P_Widget())
+	arg_image := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_image}
 	iv.Call(args, nil, nil)
 }
@@ -26409,7 +27457,7 @@ func (v InfoBar) P_InfoBar() unsafe.Pointer { return v.P }
 // gtk_info_bar_new
 // container is not nil, container is InfoBar
 // is constructor
-func NewInfoBar() (result Widget) {
+func NewInfoBar() (result InfoBar) {
 	iv, err := _I.Get(1385, "InfoBar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -26430,8 +27478,12 @@ func (v InfoBar) AddActionWidget(child IWidget, response_id int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_response_id := gi.NewInt32Argument(response_id)
 	args := []gi.Argument{arg_v, arg_child, arg_response_id}
 	iv.Call(args, nil, nil)
@@ -26690,7 +27742,7 @@ func (v Invisible) P_Invisible() unsafe.Pointer { return v.P }
 // gtk_invisible_new
 // container is not nil, container is Invisible
 // is constructor
-func NewInvisible() (result Widget) {
+func NewInvisible() (result Invisible) {
 	iv, err := _I.Get(1399, "Invisible", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -26705,13 +27757,17 @@ func NewInvisible() (result Widget) {
 // gtk_invisible_new_for_screen
 // container is not nil, container is Invisible
 // is constructor
-func NewInvisibleForScreen(screen gdk.IScreen) (result Widget) {
+func NewInvisibleForScreen(screen gdk.IScreen) (result Invisible) {
 	iv, err := _I.Get(1400, "Invisible", "new_for_screen")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_screen}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -26745,8 +27801,12 @@ func (v Invisible) SetScreen(screen gdk.IScreen) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_screen}
 	iv.Call(args, nil, nil)
 }
@@ -26798,7 +27858,7 @@ func (v Label) P_Label() unsafe.Pointer { return v.P }
 // gtk_label_new
 // container is not nil, container is Label
 // is constructor
-func NewLabel(str string) (result Widget) {
+func NewLabel(str string) (result Label) {
 	iv, err := _I.Get(1403, "Label", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -26817,7 +27877,7 @@ func NewLabel(str string) (result Widget) {
 // gtk_label_new_with_mnemonic
 // container is not nil, container is Label
 // is constructor
-func NewLabelWithMnemonic(str string) (result Widget) {
+func NewLabelWithMnemonic(str string) (result Label) {
 	iv, err := _I.Get(1404, "Label", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -27445,8 +28505,12 @@ func (v Label) SetMnemonicWidget(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -27670,14 +28734,22 @@ func (v Layout) P_Layout() unsafe.Pointer { return v.P }
 // gtk_layout_new
 // container is not nil, container is Layout
 // is constructor
-func NewLayout(hadjustment IAdjustment, vadjustment IAdjustment) (result Widget) {
+func NewLayout(hadjustment IAdjustment, vadjustment IAdjustment) (result Layout) {
 	iv, err := _I.Get(1453, "Layout", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hadjustment := gi.NewPointerArgument(hadjustment.P_Adjustment())
-	arg_vadjustment := gi.NewPointerArgument(vadjustment.P_Adjustment())
+	var tmp unsafe.Pointer
+	if hadjustment != nil {
+		tmp = hadjustment.P_Adjustment()
+	}
+	var tmp1 unsafe.Pointer
+	if vadjustment != nil {
+		tmp1 = vadjustment.P_Adjustment()
+	}
+	arg_hadjustment := gi.NewPointerArgument(tmp)
+	arg_vadjustment := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_hadjustment, arg_vadjustment}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -27765,8 +28837,12 @@ func (v Layout) Move(child_widget IWidget, x int32, y int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child_widget != nil {
+		tmp = child_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child_widget := gi.NewPointerArgument(child_widget.P_Widget())
+	arg_child_widget := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_v, arg_child_widget, arg_x, arg_y}
@@ -27782,8 +28858,12 @@ func (v Layout) Put(child_widget IWidget, x int32, y int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child_widget != nil {
+		tmp = child_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child_widget := gi.NewPointerArgument(child_widget.P_Widget())
+	arg_child_widget := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
 	args := []gi.Argument{arg_v, arg_child_widget, arg_x, arg_y}
@@ -27799,8 +28879,12 @@ func (v Layout) SetHadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -27830,8 +28914,12 @@ func (v Layout) SetVadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -27859,7 +28947,7 @@ func (v LevelBar) P_LevelBar() unsafe.Pointer { return v.P }
 // gtk_level_bar_new
 // container is not nil, container is LevelBar
 // is constructor
-func NewLevelBar() (result Widget) {
+func NewLevelBar() (result LevelBar) {
 	iv, err := _I.Get(1463, "LevelBar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -27874,7 +28962,7 @@ func NewLevelBar() (result Widget) {
 // gtk_level_bar_new_for_interval
 // container is not nil, container is LevelBar
 // is constructor
-func NewLevelBarForInterval(min_value float64, max_value float64) (result Widget) {
+func NewLevelBarForInterval(min_value float64, max_value float64) (result LevelBar) {
 	iv, err := _I.Get(1464, "LevelBar", "new_for_interval")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28179,7 +29267,7 @@ func (v LinkButton) P_LinkButton() unsafe.Pointer { return v.P }
 // gtk_link_button_new
 // container is not nil, container is LinkButton
 // is constructor
-func NewLinkButton(uri string) (result Widget) {
+func NewLinkButton(uri string) (result LinkButton) {
 	iv, err := _I.Get(1478, "LinkButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28198,7 +29286,7 @@ func NewLinkButton(uri string) (result Widget) {
 // gtk_link_button_new_with_label
 // container is not nil, container is LinkButton
 // is constructor
-func NewLinkButtonWithLabel(uri string, label string) (result Widget) {
+func NewLinkButtonWithLabel(uri string, label string) (result LinkButton) {
 	iv, err := _I.Get(1479, "LinkButton", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28326,7 +29414,7 @@ func (v ListBox) P_ListBox() unsafe.Pointer { return v.P }
 // gtk_list_box_new
 // container is not nil, container is ListBox
 // is constructor
-func NewListBox() (result Widget) {
+func NewListBox() (result ListBox) {
 	iv, err := _I.Get(1484, "ListBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28365,8 +29453,12 @@ func (v ListBox) DragHighlightRow(row IListBoxRow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if row != nil {
+		tmp = row.P_ListBoxRow()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_row := gi.NewPointerArgument(row.P_ListBoxRow())
+	arg_row := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_row}
 	iv.Call(args, nil, nil)
 }
@@ -28475,7 +29567,7 @@ func (v ListBox) GetSelectedRow() (result ListBoxRow) {
 // gtk_list_box_get_selected_rows
 // container is not nil, container is ListBox
 // is method
-func (v ListBox) GetSelectedRows() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v ListBox) GetSelectedRows() (result glib.List) {
 	iv, err := _I.Get(1493, "ListBox", "get_selected_rows")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28485,7 +29577,7 @@ func (v ListBox) GetSelectedRows() (result int /*TODO_TYPE isPtr: true, tag: gli
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -28515,8 +29607,12 @@ func (v ListBox) Insert(child IWidget, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_child, arg_position}
 	iv.Call(args, nil, nil)
@@ -28573,8 +29669,12 @@ func (v ListBox) Prepend(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -28602,8 +29702,12 @@ func (v ListBox) SelectRow(row IListBoxRow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if row != nil {
+		tmp = row.P_ListBoxRow()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_row := gi.NewPointerArgument(row.P_ListBoxRow())
+	arg_row := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_row}
 	iv.Call(args, nil, nil)
 }
@@ -28648,8 +29752,12 @@ func (v ListBox) SetAdjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -28697,8 +29805,12 @@ func (v ListBox) SetPlaceholder(placeholder IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if placeholder != nil {
+		tmp = placeholder.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_placeholder := gi.NewPointerArgument(placeholder.P_Widget())
+	arg_placeholder := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_placeholder}
 	iv.Call(args, nil, nil)
 }
@@ -28758,8 +29870,12 @@ func (v ListBox) UnselectRow(row IListBoxRow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if row != nil {
+		tmp = row.P_ListBoxRow()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_row := gi.NewPointerArgument(row.P_ListBoxRow())
+	arg_row := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_row}
 	iv.Call(args, nil, nil)
 }
@@ -28801,7 +29917,7 @@ func (v ListBoxRow) P_ListBoxRow() unsafe.Pointer { return v.P }
 // gtk_list_box_row_new
 // container is not nil, container is ListBoxRow
 // is constructor
-func NewListBoxRow() (result Widget) {
+func NewListBoxRow() (result ListBoxRow) {
 	iv, err := _I.Get(1512, "ListBoxRow", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28936,8 +30052,12 @@ func (v ListBoxRow) SetHeader(header IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if header != nil {
+		tmp = header.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_header := gi.NewPointerArgument(header.P_Widget())
+	arg_header := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_header}
 	iv.Call(args, nil, nil)
 }
@@ -29314,13 +30434,17 @@ func (v LockButton) P_LockButton() unsafe.Pointer { return v.P }
 // gtk_lock_button_new
 // container is not nil, container is LockButton
 // is constructor
-func NewLockButton(permission gio.IPermission) (result Widget) {
+func NewLockButton(permission gio.IPermission) (result LockButton) {
 	iv, err := _I.Get(1539, "LockButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_permission := gi.NewPointerArgument(permission.P_Permission())
+	var tmp unsafe.Pointer
+	if permission != nil {
+		tmp = permission.P_Permission()
+	}
+	arg_permission := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_permission}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -29354,8 +30478,12 @@ func (v LockButton) SetPermission(permission gio.IPermission) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if permission != nil {
+		tmp = permission.P_Permission()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_permission := gi.NewPointerArgument(permission.P_Permission())
+	arg_permission := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_permission}
 	iv.Call(args, nil, nil)
 }
@@ -29402,7 +30530,7 @@ func (v Menu) P_Menu() unsafe.Pointer { return v.P }
 // gtk_menu_new
 // container is not nil, container is Menu
 // is constructor
-func NewMenu() (result Widget) {
+func NewMenu() (result Menu) {
 	iv, err := _I.Get(1542, "Menu", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29417,13 +30545,17 @@ func NewMenu() (result Widget) {
 // gtk_menu_new_from_model
 // container is not nil, container is Menu
 // is constructor
-func NewMenuFromModel(model gio.IMenuModel) (result Widget) {
+func NewMenuFromModel(model gio.IMenuModel) (result Menu) {
 	iv, err := _I.Get(1543, "Menu", "new_from_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_model := gi.NewPointerArgument(model.P_MenuModel())
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_MenuModel()
+	}
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_model}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -29435,17 +30567,21 @@ func NewMenuFromModel(model gio.IMenuModel) (result Widget) {
 // container is not nil, container is Menu
 // is method
 // arg0Type tag: interface, isPtr: true
-func MenuGetForAttachWidget1(widget IWidget) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func MenuGetForAttachWidget1(widget IWidget) (result glib.List) {
 	iv, err := _I.Get(1544, "Menu", "get_for_attach_widget")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -29458,8 +30594,12 @@ func (v Menu) Attach(child IWidget, left_attach uint32, right_attach uint32, top
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_left_attach := gi.NewUint32Argument(left_attach)
 	arg_right_attach := gi.NewUint32Argument(right_attach)
 	arg_top_attach := gi.NewUint32Argument(top_attach)
@@ -29477,8 +30617,12 @@ func (v Menu) AttachToWidget(attach_widget IWidget, detacher int /*TODO_TYPE isP
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if attach_widget != nil {
+		tmp = attach_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_attach_widget := gi.NewPointerArgument(attach_widget.P_Widget())
+	arg_attach_widget := gi.NewPointerArgument(tmp)
 	arg_detacher := gi.NewIntArgument(detacher) /*TODO*/
 	args := []gi.Argument{arg_v, arg_attach_widget, arg_detacher}
 	iv.Call(args, nil, nil)
@@ -29643,8 +30787,12 @@ func (v Menu) PlaceOnMonitor(monitor gdk.IMonitor) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if monitor != nil {
+		tmp = monitor.P_Monitor()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_monitor := gi.NewPointerArgument(monitor.P_Monitor())
+	arg_monitor := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_monitor}
 	iv.Call(args, nil, nil)
 }
@@ -29672,9 +30820,17 @@ func (v Menu) Popup(parent_menu_shell IWidget, parent_menu_item IWidget, func1 i
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if parent_menu_shell != nil {
+		tmp = parent_menu_shell.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if parent_menu_item != nil {
+		tmp1 = parent_menu_item.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent_menu_shell := gi.NewPointerArgument(parent_menu_shell.P_Widget())
-	arg_parent_menu_item := gi.NewPointerArgument(parent_menu_item.P_Widget())
+	arg_parent_menu_shell := gi.NewPointerArgument(tmp)
+	arg_parent_menu_item := gi.NewPointerArgument(tmp1)
 	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
 	arg_data := gi.NewPointerArgument(data)
 	arg_button := gi.NewUint32Argument(button)
@@ -29707,8 +30863,12 @@ func (v Menu) PopupAtRect(rect_window gdk.IWindow, rect gdk.Rectangle, rect_anch
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if rect_window != nil {
+		tmp = rect_window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_rect_window := gi.NewPointerArgument(rect_window.P_Window())
+	arg_rect_window := gi.NewPointerArgument(tmp)
 	arg_rect := gi.NewPointerArgument(rect.P)
 	arg_rect_anchor := gi.NewIntArgument(int(rect_anchor))
 	arg_menu_anchor := gi.NewIntArgument(int(menu_anchor))
@@ -29726,8 +30886,12 @@ func (v Menu) PopupAtWidget(widget IWidget, widget_anchor gdk.GravityEnum, menu_
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_widget_anchor := gi.NewIntArgument(int(widget_anchor))
 	arg_menu_anchor := gi.NewIntArgument(int(menu_anchor))
 	arg_trigger_event := gi.NewPointerArgument(trigger_event.P)
@@ -29744,10 +30908,22 @@ func (v Menu) PopupForDevice(device gdk.IDevice, parent_menu_shell IWidget, pare
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
+	var tmp1 unsafe.Pointer
+	if parent_menu_shell != nil {
+		tmp1 = parent_menu_shell.P_Widget()
+	}
+	var tmp2 unsafe.Pointer
+	if parent_menu_item != nil {
+		tmp2 = parent_menu_item.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
-	arg_parent_menu_shell := gi.NewPointerArgument(parent_menu_shell.P_Widget())
-	arg_parent_menu_item := gi.NewPointerArgument(parent_menu_item.P_Widget())
+	arg_device := gi.NewPointerArgument(tmp)
+	arg_parent_menu_shell := gi.NewPointerArgument(tmp1)
+	arg_parent_menu_item := gi.NewPointerArgument(tmp2)
 	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
 	arg_data := gi.NewPointerArgument(data)
 	arg_destroy := gi.NewIntArgument(destroy) /*TODO*/
@@ -29766,8 +30942,12 @@ func (v Menu) ReorderChild(child IWidget, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_child, arg_position}
 	iv.Call(args, nil, nil)
@@ -29796,8 +30976,12 @@ func (v Menu) SetAccelGroup(accel_group IAccelGroup) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if accel_group != nil {
+		tmp = accel_group.P_AccelGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_accel_group := gi.NewPointerArgument(accel_group.P_AccelGroup())
+	arg_accel_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_accel_group}
 	iv.Call(args, nil, nil)
 }
@@ -29873,8 +31057,12 @@ func (v Menu) SetScreen(screen gdk.IScreen) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_screen}
 	iv.Call(args, nil, nil)
 }
@@ -29946,7 +31134,7 @@ func (v MenuBar) P_MenuBar() unsafe.Pointer { return v.P }
 // gtk_menu_bar_new
 // container is not nil, container is MenuBar
 // is constructor
-func NewMenuBar() (result Widget) {
+func NewMenuBar() (result MenuBar) {
 	iv, err := _I.Get(1573, "MenuBar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29961,13 +31149,17 @@ func NewMenuBar() (result Widget) {
 // gtk_menu_bar_new_from_model
 // container is not nil, container is MenuBar
 // is constructor
-func NewMenuBarFromModel(model gio.IMenuModel) (result Widget) {
+func NewMenuBarFromModel(model gio.IMenuModel) (result MenuBar) {
 	iv, err := _I.Get(1574, "MenuBar", "new_from_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_model := gi.NewPointerArgument(model.P_MenuModel())
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_MenuModel()
+	}
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_model}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -30063,7 +31255,7 @@ func (v MenuButton) P_MenuButton() unsafe.Pointer { return v.P }
 // gtk_menu_button_new
 // container is not nil, container is MenuButton
 // is constructor
-func NewMenuButton() (result Widget) {
+func NewMenuButton() (result MenuButton) {
 	iv, err := _I.Get(1579, "MenuButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30186,8 +31378,12 @@ func (v MenuButton) SetAlignWidget(align_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if align_widget != nil {
+		tmp = align_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_align_widget := gi.NewPointerArgument(align_widget.P_Widget())
+	arg_align_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_align_widget}
 	iv.Call(args, nil, nil)
 }
@@ -30216,8 +31412,12 @@ func (v MenuButton) SetMenuModel(menu_model gio.IMenuModel) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if menu_model != nil {
+		tmp = menu_model.P_MenuModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_menu_model := gi.NewPointerArgument(menu_model.P_MenuModel())
+	arg_menu_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_menu_model}
 	iv.Call(args, nil, nil)
 }
@@ -30231,8 +31431,12 @@ func (v MenuButton) SetPopover(popover IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if popover != nil {
+		tmp = popover.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_popover := gi.NewPointerArgument(popover.P_Widget())
+	arg_popover := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_popover}
 	iv.Call(args, nil, nil)
 }
@@ -30246,8 +31450,12 @@ func (v MenuButton) SetPopup(menu IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if menu != nil {
+		tmp = menu.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_menu := gi.NewPointerArgument(menu.P_Widget())
+	arg_menu := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_menu}
 	iv.Call(args, nil, nil)
 }
@@ -30322,7 +31530,7 @@ func (v MenuItem) P_MenuItem() unsafe.Pointer { return v.P }
 // gtk_menu_item_new
 // container is not nil, container is MenuItem
 // is constructor
-func NewMenuItem() (result Widget) {
+func NewMenuItem() (result MenuItem) {
 	iv, err := _I.Get(1592, "MenuItem", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30337,7 +31545,7 @@ func NewMenuItem() (result Widget) {
 // gtk_menu_item_new_with_label
 // container is not nil, container is MenuItem
 // is constructor
-func NewMenuItemWithLabel(label string) (result Widget) {
+func NewMenuItemWithLabel(label string) (result MenuItem) {
 	iv, err := _I.Get(1593, "MenuItem", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30356,7 +31564,7 @@ func NewMenuItemWithLabel(label string) (result Widget) {
 // gtk_menu_item_new_with_mnemonic
 // container is not nil, container is MenuItem
 // is constructor
-func NewMenuItemWithMnemonic(label string) (result Widget) {
+func NewMenuItemWithMnemonic(label string) (result MenuItem) {
 	iv, err := _I.Get(1594, "MenuItem", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30589,8 +31797,12 @@ func (v MenuItem) SetSubmenu(submenu IMenu) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if submenu != nil {
+		tmp = submenu.P_Menu()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_submenu := gi.NewPointerArgument(submenu.P_Menu())
+	arg_submenu := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_submenu}
 	iv.Call(args, nil, nil)
 }
@@ -30693,8 +31905,12 @@ func (v MenuShell) ActivateItem(menu_item IWidget, force_deactivate bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if menu_item != nil {
+		tmp = menu_item.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_menu_item := gi.NewPointerArgument(menu_item.P_Widget())
+	arg_menu_item := gi.NewPointerArgument(tmp)
 	arg_force_deactivate := gi.NewBoolArgument(force_deactivate)
 	args := []gi.Argument{arg_v, arg_menu_item, arg_force_deactivate}
 	iv.Call(args, nil, nil)
@@ -30709,8 +31925,12 @@ func (v MenuShell) Append(child IMenuItem) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_MenuItem()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_MenuItem())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -30724,9 +31944,13 @@ func (v MenuShell) BindModel(model gio.IMenuModel, action_namespace string, with
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_MenuModel()
+	}
 	c_action_namespace := gi.CString(action_namespace)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_model := gi.NewPointerArgument(model.P_MenuModel())
+	arg_model := gi.NewPointerArgument(tmp)
 	arg_action_namespace := gi.NewStringArgument(c_action_namespace)
 	arg_with_separators := gi.NewBoolArgument(with_separators)
 	args := []gi.Argument{arg_v, arg_model, arg_action_namespace, arg_with_separators}
@@ -30836,8 +32060,12 @@ func (v MenuShell) Insert(child IWidget, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_child, arg_position}
 	iv.Call(args, nil, nil)
@@ -30852,8 +32080,12 @@ func (v MenuShell) Prepend(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -30882,8 +32114,12 @@ func (v MenuShell) SelectItem(menu_item IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if menu_item != nil {
+		tmp = menu_item.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_menu_item := gi.NewPointerArgument(menu_item.P_Widget())
+	arg_menu_item := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_menu_item}
 	iv.Call(args, nil, nil)
 }
@@ -30946,14 +32182,18 @@ func (v MenuToolButton) P_MenuToolButton() unsafe.Pointer { return v.P }
 // gtk_menu_tool_button_new
 // container is not nil, container is MenuToolButton
 // is constructor
-func NewMenuToolButton(icon_widget IWidget, label string) (result ToolItem) {
+func NewMenuToolButton(icon_widget IWidget, label string) (result MenuToolButton) {
 	iv, err := _I.Get(1626, "MenuToolButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon_widget != nil {
+		tmp = icon_widget.P_Widget()
+	}
 	c_label := gi.CString(label)
-	arg_icon_widget := gi.NewPointerArgument(icon_widget.P_Widget())
+	arg_icon_widget := gi.NewPointerArgument(tmp)
 	arg_label := gi.NewStringArgument(c_label)
 	args := []gi.Argument{arg_icon_widget, arg_label}
 	var ret gi.Argument
@@ -30966,7 +32206,7 @@ func NewMenuToolButton(icon_widget IWidget, label string) (result ToolItem) {
 // gtk_menu_tool_button_new_from_stock
 // container is not nil, container is MenuToolButton
 // is constructor
-func NewMenuToolButtonFromStock(stock_id string) (result ToolItem) {
+func NewMenuToolButtonFromStock(stock_id string) (result MenuToolButton) {
 	iv, err := _I.Get(1627, "MenuToolButton", "new_from_stock")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31042,8 +32282,12 @@ func (v MenuToolButton) SetMenu(menu IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if menu != nil {
+		tmp = menu.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_menu := gi.NewPointerArgument(menu.P_Widget())
+	arg_menu := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_menu}
 	iv.Call(args, nil, nil)
 }
@@ -31110,8 +32354,12 @@ func (v MessageDialog) SetImage(image IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if image != nil {
+		tmp = image.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_image := gi.NewPointerArgument(image.P_Widget())
+	arg_image := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_image}
 	iv.Call(args, nil, nil)
 }
@@ -31259,7 +32507,7 @@ func (v ModelButton) P_ModelButton() unsafe.Pointer { return v.P }
 // gtk_model_button_new
 // container is not nil, container is ModelButton
 // is constructor
-func NewModelButton() (result Widget) {
+func NewModelButton() (result ModelButton) {
 	iv, err := _I.Get(1640, "ModelButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31285,13 +32533,17 @@ func (v MountOperation) P_MountOperation() unsafe.Pointer { return v.P }
 // gtk_mount_operation_new
 // container is not nil, container is MountOperation
 // is constructor
-func NewMountOperation(parent IWindow) (result gio.MountOperation) {
+func NewMountOperation(parent IWindow) (result MountOperation) {
 	iv, err := _I.Get(1641, "MountOperation", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
+	arg_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_parent}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -31359,8 +32611,12 @@ func (v MountOperation) SetParent(parent IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	arg_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_parent}
 	iv.Call(args, nil, nil)
 }
@@ -31374,8 +32630,12 @@ func (v MountOperation) SetScreen(screen gdk.IScreen) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_screen}
 	iv.Call(args, nil, nil)
 }
@@ -31567,8 +32827,12 @@ func (v NativeDialog) SetTransientFor(parent IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	arg_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_parent}
 	iv.Call(args, nil, nil)
 }
@@ -31604,7 +32868,7 @@ func (v Notebook) P_Notebook() unsafe.Pointer { return v.P }
 // gtk_notebook_new
 // container is not nil, container is Notebook
 // is constructor
-func NewNotebook() (result Widget) {
+func NewNotebook() (result Notebook) {
 	iv, err := _I.Get(1658, "Notebook", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31625,9 +32889,17 @@ func (v Notebook) AppendPage(child IWidget, tab_label IWidget) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if tab_label != nil {
+		tmp1 = tab_label.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_tab_label := gi.NewPointerArgument(tab_label.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_tab_label := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_child, arg_tab_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -31644,10 +32916,22 @@ func (v Notebook) AppendPageMenu(child IWidget, tab_label IWidget, menu_label IW
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if tab_label != nil {
+		tmp1 = tab_label.P_Widget()
+	}
+	var tmp2 unsafe.Pointer
+	if menu_label != nil {
+		tmp2 = menu_label.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_tab_label := gi.NewPointerArgument(tab_label.P_Widget())
-	arg_menu_label := gi.NewPointerArgument(menu_label.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_tab_label := gi.NewPointerArgument(tmp1)
+	arg_menu_label := gi.NewPointerArgument(tmp2)
 	args := []gi.Argument{arg_v, arg_child, arg_tab_label, arg_menu_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -31664,8 +32948,12 @@ func (v Notebook) DetachTab(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -31731,8 +33019,12 @@ func (v Notebook) GetMenuLabel(child IWidget) (result Widget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -31749,8 +33041,12 @@ func (v Notebook) GetMenuLabelText(child IWidget) (result string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -31853,8 +33149,12 @@ func (v Notebook) GetTabDetachable(child IWidget) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -31888,8 +33188,12 @@ func (v Notebook) GetTabLabel(child IWidget) (result Widget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -31906,8 +33210,12 @@ func (v Notebook) GetTabLabelText(child IWidget) (result string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -31941,8 +33249,12 @@ func (v Notebook) GetTabReorderable(child IWidget) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -31976,9 +33288,17 @@ func (v Notebook) InsertPage(child IWidget, tab_label IWidget, position int32) (
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if tab_label != nil {
+		tmp1 = tab_label.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_tab_label := gi.NewPointerArgument(tab_label.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_tab_label := gi.NewPointerArgument(tmp1)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_child, arg_tab_label, arg_position}
 	var ret gi.Argument
@@ -31996,10 +33316,22 @@ func (v Notebook) InsertPageMenu(child IWidget, tab_label IWidget, menu_label IW
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if tab_label != nil {
+		tmp1 = tab_label.P_Widget()
+	}
+	var tmp2 unsafe.Pointer
+	if menu_label != nil {
+		tmp2 = menu_label.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_tab_label := gi.NewPointerArgument(tab_label.P_Widget())
-	arg_menu_label := gi.NewPointerArgument(menu_label.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_tab_label := gi.NewPointerArgument(tmp1)
+	arg_menu_label := gi.NewPointerArgument(tmp2)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_child, arg_tab_label, arg_menu_label, arg_position}
 	var ret gi.Argument
@@ -32031,8 +33363,12 @@ func (v Notebook) PageNum(child IWidget) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -32077,9 +33413,17 @@ func (v Notebook) PrependPage(child IWidget, tab_label IWidget) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if tab_label != nil {
+		tmp1 = tab_label.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_tab_label := gi.NewPointerArgument(tab_label.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_tab_label := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_child, arg_tab_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -32096,10 +33440,22 @@ func (v Notebook) PrependPageMenu(child IWidget, tab_label IWidget, menu_label I
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if tab_label != nil {
+		tmp1 = tab_label.P_Widget()
+	}
+	var tmp2 unsafe.Pointer
+	if menu_label != nil {
+		tmp2 = menu_label.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_tab_label := gi.NewPointerArgument(tab_label.P_Widget())
-	arg_menu_label := gi.NewPointerArgument(menu_label.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_tab_label := gi.NewPointerArgument(tmp1)
+	arg_menu_label := gi.NewPointerArgument(tmp2)
 	args := []gi.Argument{arg_v, arg_child, arg_tab_label, arg_menu_label}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -32145,8 +33501,12 @@ func (v Notebook) ReorderChild(child IWidget, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_child, arg_position}
 	iv.Call(args, nil, nil)
@@ -32161,8 +33521,12 @@ func (v Notebook) SetActionWidget(widget IWidget, pack_type PackTypeEnum) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_pack_type := gi.NewIntArgument(int(pack_type))
 	args := []gi.Argument{arg_v, arg_widget, arg_pack_type}
 	iv.Call(args, nil, nil)
@@ -32209,9 +33573,17 @@ func (v Notebook) SetMenuLabel(child IWidget, menu_label IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if menu_label != nil {
+		tmp1 = menu_label.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_menu_label := gi.NewPointerArgument(menu_label.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_menu_label := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_child, arg_menu_label}
 	iv.Call(args, nil, nil)
 }
@@ -32225,9 +33597,13 @@ func (v Notebook) SetMenuLabelText(child IWidget, menu_text string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	c_menu_text := gi.CString(menu_text)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_menu_text := gi.NewStringArgument(c_menu_text)
 	args := []gi.Argument{arg_v, arg_child, arg_menu_text}
 	iv.Call(args, nil, nil)
@@ -32288,8 +33664,12 @@ func (v Notebook) SetTabDetachable(child IWidget, detachable bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_detachable := gi.NewBoolArgument(detachable)
 	args := []gi.Argument{arg_v, arg_child, arg_detachable}
 	iv.Call(args, nil, nil)
@@ -32304,9 +33684,17 @@ func (v Notebook) SetTabLabel(child IWidget, tab_label IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if tab_label != nil {
+		tmp1 = tab_label.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_tab_label := gi.NewPointerArgument(tab_label.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_tab_label := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_child, arg_tab_label}
 	iv.Call(args, nil, nil)
 }
@@ -32320,9 +33708,13 @@ func (v Notebook) SetTabLabelText(child IWidget, tab_text string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	c_tab_text := gi.CString(tab_text)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_tab_text := gi.NewStringArgument(c_tab_text)
 	args := []gi.Argument{arg_v, arg_child, arg_tab_text}
 	iv.Call(args, nil, nil)
@@ -32353,8 +33745,12 @@ func (v Notebook) SetTabReorderable(child IWidget, reorderable bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_reorderable := gi.NewBoolArgument(reorderable)
 	args := []gi.Argument{arg_v, arg_child, arg_reorderable}
 	iv.Call(args, nil, nil)
@@ -32395,14 +33791,22 @@ func (v NotebookPageAccessible) P_NotebookPageAccessible() unsafe.Pointer { retu
 // gtk_notebook_page_accessible_new
 // container is not nil, container is NotebookPageAccessible
 // is constructor
-func NewNotebookPageAccessible(notebook INotebookAccessible, child IWidget) (result atk.Object) {
+func NewNotebookPageAccessible(notebook INotebookAccessible, child IWidget) (result NotebookPageAccessible) {
 	iv, err := _I.Get(1703, "NotebookPageAccessible", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_notebook := gi.NewPointerArgument(notebook.P_NotebookAccessible())
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	var tmp unsafe.Pointer
+	if notebook != nil {
+		tmp = notebook.P_NotebookAccessible()
+	}
+	var tmp1 unsafe.Pointer
+	if child != nil {
+		tmp1 = child.P_Widget()
+	}
+	arg_notebook := gi.NewPointerArgument(tmp)
+	arg_child := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_notebook, arg_child}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -32497,8 +33901,12 @@ func NumerableIconNewWithStyleContext1(base_icon gio.Icon, context IStyleContext
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
 	arg_base_icon := gi.NewPointerArgument(base_icon.P)
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_base_icon, arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -32664,8 +34072,12 @@ func (v NumerableIcon) SetStyleContext(style IStyleContext) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_StyleContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_style := gi.NewPointerArgument(style.P_StyleContext())
+	arg_style := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_style}
 	iv.Call(args, nil, nil)
 }
@@ -32692,7 +34104,7 @@ func (v OffscreenWindow) P_OffscreenWindow() unsafe.Pointer { return v.P }
 // gtk_offscreen_window_new
 // container is not nil, container is OffscreenWindow
 // is constructor
-func NewOffscreenWindow() (result Widget) {
+func NewOffscreenWindow() (result OffscreenWindow) {
 	iv, err := _I.Get(1717, "OffscreenWindow", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -32803,7 +34215,7 @@ func (v Overlay) P_Overlay() unsafe.Pointer { return v.P }
 // gtk_overlay_new
 // container is not nil, container is Overlay
 // is constructor
-func NewOverlay() (result Widget) {
+func NewOverlay() (result Overlay) {
 	iv, err := _I.Get(1722, "Overlay", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -32824,8 +34236,12 @@ func (v Overlay) AddOverlay(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -32839,8 +34255,12 @@ func (v Overlay) GetOverlayPassThrough(widget IWidget) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -32857,8 +34277,12 @@ func (v Overlay) ReorderOverlay(child IWidget, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_child, arg_position}
 	iv.Call(args, nil, nil)
@@ -32873,8 +34297,12 @@ func (v Overlay) SetOverlayPassThrough(widget IWidget, pass_through bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_pass_through := gi.NewBoolArgument(pass_through)
 	args := []gi.Argument{arg_v, arg_widget, arg_pass_through}
 	iv.Call(args, nil, nil)
@@ -32938,9 +34366,17 @@ func NewPadController(window IWindow, group gio.ActionGroup, pad gdk.IDevice) (r
 		log.Println("WARN:", err)
 		return
 	}
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
+	var tmp1 unsafe.Pointer
+	if pad != nil {
+		tmp1 = pad.P_Device()
+	}
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_group := gi.NewPointerArgument(group.P)
-	arg_pad := gi.NewPointerArgument(pad.P_Device())
+	arg_pad := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_window, arg_group, arg_pad}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -33532,7 +34968,7 @@ func (v Paned) P_Paned() unsafe.Pointer { return v.P }
 // gtk_paned_new
 // container is not nil, container is Paned
 // is constructor
-func NewPaned(orientation OrientationEnum) (result Widget) {
+func NewPaned(orientation OrientationEnum) (result Paned) {
 	iv, err := _I.Get(1757, "Paned", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -33555,8 +34991,12 @@ func (v Paned) Add1(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -33570,8 +35010,12 @@ func (v Paned) Add2(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -33670,8 +35114,12 @@ func (v Paned) Pack1(child IWidget, resize bool, shrink bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_resize := gi.NewBoolArgument(resize)
 	arg_shrink := gi.NewBoolArgument(shrink)
 	args := []gi.Argument{arg_v, arg_child, arg_resize, arg_shrink}
@@ -33687,8 +35135,12 @@ func (v Paned) Pack2(child IWidget, resize bool, shrink bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_resize := gi.NewBoolArgument(resize)
 	arg_shrink := gi.NewBoolArgument(shrink)
 	args := []gi.Argument{arg_v, arg_child, arg_resize, arg_shrink}
@@ -34181,7 +35633,7 @@ func (v PaperSize) ToKeyFile(key_file glib.KeyFile, group_name string) {
 // container is not nil, container is PaperSize
 // is method
 // arg0Type tag: gboolean, isPtr: false
-func PaperSizeGetPaperSizes1(include_custom bool) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func PaperSizeGetPaperSizes1(include_custom bool) (result glib.List) {
 	iv, err := _I.Get(1793, "PaperSize", "get_paper_sizes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -34191,7 +35643,7 @@ func PaperSizeGetPaperSizes1(include_custom bool) (result int /*TODO_TYPE isPtr:
 	args := []gi.Argument{arg_include_custom}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -34241,7 +35693,7 @@ func (v PlacesSidebar) P_PlacesSidebar() unsafe.Pointer { return v.P }
 // gtk_places_sidebar_new
 // container is not nil, container is PlacesSidebar
 // is constructor
-func NewPlacesSidebar() (result Widget) {
+func NewPlacesSidebar() (result PlacesSidebar) {
 	iv, err := _I.Get(1794, "PlacesSidebar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -34459,7 +35911,7 @@ func (v PlacesSidebar) GetShowTrash() (result bool) {
 // gtk_places_sidebar_list_shortcuts
 // container is not nil, container is PlacesSidebar
 // is method
-func (v PlacesSidebar) ListShortcuts() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v PlacesSidebar) ListShortcuts() (result glib.SList) {
 	iv, err := _I.Get(1807, "PlacesSidebar", "list_shortcuts")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -34469,7 +35921,7 @@ func (v PlacesSidebar) ListShortcuts() (result int /*TODO_TYPE isPtr: true, tag:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -34497,9 +35949,13 @@ func (v PlacesSidebar) SetDropTargetsVisible(visible bool, context gdk.IDragCont
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_visible := gi.NewBoolArgument(visible)
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_visible, arg_context}
 	iv.Call(args, nil, nil)
 }
@@ -34671,7 +36127,7 @@ func (v Plug) P_Plug() unsafe.Pointer { return v.P }
 // gtk_plug_new
 // container is not nil, container is Plug
 // is constructor
-func NewPlug(socket_id uint64) (result Widget) {
+func NewPlug(socket_id uint64) (result Plug) {
 	iv, err := _I.Get(1820, "Plug", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -34688,13 +36144,17 @@ func NewPlug(socket_id uint64) (result Widget) {
 // gtk_plug_new_for_display
 // container is not nil, container is Plug
 // is constructor
-func NewPlugForDisplay(display gdk.IDisplay, socket_id uint64) (result Widget) {
+func NewPlugForDisplay(display gdk.IDisplay, socket_id uint64) (result Plug) {
 	iv, err := _I.Get(1821, "Plug", "new_for_display")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	arg_socket_id := gi.NewUint64Argument(socket_id)
 	args := []gi.Argument{arg_display, arg_socket_id}
 	var ret gi.Argument
@@ -34727,8 +36187,12 @@ func (v Plug) ConstructForDisplay(display gdk.IDisplay, socket_id uint64) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	arg_display := gi.NewPointerArgument(tmp)
 	arg_socket_id := gi.NewUint64Argument(socket_id)
 	args := []gi.Argument{arg_v, arg_display, arg_socket_id}
 	iv.Call(args, nil, nil)
@@ -34817,13 +36281,17 @@ func (v Popover) P_Popover() unsafe.Pointer { return v.P }
 // gtk_popover_new
 // container is not nil, container is Popover
 // is constructor
-func NewPopover(relative_to IWidget) (result Widget) {
+func NewPopover(relative_to IWidget) (result Popover) {
 	iv, err := _I.Get(1827, "Popover", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_relative_to := gi.NewPointerArgument(relative_to.P_Widget())
+	var tmp unsafe.Pointer
+	if relative_to != nil {
+		tmp = relative_to.P_Widget()
+	}
+	arg_relative_to := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_relative_to}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -34834,14 +36302,22 @@ func NewPopover(relative_to IWidget) (result Widget) {
 // gtk_popover_new_from_model
 // container is not nil, container is Popover
 // is constructor
-func NewPopoverFromModel(relative_to IWidget, model gio.IMenuModel) (result Widget) {
+func NewPopoverFromModel(relative_to IWidget, model gio.IMenuModel) (result Popover) {
 	iv, err := _I.Get(1828, "Popover", "new_from_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_relative_to := gi.NewPointerArgument(relative_to.P_Widget())
-	arg_model := gi.NewPointerArgument(model.P_MenuModel())
+	var tmp unsafe.Pointer
+	if relative_to != nil {
+		tmp = relative_to.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if model != nil {
+		tmp1 = model.P_MenuModel()
+	}
+	arg_relative_to := gi.NewPointerArgument(tmp)
+	arg_model := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_relative_to, arg_model}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -34858,9 +36334,13 @@ func (v Popover) BindModel(model gio.IMenuModel, action_namespace string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_MenuModel()
+	}
 	c_action_namespace := gi.CString(action_namespace)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_model := gi.NewPointerArgument(model.P_MenuModel())
+	arg_model := gi.NewPointerArgument(tmp)
 	arg_action_namespace := gi.NewStringArgument(c_action_namespace)
 	args := []gi.Argument{arg_v, arg_model, arg_action_namespace}
 	iv.Call(args, nil, nil)
@@ -35041,8 +36521,12 @@ func (v Popover) SetDefaultWidget(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -35101,8 +36585,12 @@ func (v Popover) SetRelativeTo(relative_to IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if relative_to != nil {
+		tmp = relative_to.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_relative_to := gi.NewPointerArgument(relative_to.P_Widget())
+	arg_relative_to := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_relative_to}
 	iv.Call(args, nil, nil)
 }
@@ -35160,7 +36648,7 @@ func (v PopoverMenu) P_PopoverMenu() unsafe.Pointer { return v.P }
 // gtk_popover_menu_new
 // container is not nil, container is PopoverMenu
 // is constructor
-func NewPopoverMenu() (result Widget) {
+func NewPopoverMenu() (result PopoverMenu) {
 	iv, err := _I.Get(1846, "PopoverMenu", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -35665,9 +37153,13 @@ func (v PrintOperation) Run(action PrintOperationActionEnum, parent IWindow) (re
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_action := gi.NewIntArgument(int(action))
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	arg_parent := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_action, arg_parent, arg_err}
 	var ret gi.Argument
@@ -35733,8 +37225,12 @@ func (v PrintOperation) SetDefaultPageSetup(default_page_setup IPageSetup) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if default_page_setup != nil {
+		tmp = default_page_setup.P_PageSetup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_default_page_setup := gi.NewPointerArgument(default_page_setup.P_PageSetup())
+	arg_default_page_setup := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_default_page_setup}
 	iv.Call(args, nil, nil)
 }
@@ -35841,8 +37337,12 @@ func (v PrintOperation) SetPrintSettings(print_settings IPrintSettings) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if print_settings != nil {
+		tmp = print_settings.P_PrintSettings()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_print_settings := gi.NewPointerArgument(print_settings.P_PrintSettings())
+	arg_print_settings := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_print_settings}
 	iv.Call(args, nil, nil)
 }
@@ -37391,7 +38891,7 @@ func (v ProgressBar) P_ProgressBar() unsafe.Pointer { return v.P }
 // gtk_progress_bar_new
 // container is not nil, container is ProgressBar
 // is constructor
-func NewProgressBar() (result Widget) {
+func NewProgressBar() (result ProgressBar) {
 	iv, err := _I.Get(1968, "ProgressBar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -37707,7 +39207,7 @@ func (v RadioAction) GetCurrentValue() (result int32) {
 // gtk_radio_action_get_group
 // container is not nil, container is RadioAction
 // is method
-func (v RadioAction) GetGroup() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v RadioAction) GetGroup() (result glib.SList) {
 	iv, err := _I.Get(1984, "RadioAction", "get_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -37717,7 +39217,7 @@ func (v RadioAction) GetGroup() (result int /*TODO_TYPE isPtr: true, tag: gslist
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -37730,8 +39230,12 @@ func (v RadioAction) JoinGroup(group_source IRadioAction) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group_source != nil {
+		tmp = group_source.P_RadioAction()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group_source := gi.NewPointerArgument(group_source.P_RadioAction())
+	arg_group_source := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_group_source}
 	iv.Call(args, nil, nil)
 }
@@ -37754,14 +39258,14 @@ func (v RadioAction) SetCurrentValue(current_value int32) {
 // gtk_radio_action_set_group
 // container is not nil, container is RadioAction
 // is method
-func (v RadioAction) SetGroup(group int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v RadioAction) SetGroup(group glib.SList) {
 	iv, err := _I.Get(1987, "RadioAction", "set_group")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	args := []gi.Argument{arg_v, arg_group}
 	iv.Call(args, nil, nil)
 }
@@ -37795,13 +39299,13 @@ func (v RadioButton) P_RadioButton() unsafe.Pointer { return v.P }
 // gtk_radio_button_new
 // container is not nil, container is RadioButton
 // is constructor
-func NewRadioButton(group int /*TODO_TYPE isPtr: true, tag: gslist*/) (result Widget) {
+func NewRadioButton(group glib.SList) (result RadioButton) {
 	iv, err := _I.Get(1988, "RadioButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	args := []gi.Argument{arg_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -37812,13 +39316,17 @@ func NewRadioButton(group int /*TODO_TYPE isPtr: true, tag: gslist*/) (result Wi
 // gtk_radio_button_new_from_widget
 // container is not nil, container is RadioButton
 // is constructor
-func NewRadioButtonFromWidget(radio_group_member IRadioButton) (result Widget) {
+func NewRadioButtonFromWidget(radio_group_member IRadioButton) (result RadioButton) {
 	iv, err := _I.Get(1989, "RadioButton", "new_from_widget")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_radio_group_member := gi.NewPointerArgument(radio_group_member.P_RadioButton())
+	var tmp unsafe.Pointer
+	if radio_group_member != nil {
+		tmp = radio_group_member.P_RadioButton()
+	}
+	arg_radio_group_member := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_radio_group_member}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -37829,14 +39337,14 @@ func NewRadioButtonFromWidget(radio_group_member IRadioButton) (result Widget) {
 // gtk_radio_button_new_with_label
 // container is not nil, container is RadioButton
 // is constructor
-func NewRadioButtonWithLabel(group int /*TODO_TYPE isPtr: true, tag: gslist*/, label string) (result Widget) {
+func NewRadioButtonWithLabel(group glib.SList, label string) (result RadioButton) {
 	iv, err := _I.Get(1990, "RadioButton", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_label := gi.CString(label)
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	arg_label := gi.NewStringArgument(c_label)
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
@@ -37849,14 +39357,18 @@ func NewRadioButtonWithLabel(group int /*TODO_TYPE isPtr: true, tag: gslist*/, l
 // gtk_radio_button_new_with_label_from_widget
 // container is not nil, container is RadioButton
 // is constructor
-func NewRadioButtonWithLabelFromWidget(radio_group_member IRadioButton, label string) (result Widget) {
+func NewRadioButtonWithLabelFromWidget(radio_group_member IRadioButton, label string) (result RadioButton) {
 	iv, err := _I.Get(1991, "RadioButton", "new_with_label_from_widget")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if radio_group_member != nil {
+		tmp = radio_group_member.P_RadioButton()
+	}
 	c_label := gi.CString(label)
-	arg_radio_group_member := gi.NewPointerArgument(radio_group_member.P_RadioButton())
+	arg_radio_group_member := gi.NewPointerArgument(tmp)
 	arg_label := gi.NewStringArgument(c_label)
 	args := []gi.Argument{arg_radio_group_member, arg_label}
 	var ret gi.Argument
@@ -37869,14 +39381,14 @@ func NewRadioButtonWithLabelFromWidget(radio_group_member IRadioButton, label st
 // gtk_radio_button_new_with_mnemonic
 // container is not nil, container is RadioButton
 // is constructor
-func NewRadioButtonWithMnemonic(group int /*TODO_TYPE isPtr: true, tag: gslist*/, label string) (result Widget) {
+func NewRadioButtonWithMnemonic(group glib.SList, label string) (result RadioButton) {
 	iv, err := _I.Get(1992, "RadioButton", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_label := gi.CString(label)
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	arg_label := gi.NewStringArgument(c_label)
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
@@ -37889,14 +39401,18 @@ func NewRadioButtonWithMnemonic(group int /*TODO_TYPE isPtr: true, tag: gslist*/
 // gtk_radio_button_new_with_mnemonic_from_widget
 // container is not nil, container is RadioButton
 // is constructor
-func NewRadioButtonWithMnemonicFromWidget(radio_group_member IRadioButton, label string) (result Widget) {
+func NewRadioButtonWithMnemonicFromWidget(radio_group_member IRadioButton, label string) (result RadioButton) {
 	iv, err := _I.Get(1993, "RadioButton", "new_with_mnemonic_from_widget")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if radio_group_member != nil {
+		tmp = radio_group_member.P_RadioButton()
+	}
 	c_label := gi.CString(label)
-	arg_radio_group_member := gi.NewPointerArgument(radio_group_member.P_RadioButton())
+	arg_radio_group_member := gi.NewPointerArgument(tmp)
 	arg_label := gi.NewStringArgument(c_label)
 	args := []gi.Argument{arg_radio_group_member, arg_label}
 	var ret gi.Argument
@@ -37909,7 +39425,7 @@ func NewRadioButtonWithMnemonicFromWidget(radio_group_member IRadioButton, label
 // gtk_radio_button_get_group
 // container is not nil, container is RadioButton
 // is method
-func (v RadioButton) GetGroup() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v RadioButton) GetGroup() (result glib.SList) {
 	iv, err := _I.Get(1994, "RadioButton", "get_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -37919,7 +39435,7 @@ func (v RadioButton) GetGroup() (result int /*TODO_TYPE isPtr: true, tag: gslist
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -37932,8 +39448,12 @@ func (v RadioButton) JoinGroup(group_source IRadioButton) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group_source != nil {
+		tmp = group_source.P_RadioButton()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group_source := gi.NewPointerArgument(group_source.P_RadioButton())
+	arg_group_source := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_group_source}
 	iv.Call(args, nil, nil)
 }
@@ -37941,14 +39461,14 @@ func (v RadioButton) JoinGroup(group_source IRadioButton) {
 // gtk_radio_button_set_group
 // container is not nil, container is RadioButton
 // is method
-func (v RadioButton) SetGroup(group int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v RadioButton) SetGroup(group glib.SList) {
 	iv, err := _I.Get(1996, "RadioButton", "set_group")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	args := []gi.Argument{arg_v, arg_group}
 	iv.Call(args, nil, nil)
 }
@@ -37997,13 +39517,13 @@ func (v RadioMenuItem) P_RadioMenuItem() unsafe.Pointer { return v.P }
 // gtk_radio_menu_item_new
 // container is not nil, container is RadioMenuItem
 // is constructor
-func NewRadioMenuItem(group int /*TODO_TYPE isPtr: true, tag: gslist*/) (result Widget) {
+func NewRadioMenuItem(group glib.SList) (result RadioMenuItem) {
 	iv, err := _I.Get(1997, "RadioMenuItem", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	args := []gi.Argument{arg_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -38014,13 +39534,17 @@ func NewRadioMenuItem(group int /*TODO_TYPE isPtr: true, tag: gslist*/) (result 
 // gtk_radio_menu_item_new_from_widget
 // container is not nil, container is RadioMenuItem
 // is constructor
-func NewRadioMenuItemFromWidget(group IRadioMenuItem) (result Widget) {
+func NewRadioMenuItemFromWidget(group IRadioMenuItem) (result RadioMenuItem) {
 	iv, err := _I.Get(1998, "RadioMenuItem", "new_from_widget")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_group := gi.NewPointerArgument(group.P_RadioMenuItem())
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_RadioMenuItem()
+	}
+	arg_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -38031,14 +39555,14 @@ func NewRadioMenuItemFromWidget(group IRadioMenuItem) (result Widget) {
 // gtk_radio_menu_item_new_with_label
 // container is not nil, container is RadioMenuItem
 // is constructor
-func NewRadioMenuItemWithLabel(group int /*TODO_TYPE isPtr: true, tag: gslist*/, label string) (result Widget) {
+func NewRadioMenuItemWithLabel(group glib.SList, label string) (result RadioMenuItem) {
 	iv, err := _I.Get(1999, "RadioMenuItem", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_label := gi.CString(label)
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	arg_label := gi.NewStringArgument(c_label)
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
@@ -38051,14 +39575,18 @@ func NewRadioMenuItemWithLabel(group int /*TODO_TYPE isPtr: true, tag: gslist*/,
 // gtk_radio_menu_item_new_with_label_from_widget
 // container is not nil, container is RadioMenuItem
 // is constructor
-func NewRadioMenuItemWithLabelFromWidget(group IRadioMenuItem, label string) (result Widget) {
+func NewRadioMenuItemWithLabelFromWidget(group IRadioMenuItem, label string) (result RadioMenuItem) {
 	iv, err := _I.Get(2000, "RadioMenuItem", "new_with_label_from_widget")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_RadioMenuItem()
+	}
 	c_label := gi.CString(label)
-	arg_group := gi.NewPointerArgument(group.P_RadioMenuItem())
+	arg_group := gi.NewPointerArgument(tmp)
 	arg_label := gi.NewStringArgument(c_label)
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
@@ -38071,14 +39599,14 @@ func NewRadioMenuItemWithLabelFromWidget(group IRadioMenuItem, label string) (re
 // gtk_radio_menu_item_new_with_mnemonic
 // container is not nil, container is RadioMenuItem
 // is constructor
-func NewRadioMenuItemWithMnemonic(group int /*TODO_TYPE isPtr: true, tag: gslist*/, label string) (result Widget) {
+func NewRadioMenuItemWithMnemonic(group glib.SList, label string) (result RadioMenuItem) {
 	iv, err := _I.Get(2001, "RadioMenuItem", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_label := gi.CString(label)
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	arg_label := gi.NewStringArgument(c_label)
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
@@ -38091,14 +39619,18 @@ func NewRadioMenuItemWithMnemonic(group int /*TODO_TYPE isPtr: true, tag: gslist
 // gtk_radio_menu_item_new_with_mnemonic_from_widget
 // container is not nil, container is RadioMenuItem
 // is constructor
-func NewRadioMenuItemWithMnemonicFromWidget(group IRadioMenuItem, label string) (result Widget) {
+func NewRadioMenuItemWithMnemonicFromWidget(group IRadioMenuItem, label string) (result RadioMenuItem) {
 	iv, err := _I.Get(2002, "RadioMenuItem", "new_with_mnemonic_from_widget")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_RadioMenuItem()
+	}
 	c_label := gi.CString(label)
-	arg_group := gi.NewPointerArgument(group.P_RadioMenuItem())
+	arg_group := gi.NewPointerArgument(tmp)
 	arg_label := gi.NewStringArgument(c_label)
 	args := []gi.Argument{arg_group, arg_label}
 	var ret gi.Argument
@@ -38111,7 +39643,7 @@ func NewRadioMenuItemWithMnemonicFromWidget(group IRadioMenuItem, label string) 
 // gtk_radio_menu_item_get_group
 // container is not nil, container is RadioMenuItem
 // is method
-func (v RadioMenuItem) GetGroup() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v RadioMenuItem) GetGroup() (result glib.SList) {
 	iv, err := _I.Get(2003, "RadioMenuItem", "get_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -38121,7 +39653,7 @@ func (v RadioMenuItem) GetGroup() (result int /*TODO_TYPE isPtr: true, tag: gsli
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -38134,8 +39666,12 @@ func (v RadioMenuItem) JoinGroup(group_source IRadioMenuItem) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group_source != nil {
+		tmp = group_source.P_RadioMenuItem()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group_source := gi.NewPointerArgument(group_source.P_RadioMenuItem())
+	arg_group_source := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_group_source}
 	iv.Call(args, nil, nil)
 }
@@ -38143,14 +39679,14 @@ func (v RadioMenuItem) JoinGroup(group_source IRadioMenuItem) {
 // gtk_radio_menu_item_set_group
 // container is not nil, container is RadioMenuItem
 // is method
-func (v RadioMenuItem) SetGroup(group int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v RadioMenuItem) SetGroup(group glib.SList) {
 	iv, err := _I.Get(2005, "RadioMenuItem", "set_group")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	args := []gi.Argument{arg_v, arg_group}
 	iv.Call(args, nil, nil)
 }
@@ -38199,13 +39735,13 @@ func (v RadioToolButton) P_RadioToolButton() unsafe.Pointer { return v.P }
 // gtk_radio_tool_button_new
 // container is not nil, container is RadioToolButton
 // is constructor
-func NewRadioToolButton(group int /*TODO_TYPE isPtr: true, tag: gslist*/) (result ToolItem) {
+func NewRadioToolButton(group glib.SList) (result RadioToolButton) {
 	iv, err := _I.Get(2006, "RadioToolButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	args := []gi.Argument{arg_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -38216,14 +39752,14 @@ func NewRadioToolButton(group int /*TODO_TYPE isPtr: true, tag: gslist*/) (resul
 // gtk_radio_tool_button_new_from_stock
 // container is not nil, container is RadioToolButton
 // is constructor
-func NewRadioToolButtonFromStock(group int /*TODO_TYPE isPtr: true, tag: gslist*/, stock_id string) (result ToolItem) {
+func NewRadioToolButtonFromStock(group glib.SList, stock_id string) (result RadioToolButton) {
 	iv, err := _I.Get(2007, "RadioToolButton", "new_from_stock")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_stock_id := gi.CString(stock_id)
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	arg_stock_id := gi.NewStringArgument(c_stock_id)
 	args := []gi.Argument{arg_group, arg_stock_id}
 	var ret gi.Argument
@@ -38236,13 +39772,17 @@ func NewRadioToolButtonFromStock(group int /*TODO_TYPE isPtr: true, tag: gslist*
 // gtk_radio_tool_button_new_from_widget
 // container is not nil, container is RadioToolButton
 // is constructor
-func NewRadioToolButtonFromWidget(group IRadioToolButton) (result ToolItem) {
+func NewRadioToolButtonFromWidget(group IRadioToolButton) (result RadioToolButton) {
 	iv, err := _I.Get(2008, "RadioToolButton", "new_from_widget")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_group := gi.NewPointerArgument(group.P_RadioToolButton())
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_RadioToolButton()
+	}
+	arg_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -38253,14 +39793,18 @@ func NewRadioToolButtonFromWidget(group IRadioToolButton) (result ToolItem) {
 // gtk_radio_tool_button_new_with_stock_from_widget
 // container is not nil, container is RadioToolButton
 // is constructor
-func NewRadioToolButtonWithStockFromWidget(group IRadioToolButton, stock_id string) (result ToolItem) {
+func NewRadioToolButtonWithStockFromWidget(group IRadioToolButton, stock_id string) (result RadioToolButton) {
 	iv, err := _I.Get(2009, "RadioToolButton", "new_with_stock_from_widget")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_RadioToolButton()
+	}
 	c_stock_id := gi.CString(stock_id)
-	arg_group := gi.NewPointerArgument(group.P_RadioToolButton())
+	arg_group := gi.NewPointerArgument(tmp)
 	arg_stock_id := gi.NewStringArgument(c_stock_id)
 	args := []gi.Argument{arg_group, arg_stock_id}
 	var ret gi.Argument
@@ -38273,7 +39817,7 @@ func NewRadioToolButtonWithStockFromWidget(group IRadioToolButton, stock_id stri
 // gtk_radio_tool_button_get_group
 // container is not nil, container is RadioToolButton
 // is method
-func (v RadioToolButton) GetGroup() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v RadioToolButton) GetGroup() (result glib.SList) {
 	iv, err := _I.Get(2010, "RadioToolButton", "get_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -38283,21 +39827,21 @@ func (v RadioToolButton) GetGroup() (result int /*TODO_TYPE isPtr: true, tag: gs
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gtk_radio_tool_button_set_group
 // container is not nil, container is RadioToolButton
 // is method
-func (v RadioToolButton) SetGroup(group int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v RadioToolButton) SetGroup(group glib.SList) {
 	iv, err := _I.Get(2011, "RadioToolButton", "set_group")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewIntArgument(group) /*TODO*/
+	arg_group := gi.NewPointerArgument(group.P)
 	args := []gi.Argument{arg_v, arg_group}
 	iv.Call(args, nil, nil)
 }
@@ -38568,8 +40112,12 @@ func (v Range) SetAdjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -38826,7 +40374,11 @@ func RcPropertyParseBorder1(pspec gobject.IParamSpec, gstring glib.String, prope
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_gstring := gi.NewPointerArgument(gstring.P)
 	arg_property_value := gi.NewPointerArgument(property_value.P)
 	args := []gi.Argument{arg_pspec, arg_gstring, arg_property_value}
@@ -38846,7 +40398,11 @@ func RcPropertyParseColor1(pspec gobject.IParamSpec, gstring glib.String, proper
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_gstring := gi.NewPointerArgument(gstring.P)
 	arg_property_value := gi.NewPointerArgument(property_value.P)
 	args := []gi.Argument{arg_pspec, arg_gstring, arg_property_value}
@@ -38866,7 +40422,11 @@ func RcPropertyParseEnum1(pspec gobject.IParamSpec, gstring glib.String, propert
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_gstring := gi.NewPointerArgument(gstring.P)
 	arg_property_value := gi.NewPointerArgument(property_value.P)
 	args := []gi.Argument{arg_pspec, arg_gstring, arg_property_value}
@@ -38886,7 +40446,11 @@ func RcPropertyParseFlags1(pspec gobject.IParamSpec, gstring glib.String, proper
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_gstring := gi.NewPointerArgument(gstring.P)
 	arg_property_value := gi.NewPointerArgument(property_value.P)
 	args := []gi.Argument{arg_pspec, arg_gstring, arg_property_value}
@@ -38906,7 +40470,11 @@ func RcPropertyParseRequisition1(pspec gobject.IParamSpec, gstring glib.String, 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_gstring := gi.NewPointerArgument(gstring.P)
 	arg_property_value := gi.NewPointerArgument(property_value.P)
 	args := []gi.Argument{arg_pspec, arg_gstring, arg_property_value}
@@ -39022,7 +40590,7 @@ func (v RecentAction) P_RecentAction() unsafe.Pointer { return v.P }
 // gtk_recent_action_new
 // container is not nil, container is RecentAction
 // is constructor
-func NewRecentAction(name string, label string, tooltip string, stock_id string) (result Action) {
+func NewRecentAction(name string, label string, tooltip string, stock_id string) (result RecentAction) {
 	iv, err := _I.Get(2047, "RecentAction", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -39050,7 +40618,7 @@ func NewRecentAction(name string, label string, tooltip string, stock_id string)
 // gtk_recent_action_new_for_manager
 // container is not nil, container is RecentAction
 // is constructor
-func NewRecentActionForManager(name string, label string, tooltip string, stock_id string, manager IRecentManager) (result Action) {
+func NewRecentActionForManager(name string, label string, tooltip string, stock_id string, manager IRecentManager) (result RecentAction) {
 	iv, err := _I.Get(2048, "RecentAction", "new_for_manager")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -39060,11 +40628,15 @@ func NewRecentActionForManager(name string, label string, tooltip string, stock_
 	c_label := gi.CString(label)
 	c_tooltip := gi.CString(tooltip)
 	c_stock_id := gi.CString(stock_id)
+	var tmp unsafe.Pointer
+	if manager != nil {
+		tmp = manager.P_RecentManager()
+	}
 	arg_name := gi.NewStringArgument(c_name)
 	arg_label := gi.NewStringArgument(c_label)
 	arg_tooltip := gi.NewStringArgument(c_tooltip)
 	arg_stock_id := gi.NewStringArgument(c_stock_id)
-	arg_manager := gi.NewPointerArgument(manager.P_RecentManager())
+	arg_manager := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_name, arg_label, arg_tooltip, arg_stock_id, arg_manager}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -39130,8 +40702,12 @@ func (v *RecentChooserIfc) AddFilter(filter IRecentFilter) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if filter != nil {
+		tmp = filter.P_RecentFilter()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_filter := gi.NewPointerArgument(filter.P_RecentFilter())
+	arg_filter := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_filter}
 	iv.Call(args, nil, nil)
 }
@@ -39190,7 +40766,7 @@ func (v *RecentChooserIfc) GetFilter() (result RecentFilter) {
 // gtk_recent_chooser_get_items
 // container is not nil, container is RecentChooser
 // is method
-func (v *RecentChooserIfc) GetItems() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v *RecentChooserIfc) GetItems() (result glib.List) {
 	iv, err := _I.Get(2055, "RecentChooser", "get_items")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -39200,7 +40776,7 @@ func (v *RecentChooserIfc) GetItems() (result int /*TODO_TYPE isPtr: true, tag: 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -39367,7 +40943,7 @@ func (v *RecentChooserIfc) GetUris() (result gi.CStrArray) {
 // gtk_recent_chooser_list_filters
 // container is not nil, container is RecentChooser
 // is method
-func (v *RecentChooserIfc) ListFilters() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v *RecentChooserIfc) ListFilters() (result glib.SList) {
 	iv, err := _I.Get(2065, "RecentChooser", "list_filters")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -39377,7 +40953,7 @@ func (v *RecentChooserIfc) ListFilters() (result int /*TODO_TYPE isPtr: true, ta
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -39390,8 +40966,12 @@ func (v *RecentChooserIfc) RemoveFilter(filter IRecentFilter) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if filter != nil {
+		tmp = filter.P_RecentFilter()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_filter := gi.NewPointerArgument(filter.P_RecentFilter())
+	arg_filter := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_filter}
 	iv.Call(args, nil, nil)
 }
@@ -39463,8 +41043,12 @@ func (v *RecentChooserIfc) SetFilter(filter IRecentFilter) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if filter != nil {
+		tmp = filter.P_RecentFilter()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_filter := gi.NewPointerArgument(filter.P_RecentFilter())
+	arg_filter := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_filter}
 	iv.Call(args, nil, nil)
 }
@@ -39684,7 +41268,7 @@ func (v RecentChooserMenu) P_RecentChooserMenu() unsafe.Pointer { return v.P }
 // gtk_recent_chooser_menu_new
 // container is not nil, container is RecentChooserMenu
 // is constructor
-func NewRecentChooserMenu() (result Widget) {
+func NewRecentChooserMenu() (result RecentChooserMenu) {
 	iv, err := _I.Get(2082, "RecentChooserMenu", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -39699,13 +41283,17 @@ func NewRecentChooserMenu() (result Widget) {
 // gtk_recent_chooser_menu_new_for_manager
 // container is not nil, container is RecentChooserMenu
 // is constructor
-func NewRecentChooserMenuForManager(manager IRecentManager) (result Widget) {
+func NewRecentChooserMenuForManager(manager IRecentManager) (result RecentChooserMenu) {
 	iv, err := _I.Get(2083, "RecentChooserMenu", "new_for_manager")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_manager := gi.NewPointerArgument(manager.P_RecentManager())
+	var tmp unsafe.Pointer
+	if manager != nil {
+		tmp = manager.P_RecentManager()
+	}
+	arg_manager := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_manager}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -39769,7 +41357,7 @@ func (v RecentChooserWidget) P_RecentChooserWidget() unsafe.Pointer { return v.P
 // gtk_recent_chooser_widget_new
 // container is not nil, container is RecentChooserWidget
 // is constructor
-func NewRecentChooserWidget() (result Widget) {
+func NewRecentChooserWidget() (result RecentChooserWidget) {
 	iv, err := _I.Get(2086, "RecentChooserWidget", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -39784,13 +41372,17 @@ func NewRecentChooserWidget() (result Widget) {
 // gtk_recent_chooser_widget_new_for_manager
 // container is not nil, container is RecentChooserWidget
 // is constructor
-func NewRecentChooserWidgetForManager(manager IRecentManager) (result Widget) {
+func NewRecentChooserWidgetForManager(manager IRecentManager) (result RecentChooserWidget) {
 	iv, err := _I.Get(2087, "RecentChooserWidget", "new_for_manager")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_manager := gi.NewPointerArgument(manager.P_RecentManager())
+	var tmp unsafe.Pointer
+	if manager != nil {
+		tmp = manager.P_RecentManager()
+	}
+	arg_manager := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_manager}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -40571,7 +42163,7 @@ func (v RecentManager) AddItem(uri string) (result bool) {
 // gtk_recent_manager_get_items
 // container is not nil, container is RecentManager
 // is method
-func (v RecentManager) GetItems() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v RecentManager) GetItems() (result glib.List) {
 	iv, err := _I.Get(2129, "RecentManager", "get_items")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -40581,7 +42173,7 @@ func (v RecentManager) GetItems() (result int /*TODO_TYPE isPtr: true, tag: glis
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -40760,13 +42352,17 @@ func (v RendererCellAccessible) P_RendererCellAccessible() unsafe.Pointer { retu
 // gtk_renderer_cell_accessible_new
 // container is not nil, container is RendererCellAccessible
 // is constructor
-func NewRendererCellAccessible(renderer ICellRenderer) (result atk.Object) {
+func NewRendererCellAccessible(renderer ICellRenderer) (result RendererCellAccessible) {
 	iv, err := _I.Get(2135, "RendererCellAccessible", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_renderer := gi.NewPointerArgument(renderer.P_CellRenderer())
+	var tmp unsafe.Pointer
+	if renderer != nil {
+		tmp = renderer.P_CellRenderer()
+	}
+	arg_renderer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_renderer}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -40878,7 +42474,7 @@ func (v Revealer) P_Revealer() unsafe.Pointer { return v.P }
 // gtk_revealer_new
 // container is not nil, container is Revealer
 // is constructor
-func NewRevealer() (result Widget) {
+func NewRevealer() (result Revealer) {
 	iv, err := _I.Get(2139, "Revealer", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -41033,14 +42629,18 @@ func (v Scale) P_Scale() unsafe.Pointer { return v.P }
 // gtk_scale_new
 // container is not nil, container is Scale
 // is constructor
-func NewScale(orientation OrientationEnum, adjustment IAdjustment) (result Widget) {
+func NewScale(orientation OrientationEnum, adjustment IAdjustment) (result Scale) {
 	iv, err := _I.Get(2147, "Scale", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_orientation := gi.NewIntArgument(int(orientation))
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_orientation, arg_adjustment}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -41051,7 +42651,7 @@ func NewScale(orientation OrientationEnum, adjustment IAdjustment) (result Widge
 // gtk_scale_new_with_range
 // container is not nil, container is Scale
 // is constructor
-func NewScaleWithRange(orientation OrientationEnum, min float64, max float64, step float64) (result Widget) {
+func NewScaleWithRange(orientation OrientationEnum, min float64, max float64, step float64) (result Scale) {
 	iv, err := _I.Get(2148, "Scale", "new_with_range")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -41304,7 +42904,7 @@ func (v ScaleButton) P_ScaleButton() unsafe.Pointer { return v.P }
 // gtk_scale_button_new
 // container is not nil, container is ScaleButton
 // is constructor
-func NewScaleButton(size int32, min float64, max float64, step float64, icons gi.CStrArray) (result Widget) {
+func NewScaleButton(size int32, min float64, max float64, step float64, icons gi.CStrArray) (result ScaleButton) {
 	iv, err := _I.Get(2161, "ScaleButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -41416,8 +43016,12 @@ func (v ScaleButton) SetAdjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -41623,8 +43227,12 @@ func (v *ScrollableIfc) SetHadjustment(hadjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if hadjustment != nil {
+		tmp = hadjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_hadjustment := gi.NewPointerArgument(hadjustment.P_Adjustment())
+	arg_hadjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_hadjustment}
 	iv.Call(args, nil, nil)
 }
@@ -41653,8 +43261,12 @@ func (v *ScrollableIfc) SetVadjustment(vadjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if vadjustment != nil {
+		tmp = vadjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_vadjustment := gi.NewPointerArgument(vadjustment.P_Adjustment())
+	arg_vadjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_vadjustment}
 	iv.Call(args, nil, nil)
 }
@@ -41700,14 +43312,18 @@ func (v Scrollbar) P_Scrollbar() unsafe.Pointer { return v.P }
 // gtk_scrollbar_new
 // container is not nil, container is Scrollbar
 // is constructor
-func NewScrollbar(orientation OrientationEnum, adjustment IAdjustment) (result Widget) {
+func NewScrollbar(orientation OrientationEnum, adjustment IAdjustment) (result Scrollbar) {
 	iv, err := _I.Get(2179, "Scrollbar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_orientation := gi.NewIntArgument(int(orientation))
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_orientation, arg_adjustment}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -41732,14 +43348,22 @@ func (v ScrolledWindow) P_ScrolledWindow() unsafe.Pointer { return v.P }
 // gtk_scrolled_window_new
 // container is not nil, container is ScrolledWindow
 // is constructor
-func NewScrolledWindow(hadjustment IAdjustment, vadjustment IAdjustment) (result Widget) {
+func NewScrolledWindow(hadjustment IAdjustment, vadjustment IAdjustment) (result ScrolledWindow) {
 	iv, err := _I.Get(2180, "ScrolledWindow", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hadjustment := gi.NewPointerArgument(hadjustment.P_Adjustment())
-	arg_vadjustment := gi.NewPointerArgument(vadjustment.P_Adjustment())
+	var tmp unsafe.Pointer
+	if hadjustment != nil {
+		tmp = hadjustment.P_Adjustment()
+	}
+	var tmp1 unsafe.Pointer
+	if vadjustment != nil {
+		tmp1 = vadjustment.P_Adjustment()
+	}
+	arg_hadjustment := gi.NewPointerArgument(tmp)
+	arg_vadjustment := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_hadjustment, arg_vadjustment}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -41756,8 +43380,12 @@ func (v ScrolledWindow) AddWithViewport(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -42061,8 +43689,12 @@ func (v ScrolledWindow) SetHadjustment(hadjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if hadjustment != nil {
+		tmp = hadjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_hadjustment := gi.NewPointerArgument(hadjustment.P_Adjustment())
+	arg_hadjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_hadjustment}
 	iv.Call(args, nil, nil)
 }
@@ -42242,8 +43874,12 @@ func (v ScrolledWindow) SetVadjustment(vadjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if vadjustment != nil {
+		tmp = vadjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_vadjustment := gi.NewPointerArgument(vadjustment.P_Adjustment())
+	arg_vadjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_vadjustment}
 	iv.Call(args, nil, nil)
 }
@@ -42302,7 +43938,7 @@ func (v SearchBar) P_SearchBar() unsafe.Pointer { return v.P }
 // gtk_search_bar_new
 // container is not nil, container is SearchBar
 // is constructor
-func NewSearchBar() (result Widget) {
+func NewSearchBar() (result SearchBar) {
 	iv, err := _I.Get(2213, "SearchBar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42323,8 +43959,12 @@ func (v SearchBar) ConnectEntry(entry IEntry) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if entry != nil {
+		tmp = entry.P_Entry()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_entry := gi.NewPointerArgument(entry.P_Entry())
+	arg_entry := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_entry}
 	iv.Call(args, nil, nil)
 }
@@ -42430,7 +44070,7 @@ func (v SearchEntry) P_SearchEntry() unsafe.Pointer { return v.P }
 // gtk_search_entry_new
 // container is not nil, container is SearchEntry
 // is constructor
-func NewSearchEntry() (result Widget) {
+func NewSearchEntry() (result SearchEntry) {
 	iv, err := _I.Get(2220, "SearchEntry", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42728,8 +44368,12 @@ func (v SelectionData) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_pixbuf}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -42803,8 +44447,12 @@ func (v SelectionData) TargetsIncludeRichText(buffer ITextBuffer) (result bool) 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if buffer != nil {
+		tmp = buffer.P_TextBuffer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewPointerArgument(buffer.P_TextBuffer())
+	arg_buffer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_buffer}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -42882,7 +44530,7 @@ func (v Separator) P_Separator() unsafe.Pointer { return v.P }
 // gtk_separator_new
 // container is not nil, container is Separator
 // is constructor
-func NewSeparator(orientation OrientationEnum) (result Widget) {
+func NewSeparator(orientation OrientationEnum) (result Separator) {
 	iv, err := _I.Get(2243, "Separator", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42915,7 +44563,7 @@ func (v SeparatorMenuItem) P_SeparatorMenuItem() unsafe.Pointer { return v.P }
 // gtk_separator_menu_item_new
 // container is not nil, container is SeparatorMenuItem
 // is constructor
-func NewSeparatorMenuItem() (result Widget) {
+func NewSeparatorMenuItem() (result SeparatorMenuItem) {
 	iv, err := _I.Get(2244, "SeparatorMenuItem", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42950,7 +44598,7 @@ func (v SeparatorToolItem) P_SeparatorToolItem() unsafe.Pointer { return v.P }
 // gtk_separator_tool_item_new
 // container is not nil, container is SeparatorToolItem
 // is constructor
-func NewSeparatorToolItem() (result ToolItem) {
+func NewSeparatorToolItem() (result SeparatorToolItem) {
 	iv, err := _I.Get(2245, "SeparatorToolItem", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -43022,7 +44670,11 @@ func SettingsGetForScreen1(screen gdk.IScreen) (result Settings) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_screen}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -43040,7 +44692,11 @@ func SettingsInstallProperty1(pspec gobject.IParamSpec) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_pspec}
 	iv.Call(args, nil, nil)
 }
@@ -43055,7 +44711,11 @@ func SettingsInstallPropertyParser1(pspec gobject.IParamSpec, parser int /*TODO_
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_parser := gi.NewIntArgument(parser) /*TODO*/
 	args := []gi.Argument{arg_pspec, arg_parser}
 	iv.Call(args, nil, nil)
@@ -43200,7 +44860,7 @@ func (v ShortcutLabel) P_ShortcutLabel() unsafe.Pointer { return v.P }
 // gtk_shortcut_label_new
 // container is not nil, container is ShortcutLabel
 // is constructor
-func NewShortcutLabel(accelerator string) (result Widget) {
+func NewShortcutLabel(accelerator string) (result ShortcutLabel) {
 	iv, err := _I.Get(2257, "ShortcutLabel", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -43396,8 +45056,12 @@ func (v SizeGroup) AddWidget(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -43439,7 +45103,7 @@ func (v SizeGroup) GetMode() (result SizeGroupModeEnum) {
 // gtk_size_group_get_widgets
 // container is not nil, container is SizeGroup
 // is method
-func (v SizeGroup) GetWidgets() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v SizeGroup) GetWidgets() (result glib.SList) {
 	iv, err := _I.Get(2266, "SizeGroup", "get_widgets")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -43449,7 +45113,7 @@ func (v SizeGroup) GetWidgets() (result int /*TODO_TYPE isPtr: true, tag: gslist
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -43462,8 +45126,12 @@ func (v SizeGroup) RemoveWidget(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -43539,7 +45207,7 @@ func (v Socket) P_Socket() unsafe.Pointer { return v.P }
 // gtk_socket_new
 // container is not nil, container is Socket
 // is constructor
-func NewSocket() (result Widget) {
+func NewSocket() (result Socket) {
 	iv, err := _I.Get(2270, "Socket", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -43633,13 +45301,17 @@ func (v SpinButton) P_SpinButton() unsafe.Pointer { return v.P }
 // gtk_spin_button_new
 // container is not nil, container is SpinButton
 // is constructor
-func NewSpinButton(adjustment IAdjustment, climb_rate float64, digits uint32) (result Widget) {
+func NewSpinButton(adjustment IAdjustment, climb_rate float64, digits uint32) (result SpinButton) {
 	iv, err := _I.Get(2274, "SpinButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	arg_climb_rate := gi.NewDoubleArgument(climb_rate)
 	arg_digits := gi.NewUint32Argument(digits)
 	args := []gi.Argument{arg_adjustment, arg_climb_rate, arg_digits}
@@ -43652,7 +45324,7 @@ func NewSpinButton(adjustment IAdjustment, climb_rate float64, digits uint32) (r
 // gtk_spin_button_new_with_range
 // container is not nil, container is SpinButton
 // is constructor
-func NewSpinButtonWithRange(min float64, max float64, step float64) (result Widget) {
+func NewSpinButtonWithRange(min float64, max float64, step float64) (result SpinButton) {
 	iv, err := _I.Get(2275, "SpinButton", "new_with_range")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -43677,8 +45349,12 @@ func (v SpinButton) Configure(adjustment IAdjustment, climb_rate float64, digits
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	arg_climb_rate := gi.NewDoubleArgument(climb_rate)
 	arg_digits := gi.NewUint32Argument(digits)
 	args := []gi.Argument{arg_v, arg_adjustment, arg_climb_rate, arg_digits}
@@ -43870,8 +45546,12 @@ func (v SpinButton) SetAdjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -44093,7 +45773,7 @@ func (v Spinner) P_Spinner() unsafe.Pointer { return v.P }
 // gtk_spinner_new
 // container is not nil, container is Spinner
 // is constructor
-func NewSpinner() (result Widget) {
+func NewSpinner() (result Spinner) {
 	iv, err := _I.Get(2298, "Spinner", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -44174,7 +45854,7 @@ func (v Stack) P_Stack() unsafe.Pointer { return v.P }
 // gtk_stack_new
 // container is not nil, container is Stack
 // is constructor
-func NewStack() (result Widget) {
+func NewStack() (result Stack) {
 	iv, err := _I.Get(2301, "Stack", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -44195,9 +45875,13 @@ func (v Stack) AddNamed(child IWidget, name string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	c_name := gi.CString(name)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_name := gi.NewStringArgument(c_name)
 	args := []gi.Argument{arg_v, arg_child, arg_name}
 	iv.Call(args, nil, nil)
@@ -44213,10 +45897,14 @@ func (v Stack) AddTitled(child IWidget, name string, title string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	c_name := gi.CString(name)
 	c_title := gi.CString(title)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_title := gi.NewStringArgument(c_title)
 	args := []gi.Argument{arg_v, arg_child, arg_name, arg_title}
@@ -44497,8 +46185,12 @@ func (v Stack) SetVisibleChild(child IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_child}
 	iv.Call(args, nil, nil)
 }
@@ -44568,7 +46260,7 @@ func (v StackSidebar) P_StackSidebar() unsafe.Pointer { return v.P }
 // gtk_stack_sidebar_new
 // container is not nil, container is StackSidebar
 // is constructor
-func NewStackSidebar() (result Widget) {
+func NewStackSidebar() (result StackSidebar) {
 	iv, err := _I.Get(2323, "StackSidebar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -44606,8 +46298,12 @@ func (v StackSidebar) SetStack(stack IStack) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if stack != nil {
+		tmp = stack.P_Stack()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_stack := gi.NewPointerArgument(stack.P_Stack())
+	arg_stack := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_stack}
 	iv.Call(args, nil, nil)
 }
@@ -44635,7 +46331,7 @@ func (v StackSwitcher) P_StackSwitcher() unsafe.Pointer { return v.P }
 // gtk_stack_switcher_new
 // container is not nil, container is StackSwitcher
 // is constructor
-func NewStackSwitcher() (result Widget) {
+func NewStackSwitcher() (result StackSwitcher) {
 	iv, err := _I.Get(2326, "StackSwitcher", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -44673,8 +46369,12 @@ func (v StackSwitcher) SetStack(stack IStack) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if stack != nil {
+		tmp = stack.P_Stack()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_stack := gi.NewPointerArgument(stack.P_Stack())
+	arg_stack := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_stack}
 	iv.Call(args, nil, nil)
 }
@@ -44829,7 +46529,11 @@ func NewStatusIconFromPixbuf(pixbuf gdkpixbuf.IPixbuf) (result StatusIcon) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_pixbuf}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -44867,9 +46571,17 @@ func StatusIconPositionMenu1(menu IMenu, x int /*TODO:TYPE*/, y int /*TODO:TYPE*
 		return
 	}
 	var outArgs [3]gi.Argument
-	arg_menu := gi.NewPointerArgument(menu.P_Menu())
+	var tmp unsafe.Pointer
+	if menu != nil {
+		tmp = menu.P_Menu()
+	}
+	var tmp1 unsafe.Pointer
+	if user_data != nil {
+		tmp1 = user_data.P_StatusIcon()
+	}
+	arg_menu := gi.NewPointerArgument(tmp)
 	arg_push_in := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_user_data := gi.NewPointerArgument(user_data.P_StatusIcon())
+	arg_user_data := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_menu, arg_push_in, arg_user_data}
 	iv.Call(args, nil, &outArgs[0])
 	push_in = outArgs[0].Bool()
@@ -45196,8 +46908,12 @@ func (v StatusIcon) SetFromPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -45260,8 +46976,12 @@ func (v StatusIcon) SetScreen(screen gdk.IScreen) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_screen}
 	iv.Call(args, nil, nil)
 }
@@ -45355,7 +47075,7 @@ func (v Statusbar) P_Statusbar() unsafe.Pointer { return v.P }
 // gtk_statusbar_new
 // container is not nil, container is Statusbar
 // is constructor
-func NewStatusbar() (result Widget) {
+func NewStatusbar() (result Statusbar) {
 	iv, err := _I.Get(2363, "Statusbar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -45549,9 +47269,13 @@ func (v Style) ApplyDefaultBackground(cr cairo.Context, window gdk.IWindow, stat
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_cr := gi.NewPointerArgument(cr.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -45683,13 +47407,17 @@ func (v Style) RenderIcon(source IconSource, direction TextDirectionEnum, state 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_source := gi.NewPointerArgument(source.P)
 	arg_direction := gi.NewIntArgument(int(direction))
 	arg_state := gi.NewIntArgument(int(state))
 	arg_size := gi.NewInt32Argument(size)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_detail := gi.NewStringArgument(c_detail)
 	args := []gi.Argument{arg_v, arg_source, arg_direction, arg_state, arg_size, arg_widget, arg_detail}
 	var ret gi.Argument
@@ -45708,8 +47436,12 @@ func (v Style) SetBackground(window gdk.IWindow, state_type StateTypeEnum) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	args := []gi.Argument{arg_v, arg_window, arg_state_type}
 	iv.Call(args, nil, nil)
@@ -45752,7 +47484,11 @@ func StyleContextAddProviderForScreen1(screen gdk.IScreen, provider StyleProvide
 		log.Println("WARN:", err)
 		return
 	}
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
+	arg_screen := gi.NewPointerArgument(tmp)
 	arg_provider := gi.NewPointerArgument(provider.P)
 	arg_priority := gi.NewUint32Argument(priority)
 	args := []gi.Argument{arg_screen, arg_provider, arg_priority}
@@ -45769,7 +47505,11 @@ func StyleContextRemoveProviderForScreen1(screen gdk.IScreen, provider StyleProv
 		log.Println("WARN:", err)
 		return
 	}
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
+	arg_screen := gi.NewPointerArgument(tmp)
 	arg_provider := gi.NewPointerArgument(provider.P)
 	args := []gi.Argument{arg_screen, arg_provider}
 	iv.Call(args, nil, nil)
@@ -45785,7 +47525,11 @@ func StyleContextResetWidgets1(screen gdk.IScreen) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_screen}
 	iv.Call(args, nil, nil)
 }
@@ -46244,7 +47988,7 @@ func (v StyleContext) Invalidate() {
 // gtk_style_context_list_classes
 // container is not nil, container is StyleContext
 // is method
-func (v StyleContext) ListClasses() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v StyleContext) ListClasses() (result glib.List) {
 	iv, err := _I.Get(2410, "StyleContext", "list_classes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46254,14 +47998,14 @@ func (v StyleContext) ListClasses() (result int /*TODO_TYPE isPtr: true, tag: gl
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gtk_style_context_list_regions
 // container is not nil, container is StyleContext
 // is method
-func (v StyleContext) ListRegions() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v StyleContext) ListRegions() (result glib.List) {
 	iv, err := _I.Get(2411, "StyleContext", "list_regions")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46271,7 +48015,7 @@ func (v StyleContext) ListRegions() (result int /*TODO_TYPE isPtr: true, tag: gl
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -46327,8 +48071,12 @@ func (v StyleContext) NotifyStateChange(window gdk.IWindow, region_id unsafe.Poi
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_region_id := gi.NewPointerArgument(region_id)
 	arg_state := gi.NewIntArgument(int(state))
 	arg_state_value := gi.NewBoolArgument(state_value)
@@ -46451,8 +48199,12 @@ func (v StyleContext) ScrollAnimations(window gdk.IWindow, dx int32, dy int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	arg_dx := gi.NewInt32Argument(dx)
 	arg_dy := gi.NewInt32Argument(dy)
 	args := []gi.Argument{arg_v, arg_window, arg_dx, arg_dy}
@@ -46468,8 +48220,12 @@ func (v StyleContext) SetBackground(window gdk.IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -46498,8 +48254,12 @@ func (v StyleContext) SetFrameClock(frame_clock gdk.IFrameClock) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if frame_clock != nil {
+		tmp = frame_clock.P_FrameClock()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_frame_clock := gi.NewPointerArgument(frame_clock.P_FrameClock())
+	arg_frame_clock := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_frame_clock}
 	iv.Call(args, nil, nil)
 }
@@ -46528,8 +48288,12 @@ func (v StyleContext) SetParent(parent IStyleContext) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_StyleContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent := gi.NewPointerArgument(parent.P_StyleContext())
+	arg_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_parent}
 	iv.Call(args, nil, nil)
 }
@@ -46573,8 +48337,12 @@ func (v StyleContext) SetScreen(screen gdk.IScreen) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_screen}
 	iv.Call(args, nil, nil)
 }
@@ -46760,8 +48528,12 @@ func (v StyleProperties) Merge(props_to_merge IStyleProperties, replace bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if props_to_merge != nil {
+		tmp = props_to_merge.P_StyleProperties()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_props_to_merge := gi.NewPointerArgument(props_to_merge.P_StyleProperties())
+	arg_props_to_merge := gi.NewPointerArgument(tmp)
 	arg_replace := gi.NewBoolArgument(replace)
 	args := []gi.Argument{arg_v, arg_props_to_merge, arg_replace}
 	iv.Call(args, nil, nil)
@@ -46863,10 +48635,14 @@ func (v *StyleProviderIfc) GetStyleProperty(path WidgetPath, state StateFlags, p
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_path := gi.NewPointerArgument(path.P)
 	arg_state := gi.NewIntArgument(int(state))
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_path, arg_state, arg_pspec, arg_value}
 	var ret gi.Argument
@@ -46895,7 +48671,7 @@ func (v Switch) P_Switch() unsafe.Pointer { return v.P }
 // gtk_switch_new
 // container is not nil, container is Switch
 // is constructor
-func NewSwitch() (result Widget) {
+func NewSwitch() (result Switch) {
 	iv, err := _I.Get(2445, "Switch", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47139,8 +48915,12 @@ func (v SymbolicColor) Resolve(props IStyleProperties) (result bool, resolved_co
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if props != nil {
+		tmp = props.P_StyleProperties()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_props := gi.NewPointerArgument(props.P_StyleProperties())
+	arg_props := gi.NewPointerArgument(tmp)
 	arg_resolved_color := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_props, arg_resolved_color}
 	var ret gi.Argument
@@ -47197,7 +48977,7 @@ func (v Table) P_Table() unsafe.Pointer { return v.P }
 // gtk_table_new
 // container is not nil, container is Table
 // is constructor
-func NewTable(rows uint32, columns uint32, homogeneous bool) (result Widget) {
+func NewTable(rows uint32, columns uint32, homogeneous bool) (result Table) {
 	iv, err := _I.Get(2460, "Table", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47222,8 +49002,12 @@ func (v Table) Attach(child IWidget, left_attach uint32, right_attach uint32, to
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_left_attach := gi.NewUint32Argument(left_attach)
 	arg_right_attach := gi.NewUint32Argument(right_attach)
 	arg_top_attach := gi.NewUint32Argument(top_attach)
@@ -47245,8 +49029,12 @@ func (v Table) AttachDefaults(widget IWidget, left_attach uint32, right_attach u
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_left_attach := gi.NewUint32Argument(left_attach)
 	arg_right_attach := gi.NewUint32Argument(right_attach)
 	arg_top_attach := gi.NewUint32Argument(top_attach)
@@ -47604,10 +49392,14 @@ func (v TargetList) AddRichTextTargets(info uint32, deserializable bool, buffer 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if buffer != nil {
+		tmp = buffer.P_TextBuffer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_info := gi.NewUint32Argument(info)
 	arg_deserializable := gi.NewBoolArgument(deserializable)
-	arg_buffer := gi.NewPointerArgument(buffer.P_TextBuffer())
+	arg_buffer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_info, arg_deserializable, arg_buffer}
 	iv.Call(args, nil, nil)
 }
@@ -47749,7 +49541,7 @@ func (v TearoffMenuItem) P_TearoffMenuItem() unsafe.Pointer { return v.P }
 // gtk_tearoff_menu_item_new
 // container is not nil, container is TearoffMenuItem
 // is constructor
-func NewTearoffMenuItem() (result Widget) {
+func NewTearoffMenuItem() (result TearoffMenuItem) {
 	iv, err := _I.Get(2489, "TearoffMenuItem", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47880,7 +49672,11 @@ func NewTextBuffer(table ITextTagTable) (result TextBuffer) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_table := gi.NewPointerArgument(table.P_TextTagTable())
+	var tmp unsafe.Pointer
+	if table != nil {
+		tmp = table.P_TextTagTable()
+	}
+	arg_table := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_table}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -47897,8 +49693,12 @@ func (v TextBuffer) AddMark(mark ITextMark, where TextIter) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if mark != nil {
+		tmp = mark.P_TextMark()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_mark := gi.NewPointerArgument(mark.P_TextMark())
+	arg_mark := gi.NewPointerArgument(tmp)
 	arg_where := gi.NewPointerArgument(where.P)
 	args := []gi.Argument{arg_v, arg_mark, arg_where}
 	iv.Call(args, nil, nil)
@@ -47913,8 +49713,12 @@ func (v TextBuffer) AddSelectionClipboard(clipboard IClipboard) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if clipboard != nil {
+		tmp = clipboard.P_Clipboard()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_clipboard := gi.NewPointerArgument(clipboard.P_Clipboard())
+	arg_clipboard := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_clipboard}
 	iv.Call(args, nil, nil)
 }
@@ -47928,8 +49732,12 @@ func (v TextBuffer) ApplyTag(tag ITextTag, start TextIter, end TextIter) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	arg_start := gi.NewPointerArgument(start.P)
 	arg_end := gi.NewPointerArgument(end.P)
 	args := []gi.Argument{arg_v, arg_tag, arg_start, arg_end}
@@ -47998,8 +49806,12 @@ func (v TextBuffer) CopyClipboard(clipboard IClipboard) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if clipboard != nil {
+		tmp = clipboard.P_Clipboard()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_clipboard := gi.NewPointerArgument(clipboard.P_Clipboard())
+	arg_clipboard := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_clipboard}
 	iv.Call(args, nil, nil)
 }
@@ -48053,8 +49865,12 @@ func (v TextBuffer) CutClipboard(clipboard IClipboard, default_editable bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if clipboard != nil {
+		tmp = clipboard.P_Clipboard()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_clipboard := gi.NewPointerArgument(clipboard.P_Clipboard())
+	arg_clipboard := gi.NewPointerArgument(tmp)
 	arg_default_editable := gi.NewBoolArgument(default_editable)
 	args := []gi.Argument{arg_v, arg_clipboard, arg_default_editable}
 	iv.Call(args, nil, nil)
@@ -48105,8 +49921,12 @@ func (v TextBuffer) DeleteMark(mark ITextMark) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if mark != nil {
+		tmp = mark.P_TextMark()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_mark := gi.NewPointerArgument(mark.P_TextMark())
+	arg_mark := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_mark}
 	iv.Call(args, nil, nil)
 }
@@ -48157,8 +49977,12 @@ func (v TextBuffer) Deserialize(content_buffer ITextBuffer, format gdk.Atom, ite
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if content_buffer != nil {
+		tmp = content_buffer.P_TextBuffer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_content_buffer := gi.NewPointerArgument(content_buffer.P_TextBuffer())
+	arg_content_buffer := gi.NewPointerArgument(tmp)
 	arg_format := gi.NewPointerArgument(format.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_data := gi.NewPointerArgument(data.P)
@@ -48359,9 +50183,13 @@ func (v TextBuffer) GetIterAtChildAnchor(anchor ITextChildAnchor) (iter int /*TO
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if anchor != nil {
+		tmp = anchor.P_TextChildAnchor()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_anchor := gi.NewPointerArgument(anchor.P_TextChildAnchor())
+	arg_anchor := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_iter, arg_anchor}
 	iv.Call(args, nil, &outArgs[0])
 	iter = outArgs[0].Int() /*TODO*/
@@ -48437,9 +50265,13 @@ func (v TextBuffer) GetIterAtMark(mark ITextMark) (iter int /*TODO_TYPE*/) {
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if mark != nil {
+		tmp = mark.P_TextMark()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_mark := gi.NewPointerArgument(mark.P_TextMark())
+	arg_mark := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_iter, arg_mark}
 	iv.Call(args, nil, &outArgs[0])
 	iter = outArgs[0].Int() /*TODO*/
@@ -48719,9 +50551,13 @@ func (v TextBuffer) InsertChildAnchor(iter TextIter, anchor ITextChildAnchor) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if anchor != nil {
+		tmp = anchor.P_TextChildAnchor()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
-	arg_anchor := gi.NewPointerArgument(anchor.P_TextChildAnchor())
+	arg_anchor := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_iter, arg_anchor}
 	iv.Call(args, nil, nil)
 }
@@ -48799,9 +50635,13 @@ func (v TextBuffer) InsertPixbuf(iter TextIter, pixbuf gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_iter, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -48853,8 +50693,12 @@ func (v TextBuffer) MoveMark(mark ITextMark, where TextIter) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if mark != nil {
+		tmp = mark.P_TextMark()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_mark := gi.NewPointerArgument(mark.P_TextMark())
+	arg_mark := gi.NewPointerArgument(tmp)
 	arg_where := gi.NewPointerArgument(where.P)
 	args := []gi.Argument{arg_v, arg_mark, arg_where}
 	iv.Call(args, nil, nil)
@@ -48887,8 +50731,12 @@ func (v TextBuffer) PasteClipboard(clipboard IClipboard, override_location TextI
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if clipboard != nil {
+		tmp = clipboard.P_Clipboard()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_clipboard := gi.NewPointerArgument(clipboard.P_Clipboard())
+	arg_clipboard := gi.NewPointerArgument(tmp)
 	arg_override_location := gi.NewPointerArgument(override_location.P)
 	arg_default_editable := gi.NewBoolArgument(default_editable)
 	args := []gi.Argument{arg_v, arg_clipboard, arg_override_location, arg_default_editable}
@@ -49021,8 +50869,12 @@ func (v TextBuffer) RemoveSelectionClipboard(clipboard IClipboard) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if clipboard != nil {
+		tmp = clipboard.P_Clipboard()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_clipboard := gi.NewPointerArgument(clipboard.P_Clipboard())
+	arg_clipboard := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_clipboard}
 	iv.Call(args, nil, nil)
 }
@@ -49036,8 +50888,12 @@ func (v TextBuffer) RemoveTag(tag ITextTag, start TextIter, end TextIter) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	arg_start := gi.NewPointerArgument(start.P)
 	arg_end := gi.NewPointerArgument(end.P)
 	args := []gi.Argument{arg_v, arg_tag, arg_start, arg_end}
@@ -49090,8 +50946,12 @@ func (v TextBuffer) Serialize(content_buffer ITextBuffer, format gdk.Atom, start
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if content_buffer != nil {
+		tmp = content_buffer.P_TextBuffer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_content_buffer := gi.NewPointerArgument(content_buffer.P_TextBuffer())
+	arg_content_buffer := gi.NewPointerArgument(tmp)
 	arg_format := gi.NewPointerArgument(format.P)
 	arg_start := gi.NewPointerArgument(start.P)
 	arg_end := gi.NewPointerArgument(end.P)
@@ -49251,7 +51111,7 @@ func (v TextChildAnchor) GetDeleted() (result bool) {
 // gtk_text_child_anchor_get_widgets
 // container is not nil, container is TextChildAnchor
 // is method
-func (v TextChildAnchor) GetWidgets() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v TextChildAnchor) GetWidgets() (result glib.List) {
 	iv, err := _I.Get(2568, "TextChildAnchor", "get_widgets")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -49261,7 +51121,7 @@ func (v TextChildAnchor) GetWidgets() (result int /*TODO_TYPE isPtr: true, tag: 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -49499,8 +51359,12 @@ func (v TextIter) BackwardToTagToggle(tag ITextTag) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_tag}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -49657,8 +51521,12 @@ func (v TextIter) BeginsTag(tag ITextTag) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_tag}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -49780,8 +51648,12 @@ func (v TextIter) EndsTag(tag ITextTag) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_tag}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -50051,8 +51923,12 @@ func (v TextIter) ForwardToTagToggle(tag ITextTag) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_tag}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -50390,7 +52266,7 @@ func (v TextIter) GetLineOffset() (result int32) {
 // gtk_text_iter_get_marks
 // container is not nil, container is TextIter
 // is method
-func (v TextIter) GetMarks() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v TextIter) GetMarks() (result glib.SList) {
 	iv, err := _I.Get(2631, "TextIter", "get_marks")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -50400,7 +52276,7 @@ func (v TextIter) GetMarks() (result int /*TODO_TYPE isPtr: true, tag: gslist*/)
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -50459,7 +52335,7 @@ func (v TextIter) GetSlice(end TextIter) (result string) {
 // gtk_text_iter_get_tags
 // container is not nil, container is TextIter
 // is method
-func (v TextIter) GetTags() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v TextIter) GetTags() (result glib.SList) {
 	iv, err := _I.Get(2635, "TextIter", "get_tags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -50469,7 +52345,7 @@ func (v TextIter) GetTags() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) 
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -50494,7 +52370,7 @@ func (v TextIter) GetText(end TextIter) (result string) {
 // gtk_text_iter_get_toggled_tags
 // container is not nil, container is TextIter
 // is method
-func (v TextIter) GetToggledTags(toggled_on bool) (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v TextIter) GetToggledTags(toggled_on bool) (result glib.SList) {
 	iv, err := _I.Get(2637, "TextIter", "get_toggled_tags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -50505,7 +52381,7 @@ func (v TextIter) GetToggledTags(toggled_on bool) (result int /*TODO_TYPE isPtr:
 	args := []gi.Argument{arg_v, arg_toggled_on}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -50588,8 +52464,12 @@ func (v TextIter) HasTag(tag ITextTag) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_tag}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -50849,8 +52729,12 @@ func (v TextIter) StartsTag(tag ITextTag) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_tag}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -50884,8 +52768,12 @@ func (v TextIter) TogglesTag(tag ITextTag) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_tag}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -51088,8 +52976,12 @@ func (v TextTag) Event(event_object gobject.IObject, event gdk.Event, iter TextI
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if event_object != nil {
+		tmp = event_object.P_Object()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_event_object := gi.NewPointerArgument(event_object.P_Object())
+	arg_event_object := gi.NewPointerArgument(tmp)
 	arg_event := gi.NewPointerArgument(event.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	args := []gi.Argument{arg_v, arg_event_object, arg_event, arg_iter}
@@ -51173,8 +53065,12 @@ func (v TextTagTable) Add(tag ITextTag) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_tag}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -51244,8 +53140,12 @@ func (v TextTagTable) Remove(tag ITextTag) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tag != nil {
+		tmp = tag.P_TextTag()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tag := gi.NewPointerArgument(tag.P_TextTag())
+	arg_tag := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_tag}
 	iv.Call(args, nil, nil)
 }
@@ -51273,7 +53173,7 @@ func (v TextView) P_TextView() unsafe.Pointer { return v.P }
 // gtk_text_view_new
 // container is not nil, container is TextView
 // is constructor
-func NewTextView() (result Widget) {
+func NewTextView() (result TextView) {
 	iv, err := _I.Get(2679, "TextView", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -51288,13 +53188,17 @@ func NewTextView() (result Widget) {
 // gtk_text_view_new_with_buffer
 // container is not nil, container is TextView
 // is constructor
-func NewTextViewWithBuffer(buffer ITextBuffer) (result Widget) {
+func NewTextViewWithBuffer(buffer ITextBuffer) (result TextView) {
 	iv, err := _I.Get(2680, "TextView", "new_with_buffer")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_buffer := gi.NewPointerArgument(buffer.P_TextBuffer())
+	var tmp unsafe.Pointer
+	if buffer != nil {
+		tmp = buffer.P_TextBuffer()
+	}
+	arg_buffer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_buffer}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -51311,9 +53215,17 @@ func (v TextView) AddChildAtAnchor(child IWidget, anchor ITextChildAnchor) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if anchor != nil {
+		tmp1 = anchor.P_TextChildAnchor()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
-	arg_anchor := gi.NewPointerArgument(anchor.P_TextChildAnchor())
+	arg_child := gi.NewPointerArgument(tmp)
+	arg_anchor := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_child, arg_anchor}
 	iv.Call(args, nil, nil)
 }
@@ -51327,8 +53239,12 @@ func (v TextView) AddChildInWindow(child IWidget, which_window TextWindowTypeEnu
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_which_window := gi.NewIntArgument(int(which_window))
 	arg_xpos := gi.NewInt32Argument(xpos)
 	arg_ypos := gi.NewInt32Argument(ypos)
@@ -51979,8 +53895,12 @@ func (v TextView) GetWindowType(window gdk.IWindow) (result TextWindowTypeEnum) 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -52032,8 +53952,12 @@ func (v TextView) MoveChild(child IWidget, xpos int32, ypos int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if child != nil {
+		tmp = child.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_child := gi.NewPointerArgument(child.P_Widget())
+	arg_child := gi.NewPointerArgument(tmp)
 	arg_xpos := gi.NewInt32Argument(xpos)
 	arg_ypos := gi.NewInt32Argument(ypos)
 	args := []gi.Argument{arg_v, arg_child, arg_xpos, arg_ypos}
@@ -52049,8 +53973,12 @@ func (v TextView) MoveMarkOnscreen(mark ITextMark) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if mark != nil {
+		tmp = mark.P_TextMark()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_mark := gi.NewPointerArgument(mark.P_TextMark())
+	arg_mark := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_mark}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -52131,8 +54059,12 @@ func (v TextView) ScrollMarkOnscreen(mark ITextMark) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if mark != nil {
+		tmp = mark.P_TextMark()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_mark := gi.NewPointerArgument(mark.P_TextMark())
+	arg_mark := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_mark}
 	iv.Call(args, nil, nil)
 }
@@ -52168,8 +54100,12 @@ func (v TextView) ScrollToMark(mark ITextMark, within_margin float64, use_align 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if mark != nil {
+		tmp = mark.P_TextMark()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_mark := gi.NewPointerArgument(mark.P_TextMark())
+	arg_mark := gi.NewPointerArgument(tmp)
 	arg_within_margin := gi.NewDoubleArgument(within_margin)
 	arg_use_align := gi.NewBoolArgument(use_align)
 	arg_xalign := gi.NewDoubleArgument(xalign)
@@ -52233,8 +54169,12 @@ func (v TextView) SetBuffer(buffer ITextBuffer) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if buffer != nil {
+		tmp = buffer.P_TextBuffer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buffer := gi.NewPointerArgument(buffer.P_TextBuffer())
+	arg_buffer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_buffer}
 	iv.Call(args, nil, nil)
 }
@@ -53106,7 +55046,7 @@ func (v ToggleButton) P_ToggleButton() unsafe.Pointer { return v.P }
 // gtk_toggle_button_new
 // container is not nil, container is ToggleButton
 // is constructor
-func NewToggleButton() (result Widget) {
+func NewToggleButton() (result ToggleButton) {
 	iv, err := _I.Get(2777, "ToggleButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -53121,7 +55061,7 @@ func NewToggleButton() (result Widget) {
 // gtk_toggle_button_new_with_label
 // container is not nil, container is ToggleButton
 // is constructor
-func NewToggleButtonWithLabel(label string) (result Widget) {
+func NewToggleButtonWithLabel(label string) (result ToggleButton) {
 	iv, err := _I.Get(2778, "ToggleButton", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -53140,7 +55080,7 @@ func NewToggleButtonWithLabel(label string) (result Widget) {
 // gtk_toggle_button_new_with_mnemonic
 // container is not nil, container is ToggleButton
 // is constructor
-func NewToggleButtonWithMnemonic(label string) (result Widget) {
+func NewToggleButtonWithMnemonic(label string) (result ToggleButton) {
 	iv, err := _I.Get(2779, "ToggleButton", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -53310,7 +55250,7 @@ func (v ToggleToolButton) P_ToggleToolButton() unsafe.Pointer { return v.P }
 // gtk_toggle_tool_button_new
 // container is not nil, container is ToggleToolButton
 // is constructor
-func NewToggleToolButton() (result ToolItem) {
+func NewToggleToolButton() (result ToggleToolButton) {
 	iv, err := _I.Get(2787, "ToggleToolButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -53325,7 +55265,7 @@ func NewToggleToolButton() (result ToolItem) {
 // gtk_toggle_tool_button_new_from_stock
 // container is not nil, container is ToggleToolButton
 // is constructor
-func NewToggleToolButtonFromStock(stock_id string) (result ToolItem) {
+func NewToggleToolButtonFromStock(stock_id string) (result ToggleToolButton) {
 	iv, err := _I.Get(2788, "ToggleToolButton", "new_from_stock")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -53397,14 +55337,18 @@ func (v ToolButton) P_ToolButton() unsafe.Pointer { return v.P }
 // gtk_tool_button_new
 // container is not nil, container is ToolButton
 // is constructor
-func NewToolButton(icon_widget IWidget, label string) (result ToolItem) {
+func NewToolButton(icon_widget IWidget, label string) (result ToolButton) {
 	iv, err := _I.Get(2791, "ToolButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon_widget != nil {
+		tmp = icon_widget.P_Widget()
+	}
 	c_label := gi.CString(label)
-	arg_icon_widget := gi.NewPointerArgument(icon_widget.P_Widget())
+	arg_icon_widget := gi.NewPointerArgument(tmp)
 	arg_label := gi.NewStringArgument(c_label)
 	args := []gi.Argument{arg_icon_widget, arg_label}
 	var ret gi.Argument
@@ -53417,7 +55361,7 @@ func NewToolButton(icon_widget IWidget, label string) (result ToolItem) {
 // gtk_tool_button_new_from_stock
 // container is not nil, container is ToolButton
 // is constructor
-func NewToolButtonFromStock(stock_id string) (result ToolItem) {
+func NewToolButtonFromStock(stock_id string) (result ToolButton) {
 	iv, err := _I.Get(2792, "ToolButton", "new_from_stock")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -53561,8 +55505,12 @@ func (v ToolButton) SetIconWidget(icon_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon_widget != nil {
+		tmp = icon_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_icon_widget := gi.NewPointerArgument(icon_widget.P_Widget())
+	arg_icon_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_icon_widget}
 	iv.Call(args, nil, nil)
 }
@@ -53593,8 +55541,12 @@ func (v ToolButton) SetLabelWidget(label_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if label_widget != nil {
+		tmp = label_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_label_widget := gi.NewPointerArgument(label_widget.P_Widget())
+	arg_label_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_label_widget}
 	iv.Call(args, nil, nil)
 }
@@ -54010,9 +55962,13 @@ func (v ToolItem) SetProxyMenuItem(menu_item_id string, menu_item IWidget) {
 		return
 	}
 	c_menu_item_id := gi.CString(menu_item_id)
+	var tmp unsafe.Pointer
+	if menu_item != nil {
+		tmp = menu_item.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_menu_item_id := gi.NewStringArgument(c_menu_item_id)
-	arg_menu_item := gi.NewPointerArgument(menu_item.P_Widget())
+	arg_menu_item := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_menu_item_id, arg_menu_item}
 	iv.Call(args, nil, nil)
 	gi.Free(c_menu_item_id)
@@ -54129,7 +56085,7 @@ func (v ToolItemGroup) P_ToolItemGroup() unsafe.Pointer { return v.P }
 // gtk_tool_item_group_new
 // container is not nil, container is ToolItemGroup
 // is constructor
-func NewToolItemGroup(label string) (result Widget) {
+func NewToolItemGroup(label string) (result ToolItemGroup) {
 	iv, err := _I.Get(2833, "ToolItemGroup", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -54224,8 +56180,12 @@ func (v ToolItemGroup) GetItemPosition(item IToolItem) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if item != nil {
+		tmp = item.P_ToolItem()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_item := gi.NewPointerArgument(item.P_ToolItem())
+	arg_item := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_item}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -54311,8 +56271,12 @@ func (v ToolItemGroup) Insert(item IToolItem, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if item != nil {
+		tmp = item.P_ToolItem()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_item := gi.NewPointerArgument(item.P_ToolItem())
+	arg_item := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_item, arg_position}
 	iv.Call(args, nil, nil)
@@ -54372,8 +56336,12 @@ func (v ToolItemGroup) SetItemPosition(item IToolItem, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if item != nil {
+		tmp = item.P_ToolItem()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_item := gi.NewPointerArgument(item.P_ToolItem())
+	arg_item := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_item, arg_position}
 	iv.Call(args, nil, nil)
@@ -54405,8 +56373,12 @@ func (v ToolItemGroup) SetLabelWidget(label_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if label_widget != nil {
+		tmp = label_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_label_widget := gi.NewPointerArgument(label_widget.P_Widget())
+	arg_label_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_label_widget}
 	iv.Call(args, nil, nil)
 }
@@ -54440,7 +56412,7 @@ func (v ToolPalette) P_ToolPalette() unsafe.Pointer { return v.P }
 // gtk_tool_palette_new
 // container is not nil, container is ToolPalette
 // is constructor
-func NewToolPalette() (result Widget) {
+func NewToolPalette() (result ToolPalette) {
 	iv, err := _I.Get(2850, "ToolPalette", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -54461,8 +56433,12 @@ func (v ToolPalette) AddDragDest(widget IWidget, flags DestDefaultsFlags, target
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_targets := gi.NewIntArgument(int(targets))
 	arg_actions := gi.NewIntArgument(int(actions))
@@ -54535,8 +56511,12 @@ func (v ToolPalette) GetExclusive(group IToolItemGroup) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_ToolItemGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewPointerArgument(group.P_ToolItemGroup())
+	arg_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -54553,8 +56533,12 @@ func (v ToolPalette) GetExpand(group IToolItemGroup) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_ToolItemGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewPointerArgument(group.P_ToolItemGroup())
+	arg_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -54571,8 +56555,12 @@ func (v ToolPalette) GetGroupPosition(group IToolItemGroup) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_ToolItemGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewPointerArgument(group.P_ToolItemGroup())
+	arg_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_group}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -54672,8 +56660,12 @@ func (v ToolPalette) SetExclusive(group IToolItemGroup, exclusive bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_ToolItemGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewPointerArgument(group.P_ToolItemGroup())
+	arg_group := gi.NewPointerArgument(tmp)
 	arg_exclusive := gi.NewBoolArgument(exclusive)
 	args := []gi.Argument{arg_v, arg_group, arg_exclusive}
 	iv.Call(args, nil, nil)
@@ -54688,8 +56680,12 @@ func (v ToolPalette) SetExpand(group IToolItemGroup, expand bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_ToolItemGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewPointerArgument(group.P_ToolItemGroup())
+	arg_group := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewBoolArgument(expand)
 	args := []gi.Argument{arg_v, arg_group, arg_expand}
 	iv.Call(args, nil, nil)
@@ -54704,8 +56700,12 @@ func (v ToolPalette) SetGroupPosition(group IToolItemGroup, position int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_ToolItemGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_group := gi.NewPointerArgument(group.P_ToolItemGroup())
+	arg_group := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_group, arg_position}
 	iv.Call(args, nil, nil)
@@ -54959,7 +56959,7 @@ func (v Toolbar) P_Toolbar() unsafe.Pointer { return v.P }
 // gtk_toolbar_new
 // container is not nil, container is Toolbar
 // is constructor
-func NewToolbar() (result Widget) {
+func NewToolbar() (result Toolbar) {
 	iv, err := _I.Get(2881, "Toolbar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -55016,8 +57016,12 @@ func (v Toolbar) GetItemIndex(item IToolItem) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if item != nil {
+		tmp = item.P_ToolItem()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_item := gi.NewPointerArgument(item.P_ToolItem())
+	arg_item := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_item}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -55120,8 +57124,12 @@ func (v Toolbar) Insert(item IToolItem, pos int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if item != nil {
+		tmp = item.P_ToolItem()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_item := gi.NewPointerArgument(item.P_ToolItem())
+	arg_item := gi.NewPointerArgument(tmp)
 	arg_pos := gi.NewInt32Argument(pos)
 	args := []gi.Argument{arg_v, arg_item, arg_pos}
 	iv.Call(args, nil, nil)
@@ -55136,8 +57144,12 @@ func (v Toolbar) SetDropHighlightItem(tool_item IToolItem, index_ int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tool_item != nil {
+		tmp = tool_item.P_ToolItem()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tool_item := gi.NewPointerArgument(tool_item.P_ToolItem())
+	arg_tool_item := gi.NewPointerArgument(tmp)
 	arg_index_ := gi.NewInt32Argument(index_)
 	args := []gi.Argument{arg_v, arg_tool_item, arg_index_}
 	iv.Call(args, nil, nil)
@@ -55261,7 +57273,11 @@ func TooltipTriggerTooltipQuery1(display gdk.IDisplay) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_display}
 	iv.Call(args, nil, nil)
 }
@@ -55275,8 +57291,12 @@ func (v Tooltip) SetCustom(custom_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if custom_widget != nil {
+		tmp = custom_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_custom_widget := gi.NewPointerArgument(custom_widget.P_Widget())
+	arg_custom_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_custom_widget}
 	iv.Call(args, nil, nil)
 }
@@ -55290,8 +57310,12 @@ func (v Tooltip) SetIcon(pixbuf gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -55411,7 +57435,7 @@ func (v ToplevelAccessible) P_ToplevelAccessible() unsafe.Pointer { return v.P }
 // gtk_toplevel_accessible_get_children
 // container is not nil, container is ToplevelAccessible
 // is method
-func (v ToplevelAccessible) GetChildren() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v ToplevelAccessible) GetChildren() (result glib.List) {
 	iv, err := _I.Get(2906, "ToplevelAccessible", "get_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -55421,7 +57445,7 @@ func (v ToplevelAccessible) GetChildren() (result int /*TODO_TYPE isPtr: true, t
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -56753,7 +58777,11 @@ func NewTreeRowReferenceProxy(proxy gobject.IObject, model TreeModel, path TreeP
 		log.Println("WARN:", err)
 		return
 	}
-	arg_proxy := gi.NewPointerArgument(proxy.P_Object())
+	var tmp unsafe.Pointer
+	if proxy != nil {
+		tmp = proxy.P_Object()
+	}
+	arg_proxy := gi.NewPointerArgument(tmp)
 	arg_model := gi.NewPointerArgument(model.P)
 	arg_path := gi.NewPointerArgument(path.P)
 	args := []gi.Argument{arg_proxy, arg_model, arg_path}
@@ -56855,7 +58883,11 @@ func TreeRowReferenceDeleted1(proxy gobject.IObject, path TreePath) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_proxy := gi.NewPointerArgument(proxy.P_Object())
+	var tmp unsafe.Pointer
+	if proxy != nil {
+		tmp = proxy.P_Object()
+	}
+	arg_proxy := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewPointerArgument(path.P)
 	args := []gi.Argument{arg_proxy, arg_path}
 	iv.Call(args, nil, nil)
@@ -56871,7 +58903,11 @@ func TreeRowReferenceInserted1(proxy gobject.IObject, path TreePath) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_proxy := gi.NewPointerArgument(proxy.P_Object())
+	var tmp unsafe.Pointer
+	if proxy != nil {
+		tmp = proxy.P_Object()
+	}
+	arg_proxy := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewPointerArgument(path.P)
 	args := []gi.Argument{arg_proxy, arg_path}
 	iv.Call(args, nil, nil)
@@ -56947,7 +58983,7 @@ func (v TreeSelection) GetSelected() (result bool, model TreeModel, iter int /*T
 // gtk_tree_selection_get_selected_rows
 // container is not nil, container is TreeSelection
 // is method
-func (v TreeSelection) GetSelectedRows() (result int /*TODO_TYPE isPtr: true, tag: glist*/, model TreeModel) {
+func (v TreeSelection) GetSelectedRows() (result glib.List, model TreeModel) {
 	iv, err := _I.Get(2988, "TreeSelection", "get_selected_rows")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -56960,7 +58996,7 @@ func (v TreeSelection) GetSelectedRows() (result int /*TODO_TYPE isPtr: true, ta
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	model.P = outArgs[0].Pointer()
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -57673,7 +59709,7 @@ func (v TreeView) P_TreeView() unsafe.Pointer { return v.P }
 // gtk_tree_view_new
 // container is not nil, container is TreeView
 // is constructor
-func NewTreeView() (result Widget) {
+func NewTreeView() (result TreeView) {
 	iv, err := _I.Get(3027, "TreeView", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57688,7 +59724,7 @@ func NewTreeView() (result Widget) {
 // gtk_tree_view_new_with_model
 // container is not nil, container is TreeView
 // is constructor
-func NewTreeViewWithModel(model TreeModel) (result Widget) {
+func NewTreeViewWithModel(model TreeModel) (result TreeView) {
 	iv, err := _I.Get(3028, "TreeView", "new_with_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57711,8 +59747,12 @@ func (v TreeView) AppendColumn(column ITreeViewColumn) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if column != nil {
+		tmp = column.P_TreeViewColumn()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_column := gi.NewPointerArgument(column.P_TreeViewColumn())
+	arg_column := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_column}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -58028,9 +60068,13 @@ func (v TreeView) GetBackgroundArea(path TreePath, column ITreeViewColumn) (rect
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if column != nil {
+		tmp = column.P_TreeViewColumn()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewPointerArgument(path.P)
-	arg_column := gi.NewPointerArgument(column.P_TreeViewColumn())
+	arg_column := gi.NewPointerArgument(tmp)
 	arg_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_path, arg_column, arg_rect}
 	iv.Call(args, nil, &outArgs[0])
@@ -58065,9 +60109,13 @@ func (v TreeView) GetCellArea(path TreePath, column ITreeViewColumn) (rect int /
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if column != nil {
+		tmp = column.P_TreeViewColumn()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewPointerArgument(path.P)
-	arg_column := gi.NewPointerArgument(column.P_TreeViewColumn())
+	arg_column := gi.NewPointerArgument(tmp)
 	arg_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_path, arg_column, arg_rect}
 	iv.Call(args, nil, &outArgs[0])
@@ -58096,7 +60144,7 @@ func (v TreeView) GetColumn(n int32) (result TreeViewColumn) {
 // gtk_tree_view_get_columns
 // container is not nil, container is TreeView
 // is method
-func (v TreeView) GetColumns() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v TreeView) GetColumns() (result glib.List) {
 	iv, err := _I.Get(3050, "TreeView", "get_columns")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -58106,7 +60154,7 @@ func (v TreeView) GetColumns() (result int /*TODO_TYPE isPtr: true, tag: glist*/
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -58650,8 +60698,12 @@ func (v TreeView) InsertColumn(column ITreeViewColumn, position int32) (result i
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if column != nil {
+		tmp = column.P_TreeViewColumn()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_column := gi.NewPointerArgument(column.P_TreeViewColumn())
+	arg_column := gi.NewPointerArgument(tmp)
 	arg_position := gi.NewInt32Argument(position)
 	args := []gi.Argument{arg_v, arg_column, arg_position}
 	var ret gi.Argument
@@ -58670,10 +60722,14 @@ func (v TreeView) InsertColumnWithDataFunc(position int32, title string, cell IC
 		return
 	}
 	c_title := gi.CString(title)
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_position := gi.NewInt32Argument(position)
 	arg_title := gi.NewStringArgument(c_title)
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
 	arg_data := gi.NewPointerArgument(data)
 	arg_dnotify := gi.NewIntArgument(dnotify) /*TODO*/
@@ -58755,9 +60811,17 @@ func (v TreeView) MoveColumnAfter(column ITreeViewColumn, base_column ITreeViewC
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if column != nil {
+		tmp = column.P_TreeViewColumn()
+	}
+	var tmp1 unsafe.Pointer
+	if base_column != nil {
+		tmp1 = base_column.P_TreeViewColumn()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_column := gi.NewPointerArgument(column.P_TreeViewColumn())
-	arg_base_column := gi.NewPointerArgument(base_column.P_TreeViewColumn())
+	arg_column := gi.NewPointerArgument(tmp)
+	arg_base_column := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_v, arg_column, arg_base_column}
 	iv.Call(args, nil, nil)
 }
@@ -58771,8 +60835,12 @@ func (v TreeView) RemoveColumn(column ITreeViewColumn) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if column != nil {
+		tmp = column.P_TreeViewColumn()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_column := gi.NewPointerArgument(column.P_TreeViewColumn())
+	arg_column := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_column}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -58789,9 +60857,13 @@ func (v TreeView) RowActivated(path TreePath, column ITreeViewColumn) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if column != nil {
+		tmp = column.P_TreeViewColumn()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewPointerArgument(path.P)
-	arg_column := gi.NewPointerArgument(column.P_TreeViewColumn())
+	arg_column := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_path, arg_column}
 	iv.Call(args, nil, nil)
 }
@@ -58823,9 +60895,13 @@ func (v TreeView) ScrollToCell(path TreePath, column ITreeViewColumn, use_align 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if column != nil {
+		tmp = column.P_TreeViewColumn()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewPointerArgument(path.P)
-	arg_column := gi.NewPointerArgument(column.P_TreeViewColumn())
+	arg_column := gi.NewPointerArgument(tmp)
 	arg_use_align := gi.NewBoolArgument(use_align)
 	arg_row_align := gi.NewFloatArgument(row_align)
 	arg_col_align := gi.NewFloatArgument(col_align)
@@ -58890,9 +60966,13 @@ func (v TreeView) SetCursor(path TreePath, focus_column ITreeViewColumn, start_e
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if focus_column != nil {
+		tmp = focus_column.P_TreeViewColumn()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewPointerArgument(path.P)
-	arg_focus_column := gi.NewPointerArgument(focus_column.P_TreeViewColumn())
+	arg_focus_column := gi.NewPointerArgument(tmp)
 	arg_start_editing := gi.NewBoolArgument(start_editing)
 	args := []gi.Argument{arg_v, arg_path, arg_focus_column, arg_start_editing}
 	iv.Call(args, nil, nil)
@@ -58907,10 +60987,18 @@ func (v TreeView) SetCursorOnCell(path TreePath, focus_column ITreeViewColumn, f
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if focus_column != nil {
+		tmp = focus_column.P_TreeViewColumn()
+	}
+	var tmp1 unsafe.Pointer
+	if focus_cell != nil {
+		tmp1 = focus_cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_path := gi.NewPointerArgument(path.P)
-	arg_focus_column := gi.NewPointerArgument(focus_column.P_TreeViewColumn())
-	arg_focus_cell := gi.NewPointerArgument(focus_cell.P_CellRenderer())
+	arg_focus_column := gi.NewPointerArgument(tmp)
+	arg_focus_cell := gi.NewPointerArgument(tmp1)
 	arg_start_editing := gi.NewBoolArgument(start_editing)
 	args := []gi.Argument{arg_v, arg_path, arg_focus_column, arg_focus_cell, arg_start_editing}
 	iv.Call(args, nil, nil)
@@ -58988,8 +61076,12 @@ func (v TreeView) SetExpanderColumn(column ITreeViewColumn) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if column != nil {
+		tmp = column.P_TreeViewColumn()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_column := gi.NewPointerArgument(column.P_TreeViewColumn())
+	arg_column := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_column}
 	iv.Call(args, nil, nil)
 }
@@ -59033,8 +61125,12 @@ func (v TreeView) SetHadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -59215,8 +61311,12 @@ func (v TreeView) SetSearchEntry(entry IEntry) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if entry != nil {
+		tmp = entry.P_Entry()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_entry := gi.NewPointerArgument(entry.P_Entry())
+	arg_entry := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_entry}
 	iv.Call(args, nil, nil)
 }
@@ -59279,11 +61379,23 @@ func (v TreeView) SetTooltipCell(tooltip ITooltip, path TreePath, column ITreeVi
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tooltip != nil {
+		tmp = tooltip.P_Tooltip()
+	}
+	var tmp1 unsafe.Pointer
+	if column != nil {
+		tmp1 = column.P_TreeViewColumn()
+	}
+	var tmp2 unsafe.Pointer
+	if cell != nil {
+		tmp2 = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tooltip := gi.NewPointerArgument(tooltip.P_Tooltip())
+	arg_tooltip := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewPointerArgument(path.P)
-	arg_column := gi.NewPointerArgument(column.P_TreeViewColumn())
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_column := gi.NewPointerArgument(tmp1)
+	arg_cell := gi.NewPointerArgument(tmp2)
 	args := []gi.Argument{arg_v, arg_tooltip, arg_path, arg_column, arg_cell}
 	iv.Call(args, nil, nil)
 }
@@ -59312,8 +61424,12 @@ func (v TreeView) SetTooltipRow(tooltip ITooltip, path TreePath) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tooltip != nil {
+		tmp = tooltip.P_Tooltip()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tooltip := gi.NewPointerArgument(tooltip.P_Tooltip())
+	arg_tooltip := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewPointerArgument(path.P)
 	args := []gi.Argument{arg_v, arg_tooltip, arg_path}
 	iv.Call(args, nil, nil)
@@ -59328,8 +61444,12 @@ func (v TreeView) SetVadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -59421,7 +61541,11 @@ func NewTreeViewColumnWithArea(area ICellArea) (result TreeViewColumn) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_area := gi.NewPointerArgument(area.P_CellArea())
+	var tmp unsafe.Pointer
+	if area != nil {
+		tmp = area.P_CellArea()
+	}
+	arg_area := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_area}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -59438,9 +61562,13 @@ func (v TreeViewColumn) AddAttribute(cell_renderer ICellRenderer, attribute stri
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell_renderer != nil {
+		tmp = cell_renderer.P_CellRenderer()
+	}
 	c_attribute := gi.CString(attribute)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cell_renderer := gi.NewPointerArgument(cell_renderer.P_CellRenderer())
+	arg_cell_renderer := gi.NewPointerArgument(tmp)
 	arg_attribute := gi.NewStringArgument(c_attribute)
 	arg_column := gi.NewInt32Argument(column)
 	args := []gi.Argument{arg_v, arg_cell_renderer, arg_attribute, arg_column}
@@ -59458,8 +61586,12 @@ func (v TreeViewColumn) CellGetPosition(cell_renderer ICellRenderer) (result boo
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if cell_renderer != nil {
+		tmp = cell_renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cell_renderer := gi.NewPointerArgument(cell_renderer.P_CellRenderer())
+	arg_cell_renderer := gi.NewPointerArgument(tmp)
 	arg_x_offset := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_cell_renderer, arg_x_offset, arg_width}
@@ -59554,8 +61686,12 @@ func (v TreeViewColumn) ClearAttributes(cell_renderer ICellRenderer) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell_renderer != nil {
+		tmp = cell_renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cell_renderer := gi.NewPointerArgument(cell_renderer.P_CellRenderer())
+	arg_cell_renderer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell_renderer}
 	iv.Call(args, nil, nil)
 }
@@ -59583,8 +61719,12 @@ func (v TreeViewColumn) FocusCell(cell ICellRenderer) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_cell}
 	iv.Call(args, nil, nil)
 }
@@ -59938,8 +62078,12 @@ func (v TreeViewColumn) PackEnd(cell ICellRenderer, expand bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewBoolArgument(expand)
 	args := []gi.Argument{arg_v, arg_cell, arg_expand}
 	iv.Call(args, nil, nil)
@@ -59954,8 +62098,12 @@ func (v TreeViewColumn) PackStart(cell ICellRenderer, expand bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell != nil {
+		tmp = cell.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cell := gi.NewPointerArgument(cell.P_CellRenderer())
+	arg_cell := gi.NewPointerArgument(tmp)
 	arg_expand := gi.NewBoolArgument(expand)
 	args := []gi.Argument{arg_v, arg_cell, arg_expand}
 	iv.Call(args, nil, nil)
@@ -59999,8 +62147,12 @@ func (v TreeViewColumn) SetCellDataFunc(cell_renderer ICellRenderer, func1 int /
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if cell_renderer != nil {
+		tmp = cell_renderer.P_CellRenderer()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_cell_renderer := gi.NewPointerArgument(cell_renderer.P_CellRenderer())
+	arg_cell_renderer := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
 	arg_func_data := gi.NewPointerArgument(func_data)
 	arg_destroy := gi.NewIntArgument(destroy) /*TODO*/
@@ -60229,8 +62381,12 @@ func (v TreeViewColumn) SetWidget(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -60449,7 +62605,7 @@ func (v UIManager) GetAction(path string) (result Action) {
 // gtk_ui_manager_get_action_groups
 // container is not nil, container is UIManager
 // is method
-func (v UIManager) GetActionGroups() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v UIManager) GetActionGroups() (result glib.List) {
 	iv, err := _I.Get(3183, "UIManager", "get_action_groups")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -60459,7 +62615,7 @@ func (v UIManager) GetActionGroups() (result int /*TODO_TYPE isPtr: true, tag: g
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -60483,7 +62639,7 @@ func (v UIManager) GetAddTearoffs() (result bool) {
 // gtk_ui_manager_get_toplevels
 // container is not nil, container is UIManager
 // is method
-func (v UIManager) GetToplevels(types UIManagerItemTypeFlags) (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v UIManager) GetToplevels(types UIManagerItemTypeFlags) (result glib.SList) {
 	iv, err := _I.Get(3185, "UIManager", "get_toplevels")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -60494,7 +62650,7 @@ func (v UIManager) GetToplevels(types UIManagerItemTypeFlags) (result int /*TODO
 	args := []gi.Argument{arg_v, arg_types}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -60544,8 +62700,12 @@ func (v UIManager) InsertActionGroup(action_group IActionGroup, pos int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if action_group != nil {
+		tmp = action_group.P_ActionGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_action_group := gi.NewPointerArgument(action_group.P_ActionGroup())
+	arg_action_group := gi.NewPointerArgument(tmp)
 	arg_pos := gi.NewInt32Argument(pos)
 	args := []gi.Argument{arg_v, arg_action_group, arg_pos}
 	iv.Call(args, nil, nil)
@@ -60577,8 +62737,12 @@ func (v UIManager) RemoveActionGroup(action_group IActionGroup) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if action_group != nil {
+		tmp = action_group.P_ActionGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_action_group := gi.NewPointerArgument(action_group.P_ActionGroup())
+	arg_action_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_action_group}
 	iv.Call(args, nil, nil)
 }
@@ -60663,7 +62827,7 @@ func (v VBox) P_VBox() unsafe.Pointer { return v.P }
 // gtk_vbox_new
 // container is not nil, container is VBox
 // is constructor
-func NewVBox(homogeneous bool, spacing int32) (result Widget) {
+func NewVBox(homogeneous bool, spacing int32) (result VBox) {
 	iv, err := _I.Get(3193, "VBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -60696,7 +62860,7 @@ func (v VButtonBox) P_VButtonBox() unsafe.Pointer { return v.P }
 // gtk_vbutton_box_new
 // container is not nil, container is VButtonBox
 // is constructor
-func NewVButtonBox() (result Widget) {
+func NewVButtonBox() (result VButtonBox) {
 	iv, err := _I.Get(3194, "VButtonBox", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -60726,7 +62890,7 @@ func (v VPaned) P_VPaned() unsafe.Pointer { return v.P }
 // gtk_vpaned_new
 // container is not nil, container is VPaned
 // is constructor
-func NewVPaned() (result Widget) {
+func NewVPaned() (result VPaned) {
 	iv, err := _I.Get(3195, "VPaned", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -60756,13 +62920,17 @@ func (v VScale) P_VScale() unsafe.Pointer { return v.P }
 // gtk_vscale_new
 // container is not nil, container is VScale
 // is constructor
-func NewVScale(adjustment IAdjustment) (result Widget) {
+func NewVScale(adjustment IAdjustment) (result VScale) {
 	iv, err := _I.Get(3196, "VScale", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_adjustment}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -60773,7 +62941,7 @@ func NewVScale(adjustment IAdjustment) (result Widget) {
 // gtk_vscale_new_with_range
 // container is not nil, container is VScale
 // is constructor
-func NewVScaleWithRange(min float64, max float64, step float64) (result Widget) {
+func NewVScaleWithRange(min float64, max float64, step float64) (result VScale) {
 	iv, err := _I.Get(3197, "VScale", "new_with_range")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -60807,13 +62975,17 @@ func (v VScrollbar) P_VScrollbar() unsafe.Pointer { return v.P }
 // gtk_vscrollbar_new
 // container is not nil, container is VScrollbar
 // is constructor
-func NewVScrollbar(adjustment IAdjustment) (result Widget) {
+func NewVScrollbar(adjustment IAdjustment) (result VScrollbar) {
 	iv, err := _I.Get(3198, "VScrollbar", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_adjustment}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -60839,7 +63011,7 @@ func (v VSeparator) P_VSeparator() unsafe.Pointer { return v.P }
 // gtk_vseparator_new
 // container is not nil, container is VSeparator
 // is constructor
-func NewVSeparator() (result Widget) {
+func NewVSeparator() (result VSeparator) {
 	iv, err := _I.Get(3199, "VSeparator", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -60869,14 +63041,22 @@ func (v Viewport) P_Viewport() unsafe.Pointer { return v.P }
 // gtk_viewport_new
 // container is not nil, container is Viewport
 // is constructor
-func NewViewport(hadjustment IAdjustment, vadjustment IAdjustment) (result Widget) {
+func NewViewport(hadjustment IAdjustment, vadjustment IAdjustment) (result Viewport) {
 	iv, err := _I.Get(3200, "Viewport", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_hadjustment := gi.NewPointerArgument(hadjustment.P_Adjustment())
-	arg_vadjustment := gi.NewPointerArgument(vadjustment.P_Adjustment())
+	var tmp unsafe.Pointer
+	if hadjustment != nil {
+		tmp = hadjustment.P_Adjustment()
+	}
+	var tmp1 unsafe.Pointer
+	if vadjustment != nil {
+		tmp1 = vadjustment.P_Adjustment()
+	}
+	arg_hadjustment := gi.NewPointerArgument(tmp)
+	arg_vadjustment := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_hadjustment, arg_vadjustment}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -60978,8 +63158,12 @@ func (v Viewport) SetHadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -61008,8 +63192,12 @@ func (v Viewport) SetVadjustment(adjustment IAdjustment) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if adjustment != nil {
+		tmp = adjustment.P_Adjustment()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_adjustment := gi.NewPointerArgument(adjustment.P_Adjustment())
+	arg_adjustment := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_adjustment}
 	iv.Call(args, nil, nil)
 }
@@ -61039,7 +63227,7 @@ func (v VolumeButton) P_VolumeButton() unsafe.Pointer { return v.P }
 // gtk_volume_button_new
 // container is not nil, container is VolumeButton
 // is constructor
-func NewVolumeButton() (result Widget) {
+func NewVolumeButton() (result VolumeButton) {
 	iv, err := _I.Get(3209, "VolumeButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -61107,9 +63295,13 @@ func (v Widget) AddAccelerator(accel_signal string, accel_group IAccelGroup, acc
 		return
 	}
 	c_accel_signal := gi.CString(accel_signal)
+	var tmp unsafe.Pointer
+	if accel_group != nil {
+		tmp = accel_group.P_AccelGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_accel_signal := gi.NewStringArgument(c_accel_signal)
-	arg_accel_group := gi.NewPointerArgument(accel_group.P_AccelGroup())
+	arg_accel_group := gi.NewPointerArgument(tmp)
 	arg_accel_key := gi.NewUint32Argument(accel_key)
 	arg_accel_mods := gi.NewIntArgument(int(accel_mods))
 	arg_accel_flags := gi.NewIntArgument(int(accel_flags))
@@ -61127,8 +63319,12 @@ func (v Widget) AddDeviceEvents(device gdk.IDevice, events gdk.EventMaskFlags) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	arg_events := gi.NewIntArgument(int(events))
 	args := []gi.Argument{arg_v, arg_device, arg_events}
 	iv.Call(args, nil, nil)
@@ -61158,8 +63354,12 @@ func (v Widget) AddMnemonicLabel(label IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if label != nil {
+		tmp = label.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_label := gi.NewPointerArgument(label.P_Widget())
+	arg_label := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_label}
 	iv.Call(args, nil, nil)
 }
@@ -61352,8 +63552,12 @@ func (v Widget) DeviceIsShadowed(device gdk.IDevice) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -61477,8 +63681,12 @@ func (v Widget) DragDestFindTarget(context gdk.IDragContext, target_list TargetL
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_target_list := gi.NewPointerArgument(target_list.P)
 	args := []gi.Argument{arg_v, arg_context, arg_target_list}
 	var ret gi.Argument
@@ -61549,8 +63757,12 @@ func (v Widget) DragDestSetProxy(proxy_window gdk.IWindow, protocol gdk.DragProt
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if proxy_window != nil {
+		tmp = proxy_window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_proxy_window := gi.NewPointerArgument(proxy_window.P_Window())
+	arg_proxy_window := gi.NewPointerArgument(tmp)
 	arg_protocol := gi.NewIntArgument(int(protocol))
 	arg_use_coordinates := gi.NewBoolArgument(use_coordinates)
 	args := []gi.Argument{arg_v, arg_proxy_window, arg_protocol, arg_use_coordinates}
@@ -61610,8 +63822,12 @@ func (v Widget) DragGetData(context gdk.IDragContext, target gdk.Atom, time_ uin
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_target := gi.NewPointerArgument(target.P)
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_v, arg_context, arg_target, arg_time_}
@@ -61751,8 +63967,12 @@ func (v Widget) DragSourceSetIconPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if pixbuf != nil {
+		tmp = pixbuf.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_pixbuf}
 	iv.Call(args, nil, nil)
 }
@@ -62184,8 +64404,12 @@ func (v Widget) GetDeviceEnabled(device gdk.IDevice) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -62202,8 +64426,12 @@ func (v Widget) GetDeviceEvents(device gdk.IDevice) (result gdk.EventMaskFlags) 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -63602,8 +65830,12 @@ func (v Widget) IsAncestor(ancestor IWidget) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if ancestor != nil {
+		tmp = ancestor.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ancestor := gi.NewPointerArgument(ancestor.P_Widget())
+	arg_ancestor := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_ancestor}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -63734,7 +65966,7 @@ func (v Widget) KeynavFailed(direction DirectionTypeEnum) (result bool) {
 // gtk_widget_list_accel_closures
 // container is not nil, container is Widget
 // is method
-func (v Widget) ListAccelClosures() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Widget) ListAccelClosures() (result glib.List) {
 	iv, err := _I.Get(3370, "Widget", "list_accel_closures")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -63744,7 +65976,7 @@ func (v Widget) ListAccelClosures() (result int /*TODO_TYPE isPtr: true, tag: gl
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -63769,7 +66001,7 @@ func (v Widget) ListActionPrefixes() (result gi.CStrArray) {
 // gtk_widget_list_mnemonic_labels
 // container is not nil, container is Widget
 // is method
-func (v Widget) ListMnemonicLabels() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Widget) ListMnemonicLabels() (result glib.List) {
 	iv, err := _I.Get(3372, "Widget", "list_mnemonic_labels")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -63779,7 +66011,7 @@ func (v Widget) ListMnemonicLabels() (result int /*TODO_TYPE isPtr: true, tag: g
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -63903,8 +66135,12 @@ func (v Widget) ModifyStyle(style IRcStyle) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_RcStyle()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_style := gi.NewPointerArgument(style.P_RcStyle())
+	arg_style := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_style}
 	iv.Call(args, nil, nil)
 }
@@ -64172,8 +66408,12 @@ func (v Widget) RegisterWindow(window gdk.IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -64187,8 +66427,12 @@ func (v Widget) RemoveAccelerator(accel_group IAccelGroup, accel_key uint32, acc
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if accel_group != nil {
+		tmp = accel_group.P_AccelGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_accel_group := gi.NewPointerArgument(accel_group.P_AccelGroup())
+	arg_accel_group := gi.NewPointerArgument(tmp)
 	arg_accel_key := gi.NewUint32Argument(accel_key)
 	arg_accel_mods := gi.NewIntArgument(int(accel_mods))
 	args := []gi.Argument{arg_v, arg_accel_group, arg_accel_key, arg_accel_mods}
@@ -64207,8 +66451,12 @@ func (v Widget) RemoveMnemonicLabel(label IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if label != nil {
+		tmp = label.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_label := gi.NewPointerArgument(label.P_Widget())
+	arg_label := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_label}
 	iv.Call(args, nil, nil)
 }
@@ -64282,8 +66530,12 @@ func (v Widget) Reparent(new_parent IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if new_parent != nil {
+		tmp = new_parent.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_new_parent := gi.NewPointerArgument(new_parent.P_Widget())
+	arg_new_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_new_parent}
 	iv.Call(args, nil, nil)
 }
@@ -64362,9 +66614,13 @@ func (v Widget) SetAccelPath(accel_path string, accel_group IAccelGroup) {
 		return
 	}
 	c_accel_path := gi.CString(accel_path)
+	var tmp unsafe.Pointer
+	if accel_group != nil {
+		tmp = accel_group.P_AccelGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_accel_path := gi.NewStringArgument(c_accel_path)
-	arg_accel_group := gi.NewPointerArgument(accel_group.P_AccelGroup())
+	arg_accel_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_accel_path, arg_accel_group}
 	iv.Call(args, nil, nil)
 	gi.Free(c_accel_path)
@@ -64486,8 +66742,12 @@ func (v Widget) SetDeviceEnabled(device gdk.IDevice, enabled bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	arg_enabled := gi.NewBoolArgument(enabled)
 	args := []gi.Argument{arg_v, arg_device, arg_enabled}
 	iv.Call(args, nil, nil)
@@ -64502,8 +66762,12 @@ func (v Widget) SetDeviceEvents(device gdk.IDevice, events gdk.EventMaskFlags) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	arg_events := gi.NewIntArgument(int(events))
 	args := []gi.Argument{arg_v, arg_device, arg_events}
 	iv.Call(args, nil, nil)
@@ -64578,8 +66842,12 @@ func (v Widget) SetFontMap(font_map pango.IFontMap) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if font_map != nil {
+		tmp = font_map.P_FontMap()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_font_map := gi.NewPointerArgument(font_map.P_FontMap())
+	arg_font_map := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_font_map}
 	iv.Call(args, nil, nil)
 }
@@ -64835,8 +67103,12 @@ func (v Widget) SetParent(parent IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent := gi.NewPointerArgument(parent.P_Widget())
+	arg_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_parent}
 	iv.Call(args, nil, nil)
 }
@@ -64850,8 +67122,12 @@ func (v Widget) SetParentWindow(parent_window gdk.IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if parent_window != nil {
+		tmp = parent_window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent_window := gi.NewPointerArgument(parent_window.P_Window())
+	arg_parent_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_parent_window}
 	iv.Call(args, nil, nil)
 }
@@ -64972,8 +67248,12 @@ func (v Widget) SetStyle(style IStyle) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_style}
 	iv.Call(args, nil, nil)
 }
@@ -65036,8 +67316,12 @@ func (v Widget) SetTooltipWindow(custom_window IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if custom_window != nil {
+		tmp = custom_window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_custom_window := gi.NewPointerArgument(custom_window.P_Window())
+	arg_custom_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_custom_window}
 	iv.Call(args, nil, nil)
 }
@@ -65111,8 +67395,12 @@ func (v Widget) SetVisual(visual gdk.IVisual) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if visual != nil {
+		tmp = visual.P_Visual()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_visual := gi.NewPointerArgument(visual.P_Visual())
+	arg_visual := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_visual}
 	iv.Call(args, nil, nil)
 }
@@ -65126,8 +67414,12 @@ func (v Widget) SetWindow(window gdk.IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -65294,8 +67586,12 @@ func (v Widget) TranslateCoordinates(dest_widget IWidget, src_x int32, src_y int
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if dest_widget != nil {
+		tmp = dest_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_dest_widget := gi.NewPointerArgument(dest_widget.P_Widget())
+	arg_dest_widget := gi.NewPointerArgument(tmp)
 	arg_src_x := gi.NewInt32Argument(src_x)
 	arg_src_y := gi.NewInt32Argument(src_y)
 	arg_dest_x := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -65374,8 +67670,12 @@ func (v Widget) UnregisterWindow(window gdk.IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -65456,8 +67756,12 @@ func (v WidgetPath) AppendForWidget(widget IWidget) (result int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -65890,7 +68194,7 @@ func (v WidgetPath) IterHasRegion(pos int32, name string) (result bool, flags Re
 // gtk_widget_path_iter_list_classes
 // container is not nil, container is WidgetPath
 // is method
-func (v WidgetPath) IterListClasses(pos int32) (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v WidgetPath) IterListClasses(pos int32) (result glib.SList) {
 	iv, err := _I.Get(3501, "WidgetPath", "iter_list_classes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -65901,14 +68205,14 @@ func (v WidgetPath) IterListClasses(pos int32) (result int /*TODO_TYPE isPtr: tr
 	args := []gi.Argument{arg_v, arg_pos}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
 // gtk_widget_path_iter_list_regions
 // container is not nil, container is WidgetPath
 // is method
-func (v WidgetPath) IterListRegions(pos int32) (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func (v WidgetPath) IterListRegions(pos int32) (result glib.SList) {
 	iv, err := _I.Get(3502, "WidgetPath", "iter_list_regions")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -65919,7 +68223,7 @@ func (v WidgetPath) IterListRegions(pos int32) (result int /*TODO_TYPE isPtr: tr
 	args := []gi.Argument{arg_v, arg_pos}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -66128,7 +68432,7 @@ func (v Window) P_Window() unsafe.Pointer { return v.P }
 // gtk_window_new
 // container is not nil, container is Window
 // is constructor
-func NewWindow(type1 WindowTypeEnum) (result Widget) {
+func NewWindow(type1 WindowTypeEnum) (result Window) {
 	iv, err := _I.Get(3514, "Window", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -66167,7 +68471,11 @@ func WindowSetDefaultIcon1(icon gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_icon := gi.NewPointerArgument(icon.P_Pixbuf())
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Pixbuf()
+	}
+	arg_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_icon}
 	iv.Call(args, nil, nil)
 }
@@ -66198,13 +68506,13 @@ func WindowSetDefaultIconFromFile1(filename string) (result bool, err error) {
 // container is not nil, container is Window
 // is method
 // arg0Type tag: glist, isPtr: true
-func WindowSetDefaultIconList1(list int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func WindowSetDefaultIconList1(list glib.List) {
 	iv, err := _I.Get(3521, "Window", "set_default_icon_list")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_list := gi.NewIntArgument(list) /*TODO*/
+	arg_list := gi.NewPointerArgument(list.P)
 	args := []gi.Argument{arg_list}
 	iv.Call(args, nil, nil)
 }
@@ -66302,8 +68610,12 @@ func (v Window) AddAccelGroup(accel_group IAccelGroup) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if accel_group != nil {
+		tmp = accel_group.P_AccelGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_accel_group := gi.NewPointerArgument(accel_group.P_AccelGroup())
+	arg_accel_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_accel_group}
 	iv.Call(args, nil, nil)
 }
@@ -66317,9 +68629,13 @@ func (v Window) AddMnemonic(keyval uint32, target IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if target != nil {
+		tmp = target.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_keyval := gi.NewUint32Argument(keyval)
-	arg_target := gi.NewPointerArgument(target.P_Widget())
+	arg_target := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_keyval, arg_target}
 	iv.Call(args, nil, nil)
 }
@@ -66412,8 +68728,12 @@ func (v Window) FullscreenOnMonitor(screen gdk.IScreen, monitor int32) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	arg_monitor := gi.NewInt32Argument(monitor)
 	args := []gi.Argument{arg_v, arg_screen, arg_monitor}
 	iv.Call(args, nil, nil)
@@ -66697,7 +69017,7 @@ func (v Window) GetIcon() (result gdkpixbuf.Pixbuf) {
 // gtk_window_get_icon_list
 // container is not nil, container is Window
 // is method
-func (v Window) GetIconList() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Window) GetIconList() (result glib.List) {
 	iv, err := _I.Get(3551, "Window", "get_icon_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -66707,7 +69027,7 @@ func (v Window) GetIconList() (result int /*TODO_TYPE isPtr: true, tag: glist*/)
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -67250,8 +69570,12 @@ func (v Window) RemoveAccelGroup(accel_group IAccelGroup) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if accel_group != nil {
+		tmp = accel_group.P_AccelGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_accel_group := gi.NewPointerArgument(accel_group.P_AccelGroup())
+	arg_accel_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_accel_group}
 	iv.Call(args, nil, nil)
 }
@@ -67265,9 +69589,13 @@ func (v Window) RemoveMnemonic(keyval uint32, target IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if target != nil {
+		tmp = target.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_keyval := gi.NewUint32Argument(keyval)
-	arg_target := gi.NewPointerArgument(target.P_Widget())
+	arg_target := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_keyval, arg_target}
 	iv.Call(args, nil, nil)
 }
@@ -67359,8 +69687,12 @@ func (v Window) SetApplication(application IApplication) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if application != nil {
+		tmp = application.P_Application()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_application := gi.NewPointerArgument(application.P_Application())
+	arg_application := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_application}
 	iv.Call(args, nil, nil)
 }
@@ -67374,8 +69706,12 @@ func (v Window) SetAttachedTo(attach_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if attach_widget != nil {
+		tmp = attach_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_attach_widget := gi.NewPointerArgument(attach_widget.P_Widget())
+	arg_attach_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_attach_widget}
 	iv.Call(args, nil, nil)
 }
@@ -67404,8 +69740,12 @@ func (v Window) SetDefault(default_widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if default_widget != nil {
+		tmp = default_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_default_widget := gi.NewPointerArgument(default_widget.P_Widget())
+	arg_default_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_default_widget}
 	iv.Call(args, nil, nil)
 }
@@ -67481,8 +69821,12 @@ func (v Window) SetFocus(focus IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if focus != nil {
+		tmp = focus.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_focus := gi.NewPointerArgument(focus.P_Widget())
+	arg_focus := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_focus}
 	iv.Call(args, nil, nil)
 }
@@ -67526,8 +69870,12 @@ func (v Window) SetGeometryHints(geometry_widget IWidget, geometry gdk.Geometry,
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if geometry_widget != nil {
+		tmp = geometry_widget.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_geometry_widget := gi.NewPointerArgument(geometry_widget.P_Widget())
+	arg_geometry_widget := gi.NewPointerArgument(tmp)
 	arg_geometry := gi.NewPointerArgument(geometry.P)
 	arg_geom_mask := gi.NewIntArgument(int(geom_mask))
 	args := []gi.Argument{arg_v, arg_geometry_widget, arg_geometry, arg_geom_mask}
@@ -67603,8 +69951,12 @@ func (v Window) SetIcon(icon gdkpixbuf.IPixbuf) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Pixbuf()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_icon := gi.NewPointerArgument(icon.P_Pixbuf())
+	arg_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_icon}
 	iv.Call(args, nil, nil)
 }
@@ -67634,14 +69986,14 @@ func (v Window) SetIconFromFile(filename string) (result bool, err error) {
 // gtk_window_set_icon_list
 // container is not nil, container is Window
 // is method
-func (v Window) SetIconList(list int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v Window) SetIconList(list glib.List) {
 	iv, err := _I.Get(3608, "Window", "set_icon_list")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_list := gi.NewIntArgument(list) /*TODO*/
+	arg_list := gi.NewPointerArgument(list.P)
 	args := []gi.Argument{arg_v, arg_list}
 	iv.Call(args, nil, nil)
 }
@@ -67809,8 +70161,12 @@ func (v Window) SetScreen(screen gdk.IScreen) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_screen}
 	iv.Call(args, nil, nil)
 }
@@ -67888,8 +70244,12 @@ func (v Window) SetTitlebar(titlebar IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if titlebar != nil {
+		tmp = titlebar.P_Widget()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_titlebar := gi.NewPointerArgument(titlebar.P_Widget())
+	arg_titlebar := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_titlebar}
 	iv.Call(args, nil, nil)
 }
@@ -67903,8 +70263,12 @@ func (v Window) SetTransientFor(parent IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	arg_parent := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_parent}
 	iv.Call(args, nil, nil)
 }
@@ -68075,8 +70439,12 @@ func (v WindowGroup) AddWindow(window IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -68090,8 +70458,12 @@ func (v WindowGroup) GetCurrentDeviceGrab(device gdk.IDevice) (result Widget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if device != nil {
+		tmp = device.P_Device()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	arg_device := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_device}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -68119,7 +70491,7 @@ func (v WindowGroup) GetCurrentGrab() (result Widget) {
 // gtk_window_group_list_windows
 // container is not nil, container is WindowGroup
 // is method
-func (v WindowGroup) ListWindows() (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func (v WindowGroup) ListWindows() (result glib.List) {
 	iv, err := _I.Get(3637, "WindowGroup", "list_windows")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -68129,7 +70501,7 @@ func (v WindowGroup) ListWindows() (result int /*TODO_TYPE isPtr: true, tag: gli
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -68142,8 +70514,12 @@ func (v WindowGroup) RemoveWindow(window IWindow) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -68196,7 +70572,11 @@ func AccelGroupsActivate(object gobject.IObject, accel_key uint32, accel_mods gd
 		log.Println("WARN:", err)
 		return
 	}
-	arg_object := gi.NewPointerArgument(object.P_Object())
+	var tmp unsafe.Pointer
+	if object != nil {
+		tmp = object.P_Object()
+	}
+	arg_object := gi.NewPointerArgument(tmp)
 	arg_accel_key := gi.NewUint32Argument(accel_key)
 	arg_accel_mods := gi.NewIntArgument(int(accel_mods))
 	args := []gi.Argument{arg_object, arg_accel_key, arg_accel_mods}
@@ -68208,17 +70588,21 @@ func AccelGroupsActivate(object gobject.IObject, accel_key uint32, accel_mods gd
 
 // gtk_accel_groups_from_object
 // container is nil
-func AccelGroupsFromObject(object gobject.IObject) (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func AccelGroupsFromObject(object gobject.IObject) (result glib.SList) {
 	iv, err := _I.Get(3640, "accel_groups_from_object", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_object := gi.NewPointerArgument(object.P_Object())
+	var tmp unsafe.Pointer
+	if object != nil {
+		tmp = object.P_Object()
+	}
+	arg_object := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_object}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -68261,7 +70645,11 @@ func AcceleratorGetLabelWithKeycode(display gdk.IDisplay, accelerator_key uint32
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	arg_accelerator_key := gi.NewUint32Argument(accelerator_key)
 	arg_keycode := gi.NewUint32Argument(keycode)
 	arg_accelerator_mods := gi.NewIntArgument(int(accelerator_mods))
@@ -68297,7 +70685,11 @@ func AcceleratorNameWithKeycode(display gdk.IDisplay, accelerator_key uint32, ke
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
 	arg_accelerator_key := gi.NewUint32Argument(accelerator_key)
 	arg_keycode := gi.NewUint32Argument(keycode)
 	arg_accelerator_mods := gi.NewIntArgument(int(accelerator_mods))
@@ -68390,7 +70782,11 @@ func AlternativeDialogButtonOrder(screen gdk.IScreen) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
+	arg_screen := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_screen}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -68419,7 +70815,7 @@ func BindingEntryAddSignalFromString(binding_set BindingSet, signal_desc string)
 
 // gtk_binding_entry_add_signall
 // container is nil
-func BindingEntryAddSignall(binding_set BindingSet, keyval uint32, modifiers gdk.ModifierTypeFlags, signal_name string, binding_args int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func BindingEntryAddSignall(binding_set BindingSet, keyval uint32, modifiers gdk.ModifierTypeFlags, signal_name string, binding_args glib.SList) {
 	iv, err := _I.Get(3652, "binding_entry_add_signall", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -68430,7 +70826,7 @@ func BindingEntryAddSignall(binding_set BindingSet, keyval uint32, modifiers gdk
 	arg_keyval := gi.NewUint32Argument(keyval)
 	arg_modifiers := gi.NewIntArgument(int(modifiers))
 	arg_signal_name := gi.NewStringArgument(c_signal_name)
-	arg_binding_args := gi.NewIntArgument(binding_args) /*TODO*/
+	arg_binding_args := gi.NewPointerArgument(binding_args.P)
 	args := []gi.Argument{arg_binding_set, arg_keyval, arg_modifiers, arg_signal_name, arg_binding_args}
 	iv.Call(args, nil, nil)
 	gi.Free(c_signal_name)
@@ -68492,7 +70888,11 @@ func BindingsActivate(object gobject.IObject, keyval uint32, modifiers gdk.Modif
 		log.Println("WARN:", err)
 		return
 	}
-	arg_object := gi.NewPointerArgument(object.P_Object())
+	var tmp unsafe.Pointer
+	if object != nil {
+		tmp = object.P_Object()
+	}
+	arg_object := gi.NewPointerArgument(tmp)
 	arg_keyval := gi.NewUint32Argument(keyval)
 	arg_modifiers := gi.NewIntArgument(int(modifiers))
 	args := []gi.Argument{arg_object, arg_keyval, arg_modifiers}
@@ -68510,7 +70910,11 @@ func BindingsActivateEvent(object gobject.IObject, event gdk.EventKey) (result b
 		log.Println("WARN:", err)
 		return
 	}
-	arg_object := gi.NewPointerArgument(object.P_Object())
+	var tmp unsafe.Pointer
+	if object != nil {
+		tmp = object.P_Object()
+	}
+	arg_object := gi.NewPointerArgument(tmp)
 	arg_event := gi.NewPointerArgument(event.P)
 	args := []gi.Argument{arg_object, arg_event}
 	var ret gi.Argument
@@ -68541,8 +70945,12 @@ func CairoShouldDrawWindow(cr cairo.Context, window gdk.IWindow) (result bool) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if window != nil {
+		tmp = window.P_Window()
+	}
 	arg_cr := gi.NewPointerArgument(cr.P)
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_window := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_cr, arg_window}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -68558,9 +70966,17 @@ func CairoTransformToWindow(cr cairo.Context, widget IWidget, window gdk.IWindow
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if window != nil {
+		tmp1 = window.P_Window()
+	}
 	arg_cr := gi.NewPointerArgument(cr.P)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
-	arg_window := gi.NewPointerArgument(window.P_Window())
+	arg_widget := gi.NewPointerArgument(tmp)
+	arg_window := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_cr, arg_widget, arg_window}
 	iv.Call(args, nil, nil)
 }
@@ -68605,8 +71021,16 @@ func DeviceGrabAdd(widget IWidget, device gdk.IDevice, block_others bool) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if device != nil {
+		tmp1 = device.P_Device()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
+	arg_device := gi.NewPointerArgument(tmp1)
 	arg_block_others := gi.NewBoolArgument(block_others)
 	args := []gi.Argument{arg_widget, arg_device, arg_block_others}
 	iv.Call(args, nil, nil)
@@ -68620,8 +71044,16 @@ func DeviceGrabRemove(widget IWidget, device gdk.IDevice) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
-	arg_device := gi.NewPointerArgument(device.P_Device())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	var tmp1 unsafe.Pointer
+	if device != nil {
+		tmp1 = device.P_Device()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
+	arg_device := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_widget, arg_device}
 	iv.Call(args, nil, nil)
 }
@@ -68663,7 +71095,11 @@ func DragCancel(context gdk.IDragContext) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_context}
 	iv.Call(args, nil, nil)
 }
@@ -68676,7 +71112,11 @@ func DragFinish(context gdk.IDragContext, success bool, del bool, time_ uint32) 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_success := gi.NewBoolArgument(success)
 	arg_del := gi.NewBoolArgument(del)
 	arg_time_ := gi.NewUint32Argument(time_)
@@ -68692,7 +71132,11 @@ func DragGetSourceWidget(context gdk.IDragContext) (result Widget) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -68708,7 +71152,11 @@ func DragSetIconDefault(context gdk.IDragContext) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_context}
 	iv.Call(args, nil, nil)
 }
@@ -68721,7 +71169,11 @@ func DragSetIconGicon(context gdk.IDragContext, icon gio.Icon, hot_x int32, hot_
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_icon := gi.NewPointerArgument(icon.P)
 	arg_hot_x := gi.NewInt32Argument(hot_x)
 	arg_hot_y := gi.NewInt32Argument(hot_y)
@@ -68737,8 +71189,12 @@ func DragSetIconName(context gdk.IDragContext, icon_name string, hot_x int32, ho
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
 	c_icon_name := gi.CString(icon_name)
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_icon_name := gi.NewStringArgument(c_icon_name)
 	arg_hot_x := gi.NewInt32Argument(hot_x)
 	arg_hot_y := gi.NewInt32Argument(hot_y)
@@ -68755,8 +71211,16 @@ func DragSetIconPixbuf(context gdk.IDragContext, pixbuf gdkpixbuf.IPixbuf, hot_x
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	var tmp1 unsafe.Pointer
+	if pixbuf != nil {
+		tmp1 = pixbuf.P_Pixbuf()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_pixbuf := gi.NewPointerArgument(tmp1)
 	arg_hot_x := gi.NewInt32Argument(hot_x)
 	arg_hot_y := gi.NewInt32Argument(hot_y)
 	args := []gi.Argument{arg_context, arg_pixbuf, arg_hot_x, arg_hot_y}
@@ -68771,8 +71235,12 @@ func DragSetIconStock(context gdk.IDragContext, stock_id string, hot_x int32, ho
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
 	c_stock_id := gi.CString(stock_id)
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_stock_id := gi.NewStringArgument(c_stock_id)
 	arg_hot_x := gi.NewInt32Argument(hot_x)
 	arg_hot_y := gi.NewInt32Argument(hot_y)
@@ -68789,7 +71257,11 @@ func DragSetIconSurface(context gdk.IDragContext, surface cairo.Surface) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_surface := gi.NewPointerArgument(surface.P)
 	args := []gi.Argument{arg_context, arg_surface}
 	iv.Call(args, nil, nil)
@@ -68803,8 +71275,16 @@ func DragSetIconWidget(context gdk.IDragContext, widget IWidget, hot_x int32, ho
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_DragContext())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_DragContext()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_hot_x := gi.NewInt32Argument(hot_x)
 	arg_hot_y := gi.NewInt32Argument(hot_y)
 	args := []gi.Argument{arg_context, arg_widget, arg_hot_x, arg_hot_y}
@@ -68819,7 +71299,11 @@ func DrawInsertionCursor(widget IWidget, cr cairo.Context, location gdk.Rectangl
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_location := gi.NewPointerArgument(location.P)
 	arg_is_primary := gi.NewBoolArgument(is_primary)
@@ -69153,7 +71637,11 @@ func IconSizeLookupForSettings(settings ISettings, size int32) (result bool, wid
 		return
 	}
 	var outArgs [2]gi.Argument
-	arg_settings := gi.NewPointerArgument(settings.P_Settings())
+	var tmp unsafe.Pointer
+	if settings != nil {
+		tmp = settings.P_Settings()
+	}
+	arg_settings := gi.NewPointerArgument(tmp)
 	arg_size := gi.NewInt32Argument(size)
 	arg_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_height := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -69357,12 +71845,20 @@ func PaintArrow(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_arrow_type := gi.NewIntArgument(int(arrow_type))
 	arg_fill := gi.NewBoolArgument(fill)
@@ -69383,12 +71879,20 @@ func PaintBox(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_t
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69407,12 +71911,20 @@ func PaintBoxGap(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69434,12 +71946,20 @@ func PaintCheck(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69458,12 +71978,20 @@ func PaintDiamond(style IStyle, cr cairo.Context, state_type StateTypeEnum, shad
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69482,11 +72010,19 @@ func PaintExpander(style IStyle, cr cairo.Context, state_type StateTypeEnum, wid
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69504,12 +72040,20 @@ func PaintExtension(style IStyle, cr cairo.Context, state_type StateTypeEnum, sh
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69529,12 +72073,20 @@ func PaintFlatBox(style IStyle, cr cairo.Context, state_type StateTypeEnum, shad
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69553,11 +72105,19 @@ func PaintFocus(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69576,12 +72136,20 @@ func PaintHandle(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69601,11 +72169,19 @@ func PaintHline(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x1 := gi.NewInt32Argument(x1)
 	arg_x2 := gi.NewInt32Argument(x2)
@@ -69623,16 +72199,28 @@ func PaintLayout(style IStyle, cr cairo.Context, state_type StateTypeEnum, use_t
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	var tmp2 unsafe.Pointer
+	if layout != nil {
+		tmp2 = layout.P_Layout()
+	}
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_use_text := gi.NewBoolArgument(use_text)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
-	arg_layout := gi.NewPointerArgument(layout.P_Layout())
+	arg_layout := gi.NewPointerArgument(tmp2)
 	args := []gi.Argument{arg_style, arg_cr, arg_state_type, arg_use_text, arg_widget, arg_detail, arg_x, arg_y, arg_layout}
 	iv.Call(args, nil, nil)
 	gi.Free(c_detail)
@@ -69646,12 +72234,20 @@ func PaintOption(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69670,11 +72266,19 @@ func PaintResizeGrip(style IStyle, cr cairo.Context, state_type StateTypeEnum, w
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_edge := gi.NewIntArgument(int(edge))
 	arg_x := gi.NewInt32Argument(x)
@@ -69694,12 +72298,20 @@ func PaintShadow(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69718,12 +72330,20 @@ func PaintShadowGap(style IStyle, cr cairo.Context, state_type StateTypeEnum, sh
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69745,12 +72365,20 @@ func PaintSlider(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69770,11 +72398,19 @@ func PaintSpinner(style IStyle, cr cairo.Context, state_type StateTypeEnum, widg
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_step := gi.NewUint32Argument(step)
 	arg_x := gi.NewInt32Argument(x)
@@ -69794,12 +72430,20 @@ func PaintTab(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_t
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
 	arg_shadow_type := gi.NewIntArgument(int(shadow_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_x := gi.NewInt32Argument(x)
 	arg_y := gi.NewInt32Argument(y)
@@ -69818,11 +72462,19 @@ func PaintVline(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_Style()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
 	c_detail := gi.CString(detail)
-	arg_style := gi.NewPointerArgument(style.P_Style())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_state_type := gi.NewIntArgument(int(state_type))
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_detail := gi.NewStringArgument(c_detail)
 	arg_y1_ := gi.NewInt32Argument(y1_)
 	arg_y2_ := gi.NewInt32Argument(y2_)
@@ -69848,7 +72500,7 @@ func PaperSizeGetDefault() (result string) {
 
 // gtk_paper_size_get_paper_sizes
 // container is nil
-func PaperSizeGetPaperSizes(include_custom bool) (result int /*TODO_TYPE isPtr: true, tag: glist*/) {
+func PaperSizeGetPaperSizes(include_custom bool) (result glib.List) {
 	iv, err := _I.Get(3733, "paper_size_get_paper_sizes", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -69858,7 +72510,7 @@ func PaperSizeGetPaperSizes(include_custom bool) (result int /*TODO_TYPE isPtr: 
 	args := []gi.Argument{arg_include_custom}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -69900,9 +72552,21 @@ func PrintRunPageSetupDialog(parent IWindow, page_setup IPageSetup, settings IPr
 		log.Println("WARN:", err)
 		return
 	}
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
-	arg_page_setup := gi.NewPointerArgument(page_setup.P_PageSetup())
-	arg_settings := gi.NewPointerArgument(settings.P_PrintSettings())
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
+	var tmp1 unsafe.Pointer
+	if page_setup != nil {
+		tmp1 = page_setup.P_PageSetup()
+	}
+	var tmp2 unsafe.Pointer
+	if settings != nil {
+		tmp2 = settings.P_PrintSettings()
+	}
+	arg_parent := gi.NewPointerArgument(tmp)
+	arg_page_setup := gi.NewPointerArgument(tmp1)
+	arg_settings := gi.NewPointerArgument(tmp2)
 	args := []gi.Argument{arg_parent, arg_page_setup, arg_settings}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -69918,9 +72582,21 @@ func PrintRunPageSetupDialogAsync(parent IWindow, page_setup IPageSetup, setting
 		log.Println("WARN:", err)
 		return
 	}
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
-	arg_page_setup := gi.NewPointerArgument(page_setup.P_PageSetup())
-	arg_settings := gi.NewPointerArgument(settings.P_PrintSettings())
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
+	var tmp1 unsafe.Pointer
+	if page_setup != nil {
+		tmp1 = page_setup.P_PageSetup()
+	}
+	var tmp2 unsafe.Pointer
+	if settings != nil {
+		tmp2 = settings.P_PrintSettings()
+	}
+	arg_parent := gi.NewPointerArgument(tmp)
+	arg_page_setup := gi.NewPointerArgument(tmp1)
+	arg_settings := gi.NewPointerArgument(tmp2)
 	arg_done_cb := gi.NewIntArgument(done_cb) /*TODO*/
 	arg_data := gi.NewPointerArgument(data)
 	args := []gi.Argument{arg_parent, arg_page_setup, arg_settings, arg_done_cb, arg_data}
@@ -69935,7 +72611,11 @@ func PropagateEvent(widget IWidget, event gdk.Event) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_event := gi.NewPointerArgument(event.P)
 	args := []gi.Argument{arg_widget, arg_event}
 	iv.Call(args, nil, nil)
@@ -69982,8 +72662,12 @@ func RcFindPixmapInPath(settings ISettings, scanner glib.Scanner, pixmap_file st
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if settings != nil {
+		tmp = settings.P_Settings()
+	}
 	c_pixmap_file := gi.CString(pixmap_file)
-	arg_settings := gi.NewPointerArgument(settings.P_Settings())
+	arg_settings := gi.NewPointerArgument(tmp)
 	arg_scanner := gi.NewPointerArgument(scanner.P)
 	arg_pixmap_file := gi.NewStringArgument(c_pixmap_file)
 	args := []gi.Argument{arg_settings, arg_scanner, arg_pixmap_file}
@@ -70059,7 +72743,11 @@ func RcGetStyle(widget IWidget) (result Style) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -70075,9 +72763,13 @@ func RcGetStyleByPaths(settings ISettings, widget_path string, class_path string
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if settings != nil {
+		tmp = settings.P_Settings()
+	}
 	c_widget_path := gi.CString(widget_path)
 	c_class_path := gi.CString(class_path)
-	arg_settings := gi.NewPointerArgument(settings.P_Settings())
+	arg_settings := gi.NewPointerArgument(tmp)
 	arg_widget_path := gi.NewStringArgument(c_widget_path)
 	arg_class_path := gi.NewStringArgument(c_class_path)
 	arg_type1 := gi.NewUintArgument(uint(type1))
@@ -70147,8 +72839,12 @@ func RcParseColorFull(scanner glib.Scanner, style IRcStyle) (result uint32, colo
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if style != nil {
+		tmp = style.P_RcStyle()
+	}
 	arg_scanner := gi.NewPointerArgument(scanner.P)
-	arg_style := gi.NewPointerArgument(style.P_RcStyle())
+	arg_style := gi.NewPointerArgument(tmp)
 	arg_color := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_scanner, arg_style, arg_color}
 	var ret gi.Argument
@@ -70200,7 +72896,11 @@ func RcPropertyParseBorder(pspec gobject.IParamSpec, gstring glib.String, proper
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_gstring := gi.NewPointerArgument(gstring.P)
 	arg_property_value := gi.NewPointerArgument(property_value.P)
 	args := []gi.Argument{arg_pspec, arg_gstring, arg_property_value}
@@ -70218,7 +72918,11 @@ func RcPropertyParseColor(pspec gobject.IParamSpec, gstring glib.String, propert
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_gstring := gi.NewPointerArgument(gstring.P)
 	arg_property_value := gi.NewPointerArgument(property_value.P)
 	args := []gi.Argument{arg_pspec, arg_gstring, arg_property_value}
@@ -70236,7 +72940,11 @@ func RcPropertyParseEnum(pspec gobject.IParamSpec, gstring glib.String, property
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_gstring := gi.NewPointerArgument(gstring.P)
 	arg_property_value := gi.NewPointerArgument(property_value.P)
 	args := []gi.Argument{arg_pspec, arg_gstring, arg_property_value}
@@ -70254,7 +72962,11 @@ func RcPropertyParseFlags(pspec gobject.IParamSpec, gstring glib.String, propert
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_gstring := gi.NewPointerArgument(gstring.P)
 	arg_property_value := gi.NewPointerArgument(property_value.P)
 	args := []gi.Argument{arg_pspec, arg_gstring, arg_property_value}
@@ -70272,7 +72984,11 @@ func RcPropertyParseRequisition(pspec gobject.IParamSpec, gstring glib.String, p
 		log.Println("WARN:", err)
 		return
 	}
-	arg_pspec := gi.NewPointerArgument(pspec.P_ParamSpec())
+	var tmp unsafe.Pointer
+	if pspec != nil {
+		tmp = pspec.P_ParamSpec()
+	}
+	arg_pspec := gi.NewPointerArgument(tmp)
 	arg_gstring := gi.NewPointerArgument(gstring.P)
 	arg_property_value := gi.NewPointerArgument(property_value.P)
 	args := []gi.Argument{arg_pspec, arg_gstring, arg_property_value}
@@ -70304,7 +73020,11 @@ func RcReparseAllForSettings(settings ISettings, force_load bool) (result bool) 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_settings := gi.NewPointerArgument(settings.P_Settings())
+	var tmp unsafe.Pointer
+	if settings != nil {
+		tmp = settings.P_Settings()
+	}
+	arg_settings := gi.NewPointerArgument(tmp)
 	arg_force_load := gi.NewBoolArgument(force_load)
 	args := []gi.Argument{arg_settings, arg_force_load}
 	var ret gi.Argument
@@ -70321,7 +73041,11 @@ func RcResetStyles(settings ISettings) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_settings := gi.NewPointerArgument(settings.P_Settings())
+	var tmp unsafe.Pointer
+	if settings != nil {
+		tmp = settings.P_Settings()
+	}
+	arg_settings := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_settings}
 	iv.Call(args, nil, nil)
 }
@@ -70375,7 +73099,11 @@ func RenderActivity(context IStyleContext, cr cairo.Context, x float64, y float6
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70393,7 +73121,11 @@ func RenderArrow(context IStyleContext, cr cairo.Context, angle float64, x float
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_angle := gi.NewDoubleArgument(angle)
 	arg_x := gi.NewDoubleArgument(x)
@@ -70411,7 +73143,11 @@ func RenderBackground(context IStyleContext, cr cairo.Context, x float64, y floa
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70430,7 +73166,11 @@ func RenderBackgroundGetClip(context IStyleContext, x float64, y float64, width 
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
 	arg_width := gi.NewDoubleArgument(width)
@@ -70450,7 +73190,11 @@ func RenderCheck(context IStyleContext, cr cairo.Context, x float64, y float64, 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70468,7 +73212,11 @@ func RenderExpander(context IStyleContext, cr cairo.Context, x float64, y float6
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70486,7 +73234,11 @@ func RenderExtension(context IStyleContext, cr cairo.Context, x float64, y float
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70505,7 +73257,11 @@ func RenderFocus(context IStyleContext, cr cairo.Context, x float64, y float64, 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70523,7 +73279,11 @@ func RenderFrame(context IStyleContext, cr cairo.Context, x float64, y float64, 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70541,7 +73301,11 @@ func RenderFrameGap(context IStyleContext, cr cairo.Context, x float64, y float6
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70562,7 +73326,11 @@ func RenderHandle(context IStyleContext, cr cairo.Context, x float64, y float64,
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70580,9 +73348,17 @@ func RenderIcon(context IStyleContext, cr cairo.Context, pixbuf gdkpixbuf.IPixbu
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	var tmp1 unsafe.Pointer
+	if pixbuf != nil {
+		tmp1 = pixbuf.P_Pixbuf()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
-	arg_pixbuf := gi.NewPointerArgument(pixbuf.P_Pixbuf())
+	arg_pixbuf := gi.NewPointerArgument(tmp1)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
 	args := []gi.Argument{arg_context, arg_cr, arg_pixbuf, arg_x, arg_y}
@@ -70597,7 +73373,11 @@ func RenderIconPixbuf(context IStyleContext, source IconSource, size int32) (res
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_source := gi.NewPointerArgument(source.P)
 	arg_size := gi.NewInt32Argument(size)
 	args := []gi.Argument{arg_context, arg_source, arg_size}
@@ -70615,7 +73395,11 @@ func RenderIconSurface(context IStyleContext, cr cairo.Context, surface cairo.Su
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_surface := gi.NewPointerArgument(surface.P)
 	arg_x := gi.NewDoubleArgument(x)
@@ -70632,11 +73416,19 @@ func RenderInsertionCursor(context IStyleContext, cr cairo.Context, x float64, y
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	var tmp1 unsafe.Pointer
+	if layout != nil {
+		tmp1 = layout.P_Layout()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
-	arg_layout := gi.NewPointerArgument(layout.P_Layout())
+	arg_layout := gi.NewPointerArgument(tmp1)
 	arg_index := gi.NewInt32Argument(index)
 	arg_direction := gi.NewIntArgument(int(direction))
 	args := []gi.Argument{arg_context, arg_cr, arg_x, arg_y, arg_layout, arg_index, arg_direction}
@@ -70651,11 +73443,19 @@ func RenderLayout(context IStyleContext, cr cairo.Context, x float64, y float64,
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	var tmp1 unsafe.Pointer
+	if layout != nil {
+		tmp1 = layout.P_Layout()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
-	arg_layout := gi.NewPointerArgument(layout.P_Layout())
+	arg_layout := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_context, arg_cr, arg_x, arg_y, arg_layout}
 	iv.Call(args, nil, nil)
 }
@@ -70668,7 +73468,11 @@ func RenderLine(context IStyleContext, cr cairo.Context, x0 float64, y0 float64,
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x0 := gi.NewDoubleArgument(x0)
 	arg_y0 := gi.NewDoubleArgument(y0)
@@ -70686,7 +73490,11 @@ func RenderOption(context IStyleContext, cr cairo.Context, x float64, y float64,
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70704,7 +73512,11 @@ func RenderSlider(context IStyleContext, cr cairo.Context, x float64, y float64,
 		log.Println("WARN:", err)
 		return
 	}
-	arg_context := gi.NewPointerArgument(context.P_StyleContext())
+	var tmp unsafe.Pointer
+	if context != nil {
+		tmp = context.P_StyleContext()
+	}
+	arg_context := gi.NewPointerArgument(tmp)
 	arg_cr := gi.NewPointerArgument(cr.P)
 	arg_x := gi.NewDoubleArgument(x)
 	arg_y := gi.NewDoubleArgument(y)
@@ -70746,7 +73558,11 @@ func SelectionAddTarget(widget IWidget, selection gdk.Atom, target gdk.Atom, inf
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	arg_target := gi.NewPointerArgument(target.P)
 	arg_info := gi.NewUint32Argument(info)
@@ -70763,7 +73579,11 @@ func SelectionAddTargets(widget IWidget, selection gdk.Atom, targets unsafe.Poin
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	arg_targets := gi.NewPointerArgument(targets)
 	arg_ntargets := gi.NewUint32Argument(ntargets)
@@ -70779,7 +73599,11 @@ func SelectionClearTargets(widget IWidget, selection gdk.Atom) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	args := []gi.Argument{arg_widget, arg_selection}
 	iv.Call(args, nil, nil)
@@ -70793,7 +73617,11 @@ func SelectionConvert(widget IWidget, selection gdk.Atom, target gdk.Atom, time_
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	arg_target := gi.NewPointerArgument(target.P)
 	arg_time_ := gi.NewUint32Argument(time_)
@@ -70812,7 +73640,11 @@ func SelectionOwnerSet(widget IWidget, selection gdk.Atom, time_ uint32) (result
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_widget, arg_selection, arg_time_}
@@ -70830,8 +73662,16 @@ func SelectionOwnerSetForDisplay(display gdk.IDisplay, widget IWidget, selection
 		log.Println("WARN:", err)
 		return
 	}
-	arg_display := gi.NewPointerArgument(display.P_Display())
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if display != nil {
+		tmp = display.P_Display()
+	}
+	var tmp1 unsafe.Pointer
+	if widget != nil {
+		tmp1 = widget.P_Widget()
+	}
+	arg_display := gi.NewPointerArgument(tmp)
+	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_selection := gi.NewPointerArgument(selection.P)
 	arg_time_ := gi.NewUint32Argument(time_)
 	args := []gi.Argument{arg_display, arg_widget, arg_selection, arg_time_}
@@ -70849,7 +73689,11 @@ func SelectionRemoveAll(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -70875,8 +73719,12 @@ func ShowUri(screen gdk.IScreen, uri string, timestamp uint32) (result bool, err
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if screen != nil {
+		tmp = screen.P_Screen()
+	}
 	c_uri := gi.CString(uri)
-	arg_screen := gi.NewPointerArgument(screen.P_Screen())
+	arg_screen := gi.NewPointerArgument(tmp)
 	arg_uri := gi.NewStringArgument(c_uri)
 	arg_timestamp := gi.NewUint32Argument(timestamp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -70897,8 +73745,12 @@ func ShowUriOnWindow(parent IWindow, uri string, timestamp uint32) (result bool,
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if parent != nil {
+		tmp = parent.P_Window()
+	}
 	c_uri := gi.CString(uri)
-	arg_parent := gi.NewPointerArgument(parent.P_Window())
+	arg_parent := gi.NewPointerArgument(tmp)
 	arg_uri := gi.NewStringArgument(c_uri)
 	arg_timestamp := gi.NewUint32Argument(timestamp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -70943,7 +73795,7 @@ func StockAddStatic(items unsafe.Pointer, n_items uint32) {
 
 // gtk_stock_list_ids
 // container is nil
-func StockListIds() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
+func StockListIds() (result glib.SList) {
 	iv, err := _I.Get(3797, "stock_list_ids", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70951,7 +73803,7 @@ func StockListIds() (result int /*TODO_TYPE isPtr: true, tag: gslist*/) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -71059,9 +73911,13 @@ func TargetsIncludeRichText(targets gi.PointerArray, n_targets int32, buffer ITe
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if buffer != nil {
+		tmp = buffer.P_TextBuffer()
+	}
 	arg_targets := gi.NewPointerArgument(targets.P)
 	arg_n_targets := gi.NewInt32Argument(n_targets)
-	arg_buffer := gi.NewPointerArgument(buffer.P_TextBuffer())
+	arg_buffer := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_targets, arg_n_targets, arg_buffer}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -71134,8 +73990,12 @@ func TestFindLabel(widget IWidget, label_pattern string) (result Widget) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	c_label_pattern := gi.CString(label_pattern)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_label_pattern := gi.NewStringArgument(c_label_pattern)
 	args := []gi.Argument{arg_widget, arg_label_pattern}
 	var ret gi.Argument
@@ -71153,7 +74013,11 @@ func TestFindSibling(base_widget IWidget, widget_type gi.GType) (result Widget) 
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_widget := gi.NewPointerArgument(base_widget.P_Widget())
+	var tmp unsafe.Pointer
+	if base_widget != nil {
+		tmp = base_widget.P_Widget()
+	}
+	arg_base_widget := gi.NewPointerArgument(tmp)
 	arg_widget_type := gi.NewUintArgument(uint(widget_type))
 	args := []gi.Argument{arg_base_widget, arg_widget_type}
 	var ret gi.Argument
@@ -71170,8 +74034,12 @@ func TestFindWidget(widget IWidget, label_pattern string, widget_type gi.GType) 
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	c_label_pattern := gi.CString(label_pattern)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_label_pattern := gi.NewStringArgument(c_label_pattern)
 	arg_widget_type := gi.NewUintArgument(uint(widget_type))
 	args := []gi.Argument{arg_widget, arg_label_pattern, arg_widget_type}
@@ -71222,7 +74090,11 @@ func TestSliderGetValue(widget IWidget) (result float64) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -71238,7 +74110,11 @@ func TestSliderSetPerc(widget IWidget, percentage float64) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_percentage := gi.NewDoubleArgument(percentage)
 	args := []gi.Argument{arg_widget, arg_percentage}
 	iv.Call(args, nil, nil)
@@ -71252,7 +74128,11 @@ func TestSpinButtonClick(spinner ISpinButton, button uint32, upwards bool) (resu
 		log.Println("WARN:", err)
 		return
 	}
-	arg_spinner := gi.NewPointerArgument(spinner.P_SpinButton())
+	var tmp unsafe.Pointer
+	if spinner != nil {
+		tmp = spinner.P_SpinButton()
+	}
+	arg_spinner := gi.NewPointerArgument(tmp)
 	arg_button := gi.NewUint32Argument(button)
 	arg_upwards := gi.NewBoolArgument(upwards)
 	args := []gi.Argument{arg_spinner, arg_button, arg_upwards}
@@ -71270,7 +74150,11 @@ func TestTextGet(widget IWidget) (result string) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -71286,8 +74170,12 @@ func TestTextSet(widget IWidget, string string) {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
 	c_string := gi.CString(string)
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_string := gi.NewStringArgument(c_string)
 	args := []gi.Argument{arg_widget, arg_string}
 	iv.Call(args, nil, nil)
@@ -71302,7 +74190,11 @@ func TestWidgetClick(widget IWidget, button uint32, modifiers gdk.ModifierTypeFl
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_button := gi.NewUint32Argument(button)
 	arg_modifiers := gi.NewIntArgument(int(modifiers))
 	args := []gi.Argument{arg_widget, arg_button, arg_modifiers}
@@ -71320,7 +74212,11 @@ func TestWidgetSendKey(widget IWidget, keyval uint32, modifiers gdk.ModifierType
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	arg_keyval := gi.NewUint32Argument(keyval)
 	arg_modifiers := gi.NewIntArgument(int(modifiers))
 	args := []gi.Argument{arg_widget, arg_keyval, arg_modifiers}
@@ -71338,7 +74234,11 @@ func TestWidgetWaitForDraw(widget IWidget) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_widget := gi.NewPointerArgument(widget.P_Widget())
+	var tmp unsafe.Pointer
+	if widget != nil {
+		tmp = widget.P_Widget()
+	}
+	arg_widget := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_widget}
 	iv.Call(args, nil, nil)
 }
@@ -71372,7 +74272,11 @@ func TreeRowReferenceDeleted(proxy gobject.IObject, path TreePath) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_proxy := gi.NewPointerArgument(proxy.P_Object())
+	var tmp unsafe.Pointer
+	if proxy != nil {
+		tmp = proxy.P_Object()
+	}
+	arg_proxy := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewPointerArgument(path.P)
 	args := []gi.Argument{arg_proxy, arg_path}
 	iv.Call(args, nil, nil)
@@ -71386,7 +74290,11 @@ func TreeRowReferenceInserted(proxy gobject.IObject, path TreePath) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_proxy := gi.NewPointerArgument(proxy.P_Object())
+	var tmp unsafe.Pointer
+	if proxy != nil {
+		tmp = proxy.P_Object()
+	}
+	arg_proxy := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewPointerArgument(path.P)
 	args := []gi.Argument{arg_proxy, arg_path}
 	iv.Call(args, nil, nil)
