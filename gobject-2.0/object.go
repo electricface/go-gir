@@ -12,7 +12,7 @@ package gobject
 // C callback, or an interface type which the value may be packed in.
 // If the type is not suitable, a runtime panic will occur when the
 // signal is emitted.
-func (v *Object) Connect(detailedSignal string, f interface{}) SignalHandle {
+func (v Object) Connect(detailedSignal string, f interface{}) SignalHandle {
 	return v.connectClosure(false, detailedSignal, f)
 }
 
@@ -29,7 +29,7 @@ func (v *Object) Connect(detailedSignal string, f interface{}) SignalHandle {
 //
 // The difference between Connect and ConnectAfter is that the latter
 // will be invoked after the default handler, not before.
-func (v *Object) ConnectAfter(detailedSignal string, f interface{}) SignalHandle {
+func (v Object) ConnectAfter(detailedSignal string, f interface{}) SignalHandle {
 	return v.connectClosure(true, detailedSignal, f)
 }
 

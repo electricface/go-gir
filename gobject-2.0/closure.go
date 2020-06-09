@@ -1,7 +1,7 @@
 package gobject
 
 /*
-#cgo pkg-config: glib-2.0
+#cgo pkg-config: glib-2.0 gobject-2.0
 #include <glib.h>
 #include <glib-object.h>
 #include <stdlib.h>
@@ -30,11 +30,12 @@ import (
 	"fmt"
 	"os"
 	"reflect"
+	"runtime/debug"
 	"sync"
 	"unsafe"
 
 	"github.com/electricface/go-gir/glib-2.0"
-	"github.com/linuxdeepin/go-gir/util"
+	"github.com/electricface/go-gir/util"
 )
 
 type closureContext struct {
@@ -66,12 +67,6 @@ func removeClosure(_ C.gpointer, closure *C.GClosure) {
 	closures.Unlock()
 }
 
-// goMarshal is called by the GLib runtime when a closure needs to be invoked.
-// The closure will be invoked with as many arguments as it can take, from 0 to
-// the full amount provided by the call. If the closure asks for more parameters
-// than there are to give, a warning is printed to stderr and the closure is
-// not run.
-//
 //export goMarshal
 func goMarshal(closure *C.GClosure, retValue *C.GValue,
 	nParams C.guint, params *C.GValue,
@@ -82,58 +77,53 @@ func goMarshal(closure *C.GClosure, retValue *C.GValue,
 	cc := closures.m[closure]
 	closures.RUnlock()
 
-	// Get number of parameters passed in.  If user data was saved with the
-	// closure context, increment the total number of parameters.
+	var args []interface{}
 	nGLibParams := int(nParams)
-	nTotalParams := nGLibParams
-	//println("nGLibParams: ", nGLibParams)
-	//println("nTotalParams: ", nTotalParams)
-
-	// Get number of parameters from the callback closure.  If this exceeds
-	// the total number of marshaled parameters, a warning will be printed
-	// to stderr, and the callback will not be run.
-	nCbParams := cc.rf.Type().NumIn()
-	//println("nCbParams:", nCbParams)
-	if nCbParams > nTotalParams {
-		fmt.Fprintf(os.Stderr,
-			"too many closure args: have %d, max allowed %d\n",
-			nCbParams, nTotalParams)
-		return
-	}
-
-	// Create a slice of reflect.Values as arguments to call the function.
-	gValues := gValueSlice(params, nCbParams)
-	args := make([]reflect.Value, 0, nCbParams)
-
-	// Fill beginning of args, up to the minimum of the total number of callback
-	// parameters and parameters from the glib runtime.
-	for i := 0; i < nCbParams && i < nGLibParams; i++ {
-		v := Value{unsafe.Pointer(&gValues[i])}
-		argReflectType := cc.rf.Type().In(i)
-		// v.GetWithType( argReflectType )
-		//val, err := v.Get()
-		val, err := v.GetWithType(argReflectType)
-
-		if err != nil {
-			fmt.Fprintf(os.Stderr,
-				"no suitable Go value for arg %d: %v\n", i, err)
-			return
+	if nGLibParams > 0 {
+		args = make([]interface{}, nGLibParams)
+		gValues := gValueSlice(params, nGLibParams)
+		for i := 0; i < nGLibParams; i++ {
+			v := Value{unsafe.Pointer(&gValues[i])}
+			val, _ := v.Get()
+			args[i] = val
 		}
-		//fmt.Printf("i: %d, val: %#v\n", i, val)
-		rv := reflect.ValueOf(val)
-		args = append(args, rv.Convert(cc.rf.Type().In(i)))
 	}
 
-	// Call closure with args. If the callback returns one or more
-	// values, save the GValue equivalent of the first.
-	rv := cc.rf.Call(args)
-	if retValue != nil && len(rv) > 0 {
-		// set gRetValue to the return value of go function
+	defer func() {
+		err := recover()
+		if err != nil {
+			_, _ = fmt.Fprintln(os.Stderr, "func panic with error:", err)
+			debug.PrintStack()
+		}
+	}()
+
+	switch fn := cc.rf.Interface().(type) {
+	case func():
+		// 无参数，无返回值
+		fn()
+	case func() interface{}:
+		// 无参数，有返回值
+		ret := fn()
 		gRetValue := Value{unsafe.Pointer(retValue)}
-		err := gRetValue.Set(rv[0].Interface())
+		err := gRetValue.Set(ret)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "cannot save callback return value: %v", err)
+			_, _ = fmt.Fprintf(os.Stderr, "cannot save callback return value: %v", err)
 		}
+
+	case func(args []interface{}):
+		// 有参数，无返回值
+		fn(args)
+
+	case func(args []interface{}) interface{}:
+		// 有参数，有返回值
+		ret := fn(args)
+		gRetValue := Value{unsafe.Pointer(retValue)}
+		err := gRetValue.Set(ret)
+		if err != nil {
+			_, _ = fmt.Fprintf(os.Stderr, "cannot save callback return value: %v", err)
+		}
+	default:
+		_, _ = fmt.Fprintf(os.Stderr, "invalid func type")
 	}
 }
 
