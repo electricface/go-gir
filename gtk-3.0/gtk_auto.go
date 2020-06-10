@@ -30111,14 +30111,14 @@ func (v ListStore) P_ListStore() unsafe.Pointer { return v.P }
 // container is not nil, container is ListStore
 // is constructor
 // arg 1 types lenArgIdx 0
-func NewListStore(n_columns int32, types int /*TODO_TYPE array type c, elemTypeTag: GType*/) (result ListStore) {
+func NewListStore(n_columns int32, types gi.GTypeArray) (result ListStore) {
 	iv, err := _I.Get(1522, "ListStore", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_n_columns := gi.NewInt32Argument(n_columns)
-	arg_types := gi.NewIntArgument(types) /*TODO*/
+	arg_types := gi.NewPointerArgument(types.P)
 	args := []gi.Argument{arg_n_columns, arg_types}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -30344,7 +30344,7 @@ func (v ListStore) Reorder(new_order gi.Int32Array) {
 // container is not nil, container is ListStore
 // is method
 // arg 1 types lenArgIdx 0
-func (v ListStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE array type c, elemTypeTag: GType*/) {
+func (v ListStore) SetColumnTypes(n_columns int32, types gi.GTypeArray) {
 	iv, err := _I.Get(1535, "ListStore", "set_column_types")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30352,7 +30352,7 @@ func (v ListStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE array t
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_n_columns := gi.NewInt32Argument(n_columns)
-	arg_types := gi.NewIntArgument(types) /*TODO*/
+	arg_types := gi.NewPointerArgument(types.P)
 	args := []gi.Argument{arg_v, arg_n_columns, arg_types}
 	iv.Call(args, nil, nil)
 }
@@ -58216,7 +58216,7 @@ func (v TreeModelFilter) Refilter() {
 // container is not nil, container is TreeModelFilter
 // is method
 // arg 1 types lenArgIdx 0
-func (v TreeModelFilter) SetModifyFunc(n_columns int32, types int /*TODO_TYPE array type c, elemTypeTag: GType*/, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v TreeModelFilter) SetModifyFunc(n_columns int32, types gi.GTypeArray, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) {
 	iv, err := _I.Get(2947, "TreeModelFilter", "set_modify_func")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -58224,7 +58224,7 @@ func (v TreeModelFilter) SetModifyFunc(n_columns int32, types int /*TODO_TYPE ar
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_n_columns := gi.NewInt32Argument(n_columns)
-	arg_types := gi.NewIntArgument(types) /*TODO*/
+	arg_types := gi.NewPointerArgument(types.P)
 	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
 	arg_data := gi.NewPointerArgument(data)
 	arg_destroy := gi.NewIntArgument(destroy) /*TODO*/
@@ -59359,14 +59359,14 @@ func (v TreeStore) P_TreeStore() unsafe.Pointer { return v.P }
 // container is not nil, container is TreeStore
 // is constructor
 // arg 1 types lenArgIdx 0
-func NewTreeStore(n_columns int32, types int /*TODO_TYPE array type c, elemTypeTag: GType*/) (result TreeStore) {
+func NewTreeStore(n_columns int32, types gi.GTypeArray) (result TreeStore) {
 	iv, err := _I.Get(3009, "TreeStore", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_n_columns := gi.NewInt32Argument(n_columns)
-	arg_types := gi.NewIntArgument(types) /*TODO*/
+	arg_types := gi.NewPointerArgument(types.P)
 	args := []gi.Argument{arg_n_columns, arg_types}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -59620,7 +59620,7 @@ func (v TreeStore) Remove(iter TreeIter) (result bool) {
 // container is not nil, container is TreeStore
 // is method
 // arg 1 types lenArgIdx 0
-func (v TreeStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE array type c, elemTypeTag: GType*/) {
+func (v TreeStore) SetColumnTypes(n_columns int32, types gi.GTypeArray) {
 	iv, err := _I.Get(3023, "TreeStore", "set_column_types")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -59628,7 +59628,7 @@ func (v TreeStore) SetColumnTypes(n_columns int32, types int /*TODO_TYPE array t
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_n_columns := gi.NewInt32Argument(n_columns)
-	arg_types := gi.NewIntArgument(types) /*TODO*/
+	arg_types := gi.NewPointerArgument(types.P)
 	args := []gi.Argument{arg_v, arg_n_columns, arg_types}
 	iv.Call(args, nil, nil)
 }
@@ -74053,7 +74053,7 @@ func TestFindWidget(widget IWidget, label_pattern string, widget_type gi.GType) 
 // gtk_test_list_all_types
 // container is nil
 // ret lenArgIdx 0
-func TestListAllTypes() (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
+func TestListAllTypes() (result gi.GTypeArray) {
 	iv, err := _I.Get(3810, "test_list_all_types", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -74067,7 +74067,7 @@ func TestListAllTypes() (result int /*TODO_TYPE array type c, elemTypeTag: GType
 	var n_types uint32
 	_ = n_types
 	n_types = outArgs[0].Uint32()
-	result = ret.Int() /*TODO*/
+	result = gi.GTypeArray{P: ret.Pointer(), Len: int(n_types)}
 	return
 }
 

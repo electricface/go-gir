@@ -2185,7 +2185,7 @@ func TypeInterfacePeek1(instance_class TypeClass, iface_type gi.GType) (result T
 // is method
 // arg0Type tag: GType, isPtr: false
 // ret lenArgIdx 1
-func TypeInterfacePrerequisites1(interface_type gi.GType) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
+func TypeInterfacePrerequisites1(interface_type gi.GType) (result gi.GTypeArray) {
 	iv, err := _I.Get(91, "TypeInterface", "prerequisites")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2200,7 +2200,7 @@ func TypeInterfacePrerequisites1(interface_type gi.GType) (result int /*TODO_TYP
 	var n_prerequisites uint32
 	_ = n_prerequisites
 	n_prerequisites = outArgs[0].Uint32()
-	result = ret.Int() /*TODO*/
+	result = gi.GTypeArray{P: ret.Pointer(), Len: int(n_prerequisites)}
 	return
 }
 
@@ -5822,7 +5822,7 @@ func TypeCheckValueHolds(value Value, type1 gi.GType) (result bool) {
 // g_type_children
 // container is nil
 // ret lenArgIdx 1
-func TypeChildren(type1 gi.GType) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
+func TypeChildren(type1 gi.GType) (result gi.GTypeArray) {
 	iv, err := _I.Get(284, "type_children", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5837,7 +5837,7 @@ func TypeChildren(type1 gi.GType) (result int /*TODO_TYPE array type c, elemType
 	var n_children uint32
 	_ = n_children
 	n_children = outArgs[0].Uint32()
-	result = ret.Int() /*TODO*/
+	result = gi.GTypeArray{P: ret.Pointer(), Len: int(n_children)}
 	return
 }
 
@@ -6176,7 +6176,7 @@ func TypeInterfacePeek(instance_class TypeClass, iface_type gi.GType) (result Ty
 // g_type_interface_prerequisites
 // container is nil
 // ret lenArgIdx 1
-func TypeInterfacePrerequisites(interface_type gi.GType) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
+func TypeInterfacePrerequisites(interface_type gi.GType) (result gi.GTypeArray) {
 	iv, err := _I.Get(307, "type_interface_prerequisites", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6191,14 +6191,14 @@ func TypeInterfacePrerequisites(interface_type gi.GType) (result int /*TODO_TYPE
 	var n_prerequisites uint32
 	_ = n_prerequisites
 	n_prerequisites = outArgs[0].Uint32()
-	result = ret.Int() /*TODO*/
+	result = gi.GTypeArray{P: ret.Pointer(), Len: int(n_prerequisites)}
 	return
 }
 
 // g_type_interfaces
 // container is nil
 // ret lenArgIdx 1
-func TypeInterfaces(type1 gi.GType) (result int /*TODO_TYPE array type c, elemTypeTag: GType, isPtr: false*/) {
+func TypeInterfaces(type1 gi.GType) (result gi.GTypeArray) {
 	iv, err := _I.Get(308, "type_interfaces", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6213,7 +6213,7 @@ func TypeInterfaces(type1 gi.GType) (result int /*TODO_TYPE array type c, elemTy
 	var n_interfaces uint32
 	_ = n_interfaces
 	n_interfaces = outArgs[0].Uint32()
-	result = ret.Int() /*TODO*/
+	result = gi.GTypeArray{P: ret.Pointer(), Len: int(n_interfaces)}
 	return
 }
 
