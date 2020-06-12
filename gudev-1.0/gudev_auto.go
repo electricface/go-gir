@@ -28,6 +28,10 @@ func WrapClient(p unsafe.Pointer) (r Client) { r.P = p; return }
 type IClient interface{ P_Client() unsafe.Pointer }
 
 func (v Client) P_Client() unsafe.Pointer { return v.P }
+func ClientGetType() gi.GType {
+	ret := _I.GetGType(0, "Client")
+	return ret
+}
 
 // g_udev_client_new
 // container is not nil, container is Client
@@ -154,6 +158,11 @@ type ClientPrivate struct {
 	P unsafe.Pointer
 }
 
+func ClientPrivateGetType() gi.GType {
+	ret := _I.GetGType(1, "ClientPrivate")
+	return ret
+}
+
 // Object Device
 type Device struct {
 	gobject.Object
@@ -164,6 +173,10 @@ func WrapDevice(p unsafe.Pointer) (r Device) { r.P = p; return }
 type IDevice interface{ P_Device() unsafe.Pointer }
 
 func (v Device) P_Device() unsafe.Pointer { return v.P }
+func DeviceGetType() gi.GType {
+	ret := _I.GetGType(2, "Device")
+	return ret
+}
 
 // g_udev_device_get_action
 // container is not nil, container is Device
@@ -786,6 +799,11 @@ type DevicePrivate struct {
 	P unsafe.Pointer
 }
 
+func DevicePrivateGetType() gi.GType {
+	ret := _I.GetGType(3, "DevicePrivate")
+	return ret
+}
+
 // Enum DeviceType
 type DeviceTypeEnum int
 
@@ -794,6 +812,11 @@ const (
 	DeviceTypeBlock DeviceTypeEnum = 98
 	DeviceTypeChar  DeviceTypeEnum = 99
 )
+
+func DeviceTypeGetType() gi.GType {
+	ret := _I.GetGType(4, "DeviceType")
+	return ret
+}
 
 // Object Enumerator
 type Enumerator struct {
@@ -805,6 +828,10 @@ func WrapEnumerator(p unsafe.Pointer) (r Enumerator) { r.P = p; return }
 type IEnumerator interface{ P_Enumerator() unsafe.Pointer }
 
 func (v Enumerator) P_Enumerator() unsafe.Pointer { return v.P }
+func EnumeratorGetType() gi.GType {
+	ret := _I.GetGType(5, "Enumerator")
+	return ret
+}
 
 // g_udev_enumerator_new
 // container is not nil, container is Enumerator
@@ -1034,6 +1061,11 @@ func (v Enumerator) Execute() (result glib.List) {
 // Struct EnumeratorPrivate
 type EnumeratorPrivate struct {
 	P unsafe.Pointer
+}
+
+func EnumeratorPrivateGetType() gi.GType {
+	ret := _I.GetGType(6, "EnumeratorPrivate")
+	return ret
 }
 
 // constants

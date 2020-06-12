@@ -25,6 +25,11 @@ type Action struct {
 }
 type ActionIfc struct{}
 
+func ActionGetType() gi.GType {
+	ret := _I.GetGType(0, "Action")
+	return ret
+}
+
 // atk_action_do_action
 // container is not nil, container is Action
 // is method
@@ -159,6 +164,13 @@ type Attribute struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructAttribute = 16
+
+func AttributeGetType() gi.GType {
+	ret := _I.GetGType(1, "Attribute")
+	return ret
+}
+
 // atk_attribute_set_free
 // container is not nil, container is Attribute
 // is method
@@ -180,6 +192,11 @@ type Component struct {
 	P unsafe.Pointer
 }
 type ComponentIfc struct{}
+
+func ComponentGetType() gi.GType {
+	ret := _I.GetGType(2, "Component")
+	return ret
+}
 
 // atk_component_contains
 // container is not nil, container is Component
@@ -479,12 +496,22 @@ const (
 	CoordTypeParent CoordTypeEnum = 2
 )
 
+func CoordTypeGetType() gi.GType {
+	ret := _I.GetGType(3, "CoordType")
+	return ret
+}
+
 // Interface Document
 type Document struct {
 	DocumentIfc
 	P unsafe.Pointer
 }
 type DocumentIfc struct{}
+
+func DocumentGetType() gi.GType {
+	ret := _I.GetGType(4, "Document")
+	return ret
+}
 
 // atk_document_get_attribute_value
 // container is not nil, container is Document
@@ -639,6 +666,11 @@ type EditableText struct {
 }
 type EditableTextIfc struct{}
 
+func EditableTextGetType() gi.GType {
+	ret := _I.GetGType(5, "EditableText")
+	return ret
+}
+
 // atk_editable_text_copy_text
 // container is not nil, container is EditableText
 // is method
@@ -769,6 +801,10 @@ func WrapGObjectAccessible(p unsafe.Pointer) (r GObjectAccessible) { r.P = p; re
 type IGObjectAccessible interface{ P_GObjectAccessible() unsafe.Pointer }
 
 func (v GObjectAccessible) P_GObjectAccessible() unsafe.Pointer { return v.P }
+func GObjectAccessibleGetType() gi.GType {
+	ret := _I.GetGType(6, "GObjectAccessible")
+	return ret
+}
 
 // atk_gobject_accessible_for_object
 // container is not nil, container is GObjectAccessible
@@ -821,6 +857,10 @@ func WrapHyperlink(p unsafe.Pointer) (r Hyperlink) { r.P = p; return }
 type IHyperlink interface{ P_Hyperlink() unsafe.Pointer }
 
 func (v Hyperlink) P_Hyperlink() unsafe.Pointer { return v.P }
+func HyperlinkGetType() gi.GType {
+	ret := _I.GetGType(7, "Hyperlink")
+	return ret
+}
 
 // atk_hyperlink_get_end_index
 // container is not nil, container is Hyperlink
@@ -968,6 +1008,11 @@ type HyperlinkImpl struct {
 }
 type HyperlinkImplIfc struct{}
 
+func HyperlinkImplGetType() gi.GType {
+	ret := _I.GetGType(8, "HyperlinkImpl")
+	return ret
+}
+
 // atk_hyperlink_impl_get_hyperlink
 // container is not nil, container is HyperlinkImpl
 // is method
@@ -993,12 +1038,22 @@ const (
 	HyperlinkStateFlagsInline HyperlinkStateFlags = 1
 )
 
+func HyperlinkStateFlagsGetType() gi.GType {
+	ret := _I.GetGType(9, "HyperlinkStateFlags")
+	return ret
+}
+
 // Interface Hypertext
 type Hypertext struct {
 	HypertextIfc
 	P unsafe.Pointer
 }
 type HypertextIfc struct{}
+
+func HypertextGetType() gi.GType {
+	ret := _I.GetGType(10, "Hypertext")
+	return ret
+}
 
 // atk_hypertext_get_link
 // container is not nil, container is Hypertext
@@ -1060,6 +1115,11 @@ type Image struct {
 	P unsafe.Pointer
 }
 type ImageIfc struct{}
+
+func ImageGetType() gi.GType {
+	ret := _I.GetGType(11, "Image")
+	return ret
+}
 
 // atk_image_get_image_description
 // container is not nil, container is Image
@@ -1162,6 +1222,11 @@ type Implementor struct {
 	P unsafe.Pointer
 }
 
+func ImplementorGetType() gi.GType {
+	ret := _I.GetGType(12, "Implementor")
+	return ret
+}
+
 // atk_implementor_ref_accessible
 // container is not nil, container is Implementor
 // is method
@@ -1186,9 +1251,21 @@ type ImplementorIface struct {
 }
 type ImplementorIfaceIfc struct{}
 
+func ImplementorIfaceGetType() gi.GType {
+	ret := _I.GetGType(13, "ImplementorIface")
+	return ret
+}
+
 // Struct KeyEventStruct
 type KeyEventStruct struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructKeyEventStruct = 32
+
+func KeyEventStructGetType() gi.GType {
+	ret := _I.GetGType(14, "KeyEventStruct")
+	return ret
 }
 
 // Enum KeyEventType
@@ -1199,6 +1276,11 @@ const (
 	KeyEventTypeRelease     KeyEventTypeEnum = 1
 	KeyEventTypeLastDefined KeyEventTypeEnum = 2
 )
+
+func KeyEventTypeGetType() gi.GType {
+	ret := _I.GetGType(15, "KeyEventType")
+	return ret
+}
 
 // Enum Layer
 type LayerEnum int
@@ -1214,6 +1296,11 @@ const (
 	LayerWindow     LayerEnum = 7
 )
 
+func LayerGetType() gi.GType {
+	ret := _I.GetGType(16, "Layer")
+	return ret
+}
+
 // Object Misc
 type Misc struct {
 	gobject.Object
@@ -1224,6 +1311,10 @@ func WrapMisc(p unsafe.Pointer) (r Misc) { r.P = p; return }
 type IMisc interface{ P_Misc() unsafe.Pointer }
 
 func (v Misc) P_Misc() unsafe.Pointer { return v.P }
+func MiscGetType() gi.GType {
+	ret := _I.GetGType(17, "Misc")
+	return ret
+}
 
 // atk_misc_threads_enter
 // container is not nil, container is Misc
@@ -1276,6 +1367,10 @@ func WrapNoOpObject(p unsafe.Pointer) (r NoOpObject) { r.P = p; return }
 type INoOpObject interface{ P_NoOpObject() unsafe.Pointer }
 
 func (v NoOpObject) P_NoOpObject() unsafe.Pointer { return v.P }
+func NoOpObjectGetType() gi.GType {
+	ret := _I.GetGType(18, "NoOpObject")
+	return ret
+}
 
 // atk_no_op_object_new
 // container is not nil, container is NoOpObject
@@ -1309,6 +1404,10 @@ func WrapNoOpObjectFactory(p unsafe.Pointer) (r NoOpObjectFactory) { r.P = p; re
 type INoOpObjectFactory interface{ P_NoOpObjectFactory() unsafe.Pointer }
 
 func (v NoOpObjectFactory) P_NoOpObjectFactory() unsafe.Pointer { return v.P }
+func NoOpObjectFactoryGetType() gi.GType {
+	ret := _I.GetGType(19, "NoOpObjectFactory")
+	return ret
+}
 
 // atk_no_op_object_factory_new
 // container is not nil, container is NoOpObjectFactory
@@ -1336,6 +1435,10 @@ func WrapObject(p unsafe.Pointer) (r Object) { r.P = p; return }
 type IObject interface{ P_Object() unsafe.Pointer }
 
 func (v Object) P_Object() unsafe.Pointer { return v.P }
+func ObjectGetType() gi.GType {
+	ret := _I.GetGType(20, "Object")
+	return ret
+}
 
 // atk_object_add_relationship
 // container is not nil, container is Object
@@ -1747,6 +1850,10 @@ func WrapObjectFactory(p unsafe.Pointer) (r ObjectFactory) { r.P = p; return }
 type IObjectFactory interface{ P_ObjectFactory() unsafe.Pointer }
 
 func (v ObjectFactory) P_ObjectFactory() unsafe.Pointer { return v.P }
+func ObjectFactoryGetType() gi.GType {
+	ret := _I.GetGType(21, "ObjectFactory")
+	return ret
+}
 
 // atk_object_factory_create_accessible
 // container is not nil, container is ObjectFactory
@@ -1813,6 +1920,10 @@ func WrapPlug(p unsafe.Pointer) (r Plug) { r.P = p; return }
 type IPlug interface{ P_Plug() unsafe.Pointer }
 
 func (v Plug) P_Plug() unsafe.Pointer { return v.P }
+func PlugGetType() gi.GType {
+	ret := _I.GetGType(22, "Plug")
+	return ret
+}
 
 // atk_plug_new
 // container is not nil, container is Plug
@@ -1852,9 +1963,21 @@ type PropertyValues struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructPropertyValues = 56
+
+func PropertyValuesGetType() gi.GType {
+	ret := _I.GetGType(23, "PropertyValues")
+	return ret
+}
+
 // Struct Range
 type Range struct {
 	P unsafe.Pointer
+}
+
+func RangeGetType() gi.GType {
+	ret := _I.GetGType(24, "Range")
+	return ret
 }
 
 // atk_range_new
@@ -1965,6 +2088,13 @@ type Rectangle struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructRectangle = 16
+
+func RectangleGetType() gi.GType {
+	ret := _I.GetGType(25, "Rectangle")
+	return ret
+}
+
 // Object Registry
 type Registry struct {
 	gobject.Object
@@ -1975,6 +2105,10 @@ func WrapRegistry(p unsafe.Pointer) (r Registry) { r.P = p; return }
 type IRegistry interface{ P_Registry() unsafe.Pointer }
 
 func (v Registry) P_Registry() unsafe.Pointer { return v.P }
+func RegistryGetType() gi.GType {
+	ret := _I.GetGType(26, "Registry")
+	return ret
+}
 
 // atk_registry_get_factory
 // container is not nil, container is Registry
@@ -2039,6 +2173,10 @@ func WrapRelation(p unsafe.Pointer) (r Relation) { r.P = p; return }
 type IRelation interface{ P_Relation() unsafe.Pointer }
 
 func (v Relation) P_Relation() unsafe.Pointer { return v.P }
+func RelationGetType() gi.GType {
+	ret := _I.GetGType(27, "Relation")
+	return ret
+}
 
 // atk_relation_new
 // container is not nil, container is Relation
@@ -2146,6 +2284,10 @@ func WrapRelationSet(p unsafe.Pointer) (r RelationSet) { r.P = p; return }
 type IRelationSet interface{ P_RelationSet() unsafe.Pointer }
 
 func (v RelationSet) P_RelationSet() unsafe.Pointer { return v.P }
+func RelationSetGetType() gi.GType {
+	ret := _I.GetGType(28, "RelationSet")
+	return ret
+}
 
 // atk_relation_set_new
 // container is not nil, container is RelationSet
@@ -2343,6 +2485,11 @@ const (
 	RelationTypeLastDefined    RelationTypeEnum = 21
 )
 
+func RelationTypeGetType() gi.GType {
+	ret := _I.GetGType(29, "RelationType")
+	return ret
+}
+
 // Enum Role
 type RoleEnum int
 
@@ -2473,6 +2620,11 @@ const (
 	RoleLastDefined          RoleEnum = 123
 )
 
+func RoleGetType() gi.GType {
+	ret := _I.GetGType(30, "Role")
+	return ret
+}
+
 // Enum ScrollType
 type ScrollTypeEnum int
 
@@ -2486,12 +2638,22 @@ const (
 	ScrollTypeAnywhere    ScrollTypeEnum = 6
 )
 
+func ScrollTypeGetType() gi.GType {
+	ret := _I.GetGType(31, "ScrollType")
+	return ret
+}
+
 // Interface Selection
 type Selection struct {
 	SelectionIfc
 	P unsafe.Pointer
 }
 type SelectionIfc struct{}
+
+func SelectionGetType() gi.GType {
+	ret := _I.GetGType(32, "Selection")
+	return ret
+}
 
 // atk_selection_add_selection
 // container is not nil, container is Selection
@@ -2628,6 +2790,10 @@ func WrapSocket(p unsafe.Pointer) (r Socket) { r.P = p; return }
 type ISocket interface{ P_Socket() unsafe.Pointer }
 
 func (v Socket) P_Socket() unsafe.Pointer { return v.P }
+func SocketGetType() gi.GType {
+	ret := _I.GetGType(33, "Socket")
+	return ret
+}
 
 // atk_socket_new
 // container is not nil, container is Socket
@@ -2689,6 +2855,10 @@ func WrapStateSet(p unsafe.Pointer) (r StateSet) { r.P = p; return }
 type IStateSet interface{ P_StateSet() unsafe.Pointer }
 
 func (v StateSet) P_StateSet() unsafe.Pointer { return v.P }
+func StateSetGetType() gi.GType {
+	ret := _I.GetGType(34, "StateSet")
+	return ret
+}
 
 // atk_state_set_new
 // container is not nil, container is StateSet
@@ -2944,12 +3114,22 @@ const (
 	StateTypeLastDefined            StateTypeEnum = 43
 )
 
+func StateTypeGetType() gi.GType {
+	ret := _I.GetGType(35, "StateType")
+	return ret
+}
+
 // Interface StreamableContent
 type StreamableContent struct {
 	StreamableContentIfc
 	P unsafe.Pointer
 }
 type StreamableContentIfc struct{}
+
+func StreamableContentGetType() gi.GType {
+	ret := _I.GetGType(36, "StreamableContent")
+	return ret
+}
 
 // atk_streamable_content_get_mime_type
 // container is not nil, container is StreamableContent
@@ -3033,6 +3213,11 @@ type Table struct {
 	P unsafe.Pointer
 }
 type TableIfc struct{}
+
+func TableGetType() gi.GType {
+	ret := _I.GetGType(37, "Table")
+	return ret
+}
 
 // atk_table_add_column_selection
 // container is not nil, container is Table
@@ -3570,6 +3755,11 @@ type TableCell struct {
 }
 type TableCellIfc struct{}
 
+func TableCellGetType() gi.GType {
+	ret := _I.GetGType(38, "TableCell")
+	return ret
+}
+
 // atk_table_cell_get_column_header_cells
 // container is not nil, container is TableCell
 // is method
@@ -3711,6 +3901,11 @@ type Text struct {
 	P unsafe.Pointer
 }
 type TextIfc struct{}
+
+func TextGetType() gi.GType {
+	ret := _I.GetGType(39, "Text")
+	return ret
+}
 
 // atk_text_free_ranges
 // container is not nil, container is Text
@@ -3903,22 +4098,19 @@ func (v *TextIfc) GetOffsetAtPoint(x int32, y int32, coords CoordTypeEnum) (resu
 // atk_text_get_range_extents
 // container is not nil, container is Text
 // is method
-func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, coord_type CoordTypeEnum) (rect int /*TODO_TYPE*/) {
+func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, coord_type CoordTypeEnum, rect TextRectangle) {
 	iv, err := _I.Get(185, "Text", "get_range_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_start_offset := gi.NewInt32Argument(start_offset)
 	arg_end_offset := gi.NewInt32Argument(end_offset)
 	arg_coord_type := gi.NewIntArgument(int(coord_type))
-	arg_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_rect := gi.NewPointerArgument(rect.P)
 	args := []gi.Argument{arg_v, arg_start_offset, arg_end_offset, arg_coord_type, arg_rect}
-	iv.Call(args, nil, &outArgs[0])
-	rect = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // atk_text_get_run_attributes
@@ -4173,6 +4365,11 @@ const (
 	TextAttributeLastDefined      TextAttributeEnum = 28
 )
 
+func TextAttributeGetType() gi.GType {
+	ret := _I.GetGType(40, "TextAttribute")
+	return ret
+}
+
 // Enum TextBoundary
 type TextBoundaryEnum int
 
@@ -4186,6 +4383,11 @@ const (
 	TextBoundaryLineEnd       TextBoundaryEnum = 6
 )
 
+func TextBoundaryGetType() gi.GType {
+	ret := _I.GetGType(41, "TextBoundary")
+	return ret
+}
+
 // Enum TextClipType
 type TextClipTypeEnum int
 
@@ -4195,6 +4397,11 @@ const (
 	TextClipTypeMax  TextClipTypeEnum = 2
 	TextClipTypeBoth TextClipTypeEnum = 3
 )
+
+func TextClipTypeGetType() gi.GType {
+	ret := _I.GetGType(42, "TextClipType")
+	return ret
+}
 
 // Enum TextGranularity
 type TextGranularityEnum int
@@ -4207,15 +4414,34 @@ const (
 	TextGranularityParagraph TextGranularityEnum = 4
 )
 
+func TextGranularityGetType() gi.GType {
+	ret := _I.GetGType(43, "TextGranularity")
+	return ret
+}
+
 // ignore GType struct TextIface
 // Struct TextRange
 type TextRange struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructTextRange = 32
+
+func TextRangeGetType() gi.GType {
+	ret := _I.GetGType(44, "TextRange")
+	return ret
+}
+
 // Struct TextRectangle
 type TextRectangle struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructTextRectangle = 16
+
+func TextRectangleGetType() gi.GType {
+	ret := _I.GetGType(45, "TextRectangle")
+	return ret
 }
 
 // Object Util
@@ -4228,6 +4454,10 @@ func WrapUtil(p unsafe.Pointer) (r Util) { r.P = p; return }
 type IUtil interface{ P_Util() unsafe.Pointer }
 
 func (v Util) P_Util() unsafe.Pointer { return v.P }
+func UtilGetType() gi.GType {
+	ret := _I.GetGType(46, "Util")
+	return ret
+}
 
 // ignore GType struct UtilClass
 // Interface Value
@@ -4237,22 +4467,24 @@ type Value struct {
 }
 type ValueIfc struct{}
 
+func ValueGetType() gi.GType {
+	ret := _I.GetGType(47, "Value")
+	return ret
+}
+
 // atk_value_get_current_value
 // container is not nil, container is Value
 // is method
-func (v *ValueIfc) GetCurrentValue() (value int /*TODO_TYPE*/) {
+func (v *ValueIfc) GetCurrentValue(value gobject.Value) {
 	iv, err := _I.Get(196, "Value", "get_current_value")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_v, arg_value}
-	iv.Call(args, nil, &outArgs[0])
-	value = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // atk_value_get_increment
@@ -4275,55 +4507,46 @@ func (v *ValueIfc) GetIncrement() (result float64) {
 // atk_value_get_maximum_value
 // container is not nil, container is Value
 // is method
-func (v *ValueIfc) GetMaximumValue() (value int /*TODO_TYPE*/) {
+func (v *ValueIfc) GetMaximumValue(value gobject.Value) {
 	iv, err := _I.Get(198, "Value", "get_maximum_value")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_v, arg_value}
-	iv.Call(args, nil, &outArgs[0])
-	value = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // atk_value_get_minimum_increment
 // container is not nil, container is Value
 // is method
-func (v *ValueIfc) GetMinimumIncrement() (value int /*TODO_TYPE*/) {
+func (v *ValueIfc) GetMinimumIncrement(value gobject.Value) {
 	iv, err := _I.Get(199, "Value", "get_minimum_increment")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_v, arg_value}
-	iv.Call(args, nil, &outArgs[0])
-	value = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // atk_value_get_minimum_value
 // container is not nil, container is Value
 // is method
-func (v *ValueIfc) GetMinimumValue() (value int /*TODO_TYPE*/) {
+func (v *ValueIfc) GetMinimumValue(value gobject.Value) {
 	iv, err := _I.Get(200, "Value", "get_minimum_value")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_value := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_value := gi.NewPointerArgument(value.P)
 	args := []gi.Argument{arg_v, arg_value}
-	iv.Call(args, nil, &outArgs[0])
-	value = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // atk_value_get_range
@@ -4436,12 +4659,22 @@ const (
 	ValueTypeLastDefined ValueTypeEnum = 15
 )
 
+func ValueTypeGetType() gi.GType {
+	ret := _I.GetGType(48, "ValueType")
+	return ret
+}
+
 // Interface Window
 type Window struct {
 	WindowIfc
 	P unsafe.Pointer
 }
 type WindowIfc struct{}
+
+func WindowGetType() gi.GType {
+	ret := _I.GetGType(49, "Window")
+	return ret
+}
 
 // ignore GType struct WindowIface
 // atk_attribute_set_free

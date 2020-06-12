@@ -25,6 +25,11 @@ type Action struct {
 }
 type ActionIfc struct{}
 
+func ActionGetType() gi.GType {
+	ret := _I.GetGType(0, "Action")
+	return ret
+}
+
 // g_action_name_is_valid
 // container is not nil, container is Action
 // is method
@@ -229,12 +234,24 @@ type ActionEntry struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructActionEntry = 64
+
+func ActionEntryGetType() gi.GType {
+	ret := _I.GetGType(1, "ActionEntry")
+	return ret
+}
+
 // Interface ActionGroup
 type ActionGroup struct {
 	ActionGroupIfc
 	P unsafe.Pointer
 }
 type ActionGroupIfc struct{}
+
+func ActionGroupGetType() gi.GType {
+	ret := _I.GetGType(2, "ActionGroup")
+	return ret
+}
 
 // g_action_group_action_added
 // container is not nil, container is ActionGroup
@@ -520,6 +537,11 @@ type ActionMap struct {
 }
 type ActionMapIfc struct{}
 
+func ActionMapGetType() gi.GType {
+	ret := _I.GetGType(3, "ActionMap")
+	return ret
+}
+
 // g_action_map_add_action
 // container is not nil, container is ActionMap
 // is method
@@ -597,6 +619,11 @@ type AppInfo struct {
 	P unsafe.Pointer
 }
 type AppInfoIfc struct{}
+
+func AppInfoGetType() gi.GType {
+	ret := _I.GetGType(4, "AppInfo")
+	return ret
+}
 
 // g_app_info_create_from_commandline
 // container is not nil, container is AppInfo
@@ -1262,6 +1289,11 @@ const (
 	AppInfoCreateFlagsSupportsStartupNotification AppInfoCreateFlags = 4
 )
 
+func AppInfoCreateFlagsGetType() gi.GType {
+	ret := _I.GetGType(5, "AppInfoCreateFlags")
+	return ret
+}
+
 // ignore GType struct AppInfoIface
 // Object AppInfoMonitor
 type AppInfoMonitor struct {
@@ -1273,6 +1305,10 @@ func WrapAppInfoMonitor(p unsafe.Pointer) (r AppInfoMonitor) { r.P = p; return }
 type IAppInfoMonitor interface{ P_AppInfoMonitor() unsafe.Pointer }
 
 func (v AppInfoMonitor) P_AppInfoMonitor() unsafe.Pointer { return v.P }
+func AppInfoMonitorGetType() gi.GType {
+	ret := _I.GetGType(6, "AppInfoMonitor")
+	return ret
+}
 
 // Object AppLaunchContext
 type AppLaunchContext struct {
@@ -1284,6 +1320,10 @@ func WrapAppLaunchContext(p unsafe.Pointer) (r AppLaunchContext) { r.P = p; retu
 type IAppLaunchContext interface{ P_AppLaunchContext() unsafe.Pointer }
 
 func (v AppLaunchContext) P_AppLaunchContext() unsafe.Pointer { return v.P }
+func AppLaunchContextGetType() gi.GType {
+	ret := _I.GetGType(7, "AppLaunchContext")
+	return ret
+}
 
 // g_app_launch_context_new
 // container is not nil, container is AppLaunchContext
@@ -1416,6 +1456,11 @@ type AppLaunchContextPrivate struct {
 	P unsafe.Pointer
 }
 
+func AppLaunchContextPrivateGetType() gi.GType {
+	ret := _I.GetGType(8, "AppLaunchContextPrivate")
+	return ret
+}
+
 // Object Application
 type Application struct {
 	ActionGroupIfc
@@ -1428,6 +1473,10 @@ func WrapApplication(p unsafe.Pointer) (r Application) { r.P = p; return }
 type IApplication interface{ P_Application() unsafe.Pointer }
 
 func (v Application) P_Application() unsafe.Pointer { return v.P }
+func ApplicationGetType() gi.GType {
+	ret := _I.GetGType(9, "Application")
+	return ret
+}
 
 // g_application_new
 // container is not nil, container is Application
@@ -2064,6 +2113,10 @@ func WrapApplicationCommandLine(p unsafe.Pointer) (r ApplicationCommandLine) { r
 type IApplicationCommandLine interface{ P_ApplicationCommandLine() unsafe.Pointer }
 
 func (v ApplicationCommandLine) P_ApplicationCommandLine() unsafe.Pointer { return v.P }
+func ApplicationCommandLineGetType() gi.GType {
+	ret := _I.GetGType(10, "ApplicationCommandLine")
+	return ret
+}
 
 // g_application_command_line_create_file_for_arg
 // container is not nil, container is ApplicationCommandLine
@@ -2269,6 +2322,11 @@ type ApplicationCommandLinePrivate struct {
 	P unsafe.Pointer
 }
 
+func ApplicationCommandLinePrivateGetType() gi.GType {
+	ret := _I.GetGType(11, "ApplicationCommandLinePrivate")
+	return ret
+}
+
 // Flags ApplicationFlags
 type ApplicationFlags int
 
@@ -2283,9 +2341,19 @@ const (
 	ApplicationFlagsCanOverrideAppId   ApplicationFlags = 64
 )
 
+func ApplicationFlagsGetType() gi.GType {
+	ret := _I.GetGType(12, "ApplicationFlags")
+	return ret
+}
+
 // Struct ApplicationPrivate
 type ApplicationPrivate struct {
 	P unsafe.Pointer
+}
+
+func ApplicationPrivateGetType() gi.GType {
+	ret := _I.GetGType(13, "ApplicationPrivate")
+	return ret
 }
 
 // Flags AskPasswordFlags
@@ -2300,12 +2368,22 @@ const (
 	AskPasswordFlagsTcrypt             AskPasswordFlags = 32
 )
 
+func AskPasswordFlagsGetType() gi.GType {
+	ret := _I.GetGType(14, "AskPasswordFlags")
+	return ret
+}
+
 // Interface AsyncInitable
 type AsyncInitable struct {
 	AsyncInitableIfc
 	P unsafe.Pointer
 }
 type AsyncInitableIfc struct{}
+
+func AsyncInitableGetType() gi.GType {
+	ret := _I.GetGType(15, "AsyncInitable")
+	return ret
+}
 
 // g_async_initable_newv_async
 // container is not nil, container is AsyncInitable
@@ -2402,6 +2480,11 @@ type AsyncResult struct {
 }
 type AsyncResultIfc struct{}
 
+func AsyncResultGetType() gi.GType {
+	ret := _I.GetGType(16, "AsyncResult")
+	return ret
+}
+
 // g_async_result_get_source_object
 // container is not nil, container is AsyncResult
 // is method
@@ -2485,6 +2568,10 @@ func WrapBufferedInputStream(p unsafe.Pointer) (r BufferedInputStream) { r.P = p
 type IBufferedInputStream interface{ P_BufferedInputStream() unsafe.Pointer }
 
 func (v BufferedInputStream) P_BufferedInputStream() unsafe.Pointer { return v.P }
+func BufferedInputStreamGetType() gi.GType {
+	ret := _I.GetGType(17, "BufferedInputStream")
+	return ret
+}
 
 // g_buffered_input_stream_new
 // container is not nil, container is BufferedInputStream
@@ -2720,6 +2807,11 @@ type BufferedInputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func BufferedInputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(18, "BufferedInputStreamPrivate")
+	return ret
+}
+
 // Object BufferedOutputStream
 type BufferedOutputStream struct {
 	SeekableIfc
@@ -2731,6 +2823,10 @@ func WrapBufferedOutputStream(p unsafe.Pointer) (r BufferedOutputStream) { r.P =
 type IBufferedOutputStream interface{ P_BufferedOutputStream() unsafe.Pointer }
 
 func (v BufferedOutputStream) P_BufferedOutputStream() unsafe.Pointer { return v.P }
+func BufferedOutputStreamGetType() gi.GType {
+	ret := _I.GetGType(19, "BufferedOutputStream")
+	return ret
+}
 
 // g_buffered_output_stream_new
 // container is not nil, container is BufferedOutputStream
@@ -2845,6 +2941,11 @@ type BufferedOutputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func BufferedOutputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(20, "BufferedOutputStreamPrivate")
+	return ret
+}
+
 // Flags BusNameOwnerFlags
 type BusNameOwnerFlags int
 
@@ -2855,6 +2956,11 @@ const (
 	BusNameOwnerFlagsDoNotQueue       BusNameOwnerFlags = 4
 )
 
+func BusNameOwnerFlagsGetType() gi.GType {
+	ret := _I.GetGType(21, "BusNameOwnerFlags")
+	return ret
+}
+
 // Flags BusNameWatcherFlags
 type BusNameWatcherFlags int
 
@@ -2862,6 +2968,11 @@ const (
 	BusNameWatcherFlagsNone      BusNameWatcherFlags = 0
 	BusNameWatcherFlagsAutoStart BusNameWatcherFlags = 1
 )
+
+func BusNameWatcherFlagsGetType() gi.GType {
+	ret := _I.GetGType(22, "BusNameWatcherFlags")
+	return ret
+}
 
 // Enum BusType
 type BusTypeEnum int
@@ -2872,6 +2983,11 @@ const (
 	BusTypeSystem  BusTypeEnum = 1
 	BusTypeSession BusTypeEnum = 2
 )
+
+func BusTypeGetType() gi.GType {
+	ret := _I.GetGType(23, "BusType")
+	return ret
+}
 
 // Object BytesIcon
 type BytesIcon struct {
@@ -2885,6 +3001,10 @@ func WrapBytesIcon(p unsafe.Pointer) (r BytesIcon) { r.P = p; return }
 type IBytesIcon interface{ P_BytesIcon() unsafe.Pointer }
 
 func (v BytesIcon) P_BytesIcon() unsafe.Pointer { return v.P }
+func BytesIconGetType() gi.GType {
+	ret := _I.GetGType(24, "BytesIcon")
+	return ret
+}
 
 // g_bytes_icon_new
 // container is not nil, container is BytesIcon
@@ -2930,6 +3050,10 @@ func WrapCancellable(p unsafe.Pointer) (r Cancellable) { r.P = p; return }
 type ICancellable interface{ P_Cancellable() unsafe.Pointer }
 
 func (v Cancellable) P_Cancellable() unsafe.Pointer { return v.P }
+func CancellableGetType() gi.GType {
+	ret := _I.GetGType(25, "Cancellable")
+	return ret
+}
 
 // g_cancellable_new
 // container is not nil, container is Cancellable
@@ -3128,6 +3252,11 @@ type CancellablePrivate struct {
 	P unsafe.Pointer
 }
 
+func CancellablePrivateGetType() gi.GType {
+	ret := _I.GetGType(26, "CancellablePrivate")
+	return ret
+}
+
 // Object CharsetConverter
 type CharsetConverter struct {
 	ConverterIfc
@@ -3140,6 +3269,10 @@ func WrapCharsetConverter(p unsafe.Pointer) (r CharsetConverter) { r.P = p; retu
 type ICharsetConverter interface{ P_CharsetConverter() unsafe.Pointer }
 
 func (v CharsetConverter) P_CharsetConverter() unsafe.Pointer { return v.P }
+func CharsetConverterGetType() gi.GType {
+	ret := _I.GetGType(27, "CharsetConverter")
+	return ret
+}
 
 // g_charset_converter_new
 // container is not nil, container is CharsetConverter
@@ -3222,6 +3355,11 @@ type Converter struct {
 }
 type ConverterIfc struct{}
 
+func ConverterGetType() gi.GType {
+	ret := _I.GetGType(28, "Converter")
+	return ret
+}
+
 // g_converter_convert
 // container is not nil, container is Converter
 // is method
@@ -3275,6 +3413,11 @@ const (
 	ConverterFlagsFlush      ConverterFlags = 2
 )
 
+func ConverterFlagsGetType() gi.GType {
+	ret := _I.GetGType(29, "ConverterFlags")
+	return ret
+}
+
 // ignore GType struct ConverterIface
 // Object ConverterInputStream
 type ConverterInputStream struct {
@@ -3287,6 +3430,10 @@ func WrapConverterInputStream(p unsafe.Pointer) (r ConverterInputStream) { r.P =
 type IConverterInputStream interface{ P_ConverterInputStream() unsafe.Pointer }
 
 func (v ConverterInputStream) P_ConverterInputStream() unsafe.Pointer { return v.P }
+func ConverterInputStreamGetType() gi.GType {
+	ret := _I.GetGType(30, "ConverterInputStream")
+	return ret
+}
 
 // g_converter_input_stream_new
 // container is not nil, container is ConverterInputStream
@@ -3333,6 +3480,11 @@ type ConverterInputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func ConverterInputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(31, "ConverterInputStreamPrivate")
+	return ret
+}
+
 // Object ConverterOutputStream
 type ConverterOutputStream struct {
 	PollableOutputStreamIfc
@@ -3344,6 +3496,10 @@ func WrapConverterOutputStream(p unsafe.Pointer) (r ConverterOutputStream) { r.P
 type IConverterOutputStream interface{ P_ConverterOutputStream() unsafe.Pointer }
 
 func (v ConverterOutputStream) P_ConverterOutputStream() unsafe.Pointer { return v.P }
+func ConverterOutputStreamGetType() gi.GType {
+	ret := _I.GetGType(32, "ConverterOutputStream")
+	return ret
+}
 
 // g_converter_output_stream_new
 // container is not nil, container is ConverterOutputStream
@@ -3390,6 +3546,11 @@ type ConverterOutputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func ConverterOutputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(33, "ConverterOutputStreamPrivate")
+	return ret
+}
+
 // Enum ConverterResult
 type ConverterResultEnum int
 
@@ -3399,6 +3560,11 @@ const (
 	ConverterResultFinished  ConverterResultEnum = 2
 	ConverterResultFlushed   ConverterResultEnum = 3
 )
+
+func ConverterResultGetType() gi.GType {
+	ret := _I.GetGType(34, "ConverterResult")
+	return ret
+}
 
 // Object Credentials
 type Credentials struct {
@@ -3410,6 +3576,10 @@ func WrapCredentials(p unsafe.Pointer) (r Credentials) { r.P = p; return }
 type ICredentials interface{ P_Credentials() unsafe.Pointer }
 
 func (v Credentials) P_Credentials() unsafe.Pointer { return v.P }
+func CredentialsGetType() gi.GType {
+	ret := _I.GetGType(35, "Credentials")
+	return ret
+}
 
 // g_credentials_new
 // container is not nil, container is Credentials
@@ -3554,6 +3724,11 @@ const (
 	CredentialsTypeNetbsdUnpcbid       CredentialsTypeEnum = 5
 )
 
+func CredentialsTypeGetType() gi.GType {
+	ret := _I.GetGType(36, "CredentialsType")
+	return ret
+}
+
 // Object DBusActionGroup
 type DBusActionGroup struct {
 	ActionGroupIfc
@@ -3566,6 +3741,10 @@ func WrapDBusActionGroup(p unsafe.Pointer) (r DBusActionGroup) { r.P = p; return
 type IDBusActionGroup interface{ P_DBusActionGroup() unsafe.Pointer }
 
 func (v DBusActionGroup) P_DBusActionGroup() unsafe.Pointer { return v.P }
+func DBusActionGroupGetType() gi.GType {
+	ret := _I.GetGType(37, "DBusActionGroup")
+	return ret
+}
 
 // g_dbus_action_group_get
 // container is not nil, container is DBusActionGroup
@@ -3598,6 +3777,13 @@ func DBusActionGroupGet1(connection IDBusConnection, bus_name string, object_pat
 // Struct DBusAnnotationInfo
 type DBusAnnotationInfo struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructDBusAnnotationInfo = 32
+
+func DBusAnnotationInfoGetType() gi.GType {
+	ret := _I.GetGType(38, "DBusAnnotationInfo")
+	return ret
 }
 
 // g_dbus_annotation_info_ref
@@ -3657,6 +3843,13 @@ type DBusArgInfo struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructDBusArgInfo = 32
+
+func DBusArgInfoGetType() gi.GType {
+	ret := _I.GetGType(39, "DBusArgInfo")
+	return ret
+}
+
 // g_dbus_arg_info_ref
 // container is not nil, container is DBusArgInfo
 // is method
@@ -3698,6 +3891,10 @@ func WrapDBusAuthObserver(p unsafe.Pointer) (r DBusAuthObserver) { r.P = p; retu
 type IDBusAuthObserver interface{ P_DBusAuthObserver() unsafe.Pointer }
 
 func (v DBusAuthObserver) P_DBusAuthObserver() unsafe.Pointer { return v.P }
+func DBusAuthObserverGetType() gi.GType {
+	ret := _I.GetGType(40, "DBusAuthObserver")
+	return ret
+}
 
 // g_dbus_auth_observer_new
 // container is not nil, container is DBusAuthObserver
@@ -3770,6 +3967,11 @@ const (
 	DBusCallFlagsAllowInteractiveAuthorization DBusCallFlags = 2
 )
 
+func DBusCallFlagsGetType() gi.GType {
+	ret := _I.GetGType(41, "DBusCallFlags")
+	return ret
+}
+
 // Flags DBusCapabilityFlags
 type DBusCapabilityFlags int
 
@@ -3777,6 +3979,11 @@ const (
 	DBusCapabilityFlagsNone          DBusCapabilityFlags = 0
 	DBusCapabilityFlagsUnixFdPassing DBusCapabilityFlags = 1
 )
+
+func DBusCapabilityFlagsGetType() gi.GType {
+	ret := _I.GetGType(42, "DBusCapabilityFlags")
+	return ret
+}
 
 // Object DBusConnection
 type DBusConnection struct {
@@ -3790,6 +3997,10 @@ func WrapDBusConnection(p unsafe.Pointer) (r DBusConnection) { r.P = p; return }
 type IDBusConnection interface{ P_DBusConnection() unsafe.Pointer }
 
 func (v DBusConnection) P_DBusConnection() unsafe.Pointer { return v.P }
+func DBusConnectionGetType() gi.GType {
+	ret := _I.GetGType(43, "DBusConnection")
+	return ret
+}
 
 // g_dbus_connection_new_finish
 // container is not nil, container is DBusConnection
@@ -4876,6 +5087,11 @@ const (
 	DBusConnectionFlagsDelayMessageProcessing       DBusConnectionFlags = 16
 )
 
+func DBusConnectionFlagsGetType() gi.GType {
+	ret := _I.GetGType(44, "DBusConnectionFlags")
+	return ret
+}
+
 // Enum DBusError
 type DBusErrorEnum int
 
@@ -4927,9 +5143,21 @@ const (
 	DBusErrorPropertyReadOnly              DBusErrorEnum = 44
 )
 
+func DBusErrorGetType() gi.GType {
+	ret := _I.GetGType(45, "DBusError")
+	return ret
+}
+
 // Struct DBusErrorEntry
 type DBusErrorEntry struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructDBusErrorEntry = 16
+
+func DBusErrorEntryGetType() gi.GType {
+	ret := _I.GetGType(46, "DBusErrorEntry")
+	return ret
 }
 
 // Interface DBusInterface
@@ -4938,6 +5166,11 @@ type DBusInterface struct {
 	P unsafe.Pointer
 }
 type DBusInterfaceIfc struct{}
+
+func DBusInterfaceGetType() gi.GType {
+	ret := _I.GetGType(47, "DBusInterface")
+	return ret
+}
 
 // g_dbus_interface_dup_object
 // container is not nil, container is DBusInterface
@@ -4992,6 +5225,13 @@ func (v *DBusInterfaceIfc) SetObject(object DBusObject) {
 // Struct DBusInterfaceInfo
 type DBusInterfaceInfo struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructDBusInterfaceInfo = 48
+
+func DBusInterfaceInfoGetType() gi.GType {
+	ret := _I.GetGType(48, "DBusInterfaceInfo")
+	return ret
 }
 
 // g_dbus_interface_info_cache_build
@@ -5140,6 +5380,10 @@ func WrapDBusInterfaceSkeleton(p unsafe.Pointer) (r DBusInterfaceSkeleton) { r.P
 type IDBusInterfaceSkeleton interface{ P_DBusInterfaceSkeleton() unsafe.Pointer }
 
 func (v DBusInterfaceSkeleton) P_DBusInterfaceSkeleton() unsafe.Pointer { return v.P }
+func DBusInterfaceSkeletonGetType() gi.GType {
+	ret := _I.GetGType(49, "DBusInterfaceSkeleton")
+	return ret
+}
 
 // g_dbus_interface_skeleton_export
 // container is not nil, container is DBusInterfaceSkeleton
@@ -5363,14 +5607,31 @@ const (
 	DBusInterfaceSkeletonFlagsHandleMethodInvocationsInThread DBusInterfaceSkeletonFlags = 1
 )
 
+func DBusInterfaceSkeletonFlagsGetType() gi.GType {
+	ret := _I.GetGType(50, "DBusInterfaceSkeletonFlags")
+	return ret
+}
+
 // Struct DBusInterfaceSkeletonPrivate
 type DBusInterfaceSkeletonPrivate struct {
 	P unsafe.Pointer
 }
 
+func DBusInterfaceSkeletonPrivateGetType() gi.GType {
+	ret := _I.GetGType(51, "DBusInterfaceSkeletonPrivate")
+	return ret
+}
+
 // Struct DBusInterfaceVTable
 type DBusInterfaceVTable struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructDBusInterfaceVTable = 88
+
+func DBusInterfaceVTableGetType() gi.GType {
+	ret := _I.GetGType(52, "DBusInterfaceVTable")
+	return ret
 }
 
 // Object DBusMenuModel
@@ -5383,6 +5644,10 @@ func WrapDBusMenuModel(p unsafe.Pointer) (r DBusMenuModel) { r.P = p; return }
 type IDBusMenuModel interface{ P_DBusMenuModel() unsafe.Pointer }
 
 func (v DBusMenuModel) P_DBusMenuModel() unsafe.Pointer { return v.P }
+func DBusMenuModelGetType() gi.GType {
+	ret := _I.GetGType(53, "DBusMenuModel")
+	return ret
+}
 
 // g_dbus_menu_model_get
 // container is not nil, container is DBusMenuModel
@@ -5422,6 +5687,10 @@ func WrapDBusMessage(p unsafe.Pointer) (r DBusMessage) { r.P = p; return }
 type IDBusMessage interface{ P_DBusMessage() unsafe.Pointer }
 
 func (v DBusMessage) P_DBusMessage() unsafe.Pointer { return v.P }
+func DBusMessageGetType() gi.GType {
+	ret := _I.GetGType(54, "DBusMessage")
+	return ret
+}
 
 // g_dbus_message_new
 // container is not nil, container is DBusMessage
@@ -6261,6 +6530,11 @@ const (
 	DBusMessageByteOrderLittleEndian DBusMessageByteOrderEnum = 108
 )
 
+func DBusMessageByteOrderGetType() gi.GType {
+	ret := _I.GetGType(55, "DBusMessageByteOrder")
+	return ret
+}
+
 // Flags DBusMessageFlags
 type DBusMessageFlags int
 
@@ -6270,6 +6544,11 @@ const (
 	DBusMessageFlagsNoAutoStart                   DBusMessageFlags = 2
 	DBusMessageFlagsAllowInteractiveAuthorization DBusMessageFlags = 4
 )
+
+func DBusMessageFlagsGetType() gi.GType {
+	ret := _I.GetGType(56, "DBusMessageFlags")
+	return ret
+}
 
 // Enum DBusMessageHeaderField
 type DBusMessageHeaderFieldEnum int
@@ -6287,6 +6566,11 @@ const (
 	DBusMessageHeaderFieldNumUnixFds  DBusMessageHeaderFieldEnum = 9
 )
 
+func DBusMessageHeaderFieldGetType() gi.GType {
+	ret := _I.GetGType(57, "DBusMessageHeaderField")
+	return ret
+}
+
 // Enum DBusMessageType
 type DBusMessageTypeEnum int
 
@@ -6298,9 +6582,21 @@ const (
 	DBusMessageTypeSignal       DBusMessageTypeEnum = 4
 )
 
+func DBusMessageTypeGetType() gi.GType {
+	ret := _I.GetGType(58, "DBusMessageType")
+	return ret
+}
+
 // Struct DBusMethodInfo
 type DBusMethodInfo struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructDBusMethodInfo = 40
+
+func DBusMethodInfoGetType() gi.GType {
+	ret := _I.GetGType(59, "DBusMethodInfo")
+	return ret
 }
 
 // g_dbus_method_info_ref
@@ -6344,6 +6640,10 @@ func WrapDBusMethodInvocation(p unsafe.Pointer) (r DBusMethodInvocation) { r.P =
 type IDBusMethodInvocation interface{ P_DBusMethodInvocation() unsafe.Pointer }
 
 func (v DBusMethodInvocation) P_DBusMethodInvocation() unsafe.Pointer { return v.P }
+func DBusMethodInvocationGetType() gi.GType {
+	ret := _I.GetGType(60, "DBusMethodInvocation")
+	return ret
+}
 
 // g_dbus_method_invocation_get_connection
 // container is not nil, container is DBusMethodInvocation
@@ -6592,6 +6892,13 @@ type DBusNodeInfo struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructDBusNodeInfo = 40
+
+func DBusNodeInfoGetType() gi.GType {
+	ret := _I.GetGType(61, "DBusNodeInfo")
+	return ret
+}
+
 // g_dbus_node_info_new_for_xml
 // container is not nil, container is DBusNodeInfo
 // is constructor
@@ -6687,6 +6994,11 @@ type DBusObject struct {
 }
 type DBusObjectIfc struct{}
 
+func DBusObjectGetType() gi.GType {
+	ret := _I.GetGType(62, "DBusObject")
+	return ret
+}
+
 // g_dbus_object_get_interface
 // container is not nil, container is DBusObject
 // is method
@@ -6748,6 +7060,11 @@ type DBusObjectManager struct {
 	P unsafe.Pointer
 }
 type DBusObjectManagerIfc struct{}
+
+func DBusObjectManagerGetType() gi.GType {
+	ret := _I.GetGType(63, "DBusObjectManager")
+	return ret
+}
 
 // g_dbus_object_manager_get_interface
 // container is not nil, container is DBusObjectManager
@@ -6839,6 +7156,10 @@ func WrapDBusObjectManagerClient(p unsafe.Pointer) (r DBusObjectManagerClient) {
 type IDBusObjectManagerClient interface{ P_DBusObjectManagerClient() unsafe.Pointer }
 
 func (v DBusObjectManagerClient) P_DBusObjectManagerClient() unsafe.Pointer { return v.P }
+func DBusObjectManagerClientGetType() gi.GType {
+	ret := _I.GetGType(64, "DBusObjectManagerClient")
+	return ret
+}
 
 // g_dbus_object_manager_client_new_finish
 // container is not nil, container is DBusObjectManagerClient
@@ -7095,9 +7416,19 @@ const (
 	DBusObjectManagerClientFlagsDoNotAutoStart DBusObjectManagerClientFlags = 1
 )
 
+func DBusObjectManagerClientFlagsGetType() gi.GType {
+	ret := _I.GetGType(65, "DBusObjectManagerClientFlags")
+	return ret
+}
+
 // Struct DBusObjectManagerClientPrivate
 type DBusObjectManagerClientPrivate struct {
 	P unsafe.Pointer
+}
+
+func DBusObjectManagerClientPrivateGetType() gi.GType {
+	ret := _I.GetGType(66, "DBusObjectManagerClientPrivate")
+	return ret
 }
 
 // ignore GType struct DBusObjectManagerIface
@@ -7112,6 +7443,10 @@ func WrapDBusObjectManagerServer(p unsafe.Pointer) (r DBusObjectManagerServer) {
 type IDBusObjectManagerServer interface{ P_DBusObjectManagerServer() unsafe.Pointer }
 
 func (v DBusObjectManagerServer) P_DBusObjectManagerServer() unsafe.Pointer { return v.P }
+func DBusObjectManagerServerGetType() gi.GType {
+	ret := _I.GetGType(67, "DBusObjectManagerServer")
+	return ret
+}
 
 // g_dbus_object_manager_server_new
 // container is not nil, container is DBusObjectManagerServer
@@ -7254,6 +7589,11 @@ type DBusObjectManagerServerPrivate struct {
 	P unsafe.Pointer
 }
 
+func DBusObjectManagerServerPrivateGetType() gi.GType {
+	ret := _I.GetGType(68, "DBusObjectManagerServerPrivate")
+	return ret
+}
+
 // Object DBusObjectProxy
 type DBusObjectProxy struct {
 	DBusObjectIfc
@@ -7265,6 +7605,10 @@ func WrapDBusObjectProxy(p unsafe.Pointer) (r DBusObjectProxy) { r.P = p; return
 type IDBusObjectProxy interface{ P_DBusObjectProxy() unsafe.Pointer }
 
 func (v DBusObjectProxy) P_DBusObjectProxy() unsafe.Pointer { return v.P }
+func DBusObjectProxyGetType() gi.GType {
+	ret := _I.GetGType(69, "DBusObjectProxy")
+	return ret
+}
 
 // g_dbus_object_proxy_new
 // container is not nil, container is DBusObjectProxy
@@ -7313,6 +7657,11 @@ type DBusObjectProxyPrivate struct {
 	P unsafe.Pointer
 }
 
+func DBusObjectProxyPrivateGetType() gi.GType {
+	ret := _I.GetGType(70, "DBusObjectProxyPrivate")
+	return ret
+}
+
 // Object DBusObjectSkeleton
 type DBusObjectSkeleton struct {
 	DBusObjectIfc
@@ -7324,6 +7673,10 @@ func WrapDBusObjectSkeleton(p unsafe.Pointer) (r DBusObjectSkeleton) { r.P = p; 
 type IDBusObjectSkeleton interface{ P_DBusObjectSkeleton() unsafe.Pointer }
 
 func (v DBusObjectSkeleton) P_DBusObjectSkeleton() unsafe.Pointer { return v.P }
+func DBusObjectSkeletonGetType() gi.GType {
+	ret := _I.GetGType(71, "DBusObjectSkeleton")
+	return ret
+}
 
 // g_dbus_object_skeleton_new
 // container is not nil, container is DBusObjectSkeleton
@@ -7436,9 +7789,21 @@ type DBusObjectSkeletonPrivate struct {
 	P unsafe.Pointer
 }
 
+func DBusObjectSkeletonPrivateGetType() gi.GType {
+	ret := _I.GetGType(72, "DBusObjectSkeletonPrivate")
+	return ret
+}
+
 // Struct DBusPropertyInfo
 type DBusPropertyInfo struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructDBusPropertyInfo = 40
+
+func DBusPropertyInfoGetType() gi.GType {
+	ret := _I.GetGType(73, "DBusPropertyInfo")
+	return ret
 }
 
 // g_dbus_property_info_ref
@@ -7481,6 +7846,11 @@ const (
 	DBusPropertyInfoFlagsWritable DBusPropertyInfoFlags = 2
 )
 
+func DBusPropertyInfoFlagsGetType() gi.GType {
+	ret := _I.GetGType(74, "DBusPropertyInfoFlags")
+	return ret
+}
+
 // Object DBusProxy
 type DBusProxy struct {
 	AsyncInitableIfc
@@ -7494,6 +7864,10 @@ func WrapDBusProxy(p unsafe.Pointer) (r DBusProxy) { r.P = p; return }
 type IDBusProxy interface{ P_DBusProxy() unsafe.Pointer }
 
 func (v DBusProxy) P_DBusProxy() unsafe.Pointer { return v.P }
+func DBusProxyGetType() gi.GType {
+	ret := _I.GetGType(75, "DBusProxy")
+	return ret
+}
 
 // g_dbus_proxy_new_finish
 // container is not nil, container is DBusProxy
@@ -8080,9 +8454,19 @@ const (
 	DBusProxyFlagsDoNotAutoStartAtConstruction DBusProxyFlags = 16
 )
 
+func DBusProxyFlagsGetType() gi.GType {
+	ret := _I.GetGType(76, "DBusProxyFlags")
+	return ret
+}
+
 // Struct DBusProxyPrivate
 type DBusProxyPrivate struct {
 	P unsafe.Pointer
+}
+
+func DBusProxyPrivateGetType() gi.GType {
+	ret := _I.GetGType(77, "DBusProxyPrivate")
+	return ret
 }
 
 // Flags DBusSendMessageFlags
@@ -8092,6 +8476,11 @@ const (
 	DBusSendMessageFlagsNone           DBusSendMessageFlags = 0
 	DBusSendMessageFlagsPreserveSerial DBusSendMessageFlags = 1
 )
+
+func DBusSendMessageFlagsGetType() gi.GType {
+	ret := _I.GetGType(78, "DBusSendMessageFlags")
+	return ret
+}
 
 // Object DBusServer
 type DBusServer struct {
@@ -8104,6 +8493,10 @@ func WrapDBusServer(p unsafe.Pointer) (r DBusServer) { r.P = p; return }
 type IDBusServer interface{ P_DBusServer() unsafe.Pointer }
 
 func (v DBusServer) P_DBusServer() unsafe.Pointer { return v.P }
+func DBusServerGetType() gi.GType {
+	ret := _I.GetGType(79, "DBusServer")
+	return ret
+}
 
 // g_dbus_server_new_sync
 // container is not nil, container is DBusServer
@@ -8245,6 +8638,11 @@ const (
 	DBusServerFlagsAuthenticationAllowAnonymous DBusServerFlags = 2
 )
 
+func DBusServerFlagsGetType() gi.GType {
+	ret := _I.GetGType(80, "DBusServerFlags")
+	return ret
+}
+
 // Flags DBusSignalFlags
 type DBusSignalFlags int
 
@@ -8255,9 +8653,21 @@ const (
 	DBusSignalFlagsMatchArg0Path      DBusSignalFlags = 4
 )
 
+func DBusSignalFlagsGetType() gi.GType {
+	ret := _I.GetGType(81, "DBusSignalFlags")
+	return ret
+}
+
 // Struct DBusSignalInfo
 type DBusSignalInfo struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructDBusSignalInfo = 32
+
+func DBusSignalInfoGetType() gi.GType {
+	ret := _I.GetGType(82, "DBusSignalInfo")
+	return ret
 }
 
 // g_dbus_signal_info_ref
@@ -8299,9 +8709,21 @@ const (
 	DBusSubtreeFlagsDispatchToUnenumeratedNodes DBusSubtreeFlags = 1
 )
 
+func DBusSubtreeFlagsGetType() gi.GType {
+	ret := _I.GetGType(83, "DBusSubtreeFlags")
+	return ret
+}
+
 // Struct DBusSubtreeVTable
 type DBusSubtreeVTable struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructDBusSubtreeVTable = 88
+
+func DBusSubtreeVTableGetType() gi.GType {
+	ret := _I.GetGType(84, "DBusSubtreeVTable")
+	return ret
 }
 
 // Object DataInputStream
@@ -8315,6 +8737,10 @@ func WrapDataInputStream(p unsafe.Pointer) (r DataInputStream) { r.P = p; return
 type IDataInputStream interface{ P_DataInputStream() unsafe.Pointer }
 
 func (v DataInputStream) P_DataInputStream() unsafe.Pointer { return v.P }
+func DataInputStreamGetType() gi.GType {
+	ret := _I.GetGType(85, "DataInputStream")
+	return ret
+}
 
 // g_data_input_stream_new
 // container is not nil, container is DataInputStream
@@ -8847,6 +9273,11 @@ type DataInputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func DataInputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(86, "DataInputStreamPrivate")
+	return ret
+}
+
 // Object DataOutputStream
 type DataOutputStream struct {
 	SeekableIfc
@@ -8858,6 +9289,10 @@ func WrapDataOutputStream(p unsafe.Pointer) (r DataOutputStream) { r.P = p; retu
 type IDataOutputStream interface{ P_DataOutputStream() unsafe.Pointer }
 
 func (v DataOutputStream) P_DataOutputStream() unsafe.Pointer { return v.P }
+func DataOutputStreamGetType() gi.GType {
+	ret := _I.GetGType(87, "DataOutputStream")
+	return ret
+}
 
 // g_data_output_stream_new
 // container is not nil, container is DataOutputStream
@@ -9120,6 +9555,11 @@ type DataOutputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func DataOutputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(88, "DataOutputStreamPrivate")
+	return ret
+}
+
 // Enum DataStreamByteOrder
 type DataStreamByteOrderEnum int
 
@@ -9128,6 +9568,11 @@ const (
 	DataStreamByteOrderLittleEndian DataStreamByteOrderEnum = 1
 	DataStreamByteOrderHostEndian   DataStreamByteOrderEnum = 2
 )
+
+func DataStreamByteOrderGetType() gi.GType {
+	ret := _I.GetGType(89, "DataStreamByteOrder")
+	return ret
+}
 
 // Enum DataStreamNewlineType
 type DataStreamNewlineTypeEnum int
@@ -9139,12 +9584,22 @@ const (
 	DataStreamNewlineTypeAny  DataStreamNewlineTypeEnum = 3
 )
 
+func DataStreamNewlineTypeGetType() gi.GType {
+	ret := _I.GetGType(90, "DataStreamNewlineType")
+	return ret
+}
+
 // Interface DatagramBased
 type DatagramBased struct {
 	DatagramBasedIfc
 	P unsafe.Pointer
 }
 type DatagramBasedIfc struct{}
+
+func DatagramBasedGetType() gi.GType {
+	ret := _I.GetGType(91, "DatagramBased")
+	return ret
+}
 
 // g_datagram_based_condition_check
 // container is not nil, container is DatagramBased
@@ -9283,6 +9738,10 @@ func WrapDesktopAppInfo(p unsafe.Pointer) (r DesktopAppInfo) { r.P = p; return }
 type IDesktopAppInfo interface{ P_DesktopAppInfo() unsafe.Pointer }
 
 func (v DesktopAppInfo) P_DesktopAppInfo() unsafe.Pointer { return v.P }
+func DesktopAppInfoGetType() gi.GType {
+	ret := _I.GetGType(92, "DesktopAppInfo")
+	return ret
+}
 
 // g_desktop_app_info_new
 // container is not nil, container is DesktopAppInfo
@@ -9747,6 +10206,11 @@ type DesktopAppInfoLookup struct {
 }
 type DesktopAppInfoLookupIfc struct{}
 
+func DesktopAppInfoLookupGetType() gi.GType {
+	ret := _I.GetGType(93, "DesktopAppInfoLookup")
+	return ret
+}
+
 // g_desktop_app_info_lookup_get_default_for_uri_scheme
 // container is not nil, container is DesktopAppInfoLookup
 // is method
@@ -9774,6 +10238,11 @@ type Drive struct {
 	P unsafe.Pointer
 }
 type DriveIfc struct{}
+
+func DriveGetType() gi.GType {
+	ret := _I.GetGType(94, "Drive")
+	return ret
+}
 
 // g_drive_can_eject
 // container is not nil, container is Drive
@@ -10317,6 +10786,11 @@ const (
 	DriveStartFlagsNone DriveStartFlags = 0
 )
 
+func DriveStartFlagsGetType() gi.GType {
+	ret := _I.GetGType(95, "DriveStartFlags")
+	return ret
+}
+
 // Enum DriveStartStopType
 type DriveStartStopTypeEnum int
 
@@ -10328,12 +10802,22 @@ const (
 	DriveStartStopTypePassword  DriveStartStopTypeEnum = 4
 )
 
+func DriveStartStopTypeGetType() gi.GType {
+	ret := _I.GetGType(96, "DriveStartStopType")
+	return ret
+}
+
 // Interface DtlsClientConnection
 type DtlsClientConnection struct {
 	DtlsClientConnectionIfc
 	P unsafe.Pointer
 }
 type DtlsClientConnectionIfc struct{}
+
+func DtlsClientConnectionGetType() gi.GType {
+	ret := _I.GetGType(97, "DtlsClientConnection")
+	return ret
+}
 
 // g_dtls_client_connection_new
 // container is not nil, container is DtlsClientConnection
@@ -10444,6 +10928,11 @@ type DtlsConnection struct {
 	P unsafe.Pointer
 }
 type DtlsConnectionIfc struct{}
+
+func DtlsConnectionGetType() gi.GType {
+	ret := _I.GetGType(98, "DtlsConnection")
+	return ret
+}
 
 // g_dtls_connection_close
 // container is not nil, container is DtlsConnection
@@ -10884,6 +11373,11 @@ type DtlsServerConnection struct {
 }
 type DtlsServerConnectionIfc struct{}
 
+func DtlsServerConnectionGetType() gi.GType {
+	ret := _I.GetGType(99, "DtlsServerConnection")
+	return ret
+}
+
 // g_dtls_server_connection_new
 // container is not nil, container is DtlsServerConnection
 // is method
@@ -10921,6 +11415,10 @@ func WrapEmblem(p unsafe.Pointer) (r Emblem) { r.P = p; return }
 type IEmblem interface{ P_Emblem() unsafe.Pointer }
 
 func (v Emblem) P_Emblem() unsafe.Pointer { return v.P }
+func EmblemGetType() gi.GType {
+	ret := _I.GetGType(100, "Emblem")
+	return ret
+}
 
 // g_emblem_new
 // container is not nil, container is Emblem
@@ -11002,6 +11500,11 @@ const (
 	EmblemOriginTag          EmblemOriginEnum = 3
 )
 
+func EmblemOriginGetType() gi.GType {
+	ret := _I.GetGType(101, "EmblemOrigin")
+	return ret
+}
+
 // Object EmblemedIcon
 type EmblemedIcon struct {
 	IconIfc
@@ -11013,6 +11516,10 @@ func WrapEmblemedIcon(p unsafe.Pointer) (r EmblemedIcon) { r.P = p; return }
 type IEmblemedIcon interface{ P_EmblemedIcon() unsafe.Pointer }
 
 func (v EmblemedIcon) P_EmblemedIcon() unsafe.Pointer { return v.P }
+func EmblemedIconGetType() gi.GType {
+	ret := _I.GetGType(102, "EmblemedIcon")
+	return ret
+}
 
 // g_emblemed_icon_new
 // container is not nil, container is EmblemedIcon
@@ -11109,12 +11616,22 @@ type EmblemedIconPrivate struct {
 	P unsafe.Pointer
 }
 
+func EmblemedIconPrivateGetType() gi.GType {
+	ret := _I.GetGType(103, "EmblemedIconPrivate")
+	return ret
+}
+
 // Interface File
 type File struct {
 	FileIfc
 	P unsafe.Pointer
 }
 type FileIfc struct{}
+
+func FileGetType() gi.GType {
+	ret := _I.GetGType(104, "File")
+	return ret
+}
 
 // g_file_new_for_commandline_arg
 // container is not nil, container is File
@@ -14021,6 +14538,13 @@ type FileAttributeInfo struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructFileAttributeInfo = 16
+
+func FileAttributeInfoGetType() gi.GType {
+	ret := _I.GetGType(105, "FileAttributeInfo")
+	return ret
+}
+
 // Flags FileAttributeInfoFlags
 type FileAttributeInfoFlags int
 
@@ -14030,9 +14554,21 @@ const (
 	FileAttributeInfoFlagsCopyWhenMoved FileAttributeInfoFlags = 2
 )
 
+func FileAttributeInfoFlagsGetType() gi.GType {
+	ret := _I.GetGType(106, "FileAttributeInfoFlags")
+	return ret
+}
+
 // Struct FileAttributeInfoList
 type FileAttributeInfoList struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructFileAttributeInfoList = 16
+
+func FileAttributeInfoListGetType() gi.GType {
+	ret := _I.GetGType(107, "FileAttributeInfoList")
+	return ret
 }
 
 // g_file_attribute_info_list_new
@@ -14140,6 +14676,11 @@ func (v FileAttributeInfoList) Unref() {
 // Struct FileAttributeMatcher
 type FileAttributeMatcher struct {
 	P unsafe.Pointer
+}
+
+func FileAttributeMatcherGetType() gi.GType {
+	ret := _I.GetGType(108, "FileAttributeMatcher")
+	return ret
 }
 
 // g_file_attribute_matcher_new
@@ -14313,6 +14854,11 @@ const (
 	FileAttributeStatusErrorSetting FileAttributeStatusEnum = 2
 )
 
+func FileAttributeStatusGetType() gi.GType {
+	ret := _I.GetGType(109, "FileAttributeStatus")
+	return ret
+}
+
 // Enum FileAttributeType
 type FileAttributeTypeEnum int
 
@@ -14329,6 +14875,11 @@ const (
 	FileAttributeTypeStringv    FileAttributeTypeEnum = 9
 )
 
+func FileAttributeTypeGetType() gi.GType {
+	ret := _I.GetGType(110, "FileAttributeType")
+	return ret
+}
+
 // Flags FileCopyFlags
 type FileCopyFlags int
 
@@ -14342,6 +14893,11 @@ const (
 	FileCopyFlagsTargetDefaultPerms FileCopyFlags = 32
 )
 
+func FileCopyFlagsGetType() gi.GType {
+	ret := _I.GetGType(111, "FileCopyFlags")
+	return ret
+}
+
 // Flags FileCreateFlags
 type FileCreateFlags int
 
@@ -14351,12 +14907,22 @@ const (
 	FileCreateFlagsReplaceDestination FileCreateFlags = 2
 )
 
+func FileCreateFlagsGetType() gi.GType {
+	ret := _I.GetGType(112, "FileCreateFlags")
+	return ret
+}
+
 // Interface FileDescriptorBased
 type FileDescriptorBased struct {
 	FileDescriptorBasedIfc
 	P unsafe.Pointer
 }
 type FileDescriptorBasedIfc struct{}
+
+func FileDescriptorBasedGetType() gi.GType {
+	ret := _I.GetGType(113, "FileDescriptorBased")
+	return ret
+}
 
 // g_file_descriptor_based_get_fd
 // container is not nil, container is FileDescriptorBased
@@ -14386,6 +14952,10 @@ func WrapFileEnumerator(p unsafe.Pointer) (r FileEnumerator) { r.P = p; return }
 type IFileEnumerator interface{ P_FileEnumerator() unsafe.Pointer }
 
 func (v FileEnumerator) P_FileEnumerator() unsafe.Pointer { return v.P }
+func FileEnumeratorGetType() gi.GType {
+	ret := _I.GetGType(114, "FileEnumerator")
+	return ret
+}
 
 // g_file_enumerator_close
 // container is not nil, container is FileEnumerator
@@ -14642,6 +15212,11 @@ type FileEnumeratorPrivate struct {
 	P unsafe.Pointer
 }
 
+func FileEnumeratorPrivateGetType() gi.GType {
+	ret := _I.GetGType(115, "FileEnumeratorPrivate")
+	return ret
+}
+
 // Object FileIOStream
 type FileIOStream struct {
 	SeekableIfc
@@ -14653,6 +15228,10 @@ func WrapFileIOStream(p unsafe.Pointer) (r FileIOStream) { r.P = p; return }
 type IFileIOStream interface{ P_FileIOStream() unsafe.Pointer }
 
 func (v FileIOStream) P_FileIOStream() unsafe.Pointer { return v.P }
+func FileIOStreamGetType() gi.GType {
+	ret := _I.GetGType(116, "FileIOStream")
+	return ret
+}
 
 // g_file_io_stream_get_etag
 // container is not nil, container is FileIOStream
@@ -14749,6 +15328,11 @@ type FileIOStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func FileIOStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(117, "FileIOStreamPrivate")
+	return ret
+}
+
 // Object FileIcon
 type FileIcon struct {
 	IconIfc
@@ -14761,6 +15345,10 @@ func WrapFileIcon(p unsafe.Pointer) (r FileIcon) { r.P = p; return }
 type IFileIcon interface{ P_FileIcon() unsafe.Pointer }
 
 func (v FileIcon) P_FileIcon() unsafe.Pointer { return v.P }
+func FileIconGetType() gi.GType {
+	ret := _I.GetGType(118, "FileIcon")
+	return ret
+}
 
 // g_file_icon_new
 // container is not nil, container is FileIcon
@@ -14808,6 +15396,10 @@ func WrapFileInfo(p unsafe.Pointer) (r FileInfo) { r.P = p; return }
 type IFileInfo interface{ P_FileInfo() unsafe.Pointer }
 
 func (v FileInfo) P_FileInfo() unsafe.Pointer { return v.P }
+func FileInfoGetType() gi.GType {
+	ret := _I.GetGType(119, "FileInfo")
+	return ret
+}
 
 // g_file_info_new
 // container is not nil, container is FileInfo
@@ -15315,19 +15907,16 @@ func (v FileInfo) GetIsSymlink() (result bool) {
 // g_file_info_get_modification_time
 // container is not nil, container is FileInfo
 // is method
-func (v FileInfo) GetModificationTime() (result int /*TODO_TYPE*/) {
+func (v FileInfo) GetModificationTime(result glib.TimeVal) {
 	iv, err := _I.Get(705, "FileInfo", "get_modification_time")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_result := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_result := gi.NewPointerArgument(result.P)
 	args := []gi.Argument{arg_v, arg_result}
-	iv.Call(args, nil, &outArgs[0])
-	result = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // g_file_info_get_name
@@ -15949,6 +16538,10 @@ func WrapFileInputStream(p unsafe.Pointer) (r FileInputStream) { r.P = p; return
 type IFileInputStream interface{ P_FileInputStream() unsafe.Pointer }
 
 func (v FileInputStream) P_FileInputStream() unsafe.Pointer { return v.P }
+func FileInputStreamGetType() gi.GType {
+	ret := _I.GetGType(120, "FileInputStream")
+	return ret
+}
 
 // g_file_input_stream_query_info
 // container is not nil, container is FileInputStream
@@ -16028,6 +16621,11 @@ type FileInputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func FileInputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(121, "FileInputStreamPrivate")
+	return ret
+}
+
 // Flags FileMeasureFlags
 type FileMeasureFlags int
 
@@ -16037,6 +16635,11 @@ const (
 	FileMeasureFlagsApparentSize   FileMeasureFlags = 4
 	FileMeasureFlagsNoXdev         FileMeasureFlags = 8
 )
+
+func FileMeasureFlagsGetType() gi.GType {
+	ret := _I.GetGType(122, "FileMeasureFlags")
+	return ret
+}
 
 // Object FileMonitor
 type FileMonitor struct {
@@ -16048,6 +16651,10 @@ func WrapFileMonitor(p unsafe.Pointer) (r FileMonitor) { r.P = p; return }
 type IFileMonitor interface{ P_FileMonitor() unsafe.Pointer }
 
 func (v FileMonitor) P_FileMonitor() unsafe.Pointer { return v.P }
+func FileMonitorGetType() gi.GType {
+	ret := _I.GetGType(123, "FileMonitor")
+	return ret
+}
 
 // g_file_monitor_cancel
 // container is not nil, container is FileMonitor
@@ -16133,6 +16740,11 @@ const (
 	FileMonitorEventMovedOut         FileMonitorEventEnum = 10
 )
 
+func FileMonitorEventGetType() gi.GType {
+	ret := _I.GetGType(124, "FileMonitorEvent")
+	return ret
+}
+
 // Flags FileMonitorFlags
 type FileMonitorFlags int
 
@@ -16144,9 +16756,19 @@ const (
 	FileMonitorFlagsWatchMoves     FileMonitorFlags = 8
 )
 
+func FileMonitorFlagsGetType() gi.GType {
+	ret := _I.GetGType(125, "FileMonitorFlags")
+	return ret
+}
+
 // Struct FileMonitorPrivate
 type FileMonitorPrivate struct {
 	P unsafe.Pointer
+}
+
+func FileMonitorPrivateGetType() gi.GType {
+	ret := _I.GetGType(126, "FileMonitorPrivate")
+	return ret
 }
 
 // Object FileOutputStream
@@ -16160,6 +16782,10 @@ func WrapFileOutputStream(p unsafe.Pointer) (r FileOutputStream) { r.P = p; retu
 type IFileOutputStream interface{ P_FileOutputStream() unsafe.Pointer }
 
 func (v FileOutputStream) P_FileOutputStream() unsafe.Pointer { return v.P }
+func FileOutputStreamGetType() gi.GType {
+	ret := _I.GetGType(127, "FileOutputStream")
+	return ret
+}
 
 // g_file_output_stream_get_etag
 // container is not nil, container is FileOutputStream
@@ -16256,6 +16882,11 @@ type FileOutputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func FileOutputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(128, "FileOutputStreamPrivate")
+	return ret
+}
+
 // Flags FileQueryInfoFlags
 type FileQueryInfoFlags int
 
@@ -16263,6 +16894,11 @@ const (
 	FileQueryInfoFlagsNone             FileQueryInfoFlags = 0
 	FileQueryInfoFlagsNofollowSymlinks FileQueryInfoFlags = 1
 )
+
+func FileQueryInfoFlagsGetType() gi.GType {
+	ret := _I.GetGType(129, "FileQueryInfoFlags")
+	return ret
+}
 
 // Enum FileType
 type FileTypeEnum int
@@ -16277,6 +16913,11 @@ const (
 	FileTypeMountable    FileTypeEnum = 6
 )
 
+func FileTypeGetType() gi.GType {
+	ret := _I.GetGType(130, "FileType")
+	return ret
+}
+
 // Object FilenameCompleter
 type FilenameCompleter struct {
 	gobject.Object
@@ -16287,6 +16928,10 @@ func WrapFilenameCompleter(p unsafe.Pointer) (r FilenameCompleter) { r.P = p; re
 type IFilenameCompleter interface{ P_FilenameCompleter() unsafe.Pointer }
 
 func (v FilenameCompleter) P_FilenameCompleter() unsafe.Pointer { return v.P }
+func FilenameCompleterGetType() gi.GType {
+	ret := _I.GetGType(131, "FilenameCompleter")
+	return ret
+}
 
 // g_filename_completer_new
 // container is not nil, container is FilenameCompleter
@@ -16369,6 +17014,11 @@ const (
 	FilesystemPreviewTypeNever    FilesystemPreviewTypeEnum = 2
 )
 
+func FilesystemPreviewTypeGetType() gi.GType {
+	ret := _I.GetGType(132, "FilesystemPreviewType")
+	return ret
+}
+
 // Object FilterInputStream
 type FilterInputStream struct {
 	InputStream
@@ -16379,6 +17029,10 @@ func WrapFilterInputStream(p unsafe.Pointer) (r FilterInputStream) { r.P = p; re
 type IFilterInputStream interface{ P_FilterInputStream() unsafe.Pointer }
 
 func (v FilterInputStream) P_FilterInputStream() unsafe.Pointer { return v.P }
+func FilterInputStreamGetType() gi.GType {
+	ret := _I.GetGType(133, "FilterInputStream")
+	return ret
+}
 
 // g_filter_input_stream_get_base_stream
 // container is not nil, container is FilterInputStream
@@ -16440,6 +17094,10 @@ func WrapFilterOutputStream(p unsafe.Pointer) (r FilterOutputStream) { r.P = p; 
 type IFilterOutputStream interface{ P_FilterOutputStream() unsafe.Pointer }
 
 func (v FilterOutputStream) P_FilterOutputStream() unsafe.Pointer { return v.P }
+func FilterOutputStreamGetType() gi.GType {
+	ret := _I.GetGType(134, "FilterOutputStream")
+	return ret
+}
 
 // g_filter_output_stream_get_base_stream
 // container is not nil, container is FilterOutputStream
@@ -16545,9 +17203,19 @@ const (
 	IOErrorEnumMessageTooLarge    IOErrorEnumEnum = 46
 )
 
+func IOErrorEnumGetType() gi.GType {
+	ret := _I.GetGType(135, "IOErrorEnum")
+	return ret
+}
+
 // Struct IOExtension
 type IOExtension struct {
 	P unsafe.Pointer
+}
+
+func IOExtensionGetType() gi.GType {
+	ret := _I.GetGType(136, "IOExtension")
+	return ret
 }
 
 // g_io_extension_get_name
@@ -16604,6 +17272,11 @@ func (v IOExtension) GetType() (result gi.GType) {
 // Struct IOExtensionPoint
 type IOExtensionPoint struct {
 	P unsafe.Pointer
+}
+
+func IOExtensionPointGetType() gi.GType {
+	ret := _I.GetGType(137, "IOExtensionPoint")
+	return ret
 }
 
 // g_io_extension_point_get_extension_by_name
@@ -16751,6 +17424,10 @@ func WrapIOModule(p unsafe.Pointer) (r IOModule) { r.P = p; return }
 type IIOModule interface{ P_IOModule() unsafe.Pointer }
 
 func (v IOModule) P_IOModule() unsafe.Pointer { return v.P }
+func IOModuleGetType() gi.GType {
+	ret := _I.GetGType(138, "IOModule")
+	return ret
+}
 
 // g_io_module_new
 // container is not nil, container is IOModule
@@ -16805,6 +17482,11 @@ type IOModuleScope struct {
 	P unsafe.Pointer
 }
 
+func IOModuleScopeGetType() gi.GType {
+	ret := _I.GetGType(139, "IOModuleScope")
+	return ret
+}
+
 // g_io_module_scope_block
 // container is not nil, container is IOModuleScope
 // is method
@@ -16844,9 +17526,19 @@ const (
 	IOModuleScopeFlagsBlockDuplicates IOModuleScopeFlagsEnum = 1
 )
 
+func IOModuleScopeFlagsGetType() gi.GType {
+	ret := _I.GetGType(140, "IOModuleScopeFlags")
+	return ret
+}
+
 // Struct IOSchedulerJob
 type IOSchedulerJob struct {
 	P unsafe.Pointer
+}
+
+func IOSchedulerJobGetType() gi.GType {
+	ret := _I.GetGType(141, "IOSchedulerJob")
+	return ret
 }
 
 // g_io_scheduler_job_send_to_mainloop
@@ -16896,6 +17588,10 @@ func WrapIOStream(p unsafe.Pointer) (r IOStream) { r.P = p; return }
 type IIOStream interface{ P_IOStream() unsafe.Pointer }
 
 func (v IOStream) P_IOStream() unsafe.Pointer { return v.P }
+func IOStreamGetType() gi.GType {
+	ret := _I.GetGType(142, "IOStream")
+	return ret
+}
 
 // g_io_stream_splice_finish
 // container is not nil, container is IOStream
@@ -17117,10 +17813,20 @@ type IOStreamAdapter struct {
 	P unsafe.Pointer
 }
 
+func IOStreamAdapterGetType() gi.GType {
+	ret := _I.GetGType(143, "IOStreamAdapter")
+	return ret
+}
+
 // ignore GType struct IOStreamClass
 // Struct IOStreamPrivate
 type IOStreamPrivate struct {
 	P unsafe.Pointer
+}
+
+func IOStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(144, "IOStreamPrivate")
+	return ret
 }
 
 // Flags IOStreamSpliceFlags
@@ -17133,12 +17839,22 @@ const (
 	IOStreamSpliceFlagsWaitForBoth  IOStreamSpliceFlags = 4
 )
 
+func IOStreamSpliceFlagsGetType() gi.GType {
+	ret := _I.GetGType(145, "IOStreamSpliceFlags")
+	return ret
+}
+
 // Interface Icon
 type Icon struct {
 	IconIfc
 	P unsafe.Pointer
 }
 type IconIfc struct{}
+
+func IconGetType() gi.GType {
+	ret := _I.GetGType(146, "Icon")
+	return ret
+}
 
 // g_icon_deserialize
 // container is not nil, container is Icon
@@ -17261,6 +17977,10 @@ func WrapInetAddress(p unsafe.Pointer) (r InetAddress) { r.P = p; return }
 type IInetAddress interface{ P_InetAddress() unsafe.Pointer }
 
 func (v InetAddress) P_InetAddress() unsafe.Pointer { return v.P }
+func InetAddressGetType() gi.GType {
+	ret := _I.GetGType(147, "InetAddress")
+	return ret
+}
 
 // g_inet_address_new_any
 // container is not nil, container is InetAddress
@@ -17588,6 +18308,10 @@ func WrapInetAddressMask(p unsafe.Pointer) (r InetAddressMask) { r.P = p; return
 type IInetAddressMask interface{ P_InetAddressMask() unsafe.Pointer }
 
 func (v InetAddressMask) P_InetAddressMask() unsafe.Pointer { return v.P }
+func InetAddressMaskGetType() gi.GType {
+	ret := _I.GetGType(148, "InetAddressMask")
+	return ret
+}
 
 // g_inet_address_mask_new
 // container is not nil, container is InetAddressMask
@@ -17752,9 +18476,19 @@ type InetAddressMaskPrivate struct {
 	P unsafe.Pointer
 }
 
+func InetAddressMaskPrivateGetType() gi.GType {
+	ret := _I.GetGType(149, "InetAddressMaskPrivate")
+	return ret
+}
+
 // Struct InetAddressPrivate
 type InetAddressPrivate struct {
 	P unsafe.Pointer
+}
+
+func InetAddressPrivateGetType() gi.GType {
+	ret := _I.GetGType(150, "InetAddressPrivate")
+	return ret
 }
 
 // Object InetSocketAddress
@@ -17768,6 +18502,10 @@ func WrapInetSocketAddress(p unsafe.Pointer) (r InetSocketAddress) { r.P = p; re
 type IInetSocketAddress interface{ P_InetSocketAddress() unsafe.Pointer }
 
 func (v InetSocketAddress) P_InetSocketAddress() unsafe.Pointer { return v.P }
+func InetSocketAddressGetType() gi.GType {
+	ret := _I.GetGType(151, "InetSocketAddress")
+	return ret
+}
 
 // g_inet_socket_address_new
 // container is not nil, container is InetSocketAddress
@@ -17885,12 +18623,22 @@ type InetSocketAddressPrivate struct {
 	P unsafe.Pointer
 }
 
+func InetSocketAddressPrivateGetType() gi.GType {
+	ret := _I.GetGType(152, "InetSocketAddressPrivate")
+	return ret
+}
+
 // Interface Initable
 type Initable struct {
 	InitableIfc
 	P unsafe.Pointer
 }
 type InitableIfc struct{}
+
+func InitableGetType() gi.GType {
+	ret := _I.GetGType(153, "Initable")
+	return ret
+}
 
 // g_initable_newv
 // container is not nil, container is Initable
@@ -17950,6 +18698,13 @@ type InputMessage struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructInputMessage = 56
+
+func InputMessageGetType() gi.GType {
+	ret := _I.GetGType(154, "InputMessage")
+	return ret
+}
+
 // Object InputStream
 type InputStream struct {
 	gobject.Object
@@ -17960,6 +18715,10 @@ func WrapInputStream(p unsafe.Pointer) (r InputStream) { r.P = p; return }
 type IInputStream interface{ P_InputStream() unsafe.Pointer }
 
 func (v InputStream) P_InputStream() unsafe.Pointer { return v.P }
+func InputStreamGetType() gi.GType {
+	ret := _I.GetGType(155, "InputStream")
+	return ret
+}
 
 // g_input_stream_clear_pending
 // container is not nil, container is InputStream
@@ -18384,9 +19143,21 @@ type InputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func InputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(156, "InputStreamPrivate")
+	return ret
+}
+
 // Struct InputVector
 type InputVector struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructInputVector = 16
+
+func InputVectorGetType() gi.GType {
+	ret := _I.GetGType(157, "InputVector")
+	return ret
 }
 
 // Interface ListModel
@@ -18395,6 +19166,11 @@ type ListModel struct {
 	P unsafe.Pointer
 }
 type ListModelIfc struct{}
+
+func ListModelGetType() gi.GType {
+	ret := _I.GetGType(158, "ListModel")
+	return ret
+}
 
 // g_list_model_get_item_type
 // container is not nil, container is ListModel
@@ -18477,6 +19253,10 @@ func WrapListStore(p unsafe.Pointer) (r ListStore) { r.P = p; return }
 type IListStore interface{ P_ListStore() unsafe.Pointer }
 
 func (v ListStore) P_ListStore() unsafe.Pointer { return v.P }
+func ListStoreGetType() gi.GType {
+	ret := _I.GetGType(159, "ListStore")
+	return ret
+}
 
 // g_list_store_new
 // container is not nil, container is ListStore
@@ -18630,6 +19410,11 @@ type LoadableIcon struct {
 }
 type LoadableIconIfc struct{}
 
+func LoadableIconGetType() gi.GType {
+	ret := _I.GetGType(160, "LoadableIcon")
+	return ret
+}
+
 // g_loadable_icon_load
 // container is not nil, container is LoadableIcon
 // is method
@@ -18714,6 +19499,10 @@ func WrapMemoryInputStream(p unsafe.Pointer) (r MemoryInputStream) { r.P = p; re
 type IMemoryInputStream interface{ P_MemoryInputStream() unsafe.Pointer }
 
 func (v MemoryInputStream) P_MemoryInputStream() unsafe.Pointer { return v.P }
+func MemoryInputStreamGetType() gi.GType {
+	ret := _I.GetGType(161, "MemoryInputStream")
+	return ret
+}
 
 // g_memory_input_stream_new
 // container is not nil, container is MemoryInputStream
@@ -18806,6 +19595,11 @@ type MemoryInputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func MemoryInputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(162, "MemoryInputStreamPrivate")
+	return ret
+}
+
 // Object MemoryOutputStream
 type MemoryOutputStream struct {
 	PollableOutputStreamIfc
@@ -18818,6 +19612,10 @@ func WrapMemoryOutputStream(p unsafe.Pointer) (r MemoryOutputStream) { r.P = p; 
 type IMemoryOutputStream interface{ P_MemoryOutputStream() unsafe.Pointer }
 
 func (v MemoryOutputStream) P_MemoryOutputStream() unsafe.Pointer { return v.P }
+func MemoryOutputStreamGetType() gi.GType {
+	ret := _I.GetGType(163, "MemoryOutputStream")
+	return ret
+}
 
 // g_memory_output_stream_new_resizable
 // container is not nil, container is MemoryOutputStream
@@ -18925,6 +19723,11 @@ type MemoryOutputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func MemoryOutputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(164, "MemoryOutputStreamPrivate")
+	return ret
+}
+
 // Object Menu
 type Menu struct {
 	MenuModel
@@ -18935,6 +19738,10 @@ func WrapMenu(p unsafe.Pointer) (r Menu) { r.P = p; return }
 type IMenu interface{ P_Menu() unsafe.Pointer }
 
 func (v Menu) P_Menu() unsafe.Pointer { return v.P }
+func MenuGetType() gi.GType {
+	ret := _I.GetGType(165, "Menu")
+	return ret
+}
 
 // g_menu_new
 // container is not nil, container is Menu
@@ -19257,6 +20064,10 @@ func WrapMenuAttributeIter(p unsafe.Pointer) (r MenuAttributeIter) { r.P = p; re
 type IMenuAttributeIter interface{ P_MenuAttributeIter() unsafe.Pointer }
 
 func (v MenuAttributeIter) P_MenuAttributeIter() unsafe.Pointer { return v.P }
+func MenuAttributeIterGetType() gi.GType {
+	ret := _I.GetGType(166, "MenuAttributeIter")
+	return ret
+}
 
 // g_menu_attribute_iter_get_name
 // container is not nil, container is MenuAttributeIter
@@ -19337,6 +20148,11 @@ type MenuAttributeIterPrivate struct {
 	P unsafe.Pointer
 }
 
+func MenuAttributeIterPrivateGetType() gi.GType {
+	ret := _I.GetGType(167, "MenuAttributeIterPrivate")
+	return ret
+}
+
 // Object MenuItem
 type MenuItem struct {
 	gobject.Object
@@ -19347,6 +20163,10 @@ func WrapMenuItem(p unsafe.Pointer) (r MenuItem) { r.P = p; return }
 type IMenuItem interface{ P_MenuItem() unsafe.Pointer }
 
 func (v MenuItem) P_MenuItem() unsafe.Pointer { return v.P }
+func MenuItemGetType() gi.GType {
+	ret := _I.GetGType(168, "MenuItem")
+	return ret
+}
 
 // g_menu_item_new
 // container is not nil, container is MenuItem
@@ -19636,6 +20456,10 @@ func WrapMenuLinkIter(p unsafe.Pointer) (r MenuLinkIter) { r.P = p; return }
 type IMenuLinkIter interface{ P_MenuLinkIter() unsafe.Pointer }
 
 func (v MenuLinkIter) P_MenuLinkIter() unsafe.Pointer { return v.P }
+func MenuLinkIterGetType() gi.GType {
+	ret := _I.GetGType(169, "MenuLinkIter")
+	return ret
+}
 
 // g_menu_link_iter_get_name
 // container is not nil, container is MenuLinkIter
@@ -19716,6 +20540,11 @@ type MenuLinkIterPrivate struct {
 	P unsafe.Pointer
 }
 
+func MenuLinkIterPrivateGetType() gi.GType {
+	ret := _I.GetGType(170, "MenuLinkIterPrivate")
+	return ret
+}
+
 // Object MenuModel
 type MenuModel struct {
 	gobject.Object
@@ -19726,6 +20555,10 @@ func WrapMenuModel(p unsafe.Pointer) (r MenuModel) { r.P = p; return }
 type IMenuModel interface{ P_MenuModel() unsafe.Pointer }
 
 func (v MenuModel) P_MenuModel() unsafe.Pointer { return v.P }
+func MenuModelGetType() gi.GType {
+	ret := _I.GetGType(171, "MenuModel")
+	return ret
+}
 
 // g_menu_model_get_item_attribute_value
 // container is not nil, container is MenuModel
@@ -19863,12 +20696,22 @@ type MenuModelPrivate struct {
 	P unsafe.Pointer
 }
 
+func MenuModelPrivateGetType() gi.GType {
+	ret := _I.GetGType(172, "MenuModelPrivate")
+	return ret
+}
+
 // Interface Mount
 type Mount struct {
 	MountIfc
 	P unsafe.Pointer
 }
 type MountIfc struct{}
+
+func MountGetType() gi.GType {
+	ret := _I.GetGType(173, "Mount")
+	return ret
+}
 
 // g_mount_can_eject
 // container is not nil, container is Mount
@@ -20404,6 +21247,11 @@ const (
 	MountMountFlagsNone MountMountFlags = 0
 )
 
+func MountMountFlagsGetType() gi.GType {
+	ret := _I.GetGType(174, "MountMountFlags")
+	return ret
+}
+
 // Object MountOperation
 type MountOperation struct {
 	gobject.Object
@@ -20414,6 +21262,10 @@ func WrapMountOperation(p unsafe.Pointer) (r MountOperation) { r.P = p; return }
 type IMountOperation interface{ P_MountOperation() unsafe.Pointer }
 
 func (v MountOperation) P_MountOperation() unsafe.Pointer { return v.P }
+func MountOperationGetType() gi.GType {
+	ret := _I.GetGType(175, "MountOperation")
+	return ret
+}
 
 // g_mount_operation_new
 // container is not nil, container is MountOperation
@@ -20745,6 +21597,11 @@ type MountOperationPrivate struct {
 	P unsafe.Pointer
 }
 
+func MountOperationPrivateGetType() gi.GType {
+	ret := _I.GetGType(176, "MountOperationPrivate")
+	return ret
+}
+
 // Enum MountOperationResult
 type MountOperationResultEnum int
 
@@ -20754,6 +21611,11 @@ const (
 	MountOperationResultUnhandled MountOperationResultEnum = 2
 )
 
+func MountOperationResultGetType() gi.GType {
+	ret := _I.GetGType(177, "MountOperationResult")
+	return ret
+}
+
 // Flags MountUnmountFlags
 type MountUnmountFlags int
 
@@ -20762,9 +21624,19 @@ const (
 	MountUnmountFlagsForce MountUnmountFlags = 1
 )
 
+func MountUnmountFlagsGetType() gi.GType {
+	ret := _I.GetGType(178, "MountUnmountFlags")
+	return ret
+}
+
 // Struct NativeSocketAddress
 type NativeSocketAddress struct {
 	P unsafe.Pointer
+}
+
+func NativeSocketAddressGetType() gi.GType {
+	ret := _I.GetGType(179, "NativeSocketAddress")
+	return ret
 }
 
 // Object NativeVolumeMonitor
@@ -20777,6 +21649,10 @@ func WrapNativeVolumeMonitor(p unsafe.Pointer) (r NativeVolumeMonitor) { r.P = p
 type INativeVolumeMonitor interface{ P_NativeVolumeMonitor() unsafe.Pointer }
 
 func (v NativeVolumeMonitor) P_NativeVolumeMonitor() unsafe.Pointer { return v.P }
+func NativeVolumeMonitorGetType() gi.GType {
+	ret := _I.GetGType(180, "NativeVolumeMonitor")
+	return ret
+}
 
 // ignore GType struct NativeVolumeMonitorClass
 // Object NetworkAddress
@@ -20790,6 +21666,10 @@ func WrapNetworkAddress(p unsafe.Pointer) (r NetworkAddress) { r.P = p; return }
 type INetworkAddress interface{ P_NetworkAddress() unsafe.Pointer }
 
 func (v NetworkAddress) P_NetworkAddress() unsafe.Pointer { return v.P }
+func NetworkAddressGetType() gi.GType {
+	ret := _I.GetGType(181, "NetworkAddress")
+	return ret
+}
 
 // g_network_address_new
 // container is not nil, container is NetworkAddress
@@ -20931,6 +21811,11 @@ type NetworkAddressPrivate struct {
 	P unsafe.Pointer
 }
 
+func NetworkAddressPrivateGetType() gi.GType {
+	ret := _I.GetGType(182, "NetworkAddressPrivate")
+	return ret
+}
+
 // Enum NetworkConnectivity
 type NetworkConnectivityEnum int
 
@@ -20941,12 +21826,22 @@ const (
 	NetworkConnectivityFull    NetworkConnectivityEnum = 4
 )
 
+func NetworkConnectivityGetType() gi.GType {
+	ret := _I.GetGType(183, "NetworkConnectivity")
+	return ret
+}
+
 // Interface NetworkMonitor
 type NetworkMonitor struct {
 	NetworkMonitorIfc
 	P unsafe.Pointer
 }
 type NetworkMonitorIfc struct{}
+
+func NetworkMonitorGetType() gi.GType {
+	ret := _I.GetGType(184, "NetworkMonitor")
+	return ret
+}
 
 // g_network_monitor_can_reach
 // container is not nil, container is NetworkMonitor
@@ -21078,6 +21973,10 @@ func WrapNetworkService(p unsafe.Pointer) (r NetworkService) { r.P = p; return }
 type INetworkService interface{ P_NetworkService() unsafe.Pointer }
 
 func (v NetworkService) P_NetworkService() unsafe.Pointer { return v.P }
+func NetworkServiceGetType() gi.GType {
+	ret := _I.GetGType(185, "NetworkService")
+	return ret
+}
 
 // g_network_service_new
 // container is not nil, container is NetworkService
@@ -21195,6 +22094,11 @@ type NetworkServicePrivate struct {
 	P unsafe.Pointer
 }
 
+func NetworkServicePrivateGetType() gi.GType {
+	ret := _I.GetGType(186, "NetworkServicePrivate")
+	return ret
+}
+
 // Object Notification
 type Notification struct {
 	gobject.Object
@@ -21205,6 +22109,10 @@ func WrapNotification(p unsafe.Pointer) (r Notification) { r.P = p; return }
 type INotification interface{ P_Notification() unsafe.Pointer }
 
 func (v Notification) P_Notification() unsafe.Pointer { return v.P }
+func NotificationGetType() gi.GType {
+	ret := _I.GetGType(187, "Notification")
+	return ret
+}
 
 // g_notification_new
 // container is not nil, container is Notification
@@ -21390,9 +22298,21 @@ const (
 	NotificationPriorityUrgent NotificationPriorityEnum = 3
 )
 
+func NotificationPriorityGetType() gi.GType {
+	ret := _I.GetGType(188, "NotificationPriority")
+	return ret
+}
+
 // Struct OutputMessage
 type OutputMessage struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructOutputMessage = 40
+
+func OutputMessageGetType() gi.GType {
+	ret := _I.GetGType(189, "OutputMessage")
+	return ret
 }
 
 // Object OutputStream
@@ -21405,6 +22325,10 @@ func WrapOutputStream(p unsafe.Pointer) (r OutputStream) { r.P = p; return }
 type IOutputStream interface{ P_OutputStream() unsafe.Pointer }
 
 func (v OutputStream) P_OutputStream() unsafe.Pointer { return v.P }
+func OutputStreamGetType() gi.GType {
+	ret := _I.GetGType(190, "OutputStream")
+	return ret
+}
 
 // g_output_stream_clear_pending
 // container is not nil, container is OutputStream
@@ -21922,6 +22846,11 @@ type OutputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func OutputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(191, "OutputStreamPrivate")
+	return ret
+}
+
 // Flags OutputStreamSpliceFlags
 type OutputStreamSpliceFlags int
 
@@ -21931,9 +22860,21 @@ const (
 	OutputStreamSpliceFlagsCloseTarget OutputStreamSpliceFlags = 2
 )
 
+func OutputStreamSpliceFlagsGetType() gi.GType {
+	ret := _I.GetGType(192, "OutputStreamSpliceFlags")
+	return ret
+}
+
 // Struct OutputVector
 type OutputVector struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructOutputVector = 16
+
+func OutputVectorGetType() gi.GType {
+	ret := _I.GetGType(193, "OutputVector")
+	return ret
 }
 
 // Enum PasswordSave
@@ -21945,6 +22886,11 @@ const (
 	PasswordSavePermanently PasswordSaveEnum = 2
 )
 
+func PasswordSaveGetType() gi.GType {
+	ret := _I.GetGType(194, "PasswordSave")
+	return ret
+}
+
 // Object Permission
 type Permission struct {
 	gobject.Object
@@ -21955,6 +22901,10 @@ func WrapPermission(p unsafe.Pointer) (r Permission) { r.P = p; return }
 type IPermission interface{ P_Permission() unsafe.Pointer }
 
 func (v Permission) P_Permission() unsafe.Pointer { return v.P }
+func PermissionGetType() gi.GType {
+	ret := _I.GetGType(195, "Permission")
+	return ret
+}
 
 // g_permission_acquire
 // container is not nil, container is Permission
@@ -22160,12 +23110,22 @@ type PermissionPrivate struct {
 	P unsafe.Pointer
 }
 
+func PermissionPrivateGetType() gi.GType {
+	ret := _I.GetGType(196, "PermissionPrivate")
+	return ret
+}
+
 // Interface PollableInputStream
 type PollableInputStream struct {
 	PollableInputStreamIfc
 	P unsafe.Pointer
 }
 type PollableInputStreamIfc struct{}
+
+func PollableInputStreamGetType() gi.GType {
+	ret := _I.GetGType(197, "PollableInputStream")
+	return ret
+}
 
 // g_pollable_input_stream_can_poll
 // container is not nil, container is PollableInputStream
@@ -22257,6 +23217,11 @@ type PollableOutputStream struct {
 	P unsafe.Pointer
 }
 type PollableOutputStreamIfc struct{}
+
+func PollableOutputStreamGetType() gi.GType {
+	ret := _I.GetGType(198, "PollableOutputStream")
+	return ret
+}
 
 // g_pollable_output_stream_can_poll
 // container is not nil, container is PollableOutputStream
@@ -22353,6 +23318,10 @@ func WrapPropertyAction(p unsafe.Pointer) (r PropertyAction) { r.P = p; return }
 type IPropertyAction interface{ P_PropertyAction() unsafe.Pointer }
 
 func (v PropertyAction) P_PropertyAction() unsafe.Pointer { return v.P }
+func PropertyActionGetType() gi.GType {
+	ret := _I.GetGType(199, "PropertyAction")
+	return ret
+}
 
 // g_property_action_new
 // container is not nil, container is PropertyAction
@@ -22387,6 +23356,11 @@ type Proxy struct {
 	P unsafe.Pointer
 }
 type ProxyIfc struct{}
+
+func ProxyGetType() gi.GType {
+	ret := _I.GetGType(200, "Proxy")
+	return ret
+}
 
 // g_proxy_get_default_for_protocol
 // container is not nil, container is Proxy
@@ -22521,6 +23495,10 @@ func WrapProxyAddress(p unsafe.Pointer) (r ProxyAddress) { r.P = p; return }
 type IProxyAddress interface{ P_ProxyAddress() unsafe.Pointer }
 
 func (v ProxyAddress) P_ProxyAddress() unsafe.Pointer { return v.P }
+func ProxyAddressGetType() gi.GType {
+	ret := _I.GetGType(201, "ProxyAddress")
+	return ret
+}
 
 // g_proxy_address_new
 // container is not nil, container is ProxyAddress
@@ -22687,6 +23665,10 @@ func WrapProxyAddressEnumerator(p unsafe.Pointer) (r ProxyAddressEnumerator) { r
 type IProxyAddressEnumerator interface{ P_ProxyAddressEnumerator() unsafe.Pointer }
 
 func (v ProxyAddressEnumerator) P_ProxyAddressEnumerator() unsafe.Pointer { return v.P }
+func ProxyAddressEnumeratorGetType() gi.GType {
+	ret := _I.GetGType(202, "ProxyAddressEnumerator")
+	return ret
+}
 
 // ignore GType struct ProxyAddressEnumeratorClass
 // Struct ProxyAddressEnumeratorPrivate
@@ -22694,9 +23676,19 @@ type ProxyAddressEnumeratorPrivate struct {
 	P unsafe.Pointer
 }
 
+func ProxyAddressEnumeratorPrivateGetType() gi.GType {
+	ret := _I.GetGType(203, "ProxyAddressEnumeratorPrivate")
+	return ret
+}
+
 // Struct ProxyAddressPrivate
 type ProxyAddressPrivate struct {
 	P unsafe.Pointer
+}
+
+func ProxyAddressPrivateGetType() gi.GType {
+	ret := _I.GetGType(204, "ProxyAddressPrivate")
+	return ret
 }
 
 // ignore GType struct ProxyInterface
@@ -22706,6 +23698,11 @@ type ProxyResolver struct {
 	P unsafe.Pointer
 }
 type ProxyResolverIfc struct{}
+
+func ProxyResolverGetType() gi.GType {
+	ret := _I.GetGType(205, "ProxyResolver")
+	return ret
+}
 
 // g_proxy_resolver_is_supported
 // container is not nil, container is ProxyResolver
@@ -22805,6 +23802,11 @@ type RemoteActionGroup struct {
 }
 type RemoteActionGroupIfc struct{}
 
+func RemoteActionGroupGetType() gi.GType {
+	ret := _I.GetGType(206, "RemoteActionGroup")
+	return ret
+}
+
 // g_remote_action_group_activate_action_full
 // container is not nil, container is RemoteActionGroup
 // is method
@@ -22854,6 +23856,10 @@ func WrapResolver(p unsafe.Pointer) (r Resolver) { r.P = p; return }
 type IResolver interface{ P_Resolver() unsafe.Pointer }
 
 func (v Resolver) P_Resolver() unsafe.Pointer { return v.P }
+func ResolverGetType() gi.GType {
+	ret := _I.GetGType(207, "Resolver")
+	return ret
+}
 
 // g_resolver_lookup_by_address
 // container is not nil, container is Resolver
@@ -23181,9 +24187,19 @@ const (
 	ResolverErrorInternal         ResolverErrorEnum = 2
 )
 
+func ResolverErrorGetType() gi.GType {
+	ret := _I.GetGType(208, "ResolverError")
+	return ret
+}
+
 // Struct ResolverPrivate
 type ResolverPrivate struct {
 	P unsafe.Pointer
+}
+
+func ResolverPrivateGetType() gi.GType {
+	ret := _I.GetGType(209, "ResolverPrivate")
+	return ret
 }
 
 // Enum ResolverRecordType
@@ -23197,9 +24213,19 @@ const (
 	ResolverRecordTypeNs  ResolverRecordTypeEnum = 5
 )
 
+func ResolverRecordTypeGetType() gi.GType {
+	ret := _I.GetGType(210, "ResolverRecordType")
+	return ret
+}
+
 // Struct Resource
 type Resource struct {
 	P unsafe.Pointer
+}
+
+func ResourceGetType() gi.GType {
+	ret := _I.GetGType(211, "Resource")
+	return ret
 }
 
 // g_resource_new_from_data
@@ -23407,6 +24433,11 @@ const (
 	ResourceErrorInternal ResourceErrorEnum = 1
 )
 
+func ResourceErrorGetType() gi.GType {
+	ret := _I.GetGType(212, "ResourceError")
+	return ret
+}
+
 // Flags ResourceFlags
 type ResourceFlags int
 
@@ -23415,6 +24446,11 @@ const (
 	ResourceFlagsCompressed ResourceFlags = 1
 )
 
+func ResourceFlagsGetType() gi.GType {
+	ret := _I.GetGType(213, "ResourceFlags")
+	return ret
+}
+
 // Flags ResourceLookupFlags
 type ResourceLookupFlags int
 
@@ -23422,12 +24458,22 @@ const (
 	ResourceLookupFlagsNone ResourceLookupFlags = 0
 )
 
+func ResourceLookupFlagsGetType() gi.GType {
+	ret := _I.GetGType(214, "ResourceLookupFlags")
+	return ret
+}
+
 // Interface Seekable
 type Seekable struct {
 	SeekableIfc
 	P unsafe.Pointer
 }
 type SeekableIfc struct{}
+
+func SeekableGetType() gi.GType {
+	ret := _I.GetGType(215, "Seekable")
+	return ret
+}
 
 // g_seekable_can_seek
 // container is not nil, container is Seekable
@@ -23542,6 +24588,10 @@ func WrapSettings(p unsafe.Pointer) (r Settings) { r.P = p; return }
 type ISettings interface{ P_Settings() unsafe.Pointer }
 
 func (v Settings) P_Settings() unsafe.Pointer { return v.P }
+func SettingsGetType() gi.GType {
+	ret := _I.GetGType(216, "Settings")
+	return ret
+}
 
 // g_settings_new
 // container is not nil, container is Settings
@@ -24473,6 +25523,10 @@ func WrapSettingsBackend(p unsafe.Pointer) (r SettingsBackend) { r.P = p; return
 type ISettingsBackend interface{ P_SettingsBackend() unsafe.Pointer }
 
 func (v SettingsBackend) P_SettingsBackend() unsafe.Pointer { return v.P }
+func SettingsBackendGetType() gi.GType {
+	ret := _I.GetGType(217, "SettingsBackend")
+	return ret
+}
 
 // g_settings_backend_flatten_tree
 // container is not nil, container is SettingsBackend
@@ -24610,6 +25664,11 @@ type SettingsBackendPrivate struct {
 	P unsafe.Pointer
 }
 
+func SettingsBackendPrivateGetType() gi.GType {
+	ret := _I.GetGType(218, "SettingsBackendPrivate")
+	return ret
+}
+
 // Flags SettingsBindFlags
 type SettingsBindFlags int
 
@@ -24622,15 +25681,30 @@ const (
 	SettingsBindFlagsInvertBoolean SettingsBindFlags = 16
 )
 
+func SettingsBindFlagsGetType() gi.GType {
+	ret := _I.GetGType(219, "SettingsBindFlags")
+	return ret
+}
+
 // ignore GType struct SettingsClass
 // Struct SettingsPrivate
 type SettingsPrivate struct {
 	P unsafe.Pointer
 }
 
+func SettingsPrivateGetType() gi.GType {
+	ret := _I.GetGType(220, "SettingsPrivate")
+	return ret
+}
+
 // Struct SettingsSchema
 type SettingsSchema struct {
 	P unsafe.Pointer
+}
+
+func SettingsSchemaGetType() gi.GType {
+	ret := _I.GetGType(221, "SettingsSchema")
+	return ret
 }
 
 // g_settings_schema_get_id
@@ -24777,6 +25851,11 @@ func (v SettingsSchema) Unref() {
 // Struct SettingsSchemaKey
 type SettingsSchemaKey struct {
 	P unsafe.Pointer
+}
+
+func SettingsSchemaKeyGetType() gi.GType {
+	ret := _I.GetGType(222, "SettingsSchemaKey")
+	return ret
 }
 
 // g_settings_schema_key_get_default_value
@@ -24935,6 +26014,11 @@ type SettingsSchemaSource struct {
 	P unsafe.Pointer
 }
 
+func SettingsSchemaSourceGetType() gi.GType {
+	ret := _I.GetGType(223, "SettingsSchemaSource")
+	return ret
+}
+
 // g_settings_schema_source_new_from_directory
 // container is not nil, container is SettingsSchemaSource
 // is constructor
@@ -25042,6 +26126,10 @@ func WrapSimpleAction(p unsafe.Pointer) (r SimpleAction) { r.P = p; return }
 type ISimpleAction interface{ P_SimpleAction() unsafe.Pointer }
 
 func (v SimpleAction) P_SimpleAction() unsafe.Pointer { return v.P }
+func SimpleActionGetType() gi.GType {
+	ret := _I.GetGType(224, "SimpleAction")
+	return ret
+}
 
 // g_simple_action_new
 // container is not nil, container is SimpleAction
@@ -25141,6 +26229,10 @@ func WrapSimpleActionGroup(p unsafe.Pointer) (r SimpleActionGroup) { r.P = p; re
 type ISimpleActionGroup interface{ P_SimpleActionGroup() unsafe.Pointer }
 
 func (v SimpleActionGroup) P_SimpleActionGroup() unsafe.Pointer { return v.P }
+func SimpleActionGroupGetType() gi.GType {
+	ret := _I.GetGType(225, "SimpleActionGroup")
+	return ret
+}
 
 // g_simple_action_group_new
 // container is not nil, container is SimpleActionGroup
@@ -25233,6 +26325,11 @@ type SimpleActionGroupPrivate struct {
 	P unsafe.Pointer
 }
 
+func SimpleActionGroupPrivateGetType() gi.GType {
+	ret := _I.GetGType(226, "SimpleActionGroupPrivate")
+	return ret
+}
+
 // Object SimpleAsyncResult
 type SimpleAsyncResult struct {
 	AsyncResultIfc
@@ -25244,6 +26341,10 @@ func WrapSimpleAsyncResult(p unsafe.Pointer) (r SimpleAsyncResult) { r.P = p; re
 type ISimpleAsyncResult interface{ P_SimpleAsyncResult() unsafe.Pointer }
 
 func (v SimpleAsyncResult) P_SimpleAsyncResult() unsafe.Pointer { return v.P }
+func SimpleAsyncResultGetType() gi.GType {
+	ret := _I.GetGType(227, "SimpleAsyncResult")
+	return ret
+}
 
 // g_simple_async_result_new
 // container is not nil, container is SimpleAsyncResult
@@ -25488,6 +26589,10 @@ func WrapSimpleIOStream(p unsafe.Pointer) (r SimpleIOStream) { r.P = p; return }
 type ISimpleIOStream interface{ P_SimpleIOStream() unsafe.Pointer }
 
 func (v SimpleIOStream) P_SimpleIOStream() unsafe.Pointer { return v.P }
+func SimpleIOStreamGetType() gi.GType {
+	ret := _I.GetGType(228, "SimpleIOStream")
+	return ret
+}
 
 // g_simple_io_stream_new
 // container is not nil, container is SimpleIOStream
@@ -25525,6 +26630,10 @@ func WrapSimplePermission(p unsafe.Pointer) (r SimplePermission) { r.P = p; retu
 type ISimplePermission interface{ P_SimplePermission() unsafe.Pointer }
 
 func (v SimplePermission) P_SimplePermission() unsafe.Pointer { return v.P }
+func SimplePermissionGetType() gi.GType {
+	ret := _I.GetGType(229, "SimplePermission")
+	return ret
+}
 
 // g_simple_permission_new
 // container is not nil, container is SimplePermission
@@ -25554,6 +26663,10 @@ func WrapSimpleProxyResolver(p unsafe.Pointer) (r SimpleProxyResolver) { r.P = p
 type ISimpleProxyResolver interface{ P_SimpleProxyResolver() unsafe.Pointer }
 
 func (v SimpleProxyResolver) P_SimpleProxyResolver() unsafe.Pointer { return v.P }
+func SimpleProxyResolverGetType() gi.GType {
+	ret := _I.GetGType(230, "SimpleProxyResolver")
+	return ret
+}
 
 // g_simple_proxy_resolver_new
 // container is not nil, container is SimpleProxyResolver
@@ -25638,6 +26751,11 @@ type SimpleProxyResolverPrivate struct {
 	P unsafe.Pointer
 }
 
+func SimpleProxyResolverPrivateGetType() gi.GType {
+	ret := _I.GetGType(231, "SimpleProxyResolverPrivate")
+	return ret
+}
+
 // Object Socket
 type Socket struct {
 	DatagramBasedIfc
@@ -25650,6 +26768,10 @@ func WrapSocket(p unsafe.Pointer) (r Socket) { r.P = p; return }
 type ISocket interface{ P_Socket() unsafe.Pointer }
 
 func (v Socket) P_Socket() unsafe.Pointer { return v.P }
+func SocketGetType() gi.GType {
+	ret := _I.GetGType(232, "Socket")
+	return ret
+}
 
 // g_socket_new
 // container is not nil, container is Socket
@@ -26858,6 +27980,10 @@ func WrapSocketAddress(p unsafe.Pointer) (r SocketAddress) { r.P = p; return }
 type ISocketAddress interface{ P_SocketAddress() unsafe.Pointer }
 
 func (v SocketAddress) P_SocketAddress() unsafe.Pointer { return v.P }
+func SocketAddressGetType() gi.GType {
+	ret := _I.GetGType(233, "SocketAddress")
+	return ret
+}
 
 // g_socket_address_new_from_native
 // container is not nil, container is SocketAddress
@@ -26943,6 +28069,10 @@ func WrapSocketAddressEnumerator(p unsafe.Pointer) (r SocketAddressEnumerator) {
 type ISocketAddressEnumerator interface{ P_SocketAddressEnumerator() unsafe.Pointer }
 
 func (v SocketAddressEnumerator) P_SocketAddressEnumerator() unsafe.Pointer { return v.P }
+func SocketAddressEnumeratorGetType() gi.GType {
+	ret := _I.GetGType(234, "SocketAddressEnumerator")
+	return ret
+}
 
 // g_socket_address_enumerator_next
 // container is not nil, container is SocketAddressEnumerator
@@ -27021,6 +28151,10 @@ func WrapSocketClient(p unsafe.Pointer) (r SocketClient) { r.P = p; return }
 type ISocketClient interface{ P_SocketClient() unsafe.Pointer }
 
 func (v SocketClient) P_SocketClient() unsafe.Pointer { return v.P }
+func SocketClientGetType() gi.GType {
+	ret := _I.GetGType(235, "SocketClient")
+	return ret
+}
 
 // g_socket_client_new
 // container is not nil, container is SocketClient
@@ -27652,9 +28786,19 @@ const (
 	SocketClientEventComplete         SocketClientEventEnum = 8
 )
 
+func SocketClientEventGetType() gi.GType {
+	ret := _I.GetGType(236, "SocketClientEvent")
+	return ret
+}
+
 // Struct SocketClientPrivate
 type SocketClientPrivate struct {
 	P unsafe.Pointer
+}
+
+func SocketClientPrivateGetType() gi.GType {
+	ret := _I.GetGType(237, "SocketClientPrivate")
+	return ret
 }
 
 // Interface SocketConnectable
@@ -27663,6 +28807,11 @@ type SocketConnectable struct {
 	P unsafe.Pointer
 }
 type SocketConnectableIfc struct{}
+
+func SocketConnectableGetType() gi.GType {
+	ret := _I.GetGType(238, "SocketConnectable")
+	return ret
+}
 
 // g_socket_connectable_enumerate
 // container is not nil, container is SocketConnectable
@@ -27726,6 +28875,10 @@ func WrapSocketConnection(p unsafe.Pointer) (r SocketConnection) { r.P = p; retu
 type ISocketConnection interface{ P_SocketConnection() unsafe.Pointer }
 
 func (v SocketConnection) P_SocketConnection() unsafe.Pointer { return v.P }
+func SocketConnectionGetType() gi.GType {
+	ret := _I.GetGType(239, "SocketConnection")
+	return ret
+}
 
 // g_socket_connection_factory_lookup_type
 // container is not nil, container is SocketConnection
@@ -27918,6 +29071,11 @@ type SocketConnectionPrivate struct {
 	P unsafe.Pointer
 }
 
+func SocketConnectionPrivateGetType() gi.GType {
+	ret := _I.GetGType(240, "SocketConnectionPrivate")
+	return ret
+}
+
 // Object SocketControlMessage
 type SocketControlMessage struct {
 	gobject.Object
@@ -27928,6 +29086,10 @@ func WrapSocketControlMessage(p unsafe.Pointer) (r SocketControlMessage) { r.P =
 type ISocketControlMessage interface{ P_SocketControlMessage() unsafe.Pointer }
 
 func (v SocketControlMessage) P_SocketControlMessage() unsafe.Pointer { return v.P }
+func SocketControlMessageGetType() gi.GType {
+	ret := _I.GetGType(241, "SocketControlMessage")
+	return ret
+}
 
 // g_socket_control_message_deserialize
 // container is not nil, container is SocketControlMessage
@@ -28023,6 +29185,11 @@ type SocketControlMessagePrivate struct {
 	P unsafe.Pointer
 }
 
+func SocketControlMessagePrivateGetType() gi.GType {
+	ret := _I.GetGType(242, "SocketControlMessagePrivate")
+	return ret
+}
+
 // Enum SocketFamily
 type SocketFamilyEnum int
 
@@ -28032,6 +29199,11 @@ const (
 	SocketFamilyIpv4    SocketFamilyEnum = 2
 	SocketFamilyIpv6    SocketFamilyEnum = 10
 )
+
+func SocketFamilyGetType() gi.GType {
+	ret := _I.GetGType(243, "SocketFamily")
+	return ret
+}
 
 // Object SocketListener
 type SocketListener struct {
@@ -28043,6 +29215,10 @@ func WrapSocketListener(p unsafe.Pointer) (r SocketListener) { r.P = p; return }
 type ISocketListener interface{ P_SocketListener() unsafe.Pointer }
 
 func (v SocketListener) P_SocketListener() unsafe.Pointer { return v.P }
+func SocketListenerGetType() gi.GType {
+	ret := _I.GetGType(244, "SocketListener")
+	return ret
+}
 
 // g_socket_listener_new
 // container is not nil, container is SocketListener
@@ -28348,9 +29524,19 @@ const (
 	SocketListenerEventListened  SocketListenerEventEnum = 3
 )
 
+func SocketListenerEventGetType() gi.GType {
+	ret := _I.GetGType(245, "SocketListenerEvent")
+	return ret
+}
+
 // Struct SocketListenerPrivate
 type SocketListenerPrivate struct {
 	P unsafe.Pointer
+}
+
+func SocketListenerPrivateGetType() gi.GType {
+	ret := _I.GetGType(246, "SocketListenerPrivate")
+	return ret
 }
 
 // Flags SocketMsgFlags
@@ -28363,9 +29549,19 @@ const (
 	SocketMsgFlagsDontroute SocketMsgFlags = 4
 )
 
+func SocketMsgFlagsGetType() gi.GType {
+	ret := _I.GetGType(247, "SocketMsgFlags")
+	return ret
+}
+
 // Struct SocketPrivate
 type SocketPrivate struct {
 	P unsafe.Pointer
+}
+
+func SocketPrivateGetType() gi.GType {
+	ret := _I.GetGType(248, "SocketPrivate")
+	return ret
 }
 
 // Enum SocketProtocol
@@ -28379,6 +29575,11 @@ const (
 	SocketProtocolSctp    SocketProtocolEnum = 132
 )
 
+func SocketProtocolGetType() gi.GType {
+	ret := _I.GetGType(249, "SocketProtocol")
+	return ret
+}
+
 // Object SocketService
 type SocketService struct {
 	SocketListener
@@ -28389,6 +29590,10 @@ func WrapSocketService(p unsafe.Pointer) (r SocketService) { r.P = p; return }
 type ISocketService interface{ P_SocketService() unsafe.Pointer }
 
 func (v SocketService) P_SocketService() unsafe.Pointer { return v.P }
+func SocketServiceGetType() gi.GType {
+	ret := _I.GetGType(250, "SocketService")
+	return ret
+}
 
 // g_socket_service_new
 // container is not nil, container is SocketService
@@ -28456,6 +29661,11 @@ type SocketServicePrivate struct {
 	P unsafe.Pointer
 }
 
+func SocketServicePrivateGetType() gi.GType {
+	ret := _I.GetGType(251, "SocketServicePrivate")
+	return ret
+}
+
 // Enum SocketType
 type SocketTypeEnum int
 
@@ -28466,9 +29676,19 @@ const (
 	SocketTypeSeqpacket SocketTypeEnum = 3
 )
 
+func SocketTypeGetType() gi.GType {
+	ret := _I.GetGType(252, "SocketType")
+	return ret
+}
+
 // Struct SrvTarget
 type SrvTarget struct {
 	P unsafe.Pointer
+}
+
+func SrvTargetGetType() gi.GType {
+	ret := _I.GetGType(253, "SrvTarget")
+	return ret
 }
 
 // g_srv_target_new
@@ -28597,6 +29817,13 @@ type StaticResource struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructStaticResource = 40
+
+func StaticResourceGetType() gi.GType {
+	ret := _I.GetGType(254, "StaticResource")
+	return ret
+}
+
 // g_static_resource_fini
 // container is not nil, container is StaticResource
 // is method
@@ -28653,6 +29880,10 @@ func WrapSubprocess(p unsafe.Pointer) (r Subprocess) { r.P = p; return }
 type ISubprocess interface{ P_Subprocess() unsafe.Pointer }
 
 func (v Subprocess) P_Subprocess() unsafe.Pointer { return v.P }
+func SubprocessGetType() gi.GType {
+	ret := _I.GetGType(255, "Subprocess")
+	return ret
+}
 
 // g_subprocess_newv
 // container is not nil, container is Subprocess
@@ -29172,6 +30403,11 @@ const (
 	SubprocessFlagsInheritFds    SubprocessFlags = 128
 )
 
+func SubprocessFlagsGetType() gi.GType {
+	ret := _I.GetGType(256, "SubprocessFlags")
+	return ret
+}
+
 // Object SubprocessLauncher
 type SubprocessLauncher struct {
 	gobject.Object
@@ -29182,6 +30418,10 @@ func WrapSubprocessLauncher(p unsafe.Pointer) (r SubprocessLauncher) { r.P = p; 
 type ISubprocessLauncher interface{ P_SubprocessLauncher() unsafe.Pointer }
 
 func (v SubprocessLauncher) P_SubprocessLauncher() unsafe.Pointer { return v.P }
+func SubprocessLauncherGetType() gi.GType {
+	ret := _I.GetGType(257, "SubprocessLauncher")
+	return ret
+}
 
 // g_subprocess_launcher_new
 // container is not nil, container is SubprocessLauncher
@@ -29448,6 +30688,10 @@ func WrapTask(p unsafe.Pointer) (r Task) { r.P = p; return }
 type ITask interface{ P_Task() unsafe.Pointer }
 
 func (v Task) P_Task() unsafe.Pointer { return v.P }
+func TaskGetType() gi.GType {
+	ret := _I.GetGType(258, "Task")
+	return ret
+}
 
 // g_task_new
 // container is not nil, container is Task
@@ -29918,6 +31162,10 @@ func WrapTcpConnection(p unsafe.Pointer) (r TcpConnection) { r.P = p; return }
 type ITcpConnection interface{ P_TcpConnection() unsafe.Pointer }
 
 func (v TcpConnection) P_TcpConnection() unsafe.Pointer { return v.P }
+func TcpConnectionGetType() gi.GType {
+	ret := _I.GetGType(259, "TcpConnection")
+	return ret
+}
 
 // g_tcp_connection_get_graceful_disconnect
 // container is not nil, container is TcpConnection
@@ -29957,6 +31205,11 @@ type TcpConnectionPrivate struct {
 	P unsafe.Pointer
 }
 
+func TcpConnectionPrivateGetType() gi.GType {
+	ret := _I.GetGType(260, "TcpConnectionPrivate")
+	return ret
+}
+
 // Object TcpWrapperConnection
 type TcpWrapperConnection struct {
 	TcpConnection
@@ -29967,6 +31220,10 @@ func WrapTcpWrapperConnection(p unsafe.Pointer) (r TcpWrapperConnection) { r.P =
 type ITcpWrapperConnection interface{ P_TcpWrapperConnection() unsafe.Pointer }
 
 func (v TcpWrapperConnection) P_TcpWrapperConnection() unsafe.Pointer { return v.P }
+func TcpWrapperConnectionGetType() gi.GType {
+	ret := _I.GetGType(261, "TcpWrapperConnection")
+	return ret
+}
 
 // g_tcp_wrapper_connection_new
 // container is not nil, container is TcpWrapperConnection
@@ -30017,6 +31274,11 @@ type TcpWrapperConnectionPrivate struct {
 	P unsafe.Pointer
 }
 
+func TcpWrapperConnectionPrivateGetType() gi.GType {
+	ret := _I.GetGType(262, "TcpWrapperConnectionPrivate")
+	return ret
+}
+
 // Object TestDBus
 type TestDBus struct {
 	gobject.Object
@@ -30027,6 +31289,10 @@ func WrapTestDBus(p unsafe.Pointer) (r TestDBus) { r.P = p; return }
 type ITestDBus interface{ P_TestDBus() unsafe.Pointer }
 
 func (v TestDBus) P_TestDBus() unsafe.Pointer { return v.P }
+func TestDBusGetType() gi.GType {
+	ret := _I.GetGType(263, "TestDBus")
+	return ret
+}
 
 // g_test_dbus_new
 // container is not nil, container is TestDBus
@@ -30145,6 +31411,11 @@ const (
 	TestDBusFlagsNone TestDBusFlags = 0
 )
 
+func TestDBusFlagsGetType() gi.GType {
+	ret := _I.GetGType(264, "TestDBusFlags")
+	return ret
+}
+
 // Object ThemedIcon
 type ThemedIcon struct {
 	IconIfc
@@ -30156,6 +31427,10 @@ func WrapThemedIcon(p unsafe.Pointer) (r ThemedIcon) { r.P = p; return }
 type IThemedIcon interface{ P_ThemedIcon() unsafe.Pointer }
 
 func (v ThemedIcon) P_ThemedIcon() unsafe.Pointer { return v.P }
+func ThemedIconGetType() gi.GType {
+	ret := _I.GetGType(265, "ThemedIcon")
+	return ret
+}
 
 // g_themed_icon_new
 // container is not nil, container is ThemedIcon
@@ -30277,6 +31552,10 @@ func WrapThreadedSocketService(p unsafe.Pointer) (r ThreadedSocketService) { r.P
 type IThreadedSocketService interface{ P_ThreadedSocketService() unsafe.Pointer }
 
 func (v ThreadedSocketService) P_ThreadedSocketService() unsafe.Pointer { return v.P }
+func ThreadedSocketServiceGetType() gi.GType {
+	ret := _I.GetGType(266, "ThreadedSocketService")
+	return ret
+}
 
 // g_threaded_socket_service_new
 // container is not nil, container is ThreadedSocketService
@@ -30301,6 +31580,11 @@ type ThreadedSocketServicePrivate struct {
 	P unsafe.Pointer
 }
 
+func ThreadedSocketServicePrivateGetType() gi.GType {
+	ret := _I.GetGType(267, "ThreadedSocketServicePrivate")
+	return ret
+}
+
 // Enum TlsAuthenticationMode
 type TlsAuthenticationModeEnum int
 
@@ -30310,12 +31594,22 @@ const (
 	TlsAuthenticationModeRequired  TlsAuthenticationModeEnum = 2
 )
 
+func TlsAuthenticationModeGetType() gi.GType {
+	ret := _I.GetGType(268, "TlsAuthenticationMode")
+	return ret
+}
+
 // Interface TlsBackend
 type TlsBackend struct {
 	TlsBackendIfc
 	P unsafe.Pointer
 }
 type TlsBackendIfc struct{}
+
+func TlsBackendGetType() gi.GType {
+	ret := _I.GetGType(269, "TlsBackend")
+	return ret
+}
 
 // g_tls_backend_get_certificate_type
 // container is not nil, container is TlsBackend
@@ -30481,6 +31775,10 @@ func WrapTlsCertificate(p unsafe.Pointer) (r TlsCertificate) { r.P = p; return }
 type ITlsCertificate interface{ P_TlsCertificate() unsafe.Pointer }
 
 func (v TlsCertificate) P_TlsCertificate() unsafe.Pointer { return v.P }
+func TlsCertificateGetType() gi.GType {
+	ret := _I.GetGType(270, "TlsCertificate")
+	return ret
+}
 
 // g_tls_certificate_new_from_file
 // container is not nil, container is TlsCertificate
@@ -30648,9 +31946,19 @@ const (
 	TlsCertificateFlagsValidateAll  TlsCertificateFlags = 127
 )
 
+func TlsCertificateFlagsGetType() gi.GType {
+	ret := _I.GetGType(271, "TlsCertificateFlags")
+	return ret
+}
+
 // Struct TlsCertificatePrivate
 type TlsCertificatePrivate struct {
 	P unsafe.Pointer
+}
+
+func TlsCertificatePrivateGetType() gi.GType {
+	ret := _I.GetGType(272, "TlsCertificatePrivate")
+	return ret
 }
 
 // Enum TlsCertificateRequestFlags
@@ -30660,12 +31968,22 @@ const (
 	TlsCertificateRequestFlagsNone TlsCertificateRequestFlagsEnum = 0
 )
 
+func TlsCertificateRequestFlagsGetType() gi.GType {
+	ret := _I.GetGType(273, "TlsCertificateRequestFlags")
+	return ret
+}
+
 // Interface TlsClientConnection
 type TlsClientConnection struct {
 	TlsClientConnectionIfc
 	P unsafe.Pointer
 }
 type TlsClientConnectionIfc struct{}
+
+func TlsClientConnectionGetType() gi.GType {
+	ret := _I.GetGType(274, "TlsClientConnection")
+	return ret
+}
 
 // g_tls_client_connection_new
 // container is not nil, container is TlsClientConnection
@@ -30831,6 +32149,10 @@ func WrapTlsConnection(p unsafe.Pointer) (r TlsConnection) { r.P = p; return }
 type ITlsConnection interface{ P_TlsConnection() unsafe.Pointer }
 
 func (v TlsConnection) P_TlsConnection() unsafe.Pointer { return v.P }
+func TlsConnectionGetType() gi.GType {
+	ret := _I.GetGType(275, "TlsConnection")
+	return ret
+}
 
 // g_tls_connection_emit_accept_certificate
 // container is not nil, container is TlsConnection
@@ -31165,6 +32487,11 @@ type TlsConnectionPrivate struct {
 	P unsafe.Pointer
 }
 
+func TlsConnectionPrivateGetType() gi.GType {
+	ret := _I.GetGType(276, "TlsConnectionPrivate")
+	return ret
+}
+
 // Object TlsDatabase
 type TlsDatabase struct {
 	gobject.Object
@@ -31175,6 +32502,10 @@ func WrapTlsDatabase(p unsafe.Pointer) (r TlsDatabase) { r.P = p; return }
 type ITlsDatabase interface{ P_TlsDatabase() unsafe.Pointer }
 
 func (v TlsDatabase) P_TlsDatabase() unsafe.Pointer { return v.P }
+func TlsDatabaseGetType() gi.GType {
+	ret := _I.GetGType(277, "TlsDatabase")
+	return ret
+}
 
 // g_tls_database_create_certificate_handle
 // container is not nil, container is TlsDatabase
@@ -31551,9 +32882,19 @@ const (
 	TlsDatabaseLookupFlagsKeypair TlsDatabaseLookupFlagsEnum = 1
 )
 
+func TlsDatabaseLookupFlagsGetType() gi.GType {
+	ret := _I.GetGType(278, "TlsDatabaseLookupFlags")
+	return ret
+}
+
 // Struct TlsDatabasePrivate
 type TlsDatabasePrivate struct {
 	P unsafe.Pointer
+}
+
+func TlsDatabasePrivateGetType() gi.GType {
+	ret := _I.GetGType(279, "TlsDatabasePrivate")
+	return ret
 }
 
 // Flags TlsDatabaseVerifyFlags
@@ -31562,6 +32903,11 @@ type TlsDatabaseVerifyFlags int
 const (
 	TlsDatabaseVerifyFlagsNone TlsDatabaseVerifyFlags = 0
 )
+
+func TlsDatabaseVerifyFlagsGetType() gi.GType {
+	ret := _I.GetGType(280, "TlsDatabaseVerifyFlags")
+	return ret
+}
 
 // Enum TlsError
 type TlsErrorEnum int
@@ -31576,12 +32922,22 @@ const (
 	TlsErrorEof                 TlsErrorEnum = 6
 )
 
+func TlsErrorGetType() gi.GType {
+	ret := _I.GetGType(281, "TlsError")
+	return ret
+}
+
 // Interface TlsFileDatabase
 type TlsFileDatabase struct {
 	TlsFileDatabaseIfc
 	P unsafe.Pointer
 }
 type TlsFileDatabaseIfc struct{}
+
+func TlsFileDatabaseGetType() gi.GType {
+	ret := _I.GetGType(282, "TlsFileDatabase")
+	return ret
+}
 
 // g_tls_file_database_new
 // container is not nil, container is TlsFileDatabase
@@ -31616,6 +32972,10 @@ func WrapTlsInteraction(p unsafe.Pointer) (r TlsInteraction) { r.P = p; return }
 type ITlsInteraction interface{ P_TlsInteraction() unsafe.Pointer }
 
 func (v TlsInteraction) P_TlsInteraction() unsafe.Pointer { return v.P }
+func TlsInteractionGetType() gi.GType {
+	ret := _I.GetGType(283, "TlsInteraction")
+	return ret
+}
 
 // g_tls_interaction_ask_password
 // container is not nil, container is TlsInteraction
@@ -31834,6 +33194,11 @@ type TlsInteractionPrivate struct {
 	P unsafe.Pointer
 }
 
+func TlsInteractionPrivateGetType() gi.GType {
+	ret := _I.GetGType(284, "TlsInteractionPrivate")
+	return ret
+}
+
 // Enum TlsInteractionResult
 type TlsInteractionResultEnum int
 
@@ -31842,6 +33207,11 @@ const (
 	TlsInteractionResultHandled   TlsInteractionResultEnum = 1
 	TlsInteractionResultFailed    TlsInteractionResultEnum = 2
 )
+
+func TlsInteractionResultGetType() gi.GType {
+	ret := _I.GetGType(285, "TlsInteractionResult")
+	return ret
+}
 
 // Object TlsPassword
 type TlsPassword struct {
@@ -31853,6 +33223,10 @@ func WrapTlsPassword(p unsafe.Pointer) (r TlsPassword) { r.P = p; return }
 type ITlsPassword interface{ P_TlsPassword() unsafe.Pointer }
 
 func (v TlsPassword) P_TlsPassword() unsafe.Pointer { return v.P }
+func TlsPasswordGetType() gi.GType {
+	ret := _I.GetGType(286, "TlsPassword")
+	return ret
+}
 
 // g_tls_password_new
 // container is not nil, container is TlsPassword
@@ -32038,9 +33412,19 @@ const (
 	TlsPasswordFlagsFinalTry  TlsPasswordFlags = 8
 )
 
+func TlsPasswordFlagsGetType() gi.GType {
+	ret := _I.GetGType(287, "TlsPasswordFlags")
+	return ret
+}
+
 // Struct TlsPasswordPrivate
 type TlsPasswordPrivate struct {
 	P unsafe.Pointer
+}
+
+func TlsPasswordPrivateGetType() gi.GType {
+	ret := _I.GetGType(288, "TlsPasswordPrivate")
+	return ret
 }
 
 // Enum TlsRehandshakeMode
@@ -32052,12 +33436,22 @@ const (
 	TlsRehandshakeModeUnsafely TlsRehandshakeModeEnum = 2
 )
 
+func TlsRehandshakeModeGetType() gi.GType {
+	ret := _I.GetGType(289, "TlsRehandshakeMode")
+	return ret
+}
+
 // Interface TlsServerConnection
 type TlsServerConnection struct {
 	TlsServerConnectionIfc
 	P unsafe.Pointer
 }
 type TlsServerConnectionIfc struct{}
+
+func TlsServerConnectionGetType() gi.GType {
+	ret := _I.GetGType(290, "TlsServerConnection")
+	return ret
+}
 
 // g_tls_server_connection_new
 // container is not nil, container is TlsServerConnection
@@ -32099,6 +33493,10 @@ func WrapUnixConnection(p unsafe.Pointer) (r UnixConnection) { r.P = p; return }
 type IUnixConnection interface{ P_UnixConnection() unsafe.Pointer }
 
 func (v UnixConnection) P_UnixConnection() unsafe.Pointer { return v.P }
+func UnixConnectionGetType() gi.GType {
+	ret := _I.GetGType(291, "UnixConnection")
+	return ret
+}
 
 // g_unix_connection_receive_credentials
 // container is not nil, container is UnixConnection
@@ -32285,6 +33683,11 @@ type UnixConnectionPrivate struct {
 	P unsafe.Pointer
 }
 
+func UnixConnectionPrivateGetType() gi.GType {
+	ret := _I.GetGType(292, "UnixConnectionPrivate")
+	return ret
+}
+
 // Object UnixCredentialsMessage
 type UnixCredentialsMessage struct {
 	SocketControlMessage
@@ -32295,6 +33698,10 @@ func WrapUnixCredentialsMessage(p unsafe.Pointer) (r UnixCredentialsMessage) { r
 type IUnixCredentialsMessage interface{ P_UnixCredentialsMessage() unsafe.Pointer }
 
 func (v UnixCredentialsMessage) P_UnixCredentialsMessage() unsafe.Pointer { return v.P }
+func UnixCredentialsMessageGetType() gi.GType {
+	ret := _I.GetGType(293, "UnixCredentialsMessage")
+	return ret
+}
 
 // g_unix_credentials_message_new
 // container is not nil, container is UnixCredentialsMessage
@@ -32355,6 +33762,11 @@ type UnixCredentialsMessagePrivate struct {
 	P unsafe.Pointer
 }
 
+func UnixCredentialsMessagePrivateGetType() gi.GType {
+	ret := _I.GetGType(294, "UnixCredentialsMessagePrivate")
+	return ret
+}
+
 // Object UnixFDList
 type UnixFDList struct {
 	gobject.Object
@@ -32365,6 +33777,10 @@ func WrapUnixFDList(p unsafe.Pointer) (r UnixFDList) { r.P = p; return }
 type IUnixFDList interface{ P_UnixFDList() unsafe.Pointer }
 
 func (v UnixFDList) P_UnixFDList() unsafe.Pointer { return v.P }
+func UnixFDListGetType() gi.GType {
+	ret := _I.GetGType(295, "UnixFDList")
+	return ret
+}
 
 // g_unix_fd_list_new
 // container is not nil, container is UnixFDList
@@ -32509,6 +33925,11 @@ type UnixFDListPrivate struct {
 	P unsafe.Pointer
 }
 
+func UnixFDListPrivateGetType() gi.GType {
+	ret := _I.GetGType(296, "UnixFDListPrivate")
+	return ret
+}
+
 // Object UnixFDMessage
 type UnixFDMessage struct {
 	SocketControlMessage
@@ -32519,6 +33940,10 @@ func WrapUnixFDMessage(p unsafe.Pointer) (r UnixFDMessage) { r.P = p; return }
 type IUnixFDMessage interface{ P_UnixFDMessage() unsafe.Pointer }
 
 func (v UnixFDMessage) P_UnixFDMessage() unsafe.Pointer { return v.P }
+func UnixFDMessageGetType() gi.GType {
+	ret := _I.GetGType(297, "UnixFDMessage")
+	return ret
+}
 
 // g_unix_fd_message_new
 // container is not nil, container is UnixFDMessage
@@ -32622,6 +34047,11 @@ type UnixFDMessagePrivate struct {
 	P unsafe.Pointer
 }
 
+func UnixFDMessagePrivateGetType() gi.GType {
+	ret := _I.GetGType(298, "UnixFDMessagePrivate")
+	return ret
+}
+
 // Object UnixInputStream
 type UnixInputStream struct {
 	FileDescriptorBasedIfc
@@ -32634,6 +34064,10 @@ func WrapUnixInputStream(p unsafe.Pointer) (r UnixInputStream) { r.P = p; return
 type IUnixInputStream interface{ P_UnixInputStream() unsafe.Pointer }
 
 func (v UnixInputStream) P_UnixInputStream() unsafe.Pointer { return v.P }
+func UnixInputStreamGetType() gi.GType {
+	ret := _I.GetGType(299, "UnixInputStream")
+	return ret
+}
 
 // g_unix_input_stream_new
 // container is not nil, container is UnixInputStream
@@ -32708,9 +34142,19 @@ type UnixInputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func UnixInputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(300, "UnixInputStreamPrivate")
+	return ret
+}
+
 // Struct UnixMountEntry
 type UnixMountEntry struct {
 	P unsafe.Pointer
+}
+
+func UnixMountEntryGetType() gi.GType {
+	ret := _I.GetGType(301, "UnixMountEntry")
+	return ret
 }
 
 // Object UnixMountMonitor
@@ -32723,6 +34167,10 @@ func WrapUnixMountMonitor(p unsafe.Pointer) (r UnixMountMonitor) { r.P = p; retu
 type IUnixMountMonitor interface{ P_UnixMountMonitor() unsafe.Pointer }
 
 func (v UnixMountMonitor) P_UnixMountMonitor() unsafe.Pointer { return v.P }
+func UnixMountMonitorGetType() gi.GType {
+	ret := _I.GetGType(302, "UnixMountMonitor")
+	return ret
+}
 
 // g_unix_mount_monitor_new
 // container is not nil, container is UnixMountMonitor
@@ -32758,6 +34206,11 @@ func (v UnixMountMonitor) SetRateLimit(limit_msec int32) {
 // Struct UnixMountPoint
 type UnixMountPoint struct {
 	P unsafe.Pointer
+}
+
+func UnixMountPointGetType() gi.GType {
+	ret := _I.GetGType(303, "UnixMountPoint")
+	return ret
 }
 
 // g_unix_mount_point_compare
@@ -33008,6 +34461,10 @@ func WrapUnixOutputStream(p unsafe.Pointer) (r UnixOutputStream) { r.P = p; retu
 type IUnixOutputStream interface{ P_UnixOutputStream() unsafe.Pointer }
 
 func (v UnixOutputStream) P_UnixOutputStream() unsafe.Pointer { return v.P }
+func UnixOutputStreamGetType() gi.GType {
+	ret := _I.GetGType(304, "UnixOutputStream")
+	return ret
+}
 
 // g_unix_output_stream_new
 // container is not nil, container is UnixOutputStream
@@ -33082,6 +34539,11 @@ type UnixOutputStreamPrivate struct {
 	P unsafe.Pointer
 }
 
+func UnixOutputStreamPrivateGetType() gi.GType {
+	ret := _I.GetGType(305, "UnixOutputStreamPrivate")
+	return ret
+}
+
 // Object UnixSocketAddress
 type UnixSocketAddress struct {
 	SocketConnectableIfc
@@ -33093,6 +34555,10 @@ func WrapUnixSocketAddress(p unsafe.Pointer) (r UnixSocketAddress) { r.P = p; re
 type IUnixSocketAddress interface{ P_UnixSocketAddress() unsafe.Pointer }
 
 func (v UnixSocketAddress) P_UnixSocketAddress() unsafe.Pointer { return v.P }
+func UnixSocketAddressGetType() gi.GType {
+	ret := _I.GetGType(306, "UnixSocketAddress")
+	return ret
+}
 
 // g_unix_socket_address_new
 // container is not nil, container is UnixSocketAddress
@@ -33226,6 +34692,11 @@ type UnixSocketAddressPrivate struct {
 	P unsafe.Pointer
 }
 
+func UnixSocketAddressPrivateGetType() gi.GType {
+	ret := _I.GetGType(307, "UnixSocketAddressPrivate")
+	return ret
+}
+
 // Enum UnixSocketAddressType
 type UnixSocketAddressTypeEnum int
 
@@ -33237,6 +34708,11 @@ const (
 	UnixSocketAddressTypeAbstractPadded UnixSocketAddressTypeEnum = 4
 )
 
+func UnixSocketAddressTypeGetType() gi.GType {
+	ret := _I.GetGType(308, "UnixSocketAddressType")
+	return ret
+}
+
 // Object Vfs
 type Vfs struct {
 	gobject.Object
@@ -33247,6 +34723,10 @@ func WrapVfs(p unsafe.Pointer) (r Vfs) { r.P = p; return }
 type IVfs interface{ P_Vfs() unsafe.Pointer }
 
 func (v Vfs) P_Vfs() unsafe.Pointer { return v.P }
+func VfsGetType() gi.GType {
+	ret := _I.GetGType(309, "Vfs")
+	return ret
+}
 
 // g_vfs_get_file_for_path
 // container is not nil, container is Vfs
@@ -33396,6 +34876,11 @@ type Volume struct {
 	P unsafe.Pointer
 }
 type VolumeIfc struct{}
+
+func VolumeGetType() gi.GType {
+	ret := _I.GetGType(310, "Volume")
+	return ret
+}
 
 // g_volume_can_eject
 // container is not nil, container is Volume
@@ -33769,6 +35254,10 @@ func WrapVolumeMonitor(p unsafe.Pointer) (r VolumeMonitor) { r.P = p; return }
 type IVolumeMonitor interface{ P_VolumeMonitor() unsafe.Pointer }
 
 func (v VolumeMonitor) P_VolumeMonitor() unsafe.Pointer { return v.P }
+func VolumeMonitorGetType() gi.GType {
+	ret := _I.GetGType(311, "VolumeMonitor")
+	return ret
+}
 
 // g_volume_monitor_adopt_orphan_mount
 // container is not nil, container is VolumeMonitor
@@ -33891,6 +35380,10 @@ func WrapZlibCompressor(p unsafe.Pointer) (r ZlibCompressor) { r.P = p; return }
 type IZlibCompressor interface{ P_ZlibCompressor() unsafe.Pointer }
 
 func (v ZlibCompressor) P_ZlibCompressor() unsafe.Pointer { return v.P }
+func ZlibCompressorGetType() gi.GType {
+	ret := _I.GetGType(312, "ZlibCompressor")
+	return ret
+}
 
 // g_zlib_compressor_new
 // container is not nil, container is ZlibCompressor
@@ -33956,6 +35449,11 @@ const (
 	ZlibCompressorFormatRaw  ZlibCompressorFormatEnum = 2
 )
 
+func ZlibCompressorFormatGetType() gi.GType {
+	ret := _I.GetGType(313, "ZlibCompressorFormat")
+	return ret
+}
+
 // Object ZlibDecompressor
 type ZlibDecompressor struct {
 	ConverterIfc
@@ -33967,6 +35465,10 @@ func WrapZlibDecompressor(p unsafe.Pointer) (r ZlibDecompressor) { r.P = p; retu
 type IZlibDecompressor interface{ P_ZlibDecompressor() unsafe.Pointer }
 
 func (v ZlibDecompressor) P_ZlibDecompressor() unsafe.Pointer { return v.P }
+func ZlibDecompressorGetType() gi.GType {
+	ret := _I.GetGType(314, "ZlibDecompressor")
+	return ret
+}
 
 // g_zlib_decompressor_new
 // container is not nil, container is ZlibDecompressor
@@ -35044,19 +36546,16 @@ func DbusGvalueToGvariant(gvalue gobject.Value, type1 glib.VariantType) (result 
 
 // g_dbus_gvariant_to_gvalue
 // container is nil
-func DbusGvariantToGvalue(value glib.Variant) (out_gvalue int /*TODO_TYPE*/) {
+func DbusGvariantToGvalue(value glib.Variant, out_gvalue gobject.Value) {
 	iv, err := _I.Get(1649, "dbus_gvariant_to_gvalue", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_value := gi.NewPointerArgument(value.P)
-	arg_out_gvalue := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_out_gvalue := gi.NewPointerArgument(out_gvalue.P)
 	args := []gi.Argument{arg_value, arg_out_gvalue}
-	iv.Call(args, nil, &outArgs[0])
-	out_gvalue = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // g_dbus_is_address

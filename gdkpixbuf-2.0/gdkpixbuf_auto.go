@@ -26,6 +26,11 @@ const (
 	ColorspaceRgb ColorspaceEnum = 0
 )
 
+func ColorspaceGetType() gi.GType {
+	ret := _I.GetGType(0, "Colorspace")
+	return ret
+}
+
 // Enum InterpType
 type InterpTypeEnum int
 
@@ -35,6 +40,11 @@ const (
 	InterpTypeBilinear InterpTypeEnum = 2
 	InterpTypeHyper    InterpTypeEnum = 3
 )
+
+func InterpTypeGetType() gi.GType {
+	ret := _I.GetGType(1, "InterpType")
+	return ret
+}
 
 // Object Pixbuf
 type Pixbuf struct {
@@ -48,6 +58,10 @@ func WrapPixbuf(p unsafe.Pointer) (r Pixbuf) { r.P = p; return }
 type IPixbuf interface{ P_Pixbuf() unsafe.Pointer }
 
 func (v Pixbuf) P_Pixbuf() unsafe.Pointer { return v.P }
+func PixbufGetType() gi.GType {
+	ret := _I.GetGType(2, "Pixbuf")
+	return ret
+}
 
 // gdk_pixbuf_new
 // container is not nil, container is Pixbuf
@@ -1279,6 +1293,11 @@ const (
 	PixbufAlphaModeFull    PixbufAlphaModeEnum = 1
 )
 
+func PixbufAlphaModeGetType() gi.GType {
+	ret := _I.GetGType(3, "PixbufAlphaMode")
+	return ret
+}
+
 // Object PixbufAnimation
 type PixbufAnimation struct {
 	gobject.Object
@@ -1289,6 +1308,10 @@ func WrapPixbufAnimation(p unsafe.Pointer) (r PixbufAnimation) { r.P = p; return
 type IPixbufAnimation interface{ P_PixbufAnimation() unsafe.Pointer }
 
 func (v PixbufAnimation) P_PixbufAnimation() unsafe.Pointer { return v.P }
+func PixbufAnimationGetType() gi.GType {
+	ret := _I.GetGType(4, "PixbufAnimation")
+	return ret
+}
 
 // gdk_pixbuf_animation_new_from_file
 // container is not nil, container is PixbufAnimation
@@ -1501,6 +1524,10 @@ func WrapPixbufAnimationIter(p unsafe.Pointer) (r PixbufAnimationIter) { r.P = p
 type IPixbufAnimationIter interface{ P_PixbufAnimationIter() unsafe.Pointer }
 
 func (v PixbufAnimationIter) P_PixbufAnimationIter() unsafe.Pointer { return v.P }
+func PixbufAnimationIterGetType() gi.GType {
+	ret := _I.GetGType(5, "PixbufAnimationIter")
+	return ret
+}
 
 // gdk_pixbuf_animation_iter_advance
 // container is not nil, container is PixbufAnimationIter
@@ -1584,9 +1611,19 @@ const (
 	PixbufErrorIncompleteAnimation  PixbufErrorEnum = 6
 )
 
+func PixbufErrorGetType() gi.GType {
+	ret := _I.GetGType(6, "PixbufError")
+	return ret
+}
+
 // Struct PixbufFormat
 type PixbufFormat struct {
 	P unsafe.Pointer
+}
+
+func PixbufFormatGetType() gi.GType {
+	ret := _I.GetGType(7, "PixbufFormat")
+	return ret
 }
 
 // gdk_pixbuf_format_copy
@@ -1803,6 +1840,10 @@ func WrapPixbufLoader(p unsafe.Pointer) (r PixbufLoader) { r.P = p; return }
 type IPixbufLoader interface{ P_PixbufLoader() unsafe.Pointer }
 
 func (v PixbufLoader) P_PixbufLoader() unsafe.Pointer { return v.P }
+func PixbufLoaderGetType() gi.GType {
+	ret := _I.GetGType(8, "PixbufLoader")
+	return ret
+}
 
 // gdk_pixbuf_loader_new
 // container is not nil, container is PixbufLoader
@@ -2000,6 +2041,11 @@ const (
 	PixbufRotationClockwise        PixbufRotationEnum = 270
 )
 
+func PixbufRotationGetType() gi.GType {
+	ret := _I.GetGType(9, "PixbufRotation")
+	return ret
+}
+
 // Object PixbufSimpleAnim
 type PixbufSimpleAnim struct {
 	PixbufAnimation
@@ -2010,6 +2056,10 @@ func WrapPixbufSimpleAnim(p unsafe.Pointer) (r PixbufSimpleAnim) { r.P = p; retu
 type IPixbufSimpleAnim interface{ P_PixbufSimpleAnim() unsafe.Pointer }
 
 func (v PixbufSimpleAnim) P_PixbufSimpleAnim() unsafe.Pointer { return v.P }
+func PixbufSimpleAnimGetType() gi.GType {
+	ret := _I.GetGType(10, "PixbufSimpleAnim")
+	return ret
+}
 
 // gdk_pixbuf_simple_anim_new
 // container is not nil, container is PixbufSimpleAnim
@@ -2092,6 +2142,10 @@ func WrapPixbufSimpleAnimIter(p unsafe.Pointer) (r PixbufSimpleAnimIter) { r.P =
 type IPixbufSimpleAnimIter interface{ P_PixbufSimpleAnimIter() unsafe.Pointer }
 
 func (v PixbufSimpleAnimIter) P_PixbufSimpleAnimIter() unsafe.Pointer { return v.P }
+func PixbufSimpleAnimIterGetType() gi.GType {
+	ret := _I.GetGType(11, "PixbufSimpleAnimIter")
+	return ret
+}
 
 // gdk_pixbuf_error_quark
 // container is nil

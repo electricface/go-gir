@@ -27,9 +27,21 @@ const (
 	AlignmentRight  AlignmentEnum = 2
 )
 
+func AlignmentGetType() gi.GType {
+	ret := _I.GetGType(0, "Alignment")
+	return ret
+}
+
 // Struct Analysis
 type Analysis struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructAnalysis = 48
+
+func AnalysisGetType() gi.GType {
+	ret := _I.GetGType(1, "Analysis")
+	return ret
 }
 
 // Struct AttrClass
@@ -37,9 +49,23 @@ type AttrClass struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructAttrClass = 32
+
+func AttrClassGetType() gi.GType {
+	ret := _I.GetGType(2, "AttrClass")
+	return ret
+}
+
 // Struct AttrColor
 type AttrColor struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructAttrColor = 24
+
+func AttrColorGetType() gi.GType {
+	ret := _I.GetGType(3, "AttrColor")
+	return ret
 }
 
 // Struct AttrFloat
@@ -47,9 +73,23 @@ type AttrFloat struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructAttrFloat = 24
+
+func AttrFloatGetType() gi.GType {
+	ret := _I.GetGType(4, "AttrFloat")
+	return ret
+}
+
 // Struct AttrFontDesc
 type AttrFontDesc struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructAttrFontDesc = 24
+
+func AttrFontDescGetType() gi.GType {
+	ret := _I.GetGType(5, "AttrFontDesc")
+	return ret
 }
 
 // Struct AttrFontFeatures
@@ -57,14 +97,33 @@ type AttrFontFeatures struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructAttrFontFeatures = 24
+
+func AttrFontFeaturesGetType() gi.GType {
+	ret := _I.GetGType(6, "AttrFontFeatures")
+	return ret
+}
+
 // Struct AttrInt
 type AttrInt struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructAttrInt = 24
+
+func AttrIntGetType() gi.GType {
+	ret := _I.GetGType(7, "AttrInt")
+	return ret
+}
+
 // Struct AttrIterator
 type AttrIterator struct {
 	P unsafe.Pointer
+}
+
+func AttrIteratorGetType() gi.GType {
+	ret := _I.GetGType(8, "AttrIterator")
+	return ret
 }
 
 // pango_attr_iterator_get_attrs
@@ -143,9 +202,21 @@ type AttrLanguage struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructAttrLanguage = 24
+
+func AttrLanguageGetType() gi.GType {
+	ret := _I.GetGType(9, "AttrLanguage")
+	return ret
+}
+
 // Struct AttrList
 type AttrList struct {
 	P unsafe.Pointer
+}
+
+func AttrListGetType() gi.GType {
+	ret := _I.GetGType(10, "AttrList")
+	return ret
 }
 
 // pango_attr_list_new
@@ -297,14 +368,35 @@ type AttrShape struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructAttrShape = 72
+
+func AttrShapeGetType() gi.GType {
+	ret := _I.GetGType(11, "AttrShape")
+	return ret
+}
+
 // Struct AttrSize
 type AttrSize struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructAttrSize = 24
+
+func AttrSizeGetType() gi.GType {
+	ret := _I.GetGType(12, "AttrSize")
+	return ret
+}
+
 // Struct AttrString
 type AttrString struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructAttrString = 24
+
+func AttrStringGetType() gi.GType {
+	ret := _I.GetGType(13, "AttrString")
+	return ret
 }
 
 // Enum AttrType
@@ -339,9 +431,21 @@ const (
 	AttrTypeBackgroundAlpha    AttrTypeEnum = 25
 )
 
+func AttrTypeGetType() gi.GType {
+	ret := _I.GetGType(14, "AttrType")
+	return ret
+}
+
 // Struct Attribute
 type Attribute struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructAttribute = 16
+
+func AttributeGetType() gi.GType {
+	ret := _I.GetGType(15, "Attribute")
+	return ret
 }
 
 // pango_attribute_destroy
@@ -416,9 +520,21 @@ const (
 	BidiTypeOn  BidiTypeEnum = 18
 )
 
+func BidiTypeGetType() gi.GType {
+	ret := _I.GetGType(16, "BidiType")
+	return ret
+}
+
 // Struct Color
 type Color struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructColor = 6
+
+func ColorGetType() gi.GType {
+	ret := _I.GetGType(17, "Color")
+	return ret
 }
 
 // pango_color_copy
@@ -499,6 +615,10 @@ func WrapContext(p unsafe.Pointer) (r Context) { r.P = p; return }
 type IContext interface{ P_Context() unsafe.Pointer }
 
 func (v Context) P_Context() unsafe.Pointer { return v.P }
+func ContextGetType() gi.GType {
+	ret := _I.GetGType(18, "Context")
+	return ret
+}
 
 // pango_context_new
 // container is not nil, container is Context
@@ -877,6 +997,11 @@ type Coverage struct {
 	P unsafe.Pointer
 }
 
+func CoverageGetType() gi.GType {
+	ret := _I.GetGType(19, "Coverage")
+	return ret
+}
+
 // pango_coverage_get
 // container is not nil, container is Coverage
 // is method
@@ -974,6 +1099,11 @@ const (
 	CoverageLevelExact       CoverageLevelEnum = 3
 )
 
+func CoverageLevelGetType() gi.GType {
+	ret := _I.GetGType(20, "CoverageLevel")
+	return ret
+}
+
 // Enum Direction
 type DirectionEnum int
 
@@ -987,6 +1117,11 @@ const (
 	DirectionNeutral DirectionEnum = 6
 )
 
+func DirectionGetType() gi.GType {
+	ret := _I.GetGType(21, "Direction")
+	return ret
+}
+
 // Enum EllipsizeMode
 type EllipsizeModeEnum int
 
@@ -996,6 +1131,11 @@ const (
 	EllipsizeModeMiddle EllipsizeModeEnum = 2
 	EllipsizeModeEnd    EllipsizeModeEnum = 3
 )
+
+func EllipsizeModeGetType() gi.GType {
+	ret := _I.GetGType(22, "EllipsizeMode")
+	return ret
+}
 
 // Object Engine
 type Engine struct {
@@ -1007,11 +1147,22 @@ func WrapEngine(p unsafe.Pointer) (r Engine) { r.P = p; return }
 type IEngine interface{ P_Engine() unsafe.Pointer }
 
 func (v Engine) P_Engine() unsafe.Pointer { return v.P }
+func EngineGetType() gi.GType {
+	ret := _I.GetGType(23, "Engine")
+	return ret
+}
 
 // ignore GType struct EngineClass
 // Struct EngineInfo
 type EngineInfo struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEngineInfo = 40
+
+func EngineInfoGetType() gi.GType {
+	ret := _I.GetGType(24, "EngineInfo")
+	return ret
 }
 
 // Object EngineLang
@@ -1024,11 +1175,22 @@ func WrapEngineLang(p unsafe.Pointer) (r EngineLang) { r.P = p; return }
 type IEngineLang interface{ P_EngineLang() unsafe.Pointer }
 
 func (v EngineLang) P_EngineLang() unsafe.Pointer { return v.P }
+func EngineLangGetType() gi.GType {
+	ret := _I.GetGType(25, "EngineLang")
+	return ret
+}
 
 // ignore GType struct EngineLangClass
 // Struct EngineScriptInfo
 type EngineScriptInfo struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEngineScriptInfo = 16
+
+func EngineScriptInfoGetType() gi.GType {
+	ret := _I.GetGType(26, "EngineScriptInfo")
+	return ret
 }
 
 // Object EngineShape
@@ -1041,6 +1203,10 @@ func WrapEngineShape(p unsafe.Pointer) (r EngineShape) { r.P = p; return }
 type IEngineShape interface{ P_EngineShape() unsafe.Pointer }
 
 func (v EngineShape) P_EngineShape() unsafe.Pointer { return v.P }
+func EngineShapeGetType() gi.GType {
+	ret := _I.GetGType(27, "EngineShape")
+	return ret
+}
 
 // ignore GType struct EngineShapeClass
 // Object Font
@@ -1053,6 +1219,10 @@ func WrapFont(p unsafe.Pointer) (r Font) { r.P = p; return }
 type IFont interface{ P_Font() unsafe.Pointer }
 
 func (v Font) P_Font() unsafe.Pointer { return v.P }
+func FontGetType() gi.GType {
+	ret := _I.GetGType(28, "Font")
+	return ret
+}
 
 // pango_font_descriptions_free
 // container is not nil, container is Font
@@ -1144,22 +1314,18 @@ func (v Font) GetFontMap() (result FontMap) {
 // pango_font_get_glyph_extents
 // container is not nil, container is Font
 // is method
-func (v Font) GetGlyphExtents(glyph uint32) (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v Font) GetGlyphExtents(glyph uint32, ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(52, "Font", "get_glyph_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_glyph := gi.NewUint32Argument(glyph)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_glyph, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_font_get_metrics
@@ -1184,6 +1350,11 @@ func (v Font) GetMetrics(language Language) (result FontMetrics) {
 // Struct FontDescription
 type FontDescription struct {
 	P unsafe.Pointer
+}
+
+func FontDescriptionGetType() gi.GType {
+	ret := _I.GetGType(29, "FontDescription")
+	return ret
 }
 
 // pango_font_description_new
@@ -1757,6 +1928,10 @@ func WrapFontFace(p unsafe.Pointer) (r FontFace) { r.P = p; return }
 type IFontFace interface{ P_FontFace() unsafe.Pointer }
 
 func (v FontFace) P_FontFace() unsafe.Pointer { return v.P }
+func FontFaceGetType() gi.GType {
+	ret := _I.GetGType(30, "FontFace")
+	return ret
+}
 
 // pango_font_face_describe
 // container is not nil, container is FontFace
@@ -1844,6 +2019,10 @@ func WrapFontFamily(p unsafe.Pointer) (r FontFamily) { r.P = p; return }
 type IFontFamily interface{ P_FontFamily() unsafe.Pointer }
 
 func (v FontFamily) P_FontFamily() unsafe.Pointer { return v.P }
+func FontFamilyGetType() gi.GType {
+	ret := _I.GetGType(31, "FontFamily")
+	return ret
+}
 
 // pango_font_family_get_name
 // container is not nil, container is FontFamily
@@ -1914,6 +2093,10 @@ func WrapFontMap(p unsafe.Pointer) (r FontMap) { r.P = p; return }
 type IFontMap interface{ P_FontMap() unsafe.Pointer }
 
 func (v FontMap) P_FontMap() unsafe.Pointer { return v.P }
+func FontMapGetType() gi.GType {
+	ret := _I.GetGType(32, "FontMap")
+	return ret
+}
 
 // pango_font_map_changed
 // container is not nil, container is FontMap
@@ -2066,9 +2249,21 @@ const (
 	FontMaskVariations FontMaskFlags = 128
 )
 
+func FontMaskGetType() gi.GType {
+	ret := _I.GetGType(33, "FontMask")
+	return ret
+}
+
 // Struct FontMetrics
 type FontMetrics struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructFontMetrics = 36
+
+func FontMetricsGetType() gi.GType {
+	ret := _I.GetGType(34, "FontMetrics")
+	return ret
 }
 
 // pango_font_metrics_new
@@ -2263,6 +2458,10 @@ func WrapFontset(p unsafe.Pointer) (r Fontset) { r.P = p; return }
 type IFontset interface{ P_Fontset() unsafe.Pointer }
 
 func (v Fontset) P_Fontset() unsafe.Pointer { return v.P }
+func FontsetGetType() gi.GType {
+	ret := _I.GetGType(35, "Fontset")
+	return ret
+}
 
 // pango_fontset_foreach
 // container is not nil, container is Fontset
@@ -2326,6 +2525,10 @@ func WrapFontsetSimple(p unsafe.Pointer) (r FontsetSimple) { r.P = p; return }
 type IFontsetSimple interface{ P_FontsetSimple() unsafe.Pointer }
 
 func (v FontsetSimple) P_FontsetSimple() unsafe.Pointer { return v.P }
+func FontsetSimpleGetType() gi.GType {
+	ret := _I.GetGType(36, "FontsetSimple")
+	return ret
+}
 
 // pango_fontset_simple_new
 // container is not nil, container is FontsetSimple
@@ -2386,14 +2589,35 @@ type GlyphGeometry struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructGlyphGeometry = 12
+
+func GlyphGeometryGetType() gi.GType {
+	ret := _I.GetGType(37, "GlyphGeometry")
+	return ret
+}
+
 // Struct GlyphInfo
 type GlyphInfo struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructGlyphInfo = 20
+
+func GlyphInfoGetType() gi.GType {
+	ret := _I.GetGType(38, "GlyphInfo")
+	return ret
+}
+
 // Struct GlyphItem
 type GlyphItem struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructGlyphItem = 16
+
+func GlyphItemGetType() gi.GType {
+	ret := _I.GetGType(39, "GlyphItem")
+	return ret
 }
 
 // pango_glyph_item_apply_attrs
@@ -2511,6 +2735,13 @@ type GlyphItemIter struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructGlyphItemIter = 40
+
+func GlyphItemIterGetType() gi.GType {
+	ret := _I.GetGType(40, "GlyphItemIter")
+	return ret
+}
+
 // pango_glyph_item_iter_copy
 // container is not nil, container is GlyphItemIter
 // is method
@@ -2623,6 +2854,13 @@ type GlyphString struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructGlyphString = 32
+
+func GlyphStringGetType() gi.GType {
+	ret := _I.GetGType(41, "GlyphString")
+	return ret
+}
+
 // pango_glyph_string_new
 // container is not nil, container is GlyphString
 // is constructor
@@ -2658,38 +2896,33 @@ func (v GlyphString) Copy() (result GlyphString) {
 // pango_glyph_string_extents
 // container is not nil, container is GlyphString
 // is method
-func (v GlyphString) Extents(font IFont) (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v GlyphString) Extents(font IFont, ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(133, "GlyphString", "extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	var tmp unsafe.Pointer
 	if font != nil {
 		tmp = font.P_Font()
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_font := gi.NewPointerArgument(tmp)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_font, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_glyph_string_extents_range
 // container is not nil, container is GlyphString
 // is method
-func (v GlyphString) ExtentsRange(start int32, end int32, font IFont) (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v GlyphString) ExtentsRange(start int32, end int32, font IFont, ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(134, "GlyphString", "extents_range")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	var tmp unsafe.Pointer
 	if font != nil {
 		tmp = font.P_Font()
@@ -2698,13 +2931,10 @@ func (v GlyphString) ExtentsRange(start int32, end int32, font IFont) (ink_rect 
 	arg_start := gi.NewInt32Argument(start)
 	arg_end := gi.NewInt32Argument(end)
 	arg_font := gi.NewPointerArgument(tmp)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_start, arg_end, arg_font, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_glyph_string_free
@@ -2829,6 +3059,13 @@ type GlyphVisAttr struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructGlyphVisAttr = 4
+
+func GlyphVisAttrGetType() gi.GType {
+	ret := _I.GetGType(42, "GlyphVisAttr")
+	return ret
+}
+
 // Enum Gravity
 type GravityEnum int
 
@@ -2840,6 +3077,11 @@ const (
 	GravityAuto  GravityEnum = 4
 )
 
+func GravityGetType() gi.GType {
+	ret := _I.GetGType(43, "Gravity")
+	return ret
+}
+
 // Enum GravityHint
 type GravityHintEnum int
 
@@ -2849,14 +3091,33 @@ const (
 	GravityHintLine    GravityHintEnum = 2
 )
 
+func GravityHintGetType() gi.GType {
+	ret := _I.GetGType(44, "GravityHint")
+	return ret
+}
+
 // Struct IncludedModule
 type IncludedModule struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructIncludedModule = 32
+
+func IncludedModuleGetType() gi.GType {
+	ret := _I.GetGType(45, "IncludedModule")
+	return ret
+}
+
 // Struct Item
 type Item struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructItem = 64
+
+func ItemGetType() gi.GType {
+	ret := _I.GetGType(46, "Item")
+	return ret
 }
 
 // pango_item_new
@@ -2927,6 +3188,11 @@ func (v Item) Split(split_index int32, split_offset int32) (result Item) {
 // Struct Language
 type Language struct {
 	P unsafe.Pointer
+}
+
+func LanguageGetType() gi.GType {
+	ret := _I.GetGType(47, "Language")
+	return ret
 }
 
 // pango_language_get_sample_string
@@ -3054,6 +3320,10 @@ func WrapLayout(p unsafe.Pointer) (r Layout) { r.P = p; return }
 type ILayout interface{ P_Layout() unsafe.Pointer }
 
 func (v Layout) P_Layout() unsafe.Pointer { return v.P }
+func LayoutGetType() gi.GType {
+	ret := _I.GetGType(48, "Layout")
+	return ret
+}
 
 // pango_layout_new
 // container is not nil, container is Layout
@@ -3212,22 +3482,18 @@ func (v Layout) GetContext() (result Context) {
 // pango_layout_get_cursor_pos
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetCursorPos(index_ int32) (strong_pos int /*TODO_TYPE*/, weak_pos int /*TODO_TYPE*/) {
+func (v Layout) GetCursorPos(index_ int32, strong_pos Rectangle, weak_pos Rectangle) {
 	iv, err := _I.Get(161, "Layout", "get_cursor_pos")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_index_ := gi.NewInt32Argument(index_)
-	arg_strong_pos := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_weak_pos := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_strong_pos := gi.NewPointerArgument(strong_pos.P)
+	arg_weak_pos := gi.NewPointerArgument(weak_pos.P)
 	args := []gi.Argument{arg_v, arg_index_, arg_strong_pos, arg_weak_pos}
-	iv.Call(args, nil, &outArgs[0])
-	strong_pos = outArgs[0].Int() /*TODO*/
-	weak_pos = outArgs[1].Int()   /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_get_ellipsize
@@ -3250,21 +3516,17 @@ func (v Layout) GetEllipsize() (result EllipsizeModeEnum) {
 // pango_layout_get_extents
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetExtents() (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v Layout) GetExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(163, "Layout", "get_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_get_font_description
@@ -3488,21 +3750,17 @@ func (v Layout) GetLogAttrsReadonly() (result unsafe.Pointer) {
 // pango_layout_get_pixel_extents
 // container is not nil, container is Layout
 // is method
-func (v Layout) GetPixelExtents() (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v Layout) GetPixelExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(176, "Layout", "get_pixel_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_get_pixel_size
@@ -3706,20 +3964,17 @@ func (v Layout) IndexToLineX(index_ int32, trailing bool) (line int32, x_pos int
 // pango_layout_index_to_pos
 // container is not nil, container is Layout
 // is method
-func (v Layout) IndexToPos(index_ int32) (pos int /*TODO_TYPE*/) {
+func (v Layout) IndexToPos(index_ int32, pos Rectangle) {
 	iv, err := _I.Get(188, "Layout", "index_to_pos")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_index_ := gi.NewInt32Argument(index_)
-	arg_pos := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_pos := gi.NewPointerArgument(pos.P)
 	args := []gi.Argument{arg_v, arg_index_, arg_pos}
-	iv.Call(args, nil, &outArgs[0])
-	pos = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_is_ellipsized
@@ -4064,6 +4319,11 @@ type LayoutIter struct {
 	P unsafe.Pointer
 }
 
+func LayoutIterGetType() gi.GType {
+	ret := _I.GetGType(49, "LayoutIter")
+	return ret
+}
+
 // pango_layout_iter_at_last_line
 // container is not nil, container is LayoutIter
 // is method
@@ -4132,39 +4392,32 @@ func (v LayoutIter) GetBaseline() (result int32) {
 // pango_layout_iter_get_char_extents
 // container is not nil, container is LayoutIter
 // is method
-func (v LayoutIter) GetCharExtents() (logical_rect int /*TODO_TYPE*/) {
+func (v LayoutIter) GetCharExtents(logical_rect Rectangle) {
 	iv, err := _I.Get(213, "LayoutIter", "get_char_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	logical_rect = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_iter_get_cluster_extents
 // container is not nil, container is LayoutIter
 // is method
-func (v LayoutIter) GetClusterExtents() (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v LayoutIter) GetClusterExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(214, "LayoutIter", "get_cluster_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_iter_get_index
@@ -4204,21 +4457,17 @@ func (v LayoutIter) GetLayout() (result Layout) {
 // pango_layout_iter_get_layout_extents
 // container is not nil, container is LayoutIter
 // is method
-func (v LayoutIter) GetLayoutExtents() (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v LayoutIter) GetLayoutExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(217, "LayoutIter", "get_layout_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_iter_get_line
@@ -4241,21 +4490,17 @@ func (v LayoutIter) GetLine() (result LayoutLine) {
 // pango_layout_iter_get_line_extents
 // container is not nil, container is LayoutIter
 // is method
-func (v LayoutIter) GetLineExtents() (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v LayoutIter) GetLineExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(219, "LayoutIter", "get_line_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_iter_get_line_readonly
@@ -4315,21 +4560,17 @@ func (v LayoutIter) GetRun() (result GlyphItem) {
 // pango_layout_iter_get_run_extents
 // container is not nil, container is LayoutIter
 // is method
-func (v LayoutIter) GetRunExtents() (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v LayoutIter) GetRunExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(223, "LayoutIter", "get_run_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_iter_get_run_readonly
@@ -4422,44 +4663,43 @@ type LayoutLine struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructLayoutLine = 32
+
+func LayoutLineGetType() gi.GType {
+	ret := _I.GetGType(50, "LayoutLine")
+	return ret
+}
+
 // pango_layout_line_get_extents
 // container is not nil, container is LayoutLine
 // is method
-func (v LayoutLine) GetExtents() (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v LayoutLine) GetExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(229, "LayoutLine", "get_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_line_get_pixel_extents
 // container is not nil, container is LayoutLine
 // is method
-func (v LayoutLine) GetPixelExtents() (ink_rect int /*TODO_TYPE*/, logical_rect int /*TODO_TYPE*/) {
+func (v LayoutLine) GetPixelExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(230, "LayoutLine", "get_pixel_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_ink_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_logical_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_ink_rect := gi.NewPointerArgument(ink_rect.P)
+	arg_logical_rect := gi.NewPointerArgument(logical_rect.P)
 	args := []gi.Argument{arg_v, arg_ink_rect, arg_logical_rect}
-	iv.Call(args, nil, &outArgs[0])
-	ink_rect = outArgs[0].Int()     /*TODO*/
-	logical_rect = outArgs[1].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // pango_layout_line_get_x_ranges
@@ -4567,9 +4807,21 @@ type LogAttr struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructLogAttr = 52
+
+func LogAttrGetType() gi.GType {
+	ret := _I.GetGType(51, "LogAttr")
+	return ret
+}
+
 // Struct Map
 type Map struct {
 	P unsafe.Pointer
+}
+
+func MapGetType() gi.GType {
+	ret := _I.GetGType(52, "Map")
+	return ret
 }
 
 // Struct MapEntry
@@ -4577,9 +4829,21 @@ type MapEntry struct {
 	P unsafe.Pointer
 }
 
+func MapEntryGetType() gi.GType {
+	ret := _I.GetGType(53, "MapEntry")
+	return ret
+}
+
 // Struct Matrix
 type Matrix struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructMatrix = 48
+
+func MatrixGetType() gi.GType {
+	ret := _I.GetGType(54, "Matrix")
+	return ret
 }
 
 // pango_matrix_concat
@@ -4777,6 +5041,13 @@ type Rectangle struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructRectangle = 16
+
+func RectangleGetType() gi.GType {
+	ret := _I.GetGType(55, "Rectangle")
+	return ret
+}
+
 // Enum RenderPart
 type RenderPartEnum int
 
@@ -4786,6 +5057,11 @@ const (
 	RenderPartUnderline     RenderPartEnum = 2
 	RenderPartStrikethrough RenderPartEnum = 3
 )
+
+func RenderPartGetType() gi.GType {
+	ret := _I.GetGType(56, "RenderPart")
+	return ret
+}
 
 // Object Renderer
 type Renderer struct {
@@ -4797,6 +5073,10 @@ func WrapRenderer(p unsafe.Pointer) (r Renderer) { r.P = p; return }
 type IRenderer interface{ P_Renderer() unsafe.Pointer }
 
 func (v Renderer) P_Renderer() unsafe.Pointer { return v.P }
+func RendererGetType() gi.GType {
+	ret := _I.GetGType(57, "Renderer")
+	return ret
+}
 
 // pango_renderer_activate
 // container is not nil, container is Renderer
@@ -5141,6 +5421,11 @@ type RendererPrivate struct {
 	P unsafe.Pointer
 }
 
+func RendererPrivateGetType() gi.GType {
+	ret := _I.GetGType(58, "RendererPrivate")
+	return ret
+}
+
 // Enum Script
 type ScriptEnum int
 
@@ -5265,9 +5550,19 @@ const (
 	ScriptSignwriting          ScriptEnum = 116
 )
 
+func ScriptGetType() gi.GType {
+	ret := _I.GetGType(59, "Script")
+	return ret
+}
+
 // Struct ScriptIter
 type ScriptIter struct {
 	P unsafe.Pointer
+}
+
+func ScriptIterGetType() gi.GType {
+	ret := _I.GetGType(60, "ScriptIter")
+	return ret
 }
 
 // pango_script_iter_free
@@ -5338,6 +5633,11 @@ const (
 	StretchUltraExpanded  StretchEnum = 8
 )
 
+func StretchGetType() gi.GType {
+	ret := _I.GetGType(61, "Stretch")
+	return ret
+}
+
 // Enum Style
 type StyleEnum int
 
@@ -5347,6 +5647,11 @@ const (
 	StyleItalic  StyleEnum = 2
 )
 
+func StyleGetType() gi.GType {
+	ret := _I.GetGType(62, "Style")
+	return ret
+}
+
 // Enum TabAlign
 type TabAlignEnum int
 
@@ -5354,9 +5659,19 @@ const (
 	TabAlignLeft TabAlignEnum = 0
 )
 
+func TabAlignGetType() gi.GType {
+	ret := _I.GetGType(63, "TabAlign")
+	return ret
+}
+
 // Struct TabArray
 type TabArray struct {
 	P unsafe.Pointer
+}
+
+func TabArrayGetType() gi.GType {
+	ret := _I.GetGType(64, "TabArray")
+	return ret
 }
 
 // pango_tab_array_new
@@ -5466,7 +5781,7 @@ func (v TabArray) GetTab(tab_index int32) (alignment TabAlignEnum, location int3
 // pango_tab_array_get_tabs
 // container is not nil, container is TabArray
 // is method
-func (v TabArray) GetTabs() (alignments int /*TODO_TYPE*/, locations gi.Int32Array) {
+func (v TabArray) GetTabs() (alignments int /*TODO_TYPE tag: ifc, biType: enum*/, locations gi.Int32Array) {
 	iv, err := _I.Get(276, "TabArray", "get_tabs")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5526,6 +5841,11 @@ const (
 	UnderlineError  UnderlineEnum = 4
 )
 
+func UnderlineGetType() gi.GType {
+	ret := _I.GetGType(65, "Underline")
+	return ret
+}
+
 // Enum Variant
 type VariantEnum int
 
@@ -5533,6 +5853,11 @@ const (
 	VariantNormal    VariantEnum = 0
 	VariantSmallCaps VariantEnum = 1
 )
+
+func VariantGetType() gi.GType {
+	ret := _I.GetGType(66, "Variant")
+	return ret
+}
 
 // Enum Weight
 type WeightEnum int
@@ -5552,6 +5877,11 @@ const (
 	WeightUltraheavy WeightEnum = 1000
 )
 
+func WeightGetType() gi.GType {
+	ret := _I.GetGType(67, "Weight")
+	return ret
+}
+
 // Enum WrapMode
 type WrapModeEnum int
 
@@ -5560,6 +5890,11 @@ const (
 	WrapModeChar     WrapModeEnum = 1
 	WrapModeWordChar WrapModeEnum = 2
 )
+
+func WrapModeGetType() gi.GType {
+	ret := _I.GetGType(68, "WrapMode")
+	return ret
+}
 
 // pango_attr_type_get_name
 // container is nil
@@ -6229,19 +6564,17 @@ func QuantizeLineGeometry(thickness int /*TODO:TYPE*/, position int /*TODO:TYPE*
 
 // pango_read_line
 // container is nil
-func ReadLine(stream unsafe.Pointer) (result int32, str int /*TODO_TYPE*/) {
+func ReadLine(stream unsafe.Pointer, str glib.String) (result int32) {
 	iv, err := _I.Get(314, "read_line", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_stream := gi.NewPointerArgument(stream)
-	arg_str := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_str := gi.NewPointerArgument(str.P)
 	args := []gi.Argument{arg_stream, arg_str}
 	var ret gi.Argument
-	iv.Call(args, &ret, &outArgs[0])
-	str = outArgs[0].Int() /*TODO*/
+	iv.Call(args, &ret, nil)
 	result = ret.Int32()
 	return
 }
@@ -6282,36 +6615,34 @@ func ScanInt(pos int /*TODO:TYPE*/) (result bool, out int32) {
 
 // pango_scan_string
 // container is nil
-func ScanString(pos int /*TODO:TYPE*/) (result bool, out int /*TODO_TYPE*/) {
+func ScanString(pos int /*TODO:TYPE*/, out glib.String) (result bool) {
 	iv, err := _I.Get(317, "scan_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
-	arg_out := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	var outArgs [1]gi.Argument
+	arg_out := gi.NewPointerArgument(out.P)
 	args := []gi.Argument{arg_out}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	out = outArgs[0].Int() /*TODO*/
 	result = ret.Bool()
 	return
 }
 
 // pango_scan_word
 // container is nil
-func ScanWord(pos int /*TODO:TYPE*/) (result bool, out int /*TODO_TYPE*/) {
+func ScanWord(pos int /*TODO:TYPE*/, out glib.String) (result bool) {
 	iv, err := _I.Get(318, "scan_word", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
-	arg_out := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	var outArgs [1]gi.Argument
+	arg_out := gi.NewPointerArgument(out.P)
 	args := []gi.Argument{arg_out}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	out = outArgs[0].Int() /*TODO*/
 	result = ret.Bool()
 	return
 }

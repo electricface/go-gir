@@ -21,6 +21,13 @@ type Array struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructArray = 16
+
+func ArrayGetType() gi.GType {
+	ret := _I.GetGType(0, "Array")
+	return ret
+}
+
 // Flags AsciiType
 type AsciiTypeFlags int
 
@@ -38,9 +45,19 @@ const (
 	AsciiTypeXdigit AsciiTypeFlags = 1024
 )
 
+func AsciiTypeGetType() gi.GType {
+	ret := _I.GetGType(1, "AsciiType")
+	return ret
+}
+
 // Struct AsyncQueue
 type AsyncQueue struct {
 	P unsafe.Pointer
+}
+
+func AsyncQueueGetType() gi.GType {
+	ret := _I.GetGType(2, "AsyncQueue")
+	return ret
 }
 
 // g_async_queue_length
@@ -386,6 +403,11 @@ func (v AsyncQueue) UnrefAndUnlock() {
 // Struct BookmarkFile
 type BookmarkFile struct {
 	P unsafe.Pointer
+}
+
+func BookmarkFileGetType() gi.GType {
+	ret := _I.GetGType(3, "BookmarkFile")
+	return ret
 }
 
 // g_bookmark_file_add_application
@@ -1250,9 +1272,21 @@ const (
 	BookmarkFileErrorFileNotFound     BookmarkFileErrorEnum = 7
 )
 
+func BookmarkFileErrorGetType() gi.GType {
+	ret := _I.GetGType(4, "BookmarkFileError")
+	return ret
+}
+
 // Struct ByteArray
 type ByteArray struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructByteArray = 16
+
+func ByteArrayGetType() gi.GType {
+	ret := _I.GetGType(5, "ByteArray")
+	return ret
 }
 
 // g_byte_array_free
@@ -1330,6 +1364,11 @@ func ByteArrayUnref1(array ByteArray) {
 // Struct Bytes
 type Bytes struct {
 	P unsafe.Pointer
+}
+
+func BytesGetType() gi.GType {
+	ret := _I.GetGType(6, "Bytes")
+	return ret
 }
 
 // g_bytes_new
@@ -1558,6 +1597,11 @@ type Checksum struct {
 	P unsafe.Pointer
 }
 
+func ChecksumGetType() gi.GType {
+	ret := _I.GetGType(7, "Checksum")
+	return ret
+}
+
 // g_checksum_new
 // container is not nil, container is Checksum
 // is constructor
@@ -1683,9 +1727,21 @@ const (
 	ChecksumTypeSha384 ChecksumTypeEnum = 4
 )
 
+func ChecksumTypeGetType() gi.GType {
+	ret := _I.GetGType(8, "ChecksumType")
+	return ret
+}
+
 // Struct Cond
 type Cond struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructCond = 16
+
+func CondGetType() gi.GType {
+	ret := _I.GetGType(9, "Cond")
+	return ret
 }
 
 // g_cond_broadcast
@@ -1792,14 +1848,31 @@ const (
 	ConvertErrorEmbeddedNul     ConvertErrorEnum = 7
 )
 
+func ConvertErrorGetType() gi.GType {
+	ret := _I.GetGType(10, "ConvertError")
+	return ret
+}
+
 // Struct Data
 type Data struct {
 	P unsafe.Pointer
 }
 
+func DataGetType() gi.GType {
+	ret := _I.GetGType(11, "Data")
+	return ret
+}
+
 // Struct Date
 type Date struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructDate = 24
+
+func DateGetType() gi.GType {
+	ret := _I.GetGType(12, "Date")
+	return ret
 }
 
 // g_date_new
@@ -2631,6 +2704,11 @@ const (
 	DateDMYYear  DateDMYEnum = 2
 )
 
+func DateDMYGetType() gi.GType {
+	ret := _I.GetGType(13, "DateDMY")
+	return ret
+}
+
 // Enum DateMonth
 type DateMonthEnum int
 
@@ -2650,9 +2728,19 @@ const (
 	DateMonthDecember  DateMonthEnum = 12
 )
 
+func DateMonthGetType() gi.GType {
+	ret := _I.GetGType(14, "DateMonth")
+	return ret
+}
+
 // Struct DateTime
 type DateTime struct {
 	P unsafe.Pointer
+}
+
+func DateTimeGetType() gi.GType {
+	ret := _I.GetGType(15, "DateTime")
+	return ret
 }
 
 // g_date_time_new
@@ -3544,14 +3632,31 @@ const (
 	DateWeekdaySunday     DateWeekdayEnum = 7
 )
 
+func DateWeekdayGetType() gi.GType {
+	ret := _I.GetGType(16, "DateWeekday")
+	return ret
+}
+
 // Struct DebugKey
 type DebugKey struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructDebugKey = 16
+
+func DebugKeyGetType() gi.GType {
+	ret := _I.GetGType(17, "DebugKey")
+	return ret
+}
+
 // Struct Dir
 type Dir struct {
 	P unsafe.Pointer
+}
+
+func DirGetType() gi.GType {
+	ret := _I.GetGType(18, "Dir")
+	return ret
 }
 
 // g_dir_close
@@ -3626,9 +3731,23 @@ type DoubleIEEE754 struct {
 	P unsafe.Pointer
 }
 
+const SizeOfUnionDoubleIEEE754 = 8
+
+func DoubleIEEE754GetType() gi.GType {
+	ret := _I.GetGType(19, "DoubleIEEE754")
+	return ret
+}
+
 // Struct Error
 type Error struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructError = 16
+
+func ErrorGetType() gi.GType {
+	ret := _I.GetGType(20, "Error")
+	return ret
 }
 
 // g_error_new_literal
@@ -3716,6 +3835,11 @@ const (
 	ErrorTypeFloatMalformed    ErrorTypeEnum = 7
 )
 
+func ErrorTypeGetType() gi.GType {
+	ret := _I.GetGType(21, "ErrorType")
+	return ret
+}
+
 // Enum FileError
 type FileErrorEnum int
 
@@ -3747,6 +3871,11 @@ const (
 	FileErrorFailed      FileErrorEnum = 24
 )
 
+func FileErrorGetType() gi.GType {
+	ret := _I.GetGType(22, "FileError")
+	return ret
+}
+
 // Flags FileTest
 type FileTestFlags int
 
@@ -3758,9 +3887,21 @@ const (
 	FileTestExists       FileTestFlags = 16
 )
 
+func FileTestGetType() gi.GType {
+	ret := _I.GetGType(23, "FileTest")
+	return ret
+}
+
 // Union FloatIEEE754
 type FloatIEEE754 struct {
 	P unsafe.Pointer
+}
+
+const SizeOfUnionFloatIEEE754 = 4
+
+func FloatIEEE754GetType() gi.GType {
+	ret := _I.GetGType(24, "FloatIEEE754")
+	return ret
 }
 
 // Flags FormatSizeFlags
@@ -3773,9 +3914,19 @@ const (
 	FormatSizeFlagsBits       FormatSizeFlags = 4
 )
 
+func FormatSizeFlagsGetType() gi.GType {
+	ret := _I.GetGType(25, "FormatSizeFlags")
+	return ret
+}
+
 // Struct HashTable
 type HashTable struct {
 	P unsafe.Pointer
+}
+
+func HashTableGetType() gi.GType {
+	ret := _I.GetGType(26, "HashTable")
+	return ret
 }
 
 // g_hash_table_add
@@ -4044,6 +4195,13 @@ type HashTableIter struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructHashTableIter = 40
+
+func HashTableIterGetType() gi.GType {
+	ret := _I.GetGType(27, "HashTableIter")
+	return ret
+}
+
 // g_hash_table_iter_init
 // container is not nil, container is HashTableIter
 // is method
@@ -4129,6 +4287,11 @@ type Hmac struct {
 	P unsafe.Pointer
 }
 
+func HmacGetType() gi.GType {
+	ret := _I.GetGType(28, "Hmac")
+	return ret
+}
+
 // g_hmac_get_digest
 // container is not nil, container is Hmac
 // is method
@@ -4197,6 +4360,13 @@ func (v Hmac) Update(data gi.Uint8Array, length int64) {
 // Struct Hook
 type Hook struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructHook = 64
+
+func HookGetType() gi.GType {
+	ret := _I.GetGType(29, "Hook")
+	return ret
 }
 
 // g_hook_compare_ids
@@ -4326,9 +4496,21 @@ const (
 	HookFlagMaskMask   HookFlagMaskFlags = 15
 )
 
+func HookFlagMaskGetType() gi.GType {
+	ret := _I.GetGType(30, "HookFlagMask")
+	return ret
+}
+
 // Struct HookList
 type HookList struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructHookList = 56
+
+func HookListGetType() gi.GType {
+	ret := _I.GetGType(31, "HookList")
+	return ret
 }
 
 // g_hook_list_clear
@@ -4393,6 +4575,13 @@ func (v HookList) InvokeCheck(may_recurse bool) {
 // Struct IOChannel
 type IOChannel struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructIOChannel = 136
+
+func IOChannelGetType() gi.GType {
+	ret := _I.GetGType(32, "IOChannel")
+	return ret
 }
 
 // g_io_channel_new_file
@@ -4629,25 +4818,23 @@ func (v IOChannel) Read(buf string, count uint64, bytes_read uint64) (result IOE
 // container is not nil, container is IOChannel
 // is method
 // arg 0 buf lenArgIdx 1
-func (v IOChannel) ReadChars(count uint64) (result IOStatusEnum, buf gi.Uint8Array, bytes_read uint64, err error) {
+func (v IOChannel) ReadChars(buf gi.Uint8Array, count uint64) (result IOStatusEnum, bytes_read uint64, err error) {
 	iv, err := _I.Get(243, "IOChannel", "read_chars")
 	if err != nil {
 		return
 	}
-	var outArgs [3]gi.Argument
+	var outArgs [2]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_buf := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_buf := gi.NewPointerArgument(buf.P)
 	arg_count := gi.NewUint64Argument(count)
-	arg_bytes_read := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
-	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
+	arg_bytes_read := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_buf, arg_count, arg_bytes_read, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	err = gi.ToError(outArgs[2].Pointer())
-	buf.P = outArgs[0].Pointer()
-	bytes_read = outArgs[1].Uint64()
+	err = gi.ToError(outArgs[1].Pointer())
+	bytes_read = outArgs[0].Uint64()
 	result = IOStatusEnum(ret.Int())
-	buf.Len = int(count)
 	return
 }
 
@@ -5056,6 +5243,11 @@ const (
 	IOChannelErrorFailed   IOChannelErrorEnum = 8
 )
 
+func IOChannelErrorGetType() gi.GType {
+	ret := _I.GetGType(33, "IOChannelError")
+	return ret
+}
+
 // Flags IOCondition
 type IOConditionFlags int
 
@@ -5068,6 +5260,11 @@ const (
 	IOConditionNval IOConditionFlags = 32
 )
 
+func IOConditionGetType() gi.GType {
+	ret := _I.GetGType(34, "IOCondition")
+	return ret
+}
+
 // Enum IOError
 type IOErrorEnum int
 
@@ -5077,6 +5274,11 @@ const (
 	IOErrorInval   IOErrorEnum = 2
 	IOErrorUnknown IOErrorEnum = 3
 )
+
+func IOErrorGetType() gi.GType {
+	ret := _I.GetGType(35, "IOError")
+	return ret
+}
 
 // Flags IOFlags
 type IOFlags int
@@ -5093,9 +5295,21 @@ const (
 	IOFlagsSetMask     IOFlags = 3
 )
 
+func IOFlagsGetType() gi.GType {
+	ret := _I.GetGType(36, "IOFlags")
+	return ret
+}
+
 // Struct IOFuncs
 type IOFuncs struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructIOFuncs = 64
+
+func IOFuncsGetType() gi.GType {
+	ret := _I.GetGType(37, "IOFuncs")
+	return ret
 }
 
 // Enum IOStatus
@@ -5108,9 +5322,19 @@ const (
 	IOStatusAgain  IOStatusEnum = 3
 )
 
+func IOStatusGetType() gi.GType {
+	ret := _I.GetGType(38, "IOStatus")
+	return ret
+}
+
 // Struct KeyFile
 type KeyFile struct {
 	P unsafe.Pointer
+}
+
+func KeyFileGetType() gi.GType {
+	ret := _I.GetGType(39, "KeyFile")
+	return ret
 }
 
 // g_key_file_new
@@ -6218,6 +6442,11 @@ const (
 	KeyFileErrorInvalidValue    KeyFileErrorEnum = 5
 )
 
+func KeyFileErrorGetType() gi.GType {
+	ret := _I.GetGType(40, "KeyFileError")
+	return ret
+}
+
 // Flags KeyFileFlags
 type KeyFileFlags int
 
@@ -6227,14 +6456,33 @@ const (
 	KeyFileFlagsKeepTranslations KeyFileFlags = 2
 )
 
+func KeyFileFlagsGetType() gi.GType {
+	ret := _I.GetGType(41, "KeyFileFlags")
+	return ret
+}
+
 // Struct List
 type List struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructList = 24
+
+func ListGetType() gi.GType {
+	ret := _I.GetGType(42, "List")
+	return ret
+}
+
 // Struct LogField
 type LogField struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructLogField = 24
+
+func LogFieldGetType() gi.GType {
+	ret := _I.GetGType(43, "LogField")
+	return ret
 }
 
 // Flags LogLevelFlags
@@ -6252,6 +6500,11 @@ const (
 	LogLevelFlagsLevelMask     LogLevelFlags = -4
 )
 
+func LogLevelFlagsGetType() gi.GType {
+	ret := _I.GetGType(44, "LogLevelFlags")
+	return ret
+}
+
 // Enum LogWriterOutput
 type LogWriterOutputEnum int
 
@@ -6260,9 +6513,19 @@ const (
 	LogWriterOutputUnhandled LogWriterOutputEnum = 0
 )
 
+func LogWriterOutputGetType() gi.GType {
+	ret := _I.GetGType(45, "LogWriterOutput")
+	return ret
+}
+
 // Struct MainContext
 type MainContext struct {
 	P unsafe.Pointer
+}
+
+func MainContextGetType() gi.GType {
+	ret := _I.GetGType(46, "MainContext")
+	return ret
 }
 
 // g_main_context_new
@@ -6523,23 +6786,22 @@ func (v MainContext) PushThreadDefault() {
 // container is not nil, container is MainContext
 // is method
 // arg 2 fds lenArgIdx 3
-func (v MainContext) Query(max_priority int32, n_fds int32) (result int32, timeout_ int32, fds unsafe.Pointer) {
+func (v MainContext) Query(max_priority int32, fds unsafe.Pointer, n_fds int32) (result int32, timeout_ int32) {
 	iv, err := _I.Get(327, "MainContext", "query")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [2]gi.Argument
+	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_max_priority := gi.NewInt32Argument(max_priority)
 	arg_timeout_ := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_fds := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_fds := gi.NewPointerArgument(fds)
 	arg_n_fds := gi.NewInt32Argument(n_fds)
 	args := []gi.Argument{arg_v, arg_max_priority, arg_timeout_, arg_fds, arg_n_fds}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	timeout_ = outArgs[0].Int32()
-	fds = outArgs[1].Pointer()
 	result = ret.Int32()
 	return
 }
@@ -6640,6 +6902,11 @@ func (v MainContext) Wakeup() {
 // Struct MainLoop
 type MainLoop struct {
 	P unsafe.Pointer
+}
+
+func MainLoopGetType() gi.GType {
+	ret := _I.GetGType(47, "MainLoop")
+	return ret
 }
 
 // g_main_loop_new
@@ -6756,6 +7023,11 @@ func (v MainLoop) Unref() {
 // Struct MappedFile
 type MappedFile struct {
 	P unsafe.Pointer
+}
+
+func MappedFileGetType() gi.GType {
+	ret := _I.GetGType(48, "MappedFile")
+	return ret
 }
 
 // g_mapped_file_new
@@ -6908,6 +7180,11 @@ const (
 	MarkupCollectTypeOptional MarkupCollectTypeFlags = 65536
 )
 
+func MarkupCollectTypeGetType() gi.GType {
+	ret := _I.GetGType(49, "MarkupCollectType")
+	return ret
+}
+
 // Enum MarkupError
 type MarkupErrorEnum int
 
@@ -6921,9 +7198,19 @@ const (
 	MarkupErrorMissingAttribute MarkupErrorEnum = 6
 )
 
+func MarkupErrorGetType() gi.GType {
+	ret := _I.GetGType(50, "MarkupError")
+	return ret
+}
+
 // Struct MarkupParseContext
 type MarkupParseContext struct {
 	P unsafe.Pointer
+}
+
+func MarkupParseContextGetType() gi.GType {
+	ret := _I.GetGType(51, "MarkupParseContext")
+	return ret
 }
 
 // g_markup_parse_context_new
@@ -7126,14 +7413,31 @@ const (
 	MarkupParseFlagsIgnoreQualified             MarkupParseFlags = 8
 )
 
+func MarkupParseFlagsGetType() gi.GType {
+	ret := _I.GetGType(52, "MarkupParseFlags")
+	return ret
+}
+
 // Struct MarkupParser
 type MarkupParser struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructMarkupParser = 40
+
+func MarkupParserGetType() gi.GType {
+	ret := _I.GetGType(53, "MarkupParser")
+	return ret
+}
+
 // Struct MatchInfo
 type MatchInfo struct {
 	P unsafe.Pointer
+}
+
+func MatchInfoGetType() gi.GType {
+	ret := _I.GetGType(54, "MatchInfo")
+	return ret
 }
 
 // g_match_info_expand_references
@@ -7416,9 +7720,23 @@ type MemVTable struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructMemVTable = 48
+
+func MemVTableGetType() gi.GType {
+	ret := _I.GetGType(55, "MemVTable")
+	return ret
+}
+
 // Union Mutex
 type Mutex struct {
 	P unsafe.Pointer
+}
+
+const SizeOfUnionMutex = 8
+
+func MutexGetType() gi.GType {
+	ret := _I.GetGType(56, "Mutex")
+	return ret
 }
 
 // g_mutex_clear
@@ -7497,6 +7815,13 @@ func (v Mutex) Unlock() {
 // Struct Node
 type Node struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructNode = 40
+
+func NodeGetType() gi.GType {
+	ret := _I.GetGType(57, "Node")
+	return ret
 }
 
 // g_node_child_index
@@ -7678,6 +8003,11 @@ const (
 	NormalizeModeNfkc           NormalizeModeEnum = 3
 )
 
+func NormalizeModeGetType() gi.GType {
+	ret := _I.GetGType(58, "NormalizeMode")
+	return ret
+}
+
 // Enum NumberParserError
 type NumberParserErrorEnum int
 
@@ -7686,9 +8016,21 @@ const (
 	NumberParserErrorOutOfBounds NumberParserErrorEnum = 1
 )
 
+func NumberParserErrorGetType() gi.GType {
+	ret := _I.GetGType(59, "NumberParserError")
+	return ret
+}
+
 // Struct Once
 type Once struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructOnce = 16
+
+func OnceGetType() gi.GType {
+	ret := _I.GetGType(60, "Once")
+	return ret
 }
 
 // g_once_init_enter
@@ -7734,6 +8076,11 @@ const (
 	OnceStatusReady     OnceStatusEnum = 2
 )
 
+func OnceStatusGetType() gi.GType {
+	ret := _I.GetGType(61, "OnceStatus")
+	return ret
+}
+
 // Enum OptionArg
 type OptionArgEnum int
 
@@ -7749,9 +8096,19 @@ const (
 	OptionArgInt64         OptionArgEnum = 8
 )
 
+func OptionArgGetType() gi.GType {
+	ret := _I.GetGType(62, "OptionArg")
+	return ret
+}
+
 // Struct OptionContext
 type OptionContext struct {
 	P unsafe.Pointer
+}
+
+func OptionContextGetType() gi.GType {
+	ret := _I.GetGType(63, "OptionContext")
+	return ret
 }
 
 // g_option_context_add_group
@@ -8094,6 +8451,13 @@ type OptionEntry struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructOptionEntry = 48
+
+func OptionEntryGetType() gi.GType {
+	ret := _I.GetGType(64, "OptionEntry")
+	return ret
+}
+
 // Enum OptionError
 type OptionErrorEnum int
 
@@ -8102,6 +8466,11 @@ const (
 	OptionErrorBadValue      OptionErrorEnum = 1
 	OptionErrorFailed        OptionErrorEnum = 2
 )
+
+func OptionErrorGetType() gi.GType {
+	ret := _I.GetGType(65, "OptionError")
+	return ret
+}
 
 // Flags OptionFlags
 type OptionFlags int
@@ -8117,9 +8486,19 @@ const (
 	OptionFlagsNoalias     OptionFlags = 64
 )
 
+func OptionFlagsGetType() gi.GType {
+	ret := _I.GetGType(66, "OptionFlags")
+	return ret
+}
+
 // Struct OptionGroup
 type OptionGroup struct {
 	P unsafe.Pointer
+}
+
+func OptionGroupGetType() gi.GType {
+	ret := _I.GetGType(67, "OptionGroup")
+	return ret
 }
 
 // g_option_group_new
@@ -8248,6 +8627,11 @@ type PatternSpec struct {
 	P unsafe.Pointer
 }
 
+func PatternSpecGetType() gi.GType {
+	ret := _I.GetGType(68, "PatternSpec")
+	return ret
+}
+
 // g_pattern_spec_equal
 // container is not nil, container is PatternSpec
 // is method
@@ -8285,9 +8669,23 @@ type PollFD struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructPollFD = 8
+
+func PollFDGetType() gi.GType {
+	ret := _I.GetGType(69, "PollFD")
+	return ret
+}
+
 // Struct Private
 type Private struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructPrivate = 32
+
+func PrivateGetType() gi.GType {
+	ret := _I.GetGType(70, "Private")
+	return ret
 }
 
 // g_private_get
@@ -8342,9 +8740,23 @@ type PtrArray struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructPtrArray = 16
+
+func PtrArrayGetType() gi.GType {
+	ret := _I.GetGType(71, "PtrArray")
+	return ret
+}
+
 // Struct Queue
 type Queue struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructQueue = 24
+
+func QueueGetType() gi.GType {
+	ret := _I.GetGType(72, "Queue")
+	return ret
 }
 
 // g_queue_clear
@@ -8661,6 +9073,13 @@ type RWLock struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructRWLock = 16
+
+func RWLockGetType() gi.GType {
+	ret := _I.GetGType(73, "RWLock")
+	return ret
+}
+
 // g_rw_lock_clear
 // container is not nil, container is RWLock
 // is method
@@ -8782,6 +9201,11 @@ func (v RWLock) WriterUnlock() {
 // Struct Rand
 type Rand struct {
 	P unsafe.Pointer
+}
+
+func RandGetType() gi.GType {
+	ret := _I.GetGType(74, "Rand")
+	return ret
 }
 
 // g_rand_double
@@ -8906,6 +9330,13 @@ type RecMutex struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructRecMutex = 16
+
+func RecMutexGetType() gi.GType {
+	ret := _I.GetGType(75, "RecMutex")
+	return ret
+}
+
 // g_rec_mutex_clear
 // container is not nil, container is RecMutex
 // is method
@@ -8982,6 +9413,11 @@ func (v RecMutex) Unlock() {
 // Struct Regex
 type Regex struct {
 	P unsafe.Pointer
+}
+
+func RegexGetType() gi.GType {
+	ret := _I.GetGType(76, "Regex")
+	return ret
 }
 
 // g_regex_new
@@ -9519,6 +9955,11 @@ const (
 	RegexCompileFlagsJavascriptCompat RegexCompileFlags = 33554432
 )
 
+func RegexCompileFlagsGetType() gi.GType {
+	ret := _I.GetGType(77, "RegexCompileFlags")
+	return ret
+}
+
 // Enum RegexError
 type RegexErrorEnum int
 
@@ -9582,6 +10023,11 @@ const (
 	RegexErrorCharacterValueTooLarge                   RegexErrorEnum = 176
 )
 
+func RegexErrorGetType() gi.GType {
+	ret := _I.GetGType(78, "RegexError")
+	return ret
+}
+
 // Flags RegexMatchFlags
 type RegexMatchFlags int
 
@@ -9603,14 +10049,33 @@ const (
 	RegexMatchFlagsNotemptyAtstart RegexMatchFlags = 268435456
 )
 
+func RegexMatchFlagsGetType() gi.GType {
+	ret := _I.GetGType(79, "RegexMatchFlags")
+	return ret
+}
+
 // Struct SList
 type SList struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructSList = 16
+
+func SListGetType() gi.GType {
+	ret := _I.GetGType(80, "SList")
+	return ret
+}
+
 // Struct Scanner
 type Scanner struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructScanner = 144
+
+func ScannerGetType() gi.GType {
+	ret := _I.GetGType(81, "Scanner")
+	return ret
 }
 
 // g_scanner_cur_line
@@ -9905,6 +10370,13 @@ type ScannerConfig struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructScannerConfig = 128
+
+func ScannerConfigGetType() gi.GType {
+	ret := _I.GetGType(82, "ScannerConfig")
+	return ret
+}
+
 // Enum SeekType
 type SeekTypeEnum int
 
@@ -9914,9 +10386,19 @@ const (
 	SeekTypeEnd SeekTypeEnum = 2
 )
 
+func SeekTypeGetType() gi.GType {
+	ret := _I.GetGType(83, "SeekType")
+	return ret
+}
+
 // Struct Sequence
 type Sequence struct {
 	P unsafe.Pointer
+}
+
+func SequenceGetType() gi.GType {
+	ret := _I.GetGType(84, "Sequence")
+	return ret
 }
 
 // g_sequence_append
@@ -10212,6 +10694,11 @@ type SequenceIter struct {
 	P unsafe.Pointer
 }
 
+func SequenceIterGetType() gi.GType {
+	ret := _I.GetGType(85, "SequenceIter")
+	return ret
+}
+
 // g_sequence_iter_compare
 // container is not nil, container is SequenceIter
 // is method
@@ -10359,6 +10846,11 @@ const (
 	ShellErrorFailed      ShellErrorEnum = 2
 )
 
+func ShellErrorGetType() gi.GType {
+	ret := _I.GetGType(86, "ShellError")
+	return ret
+}
+
 // Enum SliceConfig
 type SliceConfigEnum int
 
@@ -10371,9 +10863,21 @@ const (
 	SliceConfigContentionCounter SliceConfigEnum = 6
 )
 
+func SliceConfigGetType() gi.GType {
+	ret := _I.GetGType(87, "SliceConfig")
+	return ret
+}
+
 // Struct Source
 type Source struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructSource = 96
+
+func SourceGetType() gi.GType {
+	ret := _I.GetGType(88, "Source")
+	return ret
 }
 
 // g_source_new
@@ -10924,14 +11428,33 @@ type SourceCallbackFuncs struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructSourceCallbackFuncs = 24
+
+func SourceCallbackFuncsGetType() gi.GType {
+	ret := _I.GetGType(89, "SourceCallbackFuncs")
+	return ret
+}
+
 // Struct SourceFuncs
 type SourceFuncs struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructSourceFuncs = 48
+
+func SourceFuncsGetType() gi.GType {
+	ret := _I.GetGType(90, "SourceFuncs")
+	return ret
+}
+
 // Struct SourcePrivate
 type SourcePrivate struct {
 	P unsafe.Pointer
+}
+
+func SourcePrivateGetType() gi.GType {
+	ret := _I.GetGType(91, "SourcePrivate")
+	return ret
 }
 
 // Enum SpawnError
@@ -10961,6 +11484,11 @@ const (
 	SpawnErrorFailed      SpawnErrorEnum = 19
 )
 
+func SpawnErrorGetType() gi.GType {
+	ret := _I.GetGType(92, "SpawnError")
+	return ret
+}
+
 // Flags SpawnFlags
 type SpawnFlags int
 
@@ -10977,14 +11505,31 @@ const (
 	SpawnFlagsCloexecPipes         SpawnFlags = 256
 )
 
+func SpawnFlagsGetType() gi.GType {
+	ret := _I.GetGType(93, "SpawnFlags")
+	return ret
+}
+
 // Struct StatBuf
 type StatBuf struct {
 	P unsafe.Pointer
 }
 
+func StatBufGetType() gi.GType {
+	ret := _I.GetGType(94, "StatBuf")
+	return ret
+}
+
 // Struct String
 type String struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructString = 24
+
+func StringGetType() gi.GType {
+	ret := _I.GetGType(95, "String")
+	return ret
 }
 
 // g_string_append
@@ -11507,6 +12052,11 @@ type StringChunk struct {
 	P unsafe.Pointer
 }
 
+func StringChunkGetType() gi.GType {
+	ret := _I.GetGType(96, "StringChunk")
+	return ret
+}
+
 // g_string_chunk_clear
 // container is not nil, container is StringChunk
 // is method
@@ -11601,9 +12151,21 @@ type TestCase struct {
 	P unsafe.Pointer
 }
 
+func TestCaseGetType() gi.GType {
+	ret := _I.GetGType(97, "TestCase")
+	return ret
+}
+
 // Struct TestConfig
 type TestConfig struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructTestConfig = 24
+
+func TestConfigGetType() gi.GType {
+	ret := _I.GetGType(98, "TestConfig")
+	return ret
 }
 
 // Enum TestFileType
@@ -11614,9 +12176,21 @@ const (
 	TestFileTypeBuilt TestFileTypeEnum = 1
 )
 
+func TestFileTypeGetType() gi.GType {
+	ret := _I.GetGType(99, "TestFileType")
+	return ret
+}
+
 // Struct TestLogBuffer
 type TestLogBuffer struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructTestLogBuffer = 16
+
+func TestLogBufferGetType() gi.GType {
+	ret := _I.GetGType(100, "TestLogBuffer")
+	return ret
 }
 
 // g_test_log_buffer_free
@@ -11654,6 +12228,13 @@ type TestLogMsg struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructTestLogMsg = 32
+
+func TestLogMsgGetType() gi.GType {
+	ret := _I.GetGType(101, "TestLogMsg")
+	return ret
+}
+
 // g_test_log_msg_free
 // container is not nil, container is TestLogMsg
 // is method
@@ -11686,6 +12267,11 @@ const (
 	TestLogTypeStopSuite   TestLogTypeEnum = 11
 )
 
+func TestLogTypeGetType() gi.GType {
+	ret := _I.GetGType(102, "TestLogType")
+	return ret
+}
+
 // Enum TestResult
 type TestResultEnum int
 
@@ -11696,6 +12282,11 @@ const (
 	TestResultIncomplete TestResultEnum = 3
 )
 
+func TestResultGetType() gi.GType {
+	ret := _I.GetGType(103, "TestResult")
+	return ret
+}
+
 // Flags TestSubprocessFlags
 type TestSubprocessFlags int
 
@@ -11705,9 +12296,19 @@ const (
 	TestSubprocessFlagsStderr TestSubprocessFlags = 4
 )
 
+func TestSubprocessFlagsGetType() gi.GType {
+	ret := _I.GetGType(104, "TestSubprocessFlags")
+	return ret
+}
+
 // Struct TestSuite
 type TestSuite struct {
 	P unsafe.Pointer
+}
+
+func TestSuiteGetType() gi.GType {
+	ret := _I.GetGType(105, "TestSuite")
+	return ret
 }
 
 // g_test_suite_add
@@ -11749,9 +12350,19 @@ const (
 	TestTrapFlagsInheritStdin  TestTrapFlags = 512
 )
 
+func TestTrapFlagsGetType() gi.GType {
+	ret := _I.GetGType(106, "TestTrapFlags")
+	return ret
+}
+
 // Struct Thread
 type Thread struct {
 	P unsafe.Pointer
+}
+
+func ThreadGetType() gi.GType {
+	ret := _I.GetGType(107, "Thread")
+	return ret
 }
 
 // g_thread_join
@@ -11824,9 +12435,21 @@ const (
 	ThreadErrorThreadErrorAgain ThreadErrorEnum = 0
 )
 
+func ThreadErrorGetType() gi.GType {
+	ret := _I.GetGType(108, "ThreadError")
+	return ret
+}
+
 // Struct ThreadPool
 type ThreadPool struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructThreadPool = 24
+
+func ThreadPoolGetType() gi.GType {
+	ret := _I.GetGType(109, "ThreadPool")
+	return ret
 }
 
 // g_thread_pool_free
@@ -11993,9 +12616,21 @@ const (
 	TimeTypeUniversal TimeTypeEnum = 2
 )
 
+func TimeTypeGetType() gi.GType {
+	ret := _I.GetGType(110, "TimeType")
+	return ret
+}
+
 // Struct TimeVal
 type TimeVal struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructTimeVal = 16
+
+func TimeValGetType() gi.GType {
+	ret := _I.GetGType(111, "TimeVal")
+	return ret
 }
 
 // g_time_val_add
@@ -12034,21 +12669,19 @@ func (v TimeVal) ToIso8601() (result string) {
 // container is not nil, container is TimeVal
 // is method
 // arg0Type tag: utf8, isPtr: true
-func TimeValFromIso86011(iso_date string) (result bool, time_ int /*TODO_TYPE*/) {
+func TimeValFromIso86011(iso_date string, time_ TimeVal) (result bool) {
 	iv, err := _I.Get(624, "TimeVal", "from_iso8601")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	c_iso_date := gi.CString(iso_date)
 	arg_iso_date := gi.NewStringArgument(c_iso_date)
-	arg_time_ := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_time_ := gi.NewPointerArgument(time_.P)
 	args := []gi.Argument{arg_iso_date, arg_time_}
 	var ret gi.Argument
-	iv.Call(args, &ret, &outArgs[0])
+	iv.Call(args, &ret, nil)
 	gi.Free(c_iso_date)
-	time_ = outArgs[0].Int() /*TODO*/
 	result = ret.Bool()
 	return
 }
@@ -12056,6 +12689,11 @@ func TimeValFromIso86011(iso_date string) (result bool, time_ int /*TODO_TYPE*/)
 // Struct TimeZone
 type TimeZone struct {
 	P unsafe.Pointer
+}
+
+func TimeZoneGetType() gi.GType {
+	ret := _I.GetGType(112, "TimeZone")
+	return ret
 }
 
 // g_time_zone_new
@@ -12269,6 +12907,11 @@ type Timer struct {
 	P unsafe.Pointer
 }
 
+func TimerGetType() gi.GType {
+	ret := _I.GetGType(113, "Timer")
+	return ret
+}
+
 // g_timer_continue
 // container is not nil, container is Timer
 // is method
@@ -12386,14 +13029,33 @@ const (
 	TokenTypeCommentMulti   TokenTypeEnum = 269
 )
 
+func TokenTypeGetType() gi.GType {
+	ret := _I.GetGType(114, "TokenType")
+	return ret
+}
+
 // Union TokenValue
 type TokenValue struct {
 	P unsafe.Pointer
 }
 
+const SizeOfUnionTokenValue = 8
+
+func TokenValueGetType() gi.GType {
+	ret := _I.GetGType(115, "TokenValue")
+	return ret
+}
+
 // Struct TrashStack
 type TrashStack struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructTrashStack = 8
+
+func TrashStackGetType() gi.GType {
+	ret := _I.GetGType(116, "TrashStack")
+	return ret
 }
 
 // g_trash_stack_height
@@ -12478,6 +13140,11 @@ const (
 	TraverseFlagsNonLeafs  TraverseFlags = 2
 )
 
+func TraverseFlagsGetType() gi.GType {
+	ret := _I.GetGType(117, "TraverseFlags")
+	return ret
+}
+
 // Enum TraverseType
 type TraverseTypeEnum int
 
@@ -12488,9 +13155,19 @@ const (
 	TraverseTypeLevelOrder TraverseTypeEnum = 3
 )
 
+func TraverseTypeGetType() gi.GType {
+	ret := _I.GetGType(118, "TraverseType")
+	return ret
+}
+
 // Struct Tree
 type Tree struct {
 	P unsafe.Pointer
+}
+
+func TreeGetType() gi.GType {
+	ret := _I.GetGType(119, "Tree")
+	return ret
 }
 
 // g_tree_destroy
@@ -12710,6 +13387,11 @@ const (
 	UnicodeBreakTypeZeroWidthJoiner            UnicodeBreakTypeEnum = 42
 )
 
+func UnicodeBreakTypeGetType() gi.GType {
+	ret := _I.GetGType(120, "UnicodeBreakType")
+	return ret
+}
+
 // Enum UnicodeScript
 type UnicodeScriptEnum int
 
@@ -12866,6 +13548,11 @@ const (
 	UnicodeScriptSogdian               UnicodeScriptEnum = 148
 )
 
+func UnicodeScriptGetType() gi.GType {
+	ret := _I.GetGType(121, "UnicodeScript")
+	return ret
+}
+
 // Enum UnicodeType
 type UnicodeTypeEnum int
 
@@ -12902,6 +13589,11 @@ const (
 	UnicodeTypeSpaceSeparator     UnicodeTypeEnum = 29
 )
 
+func UnicodeTypeGetType() gi.GType {
+	ret := _I.GetGType(122, "UnicodeType")
+	return ret
+}
+
 // Enum UserDirectory
 type UserDirectoryEnum int
 
@@ -12917,9 +13609,19 @@ const (
 	UserDirectoryNDirectories         UserDirectoryEnum = 8
 )
 
+func UserDirectoryGetType() gi.GType {
+	ret := _I.GetGType(123, "UserDirectory")
+	return ret
+}
+
 // Struct Variant
 type Variant struct {
 	P unsafe.Pointer
+}
+
+func VariantGetType() gi.GType {
+	ret := _I.GetGType(124, "Variant")
+	return ret
 }
 
 // g_variant_new_array
@@ -14331,6 +15033,11 @@ type VariantBuilder struct {
 	P unsafe.Pointer
 }
 
+func VariantBuilderGetType() gi.GType {
+	ret := _I.GetGType(125, "VariantBuilder")
+	return ret
+}
+
 // g_variant_builder_new
 // container is not nil, container is VariantBuilder
 // is constructor
@@ -14464,9 +15171,19 @@ const (
 	VariantClassDictEntry  VariantClassEnum = 123
 )
 
+func VariantClassGetType() gi.GType {
+	ret := _I.GetGType(126, "VariantClass")
+	return ret
+}
+
 // Struct VariantDict
 type VariantDict struct {
 	P unsafe.Pointer
+}
+
+func VariantDictGetType() gi.GType {
+	ret := _I.GetGType(127, "VariantDict")
+	return ret
 }
 
 // g_variant_dict_new
@@ -14651,9 +15368,19 @@ const (
 	VariantParseErrorValueExpected              VariantParseErrorEnum = 17
 )
 
+func VariantParseErrorGetType() gi.GType {
+	ret := _I.GetGType(128, "VariantParseError")
+	return ret
+}
+
 // Struct VariantType
 type VariantType struct {
 	P unsafe.Pointer
+}
+
+func VariantTypeGetType() gi.GType {
+	ret := _I.GetGType(129, "VariantType")
+	return ret
 }
 
 // g_variant_type_new
@@ -22436,21 +23163,19 @@ func ThreadYield() {
 
 // g_time_val_from_iso8601
 // container is nil
-func TimeValFromIso8601(iso_date string) (result bool, time_ int /*TODO_TYPE*/) {
+func TimeValFromIso8601(iso_date string, time_ TimeVal) (result bool) {
 	iv, err := _I.Get(1198, "time_val_from_iso8601", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	c_iso_date := gi.CString(iso_date)
 	arg_iso_date := gi.NewStringArgument(c_iso_date)
-	arg_time_ := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_time_ := gi.NewPointerArgument(time_.P)
 	args := []gi.Argument{arg_iso_date, arg_time_}
 	var ret gi.Argument
-	iv.Call(args, &ret, &outArgs[0])
+	iv.Call(args, &ret, nil)
 	gi.Free(c_iso_date)
-	time_ = outArgs[0].Int() /*TODO*/
 	result = ret.Bool()
 	return
 }

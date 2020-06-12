@@ -37,6 +37,11 @@ const (
 	AnchorHintsResize  AnchorHintsFlags = 48
 )
 
+func AnchorHintsGetType() gi.GType {
+	ret := _I.GetGType(0, "AnchorHints")
+	return ret
+}
+
 // Object AppLaunchContext
 type AppLaunchContext struct {
 	gio.AppLaunchContext
@@ -47,6 +52,10 @@ func WrapAppLaunchContext(p unsafe.Pointer) (r AppLaunchContext) { r.P = p; retu
 type IAppLaunchContext interface{ P_AppLaunchContext() unsafe.Pointer }
 
 func (v AppLaunchContext) P_AppLaunchContext() unsafe.Pointer { return v.P }
+func AppLaunchContextGetType() gi.GType {
+	ret := _I.GetGType(1, "AppLaunchContext")
+	return ret
+}
 
 // gdk_app_launch_context_new
 // container is not nil, container is AppLaunchContext
@@ -168,6 +177,11 @@ type Atom struct {
 	P unsafe.Pointer
 }
 
+func AtomGetType() gi.GType {
+	ret := _I.GetGType(2, "Atom")
+	return ret
+}
+
 // gdk_atom_name
 // container is not nil, container is Atom
 // is method
@@ -241,6 +255,11 @@ const (
 	AxisFlagsSlider   AxisFlags = 512
 )
 
+func AxisFlagsGetType() gi.GType {
+	ret := _I.GetGType(3, "AxisFlags")
+	return ret
+}
+
 // Enum AxisUse
 type AxisUseEnum int
 
@@ -258,6 +277,11 @@ const (
 	AxisUseLast     AxisUseEnum = 10
 )
 
+func AxisUseGetType() gi.GType {
+	ret := _I.GetGType(4, "AxisUse")
+	return ret
+}
+
 // Enum ByteOrder
 type ByteOrderEnum int
 
@@ -266,9 +290,21 @@ const (
 	ByteOrderMsbFirst ByteOrderEnum = 1
 )
 
+func ByteOrderGetType() gi.GType {
+	ret := _I.GetGType(5, "ByteOrder")
+	return ret
+}
+
 // Struct Color
 type Color struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructColor = 12
+
+func ColorGetType() gi.GType {
+	ret := _I.GetGType(6, "Color")
+	return ret
 }
 
 // gdk_color_copy
@@ -358,21 +394,19 @@ func (v Color) ToString() (result string) {
 // container is not nil, container is Color
 // is method
 // arg0Type tag: utf8, isPtr: true
-func ColorParse1(spec string) (result bool, color int /*TODO_TYPE*/) {
+func ColorParse1(spec string, color Color) (result bool) {
 	iv, err := _I.Get(15, "Color", "parse")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	c_spec := gi.CString(spec)
 	arg_spec := gi.NewStringArgument(c_spec)
-	arg_color := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_color := gi.NewPointerArgument(color.P)
 	args := []gi.Argument{arg_spec, arg_color}
 	var ret gi.Argument
-	iv.Call(args, &ret, &outArgs[0])
+	iv.Call(args, &ret, nil)
 	gi.Free(c_spec)
-	color = outArgs[0].Int() /*TODO*/
 	result = ret.Bool()
 	return
 }
@@ -392,6 +426,11 @@ const (
 	CrossingModeDeviceSwitch CrossingModeEnum = 8
 )
 
+func CrossingModeGetType() gi.GType {
+	ret := _I.GetGType(7, "CrossingMode")
+	return ret
+}
+
 // Object Cursor
 type Cursor struct {
 	gobject.Object
@@ -402,6 +441,10 @@ func WrapCursor(p unsafe.Pointer) (r Cursor) { r.P = p; return }
 type ICursor interface{ P_Cursor() unsafe.Pointer }
 
 func (v Cursor) P_Cursor() unsafe.Pointer { return v.P }
+func CursorGetType() gi.GType {
+	ret := _I.GetGType(8, "Cursor")
+	return ret
+}
 
 // gdk_cursor_new
 // container is not nil, container is Cursor
@@ -708,6 +751,11 @@ const (
 	CursorTypeCursorIsPixmap    CursorTypeEnum = -1
 )
 
+func CursorTypeGetType() gi.GType {
+	ret := _I.GetGType(9, "CursorType")
+	return ret
+}
+
 // Object Device
 type Device struct {
 	gobject.Object
@@ -718,6 +766,10 @@ func WrapDevice(p unsafe.Pointer) (r Device) { r.P = p; return }
 type IDevice interface{ P_Device() unsafe.Pointer }
 
 func (v Device) P_Device() unsafe.Pointer { return v.P }
+func DeviceGetType() gi.GType {
+	ret := _I.GetGType(10, "Device")
+	return ret
+}
 
 // gdk_device_grab_info_libgtk_only
 // container is not nil, container is Device
@@ -1280,6 +1332,10 @@ func WrapDeviceManager(p unsafe.Pointer) (r DeviceManager) { r.P = p; return }
 type IDeviceManager interface{ P_DeviceManager() unsafe.Pointer }
 
 func (v DeviceManager) P_DeviceManager() unsafe.Pointer { return v.P }
+func DeviceManagerGetType() gi.GType {
+	ret := _I.GetGType(11, "DeviceManager")
+	return ret
+}
 
 // gdk_device_manager_get_client_pointer
 // container is not nil, container is DeviceManager
@@ -1339,6 +1395,11 @@ type DevicePad struct {
 	P unsafe.Pointer
 }
 type DevicePadIfc struct{}
+
+func DevicePadGetType() gi.GType {
+	ret := _I.GetGType(12, "DevicePad")
+	return ret
+}
 
 // gdk_device_pad_get_feature_group
 // container is not nil, container is DevicePad
@@ -1421,6 +1482,11 @@ const (
 	DevicePadFeatureStrip  DevicePadFeatureEnum = 2
 )
 
+func DevicePadFeatureGetType() gi.GType {
+	ret := _I.GetGType(13, "DevicePadFeature")
+	return ret
+}
+
 // ignore GType struct DevicePadInterface
 // Object DeviceTool
 type DeviceTool struct {
@@ -1432,6 +1498,10 @@ func WrapDeviceTool(p unsafe.Pointer) (r DeviceTool) { r.P = p; return }
 type IDeviceTool interface{ P_DeviceTool() unsafe.Pointer }
 
 func (v DeviceTool) P_DeviceTool() unsafe.Pointer { return v.P }
+func DeviceToolGetType() gi.GType {
+	ret := _I.GetGType(14, "DeviceTool")
+	return ret
+}
 
 // gdk_device_tool_get_hardware_id
 // container is not nil, container is DeviceTool
@@ -1498,6 +1568,11 @@ const (
 	DeviceToolTypeLens     DeviceToolTypeEnum = 7
 )
 
+func DeviceToolTypeGetType() gi.GType {
+	ret := _I.GetGType(15, "DeviceToolType")
+	return ret
+}
+
 // Enum DeviceType
 type DeviceTypeEnum int
 
@@ -1506,6 +1581,11 @@ const (
 	DeviceTypeSlave    DeviceTypeEnum = 1
 	DeviceTypeFloating DeviceTypeEnum = 2
 )
+
+func DeviceTypeGetType() gi.GType {
+	ret := _I.GetGType(16, "DeviceType")
+	return ret
+}
 
 // Object Display
 type Display struct {
@@ -1517,6 +1597,10 @@ func WrapDisplay(p unsafe.Pointer) (r Display) { r.P = p; return }
 type IDisplay interface{ P_Display() unsafe.Pointer }
 
 func (v Display) P_Display() unsafe.Pointer { return v.P }
+func DisplayGetType() gi.GType {
+	ret := _I.GetGType(17, "Display")
+	return ret
+}
 
 // gdk_display_open
 // container is not nil, container is Display
@@ -2331,6 +2415,10 @@ func WrapDisplayManager(p unsafe.Pointer) (r DisplayManager) { r.P = p; return }
 type IDisplayManager interface{ P_DisplayManager() unsafe.Pointer }
 
 func (v DisplayManager) P_DisplayManager() unsafe.Pointer { return v.P }
+func DisplayManagerGetType() gi.GType {
+	ret := _I.GetGType(18, "DisplayManager")
+	return ret
+}
 
 // gdk_display_manager_get_default_display
 // container is not nil, container is DisplayManager
@@ -2417,6 +2505,11 @@ const (
 	DragActionAsk     DragActionFlags = 32
 )
 
+func DragActionGetType() gi.GType {
+	ret := _I.GetGType(19, "DragAction")
+	return ret
+}
+
 // Enum DragCancelReason
 type DragCancelReasonEnum int
 
@@ -2425,6 +2518,11 @@ const (
 	DragCancelReasonUserCancelled DragCancelReasonEnum = 1
 	DragCancelReasonError         DragCancelReasonEnum = 2
 )
+
+func DragCancelReasonGetType() gi.GType {
+	ret := _I.GetGType(20, "DragCancelReason")
+	return ret
+}
 
 // Object DragContext
 type DragContext struct {
@@ -2436,6 +2534,10 @@ func WrapDragContext(p unsafe.Pointer) (r DragContext) { r.P = p; return }
 type IDragContext interface{ P_DragContext() unsafe.Pointer }
 
 func (v DragContext) P_DragContext() unsafe.Pointer { return v.P }
+func DragContextGetType() gi.GType {
+	ret := _I.GetGType(21, "DragContext")
+	return ret
+}
 
 // gdk_drag_context_get_actions
 // container is not nil, container is DragContext
@@ -2662,6 +2764,11 @@ const (
 	DragProtocolWayland        DragProtocolEnum = 7
 )
 
+func DragProtocolGetType() gi.GType {
+	ret := _I.GetGType(22, "DragProtocol")
+	return ret
+}
+
 // Object DrawingContext
 type DrawingContext struct {
 	gobject.Object
@@ -2672,6 +2779,10 @@ func WrapDrawingContext(p unsafe.Pointer) (r DrawingContext) { r.P = p; return }
 type IDrawingContext interface{ P_DrawingContext() unsafe.Pointer }
 
 func (v DrawingContext) P_DrawingContext() unsafe.Pointer { return v.P }
+func DrawingContextGetType() gi.GType {
+	ret := _I.GetGType(23, "DrawingContext")
+	return ret
+}
 
 // gdk_drawing_context_get_cairo_context
 // container is not nil, container is DrawingContext
@@ -2745,6 +2856,13 @@ func (v DrawingContext) IsValid() (result bool) {
 // Union Event
 type Event struct {
 	P unsafe.Pointer
+}
+
+const SizeOfUnionEvent = 96
+
+func EventGetType() gi.GType {
+	ret := _I.GetGType(24, "Event")
+	return ret
 }
 
 // gdk_event_new
@@ -3415,9 +3533,23 @@ type EventAny struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventAny = 24
+
+func EventAnyGetType() gi.GType {
+	ret := _I.GetGType(25, "EventAny")
+	return ret
+}
+
 // Struct EventButton
 type EventButton struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventButton = 80
+
+func EventButtonGetType() gi.GType {
+	ret := _I.GetGType(26, "EventButton")
+	return ret
 }
 
 // Struct EventConfigure
@@ -3425,9 +3557,23 @@ type EventConfigure struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventConfigure = 40
+
+func EventConfigureGetType() gi.GType {
+	ret := _I.GetGType(27, "EventConfigure")
+	return ret
+}
+
 // Struct EventCrossing
 type EventCrossing struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventCrossing = 88
+
+func EventCrossingGetType() gi.GType {
+	ret := _I.GetGType(28, "EventCrossing")
+	return ret
 }
 
 // Struct EventDND
@@ -3435,9 +3581,23 @@ type EventDND struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventDND = 40
+
+func EventDNDGetType() gi.GType {
+	ret := _I.GetGType(29, "EventDND")
+	return ret
+}
+
 // Struct EventExpose
 type EventExpose struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventExpose = 56
+
+func EventExposeGetType() gi.GType {
+	ret := _I.GetGType(30, "EventExpose")
+	return ret
 }
 
 // Struct EventFocus
@@ -3445,14 +3605,35 @@ type EventFocus struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventFocus = 24
+
+func EventFocusGetType() gi.GType {
+	ret := _I.GetGType(31, "EventFocus")
+	return ret
+}
+
 // Struct EventGrabBroken
 type EventGrabBroken struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventGrabBroken = 40
+
+func EventGrabBrokenGetType() gi.GType {
+	ret := _I.GetGType(32, "EventGrabBroken")
+	return ret
+}
+
 // Struct EventKey
 type EventKey struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventKey = 56
+
+func EventKeyGetType() gi.GType {
+	ret := _I.GetGType(33, "EventKey")
+	return ret
 }
 
 // Flags EventMask
@@ -3487,9 +3668,21 @@ const (
 	EventMaskAllEventsMask         EventMaskFlags = 67108862
 )
 
+func EventMaskGetType() gi.GType {
+	ret := _I.GetGType(34, "EventMask")
+	return ret
+}
+
 // Struct EventMotion
 type EventMotion struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventMotion = 80
+
+func EventMotionGetType() gi.GType {
+	ret := _I.GetGType(35, "EventMotion")
+	return ret
 }
 
 // Struct EventOwnerChange
@@ -3497,9 +3690,23 @@ type EventOwnerChange struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventOwnerChange = 56
+
+func EventOwnerChangeGetType() gi.GType {
+	ret := _I.GetGType(36, "EventOwnerChange")
+	return ret
+}
+
 // Struct EventPadAxis
 type EventPadAxis struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventPadAxis = 48
+
+func EventPadAxisGetType() gi.GType {
+	ret := _I.GetGType(37, "EventPadAxis")
+	return ret
 }
 
 // Struct EventPadButton
@@ -3507,9 +3714,23 @@ type EventPadButton struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventPadButton = 40
+
+func EventPadButtonGetType() gi.GType {
+	ret := _I.GetGType(38, "EventPadButton")
+	return ret
+}
+
 // Struct EventPadGroupMode
 type EventPadGroupMode struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventPadGroupMode = 32
+
+func EventPadGroupModeGetType() gi.GType {
+	ret := _I.GetGType(39, "EventPadGroupMode")
+	return ret
 }
 
 // Struct EventProperty
@@ -3517,9 +3738,23 @@ type EventProperty struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventProperty = 40
+
+func EventPropertyGetType() gi.GType {
+	ret := _I.GetGType(40, "EventProperty")
+	return ret
+}
+
 // Struct EventProximity
 type EventProximity struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventProximity = 32
+
+func EventProximityGetType() gi.GType {
+	ret := _I.GetGType(41, "EventProximity")
+	return ret
 }
 
 // Struct EventScroll
@@ -3527,9 +3762,23 @@ type EventScroll struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventScroll = 96
+
+func EventScrollGetType() gi.GType {
+	ret := _I.GetGType(42, "EventScroll")
+	return ret
+}
+
 // Struct EventSelection
 type EventSelection struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventSelection = 64
+
+func EventSelectionGetType() gi.GType {
+	ret := _I.GetGType(43, "EventSelection")
+	return ret
 }
 
 // Struct EventSequence
@@ -3537,9 +3786,21 @@ type EventSequence struct {
 	P unsafe.Pointer
 }
 
+func EventSequenceGetType() gi.GType {
+	ret := _I.GetGType(44, "EventSequence")
+	return ret
+}
+
 // Struct EventSetting
 type EventSetting struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventSetting = 32
+
+func EventSettingGetType() gi.GType {
+	ret := _I.GetGType(45, "EventSetting")
+	return ret
 }
 
 // Struct EventTouch
@@ -3547,14 +3808,35 @@ type EventTouch struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventTouch = 96
+
+func EventTouchGetType() gi.GType {
+	ret := _I.GetGType(46, "EventTouch")
+	return ret
+}
+
 // Struct EventTouchpadPinch
 type EventTouchpadPinch struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventTouchpadPinch = 96
+
+func EventTouchpadPinchGetType() gi.GType {
+	ret := _I.GetGType(47, "EventTouchpadPinch")
+	return ret
+}
+
 // Struct EventTouchpadSwipe
 type EventTouchpadSwipe struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventTouchpadSwipe = 80
+
+func EventTouchpadSwipeGetType() gi.GType {
+	ret := _I.GetGType(48, "EventTouchpadSwipe")
+	return ret
 }
 
 // Enum EventType
@@ -3614,14 +3896,33 @@ const (
 	EventTypeEventLast         EventTypeEnum = 48
 )
 
+func EventTypeGetType() gi.GType {
+	ret := _I.GetGType(49, "EventType")
+	return ret
+}
+
 // Struct EventVisibility
 type EventVisibility struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructEventVisibility = 24
+
+func EventVisibilityGetType() gi.GType {
+	ret := _I.GetGType(50, "EventVisibility")
+	return ret
+}
+
 // Struct EventWindowState
 type EventWindowState struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructEventWindowState = 32
+
+func EventWindowStateGetType() gi.GType {
+	ret := _I.GetGType(51, "EventWindowState")
+	return ret
 }
 
 // Enum FilterReturn
@@ -3633,6 +3934,11 @@ const (
 	FilterReturnRemove    FilterReturnEnum = 2
 )
 
+func FilterReturnGetType() gi.GType {
+	ret := _I.GetGType(52, "FilterReturn")
+	return ret
+}
+
 // Object FrameClock
 type FrameClock struct {
 	gobject.Object
@@ -3643,6 +3949,10 @@ func WrapFrameClock(p unsafe.Pointer) (r FrameClock) { r.P = p; return }
 type IFrameClock interface{ P_FrameClock() unsafe.Pointer }
 
 func (v FrameClock) P_FrameClock() unsafe.Pointer { return v.P }
+func FrameClockGetType() gi.GType {
+	ret := _I.GetGType(53, "FrameClock")
+	return ret
+}
 
 // gdk_frame_clock_begin_updating
 // container is not nil, container is FrameClock
@@ -3809,14 +4119,29 @@ const (
 	FrameClockPhaseAfterPaint   FrameClockPhaseFlags = 64
 )
 
+func FrameClockPhaseGetType() gi.GType {
+	ret := _I.GetGType(54, "FrameClockPhase")
+	return ret
+}
+
 // Struct FrameClockPrivate
 type FrameClockPrivate struct {
 	P unsafe.Pointer
 }
 
+func FrameClockPrivateGetType() gi.GType {
+	ret := _I.GetGType(55, "FrameClockPrivate")
+	return ret
+}
+
 // Struct FrameTimings
 type FrameTimings struct {
 	P unsafe.Pointer
+}
+
+func FrameTimingsGetType() gi.GType {
+	ret := _I.GetGType(56, "FrameTimings")
+	return ret
 }
 
 // gdk_frame_timings_get_complete
@@ -3960,6 +4285,11 @@ const (
 	FullscreenModeAllMonitors    FullscreenModeEnum = 1
 )
 
+func FullscreenModeGetType() gi.GType {
+	ret := _I.GetGType(57, "FullscreenMode")
+	return ret
+}
+
 // Object GLContext
 type GLContext struct {
 	gobject.Object
@@ -3970,6 +4300,10 @@ func WrapGLContext(p unsafe.Pointer) (r GLContext) { r.P = p; return }
 type IGLContext interface{ P_GLContext() unsafe.Pointer }
 
 func (v GLContext) P_GLContext() unsafe.Pointer { return v.P }
+func GLContextGetType() gi.GType {
+	ret := _I.GetGType(58, "GLContext")
+	return ret
+}
 
 // gdk_gl_context_get_debug_enabled
 // container is not nil, container is GLContext
@@ -4233,9 +4567,21 @@ const (
 	GLErrorUnsupportedProfile GLErrorEnum = 2
 )
 
+func GLErrorGetType() gi.GType {
+	ret := _I.GetGType(59, "GLError")
+	return ret
+}
+
 // Struct Geometry
 type Geometry struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructGeometry = 56
+
+func GeometryGetType() gi.GType {
+	ret := _I.GetGType(60, "Geometry")
+	return ret
 }
 
 // Enum GrabOwnership
@@ -4246,6 +4592,11 @@ const (
 	GrabOwnershipWindow      GrabOwnershipEnum = 1
 	GrabOwnershipApplication GrabOwnershipEnum = 2
 )
+
+func GrabOwnershipGetType() gi.GType {
+	ret := _I.GetGType(61, "GrabOwnership")
+	return ret
+}
 
 // Enum GrabStatus
 type GrabStatusEnum int
@@ -4258,6 +4609,11 @@ const (
 	GrabStatusFrozen         GrabStatusEnum = 4
 	GrabStatusFailed         GrabStatusEnum = 5
 )
+
+func GrabStatusGetType() gi.GType {
+	ret := _I.GetGType(62, "GrabStatus")
+	return ret
+}
 
 // Enum Gravity
 type GravityEnum int
@@ -4275,6 +4631,11 @@ const (
 	GravityStatic    GravityEnum = 10
 )
 
+func GravityGetType() gi.GType {
+	ret := _I.GetGType(63, "Gravity")
+	return ret
+}
+
 // Enum InputMode
 type InputModeEnum int
 
@@ -4283,6 +4644,11 @@ const (
 	InputModeScreen   InputModeEnum = 1
 	InputModeWindow   InputModeEnum = 2
 )
+
+func InputModeGetType() gi.GType {
+	ret := _I.GetGType(64, "InputMode")
+	return ret
+}
 
 // Enum InputSource
 type InputSourceEnum int
@@ -4299,6 +4665,11 @@ const (
 	InputSourceTabletPad   InputSourceEnum = 8
 )
 
+func InputSourceGetType() gi.GType {
+	ret := _I.GetGType(65, "InputSource")
+	return ret
+}
+
 // Object Keymap
 type Keymap struct {
 	gobject.Object
@@ -4309,6 +4680,10 @@ func WrapKeymap(p unsafe.Pointer) (r Keymap) { r.P = p; return }
 type IKeymap interface{ P_Keymap() unsafe.Pointer }
 
 func (v Keymap) P_Keymap() unsafe.Pointer { return v.P }
+func KeymapGetType() gi.GType {
+	ret := _I.GetGType(66, "Keymap")
+	return ret
+}
 
 // gdk_keymap_get_for_display
 // container is not nil, container is Keymap
@@ -4593,6 +4968,13 @@ type KeymapKey struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructKeymapKey = 12
+
+func KeymapKeyGetType() gi.GType {
+	ret := _I.GetGType(67, "KeymapKey")
+	return ret
+}
+
 // Enum ModifierIntent
 type ModifierIntentEnum int
 
@@ -4605,6 +4987,11 @@ const (
 	ModifierIntentShiftGroup         ModifierIntentEnum = 5
 	ModifierIntentDefaultModMask     ModifierIntentEnum = 6
 )
+
+func ModifierIntentGetType() gi.GType {
+	ret := _I.GetGType(68, "ModifierIntent")
+	return ret
+}
 
 // Flags ModifierType
 type ModifierTypeFlags int
@@ -4644,6 +5031,11 @@ const (
 	ModifierTypeModifierMask           ModifierTypeFlags = 1543512063
 )
 
+func ModifierTypeGetType() gi.GType {
+	ret := _I.GetGType(69, "ModifierType")
+	return ret
+}
+
 // Object Monitor
 type Monitor struct {
 	gobject.Object
@@ -4654,6 +5046,10 @@ func WrapMonitor(p unsafe.Pointer) (r Monitor) { r.P = p; return }
 type IMonitor interface{ P_Monitor() unsafe.Pointer }
 
 func (v Monitor) P_Monitor() unsafe.Pointer { return v.P }
+func MonitorGetType() gi.GType {
+	ret := _I.GetGType(70, "Monitor")
+	return ret
+}
 
 // gdk_monitor_get_display
 // container is not nil, container is Monitor
@@ -4675,19 +5071,16 @@ func (v Monitor) GetDisplay() (result Display) {
 // gdk_monitor_get_geometry
 // container is not nil, container is Monitor
 // is method
-func (v Monitor) GetGeometry() (geometry int /*TODO_TYPE*/) {
+func (v Monitor) GetGeometry(geometry Rectangle) {
 	iv, err := _I.Get(223, "Monitor", "get_geometry")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_geometry := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_geometry := gi.NewPointerArgument(geometry.P)
 	args := []gi.Argument{arg_v, arg_geometry}
-	iv.Call(args, nil, &outArgs[0])
-	geometry = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // gdk_monitor_get_height_mm
@@ -4812,19 +5205,16 @@ func (v Monitor) GetWidthMm() (result int32) {
 // gdk_monitor_get_workarea
 // container is not nil, container is Monitor
 // is method
-func (v Monitor) GetWorkarea() (workarea int /*TODO_TYPE*/) {
+func (v Monitor) GetWorkarea(workarea Rectangle) {
 	iv, err := _I.Get(231, "Monitor", "get_workarea")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_workarea := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_workarea := gi.NewPointerArgument(workarea.P)
 	args := []gi.Argument{arg_v, arg_workarea}
-	iv.Call(args, nil, &outArgs[0])
-	workarea = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // gdk_monitor_is_primary
@@ -4857,6 +5247,11 @@ const (
 	NotifyTypeUnknown          NotifyTypeEnum = 5
 )
 
+func NotifyTypeGetType() gi.GType {
+	ret := _I.GetGType(71, "NotifyType")
+	return ret
+}
+
 // Enum OwnerChange
 type OwnerChangeEnum int
 
@@ -4866,9 +5261,21 @@ const (
 	OwnerChangeClose    OwnerChangeEnum = 2
 )
 
+func OwnerChangeGetType() gi.GType {
+	ret := _I.GetGType(72, "OwnerChange")
+	return ret
+}
+
 // Struct Point
 type Point struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructPoint = 8
+
+func PointGetType() gi.GType {
+	ret := _I.GetGType(73, "Point")
+	return ret
 }
 
 // Enum PropMode
@@ -4880,6 +5287,11 @@ const (
 	PropModeAppend  PropModeEnum = 2
 )
 
+func PropModeGetType() gi.GType {
+	ret := _I.GetGType(74, "PropMode")
+	return ret
+}
+
 // Enum PropertyState
 type PropertyStateEnum int
 
@@ -4888,9 +5300,21 @@ const (
 	PropertyStateDelete   PropertyStateEnum = 1
 )
 
+func PropertyStateGetType() gi.GType {
+	ret := _I.GetGType(75, "PropertyState")
+	return ret
+}
+
 // Struct RGBA
 type RGBA struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructRGBA = 32
+
+func RGBAGetType() gi.GType {
+	ret := _I.GetGType(76, "RGBA")
+	return ret
 }
 
 // gdk_rgba_copy
@@ -5001,6 +5425,13 @@ type Rectangle struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructRectangle = 16
+
+func RectangleGetType() gi.GType {
+	ret := _I.GetGType(77, "Rectangle")
+	return ret
+}
+
 // gdk_rectangle_equal
 // container is not nil, container is Rectangle
 // is method
@@ -5022,20 +5453,18 @@ func (v Rectangle) Equal(rect2 Rectangle) (result bool) {
 // gdk_rectangle_intersect
 // container is not nil, container is Rectangle
 // is method
-func (v Rectangle) Intersect(src2 Rectangle) (result bool, dest int /*TODO_TYPE*/) {
+func (v Rectangle) Intersect(src2 Rectangle, dest Rectangle) (result bool) {
 	iv, err := _I.Get(240, "Rectangle", "intersect")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_src2 := gi.NewPointerArgument(src2.P)
-	arg_dest := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_dest := gi.NewPointerArgument(dest.P)
 	args := []gi.Argument{arg_v, arg_src2, arg_dest}
 	var ret gi.Argument
-	iv.Call(args, &ret, &outArgs[0])
-	dest = outArgs[0].Int() /*TODO*/
+	iv.Call(args, &ret, nil)
 	result = ret.Bool()
 	return
 }
@@ -5043,20 +5472,17 @@ func (v Rectangle) Intersect(src2 Rectangle) (result bool, dest int /*TODO_TYPE*
 // gdk_rectangle_union
 // container is not nil, container is Rectangle
 // is method
-func (v Rectangle) Union(src2 Rectangle) (dest int /*TODO_TYPE*/) {
+func (v Rectangle) Union(src2 Rectangle, dest Rectangle) {
 	iv, err := _I.Get(241, "Rectangle", "union")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_src2 := gi.NewPointerArgument(src2.P)
-	arg_dest := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_dest := gi.NewPointerArgument(dest.P)
 	args := []gi.Argument{arg_v, arg_src2, arg_dest}
-	iv.Call(args, nil, &outArgs[0])
-	dest = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // Object Screen
@@ -5069,6 +5495,10 @@ func WrapScreen(p unsafe.Pointer) (r Screen) { r.P = p; return }
 type IScreen interface{ P_Screen() unsafe.Pointer }
 
 func (v Screen) P_Screen() unsafe.Pointer { return v.P }
+func ScreenGetType() gi.GType {
+	ret := _I.GetGType(78, "Screen")
+	return ret
+}
 
 // gdk_screen_get_active_window
 // container is not nil, container is Screen
@@ -5199,20 +5629,17 @@ func (v Screen) GetMonitorAtWindow(window IWindow) (result int32) {
 // gdk_screen_get_monitor_geometry
 // container is not nil, container is Screen
 // is method
-func (v Screen) GetMonitorGeometry(monitor_num int32) (dest int /*TODO_TYPE*/) {
+func (v Screen) GetMonitorGeometry(monitor_num int32, dest Rectangle) {
 	iv, err := _I.Get(254, "Screen", "get_monitor_geometry")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_monitor_num := gi.NewInt32Argument(monitor_num)
-	arg_dest := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_dest := gi.NewPointerArgument(dest.P)
 	args := []gi.Argument{arg_v, arg_monitor_num, arg_dest}
-	iv.Call(args, nil, &outArgs[0])
-	dest = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // gdk_screen_get_monitor_height_mm
@@ -5290,20 +5717,17 @@ func (v Screen) GetMonitorWidthMm(monitor_num int32) (result int32) {
 // gdk_screen_get_monitor_workarea
 // container is not nil, container is Screen
 // is method
-func (v Screen) GetMonitorWorkarea(monitor_num int32) (dest int /*TODO_TYPE*/) {
+func (v Screen) GetMonitorWorkarea(monitor_num int32, dest Rectangle) {
 	iv, err := _I.Get(259, "Screen", "get_monitor_workarea")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_monitor_num := gi.NewInt32Argument(monitor_num)
-	arg_dest := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_dest := gi.NewPointerArgument(dest.P)
 	args := []gi.Argument{arg_v, arg_monitor_num, arg_dest}
-	iv.Call(args, nil, &outArgs[0])
-	dest = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // gdk_screen_get_n_monitors
@@ -5606,6 +6030,11 @@ const (
 	ScrollDirectionSmooth ScrollDirectionEnum = 4
 )
 
+func ScrollDirectionGetType() gi.GType {
+	ret := _I.GetGType(79, "ScrollDirection")
+	return ret
+}
+
 // Object Seat
 type Seat struct {
 	gobject.Object
@@ -5616,6 +6045,10 @@ func WrapSeat(p unsafe.Pointer) (r Seat) { r.P = p; return }
 type ISeat interface{ P_Seat() unsafe.Pointer }
 
 func (v Seat) P_Seat() unsafe.Pointer { return v.P }
+func SeatGetType() gi.GType {
+	ret := _I.GetGType(80, "Seat")
+	return ret
+}
 
 // gdk_seat_get_capabilities
 // container is not nil, container is Seat
@@ -5762,6 +6195,11 @@ const (
 	SeatCapabilitiesAll          SeatCapabilitiesFlags = 15
 )
 
+func SeatCapabilitiesGetType() gi.GType {
+	ret := _I.GetGType(81, "SeatCapabilities")
+	return ret
+}
+
 // Enum SettingAction
 type SettingActionEnum int
 
@@ -5770,6 +6208,11 @@ const (
 	SettingActionChanged SettingActionEnum = 1
 	SettingActionDeleted SettingActionEnum = 2
 )
+
+func SettingActionGetType() gi.GType {
+	ret := _I.GetGType(82, "SettingAction")
+	return ret
+}
 
 // Enum Status
 type StatusEnum int
@@ -5781,6 +6224,11 @@ const (
 	StatusErrorFile  StatusEnum = -3
 	StatusErrorMem   StatusEnum = -4
 )
+
+func StatusGetType() gi.GType {
+	ret := _I.GetGType(83, "Status")
+	return ret
+}
 
 // Enum SubpixelLayout
 type SubpixelLayoutEnum int
@@ -5794,9 +6242,21 @@ const (
 	SubpixelLayoutVerticalBgr   SubpixelLayoutEnum = 5
 )
 
+func SubpixelLayoutGetType() gi.GType {
+	ret := _I.GetGType(84, "SubpixelLayout")
+	return ret
+}
+
 // Struct TimeCoord
 type TimeCoord struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructTimeCoord = 1032
+
+func TimeCoordGetType() gi.GType {
+	ret := _I.GetGType(85, "TimeCoord")
+	return ret
 }
 
 // Enum TouchpadGesturePhase
@@ -5809,6 +6269,11 @@ const (
 	TouchpadGesturePhaseCancel TouchpadGesturePhaseEnum = 3
 )
 
+func TouchpadGesturePhaseGetType() gi.GType {
+	ret := _I.GetGType(86, "TouchpadGesturePhase")
+	return ret
+}
+
 // Enum VisibilityState
 type VisibilityStateEnum int
 
@@ -5817,6 +6282,11 @@ const (
 	VisibilityStatePartial       VisibilityStateEnum = 1
 	VisibilityStateFullyObscured VisibilityStateEnum = 2
 )
+
+func VisibilityStateGetType() gi.GType {
+	ret := _I.GetGType(87, "VisibilityState")
+	return ret
+}
 
 // Object Visual
 type Visual struct {
@@ -5828,6 +6298,10 @@ func WrapVisual(p unsafe.Pointer) (r Visual) { r.P = p; return }
 type IVisual interface{ P_Visual() unsafe.Pointer }
 
 func (v Visual) P_Visual() unsafe.Pointer { return v.P }
+func VisualGetType() gi.GType {
+	ret := _I.GetGType(88, "Visual")
+	return ret
+}
 
 // gdk_visual_get_best_with_both
 // container is not nil, container is Visual
@@ -6064,6 +6538,11 @@ const (
 	VisualTypeDirectColor VisualTypeEnum = 5
 )
 
+func VisualTypeGetType() gi.GType {
+	ret := _I.GetGType(89, "VisualType")
+	return ret
+}
+
 // Flags WMDecoration
 type WMDecorationFlags int
 
@@ -6077,6 +6556,11 @@ const (
 	WMDecorationMaximize WMDecorationFlags = 64
 )
 
+func WMDecorationGetType() gi.GType {
+	ret := _I.GetGType(90, "WMDecoration")
+	return ret
+}
+
 // Flags WMFunction
 type WMFunctionFlags int
 
@@ -6089,6 +6573,11 @@ const (
 	WMFunctionClose    WMFunctionFlags = 32
 )
 
+func WMFunctionGetType() gi.GType {
+	ret := _I.GetGType(91, "WMFunction")
+	return ret
+}
+
 // Object Window
 type Window struct {
 	gobject.Object
@@ -6099,6 +6588,10 @@ func WrapWindow(p unsafe.Pointer) (r Window) { r.P = p; return }
 type IWindow interface{ P_Window() unsafe.Pointer }
 
 func (v Window) P_Window() unsafe.Pointer { return v.P }
+func WindowGetType() gi.GType {
+	ret := _I.GetGType(92, "Window")
+	return ret
+}
 
 // gdk_window_new
 // container is not nil, container is Window
@@ -7038,19 +7531,16 @@ func (v Window) GetFrameClock() (result FrameClock) {
 // gdk_window_get_frame_extents
 // container is not nil, container is Window
 // is method
-func (v Window) GetFrameExtents() (rect int /*TODO_TYPE*/) {
+func (v Window) GetFrameExtents(rect Rectangle) {
 	iv, err := _I.Get(353, "Window", "get_frame_extents")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_rect := gi.NewPointerArgument(rect.P)
 	args := []gi.Argument{arg_v, arg_rect}
-	iv.Call(args, nil, &outArgs[0])
-	rect = outArgs[0].Int() /*TODO*/
-	return
+	iv.Call(args, nil, nil)
 }
 
 // gdk_window_get_fullscreen_mode
@@ -8791,6 +9281,13 @@ type WindowAttr struct {
 	P unsafe.Pointer
 }
 
+const SizeOfStructWindowAttr = 80
+
+func WindowAttrGetType() gi.GType {
+	ret := _I.GetGType(93, "WindowAttr")
+	return ret
+}
+
 // Flags WindowAttributesType
 type WindowAttributesTypeFlags int
 
@@ -8804,6 +9301,11 @@ const (
 	WindowAttributesTypeNoredir  WindowAttributesTypeFlags = 128
 	WindowAttributesTypeTypeHint WindowAttributesTypeFlags = 256
 )
+
+func WindowAttributesTypeGetType() gi.GType {
+	ret := _I.GetGType(94, "WindowAttributesType")
+	return ret
+}
 
 // ignore GType struct WindowClass
 // Enum WindowEdge
@@ -8820,6 +9322,11 @@ const (
 	WindowEdgeSouthEast WindowEdgeEnum = 7
 )
 
+func WindowEdgeGetType() gi.GType {
+	ret := _I.GetGType(95, "WindowEdge")
+	return ret
+}
+
 // Flags WindowHints
 type WindowHintsFlags int
 
@@ -8835,9 +9342,19 @@ const (
 	WindowHintsUserSize   WindowHintsFlags = 256
 )
 
+func WindowHintsGetType() gi.GType {
+	ret := _I.GetGType(96, "WindowHints")
+	return ret
+}
+
 // Struct WindowRedirect
 type WindowRedirect struct {
 	P unsafe.Pointer
+}
+
+func WindowRedirectGetType() gi.GType {
+	ret := _I.GetGType(97, "WindowRedirect")
+	return ret
 }
 
 // Flags WindowState
@@ -8863,6 +9380,11 @@ const (
 	WindowStateLeftResizable   WindowStateFlags = 65536
 )
 
+func WindowStateGetType() gi.GType {
+	ret := _I.GetGType(98, "WindowState")
+	return ret
+}
+
 // Enum WindowType
 type WindowTypeEnum int
 
@@ -8875,6 +9397,11 @@ const (
 	WindowTypeOffscreen  WindowTypeEnum = 5
 	WindowTypeSubsurface WindowTypeEnum = 6
 )
+
+func WindowTypeGetType() gi.GType {
+	ret := _I.GetGType(99, "WindowType")
+	return ret
+}
 
 // Enum WindowTypeHint
 type WindowTypeHintEnum int
@@ -8896,6 +9423,11 @@ const (
 	WindowTypeHintDnd          WindowTypeHintEnum = 13
 )
 
+func WindowTypeHintGetType() gi.GType {
+	ret := _I.GetGType(100, "WindowTypeHint")
+	return ret
+}
+
 // Enum WindowWindowClass
 type WindowWindowClassEnum int
 
@@ -8903,6 +9435,11 @@ const (
 	WindowWindowClassInputOutput WindowWindowClassEnum = 0
 	WindowWindowClassInputOnly   WindowWindowClassEnum = 1
 )
+
+func WindowWindowClassGetType() gi.GType {
+	ret := _I.GetGType(101, "WindowWindowClass")
+	return ret
+}
 
 // gdk_add_option_entries_libgtk_only
 // container is nil
@@ -9012,19 +9549,17 @@ func CairoDrawFromGl(cr cairo.Context, window IWindow, source int32, source_type
 
 // gdk_cairo_get_clip_rectangle
 // container is nil
-func CairoGetClipRectangle(cr cairo.Context) (result bool, rect int /*TODO_TYPE*/) {
+func CairoGetClipRectangle(cr cairo.Context, rect Rectangle) (result bool) {
 	iv, err := _I.Get(465, "cairo_get_clip_rectangle", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	arg_cr := gi.NewPointerArgument(cr.P)
-	arg_rect := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_rect := gi.NewPointerArgument(rect.P)
 	args := []gi.Argument{arg_cr, arg_rect}
 	var ret gi.Argument
-	iv.Call(args, &ret, &outArgs[0])
-	rect = outArgs[0].Int() /*TODO*/
+	iv.Call(args, &ret, nil)
 	result = ret.Bool()
 	return
 }
@@ -9185,21 +9720,19 @@ func CairoSurfaceCreateFromPixbuf(pixbuf gdkpixbuf.IPixbuf, scale int32, for_win
 
 // gdk_color_parse
 // container is nil
-func ColorParse(spec string) (result bool, color int /*TODO_TYPE*/) {
+func ColorParse(spec string, color Color) (result bool) {
 	iv, err := _I.Get(475, "color_parse", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [1]gi.Argument
 	c_spec := gi.CString(spec)
 	arg_spec := gi.NewStringArgument(c_spec)
-	arg_color := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_color := gi.NewPointerArgument(color.P)
 	args := []gi.Argument{arg_spec, arg_color}
 	var ret gi.Argument
-	iv.Call(args, &ret, &outArgs[0])
+	iv.Call(args, &ret, nil)
 	gi.Free(c_spec)
-	color = outArgs[0].Int() /*TODO*/
 	result = ret.Bool()
 	return
 }
@@ -10272,13 +10805,13 @@ func PropertyDelete(window IWindow, property Atom) {
 // gdk_property_get
 // container is nil
 // arg 9 data lenArgIdx 8
-func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, length uint64, pdelete int32) (result bool, actual_property_type Atom, actual_format int32, data gi.Uint8Array) {
+func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, length uint64, pdelete int32, actual_property_type Atom) (result bool, actual_format int32, data gi.Uint8Array) {
 	iv, err := _I.Get(537, "property_get", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	var outArgs [4]gi.Argument
+	var outArgs [3]gi.Argument
 	var tmp unsafe.Pointer
 	if window != nil {
 		tmp = window.P_Window()
@@ -10289,19 +10822,18 @@ func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, lengt
 	arg_offset := gi.NewUint64Argument(offset)
 	arg_length := gi.NewUint64Argument(length)
 	arg_pdelete := gi.NewInt32Argument(pdelete)
-	arg_actual_property_type := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	arg_actual_format := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
-	arg_actual_length := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
-	arg_data := gi.NewPointerArgument(unsafe.Pointer(&outArgs[3]))
+	arg_actual_property_type := gi.NewPointerArgument(actual_property_type.P)
+	arg_actual_format := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
+	arg_actual_length := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
+	arg_data := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
 	args := []gi.Argument{arg_window, arg_property, arg_type1, arg_offset, arg_length, arg_pdelete, arg_actual_property_type, arg_actual_format, arg_actual_length, arg_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	var actual_length int32
 	_ = actual_length
-	actual_property_type.P = outArgs[0].Pointer()
-	actual_format = outArgs[1].Int32()
-	actual_length = outArgs[2].Int32()
-	data.P = outArgs[3].Pointer()
+	actual_format = outArgs[0].Int32()
+	actual_length = outArgs[1].Int32()
+	data.P = outArgs[2].Pointer()
 	result = ret.Bool()
 	data.Len = int(actual_length)
 	return

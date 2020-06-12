@@ -21,9 +21,19 @@ type Context struct {
 	P unsafe.Pointer
 }
 
+func ContextGetType() gi.GType {
+	ret := _I.GetGType(0, "Context")
+	return ret
+}
+
 // Struct Device
 type Device struct {
 	P unsafe.Pointer
+}
+
+func DeviceGetType() gi.GType {
+	ret := _I.GetGType(1, "Device")
+	return ret
 }
 
 // Struct Surface
@@ -31,9 +41,19 @@ type Surface struct {
 	P unsafe.Pointer
 }
 
+func SurfaceGetType() gi.GType {
+	ret := _I.GetGType(2, "Surface")
+	return ret
+}
+
 // Struct Matrix
 type Matrix struct {
 	P unsafe.Pointer
+}
+
+func MatrixGetType() gi.GType {
+	ret := _I.GetGType(3, "Matrix")
+	return ret
 }
 
 // Struct Pattern
@@ -41,9 +61,19 @@ type Pattern struct {
 	P unsafe.Pointer
 }
 
+func PatternGetType() gi.GType {
+	ret := _I.GetGType(4, "Pattern")
+	return ret
+}
+
 // Struct Region
 type Region struct {
 	P unsafe.Pointer
+}
+
+func RegionGetType() gi.GType {
+	ret := _I.GetGType(5, "Region")
+	return ret
 }
 
 // Enum Status
@@ -91,6 +121,11 @@ const (
 	StatusJbig2GlobalMissing      StatusEnum = 38
 )
 
+func StatusGetType() gi.GType {
+	ret := _I.GetGType(6, "Status")
+	return ret
+}
+
 // Enum Content
 type ContentEnum int
 
@@ -99,6 +134,11 @@ const (
 	ContentAlpha      ContentEnum = 8192
 	ContentColorAlpha ContentEnum = 12288
 )
+
+func ContentGetType() gi.GType {
+	ret := _I.GetGType(7, "Content")
+	return ret
+}
 
 // Enum Operator
 type OperatorEnum int
@@ -135,6 +175,11 @@ const (
 	OperatorHslLuminosity OperatorEnum = 28
 )
 
+func OperatorGetType() gi.GType {
+	ret := _I.GetGType(8, "Operator")
+	return ret
+}
+
 // Enum Antialias
 type AntialiasEnum int
 
@@ -148,6 +193,11 @@ const (
 	AntialiasBest     AntialiasEnum = 6
 )
 
+func AntialiasGetType() gi.GType {
+	ret := _I.GetGType(9, "Antialias")
+	return ret
+}
+
 // Enum FillRule
 type FillRuleEnum int
 
@@ -155,6 +205,11 @@ const (
 	FillRuleWinding FillRuleEnum = 0
 	FillRuleEvenOdd FillRuleEnum = 1
 )
+
+func FillRuleGetType() gi.GType {
+	ret := _I.GetGType(10, "FillRule")
+	return ret
+}
 
 // Enum LineCap
 type LineCapEnum int
@@ -165,6 +220,11 @@ const (
 	LineCapSquare LineCapEnum = 2
 )
 
+func LineCapGetType() gi.GType {
+	ret := _I.GetGType(11, "LineCap")
+	return ret
+}
+
 // Enum LineJoin
 type LineJoinEnum int
 
@@ -174,12 +234,22 @@ const (
 	LineJoinBevel LineJoinEnum = 2
 )
 
+func LineJoinGetType() gi.GType {
+	ret := _I.GetGType(12, "LineJoin")
+	return ret
+}
+
 // Enum TextClusterFlags
 type TextClusterFlagsEnum int
 
 const (
 	TextClusterFlagsBackward TextClusterFlagsEnum = 1
 )
+
+func TextClusterFlagsGetType() gi.GType {
+	ret := _I.GetGType(13, "TextClusterFlags")
+	return ret
+}
 
 // Enum FontSlant
 type FontSlantEnum int
@@ -190,6 +260,11 @@ const (
 	FontSlantOblique FontSlantEnum = 2
 )
 
+func FontSlantGetType() gi.GType {
+	ret := _I.GetGType(14, "FontSlant")
+	return ret
+}
+
 // Enum FontWeight
 type FontWeightEnum int
 
@@ -197,6 +272,11 @@ const (
 	FontWeightNormal FontWeightEnum = 0
 	FontWeightBold   FontWeightEnum = 1
 )
+
+func FontWeightGetType() gi.GType {
+	ret := _I.GetGType(15, "FontWeight")
+	return ret
+}
 
 // Enum SubpixelOrder
 type SubpixelOrderEnum int
@@ -209,6 +289,11 @@ const (
 	SubpixelOrderVbgr    SubpixelOrderEnum = 4
 )
 
+func SubpixelOrderGetType() gi.GType {
+	ret := _I.GetGType(16, "SubpixelOrder")
+	return ret
+}
+
 // Enum HintStyle
 type HintStyleEnum int
 
@@ -220,6 +305,11 @@ const (
 	HintStyleFull    HintStyleEnum = 4
 )
 
+func HintStyleGetType() gi.GType {
+	ret := _I.GetGType(17, "HintStyle")
+	return ret
+}
+
 // Enum HintMetrics
 type HintMetricsEnum int
 
@@ -229,9 +319,19 @@ const (
 	HintMetricsOn      HintMetricsEnum = 2
 )
 
+func HintMetricsGetType() gi.GType {
+	ret := _I.GetGType(18, "HintMetrics")
+	return ret
+}
+
 // Struct FontOptions
 type FontOptions struct {
 	P unsafe.Pointer
+}
+
+func FontOptionsGetType() gi.GType {
+	ret := _I.GetGType(19, "FontOptions")
+	return ret
 }
 
 // Enum FontType
@@ -245,6 +345,11 @@ const (
 	FontTypeUser   FontTypeEnum = 4
 )
 
+func FontTypeGetType() gi.GType {
+	ret := _I.GetGType(20, "FontType")
+	return ret
+}
+
 // Enum PathDataType
 type PathDataTypeEnum int
 
@@ -254,6 +359,11 @@ const (
 	PathDataTypeCurveTo   PathDataTypeEnum = 2
 	PathDataTypeClosePath PathDataTypeEnum = 3
 )
+
+func PathDataTypeGetType() gi.GType {
+	ret := _I.GetGType(21, "PathDataType")
+	return ret
+}
 
 // Enum DeviceType
 type DeviceTypeEnum int
@@ -269,6 +379,11 @@ const (
 	DeviceTypeWin32   DeviceTypeEnum = 7
 	DeviceTypeInvalid DeviceTypeEnum = -1
 )
+
+func DeviceTypeGetType() gi.GType {
+	ret := _I.GetGType(22, "DeviceType")
+	return ret
+}
 
 // Enum SurfaceType
 type SurfaceTypeEnum int
@@ -301,6 +416,11 @@ const (
 	SurfaceTypeCogl          SurfaceTypeEnum = 24
 )
 
+func SurfaceTypeGetType() gi.GType {
+	ret := _I.GetGType(23, "SurfaceType")
+	return ret
+}
+
 // Enum Format
 type FormatEnum int
 
@@ -314,6 +434,11 @@ const (
 	FormatRgb30    FormatEnum = 5
 )
 
+func FormatGetType() gi.GType {
+	ret := _I.GetGType(24, "Format")
+	return ret
+}
+
 // Enum PatternType
 type PatternTypeEnum int
 
@@ -326,6 +451,11 @@ const (
 	PatternTypeRasterSource PatternTypeEnum = 5
 )
 
+func PatternTypeGetType() gi.GType {
+	ret := _I.GetGType(25, "PatternType")
+	return ret
+}
+
 // Enum Extend
 type ExtendEnum int
 
@@ -335,6 +465,11 @@ const (
 	ExtendReflect ExtendEnum = 2
 	ExtendPad     ExtendEnum = 3
 )
+
+func ExtendGetType() gi.GType {
+	ret := _I.GetGType(26, "Extend")
+	return ret
+}
 
 // Enum Filter
 type FilterEnum int
@@ -348,6 +483,11 @@ const (
 	FilterGaussian FilterEnum = 5
 )
 
+func FilterGetType() gi.GType {
+	ret := _I.GetGType(27, "Filter")
+	return ret
+}
+
 // Enum RegionOverlap
 type RegionOverlapEnum int
 
@@ -357,9 +497,19 @@ const (
 	RegionOverlapPart RegionOverlapEnum = 2
 )
 
+func RegionOverlapGetType() gi.GType {
+	ret := _I.GetGType(28, "RegionOverlap")
+	return ret
+}
+
 // Struct FontFace
 type FontFace struct {
 	P unsafe.Pointer
+}
+
+func FontFaceGetType() gi.GType {
+	ret := _I.GetGType(29, "FontFace")
+	return ret
 }
 
 // Struct ScaledFont
@@ -367,14 +517,31 @@ type ScaledFont struct {
 	P unsafe.Pointer
 }
 
+func ScaledFontGetType() gi.GType {
+	ret := _I.GetGType(30, "ScaledFont")
+	return ret
+}
+
 // Struct Path
 type Path struct {
 	P unsafe.Pointer
 }
 
+func PathGetType() gi.GType {
+	ret := _I.GetGType(31, "Path")
+	return ret
+}
+
 // Struct RectangleInt
 type RectangleInt struct {
 	P unsafe.Pointer
+}
+
+const SizeOfStructRectangleInt = 16
+
+func RectangleIntGetType() gi.GType {
+	ret := _I.GetGType(32, "RectangleInt")
+	return ret
 }
 
 // cairo_image_surface_create
