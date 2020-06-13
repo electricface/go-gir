@@ -109,14 +109,18 @@ func (v AppLaunchContext) SetDisplay(display IDisplay) {
 // gdk_app_launch_context_set_icon
 // container is not nil, container is AppLaunchContext
 // is method
-func (v AppLaunchContext) SetIcon(icon gio.Icon) {
+func (v AppLaunchContext) SetIcon(icon gio.IIcon) {
 	iv, err := _I.Get(3, "AppLaunchContext", "set_icon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_icon}
 	iv.Call(args, nil, nil)
 }
@@ -1395,7 +1399,9 @@ type DevicePad struct {
 	P unsafe.Pointer
 }
 type DevicePadIfc struct{}
+type IDevicePad interface{ P_DevicePad() unsafe.Pointer }
 
+func (v DevicePad) P_DevicePad() unsafe.Pointer { return v.P }
 func DevicePadGetType() gi.GType {
 	ret := _I.GetGType(12, "DevicePad")
 	return ret

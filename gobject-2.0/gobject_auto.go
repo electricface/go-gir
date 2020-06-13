@@ -2498,6 +2498,7 @@ func WrapTypeModule(p unsafe.Pointer) (r TypeModule) { r.P = p; return }
 type ITypeModule interface{ P_TypeModule() unsafe.Pointer }
 
 func (v TypeModule) P_TypeModule() unsafe.Pointer { return v.P }
+func (v TypeModule) P_TypePlugin() unsafe.Pointer { return v.P }
 func TypeModuleGetType() gi.GType {
 	ret := _I.GetGType(55, "TypeModule")
 	return ret
@@ -2640,7 +2641,9 @@ type TypePlugin struct {
 	P unsafe.Pointer
 }
 type TypePluginIfc struct{}
+type ITypePlugin interface{ P_TypePlugin() unsafe.Pointer }
 
+func (v TypePlugin) P_TypePlugin() unsafe.Pointer { return v.P }
 func TypePluginGetType() gi.GType {
 	ret := _I.GetGType(56, "TypePlugin")
 	return ret
@@ -6004,15 +6007,19 @@ func TypeAddInstancePrivate(class_type gi.GType, private_size uint64) (result in
 
 // g_type_add_interface_dynamic
 // container is nil
-func TypeAddInterfaceDynamic(instance_type gi.GType, interface_type gi.GType, plugin TypePlugin) {
+func TypeAddInterfaceDynamic(instance_type gi.GType, interface_type gi.GType, plugin ITypePlugin) {
 	iv, err := _I.Get(275, "type_add_interface_dynamic", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if plugin != nil {
+		tmp = plugin.P_TypePlugin()
+	}
 	arg_instance_type := gi.NewUintArgument(uint(instance_type))
 	arg_interface_type := gi.NewUintArgument(uint(interface_type))
-	arg_plugin := gi.NewPointerArgument(plugin.P)
+	arg_plugin := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_instance_type, arg_interface_type, arg_plugin}
 	iv.Call(args, nil, nil)
 }
@@ -6676,16 +6683,20 @@ func TypeQueryF(type1 gi.GType, query TypeQuery) {
 
 // g_type_register_dynamic
 // container is nil
-func TypeRegisterDynamic(parent_type gi.GType, type_name string, plugin TypePlugin, flags TypeFlags) (result gi.GType) {
+func TypeRegisterDynamic(parent_type gi.GType, type_name string, plugin ITypePlugin, flags TypeFlags) (result gi.GType) {
 	iv, err := _I.Get(317, "type_register_dynamic", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_type_name := gi.CString(type_name)
+	var tmp unsafe.Pointer
+	if plugin != nil {
+		tmp = plugin.P_TypePlugin()
+	}
 	arg_parent_type := gi.NewUintArgument(uint(parent_type))
 	arg_type_name := gi.NewStringArgument(c_type_name)
-	arg_plugin := gi.NewPointerArgument(plugin.P)
+	arg_plugin := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_parent_type, arg_type_name, arg_plugin, arg_flags}
 	var ret gi.Argument

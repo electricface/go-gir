@@ -3,21 +3,58 @@ package glib
 /*
 #cgo pkg-config: glib-2.0
 #include <glib.h>
+
+
+extern void myGFunc(gpointer data, gpointer user_data);
+
+static void* getPointer_myGFunc() {
+	return (void*)(myGFunc);
+}
 */
 import "C"
 
 import (
+	"github.com/electricface/go-gir3/gi"
 	"unsafe"
 )
 
+type GFuncStruct struct {
+	Data unsafe.Pointer
+}
+
+//export myGFunc
+func myGFunc(data C.gpointer, user_data C.gpointer) {
+	call := gi.GetFunc(uint(uintptr(user_data)))
+	args := &GFuncStruct{
+		Data: unsafe.Pointer(data),
+	}
+	call(args)
+}
+
+//func getPointer_myGFunc() unsafe.Pointer {
+//	return C.getPointer_myGFunc()
+//}
+
 func (v List) native() *C.GList {
 	return (*C.GList)(v.P)
+}
+
+func NewList() List {
+	ret := C.g_list_alloc()
+	return wrapList(ret)
 }
 
 func (v List) ForEach(fn func(item unsafe.Pointer)) {
 	for l := v.native(); l != nil; l = l.next {
 		fn(unsafe.Pointer(l.data))
 	}
+}
+
+
+func (v List) ForEachC(fn func(args interface{})) {
+	fnId := gi.RegisterFunc(fn)
+	C.g_list_foreach(v.native(), C.GFunc(C.getPointer_myGFunc()), C.gpointer(fnId))
+	// todo unregister func fnId
 }
 
 func (v *List) FullFree(fn func(item unsafe.Pointer)) {

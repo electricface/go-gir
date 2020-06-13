@@ -57,7 +57,9 @@ func WrapPixbuf(p unsafe.Pointer) (r Pixbuf) { r.P = p; return }
 
 type IPixbuf interface{ P_Pixbuf() unsafe.Pointer }
 
-func (v Pixbuf) P_Pixbuf() unsafe.Pointer { return v.P }
+func (v Pixbuf) P_Pixbuf() unsafe.Pointer       { return v.P }
+func (v Pixbuf) P_Icon() unsafe.Pointer         { return v.P }
+func (v Pixbuf) P_LoadableIcon() unsafe.Pointer { return v.P }
 func PixbufGetType() gi.GType {
 	ret := _I.GetGType(2, "Pixbuf")
 	return ret
@@ -329,13 +331,17 @@ func NewPixbufFromStreamAtScale(stream gio.IInputStream, width int32, height int
 // gdk_pixbuf_new_from_stream_finish
 // container is not nil, container is Pixbuf
 // is constructor
-func NewPixbufFromStreamFinish(async_result gio.AsyncResult) (result Pixbuf, err error) {
+func NewPixbufFromStreamFinish(async_result gio.IAsyncResult) (result Pixbuf, err error) {
 	iv, err := _I.Get(11, "Pixbuf", "new_from_stream_finish")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_async_result := gi.NewPointerArgument(async_result.P)
+	var tmp unsafe.Pointer
+	if async_result != nil {
+		tmp = async_result.P_AsyncResult()
+	}
+	arg_async_result := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_async_result, arg_err}
 	var ret gi.Argument
@@ -437,13 +443,17 @@ func PixbufGetFileInfoAsync1(filename string, cancellable gio.ICancellable, call
 // container is not nil, container is Pixbuf
 // is method
 // arg0Type tag: interface, isPtr: true
-func PixbufGetFileInfoFinish1(async_result gio.AsyncResult) (result PixbufFormat, width int32, height int32, err error) {
+func PixbufGetFileInfoFinish1(async_result gio.IAsyncResult) (result PixbufFormat, width int32, height int32, err error) {
 	iv, err := _I.Get(16, "Pixbuf", "get_file_info_finish")
 	if err != nil {
 		return
 	}
 	var outArgs [3]gi.Argument
-	arg_async_result := gi.NewPointerArgument(async_result.P)
+	var tmp unsafe.Pointer
+	if async_result != nil {
+		tmp = async_result.P_AsyncResult()
+	}
+	arg_async_result := gi.NewPointerArgument(tmp)
 	arg_width := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_height := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
@@ -516,13 +526,17 @@ func PixbufNewFromStreamAtScaleAsync1(stream gio.IInputStream, width int32, heig
 // container is not nil, container is Pixbuf
 // is method
 // arg0Type tag: interface, isPtr: true
-func PixbufSaveToStreamFinish1(async_result gio.AsyncResult) (result bool, err error) {
+func PixbufSaveToStreamFinish1(async_result gio.IAsyncResult) (result bool, err error) {
 	iv, err := _I.Get(20, "Pixbuf", "save_to_stream_finish")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_async_result := gi.NewPointerArgument(async_result.P)
+	var tmp unsafe.Pointer
+	if async_result != nil {
+		tmp = async_result.P_AsyncResult()
+	}
+	arg_async_result := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_async_result, arg_err}
 	var ret gi.Argument
@@ -1386,13 +1400,17 @@ func NewPixbufAnimationFromStream(stream gio.IInputStream, cancellable gio.ICanc
 // gdk_pixbuf_animation_new_from_stream_finish
 // container is not nil, container is PixbufAnimation
 // is constructor
-func NewPixbufAnimationFromStreamFinish(async_result gio.AsyncResult) (result PixbufAnimation, err error) {
+func NewPixbufAnimationFromStreamFinish(async_result gio.IAsyncResult) (result PixbufAnimation, err error) {
 	iv, err := _I.Get(59, "PixbufAnimation", "new_from_stream_finish")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	arg_async_result := gi.NewPointerArgument(async_result.P)
+	var tmp unsafe.Pointer
+	if async_result != nil {
+		tmp = async_result.P_AsyncResult()
+	}
+	arg_async_result := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_async_result, arg_err}
 	var ret gi.Argument

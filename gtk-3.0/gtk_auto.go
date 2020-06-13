@@ -35,7 +35,9 @@ func WrapAboutDialog(p unsafe.Pointer) (r AboutDialog) { r.P = p; return }
 
 type IAboutDialog interface{ P_AboutDialog() unsafe.Pointer }
 
-func (v AboutDialog) P_AboutDialog() unsafe.Pointer { return v.P }
+func (v AboutDialog) P_AboutDialog() unsafe.Pointer      { return v.P }
+func (v AboutDialog) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v AboutDialog) P_Buildable() unsafe.Pointer        { return v.P }
 func AboutDialogGetType() gi.GType {
 	ret := _I.GetGType(0, "AboutDialog")
 	return ret
@@ -902,7 +904,9 @@ func WrapAccelLabel(p unsafe.Pointer) (r AccelLabel) { r.P = p; return }
 
 type IAccelLabel interface{ P_AccelLabel() unsafe.Pointer }
 
-func (v AccelLabel) P_AccelLabel() unsafe.Pointer { return v.P }
+func (v AccelLabel) P_AccelLabel() unsafe.Pointer       { return v.P }
+func (v AccelLabel) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v AccelLabel) P_Buildable() unsafe.Pointer        { return v.P }
 func AccelLabelGetType() gi.GType {
 	ret := _I.GetGType(7, "AccelLabel")
 	return ret
@@ -1386,7 +1390,8 @@ func WrapAction(p unsafe.Pointer) (r Action) { r.P = p; return }
 
 type IAction interface{ P_Action() unsafe.Pointer }
 
-func (v Action) P_Action() unsafe.Pointer { return v.P }
+func (v Action) P_Action() unsafe.Pointer    { return v.P }
+func (v Action) P_Buildable() unsafe.Pointer { return v.P }
 func ActionGetType() gi.GType {
 	ret := _I.GetGType(12, "Action")
 	return ret
@@ -1905,14 +1910,18 @@ func (v Action) SetAlwaysShowImage(always_show bool) {
 // gtk_action_set_gicon
 // container is not nil, container is Action
 // is method
-func (v Action) SetGicon(icon gio.Icon) {
+func (v Action) SetGicon(icon gio.IIcon) {
 	iv, err := _I.Get(100, "Action", "set_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_icon}
 	iv.Call(args, nil, nil)
 }
@@ -2102,7 +2111,9 @@ func WrapActionBar(p unsafe.Pointer) (r ActionBar) { r.P = p; return }
 
 type IActionBar interface{ P_ActionBar() unsafe.Pointer }
 
-func (v ActionBar) P_ActionBar() unsafe.Pointer { return v.P }
+func (v ActionBar) P_ActionBar() unsafe.Pointer        { return v.P }
+func (v ActionBar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ActionBar) P_Buildable() unsafe.Pointer        { return v.P }
 func ActionBarGetType() gi.GType {
 	ret := _I.GetGType(13, "ActionBar")
 	return ret
@@ -2232,6 +2243,7 @@ func WrapActionGroup(p unsafe.Pointer) (r ActionGroup) { r.P = p; return }
 type IActionGroup interface{ P_ActionGroup() unsafe.Pointer }
 
 func (v ActionGroup) P_ActionGroup() unsafe.Pointer { return v.P }
+func (v ActionGroup) P_Buildable() unsafe.Pointer   { return v.P }
 func ActionGroupGetType() gi.GType {
 	ret := _I.GetGType(16, "ActionGroup")
 	return ret
@@ -2551,7 +2563,9 @@ type Actionable struct {
 	P unsafe.Pointer
 }
 type ActionableIfc struct{}
+type IActionable interface{ P_Actionable() unsafe.Pointer }
 
+func (v Actionable) P_Actionable() unsafe.Pointer { return v.P }
 func ActionableGetType() gi.GType {
 	ret := _I.GetGType(19, "Actionable")
 	return ret
@@ -2647,7 +2661,9 @@ type Activatable struct {
 	P unsafe.Pointer
 }
 type ActivatableIfc struct{}
+type IActivatable interface{ P_Activatable() unsafe.Pointer }
 
+func (v Activatable) P_Activatable() unsafe.Pointer { return v.P }
 func ActivatableGetType() gi.GType {
 	ret := _I.GetGType(20, "Activatable")
 	return ret
@@ -3108,7 +3124,9 @@ func WrapAlignment(p unsafe.Pointer) (r Alignment) { r.P = p; return }
 
 type IAlignment interface{ P_Alignment() unsafe.Pointer }
 
-func (v Alignment) P_Alignment() unsafe.Pointer { return v.P }
+func (v Alignment) P_Alignment() unsafe.Pointer        { return v.P }
+func (v Alignment) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Alignment) P_Buildable() unsafe.Pointer        { return v.P }
 func AlignmentGetType() gi.GType {
 	ret := _I.GetGType(24, "Alignment")
 	return ret
@@ -3211,7 +3229,9 @@ type AppChooser struct {
 	P unsafe.Pointer
 }
 type AppChooserIfc struct{}
+type IAppChooser interface{ P_AppChooser() unsafe.Pointer }
 
+func (v AppChooser) P_AppChooser() unsafe.Pointer { return v.P }
 func AppChooserGetType() gi.GType {
 	ret := _I.GetGType(26, "AppChooser")
 	return ret
@@ -3280,6 +3300,11 @@ func WrapAppChooserButton(p unsafe.Pointer) (r AppChooserButton) { r.P = p; retu
 type IAppChooserButton interface{ P_AppChooserButton() unsafe.Pointer }
 
 func (v AppChooserButton) P_AppChooserButton() unsafe.Pointer { return v.P }
+func (v AppChooserButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v AppChooserButton) P_AppChooser() unsafe.Pointer       { return v.P }
+func (v AppChooserButton) P_Buildable() unsafe.Pointer        { return v.P }
+func (v AppChooserButton) P_CellEditable() unsafe.Pointer     { return v.P }
+func (v AppChooserButton) P_CellLayout() unsafe.Pointer       { return v.P }
 func AppChooserButtonGetType() gi.GType {
 	ret := _I.GetGType(27, "AppChooserButton")
 	return ret
@@ -3307,7 +3332,7 @@ func NewAppChooserButton(content_type string) (result AppChooserButton) {
 // gtk_app_chooser_button_append_custom_item
 // container is not nil, container is AppChooserButton
 // is method
-func (v AppChooserButton) AppendCustomItem(name string, label string, icon gio.Icon) {
+func (v AppChooserButton) AppendCustomItem(name string, label string, icon gio.IIcon) {
 	iv, err := _I.Get(170, "AppChooserButton", "append_custom_item")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3315,10 +3340,14 @@ func (v AppChooserButton) AppendCustomItem(name string, label string, icon gio.I
 	}
 	c_name := gi.CString(name)
 	c_label := gi.CString(label)
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_label := gi.NewStringArgument(c_label)
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_name, arg_label, arg_icon}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -3478,6 +3507,9 @@ func WrapAppChooserDialog(p unsafe.Pointer) (r AppChooserDialog) { r.P = p; retu
 type IAppChooserDialog interface{ P_AppChooserDialog() unsafe.Pointer }
 
 func (v AppChooserDialog) P_AppChooserDialog() unsafe.Pointer { return v.P }
+func (v AppChooserDialog) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v AppChooserDialog) P_AppChooser() unsafe.Pointer       { return v.P }
+func (v AppChooserDialog) P_Buildable() unsafe.Pointer        { return v.P }
 func AppChooserDialogGetType() gi.GType {
 	ret := _I.GetGType(29, "AppChooserDialog")
 	return ret
@@ -3486,7 +3518,7 @@ func AppChooserDialogGetType() gi.GType {
 // gtk_app_chooser_dialog_new
 // container is not nil, container is AppChooserDialog
 // is constructor
-func NewAppChooserDialog(parent IWindow, flags DialogFlags, file gio.File) (result AppChooserDialog) {
+func NewAppChooserDialog(parent IWindow, flags DialogFlags, file gio.IFile) (result AppChooserDialog) {
 	iv, err := _I.Get(179, "AppChooserDialog", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3496,9 +3528,13 @@ func NewAppChooserDialog(parent IWindow, flags DialogFlags, file gio.File) (resu
 	if parent != nil {
 		tmp = parent.P_Window()
 	}
+	var tmp1 unsafe.Pointer
+	if file != nil {
+		tmp1 = file.P_File()
+	}
 	arg_parent := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_file := gi.NewPointerArgument(file.P)
+	arg_file := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_parent, arg_flags, arg_file}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3607,6 +3643,10 @@ func WrapAppChooserWidget(p unsafe.Pointer) (r AppChooserWidget) { r.P = p; retu
 type IAppChooserWidget interface{ P_AppChooserWidget() unsafe.Pointer }
 
 func (v AppChooserWidget) P_AppChooserWidget() unsafe.Pointer { return v.P }
+func (v AppChooserWidget) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v AppChooserWidget) P_AppChooser() unsafe.Pointer       { return v.P }
+func (v AppChooserWidget) P_Buildable() unsafe.Pointer        { return v.P }
+func (v AppChooserWidget) P_Orientable() unsafe.Pointer       { return v.P }
 func AppChooserWidgetGetType() gi.GType {
 	ret := _I.GetGType(31, "AppChooserWidget")
 	return ret
@@ -3848,6 +3888,8 @@ func WrapApplication(p unsafe.Pointer) (r Application) { r.P = p; return }
 type IApplication interface{ P_Application() unsafe.Pointer }
 
 func (v Application) P_Application() unsafe.Pointer { return v.P }
+func (v Application) P_ActionGroup() unsafe.Pointer { return v.P }
+func (v Application) P_ActionMap() unsafe.Pointer   { return v.P }
 func ApplicationGetType() gi.GType {
 	ret := _I.GetGType(33, "Application")
 	return ret
@@ -4288,6 +4330,10 @@ func WrapApplicationWindow(p unsafe.Pointer) (r ApplicationWindow) { r.P = p; re
 type IApplicationWindow interface{ P_ApplicationWindow() unsafe.Pointer }
 
 func (v ApplicationWindow) P_ApplicationWindow() unsafe.Pointer { return v.P }
+func (v ApplicationWindow) P_ImplementorIface() unsafe.Pointer  { return v.P }
+func (v ApplicationWindow) P_ActionGroup() unsafe.Pointer       { return v.P }
+func (v ApplicationWindow) P_ActionMap() unsafe.Pointer         { return v.P }
+func (v ApplicationWindow) P_Buildable() unsafe.Pointer         { return v.P }
 func ApplicationWindowGetType() gi.GType {
 	ret := _I.GetGType(36, "ApplicationWindow")
 	return ret
@@ -4421,7 +4467,9 @@ func WrapArrow(p unsafe.Pointer) (r Arrow) { r.P = p; return }
 
 type IArrow interface{ P_Arrow() unsafe.Pointer }
 
-func (v Arrow) P_Arrow() unsafe.Pointer { return v.P }
+func (v Arrow) P_Arrow() unsafe.Pointer            { return v.P }
+func (v Arrow) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Arrow) P_Buildable() unsafe.Pointer        { return v.P }
 func ArrowGetType() gi.GType {
 	ret := _I.GetGType(38, "Arrow")
 	return ret
@@ -4473,6 +4521,8 @@ func WrapArrowAccessible(p unsafe.Pointer) (r ArrowAccessible) { r.P = p; return
 type IArrowAccessible interface{ P_ArrowAccessible() unsafe.Pointer }
 
 func (v ArrowAccessible) P_ArrowAccessible() unsafe.Pointer { return v.P }
+func (v ArrowAccessible) P_Component() unsafe.Pointer       { return v.P }
+func (v ArrowAccessible) P_Image() unsafe.Pointer           { return v.P }
 func ArrowAccessibleGetType() gi.GType {
 	ret := _I.GetGType(39, "ArrowAccessible")
 	return ret
@@ -4541,7 +4591,9 @@ func WrapAspectFrame(p unsafe.Pointer) (r AspectFrame) { r.P = p; return }
 
 type IAspectFrame interface{ P_AspectFrame() unsafe.Pointer }
 
-func (v AspectFrame) P_AspectFrame() unsafe.Pointer { return v.P }
+func (v AspectFrame) P_AspectFrame() unsafe.Pointer      { return v.P }
+func (v AspectFrame) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v AspectFrame) P_Buildable() unsafe.Pointer        { return v.P }
 func AspectFrameGetType() gi.GType {
 	ret := _I.GetGType(44, "AspectFrame")
 	return ret
@@ -4610,7 +4662,9 @@ func WrapAssistant(p unsafe.Pointer) (r Assistant) { r.P = p; return }
 
 type IAssistant interface{ P_Assistant() unsafe.Pointer }
 
-func (v Assistant) P_Assistant() unsafe.Pointer { return v.P }
+func (v Assistant) P_Assistant() unsafe.Pointer        { return v.P }
+func (v Assistant) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Assistant) P_Buildable() unsafe.Pointer        { return v.P }
 func AssistantGetType() gi.GType {
 	ret := _I.GetGType(46, "Assistant")
 	return ret
@@ -5220,7 +5274,9 @@ func WrapBin(p unsafe.Pointer) (r Bin) { r.P = p; return }
 
 type IBin interface{ P_Bin() unsafe.Pointer }
 
-func (v Bin) P_Bin() unsafe.Pointer { return v.P }
+func (v Bin) P_Bin() unsafe.Pointer              { return v.P }
+func (v Bin) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Bin) P_Buildable() unsafe.Pointer        { return v.P }
 func BinGetType() gi.GType {
 	ret := _I.GetGType(51, "Bin")
 	return ret
@@ -5454,6 +5510,9 @@ func WrapBooleanCellAccessible(p unsafe.Pointer) (r BooleanCellAccessible) { r.P
 type IBooleanCellAccessible interface{ P_BooleanCellAccessible() unsafe.Pointer }
 
 func (v BooleanCellAccessible) P_BooleanCellAccessible() unsafe.Pointer { return v.P }
+func (v BooleanCellAccessible) P_Action() unsafe.Pointer                { return v.P }
+func (v BooleanCellAccessible) P_Component() unsafe.Pointer             { return v.P }
+func (v BooleanCellAccessible) P_TableCell() unsafe.Pointer             { return v.P }
 func BooleanCellAccessibleGetType() gi.GType {
 	ret := _I.GetGType(57, "BooleanCellAccessible")
 	return ret
@@ -5561,7 +5620,10 @@ func WrapBox(p unsafe.Pointer) (r Box) { r.P = p; return }
 
 type IBox interface{ P_Box() unsafe.Pointer }
 
-func (v Box) P_Box() unsafe.Pointer { return v.P }
+func (v Box) P_Box() unsafe.Pointer              { return v.P }
+func (v Box) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Box) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Box) P_Orientable() unsafe.Pointer       { return v.P }
 func BoxGetType() gi.GType {
 	ret := _I.GetGType(61, "Box")
 	return ret
@@ -5850,7 +5912,9 @@ type Buildable struct {
 	P unsafe.Pointer
 }
 type BuildableIfc struct{}
+type IBuildable interface{ P_Buildable() unsafe.Pointer }
 
+func (v Buildable) P_Buildable() unsafe.Pointer { return v.P }
 func BuildableGetType() gi.GType {
 	ret := _I.GetGType(63, "Buildable")
 	return ret
@@ -6653,7 +6717,11 @@ func WrapButton(p unsafe.Pointer) (r Button) { r.P = p; return }
 
 type IButton interface{ P_Button() unsafe.Pointer }
 
-func (v Button) P_Button() unsafe.Pointer { return v.P }
+func (v Button) P_Button() unsafe.Pointer           { return v.P }
+func (v Button) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Button) P_Actionable() unsafe.Pointer       { return v.P }
+func (v Button) P_Activatable() unsafe.Pointer      { return v.P }
+func (v Button) P_Buildable() unsafe.Pointer        { return v.P }
 func ButtonGetType() gi.GType {
 	ret := _I.GetGType(67, "Button")
 	return ret
@@ -7149,6 +7217,9 @@ func WrapButtonAccessible(p unsafe.Pointer) (r ButtonAccessible) { r.P = p; retu
 type IButtonAccessible interface{ P_ButtonAccessible() unsafe.Pointer }
 
 func (v ButtonAccessible) P_ButtonAccessible() unsafe.Pointer { return v.P }
+func (v ButtonAccessible) P_Action() unsafe.Pointer           { return v.P }
+func (v ButtonAccessible) P_Component() unsafe.Pointer        { return v.P }
+func (v ButtonAccessible) P_Image() unsafe.Pointer            { return v.P }
 func ButtonAccessibleGetType() gi.GType {
 	ret := _I.GetGType(68, "ButtonAccessible")
 	return ret
@@ -7177,7 +7248,10 @@ func WrapButtonBox(p unsafe.Pointer) (r ButtonBox) { r.P = p; return }
 
 type IButtonBox interface{ P_ButtonBox() unsafe.Pointer }
 
-func (v ButtonBox) P_ButtonBox() unsafe.Pointer { return v.P }
+func (v ButtonBox) P_ButtonBox() unsafe.Pointer        { return v.P }
+func (v ButtonBox) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ButtonBox) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ButtonBox) P_Orientable() unsafe.Pointer       { return v.P }
 func ButtonBoxGetType() gi.GType {
 	ret := _I.GetGType(70, "ButtonBox")
 	return ret
@@ -7397,7 +7471,9 @@ func WrapCalendar(p unsafe.Pointer) (r Calendar) { r.P = p; return }
 
 type ICalendar interface{ P_Calendar() unsafe.Pointer }
 
-func (v Calendar) P_Calendar() unsafe.Pointer { return v.P }
+func (v Calendar) P_Calendar() unsafe.Pointer         { return v.P }
+func (v Calendar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Calendar) P_Buildable() unsafe.Pointer        { return v.P }
 func CalendarGetType() gi.GType {
 	ret := _I.GetGType(76, "Calendar")
 	return ret
@@ -7686,6 +7762,9 @@ func WrapCellAccessible(p unsafe.Pointer) (r CellAccessible) { r.P = p; return }
 type ICellAccessible interface{ P_CellAccessible() unsafe.Pointer }
 
 func (v CellAccessible) P_CellAccessible() unsafe.Pointer { return v.P }
+func (v CellAccessible) P_Action() unsafe.Pointer         { return v.P }
+func (v CellAccessible) P_Component() unsafe.Pointer      { return v.P }
+func (v CellAccessible) P_TableCell() unsafe.Pointer      { return v.P }
 func CellAccessibleGetType() gi.GType {
 	ret := _I.GetGType(79, "CellAccessible")
 	return ret
@@ -7698,7 +7777,9 @@ type CellAccessibleParent struct {
 	P unsafe.Pointer
 }
 type CellAccessibleParentIfc struct{}
+type ICellAccessibleParent interface{ P_CellAccessibleParent() unsafe.Pointer }
 
+func (v CellAccessibleParent) P_CellAccessibleParent() unsafe.Pointer { return v.P }
 func CellAccessibleParentGetType() gi.GType {
 	ret := _I.GetGType(80, "CellAccessibleParent")
 	return ret
@@ -7982,7 +8063,9 @@ func WrapCellArea(p unsafe.Pointer) (r CellArea) { r.P = p; return }
 
 type ICellArea interface{ P_CellArea() unsafe.Pointer }
 
-func (v CellArea) P_CellArea() unsafe.Pointer { return v.P }
+func (v CellArea) P_CellArea() unsafe.Pointer   { return v.P }
+func (v CellArea) P_Buildable() unsafe.Pointer  { return v.P }
+func (v CellArea) P_CellLayout() unsafe.Pointer { return v.P }
 func CellAreaGetType() gi.GType {
 	ret := _I.GetGType(82, "CellArea")
 	return ret
@@ -8094,14 +8177,18 @@ func (v CellArea) AddFocusSibling(renderer ICellRenderer, sibling ICellRenderer)
 // gtk_cell_area_apply_attributes
 // container is not nil, container is CellArea
 // is method
-func (v CellArea) ApplyAttributes(tree_model TreeModel, iter TreeIter, is_expander bool, is_expanded bool) {
+func (v CellArea) ApplyAttributes(tree_model ITreeModel, iter TreeIter, is_expander bool, is_expanded bool) {
 	iv, err := _I.Get(382, "CellArea", "apply_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tree_model != nil {
+		tmp = tree_model.P_TreeModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tree_model := gi.NewPointerArgument(tree_model.P)
+	arg_tree_model := gi.NewPointerArgument(tmp)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_is_expander := gi.NewBoolArgument(is_expander)
 	arg_is_expanded := gi.NewBoolArgument(is_expanded)
@@ -8907,6 +8994,9 @@ func WrapCellAreaBox(p unsafe.Pointer) (r CellAreaBox) { r.P = p; return }
 type ICellAreaBox interface{ P_CellAreaBox() unsafe.Pointer }
 
 func (v CellAreaBox) P_CellAreaBox() unsafe.Pointer { return v.P }
+func (v CellAreaBox) P_Buildable() unsafe.Pointer   { return v.P }
+func (v CellAreaBox) P_CellLayout() unsafe.Pointer  { return v.P }
+func (v CellAreaBox) P_Orientable() unsafe.Pointer  { return v.P }
 func CellAreaBoxGetType() gi.GType {
 	ret := _I.GetGType(83, "CellAreaBox")
 	return ret
@@ -9238,7 +9328,9 @@ type CellEditable struct {
 	P unsafe.Pointer
 }
 type CellEditableIfc struct{}
+type ICellEditable interface{ P_CellEditable() unsafe.Pointer }
 
+func (v CellEditable) P_CellEditable() unsafe.Pointer { return v.P }
 func CellEditableGetType() gi.GType {
 	ret := _I.GetGType(88, "CellEditable")
 	return ret
@@ -9294,7 +9386,9 @@ type CellLayout struct {
 	P unsafe.Pointer
 }
 type CellLayoutIfc struct{}
+type ICellLayout interface{ P_CellLayout() unsafe.Pointer }
 
+func (v CellLayout) P_CellLayout() unsafe.Pointer { return v.P }
 func CellLayoutGetType() gi.GType {
 	ret := _I.GetGType(89, "CellLayout")
 	return ret
@@ -10170,6 +10264,7 @@ func WrapCellRendererProgress(p unsafe.Pointer) (r CellRendererProgress) { r.P =
 type ICellRendererProgress interface{ P_CellRendererProgress() unsafe.Pointer }
 
 func (v CellRendererProgress) P_CellRendererProgress() unsafe.Pointer { return v.P }
+func (v CellRendererProgress) P_Orientable() unsafe.Pointer           { return v.P }
 func CellRendererProgressGetType() gi.GType {
 	ret := _I.GetGType(101, "CellRendererProgress")
 	return ret
@@ -10507,7 +10602,11 @@ func WrapCellView(p unsafe.Pointer) (r CellView) { r.P = p; return }
 
 type ICellView interface{ P_CellView() unsafe.Pointer }
 
-func (v CellView) P_CellView() unsafe.Pointer { return v.P }
+func (v CellView) P_CellView() unsafe.Pointer         { return v.P }
+func (v CellView) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v CellView) P_Buildable() unsafe.Pointer        { return v.P }
+func (v CellView) P_CellLayout() unsafe.Pointer       { return v.P }
+func (v CellView) P_Orientable() unsafe.Pointer       { return v.P }
 func CellViewGetType() gi.GType {
 	ret := _I.GetGType(112, "CellView")
 	return ret
@@ -10778,14 +10877,18 @@ func (v CellView) SetFitModel(fit_model bool) {
 // gtk_cell_view_set_model
 // container is not nil, container is CellView
 // is method
-func (v CellView) SetModel(model TreeModel) {
+func (v CellView) SetModel(model ITreeModel) {
 	iv, err := _I.Get(498, "CellView", "set_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_TreeModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_model := gi.NewPointerArgument(model.P)
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_model}
 	iv.Call(args, nil, nil)
 }
@@ -10814,7 +10917,11 @@ func WrapCheckButton(p unsafe.Pointer) (r CheckButton) { r.P = p; return }
 
 type ICheckButton interface{ P_CheckButton() unsafe.Pointer }
 
-func (v CheckButton) P_CheckButton() unsafe.Pointer { return v.P }
+func (v CheckButton) P_CheckButton() unsafe.Pointer      { return v.P }
+func (v CheckButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v CheckButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v CheckButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v CheckButton) P_Buildable() unsafe.Pointer        { return v.P }
 func CheckButtonGetType() gi.GType {
 	ret := _I.GetGType(114, "CheckButton")
 	return ret
@@ -10887,7 +10994,11 @@ func WrapCheckMenuItem(p unsafe.Pointer) (r CheckMenuItem) { r.P = p; return }
 
 type ICheckMenuItem interface{ P_CheckMenuItem() unsafe.Pointer }
 
-func (v CheckMenuItem) P_CheckMenuItem() unsafe.Pointer { return v.P }
+func (v CheckMenuItem) P_CheckMenuItem() unsafe.Pointer    { return v.P }
+func (v CheckMenuItem) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v CheckMenuItem) P_Actionable() unsafe.Pointer       { return v.P }
+func (v CheckMenuItem) P_Activatable() unsafe.Pointer      { return v.P }
+func (v CheckMenuItem) P_Buildable() unsafe.Pointer        { return v.P }
 func CheckMenuItemGetType() gi.GType {
 	ret := _I.GetGType(115, "CheckMenuItem")
 	return ret
@@ -11069,6 +11180,9 @@ func WrapCheckMenuItemAccessible(p unsafe.Pointer) (r CheckMenuItemAccessible) {
 type ICheckMenuItemAccessible interface{ P_CheckMenuItemAccessible() unsafe.Pointer }
 
 func (v CheckMenuItemAccessible) P_CheckMenuItemAccessible() unsafe.Pointer { return v.P }
+func (v CheckMenuItemAccessible) P_Action() unsafe.Pointer                  { return v.P }
+func (v CheckMenuItemAccessible) P_Component() unsafe.Pointer               { return v.P }
+func (v CheckMenuItemAccessible) P_Selection() unsafe.Pointer               { return v.P }
 func CheckMenuItemAccessibleGetType() gi.GType {
 	ret := _I.GetGType(116, "CheckMenuItemAccessible")
 	return ret
@@ -11622,7 +11736,12 @@ func WrapColorButton(p unsafe.Pointer) (r ColorButton) { r.P = p; return }
 
 type IColorButton interface{ P_ColorButton() unsafe.Pointer }
 
-func (v ColorButton) P_ColorButton() unsafe.Pointer { return v.P }
+func (v ColorButton) P_ColorButton() unsafe.Pointer      { return v.P }
+func (v ColorButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ColorButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v ColorButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v ColorButton) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ColorButton) P_ColorChooser() unsafe.Pointer     { return v.P }
 func ColorButtonGetType() gi.GType {
 	ret := _I.GetGType(120, "ColorButton")
 	return ret
@@ -11822,7 +11941,9 @@ type ColorChooser struct {
 	P unsafe.Pointer
 }
 type ColorChooserIfc struct{}
+type IColorChooser interface{ P_ColorChooser() unsafe.Pointer }
 
+func (v ColorChooser) P_ColorChooser() unsafe.Pointer { return v.P }
 func ColorChooserGetType() gi.GType {
 	ret := _I.GetGType(122, "ColorChooser")
 	return ret
@@ -11922,6 +12043,9 @@ func WrapColorChooserDialog(p unsafe.Pointer) (r ColorChooserDialog) { r.P = p; 
 type IColorChooserDialog interface{ P_ColorChooserDialog() unsafe.Pointer }
 
 func (v ColorChooserDialog) P_ColorChooserDialog() unsafe.Pointer { return v.P }
+func (v ColorChooserDialog) P_ImplementorIface() unsafe.Pointer   { return v.P }
+func (v ColorChooserDialog) P_Buildable() unsafe.Pointer          { return v.P }
+func (v ColorChooserDialog) P_ColorChooser() unsafe.Pointer       { return v.P }
 func ColorChooserDialogGetType() gi.GType {
 	ret := _I.GetGType(123, "ColorChooserDialog")
 	return ret
@@ -11977,6 +12101,10 @@ func WrapColorChooserWidget(p unsafe.Pointer) (r ColorChooserWidget) { r.P = p; 
 type IColorChooserWidget interface{ P_ColorChooserWidget() unsafe.Pointer }
 
 func (v ColorChooserWidget) P_ColorChooserWidget() unsafe.Pointer { return v.P }
+func (v ColorChooserWidget) P_ImplementorIface() unsafe.Pointer   { return v.P }
+func (v ColorChooserWidget) P_Buildable() unsafe.Pointer          { return v.P }
+func (v ColorChooserWidget) P_ColorChooser() unsafe.Pointer       { return v.P }
+func (v ColorChooserWidget) P_Orientable() unsafe.Pointer         { return v.P }
 func ColorChooserWidgetGetType() gi.GType {
 	ret := _I.GetGType(125, "ColorChooserWidget")
 	return ret
@@ -12020,7 +12148,10 @@ func WrapColorSelection(p unsafe.Pointer) (r ColorSelection) { r.P = p; return }
 
 type IColorSelection interface{ P_ColorSelection() unsafe.Pointer }
 
-func (v ColorSelection) P_ColorSelection() unsafe.Pointer { return v.P }
+func (v ColorSelection) P_ColorSelection() unsafe.Pointer   { return v.P }
+func (v ColorSelection) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ColorSelection) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ColorSelection) P_Orientable() unsafe.Pointer       { return v.P }
 func ColorSelectionGetType() gi.GType {
 	ret := _I.GetGType(127, "ColorSelection")
 	return ret
@@ -12367,6 +12498,8 @@ func WrapColorSelectionDialog(p unsafe.Pointer) (r ColorSelectionDialog) { r.P =
 type IColorSelectionDialog interface{ P_ColorSelectionDialog() unsafe.Pointer }
 
 func (v ColorSelectionDialog) P_ColorSelectionDialog() unsafe.Pointer { return v.P }
+func (v ColorSelectionDialog) P_ImplementorIface() unsafe.Pointer     { return v.P }
+func (v ColorSelectionDialog) P_Buildable() unsafe.Pointer            { return v.P }
 func ColorSelectionDialogGetType() gi.GType {
 	ret := _I.GetGType(128, "ColorSelectionDialog")
 	return ret
@@ -12442,7 +12575,11 @@ func WrapComboBox(p unsafe.Pointer) (r ComboBox) { r.P = p; return }
 
 type IComboBox interface{ P_ComboBox() unsafe.Pointer }
 
-func (v ComboBox) P_ComboBox() unsafe.Pointer { return v.P }
+func (v ComboBox) P_ComboBox() unsafe.Pointer         { return v.P }
+func (v ComboBox) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ComboBox) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ComboBox) P_CellEditable() unsafe.Pointer     { return v.P }
+func (v ComboBox) P_CellLayout() unsafe.Pointer       { return v.P }
 func ComboBoxGetType() gi.GType {
 	ret := _I.GetGType(131, "ComboBox")
 	return ret
@@ -12523,13 +12660,17 @@ func NewComboBoxWithEntry() (result ComboBox) {
 // gtk_combo_box_new_with_model
 // container is not nil, container is ComboBox
 // is constructor
-func NewComboBoxWithModel(model TreeModel) (result ComboBox) {
+func NewComboBoxWithModel(model ITreeModel) (result ComboBox) {
 	iv, err := _I.Get(583, "ComboBox", "new_with_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_model := gi.NewPointerArgument(model.P)
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_TreeModel()
+	}
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_model}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -12540,13 +12681,17 @@ func NewComboBoxWithModel(model TreeModel) (result ComboBox) {
 // gtk_combo_box_new_with_model_and_entry
 // container is not nil, container is ComboBox
 // is constructor
-func NewComboBoxWithModelAndEntry(model TreeModel) (result ComboBox) {
+func NewComboBoxWithModelAndEntry(model ITreeModel) (result ComboBox) {
 	iv, err := _I.Get(584, "ComboBox", "new_with_model_and_entry")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_model := gi.NewPointerArgument(model.P)
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_TreeModel()
+	}
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_model}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -13017,14 +13162,18 @@ func (v ComboBox) SetIdColumn(id_column int32) {
 // gtk_combo_box_set_model
 // container is not nil, container is ComboBox
 // is method
-func (v ComboBox) SetModel(model TreeModel) {
+func (v ComboBox) SetModel(model ITreeModel) {
 	iv, err := _I.Get(613, "ComboBox", "set_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_TreeModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_model := gi.NewPointerArgument(model.P)
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_model}
 	iv.Call(args, nil, nil)
 }
@@ -13121,6 +13270,9 @@ func WrapComboBoxAccessible(p unsafe.Pointer) (r ComboBoxAccessible) { r.P = p; 
 type IComboBoxAccessible interface{ P_ComboBoxAccessible() unsafe.Pointer }
 
 func (v ComboBoxAccessible) P_ComboBoxAccessible() unsafe.Pointer { return v.P }
+func (v ComboBoxAccessible) P_Action() unsafe.Pointer             { return v.P }
+func (v ComboBoxAccessible) P_Component() unsafe.Pointer          { return v.P }
+func (v ComboBoxAccessible) P_Selection() unsafe.Pointer          { return v.P }
 func ComboBoxAccessibleGetType() gi.GType {
 	ret := _I.GetGType(132, "ComboBoxAccessible")
 	return ret
@@ -13161,7 +13313,11 @@ func WrapComboBoxText(p unsafe.Pointer) (r ComboBoxText) { r.P = p; return }
 
 type IComboBoxText interface{ P_ComboBoxText() unsafe.Pointer }
 
-func (v ComboBoxText) P_ComboBoxText() unsafe.Pointer { return v.P }
+func (v ComboBoxText) P_ComboBoxText() unsafe.Pointer     { return v.P }
+func (v ComboBoxText) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ComboBoxText) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ComboBoxText) P_CellEditable() unsafe.Pointer     { return v.P }
+func (v ComboBoxText) P_CellLayout() unsafe.Pointer       { return v.P }
 func ComboBoxTextGetType() gi.GType {
 	ret := _I.GetGType(135, "ComboBoxText")
 	return ret
@@ -13378,7 +13534,9 @@ func WrapContainer(p unsafe.Pointer) (r Container) { r.P = p; return }
 
 type IContainer interface{ P_Container() unsafe.Pointer }
 
-func (v Container) P_Container() unsafe.Pointer { return v.P }
+func (v Container) P_Container() unsafe.Pointer        { return v.P }
+func (v Container) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Container) P_Buildable() unsafe.Pointer        { return v.P }
 func ContainerGetType() gi.GType {
 	ret := _I.GetGType(137, "Container")
 	return ret
@@ -13897,6 +14055,7 @@ func WrapContainerAccessible(p unsafe.Pointer) (r ContainerAccessible) { r.P = p
 type IContainerAccessible interface{ P_ContainerAccessible() unsafe.Pointer }
 
 func (v ContainerAccessible) P_ContainerAccessible() unsafe.Pointer { return v.P }
+func (v ContainerAccessible) P_Component() unsafe.Pointer           { return v.P }
 func ContainerAccessibleGetType() gi.GType {
 	ret := _I.GetGType(138, "ContainerAccessible")
 	return ret
@@ -13926,6 +14085,9 @@ func WrapContainerCellAccessible(p unsafe.Pointer) (r ContainerCellAccessible) {
 type IContainerCellAccessible interface{ P_ContainerCellAccessible() unsafe.Pointer }
 
 func (v ContainerCellAccessible) P_ContainerCellAccessible() unsafe.Pointer { return v.P }
+func (v ContainerCellAccessible) P_Action() unsafe.Pointer                  { return v.P }
+func (v ContainerCellAccessible) P_Component() unsafe.Pointer               { return v.P }
+func (v ContainerCellAccessible) P_TableCell() unsafe.Pointer               { return v.P }
 func ContainerCellAccessibleGetType() gi.GType {
 	ret := _I.GetGType(140, "ContainerCellAccessible")
 	return ret
@@ -14048,7 +14210,8 @@ func WrapCssProvider(p unsafe.Pointer) (r CssProvider) { r.P = p; return }
 
 type ICssProvider interface{ P_CssProvider() unsafe.Pointer }
 
-func (v CssProvider) P_CssProvider() unsafe.Pointer { return v.P }
+func (v CssProvider) P_CssProvider() unsafe.Pointer   { return v.P }
+func (v CssProvider) P_StyleProvider() unsafe.Pointer { return v.P }
 func CssProviderGetType() gi.GType {
 	ret := _I.GetGType(144, "CssProvider")
 	return ret
@@ -14117,14 +14280,18 @@ func (v CssProvider) LoadFromData(data gi.Uint8Array, length int64) (result bool
 // gtk_css_provider_load_from_file
 // container is not nil, container is CssProvider
 // is method
-func (v CssProvider) LoadFromFile(file gio.File) (result bool, err error) {
+func (v CssProvider) LoadFromFile(file gio.IFile) (result bool, err error) {
 	iv, err := _I.Get(666, "CssProvider", "load_from_file")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if file != nil {
+		tmp = file.P_File()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_file := gi.NewPointerArgument(file.P)
+	arg_file := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_file, arg_err}
 	var ret gi.Argument
@@ -14476,7 +14643,9 @@ func WrapDialog(p unsafe.Pointer) (r Dialog) { r.P = p; return }
 
 type IDialog interface{ P_Dialog() unsafe.Pointer }
 
-func (v Dialog) P_Dialog() unsafe.Pointer { return v.P }
+func (v Dialog) P_Dialog() unsafe.Pointer           { return v.P }
+func (v Dialog) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Dialog) P_Buildable() unsafe.Pointer        { return v.P }
 func DialogGetType() gi.GType {
 	ret := _I.GetGType(152, "Dialog")
 	return ret
@@ -14779,7 +14948,9 @@ func WrapDrawingArea(p unsafe.Pointer) (r DrawingArea) { r.P = p; return }
 
 type IDrawingArea interface{ P_DrawingArea() unsafe.Pointer }
 
-func (v DrawingArea) P_DrawingArea() unsafe.Pointer { return v.P }
+func (v DrawingArea) P_DrawingArea() unsafe.Pointer      { return v.P }
+func (v DrawingArea) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v DrawingArea) P_Buildable() unsafe.Pointer        { return v.P }
 func DrawingAreaGetType() gi.GType {
 	ret := _I.GetGType(157, "DrawingArea")
 	return ret
@@ -14807,7 +14978,9 @@ type Editable struct {
 	P unsafe.Pointer
 }
 type EditableIfc struct{}
+type IEditable interface{ P_Editable() unsafe.Pointer }
 
+func (v Editable) P_Editable() unsafe.Pointer { return v.P }
 func EditableGetType() gi.GType {
 	ret := _I.GetGType(158, "Editable")
 	return ret
@@ -15039,7 +15212,11 @@ func WrapEntry(p unsafe.Pointer) (r Entry) { r.P = p; return }
 
 type IEntry interface{ P_Entry() unsafe.Pointer }
 
-func (v Entry) P_Entry() unsafe.Pointer { return v.P }
+func (v Entry) P_Entry() unsafe.Pointer            { return v.P }
+func (v Entry) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Entry) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Entry) P_CellEditable() unsafe.Pointer     { return v.P }
+func (v Entry) P_Editable() unsafe.Pointer         { return v.P }
 func EntryGetType() gi.GType {
 	ret := _I.GetGType(159, "Entry")
 	return ret
@@ -15952,15 +16129,19 @@ func (v Entry) SetIconDragSource(icon_pos EntryIconPositionEnum, target_list Tar
 // gtk_entry_set_icon_from_gicon
 // container is not nil, container is Entry
 // is method
-func (v Entry) SetIconFromGicon(icon_pos EntryIconPositionEnum, icon gio.Icon) {
+func (v Entry) SetIconFromGicon(icon_pos EntryIconPositionEnum, icon gio.IIcon) {
 	iv, err := _I.Get(759, "Entry", "set_icon_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_icon_pos := gi.NewIntArgument(int(icon_pos))
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_icon_pos, arg_icon}
 	iv.Call(args, nil, nil)
 }
@@ -16333,6 +16514,10 @@ func WrapEntryAccessible(p unsafe.Pointer) (r EntryAccessible) { r.P = p; return
 type IEntryAccessible interface{ P_EntryAccessible() unsafe.Pointer }
 
 func (v EntryAccessible) P_EntryAccessible() unsafe.Pointer { return v.P }
+func (v EntryAccessible) P_Action() unsafe.Pointer          { return v.P }
+func (v EntryAccessible) P_Component() unsafe.Pointer       { return v.P }
+func (v EntryAccessible) P_EditableText() unsafe.Pointer    { return v.P }
+func (v EntryAccessible) P_Text() unsafe.Pointer            { return v.P }
 func EntryAccessibleGetType() gi.GType {
 	ret := _I.GetGType(160, "EntryAccessible")
 	return ret
@@ -16585,6 +16770,8 @@ func WrapEntryCompletion(p unsafe.Pointer) (r EntryCompletion) { r.P = p; return
 type IEntryCompletion interface{ P_EntryCompletion() unsafe.Pointer }
 
 func (v EntryCompletion) P_EntryCompletion() unsafe.Pointer { return v.P }
+func (v EntryCompletion) P_Buildable() unsafe.Pointer       { return v.P }
+func (v EntryCompletion) P_CellLayout() unsafe.Pointer      { return v.P }
 func EntryCompletionGetType() gi.GType {
 	ret := _I.GetGType(164, "EntryCompletion")
 	return ret
@@ -16960,14 +17147,18 @@ func (v EntryCompletion) SetMinimumKeyLength(length int32) {
 // gtk_entry_completion_set_model
 // container is not nil, container is EntryCompletion
 // is method
-func (v EntryCompletion) SetModel(model TreeModel) {
+func (v EntryCompletion) SetModel(model ITreeModel) {
 	iv, err := _I.Get(815, "EntryCompletion", "set_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_TreeModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_model := gi.NewPointerArgument(model.P)
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_model}
 	iv.Call(args, nil, nil)
 }
@@ -17055,6 +17246,8 @@ func WrapEntryIconAccessible(p unsafe.Pointer) (r EntryIconAccessible) { r.P = p
 type IEntryIconAccessible interface{ P_EntryIconAccessible() unsafe.Pointer }
 
 func (v EntryIconAccessible) P_EntryIconAccessible() unsafe.Pointer { return v.P }
+func (v EntryIconAccessible) P_Action() unsafe.Pointer              { return v.P }
+func (v EntryIconAccessible) P_Component() unsafe.Pointer           { return v.P }
 func EntryIconAccessibleGetType() gi.GType {
 	ret := _I.GetGType(166, "EntryIconAccessible")
 	return ret
@@ -17094,7 +17287,9 @@ func WrapEventBox(p unsafe.Pointer) (r EventBox) { r.P = p; return }
 
 type IEventBox interface{ P_EventBox() unsafe.Pointer }
 
-func (v EventBox) P_EventBox() unsafe.Pointer { return v.P }
+func (v EventBox) P_EventBox() unsafe.Pointer         { return v.P }
+func (v EventBox) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v EventBox) P_Buildable() unsafe.Pointer        { return v.P }
 func EventBoxGetType() gi.GType {
 	ret := _I.GetGType(169, "EventBox")
 	return ret
@@ -17548,7 +17743,9 @@ func WrapExpander(p unsafe.Pointer) (r Expander) { r.P = p; return }
 
 type IExpander interface{ P_Expander() unsafe.Pointer }
 
-func (v Expander) P_Expander() unsafe.Pointer { return v.P }
+func (v Expander) P_Expander() unsafe.Pointer         { return v.P }
+func (v Expander) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Expander) P_Buildable() unsafe.Pointer        { return v.P }
 func ExpanderGetType() gi.GType {
 	ret := _I.GetGType(177, "Expander")
 	return ret
@@ -17866,6 +18063,8 @@ func WrapExpanderAccessible(p unsafe.Pointer) (r ExpanderAccessible) { r.P = p; 
 type IExpanderAccessible interface{ P_ExpanderAccessible() unsafe.Pointer }
 
 func (v ExpanderAccessible) P_ExpanderAccessible() unsafe.Pointer { return v.P }
+func (v ExpanderAccessible) P_Action() unsafe.Pointer             { return v.P }
+func (v ExpanderAccessible) P_Component() unsafe.Pointer          { return v.P }
 func ExpanderAccessibleGetType() gi.GType {
 	ret := _I.GetGType(178, "ExpanderAccessible")
 	return ret
@@ -17914,7 +18113,9 @@ type FileChooser struct {
 	P unsafe.Pointer
 }
 type FileChooserIfc struct{}
+type IFileChooser interface{ P_FileChooser() unsafe.Pointer }
 
+func (v FileChooser) P_FileChooser() unsafe.Pointer { return v.P }
 func FileChooserGetType() gi.GType {
 	ret := _I.GetGType(182, "FileChooser")
 	return ret
@@ -18581,14 +18782,18 @@ func (v *FileChooserIfc) SelectAll() {
 // gtk_file_chooser_select_file
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) SelectFile(file gio.File) (result bool, err error) {
+func (v *FileChooserIfc) SelectFile(file gio.IFile) (result bool, err error) {
 	iv, err := _I.Get(894, "FileChooser", "select_file")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if file != nil {
+		tmp = file.P_File()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_file := gi.NewPointerArgument(file.P)
+	arg_file := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_file, arg_err}
 	var ret gi.Argument
@@ -18711,14 +18916,18 @@ func (v *FileChooserIfc) SetCurrentFolder(filename string) (result bool) {
 // gtk_file_chooser_set_current_folder_file
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) SetCurrentFolderFile(file gio.File) (result bool, err error) {
+func (v *FileChooserIfc) SetCurrentFolderFile(file gio.IFile) (result bool, err error) {
 	iv, err := _I.Get(901, "FileChooser", "set_current_folder_file")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if file != nil {
+		tmp = file.P_File()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_file := gi.NewPointerArgument(file.P)
+	arg_file := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_file, arg_err}
 	var ret gi.Argument
@@ -18802,14 +19011,18 @@ func (v *FileChooserIfc) SetExtraWidget(extra_widget IWidget) {
 // gtk_file_chooser_set_file
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) SetFile(file gio.File) (result bool, err error) {
+func (v *FileChooserIfc) SetFile(file gio.IFile) (result bool, err error) {
 	iv, err := _I.Get(906, "FileChooser", "set_file")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if file != nil {
+		tmp = file.P_File()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_file := gi.NewPointerArgument(file.P)
+	arg_file := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_file, arg_err}
 	var ret gi.Argument
@@ -18989,14 +19202,18 @@ func (v *FileChooserIfc) UnselectAll() {
 // gtk_file_chooser_unselect_file
 // container is not nil, container is FileChooser
 // is method
-func (v *FileChooserIfc) UnselectFile(file gio.File) {
+func (v *FileChooserIfc) UnselectFile(file gio.IFile) {
 	iv, err := _I.Get(917, "FileChooser", "unselect_file")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if file != nil {
+		tmp = file.P_File()
+	}
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_file := gi.NewPointerArgument(file.P)
+	arg_file := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_file}
 	iv.Call(args, nil, nil)
 }
@@ -19064,6 +19281,10 @@ func WrapFileChooserButton(p unsafe.Pointer) (r FileChooserButton) { r.P = p; re
 type IFileChooserButton interface{ P_FileChooserButton() unsafe.Pointer }
 
 func (v FileChooserButton) P_FileChooserButton() unsafe.Pointer { return v.P }
+func (v FileChooserButton) P_ImplementorIface() unsafe.Pointer  { return v.P }
+func (v FileChooserButton) P_Buildable() unsafe.Pointer         { return v.P }
+func (v FileChooserButton) P_FileChooser() unsafe.Pointer       { return v.P }
+func (v FileChooserButton) P_Orientable() unsafe.Pointer        { return v.P }
 func FileChooserButtonGetType() gi.GType {
 	ret := _I.GetGType(184, "FileChooserButton")
 	return ret
@@ -19246,6 +19467,9 @@ func WrapFileChooserDialog(p unsafe.Pointer) (r FileChooserDialog) { r.P = p; re
 type IFileChooserDialog interface{ P_FileChooserDialog() unsafe.Pointer }
 
 func (v FileChooserDialog) P_FileChooserDialog() unsafe.Pointer { return v.P }
+func (v FileChooserDialog) P_ImplementorIface() unsafe.Pointer  { return v.P }
+func (v FileChooserDialog) P_Buildable() unsafe.Pointer         { return v.P }
+func (v FileChooserDialog) P_FileChooser() unsafe.Pointer       { return v.P }
 func FileChooserDialogGetType() gi.GType {
 	ret := _I.GetGType(187, "FileChooserDialog")
 	return ret
@@ -19288,6 +19512,7 @@ func WrapFileChooserNative(p unsafe.Pointer) (r FileChooserNative) { r.P = p; re
 type IFileChooserNative interface{ P_FileChooserNative() unsafe.Pointer }
 
 func (v FileChooserNative) P_FileChooserNative() unsafe.Pointer { return v.P }
+func (v FileChooserNative) P_FileChooser() unsafe.Pointer       { return v.P }
 func FileChooserNativeGetType() gi.GType {
 	ret := _I.GetGType(190, "FileChooserNative")
 	return ret
@@ -19407,6 +19632,10 @@ func WrapFileChooserWidget(p unsafe.Pointer) (r FileChooserWidget) { r.P = p; re
 type IFileChooserWidget interface{ P_FileChooserWidget() unsafe.Pointer }
 
 func (v FileChooserWidget) P_FileChooserWidget() unsafe.Pointer { return v.P }
+func (v FileChooserWidget) P_ImplementorIface() unsafe.Pointer  { return v.P }
+func (v FileChooserWidget) P_Buildable() unsafe.Pointer         { return v.P }
+func (v FileChooserWidget) P_FileChooser() unsafe.Pointer       { return v.P }
+func (v FileChooserWidget) P_Orientable() unsafe.Pointer        { return v.P }
 func FileChooserWidgetGetType() gi.GType {
 	ret := _I.GetGType(191, "FileChooserWidget")
 	return ret
@@ -19451,6 +19680,7 @@ func WrapFileFilter(p unsafe.Pointer) (r FileFilter) { r.P = p; return }
 type IFileFilter interface{ P_FileFilter() unsafe.Pointer }
 
 func (v FileFilter) P_FileFilter() unsafe.Pointer { return v.P }
+func (v FileFilter) P_Buildable() unsafe.Pointer  { return v.P }
 func FileFilterGetType() gi.GType {
 	ret := _I.GetGType(193, "FileFilter")
 	return ret
@@ -19678,7 +19908,9 @@ func WrapFixed(p unsafe.Pointer) (r Fixed) { r.P = p; return }
 
 type IFixed interface{ P_Fixed() unsafe.Pointer }
 
-func (v Fixed) P_Fixed() unsafe.Pointer { return v.P }
+func (v Fixed) P_Fixed() unsafe.Pointer            { return v.P }
+func (v Fixed) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Fixed) P_Buildable() unsafe.Pointer        { return v.P }
 func FixedGetType() gi.GType {
 	ret := _I.GetGType(196, "Fixed")
 	return ret
@@ -19776,7 +20008,10 @@ func WrapFlowBox(p unsafe.Pointer) (r FlowBox) { r.P = p; return }
 
 type IFlowBox interface{ P_FlowBox() unsafe.Pointer }
 
-func (v FlowBox) P_FlowBox() unsafe.Pointer { return v.P }
+func (v FlowBox) P_FlowBox() unsafe.Pointer          { return v.P }
+func (v FlowBox) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v FlowBox) P_Buildable() unsafe.Pointer        { return v.P }
+func (v FlowBox) P_Orientable() unsafe.Pointer       { return v.P }
 func FlowBoxGetType() gi.GType {
 	ret := _I.GetGType(199, "FlowBox")
 	return ret
@@ -19800,14 +20035,18 @@ func NewFlowBox() (result FlowBox) {
 // gtk_flow_box_bind_model
 // container is not nil, container is FlowBox
 // is method
-func (v FlowBox) BindModel(model gio.ListModel, create_widget_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v FlowBox) BindModel(model gio.IListModel, create_widget_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE isPtr: false, tag: interface*/) {
 	iv, err := _I.Get(949, "FlowBox", "bind_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_ListModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_model := gi.NewPointerArgument(model.P)
+	arg_model := gi.NewPointerArgument(tmp)
 	arg_create_widget_func := gi.NewIntArgument(create_widget_func) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_user_data_free_func := gi.NewIntArgument(user_data_free_func) /*TODO*/
@@ -20307,6 +20546,8 @@ func WrapFlowBoxAccessible(p unsafe.Pointer) (r FlowBoxAccessible) { r.P = p; re
 type IFlowBoxAccessible interface{ P_FlowBoxAccessible() unsafe.Pointer }
 
 func (v FlowBoxAccessible) P_FlowBoxAccessible() unsafe.Pointer { return v.P }
+func (v FlowBoxAccessible) P_Component() unsafe.Pointer         { return v.P }
+func (v FlowBoxAccessible) P_Selection() unsafe.Pointer         { return v.P }
 func FlowBoxAccessibleGetType() gi.GType {
 	ret := _I.GetGType(200, "FlowBoxAccessible")
 	return ret
@@ -20334,7 +20575,9 @@ func WrapFlowBoxChild(p unsafe.Pointer) (r FlowBoxChild) { r.P = p; return }
 
 type IFlowBoxChild interface{ P_FlowBoxChild() unsafe.Pointer }
 
-func (v FlowBoxChild) P_FlowBoxChild() unsafe.Pointer { return v.P }
+func (v FlowBoxChild) P_FlowBoxChild() unsafe.Pointer     { return v.P }
+func (v FlowBoxChild) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v FlowBoxChild) P_Buildable() unsafe.Pointer        { return v.P }
 func FlowBoxChildGetType() gi.GType {
 	ret := _I.GetGType(202, "FlowBoxChild")
 	return ret
@@ -20414,6 +20657,7 @@ func WrapFlowBoxChildAccessible(p unsafe.Pointer) (r FlowBoxChildAccessible) { r
 type IFlowBoxChildAccessible interface{ P_FlowBoxChildAccessible() unsafe.Pointer }
 
 func (v FlowBoxChildAccessible) P_FlowBoxChildAccessible() unsafe.Pointer { return v.P }
+func (v FlowBoxChildAccessible) P_Component() unsafe.Pointer              { return v.P }
 func FlowBoxChildAccessibleGetType() gi.GType {
 	ret := _I.GetGType(203, "FlowBoxChildAccessible")
 	return ret
@@ -20436,7 +20680,12 @@ func WrapFontButton(p unsafe.Pointer) (r FontButton) { r.P = p; return }
 
 type IFontButton interface{ P_FontButton() unsafe.Pointer }
 
-func (v FontButton) P_FontButton() unsafe.Pointer { return v.P }
+func (v FontButton) P_FontButton() unsafe.Pointer       { return v.P }
+func (v FontButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v FontButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v FontButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v FontButton) P_Buildable() unsafe.Pointer        { return v.P }
+func (v FontButton) P_FontChooser() unsafe.Pointer      { return v.P }
 func FontButtonGetType() gi.GType {
 	ret := _I.GetGType(204, "FontButton")
 	return ret
@@ -20692,7 +20941,9 @@ type FontChooser struct {
 	P unsafe.Pointer
 }
 type FontChooserIfc struct{}
+type IFontChooser interface{ P_FontChooser() unsafe.Pointer }
 
+func (v FontChooser) P_FontChooser() unsafe.Pointer { return v.P }
 func FontChooserGetType() gi.GType {
 	ret := _I.GetGType(206, "FontChooser")
 	return ret
@@ -21030,6 +21281,9 @@ func WrapFontChooserDialog(p unsafe.Pointer) (r FontChooserDialog) { r.P = p; re
 type IFontChooserDialog interface{ P_FontChooserDialog() unsafe.Pointer }
 
 func (v FontChooserDialog) P_FontChooserDialog() unsafe.Pointer { return v.P }
+func (v FontChooserDialog) P_ImplementorIface() unsafe.Pointer  { return v.P }
+func (v FontChooserDialog) P_Buildable() unsafe.Pointer         { return v.P }
+func (v FontChooserDialog) P_FontChooser() unsafe.Pointer       { return v.P }
 func FontChooserDialogGetType() gi.GType {
 	ret := _I.GetGType(207, "FontChooserDialog")
 	return ret
@@ -21101,6 +21355,10 @@ func WrapFontChooserWidget(p unsafe.Pointer) (r FontChooserWidget) { r.P = p; re
 type IFontChooserWidget interface{ P_FontChooserWidget() unsafe.Pointer }
 
 func (v FontChooserWidget) P_FontChooserWidget() unsafe.Pointer { return v.P }
+func (v FontChooserWidget) P_ImplementorIface() unsafe.Pointer  { return v.P }
+func (v FontChooserWidget) P_Buildable() unsafe.Pointer         { return v.P }
+func (v FontChooserWidget) P_FontChooser() unsafe.Pointer       { return v.P }
+func (v FontChooserWidget) P_Orientable() unsafe.Pointer        { return v.P }
 func FontChooserWidgetGetType() gi.GType {
 	ret := _I.GetGType(210, "FontChooserWidget")
 	return ret
@@ -21144,7 +21402,10 @@ func WrapFontSelection(p unsafe.Pointer) (r FontSelection) { r.P = p; return }
 
 type IFontSelection interface{ P_FontSelection() unsafe.Pointer }
 
-func (v FontSelection) P_FontSelection() unsafe.Pointer { return v.P }
+func (v FontSelection) P_FontSelection() unsafe.Pointer    { return v.P }
+func (v FontSelection) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v FontSelection) P_Buildable() unsafe.Pointer        { return v.P }
+func (v FontSelection) P_Orientable() unsafe.Pointer       { return v.P }
 func FontSelectionGetType() gi.GType {
 	ret := _I.GetGType(212, "FontSelection")
 	return ret
@@ -21385,6 +21646,8 @@ func WrapFontSelectionDialog(p unsafe.Pointer) (r FontSelectionDialog) { r.P = p
 type IFontSelectionDialog interface{ P_FontSelectionDialog() unsafe.Pointer }
 
 func (v FontSelectionDialog) P_FontSelectionDialog() unsafe.Pointer { return v.P }
+func (v FontSelectionDialog) P_ImplementorIface() unsafe.Pointer    { return v.P }
+func (v FontSelectionDialog) P_Buildable() unsafe.Pointer           { return v.P }
 func FontSelectionDialogGetType() gi.GType {
 	ret := _I.GetGType(213, "FontSelectionDialog")
 	return ret
@@ -21563,7 +21826,9 @@ func WrapFrame(p unsafe.Pointer) (r Frame) { r.P = p; return }
 
 type IFrame interface{ P_Frame() unsafe.Pointer }
 
-func (v Frame) P_Frame() unsafe.Pointer { return v.P }
+func (v Frame) P_Frame() unsafe.Pointer            { return v.P }
+func (v Frame) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Frame) P_Buildable() unsafe.Pointer        { return v.P }
 func FrameGetType() gi.GType {
 	ret := _I.GetGType(216, "Frame")
 	return ret
@@ -21737,6 +22002,7 @@ func WrapFrameAccessible(p unsafe.Pointer) (r FrameAccessible) { r.P = p; return
 type IFrameAccessible interface{ P_FrameAccessible() unsafe.Pointer }
 
 func (v FrameAccessible) P_FrameAccessible() unsafe.Pointer { return v.P }
+func (v FrameAccessible) P_Component() unsafe.Pointer       { return v.P }
 func FrameAccessibleGetType() gi.GType {
 	ret := _I.GetGType(217, "FrameAccessible")
 	return ret
@@ -21775,7 +22041,9 @@ func WrapGLArea(p unsafe.Pointer) (r GLArea) { r.P = p; return }
 
 type IGLArea interface{ P_GLArea() unsafe.Pointer }
 
-func (v GLArea) P_GLArea() unsafe.Pointer { return v.P }
+func (v GLArea) P_GLArea() unsafe.Pointer           { return v.P }
+func (v GLArea) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v GLArea) P_Buildable() unsafe.Pointer        { return v.P }
 func GLAreaGetType() gi.GType {
 	ret := _I.GetGType(220, "GLArea")
 	return ret
@@ -23289,7 +23557,10 @@ func WrapGrid(p unsafe.Pointer) (r Grid) { r.P = p; return }
 
 type IGrid interface{ P_Grid() unsafe.Pointer }
 
-func (v Grid) P_Grid() unsafe.Pointer { return v.P }
+func (v Grid) P_Grid() unsafe.Pointer             { return v.P }
+func (v Grid) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Grid) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Grid) P_Orientable() unsafe.Pointer       { return v.P }
 func GridGetType() gi.GType {
 	ret := _I.GetGType(232, "Grid")
 	return ret
@@ -23676,7 +23947,10 @@ func WrapHBox(p unsafe.Pointer) (r HBox) { r.P = p; return }
 
 type IHBox interface{ P_HBox() unsafe.Pointer }
 
-func (v HBox) P_HBox() unsafe.Pointer { return v.P }
+func (v HBox) P_HBox() unsafe.Pointer             { return v.P }
+func (v HBox) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v HBox) P_Buildable() unsafe.Pointer        { return v.P }
+func (v HBox) P_Orientable() unsafe.Pointer       { return v.P }
 func HBoxGetType() gi.GType {
 	ret := _I.GetGType(234, "HBox")
 	return ret
@@ -23713,7 +23987,10 @@ func WrapHButtonBox(p unsafe.Pointer) (r HButtonBox) { r.P = p; return }
 
 type IHButtonBox interface{ P_HButtonBox() unsafe.Pointer }
 
-func (v HButtonBox) P_HButtonBox() unsafe.Pointer { return v.P }
+func (v HButtonBox) P_HButtonBox() unsafe.Pointer       { return v.P }
+func (v HButtonBox) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v HButtonBox) P_Buildable() unsafe.Pointer        { return v.P }
+func (v HButtonBox) P_Orientable() unsafe.Pointer       { return v.P }
 func HButtonBoxGetType() gi.GType {
 	ret := _I.GetGType(235, "HButtonBox")
 	return ret
@@ -23747,7 +24024,10 @@ func WrapHPaned(p unsafe.Pointer) (r HPaned) { r.P = p; return }
 
 type IHPaned interface{ P_HPaned() unsafe.Pointer }
 
-func (v HPaned) P_HPaned() unsafe.Pointer { return v.P }
+func (v HPaned) P_HPaned() unsafe.Pointer           { return v.P }
+func (v HPaned) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v HPaned) P_Buildable() unsafe.Pointer        { return v.P }
+func (v HPaned) P_Orientable() unsafe.Pointer       { return v.P }
 func HPanedGetType() gi.GType {
 	ret := _I.GetGType(236, "HPaned")
 	return ret
@@ -23780,7 +24060,9 @@ func WrapHSV(p unsafe.Pointer) (r HSV) { r.P = p; return }
 
 type IHSV interface{ P_HSV() unsafe.Pointer }
 
-func (v HSV) P_HSV() unsafe.Pointer { return v.P }
+func (v HSV) P_HSV() unsafe.Pointer              { return v.P }
+func (v HSV) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v HSV) P_Buildable() unsafe.Pointer        { return v.P }
 func HSVGetType() gi.GType {
 	ret := _I.GetGType(237, "HSV")
 	return ret
@@ -23941,7 +24223,10 @@ func WrapHScale(p unsafe.Pointer) (r HScale) { r.P = p; return }
 
 type IHScale interface{ P_HScale() unsafe.Pointer }
 
-func (v HScale) P_HScale() unsafe.Pointer { return v.P }
+func (v HScale) P_HScale() unsafe.Pointer           { return v.P }
+func (v HScale) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v HScale) P_Buildable() unsafe.Pointer        { return v.P }
+func (v HScale) P_Orientable() unsafe.Pointer       { return v.P }
 func HScaleGetType() gi.GType {
 	ret := _I.GetGType(239, "HScale")
 	return ret
@@ -24000,7 +24285,10 @@ func WrapHScrollbar(p unsafe.Pointer) (r HScrollbar) { r.P = p; return }
 
 type IHScrollbar interface{ P_HScrollbar() unsafe.Pointer }
 
-func (v HScrollbar) P_HScrollbar() unsafe.Pointer { return v.P }
+func (v HScrollbar) P_HScrollbar() unsafe.Pointer       { return v.P }
+func (v HScrollbar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v HScrollbar) P_Buildable() unsafe.Pointer        { return v.P }
+func (v HScrollbar) P_Orientable() unsafe.Pointer       { return v.P }
 func HScrollbarGetType() gi.GType {
 	ret := _I.GetGType(240, "HScrollbar")
 	return ret
@@ -24040,7 +24328,10 @@ func WrapHSeparator(p unsafe.Pointer) (r HSeparator) { r.P = p; return }
 
 type IHSeparator interface{ P_HSeparator() unsafe.Pointer }
 
-func (v HSeparator) P_HSeparator() unsafe.Pointer { return v.P }
+func (v HSeparator) P_HSeparator() unsafe.Pointer       { return v.P }
+func (v HSeparator) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v HSeparator) P_Buildable() unsafe.Pointer        { return v.P }
+func (v HSeparator) P_Orientable() unsafe.Pointer       { return v.P }
 func HSeparatorGetType() gi.GType {
 	ret := _I.GetGType(241, "HSeparator")
 	return ret
@@ -24073,7 +24364,9 @@ func WrapHandleBox(p unsafe.Pointer) (r HandleBox) { r.P = p; return }
 
 type IHandleBox interface{ P_HandleBox() unsafe.Pointer }
 
-func (v HandleBox) P_HandleBox() unsafe.Pointer { return v.P }
+func (v HandleBox) P_HandleBox() unsafe.Pointer        { return v.P }
+func (v HandleBox) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v HandleBox) P_Buildable() unsafe.Pointer        { return v.P }
 func HandleBoxGetType() gi.GType {
 	ret := _I.GetGType(242, "HandleBox")
 	return ret
@@ -24229,7 +24522,9 @@ func WrapHeaderBar(p unsafe.Pointer) (r HeaderBar) { r.P = p; return }
 
 type IHeaderBar interface{ P_HeaderBar() unsafe.Pointer }
 
-func (v HeaderBar) P_HeaderBar() unsafe.Pointer { return v.P }
+func (v HeaderBar) P_HeaderBar() unsafe.Pointer        { return v.P }
+func (v HeaderBar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v HeaderBar) P_Buildable() unsafe.Pointer        { return v.P }
 func HeaderBarGetType() gi.GType {
 	ret := _I.GetGType(244, "HeaderBar")
 	return ret
@@ -24911,6 +25206,7 @@ func WrapIconFactory(p unsafe.Pointer) (r IconFactory) { r.P = p; return }
 type IIconFactory interface{ P_IconFactory() unsafe.Pointer }
 
 func (v IconFactory) P_IconFactory() unsafe.Pointer { return v.P }
+func (v IconFactory) P_Buildable() unsafe.Pointer   { return v.P }
 func IconFactoryGetType() gi.GType {
 	ret := _I.GetGType(254, "IconFactory")
 	return ret
@@ -25257,14 +25553,18 @@ func (v IconInfo) LoadIconAsync(cancellable gio.ICancellable, callback int /*TOD
 // gtk_icon_info_load_icon_finish
 // container is not nil, container is IconInfo
 // is method
-func (v IconInfo) LoadIconFinish(res gio.AsyncResult) (result gdkpixbuf.Pixbuf, err error) {
+func (v IconInfo) LoadIconFinish(res gio.IAsyncResult) (result gdkpixbuf.Pixbuf, err error) {
 	iv, err := _I.Get(1214, "IconInfo", "load_icon_finish")
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
+	var tmp unsafe.Pointer
+	if res != nil {
+		tmp = res.P_AsyncResult()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_res := gi.NewPointerArgument(res.P)
+	arg_res := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_res, arg_err}
 	var ret gi.Argument
@@ -25351,14 +25651,18 @@ func (v IconInfo) LoadSymbolicAsync(fg gdk.RGBA, success_color gdk.RGBA, warning
 // gtk_icon_info_load_symbolic_finish
 // container is not nil, container is IconInfo
 // is method
-func (v IconInfo) LoadSymbolicFinish(res gio.AsyncResult) (result gdkpixbuf.Pixbuf, was_symbolic bool, err error) {
+func (v IconInfo) LoadSymbolicFinish(res gio.IAsyncResult) (result gdkpixbuf.Pixbuf, was_symbolic bool, err error) {
 	iv, err := _I.Get(1218, "IconInfo", "load_symbolic_finish")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if res != nil {
+		tmp = res.P_AsyncResult()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_res := gi.NewPointerArgument(res.P)
+	arg_res := gi.NewPointerArgument(tmp)
 	arg_was_symbolic := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_res, arg_was_symbolic, arg_err}
@@ -25425,14 +25729,18 @@ func (v IconInfo) LoadSymbolicForContextAsync(context IStyleContext, cancellable
 // gtk_icon_info_load_symbolic_for_context_finish
 // container is not nil, container is IconInfo
 // is method
-func (v IconInfo) LoadSymbolicForContextFinish(res gio.AsyncResult) (result gdkpixbuf.Pixbuf, was_symbolic bool, err error) {
+func (v IconInfo) LoadSymbolicForContextFinish(res gio.IAsyncResult) (result gdkpixbuf.Pixbuf, was_symbolic bool, err error) {
 	iv, err := _I.Get(1221, "IconInfo", "load_symbolic_for_context_finish")
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
+	var tmp unsafe.Pointer
+	if res != nil {
+		tmp = res.P_AsyncResult()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_res := gi.NewPointerArgument(res.P)
+	arg_res := gi.NewPointerArgument(tmp)
 	arg_was_symbolic := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	args := []gi.Argument{arg_v, arg_res, arg_was_symbolic, arg_err}
@@ -26444,14 +26752,18 @@ func (v IconTheme) LoadSurface(icon_name string, size int32, scale int32, for_wi
 // gtk_icon_theme_lookup_by_gicon
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) LookupByGicon(icon gio.Icon, size int32, flags IconLookupFlags) (result IconInfo) {
+func (v IconTheme) LookupByGicon(icon gio.IIcon, size int32, flags IconLookupFlags) (result IconInfo) {
 	iv, err := _I.Get(1272, "IconTheme", "lookup_by_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp)
 	arg_size := gi.NewInt32Argument(size)
 	arg_flags := gi.NewIntArgument(int(flags))
 	args := []gi.Argument{arg_v, arg_icon, arg_size, arg_flags}
@@ -26464,14 +26776,18 @@ func (v IconTheme) LookupByGicon(icon gio.Icon, size int32, flags IconLookupFlag
 // gtk_icon_theme_lookup_by_gicon_for_scale
 // container is not nil, container is IconTheme
 // is method
-func (v IconTheme) LookupByGiconForScale(icon gio.Icon, size int32, scale int32, flags IconLookupFlags) (result IconInfo) {
+func (v IconTheme) LookupByGiconForScale(icon gio.IIcon, size int32, scale int32, flags IconLookupFlags) (result IconInfo) {
 	iv, err := _I.Get(1273, "IconTheme", "lookup_by_gicon_for_scale")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp)
 	arg_size := gi.NewInt32Argument(size)
 	arg_scale := gi.NewInt32Argument(scale)
 	arg_flags := gi.NewIntArgument(int(flags))
@@ -26651,7 +26967,11 @@ func WrapIconView(p unsafe.Pointer) (r IconView) { r.P = p; return }
 
 type IIconView interface{ P_IconView() unsafe.Pointer }
 
-func (v IconView) P_IconView() unsafe.Pointer { return v.P }
+func (v IconView) P_IconView() unsafe.Pointer         { return v.P }
+func (v IconView) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v IconView) P_Buildable() unsafe.Pointer        { return v.P }
+func (v IconView) P_CellLayout() unsafe.Pointer       { return v.P }
+func (v IconView) P_Scrollable() unsafe.Pointer       { return v.P }
 func IconViewGetType() gi.GType {
 	ret := _I.GetGType(264, "IconView")
 	return ret
@@ -26696,13 +27016,17 @@ func NewIconViewWithArea(area ICellArea) (result IconView) {
 // gtk_icon_view_new_with_model
 // container is not nil, container is IconView
 // is constructor
-func NewIconViewWithModel(model TreeModel) (result IconView) {
+func NewIconViewWithModel(model ITreeModel) (result IconView) {
 	iv, err := _I.Get(1283, "IconView", "new_with_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_model := gi.NewPointerArgument(model.P)
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_TreeModel()
+	}
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_model}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -27547,14 +27871,18 @@ func (v IconView) SetMarkupColumn(column int32) {
 // gtk_icon_view_set_model
 // container is not nil, container is IconView
 // is method
-func (v IconView) SetModel(model TreeModel) {
+func (v IconView) SetModel(model ITreeModel) {
 	iv, err := _I.Get(1331, "IconView", "set_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_TreeModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_model := gi.NewPointerArgument(model.P)
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_model}
 	iv.Call(args, nil, nil)
 }
@@ -27778,6 +28106,8 @@ func WrapIconViewAccessible(p unsafe.Pointer) (r IconViewAccessible) { r.P = p; 
 type IIconViewAccessible interface{ P_IconViewAccessible() unsafe.Pointer }
 
 func (v IconViewAccessible) P_IconViewAccessible() unsafe.Pointer { return v.P }
+func (v IconViewAccessible) P_Component() unsafe.Pointer          { return v.P }
+func (v IconViewAccessible) P_Selection() unsafe.Pointer          { return v.P }
 func IconViewAccessibleGetType() gi.GType {
 	ret := _I.GetGType(265, "IconViewAccessible")
 	return ret
@@ -27833,7 +28163,9 @@ func WrapImage(p unsafe.Pointer) (r Image) { r.P = p; return }
 
 type IImage interface{ P_Image() unsafe.Pointer }
 
-func (v Image) P_Image() unsafe.Pointer { return v.P }
+func (v Image) P_Image() unsafe.Pointer            { return v.P }
+func (v Image) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Image) P_Buildable() unsafe.Pointer        { return v.P }
 func ImageGetType() gi.GType {
 	ret := _I.GetGType(269, "Image")
 	return ret
@@ -27897,13 +28229,17 @@ func NewImageFromFile(filename string) (result Image) {
 // gtk_image_new_from_gicon
 // container is not nil, container is Image
 // is constructor
-func NewImageFromGicon(icon gio.Icon, size int32) (result Image) {
+func NewImageFromGicon(icon gio.IIcon, size int32) (result Image) {
 	iv, err := _I.Get(1348, "Image", "new_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_icon := gi.NewPointerArgument(icon.P)
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
+	arg_icon := gi.NewPointerArgument(tmp)
 	arg_size := gi.NewInt32Argument(size)
 	args := []gi.Argument{arg_icon, arg_size}
 	var ret gi.Argument
@@ -28228,14 +28564,18 @@ func (v Image) SetFromFile(filename string) {
 // gtk_image_set_from_gicon
 // container is not nil, container is Image
 // is method
-func (v Image) SetFromGicon(icon gio.Icon, size int32) {
+func (v Image) SetFromGicon(icon gio.IIcon, size int32) {
 	iv, err := _I.Get(1366, "Image", "set_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp)
 	arg_size := gi.NewInt32Argument(size)
 	args := []gi.Argument{arg_v, arg_icon, arg_size}
 	iv.Call(args, nil, nil)
@@ -28371,6 +28711,8 @@ func WrapImageAccessible(p unsafe.Pointer) (r ImageAccessible) { r.P = p; return
 type IImageAccessible interface{ P_ImageAccessible() unsafe.Pointer }
 
 func (v ImageAccessible) P_ImageAccessible() unsafe.Pointer { return v.P }
+func (v ImageAccessible) P_Component() unsafe.Pointer       { return v.P }
+func (v ImageAccessible) P_Image() unsafe.Pointer           { return v.P }
 func ImageAccessibleGetType() gi.GType {
 	ret := _I.GetGType(270, "ImageAccessible")
 	return ret
@@ -28401,6 +28743,10 @@ func WrapImageCellAccessible(p unsafe.Pointer) (r ImageCellAccessible) { r.P = p
 type IImageCellAccessible interface{ P_ImageCellAccessible() unsafe.Pointer }
 
 func (v ImageCellAccessible) P_ImageCellAccessible() unsafe.Pointer { return v.P }
+func (v ImageCellAccessible) P_Action() unsafe.Pointer              { return v.P }
+func (v ImageCellAccessible) P_Component() unsafe.Pointer           { return v.P }
+func (v ImageCellAccessible) P_Image() unsafe.Pointer               { return v.P }
+func (v ImageCellAccessible) P_TableCell() unsafe.Pointer           { return v.P }
 func ImageCellAccessibleGetType() gi.GType {
 	ret := _I.GetGType(272, "ImageCellAccessible")
 	return ret
@@ -28431,7 +28777,11 @@ func WrapImageMenuItem(p unsafe.Pointer) (r ImageMenuItem) { r.P = p; return }
 
 type IImageMenuItem interface{ P_ImageMenuItem() unsafe.Pointer }
 
-func (v ImageMenuItem) P_ImageMenuItem() unsafe.Pointer { return v.P }
+func (v ImageMenuItem) P_ImageMenuItem() unsafe.Pointer    { return v.P }
+func (v ImageMenuItem) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ImageMenuItem) P_Actionable() unsafe.Pointer       { return v.P }
+func (v ImageMenuItem) P_Activatable() unsafe.Pointer      { return v.P }
+func (v ImageMenuItem) P_Buildable() unsafe.Pointer        { return v.P }
 func ImageMenuItemGetType() gi.GType {
 	ret := _I.GetGType(274, "ImageMenuItem")
 	return ret
@@ -28685,7 +29035,10 @@ func WrapInfoBar(p unsafe.Pointer) (r InfoBar) { r.P = p; return }
 
 type IInfoBar interface{ P_InfoBar() unsafe.Pointer }
 
-func (v InfoBar) P_InfoBar() unsafe.Pointer { return v.P }
+func (v InfoBar) P_InfoBar() unsafe.Pointer          { return v.P }
+func (v InfoBar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v InfoBar) P_Buildable() unsafe.Pointer        { return v.P }
+func (v InfoBar) P_Orientable() unsafe.Pointer       { return v.P }
 func InfoBarGetType() gi.GType {
 	ret := _I.GetGType(278, "InfoBar")
 	return ret
@@ -28989,7 +29342,9 @@ func WrapInvisible(p unsafe.Pointer) (r Invisible) { r.P = p; return }
 
 type IInvisible interface{ P_Invisible() unsafe.Pointer }
 
-func (v Invisible) P_Invisible() unsafe.Pointer { return v.P }
+func (v Invisible) P_Invisible() unsafe.Pointer        { return v.P }
+func (v Invisible) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Invisible) P_Buildable() unsafe.Pointer        { return v.P }
 func InvisibleGetType() gi.GType {
 	ret := _I.GetGType(282, "Invisible")
 	return ret
@@ -29124,7 +29479,9 @@ func WrapLabel(p unsafe.Pointer) (r Label) { r.P = p; return }
 
 type ILabel interface{ P_Label() unsafe.Pointer }
 
-func (v Label) P_Label() unsafe.Pointer { return v.P }
+func (v Label) P_Label() unsafe.Pointer            { return v.P }
+func (v Label) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Label) P_Buildable() unsafe.Pointer        { return v.P }
 func LabelGetType() gi.GType {
 	ret := _I.GetGType(286, "Label")
 	return ret
@@ -29974,6 +30331,9 @@ func WrapLabelAccessible(p unsafe.Pointer) (r LabelAccessible) { r.P = p; return
 type ILabelAccessible interface{ P_LabelAccessible() unsafe.Pointer }
 
 func (v LabelAccessible) P_LabelAccessible() unsafe.Pointer { return v.P }
+func (v LabelAccessible) P_Component() unsafe.Pointer       { return v.P }
+func (v LabelAccessible) P_Hypertext() unsafe.Pointer       { return v.P }
+func (v LabelAccessible) P_Text() unsafe.Pointer            { return v.P }
 func LabelAccessibleGetType() gi.GType {
 	ret := _I.GetGType(287, "LabelAccessible")
 	return ret
@@ -30023,7 +30383,10 @@ func WrapLayout(p unsafe.Pointer) (r Layout) { r.P = p; return }
 
 type ILayout interface{ P_Layout() unsafe.Pointer }
 
-func (v Layout) P_Layout() unsafe.Pointer { return v.P }
+func (v Layout) P_Layout() unsafe.Pointer           { return v.P }
+func (v Layout) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Layout) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Layout) P_Scrollable() unsafe.Pointer       { return v.P }
 func LayoutGetType() gi.GType {
 	ret := _I.GetGType(291, "Layout")
 	return ret
@@ -30245,7 +30608,10 @@ func WrapLevelBar(p unsafe.Pointer) (r LevelBar) { r.P = p; return }
 
 type ILevelBar interface{ P_LevelBar() unsafe.Pointer }
 
-func (v LevelBar) P_LevelBar() unsafe.Pointer { return v.P }
+func (v LevelBar) P_LevelBar() unsafe.Pointer         { return v.P }
+func (v LevelBar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v LevelBar) P_Buildable() unsafe.Pointer        { return v.P }
+func (v LevelBar) P_Orientable() unsafe.Pointer       { return v.P }
 func LevelBarGetType() gi.GType {
 	ret := _I.GetGType(293, "LevelBar")
 	return ret
@@ -30514,6 +30880,8 @@ func WrapLevelBarAccessible(p unsafe.Pointer) (r LevelBarAccessible) { r.P = p; 
 type ILevelBarAccessible interface{ P_LevelBarAccessible() unsafe.Pointer }
 
 func (v LevelBarAccessible) P_LevelBarAccessible() unsafe.Pointer { return v.P }
+func (v LevelBarAccessible) P_Component() unsafe.Pointer          { return v.P }
+func (v LevelBarAccessible) P_Value() unsafe.Pointer              { return v.P }
 func LevelBarAccessibleGetType() gi.GType {
 	ret := _I.GetGType(294, "LevelBarAccessible")
 	return ret
@@ -30593,7 +30961,11 @@ func WrapLinkButton(p unsafe.Pointer) (r LinkButton) { r.P = p; return }
 
 type ILinkButton interface{ P_LinkButton() unsafe.Pointer }
 
-func (v LinkButton) P_LinkButton() unsafe.Pointer { return v.P }
+func (v LinkButton) P_LinkButton() unsafe.Pointer       { return v.P }
+func (v LinkButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v LinkButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v LinkButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v LinkButton) P_Buildable() unsafe.Pointer        { return v.P }
 func LinkButtonGetType() gi.GType {
 	ret := _I.GetGType(299, "LinkButton")
 	return ret
@@ -30720,6 +31092,10 @@ func WrapLinkButtonAccessible(p unsafe.Pointer) (r LinkButtonAccessible) { r.P =
 type ILinkButtonAccessible interface{ P_LinkButtonAccessible() unsafe.Pointer }
 
 func (v LinkButtonAccessible) P_LinkButtonAccessible() unsafe.Pointer { return v.P }
+func (v LinkButtonAccessible) P_Action() unsafe.Pointer               { return v.P }
+func (v LinkButtonAccessible) P_Component() unsafe.Pointer            { return v.P }
+func (v LinkButtonAccessible) P_HyperlinkImpl() unsafe.Pointer        { return v.P }
+func (v LinkButtonAccessible) P_Image() unsafe.Pointer                { return v.P }
 func LinkButtonAccessibleGetType() gi.GType {
 	ret := _I.GetGType(300, "LinkButtonAccessible")
 	return ret
@@ -30758,7 +31134,9 @@ func WrapListBox(p unsafe.Pointer) (r ListBox) { r.P = p; return }
 
 type IListBox interface{ P_ListBox() unsafe.Pointer }
 
-func (v ListBox) P_ListBox() unsafe.Pointer { return v.P }
+func (v ListBox) P_ListBox() unsafe.Pointer          { return v.P }
+func (v ListBox) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ListBox) P_Buildable() unsafe.Pointer        { return v.P }
 func ListBoxGetType() gi.GType {
 	ret := _I.GetGType(303, "ListBox")
 	return ret
@@ -30782,14 +31160,18 @@ func NewListBox() (result ListBox) {
 // gtk_list_box_bind_model
 // container is not nil, container is ListBox
 // is method
-func (v ListBox) BindModel(model gio.ListModel, create_widget_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v ListBox) BindModel(model gio.IListModel, create_widget_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE isPtr: false, tag: interface*/) {
 	iv, err := _I.Get(1485, "ListBox", "bind_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_ListModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_model := gi.NewPointerArgument(model.P)
+	arg_model := gi.NewPointerArgument(tmp)
 	arg_create_widget_func := gi.NewIntArgument(create_widget_func) /*TODO*/
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_user_data_free_func := gi.NewIntArgument(user_data_free_func) /*TODO*/
@@ -31245,6 +31627,8 @@ func WrapListBoxAccessible(p unsafe.Pointer) (r ListBoxAccessible) { r.P = p; re
 type IListBoxAccessible interface{ P_ListBoxAccessible() unsafe.Pointer }
 
 func (v ListBoxAccessible) P_ListBoxAccessible() unsafe.Pointer { return v.P }
+func (v ListBoxAccessible) P_Component() unsafe.Pointer         { return v.P }
+func (v ListBoxAccessible) P_Selection() unsafe.Pointer         { return v.P }
 func ListBoxAccessibleGetType() gi.GType {
 	ret := _I.GetGType(304, "ListBoxAccessible")
 	return ret
@@ -31274,7 +31658,10 @@ func WrapListBoxRow(p unsafe.Pointer) (r ListBoxRow) { r.P = p; return }
 
 type IListBoxRow interface{ P_ListBoxRow() unsafe.Pointer }
 
-func (v ListBoxRow) P_ListBoxRow() unsafe.Pointer { return v.P }
+func (v ListBoxRow) P_ListBoxRow() unsafe.Pointer       { return v.P }
+func (v ListBoxRow) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ListBoxRow) P_Actionable() unsafe.Pointer       { return v.P }
+func (v ListBoxRow) P_Buildable() unsafe.Pointer        { return v.P }
 func ListBoxRowGetType() gi.GType {
 	ret := _I.GetGType(306, "ListBoxRow")
 	return ret
@@ -31454,6 +31841,7 @@ func WrapListBoxRowAccessible(p unsafe.Pointer) (r ListBoxRowAccessible) { r.P =
 type IListBoxRowAccessible interface{ P_ListBoxRowAccessible() unsafe.Pointer }
 
 func (v ListBoxRowAccessible) P_ListBoxRowAccessible() unsafe.Pointer { return v.P }
+func (v ListBoxRowAccessible) P_Component() unsafe.Pointer            { return v.P }
 func ListBoxRowAccessibleGetType() gi.GType {
 	ret := _I.GetGType(307, "ListBoxRowAccessible")
 	return ret
@@ -31475,7 +31863,12 @@ func WrapListStore(p unsafe.Pointer) (r ListStore) { r.P = p; return }
 
 type IListStore interface{ P_ListStore() unsafe.Pointer }
 
-func (v ListStore) P_ListStore() unsafe.Pointer { return v.P }
+func (v ListStore) P_ListStore() unsafe.Pointer      { return v.P }
+func (v ListStore) P_Buildable() unsafe.Pointer      { return v.P }
+func (v ListStore) P_TreeDragDest() unsafe.Pointer   { return v.P }
+func (v ListStore) P_TreeDragSource() unsafe.Pointer { return v.P }
+func (v ListStore) P_TreeModel() unsafe.Pointer      { return v.P }
+func (v ListStore) P_TreeSortable() unsafe.Pointer   { return v.P }
 func ListStoreGetType() gi.GType {
 	ret := _I.GetGType(308, "ListStore")
 	return ret
@@ -31790,7 +32183,11 @@ func WrapLockButton(p unsafe.Pointer) (r LockButton) { r.P = p; return }
 
 type ILockButton interface{ P_LockButton() unsafe.Pointer }
 
-func (v LockButton) P_LockButton() unsafe.Pointer { return v.P }
+func (v LockButton) P_LockButton() unsafe.Pointer       { return v.P }
+func (v LockButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v LockButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v LockButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v LockButton) P_Buildable() unsafe.Pointer        { return v.P }
 func LockButtonGetType() gi.GType {
 	ret := _I.GetGType(310, "LockButton")
 	return ret
@@ -31866,6 +32263,9 @@ func WrapLockButtonAccessible(p unsafe.Pointer) (r LockButtonAccessible) { r.P =
 type ILockButtonAccessible interface{ P_LockButtonAccessible() unsafe.Pointer }
 
 func (v LockButtonAccessible) P_LockButtonAccessible() unsafe.Pointer { return v.P }
+func (v LockButtonAccessible) P_Action() unsafe.Pointer               { return v.P }
+func (v LockButtonAccessible) P_Component() unsafe.Pointer            { return v.P }
+func (v LockButtonAccessible) P_Image() unsafe.Pointer                { return v.P }
 func LockButtonAccessibleGetType() gi.GType {
 	ret := _I.GetGType(311, "LockButtonAccessible")
 	return ret
@@ -31904,7 +32304,9 @@ func WrapMenu(p unsafe.Pointer) (r Menu) { r.P = p; return }
 
 type IMenu interface{ P_Menu() unsafe.Pointer }
 
-func (v Menu) P_Menu() unsafe.Pointer { return v.P }
+func (v Menu) P_Menu() unsafe.Pointer             { return v.P }
+func (v Menu) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Menu) P_Buildable() unsafe.Pointer        { return v.P }
 func MenuGetType() gi.GType {
 	ret := _I.GetGType(314, "Menu")
 	return ret
@@ -32494,6 +32896,8 @@ func WrapMenuAccessible(p unsafe.Pointer) (r MenuAccessible) { r.P = p; return }
 type IMenuAccessible interface{ P_MenuAccessible() unsafe.Pointer }
 
 func (v MenuAccessible) P_MenuAccessible() unsafe.Pointer { return v.P }
+func (v MenuAccessible) P_Component() unsafe.Pointer      { return v.P }
+func (v MenuAccessible) P_Selection() unsafe.Pointer      { return v.P }
 func MenuAccessibleGetType() gi.GType {
 	ret := _I.GetGType(315, "MenuAccessible")
 	return ret
@@ -32521,7 +32925,9 @@ func WrapMenuBar(p unsafe.Pointer) (r MenuBar) { r.P = p; return }
 
 type IMenuBar interface{ P_MenuBar() unsafe.Pointer }
 
-func (v MenuBar) P_MenuBar() unsafe.Pointer { return v.P }
+func (v MenuBar) P_MenuBar() unsafe.Pointer          { return v.P }
+func (v MenuBar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v MenuBar) P_Buildable() unsafe.Pointer        { return v.P }
 func MenuBarGetType() gi.GType {
 	ret := _I.GetGType(317, "MenuBar")
 	return ret
@@ -32651,7 +33057,11 @@ func WrapMenuButton(p unsafe.Pointer) (r MenuButton) { r.P = p; return }
 
 type IMenuButton interface{ P_MenuButton() unsafe.Pointer }
 
-func (v MenuButton) P_MenuButton() unsafe.Pointer { return v.P }
+func (v MenuButton) P_MenuButton() unsafe.Pointer       { return v.P }
+func (v MenuButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v MenuButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v MenuButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v MenuButton) P_Buildable() unsafe.Pointer        { return v.P }
 func MenuButtonGetType() gi.GType {
 	ret := _I.GetGType(319, "MenuButton")
 	return ret
@@ -32893,6 +33303,9 @@ func WrapMenuButtonAccessible(p unsafe.Pointer) (r MenuButtonAccessible) { r.P =
 type IMenuButtonAccessible interface{ P_MenuButtonAccessible() unsafe.Pointer }
 
 func (v MenuButtonAccessible) P_MenuButtonAccessible() unsafe.Pointer { return v.P }
+func (v MenuButtonAccessible) P_Action() unsafe.Pointer               { return v.P }
+func (v MenuButtonAccessible) P_Component() unsafe.Pointer            { return v.P }
+func (v MenuButtonAccessible) P_Image() unsafe.Pointer                { return v.P }
 func MenuButtonAccessibleGetType() gi.GType {
 	ret := _I.GetGType(320, "MenuButtonAccessible")
 	return ret
@@ -32949,7 +33362,11 @@ func WrapMenuItem(p unsafe.Pointer) (r MenuItem) { r.P = p; return }
 
 type IMenuItem interface{ P_MenuItem() unsafe.Pointer }
 
-func (v MenuItem) P_MenuItem() unsafe.Pointer { return v.P }
+func (v MenuItem) P_MenuItem() unsafe.Pointer         { return v.P }
+func (v MenuItem) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v MenuItem) P_Actionable() unsafe.Pointer       { return v.P }
+func (v MenuItem) P_Activatable() unsafe.Pointer      { return v.P }
+func (v MenuItem) P_Buildable() unsafe.Pointer        { return v.P }
 func MenuItemGetType() gi.GType {
 	ret := _I.GetGType(324, "MenuItem")
 	return ret
@@ -33293,6 +33710,9 @@ func WrapMenuItemAccessible(p unsafe.Pointer) (r MenuItemAccessible) { r.P = p; 
 type IMenuItemAccessible interface{ P_MenuItemAccessible() unsafe.Pointer }
 
 func (v MenuItemAccessible) P_MenuItemAccessible() unsafe.Pointer { return v.P }
+func (v MenuItemAccessible) P_Action() unsafe.Pointer             { return v.P }
+func (v MenuItemAccessible) P_Component() unsafe.Pointer          { return v.P }
+func (v MenuItemAccessible) P_Selection() unsafe.Pointer          { return v.P }
 func MenuItemAccessibleGetType() gi.GType {
 	ret := _I.GetGType(325, "MenuItemAccessible")
 	return ret
@@ -33341,7 +33761,9 @@ func WrapMenuShell(p unsafe.Pointer) (r MenuShell) { r.P = p; return }
 
 type IMenuShell interface{ P_MenuShell() unsafe.Pointer }
 
-func (v MenuShell) P_MenuShell() unsafe.Pointer { return v.P }
+func (v MenuShell) P_MenuShell() unsafe.Pointer        { return v.P }
+func (v MenuShell) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v MenuShell) P_Buildable() unsafe.Pointer        { return v.P }
 func MenuShellGetType() gi.GType {
 	ret := _I.GetGType(329, "MenuShell")
 	return ret
@@ -33602,6 +34024,8 @@ func WrapMenuShellAccessible(p unsafe.Pointer) (r MenuShellAccessible) { r.P = p
 type IMenuShellAccessible interface{ P_MenuShellAccessible() unsafe.Pointer }
 
 func (v MenuShellAccessible) P_MenuShellAccessible() unsafe.Pointer { return v.P }
+func (v MenuShellAccessible) P_Component() unsafe.Pointer           { return v.P }
+func (v MenuShellAccessible) P_Selection() unsafe.Pointer           { return v.P }
 func MenuShellAccessibleGetType() gi.GType {
 	ret := _I.GetGType(330, "MenuShellAccessible")
 	return ret
@@ -33642,7 +34066,11 @@ func WrapMenuToolButton(p unsafe.Pointer) (r MenuToolButton) { r.P = p; return }
 
 type IMenuToolButton interface{ P_MenuToolButton() unsafe.Pointer }
 
-func (v MenuToolButton) P_MenuToolButton() unsafe.Pointer { return v.P }
+func (v MenuToolButton) P_MenuToolButton() unsafe.Pointer   { return v.P }
+func (v MenuToolButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v MenuToolButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v MenuToolButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v MenuToolButton) P_Buildable() unsafe.Pointer        { return v.P }
 func MenuToolButtonGetType() gi.GType {
 	ret := _I.GetGType(333, "MenuToolButton")
 	return ret
@@ -33783,7 +34211,9 @@ func WrapMessageDialog(p unsafe.Pointer) (r MessageDialog) { r.P = p; return }
 
 type IMessageDialog interface{ P_MessageDialog() unsafe.Pointer }
 
-func (v MessageDialog) P_MessageDialog() unsafe.Pointer { return v.P }
+func (v MessageDialog) P_MessageDialog() unsafe.Pointer    { return v.P }
+func (v MessageDialog) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v MessageDialog) P_Buildable() unsafe.Pointer        { return v.P }
 func MessageDialogGetType() gi.GType {
 	ret := _I.GetGType(335, "MessageDialog")
 	return ret
@@ -33897,7 +34327,9 @@ func WrapMisc(p unsafe.Pointer) (r Misc) { r.P = p; return }
 
 type IMisc interface{ P_Misc() unsafe.Pointer }
 
-func (v Misc) P_Misc() unsafe.Pointer { return v.P }
+func (v Misc) P_Misc() unsafe.Pointer             { return v.P }
+func (v Misc) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Misc) P_Buildable() unsafe.Pointer        { return v.P }
 func MiscGetType() gi.GType {
 	ret := _I.GetGType(338, "Misc")
 	return ret
@@ -33999,7 +34431,11 @@ func WrapModelButton(p unsafe.Pointer) (r ModelButton) { r.P = p; return }
 
 type IModelButton interface{ P_ModelButton() unsafe.Pointer }
 
-func (v ModelButton) P_ModelButton() unsafe.Pointer { return v.P }
+func (v ModelButton) P_ModelButton() unsafe.Pointer      { return v.P }
+func (v ModelButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ModelButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v ModelButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v ModelButton) P_Buildable() unsafe.Pointer        { return v.P }
 func ModelButtonGetType() gi.GType {
 	ret := _I.GetGType(340, "ModelButton")
 	return ret
@@ -34382,7 +34818,9 @@ func WrapNotebook(p unsafe.Pointer) (r Notebook) { r.P = p; return }
 
 type INotebook interface{ P_Notebook() unsafe.Pointer }
 
-func (v Notebook) P_Notebook() unsafe.Pointer { return v.P }
+func (v Notebook) P_Notebook() unsafe.Pointer         { return v.P }
+func (v Notebook) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Notebook) P_Buildable() unsafe.Pointer        { return v.P }
 func NotebookGetType() gi.GType {
 	ret := _I.GetGType(345, "Notebook")
 	return ret
@@ -35291,6 +35729,8 @@ func WrapNotebookAccessible(p unsafe.Pointer) (r NotebookAccessible) { r.P = p; 
 type INotebookAccessible interface{ P_NotebookAccessible() unsafe.Pointer }
 
 func (v NotebookAccessible) P_NotebookAccessible() unsafe.Pointer { return v.P }
+func (v NotebookAccessible) P_Component() unsafe.Pointer          { return v.P }
+func (v NotebookAccessible) P_Selection() unsafe.Pointer          { return v.P }
 func NotebookAccessibleGetType() gi.GType {
 	ret := _I.GetGType(346, "NotebookAccessible")
 	return ret
@@ -35319,6 +35759,7 @@ func WrapNotebookPageAccessible(p unsafe.Pointer) (r NotebookPageAccessible) { r
 type INotebookPageAccessible interface{ P_NotebookPageAccessible() unsafe.Pointer }
 
 func (v NotebookPageAccessible) P_NotebookPageAccessible() unsafe.Pointer { return v.P }
+func (v NotebookPageAccessible) P_Component() unsafe.Pointer              { return v.P }
 func NotebookPageAccessibleGetType() gi.GType {
 	ret := _I.GetGType(348, "NotebookPageAccessible")
 	return ret
@@ -35428,6 +35869,7 @@ func WrapNumerableIcon(p unsafe.Pointer) (r NumerableIcon) { r.P = p; return }
 type INumerableIcon interface{ P_NumerableIcon() unsafe.Pointer }
 
 func (v NumerableIcon) P_NumerableIcon() unsafe.Pointer { return v.P }
+func (v NumerableIcon) P_Icon() unsafe.Pointer          { return v.P }
 func NumerableIconGetType() gi.GType {
 	ret := _I.GetGType(353, "NumerableIcon")
 	return ret
@@ -35437,13 +35879,17 @@ func NumerableIconGetType() gi.GType {
 // container is not nil, container is NumerableIcon
 // is method
 // arg0Type tag: interface, isPtr: true
-func NumerableIconNew1(base_icon gio.Icon) (result gio.Icon) {
+func NumerableIconNew1(base_icon gio.IIcon) (result gio.Icon) {
 	iv, err := _I.Get(1705, "NumerableIcon", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_base_icon := gi.NewPointerArgument(base_icon.P)
+	var tmp unsafe.Pointer
+	if base_icon != nil {
+		tmp = base_icon.P_Icon()
+	}
+	arg_base_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_base_icon}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -35455,18 +35901,22 @@ func NumerableIconNew1(base_icon gio.Icon) (result gio.Icon) {
 // container is not nil, container is NumerableIcon
 // is method
 // arg0Type tag: interface, isPtr: true
-func NumerableIconNewWithStyleContext1(base_icon gio.Icon, context IStyleContext) (result gio.Icon) {
+func NumerableIconNewWithStyleContext1(base_icon gio.IIcon, context IStyleContext) (result gio.Icon) {
 	iv, err := _I.Get(1706, "NumerableIcon", "new_with_style_context")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	var tmp unsafe.Pointer
-	if context != nil {
-		tmp = context.P_StyleContext()
+	if base_icon != nil {
+		tmp = base_icon.P_Icon()
 	}
-	arg_base_icon := gi.NewPointerArgument(base_icon.P)
-	arg_context := gi.NewPointerArgument(tmp)
+	var tmp1 unsafe.Pointer
+	if context != nil {
+		tmp1 = context.P_StyleContext()
+	}
+	arg_base_icon := gi.NewPointerArgument(tmp)
+	arg_context := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_base_icon, arg_context}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -35562,14 +36012,18 @@ func (v NumerableIcon) GetStyleContext() (result StyleContext) {
 // gtk_numerable_icon_set_background_gicon
 // container is not nil, container is NumerableIcon
 // is method
-func (v NumerableIcon) SetBackgroundGicon(icon gio.Icon) {
+func (v NumerableIcon) SetBackgroundGicon(icon gio.IIcon) {
 	iv, err := _I.Get(1712, "NumerableIcon", "set_background_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_icon}
 	iv.Call(args, nil, nil)
 }
@@ -35664,7 +36118,9 @@ func WrapOffscreenWindow(p unsafe.Pointer) (r OffscreenWindow) { r.P = p; return
 
 type IOffscreenWindow interface{ P_OffscreenWindow() unsafe.Pointer }
 
-func (v OffscreenWindow) P_OffscreenWindow() unsafe.Pointer { return v.P }
+func (v OffscreenWindow) P_OffscreenWindow() unsafe.Pointer  { return v.P }
+func (v OffscreenWindow) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v OffscreenWindow) P_Buildable() unsafe.Pointer        { return v.P }
 func OffscreenWindowGetType() gi.GType {
 	ret := _I.GetGType(355, "OffscreenWindow")
 	return ret
@@ -35726,7 +36182,9 @@ type Orientable struct {
 	P unsafe.Pointer
 }
 type OrientableIfc struct{}
+type IOrientable interface{ P_Orientable() unsafe.Pointer }
 
+func (v Orientable) P_Orientable() unsafe.Pointer { return v.P }
 func OrientableGetType() gi.GType {
 	ret := _I.GetGType(356, "Orientable")
 	return ret
@@ -35789,7 +36247,9 @@ func WrapOverlay(p unsafe.Pointer) (r Overlay) { r.P = p; return }
 
 type IOverlay interface{ P_Overlay() unsafe.Pointer }
 
-func (v Overlay) P_Overlay() unsafe.Pointer { return v.P }
+func (v Overlay) P_Overlay() unsafe.Pointer          { return v.P }
+func (v Overlay) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Overlay) P_Buildable() unsafe.Pointer        { return v.P }
 func OverlayGetType() gi.GType {
 	ret := _I.GetGType(358, "Overlay")
 	return ret
@@ -35974,7 +36434,7 @@ func PadControllerGetType() gi.GType {
 // gtk_pad_controller_new
 // container is not nil, container is PadController
 // is constructor
-func NewPadController(window IWindow, group gio.ActionGroup, pad gdk.IDevice) (result PadController) {
+func NewPadController(window IWindow, group gio.IActionGroup, pad gdk.IDevice) (result PadController) {
 	iv, err := _I.Get(1727, "PadController", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -35985,12 +36445,16 @@ func NewPadController(window IWindow, group gio.ActionGroup, pad gdk.IDevice) (r
 		tmp = window.P_Window()
 	}
 	var tmp1 unsafe.Pointer
+	if group != nil {
+		tmp1 = group.P_ActionGroup()
+	}
+	var tmp2 unsafe.Pointer
 	if pad != nil {
-		tmp1 = pad.P_Device()
+		tmp2 = pad.P_Device()
 	}
 	arg_window := gi.NewPointerArgument(tmp)
-	arg_group := gi.NewPointerArgument(group.P)
-	arg_pad := gi.NewPointerArgument(tmp1)
+	arg_group := gi.NewPointerArgument(tmp1)
+	arg_pad := gi.NewPointerArgument(tmp2)
 	args := []gi.Argument{arg_window, arg_group, arg_pad}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -36603,7 +37067,10 @@ func WrapPaned(p unsafe.Pointer) (r Paned) { r.P = p; return }
 
 type IPaned interface{ P_Paned() unsafe.Pointer }
 
-func (v Paned) P_Paned() unsafe.Pointer { return v.P }
+func (v Paned) P_Paned() unsafe.Pointer            { return v.P }
+func (v Paned) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Paned) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Paned) P_Orientable() unsafe.Pointer       { return v.P }
 func PanedGetType() gi.GType {
 	ret := _I.GetGType(370, "Paned")
 	return ret
@@ -36833,6 +37300,8 @@ func WrapPanedAccessible(p unsafe.Pointer) (r PanedAccessible) { r.P = p; return
 type IPanedAccessible interface{ P_PanedAccessible() unsafe.Pointer }
 
 func (v PanedAccessible) P_PanedAccessible() unsafe.Pointer { return v.P }
+func (v PanedAccessible) P_Component() unsafe.Pointer       { return v.P }
+func (v PanedAccessible) P_Value() unsafe.Pointer           { return v.P }
 func PanedAccessibleGetType() gi.GType {
 	ret := _I.GetGType(371, "PanedAccessible")
 	return ret
@@ -37366,7 +37835,9 @@ func WrapPlacesSidebar(p unsafe.Pointer) (r PlacesSidebar) { r.P = p; return }
 
 type IPlacesSidebar interface{ P_PlacesSidebar() unsafe.Pointer }
 
-func (v PlacesSidebar) P_PlacesSidebar() unsafe.Pointer { return v.P }
+func (v PlacesSidebar) P_PlacesSidebar() unsafe.Pointer    { return v.P }
+func (v PlacesSidebar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v PlacesSidebar) P_Buildable() unsafe.Pointer        { return v.P }
 func PlacesSidebarGetType() gi.GType {
 	ret := _I.GetGType(378, "PlacesSidebar")
 	return ret
@@ -37390,14 +37861,18 @@ func NewPlacesSidebar() (result PlacesSidebar) {
 // gtk_places_sidebar_add_shortcut
 // container is not nil, container is PlacesSidebar
 // is method
-func (v PlacesSidebar) AddShortcut(location gio.File) {
+func (v PlacesSidebar) AddShortcut(location gio.IFile) {
 	iv, err := _I.Get(1795, "PlacesSidebar", "add_shortcut")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if location != nil {
+		tmp = location.P_File()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_location := gi.NewPointerArgument(location.P)
+	arg_location := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_location}
 	iv.Call(args, nil, nil)
 }
@@ -37610,14 +38085,18 @@ func (v PlacesSidebar) ListShortcuts() (result glib.SList) {
 // gtk_places_sidebar_remove_shortcut
 // container is not nil, container is PlacesSidebar
 // is method
-func (v PlacesSidebar) RemoveShortcut(location gio.File) {
+func (v PlacesSidebar) RemoveShortcut(location gio.IFile) {
 	iv, err := _I.Get(1808, "PlacesSidebar", "remove_shortcut")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if location != nil {
+		tmp = location.P_File()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_location := gi.NewPointerArgument(location.P)
+	arg_location := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_location}
 	iv.Call(args, nil, nil)
 }
@@ -37660,14 +38139,18 @@ func (v PlacesSidebar) SetLocalOnly(local_only bool) {
 // gtk_places_sidebar_set_location
 // container is not nil, container is PlacesSidebar
 // is method
-func (v PlacesSidebar) SetLocation(location gio.File) {
+func (v PlacesSidebar) SetLocation(location gio.IFile) {
 	iv, err := _I.Get(1811, "PlacesSidebar", "set_location")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if location != nil {
+		tmp = location.P_File()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_location := gi.NewPointerArgument(location.P)
+	arg_location := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_location}
 	iv.Call(args, nil, nil)
 }
@@ -37804,7 +38287,9 @@ func WrapPlug(p unsafe.Pointer) (r Plug) { r.P = p; return }
 
 type IPlug interface{ P_Plug() unsafe.Pointer }
 
-func (v Plug) P_Plug() unsafe.Pointer { return v.P }
+func (v Plug) P_Plug() unsafe.Pointer             { return v.P }
+func (v Plug) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Plug) P_Buildable() unsafe.Pointer        { return v.P }
 func PlugGetType() gi.GType {
 	ret := _I.GetGType(379, "Plug")
 	return ret
@@ -37972,7 +38457,9 @@ func WrapPopover(p unsafe.Pointer) (r Popover) { r.P = p; return }
 
 type IPopover interface{ P_Popover() unsafe.Pointer }
 
-func (v Popover) P_Popover() unsafe.Pointer { return v.P }
+func (v Popover) P_Popover() unsafe.Pointer          { return v.P }
+func (v Popover) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Popover) P_Buildable() unsafe.Pointer        { return v.P }
 func PopoverGetType() gi.GType {
 	ret := _I.GetGType(382, "Popover")
 	return ret
@@ -38319,6 +38806,7 @@ func WrapPopoverAccessible(p unsafe.Pointer) (r PopoverAccessible) { r.P = p; re
 type IPopoverAccessible interface{ P_PopoverAccessible() unsafe.Pointer }
 
 func (v PopoverAccessible) P_PopoverAccessible() unsafe.Pointer { return v.P }
+func (v PopoverAccessible) P_Component() unsafe.Pointer         { return v.P }
 func PopoverAccessibleGetType() gi.GType {
 	ret := _I.GetGType(383, "PopoverAccessible")
 	return ret
@@ -38350,7 +38838,9 @@ func WrapPopoverMenu(p unsafe.Pointer) (r PopoverMenu) { r.P = p; return }
 
 type IPopoverMenu interface{ P_PopoverMenu() unsafe.Pointer }
 
-func (v PopoverMenu) P_PopoverMenu() unsafe.Pointer { return v.P }
+func (v PopoverMenu) P_PopoverMenu() unsafe.Pointer      { return v.P }
+func (v PopoverMenu) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v PopoverMenu) P_Buildable() unsafe.Pointer        { return v.P }
 func PopoverMenuGetType() gi.GType {
 	ret := _I.GetGType(385, "PopoverMenu")
 	return ret
@@ -38664,7 +39154,8 @@ func WrapPrintOperation(p unsafe.Pointer) (r PrintOperation) { r.P = p; return }
 
 type IPrintOperation interface{ P_PrintOperation() unsafe.Pointer }
 
-func (v PrintOperation) P_PrintOperation() unsafe.Pointer { return v.P }
+func (v PrintOperation) P_PrintOperation() unsafe.Pointer        { return v.P }
+func (v PrintOperation) P_PrintOperationPreview() unsafe.Pointer { return v.P }
 func PrintOperationGetType() gi.GType {
 	ret := _I.GetGType(391, "PrintOperation")
 	return ret
@@ -39183,7 +39674,9 @@ type PrintOperationPreview struct {
 	P unsafe.Pointer
 }
 type PrintOperationPreviewIfc struct{}
+type IPrintOperationPreview interface{ P_PrintOperationPreview() unsafe.Pointer }
 
+func (v PrintOperationPreview) P_PrintOperationPreview() unsafe.Pointer { return v.P }
 func PrintOperationPreviewGetType() gi.GType {
 	ret := _I.GetGType(393, "PrintOperationPreview")
 	return ret
@@ -40664,7 +41157,10 @@ func WrapProgressBar(p unsafe.Pointer) (r ProgressBar) { r.P = p; return }
 
 type IProgressBar interface{ P_ProgressBar() unsafe.Pointer }
 
-func (v ProgressBar) P_ProgressBar() unsafe.Pointer { return v.P }
+func (v ProgressBar) P_ProgressBar() unsafe.Pointer      { return v.P }
+func (v ProgressBar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ProgressBar) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ProgressBar) P_Orientable() unsafe.Pointer       { return v.P }
 func ProgressBarGetType() gi.GType {
 	ret := _I.GetGType(400, "ProgressBar")
 	return ret
@@ -40905,6 +41401,8 @@ func WrapProgressBarAccessible(p unsafe.Pointer) (r ProgressBarAccessible) { r.P
 type IProgressBarAccessible interface{ P_ProgressBarAccessible() unsafe.Pointer }
 
 func (v ProgressBarAccessible) P_ProgressBarAccessible() unsafe.Pointer { return v.P }
+func (v ProgressBarAccessible) P_Component() unsafe.Pointer             { return v.P }
+func (v ProgressBarAccessible) P_Value() unsafe.Pointer                 { return v.P }
 func ProgressBarAccessibleGetType() gi.GType {
 	ret := _I.GetGType(401, "ProgressBarAccessible")
 	return ret
@@ -40958,6 +41456,7 @@ func WrapRadioAction(p unsafe.Pointer) (r RadioAction) { r.P = p; return }
 type IRadioAction interface{ P_RadioAction() unsafe.Pointer }
 
 func (v RadioAction) P_RadioAction() unsafe.Pointer { return v.P }
+func (v RadioAction) P_Buildable() unsafe.Pointer   { return v.P }
 func RadioActionGetType() gi.GType {
 	ret := _I.GetGType(405, "RadioAction")
 	return ret
@@ -41111,7 +41610,11 @@ func WrapRadioButton(p unsafe.Pointer) (r RadioButton) { r.P = p; return }
 
 type IRadioButton interface{ P_RadioButton() unsafe.Pointer }
 
-func (v RadioButton) P_RadioButton() unsafe.Pointer { return v.P }
+func (v RadioButton) P_RadioButton() unsafe.Pointer      { return v.P }
+func (v RadioButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v RadioButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v RadioButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v RadioButton) P_Buildable() unsafe.Pointer        { return v.P }
 func RadioButtonGetType() gi.GType {
 	ret := _I.GetGType(408, "RadioButton")
 	return ret
@@ -41307,6 +41810,9 @@ func WrapRadioButtonAccessible(p unsafe.Pointer) (r RadioButtonAccessible) { r.P
 type IRadioButtonAccessible interface{ P_RadioButtonAccessible() unsafe.Pointer }
 
 func (v RadioButtonAccessible) P_RadioButtonAccessible() unsafe.Pointer { return v.P }
+func (v RadioButtonAccessible) P_Action() unsafe.Pointer                { return v.P }
+func (v RadioButtonAccessible) P_Component() unsafe.Pointer             { return v.P }
+func (v RadioButtonAccessible) P_Image() unsafe.Pointer                 { return v.P }
 func RadioButtonAccessibleGetType() gi.GType {
 	ret := _I.GetGType(409, "RadioButtonAccessible")
 	return ret
@@ -41347,7 +41853,11 @@ func WrapRadioMenuItem(p unsafe.Pointer) (r RadioMenuItem) { r.P = p; return }
 
 type IRadioMenuItem interface{ P_RadioMenuItem() unsafe.Pointer }
 
-func (v RadioMenuItem) P_RadioMenuItem() unsafe.Pointer { return v.P }
+func (v RadioMenuItem) P_RadioMenuItem() unsafe.Pointer    { return v.P }
+func (v RadioMenuItem) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v RadioMenuItem) P_Actionable() unsafe.Pointer       { return v.P }
+func (v RadioMenuItem) P_Activatable() unsafe.Pointer      { return v.P }
+func (v RadioMenuItem) P_Buildable() unsafe.Pointer        { return v.P }
 func RadioMenuItemGetType() gi.GType {
 	ret := _I.GetGType(412, "RadioMenuItem")
 	return ret
@@ -41543,6 +42053,9 @@ func WrapRadioMenuItemAccessible(p unsafe.Pointer) (r RadioMenuItemAccessible) {
 type IRadioMenuItemAccessible interface{ P_RadioMenuItemAccessible() unsafe.Pointer }
 
 func (v RadioMenuItemAccessible) P_RadioMenuItemAccessible() unsafe.Pointer { return v.P }
+func (v RadioMenuItemAccessible) P_Action() unsafe.Pointer                  { return v.P }
+func (v RadioMenuItemAccessible) P_Component() unsafe.Pointer               { return v.P }
+func (v RadioMenuItemAccessible) P_Selection() unsafe.Pointer               { return v.P }
 func RadioMenuItemAccessibleGetType() gi.GType {
 	ret := _I.GetGType(413, "RadioMenuItemAccessible")
 	return ret
@@ -41583,7 +42096,11 @@ func WrapRadioToolButton(p unsafe.Pointer) (r RadioToolButton) { r.P = p; return
 
 type IRadioToolButton interface{ P_RadioToolButton() unsafe.Pointer }
 
-func (v RadioToolButton) P_RadioToolButton() unsafe.Pointer { return v.P }
+func (v RadioToolButton) P_RadioToolButton() unsafe.Pointer  { return v.P }
+func (v RadioToolButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v RadioToolButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v RadioToolButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v RadioToolButton) P_Buildable() unsafe.Pointer        { return v.P }
 func RadioToolButtonGetType() gi.GType {
 	ret := _I.GetGType(416, "RadioToolButton")
 	return ret
@@ -41716,7 +42233,10 @@ func WrapRange(p unsafe.Pointer) (r Range) { r.P = p; return }
 
 type IRange interface{ P_Range() unsafe.Pointer }
 
-func (v Range) P_Range() unsafe.Pointer { return v.P }
+func (v Range) P_Range() unsafe.Pointer            { return v.P }
+func (v Range) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Range) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Range) P_Orientable() unsafe.Pointer       { return v.P }
 func RangeGetType() gi.GType {
 	ret := _I.GetGType(417, "Range")
 	return ret
@@ -42189,6 +42709,8 @@ func WrapRangeAccessible(p unsafe.Pointer) (r RangeAccessible) { r.P = p; return
 type IRangeAccessible interface{ P_RangeAccessible() unsafe.Pointer }
 
 func (v RangeAccessible) P_RangeAccessible() unsafe.Pointer { return v.P }
+func (v RangeAccessible) P_Component() unsafe.Pointer       { return v.P }
+func (v RangeAccessible) P_Value() unsafe.Pointer           { return v.P }
 func RangeAccessibleGetType() gi.GType {
 	ret := _I.GetGType(418, "RangeAccessible")
 	return ret
@@ -42483,7 +43005,9 @@ func WrapRecentAction(p unsafe.Pointer) (r RecentAction) { r.P = p; return }
 
 type IRecentAction interface{ P_RecentAction() unsafe.Pointer }
 
-func (v RecentAction) P_RecentAction() unsafe.Pointer { return v.P }
+func (v RecentAction) P_RecentAction() unsafe.Pointer  { return v.P }
+func (v RecentAction) P_Buildable() unsafe.Pointer     { return v.P }
+func (v RecentAction) P_RecentChooser() unsafe.Pointer { return v.P }
 func RecentActionGetType() gi.GType {
 	ret := _I.GetGType(426, "RecentAction")
 	return ret
@@ -42599,7 +43123,9 @@ type RecentChooser struct {
 	P unsafe.Pointer
 }
 type RecentChooserIfc struct{}
+type IRecentChooser interface{ P_RecentChooser() unsafe.Pointer }
 
+func (v RecentChooser) P_RecentChooser() unsafe.Pointer { return v.P }
 func RecentChooserGetType() gi.GType {
 	ret := _I.GetGType(428, "RecentChooser")
 	return ret
@@ -43146,6 +43672,9 @@ func WrapRecentChooserDialog(p unsafe.Pointer) (r RecentChooserDialog) { r.P = p
 type IRecentChooserDialog interface{ P_RecentChooserDialog() unsafe.Pointer }
 
 func (v RecentChooserDialog) P_RecentChooserDialog() unsafe.Pointer { return v.P }
+func (v RecentChooserDialog) P_ImplementorIface() unsafe.Pointer    { return v.P }
+func (v RecentChooserDialog) P_Buildable() unsafe.Pointer           { return v.P }
+func (v RecentChooserDialog) P_RecentChooser() unsafe.Pointer       { return v.P }
 func RecentChooserDialogGetType() gi.GType {
 	ret := _I.GetGType(429, "RecentChooserDialog")
 	return ret
@@ -43190,6 +43719,10 @@ func WrapRecentChooserMenu(p unsafe.Pointer) (r RecentChooserMenu) { r.P = p; re
 type IRecentChooserMenu interface{ P_RecentChooserMenu() unsafe.Pointer }
 
 func (v RecentChooserMenu) P_RecentChooserMenu() unsafe.Pointer { return v.P }
+func (v RecentChooserMenu) P_ImplementorIface() unsafe.Pointer  { return v.P }
+func (v RecentChooserMenu) P_Activatable() unsafe.Pointer       { return v.P }
+func (v RecentChooserMenu) P_Buildable() unsafe.Pointer         { return v.P }
+func (v RecentChooserMenu) P_RecentChooser() unsafe.Pointer     { return v.P }
 func RecentChooserMenuGetType() gi.GType {
 	ret := _I.GetGType(432, "RecentChooserMenu")
 	return ret
@@ -43288,6 +43821,10 @@ func WrapRecentChooserWidget(p unsafe.Pointer) (r RecentChooserWidget) { r.P = p
 type IRecentChooserWidget interface{ P_RecentChooserWidget() unsafe.Pointer }
 
 func (v RecentChooserWidget) P_RecentChooserWidget() unsafe.Pointer { return v.P }
+func (v RecentChooserWidget) P_ImplementorIface() unsafe.Pointer    { return v.P }
+func (v RecentChooserWidget) P_Buildable() unsafe.Pointer           { return v.P }
+func (v RecentChooserWidget) P_Orientable() unsafe.Pointer          { return v.P }
+func (v RecentChooserWidget) P_RecentChooser() unsafe.Pointer       { return v.P }
 func RecentChooserWidgetGetType() gi.GType {
 	ret := _I.GetGType(434, "RecentChooserWidget")
 	return ret
@@ -43363,6 +43900,7 @@ func WrapRecentFilter(p unsafe.Pointer) (r RecentFilter) { r.P = p; return }
 type IRecentFilter interface{ P_RecentFilter() unsafe.Pointer }
 
 func (v RecentFilter) P_RecentFilter() unsafe.Pointer { return v.P }
+func (v RecentFilter) P_Buildable() unsafe.Pointer    { return v.P }
 func RecentFilterGetType() gi.GType {
 	ret := _I.GetGType(437, "RecentFilter")
 	return ret
@@ -44349,6 +44887,9 @@ func WrapRendererCellAccessible(p unsafe.Pointer) (r RendererCellAccessible) { r
 type IRendererCellAccessible interface{ P_RendererCellAccessible() unsafe.Pointer }
 
 func (v RendererCellAccessible) P_RendererCellAccessible() unsafe.Pointer { return v.P }
+func (v RendererCellAccessible) P_Action() unsafe.Pointer                 { return v.P }
+func (v RendererCellAccessible) P_Component() unsafe.Pointer              { return v.P }
+func (v RendererCellAccessible) P_TableCell() unsafe.Pointer              { return v.P }
 func RendererCellAccessibleGetType() gi.GType {
 	ret := _I.GetGType(447, "RendererCellAccessible")
 	return ret
@@ -44503,7 +45044,9 @@ func WrapRevealer(p unsafe.Pointer) (r Revealer) { r.P = p; return }
 
 type IRevealer interface{ P_Revealer() unsafe.Pointer }
 
-func (v Revealer) P_Revealer() unsafe.Pointer { return v.P }
+func (v Revealer) P_Revealer() unsafe.Pointer         { return v.P }
+func (v Revealer) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Revealer) P_Buildable() unsafe.Pointer        { return v.P }
 func RevealerGetType() gi.GType {
 	ret := _I.GetGType(453, "Revealer")
 	return ret
@@ -44667,7 +45210,10 @@ func WrapScale(p unsafe.Pointer) (r Scale) { r.P = p; return }
 
 type IScale interface{ P_Scale() unsafe.Pointer }
 
-func (v Scale) P_Scale() unsafe.Pointer { return v.P }
+func (v Scale) P_Scale() unsafe.Pointer            { return v.P }
+func (v Scale) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Scale) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Scale) P_Orientable() unsafe.Pointer       { return v.P }
 func ScaleGetType() gi.GType {
 	ret := _I.GetGType(455, "Scale")
 	return ret
@@ -44925,6 +45471,8 @@ func WrapScaleAccessible(p unsafe.Pointer) (r ScaleAccessible) { r.P = p; return
 type IScaleAccessible interface{ P_ScaleAccessible() unsafe.Pointer }
 
 func (v ScaleAccessible) P_ScaleAccessible() unsafe.Pointer { return v.P }
+func (v ScaleAccessible) P_Component() unsafe.Pointer       { return v.P }
+func (v ScaleAccessible) P_Value() unsafe.Pointer           { return v.P }
 func ScaleAccessibleGetType() gi.GType {
 	ret := _I.GetGType(456, "ScaleAccessible")
 	return ret
@@ -44955,7 +45503,12 @@ func WrapScaleButton(p unsafe.Pointer) (r ScaleButton) { r.P = p; return }
 
 type IScaleButton interface{ P_ScaleButton() unsafe.Pointer }
 
-func (v ScaleButton) P_ScaleButton() unsafe.Pointer { return v.P }
+func (v ScaleButton) P_ScaleButton() unsafe.Pointer      { return v.P }
+func (v ScaleButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ScaleButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v ScaleButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v ScaleButton) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ScaleButton) P_Orientable() unsafe.Pointer       { return v.P }
 func ScaleButtonGetType() gi.GType {
 	ret := _I.GetGType(458, "ScaleButton")
 	return ret
@@ -45130,6 +45683,10 @@ func WrapScaleButtonAccessible(p unsafe.Pointer) (r ScaleButtonAccessible) { r.P
 type IScaleButtonAccessible interface{ P_ScaleButtonAccessible() unsafe.Pointer }
 
 func (v ScaleButtonAccessible) P_ScaleButtonAccessible() unsafe.Pointer { return v.P }
+func (v ScaleButtonAccessible) P_Action() unsafe.Pointer                { return v.P }
+func (v ScaleButtonAccessible) P_Component() unsafe.Pointer             { return v.P }
+func (v ScaleButtonAccessible) P_Image() unsafe.Pointer                 { return v.P }
+func (v ScaleButtonAccessible) P_Value() unsafe.Pointer                 { return v.P }
 func ScaleButtonAccessibleGetType() gi.GType {
 	ret := _I.GetGType(459, "ScaleButtonAccessible")
 	return ret
@@ -45218,7 +45775,9 @@ type Scrollable struct {
 	P unsafe.Pointer
 }
 type ScrollableIfc struct{}
+type IScrollable interface{ P_Scrollable() unsafe.Pointer }
 
+func (v Scrollable) P_Scrollable() unsafe.Pointer { return v.P }
 func ScrollableGetType() gi.GType {
 	ret := _I.GetGType(465, "Scrollable")
 	return ret
@@ -45404,7 +45963,10 @@ func WrapScrollbar(p unsafe.Pointer) (r Scrollbar) { r.P = p; return }
 
 type IScrollbar interface{ P_Scrollbar() unsafe.Pointer }
 
-func (v Scrollbar) P_Scrollbar() unsafe.Pointer { return v.P }
+func (v Scrollbar) P_Scrollbar() unsafe.Pointer        { return v.P }
+func (v Scrollbar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Scrollbar) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Scrollbar) P_Orientable() unsafe.Pointer       { return v.P }
 func ScrollbarGetType() gi.GType {
 	ret := _I.GetGType(467, "Scrollbar")
 	return ret
@@ -45444,7 +46006,9 @@ func WrapScrolledWindow(p unsafe.Pointer) (r ScrolledWindow) { r.P = p; return }
 
 type IScrolledWindow interface{ P_ScrolledWindow() unsafe.Pointer }
 
-func (v ScrolledWindow) P_ScrolledWindow() unsafe.Pointer { return v.P }
+func (v ScrolledWindow) P_ScrolledWindow() unsafe.Pointer   { return v.P }
+func (v ScrolledWindow) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ScrolledWindow) P_Buildable() unsafe.Pointer        { return v.P }
 func ScrolledWindowGetType() gi.GType {
 	ret := _I.GetGType(468, "ScrolledWindow")
 	return ret
@@ -46014,6 +46578,7 @@ func WrapScrolledWindowAccessible(p unsafe.Pointer) (r ScrolledWindowAccessible)
 type IScrolledWindowAccessible interface{ P_ScrolledWindowAccessible() unsafe.Pointer }
 
 func (v ScrolledWindowAccessible) P_ScrolledWindowAccessible() unsafe.Pointer { return v.P }
+func (v ScrolledWindowAccessible) P_Component() unsafe.Pointer                { return v.P }
 func ScrolledWindowAccessibleGetType() gi.GType {
 	ret := _I.GetGType(469, "ScrolledWindowAccessible")
 	return ret
@@ -46052,7 +46617,9 @@ func WrapSearchBar(p unsafe.Pointer) (r SearchBar) { r.P = p; return }
 
 type ISearchBar interface{ P_SearchBar() unsafe.Pointer }
 
-func (v SearchBar) P_SearchBar() unsafe.Pointer { return v.P }
+func (v SearchBar) P_SearchBar() unsafe.Pointer        { return v.P }
+func (v SearchBar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v SearchBar) P_Buildable() unsafe.Pointer        { return v.P }
 func SearchBarGetType() gi.GType {
 	ret := _I.GetGType(472, "SearchBar")
 	return ret
@@ -46188,7 +46755,11 @@ func WrapSearchEntry(p unsafe.Pointer) (r SearchEntry) { r.P = p; return }
 
 type ISearchEntry interface{ P_SearchEntry() unsafe.Pointer }
 
-func (v SearchEntry) P_SearchEntry() unsafe.Pointer { return v.P }
+func (v SearchEntry) P_SearchEntry() unsafe.Pointer      { return v.P }
+func (v SearchEntry) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v SearchEntry) P_Buildable() unsafe.Pointer        { return v.P }
+func (v SearchEntry) P_CellEditable() unsafe.Pointer     { return v.P }
+func (v SearchEntry) P_Editable() unsafe.Pointer         { return v.P }
 func SearchEntryGetType() gi.GType {
 	ret := _I.GetGType(473, "SearchEntry")
 	return ret
@@ -46667,7 +47238,10 @@ func WrapSeparator(p unsafe.Pointer) (r Separator) { r.P = p; return }
 
 type ISeparator interface{ P_Separator() unsafe.Pointer }
 
-func (v Separator) P_Separator() unsafe.Pointer { return v.P }
+func (v Separator) P_Separator() unsafe.Pointer        { return v.P }
+func (v Separator) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Separator) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Separator) P_Orientable() unsafe.Pointer       { return v.P }
 func SeparatorGetType() gi.GType {
 	ret := _I.GetGType(477, "Separator")
 	return ret
@@ -46705,6 +47279,10 @@ func WrapSeparatorMenuItem(p unsafe.Pointer) (r SeparatorMenuItem) { r.P = p; re
 type ISeparatorMenuItem interface{ P_SeparatorMenuItem() unsafe.Pointer }
 
 func (v SeparatorMenuItem) P_SeparatorMenuItem() unsafe.Pointer { return v.P }
+func (v SeparatorMenuItem) P_ImplementorIface() unsafe.Pointer  { return v.P }
+func (v SeparatorMenuItem) P_Actionable() unsafe.Pointer        { return v.P }
+func (v SeparatorMenuItem) P_Activatable() unsafe.Pointer       { return v.P }
+func (v SeparatorMenuItem) P_Buildable() unsafe.Pointer         { return v.P }
 func SeparatorMenuItemGetType() gi.GType {
 	ret := _I.GetGType(478, "SeparatorMenuItem")
 	return ret
@@ -46749,6 +47327,9 @@ func WrapSeparatorToolItem(p unsafe.Pointer) (r SeparatorToolItem) { r.P = p; re
 type ISeparatorToolItem interface{ P_SeparatorToolItem() unsafe.Pointer }
 
 func (v SeparatorToolItem) P_SeparatorToolItem() unsafe.Pointer { return v.P }
+func (v SeparatorToolItem) P_ImplementorIface() unsafe.Pointer  { return v.P }
+func (v SeparatorToolItem) P_Activatable() unsafe.Pointer       { return v.P }
+func (v SeparatorToolItem) P_Buildable() unsafe.Pointer         { return v.P }
 func SeparatorToolItemGetType() gi.GType {
 	ret := _I.GetGType(480, "SeparatorToolItem")
 	return ret
@@ -46822,7 +47403,8 @@ func WrapSettings(p unsafe.Pointer) (r Settings) { r.P = p; return }
 
 type ISettings interface{ P_Settings() unsafe.Pointer }
 
-func (v Settings) P_Settings() unsafe.Pointer { return v.P }
+func (v Settings) P_Settings() unsafe.Pointer      { return v.P }
+func (v Settings) P_StyleProvider() unsafe.Pointer { return v.P }
 func SettingsGetType() gi.GType {
 	ret := _I.GetGType(482, "Settings")
 	return ret
@@ -47040,7 +47622,10 @@ func WrapShortcutLabel(p unsafe.Pointer) (r ShortcutLabel) { r.P = p; return }
 
 type IShortcutLabel interface{ P_ShortcutLabel() unsafe.Pointer }
 
-func (v ShortcutLabel) P_ShortcutLabel() unsafe.Pointer { return v.P }
+func (v ShortcutLabel) P_ShortcutLabel() unsafe.Pointer    { return v.P }
+func (v ShortcutLabel) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ShortcutLabel) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ShortcutLabel) P_Orientable() unsafe.Pointer       { return v.P }
 func ShortcutLabelGetType() gi.GType {
 	ret := _I.GetGType(486, "ShortcutLabel")
 	return ret
@@ -47165,7 +47750,10 @@ func WrapShortcutsGroup(p unsafe.Pointer) (r ShortcutsGroup) { r.P = p; return }
 
 type IShortcutsGroup interface{ P_ShortcutsGroup() unsafe.Pointer }
 
-func (v ShortcutsGroup) P_ShortcutsGroup() unsafe.Pointer { return v.P }
+func (v ShortcutsGroup) P_ShortcutsGroup() unsafe.Pointer   { return v.P }
+func (v ShortcutsGroup) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ShortcutsGroup) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ShortcutsGroup) P_Orientable() unsafe.Pointer       { return v.P }
 func ShortcutsGroupGetType() gi.GType {
 	ret := _I.GetGType(488, "ShortcutsGroup")
 	return ret
@@ -47185,6 +47773,9 @@ func WrapShortcutsSection(p unsafe.Pointer) (r ShortcutsSection) { r.P = p; retu
 type IShortcutsSection interface{ P_ShortcutsSection() unsafe.Pointer }
 
 func (v ShortcutsSection) P_ShortcutsSection() unsafe.Pointer { return v.P }
+func (v ShortcutsSection) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ShortcutsSection) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ShortcutsSection) P_Orientable() unsafe.Pointer       { return v.P }
 func ShortcutsSectionGetType() gi.GType {
 	ret := _I.GetGType(489, "ShortcutsSection")
 	return ret
@@ -47204,6 +47795,9 @@ func WrapShortcutsShortcut(p unsafe.Pointer) (r ShortcutsShortcut) { r.P = p; re
 type IShortcutsShortcut interface{ P_ShortcutsShortcut() unsafe.Pointer }
 
 func (v ShortcutsShortcut) P_ShortcutsShortcut() unsafe.Pointer { return v.P }
+func (v ShortcutsShortcut) P_ImplementorIface() unsafe.Pointer  { return v.P }
+func (v ShortcutsShortcut) P_Buildable() unsafe.Pointer         { return v.P }
+func (v ShortcutsShortcut) P_Orientable() unsafe.Pointer        { return v.P }
 func ShortcutsShortcutGetType() gi.GType {
 	ret := _I.GetGType(490, "ShortcutsShortcut")
 	return ret
@@ -47221,7 +47815,9 @@ func WrapShortcutsWindow(p unsafe.Pointer) (r ShortcutsWindow) { r.P = p; return
 
 type IShortcutsWindow interface{ P_ShortcutsWindow() unsafe.Pointer }
 
-func (v ShortcutsWindow) P_ShortcutsWindow() unsafe.Pointer { return v.P }
+func (v ShortcutsWindow) P_ShortcutsWindow() unsafe.Pointer  { return v.P }
+func (v ShortcutsWindow) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ShortcutsWindow) P_Buildable() unsafe.Pointer        { return v.P }
 func ShortcutsWindowGetType() gi.GType {
 	ret := _I.GetGType(491, "ShortcutsWindow")
 	return ret
@@ -47239,6 +47835,7 @@ func WrapSizeGroup(p unsafe.Pointer) (r SizeGroup) { r.P = p; return }
 type ISizeGroup interface{ P_SizeGroup() unsafe.Pointer }
 
 func (v SizeGroup) P_SizeGroup() unsafe.Pointer { return v.P }
+func (v SizeGroup) P_Buildable() unsafe.Pointer { return v.P }
 func SizeGroupGetType() gi.GType {
 	ret := _I.GetGType(492, "SizeGroup")
 	return ret
@@ -47431,7 +48028,9 @@ func WrapSocket(p unsafe.Pointer) (r Socket) { r.P = p; return }
 
 type ISocket interface{ P_Socket() unsafe.Pointer }
 
-func (v Socket) P_Socket() unsafe.Pointer { return v.P }
+func (v Socket) P_Socket() unsafe.Pointer           { return v.P }
+func (v Socket) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Socket) P_Buildable() unsafe.Pointer        { return v.P }
 func SocketGetType() gi.GType {
 	ret := _I.GetGType(496, "Socket")
 	return ret
@@ -47539,7 +48138,12 @@ func WrapSpinButton(p unsafe.Pointer) (r SpinButton) { r.P = p; return }
 
 type ISpinButton interface{ P_SpinButton() unsafe.Pointer }
 
-func (v SpinButton) P_SpinButton() unsafe.Pointer { return v.P }
+func (v SpinButton) P_SpinButton() unsafe.Pointer       { return v.P }
+func (v SpinButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v SpinButton) P_Buildable() unsafe.Pointer        { return v.P }
+func (v SpinButton) P_CellEditable() unsafe.Pointer     { return v.P }
+func (v SpinButton) P_Editable() unsafe.Pointer         { return v.P }
+func (v SpinButton) P_Orientable() unsafe.Pointer       { return v.P }
 func SpinButtonGetType() gi.GType {
 	ret := _I.GetGType(499, "SpinButton")
 	return ret
@@ -47970,6 +48574,11 @@ func WrapSpinButtonAccessible(p unsafe.Pointer) (r SpinButtonAccessible) { r.P =
 type ISpinButtonAccessible interface{ P_SpinButtonAccessible() unsafe.Pointer }
 
 func (v SpinButtonAccessible) P_SpinButtonAccessible() unsafe.Pointer { return v.P }
+func (v SpinButtonAccessible) P_Action() unsafe.Pointer               { return v.P }
+func (v SpinButtonAccessible) P_Component() unsafe.Pointer            { return v.P }
+func (v SpinButtonAccessible) P_EditableText() unsafe.Pointer         { return v.P }
+func (v SpinButtonAccessible) P_Text() unsafe.Pointer                 { return v.P }
+func (v SpinButtonAccessible) P_Value() unsafe.Pointer                { return v.P }
 func SpinButtonAccessibleGetType() gi.GType {
 	ret := _I.GetGType(500, "SpinButtonAccessible")
 	return ret
@@ -48039,7 +48648,9 @@ func WrapSpinner(p unsafe.Pointer) (r Spinner) { r.P = p; return }
 
 type ISpinner interface{ P_Spinner() unsafe.Pointer }
 
-func (v Spinner) P_Spinner() unsafe.Pointer { return v.P }
+func (v Spinner) P_Spinner() unsafe.Pointer          { return v.P }
+func (v Spinner) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Spinner) P_Buildable() unsafe.Pointer        { return v.P }
 func SpinnerGetType() gi.GType {
 	ret := _I.GetGType(505, "Spinner")
 	return ret
@@ -48100,6 +48711,8 @@ func WrapSpinnerAccessible(p unsafe.Pointer) (r SpinnerAccessible) { r.P = p; re
 type ISpinnerAccessible interface{ P_SpinnerAccessible() unsafe.Pointer }
 
 func (v SpinnerAccessible) P_SpinnerAccessible() unsafe.Pointer { return v.P }
+func (v SpinnerAccessible) P_Component() unsafe.Pointer         { return v.P }
+func (v SpinnerAccessible) P_Image() unsafe.Pointer             { return v.P }
 func SpinnerAccessibleGetType() gi.GType {
 	ret := _I.GetGType(506, "SpinnerAccessible")
 	return ret
@@ -48138,7 +48751,9 @@ func WrapStack(p unsafe.Pointer) (r Stack) { r.P = p; return }
 
 type IStack interface{ P_Stack() unsafe.Pointer }
 
-func (v Stack) P_Stack() unsafe.Pointer { return v.P }
+func (v Stack) P_Stack() unsafe.Pointer            { return v.P }
+func (v Stack) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Stack) P_Buildable() unsafe.Pointer        { return v.P }
 func StackGetType() gi.GType {
 	ret := _I.GetGType(509, "Stack")
 	return ret
@@ -48534,6 +49149,7 @@ func WrapStackAccessible(p unsafe.Pointer) (r StackAccessible) { r.P = p; return
 type IStackAccessible interface{ P_StackAccessible() unsafe.Pointer }
 
 func (v StackAccessible) P_StackAccessible() unsafe.Pointer { return v.P }
+func (v StackAccessible) P_Component() unsafe.Pointer       { return v.P }
 func StackAccessibleGetType() gi.GType {
 	ret := _I.GetGType(510, "StackAccessible")
 	return ret
@@ -48552,7 +49168,9 @@ func WrapStackSidebar(p unsafe.Pointer) (r StackSidebar) { r.P = p; return }
 
 type IStackSidebar interface{ P_StackSidebar() unsafe.Pointer }
 
-func (v StackSidebar) P_StackSidebar() unsafe.Pointer { return v.P }
+func (v StackSidebar) P_StackSidebar() unsafe.Pointer     { return v.P }
+func (v StackSidebar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v StackSidebar) P_Buildable() unsafe.Pointer        { return v.P }
 func StackSidebarGetType() gi.GType {
 	ret := _I.GetGType(511, "StackSidebar")
 	return ret
@@ -48632,7 +49250,10 @@ func WrapStackSwitcher(p unsafe.Pointer) (r StackSwitcher) { r.P = p; return }
 
 type IStackSwitcher interface{ P_StackSwitcher() unsafe.Pointer }
 
-func (v StackSwitcher) P_StackSwitcher() unsafe.Pointer { return v.P }
+func (v StackSwitcher) P_StackSwitcher() unsafe.Pointer    { return v.P }
+func (v StackSwitcher) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v StackSwitcher) P_Buildable() unsafe.Pointer        { return v.P }
+func (v StackSwitcher) P_Orientable() unsafe.Pointer       { return v.P }
 func StackSwitcherGetType() gi.GType {
 	ret := _I.GetGType(513, "StackSwitcher")
 	return ret
@@ -48816,13 +49437,17 @@ func NewStatusIconFromFile(filename string) (result StatusIcon) {
 // gtk_status_icon_new_from_gicon
 // container is not nil, container is StatusIcon
 // is constructor
-func NewStatusIconFromGicon(icon gio.Icon) (result StatusIcon) {
+func NewStatusIconFromGicon(icon gio.IIcon) (result StatusIcon) {
 	iv, err := _I.Get(2331, "StatusIcon", "new_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_icon := gi.NewPointerArgument(icon.P)
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
+	arg_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_icon}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -49198,14 +49823,18 @@ func (v StatusIcon) SetFromFile(filename string) {
 // gtk_status_icon_set_from_gicon
 // container is not nil, container is StatusIcon
 // is method
-func (v StatusIcon) SetFromGicon(icon gio.Icon) {
+func (v StatusIcon) SetFromGicon(icon gio.IIcon) {
 	iv, err := _I.Get(2352, "StatusIcon", "set_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_icon}
 	iv.Call(args, nil, nil)
 }
@@ -49403,7 +50032,10 @@ func WrapStatusbar(p unsafe.Pointer) (r Statusbar) { r.P = p; return }
 
 type IStatusbar interface{ P_Statusbar() unsafe.Pointer }
 
-func (v Statusbar) P_Statusbar() unsafe.Pointer { return v.P }
+func (v Statusbar) P_Statusbar() unsafe.Pointer        { return v.P }
+func (v Statusbar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Statusbar) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Statusbar) P_Orientable() unsafe.Pointer       { return v.P }
 func StatusbarGetType() gi.GType {
 	ret := _I.GetGType(519, "Statusbar")
 	return ret
@@ -49539,6 +50171,7 @@ func WrapStatusbarAccessible(p unsafe.Pointer) (r StatusbarAccessible) { r.P = p
 type IStatusbarAccessible interface{ P_StatusbarAccessible() unsafe.Pointer }
 
 func (v StatusbarAccessible) P_StatusbarAccessible() unsafe.Pointer { return v.P }
+func (v StatusbarAccessible) P_Component() unsafe.Pointer           { return v.P }
 func StatusbarAccessibleGetType() gi.GType {
 	ret := _I.GetGType(520, "StatusbarAccessible")
 	return ret
@@ -49839,7 +50472,7 @@ func NewStyleContext() (result StyleContext) {
 // container is not nil, container is StyleContext
 // is method
 // arg0Type tag: interface, isPtr: true
-func StyleContextAddProviderForScreen1(screen gdk.IScreen, provider StyleProvider, priority uint32) {
+func StyleContextAddProviderForScreen1(screen gdk.IScreen, provider IStyleProvider, priority uint32) {
 	iv, err := _I.Get(2382, "StyleContext", "add_provider_for_screen")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -49849,8 +50482,12 @@ func StyleContextAddProviderForScreen1(screen gdk.IScreen, provider StyleProvide
 	if screen != nil {
 		tmp = screen.P_Screen()
 	}
+	var tmp1 unsafe.Pointer
+	if provider != nil {
+		tmp1 = provider.P_StyleProvider()
+	}
 	arg_screen := gi.NewPointerArgument(tmp)
-	arg_provider := gi.NewPointerArgument(provider.P)
+	arg_provider := gi.NewPointerArgument(tmp1)
 	arg_priority := gi.NewUint32Argument(priority)
 	args := []gi.Argument{arg_screen, arg_provider, arg_priority}
 	iv.Call(args, nil, nil)
@@ -49860,7 +50497,7 @@ func StyleContextAddProviderForScreen1(screen gdk.IScreen, provider StyleProvide
 // container is not nil, container is StyleContext
 // is method
 // arg0Type tag: interface, isPtr: true
-func StyleContextRemoveProviderForScreen1(screen gdk.IScreen, provider StyleProvider) {
+func StyleContextRemoveProviderForScreen1(screen gdk.IScreen, provider IStyleProvider) {
 	iv, err := _I.Get(2383, "StyleContext", "remove_provider_for_screen")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -49870,8 +50507,12 @@ func StyleContextRemoveProviderForScreen1(screen gdk.IScreen, provider StyleProv
 	if screen != nil {
 		tmp = screen.P_Screen()
 	}
+	var tmp1 unsafe.Pointer
+	if provider != nil {
+		tmp1 = provider.P_StyleProvider()
+	}
 	arg_screen := gi.NewPointerArgument(tmp)
-	arg_provider := gi.NewPointerArgument(provider.P)
+	arg_provider := gi.NewPointerArgument(tmp1)
 	args := []gi.Argument{arg_screen, arg_provider}
 	iv.Call(args, nil, nil)
 }
@@ -49915,14 +50556,18 @@ func (v StyleContext) AddClass(class_name string) {
 // gtk_style_context_add_provider
 // container is not nil, container is StyleContext
 // is method
-func (v StyleContext) AddProvider(provider StyleProvider, priority uint32) {
+func (v StyleContext) AddProvider(provider IStyleProvider, priority uint32) {
 	iv, err := _I.Get(2386, "StyleContext", "add_provider")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if provider != nil {
+		tmp = provider.P_StyleProvider()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_provider := gi.NewPointerArgument(provider.P)
+	arg_provider := gi.NewPointerArgument(tmp)
 	arg_priority := gi.NewUint32Argument(priority)
 	args := []gi.Argument{arg_v, arg_provider, arg_priority}
 	iv.Call(args, nil, nil)
@@ -50471,14 +51116,18 @@ func (v StyleContext) RemoveClass(class_name string) {
 // gtk_style_context_remove_provider
 // container is not nil, container is StyleContext
 // is method
-func (v StyleContext) RemoveProvider(provider StyleProvider) {
+func (v StyleContext) RemoveProvider(provider IStyleProvider) {
 	iv, err := _I.Get(2418, "StyleContext", "remove_provider")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if provider != nil {
+		tmp = provider.P_StyleProvider()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_provider := gi.NewPointerArgument(provider.P)
+	arg_provider := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_provider}
 	iv.Call(args, nil, nil)
 }
@@ -50775,6 +51424,7 @@ func WrapStyleProperties(p unsafe.Pointer) (r StyleProperties) { r.P = p; return
 type IStyleProperties interface{ P_StyleProperties() unsafe.Pointer }
 
 func (v StyleProperties) P_StyleProperties() unsafe.Pointer { return v.P }
+func (v StyleProperties) P_StyleProvider() unsafe.Pointer   { return v.P }
 func StylePropertiesGetType() gi.GType {
 	ret := _I.GetGType(528, "StyleProperties")
 	return ret
@@ -50943,7 +51593,9 @@ type StyleProvider struct {
 	P unsafe.Pointer
 }
 type StyleProviderIfc struct{}
+type IStyleProvider interface{ P_StyleProvider() unsafe.Pointer }
 
+func (v StyleProvider) P_StyleProvider() unsafe.Pointer { return v.P }
 func StyleProviderGetType() gi.GType {
 	ret := _I.GetGType(530, "StyleProvider")
 	return ret
@@ -51024,7 +51676,11 @@ func WrapSwitch(p unsafe.Pointer) (r Switch) { r.P = p; return }
 
 type ISwitch interface{ P_Switch() unsafe.Pointer }
 
-func (v Switch) P_Switch() unsafe.Pointer { return v.P }
+func (v Switch) P_Switch() unsafe.Pointer           { return v.P }
+func (v Switch) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Switch) P_Actionable() unsafe.Pointer       { return v.P }
+func (v Switch) P_Activatable() unsafe.Pointer      { return v.P }
+func (v Switch) P_Buildable() unsafe.Pointer        { return v.P }
 func SwitchGetType() gi.GType {
 	ret := _I.GetGType(531, "Switch")
 	return ret
@@ -51121,6 +51777,8 @@ func WrapSwitchAccessible(p unsafe.Pointer) (r SwitchAccessible) { r.P = p; retu
 type ISwitchAccessible interface{ P_SwitchAccessible() unsafe.Pointer }
 
 func (v SwitchAccessible) P_SwitchAccessible() unsafe.Pointer { return v.P }
+func (v SwitchAccessible) P_Action() unsafe.Pointer           { return v.P }
+func (v SwitchAccessible) P_Component() unsafe.Pointer        { return v.P }
 func SwitchAccessibleGetType() gi.GType {
 	ret := _I.GetGType(532, "SwitchAccessible")
 	return ret
@@ -51351,7 +52009,9 @@ func WrapTable(p unsafe.Pointer) (r Table) { r.P = p; return }
 
 type ITable interface{ P_Table() unsafe.Pointer }
 
-func (v Table) P_Table() unsafe.Pointer { return v.P }
+func (v Table) P_Table() unsafe.Pointer            { return v.P }
+func (v Table) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Table) P_Buildable() unsafe.Pointer        { return v.P }
 func TableGetType() gi.GType {
 	ret := _I.GetGType(536, "Table")
 	return ret
@@ -51962,7 +52622,11 @@ func WrapTearoffMenuItem(p unsafe.Pointer) (r TearoffMenuItem) { r.P = p; return
 
 type ITearoffMenuItem interface{ P_TearoffMenuItem() unsafe.Pointer }
 
-func (v TearoffMenuItem) P_TearoffMenuItem() unsafe.Pointer { return v.P }
+func (v TearoffMenuItem) P_TearoffMenuItem() unsafe.Pointer  { return v.P }
+func (v TearoffMenuItem) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v TearoffMenuItem) P_Actionable() unsafe.Pointer       { return v.P }
+func (v TearoffMenuItem) P_Activatable() unsafe.Pointer      { return v.P }
+func (v TearoffMenuItem) P_Buildable() unsafe.Pointer        { return v.P }
 func TearoffMenuItemGetType() gi.GType {
 	ret := _I.GetGType(544, "TearoffMenuItem")
 	return ret
@@ -53495,6 +54159,10 @@ func WrapTextCellAccessible(p unsafe.Pointer) (r TextCellAccessible) { r.P = p; 
 type ITextCellAccessible interface{ P_TextCellAccessible() unsafe.Pointer }
 
 func (v TextCellAccessible) P_TextCellAccessible() unsafe.Pointer { return v.P }
+func (v TextCellAccessible) P_Action() unsafe.Pointer             { return v.P }
+func (v TextCellAccessible) P_Component() unsafe.Pointer          { return v.P }
+func (v TextCellAccessible) P_TableCell() unsafe.Pointer          { return v.P }
+func (v TextCellAccessible) P_Text() unsafe.Pointer               { return v.P }
 func TextCellAccessibleGetType() gi.GType {
 	ret := _I.GetGType(552, "TextCellAccessible")
 	return ret
@@ -55517,6 +56185,7 @@ func WrapTextTagTable(p unsafe.Pointer) (r TextTagTable) { r.P = p; return }
 type ITextTagTable interface{ P_TextTagTable() unsafe.Pointer }
 
 func (v TextTagTable) P_TextTagTable() unsafe.Pointer { return v.P }
+func (v TextTagTable) P_Buildable() unsafe.Pointer    { return v.P }
 func TextTagTableGetType() gi.GType {
 	ret := _I.GetGType(562, "TextTagTable")
 	return ret
@@ -55654,7 +56323,10 @@ func WrapTextView(p unsafe.Pointer) (r TextView) { r.P = p; return }
 
 type ITextView interface{ P_TextView() unsafe.Pointer }
 
-func (v TextView) P_TextView() unsafe.Pointer { return v.P }
+func (v TextView) P_TextView() unsafe.Pointer         { return v.P }
+func (v TextView) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v TextView) P_Buildable() unsafe.Pointer        { return v.P }
+func (v TextView) P_Scrollable() unsafe.Pointer       { return v.P }
 func TextViewGetType() gi.GType {
 	ret := _I.GetGType(564, "TextView")
 	return ret
@@ -56950,6 +57622,10 @@ func WrapTextViewAccessible(p unsafe.Pointer) (r TextViewAccessible) { r.P = p; 
 type ITextViewAccessible interface{ P_TextViewAccessible() unsafe.Pointer }
 
 func (v TextViewAccessible) P_TextViewAccessible() unsafe.Pointer { return v.P }
+func (v TextViewAccessible) P_Component() unsafe.Pointer          { return v.P }
+func (v TextViewAccessible) P_EditableText() unsafe.Pointer       { return v.P }
+func (v TextViewAccessible) P_StreamableContent() unsafe.Pointer  { return v.P }
+func (v TextViewAccessible) P_Text() unsafe.Pointer               { return v.P }
 func TextViewAccessibleGetType() gi.GType {
 	ret := _I.GetGType(565, "TextViewAccessible")
 	return ret
@@ -57398,6 +58074,7 @@ func WrapToggleAction(p unsafe.Pointer) (r ToggleAction) { r.P = p; return }
 type IToggleAction interface{ P_ToggleAction() unsafe.Pointer }
 
 func (v ToggleAction) P_ToggleAction() unsafe.Pointer { return v.P }
+func (v ToggleAction) P_Buildable() unsafe.Pointer    { return v.P }
 func ToggleActionGetType() gi.GType {
 	ret := _I.GetGType(573, "ToggleAction")
 	return ret
@@ -57545,7 +58222,11 @@ func WrapToggleButton(p unsafe.Pointer) (r ToggleButton) { r.P = p; return }
 
 type IToggleButton interface{ P_ToggleButton() unsafe.Pointer }
 
-func (v ToggleButton) P_ToggleButton() unsafe.Pointer { return v.P }
+func (v ToggleButton) P_ToggleButton() unsafe.Pointer     { return v.P }
+func (v ToggleButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ToggleButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v ToggleButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v ToggleButton) P_Buildable() unsafe.Pointer        { return v.P }
 func ToggleButtonGetType() gi.GType {
 	ret := _I.GetGType(576, "ToggleButton")
 	return ret
@@ -57727,6 +58408,9 @@ func WrapToggleButtonAccessible(p unsafe.Pointer) (r ToggleButtonAccessible) { r
 type IToggleButtonAccessible interface{ P_ToggleButtonAccessible() unsafe.Pointer }
 
 func (v ToggleButtonAccessible) P_ToggleButtonAccessible() unsafe.Pointer { return v.P }
+func (v ToggleButtonAccessible) P_Action() unsafe.Pointer                 { return v.P }
+func (v ToggleButtonAccessible) P_Component() unsafe.Pointer              { return v.P }
+func (v ToggleButtonAccessible) P_Image() unsafe.Pointer                  { return v.P }
 func ToggleButtonAccessibleGetType() gi.GType {
 	ret := _I.GetGType(577, "ToggleButtonAccessible")
 	return ret
@@ -57768,6 +58452,10 @@ func WrapToggleToolButton(p unsafe.Pointer) (r ToggleToolButton) { r.P = p; retu
 type IToggleToolButton interface{ P_ToggleToolButton() unsafe.Pointer }
 
 func (v ToggleToolButton) P_ToggleToolButton() unsafe.Pointer { return v.P }
+func (v ToggleToolButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ToggleToolButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v ToggleToolButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v ToggleToolButton) P_Buildable() unsafe.Pointer        { return v.P }
 func ToggleToolButtonGetType() gi.GType {
 	ret := _I.GetGType(580, "ToggleToolButton")
 	return ret
@@ -57863,7 +58551,11 @@ func WrapToolButton(p unsafe.Pointer) (r ToolButton) { r.P = p; return }
 
 type IToolButton interface{ P_ToolButton() unsafe.Pointer }
 
-func (v ToolButton) P_ToolButton() unsafe.Pointer { return v.P }
+func (v ToolButton) P_ToolButton() unsafe.Pointer       { return v.P }
+func (v ToolButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ToolButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v ToolButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v ToolButton) P_Buildable() unsafe.Pointer        { return v.P }
 func ToolButtonGetType() gi.GType {
 	ret := _I.GetGType(582, "ToolButton")
 	return ret
@@ -58141,7 +58833,10 @@ func WrapToolItem(p unsafe.Pointer) (r ToolItem) { r.P = p; return }
 
 type IToolItem interface{ P_ToolItem() unsafe.Pointer }
 
-func (v ToolItem) P_ToolItem() unsafe.Pointer { return v.P }
+func (v ToolItem) P_ToolItem() unsafe.Pointer         { return v.P }
+func (v ToolItem) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ToolItem) P_Activatable() unsafe.Pointer      { return v.P }
+func (v ToolItem) P_Buildable() unsafe.Pointer        { return v.P }
 func ToolItemGetType() gi.GType {
 	ret := _I.GetGType(584, "ToolItem")
 	return ret
@@ -58624,7 +59319,10 @@ func WrapToolItemGroup(p unsafe.Pointer) (r ToolItemGroup) { r.P = p; return }
 
 type IToolItemGroup interface{ P_ToolItemGroup() unsafe.Pointer }
 
-func (v ToolItemGroup) P_ToolItemGroup() unsafe.Pointer { return v.P }
+func (v ToolItemGroup) P_ToolItemGroup() unsafe.Pointer    { return v.P }
+func (v ToolItemGroup) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ToolItemGroup) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ToolItemGroup) P_ToolShell() unsafe.Pointer        { return v.P }
 func ToolItemGroupGetType() gi.GType {
 	ret := _I.GetGType(585, "ToolItemGroup")
 	return ret
@@ -58965,7 +59663,11 @@ func WrapToolPalette(p unsafe.Pointer) (r ToolPalette) { r.P = p; return }
 
 type IToolPalette interface{ P_ToolPalette() unsafe.Pointer }
 
-func (v ToolPalette) P_ToolPalette() unsafe.Pointer { return v.P }
+func (v ToolPalette) P_ToolPalette() unsafe.Pointer      { return v.P }
+func (v ToolPalette) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v ToolPalette) P_Buildable() unsafe.Pointer        { return v.P }
+func (v ToolPalette) P_Orientable() unsafe.Pointer       { return v.P }
+func (v ToolPalette) P_Scrollable() unsafe.Pointer       { return v.P }
 func ToolPaletteGetType() gi.GType {
 	ret := _I.GetGType(588, "ToolPalette")
 	return ret
@@ -59361,7 +60063,9 @@ type ToolShell struct {
 	P unsafe.Pointer
 }
 type ToolShellIfc struct{}
+type IToolShell interface{ P_ToolShell() unsafe.Pointer }
 
+func (v ToolShell) P_ToolShell() unsafe.Pointer { return v.P }
 func ToolShellGetType() gi.GType {
 	ret := _I.GetGType(591, "ToolShell")
 	return ret
@@ -59531,7 +60235,11 @@ func WrapToolbar(p unsafe.Pointer) (r Toolbar) { r.P = p; return }
 
 type IToolbar interface{ P_Toolbar() unsafe.Pointer }
 
-func (v Toolbar) P_Toolbar() unsafe.Pointer { return v.P }
+func (v Toolbar) P_Toolbar() unsafe.Pointer          { return v.P }
+func (v Toolbar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Toolbar) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Toolbar) P_Orientable() unsafe.Pointer       { return v.P }
+func (v Toolbar) P_ToolShell() unsafe.Pointer        { return v.P }
 func ToolbarGetType() gi.GType {
 	ret := _I.GetGType(592, "Toolbar")
 	return ret
@@ -59923,14 +60631,18 @@ func (v Tooltip) SetIcon(pixbuf gdkpixbuf.IPixbuf) {
 // gtk_tooltip_set_icon_from_gicon
 // container is not nil, container is Tooltip
 // is method
-func (v Tooltip) SetIconFromGicon(gicon gio.Icon, size int32) {
+func (v Tooltip) SetIconFromGicon(gicon gio.IIcon, size int32) {
 	iv, err := _I.Get(2900, "Tooltip", "set_icon_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if gicon != nil {
+		tmp = gicon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_gicon := gi.NewPointerArgument(gicon.P)
+	arg_gicon := gi.NewPointerArgument(tmp)
 	arg_size := gi.NewInt32Argument(size)
 	args := []gi.Argument{arg_v, arg_gicon, arg_size}
 	iv.Call(args, nil, nil)
@@ -60070,7 +60782,9 @@ type TreeDragDest struct {
 	P unsafe.Pointer
 }
 type TreeDragDestIfc struct{}
+type ITreeDragDest interface{ P_TreeDragDest() unsafe.Pointer }
 
+func (v TreeDragDest) P_TreeDragDest() unsafe.Pointer { return v.P }
 func TreeDragDestGetType() gi.GType {
 	ret := _I.GetGType(599, "TreeDragDest")
 	return ret
@@ -60121,7 +60835,9 @@ type TreeDragSource struct {
 	P unsafe.Pointer
 }
 type TreeDragSourceIfc struct{}
+type ITreeDragSource interface{ P_TreeDragSource() unsafe.Pointer }
 
+func (v TreeDragSource) P_TreeDragSource() unsafe.Pointer { return v.P }
 func TreeDragSourceGetType() gi.GType {
 	ret := _I.GetGType(600, "TreeDragSource")
 	return ret
@@ -60232,7 +60948,9 @@ type TreeModel struct {
 	P unsafe.Pointer
 }
 type TreeModelIfc struct{}
+type ITreeModel interface{ P_TreeModel() unsafe.Pointer }
 
+func (v TreeModel) P_TreeModel() unsafe.Pointer { return v.P }
 func TreeModelGetType() gi.GType {
 	ret := _I.GetGType(602, "TreeModel")
 	return ret
@@ -60706,6 +61424,8 @@ func WrapTreeModelFilter(p unsafe.Pointer) (r TreeModelFilter) { r.P = p; return
 type ITreeModelFilter interface{ P_TreeModelFilter() unsafe.Pointer }
 
 func (v TreeModelFilter) P_TreeModelFilter() unsafe.Pointer { return v.P }
+func (v TreeModelFilter) P_TreeDragSource() unsafe.Pointer  { return v.P }
+func (v TreeModelFilter) P_TreeModel() unsafe.Pointer       { return v.P }
 func TreeModelFilterGetType() gi.GType {
 	ret := _I.GetGType(603, "TreeModelFilter")
 	return ret
@@ -60916,7 +61636,10 @@ func WrapTreeModelSort(p unsafe.Pointer) (r TreeModelSort) { r.P = p; return }
 
 type ITreeModelSort interface{ P_TreeModelSort() unsafe.Pointer }
 
-func (v TreeModelSort) P_TreeModelSort() unsafe.Pointer { return v.P }
+func (v TreeModelSort) P_TreeModelSort() unsafe.Pointer  { return v.P }
+func (v TreeModelSort) P_TreeDragSource() unsafe.Pointer { return v.P }
+func (v TreeModelSort) P_TreeModel() unsafe.Pointer      { return v.P }
+func (v TreeModelSort) P_TreeSortable() unsafe.Pointer   { return v.P }
 func TreeModelSortGetType() gi.GType {
 	ret := _I.GetGType(606, "TreeModelSort")
 	return ret
@@ -61392,13 +62115,17 @@ func TreeRowReferenceGetType() gi.GType {
 // gtk_tree_row_reference_new
 // container is not nil, container is TreeRowReference
 // is constructor
-func NewTreeRowReference(model TreeModel, path TreePath) (result TreeRowReference) {
+func NewTreeRowReference(model ITreeModel, path TreePath) (result TreeRowReference) {
 	iv, err := _I.Get(2976, "TreeRowReference", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_model := gi.NewPointerArgument(model.P)
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_TreeModel()
+	}
+	arg_model := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewPointerArgument(path.P)
 	args := []gi.Argument{arg_model, arg_path}
 	var ret gi.Argument
@@ -61410,7 +62137,7 @@ func NewTreeRowReference(model TreeModel, path TreePath) (result TreeRowReferenc
 // gtk_tree_row_reference_new_proxy
 // container is not nil, container is TreeRowReference
 // is constructor
-func NewTreeRowReferenceProxy(proxy gobject.IObject, model TreeModel, path TreePath) (result TreeRowReference) {
+func NewTreeRowReferenceProxy(proxy gobject.IObject, model ITreeModel, path TreePath) (result TreeRowReference) {
 	iv, err := _I.Get(2977, "TreeRowReference", "new_proxy")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -61420,8 +62147,12 @@ func NewTreeRowReferenceProxy(proxy gobject.IObject, model TreeModel, path TreeP
 	if proxy != nil {
 		tmp = proxy.P_Object()
 	}
+	var tmp1 unsafe.Pointer
+	if model != nil {
+		tmp1 = model.P_TreeModel()
+	}
 	arg_proxy := gi.NewPointerArgument(tmp)
-	arg_model := gi.NewPointerArgument(model.P)
+	arg_model := gi.NewPointerArgument(tmp1)
 	arg_path := gi.NewPointerArgument(path.P)
 	args := []gi.Argument{arg_proxy, arg_model, arg_path}
 	var ret gi.Argument
@@ -61880,7 +62611,9 @@ type TreeSortable struct {
 	P unsafe.Pointer
 }
 type TreeSortableIfc struct{}
+type ITreeSortable interface{ P_TreeSortable() unsafe.Pointer }
 
+func (v TreeSortable) P_TreeSortable() unsafe.Pointer { return v.P }
 func TreeSortableGetType() gi.GType {
 	ret := _I.GetGType(612, "TreeSortable")
 	return ret
@@ -62005,7 +62738,12 @@ func WrapTreeStore(p unsafe.Pointer) (r TreeStore) { r.P = p; return }
 
 type ITreeStore interface{ P_TreeStore() unsafe.Pointer }
 
-func (v TreeStore) P_TreeStore() unsafe.Pointer { return v.P }
+func (v TreeStore) P_TreeStore() unsafe.Pointer      { return v.P }
+func (v TreeStore) P_Buildable() unsafe.Pointer      { return v.P }
+func (v TreeStore) P_TreeDragDest() unsafe.Pointer   { return v.P }
+func (v TreeStore) P_TreeDragSource() unsafe.Pointer { return v.P }
+func (v TreeStore) P_TreeModel() unsafe.Pointer      { return v.P }
+func (v TreeStore) P_TreeSortable() unsafe.Pointer   { return v.P }
 func TreeStoreGetType() gi.GType {
 	ret := _I.GetGType(613, "TreeStore")
 	return ret
@@ -62347,7 +63085,10 @@ func WrapTreeView(p unsafe.Pointer) (r TreeView) { r.P = p; return }
 
 type ITreeView interface{ P_TreeView() unsafe.Pointer }
 
-func (v TreeView) P_TreeView() unsafe.Pointer { return v.P }
+func (v TreeView) P_TreeView() unsafe.Pointer         { return v.P }
+func (v TreeView) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v TreeView) P_Buildable() unsafe.Pointer        { return v.P }
+func (v TreeView) P_Scrollable() unsafe.Pointer       { return v.P }
 func TreeViewGetType() gi.GType {
 	ret := _I.GetGType(615, "TreeView")
 	return ret
@@ -62371,13 +63112,17 @@ func NewTreeView() (result TreeView) {
 // gtk_tree_view_new_with_model
 // container is not nil, container is TreeView
 // is constructor
-func NewTreeViewWithModel(model TreeModel) (result TreeView) {
+func NewTreeViewWithModel(model ITreeModel) (result TreeView) {
 	iv, err := _I.Get(3028, "TreeView", "new_with_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_model := gi.NewPointerArgument(model.P)
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_TreeModel()
+	}
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_model}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -63850,14 +64595,18 @@ func (v TreeView) SetLevelIndentation(indentation int32) {
 // gtk_tree_view_set_model
 // container is not nil, container is TreeView
 // is method
-func (v TreeView) SetModel(model TreeModel) {
+func (v TreeView) SetModel(model ITreeModel) {
 	iv, err := _I.Get(3108, "TreeView", "set_model")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if model != nil {
+		tmp = model.P_TreeModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_model := gi.NewPointerArgument(model.P)
+	arg_model := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_model}
 	iv.Call(args, nil, nil)
 }
@@ -64132,7 +64881,11 @@ func WrapTreeViewAccessible(p unsafe.Pointer) (r TreeViewAccessible) { r.P = p; 
 
 type ITreeViewAccessible interface{ P_TreeViewAccessible() unsafe.Pointer }
 
-func (v TreeViewAccessible) P_TreeViewAccessible() unsafe.Pointer { return v.P }
+func (v TreeViewAccessible) P_TreeViewAccessible() unsafe.Pointer   { return v.P }
+func (v TreeViewAccessible) P_Component() unsafe.Pointer            { return v.P }
+func (v TreeViewAccessible) P_Selection() unsafe.Pointer            { return v.P }
+func (v TreeViewAccessible) P_Table() unsafe.Pointer                { return v.P }
+func (v TreeViewAccessible) P_CellAccessibleParent() unsafe.Pointer { return v.P }
 func TreeViewAccessibleGetType() gi.GType {
 	ret := _I.GetGType(616, "TreeViewAccessible")
 	return ret
@@ -64162,6 +64915,8 @@ func WrapTreeViewColumn(p unsafe.Pointer) (r TreeViewColumn) { r.P = p; return }
 type ITreeViewColumn interface{ P_TreeViewColumn() unsafe.Pointer }
 
 func (v TreeViewColumn) P_TreeViewColumn() unsafe.Pointer { return v.P }
+func (v TreeViewColumn) P_Buildable() unsafe.Pointer      { return v.P }
+func (v TreeViewColumn) P_CellLayout() unsafe.Pointer     { return v.P }
 func TreeViewColumnGetType() gi.GType {
 	ret := _I.GetGType(618, "TreeViewColumn")
 	return ret
@@ -64298,14 +65053,18 @@ func (v TreeViewColumn) CellIsVisible() (result bool) {
 // gtk_tree_view_column_cell_set_cell_data
 // container is not nil, container is TreeViewColumn
 // is method
-func (v TreeViewColumn) CellSetCellData(tree_model TreeModel, iter TreeIter, is_expander bool, is_expanded bool) {
+func (v TreeViewColumn) CellSetCellData(tree_model ITreeModel, iter TreeIter, is_expander bool, is_expanded bool) {
 	iv, err := _I.Get(3130, "TreeViewColumn", "cell_set_cell_data")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tree_model != nil {
+		tmp = tree_model.P_TreeModel()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_tree_model := gi.NewPointerArgument(tree_model.P)
+	arg_tree_model := gi.NewPointerArgument(tmp)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_is_expander := gi.NewBoolArgument(is_expander)
 	arg_is_expanded := gi.NewBoolArgument(is_expanded)
@@ -65117,6 +65876,7 @@ func WrapUIManager(p unsafe.Pointer) (r UIManager) { r.P = p; return }
 type IUIManager interface{ P_UIManager() unsafe.Pointer }
 
 func (v UIManager) P_UIManager() unsafe.Pointer { return v.P }
+func (v UIManager) P_Buildable() unsafe.Pointer { return v.P }
 func UIManagerGetType() gi.GType {
 	ret := _I.GetGType(624, "UIManager")
 	return ret
@@ -65516,7 +66276,10 @@ func WrapVBox(p unsafe.Pointer) (r VBox) { r.P = p; return }
 
 type IVBox interface{ P_VBox() unsafe.Pointer }
 
-func (v VBox) P_VBox() unsafe.Pointer { return v.P }
+func (v VBox) P_VBox() unsafe.Pointer             { return v.P }
+func (v VBox) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v VBox) P_Buildable() unsafe.Pointer        { return v.P }
+func (v VBox) P_Orientable() unsafe.Pointer       { return v.P }
 func VBoxGetType() gi.GType {
 	ret := _I.GetGType(628, "VBox")
 	return ret
@@ -65553,7 +66316,10 @@ func WrapVButtonBox(p unsafe.Pointer) (r VButtonBox) { r.P = p; return }
 
 type IVButtonBox interface{ P_VButtonBox() unsafe.Pointer }
 
-func (v VButtonBox) P_VButtonBox() unsafe.Pointer { return v.P }
+func (v VButtonBox) P_VButtonBox() unsafe.Pointer       { return v.P }
+func (v VButtonBox) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v VButtonBox) P_Buildable() unsafe.Pointer        { return v.P }
+func (v VButtonBox) P_Orientable() unsafe.Pointer       { return v.P }
 func VButtonBoxGetType() gi.GType {
 	ret := _I.GetGType(629, "VButtonBox")
 	return ret
@@ -65587,7 +66353,10 @@ func WrapVPaned(p unsafe.Pointer) (r VPaned) { r.P = p; return }
 
 type IVPaned interface{ P_VPaned() unsafe.Pointer }
 
-func (v VPaned) P_VPaned() unsafe.Pointer { return v.P }
+func (v VPaned) P_VPaned() unsafe.Pointer           { return v.P }
+func (v VPaned) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v VPaned) P_Buildable() unsafe.Pointer        { return v.P }
+func (v VPaned) P_Orientable() unsafe.Pointer       { return v.P }
 func VPanedGetType() gi.GType {
 	ret := _I.GetGType(630, "VPaned")
 	return ret
@@ -65621,7 +66390,10 @@ func WrapVScale(p unsafe.Pointer) (r VScale) { r.P = p; return }
 
 type IVScale interface{ P_VScale() unsafe.Pointer }
 
-func (v VScale) P_VScale() unsafe.Pointer { return v.P }
+func (v VScale) P_VScale() unsafe.Pointer           { return v.P }
+func (v VScale) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v VScale) P_Buildable() unsafe.Pointer        { return v.P }
+func (v VScale) P_Orientable() unsafe.Pointer       { return v.P }
 func VScaleGetType() gi.GType {
 	ret := _I.GetGType(631, "VScale")
 	return ret
@@ -65680,7 +66452,10 @@ func WrapVScrollbar(p unsafe.Pointer) (r VScrollbar) { r.P = p; return }
 
 type IVScrollbar interface{ P_VScrollbar() unsafe.Pointer }
 
-func (v VScrollbar) P_VScrollbar() unsafe.Pointer { return v.P }
+func (v VScrollbar) P_VScrollbar() unsafe.Pointer       { return v.P }
+func (v VScrollbar) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v VScrollbar) P_Buildable() unsafe.Pointer        { return v.P }
+func (v VScrollbar) P_Orientable() unsafe.Pointer       { return v.P }
 func VScrollbarGetType() gi.GType {
 	ret := _I.GetGType(632, "VScrollbar")
 	return ret
@@ -65720,7 +66495,10 @@ func WrapVSeparator(p unsafe.Pointer) (r VSeparator) { r.P = p; return }
 
 type IVSeparator interface{ P_VSeparator() unsafe.Pointer }
 
-func (v VSeparator) P_VSeparator() unsafe.Pointer { return v.P }
+func (v VSeparator) P_VSeparator() unsafe.Pointer       { return v.P }
+func (v VSeparator) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v VSeparator) P_Buildable() unsafe.Pointer        { return v.P }
+func (v VSeparator) P_Orientable() unsafe.Pointer       { return v.P }
 func VSeparatorGetType() gi.GType {
 	ret := _I.GetGType(633, "VSeparator")
 	return ret
@@ -65754,7 +66532,10 @@ func WrapViewport(p unsafe.Pointer) (r Viewport) { r.P = p; return }
 
 type IViewport interface{ P_Viewport() unsafe.Pointer }
 
-func (v Viewport) P_Viewport() unsafe.Pointer { return v.P }
+func (v Viewport) P_Viewport() unsafe.Pointer         { return v.P }
+func (v Viewport) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Viewport) P_Buildable() unsafe.Pointer        { return v.P }
+func (v Viewport) P_Scrollable() unsafe.Pointer       { return v.P }
 func ViewportGetType() gi.GType {
 	ret := _I.GetGType(634, "Viewport")
 	return ret
@@ -65949,7 +66730,12 @@ func WrapVolumeButton(p unsafe.Pointer) (r VolumeButton) { r.P = p; return }
 
 type IVolumeButton interface{ P_VolumeButton() unsafe.Pointer }
 
-func (v VolumeButton) P_VolumeButton() unsafe.Pointer { return v.P }
+func (v VolumeButton) P_VolumeButton() unsafe.Pointer     { return v.P }
+func (v VolumeButton) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v VolumeButton) P_Actionable() unsafe.Pointer       { return v.P }
+func (v VolumeButton) P_Activatable() unsafe.Pointer      { return v.P }
+func (v VolumeButton) P_Buildable() unsafe.Pointer        { return v.P }
+func (v VolumeButton) P_Orientable() unsafe.Pointer       { return v.P }
 func VolumeButtonGetType() gi.GType {
 	ret := _I.GetGType(636, "VolumeButton")
 	return ret
@@ -65982,7 +66768,9 @@ func WrapWidget(p unsafe.Pointer) (r Widget) { r.P = p; return }
 
 type IWidget interface{ P_Widget() unsafe.Pointer }
 
-func (v Widget) P_Widget() unsafe.Pointer { return v.P }
+func (v Widget) P_Widget() unsafe.Pointer           { return v.P }
+func (v Widget) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Widget) P_Buildable() unsafe.Pointer        { return v.P }
 func WidgetGetType() gi.GType {
 	ret := _I.GetGType(637, "Widget")
 	return ret
@@ -66664,14 +67452,18 @@ func (v Widget) DragSourceSet(start_button_mask gdk.ModifierTypeFlags, targets u
 // gtk_drag_source_set_icon_gicon
 // container is not nil, container is Widget
 // is method
-func (v Widget) DragSourceSetIconGicon(icon gio.Icon) {
+func (v Widget) DragSourceSetIconGicon(icon gio.IIcon) {
 	iv, err := _I.Get(3252, "Widget", "drag_source_set_icon_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if icon != nil {
+		tmp = icon.P_Icon()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_icon}
 	iv.Call(args, nil, nil)
 }
@@ -68503,16 +69295,20 @@ func (v Widget) InputShapeCombineRegion(region cairo.Region) {
 // gtk_widget_insert_action_group
 // container is not nil, container is Widget
 // is method
-func (v Widget) InsertActionGroup(name string, group gio.ActionGroup) {
+func (v Widget) InsertActionGroup(name string, group gio.IActionGroup) {
 	iv, err := _I.Get(3360, "Widget", "insert_action_group")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_name := gi.CString(name)
+	var tmp unsafe.Pointer
+	if group != nil {
+		tmp = group.P_ActionGroup()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_name := gi.NewStringArgument(c_name)
-	arg_group := gi.NewPointerArgument(group.P)
+	arg_group := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_v, arg_name, arg_group}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -70419,6 +71215,7 @@ func WrapWidgetAccessible(p unsafe.Pointer) (r WidgetAccessible) { r.P = p; retu
 type IWidgetAccessible interface{ P_WidgetAccessible() unsafe.Pointer }
 
 func (v WidgetAccessible) P_WidgetAccessible() unsafe.Pointer { return v.P }
+func (v WidgetAccessible) P_Component() unsafe.Pointer        { return v.P }
 func WidgetAccessibleGetType() gi.GType {
 	ret := _I.GetGType(638, "WidgetAccessible")
 	return ret
@@ -71169,7 +71966,9 @@ func WrapWindow(p unsafe.Pointer) (r Window) { r.P = p; return }
 
 type IWindow interface{ P_Window() unsafe.Pointer }
 
-func (v Window) P_Window() unsafe.Pointer { return v.P }
+func (v Window) P_Window() unsafe.Pointer           { return v.P }
+func (v Window) P_ImplementorIface() unsafe.Pointer { return v.P }
+func (v Window) P_Buildable() unsafe.Pointer        { return v.P }
 func WindowGetType() gi.GType {
 	ret := _I.GetGType(644, "Window")
 	return ret
@@ -73135,6 +73934,8 @@ func WrapWindowAccessible(p unsafe.Pointer) (r WindowAccessible) { r.P = p; retu
 type IWindowAccessible interface{ P_WindowAccessible() unsafe.Pointer }
 
 func (v WindowAccessible) P_WindowAccessible() unsafe.Pointer { return v.P }
+func (v WindowAccessible) P_Component() unsafe.Pointer        { return v.P }
+func (v WindowAccessible) P_Window() unsafe.Pointer           { return v.P }
 func WindowAccessibleGetType() gi.GType {
 	ret := _I.GetGType(645, "WindowAccessible")
 	return ret
@@ -73950,7 +74751,7 @@ func DragSetIconDefault(context gdk.IDragContext) {
 
 // gtk_drag_set_icon_gicon
 // container is nil
-func DragSetIconGicon(context gdk.IDragContext, icon gio.Icon, hot_x int32, hot_y int32) {
+func DragSetIconGicon(context gdk.IDragContext, icon gio.IIcon, hot_x int32, hot_y int32) {
 	iv, err := _I.Get(3671, "drag_set_icon_gicon", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -73960,8 +74761,12 @@ func DragSetIconGicon(context gdk.IDragContext, icon gio.Icon, hot_x int32, hot_
 	if context != nil {
 		tmp = context.P_DragContext()
 	}
+	var tmp1 unsafe.Pointer
+	if icon != nil {
+		tmp1 = icon.P_Icon()
+	}
 	arg_context := gi.NewPointerArgument(tmp)
-	arg_icon := gi.NewPointerArgument(icon.P)
+	arg_icon := gi.NewPointerArgument(tmp1)
 	arg_hot_x := gi.NewInt32Argument(hot_x)
 	arg_hot_y := gi.NewInt32Argument(hot_y)
 	args := []gi.Argument{arg_context, arg_icon, arg_hot_x, arg_hot_y}
@@ -77080,14 +77885,18 @@ func TreeRowReferenceInserted(proxy gobject.IObject, path TreePath) {
 
 // gtk_tree_set_row_drag_data
 // container is nil
-func TreeSetRowDragData(selection_data SelectionData, tree_model TreeModel, path TreePath) (result bool) {
+func TreeSetRowDragData(selection_data SelectionData, tree_model ITreeModel, path TreePath) (result bool) {
 	iv, err := _I.Get(3823, "tree_set_row_drag_data", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	var tmp unsafe.Pointer
+	if tree_model != nil {
+		tmp = tree_model.P_TreeModel()
+	}
 	arg_selection_data := gi.NewPointerArgument(selection_data.P)
-	arg_tree_model := gi.NewPointerArgument(tree_model.P)
+	arg_tree_model := gi.NewPointerArgument(tmp)
 	arg_path := gi.NewPointerArgument(path.P)
 	args := []gi.Argument{arg_selection_data, arg_tree_model, arg_path}
 	var ret gi.Argument

@@ -24,7 +24,9 @@ type Action struct {
 	P unsafe.Pointer
 }
 type ActionIfc struct{}
+type IAction interface{ P_Action() unsafe.Pointer }
 
+func (v Action) P_Action() unsafe.Pointer { return v.P }
 func ActionGetType() gi.GType {
 	ret := _I.GetGType(0, "Action")
 	return ret
@@ -192,7 +194,9 @@ type Component struct {
 	P unsafe.Pointer
 }
 type ComponentIfc struct{}
+type IComponent interface{ P_Component() unsafe.Pointer }
 
+func (v Component) P_Component() unsafe.Pointer { return v.P }
 func ComponentGetType() gi.GType {
 	ret := _I.GetGType(2, "Component")
 	return ret
@@ -507,7 +511,9 @@ type Document struct {
 	P unsafe.Pointer
 }
 type DocumentIfc struct{}
+type IDocument interface{ P_Document() unsafe.Pointer }
 
+func (v Document) P_Document() unsafe.Pointer { return v.P }
 func DocumentGetType() gi.GType {
 	ret := _I.GetGType(4, "Document")
 	return ret
@@ -665,7 +671,9 @@ type EditableText struct {
 	P unsafe.Pointer
 }
 type EditableTextIfc struct{}
+type IEditableText interface{ P_EditableText() unsafe.Pointer }
 
+func (v EditableText) P_EditableText() unsafe.Pointer { return v.P }
 func EditableTextGetType() gi.GType {
 	ret := _I.GetGType(5, "EditableText")
 	return ret
@@ -857,6 +865,7 @@ func WrapHyperlink(p unsafe.Pointer) (r Hyperlink) { r.P = p; return }
 type IHyperlink interface{ P_Hyperlink() unsafe.Pointer }
 
 func (v Hyperlink) P_Hyperlink() unsafe.Pointer { return v.P }
+func (v Hyperlink) P_Action() unsafe.Pointer    { return v.P }
 func HyperlinkGetType() gi.GType {
 	ret := _I.GetGType(7, "Hyperlink")
 	return ret
@@ -1007,7 +1016,9 @@ type HyperlinkImpl struct {
 	P unsafe.Pointer
 }
 type HyperlinkImplIfc struct{}
+type IHyperlinkImpl interface{ P_HyperlinkImpl() unsafe.Pointer }
 
+func (v HyperlinkImpl) P_HyperlinkImpl() unsafe.Pointer { return v.P }
 func HyperlinkImplGetType() gi.GType {
 	ret := _I.GetGType(8, "HyperlinkImpl")
 	return ret
@@ -1049,7 +1060,9 @@ type Hypertext struct {
 	P unsafe.Pointer
 }
 type HypertextIfc struct{}
+type IHypertext interface{ P_Hypertext() unsafe.Pointer }
 
+func (v Hypertext) P_Hypertext() unsafe.Pointer { return v.P }
 func HypertextGetType() gi.GType {
 	ret := _I.GetGType(10, "Hypertext")
 	return ret
@@ -1115,7 +1128,9 @@ type Image struct {
 	P unsafe.Pointer
 }
 type ImageIfc struct{}
+type IImage interface{ P_Image() unsafe.Pointer }
 
+func (v Image) P_Image() unsafe.Pointer { return v.P }
 func ImageGetType() gi.GType {
 	ret := _I.GetGType(11, "Image")
 	return ret
@@ -1250,7 +1265,9 @@ type ImplementorIface struct {
 	P unsafe.Pointer
 }
 type ImplementorIfaceIfc struct{}
+type IImplementorIface interface{ P_ImplementorIface() unsafe.Pointer }
 
+func (v ImplementorIface) P_ImplementorIface() unsafe.Pointer { return v.P }
 func ImplementorIfaceGetType() gi.GType {
 	ret := _I.GetGType(13, "ImplementorIface")
 	return ret
@@ -1366,7 +1383,19 @@ func WrapNoOpObject(p unsafe.Pointer) (r NoOpObject) { r.P = p; return }
 
 type INoOpObject interface{ P_NoOpObject() unsafe.Pointer }
 
-func (v NoOpObject) P_NoOpObject() unsafe.Pointer { return v.P }
+func (v NoOpObject) P_NoOpObject() unsafe.Pointer   { return v.P }
+func (v NoOpObject) P_Action() unsafe.Pointer       { return v.P }
+func (v NoOpObject) P_Component() unsafe.Pointer    { return v.P }
+func (v NoOpObject) P_Document() unsafe.Pointer     { return v.P }
+func (v NoOpObject) P_EditableText() unsafe.Pointer { return v.P }
+func (v NoOpObject) P_Hypertext() unsafe.Pointer    { return v.P }
+func (v NoOpObject) P_Image() unsafe.Pointer        { return v.P }
+func (v NoOpObject) P_Selection() unsafe.Pointer    { return v.P }
+func (v NoOpObject) P_Table() unsafe.Pointer        { return v.P }
+func (v NoOpObject) P_TableCell() unsafe.Pointer    { return v.P }
+func (v NoOpObject) P_Text() unsafe.Pointer         { return v.P }
+func (v NoOpObject) P_Value() unsafe.Pointer        { return v.P }
+func (v NoOpObject) P_Window() unsafe.Pointer       { return v.P }
 func NoOpObjectGetType() gi.GType {
 	ret := _I.GetGType(18, "NoOpObject")
 	return ret
@@ -1919,7 +1948,8 @@ func WrapPlug(p unsafe.Pointer) (r Plug) { r.P = p; return }
 
 type IPlug interface{ P_Plug() unsafe.Pointer }
 
-func (v Plug) P_Plug() unsafe.Pointer { return v.P }
+func (v Plug) P_Plug() unsafe.Pointer      { return v.P }
+func (v Plug) P_Component() unsafe.Pointer { return v.P }
 func PlugGetType() gi.GType {
 	ret := _I.GetGType(22, "Plug")
 	return ret
@@ -2649,7 +2679,9 @@ type Selection struct {
 	P unsafe.Pointer
 }
 type SelectionIfc struct{}
+type ISelection interface{ P_Selection() unsafe.Pointer }
 
+func (v Selection) P_Selection() unsafe.Pointer { return v.P }
 func SelectionGetType() gi.GType {
 	ret := _I.GetGType(32, "Selection")
 	return ret
@@ -2789,7 +2821,8 @@ func WrapSocket(p unsafe.Pointer) (r Socket) { r.P = p; return }
 
 type ISocket interface{ P_Socket() unsafe.Pointer }
 
-func (v Socket) P_Socket() unsafe.Pointer { return v.P }
+func (v Socket) P_Socket() unsafe.Pointer    { return v.P }
+func (v Socket) P_Component() unsafe.Pointer { return v.P }
 func SocketGetType() gi.GType {
 	ret := _I.GetGType(33, "Socket")
 	return ret
@@ -3125,7 +3158,9 @@ type StreamableContent struct {
 	P unsafe.Pointer
 }
 type StreamableContentIfc struct{}
+type IStreamableContent interface{ P_StreamableContent() unsafe.Pointer }
 
+func (v StreamableContent) P_StreamableContent() unsafe.Pointer { return v.P }
 func StreamableContentGetType() gi.GType {
 	ret := _I.GetGType(36, "StreamableContent")
 	return ret
@@ -3213,7 +3248,9 @@ type Table struct {
 	P unsafe.Pointer
 }
 type TableIfc struct{}
+type ITable interface{ P_Table() unsafe.Pointer }
 
+func (v Table) P_Table() unsafe.Pointer { return v.P }
 func TableGetType() gi.GType {
 	ret := _I.GetGType(37, "Table")
 	return ret
@@ -3754,7 +3791,9 @@ type TableCell struct {
 	P unsafe.Pointer
 }
 type TableCellIfc struct{}
+type ITableCell interface{ P_TableCell() unsafe.Pointer }
 
+func (v TableCell) P_TableCell() unsafe.Pointer { return v.P }
 func TableCellGetType() gi.GType {
 	ret := _I.GetGType(38, "TableCell")
 	return ret
@@ -3901,7 +3940,9 @@ type Text struct {
 	P unsafe.Pointer
 }
 type TextIfc struct{}
+type IText interface{ P_Text() unsafe.Pointer }
 
+func (v Text) P_Text() unsafe.Pointer { return v.P }
 func TextGetType() gi.GType {
 	ret := _I.GetGType(39, "Text")
 	return ret
@@ -4466,7 +4507,9 @@ type Value struct {
 	P unsafe.Pointer
 }
 type ValueIfc struct{}
+type IValue interface{ P_Value() unsafe.Pointer }
 
+func (v Value) P_Value() unsafe.Pointer { return v.P }
 func ValueGetType() gi.GType {
 	ret := _I.GetGType(47, "Value")
 	return ret
@@ -4670,7 +4713,9 @@ type Window struct {
 	P unsafe.Pointer
 }
 type WindowIfc struct{}
+type IWindow interface{ P_Window() unsafe.Pointer }
 
+func (v Window) P_Window() unsafe.Pointer { return v.P }
 func WindowGetType() gi.GType {
 	ret := _I.GetGType(49, "Window")
 	return ret
