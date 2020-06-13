@@ -1,5 +1,74 @@
 package glib
 
+/*
+#cgo pkg-config: glib-2.0
+#include <glib.h>
+extern void myChildWatchFunc(gpointer pid, gpointer status, gpointer user_data);
+static void* getPointer_myChildWatchFunc() {
+return (void*)(myChildWatchFunc);
+}
+extern void myCompareDataFunc(gpointer a, gpointer b, gpointer user_data);
+static void* getPointer_myCompareDataFunc() {
+return (void*)(myCompareDataFunc);
+}
+extern void myDataForeachFunc(gpointer key_id, gpointer data, gpointer user_data);
+static void* getPointer_myDataForeachFunc() {
+return (void*)(myDataForeachFunc);
+}
+extern void myDuplicateFunc(gpointer data, gpointer user_data);
+static void* getPointer_myDuplicateFunc() {
+return (void*)(myDuplicateFunc);
+}
+extern void myFunc(gpointer data, gpointer user_data);
+static void* getPointer_myFunc() {
+return (void*)(myFunc);
+}
+extern void myHFunc(gpointer key, gpointer value, gpointer user_data);
+static void* getPointer_myHFunc() {
+return (void*)(myHFunc);
+}
+extern void myHRFunc(gpointer key, gpointer value, gpointer user_data);
+static void* getPointer_myHRFunc() {
+return (void*)(myHRFunc);
+}
+extern void myLogFunc(gpointer log_domain, gpointer log_level, gpointer message, gpointer user_data);
+static void* getPointer_myLogFunc() {
+return (void*)(myLogFunc);
+}
+extern void myLogWriterFunc(gpointer log_level, gpointer fields, gpointer n_fields, gpointer user_data);
+static void* getPointer_myLogWriterFunc() {
+return (void*)(myLogWriterFunc);
+}
+extern void myRegexEvalCallback(gpointer match_info, gpointer result, gpointer user_data);
+static void* getPointer_myRegexEvalCallback() {
+return (void*)(myRegexEvalCallback);
+}
+extern void mySourceFunc(gpointer user_data);
+static void* getPointer_mySourceFunc() {
+return (void*)(mySourceFunc);
+}
+extern void mySpawnChildSetupFunc(gpointer user_data);
+static void* getPointer_mySpawnChildSetupFunc() {
+return (void*)(mySpawnChildSetupFunc);
+}
+extern void myTestDataFunc(gpointer user_data);
+static void* getPointer_myTestDataFunc() {
+return (void*)(myTestDataFunc);
+}
+extern void myTestFixtureFunc(gpointer fixture, gpointer user_data);
+static void* getPointer_myTestFixtureFunc() {
+return (void*)(myTestFixtureFunc);
+}
+extern void myTestLogFatalFunc(gpointer log_domain, gpointer log_level, gpointer message, gpointer user_data);
+static void* getPointer_myTestLogFatalFunc() {
+return (void*)(myTestLogFatalFunc);
+}
+extern void myUnixFDSourceFunc(gpointer fd, gpointer condition, gpointer user_data);
+static void* getPointer_myUnixFDSourceFunc() {
+return (void*)(myUnixFDSourceFunc);
+}
+*/
+import "C"
 import "github.com/electricface/go-gir3/gi"
 import "log"
 import "unsafe"
@@ -1732,6 +1801,38 @@ func ChecksumTypeGetType() gi.GType {
 	return ret
 }
 
+type ChildWatchFuncStruct struct {
+	F_pid    unsafe.Pointer /*TODO tag: gint32, isPtr: false*/
+	F_status unsafe.Pointer /*TODO tag: gint32, isPtr: false*/
+}
+
+//export myChildWatchFunc
+func myChildWatchFunc(pid C.gpointer, status C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := ChildWatchFuncStruct{
+		F_pid:    unsafe.Pointer(pid),
+		F_status: unsafe.Pointer(status),
+	}
+	fn(args)
+}
+
+// ignore callback ClearHandleFunc
+type CompareDataFuncStruct struct {
+	F_a unsafe.Pointer
+	F_b unsafe.Pointer
+}
+
+//export myCompareDataFunc
+func myCompareDataFunc(a C.gpointer, b C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := CompareDataFuncStruct{
+		F_a: unsafe.Pointer(a),
+		F_b: unsafe.Pointer(b),
+	}
+	fn(args)
+}
+
+// ignore callback CompareFunc
 // Struct Cond
 type Cond struct {
 	P unsafe.Pointer
@@ -1853,6 +1954,7 @@ func ConvertErrorGetType() gi.GType {
 	return ret
 }
 
+// ignore callback CopyFunc
 // Struct Data
 type Data struct {
 	P unsafe.Pointer
@@ -1861,6 +1963,21 @@ type Data struct {
 func DataGetType() gi.GType {
 	ret := _I.GetGType(11, "Data")
 	return ret
+}
+
+type DataForeachFuncStruct struct {
+	F_key_id unsafe.Pointer /*TODO tag: guint32, isPtr: false*/
+	F_data   unsafe.Pointer
+}
+
+//export myDataForeachFunc
+func myDataForeachFunc(key_id C.gpointer, data C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := DataForeachFuncStruct{
+		F_key_id: unsafe.Pointer(key_id),
+		F_data:   unsafe.Pointer(data),
+	}
+	fn(args)
 }
 
 // Struct Date
@@ -3649,6 +3766,7 @@ func DebugKeyGetType() gi.GType {
 	return ret
 }
 
+// ignore callback DestroyNotify
 // Struct Dir
 type Dir struct {
 	P unsafe.Pointer
@@ -3738,6 +3856,20 @@ func DoubleIEEE754GetType() gi.GType {
 	return ret
 }
 
+type DuplicateFuncStruct struct {
+	F_data unsafe.Pointer
+}
+
+//export myDuplicateFunc
+func myDuplicateFunc(data C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := DuplicateFuncStruct{
+		F_data: unsafe.Pointer(data),
+	}
+	fn(args)
+}
+
+// ignore callback EqualFunc
 // Struct Error
 type Error struct {
 	P unsafe.Pointer
@@ -3919,6 +4051,51 @@ func FormatSizeFlagsGetType() gi.GType {
 	return ret
 }
 
+// ignore callback FreeFunc
+type FuncStruct struct {
+	F_data unsafe.Pointer
+}
+
+//export myFunc
+func myFunc(data C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := FuncStruct{
+		F_data: unsafe.Pointer(data),
+	}
+	fn(args)
+}
+
+type HFuncStruct struct {
+	F_key   unsafe.Pointer
+	F_value unsafe.Pointer
+}
+
+//export myHFunc
+func myHFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := HFuncStruct{
+		F_key:   unsafe.Pointer(key),
+		F_value: unsafe.Pointer(value),
+	}
+	fn(args)
+}
+
+type HRFuncStruct struct {
+	F_key   unsafe.Pointer
+	F_value unsafe.Pointer
+}
+
+//export myHRFunc
+func myHRFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := HRFuncStruct{
+		F_key:   unsafe.Pointer(key),
+		F_value: unsafe.Pointer(value),
+	}
+	fn(args)
+}
+
+// ignore callback HashFunc
 // Struct HashTable
 type HashTable struct {
 	P unsafe.Pointer
@@ -4487,6 +4664,11 @@ func HookUnref1(hook_list HookList, hook Hook) {
 	iv.Call(args, nil, nil)
 }
 
+// ignore callback HookCheckFunc
+// ignore callback HookCheckMarshaller
+// ignore callback HookCompareFunc
+// ignore callback HookFinalizeFunc
+// ignore callback HookFindFunc
 // Flags HookFlagMask
 type HookFlagMaskFlags int
 
@@ -4501,6 +4683,7 @@ func HookFlagMaskGetType() gi.GType {
 	return ret
 }
 
+// ignore callback HookFunc
 // Struct HookList
 type HookList struct {
 	P unsafe.Pointer
@@ -4572,6 +4755,7 @@ func (v HookList) InvokeCheck(may_recurse bool) {
 	iv.Call(args, nil, nil)
 }
 
+// ignore callback HookMarshaller
 // Struct IOChannel
 type IOChannel struct {
 	P unsafe.Pointer
@@ -5300,6 +5484,7 @@ func IOFlagsGetType() gi.GType {
 	return ret
 }
 
+// ignore callback IOFunc
 // Struct IOFuncs
 type IOFuncs struct {
 	P unsafe.Pointer
@@ -6485,6 +6670,23 @@ func LogFieldGetType() gi.GType {
 	return ret
 }
 
+type LogFuncStruct struct {
+	F_log_domain unsafe.Pointer /*TODO tag: utf8, isPtr: true*/
+	F_log_level  unsafe.Pointer /*TODO tag: interface, isPtr: false*/
+	F_message    unsafe.Pointer /*TODO tag: utf8, isPtr: true*/
+}
+
+//export myLogFunc
+func myLogFunc(log_domain C.gpointer, log_level C.gpointer, message C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := LogFuncStruct{
+		F_log_domain: unsafe.Pointer(log_domain),
+		F_log_level:  unsafe.Pointer(log_level),
+		F_message:    unsafe.Pointer(message),
+	}
+	fn(args)
+}
+
 // Flags LogLevelFlags
 type LogLevelFlags int
 
@@ -6503,6 +6705,23 @@ const (
 func LogLevelFlagsGetType() gi.GType {
 	ret := _I.GetGType(44, "LogLevelFlags")
 	return ret
+}
+
+type LogWriterFuncStruct struct {
+	F_log_level unsafe.Pointer /*TODO tag: interface, isPtr: false*/
+	F_fields    unsafe.Pointer /*TODO tag: array, isPtr: true*/
+	F_n_fields  unsafe.Pointer /*TODO tag: guint64, isPtr: false*/
+}
+
+//export myLogWriterFunc
+func myLogWriterFunc(log_level C.gpointer, fields C.gpointer, n_fields C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := LogWriterFuncStruct{
+		F_log_level: unsafe.Pointer(log_level),
+		F_fields:    unsafe.Pointer(fields),
+		F_n_fields:  unsafe.Pointer(n_fields),
+	}
+	fn(args)
 }
 
 // Enum LogWriterOutput
@@ -7989,6 +8208,8 @@ func (v Node) Unlink() {
 	iv.Call(args, nil, nil)
 }
 
+// ignore callback NodeForeachFunc
+// ignore callback NodeTraverseFunc
 // Enum NormalizeMode
 type NormalizeModeEnum int
 
@@ -8101,6 +8322,7 @@ func OptionArgGetType() gi.GType {
 	return ret
 }
 
+// ignore callback OptionArgFunc
 // Struct OptionContext
 type OptionContext struct {
 	P unsafe.Pointer
@@ -8472,6 +8694,7 @@ func OptionErrorGetType() gi.GType {
 	return ret
 }
 
+// ignore callback OptionErrorFunc
 // Flags OptionFlags
 type OptionFlags int
 
@@ -8622,6 +8845,7 @@ func (v OptionGroup) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// ignore callback OptionParseFunc
 // Struct PatternSpec
 type PatternSpec struct {
 	P unsafe.Pointer
@@ -8676,6 +8900,8 @@ func PollFDGetType() gi.GType {
 	return ret
 }
 
+// ignore callback PollFunc
+// ignore callback PrintFunc
 // Struct Private
 type Private struct {
 	P unsafe.Pointer
@@ -10028,6 +10254,21 @@ func RegexErrorGetType() gi.GType {
 	return ret
 }
 
+type RegexEvalCallbackStruct struct {
+	F_match_info unsafe.Pointer /*TODO tag: interface, isPtr: true*/
+	F_result     unsafe.Pointer /*TODO tag: interface, isPtr: true*/
+}
+
+//export myRegexEvalCallback
+func myRegexEvalCallback(match_info C.gpointer, result C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := RegexEvalCallbackStruct{
+		F_match_info: unsafe.Pointer(match_info),
+		F_result:     unsafe.Pointer(result),
+	}
+	fn(args)
+}
+
 // Flags RegexMatchFlags
 type RegexMatchFlags int
 
@@ -10377,6 +10618,7 @@ func ScannerConfigGetType() gi.GType {
 	return ret
 }
 
+// ignore callback ScannerMsgFunc
 // Enum SeekType
 type SeekTypeEnum int
 
@@ -10837,6 +11079,7 @@ func (v SequenceIter) Prev() (result SequenceIter) {
 	return
 }
 
+// ignore callback SequenceIterCompareFunc
 // Enum ShellError
 type ShellErrorEnum int
 
@@ -11435,6 +11678,17 @@ func SourceCallbackFuncsGetType() gi.GType {
 	return ret
 }
 
+// ignore callback SourceDummyMarshal
+type SourceFuncStruct struct {
+}
+
+//export mySourceFunc
+func mySourceFunc(user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := SourceFuncStruct{}
+	fn(args)
+}
+
 // Struct SourceFuncs
 type SourceFuncs struct {
 	P unsafe.Pointer
@@ -11455,6 +11709,16 @@ type SourcePrivate struct {
 func SourcePrivateGetType() gi.GType {
 	ret := _I.GetGType(91, "SourcePrivate")
 	return ret
+}
+
+type SpawnChildSetupFuncStruct struct {
+}
+
+//export mySpawnChildSetupFunc
+func mySpawnChildSetupFunc(user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := SpawnChildSetupFuncStruct{}
+	fn(args)
 }
 
 // Enum SpawnError
@@ -12168,6 +12432,16 @@ func TestConfigGetType() gi.GType {
 	return ret
 }
 
+type TestDataFuncStruct struct {
+}
+
+//export myTestDataFunc
+func myTestDataFunc(user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := TestDataFuncStruct{}
+	fn(args)
+}
+
 // Enum TestFileType
 type TestFileTypeEnum int
 
@@ -12181,6 +12455,20 @@ func TestFileTypeGetType() gi.GType {
 	return ret
 }
 
+type TestFixtureFuncStruct struct {
+	F_fixture unsafe.Pointer
+}
+
+//export myTestFixtureFunc
+func myTestFixtureFunc(fixture C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := TestFixtureFuncStruct{
+		F_fixture: unsafe.Pointer(fixture),
+	}
+	fn(args)
+}
+
+// ignore callback TestFunc
 // Struct TestLogBuffer
 type TestLogBuffer struct {
 	P unsafe.Pointer
@@ -12221,6 +12509,23 @@ func (v TestLogBuffer) Push(n_bytes uint32, bytes uint8) {
 	arg_bytes := gi.NewUint8Argument(bytes)
 	args := []gi.Argument{arg_v, arg_n_bytes, arg_bytes}
 	iv.Call(args, nil, nil)
+}
+
+type TestLogFatalFuncStruct struct {
+	F_log_domain unsafe.Pointer /*TODO tag: utf8, isPtr: true*/
+	F_log_level  unsafe.Pointer /*TODO tag: interface, isPtr: false*/
+	F_message    unsafe.Pointer /*TODO tag: utf8, isPtr: true*/
+}
+
+//export myTestLogFatalFunc
+func myTestLogFatalFunc(log_domain C.gpointer, log_level C.gpointer, message C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := TestLogFatalFuncStruct{
+		F_log_domain: unsafe.Pointer(log_domain),
+		F_log_level:  unsafe.Pointer(log_level),
+		F_message:    unsafe.Pointer(message),
+	}
+	fn(args)
 }
 
 // Struct TestLogMsg
@@ -12440,6 +12745,7 @@ func ThreadErrorGetType() gi.GType {
 	return ret
 }
 
+// ignore callback ThreadFunc
 // Struct ThreadPool
 type ThreadPool struct {
 	P unsafe.Pointer
@@ -13046,6 +13352,7 @@ func TokenValueGetType() gi.GType {
 	return ret
 }
 
+// ignore callback TranslateFunc
 // Struct TrashStack
 type TrashStack struct {
 	P unsafe.Pointer
@@ -13145,6 +13452,7 @@ func TraverseFlagsGetType() gi.GType {
 	return ret
 }
 
+// ignore callback TraverseFunc
 // Enum TraverseType
 type TraverseTypeEnum int
 
@@ -13592,6 +13900,21 @@ const (
 func UnicodeTypeGetType() gi.GType {
 	ret := _I.GetGType(122, "UnicodeType")
 	return ret
+}
+
+type UnixFDSourceFuncStruct struct {
+	F_fd        unsafe.Pointer /*TODO tag: gint32, isPtr: false*/
+	F_condition unsafe.Pointer /*TODO tag: interface, isPtr: false*/
+}
+
+//export myUnixFDSourceFunc
+func myUnixFDSourceFunc(fd C.gpointer, condition C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := UnixFDSourceFuncStruct{
+		F_fd:        unsafe.Pointer(fd),
+		F_condition: unsafe.Pointer(condition),
+	}
+	fn(args)
 }
 
 // Enum UserDirectory
@@ -15915,6 +16238,7 @@ func VariantTypeStringScan1(string string, limit string) (result bool, endptr st
 	return
 }
 
+// ignore callback VoidFunc
 // g_access
 // container is nil
 func Access(filename string, mode int32) (result int32) {
