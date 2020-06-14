@@ -3,7 +3,7 @@ package glib
 /*
 #cgo pkg-config: glib-2.0
 #include <glib.h>
-extern void myChildWatchFunc(gpointer pid, gpointer status, gpointer user_data);
+extern void myChildWatchFunc(gint32 pid, gint32 status, gpointer user_data);
 static void* getPointer_myChildWatchFunc() {
 return (void*)(myChildWatchFunc);
 }
@@ -11,7 +11,7 @@ extern void myCompareDataFunc(gpointer a, gpointer b, gpointer user_data);
 static void* getPointer_myCompareDataFunc() {
 return (void*)(myCompareDataFunc);
 }
-extern void myDataForeachFunc(gpointer key_id, gpointer data, gpointer user_data);
+extern void myDataForeachFunc(guint32 key_id, gpointer data, gpointer user_data);
 static void* getPointer_myDataForeachFunc() {
 return (void*)(myDataForeachFunc);
 }
@@ -31,11 +31,11 @@ extern void myHRFunc(gpointer key, gpointer value, gpointer user_data);
 static void* getPointer_myHRFunc() {
 return (void*)(myHRFunc);
 }
-extern void myLogFunc(gpointer log_domain, gpointer log_level, gpointer message, gpointer user_data);
+extern void myLogFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
 static void* getPointer_myLogFunc() {
 return (void*)(myLogFunc);
 }
-extern void myLogWriterFunc(gpointer log_level, gpointer fields, gpointer n_fields, gpointer user_data);
+extern void myLogWriterFunc(GLogLevelFlags log_level, gpointer fields, guint64 n_fields, gpointer user_data);
 static void* getPointer_myLogWriterFunc() {
 return (void*)(myLogWriterFunc);
 }
@@ -59,11 +59,11 @@ extern void myTestFixtureFunc(gpointer fixture, gpointer user_data);
 static void* getPointer_myTestFixtureFunc() {
 return (void*)(myTestFixtureFunc);
 }
-extern void myTestLogFatalFunc(gpointer log_domain, gpointer log_level, gpointer message, gpointer user_data);
+extern void myTestLogFatalFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
 static void* getPointer_myTestLogFatalFunc() {
 return (void*)(myTestLogFatalFunc);
 }
-extern void myUnixFDSourceFunc(gpointer fd, gpointer condition, gpointer user_data);
+extern void myUnixFDSourceFunc(gint32 fd, GIOCondition condition, gpointer user_data);
 static void* getPointer_myUnixFDSourceFunc() {
 return (void*)(myUnixFDSourceFunc);
 }
@@ -1802,16 +1802,16 @@ func ChecksumTypeGetType() gi.GType {
 }
 
 type ChildWatchFuncStruct struct {
-	F_pid    unsafe.Pointer /*TODO tag: gint32, isPtr: false*/
-	F_status unsafe.Pointer /*TODO tag: gint32, isPtr: false*/
+	F_pid    int32
+	F_status int32
 }
 
 //export myChildWatchFunc
-func myChildWatchFunc(pid C.gpointer, status C.gpointer, user_data C.gpointer) {
+func myChildWatchFunc(pid C.gint32, status C.gint32, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := ChildWatchFuncStruct{
-		F_pid:    unsafe.Pointer(pid),
-		F_status: unsafe.Pointer(status),
+		F_pid:    int32(pid),
+		F_status: int32(status),
 	}
 	fn(args)
 }
@@ -1966,15 +1966,15 @@ func DataGetType() gi.GType {
 }
 
 type DataForeachFuncStruct struct {
-	F_key_id unsafe.Pointer /*TODO tag: guint32, isPtr: false*/
+	F_key_id uint32
 	F_data   unsafe.Pointer
 }
 
 //export myDataForeachFunc
-func myDataForeachFunc(key_id C.gpointer, data C.gpointer, user_data C.gpointer) {
+func myDataForeachFunc(key_id C.guint32, data C.gpointer, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DataForeachFuncStruct{
-		F_key_id: unsafe.Pointer(key_id),
+		F_key_id: uint32(key_id),
 		F_data:   unsafe.Pointer(data),
 	}
 	fn(args)
@@ -6671,18 +6671,18 @@ func LogFieldGetType() gi.GType {
 }
 
 type LogFuncStruct struct {
-	F_log_domain unsafe.Pointer /*TODO tag: utf8, isPtr: true*/
-	F_log_level  unsafe.Pointer /*TODO tag: interface, isPtr: false*/
-	F_message    unsafe.Pointer /*TODO tag: utf8, isPtr: true*/
+	F_log_domain string
+	F_log_level  LogLevelFlags
+	F_message    string
 }
 
 //export myLogFunc
-func myLogFunc(log_domain C.gpointer, log_level C.gpointer, message C.gpointer, user_data C.gpointer) {
+func myLogFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := LogFuncStruct{
-		F_log_domain: unsafe.Pointer(log_domain),
-		F_log_level:  unsafe.Pointer(log_level),
-		F_message:    unsafe.Pointer(message),
+		F_log_domain: gi.GoString(unsafe.Pointer(log_domain)),
+		F_log_level:  LogLevelFlags(log_level),
+		F_message:    gi.GoString(unsafe.Pointer(message)),
 	}
 	fn(args)
 }
@@ -6708,18 +6708,18 @@ func LogLevelFlagsGetType() gi.GType {
 }
 
 type LogWriterFuncStruct struct {
-	F_log_level unsafe.Pointer /*TODO tag: interface, isPtr: false*/
-	F_fields    unsafe.Pointer /*TODO tag: array, isPtr: true*/
-	F_n_fields  unsafe.Pointer /*TODO tag: guint64, isPtr: false*/
+	F_log_level LogLevelFlags
+	F_fields    unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/
+	F_n_fields  uint64
 }
 
 //export myLogWriterFunc
-func myLogWriterFunc(log_level C.gpointer, fields C.gpointer, n_fields C.gpointer, user_data C.gpointer) {
+func myLogWriterFunc(log_level C.GLogLevelFlags, fields C.gpointer, n_fields C.guint64, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := LogWriterFuncStruct{
-		F_log_level: unsafe.Pointer(log_level),
+		F_log_level: LogLevelFlags(log_level),
 		F_fields:    unsafe.Pointer(fields),
-		F_n_fields:  unsafe.Pointer(n_fields),
+		F_n_fields:  uint64(n_fields),
 	}
 	fn(args)
 }
@@ -10255,8 +10255,8 @@ func RegexErrorGetType() gi.GType {
 }
 
 type RegexEvalCallbackStruct struct {
-	F_match_info unsafe.Pointer /*TODO tag: interface, isPtr: true*/
-	F_result     unsafe.Pointer /*TODO tag: interface, isPtr: true*/
+	F_match_info unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_result     unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
 }
 
 //export myRegexEvalCallback
@@ -12512,18 +12512,18 @@ func (v TestLogBuffer) Push(n_bytes uint32, bytes uint8) {
 }
 
 type TestLogFatalFuncStruct struct {
-	F_log_domain unsafe.Pointer /*TODO tag: utf8, isPtr: true*/
-	F_log_level  unsafe.Pointer /*TODO tag: interface, isPtr: false*/
-	F_message    unsafe.Pointer /*TODO tag: utf8, isPtr: true*/
+	F_log_domain string
+	F_log_level  LogLevelFlags
+	F_message    string
 }
 
 //export myTestLogFatalFunc
-func myTestLogFatalFunc(log_domain C.gpointer, log_level C.gpointer, message C.gpointer, user_data C.gpointer) {
+func myTestLogFatalFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := TestLogFatalFuncStruct{
-		F_log_domain: unsafe.Pointer(log_domain),
-		F_log_level:  unsafe.Pointer(log_level),
-		F_message:    unsafe.Pointer(message),
+		F_log_domain: gi.GoString(unsafe.Pointer(log_domain)),
+		F_log_level:  LogLevelFlags(log_level),
+		F_message:    gi.GoString(unsafe.Pointer(message)),
 	}
 	fn(args)
 }
@@ -13903,16 +13903,16 @@ func UnicodeTypeGetType() gi.GType {
 }
 
 type UnixFDSourceFuncStruct struct {
-	F_fd        unsafe.Pointer /*TODO tag: gint32, isPtr: false*/
-	F_condition unsafe.Pointer /*TODO tag: interface, isPtr: false*/
+	F_fd        int32
+	F_condition IOConditionFlags
 }
 
 //export myUnixFDSourceFunc
-func myUnixFDSourceFunc(fd C.gpointer, condition C.gpointer, user_data C.gpointer) {
+func myUnixFDSourceFunc(fd C.gint32, condition C.GIOCondition, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := UnixFDSourceFuncStruct{
-		F_fd:        unsafe.Pointer(fd),
-		F_condition: unsafe.Pointer(condition),
+		F_fd:        int32(fd),
+		F_condition: IOConditionFlags(condition),
 	}
 	fn(args)
 }

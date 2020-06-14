@@ -1,5 +1,14 @@
 package gobject
 
+/*
+#cgo pkg-config: gobject-2.0
+#include <glib-object.h>
+extern void myBindingTransformFunc(gpointer binding, gpointer from_value, gpointer to_value, gpointer user_data);
+static void* getPointer_myBindingTransformFunc() {
+return (void*)(myBindingTransformFunc);
+}
+*/
+import "C"
 import "github.com/electricface/go-gir/glib-2.0"
 import "github.com/electricface/go-gir3/gi"
 import "log"
@@ -17,6 +26,8 @@ func init() {
 	}
 }
 
+// ignore callback BaseFinalizeFunc
+// ignore callback BaseInitFunc
 // Object Binding
 type Binding struct {
 	Object
@@ -146,6 +157,25 @@ func BindingFlagsGetType() gi.GType {
 	return ret
 }
 
+type BindingTransformFuncStruct struct {
+	F_binding    unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_from_value unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_to_value   unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+}
+
+//export myBindingTransformFunc
+func myBindingTransformFunc(binding C.gpointer, from_value C.gpointer, to_value C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := BindingTransformFuncStruct{
+		F_binding:    unsafe.Pointer(binding),
+		F_from_value: unsafe.Pointer(from_value),
+		F_to_value:   unsafe.Pointer(to_value),
+	}
+	fn(args)
+}
+
+// ignore callback BoxedCopyFunc
+// ignore callback BoxedFreeFunc
 // Struct CClosure
 type CClosure struct {
 	P unsafe.Pointer
@@ -618,6 +648,9 @@ func CClosureMarshalGeneric1(closure Closure, return_gvalue Value, n_param_value
 	iv.Call(args, nil, nil)
 }
 
+// ignore callback Callback
+// ignore callback ClassFinalizeFunc
+// ignore callback ClassInitFunc
 // Struct Closure
 type Closure struct {
 	P unsafe.Pointer
@@ -748,6 +781,8 @@ func (v Closure) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// ignore callback ClosureMarshal
+// ignore callback ClosureNotify
 // Struct ClosureNotifyData
 type ClosureNotifyData struct {
 	P unsafe.Pointer
@@ -837,6 +872,8 @@ func InitiallyUnownedGetType() gi.GType {
 }
 
 // ignore GType struct InitiallyUnownedClass
+// ignore callback InstanceInitFunc
+// ignore callback InterfaceFinalizeFunc
 // Struct InterfaceInfo
 type InterfaceInfo struct {
 	P unsafe.Pointer
@@ -849,6 +886,7 @@ func InterfaceInfoGetType() gi.GType {
 	return ret
 }
 
+// ignore callback InterfaceInitFunc
 // Object Object
 type Object struct {
 	P unsafe.Pointer
@@ -1359,6 +1397,9 @@ func ObjectConstructParamGetType() gi.GType {
 	return ret
 }
 
+// ignore callback ObjectFinalizeFunc
+// ignore callback ObjectGetPropertyFunc
+// ignore callback ObjectSetPropertyFunc
 // Flags ParamFlags
 type ParamFlags int
 
@@ -2063,6 +2104,8 @@ func ParameterGetType() gi.GType {
 	return ret
 }
 
+// ignore callback SignalAccumulator
+// ignore callback SignalEmissionHook
 // Flags SignalFlags
 type SignalFlags int
 
@@ -2124,6 +2167,7 @@ func SignalQueryGetType() gi.GType {
 	return ret
 }
 
+// ignore callback ToggleNotify
 // Union TypeCValue
 type TypeCValue struct {
 	P unsafe.Pointer
@@ -2282,6 +2326,7 @@ func TypeClassRef1(type1 gi.GType) (result TypeClass) {
 	return
 }
 
+// ignore callback TypeClassCacheFunc
 // Flags TypeDebugFlags
 type TypeDebugFlags int
 
@@ -2487,6 +2532,7 @@ func TypeInterfacePrerequisites1(interface_type gi.GType) (result gi.GTypeArray)
 	return
 }
 
+// ignore callback TypeInterfaceCheckFunc
 // Object TypeModule
 type TypeModule struct {
 	TypePluginIfc
@@ -2712,6 +2758,10 @@ func (v *TypePluginIfc) Use() {
 }
 
 // ignore Class struct TypePluginClass, type of TypePlugin is interface
+// ignore callback TypePluginCompleteInterfaceInfo
+// ignore callback TypePluginCompleteTypeInfo
+// ignore callback TypePluginUnuse
+// ignore callback TypePluginUse
 // Struct TypeQuery
 type TypeQuery struct {
 	P unsafe.Pointer
@@ -3932,6 +3982,8 @@ func (v ValueArray) Sort(compare_func int /*TODO_TYPE isPtr: false, tag: interfa
 	return
 }
 
+// ignore callback ValueTransform
+// ignore callback WeakNotify
 // Struct WeakRef
 type WeakRef struct {
 	P unsafe.Pointer

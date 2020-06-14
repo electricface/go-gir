@@ -1,5 +1,10 @@
 package gudev
 
+/*
+#cgo pkg-config: gudev-1.0
+#include <gudev/gudev.h>
+*/
+import "C"
 import "github.com/electricface/go-gir/glib-2.0"
 import "github.com/electricface/go-gir/gobject-2.0"
 import "github.com/electricface/go-gir3/gi"

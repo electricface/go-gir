@@ -1,5 +1,9 @@
 package cairo
 
+/*
+#cgo pkg-config: cairo-gobject
+*/
+import "C"
 import "github.com/electricface/go-gir3/gi"
 import "log"
 import "unsafe"

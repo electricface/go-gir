@@ -1,5 +1,10 @@
 package gdkpixbuf
 
+/*
+#cgo pkg-config: gdk-pixbuf-2.0
+#include <gdk-pixbuf/gdk-pixbuf.h>
+*/
+import "C"
 import "github.com/electricface/go-gir/gio-2.0"
 import "github.com/electricface/go-gir/glib-2.0"
 import "github.com/electricface/go-gir/gobject-2.0"
@@ -1616,6 +1621,7 @@ func (v PixbufAnimationIter) OnCurrentlyLoadingFrame() (result bool) {
 	return
 }
 
+// ignore callback PixbufDestroyNotify
 // Enum PixbufError
 type PixbufErrorEnum int
 
@@ -2064,6 +2070,7 @@ func PixbufRotationGetType() gi.GType {
 	return ret
 }
 
+// ignore callback PixbufSaveFunc
 // Object PixbufSimpleAnim
 type PixbufSimpleAnim struct {
 	PixbufAnimation

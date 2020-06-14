@@ -1,5 +1,18 @@
 package atk
 
+/*
+#cgo pkg-config: atk
+#include <atk/atk.h>
+extern void myFunction(gpointer user_data);
+static void* getPointer_myFunction() {
+return (void*)(myFunction);
+}
+extern void myKeySnoopFunc(gpointer event, gpointer user_data);
+static void* getPointer_myKeySnoopFunc() {
+return (void*)(myKeySnoopFunc);
+}
+*/
+import "C"
 import "github.com/electricface/go-gir/glib-2.0"
 import "github.com/electricface/go-gir/gobject-2.0"
 import "github.com/electricface/go-gir3/gi"
@@ -799,6 +812,19 @@ func (v *EditableTextIfc) SetTextContents(string string) {
 }
 
 // ignore GType struct EditableTextIface
+// ignore callback EventListener
+// ignore callback EventListenerInit
+// ignore callback FocusHandler
+type FunctionStruct struct {
+}
+
+//export myFunction
+func myFunction(user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := FunctionStruct{}
+	fn(args)
+}
+
 // Object GObjectAccessible
 type GObjectAccessible struct {
 	Object
@@ -1297,6 +1323,19 @@ const (
 func KeyEventTypeGetType() gi.GType {
 	ret := _I.GetGType(15, "KeyEventType")
 	return ret
+}
+
+type KeySnoopFuncStruct struct {
+	F_event unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+}
+
+//export myKeySnoopFunc
+func myKeySnoopFunc(event C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := KeySnoopFuncStruct{
+		F_event: unsafe.Pointer(event),
+	}
+	fn(args)
 }
 
 // Enum Layer
@@ -1988,6 +2027,7 @@ func (v Plug) GetId() (result string) {
 }
 
 // ignore GType struct PlugClass
+// ignore callback PropertyChangeHandler
 // Struct PropertyValues
 type PropertyValues struct {
 	P unsafe.Pointer

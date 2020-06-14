@@ -1,5 +1,22 @@
 package pango
 
+/*
+#cgo pkg-config: pango
+#include <pango/pango.h>
+extern void myAttrDataCopyFunc(gpointer user_data);
+static void* getPointer_myAttrDataCopyFunc() {
+return (void*)(myAttrDataCopyFunc);
+}
+extern void myAttrFilterFunc(gpointer attribute, gpointer user_data);
+static void* getPointer_myAttrFilterFunc() {
+return (void*)(myAttrFilterFunc);
+}
+extern void myFontsetForeachFunc(gpointer fontset, gpointer font, gpointer user_data);
+static void* getPointer_myFontsetForeachFunc() {
+return (void*)(myFontsetForeachFunc);
+}
+*/
+import "C"
 import "github.com/electricface/go-gir/glib-2.0"
 import "github.com/electricface/go-gir/gobject-2.0"
 import "github.com/electricface/go-gir3/gi"
@@ -66,6 +83,29 @@ const SizeOfStructAttrColor = 24
 func AttrColorGetType() gi.GType {
 	ret := _I.GetGType(3, "AttrColor")
 	return ret
+}
+
+type AttrDataCopyFuncStruct struct {
+}
+
+//export myAttrDataCopyFunc
+func myAttrDataCopyFunc(user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := AttrDataCopyFuncStruct{}
+	fn(args)
+}
+
+type AttrFilterFuncStruct struct {
+	F_attribute unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+}
+
+//export myAttrFilterFunc
+func myAttrFilterFunc(attribute C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := AttrFilterFuncStruct{
+		F_attribute: unsafe.Pointer(attribute),
+	}
+	fn(args)
 }
 
 // Struct AttrFloat
@@ -2515,6 +2555,21 @@ func (v Fontset) GetMetrics() (result FontMetrics) {
 }
 
 // ignore GType struct FontsetClass
+type FontsetForeachFuncStruct struct {
+	F_fontset unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_font    unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+}
+
+//export myFontsetForeachFunc
+func myFontsetForeachFunc(fontset C.gpointer, font C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := FontsetForeachFuncStruct{
+		F_fontset: unsafe.Pointer(fontset),
+		F_font:    unsafe.Pointer(font),
+	}
+	fn(args)
+}
+
 // Object FontsetSimple
 type FontsetSimple struct {
 	Fontset

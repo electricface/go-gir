@@ -1,5 +1,18 @@
 package gdk
 
+/*
+#cgo pkg-config: gdk-3.0
+#include <gdk/gdk.h>
+extern void mySeatGrabPrepareFunc(gpointer seat, gpointer window, gpointer user_data);
+static void* getPointer_mySeatGrabPrepareFunc() {
+return (void*)(mySeatGrabPrepareFunc);
+}
+extern void myWindowChildFunc(gpointer window, gpointer user_data);
+static void* getPointer_myWindowChildFunc() {
+return (void*)(myWindowChildFunc);
+}
+*/
+import "C"
 import "github.com/electricface/go-gir/cairo-1.0"
 import "github.com/electricface/go-gir/gdkpixbuf-2.0"
 import "github.com/electricface/go-gir/gio-2.0"
@@ -3618,6 +3631,7 @@ func EventFocusGetType() gi.GType {
 	return ret
 }
 
+// ignore callback EventFunc
 // Struct EventGrabBroken
 type EventGrabBroken struct {
 	P unsafe.Pointer
@@ -3931,6 +3945,7 @@ func EventWindowStateGetType() gi.GType {
 	return ret
 }
 
+// ignore callback FilterFunc
 // Enum FilterReturn
 type FilterReturnEnum int
 
@@ -6204,6 +6219,21 @@ const (
 func SeatCapabilitiesGetType() gi.GType {
 	ret := _I.GetGType(81, "SeatCapabilities")
 	return ret
+}
+
+type SeatGrabPrepareFuncStruct struct {
+	F_seat   unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_window unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+}
+
+//export mySeatGrabPrepareFunc
+func mySeatGrabPrepareFunc(seat C.gpointer, window C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := SeatGrabPrepareFuncStruct{
+		F_seat:   unsafe.Pointer(seat),
+		F_window: unsafe.Pointer(window),
+	}
+	fn(args)
 }
 
 // Enum SettingAction
@@ -9313,6 +9343,19 @@ func WindowAttributesTypeGetType() gi.GType {
 	return ret
 }
 
+type WindowChildFuncStruct struct {
+	F_window unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+}
+
+//export myWindowChildFunc
+func myWindowChildFunc(window C.gpointer, user_data C.gpointer) {
+	fn := gi.GetFunc(uint(uintptr(user_data)))
+	args := WindowChildFuncStruct{
+		F_window: unsafe.Pointer(window),
+	}
+	fn(args)
+}
+
 // ignore GType struct WindowClass
 // Enum WindowEdge
 type WindowEdgeEnum int
@@ -9353,6 +9396,7 @@ func WindowHintsGetType() gi.GType {
 	return ret
 }
 
+// ignore callback WindowInvalidateHandlerFunc
 // Struct WindowRedirect
 type WindowRedirect struct {
 	P unsafe.Pointer
