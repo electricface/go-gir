@@ -13,72 +13,71 @@ package gio
 #include <gio/gunixmounts.h>
 #include <gio/gunixoutputstream.h>
 #include <gio/gunixsocketaddress.h>
-#include <glib.h>
-extern void myAsyncReadyCallback(gpointer source_object, gpointer res, gpointer user_data);
+extern void myAsyncReadyCallback(GObject* source_object, GAsyncResult* res, gpointer user_data);
 static void* getPointer_myAsyncReadyCallback() {
 return (void*)(myAsyncReadyCallback);
 }
-extern void myBusAcquiredCallback(gpointer connection, gchar* name, gpointer user_data);
+extern void myBusAcquiredCallback(GDBusConnection* connection, gchar* name, gpointer user_data);
 static void* getPointer_myBusAcquiredCallback() {
 return (void*)(myBusAcquiredCallback);
 }
-extern void myBusNameAcquiredCallback(gpointer connection, gchar* name, gpointer user_data);
+extern void myBusNameAcquiredCallback(GDBusConnection* connection, gchar* name, gpointer user_data);
 static void* getPointer_myBusNameAcquiredCallback() {
 return (void*)(myBusNameAcquiredCallback);
 }
-extern void myBusNameAppearedCallback(gpointer connection, gchar* name, gchar* name_owner, gpointer user_data);
+extern void myBusNameAppearedCallback(GDBusConnection* connection, gchar* name, gchar* name_owner, gpointer user_data);
 static void* getPointer_myBusNameAppearedCallback() {
 return (void*)(myBusNameAppearedCallback);
 }
-extern void myBusNameLostCallback(gpointer connection, gchar* name, gpointer user_data);
+extern void myBusNameLostCallback(GDBusConnection* connection, gchar* name, gpointer user_data);
 static void* getPointer_myBusNameLostCallback() {
 return (void*)(myBusNameLostCallback);
 }
-extern void myBusNameVanishedCallback(gpointer connection, gchar* name, gpointer user_data);
+extern void myBusNameVanishedCallback(GDBusConnection* connection, gchar* name, gpointer user_data);
 static void* getPointer_myBusNameVanishedCallback() {
 return (void*)(myBusNameVanishedCallback);
 }
-extern void myCancellableSourceFunc(gpointer cancellable, gpointer user_data);
+extern void myCancellableSourceFunc(GCancellable* cancellable, gpointer user_data);
 static void* getPointer_myCancellableSourceFunc() {
 return (void*)(myCancellableSourceFunc);
 }
-extern void myDBusInterfaceGetPropertyFunc(gpointer connection, gchar* sender, gchar* object_path, gchar* interface_name, gchar* property_name, gpointer error, gpointer user_data);
+extern void myDBusInterfaceGetPropertyFunc(GDBusConnection* connection, gchar* sender, gchar* object_path, gchar* interface_name, gchar* property_name, GError** error, gpointer user_data);
 static void* getPointer_myDBusInterfaceGetPropertyFunc() {
 return (void*)(myDBusInterfaceGetPropertyFunc);
 }
-extern void myDBusInterfaceMethodCallFunc(gpointer connection, gchar* sender, gchar* object_path, gchar* interface_name, gchar* method_name, gpointer parameters, gpointer invocation, gpointer user_data);
+extern void myDBusInterfaceMethodCallFunc(GDBusConnection* connection, gchar* sender, gchar* object_path, gchar* interface_name, gchar* method_name, GVariant* parameters, GDBusMethodInvocation* invocation, gpointer user_data);
 static void* getPointer_myDBusInterfaceMethodCallFunc() {
 return (void*)(myDBusInterfaceMethodCallFunc);
 }
-extern void myDBusInterfaceSetPropertyFunc(gpointer connection, gchar* sender, gchar* object_path, gchar* interface_name, gchar* property_name, gpointer value, gpointer error, gpointer user_data);
+extern void myDBusInterfaceSetPropertyFunc(GDBusConnection* connection, gchar* sender, gchar* object_path, gchar* interface_name, gchar* property_name, GVariant* value, GError** error, gpointer user_data);
 static void* getPointer_myDBusInterfaceSetPropertyFunc() {
 return (void*)(myDBusInterfaceSetPropertyFunc);
 }
-extern void myDBusMessageFilterFunction(gpointer connection, gpointer message, gboolean incoming, gpointer user_data);
+extern void myDBusMessageFilterFunction(GDBusConnection* connection, GDBusMessage* message, gboolean incoming, gpointer user_data);
 static void* getPointer_myDBusMessageFilterFunction() {
 return (void*)(myDBusMessageFilterFunction);
 }
-extern void myDBusProxyTypeFunc(gpointer manager, gchar* object_path, gchar* interface_name, gpointer user_data);
+extern void myDBusProxyTypeFunc(GDBusObjectManagerClient* manager, gchar* object_path, gchar* interface_name, gpointer user_data);
 static void* getPointer_myDBusProxyTypeFunc() {
 return (void*)(myDBusProxyTypeFunc);
 }
-extern void myDBusSignalCallback(gpointer connection, gchar* sender_name, gchar* object_path, gchar* interface_name, gchar* signal_name, gpointer parameters, gpointer user_data);
+extern void myDBusSignalCallback(GDBusConnection* connection, gchar* sender_name, gchar* object_path, gchar* interface_name, gchar* signal_name, GVariant* parameters, gpointer user_data);
 static void* getPointer_myDBusSignalCallback() {
 return (void*)(myDBusSignalCallback);
 }
-extern void myDBusSubtreeDispatchFunc(gpointer connection, gchar* sender, gchar* object_path, gchar* interface_name, gchar* node, gpointer out_user_data, gpointer user_data);
+extern void myDBusSubtreeDispatchFunc(GDBusConnection* connection, gchar* sender, gchar* object_path, gchar* interface_name, gchar* node, gpointer out_user_data, gpointer user_data);
 static void* getPointer_myDBusSubtreeDispatchFunc() {
 return (void*)(myDBusSubtreeDispatchFunc);
 }
-extern void myDBusSubtreeIntrospectFunc(gpointer connection, gchar* sender, gchar* object_path, gchar* node, gpointer user_data);
+extern void myDBusSubtreeIntrospectFunc(GDBusConnection* connection, gchar* sender, gchar* object_path, gchar* node, gpointer user_data);
 static void* getPointer_myDBusSubtreeIntrospectFunc() {
 return (void*)(myDBusSubtreeIntrospectFunc);
 }
-extern void myDatagramBasedSourceFunc(gpointer datagram_based, GIOCondition condition, gpointer user_data);
+extern void myDatagramBasedSourceFunc(GDatagramBased* datagram_based, GIOCondition condition, gpointer user_data);
 static void* getPointer_myDatagramBasedSourceFunc() {
 return (void*)(myDatagramBasedSourceFunc);
 }
-extern void myDesktopAppLaunchCallback(gpointer appinfo, gint32 pid, gpointer user_data);
+extern void myDesktopAppLaunchCallback(GDesktopAppInfo* appinfo, gint32 pid, gpointer user_data);
 static void* getPointer_myDesktopAppLaunchCallback() {
 return (void*)(myDesktopAppLaunchCallback);
 }
@@ -90,31 +89,31 @@ extern void myFileProgressCallback(gint64 current_num_bytes, gint64 total_num_by
 static void* getPointer_myFileProgressCallback() {
 return (void*)(myFileProgressCallback);
 }
-extern void myIOSchedulerJobFunc(gpointer job, gpointer cancellable, gpointer user_data);
+extern void myIOSchedulerJobFunc(GIOSchedulerJob* job, GCancellable* cancellable, gpointer user_data);
 static void* getPointer_myIOSchedulerJobFunc() {
 return (void*)(myIOSchedulerJobFunc);
 }
-extern void myPollableSourceFunc(gpointer pollable_stream, gpointer user_data);
+extern void myPollableSourceFunc(GObject* pollable_stream, gpointer user_data);
 static void* getPointer_myPollableSourceFunc() {
 return (void*)(myPollableSourceFunc);
 }
-extern void mySettingsBindGetMapping(gpointer value, gpointer variant, gpointer user_data);
+extern void mySettingsBindGetMapping(GValue* value, GVariant* variant, gpointer user_data);
 static void* getPointer_mySettingsBindGetMapping() {
 return (void*)(mySettingsBindGetMapping);
 }
-extern void mySettingsBindSetMapping(gpointer value, gpointer expected_type, gpointer user_data);
+extern void mySettingsBindSetMapping(GValue* value, GVariantType* expected_type, gpointer user_data);
 static void* getPointer_mySettingsBindSetMapping() {
 return (void*)(mySettingsBindSetMapping);
 }
-extern void mySettingsGetMapping(gpointer value, gpointer user_data);
+extern void mySettingsGetMapping(GVariant* value, gpointer user_data);
 static void* getPointer_mySettingsGetMapping() {
 return (void*)(mySettingsGetMapping);
 }
-extern void mySocketSourceFunc(gpointer socket, GIOCondition condition, gpointer user_data);
+extern void mySocketSourceFunc(GSocket* socket, GIOCondition condition, gpointer user_data);
 static void* getPointer_mySocketSourceFunc() {
 return (void*)(mySocketSourceFunc);
 }
-extern void myVfsFileLookupFunc(gpointer vfs, gchar* identifier, gpointer user_data);
+extern void myVfsFileLookupFunc(GVfs* vfs, gchar* identifier, gpointer user_data);
 static void* getPointer_myVfsFileLookupFunc() {
 return (void*)(myVfsFileLookupFunc);
 }
@@ -2638,16 +2637,16 @@ func (v *AsyncInitableIfc) NewFinish(res IAsyncResult) (result gobject.Object, e
 
 // ignore GType struct AsyncInitableIface
 type AsyncReadyCallbackStruct struct {
-	F_source_object unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_res           unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_source_object gobject.Object
+	F_res           AsyncResult
 }
 
 //export myAsyncReadyCallback
-func myAsyncReadyCallback(source_object C.gpointer, res C.gpointer, user_data C.gpointer) {
+func myAsyncReadyCallback(source_object *C.GObject, res *C.GAsyncResult, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := AsyncReadyCallbackStruct{
-		F_source_object: unsafe.Pointer(source_object),
-		F_res:           unsafe.Pointer(res),
+		F_source_object: gobject.WrapObject(unsafe.Pointer(source_object)),
+		F_res:           AsyncResult{P: unsafe.Pointer(res)},
 	}
 	fn(args)
 }
@@ -3134,46 +3133,46 @@ func BufferedOutputStreamPrivateGetType() gi.GType {
 }
 
 type BusAcquiredCallbackStruct struct {
-	F_connection unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection DBusConnection
 	F_name       string
 }
 
 //export myBusAcquiredCallback
-func myBusAcquiredCallback(connection C.gpointer, name *C.gchar, user_data C.gpointer) {
+func myBusAcquiredCallback(connection *C.GDBusConnection, name *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := BusAcquiredCallbackStruct{
-		F_connection: unsafe.Pointer(connection),
+		F_connection: WrapDBusConnection(unsafe.Pointer(connection)),
 		F_name:       gi.GoString(unsafe.Pointer(name)),
 	}
 	fn(args)
 }
 
 type BusNameAcquiredCallbackStruct struct {
-	F_connection unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection DBusConnection
 	F_name       string
 }
 
 //export myBusNameAcquiredCallback
-func myBusNameAcquiredCallback(connection C.gpointer, name *C.gchar, user_data C.gpointer) {
+func myBusNameAcquiredCallback(connection *C.GDBusConnection, name *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := BusNameAcquiredCallbackStruct{
-		F_connection: unsafe.Pointer(connection),
+		F_connection: WrapDBusConnection(unsafe.Pointer(connection)),
 		F_name:       gi.GoString(unsafe.Pointer(name)),
 	}
 	fn(args)
 }
 
 type BusNameAppearedCallbackStruct struct {
-	F_connection unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection DBusConnection
 	F_name       string
 	F_name_owner string
 }
 
 //export myBusNameAppearedCallback
-func myBusNameAppearedCallback(connection C.gpointer, name *C.gchar, name_owner *C.gchar, user_data C.gpointer) {
+func myBusNameAppearedCallback(connection *C.GDBusConnection, name *C.gchar, name_owner *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := BusNameAppearedCallbackStruct{
-		F_connection: unsafe.Pointer(connection),
+		F_connection: WrapDBusConnection(unsafe.Pointer(connection)),
 		F_name:       gi.GoString(unsafe.Pointer(name)),
 		F_name_owner: gi.GoString(unsafe.Pointer(name_owner)),
 	}
@@ -3181,15 +3180,15 @@ func myBusNameAppearedCallback(connection C.gpointer, name *C.gchar, name_owner 
 }
 
 type BusNameLostCallbackStruct struct {
-	F_connection unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection DBusConnection
 	F_name       string
 }
 
 //export myBusNameLostCallback
-func myBusNameLostCallback(connection C.gpointer, name *C.gchar, user_data C.gpointer) {
+func myBusNameLostCallback(connection *C.GDBusConnection, name *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := BusNameLostCallbackStruct{
-		F_connection: unsafe.Pointer(connection),
+		F_connection: WrapDBusConnection(unsafe.Pointer(connection)),
 		F_name:       gi.GoString(unsafe.Pointer(name)),
 	}
 	fn(args)
@@ -3211,15 +3210,15 @@ func BusNameOwnerFlagsGetType() gi.GType {
 }
 
 type BusNameVanishedCallbackStruct struct {
-	F_connection unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection DBusConnection
 	F_name       string
 }
 
 //export myBusNameVanishedCallback
-func myBusNameVanishedCallback(connection C.gpointer, name *C.gchar, user_data C.gpointer) {
+func myBusNameVanishedCallback(connection *C.GDBusConnection, name *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := BusNameVanishedCallbackStruct{
-		F_connection: unsafe.Pointer(connection),
+		F_connection: WrapDBusConnection(unsafe.Pointer(connection)),
 		F_name:       gi.GoString(unsafe.Pointer(name)),
 	}
 	fn(args)
@@ -3524,14 +3523,14 @@ func CancellablePrivateGetType() gi.GType {
 }
 
 type CancellableSourceFuncStruct struct {
-	F_cancellable unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_cancellable Cancellable
 }
 
 //export myCancellableSourceFunc
-func myCancellableSourceFunc(cancellable C.gpointer, user_data C.gpointer) {
+func myCancellableSourceFunc(cancellable *C.GCancellable, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := CancellableSourceFuncStruct{
-		F_cancellable: unsafe.Pointer(cancellable),
+		F_cancellable: WrapCancellable(unsafe.Pointer(cancellable)),
 	}
 	fn(args)
 }
@@ -5557,19 +5556,19 @@ func (v *DBusInterfaceIfc) SetObject(object IDBusObject) {
 }
 
 type DBusInterfaceGetPropertyFuncStruct struct {
-	F_connection     unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection     DBusConnection
 	F_sender         string
 	F_object_path    string
 	F_interface_name string
 	F_property_name  string
-	F_error          unsafe.Pointer /*TODO_CB tag: error, isPtr: true*/
+	F_error          unsafe.Pointer
 }
 
 //export myDBusInterfaceGetPropertyFunc
-func myDBusInterfaceGetPropertyFunc(connection C.gpointer, sender *C.gchar, object_path *C.gchar, interface_name *C.gchar, property_name *C.gchar, error C.gpointer, user_data C.gpointer) {
+func myDBusInterfaceGetPropertyFunc(connection *C.GDBusConnection, sender *C.gchar, object_path *C.gchar, interface_name *C.gchar, property_name *C.gchar, error **C.GError, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DBusInterfaceGetPropertyFuncStruct{
-		F_connection:     unsafe.Pointer(connection),
+		F_connection:     WrapDBusConnection(unsafe.Pointer(connection)),
 		F_sender:         gi.GoString(unsafe.Pointer(sender)),
 		F_object_path:    gi.GoString(unsafe.Pointer(object_path)),
 		F_interface_name: gi.GoString(unsafe.Pointer(interface_name)),
@@ -5728,50 +5727,50 @@ func (v DBusInterfaceInfo) Unref() {
 }
 
 type DBusInterfaceMethodCallFuncStruct struct {
-	F_connection     unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection     DBusConnection
 	F_sender         string
 	F_object_path    string
 	F_interface_name string
 	F_method_name    string
-	F_parameters     unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_invocation     unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_parameters     glib.Variant
+	F_invocation     DBusMethodInvocation
 }
 
 //export myDBusInterfaceMethodCallFunc
-func myDBusInterfaceMethodCallFunc(connection C.gpointer, sender *C.gchar, object_path *C.gchar, interface_name *C.gchar, method_name *C.gchar, parameters C.gpointer, invocation C.gpointer, user_data C.gpointer) {
+func myDBusInterfaceMethodCallFunc(connection *C.GDBusConnection, sender *C.gchar, object_path *C.gchar, interface_name *C.gchar, method_name *C.gchar, parameters *C.GVariant, invocation *C.GDBusMethodInvocation, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DBusInterfaceMethodCallFuncStruct{
-		F_connection:     unsafe.Pointer(connection),
+		F_connection:     WrapDBusConnection(unsafe.Pointer(connection)),
 		F_sender:         gi.GoString(unsafe.Pointer(sender)),
 		F_object_path:    gi.GoString(unsafe.Pointer(object_path)),
 		F_interface_name: gi.GoString(unsafe.Pointer(interface_name)),
 		F_method_name:    gi.GoString(unsafe.Pointer(method_name)),
-		F_parameters:     unsafe.Pointer(parameters),
-		F_invocation:     unsafe.Pointer(invocation),
+		F_parameters:     glib.Variant{P: unsafe.Pointer(parameters)},
+		F_invocation:     WrapDBusMethodInvocation(unsafe.Pointer(invocation)),
 	}
 	fn(args)
 }
 
 type DBusInterfaceSetPropertyFuncStruct struct {
-	F_connection     unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection     DBusConnection
 	F_sender         string
 	F_object_path    string
 	F_interface_name string
 	F_property_name  string
-	F_value          unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_error          unsafe.Pointer /*TODO_CB tag: error, isPtr: true*/
+	F_value          glib.Variant
+	F_error          unsafe.Pointer
 }
 
 //export myDBusInterfaceSetPropertyFunc
-func myDBusInterfaceSetPropertyFunc(connection C.gpointer, sender *C.gchar, object_path *C.gchar, interface_name *C.gchar, property_name *C.gchar, value C.gpointer, error C.gpointer, user_data C.gpointer) {
+func myDBusInterfaceSetPropertyFunc(connection *C.GDBusConnection, sender *C.gchar, object_path *C.gchar, interface_name *C.gchar, property_name *C.gchar, value *C.GVariant, error **C.GError, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DBusInterfaceSetPropertyFuncStruct{
-		F_connection:     unsafe.Pointer(connection),
+		F_connection:     WrapDBusConnection(unsafe.Pointer(connection)),
 		F_sender:         gi.GoString(unsafe.Pointer(sender)),
 		F_object_path:    gi.GoString(unsafe.Pointer(object_path)),
 		F_interface_name: gi.GoString(unsafe.Pointer(interface_name)),
 		F_property_name:  gi.GoString(unsafe.Pointer(property_name)),
-		F_value:          unsafe.Pointer(value),
+		F_value:          glib.Variant{P: unsafe.Pointer(value)},
 		F_error:          unsafe.Pointer(error),
 	}
 	fn(args)
@@ -6945,17 +6944,17 @@ func DBusMessageByteOrderGetType() gi.GType {
 }
 
 type DBusMessageFilterFunctionStruct struct {
-	F_connection unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_message    unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection DBusConnection
+	F_message    DBusMessage
 	F_incoming   bool
 }
 
 //export myDBusMessageFilterFunction
-func myDBusMessageFilterFunction(connection C.gpointer, message C.gpointer, incoming C.gboolean, user_data C.gpointer) {
+func myDBusMessageFilterFunction(connection *C.GDBusConnection, message *C.GDBusMessage, incoming C.gboolean, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DBusMessageFilterFunctionStruct{
-		F_connection: unsafe.Pointer(connection),
-		F_message:    unsafe.Pointer(message),
+		F_connection: WrapDBusConnection(unsafe.Pointer(connection)),
+		F_message:    WrapDBusMessage(unsafe.Pointer(message)),
 		F_incoming:   gi.Int2Bool(int(incoming)),
 	}
 	fn(args)
@@ -8933,16 +8932,16 @@ func DBusProxyPrivateGetType() gi.GType {
 }
 
 type DBusProxyTypeFuncStruct struct {
-	F_manager        unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_manager        DBusObjectManagerClient
 	F_object_path    string
 	F_interface_name string
 }
 
 //export myDBusProxyTypeFunc
-func myDBusProxyTypeFunc(manager C.gpointer, object_path *C.gchar, interface_name *C.gchar, user_data C.gpointer) {
+func myDBusProxyTypeFunc(manager *C.GDBusObjectManagerClient, object_path *C.gchar, interface_name *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DBusProxyTypeFuncStruct{
-		F_manager:        unsafe.Pointer(manager),
+		F_manager:        WrapDBusObjectManagerClient(unsafe.Pointer(manager)),
 		F_object_path:    gi.GoString(unsafe.Pointer(object_path)),
 		F_interface_name: gi.GoString(unsafe.Pointer(interface_name)),
 	}
@@ -9125,24 +9124,24 @@ func DBusServerFlagsGetType() gi.GType {
 }
 
 type DBusSignalCallbackStruct struct {
-	F_connection     unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection     DBusConnection
 	F_sender_name    string
 	F_object_path    string
 	F_interface_name string
 	F_signal_name    string
-	F_parameters     unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_parameters     glib.Variant
 }
 
 //export myDBusSignalCallback
-func myDBusSignalCallback(connection C.gpointer, sender_name *C.gchar, object_path *C.gchar, interface_name *C.gchar, signal_name *C.gchar, parameters C.gpointer, user_data C.gpointer) {
+func myDBusSignalCallback(connection *C.GDBusConnection, sender_name *C.gchar, object_path *C.gchar, interface_name *C.gchar, signal_name *C.gchar, parameters *C.GVariant, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DBusSignalCallbackStruct{
-		F_connection:     unsafe.Pointer(connection),
+		F_connection:     WrapDBusConnection(unsafe.Pointer(connection)),
 		F_sender_name:    gi.GoString(unsafe.Pointer(sender_name)),
 		F_object_path:    gi.GoString(unsafe.Pointer(object_path)),
 		F_interface_name: gi.GoString(unsafe.Pointer(interface_name)),
 		F_signal_name:    gi.GoString(unsafe.Pointer(signal_name)),
-		F_parameters:     unsafe.Pointer(parameters),
+		F_parameters:     glib.Variant{P: unsafe.Pointer(parameters)},
 	}
 	fn(args)
 }
@@ -9206,7 +9205,7 @@ func (v DBusSignalInfo) Unref() {
 }
 
 type DBusSubtreeDispatchFuncStruct struct {
-	F_connection     unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection     DBusConnection
 	F_sender         string
 	F_object_path    string
 	F_interface_name string
@@ -9215,10 +9214,10 @@ type DBusSubtreeDispatchFuncStruct struct {
 }
 
 //export myDBusSubtreeDispatchFunc
-func myDBusSubtreeDispatchFunc(connection C.gpointer, sender *C.gchar, object_path *C.gchar, interface_name *C.gchar, node *C.gchar, out_user_data C.gpointer, user_data C.gpointer) {
+func myDBusSubtreeDispatchFunc(connection *C.GDBusConnection, sender *C.gchar, object_path *C.gchar, interface_name *C.gchar, node *C.gchar, out_user_data C.gpointer, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DBusSubtreeDispatchFuncStruct{
-		F_connection:     unsafe.Pointer(connection),
+		F_connection:     WrapDBusConnection(unsafe.Pointer(connection)),
 		F_sender:         gi.GoString(unsafe.Pointer(sender)),
 		F_object_path:    gi.GoString(unsafe.Pointer(object_path)),
 		F_interface_name: gi.GoString(unsafe.Pointer(interface_name)),
@@ -9242,17 +9241,17 @@ func DBusSubtreeFlagsGetType() gi.GType {
 }
 
 type DBusSubtreeIntrospectFuncStruct struct {
-	F_connection  unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_connection  DBusConnection
 	F_sender      string
 	F_object_path string
 	F_node        string
 }
 
 //export myDBusSubtreeIntrospectFunc
-func myDBusSubtreeIntrospectFunc(connection C.gpointer, sender *C.gchar, object_path *C.gchar, node *C.gchar, user_data C.gpointer) {
+func myDBusSubtreeIntrospectFunc(connection *C.GDBusConnection, sender *C.gchar, object_path *C.gchar, node *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DBusSubtreeIntrospectFuncStruct{
-		F_connection:  unsafe.Pointer(connection),
+		F_connection:  WrapDBusConnection(unsafe.Pointer(connection)),
 		F_sender:      gi.GoString(unsafe.Pointer(sender)),
 		F_object_path: gi.GoString(unsafe.Pointer(object_path)),
 		F_node:        gi.GoString(unsafe.Pointer(node)),
@@ -10294,15 +10293,15 @@ func (v *DatagramBasedIfc) SendMessages(messages unsafe.Pointer, num_messages ui
 
 // ignore GType struct DatagramBasedInterface
 type DatagramBasedSourceFuncStruct struct {
-	F_datagram_based unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_datagram_based DatagramBased
 	F_condition      glib.IOConditionFlags
 }
 
 //export myDatagramBasedSourceFunc
-func myDatagramBasedSourceFunc(datagram_based C.gpointer, condition C.GIOCondition, user_data C.gpointer) {
+func myDatagramBasedSourceFunc(datagram_based *C.GDatagramBased, condition C.GIOCondition, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DatagramBasedSourceFuncStruct{
-		F_datagram_based: unsafe.Pointer(datagram_based),
+		F_datagram_based: DatagramBased{P: unsafe.Pointer(datagram_based)},
 		F_condition:      glib.IOConditionFlags(condition),
 	}
 	fn(args)
@@ -10817,15 +10816,15 @@ func (v *DesktopAppInfoLookupIfc) GetDefaultForUriScheme(uri_scheme string) (res
 
 // ignore GType struct DesktopAppInfoLookupIface
 type DesktopAppLaunchCallbackStruct struct {
-	F_appinfo unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_appinfo DesktopAppInfo
 	F_pid     int32
 }
 
 //export myDesktopAppLaunchCallback
-func myDesktopAppLaunchCallback(appinfo C.gpointer, pid C.gint32, user_data C.gpointer) {
+func myDesktopAppLaunchCallback(appinfo *C.GDesktopAppInfo, pid C.gint32, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := DesktopAppLaunchCallbackStruct{
-		F_appinfo: unsafe.Pointer(appinfo),
+		F_appinfo: WrapDesktopAppInfo(unsafe.Pointer(appinfo)),
 		F_pid:     int32(pid),
 	}
 	fn(args)
@@ -18489,16 +18488,16 @@ func (v IOSchedulerJob) SendToMainloopAsync(func1 int /*TODO_TYPE isPtr: false, 
 }
 
 type IOSchedulerJobFuncStruct struct {
-	F_job         unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_cancellable unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_job         IOSchedulerJob
+	F_cancellable Cancellable
 }
 
 //export myIOSchedulerJobFunc
-func myIOSchedulerJobFunc(job C.gpointer, cancellable C.gpointer, user_data C.gpointer) {
+func myIOSchedulerJobFunc(job *C.GIOSchedulerJob, cancellable *C.GCancellable, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := IOSchedulerJobFuncStruct{
-		F_job:         unsafe.Pointer(job),
-		F_cancellable: unsafe.Pointer(cancellable),
+		F_job:         IOSchedulerJob{P: unsafe.Pointer(job)},
+		F_cancellable: WrapCancellable(unsafe.Pointer(cancellable)),
 	}
 	fn(args)
 }
@@ -24370,14 +24369,14 @@ func (v *PollableOutputStreamIfc) WriteNonblocking(buffer gi.Uint8Array, count u
 
 // ignore GType struct PollableOutputStreamInterface
 type PollableSourceFuncStruct struct {
-	F_pollable_stream unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_pollable_stream gobject.Object
 }
 
 //export myPollableSourceFunc
-func myPollableSourceFunc(pollable_stream C.gpointer, user_data C.gpointer) {
+func myPollableSourceFunc(pollable_stream *C.GObject, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := PollableSourceFuncStruct{
-		F_pollable_stream: unsafe.Pointer(pollable_stream),
+		F_pollable_stream: gobject.WrapObject(unsafe.Pointer(pollable_stream)),
 	}
 	fn(args)
 }
@@ -26797,45 +26796,45 @@ func SettingsBindFlagsGetType() gi.GType {
 }
 
 type SettingsBindGetMappingStruct struct {
-	F_value   unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_variant unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_value   gobject.Value
+	F_variant glib.Variant
 }
 
 //export mySettingsBindGetMapping
-func mySettingsBindGetMapping(value C.gpointer, variant C.gpointer, user_data C.gpointer) {
+func mySettingsBindGetMapping(value *C.GValue, variant *C.GVariant, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := SettingsBindGetMappingStruct{
-		F_value:   unsafe.Pointer(value),
-		F_variant: unsafe.Pointer(variant),
+		F_value:   gobject.Value{P: unsafe.Pointer(value)},
+		F_variant: glib.Variant{P: unsafe.Pointer(variant)},
 	}
 	fn(args)
 }
 
 type SettingsBindSetMappingStruct struct {
-	F_value         unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_expected_type unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_value         gobject.Value
+	F_expected_type glib.VariantType
 }
 
 //export mySettingsBindSetMapping
-func mySettingsBindSetMapping(value C.gpointer, expected_type C.gpointer, user_data C.gpointer) {
+func mySettingsBindSetMapping(value *C.GValue, expected_type *C.GVariantType, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := SettingsBindSetMappingStruct{
-		F_value:         unsafe.Pointer(value),
-		F_expected_type: unsafe.Pointer(expected_type),
+		F_value:         gobject.Value{P: unsafe.Pointer(value)},
+		F_expected_type: glib.VariantType{P: unsafe.Pointer(expected_type)},
 	}
 	fn(args)
 }
 
 // ignore GType struct SettingsClass
 type SettingsGetMappingStruct struct {
-	F_value unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_value glib.Variant
 }
 
 //export mySettingsGetMapping
-func mySettingsGetMapping(value C.gpointer, user_data C.gpointer) {
+func mySettingsGetMapping(value *C.GVariant, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := SettingsGetMappingStruct{
-		F_value: unsafe.Pointer(value),
+		F_value: glib.Variant{P: unsafe.Pointer(value)},
 	}
 	fn(args)
 }
@@ -30883,15 +30882,15 @@ func SocketServicePrivateGetType() gi.GType {
 }
 
 type SocketSourceFuncStruct struct {
-	F_socket    unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_socket    Socket
 	F_condition glib.IOConditionFlags
 }
 
 //export mySocketSourceFunc
-func mySocketSourceFunc(socket C.gpointer, condition C.GIOCondition, user_data C.gpointer) {
+func mySocketSourceFunc(socket *C.GSocket, condition C.GIOCondition, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := SocketSourceFuncStruct{
-		F_socket:    unsafe.Pointer(socket),
+		F_socket:    WrapSocket(unsafe.Pointer(socket)),
 		F_condition: glib.IOConditionFlags(condition),
 	}
 	fn(args)
@@ -36199,15 +36198,15 @@ func (v Vfs) UnregisterUriScheme(scheme string) (result bool) {
 
 // ignore GType struct VfsClass
 type VfsFileLookupFuncStruct struct {
-	F_vfs        unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_vfs        Vfs
 	F_identifier string
 }
 
 //export myVfsFileLookupFunc
-func myVfsFileLookupFunc(vfs C.gpointer, identifier *C.gchar, user_data C.gpointer) {
+func myVfsFileLookupFunc(vfs *C.GVfs, identifier *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := VfsFileLookupFuncStruct{
-		F_vfs:        unsafe.Pointer(vfs),
+		F_vfs:        WrapVfs(unsafe.Pointer(vfs)),
 		F_identifier: gi.GoString(unsafe.Pointer(identifier)),
 	}
 	fn(args)

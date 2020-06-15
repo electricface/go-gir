@@ -50,7 +50,6 @@ func (v List) ForEach(fn func(item unsafe.Pointer)) {
 	}
 }
 
-
 func (v List) ForEachC(fn func(args interface{})) {
 	fnId := gi.RegisterFunc(fn)
 	C.g_list_foreach(v.native(), C.GFunc(C.getPointer_myGFunc()), C.gpointer(fnId))

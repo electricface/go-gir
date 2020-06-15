@@ -39,7 +39,7 @@ extern void myLogWriterFunc(GLogLevelFlags log_level, gpointer fields, guint64 n
 static void* getPointer_myLogWriterFunc() {
 return (void*)(myLogWriterFunc);
 }
-extern void myRegexEvalCallback(gpointer match_info, gpointer result, gpointer user_data);
+extern void myRegexEvalCallback(GMatchInfo* match_info, GString* result, gpointer user_data);
 static void* getPointer_myRegexEvalCallback() {
 return (void*)(myRegexEvalCallback);
 }
@@ -6709,7 +6709,7 @@ func LogLevelFlagsGetType() gi.GType {
 
 type LogWriterFuncStruct struct {
 	F_log_level LogLevelFlags
-	F_fields    unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/
+	F_fields    unsafe.Pointer
 	F_n_fields  uint64
 }
 
@@ -10255,16 +10255,16 @@ func RegexErrorGetType() gi.GType {
 }
 
 type RegexEvalCallbackStruct struct {
-	F_match_info unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_result     unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_match_info MatchInfo
+	F_result     String
 }
 
 //export myRegexEvalCallback
-func myRegexEvalCallback(match_info C.gpointer, result C.gpointer, user_data C.gpointer) {
+func myRegexEvalCallback(match_info *C.GMatchInfo, result *C.GString, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := RegexEvalCallbackStruct{
-		F_match_info: unsafe.Pointer(match_info),
-		F_result:     unsafe.Pointer(result),
+		F_match_info: MatchInfo{P: unsafe.Pointer(match_info)},
+		F_result:     String{P: unsafe.Pointer(result)},
 	}
 	fn(args)
 }

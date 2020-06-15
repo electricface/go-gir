@@ -7,7 +7,7 @@ extern void myFunction(gpointer user_data);
 static void* getPointer_myFunction() {
 return (void*)(myFunction);
 }
-extern void myKeySnoopFunc(gpointer event, gpointer user_data);
+extern void myKeySnoopFunc(AtkKeyEventStruct* event, gpointer user_data);
 static void* getPointer_myKeySnoopFunc() {
 return (void*)(myKeySnoopFunc);
 }
@@ -1326,14 +1326,14 @@ func KeyEventTypeGetType() gi.GType {
 }
 
 type KeySnoopFuncStruct struct {
-	F_event unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_event KeyEventStruct
 }
 
 //export myKeySnoopFunc
-func myKeySnoopFunc(event C.gpointer, user_data C.gpointer) {
+func myKeySnoopFunc(event *C.AtkKeyEventStruct, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := KeySnoopFuncStruct{
-		F_event: unsafe.Pointer(event),
+		F_event: KeyEventStruct{P: unsafe.Pointer(event)},
 	}
 	fn(args)
 }

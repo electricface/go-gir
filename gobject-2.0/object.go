@@ -1,6 +1,6 @@
 package gobject
 
-//import "unsafe"
+import "unsafe"
 
 // Connect is a wrapper around g_signal_connect_closure().  f must be
 // a function with a signaure matching the callback signature for
@@ -44,3 +44,7 @@ func (v Object) ConnectAfter(detailedSignal string, f interface{}) SignalHandle 
 //func RefSink(p unsafe.Pointer) {
 //	WrapObject(p).RefSink()
 //}
+
+func WrapObject(p unsafe.Pointer) Object {
+    return Object{P: p}
+}

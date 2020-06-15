@@ -3,7 +3,7 @@ package gobject
 /*
 #cgo pkg-config: gobject-2.0
 #include <glib-object.h>
-extern void myBindingTransformFunc(gpointer binding, gpointer from_value, gpointer to_value, gpointer user_data);
+extern void myBindingTransformFunc(GBinding* binding, GValue* from_value, GValue* to_value, gpointer user_data);
 static void* getPointer_myBindingTransformFunc() {
 return (void*)(myBindingTransformFunc);
 }
@@ -158,18 +158,18 @@ func BindingFlagsGetType() gi.GType {
 }
 
 type BindingTransformFuncStruct struct {
-	F_binding    unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_from_value unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_to_value   unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_binding    Binding
+	F_from_value Value
+	F_to_value   Value
 }
 
 //export myBindingTransformFunc
-func myBindingTransformFunc(binding C.gpointer, from_value C.gpointer, to_value C.gpointer, user_data C.gpointer) {
+func myBindingTransformFunc(binding *C.GBinding, from_value *C.GValue, to_value *C.GValue, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := BindingTransformFuncStruct{
-		F_binding:    unsafe.Pointer(binding),
-		F_from_value: unsafe.Pointer(from_value),
-		F_to_value:   unsafe.Pointer(to_value),
+		F_binding:    WrapBinding(unsafe.Pointer(binding)),
+		F_from_value: Value{P: unsafe.Pointer(from_value)},
+		F_to_value:   Value{P: unsafe.Pointer(to_value)},
 	}
 	fn(args)
 }

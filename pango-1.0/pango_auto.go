@@ -7,11 +7,11 @@ extern void myAttrDataCopyFunc(gpointer user_data);
 static void* getPointer_myAttrDataCopyFunc() {
 return (void*)(myAttrDataCopyFunc);
 }
-extern void myAttrFilterFunc(gpointer attribute, gpointer user_data);
+extern void myAttrFilterFunc(PangoAttribute* attribute, gpointer user_data);
 static void* getPointer_myAttrFilterFunc() {
 return (void*)(myAttrFilterFunc);
 }
-extern void myFontsetForeachFunc(gpointer fontset, gpointer font, gpointer user_data);
+extern void myFontsetForeachFunc(PangoFontset* fontset, PangoFont* font, gpointer user_data);
 static void* getPointer_myFontsetForeachFunc() {
 return (void*)(myFontsetForeachFunc);
 }
@@ -96,14 +96,14 @@ func myAttrDataCopyFunc(user_data C.gpointer) {
 }
 
 type AttrFilterFuncStruct struct {
-	F_attribute unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_attribute Attribute
 }
 
 //export myAttrFilterFunc
-func myAttrFilterFunc(attribute C.gpointer, user_data C.gpointer) {
+func myAttrFilterFunc(attribute *C.PangoAttribute, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := AttrFilterFuncStruct{
-		F_attribute: unsafe.Pointer(attribute),
+		F_attribute: Attribute{P: unsafe.Pointer(attribute)},
 	}
 	fn(args)
 }
@@ -2556,16 +2556,16 @@ func (v Fontset) GetMetrics() (result FontMetrics) {
 
 // ignore GType struct FontsetClass
 type FontsetForeachFuncStruct struct {
-	F_fontset unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_font    unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_fontset Fontset
+	F_font    Font
 }
 
 //export myFontsetForeachFunc
-func myFontsetForeachFunc(fontset C.gpointer, font C.gpointer, user_data C.gpointer) {
+func myFontsetForeachFunc(fontset *C.PangoFontset, font *C.PangoFont, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := FontsetForeachFuncStruct{
-		F_fontset: unsafe.Pointer(fontset),
-		F_font:    unsafe.Pointer(font),
+		F_fontset: WrapFontset(unsafe.Pointer(fontset)),
+		F_font:    WrapFont(unsafe.Pointer(font)),
 	}
 	fn(args)
 }

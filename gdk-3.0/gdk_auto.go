@@ -3,11 +3,11 @@ package gdk
 /*
 #cgo pkg-config: gdk-3.0
 #include <gdk/gdk.h>
-extern void mySeatGrabPrepareFunc(gpointer seat, gpointer window, gpointer user_data);
+extern void mySeatGrabPrepareFunc(GdkSeat* seat, GdkWindow* window, gpointer user_data);
 static void* getPointer_mySeatGrabPrepareFunc() {
 return (void*)(mySeatGrabPrepareFunc);
 }
-extern void myWindowChildFunc(gpointer window, gpointer user_data);
+extern void myWindowChildFunc(GdkWindow* window, gpointer user_data);
 static void* getPointer_myWindowChildFunc() {
 return (void*)(myWindowChildFunc);
 }
@@ -6222,16 +6222,16 @@ func SeatCapabilitiesGetType() gi.GType {
 }
 
 type SeatGrabPrepareFuncStruct struct {
-	F_seat   unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_window unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_seat   Seat
+	F_window Window
 }
 
 //export mySeatGrabPrepareFunc
-func mySeatGrabPrepareFunc(seat C.gpointer, window C.gpointer, user_data C.gpointer) {
+func mySeatGrabPrepareFunc(seat *C.GdkSeat, window *C.GdkWindow, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := SeatGrabPrepareFuncStruct{
-		F_seat:   unsafe.Pointer(seat),
-		F_window: unsafe.Pointer(window),
+		F_seat:   WrapSeat(unsafe.Pointer(seat)),
+		F_window: WrapWindow(unsafe.Pointer(window)),
 	}
 	fn(args)
 }
@@ -9344,14 +9344,14 @@ func WindowAttributesTypeGetType() gi.GType {
 }
 
 type WindowChildFuncStruct struct {
-	F_window unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	F_window Window
 }
 
 //export myWindowChildFunc
-func myWindowChildFunc(window C.gpointer, user_data C.gpointer) {
+func myWindowChildFunc(window *C.GdkWindow, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := WindowChildFuncStruct{
-		F_window: unsafe.Pointer(window),
+		F_window: WrapWindow(unsafe.Pointer(window)),
 	}
 	fn(args)
 }
