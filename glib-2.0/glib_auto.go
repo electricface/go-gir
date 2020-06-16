@@ -3,69 +3,189 @@ package glib
 /*
 #cgo pkg-config: glib-2.0
 #include <glib.h>
-extern void myChildWatchFunc(gint32 pid, gint32 status, gpointer user_data);
-static void* getPointer_myChildWatchFunc() {
-return (void*)(myChildWatchFunc);
+extern void myGLibChildWatchFunc(gint32 pid, gint32 status, gpointer user_data);
+static void* getPointer_myGLibChildWatchFunc() {
+return (void*)(myGLibChildWatchFunc);
 }
-extern void myCompareDataFunc(gpointer a, gpointer b, gpointer user_data);
-static void* getPointer_myCompareDataFunc() {
-return (void*)(myCompareDataFunc);
+extern void myGLibClearHandleFunc(guint32 handle_id);
+static void* getPointer_myGLibClearHandleFunc() {
+return (void*)(myGLibClearHandleFunc);
 }
-extern void myDataForeachFunc(guint32 key_id, gpointer data, gpointer user_data);
-static void* getPointer_myDataForeachFunc() {
-return (void*)(myDataForeachFunc);
+extern void myGLibCompareDataFunc(gpointer a, gpointer b, gpointer user_data);
+static void* getPointer_myGLibCompareDataFunc() {
+return (void*)(myGLibCompareDataFunc);
 }
-extern void myDuplicateFunc(gpointer data, gpointer user_data);
-static void* getPointer_myDuplicateFunc() {
-return (void*)(myDuplicateFunc);
+extern void myGLibCompareFunc(gpointer a, gpointer b);
+static void* getPointer_myGLibCompareFunc() {
+return (void*)(myGLibCompareFunc);
 }
-extern void myFunc(gpointer data, gpointer user_data);
-static void* getPointer_myFunc() {
-return (void*)(myFunc);
+extern void myGLibCopyFunc(gpointer src, gpointer data);
+static void* getPointer_myGLibCopyFunc() {
+return (void*)(myGLibCopyFunc);
 }
-extern void myHFunc(gpointer key, gpointer value, gpointer user_data);
-static void* getPointer_myHFunc() {
-return (void*)(myHFunc);
+extern void myGLibDataForeachFunc(guint32 key_id, gpointer data, gpointer user_data);
+static void* getPointer_myGLibDataForeachFunc() {
+return (void*)(myGLibDataForeachFunc);
 }
-extern void myHRFunc(gpointer key, gpointer value, gpointer user_data);
-static void* getPointer_myHRFunc() {
-return (void*)(myHRFunc);
+extern void myGLibDestroyNotify(gpointer data);
+static void* getPointer_myGLibDestroyNotify() {
+return (void*)(myGLibDestroyNotify);
 }
-extern void myLogFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
-static void* getPointer_myLogFunc() {
-return (void*)(myLogFunc);
+extern void myGLibDuplicateFunc(gpointer data, gpointer user_data);
+static void* getPointer_myGLibDuplicateFunc() {
+return (void*)(myGLibDuplicateFunc);
 }
-extern void myLogWriterFunc(GLogLevelFlags log_level, gpointer fields, guint64 n_fields, gpointer user_data);
-static void* getPointer_myLogWriterFunc() {
-return (void*)(myLogWriterFunc);
+extern void myGLibEqualFunc(gpointer a, gpointer b);
+static void* getPointer_myGLibEqualFunc() {
+return (void*)(myGLibEqualFunc);
 }
-extern void myRegexEvalCallback(GMatchInfo* match_info, GString* result, gpointer user_data);
-static void* getPointer_myRegexEvalCallback() {
-return (void*)(myRegexEvalCallback);
+extern void myGLibFreeFunc(gpointer data);
+static void* getPointer_myGLibFreeFunc() {
+return (void*)(myGLibFreeFunc);
 }
-extern void mySourceFunc(gpointer user_data);
-static void* getPointer_mySourceFunc() {
-return (void*)(mySourceFunc);
+extern void myGLibFunc(gpointer data, gpointer user_data);
+static void* getPointer_myGLibFunc() {
+return (void*)(myGLibFunc);
 }
-extern void mySpawnChildSetupFunc(gpointer user_data);
-static void* getPointer_mySpawnChildSetupFunc() {
-return (void*)(mySpawnChildSetupFunc);
+extern void myGLibHFunc(gpointer key, gpointer value, gpointer user_data);
+static void* getPointer_myGLibHFunc() {
+return (void*)(myGLibHFunc);
 }
-extern void myTestDataFunc(gpointer user_data);
-static void* getPointer_myTestDataFunc() {
-return (void*)(myTestDataFunc);
+extern void myGLibHRFunc(gpointer key, gpointer value, gpointer user_data);
+static void* getPointer_myGLibHRFunc() {
+return (void*)(myGLibHRFunc);
 }
-extern void myTestFixtureFunc(gpointer fixture, gpointer user_data);
-static void* getPointer_myTestFixtureFunc() {
-return (void*)(myTestFixtureFunc);
+extern void myGLibHashFunc(gpointer key);
+static void* getPointer_myGLibHashFunc() {
+return (void*)(myGLibHashFunc);
 }
-extern void myTestLogFatalFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
-static void* getPointer_myTestLogFatalFunc() {
-return (void*)(myTestLogFatalFunc);
+extern void myGLibHookCheckFunc(gpointer data);
+static void* getPointer_myGLibHookCheckFunc() {
+return (void*)(myGLibHookCheckFunc);
 }
-extern void myUnixFDSourceFunc(gint32 fd, GIOCondition condition, gpointer user_data);
-static void* getPointer_myUnixFDSourceFunc() {
-return (void*)(myUnixFDSourceFunc);
+extern void myGLibHookCheckMarshaller(GHook* hook, gpointer marshal_data);
+static void* getPointer_myGLibHookCheckMarshaller() {
+return (void*)(myGLibHookCheckMarshaller);
+}
+extern void myGLibHookCompareFunc(GHook* new_hook, GHook* sibling);
+static void* getPointer_myGLibHookCompareFunc() {
+return (void*)(myGLibHookCompareFunc);
+}
+extern void myGLibHookFinalizeFunc(GHookList* hook_list, GHook* hook);
+static void* getPointer_myGLibHookFinalizeFunc() {
+return (void*)(myGLibHookFinalizeFunc);
+}
+extern void myGLibHookFindFunc(GHook* hook, gpointer data);
+static void* getPointer_myGLibHookFindFunc() {
+return (void*)(myGLibHookFindFunc);
+}
+extern void myGLibHookFunc(gpointer data);
+static void* getPointer_myGLibHookFunc() {
+return (void*)(myGLibHookFunc);
+}
+extern void myGLibHookMarshaller(GHook* hook, gpointer marshal_data);
+static void* getPointer_myGLibHookMarshaller() {
+return (void*)(myGLibHookMarshaller);
+}
+extern void myGLibIOFunc(GIOChannel* source, GIOCondition condition, gpointer data);
+static void* getPointer_myGLibIOFunc() {
+return (void*)(myGLibIOFunc);
+}
+extern void myGLibLogFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
+static void* getPointer_myGLibLogFunc() {
+return (void*)(myGLibLogFunc);
+}
+extern void myGLibLogWriterFunc(GLogLevelFlags log_level, gpointer fields, guint64 n_fields, gpointer user_data);
+static void* getPointer_myGLibLogWriterFunc() {
+return (void*)(myGLibLogWriterFunc);
+}
+extern void myGLibNodeForeachFunc(GNode* node, gpointer data);
+static void* getPointer_myGLibNodeForeachFunc() {
+return (void*)(myGLibNodeForeachFunc);
+}
+extern void myGLibNodeTraverseFunc(GNode* node, gpointer data);
+static void* getPointer_myGLibNodeTraverseFunc() {
+return (void*)(myGLibNodeTraverseFunc);
+}
+extern void myGLibOptionArgFunc(gchar* option_name, gchar* value, gpointer data);
+static void* getPointer_myGLibOptionArgFunc() {
+return (void*)(myGLibOptionArgFunc);
+}
+extern void myGLibOptionErrorFunc(GOptionContext* context, GOptionGroup* group, gpointer data);
+static void* getPointer_myGLibOptionErrorFunc() {
+return (void*)(myGLibOptionErrorFunc);
+}
+extern void myGLibOptionParseFunc(GOptionContext* context, GOptionGroup* group, gpointer data);
+static void* getPointer_myGLibOptionParseFunc() {
+return (void*)(myGLibOptionParseFunc);
+}
+extern void myGLibPollFunc(GPollFD* ufds, guint32 nfsd, gint32 timeout_);
+static void* getPointer_myGLibPollFunc() {
+return (void*)(myGLibPollFunc);
+}
+extern void myGLibPrintFunc(gchar* string);
+static void* getPointer_myGLibPrintFunc() {
+return (void*)(myGLibPrintFunc);
+}
+extern void myGLibRegexEvalCallback(GMatchInfo* match_info, GString* result, gpointer user_data);
+static void* getPointer_myGLibRegexEvalCallback() {
+return (void*)(myGLibRegexEvalCallback);
+}
+extern void myGLibScannerMsgFunc(GScanner* scanner, gchar* message, gboolean error);
+static void* getPointer_myGLibScannerMsgFunc() {
+return (void*)(myGLibScannerMsgFunc);
+}
+extern void myGLibSequenceIterCompareFunc(GSequenceIter* a, GSequenceIter* b, gpointer data);
+static void* getPointer_myGLibSequenceIterCompareFunc() {
+return (void*)(myGLibSequenceIterCompareFunc);
+}
+extern void myGLibSourceDummyMarshal();
+static void* getPointer_myGLibSourceDummyMarshal() {
+return (void*)(myGLibSourceDummyMarshal);
+}
+extern void myGLibSourceFunc(gpointer user_data);
+static void* getPointer_myGLibSourceFunc() {
+return (void*)(myGLibSourceFunc);
+}
+extern void myGLibSpawnChildSetupFunc(gpointer user_data);
+static void* getPointer_myGLibSpawnChildSetupFunc() {
+return (void*)(myGLibSpawnChildSetupFunc);
+}
+extern void myGLibTestDataFunc(gpointer user_data);
+static void* getPointer_myGLibTestDataFunc() {
+return (void*)(myGLibTestDataFunc);
+}
+extern void myGLibTestFixtureFunc(gpointer fixture, gpointer user_data);
+static void* getPointer_myGLibTestFixtureFunc() {
+return (void*)(myGLibTestFixtureFunc);
+}
+extern void myGLibTestFunc();
+static void* getPointer_myGLibTestFunc() {
+return (void*)(myGLibTestFunc);
+}
+extern void myGLibTestLogFatalFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
+static void* getPointer_myGLibTestLogFatalFunc() {
+return (void*)(myGLibTestLogFatalFunc);
+}
+extern void myGLibThreadFunc(gpointer data);
+static void* getPointer_myGLibThreadFunc() {
+return (void*)(myGLibThreadFunc);
+}
+extern void myGLibTranslateFunc(gchar* str, gpointer data);
+static void* getPointer_myGLibTranslateFunc() {
+return (void*)(myGLibTranslateFunc);
+}
+extern void myGLibTraverseFunc(gpointer key, gpointer value, gpointer data);
+static void* getPointer_myGLibTraverseFunc() {
+return (void*)(myGLibTraverseFunc);
+}
+extern void myGLibUnixFDSourceFunc(gint32 fd, GIOCondition condition, gpointer user_data);
+static void* getPointer_myGLibUnixFDSourceFunc() {
+return (void*)(myGLibUnixFDSourceFunc);
+}
+extern void myGLibVoidFunc();
+static void* getPointer_myGLibVoidFunc() {
+return (void*)(myGLibVoidFunc);
 }
 */
 import "C"
@@ -1806,33 +1926,66 @@ type ChildWatchFuncStruct struct {
 	F_status int32
 }
 
-//export myChildWatchFunc
-func myChildWatchFunc(pid C.gint32, status C.gint32, user_data C.gpointer) {
+func GetPointer_myChildWatchFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibChildWatchFunc())
+}
+
+//export myGLibChildWatchFunc
+func myGLibChildWatchFunc(pid C.gint32, status C.gint32, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := ChildWatchFuncStruct{
+	args := &ChildWatchFuncStruct{
 		F_pid:    int32(pid),
 		F_status: int32(status),
 	}
 	fn(args)
 }
 
-// ignore callback ClearHandleFunc
+type ClearHandleFuncStruct struct {
+	F_handle_id uint32
+}
+
+func GetPointer_myClearHandleFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibClearHandleFunc())
+}
+
+//export myGLibClearHandleFunc
+func myGLibClearHandleFunc(handle_id C.guint32) {
+	// TODO: not found user_data
+}
+
 type CompareDataFuncStruct struct {
 	F_a unsafe.Pointer
 	F_b unsafe.Pointer
 }
 
-//export myCompareDataFunc
-func myCompareDataFunc(a C.gpointer, b C.gpointer, user_data C.gpointer) {
+func GetPointer_myCompareDataFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibCompareDataFunc())
+}
+
+//export myGLibCompareDataFunc
+func myGLibCompareDataFunc(a C.gpointer, b C.gpointer, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := CompareDataFuncStruct{
+	args := &CompareDataFuncStruct{
 		F_a: unsafe.Pointer(a),
 		F_b: unsafe.Pointer(b),
 	}
 	fn(args)
 }
 
-// ignore callback CompareFunc
+type CompareFuncStruct struct {
+	F_a unsafe.Pointer
+	F_b unsafe.Pointer
+}
+
+func GetPointer_myCompareFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibCompareFunc())
+}
+
+//export myGLibCompareFunc
+func myGLibCompareFunc(a C.gpointer, b C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct Cond
 type Cond struct {
 	P unsafe.Pointer
@@ -1954,7 +2107,20 @@ func ConvertErrorGetType() gi.GType {
 	return ret
 }
 
-// ignore callback CopyFunc
+type CopyFuncStruct struct {
+	F_src  unsafe.Pointer
+	F_data unsafe.Pointer
+}
+
+func GetPointer_myCopyFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibCopyFunc())
+}
+
+//export myGLibCopyFunc
+func myGLibCopyFunc(src C.gpointer, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct Data
 type Data struct {
 	P unsafe.Pointer
@@ -1970,10 +2136,14 @@ type DataForeachFuncStruct struct {
 	F_data   unsafe.Pointer
 }
 
-//export myDataForeachFunc
-func myDataForeachFunc(key_id C.guint32, data C.gpointer, user_data C.gpointer) {
+func GetPointer_myDataForeachFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibDataForeachFunc())
+}
+
+//export myGLibDataForeachFunc
+func myGLibDataForeachFunc(key_id C.guint32, data C.gpointer, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := DataForeachFuncStruct{
+	args := &DataForeachFuncStruct{
 		F_key_id: uint32(key_id),
 		F_data:   unsafe.Pointer(data),
 	}
@@ -3766,7 +3936,19 @@ func DebugKeyGetType() gi.GType {
 	return ret
 }
 
-// ignore callback DestroyNotify
+type DestroyNotifyStruct struct {
+	F_data unsafe.Pointer
+}
+
+func GetPointer_myDestroyNotify() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibDestroyNotify())
+}
+
+//export myGLibDestroyNotify
+func myGLibDestroyNotify(data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct Dir
 type Dir struct {
 	P unsafe.Pointer
@@ -3860,16 +4042,33 @@ type DuplicateFuncStruct struct {
 	F_data unsafe.Pointer
 }
 
-//export myDuplicateFunc
-func myDuplicateFunc(data C.gpointer, user_data C.gpointer) {
+func GetPointer_myDuplicateFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibDuplicateFunc())
+}
+
+//export myGLibDuplicateFunc
+func myGLibDuplicateFunc(data C.gpointer, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := DuplicateFuncStruct{
+	args := &DuplicateFuncStruct{
 		F_data: unsafe.Pointer(data),
 	}
 	fn(args)
 }
 
-// ignore callback EqualFunc
+type EqualFuncStruct struct {
+	F_a unsafe.Pointer
+	F_b unsafe.Pointer
+}
+
+func GetPointer_myEqualFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibEqualFunc())
+}
+
+//export myGLibEqualFunc
+func myGLibEqualFunc(a C.gpointer, b C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct Error
 type Error struct {
 	P unsafe.Pointer
@@ -4051,15 +4250,31 @@ func FormatSizeFlagsGetType() gi.GType {
 	return ret
 }
 
-// ignore callback FreeFunc
+type FreeFuncStruct struct {
+	F_data unsafe.Pointer
+}
+
+func GetPointer_myFreeFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibFreeFunc())
+}
+
+//export myGLibFreeFunc
+func myGLibFreeFunc(data C.gpointer) {
+	// TODO: not found user_data
+}
+
 type FuncStruct struct {
 	F_data unsafe.Pointer
 }
 
-//export myFunc
-func myFunc(data C.gpointer, user_data C.gpointer) {
+func GetPointer_myFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibFunc())
+}
+
+//export myGLibFunc
+func myGLibFunc(data C.gpointer, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := FuncStruct{
+	args := &FuncStruct{
 		F_data: unsafe.Pointer(data),
 	}
 	fn(args)
@@ -4070,10 +4285,14 @@ type HFuncStruct struct {
 	F_value unsafe.Pointer
 }
 
-//export myHFunc
-func myHFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
+func GetPointer_myHFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibHFunc())
+}
+
+//export myGLibHFunc
+func myGLibHFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := HFuncStruct{
+	args := &HFuncStruct{
 		F_key:   unsafe.Pointer(key),
 		F_value: unsafe.Pointer(value),
 	}
@@ -4085,17 +4304,33 @@ type HRFuncStruct struct {
 	F_value unsafe.Pointer
 }
 
-//export myHRFunc
-func myHRFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
+func GetPointer_myHRFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibHRFunc())
+}
+
+//export myGLibHRFunc
+func myGLibHRFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := HRFuncStruct{
+	args := &HRFuncStruct{
 		F_key:   unsafe.Pointer(key),
 		F_value: unsafe.Pointer(value),
 	}
 	fn(args)
 }
 
-// ignore callback HashFunc
+type HashFuncStruct struct {
+	F_key unsafe.Pointer
+}
+
+func GetPointer_myHashFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibHashFunc())
+}
+
+//export myGLibHashFunc
+func myGLibHashFunc(key C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct HashTable
 type HashTable struct {
 	P unsafe.Pointer
@@ -4664,11 +4899,75 @@ func HookUnref1(hook_list HookList, hook Hook) {
 	iv.Call(args, nil, nil)
 }
 
-// ignore callback HookCheckFunc
-// ignore callback HookCheckMarshaller
-// ignore callback HookCompareFunc
-// ignore callback HookFinalizeFunc
-// ignore callback HookFindFunc
+type HookCheckFuncStruct struct {
+	F_data unsafe.Pointer
+}
+
+func GetPointer_myHookCheckFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibHookCheckFunc())
+}
+
+//export myGLibHookCheckFunc
+func myGLibHookCheckFunc(data C.gpointer) {
+	// TODO: not found user_data
+}
+
+type HookCheckMarshallerStruct struct {
+	F_hook         Hook
+	F_marshal_data unsafe.Pointer
+}
+
+func GetPointer_myHookCheckMarshaller() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibHookCheckMarshaller())
+}
+
+//export myGLibHookCheckMarshaller
+func myGLibHookCheckMarshaller(hook *C.GHook, marshal_data C.gpointer) {
+	// TODO: not found user_data
+}
+
+type HookCompareFuncStruct struct {
+	F_new_hook Hook
+	F_sibling  Hook
+}
+
+func GetPointer_myHookCompareFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibHookCompareFunc())
+}
+
+//export myGLibHookCompareFunc
+func myGLibHookCompareFunc(new_hook *C.GHook, sibling *C.GHook) {
+	// TODO: not found user_data
+}
+
+type HookFinalizeFuncStruct struct {
+	F_hook_list HookList
+	F_hook      Hook
+}
+
+func GetPointer_myHookFinalizeFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibHookFinalizeFunc())
+}
+
+//export myGLibHookFinalizeFunc
+func myGLibHookFinalizeFunc(hook_list *C.GHookList, hook *C.GHook) {
+	// TODO: not found user_data
+}
+
+type HookFindFuncStruct struct {
+	F_hook Hook
+	F_data unsafe.Pointer
+}
+
+func GetPointer_myHookFindFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibHookFindFunc())
+}
+
+//export myGLibHookFindFunc
+func myGLibHookFindFunc(hook *C.GHook, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Flags HookFlagMask
 type HookFlagMaskFlags int
 
@@ -4683,7 +4982,19 @@ func HookFlagMaskGetType() gi.GType {
 	return ret
 }
 
-// ignore callback HookFunc
+type HookFuncStruct struct {
+	F_data unsafe.Pointer
+}
+
+func GetPointer_myHookFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibHookFunc())
+}
+
+//export myGLibHookFunc
+func myGLibHookFunc(data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct HookList
 type HookList struct {
 	P unsafe.Pointer
@@ -4755,7 +5066,20 @@ func (v HookList) InvokeCheck(may_recurse bool) {
 	iv.Call(args, nil, nil)
 }
 
-// ignore callback HookMarshaller
+type HookMarshallerStruct struct {
+	F_hook         Hook
+	F_marshal_data unsafe.Pointer
+}
+
+func GetPointer_myHookMarshaller() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibHookMarshaller())
+}
+
+//export myGLibHookMarshaller
+func myGLibHookMarshaller(hook *C.GHook, marshal_data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct IOChannel
 type IOChannel struct {
 	P unsafe.Pointer
@@ -5484,7 +5808,21 @@ func IOFlagsGetType() gi.GType {
 	return ret
 }
 
-// ignore callback IOFunc
+type IOFuncStruct struct {
+	F_source    IOChannel
+	F_condition IOConditionFlags
+	F_data      unsafe.Pointer
+}
+
+func GetPointer_myIOFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibIOFunc())
+}
+
+//export myGLibIOFunc
+func myGLibIOFunc(source *C.GIOChannel, condition C.GIOCondition, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct IOFuncs
 type IOFuncs struct {
 	P unsafe.Pointer
@@ -6676,10 +7014,14 @@ type LogFuncStruct struct {
 	F_message    string
 }
 
-//export myLogFunc
-func myLogFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
+func GetPointer_myLogFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibLogFunc())
+}
+
+//export myGLibLogFunc
+func myGLibLogFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := LogFuncStruct{
+	args := &LogFuncStruct{
 		F_log_domain: gi.GoString(unsafe.Pointer(log_domain)),
 		F_log_level:  LogLevelFlags(log_level),
 		F_message:    gi.GoString(unsafe.Pointer(message)),
@@ -6713,10 +7055,14 @@ type LogWriterFuncStruct struct {
 	F_n_fields  uint64
 }
 
-//export myLogWriterFunc
-func myLogWriterFunc(log_level C.GLogLevelFlags, fields C.gpointer, n_fields C.guint64, user_data C.gpointer) {
+func GetPointer_myLogWriterFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibLogWriterFunc())
+}
+
+//export myGLibLogWriterFunc
+func myGLibLogWriterFunc(log_level C.GLogLevelFlags, fields C.gpointer, n_fields C.guint64, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := LogWriterFuncStruct{
+	args := &LogWriterFuncStruct{
 		F_log_level: LogLevelFlags(log_level),
 		F_fields:    unsafe.Pointer(fields),
 		F_n_fields:  uint64(n_fields),
@@ -6888,7 +7234,7 @@ func (v MainContext) FindSourceByUserData(user_data unsafe.Pointer) (result Sour
 // g_main_context_invoke_full
 // container is not nil, container is MainContext
 // is method
-func (v MainContext) InvokeFull(priority int32, function int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v MainContext) InvokeFull(priority int32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(320, "MainContext", "invoke_full")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6896,9 +7242,9 @@ func (v MainContext) InvokeFull(priority int32, function int /*TODO_TYPE isPtr: 
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_priority := gi.NewInt32Argument(priority)
-	arg_function := gi.NewIntArgument(function) /*TODO*/
+	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewIntArgument(notify) /*TODO*/
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_priority, arg_function, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -7435,7 +7781,7 @@ func MarkupParseContextGetType() gi.GType {
 // g_markup_parse_context_new
 // container is not nil, container is MarkupParseContext
 // is constructor
-func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_data unsafe.Pointer, user_data_dnotify int /*TODO_TYPE isPtr: false, tag: interface*/) (result MarkupParseContext) {
+func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_data unsafe.Pointer, user_data_dnotify int /*TODO_TYPE CALLBACK*/) (result MarkupParseContext) {
 	iv, err := _I.Get(352, "MarkupParseContext", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7444,7 +7790,7 @@ func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_dat
 	arg_parser := gi.NewPointerArgument(parser.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_user_data_dnotify := gi.NewIntArgument(user_data_dnotify) /*TODO*/
+	arg_user_data_dnotify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_parser, arg_flags, arg_user_data, arg_user_data_dnotify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -8208,8 +8554,34 @@ func (v Node) Unlink() {
 	iv.Call(args, nil, nil)
 }
 
-// ignore callback NodeForeachFunc
-// ignore callback NodeTraverseFunc
+type NodeForeachFuncStruct struct {
+	F_node Node
+	F_data unsafe.Pointer
+}
+
+func GetPointer_myNodeForeachFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibNodeForeachFunc())
+}
+
+//export myGLibNodeForeachFunc
+func myGLibNodeForeachFunc(node *C.GNode, data C.gpointer) {
+	// TODO: not found user_data
+}
+
+type NodeTraverseFuncStruct struct {
+	F_node Node
+	F_data unsafe.Pointer
+}
+
+func GetPointer_myNodeTraverseFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibNodeTraverseFunc())
+}
+
+//export myGLibNodeTraverseFunc
+func myGLibNodeTraverseFunc(node *C.GNode, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Enum NormalizeMode
 type NormalizeModeEnum int
 
@@ -8322,7 +8694,21 @@ func OptionArgGetType() gi.GType {
 	return ret
 }
 
-// ignore callback OptionArgFunc
+type OptionArgFuncStruct struct {
+	F_option_name string
+	F_value       string
+	F_data        unsafe.Pointer
+}
+
+func GetPointer_myOptionArgFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibOptionArgFunc())
+}
+
+//export myGLibOptionArgFunc
+func myGLibOptionArgFunc(option_name *C.gchar, value *C.gchar, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct OptionContext
 type OptionContext struct {
 	P unsafe.Pointer
@@ -8637,16 +9023,16 @@ func (v OptionContext) SetSummary(summary string) {
 // g_option_context_set_translate_func
 // container is not nil, container is OptionContext
 // is method
-func (v OptionContext) SetTranslateFunc(func1 int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, destroy_notify int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v OptionContext) SetTranslateFunc(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, destroy_notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(413, "OptionContext", "set_translate_func")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
+	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTranslateFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy_notify := gi.NewIntArgument(destroy_notify) /*TODO*/
+	arg_destroy_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy_notify}
 	iv.Call(args, nil, nil)
 }
@@ -8694,7 +9080,21 @@ func OptionErrorGetType() gi.GType {
 	return ret
 }
 
-// ignore callback OptionErrorFunc
+type OptionErrorFuncStruct struct {
+	F_context OptionContext
+	F_group   OptionGroup
+	F_data    unsafe.Pointer
+}
+
+func GetPointer_myOptionErrorFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibOptionErrorFunc())
+}
+
+//export myGLibOptionErrorFunc
+func myGLibOptionErrorFunc(context *C.GOptionContext, group *C.GOptionGroup, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Flags OptionFlags
 type OptionFlags int
 
@@ -8727,7 +9127,7 @@ func OptionGroupGetType() gi.GType {
 // g_option_group_new
 // container is not nil, container is OptionGroup
 // is constructor
-func NewOptionGroup(name string, description string, help_description string, user_data unsafe.Pointer, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) (result OptionGroup) {
+func NewOptionGroup(name string, description string, help_description string, user_data unsafe.Pointer, destroy int /*TODO_TYPE CALLBACK*/) (result OptionGroup) {
 	iv, err := _I.Get(415, "OptionGroup", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8740,7 +9140,7 @@ func NewOptionGroup(name string, description string, help_description string, us
 	arg_description := gi.NewStringArgument(c_description)
 	arg_help_description := gi.NewStringArgument(c_help_description)
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewIntArgument(destroy) /*TODO*/
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_name, arg_description, arg_help_description, arg_user_data, arg_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -8800,16 +9200,16 @@ func (v OptionGroup) Ref() (result OptionGroup) {
 // g_option_group_set_translate_func
 // container is not nil, container is OptionGroup
 // is method
-func (v OptionGroup) SetTranslateFunc(func1 int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, destroy_notify int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v OptionGroup) SetTranslateFunc(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, destroy_notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(419, "OptionGroup", "set_translate_func")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
+	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTranslateFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy_notify := gi.NewIntArgument(destroy_notify) /*TODO*/
+	arg_destroy_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy_notify}
 	iv.Call(args, nil, nil)
 }
@@ -8845,7 +9245,21 @@ func (v OptionGroup) Unref() {
 	iv.Call(args, nil, nil)
 }
 
-// ignore callback OptionParseFunc
+type OptionParseFuncStruct struct {
+	F_context OptionContext
+	F_group   OptionGroup
+	F_data    unsafe.Pointer
+}
+
+func GetPointer_myOptionParseFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibOptionParseFunc())
+}
+
+//export myGLibOptionParseFunc
+func myGLibOptionParseFunc(context *C.GOptionContext, group *C.GOptionGroup, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct PatternSpec
 type PatternSpec struct {
 	P unsafe.Pointer
@@ -8900,8 +9314,34 @@ func PollFDGetType() gi.GType {
 	return ret
 }
 
-// ignore callback PollFunc
-// ignore callback PrintFunc
+type PollFuncStruct struct {
+	F_ufds     PollFD
+	F_nfsd     uint32
+	F_timeout_ int32
+}
+
+func GetPointer_myPollFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibPollFunc())
+}
+
+//export myGLibPollFunc
+func myGLibPollFunc(ufds *C.GPollFD, nfsd C.guint32, timeout_ C.gint32) {
+	// TODO: not found user_data
+}
+
+type PrintFuncStruct struct {
+	F_string string
+}
+
+func GetPointer_myPrintFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibPrintFunc())
+}
+
+//export myGLibPrintFunc
+func myGLibPrintFunc(string *C.gchar) {
+	// TODO: not found user_data
+}
+
 // Struct Private
 type Private struct {
 	P unsafe.Pointer
@@ -9016,14 +9456,14 @@ func (v Queue) Free() {
 // g_queue_free_full
 // container is not nil, container is Queue
 // is method
-func (v Queue) FreeFull(free_func int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Queue) FreeFull(free_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(429, "Queue", "free_full")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_free_func := gi.NewIntArgument(free_func) /*TODO*/
+	arg_free_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_free_func}
 	iv.Call(args, nil, nil)
 }
@@ -10259,10 +10699,14 @@ type RegexEvalCallbackStruct struct {
 	F_result     String
 }
 
-//export myRegexEvalCallback
-func myRegexEvalCallback(match_info *C.GMatchInfo, result *C.GString, user_data C.gpointer) {
+func GetPointer_myRegexEvalCallback() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibRegexEvalCallback())
+}
+
+//export myGLibRegexEvalCallback
+func myGLibRegexEvalCallback(match_info *C.GMatchInfo, result *C.GString, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := RegexEvalCallbackStruct{
+	args := &RegexEvalCallbackStruct{
 		F_match_info: MatchInfo{P: unsafe.Pointer(match_info)},
 		F_result:     String{P: unsafe.Pointer(result)},
 	}
@@ -10618,7 +11062,21 @@ func ScannerConfigGetType() gi.GType {
 	return ret
 }
 
-// ignore callback ScannerMsgFunc
+type ScannerMsgFuncStruct struct {
+	F_scanner Scanner
+	F_message string
+	F_error   bool
+}
+
+func GetPointer_myScannerMsgFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibScannerMsgFunc())
+}
+
+//export myGLibScannerMsgFunc
+func myGLibScannerMsgFunc(scanner *C.GScanner, message *C.gchar, error C.gboolean) {
+	// TODO: not found user_data
+}
+
 // Enum SeekType
 type SeekTypeEnum int
 
@@ -11079,7 +11537,21 @@ func (v SequenceIter) Prev() (result SequenceIter) {
 	return
 }
 
-// ignore callback SequenceIterCompareFunc
+type SequenceIterCompareFuncStruct struct {
+	F_a    SequenceIter
+	F_b    SequenceIter
+	F_data unsafe.Pointer
+}
+
+func GetPointer_mySequenceIterCompareFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibSequenceIterCompareFunc())
+}
+
+//export myGLibSequenceIterCompareFunc
+func myGLibSequenceIterCompareFunc(a *C.GSequenceIter, b *C.GSequenceIter, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Enum ShellError
 type ShellErrorEnum int
 
@@ -11472,16 +11944,16 @@ func (v Source) RemoveUnixFd(tag unsafe.Pointer) {
 // g_source_set_callback
 // container is not nil, container is Source
 // is method
-func (v Source) SetCallback(func1 int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func (v Source) SetCallback(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(553, "Source", "set_callback")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
+	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewIntArgument(notify) /*TODO*/
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -11678,14 +12150,29 @@ func SourceCallbackFuncsGetType() gi.GType {
 	return ret
 }
 
-// ignore callback SourceDummyMarshal
+type SourceDummyMarshalStruct struct {
+}
+
+func GetPointer_mySourceDummyMarshal() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibSourceDummyMarshal())
+}
+
+//export myGLibSourceDummyMarshal
+func myGLibSourceDummyMarshal() {
+	// TODO: not found user_data
+}
+
 type SourceFuncStruct struct {
 }
 
-//export mySourceFunc
-func mySourceFunc(user_data C.gpointer) {
+func GetPointer_mySourceFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibSourceFunc())
+}
+
+//export myGLibSourceFunc
+func myGLibSourceFunc(user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := SourceFuncStruct{}
+	args := &SourceFuncStruct{}
 	fn(args)
 }
 
@@ -11714,10 +12201,14 @@ func SourcePrivateGetType() gi.GType {
 type SpawnChildSetupFuncStruct struct {
 }
 
-//export mySpawnChildSetupFunc
-func mySpawnChildSetupFunc(user_data C.gpointer) {
+func GetPointer_mySpawnChildSetupFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibSpawnChildSetupFunc())
+}
+
+//export myGLibSpawnChildSetupFunc
+func myGLibSpawnChildSetupFunc(user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := SpawnChildSetupFuncStruct{}
+	args := &SpawnChildSetupFuncStruct{}
 	fn(args)
 }
 
@@ -12435,10 +12926,14 @@ func TestConfigGetType() gi.GType {
 type TestDataFuncStruct struct {
 }
 
-//export myTestDataFunc
-func myTestDataFunc(user_data C.gpointer) {
+func GetPointer_myTestDataFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibTestDataFunc())
+}
+
+//export myGLibTestDataFunc
+func myGLibTestDataFunc(user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := TestDataFuncStruct{}
+	args := &TestDataFuncStruct{}
 	fn(args)
 }
 
@@ -12459,16 +12954,31 @@ type TestFixtureFuncStruct struct {
 	F_fixture unsafe.Pointer
 }
 
-//export myTestFixtureFunc
-func myTestFixtureFunc(fixture C.gpointer, user_data C.gpointer) {
+func GetPointer_myTestFixtureFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibTestFixtureFunc())
+}
+
+//export myGLibTestFixtureFunc
+func myGLibTestFixtureFunc(fixture C.gpointer, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := TestFixtureFuncStruct{
+	args := &TestFixtureFuncStruct{
 		F_fixture: unsafe.Pointer(fixture),
 	}
 	fn(args)
 }
 
-// ignore callback TestFunc
+type TestFuncStruct struct {
+}
+
+func GetPointer_myTestFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibTestFunc())
+}
+
+//export myGLibTestFunc
+func myGLibTestFunc() {
+	// TODO: not found user_data
+}
+
 // Struct TestLogBuffer
 type TestLogBuffer struct {
 	P unsafe.Pointer
@@ -12517,10 +13027,14 @@ type TestLogFatalFuncStruct struct {
 	F_message    string
 }
 
-//export myTestLogFatalFunc
-func myTestLogFatalFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
+func GetPointer_myTestLogFatalFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibTestLogFatalFunc())
+}
+
+//export myGLibTestLogFatalFunc
+func myGLibTestLogFatalFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := TestLogFatalFuncStruct{
+	args := &TestLogFatalFuncStruct{
 		F_log_domain: gi.GoString(unsafe.Pointer(log_domain)),
 		F_log_level:  LogLevelFlags(log_level),
 		F_message:    gi.GoString(unsafe.Pointer(message)),
@@ -12745,7 +13259,19 @@ func ThreadErrorGetType() gi.GType {
 	return ret
 }
 
-// ignore callback ThreadFunc
+type ThreadFuncStruct struct {
+	F_data unsafe.Pointer
+}
+
+func GetPointer_myThreadFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibThreadFunc())
+}
+
+//export myGLibThreadFunc
+func myGLibThreadFunc(data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct ThreadPool
 type ThreadPool struct {
 	P unsafe.Pointer
@@ -13352,7 +13878,20 @@ func TokenValueGetType() gi.GType {
 	return ret
 }
 
-// ignore callback TranslateFunc
+type TranslateFuncStruct struct {
+	F_str  string
+	F_data unsafe.Pointer
+}
+
+func GetPointer_myTranslateFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibTranslateFunc())
+}
+
+//export myGLibTranslateFunc
+func myGLibTranslateFunc(str *C.gchar, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct TrashStack
 type TrashStack struct {
 	P unsafe.Pointer
@@ -13452,7 +13991,21 @@ func TraverseFlagsGetType() gi.GType {
 	return ret
 }
 
-// ignore callback TraverseFunc
+type TraverseFuncStruct struct {
+	F_key   unsafe.Pointer
+	F_value unsafe.Pointer
+	F_data  unsafe.Pointer
+}
+
+func GetPointer_myTraverseFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibTraverseFunc())
+}
+
+//export myGLibTraverseFunc
+func myGLibTraverseFunc(key C.gpointer, value C.gpointer, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Enum TraverseType
 type TraverseTypeEnum int
 
@@ -13907,10 +14460,14 @@ type UnixFDSourceFuncStruct struct {
 	F_condition IOConditionFlags
 }
 
-//export myUnixFDSourceFunc
-func myUnixFDSourceFunc(fd C.gint32, condition C.GIOCondition, user_data C.gpointer) {
+func GetPointer_myUnixFDSourceFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibUnixFDSourceFunc())
+}
+
+//export myGLibUnixFDSourceFunc
+func myGLibUnixFDSourceFunc(fd C.gint32, condition C.GIOCondition, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := UnixFDSourceFuncStruct{
+	args := &UnixFDSourceFuncStruct{
 		F_fd:        int32(fd),
 		F_condition: IOConditionFlags(condition),
 	}
@@ -14115,7 +14672,7 @@ func NewVariantFromBytes(type1 VariantType, bytes Bytes, trusted bool) (result V
 // container is not nil, container is Variant
 // is constructor
 // arg 1 data lenArgIdx 2
-func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trusted bool, notify int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result Variant) {
+func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trusted bool, notify int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result Variant) {
 	iv, err := _I.Get(666, "Variant", "new_from_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -14125,7 +14682,7 @@ func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trus
 	arg_data := gi.NewPointerArgument(data.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_trusted := gi.NewBoolArgument(trusted)
-	arg_notify := gi.NewIntArgument(notify) /*TODO*/
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_type1, arg_data, arg_size, arg_trusted, arg_notify, arg_user_data}
 	var ret gi.Argument
@@ -16238,7 +16795,18 @@ func VariantTypeStringScan1(string string, limit string) (result bool, endptr st
 	return
 }
 
-// ignore callback VoidFunc
+type VoidFuncStruct struct {
+}
+
+func GetPointer_myVoidFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGLibVoidFunc())
+}
+
+//export myGLibVoidFunc
+func myGLibVoidFunc() {
+	// TODO: not found user_data
+}
+
 // g_access
 // container is nil
 func Access(filename string, mode int32) (result int32) {
@@ -16675,13 +17243,13 @@ func AssertionMessageError(domain string, file string, line int32, func1 string,
 
 // g_atexit
 // container is nil
-func Atexit(func1 int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func Atexit(func1 int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(801, "atexit", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
+	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myVoidFunc()))
 	args := []gi.Argument{arg_func1}
 	iv.Call(args, nil, nil)
 }
@@ -17060,14 +17628,14 @@ func AtomicRcBoxRelease(mem_block unsafe.Pointer) {
 
 // g_atomic_rc_box_release_full
 // container is nil
-func AtomicRcBoxReleaseFull(mem_block unsafe.Pointer, clear_func int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func AtomicRcBoxReleaseFull(mem_block unsafe.Pointer, clear_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(825, "atomic_rc_box_release_full", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_mem_block := gi.NewPointerArgument(mem_block)
-	arg_clear_func := gi.NewIntArgument(clear_func) /*TODO*/
+	arg_clear_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_mem_block, arg_clear_func}
 	iv.Call(args, nil, nil)
 }
@@ -17545,7 +18113,7 @@ func ChecksumTypeGetLength(checksum_type ChecksumTypeEnum) (result int64) {
 
 // g_child_watch_add_full
 // container is nil
-func ChildWatchAdd(priority int32, pid int32, function int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func ChildWatchAdd(priority int32, pid int32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(854, "child_watch_add", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17553,9 +18121,9 @@ func ChildWatchAdd(priority int32, pid int32, function int /*TODO_TYPE isPtr: fa
 	}
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_pid := gi.NewInt32Argument(pid)
-	arg_function := gi.NewIntArgument(function) /*TODO*/
+	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myChildWatchFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewIntArgument(notify) /*TODO*/
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_pid, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -17816,14 +18384,14 @@ func ConvertWithFallback(str gi.Uint8Array, len1 int64, to_codeset string, from_
 
 // g_datalist_foreach
 // container is nil
-func DatalistForeach(datalist Data, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func DatalistForeach(datalist Data, func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(867, "datalist_foreach", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_datalist := gi.NewPointerArgument(datalist.P)
-	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
+	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDataForeachFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_datalist, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -17924,14 +18492,14 @@ func DatasetDestroy(dataset_location unsafe.Pointer) {
 
 // g_dataset_foreach
 // container is nil
-func DatasetForeach(dataset_location unsafe.Pointer, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func DatasetForeach(dataset_location unsafe.Pointer, func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(874, "dataset_foreach", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_dataset_location := gi.NewPointerArgument(dataset_location)
-	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
+	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDataForeachFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_dataset_location, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -19624,16 +20192,16 @@ func HostnameToUnicode(hostname string) (result string) {
 
 // g_idle_add_full
 // container is nil
-func IdleAdd(priority int32, function int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func IdleAdd(priority int32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(973, "idle_add", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_priority := gi.NewInt32Argument(priority)
-	arg_function := gi.NewIntArgument(function) /*TODO*/
+	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewIntArgument(notify) /*TODO*/
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -19775,7 +20343,7 @@ func InternString(string string) (result string) {
 
 // g_io_add_watch_full
 // container is nil
-func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, func1 int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(982, "io_add_watch", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -19784,9 +20352,9 @@ func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, f
 	arg_channel := gi.NewPointerArgument(channel.P)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_condition := gi.NewIntArgument(int(condition))
-	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
+	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myIOFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_notify := gi.NewIntArgument(notify) /*TODO*/
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_channel, arg_priority, arg_condition, arg_func1, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -19995,7 +20563,7 @@ func LogSetFatalMask(log_domain string, fatal_mask LogLevelFlags) (result LogLev
 
 // g_log_set_handler_full
 // container is nil
-func LogSetHandler(log_domain string, log_levels LogLevelFlags, log_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, destroy int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func LogSetHandler(log_domain string, log_levels LogLevelFlags, log_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, destroy int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(994, "log_set_handler", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20004,9 +20572,9 @@ func LogSetHandler(log_domain string, log_levels LogLevelFlags, log_func int /*T
 	c_log_domain := gi.CString(log_domain)
 	arg_log_domain := gi.NewStringArgument(c_log_domain)
 	arg_log_levels := gi.NewIntArgument(int(log_levels))
-	arg_log_func := gi.NewIntArgument(log_func) /*TODO*/
+	arg_log_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myLogFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewIntArgument(destroy) /*TODO*/
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_log_domain, arg_log_levels, arg_log_func, arg_user_data, arg_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -20017,15 +20585,15 @@ func LogSetHandler(log_domain string, log_levels LogLevelFlags, log_func int /*T
 
 // g_log_set_writer_func
 // container is nil
-func LogSetWriterFunc(func1 int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, user_data_free int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func LogSetWriterFunc(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, user_data_free int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(995, "log_set_writer_func", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_func1 := gi.NewIntArgument(func1) /*TODO*/
+	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myLogWriterFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_user_data_free := gi.NewIntArgument(user_data_free) /*TODO*/
+	arg_user_data_free := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_func1, arg_user_data, arg_user_data_free}
 	iv.Call(args, nil, nil)
 }
@@ -20996,14 +21564,14 @@ func RcBoxRelease(mem_block unsafe.Pointer) {
 
 // g_rc_box_release_full
 // container is nil
-func RcBoxReleaseFull(mem_block unsafe.Pointer, clear_func int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func RcBoxReleaseFull(mem_block unsafe.Pointer, clear_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1055, "rc_box_release_full", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_mem_block := gi.NewPointerArgument(mem_block)
-	arg_clear_func := gi.NewIntArgument(clear_func) /*TODO*/
+	arg_clear_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_mem_block, arg_clear_func}
 	iv.Call(args, nil, nil)
 }
@@ -21852,7 +22420,7 @@ func SpacedPrimesClosest(num uint32) (result uint32) {
 
 // g_spawn_async
 // container is nil
-func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, err error) {
+func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1106, "spawn_async", "")
 	if err != nil {
 		return
@@ -21863,7 +22431,7 @@ func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, 
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
+	arg_child_setup := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySpawnChildSetupFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -21879,7 +22447,7 @@ func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, 
 
 // g_spawn_async_with_fds
 // container is nil
-func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
+func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1107, "spawn_async_with_fds", "")
 	if err != nil {
 		return
@@ -21890,7 +22458,7 @@ func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStr
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
+	arg_child_setup := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySpawnChildSetupFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_stdin_fd := gi.NewInt32Argument(stdin_fd)
@@ -21909,7 +22477,7 @@ func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStr
 
 // g_spawn_async_with_pipes
 // container is nil
-func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
+func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
 	iv, err := _I.Get(1108, "spawn_async_with_pipes", "")
 	if err != nil {
 		return
@@ -21920,7 +22488,7 @@ func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CS
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
+	arg_child_setup := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySpawnChildSetupFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_standard_input := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -22047,7 +22615,7 @@ func SpawnExitErrorQuark() (result uint32) {
 
 // g_spawn_sync
 // container is nil
-func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result bool, standard_output gi.Uint8Array, standard_error gi.Uint8Array, exit_status int32, err error) {
+func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool, standard_output gi.Uint8Array, standard_error gi.Uint8Array, exit_status int32, err error) {
 	iv, err := _I.Get(1115, "spawn_sync", "")
 	if err != nil {
 		return
@@ -22058,7 +22626,7 @@ func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, f
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewIntArgument(child_setup) /*TODO*/
+	arg_child_setup := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySpawnChildSetupFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_standard_output := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_standard_error := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -22876,7 +23444,7 @@ func StrvLength(str_array string) (result uint32) {
 
 // g_test_add_data_func
 // container is nil
-func TestAddDataFunc(testpath string, test_data unsafe.Pointer, test_func int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func TestAddDataFunc(testpath string, test_data unsafe.Pointer, test_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1157, "test_add_data_func", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22885,7 +23453,7 @@ func TestAddDataFunc(testpath string, test_data unsafe.Pointer, test_func int /*
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
 	arg_test_data := gi.NewPointerArgument(test_data)
-	arg_test_func := gi.NewIntArgument(test_func) /*TODO*/
+	arg_test_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTestDataFunc()))
 	args := []gi.Argument{arg_testpath, arg_test_data, arg_test_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -22893,7 +23461,7 @@ func TestAddDataFunc(testpath string, test_data unsafe.Pointer, test_func int /*
 
 // g_test_add_data_func_full
 // container is nil
-func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer, test_func int /*TODO_TYPE isPtr: false, tag: interface*/, data_free_func int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer, test_func int /*TODO_TYPE CALLBACK*/, data_free_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1158, "test_add_data_func_full", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22902,8 +23470,8 @@ func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer, test_func in
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
 	arg_test_data := gi.NewPointerArgument(test_data)
-	arg_test_func := gi.NewIntArgument(test_func)           /*TODO*/
-	arg_data_free_func := gi.NewIntArgument(data_free_func) /*TODO*/
+	arg_test_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTestDataFunc()))
+	arg_data_free_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_testpath, arg_test_data, arg_test_func, arg_data_free_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -22911,7 +23479,7 @@ func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer, test_func in
 
 // g_test_add_func
 // container is nil
-func TestAddFunc(testpath string, test_func int /*TODO_TYPE isPtr: false, tag: interface*/) {
+func TestAddFunc(testpath string, test_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1159, "test_add_func", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22919,7 +23487,7 @@ func TestAddFunc(testpath string, test_func int /*TODO_TYPE isPtr: false, tag: i
 	}
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
-	arg_test_func := gi.NewIntArgument(test_func) /*TODO*/
+	arg_test_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTestFunc()))
 	args := []gi.Argument{arg_testpath, arg_test_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -23070,13 +23638,13 @@ func TestLogTypeName(log_type TestLogTypeEnum) (result string) {
 
 // g_test_queue_destroy
 // container is nil
-func TestQueueDestroy(destroy_func int /*TODO_TYPE isPtr: false, tag: interface*/, destroy_data unsafe.Pointer) {
+func TestQueueDestroy(destroy_func int /*TODO_TYPE CALLBACK*/, destroy_data unsafe.Pointer) {
 	iv, err := _I.Get(1169, "test_queue_destroy", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_destroy_func := gi.NewIntArgument(destroy_func) /*TODO*/
+	arg_destroy_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	arg_destroy_data := gi.NewPointerArgument(destroy_data)
 	args := []gi.Argument{arg_destroy_func, arg_destroy_data}
 	iv.Call(args, nil, nil)
@@ -23506,7 +24074,7 @@ func TimeValFromIso8601(iso_date string, time_ TimeVal) (result bool) {
 
 // g_timeout_add_full
 // container is nil
-func TimeoutAdd(priority int32, interval uint32, function int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func TimeoutAdd(priority int32, interval uint32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(1199, "timeout_add", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23514,9 +24082,9 @@ func TimeoutAdd(priority int32, interval uint32, function int /*TODO_TYPE isPtr:
 	}
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_interval := gi.NewUint32Argument(interval)
-	arg_function := gi.NewIntArgument(function) /*TODO*/
+	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewIntArgument(notify) /*TODO*/
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23526,7 +24094,7 @@ func TimeoutAdd(priority int32, interval uint32, function int /*TODO_TYPE isPtr:
 
 // g_timeout_add_seconds_full
 // container is nil
-func TimeoutAddSeconds(priority int32, interval uint32, function int /*TODO_TYPE isPtr: false, tag: interface*/, data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func TimeoutAddSeconds(priority int32, interval uint32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(1200, "timeout_add_seconds", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -23534,9 +24102,9 @@ func TimeoutAddSeconds(priority int32, interval uint32, function int /*TODO_TYPE
 	}
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_interval := gi.NewUint32Argument(interval)
-	arg_function := gi.NewIntArgument(function) /*TODO*/
+	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewIntArgument(notify) /*TODO*/
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -24387,7 +24955,7 @@ func UnixErrorQuark() (result uint32) {
 
 // g_unix_fd_add_full
 // container is nil
-func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, function int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, function int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(1252, "unix_fd_add_full", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24396,9 +24964,9 @@ func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, functio
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_fd := gi.NewInt32Argument(fd)
 	arg_condition := gi.NewIntArgument(int(condition))
-	arg_function := gi.NewIntArgument(function) /*TODO*/
+	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myUnixFDSourceFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_notify := gi.NewIntArgument(notify) /*TODO*/
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_fd, arg_condition, arg_function, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -24463,7 +25031,7 @@ func UnixSetFdNonblocking(fd int32, nonblock bool) (result bool, err error) {
 
 // g_unix_signal_add_full
 // container is nil
-func UnixSignalAdd(priority int32, signum int32, handler int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer, notify int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint32) {
+func UnixSignalAdd(priority int32, signum int32, handler int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(1256, "unix_signal_add", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -24471,9 +25039,9 @@ func UnixSignalAdd(priority int32, signum int32, handler int /*TODO_TYPE isPtr: 
 	}
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_signum := gi.NewInt32Argument(signum)
-	arg_handler := gi.NewIntArgument(handler) /*TODO*/
+	arg_handler := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_notify := gi.NewIntArgument(notify) /*TODO*/
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_signum, arg_handler, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

@@ -3,13 +3,29 @@ package atk
 /*
 #cgo pkg-config: atk
 #include <atk/atk.h>
-extern void myFunction(gpointer user_data);
-static void* getPointer_myFunction() {
-return (void*)(myFunction);
+extern void myAtkEventListener(AtkObject* obj);
+static void* getPointer_myAtkEventListener() {
+return (void*)(myAtkEventListener);
 }
-extern void myKeySnoopFunc(AtkKeyEventStruct* event, gpointer user_data);
-static void* getPointer_myKeySnoopFunc() {
-return (void*)(myKeySnoopFunc);
+extern void myAtkEventListenerInit();
+static void* getPointer_myAtkEventListenerInit() {
+return (void*)(myAtkEventListenerInit);
+}
+extern void myAtkFocusHandler(AtkObject* object, gboolean focus_in);
+static void* getPointer_myAtkFocusHandler() {
+return (void*)(myAtkFocusHandler);
+}
+extern void myAtkFunction(gpointer user_data);
+static void* getPointer_myAtkFunction() {
+return (void*)(myAtkFunction);
+}
+extern void myAtkKeySnoopFunc(AtkKeyEventStruct* event, gpointer user_data);
+static void* getPointer_myAtkKeySnoopFunc() {
+return (void*)(myAtkKeySnoopFunc);
+}
+extern void myAtkPropertyChangeHandler(AtkObject* obj, AtkPropertyValues* vals);
+static void* getPointer_myAtkPropertyChangeHandler() {
+return (void*)(myAtkPropertyChangeHandler);
 }
 */
 import "C"
@@ -812,16 +828,56 @@ func (v *EditableTextIfc) SetTextContents(string string) {
 }
 
 // ignore GType struct EditableTextIface
-// ignore callback EventListener
-// ignore callback EventListenerInit
-// ignore callback FocusHandler
+type EventListenerStruct struct {
+	F_obj Object
+}
+
+func GetPointer_myEventListener() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myAtkEventListener())
+}
+
+//export myAtkEventListener
+func myAtkEventListener(obj *C.AtkObject) {
+	// TODO: not found user_data
+}
+
+type EventListenerInitStruct struct {
+}
+
+func GetPointer_myEventListenerInit() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myAtkEventListenerInit())
+}
+
+//export myAtkEventListenerInit
+func myAtkEventListenerInit() {
+	// TODO: not found user_data
+}
+
+type FocusHandlerStruct struct {
+	F_object   Object
+	F_focus_in bool
+}
+
+func GetPointer_myFocusHandler() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myAtkFocusHandler())
+}
+
+//export myAtkFocusHandler
+func myAtkFocusHandler(object *C.AtkObject, focus_in C.gboolean) {
+	// TODO: not found user_data
+}
+
 type FunctionStruct struct {
 }
 
-//export myFunction
-func myFunction(user_data C.gpointer) {
+func GetPointer_myFunction() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myAtkFunction())
+}
+
+//export myAtkFunction
+func myAtkFunction(user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := FunctionStruct{}
+	args := &FunctionStruct{}
 	fn(args)
 }
 
@@ -1329,10 +1385,14 @@ type KeySnoopFuncStruct struct {
 	F_event KeyEventStruct
 }
 
-//export myKeySnoopFunc
-func myKeySnoopFunc(event *C.AtkKeyEventStruct, user_data C.gpointer) {
+func GetPointer_myKeySnoopFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myAtkKeySnoopFunc())
+}
+
+//export myAtkKeySnoopFunc
+func myAtkKeySnoopFunc(event *C.AtkKeyEventStruct, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := KeySnoopFuncStruct{
+	args := &KeySnoopFuncStruct{
 		F_event: KeyEventStruct{P: unsafe.Pointer(event)},
 	}
 	fn(args)
@@ -2027,7 +2087,20 @@ func (v Plug) GetId() (result string) {
 }
 
 // ignore GType struct PlugClass
-// ignore callback PropertyChangeHandler
+type PropertyChangeHandlerStruct struct {
+	F_obj  Object
+	F_vals PropertyValues
+}
+
+func GetPointer_myPropertyChangeHandler() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myAtkPropertyChangeHandler())
+}
+
+//export myAtkPropertyChangeHandler
+func myAtkPropertyChangeHandler(obj *C.AtkObject, vals *C.AtkPropertyValues) {
+	// TODO: not found user_data
+}
+
 // Struct PropertyValues
 type PropertyValues struct {
 	P unsafe.Pointer

@@ -3,9 +3,113 @@ package gobject
 /*
 #cgo pkg-config: gobject-2.0
 #include <glib-object.h>
-extern void myBindingTransformFunc(GBinding* binding, GValue* from_value, GValue* to_value, gpointer user_data);
-static void* getPointer_myBindingTransformFunc() {
-return (void*)(myBindingTransformFunc);
+extern void myGObjectBaseFinalizeFunc(GTypeClass* g_class);
+static void* getPointer_myGObjectBaseFinalizeFunc() {
+return (void*)(myGObjectBaseFinalizeFunc);
+}
+extern void myGObjectBaseInitFunc(GTypeClass* g_class);
+static void* getPointer_myGObjectBaseInitFunc() {
+return (void*)(myGObjectBaseInitFunc);
+}
+extern void myGObjectBindingTransformFunc(GBinding* binding, GValue* from_value, GValue* to_value, gpointer user_data);
+static void* getPointer_myGObjectBindingTransformFunc() {
+return (void*)(myGObjectBindingTransformFunc);
+}
+extern void myGObjectBoxedCopyFunc(gpointer boxed);
+static void* getPointer_myGObjectBoxedCopyFunc() {
+return (void*)(myGObjectBoxedCopyFunc);
+}
+extern void myGObjectBoxedFreeFunc(gpointer boxed);
+static void* getPointer_myGObjectBoxedFreeFunc() {
+return (void*)(myGObjectBoxedFreeFunc);
+}
+extern void myGObjectCallback();
+static void* getPointer_myGObjectCallback() {
+return (void*)(myGObjectCallback);
+}
+extern void myGObjectClassFinalizeFunc(GTypeClass* g_class, gpointer class_data);
+static void* getPointer_myGObjectClassFinalizeFunc() {
+return (void*)(myGObjectClassFinalizeFunc);
+}
+extern void myGObjectClassInitFunc(GTypeClass* g_class, gpointer class_data);
+static void* getPointer_myGObjectClassInitFunc() {
+return (void*)(myGObjectClassInitFunc);
+}
+extern void myGObjectClosureMarshal(GClosure* closure, GValue* return_value, guint32 n_param_values, gpointer param_values, gpointer invocation_hint, gpointer marshal_data);
+static void* getPointer_myGObjectClosureMarshal() {
+return (void*)(myGObjectClosureMarshal);
+}
+extern void myGObjectClosureNotify(gpointer data, GClosure* closure);
+static void* getPointer_myGObjectClosureNotify() {
+return (void*)(myGObjectClosureNotify);
+}
+extern void myGObjectInstanceInitFunc(GTypeInstance* instance, GTypeClass* g_class);
+static void* getPointer_myGObjectInstanceInitFunc() {
+return (void*)(myGObjectInstanceInitFunc);
+}
+extern void myGObjectInterfaceFinalizeFunc(GTypeInterface* g_iface, gpointer iface_data);
+static void* getPointer_myGObjectInterfaceFinalizeFunc() {
+return (void*)(myGObjectInterfaceFinalizeFunc);
+}
+extern void myGObjectInterfaceInitFunc(GTypeInterface* g_iface, gpointer iface_data);
+static void* getPointer_myGObjectInterfaceInitFunc() {
+return (void*)(myGObjectInterfaceInitFunc);
+}
+extern void myGObjectObjectFinalizeFunc(GObject* object);
+static void* getPointer_myGObjectObjectFinalizeFunc() {
+return (void*)(myGObjectObjectFinalizeFunc);
+}
+extern void myGObjectObjectGetPropertyFunc(GObject* object, guint32 property_id, GValue* value, GParamSpec* pspec);
+static void* getPointer_myGObjectObjectGetPropertyFunc() {
+return (void*)(myGObjectObjectGetPropertyFunc);
+}
+extern void myGObjectObjectSetPropertyFunc(GObject* object, guint32 property_id, GValue* value, GParamSpec* pspec);
+static void* getPointer_myGObjectObjectSetPropertyFunc() {
+return (void*)(myGObjectObjectSetPropertyFunc);
+}
+extern void myGObjectSignalAccumulator(GSignalInvocationHint* ihint, GValue* return_accu, GValue* handler_return, gpointer data);
+static void* getPointer_myGObjectSignalAccumulator() {
+return (void*)(myGObjectSignalAccumulator);
+}
+extern void myGObjectSignalEmissionHook(GSignalInvocationHint* ihint, guint32 n_param_values, gpointer param_values, gpointer data);
+static void* getPointer_myGObjectSignalEmissionHook() {
+return (void*)(myGObjectSignalEmissionHook);
+}
+extern void myGObjectToggleNotify(gpointer data, GObject* object, gboolean is_last_ref);
+static void* getPointer_myGObjectToggleNotify() {
+return (void*)(myGObjectToggleNotify);
+}
+extern void myGObjectTypeClassCacheFunc(gpointer cache_data, GTypeClass* g_class);
+static void* getPointer_myGObjectTypeClassCacheFunc() {
+return (void*)(myGObjectTypeClassCacheFunc);
+}
+extern void myGObjectTypeInterfaceCheckFunc(gpointer check_data, GTypeInterface* g_iface);
+static void* getPointer_myGObjectTypeInterfaceCheckFunc() {
+return (void*)(myGObjectTypeInterfaceCheckFunc);
+}
+extern void myGObjectTypePluginCompleteInterfaceInfo(GTypePlugin* plugin, gpointer instance_type, gpointer interface_type, GInterfaceInfo* info);
+static void* getPointer_myGObjectTypePluginCompleteInterfaceInfo() {
+return (void*)(myGObjectTypePluginCompleteInterfaceInfo);
+}
+extern void myGObjectTypePluginCompleteTypeInfo(GTypePlugin* plugin, gpointer g_type, GTypeInfo* info, GTypeValueTable* value_table);
+static void* getPointer_myGObjectTypePluginCompleteTypeInfo() {
+return (void*)(myGObjectTypePluginCompleteTypeInfo);
+}
+extern void myGObjectTypePluginUnuse(GTypePlugin* plugin);
+static void* getPointer_myGObjectTypePluginUnuse() {
+return (void*)(myGObjectTypePluginUnuse);
+}
+extern void myGObjectTypePluginUse(GTypePlugin* plugin);
+static void* getPointer_myGObjectTypePluginUse() {
+return (void*)(myGObjectTypePluginUse);
+}
+extern void myGObjectValueTransform(GValue* src_value, GValue* dest_value);
+static void* getPointer_myGObjectValueTransform() {
+return (void*)(myGObjectValueTransform);
+}
+extern void myGObjectWeakNotify(gpointer data, GObject* where_the_object_was);
+static void* getPointer_myGObjectWeakNotify() {
+return (void*)(myGObjectWeakNotify);
 }
 */
 import "C"
@@ -26,8 +130,32 @@ func init() {
 	}
 }
 
-// ignore callback BaseFinalizeFunc
-// ignore callback BaseInitFunc
+type BaseFinalizeFuncStruct struct {
+	F_g_class TypeClass
+}
+
+func GetPointer_myBaseFinalizeFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectBaseFinalizeFunc())
+}
+
+//export myGObjectBaseFinalizeFunc
+func myGObjectBaseFinalizeFunc(g_class *C.GTypeClass) {
+	// TODO: not found user_data
+}
+
+type BaseInitFuncStruct struct {
+	F_g_class TypeClass
+}
+
+func GetPointer_myBaseInitFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectBaseInitFunc())
+}
+
+//export myGObjectBaseInitFunc
+func myGObjectBaseInitFunc(g_class *C.GTypeClass) {
+	// TODO: not found user_data
+}
+
 // Object Binding
 type Binding struct {
 	Object
@@ -163,10 +291,14 @@ type BindingTransformFuncStruct struct {
 	F_to_value   Value
 }
 
-//export myBindingTransformFunc
-func myBindingTransformFunc(binding *C.GBinding, from_value *C.GValue, to_value *C.GValue, user_data C.gpointer) {
+func GetPointer_myBindingTransformFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectBindingTransformFunc())
+}
+
+//export myGObjectBindingTransformFunc
+func myGObjectBindingTransformFunc(binding *C.GBinding, from_value *C.GValue, to_value *C.GValue, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := BindingTransformFuncStruct{
+	args := &BindingTransformFuncStruct{
 		F_binding:    WrapBinding(unsafe.Pointer(binding)),
 		F_from_value: Value{P: unsafe.Pointer(from_value)},
 		F_to_value:   Value{P: unsafe.Pointer(to_value)},
@@ -174,8 +306,32 @@ func myBindingTransformFunc(binding *C.GBinding, from_value *C.GValue, to_value 
 	fn(args)
 }
 
-// ignore callback BoxedCopyFunc
-// ignore callback BoxedFreeFunc
+type BoxedCopyFuncStruct struct {
+	F_boxed unsafe.Pointer
+}
+
+func GetPointer_myBoxedCopyFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectBoxedCopyFunc())
+}
+
+//export myGObjectBoxedCopyFunc
+func myGObjectBoxedCopyFunc(boxed C.gpointer) {
+	// TODO: not found user_data
+}
+
+type BoxedFreeFuncStruct struct {
+	F_boxed unsafe.Pointer
+}
+
+func GetPointer_myBoxedFreeFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectBoxedFreeFunc())
+}
+
+//export myGObjectBoxedFreeFunc
+func myGObjectBoxedFreeFunc(boxed C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct CClosure
 type CClosure struct {
 	P unsafe.Pointer
@@ -648,9 +804,46 @@ func CClosureMarshalGeneric1(closure Closure, return_gvalue Value, n_param_value
 	iv.Call(args, nil, nil)
 }
 
-// ignore callback Callback
-// ignore callback ClassFinalizeFunc
-// ignore callback ClassInitFunc
+type CallbackStruct struct {
+}
+
+func GetPointer_myCallback() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectCallback())
+}
+
+//export myGObjectCallback
+func myGObjectCallback() {
+	// TODO: not found user_data
+}
+
+type ClassFinalizeFuncStruct struct {
+	F_g_class    TypeClass
+	F_class_data unsafe.Pointer
+}
+
+func GetPointer_myClassFinalizeFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectClassFinalizeFunc())
+}
+
+//export myGObjectClassFinalizeFunc
+func myGObjectClassFinalizeFunc(g_class *C.GTypeClass, class_data C.gpointer) {
+	// TODO: not found user_data
+}
+
+type ClassInitFuncStruct struct {
+	F_g_class    TypeClass
+	F_class_data unsafe.Pointer
+}
+
+func GetPointer_myClassInitFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectClassInitFunc())
+}
+
+//export myGObjectClassInitFunc
+func myGObjectClassInitFunc(g_class *C.GTypeClass, class_data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct Closure
 type Closure struct {
 	P unsafe.Pointer
@@ -781,8 +974,38 @@ func (v Closure) Unref() {
 	iv.Call(args, nil, nil)
 }
 
-// ignore callback ClosureMarshal
-// ignore callback ClosureNotify
+type ClosureMarshalStruct struct {
+	F_closure         Closure
+	F_return_value    Value
+	F_n_param_values  uint32
+	F_param_values    unsafe.Pointer
+	F_invocation_hint unsafe.Pointer
+	F_marshal_data    unsafe.Pointer
+}
+
+func GetPointer_myClosureMarshal() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectClosureMarshal())
+}
+
+//export myGObjectClosureMarshal
+func myGObjectClosureMarshal(closure *C.GClosure, return_value *C.GValue, n_param_values C.guint32, param_values C.gpointer, invocation_hint C.gpointer, marshal_data C.gpointer) {
+	// TODO: not found user_data
+}
+
+type ClosureNotifyStruct struct {
+	F_data    unsafe.Pointer
+	F_closure Closure
+}
+
+func GetPointer_myClosureNotify() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectClosureNotify())
+}
+
+//export myGObjectClosureNotify
+func myGObjectClosureNotify(data C.gpointer, closure *C.GClosure) {
+	// TODO: not found user_data
+}
+
 // Struct ClosureNotifyData
 type ClosureNotifyData struct {
 	P unsafe.Pointer
@@ -872,8 +1095,34 @@ func InitiallyUnownedGetType() gi.GType {
 }
 
 // ignore GType struct InitiallyUnownedClass
-// ignore callback InstanceInitFunc
-// ignore callback InterfaceFinalizeFunc
+type InstanceInitFuncStruct struct {
+	F_instance TypeInstance
+	F_g_class  TypeClass
+}
+
+func GetPointer_myInstanceInitFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectInstanceInitFunc())
+}
+
+//export myGObjectInstanceInitFunc
+func myGObjectInstanceInitFunc(instance *C.GTypeInstance, g_class *C.GTypeClass) {
+	// TODO: not found user_data
+}
+
+type InterfaceFinalizeFuncStruct struct {
+	F_g_iface    TypeInterface
+	F_iface_data unsafe.Pointer
+}
+
+func GetPointer_myInterfaceFinalizeFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectInterfaceFinalizeFunc())
+}
+
+//export myGObjectInterfaceFinalizeFunc
+func myGObjectInterfaceFinalizeFunc(g_iface *C.GTypeInterface, iface_data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Struct InterfaceInfo
 type InterfaceInfo struct {
 	P unsafe.Pointer
@@ -886,7 +1135,20 @@ func InterfaceInfoGetType() gi.GType {
 	return ret
 }
 
-// ignore callback InterfaceInitFunc
+type InterfaceInitFuncStruct struct {
+	F_g_iface    TypeInterface
+	F_iface_data unsafe.Pointer
+}
+
+func GetPointer_myInterfaceInitFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectInterfaceInitFunc())
+}
+
+//export myGObjectInterfaceInitFunc
+func myGObjectInterfaceInitFunc(g_iface *C.GTypeInterface, iface_data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Object Object
 type Object struct {
 	P unsafe.Pointer
@@ -1397,9 +1659,51 @@ func ObjectConstructParamGetType() gi.GType {
 	return ret
 }
 
-// ignore callback ObjectFinalizeFunc
-// ignore callback ObjectGetPropertyFunc
-// ignore callback ObjectSetPropertyFunc
+type ObjectFinalizeFuncStruct struct {
+	F_object Object
+}
+
+func GetPointer_myObjectFinalizeFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectObjectFinalizeFunc())
+}
+
+//export myGObjectObjectFinalizeFunc
+func myGObjectObjectFinalizeFunc(object *C.GObject) {
+	// TODO: not found user_data
+}
+
+type ObjectGetPropertyFuncStruct struct {
+	F_object      Object
+	F_property_id uint32
+	F_value       Value
+	F_pspec       ParamSpec
+}
+
+func GetPointer_myObjectGetPropertyFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectObjectGetPropertyFunc())
+}
+
+//export myGObjectObjectGetPropertyFunc
+func myGObjectObjectGetPropertyFunc(object *C.GObject, property_id C.guint32, value *C.GValue, pspec *C.GParamSpec) {
+	// TODO: not found user_data
+}
+
+type ObjectSetPropertyFuncStruct struct {
+	F_object      Object
+	F_property_id uint32
+	F_value       Value
+	F_pspec       ParamSpec
+}
+
+func GetPointer_myObjectSetPropertyFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectObjectSetPropertyFunc())
+}
+
+//export myGObjectObjectSetPropertyFunc
+func myGObjectObjectSetPropertyFunc(object *C.GObject, property_id C.guint32, value *C.GValue, pspec *C.GParamSpec) {
+	// TODO: not found user_data
+}
+
 // Flags ParamFlags
 type ParamFlags int
 
@@ -2104,8 +2408,38 @@ func ParameterGetType() gi.GType {
 	return ret
 }
 
-// ignore callback SignalAccumulator
-// ignore callback SignalEmissionHook
+type SignalAccumulatorStruct struct {
+	F_ihint          SignalInvocationHint
+	F_return_accu    Value
+	F_handler_return Value
+	F_data           unsafe.Pointer
+}
+
+func GetPointer_mySignalAccumulator() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectSignalAccumulator())
+}
+
+//export myGObjectSignalAccumulator
+func myGObjectSignalAccumulator(ihint *C.GSignalInvocationHint, return_accu *C.GValue, handler_return *C.GValue, data C.gpointer) {
+	// TODO: not found user_data
+}
+
+type SignalEmissionHookStruct struct {
+	F_ihint          SignalInvocationHint
+	F_n_param_values uint32
+	F_param_values   unsafe.Pointer
+	F_data           unsafe.Pointer
+}
+
+func GetPointer_mySignalEmissionHook() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectSignalEmissionHook())
+}
+
+//export myGObjectSignalEmissionHook
+func myGObjectSignalEmissionHook(ihint *C.GSignalInvocationHint, n_param_values C.guint32, param_values C.gpointer, data C.gpointer) {
+	// TODO: not found user_data
+}
+
 // Flags SignalFlags
 type SignalFlags int
 
@@ -2167,7 +2501,21 @@ func SignalQueryGetType() gi.GType {
 	return ret
 }
 
-// ignore callback ToggleNotify
+type ToggleNotifyStruct struct {
+	F_data        unsafe.Pointer
+	F_object      Object
+	F_is_last_ref bool
+}
+
+func GetPointer_myToggleNotify() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectToggleNotify())
+}
+
+//export myGObjectToggleNotify
+func myGObjectToggleNotify(data C.gpointer, object *C.GObject, is_last_ref C.gboolean) {
+	// TODO: not found user_data
+}
+
 // Union TypeCValue
 type TypeCValue struct {
 	P unsafe.Pointer
@@ -2326,7 +2674,20 @@ func TypeClassRef1(type1 gi.GType) (result TypeClass) {
 	return
 }
 
-// ignore callback TypeClassCacheFunc
+type TypeClassCacheFuncStruct struct {
+	F_cache_data unsafe.Pointer
+	F_g_class    TypeClass
+}
+
+func GetPointer_myTypeClassCacheFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectTypeClassCacheFunc())
+}
+
+//export myGObjectTypeClassCacheFunc
+func myGObjectTypeClassCacheFunc(cache_data C.gpointer, g_class *C.GTypeClass) {
+	// TODO: not found user_data
+}
+
 // Flags TypeDebugFlags
 type TypeDebugFlags int
 
@@ -2532,7 +2893,20 @@ func TypeInterfacePrerequisites1(interface_type gi.GType) (result gi.GTypeArray)
 	return
 }
 
-// ignore callback TypeInterfaceCheckFunc
+type TypeInterfaceCheckFuncStruct struct {
+	F_check_data unsafe.Pointer
+	F_g_iface    TypeInterface
+}
+
+func GetPointer_myTypeInterfaceCheckFunc() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectTypeInterfaceCheckFunc())
+}
+
+//export myGObjectTypeInterfaceCheckFunc
+func myGObjectTypeInterfaceCheckFunc(check_data C.gpointer, g_iface *C.GTypeInterface) {
+	// TODO: not found user_data
+}
+
 // Object TypeModule
 type TypeModule struct {
 	TypePluginIfc
@@ -2758,10 +3132,64 @@ func (v *TypePluginIfc) Use() {
 }
 
 // ignore Class struct TypePluginClass, type of TypePlugin is interface
-// ignore callback TypePluginCompleteInterfaceInfo
-// ignore callback TypePluginCompleteTypeInfo
-// ignore callback TypePluginUnuse
-// ignore callback TypePluginUse
+type TypePluginCompleteInterfaceInfoStruct struct {
+	F_plugin         TypePlugin
+	F_instance_type  unsafe.Pointer /*TODO_CB tag: GType, isPtr: false*/
+	F_interface_type unsafe.Pointer /*TODO_CB tag: GType, isPtr: false*/
+	F_info           InterfaceInfo
+}
+
+func GetPointer_myTypePluginCompleteInterfaceInfo() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectTypePluginCompleteInterfaceInfo())
+}
+
+//export myGObjectTypePluginCompleteInterfaceInfo
+func myGObjectTypePluginCompleteInterfaceInfo(plugin *C.GTypePlugin, instance_type C.gpointer, interface_type C.gpointer, info *C.GInterfaceInfo) {
+	// TODO: not found user_data
+}
+
+type TypePluginCompleteTypeInfoStruct struct {
+	F_plugin      TypePlugin
+	F_g_type      unsafe.Pointer /*TODO_CB tag: GType, isPtr: false*/
+	F_info        TypeInfo
+	F_value_table TypeValueTable
+}
+
+func GetPointer_myTypePluginCompleteTypeInfo() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectTypePluginCompleteTypeInfo())
+}
+
+//export myGObjectTypePluginCompleteTypeInfo
+func myGObjectTypePluginCompleteTypeInfo(plugin *C.GTypePlugin, g_type C.gpointer, info *C.GTypeInfo, value_table *C.GTypeValueTable) {
+	// TODO: not found user_data
+}
+
+type TypePluginUnuseStruct struct {
+	F_plugin TypePlugin
+}
+
+func GetPointer_myTypePluginUnuse() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectTypePluginUnuse())
+}
+
+//export myGObjectTypePluginUnuse
+func myGObjectTypePluginUnuse(plugin *C.GTypePlugin) {
+	// TODO: not found user_data
+}
+
+type TypePluginUseStruct struct {
+	F_plugin TypePlugin
+}
+
+func GetPointer_myTypePluginUse() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectTypePluginUse())
+}
+
+//export myGObjectTypePluginUse
+func myGObjectTypePluginUse(plugin *C.GTypePlugin) {
+	// TODO: not found user_data
+}
+
 // Struct TypeQuery
 type TypeQuery struct {
 	P unsafe.Pointer
@@ -3966,14 +4394,14 @@ func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
 // g_value_array_sort_with_data
 // container is not nil, container is ValueArray
 // is method
-func (v ValueArray) Sort(compare_func int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) (result ValueArray) {
+func (v ValueArray) Sort(compare_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result ValueArray) {
 	iv, err := _I.Get(173, "ValueArray", "sort")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_compare_func := gi.NewIntArgument(compare_func) /*TODO*/
+	arg_compare_func := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myCompareDataFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_compare_func, arg_user_data}
 	var ret gi.Argument
@@ -3982,8 +4410,34 @@ func (v ValueArray) Sort(compare_func int /*TODO_TYPE isPtr: false, tag: interfa
 	return
 }
 
-// ignore callback ValueTransform
-// ignore callback WeakNotify
+type ValueTransformStruct struct {
+	F_src_value  Value
+	F_dest_value Value
+}
+
+func GetPointer_myValueTransform() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectValueTransform())
+}
+
+//export myGObjectValueTransform
+func myGObjectValueTransform(src_value *C.GValue, dest_value *C.GValue) {
+	// TODO: not found user_data
+}
+
+type WeakNotifyStruct struct {
+	F_data                 unsafe.Pointer
+	F_where_the_object_was Object
+}
+
+func GetPointer_myWeakNotify() unsafe.Pointer {
+	return unsafe.Pointer(C.getPointer_myGObjectWeakNotify())
+}
+
+//export myGObjectWeakNotify
+func myGObjectWeakNotify(data C.gpointer, where_the_object_was *C.GObject) {
+	// TODO: not found user_data
+}
+
 // Struct WeakRef
 type WeakRef struct {
 	P unsafe.Pointer
@@ -5451,7 +5905,7 @@ func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value,
 
 // g_signal_add_emission_hook
 // container is nil
-func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func int /*TODO_TYPE isPtr: false, tag: interface*/, hook_data unsafe.Pointer, data_destroy int /*TODO_TYPE isPtr: false, tag: interface*/) (result uint64) {
+func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func int /*TODO_TYPE CALLBACK*/, hook_data unsafe.Pointer, data_destroy int /*TODO_TYPE CALLBACK*/) (result uint64) {
 	iv, err := _I.Get(243, "signal_add_emission_hook", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5459,9 +5913,9 @@ func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func int /*TODO
 	}
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
-	arg_hook_func := gi.NewIntArgument(hook_func) /*TODO*/
+	arg_hook_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySignalEmissionHook()))
 	arg_hook_data := gi.NewPointerArgument(hook_data)
-	arg_data_destroy := gi.NewIntArgument(data_destroy) /*TODO*/
+	arg_data_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_signal_id, arg_detail, arg_hook_func, arg_hook_data, arg_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
