@@ -49,13 +49,13 @@ import "C"
 
 import (
 	"errors"
-	"unsafe"
-
 	"fmt"
-	"github.com/linuxdeepin/go-gir/glib-2.0"
-	"github.com/linuxdeepin/go-gir/util"
 	"reflect"
 	"sync"
+	"unsafe"
+
+	"github.com/electricface/go-gir/glib-2.0"
+	"github.com/electricface/go-gir/util"
 )
 
 /*
@@ -190,7 +190,7 @@ func (v Value) get(typ Type) (interface{}, error) {
 		return Object{unsafe.Pointer(ret)}, nil
 	case TYPE_VARIANT:
 		ret := C.g_value_get_variant(v.native())
-		return glib.WrapVariant(unsafe.Pointer(ret)), nil
+		return glib.Variant{P: unsafe.Pointer(ret)}, nil
 	}
 
 	gvalueGetters.Lock()
