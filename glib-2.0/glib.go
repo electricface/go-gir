@@ -14,7 +14,7 @@ static void* getPointer_myGFunc() {
 import "C"
 
 import (
-	"github.com/electricface/go-gir3/gi"
+	gi "github.com/electricface/go-gir3/gi-lite"
 	"unsafe"
 )
 

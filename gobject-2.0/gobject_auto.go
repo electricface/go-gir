@@ -114,9 +114,9 @@ return (void*)(myGObjectWeakNotify);
 */
 import "C"
 import "github.com/electricface/go-gir/glib-2.0"
-import "github.com/electricface/go-gir3/gi"
 import "log"
 import "unsafe"
+import gi "github.com/electricface/go-gir3/gi-lite"
 
 var _I = gi.NewInvokerCache("GObject")
 var _ unsafe.Pointer

@@ -1,6 +1,6 @@
 package gtk
 
-import "github.com/electricface/go-gir3/gi"
+import gi "github.com/electricface/go-gir3/gi-lite"
 import "unsafe"
 import "log"
 

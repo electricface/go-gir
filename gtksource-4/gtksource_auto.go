@@ -1,5 +1,10 @@
 package gtksource
 
+/*
+#cgo pkg-config: gtksourceview-4
+#include <gtksourceview/gtksource.h>
+*/
+import "C"
 import "github.com/electricface/go-gir/atk-1.0"
 import "github.com/electricface/go-gir/cairo-1.0"
 import "github.com/electricface/go-gir/gdk-3.0"
@@ -8,9 +13,9 @@ import "github.com/electricface/go-gir/gio-2.0"
 import "github.com/electricface/go-gir/glib-2.0"
 import "github.com/electricface/go-gir/gobject-2.0"
 import "github.com/electricface/go-gir/gtk-3.0"
-import "github.com/electricface/go-gir3/gi"
 import "log"
 import "unsafe"
+import gi "github.com/electricface/go-gir3/gi-lite"
 
 var _I = gi.NewInvokerCache("GtkSource")
 var _ unsafe.Pointer
@@ -2355,7 +2360,7 @@ func (v FileLoader) GetNewlineType() (result NewlineTypeEnum) {
 // gtk_source_file_loader_load_async
 // container is not nil, container is FileLoader
 // is method
-func (v FileLoader) LoadAsync(io_priority int32, cancellable gio.ICancellable, progress_callback int /*TODO_TYPE isPtr: false, tag: interface*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE isPtr: false, tag: interface*/, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v FileLoader) LoadAsync(io_priority int32, cancellable gio.ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE CALLBACK*/, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(115, "FileLoader", "load_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2368,10 +2373,10 @@ func (v FileLoader) LoadAsync(io_priority int32, cancellable gio.ICancellable, p
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_progress_callback := gi.NewIntArgument(progress_callback) /*TODO*/
+	arg_progress_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myFileProgressCallback()))
 	arg_progress_callback_data := gi.NewPointerArgument(progress_callback_data)
-	arg_progress_callback_notify := gi.NewIntArgument(progress_callback_notify) /*TODO*/
-	arg_callback := gi.NewIntArgument(callback)                                 /*TODO*/
+	arg_progress_callback_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_progress_callback_notify, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -2645,7 +2650,7 @@ func (v FileSaver) GetNewlineType() (result NewlineTypeEnum) {
 // gtk_source_file_saver_save_async
 // container is not nil, container is FileSaver
 // is method
-func (v FileSaver) SaveAsync(io_priority int32, cancellable gio.ICancellable, progress_callback int /*TODO_TYPE isPtr: false, tag: interface*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE isPtr: false, tag: interface*/, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v FileSaver) SaveAsync(io_priority int32, cancellable gio.ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE CALLBACK*/, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(127, "FileSaver", "save_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2658,10 +2663,10 @@ func (v FileSaver) SaveAsync(io_priority int32, cancellable gio.ICancellable, pr
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_progress_callback := gi.NewIntArgument(progress_callback) /*TODO*/
+	arg_progress_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myFileProgressCallback()))
 	arg_progress_callback_data := gi.NewPointerArgument(progress_callback_data)
-	arg_progress_callback_notify := gi.NewIntArgument(progress_callback_notify) /*TODO*/
-	arg_callback := gi.NewIntArgument(callback)                                 /*TODO*/
+	arg_progress_callback_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_progress_callback_notify, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -5472,7 +5477,7 @@ func (v SearchContext) Backward(iter gtk.TextIter, match_start gtk.TextIter, mat
 // gtk_source_search_context_backward_async
 // container is not nil, container is SearchContext
 // is method
-func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable gio.ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(264, "SearchContext", "backward_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5485,7 +5490,7 @@ func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable gio.ICancell
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewIntArgument(callback) /*TODO*/
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -5545,7 +5550,7 @@ func (v SearchContext) Forward(iter gtk.TextIter, match_start gtk.TextIter, matc
 // gtk_source_search_context_forward_async
 // container is not nil, container is SearchContext
 // is method
-func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable gio.ICancellable, callback int /*TODO_TYPE isPtr: false, tag: interface*/, user_data unsafe.Pointer) {
+func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(267, "SearchContext", "forward_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5558,7 +5563,7 @@ func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable gio.ICancella
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewIntArgument(callback) /*TODO*/
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)

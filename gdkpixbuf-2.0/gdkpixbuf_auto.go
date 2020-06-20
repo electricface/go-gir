@@ -16,9 +16,9 @@ import "C"
 import "github.com/electricface/go-gir/gio-2.0"
 import "github.com/electricface/go-gir/glib-2.0"
 import "github.com/electricface/go-gir/gobject-2.0"
-import "github.com/electricface/go-gir3/gi"
 import "log"
 import "unsafe"
+import gi "github.com/electricface/go-gir3/gi-lite"
 
 var _I = gi.NewInvokerCache("GdkPixbuf")
 var _ unsafe.Pointer

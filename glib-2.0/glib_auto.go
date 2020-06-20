@@ -189,9 +189,9 @@ return (void*)(myGLibVoidFunc);
 }
 */
 import "C"
-import "github.com/electricface/go-gir3/gi"
 import "log"
 import "unsafe"
+import gi "github.com/electricface/go-gir3/gi-lite"
 
 var _I = gi.NewInvokerCache("GLib")
 var _ unsafe.Pointer
