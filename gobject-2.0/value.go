@@ -49,13 +49,11 @@ import "C"
 
 import (
 	"errors"
-	"fmt"
-	"reflect"
-	"sync"
+	"github.com/electricface/go-gir/glib-2.0"
 	"unsafe"
 
-	"github.com/electricface/go-gir/glib-2.0"
 	"github.com/electricface/go-gir/util"
+	"github.com/electricface/go-gir3/gi-lite"
 )
 
 /*
@@ -87,37 +85,37 @@ func (v Value) native() *C.GValue {
 // Type is a wrapper around the G_VALUE_HOLDS_GTYPE() macro and
 // the g_value_get_gtype() function.  GetType() returns TYPE_INVALID if v
 // does not hold a Type, or otherwise returns the Type of v.
-func (v Value) Type() (actual Type, fundamental Type, err error) {
+func (v Value) Type() (actual gi.GType, fundamental gi.GType, err error) {
 	if !util.Int2Bool(int(C._g_is_value(v.native()))) {
 		return actual, fundamental, errors.New("invalid GValue")
 	}
 	cActual := C._g_value_type(v.native())
 	cFundamental := C._g_value_fundamental(cActual)
-	return Type(cActual), Type(cFundamental), nil
+	return gi.GType(cActual), gi.GType(cFundamental), nil
 }
 
-var gvalueGetters = struct {
-	m map[Type]GValueGetter
-	sync.Mutex
-}{
-	m: make(map[Type]GValueGetter),
-}
+//var gvalueGetters = struct {
+//	m map[gi.GType]GValueGetter
+//	sync.Mutex
+//}{
+//	m: make(map[gi.GType]GValueGetter),
+//}
+//
+//type GValueGetter func(unsafe.Pointer) (interface{}, error)
 
-type GValueGetter func(unsafe.Pointer) (interface{}, error)
-
-func registerGValueGetter(typ Type, getter GValueGetter) {
-	gvalueGetters.Lock()
-	gvalueGetters.m[typ] = getter
-	gvalueGetters.Unlock()
-}
+//func registerGValueGetter(typ gi.GType, getter GValueGetter) {
+//	gvalueGetters.Lock()
+//	gvalueGetters.m[typ] = getter
+//	gvalueGetters.Unlock()
+//}
 
 func (v Value) Get() (interface{}, error) {
 	actualType, fundamentalType, err := v.Type()
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("actual Type:", actualType)
-	fmt.Println("fund Type:", fundamentalType)
+	//fmt.Println("actual Type:", actualType)
+	//fmt.Println("fund Type:", fundamentalType)
 
 	val, err := v.get(actualType)
 	if err == nil {
@@ -132,184 +130,198 @@ func (v Value) Get() (interface{}, error) {
 
 var errTypeUnknown = errors.New("unknown type")
 
-func (v Value) get(typ Type) (interface{}, error) {
+func (v Value) get(typ gi.GType) (ret interface{}, err error) {
 	switch typ {
 	case TYPE_INVALID:
-		return nil, errors.New("invalid type")
+		err = errors.New("invalid type")
 	case TYPE_NONE:
-		return nil, nil
 	case TYPE_INTERFACE:
-		return nil, errors.New("interface conversion not yet implemented")
+		err = errors.New("interface conversion not yet implemented")
 	case TYPE_CHAR:
-		ret := C.g_value_get_schar(v.native())
-		return int(ret), nil
+		ret = v.GetSchar()
 	case TYPE_UCHAR:
-		ret := C.g_value_get_uchar(v.native())
-		return byte(ret), nil
+		ret = v.GetUchar()
 	case TYPE_BOOLEAN:
-		ret := C.g_value_get_boolean(v.native())
-		return util.Int2Bool(int(ret)), nil
+		ret = v.GetBoolean()
 	case TYPE_INT:
-		ret := C.g_value_get_int(v.native())
-		return int(ret), nil
-	case TYPE_LONG:
-		ret := C.g_value_get_long(v.native())
-		return int(ret), nil
-	case TYPE_ENUM:
-		ret := C.g_value_get_enum(v.native())
-		return int(ret), nil
-	case TYPE_INT64:
-		ret := C.g_value_get_int64(v.native())
-		return int64(ret), nil
+		ret = v.GetInt()
+
 	case TYPE_UINT:
-		ret := C.g_value_get_uint(v.native())
-		return uint(ret), nil
-	case TYPE_FLAGS:
-		ret := C.g_value_get_flags(v.native())
-		return uint(ret), nil
+		ret = v.GetUint()
+
+	case TYPE_LONG:
+		ret = v.GetLong()
+
+	case TYPE_ULONG:
+		ret = v.GetUlong()
+
+	case TYPE_INT64:
+		ret = v.GetInt64()
+
 	case TYPE_UINT64:
-		ret := C.g_value_get_uint64(v.native())
-		return uint64(ret), nil
+		ret = v.GetUint64()
+
+	case TYPE_ENUM:
+		ret = v.GetEnum()
+
+	case TYPE_FLAGS:
+		ret = v.GetFlags()
+
 	case TYPE_FLOAT:
-		ret := C.g_value_get_float(v.native())
-		return float32(ret), nil
+		ret = v.GetFloat()
+
 	case TYPE_DOUBLE:
-		ret := C.g_value_get_double(v.native())
-		return float64(ret), nil
+		ret = v.GetDouble()
+
 	case TYPE_STRING:
-		ret := C.g_value_get_string(v.native())
-		return C.GoString((*C.char)(ret)), nil
+		ret = v.GetString()
+
 	case TYPE_POINTER:
-		ret := C.g_value_get_pointer(v.native())
-		return unsafe.Pointer(ret), nil
+		ret = v.GetPointer()
+
 	case TYPE_BOXED:
-		ret := C.g_value_get_boxed(v.native())
-		return unsafe.Pointer(ret), nil
+		ret = v.GetBoxed()
+
+	case TYPE_PARAM:
+		ret = v.GetParam()
+
 	case TYPE_OBJECT:
-		ret := C.g_value_get_object(v.native())
-		return Object{unsafe.Pointer(ret)}, nil
+		ret = v.GetObject()
+
 	case TYPE_VARIANT:
-		ret := C.g_value_get_variant(v.native())
-		return glib.Variant{P: unsafe.Pointer(ret)}, nil
-	}
-
-	gvalueGetters.Lock()
-	getter, ok := gvalueGetters.m[typ]
-	gvalueGetters.Unlock()
-	if !ok {
-		return nil, errTypeUnknown
-	}
-	return getter(v.P)
-}
-
-func (v Value) GetWithType(reflectType reflect.Type) (interface{}, error) {
-	kind := reflectType.Kind()
-	switch kind {
-	case reflect.Bool:
-		val := v.GetBoolean()
-		return val, nil
-
-	case reflect.Int:
-		_, fundType, err := v.Type()
-		if err != nil {
-			return nil, err
-		}
-
-		switch fundType {
-		case TYPE_ENUM:
-			val := v.GetEnum()
-			return val, nil
-
-		default:
-			val := v.GetInt()
-			return val, nil
-		}
-
-	case reflect.Int8:
-		val := v.GetSchar()
-		return val, nil
-
-	case reflect.Int16:
-		val := v.GetInt()
-		return int16(val), nil
-
-	case reflect.Int32:
-		val := v.GetInt()
-		return int32(val), nil
-
-	case reflect.Int64:
-		val := v.GetInt64()
-		return val, nil
-
-	case reflect.Uint:
-		val := v.GetUint()
-		return val, nil
-
-	case reflect.Uint8:
-		val := v.GetUchar()
-		return val, nil
-
-	case reflect.Uint16:
-		val := v.GetUint()
-		return uint16(val), nil
-
-	case reflect.Uint32:
-		val := v.GetUint()
-		return uint32(val), nil
-
-	case reflect.Uint64:
-		val := v.GetUint64()
-		return val, nil
-
-	case reflect.Uintptr:
-		val := v.GetPointer()
-		return uintptr(val), nil
-
-	case reflect.Float32:
-		val := v.GetFloat()
-		return val, nil
-
-	case reflect.Float64:
-		val := v.GetDouble()
-		return val, nil
-
-	case reflect.UnsafePointer:
-		val := v.GetPointer()
-		return val, nil
-
-	case reflect.String:
-		val := v.GetString()
-		return val, nil
-
-	case reflect.Struct:
-		val := unsafe.Pointer(C.g_value_get_object(v.native()))
-
-		newValPtr := reflect.New(reflectType)
-		newVal := newValPtr.Elem()
-		ptrFieldVal := newVal.FieldByName("P")
-		ptrFieldVal.SetPointer(val)
-
-		return newVal.Interface(), nil
+		ret = v.GetVariant()
 
 	default:
-		// Complex64, Complex128
-		// Array
-		// Chan
-		// Func
-		// Interface
-		// Map
-		// Ptr
-		// Slice
-		return nil, errors.New("unsupported reflect type")
+		err = errTypeUnknown
 	}
+
+	//gvalueGetters.Lock()
+	//getter, ok := gvalueGetters.m[typ]
+	//gvalueGetters.Unlock()
+	//if !ok {
+	//	return nil, errTypeUnknown
+	//}
+	//return getter(v.P)
+	return
 }
+
+//func (v Value) GetWithType(reflectType reflect.Type) (interface{}, error) {
+//	kind := reflectType.Kind()
+//	switch kind {
+//	case reflect.Bool:
+//		val := v.GetBoolean()
+//		return val, nil
+//
+//	case reflect.Int:
+//		_, fundType, err := v.Type()
+//		if err != nil {
+//			return nil, err
+//		}
+//
+//		switch fundType {
+//		case TYPE_ENUM:
+//			val := v.GetEnum()
+//			return val, nil
+//
+//		default:
+//			val := v.GetInt()
+//			return val, nil
+//		}
+//
+//	case reflect.Int8:
+//		val := v.GetSchar()
+//		return val, nil
+//
+//	case reflect.Int16:
+//		val := v.GetInt()
+//		return int16(val), nil
+//
+//	case reflect.Int32:
+//		val := v.GetInt()
+//		return int32(val), nil
+//
+//	case reflect.Int64:
+//		val := v.GetInt64()
+//		return val, nil
+//
+//	case reflect.Uint:
+//		val := v.GetUint()
+//		return val, nil
+//
+//	case reflect.Uint8:
+//		val := v.GetUchar()
+//		return val, nil
+//
+//	case reflect.Uint16:
+//		val := v.GetUint()
+//		return uint16(val), nil
+//
+//	case reflect.Uint32:
+//		val := v.GetUint()
+//		return uint32(val), nil
+//
+//	case reflect.Uint64:
+//		val := v.GetUint64()
+//		return val, nil
+//
+//	case reflect.Uintptr:
+//		val := v.GetPointer()
+//		return uintptr(val), nil
+//
+//	case reflect.Float32:
+//		val := v.GetFloat()
+//		return val, nil
+//
+//	case reflect.Float64:
+//		val := v.GetDouble()
+//		return val, nil
+//
+//	case reflect.UnsafePointer:
+//		val := v.GetPointer()
+//		return val, nil
+//
+//	case reflect.String:
+//		val := v.GetString()
+//		return val, nil
+//
+//	case reflect.Struct:
+//		val := unsafe.Pointer(C.g_value_get_object(v.native()))
+//
+//		newValPtr := reflect.New(reflectType)
+//		newVal := newValPtr.Elem()
+//		ptrFieldVal := newVal.FieldByName("P")
+//		ptrFieldVal.SetPointer(val)
+//
+//		return newVal.Interface(), nil
+//
+//	default:
+//		// Complex64, Complex128
+//		// Array
+//		// Chan
+//		// Func
+//		// Interface
+//		// Map
+//		// Ptr
+//		// Slice
+//		return nil, errors.New("unsupported reflect type")
+//	}
+//}
 
 var errTypeConvert = errors.New("type convert failed")
 
 func (v Value) Set(iVal interface{}) error {
 	cType := C._g_value_type(v.native())
-	gType := Type(cType)
+	gType := gi.GType(cType)
 	switch gType {
+	case TYPE_INVALID:
+		return errors.New("type is invalid")
+
+	case TYPE_NONE:
+		return nil
+
+	case TYPE_INTERFACE:
+		return errors.New("unsupported type interface")
+
 	case TYPE_CHAR:
 		val, ok := iVal.(int8)
 		if !ok {
@@ -332,18 +344,32 @@ func (v Value) Set(iVal interface{}) error {
 		v.SetBoolean(val)
 
 	case TYPE_INT:
-		val, ok := iVal.(int)
+		val, ok := iVal.(int32)
 		if !ok {
 			return errTypeConvert
 		}
-		v.SetInt(int32(val))
+		v.SetInt(val)
 
 	case TYPE_UINT:
-		val, ok := iVal.(uint)
+		val, ok := iVal.(uint32)
 		if !ok {
 			return errTypeConvert
 		}
-		v.SetUint(uint32(val))
+		v.SetUint(val)
+
+	case TYPE_LONG:
+		val, ok := iVal.(int64)
+		if !ok {
+			return errTypeConvert
+		}
+		v.SetLong(val)
+
+	case TYPE_ULONG:
+		val, ok := iVal.(uint64)
+		if !ok {
+			return errTypeConvert
+		}
+		v.SetUlong(val)
 
 	case TYPE_INT64:
 		val, ok := iVal.(int64)
@@ -358,6 +384,20 @@ func (v Value) Set(iVal interface{}) error {
 			return errTypeConvert
 		}
 		v.SetUint64(val)
+
+	case TYPE_ENUM:
+		val, ok := iVal.(int32)
+		if !ok {
+			return errTypeConvert
+		}
+		v.SetEnum(val)
+
+	case TYPE_FLAGS:
+		val, ok := iVal.(uint32)
+		if !ok {
+			return errTypeConvert
+		}
+		v.SetFlags(val)
 
 	case TYPE_FLOAT:
 		val, ok := iVal.(float32)
@@ -380,12 +420,40 @@ func (v Value) Set(iVal interface{}) error {
 		}
 		v.SetString(val)
 
+	case TYPE_POINTER:
+		val, ok := iVal.(unsafe.Pointer)
+		if ok {
+			return errTypeConvert
+		}
+		v.SetPointer(val)
+
+	case TYPE_BOXED:
+		val, ok := iVal.(unsafe.Pointer)
+		if !ok {
+			return errTypeConvert
+		}
+		v.SetBoxed(val)
+
+	case TYPE_PARAM:
+		val, ok := iVal.(ParamSpec)
+		if !ok {
+			return errTypeConvert
+		}
+		v.SetParam(val)
+
 	case TYPE_OBJECT:
 		val, ok := iVal.(Object)
 		if !ok {
 			return errTypeConvert
 		}
-		v.SetInstance(val.P)
+		v.SetObject(val)
+
+	case TYPE_VARIANT:
+		val, ok := iVal.(glib.Variant)
+		if !ok {
+			return errTypeConvert
+		}
+		v.SetVariant(val)
 
 	default:
 		return errTypeConvert

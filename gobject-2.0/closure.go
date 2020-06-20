@@ -136,15 +136,15 @@ func gValueSlice(values *C.GValue, nValues int) (slice []C.GValue) {
 	return
 }
 
-type Type uint
+//type Type uint
 
-type CanGetTypeAndGValueGetter interface {
-	GetType() Type
-	GetGValueGetter() GValueGetter
-}
+//type CanGetTypeAndGValueGetter interface {
+//	GetType() Type
+//	GetGValueGetter() GValueGetter
+//}
 
-var cgt CanGetTypeAndGValueGetter
-var cgtIfc = reflect.TypeOf(&cgt).Elem()
+//var cgt CanGetTypeAndGValueGetter
+//var cgtIfc = reflect.TypeOf(&cgt).Elem()
 
 // ClosureNew creates a new GClosure and adds its callback function
 // to the internally-maintained map. It's exported for visibility to other
@@ -162,16 +162,16 @@ func ClosureNew(f interface{}) Closure {
 		panic("f is not a func")
 	}
 
-	fType := rf.Type()
-	for i := 0; i < fType.NumIn(); i++ {
-		argType := fType.In(i)
-		//fmt.Printf("i: %d, argType: %v\n", i, argType)
-		if argType.Implements(cgtIfc) {
-			argEmptyValue := reflect.New(argType)
-			cctm := argEmptyValue.Interface().(CanGetTypeAndGValueGetter)
-			registerGValueGetter(cctm.GetType(), cctm.GetGValueGetter())
-		}
-	}
+	//fType := rf.Type()
+	//for i := 0; i < fType.NumIn(); i++ {
+	//argType := fType.In(i)
+	//fmt.Printf("i: %d, argType: %v\n", i, argType)
+	//if argType.Implements(cgtIfc) {
+	//	argEmptyValue := reflect.New(argType)
+	//	cctm := argEmptyValue.Interface().(CanGetTypeAndGValueGetter)
+	//	registerGValueGetter(cctm.GetType(), cctm.GetGValueGetter())
+	//}
+	//}
 
 	c := C._g_closure_new()
 	C._g_closure_add_finalize_notifier(c)
