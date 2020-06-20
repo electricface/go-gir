@@ -73,8 +73,11 @@ func BufferGetType() gi.GType {
 }
 
 // gtk_source_buffer_new
-// container is not nil, container is Buffer
-// is constructor
+//
+// [ table ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewBuffer(table gtk.ITextTagTable) (result Buffer) {
 	iv, err := _I.Get(0, "Buffer", "new")
 	if err != nil {
@@ -94,8 +97,11 @@ func NewBuffer(table gtk.ITextTagTable) (result Buffer) {
 }
 
 // gtk_source_buffer_new_with_language
-// container is not nil, container is Buffer
-// is constructor
+//
+// [ language ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewBufferWithLanguage(language ILanguage) (result Buffer) {
 	iv, err := _I.Get(1, "Buffer", "new_with_language")
 	if err != nil {
@@ -115,8 +121,13 @@ func NewBufferWithLanguage(language ILanguage) (result Buffer) {
 }
 
 // gtk_source_buffer_backward_iter_to_source_mark
-// container is not nil, container is Buffer
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ category ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) BackwardIterToSourceMark(iter gtk.TextIter, category string) (result bool) {
 	iv, err := _I.Get(2, "Buffer", "backward_iter_to_source_mark")
 	if err != nil {
@@ -136,8 +147,7 @@ func (v Buffer) BackwardIterToSourceMark(iter gtk.TextIter, category string) (re
 }
 
 // gtk_source_buffer_begin_not_undoable_action
-// container is not nil, container is Buffer
-// is method
+//
 func (v Buffer) BeginNotUndoableAction() {
 	iv, err := _I.Get(3, "Buffer", "begin_not_undoable_action")
 	if err != nil {
@@ -150,8 +160,9 @@ func (v Buffer) BeginNotUndoableAction() {
 }
 
 // gtk_source_buffer_can_redo
-// container is not nil, container is Buffer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) CanRedo() (result bool) {
 	iv, err := _I.Get(4, "Buffer", "can_redo")
 	if err != nil {
@@ -167,8 +178,9 @@ func (v Buffer) CanRedo() (result bool) {
 }
 
 // gtk_source_buffer_can_undo
-// container is not nil, container is Buffer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) CanUndo() (result bool) {
 	iv, err := _I.Get(5, "Buffer", "can_undo")
 	if err != nil {
@@ -184,8 +196,13 @@ func (v Buffer) CanUndo() (result bool) {
 }
 
 // gtk_source_buffer_change_case
-// container is not nil, container is Buffer
-// is method
+//
+// [ case_type ] trans: nothing
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
 func (v Buffer) ChangeCase(case_type ChangeCaseTypeEnum, start gtk.TextIter, end gtk.TextIter) {
 	iv, err := _I.Get(6, "Buffer", "change_case")
 	if err != nil {
@@ -201,8 +218,15 @@ func (v Buffer) ChangeCase(case_type ChangeCaseTypeEnum, start gtk.TextIter, end
 }
 
 // gtk_source_buffer_create_source_mark
-// container is not nil, container is Buffer
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ category ] trans: nothing
+//
+// [ where ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) CreateSourceMark(name string, category string, where gtk.TextIter) (result Mark) {
 	iv, err := _I.Get(7, "Buffer", "create_source_mark")
 	if err != nil {
@@ -225,8 +249,7 @@ func (v Buffer) CreateSourceMark(name string, category string, where gtk.TextIte
 }
 
 // gtk_source_buffer_end_not_undoable_action
-// container is not nil, container is Buffer
-// is method
+//
 func (v Buffer) EndNotUndoableAction() {
 	iv, err := _I.Get(8, "Buffer", "end_not_undoable_action")
 	if err != nil {
@@ -239,8 +262,11 @@ func (v Buffer) EndNotUndoableAction() {
 }
 
 // gtk_source_buffer_ensure_highlight
-// container is not nil, container is Buffer
-// is method
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
 func (v Buffer) EnsureHighlight(start gtk.TextIter, end gtk.TextIter) {
 	iv, err := _I.Get(9, "Buffer", "ensure_highlight")
 	if err != nil {
@@ -255,8 +281,13 @@ func (v Buffer) EnsureHighlight(start gtk.TextIter, end gtk.TextIter) {
 }
 
 // gtk_source_buffer_forward_iter_to_source_mark
-// container is not nil, container is Buffer
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ category ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) ForwardIterToSourceMark(iter gtk.TextIter, category string) (result bool) {
 	iv, err := _I.Get(10, "Buffer", "forward_iter_to_source_mark")
 	if err != nil {
@@ -276,8 +307,11 @@ func (v Buffer) ForwardIterToSourceMark(iter gtk.TextIter, category string) (res
 }
 
 // gtk_source_buffer_get_context_classes_at_iter
-// container is not nil, container is Buffer
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Buffer) GetContextClassesAtIter(iter gtk.TextIter) (result gi.CStrArray) {
 	iv, err := _I.Get(11, "Buffer", "get_context_classes_at_iter")
 	if err != nil {
@@ -295,8 +329,9 @@ func (v Buffer) GetContextClassesAtIter(iter gtk.TextIter) (result gi.CStrArray)
 }
 
 // gtk_source_buffer_get_highlight_matching_brackets
-// container is not nil, container is Buffer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) GetHighlightMatchingBrackets() (result bool) {
 	iv, err := _I.Get(12, "Buffer", "get_highlight_matching_brackets")
 	if err != nil {
@@ -312,8 +347,9 @@ func (v Buffer) GetHighlightMatchingBrackets() (result bool) {
 }
 
 // gtk_source_buffer_get_highlight_syntax
-// container is not nil, container is Buffer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) GetHighlightSyntax() (result bool) {
 	iv, err := _I.Get(13, "Buffer", "get_highlight_syntax")
 	if err != nil {
@@ -329,8 +365,9 @@ func (v Buffer) GetHighlightSyntax() (result bool) {
 }
 
 // gtk_source_buffer_get_implicit_trailing_newline
-// container is not nil, container is Buffer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) GetImplicitTrailingNewline() (result bool) {
 	iv, err := _I.Get(14, "Buffer", "get_implicit_trailing_newline")
 	if err != nil {
@@ -346,8 +383,9 @@ func (v Buffer) GetImplicitTrailingNewline() (result bool) {
 }
 
 // gtk_source_buffer_get_language
-// container is not nil, container is Buffer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) GetLanguage() (result Language) {
 	iv, err := _I.Get(15, "Buffer", "get_language")
 	if err != nil {
@@ -363,8 +401,9 @@ func (v Buffer) GetLanguage() (result Language) {
 }
 
 // gtk_source_buffer_get_max_undo_levels
-// container is not nil, container is Buffer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) GetMaxUndoLevels() (result int32) {
 	iv, err := _I.Get(16, "Buffer", "get_max_undo_levels")
 	if err != nil {
@@ -380,8 +419,13 @@ func (v Buffer) GetMaxUndoLevels() (result int32) {
 }
 
 // gtk_source_buffer_get_source_marks_at_iter
-// container is not nil, container is Buffer
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ category ] trans: nothing
+//
+// [ result ] trans: container
+//
 func (v Buffer) GetSourceMarksAtIter(iter gtk.TextIter, category string) (result glib.SList) {
 	iv, err := _I.Get(17, "Buffer", "get_source_marks_at_iter")
 	if err != nil {
@@ -401,8 +445,13 @@ func (v Buffer) GetSourceMarksAtIter(iter gtk.TextIter, category string) (result
 }
 
 // gtk_source_buffer_get_source_marks_at_line
-// container is not nil, container is Buffer
-// is method
+//
+// [ line ] trans: nothing
+//
+// [ category ] trans: nothing
+//
+// [ result ] trans: container
+//
 func (v Buffer) GetSourceMarksAtLine(line int32, category string) (result glib.SList) {
 	iv, err := _I.Get(18, "Buffer", "get_source_marks_at_line")
 	if err != nil {
@@ -422,8 +471,9 @@ func (v Buffer) GetSourceMarksAtLine(line int32, category string) (result glib.S
 }
 
 // gtk_source_buffer_get_style_scheme
-// container is not nil, container is Buffer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) GetStyleScheme() (result StyleScheme) {
 	iv, err := _I.Get(19, "Buffer", "get_style_scheme")
 	if err != nil {
@@ -439,8 +489,9 @@ func (v Buffer) GetStyleScheme() (result StyleScheme) {
 }
 
 // gtk_source_buffer_get_undo_manager
-// container is not nil, container is Buffer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) GetUndoManager() (result UndoManager) {
 	iv, err := _I.Get(20, "Buffer", "get_undo_manager")
 	if err != nil {
@@ -456,8 +507,13 @@ func (v Buffer) GetUndoManager() (result UndoManager) {
 }
 
 // gtk_source_buffer_iter_backward_to_context_class_toggle
-// container is not nil, container is Buffer
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ context_class ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) IterBackwardToContextClassToggle(iter gtk.TextIter, context_class string) (result bool) {
 	iv, err := _I.Get(21, "Buffer", "iter_backward_to_context_class_toggle")
 	if err != nil {
@@ -477,8 +533,13 @@ func (v Buffer) IterBackwardToContextClassToggle(iter gtk.TextIter, context_clas
 }
 
 // gtk_source_buffer_iter_forward_to_context_class_toggle
-// container is not nil, container is Buffer
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ context_class ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) IterForwardToContextClassToggle(iter gtk.TextIter, context_class string) (result bool) {
 	iv, err := _I.Get(22, "Buffer", "iter_forward_to_context_class_toggle")
 	if err != nil {
@@ -498,8 +559,13 @@ func (v Buffer) IterForwardToContextClassToggle(iter gtk.TextIter, context_class
 }
 
 // gtk_source_buffer_iter_has_context_class
-// container is not nil, container is Buffer
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ context_class ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Buffer) IterHasContextClass(iter gtk.TextIter, context_class string) (result bool) {
 	iv, err := _I.Get(23, "Buffer", "iter_has_context_class")
 	if err != nil {
@@ -519,8 +585,11 @@ func (v Buffer) IterHasContextClass(iter gtk.TextIter, context_class string) (re
 }
 
 // gtk_source_buffer_join_lines
-// container is not nil, container is Buffer
-// is method
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
 func (v Buffer) JoinLines(start gtk.TextIter, end gtk.TextIter) {
 	iv, err := _I.Get(24, "Buffer", "join_lines")
 	if err != nil {
@@ -535,8 +604,7 @@ func (v Buffer) JoinLines(start gtk.TextIter, end gtk.TextIter) {
 }
 
 // gtk_source_buffer_redo
-// container is not nil, container is Buffer
-// is method
+//
 func (v Buffer) Redo() {
 	iv, err := _I.Get(25, "Buffer", "redo")
 	if err != nil {
@@ -549,8 +617,13 @@ func (v Buffer) Redo() {
 }
 
 // gtk_source_buffer_remove_source_marks
-// container is not nil, container is Buffer
-// is method
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ category ] trans: nothing
+//
 func (v Buffer) RemoveSourceMarks(start gtk.TextIter, end gtk.TextIter, category string) {
 	iv, err := _I.Get(26, "Buffer", "remove_source_marks")
 	if err != nil {
@@ -568,8 +641,9 @@ func (v Buffer) RemoveSourceMarks(start gtk.TextIter, end gtk.TextIter, category
 }
 
 // gtk_source_buffer_set_highlight_matching_brackets
-// container is not nil, container is Buffer
-// is method
+//
+// [ highlight ] trans: nothing
+//
 func (v Buffer) SetHighlightMatchingBrackets(highlight bool) {
 	iv, err := _I.Get(27, "Buffer", "set_highlight_matching_brackets")
 	if err != nil {
@@ -583,8 +657,9 @@ func (v Buffer) SetHighlightMatchingBrackets(highlight bool) {
 }
 
 // gtk_source_buffer_set_highlight_syntax
-// container is not nil, container is Buffer
-// is method
+//
+// [ highlight ] trans: nothing
+//
 func (v Buffer) SetHighlightSyntax(highlight bool) {
 	iv, err := _I.Get(28, "Buffer", "set_highlight_syntax")
 	if err != nil {
@@ -598,8 +673,9 @@ func (v Buffer) SetHighlightSyntax(highlight bool) {
 }
 
 // gtk_source_buffer_set_implicit_trailing_newline
-// container is not nil, container is Buffer
-// is method
+//
+// [ implicit_trailing_newline ] trans: nothing
+//
 func (v Buffer) SetImplicitTrailingNewline(implicit_trailing_newline bool) {
 	iv, err := _I.Get(29, "Buffer", "set_implicit_trailing_newline")
 	if err != nil {
@@ -613,8 +689,9 @@ func (v Buffer) SetImplicitTrailingNewline(implicit_trailing_newline bool) {
 }
 
 // gtk_source_buffer_set_language
-// container is not nil, container is Buffer
-// is method
+//
+// [ language ] trans: nothing
+//
 func (v Buffer) SetLanguage(language ILanguage) {
 	iv, err := _I.Get(30, "Buffer", "set_language")
 	if err != nil {
@@ -632,8 +709,9 @@ func (v Buffer) SetLanguage(language ILanguage) {
 }
 
 // gtk_source_buffer_set_max_undo_levels
-// container is not nil, container is Buffer
-// is method
+//
+// [ max_undo_levels ] trans: nothing
+//
 func (v Buffer) SetMaxUndoLevels(max_undo_levels int32) {
 	iv, err := _I.Get(31, "Buffer", "set_max_undo_levels")
 	if err != nil {
@@ -647,8 +725,9 @@ func (v Buffer) SetMaxUndoLevels(max_undo_levels int32) {
 }
 
 // gtk_source_buffer_set_style_scheme
-// container is not nil, container is Buffer
-// is method
+//
+// [ scheme ] trans: nothing
+//
 func (v Buffer) SetStyleScheme(scheme IStyleScheme) {
 	iv, err := _I.Get(32, "Buffer", "set_style_scheme")
 	if err != nil {
@@ -666,8 +745,9 @@ func (v Buffer) SetStyleScheme(scheme IStyleScheme) {
 }
 
 // gtk_source_buffer_set_undo_manager
-// container is not nil, container is Buffer
-// is method
+//
+// [ manager ] trans: nothing
+//
 func (v Buffer) SetUndoManager(manager IUndoManager) {
 	iv, err := _I.Get(33, "Buffer", "set_undo_manager")
 	if err != nil {
@@ -685,8 +765,15 @@ func (v Buffer) SetUndoManager(manager IUndoManager) {
 }
 
 // gtk_source_buffer_sort_lines
-// container is not nil, container is Buffer
-// is method
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ column ] trans: nothing
+//
 func (v Buffer) SortLines(start gtk.TextIter, end gtk.TextIter, flags SortFlags, column int32) {
 	iv, err := _I.Get(34, "Buffer", "sort_lines")
 	if err != nil {
@@ -703,8 +790,7 @@ func (v Buffer) SortLines(start gtk.TextIter, end gtk.TextIter, flags SortFlags,
 }
 
 // gtk_source_buffer_undo
-// container is not nil, container is Buffer
-// is method
+//
 func (v Buffer) Undo() {
 	iv, err := _I.Get(35, "Buffer", "undo")
 	if err != nil {
@@ -760,8 +846,11 @@ func CompletionGetType() gi.GType {
 }
 
 // gtk_source_completion_add_provider
-// container is not nil, container is Completion
-// is method
+//
+// [ provider ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Completion) AddProvider(provider ICompletionProvider) (result bool, err error) {
 	iv, err := _I.Get(36, "Completion", "add_provider")
 	if err != nil {
@@ -784,8 +873,7 @@ func (v Completion) AddProvider(provider ICompletionProvider) (result bool, err 
 }
 
 // gtk_source_completion_block_interactive
-// container is not nil, container is Completion
-// is method
+//
 func (v Completion) BlockInteractive() {
 	iv, err := _I.Get(37, "Completion", "block_interactive")
 	if err != nil {
@@ -798,8 +886,11 @@ func (v Completion) BlockInteractive() {
 }
 
 // gtk_source_completion_create_context
-// container is not nil, container is Completion
-// is method
+//
+// [ position ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Completion) CreateContext(position gtk.TextIter) (result CompletionContext) {
 	iv, err := _I.Get(38, "Completion", "create_context")
 	if err != nil {
@@ -816,8 +907,9 @@ func (v Completion) CreateContext(position gtk.TextIter) (result CompletionConte
 }
 
 // gtk_source_completion_get_info_window
-// container is not nil, container is Completion
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Completion) GetInfoWindow() (result CompletionInfo) {
 	iv, err := _I.Get(39, "Completion", "get_info_window")
 	if err != nil {
@@ -833,8 +925,9 @@ func (v Completion) GetInfoWindow() (result CompletionInfo) {
 }
 
 // gtk_source_completion_get_providers
-// container is not nil, container is Completion
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Completion) GetProviders() (result glib.List) {
 	iv, err := _I.Get(40, "Completion", "get_providers")
 	if err != nil {
@@ -850,8 +943,9 @@ func (v Completion) GetProviders() (result glib.List) {
 }
 
 // gtk_source_completion_get_view
-// container is not nil, container is Completion
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Completion) GetView() (result View) {
 	iv, err := _I.Get(41, "Completion", "get_view")
 	if err != nil {
@@ -867,8 +961,7 @@ func (v Completion) GetView() (result View) {
 }
 
 // gtk_source_completion_hide
-// container is not nil, container is Completion
-// is method
+//
 func (v Completion) Hide() {
 	iv, err := _I.Get(42, "Completion", "hide")
 	if err != nil {
@@ -881,8 +974,11 @@ func (v Completion) Hide() {
 }
 
 // gtk_source_completion_remove_provider
-// container is not nil, container is Completion
-// is method
+//
+// [ provider ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Completion) RemoveProvider(provider ICompletionProvider) (result bool, err error) {
 	iv, err := _I.Get(43, "Completion", "remove_provider")
 	if err != nil {
@@ -905,8 +1001,13 @@ func (v Completion) RemoveProvider(provider ICompletionProvider) (result bool, e
 }
 
 // gtk_source_completion_start
-// container is not nil, container is Completion
-// is method
+//
+// [ providers ] trans: nothing
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Completion) Start(providers glib.List, context ICompletionContext) (result bool) {
 	iv, err := _I.Get(44, "Completion", "start")
 	if err != nil {
@@ -928,8 +1029,7 @@ func (v Completion) Start(providers glib.List, context ICompletionContext) (resu
 }
 
 // gtk_source_completion_unblock_interactive
-// container is not nil, container is Completion
-// is method
+//
 func (v Completion) UnblockInteractive() {
 	iv, err := _I.Get(45, "Completion", "unblock_interactive")
 	if err != nil {
@@ -972,8 +1072,13 @@ func CompletionContextGetType() gi.GType {
 }
 
 // gtk_source_completion_context_add_proposals
-// container is not nil, container is CompletionContext
-// is method
+//
+// [ provider ] trans: nothing
+//
+// [ proposals ] trans: nothing
+//
+// [ finished ] trans: nothing
+//
 func (v CompletionContext) AddProposals(provider ICompletionProvider, proposals glib.List, finished bool) {
 	iv, err := _I.Get(46, "CompletionContext", "add_proposals")
 	if err != nil {
@@ -993,8 +1098,9 @@ func (v CompletionContext) AddProposals(provider ICompletionProvider, proposals 
 }
 
 // gtk_source_completion_context_get_activation
-// container is not nil, container is CompletionContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v CompletionContext) GetActivation() (result CompletionActivationFlags) {
 	iv, err := _I.Get(47, "CompletionContext", "get_activation")
 	if err != nil {
@@ -1010,8 +1116,11 @@ func (v CompletionContext) GetActivation() (result CompletionActivationFlags) {
 }
 
 // gtk_source_completion_context_get_iter
-// container is not nil, container is CompletionContext
-// is method
+//
+// [ iter ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v CompletionContext) GetIter(iter gtk.TextIter) (result bool) {
 	iv, err := _I.Get(48, "CompletionContext", "get_iter")
 	if err != nil {
@@ -1071,8 +1180,9 @@ func CompletionInfoGetType() gi.GType {
 }
 
 // gtk_source_completion_info_new
-// container is not nil, container is CompletionInfo
-// is constructor
+//
+// [ result ] trans: nothing
+//
 func NewCompletionInfo() (result CompletionInfo) {
 	iv, err := _I.Get(49, "CompletionInfo", "new")
 	if err != nil {
@@ -1086,8 +1196,11 @@ func NewCompletionInfo() (result CompletionInfo) {
 }
 
 // gtk_source_completion_info_move_to_iter
-// container is not nil, container is CompletionInfo
-// is method
+//
+// [ view ] trans: nothing
+//
+// [ iter ] trans: nothing
+//
 func (v CompletionInfo) MoveToIter(view gtk.ITextView, iter gtk.TextIter) {
 	iv, err := _I.Get(50, "CompletionInfo", "move_to_iter")
 	if err != nil {
@@ -1134,8 +1247,9 @@ func CompletionItemGetType() gi.GType {
 }
 
 // gtk_source_completion_item_new
-// container is not nil, container is CompletionItem
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewCompletionItem() (result CompletionItem) {
 	iv, err := _I.Get(51, "CompletionItem", "new")
 	if err != nil {
@@ -1149,8 +1263,9 @@ func NewCompletionItem() (result CompletionItem) {
 }
 
 // gtk_source_completion_item_set_gicon
-// container is not nil, container is CompletionItem
-// is method
+//
+// [ gicon ] trans: nothing
+//
 func (v CompletionItem) SetGicon(gicon gio.IIcon) {
 	iv, err := _I.Get(52, "CompletionItem", "set_gicon")
 	if err != nil {
@@ -1168,8 +1283,9 @@ func (v CompletionItem) SetGicon(gicon gio.IIcon) {
 }
 
 // gtk_source_completion_item_set_icon
-// container is not nil, container is CompletionItem
-// is method
+//
+// [ icon ] trans: nothing
+//
 func (v CompletionItem) SetIcon(icon gdkpixbuf.IPixbuf) {
 	iv, err := _I.Get(53, "CompletionItem", "set_icon")
 	if err != nil {
@@ -1187,8 +1303,9 @@ func (v CompletionItem) SetIcon(icon gdkpixbuf.IPixbuf) {
 }
 
 // gtk_source_completion_item_set_icon_name
-// container is not nil, container is CompletionItem
-// is method
+//
+// [ icon_name ] trans: nothing
+//
 func (v CompletionItem) SetIconName(icon_name string) {
 	iv, err := _I.Get(54, "CompletionItem", "set_icon_name")
 	if err != nil {
@@ -1204,8 +1321,9 @@ func (v CompletionItem) SetIconName(icon_name string) {
 }
 
 // gtk_source_completion_item_set_info
-// container is not nil, container is CompletionItem
-// is method
+//
+// [ info ] trans: nothing
+//
 func (v CompletionItem) SetInfo(info string) {
 	iv, err := _I.Get(55, "CompletionItem", "set_info")
 	if err != nil {
@@ -1221,8 +1339,9 @@ func (v CompletionItem) SetInfo(info string) {
 }
 
 // gtk_source_completion_item_set_label
-// container is not nil, container is CompletionItem
-// is method
+//
+// [ label ] trans: nothing
+//
 func (v CompletionItem) SetLabel(label string) {
 	iv, err := _I.Get(56, "CompletionItem", "set_label")
 	if err != nil {
@@ -1238,8 +1357,9 @@ func (v CompletionItem) SetLabel(label string) {
 }
 
 // gtk_source_completion_item_set_markup
-// container is not nil, container is CompletionItem
-// is method
+//
+// [ markup ] trans: nothing
+//
 func (v CompletionItem) SetMarkup(markup string) {
 	iv, err := _I.Get(57, "CompletionItem", "set_markup")
 	if err != nil {
@@ -1255,8 +1375,9 @@ func (v CompletionItem) SetMarkup(markup string) {
 }
 
 // gtk_source_completion_item_set_text
-// container is not nil, container is CompletionItem
-// is method
+//
+// [ text ] trans: nothing
+//
 func (v CompletionItem) SetText(text string) {
 	iv, err := _I.Get(58, "CompletionItem", "set_text")
 	if err != nil {
@@ -1307,8 +1428,7 @@ func CompletionProposalGetType() gi.GType {
 }
 
 // gtk_source_completion_proposal_changed
-// container is not nil, container is CompletionProposal
-// is method
+//
 func (v *CompletionProposalIfc) Changed() {
 	iv, err := _I.Get(59, "CompletionProposal", "changed")
 	if err != nil {
@@ -1321,8 +1441,11 @@ func (v *CompletionProposalIfc) Changed() {
 }
 
 // gtk_source_completion_proposal_equal
-// container is not nil, container is CompletionProposal
-// is method
+//
+// [ other ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProposalIfc) Equal(other ICompletionProposal) (result bool) {
 	iv, err := _I.Get(60, "CompletionProposal", "equal")
 	if err != nil {
@@ -1343,8 +1466,9 @@ func (v *CompletionProposalIfc) Equal(other ICompletionProposal) (result bool) {
 }
 
 // gtk_source_completion_proposal_get_gicon
-// container is not nil, container is CompletionProposal
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProposalIfc) GetGicon() (result gio.Icon) {
 	iv, err := _I.Get(61, "CompletionProposal", "get_gicon")
 	if err != nil {
@@ -1360,8 +1484,9 @@ func (v *CompletionProposalIfc) GetGicon() (result gio.Icon) {
 }
 
 // gtk_source_completion_proposal_get_icon
-// container is not nil, container is CompletionProposal
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProposalIfc) GetIcon() (result gdkpixbuf.Pixbuf) {
 	iv, err := _I.Get(62, "CompletionProposal", "get_icon")
 	if err != nil {
@@ -1377,8 +1502,9 @@ func (v *CompletionProposalIfc) GetIcon() (result gdkpixbuf.Pixbuf) {
 }
 
 // gtk_source_completion_proposal_get_icon_name
-// container is not nil, container is CompletionProposal
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProposalIfc) GetIconName() (result string) {
 	iv, err := _I.Get(63, "CompletionProposal", "get_icon_name")
 	if err != nil {
@@ -1389,13 +1515,14 @@ func (v *CompletionProposalIfc) GetIconName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_completion_proposal_get_info
-// container is not nil, container is CompletionProposal
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *CompletionProposalIfc) GetInfo() (result string) {
 	iv, err := _I.Get(64, "CompletionProposal", "get_info")
 	if err != nil {
@@ -1411,8 +1538,9 @@ func (v *CompletionProposalIfc) GetInfo() (result string) {
 }
 
 // gtk_source_completion_proposal_get_label
-// container is not nil, container is CompletionProposal
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *CompletionProposalIfc) GetLabel() (result string) {
 	iv, err := _I.Get(65, "CompletionProposal", "get_label")
 	if err != nil {
@@ -1428,8 +1556,9 @@ func (v *CompletionProposalIfc) GetLabel() (result string) {
 }
 
 // gtk_source_completion_proposal_get_markup
-// container is not nil, container is CompletionProposal
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *CompletionProposalIfc) GetMarkup() (result string) {
 	iv, err := _I.Get(66, "CompletionProposal", "get_markup")
 	if err != nil {
@@ -1445,8 +1574,9 @@ func (v *CompletionProposalIfc) GetMarkup() (result string) {
 }
 
 // gtk_source_completion_proposal_get_text
-// container is not nil, container is CompletionProposal
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *CompletionProposalIfc) GetText() (result string) {
 	iv, err := _I.Get(67, "CompletionProposal", "get_text")
 	if err != nil {
@@ -1462,8 +1592,9 @@ func (v *CompletionProposalIfc) GetText() (result string) {
 }
 
 // gtk_source_completion_proposal_hash
-// container is not nil, container is CompletionProposal
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProposalIfc) Hash() (result uint32) {
 	iv, err := _I.Get(68, "CompletionProposal", "hash")
 	if err != nil {
@@ -1494,8 +1625,13 @@ func CompletionProviderGetType() gi.GType {
 }
 
 // gtk_source_completion_provider_activate_proposal
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ proposal ] trans: nothing
+//
+// [ iter ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProviderIfc) ActivateProposal(proposal ICompletionProposal, iter gtk.TextIter) (result bool) {
 	iv, err := _I.Get(69, "CompletionProvider", "activate_proposal")
 	if err != nil {
@@ -1517,8 +1653,9 @@ func (v *CompletionProviderIfc) ActivateProposal(proposal ICompletionProposal, i
 }
 
 // gtk_source_completion_provider_get_activation
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProviderIfc) GetActivation() (result CompletionActivationFlags) {
 	iv, err := _I.Get(70, "CompletionProvider", "get_activation")
 	if err != nil {
@@ -1534,8 +1671,9 @@ func (v *CompletionProviderIfc) GetActivation() (result CompletionActivationFlag
 }
 
 // gtk_source_completion_provider_get_gicon
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProviderIfc) GetGicon() (result gio.Icon) {
 	iv, err := _I.Get(71, "CompletionProvider", "get_gicon")
 	if err != nil {
@@ -1551,8 +1689,9 @@ func (v *CompletionProviderIfc) GetGicon() (result gio.Icon) {
 }
 
 // gtk_source_completion_provider_get_icon
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProviderIfc) GetIcon() (result gdkpixbuf.Pixbuf) {
 	iv, err := _I.Get(72, "CompletionProvider", "get_icon")
 	if err != nil {
@@ -1568,8 +1707,9 @@ func (v *CompletionProviderIfc) GetIcon() (result gdkpixbuf.Pixbuf) {
 }
 
 // gtk_source_completion_provider_get_icon_name
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProviderIfc) GetIconName() (result string) {
 	iv, err := _I.Get(73, "CompletionProvider", "get_icon_name")
 	if err != nil {
@@ -1580,13 +1720,16 @@ func (v *CompletionProviderIfc) GetIconName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_completion_provider_get_info_widget
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ proposal ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProviderIfc) GetInfoWidget(proposal ICompletionProposal) (result gtk.Widget) {
 	iv, err := _I.Get(74, "CompletionProvider", "get_info_widget")
 	if err != nil {
@@ -1607,8 +1750,9 @@ func (v *CompletionProviderIfc) GetInfoWidget(proposal ICompletionProposal) (res
 }
 
 // gtk_source_completion_provider_get_interactive_delay
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProviderIfc) GetInteractiveDelay() (result int32) {
 	iv, err := _I.Get(75, "CompletionProvider", "get_interactive_delay")
 	if err != nil {
@@ -1624,8 +1768,9 @@ func (v *CompletionProviderIfc) GetInteractiveDelay() (result int32) {
 }
 
 // gtk_source_completion_provider_get_name
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *CompletionProviderIfc) GetName() (result string) {
 	iv, err := _I.Get(76, "CompletionProvider", "get_name")
 	if err != nil {
@@ -1641,8 +1786,9 @@ func (v *CompletionProviderIfc) GetName() (result string) {
 }
 
 // gtk_source_completion_provider_get_priority
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProviderIfc) GetPriority() (result int32) {
 	iv, err := _I.Get(77, "CompletionProvider", "get_priority")
 	if err != nil {
@@ -1658,8 +1804,15 @@ func (v *CompletionProviderIfc) GetPriority() (result int32) {
 }
 
 // gtk_source_completion_provider_get_start_iter
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ context ] trans: nothing
+//
+// [ proposal ] trans: nothing
+//
+// [ iter ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProviderIfc) GetStartIter(context ICompletionContext, proposal ICompletionProposal, iter gtk.TextIter) (result bool) {
 	iv, err := _I.Get(78, "CompletionProvider", "get_start_iter")
 	if err != nil {
@@ -1686,8 +1839,11 @@ func (v *CompletionProviderIfc) GetStartIter(context ICompletionContext, proposa
 }
 
 // gtk_source_completion_provider_match
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *CompletionProviderIfc) Match(context ICompletionContext) (result bool) {
 	iv, err := _I.Get(79, "CompletionProvider", "match")
 	if err != nil {
@@ -1708,8 +1864,9 @@ func (v *CompletionProviderIfc) Match(context ICompletionContext) (result bool) 
 }
 
 // gtk_source_completion_provider_populate
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ context ] trans: nothing
+//
 func (v *CompletionProviderIfc) Populate(context ICompletionContext) {
 	iv, err := _I.Get(80, "CompletionProvider", "populate")
 	if err != nil {
@@ -1727,8 +1884,11 @@ func (v *CompletionProviderIfc) Populate(context ICompletionContext) {
 }
 
 // gtk_source_completion_provider_update_info
-// container is not nil, container is CompletionProvider
-// is method
+//
+// [ proposal ] trans: nothing
+//
+// [ info ] trans: nothing
+//
 func (v *CompletionProviderIfc) UpdateInfo(proposal ICompletionProposal, info ICompletionInfo) {
 	iv, err := _I.Get(81, "CompletionProvider", "update_info")
 	if err != nil {
@@ -1769,8 +1929,13 @@ func CompletionWordsGetType() gi.GType {
 }
 
 // gtk_source_completion_words_new
-// container is not nil, container is CompletionWords
-// is constructor
+//
+// [ name ] trans: nothing
+//
+// [ icon ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewCompletionWords(name string, icon gdkpixbuf.IPixbuf) (result CompletionWords) {
 	iv, err := _I.Get(82, "CompletionWords", "new")
 	if err != nil {
@@ -1793,8 +1958,9 @@ func NewCompletionWords(name string, icon gdkpixbuf.IPixbuf) (result CompletionW
 }
 
 // gtk_source_completion_words_register
-// container is not nil, container is CompletionWords
-// is method
+//
+// [ buffer ] trans: nothing
+//
 func (v CompletionWords) Register(buffer gtk.ITextBuffer) {
 	iv, err := _I.Get(83, "CompletionWords", "register")
 	if err != nil {
@@ -1812,8 +1978,9 @@ func (v CompletionWords) Register(buffer gtk.ITextBuffer) {
 }
 
 // gtk_source_completion_words_unregister
-// container is not nil, container is CompletionWords
-// is method
+//
+// [ buffer ] trans: nothing
+//
 func (v CompletionWords) Unregister(buffer gtk.ITextBuffer) {
 	iv, err := _I.Get(84, "CompletionWords", "unregister")
 	if err != nil {
@@ -1865,8 +2032,9 @@ func EncodingGetType() gi.GType {
 }
 
 // gtk_source_encoding_copy
-// container is not nil, container is Encoding
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Encoding) Copy() (result Encoding) {
 	iv, err := _I.Get(85, "Encoding", "copy")
 	if err != nil {
@@ -1882,8 +2050,7 @@ func (v Encoding) Copy() (result Encoding) {
 }
 
 // gtk_source_encoding_free
-// container is not nil, container is Encoding
-// is method
+//
 func (v Encoding) Free() {
 	iv, err := _I.Get(86, "Encoding", "free")
 	if err != nil {
@@ -1896,8 +2063,9 @@ func (v Encoding) Free() {
 }
 
 // gtk_source_encoding_get_charset
-// container is not nil, container is Encoding
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Encoding) GetCharset() (result string) {
 	iv, err := _I.Get(87, "Encoding", "get_charset")
 	if err != nil {
@@ -1908,13 +2076,14 @@ func (v Encoding) GetCharset() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_encoding_get_name
-// container is not nil, container is Encoding
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Encoding) GetName() (result string) {
 	iv, err := _I.Get(88, "Encoding", "get_name")
 	if err != nil {
@@ -1925,13 +2094,14 @@ func (v Encoding) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_encoding_to_string
-// container is not nil, container is Encoding
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Encoding) ToString() (result string) {
 	iv, err := _I.Get(89, "Encoding", "to_string")
 	if err != nil {
@@ -1947,9 +2117,11 @@ func (v Encoding) ToString() (result string) {
 }
 
 // gtk_source_encoding_get_from_charset
-// container is not nil, container is Encoding
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ charset ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func EncodingGetFromCharset1(charset string) (result Encoding) {
 	iv, err := _I.Get(93, "Encoding", "get_from_charset")
 	if err != nil {
@@ -1982,8 +2154,9 @@ func FileGetType() gi.GType {
 }
 
 // gtk_source_file_new
-// container is not nil, container is File
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewFile() (result File) {
 	iv, err := _I.Get(95, "File", "new")
 	if err != nil {
@@ -1997,8 +2170,7 @@ func NewFile() (result File) {
 }
 
 // gtk_source_file_check_file_on_disk
-// container is not nil, container is File
-// is method
+//
 func (v File) CheckFileOnDisk() {
 	iv, err := _I.Get(96, "File", "check_file_on_disk")
 	if err != nil {
@@ -2011,8 +2183,9 @@ func (v File) CheckFileOnDisk() {
 }
 
 // gtk_source_file_get_compression_type
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v File) GetCompressionType() (result CompressionTypeEnum) {
 	iv, err := _I.Get(97, "File", "get_compression_type")
 	if err != nil {
@@ -2028,8 +2201,9 @@ func (v File) GetCompressionType() (result CompressionTypeEnum) {
 }
 
 // gtk_source_file_get_encoding
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v File) GetEncoding() (result Encoding) {
 	iv, err := _I.Get(98, "File", "get_encoding")
 	if err != nil {
@@ -2045,8 +2219,9 @@ func (v File) GetEncoding() (result Encoding) {
 }
 
 // gtk_source_file_get_location
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v File) GetLocation() (result gio.File) {
 	iv, err := _I.Get(99, "File", "get_location")
 	if err != nil {
@@ -2062,8 +2237,9 @@ func (v File) GetLocation() (result gio.File) {
 }
 
 // gtk_source_file_get_newline_type
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v File) GetNewlineType() (result NewlineTypeEnum) {
 	iv, err := _I.Get(100, "File", "get_newline_type")
 	if err != nil {
@@ -2079,8 +2255,9 @@ func (v File) GetNewlineType() (result NewlineTypeEnum) {
 }
 
 // gtk_source_file_is_deleted
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v File) IsDeleted() (result bool) {
 	iv, err := _I.Get(101, "File", "is_deleted")
 	if err != nil {
@@ -2096,8 +2273,9 @@ func (v File) IsDeleted() (result bool) {
 }
 
 // gtk_source_file_is_externally_modified
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v File) IsExternallyModified() (result bool) {
 	iv, err := _I.Get(102, "File", "is_externally_modified")
 	if err != nil {
@@ -2113,8 +2291,9 @@ func (v File) IsExternallyModified() (result bool) {
 }
 
 // gtk_source_file_is_local
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v File) IsLocal() (result bool) {
 	iv, err := _I.Get(103, "File", "is_local")
 	if err != nil {
@@ -2130,8 +2309,9 @@ func (v File) IsLocal() (result bool) {
 }
 
 // gtk_source_file_is_readonly
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v File) IsReadonly() (result bool) {
 	iv, err := _I.Get(104, "File", "is_readonly")
 	if err != nil {
@@ -2147,8 +2327,9 @@ func (v File) IsReadonly() (result bool) {
 }
 
 // gtk_source_file_set_location
-// container is not nil, container is File
-// is method
+//
+// [ location ] trans: nothing
+//
 func (v File) SetLocation(location gio.IFile) {
 	iv, err := _I.Get(105, "File", "set_location")
 	if err != nil {
@@ -2182,8 +2363,13 @@ func FileLoaderGetType() gi.GType {
 }
 
 // gtk_source_file_loader_new
-// container is not nil, container is FileLoader
-// is constructor
+//
+// [ buffer ] trans: nothing
+//
+// [ file ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewFileLoader(buffer IBuffer, file IFile) (result FileLoader) {
 	iv, err := _I.Get(106, "FileLoader", "new")
 	if err != nil {
@@ -2208,8 +2394,15 @@ func NewFileLoader(buffer IBuffer, file IFile) (result FileLoader) {
 }
 
 // gtk_source_file_loader_new_from_stream
-// container is not nil, container is FileLoader
-// is constructor
+//
+// [ buffer ] trans: nothing
+//
+// [ file ] trans: nothing
+//
+// [ stream ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewFileLoaderFromStream(buffer IBuffer, file IFile, stream gio.IInputStream) (result FileLoader) {
 	iv, err := _I.Get(107, "FileLoader", "new_from_stream")
 	if err != nil {
@@ -2239,8 +2432,9 @@ func NewFileLoaderFromStream(buffer IBuffer, file IFile, stream gio.IInputStream
 }
 
 // gtk_source_file_loader_get_buffer
-// container is not nil, container is FileLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileLoader) GetBuffer() (result Buffer) {
 	iv, err := _I.Get(108, "FileLoader", "get_buffer")
 	if err != nil {
@@ -2256,8 +2450,9 @@ func (v FileLoader) GetBuffer() (result Buffer) {
 }
 
 // gtk_source_file_loader_get_compression_type
-// container is not nil, container is FileLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileLoader) GetCompressionType() (result CompressionTypeEnum) {
 	iv, err := _I.Get(109, "FileLoader", "get_compression_type")
 	if err != nil {
@@ -2273,8 +2468,9 @@ func (v FileLoader) GetCompressionType() (result CompressionTypeEnum) {
 }
 
 // gtk_source_file_loader_get_encoding
-// container is not nil, container is FileLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileLoader) GetEncoding() (result Encoding) {
 	iv, err := _I.Get(110, "FileLoader", "get_encoding")
 	if err != nil {
@@ -2290,8 +2486,9 @@ func (v FileLoader) GetEncoding() (result Encoding) {
 }
 
 // gtk_source_file_loader_get_file
-// container is not nil, container is FileLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileLoader) GetFile() (result File) {
 	iv, err := _I.Get(111, "FileLoader", "get_file")
 	if err != nil {
@@ -2307,8 +2504,9 @@ func (v FileLoader) GetFile() (result File) {
 }
 
 // gtk_source_file_loader_get_input_stream
-// container is not nil, container is FileLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileLoader) GetInputStream() (result gio.InputStream) {
 	iv, err := _I.Get(112, "FileLoader", "get_input_stream")
 	if err != nil {
@@ -2324,8 +2522,9 @@ func (v FileLoader) GetInputStream() (result gio.InputStream) {
 }
 
 // gtk_source_file_loader_get_location
-// container is not nil, container is FileLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileLoader) GetLocation() (result gio.File) {
 	iv, err := _I.Get(113, "FileLoader", "get_location")
 	if err != nil {
@@ -2341,8 +2540,9 @@ func (v FileLoader) GetLocation() (result gio.File) {
 }
 
 // gtk_source_file_loader_get_newline_type
-// container is not nil, container is FileLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileLoader) GetNewlineType() (result NewlineTypeEnum) {
 	iv, err := _I.Get(114, "FileLoader", "get_newline_type")
 	if err != nil {
@@ -2358,8 +2558,21 @@ func (v FileLoader) GetNewlineType() (result NewlineTypeEnum) {
 }
 
 // gtk_source_file_loader_load_async
-// container is not nil, container is FileLoader
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ progress_callback ] trans: nothing
+//
+// [ progress_callback_data ] trans: nothing
+//
+// [ progress_callback_notify ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v FileLoader) LoadAsync(io_priority int32, cancellable gio.ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE CALLBACK*/, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(115, "FileLoader", "load_async")
 	if err != nil {
@@ -2383,8 +2596,11 @@ func (v FileLoader) LoadAsync(io_priority int32, cancellable gio.ICancellable, p
 }
 
 // gtk_source_file_loader_load_finish
-// container is not nil, container is FileLoader
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v FileLoader) LoadFinish(result gio.IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(116, "FileLoader", "load_finish")
 	if err != nil {
@@ -2407,8 +2623,9 @@ func (v FileLoader) LoadFinish(result gio.IAsyncResult) (result1 bool, err error
 }
 
 // gtk_source_file_loader_set_candidate_encodings
-// container is not nil, container is FileLoader
-// is method
+//
+// [ candidate_encodings ] trans: nothing
+//
 func (v FileLoader) SetCandidateEncodings(candidate_encodings glib.SList) {
 	iv, err := _I.Get(117, "FileLoader", "set_candidate_encodings")
 	if err != nil {
@@ -2472,8 +2689,13 @@ func FileSaverGetType() gi.GType {
 }
 
 // gtk_source_file_saver_new
-// container is not nil, container is FileSaver
-// is constructor
+//
+// [ buffer ] trans: nothing
+//
+// [ file ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewFileSaver(buffer IBuffer, file IFile) (result FileSaver) {
 	iv, err := _I.Get(118, "FileSaver", "new")
 	if err != nil {
@@ -2498,8 +2720,15 @@ func NewFileSaver(buffer IBuffer, file IFile) (result FileSaver) {
 }
 
 // gtk_source_file_saver_new_with_target
-// container is not nil, container is FileSaver
-// is constructor
+//
+// [ buffer ] trans: nothing
+//
+// [ file ] trans: nothing
+//
+// [ target_location ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewFileSaverWithTarget(buffer IBuffer, file IFile, target_location gio.IFile) (result FileSaver) {
 	iv, err := _I.Get(119, "FileSaver", "new_with_target")
 	if err != nil {
@@ -2529,8 +2758,9 @@ func NewFileSaverWithTarget(buffer IBuffer, file IFile, target_location gio.IFil
 }
 
 // gtk_source_file_saver_get_buffer
-// container is not nil, container is FileSaver
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileSaver) GetBuffer() (result Buffer) {
 	iv, err := _I.Get(120, "FileSaver", "get_buffer")
 	if err != nil {
@@ -2546,8 +2776,9 @@ func (v FileSaver) GetBuffer() (result Buffer) {
 }
 
 // gtk_source_file_saver_get_compression_type
-// container is not nil, container is FileSaver
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileSaver) GetCompressionType() (result CompressionTypeEnum) {
 	iv, err := _I.Get(121, "FileSaver", "get_compression_type")
 	if err != nil {
@@ -2563,8 +2794,9 @@ func (v FileSaver) GetCompressionType() (result CompressionTypeEnum) {
 }
 
 // gtk_source_file_saver_get_encoding
-// container is not nil, container is FileSaver
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileSaver) GetEncoding() (result Encoding) {
 	iv, err := _I.Get(122, "FileSaver", "get_encoding")
 	if err != nil {
@@ -2580,8 +2812,9 @@ func (v FileSaver) GetEncoding() (result Encoding) {
 }
 
 // gtk_source_file_saver_get_file
-// container is not nil, container is FileSaver
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileSaver) GetFile() (result File) {
 	iv, err := _I.Get(123, "FileSaver", "get_file")
 	if err != nil {
@@ -2597,8 +2830,9 @@ func (v FileSaver) GetFile() (result File) {
 }
 
 // gtk_source_file_saver_get_flags
-// container is not nil, container is FileSaver
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileSaver) GetFlags() (result FileSaverFlags) {
 	iv, err := _I.Get(124, "FileSaver", "get_flags")
 	if err != nil {
@@ -2614,8 +2848,9 @@ func (v FileSaver) GetFlags() (result FileSaverFlags) {
 }
 
 // gtk_source_file_saver_get_location
-// container is not nil, container is FileSaver
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileSaver) GetLocation() (result gio.File) {
 	iv, err := _I.Get(125, "FileSaver", "get_location")
 	if err != nil {
@@ -2631,8 +2866,9 @@ func (v FileSaver) GetLocation() (result gio.File) {
 }
 
 // gtk_source_file_saver_get_newline_type
-// container is not nil, container is FileSaver
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileSaver) GetNewlineType() (result NewlineTypeEnum) {
 	iv, err := _I.Get(126, "FileSaver", "get_newline_type")
 	if err != nil {
@@ -2648,8 +2884,21 @@ func (v FileSaver) GetNewlineType() (result NewlineTypeEnum) {
 }
 
 // gtk_source_file_saver_save_async
-// container is not nil, container is FileSaver
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ progress_callback ] trans: nothing
+//
+// [ progress_callback_data ] trans: nothing
+//
+// [ progress_callback_notify ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v FileSaver) SaveAsync(io_priority int32, cancellable gio.ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE CALLBACK*/, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(127, "FileSaver", "save_async")
 	if err != nil {
@@ -2673,8 +2922,11 @@ func (v FileSaver) SaveAsync(io_priority int32, cancellable gio.ICancellable, pr
 }
 
 // gtk_source_file_saver_save_finish
-// container is not nil, container is FileSaver
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v FileSaver) SaveFinish(result gio.IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(128, "FileSaver", "save_finish")
 	if err != nil {
@@ -2697,8 +2949,9 @@ func (v FileSaver) SaveFinish(result gio.IAsyncResult) (result1 bool, err error)
 }
 
 // gtk_source_file_saver_set_compression_type
-// container is not nil, container is FileSaver
-// is method
+//
+// [ compression_type ] trans: nothing
+//
 func (v FileSaver) SetCompressionType(compression_type CompressionTypeEnum) {
 	iv, err := _I.Get(129, "FileSaver", "set_compression_type")
 	if err != nil {
@@ -2712,8 +2965,9 @@ func (v FileSaver) SetCompressionType(compression_type CompressionTypeEnum) {
 }
 
 // gtk_source_file_saver_set_encoding
-// container is not nil, container is FileSaver
-// is method
+//
+// [ encoding ] trans: nothing
+//
 func (v FileSaver) SetEncoding(encoding Encoding) {
 	iv, err := _I.Get(130, "FileSaver", "set_encoding")
 	if err != nil {
@@ -2727,8 +2981,9 @@ func (v FileSaver) SetEncoding(encoding Encoding) {
 }
 
 // gtk_source_file_saver_set_flags
-// container is not nil, container is FileSaver
-// is method
+//
+// [ flags ] trans: nothing
+//
 func (v FileSaver) SetFlags(flags FileSaverFlags) {
 	iv, err := _I.Get(131, "FileSaver", "set_flags")
 	if err != nil {
@@ -2742,8 +2997,9 @@ func (v FileSaver) SetFlags(flags FileSaverFlags) {
 }
 
 // gtk_source_file_saver_set_newline_type
-// container is not nil, container is FileSaver
-// is method
+//
+// [ newline_type ] trans: nothing
+//
 func (v FileSaver) SetNewlineType(newline_type NewlineTypeEnum) {
 	iv, err := _I.Get(132, "FileSaver", "set_newline_type")
 	if err != nil {
@@ -2811,8 +3067,13 @@ func GutterGetType() gi.GType {
 }
 
 // gtk_source_gutter_get_renderer_at_pos
-// container is not nil, container is Gutter
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Gutter) GetRendererAtPos(x int32, y int32) (result GutterRenderer) {
 	iv, err := _I.Get(133, "Gutter", "get_renderer_at_pos")
 	if err != nil {
@@ -2830,8 +3091,9 @@ func (v Gutter) GetRendererAtPos(x int32, y int32) (result GutterRenderer) {
 }
 
 // gtk_source_gutter_get_view
-// container is not nil, container is Gutter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Gutter) GetView() (result View) {
 	iv, err := _I.Get(134, "Gutter", "get_view")
 	if err != nil {
@@ -2847,8 +3109,9 @@ func (v Gutter) GetView() (result View) {
 }
 
 // gtk_source_gutter_get_window_type
-// container is not nil, container is Gutter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Gutter) GetWindowType() (result gtk.TextWindowTypeEnum) {
 	iv, err := _I.Get(135, "Gutter", "get_window_type")
 	if err != nil {
@@ -2864,8 +3127,13 @@ func (v Gutter) GetWindowType() (result gtk.TextWindowTypeEnum) {
 }
 
 // gtk_source_gutter_insert
-// container is not nil, container is Gutter
-// is method
+//
+// [ renderer ] trans: nothing
+//
+// [ position ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Gutter) Insert(renderer IGutterRenderer, position int32) (result bool) {
 	iv, err := _I.Get(136, "Gutter", "insert")
 	if err != nil {
@@ -2887,8 +3155,7 @@ func (v Gutter) Insert(renderer IGutterRenderer, position int32) (result bool) {
 }
 
 // gtk_source_gutter_queue_draw
-// container is not nil, container is Gutter
-// is method
+//
 func (v Gutter) QueueDraw() {
 	iv, err := _I.Get(137, "Gutter", "queue_draw")
 	if err != nil {
@@ -2901,8 +3168,9 @@ func (v Gutter) QueueDraw() {
 }
 
 // gtk_source_gutter_remove
-// container is not nil, container is Gutter
-// is method
+//
+// [ renderer ] trans: nothing
+//
 func (v Gutter) Remove(renderer IGutterRenderer) {
 	iv, err := _I.Get(138, "Gutter", "remove")
 	if err != nil {
@@ -2920,8 +3188,11 @@ func (v Gutter) Remove(renderer IGutterRenderer) {
 }
 
 // gtk_source_gutter_reorder
-// container is not nil, container is Gutter
-// is method
+//
+// [ renderer ] trans: nothing
+//
+// [ position ] trans: nothing
+//
 func (v Gutter) Reorder(renderer IGutterRenderer, position int32) {
 	iv, err := _I.Get(139, "Gutter", "reorder")
 	if err != nil {
@@ -2966,8 +3237,13 @@ func GutterRendererGetType() gi.GType {
 }
 
 // gtk_source_gutter_renderer_activate
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ area ] trans: nothing
+//
+// [ event ] trans: nothing
+//
 func (v GutterRenderer) Activate(iter gtk.TextIter, area gdk.Rectangle, event gdk.Event) {
 	iv, err := _I.Get(140, "GutterRenderer", "activate")
 	if err != nil {
@@ -2983,8 +3259,17 @@ func (v GutterRenderer) Activate(iter gtk.TextIter, area gdk.Rectangle, event gd
 }
 
 // gtk_source_gutter_renderer_begin
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ cr ] trans: nothing
+//
+// [ background_area ] trans: nothing
+//
+// [ cell_area ] trans: nothing
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
 func (v GutterRenderer) Begin(cr cairo.Context, background_area gdk.Rectangle, cell_area gdk.Rectangle, start gtk.TextIter, end gtk.TextIter) {
 	iv, err := _I.Get(141, "GutterRenderer", "begin")
 	if err != nil {
@@ -3002,8 +3287,19 @@ func (v GutterRenderer) Begin(cr cairo.Context, background_area gdk.Rectangle, c
 }
 
 // gtk_source_gutter_renderer_draw
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ cr ] trans: nothing
+//
+// [ background_area ] trans: nothing
+//
+// [ cell_area ] trans: nothing
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ state ] trans: nothing
+//
 func (v GutterRenderer) Draw(cr cairo.Context, background_area gdk.Rectangle, cell_area gdk.Rectangle, start gtk.TextIter, end gtk.TextIter, state GutterRendererStateFlags) {
 	iv, err := _I.Get(142, "GutterRenderer", "draw")
 	if err != nil {
@@ -3022,8 +3318,7 @@ func (v GutterRenderer) Draw(cr cairo.Context, background_area gdk.Rectangle, ce
 }
 
 // gtk_source_gutter_renderer_end
-// container is not nil, container is GutterRenderer
-// is method
+//
 func (v GutterRenderer) End() {
 	iv, err := _I.Get(143, "GutterRenderer", "end")
 	if err != nil {
@@ -3036,8 +3331,11 @@ func (v GutterRenderer) End() {
 }
 
 // gtk_source_gutter_renderer_get_alignment
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ xalign ] trans: nothing, dir: out
+//
+// [ yalign ] trans: nothing, dir: out
+//
 func (v GutterRenderer) GetAlignment() (xalign float32, yalign float32) {
 	iv, err := _I.Get(144, "GutterRenderer", "get_alignment")
 	if err != nil {
@@ -3056,8 +3354,9 @@ func (v GutterRenderer) GetAlignment() (xalign float32, yalign float32) {
 }
 
 // gtk_source_gutter_renderer_get_alignment_mode
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GutterRenderer) GetAlignmentMode() (result GutterRendererAlignmentModeEnum) {
 	iv, err := _I.Get(145, "GutterRenderer", "get_alignment_mode")
 	if err != nil {
@@ -3073,8 +3372,11 @@ func (v GutterRenderer) GetAlignmentMode() (result GutterRendererAlignmentModeEn
 }
 
 // gtk_source_gutter_renderer_get_background
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ color ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v GutterRenderer) GetBackground(color gdk.RGBA) (result bool) {
 	iv, err := _I.Get(146, "GutterRenderer", "get_background")
 	if err != nil {
@@ -3091,8 +3393,11 @@ func (v GutterRenderer) GetBackground(color gdk.RGBA) (result bool) {
 }
 
 // gtk_source_gutter_renderer_get_padding
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ xpad ] trans: nothing, dir: out
+//
+// [ ypad ] trans: nothing, dir: out
+//
 func (v GutterRenderer) GetPadding() (xpad int32, ypad int32) {
 	iv, err := _I.Get(147, "GutterRenderer", "get_padding")
 	if err != nil {
@@ -3111,8 +3416,9 @@ func (v GutterRenderer) GetPadding() (xpad int32, ypad int32) {
 }
 
 // gtk_source_gutter_renderer_get_size
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GutterRenderer) GetSize() (result int32) {
 	iv, err := _I.Get(148, "GutterRenderer", "get_size")
 	if err != nil {
@@ -3128,8 +3434,9 @@ func (v GutterRenderer) GetSize() (result int32) {
 }
 
 // gtk_source_gutter_renderer_get_view
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GutterRenderer) GetView() (result gtk.TextView) {
 	iv, err := _I.Get(149, "GutterRenderer", "get_view")
 	if err != nil {
@@ -3145,8 +3452,9 @@ func (v GutterRenderer) GetView() (result gtk.TextView) {
 }
 
 // gtk_source_gutter_renderer_get_visible
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GutterRenderer) GetVisible() (result bool) {
 	iv, err := _I.Get(150, "GutterRenderer", "get_visible")
 	if err != nil {
@@ -3162,8 +3470,9 @@ func (v GutterRenderer) GetVisible() (result bool) {
 }
 
 // gtk_source_gutter_renderer_get_window_type
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GutterRenderer) GetWindowType() (result gtk.TextWindowTypeEnum) {
 	iv, err := _I.Get(151, "GutterRenderer", "get_window_type")
 	if err != nil {
@@ -3179,8 +3488,15 @@ func (v GutterRenderer) GetWindowType() (result gtk.TextWindowTypeEnum) {
 }
 
 // gtk_source_gutter_renderer_query_activatable
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ area ] trans: nothing
+//
+// [ event ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v GutterRenderer) QueryActivatable(iter gtk.TextIter, area gdk.Rectangle, event gdk.Event) (result bool) {
 	iv, err := _I.Get(152, "GutterRenderer", "query_activatable")
 	if err != nil {
@@ -3199,8 +3515,13 @@ func (v GutterRenderer) QueryActivatable(iter gtk.TextIter, area gdk.Rectangle, 
 }
 
 // gtk_source_gutter_renderer_query_data
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ state ] trans: nothing
+//
 func (v GutterRenderer) QueryData(start gtk.TextIter, end gtk.TextIter, state GutterRendererStateFlags) {
 	iv, err := _I.Get(153, "GutterRenderer", "query_data")
 	if err != nil {
@@ -3216,8 +3537,19 @@ func (v GutterRenderer) QueryData(start gtk.TextIter, end gtk.TextIter, state Gu
 }
 
 // gtk_source_gutter_renderer_query_tooltip
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ area ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ tooltip ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v GutterRenderer) QueryTooltip(iter gtk.TextIter, area gdk.Rectangle, x int32, y int32, tooltip gtk.ITooltip) (result bool) {
 	iv, err := _I.Get(154, "GutterRenderer", "query_tooltip")
 	if err != nil {
@@ -3242,8 +3574,7 @@ func (v GutterRenderer) QueryTooltip(iter gtk.TextIter, area gdk.Rectangle, x in
 }
 
 // gtk_source_gutter_renderer_queue_draw
-// container is not nil, container is GutterRenderer
-// is method
+//
 func (v GutterRenderer) QueueDraw() {
 	iv, err := _I.Get(155, "GutterRenderer", "queue_draw")
 	if err != nil {
@@ -3256,8 +3587,11 @@ func (v GutterRenderer) QueueDraw() {
 }
 
 // gtk_source_gutter_renderer_set_alignment
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ xalign ] trans: nothing
+//
+// [ yalign ] trans: nothing
+//
 func (v GutterRenderer) SetAlignment(xalign float32, yalign float32) {
 	iv, err := _I.Get(156, "GutterRenderer", "set_alignment")
 	if err != nil {
@@ -3272,8 +3606,9 @@ func (v GutterRenderer) SetAlignment(xalign float32, yalign float32) {
 }
 
 // gtk_source_gutter_renderer_set_alignment_mode
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ mode ] trans: nothing
+//
 func (v GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentModeEnum) {
 	iv, err := _I.Get(157, "GutterRenderer", "set_alignment_mode")
 	if err != nil {
@@ -3287,8 +3622,9 @@ func (v GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentModeEnum) {
 }
 
 // gtk_source_gutter_renderer_set_background
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ color ] trans: nothing
+//
 func (v GutterRenderer) SetBackground(color gdk.RGBA) {
 	iv, err := _I.Get(158, "GutterRenderer", "set_background")
 	if err != nil {
@@ -3302,8 +3638,11 @@ func (v GutterRenderer) SetBackground(color gdk.RGBA) {
 }
 
 // gtk_source_gutter_renderer_set_padding
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ xpad ] trans: nothing
+//
+// [ ypad ] trans: nothing
+//
 func (v GutterRenderer) SetPadding(xpad int32, ypad int32) {
 	iv, err := _I.Get(159, "GutterRenderer", "set_padding")
 	if err != nil {
@@ -3318,8 +3657,9 @@ func (v GutterRenderer) SetPadding(xpad int32, ypad int32) {
 }
 
 // gtk_source_gutter_renderer_set_size
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ size ] trans: nothing
+//
 func (v GutterRenderer) SetSize(size int32) {
 	iv, err := _I.Get(160, "GutterRenderer", "set_size")
 	if err != nil {
@@ -3333,8 +3673,9 @@ func (v GutterRenderer) SetSize(size int32) {
 }
 
 // gtk_source_gutter_renderer_set_visible
-// container is not nil, container is GutterRenderer
-// is method
+//
+// [ visible ] trans: nothing
+//
 func (v GutterRenderer) SetVisible(visible bool) {
 	iv, err := _I.Get(161, "GutterRenderer", "set_visible")
 	if err != nil {
@@ -3378,8 +3719,9 @@ func GutterRendererPixbufGetType() gi.GType {
 }
 
 // gtk_source_gutter_renderer_pixbuf_new
-// container is not nil, container is GutterRendererPixbuf
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewGutterRendererPixbuf() (result GutterRendererPixbuf) {
 	iv, err := _I.Get(162, "GutterRendererPixbuf", "new")
 	if err != nil {
@@ -3393,8 +3735,9 @@ func NewGutterRendererPixbuf() (result GutterRendererPixbuf) {
 }
 
 // gtk_source_gutter_renderer_pixbuf_get_gicon
-// container is not nil, container is GutterRendererPixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GutterRendererPixbuf) GetGicon() (result gio.Icon) {
 	iv, err := _I.Get(163, "GutterRendererPixbuf", "get_gicon")
 	if err != nil {
@@ -3410,8 +3753,9 @@ func (v GutterRendererPixbuf) GetGicon() (result gio.Icon) {
 }
 
 // gtk_source_gutter_renderer_pixbuf_get_icon_name
-// container is not nil, container is GutterRendererPixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GutterRendererPixbuf) GetIconName() (result string) {
 	iv, err := _I.Get(164, "GutterRendererPixbuf", "get_icon_name")
 	if err != nil {
@@ -3422,13 +3766,14 @@ func (v GutterRendererPixbuf) GetIconName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_gutter_renderer_pixbuf_get_pixbuf
-// container is not nil, container is GutterRendererPixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GutterRendererPixbuf) GetPixbuf() (result gdkpixbuf.Pixbuf) {
 	iv, err := _I.Get(165, "GutterRendererPixbuf", "get_pixbuf")
 	if err != nil {
@@ -3444,8 +3789,9 @@ func (v GutterRendererPixbuf) GetPixbuf() (result gdkpixbuf.Pixbuf) {
 }
 
 // gtk_source_gutter_renderer_pixbuf_set_gicon
-// container is not nil, container is GutterRendererPixbuf
-// is method
+//
+// [ icon ] trans: nothing
+//
 func (v GutterRendererPixbuf) SetGicon(icon gio.IIcon) {
 	iv, err := _I.Get(166, "GutterRendererPixbuf", "set_gicon")
 	if err != nil {
@@ -3463,8 +3809,9 @@ func (v GutterRendererPixbuf) SetGicon(icon gio.IIcon) {
 }
 
 // gtk_source_gutter_renderer_pixbuf_set_icon_name
-// container is not nil, container is GutterRendererPixbuf
-// is method
+//
+// [ icon_name ] trans: nothing
+//
 func (v GutterRendererPixbuf) SetIconName(icon_name string) {
 	iv, err := _I.Get(167, "GutterRendererPixbuf", "set_icon_name")
 	if err != nil {
@@ -3480,8 +3827,9 @@ func (v GutterRendererPixbuf) SetIconName(icon_name string) {
 }
 
 // gtk_source_gutter_renderer_pixbuf_set_pixbuf
-// container is not nil, container is GutterRendererPixbuf
-// is method
+//
+// [ pixbuf ] trans: nothing
+//
 func (v GutterRendererPixbuf) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 	iv, err := _I.Get(168, "GutterRendererPixbuf", "set_pixbuf")
 	if err != nil {
@@ -3550,8 +3898,9 @@ func GutterRendererTextGetType() gi.GType {
 }
 
 // gtk_source_gutter_renderer_text_new
-// container is not nil, container is GutterRendererText
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewGutterRendererText() (result GutterRendererText) {
 	iv, err := _I.Get(169, "GutterRendererText", "new")
 	if err != nil {
@@ -3565,8 +3914,13 @@ func NewGutterRendererText() (result GutterRendererText) {
 }
 
 // gtk_source_gutter_renderer_text_measure
-// container is not nil, container is GutterRendererText
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
 func (v GutterRendererText) Measure(text string) (width int32, height int32) {
 	iv, err := _I.Get(170, "GutterRendererText", "measure")
 	if err != nil {
@@ -3588,8 +3942,13 @@ func (v GutterRendererText) Measure(text string) (width int32, height int32) {
 }
 
 // gtk_source_gutter_renderer_text_measure_markup
-// container is not nil, container is GutterRendererText
-// is method
+//
+// [ markup ] trans: nothing
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
 func (v GutterRendererText) MeasureMarkup(markup string) (width int32, height int32) {
 	iv, err := _I.Get(171, "GutterRendererText", "measure_markup")
 	if err != nil {
@@ -3611,8 +3970,11 @@ func (v GutterRendererText) MeasureMarkup(markup string) (width int32, height in
 }
 
 // gtk_source_gutter_renderer_text_set_markup
-// container is not nil, container is GutterRendererText
-// is method
+//
+// [ markup ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v GutterRendererText) SetMarkup(markup string, length int32) {
 	iv, err := _I.Get(172, "GutterRendererText", "set_markup")
 	if err != nil {
@@ -3629,8 +3991,11 @@ func (v GutterRendererText) SetMarkup(markup string, length int32) {
 }
 
 // gtk_source_gutter_renderer_text_set_text
-// container is not nil, container is GutterRendererText
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v GutterRendererText) SetText(text string, length int32) {
 	iv, err := _I.Get(173, "GutterRendererText", "set_text")
 	if err != nil {
@@ -3673,8 +4038,9 @@ func LanguageGetType() gi.GType {
 }
 
 // gtk_source_language_get_globs
-// container is not nil, container is Language
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Language) GetGlobs() (result gi.CStrArray) {
 	iv, err := _I.Get(174, "Language", "get_globs")
 	if err != nil {
@@ -3691,8 +4057,9 @@ func (v Language) GetGlobs() (result gi.CStrArray) {
 }
 
 // gtk_source_language_get_hidden
-// container is not nil, container is Language
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Language) GetHidden() (result bool) {
 	iv, err := _I.Get(175, "Language", "get_hidden")
 	if err != nil {
@@ -3708,8 +4075,9 @@ func (v Language) GetHidden() (result bool) {
 }
 
 // gtk_source_language_get_id
-// container is not nil, container is Language
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Language) GetId() (result string) {
 	iv, err := _I.Get(176, "Language", "get_id")
 	if err != nil {
@@ -3720,13 +4088,16 @@ func (v Language) GetId() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_language_get_metadata
-// container is not nil, container is Language
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Language) GetMetadata(name string) (result string) {
 	iv, err := _I.Get(177, "Language", "get_metadata")
 	if err != nil {
@@ -3740,13 +4111,14 @@ func (v Language) GetMetadata(name string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_language_get_mime_types
-// container is not nil, container is Language
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Language) GetMimeTypes() (result gi.CStrArray) {
 	iv, err := _I.Get(178, "Language", "get_mime_types")
 	if err != nil {
@@ -3763,8 +4135,9 @@ func (v Language) GetMimeTypes() (result gi.CStrArray) {
 }
 
 // gtk_source_language_get_name
-// container is not nil, container is Language
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Language) GetName() (result string) {
 	iv, err := _I.Get(179, "Language", "get_name")
 	if err != nil {
@@ -3775,13 +4148,14 @@ func (v Language) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_language_get_section
-// container is not nil, container is Language
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Language) GetSection() (result string) {
 	iv, err := _I.Get(180, "Language", "get_section")
 	if err != nil {
@@ -3792,13 +4166,16 @@ func (v Language) GetSection() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_language_get_style_fallback
-// container is not nil, container is Language
-// is method
+//
+// [ style_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Language) GetStyleFallback(style_id string) (result string) {
 	iv, err := _I.Get(181, "Language", "get_style_fallback")
 	if err != nil {
@@ -3812,13 +4189,14 @@ func (v Language) GetStyleFallback(style_id string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_style_id)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_language_get_style_ids
-// container is not nil, container is Language
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Language) GetStyleIds() (result gi.CStrArray) {
 	iv, err := _I.Get(182, "Language", "get_style_ids")
 	if err != nil {
@@ -3835,8 +4213,11 @@ func (v Language) GetStyleIds() (result gi.CStrArray) {
 }
 
 // gtk_source_language_get_style_name
-// container is not nil, container is Language
-// is method
+//
+// [ style_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Language) GetStyleName(style_id string) (result string) {
 	iv, err := _I.Get(183, "Language", "get_style_name")
 	if err != nil {
@@ -3850,7 +4231,7 @@ func (v Language) GetStyleName(style_id string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_style_id)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
@@ -3871,8 +4252,9 @@ func LanguageManagerGetType() gi.GType {
 }
 
 // gtk_source_language_manager_new
-// container is not nil, container is LanguageManager
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewLanguageManager() (result LanguageManager) {
 	iv, err := _I.Get(184, "LanguageManager", "new")
 	if err != nil {
@@ -3886,8 +4268,11 @@ func NewLanguageManager() (result LanguageManager) {
 }
 
 // gtk_source_language_manager_get_language
-// container is not nil, container is LanguageManager
-// is method
+//
+// [ id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v LanguageManager) GetLanguage(id string) (result Language) {
 	iv, err := _I.Get(186, "LanguageManager", "get_language")
 	if err != nil {
@@ -3906,8 +4291,9 @@ func (v LanguageManager) GetLanguage(id string) (result Language) {
 }
 
 // gtk_source_language_manager_get_language_ids
-// container is not nil, container is LanguageManager
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LanguageManager) GetLanguageIds() (result gi.CStrArray) {
 	iv, err := _I.Get(187, "LanguageManager", "get_language_ids")
 	if err != nil {
@@ -3924,8 +4310,9 @@ func (v LanguageManager) GetLanguageIds() (result gi.CStrArray) {
 }
 
 // gtk_source_language_manager_get_search_path
-// container is not nil, container is LanguageManager
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LanguageManager) GetSearchPath() (result gi.CStrArray) {
 	iv, err := _I.Get(188, "LanguageManager", "get_search_path")
 	if err != nil {
@@ -3942,8 +4329,13 @@ func (v LanguageManager) GetSearchPath() (result gi.CStrArray) {
 }
 
 // gtk_source_language_manager_guess_language
-// container is not nil, container is LanguageManager
-// is method
+//
+// [ filename ] trans: nothing
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v LanguageManager) GuessLanguage(filename string, content_type string) (result Language) {
 	iv, err := _I.Get(189, "LanguageManager", "guess_language")
 	if err != nil {
@@ -3965,8 +4357,9 @@ func (v LanguageManager) GuessLanguage(filename string, content_type string) (re
 }
 
 // gtk_source_language_manager_set_search_path
-// container is not nil, container is LanguageManager
-// is method
+//
+// [ dirs ] trans: nothing
+//
 func (v LanguageManager) SetSearchPath(dirs gi.CStrArray) {
 	iv, err := _I.Get(190, "LanguageManager", "set_search_path")
 	if err != nil {
@@ -4022,8 +4415,9 @@ func MapGetType() gi.GType {
 }
 
 // gtk_source_map_new
-// container is not nil, container is Map
-// is constructor
+//
+// [ result ] trans: nothing
+//
 func NewMap() (result Map) {
 	iv, err := _I.Get(191, "Map", "new")
 	if err != nil {
@@ -4037,8 +4431,9 @@ func NewMap() (result Map) {
 }
 
 // gtk_source_map_get_view
-// container is not nil, container is Map
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Map) GetView() (result View) {
 	iv, err := _I.Get(192, "Map", "get_view")
 	if err != nil {
@@ -4054,8 +4449,9 @@ func (v Map) GetView() (result View) {
 }
 
 // gtk_source_map_set_view
-// container is not nil, container is Map
-// is method
+//
+// [ view ] trans: nothing
+//
 func (v Map) SetView(view IView) {
 	iv, err := _I.Get(193, "Map", "set_view")
 	if err != nil {
@@ -4089,8 +4485,13 @@ func MarkGetType() gi.GType {
 }
 
 // gtk_source_mark_new
-// container is not nil, container is Mark
-// is constructor
+//
+// [ name ] trans: nothing
+//
+// [ category ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMark(name string, category string) (result Mark) {
 	iv, err := _I.Get(194, "Mark", "new")
 	if err != nil {
@@ -4111,8 +4512,9 @@ func NewMark(name string, category string) (result Mark) {
 }
 
 // gtk_source_mark_get_category
-// container is not nil, container is Mark
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Mark) GetCategory() (result string) {
 	iv, err := _I.Get(195, "Mark", "get_category")
 	if err != nil {
@@ -4123,13 +4525,16 @@ func (v Mark) GetCategory() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_mark_next
-// container is not nil, container is Mark
-// is method
+//
+// [ category ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Mark) Next(category string) (result Mark) {
 	iv, err := _I.Get(196, "Mark", "next")
 	if err != nil {
@@ -4148,8 +4553,11 @@ func (v Mark) Next(category string) (result Mark) {
 }
 
 // gtk_source_mark_prev
-// container is not nil, container is Mark
-// is method
+//
+// [ category ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Mark) Prev(category string) (result Mark) {
 	iv, err := _I.Get(197, "Mark", "prev")
 	if err != nil {
@@ -4183,8 +4591,9 @@ func MarkAttributesGetType() gi.GType {
 }
 
 // gtk_source_mark_attributes_new
-// container is not nil, container is MarkAttributes
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewMarkAttributes() (result MarkAttributes) {
 	iv, err := _I.Get(198, "MarkAttributes", "new")
 	if err != nil {
@@ -4198,8 +4607,11 @@ func NewMarkAttributes() (result MarkAttributes) {
 }
 
 // gtk_source_mark_attributes_get_background
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ background ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v MarkAttributes) GetBackground(background gdk.RGBA) (result bool) {
 	iv, err := _I.Get(199, "MarkAttributes", "get_background")
 	if err != nil {
@@ -4216,8 +4628,9 @@ func (v MarkAttributes) GetBackground(background gdk.RGBA) (result bool) {
 }
 
 // gtk_source_mark_attributes_get_gicon
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MarkAttributes) GetGicon() (result gio.Icon) {
 	iv, err := _I.Get(200, "MarkAttributes", "get_gicon")
 	if err != nil {
@@ -4233,8 +4646,9 @@ func (v MarkAttributes) GetGicon() (result gio.Icon) {
 }
 
 // gtk_source_mark_attributes_get_icon_name
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MarkAttributes) GetIconName() (result string) {
 	iv, err := _I.Get(201, "MarkAttributes", "get_icon_name")
 	if err != nil {
@@ -4245,13 +4659,14 @@ func (v MarkAttributes) GetIconName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_mark_attributes_get_pixbuf
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MarkAttributes) GetPixbuf() (result gdkpixbuf.Pixbuf) {
 	iv, err := _I.Get(202, "MarkAttributes", "get_pixbuf")
 	if err != nil {
@@ -4267,8 +4682,11 @@ func (v MarkAttributes) GetPixbuf() (result gdkpixbuf.Pixbuf) {
 }
 
 // gtk_source_mark_attributes_get_tooltip_markup
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ mark ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MarkAttributes) GetTooltipMarkup(mark IMark) (result string) {
 	iv, err := _I.Get(203, "MarkAttributes", "get_tooltip_markup")
 	if err != nil {
@@ -4289,8 +4707,11 @@ func (v MarkAttributes) GetTooltipMarkup(mark IMark) (result string) {
 }
 
 // gtk_source_mark_attributes_get_tooltip_text
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ mark ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MarkAttributes) GetTooltipText(mark IMark) (result string) {
 	iv, err := _I.Get(204, "MarkAttributes", "get_tooltip_text")
 	if err != nil {
@@ -4311,8 +4732,13 @@ func (v MarkAttributes) GetTooltipText(mark IMark) (result string) {
 }
 
 // gtk_source_mark_attributes_render_icon
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ widget ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v MarkAttributes) RenderIcon(widget gtk.IWidget, size int32) (result gdkpixbuf.Pixbuf) {
 	iv, err := _I.Get(205, "MarkAttributes", "render_icon")
 	if err != nil {
@@ -4334,8 +4760,9 @@ func (v MarkAttributes) RenderIcon(widget gtk.IWidget, size int32) (result gdkpi
 }
 
 // gtk_source_mark_attributes_set_background
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ background ] trans: nothing
+//
 func (v MarkAttributes) SetBackground(background gdk.RGBA) {
 	iv, err := _I.Get(206, "MarkAttributes", "set_background")
 	if err != nil {
@@ -4349,8 +4776,9 @@ func (v MarkAttributes) SetBackground(background gdk.RGBA) {
 }
 
 // gtk_source_mark_attributes_set_gicon
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ gicon ] trans: nothing
+//
 func (v MarkAttributes) SetGicon(gicon gio.IIcon) {
 	iv, err := _I.Get(207, "MarkAttributes", "set_gicon")
 	if err != nil {
@@ -4368,8 +4796,9 @@ func (v MarkAttributes) SetGicon(gicon gio.IIcon) {
 }
 
 // gtk_source_mark_attributes_set_icon_name
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ icon_name ] trans: nothing
+//
 func (v MarkAttributes) SetIconName(icon_name string) {
 	iv, err := _I.Get(208, "MarkAttributes", "set_icon_name")
 	if err != nil {
@@ -4385,8 +4814,9 @@ func (v MarkAttributes) SetIconName(icon_name string) {
 }
 
 // gtk_source_mark_attributes_set_pixbuf
-// container is not nil, container is MarkAttributes
-// is method
+//
+// [ pixbuf ] trans: nothing
+//
 func (v MarkAttributes) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 	iv, err := _I.Get(209, "MarkAttributes", "set_pixbuf")
 	if err != nil {
@@ -4455,8 +4885,11 @@ func PrintCompositorGetType() gi.GType {
 }
 
 // gtk_source_print_compositor_new
-// container is not nil, container is PrintCompositor
-// is constructor
+//
+// [ buffer ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPrintCompositor(buffer IBuffer) (result PrintCompositor) {
 	iv, err := _I.Get(210, "PrintCompositor", "new")
 	if err != nil {
@@ -4476,8 +4909,11 @@ func NewPrintCompositor(buffer IBuffer) (result PrintCompositor) {
 }
 
 // gtk_source_print_compositor_new_from_view
-// container is not nil, container is PrintCompositor
-// is constructor
+//
+// [ view ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPrintCompositorFromView(view IView) (result PrintCompositor) {
 	iv, err := _I.Get(211, "PrintCompositor", "new_from_view")
 	if err != nil {
@@ -4497,8 +4933,11 @@ func NewPrintCompositorFromView(view IView) (result PrintCompositor) {
 }
 
 // gtk_source_print_compositor_draw_page
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ context ] trans: nothing
+//
+// [ page_nr ] trans: nothing
+//
 func (v PrintCompositor) DrawPage(context gtk.IPrintContext, page_nr int32) {
 	iv, err := _I.Get(212, "PrintCompositor", "draw_page")
 	if err != nil {
@@ -4517,8 +4956,9 @@ func (v PrintCompositor) DrawPage(context gtk.IPrintContext, page_nr int32) {
 }
 
 // gtk_source_print_compositor_get_body_font_name
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: everything
+//
 func (v PrintCompositor) GetBodyFontName() (result string) {
 	iv, err := _I.Get(213, "PrintCompositor", "get_body_font_name")
 	if err != nil {
@@ -4534,8 +4974,11 @@ func (v PrintCompositor) GetBodyFontName() (result string) {
 }
 
 // gtk_source_print_compositor_get_bottom_margin
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ unit ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetBottomMargin(unit gtk.UnitEnum) (result float64) {
 	iv, err := _I.Get(214, "PrintCompositor", "get_bottom_margin")
 	if err != nil {
@@ -4552,8 +4995,9 @@ func (v PrintCompositor) GetBottomMargin(unit gtk.UnitEnum) (result float64) {
 }
 
 // gtk_source_print_compositor_get_buffer
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetBuffer() (result Buffer) {
 	iv, err := _I.Get(215, "PrintCompositor", "get_buffer")
 	if err != nil {
@@ -4569,8 +5013,9 @@ func (v PrintCompositor) GetBuffer() (result Buffer) {
 }
 
 // gtk_source_print_compositor_get_footer_font_name
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: everything
+//
 func (v PrintCompositor) GetFooterFontName() (result string) {
 	iv, err := _I.Get(216, "PrintCompositor", "get_footer_font_name")
 	if err != nil {
@@ -4586,8 +5031,9 @@ func (v PrintCompositor) GetFooterFontName() (result string) {
 }
 
 // gtk_source_print_compositor_get_header_font_name
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: everything
+//
 func (v PrintCompositor) GetHeaderFontName() (result string) {
 	iv, err := _I.Get(217, "PrintCompositor", "get_header_font_name")
 	if err != nil {
@@ -4603,8 +5049,9 @@ func (v PrintCompositor) GetHeaderFontName() (result string) {
 }
 
 // gtk_source_print_compositor_get_highlight_syntax
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetHighlightSyntax() (result bool) {
 	iv, err := _I.Get(218, "PrintCompositor", "get_highlight_syntax")
 	if err != nil {
@@ -4620,8 +5067,11 @@ func (v PrintCompositor) GetHighlightSyntax() (result bool) {
 }
 
 // gtk_source_print_compositor_get_left_margin
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ unit ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetLeftMargin(unit gtk.UnitEnum) (result float64) {
 	iv, err := _I.Get(219, "PrintCompositor", "get_left_margin")
 	if err != nil {
@@ -4638,8 +5088,9 @@ func (v PrintCompositor) GetLeftMargin(unit gtk.UnitEnum) (result float64) {
 }
 
 // gtk_source_print_compositor_get_line_numbers_font_name
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: everything
+//
 func (v PrintCompositor) GetLineNumbersFontName() (result string) {
 	iv, err := _I.Get(220, "PrintCompositor", "get_line_numbers_font_name")
 	if err != nil {
@@ -4655,8 +5106,9 @@ func (v PrintCompositor) GetLineNumbersFontName() (result string) {
 }
 
 // gtk_source_print_compositor_get_n_pages
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetNPages() (result int32) {
 	iv, err := _I.Get(221, "PrintCompositor", "get_n_pages")
 	if err != nil {
@@ -4672,8 +5124,9 @@ func (v PrintCompositor) GetNPages() (result int32) {
 }
 
 // gtk_source_print_compositor_get_pagination_progress
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetPaginationProgress() (result float64) {
 	iv, err := _I.Get(222, "PrintCompositor", "get_pagination_progress")
 	if err != nil {
@@ -4689,8 +5142,9 @@ func (v PrintCompositor) GetPaginationProgress() (result float64) {
 }
 
 // gtk_source_print_compositor_get_print_footer
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetPrintFooter() (result bool) {
 	iv, err := _I.Get(223, "PrintCompositor", "get_print_footer")
 	if err != nil {
@@ -4706,8 +5160,9 @@ func (v PrintCompositor) GetPrintFooter() (result bool) {
 }
 
 // gtk_source_print_compositor_get_print_header
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetPrintHeader() (result bool) {
 	iv, err := _I.Get(224, "PrintCompositor", "get_print_header")
 	if err != nil {
@@ -4723,8 +5178,9 @@ func (v PrintCompositor) GetPrintHeader() (result bool) {
 }
 
 // gtk_source_print_compositor_get_print_line_numbers
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetPrintLineNumbers() (result uint32) {
 	iv, err := _I.Get(225, "PrintCompositor", "get_print_line_numbers")
 	if err != nil {
@@ -4740,8 +5196,11 @@ func (v PrintCompositor) GetPrintLineNumbers() (result uint32) {
 }
 
 // gtk_source_print_compositor_get_right_margin
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ unit ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetRightMargin(unit gtk.UnitEnum) (result float64) {
 	iv, err := _I.Get(226, "PrintCompositor", "get_right_margin")
 	if err != nil {
@@ -4758,8 +5217,9 @@ func (v PrintCompositor) GetRightMargin(unit gtk.UnitEnum) (result float64) {
 }
 
 // gtk_source_print_compositor_get_tab_width
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetTabWidth() (result uint32) {
 	iv, err := _I.Get(227, "PrintCompositor", "get_tab_width")
 	if err != nil {
@@ -4775,8 +5235,11 @@ func (v PrintCompositor) GetTabWidth() (result uint32) {
 }
 
 // gtk_source_print_compositor_get_top_margin
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ unit ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetTopMargin(unit gtk.UnitEnum) (result float64) {
 	iv, err := _I.Get(228, "PrintCompositor", "get_top_margin")
 	if err != nil {
@@ -4793,8 +5256,9 @@ func (v PrintCompositor) GetTopMargin(unit gtk.UnitEnum) (result float64) {
 }
 
 // gtk_source_print_compositor_get_wrap_mode
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) GetWrapMode() (result gtk.WrapModeEnum) {
 	iv, err := _I.Get(229, "PrintCompositor", "get_wrap_mode")
 	if err != nil {
@@ -4810,8 +5274,11 @@ func (v PrintCompositor) GetWrapMode() (result gtk.WrapModeEnum) {
 }
 
 // gtk_source_print_compositor_paginate
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v PrintCompositor) Paginate(context gtk.IPrintContext) (result bool) {
 	iv, err := _I.Get(230, "PrintCompositor", "paginate")
 	if err != nil {
@@ -4832,8 +5299,9 @@ func (v PrintCompositor) Paginate(context gtk.IPrintContext) (result bool) {
 }
 
 // gtk_source_print_compositor_set_body_font_name
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ font_name ] trans: nothing
+//
 func (v PrintCompositor) SetBodyFontName(font_name string) {
 	iv, err := _I.Get(231, "PrintCompositor", "set_body_font_name")
 	if err != nil {
@@ -4849,8 +5317,11 @@ func (v PrintCompositor) SetBodyFontName(font_name string) {
 }
 
 // gtk_source_print_compositor_set_bottom_margin
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ margin ] trans: nothing
+//
+// [ unit ] trans: nothing
+//
 func (v PrintCompositor) SetBottomMargin(margin float64, unit gtk.UnitEnum) {
 	iv, err := _I.Get(232, "PrintCompositor", "set_bottom_margin")
 	if err != nil {
@@ -4865,8 +5336,9 @@ func (v PrintCompositor) SetBottomMargin(margin float64, unit gtk.UnitEnum) {
 }
 
 // gtk_source_print_compositor_set_footer_font_name
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ font_name ] trans: nothing
+//
 func (v PrintCompositor) SetFooterFontName(font_name string) {
 	iv, err := _I.Get(233, "PrintCompositor", "set_footer_font_name")
 	if err != nil {
@@ -4882,8 +5354,15 @@ func (v PrintCompositor) SetFooterFontName(font_name string) {
 }
 
 // gtk_source_print_compositor_set_footer_format
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ separator ] trans: nothing
+//
+// [ left ] trans: nothing
+//
+// [ center ] trans: nothing
+//
+// [ right ] trans: nothing
+//
 func (v PrintCompositor) SetFooterFormat(separator bool, left string, center string, right string) {
 	iv, err := _I.Get(234, "PrintCompositor", "set_footer_format")
 	if err != nil {
@@ -4906,8 +5385,9 @@ func (v PrintCompositor) SetFooterFormat(separator bool, left string, center str
 }
 
 // gtk_source_print_compositor_set_header_font_name
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ font_name ] trans: nothing
+//
 func (v PrintCompositor) SetHeaderFontName(font_name string) {
 	iv, err := _I.Get(235, "PrintCompositor", "set_header_font_name")
 	if err != nil {
@@ -4923,8 +5403,15 @@ func (v PrintCompositor) SetHeaderFontName(font_name string) {
 }
 
 // gtk_source_print_compositor_set_header_format
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ separator ] trans: nothing
+//
+// [ left ] trans: nothing
+//
+// [ center ] trans: nothing
+//
+// [ right ] trans: nothing
+//
 func (v PrintCompositor) SetHeaderFormat(separator bool, left string, center string, right string) {
 	iv, err := _I.Get(236, "PrintCompositor", "set_header_format")
 	if err != nil {
@@ -4947,8 +5434,9 @@ func (v PrintCompositor) SetHeaderFormat(separator bool, left string, center str
 }
 
 // gtk_source_print_compositor_set_highlight_syntax
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ highlight ] trans: nothing
+//
 func (v PrintCompositor) SetHighlightSyntax(highlight bool) {
 	iv, err := _I.Get(237, "PrintCompositor", "set_highlight_syntax")
 	if err != nil {
@@ -4962,8 +5450,11 @@ func (v PrintCompositor) SetHighlightSyntax(highlight bool) {
 }
 
 // gtk_source_print_compositor_set_left_margin
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ margin ] trans: nothing
+//
+// [ unit ] trans: nothing
+//
 func (v PrintCompositor) SetLeftMargin(margin float64, unit gtk.UnitEnum) {
 	iv, err := _I.Get(238, "PrintCompositor", "set_left_margin")
 	if err != nil {
@@ -4978,8 +5469,9 @@ func (v PrintCompositor) SetLeftMargin(margin float64, unit gtk.UnitEnum) {
 }
 
 // gtk_source_print_compositor_set_line_numbers_font_name
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ font_name ] trans: nothing
+//
 func (v PrintCompositor) SetLineNumbersFontName(font_name string) {
 	iv, err := _I.Get(239, "PrintCompositor", "set_line_numbers_font_name")
 	if err != nil {
@@ -4995,8 +5487,9 @@ func (v PrintCompositor) SetLineNumbersFontName(font_name string) {
 }
 
 // gtk_source_print_compositor_set_print_footer
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ print1 ] trans: nothing
+//
 func (v PrintCompositor) SetPrintFooter(print1 bool) {
 	iv, err := _I.Get(240, "PrintCompositor", "set_print_footer")
 	if err != nil {
@@ -5010,8 +5503,9 @@ func (v PrintCompositor) SetPrintFooter(print1 bool) {
 }
 
 // gtk_source_print_compositor_set_print_header
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ print1 ] trans: nothing
+//
 func (v PrintCompositor) SetPrintHeader(print1 bool) {
 	iv, err := _I.Get(241, "PrintCompositor", "set_print_header")
 	if err != nil {
@@ -5025,8 +5519,9 @@ func (v PrintCompositor) SetPrintHeader(print1 bool) {
 }
 
 // gtk_source_print_compositor_set_print_line_numbers
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ interval ] trans: nothing
+//
 func (v PrintCompositor) SetPrintLineNumbers(interval uint32) {
 	iv, err := _I.Get(242, "PrintCompositor", "set_print_line_numbers")
 	if err != nil {
@@ -5040,8 +5535,11 @@ func (v PrintCompositor) SetPrintLineNumbers(interval uint32) {
 }
 
 // gtk_source_print_compositor_set_right_margin
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ margin ] trans: nothing
+//
+// [ unit ] trans: nothing
+//
 func (v PrintCompositor) SetRightMargin(margin float64, unit gtk.UnitEnum) {
 	iv, err := _I.Get(243, "PrintCompositor", "set_right_margin")
 	if err != nil {
@@ -5056,8 +5554,9 @@ func (v PrintCompositor) SetRightMargin(margin float64, unit gtk.UnitEnum) {
 }
 
 // gtk_source_print_compositor_set_tab_width
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ width ] trans: nothing
+//
 func (v PrintCompositor) SetTabWidth(width uint32) {
 	iv, err := _I.Get(244, "PrintCompositor", "set_tab_width")
 	if err != nil {
@@ -5071,8 +5570,11 @@ func (v PrintCompositor) SetTabWidth(width uint32) {
 }
 
 // gtk_source_print_compositor_set_top_margin
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ margin ] trans: nothing
+//
+// [ unit ] trans: nothing
+//
 func (v PrintCompositor) SetTopMargin(margin float64, unit gtk.UnitEnum) {
 	iv, err := _I.Get(245, "PrintCompositor", "set_top_margin")
 	if err != nil {
@@ -5087,8 +5589,9 @@ func (v PrintCompositor) SetTopMargin(margin float64, unit gtk.UnitEnum) {
 }
 
 // gtk_source_print_compositor_set_wrap_mode
-// container is not nil, container is PrintCompositor
-// is method
+//
+// [ wrap_mode ] trans: nothing
+//
 func (v PrintCompositor) SetWrapMode(wrap_mode gtk.WrapModeEnum) {
 	iv, err := _I.Get(246, "PrintCompositor", "set_wrap_mode")
 	if err != nil {
@@ -5128,8 +5631,11 @@ func RegionGetType() gi.GType {
 }
 
 // gtk_source_region_new
-// container is not nil, container is Region
-// is constructor
+//
+// [ buffer ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewRegion(buffer gtk.ITextBuffer) (result Region) {
 	iv, err := _I.Get(247, "Region", "new")
 	if err != nil {
@@ -5149,8 +5655,9 @@ func NewRegion(buffer gtk.ITextBuffer) (result Region) {
 }
 
 // gtk_source_region_add_region
-// container is not nil, container is Region
-// is method
+//
+// [ region_to_add ] trans: nothing
+//
 func (v Region) AddRegion(region_to_add IRegion) {
 	iv, err := _I.Get(248, "Region", "add_region")
 	if err != nil {
@@ -5168,8 +5675,11 @@ func (v Region) AddRegion(region_to_add IRegion) {
 }
 
 // gtk_source_region_add_subregion
-// container is not nil, container is Region
-// is method
+//
+// [ _start ] trans: nothing
+//
+// [ _end ] trans: nothing
+//
 func (v Region) AddSubregion(_start gtk.TextIter, _end gtk.TextIter) {
 	iv, err := _I.Get(249, "Region", "add_subregion")
 	if err != nil {
@@ -5184,8 +5694,13 @@ func (v Region) AddSubregion(_start gtk.TextIter, _end gtk.TextIter) {
 }
 
 // gtk_source_region_get_bounds
-// container is not nil, container is Region
-// is method
+//
+// [ start ] trans: nothing, dir: out
+//
+// [ end ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Region) GetBounds(start gtk.TextIter, end gtk.TextIter) (result bool) {
 	iv, err := _I.Get(250, "Region", "get_bounds")
 	if err != nil {
@@ -5203,8 +5718,9 @@ func (v Region) GetBounds(start gtk.TextIter, end gtk.TextIter) (result bool) {
 }
 
 // gtk_source_region_get_buffer
-// container is not nil, container is Region
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Region) GetBuffer() (result gtk.TextBuffer) {
 	iv, err := _I.Get(251, "Region", "get_buffer")
 	if err != nil {
@@ -5220,8 +5736,9 @@ func (v Region) GetBuffer() (result gtk.TextBuffer) {
 }
 
 // gtk_source_region_get_start_region_iter
-// container is not nil, container is Region
-// is method
+//
+// [ iter ] trans: nothing, dir: out
+//
 func (v Region) GetStartRegionIter(iter RegionIter) {
 	iv, err := _I.Get(252, "Region", "get_start_region_iter")
 	if err != nil {
@@ -5235,8 +5752,11 @@ func (v Region) GetStartRegionIter(iter RegionIter) {
 }
 
 // gtk_source_region_intersect_region
-// container is not nil, container is Region
-// is method
+//
+// [ region2 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Region) IntersectRegion(region2 IRegion) (result Region) {
 	iv, err := _I.Get(253, "Region", "intersect_region")
 	if err != nil {
@@ -5257,8 +5777,13 @@ func (v Region) IntersectRegion(region2 IRegion) (result Region) {
 }
 
 // gtk_source_region_intersect_subregion
-// container is not nil, container is Region
-// is method
+//
+// [ _start ] trans: nothing
+//
+// [ _end ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Region) IntersectSubregion(_start gtk.TextIter, _end gtk.TextIter) (result Region) {
 	iv, err := _I.Get(254, "Region", "intersect_subregion")
 	if err != nil {
@@ -5276,8 +5801,9 @@ func (v Region) IntersectSubregion(_start gtk.TextIter, _end gtk.TextIter) (resu
 }
 
 // gtk_source_region_is_empty
-// container is not nil, container is Region
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Region) IsEmpty() (result bool) {
 	iv, err := _I.Get(255, "Region", "is_empty")
 	if err != nil {
@@ -5293,8 +5819,9 @@ func (v Region) IsEmpty() (result bool) {
 }
 
 // gtk_source_region_subtract_region
-// container is not nil, container is Region
-// is method
+//
+// [ region_to_subtract ] trans: nothing
+//
 func (v Region) SubtractRegion(region_to_subtract IRegion) {
 	iv, err := _I.Get(256, "Region", "subtract_region")
 	if err != nil {
@@ -5312,8 +5839,11 @@ func (v Region) SubtractRegion(region_to_subtract IRegion) {
 }
 
 // gtk_source_region_subtract_subregion
-// container is not nil, container is Region
-// is method
+//
+// [ _start ] trans: nothing
+//
+// [ _end ] trans: nothing
+//
 func (v Region) SubtractSubregion(_start gtk.TextIter, _end gtk.TextIter) {
 	iv, err := _I.Get(257, "Region", "subtract_subregion")
 	if err != nil {
@@ -5328,8 +5858,9 @@ func (v Region) SubtractSubregion(_start gtk.TextIter, _end gtk.TextIter) {
 }
 
 // gtk_source_region_to_string
-// container is not nil, container is Region
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Region) ToString() (result string) {
 	iv, err := _I.Get(258, "Region", "to_string")
 	if err != nil {
@@ -5358,8 +5889,13 @@ func RegionIterGetType() gi.GType {
 }
 
 // gtk_source_region_iter_get_subregion
-// container is not nil, container is RegionIter
-// is method
+//
+// [ start ] trans: nothing, dir: out
+//
+// [ end ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v RegionIter) GetSubregion(start gtk.TextIter, end gtk.TextIter) (result bool) {
 	iv, err := _I.Get(259, "RegionIter", "get_subregion")
 	if err != nil {
@@ -5377,8 +5913,9 @@ func (v RegionIter) GetSubregion(start gtk.TextIter, end gtk.TextIter) (result b
 }
 
 // gtk_source_region_iter_is_end
-// container is not nil, container is RegionIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v RegionIter) IsEnd() (result bool) {
 	iv, err := _I.Get(260, "RegionIter", "is_end")
 	if err != nil {
@@ -5394,8 +5931,9 @@ func (v RegionIter) IsEnd() (result bool) {
 }
 
 // gtk_source_region_iter_next
-// container is not nil, container is RegionIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v RegionIter) Next() (result bool) {
 	iv, err := _I.Get(261, "RegionIter", "next")
 	if err != nil {
@@ -5426,8 +5964,13 @@ func SearchContextGetType() gi.GType {
 }
 
 // gtk_source_search_context_new
-// container is not nil, container is SearchContext
-// is constructor
+//
+// [ buffer ] trans: nothing
+//
+// [ settings ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSearchContext(buffer IBuffer, settings ISearchSettings) (result SearchContext) {
 	iv, err := _I.Get(262, "SearchContext", "new")
 	if err != nil {
@@ -5452,8 +5995,17 @@ func NewSearchContext(buffer IBuffer, settings ISearchSettings) (result SearchCo
 }
 
 // gtk_source_search_context_backward
-// container is not nil, container is SearchContext
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ match_start ] trans: nothing, dir: out
+//
+// [ match_end ] trans: nothing, dir: out
+//
+// [ has_wrapped_around ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v SearchContext) Backward(iter gtk.TextIter, match_start gtk.TextIter, match_end gtk.TextIter) (result bool, has_wrapped_around bool) {
 	iv, err := _I.Get(263, "SearchContext", "backward")
 	if err != nil {
@@ -5475,8 +6027,15 @@ func (v SearchContext) Backward(iter gtk.TextIter, match_start gtk.TextIter, mat
 }
 
 // gtk_source_search_context_backward_async
-// container is not nil, container is SearchContext
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(264, "SearchContext", "backward_async")
 	if err != nil {
@@ -5497,8 +6056,17 @@ func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable gio.ICancell
 }
 
 // gtk_source_search_context_backward_finish
-// container is not nil, container is SearchContext
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ match_start ] trans: nothing, dir: out
+//
+// [ match_end ] trans: nothing, dir: out
+//
+// [ has_wrapped_around ] trans: everything, dir: out
+//
+// [ result1 ] trans: nothing
+//
 func (v SearchContext) BackwardFinish(result gio.IAsyncResult, match_start gtk.TextIter, match_end gtk.TextIter) (result1 bool, has_wrapped_around bool, err error) {
 	iv, err := _I.Get(265, "SearchContext", "backward_finish")
 	if err != nil {
@@ -5525,8 +6093,17 @@ func (v SearchContext) BackwardFinish(result gio.IAsyncResult, match_start gtk.T
 }
 
 // gtk_source_search_context_forward
-// container is not nil, container is SearchContext
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ match_start ] trans: nothing, dir: out
+//
+// [ match_end ] trans: nothing, dir: out
+//
+// [ has_wrapped_around ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v SearchContext) Forward(iter gtk.TextIter, match_start gtk.TextIter, match_end gtk.TextIter) (result bool, has_wrapped_around bool) {
 	iv, err := _I.Get(266, "SearchContext", "forward")
 	if err != nil {
@@ -5548,8 +6125,15 @@ func (v SearchContext) Forward(iter gtk.TextIter, match_start gtk.TextIter, matc
 }
 
 // gtk_source_search_context_forward_async
-// container is not nil, container is SearchContext
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(267, "SearchContext", "forward_async")
 	if err != nil {
@@ -5570,8 +6154,17 @@ func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable gio.ICancella
 }
 
 // gtk_source_search_context_forward_finish
-// container is not nil, container is SearchContext
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ match_start ] trans: nothing, dir: out
+//
+// [ match_end ] trans: nothing, dir: out
+//
+// [ has_wrapped_around ] trans: everything, dir: out
+//
+// [ result1 ] trans: nothing
+//
 func (v SearchContext) ForwardFinish(result gio.IAsyncResult, match_start gtk.TextIter, match_end gtk.TextIter) (result1 bool, has_wrapped_around bool, err error) {
 	iv, err := _I.Get(268, "SearchContext", "forward_finish")
 	if err != nil {
@@ -5598,8 +6191,9 @@ func (v SearchContext) ForwardFinish(result gio.IAsyncResult, match_start gtk.Te
 }
 
 // gtk_source_search_context_get_buffer
-// container is not nil, container is SearchContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SearchContext) GetBuffer() (result Buffer) {
 	iv, err := _I.Get(269, "SearchContext", "get_buffer")
 	if err != nil {
@@ -5615,8 +6209,9 @@ func (v SearchContext) GetBuffer() (result Buffer) {
 }
 
 // gtk_source_search_context_get_highlight
-// container is not nil, container is SearchContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SearchContext) GetHighlight() (result bool) {
 	iv, err := _I.Get(270, "SearchContext", "get_highlight")
 	if err != nil {
@@ -5632,8 +6227,9 @@ func (v SearchContext) GetHighlight() (result bool) {
 }
 
 // gtk_source_search_context_get_match_style
-// container is not nil, container is SearchContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SearchContext) GetMatchStyle() (result Style) {
 	iv, err := _I.Get(271, "SearchContext", "get_match_style")
 	if err != nil {
@@ -5649,8 +6245,13 @@ func (v SearchContext) GetMatchStyle() (result Style) {
 }
 
 // gtk_source_search_context_get_occurrence_position
-// container is not nil, container is SearchContext
-// is method
+//
+// [ match_start ] trans: nothing
+//
+// [ match_end ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SearchContext) GetOccurrencePosition(match_start gtk.TextIter, match_end gtk.TextIter) (result int32) {
 	iv, err := _I.Get(272, "SearchContext", "get_occurrence_position")
 	if err != nil {
@@ -5668,8 +6269,9 @@ func (v SearchContext) GetOccurrencePosition(match_start gtk.TextIter, match_end
 }
 
 // gtk_source_search_context_get_occurrences_count
-// container is not nil, container is SearchContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SearchContext) GetOccurrencesCount() (result int32) {
 	iv, err := _I.Get(273, "SearchContext", "get_occurrences_count")
 	if err != nil {
@@ -5685,8 +6287,9 @@ func (v SearchContext) GetOccurrencesCount() (result int32) {
 }
 
 // gtk_source_search_context_get_regex_error
-// container is not nil, container is SearchContext
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SearchContext) GetRegexError() (result glib.Error) {
 	iv, err := _I.Get(274, "SearchContext", "get_regex_error")
 	if err != nil {
@@ -5702,8 +6305,9 @@ func (v SearchContext) GetRegexError() (result glib.Error) {
 }
 
 // gtk_source_search_context_get_settings
-// container is not nil, container is SearchContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SearchContext) GetSettings() (result SearchSettings) {
 	iv, err := _I.Get(275, "SearchContext", "get_settings")
 	if err != nil {
@@ -5719,8 +6323,17 @@ func (v SearchContext) GetSettings() (result SearchSettings) {
 }
 
 // gtk_source_search_context_replace
-// container is not nil, container is SearchContext
-// is method
+//
+// [ match_start ] trans: nothing
+//
+// [ match_end ] trans: nothing
+//
+// [ replace ] trans: nothing
+//
+// [ replace_length ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SearchContext) Replace(match_start gtk.TextIter, match_end gtk.TextIter, replace string, replace_length int32) (result bool, err error) {
 	iv, err := _I.Get(276, "SearchContext", "replace")
 	if err != nil {
@@ -5744,8 +6357,13 @@ func (v SearchContext) Replace(match_start gtk.TextIter, match_end gtk.TextIter,
 }
 
 // gtk_source_search_context_replace_all
-// container is not nil, container is SearchContext
-// is method
+//
+// [ replace ] trans: nothing
+//
+// [ replace_length ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SearchContext) ReplaceAll(replace string, replace_length int32) (result uint32, err error) {
 	iv, err := _I.Get(277, "SearchContext", "replace_all")
 	if err != nil {
@@ -5767,8 +6385,9 @@ func (v SearchContext) ReplaceAll(replace string, replace_length int32) (result 
 }
 
 // gtk_source_search_context_set_highlight
-// container is not nil, container is SearchContext
-// is method
+//
+// [ highlight ] trans: nothing
+//
 func (v SearchContext) SetHighlight(highlight bool) {
 	iv, err := _I.Get(278, "SearchContext", "set_highlight")
 	if err != nil {
@@ -5782,8 +6401,9 @@ func (v SearchContext) SetHighlight(highlight bool) {
 }
 
 // gtk_source_search_context_set_match_style
-// container is not nil, container is SearchContext
-// is method
+//
+// [ match_style ] trans: nothing
+//
 func (v SearchContext) SetMatchStyle(match_style IStyle) {
 	iv, err := _I.Get(279, "SearchContext", "set_match_style")
 	if err != nil {
@@ -5827,8 +6447,9 @@ func SearchSettingsGetType() gi.GType {
 }
 
 // gtk_source_search_settings_new
-// container is not nil, container is SearchSettings
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewSearchSettings() (result SearchSettings) {
 	iv, err := _I.Get(280, "SearchSettings", "new")
 	if err != nil {
@@ -5842,8 +6463,9 @@ func NewSearchSettings() (result SearchSettings) {
 }
 
 // gtk_source_search_settings_get_at_word_boundaries
-// container is not nil, container is SearchSettings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SearchSettings) GetAtWordBoundaries() (result bool) {
 	iv, err := _I.Get(281, "SearchSettings", "get_at_word_boundaries")
 	if err != nil {
@@ -5859,8 +6481,9 @@ func (v SearchSettings) GetAtWordBoundaries() (result bool) {
 }
 
 // gtk_source_search_settings_get_case_sensitive
-// container is not nil, container is SearchSettings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SearchSettings) GetCaseSensitive() (result bool) {
 	iv, err := _I.Get(282, "SearchSettings", "get_case_sensitive")
 	if err != nil {
@@ -5876,8 +6499,9 @@ func (v SearchSettings) GetCaseSensitive() (result bool) {
 }
 
 // gtk_source_search_settings_get_regex_enabled
-// container is not nil, container is SearchSettings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SearchSettings) GetRegexEnabled() (result bool) {
 	iv, err := _I.Get(283, "SearchSettings", "get_regex_enabled")
 	if err != nil {
@@ -5893,8 +6517,9 @@ func (v SearchSettings) GetRegexEnabled() (result bool) {
 }
 
 // gtk_source_search_settings_get_search_text
-// container is not nil, container is SearchSettings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SearchSettings) GetSearchText() (result string) {
 	iv, err := _I.Get(284, "SearchSettings", "get_search_text")
 	if err != nil {
@@ -5905,13 +6530,14 @@ func (v SearchSettings) GetSearchText() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_search_settings_get_wrap_around
-// container is not nil, container is SearchSettings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SearchSettings) GetWrapAround() (result bool) {
 	iv, err := _I.Get(285, "SearchSettings", "get_wrap_around")
 	if err != nil {
@@ -5927,8 +6553,9 @@ func (v SearchSettings) GetWrapAround() (result bool) {
 }
 
 // gtk_source_search_settings_set_at_word_boundaries
-// container is not nil, container is SearchSettings
-// is method
+//
+// [ at_word_boundaries ] trans: nothing
+//
 func (v SearchSettings) SetAtWordBoundaries(at_word_boundaries bool) {
 	iv, err := _I.Get(286, "SearchSettings", "set_at_word_boundaries")
 	if err != nil {
@@ -5942,8 +6569,9 @@ func (v SearchSettings) SetAtWordBoundaries(at_word_boundaries bool) {
 }
 
 // gtk_source_search_settings_set_case_sensitive
-// container is not nil, container is SearchSettings
-// is method
+//
+// [ case_sensitive ] trans: nothing
+//
 func (v SearchSettings) SetCaseSensitive(case_sensitive bool) {
 	iv, err := _I.Get(287, "SearchSettings", "set_case_sensitive")
 	if err != nil {
@@ -5957,8 +6585,9 @@ func (v SearchSettings) SetCaseSensitive(case_sensitive bool) {
 }
 
 // gtk_source_search_settings_set_regex_enabled
-// container is not nil, container is SearchSettings
-// is method
+//
+// [ regex_enabled ] trans: nothing
+//
 func (v SearchSettings) SetRegexEnabled(regex_enabled bool) {
 	iv, err := _I.Get(288, "SearchSettings", "set_regex_enabled")
 	if err != nil {
@@ -5972,8 +6601,9 @@ func (v SearchSettings) SetRegexEnabled(regex_enabled bool) {
 }
 
 // gtk_source_search_settings_set_search_text
-// container is not nil, container is SearchSettings
-// is method
+//
+// [ search_text ] trans: nothing
+//
 func (v SearchSettings) SetSearchText(search_text string) {
 	iv, err := _I.Get(289, "SearchSettings", "set_search_text")
 	if err != nil {
@@ -5989,8 +6619,9 @@ func (v SearchSettings) SetSearchText(search_text string) {
 }
 
 // gtk_source_search_settings_set_wrap_around
-// container is not nil, container is SearchSettings
-// is method
+//
+// [ wrap_around ] trans: nothing
+//
 func (v SearchSettings) SetWrapAround(wrap_around bool) {
 	iv, err := _I.Get(290, "SearchSettings", "set_wrap_around")
 	if err != nil {
@@ -6060,8 +6691,9 @@ func SpaceDrawerGetType() gi.GType {
 }
 
 // gtk_source_space_drawer_new
-// container is not nil, container is SpaceDrawer
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewSpaceDrawer() (result SpaceDrawer) {
 	iv, err := _I.Get(291, "SpaceDrawer", "new")
 	if err != nil {
@@ -6075,8 +6707,13 @@ func NewSpaceDrawer() (result SpaceDrawer) {
 }
 
 // gtk_source_space_drawer_bind_matrix_setting
-// container is not nil, container is SpaceDrawer
-// is method
+//
+// [ settings ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
 func (v SpaceDrawer) BindMatrixSetting(settings gio.ISettings, key string, flags gio.SettingsBindFlags) {
 	iv, err := _I.Get(292, "SpaceDrawer", "bind_matrix_setting")
 	if err != nil {
@@ -6098,8 +6735,9 @@ func (v SpaceDrawer) BindMatrixSetting(settings gio.ISettings, key string, flags
 }
 
 // gtk_source_space_drawer_get_enable_matrix
-// container is not nil, container is SpaceDrawer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SpaceDrawer) GetEnableMatrix() (result bool) {
 	iv, err := _I.Get(293, "SpaceDrawer", "get_enable_matrix")
 	if err != nil {
@@ -6115,8 +6753,9 @@ func (v SpaceDrawer) GetEnableMatrix() (result bool) {
 }
 
 // gtk_source_space_drawer_get_matrix
-// container is not nil, container is SpaceDrawer
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SpaceDrawer) GetMatrix() (result glib.Variant) {
 	iv, err := _I.Get(294, "SpaceDrawer", "get_matrix")
 	if err != nil {
@@ -6132,8 +6771,11 @@ func (v SpaceDrawer) GetMatrix() (result glib.Variant) {
 }
 
 // gtk_source_space_drawer_get_types_for_locations
-// container is not nil, container is SpaceDrawer
-// is method
+//
+// [ locations ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SpaceDrawer) GetTypesForLocations(locations SpaceLocationFlags) (result SpaceTypeFlags) {
 	iv, err := _I.Get(295, "SpaceDrawer", "get_types_for_locations")
 	if err != nil {
@@ -6150,8 +6792,9 @@ func (v SpaceDrawer) GetTypesForLocations(locations SpaceLocationFlags) (result 
 }
 
 // gtk_source_space_drawer_set_enable_matrix
-// container is not nil, container is SpaceDrawer
-// is method
+//
+// [ enable_matrix ] trans: nothing
+//
 func (v SpaceDrawer) SetEnableMatrix(enable_matrix bool) {
 	iv, err := _I.Get(296, "SpaceDrawer", "set_enable_matrix")
 	if err != nil {
@@ -6165,8 +6808,9 @@ func (v SpaceDrawer) SetEnableMatrix(enable_matrix bool) {
 }
 
 // gtk_source_space_drawer_set_matrix
-// container is not nil, container is SpaceDrawer
-// is method
+//
+// [ matrix ] trans: nothing
+//
 func (v SpaceDrawer) SetMatrix(matrix glib.Variant) {
 	iv, err := _I.Get(297, "SpaceDrawer", "set_matrix")
 	if err != nil {
@@ -6180,8 +6824,11 @@ func (v SpaceDrawer) SetMatrix(matrix glib.Variant) {
 }
 
 // gtk_source_space_drawer_set_types_for_locations
-// container is not nil, container is SpaceDrawer
-// is method
+//
+// [ locations ] trans: nothing
+//
+// [ types ] trans: nothing
+//
 func (v SpaceDrawer) SetTypesForLocations(locations SpaceLocationFlags, types SpaceTypeFlags) {
 	iv, err := _I.Get(298, "SpaceDrawer", "set_types_for_locations")
 	if err != nil {
@@ -6255,8 +6902,9 @@ func StyleGetType() gi.GType {
 }
 
 // gtk_source_style_apply
-// container is not nil, container is Style
-// is method
+//
+// [ tag ] trans: nothing
+//
 func (v Style) Apply(tag gtk.ITextTag) {
 	iv, err := _I.Get(299, "Style", "apply")
 	if err != nil {
@@ -6274,8 +6922,9 @@ func (v Style) Apply(tag gtk.ITextTag) {
 }
 
 // gtk_source_style_copy
-// container is not nil, container is Style
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Style) Copy() (result Style) {
 	iv, err := _I.Get(300, "Style", "copy")
 	if err != nil {
@@ -6307,8 +6956,9 @@ func StyleSchemeGetType() gi.GType {
 }
 
 // gtk_source_style_scheme_get_authors
-// container is not nil, container is StyleScheme
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v StyleScheme) GetAuthors() (result gi.CStrArray) {
 	iv, err := _I.Get(301, "StyleScheme", "get_authors")
 	if err != nil {
@@ -6325,8 +6975,9 @@ func (v StyleScheme) GetAuthors() (result gi.CStrArray) {
 }
 
 // gtk_source_style_scheme_get_description
-// container is not nil, container is StyleScheme
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v StyleScheme) GetDescription() (result string) {
 	iv, err := _I.Get(302, "StyleScheme", "get_description")
 	if err != nil {
@@ -6337,13 +6988,14 @@ func (v StyleScheme) GetDescription() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_style_scheme_get_filename
-// container is not nil, container is StyleScheme
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v StyleScheme) GetFilename() (result string) {
 	iv, err := _I.Get(303, "StyleScheme", "get_filename")
 	if err != nil {
@@ -6354,13 +7006,14 @@ func (v StyleScheme) GetFilename() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_style_scheme_get_id
-// container is not nil, container is StyleScheme
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v StyleScheme) GetId() (result string) {
 	iv, err := _I.Get(304, "StyleScheme", "get_id")
 	if err != nil {
@@ -6371,13 +7024,14 @@ func (v StyleScheme) GetId() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_style_scheme_get_name
-// container is not nil, container is StyleScheme
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v StyleScheme) GetName() (result string) {
 	iv, err := _I.Get(305, "StyleScheme", "get_name")
 	if err != nil {
@@ -6388,13 +7042,16 @@ func (v StyleScheme) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gtk_source_style_scheme_get_style
-// container is not nil, container is StyleScheme
-// is method
+//
+// [ style_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v StyleScheme) GetStyle(style_id string) (result Style) {
 	iv, err := _I.Get(306, "StyleScheme", "get_style")
 	if err != nil {
@@ -6427,8 +7084,9 @@ func StyleSchemeChooserGetType() gi.GType {
 }
 
 // gtk_source_style_scheme_chooser_get_style_scheme
-// container is not nil, container is StyleSchemeChooser
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *StyleSchemeChooserIfc) GetStyleScheme() (result StyleScheme) {
 	iv, err := _I.Get(307, "StyleSchemeChooser", "get_style_scheme")
 	if err != nil {
@@ -6444,8 +7102,9 @@ func (v *StyleSchemeChooserIfc) GetStyleScheme() (result StyleScheme) {
 }
 
 // gtk_source_style_scheme_chooser_set_style_scheme
-// container is not nil, container is StyleSchemeChooser
-// is method
+//
+// [ scheme ] trans: nothing
+//
 func (v *StyleSchemeChooserIfc) SetStyleScheme(scheme IStyleScheme) {
 	iv, err := _I.Get(308, "StyleSchemeChooser", "set_style_scheme")
 	if err != nil {
@@ -6488,8 +7147,9 @@ func StyleSchemeChooserButtonGetType() gi.GType {
 }
 
 // gtk_source_style_scheme_chooser_button_new
-// container is not nil, container is StyleSchemeChooserButton
-// is constructor
+//
+// [ result ] trans: nothing
+//
 func NewStyleSchemeChooserButton() (result StyleSchemeChooserButton) {
 	iv, err := _I.Get(309, "StyleSchemeChooserButton", "new")
 	if err != nil {
@@ -6526,8 +7186,9 @@ func StyleSchemeChooserWidgetGetType() gi.GType {
 }
 
 // gtk_source_style_scheme_chooser_widget_new
-// container is not nil, container is StyleSchemeChooserWidget
-// is constructor
+//
+// [ result ] trans: nothing
+//
 func NewStyleSchemeChooserWidget() (result StyleSchemeChooserWidget) {
 	iv, err := _I.Get(310, "StyleSchemeChooserWidget", "new")
 	if err != nil {
@@ -6558,8 +7219,9 @@ func StyleSchemeManagerGetType() gi.GType {
 }
 
 // gtk_source_style_scheme_manager_new
-// container is not nil, container is StyleSchemeManager
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewStyleSchemeManager() (result StyleSchemeManager) {
 	iv, err := _I.Get(311, "StyleSchemeManager", "new")
 	if err != nil {
@@ -6573,8 +7235,9 @@ func NewStyleSchemeManager() (result StyleSchemeManager) {
 }
 
 // gtk_source_style_scheme_manager_append_search_path
-// container is not nil, container is StyleSchemeManager
-// is method
+//
+// [ path ] trans: nothing
+//
 func (v StyleSchemeManager) AppendSearchPath(path string) {
 	iv, err := _I.Get(313, "StyleSchemeManager", "append_search_path")
 	if err != nil {
@@ -6590,8 +7253,7 @@ func (v StyleSchemeManager) AppendSearchPath(path string) {
 }
 
 // gtk_source_style_scheme_manager_force_rescan
-// container is not nil, container is StyleSchemeManager
-// is method
+//
 func (v StyleSchemeManager) ForceRescan() {
 	iv, err := _I.Get(314, "StyleSchemeManager", "force_rescan")
 	if err != nil {
@@ -6604,8 +7266,11 @@ func (v StyleSchemeManager) ForceRescan() {
 }
 
 // gtk_source_style_scheme_manager_get_scheme
-// container is not nil, container is StyleSchemeManager
-// is method
+//
+// [ scheme_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v StyleSchemeManager) GetScheme(scheme_id string) (result StyleScheme) {
 	iv, err := _I.Get(315, "StyleSchemeManager", "get_scheme")
 	if err != nil {
@@ -6624,8 +7289,9 @@ func (v StyleSchemeManager) GetScheme(scheme_id string) (result StyleScheme) {
 }
 
 // gtk_source_style_scheme_manager_get_scheme_ids
-// container is not nil, container is StyleSchemeManager
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v StyleSchemeManager) GetSchemeIds() (result gi.CStrArray) {
 	iv, err := _I.Get(316, "StyleSchemeManager", "get_scheme_ids")
 	if err != nil {
@@ -6642,8 +7308,9 @@ func (v StyleSchemeManager) GetSchemeIds() (result gi.CStrArray) {
 }
 
 // gtk_source_style_scheme_manager_get_search_path
-// container is not nil, container is StyleSchemeManager
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v StyleSchemeManager) GetSearchPath() (result gi.CStrArray) {
 	iv, err := _I.Get(317, "StyleSchemeManager", "get_search_path")
 	if err != nil {
@@ -6660,8 +7327,9 @@ func (v StyleSchemeManager) GetSearchPath() (result gi.CStrArray) {
 }
 
 // gtk_source_style_scheme_manager_prepend_search_path
-// container is not nil, container is StyleSchemeManager
-// is method
+//
+// [ path ] trans: nothing
+//
 func (v StyleSchemeManager) PrependSearchPath(path string) {
 	iv, err := _I.Get(318, "StyleSchemeManager", "prepend_search_path")
 	if err != nil {
@@ -6677,8 +7345,9 @@ func (v StyleSchemeManager) PrependSearchPath(path string) {
 }
 
 // gtk_source_style_scheme_manager_set_search_path
-// container is not nil, container is StyleSchemeManager
-// is method
+//
+// [ path ] trans: nothing
+//
 func (v StyleSchemeManager) SetSearchPath(path gi.CStrArray) {
 	iv, err := _I.Get(319, "StyleSchemeManager", "set_search_path")
 	if err != nil {
@@ -6728,8 +7397,11 @@ func TagGetType() gi.GType {
 }
 
 // gtk_source_tag_new
-// container is not nil, container is Tag
-// is constructor
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTag(name string) (result Tag) {
 	iv, err := _I.Get(320, "Tag", "new")
 	if err != nil {
@@ -6762,8 +7434,7 @@ func UndoManagerGetType() gi.GType {
 }
 
 // gtk_source_undo_manager_begin_not_undoable_action
-// container is not nil, container is UndoManager
-// is method
+//
 func (v *UndoManagerIfc) BeginNotUndoableAction() {
 	iv, err := _I.Get(321, "UndoManager", "begin_not_undoable_action")
 	if err != nil {
@@ -6776,8 +7447,9 @@ func (v *UndoManagerIfc) BeginNotUndoableAction() {
 }
 
 // gtk_source_undo_manager_can_redo
-// container is not nil, container is UndoManager
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *UndoManagerIfc) CanRedo() (result bool) {
 	iv, err := _I.Get(322, "UndoManager", "can_redo")
 	if err != nil {
@@ -6793,8 +7465,7 @@ func (v *UndoManagerIfc) CanRedo() (result bool) {
 }
 
 // gtk_source_undo_manager_can_redo_changed
-// container is not nil, container is UndoManager
-// is method
+//
 func (v *UndoManagerIfc) CanRedoChanged() {
 	iv, err := _I.Get(323, "UndoManager", "can_redo_changed")
 	if err != nil {
@@ -6807,8 +7478,9 @@ func (v *UndoManagerIfc) CanRedoChanged() {
 }
 
 // gtk_source_undo_manager_can_undo
-// container is not nil, container is UndoManager
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *UndoManagerIfc) CanUndo() (result bool) {
 	iv, err := _I.Get(324, "UndoManager", "can_undo")
 	if err != nil {
@@ -6824,8 +7496,7 @@ func (v *UndoManagerIfc) CanUndo() (result bool) {
 }
 
 // gtk_source_undo_manager_can_undo_changed
-// container is not nil, container is UndoManager
-// is method
+//
 func (v *UndoManagerIfc) CanUndoChanged() {
 	iv, err := _I.Get(325, "UndoManager", "can_undo_changed")
 	if err != nil {
@@ -6838,8 +7509,7 @@ func (v *UndoManagerIfc) CanUndoChanged() {
 }
 
 // gtk_source_undo_manager_end_not_undoable_action
-// container is not nil, container is UndoManager
-// is method
+//
 func (v *UndoManagerIfc) EndNotUndoableAction() {
 	iv, err := _I.Get(326, "UndoManager", "end_not_undoable_action")
 	if err != nil {
@@ -6852,8 +7522,7 @@ func (v *UndoManagerIfc) EndNotUndoableAction() {
 }
 
 // gtk_source_undo_manager_redo
-// container is not nil, container is UndoManager
-// is method
+//
 func (v *UndoManagerIfc) Redo() {
 	iv, err := _I.Get(327, "UndoManager", "redo")
 	if err != nil {
@@ -6866,8 +7535,7 @@ func (v *UndoManagerIfc) Redo() {
 }
 
 // gtk_source_undo_manager_undo
-// container is not nil, container is UndoManager
-// is method
+//
 func (v *UndoManagerIfc) Undo() {
 	iv, err := _I.Get(328, "UndoManager", "undo")
 	if err != nil {
@@ -6902,8 +7570,9 @@ func ViewGetType() gi.GType {
 }
 
 // gtk_source_view_new
-// container is not nil, container is View
-// is constructor
+//
+// [ result ] trans: nothing
+//
 func NewView() (result View) {
 	iv, err := _I.Get(329, "View", "new")
 	if err != nil {
@@ -6917,8 +7586,11 @@ func NewView() (result View) {
 }
 
 // gtk_source_view_new_with_buffer
-// container is not nil, container is View
-// is constructor
+//
+// [ buffer ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewViewWithBuffer(buffer IBuffer) (result View) {
 	iv, err := _I.Get(330, "View", "new_with_buffer")
 	if err != nil {
@@ -6938,8 +7610,9 @@ func NewViewWithBuffer(buffer IBuffer) (result View) {
 }
 
 // gtk_source_view_get_auto_indent
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetAutoIndent() (result bool) {
 	iv, err := _I.Get(331, "View", "get_auto_indent")
 	if err != nil {
@@ -6955,8 +7628,9 @@ func (v View) GetAutoIndent() (result bool) {
 }
 
 // gtk_source_view_get_background_pattern
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetBackgroundPattern() (result BackgroundPatternTypeEnum) {
 	iv, err := _I.Get(332, "View", "get_background_pattern")
 	if err != nil {
@@ -6972,8 +7646,9 @@ func (v View) GetBackgroundPattern() (result BackgroundPatternTypeEnum) {
 }
 
 // gtk_source_view_get_completion
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetCompletion() (result Completion) {
 	iv, err := _I.Get(333, "View", "get_completion")
 	if err != nil {
@@ -6989,8 +7664,11 @@ func (v View) GetCompletion() (result Completion) {
 }
 
 // gtk_source_view_get_gutter
-// container is not nil, container is View
-// is method
+//
+// [ window_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v View) GetGutter(window_type gtk.TextWindowTypeEnum) (result Gutter) {
 	iv, err := _I.Get(334, "View", "get_gutter")
 	if err != nil {
@@ -7007,8 +7685,9 @@ func (v View) GetGutter(window_type gtk.TextWindowTypeEnum) (result Gutter) {
 }
 
 // gtk_source_view_get_highlight_current_line
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetHighlightCurrentLine() (result bool) {
 	iv, err := _I.Get(335, "View", "get_highlight_current_line")
 	if err != nil {
@@ -7024,8 +7703,9 @@ func (v View) GetHighlightCurrentLine() (result bool) {
 }
 
 // gtk_source_view_get_indent_on_tab
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetIndentOnTab() (result bool) {
 	iv, err := _I.Get(336, "View", "get_indent_on_tab")
 	if err != nil {
@@ -7041,8 +7721,9 @@ func (v View) GetIndentOnTab() (result bool) {
 }
 
 // gtk_source_view_get_indent_width
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetIndentWidth() (result int32) {
 	iv, err := _I.Get(337, "View", "get_indent_width")
 	if err != nil {
@@ -7058,8 +7739,9 @@ func (v View) GetIndentWidth() (result int32) {
 }
 
 // gtk_source_view_get_insert_spaces_instead_of_tabs
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetInsertSpacesInsteadOfTabs() (result bool) {
 	iv, err := _I.Get(338, "View", "get_insert_spaces_instead_of_tabs")
 	if err != nil {
@@ -7075,8 +7757,13 @@ func (v View) GetInsertSpacesInsteadOfTabs() (result bool) {
 }
 
 // gtk_source_view_get_mark_attributes
-// container is not nil, container is View
-// is method
+//
+// [ category ] trans: nothing
+//
+// [ priority ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v View) GetMarkAttributes(category string, priority int32) (result MarkAttributes) {
 	iv, err := _I.Get(339, "View", "get_mark_attributes")
 	if err != nil {
@@ -7096,8 +7783,9 @@ func (v View) GetMarkAttributes(category string, priority int32) (result MarkAtt
 }
 
 // gtk_source_view_get_right_margin_position
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetRightMarginPosition() (result uint32) {
 	iv, err := _I.Get(340, "View", "get_right_margin_position")
 	if err != nil {
@@ -7113,8 +7801,9 @@ func (v View) GetRightMarginPosition() (result uint32) {
 }
 
 // gtk_source_view_get_show_line_marks
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetShowLineMarks() (result bool) {
 	iv, err := _I.Get(341, "View", "get_show_line_marks")
 	if err != nil {
@@ -7130,8 +7819,9 @@ func (v View) GetShowLineMarks() (result bool) {
 }
 
 // gtk_source_view_get_show_line_numbers
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetShowLineNumbers() (result bool) {
 	iv, err := _I.Get(342, "View", "get_show_line_numbers")
 	if err != nil {
@@ -7147,8 +7837,9 @@ func (v View) GetShowLineNumbers() (result bool) {
 }
 
 // gtk_source_view_get_show_right_margin
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetShowRightMargin() (result bool) {
 	iv, err := _I.Get(343, "View", "get_show_right_margin")
 	if err != nil {
@@ -7164,8 +7855,9 @@ func (v View) GetShowRightMargin() (result bool) {
 }
 
 // gtk_source_view_get_smart_backspace
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetSmartBackspace() (result bool) {
 	iv, err := _I.Get(344, "View", "get_smart_backspace")
 	if err != nil {
@@ -7181,8 +7873,9 @@ func (v View) GetSmartBackspace() (result bool) {
 }
 
 // gtk_source_view_get_smart_home_end
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetSmartHomeEnd() (result SmartHomeEndTypeEnum) {
 	iv, err := _I.Get(345, "View", "get_smart_home_end")
 	if err != nil {
@@ -7198,8 +7891,9 @@ func (v View) GetSmartHomeEnd() (result SmartHomeEndTypeEnum) {
 }
 
 // gtk_source_view_get_space_drawer
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetSpaceDrawer() (result SpaceDrawer) {
 	iv, err := _I.Get(346, "View", "get_space_drawer")
 	if err != nil {
@@ -7215,8 +7909,9 @@ func (v View) GetSpaceDrawer() (result SpaceDrawer) {
 }
 
 // gtk_source_view_get_tab_width
-// container is not nil, container is View
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v View) GetTabWidth() (result uint32) {
 	iv, err := _I.Get(347, "View", "get_tab_width")
 	if err != nil {
@@ -7232,8 +7927,11 @@ func (v View) GetTabWidth() (result uint32) {
 }
 
 // gtk_source_view_get_visual_column
-// container is not nil, container is View
-// is method
+//
+// [ iter ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v View) GetVisualColumn(iter gtk.TextIter) (result uint32) {
 	iv, err := _I.Get(348, "View", "get_visual_column")
 	if err != nil {
@@ -7250,8 +7948,11 @@ func (v View) GetVisualColumn(iter gtk.TextIter) (result uint32) {
 }
 
 // gtk_source_view_indent_lines
-// container is not nil, container is View
-// is method
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
 func (v View) IndentLines(start gtk.TextIter, end gtk.TextIter) {
 	iv, err := _I.Get(349, "View", "indent_lines")
 	if err != nil {
@@ -7266,8 +7967,9 @@ func (v View) IndentLines(start gtk.TextIter, end gtk.TextIter) {
 }
 
 // gtk_source_view_set_auto_indent
-// container is not nil, container is View
-// is method
+//
+// [ enable ] trans: nothing
+//
 func (v View) SetAutoIndent(enable bool) {
 	iv, err := _I.Get(350, "View", "set_auto_indent")
 	if err != nil {
@@ -7281,8 +7983,9 @@ func (v View) SetAutoIndent(enable bool) {
 }
 
 // gtk_source_view_set_background_pattern
-// container is not nil, container is View
-// is method
+//
+// [ background_pattern ] trans: nothing
+//
 func (v View) SetBackgroundPattern(background_pattern BackgroundPatternTypeEnum) {
 	iv, err := _I.Get(351, "View", "set_background_pattern")
 	if err != nil {
@@ -7296,8 +7999,9 @@ func (v View) SetBackgroundPattern(background_pattern BackgroundPatternTypeEnum)
 }
 
 // gtk_source_view_set_highlight_current_line
-// container is not nil, container is View
-// is method
+//
+// [ highlight ] trans: nothing
+//
 func (v View) SetHighlightCurrentLine(highlight bool) {
 	iv, err := _I.Get(352, "View", "set_highlight_current_line")
 	if err != nil {
@@ -7311,8 +8015,9 @@ func (v View) SetHighlightCurrentLine(highlight bool) {
 }
 
 // gtk_source_view_set_indent_on_tab
-// container is not nil, container is View
-// is method
+//
+// [ enable ] trans: nothing
+//
 func (v View) SetIndentOnTab(enable bool) {
 	iv, err := _I.Get(353, "View", "set_indent_on_tab")
 	if err != nil {
@@ -7326,8 +8031,9 @@ func (v View) SetIndentOnTab(enable bool) {
 }
 
 // gtk_source_view_set_indent_width
-// container is not nil, container is View
-// is method
+//
+// [ width ] trans: nothing
+//
 func (v View) SetIndentWidth(width int32) {
 	iv, err := _I.Get(354, "View", "set_indent_width")
 	if err != nil {
@@ -7341,8 +8047,9 @@ func (v View) SetIndentWidth(width int32) {
 }
 
 // gtk_source_view_set_insert_spaces_instead_of_tabs
-// container is not nil, container is View
-// is method
+//
+// [ enable ] trans: nothing
+//
 func (v View) SetInsertSpacesInsteadOfTabs(enable bool) {
 	iv, err := _I.Get(355, "View", "set_insert_spaces_instead_of_tabs")
 	if err != nil {
@@ -7356,8 +8063,13 @@ func (v View) SetInsertSpacesInsteadOfTabs(enable bool) {
 }
 
 // gtk_source_view_set_mark_attributes
-// container is not nil, container is View
-// is method
+//
+// [ category ] trans: nothing
+//
+// [ attributes ] trans: nothing
+//
+// [ priority ] trans: nothing
+//
 func (v View) SetMarkAttributes(category string, attributes IMarkAttributes, priority int32) {
 	iv, err := _I.Get(356, "View", "set_mark_attributes")
 	if err != nil {
@@ -7379,8 +8091,9 @@ func (v View) SetMarkAttributes(category string, attributes IMarkAttributes, pri
 }
 
 // gtk_source_view_set_right_margin_position
-// container is not nil, container is View
-// is method
+//
+// [ pos ] trans: nothing
+//
 func (v View) SetRightMarginPosition(pos uint32) {
 	iv, err := _I.Get(357, "View", "set_right_margin_position")
 	if err != nil {
@@ -7394,8 +8107,9 @@ func (v View) SetRightMarginPosition(pos uint32) {
 }
 
 // gtk_source_view_set_show_line_marks
-// container is not nil, container is View
-// is method
+//
+// [ show ] trans: nothing
+//
 func (v View) SetShowLineMarks(show bool) {
 	iv, err := _I.Get(358, "View", "set_show_line_marks")
 	if err != nil {
@@ -7409,8 +8123,9 @@ func (v View) SetShowLineMarks(show bool) {
 }
 
 // gtk_source_view_set_show_line_numbers
-// container is not nil, container is View
-// is method
+//
+// [ show ] trans: nothing
+//
 func (v View) SetShowLineNumbers(show bool) {
 	iv, err := _I.Get(359, "View", "set_show_line_numbers")
 	if err != nil {
@@ -7424,8 +8139,9 @@ func (v View) SetShowLineNumbers(show bool) {
 }
 
 // gtk_source_view_set_show_right_margin
-// container is not nil, container is View
-// is method
+//
+// [ show ] trans: nothing
+//
 func (v View) SetShowRightMargin(show bool) {
 	iv, err := _I.Get(360, "View", "set_show_right_margin")
 	if err != nil {
@@ -7439,8 +8155,9 @@ func (v View) SetShowRightMargin(show bool) {
 }
 
 // gtk_source_view_set_smart_backspace
-// container is not nil, container is View
-// is method
+//
+// [ smart_backspace ] trans: nothing
+//
 func (v View) SetSmartBackspace(smart_backspace bool) {
 	iv, err := _I.Get(361, "View", "set_smart_backspace")
 	if err != nil {
@@ -7454,8 +8171,9 @@ func (v View) SetSmartBackspace(smart_backspace bool) {
 }
 
 // gtk_source_view_set_smart_home_end
-// container is not nil, container is View
-// is method
+//
+// [ smart_home_end ] trans: nothing
+//
 func (v View) SetSmartHomeEnd(smart_home_end SmartHomeEndTypeEnum) {
 	iv, err := _I.Get(362, "View", "set_smart_home_end")
 	if err != nil {
@@ -7469,8 +8187,9 @@ func (v View) SetSmartHomeEnd(smart_home_end SmartHomeEndTypeEnum) {
 }
 
 // gtk_source_view_set_tab_width
-// container is not nil, container is View
-// is method
+//
+// [ width ] trans: nothing
+//
 func (v View) SetTabWidth(width uint32) {
 	iv, err := _I.Get(363, "View", "set_tab_width")
 	if err != nil {
@@ -7484,8 +8203,11 @@ func (v View) SetTabWidth(width uint32) {
 }
 
 // gtk_source_view_unindent_lines
-// container is not nil, container is View
-// is method
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
 func (v View) UnindentLines(start gtk.TextIter, end gtk.TextIter) {
 	iv, err := _I.Get(364, "View", "unindent_lines")
 	if err != nil {
@@ -7524,7 +8246,9 @@ func ViewPrivateGetType() gi.GType {
 }
 
 // gtk_source_completion_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func CompletionErrorQuark() (result uint32) {
 	iv, err := _I.Get(365, "completion_error_quark", "")
 	if err != nil {
@@ -7538,7 +8262,9 @@ func CompletionErrorQuark() (result uint32) {
 }
 
 // gtk_source_encoding_get_all
-// container is nil
+//
+// [ result ] trans: container
+//
 func EncodingGetAll() (result glib.SList) {
 	iv, err := _I.Get(366, "encoding_get_all", "")
 	if err != nil {
@@ -7552,7 +8278,9 @@ func EncodingGetAll() (result glib.SList) {
 }
 
 // gtk_source_encoding_get_current
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func EncodingGetCurrent() (result Encoding) {
 	iv, err := _I.Get(367, "encoding_get_current", "")
 	if err != nil {
@@ -7566,7 +8294,9 @@ func EncodingGetCurrent() (result Encoding) {
 }
 
 // gtk_source_encoding_get_default_candidates
-// container is nil
+//
+// [ result ] trans: container
+//
 func EncodingGetDefaultCandidates() (result glib.SList) {
 	iv, err := _I.Get(368, "encoding_get_default_candidates", "")
 	if err != nil {
@@ -7580,7 +8310,11 @@ func EncodingGetDefaultCandidates() (result glib.SList) {
 }
 
 // gtk_source_encoding_get_from_charset
-// container is nil
+//
+// [ charset ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func EncodingGetFromCharset(charset string) (result Encoding) {
 	iv, err := _I.Get(369, "encoding_get_from_charset", "")
 	if err != nil {
@@ -7598,7 +8332,9 @@ func EncodingGetFromCharset(charset string) (result Encoding) {
 }
 
 // gtk_source_encoding_get_utf8
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func EncodingGetUtf8() (result Encoding) {
 	iv, err := _I.Get(370, "encoding_get_utf8", "")
 	if err != nil {
@@ -7612,7 +8348,9 @@ func EncodingGetUtf8() (result Encoding) {
 }
 
 // gtk_source_file_loader_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func FileLoaderErrorQuark() (result uint32) {
 	iv, err := _I.Get(371, "file_loader_error_quark", "")
 	if err != nil {
@@ -7626,7 +8364,9 @@ func FileLoaderErrorQuark() (result uint32) {
 }
 
 // gtk_source_file_saver_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func FileSaverErrorQuark() (result uint32) {
 	iv, err := _I.Get(372, "file_saver_error_quark", "")
 	if err != nil {
@@ -7640,7 +8380,7 @@ func FileSaverErrorQuark() (result uint32) {
 }
 
 // gtk_source_finalize
-// container is nil
+//
 func Finalize() {
 	iv, err := _I.Get(373, "finalize", "")
 	if err != nil {
@@ -7651,7 +8391,7 @@ func Finalize() {
 }
 
 // gtk_source_init
-// container is nil
+//
 func Init() {
 	iv, err := _I.Get(374, "init", "")
 	if err != nil {
@@ -7662,7 +8402,11 @@ func Init() {
 }
 
 // gtk_source_utils_escape_search_text
-// container is nil
+//
+// [ text ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UtilsEscapeSearchText(text string) (result string) {
 	iv, err := _I.Get(375, "utils_escape_search_text", "")
 	if err != nil {
@@ -7680,7 +8424,11 @@ func UtilsEscapeSearchText(text string) (result string) {
 }
 
 // gtk_source_utils_unescape_search_text
-// container is nil
+//
+// [ text ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UtilsUnescapeSearchText(text string) (result string) {
 	iv, err := _I.Get(376, "utils_unescape_search_text", "")
 	if err != nil {

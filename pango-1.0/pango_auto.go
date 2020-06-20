@@ -175,8 +175,9 @@ func AttrIteratorGetType() gi.GType {
 }
 
 // pango_attr_iterator_get_attrs
-// container is not nil, container is AttrIterator
-// is method
+//
+// [ result ] trans: everything
+//
 func (v AttrIterator) GetAttrs() (result glib.SList) {
 	iv, err := _I.Get(0, "AttrIterator", "get_attrs")
 	if err != nil {
@@ -192,8 +193,13 @@ func (v AttrIterator) GetAttrs() (result glib.SList) {
 }
 
 // pango_attr_iterator_get_font
-// container is not nil, container is AttrIterator
-// is method
+//
+// [ desc ] trans: nothing
+//
+// [ language ] trans: nothing
+//
+// [ extra_attrs ] trans: everything
+//
 func (v AttrIterator) GetFont(desc FontDescription, language Language, extra_attrs glib.SList) {
 	iv, err := _I.Get(1, "AttrIterator", "get_font")
 	if err != nil {
@@ -209,8 +215,9 @@ func (v AttrIterator) GetFont(desc FontDescription, language Language, extra_att
 }
 
 // pango_attr_iterator_next
-// container is not nil, container is AttrIterator
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v AttrIterator) Next() (result bool) {
 	iv, err := _I.Get(2, "AttrIterator", "next")
 	if err != nil {
@@ -226,8 +233,11 @@ func (v AttrIterator) Next() (result bool) {
 }
 
 // pango_attr_iterator_range
-// container is not nil, container is AttrIterator
-// is method
+//
+// [ start ] trans: everything, dir: out
+//
+// [ end ] trans: everything, dir: out
+//
 func (v AttrIterator) Range() (start int32, end int32) {
 	iv, err := _I.Get(3, "AttrIterator", "range")
 	if err != nil {
@@ -268,8 +278,9 @@ func AttrListGetType() gi.GType {
 }
 
 // pango_attr_list_new
-// container is not nil, container is AttrList
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewAttrList() (result AttrList) {
 	iv, err := _I.Get(4, "AttrList", "new")
 	if err != nil {
@@ -283,8 +294,9 @@ func NewAttrList() (result AttrList) {
 }
 
 // pango_attr_list_change
-// container is not nil, container is AttrList
-// is method
+//
+// [ attr ] trans: everything
+//
 func (v AttrList) Change(attr Attribute) {
 	iv, err := _I.Get(5, "AttrList", "change")
 	if err != nil {
@@ -298,8 +310,9 @@ func (v AttrList) Change(attr Attribute) {
 }
 
 // pango_attr_list_copy
-// container is not nil, container is AttrList
-// is method
+//
+// [ result ] trans: everything
+//
 func (v AttrList) Copy() (result AttrList) {
 	iv, err := _I.Get(6, "AttrList", "copy")
 	if err != nil {
@@ -315,8 +328,13 @@ func (v AttrList) Copy() (result AttrList) {
 }
 
 // pango_attr_list_filter
-// container is not nil, container is AttrList
-// is method
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v AttrList) Filter(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer) (result AttrList) {
 	iv, err := _I.Get(7, "AttrList", "filter")
 	if err != nil {
@@ -334,8 +352,9 @@ func (v AttrList) Filter(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer) 
 }
 
 // pango_attr_list_insert
-// container is not nil, container is AttrList
-// is method
+//
+// [ attr ] trans: everything
+//
 func (v AttrList) Insert(attr Attribute) {
 	iv, err := _I.Get(8, "AttrList", "insert")
 	if err != nil {
@@ -349,8 +368,9 @@ func (v AttrList) Insert(attr Attribute) {
 }
 
 // pango_attr_list_insert_before
-// container is not nil, container is AttrList
-// is method
+//
+// [ attr ] trans: everything
+//
 func (v AttrList) InsertBefore(attr Attribute) {
 	iv, err := _I.Get(9, "AttrList", "insert_before")
 	if err != nil {
@@ -364,8 +384,9 @@ func (v AttrList) InsertBefore(attr Attribute) {
 }
 
 // pango_attr_list_ref
-// container is not nil, container is AttrList
-// is method
+//
+// [ result ] trans: everything
+//
 func (v AttrList) Ref() (result AttrList) {
 	iv, err := _I.Get(10, "AttrList", "ref")
 	if err != nil {
@@ -381,8 +402,13 @@ func (v AttrList) Ref() (result AttrList) {
 }
 
 // pango_attr_list_splice
-// container is not nil, container is AttrList
-// is method
+//
+// [ other ] trans: nothing
+//
+// [ pos ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
 func (v AttrList) Splice(other AttrList, pos int32, len1 int32) {
 	iv, err := _I.Get(11, "AttrList", "splice")
 	if err != nil {
@@ -398,8 +424,7 @@ func (v AttrList) Splice(other AttrList, pos int32, len1 int32) {
 }
 
 // pango_attr_list_unref
-// container is not nil, container is AttrList
-// is method
+//
 func (v AttrList) Unref() {
 	iv, err := _I.Get(12, "AttrList", "unref")
 	if err != nil {
@@ -497,8 +522,7 @@ func AttributeGetType() gi.GType {
 }
 
 // pango_attribute_destroy
-// container is not nil, container is Attribute
-// is method
+//
 func (v Attribute) Destroy() {
 	iv, err := _I.Get(13, "Attribute", "destroy")
 	if err != nil {
@@ -511,8 +535,11 @@ func (v Attribute) Destroy() {
 }
 
 // pango_attribute_equal
-// container is not nil, container is Attribute
-// is method
+//
+// [ attr2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Attribute) Equal(attr2 Attribute) (result bool) {
 	iv, err := _I.Get(14, "Attribute", "equal")
 	if err != nil {
@@ -529,8 +556,9 @@ func (v Attribute) Equal(attr2 Attribute) (result bool) {
 }
 
 // pango_attribute_init
-// container is not nil, container is Attribute
-// is method
+//
+// [ klass ] trans: nothing
+//
 func (v Attribute) Init(klass AttrClass) {
 	iv, err := _I.Get(15, "Attribute", "init")
 	if err != nil {
@@ -586,8 +614,9 @@ func ColorGetType() gi.GType {
 }
 
 // pango_color_copy
-// container is not nil, container is Color
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Color) Copy() (result Color) {
 	iv, err := _I.Get(16, "Color", "copy")
 	if err != nil {
@@ -603,8 +632,7 @@ func (v Color) Copy() (result Color) {
 }
 
 // pango_color_free
-// container is not nil, container is Color
-// is method
+//
 func (v Color) Free() {
 	iv, err := _I.Get(17, "Color", "free")
 	if err != nil {
@@ -617,8 +645,11 @@ func (v Color) Free() {
 }
 
 // pango_color_parse
-// container is not nil, container is Color
-// is method
+//
+// [ spec ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Color) Parse(spec string) (result bool) {
 	iv, err := _I.Get(18, "Color", "parse")
 	if err != nil {
@@ -637,8 +668,9 @@ func (v Color) Parse(spec string) (result bool) {
 }
 
 // pango_color_to_string
-// container is not nil, container is Color
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Color) ToString() (result string) {
 	iv, err := _I.Get(19, "Color", "to_string")
 	if err != nil {
@@ -669,8 +701,9 @@ func ContextGetType() gi.GType {
 }
 
 // pango_context_new
-// container is not nil, container is Context
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewContext() (result Context) {
 	iv, err := _I.Get(20, "Context", "new")
 	if err != nil {
@@ -684,8 +717,7 @@ func NewContext() (result Context) {
 }
 
 // pango_context_changed
-// container is not nil, container is Context
-// is method
+//
 func (v Context) Changed() {
 	iv, err := _I.Get(21, "Context", "changed")
 	if err != nil {
@@ -698,8 +730,9 @@ func (v Context) Changed() {
 }
 
 // pango_context_get_base_dir
-// container is not nil, container is Context
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Context) GetBaseDir() (result DirectionEnum) {
 	iv, err := _I.Get(22, "Context", "get_base_dir")
 	if err != nil {
@@ -715,8 +748,9 @@ func (v Context) GetBaseDir() (result DirectionEnum) {
 }
 
 // pango_context_get_base_gravity
-// container is not nil, container is Context
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Context) GetBaseGravity() (result GravityEnum) {
 	iv, err := _I.Get(23, "Context", "get_base_gravity")
 	if err != nil {
@@ -732,8 +766,9 @@ func (v Context) GetBaseGravity() (result GravityEnum) {
 }
 
 // pango_context_get_font_description
-// container is not nil, container is Context
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Context) GetFontDescription() (result FontDescription) {
 	iv, err := _I.Get(24, "Context", "get_font_description")
 	if err != nil {
@@ -749,8 +784,9 @@ func (v Context) GetFontDescription() (result FontDescription) {
 }
 
 // pango_context_get_font_map
-// container is not nil, container is Context
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Context) GetFontMap() (result FontMap) {
 	iv, err := _I.Get(25, "Context", "get_font_map")
 	if err != nil {
@@ -766,8 +802,9 @@ func (v Context) GetFontMap() (result FontMap) {
 }
 
 // pango_context_get_gravity
-// container is not nil, container is Context
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Context) GetGravity() (result GravityEnum) {
 	iv, err := _I.Get(26, "Context", "get_gravity")
 	if err != nil {
@@ -783,8 +820,9 @@ func (v Context) GetGravity() (result GravityEnum) {
 }
 
 // pango_context_get_gravity_hint
-// container is not nil, container is Context
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Context) GetGravityHint() (result GravityHintEnum) {
 	iv, err := _I.Get(27, "Context", "get_gravity_hint")
 	if err != nil {
@@ -800,8 +838,9 @@ func (v Context) GetGravityHint() (result GravityHintEnum) {
 }
 
 // pango_context_get_language
-// container is not nil, container is Context
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Context) GetLanguage() (result Language) {
 	iv, err := _I.Get(28, "Context", "get_language")
 	if err != nil {
@@ -817,8 +856,9 @@ func (v Context) GetLanguage() (result Language) {
 }
 
 // pango_context_get_matrix
-// container is not nil, container is Context
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Context) GetMatrix() (result Matrix) {
 	iv, err := _I.Get(29, "Context", "get_matrix")
 	if err != nil {
@@ -834,8 +874,13 @@ func (v Context) GetMatrix() (result Matrix) {
 }
 
 // pango_context_get_metrics
-// container is not nil, container is Context
-// is method
+//
+// [ desc ] trans: nothing
+//
+// [ language ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Context) GetMetrics(desc FontDescription, language Language) (result FontMetrics) {
 	iv, err := _I.Get(30, "Context", "get_metrics")
 	if err != nil {
@@ -853,8 +898,9 @@ func (v Context) GetMetrics(desc FontDescription, language Language) (result Fon
 }
 
 // pango_context_get_serial
-// container is not nil, container is Context
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Context) GetSerial() (result uint32) {
 	iv, err := _I.Get(31, "Context", "get_serial")
 	if err != nil {
@@ -870,9 +916,11 @@ func (v Context) GetSerial() (result uint32) {
 }
 
 // pango_context_list_families
-// container is not nil, container is Context
-// is method
-// arg 0 families lenArgIdx 1
+//
+// [ families ] trans: container, dir: out
+//
+// [ n_families ] trans: everything, dir: out
+//
 func (v Context) ListFamilies() (families gi.PointerArray) {
 	iv, err := _I.Get(32, "Context", "list_families")
 	if err != nil {
@@ -894,8 +942,11 @@ func (v Context) ListFamilies() (families gi.PointerArray) {
 }
 
 // pango_context_load_font
-// container is not nil, container is Context
-// is method
+//
+// [ desc ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Context) LoadFont(desc FontDescription) (result Font) {
 	iv, err := _I.Get(33, "Context", "load_font")
 	if err != nil {
@@ -912,8 +963,13 @@ func (v Context) LoadFont(desc FontDescription) (result Font) {
 }
 
 // pango_context_load_fontset
-// container is not nil, container is Context
-// is method
+//
+// [ desc ] trans: nothing
+//
+// [ language ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Context) LoadFontset(desc FontDescription, language Language) (result Fontset) {
 	iv, err := _I.Get(34, "Context", "load_fontset")
 	if err != nil {
@@ -931,8 +987,9 @@ func (v Context) LoadFontset(desc FontDescription, language Language) (result Fo
 }
 
 // pango_context_set_base_dir
-// container is not nil, container is Context
-// is method
+//
+// [ direction ] trans: nothing
+//
 func (v Context) SetBaseDir(direction DirectionEnum) {
 	iv, err := _I.Get(35, "Context", "set_base_dir")
 	if err != nil {
@@ -946,8 +1003,9 @@ func (v Context) SetBaseDir(direction DirectionEnum) {
 }
 
 // pango_context_set_base_gravity
-// container is not nil, container is Context
-// is method
+//
+// [ gravity ] trans: nothing
+//
 func (v Context) SetBaseGravity(gravity GravityEnum) {
 	iv, err := _I.Get(36, "Context", "set_base_gravity")
 	if err != nil {
@@ -961,8 +1019,9 @@ func (v Context) SetBaseGravity(gravity GravityEnum) {
 }
 
 // pango_context_set_font_description
-// container is not nil, container is Context
-// is method
+//
+// [ desc ] trans: nothing
+//
 func (v Context) SetFontDescription(desc FontDescription) {
 	iv, err := _I.Get(37, "Context", "set_font_description")
 	if err != nil {
@@ -976,8 +1035,9 @@ func (v Context) SetFontDescription(desc FontDescription) {
 }
 
 // pango_context_set_font_map
-// container is not nil, container is Context
-// is method
+//
+// [ font_map ] trans: nothing
+//
 func (v Context) SetFontMap(font_map IFontMap) {
 	iv, err := _I.Get(38, "Context", "set_font_map")
 	if err != nil {
@@ -995,8 +1055,9 @@ func (v Context) SetFontMap(font_map IFontMap) {
 }
 
 // pango_context_set_gravity_hint
-// container is not nil, container is Context
-// is method
+//
+// [ hint ] trans: nothing
+//
 func (v Context) SetGravityHint(hint GravityHintEnum) {
 	iv, err := _I.Get(39, "Context", "set_gravity_hint")
 	if err != nil {
@@ -1010,8 +1071,9 @@ func (v Context) SetGravityHint(hint GravityHintEnum) {
 }
 
 // pango_context_set_language
-// container is not nil, container is Context
-// is method
+//
+// [ language ] trans: nothing
+//
 func (v Context) SetLanguage(language Language) {
 	iv, err := _I.Get(40, "Context", "set_language")
 	if err != nil {
@@ -1025,8 +1087,9 @@ func (v Context) SetLanguage(language Language) {
 }
 
 // pango_context_set_matrix
-// container is not nil, container is Context
-// is method
+//
+// [ matrix ] trans: nothing
+//
 func (v Context) SetMatrix(matrix Matrix) {
 	iv, err := _I.Get(41, "Context", "set_matrix")
 	if err != nil {
@@ -1051,8 +1114,11 @@ func CoverageGetType() gi.GType {
 }
 
 // pango_coverage_get
-// container is not nil, container is Coverage
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Coverage) Get(index_ int32) (result CoverageLevelEnum) {
 	iv, err := _I.Get(42, "Coverage", "get")
 	if err != nil {
@@ -1069,8 +1135,9 @@ func (v Coverage) Get(index_ int32) (result CoverageLevelEnum) {
 }
 
 // pango_coverage_max
-// container is not nil, container is Coverage
-// is method
+//
+// [ other ] trans: nothing
+//
 func (v Coverage) Max(other Coverage) {
 	iv, err := _I.Get(43, "Coverage", "max")
 	if err != nil {
@@ -1084,8 +1151,11 @@ func (v Coverage) Max(other Coverage) {
 }
 
 // pango_coverage_set
-// container is not nil, container is Coverage
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ level ] trans: nothing
+//
 func (v Coverage) Set(index_ int32, level CoverageLevelEnum) {
 	iv, err := _I.Get(44, "Coverage", "set")
 	if err != nil {
@@ -1100,9 +1170,11 @@ func (v Coverage) Set(index_ int32, level CoverageLevelEnum) {
 }
 
 // pango_coverage_to_bytes
-// container is not nil, container is Coverage
-// is method
-// arg 0 bytes lenArgIdx 1
+//
+// [ bytes ] trans: everything, dir: out
+//
+// [ n_bytes ] trans: everything, dir: out
+//
 func (v Coverage) ToBytes() (bytes gi.Uint8Array) {
 	iv, err := _I.Get(45, "Coverage", "to_bytes")
 	if err != nil {
@@ -1124,8 +1196,7 @@ func (v Coverage) ToBytes() (bytes gi.Uint8Array) {
 }
 
 // pango_coverage_unref
-// container is not nil, container is Coverage
-// is method
+//
 func (v Coverage) Unref() {
 	iv, err := _I.Get(46, "Coverage", "unref")
 	if err != nil {
@@ -1273,10 +1344,11 @@ func FontGetType() gi.GType {
 }
 
 // pango_font_descriptions_free
-// container is not nil, container is Font
-// is method
-// arg0Type tag: array, isPtr: true
-// arg 0 descs lenArgIdx 1
+//
+// [ descs ] trans: everything
+//
+// [ n_descs ] trans: nothing
+//
 func FontDescriptionsFree1(descs gi.PointerArray, n_descs int32) {
 	iv, err := _I.Get(47, "Font", "descriptions_free")
 	if err != nil {
@@ -1290,8 +1362,9 @@ func FontDescriptionsFree1(descs gi.PointerArray, n_descs int32) {
 }
 
 // pango_font_describe
-// container is not nil, container is Font
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Font) Describe() (result FontDescription) {
 	iv, err := _I.Get(48, "Font", "describe")
 	if err != nil {
@@ -1307,8 +1380,9 @@ func (v Font) Describe() (result FontDescription) {
 }
 
 // pango_font_describe_with_absolute_size
-// container is not nil, container is Font
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Font) DescribeWithAbsoluteSize() (result FontDescription) {
 	iv, err := _I.Get(49, "Font", "describe_with_absolute_size")
 	if err != nil {
@@ -1324,8 +1398,13 @@ func (v Font) DescribeWithAbsoluteSize() (result FontDescription) {
 }
 
 // pango_font_find_shaper
-// container is not nil, container is Font
-// is method
+//
+// [ language ] trans: nothing
+//
+// [ ch ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Font) FindShaper(language Language, ch uint32) (result EngineShape) {
 	iv, err := _I.Get(50, "Font", "find_shaper")
 	if err != nil {
@@ -1343,8 +1422,9 @@ func (v Font) FindShaper(language Language, ch uint32) (result EngineShape) {
 }
 
 // pango_font_get_font_map
-// container is not nil, container is Font
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Font) GetFontMap() (result FontMap) {
 	iv, err := _I.Get(51, "Font", "get_font_map")
 	if err != nil {
@@ -1360,8 +1440,13 @@ func (v Font) GetFontMap() (result FontMap) {
 }
 
 // pango_font_get_glyph_extents
-// container is not nil, container is Font
-// is method
+//
+// [ glyph ] trans: nothing
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v Font) GetGlyphExtents(glyph uint32, ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(52, "Font", "get_glyph_extents")
 	if err != nil {
@@ -1377,8 +1462,11 @@ func (v Font) GetGlyphExtents(glyph uint32, ink_rect Rectangle, logical_rect Rec
 }
 
 // pango_font_get_metrics
-// container is not nil, container is Font
-// is method
+//
+// [ language ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Font) GetMetrics(language Language) (result FontMetrics) {
 	iv, err := _I.Get(53, "Font", "get_metrics")
 	if err != nil {
@@ -1406,8 +1494,9 @@ func FontDescriptionGetType() gi.GType {
 }
 
 // pango_font_description_new
-// container is not nil, container is FontDescription
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewFontDescription() (result FontDescription) {
 	iv, err := _I.Get(54, "FontDescription", "new")
 	if err != nil {
@@ -1421,8 +1510,13 @@ func NewFontDescription() (result FontDescription) {
 }
 
 // pango_font_description_better_match
-// container is not nil, container is FontDescription
-// is method
+//
+// [ old_match ] trans: nothing
+//
+// [ new_match ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) BetterMatch(old_match FontDescription, new_match FontDescription) (result bool) {
 	iv, err := _I.Get(55, "FontDescription", "better_match")
 	if err != nil {
@@ -1440,8 +1534,9 @@ func (v FontDescription) BetterMatch(old_match FontDescription, new_match FontDe
 }
 
 // pango_font_description_copy
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FontDescription) Copy() (result FontDescription) {
 	iv, err := _I.Get(56, "FontDescription", "copy")
 	if err != nil {
@@ -1457,8 +1552,9 @@ func (v FontDescription) Copy() (result FontDescription) {
 }
 
 // pango_font_description_copy_static
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FontDescription) CopyStatic() (result FontDescription) {
 	iv, err := _I.Get(57, "FontDescription", "copy_static")
 	if err != nil {
@@ -1474,8 +1570,11 @@ func (v FontDescription) CopyStatic() (result FontDescription) {
 }
 
 // pango_font_description_equal
-// container is not nil, container is FontDescription
-// is method
+//
+// [ desc2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) Equal(desc2 FontDescription) (result bool) {
 	iv, err := _I.Get(58, "FontDescription", "equal")
 	if err != nil {
@@ -1492,8 +1591,7 @@ func (v FontDescription) Equal(desc2 FontDescription) (result bool) {
 }
 
 // pango_font_description_free
-// container is not nil, container is FontDescription
-// is method
+//
 func (v FontDescription) Free() {
 	iv, err := _I.Get(59, "FontDescription", "free")
 	if err != nil {
@@ -1506,8 +1604,9 @@ func (v FontDescription) Free() {
 }
 
 // pango_font_description_get_family
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) GetFamily() (result string) {
 	iv, err := _I.Get(60, "FontDescription", "get_family")
 	if err != nil {
@@ -1518,13 +1617,14 @@ func (v FontDescription) GetFamily() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_font_description_get_gravity
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) GetGravity() (result GravityEnum) {
 	iv, err := _I.Get(61, "FontDescription", "get_gravity")
 	if err != nil {
@@ -1540,8 +1640,9 @@ func (v FontDescription) GetGravity() (result GravityEnum) {
 }
 
 // pango_font_description_get_set_fields
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) GetSetFields() (result FontMaskFlags) {
 	iv, err := _I.Get(62, "FontDescription", "get_set_fields")
 	if err != nil {
@@ -1557,8 +1658,9 @@ func (v FontDescription) GetSetFields() (result FontMaskFlags) {
 }
 
 // pango_font_description_get_size
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) GetSize() (result int32) {
 	iv, err := _I.Get(63, "FontDescription", "get_size")
 	if err != nil {
@@ -1574,8 +1676,9 @@ func (v FontDescription) GetSize() (result int32) {
 }
 
 // pango_font_description_get_size_is_absolute
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) GetSizeIsAbsolute() (result bool) {
 	iv, err := _I.Get(64, "FontDescription", "get_size_is_absolute")
 	if err != nil {
@@ -1591,8 +1694,9 @@ func (v FontDescription) GetSizeIsAbsolute() (result bool) {
 }
 
 // pango_font_description_get_stretch
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) GetStretch() (result StretchEnum) {
 	iv, err := _I.Get(65, "FontDescription", "get_stretch")
 	if err != nil {
@@ -1608,8 +1712,9 @@ func (v FontDescription) GetStretch() (result StretchEnum) {
 }
 
 // pango_font_description_get_style
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) GetStyle() (result StyleEnum) {
 	iv, err := _I.Get(66, "FontDescription", "get_style")
 	if err != nil {
@@ -1625,8 +1730,9 @@ func (v FontDescription) GetStyle() (result StyleEnum) {
 }
 
 // pango_font_description_get_variant
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) GetVariant() (result VariantEnum) {
 	iv, err := _I.Get(67, "FontDescription", "get_variant")
 	if err != nil {
@@ -1642,8 +1748,9 @@ func (v FontDescription) GetVariant() (result VariantEnum) {
 }
 
 // pango_font_description_get_variations
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) GetVariations() (result string) {
 	iv, err := _I.Get(68, "FontDescription", "get_variations")
 	if err != nil {
@@ -1654,13 +1761,14 @@ func (v FontDescription) GetVariations() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_font_description_get_weight
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) GetWeight() (result WeightEnum) {
 	iv, err := _I.Get(69, "FontDescription", "get_weight")
 	if err != nil {
@@ -1676,8 +1784,9 @@ func (v FontDescription) GetWeight() (result WeightEnum) {
 }
 
 // pango_font_description_hash
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontDescription) Hash() (result uint32) {
 	iv, err := _I.Get(70, "FontDescription", "hash")
 	if err != nil {
@@ -1693,8 +1802,11 @@ func (v FontDescription) Hash() (result uint32) {
 }
 
 // pango_font_description_merge
-// container is not nil, container is FontDescription
-// is method
+//
+// [ desc_to_merge ] trans: nothing
+//
+// [ replace_existing ] trans: nothing
+//
 func (v FontDescription) Merge(desc_to_merge FontDescription, replace_existing bool) {
 	iv, err := _I.Get(71, "FontDescription", "merge")
 	if err != nil {
@@ -1709,8 +1821,11 @@ func (v FontDescription) Merge(desc_to_merge FontDescription, replace_existing b
 }
 
 // pango_font_description_merge_static
-// container is not nil, container is FontDescription
-// is method
+//
+// [ desc_to_merge ] trans: nothing
+//
+// [ replace_existing ] trans: nothing
+//
 func (v FontDescription) MergeStatic(desc_to_merge FontDescription, replace_existing bool) {
 	iv, err := _I.Get(72, "FontDescription", "merge_static")
 	if err != nil {
@@ -1725,8 +1840,9 @@ func (v FontDescription) MergeStatic(desc_to_merge FontDescription, replace_exis
 }
 
 // pango_font_description_set_absolute_size
-// container is not nil, container is FontDescription
-// is method
+//
+// [ size ] trans: nothing
+//
 func (v FontDescription) SetAbsoluteSize(size float64) {
 	iv, err := _I.Get(73, "FontDescription", "set_absolute_size")
 	if err != nil {
@@ -1740,8 +1856,9 @@ func (v FontDescription) SetAbsoluteSize(size float64) {
 }
 
 // pango_font_description_set_family
-// container is not nil, container is FontDescription
-// is method
+//
+// [ family ] trans: nothing
+//
 func (v FontDescription) SetFamily(family string) {
 	iv, err := _I.Get(74, "FontDescription", "set_family")
 	if err != nil {
@@ -1757,8 +1874,9 @@ func (v FontDescription) SetFamily(family string) {
 }
 
 // pango_font_description_set_family_static
-// container is not nil, container is FontDescription
-// is method
+//
+// [ family ] trans: nothing
+//
 func (v FontDescription) SetFamilyStatic(family string) {
 	iv, err := _I.Get(75, "FontDescription", "set_family_static")
 	if err != nil {
@@ -1774,8 +1892,9 @@ func (v FontDescription) SetFamilyStatic(family string) {
 }
 
 // pango_font_description_set_gravity
-// container is not nil, container is FontDescription
-// is method
+//
+// [ gravity ] trans: nothing
+//
 func (v FontDescription) SetGravity(gravity GravityEnum) {
 	iv, err := _I.Get(76, "FontDescription", "set_gravity")
 	if err != nil {
@@ -1789,8 +1908,9 @@ func (v FontDescription) SetGravity(gravity GravityEnum) {
 }
 
 // pango_font_description_set_size
-// container is not nil, container is FontDescription
-// is method
+//
+// [ size ] trans: nothing
+//
 func (v FontDescription) SetSize(size int32) {
 	iv, err := _I.Get(77, "FontDescription", "set_size")
 	if err != nil {
@@ -1804,8 +1924,9 @@ func (v FontDescription) SetSize(size int32) {
 }
 
 // pango_font_description_set_stretch
-// container is not nil, container is FontDescription
-// is method
+//
+// [ stretch ] trans: nothing
+//
 func (v FontDescription) SetStretch(stretch StretchEnum) {
 	iv, err := _I.Get(78, "FontDescription", "set_stretch")
 	if err != nil {
@@ -1819,8 +1940,9 @@ func (v FontDescription) SetStretch(stretch StretchEnum) {
 }
 
 // pango_font_description_set_style
-// container is not nil, container is FontDescription
-// is method
+//
+// [ style ] trans: nothing
+//
 func (v FontDescription) SetStyle(style StyleEnum) {
 	iv, err := _I.Get(79, "FontDescription", "set_style")
 	if err != nil {
@@ -1834,8 +1956,9 @@ func (v FontDescription) SetStyle(style StyleEnum) {
 }
 
 // pango_font_description_set_variant
-// container is not nil, container is FontDescription
-// is method
+//
+// [ variant ] trans: nothing
+//
 func (v FontDescription) SetVariant(variant VariantEnum) {
 	iv, err := _I.Get(80, "FontDescription", "set_variant")
 	if err != nil {
@@ -1849,8 +1972,9 @@ func (v FontDescription) SetVariant(variant VariantEnum) {
 }
 
 // pango_font_description_set_variations
-// container is not nil, container is FontDescription
-// is method
+//
+// [ settings ] trans: nothing
+//
 func (v FontDescription) SetVariations(settings string) {
 	iv, err := _I.Get(81, "FontDescription", "set_variations")
 	if err != nil {
@@ -1866,8 +1990,9 @@ func (v FontDescription) SetVariations(settings string) {
 }
 
 // pango_font_description_set_variations_static
-// container is not nil, container is FontDescription
-// is method
+//
+// [ settings ] trans: nothing
+//
 func (v FontDescription) SetVariationsStatic(settings string) {
 	iv, err := _I.Get(82, "FontDescription", "set_variations_static")
 	if err != nil {
@@ -1883,8 +2008,9 @@ func (v FontDescription) SetVariationsStatic(settings string) {
 }
 
 // pango_font_description_set_weight
-// container is not nil, container is FontDescription
-// is method
+//
+// [ weight ] trans: nothing
+//
 func (v FontDescription) SetWeight(weight WeightEnum) {
 	iv, err := _I.Get(83, "FontDescription", "set_weight")
 	if err != nil {
@@ -1898,8 +2024,9 @@ func (v FontDescription) SetWeight(weight WeightEnum) {
 }
 
 // pango_font_description_to_filename
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FontDescription) ToFilename() (result string) {
 	iv, err := _I.Get(84, "FontDescription", "to_filename")
 	if err != nil {
@@ -1915,8 +2042,9 @@ func (v FontDescription) ToFilename() (result string) {
 }
 
 // pango_font_description_to_string
-// container is not nil, container is FontDescription
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FontDescription) ToString() (result string) {
 	iv, err := _I.Get(85, "FontDescription", "to_string")
 	if err != nil {
@@ -1932,8 +2060,9 @@ func (v FontDescription) ToString() (result string) {
 }
 
 // pango_font_description_unset_fields
-// container is not nil, container is FontDescription
-// is method
+//
+// [ to_unset ] trans: nothing
+//
 func (v FontDescription) UnsetFields(to_unset FontMaskFlags) {
 	iv, err := _I.Get(86, "FontDescription", "unset_fields")
 	if err != nil {
@@ -1947,9 +2076,11 @@ func (v FontDescription) UnsetFields(to_unset FontMaskFlags) {
 }
 
 // pango_font_description_from_string
-// container is not nil, container is FontDescription
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FontDescriptionFromString1(str string) (result FontDescription) {
 	iv, err := _I.Get(87, "FontDescription", "from_string")
 	if err != nil {
@@ -1982,8 +2113,9 @@ func FontFaceGetType() gi.GType {
 }
 
 // pango_font_face_describe
-// container is not nil, container is FontFace
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FontFace) Describe() (result FontDescription) {
 	iv, err := _I.Get(88, "FontFace", "describe")
 	if err != nil {
@@ -1999,8 +2131,9 @@ func (v FontFace) Describe() (result FontDescription) {
 }
 
 // pango_font_face_get_face_name
-// container is not nil, container is FontFace
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontFace) GetFaceName() (result string) {
 	iv, err := _I.Get(89, "FontFace", "get_face_name")
 	if err != nil {
@@ -2011,13 +2144,14 @@ func (v FontFace) GetFaceName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_font_face_is_synthesized
-// container is not nil, container is FontFace
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontFace) IsSynthesized() (result bool) {
 	iv, err := _I.Get(90, "FontFace", "is_synthesized")
 	if err != nil {
@@ -2033,9 +2167,11 @@ func (v FontFace) IsSynthesized() (result bool) {
 }
 
 // pango_font_face_list_sizes
-// container is not nil, container is FontFace
-// is method
-// arg 0 sizes lenArgIdx 1
+//
+// [ sizes ] trans: everything, dir: out
+//
+// [ n_sizes ] trans: everything, dir: out
+//
 func (v FontFace) ListSizes() (sizes gi.Int32Array) {
 	iv, err := _I.Get(91, "FontFace", "list_sizes")
 	if err != nil {
@@ -2073,8 +2209,9 @@ func FontFamilyGetType() gi.GType {
 }
 
 // pango_font_family_get_name
-// container is not nil, container is FontFamily
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontFamily) GetName() (result string) {
 	iv, err := _I.Get(92, "FontFamily", "get_name")
 	if err != nil {
@@ -2085,13 +2222,14 @@ func (v FontFamily) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_font_family_is_monospace
-// container is not nil, container is FontFamily
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontFamily) IsMonospace() (result bool) {
 	iv, err := _I.Get(93, "FontFamily", "is_monospace")
 	if err != nil {
@@ -2107,9 +2245,11 @@ func (v FontFamily) IsMonospace() (result bool) {
 }
 
 // pango_font_family_list_faces
-// container is not nil, container is FontFamily
-// is method
-// arg 0 faces lenArgIdx 1
+//
+// [ faces ] trans: container, dir: out
+//
+// [ n_faces ] trans: everything, dir: out
+//
 func (v FontFamily) ListFaces() (faces gi.PointerArray) {
 	iv, err := _I.Get(94, "FontFamily", "list_faces")
 	if err != nil {
@@ -2147,8 +2287,7 @@ func FontMapGetType() gi.GType {
 }
 
 // pango_font_map_changed
-// container is not nil, container is FontMap
-// is method
+//
 func (v FontMap) Changed() {
 	iv, err := _I.Get(95, "FontMap", "changed")
 	if err != nil {
@@ -2161,8 +2300,9 @@ func (v FontMap) Changed() {
 }
 
 // pango_font_map_create_context
-// container is not nil, container is FontMap
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FontMap) CreateContext() (result Context) {
 	iv, err := _I.Get(96, "FontMap", "create_context")
 	if err != nil {
@@ -2178,8 +2318,9 @@ func (v FontMap) CreateContext() (result Context) {
 }
 
 // pango_font_map_get_serial
-// container is not nil, container is FontMap
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontMap) GetSerial() (result uint32) {
 	iv, err := _I.Get(97, "FontMap", "get_serial")
 	if err != nil {
@@ -2195,8 +2336,9 @@ func (v FontMap) GetSerial() (result uint32) {
 }
 
 // pango_font_map_get_shape_engine_type
-// container is not nil, container is FontMap
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontMap) GetShapeEngineType() (result string) {
 	iv, err := _I.Get(98, "FontMap", "get_shape_engine_type")
 	if err != nil {
@@ -2207,14 +2349,16 @@ func (v FontMap) GetShapeEngineType() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_font_map_list_families
-// container is not nil, container is FontMap
-// is method
-// arg 0 families lenArgIdx 1
+//
+// [ families ] trans: container, dir: out
+//
+// [ n_families ] trans: everything, dir: out
+//
 func (v FontMap) ListFamilies() (families gi.PointerArray) {
 	iv, err := _I.Get(99, "FontMap", "list_families")
 	if err != nil {
@@ -2236,8 +2380,13 @@ func (v FontMap) ListFamilies() (families gi.PointerArray) {
 }
 
 // pango_font_map_load_font
-// container is not nil, container is FontMap
-// is method
+//
+// [ context ] trans: nothing
+//
+// [ desc ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FontMap) LoadFont(context IContext, desc FontDescription) (result Font) {
 	iv, err := _I.Get(100, "FontMap", "load_font")
 	if err != nil {
@@ -2259,8 +2408,15 @@ func (v FontMap) LoadFont(context IContext, desc FontDescription) (result Font) 
 }
 
 // pango_font_map_load_fontset
-// container is not nil, container is FontMap
-// is method
+//
+// [ context ] trans: nothing
+//
+// [ desc ] trans: nothing
+//
+// [ language ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FontMap) LoadFontset(context IContext, desc FontDescription, language Language) (result Fontset) {
 	iv, err := _I.Get(101, "FontMap", "load_fontset")
 	if err != nil {
@@ -2315,8 +2471,9 @@ func FontMetricsGetType() gi.GType {
 }
 
 // pango_font_metrics_new
-// container is not nil, container is FontMetrics
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewFontMetrics() (result FontMetrics) {
 	iv, err := _I.Get(102, "FontMetrics", "new")
 	if err != nil {
@@ -2330,8 +2487,9 @@ func NewFontMetrics() (result FontMetrics) {
 }
 
 // pango_font_metrics_get_approximate_char_width
-// container is not nil, container is FontMetrics
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontMetrics) GetApproximateCharWidth() (result int32) {
 	iv, err := _I.Get(103, "FontMetrics", "get_approximate_char_width")
 	if err != nil {
@@ -2347,8 +2505,9 @@ func (v FontMetrics) GetApproximateCharWidth() (result int32) {
 }
 
 // pango_font_metrics_get_approximate_digit_width
-// container is not nil, container is FontMetrics
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontMetrics) GetApproximateDigitWidth() (result int32) {
 	iv, err := _I.Get(104, "FontMetrics", "get_approximate_digit_width")
 	if err != nil {
@@ -2364,8 +2523,9 @@ func (v FontMetrics) GetApproximateDigitWidth() (result int32) {
 }
 
 // pango_font_metrics_get_ascent
-// container is not nil, container is FontMetrics
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontMetrics) GetAscent() (result int32) {
 	iv, err := _I.Get(105, "FontMetrics", "get_ascent")
 	if err != nil {
@@ -2381,8 +2541,9 @@ func (v FontMetrics) GetAscent() (result int32) {
 }
 
 // pango_font_metrics_get_descent
-// container is not nil, container is FontMetrics
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontMetrics) GetDescent() (result int32) {
 	iv, err := _I.Get(106, "FontMetrics", "get_descent")
 	if err != nil {
@@ -2398,8 +2559,9 @@ func (v FontMetrics) GetDescent() (result int32) {
 }
 
 // pango_font_metrics_get_strikethrough_position
-// container is not nil, container is FontMetrics
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontMetrics) GetStrikethroughPosition() (result int32) {
 	iv, err := _I.Get(107, "FontMetrics", "get_strikethrough_position")
 	if err != nil {
@@ -2415,8 +2577,9 @@ func (v FontMetrics) GetStrikethroughPosition() (result int32) {
 }
 
 // pango_font_metrics_get_strikethrough_thickness
-// container is not nil, container is FontMetrics
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontMetrics) GetStrikethroughThickness() (result int32) {
 	iv, err := _I.Get(108, "FontMetrics", "get_strikethrough_thickness")
 	if err != nil {
@@ -2432,8 +2595,9 @@ func (v FontMetrics) GetStrikethroughThickness() (result int32) {
 }
 
 // pango_font_metrics_get_underline_position
-// container is not nil, container is FontMetrics
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontMetrics) GetUnderlinePosition() (result int32) {
 	iv, err := _I.Get(109, "FontMetrics", "get_underline_position")
 	if err != nil {
@@ -2449,8 +2613,9 @@ func (v FontMetrics) GetUnderlinePosition() (result int32) {
 }
 
 // pango_font_metrics_get_underline_thickness
-// container is not nil, container is FontMetrics
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontMetrics) GetUnderlineThickness() (result int32) {
 	iv, err := _I.Get(110, "FontMetrics", "get_underline_thickness")
 	if err != nil {
@@ -2466,8 +2631,9 @@ func (v FontMetrics) GetUnderlineThickness() (result int32) {
 }
 
 // pango_font_metrics_ref
-// container is not nil, container is FontMetrics
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FontMetrics) Ref() (result FontMetrics) {
 	iv, err := _I.Get(111, "FontMetrics", "ref")
 	if err != nil {
@@ -2483,8 +2649,7 @@ func (v FontMetrics) Ref() (result FontMetrics) {
 }
 
 // pango_font_metrics_unref
-// container is not nil, container is FontMetrics
-// is method
+//
 func (v FontMetrics) Unref() {
 	iv, err := _I.Get(112, "FontMetrics", "unref")
 	if err != nil {
@@ -2512,8 +2677,11 @@ func FontsetGetType() gi.GType {
 }
 
 // pango_fontset_foreach
-// container is not nil, container is Fontset
-// is method
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
 func (v Fontset) Foreach(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer) {
 	iv, err := _I.Get(113, "Fontset", "foreach")
 	if err != nil {
@@ -2528,8 +2696,11 @@ func (v Fontset) Foreach(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer) 
 }
 
 // pango_fontset_get_font
-// container is not nil, container is Fontset
-// is method
+//
+// [ wc ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Fontset) GetFont(wc uint32) (result Font) {
 	iv, err := _I.Get(114, "Fontset", "get_font")
 	if err != nil {
@@ -2546,8 +2717,9 @@ func (v Fontset) GetFont(wc uint32) (result Font) {
 }
 
 // pango_fontset_get_metrics
-// container is not nil, container is Fontset
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Fontset) GetMetrics() (result FontMetrics) {
 	iv, err := _I.Get(115, "Fontset", "get_metrics")
 	if err != nil {
@@ -2598,8 +2770,11 @@ func FontsetSimpleGetType() gi.GType {
 }
 
 // pango_fontset_simple_new
-// container is not nil, container is FontsetSimple
-// is constructor
+//
+// [ language ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewFontsetSimple(language Language) (result FontsetSimple) {
 	iv, err := _I.Get(116, "FontsetSimple", "new")
 	if err != nil {
@@ -2615,8 +2790,9 @@ func NewFontsetSimple(language Language) (result FontsetSimple) {
 }
 
 // pango_fontset_simple_append
-// container is not nil, container is FontsetSimple
-// is method
+//
+// [ font ] trans: nothing
+//
 func (v FontsetSimple) Append(font IFont) {
 	iv, err := _I.Get(117, "FontsetSimple", "append")
 	if err != nil {
@@ -2634,8 +2810,9 @@ func (v FontsetSimple) Append(font IFont) {
 }
 
 // pango_fontset_simple_size
-// container is not nil, container is FontsetSimple
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FontsetSimple) Size() (result int32) {
 	iv, err := _I.Get(118, "FontsetSimple", "size")
 	if err != nil {
@@ -2688,8 +2865,13 @@ func GlyphItemGetType() gi.GType {
 }
 
 // pango_glyph_item_apply_attrs
-// container is not nil, container is GlyphItem
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ list ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v GlyphItem) ApplyAttrs(text string, list AttrList) (result glib.SList) {
 	iv, err := _I.Get(119, "GlyphItem", "apply_attrs")
 	if err != nil {
@@ -2709,8 +2891,9 @@ func (v GlyphItem) ApplyAttrs(text string, list AttrList) (result glib.SList) {
 }
 
 // pango_glyph_item_copy
-// container is not nil, container is GlyphItem
-// is method
+//
+// [ result ] trans: everything
+//
 func (v GlyphItem) Copy() (result GlyphItem) {
 	iv, err := _I.Get(120, "GlyphItem", "copy")
 	if err != nil {
@@ -2726,8 +2909,7 @@ func (v GlyphItem) Copy() (result GlyphItem) {
 }
 
 // pango_glyph_item_free
-// container is not nil, container is GlyphItem
-// is method
+//
 func (v GlyphItem) Free() {
 	iv, err := _I.Get(121, "GlyphItem", "free")
 	if err != nil {
@@ -2740,8 +2922,11 @@ func (v GlyphItem) Free() {
 }
 
 // pango_glyph_item_get_logical_widths
-// container is not nil, container is GlyphItem
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ logical_widths ] trans: nothing
+//
 func (v GlyphItem) GetLogicalWidths(text string, logical_widths gi.Int32Array) {
 	iv, err := _I.Get(122, "GlyphItem", "get_logical_widths")
 	if err != nil {
@@ -2758,8 +2943,13 @@ func (v GlyphItem) GetLogicalWidths(text string, logical_widths gi.Int32Array) {
 }
 
 // pango_glyph_item_letter_space
-// container is not nil, container is GlyphItem
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ log_attrs ] trans: nothing
+//
+// [ letter_spacing ] trans: nothing
+//
 func (v GlyphItem) LetterSpace(text string, log_attrs unsafe.Pointer, letter_spacing int32) {
 	iv, err := _I.Get(123, "GlyphItem", "letter_space")
 	if err != nil {
@@ -2777,8 +2967,13 @@ func (v GlyphItem) LetterSpace(text string, log_attrs unsafe.Pointer, letter_spa
 }
 
 // pango_glyph_item_split
-// container is not nil, container is GlyphItem
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ split_index ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v GlyphItem) Split(text string, split_index int32) (result GlyphItem) {
 	iv, err := _I.Get(124, "GlyphItem", "split")
 	if err != nil {
@@ -2810,8 +3005,9 @@ func GlyphItemIterGetType() gi.GType {
 }
 
 // pango_glyph_item_iter_copy
-// container is not nil, container is GlyphItemIter
-// is method
+//
+// [ result ] trans: everything
+//
 func (v GlyphItemIter) Copy() (result GlyphItemIter) {
 	iv, err := _I.Get(125, "GlyphItemIter", "copy")
 	if err != nil {
@@ -2827,8 +3023,7 @@ func (v GlyphItemIter) Copy() (result GlyphItemIter) {
 }
 
 // pango_glyph_item_iter_free
-// container is not nil, container is GlyphItemIter
-// is method
+//
 func (v GlyphItemIter) Free() {
 	iv, err := _I.Get(126, "GlyphItemIter", "free")
 	if err != nil {
@@ -2841,8 +3036,13 @@ func (v GlyphItemIter) Free() {
 }
 
 // pango_glyph_item_iter_init_end
-// container is not nil, container is GlyphItemIter
-// is method
+//
+// [ glyph_item ] trans: nothing
+//
+// [ text ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v GlyphItemIter) InitEnd(glyph_item GlyphItem, text string) (result bool) {
 	iv, err := _I.Get(127, "GlyphItemIter", "init_end")
 	if err != nil {
@@ -2862,8 +3062,13 @@ func (v GlyphItemIter) InitEnd(glyph_item GlyphItem, text string) (result bool) 
 }
 
 // pango_glyph_item_iter_init_start
-// container is not nil, container is GlyphItemIter
-// is method
+//
+// [ glyph_item ] trans: nothing
+//
+// [ text ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v GlyphItemIter) InitStart(glyph_item GlyphItem, text string) (result bool) {
 	iv, err := _I.Get(128, "GlyphItemIter", "init_start")
 	if err != nil {
@@ -2883,8 +3088,9 @@ func (v GlyphItemIter) InitStart(glyph_item GlyphItem, text string) (result bool
 }
 
 // pango_glyph_item_iter_next_cluster
-// container is not nil, container is GlyphItemIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GlyphItemIter) NextCluster() (result bool) {
 	iv, err := _I.Get(129, "GlyphItemIter", "next_cluster")
 	if err != nil {
@@ -2900,8 +3106,9 @@ func (v GlyphItemIter) NextCluster() (result bool) {
 }
 
 // pango_glyph_item_iter_prev_cluster
-// container is not nil, container is GlyphItemIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GlyphItemIter) PrevCluster() (result bool) {
 	iv, err := _I.Get(130, "GlyphItemIter", "prev_cluster")
 	if err != nil {
@@ -2929,8 +3136,9 @@ func GlyphStringGetType() gi.GType {
 }
 
 // pango_glyph_string_new
-// container is not nil, container is GlyphString
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewGlyphString() (result GlyphString) {
 	iv, err := _I.Get(131, "GlyphString", "new")
 	if err != nil {
@@ -2944,8 +3152,9 @@ func NewGlyphString() (result GlyphString) {
 }
 
 // pango_glyph_string_copy
-// container is not nil, container is GlyphString
-// is method
+//
+// [ result ] trans: everything
+//
 func (v GlyphString) Copy() (result GlyphString) {
 	iv, err := _I.Get(132, "GlyphString", "copy")
 	if err != nil {
@@ -2961,8 +3170,13 @@ func (v GlyphString) Copy() (result GlyphString) {
 }
 
 // pango_glyph_string_extents
-// container is not nil, container is GlyphString
-// is method
+//
+// [ font ] trans: nothing
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v GlyphString) Extents(font IFont, ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(133, "GlyphString", "extents")
 	if err != nil {
@@ -2982,8 +3196,17 @@ func (v GlyphString) Extents(font IFont, ink_rect Rectangle, logical_rect Rectan
 }
 
 // pango_glyph_string_extents_range
-// container is not nil, container is GlyphString
-// is method
+//
+// [ start ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ font ] trans: nothing
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v GlyphString) ExtentsRange(start int32, end int32, font IFont, ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(134, "GlyphString", "extents_range")
 	if err != nil {
@@ -3005,8 +3228,7 @@ func (v GlyphString) ExtentsRange(start int32, end int32, font IFont, ink_rect R
 }
 
 // pango_glyph_string_free
-// container is not nil, container is GlyphString
-// is method
+//
 func (v GlyphString) Free() {
 	iv, err := _I.Get(135, "GlyphString", "free")
 	if err != nil {
@@ -3019,8 +3241,15 @@ func (v GlyphString) Free() {
 }
 
 // pango_glyph_string_get_logical_widths
-// container is not nil, container is GlyphString
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ embedding_level ] trans: nothing
+//
+// [ logical_widths ] trans: nothing
+//
 func (v GlyphString) GetLogicalWidths(text string, length int32, embedding_level int32, logical_widths gi.Int32Array) {
 	iv, err := _I.Get(136, "GlyphString", "get_logical_widths")
 	if err != nil {
@@ -3039,8 +3268,9 @@ func (v GlyphString) GetLogicalWidths(text string, length int32, embedding_level
 }
 
 // pango_glyph_string_get_width
-// container is not nil, container is GlyphString
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GlyphString) GetWidth() (result int32) {
 	iv, err := _I.Get(137, "GlyphString", "get_width")
 	if err != nil {
@@ -3056,8 +3286,19 @@ func (v GlyphString) GetWidth() (result int32) {
 }
 
 // pango_glyph_string_index_to_x
-// container is not nil, container is GlyphString
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ analysis ] trans: nothing
+//
+// [ index_ ] trans: nothing
+//
+// [ trailing ] trans: nothing
+//
+// [ x_pos ] trans: everything, dir: out
+//
 func (v GlyphString) IndexToX(text string, length int32, analysis Analysis, index_ int32, trailing bool) (x_pos int32) {
 	iv, err := _I.Get(138, "GlyphString", "index_to_x")
 	if err != nil {
@@ -3081,8 +3322,9 @@ func (v GlyphString) IndexToX(text string, length int32, analysis Analysis, inde
 }
 
 // pango_glyph_string_set_size
-// container is not nil, container is GlyphString
-// is method
+//
+// [ new_len ] trans: nothing
+//
 func (v GlyphString) SetSize(new_len int32) {
 	iv, err := _I.Get(139, "GlyphString", "set_size")
 	if err != nil {
@@ -3096,8 +3338,19 @@ func (v GlyphString) SetSize(new_len int32) {
 }
 
 // pango_glyph_string_x_to_index
-// container is not nil, container is GlyphString
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ analysis ] trans: nothing
+//
+// [ x_pos ] trans: nothing
+//
+// [ index_ ] trans: everything, dir: out
+//
+// [ trailing ] trans: everything, dir: out
+//
 func (v GlyphString) XToIndex(text string, length int32, analysis Analysis, x_pos int32) (index_ int32, trailing int32) {
 	iv, err := _I.Get(140, "GlyphString", "x_to_index")
 	if err != nil {
@@ -3188,8 +3441,9 @@ func ItemGetType() gi.GType {
 }
 
 // pango_item_new
-// container is not nil, container is Item
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewItem() (result Item) {
 	iv, err := _I.Get(141, "Item", "new")
 	if err != nil {
@@ -3203,8 +3457,9 @@ func NewItem() (result Item) {
 }
 
 // pango_item_copy
-// container is not nil, container is Item
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Item) Copy() (result Item) {
 	iv, err := _I.Get(142, "Item", "copy")
 	if err != nil {
@@ -3220,8 +3475,7 @@ func (v Item) Copy() (result Item) {
 }
 
 // pango_item_free
-// container is not nil, container is Item
-// is method
+//
 func (v Item) Free() {
 	iv, err := _I.Get(143, "Item", "free")
 	if err != nil {
@@ -3234,8 +3488,13 @@ func (v Item) Free() {
 }
 
 // pango_item_split
-// container is not nil, container is Item
-// is method
+//
+// [ split_index ] trans: nothing
+//
+// [ split_offset ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Item) Split(split_index int32, split_offset int32) (result Item) {
 	iv, err := _I.Get(144, "Item", "split")
 	if err != nil {
@@ -3263,8 +3522,9 @@ func LanguageGetType() gi.GType {
 }
 
 // pango_language_get_sample_string
-// container is not nil, container is Language
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Language) GetSampleString() (result string) {
 	iv, err := _I.Get(145, "Language", "get_sample_string")
 	if err != nil {
@@ -3275,14 +3535,16 @@ func (v Language) GetSampleString() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_language_get_scripts
-// container is not nil, container is Language
-// is method
-// ret lenArgIdx 0
+//
+// [ num_scripts ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Language) GetScripts() (result unsafe.Pointer) {
 	iv, err := _I.Get(146, "Language", "get_scripts")
 	if err != nil {
@@ -3303,8 +3565,11 @@ func (v Language) GetScripts() (result unsafe.Pointer) {
 }
 
 // pango_language_includes_script
-// container is not nil, container is Language
-// is method
+//
+// [ script ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Language) IncludesScript(script ScriptEnum) (result bool) {
 	iv, err := _I.Get(147, "Language", "includes_script")
 	if err != nil {
@@ -3321,8 +3586,11 @@ func (v Language) IncludesScript(script ScriptEnum) (result bool) {
 }
 
 // pango_language_matches
-// container is not nil, container is Language
-// is method
+//
+// [ range_list ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Language) Matches(range_list string) (result bool) {
 	iv, err := _I.Get(148, "Language", "matches")
 	if err != nil {
@@ -3341,8 +3609,9 @@ func (v Language) Matches(range_list string) (result bool) {
 }
 
 // pango_language_to_string
-// container is not nil, container is Language
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Language) ToString() (result string) {
 	iv, err := _I.Get(149, "Language", "to_string")
 	if err != nil {
@@ -3353,14 +3622,16 @@ func (v Language) ToString() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_language_from_string
-// container is not nil, container is Language
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ language ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func LanguageFromString1(language string) (result Language) {
 	iv, err := _I.Get(150, "Language", "from_string")
 	if err != nil {
@@ -3393,8 +3664,11 @@ func LayoutGetType() gi.GType {
 }
 
 // pango_layout_new
-// container is not nil, container is Layout
-// is constructor
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewLayout(context IContext) (result Layout) {
 	iv, err := _I.Get(152, "Layout", "new")
 	if err != nil {
@@ -3414,8 +3688,7 @@ func NewLayout(context IContext) (result Layout) {
 }
 
 // pango_layout_context_changed
-// container is not nil, container is Layout
-// is method
+//
 func (v Layout) ContextChanged() {
 	iv, err := _I.Get(153, "Layout", "context_changed")
 	if err != nil {
@@ -3428,8 +3701,9 @@ func (v Layout) ContextChanged() {
 }
 
 // pango_layout_copy
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Layout) Copy() (result Layout) {
 	iv, err := _I.Get(154, "Layout", "copy")
 	if err != nil {
@@ -3445,8 +3719,9 @@ func (v Layout) Copy() (result Layout) {
 }
 
 // pango_layout_get_alignment
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetAlignment() (result AlignmentEnum) {
 	iv, err := _I.Get(155, "Layout", "get_alignment")
 	if err != nil {
@@ -3462,8 +3737,9 @@ func (v Layout) GetAlignment() (result AlignmentEnum) {
 }
 
 // pango_layout_get_attributes
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetAttributes() (result AttrList) {
 	iv, err := _I.Get(156, "Layout", "get_attributes")
 	if err != nil {
@@ -3479,8 +3755,9 @@ func (v Layout) GetAttributes() (result AttrList) {
 }
 
 // pango_layout_get_auto_dir
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetAutoDir() (result bool) {
 	iv, err := _I.Get(157, "Layout", "get_auto_dir")
 	if err != nil {
@@ -3496,8 +3773,9 @@ func (v Layout) GetAutoDir() (result bool) {
 }
 
 // pango_layout_get_baseline
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetBaseline() (result int32) {
 	iv, err := _I.Get(158, "Layout", "get_baseline")
 	if err != nil {
@@ -3513,8 +3791,9 @@ func (v Layout) GetBaseline() (result int32) {
 }
 
 // pango_layout_get_character_count
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetCharacterCount() (result int32) {
 	iv, err := _I.Get(159, "Layout", "get_character_count")
 	if err != nil {
@@ -3530,8 +3809,9 @@ func (v Layout) GetCharacterCount() (result int32) {
 }
 
 // pango_layout_get_context
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetContext() (result Context) {
 	iv, err := _I.Get(160, "Layout", "get_context")
 	if err != nil {
@@ -3547,8 +3827,13 @@ func (v Layout) GetContext() (result Context) {
 }
 
 // pango_layout_get_cursor_pos
-// container is not nil, container is Layout
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ strong_pos ] trans: nothing, dir: out
+//
+// [ weak_pos ] trans: nothing, dir: out
+//
 func (v Layout) GetCursorPos(index_ int32, strong_pos Rectangle, weak_pos Rectangle) {
 	iv, err := _I.Get(161, "Layout", "get_cursor_pos")
 	if err != nil {
@@ -3564,8 +3849,9 @@ func (v Layout) GetCursorPos(index_ int32, strong_pos Rectangle, weak_pos Rectan
 }
 
 // pango_layout_get_ellipsize
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetEllipsize() (result EllipsizeModeEnum) {
 	iv, err := _I.Get(162, "Layout", "get_ellipsize")
 	if err != nil {
@@ -3581,8 +3867,11 @@ func (v Layout) GetEllipsize() (result EllipsizeModeEnum) {
 }
 
 // pango_layout_get_extents
-// container is not nil, container is Layout
-// is method
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v Layout) GetExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(163, "Layout", "get_extents")
 	if err != nil {
@@ -3597,8 +3886,9 @@ func (v Layout) GetExtents(ink_rect Rectangle, logical_rect Rectangle) {
 }
 
 // pango_layout_get_font_description
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetFontDescription() (result FontDescription) {
 	iv, err := _I.Get(164, "Layout", "get_font_description")
 	if err != nil {
@@ -3614,8 +3904,9 @@ func (v Layout) GetFontDescription() (result FontDescription) {
 }
 
 // pango_layout_get_height
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetHeight() (result int32) {
 	iv, err := _I.Get(165, "Layout", "get_height")
 	if err != nil {
@@ -3631,8 +3922,9 @@ func (v Layout) GetHeight() (result int32) {
 }
 
 // pango_layout_get_indent
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetIndent() (result int32) {
 	iv, err := _I.Get(166, "Layout", "get_indent")
 	if err != nil {
@@ -3648,8 +3940,9 @@ func (v Layout) GetIndent() (result int32) {
 }
 
 // pango_layout_get_iter
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Layout) GetIter() (result LayoutIter) {
 	iv, err := _I.Get(167, "Layout", "get_iter")
 	if err != nil {
@@ -3665,8 +3958,9 @@ func (v Layout) GetIter() (result LayoutIter) {
 }
 
 // pango_layout_get_justify
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetJustify() (result bool) {
 	iv, err := _I.Get(168, "Layout", "get_justify")
 	if err != nil {
@@ -3682,8 +3976,11 @@ func (v Layout) GetJustify() (result bool) {
 }
 
 // pango_layout_get_line
-// container is not nil, container is Layout
-// is method
+//
+// [ line ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetLine(line int32) (result LayoutLine) {
 	iv, err := _I.Get(169, "Layout", "get_line")
 	if err != nil {
@@ -3700,8 +3997,9 @@ func (v Layout) GetLine(line int32) (result LayoutLine) {
 }
 
 // pango_layout_get_line_count
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetLineCount() (result int32) {
 	iv, err := _I.Get(170, "Layout", "get_line_count")
 	if err != nil {
@@ -3717,8 +4015,11 @@ func (v Layout) GetLineCount() (result int32) {
 }
 
 // pango_layout_get_line_readonly
-// container is not nil, container is Layout
-// is method
+//
+// [ line ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetLineReadonly(line int32) (result LayoutLine) {
 	iv, err := _I.Get(171, "Layout", "get_line_readonly")
 	if err != nil {
@@ -3735,8 +4036,9 @@ func (v Layout) GetLineReadonly(line int32) (result LayoutLine) {
 }
 
 // pango_layout_get_lines
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetLines() (result glib.SList) {
 	iv, err := _I.Get(172, "Layout", "get_lines")
 	if err != nil {
@@ -3752,8 +4054,9 @@ func (v Layout) GetLines() (result glib.SList) {
 }
 
 // pango_layout_get_lines_readonly
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetLinesReadonly() (result glib.SList) {
 	iv, err := _I.Get(173, "Layout", "get_lines_readonly")
 	if err != nil {
@@ -3769,9 +4072,11 @@ func (v Layout) GetLinesReadonly() (result glib.SList) {
 }
 
 // pango_layout_get_log_attrs
-// container is not nil, container is Layout
-// is method
-// arg 0 attrs lenArgIdx 1
+//
+// [ attrs ] trans: container, dir: out
+//
+// [ n_attrs ] trans: everything, dir: out
+//
 func (v Layout) GetLogAttrs() (attrs unsafe.Pointer) {
 	iv, err := _I.Get(174, "Layout", "get_log_attrs")
 	if err != nil {
@@ -3792,9 +4097,11 @@ func (v Layout) GetLogAttrs() (attrs unsafe.Pointer) {
 }
 
 // pango_layout_get_log_attrs_readonly
-// container is not nil, container is Layout
-// is method
-// ret lenArgIdx 0
+//
+// [ n_attrs ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetLogAttrsReadonly() (result unsafe.Pointer) {
 	iv, err := _I.Get(175, "Layout", "get_log_attrs_readonly")
 	if err != nil {
@@ -3815,8 +4122,11 @@ func (v Layout) GetLogAttrsReadonly() (result unsafe.Pointer) {
 }
 
 // pango_layout_get_pixel_extents
-// container is not nil, container is Layout
-// is method
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v Layout) GetPixelExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(176, "Layout", "get_pixel_extents")
 	if err != nil {
@@ -3831,8 +4141,11 @@ func (v Layout) GetPixelExtents(ink_rect Rectangle, logical_rect Rectangle) {
 }
 
 // pango_layout_get_pixel_size
-// container is not nil, container is Layout
-// is method
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
 func (v Layout) GetPixelSize() (width int32, height int32) {
 	iv, err := _I.Get(177, "Layout", "get_pixel_size")
 	if err != nil {
@@ -3851,8 +4164,9 @@ func (v Layout) GetPixelSize() (width int32, height int32) {
 }
 
 // pango_layout_get_serial
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetSerial() (result uint32) {
 	iv, err := _I.Get(178, "Layout", "get_serial")
 	if err != nil {
@@ -3868,8 +4182,9 @@ func (v Layout) GetSerial() (result uint32) {
 }
 
 // pango_layout_get_single_paragraph_mode
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetSingleParagraphMode() (result bool) {
 	iv, err := _I.Get(179, "Layout", "get_single_paragraph_mode")
 	if err != nil {
@@ -3885,8 +4200,11 @@ func (v Layout) GetSingleParagraphMode() (result bool) {
 }
 
 // pango_layout_get_size
-// container is not nil, container is Layout
-// is method
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
 func (v Layout) GetSize() (width int32, height int32) {
 	iv, err := _I.Get(180, "Layout", "get_size")
 	if err != nil {
@@ -3905,8 +4223,9 @@ func (v Layout) GetSize() (width int32, height int32) {
 }
 
 // pango_layout_get_spacing
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetSpacing() (result int32) {
 	iv, err := _I.Get(181, "Layout", "get_spacing")
 	if err != nil {
@@ -3922,8 +4241,9 @@ func (v Layout) GetSpacing() (result int32) {
 }
 
 // pango_layout_get_tabs
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Layout) GetTabs() (result TabArray) {
 	iv, err := _I.Get(182, "Layout", "get_tabs")
 	if err != nil {
@@ -3939,8 +4259,9 @@ func (v Layout) GetTabs() (result TabArray) {
 }
 
 // pango_layout_get_text
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetText() (result string) {
 	iv, err := _I.Get(183, "Layout", "get_text")
 	if err != nil {
@@ -3951,13 +4272,14 @@ func (v Layout) GetText() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_layout_get_unknown_glyphs_count
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetUnknownGlyphsCount() (result int32) {
 	iv, err := _I.Get(184, "Layout", "get_unknown_glyphs_count")
 	if err != nil {
@@ -3973,8 +4295,9 @@ func (v Layout) GetUnknownGlyphsCount() (result int32) {
 }
 
 // pango_layout_get_width
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetWidth() (result int32) {
 	iv, err := _I.Get(185, "Layout", "get_width")
 	if err != nil {
@@ -3990,8 +4313,9 @@ func (v Layout) GetWidth() (result int32) {
 }
 
 // pango_layout_get_wrap
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) GetWrap() (result WrapModeEnum) {
 	iv, err := _I.Get(186, "Layout", "get_wrap")
 	if err != nil {
@@ -4007,8 +4331,15 @@ func (v Layout) GetWrap() (result WrapModeEnum) {
 }
 
 // pango_layout_index_to_line_x
-// container is not nil, container is Layout
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ trailing ] trans: nothing
+//
+// [ line ] trans: everything, dir: out
+//
+// [ x_pos ] trans: everything, dir: out
+//
 func (v Layout) IndexToLineX(index_ int32, trailing bool) (line int32, x_pos int32) {
 	iv, err := _I.Get(187, "Layout", "index_to_line_x")
 	if err != nil {
@@ -4029,8 +4360,11 @@ func (v Layout) IndexToLineX(index_ int32, trailing bool) (line int32, x_pos int
 }
 
 // pango_layout_index_to_pos
-// container is not nil, container is Layout
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ pos ] trans: nothing, dir: out
+//
 func (v Layout) IndexToPos(index_ int32, pos Rectangle) {
 	iv, err := _I.Get(188, "Layout", "index_to_pos")
 	if err != nil {
@@ -4045,8 +4379,9 @@ func (v Layout) IndexToPos(index_ int32, pos Rectangle) {
 }
 
 // pango_layout_is_ellipsized
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) IsEllipsized() (result bool) {
 	iv, err := _I.Get(189, "Layout", "is_ellipsized")
 	if err != nil {
@@ -4062,8 +4397,9 @@ func (v Layout) IsEllipsized() (result bool) {
 }
 
 // pango_layout_is_wrapped
-// container is not nil, container is Layout
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Layout) IsWrapped() (result bool) {
 	iv, err := _I.Get(190, "Layout", "is_wrapped")
 	if err != nil {
@@ -4079,8 +4415,19 @@ func (v Layout) IsWrapped() (result bool) {
 }
 
 // pango_layout_move_cursor_visually
-// container is not nil, container is Layout
-// is method
+//
+// [ strong ] trans: nothing
+//
+// [ old_index ] trans: nothing
+//
+// [ old_trailing ] trans: nothing
+//
+// [ direction ] trans: nothing
+//
+// [ new_index ] trans: everything, dir: out
+//
+// [ new_trailing ] trans: everything, dir: out
+//
 func (v Layout) MoveCursorVisually(strong bool, old_index int32, old_trailing int32, direction int32) (new_index int32, new_trailing int32) {
 	iv, err := _I.Get(191, "Layout", "move_cursor_visually")
 	if err != nil {
@@ -4103,8 +4450,9 @@ func (v Layout) MoveCursorVisually(strong bool, old_index int32, old_trailing in
 }
 
 // pango_layout_set_alignment
-// container is not nil, container is Layout
-// is method
+//
+// [ alignment ] trans: nothing
+//
 func (v Layout) SetAlignment(alignment AlignmentEnum) {
 	iv, err := _I.Get(192, "Layout", "set_alignment")
 	if err != nil {
@@ -4118,8 +4466,9 @@ func (v Layout) SetAlignment(alignment AlignmentEnum) {
 }
 
 // pango_layout_set_attributes
-// container is not nil, container is Layout
-// is method
+//
+// [ attrs ] trans: nothing
+//
 func (v Layout) SetAttributes(attrs AttrList) {
 	iv, err := _I.Get(193, "Layout", "set_attributes")
 	if err != nil {
@@ -4133,8 +4482,9 @@ func (v Layout) SetAttributes(attrs AttrList) {
 }
 
 // pango_layout_set_auto_dir
-// container is not nil, container is Layout
-// is method
+//
+// [ auto_dir ] trans: nothing
+//
 func (v Layout) SetAutoDir(auto_dir bool) {
 	iv, err := _I.Get(194, "Layout", "set_auto_dir")
 	if err != nil {
@@ -4148,8 +4498,9 @@ func (v Layout) SetAutoDir(auto_dir bool) {
 }
 
 // pango_layout_set_ellipsize
-// container is not nil, container is Layout
-// is method
+//
+// [ ellipsize ] trans: nothing
+//
 func (v Layout) SetEllipsize(ellipsize EllipsizeModeEnum) {
 	iv, err := _I.Get(195, "Layout", "set_ellipsize")
 	if err != nil {
@@ -4163,8 +4514,9 @@ func (v Layout) SetEllipsize(ellipsize EllipsizeModeEnum) {
 }
 
 // pango_layout_set_font_description
-// container is not nil, container is Layout
-// is method
+//
+// [ desc ] trans: nothing
+//
 func (v Layout) SetFontDescription(desc FontDescription) {
 	iv, err := _I.Get(196, "Layout", "set_font_description")
 	if err != nil {
@@ -4178,8 +4530,9 @@ func (v Layout) SetFontDescription(desc FontDescription) {
 }
 
 // pango_layout_set_height
-// container is not nil, container is Layout
-// is method
+//
+// [ height ] trans: nothing
+//
 func (v Layout) SetHeight(height int32) {
 	iv, err := _I.Get(197, "Layout", "set_height")
 	if err != nil {
@@ -4193,8 +4546,9 @@ func (v Layout) SetHeight(height int32) {
 }
 
 // pango_layout_set_indent
-// container is not nil, container is Layout
-// is method
+//
+// [ indent ] trans: nothing
+//
 func (v Layout) SetIndent(indent int32) {
 	iv, err := _I.Get(198, "Layout", "set_indent")
 	if err != nil {
@@ -4208,8 +4562,9 @@ func (v Layout) SetIndent(indent int32) {
 }
 
 // pango_layout_set_justify
-// container is not nil, container is Layout
-// is method
+//
+// [ justify ] trans: nothing
+//
 func (v Layout) SetJustify(justify bool) {
 	iv, err := _I.Get(199, "Layout", "set_justify")
 	if err != nil {
@@ -4223,8 +4578,11 @@ func (v Layout) SetJustify(justify bool) {
 }
 
 // pango_layout_set_markup
-// container is not nil, container is Layout
-// is method
+//
+// [ markup ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v Layout) SetMarkup(markup string, length int32) {
 	iv, err := _I.Get(200, "Layout", "set_markup")
 	if err != nil {
@@ -4241,8 +4599,15 @@ func (v Layout) SetMarkup(markup string, length int32) {
 }
 
 // pango_layout_set_markup_with_accel
-// container is not nil, container is Layout
-// is method
+//
+// [ markup ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ accel_marker ] trans: nothing
+//
+// [ accel_char ] trans: nothing, dir: out
+//
 func (v Layout) SetMarkupWithAccel(markup string, length int32, accel_marker rune) (accel_char rune) {
 	iv, err := _I.Get(201, "Layout", "set_markup_with_accel")
 	if err != nil {
@@ -4264,8 +4629,9 @@ func (v Layout) SetMarkupWithAccel(markup string, length int32, accel_marker run
 }
 
 // pango_layout_set_single_paragraph_mode
-// container is not nil, container is Layout
-// is method
+//
+// [ setting ] trans: nothing
+//
 func (v Layout) SetSingleParagraphMode(setting bool) {
 	iv, err := _I.Get(202, "Layout", "set_single_paragraph_mode")
 	if err != nil {
@@ -4279,8 +4645,9 @@ func (v Layout) SetSingleParagraphMode(setting bool) {
 }
 
 // pango_layout_set_spacing
-// container is not nil, container is Layout
-// is method
+//
+// [ spacing ] trans: nothing
+//
 func (v Layout) SetSpacing(spacing int32) {
 	iv, err := _I.Get(203, "Layout", "set_spacing")
 	if err != nil {
@@ -4294,8 +4661,9 @@ func (v Layout) SetSpacing(spacing int32) {
 }
 
 // pango_layout_set_tabs
-// container is not nil, container is Layout
-// is method
+//
+// [ tabs ] trans: nothing
+//
 func (v Layout) SetTabs(tabs TabArray) {
 	iv, err := _I.Get(204, "Layout", "set_tabs")
 	if err != nil {
@@ -4309,8 +4677,11 @@ func (v Layout) SetTabs(tabs TabArray) {
 }
 
 // pango_layout_set_text
-// container is not nil, container is Layout
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v Layout) SetText(text string, length int32) {
 	iv, err := _I.Get(205, "Layout", "set_text")
 	if err != nil {
@@ -4327,8 +4698,9 @@ func (v Layout) SetText(text string, length int32) {
 }
 
 // pango_layout_set_width
-// container is not nil, container is Layout
-// is method
+//
+// [ width ] trans: nothing
+//
 func (v Layout) SetWidth(width int32) {
 	iv, err := _I.Get(206, "Layout", "set_width")
 	if err != nil {
@@ -4342,8 +4714,9 @@ func (v Layout) SetWidth(width int32) {
 }
 
 // pango_layout_set_wrap
-// container is not nil, container is Layout
-// is method
+//
+// [ wrap ] trans: nothing
+//
 func (v Layout) SetWrap(wrap WrapModeEnum) {
 	iv, err := _I.Get(207, "Layout", "set_wrap")
 	if err != nil {
@@ -4357,8 +4730,17 @@ func (v Layout) SetWrap(wrap WrapModeEnum) {
 }
 
 // pango_layout_xy_to_index
-// container is not nil, container is Layout
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ index_ ] trans: everything, dir: out
+//
+// [ trailing ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Layout) XyToIndex(x int32, y int32) (result bool, index_ int32, trailing int32) {
 	iv, err := _I.Get(208, "Layout", "xy_to_index")
 	if err != nil {
@@ -4392,8 +4774,9 @@ func LayoutIterGetType() gi.GType {
 }
 
 // pango_layout_iter_at_last_line
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) AtLastLine() (result bool) {
 	iv, err := _I.Get(209, "LayoutIter", "at_last_line")
 	if err != nil {
@@ -4409,8 +4792,9 @@ func (v LayoutIter) AtLastLine() (result bool) {
 }
 
 // pango_layout_iter_copy
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: everything
+//
 func (v LayoutIter) Copy() (result LayoutIter) {
 	iv, err := _I.Get(210, "LayoutIter", "copy")
 	if err != nil {
@@ -4426,8 +4810,7 @@ func (v LayoutIter) Copy() (result LayoutIter) {
 }
 
 // pango_layout_iter_free
-// container is not nil, container is LayoutIter
-// is method
+//
 func (v LayoutIter) Free() {
 	iv, err := _I.Get(211, "LayoutIter", "free")
 	if err != nil {
@@ -4440,8 +4823,9 @@ func (v LayoutIter) Free() {
 }
 
 // pango_layout_iter_get_baseline
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) GetBaseline() (result int32) {
 	iv, err := _I.Get(212, "LayoutIter", "get_baseline")
 	if err != nil {
@@ -4457,8 +4841,9 @@ func (v LayoutIter) GetBaseline() (result int32) {
 }
 
 // pango_layout_iter_get_char_extents
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v LayoutIter) GetCharExtents(logical_rect Rectangle) {
 	iv, err := _I.Get(213, "LayoutIter", "get_char_extents")
 	if err != nil {
@@ -4472,8 +4857,11 @@ func (v LayoutIter) GetCharExtents(logical_rect Rectangle) {
 }
 
 // pango_layout_iter_get_cluster_extents
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v LayoutIter) GetClusterExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(214, "LayoutIter", "get_cluster_extents")
 	if err != nil {
@@ -4488,8 +4876,9 @@ func (v LayoutIter) GetClusterExtents(ink_rect Rectangle, logical_rect Rectangle
 }
 
 // pango_layout_iter_get_index
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) GetIndex() (result int32) {
 	iv, err := _I.Get(215, "LayoutIter", "get_index")
 	if err != nil {
@@ -4505,8 +4894,9 @@ func (v LayoutIter) GetIndex() (result int32) {
 }
 
 // pango_layout_iter_get_layout
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) GetLayout() (result Layout) {
 	iv, err := _I.Get(216, "LayoutIter", "get_layout")
 	if err != nil {
@@ -4522,8 +4912,11 @@ func (v LayoutIter) GetLayout() (result Layout) {
 }
 
 // pango_layout_iter_get_layout_extents
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v LayoutIter) GetLayoutExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(217, "LayoutIter", "get_layout_extents")
 	if err != nil {
@@ -4538,8 +4931,9 @@ func (v LayoutIter) GetLayoutExtents(ink_rect Rectangle, logical_rect Rectangle)
 }
 
 // pango_layout_iter_get_line
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: everything
+//
 func (v LayoutIter) GetLine() (result LayoutLine) {
 	iv, err := _I.Get(218, "LayoutIter", "get_line")
 	if err != nil {
@@ -4555,8 +4949,11 @@ func (v LayoutIter) GetLine() (result LayoutLine) {
 }
 
 // pango_layout_iter_get_line_extents
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v LayoutIter) GetLineExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(219, "LayoutIter", "get_line_extents")
 	if err != nil {
@@ -4571,8 +4968,9 @@ func (v LayoutIter) GetLineExtents(ink_rect Rectangle, logical_rect Rectangle) {
 }
 
 // pango_layout_iter_get_line_readonly
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) GetLineReadonly() (result LayoutLine) {
 	iv, err := _I.Get(220, "LayoutIter", "get_line_readonly")
 	if err != nil {
@@ -4588,8 +4986,11 @@ func (v LayoutIter) GetLineReadonly() (result LayoutLine) {
 }
 
 // pango_layout_iter_get_line_yrange
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ y0_ ] trans: everything, dir: out
+//
+// [ y1_ ] trans: everything, dir: out
+//
 func (v LayoutIter) GetLineYrange() (y0_ int32, y1_ int32) {
 	iv, err := _I.Get(221, "LayoutIter", "get_line_yrange")
 	if err != nil {
@@ -4608,8 +5009,9 @@ func (v LayoutIter) GetLineYrange() (y0_ int32, y1_ int32) {
 }
 
 // pango_layout_iter_get_run
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) GetRun() (result GlyphItem) {
 	iv, err := _I.Get(222, "LayoutIter", "get_run")
 	if err != nil {
@@ -4625,8 +5027,11 @@ func (v LayoutIter) GetRun() (result GlyphItem) {
 }
 
 // pango_layout_iter_get_run_extents
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v LayoutIter) GetRunExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(223, "LayoutIter", "get_run_extents")
 	if err != nil {
@@ -4641,8 +5046,9 @@ func (v LayoutIter) GetRunExtents(ink_rect Rectangle, logical_rect Rectangle) {
 }
 
 // pango_layout_iter_get_run_readonly
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) GetRunReadonly() (result GlyphItem) {
 	iv, err := _I.Get(224, "LayoutIter", "get_run_readonly")
 	if err != nil {
@@ -4658,8 +5064,9 @@ func (v LayoutIter) GetRunReadonly() (result GlyphItem) {
 }
 
 // pango_layout_iter_next_char
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) NextChar() (result bool) {
 	iv, err := _I.Get(225, "LayoutIter", "next_char")
 	if err != nil {
@@ -4675,8 +5082,9 @@ func (v LayoutIter) NextChar() (result bool) {
 }
 
 // pango_layout_iter_next_cluster
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) NextCluster() (result bool) {
 	iv, err := _I.Get(226, "LayoutIter", "next_cluster")
 	if err != nil {
@@ -4692,8 +5100,9 @@ func (v LayoutIter) NextCluster() (result bool) {
 }
 
 // pango_layout_iter_next_line
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) NextLine() (result bool) {
 	iv, err := _I.Get(227, "LayoutIter", "next_line")
 	if err != nil {
@@ -4709,8 +5118,9 @@ func (v LayoutIter) NextLine() (result bool) {
 }
 
 // pango_layout_iter_next_run
-// container is not nil, container is LayoutIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v LayoutIter) NextRun() (result bool) {
 	iv, err := _I.Get(228, "LayoutIter", "next_run")
 	if err != nil {
@@ -4738,8 +5148,11 @@ func LayoutLineGetType() gi.GType {
 }
 
 // pango_layout_line_get_extents
-// container is not nil, container is LayoutLine
-// is method
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v LayoutLine) GetExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(229, "LayoutLine", "get_extents")
 	if err != nil {
@@ -4754,8 +5167,11 @@ func (v LayoutLine) GetExtents(ink_rect Rectangle, logical_rect Rectangle) {
 }
 
 // pango_layout_line_get_pixel_extents
-// container is not nil, container is LayoutLine
-// is method
+//
+// [ ink_rect ] trans: nothing, dir: out
+//
+// [ logical_rect ] trans: nothing, dir: out
+//
 func (v LayoutLine) GetPixelExtents(ink_rect Rectangle, logical_rect Rectangle) {
 	iv, err := _I.Get(230, "LayoutLine", "get_pixel_extents")
 	if err != nil {
@@ -4770,9 +5186,15 @@ func (v LayoutLine) GetPixelExtents(ink_rect Rectangle, logical_rect Rectangle) 
 }
 
 // pango_layout_line_get_x_ranges
-// container is not nil, container is LayoutLine
-// is method
-// arg 2 ranges lenArgIdx 3
+//
+// [ start_index ] trans: nothing
+//
+// [ end_index ] trans: nothing
+//
+// [ ranges ] trans: everything, dir: out
+//
+// [ n_ranges ] trans: everything, dir: out
+//
 func (v LayoutLine) GetXRanges(start_index int32, end_index int32) (ranges gi.Int32Array) {
 	iv, err := _I.Get(231, "LayoutLine", "get_x_ranges")
 	if err != nil {
@@ -4796,8 +5218,13 @@ func (v LayoutLine) GetXRanges(start_index int32, end_index int32) (ranges gi.In
 }
 
 // pango_layout_line_index_to_x
-// container is not nil, container is LayoutLine
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ trailing ] trans: nothing
+//
+// [ x_pos ] trans: everything, dir: out
+//
 func (v LayoutLine) IndexToX(index_ int32, trailing bool) (x_pos int32) {
 	iv, err := _I.Get(232, "LayoutLine", "index_to_x")
 	if err != nil {
@@ -4816,8 +5243,9 @@ func (v LayoutLine) IndexToX(index_ int32, trailing bool) (x_pos int32) {
 }
 
 // pango_layout_line_ref
-// container is not nil, container is LayoutLine
-// is method
+//
+// [ result ] trans: everything
+//
 func (v LayoutLine) Ref() (result LayoutLine) {
 	iv, err := _I.Get(233, "LayoutLine", "ref")
 	if err != nil {
@@ -4833,8 +5261,7 @@ func (v LayoutLine) Ref() (result LayoutLine) {
 }
 
 // pango_layout_line_unref
-// container is not nil, container is LayoutLine
-// is method
+//
 func (v LayoutLine) Unref() {
 	iv, err := _I.Get(234, "LayoutLine", "unref")
 	if err != nil {
@@ -4847,8 +5274,15 @@ func (v LayoutLine) Unref() {
 }
 
 // pango_layout_line_x_to_index
-// container is not nil, container is LayoutLine
-// is method
+//
+// [ x_pos ] trans: nothing
+//
+// [ index_ ] trans: everything, dir: out
+//
+// [ trailing ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v LayoutLine) XToIndex(x_pos int32) (result bool, index_ int32, trailing int32) {
 	iv, err := _I.Get(235, "LayoutLine", "x_to_index")
 	if err != nil {
@@ -4914,8 +5348,9 @@ func MatrixGetType() gi.GType {
 }
 
 // pango_matrix_concat
-// container is not nil, container is Matrix
-// is method
+//
+// [ new_matrix ] trans: nothing
+//
 func (v Matrix) Concat(new_matrix Matrix) {
 	iv, err := _I.Get(236, "Matrix", "concat")
 	if err != nil {
@@ -4929,8 +5364,9 @@ func (v Matrix) Concat(new_matrix Matrix) {
 }
 
 // pango_matrix_copy
-// container is not nil, container is Matrix
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Matrix) Copy() (result Matrix) {
 	iv, err := _I.Get(237, "Matrix", "copy")
 	if err != nil {
@@ -4946,8 +5382,7 @@ func (v Matrix) Copy() (result Matrix) {
 }
 
 // pango_matrix_free
-// container is not nil, container is Matrix
-// is method
+//
 func (v Matrix) Free() {
 	iv, err := _I.Get(238, "Matrix", "free")
 	if err != nil {
@@ -4960,8 +5395,9 @@ func (v Matrix) Free() {
 }
 
 // pango_matrix_get_font_scale_factor
-// container is not nil, container is Matrix
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Matrix) GetFontScaleFactor() (result float64) {
 	iv, err := _I.Get(239, "Matrix", "get_font_scale_factor")
 	if err != nil {
@@ -4977,8 +5413,11 @@ func (v Matrix) GetFontScaleFactor() (result float64) {
 }
 
 // pango_matrix_get_font_scale_factors
-// container is not nil, container is Matrix
-// is method
+//
+// [ xscale ] trans: everything, dir: out
+//
+// [ yscale ] trans: everything, dir: out
+//
 func (v Matrix) GetFontScaleFactors() (xscale float64, yscale float64) {
 	iv, err := _I.Get(240, "Matrix", "get_font_scale_factors")
 	if err != nil {
@@ -4997,8 +5436,9 @@ func (v Matrix) GetFontScaleFactors() (xscale float64, yscale float64) {
 }
 
 // pango_matrix_rotate
-// container is not nil, container is Matrix
-// is method
+//
+// [ degrees ] trans: nothing
+//
 func (v Matrix) Rotate(degrees float64) {
 	iv, err := _I.Get(241, "Matrix", "rotate")
 	if err != nil {
@@ -5012,8 +5452,11 @@ func (v Matrix) Rotate(degrees float64) {
 }
 
 // pango_matrix_scale
-// container is not nil, container is Matrix
-// is method
+//
+// [ scale_x ] trans: nothing
+//
+// [ scale_y ] trans: nothing
+//
 func (v Matrix) Scale(scale_x float64, scale_y float64) {
 	iv, err := _I.Get(242, "Matrix", "scale")
 	if err != nil {
@@ -5028,8 +5471,11 @@ func (v Matrix) Scale(scale_x float64, scale_y float64) {
 }
 
 // pango_matrix_transform_distance
-// container is not nil, container is Matrix
-// is method
+//
+// [ dx ] trans: everything, dir: inout
+//
+// [ dy ] trans: everything, dir: inout
+//
 func (v Matrix) TransformDistance(dx int /*TODO:TYPE*/, dy int /*TODO:TYPE*/) {
 	iv, err := _I.Get(243, "Matrix", "transform_distance")
 	if err != nil {
@@ -5043,8 +5489,9 @@ func (v Matrix) TransformDistance(dx int /*TODO:TYPE*/, dy int /*TODO:TYPE*/) {
 }
 
 // pango_matrix_transform_pixel_rectangle
-// container is not nil, container is Matrix
-// is method
+//
+// [ rect ] trans: everything, dir: inout
+//
 func (v Matrix) TransformPixelRectangle(rect int /*TODO:TYPE*/) {
 	iv, err := _I.Get(244, "Matrix", "transform_pixel_rectangle")
 	if err != nil {
@@ -5058,8 +5505,11 @@ func (v Matrix) TransformPixelRectangle(rect int /*TODO:TYPE*/) {
 }
 
 // pango_matrix_transform_point
-// container is not nil, container is Matrix
-// is method
+//
+// [ x ] trans: everything, dir: inout
+//
+// [ y ] trans: everything, dir: inout
+//
 func (v Matrix) TransformPoint(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/) {
 	iv, err := _I.Get(245, "Matrix", "transform_point")
 	if err != nil {
@@ -5073,8 +5523,9 @@ func (v Matrix) TransformPoint(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/) {
 }
 
 // pango_matrix_transform_rectangle
-// container is not nil, container is Matrix
-// is method
+//
+// [ rect ] trans: everything, dir: inout
+//
 func (v Matrix) TransformRectangle(rect int /*TODO:TYPE*/) {
 	iv, err := _I.Get(246, "Matrix", "transform_rectangle")
 	if err != nil {
@@ -5088,8 +5539,11 @@ func (v Matrix) TransformRectangle(rect int /*TODO:TYPE*/) {
 }
 
 // pango_matrix_translate
-// container is not nil, container is Matrix
-// is method
+//
+// [ tx ] trans: nothing
+//
+// [ ty ] trans: nothing
+//
 func (v Matrix) Translate(tx float64, ty float64) {
 	iv, err := _I.Get(247, "Matrix", "translate")
 	if err != nil {
@@ -5146,8 +5600,7 @@ func RendererGetType() gi.GType {
 }
 
 // pango_renderer_activate
-// container is not nil, container is Renderer
-// is method
+//
 func (v Renderer) Activate() {
 	iv, err := _I.Get(248, "Renderer", "activate")
 	if err != nil {
@@ -5160,8 +5613,7 @@ func (v Renderer) Activate() {
 }
 
 // pango_renderer_deactivate
-// container is not nil, container is Renderer
-// is method
+//
 func (v Renderer) Deactivate() {
 	iv, err := _I.Get(249, "Renderer", "deactivate")
 	if err != nil {
@@ -5174,8 +5626,15 @@ func (v Renderer) Deactivate() {
 }
 
 // pango_renderer_draw_error_underline
-// container is not nil, container is Renderer
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
 func (v Renderer) DrawErrorUnderline(x int32, y int32, width int32, height int32) {
 	iv, err := _I.Get(250, "Renderer", "draw_error_underline")
 	if err != nil {
@@ -5192,8 +5651,15 @@ func (v Renderer) DrawErrorUnderline(x int32, y int32, width int32, height int32
 }
 
 // pango_renderer_draw_glyph
-// container is not nil, container is Renderer
-// is method
+//
+// [ font ] trans: nothing
+//
+// [ glyph ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func (v Renderer) DrawGlyph(font IFont, glyph uint32, x float64, y float64) {
 	iv, err := _I.Get(251, "Renderer", "draw_glyph")
 	if err != nil {
@@ -5214,8 +5680,15 @@ func (v Renderer) DrawGlyph(font IFont, glyph uint32, x float64, y float64) {
 }
 
 // pango_renderer_draw_glyph_item
-// container is not nil, container is Renderer
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ glyph_item ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func (v Renderer) DrawGlyphItem(text string, glyph_item GlyphItem, x int32, y int32) {
 	iv, err := _I.Get(252, "Renderer", "draw_glyph_item")
 	if err != nil {
@@ -5234,8 +5707,15 @@ func (v Renderer) DrawGlyphItem(text string, glyph_item GlyphItem, x int32, y in
 }
 
 // pango_renderer_draw_glyphs
-// container is not nil, container is Renderer
-// is method
+//
+// [ font ] trans: nothing
+//
+// [ glyphs ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func (v Renderer) DrawGlyphs(font IFont, glyphs GlyphString, x int32, y int32) {
 	iv, err := _I.Get(253, "Renderer", "draw_glyphs")
 	if err != nil {
@@ -5256,8 +5736,13 @@ func (v Renderer) DrawGlyphs(font IFont, glyphs GlyphString, x int32, y int32) {
 }
 
 // pango_renderer_draw_layout
-// container is not nil, container is Renderer
-// is method
+//
+// [ layout ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func (v Renderer) DrawLayout(layout ILayout, x int32, y int32) {
 	iv, err := _I.Get(254, "Renderer", "draw_layout")
 	if err != nil {
@@ -5277,8 +5762,13 @@ func (v Renderer) DrawLayout(layout ILayout, x int32, y int32) {
 }
 
 // pango_renderer_draw_layout_line
-// container is not nil, container is Renderer
-// is method
+//
+// [ line ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func (v Renderer) DrawLayoutLine(line LayoutLine, x int32, y int32) {
 	iv, err := _I.Get(255, "Renderer", "draw_layout_line")
 	if err != nil {
@@ -5294,8 +5784,17 @@ func (v Renderer) DrawLayoutLine(line LayoutLine, x int32, y int32) {
 }
 
 // pango_renderer_draw_rectangle
-// container is not nil, container is Renderer
-// is method
+//
+// [ part ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
 func (v Renderer) DrawRectangle(part RenderPartEnum, x int32, y int32, width int32, height int32) {
 	iv, err := _I.Get(256, "Renderer", "draw_rectangle")
 	if err != nil {
@@ -5313,8 +5812,21 @@ func (v Renderer) DrawRectangle(part RenderPartEnum, x int32, y int32, width int
 }
 
 // pango_renderer_draw_trapezoid
-// container is not nil, container is Renderer
-// is method
+//
+// [ part ] trans: nothing
+//
+// [ y1_ ] trans: nothing
+//
+// [ x11 ] trans: nothing
+//
+// [ x21 ] trans: nothing
+//
+// [ y2 ] trans: nothing
+//
+// [ x12 ] trans: nothing
+//
+// [ x22 ] trans: nothing
+//
 func (v Renderer) DrawTrapezoid(part RenderPartEnum, y1_ float64, x11 float64, x21 float64, y2 float64, x12 float64, x22 float64) {
 	iv, err := _I.Get(257, "Renderer", "draw_trapezoid")
 	if err != nil {
@@ -5334,8 +5846,11 @@ func (v Renderer) DrawTrapezoid(part RenderPartEnum, y1_ float64, x11 float64, x
 }
 
 // pango_renderer_get_alpha
-// container is not nil, container is Renderer
-// is method
+//
+// [ part ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Renderer) GetAlpha(part RenderPartEnum) (result uint16) {
 	iv, err := _I.Get(258, "Renderer", "get_alpha")
 	if err != nil {
@@ -5352,8 +5867,11 @@ func (v Renderer) GetAlpha(part RenderPartEnum) (result uint16) {
 }
 
 // pango_renderer_get_color
-// container is not nil, container is Renderer
-// is method
+//
+// [ part ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Renderer) GetColor(part RenderPartEnum) (result Color) {
 	iv, err := _I.Get(259, "Renderer", "get_color")
 	if err != nil {
@@ -5370,8 +5888,9 @@ func (v Renderer) GetColor(part RenderPartEnum) (result Color) {
 }
 
 // pango_renderer_get_layout
-// container is not nil, container is Renderer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Renderer) GetLayout() (result Layout) {
 	iv, err := _I.Get(260, "Renderer", "get_layout")
 	if err != nil {
@@ -5387,8 +5906,9 @@ func (v Renderer) GetLayout() (result Layout) {
 }
 
 // pango_renderer_get_layout_line
-// container is not nil, container is Renderer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Renderer) GetLayoutLine() (result LayoutLine) {
 	iv, err := _I.Get(261, "Renderer", "get_layout_line")
 	if err != nil {
@@ -5404,8 +5924,9 @@ func (v Renderer) GetLayoutLine() (result LayoutLine) {
 }
 
 // pango_renderer_get_matrix
-// container is not nil, container is Renderer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Renderer) GetMatrix() (result Matrix) {
 	iv, err := _I.Get(262, "Renderer", "get_matrix")
 	if err != nil {
@@ -5421,8 +5942,9 @@ func (v Renderer) GetMatrix() (result Matrix) {
 }
 
 // pango_renderer_part_changed
-// container is not nil, container is Renderer
-// is method
+//
+// [ part ] trans: nothing
+//
 func (v Renderer) PartChanged(part RenderPartEnum) {
 	iv, err := _I.Get(263, "Renderer", "part_changed")
 	if err != nil {
@@ -5436,8 +5958,11 @@ func (v Renderer) PartChanged(part RenderPartEnum) {
 }
 
 // pango_renderer_set_alpha
-// container is not nil, container is Renderer
-// is method
+//
+// [ part ] trans: nothing
+//
+// [ alpha ] trans: nothing
+//
 func (v Renderer) SetAlpha(part RenderPartEnum, alpha uint16) {
 	iv, err := _I.Get(264, "Renderer", "set_alpha")
 	if err != nil {
@@ -5452,8 +5977,11 @@ func (v Renderer) SetAlpha(part RenderPartEnum, alpha uint16) {
 }
 
 // pango_renderer_set_color
-// container is not nil, container is Renderer
-// is method
+//
+// [ part ] trans: nothing
+//
+// [ color ] trans: nothing
+//
 func (v Renderer) SetColor(part RenderPartEnum, color Color) {
 	iv, err := _I.Get(265, "Renderer", "set_color")
 	if err != nil {
@@ -5468,8 +5996,9 @@ func (v Renderer) SetColor(part RenderPartEnum, color Color) {
 }
 
 // pango_renderer_set_matrix
-// container is not nil, container is Renderer
-// is method
+//
+// [ matrix ] trans: nothing
+//
 func (v Renderer) SetMatrix(matrix Matrix) {
 	iv, err := _I.Get(266, "Renderer", "set_matrix")
 	if err != nil {
@@ -5633,8 +6162,7 @@ func ScriptIterGetType() gi.GType {
 }
 
 // pango_script_iter_free
-// container is not nil, container is ScriptIter
-// is method
+//
 func (v ScriptIter) Free() {
 	iv, err := _I.Get(267, "ScriptIter", "free")
 	if err != nil {
@@ -5647,8 +6175,13 @@ func (v ScriptIter) Free() {
 }
 
 // pango_script_iter_get_range
-// container is not nil, container is ScriptIter
-// is method
+//
+// [ start ] trans: everything, dir: out
+//
+// [ end ] trans: everything, dir: out
+//
+// [ script ] trans: everything, dir: out
+//
 func (v ScriptIter) GetRange() (start string, end string, script ScriptEnum) {
 	iv, err := _I.Get(268, "ScriptIter", "get_range")
 	if err != nil {
@@ -5669,8 +6202,9 @@ func (v ScriptIter) GetRange() (start string, end string, script ScriptEnum) {
 }
 
 // pango_script_iter_next
-// container is not nil, container is ScriptIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ScriptIter) Next() (result bool) {
 	iv, err := _I.Get(269, "ScriptIter", "next")
 	if err != nil {
@@ -5742,8 +6276,13 @@ func TabArrayGetType() gi.GType {
 }
 
 // pango_tab_array_new
-// container is not nil, container is TabArray
-// is constructor
+//
+// [ initial_size ] trans: nothing
+//
+// [ positions_in_pixels ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTabArray(initial_size int32, positions_in_pixels bool) (result TabArray) {
 	iv, err := _I.Get(270, "TabArray", "new")
 	if err != nil {
@@ -5760,8 +6299,9 @@ func NewTabArray(initial_size int32, positions_in_pixels bool) (result TabArray)
 }
 
 // pango_tab_array_copy
-// container is not nil, container is TabArray
-// is method
+//
+// [ result ] trans: everything
+//
 func (v TabArray) Copy() (result TabArray) {
 	iv, err := _I.Get(271, "TabArray", "copy")
 	if err != nil {
@@ -5777,8 +6317,7 @@ func (v TabArray) Copy() (result TabArray) {
 }
 
 // pango_tab_array_free
-// container is not nil, container is TabArray
-// is method
+//
 func (v TabArray) Free() {
 	iv, err := _I.Get(272, "TabArray", "free")
 	if err != nil {
@@ -5791,8 +6330,9 @@ func (v TabArray) Free() {
 }
 
 // pango_tab_array_get_positions_in_pixels
-// container is not nil, container is TabArray
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TabArray) GetPositionsInPixels() (result bool) {
 	iv, err := _I.Get(273, "TabArray", "get_positions_in_pixels")
 	if err != nil {
@@ -5808,8 +6348,9 @@ func (v TabArray) GetPositionsInPixels() (result bool) {
 }
 
 // pango_tab_array_get_size
-// container is not nil, container is TabArray
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TabArray) GetSize() (result int32) {
 	iv, err := _I.Get(274, "TabArray", "get_size")
 	if err != nil {
@@ -5825,8 +6366,13 @@ func (v TabArray) GetSize() (result int32) {
 }
 
 // pango_tab_array_get_tab
-// container is not nil, container is TabArray
-// is method
+//
+// [ tab_index ] trans: nothing
+//
+// [ alignment ] trans: everything, dir: out
+//
+// [ location ] trans: everything, dir: out
+//
 func (v TabArray) GetTab(tab_index int32) (alignment TabAlignEnum, location int32) {
 	iv, err := _I.Get(275, "TabArray", "get_tab")
 	if err != nil {
@@ -5846,8 +6392,11 @@ func (v TabArray) GetTab(tab_index int32) (alignment TabAlignEnum, location int3
 }
 
 // pango_tab_array_get_tabs
-// container is not nil, container is TabArray
-// is method
+//
+// [ alignments ] trans: everything, dir: out
+//
+// [ locations ] trans: everything, dir: out
+//
 func (v TabArray) GetTabs() (alignments int /*TODO_TYPE tag: ifc, biType: enum*/, locations gi.Int32Array) {
 	iv, err := _I.Get(276, "TabArray", "get_tabs")
 	if err != nil {
@@ -5866,8 +6415,9 @@ func (v TabArray) GetTabs() (alignments int /*TODO_TYPE tag: ifc, biType: enum*/
 }
 
 // pango_tab_array_resize
-// container is not nil, container is TabArray
-// is method
+//
+// [ new_size ] trans: nothing
+//
 func (v TabArray) Resize(new_size int32) {
 	iv, err := _I.Get(277, "TabArray", "resize")
 	if err != nil {
@@ -5881,8 +6431,13 @@ func (v TabArray) Resize(new_size int32) {
 }
 
 // pango_tab_array_set_tab
-// container is not nil, container is TabArray
-// is method
+//
+// [ tab_index ] trans: nothing
+//
+// [ alignment ] trans: nothing
+//
+// [ location ] trans: nothing
+//
 func (v TabArray) SetTab(tab_index int32, alignment TabAlignEnum, location int32) {
 	iv, err := _I.Get(278, "TabArray", "set_tab")
 	if err != nil {
@@ -5964,7 +6519,11 @@ func WrapModeGetType() gi.GType {
 }
 
 // pango_attr_type_get_name
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AttrTypeGetName(type1 AttrTypeEnum) (result string) {
 	iv, err := _I.Get(279, "attr_type_get_name", "")
 	if err != nil {
@@ -5975,12 +6534,16 @@ func AttrTypeGetName(type1 AttrTypeEnum) (result string) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_attr_type_register
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AttrTypeRegister(name string) (result AttrTypeEnum) {
 	iv, err := _I.Get(280, "attr_type_register", "")
 	if err != nil {
@@ -5998,7 +6561,11 @@ func AttrTypeRegister(name string) (result AttrTypeEnum) {
 }
 
 // pango_bidi_type_for_unichar
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func BidiTypeForUnichar(ch rune) (result BidiTypeEnum) {
 	iv, err := _I.Get(281, "bidi_type_for_unichar", "")
 	if err != nil {
@@ -6014,8 +6581,17 @@ func BidiTypeForUnichar(ch rune) (result BidiTypeEnum) {
 }
 
 // pango_break
-// container is nil
-// arg 3 attrs lenArgIdx 4
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ analysis ] trans: nothing
+//
+// [ attrs ] trans: nothing
+//
+// [ attrs_len ] trans: nothing
+//
 func Break(text string, length int32, analysis Analysis, attrs unsafe.Pointer, attrs_len int32) {
 	iv, err := _I.Get(282, "break", "")
 	if err != nil {
@@ -6034,7 +6610,11 @@ func Break(text string, length int32, analysis Analysis, attrs unsafe.Pointer, a
 }
 
 // pango_config_key_get
-// container is nil
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ConfigKeyGet(key string) (result string) {
 	iv, err := _I.Get(283, "config_key_get", "")
 	if err != nil {
@@ -6052,7 +6632,11 @@ func ConfigKeyGet(key string) (result string) {
 }
 
 // pango_config_key_get_system
-// container is nil
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ConfigKeyGetSystem(key string) (result string) {
 	iv, err := _I.Get(284, "config_key_get_system", "")
 	if err != nil {
@@ -6070,7 +6654,17 @@ func ConfigKeyGetSystem(key string) (result string) {
 }
 
 // pango_default_break
-// container is nil
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ analysis ] trans: nothing
+//
+// [ attrs ] trans: nothing
+//
+// [ attrs_len ] trans: nothing
+//
 func DefaultBreak(text string, length int32, analysis Analysis, attrs LogAttr, attrs_len int32) {
 	iv, err := _I.Get(285, "default_break", "")
 	if err != nil {
@@ -6089,7 +6683,11 @@ func DefaultBreak(text string, length int32, analysis Analysis, attrs LogAttr, a
 }
 
 // pango_extents_to_pixels
-// container is nil
+//
+// [ inclusive ] trans: nothing
+//
+// [ nearest ] trans: nothing
+//
 func ExtentsToPixels(inclusive Rectangle, nearest Rectangle) {
 	iv, err := _I.Get(286, "extents_to_pixels", "")
 	if err != nil {
@@ -6103,7 +6701,13 @@ func ExtentsToPixels(inclusive Rectangle, nearest Rectangle) {
 }
 
 // pango_find_base_dir
-// container is nil
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func FindBaseDir(text string, length int32) (result DirectionEnum) {
 	iv, err := _I.Get(287, "find_base_dir", "")
 	if err != nil {
@@ -6122,7 +6726,15 @@ func FindBaseDir(text string, length int32) (result DirectionEnum) {
 }
 
 // pango_find_paragraph_boundary
-// container is nil
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ paragraph_delimiter_index ] trans: everything, dir: out
+//
+// [ next_paragraph_start ] trans: everything, dir: out
+//
 func FindParagraphBoundary(text string, length int32) (paragraph_delimiter_index int32, next_paragraph_start int32) {
 	iv, err := _I.Get(288, "find_paragraph_boundary", "")
 	if err != nil {
@@ -6144,7 +6756,11 @@ func FindParagraphBoundary(text string, length int32) (paragraph_delimiter_index
 }
 
 // pango_font_description_from_string
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FontDescriptionFromString(str string) (result FontDescription) {
 	iv, err := _I.Get(289, "font_description_from_string", "")
 	if err != nil {
@@ -6162,7 +6778,9 @@ func FontDescriptionFromString(str string) (result FontDescription) {
 }
 
 // pango_get_lib_subdirectory
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetLibSubdirectory() (result string) {
 	iv, err := _I.Get(290, "get_lib_subdirectory", "")
 	if err != nil {
@@ -6171,13 +6789,24 @@ func GetLibSubdirectory() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_get_log_attrs
-// container is nil
-// arg 4 log_attrs lenArgIdx 5
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ level ] trans: nothing
+//
+// [ language ] trans: nothing
+//
+// [ log_attrs ] trans: nothing
+//
+// [ attrs_len ] trans: nothing
+//
 func GetLogAttrs(text string, length int32, level int32, language Language, log_attrs unsafe.Pointer, attrs_len int32) {
 	iv, err := _I.Get(291, "get_log_attrs", "")
 	if err != nil {
@@ -6197,7 +6826,13 @@ func GetLogAttrs(text string, length int32, level int32, language Language, log_
 }
 
 // pango_get_mirror_char
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ mirrored_ch ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func GetMirrorChar(ch rune, mirrored_ch rune) (result bool) {
 	iv, err := _I.Get(292, "get_mirror_char", "")
 	if err != nil {
@@ -6214,7 +6849,9 @@ func GetMirrorChar(ch rune, mirrored_ch rune) (result bool) {
 }
 
 // pango_get_sysconf_subdirectory
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetSysconfSubdirectory() (result string) {
 	iv, err := _I.Get(293, "get_sysconf_subdirectory", "")
 	if err != nil {
@@ -6223,12 +6860,16 @@ func GetSysconfSubdirectory() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_gravity_get_for_matrix
-// container is nil
+//
+// [ matrix ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func GravityGetForMatrix(matrix Matrix) (result GravityEnum) {
 	iv, err := _I.Get(294, "gravity_get_for_matrix", "")
 	if err != nil {
@@ -6244,7 +6885,15 @@ func GravityGetForMatrix(matrix Matrix) (result GravityEnum) {
 }
 
 // pango_gravity_get_for_script
-// container is nil
+//
+// [ script ] trans: nothing
+//
+// [ base_gravity ] trans: nothing
+//
+// [ hint ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func GravityGetForScript(script ScriptEnum, base_gravity GravityEnum, hint GravityHintEnum) (result GravityEnum) {
 	iv, err := _I.Get(295, "gravity_get_for_script", "")
 	if err != nil {
@@ -6262,7 +6911,17 @@ func GravityGetForScript(script ScriptEnum, base_gravity GravityEnum, hint Gravi
 }
 
 // pango_gravity_get_for_script_and_width
-// container is nil
+//
+// [ script ] trans: nothing
+//
+// [ wide ] trans: nothing
+//
+// [ base_gravity ] trans: nothing
+//
+// [ hint ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func GravityGetForScriptAndWidth(script ScriptEnum, wide bool, base_gravity GravityEnum, hint GravityHintEnum) (result GravityEnum) {
 	iv, err := _I.Get(296, "gravity_get_for_script_and_width", "")
 	if err != nil {
@@ -6281,7 +6940,11 @@ func GravityGetForScriptAndWidth(script ScriptEnum, wide bool, base_gravity Grav
 }
 
 // pango_gravity_to_rotation
-// container is nil
+//
+// [ gravity ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func GravityToRotation(gravity GravityEnum) (result float64) {
 	iv, err := _I.Get(297, "gravity_to_rotation", "")
 	if err != nil {
@@ -6297,7 +6960,11 @@ func GravityToRotation(gravity GravityEnum) (result float64) {
 }
 
 // pango_is_zero_width
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IsZeroWidth(ch rune) (result bool) {
 	iv, err := _I.Get(298, "is_zero_width", "")
 	if err != nil {
@@ -6313,7 +6980,21 @@ func IsZeroWidth(ch rune) (result bool) {
 }
 
 // pango_itemize
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ text ] trans: nothing
+//
+// [ start_index ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ attrs ] trans: nothing
+//
+// [ cached_iter ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Itemize(context IContext, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result glib.List) {
 	iv, err := _I.Get(299, "itemize", "")
 	if err != nil {
@@ -6340,7 +7021,23 @@ func Itemize(context IContext, text string, start_index int32, length int32, att
 }
 
 // pango_itemize_with_base_dir
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ base_dir ] trans: nothing
+//
+// [ text ] trans: nothing
+//
+// [ start_index ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ attrs ] trans: nothing
+//
+// [ cached_iter ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ItemizeWithBaseDir(context IContext, base_dir DirectionEnum, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result glib.List) {
 	iv, err := _I.Get(300, "itemize_with_base_dir", "")
 	if err != nil {
@@ -6368,7 +7065,11 @@ func ItemizeWithBaseDir(context IContext, base_dir DirectionEnum, text string, s
 }
 
 // pango_language_from_string
-// container is nil
+//
+// [ language ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func LanguageFromString(language string) (result Language) {
 	iv, err := _I.Get(301, "language_from_string", "")
 	if err != nil {
@@ -6386,7 +7087,9 @@ func LanguageFromString(language string) (result Language) {
 }
 
 // pango_language_get_default
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func LanguageGetDefault() (result Language) {
 	iv, err := _I.Get(302, "language_get_default", "")
 	if err != nil {
@@ -6400,8 +7103,13 @@ func LanguageGetDefault() (result Language) {
 }
 
 // pango_lookup_aliases
-// container is nil
-// arg 1 families lenArgIdx 2
+//
+// [ fontname ] trans: nothing
+//
+// [ families ] trans: everything, dir: out
+//
+// [ n_families ] trans: everything, dir: out
+//
 func LookupAliases(fontname string) (families gi.CStrArray) {
 	iv, err := _I.Get(303, "lookup_aliases", "")
 	if err != nil {
@@ -6424,7 +7132,17 @@ func LookupAliases(fontname string) (families gi.CStrArray) {
 }
 
 // pango_markup_parser_finish
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ attr_list ] trans: everything, dir: out
+//
+// [ text ] trans: everything, dir: out
+//
+// [ accel_char ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func MarkupParserFinish(context glib.MarkupParseContext) (result bool, attr_list AttrList, text string, accel_char rune, err error) {
 	iv, err := _I.Get(304, "markup_parser_finish", "")
 	if err != nil {
@@ -6448,7 +7166,11 @@ func MarkupParserFinish(context glib.MarkupParseContext) (result bool, attr_list
 }
 
 // pango_markup_parser_new
-// container is nil
+//
+// [ accel_marker ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func MarkupParserNew(accel_marker rune) (result glib.MarkupParseContext) {
 	iv, err := _I.Get(305, "markup_parser_new", "")
 	if err != nil {
@@ -6464,7 +7186,9 @@ func MarkupParserNew(accel_marker rune) (result glib.MarkupParseContext) {
 }
 
 // pango_module_register
-// container is nil
+//
+// [ module ] trans: nothing
+//
 func ModuleRegister(module IncludedModule) {
 	iv, err := _I.Get(306, "module_register", "")
 	if err != nil {
@@ -6477,7 +7201,19 @@ func ModuleRegister(module IncludedModule) {
 }
 
 // pango_parse_enum
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ str ] trans: nothing
+//
+// [ value ] trans: everything, dir: out
+//
+// [ warn ] trans: nothing
+//
+// [ possible_values ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func ParseEnum(type1 gi.GType, str string, warn bool) (result bool, value int32, possible_values string) {
 	iv, err := _I.Get(307, "parse_enum", "")
 	if err != nil {
@@ -6502,7 +7238,21 @@ func ParseEnum(type1 gi.GType, str string, warn bool) (result bool, value int32,
 }
 
 // pango_parse_markup
-// container is nil
+//
+// [ markup_text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ accel_marker ] trans: nothing
+//
+// [ attr_list ] trans: everything, dir: out
+//
+// [ text ] trans: everything, dir: out
+//
+// [ accel_char ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func ParseMarkup(markup_text string, length int32, accel_marker rune) (result bool, attr_list AttrList, text string, accel_char rune, err error) {
 	iv, err := _I.Get(308, "parse_markup", "")
 	if err != nil {
@@ -6530,7 +7280,15 @@ func ParseMarkup(markup_text string, length int32, accel_marker rune) (result bo
 }
 
 // pango_parse_stretch
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ stretch ] trans: nothing, dir: out
+//
+// [ warn ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParseStretch(str string, warn bool) (result bool, stretch StretchEnum) {
 	iv, err := _I.Get(309, "parse_stretch", "")
 	if err != nil {
@@ -6552,7 +7310,15 @@ func ParseStretch(str string, warn bool) (result bool, stretch StretchEnum) {
 }
 
 // pango_parse_style
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ style ] trans: nothing, dir: out
+//
+// [ warn ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParseStyle(str string, warn bool) (result bool, style StyleEnum) {
 	iv, err := _I.Get(310, "parse_style", "")
 	if err != nil {
@@ -6574,7 +7340,15 @@ func ParseStyle(str string, warn bool) (result bool, style StyleEnum) {
 }
 
 // pango_parse_variant
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ variant ] trans: nothing, dir: out
+//
+// [ warn ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParseVariant(str string, warn bool) (result bool, variant VariantEnum) {
 	iv, err := _I.Get(311, "parse_variant", "")
 	if err != nil {
@@ -6596,7 +7370,15 @@ func ParseVariant(str string, warn bool) (result bool, variant VariantEnum) {
 }
 
 // pango_parse_weight
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ weight ] trans: nothing, dir: out
+//
+// [ warn ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParseWeight(str string, warn bool) (result bool, weight WeightEnum) {
 	iv, err := _I.Get(312, "parse_weight", "")
 	if err != nil {
@@ -6618,7 +7400,11 @@ func ParseWeight(str string, warn bool) (result bool, weight WeightEnum) {
 }
 
 // pango_quantize_line_geometry
-// container is nil
+//
+// [ thickness ] trans: everything, dir: inout
+//
+// [ position ] trans: everything, dir: inout
+//
 func QuantizeLineGeometry(thickness int /*TODO:TYPE*/, position int /*TODO:TYPE*/) {
 	iv, err := _I.Get(313, "quantize_line_geometry", "")
 	if err != nil {
@@ -6630,7 +7416,13 @@ func QuantizeLineGeometry(thickness int /*TODO:TYPE*/, position int /*TODO:TYPE*
 }
 
 // pango_read_line
-// container is nil
+//
+// [ stream ] trans: nothing
+//
+// [ str ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func ReadLine(stream unsafe.Pointer, str glib.String) (result int32) {
 	iv, err := _I.Get(314, "read_line", "")
 	if err != nil {
@@ -6647,7 +7439,11 @@ func ReadLine(stream unsafe.Pointer, str glib.String) (result int32) {
 }
 
 // pango_reorder_items
-// container is nil
+//
+// [ logical_items ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ReorderItems(logical_items glib.List) (result glib.List) {
 	iv, err := _I.Get(315, "reorder_items", "")
 	if err != nil {
@@ -6663,7 +7459,13 @@ func ReorderItems(logical_items glib.List) (result glib.List) {
 }
 
 // pango_scan_int
-// container is nil
+//
+// [ pos ] trans: everything, dir: inout
+//
+// [ out ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func ScanInt(pos int /*TODO:TYPE*/) (result bool, out int32) {
 	iv, err := _I.Get(316, "scan_int", "")
 	if err != nil {
@@ -6681,7 +7483,13 @@ func ScanInt(pos int /*TODO:TYPE*/) (result bool, out int32) {
 }
 
 // pango_scan_string
-// container is nil
+//
+// [ pos ] trans: everything, dir: inout
+//
+// [ out ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func ScanString(pos int /*TODO:TYPE*/, out glib.String) (result bool) {
 	iv, err := _I.Get(317, "scan_string", "")
 	if err != nil {
@@ -6698,7 +7506,13 @@ func ScanString(pos int /*TODO:TYPE*/, out glib.String) (result bool) {
 }
 
 // pango_scan_word
-// container is nil
+//
+// [ pos ] trans: everything, dir: inout
+//
+// [ out ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func ScanWord(pos int /*TODO:TYPE*/, out glib.String) (result bool) {
 	iv, err := _I.Get(318, "scan_word", "")
 	if err != nil {
@@ -6715,7 +7529,11 @@ func ScanWord(pos int /*TODO:TYPE*/, out glib.String) (result bool) {
 }
 
 // pango_script_for_unichar
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ScriptForUnichar(ch rune) (result ScriptEnum) {
 	iv, err := _I.Get(319, "script_for_unichar", "")
 	if err != nil {
@@ -6731,7 +7549,11 @@ func ScriptForUnichar(ch rune) (result ScriptEnum) {
 }
 
 // pango_script_get_sample_language
-// container is nil
+//
+// [ script ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ScriptGetSampleLanguage(script ScriptEnum) (result Language) {
 	iv, err := _I.Get(320, "script_get_sample_language", "")
 	if err != nil {
@@ -6747,7 +7569,15 @@ func ScriptGetSampleLanguage(script ScriptEnum) (result Language) {
 }
 
 // pango_shape
-// container is nil
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ analysis ] trans: nothing
+//
+// [ glyphs ] trans: nothing
+//
 func Shape(text string, length int32, analysis Analysis, glyphs GlyphString) {
 	iv, err := _I.Get(321, "shape", "")
 	if err != nil {
@@ -6765,7 +7595,19 @@ func Shape(text string, length int32, analysis Analysis, glyphs GlyphString) {
 }
 
 // pango_shape_full
-// container is nil
+//
+// [ item_text ] trans: nothing
+//
+// [ item_length ] trans: nothing
+//
+// [ paragraph_text ] trans: nothing
+//
+// [ paragraph_length ] trans: nothing
+//
+// [ analysis ] trans: nothing
+//
+// [ glyphs ] trans: nothing
+//
 func ShapeFull(item_text string, item_length int32, paragraph_text string, paragraph_length int32, analysis Analysis, glyphs GlyphString) {
 	iv, err := _I.Get(322, "shape_full", "")
 	if err != nil {
@@ -6787,7 +7629,11 @@ func ShapeFull(item_text string, item_length int32, paragraph_text string, parag
 }
 
 // pango_skip_space
-// container is nil
+//
+// [ pos ] trans: everything, dir: inout
+//
+// [ result ] trans: nothing
+//
 func SkipSpace(pos int /*TODO:TYPE*/) (result bool) {
 	iv, err := _I.Get(323, "skip_space", "")
 	if err != nil {
@@ -6802,7 +7648,11 @@ func SkipSpace(pos int /*TODO:TYPE*/) (result bool) {
 }
 
 // pango_split_file_list
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func SplitFileList(str string) (result gi.CStrArray) {
 	iv, err := _I.Get(324, "split_file_list", "")
 	if err != nil {
@@ -6821,7 +7671,11 @@ func SplitFileList(str string) (result gi.CStrArray) {
 }
 
 // pango_trim_string
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func TrimString(str string) (result string) {
 	iv, err := _I.Get(325, "trim_string", "")
 	if err != nil {
@@ -6839,7 +7693,11 @@ func TrimString(str string) (result string) {
 }
 
 // pango_unichar_direction
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharDirection(ch rune) (result DirectionEnum) {
 	iv, err := _I.Get(326, "unichar_direction", "")
 	if err != nil {
@@ -6855,7 +7713,11 @@ func UnicharDirection(ch rune) (result DirectionEnum) {
 }
 
 // pango_units_from_double
-// container is nil
+//
+// [ d ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnitsFromDouble(d float64) (result int32) {
 	iv, err := _I.Get(327, "units_from_double", "")
 	if err != nil {
@@ -6871,7 +7733,11 @@ func UnitsFromDouble(d float64) (result int32) {
 }
 
 // pango_units_to_double
-// container is nil
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnitsToDouble(i int32) (result float64) {
 	iv, err := _I.Get(328, "units_to_double", "")
 	if err != nil {
@@ -6887,7 +7753,9 @@ func UnitsToDouble(i int32) (result float64) {
 }
 
 // pango_version
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func Version() (result int32) {
 	iv, err := _I.Get(329, "version", "")
 	if err != nil {
@@ -6901,7 +7769,15 @@ func Version() (result int32) {
 }
 
 // pango_version_check
-// container is nil
+//
+// [ required_major ] trans: nothing
+//
+// [ required_minor ] trans: nothing
+//
+// [ required_micro ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VersionCheck(required_major int32, required_minor int32, required_micro int32) (result string) {
 	iv, err := _I.Get(330, "version_check", "")
 	if err != nil {
@@ -6914,12 +7790,14 @@ func VersionCheck(required_major int32, required_minor int32, required_micro int
 	args := []gi.Argument{arg_required_major, arg_required_minor, arg_required_micro}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // pango_version_string
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func VersionString() (result string) {
 	iv, err := _I.Get(331, "version_string", "")
 	if err != nil {
@@ -6928,7 +7806,7 @@ func VersionString() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 

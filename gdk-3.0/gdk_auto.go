@@ -83,8 +83,9 @@ func AppLaunchContextGetType() gi.GType {
 }
 
 // gdk_app_launch_context_new
-// container is not nil, container is AppLaunchContext
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewAppLaunchContext() (result AppLaunchContext) {
 	iv, err := _I.Get(0, "AppLaunchContext", "new")
 	if err != nil {
@@ -98,8 +99,9 @@ func NewAppLaunchContext() (result AppLaunchContext) {
 }
 
 // gdk_app_launch_context_set_desktop
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ desktop ] trans: nothing
+//
 func (v AppLaunchContext) SetDesktop(desktop int32) {
 	iv, err := _I.Get(1, "AppLaunchContext", "set_desktop")
 	if err != nil {
@@ -113,8 +115,9 @@ func (v AppLaunchContext) SetDesktop(desktop int32) {
 }
 
 // gdk_app_launch_context_set_display
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ display ] trans: nothing
+//
 func (v AppLaunchContext) SetDisplay(display IDisplay) {
 	iv, err := _I.Get(2, "AppLaunchContext", "set_display")
 	if err != nil {
@@ -132,8 +135,9 @@ func (v AppLaunchContext) SetDisplay(display IDisplay) {
 }
 
 // gdk_app_launch_context_set_icon
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ icon ] trans: nothing
+//
 func (v AppLaunchContext) SetIcon(icon gio.IIcon) {
 	iv, err := _I.Get(3, "AppLaunchContext", "set_icon")
 	if err != nil {
@@ -151,8 +155,9 @@ func (v AppLaunchContext) SetIcon(icon gio.IIcon) {
 }
 
 // gdk_app_launch_context_set_icon_name
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ icon_name ] trans: nothing
+//
 func (v AppLaunchContext) SetIconName(icon_name string) {
 	iv, err := _I.Get(4, "AppLaunchContext", "set_icon_name")
 	if err != nil {
@@ -168,8 +173,9 @@ func (v AppLaunchContext) SetIconName(icon_name string) {
 }
 
 // gdk_app_launch_context_set_screen
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ screen ] trans: nothing
+//
 func (v AppLaunchContext) SetScreen(screen IScreen) {
 	iv, err := _I.Get(5, "AppLaunchContext", "set_screen")
 	if err != nil {
@@ -187,8 +193,9 @@ func (v AppLaunchContext) SetScreen(screen IScreen) {
 }
 
 // gdk_app_launch_context_set_timestamp
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ timestamp ] trans: nothing
+//
 func (v AppLaunchContext) SetTimestamp(timestamp uint32) {
 	iv, err := _I.Get(6, "AppLaunchContext", "set_timestamp")
 	if err != nil {
@@ -212,8 +219,9 @@ func AtomGetType() gi.GType {
 }
 
 // gdk_atom_name
-// container is not nil, container is Atom
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Atom) Name() (result string) {
 	iv, err := _I.Get(7, "Atom", "name")
 	if err != nil {
@@ -229,9 +237,13 @@ func (v Atom) Name() (result string) {
 }
 
 // gdk_atom_intern
-// container is not nil, container is Atom
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ atom_name ] trans: nothing
+//
+// [ only_if_exists ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomIntern1(atom_name string, only_if_exists bool) (result Atom) {
 	iv, err := _I.Get(8, "Atom", "intern")
 	if err != nil {
@@ -250,9 +262,11 @@ func AtomIntern1(atom_name string, only_if_exists bool) (result Atom) {
 }
 
 // gdk_atom_intern_static_string
-// container is not nil, container is Atom
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ atom_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomInternStaticString1(atom_name string) (result Atom) {
 	iv, err := _I.Get(9, "Atom", "intern_static_string")
 	if err != nil {
@@ -337,8 +351,9 @@ func ColorGetType() gi.GType {
 }
 
 // gdk_color_copy
-// container is not nil, container is Color
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Color) Copy() (result Color) {
 	iv, err := _I.Get(10, "Color", "copy")
 	if err != nil {
@@ -354,8 +369,11 @@ func (v Color) Copy() (result Color) {
 }
 
 // gdk_color_equal
-// container is not nil, container is Color
-// is method
+//
+// [ colorb ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Color) Equal(colorb Color) (result bool) {
 	iv, err := _I.Get(11, "Color", "equal")
 	if err != nil {
@@ -372,8 +390,7 @@ func (v Color) Equal(colorb Color) (result bool) {
 }
 
 // gdk_color_free
-// container is not nil, container is Color
-// is method
+//
 func (v Color) Free() {
 	iv, err := _I.Get(12, "Color", "free")
 	if err != nil {
@@ -386,8 +403,9 @@ func (v Color) Free() {
 }
 
 // gdk_color_hash
-// container is not nil, container is Color
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Color) Hash() (result uint32) {
 	iv, err := _I.Get(13, "Color", "hash")
 	if err != nil {
@@ -403,8 +421,9 @@ func (v Color) Hash() (result uint32) {
 }
 
 // gdk_color_to_string
-// container is not nil, container is Color
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Color) ToString() (result string) {
 	iv, err := _I.Get(14, "Color", "to_string")
 	if err != nil {
@@ -420,9 +439,13 @@ func (v Color) ToString() (result string) {
 }
 
 // gdk_color_parse
-// container is not nil, container is Color
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ spec ] trans: nothing
+//
+// [ color ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func ColorParse1(spec string, color Color) (result bool) {
 	iv, err := _I.Get(15, "Color", "parse")
 	if err != nil {
@@ -476,8 +499,11 @@ func CursorGetType() gi.GType {
 }
 
 // gdk_cursor_new
-// container is not nil, container is Cursor
-// is constructor
+//
+// [ cursor_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewCursor(cursor_type CursorTypeEnum) (result Cursor) {
 	iv, err := _I.Get(16, "Cursor", "new")
 	if err != nil {
@@ -493,8 +519,13 @@ func NewCursor(cursor_type CursorTypeEnum) (result Cursor) {
 }
 
 // gdk_cursor_new_for_display
-// container is not nil, container is Cursor
-// is constructor
+//
+// [ display ] trans: nothing
+//
+// [ cursor_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewCursorForDisplay(display IDisplay, cursor_type CursorTypeEnum) (result Cursor) {
 	iv, err := _I.Get(17, "Cursor", "new_for_display")
 	if err != nil {
@@ -515,8 +546,13 @@ func NewCursorForDisplay(display IDisplay, cursor_type CursorTypeEnum) (result C
 }
 
 // gdk_cursor_new_from_name
-// container is not nil, container is Cursor
-// is constructor
+//
+// [ display ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewCursorFromName(display IDisplay, name string) (result Cursor) {
 	iv, err := _I.Get(18, "Cursor", "new_from_name")
 	if err != nil {
@@ -539,8 +575,17 @@ func NewCursorFromName(display IDisplay, name string) (result Cursor) {
 }
 
 // gdk_cursor_new_from_pixbuf
-// container is not nil, container is Cursor
-// is constructor
+//
+// [ display ] trans: nothing
+//
+// [ pixbuf ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewCursorFromPixbuf(display IDisplay, pixbuf gdkpixbuf.IPixbuf, x int32, y int32) (result Cursor) {
 	iv, err := _I.Get(19, "Cursor", "new_from_pixbuf")
 	if err != nil {
@@ -567,8 +612,17 @@ func NewCursorFromPixbuf(display IDisplay, pixbuf gdkpixbuf.IPixbuf, x int32, y 
 }
 
 // gdk_cursor_new_from_surface
-// container is not nil, container is Cursor
-// is constructor
+//
+// [ display ] trans: nothing
+//
+// [ surface ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewCursorFromSurface(display IDisplay, surface cairo.Surface, x float64, y float64) (result Cursor) {
 	iv, err := _I.Get(20, "Cursor", "new_from_surface")
 	if err != nil {
@@ -591,8 +645,9 @@ func NewCursorFromSurface(display IDisplay, surface cairo.Surface, x float64, y 
 }
 
 // gdk_cursor_get_cursor_type
-// container is not nil, container is Cursor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Cursor) GetCursorType() (result CursorTypeEnum) {
 	iv, err := _I.Get(21, "Cursor", "get_cursor_type")
 	if err != nil {
@@ -608,8 +663,9 @@ func (v Cursor) GetCursorType() (result CursorTypeEnum) {
 }
 
 // gdk_cursor_get_display
-// container is not nil, container is Cursor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Cursor) GetDisplay() (result Display) {
 	iv, err := _I.Get(22, "Cursor", "get_display")
 	if err != nil {
@@ -625,8 +681,9 @@ func (v Cursor) GetDisplay() (result Display) {
 }
 
 // gdk_cursor_get_image
-// container is not nil, container is Cursor
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Cursor) GetImage() (result gdkpixbuf.Pixbuf) {
 	iv, err := _I.Get(23, "Cursor", "get_image")
 	if err != nil {
@@ -642,8 +699,13 @@ func (v Cursor) GetImage() (result gdkpixbuf.Pixbuf) {
 }
 
 // gdk_cursor_get_surface
-// container is not nil, container is Cursor
-// is method
+//
+// [ x_hot ] trans: everything, dir: out
+//
+// [ y_hot ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v Cursor) GetSurface() (result cairo.Surface, x_hot float64, y_hot float64) {
 	iv, err := _I.Get(24, "Cursor", "get_surface")
 	if err != nil {
@@ -664,8 +726,9 @@ func (v Cursor) GetSurface() (result cairo.Surface, x_hot float64, y_hot float64
 }
 
 // gdk_cursor_ref
-// container is not nil, container is Cursor
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Cursor) Ref() (result Cursor) {
 	iv, err := _I.Get(25, "Cursor", "ref")
 	if err != nil {
@@ -681,8 +744,7 @@ func (v Cursor) Ref() (result Cursor) {
 }
 
 // gdk_cursor_unref
-// container is not nil, container is Cursor
-// is method
+//
 func (v Cursor) Unref() {
 	iv, err := _I.Get(26, "Cursor", "unref")
 	if err != nil {
@@ -801,9 +863,17 @@ func DeviceGetType() gi.GType {
 }
 
 // gdk_device_grab_info_libgtk_only
-// container is not nil, container is Device
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ display ] trans: nothing
+//
+// [ device ] trans: nothing
+//
+// [ grab_window ] trans: nothing, dir: out
+//
+// [ owner_events ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func DeviceGrabInfoLibgtkOnly1(display IDisplay, device IDevice) (result bool, grab_window Window, owner_events bool) {
 	iv, err := _I.Get(27, "Device", "grab_info_libgtk_only")
 	if err != nil {
@@ -833,8 +903,9 @@ func DeviceGrabInfoLibgtkOnly1(display IDisplay, device IDevice) (result bool, g
 }
 
 // gdk_device_get_associated_device
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetAssociatedDevice() (result Device) {
 	iv, err := _I.Get(28, "Device", "get_associated_device")
 	if err != nil {
@@ -850,8 +921,9 @@ func (v Device) GetAssociatedDevice() (result Device) {
 }
 
 // gdk_device_get_axes
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetAxes() (result AxisFlags) {
 	iv, err := _I.Get(29, "Device", "get_axes")
 	if err != nil {
@@ -867,8 +939,11 @@ func (v Device) GetAxes() (result AxisFlags) {
 }
 
 // gdk_device_get_axis_use
-// container is not nil, container is Device
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetAxisUse(index_ uint32) (result AxisUseEnum) {
 	iv, err := _I.Get(30, "Device", "get_axis_use")
 	if err != nil {
@@ -885,8 +960,9 @@ func (v Device) GetAxisUse(index_ uint32) (result AxisUseEnum) {
 }
 
 // gdk_device_get_device_type
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetDeviceType() (result DeviceTypeEnum) {
 	iv, err := _I.Get(31, "Device", "get_device_type")
 	if err != nil {
@@ -902,8 +978,9 @@ func (v Device) GetDeviceType() (result DeviceTypeEnum) {
 }
 
 // gdk_device_get_display
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetDisplay() (result Display) {
 	iv, err := _I.Get(32, "Device", "get_display")
 	if err != nil {
@@ -919,8 +996,9 @@ func (v Device) GetDisplay() (result Display) {
 }
 
 // gdk_device_get_has_cursor
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetHasCursor() (result bool) {
 	iv, err := _I.Get(33, "Device", "get_has_cursor")
 	if err != nil {
@@ -936,8 +1014,15 @@ func (v Device) GetHasCursor() (result bool) {
 }
 
 // gdk_device_get_key
-// container is not nil, container is Device
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ keyval ] trans: everything, dir: out
+//
+// [ modifiers ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetKey(index_ uint32) (result bool, keyval uint32, modifiers ModifierTypeFlags) {
 	iv, err := _I.Get(34, "Device", "get_key")
 	if err != nil {
@@ -959,8 +1044,9 @@ func (v Device) GetKey(index_ uint32) (result bool, keyval uint32, modifiers Mod
 }
 
 // gdk_device_get_last_event_window
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetLastEventWindow() (result Window) {
 	iv, err := _I.Get(35, "Device", "get_last_event_window")
 	if err != nil {
@@ -976,8 +1062,9 @@ func (v Device) GetLastEventWindow() (result Window) {
 }
 
 // gdk_device_get_mode
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetMode() (result InputModeEnum) {
 	iv, err := _I.Get(36, "Device", "get_mode")
 	if err != nil {
@@ -993,8 +1080,9 @@ func (v Device) GetMode() (result InputModeEnum) {
 }
 
 // gdk_device_get_n_axes
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetNAxes() (result int32) {
 	iv, err := _I.Get(37, "Device", "get_n_axes")
 	if err != nil {
@@ -1010,8 +1098,9 @@ func (v Device) GetNAxes() (result int32) {
 }
 
 // gdk_device_get_n_keys
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetNKeys() (result int32) {
 	iv, err := _I.Get(38, "Device", "get_n_keys")
 	if err != nil {
@@ -1027,8 +1116,9 @@ func (v Device) GetNKeys() (result int32) {
 }
 
 // gdk_device_get_name
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetName() (result string) {
 	iv, err := _I.Get(39, "Device", "get_name")
 	if err != nil {
@@ -1039,13 +1129,18 @@ func (v Device) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gdk_device_get_position
-// container is not nil, container is Device
-// is method
+//
+// [ screen ] trans: nothing, dir: out
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
 func (v Device) GetPosition() (screen Screen, x int32, y int32) {
 	iv, err := _I.Get(40, "Device", "get_position")
 	if err != nil {
@@ -1066,8 +1161,13 @@ func (v Device) GetPosition() (screen Screen, x int32, y int32) {
 }
 
 // gdk_device_get_position_double
-// container is not nil, container is Device
-// is method
+//
+// [ screen ] trans: nothing, dir: out
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
 func (v Device) GetPositionDouble() (screen Screen, x float64, y float64) {
 	iv, err := _I.Get(41, "Device", "get_position_double")
 	if err != nil {
@@ -1088,8 +1188,9 @@ func (v Device) GetPositionDouble() (screen Screen, x float64, y float64) {
 }
 
 // gdk_device_get_product_id
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetProductId() (result string) {
 	iv, err := _I.Get(42, "Device", "get_product_id")
 	if err != nil {
@@ -1100,13 +1201,14 @@ func (v Device) GetProductId() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gdk_device_get_seat
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSeat() (result Seat) {
 	iv, err := _I.Get(43, "Device", "get_seat")
 	if err != nil {
@@ -1122,8 +1224,9 @@ func (v Device) GetSeat() (result Seat) {
 }
 
 // gdk_device_get_source
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSource() (result InputSourceEnum) {
 	iv, err := _I.Get(44, "Device", "get_source")
 	if err != nil {
@@ -1139,8 +1242,9 @@ func (v Device) GetSource() (result InputSourceEnum) {
 }
 
 // gdk_device_get_vendor_id
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetVendorId() (result string) {
 	iv, err := _I.Get(45, "Device", "get_vendor_id")
 	if err != nil {
@@ -1151,13 +1255,18 @@ func (v Device) GetVendorId() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gdk_device_get_window_at_position
-// container is not nil, container is Device
-// is method
+//
+// [ win_x ] trans: everything, dir: out
+//
+// [ win_y ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetWindowAtPosition() (result Window, win_x int32, win_y int32) {
 	iv, err := _I.Get(46, "Device", "get_window_at_position")
 	if err != nil {
@@ -1178,8 +1287,13 @@ func (v Device) GetWindowAtPosition() (result Window, win_x int32, win_y int32) 
 }
 
 // gdk_device_get_window_at_position_double
-// container is not nil, container is Device
-// is method
+//
+// [ win_x ] trans: everything, dir: out
+//
+// [ win_y ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetWindowAtPositionDouble() (result Window, win_x float64, win_y float64) {
 	iv, err := _I.Get(47, "Device", "get_window_at_position_double")
 	if err != nil {
@@ -1200,8 +1314,21 @@ func (v Device) GetWindowAtPositionDouble() (result Window, win_x float64, win_y
 }
 
 // gdk_device_grab
-// container is not nil, container is Device
-// is method
+//
+// [ window ] trans: nothing
+//
+// [ grab_ownership ] trans: nothing
+//
+// [ owner_events ] trans: nothing
+//
+// [ event_mask ] trans: nothing
+//
+// [ cursor ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) Grab(window IWindow, grab_ownership GrabOwnershipEnum, owner_events bool, event_mask EventMaskFlags, cursor ICursor, time_ uint32) (result GrabStatusEnum) {
 	iv, err := _I.Get(48, "Device", "grab")
 	if err != nil {
@@ -1231,8 +1358,9 @@ func (v Device) Grab(window IWindow, grab_ownership GrabOwnershipEnum, owner_eve
 }
 
 // gdk_device_list_axes
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: container
+//
 func (v Device) ListAxes() (result glib.List) {
 	iv, err := _I.Get(49, "Device", "list_axes")
 	if err != nil {
@@ -1248,8 +1376,9 @@ func (v Device) ListAxes() (result glib.List) {
 }
 
 // gdk_device_list_slave_devices
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: container
+//
 func (v Device) ListSlaveDevices() (result glib.List) {
 	iv, err := _I.Get(50, "Device", "list_slave_devices")
 	if err != nil {
@@ -1265,8 +1394,11 @@ func (v Device) ListSlaveDevices() (result glib.List) {
 }
 
 // gdk_device_set_axis_use
-// container is not nil, container is Device
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ use ] trans: nothing
+//
 func (v Device) SetAxisUse(index_ uint32, use AxisUseEnum) {
 	iv, err := _I.Get(51, "Device", "set_axis_use")
 	if err != nil {
@@ -1281,8 +1413,13 @@ func (v Device) SetAxisUse(index_ uint32, use AxisUseEnum) {
 }
 
 // gdk_device_set_key
-// container is not nil, container is Device
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ keyval ] trans: nothing
+//
+// [ modifiers ] trans: nothing
+//
 func (v Device) SetKey(index_ uint32, keyval uint32, modifiers ModifierTypeFlags) {
 	iv, err := _I.Get(52, "Device", "set_key")
 	if err != nil {
@@ -1298,8 +1435,11 @@ func (v Device) SetKey(index_ uint32, keyval uint32, modifiers ModifierTypeFlags
 }
 
 // gdk_device_set_mode
-// container is not nil, container is Device
-// is method
+//
+// [ mode ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) SetMode(mode InputModeEnum) (result bool) {
 	iv, err := _I.Get(53, "Device", "set_mode")
 	if err != nil {
@@ -1316,8 +1456,9 @@ func (v Device) SetMode(mode InputModeEnum) (result bool) {
 }
 
 // gdk_device_ungrab
-// container is not nil, container is Device
-// is method
+//
+// [ time_ ] trans: nothing
+//
 func (v Device) Ungrab(time_ uint32) {
 	iv, err := _I.Get(54, "Device", "ungrab")
 	if err != nil {
@@ -1331,8 +1472,13 @@ func (v Device) Ungrab(time_ uint32) {
 }
 
 // gdk_device_warp
-// container is not nil, container is Device
-// is method
+//
+// [ screen ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func (v Device) Warp(screen IScreen, x int32, y int32) {
 	iv, err := _I.Get(55, "Device", "warp")
 	if err != nil {
@@ -1367,8 +1513,9 @@ func DeviceManagerGetType() gi.GType {
 }
 
 // gdk_device_manager_get_client_pointer
-// container is not nil, container is DeviceManager
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DeviceManager) GetClientPointer() (result Device) {
 	iv, err := _I.Get(56, "DeviceManager", "get_client_pointer")
 	if err != nil {
@@ -1384,8 +1531,9 @@ func (v DeviceManager) GetClientPointer() (result Device) {
 }
 
 // gdk_device_manager_get_display
-// container is not nil, container is DeviceManager
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DeviceManager) GetDisplay() (result Display) {
 	iv, err := _I.Get(57, "DeviceManager", "get_display")
 	if err != nil {
@@ -1401,8 +1549,11 @@ func (v DeviceManager) GetDisplay() (result Display) {
 }
 
 // gdk_device_manager_list_devices
-// container is not nil, container is DeviceManager
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: container
+//
 func (v DeviceManager) ListDevices(type1 DeviceTypeEnum) (result glib.List) {
 	iv, err := _I.Get(58, "DeviceManager", "list_devices")
 	if err != nil {
@@ -1433,8 +1584,13 @@ func DevicePadGetType() gi.GType {
 }
 
 // gdk_device_pad_get_feature_group
-// container is not nil, container is DevicePad
-// is method
+//
+// [ feature ] trans: nothing
+//
+// [ feature_idx ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DevicePadIfc) GetFeatureGroup(feature DevicePadFeatureEnum, feature_idx int32) (result int32) {
 	iv, err := _I.Get(59, "DevicePad", "get_feature_group")
 	if err != nil {
@@ -1452,8 +1608,11 @@ func (v *DevicePadIfc) GetFeatureGroup(feature DevicePadFeatureEnum, feature_idx
 }
 
 // gdk_device_pad_get_group_n_modes
-// container is not nil, container is DevicePad
-// is method
+//
+// [ group_idx ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DevicePadIfc) GetGroupNModes(group_idx int32) (result int32) {
 	iv, err := _I.Get(60, "DevicePad", "get_group_n_modes")
 	if err != nil {
@@ -1470,8 +1629,11 @@ func (v *DevicePadIfc) GetGroupNModes(group_idx int32) (result int32) {
 }
 
 // gdk_device_pad_get_n_features
-// container is not nil, container is DevicePad
-// is method
+//
+// [ feature ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DevicePadIfc) GetNFeatures(feature DevicePadFeatureEnum) (result int32) {
 	iv, err := _I.Get(61, "DevicePad", "get_n_features")
 	if err != nil {
@@ -1488,8 +1650,9 @@ func (v *DevicePadIfc) GetNFeatures(feature DevicePadFeatureEnum) (result int32)
 }
 
 // gdk_device_pad_get_n_groups
-// container is not nil, container is DevicePad
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DevicePadIfc) GetNGroups() (result int32) {
 	iv, err := _I.Get(62, "DevicePad", "get_n_groups")
 	if err != nil {
@@ -1535,8 +1698,9 @@ func DeviceToolGetType() gi.GType {
 }
 
 // gdk_device_tool_get_hardware_id
-// container is not nil, container is DeviceTool
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DeviceTool) GetHardwareId() (result uint64) {
 	iv, err := _I.Get(63, "DeviceTool", "get_hardware_id")
 	if err != nil {
@@ -1552,8 +1716,9 @@ func (v DeviceTool) GetHardwareId() (result uint64) {
 }
 
 // gdk_device_tool_get_serial
-// container is not nil, container is DeviceTool
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DeviceTool) GetSerial() (result uint64) {
 	iv, err := _I.Get(64, "DeviceTool", "get_serial")
 	if err != nil {
@@ -1569,8 +1734,9 @@ func (v DeviceTool) GetSerial() (result uint64) {
 }
 
 // gdk_device_tool_get_tool_type
-// container is not nil, container is DeviceTool
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DeviceTool) GetToolType() (result DeviceToolTypeEnum) {
 	iv, err := _I.Get(65, "DeviceTool", "get_tool_type")
 	if err != nil {
@@ -1634,9 +1800,11 @@ func DisplayGetType() gi.GType {
 }
 
 // gdk_display_open
-// container is not nil, container is Display
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ display_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DisplayOpen1(display_name string) (result Display) {
 	iv, err := _I.Get(67, "Display", "open")
 	if err != nil {
@@ -1654,8 +1822,7 @@ func DisplayOpen1(display_name string) (result Display) {
 }
 
 // gdk_display_beep
-// container is not nil, container is Display
-// is method
+//
 func (v Display) Beep() {
 	iv, err := _I.Get(69, "Display", "beep")
 	if err != nil {
@@ -1668,8 +1835,7 @@ func (v Display) Beep() {
 }
 
 // gdk_display_close
-// container is not nil, container is Display
-// is method
+//
 func (v Display) Close() {
 	iv, err := _I.Get(70, "Display", "close")
 	if err != nil {
@@ -1682,8 +1848,11 @@ func (v Display) Close() {
 }
 
 // gdk_display_device_is_grabbed
-// container is not nil, container is Display
-// is method
+//
+// [ device ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Display) DeviceIsGrabbed(device IDevice) (result bool) {
 	iv, err := _I.Get(71, "Display", "device_is_grabbed")
 	if err != nil {
@@ -1704,8 +1873,7 @@ func (v Display) DeviceIsGrabbed(device IDevice) (result bool) {
 }
 
 // gdk_display_flush
-// container is not nil, container is Display
-// is method
+//
 func (v Display) Flush() {
 	iv, err := _I.Get(72, "Display", "flush")
 	if err != nil {
@@ -1718,8 +1886,9 @@ func (v Display) Flush() {
 }
 
 // gdk_display_get_app_launch_context
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Display) GetAppLaunchContext() (result AppLaunchContext) {
 	iv, err := _I.Get(73, "Display", "get_app_launch_context")
 	if err != nil {
@@ -1735,8 +1904,9 @@ func (v Display) GetAppLaunchContext() (result AppLaunchContext) {
 }
 
 // gdk_display_get_default_cursor_size
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetDefaultCursorSize() (result uint32) {
 	iv, err := _I.Get(74, "Display", "get_default_cursor_size")
 	if err != nil {
@@ -1752,8 +1922,9 @@ func (v Display) GetDefaultCursorSize() (result uint32) {
 }
 
 // gdk_display_get_default_group
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetDefaultGroup() (result Window) {
 	iv, err := _I.Get(75, "Display", "get_default_group")
 	if err != nil {
@@ -1769,8 +1940,9 @@ func (v Display) GetDefaultGroup() (result Window) {
 }
 
 // gdk_display_get_default_screen
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetDefaultScreen() (result Screen) {
 	iv, err := _I.Get(76, "Display", "get_default_screen")
 	if err != nil {
@@ -1786,8 +1958,9 @@ func (v Display) GetDefaultScreen() (result Screen) {
 }
 
 // gdk_display_get_default_seat
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetDefaultSeat() (result Seat) {
 	iv, err := _I.Get(77, "Display", "get_default_seat")
 	if err != nil {
@@ -1803,8 +1976,9 @@ func (v Display) GetDefaultSeat() (result Seat) {
 }
 
 // gdk_display_get_device_manager
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetDeviceManager() (result DeviceManager) {
 	iv, err := _I.Get(78, "Display", "get_device_manager")
 	if err != nil {
@@ -1820,8 +1994,9 @@ func (v Display) GetDeviceManager() (result DeviceManager) {
 }
 
 // gdk_display_get_event
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Display) GetEvent() (result Event) {
 	iv, err := _I.Get(79, "Display", "get_event")
 	if err != nil {
@@ -1837,8 +2012,11 @@ func (v Display) GetEvent() (result Event) {
 }
 
 // gdk_display_get_maximal_cursor_size
-// container is not nil, container is Display
-// is method
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
 func (v Display) GetMaximalCursorSize() (width uint32, height uint32) {
 	iv, err := _I.Get(80, "Display", "get_maximal_cursor_size")
 	if err != nil {
@@ -1857,8 +2035,11 @@ func (v Display) GetMaximalCursorSize() (width uint32, height uint32) {
 }
 
 // gdk_display_get_monitor
-// container is not nil, container is Display
-// is method
+//
+// [ monitor_num ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetMonitor(monitor_num int32) (result Monitor) {
 	iv, err := _I.Get(81, "Display", "get_monitor")
 	if err != nil {
@@ -1875,8 +2056,13 @@ func (v Display) GetMonitor(monitor_num int32) (result Monitor) {
 }
 
 // gdk_display_get_monitor_at_point
-// container is not nil, container is Display
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetMonitorAtPoint(x int32, y int32) (result Monitor) {
 	iv, err := _I.Get(82, "Display", "get_monitor_at_point")
 	if err != nil {
@@ -1894,8 +2080,11 @@ func (v Display) GetMonitorAtPoint(x int32, y int32) (result Monitor) {
 }
 
 // gdk_display_get_monitor_at_window
-// container is not nil, container is Display
-// is method
+//
+// [ window ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetMonitorAtWindow(window IWindow) (result Monitor) {
 	iv, err := _I.Get(83, "Display", "get_monitor_at_window")
 	if err != nil {
@@ -1916,8 +2105,9 @@ func (v Display) GetMonitorAtWindow(window IWindow) (result Monitor) {
 }
 
 // gdk_display_get_n_monitors
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetNMonitors() (result int32) {
 	iv, err := _I.Get(84, "Display", "get_n_monitors")
 	if err != nil {
@@ -1933,8 +2123,9 @@ func (v Display) GetNMonitors() (result int32) {
 }
 
 // gdk_display_get_n_screens
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetNScreens() (result int32) {
 	iv, err := _I.Get(85, "Display", "get_n_screens")
 	if err != nil {
@@ -1950,8 +2141,9 @@ func (v Display) GetNScreens() (result int32) {
 }
 
 // gdk_display_get_name
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetName() (result string) {
 	iv, err := _I.Get(86, "Display", "get_name")
 	if err != nil {
@@ -1962,13 +2154,20 @@ func (v Display) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gdk_display_get_pointer
-// container is not nil, container is Display
-// is method
+//
+// [ screen ] trans: nothing, dir: out
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ mask ] trans: everything, dir: out
+//
 func (v Display) GetPointer() (screen Screen, x int32, y int32, mask ModifierTypeFlags) {
 	iv, err := _I.Get(87, "Display", "get_pointer")
 	if err != nil {
@@ -1991,8 +2190,9 @@ func (v Display) GetPointer() (screen Screen, x int32, y int32, mask ModifierTyp
 }
 
 // gdk_display_get_primary_monitor
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetPrimaryMonitor() (result Monitor) {
 	iv, err := _I.Get(88, "Display", "get_primary_monitor")
 	if err != nil {
@@ -2008,8 +2208,11 @@ func (v Display) GetPrimaryMonitor() (result Monitor) {
 }
 
 // gdk_display_get_screen
-// container is not nil, container is Display
-// is method
+//
+// [ screen_num ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetScreen(screen_num int32) (result Screen) {
 	iv, err := _I.Get(89, "Display", "get_screen")
 	if err != nil {
@@ -2026,8 +2229,13 @@ func (v Display) GetScreen(screen_num int32) (result Screen) {
 }
 
 // gdk_display_get_window_at_pointer
-// container is not nil, container is Display
-// is method
+//
+// [ win_x ] trans: everything, dir: out
+//
+// [ win_y ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Display) GetWindowAtPointer() (result Window, win_x int32, win_y int32) {
 	iv, err := _I.Get(90, "Display", "get_window_at_pointer")
 	if err != nil {
@@ -2048,8 +2256,9 @@ func (v Display) GetWindowAtPointer() (result Window, win_x int32, win_y int32) 
 }
 
 // gdk_display_has_pending
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) HasPending() (result bool) {
 	iv, err := _I.Get(91, "Display", "has_pending")
 	if err != nil {
@@ -2065,8 +2274,9 @@ func (v Display) HasPending() (result bool) {
 }
 
 // gdk_display_is_closed
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) IsClosed() (result bool) {
 	iv, err := _I.Get(92, "Display", "is_closed")
 	if err != nil {
@@ -2082,8 +2292,9 @@ func (v Display) IsClosed() (result bool) {
 }
 
 // gdk_display_keyboard_ungrab
-// container is not nil, container is Display
-// is method
+//
+// [ time_ ] trans: nothing
+//
 func (v Display) KeyboardUngrab(time_ uint32) {
 	iv, err := _I.Get(93, "Display", "keyboard_ungrab")
 	if err != nil {
@@ -2097,8 +2308,9 @@ func (v Display) KeyboardUngrab(time_ uint32) {
 }
 
 // gdk_display_list_devices
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) ListDevices() (result glib.List) {
 	iv, err := _I.Get(94, "Display", "list_devices")
 	if err != nil {
@@ -2114,8 +2326,9 @@ func (v Display) ListDevices() (result glib.List) {
 }
 
 // gdk_display_list_seats
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: container
+//
 func (v Display) ListSeats() (result glib.List) {
 	iv, err := _I.Get(95, "Display", "list_seats")
 	if err != nil {
@@ -2131,8 +2344,9 @@ func (v Display) ListSeats() (result glib.List) {
 }
 
 // gdk_display_notify_startup_complete
-// container is not nil, container is Display
-// is method
+//
+// [ startup_id ] trans: nothing
+//
 func (v Display) NotifyStartupComplete(startup_id string) {
 	iv, err := _I.Get(96, "Display", "notify_startup_complete")
 	if err != nil {
@@ -2148,8 +2362,9 @@ func (v Display) NotifyStartupComplete(startup_id string) {
 }
 
 // gdk_display_peek_event
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Display) PeekEvent() (result Event) {
 	iv, err := _I.Get(97, "Display", "peek_event")
 	if err != nil {
@@ -2165,8 +2380,9 @@ func (v Display) PeekEvent() (result Event) {
 }
 
 // gdk_display_pointer_is_grabbed
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) PointerIsGrabbed() (result bool) {
 	iv, err := _I.Get(98, "Display", "pointer_is_grabbed")
 	if err != nil {
@@ -2182,8 +2398,9 @@ func (v Display) PointerIsGrabbed() (result bool) {
 }
 
 // gdk_display_pointer_ungrab
-// container is not nil, container is Display
-// is method
+//
+// [ time_ ] trans: nothing
+//
 func (v Display) PointerUngrab(time_ uint32) {
 	iv, err := _I.Get(99, "Display", "pointer_ungrab")
 	if err != nil {
@@ -2197,8 +2414,9 @@ func (v Display) PointerUngrab(time_ uint32) {
 }
 
 // gdk_display_put_event
-// container is not nil, container is Display
-// is method
+//
+// [ event ] trans: nothing
+//
 func (v Display) PutEvent(event Event) {
 	iv, err := _I.Get(100, "Display", "put_event")
 	if err != nil {
@@ -2212,8 +2430,11 @@ func (v Display) PutEvent(event Event) {
 }
 
 // gdk_display_request_selection_notification
-// container is not nil, container is Display
-// is method
+//
+// [ selection ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Display) RequestSelectionNotification(selection Atom) (result bool) {
 	iv, err := _I.Get(101, "Display", "request_selection_notification")
 	if err != nil {
@@ -2230,8 +2451,9 @@ func (v Display) RequestSelectionNotification(selection Atom) (result bool) {
 }
 
 // gdk_display_set_double_click_distance
-// container is not nil, container is Display
-// is method
+//
+// [ distance ] trans: nothing
+//
 func (v Display) SetDoubleClickDistance(distance uint32) {
 	iv, err := _I.Get(102, "Display", "set_double_click_distance")
 	if err != nil {
@@ -2245,8 +2467,9 @@ func (v Display) SetDoubleClickDistance(distance uint32) {
 }
 
 // gdk_display_set_double_click_time
-// container is not nil, container is Display
-// is method
+//
+// [ msec ] trans: nothing
+//
 func (v Display) SetDoubleClickTime(msec uint32) {
 	iv, err := _I.Get(103, "Display", "set_double_click_time")
 	if err != nil {
@@ -2260,9 +2483,15 @@ func (v Display) SetDoubleClickTime(msec uint32) {
 }
 
 // gdk_display_store_clipboard
-// container is not nil, container is Display
-// is method
-// arg 2 targets lenArgIdx 3
+//
+// [ clipboard_window ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
+// [ targets ] trans: nothing
+//
+// [ n_targets ] trans: nothing
+//
 func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets gi.PointerArray, n_targets int32) {
 	iv, err := _I.Get(104, "Display", "store_clipboard")
 	if err != nil {
@@ -2283,8 +2512,9 @@ func (v Display) StoreClipboard(clipboard_window IWindow, time_ uint32, targets 
 }
 
 // gdk_display_supports_clipboard_persistence
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) SupportsClipboardPersistence() (result bool) {
 	iv, err := _I.Get(105, "Display", "supports_clipboard_persistence")
 	if err != nil {
@@ -2300,8 +2530,9 @@ func (v Display) SupportsClipboardPersistence() (result bool) {
 }
 
 // gdk_display_supports_composite
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) SupportsComposite() (result bool) {
 	iv, err := _I.Get(106, "Display", "supports_composite")
 	if err != nil {
@@ -2317,8 +2548,9 @@ func (v Display) SupportsComposite() (result bool) {
 }
 
 // gdk_display_supports_cursor_alpha
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) SupportsCursorAlpha() (result bool) {
 	iv, err := _I.Get(107, "Display", "supports_cursor_alpha")
 	if err != nil {
@@ -2334,8 +2566,9 @@ func (v Display) SupportsCursorAlpha() (result bool) {
 }
 
 // gdk_display_supports_cursor_color
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) SupportsCursorColor() (result bool) {
 	iv, err := _I.Get(108, "Display", "supports_cursor_color")
 	if err != nil {
@@ -2351,8 +2584,9 @@ func (v Display) SupportsCursorColor() (result bool) {
 }
 
 // gdk_display_supports_input_shapes
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) SupportsInputShapes() (result bool) {
 	iv, err := _I.Get(109, "Display", "supports_input_shapes")
 	if err != nil {
@@ -2368,8 +2602,9 @@ func (v Display) SupportsInputShapes() (result bool) {
 }
 
 // gdk_display_supports_selection_notification
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) SupportsSelectionNotification() (result bool) {
 	iv, err := _I.Get(110, "Display", "supports_selection_notification")
 	if err != nil {
@@ -2385,8 +2620,9 @@ func (v Display) SupportsSelectionNotification() (result bool) {
 }
 
 // gdk_display_supports_shapes
-// container is not nil, container is Display
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Display) SupportsShapes() (result bool) {
 	iv, err := _I.Get(111, "Display", "supports_shapes")
 	if err != nil {
@@ -2402,8 +2638,7 @@ func (v Display) SupportsShapes() (result bool) {
 }
 
 // gdk_display_sync
-// container is not nil, container is Display
-// is method
+//
 func (v Display) Sync() {
 	iv, err := _I.Get(112, "Display", "sync")
 	if err != nil {
@@ -2416,8 +2651,13 @@ func (v Display) Sync() {
 }
 
 // gdk_display_warp_pointer
-// container is not nil, container is Display
-// is method
+//
+// [ screen ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func (v Display) WarpPointer(screen IScreen, x int32, y int32) {
 	iv, err := _I.Get(113, "Display", "warp_pointer")
 	if err != nil {
@@ -2452,8 +2692,9 @@ func DisplayManagerGetType() gi.GType {
 }
 
 // gdk_display_manager_get_default_display
-// container is not nil, container is DisplayManager
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DisplayManager) GetDefaultDisplay() (result Display) {
 	iv, err := _I.Get(115, "DisplayManager", "get_default_display")
 	if err != nil {
@@ -2469,8 +2710,9 @@ func (v DisplayManager) GetDefaultDisplay() (result Display) {
 }
 
 // gdk_display_manager_list_displays
-// container is not nil, container is DisplayManager
-// is method
+//
+// [ result ] trans: container
+//
 func (v DisplayManager) ListDisplays() (result glib.SList) {
 	iv, err := _I.Get(116, "DisplayManager", "list_displays")
 	if err != nil {
@@ -2486,8 +2728,11 @@ func (v DisplayManager) ListDisplays() (result glib.SList) {
 }
 
 // gdk_display_manager_open_display
-// container is not nil, container is DisplayManager
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DisplayManager) OpenDisplay(name string) (result Display) {
 	iv, err := _I.Get(117, "DisplayManager", "open_display")
 	if err != nil {
@@ -2506,8 +2751,9 @@ func (v DisplayManager) OpenDisplay(name string) (result Display) {
 }
 
 // gdk_display_manager_set_default_display
-// container is not nil, container is DisplayManager
-// is method
+//
+// [ display ] trans: nothing
+//
 func (v DisplayManager) SetDefaultDisplay(display IDisplay) {
 	iv, err := _I.Get(118, "DisplayManager", "set_default_display")
 	if err != nil {
@@ -2571,8 +2817,9 @@ func DragContextGetType() gi.GType {
 }
 
 // gdk_drag_context_get_actions
-// container is not nil, container is DragContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DragContext) GetActions() (result DragActionFlags) {
 	iv, err := _I.Get(119, "DragContext", "get_actions")
 	if err != nil {
@@ -2588,8 +2835,9 @@ func (v DragContext) GetActions() (result DragActionFlags) {
 }
 
 // gdk_drag_context_get_dest_window
-// container is not nil, container is DragContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DragContext) GetDestWindow() (result Window) {
 	iv, err := _I.Get(120, "DragContext", "get_dest_window")
 	if err != nil {
@@ -2605,8 +2853,9 @@ func (v DragContext) GetDestWindow() (result Window) {
 }
 
 // gdk_drag_context_get_device
-// container is not nil, container is DragContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DragContext) GetDevice() (result Device) {
 	iv, err := _I.Get(121, "DragContext", "get_device")
 	if err != nil {
@@ -2622,8 +2871,9 @@ func (v DragContext) GetDevice() (result Device) {
 }
 
 // gdk_drag_context_get_drag_window
-// container is not nil, container is DragContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DragContext) GetDragWindow() (result Window) {
 	iv, err := _I.Get(122, "DragContext", "get_drag_window")
 	if err != nil {
@@ -2639,8 +2889,9 @@ func (v DragContext) GetDragWindow() (result Window) {
 }
 
 // gdk_drag_context_get_protocol
-// container is not nil, container is DragContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DragContext) GetProtocol() (result DragProtocolEnum) {
 	iv, err := _I.Get(123, "DragContext", "get_protocol")
 	if err != nil {
@@ -2656,8 +2907,9 @@ func (v DragContext) GetProtocol() (result DragProtocolEnum) {
 }
 
 // gdk_drag_context_get_selected_action
-// container is not nil, container is DragContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DragContext) GetSelectedAction() (result DragActionFlags) {
 	iv, err := _I.Get(124, "DragContext", "get_selected_action")
 	if err != nil {
@@ -2673,8 +2925,9 @@ func (v DragContext) GetSelectedAction() (result DragActionFlags) {
 }
 
 // gdk_drag_context_get_source_window
-// container is not nil, container is DragContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DragContext) GetSourceWindow() (result Window) {
 	iv, err := _I.Get(125, "DragContext", "get_source_window")
 	if err != nil {
@@ -2690,8 +2943,9 @@ func (v DragContext) GetSourceWindow() (result Window) {
 }
 
 // gdk_drag_context_get_suggested_action
-// container is not nil, container is DragContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DragContext) GetSuggestedAction() (result DragActionFlags) {
 	iv, err := _I.Get(126, "DragContext", "get_suggested_action")
 	if err != nil {
@@ -2707,8 +2961,9 @@ func (v DragContext) GetSuggestedAction() (result DragActionFlags) {
 }
 
 // gdk_drag_context_list_targets
-// container is not nil, container is DragContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DragContext) ListTargets() (result glib.List) {
 	iv, err := _I.Get(127, "DragContext", "list_targets")
 	if err != nil {
@@ -2724,8 +2979,13 @@ func (v DragContext) ListTargets() (result glib.List) {
 }
 
 // gdk_drag_context_manage_dnd
-// container is not nil, container is DragContext
-// is method
+//
+// [ ipc_window ] trans: nothing
+//
+// [ actions ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DragContext) ManageDnd(ipc_window IWindow, actions DragActionFlags) (result bool) {
 	iv, err := _I.Get(128, "DragContext", "manage_dnd")
 	if err != nil {
@@ -2747,8 +3007,9 @@ func (v DragContext) ManageDnd(ipc_window IWindow, actions DragActionFlags) (res
 }
 
 // gdk_drag_context_set_device
-// container is not nil, container is DragContext
-// is method
+//
+// [ device ] trans: nothing
+//
 func (v DragContext) SetDevice(device IDevice) {
 	iv, err := _I.Get(129, "DragContext", "set_device")
 	if err != nil {
@@ -2766,8 +3027,11 @@ func (v DragContext) SetDevice(device IDevice) {
 }
 
 // gdk_drag_context_set_hotspot
-// container is not nil, container is DragContext
-// is method
+//
+// [ hot_x ] trans: nothing
+//
+// [ hot_y ] trans: nothing
+//
 func (v DragContext) SetHotspot(hot_x int32, hot_y int32) {
 	iv, err := _I.Get(130, "DragContext", "set_hotspot")
 	if err != nil {
@@ -2816,8 +3080,9 @@ func DrawingContextGetType() gi.GType {
 }
 
 // gdk_drawing_context_get_cairo_context
-// container is not nil, container is DrawingContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DrawingContext) GetCairoContext() (result cairo.Context) {
 	iv, err := _I.Get(131, "DrawingContext", "get_cairo_context")
 	if err != nil {
@@ -2833,8 +3098,9 @@ func (v DrawingContext) GetCairoContext() (result cairo.Context) {
 }
 
 // gdk_drawing_context_get_clip
-// container is not nil, container is DrawingContext
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DrawingContext) GetClip() (result cairo.Region) {
 	iv, err := _I.Get(132, "DrawingContext", "get_clip")
 	if err != nil {
@@ -2850,8 +3116,9 @@ func (v DrawingContext) GetClip() (result cairo.Region) {
 }
 
 // gdk_drawing_context_get_window
-// container is not nil, container is DrawingContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DrawingContext) GetWindow() (result Window) {
 	iv, err := _I.Get(133, "DrawingContext", "get_window")
 	if err != nil {
@@ -2867,8 +3134,9 @@ func (v DrawingContext) GetWindow() (result Window) {
 }
 
 // gdk_drawing_context_is_valid
-// container is not nil, container is DrawingContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DrawingContext) IsValid() (result bool) {
 	iv, err := _I.Get(134, "DrawingContext", "is_valid")
 	if err != nil {
@@ -2897,8 +3165,11 @@ func EventGetType() gi.GType {
 }
 
 // gdk_event_new
-// container is not nil, container is Event
-// is constructor
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewEvent(type1 EventTypeEnum) (result Event) {
 	iv, err := _I.Get(135, "Event", "new")
 	if err != nil {
@@ -2914,8 +3185,13 @@ func NewEvent(type1 EventTypeEnum) (result Event) {
 }
 
 // gdk_events_get_angle
-// container is not nil, container is Event
-// is method
+//
+// [ event2 ] trans: nothing
+//
+// [ angle ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) _GetAngle(event2 Event) (result bool, angle float64) {
 	iv, err := _I.Get(136, "Event", "_get_angle")
 	if err != nil {
@@ -2935,8 +3211,15 @@ func (v Event) _GetAngle(event2 Event) (result bool, angle float64) {
 }
 
 // gdk_events_get_center
-// container is not nil, container is Event
-// is method
+//
+// [ event2 ] trans: nothing
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) _GetCenter(event2 Event) (result bool, x float64, y float64) {
 	iv, err := _I.Get(137, "Event", "_get_center")
 	if err != nil {
@@ -2958,8 +3241,13 @@ func (v Event) _GetCenter(event2 Event) (result bool, x float64, y float64) {
 }
 
 // gdk_events_get_distance
-// container is not nil, container is Event
-// is method
+//
+// [ event2 ] trans: nothing
+//
+// [ distance ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) _GetDistance(event2 Event) (result bool, distance float64) {
 	iv, err := _I.Get(138, "Event", "_get_distance")
 	if err != nil {
@@ -2979,8 +3267,9 @@ func (v Event) _GetDistance(event2 Event) (result bool, distance float64) {
 }
 
 // gdk_event_copy
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Event) Copy() (result Event) {
 	iv, err := _I.Get(139, "Event", "copy")
 	if err != nil {
@@ -2996,8 +3285,7 @@ func (v Event) Copy() (result Event) {
 }
 
 // gdk_event_free
-// container is not nil, container is Event
-// is method
+//
 func (v Event) Free() {
 	iv, err := _I.Get(140, "Event", "free")
 	if err != nil {
@@ -3010,8 +3298,13 @@ func (v Event) Free() {
 }
 
 // gdk_event_get_axis
-// container is not nil, container is Event
-// is method
+//
+// [ axis_use ] trans: nothing
+//
+// [ value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetAxis(axis_use AxisUseEnum) (result bool, value float64) {
 	iv, err := _I.Get(141, "Event", "get_axis")
 	if err != nil {
@@ -3031,8 +3324,11 @@ func (v Event) GetAxis(axis_use AxisUseEnum) (result bool, value float64) {
 }
 
 // gdk_event_get_button
-// container is not nil, container is Event
-// is method
+//
+// [ button ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetButton() (result bool, button uint32) {
 	iv, err := _I.Get(142, "Event", "get_button")
 	if err != nil {
@@ -3051,8 +3347,11 @@ func (v Event) GetButton() (result bool, button uint32) {
 }
 
 // gdk_event_get_click_count
-// container is not nil, container is Event
-// is method
+//
+// [ click_count ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetClickCount() (result bool, click_count uint32) {
 	iv, err := _I.Get(143, "Event", "get_click_count")
 	if err != nil {
@@ -3071,8 +3370,13 @@ func (v Event) GetClickCount() (result bool, click_count uint32) {
 }
 
 // gdk_event_get_coords
-// container is not nil, container is Event
-// is method
+//
+// [ x_win ] trans: everything, dir: out
+//
+// [ y_win ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetCoords() (result bool, x_win float64, y_win float64) {
 	iv, err := _I.Get(144, "Event", "get_coords")
 	if err != nil {
@@ -3093,8 +3397,9 @@ func (v Event) GetCoords() (result bool, x_win float64, y_win float64) {
 }
 
 // gdk_event_get_device
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetDevice() (result Device) {
 	iv, err := _I.Get(145, "Event", "get_device")
 	if err != nil {
@@ -3110,8 +3415,9 @@ func (v Event) GetDevice() (result Device) {
 }
 
 // gdk_event_get_device_tool
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetDeviceTool() (result DeviceTool) {
 	iv, err := _I.Get(146, "Event", "get_device_tool")
 	if err != nil {
@@ -3127,8 +3433,9 @@ func (v Event) GetDeviceTool() (result DeviceTool) {
 }
 
 // gdk_event_get_event_sequence
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetEventSequence() (result EventSequence) {
 	iv, err := _I.Get(147, "Event", "get_event_sequence")
 	if err != nil {
@@ -3144,8 +3451,9 @@ func (v Event) GetEventSequence() (result EventSequence) {
 }
 
 // gdk_event_get_event_type
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetEventType() (result EventTypeEnum) {
 	iv, err := _I.Get(148, "Event", "get_event_type")
 	if err != nil {
@@ -3161,8 +3469,11 @@ func (v Event) GetEventType() (result EventTypeEnum) {
 }
 
 // gdk_event_get_keycode
-// container is not nil, container is Event
-// is method
+//
+// [ keycode ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetKeycode() (result bool, keycode uint16) {
 	iv, err := _I.Get(149, "Event", "get_keycode")
 	if err != nil {
@@ -3181,8 +3492,11 @@ func (v Event) GetKeycode() (result bool, keycode uint16) {
 }
 
 // gdk_event_get_keyval
-// container is not nil, container is Event
-// is method
+//
+// [ keyval ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetKeyval() (result bool, keyval uint32) {
 	iv, err := _I.Get(150, "Event", "get_keyval")
 	if err != nil {
@@ -3201,8 +3515,9 @@ func (v Event) GetKeyval() (result bool, keyval uint32) {
 }
 
 // gdk_event_get_pointer_emulated
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetPointerEmulated() (result bool) {
 	iv, err := _I.Get(151, "Event", "get_pointer_emulated")
 	if err != nil {
@@ -3218,8 +3533,13 @@ func (v Event) GetPointerEmulated() (result bool) {
 }
 
 // gdk_event_get_root_coords
-// container is not nil, container is Event
-// is method
+//
+// [ x_root ] trans: everything, dir: out
+//
+// [ y_root ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetRootCoords() (result bool, x_root float64, y_root float64) {
 	iv, err := _I.Get(152, "Event", "get_root_coords")
 	if err != nil {
@@ -3240,8 +3560,9 @@ func (v Event) GetRootCoords() (result bool, x_root float64, y_root float64) {
 }
 
 // gdk_event_get_scancode
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetScancode() (result int32) {
 	iv, err := _I.Get(153, "Event", "get_scancode")
 	if err != nil {
@@ -3257,8 +3578,9 @@ func (v Event) GetScancode() (result int32) {
 }
 
 // gdk_event_get_screen
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetScreen() (result Screen) {
 	iv, err := _I.Get(154, "Event", "get_screen")
 	if err != nil {
@@ -3274,8 +3596,13 @@ func (v Event) GetScreen() (result Screen) {
 }
 
 // gdk_event_get_scroll_deltas
-// container is not nil, container is Event
-// is method
+//
+// [ delta_x ] trans: everything, dir: out
+//
+// [ delta_y ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetScrollDeltas() (result bool, delta_x float64, delta_y float64) {
 	iv, err := _I.Get(155, "Event", "get_scroll_deltas")
 	if err != nil {
@@ -3296,8 +3623,11 @@ func (v Event) GetScrollDeltas() (result bool, delta_x float64, delta_y float64)
 }
 
 // gdk_event_get_scroll_direction
-// container is not nil, container is Event
-// is method
+//
+// [ direction ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetScrollDirection() (result bool, direction ScrollDirectionEnum) {
 	iv, err := _I.Get(156, "Event", "get_scroll_direction")
 	if err != nil {
@@ -3316,8 +3646,9 @@ func (v Event) GetScrollDirection() (result bool, direction ScrollDirectionEnum)
 }
 
 // gdk_event_get_seat
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetSeat() (result Seat) {
 	iv, err := _I.Get(157, "Event", "get_seat")
 	if err != nil {
@@ -3333,8 +3664,9 @@ func (v Event) GetSeat() (result Seat) {
 }
 
 // gdk_event_get_source_device
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetSourceDevice() (result Device) {
 	iv, err := _I.Get(158, "Event", "get_source_device")
 	if err != nil {
@@ -3350,8 +3682,11 @@ func (v Event) GetSourceDevice() (result Device) {
 }
 
 // gdk_event_get_state
-// container is not nil, container is Event
-// is method
+//
+// [ state ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetState() (result bool, state ModifierTypeFlags) {
 	iv, err := _I.Get(159, "Event", "get_state")
 	if err != nil {
@@ -3370,8 +3705,9 @@ func (v Event) GetState() (result bool, state ModifierTypeFlags) {
 }
 
 // gdk_event_get_time
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetTime() (result uint32) {
 	iv, err := _I.Get(160, "Event", "get_time")
 	if err != nil {
@@ -3387,8 +3723,9 @@ func (v Event) GetTime() (result uint32) {
 }
 
 // gdk_event_get_window
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) GetWindow() (result Window) {
 	iv, err := _I.Get(161, "Event", "get_window")
 	if err != nil {
@@ -3404,8 +3741,9 @@ func (v Event) GetWindow() (result Window) {
 }
 
 // gdk_event_is_scroll_stop_event
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) IsScrollStopEvent() (result bool) {
 	iv, err := _I.Get(162, "Event", "is_scroll_stop_event")
 	if err != nil {
@@ -3421,8 +3759,7 @@ func (v Event) IsScrollStopEvent() (result bool) {
 }
 
 // gdk_event_put
-// container is not nil, container is Event
-// is method
+//
 func (v Event) Put() {
 	iv, err := _I.Get(163, "Event", "put")
 	if err != nil {
@@ -3435,8 +3772,9 @@ func (v Event) Put() {
 }
 
 // gdk_event_set_device
-// container is not nil, container is Event
-// is method
+//
+// [ device ] trans: nothing
+//
 func (v Event) SetDevice(device IDevice) {
 	iv, err := _I.Get(164, "Event", "set_device")
 	if err != nil {
@@ -3454,8 +3792,9 @@ func (v Event) SetDevice(device IDevice) {
 }
 
 // gdk_event_set_device_tool
-// container is not nil, container is Event
-// is method
+//
+// [ tool ] trans: nothing
+//
 func (v Event) SetDeviceTool(tool IDeviceTool) {
 	iv, err := _I.Get(165, "Event", "set_device_tool")
 	if err != nil {
@@ -3473,8 +3812,9 @@ func (v Event) SetDeviceTool(tool IDeviceTool) {
 }
 
 // gdk_event_set_screen
-// container is not nil, container is Event
-// is method
+//
+// [ screen ] trans: nothing
+//
 func (v Event) SetScreen(screen IScreen) {
 	iv, err := _I.Get(166, "Event", "set_screen")
 	if err != nil {
@@ -3492,8 +3832,9 @@ func (v Event) SetScreen(screen IScreen) {
 }
 
 // gdk_event_set_source_device
-// container is not nil, container is Event
-// is method
+//
+// [ device ] trans: nothing
+//
 func (v Event) SetSourceDevice(device IDevice) {
 	iv, err := _I.Get(167, "Event", "set_source_device")
 	if err != nil {
@@ -3511,8 +3852,9 @@ func (v Event) SetSourceDevice(device IDevice) {
 }
 
 // gdk_event_triggers_context_menu
-// container is not nil, container is Event
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Event) TriggersContextMenu() (result bool) {
 	iv, err := _I.Get(168, "Event", "triggers_context_menu")
 	if err != nil {
@@ -3528,9 +3870,13 @@ func (v Event) TriggersContextMenu() (result bool) {
 }
 
 // gdk_event_handler_set
-// container is not nil, container is Event
-// is method
-// arg0Type tag: interface, isPtr: false
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
 func EventHandlerSet1(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(170, "Event", "handler_set")
 	if err != nil {
@@ -3545,9 +3891,9 @@ func EventHandlerSet1(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, not
 }
 
 // gdk_event_request_motions
-// container is not nil, container is Event
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ event ] trans: nothing
+//
 func EventRequestMotions1(event EventMotion) {
 	iv, err := _I.Get(172, "Event", "request_motions")
 	if err != nil {
@@ -4015,8 +4361,7 @@ func FrameClockGetType() gi.GType {
 }
 
 // gdk_frame_clock_begin_updating
-// container is not nil, container is FrameClock
-// is method
+//
 func (v FrameClock) BeginUpdating() {
 	iv, err := _I.Get(173, "FrameClock", "begin_updating")
 	if err != nil {
@@ -4029,8 +4374,7 @@ func (v FrameClock) BeginUpdating() {
 }
 
 // gdk_frame_clock_end_updating
-// container is not nil, container is FrameClock
-// is method
+//
 func (v FrameClock) EndUpdating() {
 	iv, err := _I.Get(174, "FrameClock", "end_updating")
 	if err != nil {
@@ -4043,8 +4387,9 @@ func (v FrameClock) EndUpdating() {
 }
 
 // gdk_frame_clock_get_current_timings
-// container is not nil, container is FrameClock
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FrameClock) GetCurrentTimings() (result FrameTimings) {
 	iv, err := _I.Get(175, "FrameClock", "get_current_timings")
 	if err != nil {
@@ -4060,8 +4405,9 @@ func (v FrameClock) GetCurrentTimings() (result FrameTimings) {
 }
 
 // gdk_frame_clock_get_frame_counter
-// container is not nil, container is FrameClock
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FrameClock) GetFrameCounter() (result int64) {
 	iv, err := _I.Get(176, "FrameClock", "get_frame_counter")
 	if err != nil {
@@ -4077,8 +4423,9 @@ func (v FrameClock) GetFrameCounter() (result int64) {
 }
 
 // gdk_frame_clock_get_frame_time
-// container is not nil, container is FrameClock
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FrameClock) GetFrameTime() (result int64) {
 	iv, err := _I.Get(177, "FrameClock", "get_frame_time")
 	if err != nil {
@@ -4094,8 +4441,9 @@ func (v FrameClock) GetFrameTime() (result int64) {
 }
 
 // gdk_frame_clock_get_history_start
-// container is not nil, container is FrameClock
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FrameClock) GetHistoryStart() (result int64) {
 	iv, err := _I.Get(178, "FrameClock", "get_history_start")
 	if err != nil {
@@ -4111,8 +4459,13 @@ func (v FrameClock) GetHistoryStart() (result int64) {
 }
 
 // gdk_frame_clock_get_refresh_info
-// container is not nil, container is FrameClock
-// is method
+//
+// [ base_time ] trans: nothing
+//
+// [ refresh_interval_return ] trans: everything, dir: out
+//
+// [ presentation_time_return ] trans: everything, dir: out
+//
 func (v FrameClock) GetRefreshInfo(base_time int64) (refresh_interval_return int64, presentation_time_return int64) {
 	iv, err := _I.Get(179, "FrameClock", "get_refresh_info")
 	if err != nil {
@@ -4132,8 +4485,11 @@ func (v FrameClock) GetRefreshInfo(base_time int64) (refresh_interval_return int
 }
 
 // gdk_frame_clock_get_timings
-// container is not nil, container is FrameClock
-// is method
+//
+// [ frame_counter ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FrameClock) GetTimings(frame_counter int64) (result FrameTimings) {
 	iv, err := _I.Get(180, "FrameClock", "get_timings")
 	if err != nil {
@@ -4150,8 +4506,9 @@ func (v FrameClock) GetTimings(frame_counter int64) (result FrameTimings) {
 }
 
 // gdk_frame_clock_request_phase
-// container is not nil, container is FrameClock
-// is method
+//
+// [ phase ] trans: nothing
+//
 func (v FrameClock) RequestPhase(phase FrameClockPhaseFlags) {
 	iv, err := _I.Get(181, "FrameClock", "request_phase")
 	if err != nil {
@@ -4205,8 +4562,9 @@ func FrameTimingsGetType() gi.GType {
 }
 
 // gdk_frame_timings_get_complete
-// container is not nil, container is FrameTimings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FrameTimings) GetComplete() (result bool) {
 	iv, err := _I.Get(182, "FrameTimings", "get_complete")
 	if err != nil {
@@ -4222,8 +4580,9 @@ func (v FrameTimings) GetComplete() (result bool) {
 }
 
 // gdk_frame_timings_get_frame_counter
-// container is not nil, container is FrameTimings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FrameTimings) GetFrameCounter() (result int64) {
 	iv, err := _I.Get(183, "FrameTimings", "get_frame_counter")
 	if err != nil {
@@ -4239,8 +4598,9 @@ func (v FrameTimings) GetFrameCounter() (result int64) {
 }
 
 // gdk_frame_timings_get_frame_time
-// container is not nil, container is FrameTimings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FrameTimings) GetFrameTime() (result int64) {
 	iv, err := _I.Get(184, "FrameTimings", "get_frame_time")
 	if err != nil {
@@ -4256,8 +4616,9 @@ func (v FrameTimings) GetFrameTime() (result int64) {
 }
 
 // gdk_frame_timings_get_predicted_presentation_time
-// container is not nil, container is FrameTimings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FrameTimings) GetPredictedPresentationTime() (result int64) {
 	iv, err := _I.Get(185, "FrameTimings", "get_predicted_presentation_time")
 	if err != nil {
@@ -4273,8 +4634,9 @@ func (v FrameTimings) GetPredictedPresentationTime() (result int64) {
 }
 
 // gdk_frame_timings_get_presentation_time
-// container is not nil, container is FrameTimings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FrameTimings) GetPresentationTime() (result int64) {
 	iv, err := _I.Get(186, "FrameTimings", "get_presentation_time")
 	if err != nil {
@@ -4290,8 +4652,9 @@ func (v FrameTimings) GetPresentationTime() (result int64) {
 }
 
 // gdk_frame_timings_get_refresh_interval
-// container is not nil, container is FrameTimings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FrameTimings) GetRefreshInterval() (result int64) {
 	iv, err := _I.Get(187, "FrameTimings", "get_refresh_interval")
 	if err != nil {
@@ -4307,8 +4670,9 @@ func (v FrameTimings) GetRefreshInterval() (result int64) {
 }
 
 // gdk_frame_timings_ref
-// container is not nil, container is FrameTimings
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FrameTimings) Ref() (result FrameTimings) {
 	iv, err := _I.Get(188, "FrameTimings", "ref")
 	if err != nil {
@@ -4324,8 +4688,7 @@ func (v FrameTimings) Ref() (result FrameTimings) {
 }
 
 // gdk_frame_timings_unref
-// container is not nil, container is FrameTimings
-// is method
+//
 func (v FrameTimings) Unref() {
 	iv, err := _I.Get(189, "FrameTimings", "unref")
 	if err != nil {
@@ -4366,8 +4729,9 @@ func GLContextGetType() gi.GType {
 }
 
 // gdk_gl_context_get_debug_enabled
-// container is not nil, container is GLContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GLContext) GetDebugEnabled() (result bool) {
 	iv, err := _I.Get(192, "GLContext", "get_debug_enabled")
 	if err != nil {
@@ -4383,8 +4747,9 @@ func (v GLContext) GetDebugEnabled() (result bool) {
 }
 
 // gdk_gl_context_get_display
-// container is not nil, container is GLContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GLContext) GetDisplay() (result Display) {
 	iv, err := _I.Get(193, "GLContext", "get_display")
 	if err != nil {
@@ -4400,8 +4765,9 @@ func (v GLContext) GetDisplay() (result Display) {
 }
 
 // gdk_gl_context_get_forward_compatible
-// container is not nil, container is GLContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GLContext) GetForwardCompatible() (result bool) {
 	iv, err := _I.Get(194, "GLContext", "get_forward_compatible")
 	if err != nil {
@@ -4417,8 +4783,11 @@ func (v GLContext) GetForwardCompatible() (result bool) {
 }
 
 // gdk_gl_context_get_required_version
-// container is not nil, container is GLContext
-// is method
+//
+// [ major ] trans: everything, dir: out
+//
+// [ minor ] trans: everything, dir: out
+//
 func (v GLContext) GetRequiredVersion() (major int32, minor int32) {
 	iv, err := _I.Get(195, "GLContext", "get_required_version")
 	if err != nil {
@@ -4437,8 +4806,9 @@ func (v GLContext) GetRequiredVersion() (major int32, minor int32) {
 }
 
 // gdk_gl_context_get_shared_context
-// container is not nil, container is GLContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GLContext) GetSharedContext() (result GLContext) {
 	iv, err := _I.Get(196, "GLContext", "get_shared_context")
 	if err != nil {
@@ -4454,8 +4824,9 @@ func (v GLContext) GetSharedContext() (result GLContext) {
 }
 
 // gdk_gl_context_get_use_es
-// container is not nil, container is GLContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GLContext) GetUseEs() (result bool) {
 	iv, err := _I.Get(197, "GLContext", "get_use_es")
 	if err != nil {
@@ -4471,8 +4842,11 @@ func (v GLContext) GetUseEs() (result bool) {
 }
 
 // gdk_gl_context_get_version
-// container is not nil, container is GLContext
-// is method
+//
+// [ major ] trans: everything, dir: out
+//
+// [ minor ] trans: everything, dir: out
+//
 func (v GLContext) GetVersion() (major int32, minor int32) {
 	iv, err := _I.Get(198, "GLContext", "get_version")
 	if err != nil {
@@ -4491,8 +4865,9 @@ func (v GLContext) GetVersion() (major int32, minor int32) {
 }
 
 // gdk_gl_context_get_window
-// container is not nil, container is GLContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GLContext) GetWindow() (result Window) {
 	iv, err := _I.Get(199, "GLContext", "get_window")
 	if err != nil {
@@ -4508,8 +4883,9 @@ func (v GLContext) GetWindow() (result Window) {
 }
 
 // gdk_gl_context_is_legacy
-// container is not nil, container is GLContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GLContext) IsLegacy() (result bool) {
 	iv, err := _I.Get(200, "GLContext", "is_legacy")
 	if err != nil {
@@ -4525,8 +4901,7 @@ func (v GLContext) IsLegacy() (result bool) {
 }
 
 // gdk_gl_context_make_current
-// container is not nil, container is GLContext
-// is method
+//
 func (v GLContext) MakeCurrent() {
 	iv, err := _I.Get(201, "GLContext", "make_current")
 	if err != nil {
@@ -4539,8 +4914,9 @@ func (v GLContext) MakeCurrent() {
 }
 
 // gdk_gl_context_realize
-// container is not nil, container is GLContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GLContext) Realize() (result bool, err error) {
 	iv, err := _I.Get(202, "GLContext", "realize")
 	if err != nil {
@@ -4558,8 +4934,9 @@ func (v GLContext) Realize() (result bool, err error) {
 }
 
 // gdk_gl_context_set_debug_enabled
-// container is not nil, container is GLContext
-// is method
+//
+// [ enabled ] trans: nothing
+//
 func (v GLContext) SetDebugEnabled(enabled bool) {
 	iv, err := _I.Get(203, "GLContext", "set_debug_enabled")
 	if err != nil {
@@ -4573,8 +4950,9 @@ func (v GLContext) SetDebugEnabled(enabled bool) {
 }
 
 // gdk_gl_context_set_forward_compatible
-// container is not nil, container is GLContext
-// is method
+//
+// [ compatible ] trans: nothing
+//
 func (v GLContext) SetForwardCompatible(compatible bool) {
 	iv, err := _I.Get(204, "GLContext", "set_forward_compatible")
 	if err != nil {
@@ -4588,8 +4966,11 @@ func (v GLContext) SetForwardCompatible(compatible bool) {
 }
 
 // gdk_gl_context_set_required_version
-// container is not nil, container is GLContext
-// is method
+//
+// [ major ] trans: nothing
+//
+// [ minor ] trans: nothing
+//
 func (v GLContext) SetRequiredVersion(major int32, minor int32) {
 	iv, err := _I.Get(205, "GLContext", "set_required_version")
 	if err != nil {
@@ -4604,8 +4985,9 @@ func (v GLContext) SetRequiredVersion(major int32, minor int32) {
 }
 
 // gdk_gl_context_set_use_es
-// container is not nil, container is GLContext
-// is method
+//
+// [ use_es ] trans: nothing
+//
 func (v GLContext) SetUseEs(use_es int32) {
 	iv, err := _I.Get(206, "GLContext", "set_use_es")
 	if err != nil {
@@ -4746,9 +5128,11 @@ func KeymapGetType() gi.GType {
 }
 
 // gdk_keymap_get_for_display
-// container is not nil, container is Keymap
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ display ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func KeymapGetForDisplay1(display IDisplay) (result Keymap) {
 	iv, err := _I.Get(208, "Keymap", "get_for_display")
 	if err != nil {
@@ -4768,8 +5152,9 @@ func KeymapGetForDisplay1(display IDisplay) (result Keymap) {
 }
 
 // gdk_keymap_add_virtual_modifiers
-// container is not nil, container is Keymap
-// is method
+//
+// [ state ] trans: everything, dir: inout
+//
 func (v Keymap) AddVirtualModifiers(state int /*TODO:TYPE*/) {
 	iv, err := _I.Get(209, "Keymap", "add_virtual_modifiers")
 	if err != nil {
@@ -4783,8 +5168,9 @@ func (v Keymap) AddVirtualModifiers(state int /*TODO:TYPE*/) {
 }
 
 // gdk_keymap_get_caps_lock_state
-// container is not nil, container is Keymap
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) GetCapsLockState() (result bool) {
 	iv, err := _I.Get(210, "Keymap", "get_caps_lock_state")
 	if err != nil {
@@ -4800,8 +5186,9 @@ func (v Keymap) GetCapsLockState() (result bool) {
 }
 
 // gdk_keymap_get_direction
-// container is not nil, container is Keymap
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) GetDirection() (result pango.DirectionEnum) {
 	iv, err := _I.Get(211, "Keymap", "get_direction")
 	if err != nil {
@@ -4817,10 +5204,17 @@ func (v Keymap) GetDirection() (result pango.DirectionEnum) {
 }
 
 // gdk_keymap_get_entries_for_keycode
-// container is not nil, container is Keymap
-// is method
-// arg 1 keys lenArgIdx 3
-// arg 2 keyvals lenArgIdx 3
+//
+// [ hardware_keycode ] trans: nothing
+//
+// [ keys ] trans: everything, dir: out
+//
+// [ keyvals ] trans: everything, dir: out
+//
+// [ n_entries ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys unsafe.Pointer, keyvals gi.Uint32Array) {
 	iv, err := _I.Get(212, "Keymap", "get_entries_for_keycode")
 	if err != nil {
@@ -4847,9 +5241,15 @@ func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys
 }
 
 // gdk_keymap_get_entries_for_keyval
-// container is not nil, container is Keymap
-// is method
-// arg 1 keys lenArgIdx 2
+//
+// [ keyval ] trans: nothing
+//
+// [ keys ] trans: everything, dir: out
+//
+// [ n_keys ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) GetEntriesForKeyval(keyval uint32) (result bool, keys unsafe.Pointer) {
 	iv, err := _I.Get(213, "Keymap", "get_entries_for_keyval")
 	if err != nil {
@@ -4873,8 +5273,11 @@ func (v Keymap) GetEntriesForKeyval(keyval uint32) (result bool, keys unsafe.Poi
 }
 
 // gdk_keymap_get_modifier_mask
-// container is not nil, container is Keymap
-// is method
+//
+// [ intent ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) GetModifierMask(intent ModifierIntentEnum) (result ModifierTypeFlags) {
 	iv, err := _I.Get(214, "Keymap", "get_modifier_mask")
 	if err != nil {
@@ -4891,8 +5294,9 @@ func (v Keymap) GetModifierMask(intent ModifierIntentEnum) (result ModifierTypeF
 }
 
 // gdk_keymap_get_modifier_state
-// container is not nil, container is Keymap
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) GetModifierState() (result uint32) {
 	iv, err := _I.Get(215, "Keymap", "get_modifier_state")
 	if err != nil {
@@ -4908,8 +5312,9 @@ func (v Keymap) GetModifierState() (result uint32) {
 }
 
 // gdk_keymap_get_num_lock_state
-// container is not nil, container is Keymap
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) GetNumLockState() (result bool) {
 	iv, err := _I.Get(216, "Keymap", "get_num_lock_state")
 	if err != nil {
@@ -4925,8 +5330,9 @@ func (v Keymap) GetNumLockState() (result bool) {
 }
 
 // gdk_keymap_get_scroll_lock_state
-// container is not nil, container is Keymap
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) GetScrollLockState() (result bool) {
 	iv, err := _I.Get(217, "Keymap", "get_scroll_lock_state")
 	if err != nil {
@@ -4942,8 +5348,9 @@ func (v Keymap) GetScrollLockState() (result bool) {
 }
 
 // gdk_keymap_have_bidi_layouts
-// container is not nil, container is Keymap
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) HaveBidiLayouts() (result bool) {
 	iv, err := _I.Get(218, "Keymap", "have_bidi_layouts")
 	if err != nil {
@@ -4959,8 +5366,11 @@ func (v Keymap) HaveBidiLayouts() (result bool) {
 }
 
 // gdk_keymap_lookup_key
-// container is not nil, container is Keymap
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) LookupKey(key KeymapKey) (result uint32) {
 	iv, err := _I.Get(219, "Keymap", "lookup_key")
 	if err != nil {
@@ -4977,8 +5387,11 @@ func (v Keymap) LookupKey(key KeymapKey) (result uint32) {
 }
 
 // gdk_keymap_map_virtual_modifiers
-// container is not nil, container is Keymap
-// is method
+//
+// [ state ] trans: everything, dir: inout
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) MapVirtualModifiers(state int /*TODO:TYPE*/) (result bool) {
 	iv, err := _I.Get(220, "Keymap", "map_virtual_modifiers")
 	if err != nil {
@@ -4995,8 +5408,23 @@ func (v Keymap) MapVirtualModifiers(state int /*TODO:TYPE*/) (result bool) {
 }
 
 // gdk_keymap_translate_keyboard_state
-// container is not nil, container is Keymap
-// is method
+//
+// [ hardware_keycode ] trans: nothing
+//
+// [ state ] trans: nothing
+//
+// [ group ] trans: nothing
+//
+// [ keyval ] trans: everything, dir: out
+//
+// [ effective_group ] trans: everything, dir: out
+//
+// [ level ] trans: everything, dir: out
+//
+// [ consumed_modifiers ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Keymap) TranslateKeyboardState(hardware_keycode uint32, state ModifierTypeFlags, group int32) (result bool, keyval uint32, effective_group int32, level int32, consumed_modifiers ModifierTypeFlags) {
 	iv, err := _I.Get(221, "Keymap", "translate_keyboard_state")
 	if err != nil {
@@ -5112,8 +5540,9 @@ func MonitorGetType() gi.GType {
 }
 
 // gdk_monitor_get_display
-// container is not nil, container is Monitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Monitor) GetDisplay() (result Display) {
 	iv, err := _I.Get(222, "Monitor", "get_display")
 	if err != nil {
@@ -5129,8 +5558,9 @@ func (v Monitor) GetDisplay() (result Display) {
 }
 
 // gdk_monitor_get_geometry
-// container is not nil, container is Monitor
-// is method
+//
+// [ geometry ] trans: nothing, dir: out
+//
 func (v Monitor) GetGeometry(geometry Rectangle) {
 	iv, err := _I.Get(223, "Monitor", "get_geometry")
 	if err != nil {
@@ -5144,8 +5574,9 @@ func (v Monitor) GetGeometry(geometry Rectangle) {
 }
 
 // gdk_monitor_get_height_mm
-// container is not nil, container is Monitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Monitor) GetHeightMm() (result int32) {
 	iv, err := _I.Get(224, "Monitor", "get_height_mm")
 	if err != nil {
@@ -5161,8 +5592,9 @@ func (v Monitor) GetHeightMm() (result int32) {
 }
 
 // gdk_monitor_get_manufacturer
-// container is not nil, container is Monitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Monitor) GetManufacturer() (result string) {
 	iv, err := _I.Get(225, "Monitor", "get_manufacturer")
 	if err != nil {
@@ -5173,13 +5605,14 @@ func (v Monitor) GetManufacturer() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gdk_monitor_get_model
-// container is not nil, container is Monitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Monitor) GetModel() (result string) {
 	iv, err := _I.Get(226, "Monitor", "get_model")
 	if err != nil {
@@ -5190,13 +5623,14 @@ func (v Monitor) GetModel() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gdk_monitor_get_refresh_rate
-// container is not nil, container is Monitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Monitor) GetRefreshRate() (result int32) {
 	iv, err := _I.Get(227, "Monitor", "get_refresh_rate")
 	if err != nil {
@@ -5212,8 +5646,9 @@ func (v Monitor) GetRefreshRate() (result int32) {
 }
 
 // gdk_monitor_get_scale_factor
-// container is not nil, container is Monitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Monitor) GetScaleFactor() (result int32) {
 	iv, err := _I.Get(228, "Monitor", "get_scale_factor")
 	if err != nil {
@@ -5229,8 +5664,9 @@ func (v Monitor) GetScaleFactor() (result int32) {
 }
 
 // gdk_monitor_get_subpixel_layout
-// container is not nil, container is Monitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Monitor) GetSubpixelLayout() (result SubpixelLayoutEnum) {
 	iv, err := _I.Get(229, "Monitor", "get_subpixel_layout")
 	if err != nil {
@@ -5246,8 +5682,9 @@ func (v Monitor) GetSubpixelLayout() (result SubpixelLayoutEnum) {
 }
 
 // gdk_monitor_get_width_mm
-// container is not nil, container is Monitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Monitor) GetWidthMm() (result int32) {
 	iv, err := _I.Get(230, "Monitor", "get_width_mm")
 	if err != nil {
@@ -5263,8 +5700,9 @@ func (v Monitor) GetWidthMm() (result int32) {
 }
 
 // gdk_monitor_get_workarea
-// container is not nil, container is Monitor
-// is method
+//
+// [ workarea ] trans: nothing, dir: out
+//
 func (v Monitor) GetWorkarea(workarea Rectangle) {
 	iv, err := _I.Get(231, "Monitor", "get_workarea")
 	if err != nil {
@@ -5278,8 +5716,9 @@ func (v Monitor) GetWorkarea(workarea Rectangle) {
 }
 
 // gdk_monitor_is_primary
-// container is not nil, container is Monitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Monitor) IsPrimary() (result bool) {
 	iv, err := _I.Get(232, "Monitor", "is_primary")
 	if err != nil {
@@ -5378,8 +5817,9 @@ func RGBAGetType() gi.GType {
 }
 
 // gdk_rgba_copy
-// container is not nil, container is RGBA
-// is method
+//
+// [ result ] trans: everything
+//
 func (v RGBA) Copy() (result RGBA) {
 	iv, err := _I.Get(233, "RGBA", "copy")
 	if err != nil {
@@ -5395,8 +5835,11 @@ func (v RGBA) Copy() (result RGBA) {
 }
 
 // gdk_rgba_equal
-// container is not nil, container is RGBA
-// is method
+//
+// [ p2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v RGBA) Equal(p2 RGBA) (result bool) {
 	iv, err := _I.Get(234, "RGBA", "equal")
 	if err != nil {
@@ -5413,8 +5856,7 @@ func (v RGBA) Equal(p2 RGBA) (result bool) {
 }
 
 // gdk_rgba_free
-// container is not nil, container is RGBA
-// is method
+//
 func (v RGBA) Free() {
 	iv, err := _I.Get(235, "RGBA", "free")
 	if err != nil {
@@ -5427,8 +5869,9 @@ func (v RGBA) Free() {
 }
 
 // gdk_rgba_hash
-// container is not nil, container is RGBA
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v RGBA) Hash() (result uint32) {
 	iv, err := _I.Get(236, "RGBA", "hash")
 	if err != nil {
@@ -5444,8 +5887,11 @@ func (v RGBA) Hash() (result uint32) {
 }
 
 // gdk_rgba_parse
-// container is not nil, container is RGBA
-// is method
+//
+// [ spec ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v RGBA) Parse(spec string) (result bool) {
 	iv, err := _I.Get(237, "RGBA", "parse")
 	if err != nil {
@@ -5464,8 +5910,9 @@ func (v RGBA) Parse(spec string) (result bool) {
 }
 
 // gdk_rgba_to_string
-// container is not nil, container is RGBA
-// is method
+//
+// [ result ] trans: everything
+//
 func (v RGBA) ToString() (result string) {
 	iv, err := _I.Get(238, "RGBA", "to_string")
 	if err != nil {
@@ -5493,8 +5940,11 @@ func RectangleGetType() gi.GType {
 }
 
 // gdk_rectangle_equal
-// container is not nil, container is Rectangle
-// is method
+//
+// [ rect2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Rectangle) Equal(rect2 Rectangle) (result bool) {
 	iv, err := _I.Get(239, "Rectangle", "equal")
 	if err != nil {
@@ -5511,8 +5961,13 @@ func (v Rectangle) Equal(rect2 Rectangle) (result bool) {
 }
 
 // gdk_rectangle_intersect
-// container is not nil, container is Rectangle
-// is method
+//
+// [ src2 ] trans: nothing
+//
+// [ dest ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Rectangle) Intersect(src2 Rectangle, dest Rectangle) (result bool) {
 	iv, err := _I.Get(240, "Rectangle", "intersect")
 	if err != nil {
@@ -5530,8 +5985,11 @@ func (v Rectangle) Intersect(src2 Rectangle, dest Rectangle) (result bool) {
 }
 
 // gdk_rectangle_union
-// container is not nil, container is Rectangle
-// is method
+//
+// [ src2 ] trans: nothing
+//
+// [ dest ] trans: nothing, dir: out
+//
 func (v Rectangle) Union(src2 Rectangle, dest Rectangle) {
 	iv, err := _I.Get(241, "Rectangle", "union")
 	if err != nil {
@@ -5561,8 +6019,9 @@ func ScreenGetType() gi.GType {
 }
 
 // gdk_screen_get_active_window
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Screen) GetActiveWindow() (result Window) {
 	iv, err := _I.Get(247, "Screen", "get_active_window")
 	if err != nil {
@@ -5578,8 +6037,9 @@ func (v Screen) GetActiveWindow() (result Window) {
 }
 
 // gdk_screen_get_display
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetDisplay() (result Display) {
 	iv, err := _I.Get(248, "Screen", "get_display")
 	if err != nil {
@@ -5595,8 +6055,9 @@ func (v Screen) GetDisplay() (result Display) {
 }
 
 // gdk_screen_get_font_options
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetFontOptions() (result cairo.FontOptions) {
 	iv, err := _I.Get(249, "Screen", "get_font_options")
 	if err != nil {
@@ -5612,8 +6073,9 @@ func (v Screen) GetFontOptions() (result cairo.FontOptions) {
 }
 
 // gdk_screen_get_height
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetHeight() (result int32) {
 	iv, err := _I.Get(250, "Screen", "get_height")
 	if err != nil {
@@ -5629,8 +6091,9 @@ func (v Screen) GetHeight() (result int32) {
 }
 
 // gdk_screen_get_height_mm
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetHeightMm() (result int32) {
 	iv, err := _I.Get(251, "Screen", "get_height_mm")
 	if err != nil {
@@ -5646,8 +6109,13 @@ func (v Screen) GetHeightMm() (result int32) {
 }
 
 // gdk_screen_get_monitor_at_point
-// container is not nil, container is Screen
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetMonitorAtPoint(x int32, y int32) (result int32) {
 	iv, err := _I.Get(252, "Screen", "get_monitor_at_point")
 	if err != nil {
@@ -5665,8 +6133,11 @@ func (v Screen) GetMonitorAtPoint(x int32, y int32) (result int32) {
 }
 
 // gdk_screen_get_monitor_at_window
-// container is not nil, container is Screen
-// is method
+//
+// [ window ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetMonitorAtWindow(window IWindow) (result int32) {
 	iv, err := _I.Get(253, "Screen", "get_monitor_at_window")
 	if err != nil {
@@ -5687,8 +6158,11 @@ func (v Screen) GetMonitorAtWindow(window IWindow) (result int32) {
 }
 
 // gdk_screen_get_monitor_geometry
-// container is not nil, container is Screen
-// is method
+//
+// [ monitor_num ] trans: nothing
+//
+// [ dest ] trans: nothing, dir: out
+//
 func (v Screen) GetMonitorGeometry(monitor_num int32, dest Rectangle) {
 	iv, err := _I.Get(254, "Screen", "get_monitor_geometry")
 	if err != nil {
@@ -5703,8 +6177,11 @@ func (v Screen) GetMonitorGeometry(monitor_num int32, dest Rectangle) {
 }
 
 // gdk_screen_get_monitor_height_mm
-// container is not nil, container is Screen
-// is method
+//
+// [ monitor_num ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetMonitorHeightMm(monitor_num int32) (result int32) {
 	iv, err := _I.Get(255, "Screen", "get_monitor_height_mm")
 	if err != nil {
@@ -5721,8 +6198,11 @@ func (v Screen) GetMonitorHeightMm(monitor_num int32) (result int32) {
 }
 
 // gdk_screen_get_monitor_plug_name
-// container is not nil, container is Screen
-// is method
+//
+// [ monitor_num ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Screen) GetMonitorPlugName(monitor_num int32) (result string) {
 	iv, err := _I.Get(256, "Screen", "get_monitor_plug_name")
 	if err != nil {
@@ -5739,8 +6219,11 @@ func (v Screen) GetMonitorPlugName(monitor_num int32) (result string) {
 }
 
 // gdk_screen_get_monitor_scale_factor
-// container is not nil, container is Screen
-// is method
+//
+// [ monitor_num ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetMonitorScaleFactor(monitor_num int32) (result int32) {
 	iv, err := _I.Get(257, "Screen", "get_monitor_scale_factor")
 	if err != nil {
@@ -5757,8 +6240,11 @@ func (v Screen) GetMonitorScaleFactor(monitor_num int32) (result int32) {
 }
 
 // gdk_screen_get_monitor_width_mm
-// container is not nil, container is Screen
-// is method
+//
+// [ monitor_num ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetMonitorWidthMm(monitor_num int32) (result int32) {
 	iv, err := _I.Get(258, "Screen", "get_monitor_width_mm")
 	if err != nil {
@@ -5775,8 +6261,11 @@ func (v Screen) GetMonitorWidthMm(monitor_num int32) (result int32) {
 }
 
 // gdk_screen_get_monitor_workarea
-// container is not nil, container is Screen
-// is method
+//
+// [ monitor_num ] trans: nothing
+//
+// [ dest ] trans: nothing, dir: out
+//
 func (v Screen) GetMonitorWorkarea(monitor_num int32, dest Rectangle) {
 	iv, err := _I.Get(259, "Screen", "get_monitor_workarea")
 	if err != nil {
@@ -5791,8 +6280,9 @@ func (v Screen) GetMonitorWorkarea(monitor_num int32, dest Rectangle) {
 }
 
 // gdk_screen_get_n_monitors
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetNMonitors() (result int32) {
 	iv, err := _I.Get(260, "Screen", "get_n_monitors")
 	if err != nil {
@@ -5808,8 +6298,9 @@ func (v Screen) GetNMonitors() (result int32) {
 }
 
 // gdk_screen_get_number
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetNumber() (result int32) {
 	iv, err := _I.Get(261, "Screen", "get_number")
 	if err != nil {
@@ -5825,8 +6316,9 @@ func (v Screen) GetNumber() (result int32) {
 }
 
 // gdk_screen_get_primary_monitor
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetPrimaryMonitor() (result int32) {
 	iv, err := _I.Get(262, "Screen", "get_primary_monitor")
 	if err != nil {
@@ -5842,8 +6334,9 @@ func (v Screen) GetPrimaryMonitor() (result int32) {
 }
 
 // gdk_screen_get_resolution
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetResolution() (result float64) {
 	iv, err := _I.Get(263, "Screen", "get_resolution")
 	if err != nil {
@@ -5859,8 +6352,9 @@ func (v Screen) GetResolution() (result float64) {
 }
 
 // gdk_screen_get_rgba_visual
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetRgbaVisual() (result Visual) {
 	iv, err := _I.Get(264, "Screen", "get_rgba_visual")
 	if err != nil {
@@ -5876,8 +6370,9 @@ func (v Screen) GetRgbaVisual() (result Visual) {
 }
 
 // gdk_screen_get_root_window
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetRootWindow() (result Window) {
 	iv, err := _I.Get(265, "Screen", "get_root_window")
 	if err != nil {
@@ -5893,8 +6388,13 @@ func (v Screen) GetRootWindow() (result Window) {
 }
 
 // gdk_screen_get_setting
-// container is not nil, container is Screen
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetSetting(name string, value gobject.Value) (result bool) {
 	iv, err := _I.Get(266, "Screen", "get_setting")
 	if err != nil {
@@ -5914,8 +6414,9 @@ func (v Screen) GetSetting(name string, value gobject.Value) (result bool) {
 }
 
 // gdk_screen_get_system_visual
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetSystemVisual() (result Visual) {
 	iv, err := _I.Get(267, "Screen", "get_system_visual")
 	if err != nil {
@@ -5931,8 +6432,9 @@ func (v Screen) GetSystemVisual() (result Visual) {
 }
 
 // gdk_screen_get_toplevel_windows
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: container
+//
 func (v Screen) GetToplevelWindows() (result glib.List) {
 	iv, err := _I.Get(268, "Screen", "get_toplevel_windows")
 	if err != nil {
@@ -5948,8 +6450,9 @@ func (v Screen) GetToplevelWindows() (result glib.List) {
 }
 
 // gdk_screen_get_width
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetWidth() (result int32) {
 	iv, err := _I.Get(269, "Screen", "get_width")
 	if err != nil {
@@ -5965,8 +6468,9 @@ func (v Screen) GetWidth() (result int32) {
 }
 
 // gdk_screen_get_width_mm
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) GetWidthMm() (result int32) {
 	iv, err := _I.Get(270, "Screen", "get_width_mm")
 	if err != nil {
@@ -5982,8 +6486,9 @@ func (v Screen) GetWidthMm() (result int32) {
 }
 
 // gdk_screen_get_window_stack
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Screen) GetWindowStack() (result glib.List) {
 	iv, err := _I.Get(271, "Screen", "get_window_stack")
 	if err != nil {
@@ -5999,8 +6504,9 @@ func (v Screen) GetWindowStack() (result glib.List) {
 }
 
 // gdk_screen_is_composited
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Screen) IsComposited() (result bool) {
 	iv, err := _I.Get(272, "Screen", "is_composited")
 	if err != nil {
@@ -6016,8 +6522,9 @@ func (v Screen) IsComposited() (result bool) {
 }
 
 // gdk_screen_list_visuals
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: container
+//
 func (v Screen) ListVisuals() (result glib.List) {
 	iv, err := _I.Get(273, "Screen", "list_visuals")
 	if err != nil {
@@ -6033,8 +6540,9 @@ func (v Screen) ListVisuals() (result glib.List) {
 }
 
 // gdk_screen_make_display_name
-// container is not nil, container is Screen
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Screen) MakeDisplayName() (result string) {
 	iv, err := _I.Get(274, "Screen", "make_display_name")
 	if err != nil {
@@ -6050,8 +6558,9 @@ func (v Screen) MakeDisplayName() (result string) {
 }
 
 // gdk_screen_set_font_options
-// container is not nil, container is Screen
-// is method
+//
+// [ options ] trans: nothing
+//
 func (v Screen) SetFontOptions(options cairo.FontOptions) {
 	iv, err := _I.Get(275, "Screen", "set_font_options")
 	if err != nil {
@@ -6065,8 +6574,9 @@ func (v Screen) SetFontOptions(options cairo.FontOptions) {
 }
 
 // gdk_screen_set_resolution
-// container is not nil, container is Screen
-// is method
+//
+// [ dpi ] trans: nothing
+//
 func (v Screen) SetResolution(dpi float64) {
 	iv, err := _I.Get(276, "Screen", "set_resolution")
 	if err != nil {
@@ -6111,8 +6621,9 @@ func SeatGetType() gi.GType {
 }
 
 // gdk_seat_get_capabilities
-// container is not nil, container is Seat
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Seat) GetCapabilities() (result SeatCapabilitiesFlags) {
 	iv, err := _I.Get(277, "Seat", "get_capabilities")
 	if err != nil {
@@ -6128,8 +6639,9 @@ func (v Seat) GetCapabilities() (result SeatCapabilitiesFlags) {
 }
 
 // gdk_seat_get_display
-// container is not nil, container is Seat
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Seat) GetDisplay() (result Display) {
 	iv, err := _I.Get(278, "Seat", "get_display")
 	if err != nil {
@@ -6145,8 +6657,9 @@ func (v Seat) GetDisplay() (result Display) {
 }
 
 // gdk_seat_get_keyboard
-// container is not nil, container is Seat
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Seat) GetKeyboard() (result Device) {
 	iv, err := _I.Get(279, "Seat", "get_keyboard")
 	if err != nil {
@@ -6162,8 +6675,9 @@ func (v Seat) GetKeyboard() (result Device) {
 }
 
 // gdk_seat_get_pointer
-// container is not nil, container is Seat
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Seat) GetPointer() (result Device) {
 	iv, err := _I.Get(280, "Seat", "get_pointer")
 	if err != nil {
@@ -6179,8 +6693,11 @@ func (v Seat) GetPointer() (result Device) {
 }
 
 // gdk_seat_get_slaves
-// container is not nil, container is Seat
-// is method
+//
+// [ capabilities ] trans: nothing
+//
+// [ result ] trans: container
+//
 func (v Seat) GetSlaves(capabilities SeatCapabilitiesFlags) (result glib.List) {
 	iv, err := _I.Get(281, "Seat", "get_slaves")
 	if err != nil {
@@ -6197,8 +6714,23 @@ func (v Seat) GetSlaves(capabilities SeatCapabilitiesFlags) (result glib.List) {
 }
 
 // gdk_seat_grab
-// container is not nil, container is Seat
-// is method
+//
+// [ window ] trans: nothing
+//
+// [ capabilities ] trans: nothing
+//
+// [ owner_events ] trans: nothing
+//
+// [ cursor ] trans: nothing
+//
+// [ event ] trans: nothing
+//
+// [ prepare_func ] trans: nothing
+//
+// [ prepare_func_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Seat) Grab(window IWindow, capabilities SeatCapabilitiesFlags, owner_events bool, cursor ICursor, event Event, prepare_func int /*TODO_TYPE CALLBACK*/, prepare_func_data unsafe.Pointer) (result GrabStatusEnum) {
 	iv, err := _I.Get(282, "Seat", "grab")
 	if err != nil {
@@ -6229,8 +6761,7 @@ func (v Seat) Grab(window IWindow, capabilities SeatCapabilitiesFlags, owner_eve
 }
 
 // gdk_seat_ungrab
-// container is not nil, container is Seat
-// is method
+//
 func (v Seat) Ungrab() {
 	iv, err := _I.Get(283, "Seat", "ungrab")
 	if err != nil {
@@ -6383,9 +6914,13 @@ func VisualGetType() gi.GType {
 }
 
 // gdk_visual_get_best_with_both
-// container is not nil, container is Visual
-// is method
-// arg0Type tag: gint32, isPtr: false
+//
+// [ depth ] trans: nothing
+//
+// [ visual_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VisualGetBestWithBoth1(depth int32, visual_type VisualTypeEnum) (result Visual) {
 	iv, err := _I.Get(287, "Visual", "get_best_with_both")
 	if err != nil {
@@ -6402,9 +6937,11 @@ func VisualGetBestWithBoth1(depth int32, visual_type VisualTypeEnum) (result Vis
 }
 
 // gdk_visual_get_best_with_depth
-// container is not nil, container is Visual
-// is method
-// arg0Type tag: gint32, isPtr: false
+//
+// [ depth ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VisualGetBestWithDepth1(depth int32) (result Visual) {
 	iv, err := _I.Get(288, "Visual", "get_best_with_depth")
 	if err != nil {
@@ -6420,9 +6957,11 @@ func VisualGetBestWithDepth1(depth int32) (result Visual) {
 }
 
 // gdk_visual_get_best_with_type
-// container is not nil, container is Visual
-// is method
-// arg0Type tag: interface, isPtr: false
+//
+// [ visual_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VisualGetBestWithType1(visual_type VisualTypeEnum) (result Visual) {
 	iv, err := _I.Get(289, "Visual", "get_best_with_type")
 	if err != nil {
@@ -6438,8 +6977,9 @@ func VisualGetBestWithType1(visual_type VisualTypeEnum) (result Visual) {
 }
 
 // gdk_visual_get_bits_per_rgb
-// container is not nil, container is Visual
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Visual) GetBitsPerRgb() (result int32) {
 	iv, err := _I.Get(291, "Visual", "get_bits_per_rgb")
 	if err != nil {
@@ -6455,8 +6995,13 @@ func (v Visual) GetBitsPerRgb() (result int32) {
 }
 
 // gdk_visual_get_blue_pixel_details
-// container is not nil, container is Visual
-// is method
+//
+// [ mask ] trans: everything, dir: out
+//
+// [ shift ] trans: everything, dir: out
+//
+// [ precision ] trans: everything, dir: out
+//
 func (v Visual) GetBluePixelDetails() (mask uint32, shift int32, precision int32) {
 	iv, err := _I.Get(292, "Visual", "get_blue_pixel_details")
 	if err != nil {
@@ -6477,8 +7022,9 @@ func (v Visual) GetBluePixelDetails() (mask uint32, shift int32, precision int32
 }
 
 // gdk_visual_get_byte_order
-// container is not nil, container is Visual
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Visual) GetByteOrder() (result ByteOrderEnum) {
 	iv, err := _I.Get(293, "Visual", "get_byte_order")
 	if err != nil {
@@ -6494,8 +7040,9 @@ func (v Visual) GetByteOrder() (result ByteOrderEnum) {
 }
 
 // gdk_visual_get_colormap_size
-// container is not nil, container is Visual
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Visual) GetColormapSize() (result int32) {
 	iv, err := _I.Get(294, "Visual", "get_colormap_size")
 	if err != nil {
@@ -6511,8 +7058,9 @@ func (v Visual) GetColormapSize() (result int32) {
 }
 
 // gdk_visual_get_depth
-// container is not nil, container is Visual
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Visual) GetDepth() (result int32) {
 	iv, err := _I.Get(295, "Visual", "get_depth")
 	if err != nil {
@@ -6528,8 +7076,13 @@ func (v Visual) GetDepth() (result int32) {
 }
 
 // gdk_visual_get_green_pixel_details
-// container is not nil, container is Visual
-// is method
+//
+// [ mask ] trans: everything, dir: out
+//
+// [ shift ] trans: everything, dir: out
+//
+// [ precision ] trans: everything, dir: out
+//
 func (v Visual) GetGreenPixelDetails() (mask uint32, shift int32, precision int32) {
 	iv, err := _I.Get(296, "Visual", "get_green_pixel_details")
 	if err != nil {
@@ -6550,8 +7103,13 @@ func (v Visual) GetGreenPixelDetails() (mask uint32, shift int32, precision int3
 }
 
 // gdk_visual_get_red_pixel_details
-// container is not nil, container is Visual
-// is method
+//
+// [ mask ] trans: everything, dir: out
+//
+// [ shift ] trans: everything, dir: out
+//
+// [ precision ] trans: everything, dir: out
+//
 func (v Visual) GetRedPixelDetails() (mask uint32, shift int32, precision int32) {
 	iv, err := _I.Get(297, "Visual", "get_red_pixel_details")
 	if err != nil {
@@ -6572,8 +7130,9 @@ func (v Visual) GetRedPixelDetails() (mask uint32, shift int32, precision int32)
 }
 
 // gdk_visual_get_screen
-// container is not nil, container is Visual
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Visual) GetScreen() (result Screen) {
 	iv, err := _I.Get(298, "Visual", "get_screen")
 	if err != nil {
@@ -6589,8 +7148,9 @@ func (v Visual) GetScreen() (result Screen) {
 }
 
 // gdk_visual_get_visual_type
-// container is not nil, container is Visual
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Visual) GetVisualType() (result VisualTypeEnum) {
 	iv, err := _I.Get(299, "Visual", "get_visual_type")
 	if err != nil {
@@ -6673,8 +7233,15 @@ func WindowGetType() gi.GType {
 }
 
 // gdk_window_new
-// container is not nil, container is Window
-// is constructor
+//
+// [ parent ] trans: nothing
+//
+// [ attributes ] trans: nothing
+//
+// [ attributes_mask ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewWindow(parent IWindow, attributes WindowAttr, attributes_mask WindowAttributesTypeFlags) (result Window) {
 	iv, err := _I.Get(300, "Window", "new")
 	if err != nil {
@@ -6696,9 +7263,13 @@ func NewWindow(parent IWindow, attributes WindowAttr, attributes_mask WindowAttr
 }
 
 // gdk_window_at_pointer
-// container is not nil, container is Window
-// is method
-// arg0Type tag: gint32, isPtr: false
+//
+// [ win_x ] trans: everything, dir: out
+//
+// [ win_y ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func WindowAtPointer1() (result Window, win_x int32, win_y int32) {
 	iv, err := _I.Get(301, "Window", "at_pointer")
 	if err != nil {
@@ -6718,9 +7289,19 @@ func WindowAtPointer1() (result Window, win_x int32, win_y int32) {
 }
 
 // gdk_window_constrain_size
-// container is not nil, container is Window
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ geometry ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ new_width ] trans: everything, dir: out
+//
+// [ new_height ] trans: everything, dir: out
+//
 func WindowConstrainSize1(geometry Geometry, flags WindowHintsFlags, width int32, height int32) (new_width int32, new_height int32) {
 	iv, err := _I.Get(302, "Window", "constrain_size")
 	if err != nil {
@@ -6742,9 +7323,9 @@ func WindowConstrainSize1(geometry Geometry, flags WindowHintsFlags, width int32
 }
 
 // gdk_window_set_debug_updates
-// container is not nil, container is Window
-// is method
-// arg0Type tag: gboolean, isPtr: false
+//
+// [ setting ] trans: nothing
+//
 func WindowSetDebugUpdates1(setting bool) {
 	iv, err := _I.Get(304, "Window", "set_debug_updates")
 	if err != nil {
@@ -6757,8 +7338,7 @@ func WindowSetDebugUpdates1(setting bool) {
 }
 
 // gdk_window_beep
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Beep() {
 	iv, err := _I.Get(305, "Window", "beep")
 	if err != nil {
@@ -6771,8 +7351,11 @@ func (v Window) Beep() {
 }
 
 // gdk_window_begin_draw_frame
-// container is not nil, container is Window
-// is method
+//
+// [ region ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Window) BeginDrawFrame(region cairo.Region) (result DrawingContext) {
 	iv, err := _I.Get(306, "Window", "begin_draw_frame")
 	if err != nil {
@@ -6789,8 +7372,15 @@ func (v Window) BeginDrawFrame(region cairo.Region) (result DrawingContext) {
 }
 
 // gdk_window_begin_move_drag
-// container is not nil, container is Window
-// is method
+//
+// [ button ] trans: nothing
+//
+// [ root_x ] trans: nothing
+//
+// [ root_y ] trans: nothing
+//
+// [ timestamp ] trans: nothing
+//
 func (v Window) BeginMoveDrag(button int32, root_x int32, root_y int32, timestamp uint32) {
 	iv, err := _I.Get(307, "Window", "begin_move_drag")
 	if err != nil {
@@ -6807,8 +7397,17 @@ func (v Window) BeginMoveDrag(button int32, root_x int32, root_y int32, timestam
 }
 
 // gdk_window_begin_move_drag_for_device
-// container is not nil, container is Window
-// is method
+//
+// [ device ] trans: nothing
+//
+// [ button ] trans: nothing
+//
+// [ root_x ] trans: nothing
+//
+// [ root_y ] trans: nothing
+//
+// [ timestamp ] trans: nothing
+//
 func (v Window) BeginMoveDragForDevice(device IDevice, button int32, root_x int32, root_y int32, timestamp uint32) {
 	iv, err := _I.Get(308, "Window", "begin_move_drag_for_device")
 	if err != nil {
@@ -6830,8 +7429,9 @@ func (v Window) BeginMoveDragForDevice(device IDevice, button int32, root_x int3
 }
 
 // gdk_window_begin_paint_rect
-// container is not nil, container is Window
-// is method
+//
+// [ rectangle ] trans: nothing
+//
 func (v Window) BeginPaintRect(rectangle Rectangle) {
 	iv, err := _I.Get(309, "Window", "begin_paint_rect")
 	if err != nil {
@@ -6845,8 +7445,9 @@ func (v Window) BeginPaintRect(rectangle Rectangle) {
 }
 
 // gdk_window_begin_paint_region
-// container is not nil, container is Window
-// is method
+//
+// [ region ] trans: nothing
+//
 func (v Window) BeginPaintRegion(region cairo.Region) {
 	iv, err := _I.Get(310, "Window", "begin_paint_region")
 	if err != nil {
@@ -6860,8 +7461,17 @@ func (v Window) BeginPaintRegion(region cairo.Region) {
 }
 
 // gdk_window_begin_resize_drag
-// container is not nil, container is Window
-// is method
+//
+// [ edge ] trans: nothing
+//
+// [ button ] trans: nothing
+//
+// [ root_x ] trans: nothing
+//
+// [ root_y ] trans: nothing
+//
+// [ timestamp ] trans: nothing
+//
 func (v Window) BeginResizeDrag(edge WindowEdgeEnum, button int32, root_x int32, root_y int32, timestamp uint32) {
 	iv, err := _I.Get(311, "Window", "begin_resize_drag")
 	if err != nil {
@@ -6879,8 +7489,19 @@ func (v Window) BeginResizeDrag(edge WindowEdgeEnum, button int32, root_x int32,
 }
 
 // gdk_window_begin_resize_drag_for_device
-// container is not nil, container is Window
-// is method
+//
+// [ edge ] trans: nothing
+//
+// [ device ] trans: nothing
+//
+// [ button ] trans: nothing
+//
+// [ root_x ] trans: nothing
+//
+// [ root_y ] trans: nothing
+//
+// [ timestamp ] trans: nothing
+//
 func (v Window) BeginResizeDragForDevice(edge WindowEdgeEnum, device IDevice, button int32, root_x int32, root_y int32, timestamp uint32) {
 	iv, err := _I.Get(312, "Window", "begin_resize_drag_for_device")
 	if err != nil {
@@ -6903,8 +7524,7 @@ func (v Window) BeginResizeDragForDevice(edge WindowEdgeEnum, device IDevice, bu
 }
 
 // gdk_window_configure_finished
-// container is not nil, container is Window
-// is method
+//
 func (v Window) ConfigureFinished() {
 	iv, err := _I.Get(313, "Window", "configure_finished")
 	if err != nil {
@@ -6917,8 +7537,15 @@ func (v Window) ConfigureFinished() {
 }
 
 // gdk_window_coords_from_parent
-// container is not nil, container is Window
-// is method
+//
+// [ parent_x ] trans: nothing
+//
+// [ parent_y ] trans: nothing
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
 func (v Window) CoordsFromParent(parent_x float64, parent_y float64) (x float64, y float64) {
 	iv, err := _I.Get(314, "Window", "coords_from_parent")
 	if err != nil {
@@ -6939,8 +7566,15 @@ func (v Window) CoordsFromParent(parent_x float64, parent_y float64) (x float64,
 }
 
 // gdk_window_coords_to_parent
-// container is not nil, container is Window
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ parent_x ] trans: everything, dir: out
+//
+// [ parent_y ] trans: everything, dir: out
+//
 func (v Window) CoordsToParent(x float64, y float64) (parent_x float64, parent_y float64) {
 	iv, err := _I.Get(315, "Window", "coords_to_parent")
 	if err != nil {
@@ -6961,8 +7595,9 @@ func (v Window) CoordsToParent(x float64, y float64) (parent_x float64, parent_y
 }
 
 // gdk_window_create_gl_context
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Window) CreateGlContext() (result GLContext, err error) {
 	iv, err := _I.Get(316, "Window", "create_gl_context")
 	if err != nil {
@@ -6980,8 +7615,17 @@ func (v Window) CreateGlContext() (result GLContext, err error) {
 }
 
 // gdk_window_create_similar_image_surface
-// container is not nil, container is Window
-// is method
+//
+// [ format ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ scale ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Window) CreateSimilarImageSurface(format int32, width int32, height int32, scale int32) (result cairo.Surface) {
 	iv, err := _I.Get(317, "Window", "create_similar_image_surface")
 	if err != nil {
@@ -7001,8 +7645,15 @@ func (v Window) CreateSimilarImageSurface(format int32, width int32, height int3
 }
 
 // gdk_window_create_similar_surface
-// container is not nil, container is Window
-// is method
+//
+// [ content ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Window) CreateSimilarSurface(content cairo.ContentEnum, width int32, height int32) (result cairo.Surface) {
 	iv, err := _I.Get(318, "Window", "create_similar_surface")
 	if err != nil {
@@ -7021,8 +7672,7 @@ func (v Window) CreateSimilarSurface(content cairo.ContentEnum, width int32, hei
 }
 
 // gdk_window_deiconify
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Deiconify() {
 	iv, err := _I.Get(319, "Window", "deiconify")
 	if err != nil {
@@ -7035,8 +7685,7 @@ func (v Window) Deiconify() {
 }
 
 // gdk_window_destroy
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Destroy() {
 	iv, err := _I.Get(320, "Window", "destroy")
 	if err != nil {
@@ -7049,8 +7698,7 @@ func (v Window) Destroy() {
 }
 
 // gdk_window_destroy_notify
-// container is not nil, container is Window
-// is method
+//
 func (v Window) DestroyNotify() {
 	iv, err := _I.Get(321, "Window", "destroy_notify")
 	if err != nil {
@@ -7063,8 +7711,7 @@ func (v Window) DestroyNotify() {
 }
 
 // gdk_window_enable_synchronized_configure
-// container is not nil, container is Window
-// is method
+//
 func (v Window) EnableSynchronizedConfigure() {
 	iv, err := _I.Get(322, "Window", "enable_synchronized_configure")
 	if err != nil {
@@ -7077,8 +7724,9 @@ func (v Window) EnableSynchronizedConfigure() {
 }
 
 // gdk_window_end_draw_frame
-// container is not nil, container is Window
-// is method
+//
+// [ context ] trans: nothing
+//
 func (v Window) EndDrawFrame(context IDrawingContext) {
 	iv, err := _I.Get(323, "Window", "end_draw_frame")
 	if err != nil {
@@ -7096,8 +7744,7 @@ func (v Window) EndDrawFrame(context IDrawingContext) {
 }
 
 // gdk_window_end_paint
-// container is not nil, container is Window
-// is method
+//
 func (v Window) EndPaint() {
 	iv, err := _I.Get(324, "Window", "end_paint")
 	if err != nil {
@@ -7110,8 +7757,9 @@ func (v Window) EndPaint() {
 }
 
 // gdk_window_ensure_native
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) EnsureNative() (result bool) {
 	iv, err := _I.Get(325, "Window", "ensure_native")
 	if err != nil {
@@ -7127,8 +7775,7 @@ func (v Window) EnsureNative() (result bool) {
 }
 
 // gdk_window_flush
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Flush() {
 	iv, err := _I.Get(326, "Window", "flush")
 	if err != nil {
@@ -7141,8 +7788,9 @@ func (v Window) Flush() {
 }
 
 // gdk_window_focus
-// container is not nil, container is Window
-// is method
+//
+// [ timestamp ] trans: nothing
+//
 func (v Window) Focus(timestamp uint32) {
 	iv, err := _I.Get(327, "Window", "focus")
 	if err != nil {
@@ -7156,8 +7804,7 @@ func (v Window) Focus(timestamp uint32) {
 }
 
 // gdk_window_freeze_toplevel_updates_libgtk_only
-// container is not nil, container is Window
-// is method
+//
 func (v Window) FreezeToplevelUpdatesLibgtkOnly() {
 	iv, err := _I.Get(328, "Window", "freeze_toplevel_updates_libgtk_only")
 	if err != nil {
@@ -7170,8 +7817,7 @@ func (v Window) FreezeToplevelUpdatesLibgtkOnly() {
 }
 
 // gdk_window_freeze_updates
-// container is not nil, container is Window
-// is method
+//
 func (v Window) FreezeUpdates() {
 	iv, err := _I.Get(329, "Window", "freeze_updates")
 	if err != nil {
@@ -7184,8 +7830,7 @@ func (v Window) FreezeUpdates() {
 }
 
 // gdk_window_fullscreen
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Fullscreen() {
 	iv, err := _I.Get(330, "Window", "fullscreen")
 	if err != nil {
@@ -7198,8 +7843,9 @@ func (v Window) Fullscreen() {
 }
 
 // gdk_window_fullscreen_on_monitor
-// container is not nil, container is Window
-// is method
+//
+// [ monitor ] trans: nothing
+//
 func (v Window) FullscreenOnMonitor(monitor int32) {
 	iv, err := _I.Get(331, "Window", "fullscreen_on_monitor")
 	if err != nil {
@@ -7213,8 +7859,7 @@ func (v Window) FullscreenOnMonitor(monitor int32) {
 }
 
 // gdk_window_geometry_changed
-// container is not nil, container is Window
-// is method
+//
 func (v Window) GeometryChanged() {
 	iv, err := _I.Get(332, "Window", "geometry_changed")
 	if err != nil {
@@ -7227,8 +7872,9 @@ func (v Window) GeometryChanged() {
 }
 
 // gdk_window_get_accept_focus
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetAcceptFocus() (result bool) {
 	iv, err := _I.Get(333, "Window", "get_accept_focus")
 	if err != nil {
@@ -7244,8 +7890,9 @@ func (v Window) GetAcceptFocus() (result bool) {
 }
 
 // gdk_window_get_background_pattern
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetBackgroundPattern() (result cairo.Pattern) {
 	iv, err := _I.Get(334, "Window", "get_background_pattern")
 	if err != nil {
@@ -7261,8 +7908,9 @@ func (v Window) GetBackgroundPattern() (result cairo.Pattern) {
 }
 
 // gdk_window_get_children
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: container
+//
 func (v Window) GetChildren() (result glib.List) {
 	iv, err := _I.Get(335, "Window", "get_children")
 	if err != nil {
@@ -7278,8 +7926,11 @@ func (v Window) GetChildren() (result glib.List) {
 }
 
 // gdk_window_get_children_with_user_data
-// container is not nil, container is Window
-// is method
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: container
+//
 func (v Window) GetChildrenWithUserData(user_data unsafe.Pointer) (result glib.List) {
 	iv, err := _I.Get(336, "Window", "get_children_with_user_data")
 	if err != nil {
@@ -7296,8 +7947,9 @@ func (v Window) GetChildrenWithUserData(user_data unsafe.Pointer) (result glib.L
 }
 
 // gdk_window_get_clip_region
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Window) GetClipRegion() (result cairo.Region) {
 	iv, err := _I.Get(337, "Window", "get_clip_region")
 	if err != nil {
@@ -7313,8 +7965,9 @@ func (v Window) GetClipRegion() (result cairo.Region) {
 }
 
 // gdk_window_get_composited
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetComposited() (result bool) {
 	iv, err := _I.Get(338, "Window", "get_composited")
 	if err != nil {
@@ -7330,8 +7983,9 @@ func (v Window) GetComposited() (result bool) {
 }
 
 // gdk_window_get_cursor
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetCursor() (result Cursor) {
 	iv, err := _I.Get(339, "Window", "get_cursor")
 	if err != nil {
@@ -7347,8 +8001,11 @@ func (v Window) GetCursor() (result Cursor) {
 }
 
 // gdk_window_get_decorations
-// container is not nil, container is Window
-// is method
+//
+// [ decorations ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetDecorations() (result bool, decorations WMDecorationFlags) {
 	iv, err := _I.Get(340, "Window", "get_decorations")
 	if err != nil {
@@ -7367,8 +8024,11 @@ func (v Window) GetDecorations() (result bool, decorations WMDecorationFlags) {
 }
 
 // gdk_window_get_device_cursor
-// container is not nil, container is Window
-// is method
+//
+// [ device ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetDeviceCursor(device IDevice) (result Cursor) {
 	iv, err := _I.Get(341, "Window", "get_device_cursor")
 	if err != nil {
@@ -7389,8 +8049,11 @@ func (v Window) GetDeviceCursor(device IDevice) (result Cursor) {
 }
 
 // gdk_window_get_device_events
-// container is not nil, container is Window
-// is method
+//
+// [ device ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetDeviceEvents(device IDevice) (result EventMaskFlags) {
 	iv, err := _I.Get(342, "Window", "get_device_events")
 	if err != nil {
@@ -7411,8 +8074,17 @@ func (v Window) GetDeviceEvents(device IDevice) (result EventMaskFlags) {
 }
 
 // gdk_window_get_device_position
-// container is not nil, container is Window
-// is method
+//
+// [ device ] trans: nothing
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ mask ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetDevicePosition(device IDevice) (result Window, x int32, y int32, mask ModifierTypeFlags) {
 	iv, err := _I.Get(343, "Window", "get_device_position")
 	if err != nil {
@@ -7440,8 +8112,17 @@ func (v Window) GetDevicePosition(device IDevice) (result Window, x int32, y int
 }
 
 // gdk_window_get_device_position_double
-// container is not nil, container is Window
-// is method
+//
+// [ device ] trans: nothing
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ mask ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetDevicePositionDouble(device IDevice) (result Window, x float64, y float64, mask ModifierTypeFlags) {
 	iv, err := _I.Get(344, "Window", "get_device_position_double")
 	if err != nil {
@@ -7469,8 +8150,9 @@ func (v Window) GetDevicePositionDouble(device IDevice) (result Window, x float6
 }
 
 // gdk_window_get_display
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetDisplay() (result Display) {
 	iv, err := _I.Get(345, "Window", "get_display")
 	if err != nil {
@@ -7486,8 +8168,11 @@ func (v Window) GetDisplay() (result Display) {
 }
 
 // gdk_window_get_drag_protocol
-// container is not nil, container is Window
-// is method
+//
+// [ target ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetDragProtocol() (result DragProtocolEnum, target Window) {
 	iv, err := _I.Get(346, "Window", "get_drag_protocol")
 	if err != nil {
@@ -7506,8 +8191,9 @@ func (v Window) GetDragProtocol() (result DragProtocolEnum, target Window) {
 }
 
 // gdk_window_get_effective_parent
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetEffectiveParent() (result Window) {
 	iv, err := _I.Get(347, "Window", "get_effective_parent")
 	if err != nil {
@@ -7523,8 +8209,9 @@ func (v Window) GetEffectiveParent() (result Window) {
 }
 
 // gdk_window_get_effective_toplevel
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetEffectiveToplevel() (result Window) {
 	iv, err := _I.Get(348, "Window", "get_effective_toplevel")
 	if err != nil {
@@ -7540,8 +8227,9 @@ func (v Window) GetEffectiveToplevel() (result Window) {
 }
 
 // gdk_window_get_event_compression
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetEventCompression() (result bool) {
 	iv, err := _I.Get(349, "Window", "get_event_compression")
 	if err != nil {
@@ -7557,8 +8245,9 @@ func (v Window) GetEventCompression() (result bool) {
 }
 
 // gdk_window_get_events
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetEvents() (result EventMaskFlags) {
 	iv, err := _I.Get(350, "Window", "get_events")
 	if err != nil {
@@ -7574,8 +8263,9 @@ func (v Window) GetEvents() (result EventMaskFlags) {
 }
 
 // gdk_window_get_focus_on_map
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetFocusOnMap() (result bool) {
 	iv, err := _I.Get(351, "Window", "get_focus_on_map")
 	if err != nil {
@@ -7591,8 +8281,9 @@ func (v Window) GetFocusOnMap() (result bool) {
 }
 
 // gdk_window_get_frame_clock
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetFrameClock() (result FrameClock) {
 	iv, err := _I.Get(352, "Window", "get_frame_clock")
 	if err != nil {
@@ -7608,8 +8299,9 @@ func (v Window) GetFrameClock() (result FrameClock) {
 }
 
 // gdk_window_get_frame_extents
-// container is not nil, container is Window
-// is method
+//
+// [ rect ] trans: nothing, dir: out
+//
 func (v Window) GetFrameExtents(rect Rectangle) {
 	iv, err := _I.Get(353, "Window", "get_frame_extents")
 	if err != nil {
@@ -7623,8 +8315,9 @@ func (v Window) GetFrameExtents(rect Rectangle) {
 }
 
 // gdk_window_get_fullscreen_mode
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetFullscreenMode() (result FullscreenModeEnum) {
 	iv, err := _I.Get(354, "Window", "get_fullscreen_mode")
 	if err != nil {
@@ -7640,8 +8333,15 @@ func (v Window) GetFullscreenMode() (result FullscreenModeEnum) {
 }
 
 // gdk_window_get_geometry
-// container is not nil, container is Window
-// is method
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
 func (v Window) GetGeometry() (x int32, y int32, width int32, height int32) {
 	iv, err := _I.Get(355, "Window", "get_geometry")
 	if err != nil {
@@ -7664,8 +8364,9 @@ func (v Window) GetGeometry() (x int32, y int32, width int32, height int32) {
 }
 
 // gdk_window_get_group
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetGroup() (result Window) {
 	iv, err := _I.Get(356, "Window", "get_group")
 	if err != nil {
@@ -7681,8 +8382,9 @@ func (v Window) GetGroup() (result Window) {
 }
 
 // gdk_window_get_height
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetHeight() (result int32) {
 	iv, err := _I.Get(357, "Window", "get_height")
 	if err != nil {
@@ -7698,8 +8400,9 @@ func (v Window) GetHeight() (result int32) {
 }
 
 // gdk_window_get_modal_hint
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetModalHint() (result bool) {
 	iv, err := _I.Get(358, "Window", "get_modal_hint")
 	if err != nil {
@@ -7715,8 +8418,13 @@ func (v Window) GetModalHint() (result bool) {
 }
 
 // gdk_window_get_origin
-// container is not nil, container is Window
-// is method
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetOrigin() (result int32, x int32, y int32) {
 	iv, err := _I.Get(359, "Window", "get_origin")
 	if err != nil {
@@ -7737,8 +8445,9 @@ func (v Window) GetOrigin() (result int32, x int32, y int32) {
 }
 
 // gdk_window_get_parent
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetParent() (result Window) {
 	iv, err := _I.Get(360, "Window", "get_parent")
 	if err != nil {
@@ -7754,8 +8463,9 @@ func (v Window) GetParent() (result Window) {
 }
 
 // gdk_window_get_pass_through
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetPassThrough() (result bool) {
 	iv, err := _I.Get(361, "Window", "get_pass_through")
 	if err != nil {
@@ -7771,8 +8481,15 @@ func (v Window) GetPassThrough() (result bool) {
 }
 
 // gdk_window_get_pointer
-// container is not nil, container is Window
-// is method
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ mask ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetPointer() (result Window, x int32, y int32, mask ModifierTypeFlags) {
 	iv, err := _I.Get(362, "Window", "get_pointer")
 	if err != nil {
@@ -7795,8 +8512,11 @@ func (v Window) GetPointer() (result Window, x int32, y int32, mask ModifierType
 }
 
 // gdk_window_get_position
-// container is not nil, container is Window
-// is method
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
 func (v Window) GetPosition() (x int32, y int32) {
 	iv, err := _I.Get(363, "Window", "get_position")
 	if err != nil {
@@ -7815,8 +8535,15 @@ func (v Window) GetPosition() (x int32, y int32) {
 }
 
 // gdk_window_get_root_coords
-// container is not nil, container is Window
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ root_x ] trans: everything, dir: out
+//
+// [ root_y ] trans: everything, dir: out
+//
 func (v Window) GetRootCoords(x int32, y int32) (root_x int32, root_y int32) {
 	iv, err := _I.Get(364, "Window", "get_root_coords")
 	if err != nil {
@@ -7837,8 +8564,11 @@ func (v Window) GetRootCoords(x int32, y int32) (root_x int32, root_y int32) {
 }
 
 // gdk_window_get_root_origin
-// container is not nil, container is Window
-// is method
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
 func (v Window) GetRootOrigin() (x int32, y int32) {
 	iv, err := _I.Get(365, "Window", "get_root_origin")
 	if err != nil {
@@ -7857,8 +8587,9 @@ func (v Window) GetRootOrigin() (x int32, y int32) {
 }
 
 // gdk_window_get_scale_factor
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetScaleFactor() (result int32) {
 	iv, err := _I.Get(366, "Window", "get_scale_factor")
 	if err != nil {
@@ -7874,8 +8605,9 @@ func (v Window) GetScaleFactor() (result int32) {
 }
 
 // gdk_window_get_screen
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetScreen() (result Screen) {
 	iv, err := _I.Get(367, "Window", "get_screen")
 	if err != nil {
@@ -7891,8 +8623,11 @@ func (v Window) GetScreen() (result Screen) {
 }
 
 // gdk_window_get_source_events
-// container is not nil, container is Window
-// is method
+//
+// [ source ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetSourceEvents(source InputSourceEnum) (result EventMaskFlags) {
 	iv, err := _I.Get(368, "Window", "get_source_events")
 	if err != nil {
@@ -7909,8 +8644,9 @@ func (v Window) GetSourceEvents(source InputSourceEnum) (result EventMaskFlags) 
 }
 
 // gdk_window_get_state
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetState() (result WindowStateFlags) {
 	iv, err := _I.Get(369, "Window", "get_state")
 	if err != nil {
@@ -7926,8 +8662,9 @@ func (v Window) GetState() (result WindowStateFlags) {
 }
 
 // gdk_window_get_support_multidevice
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetSupportMultidevice() (result bool) {
 	iv, err := _I.Get(370, "Window", "get_support_multidevice")
 	if err != nil {
@@ -7943,8 +8680,9 @@ func (v Window) GetSupportMultidevice() (result bool) {
 }
 
 // gdk_window_get_toplevel
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetToplevel() (result Window) {
 	iv, err := _I.Get(371, "Window", "get_toplevel")
 	if err != nil {
@@ -7960,8 +8698,9 @@ func (v Window) GetToplevel() (result Window) {
 }
 
 // gdk_window_get_type_hint
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetTypeHint() (result WindowTypeHintEnum) {
 	iv, err := _I.Get(372, "Window", "get_type_hint")
 	if err != nil {
@@ -7977,8 +8716,9 @@ func (v Window) GetTypeHint() (result WindowTypeHintEnum) {
 }
 
 // gdk_window_get_update_area
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Window) GetUpdateArea() (result cairo.Region) {
 	iv, err := _I.Get(373, "Window", "get_update_area")
 	if err != nil {
@@ -7994,8 +8734,9 @@ func (v Window) GetUpdateArea() (result cairo.Region) {
 }
 
 // gdk_window_get_user_data
-// container is not nil, container is Window
-// is method
+//
+// [ data ] trans: everything, dir: out
+//
 func (v Window) GetUserData() (data unsafe.Pointer) {
 	iv, err := _I.Get(374, "Window", "get_user_data")
 	if err != nil {
@@ -8012,8 +8753,9 @@ func (v Window) GetUserData() (data unsafe.Pointer) {
 }
 
 // gdk_window_get_visible_region
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Window) GetVisibleRegion() (result cairo.Region) {
 	iv, err := _I.Get(375, "Window", "get_visible_region")
 	if err != nil {
@@ -8029,8 +8771,9 @@ func (v Window) GetVisibleRegion() (result cairo.Region) {
 }
 
 // gdk_window_get_visual
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetVisual() (result Visual) {
 	iv, err := _I.Get(376, "Window", "get_visual")
 	if err != nil {
@@ -8046,8 +8789,9 @@ func (v Window) GetVisual() (result Visual) {
 }
 
 // gdk_window_get_width
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetWidth() (result int32) {
 	iv, err := _I.Get(377, "Window", "get_width")
 	if err != nil {
@@ -8063,8 +8807,9 @@ func (v Window) GetWidth() (result int32) {
 }
 
 // gdk_window_get_window_type
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) GetWindowType() (result WindowTypeEnum) {
 	iv, err := _I.Get(378, "Window", "get_window_type")
 	if err != nil {
@@ -8080,8 +8825,9 @@ func (v Window) GetWindowType() (result WindowTypeEnum) {
 }
 
 // gdk_window_has_native
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) HasNative() (result bool) {
 	iv, err := _I.Get(379, "Window", "has_native")
 	if err != nil {
@@ -8097,8 +8843,7 @@ func (v Window) HasNative() (result bool) {
 }
 
 // gdk_window_hide
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Hide() {
 	iv, err := _I.Get(380, "Window", "hide")
 	if err != nil {
@@ -8111,8 +8856,7 @@ func (v Window) Hide() {
 }
 
 // gdk_window_iconify
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Iconify() {
 	iv, err := _I.Get(381, "Window", "iconify")
 	if err != nil {
@@ -8125,8 +8869,13 @@ func (v Window) Iconify() {
 }
 
 // gdk_window_input_shape_combine_region
-// container is not nil, container is Window
-// is method
+//
+// [ shape_region ] trans: nothing
+//
+// [ offset_x ] trans: nothing
+//
+// [ offset_y ] trans: nothing
+//
 func (v Window) InputShapeCombineRegion(shape_region cairo.Region, offset_x int32, offset_y int32) {
 	iv, err := _I.Get(382, "Window", "input_shape_combine_region")
 	if err != nil {
@@ -8142,8 +8891,13 @@ func (v Window) InputShapeCombineRegion(shape_region cairo.Region, offset_x int3
 }
 
 // gdk_window_invalidate_maybe_recurse
-// container is not nil, container is Window
-// is method
+//
+// [ region ] trans: nothing
+//
+// [ child_func ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Window) InvalidateMaybeRecurse(region cairo.Region, child_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(383, "Window", "invalidate_maybe_recurse")
 	if err != nil {
@@ -8159,8 +8913,11 @@ func (v Window) InvalidateMaybeRecurse(region cairo.Region, child_func int /*TOD
 }
 
 // gdk_window_invalidate_rect
-// container is not nil, container is Window
-// is method
+//
+// [ rect ] trans: nothing
+//
+// [ invalidate_children ] trans: nothing
+//
 func (v Window) InvalidateRect(rect Rectangle, invalidate_children bool) {
 	iv, err := _I.Get(384, "Window", "invalidate_rect")
 	if err != nil {
@@ -8175,8 +8932,11 @@ func (v Window) InvalidateRect(rect Rectangle, invalidate_children bool) {
 }
 
 // gdk_window_invalidate_region
-// container is not nil, container is Window
-// is method
+//
+// [ region ] trans: nothing
+//
+// [ invalidate_children ] trans: nothing
+//
 func (v Window) InvalidateRegion(region cairo.Region, invalidate_children bool) {
 	iv, err := _I.Get(385, "Window", "invalidate_region")
 	if err != nil {
@@ -8191,8 +8951,9 @@ func (v Window) InvalidateRegion(region cairo.Region, invalidate_children bool) 
 }
 
 // gdk_window_is_destroyed
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) IsDestroyed() (result bool) {
 	iv, err := _I.Get(386, "Window", "is_destroyed")
 	if err != nil {
@@ -8208,8 +8969,9 @@ func (v Window) IsDestroyed() (result bool) {
 }
 
 // gdk_window_is_input_only
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) IsInputOnly() (result bool) {
 	iv, err := _I.Get(387, "Window", "is_input_only")
 	if err != nil {
@@ -8225,8 +8987,9 @@ func (v Window) IsInputOnly() (result bool) {
 }
 
 // gdk_window_is_shaped
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) IsShaped() (result bool) {
 	iv, err := _I.Get(388, "Window", "is_shaped")
 	if err != nil {
@@ -8242,8 +9005,9 @@ func (v Window) IsShaped() (result bool) {
 }
 
 // gdk_window_is_viewable
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) IsViewable() (result bool) {
 	iv, err := _I.Get(389, "Window", "is_viewable")
 	if err != nil {
@@ -8259,8 +9023,9 @@ func (v Window) IsViewable() (result bool) {
 }
 
 // gdk_window_is_visible
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) IsVisible() (result bool) {
 	iv, err := _I.Get(390, "Window", "is_visible")
 	if err != nil {
@@ -8276,8 +9041,7 @@ func (v Window) IsVisible() (result bool) {
 }
 
 // gdk_window_lower
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Lower() {
 	iv, err := _I.Get(391, "Window", "lower")
 	if err != nil {
@@ -8290,8 +9054,9 @@ func (v Window) Lower() {
 }
 
 // gdk_window_mark_paint_from_clip
-// container is not nil, container is Window
-// is method
+//
+// [ cr ] trans: nothing
+//
 func (v Window) MarkPaintFromClip(cr cairo.Context) {
 	iv, err := _I.Get(392, "Window", "mark_paint_from_clip")
 	if err != nil {
@@ -8305,8 +9070,7 @@ func (v Window) MarkPaintFromClip(cr cairo.Context) {
 }
 
 // gdk_window_maximize
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Maximize() {
 	iv, err := _I.Get(393, "Window", "maximize")
 	if err != nil {
@@ -8319,8 +9083,7 @@ func (v Window) Maximize() {
 }
 
 // gdk_window_merge_child_input_shapes
-// container is not nil, container is Window
-// is method
+//
 func (v Window) MergeChildInputShapes() {
 	iv, err := _I.Get(394, "Window", "merge_child_input_shapes")
 	if err != nil {
@@ -8333,8 +9096,7 @@ func (v Window) MergeChildInputShapes() {
 }
 
 // gdk_window_merge_child_shapes
-// container is not nil, container is Window
-// is method
+//
 func (v Window) MergeChildShapes() {
 	iv, err := _I.Get(395, "Window", "merge_child_shapes")
 	if err != nil {
@@ -8347,8 +9109,11 @@ func (v Window) MergeChildShapes() {
 }
 
 // gdk_window_move
-// container is not nil, container is Window
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func (v Window) Move(x int32, y int32) {
 	iv, err := _I.Get(396, "Window", "move")
 	if err != nil {
@@ -8363,8 +9128,13 @@ func (v Window) Move(x int32, y int32) {
 }
 
 // gdk_window_move_region
-// container is not nil, container is Window
-// is method
+//
+// [ region ] trans: nothing
+//
+// [ dx ] trans: nothing
+//
+// [ dy ] trans: nothing
+//
 func (v Window) MoveRegion(region cairo.Region, dx int32, dy int32) {
 	iv, err := _I.Get(397, "Window", "move_region")
 	if err != nil {
@@ -8380,8 +9150,15 @@ func (v Window) MoveRegion(region cairo.Region, dx int32, dy int32) {
 }
 
 // gdk_window_move_resize
-// container is not nil, container is Window
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
 func (v Window) MoveResize(x int32, y int32, width int32, height int32) {
 	iv, err := _I.Get(398, "Window", "move_resize")
 	if err != nil {
@@ -8398,8 +9175,19 @@ func (v Window) MoveResize(x int32, y int32, width int32, height int32) {
 }
 
 // gdk_window_move_to_rect
-// container is not nil, container is Window
-// is method
+//
+// [ rect ] trans: nothing
+//
+// [ rect_anchor ] trans: nothing
+//
+// [ window_anchor ] trans: nothing
+//
+// [ anchor_hints ] trans: nothing
+//
+// [ rect_anchor_dx ] trans: nothing
+//
+// [ rect_anchor_dy ] trans: nothing
+//
 func (v Window) MoveToRect(rect Rectangle, rect_anchor GravityEnum, window_anchor GravityEnum, anchor_hints AnchorHintsFlags, rect_anchor_dx int32, rect_anchor_dy int32) {
 	iv, err := _I.Get(399, "Window", "move_to_rect")
 	if err != nil {
@@ -8418,8 +9206,9 @@ func (v Window) MoveToRect(rect Rectangle, rect_anchor GravityEnum, window_ancho
 }
 
 // gdk_window_peek_children
-// container is not nil, container is Window
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Window) PeekChildren() (result glib.List) {
 	iv, err := _I.Get(400, "Window", "peek_children")
 	if err != nil {
@@ -8435,8 +9224,9 @@ func (v Window) PeekChildren() (result glib.List) {
 }
 
 // gdk_window_process_updates
-// container is not nil, container is Window
-// is method
+//
+// [ update_children ] trans: nothing
+//
 func (v Window) ProcessUpdates(update_children bool) {
 	iv, err := _I.Get(401, "Window", "process_updates")
 	if err != nil {
@@ -8450,8 +9240,7 @@ func (v Window) ProcessUpdates(update_children bool) {
 }
 
 // gdk_window_raise
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Raise() {
 	iv, err := _I.Get(402, "Window", "raise")
 	if err != nil {
@@ -8464,8 +9253,7 @@ func (v Window) Raise() {
 }
 
 // gdk_window_register_dnd
-// container is not nil, container is Window
-// is method
+//
 func (v Window) RegisterDnd() {
 	iv, err := _I.Get(403, "Window", "register_dnd")
 	if err != nil {
@@ -8478,8 +9266,13 @@ func (v Window) RegisterDnd() {
 }
 
 // gdk_window_reparent
-// container is not nil, container is Window
-// is method
+//
+// [ new_parent ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func (v Window) Reparent(new_parent IWindow, x int32, y int32) {
 	iv, err := _I.Get(404, "Window", "reparent")
 	if err != nil {
@@ -8499,8 +9292,11 @@ func (v Window) Reparent(new_parent IWindow, x int32, y int32) {
 }
 
 // gdk_window_resize
-// container is not nil, container is Window
-// is method
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
 func (v Window) Resize(width int32, height int32) {
 	iv, err := _I.Get(405, "Window", "resize")
 	if err != nil {
@@ -8515,8 +9311,11 @@ func (v Window) Resize(width int32, height int32) {
 }
 
 // gdk_window_restack
-// container is not nil, container is Window
-// is method
+//
+// [ sibling ] trans: nothing
+//
+// [ above ] trans: nothing
+//
 func (v Window) Restack(sibling IWindow, above bool) {
 	iv, err := _I.Get(406, "Window", "restack")
 	if err != nil {
@@ -8535,8 +9334,11 @@ func (v Window) Restack(sibling IWindow, above bool) {
 }
 
 // gdk_window_scroll
-// container is not nil, container is Window
-// is method
+//
+// [ dx ] trans: nothing
+//
+// [ dy ] trans: nothing
+//
 func (v Window) Scroll(dx int32, dy int32) {
 	iv, err := _I.Get(407, "Window", "scroll")
 	if err != nil {
@@ -8551,8 +9353,9 @@ func (v Window) Scroll(dx int32, dy int32) {
 }
 
 // gdk_window_set_accept_focus
-// container is not nil, container is Window
-// is method
+//
+// [ accept_focus ] trans: nothing
+//
 func (v Window) SetAcceptFocus(accept_focus bool) {
 	iv, err := _I.Get(408, "Window", "set_accept_focus")
 	if err != nil {
@@ -8566,8 +9369,9 @@ func (v Window) SetAcceptFocus(accept_focus bool) {
 }
 
 // gdk_window_set_background
-// container is not nil, container is Window
-// is method
+//
+// [ color ] trans: nothing
+//
 func (v Window) SetBackground(color Color) {
 	iv, err := _I.Get(409, "Window", "set_background")
 	if err != nil {
@@ -8581,8 +9385,9 @@ func (v Window) SetBackground(color Color) {
 }
 
 // gdk_window_set_background_pattern
-// container is not nil, container is Window
-// is method
+//
+// [ pattern ] trans: nothing
+//
 func (v Window) SetBackgroundPattern(pattern cairo.Pattern) {
 	iv, err := _I.Get(410, "Window", "set_background_pattern")
 	if err != nil {
@@ -8596,8 +9401,9 @@ func (v Window) SetBackgroundPattern(pattern cairo.Pattern) {
 }
 
 // gdk_window_set_background_rgba
-// container is not nil, container is Window
-// is method
+//
+// [ rgba ] trans: nothing
+//
 func (v Window) SetBackgroundRgba(rgba RGBA) {
 	iv, err := _I.Get(411, "Window", "set_background_rgba")
 	if err != nil {
@@ -8611,8 +9417,7 @@ func (v Window) SetBackgroundRgba(rgba RGBA) {
 }
 
 // gdk_window_set_child_input_shapes
-// container is not nil, container is Window
-// is method
+//
 func (v Window) SetChildInputShapes() {
 	iv, err := _I.Get(412, "Window", "set_child_input_shapes")
 	if err != nil {
@@ -8625,8 +9430,7 @@ func (v Window) SetChildInputShapes() {
 }
 
 // gdk_window_set_child_shapes
-// container is not nil, container is Window
-// is method
+//
 func (v Window) SetChildShapes() {
 	iv, err := _I.Get(413, "Window", "set_child_shapes")
 	if err != nil {
@@ -8639,8 +9443,9 @@ func (v Window) SetChildShapes() {
 }
 
 // gdk_window_set_composited
-// container is not nil, container is Window
-// is method
+//
+// [ composited ] trans: nothing
+//
 func (v Window) SetComposited(composited bool) {
 	iv, err := _I.Get(414, "Window", "set_composited")
 	if err != nil {
@@ -8654,8 +9459,9 @@ func (v Window) SetComposited(composited bool) {
 }
 
 // gdk_window_set_cursor
-// container is not nil, container is Window
-// is method
+//
+// [ cursor ] trans: nothing
+//
 func (v Window) SetCursor(cursor ICursor) {
 	iv, err := _I.Get(415, "Window", "set_cursor")
 	if err != nil {
@@ -8673,8 +9479,9 @@ func (v Window) SetCursor(cursor ICursor) {
 }
 
 // gdk_window_set_decorations
-// container is not nil, container is Window
-// is method
+//
+// [ decorations ] trans: nothing
+//
 func (v Window) SetDecorations(decorations WMDecorationFlags) {
 	iv, err := _I.Get(416, "Window", "set_decorations")
 	if err != nil {
@@ -8688,8 +9495,11 @@ func (v Window) SetDecorations(decorations WMDecorationFlags) {
 }
 
 // gdk_window_set_device_cursor
-// container is not nil, container is Window
-// is method
+//
+// [ device ] trans: nothing
+//
+// [ cursor ] trans: nothing
+//
 func (v Window) SetDeviceCursor(device IDevice, cursor ICursor) {
 	iv, err := _I.Get(417, "Window", "set_device_cursor")
 	if err != nil {
@@ -8712,8 +9522,11 @@ func (v Window) SetDeviceCursor(device IDevice, cursor ICursor) {
 }
 
 // gdk_window_set_device_events
-// container is not nil, container is Window
-// is method
+//
+// [ device ] trans: nothing
+//
+// [ event_mask ] trans: nothing
+//
 func (v Window) SetDeviceEvents(device IDevice, event_mask EventMaskFlags) {
 	iv, err := _I.Get(418, "Window", "set_device_events")
 	if err != nil {
@@ -8732,8 +9545,9 @@ func (v Window) SetDeviceEvents(device IDevice, event_mask EventMaskFlags) {
 }
 
 // gdk_window_set_event_compression
-// container is not nil, container is Window
-// is method
+//
+// [ event_compression ] trans: nothing
+//
 func (v Window) SetEventCompression(event_compression bool) {
 	iv, err := _I.Get(419, "Window", "set_event_compression")
 	if err != nil {
@@ -8747,8 +9561,9 @@ func (v Window) SetEventCompression(event_compression bool) {
 }
 
 // gdk_window_set_events
-// container is not nil, container is Window
-// is method
+//
+// [ event_mask ] trans: nothing
+//
 func (v Window) SetEvents(event_mask EventMaskFlags) {
 	iv, err := _I.Get(420, "Window", "set_events")
 	if err != nil {
@@ -8762,8 +9577,9 @@ func (v Window) SetEvents(event_mask EventMaskFlags) {
 }
 
 // gdk_window_set_focus_on_map
-// container is not nil, container is Window
-// is method
+//
+// [ focus_on_map ] trans: nothing
+//
 func (v Window) SetFocusOnMap(focus_on_map bool) {
 	iv, err := _I.Get(421, "Window", "set_focus_on_map")
 	if err != nil {
@@ -8777,8 +9593,9 @@ func (v Window) SetFocusOnMap(focus_on_map bool) {
 }
 
 // gdk_window_set_fullscreen_mode
-// container is not nil, container is Window
-// is method
+//
+// [ mode ] trans: nothing
+//
 func (v Window) SetFullscreenMode(mode FullscreenModeEnum) {
 	iv, err := _I.Get(422, "Window", "set_fullscreen_mode")
 	if err != nil {
@@ -8792,8 +9609,9 @@ func (v Window) SetFullscreenMode(mode FullscreenModeEnum) {
 }
 
 // gdk_window_set_functions
-// container is not nil, container is Window
-// is method
+//
+// [ functions ] trans: nothing
+//
 func (v Window) SetFunctions(functions WMFunctionFlags) {
 	iv, err := _I.Get(423, "Window", "set_functions")
 	if err != nil {
@@ -8807,8 +9625,11 @@ func (v Window) SetFunctions(functions WMFunctionFlags) {
 }
 
 // gdk_window_set_geometry_hints
-// container is not nil, container is Window
-// is method
+//
+// [ geometry ] trans: nothing
+//
+// [ geom_mask ] trans: nothing
+//
 func (v Window) SetGeometryHints(geometry Geometry, geom_mask WindowHintsFlags) {
 	iv, err := _I.Get(424, "Window", "set_geometry_hints")
 	if err != nil {
@@ -8823,8 +9644,9 @@ func (v Window) SetGeometryHints(geometry Geometry, geom_mask WindowHintsFlags) 
 }
 
 // gdk_window_set_group
-// container is not nil, container is Window
-// is method
+//
+// [ leader ] trans: nothing
+//
 func (v Window) SetGroup(leader IWindow) {
 	iv, err := _I.Get(425, "Window", "set_group")
 	if err != nil {
@@ -8842,8 +9664,9 @@ func (v Window) SetGroup(leader IWindow) {
 }
 
 // gdk_window_set_icon_list
-// container is not nil, container is Window
-// is method
+//
+// [ pixbufs ] trans: nothing
+//
 func (v Window) SetIconList(pixbufs glib.List) {
 	iv, err := _I.Get(426, "Window", "set_icon_list")
 	if err != nil {
@@ -8857,8 +9680,9 @@ func (v Window) SetIconList(pixbufs glib.List) {
 }
 
 // gdk_window_set_icon_name
-// container is not nil, container is Window
-// is method
+//
+// [ name ] trans: nothing
+//
 func (v Window) SetIconName(name string) {
 	iv, err := _I.Get(427, "Window", "set_icon_name")
 	if err != nil {
@@ -8874,8 +9698,9 @@ func (v Window) SetIconName(name string) {
 }
 
 // gdk_window_set_keep_above
-// container is not nil, container is Window
-// is method
+//
+// [ setting ] trans: nothing
+//
 func (v Window) SetKeepAbove(setting bool) {
 	iv, err := _I.Get(428, "Window", "set_keep_above")
 	if err != nil {
@@ -8889,8 +9714,9 @@ func (v Window) SetKeepAbove(setting bool) {
 }
 
 // gdk_window_set_keep_below
-// container is not nil, container is Window
-// is method
+//
+// [ setting ] trans: nothing
+//
 func (v Window) SetKeepBelow(setting bool) {
 	iv, err := _I.Get(429, "Window", "set_keep_below")
 	if err != nil {
@@ -8904,8 +9730,9 @@ func (v Window) SetKeepBelow(setting bool) {
 }
 
 // gdk_window_set_modal_hint
-// container is not nil, container is Window
-// is method
+//
+// [ modal ] trans: nothing
+//
 func (v Window) SetModalHint(modal bool) {
 	iv, err := _I.Get(430, "Window", "set_modal_hint")
 	if err != nil {
@@ -8919,8 +9746,9 @@ func (v Window) SetModalHint(modal bool) {
 }
 
 // gdk_window_set_opacity
-// container is not nil, container is Window
-// is method
+//
+// [ opacity ] trans: nothing
+//
 func (v Window) SetOpacity(opacity float64) {
 	iv, err := _I.Get(431, "Window", "set_opacity")
 	if err != nil {
@@ -8934,8 +9762,9 @@ func (v Window) SetOpacity(opacity float64) {
 }
 
 // gdk_window_set_opaque_region
-// container is not nil, container is Window
-// is method
+//
+// [ region ] trans: nothing
+//
 func (v Window) SetOpaqueRegion(region cairo.Region) {
 	iv, err := _I.Get(432, "Window", "set_opaque_region")
 	if err != nil {
@@ -8949,8 +9778,9 @@ func (v Window) SetOpaqueRegion(region cairo.Region) {
 }
 
 // gdk_window_set_override_redirect
-// container is not nil, container is Window
-// is method
+//
+// [ override_redirect ] trans: nothing
+//
 func (v Window) SetOverrideRedirect(override_redirect bool) {
 	iv, err := _I.Get(433, "Window", "set_override_redirect")
 	if err != nil {
@@ -8964,8 +9794,9 @@ func (v Window) SetOverrideRedirect(override_redirect bool) {
 }
 
 // gdk_window_set_pass_through
-// container is not nil, container is Window
-// is method
+//
+// [ pass_through ] trans: nothing
+//
 func (v Window) SetPassThrough(pass_through bool) {
 	iv, err := _I.Get(434, "Window", "set_pass_through")
 	if err != nil {
@@ -8979,8 +9810,9 @@ func (v Window) SetPassThrough(pass_through bool) {
 }
 
 // gdk_window_set_role
-// container is not nil, container is Window
-// is method
+//
+// [ role ] trans: nothing
+//
 func (v Window) SetRole(role string) {
 	iv, err := _I.Get(435, "Window", "set_role")
 	if err != nil {
@@ -8996,8 +9828,15 @@ func (v Window) SetRole(role string) {
 }
 
 // gdk_window_set_shadow_width
-// container is not nil, container is Window
-// is method
+//
+// [ left ] trans: nothing
+//
+// [ right ] trans: nothing
+//
+// [ top ] trans: nothing
+//
+// [ bottom ] trans: nothing
+//
 func (v Window) SetShadowWidth(left int32, right int32, top int32, bottom int32) {
 	iv, err := _I.Get(436, "Window", "set_shadow_width")
 	if err != nil {
@@ -9014,8 +9853,9 @@ func (v Window) SetShadowWidth(left int32, right int32, top int32, bottom int32)
 }
 
 // gdk_window_set_skip_pager_hint
-// container is not nil, container is Window
-// is method
+//
+// [ skips_pager ] trans: nothing
+//
 func (v Window) SetSkipPagerHint(skips_pager bool) {
 	iv, err := _I.Get(437, "Window", "set_skip_pager_hint")
 	if err != nil {
@@ -9029,8 +9869,9 @@ func (v Window) SetSkipPagerHint(skips_pager bool) {
 }
 
 // gdk_window_set_skip_taskbar_hint
-// container is not nil, container is Window
-// is method
+//
+// [ skips_taskbar ] trans: nothing
+//
 func (v Window) SetSkipTaskbarHint(skips_taskbar bool) {
 	iv, err := _I.Get(438, "Window", "set_skip_taskbar_hint")
 	if err != nil {
@@ -9044,8 +9885,11 @@ func (v Window) SetSkipTaskbarHint(skips_taskbar bool) {
 }
 
 // gdk_window_set_source_events
-// container is not nil, container is Window
-// is method
+//
+// [ source ] trans: nothing
+//
+// [ event_mask ] trans: nothing
+//
 func (v Window) SetSourceEvents(source InputSourceEnum, event_mask EventMaskFlags) {
 	iv, err := _I.Get(439, "Window", "set_source_events")
 	if err != nil {
@@ -9060,8 +9904,9 @@ func (v Window) SetSourceEvents(source InputSourceEnum, event_mask EventMaskFlag
 }
 
 // gdk_window_set_startup_id
-// container is not nil, container is Window
-// is method
+//
+// [ startup_id ] trans: nothing
+//
 func (v Window) SetStartupId(startup_id string) {
 	iv, err := _I.Get(440, "Window", "set_startup_id")
 	if err != nil {
@@ -9077,8 +9922,11 @@ func (v Window) SetStartupId(startup_id string) {
 }
 
 // gdk_window_set_static_gravities
-// container is not nil, container is Window
-// is method
+//
+// [ use_static ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Window) SetStaticGravities(use_static bool) (result bool) {
 	iv, err := _I.Get(441, "Window", "set_static_gravities")
 	if err != nil {
@@ -9095,8 +9943,9 @@ func (v Window) SetStaticGravities(use_static bool) (result bool) {
 }
 
 // gdk_window_set_support_multidevice
-// container is not nil, container is Window
-// is method
+//
+// [ support_multidevice ] trans: nothing
+//
 func (v Window) SetSupportMultidevice(support_multidevice bool) {
 	iv, err := _I.Get(442, "Window", "set_support_multidevice")
 	if err != nil {
@@ -9110,8 +9959,9 @@ func (v Window) SetSupportMultidevice(support_multidevice bool) {
 }
 
 // gdk_window_set_title
-// container is not nil, container is Window
-// is method
+//
+// [ title ] trans: nothing
+//
 func (v Window) SetTitle(title string) {
 	iv, err := _I.Get(443, "Window", "set_title")
 	if err != nil {
@@ -9127,8 +9977,9 @@ func (v Window) SetTitle(title string) {
 }
 
 // gdk_window_set_transient_for
-// container is not nil, container is Window
-// is method
+//
+// [ parent ] trans: nothing
+//
 func (v Window) SetTransientFor(parent IWindow) {
 	iv, err := _I.Get(444, "Window", "set_transient_for")
 	if err != nil {
@@ -9146,8 +9997,9 @@ func (v Window) SetTransientFor(parent IWindow) {
 }
 
 // gdk_window_set_type_hint
-// container is not nil, container is Window
-// is method
+//
+// [ hint ] trans: nothing
+//
 func (v Window) SetTypeHint(hint WindowTypeHintEnum) {
 	iv, err := _I.Get(445, "Window", "set_type_hint")
 	if err != nil {
@@ -9161,8 +10013,9 @@ func (v Window) SetTypeHint(hint WindowTypeHintEnum) {
 }
 
 // gdk_window_set_urgency_hint
-// container is not nil, container is Window
-// is method
+//
+// [ urgent ] trans: nothing
+//
 func (v Window) SetUrgencyHint(urgent bool) {
 	iv, err := _I.Get(446, "Window", "set_urgency_hint")
 	if err != nil {
@@ -9176,8 +10029,9 @@ func (v Window) SetUrgencyHint(urgent bool) {
 }
 
 // gdk_window_set_user_data
-// container is not nil, container is Window
-// is method
+//
+// [ user_data ] trans: nothing
+//
 func (v Window) SetUserData(user_data gobject.IObject) {
 	iv, err := _I.Get(447, "Window", "set_user_data")
 	if err != nil {
@@ -9195,8 +10049,13 @@ func (v Window) SetUserData(user_data gobject.IObject) {
 }
 
 // gdk_window_shape_combine_region
-// container is not nil, container is Window
-// is method
+//
+// [ shape_region ] trans: nothing
+//
+// [ offset_x ] trans: nothing
+//
+// [ offset_y ] trans: nothing
+//
 func (v Window) ShapeCombineRegion(shape_region cairo.Region, offset_x int32, offset_y int32) {
 	iv, err := _I.Get(448, "Window", "shape_combine_region")
 	if err != nil {
@@ -9212,8 +10071,7 @@ func (v Window) ShapeCombineRegion(shape_region cairo.Region, offset_x int32, of
 }
 
 // gdk_window_show
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Show() {
 	iv, err := _I.Get(449, "Window", "show")
 	if err != nil {
@@ -9226,8 +10084,7 @@ func (v Window) Show() {
 }
 
 // gdk_window_show_unraised
-// container is not nil, container is Window
-// is method
+//
 func (v Window) ShowUnraised() {
 	iv, err := _I.Get(450, "Window", "show_unraised")
 	if err != nil {
@@ -9240,8 +10097,11 @@ func (v Window) ShowUnraised() {
 }
 
 // gdk_window_show_window_menu
-// container is not nil, container is Window
-// is method
+//
+// [ event ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Window) ShowWindowMenu(event Event) (result bool) {
 	iv, err := _I.Get(451, "Window", "show_window_menu")
 	if err != nil {
@@ -9258,8 +10118,7 @@ func (v Window) ShowWindowMenu(event Event) (result bool) {
 }
 
 // gdk_window_stick
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Stick() {
 	iv, err := _I.Get(452, "Window", "stick")
 	if err != nil {
@@ -9272,8 +10131,7 @@ func (v Window) Stick() {
 }
 
 // gdk_window_thaw_toplevel_updates_libgtk_only
-// container is not nil, container is Window
-// is method
+//
 func (v Window) ThawToplevelUpdatesLibgtkOnly() {
 	iv, err := _I.Get(453, "Window", "thaw_toplevel_updates_libgtk_only")
 	if err != nil {
@@ -9286,8 +10144,7 @@ func (v Window) ThawToplevelUpdatesLibgtkOnly() {
 }
 
 // gdk_window_thaw_updates
-// container is not nil, container is Window
-// is method
+//
 func (v Window) ThawUpdates() {
 	iv, err := _I.Get(454, "Window", "thaw_updates")
 	if err != nil {
@@ -9300,8 +10157,7 @@ func (v Window) ThawUpdates() {
 }
 
 // gdk_window_unfullscreen
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Unfullscreen() {
 	iv, err := _I.Get(455, "Window", "unfullscreen")
 	if err != nil {
@@ -9314,8 +10170,7 @@ func (v Window) Unfullscreen() {
 }
 
 // gdk_window_unmaximize
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Unmaximize() {
 	iv, err := _I.Get(456, "Window", "unmaximize")
 	if err != nil {
@@ -9328,8 +10183,7 @@ func (v Window) Unmaximize() {
 }
 
 // gdk_window_unstick
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Unstick() {
 	iv, err := _I.Get(457, "Window", "unstick")
 	if err != nil {
@@ -9342,8 +10196,7 @@ func (v Window) Unstick() {
 }
 
 // gdk_window_withdraw
-// container is not nil, container is Window
-// is method
+//
 func (v Window) Withdraw() {
 	iv, err := _I.Get(458, "Window", "withdraw")
 	if err != nil {
@@ -9552,7 +10405,9 @@ func WindowWindowClassGetType() gi.GType {
 }
 
 // gdk_add_option_entries_libgtk_only
-// container is nil
+//
+// [ group ] trans: nothing
+//
 func AddOptionEntriesLibgtkOnly(group glib.OptionGroup) {
 	iv, err := _I.Get(459, "add_option_entries_libgtk_only", "")
 	if err != nil {
@@ -9565,7 +10420,13 @@ func AddOptionEntriesLibgtkOnly(group glib.OptionGroup) {
 }
 
 // gdk_atom_intern
-// container is nil
+//
+// [ atom_name ] trans: nothing
+//
+// [ only_if_exists ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomIntern(atom_name string, only_if_exists bool) (result Atom) {
 	iv, err := _I.Get(460, "atom_intern", "")
 	if err != nil {
@@ -9584,7 +10445,11 @@ func AtomIntern(atom_name string, only_if_exists bool) (result Atom) {
 }
 
 // gdk_atom_intern_static_string
-// container is nil
+//
+// [ atom_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomInternStaticString(atom_name string) (result Atom) {
 	iv, err := _I.Get(461, "atom_intern_static_string", "")
 	if err != nil {
@@ -9602,7 +10467,7 @@ func AtomInternStaticString(atom_name string) (result Atom) {
 }
 
 // gdk_beep
-// container is nil
+//
 func Beep() {
 	iv, err := _I.Get(462, "beep", "")
 	if err != nil {
@@ -9613,7 +10478,11 @@ func Beep() {
 }
 
 // gdk_cairo_create
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func CairoCreate(window IWindow) (result cairo.Context) {
 	iv, err := _I.Get(463, "cairo_create", "")
 	if err != nil {
@@ -9633,7 +10502,25 @@ func CairoCreate(window IWindow) (result cairo.Context) {
 }
 
 // gdk_cairo_draw_from_gl
-// container is nil
+//
+// [ cr ] trans: nothing
+//
+// [ window ] trans: nothing
+//
+// [ source ] trans: nothing
+//
+// [ source_type ] trans: nothing
+//
+// [ buffer_scale ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
 func CairoDrawFromGl(cr cairo.Context, window IWindow, source int32, source_type int32, buffer_scale int32, x int32, y int32, width int32, height int32) {
 	iv, err := _I.Get(464, "cairo_draw_from_gl", "")
 	if err != nil {
@@ -9658,7 +10545,13 @@ func CairoDrawFromGl(cr cairo.Context, window IWindow, source int32, source_type
 }
 
 // gdk_cairo_get_clip_rectangle
-// container is nil
+//
+// [ cr ] trans: nothing
+//
+// [ rect ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func CairoGetClipRectangle(cr cairo.Context, rect Rectangle) (result bool) {
 	iv, err := _I.Get(465, "cairo_get_clip_rectangle", "")
 	if err != nil {
@@ -9675,7 +10568,11 @@ func CairoGetClipRectangle(cr cairo.Context, rect Rectangle) (result bool) {
 }
 
 // gdk_cairo_get_drawing_context
-// container is nil
+//
+// [ cr ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func CairoGetDrawingContext(cr cairo.Context) (result DrawingContext) {
 	iv, err := _I.Get(466, "cairo_get_drawing_context", "")
 	if err != nil {
@@ -9691,7 +10588,11 @@ func CairoGetDrawingContext(cr cairo.Context) (result DrawingContext) {
 }
 
 // gdk_cairo_rectangle
-// container is nil
+//
+// [ cr ] trans: nothing
+//
+// [ rectangle ] trans: nothing
+//
 func CairoRectangle(cr cairo.Context, rectangle Rectangle) {
 	iv, err := _I.Get(467, "cairo_rectangle", "")
 	if err != nil {
@@ -9705,7 +10606,11 @@ func CairoRectangle(cr cairo.Context, rectangle Rectangle) {
 }
 
 // gdk_cairo_region
-// container is nil
+//
+// [ cr ] trans: nothing
+//
+// [ region ] trans: nothing
+//
 func CairoRegion(cr cairo.Context, region cairo.Region) {
 	iv, err := _I.Get(468, "cairo_region", "")
 	if err != nil {
@@ -9719,7 +10624,11 @@ func CairoRegion(cr cairo.Context, region cairo.Region) {
 }
 
 // gdk_cairo_region_create_from_surface
-// container is nil
+//
+// [ surface ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func CairoRegionCreateFromSurface(surface cairo.Surface) (result cairo.Region) {
 	iv, err := _I.Get(469, "cairo_region_create_from_surface", "")
 	if err != nil {
@@ -9735,7 +10644,11 @@ func CairoRegionCreateFromSurface(surface cairo.Surface) (result cairo.Region) {
 }
 
 // gdk_cairo_set_source_color
-// container is nil
+//
+// [ cr ] trans: nothing
+//
+// [ color ] trans: nothing
+//
 func CairoSetSourceColor(cr cairo.Context, color Color) {
 	iv, err := _I.Get(470, "cairo_set_source_color", "")
 	if err != nil {
@@ -9749,7 +10662,15 @@ func CairoSetSourceColor(cr cairo.Context, color Color) {
 }
 
 // gdk_cairo_set_source_pixbuf
-// container is nil
+//
+// [ cr ] trans: nothing
+//
+// [ pixbuf ] trans: nothing
+//
+// [ pixbuf_x ] trans: nothing
+//
+// [ pixbuf_y ] trans: nothing
+//
 func CairoSetSourcePixbuf(cr cairo.Context, pixbuf gdkpixbuf.IPixbuf, pixbuf_x float64, pixbuf_y float64) {
 	iv, err := _I.Get(471, "cairo_set_source_pixbuf", "")
 	if err != nil {
@@ -9769,7 +10690,11 @@ func CairoSetSourcePixbuf(cr cairo.Context, pixbuf gdkpixbuf.IPixbuf, pixbuf_x f
 }
 
 // gdk_cairo_set_source_rgba
-// container is nil
+//
+// [ cr ] trans: nothing
+//
+// [ rgba ] trans: nothing
+//
 func CairoSetSourceRgba(cr cairo.Context, rgba RGBA) {
 	iv, err := _I.Get(472, "cairo_set_source_rgba", "")
 	if err != nil {
@@ -9783,7 +10708,15 @@ func CairoSetSourceRgba(cr cairo.Context, rgba RGBA) {
 }
 
 // gdk_cairo_set_source_window
-// container is nil
+//
+// [ cr ] trans: nothing
+//
+// [ window ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func CairoSetSourceWindow(cr cairo.Context, window IWindow, x float64, y float64) {
 	iv, err := _I.Get(473, "cairo_set_source_window", "")
 	if err != nil {
@@ -9803,7 +10736,15 @@ func CairoSetSourceWindow(cr cairo.Context, window IWindow, x float64, y float64
 }
 
 // gdk_cairo_surface_create_from_pixbuf
-// container is nil
+//
+// [ pixbuf ] trans: nothing
+//
+// [ scale ] trans: nothing
+//
+// [ for_window ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func CairoSurfaceCreateFromPixbuf(pixbuf gdkpixbuf.IPixbuf, scale int32, for_window IWindow) (result cairo.Surface) {
 	iv, err := _I.Get(474, "cairo_surface_create_from_pixbuf", "")
 	if err != nil {
@@ -9829,7 +10770,13 @@ func CairoSurfaceCreateFromPixbuf(pixbuf gdkpixbuf.IPixbuf, scale int32, for_win
 }
 
 // gdk_color_parse
-// container is nil
+//
+// [ spec ] trans: nothing
+//
+// [ color ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func ColorParse(spec string, color Color) (result bool) {
 	iv, err := _I.Get(475, "color_parse", "")
 	if err != nil {
@@ -9848,7 +10795,7 @@ func ColorParse(spec string, color Color) (result bool) {
 }
 
 // gdk_disable_multidevice
-// container is nil
+//
 func DisableMultidevice() {
 	iv, err := _I.Get(476, "disable_multidevice", "")
 	if err != nil {
@@ -9859,7 +10806,11 @@ func DisableMultidevice() {
 }
 
 // gdk_drag_abort
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
 func DragAbort(context IDragContext, time_ uint32) {
 	iv, err := _I.Get(477, "drag_abort", "")
 	if err != nil {
@@ -9877,7 +10828,13 @@ func DragAbort(context IDragContext, time_ uint32) {
 }
 
 // gdk_drag_begin
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ targets ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DragBegin(window IWindow, targets glib.List) (result DragContext) {
 	iv, err := _I.Get(478, "drag_begin", "")
 	if err != nil {
@@ -9898,7 +10855,15 @@ func DragBegin(window IWindow, targets glib.List) (result DragContext) {
 }
 
 // gdk_drag_begin_for_device
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ device ] trans: nothing
+//
+// [ targets ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DragBeginForDevice(window IWindow, device IDevice, targets glib.List) (result DragContext) {
 	iv, err := _I.Get(479, "drag_begin_for_device", "")
 	if err != nil {
@@ -9924,7 +10889,19 @@ func DragBeginForDevice(window IWindow, device IDevice, targets glib.List) (resu
 }
 
 // gdk_drag_begin_from_point
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ device ] trans: nothing
+//
+// [ targets ] trans: nothing
+//
+// [ x_root ] trans: nothing
+//
+// [ y_root ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DragBeginFromPoint(window IWindow, device IDevice, targets glib.List, x_root int32, y_root int32) (result DragContext) {
 	iv, err := _I.Get(480, "drag_begin_from_point", "")
 	if err != nil {
@@ -9952,7 +10929,11 @@ func DragBeginFromPoint(window IWindow, device IDevice, targets glib.List, x_roo
 }
 
 // gdk_drag_drop
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
 func DragDrop(context IDragContext, time_ uint32) {
 	iv, err := _I.Get(481, "drag_drop", "")
 	if err != nil {
@@ -9970,7 +10951,11 @@ func DragDrop(context IDragContext, time_ uint32) {
 }
 
 // gdk_drag_drop_done
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ success ] trans: nothing
+//
 func DragDropDone(context IDragContext, success bool) {
 	iv, err := _I.Get(482, "drag_drop_done", "")
 	if err != nil {
@@ -9988,7 +10973,11 @@ func DragDropDone(context IDragContext, success bool) {
 }
 
 // gdk_drag_drop_succeeded
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DragDropSucceeded(context IDragContext) (result bool) {
 	iv, err := _I.Get(483, "drag_drop_succeeded", "")
 	if err != nil {
@@ -10008,7 +10997,21 @@ func DragDropSucceeded(context IDragContext) (result bool) {
 }
 
 // gdk_drag_find_window_for_screen
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ drag_window ] trans: nothing
+//
+// [ screen ] trans: nothing
+//
+// [ x_root ] trans: nothing
+//
+// [ y_root ] trans: nothing
+//
+// [ dest_window ] trans: everything, dir: out
+//
+// [ protocol ] trans: everything, dir: out
+//
 func DragFindWindowForScreen(context IDragContext, drag_window IWindow, screen IScreen, x_root int32, y_root int32) (dest_window Window, protocol DragProtocolEnum) {
 	iv, err := _I.Get(484, "drag_find_window_for_screen", "")
 	if err != nil {
@@ -10043,7 +11046,11 @@ func DragFindWindowForScreen(context IDragContext, drag_window IWindow, screen I
 }
 
 // gdk_drag_get_selection
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DragGetSelection(context IDragContext) (result Atom) {
 	iv, err := _I.Get(485, "drag_get_selection", "")
 	if err != nil {
@@ -10063,7 +11070,25 @@ func DragGetSelection(context IDragContext) (result Atom) {
 }
 
 // gdk_drag_motion
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ dest_window ] trans: nothing
+//
+// [ protocol ] trans: nothing
+//
+// [ x_root ] trans: nothing
+//
+// [ y_root ] trans: nothing
+//
+// [ suggested_action ] trans: nothing
+//
+// [ possible_actions ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DragMotion(context IDragContext, dest_window IWindow, protocol DragProtocolEnum, x_root int32, y_root int32, suggested_action DragActionFlags, possible_actions DragActionFlags, time_ uint32) (result bool) {
 	iv, err := _I.Get(486, "drag_motion", "")
 	if err != nil {
@@ -10094,7 +11119,13 @@ func DragMotion(context IDragContext, dest_window IWindow, protocol DragProtocol
 }
 
 // gdk_drag_status
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ action ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
 func DragStatus(context IDragContext, action DragActionFlags, time_ uint32) {
 	iv, err := _I.Get(487, "drag_status", "")
 	if err != nil {
@@ -10113,7 +11144,13 @@ func DragStatus(context IDragContext, action DragActionFlags, time_ uint32) {
 }
 
 // gdk_drop_finish
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ success ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
 func DropFinish(context IDragContext, success bool, time_ uint32) {
 	iv, err := _I.Get(488, "drop_finish", "")
 	if err != nil {
@@ -10132,7 +11169,13 @@ func DropFinish(context IDragContext, success bool, time_ uint32) {
 }
 
 // gdk_drop_reply
-// container is nil
+//
+// [ context ] trans: nothing
+//
+// [ accepted ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
 func DropReply(context IDragContext, accepted bool, time_ uint32) {
 	iv, err := _I.Get(489, "drop_reply", "")
 	if err != nil {
@@ -10151,7 +11194,9 @@ func DropReply(context IDragContext, accepted bool, time_ uint32) {
 }
 
 // gdk_error_trap_pop
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func ErrorTrapPop() (result int32) {
 	iv, err := _I.Get(490, "error_trap_pop", "")
 	if err != nil {
@@ -10165,7 +11210,7 @@ func ErrorTrapPop() (result int32) {
 }
 
 // gdk_error_trap_pop_ignored
-// container is nil
+//
 func ErrorTrapPopIgnored() {
 	iv, err := _I.Get(491, "error_trap_pop_ignored", "")
 	if err != nil {
@@ -10176,7 +11221,7 @@ func ErrorTrapPopIgnored() {
 }
 
 // gdk_error_trap_push
-// container is nil
+//
 func ErrorTrapPush() {
 	iv, err := _I.Get(492, "error_trap_push", "")
 	if err != nil {
@@ -10187,7 +11232,9 @@ func ErrorTrapPush() {
 }
 
 // gdk_event_get
-// container is nil
+//
+// [ result ] trans: everything
+//
 func EventGet() (result Event) {
 	iv, err := _I.Get(493, "event_get", "")
 	if err != nil {
@@ -10201,7 +11248,13 @@ func EventGet() (result Event) {
 }
 
 // gdk_event_handler_set
-// container is nil
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
 func EventHandlerSet(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(494, "event_handler_set", "")
 	if err != nil {
@@ -10216,7 +11269,9 @@ func EventHandlerSet(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, noti
 }
 
 // gdk_event_peek
-// container is nil
+//
+// [ result ] trans: everything
+//
 func EventPeek() (result Event) {
 	iv, err := _I.Get(495, "event_peek", "")
 	if err != nil {
@@ -10230,7 +11285,9 @@ func EventPeek() (result Event) {
 }
 
 // gdk_event_request_motions
-// container is nil
+//
+// [ event ] trans: nothing
+//
 func EventRequestMotions(event EventMotion) {
 	iv, err := _I.Get(496, "event_request_motions", "")
 	if err != nil {
@@ -10243,7 +11300,15 @@ func EventRequestMotions(event EventMotion) {
 }
 
 // gdk_events_get_angle
-// container is nil
+//
+// [ event1 ] trans: nothing
+//
+// [ event2 ] trans: nothing
+//
+// [ angle ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func EventsGetAngle(event1 Event, event2 Event) (result bool, angle float64) {
 	iv, err := _I.Get(497, "events_get_angle", "")
 	if err != nil {
@@ -10263,7 +11328,17 @@ func EventsGetAngle(event1 Event, event2 Event) (result bool, angle float64) {
 }
 
 // gdk_events_get_center
-// container is nil
+//
+// [ event1 ] trans: nothing
+//
+// [ event2 ] trans: nothing
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func EventsGetCenter(event1 Event, event2 Event) (result bool, x float64, y float64) {
 	iv, err := _I.Get(498, "events_get_center", "")
 	if err != nil {
@@ -10285,7 +11360,15 @@ func EventsGetCenter(event1 Event, event2 Event) (result bool, x float64, y floa
 }
 
 // gdk_events_get_distance
-// container is nil
+//
+// [ event1 ] trans: nothing
+//
+// [ event2 ] trans: nothing
+//
+// [ distance ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func EventsGetDistance(event1 Event, event2 Event) (result bool, distance float64) {
 	iv, err := _I.Get(499, "events_get_distance", "")
 	if err != nil {
@@ -10305,7 +11388,9 @@ func EventsGetDistance(event1 Event, event2 Event) (result bool, distance float6
 }
 
 // gdk_events_pending
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func EventsPending() (result bool) {
 	iv, err := _I.Get(500, "events_pending", "")
 	if err != nil {
@@ -10319,7 +11404,7 @@ func EventsPending() (result bool) {
 }
 
 // gdk_flush
-// container is nil
+//
 func Flush() {
 	iv, err := _I.Get(501, "flush", "")
 	if err != nil {
@@ -10330,7 +11415,9 @@ func Flush() {
 }
 
 // gdk_get_default_root_window
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetDefaultRootWindow() (result Window) {
 	iv, err := _I.Get(502, "get_default_root_window", "")
 	if err != nil {
@@ -10344,7 +11431,9 @@ func GetDefaultRootWindow() (result Window) {
 }
 
 // gdk_get_display
-// container is nil
+//
+// [ result ] trans: everything
+//
 func GetDisplay() (result string) {
 	iv, err := _I.Get(503, "get_display", "")
 	if err != nil {
@@ -10358,7 +11447,9 @@ func GetDisplay() (result string) {
 }
 
 // gdk_get_display_arg_name
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetDisplayArgName() (result string) {
 	iv, err := _I.Get(504, "get_display_arg_name", "")
 	if err != nil {
@@ -10367,12 +11458,14 @@ func GetDisplayArgName() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gdk_get_program_class
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetProgramClass() (result string) {
 	iv, err := _I.Get(505, "get_program_class", "")
 	if err != nil {
@@ -10381,12 +11474,14 @@ func GetProgramClass() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gdk_get_show_events
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetShowEvents() (result bool) {
 	iv, err := _I.Get(506, "get_show_events", "")
 	if err != nil {
@@ -10400,7 +11495,9 @@ func GetShowEvents() (result bool) {
 }
 
 // gdk_gl_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GlErrorQuark() (result uint32) {
 	iv, err := _I.Get(507, "gl_error_quark", "")
 	if err != nil {
@@ -10414,8 +11511,11 @@ func GlErrorQuark() (result uint32) {
 }
 
 // gdk_init
-// container is nil
-// arg 1 argv lenArgIdx 0
+//
+// [ argc ] trans: everything, dir: inout
+//
+// [ argv ] trans: everything, dir: inout
+//
 func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 	iv, err := _I.Get(508, "init", "")
 	if err != nil {
@@ -10427,8 +11527,13 @@ func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 }
 
 // gdk_init_check
-// container is nil
-// arg 1 argv lenArgIdx 0
+//
+// [ argc ] trans: everything, dir: inout
+//
+// [ argv ] trans: everything, dir: inout
+//
+// [ result ] trans: nothing
+//
 func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 	iv, err := _I.Get(509, "init_check", "")
 	if err != nil {
@@ -10443,7 +11548,15 @@ func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 }
 
 // gdk_keyboard_grab
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ owner_events ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func KeyboardGrab(window IWindow, owner_events bool, time_ uint32) (result GrabStatusEnum) {
 	iv, err := _I.Get(510, "keyboard_grab", "")
 	if err != nil {
@@ -10465,7 +11578,9 @@ func KeyboardGrab(window IWindow, owner_events bool, time_ uint32) (result GrabS
 }
 
 // gdk_keyboard_ungrab
-// container is nil
+//
+// [ time_ ] trans: nothing
+//
 func KeyboardUngrab(time_ uint32) {
 	iv, err := _I.Get(511, "keyboard_ungrab", "")
 	if err != nil {
@@ -10478,7 +11593,13 @@ func KeyboardUngrab(time_ uint32) {
 }
 
 // gdk_keyval_convert_case
-// container is nil
+//
+// [ symbol ] trans: nothing
+//
+// [ lower ] trans: everything, dir: out
+//
+// [ upper ] trans: everything, dir: out
+//
 func KeyvalConvertCase(symbol uint32) (lower uint32, upper uint32) {
 	iv, err := _I.Get(512, "keyval_convert_case", "")
 	if err != nil {
@@ -10497,7 +11618,11 @@ func KeyvalConvertCase(symbol uint32) (lower uint32, upper uint32) {
 }
 
 // gdk_keyval_from_name
-// container is nil
+//
+// [ keyval_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func KeyvalFromName(keyval_name string) (result uint32) {
 	iv, err := _I.Get(513, "keyval_from_name", "")
 	if err != nil {
@@ -10515,7 +11640,11 @@ func KeyvalFromName(keyval_name string) (result uint32) {
 }
 
 // gdk_keyval_is_lower
-// container is nil
+//
+// [ keyval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func KeyvalIsLower(keyval uint32) (result bool) {
 	iv, err := _I.Get(514, "keyval_is_lower", "")
 	if err != nil {
@@ -10531,7 +11660,11 @@ func KeyvalIsLower(keyval uint32) (result bool) {
 }
 
 // gdk_keyval_is_upper
-// container is nil
+//
+// [ keyval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func KeyvalIsUpper(keyval uint32) (result bool) {
 	iv, err := _I.Get(515, "keyval_is_upper", "")
 	if err != nil {
@@ -10547,7 +11680,11 @@ func KeyvalIsUpper(keyval uint32) (result bool) {
 }
 
 // gdk_keyval_name
-// container is nil
+//
+// [ keyval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func KeyvalName(keyval uint32) (result string) {
 	iv, err := _I.Get(516, "keyval_name", "")
 	if err != nil {
@@ -10558,12 +11695,16 @@ func KeyvalName(keyval uint32) (result string) {
 	args := []gi.Argument{arg_keyval}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gdk_keyval_to_lower
-// container is nil
+//
+// [ keyval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func KeyvalToLower(keyval uint32) (result uint32) {
 	iv, err := _I.Get(517, "keyval_to_lower", "")
 	if err != nil {
@@ -10579,7 +11720,11 @@ func KeyvalToLower(keyval uint32) (result uint32) {
 }
 
 // gdk_keyval_to_unicode
-// container is nil
+//
+// [ keyval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func KeyvalToUnicode(keyval uint32) (result uint32) {
 	iv, err := _I.Get(518, "keyval_to_unicode", "")
 	if err != nil {
@@ -10595,7 +11740,11 @@ func KeyvalToUnicode(keyval uint32) (result uint32) {
 }
 
 // gdk_keyval_to_upper
-// container is nil
+//
+// [ keyval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func KeyvalToUpper(keyval uint32) (result uint32) {
 	iv, err := _I.Get(519, "keyval_to_upper", "")
 	if err != nil {
@@ -10611,7 +11760,9 @@ func KeyvalToUpper(keyval uint32) (result uint32) {
 }
 
 // gdk_list_visuals
-// container is nil
+//
+// [ result ] trans: container
+//
 func ListVisuals() (result glib.List) {
 	iv, err := _I.Get(520, "list_visuals", "")
 	if err != nil {
@@ -10625,7 +11776,7 @@ func ListVisuals() (result glib.List) {
 }
 
 // gdk_notify_startup_complete
-// container is nil
+//
 func NotifyStartupComplete() {
 	iv, err := _I.Get(521, "notify_startup_complete", "")
 	if err != nil {
@@ -10636,7 +11787,9 @@ func NotifyStartupComplete() {
 }
 
 // gdk_notify_startup_complete_with_id
-// container is nil
+//
+// [ startup_id ] trans: nothing
+//
 func NotifyStartupCompleteWithId(startup_id string) {
 	iv, err := _I.Get(522, "notify_startup_complete_with_id", "")
 	if err != nil {
@@ -10651,7 +11804,11 @@ func NotifyStartupCompleteWithId(startup_id string) {
 }
 
 // gdk_offscreen_window_get_embedder
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func OffscreenWindowGetEmbedder(window IWindow) (result Window) {
 	iv, err := _I.Get(523, "offscreen_window_get_embedder", "")
 	if err != nil {
@@ -10671,7 +11828,11 @@ func OffscreenWindowGetEmbedder(window IWindow) (result Window) {
 }
 
 // gdk_offscreen_window_get_surface
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func OffscreenWindowGetSurface(window IWindow) (result cairo.Surface) {
 	iv, err := _I.Get(524, "offscreen_window_get_surface", "")
 	if err != nil {
@@ -10691,7 +11852,11 @@ func OffscreenWindowGetSurface(window IWindow) (result cairo.Surface) {
 }
 
 // gdk_offscreen_window_set_embedder
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ embedder ] trans: nothing
+//
 func OffscreenWindowSetEmbedder(window IWindow, embedder IWindow) {
 	iv, err := _I.Get(525, "offscreen_window_set_embedder", "")
 	if err != nil {
@@ -10713,7 +11878,9 @@ func OffscreenWindowSetEmbedder(window IWindow, embedder IWindow) {
 }
 
 // gdk_pango_context_get
-// container is nil
+//
+// [ result ] trans: everything
+//
 func PangoContextGet() (result pango.Context) {
 	iv, err := _I.Get(526, "pango_context_get", "")
 	if err != nil {
@@ -10727,7 +11894,11 @@ func PangoContextGet() (result pango.Context) {
 }
 
 // gdk_pango_context_get_for_display
-// container is nil
+//
+// [ display ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func PangoContextGetForDisplay(display IDisplay) (result pango.Context) {
 	iv, err := _I.Get(527, "pango_context_get_for_display", "")
 	if err != nil {
@@ -10747,7 +11918,11 @@ func PangoContextGetForDisplay(display IDisplay) (result pango.Context) {
 }
 
 // gdk_pango_context_get_for_screen
-// container is nil
+//
+// [ screen ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func PangoContextGetForScreen(screen IScreen) (result pango.Context) {
 	iv, err := _I.Get(528, "pango_context_get_for_screen", "")
 	if err != nil {
@@ -10767,8 +11942,11 @@ func PangoContextGetForScreen(screen IScreen) (result pango.Context) {
 }
 
 // gdk_parse_args
-// container is nil
-// arg 1 argv lenArgIdx 0
+//
+// [ argc ] trans: nothing, dir: inout
+//
+// [ argv ] trans: everything, dir: inout
+//
 func ParseArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 	iv, err := _I.Get(529, "parse_args", "")
 	if err != nil {
@@ -10780,7 +11958,19 @@ func ParseArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 }
 
 // gdk_pixbuf_get_from_surface
-// container is nil
+//
+// [ surface ] trans: nothing
+//
+// [ src_x ] trans: nothing
+//
+// [ src_y ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func PixbufGetFromSurface(surface cairo.Surface, src_x int32, src_y int32, width int32, height int32) (result gdkpixbuf.Pixbuf) {
 	iv, err := _I.Get(530, "pixbuf_get_from_surface", "")
 	if err != nil {
@@ -10800,7 +11990,19 @@ func PixbufGetFromSurface(surface cairo.Surface, src_x int32, src_y int32, width
 }
 
 // gdk_pixbuf_get_from_window
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ src_x ] trans: nothing
+//
+// [ src_y ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func PixbufGetFromWindow(window IWindow, src_x int32, src_y int32, width int32, height int32) (result gdkpixbuf.Pixbuf) {
 	iv, err := _I.Get(531, "pixbuf_get_from_window", "")
 	if err != nil {
@@ -10824,7 +12026,21 @@ func PixbufGetFromWindow(window IWindow, src_x int32, src_y int32, width int32, 
 }
 
 // gdk_pointer_grab
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ owner_events ] trans: nothing
+//
+// [ event_mask ] trans: nothing
+//
+// [ confine_to ] trans: nothing
+//
+// [ cursor ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PointerGrab(window IWindow, owner_events bool, event_mask EventMaskFlags, confine_to IWindow, cursor ICursor, time_ uint32) (result GrabStatusEnum) {
 	iv, err := _I.Get(532, "pointer_grab", "")
 	if err != nil {
@@ -10857,7 +12073,9 @@ func PointerGrab(window IWindow, owner_events bool, event_mask EventMaskFlags, c
 }
 
 // gdk_pointer_is_grabbed
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func PointerIsGrabbed() (result bool) {
 	iv, err := _I.Get(533, "pointer_is_grabbed", "")
 	if err != nil {
@@ -10871,7 +12089,9 @@ func PointerIsGrabbed() (result bool) {
 }
 
 // gdk_pointer_ungrab
-// container is nil
+//
+// [ time_ ] trans: nothing
+//
 func PointerUngrab(time_ uint32) {
 	iv, err := _I.Get(534, "pointer_ungrab", "")
 	if err != nil {
@@ -10884,7 +12104,7 @@ func PointerUngrab(time_ uint32) {
 }
 
 // gdk_pre_parse_libgtk_only
-// container is nil
+//
 func PreParseLibgtkOnly() {
 	iv, err := _I.Get(535, "pre_parse_libgtk_only", "")
 	if err != nil {
@@ -10895,7 +12115,11 @@ func PreParseLibgtkOnly() {
 }
 
 // gdk_property_delete
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ property ] trans: nothing
+//
 func PropertyDelete(window IWindow, property Atom) {
 	iv, err := _I.Get(536, "property_delete", "")
 	if err != nil {
@@ -10913,8 +12137,29 @@ func PropertyDelete(window IWindow, property Atom) {
 }
 
 // gdk_property_get
-// container is nil
-// arg 9 data lenArgIdx 8
+//
+// [ window ] trans: nothing
+//
+// [ property ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ offset ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ pdelete ] trans: nothing
+//
+// [ actual_property_type ] trans: nothing, dir: out
+//
+// [ actual_format ] trans: everything, dir: out
+//
+// [ actual_length ] trans: everything, dir: out
+//
+// [ data ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, length uint64, pdelete int32, actual_property_type Atom) (result bool, actual_format int32, data gi.Uint8Array) {
 	iv, err := _I.Get(537, "property_get", "")
 	if err != nil {
@@ -10950,8 +12195,11 @@ func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, lengt
 }
 
 // gdk_query_depths
-// container is nil
-// arg 0 depths lenArgIdx 1
+//
+// [ depths ] trans: nothing, dir: out
+//
+// [ count ] trans: everything, dir: out
+//
 func QueryDepths() (depths gi.Int32Array) {
 	iv, err := _I.Get(538, "query_depths", "")
 	if err != nil {
@@ -10972,8 +12220,11 @@ func QueryDepths() (depths gi.Int32Array) {
 }
 
 // gdk_query_visual_types
-// container is nil
-// arg 0 visual_types lenArgIdx 1
+//
+// [ visual_types ] trans: nothing, dir: out
+//
+// [ count ] trans: everything, dir: out
+//
 func QueryVisualTypes() (visual_types unsafe.Pointer) {
 	iv, err := _I.Get(539, "query_visual_types", "")
 	if err != nil {
@@ -10993,7 +12244,15 @@ func QueryVisualTypes() (visual_types unsafe.Pointer) {
 }
 
 // gdk_selection_convert
-// container is nil
+//
+// [ requestor ] trans: nothing
+//
+// [ selection ] trans: nothing
+//
+// [ target ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
 func SelectionConvert(requestor IWindow, selection Atom, target Atom, time_ uint32) {
 	iv, err := _I.Get(540, "selection_convert", "")
 	if err != nil {
@@ -11013,7 +12272,11 @@ func SelectionConvert(requestor IWindow, selection Atom, target Atom, time_ uint
 }
 
 // gdk_selection_owner_get
-// container is nil
+//
+// [ selection ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SelectionOwnerGet(selection Atom) (result Window) {
 	iv, err := _I.Get(541, "selection_owner_get", "")
 	if err != nil {
@@ -11029,7 +12292,13 @@ func SelectionOwnerGet(selection Atom) (result Window) {
 }
 
 // gdk_selection_owner_get_for_display
-// container is nil
+//
+// [ display ] trans: nothing
+//
+// [ selection ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SelectionOwnerGetForDisplay(display IDisplay, selection Atom) (result Window) {
 	iv, err := _I.Get(542, "selection_owner_get_for_display", "")
 	if err != nil {
@@ -11050,7 +12319,17 @@ func SelectionOwnerGetForDisplay(display IDisplay, selection Atom) (result Windo
 }
 
 // gdk_selection_owner_set
-// container is nil
+//
+// [ owner ] trans: nothing
+//
+// [ selection ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
+// [ send_event ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SelectionOwnerSet(owner IWindow, selection Atom, time_ uint32, send_event bool) (result bool) {
 	iv, err := _I.Get(543, "selection_owner_set", "")
 	if err != nil {
@@ -11073,7 +12352,19 @@ func SelectionOwnerSet(owner IWindow, selection Atom, time_ uint32, send_event b
 }
 
 // gdk_selection_owner_set_for_display
-// container is nil
+//
+// [ display ] trans: nothing
+//
+// [ owner ] trans: nothing
+//
+// [ selection ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
+// [ send_event ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SelectionOwnerSetForDisplay(display IDisplay, owner IWindow, selection Atom, time_ uint32, send_event bool) (result bool) {
 	iv, err := _I.Get(544, "selection_owner_set_for_display", "")
 	if err != nil {
@@ -11101,7 +12392,17 @@ func SelectionOwnerSetForDisplay(display IDisplay, owner IWindow, selection Atom
 }
 
 // gdk_selection_send_notify
-// container is nil
+//
+// [ requestor ] trans: nothing
+//
+// [ selection ] trans: nothing
+//
+// [ target ] trans: nothing
+//
+// [ property ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
 func SelectionSendNotify(requestor IWindow, selection Atom, target Atom, property Atom, time_ uint32) {
 	iv, err := _I.Get(545, "selection_send_notify", "")
 	if err != nil {
@@ -11122,7 +12423,19 @@ func SelectionSendNotify(requestor IWindow, selection Atom, target Atom, propert
 }
 
 // gdk_selection_send_notify_for_display
-// container is nil
+//
+// [ display ] trans: nothing
+//
+// [ requestor ] trans: nothing
+//
+// [ selection ] trans: nothing
+//
+// [ target ] trans: nothing
+//
+// [ property ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
 func SelectionSendNotifyForDisplay(display IDisplay, requestor IWindow, selection Atom, target Atom, property Atom, time_ uint32) {
 	iv, err := _I.Get(546, "selection_send_notify_for_display", "")
 	if err != nil {
@@ -11148,7 +12461,9 @@ func SelectionSendNotifyForDisplay(display IDisplay, requestor IWindow, selectio
 }
 
 // gdk_set_allowed_backends
-// container is nil
+//
+// [ backends ] trans: nothing
+//
 func SetAllowedBackends(backends string) {
 	iv, err := _I.Get(547, "set_allowed_backends", "")
 	if err != nil {
@@ -11163,7 +12478,9 @@ func SetAllowedBackends(backends string) {
 }
 
 // gdk_set_double_click_time
-// container is nil
+//
+// [ msec ] trans: nothing
+//
 func SetDoubleClickTime(msec uint32) {
 	iv, err := _I.Get(548, "set_double_click_time", "")
 	if err != nil {
@@ -11176,7 +12493,9 @@ func SetDoubleClickTime(msec uint32) {
 }
 
 // gdk_set_program_class
-// container is nil
+//
+// [ program_class ] trans: nothing
+//
 func SetProgramClass(program_class string) {
 	iv, err := _I.Get(549, "set_program_class", "")
 	if err != nil {
@@ -11191,7 +12510,9 @@ func SetProgramClass(program_class string) {
 }
 
 // gdk_set_show_events
-// container is nil
+//
+// [ show_events ] trans: nothing
+//
 func SetShowEvents(show_events bool) {
 	iv, err := _I.Get(550, "set_show_events", "")
 	if err != nil {
@@ -11204,7 +12525,13 @@ func SetShowEvents(show_events bool) {
 }
 
 // gdk_setting_get
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SettingGet(name string, value gobject.Value) (result bool) {
 	iv, err := _I.Get(551, "setting_get", "")
 	if err != nil {
@@ -11223,7 +12550,13 @@ func SettingGet(name string, value gobject.Value) (result bool) {
 }
 
 // gdk_synthesize_window_state
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ unset_flags ] trans: nothing
+//
+// [ set_flags ] trans: nothing
+//
 func SynthesizeWindowState(window IWindow, unset_flags WindowStateFlags, set_flags WindowStateFlags) {
 	iv, err := _I.Get(552, "synthesize_window_state", "")
 	if err != nil {
@@ -11242,7 +12575,9 @@ func SynthesizeWindowState(window IWindow, unset_flags WindowStateFlags, set_fla
 }
 
 // gdk_test_render_sync
-// container is nil
+//
+// [ window ] trans: nothing
+//
 func TestRenderSync(window IWindow) {
 	iv, err := _I.Get(553, "test_render_sync", "")
 	if err != nil {
@@ -11259,7 +12594,21 @@ func TestRenderSync(window IWindow) {
 }
 
 // gdk_test_simulate_button
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ button ] trans: nothing
+//
+// [ modifiers ] trans: nothing
+//
+// [ button_pressrelease ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TestSimulateButton(window IWindow, x int32, y int32, button uint32, modifiers ModifierTypeFlags, button_pressrelease EventTypeEnum) (result bool) {
 	iv, err := _I.Get(554, "test_simulate_button", "")
 	if err != nil {
@@ -11284,7 +12633,21 @@ func TestSimulateButton(window IWindow, x int32, y int32, button uint32, modifie
 }
 
 // gdk_test_simulate_key
-// container is nil
+//
+// [ window ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ keyval ] trans: nothing
+//
+// [ modifiers ] trans: nothing
+//
+// [ key_pressrelease ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TestSimulateKey(window IWindow, x int32, y int32, keyval uint32, modifiers ModifierTypeFlags, key_pressrelease EventTypeEnum) (result bool) {
 	iv, err := _I.Get(555, "test_simulate_key", "")
 	if err != nil {
@@ -11309,8 +12672,21 @@ func TestSimulateKey(window IWindow, x int32, y int32, keyval uint32, modifiers 
 }
 
 // gdk_text_property_to_utf8_list_for_display
-// container is nil
-// arg 3 text lenArgIdx 4
+//
+// [ display ] trans: nothing
+//
+// [ encoding ] trans: nothing
+//
+// [ format ] trans: nothing
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ list ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format int32, text gi.Uint8Array, length int32) (result int32, list gi.CStrArray) {
 	iv, err := _I.Get(556, "text_property_to_utf8_list_for_display", "")
 	if err != nil {
@@ -11337,7 +12713,17 @@ func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format in
 }
 
 // gdk_threads_add_idle_full
-// container is nil
+//
+// [ priority ] trans: nothing
+//
+// [ function ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ThreadsAddIdle(priority int32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(557, "threads_add_idle", "")
 	if err != nil {
@@ -11356,7 +12742,19 @@ func ThreadsAddIdle(priority int32, function int /*TODO_TYPE CALLBACK*/, data un
 }
 
 // gdk_threads_add_timeout_full
-// container is nil
+//
+// [ priority ] trans: nothing
+//
+// [ interval ] trans: nothing
+//
+// [ function ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ThreadsAddTimeout(priority int32, interval uint32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(558, "threads_add_timeout", "")
 	if err != nil {
@@ -11376,7 +12774,19 @@ func ThreadsAddTimeout(priority int32, interval uint32, function int /*TODO_TYPE
 }
 
 // gdk_threads_add_timeout_seconds_full
-// container is nil
+//
+// [ priority ] trans: nothing
+//
+// [ interval ] trans: nothing
+//
+// [ function ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ThreadsAddTimeoutSeconds(priority int32, interval uint32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(559, "threads_add_timeout_seconds", "")
 	if err != nil {
@@ -11396,7 +12806,7 @@ func ThreadsAddTimeoutSeconds(priority int32, interval uint32, function int /*TO
 }
 
 // gdk_threads_enter
-// container is nil
+//
 func ThreadsEnter() {
 	iv, err := _I.Get(560, "threads_enter", "")
 	if err != nil {
@@ -11407,7 +12817,7 @@ func ThreadsEnter() {
 }
 
 // gdk_threads_init
-// container is nil
+//
 func ThreadsInit() {
 	iv, err := _I.Get(561, "threads_init", "")
 	if err != nil {
@@ -11418,7 +12828,7 @@ func ThreadsInit() {
 }
 
 // gdk_threads_leave
-// container is nil
+//
 func ThreadsLeave() {
 	iv, err := _I.Get(562, "threads_leave", "")
 	if err != nil {
@@ -11429,7 +12839,11 @@ func ThreadsLeave() {
 }
 
 // gdk_unicode_to_keyval
-// container is nil
+//
+// [ wc ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicodeToKeyval(wc uint32) (result uint32) {
 	iv, err := _I.Get(563, "unicode_to_keyval", "")
 	if err != nil {
@@ -11445,7 +12859,11 @@ func UnicodeToKeyval(wc uint32) (result uint32) {
 }
 
 // gdk_utf8_to_string_target
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8ToStringTarget(str string) (result string) {
 	iv, err := _I.Get(564, "utf8_to_string_target", "")
 	if err != nil {

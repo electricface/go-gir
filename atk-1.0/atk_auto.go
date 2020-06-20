@@ -62,8 +62,11 @@ func ActionGetType() gi.GType {
 }
 
 // atk_action_do_action
-// container is not nil, container is Action
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) DoAction(i int32) (result bool) {
 	iv, err := _I.Get(0, "Action", "do_action")
 	if err != nil {
@@ -80,8 +83,11 @@ func (v *ActionIfc) DoAction(i int32) (result bool) {
 }
 
 // atk_action_get_description
-// container is not nil, container is Action
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) GetDescription(i int32) (result string) {
 	iv, err := _I.Get(1, "Action", "get_description")
 	if err != nil {
@@ -93,13 +99,16 @@ func (v *ActionIfc) GetDescription(i int32) (result string) {
 	args := []gi.Argument{arg_v, arg_i}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_action_get_keybinding
-// container is not nil, container is Action
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) GetKeybinding(i int32) (result string) {
 	iv, err := _I.Get(2, "Action", "get_keybinding")
 	if err != nil {
@@ -111,13 +120,16 @@ func (v *ActionIfc) GetKeybinding(i int32) (result string) {
 	args := []gi.Argument{arg_v, arg_i}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_action_get_localized_name
-// container is not nil, container is Action
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) GetLocalizedName(i int32) (result string) {
 	iv, err := _I.Get(3, "Action", "get_localized_name")
 	if err != nil {
@@ -129,13 +141,14 @@ func (v *ActionIfc) GetLocalizedName(i int32) (result string) {
 	args := []gi.Argument{arg_v, arg_i}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_action_get_n_actions
-// container is not nil, container is Action
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) GetNActions() (result int32) {
 	iv, err := _I.Get(4, "Action", "get_n_actions")
 	if err != nil {
@@ -151,8 +164,11 @@ func (v *ActionIfc) GetNActions() (result int32) {
 }
 
 // atk_action_get_name
-// container is not nil, container is Action
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) GetName(i int32) (result string) {
 	iv, err := _I.Get(5, "Action", "get_name")
 	if err != nil {
@@ -164,13 +180,18 @@ func (v *ActionIfc) GetName(i int32) (result string) {
 	args := []gi.Argument{arg_v, arg_i}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_action_set_description
-// container is not nil, container is Action
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ desc ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) SetDescription(i int32, desc string) (result bool) {
 	iv, err := _I.Get(6, "Action", "set_description")
 	if err != nil {
@@ -203,9 +224,9 @@ func AttributeGetType() gi.GType {
 }
 
 // atk_attribute_set_free
-// container is not nil, container is Attribute
-// is method
-// arg0Type tag: gslist, isPtr: true
+//
+// [ attrib_set ] trans: nothing
+//
 func AttributeSetFree1(attrib_set glib.SList) {
 	iv, err := _I.Get(7, "Attribute", "set_free")
 	if err != nil {
@@ -232,8 +253,15 @@ func ComponentGetType() gi.GType {
 }
 
 // atk_component_contains
-// container is not nil, container is Component
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ coord_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ComponentIfc) Contains(x int32, y int32, coord_type CoordTypeEnum) (result bool) {
 	iv, err := _I.Get(8, "Component", "contains")
 	if err != nil {
@@ -252,8 +280,9 @@ func (v *ComponentIfc) Contains(x int32, y int32, coord_type CoordTypeEnum) (res
 }
 
 // atk_component_get_alpha
-// container is not nil, container is Component
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ComponentIfc) GetAlpha() (result float64) {
 	iv, err := _I.Get(9, "Component", "get_alpha")
 	if err != nil {
@@ -269,8 +298,17 @@ func (v *ComponentIfc) GetAlpha() (result float64) {
 }
 
 // atk_component_get_extents
-// container is not nil, container is Component
-// is method
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
+// [ coord_type ] trans: nothing
+//
 func (v *ComponentIfc) GetExtents(coord_type CoordTypeEnum) (x int32, y int32, width int32, height int32) {
 	iv, err := _I.Get(10, "Component", "get_extents")
 	if err != nil {
@@ -294,8 +332,9 @@ func (v *ComponentIfc) GetExtents(coord_type CoordTypeEnum) (x int32, y int32, w
 }
 
 // atk_component_get_layer
-// container is not nil, container is Component
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ComponentIfc) GetLayer() (result LayerEnum) {
 	iv, err := _I.Get(11, "Component", "get_layer")
 	if err != nil {
@@ -311,8 +350,9 @@ func (v *ComponentIfc) GetLayer() (result LayerEnum) {
 }
 
 // atk_component_get_mdi_zorder
-// container is not nil, container is Component
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ComponentIfc) GetMdiZorder() (result int32) {
 	iv, err := _I.Get(12, "Component", "get_mdi_zorder")
 	if err != nil {
@@ -328,8 +368,13 @@ func (v *ComponentIfc) GetMdiZorder() (result int32) {
 }
 
 // atk_component_get_position
-// container is not nil, container is Component
-// is method
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ coord_type ] trans: nothing
+//
 func (v *ComponentIfc) GetPosition(coord_type CoordTypeEnum) (x int32, y int32) {
 	iv, err := _I.Get(13, "Component", "get_position")
 	if err != nil {
@@ -349,8 +394,11 @@ func (v *ComponentIfc) GetPosition(coord_type CoordTypeEnum) (x int32, y int32) 
 }
 
 // atk_component_get_size
-// container is not nil, container is Component
-// is method
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
 func (v *ComponentIfc) GetSize() (width int32, height int32) {
 	iv, err := _I.Get(14, "Component", "get_size")
 	if err != nil {
@@ -369,8 +417,9 @@ func (v *ComponentIfc) GetSize() (width int32, height int32) {
 }
 
 // atk_component_grab_focus
-// container is not nil, container is Component
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ComponentIfc) GrabFocus() (result bool) {
 	iv, err := _I.Get(15, "Component", "grab_focus")
 	if err != nil {
@@ -386,8 +435,15 @@ func (v *ComponentIfc) GrabFocus() (result bool) {
 }
 
 // atk_component_ref_accessible_at_point
-// container is not nil, container is Component
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ coord_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *ComponentIfc) RefAccessibleAtPoint(x int32, y int32, coord_type CoordTypeEnum) (result Object) {
 	iv, err := _I.Get(16, "Component", "ref_accessible_at_point")
 	if err != nil {
@@ -406,8 +462,9 @@ func (v *ComponentIfc) RefAccessibleAtPoint(x int32, y int32, coord_type CoordTy
 }
 
 // atk_component_remove_focus_handler
-// container is not nil, container is Component
-// is method
+//
+// [ handler_id ] trans: nothing
+//
 func (v *ComponentIfc) RemoveFocusHandler(handler_id uint32) {
 	iv, err := _I.Get(17, "Component", "remove_focus_handler")
 	if err != nil {
@@ -421,8 +478,11 @@ func (v *ComponentIfc) RemoveFocusHandler(handler_id uint32) {
 }
 
 // atk_component_scroll_to
-// container is not nil, container is Component
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ComponentIfc) ScrollTo(type1 ScrollTypeEnum) (result bool) {
 	iv, err := _I.Get(18, "Component", "scroll_to")
 	if err != nil {
@@ -439,8 +499,15 @@ func (v *ComponentIfc) ScrollTo(type1 ScrollTypeEnum) (result bool) {
 }
 
 // atk_component_scroll_to_point
-// container is not nil, container is Component
-// is method
+//
+// [ coords ] trans: nothing
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ComponentIfc) ScrollToPoint(coords CoordTypeEnum, x int32, y int32) (result bool) {
 	iv, err := _I.Get(19, "Component", "scroll_to_point")
 	if err != nil {
@@ -459,8 +526,19 @@ func (v *ComponentIfc) ScrollToPoint(coords CoordTypeEnum, x int32, y int32) (re
 }
 
 // atk_component_set_extents
-// container is not nil, container is Component
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ coord_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ComponentIfc) SetExtents(x int32, y int32, width int32, height int32, coord_type CoordTypeEnum) (result bool) {
 	iv, err := _I.Get(20, "Component", "set_extents")
 	if err != nil {
@@ -481,8 +559,15 @@ func (v *ComponentIfc) SetExtents(x int32, y int32, width int32, height int32, c
 }
 
 // atk_component_set_position
-// container is not nil, container is Component
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ coord_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ComponentIfc) SetPosition(x int32, y int32, coord_type CoordTypeEnum) (result bool) {
 	iv, err := _I.Get(21, "Component", "set_position")
 	if err != nil {
@@ -501,8 +586,13 @@ func (v *ComponentIfc) SetPosition(x int32, y int32, coord_type CoordTypeEnum) (
 }
 
 // atk_component_set_size
-// container is not nil, container is Component
-// is method
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ComponentIfc) SetSize(width int32, height int32) (result bool) {
 	iv, err := _I.Get(22, "Component", "set_size")
 	if err != nil {
@@ -549,8 +639,11 @@ func DocumentGetType() gi.GType {
 }
 
 // atk_document_get_attribute_value
-// container is not nil, container is Document
-// is method
+//
+// [ attribute_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DocumentIfc) GetAttributeValue(attribute_name string) (result string) {
 	iv, err := _I.Get(23, "Document", "get_attribute_value")
 	if err != nil {
@@ -564,13 +657,14 @@ func (v *DocumentIfc) GetAttributeValue(attribute_name string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_attribute_name)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_document_get_attributes
-// container is not nil, container is Document
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DocumentIfc) GetAttributes() (result glib.SList) {
 	iv, err := _I.Get(24, "Document", "get_attributes")
 	if err != nil {
@@ -586,8 +680,9 @@ func (v *DocumentIfc) GetAttributes() (result glib.SList) {
 }
 
 // atk_document_get_current_page_number
-// container is not nil, container is Document
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DocumentIfc) GetCurrentPageNumber() (result int32) {
 	iv, err := _I.Get(25, "Document", "get_current_page_number")
 	if err != nil {
@@ -603,8 +698,9 @@ func (v *DocumentIfc) GetCurrentPageNumber() (result int32) {
 }
 
 // atk_document_get_document
-// container is not nil, container is Document
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DocumentIfc) GetDocument() (result unsafe.Pointer) {
 	iv, err := _I.Get(26, "Document", "get_document")
 	if err != nil {
@@ -620,8 +716,9 @@ func (v *DocumentIfc) GetDocument() (result unsafe.Pointer) {
 }
 
 // atk_document_get_document_type
-// container is not nil, container is Document
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DocumentIfc) GetDocumentType() (result string) {
 	iv, err := _I.Get(27, "Document", "get_document_type")
 	if err != nil {
@@ -632,13 +729,14 @@ func (v *DocumentIfc) GetDocumentType() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_document_get_locale
-// container is not nil, container is Document
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DocumentIfc) GetLocale() (result string) {
 	iv, err := _I.Get(28, "Document", "get_locale")
 	if err != nil {
@@ -649,13 +747,14 @@ func (v *DocumentIfc) GetLocale() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_document_get_page_count
-// container is not nil, container is Document
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DocumentIfc) GetPageCount() (result int32) {
 	iv, err := _I.Get(29, "Document", "get_page_count")
 	if err != nil {
@@ -671,8 +770,13 @@ func (v *DocumentIfc) GetPageCount() (result int32) {
 }
 
 // atk_document_set_attribute_value
-// container is not nil, container is Document
-// is method
+//
+// [ attribute_name ] trans: nothing
+//
+// [ attribute_value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DocumentIfc) SetAttributeValue(attribute_name string, attribute_value string) (result bool) {
 	iv, err := _I.Get(30, "Document", "set_attribute_value")
 	if err != nil {
@@ -709,8 +813,11 @@ func EditableTextGetType() gi.GType {
 }
 
 // atk_editable_text_copy_text
-// container is not nil, container is EditableText
-// is method
+//
+// [ start_pos ] trans: nothing
+//
+// [ end_pos ] trans: nothing
+//
 func (v *EditableTextIfc) CopyText(start_pos int32, end_pos int32) {
 	iv, err := _I.Get(31, "EditableText", "copy_text")
 	if err != nil {
@@ -725,8 +832,11 @@ func (v *EditableTextIfc) CopyText(start_pos int32, end_pos int32) {
 }
 
 // atk_editable_text_cut_text
-// container is not nil, container is EditableText
-// is method
+//
+// [ start_pos ] trans: nothing
+//
+// [ end_pos ] trans: nothing
+//
 func (v *EditableTextIfc) CutText(start_pos int32, end_pos int32) {
 	iv, err := _I.Get(32, "EditableText", "cut_text")
 	if err != nil {
@@ -741,8 +851,11 @@ func (v *EditableTextIfc) CutText(start_pos int32, end_pos int32) {
 }
 
 // atk_editable_text_delete_text
-// container is not nil, container is EditableText
-// is method
+//
+// [ start_pos ] trans: nothing
+//
+// [ end_pos ] trans: nothing
+//
 func (v *EditableTextIfc) DeleteText(start_pos int32, end_pos int32) {
 	iv, err := _I.Get(33, "EditableText", "delete_text")
 	if err != nil {
@@ -757,8 +870,13 @@ func (v *EditableTextIfc) DeleteText(start_pos int32, end_pos int32) {
 }
 
 // atk_editable_text_insert_text
-// container is not nil, container is EditableText
-// is method
+//
+// [ string ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ position ] trans: nothing
+//
 func (v *EditableTextIfc) InsertText(string string, length int32, position int32) {
 	iv, err := _I.Get(34, "EditableText", "insert_text")
 	if err != nil {
@@ -776,8 +894,9 @@ func (v *EditableTextIfc) InsertText(string string, length int32, position int32
 }
 
 // atk_editable_text_paste_text
-// container is not nil, container is EditableText
-// is method
+//
+// [ position ] trans: nothing
+//
 func (v *EditableTextIfc) PasteText(position int32) {
 	iv, err := _I.Get(35, "EditableText", "paste_text")
 	if err != nil {
@@ -791,8 +910,15 @@ func (v *EditableTextIfc) PasteText(position int32) {
 }
 
 // atk_editable_text_set_run_attributes
-// container is not nil, container is EditableText
-// is method
+//
+// [ attrib_set ] trans: nothing
+//
+// [ start_offset ] trans: nothing
+//
+// [ end_offset ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *EditableTextIfc) SetRunAttributes(attrib_set glib.SList, start_offset int32, end_offset int32) (result bool) {
 	iv, err := _I.Get(36, "EditableText", "set_run_attributes")
 	if err != nil {
@@ -811,8 +937,9 @@ func (v *EditableTextIfc) SetRunAttributes(attrib_set glib.SList, start_offset i
 }
 
 // atk_editable_text_set_text_contents
-// container is not nil, container is EditableText
-// is method
+//
+// [ string ] trans: nothing
+//
 func (v *EditableTextIfc) SetTextContents(string string) {
 	iv, err := _I.Get(37, "EditableText", "set_text_contents")
 	if err != nil {
@@ -897,9 +1024,11 @@ func GObjectAccessibleGetType() gi.GType {
 }
 
 // atk_gobject_accessible_for_object
-// container is not nil, container is GObjectAccessible
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ obj ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func GObjectAccessibleForObject1(obj gobject.IObject) (result Object) {
 	iv, err := _I.Get(38, "GObjectAccessible", "for_object")
 	if err != nil {
@@ -919,8 +1048,9 @@ func GObjectAccessibleForObject1(obj gobject.IObject) (result Object) {
 }
 
 // atk_gobject_accessible_get_object
-// container is not nil, container is GObjectAccessible
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v GObjectAccessible) GetObject() (result gobject.Object) {
 	iv, err := _I.Get(39, "GObjectAccessible", "get_object")
 	if err != nil {
@@ -954,8 +1084,9 @@ func HyperlinkGetType() gi.GType {
 }
 
 // atk_hyperlink_get_end_index
-// container is not nil, container is Hyperlink
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Hyperlink) GetEndIndex() (result int32) {
 	iv, err := _I.Get(40, "Hyperlink", "get_end_index")
 	if err != nil {
@@ -971,8 +1102,9 @@ func (v Hyperlink) GetEndIndex() (result int32) {
 }
 
 // atk_hyperlink_get_n_anchors
-// container is not nil, container is Hyperlink
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Hyperlink) GetNAnchors() (result int32) {
 	iv, err := _I.Get(41, "Hyperlink", "get_n_anchors")
 	if err != nil {
@@ -988,8 +1120,11 @@ func (v Hyperlink) GetNAnchors() (result int32) {
 }
 
 // atk_hyperlink_get_object
-// container is not nil, container is Hyperlink
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Hyperlink) GetObject(i int32) (result Object) {
 	iv, err := _I.Get(42, "Hyperlink", "get_object")
 	if err != nil {
@@ -1006,8 +1141,9 @@ func (v Hyperlink) GetObject(i int32) (result Object) {
 }
 
 // atk_hyperlink_get_start_index
-// container is not nil, container is Hyperlink
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Hyperlink) GetStartIndex() (result int32) {
 	iv, err := _I.Get(43, "Hyperlink", "get_start_index")
 	if err != nil {
@@ -1023,8 +1159,11 @@ func (v Hyperlink) GetStartIndex() (result int32) {
 }
 
 // atk_hyperlink_get_uri
-// container is not nil, container is Hyperlink
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Hyperlink) GetUri(i int32) (result string) {
 	iv, err := _I.Get(44, "Hyperlink", "get_uri")
 	if err != nil {
@@ -1041,8 +1180,9 @@ func (v Hyperlink) GetUri(i int32) (result string) {
 }
 
 // atk_hyperlink_is_inline
-// container is not nil, container is Hyperlink
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Hyperlink) IsInline() (result bool) {
 	iv, err := _I.Get(45, "Hyperlink", "is_inline")
 	if err != nil {
@@ -1058,8 +1198,9 @@ func (v Hyperlink) IsInline() (result bool) {
 }
 
 // atk_hyperlink_is_selected_link
-// container is not nil, container is Hyperlink
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Hyperlink) IsSelectedLink() (result bool) {
 	iv, err := _I.Get(46, "Hyperlink", "is_selected_link")
 	if err != nil {
@@ -1075,8 +1216,9 @@ func (v Hyperlink) IsSelectedLink() (result bool) {
 }
 
 // atk_hyperlink_is_valid
-// container is not nil, container is Hyperlink
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Hyperlink) IsValid() (result bool) {
 	iv, err := _I.Get(47, "Hyperlink", "is_valid")
 	if err != nil {
@@ -1107,8 +1249,9 @@ func HyperlinkImplGetType() gi.GType {
 }
 
 // atk_hyperlink_impl_get_hyperlink
-// container is not nil, container is HyperlinkImpl
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *HyperlinkImplIfc) GetHyperlink() (result Hyperlink) {
 	iv, err := _I.Get(48, "HyperlinkImpl", "get_hyperlink")
 	if err != nil {
@@ -1151,8 +1294,11 @@ func HypertextGetType() gi.GType {
 }
 
 // atk_hypertext_get_link
-// container is not nil, container is Hypertext
-// is method
+//
+// [ link_index ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *HypertextIfc) GetLink(link_index int32) (result Hyperlink) {
 	iv, err := _I.Get(49, "Hypertext", "get_link")
 	if err != nil {
@@ -1169,8 +1315,11 @@ func (v *HypertextIfc) GetLink(link_index int32) (result Hyperlink) {
 }
 
 // atk_hypertext_get_link_index
-// container is not nil, container is Hypertext
-// is method
+//
+// [ char_index ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *HypertextIfc) GetLinkIndex(char_index int32) (result int32) {
 	iv, err := _I.Get(50, "Hypertext", "get_link_index")
 	if err != nil {
@@ -1187,8 +1336,9 @@ func (v *HypertextIfc) GetLinkIndex(char_index int32) (result int32) {
 }
 
 // atk_hypertext_get_n_links
-// container is not nil, container is Hypertext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *HypertextIfc) GetNLinks() (result int32) {
 	iv, err := _I.Get(51, "Hypertext", "get_n_links")
 	if err != nil {
@@ -1219,8 +1369,9 @@ func ImageGetType() gi.GType {
 }
 
 // atk_image_get_image_description
-// container is not nil, container is Image
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ImageIfc) GetImageDescription() (result string) {
 	iv, err := _I.Get(52, "Image", "get_image_description")
 	if err != nil {
@@ -1231,13 +1382,14 @@ func (v *ImageIfc) GetImageDescription() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_image_get_image_locale
-// container is not nil, container is Image
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ImageIfc) GetImageLocale() (result string) {
 	iv, err := _I.Get(53, "Image", "get_image_locale")
 	if err != nil {
@@ -1248,13 +1400,18 @@ func (v *ImageIfc) GetImageLocale() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_image_get_image_position
-// container is not nil, container is Image
-// is method
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ coord_type ] trans: nothing
+//
 func (v *ImageIfc) GetImagePosition(coord_type CoordTypeEnum) (x int32, y int32) {
 	iv, err := _I.Get(54, "Image", "get_image_position")
 	if err != nil {
@@ -1274,8 +1431,11 @@ func (v *ImageIfc) GetImagePosition(coord_type CoordTypeEnum) (x int32, y int32)
 }
 
 // atk_image_get_image_size
-// container is not nil, container is Image
-// is method
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
 func (v *ImageIfc) GetImageSize() (width int32, height int32) {
 	iv, err := _I.Get(55, "Image", "get_image_size")
 	if err != nil {
@@ -1294,8 +1454,11 @@ func (v *ImageIfc) GetImageSize() (width int32, height int32) {
 }
 
 // atk_image_set_image_description
-// container is not nil, container is Image
-// is method
+//
+// [ description ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ImageIfc) SetImageDescription(description string) (result bool) {
 	iv, err := _I.Get(56, "Image", "set_image_description")
 	if err != nil {
@@ -1325,8 +1488,9 @@ func ImplementorGetType() gi.GType {
 }
 
 // atk_implementor_ref_accessible
-// container is not nil, container is Implementor
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Implementor) RefAccessible() (result Object) {
 	iv, err := _I.Get(57, "Implementor", "ref_accessible")
 	if err != nil {
@@ -1433,8 +1597,7 @@ func MiscGetType() gi.GType {
 }
 
 // atk_misc_threads_enter
-// container is not nil, container is Misc
-// is method
+//
 func (v Misc) ThreadsEnter() {
 	iv, err := _I.Get(59, "Misc", "threads_enter")
 	if err != nil {
@@ -1447,8 +1610,7 @@ func (v Misc) ThreadsEnter() {
 }
 
 // atk_misc_threads_leave
-// container is not nil, container is Misc
-// is method
+//
 func (v Misc) ThreadsLeave() {
 	iv, err := _I.Get(60, "Misc", "threads_leave")
 	if err != nil {
@@ -1501,8 +1663,11 @@ func NoOpObjectGetType() gi.GType {
 }
 
 // atk_no_op_object_new
-// container is not nil, container is NoOpObject
-// is constructor
+//
+// [ obj ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewNoOpObject(obj gobject.IObject) (result NoOpObject) {
 	iv, err := _I.Get(61, "NoOpObject", "new")
 	if err != nil {
@@ -1538,8 +1703,9 @@ func NoOpObjectFactoryGetType() gi.GType {
 }
 
 // atk_no_op_object_factory_new
-// container is not nil, container is NoOpObjectFactory
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewNoOpObjectFactory() (result NoOpObjectFactory) {
 	iv, err := _I.Get(62, "NoOpObjectFactory", "new")
 	if err != nil {
@@ -1569,8 +1735,13 @@ func ObjectGetType() gi.GType {
 }
 
 // atk_object_add_relationship
-// container is not nil, container is Object
-// is method
+//
+// [ relationship ] trans: nothing
+//
+// [ target ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Object) AddRelationship(relationship RelationTypeEnum, target IObject) (result bool) {
 	iv, err := _I.Get(63, "Object", "add_relationship")
 	if err != nil {
@@ -1592,8 +1763,9 @@ func (v Object) AddRelationship(relationship RelationTypeEnum, target IObject) (
 }
 
 // atk_object_get_attributes
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Object) GetAttributes() (result glib.SList) {
 	iv, err := _I.Get(64, "Object", "get_attributes")
 	if err != nil {
@@ -1609,8 +1781,9 @@ func (v Object) GetAttributes() (result glib.SList) {
 }
 
 // atk_object_get_description
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetDescription() (result string) {
 	iv, err := _I.Get(65, "Object", "get_description")
 	if err != nil {
@@ -1621,13 +1794,14 @@ func (v Object) GetDescription() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_object_get_index_in_parent
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetIndexInParent() (result int32) {
 	iv, err := _I.Get(66, "Object", "get_index_in_parent")
 	if err != nil {
@@ -1643,8 +1817,9 @@ func (v Object) GetIndexInParent() (result int32) {
 }
 
 // atk_object_get_layer
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetLayer() (result LayerEnum) {
 	iv, err := _I.Get(67, "Object", "get_layer")
 	if err != nil {
@@ -1660,8 +1835,9 @@ func (v Object) GetLayer() (result LayerEnum) {
 }
 
 // atk_object_get_mdi_zorder
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetMdiZorder() (result int32) {
 	iv, err := _I.Get(68, "Object", "get_mdi_zorder")
 	if err != nil {
@@ -1677,8 +1853,9 @@ func (v Object) GetMdiZorder() (result int32) {
 }
 
 // atk_object_get_n_accessible_children
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetNAccessibleChildren() (result int32) {
 	iv, err := _I.Get(69, "Object", "get_n_accessible_children")
 	if err != nil {
@@ -1694,8 +1871,9 @@ func (v Object) GetNAccessibleChildren() (result int32) {
 }
 
 // atk_object_get_name
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetName() (result string) {
 	iv, err := _I.Get(70, "Object", "get_name")
 	if err != nil {
@@ -1706,13 +1884,14 @@ func (v Object) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_object_get_object_locale
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetObjectLocale() (result string) {
 	iv, err := _I.Get(71, "Object", "get_object_locale")
 	if err != nil {
@@ -1723,13 +1902,14 @@ func (v Object) GetObjectLocale() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_object_get_parent
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetParent() (result Object) {
 	iv, err := _I.Get(72, "Object", "get_parent")
 	if err != nil {
@@ -1745,8 +1925,9 @@ func (v Object) GetParent() (result Object) {
 }
 
 // atk_object_get_role
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetRole() (result RoleEnum) {
 	iv, err := _I.Get(73, "Object", "get_role")
 	if err != nil {
@@ -1762,8 +1943,9 @@ func (v Object) GetRole() (result RoleEnum) {
 }
 
 // atk_object_initialize
-// container is not nil, container is Object
-// is method
+//
+// [ data ] trans: nothing
+//
 func (v Object) Initialize(data unsafe.Pointer) {
 	iv, err := _I.Get(74, "Object", "initialize")
 	if err != nil {
@@ -1777,8 +1959,11 @@ func (v Object) Initialize(data unsafe.Pointer) {
 }
 
 // atk_object_notify_state_change
-// container is not nil, container is Object
-// is method
+//
+// [ state ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v Object) NotifyStateChange(state uint64, value bool) {
 	iv, err := _I.Get(75, "Object", "notify_state_change")
 	if err != nil {
@@ -1793,8 +1978,9 @@ func (v Object) NotifyStateChange(state uint64, value bool) {
 }
 
 // atk_object_peek_parent
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) PeekParent() (result Object) {
 	iv, err := _I.Get(76, "Object", "peek_parent")
 	if err != nil {
@@ -1810,8 +1996,11 @@ func (v Object) PeekParent() (result Object) {
 }
 
 // atk_object_ref_accessible_child
-// container is not nil, container is Object
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Object) RefAccessibleChild(i int32) (result Object) {
 	iv, err := _I.Get(77, "Object", "ref_accessible_child")
 	if err != nil {
@@ -1828,8 +2017,9 @@ func (v Object) RefAccessibleChild(i int32) (result Object) {
 }
 
 // atk_object_ref_relation_set
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Object) RefRelationSet() (result RelationSet) {
 	iv, err := _I.Get(78, "Object", "ref_relation_set")
 	if err != nil {
@@ -1845,8 +2035,9 @@ func (v Object) RefRelationSet() (result RelationSet) {
 }
 
 // atk_object_ref_state_set
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Object) RefStateSet() (result StateSet) {
 	iv, err := _I.Get(79, "Object", "ref_state_set")
 	if err != nil {
@@ -1862,8 +2053,9 @@ func (v Object) RefStateSet() (result StateSet) {
 }
 
 // atk_object_remove_property_change_handler
-// container is not nil, container is Object
-// is method
+//
+// [ handler_id ] trans: nothing
+//
 func (v Object) RemovePropertyChangeHandler(handler_id uint32) {
 	iv, err := _I.Get(80, "Object", "remove_property_change_handler")
 	if err != nil {
@@ -1877,8 +2069,13 @@ func (v Object) RemovePropertyChangeHandler(handler_id uint32) {
 }
 
 // atk_object_remove_relationship
-// container is not nil, container is Object
-// is method
+//
+// [ relationship ] trans: nothing
+//
+// [ target ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Object) RemoveRelationship(relationship RelationTypeEnum, target IObject) (result bool) {
 	iv, err := _I.Get(81, "Object", "remove_relationship")
 	if err != nil {
@@ -1900,8 +2097,9 @@ func (v Object) RemoveRelationship(relationship RelationTypeEnum, target IObject
 }
 
 // atk_object_set_description
-// container is not nil, container is Object
-// is method
+//
+// [ description ] trans: nothing
+//
 func (v Object) SetDescription(description string) {
 	iv, err := _I.Get(82, "Object", "set_description")
 	if err != nil {
@@ -1917,8 +2115,9 @@ func (v Object) SetDescription(description string) {
 }
 
 // atk_object_set_name
-// container is not nil, container is Object
-// is method
+//
+// [ name ] trans: nothing
+//
 func (v Object) SetName(name string) {
 	iv, err := _I.Get(83, "Object", "set_name")
 	if err != nil {
@@ -1934,8 +2133,9 @@ func (v Object) SetName(name string) {
 }
 
 // atk_object_set_parent
-// container is not nil, container is Object
-// is method
+//
+// [ parent ] trans: nothing
+//
 func (v Object) SetParent(parent IObject) {
 	iv, err := _I.Get(84, "Object", "set_parent")
 	if err != nil {
@@ -1953,8 +2153,9 @@ func (v Object) SetParent(parent IObject) {
 }
 
 // atk_object_set_role
-// container is not nil, container is Object
-// is method
+//
+// [ role ] trans: nothing
+//
 func (v Object) SetRole(role RoleEnum) {
 	iv, err := _I.Get(85, "Object", "set_role")
 	if err != nil {
@@ -1984,8 +2185,11 @@ func ObjectFactoryGetType() gi.GType {
 }
 
 // atk_object_factory_create_accessible
-// container is not nil, container is ObjectFactory
-// is method
+//
+// [ obj ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v ObjectFactory) CreateAccessible(obj gobject.IObject) (result Object) {
 	iv, err := _I.Get(86, "ObjectFactory", "create_accessible")
 	if err != nil {
@@ -2006,8 +2210,9 @@ func (v ObjectFactory) CreateAccessible(obj gobject.IObject) (result Object) {
 }
 
 // atk_object_factory_get_accessible_type
-// container is not nil, container is ObjectFactory
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ObjectFactory) GetAccessibleType() (result gi.GType) {
 	iv, err := _I.Get(87, "ObjectFactory", "get_accessible_type")
 	if err != nil {
@@ -2023,8 +2228,7 @@ func (v ObjectFactory) GetAccessibleType() (result gi.GType) {
 }
 
 // atk_object_factory_invalidate
-// container is not nil, container is ObjectFactory
-// is method
+//
 func (v ObjectFactory) Invalidate() {
 	iv, err := _I.Get(88, "ObjectFactory", "invalidate")
 	if err != nil {
@@ -2055,8 +2259,9 @@ func PlugGetType() gi.GType {
 }
 
 // atk_plug_new
-// container is not nil, container is Plug
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewPlug() (result Plug) {
 	iv, err := _I.Get(89, "Plug", "new")
 	if err != nil {
@@ -2070,8 +2275,9 @@ func NewPlug() (result Plug) {
 }
 
 // atk_plug_get_id
-// container is not nil, container is Plug
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Plug) GetId() (result string) {
 	iv, err := _I.Get(90, "Plug", "get_id")
 	if err != nil {
@@ -2124,8 +2330,15 @@ func RangeGetType() gi.GType {
 }
 
 // atk_range_new
-// container is not nil, container is Range
-// is constructor
+//
+// [ lower_limit ] trans: nothing
+//
+// [ upper_limit ] trans: nothing
+//
+// [ description ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewRange(lower_limit float64, upper_limit float64, description string) (result Range) {
 	iv, err := _I.Get(91, "Range", "new")
 	if err != nil {
@@ -2145,8 +2358,9 @@ func NewRange(lower_limit float64, upper_limit float64, description string) (res
 }
 
 // atk_range_copy
-// container is not nil, container is Range
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Range) Copy() (result Range) {
 	iv, err := _I.Get(92, "Range", "copy")
 	if err != nil {
@@ -2162,8 +2376,7 @@ func (v Range) Copy() (result Range) {
 }
 
 // atk_range_free
-// container is not nil, container is Range
-// is method
+//
 func (v Range) Free() {
 	iv, err := _I.Get(93, "Range", "free")
 	if err != nil {
@@ -2176,8 +2389,9 @@ func (v Range) Free() {
 }
 
 // atk_range_get_description
-// container is not nil, container is Range
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Range) GetDescription() (result string) {
 	iv, err := _I.Get(94, "Range", "get_description")
 	if err != nil {
@@ -2188,13 +2402,14 @@ func (v Range) GetDescription() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_range_get_lower_limit
-// container is not nil, container is Range
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Range) GetLowerLimit() (result float64) {
 	iv, err := _I.Get(95, "Range", "get_lower_limit")
 	if err != nil {
@@ -2210,8 +2425,9 @@ func (v Range) GetLowerLimit() (result float64) {
 }
 
 // atk_range_get_upper_limit
-// container is not nil, container is Range
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Range) GetUpperLimit() (result float64) {
 	iv, err := _I.Get(96, "Range", "get_upper_limit")
 	if err != nil {
@@ -2254,8 +2470,11 @@ func RegistryGetType() gi.GType {
 }
 
 // atk_registry_get_factory
-// container is not nil, container is Registry
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Registry) GetFactory(type1 gi.GType) (result ObjectFactory) {
 	iv, err := _I.Get(97, "Registry", "get_factory")
 	if err != nil {
@@ -2272,8 +2491,11 @@ func (v Registry) GetFactory(type1 gi.GType) (result ObjectFactory) {
 }
 
 // atk_registry_get_factory_type
-// container is not nil, container is Registry
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Registry) GetFactoryType(type1 gi.GType) (result gi.GType) {
 	iv, err := _I.Get(98, "Registry", "get_factory_type")
 	if err != nil {
@@ -2290,8 +2512,11 @@ func (v Registry) GetFactoryType(type1 gi.GType) (result gi.GType) {
 }
 
 // atk_registry_set_factory_type
-// container is not nil, container is Registry
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ factory_type ] trans: nothing
+//
 func (v Registry) SetFactoryType(type1 gi.GType, factory_type gi.GType) {
 	iv, err := _I.Get(99, "Registry", "set_factory_type")
 	if err != nil {
@@ -2322,9 +2547,15 @@ func RelationGetType() gi.GType {
 }
 
 // atk_relation_new
-// container is not nil, container is Relation
-// is constructor
-// arg 0 targets lenArgIdx 1
+//
+// [ targets ] trans: nothing
+//
+// [ n_targets ] trans: nothing
+//
+// [ relationship ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewRelation(targets gi.PointerArray, n_targets int32, relationship RelationTypeEnum) (result Relation) {
 	iv, err := _I.Get(100, "Relation", "new")
 	if err != nil {
@@ -2342,8 +2573,9 @@ func NewRelation(targets gi.PointerArray, n_targets int32, relationship Relation
 }
 
 // atk_relation_add_target
-// container is not nil, container is Relation
-// is method
+//
+// [ target ] trans: nothing
+//
 func (v Relation) AddTarget(target IObject) {
 	iv, err := _I.Get(101, "Relation", "add_target")
 	if err != nil {
@@ -2361,8 +2593,9 @@ func (v Relation) AddTarget(target IObject) {
 }
 
 // atk_relation_get_relation_type
-// container is not nil, container is Relation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Relation) GetRelationType() (result RelationTypeEnum) {
 	iv, err := _I.Get(102, "Relation", "get_relation_type")
 	if err != nil {
@@ -2378,8 +2611,9 @@ func (v Relation) GetRelationType() (result RelationTypeEnum) {
 }
 
 // atk_relation_get_target
-// container is not nil, container is Relation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Relation) GetTarget() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
 	iv, err := _I.Get(103, "Relation", "get_target")
 	if err != nil {
@@ -2395,8 +2629,11 @@ func (v Relation) GetTarget() (result int /*TODO_TYPE array type: 2, isZeroTerm:
 }
 
 // atk_relation_remove_target
-// container is not nil, container is Relation
-// is method
+//
+// [ target ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Relation) RemoveTarget(target IObject) (result bool) {
 	iv, err := _I.Get(104, "Relation", "remove_target")
 	if err != nil {
@@ -2433,8 +2670,9 @@ func RelationSetGetType() gi.GType {
 }
 
 // atk_relation_set_new
-// container is not nil, container is RelationSet
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewRelationSet() (result RelationSet) {
 	iv, err := _I.Get(105, "RelationSet", "new")
 	if err != nil {
@@ -2448,8 +2686,9 @@ func NewRelationSet() (result RelationSet) {
 }
 
 // atk_relation_set_add
-// container is not nil, container is RelationSet
-// is method
+//
+// [ relation ] trans: nothing
+//
 func (v RelationSet) Add(relation IRelation) {
 	iv, err := _I.Get(106, "RelationSet", "add")
 	if err != nil {
@@ -2467,8 +2706,11 @@ func (v RelationSet) Add(relation IRelation) {
 }
 
 // atk_relation_set_add_relation_by_type
-// container is not nil, container is RelationSet
-// is method
+//
+// [ relationship ] trans: nothing
+//
+// [ target ] trans: nothing
+//
 func (v RelationSet) AddRelationByType(relationship RelationTypeEnum, target IObject) {
 	iv, err := _I.Get(107, "RelationSet", "add_relation_by_type")
 	if err != nil {
@@ -2487,8 +2729,11 @@ func (v RelationSet) AddRelationByType(relationship RelationTypeEnum, target IOb
 }
 
 // atk_relation_set_contains
-// container is not nil, container is RelationSet
-// is method
+//
+// [ relationship ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v RelationSet) Contains(relationship RelationTypeEnum) (result bool) {
 	iv, err := _I.Get(108, "RelationSet", "contains")
 	if err != nil {
@@ -2505,8 +2750,13 @@ func (v RelationSet) Contains(relationship RelationTypeEnum) (result bool) {
 }
 
 // atk_relation_set_contains_target
-// container is not nil, container is RelationSet
-// is method
+//
+// [ relationship ] trans: nothing
+//
+// [ target ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v RelationSet) ContainsTarget(relationship RelationTypeEnum, target IObject) (result bool) {
 	iv, err := _I.Get(109, "RelationSet", "contains_target")
 	if err != nil {
@@ -2528,8 +2778,9 @@ func (v RelationSet) ContainsTarget(relationship RelationTypeEnum, target IObjec
 }
 
 // atk_relation_set_get_n_relations
-// container is not nil, container is RelationSet
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v RelationSet) GetNRelations() (result int32) {
 	iv, err := _I.Get(110, "RelationSet", "get_n_relations")
 	if err != nil {
@@ -2545,8 +2796,11 @@ func (v RelationSet) GetNRelations() (result int32) {
 }
 
 // atk_relation_set_get_relation
-// container is not nil, container is RelationSet
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v RelationSet) GetRelation(i int32) (result Relation) {
 	iv, err := _I.Get(111, "RelationSet", "get_relation")
 	if err != nil {
@@ -2563,8 +2817,11 @@ func (v RelationSet) GetRelation(i int32) (result Relation) {
 }
 
 // atk_relation_set_get_relation_by_type
-// container is not nil, container is RelationSet
-// is method
+//
+// [ relationship ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v RelationSet) GetRelationByType(relationship RelationTypeEnum) (result Relation) {
 	iv, err := _I.Get(112, "RelationSet", "get_relation_by_type")
 	if err != nil {
@@ -2581,8 +2838,9 @@ func (v RelationSet) GetRelationByType(relationship RelationTypeEnum) (result Re
 }
 
 // atk_relation_set_remove
-// container is not nil, container is RelationSet
-// is method
+//
+// [ relation ] trans: nothing
+//
 func (v RelationSet) Remove(relation IRelation) {
 	iv, err := _I.Get(113, "RelationSet", "remove")
 	if err != nil {
@@ -2801,8 +3059,11 @@ func SelectionGetType() gi.GType {
 }
 
 // atk_selection_add_selection
-// container is not nil, container is Selection
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *SelectionIfc) AddSelection(i int32) (result bool) {
 	iv, err := _I.Get(114, "Selection", "add_selection")
 	if err != nil {
@@ -2819,8 +3080,9 @@ func (v *SelectionIfc) AddSelection(i int32) (result bool) {
 }
 
 // atk_selection_clear_selection
-// container is not nil, container is Selection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *SelectionIfc) ClearSelection() (result bool) {
 	iv, err := _I.Get(115, "Selection", "clear_selection")
 	if err != nil {
@@ -2836,8 +3098,9 @@ func (v *SelectionIfc) ClearSelection() (result bool) {
 }
 
 // atk_selection_get_selection_count
-// container is not nil, container is Selection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *SelectionIfc) GetSelectionCount() (result int32) {
 	iv, err := _I.Get(116, "Selection", "get_selection_count")
 	if err != nil {
@@ -2853,8 +3116,11 @@ func (v *SelectionIfc) GetSelectionCount() (result int32) {
 }
 
 // atk_selection_is_child_selected
-// container is not nil, container is Selection
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *SelectionIfc) IsChildSelected(i int32) (result bool) {
 	iv, err := _I.Get(117, "Selection", "is_child_selected")
 	if err != nil {
@@ -2871,8 +3137,11 @@ func (v *SelectionIfc) IsChildSelected(i int32) (result bool) {
 }
 
 // atk_selection_ref_selection
-// container is not nil, container is Selection
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *SelectionIfc) RefSelection(i int32) (result Object) {
 	iv, err := _I.Get(118, "Selection", "ref_selection")
 	if err != nil {
@@ -2889,8 +3158,11 @@ func (v *SelectionIfc) RefSelection(i int32) (result Object) {
 }
 
 // atk_selection_remove_selection
-// container is not nil, container is Selection
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *SelectionIfc) RemoveSelection(i int32) (result bool) {
 	iv, err := _I.Get(119, "Selection", "remove_selection")
 	if err != nil {
@@ -2907,8 +3179,9 @@ func (v *SelectionIfc) RemoveSelection(i int32) (result bool) {
 }
 
 // atk_selection_select_all_selection
-// container is not nil, container is Selection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *SelectionIfc) SelectAllSelection() (result bool) {
 	iv, err := _I.Get(120, "Selection", "select_all_selection")
 	if err != nil {
@@ -2942,8 +3215,9 @@ func SocketGetType() gi.GType {
 }
 
 // atk_socket_new
-// container is not nil, container is Socket
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewSocket() (result Socket) {
 	iv, err := _I.Get(121, "Socket", "new")
 	if err != nil {
@@ -2957,8 +3231,9 @@ func NewSocket() (result Socket) {
 }
 
 // atk_socket_embed
-// container is not nil, container is Socket
-// is method
+//
+// [ plug_id ] trans: nothing
+//
 func (v Socket) Embed(plug_id string) {
 	iv, err := _I.Get(122, "Socket", "embed")
 	if err != nil {
@@ -2974,8 +3249,9 @@ func (v Socket) Embed(plug_id string) {
 }
 
 // atk_socket_is_occupied
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) IsOccupied() (result bool) {
 	iv, err := _I.Get(123, "Socket", "is_occupied")
 	if err != nil {
@@ -3007,8 +3283,9 @@ func StateSetGetType() gi.GType {
 }
 
 // atk_state_set_new
-// container is not nil, container is StateSet
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewStateSet() (result StateSet) {
 	iv, err := _I.Get(124, "StateSet", "new")
 	if err != nil {
@@ -3022,8 +3299,11 @@ func NewStateSet() (result StateSet) {
 }
 
 // atk_state_set_add_state
-// container is not nil, container is StateSet
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v StateSet) AddState(type1 StateTypeEnum) (result bool) {
 	iv, err := _I.Get(125, "StateSet", "add_state")
 	if err != nil {
@@ -3040,9 +3320,11 @@ func (v StateSet) AddState(type1 StateTypeEnum) (result bool) {
 }
 
 // atk_state_set_add_states
-// container is not nil, container is StateSet
-// is method
-// arg 0 types lenArgIdx 1
+//
+// [ types ] trans: nothing
+//
+// [ n_types ] trans: nothing
+//
 func (v StateSet) AddStates(types unsafe.Pointer, n_types int32) {
 	iv, err := _I.Get(126, "StateSet", "add_states")
 	if err != nil {
@@ -3057,8 +3339,11 @@ func (v StateSet) AddStates(types unsafe.Pointer, n_types int32) {
 }
 
 // atk_state_set_and_sets
-// container is not nil, container is StateSet
-// is method
+//
+// [ compare_set ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v StateSet) AndSets(compare_set IStateSet) (result StateSet) {
 	iv, err := _I.Get(127, "StateSet", "and_sets")
 	if err != nil {
@@ -3079,8 +3364,7 @@ func (v StateSet) AndSets(compare_set IStateSet) (result StateSet) {
 }
 
 // atk_state_set_clear_states
-// container is not nil, container is StateSet
-// is method
+//
 func (v StateSet) ClearStates() {
 	iv, err := _I.Get(128, "StateSet", "clear_states")
 	if err != nil {
@@ -3093,8 +3377,11 @@ func (v StateSet) ClearStates() {
 }
 
 // atk_state_set_contains_state
-// container is not nil, container is StateSet
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v StateSet) ContainsState(type1 StateTypeEnum) (result bool) {
 	iv, err := _I.Get(129, "StateSet", "contains_state")
 	if err != nil {
@@ -3111,9 +3398,13 @@ func (v StateSet) ContainsState(type1 StateTypeEnum) (result bool) {
 }
 
 // atk_state_set_contains_states
-// container is not nil, container is StateSet
-// is method
-// arg 0 types lenArgIdx 1
+//
+// [ types ] trans: nothing
+//
+// [ n_types ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v StateSet) ContainsStates(types unsafe.Pointer, n_types int32) (result bool) {
 	iv, err := _I.Get(130, "StateSet", "contains_states")
 	if err != nil {
@@ -3131,8 +3422,9 @@ func (v StateSet) ContainsStates(types unsafe.Pointer, n_types int32) (result bo
 }
 
 // atk_state_set_is_empty
-// container is not nil, container is StateSet
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v StateSet) IsEmpty() (result bool) {
 	iv, err := _I.Get(131, "StateSet", "is_empty")
 	if err != nil {
@@ -3148,8 +3440,11 @@ func (v StateSet) IsEmpty() (result bool) {
 }
 
 // atk_state_set_or_sets
-// container is not nil, container is StateSet
-// is method
+//
+// [ compare_set ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v StateSet) OrSets(compare_set IStateSet) (result StateSet) {
 	iv, err := _I.Get(132, "StateSet", "or_sets")
 	if err != nil {
@@ -3170,8 +3465,11 @@ func (v StateSet) OrSets(compare_set IStateSet) (result StateSet) {
 }
 
 // atk_state_set_remove_state
-// container is not nil, container is StateSet
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v StateSet) RemoveState(type1 StateTypeEnum) (result bool) {
 	iv, err := _I.Get(133, "StateSet", "remove_state")
 	if err != nil {
@@ -3188,8 +3486,11 @@ func (v StateSet) RemoveState(type1 StateTypeEnum) (result bool) {
 }
 
 // atk_state_set_xor_sets
-// container is not nil, container is StateSet
-// is method
+//
+// [ compare_set ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v StateSet) XorSets(compare_set IStateSet) (result StateSet) {
 	iv, err := _I.Get(134, "StateSet", "xor_sets")
 	if err != nil {
@@ -3280,8 +3581,11 @@ func StreamableContentGetType() gi.GType {
 }
 
 // atk_streamable_content_get_mime_type
-// container is not nil, container is StreamableContent
-// is method
+//
+// [ i ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *StreamableContentIfc) GetMimeType(i int32) (result string) {
 	iv, err := _I.Get(135, "StreamableContent", "get_mime_type")
 	if err != nil {
@@ -3293,13 +3597,14 @@ func (v *StreamableContentIfc) GetMimeType(i int32) (result string) {
 	args := []gi.Argument{arg_v, arg_i}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_streamable_content_get_n_mime_types
-// container is not nil, container is StreamableContent
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *StreamableContentIfc) GetNMimeTypes() (result int32) {
 	iv, err := _I.Get(136, "StreamableContent", "get_n_mime_types")
 	if err != nil {
@@ -3315,8 +3620,11 @@ func (v *StreamableContentIfc) GetNMimeTypes() (result int32) {
 }
 
 // atk_streamable_content_get_stream
-// container is not nil, container is StreamableContent
-// is method
+//
+// [ mime_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *StreamableContentIfc) GetStream(mime_type string) (result glib.IOChannel) {
 	iv, err := _I.Get(137, "StreamableContent", "get_stream")
 	if err != nil {
@@ -3335,8 +3643,11 @@ func (v *StreamableContentIfc) GetStream(mime_type string) (result glib.IOChanne
 }
 
 // atk_streamable_content_get_uri
-// container is not nil, container is StreamableContent
-// is method
+//
+// [ mime_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *StreamableContentIfc) GetUri(mime_type string) (result string) {
 	iv, err := _I.Get(138, "StreamableContent", "get_uri")
 	if err != nil {
@@ -3350,7 +3661,7 @@ func (v *StreamableContentIfc) GetUri(mime_type string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_mime_type)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
@@ -3370,8 +3681,11 @@ func TableGetType() gi.GType {
 }
 
 // atk_table_add_column_selection
-// container is not nil, container is Table
-// is method
+//
+// [ column ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) AddColumnSelection(column int32) (result bool) {
 	iv, err := _I.Get(139, "Table", "add_column_selection")
 	if err != nil {
@@ -3388,8 +3702,11 @@ func (v *TableIfc) AddColumnSelection(column int32) (result bool) {
 }
 
 // atk_table_add_row_selection
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) AddRowSelection(row int32) (result bool) {
 	iv, err := _I.Get(140, "Table", "add_row_selection")
 	if err != nil {
@@ -3406,8 +3723,9 @@ func (v *TableIfc) AddRowSelection(row int32) (result bool) {
 }
 
 // atk_table_get_caption
-// container is not nil, container is Table
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetCaption() (result Object) {
 	iv, err := _I.Get(141, "Table", "get_caption")
 	if err != nil {
@@ -3423,8 +3741,11 @@ func (v *TableIfc) GetCaption() (result Object) {
 }
 
 // atk_table_get_column_at_index
-// container is not nil, container is Table
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetColumnAtIndex(index_ int32) (result int32) {
 	iv, err := _I.Get(142, "Table", "get_column_at_index")
 	if err != nil {
@@ -3441,8 +3762,11 @@ func (v *TableIfc) GetColumnAtIndex(index_ int32) (result int32) {
 }
 
 // atk_table_get_column_description
-// container is not nil, container is Table
-// is method
+//
+// [ column ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetColumnDescription(column int32) (result string) {
 	iv, err := _I.Get(143, "Table", "get_column_description")
 	if err != nil {
@@ -3454,13 +3778,18 @@ func (v *TableIfc) GetColumnDescription(column int32) (result string) {
 	args := []gi.Argument{arg_v, arg_column}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_table_get_column_extent_at
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ column ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetColumnExtentAt(row int32, column int32) (result int32) {
 	iv, err := _I.Get(144, "Table", "get_column_extent_at")
 	if err != nil {
@@ -3478,8 +3807,11 @@ func (v *TableIfc) GetColumnExtentAt(row int32, column int32) (result int32) {
 }
 
 // atk_table_get_column_header
-// container is not nil, container is Table
-// is method
+//
+// [ column ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetColumnHeader(column int32) (result Object) {
 	iv, err := _I.Get(145, "Table", "get_column_header")
 	if err != nil {
@@ -3496,8 +3828,13 @@ func (v *TableIfc) GetColumnHeader(column int32) (result Object) {
 }
 
 // atk_table_get_index_at
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ column ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetIndexAt(row int32, column int32) (result int32) {
 	iv, err := _I.Get(146, "Table", "get_index_at")
 	if err != nil {
@@ -3515,8 +3852,9 @@ func (v *TableIfc) GetIndexAt(row int32, column int32) (result int32) {
 }
 
 // atk_table_get_n_columns
-// container is not nil, container is Table
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetNColumns() (result int32) {
 	iv, err := _I.Get(147, "Table", "get_n_columns")
 	if err != nil {
@@ -3532,8 +3870,9 @@ func (v *TableIfc) GetNColumns() (result int32) {
 }
 
 // atk_table_get_n_rows
-// container is not nil, container is Table
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetNRows() (result int32) {
 	iv, err := _I.Get(148, "Table", "get_n_rows")
 	if err != nil {
@@ -3549,8 +3888,11 @@ func (v *TableIfc) GetNRows() (result int32) {
 }
 
 // atk_table_get_row_at_index
-// container is not nil, container is Table
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetRowAtIndex(index_ int32) (result int32) {
 	iv, err := _I.Get(149, "Table", "get_row_at_index")
 	if err != nil {
@@ -3567,8 +3909,11 @@ func (v *TableIfc) GetRowAtIndex(index_ int32) (result int32) {
 }
 
 // atk_table_get_row_description
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetRowDescription(row int32) (result string) {
 	iv, err := _I.Get(150, "Table", "get_row_description")
 	if err != nil {
@@ -3580,13 +3925,18 @@ func (v *TableIfc) GetRowDescription(row int32) (result string) {
 	args := []gi.Argument{arg_v, arg_row}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_table_get_row_extent_at
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ column ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetRowExtentAt(row int32, column int32) (result int32) {
 	iv, err := _I.Get(151, "Table", "get_row_extent_at")
 	if err != nil {
@@ -3604,8 +3954,11 @@ func (v *TableIfc) GetRowExtentAt(row int32, column int32) (result int32) {
 }
 
 // atk_table_get_row_header
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetRowHeader(row int32) (result Object) {
 	iv, err := _I.Get(152, "Table", "get_row_header")
 	if err != nil {
@@ -3622,8 +3975,11 @@ func (v *TableIfc) GetRowHeader(row int32) (result Object) {
 }
 
 // atk_table_get_selected_columns
-// container is not nil, container is Table
-// is method
+//
+// [ selected ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetSelectedColumns(selected int32) (result int32) {
 	iv, err := _I.Get(153, "Table", "get_selected_columns")
 	if err != nil {
@@ -3640,8 +3996,11 @@ func (v *TableIfc) GetSelectedColumns(selected int32) (result int32) {
 }
 
 // atk_table_get_selected_rows
-// container is not nil, container is Table
-// is method
+//
+// [ selected ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) GetSelectedRows(selected int32) (result int32) {
 	iv, err := _I.Get(154, "Table", "get_selected_rows")
 	if err != nil {
@@ -3658,8 +4017,9 @@ func (v *TableIfc) GetSelectedRows(selected int32) (result int32) {
 }
 
 // atk_table_get_summary
-// container is not nil, container is Table
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *TableIfc) GetSummary() (result Object) {
 	iv, err := _I.Get(155, "Table", "get_summary")
 	if err != nil {
@@ -3675,8 +4035,11 @@ func (v *TableIfc) GetSummary() (result Object) {
 }
 
 // atk_table_is_column_selected
-// container is not nil, container is Table
-// is method
+//
+// [ column ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) IsColumnSelected(column int32) (result bool) {
 	iv, err := _I.Get(156, "Table", "is_column_selected")
 	if err != nil {
@@ -3693,8 +4056,11 @@ func (v *TableIfc) IsColumnSelected(column int32) (result bool) {
 }
 
 // atk_table_is_row_selected
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) IsRowSelected(row int32) (result bool) {
 	iv, err := _I.Get(157, "Table", "is_row_selected")
 	if err != nil {
@@ -3711,8 +4077,13 @@ func (v *TableIfc) IsRowSelected(row int32) (result bool) {
 }
 
 // atk_table_is_selected
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ column ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) IsSelected(row int32, column int32) (result bool) {
 	iv, err := _I.Get(158, "Table", "is_selected")
 	if err != nil {
@@ -3730,8 +4101,13 @@ func (v *TableIfc) IsSelected(row int32, column int32) (result bool) {
 }
 
 // atk_table_ref_at
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ column ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *TableIfc) RefAt(row int32, column int32) (result Object) {
 	iv, err := _I.Get(159, "Table", "ref_at")
 	if err != nil {
@@ -3749,8 +4125,11 @@ func (v *TableIfc) RefAt(row int32, column int32) (result Object) {
 }
 
 // atk_table_remove_column_selection
-// container is not nil, container is Table
-// is method
+//
+// [ column ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) RemoveColumnSelection(column int32) (result bool) {
 	iv, err := _I.Get(160, "Table", "remove_column_selection")
 	if err != nil {
@@ -3767,8 +4146,11 @@ func (v *TableIfc) RemoveColumnSelection(column int32) (result bool) {
 }
 
 // atk_table_remove_row_selection
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TableIfc) RemoveRowSelection(row int32) (result bool) {
 	iv, err := _I.Get(161, "Table", "remove_row_selection")
 	if err != nil {
@@ -3785,8 +4167,9 @@ func (v *TableIfc) RemoveRowSelection(row int32) (result bool) {
 }
 
 // atk_table_set_caption
-// container is not nil, container is Table
-// is method
+//
+// [ caption ] trans: nothing
+//
 func (v *TableIfc) SetCaption(caption IObject) {
 	iv, err := _I.Get(162, "Table", "set_caption")
 	if err != nil {
@@ -3804,8 +4187,11 @@ func (v *TableIfc) SetCaption(caption IObject) {
 }
 
 // atk_table_set_column_description
-// container is not nil, container is Table
-// is method
+//
+// [ column ] trans: nothing
+//
+// [ description ] trans: nothing
+//
 func (v *TableIfc) SetColumnDescription(column int32, description string) {
 	iv, err := _I.Get(163, "Table", "set_column_description")
 	if err != nil {
@@ -3822,8 +4208,11 @@ func (v *TableIfc) SetColumnDescription(column int32, description string) {
 }
 
 // atk_table_set_column_header
-// container is not nil, container is Table
-// is method
+//
+// [ column ] trans: nothing
+//
+// [ header ] trans: nothing
+//
 func (v *TableIfc) SetColumnHeader(column int32, header IObject) {
 	iv, err := _I.Get(164, "Table", "set_column_header")
 	if err != nil {
@@ -3842,8 +4231,11 @@ func (v *TableIfc) SetColumnHeader(column int32, header IObject) {
 }
 
 // atk_table_set_row_description
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ description ] trans: nothing
+//
 func (v *TableIfc) SetRowDescription(row int32, description string) {
 	iv, err := _I.Get(165, "Table", "set_row_description")
 	if err != nil {
@@ -3860,8 +4252,11 @@ func (v *TableIfc) SetRowDescription(row int32, description string) {
 }
 
 // atk_table_set_row_header
-// container is not nil, container is Table
-// is method
+//
+// [ row ] trans: nothing
+//
+// [ header ] trans: nothing
+//
 func (v *TableIfc) SetRowHeader(row int32, header IObject) {
 	iv, err := _I.Get(166, "Table", "set_row_header")
 	if err != nil {
@@ -3880,8 +4275,9 @@ func (v *TableIfc) SetRowHeader(row int32, header IObject) {
 }
 
 // atk_table_set_summary
-// container is not nil, container is Table
-// is method
+//
+// [ accessible ] trans: nothing
+//
 func (v *TableIfc) SetSummary(accessible IObject) {
 	iv, err := _I.Get(167, "Table", "set_summary")
 	if err != nil {
@@ -3913,8 +4309,9 @@ func TableCellGetType() gi.GType {
 }
 
 // atk_table_cell_get_column_header_cells
-// container is not nil, container is TableCell
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
 	iv, err := _I.Get(168, "TableCell", "get_column_header_cells")
 	if err != nil {
@@ -3930,8 +4327,9 @@ func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type
 }
 
 // atk_table_cell_get_column_span
-// container is not nil, container is TableCell
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TableCellIfc) GetColumnSpan() (result int32) {
 	iv, err := _I.Get(169, "TableCell", "get_column_span")
 	if err != nil {
@@ -3947,8 +4345,13 @@ func (v *TableCellIfc) GetColumnSpan() (result int32) {
 }
 
 // atk_table_cell_get_position
-// container is not nil, container is TableCell
-// is method
+//
+// [ row ] trans: everything, dir: out
+//
+// [ column ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v *TableCellIfc) GetPosition() (result bool, row int32, column int32) {
 	iv, err := _I.Get(170, "TableCell", "get_position")
 	if err != nil {
@@ -3969,8 +4372,17 @@ func (v *TableCellIfc) GetPosition() (result bool, row int32, column int32) {
 }
 
 // atk_table_cell_get_row_column_span
-// container is not nil, container is TableCell
-// is method
+//
+// [ row ] trans: everything, dir: out
+//
+// [ column ] trans: everything, dir: out
+//
+// [ row_span ] trans: everything, dir: out
+//
+// [ column_span ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v *TableCellIfc) GetRowColumnSpan() (result bool, row int32, column int32, row_span int32, column_span int32) {
 	iv, err := _I.Get(171, "TableCell", "get_row_column_span")
 	if err != nil {
@@ -3995,8 +4407,9 @@ func (v *TableCellIfc) GetRowColumnSpan() (result bool, row int32, column int32,
 }
 
 // atk_table_cell_get_row_header_cells
-// container is not nil, container is TableCell
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
 	iv, err := _I.Get(172, "TableCell", "get_row_header_cells")
 	if err != nil {
@@ -4012,8 +4425,9 @@ func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2
 }
 
 // atk_table_cell_get_row_span
-// container is not nil, container is TableCell
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TableCellIfc) GetRowSpan() (result int32) {
 	iv, err := _I.Get(173, "TableCell", "get_row_span")
 	if err != nil {
@@ -4029,8 +4443,9 @@ func (v *TableCellIfc) GetRowSpan() (result int32) {
 }
 
 // atk_table_cell_get_table
-// container is not nil, container is TableCell
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *TableCellIfc) GetTable() (result Object) {
 	iv, err := _I.Get(174, "TableCell", "get_table")
 	if err != nil {
@@ -4062,9 +4477,9 @@ func TextGetType() gi.GType {
 }
 
 // atk_text_free_ranges
-// container is not nil, container is Text
-// is method
-// arg0Type tag: array, isPtr: true
+//
+// [ ranges ] trans: nothing
+//
 func TextFreeRanges1(ranges gi.PointerArray) {
 	iv, err := _I.Get(175, "Text", "free_ranges")
 	if err != nil {
@@ -4077,8 +4492,13 @@ func TextFreeRanges1(ranges gi.PointerArray) {
 }
 
 // atk_text_add_selection
-// container is not nil, container is Text
-// is method
+//
+// [ start_offset ] trans: nothing
+//
+// [ end_offset ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TextIfc) AddSelection(start_offset int32, end_offset int32) (result bool) {
 	iv, err := _I.Get(176, "Text", "add_selection")
 	if err != nil {
@@ -4096,8 +4516,17 @@ func (v *TextIfc) AddSelection(start_offset int32, end_offset int32) (result boo
 }
 
 // atk_text_get_bounded_ranges
-// container is not nil, container is Text
-// is method
+//
+// [ rect ] trans: nothing
+//
+// [ coord_type ] trans: nothing
+//
+// [ x_clip_type ] trans: nothing
+//
+// [ y_clip_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *TextIfc) GetBoundedRanges(rect TextRectangle, coord_type CoordTypeEnum, x_clip_type TextClipTypeEnum, y_clip_type TextClipTypeEnum) (result gi.PointerArray) {
 	iv, err := _I.Get(177, "Text", "get_bounded_ranges")
 	if err != nil {
@@ -4118,8 +4547,9 @@ func (v *TextIfc) GetBoundedRanges(rect TextRectangle, coord_type CoordTypeEnum,
 }
 
 // atk_text_get_caret_offset
-// container is not nil, container is Text
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TextIfc) GetCaretOffset() (result int32) {
 	iv, err := _I.Get(178, "Text", "get_caret_offset")
 	if err != nil {
@@ -4135,8 +4565,11 @@ func (v *TextIfc) GetCaretOffset() (result int32) {
 }
 
 // atk_text_get_character_at_offset
-// container is not nil, container is Text
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TextIfc) GetCharacterAtOffset(offset int32) (result rune) {
 	iv, err := _I.Get(179, "Text", "get_character_at_offset")
 	if err != nil {
@@ -4153,8 +4586,9 @@ func (v *TextIfc) GetCharacterAtOffset(offset int32) (result rune) {
 }
 
 // atk_text_get_character_count
-// container is not nil, container is Text
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TextIfc) GetCharacterCount() (result int32) {
 	iv, err := _I.Get(180, "Text", "get_character_count")
 	if err != nil {
@@ -4170,8 +4604,19 @@ func (v *TextIfc) GetCharacterCount() (result int32) {
 }
 
 // atk_text_get_character_extents
-// container is not nil, container is Text
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ x ] trans: everything, dir: out
+//
+// [ y ] trans: everything, dir: out
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
+// [ coords ] trans: nothing
+//
 func (v *TextIfc) GetCharacterExtents(offset int32, coords CoordTypeEnum) (x int32, y int32, width int32, height int32) {
 	iv, err := _I.Get(181, "Text", "get_character_extents")
 	if err != nil {
@@ -4196,8 +4641,9 @@ func (v *TextIfc) GetCharacterExtents(offset int32, coords CoordTypeEnum) (x int
 }
 
 // atk_text_get_default_attributes
-// container is not nil, container is Text
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *TextIfc) GetDefaultAttributes() (result glib.SList) {
 	iv, err := _I.Get(182, "Text", "get_default_attributes")
 	if err != nil {
@@ -4213,8 +4659,9 @@ func (v *TextIfc) GetDefaultAttributes() (result glib.SList) {
 }
 
 // atk_text_get_n_selections
-// container is not nil, container is Text
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TextIfc) GetNSelections() (result int32) {
 	iv, err := _I.Get(183, "Text", "get_n_selections")
 	if err != nil {
@@ -4230,8 +4677,15 @@ func (v *TextIfc) GetNSelections() (result int32) {
 }
 
 // atk_text_get_offset_at_point
-// container is not nil, container is Text
-// is method
+//
+// [ x ] trans: nothing
+//
+// [ y ] trans: nothing
+//
+// [ coords ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TextIfc) GetOffsetAtPoint(x int32, y int32, coords CoordTypeEnum) (result int32) {
 	iv, err := _I.Get(184, "Text", "get_offset_at_point")
 	if err != nil {
@@ -4250,8 +4704,15 @@ func (v *TextIfc) GetOffsetAtPoint(x int32, y int32, coords CoordTypeEnum) (resu
 }
 
 // atk_text_get_range_extents
-// container is not nil, container is Text
-// is method
+//
+// [ start_offset ] trans: nothing
+//
+// [ end_offset ] trans: nothing
+//
+// [ coord_type ] trans: nothing
+//
+// [ rect ] trans: nothing, dir: out
+//
 func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, coord_type CoordTypeEnum, rect TextRectangle) {
 	iv, err := _I.Get(185, "Text", "get_range_extents")
 	if err != nil {
@@ -4268,8 +4729,15 @@ func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, coord_ty
 }
 
 // atk_text_get_run_attributes
-// container is not nil, container is Text
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ start_offset ] trans: everything, dir: out
+//
+// [ end_offset ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v *TextIfc) GetRunAttributes(offset int32) (result glib.SList, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(186, "Text", "get_run_attributes")
 	if err != nil {
@@ -4291,8 +4759,15 @@ func (v *TextIfc) GetRunAttributes(offset int32) (result glib.SList, start_offse
 }
 
 // atk_text_get_selection
-// container is not nil, container is Text
-// is method
+//
+// [ selection_num ] trans: nothing
+//
+// [ start_offset ] trans: everything, dir: out
+//
+// [ end_offset ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v *TextIfc) GetSelection(selection_num int32) (result string, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(187, "Text", "get_selection")
 	if err != nil {
@@ -4314,8 +4789,17 @@ func (v *TextIfc) GetSelection(selection_num int32) (result string, start_offset
 }
 
 // atk_text_get_string_at_offset
-// container is not nil, container is Text
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ granularity ] trans: nothing
+//
+// [ start_offset ] trans: everything, dir: out
+//
+// [ end_offset ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v *TextIfc) GetStringAtOffset(offset int32, granularity TextGranularityEnum) (result string, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(188, "Text", "get_string_at_offset")
 	if err != nil {
@@ -4338,8 +4822,13 @@ func (v *TextIfc) GetStringAtOffset(offset int32, granularity TextGranularityEnu
 }
 
 // atk_text_get_text
-// container is not nil, container is Text
-// is method
+//
+// [ start_offset ] trans: nothing
+//
+// [ end_offset ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *TextIfc) GetText(start_offset int32, end_offset int32) (result string) {
 	iv, err := _I.Get(189, "Text", "get_text")
 	if err != nil {
@@ -4357,8 +4846,17 @@ func (v *TextIfc) GetText(start_offset int32, end_offset int32) (result string) 
 }
 
 // atk_text_get_text_after_offset
-// container is not nil, container is Text
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ boundary_type ] trans: nothing
+//
+// [ start_offset ] trans: everything, dir: out
+//
+// [ end_offset ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v *TextIfc) GetTextAfterOffset(offset int32, boundary_type TextBoundaryEnum) (result string, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(190, "Text", "get_text_after_offset")
 	if err != nil {
@@ -4381,8 +4879,17 @@ func (v *TextIfc) GetTextAfterOffset(offset int32, boundary_type TextBoundaryEnu
 }
 
 // atk_text_get_text_at_offset
-// container is not nil, container is Text
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ boundary_type ] trans: nothing
+//
+// [ start_offset ] trans: everything, dir: out
+//
+// [ end_offset ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v *TextIfc) GetTextAtOffset(offset int32, boundary_type TextBoundaryEnum) (result string, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(191, "Text", "get_text_at_offset")
 	if err != nil {
@@ -4405,8 +4912,17 @@ func (v *TextIfc) GetTextAtOffset(offset int32, boundary_type TextBoundaryEnum) 
 }
 
 // atk_text_get_text_before_offset
-// container is not nil, container is Text
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ boundary_type ] trans: nothing
+//
+// [ start_offset ] trans: everything, dir: out
+//
+// [ end_offset ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v *TextIfc) GetTextBeforeOffset(offset int32, boundary_type TextBoundaryEnum) (result string, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(192, "Text", "get_text_before_offset")
 	if err != nil {
@@ -4429,8 +4945,11 @@ func (v *TextIfc) GetTextBeforeOffset(offset int32, boundary_type TextBoundaryEn
 }
 
 // atk_text_remove_selection
-// container is not nil, container is Text
-// is method
+//
+// [ selection_num ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TextIfc) RemoveSelection(selection_num int32) (result bool) {
 	iv, err := _I.Get(193, "Text", "remove_selection")
 	if err != nil {
@@ -4447,8 +4966,11 @@ func (v *TextIfc) RemoveSelection(selection_num int32) (result bool) {
 }
 
 // atk_text_set_caret_offset
-// container is not nil, container is Text
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TextIfc) SetCaretOffset(offset int32) (result bool) {
 	iv, err := _I.Get(194, "Text", "set_caret_offset")
 	if err != nil {
@@ -4465,8 +4987,15 @@ func (v *TextIfc) SetCaretOffset(offset int32) (result bool) {
 }
 
 // atk_text_set_selection
-// container is not nil, container is Text
-// is method
+//
+// [ selection_num ] trans: nothing
+//
+// [ start_offset ] trans: nothing
+//
+// [ end_offset ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *TextIfc) SetSelection(selection_num int32, start_offset int32, end_offset int32) (result bool) {
 	iv, err := _I.Get(195, "Text", "set_selection")
 	if err != nil {
@@ -4629,8 +5158,9 @@ func ValueGetType() gi.GType {
 }
 
 // atk_value_get_current_value
-// container is not nil, container is Value
-// is method
+//
+// [ value ] trans: nothing, dir: out
+//
 func (v *ValueIfc) GetCurrentValue(value gobject.Value) {
 	iv, err := _I.Get(196, "Value", "get_current_value")
 	if err != nil {
@@ -4644,8 +5174,9 @@ func (v *ValueIfc) GetCurrentValue(value gobject.Value) {
 }
 
 // atk_value_get_increment
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ValueIfc) GetIncrement() (result float64) {
 	iv, err := _I.Get(197, "Value", "get_increment")
 	if err != nil {
@@ -4661,8 +5192,9 @@ func (v *ValueIfc) GetIncrement() (result float64) {
 }
 
 // atk_value_get_maximum_value
-// container is not nil, container is Value
-// is method
+//
+// [ value ] trans: nothing, dir: out
+//
 func (v *ValueIfc) GetMaximumValue(value gobject.Value) {
 	iv, err := _I.Get(198, "Value", "get_maximum_value")
 	if err != nil {
@@ -4676,8 +5208,9 @@ func (v *ValueIfc) GetMaximumValue(value gobject.Value) {
 }
 
 // atk_value_get_minimum_increment
-// container is not nil, container is Value
-// is method
+//
+// [ value ] trans: nothing, dir: out
+//
 func (v *ValueIfc) GetMinimumIncrement(value gobject.Value) {
 	iv, err := _I.Get(199, "Value", "get_minimum_increment")
 	if err != nil {
@@ -4691,8 +5224,9 @@ func (v *ValueIfc) GetMinimumIncrement(value gobject.Value) {
 }
 
 // atk_value_get_minimum_value
-// container is not nil, container is Value
-// is method
+//
+// [ value ] trans: nothing, dir: out
+//
 func (v *ValueIfc) GetMinimumValue(value gobject.Value) {
 	iv, err := _I.Get(200, "Value", "get_minimum_value")
 	if err != nil {
@@ -4706,8 +5240,9 @@ func (v *ValueIfc) GetMinimumValue(value gobject.Value) {
 }
 
 // atk_value_get_range
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *ValueIfc) GetRange() (result Range) {
 	iv, err := _I.Get(201, "Value", "get_range")
 	if err != nil {
@@ -4723,8 +5258,9 @@ func (v *ValueIfc) GetRange() (result Range) {
 }
 
 // atk_value_get_sub_ranges
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *ValueIfc) GetSubRanges() (result glib.SList) {
 	iv, err := _I.Get(202, "Value", "get_sub_ranges")
 	if err != nil {
@@ -4740,8 +5276,11 @@ func (v *ValueIfc) GetSubRanges() (result glib.SList) {
 }
 
 // atk_value_get_value_and_text
-// container is not nil, container is Value
-// is method
+//
+// [ value ] trans: everything, dir: out
+//
+// [ text ] trans: everything, dir: out
+//
 func (v *ValueIfc) GetValueAndText() (value float64, text string) {
 	iv, err := _I.Get(203, "Value", "get_value_and_text")
 	if err != nil {
@@ -4760,8 +5299,11 @@ func (v *ValueIfc) GetValueAndText() (value float64, text string) {
 }
 
 // atk_value_set_current_value
-// container is not nil, container is Value
-// is method
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ValueIfc) SetCurrentValue(value gobject.Value) (result bool) {
 	iv, err := _I.Get(204, "Value", "set_current_value")
 	if err != nil {
@@ -4778,8 +5320,9 @@ func (v *ValueIfc) SetCurrentValue(value gobject.Value) (result bool) {
 }
 
 // atk_value_set_value
-// container is not nil, container is Value
-// is method
+//
+// [ new_value ] trans: nothing
+//
 func (v *ValueIfc) SetValue(new_value float64) {
 	iv, err := _I.Get(205, "Value", "set_value")
 	if err != nil {
@@ -4836,7 +5379,9 @@ func WindowGetType() gi.GType {
 
 // ignore GType struct WindowIface
 // atk_attribute_set_free
-// container is nil
+//
+// [ attrib_set ] trans: nothing
+//
 func AttributeSetFree(attrib_set glib.SList) {
 	iv, err := _I.Get(206, "attribute_set_free", "")
 	if err != nil {
@@ -4849,7 +5394,9 @@ func AttributeSetFree(attrib_set glib.SList) {
 }
 
 // atk_focus_tracker_notify
-// container is nil
+//
+// [ object ] trans: nothing
+//
 func FocusTrackerNotify(object IObject) {
 	iv, err := _I.Get(207, "focus_tracker_notify", "")
 	if err != nil {
@@ -4866,7 +5413,9 @@ func FocusTrackerNotify(object IObject) {
 }
 
 // atk_get_binary_age
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetBinaryAge() (result uint32) {
 	iv, err := _I.Get(208, "get_binary_age", "")
 	if err != nil {
@@ -4880,7 +5429,9 @@ func GetBinaryAge() (result uint32) {
 }
 
 // atk_get_default_registry
-// container is nil
+//
+// [ result ] trans: everything
+//
 func GetDefaultRegistry() (result Registry) {
 	iv, err := _I.Get(209, "get_default_registry", "")
 	if err != nil {
@@ -4894,7 +5445,9 @@ func GetDefaultRegistry() (result Registry) {
 }
 
 // atk_get_focus_object
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetFocusObject() (result Object) {
 	iv, err := _I.Get(210, "get_focus_object", "")
 	if err != nil {
@@ -4908,7 +5461,9 @@ func GetFocusObject() (result Object) {
 }
 
 // atk_get_interface_age
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetInterfaceAge() (result uint32) {
 	iv, err := _I.Get(211, "get_interface_age", "")
 	if err != nil {
@@ -4922,7 +5477,9 @@ func GetInterfaceAge() (result uint32) {
 }
 
 // atk_get_major_version
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetMajorVersion() (result uint32) {
 	iv, err := _I.Get(212, "get_major_version", "")
 	if err != nil {
@@ -4936,7 +5493,9 @@ func GetMajorVersion() (result uint32) {
 }
 
 // atk_get_micro_version
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetMicroVersion() (result uint32) {
 	iv, err := _I.Get(213, "get_micro_version", "")
 	if err != nil {
@@ -4950,7 +5509,9 @@ func GetMicroVersion() (result uint32) {
 }
 
 // atk_get_minor_version
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetMinorVersion() (result uint32) {
 	iv, err := _I.Get(214, "get_minor_version", "")
 	if err != nil {
@@ -4964,7 +5525,9 @@ func GetMinorVersion() (result uint32) {
 }
 
 // atk_get_root
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetRoot() (result Object) {
 	iv, err := _I.Get(215, "get_root", "")
 	if err != nil {
@@ -4978,7 +5541,9 @@ func GetRoot() (result Object) {
 }
 
 // atk_get_toolkit_name
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetToolkitName() (result string) {
 	iv, err := _I.Get(216, "get_toolkit_name", "")
 	if err != nil {
@@ -4987,12 +5552,14 @@ func GetToolkitName() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_get_toolkit_version
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetToolkitVersion() (result string) {
 	iv, err := _I.Get(217, "get_toolkit_version", "")
 	if err != nil {
@@ -5001,12 +5568,14 @@ func GetToolkitVersion() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_get_version
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetVersion() (result string) {
 	iv, err := _I.Get(218, "get_version", "")
 	if err != nil {
@@ -5015,12 +5584,16 @@ func GetVersion() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_relation_type_for_name
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RelationTypeForName(name string) (result RelationTypeEnum) {
 	iv, err := _I.Get(219, "relation_type_for_name", "")
 	if err != nil {
@@ -5038,7 +5611,11 @@ func RelationTypeForName(name string) (result RelationTypeEnum) {
 }
 
 // atk_relation_type_get_name
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RelationTypeGetName(type1 RelationTypeEnum) (result string) {
 	iv, err := _I.Get(220, "relation_type_get_name", "")
 	if err != nil {
@@ -5049,12 +5626,16 @@ func RelationTypeGetName(type1 RelationTypeEnum) (result string) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_relation_type_register
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RelationTypeRegister(name string) (result RelationTypeEnum) {
 	iv, err := _I.Get(221, "relation_type_register", "")
 	if err != nil {
@@ -5072,7 +5653,9 @@ func RelationTypeRegister(name string) (result RelationTypeEnum) {
 }
 
 // atk_remove_focus_tracker
-// container is nil
+//
+// [ tracker_id ] trans: nothing
+//
 func RemoveFocusTracker(tracker_id uint32) {
 	iv, err := _I.Get(222, "remove_focus_tracker", "")
 	if err != nil {
@@ -5085,7 +5668,9 @@ func RemoveFocusTracker(tracker_id uint32) {
 }
 
 // atk_remove_global_event_listener
-// container is nil
+//
+// [ listener_id ] trans: nothing
+//
 func RemoveGlobalEventListener(listener_id uint32) {
 	iv, err := _I.Get(223, "remove_global_event_listener", "")
 	if err != nil {
@@ -5098,7 +5683,9 @@ func RemoveGlobalEventListener(listener_id uint32) {
 }
 
 // atk_remove_key_event_listener
-// container is nil
+//
+// [ listener_id ] trans: nothing
+//
 func RemoveKeyEventListener(listener_id uint32) {
 	iv, err := _I.Get(224, "remove_key_event_listener", "")
 	if err != nil {
@@ -5111,7 +5698,11 @@ func RemoveKeyEventListener(listener_id uint32) {
 }
 
 // atk_role_for_name
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RoleForName(name string) (result RoleEnum) {
 	iv, err := _I.Get(225, "role_for_name", "")
 	if err != nil {
@@ -5129,7 +5720,11 @@ func RoleForName(name string) (result RoleEnum) {
 }
 
 // atk_role_get_localized_name
-// container is nil
+//
+// [ role ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RoleGetLocalizedName(role RoleEnum) (result string) {
 	iv, err := _I.Get(226, "role_get_localized_name", "")
 	if err != nil {
@@ -5140,12 +5735,16 @@ func RoleGetLocalizedName(role RoleEnum) (result string) {
 	args := []gi.Argument{arg_role}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_role_get_name
-// container is nil
+//
+// [ role ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RoleGetName(role RoleEnum) (result string) {
 	iv, err := _I.Get(227, "role_get_name", "")
 	if err != nil {
@@ -5156,12 +5755,16 @@ func RoleGetName(role RoleEnum) (result string) {
 	args := []gi.Argument{arg_role}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_role_register
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RoleRegister(name string) (result RoleEnum) {
 	iv, err := _I.Get(228, "role_register", "")
 	if err != nil {
@@ -5179,7 +5782,11 @@ func RoleRegister(name string) (result RoleEnum) {
 }
 
 // atk_state_type_for_name
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StateTypeForName(name string) (result StateTypeEnum) {
 	iv, err := _I.Get(229, "state_type_for_name", "")
 	if err != nil {
@@ -5197,7 +5804,11 @@ func StateTypeForName(name string) (result StateTypeEnum) {
 }
 
 // atk_state_type_get_name
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StateTypeGetName(type1 StateTypeEnum) (result string) {
 	iv, err := _I.Get(230, "state_type_get_name", "")
 	if err != nil {
@@ -5208,12 +5819,16 @@ func StateTypeGetName(type1 StateTypeEnum) (result string) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_state_type_register
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StateTypeRegister(name string) (result StateTypeEnum) {
 	iv, err := _I.Get(231, "state_type_register", "")
 	if err != nil {
@@ -5231,7 +5846,11 @@ func StateTypeRegister(name string) (result StateTypeEnum) {
 }
 
 // atk_text_attribute_for_name
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TextAttributeForName(name string) (result TextAttributeEnum) {
 	iv, err := _I.Get(232, "text_attribute_for_name", "")
 	if err != nil {
@@ -5249,7 +5868,11 @@ func TextAttributeForName(name string) (result TextAttributeEnum) {
 }
 
 // atk_text_attribute_get_name
-// container is nil
+//
+// [ attr ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TextAttributeGetName(attr TextAttributeEnum) (result string) {
 	iv, err := _I.Get(233, "text_attribute_get_name", "")
 	if err != nil {
@@ -5260,12 +5883,18 @@ func TextAttributeGetName(attr TextAttributeEnum) (result string) {
 	args := []gi.Argument{arg_attr}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_text_attribute_get_value
-// container is nil
+//
+// [ attr ] trans: nothing
+//
+// [ index_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TextAttributeGetValue(attr TextAttributeEnum, index_ int32) (result string) {
 	iv, err := _I.Get(234, "text_attribute_get_value", "")
 	if err != nil {
@@ -5277,12 +5906,16 @@ func TextAttributeGetValue(attr TextAttributeEnum, index_ int32) (result string)
 	args := []gi.Argument{arg_attr, arg_index_}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_text_attribute_register
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TextAttributeRegister(name string) (result TextAttributeEnum) {
 	iv, err := _I.Get(235, "text_attribute_register", "")
 	if err != nil {
@@ -5300,7 +5933,9 @@ func TextAttributeRegister(name string) (result TextAttributeEnum) {
 }
 
 // atk_text_free_ranges
-// container is nil
+//
+// [ ranges ] trans: nothing
+//
 func TextFreeRanges(ranges gi.PointerArray) {
 	iv, err := _I.Get(236, "text_free_ranges", "")
 	if err != nil {
@@ -5313,7 +5948,11 @@ func TextFreeRanges(ranges gi.PointerArray) {
 }
 
 // atk_value_type_get_localized_name
-// container is nil
+//
+// [ value_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ValueTypeGetLocalizedName(value_type ValueTypeEnum) (result string) {
 	iv, err := _I.Get(237, "value_type_get_localized_name", "")
 	if err != nil {
@@ -5324,12 +5963,16 @@ func ValueTypeGetLocalizedName(value_type ValueTypeEnum) (result string) {
 	args := []gi.Argument{arg_value_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // atk_value_type_get_name
-// container is nil
+//
+// [ value_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ValueTypeGetName(value_type ValueTypeEnum) (result string) {
 	iv, err := _I.Get(238, "value_type_get_name", "")
 	if err != nil {
@@ -5340,7 +5983,7 @@ func ValueTypeGetName(value_type ValueTypeEnum) (result string) {
 	args := []gi.Argument{arg_value_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 

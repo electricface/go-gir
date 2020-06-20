@@ -39,8 +39,11 @@ func ClientGetType() gi.GType {
 }
 
 // g_udev_client_new
-// container is not nil, container is Client
-// is constructor
+//
+// [ subsystems ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewClient(subsystems gi.CStrArray) (result Client) {
 	iv, err := _I.Get(0, "Client", "new")
 	if err != nil {
@@ -56,8 +59,11 @@ func NewClient(subsystems gi.CStrArray) (result Client) {
 }
 
 // g_udev_client_query_by_device_file
-// container is not nil, container is Client
-// is method
+//
+// [ device_file ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Client) QueryByDeviceFile(device_file string) (result Device) {
 	iv, err := _I.Get(1, "Client", "query_by_device_file")
 	if err != nil {
@@ -76,8 +82,13 @@ func (v Client) QueryByDeviceFile(device_file string) (result Device) {
 }
 
 // g_udev_client_query_by_device_number
-// container is not nil, container is Client
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ number ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Client) QueryByDeviceNumber(type1 DeviceTypeEnum, number uint64) (result Device) {
 	iv, err := _I.Get(2, "Client", "query_by_device_number")
 	if err != nil {
@@ -95,8 +106,11 @@ func (v Client) QueryByDeviceNumber(type1 DeviceTypeEnum, number uint64) (result
 }
 
 // g_udev_client_query_by_subsystem
-// container is not nil, container is Client
-// is method
+//
+// [ subsystem ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Client) QueryBySubsystem(subsystem string) (result glib.List) {
 	iv, err := _I.Get(3, "Client", "query_by_subsystem")
 	if err != nil {
@@ -115,8 +129,13 @@ func (v Client) QueryBySubsystem(subsystem string) (result glib.List) {
 }
 
 // g_udev_client_query_by_subsystem_and_name
-// container is not nil, container is Client
-// is method
+//
+// [ subsystem ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Client) QueryBySubsystemAndName(subsystem string, name string) (result Device) {
 	iv, err := _I.Get(4, "Client", "query_by_subsystem_and_name")
 	if err != nil {
@@ -138,8 +157,11 @@ func (v Client) QueryBySubsystemAndName(subsystem string, name string) (result D
 }
 
 // g_udev_client_query_by_sysfs_path
-// container is not nil, container is Client
-// is method
+//
+// [ sysfs_path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Client) QueryBySysfsPath(sysfs_path string) (result Device) {
 	iv, err := _I.Get(5, "Client", "query_by_sysfs_path")
 	if err != nil {
@@ -184,8 +206,9 @@ func DeviceGetType() gi.GType {
 }
 
 // g_udev_device_get_action
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetAction() (result string) {
 	iv, err := _I.Get(6, "Device", "get_action")
 	if err != nil {
@@ -196,13 +219,14 @@ func (v Device) GetAction() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_udev_device_get_device_file
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetDeviceFile() (result string) {
 	iv, err := _I.Get(7, "Device", "get_device_file")
 	if err != nil {
@@ -213,13 +237,14 @@ func (v Device) GetDeviceFile() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_udev_device_get_device_file_symlinks
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetDeviceFileSymlinks() (result gi.CStrArray) {
 	iv, err := _I.Get(8, "Device", "get_device_file_symlinks")
 	if err != nil {
@@ -236,8 +261,9 @@ func (v Device) GetDeviceFileSymlinks() (result gi.CStrArray) {
 }
 
 // g_udev_device_get_device_number
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetDeviceNumber() (result uint64) {
 	iv, err := _I.Get(9, "Device", "get_device_number")
 	if err != nil {
@@ -253,8 +279,9 @@ func (v Device) GetDeviceNumber() (result uint64) {
 }
 
 // g_udev_device_get_device_type
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetDeviceType() (result DeviceTypeEnum) {
 	iv, err := _I.Get(10, "Device", "get_device_type")
 	if err != nil {
@@ -270,8 +297,9 @@ func (v Device) GetDeviceType() (result DeviceTypeEnum) {
 }
 
 // g_udev_device_get_devtype
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetDevtype() (result string) {
 	iv, err := _I.Get(11, "Device", "get_devtype")
 	if err != nil {
@@ -282,13 +310,14 @@ func (v Device) GetDevtype() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_udev_device_get_driver
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetDriver() (result string) {
 	iv, err := _I.Get(12, "Device", "get_driver")
 	if err != nil {
@@ -299,13 +328,14 @@ func (v Device) GetDriver() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_udev_device_get_is_initialized
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetIsInitialized() (result bool) {
 	iv, err := _I.Get(13, "Device", "get_is_initialized")
 	if err != nil {
@@ -321,8 +351,9 @@ func (v Device) GetIsInitialized() (result bool) {
 }
 
 // g_udev_device_get_name
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetName() (result string) {
 	iv, err := _I.Get(14, "Device", "get_name")
 	if err != nil {
@@ -333,13 +364,14 @@ func (v Device) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_udev_device_get_number
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetNumber() (result string) {
 	iv, err := _I.Get(15, "Device", "get_number")
 	if err != nil {
@@ -350,13 +382,14 @@ func (v Device) GetNumber() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_udev_device_get_parent
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Device) GetParent() (result Device) {
 	iv, err := _I.Get(16, "Device", "get_parent")
 	if err != nil {
@@ -372,8 +405,13 @@ func (v Device) GetParent() (result Device) {
 }
 
 // g_udev_device_get_parent_with_subsystem
-// container is not nil, container is Device
-// is method
+//
+// [ subsystem ] trans: nothing
+//
+// [ devtype ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Device) GetParentWithSubsystem(subsystem string, devtype string) (result Device) {
 	iv, err := _I.Get(17, "Device", "get_parent_with_subsystem")
 	if err != nil {
@@ -395,8 +433,11 @@ func (v Device) GetParentWithSubsystem(subsystem string, devtype string) (result
 }
 
 // g_udev_device_get_property
-// container is not nil, container is Device
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetProperty(key string) (result string) {
 	iv, err := _I.Get(18, "Device", "get_property")
 	if err != nil {
@@ -410,13 +451,16 @@ func (v Device) GetProperty(key string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_key)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_udev_device_get_property_as_boolean
-// container is not nil, container is Device
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetPropertyAsBoolean(key string) (result bool) {
 	iv, err := _I.Get(19, "Device", "get_property_as_boolean")
 	if err != nil {
@@ -435,8 +479,11 @@ func (v Device) GetPropertyAsBoolean(key string) (result bool) {
 }
 
 // g_udev_device_get_property_as_double
-// container is not nil, container is Device
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetPropertyAsDouble(key string) (result float64) {
 	iv, err := _I.Get(20, "Device", "get_property_as_double")
 	if err != nil {
@@ -455,8 +502,11 @@ func (v Device) GetPropertyAsDouble(key string) (result float64) {
 }
 
 // g_udev_device_get_property_as_int
-// container is not nil, container is Device
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetPropertyAsInt(key string) (result int32) {
 	iv, err := _I.Get(21, "Device", "get_property_as_int")
 	if err != nil {
@@ -475,8 +525,11 @@ func (v Device) GetPropertyAsInt(key string) (result int32) {
 }
 
 // g_udev_device_get_property_as_strv
-// container is not nil, container is Device
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetPropertyAsStrv(key string) (result gi.CStrArray) {
 	iv, err := _I.Get(22, "Device", "get_property_as_strv")
 	if err != nil {
@@ -496,8 +549,11 @@ func (v Device) GetPropertyAsStrv(key string) (result gi.CStrArray) {
 }
 
 // g_udev_device_get_property_as_uint64
-// container is not nil, container is Device
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetPropertyAsUint64(key string) (result uint64) {
 	iv, err := _I.Get(23, "Device", "get_property_as_uint64")
 	if err != nil {
@@ -516,8 +572,9 @@ func (v Device) GetPropertyAsUint64(key string) (result uint64) {
 }
 
 // g_udev_device_get_property_keys
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetPropertyKeys() (result gi.CStrArray) {
 	iv, err := _I.Get(24, "Device", "get_property_keys")
 	if err != nil {
@@ -534,8 +591,9 @@ func (v Device) GetPropertyKeys() (result gi.CStrArray) {
 }
 
 // g_udev_device_get_seqnum
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSeqnum() (result uint64) {
 	iv, err := _I.Get(25, "Device", "get_seqnum")
 	if err != nil {
@@ -551,8 +609,9 @@ func (v Device) GetSeqnum() (result uint64) {
 }
 
 // g_udev_device_get_subsystem
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSubsystem() (result string) {
 	iv, err := _I.Get(26, "Device", "get_subsystem")
 	if err != nil {
@@ -563,13 +622,16 @@ func (v Device) GetSubsystem() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_udev_device_get_sysfs_attr
-// container is not nil, container is Device
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSysfsAttr(name string) (result string) {
 	iv, err := _I.Get(27, "Device", "get_sysfs_attr")
 	if err != nil {
@@ -583,13 +645,16 @@ func (v Device) GetSysfsAttr(name string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_udev_device_get_sysfs_attr_as_boolean
-// container is not nil, container is Device
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSysfsAttrAsBoolean(name string) (result bool) {
 	iv, err := _I.Get(28, "Device", "get_sysfs_attr_as_boolean")
 	if err != nil {
@@ -608,8 +673,11 @@ func (v Device) GetSysfsAttrAsBoolean(name string) (result bool) {
 }
 
 // g_udev_device_get_sysfs_attr_as_double
-// container is not nil, container is Device
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSysfsAttrAsDouble(name string) (result float64) {
 	iv, err := _I.Get(29, "Device", "get_sysfs_attr_as_double")
 	if err != nil {
@@ -628,8 +696,11 @@ func (v Device) GetSysfsAttrAsDouble(name string) (result float64) {
 }
 
 // g_udev_device_get_sysfs_attr_as_int
-// container is not nil, container is Device
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSysfsAttrAsInt(name string) (result int32) {
 	iv, err := _I.Get(30, "Device", "get_sysfs_attr_as_int")
 	if err != nil {
@@ -648,8 +719,11 @@ func (v Device) GetSysfsAttrAsInt(name string) (result int32) {
 }
 
 // g_udev_device_get_sysfs_attr_as_strv
-// container is not nil, container is Device
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSysfsAttrAsStrv(name string) (result gi.CStrArray) {
 	iv, err := _I.Get(31, "Device", "get_sysfs_attr_as_strv")
 	if err != nil {
@@ -669,8 +743,11 @@ func (v Device) GetSysfsAttrAsStrv(name string) (result gi.CStrArray) {
 }
 
 // g_udev_device_get_sysfs_attr_as_uint64
-// container is not nil, container is Device
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSysfsAttrAsUint64(name string) (result uint64) {
 	iv, err := _I.Get(32, "Device", "get_sysfs_attr_as_uint64")
 	if err != nil {
@@ -689,8 +766,9 @@ func (v Device) GetSysfsAttrAsUint64(name string) (result uint64) {
 }
 
 // g_udev_device_get_sysfs_attr_keys
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSysfsAttrKeys() (result gi.CStrArray) {
 	iv, err := _I.Get(33, "Device", "get_sysfs_attr_keys")
 	if err != nil {
@@ -707,8 +785,9 @@ func (v Device) GetSysfsAttrKeys() (result gi.CStrArray) {
 }
 
 // g_udev_device_get_sysfs_path
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetSysfsPath() (result string) {
 	iv, err := _I.Get(34, "Device", "get_sysfs_path")
 	if err != nil {
@@ -719,13 +798,14 @@ func (v Device) GetSysfsPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_udev_device_get_tags
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetTags() (result gi.CStrArray) {
 	iv, err := _I.Get(35, "Device", "get_tags")
 	if err != nil {
@@ -742,8 +822,9 @@ func (v Device) GetTags() (result gi.CStrArray) {
 }
 
 // g_udev_device_get_usec_since_initialized
-// container is not nil, container is Device
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Device) GetUsecSinceInitialized() (result uint64) {
 	iv, err := _I.Get(36, "Device", "get_usec_since_initialized")
 	if err != nil {
@@ -759,8 +840,11 @@ func (v Device) GetUsecSinceInitialized() (result uint64) {
 }
 
 // g_udev_device_has_property
-// container is not nil, container is Device
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) HasProperty(key string) (result bool) {
 	iv, err := _I.Get(37, "Device", "has_property")
 	if err != nil {
@@ -779,8 +863,11 @@ func (v Device) HasProperty(key string) (result bool) {
 }
 
 // g_udev_device_has_sysfs_attr
-// container is not nil, container is Device
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Device) HasSysfsAttr(key string) (result bool) {
 	iv, err := _I.Get(38, "Device", "has_sysfs_attr")
 	if err != nil {
@@ -839,8 +926,11 @@ func EnumeratorGetType() gi.GType {
 }
 
 // g_udev_enumerator_new
-// container is not nil, container is Enumerator
-// is constructor
+//
+// [ client ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewEnumerator(client IClient) (result Enumerator) {
 	iv, err := _I.Get(39, "Enumerator", "new")
 	if err != nil {
@@ -860,8 +950,9 @@ func NewEnumerator(client IClient) (result Enumerator) {
 }
 
 // g_udev_enumerator_add_match_is_initialized
-// container is not nil, container is Enumerator
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Enumerator) AddMatchIsInitialized() (result Enumerator) {
 	iv, err := _I.Get(40, "Enumerator", "add_match_is_initialized")
 	if err != nil {
@@ -877,8 +968,11 @@ func (v Enumerator) AddMatchIsInitialized() (result Enumerator) {
 }
 
 // g_udev_enumerator_add_match_name
-// container is not nil, container is Enumerator
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Enumerator) AddMatchName(name string) (result Enumerator) {
 	iv, err := _I.Get(41, "Enumerator", "add_match_name")
 	if err != nil {
@@ -897,8 +991,13 @@ func (v Enumerator) AddMatchName(name string) (result Enumerator) {
 }
 
 // g_udev_enumerator_add_match_property
-// container is not nil, container is Enumerator
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Enumerator) AddMatchProperty(name string, value string) (result Enumerator) {
 	iv, err := _I.Get(42, "Enumerator", "add_match_property")
 	if err != nil {
@@ -920,8 +1019,11 @@ func (v Enumerator) AddMatchProperty(name string, value string) (result Enumerat
 }
 
 // g_udev_enumerator_add_match_subsystem
-// container is not nil, container is Enumerator
-// is method
+//
+// [ subsystem ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Enumerator) AddMatchSubsystem(subsystem string) (result Enumerator) {
 	iv, err := _I.Get(43, "Enumerator", "add_match_subsystem")
 	if err != nil {
@@ -940,8 +1042,13 @@ func (v Enumerator) AddMatchSubsystem(subsystem string) (result Enumerator) {
 }
 
 // g_udev_enumerator_add_match_sysfs_attr
-// container is not nil, container is Enumerator
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Enumerator) AddMatchSysfsAttr(name string, value string) (result Enumerator) {
 	iv, err := _I.Get(44, "Enumerator", "add_match_sysfs_attr")
 	if err != nil {
@@ -963,8 +1070,11 @@ func (v Enumerator) AddMatchSysfsAttr(name string, value string) (result Enumera
 }
 
 // g_udev_enumerator_add_match_tag
-// container is not nil, container is Enumerator
-// is method
+//
+// [ tag ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Enumerator) AddMatchTag(tag string) (result Enumerator) {
 	iv, err := _I.Get(45, "Enumerator", "add_match_tag")
 	if err != nil {
@@ -983,8 +1093,11 @@ func (v Enumerator) AddMatchTag(tag string) (result Enumerator) {
 }
 
 // g_udev_enumerator_add_nomatch_subsystem
-// container is not nil, container is Enumerator
-// is method
+//
+// [ subsystem ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Enumerator) AddNomatchSubsystem(subsystem string) (result Enumerator) {
 	iv, err := _I.Get(46, "Enumerator", "add_nomatch_subsystem")
 	if err != nil {
@@ -1003,8 +1116,13 @@ func (v Enumerator) AddNomatchSubsystem(subsystem string) (result Enumerator) {
 }
 
 // g_udev_enumerator_add_nomatch_sysfs_attr
-// container is not nil, container is Enumerator
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Enumerator) AddNomatchSysfsAttr(name string, value string) (result Enumerator) {
 	iv, err := _I.Get(47, "Enumerator", "add_nomatch_sysfs_attr")
 	if err != nil {
@@ -1026,8 +1144,11 @@ func (v Enumerator) AddNomatchSysfsAttr(name string, value string) (result Enume
 }
 
 // g_udev_enumerator_add_sysfs_path
-// container is not nil, container is Enumerator
-// is method
+//
+// [ sysfs_path ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Enumerator) AddSysfsPath(sysfs_path string) (result Enumerator) {
 	iv, err := _I.Get(48, "Enumerator", "add_sysfs_path")
 	if err != nil {
@@ -1046,8 +1167,9 @@ func (v Enumerator) AddSysfsPath(sysfs_path string) (result Enumerator) {
 }
 
 // g_udev_enumerator_execute
-// container is not nil, container is Enumerator
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Enumerator) Execute() (result glib.List) {
 	iv, err := _I.Get(49, "Enumerator", "execute")
 	if err != nil {

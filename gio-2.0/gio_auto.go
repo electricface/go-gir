@@ -168,9 +168,11 @@ func ActionGetType() gi.GType {
 }
 
 // g_action_name_is_valid
-// container is not nil, container is Action
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ActionNameIsValid1(action_name string) (result bool) {
 	iv, err := _I.Get(0, "Action", "name_is_valid")
 	if err != nil {
@@ -188,9 +190,15 @@ func ActionNameIsValid1(action_name string) (result bool) {
 }
 
 // g_action_parse_detailed_name
-// container is not nil, container is Action
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ detailed_name ] trans: nothing
+//
+// [ action_name ] trans: everything, dir: out
+//
+// [ target_value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func ActionParseDetailedName1(detailed_name string) (result bool, action_name string, target_value glib.Variant, err error) {
 	iv, err := _I.Get(1, "Action", "parse_detailed_name")
 	if err != nil {
@@ -214,9 +222,13 @@ func ActionParseDetailedName1(detailed_name string) (result bool, action_name st
 }
 
 // g_action_print_detailed_name
-// container is not nil, container is Action
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ action_name ] trans: nothing
+//
+// [ target_value ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ActionPrintDetailedName1(action_name string, target_value glib.Variant) (result string) {
 	iv, err := _I.Get(2, "Action", "print_detailed_name")
 	if err != nil {
@@ -235,8 +247,9 @@ func ActionPrintDetailedName1(action_name string, target_value glib.Variant) (re
 }
 
 // g_action_activate
-// container is not nil, container is Action
-// is method
+//
+// [ parameter ] trans: nothing
+//
 func (v *ActionIfc) Activate(parameter glib.Variant) {
 	iv, err := _I.Get(3, "Action", "activate")
 	if err != nil {
@@ -250,8 +263,9 @@ func (v *ActionIfc) Activate(parameter glib.Variant) {
 }
 
 // g_action_change_state
-// container is not nil, container is Action
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v *ActionIfc) ChangeState(value glib.Variant) {
 	iv, err := _I.Get(4, "Action", "change_state")
 	if err != nil {
@@ -265,8 +279,9 @@ func (v *ActionIfc) ChangeState(value glib.Variant) {
 }
 
 // g_action_get_enabled
-// container is not nil, container is Action
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) GetEnabled() (result bool) {
 	iv, err := _I.Get(5, "Action", "get_enabled")
 	if err != nil {
@@ -282,8 +297,9 @@ func (v *ActionIfc) GetEnabled() (result bool) {
 }
 
 // g_action_get_name
-// container is not nil, container is Action
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) GetName() (result string) {
 	iv, err := _I.Get(6, "Action", "get_name")
 	if err != nil {
@@ -294,13 +310,14 @@ func (v *ActionIfc) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_action_get_parameter_type
-// container is not nil, container is Action
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) GetParameterType() (result glib.VariantType) {
 	iv, err := _I.Get(7, "Action", "get_parameter_type")
 	if err != nil {
@@ -316,8 +333,9 @@ func (v *ActionIfc) GetParameterType() (result glib.VariantType) {
 }
 
 // g_action_get_state
-// container is not nil, container is Action
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *ActionIfc) GetState() (result glib.Variant) {
 	iv, err := _I.Get(8, "Action", "get_state")
 	if err != nil {
@@ -333,8 +351,9 @@ func (v *ActionIfc) GetState() (result glib.Variant) {
 }
 
 // g_action_get_state_hint
-// container is not nil, container is Action
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *ActionIfc) GetStateHint() (result glib.Variant) {
 	iv, err := _I.Get(9, "Action", "get_state_hint")
 	if err != nil {
@@ -350,8 +369,9 @@ func (v *ActionIfc) GetStateHint() (result glib.Variant) {
 }
 
 // g_action_get_state_type
-// container is not nil, container is Action
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ActionIfc) GetStateType() (result glib.VariantType) {
 	iv, err := _I.Get(10, "Action", "get_state_type")
 	if err != nil {
@@ -393,8 +413,9 @@ func ActionGroupGetType() gi.GType {
 }
 
 // g_action_group_action_added
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
 func (v *ActionGroupIfc) ActionAdded(action_name string) {
 	iv, err := _I.Get(11, "ActionGroup", "action_added")
 	if err != nil {
@@ -410,8 +431,11 @@ func (v *ActionGroupIfc) ActionAdded(action_name string) {
 }
 
 // g_action_group_action_enabled_changed
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ enabled ] trans: nothing
+//
 func (v *ActionGroupIfc) ActionEnabledChanged(action_name string, enabled bool) {
 	iv, err := _I.Get(12, "ActionGroup", "action_enabled_changed")
 	if err != nil {
@@ -428,8 +452,9 @@ func (v *ActionGroupIfc) ActionEnabledChanged(action_name string, enabled bool) 
 }
 
 // g_action_group_action_removed
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
 func (v *ActionGroupIfc) ActionRemoved(action_name string) {
 	iv, err := _I.Get(13, "ActionGroup", "action_removed")
 	if err != nil {
@@ -445,8 +470,11 @@ func (v *ActionGroupIfc) ActionRemoved(action_name string) {
 }
 
 // g_action_group_action_state_changed
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ state ] trans: nothing
+//
 func (v *ActionGroupIfc) ActionStateChanged(action_name string, state glib.Variant) {
 	iv, err := _I.Get(14, "ActionGroup", "action_state_changed")
 	if err != nil {
@@ -463,8 +491,11 @@ func (v *ActionGroupIfc) ActionStateChanged(action_name string, state glib.Varia
 }
 
 // g_action_group_activate_action
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ parameter ] trans: nothing
+//
 func (v *ActionGroupIfc) ActivateAction(action_name string, parameter glib.Variant) {
 	iv, err := _I.Get(15, "ActionGroup", "activate_action")
 	if err != nil {
@@ -481,8 +512,11 @@ func (v *ActionGroupIfc) ActivateAction(action_name string, parameter glib.Varia
 }
 
 // g_action_group_change_action_state
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v *ActionGroupIfc) ChangeActionState(action_name string, value glib.Variant) {
 	iv, err := _I.Get(16, "ActionGroup", "change_action_state")
 	if err != nil {
@@ -499,8 +533,11 @@ func (v *ActionGroupIfc) ChangeActionState(action_name string, value glib.Varian
 }
 
 // g_action_group_get_action_enabled
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionGroupIfc) GetActionEnabled(action_name string) (result bool) {
 	iv, err := _I.Get(17, "ActionGroup", "get_action_enabled")
 	if err != nil {
@@ -519,8 +556,11 @@ func (v *ActionGroupIfc) GetActionEnabled(action_name string) (result bool) {
 }
 
 // g_action_group_get_action_parameter_type
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionGroupIfc) GetActionParameterType(action_name string) (result glib.VariantType) {
 	iv, err := _I.Get(18, "ActionGroup", "get_action_parameter_type")
 	if err != nil {
@@ -539,8 +579,11 @@ func (v *ActionGroupIfc) GetActionParameterType(action_name string) (result glib
 }
 
 // g_action_group_get_action_state
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *ActionGroupIfc) GetActionState(action_name string) (result glib.Variant) {
 	iv, err := _I.Get(19, "ActionGroup", "get_action_state")
 	if err != nil {
@@ -559,8 +602,11 @@ func (v *ActionGroupIfc) GetActionState(action_name string) (result glib.Variant
 }
 
 // g_action_group_get_action_state_hint
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *ActionGroupIfc) GetActionStateHint(action_name string) (result glib.Variant) {
 	iv, err := _I.Get(20, "ActionGroup", "get_action_state_hint")
 	if err != nil {
@@ -579,8 +625,11 @@ func (v *ActionGroupIfc) GetActionStateHint(action_name string) (result glib.Var
 }
 
 // g_action_group_get_action_state_type
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionGroupIfc) GetActionStateType(action_name string) (result glib.VariantType) {
 	iv, err := _I.Get(21, "ActionGroup", "get_action_state_type")
 	if err != nil {
@@ -599,8 +648,11 @@ func (v *ActionGroupIfc) GetActionStateType(action_name string) (result glib.Var
 }
 
 // g_action_group_has_action
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionGroupIfc) HasAction(action_name string) (result bool) {
 	iv, err := _I.Get(22, "ActionGroup", "has_action")
 	if err != nil {
@@ -619,8 +671,9 @@ func (v *ActionGroupIfc) HasAction(action_name string) (result bool) {
 }
 
 // g_action_group_list_actions
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *ActionGroupIfc) ListActions() (result gi.CStrArray) {
 	iv, err := _I.Get(23, "ActionGroup", "list_actions")
 	if err != nil {
@@ -637,8 +690,21 @@ func (v *ActionGroupIfc) ListActions() (result gi.CStrArray) {
 }
 
 // g_action_group_query_action
-// container is not nil, container is ActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ enabled ] trans: everything, dir: out
+//
+// [ parameter_type ] trans: everything, dir: out
+//
+// [ state_type ] trans: everything, dir: out
+//
+// [ state_hint ] trans: everything, dir: out
+//
+// [ state ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v *ActionGroupIfc) QueryAction(action_name string) (result bool, enabled bool, parameter_type glib.VariantType, state_type glib.VariantType, state_hint glib.Variant, state glib.Variant) {
 	iv, err := _I.Get(24, "ActionGroup", "query_action")
 	if err != nil {
@@ -684,8 +750,9 @@ func ActionMapGetType() gi.GType {
 }
 
 // g_action_map_add_action
-// container is not nil, container is ActionMap
-// is method
+//
+// [ action ] trans: nothing
+//
 func (v *ActionMapIfc) AddAction(action IAction) {
 	iv, err := _I.Get(25, "ActionMap", "add_action")
 	if err != nil {
@@ -703,9 +770,13 @@ func (v *ActionMapIfc) AddAction(action IAction) {
 }
 
 // g_action_map_add_action_entries
-// container is not nil, container is ActionMap
-// is method
-// arg 0 entries lenArgIdx 1
+//
+// [ entries ] trans: nothing
+//
+// [ n_entries ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *ActionMapIfc) AddActionEntries(entries unsafe.Pointer, n_entries int32, user_data unsafe.Pointer) {
 	iv, err := _I.Get(26, "ActionMap", "add_action_entries")
 	if err != nil {
@@ -721,8 +792,11 @@ func (v *ActionMapIfc) AddActionEntries(entries unsafe.Pointer, n_entries int32,
 }
 
 // g_action_map_lookup_action
-// container is not nil, container is ActionMap
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *ActionMapIfc) LookupAction(action_name string) (result Action) {
 	iv, err := _I.Get(27, "ActionMap", "lookup_action")
 	if err != nil {
@@ -741,8 +815,9 @@ func (v *ActionMapIfc) LookupAction(action_name string) (result Action) {
 }
 
 // g_action_map_remove_action
-// container is not nil, container is ActionMap
-// is method
+//
+// [ action_name ] trans: nothing
+//
 func (v *ActionMapIfc) RemoveAction(action_name string) {
 	iv, err := _I.Get(28, "ActionMap", "remove_action")
 	if err != nil {
@@ -773,9 +848,15 @@ func AppInfoGetType() gi.GType {
 }
 
 // g_app_info_create_from_commandline
-// container is not nil, container is AppInfo
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ commandline ] trans: nothing
+//
+// [ application_name ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoCreateFromCommandline1(commandline string, application_name string, flags AppInfoCreateFlags) (result AppInfo, err error) {
 	iv, err := _I.Get(29, "AppInfo", "create_from_commandline")
 	if err != nil {
@@ -799,9 +880,11 @@ func AppInfoCreateFromCommandline1(commandline string, application_name string, 
 }
 
 // g_app_info_get_all_for_type
-// container is not nil, container is AppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoGetAllForType1(content_type string) (result glib.List) {
 	iv, err := _I.Get(31, "AppInfo", "get_all_for_type")
 	if err != nil {
@@ -819,9 +902,13 @@ func AppInfoGetAllForType1(content_type string) (result glib.List) {
 }
 
 // g_app_info_get_default_for_type
-// container is not nil, container is AppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ content_type ] trans: nothing
+//
+// [ must_support_uris ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoGetDefaultForType1(content_type string, must_support_uris bool) (result AppInfo) {
 	iv, err := _I.Get(32, "AppInfo", "get_default_for_type")
 	if err != nil {
@@ -840,9 +927,11 @@ func AppInfoGetDefaultForType1(content_type string, must_support_uris bool) (res
 }
 
 // g_app_info_get_default_for_uri_scheme
-// container is not nil, container is AppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ uri_scheme ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoGetDefaultForUriScheme1(uri_scheme string) (result AppInfo) {
 	iv, err := _I.Get(33, "AppInfo", "get_default_for_uri_scheme")
 	if err != nil {
@@ -860,9 +949,11 @@ func AppInfoGetDefaultForUriScheme1(uri_scheme string) (result AppInfo) {
 }
 
 // g_app_info_get_fallback_for_type
-// container is not nil, container is AppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoGetFallbackForType1(content_type string) (result glib.List) {
 	iv, err := _I.Get(34, "AppInfo", "get_fallback_for_type")
 	if err != nil {
@@ -880,9 +971,11 @@ func AppInfoGetFallbackForType1(content_type string) (result glib.List) {
 }
 
 // g_app_info_get_recommended_for_type
-// container is not nil, container is AppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoGetRecommendedForType1(content_type string) (result glib.List) {
 	iv, err := _I.Get(35, "AppInfo", "get_recommended_for_type")
 	if err != nil {
@@ -900,9 +993,13 @@ func AppInfoGetRecommendedForType1(content_type string) (result glib.List) {
 }
 
 // g_app_info_launch_default_for_uri
-// container is not nil, container is AppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ uri ] trans: nothing
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AppInfoLaunchDefaultForUri1(uri string, context IAppLaunchContext) (result bool, err error) {
 	iv, err := _I.Get(36, "AppInfo", "launch_default_for_uri")
 	if err != nil {
@@ -927,9 +1024,17 @@ func AppInfoLaunchDefaultForUri1(uri string, context IAppLaunchContext) (result 
 }
 
 // g_app_info_launch_default_for_uri_async
-// container is not nil, container is AppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ uri ] trans: nothing
+//
+// [ context ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func AppInfoLaunchDefaultForUriAsync1(uri string, context IAppLaunchContext, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(37, "AppInfo", "launch_default_for_uri_async")
 	if err != nil {
@@ -956,9 +1061,11 @@ func AppInfoLaunchDefaultForUriAsync1(uri string, context IAppLaunchContext, can
 }
 
 // g_app_info_launch_default_for_uri_finish
-// container is not nil, container is AppInfo
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func AppInfoLaunchDefaultForUriFinish1(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(38, "AppInfo", "launch_default_for_uri_finish")
 	if err != nil {
@@ -980,9 +1087,9 @@ func AppInfoLaunchDefaultForUriFinish1(result IAsyncResult) (result1 bool, err e
 }
 
 // g_app_info_reset_type_associations
-// container is not nil, container is AppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ content_type ] trans: nothing
+//
 func AppInfoResetTypeAssociations1(content_type string) {
 	iv, err := _I.Get(39, "AppInfo", "reset_type_associations")
 	if err != nil {
@@ -997,8 +1104,11 @@ func AppInfoResetTypeAssociations1(content_type string) {
 }
 
 // g_app_info_add_supports_type
-// container is not nil, container is AppInfo
-// is method
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) AddSupportsType(content_type string) (result bool, err error) {
 	iv, err := _I.Get(40, "AppInfo", "add_supports_type")
 	if err != nil {
@@ -1019,8 +1129,9 @@ func (v *AppInfoIfc) AddSupportsType(content_type string) (result bool, err erro
 }
 
 // g_app_info_can_delete
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) CanDelete() (result bool) {
 	iv, err := _I.Get(41, "AppInfo", "can_delete")
 	if err != nil {
@@ -1036,8 +1147,9 @@ func (v *AppInfoIfc) CanDelete() (result bool) {
 }
 
 // g_app_info_can_remove_supports_type
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) CanRemoveSupportsType() (result bool) {
 	iv, err := _I.Get(42, "AppInfo", "can_remove_supports_type")
 	if err != nil {
@@ -1053,8 +1165,9 @@ func (v *AppInfoIfc) CanRemoveSupportsType() (result bool) {
 }
 
 // g_app_info_delete
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) Delete() (result bool) {
 	iv, err := _I.Get(43, "AppInfo", "delete")
 	if err != nil {
@@ -1070,8 +1183,9 @@ func (v *AppInfoIfc) Delete() (result bool) {
 }
 
 // g_app_info_dup
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *AppInfoIfc) Dup() (result AppInfo) {
 	iv, err := _I.Get(44, "AppInfo", "dup")
 	if err != nil {
@@ -1087,8 +1201,11 @@ func (v *AppInfoIfc) Dup() (result AppInfo) {
 }
 
 // g_app_info_equal
-// container is not nil, container is AppInfo
-// is method
+//
+// [ appinfo2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) Equal(appinfo2 IAppInfo) (result bool) {
 	iv, err := _I.Get(45, "AppInfo", "equal")
 	if err != nil {
@@ -1109,8 +1226,9 @@ func (v *AppInfoIfc) Equal(appinfo2 IAppInfo) (result bool) {
 }
 
 // g_app_info_get_commandline
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) GetCommandline() (result string) {
 	iv, err := _I.Get(46, "AppInfo", "get_commandline")
 	if err != nil {
@@ -1121,13 +1239,14 @@ func (v *AppInfoIfc) GetCommandline() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_app_info_get_description
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) GetDescription() (result string) {
 	iv, err := _I.Get(47, "AppInfo", "get_description")
 	if err != nil {
@@ -1138,13 +1257,14 @@ func (v *AppInfoIfc) GetDescription() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_app_info_get_display_name
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) GetDisplayName() (result string) {
 	iv, err := _I.Get(48, "AppInfo", "get_display_name")
 	if err != nil {
@@ -1155,13 +1275,14 @@ func (v *AppInfoIfc) GetDisplayName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_app_info_get_executable
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) GetExecutable() (result string) {
 	iv, err := _I.Get(49, "AppInfo", "get_executable")
 	if err != nil {
@@ -1172,13 +1293,14 @@ func (v *AppInfoIfc) GetExecutable() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_app_info_get_icon
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) GetIcon() (result Icon) {
 	iv, err := _I.Get(50, "AppInfo", "get_icon")
 	if err != nil {
@@ -1194,8 +1316,9 @@ func (v *AppInfoIfc) GetIcon() (result Icon) {
 }
 
 // g_app_info_get_id
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) GetId() (result string) {
 	iv, err := _I.Get(51, "AppInfo", "get_id")
 	if err != nil {
@@ -1206,13 +1329,14 @@ func (v *AppInfoIfc) GetId() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_app_info_get_name
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) GetName() (result string) {
 	iv, err := _I.Get(52, "AppInfo", "get_name")
 	if err != nil {
@@ -1223,13 +1347,14 @@ func (v *AppInfoIfc) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_app_info_get_supported_types
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) GetSupportedTypes() (result gi.CStrArray) {
 	iv, err := _I.Get(53, "AppInfo", "get_supported_types")
 	if err != nil {
@@ -1246,8 +1371,13 @@ func (v *AppInfoIfc) GetSupportedTypes() (result gi.CStrArray) {
 }
 
 // g_app_info_launch
-// container is not nil, container is AppInfo
-// is method
+//
+// [ files ] trans: nothing
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) Launch(files glib.List, context IAppLaunchContext) (result bool, err error) {
 	iv, err := _I.Get(54, "AppInfo", "launch")
 	if err != nil {
@@ -1271,8 +1401,13 @@ func (v *AppInfoIfc) Launch(files glib.List, context IAppLaunchContext) (result 
 }
 
 // g_app_info_launch_uris
-// container is not nil, container is AppInfo
-// is method
+//
+// [ uris ] trans: nothing
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) LaunchUris(uris glib.List, context IAppLaunchContext) (result bool, err error) {
 	iv, err := _I.Get(55, "AppInfo", "launch_uris")
 	if err != nil {
@@ -1296,8 +1431,11 @@ func (v *AppInfoIfc) LaunchUris(uris glib.List, context IAppLaunchContext) (resu
 }
 
 // g_app_info_remove_supports_type
-// container is not nil, container is AppInfo
-// is method
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) RemoveSupportsType(content_type string) (result bool, err error) {
 	iv, err := _I.Get(56, "AppInfo", "remove_supports_type")
 	if err != nil {
@@ -1318,8 +1456,11 @@ func (v *AppInfoIfc) RemoveSupportsType(content_type string) (result bool, err e
 }
 
 // g_app_info_set_as_default_for_extension
-// container is not nil, container is AppInfo
-// is method
+//
+// [ extension ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) SetAsDefaultForExtension(extension string) (result bool, err error) {
 	iv, err := _I.Get(57, "AppInfo", "set_as_default_for_extension")
 	if err != nil {
@@ -1340,8 +1481,11 @@ func (v *AppInfoIfc) SetAsDefaultForExtension(extension string) (result bool, er
 }
 
 // g_app_info_set_as_default_for_type
-// container is not nil, container is AppInfo
-// is method
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) SetAsDefaultForType(content_type string) (result bool, err error) {
 	iv, err := _I.Get(58, "AppInfo", "set_as_default_for_type")
 	if err != nil {
@@ -1362,8 +1506,11 @@ func (v *AppInfoIfc) SetAsDefaultForType(content_type string) (result bool, err 
 }
 
 // g_app_info_set_as_last_used_for_type
-// container is not nil, container is AppInfo
-// is method
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) SetAsLastUsedForType(content_type string) (result bool, err error) {
 	iv, err := _I.Get(59, "AppInfo", "set_as_last_used_for_type")
 	if err != nil {
@@ -1384,8 +1531,9 @@ func (v *AppInfoIfc) SetAsLastUsedForType(content_type string) (result bool, err
 }
 
 // g_app_info_should_show
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) ShouldShow() (result bool) {
 	iv, err := _I.Get(60, "AppInfo", "should_show")
 	if err != nil {
@@ -1401,8 +1549,9 @@ func (v *AppInfoIfc) ShouldShow() (result bool) {
 }
 
 // g_app_info_supports_files
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) SupportsFiles() (result bool) {
 	iv, err := _I.Get(61, "AppInfo", "supports_files")
 	if err != nil {
@@ -1418,8 +1567,9 @@ func (v *AppInfoIfc) SupportsFiles() (result bool) {
 }
 
 // g_app_info_supports_uris
-// container is not nil, container is AppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AppInfoIfc) SupportsUris() (result bool) {
 	iv, err := _I.Get(62, "AppInfo", "supports_uris")
 	if err != nil {
@@ -1481,8 +1631,9 @@ func AppLaunchContextGetType() gi.GType {
 }
 
 // g_app_launch_context_new
-// container is not nil, container is AppLaunchContext
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewAppLaunchContext() (result AppLaunchContext) {
 	iv, err := _I.Get(64, "AppLaunchContext", "new")
 	if err != nil {
@@ -1496,8 +1647,13 @@ func NewAppLaunchContext() (result AppLaunchContext) {
 }
 
 // g_app_launch_context_get_display
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ info ] trans: nothing
+//
+// [ files ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v AppLaunchContext) GetDisplay(info IAppInfo, files glib.List) (result string) {
 	iv, err := _I.Get(65, "AppLaunchContext", "get_display")
 	if err != nil {
@@ -1519,8 +1675,9 @@ func (v AppLaunchContext) GetDisplay(info IAppInfo, files glib.List) (result str
 }
 
 // g_app_launch_context_get_environment
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ result ] trans: everything
+//
 func (v AppLaunchContext) GetEnvironment() (result gi.CStrArray) {
 	iv, err := _I.Get(66, "AppLaunchContext", "get_environment")
 	if err != nil {
@@ -1537,8 +1694,13 @@ func (v AppLaunchContext) GetEnvironment() (result gi.CStrArray) {
 }
 
 // g_app_launch_context_get_startup_notify_id
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ info ] trans: nothing
+//
+// [ files ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v AppLaunchContext) GetStartupNotifyId(info IAppInfo, files glib.List) (result string) {
 	iv, err := _I.Get(67, "AppLaunchContext", "get_startup_notify_id")
 	if err != nil {
@@ -1560,8 +1722,9 @@ func (v AppLaunchContext) GetStartupNotifyId(info IAppInfo, files glib.List) (re
 }
 
 // g_app_launch_context_launch_failed
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ startup_notify_id ] trans: nothing
+//
 func (v AppLaunchContext) LaunchFailed(startup_notify_id string) {
 	iv, err := _I.Get(68, "AppLaunchContext", "launch_failed")
 	if err != nil {
@@ -1577,8 +1740,11 @@ func (v AppLaunchContext) LaunchFailed(startup_notify_id string) {
 }
 
 // g_app_launch_context_setenv
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ variable ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v AppLaunchContext) Setenv(variable string, value string) {
 	iv, err := _I.Get(69, "AppLaunchContext", "setenv")
 	if err != nil {
@@ -1597,8 +1763,9 @@ func (v AppLaunchContext) Setenv(variable string, value string) {
 }
 
 // g_app_launch_context_unsetenv
-// container is not nil, container is AppLaunchContext
-// is method
+//
+// [ variable ] trans: nothing
+//
 func (v AppLaunchContext) Unsetenv(variable string) {
 	iv, err := _I.Get(70, "AppLaunchContext", "unsetenv")
 	if err != nil {
@@ -1644,8 +1811,13 @@ func ApplicationGetType() gi.GType {
 }
 
 // g_application_new
-// container is not nil, container is Application
-// is constructor
+//
+// [ application_id ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewApplication(application_id string, flags ApplicationFlags) (result Application) {
 	iv, err := _I.Get(71, "Application", "new")
 	if err != nil {
@@ -1664,9 +1836,11 @@ func NewApplication(application_id string, flags ApplicationFlags) (result Appli
 }
 
 // g_application_id_is_valid
-// container is not nil, container is Application
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ application_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ApplicationIdIsValid1(application_id string) (result bool) {
 	iv, err := _I.Get(73, "Application", "id_is_valid")
 	if err != nil {
@@ -1684,8 +1858,7 @@ func ApplicationIdIsValid1(application_id string) (result bool) {
 }
 
 // g_application_activate
-// container is not nil, container is Application
-// is method
+//
 func (v Application) Activate() {
 	iv, err := _I.Get(74, "Application", "activate")
 	if err != nil {
@@ -1698,8 +1871,19 @@ func (v Application) Activate() {
 }
 
 // g_application_add_main_option
-// container is not nil, container is Application
-// is method
+//
+// [ long_name ] trans: nothing
+//
+// [ short_name ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ arg ] trans: nothing
+//
+// [ description ] trans: nothing
+//
+// [ arg_description ] trans: nothing
+//
 func (v Application) AddMainOption(long_name string, short_name int8, flags glib.OptionFlags, arg glib.OptionArgEnum, description string, arg_description string) {
 	iv, err := _I.Get(75, "Application", "add_main_option")
 	if err != nil {
@@ -1724,8 +1908,9 @@ func (v Application) AddMainOption(long_name string, short_name int8, flags glib
 }
 
 // g_application_add_main_option_entries
-// container is not nil, container is Application
-// is method
+//
+// [ entries ] trans: nothing
+//
 func (v Application) AddMainOptionEntries(entries unsafe.Pointer) {
 	iv, err := _I.Get(76, "Application", "add_main_option_entries")
 	if err != nil {
@@ -1739,8 +1924,9 @@ func (v Application) AddMainOptionEntries(entries unsafe.Pointer) {
 }
 
 // g_application_add_option_group
-// container is not nil, container is Application
-// is method
+//
+// [ group ] trans: everything
+//
 func (v Application) AddOptionGroup(group glib.OptionGroup) {
 	iv, err := _I.Get(77, "Application", "add_option_group")
 	if err != nil {
@@ -1754,8 +1940,11 @@ func (v Application) AddOptionGroup(group glib.OptionGroup) {
 }
 
 // g_application_bind_busy_property
-// container is not nil, container is Application
-// is method
+//
+// [ object ] trans: nothing
+//
+// [ property ] trans: nothing
+//
 func (v Application) BindBusyProperty(object gobject.IObject, property string) {
 	iv, err := _I.Get(78, "Application", "bind_busy_property")
 	if err != nil {
@@ -1776,8 +1965,9 @@ func (v Application) BindBusyProperty(object gobject.IObject, property string) {
 }
 
 // g_application_get_application_id
-// container is not nil, container is Application
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Application) GetApplicationId() (result string) {
 	iv, err := _I.Get(79, "Application", "get_application_id")
 	if err != nil {
@@ -1788,13 +1978,14 @@ func (v Application) GetApplicationId() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_application_get_dbus_connection
-// container is not nil, container is Application
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Application) GetDbusConnection() (result DBusConnection) {
 	iv, err := _I.Get(80, "Application", "get_dbus_connection")
 	if err != nil {
@@ -1810,8 +2001,9 @@ func (v Application) GetDbusConnection() (result DBusConnection) {
 }
 
 // g_application_get_dbus_object_path
-// container is not nil, container is Application
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Application) GetDbusObjectPath() (result string) {
 	iv, err := _I.Get(81, "Application", "get_dbus_object_path")
 	if err != nil {
@@ -1822,13 +2014,14 @@ func (v Application) GetDbusObjectPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_application_get_flags
-// container is not nil, container is Application
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Application) GetFlags() (result ApplicationFlags) {
 	iv, err := _I.Get(82, "Application", "get_flags")
 	if err != nil {
@@ -1844,8 +2037,9 @@ func (v Application) GetFlags() (result ApplicationFlags) {
 }
 
 // g_application_get_inactivity_timeout
-// container is not nil, container is Application
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Application) GetInactivityTimeout() (result uint32) {
 	iv, err := _I.Get(83, "Application", "get_inactivity_timeout")
 	if err != nil {
@@ -1861,8 +2055,9 @@ func (v Application) GetInactivityTimeout() (result uint32) {
 }
 
 // g_application_get_is_busy
-// container is not nil, container is Application
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Application) GetIsBusy() (result bool) {
 	iv, err := _I.Get(84, "Application", "get_is_busy")
 	if err != nil {
@@ -1878,8 +2073,9 @@ func (v Application) GetIsBusy() (result bool) {
 }
 
 // g_application_get_is_registered
-// container is not nil, container is Application
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Application) GetIsRegistered() (result bool) {
 	iv, err := _I.Get(85, "Application", "get_is_registered")
 	if err != nil {
@@ -1895,8 +2091,9 @@ func (v Application) GetIsRegistered() (result bool) {
 }
 
 // g_application_get_is_remote
-// container is not nil, container is Application
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Application) GetIsRemote() (result bool) {
 	iv, err := _I.Get(86, "Application", "get_is_remote")
 	if err != nil {
@@ -1912,8 +2109,9 @@ func (v Application) GetIsRemote() (result bool) {
 }
 
 // g_application_get_resource_base_path
-// container is not nil, container is Application
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Application) GetResourceBasePath() (result string) {
 	iv, err := _I.Get(87, "Application", "get_resource_base_path")
 	if err != nil {
@@ -1924,13 +2122,12 @@ func (v Application) GetResourceBasePath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_application_hold
-// container is not nil, container is Application
-// is method
+//
 func (v Application) Hold() {
 	iv, err := _I.Get(88, "Application", "hold")
 	if err != nil {
@@ -1943,8 +2140,7 @@ func (v Application) Hold() {
 }
 
 // g_application_mark_busy
-// container is not nil, container is Application
-// is method
+//
 func (v Application) MarkBusy() {
 	iv, err := _I.Get(89, "Application", "mark_busy")
 	if err != nil {
@@ -1957,9 +2153,13 @@ func (v Application) MarkBusy() {
 }
 
 // g_application_open
-// container is not nil, container is Application
-// is method
-// arg 0 files lenArgIdx 1
+//
+// [ files ] trans: nothing
+//
+// [ n_files ] trans: nothing
+//
+// [ hint ] trans: nothing
+//
 func (v Application) Open(files gi.PointerArray, n_files int32, hint string) {
 	iv, err := _I.Get(90, "Application", "open")
 	if err != nil {
@@ -1977,8 +2177,7 @@ func (v Application) Open(files gi.PointerArray, n_files int32, hint string) {
 }
 
 // g_application_quit
-// container is not nil, container is Application
-// is method
+//
 func (v Application) Quit() {
 	iv, err := _I.Get(91, "Application", "quit")
 	if err != nil {
@@ -1991,8 +2190,11 @@ func (v Application) Quit() {
 }
 
 // g_application_register
-// container is not nil, container is Application
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Application) Register(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(92, "Application", "register")
 	if err != nil {
@@ -2015,8 +2217,7 @@ func (v Application) Register(cancellable ICancellable) (result bool, err error)
 }
 
 // g_application_release
-// container is not nil, container is Application
-// is method
+//
 func (v Application) Release() {
 	iv, err := _I.Get(93, "Application", "release")
 	if err != nil {
@@ -2029,9 +2230,13 @@ func (v Application) Release() {
 }
 
 // g_application_run
-// container is not nil, container is Application
-// is method
-// arg 1 argv lenArgIdx 0
+//
+// [ argc ] trans: nothing
+//
+// [ argv ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Application) Run(argc int32, argv gi.CStrArray) (result int32) {
 	iv, err := _I.Get(94, "Application", "run")
 	if err != nil {
@@ -2049,8 +2254,11 @@ func (v Application) Run(argc int32, argv gi.CStrArray) (result int32) {
 }
 
 // g_application_send_notification
-// container is not nil, container is Application
-// is method
+//
+// [ id ] trans: nothing
+//
+// [ notification ] trans: nothing
+//
 func (v Application) SendNotification(id string, notification INotification) {
 	iv, err := _I.Get(95, "Application", "send_notification")
 	if err != nil {
@@ -2071,8 +2279,9 @@ func (v Application) SendNotification(id string, notification INotification) {
 }
 
 // g_application_set_action_group
-// container is not nil, container is Application
-// is method
+//
+// [ action_group ] trans: nothing
+//
 func (v Application) SetActionGroup(action_group IActionGroup) {
 	iv, err := _I.Get(96, "Application", "set_action_group")
 	if err != nil {
@@ -2090,8 +2299,9 @@ func (v Application) SetActionGroup(action_group IActionGroup) {
 }
 
 // g_application_set_application_id
-// container is not nil, container is Application
-// is method
+//
+// [ application_id ] trans: nothing
+//
 func (v Application) SetApplicationId(application_id string) {
 	iv, err := _I.Get(97, "Application", "set_application_id")
 	if err != nil {
@@ -2107,8 +2317,7 @@ func (v Application) SetApplicationId(application_id string) {
 }
 
 // g_application_set_default
-// container is not nil, container is Application
-// is method
+//
 func (v Application) SetDefault() {
 	iv, err := _I.Get(98, "Application", "set_default")
 	if err != nil {
@@ -2121,8 +2330,9 @@ func (v Application) SetDefault() {
 }
 
 // g_application_set_flags
-// container is not nil, container is Application
-// is method
+//
+// [ flags ] trans: nothing
+//
 func (v Application) SetFlags(flags ApplicationFlags) {
 	iv, err := _I.Get(99, "Application", "set_flags")
 	if err != nil {
@@ -2136,8 +2346,9 @@ func (v Application) SetFlags(flags ApplicationFlags) {
 }
 
 // g_application_set_inactivity_timeout
-// container is not nil, container is Application
-// is method
+//
+// [ inactivity_timeout ] trans: nothing
+//
 func (v Application) SetInactivityTimeout(inactivity_timeout uint32) {
 	iv, err := _I.Get(100, "Application", "set_inactivity_timeout")
 	if err != nil {
@@ -2151,8 +2362,9 @@ func (v Application) SetInactivityTimeout(inactivity_timeout uint32) {
 }
 
 // g_application_set_option_context_description
-// container is not nil, container is Application
-// is method
+//
+// [ description ] trans: nothing
+//
 func (v Application) SetOptionContextDescription(description string) {
 	iv, err := _I.Get(101, "Application", "set_option_context_description")
 	if err != nil {
@@ -2168,8 +2380,9 @@ func (v Application) SetOptionContextDescription(description string) {
 }
 
 // g_application_set_option_context_parameter_string
-// container is not nil, container is Application
-// is method
+//
+// [ parameter_string ] trans: nothing
+//
 func (v Application) SetOptionContextParameterString(parameter_string string) {
 	iv, err := _I.Get(102, "Application", "set_option_context_parameter_string")
 	if err != nil {
@@ -2185,8 +2398,9 @@ func (v Application) SetOptionContextParameterString(parameter_string string) {
 }
 
 // g_application_set_option_context_summary
-// container is not nil, container is Application
-// is method
+//
+// [ summary ] trans: nothing
+//
 func (v Application) SetOptionContextSummary(summary string) {
 	iv, err := _I.Get(103, "Application", "set_option_context_summary")
 	if err != nil {
@@ -2202,8 +2416,9 @@ func (v Application) SetOptionContextSummary(summary string) {
 }
 
 // g_application_set_resource_base_path
-// container is not nil, container is Application
-// is method
+//
+// [ resource_path ] trans: nothing
+//
 func (v Application) SetResourceBasePath(resource_path string) {
 	iv, err := _I.Get(104, "Application", "set_resource_base_path")
 	if err != nil {
@@ -2219,8 +2434,11 @@ func (v Application) SetResourceBasePath(resource_path string) {
 }
 
 // g_application_unbind_busy_property
-// container is not nil, container is Application
-// is method
+//
+// [ object ] trans: nothing
+//
+// [ property ] trans: nothing
+//
 func (v Application) UnbindBusyProperty(object gobject.IObject, property string) {
 	iv, err := _I.Get(105, "Application", "unbind_busy_property")
 	if err != nil {
@@ -2241,8 +2459,7 @@ func (v Application) UnbindBusyProperty(object gobject.IObject, property string)
 }
 
 // g_application_unmark_busy
-// container is not nil, container is Application
-// is method
+//
 func (v Application) UnmarkBusy() {
 	iv, err := _I.Get(106, "Application", "unmark_busy")
 	if err != nil {
@@ -2255,8 +2472,9 @@ func (v Application) UnmarkBusy() {
 }
 
 // g_application_withdraw_notification
-// container is not nil, container is Application
-// is method
+//
+// [ id ] trans: nothing
+//
 func (v Application) WithdrawNotification(id string) {
 	iv, err := _I.Get(107, "Application", "withdraw_notification")
 	if err != nil {
@@ -2288,8 +2506,11 @@ func ApplicationCommandLineGetType() gi.GType {
 }
 
 // g_application_command_line_create_file_for_arg
-// container is not nil, container is ApplicationCommandLine
-// is method
+//
+// [ arg ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v ApplicationCommandLine) CreateFileForArg(arg string) (result File) {
 	iv, err := _I.Get(108, "ApplicationCommandLine", "create_file_for_arg")
 	if err != nil {
@@ -2308,9 +2529,11 @@ func (v ApplicationCommandLine) CreateFileForArg(arg string) (result File) {
 }
 
 // g_application_command_line_get_arguments
-// container is not nil, container is ApplicationCommandLine
-// is method
-// ret lenArgIdx 0
+//
+// [ argc ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v ApplicationCommandLine) GetArguments() (result gi.CStrArray) {
 	iv, err := _I.Get(109, "ApplicationCommandLine", "get_arguments")
 	if err != nil {
@@ -2331,8 +2554,9 @@ func (v ApplicationCommandLine) GetArguments() (result gi.CStrArray) {
 }
 
 // g_application_command_line_get_cwd
-// container is not nil, container is ApplicationCommandLine
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ApplicationCommandLine) GetCwd() (result string) {
 	iv, err := _I.Get(110, "ApplicationCommandLine", "get_cwd")
 	if err != nil {
@@ -2343,13 +2567,14 @@ func (v ApplicationCommandLine) GetCwd() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_application_command_line_get_environ
-// container is not nil, container is ApplicationCommandLine
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ApplicationCommandLine) GetEnviron() (result gi.CStrArray) {
 	iv, err := _I.Get(111, "ApplicationCommandLine", "get_environ")
 	if err != nil {
@@ -2366,8 +2591,9 @@ func (v ApplicationCommandLine) GetEnviron() (result gi.CStrArray) {
 }
 
 // g_application_command_line_get_exit_status
-// container is not nil, container is ApplicationCommandLine
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ApplicationCommandLine) GetExitStatus() (result int32) {
 	iv, err := _I.Get(112, "ApplicationCommandLine", "get_exit_status")
 	if err != nil {
@@ -2383,8 +2609,9 @@ func (v ApplicationCommandLine) GetExitStatus() (result int32) {
 }
 
 // g_application_command_line_get_is_remote
-// container is not nil, container is ApplicationCommandLine
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ApplicationCommandLine) GetIsRemote() (result bool) {
 	iv, err := _I.Get(113, "ApplicationCommandLine", "get_is_remote")
 	if err != nil {
@@ -2400,8 +2627,9 @@ func (v ApplicationCommandLine) GetIsRemote() (result bool) {
 }
 
 // g_application_command_line_get_options_dict
-// container is not nil, container is ApplicationCommandLine
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ApplicationCommandLine) GetOptionsDict() (result glib.VariantDict) {
 	iv, err := _I.Get(114, "ApplicationCommandLine", "get_options_dict")
 	if err != nil {
@@ -2417,8 +2645,9 @@ func (v ApplicationCommandLine) GetOptionsDict() (result glib.VariantDict) {
 }
 
 // g_application_command_line_get_platform_data
-// container is not nil, container is ApplicationCommandLine
-// is method
+//
+// [ result ] trans: everything
+//
 func (v ApplicationCommandLine) GetPlatformData() (result glib.Variant) {
 	iv, err := _I.Get(115, "ApplicationCommandLine", "get_platform_data")
 	if err != nil {
@@ -2434,8 +2663,9 @@ func (v ApplicationCommandLine) GetPlatformData() (result glib.Variant) {
 }
 
 // g_application_command_line_get_stdin
-// container is not nil, container is ApplicationCommandLine
-// is method
+//
+// [ result ] trans: everything
+//
 func (v ApplicationCommandLine) GetStdin() (result InputStream) {
 	iv, err := _I.Get(116, "ApplicationCommandLine", "get_stdin")
 	if err != nil {
@@ -2451,8 +2681,11 @@ func (v ApplicationCommandLine) GetStdin() (result InputStream) {
 }
 
 // g_application_command_line_getenv
-// container is not nil, container is ApplicationCommandLine
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ApplicationCommandLine) Getenv(name string) (result string) {
 	iv, err := _I.Get(117, "ApplicationCommandLine", "getenv")
 	if err != nil {
@@ -2466,13 +2699,14 @@ func (v ApplicationCommandLine) Getenv(name string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_application_command_line_set_exit_status
-// container is not nil, container is ApplicationCommandLine
-// is method
+//
+// [ exit_status ] trans: nothing
+//
 func (v ApplicationCommandLine) SetExitStatus(exit_status int32) {
 	iv, err := _I.Get(118, "ApplicationCommandLine", "set_exit_status")
 	if err != nil {
@@ -2557,9 +2791,21 @@ func AsyncInitableGetType() gi.GType {
 }
 
 // g_async_initable_newv_async
-// container is not nil, container is AsyncInitable
-// is method
-// arg0Type tag: GType, isPtr: false
+//
+// [ object_type ] trans: nothing
+//
+// [ n_parameters ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func AsyncInitableNewvAsync1(object_type gi.GType, n_parameters uint32, parameters gobject.Parameter, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(119, "AsyncInitable", "newv_async")
 	if err != nil {
@@ -2582,8 +2828,15 @@ func AsyncInitableNewvAsync1(object_type gi.GType, n_parameters uint32, paramete
 }
 
 // g_async_initable_init_async
-// container is not nil, container is AsyncInitable
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *AsyncInitableIfc) InitAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(120, "AsyncInitable", "init_async")
 	if err != nil {
@@ -2604,8 +2857,11 @@ func (v *AsyncInitableIfc) InitAsync(io_priority int32, cancellable ICancellable
 }
 
 // g_async_initable_init_finish
-// container is not nil, container is AsyncInitable
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *AsyncInitableIfc) InitFinish(res IAsyncResult) (result bool, err error) {
 	iv, err := _I.Get(121, "AsyncInitable", "init_finish")
 	if err != nil {
@@ -2628,8 +2884,11 @@ func (v *AsyncInitableIfc) InitFinish(res IAsyncResult) (result bool, err error)
 }
 
 // g_async_initable_new_finish
-// container is not nil, container is AsyncInitable
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *AsyncInitableIfc) NewFinish(res IAsyncResult) (result gobject.Object, err error) {
 	iv, err := _I.Get(122, "AsyncInitable", "new_finish")
 	if err != nil {
@@ -2686,8 +2945,9 @@ func AsyncResultGetType() gi.GType {
 }
 
 // g_async_result_get_source_object
-// container is not nil, container is AsyncResult
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *AsyncResultIfc) GetSourceObject() (result gobject.Object) {
 	iv, err := _I.Get(123, "AsyncResult", "get_source_object")
 	if err != nil {
@@ -2703,8 +2963,9 @@ func (v *AsyncResultIfc) GetSourceObject() (result gobject.Object) {
 }
 
 // g_async_result_get_user_data
-// container is not nil, container is AsyncResult
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *AsyncResultIfc) GetUserData() (result unsafe.Pointer) {
 	iv, err := _I.Get(124, "AsyncResult", "get_user_data")
 	if err != nil {
@@ -2720,8 +2981,11 @@ func (v *AsyncResultIfc) GetUserData() (result unsafe.Pointer) {
 }
 
 // g_async_result_is_tagged
-// container is not nil, container is AsyncResult
-// is method
+//
+// [ source_tag ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *AsyncResultIfc) IsTagged(source_tag unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(125, "AsyncResult", "is_tagged")
 	if err != nil {
@@ -2738,8 +3002,9 @@ func (v *AsyncResultIfc) IsTagged(source_tag unsafe.Pointer) (result bool) {
 }
 
 // g_async_result_legacy_propagate_error
-// container is not nil, container is AsyncResult
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *AsyncResultIfc) LegacyPropagateError() (result bool, err error) {
 	iv, err := _I.Get(126, "AsyncResult", "legacy_propagate_error")
 	if err != nil {
@@ -2775,8 +3040,11 @@ func BufferedInputStreamGetType() gi.GType {
 }
 
 // g_buffered_input_stream_new
-// container is not nil, container is BufferedInputStream
-// is constructor
+//
+// [ base_stream ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewBufferedInputStream(base_stream IInputStream) (result BufferedInputStream) {
 	iv, err := _I.Get(127, "BufferedInputStream", "new")
 	if err != nil {
@@ -2796,8 +3064,13 @@ func NewBufferedInputStream(base_stream IInputStream) (result BufferedInputStrea
 }
 
 // g_buffered_input_stream_new_sized
-// container is not nil, container is BufferedInputStream
-// is constructor
+//
+// [ base_stream ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewBufferedInputStreamSized(base_stream IInputStream, size uint64) (result BufferedInputStream) {
 	iv, err := _I.Get(128, "BufferedInputStream", "new_sized")
 	if err != nil {
@@ -2818,8 +3091,13 @@ func NewBufferedInputStreamSized(base_stream IInputStream, size uint64) (result 
 }
 
 // g_buffered_input_stream_fill
-// container is not nil, container is BufferedInputStream
-// is method
+//
+// [ count ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BufferedInputStream) Fill(count int64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(129, "BufferedInputStream", "fill")
 	if err != nil {
@@ -2843,8 +3121,17 @@ func (v BufferedInputStream) Fill(count int64, cancellable ICancellable) (result
 }
 
 // g_buffered_input_stream_fill_async
-// container is not nil, container is BufferedInputStream
-// is method
+//
+// [ count ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v BufferedInputStream) FillAsync(count int64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(130, "BufferedInputStream", "fill_async")
 	if err != nil {
@@ -2866,8 +3153,11 @@ func (v BufferedInputStream) FillAsync(count int64, io_priority int32, cancellab
 }
 
 // g_buffered_input_stream_fill_finish
-// container is not nil, container is BufferedInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v BufferedInputStream) FillFinish(result IAsyncResult) (result1 int64, err error) {
 	iv, err := _I.Get(131, "BufferedInputStream", "fill_finish")
 	if err != nil {
@@ -2890,8 +3180,9 @@ func (v BufferedInputStream) FillFinish(result IAsyncResult) (result1 int64, err
 }
 
 // g_buffered_input_stream_get_available
-// container is not nil, container is BufferedInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v BufferedInputStream) GetAvailable() (result uint64) {
 	iv, err := _I.Get(132, "BufferedInputStream", "get_available")
 	if err != nil {
@@ -2907,8 +3198,9 @@ func (v BufferedInputStream) GetAvailable() (result uint64) {
 }
 
 // g_buffered_input_stream_get_buffer_size
-// container is not nil, container is BufferedInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v BufferedInputStream) GetBufferSize() (result uint64) {
 	iv, err := _I.Get(133, "BufferedInputStream", "get_buffer_size")
 	if err != nil {
@@ -2924,9 +3216,15 @@ func (v BufferedInputStream) GetBufferSize() (result uint64) {
 }
 
 // g_buffered_input_stream_peek
-// container is not nil, container is BufferedInputStream
-// is method
-// arg 0 buffer lenArgIdx 2
+//
+// [ buffer ] trans: nothing
+//
+// [ offset ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BufferedInputStream) Peek(buffer gi.Uint8Array, offset uint64, count uint64) (result uint64) {
 	iv, err := _I.Get(134, "BufferedInputStream", "peek")
 	if err != nil {
@@ -2945,9 +3243,11 @@ func (v BufferedInputStream) Peek(buffer gi.Uint8Array, offset uint64, count uin
 }
 
 // g_buffered_input_stream_peek_buffer
-// container is not nil, container is BufferedInputStream
-// is method
-// ret lenArgIdx 0
+//
+// [ count ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v BufferedInputStream) PeekBuffer() (result gi.Uint8Array) {
 	iv, err := _I.Get(135, "BufferedInputStream", "peek_buffer")
 	if err != nil {
@@ -2968,8 +3268,11 @@ func (v BufferedInputStream) PeekBuffer() (result gi.Uint8Array) {
 }
 
 // g_buffered_input_stream_read_byte
-// container is not nil, container is BufferedInputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BufferedInputStream) ReadByte(cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(136, "BufferedInputStream", "read_byte")
 	if err != nil {
@@ -2992,8 +3295,9 @@ func (v BufferedInputStream) ReadByte(cancellable ICancellable) (result int32, e
 }
 
 // g_buffered_input_stream_set_buffer_size
-// container is not nil, container is BufferedInputStream
-// is method
+//
+// [ size ] trans: nothing
+//
 func (v BufferedInputStream) SetBufferSize(size uint64) {
 	iv, err := _I.Get(137, "BufferedInputStream", "set_buffer_size")
 	if err != nil {
@@ -3035,8 +3339,11 @@ func BufferedOutputStreamGetType() gi.GType {
 }
 
 // g_buffered_output_stream_new
-// container is not nil, container is BufferedOutputStream
-// is constructor
+//
+// [ base_stream ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewBufferedOutputStream(base_stream IOutputStream) (result BufferedOutputStream) {
 	iv, err := _I.Get(138, "BufferedOutputStream", "new")
 	if err != nil {
@@ -3056,8 +3363,13 @@ func NewBufferedOutputStream(base_stream IOutputStream) (result BufferedOutputSt
 }
 
 // g_buffered_output_stream_new_sized
-// container is not nil, container is BufferedOutputStream
-// is constructor
+//
+// [ base_stream ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewBufferedOutputStreamSized(base_stream IOutputStream, size uint64) (result BufferedOutputStream) {
 	iv, err := _I.Get(139, "BufferedOutputStream", "new_sized")
 	if err != nil {
@@ -3078,8 +3390,9 @@ func NewBufferedOutputStreamSized(base_stream IOutputStream, size uint64) (resul
 }
 
 // g_buffered_output_stream_get_auto_grow
-// container is not nil, container is BufferedOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v BufferedOutputStream) GetAutoGrow() (result bool) {
 	iv, err := _I.Get(140, "BufferedOutputStream", "get_auto_grow")
 	if err != nil {
@@ -3095,8 +3408,9 @@ func (v BufferedOutputStream) GetAutoGrow() (result bool) {
 }
 
 // g_buffered_output_stream_get_buffer_size
-// container is not nil, container is BufferedOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v BufferedOutputStream) GetBufferSize() (result uint64) {
 	iv, err := _I.Get(141, "BufferedOutputStream", "get_buffer_size")
 	if err != nil {
@@ -3112,8 +3426,9 @@ func (v BufferedOutputStream) GetBufferSize() (result uint64) {
 }
 
 // g_buffered_output_stream_set_auto_grow
-// container is not nil, container is BufferedOutputStream
-// is method
+//
+// [ auto_grow ] trans: nothing
+//
 func (v BufferedOutputStream) SetAutoGrow(auto_grow bool) {
 	iv, err := _I.Get(142, "BufferedOutputStream", "set_auto_grow")
 	if err != nil {
@@ -3127,8 +3442,9 @@ func (v BufferedOutputStream) SetAutoGrow(auto_grow bool) {
 }
 
 // g_buffered_output_stream_set_buffer_size
-// container is not nil, container is BufferedOutputStream
-// is method
+//
+// [ size ] trans: nothing
+//
 func (v BufferedOutputStream) SetBufferSize(size uint64) {
 	iv, err := _I.Get(143, "BufferedOutputStream", "set_buffer_size")
 	if err != nil {
@@ -3312,8 +3628,11 @@ func BytesIconGetType() gi.GType {
 }
 
 // g_bytes_icon_new
-// container is not nil, container is BytesIcon
-// is constructor
+//
+// [ bytes ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewBytesIcon(bytes glib.Bytes) (result BytesIcon) {
 	iv, err := _I.Get(144, "BytesIcon", "new")
 	if err != nil {
@@ -3329,8 +3648,9 @@ func NewBytesIcon(bytes glib.Bytes) (result BytesIcon) {
 }
 
 // g_bytes_icon_get_bytes
-// container is not nil, container is BytesIcon
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v BytesIcon) GetBytes() (result glib.Bytes) {
 	iv, err := _I.Get(145, "BytesIcon", "get_bytes")
 	if err != nil {
@@ -3361,8 +3681,9 @@ func CancellableGetType() gi.GType {
 }
 
 // g_cancellable_new
-// container is not nil, container is Cancellable
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewCancellable() (result Cancellable) {
 	iv, err := _I.Get(146, "Cancellable", "new")
 	if err != nil {
@@ -3376,8 +3697,7 @@ func NewCancellable() (result Cancellable) {
 }
 
 // g_cancellable_cancel
-// container is not nil, container is Cancellable
-// is method
+//
 func (v Cancellable) Cancel() {
 	iv, err := _I.Get(148, "Cancellable", "cancel")
 	if err != nil {
@@ -3390,8 +3710,15 @@ func (v Cancellable) Cancel() {
 }
 
 // g_cancellable_connect
-// container is not nil, container is Cancellable
-// is method
+//
+// [ callback ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ data_destroy_func ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Cancellable) Connect(callback int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, data_destroy_func int /*TODO_TYPE CALLBACK*/) (result uint64) {
 	iv, err := _I.Get(149, "Cancellable", "connect")
 	if err != nil {
@@ -3410,8 +3737,9 @@ func (v Cancellable) Connect(callback int /*TODO_TYPE CALLBACK*/, data unsafe.Po
 }
 
 // g_cancellable_disconnect
-// container is not nil, container is Cancellable
-// is method
+//
+// [ handler_id ] trans: nothing
+//
 func (v Cancellable) Disconnect(handler_id uint64) {
 	iv, err := _I.Get(150, "Cancellable", "disconnect")
 	if err != nil {
@@ -3425,8 +3753,9 @@ func (v Cancellable) Disconnect(handler_id uint64) {
 }
 
 // g_cancellable_get_fd
-// container is not nil, container is Cancellable
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Cancellable) GetFd() (result int32) {
 	iv, err := _I.Get(151, "Cancellable", "get_fd")
 	if err != nil {
@@ -3442,8 +3771,9 @@ func (v Cancellable) GetFd() (result int32) {
 }
 
 // g_cancellable_is_cancelled
-// container is not nil, container is Cancellable
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Cancellable) IsCancelled() (result bool) {
 	iv, err := _I.Get(152, "Cancellable", "is_cancelled")
 	if err != nil {
@@ -3459,8 +3789,11 @@ func (v Cancellable) IsCancelled() (result bool) {
 }
 
 // g_cancellable_make_pollfd
-// container is not nil, container is Cancellable
-// is method
+//
+// [ pollfd ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Cancellable) MakePollfd(pollfd glib.PollFD) (result bool) {
 	iv, err := _I.Get(153, "Cancellable", "make_pollfd")
 	if err != nil {
@@ -3477,8 +3810,7 @@ func (v Cancellable) MakePollfd(pollfd glib.PollFD) (result bool) {
 }
 
 // g_cancellable_pop_current
-// container is not nil, container is Cancellable
-// is method
+//
 func (v Cancellable) PopCurrent() {
 	iv, err := _I.Get(154, "Cancellable", "pop_current")
 	if err != nil {
@@ -3491,8 +3823,7 @@ func (v Cancellable) PopCurrent() {
 }
 
 // g_cancellable_push_current
-// container is not nil, container is Cancellable
-// is method
+//
 func (v Cancellable) PushCurrent() {
 	iv, err := _I.Get(155, "Cancellable", "push_current")
 	if err != nil {
@@ -3505,8 +3836,7 @@ func (v Cancellable) PushCurrent() {
 }
 
 // g_cancellable_release_fd
-// container is not nil, container is Cancellable
-// is method
+//
 func (v Cancellable) ReleaseFd() {
 	iv, err := _I.Get(156, "Cancellable", "release_fd")
 	if err != nil {
@@ -3519,8 +3849,7 @@ func (v Cancellable) ReleaseFd() {
 }
 
 // g_cancellable_reset
-// container is not nil, container is Cancellable
-// is method
+//
 func (v Cancellable) Reset() {
 	iv, err := _I.Get(157, "Cancellable", "reset")
 	if err != nil {
@@ -3533,8 +3862,9 @@ func (v Cancellable) Reset() {
 }
 
 // g_cancellable_set_error_if_cancelled
-// container is not nil, container is Cancellable
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Cancellable) SetErrorIfCancelled() (result bool, err error) {
 	iv, err := _I.Get(158, "Cancellable", "set_error_if_cancelled")
 	if err != nil {
@@ -3599,8 +3929,13 @@ func CharsetConverterGetType() gi.GType {
 }
 
 // g_charset_converter_new
-// container is not nil, container is CharsetConverter
-// is constructor
+//
+// [ to_charset ] trans: nothing
+//
+// [ from_charset ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewCharsetConverter(to_charset string, from_charset string) (result CharsetConverter, err error) {
 	iv, err := _I.Get(159, "CharsetConverter", "new")
 	if err != nil {
@@ -3623,8 +3958,9 @@ func NewCharsetConverter(to_charset string, from_charset string) (result Charset
 }
 
 // g_charset_converter_get_num_fallbacks
-// container is not nil, container is CharsetConverter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v CharsetConverter) GetNumFallbacks() (result uint32) {
 	iv, err := _I.Get(160, "CharsetConverter", "get_num_fallbacks")
 	if err != nil {
@@ -3640,8 +3976,9 @@ func (v CharsetConverter) GetNumFallbacks() (result uint32) {
 }
 
 // g_charset_converter_get_use_fallback
-// container is not nil, container is CharsetConverter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v CharsetConverter) GetUseFallback() (result bool) {
 	iv, err := _I.Get(161, "CharsetConverter", "get_use_fallback")
 	if err != nil {
@@ -3657,8 +3994,9 @@ func (v CharsetConverter) GetUseFallback() (result bool) {
 }
 
 // g_charset_converter_set_use_fallback
-// container is not nil, container is CharsetConverter
-// is method
+//
+// [ use_fallback ] trans: nothing
+//
 func (v CharsetConverter) SetUseFallback(use_fallback bool) {
 	iv, err := _I.Get(162, "CharsetConverter", "set_use_fallback")
 	if err != nil {
@@ -3687,10 +4025,23 @@ func ConverterGetType() gi.GType {
 }
 
 // g_converter_convert
-// container is not nil, container is Converter
-// is method
-// arg 0 inbuf lenArgIdx 1
-// arg 2 outbuf lenArgIdx 3
+//
+// [ inbuf ] trans: nothing
+//
+// [ inbuf_size ] trans: nothing
+//
+// [ outbuf ] trans: nothing
+//
+// [ outbuf_size ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ bytes_read ] trans: everything, dir: out
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v *ConverterIfc) Convert(inbuf gi.Uint8Array, inbuf_size uint64, outbuf gi.Uint8Array, outbuf_size uint64, flags ConverterFlags) (result ConverterResultEnum, bytes_read uint64, bytes_written uint64, err error) {
 	iv, err := _I.Get(163, "Converter", "convert")
 	if err != nil {
@@ -3717,8 +4068,7 @@ func (v *ConverterIfc) Convert(inbuf gi.Uint8Array, inbuf_size uint64, outbuf gi
 }
 
 // g_converter_reset
-// container is not nil, container is Converter
-// is method
+//
 func (v *ConverterIfc) Reset() {
 	iv, err := _I.Get(164, "Converter", "reset")
 	if err != nil {
@@ -3763,8 +4113,13 @@ func ConverterInputStreamGetType() gi.GType {
 }
 
 // g_converter_input_stream_new
-// container is not nil, container is ConverterInputStream
-// is constructor
+//
+// [ base_stream ] trans: nothing
+//
+// [ converter ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewConverterInputStream(base_stream IInputStream, converter IConverter) (result ConverterInputStream) {
 	iv, err := _I.Get(165, "ConverterInputStream", "new")
 	if err != nil {
@@ -3789,8 +4144,9 @@ func NewConverterInputStream(base_stream IInputStream, converter IConverter) (re
 }
 
 // g_converter_input_stream_get_converter
-// container is not nil, container is ConverterInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ConverterInputStream) GetConverter() (result Converter) {
 	iv, err := _I.Get(166, "ConverterInputStream", "get_converter")
 	if err != nil {
@@ -3834,8 +4190,13 @@ func ConverterOutputStreamGetType() gi.GType {
 }
 
 // g_converter_output_stream_new
-// container is not nil, container is ConverterOutputStream
-// is constructor
+//
+// [ base_stream ] trans: nothing
+//
+// [ converter ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewConverterOutputStream(base_stream IOutputStream, converter IConverter) (result ConverterOutputStream) {
 	iv, err := _I.Get(167, "ConverterOutputStream", "new")
 	if err != nil {
@@ -3860,8 +4221,9 @@ func NewConverterOutputStream(base_stream IOutputStream, converter IConverter) (
 }
 
 // g_converter_output_stream_get_converter
-// container is not nil, container is ConverterOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ConverterOutputStream) GetConverter() (result Converter) {
 	iv, err := _I.Get(168, "ConverterOutputStream", "get_converter")
 	if err != nil {
@@ -3918,8 +4280,9 @@ func CredentialsGetType() gi.GType {
 }
 
 // g_credentials_new
-// container is not nil, container is Credentials
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewCredentials() (result Credentials) {
 	iv, err := _I.Get(169, "Credentials", "new")
 	if err != nil {
@@ -3933,8 +4296,9 @@ func NewCredentials() (result Credentials) {
 }
 
 // g_credentials_get_unix_pid
-// container is not nil, container is Credentials
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Credentials) GetUnixPid() (result int32, err error) {
 	iv, err := _I.Get(170, "Credentials", "get_unix_pid")
 	if err != nil {
@@ -3952,8 +4316,9 @@ func (v Credentials) GetUnixPid() (result int32, err error) {
 }
 
 // g_credentials_get_unix_user
-// container is not nil, container is Credentials
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Credentials) GetUnixUser() (result uint32, err error) {
 	iv, err := _I.Get(171, "Credentials", "get_unix_user")
 	if err != nil {
@@ -3971,8 +4336,11 @@ func (v Credentials) GetUnixUser() (result uint32, err error) {
 }
 
 // g_credentials_is_same_user
-// container is not nil, container is Credentials
-// is method
+//
+// [ other_credentials ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Credentials) IsSameUser(other_credentials ICredentials) (result bool, err error) {
 	iv, err := _I.Get(172, "Credentials", "is_same_user")
 	if err != nil {
@@ -3995,8 +4363,11 @@ func (v Credentials) IsSameUser(other_credentials ICredentials) (result bool, er
 }
 
 // g_credentials_set_native
-// container is not nil, container is Credentials
-// is method
+//
+// [ native_type ] trans: nothing
+//
+// [ native ] trans: nothing
+//
 func (v Credentials) SetNative(native_type CredentialsTypeEnum, native unsafe.Pointer) {
 	iv, err := _I.Get(173, "Credentials", "set_native")
 	if err != nil {
@@ -4011,8 +4382,11 @@ func (v Credentials) SetNative(native_type CredentialsTypeEnum, native unsafe.Po
 }
 
 // g_credentials_set_unix_user
-// container is not nil, container is Credentials
-// is method
+//
+// [ uid ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Credentials) SetUnixUser(uid uint32) (result bool, err error) {
 	iv, err := _I.Get(174, "Credentials", "set_unix_user")
 	if err != nil {
@@ -4031,8 +4405,9 @@ func (v Credentials) SetUnixUser(uid uint32) (result bool, err error) {
 }
 
 // g_credentials_to_string
-// container is not nil, container is Credentials
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Credentials) ToString() (result string) {
 	iv, err := _I.Get(175, "Credentials", "to_string")
 	if err != nil {
@@ -4085,9 +4460,15 @@ func DBusActionGroupGetType() gi.GType {
 }
 
 // g_dbus_action_group_get
-// container is not nil, container is DBusActionGroup
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ connection ] trans: nothing
+//
+// [ bus_name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DBusActionGroupGet1(connection IDBusConnection, bus_name string, object_path string) (result DBusActionGroup) {
 	iv, err := _I.Get(176, "DBusActionGroup", "get")
 	if err != nil {
@@ -4125,8 +4506,9 @@ func DBusAnnotationInfoGetType() gi.GType {
 }
 
 // g_dbus_annotation_info_ref
-// container is not nil, container is DBusAnnotationInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusAnnotationInfo) Ref() (result DBusAnnotationInfo) {
 	iv, err := _I.Get(177, "DBusAnnotationInfo", "ref")
 	if err != nil {
@@ -4142,8 +4524,7 @@ func (v DBusAnnotationInfo) Ref() (result DBusAnnotationInfo) {
 }
 
 // g_dbus_annotation_info_unref
-// container is not nil, container is DBusAnnotationInfo
-// is method
+//
 func (v DBusAnnotationInfo) Unref() {
 	iv, err := _I.Get(178, "DBusAnnotationInfo", "unref")
 	if err != nil {
@@ -4156,9 +4537,13 @@ func (v DBusAnnotationInfo) Unref() {
 }
 
 // g_dbus_annotation_info_lookup
-// container is not nil, container is DBusAnnotationInfo
-// is method
-// arg0Type tag: array, isPtr: true
+//
+// [ annotations ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DBusAnnotationInfoLookup1(annotations gi.PointerArray, name string) (result string) {
 	iv, err := _I.Get(179, "DBusAnnotationInfo", "lookup")
 	if err != nil {
@@ -4172,7 +4557,7 @@ func DBusAnnotationInfoLookup1(annotations gi.PointerArray, name string) (result
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
@@ -4189,8 +4574,9 @@ func DBusArgInfoGetType() gi.GType {
 }
 
 // g_dbus_arg_info_ref
-// container is not nil, container is DBusArgInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusArgInfo) Ref() (result DBusArgInfo) {
 	iv, err := _I.Get(180, "DBusArgInfo", "ref")
 	if err != nil {
@@ -4206,8 +4592,7 @@ func (v DBusArgInfo) Ref() (result DBusArgInfo) {
 }
 
 // g_dbus_arg_info_unref
-// container is not nil, container is DBusArgInfo
-// is method
+//
 func (v DBusArgInfo) Unref() {
 	iv, err := _I.Get(181, "DBusArgInfo", "unref")
 	if err != nil {
@@ -4235,8 +4620,9 @@ func DBusAuthObserverGetType() gi.GType {
 }
 
 // g_dbus_auth_observer_new
-// container is not nil, container is DBusAuthObserver
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewDBusAuthObserver() (result DBusAuthObserver) {
 	iv, err := _I.Get(182, "DBusAuthObserver", "new")
 	if err != nil {
@@ -4250,8 +4636,11 @@ func NewDBusAuthObserver() (result DBusAuthObserver) {
 }
 
 // g_dbus_auth_observer_allow_mechanism
-// container is not nil, container is DBusAuthObserver
-// is method
+//
+// [ mechanism ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusAuthObserver) AllowMechanism(mechanism string) (result bool) {
 	iv, err := _I.Get(183, "DBusAuthObserver", "allow_mechanism")
 	if err != nil {
@@ -4270,8 +4659,13 @@ func (v DBusAuthObserver) AllowMechanism(mechanism string) (result bool) {
 }
 
 // g_dbus_auth_observer_authorize_authenticated_peer
-// container is not nil, container is DBusAuthObserver
-// is method
+//
+// [ stream ] trans: nothing
+//
+// [ credentials ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusAuthObserver) AuthorizeAuthenticatedPeer(stream IIOStream, credentials ICredentials) (result bool) {
 	iv, err := _I.Get(184, "DBusAuthObserver", "authorize_authenticated_peer")
 	if err != nil {
@@ -4343,8 +4737,11 @@ func DBusConnectionGetType() gi.GType {
 }
 
 // g_dbus_connection_new_finish
-// container is not nil, container is DBusConnection
-// is constructor
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusConnectionFinish(res IAsyncResult) (result DBusConnection, err error) {
 	iv, err := _I.Get(185, "DBusConnection", "new_finish")
 	if err != nil {
@@ -4366,8 +4763,11 @@ func NewDBusConnectionFinish(res IAsyncResult) (result DBusConnection, err error
 }
 
 // g_dbus_connection_new_for_address_finish
-// container is not nil, container is DBusConnection
-// is constructor
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusConnectionForAddressFinish(res IAsyncResult) (result DBusConnection, err error) {
 	iv, err := _I.Get(186, "DBusConnection", "new_for_address_finish")
 	if err != nil {
@@ -4389,8 +4789,17 @@ func NewDBusConnectionForAddressFinish(res IAsyncResult) (result DBusConnection,
 }
 
 // g_dbus_connection_new_for_address_sync
-// container is not nil, container is DBusConnection
-// is constructor
+//
+// [ address ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ observer ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusConnectionForAddressSync(address string, flags DBusConnectionFlags, observer IDBusAuthObserver, cancellable ICancellable) (result DBusConnection, err error) {
 	iv, err := _I.Get(187, "DBusConnection", "new_for_address_sync")
 	if err != nil {
@@ -4421,8 +4830,19 @@ func NewDBusConnectionForAddressSync(address string, flags DBusConnectionFlags, 
 }
 
 // g_dbus_connection_new_sync
-// container is not nil, container is DBusConnection
-// is constructor
+//
+// [ stream ] trans: nothing
+//
+// [ guid ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ observer ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusConnectionSync(stream IIOStream, guid string, flags DBusConnectionFlags, observer IDBusAuthObserver, cancellable ICancellable) (result DBusConnection, err error) {
 	iv, err := _I.Get(188, "DBusConnection", "new_sync")
 	if err != nil {
@@ -4458,9 +4878,21 @@ func NewDBusConnectionSync(stream IIOStream, guid string, flags DBusConnectionFl
 }
 
 // g_dbus_connection_new
-// container is not nil, container is DBusConnection
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ stream ] trans: nothing
+//
+// [ guid ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ observer ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func DBusConnectionNew1(stream IIOStream, guid string, flags DBusConnectionFlags, observer IDBusAuthObserver, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(189, "DBusConnection", "new")
 	if err != nil {
@@ -4493,9 +4925,19 @@ func DBusConnectionNew1(stream IIOStream, guid string, flags DBusConnectionFlags
 }
 
 // g_dbus_connection_new_for_address
-// container is not nil, container is DBusConnection
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ address ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ observer ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func DBusConnectionNewForAddress1(address string, flags DBusConnectionFlags, observer IDBusAuthObserver, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(190, "DBusConnection", "new_for_address")
 	if err != nil {
@@ -4523,8 +4965,15 @@ func DBusConnectionNewForAddress1(address string, flags DBusConnectionFlags, obs
 }
 
 // g_dbus_connection_add_filter
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ filter_function ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ user_data_free_func ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) AddFilter(filter_function int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(191, "DBusConnection", "add_filter")
 	if err != nil {
@@ -4543,8 +4992,29 @@ func (v DBusConnection) AddFilter(filter_function int /*TODO_TYPE CALLBACK*/, us
 }
 
 // g_dbus_connection_call
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ bus_name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ method_name ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ reply_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout_msec ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v DBusConnection) Call(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags DBusCallFlags, timeout_msec int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(192, "DBusConnection", "call")
 	if err != nil {
@@ -4580,8 +5050,11 @@ func (v DBusConnection) Call(bus_name string, object_path string, interface_name
 }
 
 // g_dbus_connection_call_finish
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusConnection) CallFinish(res IAsyncResult) (result glib.Variant, err error) {
 	iv, err := _I.Get(193, "DBusConnection", "call_finish")
 	if err != nil {
@@ -4604,8 +5077,27 @@ func (v DBusConnection) CallFinish(res IAsyncResult) (result glib.Variant, err e
 }
 
 // g_dbus_connection_call_sync
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ bus_name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ method_name ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ reply_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout_msec ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusConnection) CallSync(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags DBusCallFlags, timeout_msec int32, cancellable ICancellable) (result glib.Variant, err error) {
 	iv, err := _I.Get(194, "DBusConnection", "call_sync")
 	if err != nil {
@@ -4644,8 +5136,31 @@ func (v DBusConnection) CallSync(bus_name string, object_path string, interface_
 }
 
 // g_dbus_connection_call_with_unix_fd_list
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ bus_name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ method_name ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ reply_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout_msec ] trans: nothing
+//
+// [ fd_list ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v DBusConnection) CallWithUnixFdList(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags DBusCallFlags, timeout_msec int32, fd_list IUnixFDList, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(195, "DBusConnection", "call_with_unix_fd_list")
 	if err != nil {
@@ -4686,8 +5201,13 @@ func (v DBusConnection) CallWithUnixFdList(bus_name string, object_path string, 
 }
 
 // g_dbus_connection_call_with_unix_fd_list_finish
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ out_fd_list ] trans: everything, dir: out
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusConnection) CallWithUnixFdListFinish(res IAsyncResult) (result glib.Variant, out_fd_list UnixFDList, err error) {
 	iv, err := _I.Get(196, "DBusConnection", "call_with_unix_fd_list_finish")
 	if err != nil {
@@ -4712,8 +5232,31 @@ func (v DBusConnection) CallWithUnixFdListFinish(res IAsyncResult) (result glib.
 }
 
 // g_dbus_connection_call_with_unix_fd_list_sync
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ bus_name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ method_name ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ reply_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout_msec ] trans: nothing
+//
+// [ fd_list ] trans: nothing
+//
+// [ out_fd_list ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusConnection) CallWithUnixFdListSync(bus_name string, object_path string, interface_name string, method_name string, parameters glib.Variant, reply_type glib.VariantType, flags DBusCallFlags, timeout_msec int32, fd_list IUnixFDList, cancellable ICancellable) (result glib.Variant, out_fd_list UnixFDList, err error) {
 	iv, err := _I.Get(197, "DBusConnection", "call_with_unix_fd_list_sync")
 	if err != nil {
@@ -4759,8 +5302,13 @@ func (v DBusConnection) CallWithUnixFdListSync(bus_name string, object_path stri
 }
 
 // g_dbus_connection_close
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v DBusConnection) Close(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(198, "DBusConnection", "close")
 	if err != nil {
@@ -4780,8 +5328,11 @@ func (v DBusConnection) Close(cancellable ICancellable, callback int /*TODO_TYPE
 }
 
 // g_dbus_connection_close_finish
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) CloseFinish(res IAsyncResult) (result bool, err error) {
 	iv, err := _I.Get(199, "DBusConnection", "close_finish")
 	if err != nil {
@@ -4804,8 +5355,11 @@ func (v DBusConnection) CloseFinish(res IAsyncResult) (result bool, err error) {
 }
 
 // g_dbus_connection_close_sync
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) CloseSync(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(200, "DBusConnection", "close_sync")
 	if err != nil {
@@ -4828,8 +5382,19 @@ func (v DBusConnection) CloseSync(cancellable ICancellable) (result bool, err er
 }
 
 // g_dbus_connection_emit_signal
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ destination_bus_name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ signal_name ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) EmitSignal(destination_bus_name string, object_path string, interface_name string, signal_name string, parameters glib.Variant) (result bool, err error) {
 	iv, err := _I.Get(201, "DBusConnection", "emit_signal")
 	if err != nil {
@@ -4860,8 +5425,13 @@ func (v DBusConnection) EmitSignal(destination_bus_name string, object_path stri
 }
 
 // g_dbus_connection_export_action_group
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ object_path ] trans: nothing
+//
+// [ action_group ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) ExportActionGroup(object_path string, action_group IActionGroup) (result uint32, err error) {
 	iv, err := _I.Get(202, "DBusConnection", "export_action_group")
 	if err != nil {
@@ -4887,8 +5457,13 @@ func (v DBusConnection) ExportActionGroup(object_path string, action_group IActi
 }
 
 // g_dbus_connection_export_menu_model
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ object_path ] trans: nothing
+//
+// [ menu ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) ExportMenuModel(object_path string, menu IMenuModel) (result uint32, err error) {
 	iv, err := _I.Get(203, "DBusConnection", "export_menu_model")
 	if err != nil {
@@ -4914,8 +5489,13 @@ func (v DBusConnection) ExportMenuModel(object_path string, menu IMenuModel) (re
 }
 
 // g_dbus_connection_flush
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v DBusConnection) Flush(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(204, "DBusConnection", "flush")
 	if err != nil {
@@ -4935,8 +5515,11 @@ func (v DBusConnection) Flush(cancellable ICancellable, callback int /*TODO_TYPE
 }
 
 // g_dbus_connection_flush_finish
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) FlushFinish(res IAsyncResult) (result bool, err error) {
 	iv, err := _I.Get(205, "DBusConnection", "flush_finish")
 	if err != nil {
@@ -4959,8 +5542,11 @@ func (v DBusConnection) FlushFinish(res IAsyncResult) (result bool, err error) {
 }
 
 // g_dbus_connection_flush_sync
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) FlushSync(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(206, "DBusConnection", "flush_sync")
 	if err != nil {
@@ -4983,8 +5569,9 @@ func (v DBusConnection) FlushSync(cancellable ICancellable) (result bool, err er
 }
 
 // g_dbus_connection_get_capabilities
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) GetCapabilities() (result DBusCapabilityFlags) {
 	iv, err := _I.Get(207, "DBusConnection", "get_capabilities")
 	if err != nil {
@@ -5000,8 +5587,9 @@ func (v DBusConnection) GetCapabilities() (result DBusCapabilityFlags) {
 }
 
 // g_dbus_connection_get_exit_on_close
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) GetExitOnClose() (result bool) {
 	iv, err := _I.Get(208, "DBusConnection", "get_exit_on_close")
 	if err != nil {
@@ -5017,8 +5605,9 @@ func (v DBusConnection) GetExitOnClose() (result bool) {
 }
 
 // g_dbus_connection_get_guid
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) GetGuid() (result string) {
 	iv, err := _I.Get(209, "DBusConnection", "get_guid")
 	if err != nil {
@@ -5029,13 +5618,14 @@ func (v DBusConnection) GetGuid() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_connection_get_last_serial
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) GetLastSerial() (result uint32) {
 	iv, err := _I.Get(210, "DBusConnection", "get_last_serial")
 	if err != nil {
@@ -5051,8 +5641,9 @@ func (v DBusConnection) GetLastSerial() (result uint32) {
 }
 
 // g_dbus_connection_get_peer_credentials
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) GetPeerCredentials() (result Credentials) {
 	iv, err := _I.Get(211, "DBusConnection", "get_peer_credentials")
 	if err != nil {
@@ -5068,8 +5659,9 @@ func (v DBusConnection) GetPeerCredentials() (result Credentials) {
 }
 
 // g_dbus_connection_get_stream
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) GetStream() (result IOStream) {
 	iv, err := _I.Get(212, "DBusConnection", "get_stream")
 	if err != nil {
@@ -5085,8 +5677,9 @@ func (v DBusConnection) GetStream() (result IOStream) {
 }
 
 // g_dbus_connection_get_unique_name
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) GetUniqueName() (result string) {
 	iv, err := _I.Get(213, "DBusConnection", "get_unique_name")
 	if err != nil {
@@ -5097,13 +5690,14 @@ func (v DBusConnection) GetUniqueName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_connection_is_closed
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) IsClosed() (result bool) {
 	iv, err := _I.Get(214, "DBusConnection", "is_closed")
 	if err != nil {
@@ -5119,8 +5713,19 @@ func (v DBusConnection) IsClosed() (result bool) {
 }
 
 // g_dbus_connection_register_object_with_closures
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_info ] trans: nothing
+//
+// [ method_call_closure ] trans: nothing
+//
+// [ get_property_closure ] trans: nothing
+//
+// [ set_property_closure ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) RegisterObject(object_path string, interface_info DBusInterfaceInfo, method_call_closure gobject.Closure, get_property_closure gobject.Closure, set_property_closure gobject.Closure) (result uint32, err error) {
 	iv, err := _I.Get(215, "DBusConnection", "register_object")
 	if err != nil {
@@ -5145,8 +5750,19 @@ func (v DBusConnection) RegisterObject(object_path string, interface_info DBusIn
 }
 
 // g_dbus_connection_register_subtree
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ object_path ] trans: nothing
+//
+// [ vtable ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ user_data_free_func ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) RegisterSubtree(object_path string, vtable DBusSubtreeVTable, flags DBusSubtreeFlags, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE CALLBACK*/) (result uint32, err error) {
 	iv, err := _I.Get(216, "DBusConnection", "register_subtree")
 	if err != nil {
@@ -5171,8 +5787,9 @@ func (v DBusConnection) RegisterSubtree(object_path string, vtable DBusSubtreeVT
 }
 
 // g_dbus_connection_remove_filter
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ filter_id ] trans: nothing
+//
 func (v DBusConnection) RemoveFilter(filter_id uint32) {
 	iv, err := _I.Get(217, "DBusConnection", "remove_filter")
 	if err != nil {
@@ -5186,8 +5803,15 @@ func (v DBusConnection) RemoveFilter(filter_id uint32) {
 }
 
 // g_dbus_connection_send_message
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ message ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ out_serial ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) SendMessage(message IDBusMessage, flags DBusSendMessageFlags) (result bool, out_serial uint32, err error) {
 	iv, err := _I.Get(218, "DBusConnection", "send_message")
 	if err != nil {
@@ -5213,8 +5837,21 @@ func (v DBusConnection) SendMessage(message IDBusMessage, flags DBusSendMessageF
 }
 
 // g_dbus_connection_send_message_with_reply
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ message ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout_msec ] trans: nothing
+//
+// [ out_serial ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v DBusConnection) SendMessageWithReply(message IDBusMessage, flags DBusSendMessageFlags, timeout_msec int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (out_serial uint32) {
 	iv, err := _I.Get(219, "DBusConnection", "send_message_with_reply")
 	if err != nil {
@@ -5245,8 +5882,11 @@ func (v DBusConnection) SendMessageWithReply(message IDBusMessage, flags DBusSen
 }
 
 // g_dbus_connection_send_message_with_reply_finish
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusConnection) SendMessageWithReplyFinish(res IAsyncResult) (result DBusMessage, err error) {
 	iv, err := _I.Get(220, "DBusConnection", "send_message_with_reply_finish")
 	if err != nil {
@@ -5269,8 +5909,19 @@ func (v DBusConnection) SendMessageWithReplyFinish(res IAsyncResult) (result DBu
 }
 
 // g_dbus_connection_send_message_with_reply_sync
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ message ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout_msec ] trans: nothing
+//
+// [ out_serial ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusConnection) SendMessageWithReplySync(message IDBusMessage, flags DBusSendMessageFlags, timeout_msec int32, cancellable ICancellable) (result DBusMessage, out_serial uint32, err error) {
 	iv, err := _I.Get(221, "DBusConnection", "send_message_with_reply_sync")
 	if err != nil {
@@ -5302,8 +5953,9 @@ func (v DBusConnection) SendMessageWithReplySync(message IDBusMessage, flags DBu
 }
 
 // g_dbus_connection_set_exit_on_close
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ exit_on_close ] trans: nothing
+//
 func (v DBusConnection) SetExitOnClose(exit_on_close bool) {
 	iv, err := _I.Get(222, "DBusConnection", "set_exit_on_close")
 	if err != nil {
@@ -5317,8 +5969,27 @@ func (v DBusConnection) SetExitOnClose(exit_on_close bool) {
 }
 
 // g_dbus_connection_signal_subscribe
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ sender ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ member ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ arg0 ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ user_data_free_func ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) SignalSubscribe(sender string, interface_name string, member string, object_path string, arg0 string, flags DBusSignalFlags, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(223, "DBusConnection", "signal_subscribe")
 	if err != nil {
@@ -5353,8 +6024,9 @@ func (v DBusConnection) SignalSubscribe(sender string, interface_name string, me
 }
 
 // g_dbus_connection_signal_unsubscribe
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ subscription_id ] trans: nothing
+//
 func (v DBusConnection) SignalUnsubscribe(subscription_id uint32) {
 	iv, err := _I.Get(224, "DBusConnection", "signal_unsubscribe")
 	if err != nil {
@@ -5368,8 +6040,7 @@ func (v DBusConnection) SignalUnsubscribe(subscription_id uint32) {
 }
 
 // g_dbus_connection_start_message_processing
-// container is not nil, container is DBusConnection
-// is method
+//
 func (v DBusConnection) StartMessageProcessing() {
 	iv, err := _I.Get(225, "DBusConnection", "start_message_processing")
 	if err != nil {
@@ -5382,8 +6053,9 @@ func (v DBusConnection) StartMessageProcessing() {
 }
 
 // g_dbus_connection_unexport_action_group
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ export_id ] trans: nothing
+//
 func (v DBusConnection) UnexportActionGroup(export_id uint32) {
 	iv, err := _I.Get(226, "DBusConnection", "unexport_action_group")
 	if err != nil {
@@ -5397,8 +6069,9 @@ func (v DBusConnection) UnexportActionGroup(export_id uint32) {
 }
 
 // g_dbus_connection_unexport_menu_model
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ export_id ] trans: nothing
+//
 func (v DBusConnection) UnexportMenuModel(export_id uint32) {
 	iv, err := _I.Get(227, "DBusConnection", "unexport_menu_model")
 	if err != nil {
@@ -5412,8 +6085,11 @@ func (v DBusConnection) UnexportMenuModel(export_id uint32) {
 }
 
 // g_dbus_connection_unregister_object
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ registration_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) UnregisterObject(registration_id uint32) (result bool) {
 	iv, err := _I.Get(228, "DBusConnection", "unregister_object")
 	if err != nil {
@@ -5430,8 +6106,11 @@ func (v DBusConnection) UnregisterObject(registration_id uint32) (result bool) {
 }
 
 // g_dbus_connection_unregister_subtree
-// container is not nil, container is DBusConnection
-// is method
+//
+// [ registration_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusConnection) UnregisterSubtree(registration_id uint32) (result bool) {
 	iv, err := _I.Get(229, "DBusConnection", "unregister_subtree")
 	if err != nil {
@@ -5547,8 +6226,9 @@ func DBusInterfaceGetType() gi.GType {
 }
 
 // g_dbus_interface_dup_object
-// container is not nil, container is DBusInterface
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *DBusInterfaceIfc) GetObject() (result DBusObject) {
 	iv, err := _I.Get(230, "DBusInterface", "get_object")
 	if err != nil {
@@ -5564,8 +6244,9 @@ func (v *DBusInterfaceIfc) GetObject() (result DBusObject) {
 }
 
 // g_dbus_interface_get_info
-// container is not nil, container is DBusInterface
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DBusInterfaceIfc) GetInfo() (result DBusInterfaceInfo) {
 	iv, err := _I.Get(231, "DBusInterface", "get_info")
 	if err != nil {
@@ -5581,8 +6262,9 @@ func (v *DBusInterfaceIfc) GetInfo() (result DBusInterfaceInfo) {
 }
 
 // g_dbus_interface_set_object
-// container is not nil, container is DBusInterface
-// is method
+//
+// [ object ] trans: nothing
+//
 func (v *DBusInterfaceIfc) SetObject(object IDBusObject) {
 	iv, err := _I.Get(232, "DBusInterface", "set_object")
 	if err != nil {
@@ -5640,8 +6322,7 @@ func DBusInterfaceInfoGetType() gi.GType {
 }
 
 // g_dbus_interface_info_cache_build
-// container is not nil, container is DBusInterfaceInfo
-// is method
+//
 func (v DBusInterfaceInfo) CacheBuild() {
 	iv, err := _I.Get(233, "DBusInterfaceInfo", "cache_build")
 	if err != nil {
@@ -5654,8 +6335,7 @@ func (v DBusInterfaceInfo) CacheBuild() {
 }
 
 // g_dbus_interface_info_cache_release
-// container is not nil, container is DBusInterfaceInfo
-// is method
+//
 func (v DBusInterfaceInfo) CacheRelease() {
 	iv, err := _I.Get(234, "DBusInterfaceInfo", "cache_release")
 	if err != nil {
@@ -5668,8 +6348,11 @@ func (v DBusInterfaceInfo) CacheRelease() {
 }
 
 // g_dbus_interface_info_generate_xml
-// container is not nil, container is DBusInterfaceInfo
-// is method
+//
+// [ indent ] trans: nothing
+//
+// [ string_builder ] trans: nothing
+//
 func (v DBusInterfaceInfo) GenerateXml(indent uint32, string_builder glib.String) {
 	iv, err := _I.Get(235, "DBusInterfaceInfo", "generate_xml")
 	if err != nil {
@@ -5684,8 +6367,11 @@ func (v DBusInterfaceInfo) GenerateXml(indent uint32, string_builder glib.String
 }
 
 // g_dbus_interface_info_lookup_method
-// container is not nil, container is DBusInterfaceInfo
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusInterfaceInfo) LookupMethod(name string) (result DBusMethodInfo) {
 	iv, err := _I.Get(236, "DBusInterfaceInfo", "lookup_method")
 	if err != nil {
@@ -5704,8 +6390,11 @@ func (v DBusInterfaceInfo) LookupMethod(name string) (result DBusMethodInfo) {
 }
 
 // g_dbus_interface_info_lookup_property
-// container is not nil, container is DBusInterfaceInfo
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusInterfaceInfo) LookupProperty(name string) (result DBusPropertyInfo) {
 	iv, err := _I.Get(237, "DBusInterfaceInfo", "lookup_property")
 	if err != nil {
@@ -5724,8 +6413,11 @@ func (v DBusInterfaceInfo) LookupProperty(name string) (result DBusPropertyInfo)
 }
 
 // g_dbus_interface_info_lookup_signal
-// container is not nil, container is DBusInterfaceInfo
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusInterfaceInfo) LookupSignal(name string) (result DBusSignalInfo) {
 	iv, err := _I.Get(238, "DBusInterfaceInfo", "lookup_signal")
 	if err != nil {
@@ -5744,8 +6436,9 @@ func (v DBusInterfaceInfo) LookupSignal(name string) (result DBusSignalInfo) {
 }
 
 // g_dbus_interface_info_ref
-// container is not nil, container is DBusInterfaceInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusInterfaceInfo) Ref() (result DBusInterfaceInfo) {
 	iv, err := _I.Get(239, "DBusInterfaceInfo", "ref")
 	if err != nil {
@@ -5761,8 +6454,7 @@ func (v DBusInterfaceInfo) Ref() (result DBusInterfaceInfo) {
 }
 
 // g_dbus_interface_info_unref
-// container is not nil, container is DBusInterfaceInfo
-// is method
+//
 func (v DBusInterfaceInfo) Unref() {
 	iv, err := _I.Get(240, "DBusInterfaceInfo", "unref")
 	if err != nil {
@@ -5850,8 +6542,13 @@ func DBusInterfaceSkeletonGetType() gi.GType {
 }
 
 // g_dbus_interface_skeleton_export
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
+// [ connection ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusInterfaceSkeleton) Export(connection IDBusConnection, object_path string) (result bool, err error) {
 	iv, err := _I.Get(241, "DBusInterfaceSkeleton", "export")
 	if err != nil {
@@ -5877,8 +6574,7 @@ func (v DBusInterfaceSkeleton) Export(connection IDBusConnection, object_path st
 }
 
 // g_dbus_interface_skeleton_flush
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
 func (v DBusInterfaceSkeleton) Flush() {
 	iv, err := _I.Get(242, "DBusInterfaceSkeleton", "flush")
 	if err != nil {
@@ -5891,8 +6587,9 @@ func (v DBusInterfaceSkeleton) Flush() {
 }
 
 // g_dbus_interface_skeleton_get_connection
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusInterfaceSkeleton) GetConnection() (result DBusConnection) {
 	iv, err := _I.Get(243, "DBusInterfaceSkeleton", "get_connection")
 	if err != nil {
@@ -5908,8 +6605,9 @@ func (v DBusInterfaceSkeleton) GetConnection() (result DBusConnection) {
 }
 
 // g_dbus_interface_skeleton_get_connections
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusInterfaceSkeleton) GetConnections() (result glib.List) {
 	iv, err := _I.Get(244, "DBusInterfaceSkeleton", "get_connections")
 	if err != nil {
@@ -5925,8 +6623,9 @@ func (v DBusInterfaceSkeleton) GetConnections() (result glib.List) {
 }
 
 // g_dbus_interface_skeleton_get_flags
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusInterfaceSkeleton) GetFlags() (result DBusInterfaceSkeletonFlags) {
 	iv, err := _I.Get(245, "DBusInterfaceSkeleton", "get_flags")
 	if err != nil {
@@ -5942,8 +6641,9 @@ func (v DBusInterfaceSkeleton) GetFlags() (result DBusInterfaceSkeletonFlags) {
 }
 
 // g_dbus_interface_skeleton_get_info
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusInterfaceSkeleton) GetInfo() (result DBusInterfaceInfo) {
 	iv, err := _I.Get(246, "DBusInterfaceSkeleton", "get_info")
 	if err != nil {
@@ -5959,8 +6659,9 @@ func (v DBusInterfaceSkeleton) GetInfo() (result DBusInterfaceInfo) {
 }
 
 // g_dbus_interface_skeleton_get_object_path
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusInterfaceSkeleton) GetObjectPath() (result string) {
 	iv, err := _I.Get(247, "DBusInterfaceSkeleton", "get_object_path")
 	if err != nil {
@@ -5971,13 +6672,14 @@ func (v DBusInterfaceSkeleton) GetObjectPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_interface_skeleton_get_properties
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusInterfaceSkeleton) GetProperties() (result glib.Variant) {
 	iv, err := _I.Get(248, "DBusInterfaceSkeleton", "get_properties")
 	if err != nil {
@@ -5993,8 +6695,11 @@ func (v DBusInterfaceSkeleton) GetProperties() (result glib.Variant) {
 }
 
 // g_dbus_interface_skeleton_has_connection
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
+// [ connection ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusInterfaceSkeleton) HasConnection(connection IDBusConnection) (result bool) {
 	iv, err := _I.Get(249, "DBusInterfaceSkeleton", "has_connection")
 	if err != nil {
@@ -6015,8 +6720,9 @@ func (v DBusInterfaceSkeleton) HasConnection(connection IDBusConnection) (result
 }
 
 // g_dbus_interface_skeleton_set_flags
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
+// [ flags ] trans: nothing
+//
 func (v DBusInterfaceSkeleton) SetFlags(flags DBusInterfaceSkeletonFlags) {
 	iv, err := _I.Get(250, "DBusInterfaceSkeleton", "set_flags")
 	if err != nil {
@@ -6030,8 +6736,7 @@ func (v DBusInterfaceSkeleton) SetFlags(flags DBusInterfaceSkeletonFlags) {
 }
 
 // g_dbus_interface_skeleton_unexport
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
 func (v DBusInterfaceSkeleton) Unexport() {
 	iv, err := _I.Get(251, "DBusInterfaceSkeleton", "unexport")
 	if err != nil {
@@ -6044,8 +6749,9 @@ func (v DBusInterfaceSkeleton) Unexport() {
 }
 
 // g_dbus_interface_skeleton_unexport_from_connection
-// container is not nil, container is DBusInterfaceSkeleton
-// is method
+//
+// [ connection ] trans: nothing
+//
 func (v DBusInterfaceSkeleton) UnexportFromConnection(connection IDBusConnection) {
 	iv, err := _I.Get(252, "DBusInterfaceSkeleton", "unexport_from_connection")
 	if err != nil {
@@ -6114,9 +6820,15 @@ func DBusMenuModelGetType() gi.GType {
 }
 
 // g_dbus_menu_model_get
-// container is not nil, container is DBusMenuModel
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ connection ] trans: nothing
+//
+// [ bus_name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DBusMenuModelGet1(connection IDBusConnection, bus_name string, object_path string) (result DBusMenuModel) {
 	iv, err := _I.Get(253, "DBusMenuModel", "get")
 	if err != nil {
@@ -6157,8 +6869,9 @@ func DBusMessageGetType() gi.GType {
 }
 
 // g_dbus_message_new
-// container is not nil, container is DBusMessage
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewDBusMessage() (result DBusMessage) {
 	iv, err := _I.Get(254, "DBusMessage", "new")
 	if err != nil {
@@ -6172,9 +6885,15 @@ func NewDBusMessage() (result DBusMessage) {
 }
 
 // g_dbus_message_new_from_blob
-// container is not nil, container is DBusMessage
-// is constructor
-// arg 0 blob lenArgIdx 1
+//
+// [ blob ] trans: nothing
+//
+// [ blob_len ] trans: nothing
+//
+// [ capabilities ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusMessageFromBlob(blob gi.Uint8Array, blob_len uint64, capabilities DBusCapabilityFlags) (result DBusMessage, err error) {
 	iv, err := _I.Get(255, "DBusMessage", "new_from_blob")
 	if err != nil {
@@ -6194,8 +6913,17 @@ func NewDBusMessageFromBlob(blob gi.Uint8Array, blob_len uint64, capabilities DB
 }
 
 // g_dbus_message_new_method_call
-// container is not nil, container is DBusMessage
-// is constructor
+//
+// [ name ] trans: nothing
+//
+// [ path ] trans: nothing
+//
+// [ interface_ ] trans: nothing
+//
+// [ method ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusMessageMethodCall(name string, path string, interface_ string, method string) (result DBusMessage) {
 	iv, err := _I.Get(256, "DBusMessage", "new_method_call")
 	if err != nil {
@@ -6222,8 +6950,15 @@ func NewDBusMessageMethodCall(name string, path string, interface_ string, metho
 }
 
 // g_dbus_message_new_signal
-// container is not nil, container is DBusMessage
-// is constructor
+//
+// [ path ] trans: nothing
+//
+// [ interface_ ] trans: nothing
+//
+// [ signal ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusMessageSignal(path string, interface_ string, signal string) (result DBusMessage) {
 	iv, err := _I.Get(257, "DBusMessage", "new_signal")
 	if err != nil {
@@ -6247,10 +6982,13 @@ func NewDBusMessageSignal(path string, interface_ string, signal string) (result
 }
 
 // g_dbus_message_bytes_needed
-// container is not nil, container is DBusMessage
-// is method
-// arg0Type tag: array, isPtr: true
-// arg 0 blob lenArgIdx 1
+//
+// [ blob ] trans: nothing
+//
+// [ blob_len ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DBusMessageBytesNeeded1(blob gi.Uint8Array, blob_len uint64) (result int64, err error) {
 	iv, err := _I.Get(258, "DBusMessage", "bytes_needed")
 	if err != nil {
@@ -6269,8 +7007,9 @@ func DBusMessageBytesNeeded1(blob gi.Uint8Array, blob_len uint64) (result int64,
 }
 
 // g_dbus_message_copy
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusMessage) Copy() (result DBusMessage, err error) {
 	iv, err := _I.Get(259, "DBusMessage", "copy")
 	if err != nil {
@@ -6288,8 +7027,9 @@ func (v DBusMessage) Copy() (result DBusMessage, err error) {
 }
 
 // g_dbus_message_get_arg0
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetArg0() (result string) {
 	iv, err := _I.Get(260, "DBusMessage", "get_arg0")
 	if err != nil {
@@ -6300,13 +7040,14 @@ func (v DBusMessage) GetArg0() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_message_get_body
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetBody() (result glib.Variant) {
 	iv, err := _I.Get(261, "DBusMessage", "get_body")
 	if err != nil {
@@ -6322,8 +7063,9 @@ func (v DBusMessage) GetBody() (result glib.Variant) {
 }
 
 // g_dbus_message_get_byte_order
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetByteOrder() (result DBusMessageByteOrderEnum) {
 	iv, err := _I.Get(262, "DBusMessage", "get_byte_order")
 	if err != nil {
@@ -6339,8 +7081,9 @@ func (v DBusMessage) GetByteOrder() (result DBusMessageByteOrderEnum) {
 }
 
 // g_dbus_message_get_destination
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetDestination() (result string) {
 	iv, err := _I.Get(263, "DBusMessage", "get_destination")
 	if err != nil {
@@ -6351,13 +7094,14 @@ func (v DBusMessage) GetDestination() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_message_get_error_name
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetErrorName() (result string) {
 	iv, err := _I.Get(264, "DBusMessage", "get_error_name")
 	if err != nil {
@@ -6368,13 +7112,14 @@ func (v DBusMessage) GetErrorName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_message_get_flags
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetFlags() (result DBusMessageFlags) {
 	iv, err := _I.Get(265, "DBusMessage", "get_flags")
 	if err != nil {
@@ -6390,8 +7135,11 @@ func (v DBusMessage) GetFlags() (result DBusMessageFlags) {
 }
 
 // g_dbus_message_get_header
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ header_field ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetHeader(header_field DBusMessageHeaderFieldEnum) (result glib.Variant) {
 	iv, err := _I.Get(266, "DBusMessage", "get_header")
 	if err != nil {
@@ -6408,8 +7156,9 @@ func (v DBusMessage) GetHeader(header_field DBusMessageHeaderFieldEnum) (result 
 }
 
 // g_dbus_message_get_header_fields
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetHeaderFields() (result gi.Uint8Array) {
 	iv, err := _I.Get(267, "DBusMessage", "get_header_fields")
 	if err != nil {
@@ -6425,8 +7174,9 @@ func (v DBusMessage) GetHeaderFields() (result gi.Uint8Array) {
 }
 
 // g_dbus_message_get_interface
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetInterface() (result string) {
 	iv, err := _I.Get(268, "DBusMessage", "get_interface")
 	if err != nil {
@@ -6437,13 +7187,14 @@ func (v DBusMessage) GetInterface() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_message_get_locked
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetLocked() (result bool) {
 	iv, err := _I.Get(269, "DBusMessage", "get_locked")
 	if err != nil {
@@ -6459,8 +7210,9 @@ func (v DBusMessage) GetLocked() (result bool) {
 }
 
 // g_dbus_message_get_member
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetMember() (result string) {
 	iv, err := _I.Get(270, "DBusMessage", "get_member")
 	if err != nil {
@@ -6471,13 +7223,14 @@ func (v DBusMessage) GetMember() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_message_get_message_type
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetMessageType() (result DBusMessageTypeEnum) {
 	iv, err := _I.Get(271, "DBusMessage", "get_message_type")
 	if err != nil {
@@ -6493,8 +7246,9 @@ func (v DBusMessage) GetMessageType() (result DBusMessageTypeEnum) {
 }
 
 // g_dbus_message_get_num_unix_fds
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetNumUnixFds() (result uint32) {
 	iv, err := _I.Get(272, "DBusMessage", "get_num_unix_fds")
 	if err != nil {
@@ -6510,8 +7264,9 @@ func (v DBusMessage) GetNumUnixFds() (result uint32) {
 }
 
 // g_dbus_message_get_path
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetPath() (result string) {
 	iv, err := _I.Get(273, "DBusMessage", "get_path")
 	if err != nil {
@@ -6522,13 +7277,14 @@ func (v DBusMessage) GetPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_message_get_reply_serial
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetReplySerial() (result uint32) {
 	iv, err := _I.Get(274, "DBusMessage", "get_reply_serial")
 	if err != nil {
@@ -6544,8 +7300,9 @@ func (v DBusMessage) GetReplySerial() (result uint32) {
 }
 
 // g_dbus_message_get_sender
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetSender() (result string) {
 	iv, err := _I.Get(275, "DBusMessage", "get_sender")
 	if err != nil {
@@ -6556,13 +7313,14 @@ func (v DBusMessage) GetSender() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_message_get_serial
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetSerial() (result uint32) {
 	iv, err := _I.Get(276, "DBusMessage", "get_serial")
 	if err != nil {
@@ -6578,8 +7336,9 @@ func (v DBusMessage) GetSerial() (result uint32) {
 }
 
 // g_dbus_message_get_signature
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetSignature() (result string) {
 	iv, err := _I.Get(277, "DBusMessage", "get_signature")
 	if err != nil {
@@ -6590,13 +7349,14 @@ func (v DBusMessage) GetSignature() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_message_get_unix_fd_list
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) GetUnixFdList() (result UnixFDList) {
 	iv, err := _I.Get(278, "DBusMessage", "get_unix_fd_list")
 	if err != nil {
@@ -6612,8 +7372,7 @@ func (v DBusMessage) GetUnixFdList() (result UnixFDList) {
 }
 
 // g_dbus_message_lock
-// container is not nil, container is DBusMessage
-// is method
+//
 func (v DBusMessage) Lock() {
 	iv, err := _I.Get(279, "DBusMessage", "lock")
 	if err != nil {
@@ -6626,8 +7385,13 @@ func (v DBusMessage) Lock() {
 }
 
 // g_dbus_message_new_method_error_literal
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ error_name ] trans: nothing
+//
+// [ error_message ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusMessage) NewMethodErrorLiteral(error_name string, error_message string) (result DBusMessage) {
 	iv, err := _I.Get(280, "DBusMessage", "new_method_error_literal")
 	if err != nil {
@@ -6649,8 +7413,9 @@ func (v DBusMessage) NewMethodErrorLiteral(error_name string, error_message stri
 }
 
 // g_dbus_message_new_method_reply
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusMessage) NewMethodReply() (result DBusMessage) {
 	iv, err := _I.Get(281, "DBusMessage", "new_method_reply")
 	if err != nil {
@@ -6666,8 +7431,11 @@ func (v DBusMessage) NewMethodReply() (result DBusMessage) {
 }
 
 // g_dbus_message_print
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ indent ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusMessage) Print(indent uint32) (result string) {
 	iv, err := _I.Get(282, "DBusMessage", "print")
 	if err != nil {
@@ -6684,8 +7452,9 @@ func (v DBusMessage) Print(indent uint32) (result string) {
 }
 
 // g_dbus_message_set_body
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ body ] trans: nothing
+//
 func (v DBusMessage) SetBody(body glib.Variant) {
 	iv, err := _I.Get(283, "DBusMessage", "set_body")
 	if err != nil {
@@ -6699,8 +7468,9 @@ func (v DBusMessage) SetBody(body glib.Variant) {
 }
 
 // g_dbus_message_set_byte_order
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ byte_order ] trans: nothing
+//
 func (v DBusMessage) SetByteOrder(byte_order DBusMessageByteOrderEnum) {
 	iv, err := _I.Get(284, "DBusMessage", "set_byte_order")
 	if err != nil {
@@ -6714,8 +7484,9 @@ func (v DBusMessage) SetByteOrder(byte_order DBusMessageByteOrderEnum) {
 }
 
 // g_dbus_message_set_destination
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v DBusMessage) SetDestination(value string) {
 	iv, err := _I.Get(285, "DBusMessage", "set_destination")
 	if err != nil {
@@ -6731,8 +7502,9 @@ func (v DBusMessage) SetDestination(value string) {
 }
 
 // g_dbus_message_set_error_name
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v DBusMessage) SetErrorName(value string) {
 	iv, err := _I.Get(286, "DBusMessage", "set_error_name")
 	if err != nil {
@@ -6748,8 +7520,9 @@ func (v DBusMessage) SetErrorName(value string) {
 }
 
 // g_dbus_message_set_flags
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ flags ] trans: nothing
+//
 func (v DBusMessage) SetFlags(flags DBusMessageFlags) {
 	iv, err := _I.Get(287, "DBusMessage", "set_flags")
 	if err != nil {
@@ -6763,8 +7536,11 @@ func (v DBusMessage) SetFlags(flags DBusMessageFlags) {
 }
 
 // g_dbus_message_set_header
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ header_field ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v DBusMessage) SetHeader(header_field DBusMessageHeaderFieldEnum, value glib.Variant) {
 	iv, err := _I.Get(288, "DBusMessage", "set_header")
 	if err != nil {
@@ -6779,8 +7555,9 @@ func (v DBusMessage) SetHeader(header_field DBusMessageHeaderFieldEnum, value gl
 }
 
 // g_dbus_message_set_interface
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v DBusMessage) SetInterface(value string) {
 	iv, err := _I.Get(289, "DBusMessage", "set_interface")
 	if err != nil {
@@ -6796,8 +7573,9 @@ func (v DBusMessage) SetInterface(value string) {
 }
 
 // g_dbus_message_set_member
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v DBusMessage) SetMember(value string) {
 	iv, err := _I.Get(290, "DBusMessage", "set_member")
 	if err != nil {
@@ -6813,8 +7591,9 @@ func (v DBusMessage) SetMember(value string) {
 }
 
 // g_dbus_message_set_message_type
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ type1 ] trans: nothing
+//
 func (v DBusMessage) SetMessageType(type1 DBusMessageTypeEnum) {
 	iv, err := _I.Get(291, "DBusMessage", "set_message_type")
 	if err != nil {
@@ -6828,8 +7607,9 @@ func (v DBusMessage) SetMessageType(type1 DBusMessageTypeEnum) {
 }
 
 // g_dbus_message_set_num_unix_fds
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v DBusMessage) SetNumUnixFds(value uint32) {
 	iv, err := _I.Get(292, "DBusMessage", "set_num_unix_fds")
 	if err != nil {
@@ -6843,8 +7623,9 @@ func (v DBusMessage) SetNumUnixFds(value uint32) {
 }
 
 // g_dbus_message_set_path
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v DBusMessage) SetPath(value string) {
 	iv, err := _I.Get(293, "DBusMessage", "set_path")
 	if err != nil {
@@ -6860,8 +7641,9 @@ func (v DBusMessage) SetPath(value string) {
 }
 
 // g_dbus_message_set_reply_serial
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v DBusMessage) SetReplySerial(value uint32) {
 	iv, err := _I.Get(294, "DBusMessage", "set_reply_serial")
 	if err != nil {
@@ -6875,8 +7657,9 @@ func (v DBusMessage) SetReplySerial(value uint32) {
 }
 
 // g_dbus_message_set_sender
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v DBusMessage) SetSender(value string) {
 	iv, err := _I.Get(295, "DBusMessage", "set_sender")
 	if err != nil {
@@ -6892,8 +7675,9 @@ func (v DBusMessage) SetSender(value string) {
 }
 
 // g_dbus_message_set_serial
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ serial ] trans: nothing
+//
 func (v DBusMessage) SetSerial(serial uint32) {
 	iv, err := _I.Get(296, "DBusMessage", "set_serial")
 	if err != nil {
@@ -6907,8 +7691,9 @@ func (v DBusMessage) SetSerial(serial uint32) {
 }
 
 // g_dbus_message_set_signature
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v DBusMessage) SetSignature(value string) {
 	iv, err := _I.Get(297, "DBusMessage", "set_signature")
 	if err != nil {
@@ -6924,8 +7709,9 @@ func (v DBusMessage) SetSignature(value string) {
 }
 
 // g_dbus_message_set_unix_fd_list
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ fd_list ] trans: nothing
+//
 func (v DBusMessage) SetUnixFdList(fd_list IUnixFDList) {
 	iv, err := _I.Get(298, "DBusMessage", "set_unix_fd_list")
 	if err != nil {
@@ -6943,9 +7729,13 @@ func (v DBusMessage) SetUnixFdList(fd_list IUnixFDList) {
 }
 
 // g_dbus_message_to_blob
-// container is not nil, container is DBusMessage
-// is method
-// ret lenArgIdx 0
+//
+// [ out_size ] trans: everything, dir: out
+//
+// [ capabilities ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusMessage) ToBlob(capabilities DBusCapabilityFlags) (result gi.Uint8Array, err error) {
 	iv, err := _I.Get(299, "DBusMessage", "to_blob")
 	if err != nil {
@@ -6968,8 +7758,9 @@ func (v DBusMessage) ToBlob(capabilities DBusCapabilityFlags) (result gi.Uint8Ar
 }
 
 // g_dbus_message_to_gerror
-// container is not nil, container is DBusMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMessage) ToGerror() (result bool, err error) {
 	iv, err := _I.Get(300, "DBusMessage", "to_gerror")
 	if err != nil {
@@ -7085,8 +7876,9 @@ func DBusMethodInfoGetType() gi.GType {
 }
 
 // g_dbus_method_info_ref
-// container is not nil, container is DBusMethodInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusMethodInfo) Ref() (result DBusMethodInfo) {
 	iv, err := _I.Get(301, "DBusMethodInfo", "ref")
 	if err != nil {
@@ -7102,8 +7894,7 @@ func (v DBusMethodInfo) Ref() (result DBusMethodInfo) {
 }
 
 // g_dbus_method_info_unref
-// container is not nil, container is DBusMethodInfo
-// is method
+//
 func (v DBusMethodInfo) Unref() {
 	iv, err := _I.Get(302, "DBusMethodInfo", "unref")
 	if err != nil {
@@ -7131,8 +7922,9 @@ func DBusMethodInvocationGetType() gi.GType {
 }
 
 // g_dbus_method_invocation_get_connection
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMethodInvocation) GetConnection() (result DBusConnection) {
 	iv, err := _I.Get(303, "DBusMethodInvocation", "get_connection")
 	if err != nil {
@@ -7148,8 +7940,9 @@ func (v DBusMethodInvocation) GetConnection() (result DBusConnection) {
 }
 
 // g_dbus_method_invocation_get_interface_name
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMethodInvocation) GetInterfaceName() (result string) {
 	iv, err := _I.Get(304, "DBusMethodInvocation", "get_interface_name")
 	if err != nil {
@@ -7160,13 +7953,14 @@ func (v DBusMethodInvocation) GetInterfaceName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_method_invocation_get_message
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMethodInvocation) GetMessage() (result DBusMessage) {
 	iv, err := _I.Get(305, "DBusMethodInvocation", "get_message")
 	if err != nil {
@@ -7182,8 +7976,9 @@ func (v DBusMethodInvocation) GetMessage() (result DBusMessage) {
 }
 
 // g_dbus_method_invocation_get_method_info
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMethodInvocation) GetMethodInfo() (result DBusMethodInfo) {
 	iv, err := _I.Get(306, "DBusMethodInvocation", "get_method_info")
 	if err != nil {
@@ -7199,8 +7994,9 @@ func (v DBusMethodInvocation) GetMethodInfo() (result DBusMethodInfo) {
 }
 
 // g_dbus_method_invocation_get_method_name
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMethodInvocation) GetMethodName() (result string) {
 	iv, err := _I.Get(307, "DBusMethodInvocation", "get_method_name")
 	if err != nil {
@@ -7211,13 +8007,14 @@ func (v DBusMethodInvocation) GetMethodName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_method_invocation_get_object_path
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMethodInvocation) GetObjectPath() (result string) {
 	iv, err := _I.Get(308, "DBusMethodInvocation", "get_object_path")
 	if err != nil {
@@ -7228,13 +8025,14 @@ func (v DBusMethodInvocation) GetObjectPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_method_invocation_get_parameters
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMethodInvocation) GetParameters() (result glib.Variant) {
 	iv, err := _I.Get(309, "DBusMethodInvocation", "get_parameters")
 	if err != nil {
@@ -7250,8 +8048,9 @@ func (v DBusMethodInvocation) GetParameters() (result glib.Variant) {
 }
 
 // g_dbus_method_invocation_get_property_info
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMethodInvocation) GetPropertyInfo() (result DBusPropertyInfo) {
 	iv, err := _I.Get(310, "DBusMethodInvocation", "get_property_info")
 	if err != nil {
@@ -7267,8 +8066,9 @@ func (v DBusMethodInvocation) GetPropertyInfo() (result DBusPropertyInfo) {
 }
 
 // g_dbus_method_invocation_get_sender
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusMethodInvocation) GetSender() (result string) {
 	iv, err := _I.Get(311, "DBusMethodInvocation", "get_sender")
 	if err != nil {
@@ -7279,13 +8079,16 @@ func (v DBusMethodInvocation) GetSender() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_method_invocation_return_dbus_error
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ error_name ] trans: nothing
+//
+// [ error_message ] trans: nothing
+//
 func (v DBusMethodInvocation) ReturnDbusError(error_name string, error_message string) {
 	iv, err := _I.Get(312, "DBusMethodInvocation", "return_dbus_error")
 	if err != nil {
@@ -7304,8 +8107,13 @@ func (v DBusMethodInvocation) ReturnDbusError(error_name string, error_message s
 }
 
 // g_dbus_method_invocation_return_error_literal
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ domain ] trans: nothing
+//
+// [ code ] trans: nothing
+//
+// [ message ] trans: nothing
+//
 func (v DBusMethodInvocation) ReturnErrorLiteral(domain uint32, code int32, message string) {
 	iv, err := _I.Get(313, "DBusMethodInvocation", "return_error_literal")
 	if err != nil {
@@ -7323,8 +8131,9 @@ func (v DBusMethodInvocation) ReturnErrorLiteral(domain uint32, code int32, mess
 }
 
 // g_dbus_method_invocation_return_gerror
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ error ] trans: nothing
+//
 func (v DBusMethodInvocation) ReturnGerror(error glib.Error) {
 	iv, err := _I.Get(314, "DBusMethodInvocation", "return_gerror")
 	if err != nil {
@@ -7338,8 +8147,9 @@ func (v DBusMethodInvocation) ReturnGerror(error glib.Error) {
 }
 
 // g_dbus_method_invocation_return_value
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ parameters ] trans: nothing
+//
 func (v DBusMethodInvocation) ReturnValue(parameters glib.Variant) {
 	iv, err := _I.Get(315, "DBusMethodInvocation", "return_value")
 	if err != nil {
@@ -7353,8 +8163,11 @@ func (v DBusMethodInvocation) ReturnValue(parameters glib.Variant) {
 }
 
 // g_dbus_method_invocation_return_value_with_unix_fd_list
-// container is not nil, container is DBusMethodInvocation
-// is method
+//
+// [ parameters ] trans: nothing
+//
+// [ fd_list ] trans: nothing
+//
 func (v DBusMethodInvocation) ReturnValueWithUnixFdList(parameters glib.Variant, fd_list IUnixFDList) {
 	iv, err := _I.Get(316, "DBusMethodInvocation", "return_value_with_unix_fd_list")
 	if err != nil {
@@ -7385,8 +8198,11 @@ func DBusNodeInfoGetType() gi.GType {
 }
 
 // g_dbus_node_info_new_for_xml
-// container is not nil, container is DBusNodeInfo
-// is constructor
+//
+// [ xml_data ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusNodeInfoForXml(xml_data string) (result DBusNodeInfo, err error) {
 	iv, err := _I.Get(317, "DBusNodeInfo", "new_for_xml")
 	if err != nil {
@@ -7406,8 +8222,11 @@ func NewDBusNodeInfoForXml(xml_data string) (result DBusNodeInfo, err error) {
 }
 
 // g_dbus_node_info_generate_xml
-// container is not nil, container is DBusNodeInfo
-// is method
+//
+// [ indent ] trans: nothing
+//
+// [ string_builder ] trans: nothing
+//
 func (v DBusNodeInfo) GenerateXml(indent uint32, string_builder glib.String) {
 	iv, err := _I.Get(318, "DBusNodeInfo", "generate_xml")
 	if err != nil {
@@ -7422,8 +8241,11 @@ func (v DBusNodeInfo) GenerateXml(indent uint32, string_builder glib.String) {
 }
 
 // g_dbus_node_info_lookup_interface
-// container is not nil, container is DBusNodeInfo
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusNodeInfo) LookupInterface(name string) (result DBusInterfaceInfo) {
 	iv, err := _I.Get(319, "DBusNodeInfo", "lookup_interface")
 	if err != nil {
@@ -7442,8 +8264,9 @@ func (v DBusNodeInfo) LookupInterface(name string) (result DBusInterfaceInfo) {
 }
 
 // g_dbus_node_info_ref
-// container is not nil, container is DBusNodeInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusNodeInfo) Ref() (result DBusNodeInfo) {
 	iv, err := _I.Get(320, "DBusNodeInfo", "ref")
 	if err != nil {
@@ -7459,8 +8282,7 @@ func (v DBusNodeInfo) Ref() (result DBusNodeInfo) {
 }
 
 // g_dbus_node_info_unref
-// container is not nil, container is DBusNodeInfo
-// is method
+//
 func (v DBusNodeInfo) Unref() {
 	iv, err := _I.Get(321, "DBusNodeInfo", "unref")
 	if err != nil {
@@ -7487,8 +8309,11 @@ func DBusObjectGetType() gi.GType {
 }
 
 // g_dbus_object_get_interface
-// container is not nil, container is DBusObject
-// is method
+//
+// [ interface_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *DBusObjectIfc) GetInterface(interface_name string) (result DBusInterface) {
 	iv, err := _I.Get(322, "DBusObject", "get_interface")
 	if err != nil {
@@ -7507,8 +8332,9 @@ func (v *DBusObjectIfc) GetInterface(interface_name string) (result DBusInterfac
 }
 
 // g_dbus_object_get_interfaces
-// container is not nil, container is DBusObject
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *DBusObjectIfc) GetInterfaces() (result glib.List) {
 	iv, err := _I.Get(323, "DBusObject", "get_interfaces")
 	if err != nil {
@@ -7524,8 +8350,9 @@ func (v *DBusObjectIfc) GetInterfaces() (result glib.List) {
 }
 
 // g_dbus_object_get_object_path
-// container is not nil, container is DBusObject
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DBusObjectIfc) GetObjectPath() (result string) {
 	iv, err := _I.Get(324, "DBusObject", "get_object_path")
 	if err != nil {
@@ -7536,7 +8363,7 @@ func (v *DBusObjectIfc) GetObjectPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
@@ -7556,8 +8383,13 @@ func DBusObjectManagerGetType() gi.GType {
 }
 
 // g_dbus_object_manager_get_interface
-// container is not nil, container is DBusObjectManager
-// is method
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *DBusObjectManagerIfc) GetInterface(object_path string, interface_name string) (result DBusInterface) {
 	iv, err := _I.Get(325, "DBusObjectManager", "get_interface")
 	if err != nil {
@@ -7579,8 +8411,11 @@ func (v *DBusObjectManagerIfc) GetInterface(object_path string, interface_name s
 }
 
 // g_dbus_object_manager_get_object
-// container is not nil, container is DBusObjectManager
-// is method
+//
+// [ object_path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *DBusObjectManagerIfc) GetObject(object_path string) (result DBusObject) {
 	iv, err := _I.Get(326, "DBusObjectManager", "get_object")
 	if err != nil {
@@ -7599,8 +8434,9 @@ func (v *DBusObjectManagerIfc) GetObject(object_path string) (result DBusObject)
 }
 
 // g_dbus_object_manager_get_object_path
-// container is not nil, container is DBusObjectManager
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DBusObjectManagerIfc) GetObjectPath() (result string) {
 	iv, err := _I.Get(327, "DBusObjectManager", "get_object_path")
 	if err != nil {
@@ -7611,13 +8447,14 @@ func (v *DBusObjectManagerIfc) GetObjectPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_object_manager_get_objects
-// container is not nil, container is DBusObjectManager
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *DBusObjectManagerIfc) GetObjects() (result glib.List) {
 	iv, err := _I.Get(328, "DBusObjectManager", "get_objects")
 	if err != nil {
@@ -7654,8 +8491,11 @@ func DBusObjectManagerClientGetType() gi.GType {
 }
 
 // g_dbus_object_manager_client_new_finish
-// container is not nil, container is DBusObjectManagerClient
-// is constructor
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusObjectManagerClientFinish(res IAsyncResult) (result DBusObjectManagerClient, err error) {
 	iv, err := _I.Get(329, "DBusObjectManagerClient", "new_finish")
 	if err != nil {
@@ -7677,8 +8517,11 @@ func NewDBusObjectManagerClientFinish(res IAsyncResult) (result DBusObjectManage
 }
 
 // g_dbus_object_manager_client_new_for_bus_finish
-// container is not nil, container is DBusObjectManagerClient
-// is constructor
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusObjectManagerClientForBusFinish(res IAsyncResult) (result DBusObjectManagerClient, err error) {
 	iv, err := _I.Get(330, "DBusObjectManagerClient", "new_for_bus_finish")
 	if err != nil {
@@ -7700,8 +8543,25 @@ func NewDBusObjectManagerClientForBusFinish(res IAsyncResult) (result DBusObject
 }
 
 // g_dbus_object_manager_client_new_for_bus_sync
-// container is not nil, container is DBusObjectManagerClient
-// is constructor
+//
+// [ bus_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ get_proxy_type_func ] trans: nothing
+//
+// [ get_proxy_type_user_data ] trans: nothing
+//
+// [ get_proxy_type_destroy_notify ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusObjectManagerClientForBusSync(bus_type BusTypeEnum, flags DBusObjectManagerClientFlags, name string, object_path string, get_proxy_type_func int /*TODO_TYPE CALLBACK*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE CALLBACK*/, cancellable ICancellable) (result DBusObjectManagerClient, err error) {
 	iv, err := _I.Get(331, "DBusObjectManagerClient", "new_for_bus_sync")
 	if err != nil {
@@ -7734,8 +8594,25 @@ func NewDBusObjectManagerClientForBusSync(bus_type BusTypeEnum, flags DBusObject
 }
 
 // g_dbus_object_manager_client_new_sync
-// container is not nil, container is DBusObjectManagerClient
-// is constructor
+//
+// [ connection ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ get_proxy_type_func ] trans: nothing
+//
+// [ get_proxy_type_user_data ] trans: nothing
+//
+// [ get_proxy_type_destroy_notify ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusObjectManagerClientSync(connection IDBusConnection, flags DBusObjectManagerClientFlags, name string, object_path string, get_proxy_type_func int /*TODO_TYPE CALLBACK*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE CALLBACK*/, cancellable ICancellable) (result DBusObjectManagerClient, err error) {
 	iv, err := _I.Get(332, "DBusObjectManagerClient", "new_sync")
 	if err != nil {
@@ -7772,9 +8649,27 @@ func NewDBusObjectManagerClientSync(connection IDBusConnection, flags DBusObject
 }
 
 // g_dbus_object_manager_client_new
-// container is not nil, container is DBusObjectManagerClient
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ connection ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ get_proxy_type_func ] trans: nothing
+//
+// [ get_proxy_type_user_data ] trans: nothing
+//
+// [ get_proxy_type_destroy_notify ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func DBusObjectManagerClientNew1(connection IDBusConnection, flags DBusObjectManagerClientFlags, name string, object_path string, get_proxy_type_func int /*TODO_TYPE CALLBACK*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE CALLBACK*/, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(333, "DBusObjectManagerClient", "new")
 	if err != nil {
@@ -7808,9 +8703,27 @@ func DBusObjectManagerClientNew1(connection IDBusConnection, flags DBusObjectMan
 }
 
 // g_dbus_object_manager_client_new_for_bus
-// container is not nil, container is DBusObjectManagerClient
-// is method
-// arg0Type tag: interface, isPtr: false
+//
+// [ bus_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ get_proxy_type_func ] trans: nothing
+//
+// [ get_proxy_type_user_data ] trans: nothing
+//
+// [ get_proxy_type_destroy_notify ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func DBusObjectManagerClientNewForBus1(bus_type BusTypeEnum, flags DBusObjectManagerClientFlags, name string, object_path string, get_proxy_type_func int /*TODO_TYPE CALLBACK*/, get_proxy_type_user_data unsafe.Pointer, get_proxy_type_destroy_notify int /*TODO_TYPE CALLBACK*/, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(334, "DBusObjectManagerClient", "new_for_bus")
 	if err != nil {
@@ -7840,8 +8753,9 @@ func DBusObjectManagerClientNewForBus1(bus_type BusTypeEnum, flags DBusObjectMan
 }
 
 // g_dbus_object_manager_client_get_connection
-// container is not nil, container is DBusObjectManagerClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusObjectManagerClient) GetConnection() (result DBusConnection) {
 	iv, err := _I.Get(335, "DBusObjectManagerClient", "get_connection")
 	if err != nil {
@@ -7857,8 +8771,9 @@ func (v DBusObjectManagerClient) GetConnection() (result DBusConnection) {
 }
 
 // g_dbus_object_manager_client_get_flags
-// container is not nil, container is DBusObjectManagerClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusObjectManagerClient) GetFlags() (result DBusObjectManagerClientFlags) {
 	iv, err := _I.Get(336, "DBusObjectManagerClient", "get_flags")
 	if err != nil {
@@ -7874,8 +8789,9 @@ func (v DBusObjectManagerClient) GetFlags() (result DBusObjectManagerClientFlags
 }
 
 // g_dbus_object_manager_client_get_name
-// container is not nil, container is DBusObjectManagerClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusObjectManagerClient) GetName() (result string) {
 	iv, err := _I.Get(337, "DBusObjectManagerClient", "get_name")
 	if err != nil {
@@ -7886,13 +8802,14 @@ func (v DBusObjectManagerClient) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_object_manager_client_get_name_owner
-// container is not nil, container is DBusObjectManagerClient
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusObjectManagerClient) GetNameOwner() (result string) {
 	iv, err := _I.Get(338, "DBusObjectManagerClient", "get_name_owner")
 	if err != nil {
@@ -7950,8 +8867,11 @@ func DBusObjectManagerServerGetType() gi.GType {
 }
 
 // g_dbus_object_manager_server_new
-// container is not nil, container is DBusObjectManagerServer
-// is constructor
+//
+// [ object_path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusObjectManagerServer(object_path string) (result DBusObjectManagerServer) {
 	iv, err := _I.Get(339, "DBusObjectManagerServer", "new")
 	if err != nil {
@@ -7969,8 +8889,9 @@ func NewDBusObjectManagerServer(object_path string) (result DBusObjectManagerSer
 }
 
 // g_dbus_object_manager_server_export
-// container is not nil, container is DBusObjectManagerServer
-// is method
+//
+// [ object ] trans: nothing
+//
 func (v DBusObjectManagerServer) Export(object IDBusObjectSkeleton) {
 	iv, err := _I.Get(340, "DBusObjectManagerServer", "export")
 	if err != nil {
@@ -7988,8 +8909,9 @@ func (v DBusObjectManagerServer) Export(object IDBusObjectSkeleton) {
 }
 
 // g_dbus_object_manager_server_export_uniquely
-// container is not nil, container is DBusObjectManagerServer
-// is method
+//
+// [ object ] trans: nothing
+//
 func (v DBusObjectManagerServer) ExportUniquely(object IDBusObjectSkeleton) {
 	iv, err := _I.Get(341, "DBusObjectManagerServer", "export_uniquely")
 	if err != nil {
@@ -8007,8 +8929,9 @@ func (v DBusObjectManagerServer) ExportUniquely(object IDBusObjectSkeleton) {
 }
 
 // g_dbus_object_manager_server_get_connection
-// container is not nil, container is DBusObjectManagerServer
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusObjectManagerServer) GetConnection() (result DBusConnection) {
 	iv, err := _I.Get(342, "DBusObjectManagerServer", "get_connection")
 	if err != nil {
@@ -8024,8 +8947,11 @@ func (v DBusObjectManagerServer) GetConnection() (result DBusConnection) {
 }
 
 // g_dbus_object_manager_server_is_exported
-// container is not nil, container is DBusObjectManagerServer
-// is method
+//
+// [ object ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusObjectManagerServer) IsExported(object IDBusObjectSkeleton) (result bool) {
 	iv, err := _I.Get(343, "DBusObjectManagerServer", "is_exported")
 	if err != nil {
@@ -8046,8 +8972,9 @@ func (v DBusObjectManagerServer) IsExported(object IDBusObjectSkeleton) (result 
 }
 
 // g_dbus_object_manager_server_set_connection
-// container is not nil, container is DBusObjectManagerServer
-// is method
+//
+// [ connection ] trans: nothing
+//
 func (v DBusObjectManagerServer) SetConnection(connection IDBusConnection) {
 	iv, err := _I.Get(344, "DBusObjectManagerServer", "set_connection")
 	if err != nil {
@@ -8065,8 +8992,11 @@ func (v DBusObjectManagerServer) SetConnection(connection IDBusConnection) {
 }
 
 // g_dbus_object_manager_server_unexport
-// container is not nil, container is DBusObjectManagerServer
-// is method
+//
+// [ object_path ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DBusObjectManagerServer) Unexport(object_path string) (result bool) {
 	iv, err := _I.Get(345, "DBusObjectManagerServer", "unexport")
 	if err != nil {
@@ -8113,8 +9043,13 @@ func DBusObjectProxyGetType() gi.GType {
 }
 
 // g_dbus_object_proxy_new
-// container is not nil, container is DBusObjectProxy
-// is constructor
+//
+// [ connection ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusObjectProxy(connection IDBusConnection, object_path string) (result DBusObjectProxy) {
 	iv, err := _I.Get(346, "DBusObjectProxy", "new")
 	if err != nil {
@@ -8137,8 +9072,9 @@ func NewDBusObjectProxy(connection IDBusConnection, object_path string) (result 
 }
 
 // g_dbus_object_proxy_get_connection
-// container is not nil, container is DBusObjectProxy
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusObjectProxy) GetConnection() (result DBusConnection) {
 	iv, err := _I.Get(347, "DBusObjectProxy", "get_connection")
 	if err != nil {
@@ -8182,8 +9118,11 @@ func DBusObjectSkeletonGetType() gi.GType {
 }
 
 // g_dbus_object_skeleton_new
-// container is not nil, container is DBusObjectSkeleton
-// is constructor
+//
+// [ object_path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusObjectSkeleton(object_path string) (result DBusObjectSkeleton) {
 	iv, err := _I.Get(348, "DBusObjectSkeleton", "new")
 	if err != nil {
@@ -8201,8 +9140,9 @@ func NewDBusObjectSkeleton(object_path string) (result DBusObjectSkeleton) {
 }
 
 // g_dbus_object_skeleton_add_interface
-// container is not nil, container is DBusObjectSkeleton
-// is method
+//
+// [ interface_ ] trans: nothing
+//
 func (v DBusObjectSkeleton) AddInterface(interface_ IDBusInterfaceSkeleton) {
 	iv, err := _I.Get(349, "DBusObjectSkeleton", "add_interface")
 	if err != nil {
@@ -8220,8 +9160,7 @@ func (v DBusObjectSkeleton) AddInterface(interface_ IDBusInterfaceSkeleton) {
 }
 
 // g_dbus_object_skeleton_flush
-// container is not nil, container is DBusObjectSkeleton
-// is method
+//
 func (v DBusObjectSkeleton) Flush() {
 	iv, err := _I.Get(350, "DBusObjectSkeleton", "flush")
 	if err != nil {
@@ -8234,8 +9173,9 @@ func (v DBusObjectSkeleton) Flush() {
 }
 
 // g_dbus_object_skeleton_remove_interface
-// container is not nil, container is DBusObjectSkeleton
-// is method
+//
+// [ interface_ ] trans: nothing
+//
 func (v DBusObjectSkeleton) RemoveInterface(interface_ IDBusInterfaceSkeleton) {
 	iv, err := _I.Get(351, "DBusObjectSkeleton", "remove_interface")
 	if err != nil {
@@ -8253,8 +9193,9 @@ func (v DBusObjectSkeleton) RemoveInterface(interface_ IDBusInterfaceSkeleton) {
 }
 
 // g_dbus_object_skeleton_remove_interface_by_name
-// container is not nil, container is DBusObjectSkeleton
-// is method
+//
+// [ interface_name ] trans: nothing
+//
 func (v DBusObjectSkeleton) RemoveInterfaceByName(interface_name string) {
 	iv, err := _I.Get(352, "DBusObjectSkeleton", "remove_interface_by_name")
 	if err != nil {
@@ -8270,8 +9211,9 @@ func (v DBusObjectSkeleton) RemoveInterfaceByName(interface_name string) {
 }
 
 // g_dbus_object_skeleton_set_object_path
-// container is not nil, container is DBusObjectSkeleton
-// is method
+//
+// [ object_path ] trans: nothing
+//
 func (v DBusObjectSkeleton) SetObjectPath(object_path string) {
 	iv, err := _I.Get(353, "DBusObjectSkeleton", "set_object_path")
 	if err != nil {
@@ -8310,8 +9252,9 @@ func DBusPropertyInfoGetType() gi.GType {
 }
 
 // g_dbus_property_info_ref
-// container is not nil, container is DBusPropertyInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusPropertyInfo) Ref() (result DBusPropertyInfo) {
 	iv, err := _I.Get(354, "DBusPropertyInfo", "ref")
 	if err != nil {
@@ -8327,8 +9270,7 @@ func (v DBusPropertyInfo) Ref() (result DBusPropertyInfo) {
 }
 
 // g_dbus_property_info_unref
-// container is not nil, container is DBusPropertyInfo
-// is method
+//
 func (v DBusPropertyInfo) Unref() {
 	iv, err := _I.Get(355, "DBusPropertyInfo", "unref")
 	if err != nil {
@@ -8376,8 +9318,11 @@ func DBusProxyGetType() gi.GType {
 }
 
 // g_dbus_proxy_new_finish
-// container is not nil, container is DBusProxy
-// is constructor
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusProxyFinish(res IAsyncResult) (result DBusProxy, err error) {
 	iv, err := _I.Get(356, "DBusProxy", "new_finish")
 	if err != nil {
@@ -8399,8 +9344,11 @@ func NewDBusProxyFinish(res IAsyncResult) (result DBusProxy, err error) {
 }
 
 // g_dbus_proxy_new_for_bus_finish
-// container is not nil, container is DBusProxy
-// is constructor
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusProxyForBusFinish(res IAsyncResult) (result DBusProxy, err error) {
 	iv, err := _I.Get(357, "DBusProxy", "new_for_bus_finish")
 	if err != nil {
@@ -8422,8 +9370,23 @@ func NewDBusProxyForBusFinish(res IAsyncResult) (result DBusProxy, err error) {
 }
 
 // g_dbus_proxy_new_for_bus_sync
-// container is not nil, container is DBusProxy
-// is constructor
+//
+// [ bus_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ info ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusProxyForBusSync(bus_type BusTypeEnum, flags DBusProxyFlags, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable ICancellable) (result DBusProxy, err error) {
 	iv, err := _I.Get(358, "DBusProxy", "new_for_bus_sync")
 	if err != nil {
@@ -8457,8 +9420,23 @@ func NewDBusProxyForBusSync(bus_type BusTypeEnum, flags DBusProxyFlags, info DBu
 }
 
 // g_dbus_proxy_new_sync
-// container is not nil, container is DBusProxy
-// is constructor
+//
+// [ connection ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ info ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusProxySync(connection IDBusConnection, flags DBusProxyFlags, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable ICancellable) (result DBusProxy, err error) {
 	iv, err := _I.Get(359, "DBusProxy", "new_sync")
 	if err != nil {
@@ -8496,9 +9474,25 @@ func NewDBusProxySync(connection IDBusConnection, flags DBusProxyFlags, info DBu
 }
 
 // g_dbus_proxy_new
-// container is not nil, container is DBusProxy
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ connection ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ info ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func DBusProxyNew1(connection IDBusConnection, flags DBusProxyFlags, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(360, "DBusProxy", "new")
 	if err != nil {
@@ -8533,9 +9527,25 @@ func DBusProxyNew1(connection IDBusConnection, flags DBusProxyFlags, info DBusIn
 }
 
 // g_dbus_proxy_new_for_bus
-// container is not nil, container is DBusProxy
-// is method
-// arg0Type tag: interface, isPtr: false
+//
+// [ bus_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ info ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ object_path ] trans: nothing
+//
+// [ interface_name ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func DBusProxyNewForBus1(bus_type BusTypeEnum, flags DBusProxyFlags, info DBusInterfaceInfo, name string, object_path string, interface_name string, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(361, "DBusProxy", "new_for_bus")
 	if err != nil {
@@ -8566,8 +9576,21 @@ func DBusProxyNewForBus1(bus_type BusTypeEnum, flags DBusProxyFlags, info DBusIn
 }
 
 // g_dbus_proxy_call
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ method_name ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout_msec ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v DBusProxy) Call(method_name string, parameters glib.Variant, flags DBusCallFlags, timeout_msec int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(362, "DBusProxy", "call")
 	if err != nil {
@@ -8593,8 +9616,11 @@ func (v DBusProxy) Call(method_name string, parameters glib.Variant, flags DBusC
 }
 
 // g_dbus_proxy_call_finish
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusProxy) CallFinish(res IAsyncResult) (result glib.Variant, err error) {
 	iv, err := _I.Get(363, "DBusProxy", "call_finish")
 	if err != nil {
@@ -8617,8 +9643,19 @@ func (v DBusProxy) CallFinish(res IAsyncResult) (result glib.Variant, err error)
 }
 
 // g_dbus_proxy_call_sync
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ method_name ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout_msec ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusProxy) CallSync(method_name string, parameters glib.Variant, flags DBusCallFlags, timeout_msec int32, cancellable ICancellable) (result glib.Variant, err error) {
 	iv, err := _I.Get(364, "DBusProxy", "call_sync")
 	if err != nil {
@@ -8647,8 +9684,23 @@ func (v DBusProxy) CallSync(method_name string, parameters glib.Variant, flags D
 }
 
 // g_dbus_proxy_call_with_unix_fd_list
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ method_name ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout_msec ] trans: nothing
+//
+// [ fd_list ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v DBusProxy) CallWithUnixFdList(method_name string, parameters glib.Variant, flags DBusCallFlags, timeout_msec int32, fd_list IUnixFDList, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(365, "DBusProxy", "call_with_unix_fd_list")
 	if err != nil {
@@ -8679,8 +9731,13 @@ func (v DBusProxy) CallWithUnixFdList(method_name string, parameters glib.Varian
 }
 
 // g_dbus_proxy_call_with_unix_fd_list_finish
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ out_fd_list ] trans: everything, dir: out
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusProxy) CallWithUnixFdListFinish(res IAsyncResult) (result glib.Variant, out_fd_list UnixFDList, err error) {
 	iv, err := _I.Get(366, "DBusProxy", "call_with_unix_fd_list_finish")
 	if err != nil {
@@ -8705,8 +9762,23 @@ func (v DBusProxy) CallWithUnixFdListFinish(res IAsyncResult) (result glib.Varia
 }
 
 // g_dbus_proxy_call_with_unix_fd_list_sync
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ method_name ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout_msec ] trans: nothing
+//
+// [ fd_list ] trans: nothing
+//
+// [ out_fd_list ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusProxy) CallWithUnixFdListSync(method_name string, parameters glib.Variant, flags DBusCallFlags, timeout_msec int32, fd_list IUnixFDList, cancellable ICancellable) (result glib.Variant, out_fd_list UnixFDList, err error) {
 	iv, err := _I.Get(367, "DBusProxy", "call_with_unix_fd_list_sync")
 	if err != nil {
@@ -8742,8 +9814,11 @@ func (v DBusProxy) CallWithUnixFdListSync(method_name string, parameters glib.Va
 }
 
 // g_dbus_proxy_get_cached_property
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ property_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DBusProxy) GetCachedProperty(property_name string) (result glib.Variant) {
 	iv, err := _I.Get(368, "DBusProxy", "get_cached_property")
 	if err != nil {
@@ -8762,8 +9837,9 @@ func (v DBusProxy) GetCachedProperty(property_name string) (result glib.Variant)
 }
 
 // g_dbus_proxy_get_cached_property_names
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusProxy) GetCachedPropertyNames() (result gi.CStrArray) {
 	iv, err := _I.Get(369, "DBusProxy", "get_cached_property_names")
 	if err != nil {
@@ -8780,8 +9856,9 @@ func (v DBusProxy) GetCachedPropertyNames() (result gi.CStrArray) {
 }
 
 // g_dbus_proxy_get_connection
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusProxy) GetConnection() (result DBusConnection) {
 	iv, err := _I.Get(370, "DBusProxy", "get_connection")
 	if err != nil {
@@ -8797,8 +9874,9 @@ func (v DBusProxy) GetConnection() (result DBusConnection) {
 }
 
 // g_dbus_proxy_get_default_timeout
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusProxy) GetDefaultTimeout() (result int32) {
 	iv, err := _I.Get(371, "DBusProxy", "get_default_timeout")
 	if err != nil {
@@ -8814,8 +9892,9 @@ func (v DBusProxy) GetDefaultTimeout() (result int32) {
 }
 
 // g_dbus_proxy_get_flags
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusProxy) GetFlags() (result DBusProxyFlags) {
 	iv, err := _I.Get(372, "DBusProxy", "get_flags")
 	if err != nil {
@@ -8831,8 +9910,9 @@ func (v DBusProxy) GetFlags() (result DBusProxyFlags) {
 }
 
 // g_dbus_proxy_get_interface_info
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusProxy) GetInterfaceInfo() (result DBusInterfaceInfo) {
 	iv, err := _I.Get(373, "DBusProxy", "get_interface_info")
 	if err != nil {
@@ -8848,8 +9928,9 @@ func (v DBusProxy) GetInterfaceInfo() (result DBusInterfaceInfo) {
 }
 
 // g_dbus_proxy_get_interface_name
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusProxy) GetInterfaceName() (result string) {
 	iv, err := _I.Get(374, "DBusProxy", "get_interface_name")
 	if err != nil {
@@ -8860,13 +9941,14 @@ func (v DBusProxy) GetInterfaceName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_proxy_get_name
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusProxy) GetName() (result string) {
 	iv, err := _I.Get(375, "DBusProxy", "get_name")
 	if err != nil {
@@ -8877,13 +9959,14 @@ func (v DBusProxy) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_proxy_get_name_owner
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusProxy) GetNameOwner() (result string) {
 	iv, err := _I.Get(376, "DBusProxy", "get_name_owner")
 	if err != nil {
@@ -8899,8 +9982,9 @@ func (v DBusProxy) GetNameOwner() (result string) {
 }
 
 // g_dbus_proxy_get_object_path
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusProxy) GetObjectPath() (result string) {
 	iv, err := _I.Get(377, "DBusProxy", "get_object_path")
 	if err != nil {
@@ -8911,13 +9995,16 @@ func (v DBusProxy) GetObjectPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_proxy_set_cached_property
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ property_name ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v DBusProxy) SetCachedProperty(property_name string, value glib.Variant) {
 	iv, err := _I.Get(378, "DBusProxy", "set_cached_property")
 	if err != nil {
@@ -8934,8 +10021,9 @@ func (v DBusProxy) SetCachedProperty(property_name string, value glib.Variant) {
 }
 
 // g_dbus_proxy_set_default_timeout
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ timeout_msec ] trans: nothing
+//
 func (v DBusProxy) SetDefaultTimeout(timeout_msec int32) {
 	iv, err := _I.Get(379, "DBusProxy", "set_default_timeout")
 	if err != nil {
@@ -8949,8 +10037,9 @@ func (v DBusProxy) SetDefaultTimeout(timeout_msec int32) {
 }
 
 // g_dbus_proxy_set_interface_info
-// container is not nil, container is DBusProxy
-// is method
+//
+// [ info ] trans: nothing
+//
 func (v DBusProxy) SetInterfaceInfo(info DBusInterfaceInfo) {
 	iv, err := _I.Get(380, "DBusProxy", "set_interface_info")
 	if err != nil {
@@ -9043,8 +10132,19 @@ func DBusServerGetType() gi.GType {
 }
 
 // g_dbus_server_new_sync
-// container is not nil, container is DBusServer
-// is constructor
+//
+// [ address ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ guid ] trans: nothing
+//
+// [ observer ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDBusServerSync(address string, flags DBusServerFlags, guid string, observer IDBusAuthObserver, cancellable ICancellable) (result DBusServer, err error) {
 	iv, err := _I.Get(381, "DBusServer", "new_sync")
 	if err != nil {
@@ -9078,8 +10178,9 @@ func NewDBusServerSync(address string, flags DBusServerFlags, guid string, obser
 }
 
 // g_dbus_server_get_client_address
-// container is not nil, container is DBusServer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusServer) GetClientAddress() (result string) {
 	iv, err := _I.Get(382, "DBusServer", "get_client_address")
 	if err != nil {
@@ -9090,13 +10191,14 @@ func (v DBusServer) GetClientAddress() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_server_get_flags
-// container is not nil, container is DBusServer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusServer) GetFlags() (result DBusServerFlags) {
 	iv, err := _I.Get(383, "DBusServer", "get_flags")
 	if err != nil {
@@ -9112,8 +10214,9 @@ func (v DBusServer) GetFlags() (result DBusServerFlags) {
 }
 
 // g_dbus_server_get_guid
-// container is not nil, container is DBusServer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusServer) GetGuid() (result string) {
 	iv, err := _I.Get(384, "DBusServer", "get_guid")
 	if err != nil {
@@ -9124,13 +10227,14 @@ func (v DBusServer) GetGuid() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_server_is_active
-// container is not nil, container is DBusServer
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DBusServer) IsActive() (result bool) {
 	iv, err := _I.Get(385, "DBusServer", "is_active")
 	if err != nil {
@@ -9146,8 +10250,7 @@ func (v DBusServer) IsActive() (result bool) {
 }
 
 // g_dbus_server_start
-// container is not nil, container is DBusServer
-// is method
+//
 func (v DBusServer) Start() {
 	iv, err := _I.Get(386, "DBusServer", "start")
 	if err != nil {
@@ -9160,8 +10263,7 @@ func (v DBusServer) Start() {
 }
 
 // g_dbus_server_stop
-// container is not nil, container is DBusServer
-// is method
+//
 func (v DBusServer) Stop() {
 	iv, err := _I.Get(387, "DBusServer", "stop")
 	if err != nil {
@@ -9242,8 +10344,9 @@ func DBusSignalInfoGetType() gi.GType {
 }
 
 // g_dbus_signal_info_ref
-// container is not nil, container is DBusSignalInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DBusSignalInfo) Ref() (result DBusSignalInfo) {
 	iv, err := _I.Get(388, "DBusSignalInfo", "ref")
 	if err != nil {
@@ -9259,8 +10362,7 @@ func (v DBusSignalInfo) Ref() (result DBusSignalInfo) {
 }
 
 // g_dbus_signal_info_unref
-// container is not nil, container is DBusSignalInfo
-// is method
+//
 func (v DBusSignalInfo) Unref() {
 	iv, err := _I.Get(389, "DBusSignalInfo", "unref")
 	if err != nil {
@@ -9365,8 +10467,11 @@ func DataInputStreamGetType() gi.GType {
 }
 
 // g_data_input_stream_new
-// container is not nil, container is DataInputStream
-// is constructor
+//
+// [ base_stream ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDataInputStream(base_stream IInputStream) (result DataInputStream) {
 	iv, err := _I.Get(390, "DataInputStream", "new")
 	if err != nil {
@@ -9386,8 +10491,9 @@ func NewDataInputStream(base_stream IInputStream) (result DataInputStream) {
 }
 
 // g_data_input_stream_get_byte_order
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DataInputStream) GetByteOrder() (result DataStreamByteOrderEnum) {
 	iv, err := _I.Get(391, "DataInputStream", "get_byte_order")
 	if err != nil {
@@ -9403,8 +10509,9 @@ func (v DataInputStream) GetByteOrder() (result DataStreamByteOrderEnum) {
 }
 
 // g_data_input_stream_get_newline_type
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DataInputStream) GetNewlineType() (result DataStreamNewlineTypeEnum) {
 	iv, err := _I.Get(392, "DataInputStream", "get_newline_type")
 	if err != nil {
@@ -9420,8 +10527,11 @@ func (v DataInputStream) GetNewlineType() (result DataStreamNewlineTypeEnum) {
 }
 
 // g_data_input_stream_read_byte
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataInputStream) ReadByte(cancellable ICancellable) (result uint8, err error) {
 	iv, err := _I.Get(393, "DataInputStream", "read_byte")
 	if err != nil {
@@ -9444,8 +10554,11 @@ func (v DataInputStream) ReadByte(cancellable ICancellable) (result uint8, err e
 }
 
 // g_data_input_stream_read_int16
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataInputStream) ReadInt16(cancellable ICancellable) (result int16, err error) {
 	iv, err := _I.Get(394, "DataInputStream", "read_int16")
 	if err != nil {
@@ -9468,8 +10581,11 @@ func (v DataInputStream) ReadInt16(cancellable ICancellable) (result int16, err 
 }
 
 // g_data_input_stream_read_int32
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataInputStream) ReadInt32(cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(395, "DataInputStream", "read_int32")
 	if err != nil {
@@ -9492,8 +10608,11 @@ func (v DataInputStream) ReadInt32(cancellable ICancellable) (result int32, err 
 }
 
 // g_data_input_stream_read_int64
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataInputStream) ReadInt64(cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(396, "DataInputStream", "read_int64")
 	if err != nil {
@@ -9516,8 +10635,13 @@ func (v DataInputStream) ReadInt64(cancellable ICancellable) (result int64, err 
 }
 
 // g_data_input_stream_read_line
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ length ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DataInputStream) ReadLine(cancellable ICancellable) (result gi.Uint8Array, length uint64, err error) {
 	iv, err := _I.Get(397, "DataInputStream", "read_line")
 	if err != nil {
@@ -9542,8 +10666,15 @@ func (v DataInputStream) ReadLine(cancellable ICancellable) (result gi.Uint8Arra
 }
 
 // g_data_input_stream_read_line_async
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v DataInputStream) ReadLineAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(398, "DataInputStream", "read_line_async")
 	if err != nil {
@@ -9564,8 +10695,13 @@ func (v DataInputStream) ReadLineAsync(io_priority int32, cancellable ICancellab
 }
 
 // g_data_input_stream_read_line_finish
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result1 ] trans: everything
+//
 func (v DataInputStream) ReadLineFinish(result IAsyncResult) (result1 gi.Uint8Array, length uint64, err error) {
 	iv, err := _I.Get(399, "DataInputStream", "read_line_finish")
 	if err != nil {
@@ -9590,8 +10726,13 @@ func (v DataInputStream) ReadLineFinish(result IAsyncResult) (result1 gi.Uint8Ar
 }
 
 // g_data_input_stream_read_line_finish_utf8
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result1 ] trans: everything
+//
 func (v DataInputStream) ReadLineFinishUtf8(result IAsyncResult) (result1 string, length uint64, err error) {
 	iv, err := _I.Get(400, "DataInputStream", "read_line_finish_utf8")
 	if err != nil {
@@ -9616,8 +10757,13 @@ func (v DataInputStream) ReadLineFinishUtf8(result IAsyncResult) (result1 string
 }
 
 // g_data_input_stream_read_line_utf8
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ length ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DataInputStream) ReadLineUtf8(cancellable ICancellable) (result string, length uint64, err error) {
 	iv, err := _I.Get(401, "DataInputStream", "read_line_utf8")
 	if err != nil {
@@ -9642,8 +10788,11 @@ func (v DataInputStream) ReadLineUtf8(cancellable ICancellable) (result string, 
 }
 
 // g_data_input_stream_read_uint16
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataInputStream) ReadUint16(cancellable ICancellable) (result uint16, err error) {
 	iv, err := _I.Get(402, "DataInputStream", "read_uint16")
 	if err != nil {
@@ -9666,8 +10815,11 @@ func (v DataInputStream) ReadUint16(cancellable ICancellable) (result uint16, er
 }
 
 // g_data_input_stream_read_uint32
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataInputStream) ReadUint32(cancellable ICancellable) (result uint32, err error) {
 	iv, err := _I.Get(403, "DataInputStream", "read_uint32")
 	if err != nil {
@@ -9690,8 +10842,11 @@ func (v DataInputStream) ReadUint32(cancellable ICancellable) (result uint32, er
 }
 
 // g_data_input_stream_read_uint64
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataInputStream) ReadUint64(cancellable ICancellable) (result uint64, err error) {
 	iv, err := _I.Get(404, "DataInputStream", "read_uint64")
 	if err != nil {
@@ -9714,8 +10869,15 @@ func (v DataInputStream) ReadUint64(cancellable ICancellable) (result uint64, er
 }
 
 // g_data_input_stream_read_until
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ stop_chars ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DataInputStream) ReadUntil(stop_chars string, cancellable ICancellable) (result string, length uint64, err error) {
 	iv, err := _I.Get(405, "DataInputStream", "read_until")
 	if err != nil {
@@ -9743,8 +10905,17 @@ func (v DataInputStream) ReadUntil(stop_chars string, cancellable ICancellable) 
 }
 
 // g_data_input_stream_read_until_async
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ stop_chars ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v DataInputStream) ReadUntilAsync(stop_chars string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(406, "DataInputStream", "read_until_async")
 	if err != nil {
@@ -9768,8 +10939,13 @@ func (v DataInputStream) ReadUntilAsync(stop_chars string, io_priority int32, ca
 }
 
 // g_data_input_stream_read_until_finish
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result1 ] trans: everything
+//
 func (v DataInputStream) ReadUntilFinish(result IAsyncResult) (result1 string, length uint64, err error) {
 	iv, err := _I.Get(407, "DataInputStream", "read_until_finish")
 	if err != nil {
@@ -9794,8 +10970,17 @@ func (v DataInputStream) ReadUntilFinish(result IAsyncResult) (result1 string, l
 }
 
 // g_data_input_stream_read_upto
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ stop_chars ] trans: nothing
+//
+// [ stop_chars_len ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DataInputStream) ReadUpto(stop_chars string, stop_chars_len int64, cancellable ICancellable) (result string, length uint64, err error) {
 	iv, err := _I.Get(408, "DataInputStream", "read_upto")
 	if err != nil {
@@ -9824,8 +11009,19 @@ func (v DataInputStream) ReadUpto(stop_chars string, stop_chars_len int64, cance
 }
 
 // g_data_input_stream_read_upto_async
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ stop_chars ] trans: nothing
+//
+// [ stop_chars_len ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v DataInputStream) ReadUptoAsync(stop_chars string, stop_chars_len int64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(409, "DataInputStream", "read_upto_async")
 	if err != nil {
@@ -9850,8 +11046,13 @@ func (v DataInputStream) ReadUptoAsync(stop_chars string, stop_chars_len int64, 
 }
 
 // g_data_input_stream_read_upto_finish
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result1 ] trans: everything
+//
 func (v DataInputStream) ReadUptoFinish(result IAsyncResult) (result1 string, length uint64, err error) {
 	iv, err := _I.Get(410, "DataInputStream", "read_upto_finish")
 	if err != nil {
@@ -9876,8 +11077,9 @@ func (v DataInputStream) ReadUptoFinish(result IAsyncResult) (result1 string, le
 }
 
 // g_data_input_stream_set_byte_order
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ order ] trans: nothing
+//
 func (v DataInputStream) SetByteOrder(order DataStreamByteOrderEnum) {
 	iv, err := _I.Get(411, "DataInputStream", "set_byte_order")
 	if err != nil {
@@ -9891,8 +11093,9 @@ func (v DataInputStream) SetByteOrder(order DataStreamByteOrderEnum) {
 }
 
 // g_data_input_stream_set_newline_type
-// container is not nil, container is DataInputStream
-// is method
+//
+// [ type1 ] trans: nothing
+//
 func (v DataInputStream) SetNewlineType(type1 DataStreamNewlineTypeEnum) {
 	iv, err := _I.Get(412, "DataInputStream", "set_newline_type")
 	if err != nil {
@@ -9934,8 +11137,11 @@ func DataOutputStreamGetType() gi.GType {
 }
 
 // g_data_output_stream_new
-// container is not nil, container is DataOutputStream
-// is constructor
+//
+// [ base_stream ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDataOutputStream(base_stream IOutputStream) (result DataOutputStream) {
 	iv, err := _I.Get(413, "DataOutputStream", "new")
 	if err != nil {
@@ -9955,8 +11161,9 @@ func NewDataOutputStream(base_stream IOutputStream) (result DataOutputStream) {
 }
 
 // g_data_output_stream_get_byte_order
-// container is not nil, container is DataOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DataOutputStream) GetByteOrder() (result DataStreamByteOrderEnum) {
 	iv, err := _I.Get(414, "DataOutputStream", "get_byte_order")
 	if err != nil {
@@ -9972,8 +11179,13 @@ func (v DataOutputStream) GetByteOrder() (result DataStreamByteOrderEnum) {
 }
 
 // g_data_output_stream_put_byte
-// container is not nil, container is DataOutputStream
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataOutputStream) PutByte(data uint8, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(415, "DataOutputStream", "put_byte")
 	if err != nil {
@@ -9997,8 +11209,13 @@ func (v DataOutputStream) PutByte(data uint8, cancellable ICancellable) (result 
 }
 
 // g_data_output_stream_put_int16
-// container is not nil, container is DataOutputStream
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataOutputStream) PutInt16(data int16, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(416, "DataOutputStream", "put_int16")
 	if err != nil {
@@ -10022,8 +11239,13 @@ func (v DataOutputStream) PutInt16(data int16, cancellable ICancellable) (result
 }
 
 // g_data_output_stream_put_int32
-// container is not nil, container is DataOutputStream
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataOutputStream) PutInt32(data int32, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(417, "DataOutputStream", "put_int32")
 	if err != nil {
@@ -10047,8 +11269,13 @@ func (v DataOutputStream) PutInt32(data int32, cancellable ICancellable) (result
 }
 
 // g_data_output_stream_put_int64
-// container is not nil, container is DataOutputStream
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataOutputStream) PutInt64(data int64, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(418, "DataOutputStream", "put_int64")
 	if err != nil {
@@ -10072,8 +11299,13 @@ func (v DataOutputStream) PutInt64(data int64, cancellable ICancellable) (result
 }
 
 // g_data_output_stream_put_string
-// container is not nil, container is DataOutputStream
-// is method
+//
+// [ str ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataOutputStream) PutString(str string, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(419, "DataOutputStream", "put_string")
 	if err != nil {
@@ -10099,8 +11331,13 @@ func (v DataOutputStream) PutString(str string, cancellable ICancellable) (resul
 }
 
 // g_data_output_stream_put_uint16
-// container is not nil, container is DataOutputStream
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataOutputStream) PutUint16(data uint16, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(420, "DataOutputStream", "put_uint16")
 	if err != nil {
@@ -10124,8 +11361,13 @@ func (v DataOutputStream) PutUint16(data uint16, cancellable ICancellable) (resu
 }
 
 // g_data_output_stream_put_uint32
-// container is not nil, container is DataOutputStream
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataOutputStream) PutUint32(data uint32, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(421, "DataOutputStream", "put_uint32")
 	if err != nil {
@@ -10149,8 +11391,13 @@ func (v DataOutputStream) PutUint32(data uint32, cancellable ICancellable) (resu
 }
 
 // g_data_output_stream_put_uint64
-// container is not nil, container is DataOutputStream
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DataOutputStream) PutUint64(data uint64, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(422, "DataOutputStream", "put_uint64")
 	if err != nil {
@@ -10174,8 +11421,9 @@ func (v DataOutputStream) PutUint64(data uint64, cancellable ICancellable) (resu
 }
 
 // g_data_output_stream_set_byte_order
-// container is not nil, container is DataOutputStream
-// is method
+//
+// [ order ] trans: nothing
+//
 func (v DataOutputStream) SetByteOrder(order DataStreamByteOrderEnum) {
 	iv, err := _I.Get(423, "DataOutputStream", "set_byte_order")
 	if err != nil {
@@ -10243,8 +11491,11 @@ func DatagramBasedGetType() gi.GType {
 }
 
 // g_datagram_based_condition_check
-// container is not nil, container is DatagramBased
-// is method
+//
+// [ condition ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DatagramBasedIfc) ConditionCheck(condition glib.IOConditionFlags) (result glib.IOConditionFlags) {
 	iv, err := _I.Get(424, "DatagramBased", "condition_check")
 	if err != nil {
@@ -10261,8 +11512,15 @@ func (v *DatagramBasedIfc) ConditionCheck(condition glib.IOConditionFlags) (resu
 }
 
 // g_datagram_based_condition_wait
-// container is not nil, container is DatagramBased
-// is method
+//
+// [ condition ] trans: nothing
+//
+// [ timeout ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DatagramBasedIfc) ConditionWait(condition glib.IOConditionFlags, timeout int64, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(425, "DatagramBased", "condition_wait")
 	if err != nil {
@@ -10287,8 +11545,13 @@ func (v *DatagramBasedIfc) ConditionWait(condition glib.IOConditionFlags, timeou
 }
 
 // g_datagram_based_create_source
-// container is not nil, container is DatagramBased
-// is method
+//
+// [ condition ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *DatagramBasedIfc) CreateSource(condition glib.IOConditionFlags, cancellable ICancellable) (result glib.Source) {
 	iv, err := _I.Get(426, "DatagramBased", "create_source")
 	if err != nil {
@@ -10310,9 +11573,19 @@ func (v *DatagramBasedIfc) CreateSource(condition glib.IOConditionFlags, cancell
 }
 
 // g_datagram_based_receive_messages
-// container is not nil, container is DatagramBased
-// is method
-// arg 0 messages lenArgIdx 1
+//
+// [ messages ] trans: nothing
+//
+// [ num_messages ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DatagramBasedIfc) ReceiveMessages(messages unsafe.Pointer, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(427, "DatagramBased", "receive_messages")
 	if err != nil {
@@ -10339,9 +11612,19 @@ func (v *DatagramBasedIfc) ReceiveMessages(messages unsafe.Pointer, num_messages
 }
 
 // g_datagram_based_send_messages
-// container is not nil, container is DatagramBased
-// is method
-// arg 0 messages lenArgIdx 1
+//
+// [ messages ] trans: nothing
+//
+// [ num_messages ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ timeout ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DatagramBasedIfc) SendMessages(messages unsafe.Pointer, num_messages uint32, flags int32, timeout int64, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(428, "DatagramBased", "send_messages")
 	if err != nil {
@@ -10405,8 +11688,11 @@ func DesktopAppInfoGetType() gi.GType {
 }
 
 // g_desktop_app_info_new
-// container is not nil, container is DesktopAppInfo
-// is constructor
+//
+// [ desktop_id ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDesktopAppInfo(desktop_id string) (result DesktopAppInfo) {
 	iv, err := _I.Get(429, "DesktopAppInfo", "new")
 	if err != nil {
@@ -10424,8 +11710,11 @@ func NewDesktopAppInfo(desktop_id string) (result DesktopAppInfo) {
 }
 
 // g_desktop_app_info_new_from_filename
-// container is not nil, container is DesktopAppInfo
-// is constructor
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDesktopAppInfoFromFilename(filename string) (result DesktopAppInfo) {
 	iv, err := _I.Get(430, "DesktopAppInfo", "new_from_filename")
 	if err != nil {
@@ -10443,8 +11732,11 @@ func NewDesktopAppInfoFromFilename(filename string) (result DesktopAppInfo) {
 }
 
 // g_desktop_app_info_new_from_keyfile
-// container is not nil, container is DesktopAppInfo
-// is constructor
+//
+// [ key_file ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDesktopAppInfoFromKeyfile(key_file glib.KeyFile) (result DesktopAppInfo) {
 	iv, err := _I.Get(431, "DesktopAppInfo", "new_from_keyfile")
 	if err != nil {
@@ -10460,9 +11752,11 @@ func NewDesktopAppInfoFromKeyfile(key_file glib.KeyFile) (result DesktopAppInfo)
 }
 
 // g_desktop_app_info_get_implementations
-// container is not nil, container is DesktopAppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ interface1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DesktopAppInfoGetImplementations1(interface1 string) (result glib.List) {
 	iv, err := _I.Get(432, "DesktopAppInfo", "get_implementations")
 	if err != nil {
@@ -10480,9 +11774,11 @@ func DesktopAppInfoGetImplementations1(interface1 string) (result glib.List) {
 }
 
 // g_desktop_app_info_search
-// container is not nil, container is DesktopAppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ search_string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DesktopAppInfoSearch1(search_string string) (result int /*TODO_TYPE array type c, elemTypeTag: array, isPtr: true*/) {
 	iv, err := _I.Get(433, "DesktopAppInfo", "search")
 	if err != nil {
@@ -10500,9 +11796,9 @@ func DesktopAppInfoSearch1(search_string string) (result int /*TODO_TYPE array t
 }
 
 // g_desktop_app_info_set_desktop_env
-// container is not nil, container is DesktopAppInfo
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ desktop_env ] trans: nothing
+//
 func DesktopAppInfoSetDesktopEnv1(desktop_env string) {
 	iv, err := _I.Get(434, "DesktopAppInfo", "set_desktop_env")
 	if err != nil {
@@ -10517,8 +11813,11 @@ func DesktopAppInfoSetDesktopEnv1(desktop_env string) {
 }
 
 // g_desktop_app_info_get_action_name
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DesktopAppInfo) GetActionName(action_name string) (result string) {
 	iv, err := _I.Get(435, "DesktopAppInfo", "get_action_name")
 	if err != nil {
@@ -10537,8 +11836,11 @@ func (v DesktopAppInfo) GetActionName(action_name string) (result string) {
 }
 
 // g_desktop_app_info_get_boolean
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) GetBoolean(key string) (result bool) {
 	iv, err := _I.Get(436, "DesktopAppInfo", "get_boolean")
 	if err != nil {
@@ -10557,8 +11859,9 @@ func (v DesktopAppInfo) GetBoolean(key string) (result bool) {
 }
 
 // g_desktop_app_info_get_categories
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) GetCategories() (result string) {
 	iv, err := _I.Get(437, "DesktopAppInfo", "get_categories")
 	if err != nil {
@@ -10569,13 +11872,14 @@ func (v DesktopAppInfo) GetCategories() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_desktop_app_info_get_filename
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) GetFilename() (result string) {
 	iv, err := _I.Get(438, "DesktopAppInfo", "get_filename")
 	if err != nil {
@@ -10586,13 +11890,14 @@ func (v DesktopAppInfo) GetFilename() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_desktop_app_info_get_generic_name
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) GetGenericName() (result string) {
 	iv, err := _I.Get(439, "DesktopAppInfo", "get_generic_name")
 	if err != nil {
@@ -10603,13 +11908,14 @@ func (v DesktopAppInfo) GetGenericName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_desktop_app_info_get_is_hidden
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) GetIsHidden() (result bool) {
 	iv, err := _I.Get(440, "DesktopAppInfo", "get_is_hidden")
 	if err != nil {
@@ -10625,8 +11931,9 @@ func (v DesktopAppInfo) GetIsHidden() (result bool) {
 }
 
 // g_desktop_app_info_get_keywords
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) GetKeywords() (result gi.CStrArray) {
 	iv, err := _I.Get(441, "DesktopAppInfo", "get_keywords")
 	if err != nil {
@@ -10643,8 +11950,11 @@ func (v DesktopAppInfo) GetKeywords() (result gi.CStrArray) {
 }
 
 // g_desktop_app_info_get_locale_string
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DesktopAppInfo) GetLocaleString(key string) (result string) {
 	iv, err := _I.Get(442, "DesktopAppInfo", "get_locale_string")
 	if err != nil {
@@ -10663,8 +11973,9 @@ func (v DesktopAppInfo) GetLocaleString(key string) (result string) {
 }
 
 // g_desktop_app_info_get_nodisplay
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) GetNodisplay() (result bool) {
 	iv, err := _I.Get(443, "DesktopAppInfo", "get_nodisplay")
 	if err != nil {
@@ -10680,8 +11991,11 @@ func (v DesktopAppInfo) GetNodisplay() (result bool) {
 }
 
 // g_desktop_app_info_get_show_in
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ desktop_env ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) GetShowIn(desktop_env string) (result bool) {
 	iv, err := _I.Get(444, "DesktopAppInfo", "get_show_in")
 	if err != nil {
@@ -10700,8 +12014,9 @@ func (v DesktopAppInfo) GetShowIn(desktop_env string) (result bool) {
 }
 
 // g_desktop_app_info_get_startup_wm_class
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) GetStartupWmClass() (result string) {
 	iv, err := _I.Get(445, "DesktopAppInfo", "get_startup_wm_class")
 	if err != nil {
@@ -10712,13 +12027,16 @@ func (v DesktopAppInfo) GetStartupWmClass() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_desktop_app_info_get_string
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DesktopAppInfo) GetString(key string) (result string) {
 	iv, err := _I.Get(446, "DesktopAppInfo", "get_string")
 	if err != nil {
@@ -10737,8 +12055,11 @@ func (v DesktopAppInfo) GetString(key string) (result string) {
 }
 
 // g_desktop_app_info_has_key
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) HasKey(key string) (result bool) {
 	iv, err := _I.Get(447, "DesktopAppInfo", "has_key")
 	if err != nil {
@@ -10757,8 +12078,11 @@ func (v DesktopAppInfo) HasKey(key string) (result bool) {
 }
 
 // g_desktop_app_info_launch_action
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ launch_context ] trans: nothing
+//
 func (v DesktopAppInfo) LaunchAction(action_name string, launch_context IAppLaunchContext) {
 	iv, err := _I.Get(448, "DesktopAppInfo", "launch_action")
 	if err != nil {
@@ -10779,8 +12103,23 @@ func (v DesktopAppInfo) LaunchAction(action_name string, launch_context IAppLaun
 }
 
 // g_desktop_app_info_launch_uris_as_manager
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ uris ] trans: nothing
+//
+// [ launch_context ] trans: nothing
+//
+// [ spawn_flags ] trans: nothing
+//
+// [ user_setup ] trans: nothing
+//
+// [ user_setup_data ] trans: nothing
+//
+// [ pid_callback ] trans: nothing
+//
+// [ pid_callback_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) LaunchUrisAsManager(uris glib.List, launch_context IAppLaunchContext, spawn_flags glib.SpawnFlags, user_setup int /*TODO_TYPE CALLBACK*/, user_setup_data unsafe.Pointer, pid_callback int /*TODO_TYPE CALLBACK*/, pid_callback_data unsafe.Pointer) (result bool, err error) {
 	iv, err := _I.Get(449, "DesktopAppInfo", "launch_uris_as_manager")
 	if err != nil {
@@ -10809,8 +12148,29 @@ func (v DesktopAppInfo) LaunchUrisAsManager(uris glib.List, launch_context IAppL
 }
 
 // g_desktop_app_info_launch_uris_as_manager_with_fds
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ uris ] trans: nothing
+//
+// [ launch_context ] trans: nothing
+//
+// [ spawn_flags ] trans: nothing
+//
+// [ user_setup ] trans: nothing
+//
+// [ user_setup_data ] trans: nothing
+//
+// [ pid_callback ] trans: nothing
+//
+// [ pid_callback_data ] trans: nothing
+//
+// [ stdin_fd ] trans: nothing
+//
+// [ stdout_fd ] trans: nothing
+//
+// [ stderr_fd ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) LaunchUrisAsManagerWithFds(uris glib.List, launch_context IAppLaunchContext, spawn_flags glib.SpawnFlags, user_setup int /*TODO_TYPE CALLBACK*/, user_setup_data unsafe.Pointer, pid_callback int /*TODO_TYPE CALLBACK*/, pid_callback_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, err error) {
 	iv, err := _I.Get(450, "DesktopAppInfo", "launch_uris_as_manager_with_fds")
 	if err != nil {
@@ -10842,8 +12202,9 @@ func (v DesktopAppInfo) LaunchUrisAsManagerWithFds(uris glib.List, launch_contex
 }
 
 // g_desktop_app_info_list_actions
-// container is not nil, container is DesktopAppInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DesktopAppInfo) ListActions() (result gi.CStrArray) {
 	iv, err := _I.Get(451, "DesktopAppInfo", "list_actions")
 	if err != nil {
@@ -10875,8 +12236,11 @@ func DesktopAppInfoLookupGetType() gi.GType {
 }
 
 // g_desktop_app_info_lookup_get_default_for_uri_scheme
-// container is not nil, container is DesktopAppInfoLookup
-// is method
+//
+// [ uri_scheme ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *DesktopAppInfoLookupIfc) GetDefaultForUriScheme(uri_scheme string) (result AppInfo) {
 	iv, err := _I.Get(452, "DesktopAppInfoLookup", "get_default_for_uri_scheme")
 	if err != nil {
@@ -10929,8 +12293,9 @@ func DriveGetType() gi.GType {
 }
 
 // g_drive_can_eject
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) CanEject() (result bool) {
 	iv, err := _I.Get(453, "Drive", "can_eject")
 	if err != nil {
@@ -10946,8 +12311,9 @@ func (v *DriveIfc) CanEject() (result bool) {
 }
 
 // g_drive_can_poll_for_media
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) CanPollForMedia() (result bool) {
 	iv, err := _I.Get(454, "Drive", "can_poll_for_media")
 	if err != nil {
@@ -10963,8 +12329,9 @@ func (v *DriveIfc) CanPollForMedia() (result bool) {
 }
 
 // g_drive_can_start
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) CanStart() (result bool) {
 	iv, err := _I.Get(455, "Drive", "can_start")
 	if err != nil {
@@ -10980,8 +12347,9 @@ func (v *DriveIfc) CanStart() (result bool) {
 }
 
 // g_drive_can_start_degraded
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) CanStartDegraded() (result bool) {
 	iv, err := _I.Get(456, "Drive", "can_start_degraded")
 	if err != nil {
@@ -10997,8 +12365,9 @@ func (v *DriveIfc) CanStartDegraded() (result bool) {
 }
 
 // g_drive_can_stop
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) CanStop() (result bool) {
 	iv, err := _I.Get(457, "Drive", "can_stop")
 	if err != nil {
@@ -11014,8 +12383,15 @@ func (v *DriveIfc) CanStop() (result bool) {
 }
 
 // g_drive_eject
-// container is not nil, container is Drive
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *DriveIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(458, "Drive", "eject")
 	if err != nil {
@@ -11036,8 +12412,11 @@ func (v *DriveIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, call
 }
 
 // g_drive_eject_finish
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *DriveIfc) EjectFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(459, "Drive", "eject_finish")
 	if err != nil {
@@ -11060,8 +12439,17 @@ func (v *DriveIfc) EjectFinish(result IAsyncResult) (result1 bool, err error) {
 }
 
 // g_drive_eject_with_operation
-// container is not nil, container is Drive
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *DriveIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(460, "Drive", "eject_with_operation")
 	if err != nil {
@@ -11087,8 +12475,11 @@ func (v *DriveIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation I
 }
 
 // g_drive_eject_with_operation_finish
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *DriveIfc) EjectWithOperationFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(461, "Drive", "eject_with_operation_finish")
 	if err != nil {
@@ -11111,8 +12502,9 @@ func (v *DriveIfc) EjectWithOperationFinish(result IAsyncResult) (result1 bool, 
 }
 
 // g_drive_enumerate_identifiers
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *DriveIfc) EnumerateIdentifiers() (result gi.CStrArray) {
 	iv, err := _I.Get(462, "Drive", "enumerate_identifiers")
 	if err != nil {
@@ -11129,8 +12521,9 @@ func (v *DriveIfc) EnumerateIdentifiers() (result gi.CStrArray) {
 }
 
 // g_drive_get_icon
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *DriveIfc) GetIcon() (result Icon) {
 	iv, err := _I.Get(463, "Drive", "get_icon")
 	if err != nil {
@@ -11146,8 +12539,11 @@ func (v *DriveIfc) GetIcon() (result Icon) {
 }
 
 // g_drive_get_identifier
-// container is not nil, container is Drive
-// is method
+//
+// [ kind ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *DriveIfc) GetIdentifier(kind string) (result string) {
 	iv, err := _I.Get(464, "Drive", "get_identifier")
 	if err != nil {
@@ -11166,8 +12562,9 @@ func (v *DriveIfc) GetIdentifier(kind string) (result string) {
 }
 
 // g_drive_get_name
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *DriveIfc) GetName() (result string) {
 	iv, err := _I.Get(465, "Drive", "get_name")
 	if err != nil {
@@ -11183,8 +12580,9 @@ func (v *DriveIfc) GetName() (result string) {
 }
 
 // g_drive_get_sort_key
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) GetSortKey() (result string) {
 	iv, err := _I.Get(466, "Drive", "get_sort_key")
 	if err != nil {
@@ -11195,13 +12593,14 @@ func (v *DriveIfc) GetSortKey() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_drive_get_start_stop_type
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) GetStartStopType() (result DriveStartStopTypeEnum) {
 	iv, err := _I.Get(467, "Drive", "get_start_stop_type")
 	if err != nil {
@@ -11217,8 +12616,9 @@ func (v *DriveIfc) GetStartStopType() (result DriveStartStopTypeEnum) {
 }
 
 // g_drive_get_symbolic_icon
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *DriveIfc) GetSymbolicIcon() (result Icon) {
 	iv, err := _I.Get(468, "Drive", "get_symbolic_icon")
 	if err != nil {
@@ -11234,8 +12634,9 @@ func (v *DriveIfc) GetSymbolicIcon() (result Icon) {
 }
 
 // g_drive_get_volumes
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *DriveIfc) GetVolumes() (result glib.List) {
 	iv, err := _I.Get(469, "Drive", "get_volumes")
 	if err != nil {
@@ -11251,8 +12652,9 @@ func (v *DriveIfc) GetVolumes() (result glib.List) {
 }
 
 // g_drive_has_media
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) HasMedia() (result bool) {
 	iv, err := _I.Get(470, "Drive", "has_media")
 	if err != nil {
@@ -11268,8 +12670,9 @@ func (v *DriveIfc) HasMedia() (result bool) {
 }
 
 // g_drive_has_volumes
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) HasVolumes() (result bool) {
 	iv, err := _I.Get(471, "Drive", "has_volumes")
 	if err != nil {
@@ -11285,8 +12688,9 @@ func (v *DriveIfc) HasVolumes() (result bool) {
 }
 
 // g_drive_is_media_check_automatic
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) IsMediaCheckAutomatic() (result bool) {
 	iv, err := _I.Get(472, "Drive", "is_media_check_automatic")
 	if err != nil {
@@ -11302,8 +12706,9 @@ func (v *DriveIfc) IsMediaCheckAutomatic() (result bool) {
 }
 
 // g_drive_is_media_removable
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) IsMediaRemovable() (result bool) {
 	iv, err := _I.Get(473, "Drive", "is_media_removable")
 	if err != nil {
@@ -11319,8 +12724,9 @@ func (v *DriveIfc) IsMediaRemovable() (result bool) {
 }
 
 // g_drive_is_removable
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DriveIfc) IsRemovable() (result bool) {
 	iv, err := _I.Get(474, "Drive", "is_removable")
 	if err != nil {
@@ -11336,8 +12742,13 @@ func (v *DriveIfc) IsRemovable() (result bool) {
 }
 
 // g_drive_poll_for_media
-// container is not nil, container is Drive
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *DriveIfc) PollForMedia(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(475, "Drive", "poll_for_media")
 	if err != nil {
@@ -11357,8 +12768,11 @@ func (v *DriveIfc) PollForMedia(cancellable ICancellable, callback int /*TODO_TY
 }
 
 // g_drive_poll_for_media_finish
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *DriveIfc) PollForMediaFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(476, "Drive", "poll_for_media_finish")
 	if err != nil {
@@ -11381,8 +12795,17 @@ func (v *DriveIfc) PollForMediaFinish(result IAsyncResult) (result1 bool, err er
 }
 
 // g_drive_start
-// container is not nil, container is Drive
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *DriveIfc) Start(flags DriveStartFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(477, "Drive", "start")
 	if err != nil {
@@ -11408,8 +12831,11 @@ func (v *DriveIfc) Start(flags DriveStartFlags, mount_operation IMountOperation,
 }
 
 // g_drive_start_finish
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *DriveIfc) StartFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(478, "Drive", "start_finish")
 	if err != nil {
@@ -11432,8 +12858,17 @@ func (v *DriveIfc) StartFinish(result IAsyncResult) (result1 bool, err error) {
 }
 
 // g_drive_stop
-// container is not nil, container is Drive
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *DriveIfc) Stop(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(479, "Drive", "stop")
 	if err != nil {
@@ -11459,8 +12894,11 @@ func (v *DriveIfc) Stop(flags MountUnmountFlags, mount_operation IMountOperation
 }
 
 // g_drive_stop_finish
-// container is not nil, container is Drive
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *DriveIfc) StopFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(480, "Drive", "stop_finish")
 	if err != nil {
@@ -11526,9 +12964,13 @@ func DtlsClientConnectionGetType() gi.GType {
 }
 
 // g_dtls_client_connection_new
-// container is not nil, container is DtlsClientConnection
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ base_socket ] trans: nothing
+//
+// [ server_identity ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DtlsClientConnectionNew1(base_socket IDatagramBased, server_identity ISocketConnectable) (result DtlsClientConnection, err error) {
 	iv, err := _I.Get(481, "DtlsClientConnection", "new")
 	if err != nil {
@@ -11555,8 +12997,9 @@ func DtlsClientConnectionNew1(base_socket IDatagramBased, server_identity ISocke
 }
 
 // g_dtls_client_connection_get_accepted_cas
-// container is not nil, container is DtlsClientConnection
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *DtlsClientConnectionIfc) GetAcceptedCas() (result glib.List) {
 	iv, err := _I.Get(482, "DtlsClientConnection", "get_accepted_cas")
 	if err != nil {
@@ -11572,8 +13015,9 @@ func (v *DtlsClientConnectionIfc) GetAcceptedCas() (result glib.List) {
 }
 
 // g_dtls_client_connection_get_server_identity
-// container is not nil, container is DtlsClientConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsClientConnectionIfc) GetServerIdentity() (result SocketConnectable) {
 	iv, err := _I.Get(483, "DtlsClientConnection", "get_server_identity")
 	if err != nil {
@@ -11589,8 +13033,9 @@ func (v *DtlsClientConnectionIfc) GetServerIdentity() (result SocketConnectable)
 }
 
 // g_dtls_client_connection_get_validation_flags
-// container is not nil, container is DtlsClientConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsClientConnectionIfc) GetValidationFlags() (result TlsCertificateFlags) {
 	iv, err := _I.Get(484, "DtlsClientConnection", "get_validation_flags")
 	if err != nil {
@@ -11606,8 +13051,9 @@ func (v *DtlsClientConnectionIfc) GetValidationFlags() (result TlsCertificateFla
 }
 
 // g_dtls_client_connection_set_server_identity
-// container is not nil, container is DtlsClientConnection
-// is method
+//
+// [ identity ] trans: nothing
+//
 func (v *DtlsClientConnectionIfc) SetServerIdentity(identity ISocketConnectable) {
 	iv, err := _I.Get(485, "DtlsClientConnection", "set_server_identity")
 	if err != nil {
@@ -11625,8 +13071,9 @@ func (v *DtlsClientConnectionIfc) SetServerIdentity(identity ISocketConnectable)
 }
 
 // g_dtls_client_connection_set_validation_flags
-// container is not nil, container is DtlsClientConnection
-// is method
+//
+// [ flags ] trans: nothing
+//
 func (v *DtlsClientConnectionIfc) SetValidationFlags(flags TlsCertificateFlags) {
 	iv, err := _I.Get(486, "DtlsClientConnection", "set_validation_flags")
 	if err != nil {
@@ -11655,8 +13102,11 @@ func DtlsConnectionGetType() gi.GType {
 }
 
 // g_dtls_connection_close
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) Close(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(487, "DtlsConnection", "close")
 	if err != nil {
@@ -11679,8 +13129,15 @@ func (v *DtlsConnectionIfc) Close(cancellable ICancellable) (result bool, err er
 }
 
 // g_dtls_connection_close_async
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *DtlsConnectionIfc) CloseAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(488, "DtlsConnection", "close_async")
 	if err != nil {
@@ -11701,8 +13158,11 @@ func (v *DtlsConnectionIfc) CloseAsync(io_priority int32, cancellable ICancellab
 }
 
 // g_dtls_connection_close_finish
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *DtlsConnectionIfc) CloseFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(489, "DtlsConnection", "close_finish")
 	if err != nil {
@@ -11725,8 +13185,13 @@ func (v *DtlsConnectionIfc) CloseFinish(result IAsyncResult) (result1 bool, err 
 }
 
 // g_dtls_connection_emit_accept_certificate
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ peer_cert ] trans: nothing
+//
+// [ errors ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) EmitAcceptCertificate(peer_cert ITlsCertificate, errors TlsCertificateFlags) (result bool) {
 	iv, err := _I.Get(490, "DtlsConnection", "emit_accept_certificate")
 	if err != nil {
@@ -11748,8 +13213,9 @@ func (v *DtlsConnectionIfc) EmitAcceptCertificate(peer_cert ITlsCertificate, err
 }
 
 // g_dtls_connection_get_certificate
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) GetCertificate() (result TlsCertificate) {
 	iv, err := _I.Get(491, "DtlsConnection", "get_certificate")
 	if err != nil {
@@ -11765,8 +13231,9 @@ func (v *DtlsConnectionIfc) GetCertificate() (result TlsCertificate) {
 }
 
 // g_dtls_connection_get_database
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) GetDatabase() (result TlsDatabase) {
 	iv, err := _I.Get(492, "DtlsConnection", "get_database")
 	if err != nil {
@@ -11782,8 +13249,9 @@ func (v *DtlsConnectionIfc) GetDatabase() (result TlsDatabase) {
 }
 
 // g_dtls_connection_get_interaction
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) GetInteraction() (result TlsInteraction) {
 	iv, err := _I.Get(493, "DtlsConnection", "get_interaction")
 	if err != nil {
@@ -11799,8 +13267,9 @@ func (v *DtlsConnectionIfc) GetInteraction() (result TlsInteraction) {
 }
 
 // g_dtls_connection_get_peer_certificate
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) GetPeerCertificate() (result TlsCertificate) {
 	iv, err := _I.Get(494, "DtlsConnection", "get_peer_certificate")
 	if err != nil {
@@ -11816,8 +13285,9 @@ func (v *DtlsConnectionIfc) GetPeerCertificate() (result TlsCertificate) {
 }
 
 // g_dtls_connection_get_peer_certificate_errors
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) GetPeerCertificateErrors() (result TlsCertificateFlags) {
 	iv, err := _I.Get(495, "DtlsConnection", "get_peer_certificate_errors")
 	if err != nil {
@@ -11833,8 +13303,9 @@ func (v *DtlsConnectionIfc) GetPeerCertificateErrors() (result TlsCertificateFla
 }
 
 // g_dtls_connection_get_rehandshake_mode
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) GetRehandshakeMode() (result TlsRehandshakeModeEnum) {
 	iv, err := _I.Get(496, "DtlsConnection", "get_rehandshake_mode")
 	if err != nil {
@@ -11850,8 +13321,9 @@ func (v *DtlsConnectionIfc) GetRehandshakeMode() (result TlsRehandshakeModeEnum)
 }
 
 // g_dtls_connection_get_require_close_notify
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) GetRequireCloseNotify() (result bool) {
 	iv, err := _I.Get(497, "DtlsConnection", "get_require_close_notify")
 	if err != nil {
@@ -11867,8 +13339,11 @@ func (v *DtlsConnectionIfc) GetRequireCloseNotify() (result bool) {
 }
 
 // g_dtls_connection_handshake
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) Handshake(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(498, "DtlsConnection", "handshake")
 	if err != nil {
@@ -11891,8 +13366,15 @@ func (v *DtlsConnectionIfc) Handshake(cancellable ICancellable) (result bool, er
 }
 
 // g_dtls_connection_handshake_async
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *DtlsConnectionIfc) HandshakeAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(499, "DtlsConnection", "handshake_async")
 	if err != nil {
@@ -11913,8 +13395,11 @@ func (v *DtlsConnectionIfc) HandshakeAsync(io_priority int32, cancellable ICance
 }
 
 // g_dtls_connection_handshake_finish
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *DtlsConnectionIfc) HandshakeFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(500, "DtlsConnection", "handshake_finish")
 	if err != nil {
@@ -11937,8 +13422,9 @@ func (v *DtlsConnectionIfc) HandshakeFinish(result IAsyncResult) (result1 bool, 
 }
 
 // g_dtls_connection_set_certificate
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ certificate ] trans: nothing
+//
 func (v *DtlsConnectionIfc) SetCertificate(certificate ITlsCertificate) {
 	iv, err := _I.Get(501, "DtlsConnection", "set_certificate")
 	if err != nil {
@@ -11956,8 +13442,9 @@ func (v *DtlsConnectionIfc) SetCertificate(certificate ITlsCertificate) {
 }
 
 // g_dtls_connection_set_database
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ database ] trans: nothing
+//
 func (v *DtlsConnectionIfc) SetDatabase(database ITlsDatabase) {
 	iv, err := _I.Get(502, "DtlsConnection", "set_database")
 	if err != nil {
@@ -11975,8 +13462,9 @@ func (v *DtlsConnectionIfc) SetDatabase(database ITlsDatabase) {
 }
 
 // g_dtls_connection_set_interaction
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ interaction ] trans: nothing
+//
 func (v *DtlsConnectionIfc) SetInteraction(interaction ITlsInteraction) {
 	iv, err := _I.Get(503, "DtlsConnection", "set_interaction")
 	if err != nil {
@@ -11994,8 +13482,9 @@ func (v *DtlsConnectionIfc) SetInteraction(interaction ITlsInteraction) {
 }
 
 // g_dtls_connection_set_rehandshake_mode
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ mode ] trans: nothing
+//
 func (v *DtlsConnectionIfc) SetRehandshakeMode(mode TlsRehandshakeModeEnum) {
 	iv, err := _I.Get(504, "DtlsConnection", "set_rehandshake_mode")
 	if err != nil {
@@ -12009,8 +13498,9 @@ func (v *DtlsConnectionIfc) SetRehandshakeMode(mode TlsRehandshakeModeEnum) {
 }
 
 // g_dtls_connection_set_require_close_notify
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ require_close_notify ] trans: nothing
+//
 func (v *DtlsConnectionIfc) SetRequireCloseNotify(require_close_notify bool) {
 	iv, err := _I.Get(505, "DtlsConnection", "set_require_close_notify")
 	if err != nil {
@@ -12024,8 +13514,15 @@ func (v *DtlsConnectionIfc) SetRequireCloseNotify(require_close_notify bool) {
 }
 
 // g_dtls_connection_shutdown
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ shutdown_read ] trans: nothing
+//
+// [ shutdown_write ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *DtlsConnectionIfc) Shutdown(shutdown_read bool, shutdown_write bool, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(506, "DtlsConnection", "shutdown")
 	if err != nil {
@@ -12050,8 +13547,19 @@ func (v *DtlsConnectionIfc) Shutdown(shutdown_read bool, shutdown_write bool, ca
 }
 
 // g_dtls_connection_shutdown_async
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ shutdown_read ] trans: nothing
+//
+// [ shutdown_write ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *DtlsConnectionIfc) ShutdownAsync(shutdown_read bool, shutdown_write bool, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(507, "DtlsConnection", "shutdown_async")
 	if err != nil {
@@ -12074,8 +13582,11 @@ func (v *DtlsConnectionIfc) ShutdownAsync(shutdown_read bool, shutdown_write boo
 }
 
 // g_dtls_connection_shutdown_finish
-// container is not nil, container is DtlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *DtlsConnectionIfc) ShutdownFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(508, "DtlsConnection", "shutdown_finish")
 	if err != nil {
@@ -12113,9 +13624,13 @@ func DtlsServerConnectionGetType() gi.GType {
 }
 
 // g_dtls_server_connection_new
-// container is not nil, container is DtlsServerConnection
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ base_socket ] trans: nothing
+//
+// [ certificate ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DtlsServerConnectionNew1(base_socket IDatagramBased, certificate ITlsCertificate) (result DtlsServerConnection, err error) {
 	iv, err := _I.Get(509, "DtlsServerConnection", "new")
 	if err != nil {
@@ -12160,8 +13675,11 @@ func EmblemGetType() gi.GType {
 }
 
 // g_emblem_new
-// container is not nil, container is Emblem
-// is constructor
+//
+// [ icon ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewEmblem(icon IIcon) (result Emblem) {
 	iv, err := _I.Get(510, "Emblem", "new")
 	if err != nil {
@@ -12181,8 +13699,13 @@ func NewEmblem(icon IIcon) (result Emblem) {
 }
 
 // g_emblem_new_with_origin
-// container is not nil, container is Emblem
-// is constructor
+//
+// [ icon ] trans: nothing
+//
+// [ origin ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewEmblemWithOrigin(icon IIcon, origin EmblemOriginEnum) (result Emblem) {
 	iv, err := _I.Get(511, "Emblem", "new_with_origin")
 	if err != nil {
@@ -12203,8 +13726,9 @@ func NewEmblemWithOrigin(icon IIcon, origin EmblemOriginEnum) (result Emblem) {
 }
 
 // g_emblem_get_icon
-// container is not nil, container is Emblem
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Emblem) GetIcon() (result Icon) {
 	iv, err := _I.Get(512, "Emblem", "get_icon")
 	if err != nil {
@@ -12220,8 +13744,9 @@ func (v Emblem) GetIcon() (result Icon) {
 }
 
 // g_emblem_get_origin
-// container is not nil, container is Emblem
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Emblem) GetOrigin() (result EmblemOriginEnum) {
 	iv, err := _I.Get(513, "Emblem", "get_origin")
 	if err != nil {
@@ -12270,8 +13795,13 @@ func EmblemedIconGetType() gi.GType {
 }
 
 // g_emblemed_icon_new
-// container is not nil, container is EmblemedIcon
-// is constructor
+//
+// [ icon ] trans: nothing
+//
+// [ emblem ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewEmblemedIcon(icon IIcon, emblem IEmblem) (result EmblemedIcon) {
 	iv, err := _I.Get(514, "EmblemedIcon", "new")
 	if err != nil {
@@ -12296,8 +13826,9 @@ func NewEmblemedIcon(icon IIcon, emblem IEmblem) (result EmblemedIcon) {
 }
 
 // g_emblemed_icon_add_emblem
-// container is not nil, container is EmblemedIcon
-// is method
+//
+// [ emblem ] trans: nothing
+//
 func (v EmblemedIcon) AddEmblem(emblem IEmblem) {
 	iv, err := _I.Get(515, "EmblemedIcon", "add_emblem")
 	if err != nil {
@@ -12315,8 +13846,7 @@ func (v EmblemedIcon) AddEmblem(emblem IEmblem) {
 }
 
 // g_emblemed_icon_clear_emblems
-// container is not nil, container is EmblemedIcon
-// is method
+//
 func (v EmblemedIcon) ClearEmblems() {
 	iv, err := _I.Get(516, "EmblemedIcon", "clear_emblems")
 	if err != nil {
@@ -12329,8 +13859,9 @@ func (v EmblemedIcon) ClearEmblems() {
 }
 
 // g_emblemed_icon_get_emblems
-// container is not nil, container is EmblemedIcon
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v EmblemedIcon) GetEmblems() (result glib.List) {
 	iv, err := _I.Get(517, "EmblemedIcon", "get_emblems")
 	if err != nil {
@@ -12346,8 +13877,9 @@ func (v EmblemedIcon) GetEmblems() (result glib.List) {
 }
 
 // g_emblemed_icon_get_icon
-// container is not nil, container is EmblemedIcon
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v EmblemedIcon) GetIcon() (result Icon) {
 	iv, err := _I.Get(518, "EmblemedIcon", "get_icon")
 	if err != nil {
@@ -12388,9 +13920,11 @@ func FileGetType() gi.GType {
 }
 
 // g_file_new_for_commandline_arg
-// container is not nil, container is File
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ arg ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileNewForCommandlineArg1(arg string) (result File) {
 	iv, err := _I.Get(519, "File", "new_for_commandline_arg")
 	if err != nil {
@@ -12408,9 +13942,13 @@ func FileNewForCommandlineArg1(arg string) (result File) {
 }
 
 // g_file_new_for_commandline_arg_and_cwd
-// container is not nil, container is File
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ arg ] trans: nothing
+//
+// [ cwd ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileNewForCommandlineArgAndCwd1(arg string, cwd string) (result File) {
 	iv, err := _I.Get(520, "File", "new_for_commandline_arg_and_cwd")
 	if err != nil {
@@ -12431,9 +13969,11 @@ func FileNewForCommandlineArgAndCwd1(arg string, cwd string) (result File) {
 }
 
 // g_file_new_for_path
-// container is not nil, container is File
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileNewForPath1(path string) (result File) {
 	iv, err := _I.Get(521, "File", "new_for_path")
 	if err != nil {
@@ -12451,9 +13991,11 @@ func FileNewForPath1(path string) (result File) {
 }
 
 // g_file_new_for_uri
-// container is not nil, container is File
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileNewForUri1(uri string) (result File) {
 	iv, err := _I.Get(522, "File", "new_for_uri")
 	if err != nil {
@@ -12471,9 +14013,13 @@ func FileNewForUri1(uri string) (result File) {
 }
 
 // g_file_new_tmp
-// container is not nil, container is File
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ tmpl ] trans: nothing
+//
+// [ iostream ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func FileNewTmp1(tmpl string) (result File, iostream FileIOStream, err error) {
 	iv, err := _I.Get(523, "File", "new_tmp")
 	if err != nil {
@@ -12495,9 +14041,11 @@ func FileNewTmp1(tmpl string) (result File, iostream FileIOStream, err error) {
 }
 
 // g_file_parse_name
-// container is not nil, container is File
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ parse_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileParseName1(parse_name string) (result File) {
 	iv, err := _I.Get(524, "File", "parse_name")
 	if err != nil {
@@ -12515,8 +14063,13 @@ func FileParseName1(parse_name string) (result File) {
 }
 
 // g_file_append_to
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) AppendTo(flags FileCreateFlags, cancellable ICancellable) (result FileOutputStream, err error) {
 	iv, err := _I.Get(525, "File", "append_to")
 	if err != nil {
@@ -12540,8 +14093,17 @@ func (v *FileIfc) AppendTo(flags FileCreateFlags, cancellable ICancellable) (res
 }
 
 // g_file_append_to_async
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) AppendToAsync(flags FileCreateFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(526, "File", "append_to_async")
 	if err != nil {
@@ -12563,8 +14125,11 @@ func (v *FileIfc) AppendToAsync(flags FileCreateFlags, io_priority int32, cancel
 }
 
 // g_file_append_to_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) AppendToFinish(res IAsyncResult) (result FileOutputStream, err error) {
 	iv, err := _I.Get(527, "File", "append_to_finish")
 	if err != nil {
@@ -12587,8 +14152,19 @@ func (v *FileIfc) AppendToFinish(res IAsyncResult) (result FileOutputStream, err
 }
 
 // g_file_copy
-// container is not nil, container is File
-// is method
+//
+// [ destination ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ progress_callback ] trans: nothing
+//
+// [ progress_callback_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) Copy(destination IFile, flags FileCopyFlags, cancellable ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer) (result bool, err error) {
 	iv, err := _I.Get(528, "File", "copy")
 	if err != nil {
@@ -12619,8 +14195,23 @@ func (v *FileIfc) Copy(destination IFile, flags FileCopyFlags, cancellable ICanc
 }
 
 // g_file_copy_async
-// container is not nil, container is File
-// is method
+//
+// [ destination ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ progress_callback ] trans: nothing
+//
+// [ progress_callback_data ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) CopyAsync(destination IFile, flags FileCopyFlags, io_priority int32, cancellable ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(529, "File", "copy_async")
 	if err != nil {
@@ -12649,8 +14240,15 @@ func (v *FileIfc) CopyAsync(destination IFile, flags FileCopyFlags, io_priority 
 }
 
 // g_file_copy_attributes
-// container is not nil, container is File
-// is method
+//
+// [ destination ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) CopyAttributes(destination IFile, flags FileCopyFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(530, "File", "copy_attributes")
 	if err != nil {
@@ -12679,8 +14277,11 @@ func (v *FileIfc) CopyAttributes(destination IFile, flags FileCopyFlags, cancell
 }
 
 // g_file_copy_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) CopyFinish(res IAsyncResult) (result bool, err error) {
 	iv, err := _I.Get(531, "File", "copy_finish")
 	if err != nil {
@@ -12703,8 +14304,13 @@ func (v *FileIfc) CopyFinish(res IAsyncResult) (result bool, err error) {
 }
 
 // g_file_create
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) Create(flags FileCreateFlags, cancellable ICancellable) (result FileOutputStream, err error) {
 	iv, err := _I.Get(532, "File", "create")
 	if err != nil {
@@ -12728,8 +14334,17 @@ func (v *FileIfc) Create(flags FileCreateFlags, cancellable ICancellable) (resul
 }
 
 // g_file_create_async
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) CreateAsync(flags FileCreateFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(533, "File", "create_async")
 	if err != nil {
@@ -12751,8 +14366,11 @@ func (v *FileIfc) CreateAsync(flags FileCreateFlags, io_priority int32, cancella
 }
 
 // g_file_create_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) CreateFinish(res IAsyncResult) (result FileOutputStream, err error) {
 	iv, err := _I.Get(534, "File", "create_finish")
 	if err != nil {
@@ -12775,8 +14393,13 @@ func (v *FileIfc) CreateFinish(res IAsyncResult) (result FileOutputStream, err e
 }
 
 // g_file_create_readwrite
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) CreateReadwrite(flags FileCreateFlags, cancellable ICancellable) (result FileIOStream, err error) {
 	iv, err := _I.Get(535, "File", "create_readwrite")
 	if err != nil {
@@ -12800,8 +14423,17 @@ func (v *FileIfc) CreateReadwrite(flags FileCreateFlags, cancellable ICancellabl
 }
 
 // g_file_create_readwrite_async
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) CreateReadwriteAsync(flags FileCreateFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(536, "File", "create_readwrite_async")
 	if err != nil {
@@ -12823,8 +14455,11 @@ func (v *FileIfc) CreateReadwriteAsync(flags FileCreateFlags, io_priority int32,
 }
 
 // g_file_create_readwrite_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) CreateReadwriteFinish(res IAsyncResult) (result FileIOStream, err error) {
 	iv, err := _I.Get(537, "File", "create_readwrite_finish")
 	if err != nil {
@@ -12847,8 +14482,11 @@ func (v *FileIfc) CreateReadwriteFinish(res IAsyncResult) (result FileIOStream, 
 }
 
 // g_file_delete
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) Delete(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(538, "File", "delete")
 	if err != nil {
@@ -12871,8 +14509,15 @@ func (v *FileIfc) Delete(cancellable ICancellable) (result bool, err error) {
 }
 
 // g_file_delete_async
-// container is not nil, container is File
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) DeleteAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(539, "File", "delete_async")
 	if err != nil {
@@ -12893,8 +14538,11 @@ func (v *FileIfc) DeleteAsync(io_priority int32, cancellable ICancellable, callb
 }
 
 // g_file_delete_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) DeleteFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(540, "File", "delete_finish")
 	if err != nil {
@@ -12917,8 +14565,9 @@ func (v *FileIfc) DeleteFinish(result IAsyncResult) (result1 bool, err error) {
 }
 
 // g_file_dup
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) Dup() (result File) {
 	iv, err := _I.Get(541, "File", "dup")
 	if err != nil {
@@ -12934,8 +14583,15 @@ func (v *FileIfc) Dup() (result File) {
 }
 
 // g_file_eject_mountable
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) EjectMountable(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(542, "File", "eject_mountable")
 	if err != nil {
@@ -12956,8 +14612,11 @@ func (v *FileIfc) EjectMountable(flags MountUnmountFlags, cancellable ICancellab
 }
 
 // g_file_eject_mountable_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) EjectMountableFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(543, "File", "eject_mountable_finish")
 	if err != nil {
@@ -12980,8 +14639,17 @@ func (v *FileIfc) EjectMountableFinish(result IAsyncResult) (result1 bool, err e
 }
 
 // g_file_eject_mountable_with_operation
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) EjectMountableWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(544, "File", "eject_mountable_with_operation")
 	if err != nil {
@@ -13007,8 +14675,11 @@ func (v *FileIfc) EjectMountableWithOperation(flags MountUnmountFlags, mount_ope
 }
 
 // g_file_eject_mountable_with_operation_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) EjectMountableWithOperationFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(545, "File", "eject_mountable_with_operation_finish")
 	if err != nil {
@@ -13031,8 +14702,15 @@ func (v *FileIfc) EjectMountableWithOperationFinish(result IAsyncResult) (result
 }
 
 // g_file_enumerate_children
-// container is not nil, container is File
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) EnumerateChildren(attributes string, flags FileQueryInfoFlags, cancellable ICancellable) (result FileEnumerator, err error) {
 	iv, err := _I.Get(546, "File", "enumerate_children")
 	if err != nil {
@@ -13059,8 +14737,19 @@ func (v *FileIfc) EnumerateChildren(attributes string, flags FileQueryInfoFlags,
 }
 
 // g_file_enumerate_children_async
-// container is not nil, container is File
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) EnumerateChildrenAsync(attributes string, flags FileQueryInfoFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(547, "File", "enumerate_children_async")
 	if err != nil {
@@ -13085,8 +14774,11 @@ func (v *FileIfc) EnumerateChildrenAsync(attributes string, flags FileQueryInfoF
 }
 
 // g_file_enumerate_children_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) EnumerateChildrenFinish(res IAsyncResult) (result FileEnumerator, err error) {
 	iv, err := _I.Get(548, "File", "enumerate_children_finish")
 	if err != nil {
@@ -13109,8 +14801,11 @@ func (v *FileIfc) EnumerateChildrenFinish(res IAsyncResult) (result FileEnumerat
 }
 
 // g_file_equal
-// container is not nil, container is File
-// is method
+//
+// [ file2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) Equal(file2 IFile) (result bool) {
 	iv, err := _I.Get(549, "File", "equal")
 	if err != nil {
@@ -13131,8 +14826,11 @@ func (v *FileIfc) Equal(file2 IFile) (result bool) {
 }
 
 // g_file_find_enclosing_mount
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) FindEnclosingMount(cancellable ICancellable) (result Mount, err error) {
 	iv, err := _I.Get(550, "File", "find_enclosing_mount")
 	if err != nil {
@@ -13155,8 +14853,15 @@ func (v *FileIfc) FindEnclosingMount(cancellable ICancellable) (result Mount, er
 }
 
 // g_file_find_enclosing_mount_async
-// container is not nil, container is File
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) FindEnclosingMountAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(551, "File", "find_enclosing_mount_async")
 	if err != nil {
@@ -13177,8 +14882,11 @@ func (v *FileIfc) FindEnclosingMountAsync(io_priority int32, cancellable ICancel
 }
 
 // g_file_find_enclosing_mount_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) FindEnclosingMountFinish(res IAsyncResult) (result Mount, err error) {
 	iv, err := _I.Get(552, "File", "find_enclosing_mount_finish")
 	if err != nil {
@@ -13201,8 +14909,9 @@ func (v *FileIfc) FindEnclosingMountFinish(res IAsyncResult) (result Mount, err 
 }
 
 // g_file_get_basename
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) GetBasename() (result string) {
 	iv, err := _I.Get(553, "File", "get_basename")
 	if err != nil {
@@ -13218,8 +14927,11 @@ func (v *FileIfc) GetBasename() (result string) {
 }
 
 // g_file_get_child
-// container is not nil, container is File
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) GetChild(name string) (result File) {
 	iv, err := _I.Get(554, "File", "get_child")
 	if err != nil {
@@ -13238,8 +14950,11 @@ func (v *FileIfc) GetChild(name string) (result File) {
 }
 
 // g_file_get_child_for_display_name
-// container is not nil, container is File
-// is method
+//
+// [ display_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) GetChildForDisplayName(display_name string) (result File, err error) {
 	iv, err := _I.Get(555, "File", "get_child_for_display_name")
 	if err != nil {
@@ -13260,8 +14975,9 @@ func (v *FileIfc) GetChildForDisplayName(display_name string) (result File, err 
 }
 
 // g_file_get_parent
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) GetParent() (result File) {
 	iv, err := _I.Get(556, "File", "get_parent")
 	if err != nil {
@@ -13277,8 +14993,9 @@ func (v *FileIfc) GetParent() (result File) {
 }
 
 // g_file_get_parse_name
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) GetParseName() (result string) {
 	iv, err := _I.Get(557, "File", "get_parse_name")
 	if err != nil {
@@ -13294,8 +15011,9 @@ func (v *FileIfc) GetParseName() (result string) {
 }
 
 // g_file_get_path
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) GetPath() (result string) {
 	iv, err := _I.Get(558, "File", "get_path")
 	if err != nil {
@@ -13311,8 +15029,11 @@ func (v *FileIfc) GetPath() (result string) {
 }
 
 // g_file_get_relative_path
-// container is not nil, container is File
-// is method
+//
+// [ descendant ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) GetRelativePath(descendant IFile) (result string) {
 	iv, err := _I.Get(559, "File", "get_relative_path")
 	if err != nil {
@@ -13333,8 +15054,9 @@ func (v *FileIfc) GetRelativePath(descendant IFile) (result string) {
 }
 
 // g_file_get_uri
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) GetUri() (result string) {
 	iv, err := _I.Get(560, "File", "get_uri")
 	if err != nil {
@@ -13350,8 +15072,9 @@ func (v *FileIfc) GetUri() (result string) {
 }
 
 // g_file_get_uri_scheme
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) GetUriScheme() (result string) {
 	iv, err := _I.Get(561, "File", "get_uri_scheme")
 	if err != nil {
@@ -13367,8 +15090,11 @@ func (v *FileIfc) GetUriScheme() (result string) {
 }
 
 // g_file_has_parent
-// container is not nil, container is File
-// is method
+//
+// [ parent ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) HasParent(parent IFile) (result bool) {
 	iv, err := _I.Get(562, "File", "has_parent")
 	if err != nil {
@@ -13389,8 +15115,11 @@ func (v *FileIfc) HasParent(parent IFile) (result bool) {
 }
 
 // g_file_has_prefix
-// container is not nil, container is File
-// is method
+//
+// [ prefix ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) HasPrefix(prefix IFile) (result bool) {
 	iv, err := _I.Get(563, "File", "has_prefix")
 	if err != nil {
@@ -13411,8 +15140,11 @@ func (v *FileIfc) HasPrefix(prefix IFile) (result bool) {
 }
 
 // g_file_has_uri_scheme
-// container is not nil, container is File
-// is method
+//
+// [ uri_scheme ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) HasUriScheme(uri_scheme string) (result bool) {
 	iv, err := _I.Get(564, "File", "has_uri_scheme")
 	if err != nil {
@@ -13431,8 +15163,9 @@ func (v *FileIfc) HasUriScheme(uri_scheme string) (result bool) {
 }
 
 // g_file_hash
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) Hash() (result uint32) {
 	iv, err := _I.Get(565, "File", "hash")
 	if err != nil {
@@ -13448,8 +15181,9 @@ func (v *FileIfc) Hash() (result uint32) {
 }
 
 // g_file_is_native
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) IsNative() (result bool) {
 	iv, err := _I.Get(566, "File", "is_native")
 	if err != nil {
@@ -13465,8 +15199,13 @@ func (v *FileIfc) IsNative() (result bool) {
 }
 
 // g_file_load_bytes
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ etag_out ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) LoadBytes(cancellable ICancellable) (result glib.Bytes, etag_out string, err error) {
 	iv, err := _I.Get(567, "File", "load_bytes")
 	if err != nil {
@@ -13491,8 +15230,13 @@ func (v *FileIfc) LoadBytes(cancellable ICancellable) (result glib.Bytes, etag_o
 }
 
 // g_file_load_bytes_async
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) LoadBytesAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(568, "File", "load_bytes_async")
 	if err != nil {
@@ -13512,8 +15256,13 @@ func (v *FileIfc) LoadBytesAsync(cancellable ICancellable, callback int /*TODO_T
 }
 
 // g_file_load_bytes_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ etag_out ] trans: everything, dir: out
+//
+// [ result1 ] trans: everything
+//
 func (v *FileIfc) LoadBytesFinish(result IAsyncResult) (result1 glib.Bytes, etag_out string, err error) {
 	iv, err := _I.Get(569, "File", "load_bytes_finish")
 	if err != nil {
@@ -13538,9 +15287,17 @@ func (v *FileIfc) LoadBytesFinish(result IAsyncResult) (result1 glib.Bytes, etag
 }
 
 // g_file_load_contents
-// container is not nil, container is File
-// is method
-// arg 1 contents lenArgIdx 2
+//
+// [ cancellable ] trans: nothing
+//
+// [ contents ] trans: everything, dir: out
+//
+// [ length ] trans: everything, dir: out
+//
+// [ etag_out ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) LoadContents(cancellable ICancellable) (result bool, contents gi.Uint8Array, etag_out string, err error) {
 	iv, err := _I.Get(570, "File", "load_contents")
 	if err != nil {
@@ -13572,8 +15329,13 @@ func (v *FileIfc) LoadContents(cancellable ICancellable) (result bool, contents 
 }
 
 // g_file_load_contents_async
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) LoadContentsAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(571, "File", "load_contents_async")
 	if err != nil {
@@ -13593,9 +15355,17 @@ func (v *FileIfc) LoadContentsAsync(cancellable ICancellable, callback int /*TOD
 }
 
 // g_file_load_contents_finish
-// container is not nil, container is File
-// is method
-// arg 1 contents lenArgIdx 2
+//
+// [ res ] trans: nothing
+//
+// [ contents ] trans: everything, dir: out
+//
+// [ length ] trans: everything, dir: out
+//
+// [ etag_out ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) LoadContentsFinish(res IAsyncResult) (result bool, contents gi.Uint8Array, etag_out string, err error) {
 	iv, err := _I.Get(572, "File", "load_contents_finish")
 	if err != nil {
@@ -13627,9 +15397,17 @@ func (v *FileIfc) LoadContentsFinish(res IAsyncResult) (result bool, contents gi
 }
 
 // g_file_load_partial_contents_finish
-// container is not nil, container is File
-// is method
-// arg 1 contents lenArgIdx 2
+//
+// [ res ] trans: nothing
+//
+// [ contents ] trans: everything, dir: out
+//
+// [ length ] trans: everything, dir: out
+//
+// [ etag_out ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) LoadPartialContentsFinish(res IAsyncResult) (result bool, contents gi.Uint8Array, etag_out string, err error) {
 	iv, err := _I.Get(573, "File", "load_partial_contents_finish")
 	if err != nil {
@@ -13661,8 +15439,11 @@ func (v *FileIfc) LoadPartialContentsFinish(res IAsyncResult) (result bool, cont
 }
 
 // g_file_make_directory
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) MakeDirectory(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(574, "File", "make_directory")
 	if err != nil {
@@ -13685,8 +15466,15 @@ func (v *FileIfc) MakeDirectory(cancellable ICancellable) (result bool, err erro
 }
 
 // g_file_make_directory_async
-// container is not nil, container is File
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) MakeDirectoryAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(575, "File", "make_directory_async")
 	if err != nil {
@@ -13707,8 +15495,11 @@ func (v *FileIfc) MakeDirectoryAsync(io_priority int32, cancellable ICancellable
 }
 
 // g_file_make_directory_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) MakeDirectoryFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(576, "File", "make_directory_finish")
 	if err != nil {
@@ -13731,8 +15522,11 @@ func (v *FileIfc) MakeDirectoryFinish(result IAsyncResult) (result1 bool, err er
 }
 
 // g_file_make_directory_with_parents
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) MakeDirectoryWithParents(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(577, "File", "make_directory_with_parents")
 	if err != nil {
@@ -13755,8 +15549,13 @@ func (v *FileIfc) MakeDirectoryWithParents(cancellable ICancellable) (result boo
 }
 
 // g_file_make_symbolic_link
-// container is not nil, container is File
-// is method
+//
+// [ symlink_value ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) MakeSymbolicLink(symlink_value string, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(578, "File", "make_symbolic_link")
 	if err != nil {
@@ -13782,8 +15581,17 @@ func (v *FileIfc) MakeSymbolicLink(symlink_value string, cancellable ICancellabl
 }
 
 // g_file_measure_disk_usage_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ disk_usage ] trans: everything, dir: out
+//
+// [ num_dirs ] trans: everything, dir: out
+//
+// [ num_files ] trans: everything, dir: out
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) MeasureDiskUsageFinish(result IAsyncResult) (result1 bool, disk_usage uint64, num_dirs uint64, num_files uint64, err error) {
 	iv, err := _I.Get(579, "File", "measure_disk_usage_finish")
 	if err != nil {
@@ -13812,8 +15620,13 @@ func (v *FileIfc) MeasureDiskUsageFinish(result IAsyncResult) (result1 bool, dis
 }
 
 // g_file_monitor
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) Monitor(flags FileMonitorFlags, cancellable ICancellable) (result FileMonitor, err error) {
 	iv, err := _I.Get(580, "File", "monitor")
 	if err != nil {
@@ -13837,8 +15650,13 @@ func (v *FileIfc) Monitor(flags FileMonitorFlags, cancellable ICancellable) (res
 }
 
 // g_file_monitor_directory
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) MonitorDirectory(flags FileMonitorFlags, cancellable ICancellable) (result FileMonitor, err error) {
 	iv, err := _I.Get(581, "File", "monitor_directory")
 	if err != nil {
@@ -13862,8 +15680,13 @@ func (v *FileIfc) MonitorDirectory(flags FileMonitorFlags, cancellable ICancella
 }
 
 // g_file_monitor_file
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) MonitorFile(flags FileMonitorFlags, cancellable ICancellable) (result FileMonitor, err error) {
 	iv, err := _I.Get(582, "File", "monitor_file")
 	if err != nil {
@@ -13887,8 +15710,17 @@ func (v *FileIfc) MonitorFile(flags FileMonitorFlags, cancellable ICancellable) 
 }
 
 // g_file_mount_enclosing_volume
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) MountEnclosingVolume(flags MountMountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(583, "File", "mount_enclosing_volume")
 	if err != nil {
@@ -13914,8 +15746,11 @@ func (v *FileIfc) MountEnclosingVolume(flags MountMountFlags, mount_operation IM
 }
 
 // g_file_mount_enclosing_volume_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) MountEnclosingVolumeFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(584, "File", "mount_enclosing_volume_finish")
 	if err != nil {
@@ -13938,8 +15773,17 @@ func (v *FileIfc) MountEnclosingVolumeFinish(result IAsyncResult) (result1 bool,
 }
 
 // g_file_mount_mountable
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) MountMountable(flags MountMountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(585, "File", "mount_mountable")
 	if err != nil {
@@ -13965,8 +15809,11 @@ func (v *FileIfc) MountMountable(flags MountMountFlags, mount_operation IMountOp
 }
 
 // g_file_mount_mountable_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v *FileIfc) MountMountableFinish(result IAsyncResult) (result1 File, err error) {
 	iv, err := _I.Get(586, "File", "mount_mountable_finish")
 	if err != nil {
@@ -13989,8 +15836,19 @@ func (v *FileIfc) MountMountableFinish(result IAsyncResult) (result1 File, err e
 }
 
 // g_file_move
-// container is not nil, container is File
-// is method
+//
+// [ destination ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ progress_callback ] trans: nothing
+//
+// [ progress_callback_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) Move(destination IFile, flags FileCopyFlags, cancellable ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer) (result bool, err error) {
 	iv, err := _I.Get(587, "File", "move")
 	if err != nil {
@@ -14021,8 +15879,11 @@ func (v *FileIfc) Move(destination IFile, flags FileCopyFlags, cancellable ICanc
 }
 
 // g_file_open_readwrite
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) OpenReadwrite(cancellable ICancellable) (result FileIOStream, err error) {
 	iv, err := _I.Get(588, "File", "open_readwrite")
 	if err != nil {
@@ -14045,8 +15906,15 @@ func (v *FileIfc) OpenReadwrite(cancellable ICancellable) (result FileIOStream, 
 }
 
 // g_file_open_readwrite_async
-// container is not nil, container is File
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) OpenReadwriteAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(589, "File", "open_readwrite_async")
 	if err != nil {
@@ -14067,8 +15935,11 @@ func (v *FileIfc) OpenReadwriteAsync(io_priority int32, cancellable ICancellable
 }
 
 // g_file_open_readwrite_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) OpenReadwriteFinish(res IAsyncResult) (result FileIOStream, err error) {
 	iv, err := _I.Get(590, "File", "open_readwrite_finish")
 	if err != nil {
@@ -14091,8 +15962,9 @@ func (v *FileIfc) OpenReadwriteFinish(res IAsyncResult) (result FileIOStream, er
 }
 
 // g_file_peek_path
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) PeekPath() (result string) {
 	iv, err := _I.Get(591, "File", "peek_path")
 	if err != nil {
@@ -14103,13 +15975,18 @@ func (v *FileIfc) PeekPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_file_poll_mountable
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) PollMountable(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(592, "File", "poll_mountable")
 	if err != nil {
@@ -14129,8 +16006,11 @@ func (v *FileIfc) PollMountable(cancellable ICancellable, callback int /*TODO_TY
 }
 
 // g_file_poll_mountable_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) PollMountableFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(593, "File", "poll_mountable_finish")
 	if err != nil {
@@ -14153,8 +16033,11 @@ func (v *FileIfc) PollMountableFinish(result IAsyncResult) (result1 bool, err er
 }
 
 // g_file_query_default_handler
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) QueryDefaultHandler(cancellable ICancellable) (result AppInfo, err error) {
 	iv, err := _I.Get(594, "File", "query_default_handler")
 	if err != nil {
@@ -14177,8 +16060,11 @@ func (v *FileIfc) QueryDefaultHandler(cancellable ICancellable) (result AppInfo,
 }
 
 // g_file_query_exists
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) QueryExists(cancellable ICancellable) (result bool) {
 	iv, err := _I.Get(595, "File", "query_exists")
 	if err != nil {
@@ -14199,8 +16085,13 @@ func (v *FileIfc) QueryExists(cancellable ICancellable) (result bool) {
 }
 
 // g_file_query_file_type
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) QueryFileType(flags FileQueryInfoFlags, cancellable ICancellable) (result FileTypeEnum) {
 	iv, err := _I.Get(596, "File", "query_file_type")
 	if err != nil {
@@ -14222,8 +16113,13 @@ func (v *FileIfc) QueryFileType(flags FileQueryInfoFlags, cancellable ICancellab
 }
 
 // g_file_query_filesystem_info
-// container is not nil, container is File
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) QueryFilesystemInfo(attributes string, cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(597, "File", "query_filesystem_info")
 	if err != nil {
@@ -14249,8 +16145,17 @@ func (v *FileIfc) QueryFilesystemInfo(attributes string, cancellable ICancellabl
 }
 
 // g_file_query_filesystem_info_async
-// container is not nil, container is File
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) QueryFilesystemInfoAsync(attributes string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(598, "File", "query_filesystem_info_async")
 	if err != nil {
@@ -14274,8 +16179,11 @@ func (v *FileIfc) QueryFilesystemInfoAsync(attributes string, io_priority int32,
 }
 
 // g_file_query_filesystem_info_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) QueryFilesystemInfoFinish(res IAsyncResult) (result FileInfo, err error) {
 	iv, err := _I.Get(599, "File", "query_filesystem_info_finish")
 	if err != nil {
@@ -14298,8 +16206,15 @@ func (v *FileIfc) QueryFilesystemInfoFinish(res IAsyncResult) (result FileInfo, 
 }
 
 // g_file_query_info
-// container is not nil, container is File
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) QueryInfo(attributes string, flags FileQueryInfoFlags, cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(600, "File", "query_info")
 	if err != nil {
@@ -14326,8 +16241,19 @@ func (v *FileIfc) QueryInfo(attributes string, flags FileQueryInfoFlags, cancell
 }
 
 // g_file_query_info_async
-// container is not nil, container is File
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) QueryInfoAsync(attributes string, flags FileQueryInfoFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(601, "File", "query_info_async")
 	if err != nil {
@@ -14352,8 +16278,11 @@ func (v *FileIfc) QueryInfoAsync(attributes string, flags FileQueryInfoFlags, io
 }
 
 // g_file_query_info_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) QueryInfoFinish(res IAsyncResult) (result FileInfo, err error) {
 	iv, err := _I.Get(602, "File", "query_info_finish")
 	if err != nil {
@@ -14376,8 +16305,11 @@ func (v *FileIfc) QueryInfoFinish(res IAsyncResult) (result FileInfo, err error)
 }
 
 // g_file_query_settable_attributes
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) QuerySettableAttributes(cancellable ICancellable) (result FileAttributeInfoList, err error) {
 	iv, err := _I.Get(603, "File", "query_settable_attributes")
 	if err != nil {
@@ -14400,8 +16332,11 @@ func (v *FileIfc) QuerySettableAttributes(cancellable ICancellable) (result File
 }
 
 // g_file_query_writable_namespaces
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) QueryWritableNamespaces(cancellable ICancellable) (result FileAttributeInfoList, err error) {
 	iv, err := _I.Get(604, "File", "query_writable_namespaces")
 	if err != nil {
@@ -14424,8 +16359,11 @@ func (v *FileIfc) QueryWritableNamespaces(cancellable ICancellable) (result File
 }
 
 // g_file_read
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) Read(cancellable ICancellable) (result FileInputStream, err error) {
 	iv, err := _I.Get(605, "File", "read")
 	if err != nil {
@@ -14448,8 +16386,15 @@ func (v *FileIfc) Read(cancellable ICancellable) (result FileInputStream, err er
 }
 
 // g_file_read_async
-// container is not nil, container is File
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) ReadAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(606, "File", "read_async")
 	if err != nil {
@@ -14470,8 +16415,11 @@ func (v *FileIfc) ReadAsync(io_priority int32, cancellable ICancellable, callbac
 }
 
 // g_file_read_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) ReadFinish(res IAsyncResult) (result FileInputStream, err error) {
 	iv, err := _I.Get(607, "File", "read_finish")
 	if err != nil {
@@ -14494,8 +16442,17 @@ func (v *FileIfc) ReadFinish(res IAsyncResult) (result FileInputStream, err erro
 }
 
 // g_file_replace
-// container is not nil, container is File
-// is method
+//
+// [ etag ] trans: nothing
+//
+// [ make_backup ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) Replace(etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable) (result FileOutputStream, err error) {
 	iv, err := _I.Get(608, "File", "replace")
 	if err != nil {
@@ -14523,8 +16480,21 @@ func (v *FileIfc) Replace(etag string, make_backup bool, flags FileCreateFlags, 
 }
 
 // g_file_replace_async
-// container is not nil, container is File
-// is method
+//
+// [ etag ] trans: nothing
+//
+// [ make_backup ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) ReplaceAsync(etag string, make_backup bool, flags FileCreateFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(609, "File", "replace_async")
 	if err != nil {
@@ -14550,9 +16520,23 @@ func (v *FileIfc) ReplaceAsync(etag string, make_backup bool, flags FileCreateFl
 }
 
 // g_file_replace_contents
-// container is not nil, container is File
-// is method
-// arg 0 contents lenArgIdx 1
+//
+// [ contents ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ etag ] trans: nothing
+//
+// [ make_backup ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ new_etag ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) ReplaceContents(contents gi.Uint8Array, length uint64, etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable) (result bool, new_etag string, err error) {
 	iv, err := _I.Get(610, "File", "replace_contents")
 	if err != nil {
@@ -14584,9 +16568,23 @@ func (v *FileIfc) ReplaceContents(contents gi.Uint8Array, length uint64, etag st
 }
 
 // g_file_replace_contents_async
-// container is not nil, container is File
-// is method
-// arg 0 contents lenArgIdx 1
+//
+// [ contents ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ etag ] trans: nothing
+//
+// [ make_backup ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) ReplaceContentsAsync(contents gi.Uint8Array, length uint64, etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(611, "File", "replace_contents_async")
 	if err != nil {
@@ -14613,8 +16611,21 @@ func (v *FileIfc) ReplaceContentsAsync(contents gi.Uint8Array, length uint64, et
 }
 
 // g_file_replace_contents_bytes_async
-// container is not nil, container is File
-// is method
+//
+// [ contents ] trans: nothing
+//
+// [ etag ] trans: nothing
+//
+// [ make_backup ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) ReplaceContentsBytesAsync(contents glib.Bytes, etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(612, "File", "replace_contents_bytes_async")
 	if err != nil {
@@ -14640,8 +16651,13 @@ func (v *FileIfc) ReplaceContentsBytesAsync(contents glib.Bytes, etag string, ma
 }
 
 // g_file_replace_contents_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ new_etag ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) ReplaceContentsFinish(res IAsyncResult) (result bool, new_etag string, err error) {
 	iv, err := _I.Get(613, "File", "replace_contents_finish")
 	if err != nil {
@@ -14666,8 +16682,11 @@ func (v *FileIfc) ReplaceContentsFinish(res IAsyncResult) (result bool, new_etag
 }
 
 // g_file_replace_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) ReplaceFinish(res IAsyncResult) (result FileOutputStream, err error) {
 	iv, err := _I.Get(614, "File", "replace_finish")
 	if err != nil {
@@ -14690,8 +16709,17 @@ func (v *FileIfc) ReplaceFinish(res IAsyncResult) (result FileOutputStream, err 
 }
 
 // g_file_replace_readwrite
-// container is not nil, container is File
-// is method
+//
+// [ etag ] trans: nothing
+//
+// [ make_backup ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) ReplaceReadwrite(etag string, make_backup bool, flags FileCreateFlags, cancellable ICancellable) (result FileIOStream, err error) {
 	iv, err := _I.Get(615, "File", "replace_readwrite")
 	if err != nil {
@@ -14719,8 +16747,21 @@ func (v *FileIfc) ReplaceReadwrite(etag string, make_backup bool, flags FileCrea
 }
 
 // g_file_replace_readwrite_async
-// container is not nil, container is File
-// is method
+//
+// [ etag ] trans: nothing
+//
+// [ make_backup ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) ReplaceReadwriteAsync(etag string, make_backup bool, flags FileCreateFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(616, "File", "replace_readwrite_async")
 	if err != nil {
@@ -14746,8 +16787,11 @@ func (v *FileIfc) ReplaceReadwriteAsync(etag string, make_backup bool, flags Fil
 }
 
 // g_file_replace_readwrite_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) ReplaceReadwriteFinish(res IAsyncResult) (result FileIOStream, err error) {
 	iv, err := _I.Get(617, "File", "replace_readwrite_finish")
 	if err != nil {
@@ -14770,8 +16814,11 @@ func (v *FileIfc) ReplaceReadwriteFinish(res IAsyncResult) (result FileIOStream,
 }
 
 // g_file_resolve_relative_path
-// container is not nil, container is File
-// is method
+//
+// [ relative_path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) ResolveRelativePath(relative_path string) (result File) {
 	iv, err := _I.Get(618, "File", "resolve_relative_path")
 	if err != nil {
@@ -14790,8 +16837,19 @@ func (v *FileIfc) ResolveRelativePath(relative_path string) (result File) {
 }
 
 // g_file_set_attribute
-// container is not nil, container is File
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ value_p ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) SetAttribute(attribute string, type1 FileAttributeTypeEnum, value_p unsafe.Pointer, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(619, "File", "set_attribute")
 	if err != nil {
@@ -14820,8 +16878,17 @@ func (v *FileIfc) SetAttribute(attribute string, type1 FileAttributeTypeEnum, va
 }
 
 // g_file_set_attribute_byte_string
-// container is not nil, container is File
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) SetAttributeByteString(attribute string, value string, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(620, "File", "set_attribute_byte_string")
 	if err != nil {
@@ -14851,8 +16918,17 @@ func (v *FileIfc) SetAttributeByteString(attribute string, value string, flags F
 }
 
 // g_file_set_attribute_int32
-// container is not nil, container is File
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) SetAttributeInt32(attribute string, value int32, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(621, "File", "set_attribute_int32")
 	if err != nil {
@@ -14880,8 +16956,17 @@ func (v *FileIfc) SetAttributeInt32(attribute string, value int32, flags FileQue
 }
 
 // g_file_set_attribute_int64
-// container is not nil, container is File
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) SetAttributeInt64(attribute string, value int64, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(622, "File", "set_attribute_int64")
 	if err != nil {
@@ -14909,8 +16994,17 @@ func (v *FileIfc) SetAttributeInt64(attribute string, value int64, flags FileQue
 }
 
 // g_file_set_attribute_string
-// container is not nil, container is File
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) SetAttributeString(attribute string, value string, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(623, "File", "set_attribute_string")
 	if err != nil {
@@ -14940,8 +17034,17 @@ func (v *FileIfc) SetAttributeString(attribute string, value string, flags FileQ
 }
 
 // g_file_set_attribute_uint32
-// container is not nil, container is File
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) SetAttributeUint32(attribute string, value uint32, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(624, "File", "set_attribute_uint32")
 	if err != nil {
@@ -14969,8 +17072,17 @@ func (v *FileIfc) SetAttributeUint32(attribute string, value uint32, flags FileQ
 }
 
 // g_file_set_attribute_uint64
-// container is not nil, container is File
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) SetAttributeUint64(attribute string, value uint64, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(625, "File", "set_attribute_uint64")
 	if err != nil {
@@ -14998,8 +17110,19 @@ func (v *FileIfc) SetAttributeUint64(attribute string, value uint64, flags FileQ
 }
 
 // g_file_set_attributes_async
-// container is not nil, container is File
-// is method
+//
+// [ info ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) SetAttributesAsync(info IFileInfo, flags FileQueryInfoFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(626, "File", "set_attributes_async")
 	if err != nil {
@@ -15026,8 +17149,13 @@ func (v *FileIfc) SetAttributesAsync(info IFileInfo, flags FileQueryInfoFlags, i
 }
 
 // g_file_set_attributes_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ info ] trans: everything, dir: out
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) SetAttributesFinish(result IAsyncResult) (result1 bool, info FileInfo, err error) {
 	iv, err := _I.Get(627, "File", "set_attributes_finish")
 	if err != nil {
@@ -15052,8 +17180,15 @@ func (v *FileIfc) SetAttributesFinish(result IAsyncResult) (result1 bool, info F
 }
 
 // g_file_set_attributes_from_info
-// container is not nil, container is File
-// is method
+//
+// [ info ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) SetAttributesFromInfo(info IFileInfo, flags FileQueryInfoFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(628, "File", "set_attributes_from_info")
 	if err != nil {
@@ -15082,8 +17217,13 @@ func (v *FileIfc) SetAttributesFromInfo(info IFileInfo, flags FileQueryInfoFlags
 }
 
 // g_file_set_display_name
-// container is not nil, container is File
-// is method
+//
+// [ display_name ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) SetDisplayName(display_name string, cancellable ICancellable) (result File, err error) {
 	iv, err := _I.Get(629, "File", "set_display_name")
 	if err != nil {
@@ -15109,8 +17249,17 @@ func (v *FileIfc) SetDisplayName(display_name string, cancellable ICancellable) 
 }
 
 // g_file_set_display_name_async
-// container is not nil, container is File
-// is method
+//
+// [ display_name ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) SetDisplayNameAsync(display_name string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(630, "File", "set_display_name_async")
 	if err != nil {
@@ -15134,8 +17283,11 @@ func (v *FileIfc) SetDisplayNameAsync(display_name string, io_priority int32, ca
 }
 
 // g_file_set_display_name_finish
-// container is not nil, container is File
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *FileIfc) SetDisplayNameFinish(res IAsyncResult) (result File, err error) {
 	iv, err := _I.Get(631, "File", "set_display_name_finish")
 	if err != nil {
@@ -15158,8 +17310,17 @@ func (v *FileIfc) SetDisplayNameFinish(res IAsyncResult) (result File, err error
 }
 
 // g_file_start_mountable
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ start_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) StartMountable(flags DriveStartFlags, start_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(632, "File", "start_mountable")
 	if err != nil {
@@ -15185,8 +17346,11 @@ func (v *FileIfc) StartMountable(flags DriveStartFlags, start_operation IMountOp
 }
 
 // g_file_start_mountable_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) StartMountableFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(633, "File", "start_mountable_finish")
 	if err != nil {
@@ -15209,8 +17373,17 @@ func (v *FileIfc) StartMountableFinish(result IAsyncResult) (result1 bool, err e
 }
 
 // g_file_stop_mountable
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) StopMountable(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(634, "File", "stop_mountable")
 	if err != nil {
@@ -15236,8 +17409,11 @@ func (v *FileIfc) StopMountable(flags MountUnmountFlags, mount_operation IMountO
 }
 
 // g_file_stop_mountable_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) StopMountableFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(635, "File", "stop_mountable_finish")
 	if err != nil {
@@ -15260,8 +17436,9 @@ func (v *FileIfc) StopMountableFinish(result IAsyncResult) (result1 bool, err er
 }
 
 // g_file_supports_thread_contexts
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) SupportsThreadContexts() (result bool) {
 	iv, err := _I.Get(636, "File", "supports_thread_contexts")
 	if err != nil {
@@ -15277,8 +17454,11 @@ func (v *FileIfc) SupportsThreadContexts() (result bool) {
 }
 
 // g_file_trash
-// container is not nil, container is File
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *FileIfc) Trash(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(637, "File", "trash")
 	if err != nil {
@@ -15301,8 +17481,15 @@ func (v *FileIfc) Trash(cancellable ICancellable) (result bool, err error) {
 }
 
 // g_file_trash_async
-// container is not nil, container is File
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) TrashAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(638, "File", "trash_async")
 	if err != nil {
@@ -15323,8 +17510,11 @@ func (v *FileIfc) TrashAsync(io_priority int32, cancellable ICancellable, callba
 }
 
 // g_file_trash_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) TrashFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(639, "File", "trash_finish")
 	if err != nil {
@@ -15347,8 +17537,15 @@ func (v *FileIfc) TrashFinish(result IAsyncResult) (result1 bool, err error) {
 }
 
 // g_file_unmount_mountable
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) UnmountMountable(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(640, "File", "unmount_mountable")
 	if err != nil {
@@ -15369,8 +17566,11 @@ func (v *FileIfc) UnmountMountable(flags MountUnmountFlags, cancellable ICancell
 }
 
 // g_file_unmount_mountable_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) UnmountMountableFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(641, "File", "unmount_mountable_finish")
 	if err != nil {
@@ -15393,8 +17593,17 @@ func (v *FileIfc) UnmountMountableFinish(result IAsyncResult) (result1 bool, err
 }
 
 // g_file_unmount_mountable_with_operation
-// container is not nil, container is File
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *FileIfc) UnmountMountableWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(642, "File", "unmount_mountable_with_operation")
 	if err != nil {
@@ -15420,8 +17629,11 @@ func (v *FileIfc) UnmountMountableWithOperation(flags MountUnmountFlags, mount_o
 }
 
 // g_file_unmount_mountable_with_operation_finish
-// container is not nil, container is File
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *FileIfc) UnmountMountableWithOperationFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(643, "File", "unmount_mountable_with_operation_finish")
 	if err != nil {
@@ -15482,8 +17694,9 @@ func FileAttributeInfoListGetType() gi.GType {
 }
 
 // g_file_attribute_info_list_new
-// container is not nil, container is FileAttributeInfoList
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewFileAttributeInfoList() (result FileAttributeInfoList) {
 	iv, err := _I.Get(644, "FileAttributeInfoList", "new")
 	if err != nil {
@@ -15497,8 +17710,13 @@ func NewFileAttributeInfoList() (result FileAttributeInfoList) {
 }
 
 // g_file_attribute_info_list_add
-// container is not nil, container is FileAttributeInfoList
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
 func (v FileAttributeInfoList) Add(name string, type1 FileAttributeTypeEnum, flags FileAttributeInfoFlags) {
 	iv, err := _I.Get(645, "FileAttributeInfoList", "add")
 	if err != nil {
@@ -15516,8 +17734,9 @@ func (v FileAttributeInfoList) Add(name string, type1 FileAttributeTypeEnum, fla
 }
 
 // g_file_attribute_info_list_dup
-// container is not nil, container is FileAttributeInfoList
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FileAttributeInfoList) Dup() (result FileAttributeInfoList) {
 	iv, err := _I.Get(646, "FileAttributeInfoList", "dup")
 	if err != nil {
@@ -15533,8 +17752,11 @@ func (v FileAttributeInfoList) Dup() (result FileAttributeInfoList) {
 }
 
 // g_file_attribute_info_list_lookup
-// container is not nil, container is FileAttributeInfoList
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileAttributeInfoList) Lookup(name string) (result FileAttributeInfo) {
 	iv, err := _I.Get(647, "FileAttributeInfoList", "lookup")
 	if err != nil {
@@ -15553,8 +17775,9 @@ func (v FileAttributeInfoList) Lookup(name string) (result FileAttributeInfo) {
 }
 
 // g_file_attribute_info_list_ref
-// container is not nil, container is FileAttributeInfoList
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FileAttributeInfoList) Ref() (result FileAttributeInfoList) {
 	iv, err := _I.Get(648, "FileAttributeInfoList", "ref")
 	if err != nil {
@@ -15570,8 +17793,7 @@ func (v FileAttributeInfoList) Ref() (result FileAttributeInfoList) {
 }
 
 // g_file_attribute_info_list_unref
-// container is not nil, container is FileAttributeInfoList
-// is method
+//
 func (v FileAttributeInfoList) Unref() {
 	iv, err := _I.Get(649, "FileAttributeInfoList", "unref")
 	if err != nil {
@@ -15594,8 +17816,11 @@ func FileAttributeMatcherGetType() gi.GType {
 }
 
 // g_file_attribute_matcher_new
-// container is not nil, container is FileAttributeMatcher
-// is constructor
+//
+// [ attributes ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewFileAttributeMatcher(attributes string) (result FileAttributeMatcher) {
 	iv, err := _I.Get(650, "FileAttributeMatcher", "new")
 	if err != nil {
@@ -15613,8 +17838,11 @@ func NewFileAttributeMatcher(attributes string) (result FileAttributeMatcher) {
 }
 
 // g_file_attribute_matcher_enumerate_namespace
-// container is not nil, container is FileAttributeMatcher
-// is method
+//
+// [ ns ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileAttributeMatcher) EnumerateNamespace(ns string) (result bool) {
 	iv, err := _I.Get(651, "FileAttributeMatcher", "enumerate_namespace")
 	if err != nil {
@@ -15633,8 +17861,9 @@ func (v FileAttributeMatcher) EnumerateNamespace(ns string) (result bool) {
 }
 
 // g_file_attribute_matcher_enumerate_next
-// container is not nil, container is FileAttributeMatcher
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileAttributeMatcher) EnumerateNext() (result string) {
 	iv, err := _I.Get(652, "FileAttributeMatcher", "enumerate_next")
 	if err != nil {
@@ -15645,13 +17874,16 @@ func (v FileAttributeMatcher) EnumerateNext() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_file_attribute_matcher_matches
-// container is not nil, container is FileAttributeMatcher
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileAttributeMatcher) Matches(attribute string) (result bool) {
 	iv, err := _I.Get(653, "FileAttributeMatcher", "matches")
 	if err != nil {
@@ -15670,8 +17902,11 @@ func (v FileAttributeMatcher) Matches(attribute string) (result bool) {
 }
 
 // g_file_attribute_matcher_matches_only
-// container is not nil, container is FileAttributeMatcher
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileAttributeMatcher) MatchesOnly(attribute string) (result bool) {
 	iv, err := _I.Get(654, "FileAttributeMatcher", "matches_only")
 	if err != nil {
@@ -15690,8 +17925,9 @@ func (v FileAttributeMatcher) MatchesOnly(attribute string) (result bool) {
 }
 
 // g_file_attribute_matcher_ref
-// container is not nil, container is FileAttributeMatcher
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FileAttributeMatcher) Ref() (result FileAttributeMatcher) {
 	iv, err := _I.Get(655, "FileAttributeMatcher", "ref")
 	if err != nil {
@@ -15707,8 +17943,11 @@ func (v FileAttributeMatcher) Ref() (result FileAttributeMatcher) {
 }
 
 // g_file_attribute_matcher_subtract
-// container is not nil, container is FileAttributeMatcher
-// is method
+//
+// [ subtract ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FileAttributeMatcher) Subtract(subtract FileAttributeMatcher) (result FileAttributeMatcher) {
 	iv, err := _I.Get(656, "FileAttributeMatcher", "subtract")
 	if err != nil {
@@ -15725,8 +17964,9 @@ func (v FileAttributeMatcher) Subtract(subtract FileAttributeMatcher) (result Fi
 }
 
 // g_file_attribute_matcher_to_string
-// container is not nil, container is FileAttributeMatcher
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FileAttributeMatcher) ToString() (result string) {
 	iv, err := _I.Get(657, "FileAttributeMatcher", "to_string")
 	if err != nil {
@@ -15742,8 +17982,7 @@ func (v FileAttributeMatcher) ToString() (result string) {
 }
 
 // g_file_attribute_matcher_unref
-// container is not nil, container is FileAttributeMatcher
-// is method
+//
 func (v FileAttributeMatcher) Unref() {
 	iv, err := _I.Get(658, "FileAttributeMatcher", "unref")
 	if err != nil {
@@ -15837,8 +18076,9 @@ func FileDescriptorBasedGetType() gi.GType {
 }
 
 // g_file_descriptor_based_get_fd
-// container is not nil, container is FileDescriptorBased
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *FileDescriptorBasedIfc) GetFd() (result int32) {
 	iv, err := _I.Get(659, "FileDescriptorBased", "get_fd")
 	if err != nil {
@@ -15870,8 +18110,11 @@ func FileEnumeratorGetType() gi.GType {
 }
 
 // g_file_enumerator_close
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileEnumerator) Close(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(660, "FileEnumerator", "close")
 	if err != nil {
@@ -15894,8 +18137,15 @@ func (v FileEnumerator) Close(cancellable ICancellable) (result bool, err error)
 }
 
 // g_file_enumerator_close_async
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v FileEnumerator) CloseAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(661, "FileEnumerator", "close_async")
 	if err != nil {
@@ -15916,8 +18166,11 @@ func (v FileEnumerator) CloseAsync(io_priority int32, cancellable ICancellable, 
 }
 
 // g_file_enumerator_close_finish
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v FileEnumerator) CloseFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(662, "FileEnumerator", "close_finish")
 	if err != nil {
@@ -15940,8 +18193,11 @@ func (v FileEnumerator) CloseFinish(result IAsyncResult) (result1 bool, err erro
 }
 
 // g_file_enumerator_get_child
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ info ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FileEnumerator) GetChild(info IFileInfo) (result File) {
 	iv, err := _I.Get(663, "FileEnumerator", "get_child")
 	if err != nil {
@@ -15962,8 +18218,9 @@ func (v FileEnumerator) GetChild(info IFileInfo) (result File) {
 }
 
 // g_file_enumerator_get_container
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileEnumerator) GetContainer() (result File) {
 	iv, err := _I.Get(664, "FileEnumerator", "get_container")
 	if err != nil {
@@ -15979,8 +18236,9 @@ func (v FileEnumerator) GetContainer() (result File) {
 }
 
 // g_file_enumerator_has_pending
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileEnumerator) HasPending() (result bool) {
 	iv, err := _I.Get(665, "FileEnumerator", "has_pending")
 	if err != nil {
@@ -15996,8 +18254,9 @@ func (v FileEnumerator) HasPending() (result bool) {
 }
 
 // g_file_enumerator_is_closed
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileEnumerator) IsClosed() (result bool) {
 	iv, err := _I.Get(666, "FileEnumerator", "is_closed")
 	if err != nil {
@@ -16013,8 +18272,15 @@ func (v FileEnumerator) IsClosed() (result bool) {
 }
 
 // g_file_enumerator_iterate
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ out_info ] trans: nothing, dir: out
+//
+// [ out_child ] trans: nothing, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileEnumerator) Iterate(cancellable ICancellable) (result bool, out_info FileInfo, out_child File, err error) {
 	iv, err := _I.Get(667, "FileEnumerator", "iterate")
 	if err != nil {
@@ -16041,8 +18307,11 @@ func (v FileEnumerator) Iterate(cancellable ICancellable) (result bool, out_info
 }
 
 // g_file_enumerator_next_file
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FileEnumerator) NextFile(cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(668, "FileEnumerator", "next_file")
 	if err != nil {
@@ -16065,8 +18334,17 @@ func (v FileEnumerator) NextFile(cancellable ICancellable) (result FileInfo, err
 }
 
 // g_file_enumerator_next_files_async
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ num_files ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v FileEnumerator) NextFilesAsync(num_files int32, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(669, "FileEnumerator", "next_files_async")
 	if err != nil {
@@ -16088,8 +18366,11 @@ func (v FileEnumerator) NextFilesAsync(num_files int32, io_priority int32, cance
 }
 
 // g_file_enumerator_next_files_finish
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v FileEnumerator) NextFilesFinish(result IAsyncResult) (result1 glib.List, err error) {
 	iv, err := _I.Get(670, "FileEnumerator", "next_files_finish")
 	if err != nil {
@@ -16112,8 +18393,9 @@ func (v FileEnumerator) NextFilesFinish(result IAsyncResult) (result1 glib.List,
 }
 
 // g_file_enumerator_set_pending
-// container is not nil, container is FileEnumerator
-// is method
+//
+// [ pending ] trans: nothing
+//
 func (v FileEnumerator) SetPending(pending bool) {
 	iv, err := _I.Get(671, "FileEnumerator", "set_pending")
 	if err != nil {
@@ -16155,8 +18437,9 @@ func FileIOStreamGetType() gi.GType {
 }
 
 // g_file_io_stream_get_etag
-// container is not nil, container is FileIOStream
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FileIOStream) GetEtag() (result string) {
 	iv, err := _I.Get(672, "FileIOStream", "get_etag")
 	if err != nil {
@@ -16172,8 +18455,13 @@ func (v FileIOStream) GetEtag() (result string) {
 }
 
 // g_file_io_stream_query_info
-// container is not nil, container is FileIOStream
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FileIOStream) QueryInfo(attributes string, cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(673, "FileIOStream", "query_info")
 	if err != nil {
@@ -16199,8 +18487,17 @@ func (v FileIOStream) QueryInfo(attributes string, cancellable ICancellable) (re
 }
 
 // g_file_io_stream_query_info_async
-// container is not nil, container is FileIOStream
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v FileIOStream) QueryInfoAsync(attributes string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(674, "FileIOStream", "query_info_async")
 	if err != nil {
@@ -16224,8 +18521,11 @@ func (v FileIOStream) QueryInfoAsync(attributes string, io_priority int32, cance
 }
 
 // g_file_io_stream_query_info_finish
-// container is not nil, container is FileIOStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v FileIOStream) QueryInfoFinish(result IAsyncResult) (result1 FileInfo, err error) {
 	iv, err := _I.Get(675, "FileIOStream", "query_info_finish")
 	if err != nil {
@@ -16278,8 +18578,11 @@ func FileIconGetType() gi.GType {
 }
 
 // g_file_icon_new
-// container is not nil, container is FileIcon
-// is constructor
+//
+// [ file ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewFileIcon(file IFile) (result FileIcon) {
 	iv, err := _I.Get(676, "FileIcon", "new")
 	if err != nil {
@@ -16299,8 +18602,9 @@ func NewFileIcon(file IFile) (result FileIcon) {
 }
 
 // g_file_icon_get_file
-// container is not nil, container is FileIcon
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileIcon) GetFile() (result File) {
 	iv, err := _I.Get(677, "FileIcon", "get_file")
 	if err != nil {
@@ -16333,8 +18637,9 @@ func FileInfoGetType() gi.GType {
 }
 
 // g_file_info_new
-// container is not nil, container is FileInfo
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewFileInfo() (result FileInfo) {
 	iv, err := _I.Get(678, "FileInfo", "new")
 	if err != nil {
@@ -16348,8 +18653,7 @@ func NewFileInfo() (result FileInfo) {
 }
 
 // g_file_info_clear_status
-// container is not nil, container is FileInfo
-// is method
+//
 func (v FileInfo) ClearStatus() {
 	iv, err := _I.Get(679, "FileInfo", "clear_status")
 	if err != nil {
@@ -16362,8 +18666,9 @@ func (v FileInfo) ClearStatus() {
 }
 
 // g_file_info_copy_into
-// container is not nil, container is FileInfo
-// is method
+//
+// [ dest_info ] trans: nothing
+//
 func (v FileInfo) CopyInto(dest_info IFileInfo) {
 	iv, err := _I.Get(680, "FileInfo", "copy_into")
 	if err != nil {
@@ -16381,8 +18686,9 @@ func (v FileInfo) CopyInto(dest_info IFileInfo) {
 }
 
 // g_file_info_dup
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FileInfo) Dup() (result FileInfo) {
 	iv, err := _I.Get(681, "FileInfo", "dup")
 	if err != nil {
@@ -16398,8 +18704,11 @@ func (v FileInfo) Dup() (result FileInfo) {
 }
 
 // g_file_info_get_attribute_as_string
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FileInfo) GetAttributeAsString(attribute string) (result string) {
 	iv, err := _I.Get(682, "FileInfo", "get_attribute_as_string")
 	if err != nil {
@@ -16418,8 +18727,11 @@ func (v FileInfo) GetAttributeAsString(attribute string) (result string) {
 }
 
 // g_file_info_get_attribute_boolean
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeBoolean(attribute string) (result bool) {
 	iv, err := _I.Get(683, "FileInfo", "get_attribute_boolean")
 	if err != nil {
@@ -16438,8 +18750,11 @@ func (v FileInfo) GetAttributeBoolean(attribute string) (result bool) {
 }
 
 // g_file_info_get_attribute_byte_string
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeByteString(attribute string) (result string) {
 	iv, err := _I.Get(684, "FileInfo", "get_attribute_byte_string")
 	if err != nil {
@@ -16453,13 +18768,22 @@ func (v FileInfo) GetAttributeByteString(attribute string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_attribute)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_file_info_get_attribute_data
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ type1 ] trans: everything, dir: out
+//
+// [ value_pp ] trans: everything, dir: out
+//
+// [ status ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeData(attribute string) (result bool, type1 FileAttributeTypeEnum, value_pp unsafe.Pointer, status FileAttributeStatusEnum) {
 	iv, err := _I.Get(685, "FileInfo", "get_attribute_data")
 	if err != nil {
@@ -16485,8 +18809,11 @@ func (v FileInfo) GetAttributeData(attribute string) (result bool, type1 FileAtt
 }
 
 // g_file_info_get_attribute_int32
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeInt32(attribute string) (result int32) {
 	iv, err := _I.Get(686, "FileInfo", "get_attribute_int32")
 	if err != nil {
@@ -16505,8 +18832,11 @@ func (v FileInfo) GetAttributeInt32(attribute string) (result int32) {
 }
 
 // g_file_info_get_attribute_int64
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeInt64(attribute string) (result int64) {
 	iv, err := _I.Get(687, "FileInfo", "get_attribute_int64")
 	if err != nil {
@@ -16525,8 +18855,11 @@ func (v FileInfo) GetAttributeInt64(attribute string) (result int64) {
 }
 
 // g_file_info_get_attribute_object
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeObject(attribute string) (result gobject.Object) {
 	iv, err := _I.Get(688, "FileInfo", "get_attribute_object")
 	if err != nil {
@@ -16545,8 +18878,11 @@ func (v FileInfo) GetAttributeObject(attribute string) (result gobject.Object) {
 }
 
 // g_file_info_get_attribute_status
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeStatus(attribute string) (result FileAttributeStatusEnum) {
 	iv, err := _I.Get(689, "FileInfo", "get_attribute_status")
 	if err != nil {
@@ -16565,8 +18901,11 @@ func (v FileInfo) GetAttributeStatus(attribute string) (result FileAttributeStat
 }
 
 // g_file_info_get_attribute_string
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeString(attribute string) (result string) {
 	iv, err := _I.Get(690, "FileInfo", "get_attribute_string")
 	if err != nil {
@@ -16580,13 +18919,16 @@ func (v FileInfo) GetAttributeString(attribute string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_attribute)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_file_info_get_attribute_stringv
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeStringv(attribute string) (result gi.CStrArray) {
 	iv, err := _I.Get(691, "FileInfo", "get_attribute_stringv")
 	if err != nil {
@@ -16606,8 +18948,11 @@ func (v FileInfo) GetAttributeStringv(attribute string) (result gi.CStrArray) {
 }
 
 // g_file_info_get_attribute_type
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeType(attribute string) (result FileAttributeTypeEnum) {
 	iv, err := _I.Get(692, "FileInfo", "get_attribute_type")
 	if err != nil {
@@ -16626,8 +18971,11 @@ func (v FileInfo) GetAttributeType(attribute string) (result FileAttributeTypeEn
 }
 
 // g_file_info_get_attribute_uint32
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeUint32(attribute string) (result uint32) {
 	iv, err := _I.Get(693, "FileInfo", "get_attribute_uint32")
 	if err != nil {
@@ -16646,8 +18994,11 @@ func (v FileInfo) GetAttributeUint32(attribute string) (result uint32) {
 }
 
 // g_file_info_get_attribute_uint64
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetAttributeUint64(attribute string) (result uint64) {
 	iv, err := _I.Get(694, "FileInfo", "get_attribute_uint64")
 	if err != nil {
@@ -16666,8 +19017,9 @@ func (v FileInfo) GetAttributeUint64(attribute string) (result uint64) {
 }
 
 // g_file_info_get_content_type
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetContentType() (result string) {
 	iv, err := _I.Get(695, "FileInfo", "get_content_type")
 	if err != nil {
@@ -16678,13 +19030,14 @@ func (v FileInfo) GetContentType() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_file_info_get_deletion_date
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FileInfo) GetDeletionDate() (result glib.DateTime) {
 	iv, err := _I.Get(696, "FileInfo", "get_deletion_date")
 	if err != nil {
@@ -16700,8 +19053,9 @@ func (v FileInfo) GetDeletionDate() (result glib.DateTime) {
 }
 
 // g_file_info_get_display_name
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetDisplayName() (result string) {
 	iv, err := _I.Get(697, "FileInfo", "get_display_name")
 	if err != nil {
@@ -16712,13 +19066,14 @@ func (v FileInfo) GetDisplayName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_file_info_get_edit_name
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetEditName() (result string) {
 	iv, err := _I.Get(698, "FileInfo", "get_edit_name")
 	if err != nil {
@@ -16729,13 +19084,14 @@ func (v FileInfo) GetEditName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_file_info_get_etag
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetEtag() (result string) {
 	iv, err := _I.Get(699, "FileInfo", "get_etag")
 	if err != nil {
@@ -16746,13 +19102,14 @@ func (v FileInfo) GetEtag() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_file_info_get_file_type
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetFileType() (result FileTypeEnum) {
 	iv, err := _I.Get(700, "FileInfo", "get_file_type")
 	if err != nil {
@@ -16768,8 +19125,9 @@ func (v FileInfo) GetFileType() (result FileTypeEnum) {
 }
 
 // g_file_info_get_icon
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetIcon() (result Icon) {
 	iv, err := _I.Get(701, "FileInfo", "get_icon")
 	if err != nil {
@@ -16785,8 +19143,9 @@ func (v FileInfo) GetIcon() (result Icon) {
 }
 
 // g_file_info_get_is_backup
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetIsBackup() (result bool) {
 	iv, err := _I.Get(702, "FileInfo", "get_is_backup")
 	if err != nil {
@@ -16802,8 +19161,9 @@ func (v FileInfo) GetIsBackup() (result bool) {
 }
 
 // g_file_info_get_is_hidden
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetIsHidden() (result bool) {
 	iv, err := _I.Get(703, "FileInfo", "get_is_hidden")
 	if err != nil {
@@ -16819,8 +19179,9 @@ func (v FileInfo) GetIsHidden() (result bool) {
 }
 
 // g_file_info_get_is_symlink
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetIsSymlink() (result bool) {
 	iv, err := _I.Get(704, "FileInfo", "get_is_symlink")
 	if err != nil {
@@ -16836,8 +19197,9 @@ func (v FileInfo) GetIsSymlink() (result bool) {
 }
 
 // g_file_info_get_modification_time
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing, dir: out
+//
 func (v FileInfo) GetModificationTime(result glib.TimeVal) {
 	iv, err := _I.Get(705, "FileInfo", "get_modification_time")
 	if err != nil {
@@ -16851,8 +19213,9 @@ func (v FileInfo) GetModificationTime(result glib.TimeVal) {
 }
 
 // g_file_info_get_name
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetName() (result string) {
 	iv, err := _I.Get(706, "FileInfo", "get_name")
 	if err != nil {
@@ -16863,13 +19226,14 @@ func (v FileInfo) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_file_info_get_size
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetSize() (result int64) {
 	iv, err := _I.Get(707, "FileInfo", "get_size")
 	if err != nil {
@@ -16885,8 +19249,9 @@ func (v FileInfo) GetSize() (result int64) {
 }
 
 // g_file_info_get_sort_order
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetSortOrder() (result int32) {
 	iv, err := _I.Get(708, "FileInfo", "get_sort_order")
 	if err != nil {
@@ -16902,8 +19267,9 @@ func (v FileInfo) GetSortOrder() (result int32) {
 }
 
 // g_file_info_get_symbolic_icon
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetSymbolicIcon() (result Icon) {
 	iv, err := _I.Get(709, "FileInfo", "get_symbolic_icon")
 	if err != nil {
@@ -16919,8 +19285,9 @@ func (v FileInfo) GetSymbolicIcon() (result Icon) {
 }
 
 // g_file_info_get_symlink_target
-// container is not nil, container is FileInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) GetSymlinkTarget() (result string) {
 	iv, err := _I.Get(710, "FileInfo", "get_symlink_target")
 	if err != nil {
@@ -16931,13 +19298,16 @@ func (v FileInfo) GetSymlinkTarget() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_file_info_has_attribute
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) HasAttribute(attribute string) (result bool) {
 	iv, err := _I.Get(711, "FileInfo", "has_attribute")
 	if err != nil {
@@ -16956,8 +19326,11 @@ func (v FileInfo) HasAttribute(attribute string) (result bool) {
 }
 
 // g_file_info_has_namespace
-// container is not nil, container is FileInfo
-// is method
+//
+// [ name_space ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) HasNamespace(name_space string) (result bool) {
 	iv, err := _I.Get(712, "FileInfo", "has_namespace")
 	if err != nil {
@@ -16976,8 +19349,11 @@ func (v FileInfo) HasNamespace(name_space string) (result bool) {
 }
 
 // g_file_info_list_attributes
-// container is not nil, container is FileInfo
-// is method
+//
+// [ name_space ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FileInfo) ListAttributes(name_space string) (result gi.CStrArray) {
 	iv, err := _I.Get(713, "FileInfo", "list_attributes")
 	if err != nil {
@@ -16997,8 +19373,9 @@ func (v FileInfo) ListAttributes(name_space string) (result gi.CStrArray) {
 }
 
 // g_file_info_remove_attribute
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
 func (v FileInfo) RemoveAttribute(attribute string) {
 	iv, err := _I.Get(714, "FileInfo", "remove_attribute")
 	if err != nil {
@@ -17014,8 +19391,13 @@ func (v FileInfo) RemoveAttribute(attribute string) {
 }
 
 // g_file_info_set_attribute
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ value_p ] trans: nothing
+//
 func (v FileInfo) SetAttribute(attribute string, type1 FileAttributeTypeEnum, value_p unsafe.Pointer) {
 	iv, err := _I.Get(715, "FileInfo", "set_attribute")
 	if err != nil {
@@ -17033,8 +19415,11 @@ func (v FileInfo) SetAttribute(attribute string, type1 FileAttributeTypeEnum, va
 }
 
 // g_file_info_set_attribute_boolean
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ attr_value ] trans: nothing
+//
 func (v FileInfo) SetAttributeBoolean(attribute string, attr_value bool) {
 	iv, err := _I.Get(716, "FileInfo", "set_attribute_boolean")
 	if err != nil {
@@ -17051,8 +19436,11 @@ func (v FileInfo) SetAttributeBoolean(attribute string, attr_value bool) {
 }
 
 // g_file_info_set_attribute_byte_string
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ attr_value ] trans: nothing
+//
 func (v FileInfo) SetAttributeByteString(attribute string, attr_value string) {
 	iv, err := _I.Get(717, "FileInfo", "set_attribute_byte_string")
 	if err != nil {
@@ -17071,8 +19459,11 @@ func (v FileInfo) SetAttributeByteString(attribute string, attr_value string) {
 }
 
 // g_file_info_set_attribute_int32
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ attr_value ] trans: nothing
+//
 func (v FileInfo) SetAttributeInt32(attribute string, attr_value int32) {
 	iv, err := _I.Get(718, "FileInfo", "set_attribute_int32")
 	if err != nil {
@@ -17089,8 +19480,11 @@ func (v FileInfo) SetAttributeInt32(attribute string, attr_value int32) {
 }
 
 // g_file_info_set_attribute_int64
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ attr_value ] trans: nothing
+//
 func (v FileInfo) SetAttributeInt64(attribute string, attr_value int64) {
 	iv, err := _I.Get(719, "FileInfo", "set_attribute_int64")
 	if err != nil {
@@ -17107,8 +19501,9 @@ func (v FileInfo) SetAttributeInt64(attribute string, attr_value int64) {
 }
 
 // g_file_info_set_attribute_mask
-// container is not nil, container is FileInfo
-// is method
+//
+// [ mask ] trans: nothing
+//
 func (v FileInfo) SetAttributeMask(mask FileAttributeMatcher) {
 	iv, err := _I.Get(720, "FileInfo", "set_attribute_mask")
 	if err != nil {
@@ -17122,8 +19517,11 @@ func (v FileInfo) SetAttributeMask(mask FileAttributeMatcher) {
 }
 
 // g_file_info_set_attribute_object
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ attr_value ] trans: nothing
+//
 func (v FileInfo) SetAttributeObject(attribute string, attr_value gobject.IObject) {
 	iv, err := _I.Get(721, "FileInfo", "set_attribute_object")
 	if err != nil {
@@ -17144,8 +19542,13 @@ func (v FileInfo) SetAttributeObject(attribute string, attr_value gobject.IObjec
 }
 
 // g_file_info_set_attribute_status
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ status ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v FileInfo) SetAttributeStatus(attribute string, status FileAttributeStatusEnum) (result bool) {
 	iv, err := _I.Get(722, "FileInfo", "set_attribute_status")
 	if err != nil {
@@ -17165,8 +19568,11 @@ func (v FileInfo) SetAttributeStatus(attribute string, status FileAttributeStatu
 }
 
 // g_file_info_set_attribute_string
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ attr_value ] trans: nothing
+//
 func (v FileInfo) SetAttributeString(attribute string, attr_value string) {
 	iv, err := _I.Get(723, "FileInfo", "set_attribute_string")
 	if err != nil {
@@ -17185,8 +19591,11 @@ func (v FileInfo) SetAttributeString(attribute string, attr_value string) {
 }
 
 // g_file_info_set_attribute_stringv
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ attr_value ] trans: nothing
+//
 func (v FileInfo) SetAttributeStringv(attribute string, attr_value gi.CStrArray) {
 	iv, err := _I.Get(724, "FileInfo", "set_attribute_stringv")
 	if err != nil {
@@ -17203,8 +19612,11 @@ func (v FileInfo) SetAttributeStringv(attribute string, attr_value gi.CStrArray)
 }
 
 // g_file_info_set_attribute_uint32
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ attr_value ] trans: nothing
+//
 func (v FileInfo) SetAttributeUint32(attribute string, attr_value uint32) {
 	iv, err := _I.Get(725, "FileInfo", "set_attribute_uint32")
 	if err != nil {
@@ -17221,8 +19633,11 @@ func (v FileInfo) SetAttributeUint32(attribute string, attr_value uint32) {
 }
 
 // g_file_info_set_attribute_uint64
-// container is not nil, container is FileInfo
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ attr_value ] trans: nothing
+//
 func (v FileInfo) SetAttributeUint64(attribute string, attr_value uint64) {
 	iv, err := _I.Get(726, "FileInfo", "set_attribute_uint64")
 	if err != nil {
@@ -17239,8 +19654,9 @@ func (v FileInfo) SetAttributeUint64(attribute string, attr_value uint64) {
 }
 
 // g_file_info_set_content_type
-// container is not nil, container is FileInfo
-// is method
+//
+// [ content_type ] trans: nothing
+//
 func (v FileInfo) SetContentType(content_type string) {
 	iv, err := _I.Get(727, "FileInfo", "set_content_type")
 	if err != nil {
@@ -17256,8 +19672,9 @@ func (v FileInfo) SetContentType(content_type string) {
 }
 
 // g_file_info_set_display_name
-// container is not nil, container is FileInfo
-// is method
+//
+// [ display_name ] trans: nothing
+//
 func (v FileInfo) SetDisplayName(display_name string) {
 	iv, err := _I.Get(728, "FileInfo", "set_display_name")
 	if err != nil {
@@ -17273,8 +19690,9 @@ func (v FileInfo) SetDisplayName(display_name string) {
 }
 
 // g_file_info_set_edit_name
-// container is not nil, container is FileInfo
-// is method
+//
+// [ edit_name ] trans: nothing
+//
 func (v FileInfo) SetEditName(edit_name string) {
 	iv, err := _I.Get(729, "FileInfo", "set_edit_name")
 	if err != nil {
@@ -17290,8 +19708,9 @@ func (v FileInfo) SetEditName(edit_name string) {
 }
 
 // g_file_info_set_file_type
-// container is not nil, container is FileInfo
-// is method
+//
+// [ type1 ] trans: nothing
+//
 func (v FileInfo) SetFileType(type1 FileTypeEnum) {
 	iv, err := _I.Get(730, "FileInfo", "set_file_type")
 	if err != nil {
@@ -17305,8 +19724,9 @@ func (v FileInfo) SetFileType(type1 FileTypeEnum) {
 }
 
 // g_file_info_set_icon
-// container is not nil, container is FileInfo
-// is method
+//
+// [ icon ] trans: nothing
+//
 func (v FileInfo) SetIcon(icon IIcon) {
 	iv, err := _I.Get(731, "FileInfo", "set_icon")
 	if err != nil {
@@ -17324,8 +19744,9 @@ func (v FileInfo) SetIcon(icon IIcon) {
 }
 
 // g_file_info_set_is_hidden
-// container is not nil, container is FileInfo
-// is method
+//
+// [ is_hidden ] trans: nothing
+//
 func (v FileInfo) SetIsHidden(is_hidden bool) {
 	iv, err := _I.Get(732, "FileInfo", "set_is_hidden")
 	if err != nil {
@@ -17339,8 +19760,9 @@ func (v FileInfo) SetIsHidden(is_hidden bool) {
 }
 
 // g_file_info_set_is_symlink
-// container is not nil, container is FileInfo
-// is method
+//
+// [ is_symlink ] trans: nothing
+//
 func (v FileInfo) SetIsSymlink(is_symlink bool) {
 	iv, err := _I.Get(733, "FileInfo", "set_is_symlink")
 	if err != nil {
@@ -17354,8 +19776,9 @@ func (v FileInfo) SetIsSymlink(is_symlink bool) {
 }
 
 // g_file_info_set_modification_time
-// container is not nil, container is FileInfo
-// is method
+//
+// [ mtime ] trans: nothing
+//
 func (v FileInfo) SetModificationTime(mtime glib.TimeVal) {
 	iv, err := _I.Get(734, "FileInfo", "set_modification_time")
 	if err != nil {
@@ -17369,8 +19792,9 @@ func (v FileInfo) SetModificationTime(mtime glib.TimeVal) {
 }
 
 // g_file_info_set_name
-// container is not nil, container is FileInfo
-// is method
+//
+// [ name ] trans: nothing
+//
 func (v FileInfo) SetName(name string) {
 	iv, err := _I.Get(735, "FileInfo", "set_name")
 	if err != nil {
@@ -17386,8 +19810,9 @@ func (v FileInfo) SetName(name string) {
 }
 
 // g_file_info_set_size
-// container is not nil, container is FileInfo
-// is method
+//
+// [ size ] trans: nothing
+//
 func (v FileInfo) SetSize(size int64) {
 	iv, err := _I.Get(736, "FileInfo", "set_size")
 	if err != nil {
@@ -17401,8 +19826,9 @@ func (v FileInfo) SetSize(size int64) {
 }
 
 // g_file_info_set_sort_order
-// container is not nil, container is FileInfo
-// is method
+//
+// [ sort_order ] trans: nothing
+//
 func (v FileInfo) SetSortOrder(sort_order int32) {
 	iv, err := _I.Get(737, "FileInfo", "set_sort_order")
 	if err != nil {
@@ -17416,8 +19842,9 @@ func (v FileInfo) SetSortOrder(sort_order int32) {
 }
 
 // g_file_info_set_symbolic_icon
-// container is not nil, container is FileInfo
-// is method
+//
+// [ icon ] trans: nothing
+//
 func (v FileInfo) SetSymbolicIcon(icon IIcon) {
 	iv, err := _I.Get(738, "FileInfo", "set_symbolic_icon")
 	if err != nil {
@@ -17435,8 +19862,9 @@ func (v FileInfo) SetSymbolicIcon(icon IIcon) {
 }
 
 // g_file_info_set_symlink_target
-// container is not nil, container is FileInfo
-// is method
+//
+// [ symlink_target ] trans: nothing
+//
 func (v FileInfo) SetSymlinkTarget(symlink_target string) {
 	iv, err := _I.Get(739, "FileInfo", "set_symlink_target")
 	if err != nil {
@@ -17452,8 +19880,7 @@ func (v FileInfo) SetSymlinkTarget(symlink_target string) {
 }
 
 // g_file_info_unset_attribute_mask
-// container is not nil, container is FileInfo
-// is method
+//
 func (v FileInfo) UnsetAttributeMask() {
 	iv, err := _I.Get(740, "FileInfo", "unset_attribute_mask")
 	if err != nil {
@@ -17484,8 +19911,13 @@ func FileInputStreamGetType() gi.GType {
 }
 
 // g_file_input_stream_query_info
-// container is not nil, container is FileInputStream
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FileInputStream) QueryInfo(attributes string, cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(741, "FileInputStream", "query_info")
 	if err != nil {
@@ -17511,8 +19943,17 @@ func (v FileInputStream) QueryInfo(attributes string, cancellable ICancellable) 
 }
 
 // g_file_input_stream_query_info_async
-// container is not nil, container is FileInputStream
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v FileInputStream) QueryInfoAsync(attributes string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(742, "FileInputStream", "query_info_async")
 	if err != nil {
@@ -17536,8 +19977,11 @@ func (v FileInputStream) QueryInfoAsync(attributes string, io_priority int32, ca
 }
 
 // g_file_input_stream_query_info_finish
-// container is not nil, container is FileInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v FileInputStream) QueryInfoFinish(result IAsyncResult) (result1 FileInfo, err error) {
 	iv, err := _I.Get(743, "FileInputStream", "query_info_finish")
 	if err != nil {
@@ -17624,8 +20068,9 @@ func FileMonitorGetType() gi.GType {
 }
 
 // g_file_monitor_cancel
-// container is not nil, container is FileMonitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileMonitor) Cancel() (result bool) {
 	iv, err := _I.Get(744, "FileMonitor", "cancel")
 	if err != nil {
@@ -17641,8 +20086,13 @@ func (v FileMonitor) Cancel() (result bool) {
 }
 
 // g_file_monitor_emit_event
-// container is not nil, container is FileMonitor
-// is method
+//
+// [ child ] trans: nothing
+//
+// [ other_file ] trans: nothing
+//
+// [ event_type ] trans: nothing
+//
 func (v FileMonitor) EmitEvent(child IFile, other_file IFile, event_type FileMonitorEventEnum) {
 	iv, err := _I.Get(745, "FileMonitor", "emit_event")
 	if err != nil {
@@ -17666,8 +20116,9 @@ func (v FileMonitor) EmitEvent(child IFile, other_file IFile, event_type FileMon
 }
 
 // g_file_monitor_is_cancelled
-// container is not nil, container is FileMonitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FileMonitor) IsCancelled() (result bool) {
 	iv, err := _I.Get(746, "FileMonitor", "is_cancelled")
 	if err != nil {
@@ -17683,8 +20134,9 @@ func (v FileMonitor) IsCancelled() (result bool) {
 }
 
 // g_file_monitor_set_rate_limit
-// container is not nil, container is FileMonitor
-// is method
+//
+// [ limit_msecs ] trans: nothing
+//
 func (v FileMonitor) SetRateLimit(limit_msecs int32) {
 	iv, err := _I.Get(747, "FileMonitor", "set_rate_limit")
 	if err != nil {
@@ -17764,8 +20216,9 @@ func FileOutputStreamGetType() gi.GType {
 }
 
 // g_file_output_stream_get_etag
-// container is not nil, container is FileOutputStream
-// is method
+//
+// [ result ] trans: everything
+//
 func (v FileOutputStream) GetEtag() (result string) {
 	iv, err := _I.Get(748, "FileOutputStream", "get_etag")
 	if err != nil {
@@ -17781,8 +20234,13 @@ func (v FileOutputStream) GetEtag() (result string) {
 }
 
 // g_file_output_stream_query_info
-// container is not nil, container is FileOutputStream
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FileOutputStream) QueryInfo(attributes string, cancellable ICancellable) (result FileInfo, err error) {
 	iv, err := _I.Get(749, "FileOutputStream", "query_info")
 	if err != nil {
@@ -17808,8 +20266,17 @@ func (v FileOutputStream) QueryInfo(attributes string, cancellable ICancellable)
 }
 
 // g_file_output_stream_query_info_async
-// container is not nil, container is FileOutputStream
-// is method
+//
+// [ attributes ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v FileOutputStream) QueryInfoAsync(attributes string, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(750, "FileOutputStream", "query_info_async")
 	if err != nil {
@@ -17833,8 +20300,11 @@ func (v FileOutputStream) QueryInfoAsync(attributes string, io_priority int32, c
 }
 
 // g_file_output_stream_query_info_finish
-// container is not nil, container is FileOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v FileOutputStream) QueryInfoFinish(result IAsyncResult) (result1 FileInfo, err error) {
 	iv, err := _I.Get(751, "FileOutputStream", "query_info_finish")
 	if err != nil {
@@ -17948,8 +20418,9 @@ func FilenameCompleterGetType() gi.GType {
 }
 
 // g_filename_completer_new
-// container is not nil, container is FilenameCompleter
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewFilenameCompleter() (result FilenameCompleter) {
 	iv, err := _I.Get(752, "FilenameCompleter", "new")
 	if err != nil {
@@ -17963,8 +20434,11 @@ func NewFilenameCompleter() (result FilenameCompleter) {
 }
 
 // g_filename_completer_get_completion_suffix
-// container is not nil, container is FilenameCompleter
-// is method
+//
+// [ initial_text ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FilenameCompleter) GetCompletionSuffix(initial_text string) (result string) {
 	iv, err := _I.Get(753, "FilenameCompleter", "get_completion_suffix")
 	if err != nil {
@@ -17983,8 +20457,11 @@ func (v FilenameCompleter) GetCompletionSuffix(initial_text string) (result stri
 }
 
 // g_filename_completer_get_completions
-// container is not nil, container is FilenameCompleter
-// is method
+//
+// [ initial_text ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v FilenameCompleter) GetCompletions(initial_text string) (result gi.CStrArray) {
 	iv, err := _I.Get(754, "FilenameCompleter", "get_completions")
 	if err != nil {
@@ -18004,8 +20481,9 @@ func (v FilenameCompleter) GetCompletions(initial_text string) (result gi.CStrAr
 }
 
 // g_filename_completer_set_dirs_only
-// container is not nil, container is FilenameCompleter
-// is method
+//
+// [ dirs_only ] trans: nothing
+//
 func (v FilenameCompleter) SetDirsOnly(dirs_only bool) {
 	iv, err := _I.Get(755, "FilenameCompleter", "set_dirs_only")
 	if err != nil {
@@ -18049,8 +20527,9 @@ func FilterInputStreamGetType() gi.GType {
 }
 
 // g_filter_input_stream_get_base_stream
-// container is not nil, container is FilterInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FilterInputStream) GetBaseStream() (result InputStream) {
 	iv, err := _I.Get(756, "FilterInputStream", "get_base_stream")
 	if err != nil {
@@ -18066,8 +20545,9 @@ func (v FilterInputStream) GetBaseStream() (result InputStream) {
 }
 
 // g_filter_input_stream_get_close_base_stream
-// container is not nil, container is FilterInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FilterInputStream) GetCloseBaseStream() (result bool) {
 	iv, err := _I.Get(757, "FilterInputStream", "get_close_base_stream")
 	if err != nil {
@@ -18083,8 +20563,9 @@ func (v FilterInputStream) GetCloseBaseStream() (result bool) {
 }
 
 // g_filter_input_stream_set_close_base_stream
-// container is not nil, container is FilterInputStream
-// is method
+//
+// [ close_base ] trans: nothing
+//
 func (v FilterInputStream) SetCloseBaseStream(close_base bool) {
 	iv, err := _I.Get(758, "FilterInputStream", "set_close_base_stream")
 	if err != nil {
@@ -18114,8 +20595,9 @@ func FilterOutputStreamGetType() gi.GType {
 }
 
 // g_filter_output_stream_get_base_stream
-// container is not nil, container is FilterOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FilterOutputStream) GetBaseStream() (result OutputStream) {
 	iv, err := _I.Get(759, "FilterOutputStream", "get_base_stream")
 	if err != nil {
@@ -18131,8 +20613,9 @@ func (v FilterOutputStream) GetBaseStream() (result OutputStream) {
 }
 
 // g_filter_output_stream_get_close_base_stream
-// container is not nil, container is FilterOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v FilterOutputStream) GetCloseBaseStream() (result bool) {
 	iv, err := _I.Get(760, "FilterOutputStream", "get_close_base_stream")
 	if err != nil {
@@ -18148,8 +20631,9 @@ func (v FilterOutputStream) GetCloseBaseStream() (result bool) {
 }
 
 // g_filter_output_stream_set_close_base_stream
-// container is not nil, container is FilterOutputStream
-// is method
+//
+// [ close_base ] trans: nothing
+//
 func (v FilterOutputStream) SetCloseBaseStream(close_base bool) {
 	iv, err := _I.Get(761, "FilterOutputStream", "set_close_base_stream")
 	if err != nil {
@@ -18233,8 +20717,9 @@ func IOExtensionGetType() gi.GType {
 }
 
 // g_io_extension_get_name
-// container is not nil, container is IOExtension
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOExtension) GetName() (result string) {
 	iv, err := _I.Get(762, "IOExtension", "get_name")
 	if err != nil {
@@ -18245,13 +20730,14 @@ func (v IOExtension) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_io_extension_get_priority
-// container is not nil, container is IOExtension
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOExtension) GetPriority() (result int32) {
 	iv, err := _I.Get(763, "IOExtension", "get_priority")
 	if err != nil {
@@ -18267,8 +20753,9 @@ func (v IOExtension) GetPriority() (result int32) {
 }
 
 // g_io_extension_get_type
-// container is not nil, container is IOExtension
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOExtension) GetType() (result gi.GType) {
 	iv, err := _I.Get(764, "IOExtension", "get_type")
 	if err != nil {
@@ -18294,8 +20781,11 @@ func IOExtensionPointGetType() gi.GType {
 }
 
 // g_io_extension_point_get_extension_by_name
-// container is not nil, container is IOExtensionPoint
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOExtensionPoint) GetExtensionByName(name string) (result IOExtension) {
 	iv, err := _I.Get(765, "IOExtensionPoint", "get_extension_by_name")
 	if err != nil {
@@ -18314,8 +20804,9 @@ func (v IOExtensionPoint) GetExtensionByName(name string) (result IOExtension) {
 }
 
 // g_io_extension_point_get_extensions
-// container is not nil, container is IOExtensionPoint
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOExtensionPoint) GetExtensions() (result glib.List) {
 	iv, err := _I.Get(766, "IOExtensionPoint", "get_extensions")
 	if err != nil {
@@ -18331,8 +20822,9 @@ func (v IOExtensionPoint) GetExtensions() (result glib.List) {
 }
 
 // g_io_extension_point_get_required_type
-// container is not nil, container is IOExtensionPoint
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOExtensionPoint) GetRequiredType() (result gi.GType) {
 	iv, err := _I.Get(767, "IOExtensionPoint", "get_required_type")
 	if err != nil {
@@ -18348,8 +20840,9 @@ func (v IOExtensionPoint) GetRequiredType() (result gi.GType) {
 }
 
 // g_io_extension_point_set_required_type
-// container is not nil, container is IOExtensionPoint
-// is method
+//
+// [ type1 ] trans: nothing
+//
 func (v IOExtensionPoint) SetRequiredType(type1 gi.GType) {
 	iv, err := _I.Get(768, "IOExtensionPoint", "set_required_type")
 	if err != nil {
@@ -18363,9 +20856,17 @@ func (v IOExtensionPoint) SetRequiredType(type1 gi.GType) {
 }
 
 // g_io_extension_point_implement
-// container is not nil, container is IOExtensionPoint
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ extension_point_name ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ extension_name ] trans: nothing
+//
+// [ priority ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IOExtensionPointImplement1(extension_point_name string, type1 gi.GType, extension_name string, priority int32) (result IOExtension) {
 	iv, err := _I.Get(769, "IOExtensionPoint", "implement")
 	if err != nil {
@@ -18388,9 +20889,11 @@ func IOExtensionPointImplement1(extension_point_name string, type1 gi.GType, ext
 }
 
 // g_io_extension_point_lookup
-// container is not nil, container is IOExtensionPoint
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IOExtensionPointLookup1(name string) (result IOExtensionPoint) {
 	iv, err := _I.Get(770, "IOExtensionPoint", "lookup")
 	if err != nil {
@@ -18408,9 +20911,11 @@ func IOExtensionPointLookup1(name string) (result IOExtensionPoint) {
 }
 
 // g_io_extension_point_register
-// container is not nil, container is IOExtensionPoint
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IOExtensionPointRegister1(name string) (result IOExtensionPoint) {
 	iv, err := _I.Get(771, "IOExtensionPoint", "register")
 	if err != nil {
@@ -18445,8 +20950,11 @@ func IOModuleGetType() gi.GType {
 }
 
 // g_io_module_new
-// container is not nil, container is IOModule
-// is constructor
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewIOModule(filename string) (result IOModule) {
 	iv, err := _I.Get(772, "IOModule", "new")
 	if err != nil {
@@ -18464,8 +20972,7 @@ func NewIOModule(filename string) (result IOModule) {
 }
 
 // g_io_module_load
-// container is not nil, container is IOModule
-// is method
+//
 func (v IOModule) Load() {
 	iv, err := _I.Get(774, "IOModule", "load")
 	if err != nil {
@@ -18478,8 +20985,7 @@ func (v IOModule) Load() {
 }
 
 // g_io_module_unload
-// container is not nil, container is IOModule
-// is method
+//
 func (v IOModule) Unload() {
 	iv, err := _I.Get(775, "IOModule", "unload")
 	if err != nil {
@@ -18503,8 +21009,9 @@ func IOModuleScopeGetType() gi.GType {
 }
 
 // g_io_module_scope_block
-// container is not nil, container is IOModuleScope
-// is method
+//
+// [ basename ] trans: nothing
+//
 func (v IOModuleScope) Block(basename string) {
 	iv, err := _I.Get(776, "IOModuleScope", "block")
 	if err != nil {
@@ -18520,8 +21027,7 @@ func (v IOModuleScope) Block(basename string) {
 }
 
 // g_io_module_scope_free
-// container is not nil, container is IOModuleScope
-// is method
+//
 func (v IOModuleScope) Free() {
 	iv, err := _I.Get(777, "IOModuleScope", "free")
 	if err != nil {
@@ -18557,8 +21063,15 @@ func IOSchedulerJobGetType() gi.GType {
 }
 
 // g_io_scheduler_job_send_to_mainloop
-// container is not nil, container is IOSchedulerJob
-// is method
+//
+// [ func1 ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOSchedulerJob) SendToMainloop(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result bool) {
 	iv, err := _I.Get(778, "IOSchedulerJob", "send_to_mainloop")
 	if err != nil {
@@ -18577,8 +21090,13 @@ func (v IOSchedulerJob) SendToMainloop(func1 int /*TODO_TYPE CALLBACK*/, user_da
 }
 
 // g_io_scheduler_job_send_to_mainloop_async
-// container is not nil, container is IOSchedulerJob
-// is method
+//
+// [ func1 ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
 func (v IOSchedulerJob) SendToMainloopAsync(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(779, "IOSchedulerJob", "send_to_mainloop_async")
 	if err != nil {
@@ -18628,9 +21146,11 @@ func IOStreamGetType() gi.GType {
 }
 
 // g_io_stream_splice_finish
-// container is not nil, container is IOStream
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func IOStreamSpliceFinish1(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(780, "IOStream", "splice_finish")
 	if err != nil {
@@ -18652,8 +21172,7 @@ func IOStreamSpliceFinish1(result IAsyncResult) (result1 bool, err error) {
 }
 
 // g_io_stream_clear_pending
-// container is not nil, container is IOStream
-// is method
+//
 func (v IOStream) ClearPending() {
 	iv, err := _I.Get(781, "IOStream", "clear_pending")
 	if err != nil {
@@ -18666,8 +21185,11 @@ func (v IOStream) ClearPending() {
 }
 
 // g_io_stream_close
-// container is not nil, container is IOStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOStream) Close(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(782, "IOStream", "close")
 	if err != nil {
@@ -18690,8 +21212,15 @@ func (v IOStream) Close(cancellable ICancellable) (result bool, err error) {
 }
 
 // g_io_stream_close_async
-// container is not nil, container is IOStream
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v IOStream) CloseAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(783, "IOStream", "close_async")
 	if err != nil {
@@ -18712,8 +21241,11 @@ func (v IOStream) CloseAsync(io_priority int32, cancellable ICancellable, callba
 }
 
 // g_io_stream_close_finish
-// container is not nil, container is IOStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v IOStream) CloseFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(784, "IOStream", "close_finish")
 	if err != nil {
@@ -18736,8 +21268,9 @@ func (v IOStream) CloseFinish(result IAsyncResult) (result1 bool, err error) {
 }
 
 // g_io_stream_get_input_stream
-// container is not nil, container is IOStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOStream) GetInputStream() (result InputStream) {
 	iv, err := _I.Get(785, "IOStream", "get_input_stream")
 	if err != nil {
@@ -18753,8 +21286,9 @@ func (v IOStream) GetInputStream() (result InputStream) {
 }
 
 // g_io_stream_get_output_stream
-// container is not nil, container is IOStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOStream) GetOutputStream() (result OutputStream) {
 	iv, err := _I.Get(786, "IOStream", "get_output_stream")
 	if err != nil {
@@ -18770,8 +21304,9 @@ func (v IOStream) GetOutputStream() (result OutputStream) {
 }
 
 // g_io_stream_has_pending
-// container is not nil, container is IOStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOStream) HasPending() (result bool) {
 	iv, err := _I.Get(787, "IOStream", "has_pending")
 	if err != nil {
@@ -18787,8 +21322,9 @@ func (v IOStream) HasPending() (result bool) {
 }
 
 // g_io_stream_is_closed
-// container is not nil, container is IOStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOStream) IsClosed() (result bool) {
 	iv, err := _I.Get(788, "IOStream", "is_closed")
 	if err != nil {
@@ -18804,8 +21340,9 @@ func (v IOStream) IsClosed() (result bool) {
 }
 
 // g_io_stream_set_pending
-// container is not nil, container is IOStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOStream) SetPending() (result bool, err error) {
 	iv, err := _I.Get(789, "IOStream", "set_pending")
 	if err != nil {
@@ -18823,8 +21360,19 @@ func (v IOStream) SetPending() (result bool, err error) {
 }
 
 // g_io_stream_splice_async
-// container is not nil, container is IOStream
-// is method
+//
+// [ stream2 ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v IOStream) SpliceAsync(stream2 IIOStream, flags IOStreamSpliceFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(790, "IOStream", "splice_async")
 	if err != nil {
@@ -18901,9 +21449,11 @@ func IconGetType() gi.GType {
 }
 
 // g_icon_deserialize
-// container is not nil, container is Icon
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func IconDeserialize1(value glib.Variant) (result Icon) {
 	iv, err := _I.Get(791, "Icon", "deserialize")
 	if err != nil {
@@ -18919,9 +21469,11 @@ func IconDeserialize1(value glib.Variant) (result Icon) {
 }
 
 // g_icon_hash
-// container is not nil, container is Icon
-// is method
-// arg0Type tag: void, isPtr: true
+//
+// [ icon ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IconHash1(icon unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(792, "Icon", "hash")
 	if err != nil {
@@ -18937,9 +21489,11 @@ func IconHash1(icon unsafe.Pointer) (result uint32) {
 }
 
 // g_icon_new_for_string
-// container is not nil, container is Icon
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func IconNewForString1(str string) (result Icon, err error) {
 	iv, err := _I.Get(793, "Icon", "new_for_string")
 	if err != nil {
@@ -18959,8 +21513,11 @@ func IconNewForString1(str string) (result Icon, err error) {
 }
 
 // g_icon_equal
-// container is not nil, container is Icon
-// is method
+//
+// [ icon2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *IconIfc) Equal(icon2 IIcon) (result bool) {
 	iv, err := _I.Get(794, "Icon", "equal")
 	if err != nil {
@@ -18981,8 +21538,9 @@ func (v *IconIfc) Equal(icon2 IIcon) (result bool) {
 }
 
 // g_icon_serialize
-// container is not nil, container is Icon
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *IconIfc) Serialize() (result glib.Variant) {
 	iv, err := _I.Get(795, "Icon", "serialize")
 	if err != nil {
@@ -18998,8 +21556,9 @@ func (v *IconIfc) Serialize() (result glib.Variant) {
 }
 
 // g_icon_to_string
-// container is not nil, container is Icon
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *IconIfc) ToString() (result string) {
 	iv, err := _I.Get(796, "Icon", "to_string")
 	if err != nil {
@@ -19031,8 +21590,11 @@ func InetAddressGetType() gi.GType {
 }
 
 // g_inet_address_new_any
-// container is not nil, container is InetAddress
-// is constructor
+//
+// [ family ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewInetAddressAny(family SocketFamilyEnum) (result InetAddress) {
 	iv, err := _I.Get(797, "InetAddress", "new_any")
 	if err != nil {
@@ -19048,8 +21610,13 @@ func NewInetAddressAny(family SocketFamilyEnum) (result InetAddress) {
 }
 
 // g_inet_address_new_from_bytes
-// container is not nil, container is InetAddress
-// is constructor
+//
+// [ bytes ] trans: nothing
+//
+// [ family ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewInetAddressFromBytes(bytes gi.Uint8Array, family SocketFamilyEnum) (result InetAddress) {
 	iv, err := _I.Get(798, "InetAddress", "new_from_bytes")
 	if err != nil {
@@ -19066,8 +21633,11 @@ func NewInetAddressFromBytes(bytes gi.Uint8Array, family SocketFamilyEnum) (resu
 }
 
 // g_inet_address_new_from_string
-// container is not nil, container is InetAddress
-// is constructor
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewInetAddressFromString(string string) (result InetAddress) {
 	iv, err := _I.Get(799, "InetAddress", "new_from_string")
 	if err != nil {
@@ -19085,8 +21655,11 @@ func NewInetAddressFromString(string string) (result InetAddress) {
 }
 
 // g_inet_address_new_loopback
-// container is not nil, container is InetAddress
-// is constructor
+//
+// [ family ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewInetAddressLoopback(family SocketFamilyEnum) (result InetAddress) {
 	iv, err := _I.Get(800, "InetAddress", "new_loopback")
 	if err != nil {
@@ -19102,8 +21675,11 @@ func NewInetAddressLoopback(family SocketFamilyEnum) (result InetAddress) {
 }
 
 // g_inet_address_equal
-// container is not nil, container is InetAddress
-// is method
+//
+// [ other_address ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) Equal(other_address IInetAddress) (result bool) {
 	iv, err := _I.Get(801, "InetAddress", "equal")
 	if err != nil {
@@ -19124,8 +21700,9 @@ func (v InetAddress) Equal(other_address IInetAddress) (result bool) {
 }
 
 // g_inet_address_get_family
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetFamily() (result SocketFamilyEnum) {
 	iv, err := _I.Get(802, "InetAddress", "get_family")
 	if err != nil {
@@ -19141,8 +21718,9 @@ func (v InetAddress) GetFamily() (result SocketFamilyEnum) {
 }
 
 // g_inet_address_get_is_any
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetIsAny() (result bool) {
 	iv, err := _I.Get(803, "InetAddress", "get_is_any")
 	if err != nil {
@@ -19158,8 +21736,9 @@ func (v InetAddress) GetIsAny() (result bool) {
 }
 
 // g_inet_address_get_is_link_local
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetIsLinkLocal() (result bool) {
 	iv, err := _I.Get(804, "InetAddress", "get_is_link_local")
 	if err != nil {
@@ -19175,8 +21754,9 @@ func (v InetAddress) GetIsLinkLocal() (result bool) {
 }
 
 // g_inet_address_get_is_loopback
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetIsLoopback() (result bool) {
 	iv, err := _I.Get(805, "InetAddress", "get_is_loopback")
 	if err != nil {
@@ -19192,8 +21772,9 @@ func (v InetAddress) GetIsLoopback() (result bool) {
 }
 
 // g_inet_address_get_is_mc_global
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetIsMcGlobal() (result bool) {
 	iv, err := _I.Get(806, "InetAddress", "get_is_mc_global")
 	if err != nil {
@@ -19209,8 +21790,9 @@ func (v InetAddress) GetIsMcGlobal() (result bool) {
 }
 
 // g_inet_address_get_is_mc_link_local
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetIsMcLinkLocal() (result bool) {
 	iv, err := _I.Get(807, "InetAddress", "get_is_mc_link_local")
 	if err != nil {
@@ -19226,8 +21808,9 @@ func (v InetAddress) GetIsMcLinkLocal() (result bool) {
 }
 
 // g_inet_address_get_is_mc_node_local
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetIsMcNodeLocal() (result bool) {
 	iv, err := _I.Get(808, "InetAddress", "get_is_mc_node_local")
 	if err != nil {
@@ -19243,8 +21826,9 @@ func (v InetAddress) GetIsMcNodeLocal() (result bool) {
 }
 
 // g_inet_address_get_is_mc_org_local
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetIsMcOrgLocal() (result bool) {
 	iv, err := _I.Get(809, "InetAddress", "get_is_mc_org_local")
 	if err != nil {
@@ -19260,8 +21844,9 @@ func (v InetAddress) GetIsMcOrgLocal() (result bool) {
 }
 
 // g_inet_address_get_is_mc_site_local
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetIsMcSiteLocal() (result bool) {
 	iv, err := _I.Get(810, "InetAddress", "get_is_mc_site_local")
 	if err != nil {
@@ -19277,8 +21862,9 @@ func (v InetAddress) GetIsMcSiteLocal() (result bool) {
 }
 
 // g_inet_address_get_is_multicast
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetIsMulticast() (result bool) {
 	iv, err := _I.Get(811, "InetAddress", "get_is_multicast")
 	if err != nil {
@@ -19294,8 +21880,9 @@ func (v InetAddress) GetIsMulticast() (result bool) {
 }
 
 // g_inet_address_get_is_site_local
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetIsSiteLocal() (result bool) {
 	iv, err := _I.Get(812, "InetAddress", "get_is_site_local")
 	if err != nil {
@@ -19311,8 +21898,9 @@ func (v InetAddress) GetIsSiteLocal() (result bool) {
 }
 
 // g_inet_address_get_native_size
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddress) GetNativeSize() (result uint64) {
 	iv, err := _I.Get(813, "InetAddress", "get_native_size")
 	if err != nil {
@@ -19328,8 +21916,9 @@ func (v InetAddress) GetNativeSize() (result uint64) {
 }
 
 // g_inet_address_to_string
-// container is not nil, container is InetAddress
-// is method
+//
+// [ result ] trans: everything
+//
 func (v InetAddress) ToString() (result string) {
 	iv, err := _I.Get(814, "InetAddress", "to_string")
 	if err != nil {
@@ -19363,8 +21952,13 @@ func InetAddressMaskGetType() gi.GType {
 }
 
 // g_inet_address_mask_new
-// container is not nil, container is InetAddressMask
-// is constructor
+//
+// [ addr ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewInetAddressMask(addr IInetAddress, length uint32) (result InetAddressMask, err error) {
 	iv, err := _I.Get(815, "InetAddressMask", "new")
 	if err != nil {
@@ -19387,8 +21981,11 @@ func NewInetAddressMask(addr IInetAddress, length uint32) (result InetAddressMas
 }
 
 // g_inet_address_mask_new_from_string
-// container is not nil, container is InetAddressMask
-// is constructor
+//
+// [ mask_string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewInetAddressMaskFromString(mask_string string) (result InetAddressMask, err error) {
 	iv, err := _I.Get(816, "InetAddressMask", "new_from_string")
 	if err != nil {
@@ -19408,8 +22005,11 @@ func NewInetAddressMaskFromString(mask_string string) (result InetAddressMask, e
 }
 
 // g_inet_address_mask_equal
-// container is not nil, container is InetAddressMask
-// is method
+//
+// [ mask2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v InetAddressMask) Equal(mask2 IInetAddressMask) (result bool) {
 	iv, err := _I.Get(817, "InetAddressMask", "equal")
 	if err != nil {
@@ -19430,8 +22030,9 @@ func (v InetAddressMask) Equal(mask2 IInetAddressMask) (result bool) {
 }
 
 // g_inet_address_mask_get_address
-// container is not nil, container is InetAddressMask
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddressMask) GetAddress() (result InetAddress) {
 	iv, err := _I.Get(818, "InetAddressMask", "get_address")
 	if err != nil {
@@ -19447,8 +22048,9 @@ func (v InetAddressMask) GetAddress() (result InetAddress) {
 }
 
 // g_inet_address_mask_get_family
-// container is not nil, container is InetAddressMask
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddressMask) GetFamily() (result SocketFamilyEnum) {
 	iv, err := _I.Get(819, "InetAddressMask", "get_family")
 	if err != nil {
@@ -19464,8 +22066,9 @@ func (v InetAddressMask) GetFamily() (result SocketFamilyEnum) {
 }
 
 // g_inet_address_mask_get_length
-// container is not nil, container is InetAddressMask
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetAddressMask) GetLength() (result uint32) {
 	iv, err := _I.Get(820, "InetAddressMask", "get_length")
 	if err != nil {
@@ -19481,8 +22084,11 @@ func (v InetAddressMask) GetLength() (result uint32) {
 }
 
 // g_inet_address_mask_matches
-// container is not nil, container is InetAddressMask
-// is method
+//
+// [ address ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v InetAddressMask) Matches(address IInetAddress) (result bool) {
 	iv, err := _I.Get(821, "InetAddressMask", "matches")
 	if err != nil {
@@ -19503,8 +22109,9 @@ func (v InetAddressMask) Matches(address IInetAddress) (result bool) {
 }
 
 // g_inet_address_mask_to_string
-// container is not nil, container is InetAddressMask
-// is method
+//
+// [ result ] trans: everything
+//
 func (v InetAddressMask) ToString() (result string) {
 	iv, err := _I.Get(822, "InetAddressMask", "to_string")
 	if err != nil {
@@ -19558,8 +22165,13 @@ func InetSocketAddressGetType() gi.GType {
 }
 
 // g_inet_socket_address_new
-// container is not nil, container is InetSocketAddress
-// is constructor
+//
+// [ address ] trans: nothing
+//
+// [ port ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewInetSocketAddress(address IInetAddress, port uint16) (result InetSocketAddress) {
 	iv, err := _I.Get(823, "InetSocketAddress", "new")
 	if err != nil {
@@ -19580,8 +22192,13 @@ func NewInetSocketAddress(address IInetAddress, port uint16) (result InetSocketA
 }
 
 // g_inet_socket_address_new_from_string
-// container is not nil, container is InetSocketAddress
-// is constructor
+//
+// [ address ] trans: nothing
+//
+// [ port ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewInetSocketAddressFromString(address string, port uint32) (result InetSocketAddress) {
 	iv, err := _I.Get(824, "InetSocketAddress", "new_from_string")
 	if err != nil {
@@ -19600,8 +22217,9 @@ func NewInetSocketAddressFromString(address string, port uint32) (result InetSoc
 }
 
 // g_inet_socket_address_get_address
-// container is not nil, container is InetSocketAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetSocketAddress) GetAddress() (result InetAddress) {
 	iv, err := _I.Get(825, "InetSocketAddress", "get_address")
 	if err != nil {
@@ -19617,8 +22235,9 @@ func (v InetSocketAddress) GetAddress() (result InetAddress) {
 }
 
 // g_inet_socket_address_get_flowinfo
-// container is not nil, container is InetSocketAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetSocketAddress) GetFlowinfo() (result uint32) {
 	iv, err := _I.Get(826, "InetSocketAddress", "get_flowinfo")
 	if err != nil {
@@ -19634,8 +22253,9 @@ func (v InetSocketAddress) GetFlowinfo() (result uint32) {
 }
 
 // g_inet_socket_address_get_port
-// container is not nil, container is InetSocketAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetSocketAddress) GetPort() (result uint16) {
 	iv, err := _I.Get(827, "InetSocketAddress", "get_port")
 	if err != nil {
@@ -19651,8 +22271,9 @@ func (v InetSocketAddress) GetPort() (result uint16) {
 }
 
 // g_inet_socket_address_get_scope_id
-// container is not nil, container is InetSocketAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InetSocketAddress) GetScopeId() (result uint32) {
 	iv, err := _I.Get(828, "InetSocketAddress", "get_scope_id")
 	if err != nil {
@@ -19693,10 +22314,17 @@ func InitableGetType() gi.GType {
 }
 
 // g_initable_newv
-// container is not nil, container is Initable
-// is method
-// arg0Type tag: GType, isPtr: false
-// arg 2 parameters lenArgIdx 1
+//
+// [ object_type ] trans: nothing
+//
+// [ n_parameters ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func InitableNewv1(object_type gi.GType, n_parameters uint32, parameters unsafe.Pointer, cancellable ICancellable) (result gobject.Object, err error) {
 	iv, err := _I.Get(829, "Initable", "newv")
 	if err != nil {
@@ -19721,8 +22349,11 @@ func InitableNewv1(object_type gi.GType, n_parameters uint32, parameters unsafe.
 }
 
 // g_initable_init
-// container is not nil, container is Initable
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *InitableIfc) Init(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(830, "Initable", "init")
 	if err != nil {
@@ -19773,8 +22404,7 @@ func InputStreamGetType() gi.GType {
 }
 
 // g_input_stream_clear_pending
-// container is not nil, container is InputStream
-// is method
+//
 func (v InputStream) ClearPending() {
 	iv, err := _I.Get(831, "InputStream", "clear_pending")
 	if err != nil {
@@ -19787,8 +22417,11 @@ func (v InputStream) ClearPending() {
 }
 
 // g_input_stream_close
-// container is not nil, container is InputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v InputStream) Close(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(832, "InputStream", "close")
 	if err != nil {
@@ -19811,8 +22444,15 @@ func (v InputStream) Close(cancellable ICancellable) (result bool, err error) {
 }
 
 // g_input_stream_close_async
-// container is not nil, container is InputStream
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v InputStream) CloseAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(833, "InputStream", "close_async")
 	if err != nil {
@@ -19833,8 +22473,11 @@ func (v InputStream) CloseAsync(io_priority int32, cancellable ICancellable, cal
 }
 
 // g_input_stream_close_finish
-// container is not nil, container is InputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v InputStream) CloseFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(834, "InputStream", "close_finish")
 	if err != nil {
@@ -19857,8 +22500,9 @@ func (v InputStream) CloseFinish(result IAsyncResult) (result1 bool, err error) 
 }
 
 // g_input_stream_has_pending
-// container is not nil, container is InputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InputStream) HasPending() (result bool) {
 	iv, err := _I.Get(835, "InputStream", "has_pending")
 	if err != nil {
@@ -19874,8 +22518,9 @@ func (v InputStream) HasPending() (result bool) {
 }
 
 // g_input_stream_is_closed
-// container is not nil, container is InputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InputStream) IsClosed() (result bool) {
 	iv, err := _I.Get(836, "InputStream", "is_closed")
 	if err != nil {
@@ -19891,9 +22536,15 @@ func (v InputStream) IsClosed() (result bool) {
 }
 
 // g_input_stream_read
-// container is not nil, container is InputStream
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v InputStream) Read(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(837, "InputStream", "read")
 	if err != nil {
@@ -19918,9 +22569,17 @@ func (v InputStream) Read(buffer gi.Uint8Array, count uint64, cancellable ICance
 }
 
 // g_input_stream_read_all
-// container is not nil, container is InputStream
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ bytes_read ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v InputStream) ReadAll(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result bool, bytes_read uint64, err error) {
 	iv, err := _I.Get(838, "InputStream", "read_all")
 	if err != nil {
@@ -19947,9 +22606,19 @@ func (v InputStream) ReadAll(buffer gi.Uint8Array, count uint64, cancellable ICa
 }
 
 // g_input_stream_read_all_async
-// container is not nil, container is InputStream
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v InputStream) ReadAllAsync(buffer gi.Uint8Array, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(839, "InputStream", "read_all_async")
 	if err != nil {
@@ -19972,8 +22641,13 @@ func (v InputStream) ReadAllAsync(buffer gi.Uint8Array, count uint64, io_priorit
 }
 
 // g_input_stream_read_all_finish
-// container is not nil, container is InputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ bytes_read ] trans: everything, dir: out
+//
+// [ result1 ] trans: nothing
+//
 func (v InputStream) ReadAllFinish(result IAsyncResult) (result1 bool, bytes_read uint64, err error) {
 	iv, err := _I.Get(840, "InputStream", "read_all_finish")
 	if err != nil {
@@ -19998,9 +22672,19 @@ func (v InputStream) ReadAllFinish(result IAsyncResult) (result1 bool, bytes_rea
 }
 
 // g_input_stream_read_async
-// container is not nil, container is InputStream
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v InputStream) ReadAsync(buffer gi.Uint8Array, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(841, "InputStream", "read_async")
 	if err != nil {
@@ -20023,8 +22707,13 @@ func (v InputStream) ReadAsync(buffer gi.Uint8Array, count uint64, io_priority i
 }
 
 // g_input_stream_read_bytes
-// container is not nil, container is InputStream
-// is method
+//
+// [ count ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v InputStream) ReadBytes(count uint64, cancellable ICancellable) (result glib.Bytes, err error) {
 	iv, err := _I.Get(842, "InputStream", "read_bytes")
 	if err != nil {
@@ -20048,8 +22737,17 @@ func (v InputStream) ReadBytes(count uint64, cancellable ICancellable) (result g
 }
 
 // g_input_stream_read_bytes_async
-// container is not nil, container is InputStream
-// is method
+//
+// [ count ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v InputStream) ReadBytesAsync(count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(843, "InputStream", "read_bytes_async")
 	if err != nil {
@@ -20071,8 +22769,11 @@ func (v InputStream) ReadBytesAsync(count uint64, io_priority int32, cancellable
 }
 
 // g_input_stream_read_bytes_finish
-// container is not nil, container is InputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v InputStream) ReadBytesFinish(result IAsyncResult) (result1 glib.Bytes, err error) {
 	iv, err := _I.Get(844, "InputStream", "read_bytes_finish")
 	if err != nil {
@@ -20095,8 +22796,11 @@ func (v InputStream) ReadBytesFinish(result IAsyncResult) (result1 glib.Bytes, e
 }
 
 // g_input_stream_read_finish
-// container is not nil, container is InputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v InputStream) ReadFinish(result IAsyncResult) (result1 int64, err error) {
 	iv, err := _I.Get(845, "InputStream", "read_finish")
 	if err != nil {
@@ -20119,8 +22823,9 @@ func (v InputStream) ReadFinish(result IAsyncResult) (result1 int64, err error) 
 }
 
 // g_input_stream_set_pending
-// container is not nil, container is InputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v InputStream) SetPending() (result bool, err error) {
 	iv, err := _I.Get(846, "InputStream", "set_pending")
 	if err != nil {
@@ -20138,8 +22843,13 @@ func (v InputStream) SetPending() (result bool, err error) {
 }
 
 // g_input_stream_skip
-// container is not nil, container is InputStream
-// is method
+//
+// [ count ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v InputStream) Skip(count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(847, "InputStream", "skip")
 	if err != nil {
@@ -20163,8 +22873,17 @@ func (v InputStream) Skip(count uint64, cancellable ICancellable) (result int64,
 }
 
 // g_input_stream_skip_async
-// container is not nil, container is InputStream
-// is method
+//
+// [ count ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v InputStream) SkipAsync(count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(848, "InputStream", "skip_async")
 	if err != nil {
@@ -20186,8 +22905,11 @@ func (v InputStream) SkipAsync(count uint64, io_priority int32, cancellable ICan
 }
 
 // g_input_stream_skip_finish
-// container is not nil, container is InputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v InputStream) SkipFinish(result IAsyncResult) (result1 int64, err error) {
 	iv, err := _I.Get(849, "InputStream", "skip_finish")
 	if err != nil {
@@ -20247,8 +22969,9 @@ func ListModelGetType() gi.GType {
 }
 
 // g_list_model_get_item_type
-// container is not nil, container is ListModel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ListModelIfc) GetItemType() (result gi.GType) {
 	iv, err := _I.Get(850, "ListModel", "get_item_type")
 	if err != nil {
@@ -20264,8 +22987,9 @@ func (v *ListModelIfc) GetItemType() (result gi.GType) {
 }
 
 // g_list_model_get_n_items
-// container is not nil, container is ListModel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ListModelIfc) GetNItems() (result uint32) {
 	iv, err := _I.Get(851, "ListModel", "get_n_items")
 	if err != nil {
@@ -20281,8 +23005,11 @@ func (v *ListModelIfc) GetNItems() (result uint32) {
 }
 
 // g_list_model_get_object
-// container is not nil, container is ListModel
-// is method
+//
+// [ position ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *ListModelIfc) GetItem(position uint32) (result gobject.Object) {
 	iv, err := _I.Get(852, "ListModel", "get_item")
 	if err != nil {
@@ -20299,8 +23026,13 @@ func (v *ListModelIfc) GetItem(position uint32) (result gobject.Object) {
 }
 
 // g_list_model_items_changed
-// container is not nil, container is ListModel
-// is method
+//
+// [ position ] trans: nothing
+//
+// [ removed ] trans: nothing
+//
+// [ added ] trans: nothing
+//
 func (v *ListModelIfc) ItemsChanged(position uint32, removed uint32, added uint32) {
 	iv, err := _I.Get(853, "ListModel", "items_changed")
 	if err != nil {
@@ -20334,8 +23066,11 @@ func ListStoreGetType() gi.GType {
 }
 
 // g_list_store_new
-// container is not nil, container is ListStore
-// is constructor
+//
+// [ item_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewListStore(item_type gi.GType) (result ListStore) {
 	iv, err := _I.Get(854, "ListStore", "new")
 	if err != nil {
@@ -20351,8 +23086,9 @@ func NewListStore(item_type gi.GType) (result ListStore) {
 }
 
 // g_list_store_append
-// container is not nil, container is ListStore
-// is method
+//
+// [ item ] trans: nothing
+//
 func (v ListStore) Append(item gobject.IObject) {
 	iv, err := _I.Get(855, "ListStore", "append")
 	if err != nil {
@@ -20370,8 +23106,11 @@ func (v ListStore) Append(item gobject.IObject) {
 }
 
 // g_list_store_insert
-// container is not nil, container is ListStore
-// is method
+//
+// [ position ] trans: nothing
+//
+// [ item ] trans: nothing
+//
 func (v ListStore) Insert(position uint32, item gobject.IObject) {
 	iv, err := _I.Get(856, "ListStore", "insert")
 	if err != nil {
@@ -20390,8 +23129,15 @@ func (v ListStore) Insert(position uint32, item gobject.IObject) {
 }
 
 // g_list_store_insert_sorted
-// container is not nil, container is ListStore
-// is method
+//
+// [ item ] trans: nothing
+//
+// [ compare_func ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ListStore) InsertSorted(item gobject.IObject, compare_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(857, "ListStore", "insert_sorted")
 	if err != nil {
@@ -20414,8 +23160,9 @@ func (v ListStore) InsertSorted(item gobject.IObject, compare_func int /*TODO_TY
 }
 
 // g_list_store_remove
-// container is not nil, container is ListStore
-// is method
+//
+// [ position ] trans: nothing
+//
 func (v ListStore) Remove(position uint32) {
 	iv, err := _I.Get(858, "ListStore", "remove")
 	if err != nil {
@@ -20429,8 +23176,7 @@ func (v ListStore) Remove(position uint32) {
 }
 
 // g_list_store_remove_all
-// container is not nil, container is ListStore
-// is method
+//
 func (v ListStore) RemoveAll() {
 	iv, err := _I.Get(859, "ListStore", "remove_all")
 	if err != nil {
@@ -20443,8 +23189,11 @@ func (v ListStore) RemoveAll() {
 }
 
 // g_list_store_sort
-// container is not nil, container is ListStore
-// is method
+//
+// [ compare_func ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v ListStore) Sort(compare_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(860, "ListStore", "sort")
 	if err != nil {
@@ -20459,9 +23208,15 @@ func (v ListStore) Sort(compare_func int /*TODO_TYPE CALLBACK*/, user_data unsaf
 }
 
 // g_list_store_splice
-// container is not nil, container is ListStore
-// is method
-// arg 2 additions lenArgIdx 3
+//
+// [ position ] trans: nothing
+//
+// [ n_removals ] trans: nothing
+//
+// [ additions ] trans: nothing
+//
+// [ n_additions ] trans: nothing
+//
 func (v ListStore) Splice(position uint32, n_removals uint32, additions unsafe.Pointer, n_additions uint32) {
 	iv, err := _I.Get(861, "ListStore", "splice")
 	if err != nil {
@@ -20493,8 +23248,15 @@ func LoadableIconGetType() gi.GType {
 }
 
 // g_loadable_icon_load
-// container is not nil, container is LoadableIcon
-// is method
+//
+// [ size ] trans: nothing
+//
+// [ type1 ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *LoadableIconIfc) Load(size int32, cancellable ICancellable) (result InputStream, type1 string, err error) {
 	iv, err := _I.Get(862, "LoadableIcon", "load")
 	if err != nil {
@@ -20520,8 +23282,15 @@ func (v *LoadableIconIfc) Load(size int32, cancellable ICancellable) (result Inp
 }
 
 // g_loadable_icon_load_async
-// container is not nil, container is LoadableIcon
-// is method
+//
+// [ size ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *LoadableIconIfc) LoadAsync(size int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(863, "LoadableIcon", "load_async")
 	if err != nil {
@@ -20542,8 +23311,13 @@ func (v *LoadableIconIfc) LoadAsync(size int32, cancellable ICancellable, callba
 }
 
 // g_loadable_icon_load_finish
-// container is not nil, container is LoadableIcon
-// is method
+//
+// [ res ] trans: nothing
+//
+// [ type1 ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v *LoadableIconIfc) LoadFinish(res IAsyncResult) (result InputStream, type1 string, err error) {
 	iv, err := _I.Get(864, "LoadableIcon", "load_finish")
 	if err != nil {
@@ -20588,8 +23362,9 @@ func MemoryInputStreamGetType() gi.GType {
 }
 
 // g_memory_input_stream_new
-// container is not nil, container is MemoryInputStream
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewMemoryInputStream() (result MemoryInputStream) {
 	iv, err := _I.Get(865, "MemoryInputStream", "new")
 	if err != nil {
@@ -20603,8 +23378,11 @@ func NewMemoryInputStream() (result MemoryInputStream) {
 }
 
 // g_memory_input_stream_new_from_bytes
-// container is not nil, container is MemoryInputStream
-// is constructor
+//
+// [ bytes ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMemoryInputStreamFromBytes(bytes glib.Bytes) (result MemoryInputStream) {
 	iv, err := _I.Get(866, "MemoryInputStream", "new_from_bytes")
 	if err != nil {
@@ -20620,9 +23398,15 @@ func NewMemoryInputStreamFromBytes(bytes glib.Bytes) (result MemoryInputStream) 
 }
 
 // g_memory_input_stream_new_from_data
-// container is not nil, container is MemoryInputStream
-// is constructor
-// arg 0 data lenArgIdx 1
+//
+// [ data ] trans: everything
+//
+// [ len1 ] trans: nothing
+//
+// [ destroy ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMemoryInputStreamFromData(data gi.Uint8Array, len1 int64, destroy int /*TODO_TYPE CALLBACK*/) (result MemoryInputStream) {
 	iv, err := _I.Get(867, "MemoryInputStream", "new_from_data")
 	if err != nil {
@@ -20640,8 +23424,9 @@ func NewMemoryInputStreamFromData(data gi.Uint8Array, len1 int64, destroy int /*
 }
 
 // g_memory_input_stream_add_bytes
-// container is not nil, container is MemoryInputStream
-// is method
+//
+// [ bytes ] trans: nothing
+//
 func (v MemoryInputStream) AddBytes(bytes glib.Bytes) {
 	iv, err := _I.Get(868, "MemoryInputStream", "add_bytes")
 	if err != nil {
@@ -20655,9 +23440,13 @@ func (v MemoryInputStream) AddBytes(bytes glib.Bytes) {
 }
 
 // g_memory_input_stream_add_data
-// container is not nil, container is MemoryInputStream
-// is method
-// arg 0 data lenArgIdx 1
+//
+// [ data ] trans: everything
+//
+// [ len1 ] trans: nothing
+//
+// [ destroy ] trans: nothing
+//
 func (v MemoryInputStream) AddData(data gi.Uint8Array, len1 int64, destroy int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(869, "MemoryInputStream", "add_data")
 	if err != nil {
@@ -20703,8 +23492,9 @@ func MemoryOutputStreamGetType() gi.GType {
 }
 
 // g_memory_output_stream_new_resizable
-// container is not nil, container is MemoryOutputStream
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewMemoryOutputStreamResizable() (result MemoryOutputStream) {
 	iv, err := _I.Get(870, "MemoryOutputStream", "new_resizable")
 	if err != nil {
@@ -20718,8 +23508,9 @@ func NewMemoryOutputStreamResizable() (result MemoryOutputStream) {
 }
 
 // g_memory_output_stream_get_data
-// container is not nil, container is MemoryOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MemoryOutputStream) GetData() (result unsafe.Pointer) {
 	iv, err := _I.Get(871, "MemoryOutputStream", "get_data")
 	if err != nil {
@@ -20735,8 +23526,9 @@ func (v MemoryOutputStream) GetData() (result unsafe.Pointer) {
 }
 
 // g_memory_output_stream_get_data_size
-// container is not nil, container is MemoryOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MemoryOutputStream) GetDataSize() (result uint64) {
 	iv, err := _I.Get(872, "MemoryOutputStream", "get_data_size")
 	if err != nil {
@@ -20752,8 +23544,9 @@ func (v MemoryOutputStream) GetDataSize() (result uint64) {
 }
 
 // g_memory_output_stream_get_size
-// container is not nil, container is MemoryOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MemoryOutputStream) GetSize() (result uint64) {
 	iv, err := _I.Get(873, "MemoryOutputStream", "get_size")
 	if err != nil {
@@ -20769,8 +23562,9 @@ func (v MemoryOutputStream) GetSize() (result uint64) {
 }
 
 // g_memory_output_stream_steal_as_bytes
-// container is not nil, container is MemoryOutputStream
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MemoryOutputStream) StealAsBytes() (result glib.Bytes) {
 	iv, err := _I.Get(874, "MemoryOutputStream", "steal_as_bytes")
 	if err != nil {
@@ -20786,8 +23580,9 @@ func (v MemoryOutputStream) StealAsBytes() (result glib.Bytes) {
 }
 
 // g_memory_output_stream_steal_data
-// container is not nil, container is MemoryOutputStream
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MemoryOutputStream) StealData() (result unsafe.Pointer) {
 	iv, err := _I.Get(875, "MemoryOutputStream", "steal_data")
 	if err != nil {
@@ -20829,8 +23624,9 @@ func MenuGetType() gi.GType {
 }
 
 // g_menu_new
-// container is not nil, container is Menu
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewMenu() (result Menu) {
 	iv, err := _I.Get(876, "Menu", "new")
 	if err != nil {
@@ -20844,8 +23640,11 @@ func NewMenu() (result Menu) {
 }
 
 // g_menu_append
-// container is not nil, container is Menu
-// is method
+//
+// [ label ] trans: nothing
+//
+// [ detailed_action ] trans: nothing
+//
 func (v Menu) Append(label string, detailed_action string) {
 	iv, err := _I.Get(877, "Menu", "append")
 	if err != nil {
@@ -20864,8 +23663,9 @@ func (v Menu) Append(label string, detailed_action string) {
 }
 
 // g_menu_append_item
-// container is not nil, container is Menu
-// is method
+//
+// [ item ] trans: nothing
+//
 func (v Menu) AppendItem(item IMenuItem) {
 	iv, err := _I.Get(878, "Menu", "append_item")
 	if err != nil {
@@ -20883,8 +23683,11 @@ func (v Menu) AppendItem(item IMenuItem) {
 }
 
 // g_menu_append_section
-// container is not nil, container is Menu
-// is method
+//
+// [ label ] trans: nothing
+//
+// [ section ] trans: nothing
+//
 func (v Menu) AppendSection(label string, section IMenuModel) {
 	iv, err := _I.Get(879, "Menu", "append_section")
 	if err != nil {
@@ -20905,8 +23708,11 @@ func (v Menu) AppendSection(label string, section IMenuModel) {
 }
 
 // g_menu_append_submenu
-// container is not nil, container is Menu
-// is method
+//
+// [ label ] trans: nothing
+//
+// [ submenu ] trans: nothing
+//
 func (v Menu) AppendSubmenu(label string, submenu IMenuModel) {
 	iv, err := _I.Get(880, "Menu", "append_submenu")
 	if err != nil {
@@ -20927,8 +23733,7 @@ func (v Menu) AppendSubmenu(label string, submenu IMenuModel) {
 }
 
 // g_menu_freeze
-// container is not nil, container is Menu
-// is method
+//
 func (v Menu) Freeze() {
 	iv, err := _I.Get(881, "Menu", "freeze")
 	if err != nil {
@@ -20941,8 +23746,13 @@ func (v Menu) Freeze() {
 }
 
 // g_menu_insert
-// container is not nil, container is Menu
-// is method
+//
+// [ position ] trans: nothing
+//
+// [ label ] trans: nothing
+//
+// [ detailed_action ] trans: nothing
+//
 func (v Menu) Insert(position int32, label string, detailed_action string) {
 	iv, err := _I.Get(882, "Menu", "insert")
 	if err != nil {
@@ -20962,8 +23772,11 @@ func (v Menu) Insert(position int32, label string, detailed_action string) {
 }
 
 // g_menu_insert_item
-// container is not nil, container is Menu
-// is method
+//
+// [ position ] trans: nothing
+//
+// [ item ] trans: nothing
+//
 func (v Menu) InsertItem(position int32, item IMenuItem) {
 	iv, err := _I.Get(883, "Menu", "insert_item")
 	if err != nil {
@@ -20982,8 +23795,13 @@ func (v Menu) InsertItem(position int32, item IMenuItem) {
 }
 
 // g_menu_insert_section
-// container is not nil, container is Menu
-// is method
+//
+// [ position ] trans: nothing
+//
+// [ label ] trans: nothing
+//
+// [ section ] trans: nothing
+//
 func (v Menu) InsertSection(position int32, label string, section IMenuModel) {
 	iv, err := _I.Get(884, "Menu", "insert_section")
 	if err != nil {
@@ -21005,8 +23823,13 @@ func (v Menu) InsertSection(position int32, label string, section IMenuModel) {
 }
 
 // g_menu_insert_submenu
-// container is not nil, container is Menu
-// is method
+//
+// [ position ] trans: nothing
+//
+// [ label ] trans: nothing
+//
+// [ submenu ] trans: nothing
+//
 func (v Menu) InsertSubmenu(position int32, label string, submenu IMenuModel) {
 	iv, err := _I.Get(885, "Menu", "insert_submenu")
 	if err != nil {
@@ -21028,8 +23851,11 @@ func (v Menu) InsertSubmenu(position int32, label string, submenu IMenuModel) {
 }
 
 // g_menu_prepend
-// container is not nil, container is Menu
-// is method
+//
+// [ label ] trans: nothing
+//
+// [ detailed_action ] trans: nothing
+//
 func (v Menu) Prepend(label string, detailed_action string) {
 	iv, err := _I.Get(886, "Menu", "prepend")
 	if err != nil {
@@ -21048,8 +23874,9 @@ func (v Menu) Prepend(label string, detailed_action string) {
 }
 
 // g_menu_prepend_item
-// container is not nil, container is Menu
-// is method
+//
+// [ item ] trans: nothing
+//
 func (v Menu) PrependItem(item IMenuItem) {
 	iv, err := _I.Get(887, "Menu", "prepend_item")
 	if err != nil {
@@ -21067,8 +23894,11 @@ func (v Menu) PrependItem(item IMenuItem) {
 }
 
 // g_menu_prepend_section
-// container is not nil, container is Menu
-// is method
+//
+// [ label ] trans: nothing
+//
+// [ section ] trans: nothing
+//
 func (v Menu) PrependSection(label string, section IMenuModel) {
 	iv, err := _I.Get(888, "Menu", "prepend_section")
 	if err != nil {
@@ -21089,8 +23919,11 @@ func (v Menu) PrependSection(label string, section IMenuModel) {
 }
 
 // g_menu_prepend_submenu
-// container is not nil, container is Menu
-// is method
+//
+// [ label ] trans: nothing
+//
+// [ submenu ] trans: nothing
+//
 func (v Menu) PrependSubmenu(label string, submenu IMenuModel) {
 	iv, err := _I.Get(889, "Menu", "prepend_submenu")
 	if err != nil {
@@ -21111,8 +23944,9 @@ func (v Menu) PrependSubmenu(label string, submenu IMenuModel) {
 }
 
 // g_menu_remove
-// container is not nil, container is Menu
-// is method
+//
+// [ position ] trans: nothing
+//
 func (v Menu) Remove(position int32) {
 	iv, err := _I.Get(890, "Menu", "remove")
 	if err != nil {
@@ -21126,8 +23960,7 @@ func (v Menu) Remove(position int32) {
 }
 
 // g_menu_remove_all
-// container is not nil, container is Menu
-// is method
+//
 func (v Menu) RemoveAll() {
 	iv, err := _I.Get(891, "Menu", "remove_all")
 	if err != nil {
@@ -21155,8 +23988,9 @@ func MenuAttributeIterGetType() gi.GType {
 }
 
 // g_menu_attribute_iter_get_name
-// container is not nil, container is MenuAttributeIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MenuAttributeIter) GetName() (result string) {
 	iv, err := _I.Get(892, "MenuAttributeIter", "get_name")
 	if err != nil {
@@ -21167,13 +24001,18 @@ func (v MenuAttributeIter) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_menu_attribute_iter_get_next
-// container is not nil, container is MenuAttributeIter
-// is method
+//
+// [ out_name ] trans: nothing, dir: out
+//
+// [ value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v MenuAttributeIter) GetNext() (result bool, out_name string, value glib.Variant) {
 	iv, err := _I.Get(893, "MenuAttributeIter", "get_next")
 	if err != nil {
@@ -21187,15 +24026,16 @@ func (v MenuAttributeIter) GetNext() (result bool, out_name string, value glib.V
 	args := []gi.Argument{arg_v, arg_out_name, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	out_name = outArgs[0].String().Take()
+	out_name = outArgs[0].String().Copy()
 	value.P = outArgs[1].Pointer()
 	result = ret.Bool()
 	return
 }
 
 // g_menu_attribute_iter_get_value
-// container is not nil, container is MenuAttributeIter
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MenuAttributeIter) GetValue() (result glib.Variant) {
 	iv, err := _I.Get(894, "MenuAttributeIter", "get_value")
 	if err != nil {
@@ -21211,8 +24051,9 @@ func (v MenuAttributeIter) GetValue() (result glib.Variant) {
 }
 
 // g_menu_attribute_iter_next
-// container is not nil, container is MenuAttributeIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MenuAttributeIter) Next() (result bool) {
 	iv, err := _I.Get(895, "MenuAttributeIter", "next")
 	if err != nil {
@@ -21254,8 +24095,13 @@ func MenuItemGetType() gi.GType {
 }
 
 // g_menu_item_new
-// container is not nil, container is MenuItem
-// is constructor
+//
+// [ label ] trans: nothing
+//
+// [ detailed_action ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMenuItem(label string, detailed_action string) (result MenuItem) {
 	iv, err := _I.Get(896, "MenuItem", "new")
 	if err != nil {
@@ -21276,8 +24122,13 @@ func NewMenuItem(label string, detailed_action string) (result MenuItem) {
 }
 
 // g_menu_item_new_from_model
-// container is not nil, container is MenuItem
-// is constructor
+//
+// [ model ] trans: nothing
+//
+// [ item_index ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMenuItemFromModel(model IMenuModel, item_index int32) (result MenuItem) {
 	iv, err := _I.Get(897, "MenuItem", "new_from_model")
 	if err != nil {
@@ -21298,8 +24149,13 @@ func NewMenuItemFromModel(model IMenuModel, item_index int32) (result MenuItem) 
 }
 
 // g_menu_item_new_section
-// container is not nil, container is MenuItem
-// is constructor
+//
+// [ label ] trans: nothing
+//
+// [ section ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMenuItemSection(label string, section IMenuModel) (result MenuItem) {
 	iv, err := _I.Get(898, "MenuItem", "new_section")
 	if err != nil {
@@ -21322,8 +24178,13 @@ func NewMenuItemSection(label string, section IMenuModel) (result MenuItem) {
 }
 
 // g_menu_item_new_submenu
-// container is not nil, container is MenuItem
-// is constructor
+//
+// [ label ] trans: nothing
+//
+// [ submenu ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMenuItemSubmenu(label string, submenu IMenuModel) (result MenuItem) {
 	iv, err := _I.Get(899, "MenuItem", "new_submenu")
 	if err != nil {
@@ -21346,8 +24207,13 @@ func NewMenuItemSubmenu(label string, submenu IMenuModel) (result MenuItem) {
 }
 
 // g_menu_item_get_attribute_value
-// container is not nil, container is MenuItem
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ expected_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MenuItem) GetAttributeValue(attribute string, expected_type glib.VariantType) (result glib.Variant) {
 	iv, err := _I.Get(900, "MenuItem", "get_attribute_value")
 	if err != nil {
@@ -21367,8 +24233,11 @@ func (v MenuItem) GetAttributeValue(attribute string, expected_type glib.Variant
 }
 
 // g_menu_item_get_link
-// container is not nil, container is MenuItem
-// is method
+//
+// [ link ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MenuItem) GetLink(link string) (result MenuModel) {
 	iv, err := _I.Get(901, "MenuItem", "get_link")
 	if err != nil {
@@ -21387,8 +24256,11 @@ func (v MenuItem) GetLink(link string) (result MenuModel) {
 }
 
 // g_menu_item_set_action_and_target_value
-// container is not nil, container is MenuItem
-// is method
+//
+// [ action ] trans: nothing
+//
+// [ target_value ] trans: nothing
+//
 func (v MenuItem) SetActionAndTargetValue(action string, target_value glib.Variant) {
 	iv, err := _I.Get(902, "MenuItem", "set_action_and_target_value")
 	if err != nil {
@@ -21405,8 +24277,11 @@ func (v MenuItem) SetActionAndTargetValue(action string, target_value glib.Varia
 }
 
 // g_menu_item_set_attribute_value
-// container is not nil, container is MenuItem
-// is method
+//
+// [ attribute ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v MenuItem) SetAttributeValue(attribute string, value glib.Variant) {
 	iv, err := _I.Get(903, "MenuItem", "set_attribute_value")
 	if err != nil {
@@ -21423,8 +24298,9 @@ func (v MenuItem) SetAttributeValue(attribute string, value glib.Variant) {
 }
 
 // g_menu_item_set_detailed_action
-// container is not nil, container is MenuItem
-// is method
+//
+// [ detailed_action ] trans: nothing
+//
 func (v MenuItem) SetDetailedAction(detailed_action string) {
 	iv, err := _I.Get(904, "MenuItem", "set_detailed_action")
 	if err != nil {
@@ -21440,8 +24316,9 @@ func (v MenuItem) SetDetailedAction(detailed_action string) {
 }
 
 // g_menu_item_set_icon
-// container is not nil, container is MenuItem
-// is method
+//
+// [ icon ] trans: nothing
+//
 func (v MenuItem) SetIcon(icon IIcon) {
 	iv, err := _I.Get(905, "MenuItem", "set_icon")
 	if err != nil {
@@ -21459,8 +24336,9 @@ func (v MenuItem) SetIcon(icon IIcon) {
 }
 
 // g_menu_item_set_label
-// container is not nil, container is MenuItem
-// is method
+//
+// [ label ] trans: nothing
+//
 func (v MenuItem) SetLabel(label string) {
 	iv, err := _I.Get(906, "MenuItem", "set_label")
 	if err != nil {
@@ -21476,8 +24354,11 @@ func (v MenuItem) SetLabel(label string) {
 }
 
 // g_menu_item_set_link
-// container is not nil, container is MenuItem
-// is method
+//
+// [ link ] trans: nothing
+//
+// [ model ] trans: nothing
+//
 func (v MenuItem) SetLink(link string, model IMenuModel) {
 	iv, err := _I.Get(907, "MenuItem", "set_link")
 	if err != nil {
@@ -21498,8 +24379,9 @@ func (v MenuItem) SetLink(link string, model IMenuModel) {
 }
 
 // g_menu_item_set_section
-// container is not nil, container is MenuItem
-// is method
+//
+// [ section ] trans: nothing
+//
 func (v MenuItem) SetSection(section IMenuModel) {
 	iv, err := _I.Get(908, "MenuItem", "set_section")
 	if err != nil {
@@ -21517,8 +24399,9 @@ func (v MenuItem) SetSection(section IMenuModel) {
 }
 
 // g_menu_item_set_submenu
-// container is not nil, container is MenuItem
-// is method
+//
+// [ submenu ] trans: nothing
+//
 func (v MenuItem) SetSubmenu(submenu IMenuModel) {
 	iv, err := _I.Get(909, "MenuItem", "set_submenu")
 	if err != nil {
@@ -21551,8 +24434,9 @@ func MenuLinkIterGetType() gi.GType {
 }
 
 // g_menu_link_iter_get_name
-// container is not nil, container is MenuLinkIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MenuLinkIter) GetName() (result string) {
 	iv, err := _I.Get(910, "MenuLinkIter", "get_name")
 	if err != nil {
@@ -21563,13 +24447,18 @@ func (v MenuLinkIter) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_menu_link_iter_get_next
-// container is not nil, container is MenuLinkIter
-// is method
+//
+// [ out_link ] trans: nothing, dir: out
+//
+// [ value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v MenuLinkIter) GetNext() (result bool, out_link string, value MenuModel) {
 	iv, err := _I.Get(911, "MenuLinkIter", "get_next")
 	if err != nil {
@@ -21583,15 +24472,16 @@ func (v MenuLinkIter) GetNext() (result bool, out_link string, value MenuModel) 
 	args := []gi.Argument{arg_v, arg_out_link, arg_value}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	out_link = outArgs[0].String().Take()
+	out_link = outArgs[0].String().Copy()
 	value.P = outArgs[1].Pointer()
 	result = ret.Bool()
 	return
 }
 
 // g_menu_link_iter_get_value
-// container is not nil, container is MenuLinkIter
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MenuLinkIter) GetValue() (result MenuModel) {
 	iv, err := _I.Get(912, "MenuLinkIter", "get_value")
 	if err != nil {
@@ -21607,8 +24497,9 @@ func (v MenuLinkIter) GetValue() (result MenuModel) {
 }
 
 // g_menu_link_iter_next
-// container is not nil, container is MenuLinkIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MenuLinkIter) Next() (result bool) {
 	iv, err := _I.Get(913, "MenuLinkIter", "next")
 	if err != nil {
@@ -21650,8 +24541,15 @@ func MenuModelGetType() gi.GType {
 }
 
 // g_menu_model_get_item_attribute_value
-// container is not nil, container is MenuModel
-// is method
+//
+// [ item_index ] trans: nothing
+//
+// [ attribute ] trans: nothing
+//
+// [ expected_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MenuModel) GetItemAttributeValue(item_index int32, attribute string, expected_type glib.VariantType) (result glib.Variant) {
 	iv, err := _I.Get(914, "MenuModel", "get_item_attribute_value")
 	if err != nil {
@@ -21672,8 +24570,13 @@ func (v MenuModel) GetItemAttributeValue(item_index int32, attribute string, exp
 }
 
 // g_menu_model_get_item_link
-// container is not nil, container is MenuModel
-// is method
+//
+// [ item_index ] trans: nothing
+//
+// [ link ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MenuModel) GetItemLink(item_index int32, link string) (result MenuModel) {
 	iv, err := _I.Get(915, "MenuModel", "get_item_link")
 	if err != nil {
@@ -21693,8 +24596,9 @@ func (v MenuModel) GetItemLink(item_index int32, link string) (result MenuModel)
 }
 
 // g_menu_model_get_n_items
-// container is not nil, container is MenuModel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MenuModel) GetNItems() (result int32) {
 	iv, err := _I.Get(916, "MenuModel", "get_n_items")
 	if err != nil {
@@ -21710,8 +24614,9 @@ func (v MenuModel) GetNItems() (result int32) {
 }
 
 // g_menu_model_is_mutable
-// container is not nil, container is MenuModel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MenuModel) IsMutable() (result bool) {
 	iv, err := _I.Get(917, "MenuModel", "is_mutable")
 	if err != nil {
@@ -21727,8 +24632,13 @@ func (v MenuModel) IsMutable() (result bool) {
 }
 
 // g_menu_model_items_changed
-// container is not nil, container is MenuModel
-// is method
+//
+// [ position ] trans: nothing
+//
+// [ removed ] trans: nothing
+//
+// [ added ] trans: nothing
+//
 func (v MenuModel) ItemsChanged(position int32, removed int32, added int32) {
 	iv, err := _I.Get(918, "MenuModel", "items_changed")
 	if err != nil {
@@ -21744,8 +24654,11 @@ func (v MenuModel) ItemsChanged(position int32, removed int32, added int32) {
 }
 
 // g_menu_model_iterate_item_attributes
-// container is not nil, container is MenuModel
-// is method
+//
+// [ item_index ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MenuModel) IterateItemAttributes(item_index int32) (result MenuAttributeIter) {
 	iv, err := _I.Get(919, "MenuModel", "iterate_item_attributes")
 	if err != nil {
@@ -21762,8 +24675,11 @@ func (v MenuModel) IterateItemAttributes(item_index int32) (result MenuAttribute
 }
 
 // g_menu_model_iterate_item_links
-// container is not nil, container is MenuModel
-// is method
+//
+// [ item_index ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MenuModel) IterateItemLinks(item_index int32) (result MenuLinkIter) {
 	iv, err := _I.Get(920, "MenuModel", "iterate_item_links")
 	if err != nil {
@@ -21805,8 +24721,9 @@ func MountGetType() gi.GType {
 }
 
 // g_mount_can_eject
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *MountIfc) CanEject() (result bool) {
 	iv, err := _I.Get(921, "Mount", "can_eject")
 	if err != nil {
@@ -21822,8 +24739,9 @@ func (v *MountIfc) CanEject() (result bool) {
 }
 
 // g_mount_can_unmount
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *MountIfc) CanUnmount() (result bool) {
 	iv, err := _I.Get(922, "Mount", "can_unmount")
 	if err != nil {
@@ -21839,8 +24757,15 @@ func (v *MountIfc) CanUnmount() (result bool) {
 }
 
 // g_mount_eject
-// container is not nil, container is Mount
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *MountIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(923, "Mount", "eject")
 	if err != nil {
@@ -21861,8 +24786,11 @@ func (v *MountIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, call
 }
 
 // g_mount_eject_finish
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *MountIfc) EjectFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(924, "Mount", "eject_finish")
 	if err != nil {
@@ -21885,8 +24813,17 @@ func (v *MountIfc) EjectFinish(result IAsyncResult) (result1 bool, err error) {
 }
 
 // g_mount_eject_with_operation
-// container is not nil, container is Mount
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *MountIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(925, "Mount", "eject_with_operation")
 	if err != nil {
@@ -21912,8 +24849,11 @@ func (v *MountIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation I
 }
 
 // g_mount_eject_with_operation_finish
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *MountIfc) EjectWithOperationFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(926, "Mount", "eject_with_operation_finish")
 	if err != nil {
@@ -21936,8 +24876,9 @@ func (v *MountIfc) EjectWithOperationFinish(result IAsyncResult) (result1 bool, 
 }
 
 // g_mount_get_default_location
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *MountIfc) GetDefaultLocation() (result File) {
 	iv, err := _I.Get(927, "Mount", "get_default_location")
 	if err != nil {
@@ -21953,8 +24894,9 @@ func (v *MountIfc) GetDefaultLocation() (result File) {
 }
 
 // g_mount_get_drive
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *MountIfc) GetDrive() (result Drive) {
 	iv, err := _I.Get(928, "Mount", "get_drive")
 	if err != nil {
@@ -21970,8 +24912,9 @@ func (v *MountIfc) GetDrive() (result Drive) {
 }
 
 // g_mount_get_icon
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *MountIfc) GetIcon() (result Icon) {
 	iv, err := _I.Get(929, "Mount", "get_icon")
 	if err != nil {
@@ -21987,8 +24930,9 @@ func (v *MountIfc) GetIcon() (result Icon) {
 }
 
 // g_mount_get_name
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *MountIfc) GetName() (result string) {
 	iv, err := _I.Get(930, "Mount", "get_name")
 	if err != nil {
@@ -22004,8 +24948,9 @@ func (v *MountIfc) GetName() (result string) {
 }
 
 // g_mount_get_root
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *MountIfc) GetRoot() (result File) {
 	iv, err := _I.Get(931, "Mount", "get_root")
 	if err != nil {
@@ -22021,8 +24966,9 @@ func (v *MountIfc) GetRoot() (result File) {
 }
 
 // g_mount_get_sort_key
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *MountIfc) GetSortKey() (result string) {
 	iv, err := _I.Get(932, "Mount", "get_sort_key")
 	if err != nil {
@@ -22033,13 +24979,14 @@ func (v *MountIfc) GetSortKey() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_mount_get_symbolic_icon
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *MountIfc) GetSymbolicIcon() (result Icon) {
 	iv, err := _I.Get(933, "Mount", "get_symbolic_icon")
 	if err != nil {
@@ -22055,8 +25002,9 @@ func (v *MountIfc) GetSymbolicIcon() (result Icon) {
 }
 
 // g_mount_get_uuid
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *MountIfc) GetUuid() (result string) {
 	iv, err := _I.Get(934, "Mount", "get_uuid")
 	if err != nil {
@@ -22072,8 +25020,9 @@ func (v *MountIfc) GetUuid() (result string) {
 }
 
 // g_mount_get_volume
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *MountIfc) GetVolume() (result Volume) {
 	iv, err := _I.Get(935, "Mount", "get_volume")
 	if err != nil {
@@ -22089,8 +25038,15 @@ func (v *MountIfc) GetVolume() (result Volume) {
 }
 
 // g_mount_guess_content_type
-// container is not nil, container is Mount
-// is method
+//
+// [ force_rescan ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *MountIfc) GuessContentType(force_rescan bool, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(936, "Mount", "guess_content_type")
 	if err != nil {
@@ -22111,8 +25067,11 @@ func (v *MountIfc) GuessContentType(force_rescan bool, cancellable ICancellable,
 }
 
 // g_mount_guess_content_type_finish
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v *MountIfc) GuessContentTypeFinish(result IAsyncResult) (result1 gi.CStrArray, err error) {
 	iv, err := _I.Get(937, "Mount", "guess_content_type_finish")
 	if err != nil {
@@ -22136,8 +25095,13 @@ func (v *MountIfc) GuessContentTypeFinish(result IAsyncResult) (result1 gi.CStrA
 }
 
 // g_mount_guess_content_type_sync
-// container is not nil, container is Mount
-// is method
+//
+// [ force_rescan ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *MountIfc) GuessContentTypeSync(force_rescan bool, cancellable ICancellable) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(938, "Mount", "guess_content_type_sync")
 	if err != nil {
@@ -22162,8 +25126,9 @@ func (v *MountIfc) GuessContentTypeSync(force_rescan bool, cancellable ICancella
 }
 
 // g_mount_is_shadowed
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *MountIfc) IsShadowed() (result bool) {
 	iv, err := _I.Get(939, "Mount", "is_shadowed")
 	if err != nil {
@@ -22179,8 +25144,17 @@ func (v *MountIfc) IsShadowed() (result bool) {
 }
 
 // g_mount_remount
-// container is not nil, container is Mount
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *MountIfc) Remount(flags MountMountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(940, "Mount", "remount")
 	if err != nil {
@@ -22206,8 +25180,11 @@ func (v *MountIfc) Remount(flags MountMountFlags, mount_operation IMountOperatio
 }
 
 // g_mount_remount_finish
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *MountIfc) RemountFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(941, "Mount", "remount_finish")
 	if err != nil {
@@ -22230,8 +25207,7 @@ func (v *MountIfc) RemountFinish(result IAsyncResult) (result1 bool, err error) 
 }
 
 // g_mount_shadow
-// container is not nil, container is Mount
-// is method
+//
 func (v *MountIfc) Shadow() {
 	iv, err := _I.Get(942, "Mount", "shadow")
 	if err != nil {
@@ -22244,8 +25220,15 @@ func (v *MountIfc) Shadow() {
 }
 
 // g_mount_unmount
-// container is not nil, container is Mount
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *MountIfc) Unmount(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(943, "Mount", "unmount")
 	if err != nil {
@@ -22266,8 +25249,11 @@ func (v *MountIfc) Unmount(flags MountUnmountFlags, cancellable ICancellable, ca
 }
 
 // g_mount_unmount_finish
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *MountIfc) UnmountFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(944, "Mount", "unmount_finish")
 	if err != nil {
@@ -22290,8 +25276,17 @@ func (v *MountIfc) UnmountFinish(result IAsyncResult) (result1 bool, err error) 
 }
 
 // g_mount_unmount_with_operation
-// container is not nil, container is Mount
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *MountIfc) UnmountWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(945, "Mount", "unmount_with_operation")
 	if err != nil {
@@ -22317,8 +25312,11 @@ func (v *MountIfc) UnmountWithOperation(flags MountUnmountFlags, mount_operation
 }
 
 // g_mount_unmount_with_operation_finish
-// container is not nil, container is Mount
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *MountIfc) UnmountWithOperationFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(946, "Mount", "unmount_with_operation_finish")
 	if err != nil {
@@ -22341,8 +25339,7 @@ func (v *MountIfc) UnmountWithOperationFinish(result IAsyncResult) (result1 bool
 }
 
 // g_mount_unshadow
-// container is not nil, container is Mount
-// is method
+//
 func (v *MountIfc) Unshadow() {
 	iv, err := _I.Get(947, "Mount", "unshadow")
 	if err != nil {
@@ -22383,8 +25380,9 @@ func MountOperationGetType() gi.GType {
 }
 
 // g_mount_operation_new
-// container is not nil, container is MountOperation
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewMountOperation() (result MountOperation) {
 	iv, err := _I.Get(948, "MountOperation", "new")
 	if err != nil {
@@ -22398,8 +25396,9 @@ func NewMountOperation() (result MountOperation) {
 }
 
 // g_mount_operation_get_anonymous
-// container is not nil, container is MountOperation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MountOperation) GetAnonymous() (result bool) {
 	iv, err := _I.Get(949, "MountOperation", "get_anonymous")
 	if err != nil {
@@ -22415,8 +25414,9 @@ func (v MountOperation) GetAnonymous() (result bool) {
 }
 
 // g_mount_operation_get_choice
-// container is not nil, container is MountOperation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MountOperation) GetChoice() (result int32) {
 	iv, err := _I.Get(950, "MountOperation", "get_choice")
 	if err != nil {
@@ -22432,8 +25432,9 @@ func (v MountOperation) GetChoice() (result int32) {
 }
 
 // g_mount_operation_get_domain
-// container is not nil, container is MountOperation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MountOperation) GetDomain() (result string) {
 	iv, err := _I.Get(951, "MountOperation", "get_domain")
 	if err != nil {
@@ -22444,13 +25445,14 @@ func (v MountOperation) GetDomain() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_mount_operation_get_is_tcrypt_hidden_volume
-// container is not nil, container is MountOperation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MountOperation) GetIsTcryptHiddenVolume() (result bool) {
 	iv, err := _I.Get(952, "MountOperation", "get_is_tcrypt_hidden_volume")
 	if err != nil {
@@ -22466,8 +25468,9 @@ func (v MountOperation) GetIsTcryptHiddenVolume() (result bool) {
 }
 
 // g_mount_operation_get_is_tcrypt_system_volume
-// container is not nil, container is MountOperation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MountOperation) GetIsTcryptSystemVolume() (result bool) {
 	iv, err := _I.Get(953, "MountOperation", "get_is_tcrypt_system_volume")
 	if err != nil {
@@ -22483,8 +25486,9 @@ func (v MountOperation) GetIsTcryptSystemVolume() (result bool) {
 }
 
 // g_mount_operation_get_password
-// container is not nil, container is MountOperation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MountOperation) GetPassword() (result string) {
 	iv, err := _I.Get(954, "MountOperation", "get_password")
 	if err != nil {
@@ -22495,13 +25499,14 @@ func (v MountOperation) GetPassword() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_mount_operation_get_password_save
-// container is not nil, container is MountOperation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MountOperation) GetPasswordSave() (result PasswordSaveEnum) {
 	iv, err := _I.Get(955, "MountOperation", "get_password_save")
 	if err != nil {
@@ -22517,8 +25522,9 @@ func (v MountOperation) GetPasswordSave() (result PasswordSaveEnum) {
 }
 
 // g_mount_operation_get_pim
-// container is not nil, container is MountOperation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MountOperation) GetPim() (result uint32) {
 	iv, err := _I.Get(956, "MountOperation", "get_pim")
 	if err != nil {
@@ -22534,8 +25540,9 @@ func (v MountOperation) GetPim() (result uint32) {
 }
 
 // g_mount_operation_get_username
-// container is not nil, container is MountOperation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MountOperation) GetUsername() (result string) {
 	iv, err := _I.Get(957, "MountOperation", "get_username")
 	if err != nil {
@@ -22546,13 +25553,14 @@ func (v MountOperation) GetUsername() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_mount_operation_reply
-// container is not nil, container is MountOperation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MountOperation) Reply(result MountOperationResultEnum) {
 	iv, err := _I.Get(958, "MountOperation", "reply")
 	if err != nil {
@@ -22566,8 +25574,9 @@ func (v MountOperation) Reply(result MountOperationResultEnum) {
 }
 
 // g_mount_operation_set_anonymous
-// container is not nil, container is MountOperation
-// is method
+//
+// [ anonymous ] trans: nothing
+//
 func (v MountOperation) SetAnonymous(anonymous bool) {
 	iv, err := _I.Get(959, "MountOperation", "set_anonymous")
 	if err != nil {
@@ -22581,8 +25590,9 @@ func (v MountOperation) SetAnonymous(anonymous bool) {
 }
 
 // g_mount_operation_set_choice
-// container is not nil, container is MountOperation
-// is method
+//
+// [ choice ] trans: nothing
+//
 func (v MountOperation) SetChoice(choice int32) {
 	iv, err := _I.Get(960, "MountOperation", "set_choice")
 	if err != nil {
@@ -22596,8 +25606,9 @@ func (v MountOperation) SetChoice(choice int32) {
 }
 
 // g_mount_operation_set_domain
-// container is not nil, container is MountOperation
-// is method
+//
+// [ domain ] trans: nothing
+//
 func (v MountOperation) SetDomain(domain string) {
 	iv, err := _I.Get(961, "MountOperation", "set_domain")
 	if err != nil {
@@ -22613,8 +25624,9 @@ func (v MountOperation) SetDomain(domain string) {
 }
 
 // g_mount_operation_set_is_tcrypt_hidden_volume
-// container is not nil, container is MountOperation
-// is method
+//
+// [ hidden_volume ] trans: nothing
+//
 func (v MountOperation) SetIsTcryptHiddenVolume(hidden_volume bool) {
 	iv, err := _I.Get(962, "MountOperation", "set_is_tcrypt_hidden_volume")
 	if err != nil {
@@ -22628,8 +25640,9 @@ func (v MountOperation) SetIsTcryptHiddenVolume(hidden_volume bool) {
 }
 
 // g_mount_operation_set_is_tcrypt_system_volume
-// container is not nil, container is MountOperation
-// is method
+//
+// [ system_volume ] trans: nothing
+//
 func (v MountOperation) SetIsTcryptSystemVolume(system_volume bool) {
 	iv, err := _I.Get(963, "MountOperation", "set_is_tcrypt_system_volume")
 	if err != nil {
@@ -22643,8 +25656,9 @@ func (v MountOperation) SetIsTcryptSystemVolume(system_volume bool) {
 }
 
 // g_mount_operation_set_password
-// container is not nil, container is MountOperation
-// is method
+//
+// [ password ] trans: nothing
+//
 func (v MountOperation) SetPassword(password string) {
 	iv, err := _I.Get(964, "MountOperation", "set_password")
 	if err != nil {
@@ -22660,8 +25674,9 @@ func (v MountOperation) SetPassword(password string) {
 }
 
 // g_mount_operation_set_password_save
-// container is not nil, container is MountOperation
-// is method
+//
+// [ save ] trans: nothing
+//
 func (v MountOperation) SetPasswordSave(save PasswordSaveEnum) {
 	iv, err := _I.Get(965, "MountOperation", "set_password_save")
 	if err != nil {
@@ -22675,8 +25690,9 @@ func (v MountOperation) SetPasswordSave(save PasswordSaveEnum) {
 }
 
 // g_mount_operation_set_pim
-// container is not nil, container is MountOperation
-// is method
+//
+// [ pim ] trans: nothing
+//
 func (v MountOperation) SetPim(pim uint32) {
 	iv, err := _I.Get(966, "MountOperation", "set_pim")
 	if err != nil {
@@ -22690,8 +25706,9 @@ func (v MountOperation) SetPim(pim uint32) {
 }
 
 // g_mount_operation_set_username
-// container is not nil, container is MountOperation
-// is method
+//
+// [ username ] trans: nothing
+//
 func (v MountOperation) SetUsername(username string) {
 	iv, err := _I.Get(967, "MountOperation", "set_username")
 	if err != nil {
@@ -22788,8 +25805,13 @@ func NetworkAddressGetType() gi.GType {
 }
 
 // g_network_address_new
-// container is not nil, container is NetworkAddress
-// is constructor
+//
+// [ hostname ] trans: nothing
+//
+// [ port ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewNetworkAddress(hostname string, port uint16) (result NetworkAddress) {
 	iv, err := _I.Get(968, "NetworkAddress", "new")
 	if err != nil {
@@ -22808,8 +25830,11 @@ func NewNetworkAddress(hostname string, port uint16) (result NetworkAddress) {
 }
 
 // g_network_address_new_loopback
-// container is not nil, container is NetworkAddress
-// is constructor
+//
+// [ port ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewNetworkAddressLoopback(port uint16) (result NetworkAddress) {
 	iv, err := _I.Get(969, "NetworkAddress", "new_loopback")
 	if err != nil {
@@ -22825,9 +25850,13 @@ func NewNetworkAddressLoopback(port uint16) (result NetworkAddress) {
 }
 
 // g_network_address_parse
-// container is not nil, container is NetworkAddress
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ host_and_port ] trans: nothing
+//
+// [ default_port ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NetworkAddressParse1(host_and_port string, default_port uint16) (result NetworkAddress, err error) {
 	iv, err := _I.Get(970, "NetworkAddress", "parse")
 	if err != nil {
@@ -22848,9 +25877,13 @@ func NetworkAddressParse1(host_and_port string, default_port uint16) (result Net
 }
 
 // g_network_address_parse_uri
-// container is not nil, container is NetworkAddress
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ uri ] trans: nothing
+//
+// [ default_port ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NetworkAddressParseUri1(uri string, default_port uint16) (result NetworkAddress, err error) {
 	iv, err := _I.Get(971, "NetworkAddress", "parse_uri")
 	if err != nil {
@@ -22871,8 +25904,9 @@ func NetworkAddressParseUri1(uri string, default_port uint16) (result NetworkAdd
 }
 
 // g_network_address_get_hostname
-// container is not nil, container is NetworkAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v NetworkAddress) GetHostname() (result string) {
 	iv, err := _I.Get(972, "NetworkAddress", "get_hostname")
 	if err != nil {
@@ -22883,13 +25917,14 @@ func (v NetworkAddress) GetHostname() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_network_address_get_port
-// container is not nil, container is NetworkAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v NetworkAddress) GetPort() (result uint16) {
 	iv, err := _I.Get(973, "NetworkAddress", "get_port")
 	if err != nil {
@@ -22905,8 +25940,9 @@ func (v NetworkAddress) GetPort() (result uint16) {
 }
 
 // g_network_address_get_scheme
-// container is not nil, container is NetworkAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v NetworkAddress) GetScheme() (result string) {
 	iv, err := _I.Get(974, "NetworkAddress", "get_scheme")
 	if err != nil {
@@ -22917,7 +25953,7 @@ func (v NetworkAddress) GetScheme() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
@@ -22962,8 +25998,13 @@ func NetworkMonitorGetType() gi.GType {
 }
 
 // g_network_monitor_can_reach
-// container is not nil, container is NetworkMonitor
-// is method
+//
+// [ connectable ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *NetworkMonitorIfc) CanReach(connectable ISocketConnectable, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(976, "NetworkMonitor", "can_reach")
 	if err != nil {
@@ -22991,8 +26032,15 @@ func (v *NetworkMonitorIfc) CanReach(connectable ISocketConnectable, cancellable
 }
 
 // g_network_monitor_can_reach_async
-// container is not nil, container is NetworkMonitor
-// is method
+//
+// [ connectable ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *NetworkMonitorIfc) CanReachAsync(connectable ISocketConnectable, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(977, "NetworkMonitor", "can_reach_async")
 	if err != nil {
@@ -23017,8 +26065,11 @@ func (v *NetworkMonitorIfc) CanReachAsync(connectable ISocketConnectable, cancel
 }
 
 // g_network_monitor_can_reach_finish
-// container is not nil, container is NetworkMonitor
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *NetworkMonitorIfc) CanReachFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(978, "NetworkMonitor", "can_reach_finish")
 	if err != nil {
@@ -23041,8 +26092,9 @@ func (v *NetworkMonitorIfc) CanReachFinish(result IAsyncResult) (result1 bool, e
 }
 
 // g_network_monitor_get_connectivity
-// container is not nil, container is NetworkMonitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *NetworkMonitorIfc) GetConnectivity() (result NetworkConnectivityEnum) {
 	iv, err := _I.Get(979, "NetworkMonitor", "get_connectivity")
 	if err != nil {
@@ -23058,8 +26110,9 @@ func (v *NetworkMonitorIfc) GetConnectivity() (result NetworkConnectivityEnum) {
 }
 
 // g_network_monitor_get_network_available
-// container is not nil, container is NetworkMonitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *NetworkMonitorIfc) GetNetworkAvailable() (result bool) {
 	iv, err := _I.Get(980, "NetworkMonitor", "get_network_available")
 	if err != nil {
@@ -23075,8 +26128,9 @@ func (v *NetworkMonitorIfc) GetNetworkAvailable() (result bool) {
 }
 
 // g_network_monitor_get_network_metered
-// container is not nil, container is NetworkMonitor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *NetworkMonitorIfc) GetNetworkMetered() (result bool) {
 	iv, err := _I.Get(981, "NetworkMonitor", "get_network_metered")
 	if err != nil {
@@ -23110,8 +26164,15 @@ func NetworkServiceGetType() gi.GType {
 }
 
 // g_network_service_new
-// container is not nil, container is NetworkService
-// is constructor
+//
+// [ service ] trans: nothing
+//
+// [ protocol ] trans: nothing
+//
+// [ domain ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewNetworkService(service string, protocol string, domain string) (result NetworkService) {
 	iv, err := _I.Get(982, "NetworkService", "new")
 	if err != nil {
@@ -23135,8 +26196,9 @@ func NewNetworkService(service string, protocol string, domain string) (result N
 }
 
 // g_network_service_get_domain
-// container is not nil, container is NetworkService
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v NetworkService) GetDomain() (result string) {
 	iv, err := _I.Get(983, "NetworkService", "get_domain")
 	if err != nil {
@@ -23147,13 +26209,14 @@ func (v NetworkService) GetDomain() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_network_service_get_protocol
-// container is not nil, container is NetworkService
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v NetworkService) GetProtocol() (result string) {
 	iv, err := _I.Get(984, "NetworkService", "get_protocol")
 	if err != nil {
@@ -23164,13 +26227,14 @@ func (v NetworkService) GetProtocol() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_network_service_get_scheme
-// container is not nil, container is NetworkService
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v NetworkService) GetScheme() (result string) {
 	iv, err := _I.Get(985, "NetworkService", "get_scheme")
 	if err != nil {
@@ -23181,13 +26245,14 @@ func (v NetworkService) GetScheme() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_network_service_get_service
-// container is not nil, container is NetworkService
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v NetworkService) GetService() (result string) {
 	iv, err := _I.Get(986, "NetworkService", "get_service")
 	if err != nil {
@@ -23198,13 +26263,14 @@ func (v NetworkService) GetService() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_network_service_set_scheme
-// container is not nil, container is NetworkService
-// is method
+//
+// [ scheme ] trans: nothing
+//
 func (v NetworkService) SetScheme(scheme string) {
 	iv, err := _I.Get(987, "NetworkService", "set_scheme")
 	if err != nil {
@@ -23246,8 +26312,11 @@ func NotificationGetType() gi.GType {
 }
 
 // g_notification_new
-// container is not nil, container is Notification
-// is constructor
+//
+// [ title ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewNotification(title string) (result Notification) {
 	iv, err := _I.Get(988, "Notification", "new")
 	if err != nil {
@@ -23265,8 +26334,11 @@ func NewNotification(title string) (result Notification) {
 }
 
 // g_notification_add_button
-// container is not nil, container is Notification
-// is method
+//
+// [ label ] trans: nothing
+//
+// [ detailed_action ] trans: nothing
+//
 func (v Notification) AddButton(label string, detailed_action string) {
 	iv, err := _I.Get(989, "Notification", "add_button")
 	if err != nil {
@@ -23285,8 +26357,13 @@ func (v Notification) AddButton(label string, detailed_action string) {
 }
 
 // g_notification_add_button_with_target_value
-// container is not nil, container is Notification
-// is method
+//
+// [ label ] trans: nothing
+//
+// [ action ] trans: nothing
+//
+// [ target ] trans: nothing
+//
 func (v Notification) AddButtonWithTarget(label string, action string, target glib.Variant) {
 	iv, err := _I.Get(990, "Notification", "add_button_with_target")
 	if err != nil {
@@ -23306,8 +26383,9 @@ func (v Notification) AddButtonWithTarget(label string, action string, target gl
 }
 
 // g_notification_set_body
-// container is not nil, container is Notification
-// is method
+//
+// [ body ] trans: nothing
+//
 func (v Notification) SetBody(body string) {
 	iv, err := _I.Get(991, "Notification", "set_body")
 	if err != nil {
@@ -23323,8 +26401,9 @@ func (v Notification) SetBody(body string) {
 }
 
 // g_notification_set_default_action
-// container is not nil, container is Notification
-// is method
+//
+// [ detailed_action ] trans: nothing
+//
 func (v Notification) SetDefaultAction(detailed_action string) {
 	iv, err := _I.Get(992, "Notification", "set_default_action")
 	if err != nil {
@@ -23340,8 +26419,11 @@ func (v Notification) SetDefaultAction(detailed_action string) {
 }
 
 // g_notification_set_default_action_and_target_value
-// container is not nil, container is Notification
-// is method
+//
+// [ action ] trans: nothing
+//
+// [ target ] trans: nothing
+//
 func (v Notification) SetDefaultActionAndTarget(action string, target glib.Variant) {
 	iv, err := _I.Get(993, "Notification", "set_default_action_and_target")
 	if err != nil {
@@ -23358,8 +26440,9 @@ func (v Notification) SetDefaultActionAndTarget(action string, target glib.Varia
 }
 
 // g_notification_set_icon
-// container is not nil, container is Notification
-// is method
+//
+// [ icon ] trans: nothing
+//
 func (v Notification) SetIcon(icon IIcon) {
 	iv, err := _I.Get(994, "Notification", "set_icon")
 	if err != nil {
@@ -23377,8 +26460,9 @@ func (v Notification) SetIcon(icon IIcon) {
 }
 
 // g_notification_set_priority
-// container is not nil, container is Notification
-// is method
+//
+// [ priority ] trans: nothing
+//
 func (v Notification) SetPriority(priority NotificationPriorityEnum) {
 	iv, err := _I.Get(995, "Notification", "set_priority")
 	if err != nil {
@@ -23392,8 +26476,9 @@ func (v Notification) SetPriority(priority NotificationPriorityEnum) {
 }
 
 // g_notification_set_title
-// container is not nil, container is Notification
-// is method
+//
+// [ title ] trans: nothing
+//
 func (v Notification) SetTitle(title string) {
 	iv, err := _I.Get(996, "Notification", "set_title")
 	if err != nil {
@@ -23409,8 +26494,9 @@ func (v Notification) SetTitle(title string) {
 }
 
 // g_notification_set_urgent
-// container is not nil, container is Notification
-// is method
+//
+// [ urgent ] trans: nothing
+//
 func (v Notification) SetUrgent(urgent bool) {
 	iv, err := _I.Get(997, "Notification", "set_urgent")
 	if err != nil {
@@ -23466,8 +26552,7 @@ func OutputStreamGetType() gi.GType {
 }
 
 // g_output_stream_clear_pending
-// container is not nil, container is OutputStream
-// is method
+//
 func (v OutputStream) ClearPending() {
 	iv, err := _I.Get(998, "OutputStream", "clear_pending")
 	if err != nil {
@@ -23480,8 +26565,11 @@ func (v OutputStream) ClearPending() {
 }
 
 // g_output_stream_close
-// container is not nil, container is OutputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v OutputStream) Close(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(999, "OutputStream", "close")
 	if err != nil {
@@ -23504,8 +26592,15 @@ func (v OutputStream) Close(cancellable ICancellable) (result bool, err error) {
 }
 
 // g_output_stream_close_async
-// container is not nil, container is OutputStream
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v OutputStream) CloseAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1000, "OutputStream", "close_async")
 	if err != nil {
@@ -23526,8 +26621,11 @@ func (v OutputStream) CloseAsync(io_priority int32, cancellable ICancellable, ca
 }
 
 // g_output_stream_close_finish
-// container is not nil, container is OutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v OutputStream) CloseFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1001, "OutputStream", "close_finish")
 	if err != nil {
@@ -23550,8 +26648,11 @@ func (v OutputStream) CloseFinish(result IAsyncResult) (result1 bool, err error)
 }
 
 // g_output_stream_flush
-// container is not nil, container is OutputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v OutputStream) Flush(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1002, "OutputStream", "flush")
 	if err != nil {
@@ -23574,8 +26675,15 @@ func (v OutputStream) Flush(cancellable ICancellable) (result bool, err error) {
 }
 
 // g_output_stream_flush_async
-// container is not nil, container is OutputStream
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v OutputStream) FlushAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1003, "OutputStream", "flush_async")
 	if err != nil {
@@ -23596,8 +26704,11 @@ func (v OutputStream) FlushAsync(io_priority int32, cancellable ICancellable, ca
 }
 
 // g_output_stream_flush_finish
-// container is not nil, container is OutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v OutputStream) FlushFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1004, "OutputStream", "flush_finish")
 	if err != nil {
@@ -23620,8 +26731,9 @@ func (v OutputStream) FlushFinish(result IAsyncResult) (result1 bool, err error)
 }
 
 // g_output_stream_has_pending
-// container is not nil, container is OutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v OutputStream) HasPending() (result bool) {
 	iv, err := _I.Get(1005, "OutputStream", "has_pending")
 	if err != nil {
@@ -23637,8 +26749,9 @@ func (v OutputStream) HasPending() (result bool) {
 }
 
 // g_output_stream_is_closed
-// container is not nil, container is OutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v OutputStream) IsClosed() (result bool) {
 	iv, err := _I.Get(1006, "OutputStream", "is_closed")
 	if err != nil {
@@ -23654,8 +26767,9 @@ func (v OutputStream) IsClosed() (result bool) {
 }
 
 // g_output_stream_is_closing
-// container is not nil, container is OutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v OutputStream) IsClosing() (result bool) {
 	iv, err := _I.Get(1007, "OutputStream", "is_closing")
 	if err != nil {
@@ -23671,8 +26785,9 @@ func (v OutputStream) IsClosing() (result bool) {
 }
 
 // g_output_stream_set_pending
-// container is not nil, container is OutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v OutputStream) SetPending() (result bool, err error) {
 	iv, err := _I.Get(1008, "OutputStream", "set_pending")
 	if err != nil {
@@ -23690,8 +26805,15 @@ func (v OutputStream) SetPending() (result bool, err error) {
 }
 
 // g_output_stream_splice
-// container is not nil, container is OutputStream
-// is method
+//
+// [ source ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v OutputStream) Splice(source IInputStream, flags OutputStreamSpliceFlags, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1009, "OutputStream", "splice")
 	if err != nil {
@@ -23720,8 +26842,19 @@ func (v OutputStream) Splice(source IInputStream, flags OutputStreamSpliceFlags,
 }
 
 // g_output_stream_splice_async
-// container is not nil, container is OutputStream
-// is method
+//
+// [ source ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v OutputStream) SpliceAsync(source IInputStream, flags OutputStreamSpliceFlags, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1010, "OutputStream", "splice_async")
 	if err != nil {
@@ -23748,8 +26881,11 @@ func (v OutputStream) SpliceAsync(source IInputStream, flags OutputStreamSpliceF
 }
 
 // g_output_stream_splice_finish
-// container is not nil, container is OutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v OutputStream) SpliceFinish(result IAsyncResult) (result1 int64, err error) {
 	iv, err := _I.Get(1011, "OutputStream", "splice_finish")
 	if err != nil {
@@ -23772,9 +26908,15 @@ func (v OutputStream) SpliceFinish(result IAsyncResult) (result1 int64, err erro
 }
 
 // g_output_stream_write
-// container is not nil, container is OutputStream
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v OutputStream) Write(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1012, "OutputStream", "write")
 	if err != nil {
@@ -23799,9 +26941,17 @@ func (v OutputStream) Write(buffer gi.Uint8Array, count uint64, cancellable ICan
 }
 
 // g_output_stream_write_all
-// container is not nil, container is OutputStream
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v OutputStream) WriteAll(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result bool, bytes_written uint64, err error) {
 	iv, err := _I.Get(1013, "OutputStream", "write_all")
 	if err != nil {
@@ -23828,9 +26978,19 @@ func (v OutputStream) WriteAll(buffer gi.Uint8Array, count uint64, cancellable I
 }
 
 // g_output_stream_write_all_async
-// container is not nil, container is OutputStream
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v OutputStream) WriteAllAsync(buffer gi.Uint8Array, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1014, "OutputStream", "write_all_async")
 	if err != nil {
@@ -23853,8 +27013,13 @@ func (v OutputStream) WriteAllAsync(buffer gi.Uint8Array, count uint64, io_prior
 }
 
 // g_output_stream_write_all_finish
-// container is not nil, container is OutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ result1 ] trans: nothing
+//
 func (v OutputStream) WriteAllFinish(result IAsyncResult) (result1 bool, bytes_written uint64, err error) {
 	iv, err := _I.Get(1015, "OutputStream", "write_all_finish")
 	if err != nil {
@@ -23879,9 +27044,19 @@ func (v OutputStream) WriteAllFinish(result IAsyncResult) (result1 bool, bytes_w
 }
 
 // g_output_stream_write_async
-// container is not nil, container is OutputStream
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v OutputStream) WriteAsync(buffer gi.Uint8Array, count uint64, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1016, "OutputStream", "write_async")
 	if err != nil {
@@ -23904,8 +27079,13 @@ func (v OutputStream) WriteAsync(buffer gi.Uint8Array, count uint64, io_priority
 }
 
 // g_output_stream_write_bytes
-// container is not nil, container is OutputStream
-// is method
+//
+// [ bytes ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v OutputStream) WriteBytes(bytes glib.Bytes, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1017, "OutputStream", "write_bytes")
 	if err != nil {
@@ -23929,8 +27109,17 @@ func (v OutputStream) WriteBytes(bytes glib.Bytes, cancellable ICancellable) (re
 }
 
 // g_output_stream_write_bytes_async
-// container is not nil, container is OutputStream
-// is method
+//
+// [ bytes ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v OutputStream) WriteBytesAsync(bytes glib.Bytes, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1018, "OutputStream", "write_bytes_async")
 	if err != nil {
@@ -23952,8 +27141,11 @@ func (v OutputStream) WriteBytesAsync(bytes glib.Bytes, io_priority int32, cance
 }
 
 // g_output_stream_write_bytes_finish
-// container is not nil, container is OutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v OutputStream) WriteBytesFinish(result IAsyncResult) (result1 int64, err error) {
 	iv, err := _I.Get(1019, "OutputStream", "write_bytes_finish")
 	if err != nil {
@@ -23976,8 +27168,11 @@ func (v OutputStream) WriteBytesFinish(result IAsyncResult) (result1 int64, err 
 }
 
 // g_output_stream_write_finish
-// container is not nil, container is OutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v OutputStream) WriteFinish(result IAsyncResult) (result1 int64, err error) {
 	iv, err := _I.Get(1020, "OutputStream", "write_finish")
 	if err != nil {
@@ -24066,8 +27261,11 @@ func PermissionGetType() gi.GType {
 }
 
 // g_permission_acquire
-// container is not nil, container is Permission
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Permission) Acquire(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1021, "Permission", "acquire")
 	if err != nil {
@@ -24090,8 +27288,13 @@ func (v Permission) Acquire(cancellable ICancellable) (result bool, err error) {
 }
 
 // g_permission_acquire_async
-// container is not nil, container is Permission
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Permission) AcquireAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1022, "Permission", "acquire_async")
 	if err != nil {
@@ -24111,8 +27314,11 @@ func (v Permission) AcquireAsync(cancellable ICancellable, callback int /*TODO_T
 }
 
 // g_permission_acquire_finish
-// container is not nil, container is Permission
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v Permission) AcquireFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1023, "Permission", "acquire_finish")
 	if err != nil {
@@ -24135,8 +27341,9 @@ func (v Permission) AcquireFinish(result IAsyncResult) (result1 bool, err error)
 }
 
 // g_permission_get_allowed
-// container is not nil, container is Permission
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Permission) GetAllowed() (result bool) {
 	iv, err := _I.Get(1024, "Permission", "get_allowed")
 	if err != nil {
@@ -24152,8 +27359,9 @@ func (v Permission) GetAllowed() (result bool) {
 }
 
 // g_permission_get_can_acquire
-// container is not nil, container is Permission
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Permission) GetCanAcquire() (result bool) {
 	iv, err := _I.Get(1025, "Permission", "get_can_acquire")
 	if err != nil {
@@ -24169,8 +27377,9 @@ func (v Permission) GetCanAcquire() (result bool) {
 }
 
 // g_permission_get_can_release
-// container is not nil, container is Permission
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Permission) GetCanRelease() (result bool) {
 	iv, err := _I.Get(1026, "Permission", "get_can_release")
 	if err != nil {
@@ -24186,8 +27395,13 @@ func (v Permission) GetCanRelease() (result bool) {
 }
 
 // g_permission_impl_update
-// container is not nil, container is Permission
-// is method
+//
+// [ allowed ] trans: nothing
+//
+// [ can_acquire ] trans: nothing
+//
+// [ can_release ] trans: nothing
+//
 func (v Permission) ImplUpdate(allowed bool, can_acquire bool, can_release bool) {
 	iv, err := _I.Get(1027, "Permission", "impl_update")
 	if err != nil {
@@ -24203,8 +27417,11 @@ func (v Permission) ImplUpdate(allowed bool, can_acquire bool, can_release bool)
 }
 
 // g_permission_release
-// container is not nil, container is Permission
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Permission) Release(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1028, "Permission", "release")
 	if err != nil {
@@ -24227,8 +27444,13 @@ func (v Permission) Release(cancellable ICancellable) (result bool, err error) {
 }
 
 // g_permission_release_async
-// container is not nil, container is Permission
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Permission) ReleaseAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1029, "Permission", "release_async")
 	if err != nil {
@@ -24248,8 +27470,11 @@ func (v Permission) ReleaseAsync(cancellable ICancellable, callback int /*TODO_T
 }
 
 // g_permission_release_finish
-// container is not nil, container is Permission
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v Permission) ReleaseFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1030, "Permission", "release_finish")
 	if err != nil {
@@ -24297,8 +27522,9 @@ func PollableInputStreamGetType() gi.GType {
 }
 
 // g_pollable_input_stream_can_poll
-// container is not nil, container is PollableInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *PollableInputStreamIfc) CanPoll() (result bool) {
 	iv, err := _I.Get(1031, "PollableInputStream", "can_poll")
 	if err != nil {
@@ -24314,8 +27540,11 @@ func (v *PollableInputStreamIfc) CanPoll() (result bool) {
 }
 
 // g_pollable_input_stream_create_source
-// container is not nil, container is PollableInputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *PollableInputStreamIfc) CreateSource(cancellable ICancellable) (result glib.Source) {
 	iv, err := _I.Get(1032, "PollableInputStream", "create_source")
 	if err != nil {
@@ -24336,8 +27565,9 @@ func (v *PollableInputStreamIfc) CreateSource(cancellable ICancellable) (result 
 }
 
 // g_pollable_input_stream_is_readable
-// container is not nil, container is PollableInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *PollableInputStreamIfc) IsReadable() (result bool) {
 	iv, err := _I.Get(1033, "PollableInputStream", "is_readable")
 	if err != nil {
@@ -24353,9 +27583,15 @@ func (v *PollableInputStreamIfc) IsReadable() (result bool) {
 }
 
 // g_pollable_input_stream_read_nonblocking
-// container is not nil, container is PollableInputStream
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *PollableInputStreamIfc) ReadNonblocking(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1034, "PollableInputStream", "read_nonblocking")
 	if err != nil {
@@ -24395,8 +27631,9 @@ func PollableOutputStreamGetType() gi.GType {
 }
 
 // g_pollable_output_stream_can_poll
-// container is not nil, container is PollableOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *PollableOutputStreamIfc) CanPoll() (result bool) {
 	iv, err := _I.Get(1035, "PollableOutputStream", "can_poll")
 	if err != nil {
@@ -24412,8 +27649,11 @@ func (v *PollableOutputStreamIfc) CanPoll() (result bool) {
 }
 
 // g_pollable_output_stream_create_source
-// container is not nil, container is PollableOutputStream
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *PollableOutputStreamIfc) CreateSource(cancellable ICancellable) (result glib.Source) {
 	iv, err := _I.Get(1036, "PollableOutputStream", "create_source")
 	if err != nil {
@@ -24434,8 +27674,9 @@ func (v *PollableOutputStreamIfc) CreateSource(cancellable ICancellable) (result
 }
 
 // g_pollable_output_stream_is_writable
-// container is not nil, container is PollableOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *PollableOutputStreamIfc) IsWritable() (result bool) {
 	iv, err := _I.Get(1037, "PollableOutputStream", "is_writable")
 	if err != nil {
@@ -24451,9 +27692,15 @@ func (v *PollableOutputStreamIfc) IsWritable() (result bool) {
 }
 
 // g_pollable_output_stream_write_nonblocking
-// container is not nil, container is PollableOutputStream
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *PollableOutputStreamIfc) WriteNonblocking(buffer gi.Uint8Array, count uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1038, "PollableOutputStream", "write_nonblocking")
 	if err != nil {
@@ -24513,8 +27760,15 @@ func PropertyActionGetType() gi.GType {
 }
 
 // g_property_action_new
-// container is not nil, container is PropertyAction
-// is constructor
+//
+// [ name ] trans: nothing
+//
+// [ object ] trans: nothing
+//
+// [ property_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPropertyAction(name string, object gobject.IObject, property_name string) (result PropertyAction) {
 	iv, err := _I.Get(1039, "PropertyAction", "new")
 	if err != nil {
@@ -24554,9 +27808,11 @@ func ProxyGetType() gi.GType {
 }
 
 // g_proxy_get_default_for_protocol
-// container is not nil, container is Proxy
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ protocol ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ProxyGetDefaultForProtocol1(protocol string) (result Proxy) {
 	iv, err := _I.Get(1040, "Proxy", "get_default_for_protocol")
 	if err != nil {
@@ -24574,8 +27830,15 @@ func ProxyGetDefaultForProtocol1(protocol string) (result Proxy) {
 }
 
 // g_proxy_connect
-// container is not nil, container is Proxy
-// is method
+//
+// [ connection ] trans: nothing
+//
+// [ proxy_address ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *ProxyIfc) Connect(connection IIOStream, proxy_address IProxyAddress, cancellable ICancellable) (result IOStream, err error) {
 	iv, err := _I.Get(1041, "Proxy", "connect")
 	if err != nil {
@@ -24608,8 +27871,17 @@ func (v *ProxyIfc) Connect(connection IIOStream, proxy_address IProxyAddress, ca
 }
 
 // g_proxy_connect_async
-// container is not nil, container is Proxy
-// is method
+//
+// [ connection ] trans: nothing
+//
+// [ proxy_address ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *ProxyIfc) ConnectAsync(connection IIOStream, proxy_address IProxyAddress, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1042, "Proxy", "connect_async")
 	if err != nil {
@@ -24639,8 +27911,11 @@ func (v *ProxyIfc) ConnectAsync(connection IIOStream, proxy_address IProxyAddres
 }
 
 // g_proxy_connect_finish
-// container is not nil, container is Proxy
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v *ProxyIfc) ConnectFinish(result IAsyncResult) (result1 IOStream, err error) {
 	iv, err := _I.Get(1043, "Proxy", "connect_finish")
 	if err != nil {
@@ -24663,8 +27938,9 @@ func (v *ProxyIfc) ConnectFinish(result IAsyncResult) (result1 IOStream, err err
 }
 
 // g_proxy_supports_hostname
-// container is not nil, container is Proxy
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ProxyIfc) SupportsHostname() (result bool) {
 	iv, err := _I.Get(1044, "Proxy", "supports_hostname")
 	if err != nil {
@@ -24697,8 +27973,23 @@ func ProxyAddressGetType() gi.GType {
 }
 
 // g_proxy_address_new
-// container is not nil, container is ProxyAddress
-// is constructor
+//
+// [ inetaddr ] trans: nothing
+//
+// [ port ] trans: nothing
+//
+// [ protocol ] trans: nothing
+//
+// [ dest_hostname ] trans: nothing
+//
+// [ dest_port ] trans: nothing
+//
+// [ username ] trans: nothing
+//
+// [ password ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewProxyAddress(inetaddr IInetAddress, port uint16, protocol string, dest_hostname string, dest_port uint16, username string, password string) (result ProxyAddress) {
 	iv, err := _I.Get(1045, "ProxyAddress", "new")
 	if err != nil {
@@ -24732,8 +28023,9 @@ func NewProxyAddress(inetaddr IInetAddress, port uint16, protocol string, dest_h
 }
 
 // g_proxy_address_get_destination_hostname
-// container is not nil, container is ProxyAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ProxyAddress) GetDestinationHostname() (result string) {
 	iv, err := _I.Get(1046, "ProxyAddress", "get_destination_hostname")
 	if err != nil {
@@ -24744,13 +28036,14 @@ func (v ProxyAddress) GetDestinationHostname() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_proxy_address_get_destination_port
-// container is not nil, container is ProxyAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ProxyAddress) GetDestinationPort() (result uint16) {
 	iv, err := _I.Get(1047, "ProxyAddress", "get_destination_port")
 	if err != nil {
@@ -24766,8 +28059,9 @@ func (v ProxyAddress) GetDestinationPort() (result uint16) {
 }
 
 // g_proxy_address_get_destination_protocol
-// container is not nil, container is ProxyAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ProxyAddress) GetDestinationProtocol() (result string) {
 	iv, err := _I.Get(1048, "ProxyAddress", "get_destination_protocol")
 	if err != nil {
@@ -24778,13 +28072,14 @@ func (v ProxyAddress) GetDestinationProtocol() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_proxy_address_get_password
-// container is not nil, container is ProxyAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ProxyAddress) GetPassword() (result string) {
 	iv, err := _I.Get(1049, "ProxyAddress", "get_password")
 	if err != nil {
@@ -24795,13 +28090,14 @@ func (v ProxyAddress) GetPassword() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_proxy_address_get_protocol
-// container is not nil, container is ProxyAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ProxyAddress) GetProtocol() (result string) {
 	iv, err := _I.Get(1050, "ProxyAddress", "get_protocol")
 	if err != nil {
@@ -24812,13 +28108,14 @@ func (v ProxyAddress) GetProtocol() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_proxy_address_get_uri
-// container is not nil, container is ProxyAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ProxyAddress) GetUri() (result string) {
 	iv, err := _I.Get(1051, "ProxyAddress", "get_uri")
 	if err != nil {
@@ -24829,13 +28126,14 @@ func (v ProxyAddress) GetUri() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_proxy_address_get_username
-// container is not nil, container is ProxyAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ProxyAddress) GetUsername() (result string) {
 	iv, err := _I.Get(1052, "ProxyAddress", "get_username")
 	if err != nil {
@@ -24846,7 +28144,7 @@ func (v ProxyAddress) GetUsername() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
@@ -24903,8 +28201,9 @@ func ProxyResolverGetType() gi.GType {
 }
 
 // g_proxy_resolver_is_supported
-// container is not nil, container is ProxyResolver
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *ProxyResolverIfc) IsSupported() (result bool) {
 	iv, err := _I.Get(1054, "ProxyResolver", "is_supported")
 	if err != nil {
@@ -24920,8 +28219,13 @@ func (v *ProxyResolverIfc) IsSupported() (result bool) {
 }
 
 // g_proxy_resolver_lookup
-// container is not nil, container is ProxyResolver
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *ProxyResolverIfc) Lookup(uri string, cancellable ICancellable) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(1055, "ProxyResolver", "lookup")
 	if err != nil {
@@ -24948,8 +28252,15 @@ func (v *ProxyResolverIfc) Lookup(uri string, cancellable ICancellable) (result 
 }
 
 // g_proxy_resolver_lookup_async
-// container is not nil, container is ProxyResolver
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *ProxyResolverIfc) LookupAsync(uri string, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1056, "ProxyResolver", "lookup_async")
 	if err != nil {
@@ -24972,8 +28283,11 @@ func (v *ProxyResolverIfc) LookupAsync(uri string, cancellable ICancellable, cal
 }
 
 // g_proxy_resolver_lookup_finish
-// container is not nil, container is ProxyResolver
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v *ProxyResolverIfc) LookupFinish(result IAsyncResult) (result1 gi.CStrArray, err error) {
 	iv, err := _I.Get(1057, "ProxyResolver", "lookup_finish")
 	if err != nil {
@@ -25026,8 +28340,13 @@ func RemoteActionGroupGetType() gi.GType {
 }
 
 // g_remote_action_group_activate_action_full
-// container is not nil, container is RemoteActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ parameter ] trans: nothing
+//
+// [ platform_data ] trans: nothing
+//
 func (v *RemoteActionGroupIfc) ActivateActionFull(action_name string, parameter glib.Variant, platform_data glib.Variant) {
 	iv, err := _I.Get(1058, "RemoteActionGroup", "activate_action_full")
 	if err != nil {
@@ -25045,8 +28364,13 @@ func (v *RemoteActionGroupIfc) ActivateActionFull(action_name string, parameter 
 }
 
 // g_remote_action_group_change_action_state_full
-// container is not nil, container is RemoteActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ platform_data ] trans: nothing
+//
 func (v *RemoteActionGroupIfc) ChangeActionStateFull(action_name string, value glib.Variant, platform_data glib.Variant) {
 	iv, err := _I.Get(1059, "RemoteActionGroup", "change_action_state_full")
 	if err != nil {
@@ -25080,8 +28404,13 @@ func ResolverGetType() gi.GType {
 }
 
 // g_resolver_lookup_by_address
-// container is not nil, container is Resolver
-// is method
+//
+// [ address ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Resolver) LookupByAddress(address IInetAddress, cancellable ICancellable) (result string, err error) {
 	iv, err := _I.Get(1061, "Resolver", "lookup_by_address")
 	if err != nil {
@@ -25109,8 +28438,15 @@ func (v Resolver) LookupByAddress(address IInetAddress, cancellable ICancellable
 }
 
 // g_resolver_lookup_by_address_async
-// container is not nil, container is Resolver
-// is method
+//
+// [ address ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Resolver) LookupByAddressAsync(address IInetAddress, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1062, "Resolver", "lookup_by_address_async")
 	if err != nil {
@@ -25135,8 +28471,11 @@ func (v Resolver) LookupByAddressAsync(address IInetAddress, cancellable ICancel
 }
 
 // g_resolver_lookup_by_address_finish
-// container is not nil, container is Resolver
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v Resolver) LookupByAddressFinish(result IAsyncResult) (result1 string, err error) {
 	iv, err := _I.Get(1063, "Resolver", "lookup_by_address_finish")
 	if err != nil {
@@ -25159,8 +28498,13 @@ func (v Resolver) LookupByAddressFinish(result IAsyncResult) (result1 string, er
 }
 
 // g_resolver_lookup_by_name
-// container is not nil, container is Resolver
-// is method
+//
+// [ hostname ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Resolver) LookupByName(hostname string, cancellable ICancellable) (result glib.List, err error) {
 	iv, err := _I.Get(1064, "Resolver", "lookup_by_name")
 	if err != nil {
@@ -25186,8 +28530,15 @@ func (v Resolver) LookupByName(hostname string, cancellable ICancellable) (resul
 }
 
 // g_resolver_lookup_by_name_async
-// container is not nil, container is Resolver
-// is method
+//
+// [ hostname ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Resolver) LookupByNameAsync(hostname string, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1065, "Resolver", "lookup_by_name_async")
 	if err != nil {
@@ -25210,8 +28561,11 @@ func (v Resolver) LookupByNameAsync(hostname string, cancellable ICancellable, c
 }
 
 // g_resolver_lookup_by_name_finish
-// container is not nil, container is Resolver
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v Resolver) LookupByNameFinish(result IAsyncResult) (result1 glib.List, err error) {
 	iv, err := _I.Get(1066, "Resolver", "lookup_by_name_finish")
 	if err != nil {
@@ -25234,8 +28588,15 @@ func (v Resolver) LookupByNameFinish(result IAsyncResult) (result1 glib.List, er
 }
 
 // g_resolver_lookup_records
-// container is not nil, container is Resolver
-// is method
+//
+// [ rrname ] trans: nothing
+//
+// [ record_type ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Resolver) LookupRecords(rrname string, record_type ResolverRecordTypeEnum, cancellable ICancellable) (result glib.List, err error) {
 	iv, err := _I.Get(1067, "Resolver", "lookup_records")
 	if err != nil {
@@ -25262,8 +28623,17 @@ func (v Resolver) LookupRecords(rrname string, record_type ResolverRecordTypeEnu
 }
 
 // g_resolver_lookup_records_async
-// container is not nil, container is Resolver
-// is method
+//
+// [ rrname ] trans: nothing
+//
+// [ record_type ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Resolver) LookupRecordsAsync(rrname string, record_type ResolverRecordTypeEnum, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1068, "Resolver", "lookup_records_async")
 	if err != nil {
@@ -25287,8 +28657,11 @@ func (v Resolver) LookupRecordsAsync(rrname string, record_type ResolverRecordTy
 }
 
 // g_resolver_lookup_records_finish
-// container is not nil, container is Resolver
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v Resolver) LookupRecordsFinish(result IAsyncResult) (result1 glib.List, err error) {
 	iv, err := _I.Get(1069, "Resolver", "lookup_records_finish")
 	if err != nil {
@@ -25311,8 +28684,17 @@ func (v Resolver) LookupRecordsFinish(result IAsyncResult) (result1 glib.List, e
 }
 
 // g_resolver_lookup_service
-// container is not nil, container is Resolver
-// is method
+//
+// [ service ] trans: nothing
+//
+// [ protocol ] trans: nothing
+//
+// [ domain ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Resolver) LookupService(service string, protocol string, domain string, cancellable ICancellable) (result glib.List, err error) {
 	iv, err := _I.Get(1070, "Resolver", "lookup_service")
 	if err != nil {
@@ -25344,8 +28726,19 @@ func (v Resolver) LookupService(service string, protocol string, domain string, 
 }
 
 // g_resolver_lookup_service_async
-// container is not nil, container is Resolver
-// is method
+//
+// [ service ] trans: nothing
+//
+// [ protocol ] trans: nothing
+//
+// [ domain ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Resolver) LookupServiceAsync(service string, protocol string, domain string, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1071, "Resolver", "lookup_service_async")
 	if err != nil {
@@ -25374,8 +28767,11 @@ func (v Resolver) LookupServiceAsync(service string, protocol string, domain str
 }
 
 // g_resolver_lookup_service_finish
-// container is not nil, container is Resolver
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v Resolver) LookupServiceFinish(result IAsyncResult) (result1 glib.List, err error) {
 	iv, err := _I.Get(1072, "Resolver", "lookup_service_finish")
 	if err != nil {
@@ -25398,8 +28794,7 @@ func (v Resolver) LookupServiceFinish(result IAsyncResult) (result1 glib.List, e
 }
 
 // g_resolver_set_default
-// container is not nil, container is Resolver
-// is method
+//
 func (v Resolver) SetDefault() {
 	iv, err := _I.Get(1073, "Resolver", "set_default")
 	if err != nil {
@@ -25463,8 +28858,11 @@ func ResourceGetType() gi.GType {
 }
 
 // g_resource_new_from_data
-// container is not nil, container is Resource
-// is constructor
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewResourceFromData(data glib.Bytes) (result Resource, err error) {
 	iv, err := _I.Get(1074, "Resource", "new_from_data")
 	if err != nil {
@@ -25482,8 +28880,7 @@ func NewResourceFromData(data glib.Bytes) (result Resource, err error) {
 }
 
 // g_resources_register
-// container is not nil, container is Resource
-// is method
+//
 func (v Resource) _Register() {
 	iv, err := _I.Get(1075, "Resource", "_register")
 	if err != nil {
@@ -25496,8 +28893,7 @@ func (v Resource) _Register() {
 }
 
 // g_resources_unregister
-// container is not nil, container is Resource
-// is method
+//
 func (v Resource) _Unregister() {
 	iv, err := _I.Get(1076, "Resource", "_unregister")
 	if err != nil {
@@ -25510,8 +28906,13 @@ func (v Resource) _Unregister() {
 }
 
 // g_resource_enumerate_children
-// container is not nil, container is Resource
-// is method
+//
+// [ path ] trans: nothing
+//
+// [ lookup_flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Resource) EnumerateChildren(path string, lookup_flags ResourceLookupFlags) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(1077, "Resource", "enumerate_children")
 	if err != nil {
@@ -25534,8 +28935,17 @@ func (v Resource) EnumerateChildren(path string, lookup_flags ResourceLookupFlag
 }
 
 // g_resource_get_info
-// container is not nil, container is Resource
-// is method
+//
+// [ path ] trans: nothing
+//
+// [ lookup_flags ] trans: nothing
+//
+// [ size ] trans: everything, dir: out
+//
+// [ flags ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Resource) GetInfo(path string, lookup_flags ResourceLookupFlags) (result bool, size uint64, flags uint32, err error) {
 	iv, err := _I.Get(1078, "Resource", "get_info")
 	if err != nil {
@@ -25561,8 +28971,13 @@ func (v Resource) GetInfo(path string, lookup_flags ResourceLookupFlags) (result
 }
 
 // g_resource_lookup_data
-// container is not nil, container is Resource
-// is method
+//
+// [ path ] trans: nothing
+//
+// [ lookup_flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Resource) LookupData(path string, lookup_flags ResourceLookupFlags) (result glib.Bytes, err error) {
 	iv, err := _I.Get(1079, "Resource", "lookup_data")
 	if err != nil {
@@ -25584,8 +28999,13 @@ func (v Resource) LookupData(path string, lookup_flags ResourceLookupFlags) (res
 }
 
 // g_resource_open_stream
-// container is not nil, container is Resource
-// is method
+//
+// [ path ] trans: nothing
+//
+// [ lookup_flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Resource) OpenStream(path string, lookup_flags ResourceLookupFlags) (result InputStream, err error) {
 	iv, err := _I.Get(1080, "Resource", "open_stream")
 	if err != nil {
@@ -25607,8 +29027,9 @@ func (v Resource) OpenStream(path string, lookup_flags ResourceLookupFlags) (res
 }
 
 // g_resource_ref
-// container is not nil, container is Resource
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Resource) Ref() (result Resource) {
 	iv, err := _I.Get(1081, "Resource", "ref")
 	if err != nil {
@@ -25624,8 +29045,7 @@ func (v Resource) Ref() (result Resource) {
 }
 
 // g_resource_unref
-// container is not nil, container is Resource
-// is method
+//
 func (v Resource) Unref() {
 	iv, err := _I.Get(1082, "Resource", "unref")
 	if err != nil {
@@ -25638,9 +29058,11 @@ func (v Resource) Unref() {
 }
 
 // g_resource_load
-// container is not nil, container is Resource
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ResourceLoad1(filename string) (result Resource, err error) {
 	iv, err := _I.Get(1083, "Resource", "load")
 	if err != nil {
@@ -25712,8 +29134,9 @@ func SeekableGetType() gi.GType {
 }
 
 // g_seekable_can_seek
-// container is not nil, container is Seekable
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *SeekableIfc) CanSeek() (result bool) {
 	iv, err := _I.Get(1084, "Seekable", "can_seek")
 	if err != nil {
@@ -25729,8 +29152,9 @@ func (v *SeekableIfc) CanSeek() (result bool) {
 }
 
 // g_seekable_can_truncate
-// container is not nil, container is Seekable
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *SeekableIfc) CanTruncate() (result bool) {
 	iv, err := _I.Get(1085, "Seekable", "can_truncate")
 	if err != nil {
@@ -25746,8 +29170,15 @@ func (v *SeekableIfc) CanTruncate() (result bool) {
 }
 
 // g_seekable_seek
-// container is not nil, container is Seekable
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *SeekableIfc) Seek(offset int64, type1 glib.SeekTypeEnum, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1086, "Seekable", "seek")
 	if err != nil {
@@ -25772,8 +29203,9 @@ func (v *SeekableIfc) Seek(offset int64, type1 glib.SeekTypeEnum, cancellable IC
 }
 
 // g_seekable_tell
-// container is not nil, container is Seekable
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *SeekableIfc) Tell() (result int64) {
 	iv, err := _I.Get(1087, "Seekable", "tell")
 	if err != nil {
@@ -25789,8 +29221,13 @@ func (v *SeekableIfc) Tell() (result int64) {
 }
 
 // g_seekable_truncate
-// container is not nil, container is Seekable
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v *SeekableIfc) Truncate(offset int64, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1088, "Seekable", "truncate")
 	if err != nil {
@@ -25830,8 +29267,11 @@ func SettingsGetType() gi.GType {
 }
 
 // g_settings_new
-// container is not nil, container is Settings
-// is constructor
+//
+// [ schema_id ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSettings(schema_id string) (result Settings) {
 	iv, err := _I.Get(1089, "Settings", "new")
 	if err != nil {
@@ -25849,8 +29289,15 @@ func NewSettings(schema_id string) (result Settings) {
 }
 
 // g_settings_new_full
-// container is not nil, container is Settings
-// is constructor
+//
+// [ schema ] trans: nothing
+//
+// [ backend ] trans: nothing
+//
+// [ path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSettingsFull(schema SettingsSchema, backend ISettingsBackend, path string) (result Settings) {
 	iv, err := _I.Get(1090, "Settings", "new_full")
 	if err != nil {
@@ -25874,8 +29321,13 @@ func NewSettingsFull(schema SettingsSchema, backend ISettingsBackend, path strin
 }
 
 // g_settings_new_with_backend
-// container is not nil, container is Settings
-// is constructor
+//
+// [ schema_id ] trans: nothing
+//
+// [ backend ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSettingsWithBackend(schema_id string, backend ISettingsBackend) (result Settings) {
 	iv, err := _I.Get(1091, "Settings", "new_with_backend")
 	if err != nil {
@@ -25898,8 +29350,15 @@ func NewSettingsWithBackend(schema_id string, backend ISettingsBackend) (result 
 }
 
 // g_settings_new_with_backend_and_path
-// container is not nil, container is Settings
-// is constructor
+//
+// [ schema_id ] trans: nothing
+//
+// [ backend ] trans: nothing
+//
+// [ path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSettingsWithBackendAndPath(schema_id string, backend ISettingsBackend, path string) (result Settings) {
 	iv, err := _I.Get(1092, "Settings", "new_with_backend_and_path")
 	if err != nil {
@@ -25925,8 +29384,13 @@ func NewSettingsWithBackendAndPath(schema_id string, backend ISettingsBackend, p
 }
 
 // g_settings_new_with_path
-// container is not nil, container is Settings
-// is constructor
+//
+// [ schema_id ] trans: nothing
+//
+// [ path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSettingsWithPath(schema_id string, path string) (result Settings) {
 	iv, err := _I.Get(1093, "Settings", "new_with_path")
 	if err != nil {
@@ -25947,9 +29411,11 @@ func NewSettingsWithPath(schema_id string, path string) (result Settings) {
 }
 
 // g_settings_unbind
-// container is not nil, container is Settings
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ object ] trans: nothing
+//
+// [ property ] trans: nothing
+//
 func SettingsUnbind1(object gobject.IObject, property string) {
 	iv, err := _I.Get(1097, "Settings", "unbind")
 	if err != nil {
@@ -25969,8 +29435,7 @@ func SettingsUnbind1(object gobject.IObject, property string) {
 }
 
 // g_settings_apply
-// container is not nil, container is Settings
-// is method
+//
 func (v Settings) Apply() {
 	iv, err := _I.Get(1098, "Settings", "apply")
 	if err != nil {
@@ -25983,8 +29448,15 @@ func (v Settings) Apply() {
 }
 
 // g_settings_bind
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ object ] trans: nothing
+//
+// [ property ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
 func (v Settings) Bind(key string, object gobject.IObject, property string, flags SettingsBindFlags) {
 	iv, err := _I.Get(1099, "Settings", "bind")
 	if err != nil {
@@ -26009,8 +29481,15 @@ func (v Settings) Bind(key string, object gobject.IObject, property string, flag
 }
 
 // g_settings_bind_writable
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ object ] trans: nothing
+//
+// [ property ] trans: nothing
+//
+// [ inverted ] trans: nothing
+//
 func (v Settings) BindWritable(key string, object gobject.IObject, property string, inverted bool) {
 	iv, err := _I.Get(1100, "Settings", "bind_writable")
 	if err != nil {
@@ -26035,8 +29514,11 @@ func (v Settings) BindWritable(key string, object gobject.IObject, property stri
 }
 
 // g_settings_create_action
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Settings) CreateAction(key string) (result Action) {
 	iv, err := _I.Get(1101, "Settings", "create_action")
 	if err != nil {
@@ -26055,8 +29537,7 @@ func (v Settings) CreateAction(key string) (result Action) {
 }
 
 // g_settings_delay
-// container is not nil, container is Settings
-// is method
+//
 func (v Settings) Delay() {
 	iv, err := _I.Get(1102, "Settings", "delay")
 	if err != nil {
@@ -26069,8 +29550,11 @@ func (v Settings) Delay() {
 }
 
 // g_settings_get_boolean
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) GetBoolean(key string) (result bool) {
 	iv, err := _I.Get(1103, "Settings", "get_boolean")
 	if err != nil {
@@ -26089,8 +29573,11 @@ func (v Settings) GetBoolean(key string) (result bool) {
 }
 
 // g_settings_get_child
-// container is not nil, container is Settings
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Settings) GetChild(name string) (result Settings) {
 	iv, err := _I.Get(1104, "Settings", "get_child")
 	if err != nil {
@@ -26109,8 +29596,11 @@ func (v Settings) GetChild(name string) (result Settings) {
 }
 
 // g_settings_get_default_value
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Settings) GetDefaultValue(key string) (result glib.Variant) {
 	iv, err := _I.Get(1105, "Settings", "get_default_value")
 	if err != nil {
@@ -26129,8 +29619,11 @@ func (v Settings) GetDefaultValue(key string) (result glib.Variant) {
 }
 
 // g_settings_get_double
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) GetDouble(key string) (result float64) {
 	iv, err := _I.Get(1106, "Settings", "get_double")
 	if err != nil {
@@ -26149,8 +29642,11 @@ func (v Settings) GetDouble(key string) (result float64) {
 }
 
 // g_settings_get_enum
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) GetEnum(key string) (result int32) {
 	iv, err := _I.Get(1107, "Settings", "get_enum")
 	if err != nil {
@@ -26169,8 +29665,11 @@ func (v Settings) GetEnum(key string) (result int32) {
 }
 
 // g_settings_get_flags
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) GetFlags(key string) (result uint32) {
 	iv, err := _I.Get(1108, "Settings", "get_flags")
 	if err != nil {
@@ -26189,8 +29688,9 @@ func (v Settings) GetFlags(key string) (result uint32) {
 }
 
 // g_settings_get_has_unapplied
-// container is not nil, container is Settings
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Settings) GetHasUnapplied() (result bool) {
 	iv, err := _I.Get(1109, "Settings", "get_has_unapplied")
 	if err != nil {
@@ -26206,8 +29706,11 @@ func (v Settings) GetHasUnapplied() (result bool) {
 }
 
 // g_settings_get_int
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) GetInt(key string) (result int32) {
 	iv, err := _I.Get(1110, "Settings", "get_int")
 	if err != nil {
@@ -26226,8 +29729,11 @@ func (v Settings) GetInt(key string) (result int32) {
 }
 
 // g_settings_get_int64
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) GetInt64(key string) (result int64) {
 	iv, err := _I.Get(1111, "Settings", "get_int64")
 	if err != nil {
@@ -26246,8 +29752,15 @@ func (v Settings) GetInt64(key string) (result int64) {
 }
 
 // g_settings_get_mapped
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ mapping ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Settings) GetMapped(key string, mapping int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(1112, "Settings", "get_mapped")
 	if err != nil {
@@ -26268,8 +29781,11 @@ func (v Settings) GetMapped(key string, mapping int /*TODO_TYPE CALLBACK*/, user
 }
 
 // g_settings_get_range
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Settings) GetRange(key string) (result glib.Variant) {
 	iv, err := _I.Get(1113, "Settings", "get_range")
 	if err != nil {
@@ -26288,8 +29804,11 @@ func (v Settings) GetRange(key string) (result glib.Variant) {
 }
 
 // g_settings_get_string
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Settings) GetString(key string) (result string) {
 	iv, err := _I.Get(1114, "Settings", "get_string")
 	if err != nil {
@@ -26308,8 +29827,11 @@ func (v Settings) GetString(key string) (result string) {
 }
 
 // g_settings_get_strv
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Settings) GetStrv(key string) (result gi.CStrArray) {
 	iv, err := _I.Get(1115, "Settings", "get_strv")
 	if err != nil {
@@ -26329,8 +29851,11 @@ func (v Settings) GetStrv(key string) (result gi.CStrArray) {
 }
 
 // g_settings_get_uint
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) GetUint(key string) (result uint32) {
 	iv, err := _I.Get(1116, "Settings", "get_uint")
 	if err != nil {
@@ -26349,8 +29874,11 @@ func (v Settings) GetUint(key string) (result uint32) {
 }
 
 // g_settings_get_uint64
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) GetUint64(key string) (result uint64) {
 	iv, err := _I.Get(1117, "Settings", "get_uint64")
 	if err != nil {
@@ -26369,8 +29897,11 @@ func (v Settings) GetUint64(key string) (result uint64) {
 }
 
 // g_settings_get_user_value
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Settings) GetUserValue(key string) (result glib.Variant) {
 	iv, err := _I.Get(1118, "Settings", "get_user_value")
 	if err != nil {
@@ -26389,8 +29920,11 @@ func (v Settings) GetUserValue(key string) (result glib.Variant) {
 }
 
 // g_settings_get_value
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Settings) GetValue(key string) (result glib.Variant) {
 	iv, err := _I.Get(1119, "Settings", "get_value")
 	if err != nil {
@@ -26409,8 +29943,11 @@ func (v Settings) GetValue(key string) (result glib.Variant) {
 }
 
 // g_settings_is_writable
-// container is not nil, container is Settings
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) IsWritable(name string) (result bool) {
 	iv, err := _I.Get(1120, "Settings", "is_writable")
 	if err != nil {
@@ -26429,8 +29966,9 @@ func (v Settings) IsWritable(name string) (result bool) {
 }
 
 // g_settings_list_children
-// container is not nil, container is Settings
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Settings) ListChildren() (result gi.CStrArray) {
 	iv, err := _I.Get(1121, "Settings", "list_children")
 	if err != nil {
@@ -26447,8 +29985,9 @@ func (v Settings) ListChildren() (result gi.CStrArray) {
 }
 
 // g_settings_list_keys
-// container is not nil, container is Settings
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Settings) ListKeys() (result gi.CStrArray) {
 	iv, err := _I.Get(1122, "Settings", "list_keys")
 	if err != nil {
@@ -26465,8 +30004,13 @@ func (v Settings) ListKeys() (result gi.CStrArray) {
 }
 
 // g_settings_range_check
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) RangeCheck(key string, value glib.Variant) (result bool) {
 	iv, err := _I.Get(1123, "Settings", "range_check")
 	if err != nil {
@@ -26486,8 +30030,9 @@ func (v Settings) RangeCheck(key string, value glib.Variant) (result bool) {
 }
 
 // g_settings_reset
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
 func (v Settings) Reset(key string) {
 	iv, err := _I.Get(1124, "Settings", "reset")
 	if err != nil {
@@ -26503,8 +30048,7 @@ func (v Settings) Reset(key string) {
 }
 
 // g_settings_revert
-// container is not nil, container is Settings
-// is method
+//
 func (v Settings) Revert() {
 	iv, err := _I.Get(1125, "Settings", "revert")
 	if err != nil {
@@ -26517,8 +30061,13 @@ func (v Settings) Revert() {
 }
 
 // g_settings_set_boolean
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetBoolean(key string, value bool) (result bool) {
 	iv, err := _I.Get(1126, "Settings", "set_boolean")
 	if err != nil {
@@ -26538,8 +30087,13 @@ func (v Settings) SetBoolean(key string, value bool) (result bool) {
 }
 
 // g_settings_set_double
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetDouble(key string, value float64) (result bool) {
 	iv, err := _I.Get(1127, "Settings", "set_double")
 	if err != nil {
@@ -26559,8 +30113,13 @@ func (v Settings) SetDouble(key string, value float64) (result bool) {
 }
 
 // g_settings_set_enum
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetEnum(key string, value int32) (result bool) {
 	iv, err := _I.Get(1128, "Settings", "set_enum")
 	if err != nil {
@@ -26580,8 +30139,13 @@ func (v Settings) SetEnum(key string, value int32) (result bool) {
 }
 
 // g_settings_set_flags
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetFlags(key string, value uint32) (result bool) {
 	iv, err := _I.Get(1129, "Settings", "set_flags")
 	if err != nil {
@@ -26601,8 +30165,13 @@ func (v Settings) SetFlags(key string, value uint32) (result bool) {
 }
 
 // g_settings_set_int
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetInt(key string, value int32) (result bool) {
 	iv, err := _I.Get(1130, "Settings", "set_int")
 	if err != nil {
@@ -26622,8 +30191,13 @@ func (v Settings) SetInt(key string, value int32) (result bool) {
 }
 
 // g_settings_set_int64
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetInt64(key string, value int64) (result bool) {
 	iv, err := _I.Get(1131, "Settings", "set_int64")
 	if err != nil {
@@ -26643,8 +30217,13 @@ func (v Settings) SetInt64(key string, value int64) (result bool) {
 }
 
 // g_settings_set_string
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetString(key string, value string) (result bool) {
 	iv, err := _I.Get(1132, "Settings", "set_string")
 	if err != nil {
@@ -26666,8 +30245,13 @@ func (v Settings) SetString(key string, value string) (result bool) {
 }
 
 // g_settings_set_strv
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetStrv(key string, value gi.CStrArray) (result bool) {
 	iv, err := _I.Get(1133, "Settings", "set_strv")
 	if err != nil {
@@ -26687,8 +30271,13 @@ func (v Settings) SetStrv(key string, value gi.CStrArray) (result bool) {
 }
 
 // g_settings_set_uint
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetUint(key string, value uint32) (result bool) {
 	iv, err := _I.Get(1134, "Settings", "set_uint")
 	if err != nil {
@@ -26708,8 +30297,13 @@ func (v Settings) SetUint(key string, value uint32) (result bool) {
 }
 
 // g_settings_set_uint64
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetUint64(key string, value uint64) (result bool) {
 	iv, err := _I.Get(1135, "Settings", "set_uint64")
 	if err != nil {
@@ -26729,8 +30323,13 @@ func (v Settings) SetUint64(key string, value uint64) (result bool) {
 }
 
 // g_settings_set_value
-// container is not nil, container is Settings
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Settings) SetValue(key string, value glib.Variant) (result bool) {
 	iv, err := _I.Get(1136, "Settings", "set_value")
 	if err != nil {
@@ -26765,9 +30364,15 @@ func SettingsBackendGetType() gi.GType {
 }
 
 // g_settings_backend_flatten_tree
-// container is not nil, container is SettingsBackend
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ tree ] trans: nothing
+//
+// [ path ] trans: everything, dir: out
+//
+// [ keys ] trans: container, dir: out
+//
+// [ values ] trans: container, dir: out
+//
 func SettingsBackendFlattenTree1(tree glib.Tree) (path string, keys gi.CStrArray, values gi.PointerArray) {
 	iv, err := _I.Get(1137, "SettingsBackend", "flatten_tree")
 	if err != nil {
@@ -26790,8 +30395,11 @@ func SettingsBackendFlattenTree1(tree glib.Tree) (path string, keys gi.CStrArray
 }
 
 // g_settings_backend_changed
-// container is not nil, container is SettingsBackend
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ origin_tag ] trans: nothing
+//
 func (v SettingsBackend) Changed(key string, origin_tag unsafe.Pointer) {
 	iv, err := _I.Get(1139, "SettingsBackend", "changed")
 	if err != nil {
@@ -26808,8 +30416,11 @@ func (v SettingsBackend) Changed(key string, origin_tag unsafe.Pointer) {
 }
 
 // g_settings_backend_changed_tree
-// container is not nil, container is SettingsBackend
-// is method
+//
+// [ tree ] trans: nothing
+//
+// [ origin_tag ] trans: nothing
+//
 func (v SettingsBackend) ChangedTree(tree glib.Tree, origin_tag unsafe.Pointer) {
 	iv, err := _I.Get(1140, "SettingsBackend", "changed_tree")
 	if err != nil {
@@ -26824,8 +30435,13 @@ func (v SettingsBackend) ChangedTree(tree glib.Tree, origin_tag unsafe.Pointer) 
 }
 
 // g_settings_backend_keys_changed
-// container is not nil, container is SettingsBackend
-// is method
+//
+// [ path ] trans: nothing
+//
+// [ items ] trans: nothing
+//
+// [ origin_tag ] trans: nothing
+//
 func (v SettingsBackend) KeysChanged(path string, items gi.CStrArray, origin_tag unsafe.Pointer) {
 	iv, err := _I.Get(1141, "SettingsBackend", "keys_changed")
 	if err != nil {
@@ -26843,8 +30459,11 @@ func (v SettingsBackend) KeysChanged(path string, items gi.CStrArray, origin_tag
 }
 
 // g_settings_backend_path_changed
-// container is not nil, container is SettingsBackend
-// is method
+//
+// [ path ] trans: nothing
+//
+// [ origin_tag ] trans: nothing
+//
 func (v SettingsBackend) PathChanged(path string, origin_tag unsafe.Pointer) {
 	iv, err := _I.Get(1142, "SettingsBackend", "path_changed")
 	if err != nil {
@@ -26861,8 +30480,9 @@ func (v SettingsBackend) PathChanged(path string, origin_tag unsafe.Pointer) {
 }
 
 // g_settings_backend_path_writable_changed
-// container is not nil, container is SettingsBackend
-// is method
+//
+// [ path ] trans: nothing
+//
 func (v SettingsBackend) PathWritableChanged(path string) {
 	iv, err := _I.Get(1143, "SettingsBackend", "path_writable_changed")
 	if err != nil {
@@ -26878,8 +30498,9 @@ func (v SettingsBackend) PathWritableChanged(path string) {
 }
 
 // g_settings_backend_writable_changed
-// container is not nil, container is SettingsBackend
-// is method
+//
+// [ key ] trans: nothing
+//
 func (v SettingsBackend) WritableChanged(key string) {
 	iv, err := _I.Get(1144, "SettingsBackend", "writable_changed")
 	if err != nil {
@@ -27001,8 +30622,9 @@ func SettingsSchemaGetType() gi.GType {
 }
 
 // g_settings_schema_get_id
-// container is not nil, container is SettingsSchema
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SettingsSchema) GetId() (result string) {
 	iv, err := _I.Get(1145, "SettingsSchema", "get_id")
 	if err != nil {
@@ -27013,13 +30635,16 @@ func (v SettingsSchema) GetId() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_settings_schema_get_key
-// container is not nil, container is SettingsSchema
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v SettingsSchema) GetKey(name string) (result SettingsSchemaKey) {
 	iv, err := _I.Get(1146, "SettingsSchema", "get_key")
 	if err != nil {
@@ -27038,8 +30663,9 @@ func (v SettingsSchema) GetKey(name string) (result SettingsSchemaKey) {
 }
 
 // g_settings_schema_get_path
-// container is not nil, container is SettingsSchema
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SettingsSchema) GetPath() (result string) {
 	iv, err := _I.Get(1147, "SettingsSchema", "get_path")
 	if err != nil {
@@ -27050,13 +30676,16 @@ func (v SettingsSchema) GetPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_settings_schema_has_key
-// container is not nil, container is SettingsSchema
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SettingsSchema) HasKey(name string) (result bool) {
 	iv, err := _I.Get(1148, "SettingsSchema", "has_key")
 	if err != nil {
@@ -27075,8 +30704,9 @@ func (v SettingsSchema) HasKey(name string) (result bool) {
 }
 
 // g_settings_schema_list_children
-// container is not nil, container is SettingsSchema
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SettingsSchema) ListChildren() (result gi.CStrArray) {
 	iv, err := _I.Get(1149, "SettingsSchema", "list_children")
 	if err != nil {
@@ -27093,8 +30723,9 @@ func (v SettingsSchema) ListChildren() (result gi.CStrArray) {
 }
 
 // g_settings_schema_list_keys
-// container is not nil, container is SettingsSchema
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SettingsSchema) ListKeys() (result gi.CStrArray) {
 	iv, err := _I.Get(1150, "SettingsSchema", "list_keys")
 	if err != nil {
@@ -27111,8 +30742,9 @@ func (v SettingsSchema) ListKeys() (result gi.CStrArray) {
 }
 
 // g_settings_schema_ref
-// container is not nil, container is SettingsSchema
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SettingsSchema) Ref() (result SettingsSchema) {
 	iv, err := _I.Get(1151, "SettingsSchema", "ref")
 	if err != nil {
@@ -27128,8 +30760,7 @@ func (v SettingsSchema) Ref() (result SettingsSchema) {
 }
 
 // g_settings_schema_unref
-// container is not nil, container is SettingsSchema
-// is method
+//
 func (v SettingsSchema) Unref() {
 	iv, err := _I.Get(1152, "SettingsSchema", "unref")
 	if err != nil {
@@ -27152,8 +30783,9 @@ func SettingsSchemaKeyGetType() gi.GType {
 }
 
 // g_settings_schema_key_get_default_value
-// container is not nil, container is SettingsSchemaKey
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SettingsSchemaKey) GetDefaultValue() (result glib.Variant) {
 	iv, err := _I.Get(1153, "SettingsSchemaKey", "get_default_value")
 	if err != nil {
@@ -27169,8 +30801,9 @@ func (v SettingsSchemaKey) GetDefaultValue() (result glib.Variant) {
 }
 
 // g_settings_schema_key_get_description
-// container is not nil, container is SettingsSchemaKey
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SettingsSchemaKey) GetDescription() (result string) {
 	iv, err := _I.Get(1154, "SettingsSchemaKey", "get_description")
 	if err != nil {
@@ -27181,13 +30814,14 @@ func (v SettingsSchemaKey) GetDescription() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_settings_schema_key_get_name
-// container is not nil, container is SettingsSchemaKey
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SettingsSchemaKey) GetName() (result string) {
 	iv, err := _I.Get(1155, "SettingsSchemaKey", "get_name")
 	if err != nil {
@@ -27198,13 +30832,14 @@ func (v SettingsSchemaKey) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_settings_schema_key_get_range
-// container is not nil, container is SettingsSchemaKey
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SettingsSchemaKey) GetRange() (result glib.Variant) {
 	iv, err := _I.Get(1156, "SettingsSchemaKey", "get_range")
 	if err != nil {
@@ -27220,8 +30855,9 @@ func (v SettingsSchemaKey) GetRange() (result glib.Variant) {
 }
 
 // g_settings_schema_key_get_summary
-// container is not nil, container is SettingsSchemaKey
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SettingsSchemaKey) GetSummary() (result string) {
 	iv, err := _I.Get(1157, "SettingsSchemaKey", "get_summary")
 	if err != nil {
@@ -27232,13 +30868,14 @@ func (v SettingsSchemaKey) GetSummary() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_settings_schema_key_get_value_type
-// container is not nil, container is SettingsSchemaKey
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SettingsSchemaKey) GetValueType() (result glib.VariantType) {
 	iv, err := _I.Get(1158, "SettingsSchemaKey", "get_value_type")
 	if err != nil {
@@ -27254,8 +30891,11 @@ func (v SettingsSchemaKey) GetValueType() (result glib.VariantType) {
 }
 
 // g_settings_schema_key_range_check
-// container is not nil, container is SettingsSchemaKey
-// is method
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SettingsSchemaKey) RangeCheck(value glib.Variant) (result bool) {
 	iv, err := _I.Get(1159, "SettingsSchemaKey", "range_check")
 	if err != nil {
@@ -27272,8 +30912,9 @@ func (v SettingsSchemaKey) RangeCheck(value glib.Variant) (result bool) {
 }
 
 // g_settings_schema_key_ref
-// container is not nil, container is SettingsSchemaKey
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SettingsSchemaKey) Ref() (result SettingsSchemaKey) {
 	iv, err := _I.Get(1160, "SettingsSchemaKey", "ref")
 	if err != nil {
@@ -27289,8 +30930,7 @@ func (v SettingsSchemaKey) Ref() (result SettingsSchemaKey) {
 }
 
 // g_settings_schema_key_unref
-// container is not nil, container is SettingsSchemaKey
-// is method
+//
 func (v SettingsSchemaKey) Unref() {
 	iv, err := _I.Get(1161, "SettingsSchemaKey", "unref")
 	if err != nil {
@@ -27313,8 +30953,15 @@ func SettingsSchemaSourceGetType() gi.GType {
 }
 
 // g_settings_schema_source_new_from_directory
-// container is not nil, container is SettingsSchemaSource
-// is constructor
+//
+// [ directory ] trans: nothing
+//
+// [ parent ] trans: nothing
+//
+// [ trusted ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSettingsSchemaSourceFromDirectory(directory string, parent SettingsSchemaSource, trusted bool) (result SettingsSchemaSource, err error) {
 	iv, err := _I.Get(1162, "SettingsSchemaSource", "new_from_directory")
 	if err != nil {
@@ -27336,8 +30983,13 @@ func NewSettingsSchemaSourceFromDirectory(directory string, parent SettingsSchem
 }
 
 // g_settings_schema_source_list_schemas
-// container is not nil, container is SettingsSchemaSource
-// is method
+//
+// [ recursive ] trans: nothing
+//
+// [ non_relocatable ] trans: everything, dir: out
+//
+// [ relocatable ] trans: everything, dir: out
+//
 func (v SettingsSchemaSource) ListSchemas(recursive bool) (non_relocatable gi.CStrArray, relocatable gi.CStrArray) {
 	iv, err := _I.Get(1163, "SettingsSchemaSource", "list_schemas")
 	if err != nil {
@@ -27357,8 +31009,13 @@ func (v SettingsSchemaSource) ListSchemas(recursive bool) (non_relocatable gi.CS
 }
 
 // g_settings_schema_source_lookup
-// container is not nil, container is SettingsSchemaSource
-// is method
+//
+// [ schema_id ] trans: nothing
+//
+// [ recursive ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v SettingsSchemaSource) Lookup(schema_id string, recursive bool) (result SettingsSchema) {
 	iv, err := _I.Get(1164, "SettingsSchemaSource", "lookup")
 	if err != nil {
@@ -27378,8 +31035,9 @@ func (v SettingsSchemaSource) Lookup(schema_id string, recursive bool) (result S
 }
 
 // g_settings_schema_source_ref
-// container is not nil, container is SettingsSchemaSource
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SettingsSchemaSource) Ref() (result SettingsSchemaSource) {
 	iv, err := _I.Get(1165, "SettingsSchemaSource", "ref")
 	if err != nil {
@@ -27395,8 +31053,7 @@ func (v SettingsSchemaSource) Ref() (result SettingsSchemaSource) {
 }
 
 // g_settings_schema_source_unref
-// container is not nil, container is SettingsSchemaSource
-// is method
+//
 func (v SettingsSchemaSource) Unref() {
 	iv, err := _I.Get(1166, "SettingsSchemaSource", "unref")
 	if err != nil {
@@ -27426,8 +31083,13 @@ func SimpleActionGetType() gi.GType {
 }
 
 // g_simple_action_new
-// container is not nil, container is SimpleAction
-// is constructor
+//
+// [ name ] trans: nothing
+//
+// [ parameter_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSimpleAction(name string, parameter_type glib.VariantType) (result SimpleAction) {
 	iv, err := _I.Get(1168, "SimpleAction", "new")
 	if err != nil {
@@ -27446,8 +31108,15 @@ func NewSimpleAction(name string, parameter_type glib.VariantType) (result Simpl
 }
 
 // g_simple_action_new_stateful
-// container is not nil, container is SimpleAction
-// is constructor
+//
+// [ name ] trans: nothing
+//
+// [ parameter_type ] trans: nothing
+//
+// [ state ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSimpleActionStateful(name string, parameter_type glib.VariantType, state glib.Variant) (result SimpleAction) {
 	iv, err := _I.Get(1169, "SimpleAction", "new_stateful")
 	if err != nil {
@@ -27467,8 +31136,9 @@ func NewSimpleActionStateful(name string, parameter_type glib.VariantType, state
 }
 
 // g_simple_action_set_enabled
-// container is not nil, container is SimpleAction
-// is method
+//
+// [ enabled ] trans: nothing
+//
 func (v SimpleAction) SetEnabled(enabled bool) {
 	iv, err := _I.Get(1170, "SimpleAction", "set_enabled")
 	if err != nil {
@@ -27482,8 +31152,9 @@ func (v SimpleAction) SetEnabled(enabled bool) {
 }
 
 // g_simple_action_set_state
-// container is not nil, container is SimpleAction
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v SimpleAction) SetState(value glib.Variant) {
 	iv, err := _I.Get(1171, "SimpleAction", "set_state")
 	if err != nil {
@@ -27497,8 +31168,9 @@ func (v SimpleAction) SetState(value glib.Variant) {
 }
 
 // g_simple_action_set_state_hint
-// container is not nil, container is SimpleAction
-// is method
+//
+// [ state_hint ] trans: nothing
+//
 func (v SimpleAction) SetStateHint(state_hint glib.Variant) {
 	iv, err := _I.Get(1172, "SimpleAction", "set_state_hint")
 	if err != nil {
@@ -27531,8 +31203,9 @@ func SimpleActionGroupGetType() gi.GType {
 }
 
 // g_simple_action_group_new
-// container is not nil, container is SimpleActionGroup
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewSimpleActionGroup() (result SimpleActionGroup) {
 	iv, err := _I.Get(1173, "SimpleActionGroup", "new")
 	if err != nil {
@@ -27546,9 +31219,13 @@ func NewSimpleActionGroup() (result SimpleActionGroup) {
 }
 
 // g_simple_action_group_add_entries
-// container is not nil, container is SimpleActionGroup
-// is method
-// arg 0 entries lenArgIdx 1
+//
+// [ entries ] trans: nothing
+//
+// [ n_entries ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SimpleActionGroup) AddEntries(entries unsafe.Pointer, n_entries int32, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1174, "SimpleActionGroup", "add_entries")
 	if err != nil {
@@ -27564,8 +31241,9 @@ func (v SimpleActionGroup) AddEntries(entries unsafe.Pointer, n_entries int32, u
 }
 
 // g_simple_action_group_insert
-// container is not nil, container is SimpleActionGroup
-// is method
+//
+// [ action ] trans: nothing
+//
 func (v SimpleActionGroup) Insert(action IAction) {
 	iv, err := _I.Get(1175, "SimpleActionGroup", "insert")
 	if err != nil {
@@ -27583,8 +31261,11 @@ func (v SimpleActionGroup) Insert(action IAction) {
 }
 
 // g_simple_action_group_lookup
-// container is not nil, container is SimpleActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SimpleActionGroup) Lookup(action_name string) (result Action) {
 	iv, err := _I.Get(1176, "SimpleActionGroup", "lookup")
 	if err != nil {
@@ -27603,8 +31284,9 @@ func (v SimpleActionGroup) Lookup(action_name string) (result Action) {
 }
 
 // g_simple_action_group_remove
-// container is not nil, container is SimpleActionGroup
-// is method
+//
+// [ action_name ] trans: nothing
+//
 func (v SimpleActionGroup) Remove(action_name string) {
 	iv, err := _I.Get(1177, "SimpleActionGroup", "remove")
 	if err != nil {
@@ -27648,8 +31330,17 @@ func SimpleAsyncResultGetType() gi.GType {
 }
 
 // g_simple_async_result_new
-// container is not nil, container is SimpleAsyncResult
-// is constructor
+//
+// [ source_object ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ source_tag ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSimpleAsyncResult(source_object gobject.IObject, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, source_tag unsafe.Pointer) (result SimpleAsyncResult) {
 	iv, err := _I.Get(1178, "SimpleAsyncResult", "new")
 	if err != nil {
@@ -27672,8 +31363,17 @@ func NewSimpleAsyncResult(source_object gobject.IObject, callback int /*TODO_TYP
 }
 
 // g_simple_async_result_new_from_error
-// container is not nil, container is SimpleAsyncResult
-// is constructor
+//
+// [ source_object ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ error ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSimpleAsyncResultFromError(source_object gobject.IObject, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, error glib.Error) (result SimpleAsyncResult) {
 	iv, err := _I.Get(1179, "SimpleAsyncResult", "new_from_error")
 	if err != nil {
@@ -27696,9 +31396,15 @@ func NewSimpleAsyncResultFromError(source_object gobject.IObject, callback int /
 }
 
 // g_simple_async_result_is_valid
-// container is not nil, container is SimpleAsyncResult
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ result ] trans: nothing
+//
+// [ source ] trans: nothing
+//
+// [ source_tag ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func SimpleAsyncResultIsValid1(result IAsyncResult, source gobject.IObject, source_tag unsafe.Pointer) (result1 bool) {
 	iv, err := _I.Get(1180, "SimpleAsyncResult", "is_valid")
 	if err != nil {
@@ -27724,8 +31430,7 @@ func SimpleAsyncResultIsValid1(result IAsyncResult, source gobject.IObject, sour
 }
 
 // g_simple_async_result_complete
-// container is not nil, container is SimpleAsyncResult
-// is method
+//
 func (v SimpleAsyncResult) Complete() {
 	iv, err := _I.Get(1181, "SimpleAsyncResult", "complete")
 	if err != nil {
@@ -27738,8 +31443,7 @@ func (v SimpleAsyncResult) Complete() {
 }
 
 // g_simple_async_result_complete_in_idle
-// container is not nil, container is SimpleAsyncResult
-// is method
+//
 func (v SimpleAsyncResult) CompleteInIdle() {
 	iv, err := _I.Get(1182, "SimpleAsyncResult", "complete_in_idle")
 	if err != nil {
@@ -27752,8 +31456,9 @@ func (v SimpleAsyncResult) CompleteInIdle() {
 }
 
 // g_simple_async_result_get_op_res_gboolean
-// container is not nil, container is SimpleAsyncResult
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SimpleAsyncResult) GetOpResGboolean() (result bool) {
 	iv, err := _I.Get(1183, "SimpleAsyncResult", "get_op_res_gboolean")
 	if err != nil {
@@ -27769,8 +31474,9 @@ func (v SimpleAsyncResult) GetOpResGboolean() (result bool) {
 }
 
 // g_simple_async_result_get_op_res_gssize
-// container is not nil, container is SimpleAsyncResult
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SimpleAsyncResult) GetOpResGssize() (result int64) {
 	iv, err := _I.Get(1184, "SimpleAsyncResult", "get_op_res_gssize")
 	if err != nil {
@@ -27786,8 +31492,9 @@ func (v SimpleAsyncResult) GetOpResGssize() (result int64) {
 }
 
 // g_simple_async_result_propagate_error
-// container is not nil, container is SimpleAsyncResult
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SimpleAsyncResult) PropagateError() (result bool, err error) {
 	iv, err := _I.Get(1185, "SimpleAsyncResult", "propagate_error")
 	if err != nil {
@@ -27805,8 +31512,9 @@ func (v SimpleAsyncResult) PropagateError() (result bool, err error) {
 }
 
 // g_simple_async_result_set_check_cancellable
-// container is not nil, container is SimpleAsyncResult
-// is method
+//
+// [ check_cancellable ] trans: nothing
+//
 func (v SimpleAsyncResult) SetCheckCancellable(check_cancellable ICancellable) {
 	iv, err := _I.Get(1186, "SimpleAsyncResult", "set_check_cancellable")
 	if err != nil {
@@ -27824,8 +31532,9 @@ func (v SimpleAsyncResult) SetCheckCancellable(check_cancellable ICancellable) {
 }
 
 // g_simple_async_result_set_from_error
-// container is not nil, container is SimpleAsyncResult
-// is method
+//
+// [ error ] trans: nothing
+//
 func (v SimpleAsyncResult) SetFromError(error glib.Error) {
 	iv, err := _I.Get(1187, "SimpleAsyncResult", "set_from_error")
 	if err != nil {
@@ -27839,8 +31548,9 @@ func (v SimpleAsyncResult) SetFromError(error glib.Error) {
 }
 
 // g_simple_async_result_set_handle_cancellation
-// container is not nil, container is SimpleAsyncResult
-// is method
+//
+// [ handle_cancellation ] trans: nothing
+//
 func (v SimpleAsyncResult) SetHandleCancellation(handle_cancellation bool) {
 	iv, err := _I.Get(1188, "SimpleAsyncResult", "set_handle_cancellation")
 	if err != nil {
@@ -27854,8 +31564,9 @@ func (v SimpleAsyncResult) SetHandleCancellation(handle_cancellation bool) {
 }
 
 // g_simple_async_result_set_op_res_gboolean
-// container is not nil, container is SimpleAsyncResult
-// is method
+//
+// [ op_res ] trans: nothing
+//
 func (v SimpleAsyncResult) SetOpResGboolean(op_res bool) {
 	iv, err := _I.Get(1189, "SimpleAsyncResult", "set_op_res_gboolean")
 	if err != nil {
@@ -27869,8 +31580,9 @@ func (v SimpleAsyncResult) SetOpResGboolean(op_res bool) {
 }
 
 // g_simple_async_result_set_op_res_gssize
-// container is not nil, container is SimpleAsyncResult
-// is method
+//
+// [ op_res ] trans: nothing
+//
 func (v SimpleAsyncResult) SetOpResGssize(op_res int64) {
 	iv, err := _I.Get(1190, "SimpleAsyncResult", "set_op_res_gssize")
 	if err != nil {
@@ -27915,8 +31627,13 @@ func SimpleIOStreamGetType() gi.GType {
 }
 
 // g_simple_io_stream_new
-// container is not nil, container is SimpleIOStream
-// is constructor
+//
+// [ input_stream ] trans: nothing
+//
+// [ output_stream ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSimpleIOStream(input_stream IInputStream, output_stream IOutputStream) (result SimpleIOStream) {
 	iv, err := _I.Get(1191, "SimpleIOStream", "new")
 	if err != nil {
@@ -27956,8 +31673,11 @@ func SimplePermissionGetType() gi.GType {
 }
 
 // g_simple_permission_new
-// container is not nil, container is SimplePermission
-// is constructor
+//
+// [ allowed ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSimplePermission(allowed bool) (result SimplePermission) {
 	iv, err := _I.Get(1192, "SimplePermission", "new")
 	if err != nil {
@@ -27990,9 +31710,13 @@ func SimpleProxyResolverGetType() gi.GType {
 }
 
 // g_simple_proxy_resolver_new
-// container is not nil, container is SimpleProxyResolver
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ default_proxy ] trans: nothing
+//
+// [ ignore_hosts ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func SimpleProxyResolverNew1(default_proxy string, ignore_hosts string) (result ProxyResolver) {
 	iv, err := _I.Get(1193, "SimpleProxyResolver", "new")
 	if err != nil {
@@ -28013,8 +31737,9 @@ func SimpleProxyResolverNew1(default_proxy string, ignore_hosts string) (result 
 }
 
 // g_simple_proxy_resolver_set_default_proxy
-// container is not nil, container is SimpleProxyResolver
-// is method
+//
+// [ default_proxy ] trans: nothing
+//
 func (v SimpleProxyResolver) SetDefaultProxy(default_proxy string) {
 	iv, err := _I.Get(1194, "SimpleProxyResolver", "set_default_proxy")
 	if err != nil {
@@ -28030,8 +31755,9 @@ func (v SimpleProxyResolver) SetDefaultProxy(default_proxy string) {
 }
 
 // g_simple_proxy_resolver_set_ignore_hosts
-// container is not nil, container is SimpleProxyResolver
-// is method
+//
+// [ ignore_hosts ] trans: nothing
+//
 func (v SimpleProxyResolver) SetIgnoreHosts(ignore_hosts string) {
 	iv, err := _I.Get(1195, "SimpleProxyResolver", "set_ignore_hosts")
 	if err != nil {
@@ -28047,8 +31773,11 @@ func (v SimpleProxyResolver) SetIgnoreHosts(ignore_hosts string) {
 }
 
 // g_simple_proxy_resolver_set_uri_proxy
-// container is not nil, container is SimpleProxyResolver
-// is method
+//
+// [ uri_scheme ] trans: nothing
+//
+// [ proxy ] trans: nothing
+//
 func (v SimpleProxyResolver) SetUriProxy(uri_scheme string, proxy string) {
 	iv, err := _I.Get(1196, "SimpleProxyResolver", "set_uri_proxy")
 	if err != nil {
@@ -28097,8 +31826,15 @@ func SocketGetType() gi.GType {
 }
 
 // g_socket_new
-// container is not nil, container is Socket
-// is constructor
+//
+// [ family ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ protocol ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSocket(family SocketFamilyEnum, type1 SocketTypeEnum, protocol SocketProtocolEnum) (result Socket, err error) {
 	iv, err := _I.Get(1197, "Socket", "new")
 	if err != nil {
@@ -28118,8 +31854,11 @@ func NewSocket(family SocketFamilyEnum, type1 SocketTypeEnum, protocol SocketPro
 }
 
 // g_socket_new_from_fd
-// container is not nil, container is Socket
-// is constructor
+//
+// [ fd ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSocketFromFd(fd int32) (result Socket, err error) {
 	iv, err := _I.Get(1198, "Socket", "new_from_fd")
 	if err != nil {
@@ -28137,8 +31876,11 @@ func NewSocketFromFd(fd int32) (result Socket, err error) {
 }
 
 // g_socket_accept
-// container is not nil, container is Socket
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Socket) Accept(cancellable ICancellable) (result Socket, err error) {
 	iv, err := _I.Get(1199, "Socket", "accept")
 	if err != nil {
@@ -28161,8 +31903,13 @@ func (v Socket) Accept(cancellable ICancellable) (result Socket, err error) {
 }
 
 // g_socket_bind
-// container is not nil, container is Socket
-// is method
+//
+// [ address ] trans: nothing
+//
+// [ allow_reuse ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) Bind(address ISocketAddress, allow_reuse bool) (result bool, err error) {
 	iv, err := _I.Get(1200, "Socket", "bind")
 	if err != nil {
@@ -28186,8 +31933,9 @@ func (v Socket) Bind(address ISocketAddress, allow_reuse bool) (result bool, err
 }
 
 // g_socket_check_connect_result
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) CheckConnectResult() (result bool, err error) {
 	iv, err := _I.Get(1201, "Socket", "check_connect_result")
 	if err != nil {
@@ -28205,8 +31953,9 @@ func (v Socket) CheckConnectResult() (result bool, err error) {
 }
 
 // g_socket_close
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) Close() (result bool, err error) {
 	iv, err := _I.Get(1202, "Socket", "close")
 	if err != nil {
@@ -28224,8 +31973,11 @@ func (v Socket) Close() (result bool, err error) {
 }
 
 // g_socket_condition_check
-// container is not nil, container is Socket
-// is method
+//
+// [ condition ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) ConditionCheck(condition glib.IOConditionFlags) (result glib.IOConditionFlags) {
 	iv, err := _I.Get(1203, "Socket", "condition_check")
 	if err != nil {
@@ -28242,8 +31994,15 @@ func (v Socket) ConditionCheck(condition glib.IOConditionFlags) (result glib.IOC
 }
 
 // g_socket_condition_timed_wait
-// container is not nil, container is Socket
-// is method
+//
+// [ condition ] trans: nothing
+//
+// [ timeout ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) ConditionTimedWait(condition glib.IOConditionFlags, timeout int64, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1204, "Socket", "condition_timed_wait")
 	if err != nil {
@@ -28268,8 +32027,13 @@ func (v Socket) ConditionTimedWait(condition glib.IOConditionFlags, timeout int6
 }
 
 // g_socket_condition_wait
-// container is not nil, container is Socket
-// is method
+//
+// [ condition ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) ConditionWait(condition glib.IOConditionFlags, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1205, "Socket", "condition_wait")
 	if err != nil {
@@ -28293,8 +32057,13 @@ func (v Socket) ConditionWait(condition glib.IOConditionFlags, cancellable ICanc
 }
 
 // g_socket_connect
-// container is not nil, container is Socket
-// is method
+//
+// [ address ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) Connect(address ISocketAddress, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1206, "Socket", "connect")
 	if err != nil {
@@ -28322,8 +32091,9 @@ func (v Socket) Connect(address ISocketAddress, cancellable ICancellable) (resul
 }
 
 // g_socket_connection_factory_create_connection
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Socket) ConnectionFactoryCreateConnection() (result SocketConnection) {
 	iv, err := _I.Get(1207, "Socket", "connection_factory_create_connection")
 	if err != nil {
@@ -28339,8 +32109,9 @@ func (v Socket) ConnectionFactoryCreateConnection() (result SocketConnection) {
 }
 
 // g_socket_get_available_bytes
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetAvailableBytes() (result int64) {
 	iv, err := _I.Get(1208, "Socket", "get_available_bytes")
 	if err != nil {
@@ -28356,8 +32127,9 @@ func (v Socket) GetAvailableBytes() (result int64) {
 }
 
 // g_socket_get_blocking
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetBlocking() (result bool) {
 	iv, err := _I.Get(1209, "Socket", "get_blocking")
 	if err != nil {
@@ -28373,8 +32145,9 @@ func (v Socket) GetBlocking() (result bool) {
 }
 
 // g_socket_get_broadcast
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetBroadcast() (result bool) {
 	iv, err := _I.Get(1210, "Socket", "get_broadcast")
 	if err != nil {
@@ -28390,8 +32163,9 @@ func (v Socket) GetBroadcast() (result bool) {
 }
 
 // g_socket_get_credentials
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Socket) GetCredentials() (result Credentials, err error) {
 	iv, err := _I.Get(1211, "Socket", "get_credentials")
 	if err != nil {
@@ -28409,8 +32183,9 @@ func (v Socket) GetCredentials() (result Credentials, err error) {
 }
 
 // g_socket_get_family
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetFamily() (result SocketFamilyEnum) {
 	iv, err := _I.Get(1212, "Socket", "get_family")
 	if err != nil {
@@ -28426,8 +32201,9 @@ func (v Socket) GetFamily() (result SocketFamilyEnum) {
 }
 
 // g_socket_get_fd
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetFd() (result int32) {
 	iv, err := _I.Get(1213, "Socket", "get_fd")
 	if err != nil {
@@ -28443,8 +32219,9 @@ func (v Socket) GetFd() (result int32) {
 }
 
 // g_socket_get_keepalive
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetKeepalive() (result bool) {
 	iv, err := _I.Get(1214, "Socket", "get_keepalive")
 	if err != nil {
@@ -28460,8 +32237,9 @@ func (v Socket) GetKeepalive() (result bool) {
 }
 
 // g_socket_get_listen_backlog
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetListenBacklog() (result int32) {
 	iv, err := _I.Get(1215, "Socket", "get_listen_backlog")
 	if err != nil {
@@ -28477,8 +32255,9 @@ func (v Socket) GetListenBacklog() (result int32) {
 }
 
 // g_socket_get_local_address
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Socket) GetLocalAddress() (result SocketAddress, err error) {
 	iv, err := _I.Get(1216, "Socket", "get_local_address")
 	if err != nil {
@@ -28496,8 +32275,9 @@ func (v Socket) GetLocalAddress() (result SocketAddress, err error) {
 }
 
 // g_socket_get_multicast_loopback
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetMulticastLoopback() (result bool) {
 	iv, err := _I.Get(1217, "Socket", "get_multicast_loopback")
 	if err != nil {
@@ -28513,8 +32293,9 @@ func (v Socket) GetMulticastLoopback() (result bool) {
 }
 
 // g_socket_get_multicast_ttl
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetMulticastTtl() (result uint32) {
 	iv, err := _I.Get(1218, "Socket", "get_multicast_ttl")
 	if err != nil {
@@ -28530,8 +32311,15 @@ func (v Socket) GetMulticastTtl() (result uint32) {
 }
 
 // g_socket_get_option
-// container is not nil, container is Socket
-// is method
+//
+// [ level ] trans: nothing
+//
+// [ optname ] trans: nothing
+//
+// [ value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetOption(level int32, optname int32) (result bool, value int32, err error) {
 	iv, err := _I.Get(1219, "Socket", "get_option")
 	if err != nil {
@@ -28553,8 +32341,9 @@ func (v Socket) GetOption(level int32, optname int32) (result bool, value int32,
 }
 
 // g_socket_get_protocol
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetProtocol() (result SocketProtocolEnum) {
 	iv, err := _I.Get(1220, "Socket", "get_protocol")
 	if err != nil {
@@ -28570,8 +32359,9 @@ func (v Socket) GetProtocol() (result SocketProtocolEnum) {
 }
 
 // g_socket_get_remote_address
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Socket) GetRemoteAddress() (result SocketAddress, err error) {
 	iv, err := _I.Get(1221, "Socket", "get_remote_address")
 	if err != nil {
@@ -28589,8 +32379,9 @@ func (v Socket) GetRemoteAddress() (result SocketAddress, err error) {
 }
 
 // g_socket_get_socket_type
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetSocketType() (result SocketTypeEnum) {
 	iv, err := _I.Get(1222, "Socket", "get_socket_type")
 	if err != nil {
@@ -28606,8 +32397,9 @@ func (v Socket) GetSocketType() (result SocketTypeEnum) {
 }
 
 // g_socket_get_timeout
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetTimeout() (result uint32) {
 	iv, err := _I.Get(1223, "Socket", "get_timeout")
 	if err != nil {
@@ -28623,8 +32415,9 @@ func (v Socket) GetTimeout() (result uint32) {
 }
 
 // g_socket_get_ttl
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) GetTtl() (result uint32) {
 	iv, err := _I.Get(1224, "Socket", "get_ttl")
 	if err != nil {
@@ -28640,8 +32433,9 @@ func (v Socket) GetTtl() (result uint32) {
 }
 
 // g_socket_is_closed
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) IsClosed() (result bool) {
 	iv, err := _I.Get(1225, "Socket", "is_closed")
 	if err != nil {
@@ -28657,8 +32451,9 @@ func (v Socket) IsClosed() (result bool) {
 }
 
 // g_socket_is_connected
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) IsConnected() (result bool) {
 	iv, err := _I.Get(1226, "Socket", "is_connected")
 	if err != nil {
@@ -28674,8 +32469,15 @@ func (v Socket) IsConnected() (result bool) {
 }
 
 // g_socket_join_multicast_group
-// container is not nil, container is Socket
-// is method
+//
+// [ group ] trans: nothing
+//
+// [ source_specific ] trans: nothing
+//
+// [ iface ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) JoinMulticastGroup(group IInetAddress, source_specific bool, iface string) (result bool, err error) {
 	iv, err := _I.Get(1227, "Socket", "join_multicast_group")
 	if err != nil {
@@ -28702,8 +32504,15 @@ func (v Socket) JoinMulticastGroup(group IInetAddress, source_specific bool, ifa
 }
 
 // g_socket_join_multicast_group_ssm
-// container is not nil, container is Socket
-// is method
+//
+// [ group ] trans: nothing
+//
+// [ source_specific ] trans: nothing
+//
+// [ iface ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) JoinMulticastGroupSsm(group IInetAddress, source_specific IInetAddress, iface string) (result bool, err error) {
 	iv, err := _I.Get(1228, "Socket", "join_multicast_group_ssm")
 	if err != nil {
@@ -28734,8 +32543,15 @@ func (v Socket) JoinMulticastGroupSsm(group IInetAddress, source_specific IInetA
 }
 
 // g_socket_leave_multicast_group
-// container is not nil, container is Socket
-// is method
+//
+// [ group ] trans: nothing
+//
+// [ source_specific ] trans: nothing
+//
+// [ iface ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) LeaveMulticastGroup(group IInetAddress, source_specific bool, iface string) (result bool, err error) {
 	iv, err := _I.Get(1229, "Socket", "leave_multicast_group")
 	if err != nil {
@@ -28762,8 +32578,15 @@ func (v Socket) LeaveMulticastGroup(group IInetAddress, source_specific bool, if
 }
 
 // g_socket_leave_multicast_group_ssm
-// container is not nil, container is Socket
-// is method
+//
+// [ group ] trans: nothing
+//
+// [ source_specific ] trans: nothing
+//
+// [ iface ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) LeaveMulticastGroupSsm(group IInetAddress, source_specific IInetAddress, iface string) (result bool, err error) {
 	iv, err := _I.Get(1230, "Socket", "leave_multicast_group_ssm")
 	if err != nil {
@@ -28794,8 +32617,9 @@ func (v Socket) LeaveMulticastGroupSsm(group IInetAddress, source_specific IInet
 }
 
 // g_socket_listen
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) Listen() (result bool, err error) {
 	iv, err := _I.Get(1231, "Socket", "listen")
 	if err != nil {
@@ -28813,9 +32637,15 @@ func (v Socket) Listen() (result bool, err error) {
 }
 
 // g_socket_receive
-// container is not nil, container is Socket
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) Receive(buffer gi.Uint8Array, size uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1232, "Socket", "receive")
 	if err != nil {
@@ -28840,9 +32670,17 @@ func (v Socket) Receive(buffer gi.Uint8Array, size uint64, cancellable ICancella
 }
 
 // g_socket_receive_from
-// container is not nil, container is Socket
-// is method
-// arg 1 buffer lenArgIdx 2
+//
+// [ address ] trans: everything, dir: out
+//
+// [ buffer ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) ReceiveFrom(buffer gi.Uint8Array, size uint64, cancellable ICancellable) (result int64, address SocketAddress, err error) {
 	iv, err := _I.Get(1233, "Socket", "receive_from")
 	if err != nil {
@@ -28869,10 +32707,23 @@ func (v Socket) ReceiveFrom(buffer gi.Uint8Array, size uint64, cancellable ICanc
 }
 
 // g_socket_receive_message
-// container is not nil, container is Socket
-// is method
-// arg 1 vectors lenArgIdx 2
-// arg 3 messages lenArgIdx 4
+//
+// [ address ] trans: everything, dir: out
+//
+// [ vectors ] trans: nothing
+//
+// [ num_vectors ] trans: nothing
+//
+// [ messages ] trans: everything, dir: out
+//
+// [ num_messages ] trans: everything, dir: out
+//
+// [ flags ] trans: everything, dir: inout
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) ReceiveMessage(vectors unsafe.Pointer, num_vectors int32, flags int /*TODO:TYPE*/, cancellable ICancellable) (result int64, address SocketAddress, messages gi.PointerArray, err error) {
 	iv, err := _I.Get(1234, "Socket", "receive_message")
 	if err != nil {
@@ -28906,9 +32757,17 @@ func (v Socket) ReceiveMessage(vectors unsafe.Pointer, num_vectors int32, flags 
 }
 
 // g_socket_receive_messages
-// container is not nil, container is Socket
-// is method
-// arg 0 messages lenArgIdx 1
+//
+// [ messages ] trans: nothing
+//
+// [ num_messages ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) ReceiveMessages(messages unsafe.Pointer, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1235, "Socket", "receive_messages")
 	if err != nil {
@@ -28934,9 +32793,17 @@ func (v Socket) ReceiveMessages(messages unsafe.Pointer, num_messages uint32, fl
 }
 
 // g_socket_receive_with_blocking
-// container is not nil, container is Socket
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ blocking ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) ReceiveWithBlocking(buffer gi.Uint8Array, size uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1236, "Socket", "receive_with_blocking")
 	if err != nil {
@@ -28962,9 +32829,15 @@ func (v Socket) ReceiveWithBlocking(buffer gi.Uint8Array, size uint64, blocking 
 }
 
 // g_socket_send
-// container is not nil, container is Socket
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) Send(buffer gi.Uint8Array, size uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1237, "Socket", "send")
 	if err != nil {
@@ -28989,10 +32862,23 @@ func (v Socket) Send(buffer gi.Uint8Array, size uint64, cancellable ICancellable
 }
 
 // g_socket_send_message
-// container is not nil, container is Socket
-// is method
-// arg 1 vectors lenArgIdx 2
-// arg 3 messages lenArgIdx 4
+//
+// [ address ] trans: nothing
+//
+// [ vectors ] trans: nothing
+//
+// [ num_vectors ] trans: nothing
+//
+// [ messages ] trans: nothing
+//
+// [ num_messages ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) SendMessage(address ISocketAddress, vectors unsafe.Pointer, num_vectors int32, messages gi.PointerArray, num_messages int32, flags int32, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1238, "Socket", "send_message")
 	if err != nil {
@@ -29025,9 +32911,17 @@ func (v Socket) SendMessage(address ISocketAddress, vectors unsafe.Pointer, num_
 }
 
 // g_socket_send_messages
-// container is not nil, container is Socket
-// is method
-// arg 0 messages lenArgIdx 1
+//
+// [ messages ] trans: nothing
+//
+// [ num_messages ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) SendMessages(messages unsafe.Pointer, num_messages uint32, flags int32, cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1239, "Socket", "send_messages")
 	if err != nil {
@@ -29053,9 +32947,17 @@ func (v Socket) SendMessages(messages unsafe.Pointer, num_messages uint32, flags
 }
 
 // g_socket_send_to
-// container is not nil, container is Socket
-// is method
-// arg 1 buffer lenArgIdx 2
+//
+// [ address ] trans: nothing
+//
+// [ buffer ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) SendTo(address ISocketAddress, buffer gi.Uint8Array, size uint64, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1240, "Socket", "send_to")
 	if err != nil {
@@ -29085,9 +32987,17 @@ func (v Socket) SendTo(address ISocketAddress, buffer gi.Uint8Array, size uint64
 }
 
 // g_socket_send_with_blocking
-// container is not nil, container is Socket
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ blocking ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) SendWithBlocking(buffer gi.Uint8Array, size uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1241, "Socket", "send_with_blocking")
 	if err != nil {
@@ -29113,8 +33023,9 @@ func (v Socket) SendWithBlocking(buffer gi.Uint8Array, size uint64, blocking boo
 }
 
 // g_socket_set_blocking
-// container is not nil, container is Socket
-// is method
+//
+// [ blocking ] trans: nothing
+//
 func (v Socket) SetBlocking(blocking bool) {
 	iv, err := _I.Get(1242, "Socket", "set_blocking")
 	if err != nil {
@@ -29128,8 +33039,9 @@ func (v Socket) SetBlocking(blocking bool) {
 }
 
 // g_socket_set_broadcast
-// container is not nil, container is Socket
-// is method
+//
+// [ broadcast ] trans: nothing
+//
 func (v Socket) SetBroadcast(broadcast bool) {
 	iv, err := _I.Get(1243, "Socket", "set_broadcast")
 	if err != nil {
@@ -29143,8 +33055,9 @@ func (v Socket) SetBroadcast(broadcast bool) {
 }
 
 // g_socket_set_keepalive
-// container is not nil, container is Socket
-// is method
+//
+// [ keepalive ] trans: nothing
+//
 func (v Socket) SetKeepalive(keepalive bool) {
 	iv, err := _I.Get(1244, "Socket", "set_keepalive")
 	if err != nil {
@@ -29158,8 +33071,9 @@ func (v Socket) SetKeepalive(keepalive bool) {
 }
 
 // g_socket_set_listen_backlog
-// container is not nil, container is Socket
-// is method
+//
+// [ backlog ] trans: nothing
+//
 func (v Socket) SetListenBacklog(backlog int32) {
 	iv, err := _I.Get(1245, "Socket", "set_listen_backlog")
 	if err != nil {
@@ -29173,8 +33087,9 @@ func (v Socket) SetListenBacklog(backlog int32) {
 }
 
 // g_socket_set_multicast_loopback
-// container is not nil, container is Socket
-// is method
+//
+// [ loopback ] trans: nothing
+//
 func (v Socket) SetMulticastLoopback(loopback bool) {
 	iv, err := _I.Get(1246, "Socket", "set_multicast_loopback")
 	if err != nil {
@@ -29188,8 +33103,9 @@ func (v Socket) SetMulticastLoopback(loopback bool) {
 }
 
 // g_socket_set_multicast_ttl
-// container is not nil, container is Socket
-// is method
+//
+// [ ttl ] trans: nothing
+//
 func (v Socket) SetMulticastTtl(ttl uint32) {
 	iv, err := _I.Get(1247, "Socket", "set_multicast_ttl")
 	if err != nil {
@@ -29203,8 +33119,15 @@ func (v Socket) SetMulticastTtl(ttl uint32) {
 }
 
 // g_socket_set_option
-// container is not nil, container is Socket
-// is method
+//
+// [ level ] trans: nothing
+//
+// [ optname ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) SetOption(level int32, optname int32, value int32) (result bool, err error) {
 	iv, err := _I.Get(1248, "Socket", "set_option")
 	if err != nil {
@@ -29225,8 +33148,9 @@ func (v Socket) SetOption(level int32, optname int32, value int32) (result bool,
 }
 
 // g_socket_set_timeout
-// container is not nil, container is Socket
-// is method
+//
+// [ timeout ] trans: nothing
+//
 func (v Socket) SetTimeout(timeout uint32) {
 	iv, err := _I.Get(1249, "Socket", "set_timeout")
 	if err != nil {
@@ -29240,8 +33164,9 @@ func (v Socket) SetTimeout(timeout uint32) {
 }
 
 // g_socket_set_ttl
-// container is not nil, container is Socket
-// is method
+//
+// [ ttl ] trans: nothing
+//
 func (v Socket) SetTtl(ttl uint32) {
 	iv, err := _I.Get(1250, "Socket", "set_ttl")
 	if err != nil {
@@ -29255,8 +33180,13 @@ func (v Socket) SetTtl(ttl uint32) {
 }
 
 // g_socket_shutdown
-// container is not nil, container is Socket
-// is method
+//
+// [ shutdown_read ] trans: nothing
+//
+// [ shutdown_write ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Socket) Shutdown(shutdown_read bool, shutdown_write bool) (result bool, err error) {
 	iv, err := _I.Get(1251, "Socket", "shutdown")
 	if err != nil {
@@ -29276,8 +33206,9 @@ func (v Socket) Shutdown(shutdown_read bool, shutdown_write bool) (result bool, 
 }
 
 // g_socket_speaks_ipv4
-// container is not nil, container is Socket
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Socket) SpeaksIpv4() (result bool) {
 	iv, err := _I.Get(1252, "Socket", "speaks_ipv4")
 	if err != nil {
@@ -29310,8 +33241,13 @@ func SocketAddressGetType() gi.GType {
 }
 
 // g_socket_address_new_from_native
-// container is not nil, container is SocketAddress
-// is constructor
+//
+// [ native ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSocketAddressFromNative(native unsafe.Pointer, len1 uint64) (result SocketAddress) {
 	iv, err := _I.Get(1253, "SocketAddress", "new_from_native")
 	if err != nil {
@@ -29328,8 +33264,9 @@ func NewSocketAddressFromNative(native unsafe.Pointer, len1 uint64) (result Sock
 }
 
 // g_socket_address_get_family
-// container is not nil, container is SocketAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketAddress) GetFamily() (result SocketFamilyEnum) {
 	iv, err := _I.Get(1254, "SocketAddress", "get_family")
 	if err != nil {
@@ -29345,8 +33282,9 @@ func (v SocketAddress) GetFamily() (result SocketFamilyEnum) {
 }
 
 // g_socket_address_get_native_size
-// container is not nil, container is SocketAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketAddress) GetNativeSize() (result int64) {
 	iv, err := _I.Get(1255, "SocketAddress", "get_native_size")
 	if err != nil {
@@ -29362,8 +33300,13 @@ func (v SocketAddress) GetNativeSize() (result int64) {
 }
 
 // g_socket_address_to_native
-// container is not nil, container is SocketAddress
-// is method
+//
+// [ dest ] trans: nothing
+//
+// [ destlen ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SocketAddress) ToNative(dest unsafe.Pointer, destlen uint64) (result bool, err error) {
 	iv, err := _I.Get(1256, "SocketAddress", "to_native")
 	if err != nil {
@@ -29399,8 +33342,11 @@ func SocketAddressEnumeratorGetType() gi.GType {
 }
 
 // g_socket_address_enumerator_next
-// container is not nil, container is SocketAddressEnumerator
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v SocketAddressEnumerator) Next(cancellable ICancellable) (result SocketAddress, err error) {
 	iv, err := _I.Get(1257, "SocketAddressEnumerator", "next")
 	if err != nil {
@@ -29423,8 +33369,13 @@ func (v SocketAddressEnumerator) Next(cancellable ICancellable) (result SocketAd
 }
 
 // g_socket_address_enumerator_next_async
-// container is not nil, container is SocketAddressEnumerator
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SocketAddressEnumerator) NextAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1258, "SocketAddressEnumerator", "next_async")
 	if err != nil {
@@ -29444,8 +33395,11 @@ func (v SocketAddressEnumerator) NextAsync(cancellable ICancellable, callback in
 }
 
 // g_socket_address_enumerator_next_finish
-// container is not nil, container is SocketAddressEnumerator
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v SocketAddressEnumerator) NextFinish(result IAsyncResult) (result1 SocketAddress, err error) {
 	iv, err := _I.Get(1259, "SocketAddressEnumerator", "next_finish")
 	if err != nil {
@@ -29485,8 +33439,9 @@ func SocketClientGetType() gi.GType {
 }
 
 // g_socket_client_new
-// container is not nil, container is SocketClient
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewSocketClient() (result SocketClient) {
 	iv, err := _I.Get(1260, "SocketClient", "new")
 	if err != nil {
@@ -29500,8 +33455,9 @@ func NewSocketClient() (result SocketClient) {
 }
 
 // g_socket_client_add_application_proxy
-// container is not nil, container is SocketClient
-// is method
+//
+// [ protocol ] trans: nothing
+//
 func (v SocketClient) AddApplicationProxy(protocol string) {
 	iv, err := _I.Get(1261, "SocketClient", "add_application_proxy")
 	if err != nil {
@@ -29517,8 +33473,13 @@ func (v SocketClient) AddApplicationProxy(protocol string) {
 }
 
 // g_socket_client_connect
-// container is not nil, container is SocketClient
-// is method
+//
+// [ connectable ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v SocketClient) Connect(connectable ISocketConnectable, cancellable ICancellable) (result SocketConnection, err error) {
 	iv, err := _I.Get(1262, "SocketClient", "connect")
 	if err != nil {
@@ -29546,8 +33507,15 @@ func (v SocketClient) Connect(connectable ISocketConnectable, cancellable ICance
 }
 
 // g_socket_client_connect_async
-// container is not nil, container is SocketClient
-// is method
+//
+// [ connectable ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SocketClient) ConnectAsync(connectable ISocketConnectable, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1263, "SocketClient", "connect_async")
 	if err != nil {
@@ -29572,8 +33540,11 @@ func (v SocketClient) ConnectAsync(connectable ISocketConnectable, cancellable I
 }
 
 // g_socket_client_connect_finish
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v SocketClient) ConnectFinish(result IAsyncResult) (result1 SocketConnection, err error) {
 	iv, err := _I.Get(1264, "SocketClient", "connect_finish")
 	if err != nil {
@@ -29596,8 +33567,15 @@ func (v SocketClient) ConnectFinish(result IAsyncResult) (result1 SocketConnecti
 }
 
 // g_socket_client_connect_to_host
-// container is not nil, container is SocketClient
-// is method
+//
+// [ host_and_port ] trans: nothing
+//
+// [ default_port ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v SocketClient) ConnectToHost(host_and_port string, default_port uint16, cancellable ICancellable) (result SocketConnection, err error) {
 	iv, err := _I.Get(1265, "SocketClient", "connect_to_host")
 	if err != nil {
@@ -29624,8 +33602,17 @@ func (v SocketClient) ConnectToHost(host_and_port string, default_port uint16, c
 }
 
 // g_socket_client_connect_to_host_async
-// container is not nil, container is SocketClient
-// is method
+//
+// [ host_and_port ] trans: nothing
+//
+// [ default_port ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SocketClient) ConnectToHostAsync(host_and_port string, default_port uint16, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1266, "SocketClient", "connect_to_host_async")
 	if err != nil {
@@ -29649,8 +33636,11 @@ func (v SocketClient) ConnectToHostAsync(host_and_port string, default_port uint
 }
 
 // g_socket_client_connect_to_host_finish
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v SocketClient) ConnectToHostFinish(result IAsyncResult) (result1 SocketConnection, err error) {
 	iv, err := _I.Get(1267, "SocketClient", "connect_to_host_finish")
 	if err != nil {
@@ -29673,8 +33663,15 @@ func (v SocketClient) ConnectToHostFinish(result IAsyncResult) (result1 SocketCo
 }
 
 // g_socket_client_connect_to_service
-// container is not nil, container is SocketClient
-// is method
+//
+// [ domain ] trans: nothing
+//
+// [ service ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v SocketClient) ConnectToService(domain string, service string, cancellable ICancellable) (result SocketConnection, err error) {
 	iv, err := _I.Get(1268, "SocketClient", "connect_to_service")
 	if err != nil {
@@ -29703,8 +33700,17 @@ func (v SocketClient) ConnectToService(domain string, service string, cancellabl
 }
 
 // g_socket_client_connect_to_service_async
-// container is not nil, container is SocketClient
-// is method
+//
+// [ domain ] trans: nothing
+//
+// [ service ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SocketClient) ConnectToServiceAsync(domain string, service string, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1269, "SocketClient", "connect_to_service_async")
 	if err != nil {
@@ -29730,8 +33736,11 @@ func (v SocketClient) ConnectToServiceAsync(domain string, service string, cance
 }
 
 // g_socket_client_connect_to_service_finish
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v SocketClient) ConnectToServiceFinish(result IAsyncResult) (result1 SocketConnection, err error) {
 	iv, err := _I.Get(1270, "SocketClient", "connect_to_service_finish")
 	if err != nil {
@@ -29754,8 +33763,15 @@ func (v SocketClient) ConnectToServiceFinish(result IAsyncResult) (result1 Socke
 }
 
 // g_socket_client_connect_to_uri
-// container is not nil, container is SocketClient
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ default_port ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v SocketClient) ConnectToUri(uri string, default_port uint16, cancellable ICancellable) (result SocketConnection, err error) {
 	iv, err := _I.Get(1271, "SocketClient", "connect_to_uri")
 	if err != nil {
@@ -29782,8 +33798,17 @@ func (v SocketClient) ConnectToUri(uri string, default_port uint16, cancellable 
 }
 
 // g_socket_client_connect_to_uri_async
-// container is not nil, container is SocketClient
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ default_port ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SocketClient) ConnectToUriAsync(uri string, default_port uint16, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1272, "SocketClient", "connect_to_uri_async")
 	if err != nil {
@@ -29807,8 +33832,11 @@ func (v SocketClient) ConnectToUriAsync(uri string, default_port uint16, cancell
 }
 
 // g_socket_client_connect_to_uri_finish
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v SocketClient) ConnectToUriFinish(result IAsyncResult) (result1 SocketConnection, err error) {
 	iv, err := _I.Get(1273, "SocketClient", "connect_to_uri_finish")
 	if err != nil {
@@ -29831,8 +33859,9 @@ func (v SocketClient) ConnectToUriFinish(result IAsyncResult) (result1 SocketCon
 }
 
 // g_socket_client_get_enable_proxy
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketClient) GetEnableProxy() (result bool) {
 	iv, err := _I.Get(1274, "SocketClient", "get_enable_proxy")
 	if err != nil {
@@ -29848,8 +33877,9 @@ func (v SocketClient) GetEnableProxy() (result bool) {
 }
 
 // g_socket_client_get_family
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketClient) GetFamily() (result SocketFamilyEnum) {
 	iv, err := _I.Get(1275, "SocketClient", "get_family")
 	if err != nil {
@@ -29865,8 +33895,9 @@ func (v SocketClient) GetFamily() (result SocketFamilyEnum) {
 }
 
 // g_socket_client_get_local_address
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketClient) GetLocalAddress() (result SocketAddress) {
 	iv, err := _I.Get(1276, "SocketClient", "get_local_address")
 	if err != nil {
@@ -29882,8 +33913,9 @@ func (v SocketClient) GetLocalAddress() (result SocketAddress) {
 }
 
 // g_socket_client_get_protocol
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketClient) GetProtocol() (result SocketProtocolEnum) {
 	iv, err := _I.Get(1277, "SocketClient", "get_protocol")
 	if err != nil {
@@ -29899,8 +33931,9 @@ func (v SocketClient) GetProtocol() (result SocketProtocolEnum) {
 }
 
 // g_socket_client_get_proxy_resolver
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketClient) GetProxyResolver() (result ProxyResolver) {
 	iv, err := _I.Get(1278, "SocketClient", "get_proxy_resolver")
 	if err != nil {
@@ -29916,8 +33949,9 @@ func (v SocketClient) GetProxyResolver() (result ProxyResolver) {
 }
 
 // g_socket_client_get_socket_type
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketClient) GetSocketType() (result SocketTypeEnum) {
 	iv, err := _I.Get(1279, "SocketClient", "get_socket_type")
 	if err != nil {
@@ -29933,8 +33967,9 @@ func (v SocketClient) GetSocketType() (result SocketTypeEnum) {
 }
 
 // g_socket_client_get_timeout
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketClient) GetTimeout() (result uint32) {
 	iv, err := _I.Get(1280, "SocketClient", "get_timeout")
 	if err != nil {
@@ -29950,8 +33985,9 @@ func (v SocketClient) GetTimeout() (result uint32) {
 }
 
 // g_socket_client_get_tls
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketClient) GetTls() (result bool) {
 	iv, err := _I.Get(1281, "SocketClient", "get_tls")
 	if err != nil {
@@ -29967,8 +34003,9 @@ func (v SocketClient) GetTls() (result bool) {
 }
 
 // g_socket_client_get_tls_validation_flags
-// container is not nil, container is SocketClient
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketClient) GetTlsValidationFlags() (result TlsCertificateFlags) {
 	iv, err := _I.Get(1282, "SocketClient", "get_tls_validation_flags")
 	if err != nil {
@@ -29984,8 +34021,9 @@ func (v SocketClient) GetTlsValidationFlags() (result TlsCertificateFlags) {
 }
 
 // g_socket_client_set_enable_proxy
-// container is not nil, container is SocketClient
-// is method
+//
+// [ enable ] trans: nothing
+//
 func (v SocketClient) SetEnableProxy(enable bool) {
 	iv, err := _I.Get(1283, "SocketClient", "set_enable_proxy")
 	if err != nil {
@@ -29999,8 +34037,9 @@ func (v SocketClient) SetEnableProxy(enable bool) {
 }
 
 // g_socket_client_set_family
-// container is not nil, container is SocketClient
-// is method
+//
+// [ family ] trans: nothing
+//
 func (v SocketClient) SetFamily(family SocketFamilyEnum) {
 	iv, err := _I.Get(1284, "SocketClient", "set_family")
 	if err != nil {
@@ -30014,8 +34053,9 @@ func (v SocketClient) SetFamily(family SocketFamilyEnum) {
 }
 
 // g_socket_client_set_local_address
-// container is not nil, container is SocketClient
-// is method
+//
+// [ address ] trans: nothing
+//
 func (v SocketClient) SetLocalAddress(address ISocketAddress) {
 	iv, err := _I.Get(1285, "SocketClient", "set_local_address")
 	if err != nil {
@@ -30033,8 +34073,9 @@ func (v SocketClient) SetLocalAddress(address ISocketAddress) {
 }
 
 // g_socket_client_set_protocol
-// container is not nil, container is SocketClient
-// is method
+//
+// [ protocol ] trans: nothing
+//
 func (v SocketClient) SetProtocol(protocol SocketProtocolEnum) {
 	iv, err := _I.Get(1286, "SocketClient", "set_protocol")
 	if err != nil {
@@ -30048,8 +34089,9 @@ func (v SocketClient) SetProtocol(protocol SocketProtocolEnum) {
 }
 
 // g_socket_client_set_proxy_resolver
-// container is not nil, container is SocketClient
-// is method
+//
+// [ proxy_resolver ] trans: nothing
+//
 func (v SocketClient) SetProxyResolver(proxy_resolver IProxyResolver) {
 	iv, err := _I.Get(1287, "SocketClient", "set_proxy_resolver")
 	if err != nil {
@@ -30067,8 +34109,9 @@ func (v SocketClient) SetProxyResolver(proxy_resolver IProxyResolver) {
 }
 
 // g_socket_client_set_socket_type
-// container is not nil, container is SocketClient
-// is method
+//
+// [ type1 ] trans: nothing
+//
 func (v SocketClient) SetSocketType(type1 SocketTypeEnum) {
 	iv, err := _I.Get(1288, "SocketClient", "set_socket_type")
 	if err != nil {
@@ -30082,8 +34125,9 @@ func (v SocketClient) SetSocketType(type1 SocketTypeEnum) {
 }
 
 // g_socket_client_set_timeout
-// container is not nil, container is SocketClient
-// is method
+//
+// [ timeout ] trans: nothing
+//
 func (v SocketClient) SetTimeout(timeout uint32) {
 	iv, err := _I.Get(1289, "SocketClient", "set_timeout")
 	if err != nil {
@@ -30097,8 +34141,9 @@ func (v SocketClient) SetTimeout(timeout uint32) {
 }
 
 // g_socket_client_set_tls
-// container is not nil, container is SocketClient
-// is method
+//
+// [ tls ] trans: nothing
+//
 func (v SocketClient) SetTls(tls bool) {
 	iv, err := _I.Get(1290, "SocketClient", "set_tls")
 	if err != nil {
@@ -30112,8 +34157,9 @@ func (v SocketClient) SetTls(tls bool) {
 }
 
 // g_socket_client_set_tls_validation_flags
-// container is not nil, container is SocketClient
-// is method
+//
+// [ flags ] trans: nothing
+//
 func (v SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 	iv, err := _I.Get(1291, "SocketClient", "set_tls_validation_flags")
 	if err != nil {
@@ -30172,8 +34218,9 @@ func SocketConnectableGetType() gi.GType {
 }
 
 // g_socket_connectable_enumerate
-// container is not nil, container is SocketConnectable
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *SocketConnectableIfc) Enumerate() (result SocketAddressEnumerator) {
 	iv, err := _I.Get(1292, "SocketConnectable", "enumerate")
 	if err != nil {
@@ -30189,8 +34236,9 @@ func (v *SocketConnectableIfc) Enumerate() (result SocketAddressEnumerator) {
 }
 
 // g_socket_connectable_proxy_enumerate
-// container is not nil, container is SocketConnectable
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *SocketConnectableIfc) ProxyEnumerate() (result SocketAddressEnumerator) {
 	iv, err := _I.Get(1293, "SocketConnectable", "proxy_enumerate")
 	if err != nil {
@@ -30206,8 +34254,9 @@ func (v *SocketConnectableIfc) ProxyEnumerate() (result SocketAddressEnumerator)
 }
 
 // g_socket_connectable_to_string
-// container is not nil, container is SocketConnectable
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *SocketConnectableIfc) ToString() (result string) {
 	iv, err := _I.Get(1294, "SocketConnectable", "to_string")
 	if err != nil {
@@ -30239,9 +34288,15 @@ func SocketConnectionGetType() gi.GType {
 }
 
 // g_socket_connection_factory_lookup_type
-// container is not nil, container is SocketConnection
-// is method
-// arg0Type tag: interface, isPtr: false
+//
+// [ family ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ protocol_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SocketConnectionFactoryLookupType1(family SocketFamilyEnum, type1 SocketTypeEnum, protocol_id int32) (result gi.GType) {
 	iv, err := _I.Get(1295, "SocketConnection", "factory_lookup_type")
 	if err != nil {
@@ -30259,9 +34314,15 @@ func SocketConnectionFactoryLookupType1(family SocketFamilyEnum, type1 SocketTyp
 }
 
 // g_socket_connection_factory_register_type
-// container is not nil, container is SocketConnection
-// is method
-// arg0Type tag: GType, isPtr: false
+//
+// [ g_type ] trans: nothing
+//
+// [ family ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ protocol ] trans: nothing
+//
 func SocketConnectionFactoryRegisterType1(g_type gi.GType, family SocketFamilyEnum, type1 SocketTypeEnum, protocol int32) {
 	iv, err := _I.Get(1296, "SocketConnection", "factory_register_type")
 	if err != nil {
@@ -30277,8 +34338,13 @@ func SocketConnectionFactoryRegisterType1(g_type gi.GType, family SocketFamilyEn
 }
 
 // g_socket_connection_connect
-// container is not nil, container is SocketConnection
-// is method
+//
+// [ address ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SocketConnection) Connect(address ISocketAddress, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1297, "SocketConnection", "connect")
 	if err != nil {
@@ -30306,8 +34372,15 @@ func (v SocketConnection) Connect(address ISocketAddress, cancellable ICancellab
 }
 
 // g_socket_connection_connect_async
-// container is not nil, container is SocketConnection
-// is method
+//
+// [ address ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SocketConnection) ConnectAsync(address ISocketAddress, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1298, "SocketConnection", "connect_async")
 	if err != nil {
@@ -30332,8 +34405,11 @@ func (v SocketConnection) ConnectAsync(address ISocketAddress, cancellable ICanc
 }
 
 // g_socket_connection_connect_finish
-// container is not nil, container is SocketConnection
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v SocketConnection) ConnectFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1299, "SocketConnection", "connect_finish")
 	if err != nil {
@@ -30356,8 +34432,9 @@ func (v SocketConnection) ConnectFinish(result IAsyncResult) (result1 bool, err 
 }
 
 // g_socket_connection_get_local_address
-// container is not nil, container is SocketConnection
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SocketConnection) GetLocalAddress() (result SocketAddress, err error) {
 	iv, err := _I.Get(1300, "SocketConnection", "get_local_address")
 	if err != nil {
@@ -30375,8 +34452,9 @@ func (v SocketConnection) GetLocalAddress() (result SocketAddress, err error) {
 }
 
 // g_socket_connection_get_remote_address
-// container is not nil, container is SocketConnection
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SocketConnection) GetRemoteAddress() (result SocketAddress, err error) {
 	iv, err := _I.Get(1301, "SocketConnection", "get_remote_address")
 	if err != nil {
@@ -30394,8 +34472,9 @@ func (v SocketConnection) GetRemoteAddress() (result SocketAddress, err error) {
 }
 
 // g_socket_connection_get_socket
-// container is not nil, container is SocketConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketConnection) GetSocket() (result Socket) {
 	iv, err := _I.Get(1302, "SocketConnection", "get_socket")
 	if err != nil {
@@ -30411,8 +34490,9 @@ func (v SocketConnection) GetSocket() (result Socket) {
 }
 
 // g_socket_connection_is_connected
-// container is not nil, container is SocketConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketConnection) IsConnected() (result bool) {
 	iv, err := _I.Get(1303, "SocketConnection", "is_connected")
 	if err != nil {
@@ -30454,10 +34534,17 @@ func SocketControlMessageGetType() gi.GType {
 }
 
 // g_socket_control_message_deserialize
-// container is not nil, container is SocketControlMessage
-// is method
-// arg0Type tag: gint32, isPtr: false
-// arg 3 data lenArgIdx 2
+//
+// [ level ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func SocketControlMessageDeserialize1(level int32, type1 int32, size uint64, data gi.Uint8Array) (result SocketControlMessage) {
 	iv, err := _I.Get(1304, "SocketControlMessage", "deserialize")
 	if err != nil {
@@ -30476,8 +34563,9 @@ func SocketControlMessageDeserialize1(level int32, type1 int32, size uint64, dat
 }
 
 // g_socket_control_message_get_level
-// container is not nil, container is SocketControlMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketControlMessage) GetLevel() (result int32) {
 	iv, err := _I.Get(1305, "SocketControlMessage", "get_level")
 	if err != nil {
@@ -30493,8 +34581,9 @@ func (v SocketControlMessage) GetLevel() (result int32) {
 }
 
 // g_socket_control_message_get_msg_type
-// container is not nil, container is SocketControlMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketControlMessage) GetMsgType() (result int32) {
 	iv, err := _I.Get(1306, "SocketControlMessage", "get_msg_type")
 	if err != nil {
@@ -30510,8 +34599,9 @@ func (v SocketControlMessage) GetMsgType() (result int32) {
 }
 
 // g_socket_control_message_get_size
-// container is not nil, container is SocketControlMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketControlMessage) GetSize() (result uint64) {
 	iv, err := _I.Get(1307, "SocketControlMessage", "get_size")
 	if err != nil {
@@ -30527,8 +34617,9 @@ func (v SocketControlMessage) GetSize() (result uint64) {
 }
 
 // g_socket_control_message_serialize
-// container is not nil, container is SocketControlMessage
-// is method
+//
+// [ data ] trans: nothing
+//
 func (v SocketControlMessage) Serialize(data unsafe.Pointer) {
 	iv, err := _I.Get(1308, "SocketControlMessage", "serialize")
 	if err != nil {
@@ -30583,8 +34674,9 @@ func SocketListenerGetType() gi.GType {
 }
 
 // g_socket_listener_new
-// container is not nil, container is SocketListener
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewSocketListener() (result SocketListener) {
 	iv, err := _I.Get(1309, "SocketListener", "new")
 	if err != nil {
@@ -30598,8 +34690,13 @@ func NewSocketListener() (result SocketListener) {
 }
 
 // g_socket_listener_accept
-// container is not nil, container is SocketListener
-// is method
+//
+// [ source_object ] trans: nothing, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v SocketListener) Accept(cancellable ICancellable) (result SocketConnection, source_object gobject.Object, err error) {
 	iv, err := _I.Get(1310, "SocketListener", "accept")
 	if err != nil {
@@ -30624,8 +34721,13 @@ func (v SocketListener) Accept(cancellable ICancellable) (result SocketConnectio
 }
 
 // g_socket_listener_accept_async
-// container is not nil, container is SocketListener
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SocketListener) AcceptAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1311, "SocketListener", "accept_async")
 	if err != nil {
@@ -30645,8 +34747,13 @@ func (v SocketListener) AcceptAsync(cancellable ICancellable, callback int /*TOD
 }
 
 // g_socket_listener_accept_finish
-// container is not nil, container is SocketListener
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ source_object ] trans: nothing, dir: out
+//
+// [ result1 ] trans: everything
+//
 func (v SocketListener) AcceptFinish(result IAsyncResult) (result1 SocketConnection, source_object gobject.Object, err error) {
 	iv, err := _I.Get(1312, "SocketListener", "accept_finish")
 	if err != nil {
@@ -30671,8 +34778,13 @@ func (v SocketListener) AcceptFinish(result IAsyncResult) (result1 SocketConnect
 }
 
 // g_socket_listener_accept_socket
-// container is not nil, container is SocketListener
-// is method
+//
+// [ source_object ] trans: nothing, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v SocketListener) AcceptSocket(cancellable ICancellable) (result Socket, source_object gobject.Object, err error) {
 	iv, err := _I.Get(1313, "SocketListener", "accept_socket")
 	if err != nil {
@@ -30697,8 +34809,13 @@ func (v SocketListener) AcceptSocket(cancellable ICancellable) (result Socket, s
 }
 
 // g_socket_listener_accept_socket_async
-// container is not nil, container is SocketListener
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v SocketListener) AcceptSocketAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1314, "SocketListener", "accept_socket_async")
 	if err != nil {
@@ -30718,8 +34835,13 @@ func (v SocketListener) AcceptSocketAsync(cancellable ICancellable, callback int
 }
 
 // g_socket_listener_accept_socket_finish
-// container is not nil, container is SocketListener
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ source_object ] trans: nothing, dir: out
+//
+// [ result1 ] trans: everything
+//
 func (v SocketListener) AcceptSocketFinish(result IAsyncResult) (result1 Socket, source_object gobject.Object, err error) {
 	iv, err := _I.Get(1315, "SocketListener", "accept_socket_finish")
 	if err != nil {
@@ -30744,8 +34866,19 @@ func (v SocketListener) AcceptSocketFinish(result IAsyncResult) (result1 Socket,
 }
 
 // g_socket_listener_add_address
-// container is not nil, container is SocketListener
-// is method
+//
+// [ address ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ protocol ] trans: nothing
+//
+// [ source_object ] trans: nothing
+//
+// [ effective_address ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v SocketListener) AddAddress(address ISocketAddress, type1 SocketTypeEnum, protocol SocketProtocolEnum, source_object gobject.IObject) (result bool, effective_address SocketAddress, err error) {
 	iv, err := _I.Get(1316, "SocketListener", "add_address")
 	if err != nil {
@@ -30777,8 +34910,11 @@ func (v SocketListener) AddAddress(address ISocketAddress, type1 SocketTypeEnum,
 }
 
 // g_socket_listener_add_any_inet_port
-// container is not nil, container is SocketListener
-// is method
+//
+// [ source_object ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SocketListener) AddAnyInetPort(source_object gobject.IObject) (result uint16, err error) {
 	iv, err := _I.Get(1317, "SocketListener", "add_any_inet_port")
 	if err != nil {
@@ -30801,8 +34937,13 @@ func (v SocketListener) AddAnyInetPort(source_object gobject.IObject) (result ui
 }
 
 // g_socket_listener_add_inet_port
-// container is not nil, container is SocketListener
-// is method
+//
+// [ port ] trans: nothing
+//
+// [ source_object ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SocketListener) AddInetPort(port uint16, source_object gobject.IObject) (result bool, err error) {
 	iv, err := _I.Get(1318, "SocketListener", "add_inet_port")
 	if err != nil {
@@ -30826,8 +34967,13 @@ func (v SocketListener) AddInetPort(port uint16, source_object gobject.IObject) 
 }
 
 // g_socket_listener_add_socket
-// container is not nil, container is SocketListener
-// is method
+//
+// [ socket ] trans: nothing
+//
+// [ source_object ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SocketListener) AddSocket(socket ISocket, source_object gobject.IObject) (result bool, err error) {
 	iv, err := _I.Get(1319, "SocketListener", "add_socket")
 	if err != nil {
@@ -30855,8 +35001,7 @@ func (v SocketListener) AddSocket(socket ISocket, source_object gobject.IObject)
 }
 
 // g_socket_listener_close
-// container is not nil, container is SocketListener
-// is method
+//
 func (v SocketListener) Close() {
 	iv, err := _I.Get(1320, "SocketListener", "close")
 	if err != nil {
@@ -30869,8 +35014,9 @@ func (v SocketListener) Close() {
 }
 
 // g_socket_listener_set_backlog
-// container is not nil, container is SocketListener
-// is method
+//
+// [ listen_backlog ] trans: nothing
+//
 func (v SocketListener) SetBacklog(listen_backlog int32) {
 	iv, err := _I.Get(1321, "SocketListener", "set_backlog")
 	if err != nil {
@@ -30966,8 +35112,9 @@ func SocketServiceGetType() gi.GType {
 }
 
 // g_socket_service_new
-// container is not nil, container is SocketService
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewSocketService() (result SocketService) {
 	iv, err := _I.Get(1322, "SocketService", "new")
 	if err != nil {
@@ -30981,8 +35128,9 @@ func NewSocketService() (result SocketService) {
 }
 
 // g_socket_service_is_active
-// container is not nil, container is SocketService
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SocketService) IsActive() (result bool) {
 	iv, err := _I.Get(1323, "SocketService", "is_active")
 	if err != nil {
@@ -30998,8 +35146,7 @@ func (v SocketService) IsActive() (result bool) {
 }
 
 // g_socket_service_start
-// container is not nil, container is SocketService
-// is method
+//
 func (v SocketService) Start() {
 	iv, err := _I.Get(1324, "SocketService", "start")
 	if err != nil {
@@ -31012,8 +35159,7 @@ func (v SocketService) Start() {
 }
 
 // g_socket_service_stop
-// container is not nil, container is SocketService
-// is method
+//
 func (v SocketService) Stop() {
 	iv, err := _I.Get(1325, "SocketService", "stop")
 	if err != nil {
@@ -31081,8 +35227,17 @@ func SrvTargetGetType() gi.GType {
 }
 
 // g_srv_target_new
-// container is not nil, container is SrvTarget
-// is constructor
+//
+// [ hostname ] trans: nothing
+//
+// [ port ] trans: nothing
+//
+// [ priority ] trans: nothing
+//
+// [ weight ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSrvTarget(hostname string, port uint16, priority uint16, weight uint16) (result SrvTarget) {
 	iv, err := _I.Get(1326, "SrvTarget", "new")
 	if err != nil {
@@ -31103,8 +35258,9 @@ func NewSrvTarget(hostname string, port uint16, priority uint16, weight uint16) 
 }
 
 // g_srv_target_copy
-// container is not nil, container is SrvTarget
-// is method
+//
+// [ result ] trans: everything
+//
 func (v SrvTarget) Copy() (result SrvTarget) {
 	iv, err := _I.Get(1327, "SrvTarget", "copy")
 	if err != nil {
@@ -31120,8 +35276,7 @@ func (v SrvTarget) Copy() (result SrvTarget) {
 }
 
 // g_srv_target_free
-// container is not nil, container is SrvTarget
-// is method
+//
 func (v SrvTarget) Free() {
 	iv, err := _I.Get(1328, "SrvTarget", "free")
 	if err != nil {
@@ -31134,8 +35289,9 @@ func (v SrvTarget) Free() {
 }
 
 // g_srv_target_get_hostname
-// container is not nil, container is SrvTarget
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SrvTarget) GetHostname() (result string) {
 	iv, err := _I.Get(1329, "SrvTarget", "get_hostname")
 	if err != nil {
@@ -31146,13 +35302,14 @@ func (v SrvTarget) GetHostname() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_srv_target_get_port
-// container is not nil, container is SrvTarget
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SrvTarget) GetPort() (result uint16) {
 	iv, err := _I.Get(1330, "SrvTarget", "get_port")
 	if err != nil {
@@ -31168,8 +35325,9 @@ func (v SrvTarget) GetPort() (result uint16) {
 }
 
 // g_srv_target_get_priority
-// container is not nil, container is SrvTarget
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SrvTarget) GetPriority() (result uint16) {
 	iv, err := _I.Get(1331, "SrvTarget", "get_priority")
 	if err != nil {
@@ -31185,8 +35343,9 @@ func (v SrvTarget) GetPriority() (result uint16) {
 }
 
 // g_srv_target_get_weight
-// container is not nil, container is SrvTarget
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SrvTarget) GetWeight() (result uint16) {
 	iv, err := _I.Get(1332, "SrvTarget", "get_weight")
 	if err != nil {
@@ -31214,8 +35373,7 @@ func StaticResourceGetType() gi.GType {
 }
 
 // g_static_resource_fini
-// container is not nil, container is StaticResource
-// is method
+//
 func (v StaticResource) Fini() {
 	iv, err := _I.Get(1333, "StaticResource", "fini")
 	if err != nil {
@@ -31228,8 +35386,9 @@ func (v StaticResource) Fini() {
 }
 
 // g_static_resource_get_resource
-// container is not nil, container is StaticResource
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v StaticResource) GetResource() (result Resource) {
 	iv, err := _I.Get(1334, "StaticResource", "get_resource")
 	if err != nil {
@@ -31245,8 +35404,7 @@ func (v StaticResource) GetResource() (result Resource) {
 }
 
 // g_static_resource_init
-// container is not nil, container is StaticResource
-// is method
+//
 func (v StaticResource) Init() {
 	iv, err := _I.Get(1335, "StaticResource", "init")
 	if err != nil {
@@ -31276,8 +35434,13 @@ func SubprocessGetType() gi.GType {
 }
 
 // g_subprocess_newv
-// container is not nil, container is Subprocess
-// is constructor
+//
+// [ argv ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSubprocess(argv gi.CStrArray, flags SubprocessFlags) (result Subprocess, err error) {
 	iv, err := _I.Get(1336, "Subprocess", "new")
 	if err != nil {
@@ -31296,8 +35459,17 @@ func NewSubprocess(argv gi.CStrArray, flags SubprocessFlags) (result Subprocess,
 }
 
 // g_subprocess_communicate
-// container is not nil, container is Subprocess
-// is method
+//
+// [ stdin_buf ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ stdout_buf ] trans: everything, dir: out
+//
+// [ stderr_buf ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) Communicate(stdin_buf glib.Bytes, cancellable ICancellable) (result bool, stdout_buf glib.Bytes, stderr_buf glib.Bytes, err error) {
 	iv, err := _I.Get(1337, "Subprocess", "communicate")
 	if err != nil {
@@ -31325,8 +35497,15 @@ func (v Subprocess) Communicate(stdin_buf glib.Bytes, cancellable ICancellable) 
 }
 
 // g_subprocess_communicate_async
-// container is not nil, container is Subprocess
-// is method
+//
+// [ stdin_buf ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Subprocess) CommunicateAsync(stdin_buf glib.Bytes, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1338, "Subprocess", "communicate_async")
 	if err != nil {
@@ -31347,8 +35526,15 @@ func (v Subprocess) CommunicateAsync(stdin_buf glib.Bytes, cancellable ICancella
 }
 
 // g_subprocess_communicate_finish
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ stdout_buf ] trans: everything, dir: out
+//
+// [ stderr_buf ] trans: everything, dir: out
+//
+// [ result1 ] trans: nothing
+//
 func (v Subprocess) CommunicateFinish(result IAsyncResult) (result1 bool, stdout_buf glib.Bytes, stderr_buf glib.Bytes, err error) {
 	iv, err := _I.Get(1339, "Subprocess", "communicate_finish")
 	if err != nil {
@@ -31375,8 +35561,17 @@ func (v Subprocess) CommunicateFinish(result IAsyncResult) (result1 bool, stdout
 }
 
 // g_subprocess_communicate_utf8
-// container is not nil, container is Subprocess
-// is method
+//
+// [ stdin_buf ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ stdout_buf ] trans: everything, dir: out
+//
+// [ stderr_buf ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) CommunicateUtf8(stdin_buf string, cancellable ICancellable) (result bool, stdout_buf string, stderr_buf string, err error) {
 	iv, err := _I.Get(1340, "Subprocess", "communicate_utf8")
 	if err != nil {
@@ -31406,8 +35601,15 @@ func (v Subprocess) CommunicateUtf8(stdin_buf string, cancellable ICancellable) 
 }
 
 // g_subprocess_communicate_utf8_async
-// container is not nil, container is Subprocess
-// is method
+//
+// [ stdin_buf ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Subprocess) CommunicateUtf8Async(stdin_buf string, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1341, "Subprocess", "communicate_utf8_async")
 	if err != nil {
@@ -31430,8 +35632,15 @@ func (v Subprocess) CommunicateUtf8Async(stdin_buf string, cancellable ICancella
 }
 
 // g_subprocess_communicate_utf8_finish
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ stdout_buf ] trans: everything, dir: out
+//
+// [ stderr_buf ] trans: everything, dir: out
+//
+// [ result1 ] trans: nothing
+//
 func (v Subprocess) CommunicateUtf8Finish(result IAsyncResult) (result1 bool, stdout_buf string, stderr_buf string, err error) {
 	iv, err := _I.Get(1342, "Subprocess", "communicate_utf8_finish")
 	if err != nil {
@@ -31458,8 +35667,7 @@ func (v Subprocess) CommunicateUtf8Finish(result IAsyncResult) (result1 bool, st
 }
 
 // g_subprocess_force_exit
-// container is not nil, container is Subprocess
-// is method
+//
 func (v Subprocess) ForceExit() {
 	iv, err := _I.Get(1343, "Subprocess", "force_exit")
 	if err != nil {
@@ -31472,8 +35680,9 @@ func (v Subprocess) ForceExit() {
 }
 
 // g_subprocess_get_exit_status
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) GetExitStatus() (result int32) {
 	iv, err := _I.Get(1344, "Subprocess", "get_exit_status")
 	if err != nil {
@@ -31489,8 +35698,9 @@ func (v Subprocess) GetExitStatus() (result int32) {
 }
 
 // g_subprocess_get_identifier
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) GetIdentifier() (result string) {
 	iv, err := _I.Get(1345, "Subprocess", "get_identifier")
 	if err != nil {
@@ -31501,13 +35711,14 @@ func (v Subprocess) GetIdentifier() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_subprocess_get_if_exited
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) GetIfExited() (result bool) {
 	iv, err := _I.Get(1346, "Subprocess", "get_if_exited")
 	if err != nil {
@@ -31523,8 +35734,9 @@ func (v Subprocess) GetIfExited() (result bool) {
 }
 
 // g_subprocess_get_if_signaled
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) GetIfSignaled() (result bool) {
 	iv, err := _I.Get(1347, "Subprocess", "get_if_signaled")
 	if err != nil {
@@ -31540,8 +35752,9 @@ func (v Subprocess) GetIfSignaled() (result bool) {
 }
 
 // g_subprocess_get_status
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) GetStatus() (result int32) {
 	iv, err := _I.Get(1348, "Subprocess", "get_status")
 	if err != nil {
@@ -31557,8 +35770,9 @@ func (v Subprocess) GetStatus() (result int32) {
 }
 
 // g_subprocess_get_stderr_pipe
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) GetStderrPipe() (result InputStream) {
 	iv, err := _I.Get(1349, "Subprocess", "get_stderr_pipe")
 	if err != nil {
@@ -31574,8 +35788,9 @@ func (v Subprocess) GetStderrPipe() (result InputStream) {
 }
 
 // g_subprocess_get_stdin_pipe
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) GetStdinPipe() (result OutputStream) {
 	iv, err := _I.Get(1350, "Subprocess", "get_stdin_pipe")
 	if err != nil {
@@ -31591,8 +35806,9 @@ func (v Subprocess) GetStdinPipe() (result OutputStream) {
 }
 
 // g_subprocess_get_stdout_pipe
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) GetStdoutPipe() (result InputStream) {
 	iv, err := _I.Get(1351, "Subprocess", "get_stdout_pipe")
 	if err != nil {
@@ -31608,8 +35824,9 @@ func (v Subprocess) GetStdoutPipe() (result InputStream) {
 }
 
 // g_subprocess_get_successful
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) GetSuccessful() (result bool) {
 	iv, err := _I.Get(1352, "Subprocess", "get_successful")
 	if err != nil {
@@ -31625,8 +35842,9 @@ func (v Subprocess) GetSuccessful() (result bool) {
 }
 
 // g_subprocess_get_term_sig
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) GetTermSig() (result int32) {
 	iv, err := _I.Get(1353, "Subprocess", "get_term_sig")
 	if err != nil {
@@ -31642,8 +35860,9 @@ func (v Subprocess) GetTermSig() (result int32) {
 }
 
 // g_subprocess_send_signal
-// container is not nil, container is Subprocess
-// is method
+//
+// [ signal_num ] trans: nothing
+//
 func (v Subprocess) SendSignal(signal_num int32) {
 	iv, err := _I.Get(1354, "Subprocess", "send_signal")
 	if err != nil {
@@ -31657,8 +35876,11 @@ func (v Subprocess) SendSignal(signal_num int32) {
 }
 
 // g_subprocess_wait
-// container is not nil, container is Subprocess
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) Wait(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1355, "Subprocess", "wait")
 	if err != nil {
@@ -31681,8 +35903,13 @@ func (v Subprocess) Wait(cancellable ICancellable) (result bool, err error) {
 }
 
 // g_subprocess_wait_async
-// container is not nil, container is Subprocess
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Subprocess) WaitAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1356, "Subprocess", "wait_async")
 	if err != nil {
@@ -31702,8 +35929,11 @@ func (v Subprocess) WaitAsync(cancellable ICancellable, callback int /*TODO_TYPE
 }
 
 // g_subprocess_wait_check
-// container is not nil, container is Subprocess
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Subprocess) WaitCheck(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1357, "Subprocess", "wait_check")
 	if err != nil {
@@ -31726,8 +35956,13 @@ func (v Subprocess) WaitCheck(cancellable ICancellable) (result bool, err error)
 }
 
 // g_subprocess_wait_check_async
-// container is not nil, container is Subprocess
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Subprocess) WaitCheckAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1358, "Subprocess", "wait_check_async")
 	if err != nil {
@@ -31747,8 +35982,11 @@ func (v Subprocess) WaitCheckAsync(cancellable ICancellable, callback int /*TODO
 }
 
 // g_subprocess_wait_check_finish
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v Subprocess) WaitCheckFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1359, "Subprocess", "wait_check_finish")
 	if err != nil {
@@ -31771,8 +36009,11 @@ func (v Subprocess) WaitCheckFinish(result IAsyncResult) (result1 bool, err erro
 }
 
 // g_subprocess_wait_finish
-// container is not nil, container is Subprocess
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v Subprocess) WaitFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1360, "Subprocess", "wait_finish")
 	if err != nil {
@@ -31830,8 +36071,11 @@ func SubprocessLauncherGetType() gi.GType {
 }
 
 // g_subprocess_launcher_new
-// container is not nil, container is SubprocessLauncher
-// is constructor
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSubprocessLauncher(flags SubprocessFlags) (result SubprocessLauncher) {
 	iv, err := _I.Get(1361, "SubprocessLauncher", "new")
 	if err != nil {
@@ -31847,8 +36091,11 @@ func NewSubprocessLauncher(flags SubprocessFlags) (result SubprocessLauncher) {
 }
 
 // g_subprocess_launcher_getenv
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ variable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SubprocessLauncher) Getenv(variable string) (result string) {
 	iv, err := _I.Get(1362, "SubprocessLauncher", "getenv")
 	if err != nil {
@@ -31862,13 +36109,14 @@ func (v SubprocessLauncher) Getenv(variable string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_variable)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_subprocess_launcher_set_cwd
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ cwd ] trans: nothing
+//
 func (v SubprocessLauncher) SetCwd(cwd string) {
 	iv, err := _I.Get(1363, "SubprocessLauncher", "set_cwd")
 	if err != nil {
@@ -31884,8 +36132,9 @@ func (v SubprocessLauncher) SetCwd(cwd string) {
 }
 
 // g_subprocess_launcher_set_environ
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ env ] trans: nothing
+//
 func (v SubprocessLauncher) SetEnviron(env gi.CStrArray) {
 	iv, err := _I.Get(1364, "SubprocessLauncher", "set_environ")
 	if err != nil {
@@ -31899,8 +36148,9 @@ func (v SubprocessLauncher) SetEnviron(env gi.CStrArray) {
 }
 
 // g_subprocess_launcher_set_flags
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ flags ] trans: nothing
+//
 func (v SubprocessLauncher) SetFlags(flags SubprocessFlags) {
 	iv, err := _I.Get(1365, "SubprocessLauncher", "set_flags")
 	if err != nil {
@@ -31914,8 +36164,9 @@ func (v SubprocessLauncher) SetFlags(flags SubprocessFlags) {
 }
 
 // g_subprocess_launcher_set_stderr_file_path
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ path ] trans: nothing
+//
 func (v SubprocessLauncher) SetStderrFilePath(path string) {
 	iv, err := _I.Get(1366, "SubprocessLauncher", "set_stderr_file_path")
 	if err != nil {
@@ -31931,8 +36182,9 @@ func (v SubprocessLauncher) SetStderrFilePath(path string) {
 }
 
 // g_subprocess_launcher_set_stdin_file_path
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ path ] trans: nothing
+//
 func (v SubprocessLauncher) SetStdinFilePath(path string) {
 	iv, err := _I.Get(1367, "SubprocessLauncher", "set_stdin_file_path")
 	if err != nil {
@@ -31948,8 +36200,9 @@ func (v SubprocessLauncher) SetStdinFilePath(path string) {
 }
 
 // g_subprocess_launcher_set_stdout_file_path
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ path ] trans: nothing
+//
 func (v SubprocessLauncher) SetStdoutFilePath(path string) {
 	iv, err := _I.Get(1368, "SubprocessLauncher", "set_stdout_file_path")
 	if err != nil {
@@ -31965,8 +36218,13 @@ func (v SubprocessLauncher) SetStdoutFilePath(path string) {
 }
 
 // g_subprocess_launcher_setenv
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ variable ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ overwrite ] trans: nothing
+//
 func (v SubprocessLauncher) Setenv(variable string, value string, overwrite bool) {
 	iv, err := _I.Get(1369, "SubprocessLauncher", "setenv")
 	if err != nil {
@@ -31986,8 +36244,11 @@ func (v SubprocessLauncher) Setenv(variable string, value string, overwrite bool
 }
 
 // g_subprocess_launcher_spawnv
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ argv ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v SubprocessLauncher) Spawnv(argv gi.CStrArray) (result Subprocess, err error) {
 	iv, err := _I.Get(1370, "SubprocessLauncher", "spawnv")
 	if err != nil {
@@ -32006,8 +36267,11 @@ func (v SubprocessLauncher) Spawnv(argv gi.CStrArray) (result Subprocess, err er
 }
 
 // g_subprocess_launcher_take_fd
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ source_fd ] trans: nothing
+//
+// [ target_fd ] trans: nothing
+//
 func (v SubprocessLauncher) TakeFd(source_fd int32, target_fd int32) {
 	iv, err := _I.Get(1371, "SubprocessLauncher", "take_fd")
 	if err != nil {
@@ -32022,8 +36286,9 @@ func (v SubprocessLauncher) TakeFd(source_fd int32, target_fd int32) {
 }
 
 // g_subprocess_launcher_take_stderr_fd
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ fd ] trans: nothing
+//
 func (v SubprocessLauncher) TakeStderrFd(fd int32) {
 	iv, err := _I.Get(1372, "SubprocessLauncher", "take_stderr_fd")
 	if err != nil {
@@ -32037,8 +36302,9 @@ func (v SubprocessLauncher) TakeStderrFd(fd int32) {
 }
 
 // g_subprocess_launcher_take_stdin_fd
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ fd ] trans: nothing
+//
 func (v SubprocessLauncher) TakeStdinFd(fd int32) {
 	iv, err := _I.Get(1373, "SubprocessLauncher", "take_stdin_fd")
 	if err != nil {
@@ -32052,8 +36318,9 @@ func (v SubprocessLauncher) TakeStdinFd(fd int32) {
 }
 
 // g_subprocess_launcher_take_stdout_fd
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ fd ] trans: nothing
+//
 func (v SubprocessLauncher) TakeStdoutFd(fd int32) {
 	iv, err := _I.Get(1374, "SubprocessLauncher", "take_stdout_fd")
 	if err != nil {
@@ -32067,8 +36334,9 @@ func (v SubprocessLauncher) TakeStdoutFd(fd int32) {
 }
 
 // g_subprocess_launcher_unsetenv
-// container is not nil, container is SubprocessLauncher
-// is method
+//
+// [ variable ] trans: nothing
+//
 func (v SubprocessLauncher) Unsetenv(variable string) {
 	iv, err := _I.Get(1375, "SubprocessLauncher", "unsetenv")
 	if err != nil {
@@ -32101,8 +36369,17 @@ func TaskGetType() gi.GType {
 }
 
 // g_task_new
-// container is not nil, container is Task
-// is constructor
+//
+// [ source_object ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ callback_data ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTask(source_object gobject.IObject, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, callback_data unsafe.Pointer) (result Task) {
 	iv, err := _I.Get(1376, "Task", "new")
 	if err != nil {
@@ -32129,9 +36406,13 @@ func NewTask(source_object gobject.IObject, cancellable ICancellable, callback i
 }
 
 // g_task_is_valid
-// container is not nil, container is Task
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ result ] trans: nothing
+//
+// [ source_object ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func TaskIsValid1(result IAsyncResult, source_object gobject.IObject) (result1 bool) {
 	iv, err := _I.Get(1377, "Task", "is_valid")
 	if err != nil {
@@ -32156,9 +36437,17 @@ func TaskIsValid1(result IAsyncResult, source_object gobject.IObject) (result1 b
 }
 
 // g_task_report_error
-// container is not nil, container is Task
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ source_object ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ callback_data ] trans: nothing
+//
+// [ source_tag ] trans: nothing
+//
+// [ error ] trans: everything
+//
 func TaskReportError1(source_object gobject.IObject, callback int /*TODO_TYPE CALLBACK*/, callback_data unsafe.Pointer, source_tag unsafe.Pointer, error glib.Error) {
 	iv, err := _I.Get(1378, "Task", "report_error")
 	if err != nil {
@@ -32179,8 +36468,9 @@ func TaskReportError1(source_object gobject.IObject, callback int /*TODO_TYPE CA
 }
 
 // g_task_get_cancellable
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) GetCancellable() (result Cancellable) {
 	iv, err := _I.Get(1379, "Task", "get_cancellable")
 	if err != nil {
@@ -32196,8 +36486,9 @@ func (v Task) GetCancellable() (result Cancellable) {
 }
 
 // g_task_get_check_cancellable
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) GetCheckCancellable() (result bool) {
 	iv, err := _I.Get(1380, "Task", "get_check_cancellable")
 	if err != nil {
@@ -32213,8 +36504,9 @@ func (v Task) GetCheckCancellable() (result bool) {
 }
 
 // g_task_get_completed
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) GetCompleted() (result bool) {
 	iv, err := _I.Get(1381, "Task", "get_completed")
 	if err != nil {
@@ -32230,8 +36522,9 @@ func (v Task) GetCompleted() (result bool) {
 }
 
 // g_task_get_context
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) GetContext() (result glib.MainContext) {
 	iv, err := _I.Get(1382, "Task", "get_context")
 	if err != nil {
@@ -32247,8 +36540,9 @@ func (v Task) GetContext() (result glib.MainContext) {
 }
 
 // g_task_get_priority
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) GetPriority() (result int32) {
 	iv, err := _I.Get(1383, "Task", "get_priority")
 	if err != nil {
@@ -32264,8 +36558,9 @@ func (v Task) GetPriority() (result int32) {
 }
 
 // g_task_get_return_on_cancel
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) GetReturnOnCancel() (result bool) {
 	iv, err := _I.Get(1384, "Task", "get_return_on_cancel")
 	if err != nil {
@@ -32281,8 +36576,9 @@ func (v Task) GetReturnOnCancel() (result bool) {
 }
 
 // g_task_get_source_object
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) GetSourceObject() (result gobject.Object) {
 	iv, err := _I.Get(1385, "Task", "get_source_object")
 	if err != nil {
@@ -32298,8 +36594,9 @@ func (v Task) GetSourceObject() (result gobject.Object) {
 }
 
 // g_task_get_source_tag
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) GetSourceTag() (result unsafe.Pointer) {
 	iv, err := _I.Get(1386, "Task", "get_source_tag")
 	if err != nil {
@@ -32315,8 +36612,9 @@ func (v Task) GetSourceTag() (result unsafe.Pointer) {
 }
 
 // g_task_get_task_data
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) GetTaskData() (result unsafe.Pointer) {
 	iv, err := _I.Get(1387, "Task", "get_task_data")
 	if err != nil {
@@ -32332,8 +36630,9 @@ func (v Task) GetTaskData() (result unsafe.Pointer) {
 }
 
 // g_task_had_error
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) HadError() (result bool) {
 	iv, err := _I.Get(1388, "Task", "had_error")
 	if err != nil {
@@ -32349,8 +36648,9 @@ func (v Task) HadError() (result bool) {
 }
 
 // g_task_propagate_boolean
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) PropagateBoolean() (result bool, err error) {
 	iv, err := _I.Get(1389, "Task", "propagate_boolean")
 	if err != nil {
@@ -32368,8 +36668,9 @@ func (v Task) PropagateBoolean() (result bool, err error) {
 }
 
 // g_task_propagate_int
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) PropagateInt() (result int64, err error) {
 	iv, err := _I.Get(1390, "Task", "propagate_int")
 	if err != nil {
@@ -32387,8 +36688,9 @@ func (v Task) PropagateInt() (result int64, err error) {
 }
 
 // g_task_propagate_pointer
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Task) PropagatePointer() (result unsafe.Pointer, err error) {
 	iv, err := _I.Get(1391, "Task", "propagate_pointer")
 	if err != nil {
@@ -32406,8 +36708,9 @@ func (v Task) PropagatePointer() (result unsafe.Pointer, err error) {
 }
 
 // g_task_return_boolean
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) ReturnBoolean(result bool) {
 	iv, err := _I.Get(1392, "Task", "return_boolean")
 	if err != nil {
@@ -32421,8 +36724,9 @@ func (v Task) ReturnBoolean(result bool) {
 }
 
 // g_task_return_error
-// container is not nil, container is Task
-// is method
+//
+// [ error ] trans: everything
+//
 func (v Task) ReturnError(error glib.Error) {
 	iv, err := _I.Get(1393, "Task", "return_error")
 	if err != nil {
@@ -32436,8 +36740,9 @@ func (v Task) ReturnError(error glib.Error) {
 }
 
 // g_task_return_error_if_cancelled
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) ReturnErrorIfCancelled() (result bool) {
 	iv, err := _I.Get(1394, "Task", "return_error_if_cancelled")
 	if err != nil {
@@ -32453,8 +36758,9 @@ func (v Task) ReturnErrorIfCancelled() (result bool) {
 }
 
 // g_task_return_int
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Task) ReturnInt(result int64) {
 	iv, err := _I.Get(1395, "Task", "return_int")
 	if err != nil {
@@ -32468,8 +36774,11 @@ func (v Task) ReturnInt(result int64) {
 }
 
 // g_task_return_pointer
-// container is not nil, container is Task
-// is method
+//
+// [ result ] trans: everything
+//
+// [ result_destroy ] trans: nothing
+//
 func (v Task) ReturnPointer(result unsafe.Pointer, result_destroy int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1396, "Task", "return_pointer")
 	if err != nil {
@@ -32484,8 +36793,9 @@ func (v Task) ReturnPointer(result unsafe.Pointer, result_destroy int /*TODO_TYP
 }
 
 // g_task_set_check_cancellable
-// container is not nil, container is Task
-// is method
+//
+// [ check_cancellable ] trans: nothing
+//
 func (v Task) SetCheckCancellable(check_cancellable bool) {
 	iv, err := _I.Get(1397, "Task", "set_check_cancellable")
 	if err != nil {
@@ -32499,8 +36809,9 @@ func (v Task) SetCheckCancellable(check_cancellable bool) {
 }
 
 // g_task_set_priority
-// container is not nil, container is Task
-// is method
+//
+// [ priority ] trans: nothing
+//
 func (v Task) SetPriority(priority int32) {
 	iv, err := _I.Get(1398, "Task", "set_priority")
 	if err != nil {
@@ -32514,8 +36825,11 @@ func (v Task) SetPriority(priority int32) {
 }
 
 // g_task_set_return_on_cancel
-// container is not nil, container is Task
-// is method
+//
+// [ return_on_cancel ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Task) SetReturnOnCancel(return_on_cancel bool) (result bool) {
 	iv, err := _I.Get(1399, "Task", "set_return_on_cancel")
 	if err != nil {
@@ -32532,8 +36846,9 @@ func (v Task) SetReturnOnCancel(return_on_cancel bool) (result bool) {
 }
 
 // g_task_set_source_tag
-// container is not nil, container is Task
-// is method
+//
+// [ source_tag ] trans: nothing
+//
 func (v Task) SetSourceTag(source_tag unsafe.Pointer) {
 	iv, err := _I.Get(1400, "Task", "set_source_tag")
 	if err != nil {
@@ -32547,8 +36862,11 @@ func (v Task) SetSourceTag(source_tag unsafe.Pointer) {
 }
 
 // g_task_set_task_data
-// container is not nil, container is Task
-// is method
+//
+// [ task_data ] trans: nothing
+//
+// [ task_data_destroy ] trans: nothing
+//
 func (v Task) SetTaskData(task_data unsafe.Pointer, task_data_destroy int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1401, "Task", "set_task_data")
 	if err != nil {
@@ -32595,8 +36913,9 @@ func TcpConnectionGetType() gi.GType {
 }
 
 // g_tcp_connection_get_graceful_disconnect
-// container is not nil, container is TcpConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TcpConnection) GetGracefulDisconnect() (result bool) {
 	iv, err := _I.Get(1402, "TcpConnection", "get_graceful_disconnect")
 	if err != nil {
@@ -32612,8 +36931,9 @@ func (v TcpConnection) GetGracefulDisconnect() (result bool) {
 }
 
 // g_tcp_connection_set_graceful_disconnect
-// container is not nil, container is TcpConnection
-// is method
+//
+// [ graceful_disconnect ] trans: nothing
+//
 func (v TcpConnection) SetGracefulDisconnect(graceful_disconnect bool) {
 	iv, err := _I.Get(1403, "TcpConnection", "set_graceful_disconnect")
 	if err != nil {
@@ -32653,8 +36973,13 @@ func TcpWrapperConnectionGetType() gi.GType {
 }
 
 // g_tcp_wrapper_connection_new
-// container is not nil, container is TcpWrapperConnection
-// is constructor
+//
+// [ base_io_stream ] trans: nothing
+//
+// [ socket ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTcpWrapperConnection(base_io_stream IIOStream, socket ISocket) (result TcpWrapperConnection) {
 	iv, err := _I.Get(1404, "TcpWrapperConnection", "new")
 	if err != nil {
@@ -32679,8 +37004,9 @@ func NewTcpWrapperConnection(base_io_stream IIOStream, socket ISocket) (result T
 }
 
 // g_tcp_wrapper_connection_get_base_io_stream
-// container is not nil, container is TcpWrapperConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TcpWrapperConnection) GetBaseIoStream() (result IOStream) {
 	iv, err := _I.Get(1405, "TcpWrapperConnection", "get_base_io_stream")
 	if err != nil {
@@ -32722,8 +37048,11 @@ func TestDBusGetType() gi.GType {
 }
 
 // g_test_dbus_new
-// container is not nil, container is TestDBus
-// is constructor
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTestDBus(flags TestDBusFlags) (result TestDBus) {
 	iv, err := _I.Get(1406, "TestDBus", "new")
 	if err != nil {
@@ -32739,8 +37068,9 @@ func NewTestDBus(flags TestDBusFlags) (result TestDBus) {
 }
 
 // g_test_dbus_add_service_dir
-// container is not nil, container is TestDBus
-// is method
+//
+// [ path ] trans: nothing
+//
 func (v TestDBus) AddServiceDir(path string) {
 	iv, err := _I.Get(1408, "TestDBus", "add_service_dir")
 	if err != nil {
@@ -32756,8 +37086,7 @@ func (v TestDBus) AddServiceDir(path string) {
 }
 
 // g_test_dbus_down
-// container is not nil, container is TestDBus
-// is method
+//
 func (v TestDBus) Down() {
 	iv, err := _I.Get(1409, "TestDBus", "down")
 	if err != nil {
@@ -32770,8 +37099,9 @@ func (v TestDBus) Down() {
 }
 
 // g_test_dbus_get_bus_address
-// container is not nil, container is TestDBus
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TestDBus) GetBusAddress() (result string) {
 	iv, err := _I.Get(1410, "TestDBus", "get_bus_address")
 	if err != nil {
@@ -32782,13 +37112,14 @@ func (v TestDBus) GetBusAddress() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_test_dbus_get_flags
-// container is not nil, container is TestDBus
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TestDBus) GetFlags() (result TestDBusFlags) {
 	iv, err := _I.Get(1411, "TestDBus", "get_flags")
 	if err != nil {
@@ -32804,8 +37135,7 @@ func (v TestDBus) GetFlags() (result TestDBusFlags) {
 }
 
 // g_test_dbus_stop
-// container is not nil, container is TestDBus
-// is method
+//
 func (v TestDBus) Stop() {
 	iv, err := _I.Get(1412, "TestDBus", "stop")
 	if err != nil {
@@ -32818,8 +37148,7 @@ func (v TestDBus) Stop() {
 }
 
 // g_test_dbus_up
-// container is not nil, container is TestDBus
-// is method
+//
 func (v TestDBus) Up() {
 	iv, err := _I.Get(1413, "TestDBus", "up")
 	if err != nil {
@@ -32861,8 +37190,11 @@ func ThemedIconGetType() gi.GType {
 }
 
 // g_themed_icon_new
-// container is not nil, container is ThemedIcon
-// is constructor
+//
+// [ iconname ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewThemedIcon(iconname string) (result ThemedIcon) {
 	iv, err := _I.Get(1414, "ThemedIcon", "new")
 	if err != nil {
@@ -32880,9 +37212,13 @@ func NewThemedIcon(iconname string) (result ThemedIcon) {
 }
 
 // g_themed_icon_new_from_names
-// container is not nil, container is ThemedIcon
-// is constructor
-// arg 0 iconnames lenArgIdx 1
+//
+// [ iconnames ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewThemedIconFromNames(iconnames gi.CStrArray, len1 int32) (result ThemedIcon) {
 	iv, err := _I.Get(1415, "ThemedIcon", "new_from_names")
 	if err != nil {
@@ -32899,8 +37235,11 @@ func NewThemedIconFromNames(iconnames gi.CStrArray, len1 int32) (result ThemedIc
 }
 
 // g_themed_icon_new_with_default_fallbacks
-// container is not nil, container is ThemedIcon
-// is constructor
+//
+// [ iconname ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewThemedIconWithDefaultFallbacks(iconname string) (result ThemedIcon) {
 	iv, err := _I.Get(1416, "ThemedIcon", "new_with_default_fallbacks")
 	if err != nil {
@@ -32918,8 +37257,9 @@ func NewThemedIconWithDefaultFallbacks(iconname string) (result ThemedIcon) {
 }
 
 // g_themed_icon_append_name
-// container is not nil, container is ThemedIcon
-// is method
+//
+// [ iconname ] trans: nothing
+//
 func (v ThemedIcon) AppendName(iconname string) {
 	iv, err := _I.Get(1417, "ThemedIcon", "append_name")
 	if err != nil {
@@ -32935,8 +37275,9 @@ func (v ThemedIcon) AppendName(iconname string) {
 }
 
 // g_themed_icon_get_names
-// container is not nil, container is ThemedIcon
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ThemedIcon) GetNames() (result gi.CStrArray) {
 	iv, err := _I.Get(1418, "ThemedIcon", "get_names")
 	if err != nil {
@@ -32953,8 +37294,9 @@ func (v ThemedIcon) GetNames() (result gi.CStrArray) {
 }
 
 // g_themed_icon_prepend_name
-// container is not nil, container is ThemedIcon
-// is method
+//
+// [ iconname ] trans: nothing
+//
 func (v ThemedIcon) PrependName(iconname string) {
 	iv, err := _I.Get(1419, "ThemedIcon", "prepend_name")
 	if err != nil {
@@ -32986,8 +37328,11 @@ func ThreadedSocketServiceGetType() gi.GType {
 }
 
 // g_threaded_socket_service_new
-// container is not nil, container is ThreadedSocketService
-// is constructor
+//
+// [ max_threads ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewThreadedSocketService(max_threads int32) (result ThreadedSocketService) {
 	iv, err := _I.Get(1420, "ThreadedSocketService", "new")
 	if err != nil {
@@ -33042,8 +37387,9 @@ func TlsBackendGetType() gi.GType {
 }
 
 // g_tls_backend_get_certificate_type
-// container is not nil, container is TlsBackend
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsBackendIfc) GetCertificateType() (result gi.GType) {
 	iv, err := _I.Get(1422, "TlsBackend", "get_certificate_type")
 	if err != nil {
@@ -33059,8 +37405,9 @@ func (v *TlsBackendIfc) GetCertificateType() (result gi.GType) {
 }
 
 // g_tls_backend_get_client_connection_type
-// container is not nil, container is TlsBackend
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsBackendIfc) GetClientConnectionType() (result gi.GType) {
 	iv, err := _I.Get(1423, "TlsBackend", "get_client_connection_type")
 	if err != nil {
@@ -33076,8 +37423,9 @@ func (v *TlsBackendIfc) GetClientConnectionType() (result gi.GType) {
 }
 
 // g_tls_backend_get_default_database
-// container is not nil, container is TlsBackend
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *TlsBackendIfc) GetDefaultDatabase() (result TlsDatabase) {
 	iv, err := _I.Get(1424, "TlsBackend", "get_default_database")
 	if err != nil {
@@ -33093,8 +37441,9 @@ func (v *TlsBackendIfc) GetDefaultDatabase() (result TlsDatabase) {
 }
 
 // g_tls_backend_get_dtls_client_connection_type
-// container is not nil, container is TlsBackend
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsBackendIfc) GetDtlsClientConnectionType() (result gi.GType) {
 	iv, err := _I.Get(1425, "TlsBackend", "get_dtls_client_connection_type")
 	if err != nil {
@@ -33110,8 +37459,9 @@ func (v *TlsBackendIfc) GetDtlsClientConnectionType() (result gi.GType) {
 }
 
 // g_tls_backend_get_dtls_server_connection_type
-// container is not nil, container is TlsBackend
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsBackendIfc) GetDtlsServerConnectionType() (result gi.GType) {
 	iv, err := _I.Get(1426, "TlsBackend", "get_dtls_server_connection_type")
 	if err != nil {
@@ -33127,8 +37477,9 @@ func (v *TlsBackendIfc) GetDtlsServerConnectionType() (result gi.GType) {
 }
 
 // g_tls_backend_get_file_database_type
-// container is not nil, container is TlsBackend
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsBackendIfc) GetFileDatabaseType() (result gi.GType) {
 	iv, err := _I.Get(1427, "TlsBackend", "get_file_database_type")
 	if err != nil {
@@ -33144,8 +37495,9 @@ func (v *TlsBackendIfc) GetFileDatabaseType() (result gi.GType) {
 }
 
 // g_tls_backend_get_server_connection_type
-// container is not nil, container is TlsBackend
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsBackendIfc) GetServerConnectionType() (result gi.GType) {
 	iv, err := _I.Get(1428, "TlsBackend", "get_server_connection_type")
 	if err != nil {
@@ -33161,8 +37513,9 @@ func (v *TlsBackendIfc) GetServerConnectionType() (result gi.GType) {
 }
 
 // g_tls_backend_supports_dtls
-// container is not nil, container is TlsBackend
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsBackendIfc) SupportsDtls() (result bool) {
 	iv, err := _I.Get(1429, "TlsBackend", "supports_dtls")
 	if err != nil {
@@ -33178,8 +37531,9 @@ func (v *TlsBackendIfc) SupportsDtls() (result bool) {
 }
 
 // g_tls_backend_supports_tls
-// container is not nil, container is TlsBackend
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsBackendIfc) SupportsTls() (result bool) {
 	iv, err := _I.Get(1430, "TlsBackend", "supports_tls")
 	if err != nil {
@@ -33211,8 +37565,11 @@ func TlsCertificateGetType() gi.GType {
 }
 
 // g_tls_certificate_new_from_file
-// container is not nil, container is TlsCertificate
-// is constructor
+//
+// [ file ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTlsCertificateFromFile(file string) (result TlsCertificate, err error) {
 	iv, err := _I.Get(1431, "TlsCertificate", "new_from_file")
 	if err != nil {
@@ -33232,8 +37589,13 @@ func NewTlsCertificateFromFile(file string) (result TlsCertificate, err error) {
 }
 
 // g_tls_certificate_new_from_files
-// container is not nil, container is TlsCertificate
-// is constructor
+//
+// [ cert_file ] trans: nothing
+//
+// [ key_file ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTlsCertificateFromFiles(cert_file string, key_file string) (result TlsCertificate, err error) {
 	iv, err := _I.Get(1432, "TlsCertificate", "new_from_files")
 	if err != nil {
@@ -33256,8 +37618,13 @@ func NewTlsCertificateFromFiles(cert_file string, key_file string) (result TlsCe
 }
 
 // g_tls_certificate_new_from_pem
-// container is not nil, container is TlsCertificate
-// is constructor
+//
+// [ data ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTlsCertificateFromPem(data string, length int64) (result TlsCertificate, err error) {
 	iv, err := _I.Get(1433, "TlsCertificate", "new_from_pem")
 	if err != nil {
@@ -33278,9 +37645,11 @@ func NewTlsCertificateFromPem(data string, length int64) (result TlsCertificate,
 }
 
 // g_tls_certificate_list_new_from_file
-// container is not nil, container is TlsCertificate
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ file ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func TlsCertificateListNewFromFile1(file string) (result glib.List, err error) {
 	iv, err := _I.Get(1434, "TlsCertificate", "list_new_from_file")
 	if err != nil {
@@ -33300,8 +37669,9 @@ func TlsCertificateListNewFromFile1(file string) (result glib.List, err error) {
 }
 
 // g_tls_certificate_get_issuer
-// container is not nil, container is TlsCertificate
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsCertificate) GetIssuer() (result TlsCertificate) {
 	iv, err := _I.Get(1435, "TlsCertificate", "get_issuer")
 	if err != nil {
@@ -33317,8 +37687,11 @@ func (v TlsCertificate) GetIssuer() (result TlsCertificate) {
 }
 
 // g_tls_certificate_is_same
-// container is not nil, container is TlsCertificate
-// is method
+//
+// [ cert_two ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TlsCertificate) IsSame(cert_two ITlsCertificate) (result bool) {
 	iv, err := _I.Get(1436, "TlsCertificate", "is_same")
 	if err != nil {
@@ -33339,8 +37712,13 @@ func (v TlsCertificate) IsSame(cert_two ITlsCertificate) (result bool) {
 }
 
 // g_tls_certificate_verify
-// container is not nil, container is TlsCertificate
-// is method
+//
+// [ identity ] trans: nothing
+//
+// [ trusted_ca ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TlsCertificate) Verify(identity ISocketConnectable, trusted_ca ITlsCertificate) (result TlsCertificateFlags) {
 	iv, err := _I.Get(1437, "TlsCertificate", "verify")
 	if err != nil {
@@ -33422,9 +37800,13 @@ func TlsClientConnectionGetType() gi.GType {
 }
 
 // g_tls_client_connection_new
-// container is not nil, container is TlsClientConnection
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ base_io_stream ] trans: nothing
+//
+// [ server_identity ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func TlsClientConnectionNew1(base_io_stream IIOStream, server_identity ISocketConnectable) (result TlsClientConnection, err error) {
 	iv, err := _I.Get(1438, "TlsClientConnection", "new")
 	if err != nil {
@@ -33451,8 +37833,9 @@ func TlsClientConnectionNew1(base_io_stream IIOStream, server_identity ISocketCo
 }
 
 // g_tls_client_connection_copy_session_state
-// container is not nil, container is TlsClientConnection
-// is method
+//
+// [ source ] trans: nothing
+//
 func (v *TlsClientConnectionIfc) CopySessionState(source ITlsClientConnection) {
 	iv, err := _I.Get(1439, "TlsClientConnection", "copy_session_state")
 	if err != nil {
@@ -33470,8 +37853,9 @@ func (v *TlsClientConnectionIfc) CopySessionState(source ITlsClientConnection) {
 }
 
 // g_tls_client_connection_get_accepted_cas
-// container is not nil, container is TlsClientConnection
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *TlsClientConnectionIfc) GetAcceptedCas() (result glib.List) {
 	iv, err := _I.Get(1440, "TlsClientConnection", "get_accepted_cas")
 	if err != nil {
@@ -33487,8 +37871,9 @@ func (v *TlsClientConnectionIfc) GetAcceptedCas() (result glib.List) {
 }
 
 // g_tls_client_connection_get_server_identity
-// container is not nil, container is TlsClientConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsClientConnectionIfc) GetServerIdentity() (result SocketConnectable) {
 	iv, err := _I.Get(1441, "TlsClientConnection", "get_server_identity")
 	if err != nil {
@@ -33504,8 +37889,9 @@ func (v *TlsClientConnectionIfc) GetServerIdentity() (result SocketConnectable) 
 }
 
 // g_tls_client_connection_get_use_ssl3
-// container is not nil, container is TlsClientConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsClientConnectionIfc) GetUseSsl3() (result bool) {
 	iv, err := _I.Get(1442, "TlsClientConnection", "get_use_ssl3")
 	if err != nil {
@@ -33521,8 +37907,9 @@ func (v *TlsClientConnectionIfc) GetUseSsl3() (result bool) {
 }
 
 // g_tls_client_connection_get_validation_flags
-// container is not nil, container is TlsClientConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *TlsClientConnectionIfc) GetValidationFlags() (result TlsCertificateFlags) {
 	iv, err := _I.Get(1443, "TlsClientConnection", "get_validation_flags")
 	if err != nil {
@@ -33538,8 +37925,9 @@ func (v *TlsClientConnectionIfc) GetValidationFlags() (result TlsCertificateFlag
 }
 
 // g_tls_client_connection_set_server_identity
-// container is not nil, container is TlsClientConnection
-// is method
+//
+// [ identity ] trans: nothing
+//
 func (v *TlsClientConnectionIfc) SetServerIdentity(identity ISocketConnectable) {
 	iv, err := _I.Get(1444, "TlsClientConnection", "set_server_identity")
 	if err != nil {
@@ -33557,8 +37945,9 @@ func (v *TlsClientConnectionIfc) SetServerIdentity(identity ISocketConnectable) 
 }
 
 // g_tls_client_connection_set_use_ssl3
-// container is not nil, container is TlsClientConnection
-// is method
+//
+// [ use_ssl3 ] trans: nothing
+//
 func (v *TlsClientConnectionIfc) SetUseSsl3(use_ssl3 bool) {
 	iv, err := _I.Get(1445, "TlsClientConnection", "set_use_ssl3")
 	if err != nil {
@@ -33572,8 +37961,9 @@ func (v *TlsClientConnectionIfc) SetUseSsl3(use_ssl3 bool) {
 }
 
 // g_tls_client_connection_set_validation_flags
-// container is not nil, container is TlsClientConnection
-// is method
+//
+// [ flags ] trans: nothing
+//
 func (v *TlsClientConnectionIfc) SetValidationFlags(flags TlsCertificateFlags) {
 	iv, err := _I.Get(1446, "TlsClientConnection", "set_validation_flags")
 	if err != nil {
@@ -33603,8 +37993,13 @@ func TlsConnectionGetType() gi.GType {
 }
 
 // g_tls_connection_emit_accept_certificate
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ peer_cert ] trans: nothing
+//
+// [ errors ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TlsConnection) EmitAcceptCertificate(peer_cert ITlsCertificate, errors TlsCertificateFlags) (result bool) {
 	iv, err := _I.Get(1447, "TlsConnection", "emit_accept_certificate")
 	if err != nil {
@@ -33626,8 +38021,9 @@ func (v TlsConnection) EmitAcceptCertificate(peer_cert ITlsCertificate, errors T
 }
 
 // g_tls_connection_get_certificate
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsConnection) GetCertificate() (result TlsCertificate) {
 	iv, err := _I.Get(1448, "TlsConnection", "get_certificate")
 	if err != nil {
@@ -33643,8 +38039,9 @@ func (v TlsConnection) GetCertificate() (result TlsCertificate) {
 }
 
 // g_tls_connection_get_database
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsConnection) GetDatabase() (result TlsDatabase) {
 	iv, err := _I.Get(1449, "TlsConnection", "get_database")
 	if err != nil {
@@ -33660,8 +38057,9 @@ func (v TlsConnection) GetDatabase() (result TlsDatabase) {
 }
 
 // g_tls_connection_get_interaction
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsConnection) GetInteraction() (result TlsInteraction) {
 	iv, err := _I.Get(1450, "TlsConnection", "get_interaction")
 	if err != nil {
@@ -33677,8 +38075,9 @@ func (v TlsConnection) GetInteraction() (result TlsInteraction) {
 }
 
 // g_tls_connection_get_peer_certificate
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsConnection) GetPeerCertificate() (result TlsCertificate) {
 	iv, err := _I.Get(1451, "TlsConnection", "get_peer_certificate")
 	if err != nil {
@@ -33694,8 +38093,9 @@ func (v TlsConnection) GetPeerCertificate() (result TlsCertificate) {
 }
 
 // g_tls_connection_get_peer_certificate_errors
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsConnection) GetPeerCertificateErrors() (result TlsCertificateFlags) {
 	iv, err := _I.Get(1452, "TlsConnection", "get_peer_certificate_errors")
 	if err != nil {
@@ -33711,8 +38111,9 @@ func (v TlsConnection) GetPeerCertificateErrors() (result TlsCertificateFlags) {
 }
 
 // g_tls_connection_get_rehandshake_mode
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsConnection) GetRehandshakeMode() (result TlsRehandshakeModeEnum) {
 	iv, err := _I.Get(1453, "TlsConnection", "get_rehandshake_mode")
 	if err != nil {
@@ -33728,8 +38129,9 @@ func (v TlsConnection) GetRehandshakeMode() (result TlsRehandshakeModeEnum) {
 }
 
 // g_tls_connection_get_require_close_notify
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsConnection) GetRequireCloseNotify() (result bool) {
 	iv, err := _I.Get(1454, "TlsConnection", "get_require_close_notify")
 	if err != nil {
@@ -33745,8 +38147,9 @@ func (v TlsConnection) GetRequireCloseNotify() (result bool) {
 }
 
 // g_tls_connection_get_use_system_certdb
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsConnection) GetUseSystemCertdb() (result bool) {
 	iv, err := _I.Get(1455, "TlsConnection", "get_use_system_certdb")
 	if err != nil {
@@ -33762,8 +38165,11 @@ func (v TlsConnection) GetUseSystemCertdb() (result bool) {
 }
 
 // g_tls_connection_handshake
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TlsConnection) Handshake(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1456, "TlsConnection", "handshake")
 	if err != nil {
@@ -33786,8 +38192,15 @@ func (v TlsConnection) Handshake(cancellable ICancellable) (result bool, err err
 }
 
 // g_tls_connection_handshake_async
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v TlsConnection) HandshakeAsync(io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1457, "TlsConnection", "handshake_async")
 	if err != nil {
@@ -33808,8 +38221,11 @@ func (v TlsConnection) HandshakeAsync(io_priority int32, cancellable ICancellabl
 }
 
 // g_tls_connection_handshake_finish
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v TlsConnection) HandshakeFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1458, "TlsConnection", "handshake_finish")
 	if err != nil {
@@ -33832,8 +38248,9 @@ func (v TlsConnection) HandshakeFinish(result IAsyncResult) (result1 bool, err e
 }
 
 // g_tls_connection_set_certificate
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ certificate ] trans: nothing
+//
 func (v TlsConnection) SetCertificate(certificate ITlsCertificate) {
 	iv, err := _I.Get(1459, "TlsConnection", "set_certificate")
 	if err != nil {
@@ -33851,8 +38268,9 @@ func (v TlsConnection) SetCertificate(certificate ITlsCertificate) {
 }
 
 // g_tls_connection_set_database
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ database ] trans: nothing
+//
 func (v TlsConnection) SetDatabase(database ITlsDatabase) {
 	iv, err := _I.Get(1460, "TlsConnection", "set_database")
 	if err != nil {
@@ -33870,8 +38288,9 @@ func (v TlsConnection) SetDatabase(database ITlsDatabase) {
 }
 
 // g_tls_connection_set_interaction
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ interaction ] trans: nothing
+//
 func (v TlsConnection) SetInteraction(interaction ITlsInteraction) {
 	iv, err := _I.Get(1461, "TlsConnection", "set_interaction")
 	if err != nil {
@@ -33889,8 +38308,9 @@ func (v TlsConnection) SetInteraction(interaction ITlsInteraction) {
 }
 
 // g_tls_connection_set_rehandshake_mode
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ mode ] trans: nothing
+//
 func (v TlsConnection) SetRehandshakeMode(mode TlsRehandshakeModeEnum) {
 	iv, err := _I.Get(1462, "TlsConnection", "set_rehandshake_mode")
 	if err != nil {
@@ -33904,8 +38324,9 @@ func (v TlsConnection) SetRehandshakeMode(mode TlsRehandshakeModeEnum) {
 }
 
 // g_tls_connection_set_require_close_notify
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ require_close_notify ] trans: nothing
+//
 func (v TlsConnection) SetRequireCloseNotify(require_close_notify bool) {
 	iv, err := _I.Get(1463, "TlsConnection", "set_require_close_notify")
 	if err != nil {
@@ -33919,8 +38340,9 @@ func (v TlsConnection) SetRequireCloseNotify(require_close_notify bool) {
 }
 
 // g_tls_connection_set_use_system_certdb
-// container is not nil, container is TlsConnection
-// is method
+//
+// [ use_system_certdb ] trans: nothing
+//
 func (v TlsConnection) SetUseSystemCertdb(use_system_certdb bool) {
 	iv, err := _I.Get(1464, "TlsConnection", "set_use_system_certdb")
 	if err != nil {
@@ -33960,8 +38382,11 @@ func TlsDatabaseGetType() gi.GType {
 }
 
 // g_tls_database_create_certificate_handle
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ certificate ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v TlsDatabase) CreateCertificateHandle(certificate ITlsCertificate) (result string) {
 	iv, err := _I.Get(1465, "TlsDatabase", "create_certificate_handle")
 	if err != nil {
@@ -33982,8 +38407,17 @@ func (v TlsDatabase) CreateCertificateHandle(certificate ITlsCertificate) (resul
 }
 
 // g_tls_database_lookup_certificate_for_handle
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ handle ] trans: nothing
+//
+// [ interaction ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v TlsDatabase) LookupCertificateForHandle(handle string, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable) (result TlsCertificate, err error) {
 	iv, err := _I.Get(1466, "TlsDatabase", "lookup_certificate_for_handle")
 	if err != nil {
@@ -34015,8 +38449,19 @@ func (v TlsDatabase) LookupCertificateForHandle(handle string, interaction ITlsI
 }
 
 // g_tls_database_lookup_certificate_for_handle_async
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ handle ] trans: nothing
+//
+// [ interaction ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v TlsDatabase) LookupCertificateForHandleAsync(handle string, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1467, "TlsDatabase", "lookup_certificate_for_handle_async")
 	if err != nil {
@@ -34045,8 +38490,11 @@ func (v TlsDatabase) LookupCertificateForHandleAsync(handle string, interaction 
 }
 
 // g_tls_database_lookup_certificate_for_handle_finish
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v TlsDatabase) LookupCertificateForHandleFinish(result IAsyncResult) (result1 TlsCertificate, err error) {
 	iv, err := _I.Get(1468, "TlsDatabase", "lookup_certificate_for_handle_finish")
 	if err != nil {
@@ -34069,8 +38517,17 @@ func (v TlsDatabase) LookupCertificateForHandleFinish(result IAsyncResult) (resu
 }
 
 // g_tls_database_lookup_certificate_issuer
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ certificate ] trans: nothing
+//
+// [ interaction ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v TlsDatabase) LookupCertificateIssuer(certificate ITlsCertificate, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable) (result TlsCertificate, err error) {
 	iv, err := _I.Get(1469, "TlsDatabase", "lookup_certificate_issuer")
 	if err != nil {
@@ -34104,8 +38561,19 @@ func (v TlsDatabase) LookupCertificateIssuer(certificate ITlsCertificate, intera
 }
 
 // g_tls_database_lookup_certificate_issuer_async
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ certificate ] trans: nothing
+//
+// [ interaction ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v TlsDatabase) LookupCertificateIssuerAsync(certificate ITlsCertificate, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1470, "TlsDatabase", "lookup_certificate_issuer_async")
 	if err != nil {
@@ -34136,8 +38604,11 @@ func (v TlsDatabase) LookupCertificateIssuerAsync(certificate ITlsCertificate, i
 }
 
 // g_tls_database_lookup_certificate_issuer_finish
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v TlsDatabase) LookupCertificateIssuerFinish(result IAsyncResult) (result1 TlsCertificate, err error) {
 	iv, err := _I.Get(1471, "TlsDatabase", "lookup_certificate_issuer_finish")
 	if err != nil {
@@ -34160,8 +38631,17 @@ func (v TlsDatabase) LookupCertificateIssuerFinish(result IAsyncResult) (result1
 }
 
 // g_tls_database_lookup_certificates_issued_by
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ issuer_raw_dn ] trans: nothing
+//
+// [ interaction ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v TlsDatabase) LookupCertificatesIssuedBy(issuer_raw_dn glib.ByteArray, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable) (result glib.List, err error) {
 	iv, err := _I.Get(1472, "TlsDatabase", "lookup_certificates_issued_by")
 	if err != nil {
@@ -34191,8 +38671,19 @@ func (v TlsDatabase) LookupCertificatesIssuedBy(issuer_raw_dn glib.ByteArray, in
 }
 
 // g_tls_database_lookup_certificates_issued_by_async
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ issuer_raw_dn ] trans: nothing
+//
+// [ interaction ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v TlsDatabase) LookupCertificatesIssuedByAsync(issuer_raw_dn glib.ByteArray, interaction ITlsInteraction, flags TlsDatabaseLookupFlagsEnum, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1473, "TlsDatabase", "lookup_certificates_issued_by_async")
 	if err != nil {
@@ -34219,8 +38710,11 @@ func (v TlsDatabase) LookupCertificatesIssuedByAsync(issuer_raw_dn glib.ByteArra
 }
 
 // g_tls_database_lookup_certificates_issued_by_finish
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v TlsDatabase) LookupCertificatesIssuedByFinish(result IAsyncResult) (result1 glib.List, err error) {
 	iv, err := _I.Get(1474, "TlsDatabase", "lookup_certificates_issued_by_finish")
 	if err != nil {
@@ -34243,8 +38737,21 @@ func (v TlsDatabase) LookupCertificatesIssuedByFinish(result IAsyncResult) (resu
 }
 
 // g_tls_database_verify_chain
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ chain ] trans: nothing
+//
+// [ purpose ] trans: nothing
+//
+// [ identity ] trans: nothing
+//
+// [ interaction ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TlsDatabase) VerifyChain(chain ITlsCertificate, purpose string, identity ISocketConnectable, interaction ITlsInteraction, flags TlsDatabaseVerifyFlags, cancellable ICancellable) (result TlsCertificateFlags, err error) {
 	iv, err := _I.Get(1475, "TlsDatabase", "verify_chain")
 	if err != nil {
@@ -34286,8 +38793,23 @@ func (v TlsDatabase) VerifyChain(chain ITlsCertificate, purpose string, identity
 }
 
 // g_tls_database_verify_chain_async
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ chain ] trans: nothing
+//
+// [ purpose ] trans: nothing
+//
+// [ identity ] trans: nothing
+//
+// [ interaction ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v TlsDatabase) VerifyChainAsync(chain ITlsCertificate, purpose string, identity ISocketConnectable, interaction ITlsInteraction, flags TlsDatabaseVerifyFlags, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1476, "TlsDatabase", "verify_chain_async")
 	if err != nil {
@@ -34326,8 +38848,11 @@ func (v TlsDatabase) VerifyChainAsync(chain ITlsCertificate, purpose string, ide
 }
 
 // g_tls_database_verify_chain_finish
-// container is not nil, container is TlsDatabase
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v TlsDatabase) VerifyChainFinish(result IAsyncResult) (result1 TlsCertificateFlags, err error) {
 	iv, err := _I.Get(1477, "TlsDatabase", "verify_chain_finish")
 	if err != nil {
@@ -34418,9 +38943,11 @@ func TlsFileDatabaseGetType() gi.GType {
 }
 
 // g_tls_file_database_new
-// container is not nil, container is TlsFileDatabase
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ anchors ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func TlsFileDatabaseNew1(anchors string) (result TlsFileDatabase, err error) {
 	iv, err := _I.Get(1478, "TlsFileDatabase", "new")
 	if err != nil {
@@ -34456,8 +38983,13 @@ func TlsInteractionGetType() gi.GType {
 }
 
 // g_tls_interaction_ask_password
-// container is not nil, container is TlsInteraction
-// is method
+//
+// [ password ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TlsInteraction) AskPassword(password ITlsPassword, cancellable ICancellable) (result TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1479, "TlsInteraction", "ask_password")
 	if err != nil {
@@ -34485,8 +39017,15 @@ func (v TlsInteraction) AskPassword(password ITlsPassword, cancellable ICancella
 }
 
 // g_tls_interaction_ask_password_async
-// container is not nil, container is TlsInteraction
-// is method
+//
+// [ password ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v TlsInteraction) AskPasswordAsync(password ITlsPassword, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1480, "TlsInteraction", "ask_password_async")
 	if err != nil {
@@ -34511,8 +39050,11 @@ func (v TlsInteraction) AskPasswordAsync(password ITlsPassword, cancellable ICan
 }
 
 // g_tls_interaction_ask_password_finish
-// container is not nil, container is TlsInteraction
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v TlsInteraction) AskPasswordFinish(result IAsyncResult) (result1 TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1481, "TlsInteraction", "ask_password_finish")
 	if err != nil {
@@ -34535,8 +39077,13 @@ func (v TlsInteraction) AskPasswordFinish(result IAsyncResult) (result1 TlsInter
 }
 
 // g_tls_interaction_invoke_ask_password
-// container is not nil, container is TlsInteraction
-// is method
+//
+// [ password ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TlsInteraction) InvokeAskPassword(password ITlsPassword, cancellable ICancellable) (result TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1482, "TlsInteraction", "invoke_ask_password")
 	if err != nil {
@@ -34564,8 +39111,15 @@ func (v TlsInteraction) InvokeAskPassword(password ITlsPassword, cancellable ICa
 }
 
 // g_tls_interaction_invoke_request_certificate
-// container is not nil, container is TlsInteraction
-// is method
+//
+// [ connection ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TlsInteraction) InvokeRequestCertificate(connection ITlsConnection, flags TlsCertificateRequestFlagsEnum, cancellable ICancellable) (result TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1483, "TlsInteraction", "invoke_request_certificate")
 	if err != nil {
@@ -34594,8 +39148,15 @@ func (v TlsInteraction) InvokeRequestCertificate(connection ITlsConnection, flag
 }
 
 // g_tls_interaction_request_certificate
-// container is not nil, container is TlsInteraction
-// is method
+//
+// [ connection ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TlsInteraction) RequestCertificate(connection ITlsConnection, flags TlsCertificateRequestFlagsEnum, cancellable ICancellable) (result TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1484, "TlsInteraction", "request_certificate")
 	if err != nil {
@@ -34624,8 +39185,17 @@ func (v TlsInteraction) RequestCertificate(connection ITlsConnection, flags TlsC
 }
 
 // g_tls_interaction_request_certificate_async
-// container is not nil, container is TlsInteraction
-// is method
+//
+// [ connection ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v TlsInteraction) RequestCertificateAsync(connection ITlsConnection, flags TlsCertificateRequestFlagsEnum, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1485, "TlsInteraction", "request_certificate_async")
 	if err != nil {
@@ -34651,8 +39221,11 @@ func (v TlsInteraction) RequestCertificateAsync(connection ITlsConnection, flags
 }
 
 // g_tls_interaction_request_certificate_finish
-// container is not nil, container is TlsInteraction
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v TlsInteraction) RequestCertificateFinish(result IAsyncResult) (result1 TlsInteractionResultEnum, err error) {
 	iv, err := _I.Get(1486, "TlsInteraction", "request_certificate_finish")
 	if err != nil {
@@ -34715,8 +39288,13 @@ func TlsPasswordGetType() gi.GType {
 }
 
 // g_tls_password_new
-// container is not nil, container is TlsPassword
-// is constructor
+//
+// [ flags ] trans: nothing
+//
+// [ description ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTlsPassword(flags TlsPasswordFlags, description string) (result TlsPassword) {
 	iv, err := _I.Get(1487, "TlsPassword", "new")
 	if err != nil {
@@ -34735,8 +39313,9 @@ func NewTlsPassword(flags TlsPasswordFlags, description string) (result TlsPassw
 }
 
 // g_tls_password_get_description
-// container is not nil, container is TlsPassword
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsPassword) GetDescription() (result string) {
 	iv, err := _I.Get(1488, "TlsPassword", "get_description")
 	if err != nil {
@@ -34747,13 +39326,14 @@ func (v TlsPassword) GetDescription() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_tls_password_get_flags
-// container is not nil, container is TlsPassword
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsPassword) GetFlags() (result TlsPasswordFlags) {
 	iv, err := _I.Get(1489, "TlsPassword", "get_flags")
 	if err != nil {
@@ -34769,8 +39349,11 @@ func (v TlsPassword) GetFlags() (result TlsPasswordFlags) {
 }
 
 // g_tls_password_get_value
-// container is not nil, container is TlsPassword
-// is method
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TlsPassword) GetValue(length uint64) (result uint8) {
 	iv, err := _I.Get(1490, "TlsPassword", "get_value")
 	if err != nil {
@@ -34787,8 +39370,9 @@ func (v TlsPassword) GetValue(length uint64) (result uint8) {
 }
 
 // g_tls_password_get_warning
-// container is not nil, container is TlsPassword
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TlsPassword) GetWarning() (result string) {
 	iv, err := _I.Get(1491, "TlsPassword", "get_warning")
 	if err != nil {
@@ -34799,13 +39383,14 @@ func (v TlsPassword) GetWarning() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_tls_password_set_description
-// container is not nil, container is TlsPassword
-// is method
+//
+// [ description ] trans: nothing
+//
 func (v TlsPassword) SetDescription(description string) {
 	iv, err := _I.Get(1492, "TlsPassword", "set_description")
 	if err != nil {
@@ -34821,8 +39406,9 @@ func (v TlsPassword) SetDescription(description string) {
 }
 
 // g_tls_password_set_flags
-// container is not nil, container is TlsPassword
-// is method
+//
+// [ flags ] trans: nothing
+//
 func (v TlsPassword) SetFlags(flags TlsPasswordFlags) {
 	iv, err := _I.Get(1493, "TlsPassword", "set_flags")
 	if err != nil {
@@ -34836,9 +39422,11 @@ func (v TlsPassword) SetFlags(flags TlsPasswordFlags) {
 }
 
 // g_tls_password_set_value
-// container is not nil, container is TlsPassword
-// is method
-// arg 0 value lenArgIdx 1
+//
+// [ value ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v TlsPassword) SetValue(value gi.Uint8Array, length int64) {
 	iv, err := _I.Get(1494, "TlsPassword", "set_value")
 	if err != nil {
@@ -34853,9 +39441,13 @@ func (v TlsPassword) SetValue(value gi.Uint8Array, length int64) {
 }
 
 // g_tls_password_set_value_full
-// container is not nil, container is TlsPassword
-// is method
-// arg 0 value lenArgIdx 1
+//
+// [ value ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ destroy ] trans: nothing
+//
 func (v TlsPassword) SetValueFull(value gi.Uint8Array, length int64, destroy int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1495, "TlsPassword", "set_value_full")
 	if err != nil {
@@ -34871,8 +39463,9 @@ func (v TlsPassword) SetValueFull(value gi.Uint8Array, length int64, destroy int
 }
 
 // g_tls_password_set_warning
-// container is not nil, container is TlsPassword
-// is method
+//
+// [ warning ] trans: nothing
+//
 func (v TlsPassword) SetWarning(warning string) {
 	iv, err := _I.Get(1496, "TlsPassword", "set_warning")
 	if err != nil {
@@ -34942,9 +39535,13 @@ func TlsServerConnectionGetType() gi.GType {
 }
 
 // g_tls_server_connection_new
-// container is not nil, container is TlsServerConnection
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ base_io_stream ] trans: nothing
+//
+// [ certificate ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func TlsServerConnectionNew1(base_io_stream IIOStream, certificate ITlsCertificate) (result TlsServerConnection, err error) {
 	iv, err := _I.Get(1497, "TlsServerConnection", "new")
 	if err != nil {
@@ -34987,8 +39584,11 @@ func UnixConnectionGetType() gi.GType {
 }
 
 // g_unix_connection_receive_credentials
-// container is not nil, container is UnixConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v UnixConnection) ReceiveCredentials(cancellable ICancellable) (result Credentials, err error) {
 	iv, err := _I.Get(1498, "UnixConnection", "receive_credentials")
 	if err != nil {
@@ -35011,8 +39611,13 @@ func (v UnixConnection) ReceiveCredentials(cancellable ICancellable) (result Cre
 }
 
 // g_unix_connection_receive_credentials_async
-// container is not nil, container is UnixConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v UnixConnection) ReceiveCredentialsAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1499, "UnixConnection", "receive_credentials_async")
 	if err != nil {
@@ -35032,8 +39637,11 @@ func (v UnixConnection) ReceiveCredentialsAsync(cancellable ICancellable, callba
 }
 
 // g_unix_connection_receive_credentials_finish
-// container is not nil, container is UnixConnection
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: everything
+//
 func (v UnixConnection) ReceiveCredentialsFinish(result IAsyncResult) (result1 Credentials, err error) {
 	iv, err := _I.Get(1500, "UnixConnection", "receive_credentials_finish")
 	if err != nil {
@@ -35056,8 +39664,11 @@ func (v UnixConnection) ReceiveCredentialsFinish(result IAsyncResult) (result1 C
 }
 
 // g_unix_connection_receive_fd
-// container is not nil, container is UnixConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v UnixConnection) ReceiveFd(cancellable ICancellable) (result int32, err error) {
 	iv, err := _I.Get(1501, "UnixConnection", "receive_fd")
 	if err != nil {
@@ -35080,8 +39691,11 @@ func (v UnixConnection) ReceiveFd(cancellable ICancellable) (result int32, err e
 }
 
 // g_unix_connection_send_credentials
-// container is not nil, container is UnixConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v UnixConnection) SendCredentials(cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1502, "UnixConnection", "send_credentials")
 	if err != nil {
@@ -35104,8 +39718,13 @@ func (v UnixConnection) SendCredentials(cancellable ICancellable) (result bool, 
 }
 
 // g_unix_connection_send_credentials_async
-// container is not nil, container is UnixConnection
-// is method
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v UnixConnection) SendCredentialsAsync(cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1503, "UnixConnection", "send_credentials_async")
 	if err != nil {
@@ -35125,8 +39744,11 @@ func (v UnixConnection) SendCredentialsAsync(cancellable ICancellable, callback 
 }
 
 // g_unix_connection_send_credentials_finish
-// container is not nil, container is UnixConnection
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v UnixConnection) SendCredentialsFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1504, "UnixConnection", "send_credentials_finish")
 	if err != nil {
@@ -35149,8 +39771,13 @@ func (v UnixConnection) SendCredentialsFinish(result IAsyncResult) (result1 bool
 }
 
 // g_unix_connection_send_fd
-// container is not nil, container is UnixConnection
-// is method
+//
+// [ fd ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v UnixConnection) SendFd(fd int32, cancellable ICancellable) (result bool, err error) {
 	iv, err := _I.Get(1505, "UnixConnection", "send_fd")
 	if err != nil {
@@ -35200,8 +39827,9 @@ func UnixCredentialsMessageGetType() gi.GType {
 }
 
 // g_unix_credentials_message_new
-// container is not nil, container is UnixCredentialsMessage
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewUnixCredentialsMessage() (result UnixCredentialsMessage) {
 	iv, err := _I.Get(1506, "UnixCredentialsMessage", "new")
 	if err != nil {
@@ -35215,8 +39843,11 @@ func NewUnixCredentialsMessage() (result UnixCredentialsMessage) {
 }
 
 // g_unix_credentials_message_new_with_credentials
-// container is not nil, container is UnixCredentialsMessage
-// is constructor
+//
+// [ credentials ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewUnixCredentialsMessageWithCredentials(credentials ICredentials) (result UnixCredentialsMessage) {
 	iv, err := _I.Get(1507, "UnixCredentialsMessage", "new_with_credentials")
 	if err != nil {
@@ -35236,8 +39867,9 @@ func NewUnixCredentialsMessageWithCredentials(credentials ICredentials) (result 
 }
 
 // g_unix_credentials_message_get_credentials
-// container is not nil, container is UnixCredentialsMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixCredentialsMessage) GetCredentials() (result Credentials) {
 	iv, err := _I.Get(1509, "UnixCredentialsMessage", "get_credentials")
 	if err != nil {
@@ -35279,8 +39911,9 @@ func UnixFDListGetType() gi.GType {
 }
 
 // g_unix_fd_list_new
-// container is not nil, container is UnixFDList
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewUnixFDList() (result UnixFDList) {
 	iv, err := _I.Get(1510, "UnixFDList", "new")
 	if err != nil {
@@ -35294,9 +39927,13 @@ func NewUnixFDList() (result UnixFDList) {
 }
 
 // g_unix_fd_list_new_from_array
-// container is not nil, container is UnixFDList
-// is constructor
-// arg 0 fds lenArgIdx 1
+//
+// [ fds ] trans: nothing
+//
+// [ n_fds ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewUnixFDListFromArray(fds gi.Int32Array, n_fds int32) (result UnixFDList) {
 	iv, err := _I.Get(1511, "UnixFDList", "new_from_array")
 	if err != nil {
@@ -35313,8 +39950,11 @@ func NewUnixFDListFromArray(fds gi.Int32Array, n_fds int32) (result UnixFDList) 
 }
 
 // g_unix_fd_list_append
-// container is not nil, container is UnixFDList
-// is method
+//
+// [ fd ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v UnixFDList) Append(fd int32) (result int32, err error) {
 	iv, err := _I.Get(1512, "UnixFDList", "append")
 	if err != nil {
@@ -35333,8 +39973,11 @@ func (v UnixFDList) Append(fd int32) (result int32, err error) {
 }
 
 // g_unix_fd_list_get
-// container is not nil, container is UnixFDList
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v UnixFDList) Get(index_ int32) (result int32, err error) {
 	iv, err := _I.Get(1513, "UnixFDList", "get")
 	if err != nil {
@@ -35353,8 +39996,9 @@ func (v UnixFDList) Get(index_ int32) (result int32, err error) {
 }
 
 // g_unix_fd_list_get_length
-// container is not nil, container is UnixFDList
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixFDList) GetLength() (result int32) {
 	iv, err := _I.Get(1514, "UnixFDList", "get_length")
 	if err != nil {
@@ -35370,9 +40014,11 @@ func (v UnixFDList) GetLength() (result int32) {
 }
 
 // g_unix_fd_list_peek_fds
-// container is not nil, container is UnixFDList
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v UnixFDList) PeekFds() (result gi.Int32Array) {
 	iv, err := _I.Get(1515, "UnixFDList", "peek_fds")
 	if err != nil {
@@ -35393,9 +40039,11 @@ func (v UnixFDList) PeekFds() (result gi.Int32Array) {
 }
 
 // g_unix_fd_list_steal_fds
-// container is not nil, container is UnixFDList
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v UnixFDList) StealFds() (result gi.Int32Array) {
 	iv, err := _I.Get(1516, "UnixFDList", "steal_fds")
 	if err != nil {
@@ -35442,8 +40090,9 @@ func UnixFDMessageGetType() gi.GType {
 }
 
 // g_unix_fd_message_new
-// container is not nil, container is UnixFDMessage
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewUnixFDMessage() (result UnixFDMessage) {
 	iv, err := _I.Get(1517, "UnixFDMessage", "new")
 	if err != nil {
@@ -35457,8 +40106,11 @@ func NewUnixFDMessage() (result UnixFDMessage) {
 }
 
 // g_unix_fd_message_new_with_fd_list
-// container is not nil, container is UnixFDMessage
-// is constructor
+//
+// [ fd_list ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewUnixFDMessageWithFdList(fd_list IUnixFDList) (result UnixFDMessage) {
 	iv, err := _I.Get(1518, "UnixFDMessage", "new_with_fd_list")
 	if err != nil {
@@ -35478,8 +40130,11 @@ func NewUnixFDMessageWithFdList(fd_list IUnixFDList) (result UnixFDMessage) {
 }
 
 // g_unix_fd_message_append_fd
-// container is not nil, container is UnixFDMessage
-// is method
+//
+// [ fd ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v UnixFDMessage) AppendFd(fd int32) (result bool, err error) {
 	iv, err := _I.Get(1519, "UnixFDMessage", "append_fd")
 	if err != nil {
@@ -35498,8 +40153,9 @@ func (v UnixFDMessage) AppendFd(fd int32) (result bool, err error) {
 }
 
 // g_unix_fd_message_get_fd_list
-// container is not nil, container is UnixFDMessage
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixFDMessage) GetFdList() (result UnixFDList) {
 	iv, err := _I.Get(1520, "UnixFDMessage", "get_fd_list")
 	if err != nil {
@@ -35515,9 +40171,11 @@ func (v UnixFDMessage) GetFdList() (result UnixFDList) {
 }
 
 // g_unix_fd_message_steal_fds
-// container is not nil, container is UnixFDMessage
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v UnixFDMessage) StealFds() (result gi.Int32Array) {
 	iv, err := _I.Get(1521, "UnixFDMessage", "steal_fds")
 	if err != nil {
@@ -35568,8 +40226,13 @@ func UnixInputStreamGetType() gi.GType {
 }
 
 // g_unix_input_stream_new
-// container is not nil, container is UnixInputStream
-// is constructor
+//
+// [ fd ] trans: nothing
+//
+// [ close_fd ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewUnixInputStream(fd int32, close_fd bool) (result UnixInputStream) {
 	iv, err := _I.Get(1522, "UnixInputStream", "new")
 	if err != nil {
@@ -35586,8 +40249,9 @@ func NewUnixInputStream(fd int32, close_fd bool) (result UnixInputStream) {
 }
 
 // g_unix_input_stream_get_close_fd
-// container is not nil, container is UnixInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixInputStream) GetCloseFd() (result bool) {
 	iv, err := _I.Get(1523, "UnixInputStream", "get_close_fd")
 	if err != nil {
@@ -35603,8 +40267,9 @@ func (v UnixInputStream) GetCloseFd() (result bool) {
 }
 
 // g_unix_input_stream_get_fd
-// container is not nil, container is UnixInputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixInputStream) GetFd() (result int32) {
 	iv, err := _I.Get(1524, "UnixInputStream", "get_fd")
 	if err != nil {
@@ -35620,8 +40285,9 @@ func (v UnixInputStream) GetFd() (result int32) {
 }
 
 // g_unix_input_stream_set_close_fd
-// container is not nil, container is UnixInputStream
-// is method
+//
+// [ close_fd ] trans: nothing
+//
 func (v UnixInputStream) SetCloseFd(close_fd bool) {
 	iv, err := _I.Get(1525, "UnixInputStream", "set_close_fd")
 	if err != nil {
@@ -35671,8 +40337,9 @@ func UnixMountMonitorGetType() gi.GType {
 }
 
 // g_unix_mount_monitor_new
-// container is not nil, container is UnixMountMonitor
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewUnixMountMonitor() (result UnixMountMonitor) {
 	iv, err := _I.Get(1526, "UnixMountMonitor", "new")
 	if err != nil {
@@ -35686,8 +40353,9 @@ func NewUnixMountMonitor() (result UnixMountMonitor) {
 }
 
 // g_unix_mount_monitor_set_rate_limit
-// container is not nil, container is UnixMountMonitor
-// is method
+//
+// [ limit_msec ] trans: nothing
+//
 func (v UnixMountMonitor) SetRateLimit(limit_msec int32) {
 	iv, err := _I.Get(1528, "UnixMountMonitor", "set_rate_limit")
 	if err != nil {
@@ -35712,8 +40380,11 @@ func UnixMountPointGetType() gi.GType {
 }
 
 // g_unix_mount_point_compare
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ mount2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v UnixMountPoint) Compare(mount2 UnixMountPoint) (result int32) {
 	iv, err := _I.Get(1529, "UnixMountPoint", "compare")
 	if err != nil {
@@ -35730,8 +40401,9 @@ func (v UnixMountPoint) Compare(mount2 UnixMountPoint) (result int32) {
 }
 
 // g_unix_mount_point_copy
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: everything
+//
 func (v UnixMountPoint) Copy() (result UnixMountPoint) {
 	iv, err := _I.Get(1530, "UnixMountPoint", "copy")
 	if err != nil {
@@ -35747,8 +40419,7 @@ func (v UnixMountPoint) Copy() (result UnixMountPoint) {
 }
 
 // g_unix_mount_point_free
-// container is not nil, container is UnixMountPoint
-// is method
+//
 func (v UnixMountPoint) Free() {
 	iv, err := _I.Get(1531, "UnixMountPoint", "free")
 	if err != nil {
@@ -35761,8 +40432,9 @@ func (v UnixMountPoint) Free() {
 }
 
 // g_unix_mount_point_get_device_path
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixMountPoint) GetDevicePath() (result string) {
 	iv, err := _I.Get(1532, "UnixMountPoint", "get_device_path")
 	if err != nil {
@@ -35773,13 +40445,14 @@ func (v UnixMountPoint) GetDevicePath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_unix_mount_point_get_fs_type
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixMountPoint) GetFsType() (result string) {
 	iv, err := _I.Get(1533, "UnixMountPoint", "get_fs_type")
 	if err != nil {
@@ -35790,13 +40463,14 @@ func (v UnixMountPoint) GetFsType() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_unix_mount_point_get_mount_path
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixMountPoint) GetMountPath() (result string) {
 	iv, err := _I.Get(1534, "UnixMountPoint", "get_mount_path")
 	if err != nil {
@@ -35807,13 +40481,14 @@ func (v UnixMountPoint) GetMountPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_unix_mount_point_get_options
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixMountPoint) GetOptions() (result string) {
 	iv, err := _I.Get(1535, "UnixMountPoint", "get_options")
 	if err != nil {
@@ -35824,13 +40499,14 @@ func (v UnixMountPoint) GetOptions() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_unix_mount_point_guess_can_eject
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixMountPoint) GuessCanEject() (result bool) {
 	iv, err := _I.Get(1536, "UnixMountPoint", "guess_can_eject")
 	if err != nil {
@@ -35846,8 +40522,9 @@ func (v UnixMountPoint) GuessCanEject() (result bool) {
 }
 
 // g_unix_mount_point_guess_icon
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: everything
+//
 func (v UnixMountPoint) GuessIcon() (result Icon) {
 	iv, err := _I.Get(1537, "UnixMountPoint", "guess_icon")
 	if err != nil {
@@ -35863,8 +40540,9 @@ func (v UnixMountPoint) GuessIcon() (result Icon) {
 }
 
 // g_unix_mount_point_guess_name
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: everything
+//
 func (v UnixMountPoint) GuessName() (result string) {
 	iv, err := _I.Get(1538, "UnixMountPoint", "guess_name")
 	if err != nil {
@@ -35880,8 +40558,9 @@ func (v UnixMountPoint) GuessName() (result string) {
 }
 
 // g_unix_mount_point_guess_symbolic_icon
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: everything
+//
 func (v UnixMountPoint) GuessSymbolicIcon() (result Icon) {
 	iv, err := _I.Get(1539, "UnixMountPoint", "guess_symbolic_icon")
 	if err != nil {
@@ -35897,8 +40576,9 @@ func (v UnixMountPoint) GuessSymbolicIcon() (result Icon) {
 }
 
 // g_unix_mount_point_is_loopback
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixMountPoint) IsLoopback() (result bool) {
 	iv, err := _I.Get(1540, "UnixMountPoint", "is_loopback")
 	if err != nil {
@@ -35914,8 +40594,9 @@ func (v UnixMountPoint) IsLoopback() (result bool) {
 }
 
 // g_unix_mount_point_is_readonly
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixMountPoint) IsReadonly() (result bool) {
 	iv, err := _I.Get(1541, "UnixMountPoint", "is_readonly")
 	if err != nil {
@@ -35931,8 +40612,9 @@ func (v UnixMountPoint) IsReadonly() (result bool) {
 }
 
 // g_unix_mount_point_is_user_mountable
-// container is not nil, container is UnixMountPoint
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixMountPoint) IsUserMountable() (result bool) {
 	iv, err := _I.Get(1542, "UnixMountPoint", "is_user_mountable")
 	if err != nil {
@@ -35967,8 +40649,13 @@ func UnixOutputStreamGetType() gi.GType {
 }
 
 // g_unix_output_stream_new
-// container is not nil, container is UnixOutputStream
-// is constructor
+//
+// [ fd ] trans: nothing
+//
+// [ close_fd ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewUnixOutputStream(fd int32, close_fd bool) (result UnixOutputStream) {
 	iv, err := _I.Get(1543, "UnixOutputStream", "new")
 	if err != nil {
@@ -35985,8 +40672,9 @@ func NewUnixOutputStream(fd int32, close_fd bool) (result UnixOutputStream) {
 }
 
 // g_unix_output_stream_get_close_fd
-// container is not nil, container is UnixOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixOutputStream) GetCloseFd() (result bool) {
 	iv, err := _I.Get(1544, "UnixOutputStream", "get_close_fd")
 	if err != nil {
@@ -36002,8 +40690,9 @@ func (v UnixOutputStream) GetCloseFd() (result bool) {
 }
 
 // g_unix_output_stream_get_fd
-// container is not nil, container is UnixOutputStream
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixOutputStream) GetFd() (result int32) {
 	iv, err := _I.Get(1545, "UnixOutputStream", "get_fd")
 	if err != nil {
@@ -36019,8 +40708,9 @@ func (v UnixOutputStream) GetFd() (result int32) {
 }
 
 // g_unix_output_stream_set_close_fd
-// container is not nil, container is UnixOutputStream
-// is method
+//
+// [ close_fd ] trans: nothing
+//
 func (v UnixOutputStream) SetCloseFd(close_fd bool) {
 	iv, err := _I.Get(1546, "UnixOutputStream", "set_close_fd")
 	if err != nil {
@@ -36062,8 +40752,11 @@ func UnixSocketAddressGetType() gi.GType {
 }
 
 // g_unix_socket_address_new
-// container is not nil, container is UnixSocketAddress
-// is constructor
+//
+// [ path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewUnixSocketAddress(path string) (result UnixSocketAddress) {
 	iv, err := _I.Get(1547, "UnixSocketAddress", "new")
 	if err != nil {
@@ -36081,9 +40774,13 @@ func NewUnixSocketAddress(path string) (result UnixSocketAddress) {
 }
 
 // g_unix_socket_address_new_abstract
-// container is not nil, container is UnixSocketAddress
-// is constructor
-// arg 0 path lenArgIdx 1
+//
+// [ path ] trans: nothing
+//
+// [ path_len ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewUnixSocketAddressAbstract(path gi.Int8Array, path_len int32) (result UnixSocketAddress) {
 	iv, err := _I.Get(1548, "UnixSocketAddress", "new_abstract")
 	if err != nil {
@@ -36100,9 +40797,15 @@ func NewUnixSocketAddressAbstract(path gi.Int8Array, path_len int32) (result Uni
 }
 
 // g_unix_socket_address_new_with_type
-// container is not nil, container is UnixSocketAddress
-// is constructor
-// arg 0 path lenArgIdx 1
+//
+// [ path ] trans: nothing
+//
+// [ path_len ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewUnixSocketAddressWithType(path gi.Int8Array, path_len int32, type1 UnixSocketAddressTypeEnum) (result UnixSocketAddress) {
 	iv, err := _I.Get(1549, "UnixSocketAddress", "new_with_type")
 	if err != nil {
@@ -36120,8 +40823,9 @@ func NewUnixSocketAddressWithType(path gi.Int8Array, path_len int32, type1 UnixS
 }
 
 // g_unix_socket_address_get_address_type
-// container is not nil, container is UnixSocketAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixSocketAddress) GetAddressType() (result UnixSocketAddressTypeEnum) {
 	iv, err := _I.Get(1551, "UnixSocketAddress", "get_address_type")
 	if err != nil {
@@ -36137,8 +40841,9 @@ func (v UnixSocketAddress) GetAddressType() (result UnixSocketAddressTypeEnum) {
 }
 
 // g_unix_socket_address_get_is_abstract
-// container is not nil, container is UnixSocketAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixSocketAddress) GetIsAbstract() (result bool) {
 	iv, err := _I.Get(1552, "UnixSocketAddress", "get_is_abstract")
 	if err != nil {
@@ -36154,8 +40859,9 @@ func (v UnixSocketAddress) GetIsAbstract() (result bool) {
 }
 
 // g_unix_socket_address_get_path
-// container is not nil, container is UnixSocketAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixSocketAddress) GetPath() (result string) {
 	iv, err := _I.Get(1553, "UnixSocketAddress", "get_path")
 	if err != nil {
@@ -36166,13 +40872,14 @@ func (v UnixSocketAddress) GetPath() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_unix_socket_address_get_path_len
-// container is not nil, container is UnixSocketAddress
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v UnixSocketAddress) GetPathLen() (result uint64) {
 	iv, err := _I.Get(1554, "UnixSocketAddress", "get_path_len")
 	if err != nil {
@@ -36230,8 +40937,11 @@ func VfsGetType() gi.GType {
 }
 
 // g_vfs_get_file_for_path
-// container is not nil, container is Vfs
-// is method
+//
+// [ path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Vfs) GetFileForPath(path string) (result File) {
 	iv, err := _I.Get(1557, "Vfs", "get_file_for_path")
 	if err != nil {
@@ -36250,8 +40960,11 @@ func (v Vfs) GetFileForPath(path string) (result File) {
 }
 
 // g_vfs_get_file_for_uri
-// container is not nil, container is Vfs
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Vfs) GetFileForUri(uri string) (result File) {
 	iv, err := _I.Get(1558, "Vfs", "get_file_for_uri")
 	if err != nil {
@@ -36270,8 +40983,9 @@ func (v Vfs) GetFileForUri(uri string) (result File) {
 }
 
 // g_vfs_get_supported_uri_schemes
-// container is not nil, container is Vfs
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Vfs) GetSupportedUriSchemes() (result gi.CStrArray) {
 	iv, err := _I.Get(1559, "Vfs", "get_supported_uri_schemes")
 	if err != nil {
@@ -36288,8 +41002,9 @@ func (v Vfs) GetSupportedUriSchemes() (result gi.CStrArray) {
 }
 
 // g_vfs_is_active
-// container is not nil, container is Vfs
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Vfs) IsActive() (result bool) {
 	iv, err := _I.Get(1560, "Vfs", "is_active")
 	if err != nil {
@@ -36305,8 +41020,11 @@ func (v Vfs) IsActive() (result bool) {
 }
 
 // g_vfs_parse_name
-// container is not nil, container is Vfs
-// is method
+//
+// [ parse_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Vfs) ParseName(parse_name string) (result File) {
 	iv, err := _I.Get(1561, "Vfs", "parse_name")
 	if err != nil {
@@ -36325,8 +41043,23 @@ func (v Vfs) ParseName(parse_name string) (result File) {
 }
 
 // g_vfs_register_uri_scheme
-// container is not nil, container is Vfs
-// is method
+//
+// [ scheme ] trans: nothing
+//
+// [ uri_func ] trans: nothing
+//
+// [ uri_data ] trans: nothing
+//
+// [ uri_destroy ] trans: nothing
+//
+// [ parse_name_func ] trans: nothing
+//
+// [ parse_name_data ] trans: nothing
+//
+// [ parse_name_destroy ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Vfs) RegisterUriScheme(scheme string, uri_func int /*TODO_TYPE CALLBACK*/, uri_data unsafe.Pointer, uri_destroy int /*TODO_TYPE CALLBACK*/, parse_name_func int /*TODO_TYPE CALLBACK*/, parse_name_data unsafe.Pointer, parse_name_destroy int /*TODO_TYPE CALLBACK*/) (result bool) {
 	iv, err := _I.Get(1562, "Vfs", "register_uri_scheme")
 	if err != nil {
@@ -36351,8 +41084,11 @@ func (v Vfs) RegisterUriScheme(scheme string, uri_func int /*TODO_TYPE CALLBACK*
 }
 
 // g_vfs_unregister_uri_scheme
-// container is not nil, container is Vfs
-// is method
+//
+// [ scheme ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Vfs) UnregisterUriScheme(scheme string) (result bool) {
 	iv, err := _I.Get(1563, "Vfs", "unregister_uri_scheme")
 	if err != nil {
@@ -36405,8 +41141,9 @@ func VolumeGetType() gi.GType {
 }
 
 // g_volume_can_eject
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *VolumeIfc) CanEject() (result bool) {
 	iv, err := _I.Get(1564, "Volume", "can_eject")
 	if err != nil {
@@ -36422,8 +41159,9 @@ func (v *VolumeIfc) CanEject() (result bool) {
 }
 
 // g_volume_can_mount
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *VolumeIfc) CanMount() (result bool) {
 	iv, err := _I.Get(1565, "Volume", "can_mount")
 	if err != nil {
@@ -36439,8 +41177,15 @@ func (v *VolumeIfc) CanMount() (result bool) {
 }
 
 // g_volume_eject
-// container is not nil, container is Volume
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *VolumeIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1566, "Volume", "eject")
 	if err != nil {
@@ -36461,8 +41206,11 @@ func (v *VolumeIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, cal
 }
 
 // g_volume_eject_finish
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *VolumeIfc) EjectFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1567, "Volume", "eject_finish")
 	if err != nil {
@@ -36485,8 +41233,17 @@ func (v *VolumeIfc) EjectFinish(result IAsyncResult) (result1 bool, err error) {
 }
 
 // g_volume_eject_with_operation
-// container is not nil, container is Volume
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *VolumeIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1568, "Volume", "eject_with_operation")
 	if err != nil {
@@ -36512,8 +41269,11 @@ func (v *VolumeIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation 
 }
 
 // g_volume_eject_with_operation_finish
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *VolumeIfc) EjectWithOperationFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1569, "Volume", "eject_with_operation_finish")
 	if err != nil {
@@ -36536,8 +41296,9 @@ func (v *VolumeIfc) EjectWithOperationFinish(result IAsyncResult) (result1 bool,
 }
 
 // g_volume_enumerate_identifiers
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *VolumeIfc) EnumerateIdentifiers() (result gi.CStrArray) {
 	iv, err := _I.Get(1570, "Volume", "enumerate_identifiers")
 	if err != nil {
@@ -36554,8 +41315,9 @@ func (v *VolumeIfc) EnumerateIdentifiers() (result gi.CStrArray) {
 }
 
 // g_volume_get_activation_root
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *VolumeIfc) GetActivationRoot() (result File) {
 	iv, err := _I.Get(1571, "Volume", "get_activation_root")
 	if err != nil {
@@ -36571,8 +41333,9 @@ func (v *VolumeIfc) GetActivationRoot() (result File) {
 }
 
 // g_volume_get_drive
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *VolumeIfc) GetDrive() (result Drive) {
 	iv, err := _I.Get(1572, "Volume", "get_drive")
 	if err != nil {
@@ -36588,8 +41351,9 @@ func (v *VolumeIfc) GetDrive() (result Drive) {
 }
 
 // g_volume_get_icon
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *VolumeIfc) GetIcon() (result Icon) {
 	iv, err := _I.Get(1573, "Volume", "get_icon")
 	if err != nil {
@@ -36605,8 +41369,11 @@ func (v *VolumeIfc) GetIcon() (result Icon) {
 }
 
 // g_volume_get_identifier
-// container is not nil, container is Volume
-// is method
+//
+// [ kind ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v *VolumeIfc) GetIdentifier(kind string) (result string) {
 	iv, err := _I.Get(1574, "Volume", "get_identifier")
 	if err != nil {
@@ -36625,8 +41392,9 @@ func (v *VolumeIfc) GetIdentifier(kind string) (result string) {
 }
 
 // g_volume_get_mount
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *VolumeIfc) GetMount() (result Mount) {
 	iv, err := _I.Get(1575, "Volume", "get_mount")
 	if err != nil {
@@ -36642,8 +41410,9 @@ func (v *VolumeIfc) GetMount() (result Mount) {
 }
 
 // g_volume_get_name
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *VolumeIfc) GetName() (result string) {
 	iv, err := _I.Get(1576, "Volume", "get_name")
 	if err != nil {
@@ -36659,8 +41428,9 @@ func (v *VolumeIfc) GetName() (result string) {
 }
 
 // g_volume_get_sort_key
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *VolumeIfc) GetSortKey() (result string) {
 	iv, err := _I.Get(1577, "Volume", "get_sort_key")
 	if err != nil {
@@ -36671,13 +41441,14 @@ func (v *VolumeIfc) GetSortKey() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_volume_get_symbolic_icon
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *VolumeIfc) GetSymbolicIcon() (result Icon) {
 	iv, err := _I.Get(1578, "Volume", "get_symbolic_icon")
 	if err != nil {
@@ -36693,8 +41464,9 @@ func (v *VolumeIfc) GetSymbolicIcon() (result Icon) {
 }
 
 // g_volume_get_uuid
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: everything
+//
 func (v *VolumeIfc) GetUuid() (result string) {
 	iv, err := _I.Get(1579, "Volume", "get_uuid")
 	if err != nil {
@@ -36710,8 +41482,17 @@ func (v *VolumeIfc) GetUuid() (result string) {
 }
 
 // g_volume_mount
-// container is not nil, container is Volume
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ mount_operation ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v *VolumeIfc) MountF(flags MountMountFlags, mount_operation IMountOperation, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1580, "Volume", "mount")
 	if err != nil {
@@ -36737,8 +41518,11 @@ func (v *VolumeIfc) MountF(flags MountMountFlags, mount_operation IMountOperatio
 }
 
 // g_volume_mount_finish
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func (v *VolumeIfc) MountFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1581, "Volume", "mount_finish")
 	if err != nil {
@@ -36761,8 +41545,9 @@ func (v *VolumeIfc) MountFinish(result IAsyncResult) (result1 bool, err error) {
 }
 
 // g_volume_should_automount
-// container is not nil, container is Volume
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v *VolumeIfc) ShouldAutomount() (result bool) {
 	iv, err := _I.Get(1582, "Volume", "should_automount")
 	if err != nil {
@@ -36794,9 +41579,11 @@ func VolumeMonitorGetType() gi.GType {
 }
 
 // g_volume_monitor_adopt_orphan_mount
-// container is not nil, container is VolumeMonitor
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ mount ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func VolumeMonitorAdoptOrphanMount1(mount IMount) (result Volume) {
 	iv, err := _I.Get(1583, "VolumeMonitor", "adopt_orphan_mount")
 	if err != nil {
@@ -36816,8 +41603,9 @@ func VolumeMonitorAdoptOrphanMount1(mount IMount) (result Volume) {
 }
 
 // g_volume_monitor_get_connected_drives
-// container is not nil, container is VolumeMonitor
-// is method
+//
+// [ result ] trans: everything
+//
 func (v VolumeMonitor) GetConnectedDrives() (result glib.List) {
 	iv, err := _I.Get(1585, "VolumeMonitor", "get_connected_drives")
 	if err != nil {
@@ -36833,8 +41621,11 @@ func (v VolumeMonitor) GetConnectedDrives() (result glib.List) {
 }
 
 // g_volume_monitor_get_mount_for_uuid
-// container is not nil, container is VolumeMonitor
-// is method
+//
+// [ uuid ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v VolumeMonitor) GetMountForUuid(uuid string) (result Mount) {
 	iv, err := _I.Get(1586, "VolumeMonitor", "get_mount_for_uuid")
 	if err != nil {
@@ -36853,8 +41644,9 @@ func (v VolumeMonitor) GetMountForUuid(uuid string) (result Mount) {
 }
 
 // g_volume_monitor_get_mounts
-// container is not nil, container is VolumeMonitor
-// is method
+//
+// [ result ] trans: everything
+//
 func (v VolumeMonitor) GetMounts() (result glib.List) {
 	iv, err := _I.Get(1587, "VolumeMonitor", "get_mounts")
 	if err != nil {
@@ -36870,8 +41662,11 @@ func (v VolumeMonitor) GetMounts() (result glib.List) {
 }
 
 // g_volume_monitor_get_volume_for_uuid
-// container is not nil, container is VolumeMonitor
-// is method
+//
+// [ uuid ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v VolumeMonitor) GetVolumeForUuid(uuid string) (result Volume) {
 	iv, err := _I.Get(1588, "VolumeMonitor", "get_volume_for_uuid")
 	if err != nil {
@@ -36890,8 +41685,9 @@ func (v VolumeMonitor) GetVolumeForUuid(uuid string) (result Volume) {
 }
 
 // g_volume_monitor_get_volumes
-// container is not nil, container is VolumeMonitor
-// is method
+//
+// [ result ] trans: everything
+//
 func (v VolumeMonitor) GetVolumes() (result glib.List) {
 	iv, err := _I.Get(1589, "VolumeMonitor", "get_volumes")
 	if err != nil {
@@ -36925,8 +41721,13 @@ func ZlibCompressorGetType() gi.GType {
 }
 
 // g_zlib_compressor_new
-// container is not nil, container is ZlibCompressor
-// is constructor
+//
+// [ format ] trans: nothing
+//
+// [ level ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewZlibCompressor(format ZlibCompressorFormatEnum, level int32) (result ZlibCompressor) {
 	iv, err := _I.Get(1590, "ZlibCompressor", "new")
 	if err != nil {
@@ -36943,8 +41744,9 @@ func NewZlibCompressor(format ZlibCompressorFormatEnum, level int32) (result Zli
 }
 
 // g_zlib_compressor_get_file_info
-// container is not nil, container is ZlibCompressor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ZlibCompressor) GetFileInfo() (result FileInfo) {
 	iv, err := _I.Get(1591, "ZlibCompressor", "get_file_info")
 	if err != nil {
@@ -36960,8 +41762,9 @@ func (v ZlibCompressor) GetFileInfo() (result FileInfo) {
 }
 
 // g_zlib_compressor_set_file_info
-// container is not nil, container is ZlibCompressor
-// is method
+//
+// [ file_info ] trans: nothing
+//
 func (v ZlibCompressor) SetFileInfo(file_info IFileInfo) {
 	iv, err := _I.Get(1592, "ZlibCompressor", "set_file_info")
 	if err != nil {
@@ -37011,8 +41814,11 @@ func ZlibDecompressorGetType() gi.GType {
 }
 
 // g_zlib_decompressor_new
-// container is not nil, container is ZlibDecompressor
-// is constructor
+//
+// [ format ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewZlibDecompressor(format ZlibCompressorFormatEnum) (result ZlibDecompressor) {
 	iv, err := _I.Get(1593, "ZlibDecompressor", "new")
 	if err != nil {
@@ -37028,8 +41834,9 @@ func NewZlibDecompressor(format ZlibCompressorFormatEnum) (result ZlibDecompress
 }
 
 // g_zlib_decompressor_get_file_info
-// container is not nil, container is ZlibDecompressor
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ZlibDecompressor) GetFileInfo() (result FileInfo) {
 	iv, err := _I.Get(1594, "ZlibDecompressor", "get_file_info")
 	if err != nil {
@@ -37046,7 +41853,11 @@ func (v ZlibDecompressor) GetFileInfo() (result FileInfo) {
 
 // ignore GType struct ZlibDecompressorClass
 // g_action_name_is_valid
-// container is nil
+//
+// [ action_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ActionNameIsValid(action_name string) (result bool) {
 	iv, err := _I.Get(1595, "action_name_is_valid", "")
 	if err != nil {
@@ -37064,7 +41875,15 @@ func ActionNameIsValid(action_name string) (result bool) {
 }
 
 // g_action_parse_detailed_name
-// container is nil
+//
+// [ detailed_name ] trans: nothing
+//
+// [ action_name ] trans: everything, dir: out
+//
+// [ target_value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func ActionParseDetailedName(detailed_name string) (result bool, action_name string, target_value glib.Variant, err error) {
 	iv, err := _I.Get(1596, "action_parse_detailed_name", "")
 	if err != nil {
@@ -37088,7 +41907,13 @@ func ActionParseDetailedName(detailed_name string) (result bool, action_name str
 }
 
 // g_action_print_detailed_name
-// container is nil
+//
+// [ action_name ] trans: nothing
+//
+// [ target_value ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ActionPrintDetailedName(action_name string, target_value glib.Variant) (result string) {
 	iv, err := _I.Get(1597, "action_print_detailed_name", "")
 	if err != nil {
@@ -37107,7 +41932,15 @@ func ActionPrintDetailedName(action_name string, target_value glib.Variant) (res
 }
 
 // g_app_info_create_from_commandline
-// container is nil
+//
+// [ commandline ] trans: nothing
+//
+// [ application_name ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoCreateFromCommandline(commandline string, application_name string, flags AppInfoCreateFlags) (result AppInfo, err error) {
 	iv, err := _I.Get(1598, "app_info_create_from_commandline", "")
 	if err != nil {
@@ -37131,7 +41964,9 @@ func AppInfoCreateFromCommandline(commandline string, application_name string, f
 }
 
 // g_app_info_get_all
-// container is nil
+//
+// [ result ] trans: everything
+//
 func AppInfoGetAll() (result glib.List) {
 	iv, err := _I.Get(1599, "app_info_get_all", "")
 	if err != nil {
@@ -37145,7 +41980,11 @@ func AppInfoGetAll() (result glib.List) {
 }
 
 // g_app_info_get_all_for_type
-// container is nil
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoGetAllForType(content_type string) (result glib.List) {
 	iv, err := _I.Get(1600, "app_info_get_all_for_type", "")
 	if err != nil {
@@ -37163,7 +42002,13 @@ func AppInfoGetAllForType(content_type string) (result glib.List) {
 }
 
 // g_app_info_get_default_for_type
-// container is nil
+//
+// [ content_type ] trans: nothing
+//
+// [ must_support_uris ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoGetDefaultForType(content_type string, must_support_uris bool) (result AppInfo) {
 	iv, err := _I.Get(1601, "app_info_get_default_for_type", "")
 	if err != nil {
@@ -37182,7 +42027,11 @@ func AppInfoGetDefaultForType(content_type string, must_support_uris bool) (resu
 }
 
 // g_app_info_get_default_for_uri_scheme
-// container is nil
+//
+// [ uri_scheme ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoGetDefaultForUriScheme(uri_scheme string) (result AppInfo) {
 	iv, err := _I.Get(1602, "app_info_get_default_for_uri_scheme", "")
 	if err != nil {
@@ -37200,7 +42049,11 @@ func AppInfoGetDefaultForUriScheme(uri_scheme string) (result AppInfo) {
 }
 
 // g_app_info_get_fallback_for_type
-// container is nil
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoGetFallbackForType(content_type string) (result glib.List) {
 	iv, err := _I.Get(1603, "app_info_get_fallback_for_type", "")
 	if err != nil {
@@ -37218,7 +42071,11 @@ func AppInfoGetFallbackForType(content_type string) (result glib.List) {
 }
 
 // g_app_info_get_recommended_for_type
-// container is nil
+//
+// [ content_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AppInfoGetRecommendedForType(content_type string) (result glib.List) {
 	iv, err := _I.Get(1604, "app_info_get_recommended_for_type", "")
 	if err != nil {
@@ -37236,7 +42093,13 @@ func AppInfoGetRecommendedForType(content_type string) (result glib.List) {
 }
 
 // g_app_info_launch_default_for_uri
-// container is nil
+//
+// [ uri ] trans: nothing
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AppInfoLaunchDefaultForUri(uri string, context IAppLaunchContext) (result bool, err error) {
 	iv, err := _I.Get(1605, "app_info_launch_default_for_uri", "")
 	if err != nil {
@@ -37261,7 +42124,17 @@ func AppInfoLaunchDefaultForUri(uri string, context IAppLaunchContext) (result b
 }
 
 // g_app_info_launch_default_for_uri_async
-// container is nil
+//
+// [ uri ] trans: nothing
+//
+// [ context ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func AppInfoLaunchDefaultForUriAsync(uri string, context IAppLaunchContext, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1606, "app_info_launch_default_for_uri_async", "")
 	if err != nil {
@@ -37288,7 +42161,11 @@ func AppInfoLaunchDefaultForUriAsync(uri string, context IAppLaunchContext, canc
 }
 
 // g_app_info_launch_default_for_uri_finish
-// container is nil
+//
+// [ result ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func AppInfoLaunchDefaultForUriFinish(result IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(1607, "app_info_launch_default_for_uri_finish", "")
 	if err != nil {
@@ -37310,7 +42187,9 @@ func AppInfoLaunchDefaultForUriFinish(result IAsyncResult) (result1 bool, err er
 }
 
 // g_app_info_reset_type_associations
-// container is nil
+//
+// [ content_type ] trans: nothing
+//
 func AppInfoResetTypeAssociations(content_type string) {
 	iv, err := _I.Get(1608, "app_info_reset_type_associations", "")
 	if err != nil {
@@ -37325,7 +42204,21 @@ func AppInfoResetTypeAssociations(content_type string) {
 }
 
 // g_async_initable_newv_async
-// container is nil
+//
+// [ object_type ] trans: nothing
+//
+// [ n_parameters ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func AsyncInitableNewvAsync(object_type gi.GType, n_parameters uint32, parameters gobject.Parameter, io_priority int32, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1609, "async_initable_newv_async", "")
 	if err != nil {
@@ -37348,7 +42241,15 @@ func AsyncInitableNewvAsync(object_type gi.GType, n_parameters uint32, parameter
 }
 
 // g_bus_get
-// container is nil
+//
+// [ bus_type ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func BusGet(bus_type BusTypeEnum, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1610, "bus_get", "")
 	if err != nil {
@@ -37368,7 +42269,11 @@ func BusGet(bus_type BusTypeEnum, cancellable ICancellable, callback int /*TODO_
 }
 
 // g_bus_get_finish
-// container is nil
+//
+// [ res ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func BusGetFinish(res IAsyncResult) (result DBusConnection, err error) {
 	iv, err := _I.Get(1611, "bus_get_finish", "")
 	if err != nil {
@@ -37390,7 +42295,13 @@ func BusGetFinish(res IAsyncResult) (result DBusConnection, err error) {
 }
 
 // g_bus_get_sync
-// container is nil
+//
+// [ bus_type ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func BusGetSync(bus_type BusTypeEnum, cancellable ICancellable) (result DBusConnection, err error) {
 	iv, err := _I.Get(1612, "bus_get_sync", "")
 	if err != nil {
@@ -37413,7 +42324,19 @@ func BusGetSync(bus_type BusTypeEnum, cancellable ICancellable) (result DBusConn
 }
 
 // g_bus_own_name_on_connection_with_closures
-// container is nil
+//
+// [ connection ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ name_acquired_closure ] trans: nothing
+//
+// [ name_lost_closure ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func BusOwnNameOnConnection(connection IDBusConnection, name string, flags BusNameOwnerFlags, name_acquired_closure gobject.Closure, name_lost_closure gobject.Closure) (result uint32) {
 	iv, err := _I.Get(1613, "bus_own_name_on_connection", "")
 	if err != nil {
@@ -37439,7 +42362,21 @@ func BusOwnNameOnConnection(connection IDBusConnection, name string, flags BusNa
 }
 
 // g_bus_own_name_with_closures
-// container is nil
+//
+// [ bus_type ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ bus_acquired_closure ] trans: nothing
+//
+// [ name_acquired_closure ] trans: nothing
+//
+// [ name_lost_closure ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func BusOwnName(bus_type BusTypeEnum, name string, flags BusNameOwnerFlags, bus_acquired_closure gobject.Closure, name_acquired_closure gobject.Closure, name_lost_closure gobject.Closure) (result uint32) {
 	iv, err := _I.Get(1614, "bus_own_name", "")
 	if err != nil {
@@ -37462,7 +42399,9 @@ func BusOwnName(bus_type BusTypeEnum, name string, flags BusNameOwnerFlags, bus_
 }
 
 // g_bus_unown_name
-// container is nil
+//
+// [ owner_id ] trans: nothing
+//
 func BusUnownName(owner_id uint32) {
 	iv, err := _I.Get(1615, "bus_unown_name", "")
 	if err != nil {
@@ -37475,7 +42414,9 @@ func BusUnownName(owner_id uint32) {
 }
 
 // g_bus_unwatch_name
-// container is nil
+//
+// [ watcher_id ] trans: nothing
+//
 func BusUnwatchName(watcher_id uint32) {
 	iv, err := _I.Get(1616, "bus_unwatch_name", "")
 	if err != nil {
@@ -37488,7 +42429,19 @@ func BusUnwatchName(watcher_id uint32) {
 }
 
 // g_bus_watch_name_on_connection_with_closures
-// container is nil
+//
+// [ connection ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ name_appeared_closure ] trans: nothing
+//
+// [ name_vanished_closure ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func BusWatchNameOnConnection(connection IDBusConnection, name string, flags BusNameWatcherFlags, name_appeared_closure gobject.Closure, name_vanished_closure gobject.Closure) (result uint32) {
 	iv, err := _I.Get(1617, "bus_watch_name_on_connection", "")
 	if err != nil {
@@ -37514,7 +42467,19 @@ func BusWatchNameOnConnection(connection IDBusConnection, name string, flags Bus
 }
 
 // g_bus_watch_name_with_closures
-// container is nil
+//
+// [ bus_type ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ name_appeared_closure ] trans: nothing
+//
+// [ name_vanished_closure ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func BusWatchName(bus_type BusTypeEnum, name string, flags BusNameWatcherFlags, name_appeared_closure gobject.Closure, name_vanished_closure gobject.Closure) (result uint32) {
 	iv, err := _I.Get(1618, "bus_watch_name", "")
 	if err != nil {
@@ -37536,7 +42501,11 @@ func BusWatchName(bus_type BusTypeEnum, name string, flags BusNameWatcherFlags, 
 }
 
 // g_content_type_can_be_executable
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ContentTypeCanBeExecutable(type1 string) (result bool) {
 	iv, err := _I.Get(1619, "content_type_can_be_executable", "")
 	if err != nil {
@@ -37554,7 +42523,13 @@ func ContentTypeCanBeExecutable(type1 string) (result bool) {
 }
 
 // g_content_type_equals
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ type2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ContentTypeEquals(type1 string, type2 string) (result bool) {
 	iv, err := _I.Get(1620, "content_type_equals", "")
 	if err != nil {
@@ -37575,7 +42550,11 @@ func ContentTypeEquals(type1 string, type2 string) (result bool) {
 }
 
 // g_content_type_from_mime_type
-// container is nil
+//
+// [ mime_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ContentTypeFromMimeType(mime_type string) (result string) {
 	iv, err := _I.Get(1621, "content_type_from_mime_type", "")
 	if err != nil {
@@ -37593,7 +42572,11 @@ func ContentTypeFromMimeType(mime_type string) (result string) {
 }
 
 // g_content_type_get_description
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ContentTypeGetDescription(type1 string) (result string) {
 	iv, err := _I.Get(1622, "content_type_get_description", "")
 	if err != nil {
@@ -37611,7 +42594,11 @@ func ContentTypeGetDescription(type1 string) (result string) {
 }
 
 // g_content_type_get_generic_icon_name
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ContentTypeGetGenericIconName(type1 string) (result string) {
 	iv, err := _I.Get(1623, "content_type_get_generic_icon_name", "")
 	if err != nil {
@@ -37629,7 +42616,11 @@ func ContentTypeGetGenericIconName(type1 string) (result string) {
 }
 
 // g_content_type_get_icon
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ContentTypeGetIcon(type1 string) (result Icon) {
 	iv, err := _I.Get(1624, "content_type_get_icon", "")
 	if err != nil {
@@ -37647,7 +42638,11 @@ func ContentTypeGetIcon(type1 string) (result Icon) {
 }
 
 // g_content_type_get_mime_type
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ContentTypeGetMimeType(type1 string) (result string) {
 	iv, err := _I.Get(1625, "content_type_get_mime_type", "")
 	if err != nil {
@@ -37665,7 +42660,11 @@ func ContentTypeGetMimeType(type1 string) (result string) {
 }
 
 // g_content_type_get_symbolic_icon
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ContentTypeGetSymbolicIcon(type1 string) (result Icon) {
 	iv, err := _I.Get(1626, "content_type_get_symbolic_icon", "")
 	if err != nil {
@@ -37683,8 +42682,17 @@ func ContentTypeGetSymbolicIcon(type1 string) (result Icon) {
 }
 
 // g_content_type_guess
-// container is nil
-// arg 1 data lenArgIdx 2
+//
+// [ filename ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ data_size ] trans: nothing
+//
+// [ result_uncertain ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func ContentTypeGuess(filename string, data gi.Uint8Array, data_size uint64) (result string, result_uncertain bool) {
 	iv, err := _I.Get(1627, "content_type_guess", "")
 	if err != nil {
@@ -37707,7 +42715,11 @@ func ContentTypeGuess(filename string, data gi.Uint8Array, data_size uint64) (re
 }
 
 // g_content_type_guess_for_tree
-// container is nil
+//
+// [ root ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ContentTypeGuessForTree(root IFile) (result gi.CStrArray) {
 	iv, err := _I.Get(1628, "content_type_guess_for_tree", "")
 	if err != nil {
@@ -37728,7 +42740,13 @@ func ContentTypeGuessForTree(root IFile) (result gi.CStrArray) {
 }
 
 // g_content_type_is_a
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ supertype ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ContentTypeIsA(type1 string, supertype string) (result bool) {
 	iv, err := _I.Get(1629, "content_type_is_a", "")
 	if err != nil {
@@ -37749,7 +42767,13 @@ func ContentTypeIsA(type1 string, supertype string) (result bool) {
 }
 
 // g_content_type_is_mime_type
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ mime_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ContentTypeIsMimeType(type1 string, mime_type string) (result bool) {
 	iv, err := _I.Get(1630, "content_type_is_mime_type", "")
 	if err != nil {
@@ -37770,7 +42794,11 @@ func ContentTypeIsMimeType(type1 string, mime_type string) (result bool) {
 }
 
 // g_content_type_is_unknown
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ContentTypeIsUnknown(type1 string) (result bool) {
 	iv, err := _I.Get(1631, "content_type_is_unknown", "")
 	if err != nil {
@@ -37788,7 +42816,9 @@ func ContentTypeIsUnknown(type1 string) (result bool) {
 }
 
 // g_content_types_get_registered
-// container is nil
+//
+// [ result ] trans: everything
+//
 func ContentTypesGetRegistered() (result glib.List) {
 	iv, err := _I.Get(1632, "content_types_get_registered", "")
 	if err != nil {
@@ -37802,7 +42832,11 @@ func ContentTypesGetRegistered() (result glib.List) {
 }
 
 // g_dbus_address_escape_value
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DbusAddressEscapeValue(string string) (result string) {
 	iv, err := _I.Get(1633, "dbus_address_escape_value", "")
 	if err != nil {
@@ -37820,7 +42854,13 @@ func DbusAddressEscapeValue(string string) (result string) {
 }
 
 // g_dbus_address_get_for_bus_sync
-// container is nil
+//
+// [ bus_type ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DbusAddressGetForBusSync(bus_type BusTypeEnum, cancellable ICancellable) (result string, err error) {
 	iv, err := _I.Get(1634, "dbus_address_get_for_bus_sync", "")
 	if err != nil {
@@ -37843,7 +42883,15 @@ func DbusAddressGetForBusSync(bus_type BusTypeEnum, cancellable ICancellable) (r
 }
 
 // g_dbus_address_get_stream
-// container is nil
+//
+// [ address ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func DbusAddressGetStream(address string, cancellable ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1635, "dbus_address_get_stream", "")
 	if err != nil {
@@ -37865,7 +42913,13 @@ func DbusAddressGetStream(address string, cancellable ICancellable, callback int
 }
 
 // g_dbus_address_get_stream_finish
-// container is nil
+//
+// [ res ] trans: nothing
+//
+// [ out_guid ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func DbusAddressGetStreamFinish(res IAsyncResult) (result IOStream, out_guid string, err error) {
 	iv, err := _I.Get(1636, "dbus_address_get_stream_finish", "")
 	if err != nil {
@@ -37889,7 +42943,15 @@ func DbusAddressGetStreamFinish(res IAsyncResult) (result IOStream, out_guid str
 }
 
 // g_dbus_address_get_stream_sync
-// container is nil
+//
+// [ address ] trans: nothing
+//
+// [ out_guid ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DbusAddressGetStreamSync(address string, cancellable ICancellable) (result IOStream, out_guid string, err error) {
 	iv, err := _I.Get(1637, "dbus_address_get_stream_sync", "")
 	if err != nil {
@@ -37916,7 +42978,13 @@ func DbusAddressGetStreamSync(address string, cancellable ICancellable) (result 
 }
 
 // g_dbus_annotation_info_lookup
-// container is nil
+//
+// [ annotations ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusAnnotationInfoLookup(annotations gi.PointerArray, name string) (result string) {
 	iv, err := _I.Get(1638, "dbus_annotation_info_lookup", "")
 	if err != nil {
@@ -37930,12 +42998,16 @@ func DbusAnnotationInfoLookup(annotations gi.PointerArray, name string) (result 
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dbus_error_encode_gerror
-// container is nil
+//
+// [ error ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DbusErrorEncodeGerror(error glib.Error) (result string) {
 	iv, err := _I.Get(1639, "dbus_error_encode_gerror", "")
 	if err != nil {
@@ -37951,7 +43023,11 @@ func DbusErrorEncodeGerror(error glib.Error) (result string) {
 }
 
 // g_dbus_error_get_remote_error
-// container is nil
+//
+// [ error ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DbusErrorGetRemoteError(error glib.Error) (result string) {
 	iv, err := _I.Get(1640, "dbus_error_get_remote_error", "")
 	if err != nil {
@@ -37967,7 +43043,11 @@ func DbusErrorGetRemoteError(error glib.Error) (result string) {
 }
 
 // g_dbus_error_is_remote_error
-// container is nil
+//
+// [ error ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusErrorIsRemoteError(error glib.Error) (result bool) {
 	iv, err := _I.Get(1641, "dbus_error_is_remote_error", "")
 	if err != nil {
@@ -37983,7 +43063,13 @@ func DbusErrorIsRemoteError(error glib.Error) (result bool) {
 }
 
 // g_dbus_error_new_for_dbus_error
-// container is nil
+//
+// [ dbus_error_name ] trans: nothing
+//
+// [ dbus_error_message ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DbusErrorNewForDbusError(dbus_error_name string, dbus_error_message string) (result glib.Error) {
 	iv, err := _I.Get(1642, "dbus_error_new_for_dbus_error", "")
 	if err != nil {
@@ -38004,7 +43090,9 @@ func DbusErrorNewForDbusError(dbus_error_name string, dbus_error_message string)
 }
 
 // g_dbus_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func DbusErrorQuark() (result uint32) {
 	iv, err := _I.Get(1643, "dbus_error_quark", "")
 	if err != nil {
@@ -38018,7 +43106,15 @@ func DbusErrorQuark() (result uint32) {
 }
 
 // g_dbus_error_register_error
-// container is nil
+//
+// [ error_domain ] trans: nothing
+//
+// [ error_code ] trans: nothing
+//
+// [ dbus_error_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusErrorRegisterError(error_domain uint32, error_code int32, dbus_error_name string) (result bool) {
 	iv, err := _I.Get(1644, "dbus_error_register_error", "")
 	if err != nil {
@@ -38038,8 +43134,15 @@ func DbusErrorRegisterError(error_domain uint32, error_code int32, dbus_error_na
 }
 
 // g_dbus_error_register_error_domain
-// container is nil
-// arg 2 entries lenArgIdx 3
+//
+// [ error_domain_quark_name ] trans: nothing
+//
+// [ quark_volatile ] trans: nothing
+//
+// [ entries ] trans: nothing
+//
+// [ num_entries ] trans: nothing
+//
 func DbusErrorRegisterErrorDomain(error_domain_quark_name string, quark_volatile uint64, entries unsafe.Pointer, num_entries uint32) {
 	iv, err := _I.Get(1645, "dbus_error_register_error_domain", "")
 	if err != nil {
@@ -38057,7 +43160,11 @@ func DbusErrorRegisterErrorDomain(error_domain_quark_name string, quark_volatile
 }
 
 // g_dbus_error_strip_remote_error
-// container is nil
+//
+// [ error ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusErrorStripRemoteError(error glib.Error) (result bool) {
 	iv, err := _I.Get(1646, "dbus_error_strip_remote_error", "")
 	if err != nil {
@@ -38073,7 +43180,15 @@ func DbusErrorStripRemoteError(error glib.Error) (result bool) {
 }
 
 // g_dbus_error_unregister_error
-// container is nil
+//
+// [ error_domain ] trans: nothing
+//
+// [ error_code ] trans: nothing
+//
+// [ dbus_error_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusErrorUnregisterError(error_domain uint32, error_code int32, dbus_error_name string) (result bool) {
 	iv, err := _I.Get(1647, "dbus_error_unregister_error", "")
 	if err != nil {
@@ -38093,7 +43208,9 @@ func DbusErrorUnregisterError(error_domain uint32, error_code int32, dbus_error_
 }
 
 // g_dbus_generate_guid
-// container is nil
+//
+// [ result ] trans: everything
+//
 func DbusGenerateGuid() (result string) {
 	iv, err := _I.Get(1648, "dbus_generate_guid", "")
 	if err != nil {
@@ -38107,7 +43224,13 @@ func DbusGenerateGuid() (result string) {
 }
 
 // g_dbus_gvalue_to_gvariant
-// container is nil
+//
+// [ gvalue ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DbusGvalueToGvariant(gvalue gobject.Value, type1 glib.VariantType) (result glib.Variant) {
 	iv, err := _I.Get(1649, "dbus_gvalue_to_gvariant", "")
 	if err != nil {
@@ -38124,7 +43247,11 @@ func DbusGvalueToGvariant(gvalue gobject.Value, type1 glib.VariantType) (result 
 }
 
 // g_dbus_gvariant_to_gvalue
-// container is nil
+//
+// [ value ] trans: nothing
+//
+// [ out_gvalue ] trans: nothing, dir: out
+//
 func DbusGvariantToGvalue(value glib.Variant, out_gvalue gobject.Value) {
 	iv, err := _I.Get(1650, "dbus_gvariant_to_gvalue", "")
 	if err != nil {
@@ -38138,7 +43265,11 @@ func DbusGvariantToGvalue(value glib.Variant, out_gvalue gobject.Value) {
 }
 
 // g_dbus_is_address
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusIsAddress(string string) (result bool) {
 	iv, err := _I.Get(1651, "dbus_is_address", "")
 	if err != nil {
@@ -38156,7 +43287,11 @@ func DbusIsAddress(string string) (result bool) {
 }
 
 // g_dbus_is_guid
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusIsGuid(string string) (result bool) {
 	iv, err := _I.Get(1652, "dbus_is_guid", "")
 	if err != nil {
@@ -38174,7 +43309,11 @@ func DbusIsGuid(string string) (result bool) {
 }
 
 // g_dbus_is_interface_name
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusIsInterfaceName(string string) (result bool) {
 	iv, err := _I.Get(1653, "dbus_is_interface_name", "")
 	if err != nil {
@@ -38192,7 +43331,11 @@ func DbusIsInterfaceName(string string) (result bool) {
 }
 
 // g_dbus_is_member_name
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusIsMemberName(string string) (result bool) {
 	iv, err := _I.Get(1654, "dbus_is_member_name", "")
 	if err != nil {
@@ -38210,7 +43353,11 @@ func DbusIsMemberName(string string) (result bool) {
 }
 
 // g_dbus_is_name
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusIsName(string string) (result bool) {
 	iv, err := _I.Get(1655, "dbus_is_name", "")
 	if err != nil {
@@ -38228,7 +43375,11 @@ func DbusIsName(string string) (result bool) {
 }
 
 // g_dbus_is_supported_address
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusIsSupportedAddress(string string) (result bool, err error) {
 	iv, err := _I.Get(1656, "dbus_is_supported_address", "")
 	if err != nil {
@@ -38248,7 +43399,11 @@ func DbusIsSupportedAddress(string string) (result bool, err error) {
 }
 
 // g_dbus_is_unique_name
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DbusIsUniqueName(string string) (result bool) {
 	iv, err := _I.Get(1657, "dbus_is_unique_name", "")
 	if err != nil {
@@ -38266,7 +43421,13 @@ func DbusIsUniqueName(string string) (result bool) {
 }
 
 // g_dtls_client_connection_new
-// container is nil
+//
+// [ base_socket ] trans: nothing
+//
+// [ server_identity ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DtlsClientConnectionNew(base_socket IDatagramBased, server_identity ISocketConnectable) (result DtlsClientConnection, err error) {
 	iv, err := _I.Get(1658, "dtls_client_connection_new", "")
 	if err != nil {
@@ -38293,7 +43454,13 @@ func DtlsClientConnectionNew(base_socket IDatagramBased, server_identity ISocket
 }
 
 // g_dtls_server_connection_new
-// container is nil
+//
+// [ base_socket ] trans: nothing
+//
+// [ certificate ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DtlsServerConnectionNew(base_socket IDatagramBased, certificate ITlsCertificate) (result DtlsServerConnection, err error) {
 	iv, err := _I.Get(1659, "dtls_server_connection_new", "")
 	if err != nil {
@@ -38320,7 +43487,11 @@ func DtlsServerConnectionNew(base_socket IDatagramBased, certificate ITlsCertifi
 }
 
 // g_file_new_for_commandline_arg
-// container is nil
+//
+// [ arg ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileNewForCommandlineArg(arg string) (result File) {
 	iv, err := _I.Get(1660, "file_new_for_commandline_arg", "")
 	if err != nil {
@@ -38338,7 +43509,13 @@ func FileNewForCommandlineArg(arg string) (result File) {
 }
 
 // g_file_new_for_commandline_arg_and_cwd
-// container is nil
+//
+// [ arg ] trans: nothing
+//
+// [ cwd ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileNewForCommandlineArgAndCwd(arg string, cwd string) (result File) {
 	iv, err := _I.Get(1661, "file_new_for_commandline_arg_and_cwd", "")
 	if err != nil {
@@ -38359,7 +43536,11 @@ func FileNewForCommandlineArgAndCwd(arg string, cwd string) (result File) {
 }
 
 // g_file_new_for_path
-// container is nil
+//
+// [ path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileNewForPath(path string) (result File) {
 	iv, err := _I.Get(1662, "file_new_for_path", "")
 	if err != nil {
@@ -38377,7 +43558,11 @@ func FileNewForPath(path string) (result File) {
 }
 
 // g_file_new_for_uri
-// container is nil
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileNewForUri(uri string) (result File) {
 	iv, err := _I.Get(1663, "file_new_for_uri", "")
 	if err != nil {
@@ -38395,7 +43580,13 @@ func FileNewForUri(uri string) (result File) {
 }
 
 // g_file_new_tmp
-// container is nil
+//
+// [ tmpl ] trans: nothing
+//
+// [ iostream ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func FileNewTmp(tmpl string) (result File, iostream FileIOStream, err error) {
 	iv, err := _I.Get(1664, "file_new_tmp", "")
 	if err != nil {
@@ -38417,7 +43608,11 @@ func FileNewTmp(tmpl string) (result File, iostream FileIOStream, err error) {
 }
 
 // g_file_parse_name
-// container is nil
+//
+// [ parse_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileParseName(parse_name string) (result File) {
 	iv, err := _I.Get(1665, "file_parse_name", "")
 	if err != nil {
@@ -38435,7 +43630,11 @@ func FileParseName(parse_name string) (result File) {
 }
 
 // g_icon_deserialize
-// container is nil
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func IconDeserialize(value glib.Variant) (result Icon) {
 	iv, err := _I.Get(1666, "icon_deserialize", "")
 	if err != nil {
@@ -38451,7 +43650,11 @@ func IconDeserialize(value glib.Variant) (result Icon) {
 }
 
 // g_icon_hash
-// container is nil
+//
+// [ icon ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IconHash(icon unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(1667, "icon_hash", "")
 	if err != nil {
@@ -38467,7 +43670,11 @@ func IconHash(icon unsafe.Pointer) (result uint32) {
 }
 
 // g_icon_new_for_string
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func IconNewForString(str string) (result Icon, err error) {
 	iv, err := _I.Get(1668, "icon_new_for_string", "")
 	if err != nil {
@@ -38487,8 +43694,17 @@ func IconNewForString(str string) (result Icon, err error) {
 }
 
 // g_initable_newv
-// container is nil
-// arg 2 parameters lenArgIdx 1
+//
+// [ object_type ] trans: nothing
+//
+// [ n_parameters ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func InitableNewv(object_type gi.GType, n_parameters uint32, parameters unsafe.Pointer, cancellable ICancellable) (result gobject.Object, err error) {
 	iv, err := _I.Get(1669, "initable_newv", "")
 	if err != nil {
@@ -38513,7 +43729,11 @@ func InitableNewv(object_type gi.GType, n_parameters uint32, parameters unsafe.P
 }
 
 // g_io_error_from_errno
-// container is nil
+//
+// [ err_no ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IoErrorFromErrno(err_no int32) (result IOErrorEnumEnum) {
 	iv, err := _I.Get(1670, "io_error_from_errno", "")
 	if err != nil {
@@ -38529,7 +43749,9 @@ func IoErrorFromErrno(err_no int32) (result IOErrorEnumEnum) {
 }
 
 // g_io_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func IoErrorQuark() (result uint32) {
 	iv, err := _I.Get(1671, "io_error_quark", "")
 	if err != nil {
@@ -38543,7 +43765,17 @@ func IoErrorQuark() (result uint32) {
 }
 
 // g_io_extension_point_implement
-// container is nil
+//
+// [ extension_point_name ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ extension_name ] trans: nothing
+//
+// [ priority ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IoExtensionPointImplement(extension_point_name string, type1 gi.GType, extension_name string, priority int32) (result IOExtension) {
 	iv, err := _I.Get(1672, "io_extension_point_implement", "")
 	if err != nil {
@@ -38566,7 +43798,11 @@ func IoExtensionPointImplement(extension_point_name string, type1 gi.GType, exte
 }
 
 // g_io_extension_point_lookup
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IoExtensionPointLookup(name string) (result IOExtensionPoint) {
 	iv, err := _I.Get(1673, "io_extension_point_lookup", "")
 	if err != nil {
@@ -38584,7 +43820,11 @@ func IoExtensionPointLookup(name string) (result IOExtensionPoint) {
 }
 
 // g_io_extension_point_register
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IoExtensionPointRegister(name string) (result IOExtensionPoint) {
 	iv, err := _I.Get(1674, "io_extension_point_register", "")
 	if err != nil {
@@ -38602,7 +43842,11 @@ func IoExtensionPointRegister(name string) (result IOExtensionPoint) {
 }
 
 // g_io_modules_load_all_in_directory
-// container is nil
+//
+// [ dirname ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func IoModulesLoadAllInDirectory(dirname string) (result glib.List) {
 	iv, err := _I.Get(1675, "io_modules_load_all_in_directory", "")
 	if err != nil {
@@ -38620,7 +43864,13 @@ func IoModulesLoadAllInDirectory(dirname string) (result glib.List) {
 }
 
 // g_io_modules_load_all_in_directory_with_scope
-// container is nil
+//
+// [ dirname ] trans: nothing
+//
+// [ scope ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func IoModulesLoadAllInDirectoryWithScope(dirname string, scope IOModuleScope) (result glib.List) {
 	iv, err := _I.Get(1676, "io_modules_load_all_in_directory_with_scope", "")
 	if err != nil {
@@ -38639,7 +43889,9 @@ func IoModulesLoadAllInDirectoryWithScope(dirname string, scope IOModuleScope) (
 }
 
 // g_io_modules_scan_all_in_directory
-// container is nil
+//
+// [ dirname ] trans: nothing
+//
 func IoModulesScanAllInDirectory(dirname string) {
 	iv, err := _I.Get(1677, "io_modules_scan_all_in_directory", "")
 	if err != nil {
@@ -38654,7 +43906,11 @@ func IoModulesScanAllInDirectory(dirname string) {
 }
 
 // g_io_modules_scan_all_in_directory_with_scope
-// container is nil
+//
+// [ dirname ] trans: nothing
+//
+// [ scope ] trans: nothing
+//
 func IoModulesScanAllInDirectoryWithScope(dirname string, scope IOModuleScope) {
 	iv, err := _I.Get(1678, "io_modules_scan_all_in_directory_with_scope", "")
 	if err != nil {
@@ -38670,7 +43926,7 @@ func IoModulesScanAllInDirectoryWithScope(dirname string, scope IOModuleScope) {
 }
 
 // g_io_scheduler_cancel_all_jobs
-// container is nil
+//
 func IoSchedulerCancelAllJobs() {
 	iv, err := _I.Get(1679, "io_scheduler_cancel_all_jobs", "")
 	if err != nil {
@@ -38681,7 +43937,17 @@ func IoSchedulerCancelAllJobs() {
 }
 
 // g_io_scheduler_push_job
-// container is nil
+//
+// [ job_func ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ io_priority ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
 func IoSchedulerPushJob(job_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/, io_priority int32, cancellable ICancellable) {
 	iv, err := _I.Get(1680, "io_scheduler_push_job", "")
 	if err != nil {
@@ -38702,7 +43968,15 @@ func IoSchedulerPushJob(job_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Po
 }
 
 // g_keyfile_settings_backend_new
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ root_path ] trans: nothing
+//
+// [ root_group ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func KeyfileSettingsBackendNew(filename string, root_path string, root_group string) (result SettingsBackend) {
 	iv, err := _I.Get(1681, "keyfile_settings_backend_new", "")
 	if err != nil {
@@ -38726,7 +44000,9 @@ func KeyfileSettingsBackendNew(filename string, root_path string, root_group str
 }
 
 // g_memory_settings_backend_new
-// container is nil
+//
+// [ result ] trans: everything
+//
 func MemorySettingsBackendNew() (result SettingsBackend) {
 	iv, err := _I.Get(1682, "memory_settings_backend_new", "")
 	if err != nil {
@@ -38740,7 +44016,9 @@ func MemorySettingsBackendNew() (result SettingsBackend) {
 }
 
 // g_network_monitor_get_default
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func NetworkMonitorGetDefault() (result NetworkMonitor) {
 	iv, err := _I.Get(1683, "network_monitor_get_default", "")
 	if err != nil {
@@ -38754,7 +44032,7 @@ func NetworkMonitorGetDefault() (result NetworkMonitor) {
 }
 
 // g_networking_init
-// container is nil
+//
 func NetworkingInit() {
 	iv, err := _I.Get(1684, "networking_init", "")
 	if err != nil {
@@ -38765,7 +44043,9 @@ func NetworkingInit() {
 }
 
 // g_null_settings_backend_new
-// container is nil
+//
+// [ result ] trans: everything
+//
 func NullSettingsBackendNew() (result SettingsBackend) {
 	iv, err := _I.Get(1685, "null_settings_backend_new", "")
 	if err != nil {
@@ -38779,7 +44059,11 @@ func NullSettingsBackendNew() (result SettingsBackend) {
 }
 
 // g_pollable_source_new
-// container is nil
+//
+// [ pollable_stream ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func PollableSourceNew(pollable_stream gobject.IObject) (result glib.Source) {
 	iv, err := _I.Get(1686, "pollable_source_new", "")
 	if err != nil {
@@ -38799,7 +44083,15 @@ func PollableSourceNew(pollable_stream gobject.IObject) (result glib.Source) {
 }
 
 // g_pollable_source_new_full
-// container is nil
+//
+// [ pollable_stream ] trans: nothing
+//
+// [ child_source ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func PollableSourceNewFull(pollable_stream gobject.IObject, child_source glib.Source, cancellable ICancellable) (result glib.Source) {
 	iv, err := _I.Get(1687, "pollable_source_new_full", "")
 	if err != nil {
@@ -38825,8 +44117,19 @@ func PollableSourceNewFull(pollable_stream gobject.IObject, child_source glib.So
 }
 
 // g_pollable_stream_read
-// container is nil
-// arg 1 buffer lenArgIdx 2
+//
+// [ stream ] trans: nothing
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ blocking ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PollableStreamRead(stream IInputStream, buffer gi.Uint8Array, count uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1688, "pollable_stream_read", "")
 	if err != nil {
@@ -38856,8 +44159,19 @@ func PollableStreamRead(stream IInputStream, buffer gi.Uint8Array, count uint64,
 }
 
 // g_pollable_stream_write
-// container is nil
-// arg 1 buffer lenArgIdx 2
+//
+// [ stream ] trans: nothing
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ blocking ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PollableStreamWrite(stream IOutputStream, buffer gi.Uint8Array, count uint64, blocking bool, cancellable ICancellable) (result int64, err error) {
 	iv, err := _I.Get(1689, "pollable_stream_write", "")
 	if err != nil {
@@ -38887,8 +44201,21 @@ func PollableStreamWrite(stream IOutputStream, buffer gi.Uint8Array, count uint6
 }
 
 // g_pollable_stream_write_all
-// container is nil
-// arg 1 buffer lenArgIdx 2
+//
+// [ stream ] trans: nothing
+//
+// [ buffer ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ blocking ] trans: nothing
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PollableStreamWriteAll(stream IOutputStream, buffer gi.Uint8Array, count uint64, blocking bool, cancellable ICancellable) (result bool, bytes_written uint64, err error) {
 	iv, err := _I.Get(1690, "pollable_stream_write_all", "")
 	if err != nil {
@@ -38920,7 +44247,11 @@ func PollableStreamWriteAll(stream IOutputStream, buffer gi.Uint8Array, count ui
 }
 
 // g_proxy_get_default_for_protocol
-// container is nil
+//
+// [ protocol ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ProxyGetDefaultForProtocol(protocol string) (result Proxy) {
 	iv, err := _I.Get(1691, "proxy_get_default_for_protocol", "")
 	if err != nil {
@@ -38938,7 +44269,9 @@ func ProxyGetDefaultForProtocol(protocol string) (result Proxy) {
 }
 
 // g_proxy_resolver_get_default
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func ProxyResolverGetDefault() (result ProxyResolver) {
 	iv, err := _I.Get(1692, "proxy_resolver_get_default", "")
 	if err != nil {
@@ -38952,7 +44285,9 @@ func ProxyResolverGetDefault() (result ProxyResolver) {
 }
 
 // g_resolver_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func ResolverErrorQuark() (result uint32) {
 	iv, err := _I.Get(1693, "resolver_error_quark", "")
 	if err != nil {
@@ -38966,7 +44301,9 @@ func ResolverErrorQuark() (result uint32) {
 }
 
 // g_resource_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func ResourceErrorQuark() (result uint32) {
 	iv, err := _I.Get(1694, "resource_error_quark", "")
 	if err != nil {
@@ -38980,7 +44317,11 @@ func ResourceErrorQuark() (result uint32) {
 }
 
 // g_resource_load
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ResourceLoad(filename string) (result Resource, err error) {
 	iv, err := _I.Get(1695, "resource_load", "")
 	if err != nil {
@@ -39000,7 +44341,13 @@ func ResourceLoad(filename string) (result Resource, err error) {
 }
 
 // g_resources_enumerate_children
-// container is nil
+//
+// [ path ] trans: nothing
+//
+// [ lookup_flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ResourcesEnumerateChildren(path string, lookup_flags ResourceLookupFlags) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(1696, "resources_enumerate_children", "")
 	if err != nil {
@@ -39022,7 +44369,17 @@ func ResourcesEnumerateChildren(path string, lookup_flags ResourceLookupFlags) (
 }
 
 // g_resources_get_info
-// container is nil
+//
+// [ path ] trans: nothing
+//
+// [ lookup_flags ] trans: nothing
+//
+// [ size ] trans: everything, dir: out
+//
+// [ flags ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func ResourcesGetInfo(path string, lookup_flags ResourceLookupFlags) (result bool, size uint64, flags uint32, err error) {
 	iv, err := _I.Get(1697, "resources_get_info", "")
 	if err != nil {
@@ -39047,7 +44404,13 @@ func ResourcesGetInfo(path string, lookup_flags ResourceLookupFlags) (result boo
 }
 
 // g_resources_lookup_data
-// container is nil
+//
+// [ path ] trans: nothing
+//
+// [ lookup_flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ResourcesLookupData(path string, lookup_flags ResourceLookupFlags) (result glib.Bytes, err error) {
 	iv, err := _I.Get(1698, "resources_lookup_data", "")
 	if err != nil {
@@ -39068,7 +44431,13 @@ func ResourcesLookupData(path string, lookup_flags ResourceLookupFlags) (result 
 }
 
 // g_resources_open_stream
-// container is nil
+//
+// [ path ] trans: nothing
+//
+// [ lookup_flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ResourcesOpenStream(path string, lookup_flags ResourceLookupFlags) (result InputStream, err error) {
 	iv, err := _I.Get(1699, "resources_open_stream", "")
 	if err != nil {
@@ -39089,7 +44458,9 @@ func ResourcesOpenStream(path string, lookup_flags ResourceLookupFlags) (result 
 }
 
 // g_resources_register
-// container is nil
+//
+// [ resource ] trans: nothing
+//
 func ResourcesRegister(resource Resource) {
 	iv, err := _I.Get(1700, "resources_register", "")
 	if err != nil {
@@ -39102,7 +44473,9 @@ func ResourcesRegister(resource Resource) {
 }
 
 // g_resources_unregister
-// container is nil
+//
+// [ resource ] trans: nothing
+//
 func ResourcesUnregister(resource Resource) {
 	iv, err := _I.Get(1701, "resources_unregister", "")
 	if err != nil {
@@ -39115,7 +44488,9 @@ func ResourcesUnregister(resource Resource) {
 }
 
 // g_settings_schema_source_get_default
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func SettingsSchemaSourceGetDefault() (result SettingsSchemaSource) {
 	iv, err := _I.Get(1702, "settings_schema_source_get_default", "")
 	if err != nil {
@@ -39129,7 +44504,15 @@ func SettingsSchemaSourceGetDefault() (result SettingsSchemaSource) {
 }
 
 // g_simple_async_report_gerror_in_idle
-// container is nil
+//
+// [ object ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ error ] trans: nothing
+//
 func SimpleAsyncReportGerrorInIdle(object gobject.IObject, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, error glib.Error) {
 	iv, err := _I.Get(1703, "simple_async_report_gerror_in_idle", "")
 	if err != nil {
@@ -39149,7 +44532,9 @@ func SimpleAsyncReportGerrorInIdle(object gobject.IObject, callback int /*TODO_T
 }
 
 // g_tls_backend_get_default
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TlsBackendGetDefault() (result TlsBackend) {
 	iv, err := _I.Get(1704, "tls_backend_get_default", "")
 	if err != nil {
@@ -39163,7 +44548,13 @@ func TlsBackendGetDefault() (result TlsBackend) {
 }
 
 // g_tls_client_connection_new
-// container is nil
+//
+// [ base_io_stream ] trans: nothing
+//
+// [ server_identity ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func TlsClientConnectionNew(base_io_stream IIOStream, server_identity ISocketConnectable) (result TlsClientConnection, err error) {
 	iv, err := _I.Get(1705, "tls_client_connection_new", "")
 	if err != nil {
@@ -39190,7 +44581,9 @@ func TlsClientConnectionNew(base_io_stream IIOStream, server_identity ISocketCon
 }
 
 // g_tls_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TlsErrorQuark() (result uint32) {
 	iv, err := _I.Get(1706, "tls_error_quark", "")
 	if err != nil {
@@ -39204,7 +44597,11 @@ func TlsErrorQuark() (result uint32) {
 }
 
 // g_tls_file_database_new
-// container is nil
+//
+// [ anchors ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func TlsFileDatabaseNew(anchors string) (result TlsFileDatabase, err error) {
 	iv, err := _I.Get(1707, "tls_file_database_new", "")
 	if err != nil {
@@ -39224,7 +44621,13 @@ func TlsFileDatabaseNew(anchors string) (result TlsFileDatabase, err error) {
 }
 
 // g_tls_server_connection_new
-// container is nil
+//
+// [ base_io_stream ] trans: nothing
+//
+// [ certificate ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func TlsServerConnectionNew(base_io_stream IIOStream, certificate ITlsCertificate) (result TlsServerConnection, err error) {
 	iv, err := _I.Get(1708, "tls_server_connection_new", "")
 	if err != nil {
@@ -39251,7 +44654,11 @@ func TlsServerConnectionNew(base_io_stream IIOStream, certificate ITlsCertificat
 }
 
 // g_unix_is_mount_path_system_internal
-// container is nil
+//
+// [ mount_path ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixIsMountPathSystemInternal(mount_path string) (result bool) {
 	iv, err := _I.Get(1709, "unix_is_mount_path_system_internal", "")
 	if err != nil {
@@ -39269,7 +44676,11 @@ func UnixIsMountPathSystemInternal(mount_path string) (result bool) {
 }
 
 // g_unix_is_system_device_path
-// container is nil
+//
+// [ device_path ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixIsSystemDevicePath(device_path string) (result bool) {
 	iv, err := _I.Get(1710, "unix_is_system_device_path", "")
 	if err != nil {
@@ -39287,7 +44698,11 @@ func UnixIsSystemDevicePath(device_path string) (result bool) {
 }
 
 // g_unix_is_system_fs_type
-// container is nil
+//
+// [ fs_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixIsSystemFsType(fs_type string) (result bool) {
 	iv, err := _I.Get(1711, "unix_is_system_fs_type", "")
 	if err != nil {
@@ -39305,7 +44720,13 @@ func UnixIsSystemFsType(fs_type string) (result bool) {
 }
 
 // g_unix_mount_at
-// container is nil
+//
+// [ mount_path ] trans: nothing
+//
+// [ time_read ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func UnixMountAt(mount_path string) (result UnixMountEntry, time_read uint64) {
 	iv, err := _I.Get(1712, "unix_mount_at", "")
 	if err != nil {
@@ -39326,7 +44747,13 @@ func UnixMountAt(mount_path string) (result UnixMountEntry, time_read uint64) {
 }
 
 // g_unix_mount_compare
-// container is nil
+//
+// [ mount1 ] trans: nothing
+//
+// [ mount2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountCompare(mount1 UnixMountEntry, mount2 UnixMountEntry) (result int32) {
 	iv, err := _I.Get(1713, "unix_mount_compare", "")
 	if err != nil {
@@ -39343,7 +44770,11 @@ func UnixMountCompare(mount1 UnixMountEntry, mount2 UnixMountEntry) (result int3
 }
 
 // g_unix_mount_copy
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UnixMountCopy(mount_entry UnixMountEntry) (result UnixMountEntry) {
 	iv, err := _I.Get(1714, "unix_mount_copy", "")
 	if err != nil {
@@ -39359,7 +44790,13 @@ func UnixMountCopy(mount_entry UnixMountEntry) (result UnixMountEntry) {
 }
 
 // g_unix_mount_for
-// container is nil
+//
+// [ file_path ] trans: nothing
+//
+// [ time_read ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func UnixMountFor(file_path string) (result UnixMountEntry, time_read uint64) {
 	iv, err := _I.Get(1715, "unix_mount_for", "")
 	if err != nil {
@@ -39380,7 +44817,9 @@ func UnixMountFor(file_path string) (result UnixMountEntry, time_read uint64) {
 }
 
 // g_unix_mount_free
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
 func UnixMountFree(mount_entry UnixMountEntry) {
 	iv, err := _I.Get(1716, "unix_mount_free", "")
 	if err != nil {
@@ -39393,7 +44832,11 @@ func UnixMountFree(mount_entry UnixMountEntry) {
 }
 
 // g_unix_mount_get_device_path
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountGetDevicePath(mount_entry UnixMountEntry) (result string) {
 	iv, err := _I.Get(1717, "unix_mount_get_device_path", "")
 	if err != nil {
@@ -39404,12 +44847,16 @@ func UnixMountGetDevicePath(mount_entry UnixMountEntry) (result string) {
 	args := []gi.Argument{arg_mount_entry}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_unix_mount_get_fs_type
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountGetFsType(mount_entry UnixMountEntry) (result string) {
 	iv, err := _I.Get(1718, "unix_mount_get_fs_type", "")
 	if err != nil {
@@ -39420,12 +44867,16 @@ func UnixMountGetFsType(mount_entry UnixMountEntry) (result string) {
 	args := []gi.Argument{arg_mount_entry}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_unix_mount_get_mount_path
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountGetMountPath(mount_entry UnixMountEntry) (result string) {
 	iv, err := _I.Get(1719, "unix_mount_get_mount_path", "")
 	if err != nil {
@@ -39436,12 +44887,16 @@ func UnixMountGetMountPath(mount_entry UnixMountEntry) (result string) {
 	args := []gi.Argument{arg_mount_entry}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_unix_mount_get_options
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountGetOptions(mount_entry UnixMountEntry) (result string) {
 	iv, err := _I.Get(1720, "unix_mount_get_options", "")
 	if err != nil {
@@ -39452,12 +44907,16 @@ func UnixMountGetOptions(mount_entry UnixMountEntry) (result string) {
 	args := []gi.Argument{arg_mount_entry}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_unix_mount_guess_can_eject
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountGuessCanEject(mount_entry UnixMountEntry) (result bool) {
 	iv, err := _I.Get(1721, "unix_mount_guess_can_eject", "")
 	if err != nil {
@@ -39473,7 +44932,11 @@ func UnixMountGuessCanEject(mount_entry UnixMountEntry) (result bool) {
 }
 
 // g_unix_mount_guess_icon
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UnixMountGuessIcon(mount_entry UnixMountEntry) (result Icon) {
 	iv, err := _I.Get(1722, "unix_mount_guess_icon", "")
 	if err != nil {
@@ -39489,7 +44952,11 @@ func UnixMountGuessIcon(mount_entry UnixMountEntry) (result Icon) {
 }
 
 // g_unix_mount_guess_name
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UnixMountGuessName(mount_entry UnixMountEntry) (result string) {
 	iv, err := _I.Get(1723, "unix_mount_guess_name", "")
 	if err != nil {
@@ -39505,7 +44972,11 @@ func UnixMountGuessName(mount_entry UnixMountEntry) (result string) {
 }
 
 // g_unix_mount_guess_should_display
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountGuessShouldDisplay(mount_entry UnixMountEntry) (result bool) {
 	iv, err := _I.Get(1724, "unix_mount_guess_should_display", "")
 	if err != nil {
@@ -39521,7 +44992,11 @@ func UnixMountGuessShouldDisplay(mount_entry UnixMountEntry) (result bool) {
 }
 
 // g_unix_mount_guess_symbolic_icon
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UnixMountGuessSymbolicIcon(mount_entry UnixMountEntry) (result Icon) {
 	iv, err := _I.Get(1725, "unix_mount_guess_symbolic_icon", "")
 	if err != nil {
@@ -39537,7 +45012,11 @@ func UnixMountGuessSymbolicIcon(mount_entry UnixMountEntry) (result Icon) {
 }
 
 // g_unix_mount_is_readonly
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountIsReadonly(mount_entry UnixMountEntry) (result bool) {
 	iv, err := _I.Get(1726, "unix_mount_is_readonly", "")
 	if err != nil {
@@ -39553,7 +45032,11 @@ func UnixMountIsReadonly(mount_entry UnixMountEntry) (result bool) {
 }
 
 // g_unix_mount_is_system_internal
-// container is nil
+//
+// [ mount_entry ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountIsSystemInternal(mount_entry UnixMountEntry) (result bool) {
 	iv, err := _I.Get(1727, "unix_mount_is_system_internal", "")
 	if err != nil {
@@ -39569,7 +45052,11 @@ func UnixMountIsSystemInternal(mount_entry UnixMountEntry) (result bool) {
 }
 
 // g_unix_mount_points_changed_since
-// container is nil
+//
+// [ time ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountPointsChangedSince(time uint64) (result bool) {
 	iv, err := _I.Get(1728, "unix_mount_points_changed_since", "")
 	if err != nil {
@@ -39585,7 +45072,11 @@ func UnixMountPointsChangedSince(time uint64) (result bool) {
 }
 
 // g_unix_mount_points_get
-// container is nil
+//
+// [ time_read ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func UnixMountPointsGet() (result glib.List, time_read uint64) {
 	iv, err := _I.Get(1729, "unix_mount_points_get", "")
 	if err != nil {
@@ -39603,7 +45094,11 @@ func UnixMountPointsGet() (result glib.List, time_read uint64) {
 }
 
 // g_unix_mounts_changed_since
-// container is nil
+//
+// [ time ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixMountsChangedSince(time uint64) (result bool) {
 	iv, err := _I.Get(1730, "unix_mounts_changed_since", "")
 	if err != nil {
@@ -39619,7 +45114,11 @@ func UnixMountsChangedSince(time uint64) (result bool) {
 }
 
 // g_unix_mounts_get
-// container is nil
+//
+// [ time_read ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func UnixMountsGet() (result glib.List, time_read uint64) {
 	iv, err := _I.Get(1731, "unix_mounts_get", "")
 	if err != nil {

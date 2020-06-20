@@ -549,7 +549,7 @@ func RectangleIntGetType() gi.GType {
 }
 
 // cairo_image_surface_create
-// container is nil
+//
 func ImageSurfaceCreate() {
 	iv, err := _I.Get(0, "image_surface_create", "")
 	if err != nil {

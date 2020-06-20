@@ -79,8 +79,19 @@ func PixbufGetType() gi.GType {
 }
 
 // gdk_pixbuf_new
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ colorspace ] trans: nothing
+//
+// [ has_alpha ] trans: nothing
+//
+// [ bits_per_sample ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbuf(colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32) (result Pixbuf) {
 	iv, err := _I.Get(0, "Pixbuf", "new")
 	if err != nil {
@@ -100,8 +111,23 @@ func NewPixbuf(colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32,
 }
 
 // gdk_pixbuf_new_from_bytes
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ data ] trans: nothing
+//
+// [ colorspace ] trans: nothing
+//
+// [ has_alpha ] trans: nothing
+//
+// [ bits_per_sample ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ rowstride ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromBytes(data glib.Bytes, colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32) (result Pixbuf) {
 	iv, err := _I.Get(1, "Pixbuf", "new_from_bytes")
 	if err != nil {
@@ -123,8 +149,27 @@ func NewPixbufFromBytes(data glib.Bytes, colorspace ColorspaceEnum, has_alpha bo
 }
 
 // gdk_pixbuf_new_from_data
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ data ] trans: nothing
+//
+// [ colorspace ] trans: nothing
+//
+// [ has_alpha ] trans: nothing
+//
+// [ bits_per_sample ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ rowstride ] trans: nothing
+//
+// [ destroy_fn ] trans: nothing
+//
+// [ destroy_fn_data ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromData(data gi.Uint8Array, colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32, destroy_fn int /*TODO_TYPE CALLBACK*/, destroy_fn_data unsafe.Pointer) (result Pixbuf) {
 	iv, err := _I.Get(2, "Pixbuf", "new_from_data")
 	if err != nil {
@@ -148,8 +193,11 @@ func NewPixbufFromData(data gi.Uint8Array, colorspace ColorspaceEnum, has_alpha 
 }
 
 // gdk_pixbuf_new_from_file
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromFile(filename string) (result Pixbuf, err error) {
 	iv, err := _I.Get(3, "Pixbuf", "new_from_file")
 	if err != nil {
@@ -169,8 +217,17 @@ func NewPixbufFromFile(filename string) (result Pixbuf, err error) {
 }
 
 // gdk_pixbuf_new_from_file_at_scale
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ filename ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ preserve_aspect_ratio ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromFileAtScale(filename string, width int32, height int32, preserve_aspect_ratio bool) (result Pixbuf, err error) {
 	iv, err := _I.Get(4, "Pixbuf", "new_from_file_at_scale")
 	if err != nil {
@@ -193,8 +250,15 @@ func NewPixbufFromFileAtScale(filename string, width int32, height int32, preser
 }
 
 // gdk_pixbuf_new_from_file_at_size
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ filename ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromFileAtSize(filename string, width int32, height int32) (result Pixbuf, err error) {
 	iv, err := _I.Get(5, "Pixbuf", "new_from_file_at_size")
 	if err != nil {
@@ -216,9 +280,15 @@ func NewPixbufFromFileAtSize(filename string, width int32, height int32) (result
 }
 
 // gdk_pixbuf_new_from_inline
-// container is not nil, container is Pixbuf
-// is constructor
-// arg 1 data lenArgIdx 0
+//
+// [ data_length ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ copy_pixels ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromInline(data_length int32, data gi.Uint8Array, copy_pixels bool) (result Pixbuf, err error) {
 	iv, err := _I.Get(6, "Pixbuf", "new_from_inline")
 	if err != nil {
@@ -238,8 +308,11 @@ func NewPixbufFromInline(data_length int32, data gi.Uint8Array, copy_pixels bool
 }
 
 // gdk_pixbuf_new_from_resource
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ resource_path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromResource(resource_path string) (result Pixbuf, err error) {
 	iv, err := _I.Get(7, "Pixbuf", "new_from_resource")
 	if err != nil {
@@ -259,8 +332,17 @@ func NewPixbufFromResource(resource_path string) (result Pixbuf, err error) {
 }
 
 // gdk_pixbuf_new_from_resource_at_scale
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ resource_path ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ preserve_aspect_ratio ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromResourceAtScale(resource_path string, width int32, height int32, preserve_aspect_ratio bool) (result Pixbuf, err error) {
 	iv, err := _I.Get(8, "Pixbuf", "new_from_resource_at_scale")
 	if err != nil {
@@ -283,8 +365,13 @@ func NewPixbufFromResourceAtScale(resource_path string, width int32, height int3
 }
 
 // gdk_pixbuf_new_from_stream
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ stream ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromStream(stream gio.IInputStream, cancellable gio.ICancellable) (result Pixbuf, err error) {
 	iv, err := _I.Get(9, "Pixbuf", "new_from_stream")
 	if err != nil {
@@ -311,8 +398,19 @@ func NewPixbufFromStream(stream gio.IInputStream, cancellable gio.ICancellable) 
 }
 
 // gdk_pixbuf_new_from_stream_at_scale
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ stream ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ preserve_aspect_ratio ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromStreamAtScale(stream gio.IInputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable gio.ICancellable) (result Pixbuf, err error) {
 	iv, err := _I.Get(10, "Pixbuf", "new_from_stream_at_scale")
 	if err != nil {
@@ -342,8 +440,11 @@ func NewPixbufFromStreamAtScale(stream gio.IInputStream, width int32, height int
 }
 
 // gdk_pixbuf_new_from_stream_finish
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ async_result ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromStreamFinish(async_result gio.IAsyncResult) (result Pixbuf, err error) {
 	iv, err := _I.Get(11, "Pixbuf", "new_from_stream_finish")
 	if err != nil {
@@ -365,8 +466,11 @@ func NewPixbufFromStreamFinish(async_result gio.IAsyncResult) (result Pixbuf, er
 }
 
 // gdk_pixbuf_new_from_xpm_data
-// container is not nil, container is Pixbuf
-// is constructor
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufFromXpmData(data gi.CStrArray) (result Pixbuf) {
 	iv, err := _I.Get(12, "Pixbuf", "new_from_xpm_data")
 	if err != nil {
@@ -382,9 +486,19 @@ func NewPixbufFromXpmData(data gi.CStrArray) (result Pixbuf) {
 }
 
 // gdk_pixbuf_calculate_rowstride
-// container is not nil, container is Pixbuf
-// is method
-// arg0Type tag: interface, isPtr: false
+//
+// [ colorspace ] trans: nothing
+//
+// [ has_alpha ] trans: nothing
+//
+// [ bits_per_sample ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PixbufCalculateRowstride1(colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32) (result int32) {
 	iv, err := _I.Get(13, "Pixbuf", "calculate_rowstride")
 	if err != nil {
@@ -404,9 +518,15 @@ func PixbufCalculateRowstride1(colorspace ColorspaceEnum, has_alpha bool, bits_p
 }
 
 // gdk_pixbuf_get_file_info
-// container is not nil, container is Pixbuf
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ filename ] trans: nothing
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func PixbufGetFileInfo1(filename string) (result PixbufFormat, width int32, height int32) {
 	iv, err := _I.Get(14, "Pixbuf", "get_file_info")
 	if err != nil {
@@ -429,9 +549,15 @@ func PixbufGetFileInfo1(filename string) (result PixbufFormat, width int32, heig
 }
 
 // gdk_pixbuf_get_file_info_async
-// container is not nil, container is Pixbuf
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ filename ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func PixbufGetFileInfoAsync1(filename string, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(15, "Pixbuf", "get_file_info_async")
 	if err != nil {
@@ -453,9 +579,15 @@ func PixbufGetFileInfoAsync1(filename string, cancellable gio.ICancellable, call
 }
 
 // gdk_pixbuf_get_file_info_finish
-// container is not nil, container is Pixbuf
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ async_result ] trans: nothing
+//
+// [ width ] trans: everything, dir: out
+//
+// [ height ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func PixbufGetFileInfoFinish1(async_result gio.IAsyncResult) (result PixbufFormat, width int32, height int32, err error) {
 	iv, err := _I.Get(16, "Pixbuf", "get_file_info_finish")
 	if err != nil {
@@ -481,9 +613,15 @@ func PixbufGetFileInfoFinish1(async_result gio.IAsyncResult) (result PixbufForma
 }
 
 // gdk_pixbuf_new_from_stream_async
-// container is not nil, container is Pixbuf
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ stream ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func PixbufNewFromStreamAsync1(stream gio.IInputStream, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(18, "Pixbuf", "new_from_stream_async")
 	if err != nil {
@@ -507,9 +645,21 @@ func PixbufNewFromStreamAsync1(stream gio.IInputStream, cancellable gio.ICancell
 }
 
 // gdk_pixbuf_new_from_stream_at_scale_async
-// container is not nil, container is Pixbuf
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ stream ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ preserve_aspect_ratio ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func PixbufNewFromStreamAtScaleAsync1(stream gio.IInputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(19, "Pixbuf", "new_from_stream_at_scale_async")
 	if err != nil {
@@ -536,9 +686,11 @@ func PixbufNewFromStreamAtScaleAsync1(stream gio.IInputStream, width int32, heig
 }
 
 // gdk_pixbuf_save_to_stream_finish
-// container is not nil, container is Pixbuf
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ async_result ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PixbufSaveToStreamFinish1(async_result gio.IAsyncResult) (result bool, err error) {
 	iv, err := _I.Get(20, "Pixbuf", "save_to_stream_finish")
 	if err != nil {
@@ -560,8 +712,17 @@ func PixbufSaveToStreamFinish1(async_result gio.IAsyncResult) (result bool, err 
 }
 
 // gdk_pixbuf_add_alpha
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ substitute_color ] trans: nothing
+//
+// [ r ] trans: nothing
+//
+// [ g ] trans: nothing
+//
+// [ b ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Pixbuf) AddAlpha(substitute_color bool, r uint8, g uint8, b uint8) (result Pixbuf) {
 	iv, err := _I.Get(21, "Pixbuf", "add_alpha")
 	if err != nil {
@@ -581,8 +742,9 @@ func (v Pixbuf) AddAlpha(substitute_color bool, r uint8, g uint8, b uint8) (resu
 }
 
 // gdk_pixbuf_apply_embedded_orientation
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Pixbuf) ApplyEmbeddedOrientation() (result Pixbuf) {
 	iv, err := _I.Get(22, "Pixbuf", "apply_embedded_orientation")
 	if err != nil {
@@ -598,8 +760,29 @@ func (v Pixbuf) ApplyEmbeddedOrientation() (result Pixbuf) {
 }
 
 // gdk_pixbuf_composite
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ dest ] trans: nothing
+//
+// [ dest_x ] trans: nothing
+//
+// [ dest_y ] trans: nothing
+//
+// [ dest_width ] trans: nothing
+//
+// [ dest_height ] trans: nothing
+//
+// [ offset_x ] trans: nothing
+//
+// [ offset_y ] trans: nothing
+//
+// [ scale_x ] trans: nothing
+//
+// [ scale_y ] trans: nothing
+//
+// [ interp_type ] trans: nothing
+//
+// [ overall_alpha ] trans: nothing
+//
 func (v Pixbuf) Composite(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type InterpTypeEnum, overall_alpha int32) {
 	iv, err := _I.Get(23, "Pixbuf", "composite")
 	if err != nil {
@@ -627,8 +810,39 @@ func (v Pixbuf) Composite(dest IPixbuf, dest_x int32, dest_y int32, dest_width i
 }
 
 // gdk_pixbuf_composite_color
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ dest ] trans: nothing
+//
+// [ dest_x ] trans: nothing
+//
+// [ dest_y ] trans: nothing
+//
+// [ dest_width ] trans: nothing
+//
+// [ dest_height ] trans: nothing
+//
+// [ offset_x ] trans: nothing
+//
+// [ offset_y ] trans: nothing
+//
+// [ scale_x ] trans: nothing
+//
+// [ scale_y ] trans: nothing
+//
+// [ interp_type ] trans: nothing
+//
+// [ overall_alpha ] trans: nothing
+//
+// [ check_x ] trans: nothing
+//
+// [ check_y ] trans: nothing
+//
+// [ check_size ] trans: nothing
+//
+// [ color1 ] trans: nothing
+//
+// [ color2 ] trans: nothing
+//
 func (v Pixbuf) CompositeColor(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type InterpTypeEnum, overall_alpha int32, check_x int32, check_y int32, check_size int32, color1 uint32, color2 uint32) {
 	iv, err := _I.Get(24, "Pixbuf", "composite_color")
 	if err != nil {
@@ -661,8 +875,23 @@ func (v Pixbuf) CompositeColor(dest IPixbuf, dest_x int32, dest_y int32, dest_wi
 }
 
 // gdk_pixbuf_composite_color_simple
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ dest_width ] trans: nothing
+//
+// [ dest_height ] trans: nothing
+//
+// [ interp_type ] trans: nothing
+//
+// [ overall_alpha ] trans: nothing
+//
+// [ check_size ] trans: nothing
+//
+// [ color1 ] trans: nothing
+//
+// [ color2 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Pixbuf) CompositeColorSimple(dest_width int32, dest_height int32, interp_type InterpTypeEnum, overall_alpha int32, check_size int32, color1 uint32, color2 uint32) (result Pixbuf) {
 	iv, err := _I.Get(25, "Pixbuf", "composite_color_simple")
 	if err != nil {
@@ -685,8 +914,9 @@ func (v Pixbuf) CompositeColorSimple(dest_width int32, dest_height int32, interp
 }
 
 // gdk_pixbuf_copy
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Pixbuf) Copy() (result Pixbuf) {
 	iv, err := _I.Get(26, "Pixbuf", "copy")
 	if err != nil {
@@ -702,8 +932,21 @@ func (v Pixbuf) Copy() (result Pixbuf) {
 }
 
 // gdk_pixbuf_copy_area
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ src_x ] trans: nothing
+//
+// [ src_y ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ dest_pixbuf ] trans: nothing
+//
+// [ dest_x ] trans: nothing
+//
+// [ dest_y ] trans: nothing
+//
 func (v Pixbuf) CopyArea(src_x int32, src_y int32, width int32, height int32, dest_pixbuf IPixbuf, dest_x int32, dest_y int32) {
 	iv, err := _I.Get(27, "Pixbuf", "copy_area")
 	if err != nil {
@@ -727,8 +970,11 @@ func (v Pixbuf) CopyArea(src_x int32, src_y int32, width int32, height int32, de
 }
 
 // gdk_pixbuf_copy_options
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ dest_pixbuf ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) CopyOptions(dest_pixbuf IPixbuf) (result bool) {
 	iv, err := _I.Get(28, "Pixbuf", "copy_options")
 	if err != nil {
@@ -749,8 +995,9 @@ func (v Pixbuf) CopyOptions(dest_pixbuf IPixbuf) (result bool) {
 }
 
 // gdk_pixbuf_fill
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ pixel ] trans: nothing
+//
 func (v Pixbuf) Fill(pixel uint32) {
 	iv, err := _I.Get(29, "Pixbuf", "fill")
 	if err != nil {
@@ -764,8 +1011,11 @@ func (v Pixbuf) Fill(pixel uint32) {
 }
 
 // gdk_pixbuf_flip
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ horizontal ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Pixbuf) Flip(horizontal bool) (result Pixbuf) {
 	iv, err := _I.Get(30, "Pixbuf", "flip")
 	if err != nil {
@@ -782,8 +1032,9 @@ func (v Pixbuf) Flip(horizontal bool) (result Pixbuf) {
 }
 
 // gdk_pixbuf_get_bits_per_sample
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) GetBitsPerSample() (result int32) {
 	iv, err := _I.Get(31, "Pixbuf", "get_bits_per_sample")
 	if err != nil {
@@ -799,8 +1050,9 @@ func (v Pixbuf) GetBitsPerSample() (result int32) {
 }
 
 // gdk_pixbuf_get_byte_length
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) GetByteLength() (result uint64) {
 	iv, err := _I.Get(32, "Pixbuf", "get_byte_length")
 	if err != nil {
@@ -816,8 +1068,9 @@ func (v Pixbuf) GetByteLength() (result uint64) {
 }
 
 // gdk_pixbuf_get_colorspace
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) GetColorspace() (result ColorspaceEnum) {
 	iv, err := _I.Get(33, "Pixbuf", "get_colorspace")
 	if err != nil {
@@ -833,8 +1086,9 @@ func (v Pixbuf) GetColorspace() (result ColorspaceEnum) {
 }
 
 // gdk_pixbuf_get_has_alpha
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) GetHasAlpha() (result bool) {
 	iv, err := _I.Get(34, "Pixbuf", "get_has_alpha")
 	if err != nil {
@@ -850,8 +1104,9 @@ func (v Pixbuf) GetHasAlpha() (result bool) {
 }
 
 // gdk_pixbuf_get_height
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) GetHeight() (result int32) {
 	iv, err := _I.Get(35, "Pixbuf", "get_height")
 	if err != nil {
@@ -867,8 +1122,9 @@ func (v Pixbuf) GetHeight() (result int32) {
 }
 
 // gdk_pixbuf_get_n_channels
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) GetNChannels() (result int32) {
 	iv, err := _I.Get(36, "Pixbuf", "get_n_channels")
 	if err != nil {
@@ -884,8 +1140,11 @@ func (v Pixbuf) GetNChannels() (result int32) {
 }
 
 // gdk_pixbuf_get_option
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) GetOption(key string) (result string) {
 	iv, err := _I.Get(37, "Pixbuf", "get_option")
 	if err != nil {
@@ -899,13 +1158,14 @@ func (v Pixbuf) GetOption(key string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_key)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // gdk_pixbuf_get_options
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: container
+//
 func (v Pixbuf) GetOptions() (result glib.HashTable) {
 	iv, err := _I.Get(38, "Pixbuf", "get_options")
 	if err != nil {
@@ -921,9 +1181,11 @@ func (v Pixbuf) GetOptions() (result glib.HashTable) {
 }
 
 // gdk_pixbuf_get_pixels_with_length
-// container is not nil, container is Pixbuf
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) GetPixels() (result gi.Uint8Array) {
 	iv, err := _I.Get(39, "Pixbuf", "get_pixels")
 	if err != nil {
@@ -944,8 +1206,9 @@ func (v Pixbuf) GetPixels() (result gi.Uint8Array) {
 }
 
 // gdk_pixbuf_get_rowstride
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) GetRowstride() (result int32) {
 	iv, err := _I.Get(40, "Pixbuf", "get_rowstride")
 	if err != nil {
@@ -961,8 +1224,9 @@ func (v Pixbuf) GetRowstride() (result int32) {
 }
 
 // gdk_pixbuf_get_width
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) GetWidth() (result int32) {
 	iv, err := _I.Get(41, "Pixbuf", "get_width")
 	if err != nil {
@@ -978,8 +1242,17 @@ func (v Pixbuf) GetWidth() (result int32) {
 }
 
 // gdk_pixbuf_new_subpixbuf
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ src_x ] trans: nothing
+//
+// [ src_y ] trans: nothing
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Pixbuf) NewSubpixbuf(src_x int32, src_y int32, width int32, height int32) (result Pixbuf) {
 	iv, err := _I.Get(42, "Pixbuf", "new_subpixbuf")
 	if err != nil {
@@ -999,8 +1272,9 @@ func (v Pixbuf) NewSubpixbuf(src_x int32, src_y int32, width int32, height int32
 }
 
 // gdk_pixbuf_read_pixel_bytes
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Pixbuf) ReadPixelBytes() (result glib.Bytes) {
 	iv, err := _I.Get(43, "Pixbuf", "read_pixel_bytes")
 	if err != nil {
@@ -1016,8 +1290,9 @@ func (v Pixbuf) ReadPixelBytes() (result glib.Bytes) {
 }
 
 // gdk_pixbuf_read_pixels
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) ReadPixels() (result uint8) {
 	iv, err := _I.Get(44, "Pixbuf", "read_pixels")
 	if err != nil {
@@ -1033,8 +1308,11 @@ func (v Pixbuf) ReadPixels() (result uint8) {
 }
 
 // gdk_pixbuf_remove_option
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) RemoveOption(key string) (result bool) {
 	iv, err := _I.Get(45, "Pixbuf", "remove_option")
 	if err != nil {
@@ -1053,8 +1331,11 @@ func (v Pixbuf) RemoveOption(key string) (result bool) {
 }
 
 // gdk_pixbuf_rotate_simple
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ angle ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Pixbuf) RotateSimple(angle PixbufRotationEnum) (result Pixbuf) {
 	iv, err := _I.Get(46, "Pixbuf", "rotate_simple")
 	if err != nil {
@@ -1071,8 +1352,13 @@ func (v Pixbuf) RotateSimple(angle PixbufRotationEnum) (result Pixbuf) {
 }
 
 // gdk_pixbuf_saturate_and_pixelate
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ dest ] trans: nothing
+//
+// [ saturation ] trans: nothing
+//
+// [ pixelate ] trans: nothing
+//
 func (v Pixbuf) SaturateAndPixelate(dest IPixbuf, saturation float32, pixelate bool) {
 	iv, err := _I.Get(47, "Pixbuf", "saturate_and_pixelate")
 	if err != nil {
@@ -1092,9 +1378,19 @@ func (v Pixbuf) SaturateAndPixelate(dest IPixbuf, saturation float32, pixelate b
 }
 
 // gdk_pixbuf_save_to_bufferv
-// container is not nil, container is Pixbuf
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: everything, dir: out
+//
+// [ buffer_size ] trans: everything, dir: out
+//
+// [ type1 ] trans: nothing
+//
+// [ option_keys ] trans: nothing
+//
+// [ option_values ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) SaveToBufferv(type1 string, option_keys gi.CStrArray, option_values gi.CStrArray) (result bool, buffer gi.Uint8Array, err error) {
 	iv, err := _I.Get(48, "Pixbuf", "save_to_bufferv")
 	if err != nil {
@@ -1124,8 +1420,19 @@ func (v Pixbuf) SaveToBufferv(type1 string, option_keys gi.CStrArray, option_val
 }
 
 // gdk_pixbuf_save_to_callbackv
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ save_func ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ option_keys ] trans: nothing
+//
+// [ option_values ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) SaveToCallbackv(save_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray) (result bool, err error) {
 	iv, err := _I.Get(49, "Pixbuf", "save_to_callbackv")
 	if err != nil {
@@ -1150,8 +1457,19 @@ func (v Pixbuf) SaveToCallbackv(save_func int /*TODO_TYPE CALLBACK*/, user_data 
 }
 
 // gdk_pixbuf_save_to_streamv
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ stream ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ option_keys ] trans: nothing
+//
+// [ option_values ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) SaveToStreamv(stream gio.IOutputStream, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray, cancellable gio.ICancellable) (result bool, err error) {
 	iv, err := _I.Get(50, "Pixbuf", "save_to_streamv")
 	if err != nil {
@@ -1184,8 +1502,21 @@ func (v Pixbuf) SaveToStreamv(stream gio.IOutputStream, type1 string, option_key
 }
 
 // gdk_pixbuf_save_to_streamv_async
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ stream ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ option_keys ] trans: nothing
+//
+// [ option_values ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v Pixbuf) SaveToStreamvAsync(stream gio.IOutputStream, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(51, "Pixbuf", "save_to_streamv_async")
 	if err != nil {
@@ -1215,8 +1546,17 @@ func (v Pixbuf) SaveToStreamvAsync(stream gio.IOutputStream, type1 string, optio
 }
 
 // gdk_pixbuf_savev
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ filename ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ option_keys ] trans: nothing
+//
+// [ option_values ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) Savev(filename string, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray) (result bool, err error) {
 	iv, err := _I.Get(52, "Pixbuf", "savev")
 	if err != nil {
@@ -1242,8 +1582,27 @@ func (v Pixbuf) Savev(filename string, type1 string, option_keys gi.CStrArray, o
 }
 
 // gdk_pixbuf_scale
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ dest ] trans: nothing
+//
+// [ dest_x ] trans: nothing
+//
+// [ dest_y ] trans: nothing
+//
+// [ dest_width ] trans: nothing
+//
+// [ dest_height ] trans: nothing
+//
+// [ offset_x ] trans: nothing
+//
+// [ offset_y ] trans: nothing
+//
+// [ scale_x ] trans: nothing
+//
+// [ scale_y ] trans: nothing
+//
+// [ interp_type ] trans: nothing
+//
 func (v Pixbuf) Scale(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type InterpTypeEnum) {
 	iv, err := _I.Get(53, "Pixbuf", "scale")
 	if err != nil {
@@ -1270,8 +1629,15 @@ func (v Pixbuf) Scale(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32
 }
 
 // gdk_pixbuf_scale_simple
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ dest_width ] trans: nothing
+//
+// [ dest_height ] trans: nothing
+//
+// [ interp_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Pixbuf) ScaleSimple(dest_width int32, dest_height int32, interp_type InterpTypeEnum) (result Pixbuf) {
 	iv, err := _I.Get(54, "Pixbuf", "scale_simple")
 	if err != nil {
@@ -1290,8 +1656,13 @@ func (v Pixbuf) ScaleSimple(dest_width int32, dest_height int32, interp_type Int
 }
 
 // gdk_pixbuf_set_option
-// container is not nil, container is Pixbuf
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Pixbuf) SetOption(key string, value string) (result bool) {
 	iv, err := _I.Get(55, "Pixbuf", "set_option")
 	if err != nil {
@@ -1341,8 +1712,11 @@ func PixbufAnimationGetType() gi.GType {
 }
 
 // gdk_pixbuf_animation_new_from_file
-// container is not nil, container is PixbufAnimation
-// is constructor
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufAnimationFromFile(filename string) (result PixbufAnimation, err error) {
 	iv, err := _I.Get(56, "PixbufAnimation", "new_from_file")
 	if err != nil {
@@ -1362,8 +1736,11 @@ func NewPixbufAnimationFromFile(filename string) (result PixbufAnimation, err er
 }
 
 // gdk_pixbuf_animation_new_from_resource
-// container is not nil, container is PixbufAnimation
-// is constructor
+//
+// [ resource_path ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufAnimationFromResource(resource_path string) (result PixbufAnimation, err error) {
 	iv, err := _I.Get(57, "PixbufAnimation", "new_from_resource")
 	if err != nil {
@@ -1383,8 +1760,13 @@ func NewPixbufAnimationFromResource(resource_path string) (result PixbufAnimatio
 }
 
 // gdk_pixbuf_animation_new_from_stream
-// container is not nil, container is PixbufAnimation
-// is constructor
+//
+// [ stream ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufAnimationFromStream(stream gio.IInputStream, cancellable gio.ICancellable) (result PixbufAnimation, err error) {
 	iv, err := _I.Get(58, "PixbufAnimation", "new_from_stream")
 	if err != nil {
@@ -1411,8 +1793,11 @@ func NewPixbufAnimationFromStream(stream gio.IInputStream, cancellable gio.ICanc
 }
 
 // gdk_pixbuf_animation_new_from_stream_finish
-// container is not nil, container is PixbufAnimation
-// is constructor
+//
+// [ async_result ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufAnimationFromStreamFinish(async_result gio.IAsyncResult) (result PixbufAnimation, err error) {
 	iv, err := _I.Get(59, "PixbufAnimation", "new_from_stream_finish")
 	if err != nil {
@@ -1434,9 +1819,15 @@ func NewPixbufAnimationFromStreamFinish(async_result gio.IAsyncResult) (result P
 }
 
 // gdk_pixbuf_animation_new_from_stream_async
-// container is not nil, container is PixbufAnimation
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ stream ] trans: nothing
+//
+// [ cancellable ] trans: nothing
+//
+// [ callback ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func PixbufAnimationNewFromStreamAsync1(stream gio.IInputStream, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(60, "PixbufAnimation", "new_from_stream_async")
 	if err != nil {
@@ -1460,8 +1851,9 @@ func PixbufAnimationNewFromStreamAsync1(stream gio.IInputStream, cancellable gio
 }
 
 // gdk_pixbuf_animation_get_height
-// container is not nil, container is PixbufAnimation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufAnimation) GetHeight() (result int32) {
 	iv, err := _I.Get(61, "PixbufAnimation", "get_height")
 	if err != nil {
@@ -1477,8 +1869,11 @@ func (v PixbufAnimation) GetHeight() (result int32) {
 }
 
 // gdk_pixbuf_animation_get_iter
-// container is not nil, container is PixbufAnimation
-// is method
+//
+// [ start_time ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v PixbufAnimation) GetIter(start_time glib.TimeVal) (result PixbufAnimationIter) {
 	iv, err := _I.Get(62, "PixbufAnimation", "get_iter")
 	if err != nil {
@@ -1495,8 +1890,9 @@ func (v PixbufAnimation) GetIter(start_time glib.TimeVal) (result PixbufAnimatio
 }
 
 // gdk_pixbuf_animation_get_static_image
-// container is not nil, container is PixbufAnimation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufAnimation) GetStaticImage() (result Pixbuf) {
 	iv, err := _I.Get(63, "PixbufAnimation", "get_static_image")
 	if err != nil {
@@ -1512,8 +1908,9 @@ func (v PixbufAnimation) GetStaticImage() (result Pixbuf) {
 }
 
 // gdk_pixbuf_animation_get_width
-// container is not nil, container is PixbufAnimation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufAnimation) GetWidth() (result int32) {
 	iv, err := _I.Get(64, "PixbufAnimation", "get_width")
 	if err != nil {
@@ -1529,8 +1926,9 @@ func (v PixbufAnimation) GetWidth() (result int32) {
 }
 
 // gdk_pixbuf_animation_is_static_image
-// container is not nil, container is PixbufAnimation
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufAnimation) IsStaticImage() (result bool) {
 	iv, err := _I.Get(65, "PixbufAnimation", "is_static_image")
 	if err != nil {
@@ -1561,8 +1959,11 @@ func PixbufAnimationIterGetType() gi.GType {
 }
 
 // gdk_pixbuf_animation_iter_advance
-// container is not nil, container is PixbufAnimationIter
-// is method
+//
+// [ current_time ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v PixbufAnimationIter) Advance(current_time glib.TimeVal) (result bool) {
 	iv, err := _I.Get(66, "PixbufAnimationIter", "advance")
 	if err != nil {
@@ -1579,8 +1980,9 @@ func (v PixbufAnimationIter) Advance(current_time glib.TimeVal) (result bool) {
 }
 
 // gdk_pixbuf_animation_iter_get_delay_time
-// container is not nil, container is PixbufAnimationIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufAnimationIter) GetDelayTime() (result int32) {
 	iv, err := _I.Get(67, "PixbufAnimationIter", "get_delay_time")
 	if err != nil {
@@ -1596,8 +1998,9 @@ func (v PixbufAnimationIter) GetDelayTime() (result int32) {
 }
 
 // gdk_pixbuf_animation_iter_get_pixbuf
-// container is not nil, container is PixbufAnimationIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufAnimationIter) GetPixbuf() (result Pixbuf) {
 	iv, err := _I.Get(68, "PixbufAnimationIter", "get_pixbuf")
 	if err != nil {
@@ -1613,8 +2016,9 @@ func (v PixbufAnimationIter) GetPixbuf() (result Pixbuf) {
 }
 
 // gdk_pixbuf_animation_iter_on_currently_loading_frame
-// container is not nil, container is PixbufAnimationIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufAnimationIter) OnCurrentlyLoadingFrame() (result bool) {
 	iv, err := _I.Get(69, "PixbufAnimationIter", "on_currently_loading_frame")
 	if err != nil {
@@ -1672,8 +2076,9 @@ func PixbufFormatGetType() gi.GType {
 }
 
 // gdk_pixbuf_format_copy
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ result ] trans: everything
+//
 func (v PixbufFormat) Copy() (result PixbufFormat) {
 	iv, err := _I.Get(70, "PixbufFormat", "copy")
 	if err != nil {
@@ -1689,8 +2094,7 @@ func (v PixbufFormat) Copy() (result PixbufFormat) {
 }
 
 // gdk_pixbuf_format_free
-// container is not nil, container is PixbufFormat
-// is method
+//
 func (v PixbufFormat) Free() {
 	iv, err := _I.Get(71, "PixbufFormat", "free")
 	if err != nil {
@@ -1703,8 +2107,9 @@ func (v PixbufFormat) Free() {
 }
 
 // gdk_pixbuf_format_get_description
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ result ] trans: everything
+//
 func (v PixbufFormat) GetDescription() (result string) {
 	iv, err := _I.Get(72, "PixbufFormat", "get_description")
 	if err != nil {
@@ -1720,8 +2125,9 @@ func (v PixbufFormat) GetDescription() (result string) {
 }
 
 // gdk_pixbuf_format_get_extensions
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ result ] trans: everything
+//
 func (v PixbufFormat) GetExtensions() (result gi.CStrArray) {
 	iv, err := _I.Get(73, "PixbufFormat", "get_extensions")
 	if err != nil {
@@ -1738,8 +2144,9 @@ func (v PixbufFormat) GetExtensions() (result gi.CStrArray) {
 }
 
 // gdk_pixbuf_format_get_license
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ result ] trans: everything
+//
 func (v PixbufFormat) GetLicense() (result string) {
 	iv, err := _I.Get(74, "PixbufFormat", "get_license")
 	if err != nil {
@@ -1755,8 +2162,9 @@ func (v PixbufFormat) GetLicense() (result string) {
 }
 
 // gdk_pixbuf_format_get_mime_types
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ result ] trans: everything
+//
 func (v PixbufFormat) GetMimeTypes() (result gi.CStrArray) {
 	iv, err := _I.Get(75, "PixbufFormat", "get_mime_types")
 	if err != nil {
@@ -1773,8 +2181,9 @@ func (v PixbufFormat) GetMimeTypes() (result gi.CStrArray) {
 }
 
 // gdk_pixbuf_format_get_name
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ result ] trans: everything
+//
 func (v PixbufFormat) GetName() (result string) {
 	iv, err := _I.Get(76, "PixbufFormat", "get_name")
 	if err != nil {
@@ -1790,8 +2199,9 @@ func (v PixbufFormat) GetName() (result string) {
 }
 
 // gdk_pixbuf_format_is_disabled
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufFormat) IsDisabled() (result bool) {
 	iv, err := _I.Get(77, "PixbufFormat", "is_disabled")
 	if err != nil {
@@ -1807,8 +2217,11 @@ func (v PixbufFormat) IsDisabled() (result bool) {
 }
 
 // gdk_pixbuf_format_is_save_option_supported
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ option_key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v PixbufFormat) IsSaveOptionSupported(option_key string) (result bool) {
 	iv, err := _I.Get(78, "PixbufFormat", "is_save_option_supported")
 	if err != nil {
@@ -1827,8 +2240,9 @@ func (v PixbufFormat) IsSaveOptionSupported(option_key string) (result bool) {
 }
 
 // gdk_pixbuf_format_is_scalable
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufFormat) IsScalable() (result bool) {
 	iv, err := _I.Get(79, "PixbufFormat", "is_scalable")
 	if err != nil {
@@ -1844,8 +2258,9 @@ func (v PixbufFormat) IsScalable() (result bool) {
 }
 
 // gdk_pixbuf_format_is_writable
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufFormat) IsWritable() (result bool) {
 	iv, err := _I.Get(80, "PixbufFormat", "is_writable")
 	if err != nil {
@@ -1861,8 +2276,9 @@ func (v PixbufFormat) IsWritable() (result bool) {
 }
 
 // gdk_pixbuf_format_set_disabled
-// container is not nil, container is PixbufFormat
-// is method
+//
+// [ disabled ] trans: nothing
+//
 func (v PixbufFormat) SetDisabled(disabled bool) {
 	iv, err := _I.Get(81, "PixbufFormat", "set_disabled")
 	if err != nil {
@@ -1891,8 +2307,9 @@ func PixbufLoaderGetType() gi.GType {
 }
 
 // gdk_pixbuf_loader_new
-// container is not nil, container is PixbufLoader
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewPixbufLoader() (result PixbufLoader) {
 	iv, err := _I.Get(82, "PixbufLoader", "new")
 	if err != nil {
@@ -1906,8 +2323,11 @@ func NewPixbufLoader() (result PixbufLoader) {
 }
 
 // gdk_pixbuf_loader_new_with_mime_type
-// container is not nil, container is PixbufLoader
-// is constructor
+//
+// [ mime_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufLoaderWithMimeType(mime_type string) (result PixbufLoader, err error) {
 	iv, err := _I.Get(83, "PixbufLoader", "new_with_mime_type")
 	if err != nil {
@@ -1927,8 +2347,11 @@ func NewPixbufLoaderWithMimeType(mime_type string) (result PixbufLoader, err err
 }
 
 // gdk_pixbuf_loader_new_with_type
-// container is not nil, container is PixbufLoader
-// is constructor
+//
+// [ image_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufLoaderWithType(image_type string) (result PixbufLoader, err error) {
 	iv, err := _I.Get(84, "PixbufLoader", "new_with_type")
 	if err != nil {
@@ -1948,8 +2371,9 @@ func NewPixbufLoaderWithType(image_type string) (result PixbufLoader, err error)
 }
 
 // gdk_pixbuf_loader_close
-// container is not nil, container is PixbufLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufLoader) Close() (result bool, err error) {
 	iv, err := _I.Get(85, "PixbufLoader", "close")
 	if err != nil {
@@ -1967,8 +2391,9 @@ func (v PixbufLoader) Close() (result bool, err error) {
 }
 
 // gdk_pixbuf_loader_get_animation
-// container is not nil, container is PixbufLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufLoader) GetAnimation() (result PixbufAnimation) {
 	iv, err := _I.Get(86, "PixbufLoader", "get_animation")
 	if err != nil {
@@ -1984,8 +2409,9 @@ func (v PixbufLoader) GetAnimation() (result PixbufAnimation) {
 }
 
 // gdk_pixbuf_loader_get_format
-// container is not nil, container is PixbufLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufLoader) GetFormat() (result PixbufFormat) {
 	iv, err := _I.Get(87, "PixbufLoader", "get_format")
 	if err != nil {
@@ -2001,8 +2427,9 @@ func (v PixbufLoader) GetFormat() (result PixbufFormat) {
 }
 
 // gdk_pixbuf_loader_get_pixbuf
-// container is not nil, container is PixbufLoader
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufLoader) GetPixbuf() (result Pixbuf) {
 	iv, err := _I.Get(88, "PixbufLoader", "get_pixbuf")
 	if err != nil {
@@ -2018,8 +2445,11 @@ func (v PixbufLoader) GetPixbuf() (result Pixbuf) {
 }
 
 // gdk_pixbuf_loader_set_size
-// container is not nil, container is PixbufLoader
-// is method
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
 func (v PixbufLoader) SetSize(width int32, height int32) {
 	iv, err := _I.Get(89, "PixbufLoader", "set_size")
 	if err != nil {
@@ -2034,9 +2464,13 @@ func (v PixbufLoader) SetSize(width int32, height int32) {
 }
 
 // gdk_pixbuf_loader_write
-// container is not nil, container is PixbufLoader
-// is method
-// arg 0 buf lenArgIdx 1
+//
+// [ buf ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v PixbufLoader) Write(buf gi.Uint8Array, count uint64) (result bool, err error) {
 	iv, err := _I.Get(90, "PixbufLoader", "write")
 	if err != nil {
@@ -2056,8 +2490,11 @@ func (v PixbufLoader) Write(buf gi.Uint8Array, count uint64) (result bool, err e
 }
 
 // gdk_pixbuf_loader_write_bytes
-// container is not nil, container is PixbufLoader
-// is method
+//
+// [ buffer ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v PixbufLoader) WriteBytes(buffer glib.Bytes) (result bool, err error) {
 	iv, err := _I.Get(91, "PixbufLoader", "write_bytes")
 	if err != nil {
@@ -2123,8 +2560,15 @@ func PixbufSimpleAnimGetType() gi.GType {
 }
 
 // gdk_pixbuf_simple_anim_new
-// container is not nil, container is PixbufSimpleAnim
-// is constructor
+//
+// [ width ] trans: nothing
+//
+// [ height ] trans: nothing
+//
+// [ rate ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewPixbufSimpleAnim(width int32, height int32, rate float32) (result PixbufSimpleAnim) {
 	iv, err := _I.Get(92, "PixbufSimpleAnim", "new")
 	if err != nil {
@@ -2142,8 +2586,9 @@ func NewPixbufSimpleAnim(width int32, height int32, rate float32) (result Pixbuf
 }
 
 // gdk_pixbuf_simple_anim_add_frame
-// container is not nil, container is PixbufSimpleAnim
-// is method
+//
+// [ pixbuf ] trans: nothing
+//
 func (v PixbufSimpleAnim) AddFrame(pixbuf IPixbuf) {
 	iv, err := _I.Get(93, "PixbufSimpleAnim", "add_frame")
 	if err != nil {
@@ -2161,8 +2606,9 @@ func (v PixbufSimpleAnim) AddFrame(pixbuf IPixbuf) {
 }
 
 // gdk_pixbuf_simple_anim_get_loop
-// container is not nil, container is PixbufSimpleAnim
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v PixbufSimpleAnim) GetLoop() (result bool) {
 	iv, err := _I.Get(94, "PixbufSimpleAnim", "get_loop")
 	if err != nil {
@@ -2178,8 +2624,9 @@ func (v PixbufSimpleAnim) GetLoop() (result bool) {
 }
 
 // gdk_pixbuf_simple_anim_set_loop
-// container is not nil, container is PixbufSimpleAnim
-// is method
+//
+// [ loop ] trans: nothing
+//
 func (v PixbufSimpleAnim) SetLoop(loop bool) {
 	iv, err := _I.Get(95, "PixbufSimpleAnim", "set_loop")
 	if err != nil {
@@ -2209,7 +2656,9 @@ func PixbufSimpleAnimIterGetType() gi.GType {
 }
 
 // gdk_pixbuf_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func PixbufErrorQuark() (result uint32) {
 	iv, err := _I.Get(96, "pixbuf_error_quark", "")
 	if err != nil {

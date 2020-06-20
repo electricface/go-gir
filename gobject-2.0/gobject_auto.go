@@ -172,8 +172,9 @@ func BindingGetType() gi.GType {
 }
 
 // g_binding_get_flags
-// container is not nil, container is Binding
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Binding) GetFlags() (result BindingFlags) {
 	iv, err := _I.Get(0, "Binding", "get_flags")
 	if err != nil {
@@ -189,8 +190,9 @@ func (v Binding) GetFlags() (result BindingFlags) {
 }
 
 // g_binding_get_source
-// container is not nil, container is Binding
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Binding) GetSource() (result Object) {
 	iv, err := _I.Get(1, "Binding", "get_source")
 	if err != nil {
@@ -206,8 +208,9 @@ func (v Binding) GetSource() (result Object) {
 }
 
 // g_binding_get_source_property
-// container is not nil, container is Binding
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Binding) GetSourceProperty() (result string) {
 	iv, err := _I.Get(2, "Binding", "get_source_property")
 	if err != nil {
@@ -218,13 +221,14 @@ func (v Binding) GetSourceProperty() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_binding_get_target
-// container is not nil, container is Binding
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Binding) GetTarget() (result Object) {
 	iv, err := _I.Get(3, "Binding", "get_target")
 	if err != nil {
@@ -240,8 +244,9 @@ func (v Binding) GetTarget() (result Object) {
 }
 
 // g_binding_get_target_property
-// container is not nil, container is Binding
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Binding) GetTargetProperty() (result string) {
 	iv, err := _I.Get(4, "Binding", "get_target_property")
 	if err != nil {
@@ -252,13 +257,12 @@ func (v Binding) GetTargetProperty() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_binding_unbind
-// container is not nil, container is Binding
-// is method
+//
 func (v Binding) Unbind() {
 	iv, err := _I.Get(5, "Binding", "unbind")
 	if err != nil {
@@ -345,9 +349,19 @@ func CClosureGetType() gi.GType {
 }
 
 // g_cclosure_marshal_BOOLEAN__BOXED_BOXED
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalBoolean_BoxedBoxed1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(6, "CClosure", "marshal_BOOLEAN__BOXED_BOXED")
 	if err != nil {
@@ -365,9 +379,19 @@ func CClosureMarshalBoolean_BoxedBoxed1(closure Closure, return_value Value, n_p
 }
 
 // g_cclosure_marshal_BOOLEAN__FLAGS
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalBoolean_Flags1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(7, "CClosure", "marshal_BOOLEAN__FLAGS")
 	if err != nil {
@@ -385,9 +409,19 @@ func CClosureMarshalBoolean_Flags1(closure Closure, return_value Value, n_param_
 }
 
 // g_cclosure_marshal_STRING__OBJECT_POINTER
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalString_ObjectPointer1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(8, "CClosure", "marshal_STRING__OBJECT_POINTER")
 	if err != nil {
@@ -405,9 +439,19 @@ func CClosureMarshalString_ObjectPointer1(closure Closure, return_value Value, n
 }
 
 // g_cclosure_marshal_VOID__BOOLEAN
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Boolean1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(9, "CClosure", "marshal_VOID__BOOLEAN")
 	if err != nil {
@@ -425,9 +469,19 @@ func CClosureMarshalVoid_Boolean1(closure Closure, return_value Value, n_param_v
 }
 
 // g_cclosure_marshal_VOID__BOXED
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Boxed1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(10, "CClosure", "marshal_VOID__BOXED")
 	if err != nil {
@@ -445,9 +499,19 @@ func CClosureMarshalVoid_Boxed1(closure Closure, return_value Value, n_param_val
 }
 
 // g_cclosure_marshal_VOID__CHAR
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Char1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(11, "CClosure", "marshal_VOID__CHAR")
 	if err != nil {
@@ -465,9 +529,19 @@ func CClosureMarshalVoid_Char1(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_VOID__DOUBLE
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Double1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(12, "CClosure", "marshal_VOID__DOUBLE")
 	if err != nil {
@@ -485,9 +559,19 @@ func CClosureMarshalVoid_Double1(closure Closure, return_value Value, n_param_va
 }
 
 // g_cclosure_marshal_VOID__ENUM
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Enum1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(13, "CClosure", "marshal_VOID__ENUM")
 	if err != nil {
@@ -505,9 +589,19 @@ func CClosureMarshalVoid_Enum1(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_VOID__FLAGS
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Flags1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(14, "CClosure", "marshal_VOID__FLAGS")
 	if err != nil {
@@ -525,9 +619,19 @@ func CClosureMarshalVoid_Flags1(closure Closure, return_value Value, n_param_val
 }
 
 // g_cclosure_marshal_VOID__FLOAT
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Float1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(15, "CClosure", "marshal_VOID__FLOAT")
 	if err != nil {
@@ -545,9 +649,19 @@ func CClosureMarshalVoid_Float1(closure Closure, return_value Value, n_param_val
 }
 
 // g_cclosure_marshal_VOID__INT
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Int1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(16, "CClosure", "marshal_VOID__INT")
 	if err != nil {
@@ -565,9 +679,19 @@ func CClosureMarshalVoid_Int1(closure Closure, return_value Value, n_param_value
 }
 
 // g_cclosure_marshal_VOID__LONG
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Long1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(17, "CClosure", "marshal_VOID__LONG")
 	if err != nil {
@@ -585,9 +709,19 @@ func CClosureMarshalVoid_Long1(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_VOID__OBJECT
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Object1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(18, "CClosure", "marshal_VOID__OBJECT")
 	if err != nil {
@@ -605,9 +739,19 @@ func CClosureMarshalVoid_Object1(closure Closure, return_value Value, n_param_va
 }
 
 // g_cclosure_marshal_VOID__PARAM
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Param1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(19, "CClosure", "marshal_VOID__PARAM")
 	if err != nil {
@@ -625,9 +769,19 @@ func CClosureMarshalVoid_Param1(closure Closure, return_value Value, n_param_val
 }
 
 // g_cclosure_marshal_VOID__POINTER
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Pointer1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(20, "CClosure", "marshal_VOID__POINTER")
 	if err != nil {
@@ -645,9 +799,19 @@ func CClosureMarshalVoid_Pointer1(closure Closure, return_value Value, n_param_v
 }
 
 // g_cclosure_marshal_VOID__STRING
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_String1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(21, "CClosure", "marshal_VOID__STRING")
 	if err != nil {
@@ -665,9 +829,19 @@ func CClosureMarshalVoid_String1(closure Closure, return_value Value, n_param_va
 }
 
 // g_cclosure_marshal_VOID__UCHAR
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Uchar1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(22, "CClosure", "marshal_VOID__UCHAR")
 	if err != nil {
@@ -685,9 +859,19 @@ func CClosureMarshalVoid_Uchar1(closure Closure, return_value Value, n_param_val
 }
 
 // g_cclosure_marshal_VOID__UINT
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Uint1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(23, "CClosure", "marshal_VOID__UINT")
 	if err != nil {
@@ -705,9 +889,19 @@ func CClosureMarshalVoid_Uint1(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_VOID__UINT_POINTER
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_UintPointer1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(24, "CClosure", "marshal_VOID__UINT_POINTER")
 	if err != nil {
@@ -725,9 +919,19 @@ func CClosureMarshalVoid_UintPointer1(closure Closure, return_value Value, n_par
 }
 
 // g_cclosure_marshal_VOID__ULONG
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Ulong1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(25, "CClosure", "marshal_VOID__ULONG")
 	if err != nil {
@@ -745,9 +949,19 @@ func CClosureMarshalVoid_Ulong1(closure Closure, return_value Value, n_param_val
 }
 
 // g_cclosure_marshal_VOID__VARIANT
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Variant1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(26, "CClosure", "marshal_VOID__VARIANT")
 	if err != nil {
@@ -765,9 +979,19 @@ func CClosureMarshalVoid_Variant1(closure Closure, return_value Value, n_param_v
 }
 
 // g_cclosure_marshal_VOID__VOID
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalVoid_Void1(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(27, "CClosure", "marshal_VOID__VOID")
 	if err != nil {
@@ -785,9 +1009,19 @@ func CClosureMarshalVoid_Void1(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_generic
-// container is not nil, container is CClosure
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ closure ] trans: nothing
+//
+// [ return_gvalue ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CClosureMarshalGeneric1(closure Closure, return_gvalue Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(28, "CClosure", "marshal_generic")
 	if err != nil {
@@ -857,8 +1091,13 @@ func ClosureGetType() gi.GType {
 }
 
 // g_closure_new_object
-// container is not nil, container is Closure
-// is constructor
+//
+// [ sizeof_closure ] trans: nothing
+//
+// [ object ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewClosureObject(sizeof_closure uint32, object IObject) (result Closure) {
 	iv, err := _I.Get(29, "Closure", "new_object")
 	if err != nil {
@@ -879,8 +1118,13 @@ func NewClosureObject(sizeof_closure uint32, object IObject) (result Closure) {
 }
 
 // g_closure_new_simple
-// container is not nil, container is Closure
-// is constructor
+//
+// [ sizeof_closure ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewClosureSimple(sizeof_closure uint32, data unsafe.Pointer) (result Closure) {
 	iv, err := _I.Get(30, "Closure", "new_simple")
 	if err != nil {
@@ -897,8 +1141,7 @@ func NewClosureSimple(sizeof_closure uint32, data unsafe.Pointer) (result Closur
 }
 
 // g_closure_invalidate
-// container is not nil, container is Closure
-// is method
+//
 func (v Closure) Invalidate() {
 	iv, err := _I.Get(31, "Closure", "invalidate")
 	if err != nil {
@@ -911,9 +1154,15 @@ func (v Closure) Invalidate() {
 }
 
 // g_closure_invoke
-// container is not nil, container is Closure
-// is method
-// arg 2 param_values lenArgIdx 1
+//
+// [ return_value ] trans: nothing, dir: out
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
 func (v Closure) Invoke(return_value Value, n_param_values uint32, param_values unsafe.Pointer, invocation_hint unsafe.Pointer) {
 	iv, err := _I.Get(32, "Closure", "invoke")
 	if err != nil {
@@ -930,8 +1179,9 @@ func (v Closure) Invoke(return_value Value, n_param_values uint32, param_values 
 }
 
 // g_closure_ref
-// container is not nil, container is Closure
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Closure) Ref() (result Closure) {
 	iv, err := _I.Get(33, "Closure", "ref")
 	if err != nil {
@@ -947,8 +1197,7 @@ func (v Closure) Ref() (result Closure) {
 }
 
 // g_closure_sink
-// container is not nil, container is Closure
-// is method
+//
 func (v Closure) Sink() {
 	iv, err := _I.Get(34, "Closure", "sink")
 	if err != nil {
@@ -961,8 +1210,7 @@ func (v Closure) Sink() {
 }
 
 // g_closure_unref
-// container is not nil, container is Closure
-// is method
+//
 func (v Closure) Unref() {
 	iv, err := _I.Get(35, "Closure", "unref")
 	if err != nil {
@@ -1162,9 +1410,15 @@ func ObjectGetType() gi.GType {
 }
 
 // g_object_newv
-// container is not nil, container is Object
-// is constructor
-// arg 2 parameters lenArgIdx 1
+//
+// [ object_type ] trans: nothing
+//
+// [ n_parameters ] trans: nothing
+//
+// [ parameters ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewObjectv(object_type gi.GType, n_parameters uint32, parameters unsafe.Pointer) (result Object) {
 	iv, err := _I.Get(36, "Object", "newv")
 	if err != nil {
@@ -1182,9 +1436,13 @@ func NewObjectv(object_type gi.GType, n_parameters uint32, parameters unsafe.Poi
 }
 
 // g_object_compat_control
-// container is not nil, container is Object
-// is method
-// arg0Type tag: guint64, isPtr: false
+//
+// [ what ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ObjectCompatControl1(what uint64, data unsafe.Pointer) (result uint64) {
 	iv, err := _I.Get(37, "Object", "compat_control")
 	if err != nil {
@@ -1201,9 +1459,13 @@ func ObjectCompatControl1(what uint64, data unsafe.Pointer) (result uint64) {
 }
 
 // g_object_interface_find_property
-// container is not nil, container is Object
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ g_iface ] trans: nothing
+//
+// [ property_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ObjectInterfaceFindProperty1(g_iface TypeInterface, property_name string) (result ParamSpec) {
 	iv, err := _I.Get(38, "Object", "interface_find_property")
 	if err != nil {
@@ -1222,9 +1484,11 @@ func ObjectInterfaceFindProperty1(g_iface TypeInterface, property_name string) (
 }
 
 // g_object_interface_install_property
-// container is not nil, container is Object
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ g_iface ] trans: nothing
+//
+// [ pspec ] trans: nothing
+//
 func ObjectInterfaceInstallProperty1(g_iface TypeInterface, pspec IParamSpec) {
 	iv, err := _I.Get(39, "Object", "interface_install_property")
 	if err != nil {
@@ -1242,10 +1506,13 @@ func ObjectInterfaceInstallProperty1(g_iface TypeInterface, pspec IParamSpec) {
 }
 
 // g_object_interface_list_properties
-// container is not nil, container is Object
-// is method
-// arg0Type tag: interface, isPtr: true
-// ret lenArgIdx 1
+//
+// [ g_iface ] trans: nothing
+//
+// [ n_properties_p ] trans: everything, dir: out
+//
+// [ result ] trans: container
+//
 func ObjectInterfaceListProperties1(g_iface TypeInterface) (result gi.PointerArray) {
 	iv, err := _I.Get(40, "Object", "interface_list_properties")
 	if err != nil {
@@ -1266,8 +1533,17 @@ func ObjectInterfaceListProperties1(g_iface TypeInterface) (result gi.PointerArr
 }
 
 // g_object_bind_property
-// container is not nil, container is Object
-// is method
+//
+// [ source_property ] trans: nothing
+//
+// [ target ] trans: nothing
+//
+// [ target_property ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Object) BindProperty(source_property string, target IObject, target_property string, flags BindingFlags) (result Binding) {
 	iv, err := _I.Get(41, "Object", "bind_property")
 	if err != nil {
@@ -1295,8 +1571,21 @@ func (v Object) BindProperty(source_property string, target IObject, target_prop
 }
 
 // g_object_bind_property_with_closures
-// container is not nil, container is Object
-// is method
+//
+// [ source_property ] trans: nothing
+//
+// [ target ] trans: nothing
+//
+// [ target_property ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ transform_to ] trans: nothing
+//
+// [ transform_from ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Object) BindPropertyFull(source_property string, target IObject, target_property string, flags BindingFlags, transform_to Closure, transform_from Closure) (result Binding) {
 	iv, err := _I.Get(42, "Object", "bind_property_full")
 	if err != nil {
@@ -1326,8 +1615,7 @@ func (v Object) BindPropertyFull(source_property string, target IObject, target_
 }
 
 // g_object_force_floating
-// container is not nil, container is Object
-// is method
+//
 func (v Object) ForceFloating() {
 	iv, err := _I.Get(43, "Object", "force_floating")
 	if err != nil {
@@ -1340,8 +1628,7 @@ func (v Object) ForceFloating() {
 }
 
 // g_object_freeze_notify
-// container is not nil, container is Object
-// is method
+//
 func (v Object) FreezeNotify() {
 	iv, err := _I.Get(44, "Object", "freeze_notify")
 	if err != nil {
@@ -1354,8 +1641,11 @@ func (v Object) FreezeNotify() {
 }
 
 // g_object_get_data
-// container is not nil, container is Object
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetData(key string) (result unsafe.Pointer) {
 	iv, err := _I.Get(45, "Object", "get_data")
 	if err != nil {
@@ -1374,8 +1664,11 @@ func (v Object) GetData(key string) (result unsafe.Pointer) {
 }
 
 // g_object_get_property
-// container is not nil, container is Object
-// is method
+//
+// [ property_name ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v Object) GetProperty(property_name string, value Value) {
 	iv, err := _I.Get(46, "Object", "get_property")
 	if err != nil {
@@ -1392,8 +1685,11 @@ func (v Object) GetProperty(property_name string, value Value) {
 }
 
 // g_object_get_qdata
-// container is not nil, container is Object
-// is method
+//
+// [ quark ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Object) GetQdata(quark uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(47, "Object", "get_qdata")
 	if err != nil {
@@ -1410,10 +1706,13 @@ func (v Object) GetQdata(quark uint32) (result unsafe.Pointer) {
 }
 
 // g_object_getv
-// container is not nil, container is Object
-// is method
-// arg 1 names lenArgIdx 0
-// arg 2 values lenArgIdx 0
+//
+// [ n_properties ] trans: nothing
+//
+// [ names ] trans: nothing
+//
+// [ values ] trans: nothing
+//
 func (v Object) Getv(n_properties uint32, names gi.CStrArray, values unsafe.Pointer) {
 	iv, err := _I.Get(48, "Object", "getv")
 	if err != nil {
@@ -1429,8 +1728,9 @@ func (v Object) Getv(n_properties uint32, names gi.CStrArray, values unsafe.Poin
 }
 
 // g_object_is_floating
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) IsFloating() (result bool) {
 	iv, err := _I.Get(49, "Object", "is_floating")
 	if err != nil {
@@ -1446,8 +1746,9 @@ func (v Object) IsFloating() (result bool) {
 }
 
 // g_object_notify
-// container is not nil, container is Object
-// is method
+//
+// [ property_name ] trans: nothing
+//
 func (v Object) Notify(property_name string) {
 	iv, err := _I.Get(50, "Object", "notify")
 	if err != nil {
@@ -1463,8 +1764,9 @@ func (v Object) Notify(property_name string) {
 }
 
 // g_object_notify_by_pspec
-// container is not nil, container is Object
-// is method
+//
+// [ pspec ] trans: nothing
+//
 func (v Object) NotifyByPspec(pspec IParamSpec) {
 	iv, err := _I.Get(51, "Object", "notify_by_pspec")
 	if err != nil {
@@ -1482,8 +1784,9 @@ func (v Object) NotifyByPspec(pspec IParamSpec) {
 }
 
 // g_object_ref
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) Ref() (result Object) {
 	iv, err := _I.Get(52, "Object", "ref")
 	if err != nil {
@@ -1499,8 +1802,9 @@ func (v Object) Ref() (result Object) {
 }
 
 // g_object_ref_sink
-// container is not nil, container is Object
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Object) RefSink() (result Object) {
 	iv, err := _I.Get(53, "Object", "ref_sink")
 	if err != nil {
@@ -1516,8 +1820,7 @@ func (v Object) RefSink() (result Object) {
 }
 
 // g_object_run_dispose
-// container is not nil, container is Object
-// is method
+//
 func (v Object) RunDispose() {
 	iv, err := _I.Get(54, "Object", "run_dispose")
 	if err != nil {
@@ -1530,8 +1833,11 @@ func (v Object) RunDispose() {
 }
 
 // g_object_set_data
-// container is not nil, container is Object
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ data ] trans: nothing
+//
 func (v Object) SetData(key string, data unsafe.Pointer) {
 	iv, err := _I.Get(55, "Object", "set_data")
 	if err != nil {
@@ -1548,8 +1854,11 @@ func (v Object) SetData(key string, data unsafe.Pointer) {
 }
 
 // g_object_set_property
-// container is not nil, container is Object
-// is method
+//
+// [ property_name ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v Object) SetProperty(property_name string, value Value) {
 	iv, err := _I.Get(56, "Object", "set_property")
 	if err != nil {
@@ -1566,8 +1875,11 @@ func (v Object) SetProperty(property_name string, value Value) {
 }
 
 // g_object_steal_data
-// container is not nil, container is Object
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Object) StealData(key string) (result unsafe.Pointer) {
 	iv, err := _I.Get(57, "Object", "steal_data")
 	if err != nil {
@@ -1586,8 +1898,11 @@ func (v Object) StealData(key string) (result unsafe.Pointer) {
 }
 
 // g_object_steal_qdata
-// container is not nil, container is Object
-// is method
+//
+// [ quark ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Object) StealQdata(quark uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(58, "Object", "steal_qdata")
 	if err != nil {
@@ -1604,8 +1919,7 @@ func (v Object) StealQdata(quark uint32) (result unsafe.Pointer) {
 }
 
 // g_object_thaw_notify
-// container is not nil, container is Object
-// is method
+//
 func (v Object) ThawNotify() {
 	iv, err := _I.Get(59, "Object", "thaw_notify")
 	if err != nil {
@@ -1618,8 +1932,7 @@ func (v Object) ThawNotify() {
 }
 
 // g_object_unref
-// container is not nil, container is Object
-// is method
+//
 func (v Object) Unref() {
 	iv, err := _I.Get(60, "Object", "unref")
 	if err != nil {
@@ -1632,8 +1945,9 @@ func (v Object) Unref() {
 }
 
 // g_object_watch_closure
-// container is not nil, container is Object
-// is method
+//
+// [ closure ] trans: nothing
+//
 func (v Object) WatchClosure(closure Closure) {
 	iv, err := _I.Get(61, "Object", "watch_closure")
 	if err != nil {
@@ -1740,8 +2054,9 @@ func ParamSpecGetType() gi.GType {
 }
 
 // g_param_spec_get_blurb
-// container is not nil, container is ParamSpec
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ParamSpec) GetBlurb() (result string) {
 	iv, err := _I.Get(62, "ParamSpec", "get_blurb")
 	if err != nil {
@@ -1752,13 +2067,14 @@ func (v ParamSpec) GetBlurb() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_param_spec_get_default_value
-// container is not nil, container is ParamSpec
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ParamSpec) GetDefaultValue() (result Value) {
 	iv, err := _I.Get(63, "ParamSpec", "get_default_value")
 	if err != nil {
@@ -1774,8 +2090,9 @@ func (v ParamSpec) GetDefaultValue() (result Value) {
 }
 
 // g_param_spec_get_name
-// container is not nil, container is ParamSpec
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ParamSpec) GetName() (result string) {
 	iv, err := _I.Get(64, "ParamSpec", "get_name")
 	if err != nil {
@@ -1786,13 +2103,14 @@ func (v ParamSpec) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_param_spec_get_name_quark
-// container is not nil, container is ParamSpec
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ParamSpec) GetNameQuark() (result uint32) {
 	iv, err := _I.Get(65, "ParamSpec", "get_name_quark")
 	if err != nil {
@@ -1808,8 +2126,9 @@ func (v ParamSpec) GetNameQuark() (result uint32) {
 }
 
 // g_param_spec_get_nick
-// container is not nil, container is ParamSpec
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ParamSpec) GetNick() (result string) {
 	iv, err := _I.Get(66, "ParamSpec", "get_nick")
 	if err != nil {
@@ -1820,13 +2139,16 @@ func (v ParamSpec) GetNick() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_param_spec_get_qdata
-// container is not nil, container is ParamSpec
-// is method
+//
+// [ quark ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ParamSpec) GetQdata(quark uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(67, "ParamSpec", "get_qdata")
 	if err != nil {
@@ -1843,8 +2165,9 @@ func (v ParamSpec) GetQdata(quark uint32) (result unsafe.Pointer) {
 }
 
 // g_param_spec_get_redirect_target
-// container is not nil, container is ParamSpec
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ParamSpec) GetRedirectTarget() (result ParamSpec) {
 	iv, err := _I.Get(68, "ParamSpec", "get_redirect_target")
 	if err != nil {
@@ -1860,8 +2183,11 @@ func (v ParamSpec) GetRedirectTarget() (result ParamSpec) {
 }
 
 // g_param_spec_set_qdata
-// container is not nil, container is ParamSpec
-// is method
+//
+// [ quark ] trans: nothing
+//
+// [ data ] trans: nothing
+//
 func (v ParamSpec) SetQdata(quark uint32, data unsafe.Pointer) {
 	iv, err := _I.Get(69, "ParamSpec", "set_qdata")
 	if err != nil {
@@ -1876,8 +2202,7 @@ func (v ParamSpec) SetQdata(quark uint32, data unsafe.Pointer) {
 }
 
 // g_param_spec_sink
-// container is not nil, container is ParamSpec
-// is method
+//
 func (v ParamSpec) Sink() {
 	iv, err := _I.Get(70, "ParamSpec", "sink")
 	if err != nil {
@@ -1890,8 +2215,11 @@ func (v ParamSpec) Sink() {
 }
 
 // g_param_spec_steal_qdata
-// container is not nil, container is ParamSpec
-// is method
+//
+// [ quark ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ParamSpec) StealQdata(quark uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(71, "ParamSpec", "steal_qdata")
 	if err != nil {
@@ -2144,8 +2472,11 @@ func ParamSpecPoolGetType() gi.GType {
 }
 
 // g_param_spec_pool_insert
-// container is not nil, container is ParamSpecPool
-// is method
+//
+// [ pspec ] trans: nothing
+//
+// [ owner_type ] trans: nothing
+//
 func (v ParamSpecPool) Insert(pspec IParamSpec, owner_type gi.GType) {
 	iv, err := _I.Get(72, "ParamSpecPool", "insert")
 	if err != nil {
@@ -2164,9 +2495,13 @@ func (v ParamSpecPool) Insert(pspec IParamSpec, owner_type gi.GType) {
 }
 
 // g_param_spec_pool_list
-// container is not nil, container is ParamSpecPool
-// is method
-// ret lenArgIdx 1
+//
+// [ owner_type ] trans: nothing
+//
+// [ n_pspecs_p ] trans: everything, dir: out
+//
+// [ result ] trans: container
+//
 func (v ParamSpecPool) List(owner_type gi.GType) (result gi.PointerArray) {
 	iv, err := _I.Get(73, "ParamSpecPool", "list")
 	if err != nil {
@@ -2188,8 +2523,11 @@ func (v ParamSpecPool) List(owner_type gi.GType) (result gi.PointerArray) {
 }
 
 // g_param_spec_pool_list_owned
-// container is not nil, container is ParamSpecPool
-// is method
+//
+// [ owner_type ] trans: nothing
+//
+// [ result ] trans: container
+//
 func (v ParamSpecPool) ListOwned(owner_type gi.GType) (result glib.List) {
 	iv, err := _I.Get(74, "ParamSpecPool", "list_owned")
 	if err != nil {
@@ -2206,8 +2544,15 @@ func (v ParamSpecPool) ListOwned(owner_type gi.GType) (result glib.List) {
 }
 
 // g_param_spec_pool_lookup
-// container is not nil, container is ParamSpecPool
-// is method
+//
+// [ param_name ] trans: nothing
+//
+// [ owner_type ] trans: nothing
+//
+// [ walk_ancestors ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ParamSpecPool) Lookup(param_name string, owner_type gi.GType, walk_ancestors bool) (result ParamSpec) {
 	iv, err := _I.Get(75, "ParamSpecPool", "lookup")
 	if err != nil {
@@ -2228,8 +2573,9 @@ func (v ParamSpecPool) Lookup(param_name string, owner_type gi.GType, walk_ances
 }
 
 // g_param_spec_pool_remove
-// container is not nil, container is ParamSpecPool
-// is method
+//
+// [ pspec ] trans: nothing
+//
 func (v ParamSpecPool) Remove(pspec IParamSpec) {
 	iv, err := _I.Get(76, "ParamSpecPool", "remove")
 	if err != nil {
@@ -2247,9 +2593,11 @@ func (v ParamSpecPool) Remove(pspec IParamSpec) {
 }
 
 // g_param_spec_pool_new
-// container is not nil, container is ParamSpecPool
-// is method
-// arg0Type tag: gboolean, isPtr: false
+//
+// [ type_prefixing ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParamSpecPoolNew1(type_prefixing bool) (result ParamSpecPool) {
 	iv, err := _I.Get(77, "ParamSpecPool", "new")
 	if err != nil {
@@ -2541,8 +2889,9 @@ func TypeClassGetType() gi.GType {
 }
 
 // g_type_class_add_private
-// container is not nil, container is TypeClass
-// is method
+//
+// [ private_size ] trans: nothing
+//
 func (v TypeClass) AddPrivate(private_size uint64) {
 	iv, err := _I.Get(78, "TypeClass", "add_private")
 	if err != nil {
@@ -2556,8 +2905,11 @@ func (v TypeClass) AddPrivate(private_size uint64) {
 }
 
 // g_type_class_get_private
-// container is not nil, container is TypeClass
-// is method
+//
+// [ private_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TypeClass) GetPrivate(private_type gi.GType) (result unsafe.Pointer) {
 	iv, err := _I.Get(79, "TypeClass", "get_private")
 	if err != nil {
@@ -2574,8 +2926,9 @@ func (v TypeClass) GetPrivate(private_type gi.GType) (result unsafe.Pointer) {
 }
 
 // g_type_class_peek_parent
-// container is not nil, container is TypeClass
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TypeClass) PeekParent() (result TypeClass) {
 	iv, err := _I.Get(80, "TypeClass", "peek_parent")
 	if err != nil {
@@ -2591,8 +2944,7 @@ func (v TypeClass) PeekParent() (result TypeClass) {
 }
 
 // g_type_class_unref
-// container is not nil, container is TypeClass
-// is method
+//
 func (v TypeClass) Unref() {
 	iv, err := _I.Get(81, "TypeClass", "unref")
 	if err != nil {
@@ -2605,9 +2957,11 @@ func (v TypeClass) Unref() {
 }
 
 // g_type_class_adjust_private_offset
-// container is not nil, container is TypeClass
-// is method
-// arg0Type tag: void, isPtr: true
+//
+// [ g_class ] trans: nothing
+//
+// [ private_size_or_offset ] trans: nothing
+//
 func TypeClassAdjustPrivateOffset1(g_class unsafe.Pointer, private_size_or_offset int32) {
 	iv, err := _I.Get(82, "TypeClass", "adjust_private_offset")
 	if err != nil {
@@ -2621,9 +2975,11 @@ func TypeClassAdjustPrivateOffset1(g_class unsafe.Pointer, private_size_or_offse
 }
 
 // g_type_class_peek
-// container is not nil, container is TypeClass
-// is method
-// arg0Type tag: GType, isPtr: false
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeClassPeek1(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(83, "TypeClass", "peek")
 	if err != nil {
@@ -2639,9 +2995,11 @@ func TypeClassPeek1(type1 gi.GType) (result TypeClass) {
 }
 
 // g_type_class_peek_static
-// container is not nil, container is TypeClass
-// is method
-// arg0Type tag: GType, isPtr: false
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeClassPeekStatic1(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(84, "TypeClass", "peek_static")
 	if err != nil {
@@ -2657,9 +3015,11 @@ func TypeClassPeekStatic1(type1 gi.GType) (result TypeClass) {
 }
 
 // g_type_class_ref
-// container is not nil, container is TypeClass
-// is method
-// arg0Type tag: GType, isPtr: false
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeClassRef1(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(85, "TypeClass", "ref")
 	if err != nil {
@@ -2769,8 +3129,11 @@ func TypeInstanceGetType() gi.GType {
 }
 
 // g_type_instance_get_private
-// container is not nil, container is TypeInstance
-// is method
+//
+// [ private_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TypeInstance) GetPrivate(private_type gi.GType) (result unsafe.Pointer) {
 	iv, err := _I.Get(86, "TypeInstance", "get_private")
 	if err != nil {
@@ -2799,8 +3162,9 @@ func TypeInterfaceGetType() gi.GType {
 }
 
 // g_type_interface_peek_parent
-// container is not nil, container is TypeInterface
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TypeInterface) PeekParent() (result TypeInterface) {
 	iv, err := _I.Get(87, "TypeInterface", "peek_parent")
 	if err != nil {
@@ -2816,9 +3180,11 @@ func (v TypeInterface) PeekParent() (result TypeInterface) {
 }
 
 // g_type_interface_add_prerequisite
-// container is not nil, container is TypeInterface
-// is method
-// arg0Type tag: GType, isPtr: false
+//
+// [ interface_type ] trans: nothing
+//
+// [ prerequisite_type ] trans: nothing
+//
 func TypeInterfaceAddPrerequisite1(interface_type gi.GType, prerequisite_type gi.GType) {
 	iv, err := _I.Get(88, "TypeInterface", "add_prerequisite")
 	if err != nil {
@@ -2832,9 +3198,13 @@ func TypeInterfaceAddPrerequisite1(interface_type gi.GType, prerequisite_type gi
 }
 
 // g_type_interface_get_plugin
-// container is not nil, container is TypeInterface
-// is method
-// arg0Type tag: GType, isPtr: false
+//
+// [ instance_type ] trans: nothing
+//
+// [ interface_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeInterfaceGetPlugin1(instance_type gi.GType, interface_type gi.GType) (result TypePlugin) {
 	iv, err := _I.Get(89, "TypeInterface", "get_plugin")
 	if err != nil {
@@ -2851,9 +3221,13 @@ func TypeInterfaceGetPlugin1(instance_type gi.GType, interface_type gi.GType) (r
 }
 
 // g_type_interface_peek
-// container is not nil, container is TypeInterface
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ instance_class ] trans: nothing
+//
+// [ iface_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeInterfacePeek1(instance_class TypeClass, iface_type gi.GType) (result TypeInterface) {
 	iv, err := _I.Get(90, "TypeInterface", "peek")
 	if err != nil {
@@ -2870,10 +3244,13 @@ func TypeInterfacePeek1(instance_class TypeClass, iface_type gi.GType) (result T
 }
 
 // g_type_interface_prerequisites
-// container is not nil, container is TypeInterface
-// is method
-// arg0Type tag: GType, isPtr: false
-// ret lenArgIdx 1
+//
+// [ interface_type ] trans: nothing
+//
+// [ n_prerequisites ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func TypeInterfacePrerequisites1(interface_type gi.GType) (result gi.GTypeArray) {
 	iv, err := _I.Get(91, "TypeInterface", "prerequisites")
 	if err != nil {
@@ -2925,8 +3302,13 @@ func TypeModuleGetType() gi.GType {
 }
 
 // g_type_module_add_interface
-// container is not nil, container is TypeModule
-// is method
+//
+// [ instance_type ] trans: nothing
+//
+// [ interface_type ] trans: nothing
+//
+// [ interface_info ] trans: nothing
+//
 func (v TypeModule) AddInterface(instance_type gi.GType, interface_type gi.GType, interface_info InterfaceInfo) {
 	iv, err := _I.Get(92, "TypeModule", "add_interface")
 	if err != nil {
@@ -2942,8 +3324,13 @@ func (v TypeModule) AddInterface(instance_type gi.GType, interface_type gi.GType
 }
 
 // g_type_module_register_enum
-// container is not nil, container is TypeModule
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ const_static_values ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TypeModule) RegisterEnum(name string, const_static_values EnumValue) (result gi.GType) {
 	iv, err := _I.Get(93, "TypeModule", "register_enum")
 	if err != nil {
@@ -2963,8 +3350,13 @@ func (v TypeModule) RegisterEnum(name string, const_static_values EnumValue) (re
 }
 
 // g_type_module_register_flags
-// container is not nil, container is TypeModule
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ const_static_values ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TypeModule) RegisterFlags(name string, const_static_values FlagsValue) (result gi.GType) {
 	iv, err := _I.Get(94, "TypeModule", "register_flags")
 	if err != nil {
@@ -2984,8 +3376,17 @@ func (v TypeModule) RegisterFlags(name string, const_static_values FlagsValue) (
 }
 
 // g_type_module_register_type
-// container is not nil, container is TypeModule
-// is method
+//
+// [ parent_type ] trans: nothing
+//
+// [ type_name ] trans: nothing
+//
+// [ type_info ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TypeModule) RegisterType(parent_type gi.GType, type_name string, type_info TypeInfo, flags TypeFlags) (result gi.GType) {
 	iv, err := _I.Get(95, "TypeModule", "register_type")
 	if err != nil {
@@ -3007,8 +3408,9 @@ func (v TypeModule) RegisterType(parent_type gi.GType, type_name string, type_in
 }
 
 // g_type_module_set_name
-// container is not nil, container is TypeModule
-// is method
+//
+// [ name ] trans: nothing
+//
 func (v TypeModule) SetName(name string) {
 	iv, err := _I.Get(96, "TypeModule", "set_name")
 	if err != nil {
@@ -3024,8 +3426,7 @@ func (v TypeModule) SetName(name string) {
 }
 
 // g_type_module_unuse
-// container is not nil, container is TypeModule
-// is method
+//
 func (v TypeModule) Unuse() {
 	iv, err := _I.Get(97, "TypeModule", "unuse")
 	if err != nil {
@@ -3038,8 +3439,9 @@ func (v TypeModule) Unuse() {
 }
 
 // g_type_module_use
-// container is not nil, container is TypeModule
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TypeModule) Use() (result bool) {
 	iv, err := _I.Get(98, "TypeModule", "use")
 	if err != nil {
@@ -3070,8 +3472,13 @@ func TypePluginGetType() gi.GType {
 }
 
 // g_type_plugin_complete_interface_info
-// container is not nil, container is TypePlugin
-// is method
+//
+// [ instance_type ] trans: nothing
+//
+// [ interface_type ] trans: nothing
+//
+// [ info ] trans: nothing
+//
 func (v *TypePluginIfc) CompleteInterfaceInfo(instance_type gi.GType, interface_type gi.GType, info InterfaceInfo) {
 	iv, err := _I.Get(99, "TypePlugin", "complete_interface_info")
 	if err != nil {
@@ -3087,8 +3494,13 @@ func (v *TypePluginIfc) CompleteInterfaceInfo(instance_type gi.GType, interface_
 }
 
 // g_type_plugin_complete_type_info
-// container is not nil, container is TypePlugin
-// is method
+//
+// [ g_type ] trans: nothing
+//
+// [ info ] trans: nothing
+//
+// [ value_table ] trans: nothing
+//
 func (v *TypePluginIfc) CompleteTypeInfo(g_type gi.GType, info TypeInfo, value_table TypeValueTable) {
 	iv, err := _I.Get(100, "TypePlugin", "complete_type_info")
 	if err != nil {
@@ -3104,8 +3516,7 @@ func (v *TypePluginIfc) CompleteTypeInfo(g_type gi.GType, info TypeInfo, value_t
 }
 
 // g_type_plugin_unuse
-// container is not nil, container is TypePlugin
-// is method
+//
 func (v *TypePluginIfc) Unuse() {
 	iv, err := _I.Get(101, "TypePlugin", "unuse")
 	if err != nil {
@@ -3118,8 +3529,7 @@ func (v *TypePluginIfc) Unuse() {
 }
 
 // g_type_plugin_use
-// container is not nil, container is TypePlugin
-// is method
+//
 func (v *TypePluginIfc) Use() {
 	iv, err := _I.Get(102, "TypePlugin", "use")
 	if err != nil {
@@ -3227,8 +3637,9 @@ func ValueGetType() gi.GType {
 }
 
 // g_value_copy
-// container is not nil, container is Value
-// is method
+//
+// [ dest_value ] trans: nothing
+//
 func (v Value) Copy(dest_value Value) {
 	iv, err := _I.Get(103, "Value", "copy")
 	if err != nil {
@@ -3242,8 +3653,9 @@ func (v Value) Copy(dest_value Value) {
 }
 
 // g_value_dup_object
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Value) DupObject() (result Object) {
 	iv, err := _I.Get(104, "Value", "dup_object")
 	if err != nil {
@@ -3259,8 +3671,9 @@ func (v Value) DupObject() (result Object) {
 }
 
 // g_value_dup_string
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Value) DupString() (result string) {
 	iv, err := _I.Get(105, "Value", "dup_string")
 	if err != nil {
@@ -3276,8 +3689,9 @@ func (v Value) DupString() (result string) {
 }
 
 // g_value_dup_variant
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Value) DupVariant() (result glib.Variant) {
 	iv, err := _I.Get(106, "Value", "dup_variant")
 	if err != nil {
@@ -3293,8 +3707,9 @@ func (v Value) DupVariant() (result glib.Variant) {
 }
 
 // g_value_fits_pointer
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) FitsPointer() (result bool) {
 	iv, err := _I.Get(107, "Value", "fits_pointer")
 	if err != nil {
@@ -3310,8 +3725,9 @@ func (v Value) FitsPointer() (result bool) {
 }
 
 // g_value_get_boolean
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetBoolean() (result bool) {
 	iv, err := _I.Get(108, "Value", "get_boolean")
 	if err != nil {
@@ -3327,8 +3743,9 @@ func (v Value) GetBoolean() (result bool) {
 }
 
 // g_value_get_boxed
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetBoxed() (result unsafe.Pointer) {
 	iv, err := _I.Get(109, "Value", "get_boxed")
 	if err != nil {
@@ -3344,8 +3761,9 @@ func (v Value) GetBoxed() (result unsafe.Pointer) {
 }
 
 // g_value_get_char
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetChar() (result int8) {
 	iv, err := _I.Get(110, "Value", "get_char")
 	if err != nil {
@@ -3361,8 +3779,9 @@ func (v Value) GetChar() (result int8) {
 }
 
 // g_value_get_double
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetDouble() (result float64) {
 	iv, err := _I.Get(111, "Value", "get_double")
 	if err != nil {
@@ -3378,8 +3797,9 @@ func (v Value) GetDouble() (result float64) {
 }
 
 // g_value_get_enum
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetEnum() (result int32) {
 	iv, err := _I.Get(112, "Value", "get_enum")
 	if err != nil {
@@ -3395,8 +3815,9 @@ func (v Value) GetEnum() (result int32) {
 }
 
 // g_value_get_flags
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetFlags() (result uint32) {
 	iv, err := _I.Get(113, "Value", "get_flags")
 	if err != nil {
@@ -3412,8 +3833,9 @@ func (v Value) GetFlags() (result uint32) {
 }
 
 // g_value_get_float
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetFloat() (result float32) {
 	iv, err := _I.Get(114, "Value", "get_float")
 	if err != nil {
@@ -3429,8 +3851,9 @@ func (v Value) GetFloat() (result float32) {
 }
 
 // g_value_get_gtype
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetGtype() (result gi.GType) {
 	iv, err := _I.Get(115, "Value", "get_gtype")
 	if err != nil {
@@ -3446,8 +3869,9 @@ func (v Value) GetGtype() (result gi.GType) {
 }
 
 // g_value_get_int
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetInt() (result int32) {
 	iv, err := _I.Get(116, "Value", "get_int")
 	if err != nil {
@@ -3463,8 +3887,9 @@ func (v Value) GetInt() (result int32) {
 }
 
 // g_value_get_int64
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetInt64() (result int64) {
 	iv, err := _I.Get(117, "Value", "get_int64")
 	if err != nil {
@@ -3480,8 +3905,9 @@ func (v Value) GetInt64() (result int64) {
 }
 
 // g_value_get_long
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetLong() (result int64) {
 	iv, err := _I.Get(118, "Value", "get_long")
 	if err != nil {
@@ -3497,8 +3923,9 @@ func (v Value) GetLong() (result int64) {
 }
 
 // g_value_get_object
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetObject() (result Object) {
 	iv, err := _I.Get(119, "Value", "get_object")
 	if err != nil {
@@ -3514,8 +3941,9 @@ func (v Value) GetObject() (result Object) {
 }
 
 // g_value_get_param
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetParam() (result ParamSpec) {
 	iv, err := _I.Get(120, "Value", "get_param")
 	if err != nil {
@@ -3531,8 +3959,9 @@ func (v Value) GetParam() (result ParamSpec) {
 }
 
 // g_value_get_pointer
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetPointer() (result unsafe.Pointer) {
 	iv, err := _I.Get(121, "Value", "get_pointer")
 	if err != nil {
@@ -3548,8 +3977,9 @@ func (v Value) GetPointer() (result unsafe.Pointer) {
 }
 
 // g_value_get_schar
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetSchar() (result int8) {
 	iv, err := _I.Get(122, "Value", "get_schar")
 	if err != nil {
@@ -3565,8 +3995,9 @@ func (v Value) GetSchar() (result int8) {
 }
 
 // g_value_get_string
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetString() (result string) {
 	iv, err := _I.Get(123, "Value", "get_string")
 	if err != nil {
@@ -3577,13 +4008,14 @@ func (v Value) GetString() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_value_get_uchar
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetUchar() (result uint8) {
 	iv, err := _I.Get(124, "Value", "get_uchar")
 	if err != nil {
@@ -3599,8 +4031,9 @@ func (v Value) GetUchar() (result uint8) {
 }
 
 // g_value_get_uint
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetUint() (result uint32) {
 	iv, err := _I.Get(125, "Value", "get_uint")
 	if err != nil {
@@ -3616,8 +4049,9 @@ func (v Value) GetUint() (result uint32) {
 }
 
 // g_value_get_uint64
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetUint64() (result uint64) {
 	iv, err := _I.Get(126, "Value", "get_uint64")
 	if err != nil {
@@ -3633,8 +4067,9 @@ func (v Value) GetUint64() (result uint64) {
 }
 
 // g_value_get_ulong
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetUlong() (result uint64) {
 	iv, err := _I.Get(127, "Value", "get_ulong")
 	if err != nil {
@@ -3650,8 +4085,9 @@ func (v Value) GetUlong() (result uint64) {
 }
 
 // g_value_get_variant
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) GetVariant() (result glib.Variant) {
 	iv, err := _I.Get(128, "Value", "get_variant")
 	if err != nil {
@@ -3667,8 +4103,11 @@ func (v Value) GetVariant() (result glib.Variant) {
 }
 
 // g_value_init
-// container is not nil, container is Value
-// is method
+//
+// [ g_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Value) Init(g_type gi.GType) (result Value) {
 	iv, err := _I.Get(129, "Value", "init")
 	if err != nil {
@@ -3685,8 +4124,9 @@ func (v Value) Init(g_type gi.GType) (result Value) {
 }
 
 // g_value_init_from_instance
-// container is not nil, container is Value
-// is method
+//
+// [ instance ] trans: nothing
+//
 func (v Value) InitFromInstance(instance TypeInstance) {
 	iv, err := _I.Get(130, "Value", "init_from_instance")
 	if err != nil {
@@ -3700,8 +4140,9 @@ func (v Value) InitFromInstance(instance TypeInstance) {
 }
 
 // g_value_peek_pointer
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Value) PeekPointer() (result unsafe.Pointer) {
 	iv, err := _I.Get(131, "Value", "peek_pointer")
 	if err != nil {
@@ -3717,8 +4158,9 @@ func (v Value) PeekPointer() (result unsafe.Pointer) {
 }
 
 // g_value_reset
-// container is not nil, container is Value
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Value) Reset() (result Value) {
 	iv, err := _I.Get(132, "Value", "reset")
 	if err != nil {
@@ -3734,8 +4176,9 @@ func (v Value) Reset() (result Value) {
 }
 
 // g_value_set_boolean
-// container is not nil, container is Value
-// is method
+//
+// [ v_boolean ] trans: nothing
+//
 func (v Value) SetBoolean(v_boolean bool) {
 	iv, err := _I.Get(133, "Value", "set_boolean")
 	if err != nil {
@@ -3749,8 +4192,9 @@ func (v Value) SetBoolean(v_boolean bool) {
 }
 
 // g_value_set_boxed
-// container is not nil, container is Value
-// is method
+//
+// [ v_boxed ] trans: nothing
+//
 func (v Value) SetBoxed(v_boxed unsafe.Pointer) {
 	iv, err := _I.Get(134, "Value", "set_boxed")
 	if err != nil {
@@ -3764,8 +4208,9 @@ func (v Value) SetBoxed(v_boxed unsafe.Pointer) {
 }
 
 // g_value_set_boxed_take_ownership
-// container is not nil, container is Value
-// is method
+//
+// [ v_boxed ] trans: nothing
+//
 func (v Value) SetBoxedTakeOwnership(v_boxed unsafe.Pointer) {
 	iv, err := _I.Get(135, "Value", "set_boxed_take_ownership")
 	if err != nil {
@@ -3779,8 +4224,9 @@ func (v Value) SetBoxedTakeOwnership(v_boxed unsafe.Pointer) {
 }
 
 // g_value_set_char
-// container is not nil, container is Value
-// is method
+//
+// [ v_char ] trans: nothing
+//
 func (v Value) SetChar(v_char int8) {
 	iv, err := _I.Get(136, "Value", "set_char")
 	if err != nil {
@@ -3794,8 +4240,9 @@ func (v Value) SetChar(v_char int8) {
 }
 
 // g_value_set_double
-// container is not nil, container is Value
-// is method
+//
+// [ v_double ] trans: nothing
+//
 func (v Value) SetDouble(v_double float64) {
 	iv, err := _I.Get(137, "Value", "set_double")
 	if err != nil {
@@ -3809,8 +4256,9 @@ func (v Value) SetDouble(v_double float64) {
 }
 
 // g_value_set_enum
-// container is not nil, container is Value
-// is method
+//
+// [ v_enum ] trans: nothing
+//
 func (v Value) SetEnum(v_enum int32) {
 	iv, err := _I.Get(138, "Value", "set_enum")
 	if err != nil {
@@ -3824,8 +4272,9 @@ func (v Value) SetEnum(v_enum int32) {
 }
 
 // g_value_set_flags
-// container is not nil, container is Value
-// is method
+//
+// [ v_flags ] trans: nothing
+//
 func (v Value) SetFlags(v_flags uint32) {
 	iv, err := _I.Get(139, "Value", "set_flags")
 	if err != nil {
@@ -3839,8 +4288,9 @@ func (v Value) SetFlags(v_flags uint32) {
 }
 
 // g_value_set_float
-// container is not nil, container is Value
-// is method
+//
+// [ v_float ] trans: nothing
+//
 func (v Value) SetFloat(v_float float32) {
 	iv, err := _I.Get(140, "Value", "set_float")
 	if err != nil {
@@ -3854,8 +4304,9 @@ func (v Value) SetFloat(v_float float32) {
 }
 
 // g_value_set_gtype
-// container is not nil, container is Value
-// is method
+//
+// [ v_gtype ] trans: nothing
+//
 func (v Value) SetGtype(v_gtype gi.GType) {
 	iv, err := _I.Get(141, "Value", "set_gtype")
 	if err != nil {
@@ -3869,8 +4320,9 @@ func (v Value) SetGtype(v_gtype gi.GType) {
 }
 
 // g_value_set_instance
-// container is not nil, container is Value
-// is method
+//
+// [ instance ] trans: nothing
+//
 func (v Value) SetInstance(instance unsafe.Pointer) {
 	iv, err := _I.Get(142, "Value", "set_instance")
 	if err != nil {
@@ -3884,8 +4336,9 @@ func (v Value) SetInstance(instance unsafe.Pointer) {
 }
 
 // g_value_set_int
-// container is not nil, container is Value
-// is method
+//
+// [ v_int ] trans: nothing
+//
 func (v Value) SetInt(v_int int32) {
 	iv, err := _I.Get(143, "Value", "set_int")
 	if err != nil {
@@ -3899,8 +4352,9 @@ func (v Value) SetInt(v_int int32) {
 }
 
 // g_value_set_int64
-// container is not nil, container is Value
-// is method
+//
+// [ v_int64 ] trans: nothing
+//
 func (v Value) SetInt64(v_int64 int64) {
 	iv, err := _I.Get(144, "Value", "set_int64")
 	if err != nil {
@@ -3914,8 +4368,9 @@ func (v Value) SetInt64(v_int64 int64) {
 }
 
 // g_value_set_long
-// container is not nil, container is Value
-// is method
+//
+// [ v_long ] trans: nothing
+//
 func (v Value) SetLong(v_long int64) {
 	iv, err := _I.Get(145, "Value", "set_long")
 	if err != nil {
@@ -3929,8 +4384,9 @@ func (v Value) SetLong(v_long int64) {
 }
 
 // g_value_set_object
-// container is not nil, container is Value
-// is method
+//
+// [ v_object ] trans: nothing
+//
 func (v Value) SetObject(v_object IObject) {
 	iv, err := _I.Get(146, "Value", "set_object")
 	if err != nil {
@@ -3948,8 +4404,9 @@ func (v Value) SetObject(v_object IObject) {
 }
 
 // g_value_set_param
-// container is not nil, container is Value
-// is method
+//
+// [ param ] trans: nothing
+//
 func (v Value) SetParam(param IParamSpec) {
 	iv, err := _I.Get(147, "Value", "set_param")
 	if err != nil {
@@ -3967,8 +4424,9 @@ func (v Value) SetParam(param IParamSpec) {
 }
 
 // g_value_set_pointer
-// container is not nil, container is Value
-// is method
+//
+// [ v_pointer ] trans: nothing
+//
 func (v Value) SetPointer(v_pointer unsafe.Pointer) {
 	iv, err := _I.Get(148, "Value", "set_pointer")
 	if err != nil {
@@ -3982,8 +4440,9 @@ func (v Value) SetPointer(v_pointer unsafe.Pointer) {
 }
 
 // g_value_set_schar
-// container is not nil, container is Value
-// is method
+//
+// [ v_char ] trans: nothing
+//
 func (v Value) SetSchar(v_char int8) {
 	iv, err := _I.Get(149, "Value", "set_schar")
 	if err != nil {
@@ -3997,8 +4456,9 @@ func (v Value) SetSchar(v_char int8) {
 }
 
 // g_value_set_static_boxed
-// container is not nil, container is Value
-// is method
+//
+// [ v_boxed ] trans: nothing
+//
 func (v Value) SetStaticBoxed(v_boxed unsafe.Pointer) {
 	iv, err := _I.Get(150, "Value", "set_static_boxed")
 	if err != nil {
@@ -4012,8 +4472,9 @@ func (v Value) SetStaticBoxed(v_boxed unsafe.Pointer) {
 }
 
 // g_value_set_static_string
-// container is not nil, container is Value
-// is method
+//
+// [ v_string ] trans: nothing
+//
 func (v Value) SetStaticString(v_string string) {
 	iv, err := _I.Get(151, "Value", "set_static_string")
 	if err != nil {
@@ -4029,8 +4490,9 @@ func (v Value) SetStaticString(v_string string) {
 }
 
 // g_value_set_string
-// container is not nil, container is Value
-// is method
+//
+// [ v_string ] trans: nothing
+//
 func (v Value) SetString(v_string string) {
 	iv, err := _I.Get(152, "Value", "set_string")
 	if err != nil {
@@ -4046,8 +4508,9 @@ func (v Value) SetString(v_string string) {
 }
 
 // g_value_set_string_take_ownership
-// container is not nil, container is Value
-// is method
+//
+// [ v_string ] trans: nothing
+//
 func (v Value) SetStringTakeOwnership(v_string string) {
 	iv, err := _I.Get(153, "Value", "set_string_take_ownership")
 	if err != nil {
@@ -4063,8 +4526,9 @@ func (v Value) SetStringTakeOwnership(v_string string) {
 }
 
 // g_value_set_uchar
-// container is not nil, container is Value
-// is method
+//
+// [ v_uchar ] trans: nothing
+//
 func (v Value) SetUchar(v_uchar uint8) {
 	iv, err := _I.Get(154, "Value", "set_uchar")
 	if err != nil {
@@ -4078,8 +4542,9 @@ func (v Value) SetUchar(v_uchar uint8) {
 }
 
 // g_value_set_uint
-// container is not nil, container is Value
-// is method
+//
+// [ v_uint ] trans: nothing
+//
 func (v Value) SetUint(v_uint uint32) {
 	iv, err := _I.Get(155, "Value", "set_uint")
 	if err != nil {
@@ -4093,8 +4558,9 @@ func (v Value) SetUint(v_uint uint32) {
 }
 
 // g_value_set_uint64
-// container is not nil, container is Value
-// is method
+//
+// [ v_uint64 ] trans: nothing
+//
 func (v Value) SetUint64(v_uint64 uint64) {
 	iv, err := _I.Get(156, "Value", "set_uint64")
 	if err != nil {
@@ -4108,8 +4574,9 @@ func (v Value) SetUint64(v_uint64 uint64) {
 }
 
 // g_value_set_ulong
-// container is not nil, container is Value
-// is method
+//
+// [ v_ulong ] trans: nothing
+//
 func (v Value) SetUlong(v_ulong uint64) {
 	iv, err := _I.Get(157, "Value", "set_ulong")
 	if err != nil {
@@ -4123,8 +4590,9 @@ func (v Value) SetUlong(v_ulong uint64) {
 }
 
 // g_value_set_variant
-// container is not nil, container is Value
-// is method
+//
+// [ variant ] trans: nothing
+//
 func (v Value) SetVariant(variant glib.Variant) {
 	iv, err := _I.Get(158, "Value", "set_variant")
 	if err != nil {
@@ -4138,8 +4606,9 @@ func (v Value) SetVariant(variant glib.Variant) {
 }
 
 // g_value_take_boxed
-// container is not nil, container is Value
-// is method
+//
+// [ v_boxed ] trans: nothing
+//
 func (v Value) TakeBoxed(v_boxed unsafe.Pointer) {
 	iv, err := _I.Get(159, "Value", "take_boxed")
 	if err != nil {
@@ -4153,8 +4622,9 @@ func (v Value) TakeBoxed(v_boxed unsafe.Pointer) {
 }
 
 // g_value_take_string
-// container is not nil, container is Value
-// is method
+//
+// [ v_string ] trans: nothing
+//
 func (v Value) TakeString(v_string string) {
 	iv, err := _I.Get(160, "Value", "take_string")
 	if err != nil {
@@ -4170,8 +4640,9 @@ func (v Value) TakeString(v_string string) {
 }
 
 // g_value_take_variant
-// container is not nil, container is Value
-// is method
+//
+// [ variant ] trans: everything
+//
 func (v Value) TakeVariant(variant glib.Variant) {
 	iv, err := _I.Get(161, "Value", "take_variant")
 	if err != nil {
@@ -4185,8 +4656,11 @@ func (v Value) TakeVariant(variant glib.Variant) {
 }
 
 // g_value_transform
-// container is not nil, container is Value
-// is method
+//
+// [ dest_value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Value) Transform(dest_value Value) (result bool) {
 	iv, err := _I.Get(162, "Value", "transform")
 	if err != nil {
@@ -4203,8 +4677,7 @@ func (v Value) Transform(dest_value Value) (result bool) {
 }
 
 // g_value_unset
-// container is not nil, container is Value
-// is method
+//
 func (v Value) Unset() {
 	iv, err := _I.Get(163, "Value", "unset")
 	if err != nil {
@@ -4217,9 +4690,13 @@ func (v Value) Unset() {
 }
 
 // g_value_type_compatible
-// container is not nil, container is Value
-// is method
-// arg0Type tag: GType, isPtr: false
+//
+// [ src_type ] trans: nothing
+//
+// [ dest_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ValueTypeCompatible1(src_type gi.GType, dest_type gi.GType) (result bool) {
 	iv, err := _I.Get(164, "Value", "type_compatible")
 	if err != nil {
@@ -4236,9 +4713,13 @@ func ValueTypeCompatible1(src_type gi.GType, dest_type gi.GType) (result bool) {
 }
 
 // g_value_type_transformable
-// container is not nil, container is Value
-// is method
-// arg0Type tag: GType, isPtr: false
+//
+// [ src_type ] trans: nothing
+//
+// [ dest_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ValueTypeTransformable1(src_type gi.GType, dest_type gi.GType) (result bool) {
 	iv, err := _I.Get(165, "Value", "type_transformable")
 	if err != nil {
@@ -4267,8 +4748,11 @@ func ValueArrayGetType() gi.GType {
 }
 
 // g_value_array_new
-// container is not nil, container is ValueArray
-// is constructor
+//
+// [ n_prealloced ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewValueArray(n_prealloced uint32) (result ValueArray) {
 	iv, err := _I.Get(166, "ValueArray", "new")
 	if err != nil {
@@ -4284,8 +4768,11 @@ func NewValueArray(n_prealloced uint32) (result ValueArray) {
 }
 
 // g_value_array_append
-// container is not nil, container is ValueArray
-// is method
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ValueArray) Append(value Value) (result ValueArray) {
 	iv, err := _I.Get(167, "ValueArray", "append")
 	if err != nil {
@@ -4302,8 +4789,9 @@ func (v ValueArray) Append(value Value) (result ValueArray) {
 }
 
 // g_value_array_copy
-// container is not nil, container is ValueArray
-// is method
+//
+// [ result ] trans: everything
+//
 func (v ValueArray) Copy() (result ValueArray) {
 	iv, err := _I.Get(168, "ValueArray", "copy")
 	if err != nil {
@@ -4319,8 +4807,11 @@ func (v ValueArray) Copy() (result ValueArray) {
 }
 
 // g_value_array_get_nth
-// container is not nil, container is ValueArray
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ValueArray) GetNth(index_ uint32) (result Value) {
 	iv, err := _I.Get(169, "ValueArray", "get_nth")
 	if err != nil {
@@ -4337,8 +4828,13 @@ func (v ValueArray) GetNth(index_ uint32) (result Value) {
 }
 
 // g_value_array_insert
-// container is not nil, container is ValueArray
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ValueArray) Insert(index_ uint32, value Value) (result ValueArray) {
 	iv, err := _I.Get(170, "ValueArray", "insert")
 	if err != nil {
@@ -4356,8 +4852,11 @@ func (v ValueArray) Insert(index_ uint32, value Value) (result ValueArray) {
 }
 
 // g_value_array_prepend
-// container is not nil, container is ValueArray
-// is method
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ValueArray) Prepend(value Value) (result ValueArray) {
 	iv, err := _I.Get(171, "ValueArray", "prepend")
 	if err != nil {
@@ -4374,8 +4873,11 @@ func (v ValueArray) Prepend(value Value) (result ValueArray) {
 }
 
 // g_value_array_remove
-// container is not nil, container is ValueArray
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
 	iv, err := _I.Get(172, "ValueArray", "remove")
 	if err != nil {
@@ -4392,8 +4894,13 @@ func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
 }
 
 // g_value_array_sort_with_data
-// container is not nil, container is ValueArray
-// is method
+//
+// [ compare_func ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ValueArray) Sort(compare_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result ValueArray) {
 	iv, err := _I.Get(173, "ValueArray", "sort")
 	if err != nil {
@@ -4461,7 +4968,13 @@ func _Value__data__unionGetType() gi.GType {
 }
 
 // g_boxed_copy
-// container is nil
+//
+// [ boxed_type ] trans: nothing
+//
+// [ src_boxed ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func BoxedCopy(boxed_type gi.GType, src_boxed unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(174, "boxed_copy", "")
 	if err != nil {
@@ -4478,7 +4991,11 @@ func BoxedCopy(boxed_type gi.GType, src_boxed unsafe.Pointer) (result unsafe.Poi
 }
 
 // g_boxed_free
-// container is nil
+//
+// [ boxed_type ] trans: nothing
+//
+// [ boxed ] trans: nothing
+//
 func BoxedFree(boxed_type gi.GType, boxed unsafe.Pointer) {
 	iv, err := _I.Get(175, "boxed_free", "")
 	if err != nil {
@@ -4492,7 +5009,19 @@ func BoxedFree(boxed_type gi.GType, boxed unsafe.Pointer) {
 }
 
 // g_cclosure_marshal_BOOLEAN__BOXED_BOXED
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalBoolean_BoxedBoxed(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(176, "cclosure_marshal_BOOLEAN__BOXED_BOXED", "")
 	if err != nil {
@@ -4510,7 +5039,19 @@ func CclosureMarshalBoolean_BoxedBoxed(closure Closure, return_value Value, n_pa
 }
 
 // g_cclosure_marshal_BOOLEAN__FLAGS
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalBoolean_Flags(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(177, "cclosure_marshal_BOOLEAN__FLAGS", "")
 	if err != nil {
@@ -4528,7 +5069,19 @@ func CclosureMarshalBoolean_Flags(closure Closure, return_value Value, n_param_v
 }
 
 // g_cclosure_marshal_STRING__OBJECT_POINTER
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalString_ObjectPointer(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(178, "cclosure_marshal_STRING__OBJECT_POINTER", "")
 	if err != nil {
@@ -4546,7 +5099,19 @@ func CclosureMarshalString_ObjectPointer(closure Closure, return_value Value, n_
 }
 
 // g_cclosure_marshal_VOID__BOOLEAN
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Boolean(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(179, "cclosure_marshal_VOID__BOOLEAN", "")
 	if err != nil {
@@ -4564,7 +5129,19 @@ func CclosureMarshalVoid_Boolean(closure Closure, return_value Value, n_param_va
 }
 
 // g_cclosure_marshal_VOID__BOXED
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Boxed(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(180, "cclosure_marshal_VOID__BOXED", "")
 	if err != nil {
@@ -4582,7 +5159,19 @@ func CclosureMarshalVoid_Boxed(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_VOID__CHAR
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Char(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(181, "cclosure_marshal_VOID__CHAR", "")
 	if err != nil {
@@ -4600,7 +5189,19 @@ func CclosureMarshalVoid_Char(closure Closure, return_value Value, n_param_value
 }
 
 // g_cclosure_marshal_VOID__DOUBLE
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Double(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(182, "cclosure_marshal_VOID__DOUBLE", "")
 	if err != nil {
@@ -4618,7 +5219,19 @@ func CclosureMarshalVoid_Double(closure Closure, return_value Value, n_param_val
 }
 
 // g_cclosure_marshal_VOID__ENUM
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Enum(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(183, "cclosure_marshal_VOID__ENUM", "")
 	if err != nil {
@@ -4636,7 +5249,19 @@ func CclosureMarshalVoid_Enum(closure Closure, return_value Value, n_param_value
 }
 
 // g_cclosure_marshal_VOID__FLAGS
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Flags(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(184, "cclosure_marshal_VOID__FLAGS", "")
 	if err != nil {
@@ -4654,7 +5279,19 @@ func CclosureMarshalVoid_Flags(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_VOID__FLOAT
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Float(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(185, "cclosure_marshal_VOID__FLOAT", "")
 	if err != nil {
@@ -4672,7 +5309,19 @@ func CclosureMarshalVoid_Float(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_VOID__INT
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Int(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(186, "cclosure_marshal_VOID__INT", "")
 	if err != nil {
@@ -4690,7 +5339,19 @@ func CclosureMarshalVoid_Int(closure Closure, return_value Value, n_param_values
 }
 
 // g_cclosure_marshal_VOID__LONG
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Long(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(187, "cclosure_marshal_VOID__LONG", "")
 	if err != nil {
@@ -4708,7 +5369,19 @@ func CclosureMarshalVoid_Long(closure Closure, return_value Value, n_param_value
 }
 
 // g_cclosure_marshal_VOID__OBJECT
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Object(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(188, "cclosure_marshal_VOID__OBJECT", "")
 	if err != nil {
@@ -4726,7 +5399,19 @@ func CclosureMarshalVoid_Object(closure Closure, return_value Value, n_param_val
 }
 
 // g_cclosure_marshal_VOID__PARAM
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Param(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(189, "cclosure_marshal_VOID__PARAM", "")
 	if err != nil {
@@ -4744,7 +5429,19 @@ func CclosureMarshalVoid_Param(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_VOID__POINTER
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Pointer(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(190, "cclosure_marshal_VOID__POINTER", "")
 	if err != nil {
@@ -4762,7 +5459,19 @@ func CclosureMarshalVoid_Pointer(closure Closure, return_value Value, n_param_va
 }
 
 // g_cclosure_marshal_VOID__STRING
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_String(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(191, "cclosure_marshal_VOID__STRING", "")
 	if err != nil {
@@ -4780,7 +5489,19 @@ func CclosureMarshalVoid_String(closure Closure, return_value Value, n_param_val
 }
 
 // g_cclosure_marshal_VOID__UCHAR
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Uchar(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(192, "cclosure_marshal_VOID__UCHAR", "")
 	if err != nil {
@@ -4798,7 +5519,19 @@ func CclosureMarshalVoid_Uchar(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_VOID__UINT
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Uint(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(193, "cclosure_marshal_VOID__UINT", "")
 	if err != nil {
@@ -4816,7 +5549,19 @@ func CclosureMarshalVoid_Uint(closure Closure, return_value Value, n_param_value
 }
 
 // g_cclosure_marshal_VOID__UINT_POINTER
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_UintPointer(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(194, "cclosure_marshal_VOID__UINT_POINTER", "")
 	if err != nil {
@@ -4834,7 +5579,19 @@ func CclosureMarshalVoid_UintPointer(closure Closure, return_value Value, n_para
 }
 
 // g_cclosure_marshal_VOID__ULONG
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Ulong(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(195, "cclosure_marshal_VOID__ULONG", "")
 	if err != nil {
@@ -4852,7 +5609,19 @@ func CclosureMarshalVoid_Ulong(closure Closure, return_value Value, n_param_valu
 }
 
 // g_cclosure_marshal_VOID__VARIANT
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Variant(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(196, "cclosure_marshal_VOID__VARIANT", "")
 	if err != nil {
@@ -4870,7 +5639,19 @@ func CclosureMarshalVoid_Variant(closure Closure, return_value Value, n_param_va
 }
 
 // g_cclosure_marshal_VOID__VOID
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalVoid_Void(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(197, "cclosure_marshal_VOID__VOID", "")
 	if err != nil {
@@ -4888,7 +5669,19 @@ func CclosureMarshalVoid_Void(closure Closure, return_value Value, n_param_value
 }
 
 // g_cclosure_marshal_generic
-// container is nil
+//
+// [ closure ] trans: nothing
+//
+// [ return_gvalue ] trans: nothing
+//
+// [ n_param_values ] trans: nothing
+//
+// [ param_values ] trans: nothing
+//
+// [ invocation_hint ] trans: nothing
+//
+// [ marshal_data ] trans: nothing
+//
 func CclosureMarshalGeneric(closure Closure, return_gvalue Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
 	iv, err := _I.Get(198, "cclosure_marshal_generic", "")
 	if err != nil {
@@ -4906,7 +5699,13 @@ func CclosureMarshalGeneric(closure Closure, return_gvalue Value, n_param_values
 }
 
 // g_enum_complete_type_info
-// container is nil
+//
+// [ g_enum_type ] trans: nothing
+//
+// [ info ] trans: everything, dir: out
+//
+// [ const_values ] trans: nothing
+//
 func EnumCompleteTypeInfo(g_enum_type gi.GType, const_values EnumValue) (info int /*TODO_TYPE tag: ifc, biType: struct*/) {
 	iv, err := _I.Get(199, "enum_complete_type_info", "")
 	if err != nil {
@@ -4924,7 +5723,13 @@ func EnumCompleteTypeInfo(g_enum_type gi.GType, const_values EnumValue) (info in
 }
 
 // g_enum_get_value
-// container is nil
+//
+// [ enum_class ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func EnumGetValue(enum_class EnumClass, value int32) (result EnumValue) {
 	iv, err := _I.Get(200, "enum_get_value", "")
 	if err != nil {
@@ -4941,7 +5746,13 @@ func EnumGetValue(enum_class EnumClass, value int32) (result EnumValue) {
 }
 
 // g_enum_get_value_by_name
-// container is nil
+//
+// [ enum_class ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func EnumGetValueByName(enum_class EnumClass, name string) (result EnumValue) {
 	iv, err := _I.Get(201, "enum_get_value_by_name", "")
 	if err != nil {
@@ -4960,7 +5771,13 @@ func EnumGetValueByName(enum_class EnumClass, name string) (result EnumValue) {
 }
 
 // g_enum_get_value_by_nick
-// container is nil
+//
+// [ enum_class ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func EnumGetValueByNick(enum_class EnumClass, nick string) (result EnumValue) {
 	iv, err := _I.Get(202, "enum_get_value_by_nick", "")
 	if err != nil {
@@ -4979,7 +5796,13 @@ func EnumGetValueByNick(enum_class EnumClass, nick string) (result EnumValue) {
 }
 
 // g_enum_register_static
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ const_static_values ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func EnumRegisterStatic(name string, const_static_values EnumValue) (result gi.GType) {
 	iv, err := _I.Get(203, "enum_register_static", "")
 	if err != nil {
@@ -4998,7 +5821,13 @@ func EnumRegisterStatic(name string, const_static_values EnumValue) (result gi.G
 }
 
 // g_enum_to_string
-// container is nil
+//
+// [ g_enum_type ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func EnumToString(g_enum_type gi.GType, value int32) (result string) {
 	iv, err := _I.Get(204, "enum_to_string", "")
 	if err != nil {
@@ -5015,7 +5844,13 @@ func EnumToString(g_enum_type gi.GType, value int32) (result string) {
 }
 
 // g_flags_complete_type_info
-// container is nil
+//
+// [ g_flags_type ] trans: nothing
+//
+// [ info ] trans: everything, dir: out
+//
+// [ const_values ] trans: nothing
+//
 func FlagsCompleteTypeInfo(g_flags_type gi.GType, const_values FlagsValue) (info int /*TODO_TYPE tag: ifc, biType: struct*/) {
 	iv, err := _I.Get(205, "flags_complete_type_info", "")
 	if err != nil {
@@ -5033,7 +5868,13 @@ func FlagsCompleteTypeInfo(g_flags_type gi.GType, const_values FlagsValue) (info
 }
 
 // g_flags_get_first_value
-// container is nil
+//
+// [ flags_class ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func FlagsGetFirstValue(flags_class FlagsClass, value uint32) (result FlagsValue) {
 	iv, err := _I.Get(206, "flags_get_first_value", "")
 	if err != nil {
@@ -5050,7 +5891,13 @@ func FlagsGetFirstValue(flags_class FlagsClass, value uint32) (result FlagsValue
 }
 
 // g_flags_get_value_by_name
-// container is nil
+//
+// [ flags_class ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func FlagsGetValueByName(flags_class FlagsClass, name string) (result FlagsValue) {
 	iv, err := _I.Get(207, "flags_get_value_by_name", "")
 	if err != nil {
@@ -5069,7 +5916,13 @@ func FlagsGetValueByName(flags_class FlagsClass, name string) (result FlagsValue
 }
 
 // g_flags_get_value_by_nick
-// container is nil
+//
+// [ flags_class ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func FlagsGetValueByNick(flags_class FlagsClass, nick string) (result FlagsValue) {
 	iv, err := _I.Get(208, "flags_get_value_by_nick", "")
 	if err != nil {
@@ -5088,7 +5941,13 @@ func FlagsGetValueByNick(flags_class FlagsClass, nick string) (result FlagsValue
 }
 
 // g_flags_register_static
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ const_static_values ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func FlagsRegisterStatic(name string, const_static_values FlagsValue) (result gi.GType) {
 	iv, err := _I.Get(209, "flags_register_static", "")
 	if err != nil {
@@ -5107,7 +5966,13 @@ func FlagsRegisterStatic(name string, const_static_values FlagsValue) (result gi
 }
 
 // g_flags_to_string
-// container is nil
+//
+// [ flags_type ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FlagsToString(flags_type gi.GType, value uint32) (result string) {
 	iv, err := _I.Get(210, "flags_to_string", "")
 	if err != nil {
@@ -5124,7 +5989,9 @@ func FlagsToString(flags_type gi.GType, value uint32) (result string) {
 }
 
 // g_gtype_get_type
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GtypeGetType() (result gi.GType) {
 	iv, err := _I.Get(211, "gtype_get_type", "")
 	if err != nil {
@@ -5138,7 +6005,19 @@ func GtypeGetType() (result gi.GType) {
 }
 
 // g_param_spec_boolean
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecBooleanF(name string, nick string, blurb string, default_value bool, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(212, "param_spec_boolean", "")
 	if err != nil {
@@ -5164,7 +6043,19 @@ func ParamSpecBooleanF(name string, nick string, blurb string, default_value boo
 }
 
 // g_param_spec_boxed
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ boxed_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type gi.GType, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(213, "param_spec_boxed", "")
 	if err != nil {
@@ -5190,7 +6081,23 @@ func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type gi.GType
 }
 
 // g_param_spec_char
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ minimum ] trans: nothing
+//
+// [ maximum ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecCharF(name string, nick string, blurb string, minimum int8, maximum int8, default_value int8, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(214, "param_spec_char", "")
 	if err != nil {
@@ -5218,7 +6125,23 @@ func ParamSpecCharF(name string, nick string, blurb string, minimum int8, maximu
 }
 
 // g_param_spec_double
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ minimum ] trans: nothing
+//
+// [ maximum ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, maximum float64, default_value float64, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(215, "param_spec_double", "")
 	if err != nil {
@@ -5246,7 +6169,21 @@ func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, m
 }
 
 // g_param_spec_enum
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ enum_type ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecEnumF(name string, nick string, blurb string, enum_type gi.GType, default_value int32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(216, "param_spec_enum", "")
 	if err != nil {
@@ -5273,7 +6210,21 @@ func ParamSpecEnumF(name string, nick string, blurb string, enum_type gi.GType, 
 }
 
 // g_param_spec_flags
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ flags_type ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecFlagsF(name string, nick string, blurb string, flags_type gi.GType, default_value uint32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(217, "param_spec_flags", "")
 	if err != nil {
@@ -5300,7 +6251,23 @@ func ParamSpecFlagsF(name string, nick string, blurb string, flags_type gi.GType
 }
 
 // g_param_spec_float
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ minimum ] trans: nothing
+//
+// [ maximum ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, maximum float32, default_value float32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(218, "param_spec_float", "")
 	if err != nil {
@@ -5328,7 +6295,19 @@ func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, ma
 }
 
 // g_param_spec_gtype
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ is_a_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecGtype(name string, nick string, blurb string, is_a_type gi.GType, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(219, "param_spec_gtype", "")
 	if err != nil {
@@ -5354,7 +6333,23 @@ func ParamSpecGtype(name string, nick string, blurb string, is_a_type gi.GType, 
 }
 
 // g_param_spec_int
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ minimum ] trans: nothing
+//
+// [ maximum ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecIntF(name string, nick string, blurb string, minimum int32, maximum int32, default_value int32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(220, "param_spec_int", "")
 	if err != nil {
@@ -5382,7 +6377,23 @@ func ParamSpecIntF(name string, nick string, blurb string, minimum int32, maximu
 }
 
 // g_param_spec_int64
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ minimum ] trans: nothing
+//
+// [ maximum ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecInt64F(name string, nick string, blurb string, minimum int64, maximum int64, default_value int64, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(221, "param_spec_int64", "")
 	if err != nil {
@@ -5410,7 +6421,23 @@ func ParamSpecInt64F(name string, nick string, blurb string, minimum int64, maxi
 }
 
 // g_param_spec_long
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ minimum ] trans: nothing
+//
+// [ maximum ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maximum int64, default_value int64, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(222, "param_spec_long", "")
 	if err != nil {
@@ -5438,7 +6465,19 @@ func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maxim
 }
 
 // g_param_spec_object
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ object_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecObjectF(name string, nick string, blurb string, object_type gi.GType, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(223, "param_spec_object", "")
 	if err != nil {
@@ -5464,7 +6503,19 @@ func ParamSpecObjectF(name string, nick string, blurb string, object_type gi.GTy
 }
 
 // g_param_spec_param
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ param_type ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecParamF(name string, nick string, blurb string, param_type gi.GType, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(224, "param_spec_param", "")
 	if err != nil {
@@ -5490,7 +6541,17 @@ func ParamSpecParamF(name string, nick string, blurb string, param_type gi.GType
 }
 
 // g_param_spec_pointer
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecPointerF(name string, nick string, blurb string, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(225, "param_spec_pointer", "")
 	if err != nil {
@@ -5515,7 +6576,11 @@ func ParamSpecPointerF(name string, nick string, blurb string, flags ParamFlags)
 }
 
 // g_param_spec_pool_new
-// container is nil
+//
+// [ type_prefixing ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParamSpecPoolNew(type_prefixing bool) (result ParamSpecPool) {
 	iv, err := _I.Get(226, "param_spec_pool_new", "")
 	if err != nil {
@@ -5531,7 +6596,19 @@ func ParamSpecPoolNew(type_prefixing bool) (result ParamSpecPool) {
 }
 
 // g_param_spec_string
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecStringF(name string, nick string, blurb string, default_value string, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(227, "param_spec_string", "")
 	if err != nil {
@@ -5559,7 +6636,23 @@ func ParamSpecStringF(name string, nick string, blurb string, default_value stri
 }
 
 // g_param_spec_uchar
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ minimum ] trans: nothing
+//
+// [ maximum ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, default_value uint8, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(228, "param_spec_uchar", "")
 	if err != nil {
@@ -5587,7 +6680,23 @@ func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maxim
 }
 
 // g_param_spec_uint
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ minimum ] trans: nothing
+//
+// [ maximum ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maximum uint32, default_value uint32, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(229, "param_spec_uint", "")
 	if err != nil {
@@ -5615,7 +6724,23 @@ func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maxim
 }
 
 // g_param_spec_uint64
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ minimum ] trans: nothing
+//
+// [ maximum ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, default_value uint64, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(230, "param_spec_uint64", "")
 	if err != nil {
@@ -5643,7 +6768,23 @@ func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, max
 }
 
 // g_param_spec_ulong
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ minimum ] trans: nothing
+//
+// [ maximum ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, default_value uint64, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(231, "param_spec_ulong", "")
 	if err != nil {
@@ -5671,7 +6812,19 @@ func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maxi
 }
 
 // g_param_spec_unichar
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ default_value ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecUnicharF(name string, nick string, blurb string, default_value rune, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(232, "param_spec_unichar", "")
 	if err != nil {
@@ -5697,7 +6850,21 @@ func ParamSpecUnicharF(name string, nick string, blurb string, default_value run
 }
 
 // g_param_spec_variant
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ nick ] trans: nothing
+//
+// [ blurb ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ default_value ] trans: everything
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ParamSpecVariantF(name string, nick string, blurb string, type1 glib.VariantType, default_value glib.Variant, flags ParamFlags) (result ParamSpec) {
 	iv, err := _I.Get(233, "param_spec_variant", "")
 	if err != nil {
@@ -5724,7 +6891,13 @@ func ParamSpecVariantF(name string, nick string, blurb string, type1 glib.Varian
 }
 
 // g_param_type_register_static
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ pspec_info ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParamTypeRegisterStatic(name string, pspec_info ParamSpecTypeInfo) (result gi.GType) {
 	iv, err := _I.Get(234, "param_type_register_static", "")
 	if err != nil {
@@ -5743,7 +6916,17 @@ func ParamTypeRegisterStatic(name string, pspec_info ParamSpecTypeInfo) (result 
 }
 
 // g_param_value_convert
-// container is nil
+//
+// [ pspec ] trans: nothing
+//
+// [ src_value ] trans: nothing
+//
+// [ dest_value ] trans: nothing
+//
+// [ strict_validation ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParamValueConvert(pspec IParamSpec, src_value Value, dest_value Value, strict_validation bool) (result bool) {
 	iv, err := _I.Get(235, "param_value_convert", "")
 	if err != nil {
@@ -5766,7 +6949,13 @@ func ParamValueConvert(pspec IParamSpec, src_value Value, dest_value Value, stri
 }
 
 // g_param_value_defaults
-// container is nil
+//
+// [ pspec ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParamValueDefaults(pspec IParamSpec, value Value) (result bool) {
 	iv, err := _I.Get(236, "param_value_defaults", "")
 	if err != nil {
@@ -5787,7 +6976,11 @@ func ParamValueDefaults(pspec IParamSpec, value Value) (result bool) {
 }
 
 // g_param_value_set_default
-// container is nil
+//
+// [ pspec ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func ParamValueSetDefault(pspec IParamSpec, value Value) {
 	iv, err := _I.Get(237, "param_value_set_default", "")
 	if err != nil {
@@ -5805,7 +6998,13 @@ func ParamValueSetDefault(pspec IParamSpec, value Value) {
 }
 
 // g_param_value_validate
-// container is nil
+//
+// [ pspec ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParamValueValidate(pspec IParamSpec, value Value) (result bool) {
 	iv, err := _I.Get(238, "param_value_validate", "")
 	if err != nil {
@@ -5826,7 +7025,15 @@ func ParamValueValidate(pspec IParamSpec, value Value) (result bool) {
 }
 
 // g_param_values_cmp
-// container is nil
+//
+// [ pspec ] trans: nothing
+//
+// [ value1 ] trans: nothing
+//
+// [ value2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParamValuesCmp(pspec IParamSpec, value1 Value, value2 Value) (result int32) {
 	iv, err := _I.Get(239, "param_values_cmp", "")
 	if err != nil {
@@ -5848,7 +7055,11 @@ func ParamValuesCmp(pspec IParamSpec, value1 Value, value2 Value) (result int32)
 }
 
 // g_pointer_type_register_static
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PointerTypeRegisterStatic(name string) (result gi.GType) {
 	iv, err := _I.Get(240, "pointer_type_register_static", "")
 	if err != nil {
@@ -5866,7 +7077,17 @@ func PointerTypeRegisterStatic(name string) (result gi.GType) {
 }
 
 // g_signal_accumulator_first_wins
-// container is nil
+//
+// [ ihint ] trans: nothing
+//
+// [ return_accu ] trans: nothing
+//
+// [ handler_return ] trans: nothing
+//
+// [ dummy ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalAccumulatorFirstWins(ihint SignalInvocationHint, return_accu Value, handler_return Value, dummy unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(241, "signal_accumulator_first_wins", "")
 	if err != nil {
@@ -5885,7 +7106,17 @@ func SignalAccumulatorFirstWins(ihint SignalInvocationHint, return_accu Value, h
 }
 
 // g_signal_accumulator_true_handled
-// container is nil
+//
+// [ ihint ] trans: nothing
+//
+// [ return_accu ] trans: nothing
+//
+// [ handler_return ] trans: nothing
+//
+// [ dummy ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value, handler_return Value, dummy unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(242, "signal_accumulator_true_handled", "")
 	if err != nil {
@@ -5904,7 +7135,19 @@ func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value,
 }
 
 // g_signal_add_emission_hook
-// container is nil
+//
+// [ signal_id ] trans: nothing
+//
+// [ detail ] trans: nothing
+//
+// [ hook_func ] trans: nothing
+//
+// [ hook_data ] trans: nothing
+//
+// [ data_destroy ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func int /*TODO_TYPE CALLBACK*/, hook_data unsafe.Pointer, data_destroy int /*TODO_TYPE CALLBACK*/) (result uint64) {
 	iv, err := _I.Get(243, "signal_add_emission_hook", "")
 	if err != nil {
@@ -5924,7 +7167,11 @@ func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func int /*TODO
 }
 
 // g_signal_chain_from_overridden
-// container is nil
+//
+// [ instance_and_params ] trans: nothing
+//
+// [ return_value ] trans: nothing
+//
 func SignalChainFromOverridden(instance_and_params unsafe.Pointer, return_value Value) {
 	iv, err := _I.Get(244, "signal_chain_from_overridden", "")
 	if err != nil {
@@ -5938,7 +7185,17 @@ func SignalChainFromOverridden(instance_and_params unsafe.Pointer, return_value 
 }
 
 // g_signal_connect_closure
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ detailed_signal ] trans: nothing
+//
+// [ closure ] trans: nothing
+//
+// [ after ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalConnectClosure(instance IObject, detailed_signal string, closure Closure, after bool) (result uint64) {
 	iv, err := _I.Get(245, "signal_connect_closure", "")
 	if err != nil {
@@ -5963,7 +7220,19 @@ func SignalConnectClosure(instance IObject, detailed_signal string, closure Clos
 }
 
 // g_signal_connect_closure_by_id
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ signal_id ] trans: nothing
+//
+// [ detail ] trans: nothing
+//
+// [ closure ] trans: nothing
+//
+// [ after ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32, closure Closure, after bool) (result uint64) {
 	iv, err := _I.Get(246, "signal_connect_closure_by_id", "")
 	if err != nil {
@@ -5987,7 +7256,15 @@ func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32,
 }
 
 // g_signal_emitv
-// container is nil
+//
+// [ instance_and_params ] trans: nothing
+//
+// [ signal_id ] trans: nothing
+//
+// [ detail ] trans: nothing
+//
+// [ return_value ] trans: everything, dir: inout
+//
 func SignalEmitv(instance_and_params unsafe.Pointer, signal_id uint32, detail uint32, return_value int /*TODO:TYPE*/) {
 	iv, err := _I.Get(247, "signal_emitv", "")
 	if err != nil {
@@ -6003,7 +7280,11 @@ func SignalEmitv(instance_and_params unsafe.Pointer, signal_id uint32, detail ui
 }
 
 // g_signal_get_invocation_hint
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalGetInvocationHint(instance IObject) (result SignalInvocationHint) {
 	iv, err := _I.Get(248, "signal_get_invocation_hint", "")
 	if err != nil {
@@ -6023,7 +7304,11 @@ func SignalGetInvocationHint(instance IObject) (result SignalInvocationHint) {
 }
 
 // g_signal_handler_block
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ handler_id ] trans: nothing
+//
 func SignalHandlerBlock(instance IObject, handler_id uint64) {
 	iv, err := _I.Get(249, "signal_handler_block", "")
 	if err != nil {
@@ -6041,7 +7326,11 @@ func SignalHandlerBlock(instance IObject, handler_id uint64) {
 }
 
 // g_signal_handler_disconnect
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ handler_id ] trans: nothing
+//
 func SignalHandlerDisconnect(instance IObject, handler_id uint64) {
 	iv, err := _I.Get(250, "signal_handler_disconnect", "")
 	if err != nil {
@@ -6059,7 +7348,23 @@ func SignalHandlerDisconnect(instance IObject, handler_id uint64) {
 }
 
 // g_signal_handler_find
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ mask ] trans: nothing
+//
+// [ signal_id ] trans: nothing
+//
+// [ detail ] trans: nothing
+//
+// [ closure ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalHandlerFind(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint64) {
 	iv, err := _I.Get(251, "signal_handler_find", "")
 	if err != nil {
@@ -6085,7 +7390,13 @@ func SignalHandlerFind(instance IObject, mask SignalMatchTypeFlags, signal_id ui
 }
 
 // g_signal_handler_is_connected
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ handler_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalHandlerIsConnected(instance IObject, handler_id uint64) (result bool) {
 	iv, err := _I.Get(252, "signal_handler_is_connected", "")
 	if err != nil {
@@ -6106,7 +7417,11 @@ func SignalHandlerIsConnected(instance IObject, handler_id uint64) (result bool)
 }
 
 // g_signal_handler_unblock
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ handler_id ] trans: nothing
+//
 func SignalHandlerUnblock(instance IObject, handler_id uint64) {
 	iv, err := _I.Get(253, "signal_handler_unblock", "")
 	if err != nil {
@@ -6124,7 +7439,23 @@ func SignalHandlerUnblock(instance IObject, handler_id uint64) {
 }
 
 // g_signal_handlers_block_matched
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ mask ] trans: nothing
+//
+// [ signal_id ] trans: nothing
+//
+// [ detail ] trans: nothing
+//
+// [ closure ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalHandlersBlockMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(254, "signal_handlers_block_matched", "")
 	if err != nil {
@@ -6150,7 +7481,9 @@ func SignalHandlersBlockMatched(instance IObject, mask SignalMatchTypeFlags, sig
 }
 
 // g_signal_handlers_destroy
-// container is nil
+//
+// [ instance ] trans: nothing
+//
 func SignalHandlersDestroy(instance IObject) {
 	iv, err := _I.Get(255, "signal_handlers_destroy", "")
 	if err != nil {
@@ -6167,7 +7500,23 @@ func SignalHandlersDestroy(instance IObject) {
 }
 
 // g_signal_handlers_disconnect_matched
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ mask ] trans: nothing
+//
+// [ signal_id ] trans: nothing
+//
+// [ detail ] trans: nothing
+//
+// [ closure ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalHandlersDisconnectMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(256, "signal_handlers_disconnect_matched", "")
 	if err != nil {
@@ -6193,7 +7542,23 @@ func SignalHandlersDisconnectMatched(instance IObject, mask SignalMatchTypeFlags
 }
 
 // g_signal_handlers_unblock_matched
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ mask ] trans: nothing
+//
+// [ signal_id ] trans: nothing
+//
+// [ detail ] trans: nothing
+//
+// [ closure ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalHandlersUnblockMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(257, "signal_handlers_unblock_matched", "")
 	if err != nil {
@@ -6219,7 +7584,17 @@ func SignalHandlersUnblockMatched(instance IObject, mask SignalMatchTypeFlags, s
 }
 
 // g_signal_has_handler_pending
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ signal_id ] trans: nothing
+//
+// [ detail ] trans: nothing
+//
+// [ may_be_blocked ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalHasHandlerPending(instance IObject, signal_id uint32, detail uint32, may_be_blocked bool) (result bool) {
 	iv, err := _I.Get(258, "signal_has_handler_pending", "")
 	if err != nil {
@@ -6242,8 +7617,13 @@ func SignalHasHandlerPending(instance IObject, signal_id uint32, detail uint32, 
 }
 
 // g_signal_list_ids
-// container is nil
-// ret lenArgIdx 1
+//
+// [ itype ] trans: nothing
+//
+// [ n_ids ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func SignalListIds(itype gi.GType) (result gi.Uint32Array) {
 	iv, err := _I.Get(259, "signal_list_ids", "")
 	if err != nil {
@@ -6264,7 +7644,13 @@ func SignalListIds(itype gi.GType) (result gi.Uint32Array) {
 }
 
 // g_signal_lookup
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ itype ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalLookup(name string, itype gi.GType) (result uint32) {
 	iv, err := _I.Get(260, "signal_lookup", "")
 	if err != nil {
@@ -6283,7 +7669,11 @@ func SignalLookup(name string, itype gi.GType) (result uint32) {
 }
 
 // g_signal_name
-// container is nil
+//
+// [ signal_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalName(signal_id uint32) (result string) {
 	iv, err := _I.Get(261, "signal_name", "")
 	if err != nil {
@@ -6294,12 +7684,18 @@ func SignalName(signal_id uint32) (result string) {
 	args := []gi.Argument{arg_signal_id}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_signal_override_class_closure
-// container is nil
+//
+// [ signal_id ] trans: nothing
+//
+// [ instance_type ] trans: nothing
+//
+// [ class_closure ] trans: nothing
+//
 func SignalOverrideClassClosure(signal_id uint32, instance_type gi.GType, class_closure Closure) {
 	iv, err := _I.Get(262, "signal_override_class_closure", "")
 	if err != nil {
@@ -6314,7 +7710,19 @@ func SignalOverrideClassClosure(signal_id uint32, instance_type gi.GType, class_
 }
 
 // g_signal_parse_name
-// container is nil
+//
+// [ detailed_signal ] trans: nothing
+//
+// [ itype ] trans: nothing
+//
+// [ signal_id_p ] trans: everything, dir: out
+//
+// [ detail_p ] trans: everything, dir: out
+//
+// [ force_detail_quark ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalParseName(detailed_signal string, itype gi.GType, force_detail_quark bool) (result bool, signal_id_p uint32, detail_p uint32) {
 	iv, err := _I.Get(263, "signal_parse_name", "")
 	if err != nil {
@@ -6339,7 +7747,11 @@ func SignalParseName(detailed_signal string, itype gi.GType, force_detail_quark 
 }
 
 // g_signal_query
-// container is nil
+//
+// [ signal_id ] trans: nothing
+//
+// [ query ] trans: nothing, dir: out
+//
 func SignalQueryF(signal_id uint32, query SignalQuery) {
 	iv, err := _I.Get(264, "signal_query", "")
 	if err != nil {
@@ -6353,7 +7765,11 @@ func SignalQueryF(signal_id uint32, query SignalQuery) {
 }
 
 // g_signal_remove_emission_hook
-// container is nil
+//
+// [ signal_id ] trans: nothing
+//
+// [ hook_id ] trans: nothing
+//
 func SignalRemoveEmissionHook(signal_id uint32, hook_id uint64) {
 	iv, err := _I.Get(265, "signal_remove_emission_hook", "")
 	if err != nil {
@@ -6367,7 +7783,13 @@ func SignalRemoveEmissionHook(signal_id uint32, hook_id uint64) {
 }
 
 // g_signal_set_va_marshaller
-// container is nil
+//
+// [ signal_id ] trans: nothing
+//
+// [ instance_type ] trans: nothing
+//
+// [ va_marshaller ] trans: nothing
+//
 func SignalSetVaMarshaller(signal_id uint32, instance_type gi.GType, va_marshaller int /*TODO_TYPE isPtr: false, tag: interface*/) {
 	iv, err := _I.Get(266, "signal_set_va_marshaller", "")
 	if err != nil {
@@ -6382,7 +7804,13 @@ func SignalSetVaMarshaller(signal_id uint32, instance_type gi.GType, va_marshall
 }
 
 // g_signal_stop_emission
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ signal_id ] trans: nothing
+//
+// [ detail ] trans: nothing
+//
 func SignalStopEmission(instance IObject, signal_id uint32, detail uint32) {
 	iv, err := _I.Get(267, "signal_stop_emission", "")
 	if err != nil {
@@ -6401,7 +7829,11 @@ func SignalStopEmission(instance IObject, signal_id uint32, detail uint32) {
 }
 
 // g_signal_stop_emission_by_name
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ detailed_signal ] trans: nothing
+//
 func SignalStopEmissionByName(instance IObject, detailed_signal string) {
 	iv, err := _I.Get(268, "signal_stop_emission_by_name", "")
 	if err != nil {
@@ -6421,7 +7853,13 @@ func SignalStopEmissionByName(instance IObject, detailed_signal string) {
 }
 
 // g_signal_type_cclosure_new
-// container is nil
+//
+// [ itype ] trans: nothing
+//
+// [ struct_offset ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SignalTypeCclosureNew(itype gi.GType, struct_offset uint32) (result Closure) {
 	iv, err := _I.Get(269, "signal_type_cclosure_new", "")
 	if err != nil {
@@ -6438,7 +7876,11 @@ func SignalTypeCclosureNew(itype gi.GType, struct_offset uint32) (result Closure
 }
 
 // g_source_set_closure
-// container is nil
+//
+// [ source ] trans: nothing
+//
+// [ closure ] trans: nothing
+//
 func SourceSetClosure(source glib.Source, closure Closure) {
 	iv, err := _I.Get(270, "source_set_closure", "")
 	if err != nil {
@@ -6452,7 +7894,9 @@ func SourceSetClosure(source glib.Source, closure Closure) {
 }
 
 // g_source_set_dummy_callback
-// container is nil
+//
+// [ source ] trans: nothing
+//
 func SourceSetDummyCallback(source glib.Source) {
 	iv, err := _I.Get(271, "source_set_dummy_callback", "")
 	if err != nil {
@@ -6465,7 +7909,11 @@ func SourceSetDummyCallback(source glib.Source) {
 }
 
 // g_strdup_value_contents
-// container is nil
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func StrdupValueContents(value Value) (result string) {
 	iv, err := _I.Get(272, "strdup_value_contents", "")
 	if err != nil {
@@ -6481,7 +7929,11 @@ func StrdupValueContents(value Value) (result string) {
 }
 
 // g_type_add_class_private
-// container is nil
+//
+// [ class_type ] trans: nothing
+//
+// [ private_size ] trans: nothing
+//
 func TypeAddClassPrivate(class_type gi.GType, private_size uint64) {
 	iv, err := _I.Get(273, "type_add_class_private", "")
 	if err != nil {
@@ -6495,7 +7947,13 @@ func TypeAddClassPrivate(class_type gi.GType, private_size uint64) {
 }
 
 // g_type_add_instance_private
-// container is nil
+//
+// [ class_type ] trans: nothing
+//
+// [ private_size ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeAddInstancePrivate(class_type gi.GType, private_size uint64) (result int32) {
 	iv, err := _I.Get(274, "type_add_instance_private", "")
 	if err != nil {
@@ -6512,7 +7970,13 @@ func TypeAddInstancePrivate(class_type gi.GType, private_size uint64) (result in
 }
 
 // g_type_add_interface_dynamic
-// container is nil
+//
+// [ instance_type ] trans: nothing
+//
+// [ interface_type ] trans: nothing
+//
+// [ plugin ] trans: nothing
+//
 func TypeAddInterfaceDynamic(instance_type gi.GType, interface_type gi.GType, plugin ITypePlugin) {
 	iv, err := _I.Get(275, "type_add_interface_dynamic", "")
 	if err != nil {
@@ -6531,7 +7995,13 @@ func TypeAddInterfaceDynamic(instance_type gi.GType, interface_type gi.GType, pl
 }
 
 // g_type_add_interface_static
-// container is nil
+//
+// [ instance_type ] trans: nothing
+//
+// [ interface_type ] trans: nothing
+//
+// [ info ] trans: nothing
+//
 func TypeAddInterfaceStatic(instance_type gi.GType, interface_type gi.GType, info InterfaceInfo) {
 	iv, err := _I.Get(276, "type_add_interface_static", "")
 	if err != nil {
@@ -6546,7 +8016,13 @@ func TypeAddInterfaceStatic(instance_type gi.GType, interface_type gi.GType, inf
 }
 
 // g_type_check_class_is_a
-// container is nil
+//
+// [ g_class ] trans: nothing
+//
+// [ is_a_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeCheckClassIsA(g_class TypeClass, is_a_type gi.GType) (result bool) {
 	iv, err := _I.Get(277, "type_check_class_is_a", "")
 	if err != nil {
@@ -6563,7 +8039,11 @@ func TypeCheckClassIsA(g_class TypeClass, is_a_type gi.GType) (result bool) {
 }
 
 // g_type_check_instance
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeCheckInstance(instance TypeInstance) (result bool) {
 	iv, err := _I.Get(278, "type_check_instance", "")
 	if err != nil {
@@ -6579,7 +8059,13 @@ func TypeCheckInstance(instance TypeInstance) (result bool) {
 }
 
 // g_type_check_instance_is_a
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ iface_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeCheckInstanceIsA(instance TypeInstance, iface_type gi.GType) (result bool) {
 	iv, err := _I.Get(279, "type_check_instance_is_a", "")
 	if err != nil {
@@ -6596,7 +8082,13 @@ func TypeCheckInstanceIsA(instance TypeInstance, iface_type gi.GType) (result bo
 }
 
 // g_type_check_instance_is_fundamentally_a
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ fundamental_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeCheckInstanceIsFundamentallyA(instance TypeInstance, fundamental_type gi.GType) (result bool) {
 	iv, err := _I.Get(280, "type_check_instance_is_fundamentally_a", "")
 	if err != nil {
@@ -6613,7 +8105,11 @@ func TypeCheckInstanceIsFundamentallyA(instance TypeInstance, fundamental_type g
 }
 
 // g_type_check_is_value_type
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeCheckIsValueType(type1 gi.GType) (result bool) {
 	iv, err := _I.Get(281, "type_check_is_value_type", "")
 	if err != nil {
@@ -6629,7 +8125,11 @@ func TypeCheckIsValueType(type1 gi.GType) (result bool) {
 }
 
 // g_type_check_value
-// container is nil
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeCheckValue(value Value) (result bool) {
 	iv, err := _I.Get(282, "type_check_value", "")
 	if err != nil {
@@ -6645,7 +8145,13 @@ func TypeCheckValue(value Value) (result bool) {
 }
 
 // g_type_check_value_holds
-// container is nil
+//
+// [ value ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeCheckValueHolds(value Value, type1 gi.GType) (result bool) {
 	iv, err := _I.Get(283, "type_check_value_holds", "")
 	if err != nil {
@@ -6662,8 +8168,13 @@ func TypeCheckValueHolds(value Value, type1 gi.GType) (result bool) {
 }
 
 // g_type_children
-// container is nil
-// ret lenArgIdx 1
+//
+// [ type1 ] trans: nothing
+//
+// [ n_children ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func TypeChildren(type1 gi.GType) (result gi.GTypeArray) {
 	iv, err := _I.Get(284, "type_children", "")
 	if err != nil {
@@ -6684,7 +8195,11 @@ func TypeChildren(type1 gi.GType) (result gi.GTypeArray) {
 }
 
 // g_type_class_adjust_private_offset
-// container is nil
+//
+// [ g_class ] trans: nothing
+//
+// [ private_size_or_offset ] trans: nothing
+//
 func TypeClassAdjustPrivateOffset(g_class unsafe.Pointer, private_size_or_offset int32) {
 	iv, err := _I.Get(285, "type_class_adjust_private_offset", "")
 	if err != nil {
@@ -6698,7 +8213,11 @@ func TypeClassAdjustPrivateOffset(g_class unsafe.Pointer, private_size_or_offset
 }
 
 // g_type_class_peek
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeClassPeek(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(286, "type_class_peek", "")
 	if err != nil {
@@ -6714,7 +8233,11 @@ func TypeClassPeek(type1 gi.GType) (result TypeClass) {
 }
 
 // g_type_class_peek_static
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeClassPeekStatic(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(287, "type_class_peek_static", "")
 	if err != nil {
@@ -6730,7 +8253,11 @@ func TypeClassPeekStatic(type1 gi.GType) (result TypeClass) {
 }
 
 // g_type_class_ref
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeClassRef(type1 gi.GType) (result TypeClass) {
 	iv, err := _I.Get(288, "type_class_ref", "")
 	if err != nil {
@@ -6746,7 +8273,11 @@ func TypeClassRef(type1 gi.GType) (result TypeClass) {
 }
 
 // g_type_default_interface_peek
-// container is nil
+//
+// [ g_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeDefaultInterfacePeek(g_type gi.GType) (result TypeInterface) {
 	iv, err := _I.Get(289, "type_default_interface_peek", "")
 	if err != nil {
@@ -6762,7 +8293,11 @@ func TypeDefaultInterfacePeek(g_type gi.GType) (result TypeInterface) {
 }
 
 // g_type_default_interface_ref
-// container is nil
+//
+// [ g_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeDefaultInterfaceRef(g_type gi.GType) (result TypeInterface) {
 	iv, err := _I.Get(290, "type_default_interface_ref", "")
 	if err != nil {
@@ -6778,7 +8313,9 @@ func TypeDefaultInterfaceRef(g_type gi.GType) (result TypeInterface) {
 }
 
 // g_type_default_interface_unref
-// container is nil
+//
+// [ g_iface ] trans: nothing
+//
 func TypeDefaultInterfaceUnref(g_iface TypeInterface) {
 	iv, err := _I.Get(291, "type_default_interface_unref", "")
 	if err != nil {
@@ -6791,7 +8328,11 @@ func TypeDefaultInterfaceUnref(g_iface TypeInterface) {
 }
 
 // g_type_depth
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeDepth(type1 gi.GType) (result uint32) {
 	iv, err := _I.Get(292, "type_depth", "")
 	if err != nil {
@@ -6807,7 +8348,9 @@ func TypeDepth(type1 gi.GType) (result uint32) {
 }
 
 // g_type_ensure
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
 func TypeEnsure(type1 gi.GType) {
 	iv, err := _I.Get(293, "type_ensure", "")
 	if err != nil {
@@ -6820,7 +8363,9 @@ func TypeEnsure(type1 gi.GType) {
 }
 
 // g_type_free_instance
-// container is nil
+//
+// [ instance ] trans: nothing
+//
 func TypeFreeInstance(instance TypeInstance) {
 	iv, err := _I.Get(294, "type_free_instance", "")
 	if err != nil {
@@ -6833,7 +8378,11 @@ func TypeFreeInstance(instance TypeInstance) {
 }
 
 // g_type_from_name
-// container is nil
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeFromName(name string) (result gi.GType) {
 	iv, err := _I.Get(295, "type_from_name", "")
 	if err != nil {
@@ -6851,7 +8400,11 @@ func TypeFromName(name string) (result gi.GType) {
 }
 
 // g_type_fundamental
-// container is nil
+//
+// [ type_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeFundamental(type_id gi.GType) (result gi.GType) {
 	iv, err := _I.Get(296, "type_fundamental", "")
 	if err != nil {
@@ -6867,7 +8420,9 @@ func TypeFundamental(type_id gi.GType) (result gi.GType) {
 }
 
 // g_type_fundamental_next
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TypeFundamentalNext() (result gi.GType) {
 	iv, err := _I.Get(297, "type_fundamental_next", "")
 	if err != nil {
@@ -6881,7 +8436,11 @@ func TypeFundamentalNext() (result gi.GType) {
 }
 
 // g_type_get_instance_count
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeGetInstanceCount(type1 gi.GType) (result int32) {
 	iv, err := _I.Get(298, "type_get_instance_count", "")
 	if err != nil {
@@ -6897,7 +8456,11 @@ func TypeGetInstanceCount(type1 gi.GType) (result int32) {
 }
 
 // g_type_get_plugin
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeGetPlugin(type1 gi.GType) (result TypePlugin) {
 	iv, err := _I.Get(299, "type_get_plugin", "")
 	if err != nil {
@@ -6913,7 +8476,13 @@ func TypeGetPlugin(type1 gi.GType) (result TypePlugin) {
 }
 
 // g_type_get_qdata
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ quark ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeGetQdata(type1 gi.GType, quark uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(300, "type_get_qdata", "")
 	if err != nil {
@@ -6930,7 +8499,9 @@ func TypeGetQdata(type1 gi.GType, quark uint32) (result unsafe.Pointer) {
 }
 
 // g_type_get_type_registration_serial
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TypeGetTypeRegistrationSerial() (result uint32) {
 	iv, err := _I.Get(301, "type_get_type_registration_serial", "")
 	if err != nil {
@@ -6944,7 +8515,7 @@ func TypeGetTypeRegistrationSerial() (result uint32) {
 }
 
 // g_type_init
-// container is nil
+//
 func TypeInit() {
 	iv, err := _I.Get(302, "type_init", "")
 	if err != nil {
@@ -6955,7 +8526,9 @@ func TypeInit() {
 }
 
 // g_type_init_with_debug_flags
-// container is nil
+//
+// [ debug_flags ] trans: nothing
+//
 func TypeInitWithDebugFlags(debug_flags TypeDebugFlags) {
 	iv, err := _I.Get(303, "type_init_with_debug_flags", "")
 	if err != nil {
@@ -6968,7 +8541,11 @@ func TypeInitWithDebugFlags(debug_flags TypeDebugFlags) {
 }
 
 // g_type_interface_add_prerequisite
-// container is nil
+//
+// [ interface_type ] trans: nothing
+//
+// [ prerequisite_type ] trans: nothing
+//
 func TypeInterfaceAddPrerequisite(interface_type gi.GType, prerequisite_type gi.GType) {
 	iv, err := _I.Get(304, "type_interface_add_prerequisite", "")
 	if err != nil {
@@ -6982,7 +8559,13 @@ func TypeInterfaceAddPrerequisite(interface_type gi.GType, prerequisite_type gi.
 }
 
 // g_type_interface_get_plugin
-// container is nil
+//
+// [ instance_type ] trans: nothing
+//
+// [ interface_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeInterfaceGetPlugin(instance_type gi.GType, interface_type gi.GType) (result TypePlugin) {
 	iv, err := _I.Get(305, "type_interface_get_plugin", "")
 	if err != nil {
@@ -6999,7 +8582,13 @@ func TypeInterfaceGetPlugin(instance_type gi.GType, interface_type gi.GType) (re
 }
 
 // g_type_interface_peek
-// container is nil
+//
+// [ instance_class ] trans: nothing
+//
+// [ iface_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeInterfacePeek(instance_class TypeClass, iface_type gi.GType) (result TypeInterface) {
 	iv, err := _I.Get(306, "type_interface_peek", "")
 	if err != nil {
@@ -7016,8 +8605,13 @@ func TypeInterfacePeek(instance_class TypeClass, iface_type gi.GType) (result Ty
 }
 
 // g_type_interface_prerequisites
-// container is nil
-// ret lenArgIdx 1
+//
+// [ interface_type ] trans: nothing
+//
+// [ n_prerequisites ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func TypeInterfacePrerequisites(interface_type gi.GType) (result gi.GTypeArray) {
 	iv, err := _I.Get(307, "type_interface_prerequisites", "")
 	if err != nil {
@@ -7038,8 +8632,13 @@ func TypeInterfacePrerequisites(interface_type gi.GType) (result gi.GTypeArray) 
 }
 
 // g_type_interfaces
-// container is nil
-// ret lenArgIdx 1
+//
+// [ type1 ] trans: nothing
+//
+// [ n_interfaces ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func TypeInterfaces(type1 gi.GType) (result gi.GTypeArray) {
 	iv, err := _I.Get(308, "type_interfaces", "")
 	if err != nil {
@@ -7060,7 +8659,13 @@ func TypeInterfaces(type1 gi.GType) (result gi.GTypeArray) {
 }
 
 // g_type_is_a
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ is_a_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeIsA(type1 gi.GType, is_a_type gi.GType) (result bool) {
 	iv, err := _I.Get(309, "type_is_a", "")
 	if err != nil {
@@ -7077,7 +8682,11 @@ func TypeIsA(type1 gi.GType, is_a_type gi.GType) (result bool) {
 }
 
 // g_type_name
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeName(type1 gi.GType) (result string) {
 	iv, err := _I.Get(310, "type_name", "")
 	if err != nil {
@@ -7088,12 +8697,16 @@ func TypeName(type1 gi.GType) (result string) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_type_name_from_class
-// container is nil
+//
+// [ g_class ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeNameFromClass(g_class TypeClass) (result string) {
 	iv, err := _I.Get(311, "type_name_from_class", "")
 	if err != nil {
@@ -7104,12 +8717,16 @@ func TypeNameFromClass(g_class TypeClass) (result string) {
 	args := []gi.Argument{arg_g_class}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_type_name_from_instance
-// container is nil
+//
+// [ instance ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeNameFromInstance(instance TypeInstance) (result string) {
 	iv, err := _I.Get(312, "type_name_from_instance", "")
 	if err != nil {
@@ -7120,12 +8737,18 @@ func TypeNameFromInstance(instance TypeInstance) (result string) {
 	args := []gi.Argument{arg_instance}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_type_next_base
-// container is nil
+//
+// [ leaf_type ] trans: nothing
+//
+// [ root_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeNextBase(leaf_type gi.GType, root_type gi.GType) (result gi.GType) {
 	iv, err := _I.Get(313, "type_next_base", "")
 	if err != nil {
@@ -7142,7 +8765,11 @@ func TypeNextBase(leaf_type gi.GType, root_type gi.GType) (result gi.GType) {
 }
 
 // g_type_parent
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeParent(type1 gi.GType) (result gi.GType) {
 	iv, err := _I.Get(314, "type_parent", "")
 	if err != nil {
@@ -7158,7 +8785,11 @@ func TypeParent(type1 gi.GType) (result gi.GType) {
 }
 
 // g_type_qname
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeQname(type1 gi.GType) (result uint32) {
 	iv, err := _I.Get(315, "type_qname", "")
 	if err != nil {
@@ -7174,7 +8805,11 @@ func TypeQname(type1 gi.GType) (result uint32) {
 }
 
 // g_type_query
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ query ] trans: nothing, dir: out
+//
 func TypeQueryF(type1 gi.GType, query TypeQuery) {
 	iv, err := _I.Get(316, "type_query", "")
 	if err != nil {
@@ -7188,7 +8823,17 @@ func TypeQueryF(type1 gi.GType, query TypeQuery) {
 }
 
 // g_type_register_dynamic
-// container is nil
+//
+// [ parent_type ] trans: nothing
+//
+// [ type_name ] trans: nothing
+//
+// [ plugin ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeRegisterDynamic(parent_type gi.GType, type_name string, plugin ITypePlugin, flags TypeFlags) (result gi.GType) {
 	iv, err := _I.Get(317, "type_register_dynamic", "")
 	if err != nil {
@@ -7213,7 +8858,19 @@ func TypeRegisterDynamic(parent_type gi.GType, type_name string, plugin ITypePlu
 }
 
 // g_type_register_fundamental
-// container is nil
+//
+// [ type_id ] trans: nothing
+//
+// [ type_name ] trans: nothing
+//
+// [ info ] trans: nothing
+//
+// [ finfo ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeRegisterFundamental(type_id gi.GType, type_name string, info TypeInfo, finfo TypeFundamentalInfo, flags TypeFlags) (result gi.GType) {
 	iv, err := _I.Get(318, "type_register_fundamental", "")
 	if err != nil {
@@ -7235,7 +8892,17 @@ func TypeRegisterFundamental(type_id gi.GType, type_name string, info TypeInfo, 
 }
 
 // g_type_register_static
-// container is nil
+//
+// [ parent_type ] trans: nothing
+//
+// [ type_name ] trans: nothing
+//
+// [ info ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeRegisterStatic(parent_type gi.GType, type_name string, info TypeInfo, flags TypeFlags) (result gi.GType) {
 	iv, err := _I.Get(319, "type_register_static", "")
 	if err != nil {
@@ -7256,7 +8923,13 @@ func TypeRegisterStatic(parent_type gi.GType, type_name string, info TypeInfo, f
 }
 
 // g_type_set_qdata
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ quark ] trans: nothing
+//
+// [ data ] trans: nothing
+//
 func TypeSetQdata(type1 gi.GType, quark uint32, data unsafe.Pointer) {
 	iv, err := _I.Get(320, "type_set_qdata", "")
 	if err != nil {
@@ -7271,7 +8944,13 @@ func TypeSetQdata(type1 gi.GType, quark uint32, data unsafe.Pointer) {
 }
 
 // g_type_test_flags
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TypeTestFlags(type1 gi.GType, flags uint32) (result bool) {
 	iv, err := _I.Get(321, "type_test_flags", "")
 	if err != nil {
@@ -7288,7 +8967,13 @@ func TypeTestFlags(type1 gi.GType, flags uint32) (result bool) {
 }
 
 // g_value_type_compatible
-// container is nil
+//
+// [ src_type ] trans: nothing
+//
+// [ dest_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ValueTypeCompatible(src_type gi.GType, dest_type gi.GType) (result bool) {
 	iv, err := _I.Get(322, "value_type_compatible", "")
 	if err != nil {
@@ -7305,7 +8990,13 @@ func ValueTypeCompatible(src_type gi.GType, dest_type gi.GType) (result bool) {
 }
 
 // g_value_type_transformable
-// container is nil
+//
+// [ src_type ] trans: nothing
+//
+// [ dest_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ValueTypeTransformable(src_type gi.GType, dest_type gi.GType) (result bool) {
 	iv, err := _I.Get(323, "value_type_transformable", "")
 	if err != nil {

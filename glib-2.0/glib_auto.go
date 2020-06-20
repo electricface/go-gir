@@ -250,8 +250,9 @@ func AsyncQueueGetType() gi.GType {
 }
 
 // g_async_queue_length
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) Length() (result int32) {
 	iv, err := _I.Get(0, "AsyncQueue", "length")
 	if err != nil {
@@ -267,8 +268,9 @@ func (v AsyncQueue) Length() (result int32) {
 }
 
 // g_async_queue_length_unlocked
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) LengthUnlocked() (result int32) {
 	iv, err := _I.Get(1, "AsyncQueue", "length_unlocked")
 	if err != nil {
@@ -284,8 +286,7 @@ func (v AsyncQueue) LengthUnlocked() (result int32) {
 }
 
 // g_async_queue_lock
-// container is not nil, container is AsyncQueue
-// is method
+//
 func (v AsyncQueue) Lock() {
 	iv, err := _I.Get(2, "AsyncQueue", "lock")
 	if err != nil {
@@ -298,8 +299,9 @@ func (v AsyncQueue) Lock() {
 }
 
 // g_async_queue_pop
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) Pop() (result unsafe.Pointer) {
 	iv, err := _I.Get(3, "AsyncQueue", "pop")
 	if err != nil {
@@ -315,8 +317,9 @@ func (v AsyncQueue) Pop() (result unsafe.Pointer) {
 }
 
 // g_async_queue_pop_unlocked
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) PopUnlocked() (result unsafe.Pointer) {
 	iv, err := _I.Get(4, "AsyncQueue", "pop_unlocked")
 	if err != nil {
@@ -332,8 +335,9 @@ func (v AsyncQueue) PopUnlocked() (result unsafe.Pointer) {
 }
 
 // g_async_queue_push
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ data ] trans: nothing
+//
 func (v AsyncQueue) Push(data unsafe.Pointer) {
 	iv, err := _I.Get(5, "AsyncQueue", "push")
 	if err != nil {
@@ -347,8 +351,9 @@ func (v AsyncQueue) Push(data unsafe.Pointer) {
 }
 
 // g_async_queue_push_front
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ item ] trans: nothing
+//
 func (v AsyncQueue) PushFront(item unsafe.Pointer) {
 	iv, err := _I.Get(6, "AsyncQueue", "push_front")
 	if err != nil {
@@ -362,8 +367,9 @@ func (v AsyncQueue) PushFront(item unsafe.Pointer) {
 }
 
 // g_async_queue_push_front_unlocked
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ item ] trans: nothing
+//
 func (v AsyncQueue) PushFrontUnlocked(item unsafe.Pointer) {
 	iv, err := _I.Get(7, "AsyncQueue", "push_front_unlocked")
 	if err != nil {
@@ -377,8 +383,9 @@ func (v AsyncQueue) PushFrontUnlocked(item unsafe.Pointer) {
 }
 
 // g_async_queue_push_unlocked
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ data ] trans: nothing
+//
 func (v AsyncQueue) PushUnlocked(data unsafe.Pointer) {
 	iv, err := _I.Get(8, "AsyncQueue", "push_unlocked")
 	if err != nil {
@@ -392,8 +399,7 @@ func (v AsyncQueue) PushUnlocked(data unsafe.Pointer) {
 }
 
 // g_async_queue_ref_unlocked
-// container is not nil, container is AsyncQueue
-// is method
+//
 func (v AsyncQueue) RefUnlocked() {
 	iv, err := _I.Get(9, "AsyncQueue", "ref_unlocked")
 	if err != nil {
@@ -406,8 +412,11 @@ func (v AsyncQueue) RefUnlocked() {
 }
 
 // g_async_queue_remove
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ item ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) Remove(item unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(10, "AsyncQueue", "remove")
 	if err != nil {
@@ -424,8 +433,11 @@ func (v AsyncQueue) Remove(item unsafe.Pointer) (result bool) {
 }
 
 // g_async_queue_remove_unlocked
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ item ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) RemoveUnlocked(item unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(11, "AsyncQueue", "remove_unlocked")
 	if err != nil {
@@ -442,8 +454,11 @@ func (v AsyncQueue) RemoveUnlocked(item unsafe.Pointer) (result bool) {
 }
 
 // g_async_queue_timed_pop
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ end_time ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) TimedPop(end_time TimeVal) (result unsafe.Pointer) {
 	iv, err := _I.Get(12, "AsyncQueue", "timed_pop")
 	if err != nil {
@@ -460,8 +475,11 @@ func (v AsyncQueue) TimedPop(end_time TimeVal) (result unsafe.Pointer) {
 }
 
 // g_async_queue_timed_pop_unlocked
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ end_time ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) TimedPopUnlocked(end_time TimeVal) (result unsafe.Pointer) {
 	iv, err := _I.Get(13, "AsyncQueue", "timed_pop_unlocked")
 	if err != nil {
@@ -478,8 +496,11 @@ func (v AsyncQueue) TimedPopUnlocked(end_time TimeVal) (result unsafe.Pointer) {
 }
 
 // g_async_queue_timeout_pop
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ timeout ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) TimeoutPop(timeout uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(14, "AsyncQueue", "timeout_pop")
 	if err != nil {
@@ -496,8 +517,11 @@ func (v AsyncQueue) TimeoutPop(timeout uint64) (result unsafe.Pointer) {
 }
 
 // g_async_queue_timeout_pop_unlocked
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ timeout ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) TimeoutPopUnlocked(timeout uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(15, "AsyncQueue", "timeout_pop_unlocked")
 	if err != nil {
@@ -514,8 +538,9 @@ func (v AsyncQueue) TimeoutPopUnlocked(timeout uint64) (result unsafe.Pointer) {
 }
 
 // g_async_queue_try_pop
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) TryPop() (result unsafe.Pointer) {
 	iv, err := _I.Get(16, "AsyncQueue", "try_pop")
 	if err != nil {
@@ -531,8 +556,9 @@ func (v AsyncQueue) TryPop() (result unsafe.Pointer) {
 }
 
 // g_async_queue_try_pop_unlocked
-// container is not nil, container is AsyncQueue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v AsyncQueue) TryPopUnlocked() (result unsafe.Pointer) {
 	iv, err := _I.Get(17, "AsyncQueue", "try_pop_unlocked")
 	if err != nil {
@@ -548,8 +574,7 @@ func (v AsyncQueue) TryPopUnlocked() (result unsafe.Pointer) {
 }
 
 // g_async_queue_unlock
-// container is not nil, container is AsyncQueue
-// is method
+//
 func (v AsyncQueue) Unlock() {
 	iv, err := _I.Get(18, "AsyncQueue", "unlock")
 	if err != nil {
@@ -562,8 +587,7 @@ func (v AsyncQueue) Unlock() {
 }
 
 // g_async_queue_unref
-// container is not nil, container is AsyncQueue
-// is method
+//
 func (v AsyncQueue) Unref() {
 	iv, err := _I.Get(19, "AsyncQueue", "unref")
 	if err != nil {
@@ -576,8 +600,7 @@ func (v AsyncQueue) Unref() {
 }
 
 // g_async_queue_unref_and_unlock
-// container is not nil, container is AsyncQueue
-// is method
+//
 func (v AsyncQueue) UnrefAndUnlock() {
 	iv, err := _I.Get(20, "AsyncQueue", "unref_and_unlock")
 	if err != nil {
@@ -600,8 +623,13 @@ func BookmarkFileGetType() gi.GType {
 }
 
 // g_bookmark_file_add_application
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ exec ] trans: nothing
+//
 func (v BookmarkFile) AddApplication(uri string, name string, exec string) {
 	iv, err := _I.Get(21, "BookmarkFile", "add_application")
 	if err != nil {
@@ -623,8 +651,11 @@ func (v BookmarkFile) AddApplication(uri string, name string, exec string) {
 }
 
 // g_bookmark_file_add_group
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ group ] trans: nothing
+//
 func (v BookmarkFile) AddGroup(uri string, group string) {
 	iv, err := _I.Get(22, "BookmarkFile", "add_group")
 	if err != nil {
@@ -643,8 +674,7 @@ func (v BookmarkFile) AddGroup(uri string, group string) {
 }
 
 // g_bookmark_file_free
-// container is not nil, container is BookmarkFile
-// is method
+//
 func (v BookmarkFile) Free() {
 	iv, err := _I.Get(23, "BookmarkFile", "free")
 	if err != nil {
@@ -657,8 +687,11 @@ func (v BookmarkFile) Free() {
 }
 
 // g_bookmark_file_get_added
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) GetAdded(uri string) (result int64, err error) {
 	iv, err := _I.Get(24, "BookmarkFile", "get_added")
 	if err != nil {
@@ -679,8 +712,19 @@ func (v BookmarkFile) GetAdded(uri string) (result int64, err error) {
 }
 
 // g_bookmark_file_get_app_info
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ exec ] trans: everything, dir: out
+//
+// [ count ] trans: everything, dir: out
+//
+// [ stamp ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) GetAppInfo(uri string, name string) (result bool, exec string, count uint32, stamp int64, err error) {
 	iv, err := _I.Get(25, "BookmarkFile", "get_app_info")
 	if err != nil {
@@ -710,9 +754,13 @@ func (v BookmarkFile) GetAppInfo(uri string, name string) (result bool, exec str
 }
 
 // g_bookmark_file_get_applications
-// container is not nil, container is BookmarkFile
-// is method
-// ret lenArgIdx 1
+//
+// [ uri ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v BookmarkFile) GetApplications(uri string) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(26, "BookmarkFile", "get_applications")
 	if err != nil {
@@ -737,8 +785,11 @@ func (v BookmarkFile) GetApplications(uri string) (result gi.CStrArray, err erro
 }
 
 // g_bookmark_file_get_description
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v BookmarkFile) GetDescription(uri string) (result string, err error) {
 	iv, err := _I.Get(27, "BookmarkFile", "get_description")
 	if err != nil {
@@ -759,9 +810,13 @@ func (v BookmarkFile) GetDescription(uri string) (result string, err error) {
 }
 
 // g_bookmark_file_get_groups
-// container is not nil, container is BookmarkFile
-// is method
-// ret lenArgIdx 1
+//
+// [ uri ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v BookmarkFile) GetGroups(uri string) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(28, "BookmarkFile", "get_groups")
 	if err != nil {
@@ -786,8 +841,15 @@ func (v BookmarkFile) GetGroups(uri string) (result gi.CStrArray, err error) {
 }
 
 // g_bookmark_file_get_icon
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ href ] trans: everything, dir: out
+//
+// [ mime_type ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) GetIcon(uri string) (result bool, href string, mime_type string, err error) {
 	iv, err := _I.Get(29, "BookmarkFile", "get_icon")
 	if err != nil {
@@ -812,8 +874,11 @@ func (v BookmarkFile) GetIcon(uri string) (result bool, href string, mime_type s
 }
 
 // g_bookmark_file_get_is_private
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) GetIsPrivate(uri string) (result bool, err error) {
 	iv, err := _I.Get(30, "BookmarkFile", "get_is_private")
 	if err != nil {
@@ -834,8 +899,11 @@ func (v BookmarkFile) GetIsPrivate(uri string) (result bool, err error) {
 }
 
 // g_bookmark_file_get_mime_type
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v BookmarkFile) GetMimeType(uri string) (result string, err error) {
 	iv, err := _I.Get(31, "BookmarkFile", "get_mime_type")
 	if err != nil {
@@ -856,8 +924,11 @@ func (v BookmarkFile) GetMimeType(uri string) (result string, err error) {
 }
 
 // g_bookmark_file_get_modified
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) GetModified(uri string) (result int64, err error) {
 	iv, err := _I.Get(32, "BookmarkFile", "get_modified")
 	if err != nil {
@@ -878,8 +949,9 @@ func (v BookmarkFile) GetModified(uri string) (result int64, err error) {
 }
 
 // g_bookmark_file_get_size
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) GetSize() (result int32) {
 	iv, err := _I.Get(33, "BookmarkFile", "get_size")
 	if err != nil {
@@ -895,8 +967,11 @@ func (v BookmarkFile) GetSize() (result int32) {
 }
 
 // g_bookmark_file_get_title
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v BookmarkFile) GetTitle(uri string) (result string, err error) {
 	iv, err := _I.Get(34, "BookmarkFile", "get_title")
 	if err != nil {
@@ -917,9 +992,11 @@ func (v BookmarkFile) GetTitle(uri string) (result string, err error) {
 }
 
 // g_bookmark_file_get_uris
-// container is not nil, container is BookmarkFile
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v BookmarkFile) GetUris() (result gi.CStrArray) {
 	iv, err := _I.Get(35, "BookmarkFile", "get_uris")
 	if err != nil {
@@ -940,8 +1017,11 @@ func (v BookmarkFile) GetUris() (result gi.CStrArray) {
 }
 
 // g_bookmark_file_get_visited
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) GetVisited(uri string) (result int64, err error) {
 	iv, err := _I.Get(36, "BookmarkFile", "get_visited")
 	if err != nil {
@@ -962,8 +1042,13 @@ func (v BookmarkFile) GetVisited(uri string) (result int64, err error) {
 }
 
 // g_bookmark_file_has_application
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) HasApplication(uri string, name string) (result bool, err error) {
 	iv, err := _I.Get(37, "BookmarkFile", "has_application")
 	if err != nil {
@@ -987,8 +1072,13 @@ func (v BookmarkFile) HasApplication(uri string, name string) (result bool, err 
 }
 
 // g_bookmark_file_has_group
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ group ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) HasGroup(uri string, group string) (result bool, err error) {
 	iv, err := _I.Get(38, "BookmarkFile", "has_group")
 	if err != nil {
@@ -1012,8 +1102,11 @@ func (v BookmarkFile) HasGroup(uri string, group string) (result bool, err error
 }
 
 // g_bookmark_file_has_item
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) HasItem(uri string) (result bool) {
 	iv, err := _I.Get(39, "BookmarkFile", "has_item")
 	if err != nil {
@@ -1032,9 +1125,13 @@ func (v BookmarkFile) HasItem(uri string) (result bool) {
 }
 
 // g_bookmark_file_load_from_data
-// container is not nil, container is BookmarkFile
-// is method
-// arg 0 data lenArgIdx 1
+//
+// [ data ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) LoadFromData(data gi.Uint8Array, length uint64) (result bool, err error) {
 	iv, err := _I.Get(40, "BookmarkFile", "load_from_data")
 	if err != nil {
@@ -1054,8 +1151,13 @@ func (v BookmarkFile) LoadFromData(data gi.Uint8Array, length uint64) (result bo
 }
 
 // g_bookmark_file_load_from_data_dirs
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ file ] trans: nothing
+//
+// [ full_path ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) LoadFromDataDirs(file string) (result bool, full_path string, err error) {
 	iv, err := _I.Get(41, "BookmarkFile", "load_from_data_dirs")
 	if err != nil {
@@ -1078,8 +1180,11 @@ func (v BookmarkFile) LoadFromDataDirs(file string) (result bool, full_path stri
 }
 
 // g_bookmark_file_load_from_file
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) LoadFromFile(filename string) (result bool, err error) {
 	iv, err := _I.Get(42, "BookmarkFile", "load_from_file")
 	if err != nil {
@@ -1100,8 +1205,13 @@ func (v BookmarkFile) LoadFromFile(filename string) (result bool, err error) {
 }
 
 // g_bookmark_file_move_item
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ old_uri ] trans: nothing
+//
+// [ new_uri ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) MoveItem(old_uri string, new_uri string) (result bool, err error) {
 	iv, err := _I.Get(43, "BookmarkFile", "move_item")
 	if err != nil {
@@ -1125,8 +1235,13 @@ func (v BookmarkFile) MoveItem(old_uri string, new_uri string) (result bool, err
 }
 
 // g_bookmark_file_remove_application
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) RemoveApplication(uri string, name string) (result bool, err error) {
 	iv, err := _I.Get(44, "BookmarkFile", "remove_application")
 	if err != nil {
@@ -1150,8 +1265,13 @@ func (v BookmarkFile) RemoveApplication(uri string, name string) (result bool, e
 }
 
 // g_bookmark_file_remove_group
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ group ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) RemoveGroup(uri string, group string) (result bool, err error) {
 	iv, err := _I.Get(45, "BookmarkFile", "remove_group")
 	if err != nil {
@@ -1175,8 +1295,11 @@ func (v BookmarkFile) RemoveGroup(uri string, group string) (result bool, err er
 }
 
 // g_bookmark_file_remove_item
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) RemoveItem(uri string) (result bool, err error) {
 	iv, err := _I.Get(46, "BookmarkFile", "remove_item")
 	if err != nil {
@@ -1197,8 +1320,11 @@ func (v BookmarkFile) RemoveItem(uri string) (result bool, err error) {
 }
 
 // g_bookmark_file_set_added
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ added ] trans: nothing
+//
 func (v BookmarkFile) SetAdded(uri string, added int64) {
 	iv, err := _I.Get(47, "BookmarkFile", "set_added")
 	if err != nil {
@@ -1215,8 +1341,19 @@ func (v BookmarkFile) SetAdded(uri string, added int64) {
 }
 
 // g_bookmark_file_set_app_info
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ name ] trans: nothing
+//
+// [ exec ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ stamp ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) SetAppInfo(uri string, name string, exec string, count int32, stamp int64) (result bool, err error) {
 	iv, err := _I.Get(48, "BookmarkFile", "set_app_info")
 	if err != nil {
@@ -1245,8 +1382,11 @@ func (v BookmarkFile) SetAppInfo(uri string, name string, exec string, count int
 }
 
 // g_bookmark_file_set_description
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ description ] trans: nothing
+//
 func (v BookmarkFile) SetDescription(uri string, description string) {
 	iv, err := _I.Get(49, "BookmarkFile", "set_description")
 	if err != nil {
@@ -1265,9 +1405,13 @@ func (v BookmarkFile) SetDescription(uri string, description string) {
 }
 
 // g_bookmark_file_set_groups
-// container is not nil, container is BookmarkFile
-// is method
-// arg 1 groups lenArgIdx 2
+//
+// [ uri ] trans: nothing
+//
+// [ groups ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v BookmarkFile) SetGroups(uri string, groups gi.CStrArray, length uint64) {
 	iv, err := _I.Get(50, "BookmarkFile", "set_groups")
 	if err != nil {
@@ -1285,8 +1429,13 @@ func (v BookmarkFile) SetGroups(uri string, groups gi.CStrArray, length uint64) 
 }
 
 // g_bookmark_file_set_icon
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ href ] trans: nothing
+//
+// [ mime_type ] trans: nothing
+//
 func (v BookmarkFile) SetIcon(uri string, href string, mime_type string) {
 	iv, err := _I.Get(51, "BookmarkFile", "set_icon")
 	if err != nil {
@@ -1308,8 +1457,11 @@ func (v BookmarkFile) SetIcon(uri string, href string, mime_type string) {
 }
 
 // g_bookmark_file_set_is_private
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ is_private ] trans: nothing
+//
 func (v BookmarkFile) SetIsPrivate(uri string, is_private bool) {
 	iv, err := _I.Get(52, "BookmarkFile", "set_is_private")
 	if err != nil {
@@ -1326,8 +1478,11 @@ func (v BookmarkFile) SetIsPrivate(uri string, is_private bool) {
 }
 
 // g_bookmark_file_set_mime_type
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ mime_type ] trans: nothing
+//
 func (v BookmarkFile) SetMimeType(uri string, mime_type string) {
 	iv, err := _I.Get(53, "BookmarkFile", "set_mime_type")
 	if err != nil {
@@ -1346,8 +1501,11 @@ func (v BookmarkFile) SetMimeType(uri string, mime_type string) {
 }
 
 // g_bookmark_file_set_modified
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ modified ] trans: nothing
+//
 func (v BookmarkFile) SetModified(uri string, modified int64) {
 	iv, err := _I.Get(54, "BookmarkFile", "set_modified")
 	if err != nil {
@@ -1364,8 +1522,11 @@ func (v BookmarkFile) SetModified(uri string, modified int64) {
 }
 
 // g_bookmark_file_set_title
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ title ] trans: nothing
+//
 func (v BookmarkFile) SetTitle(uri string, title string) {
 	iv, err := _I.Get(55, "BookmarkFile", "set_title")
 	if err != nil {
@@ -1384,8 +1545,11 @@ func (v BookmarkFile) SetTitle(uri string, title string) {
 }
 
 // g_bookmark_file_set_visited
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ uri ] trans: nothing
+//
+// [ visited ] trans: nothing
+//
 func (v BookmarkFile) SetVisited(uri string, visited int64) {
 	iv, err := _I.Get(56, "BookmarkFile", "set_visited")
 	if err != nil {
@@ -1402,9 +1566,11 @@ func (v BookmarkFile) SetVisited(uri string, visited int64) {
 }
 
 // g_bookmark_file_to_data
-// container is not nil, container is BookmarkFile
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v BookmarkFile) ToData() (result gi.Uint8Array, err error) {
 	iv, err := _I.Get(57, "BookmarkFile", "to_data")
 	if err != nil {
@@ -1426,8 +1592,11 @@ func (v BookmarkFile) ToData() (result gi.Uint8Array, err error) {
 }
 
 // g_bookmark_file_to_file
-// container is not nil, container is BookmarkFile
-// is method
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v BookmarkFile) ToFile(filename string) (result bool, err error) {
 	iv, err := _I.Get(58, "BookmarkFile", "to_file")
 	if err != nil {
@@ -1479,9 +1648,13 @@ func ByteArrayGetType() gi.GType {
 }
 
 // g_byte_array_free
-// container is not nil, container is ByteArray
-// is method
-// arg0Type tag: array, isPtr: true
+//
+// [ array ] trans: nothing
+//
+// [ free_segment ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ByteArrayFree1(array ByteArray, free_segment bool) (result uint8) {
 	iv, err := _I.Get(60, "ByteArray", "free")
 	if err != nil {
@@ -1498,9 +1671,11 @@ func ByteArrayFree1(array ByteArray, free_segment bool) (result uint8) {
 }
 
 // g_byte_array_free_to_bytes
-// container is not nil, container is ByteArray
-// is method
-// arg0Type tag: array, isPtr: true
+//
+// [ array ] trans: everything
+//
+// [ result ] trans: everything
+//
 func ByteArrayFreeToBytes1(array ByteArray) (result Bytes) {
 	iv, err := _I.Get(61, "ByteArray", "free_to_bytes")
 	if err != nil {
@@ -1516,10 +1691,13 @@ func ByteArrayFreeToBytes1(array ByteArray) (result Bytes) {
 }
 
 // g_byte_array_new_take
-// container is not nil, container is ByteArray
-// is method
-// arg0Type tag: array, isPtr: true
-// arg 0 data lenArgIdx 1
+//
+// [ data ] trans: everything
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ByteArrayNewTake1(data gi.Uint8Array, len1 uint64) (result ByteArray) {
 	iv, err := _I.Get(63, "ByteArray", "new_take")
 	if err != nil {
@@ -1536,9 +1714,9 @@ func ByteArrayNewTake1(data gi.Uint8Array, len1 uint64) (result ByteArray) {
 }
 
 // g_byte_array_unref
-// container is not nil, container is ByteArray
-// is method
-// arg0Type tag: array, isPtr: true
+//
+// [ array ] trans: nothing
+//
 func ByteArrayUnref1(array ByteArray) {
 	iv, err := _I.Get(64, "ByteArray", "unref")
 	if err != nil {
@@ -1561,9 +1739,13 @@ func BytesGetType() gi.GType {
 }
 
 // g_bytes_new
-// container is not nil, container is Bytes
-// is constructor
-// arg 0 data lenArgIdx 1
+//
+// [ data ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewBytes(data gi.Uint8Array, size uint64) (result Bytes) {
 	iv, err := _I.Get(65, "Bytes", "new")
 	if err != nil {
@@ -1580,9 +1762,13 @@ func NewBytes(data gi.Uint8Array, size uint64) (result Bytes) {
 }
 
 // g_bytes_new_take
-// container is not nil, container is Bytes
-// is constructor
-// arg 0 data lenArgIdx 1
+//
+// [ data ] trans: everything
+//
+// [ size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewBytesTake(data gi.Uint8Array, size uint64) (result Bytes) {
 	iv, err := _I.Get(66, "Bytes", "new_take")
 	if err != nil {
@@ -1599,8 +1785,11 @@ func NewBytesTake(data gi.Uint8Array, size uint64) (result Bytes) {
 }
 
 // g_bytes_compare
-// container is not nil, container is Bytes
-// is method
+//
+// [ bytes2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Bytes) Compare(bytes2 Bytes) (result int32) {
 	iv, err := _I.Get(67, "Bytes", "compare")
 	if err != nil {
@@ -1617,8 +1806,11 @@ func (v Bytes) Compare(bytes2 Bytes) (result int32) {
 }
 
 // g_bytes_equal
-// container is not nil, container is Bytes
-// is method
+//
+// [ bytes2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Bytes) Equal(bytes2 Bytes) (result bool) {
 	iv, err := _I.Get(68, "Bytes", "equal")
 	if err != nil {
@@ -1635,9 +1827,11 @@ func (v Bytes) Equal(bytes2 Bytes) (result bool) {
 }
 
 // g_bytes_get_data
-// container is not nil, container is Bytes
-// is method
-// ret lenArgIdx 0
+//
+// [ size ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Bytes) GetData() (result gi.Uint8Array) {
 	iv, err := _I.Get(69, "Bytes", "get_data")
 	if err != nil {
@@ -1658,8 +1852,9 @@ func (v Bytes) GetData() (result gi.Uint8Array) {
 }
 
 // g_bytes_get_size
-// container is not nil, container is Bytes
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Bytes) GetSize() (result uint64) {
 	iv, err := _I.Get(70, "Bytes", "get_size")
 	if err != nil {
@@ -1675,8 +1870,9 @@ func (v Bytes) GetSize() (result uint64) {
 }
 
 // g_bytes_hash
-// container is not nil, container is Bytes
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Bytes) Hash() (result uint32) {
 	iv, err := _I.Get(71, "Bytes", "hash")
 	if err != nil {
@@ -1692,8 +1888,13 @@ func (v Bytes) Hash() (result uint32) {
 }
 
 // g_bytes_new_from_bytes
-// container is not nil, container is Bytes
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Bytes) NewFromBytes(offset uint64, length uint64) (result Bytes) {
 	iv, err := _I.Get(72, "Bytes", "new_from_bytes")
 	if err != nil {
@@ -1711,8 +1912,9 @@ func (v Bytes) NewFromBytes(offset uint64, length uint64) (result Bytes) {
 }
 
 // g_bytes_ref
-// container is not nil, container is Bytes
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Bytes) Ref() (result Bytes) {
 	iv, err := _I.Get(73, "Bytes", "ref")
 	if err != nil {
@@ -1728,8 +1930,7 @@ func (v Bytes) Ref() (result Bytes) {
 }
 
 // g_bytes_unref
-// container is not nil, container is Bytes
-// is method
+//
 func (v Bytes) Unref() {
 	iv, err := _I.Get(74, "Bytes", "unref")
 	if err != nil {
@@ -1742,8 +1943,9 @@ func (v Bytes) Unref() {
 }
 
 // g_bytes_unref_to_array
-// container is not nil, container is Bytes
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Bytes) UnrefToArray() (result ByteArray) {
 	iv, err := _I.Get(75, "Bytes", "unref_to_array")
 	if err != nil {
@@ -1759,9 +1961,11 @@ func (v Bytes) UnrefToArray() (result ByteArray) {
 }
 
 // g_bytes_unref_to_data
-// container is not nil, container is Bytes
-// is method
-// ret lenArgIdx 0
+//
+// [ size ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v Bytes) UnrefToData() (result gi.Uint8Array) {
 	iv, err := _I.Get(76, "Bytes", "unref_to_data")
 	if err != nil {
@@ -1792,8 +1996,11 @@ func ChecksumGetType() gi.GType {
 }
 
 // g_checksum_new
-// container is not nil, container is Checksum
-// is constructor
+//
+// [ checksum_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewChecksum(checksum_type ChecksumTypeEnum) (result Checksum) {
 	iv, err := _I.Get(77, "Checksum", "new")
 	if err != nil {
@@ -1809,8 +2016,9 @@ func NewChecksum(checksum_type ChecksumTypeEnum) (result Checksum) {
 }
 
 // g_checksum_copy
-// container is not nil, container is Checksum
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Checksum) Copy() (result Checksum) {
 	iv, err := _I.Get(78, "Checksum", "copy")
 	if err != nil {
@@ -1826,8 +2034,7 @@ func (v Checksum) Copy() (result Checksum) {
 }
 
 // g_checksum_free
-// container is not nil, container is Checksum
-// is method
+//
 func (v Checksum) Free() {
 	iv, err := _I.Get(79, "Checksum", "free")
 	if err != nil {
@@ -1840,8 +2047,9 @@ func (v Checksum) Free() {
 }
 
 // g_checksum_get_string
-// container is not nil, container is Checksum
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Checksum) GetString() (result string) {
 	iv, err := _I.Get(80, "Checksum", "get_string")
 	if err != nil {
@@ -1852,13 +2060,12 @@ func (v Checksum) GetString() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_checksum_reset
-// container is not nil, container is Checksum
-// is method
+//
 func (v Checksum) Reset() {
 	iv, err := _I.Get(81, "Checksum", "reset")
 	if err != nil {
@@ -1871,9 +2078,11 @@ func (v Checksum) Reset() {
 }
 
 // g_checksum_update
-// container is not nil, container is Checksum
-// is method
-// arg 0 data lenArgIdx 1
+//
+// [ data ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v Checksum) Update(data gi.Uint8Array, length int64) {
 	iv, err := _I.Get(82, "Checksum", "update")
 	if err != nil {
@@ -1888,9 +2097,11 @@ func (v Checksum) Update(data gi.Uint8Array, length int64) {
 }
 
 // g_checksum_type_get_length
-// container is not nil, container is Checksum
-// is method
-// arg0Type tag: interface, isPtr: false
+//
+// [ checksum_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ChecksumTypeGetLength1(checksum_type ChecksumTypeEnum) (result int64) {
 	iv, err := _I.Get(83, "Checksum", "type_get_length")
 	if err != nil {
@@ -1999,8 +2210,7 @@ func CondGetType() gi.GType {
 }
 
 // g_cond_broadcast
-// container is not nil, container is Cond
-// is method
+//
 func (v Cond) Broadcast() {
 	iv, err := _I.Get(84, "Cond", "broadcast")
 	if err != nil {
@@ -2013,8 +2223,7 @@ func (v Cond) Broadcast() {
 }
 
 // g_cond_clear
-// container is not nil, container is Cond
-// is method
+//
 func (v Cond) Clear() {
 	iv, err := _I.Get(85, "Cond", "clear")
 	if err != nil {
@@ -2027,8 +2236,7 @@ func (v Cond) Clear() {
 }
 
 // g_cond_init
-// container is not nil, container is Cond
-// is method
+//
 func (v Cond) Init() {
 	iv, err := _I.Get(86, "Cond", "init")
 	if err != nil {
@@ -2041,8 +2249,7 @@ func (v Cond) Init() {
 }
 
 // g_cond_signal
-// container is not nil, container is Cond
-// is method
+//
 func (v Cond) Signal() {
 	iv, err := _I.Get(87, "Cond", "signal")
 	if err != nil {
@@ -2055,8 +2262,9 @@ func (v Cond) Signal() {
 }
 
 // g_cond_wait
-// container is not nil, container is Cond
-// is method
+//
+// [ mutex ] trans: nothing
+//
 func (v Cond) Wait(mutex Mutex) {
 	iv, err := _I.Get(88, "Cond", "wait")
 	if err != nil {
@@ -2070,8 +2278,13 @@ func (v Cond) Wait(mutex Mutex) {
 }
 
 // g_cond_wait_until
-// container is not nil, container is Cond
-// is method
+//
+// [ mutex ] trans: nothing
+//
+// [ end_time ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Cond) WaitUntil(mutex Mutex, end_time int64) (result bool) {
 	iv, err := _I.Get(89, "Cond", "wait_until")
 	if err != nil {
@@ -2163,8 +2376,9 @@ func DateGetType() gi.GType {
 }
 
 // g_date_new
-// container is not nil, container is Date
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewDate() (result Date) {
 	iv, err := _I.Get(90, "Date", "new")
 	if err != nil {
@@ -2178,8 +2392,15 @@ func NewDate() (result Date) {
 }
 
 // g_date_new_dmy
-// container is not nil, container is Date
-// is constructor
+//
+// [ day ] trans: nothing
+//
+// [ month ] trans: nothing
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateDmy(day uint8, month DateMonthEnum, year uint16) (result Date) {
 	iv, err := _I.Get(91, "Date", "new_dmy")
 	if err != nil {
@@ -2197,8 +2418,11 @@ func NewDateDmy(day uint8, month DateMonthEnum, year uint16) (result Date) {
 }
 
 // g_date_new_julian
-// container is not nil, container is Date
-// is constructor
+//
+// [ julian_day ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateJulian(julian_day uint32) (result Date) {
 	iv, err := _I.Get(92, "Date", "new_julian")
 	if err != nil {
@@ -2214,8 +2438,9 @@ func NewDateJulian(julian_day uint32) (result Date) {
 }
 
 // g_date_add_days
-// container is not nil, container is Date
-// is method
+//
+// [ n_days ] trans: nothing
+//
 func (v Date) AddDays(n_days uint32) {
 	iv, err := _I.Get(93, "Date", "add_days")
 	if err != nil {
@@ -2229,8 +2454,9 @@ func (v Date) AddDays(n_days uint32) {
 }
 
 // g_date_add_months
-// container is not nil, container is Date
-// is method
+//
+// [ n_months ] trans: nothing
+//
 func (v Date) AddMonths(n_months uint32) {
 	iv, err := _I.Get(94, "Date", "add_months")
 	if err != nil {
@@ -2244,8 +2470,9 @@ func (v Date) AddMonths(n_months uint32) {
 }
 
 // g_date_add_years
-// container is not nil, container is Date
-// is method
+//
+// [ n_years ] trans: nothing
+//
 func (v Date) AddYears(n_years uint32) {
 	iv, err := _I.Get(95, "Date", "add_years")
 	if err != nil {
@@ -2259,8 +2486,11 @@ func (v Date) AddYears(n_years uint32) {
 }
 
 // g_date_clamp
-// container is not nil, container is Date
-// is method
+//
+// [ min_date ] trans: nothing
+//
+// [ max_date ] trans: nothing
+//
 func (v Date) Clamp(min_date Date, max_date Date) {
 	iv, err := _I.Get(96, "Date", "clamp")
 	if err != nil {
@@ -2275,8 +2505,9 @@ func (v Date) Clamp(min_date Date, max_date Date) {
 }
 
 // g_date_clear
-// container is not nil, container is Date
-// is method
+//
+// [ n_dates ] trans: nothing
+//
 func (v Date) Clear(n_dates uint32) {
 	iv, err := _I.Get(97, "Date", "clear")
 	if err != nil {
@@ -2290,8 +2521,11 @@ func (v Date) Clear(n_dates uint32) {
 }
 
 // g_date_compare
-// container is not nil, container is Date
-// is method
+//
+// [ rhs ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Date) Compare(rhs Date) (result int32) {
 	iv, err := _I.Get(98, "Date", "compare")
 	if err != nil {
@@ -2308,8 +2542,9 @@ func (v Date) Compare(rhs Date) (result int32) {
 }
 
 // g_date_copy
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Date) Copy() (result Date) {
 	iv, err := _I.Get(99, "Date", "copy")
 	if err != nil {
@@ -2325,8 +2560,11 @@ func (v Date) Copy() (result Date) {
 }
 
 // g_date_days_between
-// container is not nil, container is Date
-// is method
+//
+// [ date2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Date) DaysBetween(date2 Date) (result int32) {
 	iv, err := _I.Get(100, "Date", "days_between")
 	if err != nil {
@@ -2343,8 +2581,7 @@ func (v Date) DaysBetween(date2 Date) (result int32) {
 }
 
 // g_date_free
-// container is not nil, container is Date
-// is method
+//
 func (v Date) Free() {
 	iv, err := _I.Get(101, "Date", "free")
 	if err != nil {
@@ -2357,8 +2594,9 @@ func (v Date) Free() {
 }
 
 // g_date_get_day
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) GetDay() (result uint8) {
 	iv, err := _I.Get(102, "Date", "get_day")
 	if err != nil {
@@ -2374,8 +2612,9 @@ func (v Date) GetDay() (result uint8) {
 }
 
 // g_date_get_day_of_year
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) GetDayOfYear() (result uint32) {
 	iv, err := _I.Get(103, "Date", "get_day_of_year")
 	if err != nil {
@@ -2391,8 +2630,9 @@ func (v Date) GetDayOfYear() (result uint32) {
 }
 
 // g_date_get_iso8601_week_of_year
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) GetIso8601WeekOfYear() (result uint32) {
 	iv, err := _I.Get(104, "Date", "get_iso8601_week_of_year")
 	if err != nil {
@@ -2408,8 +2648,9 @@ func (v Date) GetIso8601WeekOfYear() (result uint32) {
 }
 
 // g_date_get_julian
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) GetJulian() (result uint32) {
 	iv, err := _I.Get(105, "Date", "get_julian")
 	if err != nil {
@@ -2425,8 +2666,9 @@ func (v Date) GetJulian() (result uint32) {
 }
 
 // g_date_get_monday_week_of_year
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) GetMondayWeekOfYear() (result uint32) {
 	iv, err := _I.Get(106, "Date", "get_monday_week_of_year")
 	if err != nil {
@@ -2442,8 +2684,9 @@ func (v Date) GetMondayWeekOfYear() (result uint32) {
 }
 
 // g_date_get_month
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) GetMonth() (result DateMonthEnum) {
 	iv, err := _I.Get(107, "Date", "get_month")
 	if err != nil {
@@ -2459,8 +2702,9 @@ func (v Date) GetMonth() (result DateMonthEnum) {
 }
 
 // g_date_get_sunday_week_of_year
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) GetSundayWeekOfYear() (result uint32) {
 	iv, err := _I.Get(108, "Date", "get_sunday_week_of_year")
 	if err != nil {
@@ -2476,8 +2720,9 @@ func (v Date) GetSundayWeekOfYear() (result uint32) {
 }
 
 // g_date_get_weekday
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) GetWeekday() (result DateWeekdayEnum) {
 	iv, err := _I.Get(109, "Date", "get_weekday")
 	if err != nil {
@@ -2493,8 +2738,9 @@ func (v Date) GetWeekday() (result DateWeekdayEnum) {
 }
 
 // g_date_get_year
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) GetYear() (result uint16) {
 	iv, err := _I.Get(110, "Date", "get_year")
 	if err != nil {
@@ -2510,8 +2756,9 @@ func (v Date) GetYear() (result uint16) {
 }
 
 // g_date_is_first_of_month
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) IsFirstOfMonth() (result bool) {
 	iv, err := _I.Get(111, "Date", "is_first_of_month")
 	if err != nil {
@@ -2527,8 +2774,9 @@ func (v Date) IsFirstOfMonth() (result bool) {
 }
 
 // g_date_is_last_of_month
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) IsLastOfMonth() (result bool) {
 	iv, err := _I.Get(112, "Date", "is_last_of_month")
 	if err != nil {
@@ -2544,8 +2792,9 @@ func (v Date) IsLastOfMonth() (result bool) {
 }
 
 // g_date_order
-// container is not nil, container is Date
-// is method
+//
+// [ date2 ] trans: nothing
+//
 func (v Date) Order(date2 Date) {
 	iv, err := _I.Get(113, "Date", "order")
 	if err != nil {
@@ -2559,8 +2808,9 @@ func (v Date) Order(date2 Date) {
 }
 
 // g_date_set_day
-// container is not nil, container is Date
-// is method
+//
+// [ day ] trans: nothing
+//
 func (v Date) SetDay(day uint8) {
 	iv, err := _I.Get(114, "Date", "set_day")
 	if err != nil {
@@ -2574,8 +2824,13 @@ func (v Date) SetDay(day uint8) {
 }
 
 // g_date_set_dmy
-// container is not nil, container is Date
-// is method
+//
+// [ day ] trans: nothing
+//
+// [ month ] trans: nothing
+//
+// [ y ] trans: nothing
+//
 func (v Date) SetDmy(day uint8, month DateMonthEnum, y uint16) {
 	iv, err := _I.Get(115, "Date", "set_dmy")
 	if err != nil {
@@ -2591,8 +2846,9 @@ func (v Date) SetDmy(day uint8, month DateMonthEnum, y uint16) {
 }
 
 // g_date_set_julian
-// container is not nil, container is Date
-// is method
+//
+// [ julian_date ] trans: nothing
+//
 func (v Date) SetJulian(julian_date uint32) {
 	iv, err := _I.Get(116, "Date", "set_julian")
 	if err != nil {
@@ -2606,8 +2862,9 @@ func (v Date) SetJulian(julian_date uint32) {
 }
 
 // g_date_set_month
-// container is not nil, container is Date
-// is method
+//
+// [ month ] trans: nothing
+//
 func (v Date) SetMonth(month DateMonthEnum) {
 	iv, err := _I.Get(117, "Date", "set_month")
 	if err != nil {
@@ -2621,8 +2878,9 @@ func (v Date) SetMonth(month DateMonthEnum) {
 }
 
 // g_date_set_parse
-// container is not nil, container is Date
-// is method
+//
+// [ str ] trans: nothing
+//
 func (v Date) SetParse(str string) {
 	iv, err := _I.Get(118, "Date", "set_parse")
 	if err != nil {
@@ -2638,8 +2896,9 @@ func (v Date) SetParse(str string) {
 }
 
 // g_date_set_time
-// container is not nil, container is Date
-// is method
+//
+// [ time_ ] trans: nothing
+//
 func (v Date) SetTime(time_ int32) {
 	iv, err := _I.Get(119, "Date", "set_time")
 	if err != nil {
@@ -2653,8 +2912,9 @@ func (v Date) SetTime(time_ int32) {
 }
 
 // g_date_set_time_t
-// container is not nil, container is Date
-// is method
+//
+// [ timet ] trans: nothing
+//
 func (v Date) SetTimeT(timet int64) {
 	iv, err := _I.Get(120, "Date", "set_time_t")
 	if err != nil {
@@ -2668,8 +2928,9 @@ func (v Date) SetTimeT(timet int64) {
 }
 
 // g_date_set_time_val
-// container is not nil, container is Date
-// is method
+//
+// [ timeval ] trans: nothing
+//
 func (v Date) SetTimeVal(timeval TimeVal) {
 	iv, err := _I.Get(121, "Date", "set_time_val")
 	if err != nil {
@@ -2683,8 +2944,9 @@ func (v Date) SetTimeVal(timeval TimeVal) {
 }
 
 // g_date_set_year
-// container is not nil, container is Date
-// is method
+//
+// [ year ] trans: nothing
+//
 func (v Date) SetYear(year uint16) {
 	iv, err := _I.Get(122, "Date", "set_year")
 	if err != nil {
@@ -2698,8 +2960,9 @@ func (v Date) SetYear(year uint16) {
 }
 
 // g_date_subtract_days
-// container is not nil, container is Date
-// is method
+//
+// [ n_days ] trans: nothing
+//
 func (v Date) SubtractDays(n_days uint32) {
 	iv, err := _I.Get(123, "Date", "subtract_days")
 	if err != nil {
@@ -2713,8 +2976,9 @@ func (v Date) SubtractDays(n_days uint32) {
 }
 
 // g_date_subtract_months
-// container is not nil, container is Date
-// is method
+//
+// [ n_months ] trans: nothing
+//
 func (v Date) SubtractMonths(n_months uint32) {
 	iv, err := _I.Get(124, "Date", "subtract_months")
 	if err != nil {
@@ -2728,8 +2992,9 @@ func (v Date) SubtractMonths(n_months uint32) {
 }
 
 // g_date_subtract_years
-// container is not nil, container is Date
-// is method
+//
+// [ n_years ] trans: nothing
+//
 func (v Date) SubtractYears(n_years uint32) {
 	iv, err := _I.Get(125, "Date", "subtract_years")
 	if err != nil {
@@ -2743,8 +3008,9 @@ func (v Date) SubtractYears(n_years uint32) {
 }
 
 // g_date_to_struct_tm
-// container is not nil, container is Date
-// is method
+//
+// [ tm ] trans: nothing
+//
 func (v Date) ToStructTm(tm unsafe.Pointer) {
 	iv, err := _I.Get(126, "Date", "to_struct_tm")
 	if err != nil {
@@ -2758,8 +3024,9 @@ func (v Date) ToStructTm(tm unsafe.Pointer) {
 }
 
 // g_date_valid
-// container is not nil, container is Date
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Date) Valid() (result bool) {
 	iv, err := _I.Get(127, "Date", "valid")
 	if err != nil {
@@ -2775,9 +3042,13 @@ func (v Date) Valid() (result bool) {
 }
 
 // g_date_get_days_in_month
-// container is not nil, container is Date
-// is method
-// arg0Type tag: interface, isPtr: false
+//
+// [ month ] trans: nothing
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateGetDaysInMonth1(month DateMonthEnum, year uint16) (result uint8) {
 	iv, err := _I.Get(128, "Date", "get_days_in_month")
 	if err != nil {
@@ -2794,9 +3065,11 @@ func DateGetDaysInMonth1(month DateMonthEnum, year uint16) (result uint8) {
 }
 
 // g_date_get_monday_weeks_in_year
-// container is not nil, container is Date
-// is method
-// arg0Type tag: guint16, isPtr: false
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateGetMondayWeeksInYear1(year uint16) (result uint8) {
 	iv, err := _I.Get(129, "Date", "get_monday_weeks_in_year")
 	if err != nil {
@@ -2812,9 +3085,11 @@ func DateGetMondayWeeksInYear1(year uint16) (result uint8) {
 }
 
 // g_date_get_sunday_weeks_in_year
-// container is not nil, container is Date
-// is method
-// arg0Type tag: guint16, isPtr: false
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateGetSundayWeeksInYear1(year uint16) (result uint8) {
 	iv, err := _I.Get(130, "Date", "get_sunday_weeks_in_year")
 	if err != nil {
@@ -2830,9 +3105,11 @@ func DateGetSundayWeeksInYear1(year uint16) (result uint8) {
 }
 
 // g_date_is_leap_year
-// container is not nil, container is Date
-// is method
-// arg0Type tag: guint16, isPtr: false
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateIsLeapYear1(year uint16) (result bool) {
 	iv, err := _I.Get(131, "Date", "is_leap_year")
 	if err != nil {
@@ -2848,9 +3125,17 @@ func DateIsLeapYear1(year uint16) (result bool) {
 }
 
 // g_date_strftime
-// container is not nil, container is Date
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ s ] trans: nothing
+//
+// [ slen ] trans: nothing
+//
+// [ format ] trans: nothing
+//
+// [ date ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateStrftime1(s string, slen uint64, format string, date Date) (result uint64) {
 	iv, err := _I.Get(132, "Date", "strftime")
 	if err != nil {
@@ -2873,9 +3158,11 @@ func DateStrftime1(s string, slen uint64, format string, date Date) (result uint
 }
 
 // g_date_valid_day
-// container is not nil, container is Date
-// is method
-// arg0Type tag: guint8, isPtr: false
+//
+// [ day ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidDay1(day uint8) (result bool) {
 	iv, err := _I.Get(133, "Date", "valid_day")
 	if err != nil {
@@ -2891,9 +3178,15 @@ func DateValidDay1(day uint8) (result bool) {
 }
 
 // g_date_valid_dmy
-// container is not nil, container is Date
-// is method
-// arg0Type tag: guint8, isPtr: false
+//
+// [ day ] trans: nothing
+//
+// [ month ] trans: nothing
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidDmy1(day uint8, month DateMonthEnum, year uint16) (result bool) {
 	iv, err := _I.Get(134, "Date", "valid_dmy")
 	if err != nil {
@@ -2911,9 +3204,11 @@ func DateValidDmy1(day uint8, month DateMonthEnum, year uint16) (result bool) {
 }
 
 // g_date_valid_julian
-// container is not nil, container is Date
-// is method
-// arg0Type tag: guint32, isPtr: false
+//
+// [ julian_date ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidJulian1(julian_date uint32) (result bool) {
 	iv, err := _I.Get(135, "Date", "valid_julian")
 	if err != nil {
@@ -2929,9 +3224,11 @@ func DateValidJulian1(julian_date uint32) (result bool) {
 }
 
 // g_date_valid_month
-// container is not nil, container is Date
-// is method
-// arg0Type tag: interface, isPtr: false
+//
+// [ month ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidMonth1(month DateMonthEnum) (result bool) {
 	iv, err := _I.Get(136, "Date", "valid_month")
 	if err != nil {
@@ -2947,9 +3244,11 @@ func DateValidMonth1(month DateMonthEnum) (result bool) {
 }
 
 // g_date_valid_weekday
-// container is not nil, container is Date
-// is method
-// arg0Type tag: interface, isPtr: false
+//
+// [ weekday ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidWeekday1(weekday DateWeekdayEnum) (result bool) {
 	iv, err := _I.Get(137, "Date", "valid_weekday")
 	if err != nil {
@@ -2965,9 +3264,11 @@ func DateValidWeekday1(weekday DateWeekdayEnum) (result bool) {
 }
 
 // g_date_valid_year
-// container is not nil, container is Date
-// is method
-// arg0Type tag: guint16, isPtr: false
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidYear1(year uint16) (result bool) {
 	iv, err := _I.Get(138, "Date", "valid_year")
 	if err != nil {
@@ -3031,8 +3332,23 @@ func DateTimeGetType() gi.GType {
 }
 
 // g_date_time_new
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ tz ] trans: nothing
+//
+// [ year ] trans: nothing
+//
+// [ month ] trans: nothing
+//
+// [ day ] trans: nothing
+//
+// [ hour ] trans: nothing
+//
+// [ minute ] trans: nothing
+//
+// [ seconds ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateTime(tz TimeZone, year int32, month int32, day int32, hour int32, minute int32, seconds float64) (result DateTime) {
 	iv, err := _I.Get(139, "DateTime", "new")
 	if err != nil {
@@ -3054,8 +3370,13 @@ func NewDateTime(tz TimeZone, year int32, month int32, day int32, hour int32, mi
 }
 
 // g_date_time_new_from_iso8601
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ text ] trans: nothing
+//
+// [ default_tz ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateTimeFromIso8601(text string, default_tz TimeZone) (result DateTime) {
 	iv, err := _I.Get(140, "DateTime", "new_from_iso8601")
 	if err != nil {
@@ -3074,8 +3395,11 @@ func NewDateTimeFromIso8601(text string, default_tz TimeZone) (result DateTime) 
 }
 
 // g_date_time_new_from_timeval_local
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ tv ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateTimeFromTimevalLocal(tv TimeVal) (result DateTime) {
 	iv, err := _I.Get(141, "DateTime", "new_from_timeval_local")
 	if err != nil {
@@ -3091,8 +3415,11 @@ func NewDateTimeFromTimevalLocal(tv TimeVal) (result DateTime) {
 }
 
 // g_date_time_new_from_timeval_utc
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ tv ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateTimeFromTimevalUtc(tv TimeVal) (result DateTime) {
 	iv, err := _I.Get(142, "DateTime", "new_from_timeval_utc")
 	if err != nil {
@@ -3108,8 +3435,11 @@ func NewDateTimeFromTimevalUtc(tv TimeVal) (result DateTime) {
 }
 
 // g_date_time_new_from_unix_local
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ t ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateTimeFromUnixLocal(t int64) (result DateTime) {
 	iv, err := _I.Get(143, "DateTime", "new_from_unix_local")
 	if err != nil {
@@ -3125,8 +3455,11 @@ func NewDateTimeFromUnixLocal(t int64) (result DateTime) {
 }
 
 // g_date_time_new_from_unix_utc
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ t ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateTimeFromUnixUtc(t int64) (result DateTime) {
 	iv, err := _I.Get(144, "DateTime", "new_from_unix_utc")
 	if err != nil {
@@ -3142,8 +3475,21 @@ func NewDateTimeFromUnixUtc(t int64) (result DateTime) {
 }
 
 // g_date_time_new_local
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ year ] trans: nothing
+//
+// [ month ] trans: nothing
+//
+// [ day ] trans: nothing
+//
+// [ hour ] trans: nothing
+//
+// [ minute ] trans: nothing
+//
+// [ seconds ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateTimeLocal(year int32, month int32, day int32, hour int32, minute int32, seconds float64) (result DateTime) {
 	iv, err := _I.Get(145, "DateTime", "new_local")
 	if err != nil {
@@ -3164,8 +3510,11 @@ func NewDateTimeLocal(year int32, month int32, day int32, hour int32, minute int
 }
 
 // g_date_time_new_now
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ tz ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateTimeNow(tz TimeZone) (result DateTime) {
 	iv, err := _I.Get(146, "DateTime", "new_now")
 	if err != nil {
@@ -3181,8 +3530,9 @@ func NewDateTimeNow(tz TimeZone) (result DateTime) {
 }
 
 // g_date_time_new_now_local
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewDateTimeNowLocal() (result DateTime) {
 	iv, err := _I.Get(147, "DateTime", "new_now_local")
 	if err != nil {
@@ -3196,8 +3546,9 @@ func NewDateTimeNowLocal() (result DateTime) {
 }
 
 // g_date_time_new_now_utc
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewDateTimeNowUtc() (result DateTime) {
 	iv, err := _I.Get(148, "DateTime", "new_now_utc")
 	if err != nil {
@@ -3211,8 +3562,21 @@ func NewDateTimeNowUtc() (result DateTime) {
 }
 
 // g_date_time_new_utc
-// container is not nil, container is DateTime
-// is constructor
+//
+// [ year ] trans: nothing
+//
+// [ month ] trans: nothing
+//
+// [ day ] trans: nothing
+//
+// [ hour ] trans: nothing
+//
+// [ minute ] trans: nothing
+//
+// [ seconds ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewDateTimeUtc(year int32, month int32, day int32, hour int32, minute int32, seconds float64) (result DateTime) {
 	iv, err := _I.Get(149, "DateTime", "new_utc")
 	if err != nil {
@@ -3233,8 +3597,11 @@ func NewDateTimeUtc(year int32, month int32, day int32, hour int32, minute int32
 }
 
 // g_date_time_add
-// container is not nil, container is DateTime
-// is method
+//
+// [ timespan ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) Add(timespan int64) (result DateTime) {
 	iv, err := _I.Get(150, "DateTime", "add")
 	if err != nil {
@@ -3251,8 +3618,11 @@ func (v DateTime) Add(timespan int64) (result DateTime) {
 }
 
 // g_date_time_add_days
-// container is not nil, container is DateTime
-// is method
+//
+// [ days ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) AddDays(days int32) (result DateTime) {
 	iv, err := _I.Get(151, "DateTime", "add_days")
 	if err != nil {
@@ -3269,8 +3639,21 @@ func (v DateTime) AddDays(days int32) (result DateTime) {
 }
 
 // g_date_time_add_full
-// container is not nil, container is DateTime
-// is method
+//
+// [ years ] trans: nothing
+//
+// [ months ] trans: nothing
+//
+// [ days ] trans: nothing
+//
+// [ hours ] trans: nothing
+//
+// [ minutes ] trans: nothing
+//
+// [ seconds ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) AddFull(years int32, months int32, days int32, hours int32, minutes int32, seconds float64) (result DateTime) {
 	iv, err := _I.Get(152, "DateTime", "add_full")
 	if err != nil {
@@ -3292,8 +3675,11 @@ func (v DateTime) AddFull(years int32, months int32, days int32, hours int32, mi
 }
 
 // g_date_time_add_hours
-// container is not nil, container is DateTime
-// is method
+//
+// [ hours ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) AddHours(hours int32) (result DateTime) {
 	iv, err := _I.Get(153, "DateTime", "add_hours")
 	if err != nil {
@@ -3310,8 +3696,11 @@ func (v DateTime) AddHours(hours int32) (result DateTime) {
 }
 
 // g_date_time_add_minutes
-// container is not nil, container is DateTime
-// is method
+//
+// [ minutes ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) AddMinutes(minutes int32) (result DateTime) {
 	iv, err := _I.Get(154, "DateTime", "add_minutes")
 	if err != nil {
@@ -3328,8 +3717,11 @@ func (v DateTime) AddMinutes(minutes int32) (result DateTime) {
 }
 
 // g_date_time_add_months
-// container is not nil, container is DateTime
-// is method
+//
+// [ months ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) AddMonths(months int32) (result DateTime) {
 	iv, err := _I.Get(155, "DateTime", "add_months")
 	if err != nil {
@@ -3346,8 +3738,11 @@ func (v DateTime) AddMonths(months int32) (result DateTime) {
 }
 
 // g_date_time_add_seconds
-// container is not nil, container is DateTime
-// is method
+//
+// [ seconds ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) AddSeconds(seconds float64) (result DateTime) {
 	iv, err := _I.Get(156, "DateTime", "add_seconds")
 	if err != nil {
@@ -3364,8 +3759,11 @@ func (v DateTime) AddSeconds(seconds float64) (result DateTime) {
 }
 
 // g_date_time_add_weeks
-// container is not nil, container is DateTime
-// is method
+//
+// [ weeks ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) AddWeeks(weeks int32) (result DateTime) {
 	iv, err := _I.Get(157, "DateTime", "add_weeks")
 	if err != nil {
@@ -3382,8 +3780,11 @@ func (v DateTime) AddWeeks(weeks int32) (result DateTime) {
 }
 
 // g_date_time_add_years
-// container is not nil, container is DateTime
-// is method
+//
+// [ years ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) AddYears(years int32) (result DateTime) {
 	iv, err := _I.Get(158, "DateTime", "add_years")
 	if err != nil {
@@ -3400,8 +3801,11 @@ func (v DateTime) AddYears(years int32) (result DateTime) {
 }
 
 // g_date_time_difference
-// container is not nil, container is DateTime
-// is method
+//
+// [ begin ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) Difference(begin DateTime) (result int64) {
 	iv, err := _I.Get(159, "DateTime", "difference")
 	if err != nil {
@@ -3418,8 +3822,11 @@ func (v DateTime) Difference(begin DateTime) (result int64) {
 }
 
 // g_date_time_format
-// container is not nil, container is DateTime
-// is method
+//
+// [ format ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) Format(format string) (result string) {
 	iv, err := _I.Get(160, "DateTime", "format")
 	if err != nil {
@@ -3438,8 +3845,9 @@ func (v DateTime) Format(format string) (result string) {
 }
 
 // g_date_time_get_day_of_month
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetDayOfMonth() (result int32) {
 	iv, err := _I.Get(161, "DateTime", "get_day_of_month")
 	if err != nil {
@@ -3455,8 +3863,9 @@ func (v DateTime) GetDayOfMonth() (result int32) {
 }
 
 // g_date_time_get_day_of_week
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetDayOfWeek() (result int32) {
 	iv, err := _I.Get(162, "DateTime", "get_day_of_week")
 	if err != nil {
@@ -3472,8 +3881,9 @@ func (v DateTime) GetDayOfWeek() (result int32) {
 }
 
 // g_date_time_get_day_of_year
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetDayOfYear() (result int32) {
 	iv, err := _I.Get(163, "DateTime", "get_day_of_year")
 	if err != nil {
@@ -3489,8 +3899,9 @@ func (v DateTime) GetDayOfYear() (result int32) {
 }
 
 // g_date_time_get_hour
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetHour() (result int32) {
 	iv, err := _I.Get(164, "DateTime", "get_hour")
 	if err != nil {
@@ -3506,8 +3917,9 @@ func (v DateTime) GetHour() (result int32) {
 }
 
 // g_date_time_get_microsecond
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetMicrosecond() (result int32) {
 	iv, err := _I.Get(165, "DateTime", "get_microsecond")
 	if err != nil {
@@ -3523,8 +3935,9 @@ func (v DateTime) GetMicrosecond() (result int32) {
 }
 
 // g_date_time_get_minute
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetMinute() (result int32) {
 	iv, err := _I.Get(166, "DateTime", "get_minute")
 	if err != nil {
@@ -3540,8 +3953,9 @@ func (v DateTime) GetMinute() (result int32) {
 }
 
 // g_date_time_get_month
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetMonth() (result int32) {
 	iv, err := _I.Get(167, "DateTime", "get_month")
 	if err != nil {
@@ -3557,8 +3971,9 @@ func (v DateTime) GetMonth() (result int32) {
 }
 
 // g_date_time_get_second
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetSecond() (result int32) {
 	iv, err := _I.Get(168, "DateTime", "get_second")
 	if err != nil {
@@ -3574,8 +3989,9 @@ func (v DateTime) GetSecond() (result int32) {
 }
 
 // g_date_time_get_seconds
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetSeconds() (result float64) {
 	iv, err := _I.Get(169, "DateTime", "get_seconds")
 	if err != nil {
@@ -3591,8 +4007,9 @@ func (v DateTime) GetSeconds() (result float64) {
 }
 
 // g_date_time_get_timezone
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetTimezone() (result TimeZone) {
 	iv, err := _I.Get(170, "DateTime", "get_timezone")
 	if err != nil {
@@ -3608,8 +4025,9 @@ func (v DateTime) GetTimezone() (result TimeZone) {
 }
 
 // g_date_time_get_timezone_abbreviation
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetTimezoneAbbreviation() (result string) {
 	iv, err := _I.Get(171, "DateTime", "get_timezone_abbreviation")
 	if err != nil {
@@ -3620,13 +4038,14 @@ func (v DateTime) GetTimezoneAbbreviation() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_date_time_get_utc_offset
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetUtcOffset() (result int64) {
 	iv, err := _I.Get(172, "DateTime", "get_utc_offset")
 	if err != nil {
@@ -3642,8 +4061,9 @@ func (v DateTime) GetUtcOffset() (result int64) {
 }
 
 // g_date_time_get_week_numbering_year
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetWeekNumberingYear() (result int32) {
 	iv, err := _I.Get(173, "DateTime", "get_week_numbering_year")
 	if err != nil {
@@ -3659,8 +4079,9 @@ func (v DateTime) GetWeekNumberingYear() (result int32) {
 }
 
 // g_date_time_get_week_of_year
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetWeekOfYear() (result int32) {
 	iv, err := _I.Get(174, "DateTime", "get_week_of_year")
 	if err != nil {
@@ -3676,8 +4097,9 @@ func (v DateTime) GetWeekOfYear() (result int32) {
 }
 
 // g_date_time_get_year
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) GetYear() (result int32) {
 	iv, err := _I.Get(175, "DateTime", "get_year")
 	if err != nil {
@@ -3693,8 +4115,13 @@ func (v DateTime) GetYear() (result int32) {
 }
 
 // g_date_time_get_ymd
-// container is not nil, container is DateTime
-// is method
+//
+// [ year ] trans: everything, dir: out
+//
+// [ month ] trans: everything, dir: out
+//
+// [ day ] trans: everything, dir: out
+//
 func (v DateTime) GetYmd() (year int32, month int32, day int32) {
 	iv, err := _I.Get(176, "DateTime", "get_ymd")
 	if err != nil {
@@ -3715,8 +4142,9 @@ func (v DateTime) GetYmd() (year int32, month int32, day int32) {
 }
 
 // g_date_time_is_daylight_savings
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) IsDaylightSavings() (result bool) {
 	iv, err := _I.Get(177, "DateTime", "is_daylight_savings")
 	if err != nil {
@@ -3732,8 +4160,9 @@ func (v DateTime) IsDaylightSavings() (result bool) {
 }
 
 // g_date_time_ref
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DateTime) Ref() (result DateTime) {
 	iv, err := _I.Get(178, "DateTime", "ref")
 	if err != nil {
@@ -3749,8 +4178,9 @@ func (v DateTime) Ref() (result DateTime) {
 }
 
 // g_date_time_to_local
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DateTime) ToLocal() (result DateTime) {
 	iv, err := _I.Get(179, "DateTime", "to_local")
 	if err != nil {
@@ -3766,8 +4196,11 @@ func (v DateTime) ToLocal() (result DateTime) {
 }
 
 // g_date_time_to_timeval
-// container is not nil, container is DateTime
-// is method
+//
+// [ tv ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) ToTimeval(tv TimeVal) (result bool) {
 	iv, err := _I.Get(180, "DateTime", "to_timeval")
 	if err != nil {
@@ -3784,8 +4217,11 @@ func (v DateTime) ToTimeval(tv TimeVal) (result bool) {
 }
 
 // g_date_time_to_timezone
-// container is not nil, container is DateTime
-// is method
+//
+// [ tz ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v DateTime) ToTimezone(tz TimeZone) (result DateTime) {
 	iv, err := _I.Get(181, "DateTime", "to_timezone")
 	if err != nil {
@@ -3802,8 +4238,9 @@ func (v DateTime) ToTimezone(tz TimeZone) (result DateTime) {
 }
 
 // g_date_time_to_unix
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v DateTime) ToUnix() (result int64) {
 	iv, err := _I.Get(182, "DateTime", "to_unix")
 	if err != nil {
@@ -3819,8 +4256,9 @@ func (v DateTime) ToUnix() (result int64) {
 }
 
 // g_date_time_to_utc
-// container is not nil, container is DateTime
-// is method
+//
+// [ result ] trans: everything
+//
 func (v DateTime) ToUtc() (result DateTime) {
 	iv, err := _I.Get(183, "DateTime", "to_utc")
 	if err != nil {
@@ -3836,8 +4274,7 @@ func (v DateTime) ToUtc() (result DateTime) {
 }
 
 // g_date_time_unref
-// container is not nil, container is DateTime
-// is method
+//
 func (v DateTime) Unref() {
 	iv, err := _I.Get(184, "DateTime", "unref")
 	if err != nil {
@@ -3850,9 +4287,13 @@ func (v DateTime) Unref() {
 }
 
 // g_date_time_compare
-// container is not nil, container is DateTime
-// is method
-// arg0Type tag: void, isPtr: true
+//
+// [ dt1 ] trans: nothing
+//
+// [ dt2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateTimeCompare1(dt1 unsafe.Pointer, dt2 unsafe.Pointer) (result int32) {
 	iv, err := _I.Get(185, "DateTime", "compare")
 	if err != nil {
@@ -3869,9 +4310,13 @@ func DateTimeCompare1(dt1 unsafe.Pointer, dt2 unsafe.Pointer) (result int32) {
 }
 
 // g_date_time_equal
-// container is not nil, container is DateTime
-// is method
-// arg0Type tag: void, isPtr: true
+//
+// [ dt1 ] trans: nothing
+//
+// [ dt2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateTimeEqual1(dt1 unsafe.Pointer, dt2 unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(186, "DateTime", "equal")
 	if err != nil {
@@ -3888,9 +4333,11 @@ func DateTimeEqual1(dt1 unsafe.Pointer, dt2 unsafe.Pointer) (result bool) {
 }
 
 // g_date_time_hash
-// container is not nil, container is DateTime
-// is method
-// arg0Type tag: void, isPtr: true
+//
+// [ datetime ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateTimeHash1(datetime unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(187, "DateTime", "hash")
 	if err != nil {
@@ -3960,8 +4407,7 @@ func DirGetType() gi.GType {
 }
 
 // g_dir_close
-// container is not nil, container is Dir
-// is method
+//
 func (v Dir) Close() {
 	iv, err := _I.Get(188, "Dir", "close")
 	if err != nil {
@@ -3974,8 +4420,9 @@ func (v Dir) Close() {
 }
 
 // g_dir_read_name
-// container is not nil, container is Dir
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Dir) ReadName() (result string) {
 	iv, err := _I.Get(189, "Dir", "read_name")
 	if err != nil {
@@ -3986,13 +4433,12 @@ func (v Dir) ReadName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dir_rewind
-// container is not nil, container is Dir
-// is method
+//
 func (v Dir) Rewind() {
 	iv, err := _I.Get(190, "Dir", "rewind")
 	if err != nil {
@@ -4005,9 +4451,11 @@ func (v Dir) Rewind() {
 }
 
 // g_dir_make_tmp
-// container is not nil, container is Dir
-// is method
-// arg0Type tag: filename, isPtr: true
+//
+// [ tmpl ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DirMakeTmp1(tmpl string) (result string, err error) {
 	iv, err := _I.Get(191, "Dir", "make_tmp")
 	if err != nil {
@@ -4082,8 +4530,15 @@ func ErrorGetType() gi.GType {
 }
 
 // g_error_new_literal
-// container is not nil, container is Error
-// is constructor
+//
+// [ domain ] trans: nothing
+//
+// [ code ] trans: nothing
+//
+// [ message ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewErrorLiteral(domain uint32, code int32, message string) (result Error) {
 	iv, err := _I.Get(192, "Error", "new_literal")
 	if err != nil {
@@ -4103,8 +4558,9 @@ func NewErrorLiteral(domain uint32, code int32, message string) (result Error) {
 }
 
 // g_error_copy
-// container is not nil, container is Error
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Error) Copy() (result Error) {
 	iv, err := _I.Get(193, "Error", "copy")
 	if err != nil {
@@ -4120,8 +4576,7 @@ func (v Error) Copy() (result Error) {
 }
 
 // g_error_free
-// container is not nil, container is Error
-// is method
+//
 func (v Error) Free() {
 	iv, err := _I.Get(194, "Error", "free")
 	if err != nil {
@@ -4134,8 +4589,13 @@ func (v Error) Free() {
 }
 
 // g_error_matches
-// container is not nil, container is Error
-// is method
+//
+// [ domain ] trans: nothing
+//
+// [ code ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Error) Matches(domain uint32, code int32) (result bool) {
 	iv, err := _I.Get(195, "Error", "matches")
 	if err != nil {
@@ -4342,9 +4802,13 @@ func HashTableGetType() gi.GType {
 }
 
 // g_hash_table_add
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableAdd1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(196, "HashTable", "add")
 	if err != nil {
@@ -4361,9 +4825,13 @@ func HashTableAdd1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 }
 
 // g_hash_table_contains
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableContains1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(197, "HashTable", "contains")
 	if err != nil {
@@ -4380,9 +4848,9 @@ func HashTableContains1(hash_table HashTable, key unsafe.Pointer) (result bool) 
 }
 
 // g_hash_table_destroy
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
 func HashTableDestroy1(hash_table HashTable) {
 	iv, err := _I.Get(198, "HashTable", "destroy")
 	if err != nil {
@@ -4395,9 +4863,15 @@ func HashTableDestroy1(hash_table HashTable) {
 }
 
 // g_hash_table_insert
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableInsert1(hash_table HashTable, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(199, "HashTable", "insert")
 	if err != nil {
@@ -4415,9 +4889,13 @@ func HashTableInsert1(hash_table HashTable, key unsafe.Pointer, value unsafe.Poi
 }
 
 // g_hash_table_lookup
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableLookup1(hash_table HashTable, key unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(200, "HashTable", "lookup")
 	if err != nil {
@@ -4434,9 +4912,17 @@ func HashTableLookup1(hash_table HashTable, key unsafe.Pointer) (result unsafe.P
 }
 
 // g_hash_table_lookup_extended
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
+// [ lookup_key ] trans: nothing
+//
+// [ orig_key ] trans: everything, dir: out
+//
+// [ value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func HashTableLookupExtended1(hash_table HashTable, lookup_key unsafe.Pointer) (result bool, orig_key unsafe.Pointer, value unsafe.Pointer) {
 	iv, err := _I.Get(201, "HashTable", "lookup_extended")
 	if err != nil {
@@ -4458,9 +4944,13 @@ func HashTableLookupExtended1(hash_table HashTable, lookup_key unsafe.Pointer) (
 }
 
 // g_hash_table_remove
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableRemove1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(202, "HashTable", "remove")
 	if err != nil {
@@ -4477,9 +4967,9 @@ func HashTableRemove1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 }
 
 // g_hash_table_remove_all
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
 func HashTableRemoveAll1(hash_table HashTable) {
 	iv, err := _I.Get(203, "HashTable", "remove_all")
 	if err != nil {
@@ -4492,9 +4982,15 @@ func HashTableRemoveAll1(hash_table HashTable) {
 }
 
 // g_hash_table_replace
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableReplace1(hash_table HashTable, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(204, "HashTable", "replace")
 	if err != nil {
@@ -4512,9 +5008,11 @@ func HashTableReplace1(hash_table HashTable, key unsafe.Pointer, value unsafe.Po
 }
 
 // g_hash_table_size
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableSize1(hash_table HashTable) (result uint32) {
 	iv, err := _I.Get(205, "HashTable", "size")
 	if err != nil {
@@ -4530,9 +5028,13 @@ func HashTableSize1(hash_table HashTable) (result uint32) {
 }
 
 // g_hash_table_steal
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableSteal1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(206, "HashTable", "steal")
 	if err != nil {
@@ -4549,9 +5051,9 @@ func HashTableSteal1(hash_table HashTable, key unsafe.Pointer) (result bool) {
 }
 
 // g_hash_table_steal_all
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
 func HashTableStealAll1(hash_table HashTable) {
 	iv, err := _I.Get(207, "HashTable", "steal_all")
 	if err != nil {
@@ -4564,9 +5066,17 @@ func HashTableStealAll1(hash_table HashTable) {
 }
 
 // g_hash_table_steal_extended
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
+// [ lookup_key ] trans: nothing
+//
+// [ stolen_key ] trans: everything, dir: out
+//
+// [ stolen_value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func HashTableStealExtended1(hash_table HashTable, lookup_key unsafe.Pointer) (result bool, stolen_key unsafe.Pointer, stolen_value unsafe.Pointer) {
 	iv, err := _I.Get(208, "HashTable", "steal_extended")
 	if err != nil {
@@ -4588,9 +5098,9 @@ func HashTableStealExtended1(hash_table HashTable, lookup_key unsafe.Pointer) (r
 }
 
 // g_hash_table_unref
-// container is not nil, container is HashTable
-// is method
-// arg0Type tag: ghash, isPtr: true
+//
+// [ hash_table ] trans: nothing
+//
 func HashTableUnref1(hash_table HashTable) {
 	iv, err := _I.Get(209, "HashTable", "unref")
 	if err != nil {
@@ -4615,8 +5125,9 @@ func HashTableIterGetType() gi.GType {
 }
 
 // g_hash_table_iter_init
-// container is not nil, container is HashTableIter
-// is method
+//
+// [ hash_table ] trans: nothing
+//
 func (v HashTableIter) Init(hash_table HashTable) {
 	iv, err := _I.Get(210, "HashTableIter", "init")
 	if err != nil {
@@ -4630,8 +5141,13 @@ func (v HashTableIter) Init(hash_table HashTable) {
 }
 
 // g_hash_table_iter_next
-// container is not nil, container is HashTableIter
-// is method
+//
+// [ key ] trans: everything, dir: out
+//
+// [ value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v HashTableIter) Next() (result bool, key unsafe.Pointer, value unsafe.Pointer) {
 	iv, err := _I.Get(211, "HashTableIter", "next")
 	if err != nil {
@@ -4652,8 +5168,7 @@ func (v HashTableIter) Next() (result bool, key unsafe.Pointer, value unsafe.Poi
 }
 
 // g_hash_table_iter_remove
-// container is not nil, container is HashTableIter
-// is method
+//
 func (v HashTableIter) Remove() {
 	iv, err := _I.Get(212, "HashTableIter", "remove")
 	if err != nil {
@@ -4666,8 +5181,9 @@ func (v HashTableIter) Remove() {
 }
 
 // g_hash_table_iter_replace
-// container is not nil, container is HashTableIter
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v HashTableIter) Replace(value unsafe.Pointer) {
 	iv, err := _I.Get(213, "HashTableIter", "replace")
 	if err != nil {
@@ -4681,8 +5197,7 @@ func (v HashTableIter) Replace(value unsafe.Pointer) {
 }
 
 // g_hash_table_iter_steal
-// container is not nil, container is HashTableIter
-// is method
+//
 func (v HashTableIter) Steal() {
 	iv, err := _I.Get(214, "HashTableIter", "steal")
 	if err != nil {
@@ -4705,9 +5220,11 @@ func HmacGetType() gi.GType {
 }
 
 // g_hmac_get_digest
-// container is not nil, container is Hmac
-// is method
-// arg 0 buffer lenArgIdx 1
+//
+// [ buffer ] trans: nothing
+//
+// [ digest_len ] trans: everything, dir: inout
+//
 func (v Hmac) GetDigest(buffer gi.Uint8Array, digest_len int /*TODO:TYPE*/) {
 	iv, err := _I.Get(215, "Hmac", "get_digest")
 	if err != nil {
@@ -4722,8 +5239,9 @@ func (v Hmac) GetDigest(buffer gi.Uint8Array, digest_len int /*TODO:TYPE*/) {
 }
 
 // g_hmac_get_string
-// container is not nil, container is Hmac
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Hmac) GetString() (result string) {
 	iv, err := _I.Get(216, "Hmac", "get_string")
 	if err != nil {
@@ -4734,13 +5252,12 @@ func (v Hmac) GetString() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_hmac_unref
-// container is not nil, container is Hmac
-// is method
+//
 func (v Hmac) Unref() {
 	iv, err := _I.Get(217, "Hmac", "unref")
 	if err != nil {
@@ -4753,9 +5270,11 @@ func (v Hmac) Unref() {
 }
 
 // g_hmac_update
-// container is not nil, container is Hmac
-// is method
-// arg 0 data lenArgIdx 1
+//
+// [ data ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v Hmac) Update(data gi.Uint8Array, length int64) {
 	iv, err := _I.Get(218, "Hmac", "update")
 	if err != nil {
@@ -4782,8 +5301,11 @@ func HookGetType() gi.GType {
 }
 
 // g_hook_compare_ids
-// container is not nil, container is Hook
-// is method
+//
+// [ sibling ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Hook) CompareIds(sibling Hook) (result int32) {
 	iv, err := _I.Get(219, "Hook", "compare_ids")
 	if err != nil {
@@ -4800,9 +5322,13 @@ func (v Hook) CompareIds(sibling Hook) (result int32) {
 }
 
 // g_hook_destroy
-// container is not nil, container is Hook
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ hook_list ] trans: nothing
+//
+// [ hook_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HookDestroy1(hook_list HookList, hook_id uint64) (result bool) {
 	iv, err := _I.Get(220, "Hook", "destroy")
 	if err != nil {
@@ -4819,9 +5345,11 @@ func HookDestroy1(hook_list HookList, hook_id uint64) (result bool) {
 }
 
 // g_hook_destroy_link
-// container is not nil, container is Hook
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ hook_list ] trans: nothing
+//
+// [ hook ] trans: nothing
+//
 func HookDestroyLink1(hook_list HookList, hook Hook) {
 	iv, err := _I.Get(221, "Hook", "destroy_link")
 	if err != nil {
@@ -4835,9 +5363,11 @@ func HookDestroyLink1(hook_list HookList, hook Hook) {
 }
 
 // g_hook_free
-// container is not nil, container is Hook
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ hook_list ] trans: nothing
+//
+// [ hook ] trans: nothing
+//
 func HookFree1(hook_list HookList, hook Hook) {
 	iv, err := _I.Get(222, "Hook", "free")
 	if err != nil {
@@ -4851,9 +5381,13 @@ func HookFree1(hook_list HookList, hook Hook) {
 }
 
 // g_hook_insert_before
-// container is not nil, container is Hook
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ hook_list ] trans: nothing
+//
+// [ sibling ] trans: nothing
+//
+// [ hook ] trans: nothing
+//
 func HookInsertBefore1(hook_list HookList, sibling Hook, hook Hook) {
 	iv, err := _I.Get(223, "Hook", "insert_before")
 	if err != nil {
@@ -4868,9 +5402,11 @@ func HookInsertBefore1(hook_list HookList, sibling Hook, hook Hook) {
 }
 
 // g_hook_prepend
-// container is not nil, container is Hook
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ hook_list ] trans: nothing
+//
+// [ hook ] trans: nothing
+//
 func HookPrepend1(hook_list HookList, hook Hook) {
 	iv, err := _I.Get(224, "Hook", "prepend")
 	if err != nil {
@@ -4884,9 +5420,11 @@ func HookPrepend1(hook_list HookList, hook Hook) {
 }
 
 // g_hook_unref
-// container is not nil, container is Hook
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ hook_list ] trans: nothing
+//
+// [ hook ] trans: nothing
+//
 func HookUnref1(hook_list HookList, hook Hook) {
 	iv, err := _I.Get(225, "Hook", "unref")
 	if err != nil {
@@ -5008,8 +5546,7 @@ func HookListGetType() gi.GType {
 }
 
 // g_hook_list_clear
-// container is not nil, container is HookList
-// is method
+//
 func (v HookList) Clear() {
 	iv, err := _I.Get(226, "HookList", "clear")
 	if err != nil {
@@ -5022,8 +5559,9 @@ func (v HookList) Clear() {
 }
 
 // g_hook_list_init
-// container is not nil, container is HookList
-// is method
+//
+// [ hook_size ] trans: nothing
+//
 func (v HookList) Init(hook_size uint32) {
 	iv, err := _I.Get(227, "HookList", "init")
 	if err != nil {
@@ -5037,8 +5575,9 @@ func (v HookList) Init(hook_size uint32) {
 }
 
 // g_hook_list_invoke
-// container is not nil, container is HookList
-// is method
+//
+// [ may_recurse ] trans: nothing
+//
 func (v HookList) Invoke(may_recurse bool) {
 	iv, err := _I.Get(228, "HookList", "invoke")
 	if err != nil {
@@ -5052,8 +5591,9 @@ func (v HookList) Invoke(may_recurse bool) {
 }
 
 // g_hook_list_invoke_check
-// container is not nil, container is HookList
-// is method
+//
+// [ may_recurse ] trans: nothing
+//
 func (v HookList) InvokeCheck(may_recurse bool) {
 	iv, err := _I.Get(229, "HookList", "invoke_check")
 	if err != nil {
@@ -5093,8 +5633,13 @@ func IOChannelGetType() gi.GType {
 }
 
 // g_io_channel_new_file
-// container is not nil, container is IOChannel
-// is constructor
+//
+// [ filename ] trans: nothing
+//
+// [ mode ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewIOChannelFile(filename string, mode string) (result IOChannel, err error) {
 	iv, err := _I.Get(230, "IOChannel", "new_file")
 	if err != nil {
@@ -5117,8 +5662,11 @@ func NewIOChannelFile(filename string, mode string) (result IOChannel, err error
 }
 
 // g_io_channel_unix_new
-// container is not nil, container is IOChannel
-// is constructor
+//
+// [ fd ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func IOChannelUnixNew(fd int32) (result IOChannel) {
 	iv, err := _I.Get(231, "IOChannel", "unix_new")
 	if err != nil {
@@ -5134,8 +5682,7 @@ func IOChannelUnixNew(fd int32) (result IOChannel) {
 }
 
 // g_io_channel_close
-// container is not nil, container is IOChannel
-// is method
+//
 func (v IOChannel) Close() {
 	iv, err := _I.Get(232, "IOChannel", "close")
 	if err != nil {
@@ -5148,8 +5695,9 @@ func (v IOChannel) Close() {
 }
 
 // g_io_channel_flush
-// container is not nil, container is IOChannel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) Flush() (result IOStatusEnum, err error) {
 	iv, err := _I.Get(233, "IOChannel", "flush")
 	if err != nil {
@@ -5167,8 +5715,9 @@ func (v IOChannel) Flush() (result IOStatusEnum, err error) {
 }
 
 // g_io_channel_get_buffer_condition
-// container is not nil, container is IOChannel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) GetBufferCondition() (result IOConditionFlags) {
 	iv, err := _I.Get(234, "IOChannel", "get_buffer_condition")
 	if err != nil {
@@ -5184,8 +5733,9 @@ func (v IOChannel) GetBufferCondition() (result IOConditionFlags) {
 }
 
 // g_io_channel_get_buffer_size
-// container is not nil, container is IOChannel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) GetBufferSize() (result uint64) {
 	iv, err := _I.Get(235, "IOChannel", "get_buffer_size")
 	if err != nil {
@@ -5201,8 +5751,9 @@ func (v IOChannel) GetBufferSize() (result uint64) {
 }
 
 // g_io_channel_get_buffered
-// container is not nil, container is IOChannel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) GetBuffered() (result bool) {
 	iv, err := _I.Get(236, "IOChannel", "get_buffered")
 	if err != nil {
@@ -5218,8 +5769,9 @@ func (v IOChannel) GetBuffered() (result bool) {
 }
 
 // g_io_channel_get_close_on_unref
-// container is not nil, container is IOChannel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) GetCloseOnUnref() (result bool) {
 	iv, err := _I.Get(237, "IOChannel", "get_close_on_unref")
 	if err != nil {
@@ -5235,8 +5787,9 @@ func (v IOChannel) GetCloseOnUnref() (result bool) {
 }
 
 // g_io_channel_get_encoding
-// container is not nil, container is IOChannel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) GetEncoding() (result string) {
 	iv, err := _I.Get(238, "IOChannel", "get_encoding")
 	if err != nil {
@@ -5247,13 +5800,14 @@ func (v IOChannel) GetEncoding() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_io_channel_get_flags
-// container is not nil, container is IOChannel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) GetFlags() (result IOFlags) {
 	iv, err := _I.Get(239, "IOChannel", "get_flags")
 	if err != nil {
@@ -5269,8 +5823,11 @@ func (v IOChannel) GetFlags() (result IOFlags) {
 }
 
 // g_io_channel_get_line_term
-// container is not nil, container is IOChannel
-// is method
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) GetLineTerm(length int32) (result string) {
 	iv, err := _I.Get(240, "IOChannel", "get_line_term")
 	if err != nil {
@@ -5282,13 +5839,12 @@ func (v IOChannel) GetLineTerm(length int32) (result string) {
 	args := []gi.Argument{arg_v, arg_length}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_io_channel_init
-// container is not nil, container is IOChannel
-// is method
+//
 func (v IOChannel) Init() {
 	iv, err := _I.Get(241, "IOChannel", "init")
 	if err != nil {
@@ -5301,8 +5857,15 @@ func (v IOChannel) Init() {
 }
 
 // g_io_channel_read
-// container is not nil, container is IOChannel
-// is method
+//
+// [ buf ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ bytes_read ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) Read(buf string, count uint64, bytes_read uint64) (result IOErrorEnum) {
 	iv, err := _I.Get(242, "IOChannel", "read")
 	if err != nil {
@@ -5323,9 +5886,15 @@ func (v IOChannel) Read(buf string, count uint64, bytes_read uint64) (result IOE
 }
 
 // g_io_channel_read_chars
-// container is not nil, container is IOChannel
-// is method
-// arg 0 buf lenArgIdx 1
+//
+// [ buf ] trans: nothing, dir: out
+//
+// [ count ] trans: nothing
+//
+// [ bytes_read ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) ReadChars(buf gi.Uint8Array, count uint64) (result IOStatusEnum, bytes_read uint64, err error) {
 	iv, err := _I.Get(243, "IOChannel", "read_chars")
 	if err != nil {
@@ -5347,8 +5916,15 @@ func (v IOChannel) ReadChars(buf gi.Uint8Array, count uint64) (result IOStatusEn
 }
 
 // g_io_channel_read_line
-// container is not nil, container is IOChannel
-// is method
+//
+// [ str_return ] trans: everything, dir: out
+//
+// [ length ] trans: everything, dir: out
+//
+// [ terminator_pos ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) ReadLine() (result IOStatusEnum, str_return string, length uint64, terminator_pos uint64, err error) {
 	iv, err := _I.Get(244, "IOChannel", "read_line")
 	if err != nil {
@@ -5372,8 +5948,13 @@ func (v IOChannel) ReadLine() (result IOStatusEnum, str_return string, length ui
 }
 
 // g_io_channel_read_line_string
-// container is not nil, container is IOChannel
-// is method
+//
+// [ buffer ] trans: nothing
+//
+// [ terminator_pos ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) ReadLineString(buffer String, terminator_pos uint64) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(245, "IOChannel", "read_line_string")
 	if err != nil {
@@ -5393,9 +5974,13 @@ func (v IOChannel) ReadLineString(buffer String, terminator_pos uint64) (result 
 }
 
 // g_io_channel_read_to_end
-// container is not nil, container is IOChannel
-// is method
-// arg 0 str_return lenArgIdx 1
+//
+// [ str_return ] trans: everything, dir: out
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) ReadToEnd() (result IOStatusEnum, str_return gi.Uint8Array, err error) {
 	iv, err := _I.Get(246, "IOChannel", "read_to_end")
 	if err != nil {
@@ -5420,8 +6005,11 @@ func (v IOChannel) ReadToEnd() (result IOStatusEnum, str_return gi.Uint8Array, e
 }
 
 // g_io_channel_read_unichar
-// container is not nil, container is IOChannel
-// is method
+//
+// [ thechar ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) ReadUnichar() (result IOStatusEnum, thechar rune, err error) {
 	iv, err := _I.Get(247, "IOChannel", "read_unichar")
 	if err != nil {
@@ -5441,8 +6029,9 @@ func (v IOChannel) ReadUnichar() (result IOStatusEnum, thechar rune, err error) 
 }
 
 // g_io_channel_ref
-// container is not nil, container is IOChannel
-// is method
+//
+// [ result ] trans: everything
+//
 func (v IOChannel) Ref() (result IOChannel) {
 	iv, err := _I.Get(248, "IOChannel", "ref")
 	if err != nil {
@@ -5458,8 +6047,13 @@ func (v IOChannel) Ref() (result IOChannel) {
 }
 
 // g_io_channel_seek
-// container is not nil, container is IOChannel
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) Seek(offset int64, type1 SeekTypeEnum) (result IOErrorEnum) {
 	iv, err := _I.Get(249, "IOChannel", "seek")
 	if err != nil {
@@ -5477,8 +6071,13 @@ func (v IOChannel) Seek(offset int64, type1 SeekTypeEnum) (result IOErrorEnum) {
 }
 
 // g_io_channel_seek_position
-// container is not nil, container is IOChannel
-// is method
+//
+// [ offset ] trans: nothing
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) SeekPosition(offset int64, type1 SeekTypeEnum) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(250, "IOChannel", "seek_position")
 	if err != nil {
@@ -5498,8 +6097,9 @@ func (v IOChannel) SeekPosition(offset int64, type1 SeekTypeEnum) (result IOStat
 }
 
 // g_io_channel_set_buffer_size
-// container is not nil, container is IOChannel
-// is method
+//
+// [ size ] trans: nothing
+//
 func (v IOChannel) SetBufferSize(size uint64) {
 	iv, err := _I.Get(251, "IOChannel", "set_buffer_size")
 	if err != nil {
@@ -5513,8 +6113,9 @@ func (v IOChannel) SetBufferSize(size uint64) {
 }
 
 // g_io_channel_set_buffered
-// container is not nil, container is IOChannel
-// is method
+//
+// [ buffered ] trans: nothing
+//
 func (v IOChannel) SetBuffered(buffered bool) {
 	iv, err := _I.Get(252, "IOChannel", "set_buffered")
 	if err != nil {
@@ -5528,8 +6129,9 @@ func (v IOChannel) SetBuffered(buffered bool) {
 }
 
 // g_io_channel_set_close_on_unref
-// container is not nil, container is IOChannel
-// is method
+//
+// [ do_close ] trans: nothing
+//
 func (v IOChannel) SetCloseOnUnref(do_close bool) {
 	iv, err := _I.Get(253, "IOChannel", "set_close_on_unref")
 	if err != nil {
@@ -5543,8 +6145,11 @@ func (v IOChannel) SetCloseOnUnref(do_close bool) {
 }
 
 // g_io_channel_set_encoding
-// container is not nil, container is IOChannel
-// is method
+//
+// [ encoding ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) SetEncoding(encoding string) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(254, "IOChannel", "set_encoding")
 	if err != nil {
@@ -5565,8 +6170,11 @@ func (v IOChannel) SetEncoding(encoding string) (result IOStatusEnum, err error)
 }
 
 // g_io_channel_set_flags
-// container is not nil, container is IOChannel
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) SetFlags(flags IOFlags) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(255, "IOChannel", "set_flags")
 	if err != nil {
@@ -5585,8 +6193,11 @@ func (v IOChannel) SetFlags(flags IOFlags) (result IOStatusEnum, err error) {
 }
 
 // g_io_channel_set_line_term
-// container is not nil, container is IOChannel
-// is method
+//
+// [ line_term ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v IOChannel) SetLineTerm(line_term string, length int32) {
 	iv, err := _I.Get(256, "IOChannel", "set_line_term")
 	if err != nil {
@@ -5603,8 +6214,11 @@ func (v IOChannel) SetLineTerm(line_term string, length int32) {
 }
 
 // g_io_channel_shutdown
-// container is not nil, container is IOChannel
-// is method
+//
+// [ flush ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) Shutdown(flush bool) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(257, "IOChannel", "shutdown")
 	if err != nil {
@@ -5623,8 +6237,9 @@ func (v IOChannel) Shutdown(flush bool) (result IOStatusEnum, err error) {
 }
 
 // g_io_channel_unix_get_fd
-// container is not nil, container is IOChannel
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) UnixGetFd() (result int32) {
 	iv, err := _I.Get(258, "IOChannel", "unix_get_fd")
 	if err != nil {
@@ -5640,8 +6255,7 @@ func (v IOChannel) UnixGetFd() (result int32) {
 }
 
 // g_io_channel_unref
-// container is not nil, container is IOChannel
-// is method
+//
 func (v IOChannel) Unref() {
 	iv, err := _I.Get(259, "IOChannel", "unref")
 	if err != nil {
@@ -5654,8 +6268,15 @@ func (v IOChannel) Unref() {
 }
 
 // g_io_channel_write
-// container is not nil, container is IOChannel
-// is method
+//
+// [ buf ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ bytes_written ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) Write(buf string, count uint64, bytes_written uint64) (result IOErrorEnum) {
 	iv, err := _I.Get(260, "IOChannel", "write")
 	if err != nil {
@@ -5676,8 +6297,15 @@ func (v IOChannel) Write(buf string, count uint64, bytes_written uint64) (result
 }
 
 // g_io_channel_write_chars
-// container is not nil, container is IOChannel
-// is method
+//
+// [ buf ] trans: nothing
+//
+// [ count ] trans: nothing
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) WriteChars(buf gi.Uint8Array, count int64) (result IOStatusEnum, bytes_written uint64, err error) {
 	iv, err := _I.Get(261, "IOChannel", "write_chars")
 	if err != nil {
@@ -5699,8 +6327,11 @@ func (v IOChannel) WriteChars(buf gi.Uint8Array, count int64) (result IOStatusEn
 }
 
 // g_io_channel_write_unichar
-// container is not nil, container is IOChannel
-// is method
+//
+// [ thechar ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v IOChannel) WriteUnichar(thechar rune) (result IOStatusEnum, err error) {
 	iv, err := _I.Get(262, "IOChannel", "write_unichar")
 	if err != nil {
@@ -5719,9 +6350,11 @@ func (v IOChannel) WriteUnichar(thechar rune) (result IOStatusEnum, err error) {
 }
 
 // g_io_channel_error_from_errno
-// container is not nil, container is IOChannel
-// is method
-// arg0Type tag: gint32, isPtr: false
+//
+// [ en ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IOChannelErrorFromErrno1(en int32) (result IOChannelErrorEnum) {
 	iv, err := _I.Get(263, "IOChannel", "error_from_errno")
 	if err != nil {
@@ -5861,8 +6494,9 @@ func KeyFileGetType() gi.GType {
 }
 
 // g_key_file_new
-// container is not nil, container is KeyFile
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewKeyFile() (result KeyFile) {
 	iv, err := _I.Get(265, "KeyFile", "new")
 	if err != nil {
@@ -5876,8 +6510,13 @@ func NewKeyFile() (result KeyFile) {
 }
 
 // g_key_file_get_boolean
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) GetBoolean(group_name string, key string) (result bool, err error) {
 	iv, err := _I.Get(266, "KeyFile", "get_boolean")
 	if err != nil {
@@ -5901,9 +6540,15 @@ func (v KeyFile) GetBoolean(group_name string, key string) (result bool, err err
 }
 
 // g_key_file_get_boolean_list
-// container is not nil, container is KeyFile
-// is method
-// ret lenArgIdx 2
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: container
+//
 func (v KeyFile) GetBooleanList(group_name string, key string) (result gi.BoolArray, err error) {
 	iv, err := _I.Get(267, "KeyFile", "get_boolean_list")
 	if err != nil {
@@ -5931,8 +6576,13 @@ func (v KeyFile) GetBooleanList(group_name string, key string) (result gi.BoolAr
 }
 
 // g_key_file_get_comment
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) GetComment(group_name string, key string) (result string, err error) {
 	iv, err := _I.Get(268, "KeyFile", "get_comment")
 	if err != nil {
@@ -5956,8 +6606,13 @@ func (v KeyFile) GetComment(group_name string, key string) (result string, err e
 }
 
 // g_key_file_get_double
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) GetDouble(group_name string, key string) (result float64, err error) {
 	iv, err := _I.Get(269, "KeyFile", "get_double")
 	if err != nil {
@@ -5981,9 +6636,15 @@ func (v KeyFile) GetDouble(group_name string, key string) (result float64, err e
 }
 
 // g_key_file_get_double_list
-// container is not nil, container is KeyFile
-// is method
-// ret lenArgIdx 2
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: container
+//
 func (v KeyFile) GetDoubleList(group_name string, key string) (result gi.DoubleArray, err error) {
 	iv, err := _I.Get(270, "KeyFile", "get_double_list")
 	if err != nil {
@@ -6011,8 +6672,11 @@ func (v KeyFile) GetDoubleList(group_name string, key string) (result gi.DoubleA
 }
 
 // g_key_file_get_groups
-// container is not nil, container is KeyFile
-// is method
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) GetGroups() (result gi.CStrArray, length uint64) {
 	iv, err := _I.Get(271, "KeyFile", "get_groups")
 	if err != nil {
@@ -6032,8 +6696,13 @@ func (v KeyFile) GetGroups() (result gi.CStrArray, length uint64) {
 }
 
 // g_key_file_get_int64
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) GetInt64(group_name string, key string) (result int64, err error) {
 	iv, err := _I.Get(272, "KeyFile", "get_int64")
 	if err != nil {
@@ -6057,8 +6726,13 @@ func (v KeyFile) GetInt64(group_name string, key string) (result int64, err erro
 }
 
 // g_key_file_get_integer
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) GetInteger(group_name string, key string) (result int32, err error) {
 	iv, err := _I.Get(273, "KeyFile", "get_integer")
 	if err != nil {
@@ -6082,9 +6756,15 @@ func (v KeyFile) GetInteger(group_name string, key string) (result int32, err er
 }
 
 // g_key_file_get_integer_list
-// container is not nil, container is KeyFile
-// is method
-// ret lenArgIdx 2
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: container
+//
 func (v KeyFile) GetIntegerList(group_name string, key string) (result gi.Int32Array, err error) {
 	iv, err := _I.Get(274, "KeyFile", "get_integer_list")
 	if err != nil {
@@ -6112,8 +6792,13 @@ func (v KeyFile) GetIntegerList(group_name string, key string) (result gi.Int32A
 }
 
 // g_key_file_get_keys
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) GetKeys(group_name string) (result gi.CStrArray, length uint64, err error) {
 	iv, err := _I.Get(275, "KeyFile", "get_keys")
 	if err != nil {
@@ -6137,8 +6822,15 @@ func (v KeyFile) GetKeys(group_name string) (result gi.CStrArray, length uint64,
 }
 
 // g_key_file_get_locale_for_key
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ locale ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) GetLocaleForKey(group_name string, key string, locale string) (result string) {
 	iv, err := _I.Get(276, "KeyFile", "get_locale_for_key")
 	if err != nil {
@@ -6163,8 +6855,15 @@ func (v KeyFile) GetLocaleForKey(group_name string, key string, locale string) (
 }
 
 // g_key_file_get_locale_string
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ locale ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) GetLocaleString(group_name string, key string, locale string) (result string, err error) {
 	iv, err := _I.Get(277, "KeyFile", "get_locale_string")
 	if err != nil {
@@ -6191,9 +6890,17 @@ func (v KeyFile) GetLocaleString(group_name string, key string, locale string) (
 }
 
 // g_key_file_get_locale_string_list
-// container is not nil, container is KeyFile
-// is method
-// ret lenArgIdx 3
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ locale ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) GetLocaleStringList(group_name string, key string, locale string) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(278, "KeyFile", "get_locale_string_list")
 	if err != nil {
@@ -6225,8 +6932,9 @@ func (v KeyFile) GetLocaleStringList(group_name string, key string, locale strin
 }
 
 // g_key_file_get_start_group
-// container is not nil, container is KeyFile
-// is method
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) GetStartGroup() (result string) {
 	iv, err := _I.Get(279, "KeyFile", "get_start_group")
 	if err != nil {
@@ -6242,8 +6950,13 @@ func (v KeyFile) GetStartGroup() (result string) {
 }
 
 // g_key_file_get_string
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) GetString(group_name string, key string) (result string, err error) {
 	iv, err := _I.Get(280, "KeyFile", "get_string")
 	if err != nil {
@@ -6267,9 +6980,15 @@ func (v KeyFile) GetString(group_name string, key string) (result string, err er
 }
 
 // g_key_file_get_string_list
-// container is not nil, container is KeyFile
-// is method
-// ret lenArgIdx 2
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) GetStringList(group_name string, key string) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(281, "KeyFile", "get_string_list")
 	if err != nil {
@@ -6298,8 +7017,13 @@ func (v KeyFile) GetStringList(group_name string, key string) (result gi.CStrArr
 }
 
 // g_key_file_get_uint64
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) GetUint64(group_name string, key string) (result uint64, err error) {
 	iv, err := _I.Get(282, "KeyFile", "get_uint64")
 	if err != nil {
@@ -6323,8 +7047,13 @@ func (v KeyFile) GetUint64(group_name string, key string) (result uint64, err er
 }
 
 // g_key_file_get_value
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) GetValue(group_name string, key string) (result string, err error) {
 	iv, err := _I.Get(283, "KeyFile", "get_value")
 	if err != nil {
@@ -6348,8 +7077,11 @@ func (v KeyFile) GetValue(group_name string, key string) (result string, err err
 }
 
 // g_key_file_has_group
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) HasGroup(group_name string) (result bool) {
 	iv, err := _I.Get(284, "KeyFile", "has_group")
 	if err != nil {
@@ -6368,8 +7100,13 @@ func (v KeyFile) HasGroup(group_name string) (result bool) {
 }
 
 // g_key_file_load_from_bytes
-// container is not nil, container is KeyFile
-// is method
+//
+// [ bytes ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) LoadFromBytes(bytes Bytes, flags KeyFileFlags) (result bool, err error) {
 	iv, err := _I.Get(285, "KeyFile", "load_from_bytes")
 	if err != nil {
@@ -6389,8 +7126,15 @@ func (v KeyFile) LoadFromBytes(bytes Bytes, flags KeyFileFlags) (result bool, er
 }
 
 // g_key_file_load_from_data
-// container is not nil, container is KeyFile
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) LoadFromData(data string, length uint64, flags KeyFileFlags) (result bool, err error) {
 	iv, err := _I.Get(286, "KeyFile", "load_from_data")
 	if err != nil {
@@ -6413,8 +7157,15 @@ func (v KeyFile) LoadFromData(data string, length uint64, flags KeyFileFlags) (r
 }
 
 // g_key_file_load_from_data_dirs
-// container is not nil, container is KeyFile
-// is method
+//
+// [ file ] trans: nothing
+//
+// [ full_path ] trans: everything, dir: out
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (result bool, full_path string, err error) {
 	iv, err := _I.Get(287, "KeyFile", "load_from_data_dirs")
 	if err != nil {
@@ -6438,8 +7189,17 @@ func (v KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (result bool,
 }
 
 // g_key_file_load_from_dirs
-// container is not nil, container is KeyFile
-// is method
+//
+// [ file ] trans: nothing
+//
+// [ search_dirs ] trans: nothing
+//
+// [ full_path ] trans: everything, dir: out
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) LoadFromDirs(file string, search_dirs gi.CStrArray, flags KeyFileFlags) (result bool, full_path string, err error) {
 	iv, err := _I.Get(288, "KeyFile", "load_from_dirs")
 	if err != nil {
@@ -6464,8 +7224,13 @@ func (v KeyFile) LoadFromDirs(file string, search_dirs gi.CStrArray, flags KeyFi
 }
 
 // g_key_file_load_from_file
-// container is not nil, container is KeyFile
-// is method
+//
+// [ file ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) LoadFromFile(file string, flags KeyFileFlags) (result bool, err error) {
 	iv, err := _I.Get(289, "KeyFile", "load_from_file")
 	if err != nil {
@@ -6487,8 +7252,13 @@ func (v KeyFile) LoadFromFile(file string, flags KeyFileFlags) (result bool, err
 }
 
 // g_key_file_remove_comment
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) RemoveComment(group_name string, key string) (result bool, err error) {
 	iv, err := _I.Get(290, "KeyFile", "remove_comment")
 	if err != nil {
@@ -6512,8 +7282,11 @@ func (v KeyFile) RemoveComment(group_name string, key string) (result bool, err 
 }
 
 // g_key_file_remove_group
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) RemoveGroup(group_name string) (result bool, err error) {
 	iv, err := _I.Get(291, "KeyFile", "remove_group")
 	if err != nil {
@@ -6534,8 +7307,13 @@ func (v KeyFile) RemoveGroup(group_name string) (result bool, err error) {
 }
 
 // g_key_file_remove_key
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) RemoveKey(group_name string, key string) (result bool, err error) {
 	iv, err := _I.Get(292, "KeyFile", "remove_key")
 	if err != nil {
@@ -6559,8 +7337,11 @@ func (v KeyFile) RemoveKey(group_name string, key string) (result bool, err erro
 }
 
 // g_key_file_save_to_file
-// container is not nil, container is KeyFile
-// is method
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) SaveToFile(filename string) (result bool, err error) {
 	iv, err := _I.Get(293, "KeyFile", "save_to_file")
 	if err != nil {
@@ -6581,8 +7362,13 @@ func (v KeyFile) SaveToFile(filename string) (result bool, err error) {
 }
 
 // g_key_file_set_boolean
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v KeyFile) SetBoolean(group_name string, key string, value bool) {
 	iv, err := _I.Get(294, "KeyFile", "set_boolean")
 	if err != nil {
@@ -6602,9 +7388,15 @@ func (v KeyFile) SetBoolean(group_name string, key string, value bool) {
 }
 
 // g_key_file_set_boolean_list
-// container is not nil, container is KeyFile
-// is method
-// arg 2 list lenArgIdx 3
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ list ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v KeyFile) SetBooleanList(group_name string, key string, list gi.BoolArray, length uint64) {
 	iv, err := _I.Get(295, "KeyFile", "set_boolean_list")
 	if err != nil {
@@ -6625,8 +7417,15 @@ func (v KeyFile) SetBooleanList(group_name string, key string, list gi.BoolArray
 }
 
 // g_key_file_set_comment
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ comment ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v KeyFile) SetComment(group_name string, key string, comment string) (result bool, err error) {
 	iv, err := _I.Get(296, "KeyFile", "set_comment")
 	if err != nil {
@@ -6653,8 +7452,13 @@ func (v KeyFile) SetComment(group_name string, key string, comment string) (resu
 }
 
 // g_key_file_set_double
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v KeyFile) SetDouble(group_name string, key string, value float64) {
 	iv, err := _I.Get(297, "KeyFile", "set_double")
 	if err != nil {
@@ -6674,9 +7478,15 @@ func (v KeyFile) SetDouble(group_name string, key string, value float64) {
 }
 
 // g_key_file_set_double_list
-// container is not nil, container is KeyFile
-// is method
-// arg 2 list lenArgIdx 3
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ list ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v KeyFile) SetDoubleList(group_name string, key string, list gi.DoubleArray, length uint64) {
 	iv, err := _I.Get(298, "KeyFile", "set_double_list")
 	if err != nil {
@@ -6697,8 +7507,13 @@ func (v KeyFile) SetDoubleList(group_name string, key string, list gi.DoubleArra
 }
 
 // g_key_file_set_int64
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v KeyFile) SetInt64(group_name string, key string, value int64) {
 	iv, err := _I.Get(299, "KeyFile", "set_int64")
 	if err != nil {
@@ -6718,8 +7533,13 @@ func (v KeyFile) SetInt64(group_name string, key string, value int64) {
 }
 
 // g_key_file_set_integer
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v KeyFile) SetInteger(group_name string, key string, value int32) {
 	iv, err := _I.Get(300, "KeyFile", "set_integer")
 	if err != nil {
@@ -6739,9 +7559,15 @@ func (v KeyFile) SetInteger(group_name string, key string, value int32) {
 }
 
 // g_key_file_set_integer_list
-// container is not nil, container is KeyFile
-// is method
-// arg 2 list lenArgIdx 3
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ list ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v KeyFile) SetIntegerList(group_name string, key string, list gi.Int32Array, length uint64) {
 	iv, err := _I.Get(301, "KeyFile", "set_integer_list")
 	if err != nil {
@@ -6762,8 +7588,9 @@ func (v KeyFile) SetIntegerList(group_name string, key string, list gi.Int32Arra
 }
 
 // g_key_file_set_list_separator
-// container is not nil, container is KeyFile
-// is method
+//
+// [ separator ] trans: nothing
+//
 func (v KeyFile) SetListSeparator(separator int8) {
 	iv, err := _I.Get(302, "KeyFile", "set_list_separator")
 	if err != nil {
@@ -6777,8 +7604,15 @@ func (v KeyFile) SetListSeparator(separator int8) {
 }
 
 // g_key_file_set_locale_string
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ locale ] trans: nothing
+//
+// [ string ] trans: nothing
+//
 func (v KeyFile) SetLocaleString(group_name string, key string, locale string, string string) {
 	iv, err := _I.Get(303, "KeyFile", "set_locale_string")
 	if err != nil {
@@ -6803,9 +7637,17 @@ func (v KeyFile) SetLocaleString(group_name string, key string, locale string, s
 }
 
 // g_key_file_set_locale_string_list
-// container is not nil, container is KeyFile
-// is method
-// arg 3 list lenArgIdx 4
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ locale ] trans: nothing
+//
+// [ list ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v KeyFile) SetLocaleStringList(group_name string, key string, locale string, list gi.CStrArray, length uint64) {
 	iv, err := _I.Get(304, "KeyFile", "set_locale_string_list")
 	if err != nil {
@@ -6829,8 +7671,13 @@ func (v KeyFile) SetLocaleStringList(group_name string, key string, locale strin
 }
 
 // g_key_file_set_string
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ string ] trans: nothing
+//
 func (v KeyFile) SetString(group_name string, key string, string string) {
 	iv, err := _I.Get(305, "KeyFile", "set_string")
 	if err != nil {
@@ -6852,9 +7699,15 @@ func (v KeyFile) SetString(group_name string, key string, string string) {
 }
 
 // g_key_file_set_string_list
-// container is not nil, container is KeyFile
-// is method
-// arg 2 list lenArgIdx 3
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ list ] trans: nothing
+//
+// [ length ] trans: nothing
+//
 func (v KeyFile) SetStringList(group_name string, key string, list gi.CStrArray, length uint64) {
 	iv, err := _I.Get(306, "KeyFile", "set_string_list")
 	if err != nil {
@@ -6875,8 +7728,13 @@ func (v KeyFile) SetStringList(group_name string, key string, list gi.CStrArray,
 }
 
 // g_key_file_set_uint64
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v KeyFile) SetUint64(group_name string, key string, value uint64) {
 	iv, err := _I.Get(307, "KeyFile", "set_uint64")
 	if err != nil {
@@ -6896,8 +7754,13 @@ func (v KeyFile) SetUint64(group_name string, key string, value uint64) {
 }
 
 // g_key_file_set_value
-// container is not nil, container is KeyFile
-// is method
+//
+// [ group_name ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v KeyFile) SetValue(group_name string, key string, value string) {
 	iv, err := _I.Get(308, "KeyFile", "set_value")
 	if err != nil {
@@ -6919,8 +7782,11 @@ func (v KeyFile) SetValue(group_name string, key string, value string) {
 }
 
 // g_key_file_to_data
-// container is not nil, container is KeyFile
-// is method
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v KeyFile) ToData() (result string, length uint64, err error) {
 	iv, err := _I.Get(309, "KeyFile", "to_data")
 	if err != nil {
@@ -6940,8 +7806,7 @@ func (v KeyFile) ToData() (result string, length uint64, err error) {
 }
 
 // g_key_file_unref
-// container is not nil, container is KeyFile
-// is method
+//
 func (v KeyFile) Unref() {
 	iv, err := _I.Get(310, "KeyFile", "unref")
 	if err != nil {
@@ -7094,8 +7959,9 @@ func MainContextGetType() gi.GType {
 }
 
 // g_main_context_new
-// container is not nil, container is MainContext
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewMainContext() (result MainContext) {
 	iv, err := _I.Get(312, "MainContext", "new")
 	if err != nil {
@@ -7109,8 +7975,9 @@ func NewMainContext() (result MainContext) {
 }
 
 // g_main_context_acquire
-// container is not nil, container is MainContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) Acquire() (result bool) {
 	iv, err := _I.Get(313, "MainContext", "acquire")
 	if err != nil {
@@ -7126,8 +7993,11 @@ func (v MainContext) Acquire() (result bool) {
 }
 
 // g_main_context_add_poll
-// container is not nil, container is MainContext
-// is method
+//
+// [ fd ] trans: nothing
+//
+// [ priority ] trans: nothing
+//
 func (v MainContext) AddPoll(fd PollFD, priority int32) {
 	iv, err := _I.Get(314, "MainContext", "add_poll")
 	if err != nil {
@@ -7142,9 +8012,15 @@ func (v MainContext) AddPoll(fd PollFD, priority int32) {
 }
 
 // g_main_context_check
-// container is not nil, container is MainContext
-// is method
-// arg 1 fds lenArgIdx 2
+//
+// [ max_priority ] trans: nothing
+//
+// [ fds ] trans: nothing
+//
+// [ n_fds ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) Check(max_priority int32, fds unsafe.Pointer, n_fds int32) (result bool) {
 	iv, err := _I.Get(315, "MainContext", "check")
 	if err != nil {
@@ -7163,8 +8039,7 @@ func (v MainContext) Check(max_priority int32, fds unsafe.Pointer, n_fds int32) 
 }
 
 // g_main_context_dispatch
-// container is not nil, container is MainContext
-// is method
+//
 func (v MainContext) Dispatch() {
 	iv, err := _I.Get(316, "MainContext", "dispatch")
 	if err != nil {
@@ -7177,8 +8052,13 @@ func (v MainContext) Dispatch() {
 }
 
 // g_main_context_find_source_by_funcs_user_data
-// container is not nil, container is MainContext
-// is method
+//
+// [ funcs ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) FindSourceByFuncsUserData(funcs SourceFuncs, user_data unsafe.Pointer) (result Source) {
 	iv, err := _I.Get(317, "MainContext", "find_source_by_funcs_user_data")
 	if err != nil {
@@ -7196,8 +8076,11 @@ func (v MainContext) FindSourceByFuncsUserData(funcs SourceFuncs, user_data unsa
 }
 
 // g_main_context_find_source_by_id
-// container is not nil, container is MainContext
-// is method
+//
+// [ source_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) FindSourceById(source_id uint32) (result Source) {
 	iv, err := _I.Get(318, "MainContext", "find_source_by_id")
 	if err != nil {
@@ -7214,8 +8097,11 @@ func (v MainContext) FindSourceById(source_id uint32) (result Source) {
 }
 
 // g_main_context_find_source_by_user_data
-// container is not nil, container is MainContext
-// is method
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) FindSourceByUserData(user_data unsafe.Pointer) (result Source) {
 	iv, err := _I.Get(319, "MainContext", "find_source_by_user_data")
 	if err != nil {
@@ -7232,8 +8118,15 @@ func (v MainContext) FindSourceByUserData(user_data unsafe.Pointer) (result Sour
 }
 
 // g_main_context_invoke_full
-// container is not nil, container is MainContext
-// is method
+//
+// [ priority ] trans: nothing
+//
+// [ function ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
 func (v MainContext) InvokeFull(priority int32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(320, "MainContext", "invoke_full")
 	if err != nil {
@@ -7250,8 +8143,9 @@ func (v MainContext) InvokeFull(priority int32, function int /*TODO_TYPE CALLBAC
 }
 
 // g_main_context_is_owner
-// container is not nil, container is MainContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) IsOwner() (result bool) {
 	iv, err := _I.Get(321, "MainContext", "is_owner")
 	if err != nil {
@@ -7267,8 +8161,11 @@ func (v MainContext) IsOwner() (result bool) {
 }
 
 // g_main_context_iteration
-// container is not nil, container is MainContext
-// is method
+//
+// [ may_block ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) Iteration(may_block bool) (result bool) {
 	iv, err := _I.Get(322, "MainContext", "iteration")
 	if err != nil {
@@ -7285,8 +8182,9 @@ func (v MainContext) Iteration(may_block bool) (result bool) {
 }
 
 // g_main_context_pending
-// container is not nil, container is MainContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) Pending() (result bool) {
 	iv, err := _I.Get(323, "MainContext", "pending")
 	if err != nil {
@@ -7302,8 +8200,7 @@ func (v MainContext) Pending() (result bool) {
 }
 
 // g_main_context_pop_thread_default
-// container is not nil, container is MainContext
-// is method
+//
 func (v MainContext) PopThreadDefault() {
 	iv, err := _I.Get(324, "MainContext", "pop_thread_default")
 	if err != nil {
@@ -7316,8 +8213,11 @@ func (v MainContext) PopThreadDefault() {
 }
 
 // g_main_context_prepare
-// container is not nil, container is MainContext
-// is method
+//
+// [ priority ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) Prepare(priority int32) (result bool) {
 	iv, err := _I.Get(325, "MainContext", "prepare")
 	if err != nil {
@@ -7334,8 +8234,7 @@ func (v MainContext) Prepare(priority int32) (result bool) {
 }
 
 // g_main_context_push_thread_default
-// container is not nil, container is MainContext
-// is method
+//
 func (v MainContext) PushThreadDefault() {
 	iv, err := _I.Get(326, "MainContext", "push_thread_default")
 	if err != nil {
@@ -7348,9 +8247,17 @@ func (v MainContext) PushThreadDefault() {
 }
 
 // g_main_context_query
-// container is not nil, container is MainContext
-// is method
-// arg 2 fds lenArgIdx 3
+//
+// [ max_priority ] trans: nothing
+//
+// [ timeout_ ] trans: everything, dir: out
+//
+// [ fds ] trans: nothing, dir: out
+//
+// [ n_fds ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) Query(max_priority int32, fds unsafe.Pointer, n_fds int32) (result int32, timeout_ int32) {
 	iv, err := _I.Get(327, "MainContext", "query")
 	if err != nil {
@@ -7372,8 +8279,9 @@ func (v MainContext) Query(max_priority int32, fds unsafe.Pointer, n_fds int32) 
 }
 
 // g_main_context_ref
-// container is not nil, container is MainContext
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MainContext) Ref() (result MainContext) {
 	iv, err := _I.Get(328, "MainContext", "ref")
 	if err != nil {
@@ -7389,8 +8297,7 @@ func (v MainContext) Ref() (result MainContext) {
 }
 
 // g_main_context_release
-// container is not nil, container is MainContext
-// is method
+//
 func (v MainContext) Release() {
 	iv, err := _I.Get(329, "MainContext", "release")
 	if err != nil {
@@ -7403,8 +8310,9 @@ func (v MainContext) Release() {
 }
 
 // g_main_context_remove_poll
-// container is not nil, container is MainContext
-// is method
+//
+// [ fd ] trans: nothing
+//
 func (v MainContext) RemovePoll(fd PollFD) {
 	iv, err := _I.Get(330, "MainContext", "remove_poll")
 	if err != nil {
@@ -7418,8 +8326,7 @@ func (v MainContext) RemovePoll(fd PollFD) {
 }
 
 // g_main_context_unref
-// container is not nil, container is MainContext
-// is method
+//
 func (v MainContext) Unref() {
 	iv, err := _I.Get(331, "MainContext", "unref")
 	if err != nil {
@@ -7432,8 +8339,13 @@ func (v MainContext) Unref() {
 }
 
 // g_main_context_wait
-// container is not nil, container is MainContext
-// is method
+//
+// [ cond ] trans: nothing
+//
+// [ mutex ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v MainContext) Wait(cond Cond, mutex Mutex) (result bool) {
 	iv, err := _I.Get(332, "MainContext", "wait")
 	if err != nil {
@@ -7451,8 +8363,7 @@ func (v MainContext) Wait(cond Cond, mutex Mutex) (result bool) {
 }
 
 // g_main_context_wakeup
-// container is not nil, container is MainContext
-// is method
+//
 func (v MainContext) Wakeup() {
 	iv, err := _I.Get(333, "MainContext", "wakeup")
 	if err != nil {
@@ -7475,8 +8386,13 @@ func MainLoopGetType() gi.GType {
 }
 
 // g_main_loop_new
-// container is not nil, container is MainLoop
-// is constructor
+//
+// [ context ] trans: nothing
+//
+// [ is_running ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMainLoop(context MainContext, is_running bool) (result MainLoop) {
 	iv, err := _I.Get(337, "MainLoop", "new")
 	if err != nil {
@@ -7493,8 +8409,9 @@ func NewMainLoop(context MainContext, is_running bool) (result MainLoop) {
 }
 
 // g_main_loop_get_context
-// container is not nil, container is MainLoop
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MainLoop) GetContext() (result MainContext) {
 	iv, err := _I.Get(338, "MainLoop", "get_context")
 	if err != nil {
@@ -7510,8 +8427,9 @@ func (v MainLoop) GetContext() (result MainContext) {
 }
 
 // g_main_loop_is_running
-// container is not nil, container is MainLoop
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MainLoop) IsRunning() (result bool) {
 	iv, err := _I.Get(339, "MainLoop", "is_running")
 	if err != nil {
@@ -7527,8 +8445,7 @@ func (v MainLoop) IsRunning() (result bool) {
 }
 
 // g_main_loop_quit
-// container is not nil, container is MainLoop
-// is method
+//
 func (v MainLoop) Quit() {
 	iv, err := _I.Get(340, "MainLoop", "quit")
 	if err != nil {
@@ -7541,8 +8458,9 @@ func (v MainLoop) Quit() {
 }
 
 // g_main_loop_ref
-// container is not nil, container is MainLoop
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MainLoop) Ref() (result MainLoop) {
 	iv, err := _I.Get(341, "MainLoop", "ref")
 	if err != nil {
@@ -7558,8 +8476,7 @@ func (v MainLoop) Ref() (result MainLoop) {
 }
 
 // g_main_loop_run
-// container is not nil, container is MainLoop
-// is method
+//
 func (v MainLoop) Run() {
 	iv, err := _I.Get(342, "MainLoop", "run")
 	if err != nil {
@@ -7572,8 +8489,7 @@ func (v MainLoop) Run() {
 }
 
 // g_main_loop_unref
-// container is not nil, container is MainLoop
-// is method
+//
 func (v MainLoop) Unref() {
 	iv, err := _I.Get(343, "MainLoop", "unref")
 	if err != nil {
@@ -7596,8 +8512,13 @@ func MappedFileGetType() gi.GType {
 }
 
 // g_mapped_file_new
-// container is not nil, container is MappedFile
-// is constructor
+//
+// [ filename ] trans: nothing
+//
+// [ writable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMappedFile(filename string, writable bool) (result MappedFile, err error) {
 	iv, err := _I.Get(344, "MappedFile", "new")
 	if err != nil {
@@ -7618,8 +8539,13 @@ func NewMappedFile(filename string, writable bool) (result MappedFile, err error
 }
 
 // g_mapped_file_new_from_fd
-// container is not nil, container is MappedFile
-// is constructor
+//
+// [ fd ] trans: nothing
+//
+// [ writable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMappedFileFromFd(fd int32, writable bool) (result MappedFile, err error) {
 	iv, err := _I.Get(345, "MappedFile", "new_from_fd")
 	if err != nil {
@@ -7638,8 +8564,7 @@ func NewMappedFileFromFd(fd int32, writable bool) (result MappedFile, err error)
 }
 
 // g_mapped_file_free
-// container is not nil, container is MappedFile
-// is method
+//
 func (v MappedFile) Free() {
 	iv, err := _I.Get(346, "MappedFile", "free")
 	if err != nil {
@@ -7652,8 +8577,9 @@ func (v MappedFile) Free() {
 }
 
 // g_mapped_file_get_bytes
-// container is not nil, container is MappedFile
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MappedFile) GetBytes() (result Bytes) {
 	iv, err := _I.Get(347, "MappedFile", "get_bytes")
 	if err != nil {
@@ -7669,8 +8595,9 @@ func (v MappedFile) GetBytes() (result Bytes) {
 }
 
 // g_mapped_file_get_contents
-// container is not nil, container is MappedFile
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MappedFile) GetContents() (result string) {
 	iv, err := _I.Get(348, "MappedFile", "get_contents")
 	if err != nil {
@@ -7686,8 +8613,9 @@ func (v MappedFile) GetContents() (result string) {
 }
 
 // g_mapped_file_get_length
-// container is not nil, container is MappedFile
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MappedFile) GetLength() (result uint64) {
 	iv, err := _I.Get(349, "MappedFile", "get_length")
 	if err != nil {
@@ -7703,8 +8631,9 @@ func (v MappedFile) GetLength() (result uint64) {
 }
 
 // g_mapped_file_ref
-// container is not nil, container is MappedFile
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MappedFile) Ref() (result MappedFile) {
 	iv, err := _I.Get(350, "MappedFile", "ref")
 	if err != nil {
@@ -7720,8 +8649,7 @@ func (v MappedFile) Ref() (result MappedFile) {
 }
 
 // g_mapped_file_unref
-// container is not nil, container is MappedFile
-// is method
+//
 func (v MappedFile) Unref() {
 	iv, err := _I.Get(351, "MappedFile", "unref")
 	if err != nil {
@@ -7779,8 +8707,17 @@ func MarkupParseContextGetType() gi.GType {
 }
 
 // g_markup_parse_context_new
-// container is not nil, container is MarkupParseContext
-// is constructor
+//
+// [ parser ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ user_data_dnotify ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_data unsafe.Pointer, user_data_dnotify int /*TODO_TYPE CALLBACK*/) (result MarkupParseContext) {
 	iv, err := _I.Get(352, "MarkupParseContext", "new")
 	if err != nil {
@@ -7799,8 +8736,9 @@ func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_dat
 }
 
 // g_markup_parse_context_end_parse
-// container is not nil, container is MarkupParseContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MarkupParseContext) EndParse() (result bool, err error) {
 	iv, err := _I.Get(353, "MarkupParseContext", "end_parse")
 	if err != nil {
@@ -7818,8 +8756,7 @@ func (v MarkupParseContext) EndParse() (result bool, err error) {
 }
 
 // g_markup_parse_context_free
-// container is not nil, container is MarkupParseContext
-// is method
+//
 func (v MarkupParseContext) Free() {
 	iv, err := _I.Get(354, "MarkupParseContext", "free")
 	if err != nil {
@@ -7832,8 +8769,9 @@ func (v MarkupParseContext) Free() {
 }
 
 // g_markup_parse_context_get_element
-// container is not nil, container is MarkupParseContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MarkupParseContext) GetElement() (result string) {
 	iv, err := _I.Get(355, "MarkupParseContext", "get_element")
 	if err != nil {
@@ -7844,13 +8782,16 @@ func (v MarkupParseContext) GetElement() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_markup_parse_context_get_position
-// container is not nil, container is MarkupParseContext
-// is method
+//
+// [ line_number ] trans: nothing
+//
+// [ char_number ] trans: nothing
+//
 func (v MarkupParseContext) GetPosition(line_number int32, char_number int32) {
 	iv, err := _I.Get(356, "MarkupParseContext", "get_position")
 	if err != nil {
@@ -7865,8 +8806,9 @@ func (v MarkupParseContext) GetPosition(line_number int32, char_number int32) {
 }
 
 // g_markup_parse_context_get_user_data
-// container is not nil, container is MarkupParseContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MarkupParseContext) GetUserData() (result unsafe.Pointer) {
 	iv, err := _I.Get(357, "MarkupParseContext", "get_user_data")
 	if err != nil {
@@ -7882,8 +8824,13 @@ func (v MarkupParseContext) GetUserData() (result unsafe.Pointer) {
 }
 
 // g_markup_parse_context_parse
-// container is not nil, container is MarkupParseContext
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ text_len ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v MarkupParseContext) Parse(text string, text_len int64) (result bool, err error) {
 	iv, err := _I.Get(358, "MarkupParseContext", "parse")
 	if err != nil {
@@ -7905,8 +8852,9 @@ func (v MarkupParseContext) Parse(text string, text_len int64) (result bool, err
 }
 
 // g_markup_parse_context_pop
-// container is not nil, container is MarkupParseContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MarkupParseContext) Pop() (result unsafe.Pointer) {
 	iv, err := _I.Get(359, "MarkupParseContext", "pop")
 	if err != nil {
@@ -7922,8 +8870,11 @@ func (v MarkupParseContext) Pop() (result unsafe.Pointer) {
 }
 
 // g_markup_parse_context_push
-// container is not nil, container is MarkupParseContext
-// is method
+//
+// [ parser ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func (v MarkupParseContext) Push(parser MarkupParser, user_data unsafe.Pointer) {
 	iv, err := _I.Get(360, "MarkupParseContext", "push")
 	if err != nil {
@@ -7938,8 +8889,9 @@ func (v MarkupParseContext) Push(parser MarkupParser, user_data unsafe.Pointer) 
 }
 
 // g_markup_parse_context_ref
-// container is not nil, container is MarkupParseContext
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MarkupParseContext) Ref() (result MarkupParseContext) {
 	iv, err := _I.Get(361, "MarkupParseContext", "ref")
 	if err != nil {
@@ -7955,8 +8907,7 @@ func (v MarkupParseContext) Ref() (result MarkupParseContext) {
 }
 
 // g_markup_parse_context_unref
-// container is not nil, container is MarkupParseContext
-// is method
+//
 func (v MarkupParseContext) Unref() {
 	iv, err := _I.Get(362, "MarkupParseContext", "unref")
 	if err != nil {
@@ -8006,8 +8957,11 @@ func MatchInfoGetType() gi.GType {
 }
 
 // g_match_info_expand_references
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ string_to_expand ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MatchInfo) ExpandReferences(string_to_expand string) (result string, err error) {
 	iv, err := _I.Get(363, "MatchInfo", "expand_references")
 	if err != nil {
@@ -8028,8 +8982,11 @@ func (v MatchInfo) ExpandReferences(string_to_expand string) (result string, err
 }
 
 // g_match_info_fetch
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ match_num ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MatchInfo) Fetch(match_num int32) (result string) {
 	iv, err := _I.Get(364, "MatchInfo", "fetch")
 	if err != nil {
@@ -8046,8 +9003,9 @@ func (v MatchInfo) Fetch(match_num int32) (result string) {
 }
 
 // g_match_info_fetch_all
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MatchInfo) FetchAll() (result gi.CStrArray) {
 	iv, err := _I.Get(365, "MatchInfo", "fetch_all")
 	if err != nil {
@@ -8064,8 +9022,11 @@ func (v MatchInfo) FetchAll() (result gi.CStrArray) {
 }
 
 // g_match_info_fetch_named
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v MatchInfo) FetchNamed(name string) (result string) {
 	iv, err := _I.Get(366, "MatchInfo", "fetch_named")
 	if err != nil {
@@ -8084,8 +9045,15 @@ func (v MatchInfo) FetchNamed(name string) (result string) {
 }
 
 // g_match_info_fetch_named_pos
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ start_pos ] trans: everything, dir: out
+//
+// [ end_pos ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v MatchInfo) FetchNamedPos(name string) (result bool, start_pos int32, end_pos int32) {
 	iv, err := _I.Get(367, "MatchInfo", "fetch_named_pos")
 	if err != nil {
@@ -8109,8 +9077,15 @@ func (v MatchInfo) FetchNamedPos(name string) (result bool, start_pos int32, end
 }
 
 // g_match_info_fetch_pos
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ match_num ] trans: nothing
+//
+// [ start_pos ] trans: everything, dir: out
+//
+// [ end_pos ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v MatchInfo) FetchPos(match_num int32) (result bool, start_pos int32, end_pos int32) {
 	iv, err := _I.Get(368, "MatchInfo", "fetch_pos")
 	if err != nil {
@@ -8132,8 +9107,7 @@ func (v MatchInfo) FetchPos(match_num int32) (result bool, start_pos int32, end_
 }
 
 // g_match_info_free
-// container is not nil, container is MatchInfo
-// is method
+//
 func (v MatchInfo) Free() {
 	iv, err := _I.Get(369, "MatchInfo", "free")
 	if err != nil {
@@ -8146,8 +9120,9 @@ func (v MatchInfo) Free() {
 }
 
 // g_match_info_get_match_count
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MatchInfo) GetMatchCount() (result int32) {
 	iv, err := _I.Get(370, "MatchInfo", "get_match_count")
 	if err != nil {
@@ -8163,8 +9138,9 @@ func (v MatchInfo) GetMatchCount() (result int32) {
 }
 
 // g_match_info_get_regex
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MatchInfo) GetRegex() (result Regex) {
 	iv, err := _I.Get(371, "MatchInfo", "get_regex")
 	if err != nil {
@@ -8180,8 +9156,9 @@ func (v MatchInfo) GetRegex() (result Regex) {
 }
 
 // g_match_info_get_string
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MatchInfo) GetString() (result string) {
 	iv, err := _I.Get(372, "MatchInfo", "get_string")
 	if err != nil {
@@ -8192,13 +9169,14 @@ func (v MatchInfo) GetString() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_match_info_is_partial_match
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MatchInfo) IsPartialMatch() (result bool) {
 	iv, err := _I.Get(373, "MatchInfo", "is_partial_match")
 	if err != nil {
@@ -8214,8 +9192,9 @@ func (v MatchInfo) IsPartialMatch() (result bool) {
 }
 
 // g_match_info_matches
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MatchInfo) Matches() (result bool) {
 	iv, err := _I.Get(374, "MatchInfo", "matches")
 	if err != nil {
@@ -8231,8 +9210,9 @@ func (v MatchInfo) Matches() (result bool) {
 }
 
 // g_match_info_next
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v MatchInfo) Next() (result bool, err error) {
 	iv, err := _I.Get(375, "MatchInfo", "next")
 	if err != nil {
@@ -8250,8 +9230,9 @@ func (v MatchInfo) Next() (result bool, err error) {
 }
 
 // g_match_info_ref
-// container is not nil, container is MatchInfo
-// is method
+//
+// [ result ] trans: everything
+//
 func (v MatchInfo) Ref() (result MatchInfo) {
 	iv, err := _I.Get(376, "MatchInfo", "ref")
 	if err != nil {
@@ -8267,8 +9248,7 @@ func (v MatchInfo) Ref() (result MatchInfo) {
 }
 
 // g_match_info_unref
-// container is not nil, container is MatchInfo
-// is method
+//
 func (v MatchInfo) Unref() {
 	iv, err := _I.Get(377, "MatchInfo", "unref")
 	if err != nil {
@@ -8305,8 +9285,7 @@ func MutexGetType() gi.GType {
 }
 
 // g_mutex_clear
-// container is not nil, container is Mutex
-// is method
+//
 func (v Mutex) Clear() {
 	iv, err := _I.Get(378, "Mutex", "clear")
 	if err != nil {
@@ -8319,8 +9298,7 @@ func (v Mutex) Clear() {
 }
 
 // g_mutex_init
-// container is not nil, container is Mutex
-// is method
+//
 func (v Mutex) Init() {
 	iv, err := _I.Get(379, "Mutex", "init")
 	if err != nil {
@@ -8333,8 +9311,7 @@ func (v Mutex) Init() {
 }
 
 // g_mutex_lock
-// container is not nil, container is Mutex
-// is method
+//
 func (v Mutex) Lock() {
 	iv, err := _I.Get(380, "Mutex", "lock")
 	if err != nil {
@@ -8347,8 +9324,9 @@ func (v Mutex) Lock() {
 }
 
 // g_mutex_trylock
-// container is not nil, container is Mutex
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Mutex) Trylock() (result bool) {
 	iv, err := _I.Get(381, "Mutex", "trylock")
 	if err != nil {
@@ -8364,8 +9342,7 @@ func (v Mutex) Trylock() (result bool) {
 }
 
 // g_mutex_unlock
-// container is not nil, container is Mutex
-// is method
+//
 func (v Mutex) Unlock() {
 	iv, err := _I.Get(382, "Mutex", "unlock")
 	if err != nil {
@@ -8390,8 +9367,11 @@ func NodeGetType() gi.GType {
 }
 
 // g_node_child_index
-// container is not nil, container is Node
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Node) ChildIndex(data unsafe.Pointer) (result int32) {
 	iv, err := _I.Get(383, "Node", "child_index")
 	if err != nil {
@@ -8408,8 +9388,11 @@ func (v Node) ChildIndex(data unsafe.Pointer) (result int32) {
 }
 
 // g_node_child_position
-// container is not nil, container is Node
-// is method
+//
+// [ child ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Node) ChildPosition(child Node) (result int32) {
 	iv, err := _I.Get(384, "Node", "child_position")
 	if err != nil {
@@ -8426,8 +9409,9 @@ func (v Node) ChildPosition(child Node) (result int32) {
 }
 
 // g_node_depth
-// container is not nil, container is Node
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Node) Depth() (result uint32) {
 	iv, err := _I.Get(385, "Node", "depth")
 	if err != nil {
@@ -8443,8 +9427,7 @@ func (v Node) Depth() (result uint32) {
 }
 
 // g_node_destroy
-// container is not nil, container is Node
-// is method
+//
 func (v Node) Destroy() {
 	iv, err := _I.Get(386, "Node", "destroy")
 	if err != nil {
@@ -8457,8 +9440,11 @@ func (v Node) Destroy() {
 }
 
 // g_node_is_ancestor
-// container is not nil, container is Node
-// is method
+//
+// [ descendant ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Node) IsAncestor(descendant Node) (result bool) {
 	iv, err := _I.Get(387, "Node", "is_ancestor")
 	if err != nil {
@@ -8475,8 +9461,9 @@ func (v Node) IsAncestor(descendant Node) (result bool) {
 }
 
 // g_node_max_height
-// container is not nil, container is Node
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Node) MaxHeight() (result uint32) {
 	iv, err := _I.Get(388, "Node", "max_height")
 	if err != nil {
@@ -8492,8 +9479,9 @@ func (v Node) MaxHeight() (result uint32) {
 }
 
 // g_node_n_children
-// container is not nil, container is Node
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Node) NChildren() (result uint32) {
 	iv, err := _I.Get(389, "Node", "n_children")
 	if err != nil {
@@ -8509,8 +9497,11 @@ func (v Node) NChildren() (result uint32) {
 }
 
 // g_node_n_nodes
-// container is not nil, container is Node
-// is method
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Node) NNodes(flags TraverseFlags) (result uint32) {
 	iv, err := _I.Get(390, "Node", "n_nodes")
 	if err != nil {
@@ -8527,8 +9518,7 @@ func (v Node) NNodes(flags TraverseFlags) (result uint32) {
 }
 
 // g_node_reverse_children
-// container is not nil, container is Node
-// is method
+//
 func (v Node) ReverseChildren() {
 	iv, err := _I.Get(391, "Node", "reverse_children")
 	if err != nil {
@@ -8541,8 +9531,7 @@ func (v Node) ReverseChildren() {
 }
 
 // g_node_unlink
-// container is not nil, container is Node
-// is method
+//
 func (v Node) Unlink() {
 	iv, err := _I.Get(392, "Node", "unlink")
 	if err != nil {
@@ -8627,9 +9616,11 @@ func OnceGetType() gi.GType {
 }
 
 // g_once_init_enter
-// container is not nil, container is Once
-// is method
-// arg0Type tag: void, isPtr: true
+//
+// [ location ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func OnceInitEnter1(location unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(393, "Once", "init_enter")
 	if err != nil {
@@ -8645,9 +9636,11 @@ func OnceInitEnter1(location unsafe.Pointer) (result bool) {
 }
 
 // g_once_init_leave
-// container is not nil, container is Once
-// is method
-// arg0Type tag: void, isPtr: true
+//
+// [ location ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func OnceInitLeave1(location unsafe.Pointer, result uint64) {
 	iv, err := _I.Get(394, "Once", "init_leave")
 	if err != nil {
@@ -8720,8 +9713,9 @@ func OptionContextGetType() gi.GType {
 }
 
 // g_option_context_add_group
-// container is not nil, container is OptionContext
-// is method
+//
+// [ group ] trans: everything
+//
 func (v OptionContext) AddGroup(group OptionGroup) {
 	iv, err := _I.Get(395, "OptionContext", "add_group")
 	if err != nil {
@@ -8735,8 +9729,11 @@ func (v OptionContext) AddGroup(group OptionGroup) {
 }
 
 // g_option_context_add_main_entries
-// container is not nil, container is OptionContext
-// is method
+//
+// [ entries ] trans: nothing
+//
+// [ translation_domain ] trans: nothing
+//
 func (v OptionContext) AddMainEntries(entries OptionEntry, translation_domain string) {
 	iv, err := _I.Get(396, "OptionContext", "add_main_entries")
 	if err != nil {
@@ -8753,8 +9750,7 @@ func (v OptionContext) AddMainEntries(entries OptionEntry, translation_domain st
 }
 
 // g_option_context_free
-// container is not nil, container is OptionContext
-// is method
+//
 func (v OptionContext) Free() {
 	iv, err := _I.Get(397, "OptionContext", "free")
 	if err != nil {
@@ -8767,8 +9763,9 @@ func (v OptionContext) Free() {
 }
 
 // g_option_context_get_description
-// container is not nil, container is OptionContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v OptionContext) GetDescription() (result string) {
 	iv, err := _I.Get(398, "OptionContext", "get_description")
 	if err != nil {
@@ -8779,13 +9776,18 @@ func (v OptionContext) GetDescription() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_option_context_get_help
-// container is not nil, container is OptionContext
-// is method
+//
+// [ main_help ] trans: nothing
+//
+// [ group ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v OptionContext) GetHelp(main_help bool, group OptionGroup) (result string) {
 	iv, err := _I.Get(399, "OptionContext", "get_help")
 	if err != nil {
@@ -8803,8 +9805,9 @@ func (v OptionContext) GetHelp(main_help bool, group OptionGroup) (result string
 }
 
 // g_option_context_get_help_enabled
-// container is not nil, container is OptionContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v OptionContext) GetHelpEnabled() (result bool) {
 	iv, err := _I.Get(400, "OptionContext", "get_help_enabled")
 	if err != nil {
@@ -8820,8 +9823,9 @@ func (v OptionContext) GetHelpEnabled() (result bool) {
 }
 
 // g_option_context_get_ignore_unknown_options
-// container is not nil, container is OptionContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v OptionContext) GetIgnoreUnknownOptions() (result bool) {
 	iv, err := _I.Get(401, "OptionContext", "get_ignore_unknown_options")
 	if err != nil {
@@ -8837,8 +9841,9 @@ func (v OptionContext) GetIgnoreUnknownOptions() (result bool) {
 }
 
 // g_option_context_get_main_group
-// container is not nil, container is OptionContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v OptionContext) GetMainGroup() (result OptionGroup) {
 	iv, err := _I.Get(402, "OptionContext", "get_main_group")
 	if err != nil {
@@ -8854,8 +9859,9 @@ func (v OptionContext) GetMainGroup() (result OptionGroup) {
 }
 
 // g_option_context_get_strict_posix
-// container is not nil, container is OptionContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v OptionContext) GetStrictPosix() (result bool) {
 	iv, err := _I.Get(403, "OptionContext", "get_strict_posix")
 	if err != nil {
@@ -8871,8 +9877,9 @@ func (v OptionContext) GetStrictPosix() (result bool) {
 }
 
 // g_option_context_get_summary
-// container is not nil, container is OptionContext
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v OptionContext) GetSummary() (result string) {
 	iv, err := _I.Get(404, "OptionContext", "get_summary")
 	if err != nil {
@@ -8883,14 +9890,18 @@ func (v OptionContext) GetSummary() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_option_context_parse
-// container is not nil, container is OptionContext
-// is method
-// arg 1 argv lenArgIdx 0
+//
+// [ argc ] trans: everything, dir: inout
+//
+// [ argv ] trans: everything, dir: inout
+//
+// [ result ] trans: nothing
+//
 func (v OptionContext) Parse(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool, err error) {
 	iv, err := _I.Get(405, "OptionContext", "parse")
 	if err != nil {
@@ -8908,8 +9919,11 @@ func (v OptionContext) Parse(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (re
 }
 
 // g_option_context_parse_strv
-// container is not nil, container is OptionContext
-// is method
+//
+// [ arguments ] trans: everything, dir: inout
+//
+// [ result ] trans: nothing
+//
 func (v OptionContext) ParseStrv(arguments int /*TODO:TYPE*/) (result bool, err error) {
 	iv, err := _I.Get(406, "OptionContext", "parse_strv")
 	if err != nil {
@@ -8927,8 +9941,9 @@ func (v OptionContext) ParseStrv(arguments int /*TODO:TYPE*/) (result bool, err 
 }
 
 // g_option_context_set_description
-// container is not nil, container is OptionContext
-// is method
+//
+// [ description ] trans: nothing
+//
 func (v OptionContext) SetDescription(description string) {
 	iv, err := _I.Get(407, "OptionContext", "set_description")
 	if err != nil {
@@ -8944,8 +9959,9 @@ func (v OptionContext) SetDescription(description string) {
 }
 
 // g_option_context_set_help_enabled
-// container is not nil, container is OptionContext
-// is method
+//
+// [ help_enabled ] trans: nothing
+//
 func (v OptionContext) SetHelpEnabled(help_enabled bool) {
 	iv, err := _I.Get(408, "OptionContext", "set_help_enabled")
 	if err != nil {
@@ -8959,8 +9975,9 @@ func (v OptionContext) SetHelpEnabled(help_enabled bool) {
 }
 
 // g_option_context_set_ignore_unknown_options
-// container is not nil, container is OptionContext
-// is method
+//
+// [ ignore_unknown ] trans: nothing
+//
 func (v OptionContext) SetIgnoreUnknownOptions(ignore_unknown bool) {
 	iv, err := _I.Get(409, "OptionContext", "set_ignore_unknown_options")
 	if err != nil {
@@ -8974,8 +9991,9 @@ func (v OptionContext) SetIgnoreUnknownOptions(ignore_unknown bool) {
 }
 
 // g_option_context_set_main_group
-// container is not nil, container is OptionContext
-// is method
+//
+// [ group ] trans: everything
+//
 func (v OptionContext) SetMainGroup(group OptionGroup) {
 	iv, err := _I.Get(410, "OptionContext", "set_main_group")
 	if err != nil {
@@ -8989,8 +10007,9 @@ func (v OptionContext) SetMainGroup(group OptionGroup) {
 }
 
 // g_option_context_set_strict_posix
-// container is not nil, container is OptionContext
-// is method
+//
+// [ strict_posix ] trans: nothing
+//
 func (v OptionContext) SetStrictPosix(strict_posix bool) {
 	iv, err := _I.Get(411, "OptionContext", "set_strict_posix")
 	if err != nil {
@@ -9004,8 +10023,9 @@ func (v OptionContext) SetStrictPosix(strict_posix bool) {
 }
 
 // g_option_context_set_summary
-// container is not nil, container is OptionContext
-// is method
+//
+// [ summary ] trans: nothing
+//
 func (v OptionContext) SetSummary(summary string) {
 	iv, err := _I.Get(412, "OptionContext", "set_summary")
 	if err != nil {
@@ -9021,8 +10041,13 @@ func (v OptionContext) SetSummary(summary string) {
 }
 
 // g_option_context_set_translate_func
-// container is not nil, container is OptionContext
-// is method
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ destroy_notify ] trans: nothing
+//
 func (v OptionContext) SetTranslateFunc(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, destroy_notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(413, "OptionContext", "set_translate_func")
 	if err != nil {
@@ -9038,8 +10063,9 @@ func (v OptionContext) SetTranslateFunc(func1 int /*TODO_TYPE CALLBACK*/, data u
 }
 
 // g_option_context_set_translation_domain
-// container is not nil, container is OptionContext
-// is method
+//
+// [ domain ] trans: nothing
+//
 func (v OptionContext) SetTranslationDomain(domain string) {
 	iv, err := _I.Get(414, "OptionContext", "set_translation_domain")
 	if err != nil {
@@ -9125,8 +10151,19 @@ func OptionGroupGetType() gi.GType {
 }
 
 // g_option_group_new
-// container is not nil, container is OptionGroup
-// is constructor
+//
+// [ name ] trans: nothing
+//
+// [ description ] trans: nothing
+//
+// [ help_description ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ destroy ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewOptionGroup(name string, description string, help_description string, user_data unsafe.Pointer, destroy int /*TODO_TYPE CALLBACK*/) (result OptionGroup) {
 	iv, err := _I.Get(415, "OptionGroup", "new")
 	if err != nil {
@@ -9152,8 +10189,9 @@ func NewOptionGroup(name string, description string, help_description string, us
 }
 
 // g_option_group_add_entries
-// container is not nil, container is OptionGroup
-// is method
+//
+// [ entries ] trans: nothing
+//
 func (v OptionGroup) AddEntries(entries OptionEntry) {
 	iv, err := _I.Get(416, "OptionGroup", "add_entries")
 	if err != nil {
@@ -9167,8 +10205,7 @@ func (v OptionGroup) AddEntries(entries OptionEntry) {
 }
 
 // g_option_group_free
-// container is not nil, container is OptionGroup
-// is method
+//
 func (v OptionGroup) Free() {
 	iv, err := _I.Get(417, "OptionGroup", "free")
 	if err != nil {
@@ -9181,8 +10218,9 @@ func (v OptionGroup) Free() {
 }
 
 // g_option_group_ref
-// container is not nil, container is OptionGroup
-// is method
+//
+// [ result ] trans: everything
+//
 func (v OptionGroup) Ref() (result OptionGroup) {
 	iv, err := _I.Get(418, "OptionGroup", "ref")
 	if err != nil {
@@ -9198,8 +10236,13 @@ func (v OptionGroup) Ref() (result OptionGroup) {
 }
 
 // g_option_group_set_translate_func
-// container is not nil, container is OptionGroup
-// is method
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ destroy_notify ] trans: nothing
+//
 func (v OptionGroup) SetTranslateFunc(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, destroy_notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(419, "OptionGroup", "set_translate_func")
 	if err != nil {
@@ -9215,8 +10258,9 @@ func (v OptionGroup) SetTranslateFunc(func1 int /*TODO_TYPE CALLBACK*/, data uns
 }
 
 // g_option_group_set_translation_domain
-// container is not nil, container is OptionGroup
-// is method
+//
+// [ domain ] trans: nothing
+//
 func (v OptionGroup) SetTranslationDomain(domain string) {
 	iv, err := _I.Get(420, "OptionGroup", "set_translation_domain")
 	if err != nil {
@@ -9232,8 +10276,7 @@ func (v OptionGroup) SetTranslationDomain(domain string) {
 }
 
 // g_option_group_unref
-// container is not nil, container is OptionGroup
-// is method
+//
 func (v OptionGroup) Unref() {
 	iv, err := _I.Get(421, "OptionGroup", "unref")
 	if err != nil {
@@ -9271,8 +10314,11 @@ func PatternSpecGetType() gi.GType {
 }
 
 // g_pattern_spec_equal
-// container is not nil, container is PatternSpec
-// is method
+//
+// [ pspec2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v PatternSpec) Equal(pspec2 PatternSpec) (result bool) {
 	iv, err := _I.Get(422, "PatternSpec", "equal")
 	if err != nil {
@@ -9289,8 +10335,7 @@ func (v PatternSpec) Equal(pspec2 PatternSpec) (result bool) {
 }
 
 // g_pattern_spec_free
-// container is not nil, container is PatternSpec
-// is method
+//
 func (v PatternSpec) Free() {
 	iv, err := _I.Get(423, "PatternSpec", "free")
 	if err != nil {
@@ -9355,8 +10400,9 @@ func PrivateGetType() gi.GType {
 }
 
 // g_private_get
-// container is not nil, container is Private
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Private) Get() (result unsafe.Pointer) {
 	iv, err := _I.Get(424, "Private", "get")
 	if err != nil {
@@ -9372,8 +10418,9 @@ func (v Private) Get() (result unsafe.Pointer) {
 }
 
 // g_private_replace
-// container is not nil, container is Private
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v Private) Replace(value unsafe.Pointer) {
 	iv, err := _I.Get(425, "Private", "replace")
 	if err != nil {
@@ -9387,8 +10434,9 @@ func (v Private) Replace(value unsafe.Pointer) {
 }
 
 // g_private_set
-// container is not nil, container is Private
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v Private) Set(value unsafe.Pointer) {
 	iv, err := _I.Get(426, "Private", "set")
 	if err != nil {
@@ -9426,8 +10474,7 @@ func QueueGetType() gi.GType {
 }
 
 // g_queue_clear
-// container is not nil, container is Queue
-// is method
+//
 func (v Queue) Clear() {
 	iv, err := _I.Get(427, "Queue", "clear")
 	if err != nil {
@@ -9440,8 +10487,7 @@ func (v Queue) Clear() {
 }
 
 // g_queue_free
-// container is not nil, container is Queue
-// is method
+//
 func (v Queue) Free() {
 	iv, err := _I.Get(428, "Queue", "free")
 	if err != nil {
@@ -9454,8 +10500,9 @@ func (v Queue) Free() {
 }
 
 // g_queue_free_full
-// container is not nil, container is Queue
-// is method
+//
+// [ free_func ] trans: nothing
+//
 func (v Queue) FreeFull(free_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(429, "Queue", "free_full")
 	if err != nil {
@@ -9469,8 +10516,9 @@ func (v Queue) FreeFull(free_func int /*TODO_TYPE CALLBACK*/) {
 }
 
 // g_queue_get_length
-// container is not nil, container is Queue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Queue) GetLength() (result uint32) {
 	iv, err := _I.Get(430, "Queue", "get_length")
 	if err != nil {
@@ -9486,8 +10534,11 @@ func (v Queue) GetLength() (result uint32) {
 }
 
 // g_queue_index
-// container is not nil, container is Queue
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Queue) Index(data unsafe.Pointer) (result int32) {
 	iv, err := _I.Get(431, "Queue", "index")
 	if err != nil {
@@ -9504,8 +10555,7 @@ func (v Queue) Index(data unsafe.Pointer) (result int32) {
 }
 
 // g_queue_init
-// container is not nil, container is Queue
-// is method
+//
 func (v Queue) Init() {
 	iv, err := _I.Get(432, "Queue", "init")
 	if err != nil {
@@ -9518,8 +10568,9 @@ func (v Queue) Init() {
 }
 
 // g_queue_is_empty
-// container is not nil, container is Queue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Queue) IsEmpty() (result bool) {
 	iv, err := _I.Get(433, "Queue", "is_empty")
 	if err != nil {
@@ -9535,8 +10586,9 @@ func (v Queue) IsEmpty() (result bool) {
 }
 
 // g_queue_peek_head
-// container is not nil, container is Queue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Queue) PeekHead() (result unsafe.Pointer) {
 	iv, err := _I.Get(434, "Queue", "peek_head")
 	if err != nil {
@@ -9552,8 +10604,11 @@ func (v Queue) PeekHead() (result unsafe.Pointer) {
 }
 
 // g_queue_peek_nth
-// container is not nil, container is Queue
-// is method
+//
+// [ n ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Queue) PeekNth(n uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(435, "Queue", "peek_nth")
 	if err != nil {
@@ -9570,8 +10625,9 @@ func (v Queue) PeekNth(n uint32) (result unsafe.Pointer) {
 }
 
 // g_queue_peek_tail
-// container is not nil, container is Queue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Queue) PeekTail() (result unsafe.Pointer) {
 	iv, err := _I.Get(436, "Queue", "peek_tail")
 	if err != nil {
@@ -9587,8 +10643,9 @@ func (v Queue) PeekTail() (result unsafe.Pointer) {
 }
 
 // g_queue_pop_head
-// container is not nil, container is Queue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Queue) PopHead() (result unsafe.Pointer) {
 	iv, err := _I.Get(437, "Queue", "pop_head")
 	if err != nil {
@@ -9604,8 +10661,11 @@ func (v Queue) PopHead() (result unsafe.Pointer) {
 }
 
 // g_queue_pop_nth
-// container is not nil, container is Queue
-// is method
+//
+// [ n ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Queue) PopNth(n uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(438, "Queue", "pop_nth")
 	if err != nil {
@@ -9622,8 +10682,9 @@ func (v Queue) PopNth(n uint32) (result unsafe.Pointer) {
 }
 
 // g_queue_pop_tail
-// container is not nil, container is Queue
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Queue) PopTail() (result unsafe.Pointer) {
 	iv, err := _I.Get(439, "Queue", "pop_tail")
 	if err != nil {
@@ -9639,8 +10700,9 @@ func (v Queue) PopTail() (result unsafe.Pointer) {
 }
 
 // g_queue_push_head
-// container is not nil, container is Queue
-// is method
+//
+// [ data ] trans: nothing
+//
 func (v Queue) PushHead(data unsafe.Pointer) {
 	iv, err := _I.Get(440, "Queue", "push_head")
 	if err != nil {
@@ -9654,8 +10716,11 @@ func (v Queue) PushHead(data unsafe.Pointer) {
 }
 
 // g_queue_push_nth
-// container is not nil, container is Queue
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ n ] trans: nothing
+//
 func (v Queue) PushNth(data unsafe.Pointer, n int32) {
 	iv, err := _I.Get(441, "Queue", "push_nth")
 	if err != nil {
@@ -9670,8 +10735,9 @@ func (v Queue) PushNth(data unsafe.Pointer, n int32) {
 }
 
 // g_queue_push_tail
-// container is not nil, container is Queue
-// is method
+//
+// [ data ] trans: nothing
+//
 func (v Queue) PushTail(data unsafe.Pointer) {
 	iv, err := _I.Get(442, "Queue", "push_tail")
 	if err != nil {
@@ -9685,8 +10751,11 @@ func (v Queue) PushTail(data unsafe.Pointer) {
 }
 
 // g_queue_remove
-// container is not nil, container is Queue
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Queue) Remove(data unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(443, "Queue", "remove")
 	if err != nil {
@@ -9703,8 +10772,11 @@ func (v Queue) Remove(data unsafe.Pointer) (result bool) {
 }
 
 // g_queue_remove_all
-// container is not nil, container is Queue
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Queue) RemoveAll(data unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(444, "Queue", "remove_all")
 	if err != nil {
@@ -9721,8 +10793,7 @@ func (v Queue) RemoveAll(data unsafe.Pointer) (result uint32) {
 }
 
 // g_queue_reverse
-// container is not nil, container is Queue
-// is method
+//
 func (v Queue) Reverse() {
 	iv, err := _I.Get(445, "Queue", "reverse")
 	if err != nil {
@@ -9747,8 +10818,7 @@ func RWLockGetType() gi.GType {
 }
 
 // g_rw_lock_clear
-// container is not nil, container is RWLock
-// is method
+//
 func (v RWLock) Clear() {
 	iv, err := _I.Get(446, "RWLock", "clear")
 	if err != nil {
@@ -9761,8 +10831,7 @@ func (v RWLock) Clear() {
 }
 
 // g_rw_lock_init
-// container is not nil, container is RWLock
-// is method
+//
 func (v RWLock) Init() {
 	iv, err := _I.Get(447, "RWLock", "init")
 	if err != nil {
@@ -9775,8 +10844,7 @@ func (v RWLock) Init() {
 }
 
 // g_rw_lock_reader_lock
-// container is not nil, container is RWLock
-// is method
+//
 func (v RWLock) ReaderLock() {
 	iv, err := _I.Get(448, "RWLock", "reader_lock")
 	if err != nil {
@@ -9789,8 +10857,9 @@ func (v RWLock) ReaderLock() {
 }
 
 // g_rw_lock_reader_trylock
-// container is not nil, container is RWLock
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v RWLock) ReaderTrylock() (result bool) {
 	iv, err := _I.Get(449, "RWLock", "reader_trylock")
 	if err != nil {
@@ -9806,8 +10875,7 @@ func (v RWLock) ReaderTrylock() (result bool) {
 }
 
 // g_rw_lock_reader_unlock
-// container is not nil, container is RWLock
-// is method
+//
 func (v RWLock) ReaderUnlock() {
 	iv, err := _I.Get(450, "RWLock", "reader_unlock")
 	if err != nil {
@@ -9820,8 +10888,7 @@ func (v RWLock) ReaderUnlock() {
 }
 
 // g_rw_lock_writer_lock
-// container is not nil, container is RWLock
-// is method
+//
 func (v RWLock) WriterLock() {
 	iv, err := _I.Get(451, "RWLock", "writer_lock")
 	if err != nil {
@@ -9834,8 +10901,9 @@ func (v RWLock) WriterLock() {
 }
 
 // g_rw_lock_writer_trylock
-// container is not nil, container is RWLock
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v RWLock) WriterTrylock() (result bool) {
 	iv, err := _I.Get(452, "RWLock", "writer_trylock")
 	if err != nil {
@@ -9851,8 +10919,7 @@ func (v RWLock) WriterTrylock() (result bool) {
 }
 
 // g_rw_lock_writer_unlock
-// container is not nil, container is RWLock
-// is method
+//
 func (v RWLock) WriterUnlock() {
 	iv, err := _I.Get(453, "RWLock", "writer_unlock")
 	if err != nil {
@@ -9875,8 +10942,9 @@ func RandGetType() gi.GType {
 }
 
 // g_rand_double
-// container is not nil, container is Rand
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Rand) Double() (result float64) {
 	iv, err := _I.Get(454, "Rand", "double")
 	if err != nil {
@@ -9892,8 +10960,13 @@ func (v Rand) Double() (result float64) {
 }
 
 // g_rand_double_range
-// container is not nil, container is Rand
-// is method
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Rand) DoubleRange(begin float64, end float64) (result float64) {
 	iv, err := _I.Get(455, "Rand", "double_range")
 	if err != nil {
@@ -9911,8 +10984,7 @@ func (v Rand) DoubleRange(begin float64, end float64) (result float64) {
 }
 
 // g_rand_free
-// container is not nil, container is Rand
-// is method
+//
 func (v Rand) Free() {
 	iv, err := _I.Get(456, "Rand", "free")
 	if err != nil {
@@ -9925,8 +10997,9 @@ func (v Rand) Free() {
 }
 
 // g_rand_int
-// container is not nil, container is Rand
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Rand) Int() (result uint32) {
 	iv, err := _I.Get(457, "Rand", "int")
 	if err != nil {
@@ -9942,8 +11015,13 @@ func (v Rand) Int() (result uint32) {
 }
 
 // g_rand_int_range
-// container is not nil, container is Rand
-// is method
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Rand) IntRange(begin int32, end int32) (result int32) {
 	iv, err := _I.Get(458, "Rand", "int_range")
 	if err != nil {
@@ -9961,8 +11039,9 @@ func (v Rand) IntRange(begin int32, end int32) (result int32) {
 }
 
 // g_rand_set_seed
-// container is not nil, container is Rand
-// is method
+//
+// [ seed ] trans: nothing
+//
 func (v Rand) SetSeed(seed uint32) {
 	iv, err := _I.Get(459, "Rand", "set_seed")
 	if err != nil {
@@ -9976,8 +11055,11 @@ func (v Rand) SetSeed(seed uint32) {
 }
 
 // g_rand_set_seed_array
-// container is not nil, container is Rand
-// is method
+//
+// [ seed ] trans: nothing
+//
+// [ seed_length ] trans: nothing
+//
 func (v Rand) SetSeedArray(seed uint32, seed_length uint32) {
 	iv, err := _I.Get(460, "Rand", "set_seed_array")
 	if err != nil {
@@ -10004,8 +11086,7 @@ func RecMutexGetType() gi.GType {
 }
 
 // g_rec_mutex_clear
-// container is not nil, container is RecMutex
-// is method
+//
 func (v RecMutex) Clear() {
 	iv, err := _I.Get(461, "RecMutex", "clear")
 	if err != nil {
@@ -10018,8 +11099,7 @@ func (v RecMutex) Clear() {
 }
 
 // g_rec_mutex_init
-// container is not nil, container is RecMutex
-// is method
+//
 func (v RecMutex) Init() {
 	iv, err := _I.Get(462, "RecMutex", "init")
 	if err != nil {
@@ -10032,8 +11112,7 @@ func (v RecMutex) Init() {
 }
 
 // g_rec_mutex_lock
-// container is not nil, container is RecMutex
-// is method
+//
 func (v RecMutex) Lock() {
 	iv, err := _I.Get(463, "RecMutex", "lock")
 	if err != nil {
@@ -10046,8 +11125,9 @@ func (v RecMutex) Lock() {
 }
 
 // g_rec_mutex_trylock
-// container is not nil, container is RecMutex
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v RecMutex) Trylock() (result bool) {
 	iv, err := _I.Get(464, "RecMutex", "trylock")
 	if err != nil {
@@ -10063,8 +11143,7 @@ func (v RecMutex) Trylock() (result bool) {
 }
 
 // g_rec_mutex_unlock
-// container is not nil, container is RecMutex
-// is method
+//
 func (v RecMutex) Unlock() {
 	iv, err := _I.Get(465, "RecMutex", "unlock")
 	if err != nil {
@@ -10087,8 +11166,15 @@ func RegexGetType() gi.GType {
 }
 
 // g_regex_new
-// container is not nil, container is Regex
-// is constructor
+//
+// [ pattern ] trans: nothing
+//
+// [ compile_options ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewRegex(pattern string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result Regex, err error) {
 	iv, err := _I.Get(466, "Regex", "new")
 	if err != nil {
@@ -10110,8 +11196,9 @@ func NewRegex(pattern string, compile_options RegexCompileFlags, match_options R
 }
 
 // g_regex_get_capture_count
-// container is not nil, container is Regex
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Regex) GetCaptureCount() (result int32) {
 	iv, err := _I.Get(467, "Regex", "get_capture_count")
 	if err != nil {
@@ -10127,8 +11214,9 @@ func (v Regex) GetCaptureCount() (result int32) {
 }
 
 // g_regex_get_compile_flags
-// container is not nil, container is Regex
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Regex) GetCompileFlags() (result RegexCompileFlags) {
 	iv, err := _I.Get(468, "Regex", "get_compile_flags")
 	if err != nil {
@@ -10144,8 +11232,9 @@ func (v Regex) GetCompileFlags() (result RegexCompileFlags) {
 }
 
 // g_regex_get_has_cr_or_lf
-// container is not nil, container is Regex
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Regex) GetHasCrOrLf() (result bool) {
 	iv, err := _I.Get(469, "Regex", "get_has_cr_or_lf")
 	if err != nil {
@@ -10161,8 +11250,9 @@ func (v Regex) GetHasCrOrLf() (result bool) {
 }
 
 // g_regex_get_match_flags
-// container is not nil, container is Regex
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Regex) GetMatchFlags() (result RegexMatchFlags) {
 	iv, err := _I.Get(470, "Regex", "get_match_flags")
 	if err != nil {
@@ -10178,8 +11268,9 @@ func (v Regex) GetMatchFlags() (result RegexMatchFlags) {
 }
 
 // g_regex_get_max_backref
-// container is not nil, container is Regex
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Regex) GetMaxBackref() (result int32) {
 	iv, err := _I.Get(471, "Regex", "get_max_backref")
 	if err != nil {
@@ -10195,8 +11286,9 @@ func (v Regex) GetMaxBackref() (result int32) {
 }
 
 // g_regex_get_max_lookbehind
-// container is not nil, container is Regex
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Regex) GetMaxLookbehind() (result int32) {
 	iv, err := _I.Get(472, "Regex", "get_max_lookbehind")
 	if err != nil {
@@ -10212,8 +11304,9 @@ func (v Regex) GetMaxLookbehind() (result int32) {
 }
 
 // g_regex_get_pattern
-// container is not nil, container is Regex
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Regex) GetPattern() (result string) {
 	iv, err := _I.Get(473, "Regex", "get_pattern")
 	if err != nil {
@@ -10224,13 +11317,16 @@ func (v Regex) GetPattern() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_regex_get_string_number
-// container is not nil, container is Regex
-// is method
+//
+// [ name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Regex) GetStringNumber(name string) (result int32) {
 	iv, err := _I.Get(474, "Regex", "get_string_number")
 	if err != nil {
@@ -10249,8 +11345,15 @@ func (v Regex) GetStringNumber(name string) (result int32) {
 }
 
 // g_regex_match
-// container is not nil, container is Regex
-// is method
+//
+// [ string ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ match_info ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Regex) Match(string string, match_options RegexMatchFlags) (result bool, match_info MatchInfo) {
 	iv, err := _I.Get(475, "Regex", "match")
 	if err != nil {
@@ -10273,8 +11376,15 @@ func (v Regex) Match(string string, match_options RegexMatchFlags) (result bool,
 }
 
 // g_regex_match_all
-// container is not nil, container is Regex
-// is method
+//
+// [ string ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ match_info ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Regex) MatchAll(string string, match_options RegexMatchFlags) (result bool, match_info MatchInfo) {
 	iv, err := _I.Get(476, "Regex", "match_all")
 	if err != nil {
@@ -10297,9 +11407,19 @@ func (v Regex) MatchAll(string string, match_options RegexMatchFlags) (result bo
 }
 
 // g_regex_match_all_full
-// container is not nil, container is Regex
-// is method
-// arg 0 string lenArgIdx 1
+//
+// [ string ] trans: nothing
+//
+// [ string_len ] trans: nothing
+//
+// [ start_position ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ match_info ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Regex) MatchAllFull(string gi.CStrArray, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
 	iv, err := _I.Get(477, "Regex", "match_all_full")
 	if err != nil {
@@ -10323,9 +11443,19 @@ func (v Regex) MatchAllFull(string gi.CStrArray, string_len int64, start_positio
 }
 
 // g_regex_match_full
-// container is not nil, container is Regex
-// is method
-// arg 0 string lenArgIdx 1
+//
+// [ string ] trans: nothing
+//
+// [ string_len ] trans: nothing
+//
+// [ start_position ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ match_info ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Regex) MatchFull(string gi.CStrArray, string_len int64, start_position int32, match_options RegexMatchFlags) (result bool, match_info MatchInfo, err error) {
 	iv, err := _I.Get(478, "Regex", "match_full")
 	if err != nil {
@@ -10349,8 +11479,9 @@ func (v Regex) MatchFull(string gi.CStrArray, string_len int64, start_position i
 }
 
 // g_regex_ref
-// container is not nil, container is Regex
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Regex) Ref() (result Regex) {
 	iv, err := _I.Get(479, "Regex", "ref")
 	if err != nil {
@@ -10366,9 +11497,19 @@ func (v Regex) Ref() (result Regex) {
 }
 
 // g_regex_replace
-// container is not nil, container is Regex
-// is method
-// arg 0 string lenArgIdx 1
+//
+// [ string ] trans: nothing
+//
+// [ string_len ] trans: nothing
+//
+// [ start_position ] trans: nothing
+//
+// [ replacement ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Regex) Replace(string gi.CStrArray, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
 	iv, err := _I.Get(480, "Regex", "replace")
 	if err != nil {
@@ -10393,9 +11534,19 @@ func (v Regex) Replace(string gi.CStrArray, string_len int64, start_position int
 }
 
 // g_regex_replace_literal
-// container is not nil, container is Regex
-// is method
-// arg 0 string lenArgIdx 1
+//
+// [ string ] trans: nothing
+//
+// [ string_len ] trans: nothing
+//
+// [ start_position ] trans: nothing
+//
+// [ replacement ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Regex) ReplaceLiteral(string gi.CStrArray, string_len int64, start_position int32, replacement string, match_options RegexMatchFlags) (result string, err error) {
 	iv, err := _I.Get(481, "Regex", "replace_literal")
 	if err != nil {
@@ -10420,8 +11571,13 @@ func (v Regex) ReplaceLiteral(string gi.CStrArray, string_len int64, start_posit
 }
 
 // g_regex_split
-// container is not nil, container is Regex
-// is method
+//
+// [ string ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Regex) Split(string string, match_options RegexMatchFlags) (result gi.CStrArray) {
 	iv, err := _I.Get(482, "Regex", "split")
 	if err != nil {
@@ -10442,9 +11598,19 @@ func (v Regex) Split(string string, match_options RegexMatchFlags) (result gi.CS
 }
 
 // g_regex_split_full
-// container is not nil, container is Regex
-// is method
-// arg 0 string lenArgIdx 1
+//
+// [ string ] trans: nothing
+//
+// [ string_len ] trans: nothing
+//
+// [ start_position ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ max_tokens ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Regex) SplitFull(string gi.CStrArray, string_len int64, start_position int32, match_options RegexMatchFlags, max_tokens int32) (result gi.CStrArray, err error) {
 	iv, err := _I.Get(483, "Regex", "split_full")
 	if err != nil {
@@ -10468,8 +11634,7 @@ func (v Regex) SplitFull(string gi.CStrArray, string_len int64, start_position i
 }
 
 // g_regex_unref
-// container is not nil, container is Regex
-// is method
+//
 func (v Regex) Unref() {
 	iv, err := _I.Get(484, "Regex", "unref")
 	if err != nil {
@@ -10482,9 +11647,13 @@ func (v Regex) Unref() {
 }
 
 // g_regex_check_replacement
-// container is not nil, container is Regex
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ replacement ] trans: nothing
+//
+// [ has_references ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func RegexCheckReplacement1(replacement string) (result bool, has_references bool, err error) {
 	iv, err := _I.Get(485, "Regex", "check_replacement")
 	if err != nil {
@@ -10506,9 +11675,13 @@ func RegexCheckReplacement1(replacement string) (result bool, has_references boo
 }
 
 // g_regex_escape_nul
-// container is not nil, container is Regex
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ string ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RegexEscapeNul1(string string, length int32) (result string) {
 	iv, err := _I.Get(487, "Regex", "escape_nul")
 	if err != nil {
@@ -10527,10 +11700,13 @@ func RegexEscapeNul1(string string, length int32) (result string) {
 }
 
 // g_regex_escape_string
-// container is not nil, container is Regex
-// is method
-// arg0Type tag: array, isPtr: true
-// arg 0 string lenArgIdx 1
+//
+// [ string ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RegexEscapeString1(string gi.CStrArray, length int32) (result string) {
 	iv, err := _I.Get(488, "Regex", "escape_string")
 	if err != nil {
@@ -10547,9 +11723,17 @@ func RegexEscapeString1(string gi.CStrArray, length int32) (result string) {
 }
 
 // g_regex_match_simple
-// container is not nil, container is Regex
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ pattern ] trans: nothing
+//
+// [ string ] trans: nothing
+//
+// [ compile_options ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RegexMatchSimple1(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result bool) {
 	iv, err := _I.Get(489, "Regex", "match_simple")
 	if err != nil {
@@ -10572,9 +11756,17 @@ func RegexMatchSimple1(pattern string, string string, compile_options RegexCompi
 }
 
 // g_regex_split_simple
-// container is not nil, container is Regex
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ pattern ] trans: nothing
+//
+// [ string ] trans: nothing
+//
+// [ compile_options ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RegexSplitSimple1(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result gi.CStrArray) {
 	iv, err := _I.Get(490, "Regex", "split_simple")
 	if err != nil {
@@ -10764,8 +11956,9 @@ func ScannerGetType() gi.GType {
 }
 
 // g_scanner_cur_line
-// container is not nil, container is Scanner
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Scanner) CurLine() (result uint32) {
 	iv, err := _I.Get(491, "Scanner", "cur_line")
 	if err != nil {
@@ -10781,8 +11974,9 @@ func (v Scanner) CurLine() (result uint32) {
 }
 
 // g_scanner_cur_position
-// container is not nil, container is Scanner
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Scanner) CurPosition() (result uint32) {
 	iv, err := _I.Get(492, "Scanner", "cur_position")
 	if err != nil {
@@ -10798,8 +11992,9 @@ func (v Scanner) CurPosition() (result uint32) {
 }
 
 // g_scanner_cur_token
-// container is not nil, container is Scanner
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Scanner) CurToken() (result TokenTypeEnum) {
 	iv, err := _I.Get(493, "Scanner", "cur_token")
 	if err != nil {
@@ -10815,8 +12010,7 @@ func (v Scanner) CurToken() (result TokenTypeEnum) {
 }
 
 // g_scanner_destroy
-// container is not nil, container is Scanner
-// is method
+//
 func (v Scanner) Destroy() {
 	iv, err := _I.Get(494, "Scanner", "destroy")
 	if err != nil {
@@ -10829,8 +12023,9 @@ func (v Scanner) Destroy() {
 }
 
 // g_scanner_eof
-// container is not nil, container is Scanner
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Scanner) Eof() (result bool) {
 	iv, err := _I.Get(495, "Scanner", "eof")
 	if err != nil {
@@ -10846,8 +12041,9 @@ func (v Scanner) Eof() (result bool) {
 }
 
 // g_scanner_get_next_token
-// container is not nil, container is Scanner
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Scanner) GetNextToken() (result TokenTypeEnum) {
 	iv, err := _I.Get(496, "Scanner", "get_next_token")
 	if err != nil {
@@ -10863,8 +12059,9 @@ func (v Scanner) GetNextToken() (result TokenTypeEnum) {
 }
 
 // g_scanner_input_file
-// container is not nil, container is Scanner
-// is method
+//
+// [ input_fd ] trans: nothing
+//
 func (v Scanner) InputFile(input_fd int32) {
 	iv, err := _I.Get(497, "Scanner", "input_file")
 	if err != nil {
@@ -10878,8 +12075,11 @@ func (v Scanner) InputFile(input_fd int32) {
 }
 
 // g_scanner_input_text
-// container is not nil, container is Scanner
-// is method
+//
+// [ text ] trans: nothing
+//
+// [ text_len ] trans: nothing
+//
 func (v Scanner) InputText(text string, text_len uint32) {
 	iv, err := _I.Get(498, "Scanner", "input_text")
 	if err != nil {
@@ -10896,8 +12096,11 @@ func (v Scanner) InputText(text string, text_len uint32) {
 }
 
 // g_scanner_lookup_symbol
-// container is not nil, container is Scanner
-// is method
+//
+// [ symbol ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Scanner) LookupSymbol(symbol string) (result unsafe.Pointer) {
 	iv, err := _I.Get(499, "Scanner", "lookup_symbol")
 	if err != nil {
@@ -10916,8 +12119,9 @@ func (v Scanner) LookupSymbol(symbol string) (result unsafe.Pointer) {
 }
 
 // g_scanner_peek_next_token
-// container is not nil, container is Scanner
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Scanner) PeekNextToken() (result TokenTypeEnum) {
 	iv, err := _I.Get(500, "Scanner", "peek_next_token")
 	if err != nil {
@@ -10933,8 +12137,13 @@ func (v Scanner) PeekNextToken() (result TokenTypeEnum) {
 }
 
 // g_scanner_scope_add_symbol
-// container is not nil, container is Scanner
-// is method
+//
+// [ scope_id ] trans: nothing
+//
+// [ symbol ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v Scanner) ScopeAddSymbol(scope_id uint32, symbol string, value unsafe.Pointer) {
 	iv, err := _I.Get(501, "Scanner", "scope_add_symbol")
 	if err != nil {
@@ -10952,8 +12161,13 @@ func (v Scanner) ScopeAddSymbol(scope_id uint32, symbol string, value unsafe.Poi
 }
 
 // g_scanner_scope_lookup_symbol
-// container is not nil, container is Scanner
-// is method
+//
+// [ scope_id ] trans: nothing
+//
+// [ symbol ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Scanner) ScopeLookupSymbol(scope_id uint32, symbol string) (result unsafe.Pointer) {
 	iv, err := _I.Get(502, "Scanner", "scope_lookup_symbol")
 	if err != nil {
@@ -10973,8 +12187,11 @@ func (v Scanner) ScopeLookupSymbol(scope_id uint32, symbol string) (result unsaf
 }
 
 // g_scanner_scope_remove_symbol
-// container is not nil, container is Scanner
-// is method
+//
+// [ scope_id ] trans: nothing
+//
+// [ symbol ] trans: nothing
+//
 func (v Scanner) ScopeRemoveSymbol(scope_id uint32, symbol string) {
 	iv, err := _I.Get(503, "Scanner", "scope_remove_symbol")
 	if err != nil {
@@ -10991,8 +12208,11 @@ func (v Scanner) ScopeRemoveSymbol(scope_id uint32, symbol string) {
 }
 
 // g_scanner_set_scope
-// container is not nil, container is Scanner
-// is method
+//
+// [ scope_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Scanner) SetScope(scope_id uint32) (result uint32) {
 	iv, err := _I.Get(504, "Scanner", "set_scope")
 	if err != nil {
@@ -11009,8 +12229,7 @@ func (v Scanner) SetScope(scope_id uint32) (result uint32) {
 }
 
 // g_scanner_sync_file_offset
-// container is not nil, container is Scanner
-// is method
+//
 func (v Scanner) SyncFileOffset() {
 	iv, err := _I.Get(505, "Scanner", "sync_file_offset")
 	if err != nil {
@@ -11023,8 +12242,19 @@ func (v Scanner) SyncFileOffset() {
 }
 
 // g_scanner_unexp_token
-// container is not nil, container is Scanner
-// is method
+//
+// [ expected_token ] trans: nothing
+//
+// [ identifier_spec ] trans: nothing
+//
+// [ symbol_spec ] trans: nothing
+//
+// [ symbol_name ] trans: nothing
+//
+// [ message ] trans: nothing
+//
+// [ is_error ] trans: nothing
+//
 func (v Scanner) UnexpToken(expected_token TokenTypeEnum, identifier_spec string, symbol_spec string, symbol_name string, message string, is_error int32) {
 	iv, err := _I.Get(506, "Scanner", "unexp_token")
 	if err != nil {
@@ -11102,8 +12332,11 @@ func SequenceGetType() gi.GType {
 }
 
 // g_sequence_append
-// container is not nil, container is Sequence
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Sequence) Append(data unsafe.Pointer) (result SequenceIter) {
 	iv, err := _I.Get(507, "Sequence", "append")
 	if err != nil {
@@ -11120,8 +12353,7 @@ func (v Sequence) Append(data unsafe.Pointer) (result SequenceIter) {
 }
 
 // g_sequence_free
-// container is not nil, container is Sequence
-// is method
+//
 func (v Sequence) Free() {
 	iv, err := _I.Get(508, "Sequence", "free")
 	if err != nil {
@@ -11134,8 +12366,9 @@ func (v Sequence) Free() {
 }
 
 // g_sequence_get_begin_iter
-// container is not nil, container is Sequence
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Sequence) GetBeginIter() (result SequenceIter) {
 	iv, err := _I.Get(509, "Sequence", "get_begin_iter")
 	if err != nil {
@@ -11151,8 +12384,9 @@ func (v Sequence) GetBeginIter() (result SequenceIter) {
 }
 
 // g_sequence_get_end_iter
-// container is not nil, container is Sequence
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Sequence) GetEndIter() (result SequenceIter) {
 	iv, err := _I.Get(510, "Sequence", "get_end_iter")
 	if err != nil {
@@ -11168,8 +12402,11 @@ func (v Sequence) GetEndIter() (result SequenceIter) {
 }
 
 // g_sequence_get_iter_at_pos
-// container is not nil, container is Sequence
-// is method
+//
+// [ pos ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Sequence) GetIterAtPos(pos int32) (result SequenceIter) {
 	iv, err := _I.Get(511, "Sequence", "get_iter_at_pos")
 	if err != nil {
@@ -11186,8 +12423,9 @@ func (v Sequence) GetIterAtPos(pos int32) (result SequenceIter) {
 }
 
 // g_sequence_get_length
-// container is not nil, container is Sequence
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Sequence) GetLength() (result int32) {
 	iv, err := _I.Get(512, "Sequence", "get_length")
 	if err != nil {
@@ -11203,8 +12441,9 @@ func (v Sequence) GetLength() (result int32) {
 }
 
 // g_sequence_is_empty
-// container is not nil, container is Sequence
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Sequence) IsEmpty() (result bool) {
 	iv, err := _I.Get(513, "Sequence", "is_empty")
 	if err != nil {
@@ -11220,8 +12459,11 @@ func (v Sequence) IsEmpty() (result bool) {
 }
 
 // g_sequence_prepend
-// container is not nil, container is Sequence
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Sequence) Prepend(data unsafe.Pointer) (result SequenceIter) {
 	iv, err := _I.Get(514, "Sequence", "prepend")
 	if err != nil {
@@ -11238,9 +12480,11 @@ func (v Sequence) Prepend(data unsafe.Pointer) (result SequenceIter) {
 }
 
 // g_sequence_get
-// container is not nil, container is Sequence
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ iter ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SequenceGet1(iter SequenceIter) (result unsafe.Pointer) {
 	iv, err := _I.Get(515, "Sequence", "get")
 	if err != nil {
@@ -11256,9 +12500,13 @@ func SequenceGet1(iter SequenceIter) (result unsafe.Pointer) {
 }
 
 // g_sequence_insert_before
-// container is not nil, container is Sequence
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ iter ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SequenceInsertBefore1(iter SequenceIter, data unsafe.Pointer) (result SequenceIter) {
 	iv, err := _I.Get(516, "Sequence", "insert_before")
 	if err != nil {
@@ -11275,9 +12523,11 @@ func SequenceInsertBefore1(iter SequenceIter, data unsafe.Pointer) (result Seque
 }
 
 // g_sequence_move
-// container is not nil, container is Sequence
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ src ] trans: nothing
+//
+// [ dest ] trans: nothing
+//
 func SequenceMove1(src SequenceIter, dest SequenceIter) {
 	iv, err := _I.Get(517, "Sequence", "move")
 	if err != nil {
@@ -11291,9 +12541,13 @@ func SequenceMove1(src SequenceIter, dest SequenceIter) {
 }
 
 // g_sequence_move_range
-// container is not nil, container is Sequence
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ dest ] trans: nothing
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
 func SequenceMoveRange1(dest SequenceIter, begin SequenceIter, end SequenceIter) {
 	iv, err := _I.Get(518, "Sequence", "move_range")
 	if err != nil {
@@ -11308,9 +12562,13 @@ func SequenceMoveRange1(dest SequenceIter, begin SequenceIter, end SequenceIter)
 }
 
 // g_sequence_range_get_midpoint
-// container is not nil, container is Sequence
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SequenceRangeGetMidpoint1(begin SequenceIter, end SequenceIter) (result SequenceIter) {
 	iv, err := _I.Get(519, "Sequence", "range_get_midpoint")
 	if err != nil {
@@ -11327,9 +12585,9 @@ func SequenceRangeGetMidpoint1(begin SequenceIter, end SequenceIter) (result Seq
 }
 
 // g_sequence_remove
-// container is not nil, container is Sequence
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ iter ] trans: nothing
+//
 func SequenceRemove1(iter SequenceIter) {
 	iv, err := _I.Get(520, "Sequence", "remove")
 	if err != nil {
@@ -11342,9 +12600,11 @@ func SequenceRemove1(iter SequenceIter) {
 }
 
 // g_sequence_remove_range
-// container is not nil, container is Sequence
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
 func SequenceRemoveRange1(begin SequenceIter, end SequenceIter) {
 	iv, err := _I.Get(521, "Sequence", "remove_range")
 	if err != nil {
@@ -11358,9 +12618,11 @@ func SequenceRemoveRange1(begin SequenceIter, end SequenceIter) {
 }
 
 // g_sequence_set
-// container is not nil, container is Sequence
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ iter ] trans: nothing
+//
+// [ data ] trans: nothing
+//
 func SequenceSet1(iter SequenceIter, data unsafe.Pointer) {
 	iv, err := _I.Get(522, "Sequence", "set")
 	if err != nil {
@@ -11374,9 +12636,11 @@ func SequenceSet1(iter SequenceIter, data unsafe.Pointer) {
 }
 
 // g_sequence_swap
-// container is not nil, container is Sequence
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ a ] trans: nothing
+//
+// [ b ] trans: nothing
+//
 func SequenceSwap1(a SequenceIter, b SequenceIter) {
 	iv, err := _I.Get(523, "Sequence", "swap")
 	if err != nil {
@@ -11400,8 +12664,11 @@ func SequenceIterGetType() gi.GType {
 }
 
 // g_sequence_iter_compare
-// container is not nil, container is SequenceIter
-// is method
+//
+// [ b ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SequenceIter) Compare(b SequenceIter) (result int32) {
 	iv, err := _I.Get(524, "SequenceIter", "compare")
 	if err != nil {
@@ -11418,8 +12685,9 @@ func (v SequenceIter) Compare(b SequenceIter) (result int32) {
 }
 
 // g_sequence_iter_get_position
-// container is not nil, container is SequenceIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SequenceIter) GetPosition() (result int32) {
 	iv, err := _I.Get(525, "SequenceIter", "get_position")
 	if err != nil {
@@ -11435,8 +12703,9 @@ func (v SequenceIter) GetPosition() (result int32) {
 }
 
 // g_sequence_iter_get_sequence
-// container is not nil, container is SequenceIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SequenceIter) GetSequence() (result Sequence) {
 	iv, err := _I.Get(526, "SequenceIter", "get_sequence")
 	if err != nil {
@@ -11452,8 +12721,9 @@ func (v SequenceIter) GetSequence() (result Sequence) {
 }
 
 // g_sequence_iter_is_begin
-// container is not nil, container is SequenceIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SequenceIter) IsBegin() (result bool) {
 	iv, err := _I.Get(527, "SequenceIter", "is_begin")
 	if err != nil {
@@ -11469,8 +12739,9 @@ func (v SequenceIter) IsBegin() (result bool) {
 }
 
 // g_sequence_iter_is_end
-// container is not nil, container is SequenceIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SequenceIter) IsEnd() (result bool) {
 	iv, err := _I.Get(528, "SequenceIter", "is_end")
 	if err != nil {
@@ -11486,8 +12757,11 @@ func (v SequenceIter) IsEnd() (result bool) {
 }
 
 // g_sequence_iter_move
-// container is not nil, container is SequenceIter
-// is method
+//
+// [ delta ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v SequenceIter) Move(delta int32) (result SequenceIter) {
 	iv, err := _I.Get(529, "SequenceIter", "move")
 	if err != nil {
@@ -11504,8 +12778,9 @@ func (v SequenceIter) Move(delta int32) (result SequenceIter) {
 }
 
 // g_sequence_iter_next
-// container is not nil, container is SequenceIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SequenceIter) Next() (result SequenceIter) {
 	iv, err := _I.Get(530, "SequenceIter", "next")
 	if err != nil {
@@ -11521,8 +12796,9 @@ func (v SequenceIter) Next() (result SequenceIter) {
 }
 
 // g_sequence_iter_prev
-// container is not nil, container is SequenceIter
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v SequenceIter) Prev() (result SequenceIter) {
 	iv, err := _I.Get(531, "SequenceIter", "prev")
 	if err != nil {
@@ -11596,8 +12872,13 @@ func SourceGetType() gi.GType {
 }
 
 // g_source_new
-// container is not nil, container is Source
-// is constructor
+//
+// [ source_funcs ] trans: nothing
+//
+// [ struct_size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewSource(source_funcs SourceFuncs, struct_size uint32) (result Source) {
 	iv, err := _I.Get(532, "Source", "new")
 	if err != nil {
@@ -11614,8 +12895,9 @@ func NewSource(source_funcs SourceFuncs, struct_size uint32) (result Source) {
 }
 
 // g_source_add_child_source
-// container is not nil, container is Source
-// is method
+//
+// [ child_source ] trans: nothing
+//
 func (v Source) AddChildSource(child_source Source) {
 	iv, err := _I.Get(533, "Source", "add_child_source")
 	if err != nil {
@@ -11629,8 +12911,9 @@ func (v Source) AddChildSource(child_source Source) {
 }
 
 // g_source_add_poll
-// container is not nil, container is Source
-// is method
+//
+// [ fd ] trans: nothing
+//
 func (v Source) AddPoll(fd PollFD) {
 	iv, err := _I.Get(534, "Source", "add_poll")
 	if err != nil {
@@ -11644,8 +12927,13 @@ func (v Source) AddPoll(fd PollFD) {
 }
 
 // g_source_add_unix_fd
-// container is not nil, container is Source
-// is method
+//
+// [ fd ] trans: nothing
+//
+// [ events ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Source) AddUnixFd(fd int32, events IOConditionFlags) (result unsafe.Pointer) {
 	iv, err := _I.Get(535, "Source", "add_unix_fd")
 	if err != nil {
@@ -11663,8 +12951,11 @@ func (v Source) AddUnixFd(fd int32, events IOConditionFlags) (result unsafe.Poin
 }
 
 // g_source_attach
-// container is not nil, container is Source
-// is method
+//
+// [ context ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Source) Attach(context MainContext) (result uint32) {
 	iv, err := _I.Get(536, "Source", "attach")
 	if err != nil {
@@ -11681,8 +12972,7 @@ func (v Source) Attach(context MainContext) (result uint32) {
 }
 
 // g_source_destroy
-// container is not nil, container is Source
-// is method
+//
 func (v Source) Destroy() {
 	iv, err := _I.Get(537, "Source", "destroy")
 	if err != nil {
@@ -11695,8 +12985,9 @@ func (v Source) Destroy() {
 }
 
 // g_source_get_can_recurse
-// container is not nil, container is Source
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Source) GetCanRecurse() (result bool) {
 	iv, err := _I.Get(538, "Source", "get_can_recurse")
 	if err != nil {
@@ -11712,8 +13003,9 @@ func (v Source) GetCanRecurse() (result bool) {
 }
 
 // g_source_get_context
-// container is not nil, container is Source
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Source) GetContext() (result MainContext) {
 	iv, err := _I.Get(539, "Source", "get_context")
 	if err != nil {
@@ -11729,8 +13021,9 @@ func (v Source) GetContext() (result MainContext) {
 }
 
 // g_source_get_current_time
-// container is not nil, container is Source
-// is method
+//
+// [ timeval ] trans: nothing
+//
 func (v Source) GetCurrentTime(timeval TimeVal) {
 	iv, err := _I.Get(540, "Source", "get_current_time")
 	if err != nil {
@@ -11744,8 +13037,9 @@ func (v Source) GetCurrentTime(timeval TimeVal) {
 }
 
 // g_source_get_id
-// container is not nil, container is Source
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Source) GetId() (result uint32) {
 	iv, err := _I.Get(541, "Source", "get_id")
 	if err != nil {
@@ -11761,8 +13055,9 @@ func (v Source) GetId() (result uint32) {
 }
 
 // g_source_get_name
-// container is not nil, container is Source
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Source) GetName() (result string) {
 	iv, err := _I.Get(542, "Source", "get_name")
 	if err != nil {
@@ -11773,13 +13068,14 @@ func (v Source) GetName() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_source_get_priority
-// container is not nil, container is Source
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Source) GetPriority() (result int32) {
 	iv, err := _I.Get(543, "Source", "get_priority")
 	if err != nil {
@@ -11795,8 +13091,9 @@ func (v Source) GetPriority() (result int32) {
 }
 
 // g_source_get_ready_time
-// container is not nil, container is Source
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Source) GetReadyTime() (result int64) {
 	iv, err := _I.Get(544, "Source", "get_ready_time")
 	if err != nil {
@@ -11812,8 +13109,9 @@ func (v Source) GetReadyTime() (result int64) {
 }
 
 // g_source_get_time
-// container is not nil, container is Source
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Source) GetTime() (result int64) {
 	iv, err := _I.Get(545, "Source", "get_time")
 	if err != nil {
@@ -11829,8 +13127,9 @@ func (v Source) GetTime() (result int64) {
 }
 
 // g_source_is_destroyed
-// container is not nil, container is Source
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Source) IsDestroyed() (result bool) {
 	iv, err := _I.Get(546, "Source", "is_destroyed")
 	if err != nil {
@@ -11846,8 +13145,11 @@ func (v Source) IsDestroyed() (result bool) {
 }
 
 // g_source_modify_unix_fd
-// container is not nil, container is Source
-// is method
+//
+// [ tag ] trans: nothing
+//
+// [ new_events ] trans: nothing
+//
 func (v Source) ModifyUnixFd(tag unsafe.Pointer, new_events IOConditionFlags) {
 	iv, err := _I.Get(547, "Source", "modify_unix_fd")
 	if err != nil {
@@ -11862,8 +13164,11 @@ func (v Source) ModifyUnixFd(tag unsafe.Pointer, new_events IOConditionFlags) {
 }
 
 // g_source_query_unix_fd
-// container is not nil, container is Source
-// is method
+//
+// [ tag ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Source) QueryUnixFd(tag unsafe.Pointer) (result IOConditionFlags) {
 	iv, err := _I.Get(548, "Source", "query_unix_fd")
 	if err != nil {
@@ -11880,8 +13185,9 @@ func (v Source) QueryUnixFd(tag unsafe.Pointer) (result IOConditionFlags) {
 }
 
 // g_source_ref
-// container is not nil, container is Source
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Source) Ref() (result Source) {
 	iv, err := _I.Get(549, "Source", "ref")
 	if err != nil {
@@ -11897,8 +13203,9 @@ func (v Source) Ref() (result Source) {
 }
 
 // g_source_remove_child_source
-// container is not nil, container is Source
-// is method
+//
+// [ child_source ] trans: nothing
+//
 func (v Source) RemoveChildSource(child_source Source) {
 	iv, err := _I.Get(550, "Source", "remove_child_source")
 	if err != nil {
@@ -11912,8 +13219,9 @@ func (v Source) RemoveChildSource(child_source Source) {
 }
 
 // g_source_remove_poll
-// container is not nil, container is Source
-// is method
+//
+// [ fd ] trans: nothing
+//
 func (v Source) RemovePoll(fd PollFD) {
 	iv, err := _I.Get(551, "Source", "remove_poll")
 	if err != nil {
@@ -11927,8 +13235,9 @@ func (v Source) RemovePoll(fd PollFD) {
 }
 
 // g_source_remove_unix_fd
-// container is not nil, container is Source
-// is method
+//
+// [ tag ] trans: nothing
+//
 func (v Source) RemoveUnixFd(tag unsafe.Pointer) {
 	iv, err := _I.Get(552, "Source", "remove_unix_fd")
 	if err != nil {
@@ -11942,8 +13251,13 @@ func (v Source) RemoveUnixFd(tag unsafe.Pointer) {
 }
 
 // g_source_set_callback
-// container is not nil, container is Source
-// is method
+//
+// [ func1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
 func (v Source) SetCallback(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(553, "Source", "set_callback")
 	if err != nil {
@@ -11959,8 +13273,11 @@ func (v Source) SetCallback(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointe
 }
 
 // g_source_set_callback_indirect
-// container is not nil, container is Source
-// is method
+//
+// [ callback_data ] trans: nothing
+//
+// [ callback_funcs ] trans: nothing
+//
 func (v Source) SetCallbackIndirect(callback_data unsafe.Pointer, callback_funcs SourceCallbackFuncs) {
 	iv, err := _I.Get(554, "Source", "set_callback_indirect")
 	if err != nil {
@@ -11975,8 +13292,9 @@ func (v Source) SetCallbackIndirect(callback_data unsafe.Pointer, callback_funcs
 }
 
 // g_source_set_can_recurse
-// container is not nil, container is Source
-// is method
+//
+// [ can_recurse ] trans: nothing
+//
 func (v Source) SetCanRecurse(can_recurse bool) {
 	iv, err := _I.Get(555, "Source", "set_can_recurse")
 	if err != nil {
@@ -11990,8 +13308,9 @@ func (v Source) SetCanRecurse(can_recurse bool) {
 }
 
 // g_source_set_funcs
-// container is not nil, container is Source
-// is method
+//
+// [ funcs ] trans: nothing
+//
 func (v Source) SetFuncs(funcs SourceFuncs) {
 	iv, err := _I.Get(556, "Source", "set_funcs")
 	if err != nil {
@@ -12005,8 +13324,9 @@ func (v Source) SetFuncs(funcs SourceFuncs) {
 }
 
 // g_source_set_name
-// container is not nil, container is Source
-// is method
+//
+// [ name ] trans: nothing
+//
 func (v Source) SetName(name string) {
 	iv, err := _I.Get(557, "Source", "set_name")
 	if err != nil {
@@ -12022,8 +13342,9 @@ func (v Source) SetName(name string) {
 }
 
 // g_source_set_priority
-// container is not nil, container is Source
-// is method
+//
+// [ priority ] trans: nothing
+//
 func (v Source) SetPriority(priority int32) {
 	iv, err := _I.Get(558, "Source", "set_priority")
 	if err != nil {
@@ -12037,8 +13358,9 @@ func (v Source) SetPriority(priority int32) {
 }
 
 // g_source_set_ready_time
-// container is not nil, container is Source
-// is method
+//
+// [ ready_time ] trans: nothing
+//
 func (v Source) SetReadyTime(ready_time int64) {
 	iv, err := _I.Get(559, "Source", "set_ready_time")
 	if err != nil {
@@ -12052,8 +13374,7 @@ func (v Source) SetReadyTime(ready_time int64) {
 }
 
 // g_source_unref
-// container is not nil, container is Source
-// is method
+//
 func (v Source) Unref() {
 	iv, err := _I.Get(560, "Source", "unref")
 	if err != nil {
@@ -12066,9 +13387,11 @@ func (v Source) Unref() {
 }
 
 // g_source_remove
-// container is not nil, container is Source
-// is method
-// arg0Type tag: guint32, isPtr: false
+//
+// [ tag ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SourceRemove1(tag uint32) (result bool) {
 	iv, err := _I.Get(561, "Source", "remove")
 	if err != nil {
@@ -12084,9 +13407,13 @@ func SourceRemove1(tag uint32) (result bool) {
 }
 
 // g_source_remove_by_funcs_user_data
-// container is not nil, container is Source
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ funcs ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SourceRemoveByFuncsUserData1(funcs SourceFuncs, user_data unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(562, "Source", "remove_by_funcs_user_data")
 	if err != nil {
@@ -12103,9 +13430,11 @@ func SourceRemoveByFuncsUserData1(funcs SourceFuncs, user_data unsafe.Pointer) (
 }
 
 // g_source_remove_by_user_data
-// container is not nil, container is Source
-// is method
-// arg0Type tag: void, isPtr: true
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SourceRemoveByUserData1(user_data unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(563, "Source", "remove_by_user_data")
 	if err != nil {
@@ -12121,9 +13450,11 @@ func SourceRemoveByUserData1(user_data unsafe.Pointer) (result bool) {
 }
 
 // g_source_set_name_by_id
-// container is not nil, container is Source
-// is method
-// arg0Type tag: guint32, isPtr: false
+//
+// [ tag ] trans: nothing
+//
+// [ name ] trans: nothing
+//
 func SourceSetNameById1(tag uint32, name string) {
 	iv, err := _I.Get(564, "Source", "set_name_by_id")
 	if err != nil {
@@ -12288,8 +13619,11 @@ func StringGetType() gi.GType {
 }
 
 // g_string_append
-// container is not nil, container is String
-// is method
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) Append(val string) (result String) {
 	iv, err := _I.Get(565, "String", "append")
 	if err != nil {
@@ -12308,8 +13642,11 @@ func (v String) Append(val string) (result String) {
 }
 
 // g_string_append_c
-// container is not nil, container is String
-// is method
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) AppendC(c int8) (result String) {
 	iv, err := _I.Get(566, "String", "append_c")
 	if err != nil {
@@ -12326,8 +13663,13 @@ func (v String) AppendC(c int8) (result String) {
 }
 
 // g_string_append_len
-// container is not nil, container is String
-// is method
+//
+// [ val ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) AppendLen(val string, len1 int64) (result String) {
 	iv, err := _I.Get(567, "String", "append_len")
 	if err != nil {
@@ -12347,8 +13689,11 @@ func (v String) AppendLen(val string, len1 int64) (result String) {
 }
 
 // g_string_append_unichar
-// container is not nil, container is String
-// is method
+//
+// [ wc ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) AppendUnichar(wc rune) (result String) {
 	iv, err := _I.Get(568, "String", "append_unichar")
 	if err != nil {
@@ -12365,8 +13710,15 @@ func (v String) AppendUnichar(wc rune) (result String) {
 }
 
 // g_string_append_uri_escaped
-// container is not nil, container is String
-// is method
+//
+// [ unescaped ] trans: nothing
+//
+// [ reserved_chars_allowed ] trans: nothing
+//
+// [ allow_utf8 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) AppendUriEscaped(unescaped string, reserved_chars_allowed string, allow_utf8 bool) (result String) {
 	iv, err := _I.Get(569, "String", "append_uri_escaped")
 	if err != nil {
@@ -12389,8 +13741,9 @@ func (v String) AppendUriEscaped(unescaped string, reserved_chars_allowed string
 }
 
 // g_string_ascii_down
-// container is not nil, container is String
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v String) AsciiDown() (result String) {
 	iv, err := _I.Get(570, "String", "ascii_down")
 	if err != nil {
@@ -12406,8 +13759,9 @@ func (v String) AsciiDown() (result String) {
 }
 
 // g_string_ascii_up
-// container is not nil, container is String
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v String) AsciiUp() (result String) {
 	iv, err := _I.Get(571, "String", "ascii_up")
 	if err != nil {
@@ -12423,8 +13777,11 @@ func (v String) AsciiUp() (result String) {
 }
 
 // g_string_assign
-// container is not nil, container is String
-// is method
+//
+// [ rval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) Assign(rval string) (result String) {
 	iv, err := _I.Get(572, "String", "assign")
 	if err != nil {
@@ -12443,8 +13800,9 @@ func (v String) Assign(rval string) (result String) {
 }
 
 // g_string_down
-// container is not nil, container is String
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v String) Down() (result String) {
 	iv, err := _I.Get(573, "String", "down")
 	if err != nil {
@@ -12460,8 +13818,11 @@ func (v String) Down() (result String) {
 }
 
 // g_string_equal
-// container is not nil, container is String
-// is method
+//
+// [ v2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) Equal(v2 String) (result bool) {
 	iv, err := _I.Get(574, "String", "equal")
 	if err != nil {
@@ -12478,8 +13839,13 @@ func (v String) Equal(v2 String) (result bool) {
 }
 
 // g_string_erase
-// container is not nil, container is String
-// is method
+//
+// [ pos ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) Erase(pos int64, len1 int64) (result String) {
 	iv, err := _I.Get(575, "String", "erase")
 	if err != nil {
@@ -12497,8 +13863,11 @@ func (v String) Erase(pos int64, len1 int64) (result String) {
 }
 
 // g_string_free
-// container is not nil, container is String
-// is method
+//
+// [ free_segment ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v String) Free(free_segment bool) (result string) {
 	iv, err := _I.Get(576, "String", "free")
 	if err != nil {
@@ -12515,8 +13884,9 @@ func (v String) Free(free_segment bool) (result string) {
 }
 
 // g_string_free_to_bytes
-// container is not nil, container is String
-// is method
+//
+// [ result ] trans: everything
+//
 func (v String) FreeToBytes() (result Bytes) {
 	iv, err := _I.Get(577, "String", "free_to_bytes")
 	if err != nil {
@@ -12532,8 +13902,9 @@ func (v String) FreeToBytes() (result Bytes) {
 }
 
 // g_string_hash
-// container is not nil, container is String
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v String) Hash() (result uint32) {
 	iv, err := _I.Get(578, "String", "hash")
 	if err != nil {
@@ -12549,8 +13920,13 @@ func (v String) Hash() (result uint32) {
 }
 
 // g_string_insert
-// container is not nil, container is String
-// is method
+//
+// [ pos ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) Insert(pos int64, val string) (result String) {
 	iv, err := _I.Get(579, "String", "insert")
 	if err != nil {
@@ -12570,8 +13946,13 @@ func (v String) Insert(pos int64, val string) (result String) {
 }
 
 // g_string_insert_c
-// container is not nil, container is String
-// is method
+//
+// [ pos ] trans: nothing
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) InsertC(pos int64, c int8) (result String) {
 	iv, err := _I.Get(580, "String", "insert_c")
 	if err != nil {
@@ -12589,8 +13970,15 @@ func (v String) InsertC(pos int64, c int8) (result String) {
 }
 
 // g_string_insert_len
-// container is not nil, container is String
-// is method
+//
+// [ pos ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) InsertLen(pos int64, val string, len1 int64) (result String) {
 	iv, err := _I.Get(581, "String", "insert_len")
 	if err != nil {
@@ -12611,8 +13999,13 @@ func (v String) InsertLen(pos int64, val string, len1 int64) (result String) {
 }
 
 // g_string_insert_unichar
-// container is not nil, container is String
-// is method
+//
+// [ pos ] trans: nothing
+//
+// [ wc ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) InsertUnichar(pos int64, wc rune) (result String) {
 	iv, err := _I.Get(582, "String", "insert_unichar")
 	if err != nil {
@@ -12630,8 +14023,13 @@ func (v String) InsertUnichar(pos int64, wc rune) (result String) {
 }
 
 // g_string_overwrite
-// container is not nil, container is String
-// is method
+//
+// [ pos ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) Overwrite(pos uint64, val string) (result String) {
 	iv, err := _I.Get(583, "String", "overwrite")
 	if err != nil {
@@ -12651,8 +14049,15 @@ func (v String) Overwrite(pos uint64, val string) (result String) {
 }
 
 // g_string_overwrite_len
-// container is not nil, container is String
-// is method
+//
+// [ pos ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) OverwriteLen(pos uint64, val string, len1 int64) (result String) {
 	iv, err := _I.Get(584, "String", "overwrite_len")
 	if err != nil {
@@ -12673,8 +14078,11 @@ func (v String) OverwriteLen(pos uint64, val string, len1 int64) (result String)
 }
 
 // g_string_prepend
-// container is not nil, container is String
-// is method
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) Prepend(val string) (result String) {
 	iv, err := _I.Get(585, "String", "prepend")
 	if err != nil {
@@ -12693,8 +14101,11 @@ func (v String) Prepend(val string) (result String) {
 }
 
 // g_string_prepend_c
-// container is not nil, container is String
-// is method
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) PrependC(c int8) (result String) {
 	iv, err := _I.Get(586, "String", "prepend_c")
 	if err != nil {
@@ -12711,8 +14122,13 @@ func (v String) PrependC(c int8) (result String) {
 }
 
 // g_string_prepend_len
-// container is not nil, container is String
-// is method
+//
+// [ val ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) PrependLen(val string, len1 int64) (result String) {
 	iv, err := _I.Get(587, "String", "prepend_len")
 	if err != nil {
@@ -12732,8 +14148,11 @@ func (v String) PrependLen(val string, len1 int64) (result String) {
 }
 
 // g_string_prepend_unichar
-// container is not nil, container is String
-// is method
+//
+// [ wc ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) PrependUnichar(wc rune) (result String) {
 	iv, err := _I.Get(588, "String", "prepend_unichar")
 	if err != nil {
@@ -12750,8 +14169,11 @@ func (v String) PrependUnichar(wc rune) (result String) {
 }
 
 // g_string_set_size
-// container is not nil, container is String
-// is method
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) SetSize(len1 uint64) (result String) {
 	iv, err := _I.Get(589, "String", "set_size")
 	if err != nil {
@@ -12768,8 +14190,11 @@ func (v String) SetSize(len1 uint64) (result String) {
 }
 
 // g_string_truncate
-// container is not nil, container is String
-// is method
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v String) Truncate(len1 uint64) (result String) {
 	iv, err := _I.Get(590, "String", "truncate")
 	if err != nil {
@@ -12786,8 +14211,9 @@ func (v String) Truncate(len1 uint64) (result String) {
 }
 
 // g_string_up
-// container is not nil, container is String
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v String) Up() (result String) {
 	iv, err := _I.Get(591, "String", "up")
 	if err != nil {
@@ -12813,8 +14239,7 @@ func StringChunkGetType() gi.GType {
 }
 
 // g_string_chunk_clear
-// container is not nil, container is StringChunk
-// is method
+//
 func (v StringChunk) Clear() {
 	iv, err := _I.Get(592, "StringChunk", "clear")
 	if err != nil {
@@ -12827,8 +14252,7 @@ func (v StringChunk) Clear() {
 }
 
 // g_string_chunk_free
-// container is not nil, container is StringChunk
-// is method
+//
 func (v StringChunk) Free() {
 	iv, err := _I.Get(593, "StringChunk", "free")
 	if err != nil {
@@ -12841,8 +14265,11 @@ func (v StringChunk) Free() {
 }
 
 // g_string_chunk_insert
-// container is not nil, container is StringChunk
-// is method
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v StringChunk) Insert(string string) (result string) {
 	iv, err := _I.Get(594, "StringChunk", "insert")
 	if err != nil {
@@ -12861,8 +14288,11 @@ func (v StringChunk) Insert(string string) (result string) {
 }
 
 // g_string_chunk_insert_const
-// container is not nil, container is StringChunk
-// is method
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v StringChunk) InsertConst(string string) (result string) {
 	iv, err := _I.Get(595, "StringChunk", "insert_const")
 	if err != nil {
@@ -12881,8 +14311,13 @@ func (v StringChunk) InsertConst(string string) (result string) {
 }
 
 // g_string_chunk_insert_len
-// container is not nil, container is StringChunk
-// is method
+//
+// [ string ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v StringChunk) InsertLen(string string, len1 int64) (result string) {
 	iv, err := _I.Get(596, "StringChunk", "insert_len")
 	if err != nil {
@@ -12992,8 +14427,7 @@ func TestLogBufferGetType() gi.GType {
 }
 
 // g_test_log_buffer_free
-// container is not nil, container is TestLogBuffer
-// is method
+//
 func (v TestLogBuffer) Free() {
 	iv, err := _I.Get(597, "TestLogBuffer", "free")
 	if err != nil {
@@ -13006,8 +14440,11 @@ func (v TestLogBuffer) Free() {
 }
 
 // g_test_log_buffer_push
-// container is not nil, container is TestLogBuffer
-// is method
+//
+// [ n_bytes ] trans: nothing
+//
+// [ bytes ] trans: nothing
+//
 func (v TestLogBuffer) Push(n_bytes uint32, bytes uint8) {
 	iv, err := _I.Get(598, "TestLogBuffer", "push")
 	if err != nil {
@@ -13055,8 +14492,7 @@ func TestLogMsgGetType() gi.GType {
 }
 
 // g_test_log_msg_free
-// container is not nil, container is TestLogMsg
-// is method
+//
 func (v TestLogMsg) Free() {
 	iv, err := _I.Get(599, "TestLogMsg", "free")
 	if err != nil {
@@ -13131,8 +14567,9 @@ func TestSuiteGetType() gi.GType {
 }
 
 // g_test_suite_add
-// container is not nil, container is TestSuite
-// is method
+//
+// [ test_case ] trans: nothing
+//
 func (v TestSuite) Add(test_case TestCase) {
 	iv, err := _I.Get(600, "TestSuite", "add")
 	if err != nil {
@@ -13146,8 +14583,9 @@ func (v TestSuite) Add(test_case TestCase) {
 }
 
 // g_test_suite_add_suite
-// container is not nil, container is TestSuite
-// is method
+//
+// [ nestedsuite ] trans: nothing
+//
 func (v TestSuite) AddSuite(nestedsuite TestSuite) {
 	iv, err := _I.Get(601, "TestSuite", "add_suite")
 	if err != nil {
@@ -13185,8 +14623,9 @@ func ThreadGetType() gi.GType {
 }
 
 // g_thread_join
-// container is not nil, container is Thread
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Thread) Join() (result unsafe.Pointer) {
 	iv, err := _I.Get(602, "Thread", "join")
 	if err != nil {
@@ -13202,8 +14641,9 @@ func (v Thread) Join() (result unsafe.Pointer) {
 }
 
 // g_thread_ref
-// container is not nil, container is Thread
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Thread) Ref() (result Thread) {
 	iv, err := _I.Get(603, "Thread", "ref")
 	if err != nil {
@@ -13219,8 +14659,7 @@ func (v Thread) Ref() (result Thread) {
 }
 
 // g_thread_unref
-// container is not nil, container is Thread
-// is method
+//
 func (v Thread) Unref() {
 	iv, err := _I.Get(604, "Thread", "unref")
 	if err != nil {
@@ -13233,9 +14672,9 @@ func (v Thread) Unref() {
 }
 
 // g_thread_exit
-// container is not nil, container is Thread
-// is method
-// arg0Type tag: void, isPtr: true
+//
+// [ retval ] trans: nothing
+//
 func ThreadExit1(retval unsafe.Pointer) {
 	iv, err := _I.Get(606, "Thread", "exit")
 	if err != nil {
@@ -13285,8 +14724,11 @@ func ThreadPoolGetType() gi.GType {
 }
 
 // g_thread_pool_free
-// container is not nil, container is ThreadPool
-// is method
+//
+// [ immediate ] trans: nothing
+//
+// [ wait_ ] trans: nothing
+//
 func (v ThreadPool) Free(immediate bool, wait_ bool) {
 	iv, err := _I.Get(609, "ThreadPool", "free")
 	if err != nil {
@@ -13301,8 +14743,9 @@ func (v ThreadPool) Free(immediate bool, wait_ bool) {
 }
 
 // g_thread_pool_get_max_threads
-// container is not nil, container is ThreadPool
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ThreadPool) GetMaxThreads() (result int32) {
 	iv, err := _I.Get(610, "ThreadPool", "get_max_threads")
 	if err != nil {
@@ -13318,8 +14761,9 @@ func (v ThreadPool) GetMaxThreads() (result int32) {
 }
 
 // g_thread_pool_get_num_threads
-// container is not nil, container is ThreadPool
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ThreadPool) GetNumThreads() (result uint32) {
 	iv, err := _I.Get(611, "ThreadPool", "get_num_threads")
 	if err != nil {
@@ -13335,8 +14779,11 @@ func (v ThreadPool) GetNumThreads() (result uint32) {
 }
 
 // g_thread_pool_move_to_front
-// container is not nil, container is ThreadPool
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ThreadPool) MoveToFront(data unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(612, "ThreadPool", "move_to_front")
 	if err != nil {
@@ -13353,8 +14800,11 @@ func (v ThreadPool) MoveToFront(data unsafe.Pointer) (result bool) {
 }
 
 // g_thread_pool_push
-// container is not nil, container is ThreadPool
-// is method
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ThreadPool) Push(data unsafe.Pointer) (result bool, err error) {
 	iv, err := _I.Get(613, "ThreadPool", "push")
 	if err != nil {
@@ -13373,8 +14823,11 @@ func (v ThreadPool) Push(data unsafe.Pointer) (result bool, err error) {
 }
 
 // g_thread_pool_set_max_threads
-// container is not nil, container is ThreadPool
-// is method
+//
+// [ max_threads ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v ThreadPool) SetMaxThreads(max_threads int32) (result bool, err error) {
 	iv, err := _I.Get(614, "ThreadPool", "set_max_threads")
 	if err != nil {
@@ -13393,8 +14846,9 @@ func (v ThreadPool) SetMaxThreads(max_threads int32) (result bool, err error) {
 }
 
 // g_thread_pool_unprocessed
-// container is not nil, container is ThreadPool
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v ThreadPool) Unprocessed() (result uint32) {
 	iv, err := _I.Get(615, "ThreadPool", "unprocessed")
 	if err != nil {
@@ -13410,9 +14864,9 @@ func (v ThreadPool) Unprocessed() (result uint32) {
 }
 
 // g_thread_pool_set_max_idle_time
-// container is not nil, container is ThreadPool
-// is method
-// arg0Type tag: guint32, isPtr: false
+//
+// [ interval ] trans: nothing
+//
 func ThreadPoolSetMaxIdleTime1(interval uint32) {
 	iv, err := _I.Get(619, "ThreadPool", "set_max_idle_time")
 	if err != nil {
@@ -13425,9 +14879,9 @@ func ThreadPoolSetMaxIdleTime1(interval uint32) {
 }
 
 // g_thread_pool_set_max_unused_threads
-// container is not nil, container is ThreadPool
-// is method
-// arg0Type tag: gint32, isPtr: false
+//
+// [ max_threads ] trans: nothing
+//
 func ThreadPoolSetMaxUnusedThreads1(max_threads int32) {
 	iv, err := _I.Get(620, "ThreadPool", "set_max_unused_threads")
 	if err != nil {
@@ -13466,8 +14920,9 @@ func TimeValGetType() gi.GType {
 }
 
 // g_time_val_add
-// container is not nil, container is TimeVal
-// is method
+//
+// [ microseconds ] trans: nothing
+//
 func (v TimeVal) Add(microseconds int64) {
 	iv, err := _I.Get(622, "TimeVal", "add")
 	if err != nil {
@@ -13481,8 +14936,9 @@ func (v TimeVal) Add(microseconds int64) {
 }
 
 // g_time_val_to_iso8601
-// container is not nil, container is TimeVal
-// is method
+//
+// [ result ] trans: everything
+//
 func (v TimeVal) ToIso8601() (result string) {
 	iv, err := _I.Get(623, "TimeVal", "to_iso8601")
 	if err != nil {
@@ -13498,9 +14954,13 @@ func (v TimeVal) ToIso8601() (result string) {
 }
 
 // g_time_val_from_iso8601
-// container is not nil, container is TimeVal
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ iso_date ] trans: nothing
+//
+// [ time_ ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func TimeValFromIso86011(iso_date string, time_ TimeVal) (result bool) {
 	iv, err := _I.Get(624, "TimeVal", "from_iso8601")
 	if err != nil {
@@ -13529,8 +14989,11 @@ func TimeZoneGetType() gi.GType {
 }
 
 // g_time_zone_new
-// container is not nil, container is TimeZone
-// is constructor
+//
+// [ identifier ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTimeZone(identifier string) (result TimeZone) {
 	iv, err := _I.Get(625, "TimeZone", "new")
 	if err != nil {
@@ -13548,8 +15011,9 @@ func NewTimeZone(identifier string) (result TimeZone) {
 }
 
 // g_time_zone_new_local
-// container is not nil, container is TimeZone
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewTimeZoneLocal() (result TimeZone) {
 	iv, err := _I.Get(626, "TimeZone", "new_local")
 	if err != nil {
@@ -13563,8 +15027,11 @@ func NewTimeZoneLocal() (result TimeZone) {
 }
 
 // g_time_zone_new_offset
-// container is not nil, container is TimeZone
-// is constructor
+//
+// [ seconds ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewTimeZoneOffset(seconds int32) (result TimeZone) {
 	iv, err := _I.Get(627, "TimeZone", "new_offset")
 	if err != nil {
@@ -13580,8 +15047,9 @@ func NewTimeZoneOffset(seconds int32) (result TimeZone) {
 }
 
 // g_time_zone_new_utc
-// container is not nil, container is TimeZone
-// is constructor
+//
+// [ result ] trans: everything
+//
 func NewTimeZoneUtc() (result TimeZone) {
 	iv, err := _I.Get(628, "TimeZone", "new_utc")
 	if err != nil {
@@ -13595,8 +15063,13 @@ func NewTimeZoneUtc() (result TimeZone) {
 }
 
 // g_time_zone_adjust_time
-// container is not nil, container is TimeZone
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TimeZone) AdjustTime(type1 TimeTypeEnum, time_ int64) (result int32) {
 	iv, err := _I.Get(629, "TimeZone", "adjust_time")
 	if err != nil {
@@ -13614,8 +15087,13 @@ func (v TimeZone) AdjustTime(type1 TimeTypeEnum, time_ int64) (result int32) {
 }
 
 // g_time_zone_find_interval
-// container is not nil, container is TimeZone
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ time_ ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TimeZone) FindInterval(type1 TimeTypeEnum, time_ int64) (result int32) {
 	iv, err := _I.Get(630, "TimeZone", "find_interval")
 	if err != nil {
@@ -13633,8 +15111,11 @@ func (v TimeZone) FindInterval(type1 TimeTypeEnum, time_ int64) (result int32) {
 }
 
 // g_time_zone_get_abbreviation
-// container is not nil, container is TimeZone
-// is method
+//
+// [ interval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TimeZone) GetAbbreviation(interval int32) (result string) {
 	iv, err := _I.Get(631, "TimeZone", "get_abbreviation")
 	if err != nil {
@@ -13646,13 +15127,14 @@ func (v TimeZone) GetAbbreviation(interval int32) (result string) {
 	args := []gi.Argument{arg_v, arg_interval}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_time_zone_get_identifier
-// container is not nil, container is TimeZone
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v TimeZone) GetIdentifier() (result string) {
 	iv, err := _I.Get(632, "TimeZone", "get_identifier")
 	if err != nil {
@@ -13663,13 +15145,16 @@ func (v TimeZone) GetIdentifier() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_time_zone_get_offset
-// container is not nil, container is TimeZone
-// is method
+//
+// [ interval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TimeZone) GetOffset(interval int32) (result int32) {
 	iv, err := _I.Get(633, "TimeZone", "get_offset")
 	if err != nil {
@@ -13686,8 +15171,11 @@ func (v TimeZone) GetOffset(interval int32) (result int32) {
 }
 
 // g_time_zone_is_dst
-// container is not nil, container is TimeZone
-// is method
+//
+// [ interval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v TimeZone) IsDst(interval int32) (result bool) {
 	iv, err := _I.Get(634, "TimeZone", "is_dst")
 	if err != nil {
@@ -13704,8 +15192,9 @@ func (v TimeZone) IsDst(interval int32) (result bool) {
 }
 
 // g_time_zone_ref
-// container is not nil, container is TimeZone
-// is method
+//
+// [ result ] trans: everything
+//
 func (v TimeZone) Ref() (result TimeZone) {
 	iv, err := _I.Get(635, "TimeZone", "ref")
 	if err != nil {
@@ -13721,8 +15210,7 @@ func (v TimeZone) Ref() (result TimeZone) {
 }
 
 // g_time_zone_unref
-// container is not nil, container is TimeZone
-// is method
+//
 func (v TimeZone) Unref() {
 	iv, err := _I.Get(636, "TimeZone", "unref")
 	if err != nil {
@@ -13745,8 +15233,7 @@ func TimerGetType() gi.GType {
 }
 
 // g_timer_continue
-// container is not nil, container is Timer
-// is method
+//
 func (v Timer) Continue() {
 	iv, err := _I.Get(637, "Timer", "continue")
 	if err != nil {
@@ -13759,8 +15246,7 @@ func (v Timer) Continue() {
 }
 
 // g_timer_destroy
-// container is not nil, container is Timer
-// is method
+//
 func (v Timer) Destroy() {
 	iv, err := _I.Get(638, "Timer", "destroy")
 	if err != nil {
@@ -13773,8 +15259,11 @@ func (v Timer) Destroy() {
 }
 
 // g_timer_elapsed
-// container is not nil, container is Timer
-// is method
+//
+// [ microseconds ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Timer) Elapsed(microseconds uint64) (result float64) {
 	iv, err := _I.Get(639, "Timer", "elapsed")
 	if err != nil {
@@ -13791,8 +15280,7 @@ func (v Timer) Elapsed(microseconds uint64) (result float64) {
 }
 
 // g_timer_reset
-// container is not nil, container is Timer
-// is method
+//
 func (v Timer) Reset() {
 	iv, err := _I.Get(640, "Timer", "reset")
 	if err != nil {
@@ -13805,8 +15293,7 @@ func (v Timer) Reset() {
 }
 
 // g_timer_start
-// container is not nil, container is Timer
-// is method
+//
 func (v Timer) Start() {
 	iv, err := _I.Get(641, "Timer", "start")
 	if err != nil {
@@ -13819,8 +15306,7 @@ func (v Timer) Start() {
 }
 
 // g_timer_stop
-// container is not nil, container is Timer
-// is method
+//
 func (v Timer) Stop() {
 	iv, err := _I.Get(642, "Timer", "stop")
 	if err != nil {
@@ -13905,9 +15391,9 @@ func TrashStackGetType() gi.GType {
 }
 
 // g_trash_stack_height
-// container is not nil, container is TrashStack
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ result ] trans: nothing
+//
 func (v TrashStack) Height() (result uint32) {
 	iv, err := _I.Get(643, "TrashStack", "height")
 	if err != nil {
@@ -13923,9 +15409,9 @@ func (v TrashStack) Height() (result uint32) {
 }
 
 // g_trash_stack_peek
-// container is not nil, container is TrashStack
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ result ] trans: nothing
+//
 func (v TrashStack) Peek() (result unsafe.Pointer) {
 	iv, err := _I.Get(644, "TrashStack", "peek")
 	if err != nil {
@@ -13941,9 +15427,9 @@ func (v TrashStack) Peek() (result unsafe.Pointer) {
 }
 
 // g_trash_stack_pop
-// container is not nil, container is TrashStack
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ result ] trans: nothing
+//
 func (v TrashStack) Pop() (result unsafe.Pointer) {
 	iv, err := _I.Get(645, "TrashStack", "pop")
 	if err != nil {
@@ -13959,9 +15445,9 @@ func (v TrashStack) Pop() (result unsafe.Pointer) {
 }
 
 // g_trash_stack_push
-// container is not nil, container is TrashStack
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ data_p ] trans: nothing
+//
 func (v TrashStack) Push(data_p unsafe.Pointer) {
 	iv, err := _I.Get(646, "TrashStack", "push")
 	if err != nil {
@@ -14032,8 +15518,7 @@ func TreeGetType() gi.GType {
 }
 
 // g_tree_destroy
-// container is not nil, container is Tree
-// is method
+//
 func (v Tree) Destroy() {
 	iv, err := _I.Get(647, "Tree", "destroy")
 	if err != nil {
@@ -14046,8 +15531,9 @@ func (v Tree) Destroy() {
 }
 
 // g_tree_height
-// container is not nil, container is Tree
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Tree) Height() (result int32) {
 	iv, err := _I.Get(648, "Tree", "height")
 	if err != nil {
@@ -14063,8 +15549,11 @@ func (v Tree) Height() (result int32) {
 }
 
 // g_tree_insert
-// container is not nil, container is Tree
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v Tree) Insert(key unsafe.Pointer, value unsafe.Pointer) {
 	iv, err := _I.Get(649, "Tree", "insert")
 	if err != nil {
@@ -14079,8 +15568,11 @@ func (v Tree) Insert(key unsafe.Pointer, value unsafe.Pointer) {
 }
 
 // g_tree_lookup
-// container is not nil, container is Tree
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Tree) Lookup(key unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(650, "Tree", "lookup")
 	if err != nil {
@@ -14097,8 +15589,15 @@ func (v Tree) Lookup(key unsafe.Pointer) (result unsafe.Pointer) {
 }
 
 // g_tree_lookup_extended
-// container is not nil, container is Tree
-// is method
+//
+// [ lookup_key ] trans: nothing
+//
+// [ orig_key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Tree) LookupExtended(lookup_key unsafe.Pointer, orig_key unsafe.Pointer, value unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(651, "Tree", "lookup_extended")
 	if err != nil {
@@ -14117,8 +15616,9 @@ func (v Tree) LookupExtended(lookup_key unsafe.Pointer, orig_key unsafe.Pointer,
 }
 
 // g_tree_nnodes
-// container is not nil, container is Tree
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Tree) Nnodes() (result int32) {
 	iv, err := _I.Get(652, "Tree", "nnodes")
 	if err != nil {
@@ -14134,8 +15634,11 @@ func (v Tree) Nnodes() (result int32) {
 }
 
 // g_tree_remove
-// container is not nil, container is Tree
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Tree) Remove(key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(653, "Tree", "remove")
 	if err != nil {
@@ -14152,8 +15655,11 @@ func (v Tree) Remove(key unsafe.Pointer) (result bool) {
 }
 
 // g_tree_replace
-// container is not nil, container is Tree
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v Tree) Replace(key unsafe.Pointer, value unsafe.Pointer) {
 	iv, err := _I.Get(654, "Tree", "replace")
 	if err != nil {
@@ -14168,8 +15674,11 @@ func (v Tree) Replace(key unsafe.Pointer, value unsafe.Pointer) {
 }
 
 // g_tree_steal
-// container is not nil, container is Tree
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Tree) Steal(key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(655, "Tree", "steal")
 	if err != nil {
@@ -14186,8 +15695,7 @@ func (v Tree) Steal(key unsafe.Pointer) (result bool) {
 }
 
 // g_tree_unref
-// container is not nil, container is Tree
-// is method
+//
 func (v Tree) Unref() {
 	iv, err := _I.Get(656, "Tree", "unref")
 	if err != nil {
@@ -14505,9 +16013,15 @@ func VariantGetType() gi.GType {
 }
 
 // g_variant_new_array
-// container is not nil, container is Variant
-// is constructor
-// arg 1 children lenArgIdx 2
+//
+// [ child_type ] trans: nothing
+//
+// [ children ] trans: nothing
+//
+// [ n_children ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantArray(child_type VariantType, children gi.PointerArray, n_children uint64) (result Variant) {
 	iv, err := _I.Get(657, "Variant", "new_array")
 	if err != nil {
@@ -14525,8 +16039,11 @@ func NewVariantArray(child_type VariantType, children gi.PointerArray, n_childre
 }
 
 // g_variant_new_boolean
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantBoolean(value bool) (result Variant) {
 	iv, err := _I.Get(658, "Variant", "new_boolean")
 	if err != nil {
@@ -14542,8 +16059,11 @@ func NewVariantBoolean(value bool) (result Variant) {
 }
 
 // g_variant_new_byte
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantByte(value uint8) (result Variant) {
 	iv, err := _I.Get(659, "Variant", "new_byte")
 	if err != nil {
@@ -14559,8 +16079,11 @@ func NewVariantByte(value uint8) (result Variant) {
 }
 
 // g_variant_new_bytestring
-// container is not nil, container is Variant
-// is constructor
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantBytestring(string gi.Uint8Array) (result Variant) {
 	iv, err := _I.Get(660, "Variant", "new_bytestring")
 	if err != nil {
@@ -14576,9 +16099,13 @@ func NewVariantBytestring(string gi.Uint8Array) (result Variant) {
 }
 
 // g_variant_new_bytestring_array
-// container is not nil, container is Variant
-// is constructor
-// arg 0 strv lenArgIdx 1
+//
+// [ strv ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantBytestringArray(strv gi.CStrArray, length int64) (result Variant) {
 	iv, err := _I.Get(661, "Variant", "new_bytestring_array")
 	if err != nil {
@@ -14595,8 +16122,13 @@ func NewVariantBytestringArray(strv gi.CStrArray, length int64) (result Variant)
 }
 
 // g_variant_new_dict_entry
-// container is not nil, container is Variant
-// is constructor
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantDictEntry(key Variant, value Variant) (result Variant) {
 	iv, err := _I.Get(662, "Variant", "new_dict_entry")
 	if err != nil {
@@ -14613,8 +16145,11 @@ func NewVariantDictEntry(key Variant, value Variant) (result Variant) {
 }
 
 // g_variant_new_double
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantDouble(value float64) (result Variant) {
 	iv, err := _I.Get(663, "Variant", "new_double")
 	if err != nil {
@@ -14630,8 +16165,17 @@ func NewVariantDouble(value float64) (result Variant) {
 }
 
 // g_variant_new_fixed_array
-// container is not nil, container is Variant
-// is constructor
+//
+// [ element_type ] trans: nothing
+//
+// [ elements ] trans: nothing
+//
+// [ n_elements ] trans: nothing
+//
+// [ element_size ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantFixedArray(element_type VariantType, elements unsafe.Pointer, n_elements uint64, element_size uint64) (result Variant) {
 	iv, err := _I.Get(664, "Variant", "new_fixed_array")
 	if err != nil {
@@ -14650,8 +16194,15 @@ func NewVariantFixedArray(element_type VariantType, elements unsafe.Pointer, n_e
 }
 
 // g_variant_new_from_bytes
-// container is not nil, container is Variant
-// is constructor
+//
+// [ type1 ] trans: nothing
+//
+// [ bytes ] trans: nothing
+//
+// [ trusted ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantFromBytes(type1 VariantType, bytes Bytes, trusted bool) (result Variant) {
 	iv, err := _I.Get(665, "Variant", "new_from_bytes")
 	if err != nil {
@@ -14669,9 +16220,21 @@ func NewVariantFromBytes(type1 VariantType, bytes Bytes, trusted bool) (result V
 }
 
 // g_variant_new_from_data
-// container is not nil, container is Variant
-// is constructor
-// arg 1 data lenArgIdx 2
+//
+// [ type1 ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ size ] trans: nothing
+//
+// [ trusted ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trusted bool, notify int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result Variant) {
 	iv, err := _I.Get(666, "Variant", "new_from_data")
 	if err != nil {
@@ -14692,8 +16255,11 @@ func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trus
 }
 
 // g_variant_new_handle
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantHandle(value int32) (result Variant) {
 	iv, err := _I.Get(667, "Variant", "new_handle")
 	if err != nil {
@@ -14709,8 +16275,11 @@ func NewVariantHandle(value int32) (result Variant) {
 }
 
 // g_variant_new_int16
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantInt16(value int16) (result Variant) {
 	iv, err := _I.Get(668, "Variant", "new_int16")
 	if err != nil {
@@ -14726,8 +16295,11 @@ func NewVariantInt16(value int16) (result Variant) {
 }
 
 // g_variant_new_int32
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantInt32(value int32) (result Variant) {
 	iv, err := _I.Get(669, "Variant", "new_int32")
 	if err != nil {
@@ -14743,8 +16315,11 @@ func NewVariantInt32(value int32) (result Variant) {
 }
 
 // g_variant_new_int64
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantInt64(value int64) (result Variant) {
 	iv, err := _I.Get(670, "Variant", "new_int64")
 	if err != nil {
@@ -14760,8 +16335,13 @@ func NewVariantInt64(value int64) (result Variant) {
 }
 
 // g_variant_new_maybe
-// container is not nil, container is Variant
-// is constructor
+//
+// [ child_type ] trans: nothing
+//
+// [ child ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantMaybe(child_type VariantType, child Variant) (result Variant) {
 	iv, err := _I.Get(671, "Variant", "new_maybe")
 	if err != nil {
@@ -14778,8 +16358,11 @@ func NewVariantMaybe(child_type VariantType, child Variant) (result Variant) {
 }
 
 // g_variant_new_object_path
-// container is not nil, container is Variant
-// is constructor
+//
+// [ object_path ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantObjectPath(object_path string) (result Variant) {
 	iv, err := _I.Get(672, "Variant", "new_object_path")
 	if err != nil {
@@ -14797,9 +16380,13 @@ func NewVariantObjectPath(object_path string) (result Variant) {
 }
 
 // g_variant_new_objv
-// container is not nil, container is Variant
-// is constructor
-// arg 0 strv lenArgIdx 1
+//
+// [ strv ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantObjv(strv gi.CStrArray, length int64) (result Variant) {
 	iv, err := _I.Get(673, "Variant", "new_objv")
 	if err != nil {
@@ -14816,8 +16403,11 @@ func NewVariantObjv(strv gi.CStrArray, length int64) (result Variant) {
 }
 
 // g_variant_new_signature
-// container is not nil, container is Variant
-// is constructor
+//
+// [ signature ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantSignature(signature string) (result Variant) {
 	iv, err := _I.Get(674, "Variant", "new_signature")
 	if err != nil {
@@ -14835,8 +16425,11 @@ func NewVariantSignature(signature string) (result Variant) {
 }
 
 // g_variant_new_string
-// container is not nil, container is Variant
-// is constructor
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantString(string string) (result Variant) {
 	iv, err := _I.Get(675, "Variant", "new_string")
 	if err != nil {
@@ -14854,9 +16447,13 @@ func NewVariantString(string string) (result Variant) {
 }
 
 // g_variant_new_strv
-// container is not nil, container is Variant
-// is constructor
-// arg 0 strv lenArgIdx 1
+//
+// [ strv ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantStrv(strv gi.CStrArray, length int64) (result Variant) {
 	iv, err := _I.Get(676, "Variant", "new_strv")
 	if err != nil {
@@ -14873,9 +16470,13 @@ func NewVariantStrv(strv gi.CStrArray, length int64) (result Variant) {
 }
 
 // g_variant_new_tuple
-// container is not nil, container is Variant
-// is constructor
-// arg 0 children lenArgIdx 1
+//
+// [ children ] trans: nothing
+//
+// [ n_children ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantTuple(children gi.PointerArray, n_children uint64) (result Variant) {
 	iv, err := _I.Get(677, "Variant", "new_tuple")
 	if err != nil {
@@ -14892,8 +16493,11 @@ func NewVariantTuple(children gi.PointerArray, n_children uint64) (result Varian
 }
 
 // g_variant_new_uint16
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantUint16(value uint16) (result Variant) {
 	iv, err := _I.Get(678, "Variant", "new_uint16")
 	if err != nil {
@@ -14909,8 +16513,11 @@ func NewVariantUint16(value uint16) (result Variant) {
 }
 
 // g_variant_new_uint32
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantUint32(value uint32) (result Variant) {
 	iv, err := _I.Get(679, "Variant", "new_uint32")
 	if err != nil {
@@ -14926,8 +16533,11 @@ func NewVariantUint32(value uint32) (result Variant) {
 }
 
 // g_variant_new_uint64
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantUint64(value uint64) (result Variant) {
 	iv, err := _I.Get(680, "Variant", "new_uint64")
 	if err != nil {
@@ -14943,8 +16553,11 @@ func NewVariantUint64(value uint64) (result Variant) {
 }
 
 // g_variant_new_variant
-// container is not nil, container is Variant
-// is constructor
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func NewVariantVariant(value Variant) (result Variant) {
 	iv, err := _I.Get(681, "Variant", "new_variant")
 	if err != nil {
@@ -14960,8 +16573,9 @@ func NewVariantVariant(value Variant) (result Variant) {
 }
 
 // g_variant_byteswap
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Variant) Byteswap() (result Variant) {
 	iv, err := _I.Get(682, "Variant", "byteswap")
 	if err != nil {
@@ -14977,8 +16591,13 @@ func (v Variant) Byteswap() (result Variant) {
 }
 
 // g_variant_check_format_string
-// container is not nil, container is Variant
-// is method
+//
+// [ format_string ] trans: nothing
+//
+// [ copy_only ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Variant) CheckFormatString(format_string string, copy_only bool) (result bool) {
 	iv, err := _I.Get(683, "Variant", "check_format_string")
 	if err != nil {
@@ -14998,8 +16617,9 @@ func (v Variant) CheckFormatString(format_string string, copy_only bool) (result
 }
 
 // g_variant_classify
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) Classify() (result VariantClassEnum) {
 	iv, err := _I.Get(684, "Variant", "classify")
 	if err != nil {
@@ -15015,8 +16635,11 @@ func (v Variant) Classify() (result VariantClassEnum) {
 }
 
 // g_variant_compare
-// container is not nil, container is Variant
-// is method
+//
+// [ two ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Variant) Compare(two Variant) (result int32) {
 	iv, err := _I.Get(685, "Variant", "compare")
 	if err != nil {
@@ -15033,9 +16656,11 @@ func (v Variant) Compare(two Variant) (result int32) {
 }
 
 // g_variant_dup_bytestring
-// container is not nil, container is Variant
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v Variant) DupBytestring() (result gi.Uint8Array) {
 	iv, err := _I.Get(686, "Variant", "dup_bytestring")
 	if err != nil {
@@ -15056,9 +16681,11 @@ func (v Variant) DupBytestring() (result gi.Uint8Array) {
 }
 
 // g_variant_dup_bytestring_array
-// container is not nil, container is Variant
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v Variant) DupBytestringArray() (result gi.CStrArray) {
 	iv, err := _I.Get(687, "Variant", "dup_bytestring_array")
 	if err != nil {
@@ -15079,9 +16706,11 @@ func (v Variant) DupBytestringArray() (result gi.CStrArray) {
 }
 
 // g_variant_dup_objv
-// container is not nil, container is Variant
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v Variant) DupObjv() (result gi.CStrArray) {
 	iv, err := _I.Get(688, "Variant", "dup_objv")
 	if err != nil {
@@ -15103,8 +16732,11 @@ func (v Variant) DupObjv() (result gi.CStrArray) {
 }
 
 // g_variant_dup_string
-// container is not nil, container is Variant
-// is method
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v Variant) DupString() (result string, length uint64) {
 	iv, err := _I.Get(689, "Variant", "dup_string")
 	if err != nil {
@@ -15123,9 +16755,11 @@ func (v Variant) DupString() (result string, length uint64) {
 }
 
 // g_variant_dup_strv
-// container is not nil, container is Variant
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func (v Variant) DupStrv() (result gi.CStrArray) {
 	iv, err := _I.Get(690, "Variant", "dup_strv")
 	if err != nil {
@@ -15147,8 +16781,11 @@ func (v Variant) DupStrv() (result gi.CStrArray) {
 }
 
 // g_variant_equal
-// container is not nil, container is Variant
-// is method
+//
+// [ two ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Variant) Equal(two Variant) (result bool) {
 	iv, err := _I.Get(691, "Variant", "equal")
 	if err != nil {
@@ -15165,8 +16802,9 @@ func (v Variant) Equal(two Variant) (result bool) {
 }
 
 // g_variant_get_boolean
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetBoolean() (result bool) {
 	iv, err := _I.Get(692, "Variant", "get_boolean")
 	if err != nil {
@@ -15182,8 +16820,9 @@ func (v Variant) GetBoolean() (result bool) {
 }
 
 // g_variant_get_byte
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetByte() (result uint8) {
 	iv, err := _I.Get(693, "Variant", "get_byte")
 	if err != nil {
@@ -15199,8 +16838,9 @@ func (v Variant) GetByte() (result uint8) {
 }
 
 // g_variant_get_bytestring
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetBytestring() (result gi.Uint8Array) {
 	iv, err := _I.Get(694, "Variant", "get_bytestring")
 	if err != nil {
@@ -15216,9 +16856,11 @@ func (v Variant) GetBytestring() (result gi.Uint8Array) {
 }
 
 // g_variant_get_bytestring_array
-// container is not nil, container is Variant
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: container
+//
 func (v Variant) GetBytestringArray() (result gi.CStrArray) {
 	iv, err := _I.Get(695, "Variant", "get_bytestring_array")
 	if err != nil {
@@ -15239,8 +16881,11 @@ func (v Variant) GetBytestringArray() (result gi.CStrArray) {
 }
 
 // g_variant_get_child_value
-// container is not nil, container is Variant
-// is method
+//
+// [ index_ ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Variant) GetChildValue(index_ uint64) (result Variant) {
 	iv, err := _I.Get(696, "Variant", "get_child_value")
 	if err != nil {
@@ -15257,8 +16902,9 @@ func (v Variant) GetChildValue(index_ uint64) (result Variant) {
 }
 
 // g_variant_get_data
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetData() (result unsafe.Pointer) {
 	iv, err := _I.Get(697, "Variant", "get_data")
 	if err != nil {
@@ -15274,8 +16920,9 @@ func (v Variant) GetData() (result unsafe.Pointer) {
 }
 
 // g_variant_get_data_as_bytes
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Variant) GetDataAsBytes() (result Bytes) {
 	iv, err := _I.Get(698, "Variant", "get_data_as_bytes")
 	if err != nil {
@@ -15291,8 +16938,9 @@ func (v Variant) GetDataAsBytes() (result Bytes) {
 }
 
 // g_variant_get_double
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetDouble() (result float64) {
 	iv, err := _I.Get(699, "Variant", "get_double")
 	if err != nil {
@@ -15308,8 +16956,9 @@ func (v Variant) GetDouble() (result float64) {
 }
 
 // g_variant_get_handle
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetHandle() (result int32) {
 	iv, err := _I.Get(700, "Variant", "get_handle")
 	if err != nil {
@@ -15325,8 +16974,9 @@ func (v Variant) GetHandle() (result int32) {
 }
 
 // g_variant_get_int16
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetInt16() (result int16) {
 	iv, err := _I.Get(701, "Variant", "get_int16")
 	if err != nil {
@@ -15342,8 +16992,9 @@ func (v Variant) GetInt16() (result int16) {
 }
 
 // g_variant_get_int32
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetInt32() (result int32) {
 	iv, err := _I.Get(702, "Variant", "get_int32")
 	if err != nil {
@@ -15359,8 +17010,9 @@ func (v Variant) GetInt32() (result int32) {
 }
 
 // g_variant_get_int64
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetInt64() (result int64) {
 	iv, err := _I.Get(703, "Variant", "get_int64")
 	if err != nil {
@@ -15376,8 +17028,9 @@ func (v Variant) GetInt64() (result int64) {
 }
 
 // g_variant_get_maybe
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Variant) GetMaybe() (result Variant) {
 	iv, err := _I.Get(704, "Variant", "get_maybe")
 	if err != nil {
@@ -15393,8 +17046,9 @@ func (v Variant) GetMaybe() (result Variant) {
 }
 
 // g_variant_get_normal_form
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Variant) GetNormalForm() (result Variant) {
 	iv, err := _I.Get(705, "Variant", "get_normal_form")
 	if err != nil {
@@ -15410,9 +17064,11 @@ func (v Variant) GetNormalForm() (result Variant) {
 }
 
 // g_variant_get_objv
-// container is not nil, container is Variant
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: container
+//
 func (v Variant) GetObjv() (result gi.CStrArray) {
 	iv, err := _I.Get(706, "Variant", "get_objv")
 	if err != nil {
@@ -15434,8 +17090,9 @@ func (v Variant) GetObjv() (result gi.CStrArray) {
 }
 
 // g_variant_get_size
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetSize() (result uint64) {
 	iv, err := _I.Get(707, "Variant", "get_size")
 	if err != nil {
@@ -15451,8 +17108,11 @@ func (v Variant) GetSize() (result uint64) {
 }
 
 // g_variant_get_string
-// container is not nil, container is Variant
-// is method
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetString() (result string, length uint64) {
 	iv, err := _I.Get(708, "Variant", "get_string")
 	if err != nil {
@@ -15466,14 +17126,16 @@ func (v Variant) GetString() (result string, length uint64) {
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	length = outArgs[0].Uint64()
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_variant_get_strv
-// container is not nil, container is Variant
-// is method
-// ret lenArgIdx 0
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: container
+//
 func (v Variant) GetStrv() (result gi.CStrArray) {
 	iv, err := _I.Get(709, "Variant", "get_strv")
 	if err != nil {
@@ -15495,8 +17157,9 @@ func (v Variant) GetStrv() (result gi.CStrArray) {
 }
 
 // g_variant_get_type
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetType() (result VariantType) {
 	iv, err := _I.Get(710, "Variant", "get_type")
 	if err != nil {
@@ -15512,8 +17175,9 @@ func (v Variant) GetType() (result VariantType) {
 }
 
 // g_variant_get_type_string
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetTypeString() (result string) {
 	iv, err := _I.Get(711, "Variant", "get_type_string")
 	if err != nil {
@@ -15524,13 +17188,14 @@ func (v Variant) GetTypeString() (result string) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_variant_get_uint16
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetUint16() (result uint16) {
 	iv, err := _I.Get(712, "Variant", "get_uint16")
 	if err != nil {
@@ -15546,8 +17211,9 @@ func (v Variant) GetUint16() (result uint16) {
 }
 
 // g_variant_get_uint32
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetUint32() (result uint32) {
 	iv, err := _I.Get(713, "Variant", "get_uint32")
 	if err != nil {
@@ -15563,8 +17229,9 @@ func (v Variant) GetUint32() (result uint32) {
 }
 
 // g_variant_get_uint64
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) GetUint64() (result uint64) {
 	iv, err := _I.Get(714, "Variant", "get_uint64")
 	if err != nil {
@@ -15580,8 +17247,9 @@ func (v Variant) GetUint64() (result uint64) {
 }
 
 // g_variant_get_variant
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Variant) GetVariant() (result Variant) {
 	iv, err := _I.Get(715, "Variant", "get_variant")
 	if err != nil {
@@ -15597,8 +17265,9 @@ func (v Variant) GetVariant() (result Variant) {
 }
 
 // g_variant_hash
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) Hash() (result uint32) {
 	iv, err := _I.Get(716, "Variant", "hash")
 	if err != nil {
@@ -15614,8 +17283,9 @@ func (v Variant) Hash() (result uint32) {
 }
 
 // g_variant_is_container
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) IsContainer() (result bool) {
 	iv, err := _I.Get(717, "Variant", "is_container")
 	if err != nil {
@@ -15631,8 +17301,9 @@ func (v Variant) IsContainer() (result bool) {
 }
 
 // g_variant_is_floating
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) IsFloating() (result bool) {
 	iv, err := _I.Get(718, "Variant", "is_floating")
 	if err != nil {
@@ -15648,8 +17319,9 @@ func (v Variant) IsFloating() (result bool) {
 }
 
 // g_variant_is_normal_form
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) IsNormalForm() (result bool) {
 	iv, err := _I.Get(719, "Variant", "is_normal_form")
 	if err != nil {
@@ -15665,8 +17337,11 @@ func (v Variant) IsNormalForm() (result bool) {
 }
 
 // g_variant_is_of_type
-// container is not nil, container is Variant
-// is method
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v Variant) IsOfType(type1 VariantType) (result bool) {
 	iv, err := _I.Get(720, "Variant", "is_of_type")
 	if err != nil {
@@ -15683,8 +17358,13 @@ func (v Variant) IsOfType(type1 VariantType) (result bool) {
 }
 
 // g_variant_lookup_value
-// container is not nil, container is Variant
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ expected_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Variant) LookupValue(key string, expected_type VariantType) (result Variant) {
 	iv, err := _I.Get(721, "Variant", "lookup_value")
 	if err != nil {
@@ -15704,8 +17384,9 @@ func (v Variant) LookupValue(key string, expected_type VariantType) (result Vari
 }
 
 // g_variant_n_children
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v Variant) NChildren() (result uint64) {
 	iv, err := _I.Get(722, "Variant", "n_children")
 	if err != nil {
@@ -15721,8 +17402,11 @@ func (v Variant) NChildren() (result uint64) {
 }
 
 // g_variant_print
-// container is not nil, container is Variant
-// is method
+//
+// [ type_annotate ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v Variant) Print(type_annotate bool) (result string) {
 	iv, err := _I.Get(723, "Variant", "print")
 	if err != nil {
@@ -15739,8 +17423,9 @@ func (v Variant) Print(type_annotate bool) (result string) {
 }
 
 // g_variant_ref
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Variant) Ref() (result Variant) {
 	iv, err := _I.Get(724, "Variant", "ref")
 	if err != nil {
@@ -15756,8 +17441,9 @@ func (v Variant) Ref() (result Variant) {
 }
 
 // g_variant_ref_sink
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Variant) RefSink() (result Variant) {
 	iv, err := _I.Get(725, "Variant", "ref_sink")
 	if err != nil {
@@ -15773,8 +17459,9 @@ func (v Variant) RefSink() (result Variant) {
 }
 
 // g_variant_store
-// container is not nil, container is Variant
-// is method
+//
+// [ data ] trans: nothing
+//
 func (v Variant) Store(data unsafe.Pointer) {
 	iv, err := _I.Get(726, "Variant", "store")
 	if err != nil {
@@ -15788,8 +17475,9 @@ func (v Variant) Store(data unsafe.Pointer) {
 }
 
 // g_variant_take_ref
-// container is not nil, container is Variant
-// is method
+//
+// [ result ] trans: everything
+//
 func (v Variant) TakeRef() (result Variant) {
 	iv, err := _I.Get(727, "Variant", "take_ref")
 	if err != nil {
@@ -15805,8 +17493,7 @@ func (v Variant) TakeRef() (result Variant) {
 }
 
 // g_variant_unref
-// container is not nil, container is Variant
-// is method
+//
 func (v Variant) Unref() {
 	iv, err := _I.Get(728, "Variant", "unref")
 	if err != nil {
@@ -15819,9 +17506,11 @@ func (v Variant) Unref() {
 }
 
 // g_variant_is_object_path
-// container is not nil, container is Variant
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VariantIsObjectPath1(string string) (result bool) {
 	iv, err := _I.Get(729, "Variant", "is_object_path")
 	if err != nil {
@@ -15839,9 +17528,11 @@ func VariantIsObjectPath1(string string) (result bool) {
 }
 
 // g_variant_is_signature
-// container is not nil, container is Variant
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VariantIsSignature1(string string) (result bool) {
 	iv, err := _I.Get(730, "Variant", "is_signature")
 	if err != nil {
@@ -15859,9 +17550,17 @@ func VariantIsSignature1(string string) (result bool) {
 }
 
 // g_variant_parse
-// container is not nil, container is Variant
-// is method
-// arg0Type tag: interface, isPtr: true
+//
+// [ type1 ] trans: nothing
+//
+// [ text ] trans: nothing
+//
+// [ limit ] trans: nothing
+//
+// [ endptr ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func VariantParse1(type1 VariantType, text string, limit string, endptr string) (result Variant, err error) {
 	iv, err := _I.Get(731, "Variant", "parse")
 	if err != nil {
@@ -15888,9 +17587,13 @@ func VariantParse1(type1 VariantType, text string, limit string, endptr string) 
 }
 
 // g_variant_parse_error_print_context
-// container is not nil, container is Variant
-// is method
-// arg0Type tag: error, isPtr: true
+//
+// [ error ] trans: nothing
+//
+// [ source_str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func VariantParseErrorPrintContext1(error Error, source_str string) (result string) {
 	iv, err := _I.Get(732, "Variant", "parse_error_print_context")
 	if err != nil {
@@ -15919,8 +17622,11 @@ func VariantBuilderGetType() gi.GType {
 }
 
 // g_variant_builder_new
-// container is not nil, container is VariantBuilder
-// is constructor
+//
+// [ type1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewVariantBuilder(type1 VariantType) (result VariantBuilder) {
 	iv, err := _I.Get(735, "VariantBuilder", "new")
 	if err != nil {
@@ -15936,8 +17642,9 @@ func NewVariantBuilder(type1 VariantType) (result VariantBuilder) {
 }
 
 // g_variant_builder_add_value
-// container is not nil, container is VariantBuilder
-// is method
+//
+// [ value ] trans: nothing
+//
 func (v VariantBuilder) AddValue(value Variant) {
 	iv, err := _I.Get(736, "VariantBuilder", "add_value")
 	if err != nil {
@@ -15951,8 +17658,7 @@ func (v VariantBuilder) AddValue(value Variant) {
 }
 
 // g_variant_builder_close
-// container is not nil, container is VariantBuilder
-// is method
+//
 func (v VariantBuilder) Close() {
 	iv, err := _I.Get(737, "VariantBuilder", "close")
 	if err != nil {
@@ -15965,8 +17671,9 @@ func (v VariantBuilder) Close() {
 }
 
 // g_variant_builder_end
-// container is not nil, container is VariantBuilder
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantBuilder) End() (result Variant) {
 	iv, err := _I.Get(738, "VariantBuilder", "end")
 	if err != nil {
@@ -15982,8 +17689,9 @@ func (v VariantBuilder) End() (result Variant) {
 }
 
 // g_variant_builder_open
-// container is not nil, container is VariantBuilder
-// is method
+//
+// [ type1 ] trans: nothing
+//
 func (v VariantBuilder) Open(type1 VariantType) {
 	iv, err := _I.Get(739, "VariantBuilder", "open")
 	if err != nil {
@@ -15997,8 +17705,9 @@ func (v VariantBuilder) Open(type1 VariantType) {
 }
 
 // g_variant_builder_ref
-// container is not nil, container is VariantBuilder
-// is method
+//
+// [ result ] trans: everything
+//
 func (v VariantBuilder) Ref() (result VariantBuilder) {
 	iv, err := _I.Get(740, "VariantBuilder", "ref")
 	if err != nil {
@@ -16014,8 +17723,7 @@ func (v VariantBuilder) Ref() (result VariantBuilder) {
 }
 
 // g_variant_builder_unref
-// container is not nil, container is VariantBuilder
-// is method
+//
 func (v VariantBuilder) Unref() {
 	iv, err := _I.Get(741, "VariantBuilder", "unref")
 	if err != nil {
@@ -16067,8 +17775,11 @@ func VariantDictGetType() gi.GType {
 }
 
 // g_variant_dict_new
-// container is not nil, container is VariantDict
-// is constructor
+//
+// [ from_asv ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewVariantDict(from_asv Variant) (result VariantDict) {
 	iv, err := _I.Get(742, "VariantDict", "new")
 	if err != nil {
@@ -16084,8 +17795,7 @@ func NewVariantDict(from_asv Variant) (result VariantDict) {
 }
 
 // g_variant_dict_clear
-// container is not nil, container is VariantDict
-// is method
+//
 func (v VariantDict) Clear() {
 	iv, err := _I.Get(743, "VariantDict", "clear")
 	if err != nil {
@@ -16098,8 +17808,11 @@ func (v VariantDict) Clear() {
 }
 
 // g_variant_dict_contains
-// container is not nil, container is VariantDict
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v VariantDict) Contains(key string) (result bool) {
 	iv, err := _I.Get(744, "VariantDict", "contains")
 	if err != nil {
@@ -16118,8 +17831,9 @@ func (v VariantDict) Contains(key string) (result bool) {
 }
 
 // g_variant_dict_end
-// container is not nil, container is VariantDict
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantDict) End() (result Variant) {
 	iv, err := _I.Get(745, "VariantDict", "end")
 	if err != nil {
@@ -16135,8 +17849,11 @@ func (v VariantDict) End() (result Variant) {
 }
 
 // g_variant_dict_insert_value
-// container is not nil, container is VariantDict
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func (v VariantDict) InsertValue(key string, value Variant) {
 	iv, err := _I.Get(746, "VariantDict", "insert_value")
 	if err != nil {
@@ -16153,8 +17870,13 @@ func (v VariantDict) InsertValue(key string, value Variant) {
 }
 
 // g_variant_dict_lookup_value
-// container is not nil, container is VariantDict
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ expected_type ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func (v VariantDict) LookupValue(key string, expected_type VariantType) (result Variant) {
 	iv, err := _I.Get(747, "VariantDict", "lookup_value")
 	if err != nil {
@@ -16174,8 +17896,9 @@ func (v VariantDict) LookupValue(key string, expected_type VariantType) (result 
 }
 
 // g_variant_dict_ref
-// container is not nil, container is VariantDict
-// is method
+//
+// [ result ] trans: everything
+//
 func (v VariantDict) Ref() (result VariantDict) {
 	iv, err := _I.Get(748, "VariantDict", "ref")
 	if err != nil {
@@ -16191,8 +17914,11 @@ func (v VariantDict) Ref() (result VariantDict) {
 }
 
 // g_variant_dict_remove
-// container is not nil, container is VariantDict
-// is method
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v VariantDict) Remove(key string) (result bool) {
 	iv, err := _I.Get(749, "VariantDict", "remove")
 	if err != nil {
@@ -16211,8 +17937,7 @@ func (v VariantDict) Remove(key string) (result bool) {
 }
 
 // g_variant_dict_unref
-// container is not nil, container is VariantDict
-// is method
+//
 func (v VariantDict) Unref() {
 	iv, err := _I.Get(750, "VariantDict", "unref")
 	if err != nil {
@@ -16264,8 +17989,11 @@ func VariantTypeGetType() gi.GType {
 }
 
 // g_variant_type_new
-// container is not nil, container is VariantType
-// is constructor
+//
+// [ type_string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewVariantType(type_string string) (result VariantType) {
 	iv, err := _I.Get(751, "VariantType", "new")
 	if err != nil {
@@ -16283,8 +18011,11 @@ func NewVariantType(type_string string) (result VariantType) {
 }
 
 // g_variant_type_new_array
-// container is not nil, container is VariantType
-// is constructor
+//
+// [ element ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewVariantTypeArray(element VariantType) (result VariantType) {
 	iv, err := _I.Get(752, "VariantType", "new_array")
 	if err != nil {
@@ -16300,8 +18031,13 @@ func NewVariantTypeArray(element VariantType) (result VariantType) {
 }
 
 // g_variant_type_new_dict_entry
-// container is not nil, container is VariantType
-// is constructor
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewVariantTypeDictEntry(key VariantType, value VariantType) (result VariantType) {
 	iv, err := _I.Get(753, "VariantType", "new_dict_entry")
 	if err != nil {
@@ -16318,8 +18054,11 @@ func NewVariantTypeDictEntry(key VariantType, value VariantType) (result Variant
 }
 
 // g_variant_type_new_maybe
-// container is not nil, container is VariantType
-// is constructor
+//
+// [ element ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewVariantTypeMaybe(element VariantType) (result VariantType) {
 	iv, err := _I.Get(754, "VariantType", "new_maybe")
 	if err != nil {
@@ -16335,9 +18074,13 @@ func NewVariantTypeMaybe(element VariantType) (result VariantType) {
 }
 
 // g_variant_type_new_tuple
-// container is not nil, container is VariantType
-// is constructor
-// arg 0 items lenArgIdx 1
+//
+// [ items ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func NewVariantTypeTuple(items gi.PointerArray, length int32) (result VariantType) {
 	iv, err := _I.Get(755, "VariantType", "new_tuple")
 	if err != nil {
@@ -16354,8 +18097,9 @@ func NewVariantTypeTuple(items gi.PointerArray, length int32) (result VariantTyp
 }
 
 // g_variant_type_copy
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: everything
+//
 func (v VariantType) Copy() (result VariantType) {
 	iv, err := _I.Get(756, "VariantType", "copy")
 	if err != nil {
@@ -16371,8 +18115,9 @@ func (v VariantType) Copy() (result VariantType) {
 }
 
 // g_variant_type_dup_string
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: everything
+//
 func (v VariantType) DupString() (result string) {
 	iv, err := _I.Get(757, "VariantType", "dup_string")
 	if err != nil {
@@ -16388,8 +18133,9 @@ func (v VariantType) DupString() (result string) {
 }
 
 // g_variant_type_element
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) Element() (result VariantType) {
 	iv, err := _I.Get(758, "VariantType", "element")
 	if err != nil {
@@ -16405,8 +18151,11 @@ func (v VariantType) Element() (result VariantType) {
 }
 
 // g_variant_type_equal
-// container is not nil, container is VariantType
-// is method
+//
+// [ type2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) Equal(type2 VariantType) (result bool) {
 	iv, err := _I.Get(759, "VariantType", "equal")
 	if err != nil {
@@ -16423,8 +18172,9 @@ func (v VariantType) Equal(type2 VariantType) (result bool) {
 }
 
 // g_variant_type_first
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) First() (result VariantType) {
 	iv, err := _I.Get(760, "VariantType", "first")
 	if err != nil {
@@ -16440,8 +18190,7 @@ func (v VariantType) First() (result VariantType) {
 }
 
 // g_variant_type_free
-// container is not nil, container is VariantType
-// is method
+//
 func (v VariantType) Free() {
 	iv, err := _I.Get(761, "VariantType", "free")
 	if err != nil {
@@ -16454,8 +18203,9 @@ func (v VariantType) Free() {
 }
 
 // g_variant_type_get_string_length
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) GetStringLength() (result uint64) {
 	iv, err := _I.Get(762, "VariantType", "get_string_length")
 	if err != nil {
@@ -16471,8 +18221,9 @@ func (v VariantType) GetStringLength() (result uint64) {
 }
 
 // g_variant_type_hash
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) Hash() (result uint32) {
 	iv, err := _I.Get(763, "VariantType", "hash")
 	if err != nil {
@@ -16488,8 +18239,9 @@ func (v VariantType) Hash() (result uint32) {
 }
 
 // g_variant_type_is_array
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) IsArray() (result bool) {
 	iv, err := _I.Get(764, "VariantType", "is_array")
 	if err != nil {
@@ -16505,8 +18257,9 @@ func (v VariantType) IsArray() (result bool) {
 }
 
 // g_variant_type_is_basic
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) IsBasic() (result bool) {
 	iv, err := _I.Get(765, "VariantType", "is_basic")
 	if err != nil {
@@ -16522,8 +18275,9 @@ func (v VariantType) IsBasic() (result bool) {
 }
 
 // g_variant_type_is_container
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) IsContainer() (result bool) {
 	iv, err := _I.Get(766, "VariantType", "is_container")
 	if err != nil {
@@ -16539,8 +18293,9 @@ func (v VariantType) IsContainer() (result bool) {
 }
 
 // g_variant_type_is_definite
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) IsDefinite() (result bool) {
 	iv, err := _I.Get(767, "VariantType", "is_definite")
 	if err != nil {
@@ -16556,8 +18311,9 @@ func (v VariantType) IsDefinite() (result bool) {
 }
 
 // g_variant_type_is_dict_entry
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) IsDictEntry() (result bool) {
 	iv, err := _I.Get(768, "VariantType", "is_dict_entry")
 	if err != nil {
@@ -16573,8 +18329,9 @@ func (v VariantType) IsDictEntry() (result bool) {
 }
 
 // g_variant_type_is_maybe
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) IsMaybe() (result bool) {
 	iv, err := _I.Get(769, "VariantType", "is_maybe")
 	if err != nil {
@@ -16590,8 +18347,11 @@ func (v VariantType) IsMaybe() (result bool) {
 }
 
 // g_variant_type_is_subtype_of
-// container is not nil, container is VariantType
-// is method
+//
+// [ supertype ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) IsSubtypeOf(supertype VariantType) (result bool) {
 	iv, err := _I.Get(770, "VariantType", "is_subtype_of")
 	if err != nil {
@@ -16608,8 +18368,9 @@ func (v VariantType) IsSubtypeOf(supertype VariantType) (result bool) {
 }
 
 // g_variant_type_is_tuple
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) IsTuple() (result bool) {
 	iv, err := _I.Get(771, "VariantType", "is_tuple")
 	if err != nil {
@@ -16625,8 +18386,9 @@ func (v VariantType) IsTuple() (result bool) {
 }
 
 // g_variant_type_is_variant
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) IsVariant() (result bool) {
 	iv, err := _I.Get(772, "VariantType", "is_variant")
 	if err != nil {
@@ -16642,8 +18404,9 @@ func (v VariantType) IsVariant() (result bool) {
 }
 
 // g_variant_type_key
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) Key() (result VariantType) {
 	iv, err := _I.Get(773, "VariantType", "key")
 	if err != nil {
@@ -16659,8 +18422,9 @@ func (v VariantType) Key() (result VariantType) {
 }
 
 // g_variant_type_n_items
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) NItems() (result uint64) {
 	iv, err := _I.Get(774, "VariantType", "n_items")
 	if err != nil {
@@ -16676,8 +18440,9 @@ func (v VariantType) NItems() (result uint64) {
 }
 
 // g_variant_type_next
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) Next() (result VariantType) {
 	iv, err := _I.Get(775, "VariantType", "next")
 	if err != nil {
@@ -16693,8 +18458,9 @@ func (v VariantType) Next() (result VariantType) {
 }
 
 // g_variant_type_value
-// container is not nil, container is VariantType
-// is method
+//
+// [ result ] trans: nothing
+//
 func (v VariantType) Value() (result VariantType) {
 	iv, err := _I.Get(776, "VariantType", "value")
 	if err != nil {
@@ -16710,9 +18476,11 @@ func (v VariantType) Value() (result VariantType) {
 }
 
 // g_variant_type_checked_
-// container is not nil, container is VariantType
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ arg0 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VariantTypeChecked_1(arg0 string) (result VariantType) {
 	iv, err := _I.Get(777, "VariantType", "checked_")
 	if err != nil {
@@ -16730,9 +18498,11 @@ func VariantTypeChecked_1(arg0 string) (result VariantType) {
 }
 
 // g_variant_type_string_get_depth_
-// container is not nil, container is VariantType
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ type_string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VariantTypeStringGetDepth_1(type_string string) (result uint64) {
 	iv, err := _I.Get(778, "VariantType", "string_get_depth_")
 	if err != nil {
@@ -16750,9 +18520,11 @@ func VariantTypeStringGetDepth_1(type_string string) (result uint64) {
 }
 
 // g_variant_type_string_is_valid
-// container is not nil, container is VariantType
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ type_string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VariantTypeStringIsValid1(type_string string) (result bool) {
 	iv, err := _I.Get(779, "VariantType", "string_is_valid")
 	if err != nil {
@@ -16770,9 +18542,15 @@ func VariantTypeStringIsValid1(type_string string) (result bool) {
 }
 
 // g_variant_type_string_scan
-// container is not nil, container is VariantType
-// is method
-// arg0Type tag: utf8, isPtr: true
+//
+// [ string ] trans: nothing
+//
+// [ limit ] trans: nothing
+//
+// [ endptr ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func VariantTypeStringScan1(string string, limit string) (result bool, endptr string) {
 	iv, err := _I.Get(780, "VariantType", "string_scan")
 	if err != nil {
@@ -16808,7 +18586,13 @@ func myGLibVoidFunc() {
 }
 
 // g_access
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ mode ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Access(filename string, mode int32) (result int32) {
 	iv, err := _I.Get(781, "access", "")
 	if err != nil {
@@ -16827,7 +18611,11 @@ func Access(filename string, mode int32) (result int32) {
 }
 
 // g_ascii_digit_value
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AsciiDigitValue(c int8) (result int32) {
 	iv, err := _I.Get(782, "ascii_digit_value", "")
 	if err != nil {
@@ -16843,7 +18631,15 @@ func AsciiDigitValue(c int8) (result int32) {
 }
 
 // g_ascii_dtostr
-// container is nil
+//
+// [ buffer ] trans: nothing
+//
+// [ buf_len ] trans: nothing
+//
+// [ d ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AsciiDtostr(buffer string, buf_len int32, d float64) (result string) {
 	iv, err := _I.Get(783, "ascii_dtostr", "")
 	if err != nil {
@@ -16863,7 +18659,17 @@ func AsciiDtostr(buffer string, buf_len int32, d float64) (result string) {
 }
 
 // g_ascii_formatd
-// container is nil
+//
+// [ buffer ] trans: nothing
+//
+// [ buf_len ] trans: nothing
+//
+// [ format ] trans: nothing
+//
+// [ d ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AsciiFormatd(buffer string, buf_len int32, format string, d float64) (result string) {
 	iv, err := _I.Get(784, "ascii_formatd", "")
 	if err != nil {
@@ -16886,7 +18692,13 @@ func AsciiFormatd(buffer string, buf_len int32, format string, d float64) (resul
 }
 
 // g_ascii_strcasecmp
-// container is nil
+//
+// [ s1 ] trans: nothing
+//
+// [ s2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AsciiStrcasecmp(s1 string, s2 string) (result int32) {
 	iv, err := _I.Get(785, "ascii_strcasecmp", "")
 	if err != nil {
@@ -16907,7 +18719,13 @@ func AsciiStrcasecmp(s1 string, s2 string) (result int32) {
 }
 
 // g_ascii_strdown
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AsciiStrdown(str string, len1 int64) (result string) {
 	iv, err := _I.Get(786, "ascii_strdown", "")
 	if err != nil {
@@ -16926,7 +18744,19 @@ func AsciiStrdown(str string, len1 int64) (result string) {
 }
 
 // g_ascii_string_to_signed
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ base ] trans: nothing
+//
+// [ min ] trans: nothing
+//
+// [ max ] trans: nothing
+//
+// [ out_num ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func AsciiStringToSigned(str string, base uint32, min int64, max int64) (result bool, out_num int64, err error) {
 	iv, err := _I.Get(787, "ascii_string_to_signed", "")
 	if err != nil {
@@ -16951,7 +18781,19 @@ func AsciiStringToSigned(str string, base uint32, min int64, max int64) (result 
 }
 
 // g_ascii_string_to_unsigned
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ base ] trans: nothing
+//
+// [ min ] trans: nothing
+//
+// [ max ] trans: nothing
+//
+// [ out_num ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (result bool, out_num uint64, err error) {
 	iv, err := _I.Get(788, "ascii_string_to_unsigned", "")
 	if err != nil {
@@ -16976,7 +18818,15 @@ func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (res
 }
 
 // g_ascii_strncasecmp
-// container is nil
+//
+// [ s1 ] trans: nothing
+//
+// [ s2 ] trans: nothing
+//
+// [ n ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AsciiStrncasecmp(s1 string, s2 string, n uint64) (result int32) {
 	iv, err := _I.Get(789, "ascii_strncasecmp", "")
 	if err != nil {
@@ -16998,7 +18848,13 @@ func AsciiStrncasecmp(s1 string, s2 string, n uint64) (result int32) {
 }
 
 // g_ascii_strtod
-// container is nil
+//
+// [ nptr ] trans: nothing
+//
+// [ endptr ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func AsciiStrtod(nptr string) (result float64, endptr string) {
 	iv, err := _I.Get(790, "ascii_strtod", "")
 	if err != nil {
@@ -17013,13 +18869,21 @@ func AsciiStrtod(nptr string) (result float64, endptr string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_nptr)
-	endptr = outArgs[0].String().Take()
+	endptr = outArgs[0].String().Copy()
 	result = ret.Double()
 	return
 }
 
 // g_ascii_strtoll
-// container is nil
+//
+// [ nptr ] trans: nothing
+//
+// [ endptr ] trans: nothing, dir: out
+//
+// [ base ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AsciiStrtoll(nptr string, base uint32) (result int64, endptr string) {
 	iv, err := _I.Get(791, "ascii_strtoll", "")
 	if err != nil {
@@ -17035,13 +18899,21 @@ func AsciiStrtoll(nptr string, base uint32) (result int64, endptr string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_nptr)
-	endptr = outArgs[0].String().Take()
+	endptr = outArgs[0].String().Copy()
 	result = ret.Int64()
 	return
 }
 
 // g_ascii_strtoull
-// container is nil
+//
+// [ nptr ] trans: nothing
+//
+// [ endptr ] trans: nothing, dir: out
+//
+// [ base ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AsciiStrtoull(nptr string, base uint32) (result uint64, endptr string) {
 	iv, err := _I.Get(792, "ascii_strtoull", "")
 	if err != nil {
@@ -17057,13 +18929,19 @@ func AsciiStrtoull(nptr string, base uint32) (result uint64, endptr string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_nptr)
-	endptr = outArgs[0].String().Take()
+	endptr = outArgs[0].String().Copy()
 	result = ret.Uint64()
 	return
 }
 
 // g_ascii_strup
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AsciiStrup(str string, len1 int64) (result string) {
 	iv, err := _I.Get(793, "ascii_strup", "")
 	if err != nil {
@@ -17082,7 +18960,11 @@ func AsciiStrup(str string, len1 int64) (result string) {
 }
 
 // g_ascii_tolower
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AsciiTolower(c int8) (result int8) {
 	iv, err := _I.Get(794, "ascii_tolower", "")
 	if err != nil {
@@ -17098,7 +18980,11 @@ func AsciiTolower(c int8) (result int8) {
 }
 
 // g_ascii_toupper
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AsciiToupper(c int8) (result int8) {
 	iv, err := _I.Get(795, "ascii_toupper", "")
 	if err != nil {
@@ -17114,7 +19000,11 @@ func AsciiToupper(c int8) (result int8) {
 }
 
 // g_ascii_xdigit_value
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AsciiXdigitValue(c int8) (result int32) {
 	iv, err := _I.Get(796, "ascii_xdigit_value", "")
 	if err != nil {
@@ -17130,7 +19020,17 @@ func AsciiXdigitValue(c int8) (result int32) {
 }
 
 // g_assert_warning
-// container is nil
+//
+// [ log_domain ] trans: nothing
+//
+// [ file ] trans: nothing
+//
+// [ line ] trans: nothing
+//
+// [ pretty_function ] trans: nothing
+//
+// [ expression ] trans: nothing
+//
 func AssertWarning(log_domain string, file string, line int32, pretty_function string, expression string) {
 	iv, err := _I.Get(797, "assert_warning", "")
 	if err != nil {
@@ -17155,7 +19055,17 @@ func AssertWarning(log_domain string, file string, line int32, pretty_function s
 }
 
 // g_assertion_message
-// container is nil
+//
+// [ domain ] trans: nothing
+//
+// [ file ] trans: nothing
+//
+// [ line ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ message ] trans: nothing
+//
 func AssertionMessage(domain string, file string, line int32, func1 string, message string) {
 	iv, err := _I.Get(798, "assertion_message", "")
 	if err != nil {
@@ -17180,7 +19090,23 @@ func AssertionMessage(domain string, file string, line int32, func1 string, mess
 }
 
 // g_assertion_message_cmpstr
-// container is nil
+//
+// [ domain ] trans: nothing
+//
+// [ file ] trans: nothing
+//
+// [ line ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ expr ] trans: nothing
+//
+// [ arg1 ] trans: nothing
+//
+// [ cmp ] trans: nothing
+//
+// [ arg2 ] trans: nothing
+//
 func AssertionMessageCmpstr(domain string, file string, line int32, func1 string, expr string, arg1 string, cmp string, arg2 string) {
 	iv, err := _I.Get(799, "assertion_message_cmpstr", "")
 	if err != nil {
@@ -17214,7 +19140,23 @@ func AssertionMessageCmpstr(domain string, file string, line int32, func1 string
 }
 
 // g_assertion_message_error
-// container is nil
+//
+// [ domain ] trans: nothing
+//
+// [ file ] trans: nothing
+//
+// [ line ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ expr ] trans: nothing
+//
+// [ error ] trans: nothing
+//
+// [ error_domain ] trans: nothing
+//
+// [ error_code ] trans: nothing
+//
 func AssertionMessageError(domain string, file string, line int32, func1 string, expr string, error Error, error_domain uint32, error_code int32) {
 	iv, err := _I.Get(800, "assertion_message_error", "")
 	if err != nil {
@@ -17242,7 +19184,9 @@ func AssertionMessageError(domain string, file string, line int32, func1 string,
 }
 
 // g_atexit
-// container is nil
+//
+// [ func1 ] trans: nothing
+//
 func Atexit(func1 int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(801, "atexit", "")
 	if err != nil {
@@ -17255,7 +19199,13 @@ func Atexit(func1 int /*TODO_TYPE CALLBACK*/) {
 }
 
 // g_atomic_int_add
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicIntAdd(atomic int32, val int32) (result int32) {
 	iv, err := _I.Get(802, "atomic_int_add", "")
 	if err != nil {
@@ -17272,7 +19222,13 @@ func AtomicIntAdd(atomic int32, val int32) (result int32) {
 }
 
 // g_atomic_int_and
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicIntAnd(atomic uint32, val uint32) (result uint32) {
 	iv, err := _I.Get(803, "atomic_int_and", "")
 	if err != nil {
@@ -17289,7 +19245,15 @@ func AtomicIntAnd(atomic uint32, val uint32) (result uint32) {
 }
 
 // g_atomic_int_compare_and_exchange
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ oldval ] trans: nothing
+//
+// [ newval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicIntCompareAndExchange(atomic int32, oldval int32, newval int32) (result bool) {
 	iv, err := _I.Get(804, "atomic_int_compare_and_exchange", "")
 	if err != nil {
@@ -17307,7 +19271,11 @@ func AtomicIntCompareAndExchange(atomic int32, oldval int32, newval int32) (resu
 }
 
 // g_atomic_int_dec_and_test
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicIntDecAndTest(atomic int32) (result bool) {
 	iv, err := _I.Get(805, "atomic_int_dec_and_test", "")
 	if err != nil {
@@ -17323,7 +19291,13 @@ func AtomicIntDecAndTest(atomic int32) (result bool) {
 }
 
 // g_atomic_int_exchange_and_add
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicIntExchangeAndAdd(atomic int32, val int32) (result int32) {
 	iv, err := _I.Get(806, "atomic_int_exchange_and_add", "")
 	if err != nil {
@@ -17340,7 +19314,11 @@ func AtomicIntExchangeAndAdd(atomic int32, val int32) (result int32) {
 }
 
 // g_atomic_int_get
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicIntGet(atomic int32) (result int32) {
 	iv, err := _I.Get(807, "atomic_int_get", "")
 	if err != nil {
@@ -17356,7 +19334,9 @@ func AtomicIntGet(atomic int32) (result int32) {
 }
 
 // g_atomic_int_inc
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
 func AtomicIntInc(atomic int32) {
 	iv, err := _I.Get(808, "atomic_int_inc", "")
 	if err != nil {
@@ -17369,7 +19349,13 @@ func AtomicIntInc(atomic int32) {
 }
 
 // g_atomic_int_or
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicIntOr(atomic uint32, val uint32) (result uint32) {
 	iv, err := _I.Get(809, "atomic_int_or", "")
 	if err != nil {
@@ -17386,7 +19372,11 @@ func AtomicIntOr(atomic uint32, val uint32) (result uint32) {
 }
 
 // g_atomic_int_set
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ newval ] trans: nothing
+//
 func AtomicIntSet(atomic int32, newval int32) {
 	iv, err := _I.Get(810, "atomic_int_set", "")
 	if err != nil {
@@ -17400,7 +19390,13 @@ func AtomicIntSet(atomic int32, newval int32) {
 }
 
 // g_atomic_int_xor
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicIntXor(atomic uint32, val uint32) (result uint32) {
 	iv, err := _I.Get(811, "atomic_int_xor", "")
 	if err != nil {
@@ -17417,7 +19413,13 @@ func AtomicIntXor(atomic uint32, val uint32) (result uint32) {
 }
 
 // g_atomic_pointer_add
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicPointerAdd(atomic unsafe.Pointer, val int64) (result int64) {
 	iv, err := _I.Get(812, "atomic_pointer_add", "")
 	if err != nil {
@@ -17434,7 +19436,13 @@ func AtomicPointerAdd(atomic unsafe.Pointer, val int64) (result int64) {
 }
 
 // g_atomic_pointer_and
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicPointerAnd(atomic unsafe.Pointer, val uint64) (result uint64) {
 	iv, err := _I.Get(813, "atomic_pointer_and", "")
 	if err != nil {
@@ -17451,7 +19459,15 @@ func AtomicPointerAnd(atomic unsafe.Pointer, val uint64) (result uint64) {
 }
 
 // g_atomic_pointer_compare_and_exchange
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ oldval ] trans: nothing
+//
+// [ newval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicPointerCompareAndExchange(atomic unsafe.Pointer, oldval unsafe.Pointer, newval unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(814, "atomic_pointer_compare_and_exchange", "")
 	if err != nil {
@@ -17469,7 +19485,11 @@ func AtomicPointerCompareAndExchange(atomic unsafe.Pointer, oldval unsafe.Pointe
 }
 
 // g_atomic_pointer_get
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicPointerGet(atomic unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(815, "atomic_pointer_get", "")
 	if err != nil {
@@ -17485,7 +19505,13 @@ func AtomicPointerGet(atomic unsafe.Pointer) (result unsafe.Pointer) {
 }
 
 // g_atomic_pointer_or
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicPointerOr(atomic unsafe.Pointer, val uint64) (result uint64) {
 	iv, err := _I.Get(816, "atomic_pointer_or", "")
 	if err != nil {
@@ -17502,7 +19528,11 @@ func AtomicPointerOr(atomic unsafe.Pointer, val uint64) (result uint64) {
 }
 
 // g_atomic_pointer_set
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ newval ] trans: nothing
+//
 func AtomicPointerSet(atomic unsafe.Pointer, newval unsafe.Pointer) {
 	iv, err := _I.Get(817, "atomic_pointer_set", "")
 	if err != nil {
@@ -17516,7 +19546,13 @@ func AtomicPointerSet(atomic unsafe.Pointer, newval unsafe.Pointer) {
 }
 
 // g_atomic_pointer_xor
-// container is nil
+//
+// [ atomic ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicPointerXor(atomic unsafe.Pointer, val uint64) (result uint64) {
 	iv, err := _I.Get(818, "atomic_pointer_xor", "")
 	if err != nil {
@@ -17533,7 +19569,11 @@ func AtomicPointerXor(atomic unsafe.Pointer, val uint64) (result uint64) {
 }
 
 // g_atomic_rc_box_acquire
-// container is nil
+//
+// [ mem_block ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AtomicRcBoxAcquire(mem_block unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(819, "atomic_rc_box_acquire", "")
 	if err != nil {
@@ -17549,7 +19589,11 @@ func AtomicRcBoxAcquire(mem_block unsafe.Pointer) (result unsafe.Pointer) {
 }
 
 // g_atomic_rc_box_alloc
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AtomicRcBoxAlloc(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(820, "atomic_rc_box_alloc", "")
 	if err != nil {
@@ -17565,7 +19609,11 @@ func AtomicRcBoxAlloc(block_size uint64) (result unsafe.Pointer) {
 }
 
 // g_atomic_rc_box_alloc0
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AtomicRcBoxAlloc0(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(821, "atomic_rc_box_alloc0", "")
 	if err != nil {
@@ -17581,7 +19629,13 @@ func AtomicRcBoxAlloc0(block_size uint64) (result unsafe.Pointer) {
 }
 
 // g_atomic_rc_box_dup
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ mem_block ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func AtomicRcBoxDup(block_size uint64, mem_block unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(822, "atomic_rc_box_dup", "")
 	if err != nil {
@@ -17598,7 +19652,11 @@ func AtomicRcBoxDup(block_size uint64, mem_block unsafe.Pointer) (result unsafe.
 }
 
 // g_atomic_rc_box_get_size
-// container is nil
+//
+// [ mem_block ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicRcBoxGetSize(mem_block unsafe.Pointer) (result uint64) {
 	iv, err := _I.Get(823, "atomic_rc_box_get_size", "")
 	if err != nil {
@@ -17614,7 +19672,9 @@ func AtomicRcBoxGetSize(mem_block unsafe.Pointer) (result uint64) {
 }
 
 // g_atomic_rc_box_release
-// container is nil
+//
+// [ mem_block ] trans: everything
+//
 func AtomicRcBoxRelease(mem_block unsafe.Pointer) {
 	iv, err := _I.Get(824, "atomic_rc_box_release", "")
 	if err != nil {
@@ -17627,7 +19687,11 @@ func AtomicRcBoxRelease(mem_block unsafe.Pointer) {
 }
 
 // g_atomic_rc_box_release_full
-// container is nil
+//
+// [ mem_block ] trans: everything
+//
+// [ clear_func ] trans: nothing
+//
 func AtomicRcBoxReleaseFull(mem_block unsafe.Pointer, clear_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(825, "atomic_rc_box_release_full", "")
 	if err != nil {
@@ -17641,7 +19705,13 @@ func AtomicRcBoxReleaseFull(mem_block unsafe.Pointer, clear_func int /*TODO_TYPE
 }
 
 // g_atomic_ref_count_compare
-// container is nil
+//
+// [ arc ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicRefCountCompare(arc int32, val int32) (result bool) {
 	iv, err := _I.Get(826, "atomic_ref_count_compare", "")
 	if err != nil {
@@ -17658,7 +19728,11 @@ func AtomicRefCountCompare(arc int32, val int32) (result bool) {
 }
 
 // g_atomic_ref_count_dec
-// container is nil
+//
+// [ arc ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func AtomicRefCountDec(arc int32) (result bool) {
 	iv, err := _I.Get(827, "atomic_ref_count_dec", "")
 	if err != nil {
@@ -17674,7 +19748,9 @@ func AtomicRefCountDec(arc int32) (result bool) {
 }
 
 // g_atomic_ref_count_inc
-// container is nil
+//
+// [ arc ] trans: nothing
+//
 func AtomicRefCountInc(arc int32) {
 	iv, err := _I.Get(828, "atomic_ref_count_inc", "")
 	if err != nil {
@@ -17687,7 +19763,9 @@ func AtomicRefCountInc(arc int32) {
 }
 
 // g_atomic_ref_count_init
-// container is nil
+//
+// [ arc ] trans: nothing
+//
 func AtomicRefCountInit(arc int32) {
 	iv, err := _I.Get(829, "atomic_ref_count_init", "")
 	if err != nil {
@@ -17700,8 +19778,13 @@ func AtomicRefCountInit(arc int32) {
 }
 
 // g_base64_decode
-// container is nil
-// ret lenArgIdx 1
+//
+// [ text ] trans: nothing
+//
+// [ out_len ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func Base64Decode(text string) (result gi.Uint8Array) {
 	iv, err := _I.Get(830, "base64_decode", "")
 	if err != nil {
@@ -17724,8 +19807,13 @@ func Base64Decode(text string) (result gi.Uint8Array) {
 }
 
 // g_base64_decode_inplace
-// container is nil
-// arg 0 text lenArgIdx 1
+//
+// [ text ] trans: everything, dir: inout
+//
+// [ out_len ] trans: nothing, dir: inout
+//
+// [ result ] trans: nothing
+//
 func Base64DecodeInplace(text int /*TODO:TYPE*/, out_len int /*TODO:TYPE*/) (result uint8) {
 	iv, err := _I.Get(831, "base64_decode_inplace", "")
 	if err != nil {
@@ -17740,8 +19828,13 @@ func Base64DecodeInplace(text int /*TODO:TYPE*/, out_len int /*TODO:TYPE*/) (res
 }
 
 // g_base64_encode
-// container is nil
-// arg 0 data lenArgIdx 1
+//
+// [ data ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Base64Encode(data gi.Uint8Array, len1 uint64) (result string) {
 	iv, err := _I.Get(832, "base64_encode", "")
 	if err != nil {
@@ -17758,7 +19851,17 @@ func Base64Encode(data gi.Uint8Array, len1 uint64) (result string) {
 }
 
 // g_base64_encode_close
-// container is nil
+//
+// [ break_lines ] trans: nothing
+//
+// [ out ] trans: everything, dir: out
+//
+// [ state ] trans: everything, dir: inout
+//
+// [ save ] trans: everything, dir: inout
+//
+// [ result ] trans: nothing
+//
 func Base64EncodeClose(break_lines bool, state int /*TODO:TYPE*/, save int /*TODO:TYPE*/) (result uint64, out gi.Uint8Array) {
 	iv, err := _I.Get(833, "base64_encode_close", "")
 	if err != nil {
@@ -17777,8 +19880,21 @@ func Base64EncodeClose(break_lines bool, state int /*TODO:TYPE*/, save int /*TOD
 }
 
 // g_base64_encode_step
-// container is nil
-// arg 0 in lenArgIdx 1
+//
+// [ in ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ break_lines ] trans: nothing
+//
+// [ out ] trans: everything, dir: out
+//
+// [ state ] trans: everything, dir: inout
+//
+// [ save ] trans: everything, dir: inout
+//
+// [ result ] trans: nothing
+//
 func Base64EncodeStep(in gi.Uint8Array, len1 uint64, break_lines bool, state int /*TODO:TYPE*/, save int /*TODO:TYPE*/) (result uint64, out gi.Uint8Array) {
 	iv, err := _I.Get(834, "base64_encode_step", "")
 	if err != nil {
@@ -17799,7 +19915,11 @@ func Base64EncodeStep(in gi.Uint8Array, len1 uint64, break_lines bool, state int
 }
 
 // g_basename
-// container is nil
+//
+// [ file_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Basename(file_name string) (result string) {
 	iv, err := _I.Get(835, "basename", "")
 	if err != nil {
@@ -17812,12 +19932,16 @@ func Basename(file_name string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_file_name)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_bit_lock
-// container is nil
+//
+// [ address ] trans: nothing
+//
+// [ lock_bit ] trans: nothing
+//
 func BitLock(address int32, lock_bit int32) {
 	iv, err := _I.Get(836, "bit_lock", "")
 	if err != nil {
@@ -17831,7 +19955,13 @@ func BitLock(address int32, lock_bit int32) {
 }
 
 // g_bit_nth_lsf
-// container is nil
+//
+// [ mask ] trans: nothing
+//
+// [ nth_bit ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func BitNthLsf(mask uint64, nth_bit int32) (result int32) {
 	iv, err := _I.Get(837, "bit_nth_lsf", "")
 	if err != nil {
@@ -17848,7 +19978,13 @@ func BitNthLsf(mask uint64, nth_bit int32) (result int32) {
 }
 
 // g_bit_nth_msf
-// container is nil
+//
+// [ mask ] trans: nothing
+//
+// [ nth_bit ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func BitNthMsf(mask uint64, nth_bit int32) (result int32) {
 	iv, err := _I.Get(838, "bit_nth_msf", "")
 	if err != nil {
@@ -17865,7 +20001,11 @@ func BitNthMsf(mask uint64, nth_bit int32) (result int32) {
 }
 
 // g_bit_storage
-// container is nil
+//
+// [ number ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func BitStorage(number uint64) (result uint32) {
 	iv, err := _I.Get(839, "bit_storage", "")
 	if err != nil {
@@ -17881,7 +20021,13 @@ func BitStorage(number uint64) (result uint32) {
 }
 
 // g_bit_trylock
-// container is nil
+//
+// [ address ] trans: nothing
+//
+// [ lock_bit ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func BitTrylock(address int32, lock_bit int32) (result bool) {
 	iv, err := _I.Get(840, "bit_trylock", "")
 	if err != nil {
@@ -17898,7 +20044,11 @@ func BitTrylock(address int32, lock_bit int32) (result bool) {
 }
 
 // g_bit_unlock
-// container is nil
+//
+// [ address ] trans: nothing
+//
+// [ lock_bit ] trans: nothing
+//
 func BitUnlock(address int32, lock_bit int32) {
 	iv, err := _I.Get(841, "bit_unlock", "")
 	if err != nil {
@@ -17912,7 +20062,9 @@ func BitUnlock(address int32, lock_bit int32) {
 }
 
 // g_bookmark_file_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func BookmarkFileErrorQuark() (result uint32) {
 	iv, err := _I.Get(842, "bookmark_file_error_quark", "")
 	if err != nil {
@@ -17926,7 +20078,11 @@ func BookmarkFileErrorQuark() (result uint32) {
 }
 
 // g_build_filenamev
-// container is nil
+//
+// [ args ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func BuildFilenamev(args gi.CStrArray) (result string) {
 	iv, err := _I.Get(843, "build_filenamev", "")
 	if err != nil {
@@ -17942,7 +20098,13 @@ func BuildFilenamev(args gi.CStrArray) (result string) {
 }
 
 // g_build_pathv
-// container is nil
+//
+// [ separator ] trans: nothing
+//
+// [ args ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func BuildPathv(separator string, args gi.CStrArray) (result string) {
 	iv, err := _I.Get(844, "build_pathv", "")
 	if err != nil {
@@ -17961,7 +20123,13 @@ func BuildPathv(separator string, args gi.CStrArray) (result string) {
 }
 
 // g_byte_array_free
-// container is nil
+//
+// [ array ] trans: nothing
+//
+// [ free_segment ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ByteArrayFree(array ByteArray, free_segment bool) (result uint8) {
 	iv, err := _I.Get(845, "byte_array_free", "")
 	if err != nil {
@@ -17978,7 +20146,11 @@ func ByteArrayFree(array ByteArray, free_segment bool) (result uint8) {
 }
 
 // g_byte_array_free_to_bytes
-// container is nil
+//
+// [ array ] trans: everything
+//
+// [ result ] trans: everything
+//
 func ByteArrayFreeToBytes(array ByteArray) (result Bytes) {
 	iv, err := _I.Get(846, "byte_array_free_to_bytes", "")
 	if err != nil {
@@ -17994,7 +20166,9 @@ func ByteArrayFreeToBytes(array ByteArray) (result Bytes) {
 }
 
 // g_byte_array_new
-// container is nil
+//
+// [ result ] trans: everything
+//
 func ByteArrayNew() (result ByteArray) {
 	iv, err := _I.Get(847, "byte_array_new", "")
 	if err != nil {
@@ -18008,8 +20182,13 @@ func ByteArrayNew() (result ByteArray) {
 }
 
 // g_byte_array_new_take
-// container is nil
-// arg 0 data lenArgIdx 1
+//
+// [ data ] trans: everything
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ByteArrayNewTake(data gi.Uint8Array, len1 uint64) (result ByteArray) {
 	iv, err := _I.Get(848, "byte_array_new_take", "")
 	if err != nil {
@@ -18026,7 +20205,9 @@ func ByteArrayNewTake(data gi.Uint8Array, len1 uint64) (result ByteArray) {
 }
 
 // g_byte_array_unref
-// container is nil
+//
+// [ array ] trans: nothing
+//
 func ByteArrayUnref(array ByteArray) {
 	iv, err := _I.Get(849, "byte_array_unref", "")
 	if err != nil {
@@ -18039,7 +20220,13 @@ func ByteArrayUnref(array ByteArray) {
 }
 
 // g_canonicalize_filename
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ relative_to ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func CanonicalizeFilename(filename string, relative_to string) (result string) {
 	iv, err := _I.Get(850, "canonicalize_filename", "")
 	if err != nil {
@@ -18060,7 +20247,11 @@ func CanonicalizeFilename(filename string, relative_to string) (result string) {
 }
 
 // g_chdir
-// container is nil
+//
+// [ path ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Chdir(path string) (result int32) {
 	iv, err := _I.Get(851, "chdir", "")
 	if err != nil {
@@ -18078,7 +20269,15 @@ func Chdir(path string) (result int32) {
 }
 
 // glib_check_version
-// container is nil
+//
+// [ required_major ] trans: nothing
+//
+// [ required_minor ] trans: nothing
+//
+// [ required_micro ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func CheckVersion(required_major uint32, required_minor uint32, required_micro uint32) (result string) {
 	iv, err := _I.Get(852, "check_version", "")
 	if err != nil {
@@ -18091,12 +20290,16 @@ func CheckVersion(required_major uint32, required_minor uint32, required_micro u
 	args := []gi.Argument{arg_required_major, arg_required_minor, arg_required_micro}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_checksum_type_get_length
-// container is nil
+//
+// [ checksum_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ChecksumTypeGetLength(checksum_type ChecksumTypeEnum) (result int64) {
 	iv, err := _I.Get(853, "checksum_type_get_length", "")
 	if err != nil {
@@ -18112,7 +20315,19 @@ func ChecksumTypeGetLength(checksum_type ChecksumTypeEnum) (result int64) {
 }
 
 // g_child_watch_add_full
-// container is nil
+//
+// [ priority ] trans: nothing
+//
+// [ pid ] trans: nothing
+//
+// [ function ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ChildWatchAdd(priority int32, pid int32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(854, "child_watch_add", "")
 	if err != nil {
@@ -18132,7 +20347,11 @@ func ChildWatchAdd(priority int32, pid int32, function int /*TODO_TYPE CALLBACK*
 }
 
 // g_child_watch_source_new
-// container is nil
+//
+// [ pid ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ChildWatchSourceNew(pid int32) (result Source) {
 	iv, err := _I.Get(855, "child_watch_source_new", "")
 	if err != nil {
@@ -18148,7 +20367,7 @@ func ChildWatchSourceNew(pid int32) (result Source) {
 }
 
 // g_clear_error
-// container is nil
+//
 func ClearError() (err error) {
 	iv, err := _I.Get(856, "clear_error", "")
 	if err != nil {
@@ -18163,7 +20382,11 @@ func ClearError() (err error) {
 }
 
 // g_close
-// container is nil
+//
+// [ fd ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Close(fd int32) (result bool, err error) {
 	iv, err := _I.Get(857, "close", "")
 	if err != nil {
@@ -18181,7 +20404,13 @@ func Close(fd int32) (result bool, err error) {
 }
 
 // g_compute_checksum_for_bytes
-// container is nil
+//
+// [ checksum_type ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ComputeChecksumForBytes(checksum_type ChecksumTypeEnum, data Bytes) (result string) {
 	iv, err := _I.Get(858, "compute_checksum_for_bytes", "")
 	if err != nil {
@@ -18198,8 +20427,15 @@ func ComputeChecksumForBytes(checksum_type ChecksumTypeEnum, data Bytes) (result
 }
 
 // g_compute_checksum_for_data
-// container is nil
-// arg 1 data lenArgIdx 2
+//
+// [ checksum_type ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ComputeChecksumForData(checksum_type ChecksumTypeEnum, data gi.Uint8Array, length uint64) (result string) {
 	iv, err := _I.Get(859, "compute_checksum_for_data", "")
 	if err != nil {
@@ -18217,7 +20453,15 @@ func ComputeChecksumForData(checksum_type ChecksumTypeEnum, data gi.Uint8Array, 
 }
 
 // g_compute_checksum_for_string
-// container is nil
+//
+// [ checksum_type ] trans: nothing
+//
+// [ str ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ComputeChecksumForString(checksum_type ChecksumTypeEnum, str string, length int64) (result string) {
 	iv, err := _I.Get(860, "compute_checksum_for_string", "")
 	if err != nil {
@@ -18237,7 +20481,15 @@ func ComputeChecksumForString(checksum_type ChecksumTypeEnum, str string, length
 }
 
 // g_compute_hmac_for_bytes
-// container is nil
+//
+// [ digest_type ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ComputeHmacForBytes(digest_type ChecksumTypeEnum, key Bytes, data Bytes) (result string) {
 	iv, err := _I.Get(861, "compute_hmac_for_bytes", "")
 	if err != nil {
@@ -18255,9 +20507,19 @@ func ComputeHmacForBytes(digest_type ChecksumTypeEnum, key Bytes, data Bytes) (r
 }
 
 // g_compute_hmac_for_data
-// container is nil
-// arg 1 key lenArgIdx 2
-// arg 3 data lenArgIdx 4
+//
+// [ digest_type ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ key_len ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ComputeHmacForData(digest_type ChecksumTypeEnum, key gi.Uint8Array, key_len uint64, data gi.Uint8Array, length uint64) (result string) {
 	iv, err := _I.Get(862, "compute_hmac_for_data", "")
 	if err != nil {
@@ -18277,8 +20539,19 @@ func ComputeHmacForData(digest_type ChecksumTypeEnum, key gi.Uint8Array, key_len
 }
 
 // g_compute_hmac_for_string
-// container is nil
-// arg 1 key lenArgIdx 2
+//
+// [ digest_type ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ key_len ] trans: nothing
+//
+// [ str ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ComputeHmacForString(digest_type ChecksumTypeEnum, key gi.Uint8Array, key_len uint64, str string, length int64) (result string) {
 	iv, err := _I.Get(863, "compute_hmac_for_string", "")
 	if err != nil {
@@ -18300,9 +20573,21 @@ func ComputeHmacForString(digest_type ChecksumTypeEnum, key gi.Uint8Array, key_l
 }
 
 // g_convert
-// container is nil
-// arg 0 str lenArgIdx 1
-// ret lenArgIdx 5
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ to_codeset ] trans: nothing
+//
+// [ from_codeset ] trans: nothing
+//
+// [ bytes_read ] trans: everything, dir: out
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func Convert(str gi.Uint8Array, len1 int64, to_codeset string, from_codeset string) (result gi.Uint8Array, bytes_read uint64, err error) {
 	iv, err := _I.Get(864, "convert", "")
 	if err != nil {
@@ -18333,7 +20618,9 @@ func Convert(str gi.Uint8Array, len1 int64, to_codeset string, from_codeset stri
 }
 
 // g_convert_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func ConvertErrorQuark() (result uint32) {
 	iv, err := _I.Get(865, "convert_error_quark", "")
 	if err != nil {
@@ -18347,9 +20634,23 @@ func ConvertErrorQuark() (result uint32) {
 }
 
 // g_convert_with_fallback
-// container is nil
-// arg 0 str lenArgIdx 1
-// ret lenArgIdx 6
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ to_codeset ] trans: nothing
+//
+// [ from_codeset ] trans: nothing
+//
+// [ fallback ] trans: nothing
+//
+// [ bytes_read ] trans: everything, dir: out
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func ConvertWithFallback(str gi.Uint8Array, len1 int64, to_codeset string, from_codeset string, fallback string) (result gi.Uint8Array, bytes_read uint64, err error) {
 	iv, err := _I.Get(866, "convert_with_fallback", "")
 	if err != nil {
@@ -18383,7 +20684,13 @@ func ConvertWithFallback(str gi.Uint8Array, len1 int64, to_codeset string, from_
 }
 
 // g_datalist_foreach
-// container is nil
+//
+// [ datalist ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func DatalistForeach(datalist Data, func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(867, "datalist_foreach", "")
 	if err != nil {
@@ -18398,7 +20705,13 @@ func DatalistForeach(datalist Data, func1 int /*TODO_TYPE CALLBACK*/, user_data 
 }
 
 // g_datalist_get_data
-// container is nil
+//
+// [ datalist ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DatalistGetData(datalist Data, key string) (result unsafe.Pointer) {
 	iv, err := _I.Get(868, "datalist_get_data", "")
 	if err != nil {
@@ -18417,7 +20730,11 @@ func DatalistGetData(datalist Data, key string) (result unsafe.Pointer) {
 }
 
 // g_datalist_get_flags
-// container is nil
+//
+// [ datalist ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DatalistGetFlags(datalist Data) (result uint32) {
 	iv, err := _I.Get(869, "datalist_get_flags", "")
 	if err != nil {
@@ -18433,7 +20750,13 @@ func DatalistGetFlags(datalist Data) (result uint32) {
 }
 
 // g_datalist_id_get_data
-// container is nil
+//
+// [ datalist ] trans: nothing
+//
+// [ key_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DatalistIdGetData(datalist Data, key_id uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(870, "datalist_id_get_data", "")
 	if err != nil {
@@ -18450,7 +20773,11 @@ func DatalistIdGetData(datalist Data, key_id uint32) (result unsafe.Pointer) {
 }
 
 // g_datalist_set_flags
-// container is nil
+//
+// [ datalist ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
 func DatalistSetFlags(datalist Data, flags uint32) {
 	iv, err := _I.Get(871, "datalist_set_flags", "")
 	if err != nil {
@@ -18464,7 +20791,11 @@ func DatalistSetFlags(datalist Data, flags uint32) {
 }
 
 // g_datalist_unset_flags
-// container is nil
+//
+// [ datalist ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
 func DatalistUnsetFlags(datalist Data, flags uint32) {
 	iv, err := _I.Get(872, "datalist_unset_flags", "")
 	if err != nil {
@@ -18478,7 +20809,9 @@ func DatalistUnsetFlags(datalist Data, flags uint32) {
 }
 
 // g_dataset_destroy
-// container is nil
+//
+// [ dataset_location ] trans: nothing
+//
 func DatasetDestroy(dataset_location unsafe.Pointer) {
 	iv, err := _I.Get(873, "dataset_destroy", "")
 	if err != nil {
@@ -18491,7 +20824,13 @@ func DatasetDestroy(dataset_location unsafe.Pointer) {
 }
 
 // g_dataset_foreach
-// container is nil
+//
+// [ dataset_location ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
 func DatasetForeach(dataset_location unsafe.Pointer, func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(874, "dataset_foreach", "")
 	if err != nil {
@@ -18506,7 +20845,13 @@ func DatasetForeach(dataset_location unsafe.Pointer, func1 int /*TODO_TYPE CALLB
 }
 
 // g_dataset_id_get_data
-// container is nil
+//
+// [ dataset_location ] trans: nothing
+//
+// [ key_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DatasetIdGetData(dataset_location unsafe.Pointer, key_id uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(875, "dataset_id_get_data", "")
 	if err != nil {
@@ -18523,7 +20868,13 @@ func DatasetIdGetData(dataset_location unsafe.Pointer, key_id uint32) (result un
 }
 
 // g_date_get_days_in_month
-// container is nil
+//
+// [ month ] trans: nothing
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateGetDaysInMonth(month DateMonthEnum, year uint16) (result uint8) {
 	iv, err := _I.Get(876, "date_get_days_in_month", "")
 	if err != nil {
@@ -18540,7 +20891,11 @@ func DateGetDaysInMonth(month DateMonthEnum, year uint16) (result uint8) {
 }
 
 // g_date_get_monday_weeks_in_year
-// container is nil
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateGetMondayWeeksInYear(year uint16) (result uint8) {
 	iv, err := _I.Get(877, "date_get_monday_weeks_in_year", "")
 	if err != nil {
@@ -18556,7 +20911,11 @@ func DateGetMondayWeeksInYear(year uint16) (result uint8) {
 }
 
 // g_date_get_sunday_weeks_in_year
-// container is nil
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateGetSundayWeeksInYear(year uint16) (result uint8) {
 	iv, err := _I.Get(878, "date_get_sunday_weeks_in_year", "")
 	if err != nil {
@@ -18572,7 +20931,11 @@ func DateGetSundayWeeksInYear(year uint16) (result uint8) {
 }
 
 // g_date_is_leap_year
-// container is nil
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateIsLeapYear(year uint16) (result bool) {
 	iv, err := _I.Get(879, "date_is_leap_year", "")
 	if err != nil {
@@ -18588,7 +20951,17 @@ func DateIsLeapYear(year uint16) (result bool) {
 }
 
 // g_date_strftime
-// container is nil
+//
+// [ s ] trans: nothing
+//
+// [ slen ] trans: nothing
+//
+// [ format ] trans: nothing
+//
+// [ date ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateStrftime(s string, slen uint64, format string, date Date) (result uint64) {
 	iv, err := _I.Get(880, "date_strftime", "")
 	if err != nil {
@@ -18611,7 +20984,13 @@ func DateStrftime(s string, slen uint64, format string, date Date) (result uint6
 }
 
 // g_date_time_compare
-// container is nil
+//
+// [ dt1 ] trans: nothing
+//
+// [ dt2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateTimeCompare(dt1 unsafe.Pointer, dt2 unsafe.Pointer) (result int32) {
 	iv, err := _I.Get(881, "date_time_compare", "")
 	if err != nil {
@@ -18628,7 +21007,13 @@ func DateTimeCompare(dt1 unsafe.Pointer, dt2 unsafe.Pointer) (result int32) {
 }
 
 // g_date_time_equal
-// container is nil
+//
+// [ dt1 ] trans: nothing
+//
+// [ dt2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateTimeEqual(dt1 unsafe.Pointer, dt2 unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(882, "date_time_equal", "")
 	if err != nil {
@@ -18645,7 +21030,11 @@ func DateTimeEqual(dt1 unsafe.Pointer, dt2 unsafe.Pointer) (result bool) {
 }
 
 // g_date_time_hash
-// container is nil
+//
+// [ datetime ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateTimeHash(datetime unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(883, "date_time_hash", "")
 	if err != nil {
@@ -18661,7 +21050,11 @@ func DateTimeHash(datetime unsafe.Pointer) (result uint32) {
 }
 
 // g_date_valid_day
-// container is nil
+//
+// [ day ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidDay(day uint8) (result bool) {
 	iv, err := _I.Get(884, "date_valid_day", "")
 	if err != nil {
@@ -18677,7 +21070,15 @@ func DateValidDay(day uint8) (result bool) {
 }
 
 // g_date_valid_dmy
-// container is nil
+//
+// [ day ] trans: nothing
+//
+// [ month ] trans: nothing
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidDmy(day uint8, month DateMonthEnum, year uint16) (result bool) {
 	iv, err := _I.Get(885, "date_valid_dmy", "")
 	if err != nil {
@@ -18695,7 +21096,11 @@ func DateValidDmy(day uint8, month DateMonthEnum, year uint16) (result bool) {
 }
 
 // g_date_valid_julian
-// container is nil
+//
+// [ julian_date ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidJulian(julian_date uint32) (result bool) {
 	iv, err := _I.Get(886, "date_valid_julian", "")
 	if err != nil {
@@ -18711,7 +21116,11 @@ func DateValidJulian(julian_date uint32) (result bool) {
 }
 
 // g_date_valid_month
-// container is nil
+//
+// [ month ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidMonth(month DateMonthEnum) (result bool) {
 	iv, err := _I.Get(887, "date_valid_month", "")
 	if err != nil {
@@ -18727,7 +21136,11 @@ func DateValidMonth(month DateMonthEnum) (result bool) {
 }
 
 // g_date_valid_weekday
-// container is nil
+//
+// [ weekday ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidWeekday(weekday DateWeekdayEnum) (result bool) {
 	iv, err := _I.Get(888, "date_valid_weekday", "")
 	if err != nil {
@@ -18743,7 +21156,11 @@ func DateValidWeekday(weekday DateWeekdayEnum) (result bool) {
 }
 
 // g_date_valid_year
-// container is nil
+//
+// [ year ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DateValidYear(year uint16) (result bool) {
 	iv, err := _I.Get(889, "date_valid_year", "")
 	if err != nil {
@@ -18759,7 +21176,15 @@ func DateValidYear(year uint16) (result bool) {
 }
 
 // g_dcgettext
-// container is nil
+//
+// [ domain ] trans: nothing
+//
+// [ msgid ] trans: nothing
+//
+// [ category ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Dcgettext(domain string, msgid string, category int32) (result string) {
 	iv, err := _I.Get(890, "dcgettext", "")
 	if err != nil {
@@ -18776,12 +21201,18 @@ func Dcgettext(domain string, msgid string, category int32) (result string) {
 	iv.Call(args, &ret, nil)
 	gi.Free(c_domain)
 	gi.Free(c_msgid)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dgettext
-// container is nil
+//
+// [ domain ] trans: nothing
+//
+// [ msgid ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Dgettext(domain string, msgid string) (result string) {
 	iv, err := _I.Get(891, "dgettext", "")
 	if err != nil {
@@ -18797,12 +21228,16 @@ func Dgettext(domain string, msgid string) (result string) {
 	iv.Call(args, &ret, nil)
 	gi.Free(c_domain)
 	gi.Free(c_msgid)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dir_make_tmp
-// container is nil
+//
+// [ tmpl ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func DirMakeTmp(tmpl string) (result string, err error) {
 	iv, err := _I.Get(892, "dir_make_tmp", "")
 	if err != nil {
@@ -18822,7 +21257,13 @@ func DirMakeTmp(tmpl string) (result string, err error) {
 }
 
 // g_direct_equal
-// container is nil
+//
+// [ v1 ] trans: nothing
+//
+// [ v2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DirectEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(893, "direct_equal", "")
 	if err != nil {
@@ -18839,7 +21280,11 @@ func DirectEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) (result bool) {
 }
 
 // g_direct_hash
-// container is nil
+//
+// [ v ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DirectHash(v unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(894, "direct_hash", "")
 	if err != nil {
@@ -18855,7 +21300,17 @@ func DirectHash(v unsafe.Pointer) (result uint32) {
 }
 
 // g_dngettext
-// container is nil
+//
+// [ domain ] trans: nothing
+//
+// [ msgid ] trans: nothing
+//
+// [ msgid_plural ] trans: nothing
+//
+// [ n ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Dngettext(domain string, msgid string, msgid_plural string, n uint64) (result string) {
 	iv, err := _I.Get(895, "dngettext", "")
 	if err != nil {
@@ -18875,12 +21330,18 @@ func Dngettext(domain string, msgid string, msgid_plural string, n uint64) (resu
 	gi.Free(c_domain)
 	gi.Free(c_msgid)
 	gi.Free(c_msgid_plural)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_double_equal
-// container is nil
+//
+// [ v1 ] trans: nothing
+//
+// [ v2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DoubleEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(896, "double_equal", "")
 	if err != nil {
@@ -18897,7 +21358,11 @@ func DoubleEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) (result bool) {
 }
 
 // g_double_hash
-// container is nil
+//
+// [ v ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func DoubleHash(v unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(897, "double_hash", "")
 	if err != nil {
@@ -18913,7 +21378,15 @@ func DoubleHash(v unsafe.Pointer) (result uint32) {
 }
 
 // g_dpgettext
-// container is nil
+//
+// [ domain ] trans: nothing
+//
+// [ msgctxtid ] trans: nothing
+//
+// [ msgidoffset ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) (result string) {
 	iv, err := _I.Get(898, "dpgettext", "")
 	if err != nil {
@@ -18930,12 +21403,20 @@ func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) (result stri
 	iv.Call(args, &ret, nil)
 	gi.Free(c_domain)
 	gi.Free(c_msgctxtid)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_dpgettext2
-// container is nil
+//
+// [ domain ] trans: nothing
+//
+// [ context ] trans: nothing
+//
+// [ msgid ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Dpgettext2(domain string, context string, msgid string) (result string) {
 	iv, err := _I.Get(899, "dpgettext2", "")
 	if err != nil {
@@ -18954,12 +21435,18 @@ func Dpgettext2(domain string, context string, msgid string) (result string) {
 	gi.Free(c_domain)
 	gi.Free(c_context)
 	gi.Free(c_msgid)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_environ_getenv
-// container is nil
+//
+// [ envp ] trans: nothing
+//
+// [ variable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func EnvironGetenv(envp gi.CStrArray, variable string) (result string) {
 	iv, err := _I.Get(900, "environ_getenv", "")
 	if err != nil {
@@ -18973,12 +21460,22 @@ func EnvironGetenv(envp gi.CStrArray, variable string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_variable)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_environ_setenv
-// container is nil
+//
+// [ envp ] trans: everything
+//
+// [ variable ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ overwrite ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func EnvironSetenv(envp gi.CStrArray, variable string, value string, overwrite bool) (result gi.CStrArray) {
 	iv, err := _I.Get(901, "environ_setenv", "")
 	if err != nil {
@@ -19002,7 +21499,13 @@ func EnvironSetenv(envp gi.CStrArray, variable string, value string, overwrite b
 }
 
 // g_environ_unsetenv
-// container is nil
+//
+// [ envp ] trans: everything
+//
+// [ variable ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func EnvironUnsetenv(envp gi.CStrArray, variable string) (result gi.CStrArray) {
 	iv, err := _I.Get(902, "environ_unsetenv", "")
 	if err != nil {
@@ -19022,7 +21525,11 @@ func EnvironUnsetenv(envp gi.CStrArray, variable string) (result gi.CStrArray) {
 }
 
 // g_file_error_from_errno
-// container is nil
+//
+// [ err_no ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func FileErrorFromErrno(err_no int32) (result FileErrorEnum) {
 	iv, err := _I.Get(903, "file_error_from_errno", "")
 	if err != nil {
@@ -19038,7 +21545,9 @@ func FileErrorFromErrno(err_no int32) (result FileErrorEnum) {
 }
 
 // g_file_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func FileErrorQuark() (result uint32) {
 	iv, err := _I.Get(904, "file_error_quark", "")
 	if err != nil {
@@ -19052,8 +21561,15 @@ func FileErrorQuark() (result uint32) {
 }
 
 // g_file_get_contents
-// container is nil
-// arg 1 contents lenArgIdx 2
+//
+// [ filename ] trans: nothing
+//
+// [ contents ] trans: everything, dir: out
+//
+// [ length ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func FileGetContents(filename string) (result bool, contents gi.Uint8Array, err error) {
 	iv, err := _I.Get(905, "file_get_contents", "")
 	if err != nil {
@@ -19080,7 +21596,13 @@ func FileGetContents(filename string) (result bool, contents gi.Uint8Array, err 
 }
 
 // g_file_open_tmp
-// container is nil
+//
+// [ tmpl ] trans: nothing
+//
+// [ name_used ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func FileOpenTmp(tmpl string) (result int32, name_used string, err error) {
 	iv, err := _I.Get(906, "file_open_tmp", "")
 	if err != nil {
@@ -19102,7 +21624,11 @@ func FileOpenTmp(tmpl string) (result int32, name_used string, err error) {
 }
 
 // g_file_read_link
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FileReadLink(filename string) (result string, err error) {
 	iv, err := _I.Get(907, "file_read_link", "")
 	if err != nil {
@@ -19122,8 +21648,15 @@ func FileReadLink(filename string) (result string, err error) {
 }
 
 // g_file_set_contents
-// container is nil
-// arg 1 contents lenArgIdx 2
+//
+// [ filename ] trans: nothing
+//
+// [ contents ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func FileSetContents(filename string, contents gi.Uint8Array, length int64) (result bool, err error) {
 	iv, err := _I.Get(908, "file_set_contents", "")
 	if err != nil {
@@ -19145,7 +21678,13 @@ func FileSetContents(filename string, contents gi.Uint8Array, length int64) (res
 }
 
 // g_file_test
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ test ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func FileTest(filename string, test FileTestFlags) (result bool) {
 	iv, err := _I.Get(909, "file_test", "")
 	if err != nil {
@@ -19164,7 +21703,11 @@ func FileTest(filename string, test FileTestFlags) (result bool) {
 }
 
 // g_filename_display_basename
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FilenameDisplayBasename(filename string) (result string) {
 	iv, err := _I.Get(910, "filename_display_basename", "")
 	if err != nil {
@@ -19182,7 +21725,11 @@ func FilenameDisplayBasename(filename string) (result string) {
 }
 
 // g_filename_display_name
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FilenameDisplayName(filename string) (result string) {
 	iv, err := _I.Get(911, "filename_display_name", "")
 	if err != nil {
@@ -19200,7 +21747,13 @@ func FilenameDisplayName(filename string) (result string) {
 }
 
 // g_filename_from_uri
-// container is nil
+//
+// [ uri ] trans: nothing
+//
+// [ hostname ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func FilenameFromUri(uri string) (result string, hostname string, err error) {
 	iv, err := _I.Get(912, "filename_from_uri", "")
 	if err != nil {
@@ -19222,7 +21775,17 @@ func FilenameFromUri(uri string) (result string, hostname string, err error) {
 }
 
 // g_filename_from_utf8
-// container is nil
+//
+// [ utf8string ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ bytes_read ] trans: everything, dir: out
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func FilenameFromUtf8(utf8string string, len1 int64) (result string, bytes_read uint64, bytes_written uint64, err error) {
 	iv, err := _I.Get(913, "filename_from_utf8", "")
 	if err != nil {
@@ -19247,7 +21810,13 @@ func FilenameFromUtf8(utf8string string, len1 int64) (result string, bytes_read 
 }
 
 // g_filename_to_uri
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ hostname ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FilenameToUri(filename string, hostname string) (result string, err error) {
 	iv, err := _I.Get(914, "filename_to_uri", "")
 	if err != nil {
@@ -19270,7 +21839,17 @@ func FilenameToUri(filename string, hostname string) (result string, err error) 
 }
 
 // g_filename_to_utf8
-// container is nil
+//
+// [ opsysstring ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ bytes_read ] trans: everything, dir: out
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func FilenameToUtf8(opsysstring string, len1 int64) (result string, bytes_read uint64, bytes_written uint64, err error) {
 	iv, err := _I.Get(915, "filename_to_utf8", "")
 	if err != nil {
@@ -19295,7 +21874,11 @@ func FilenameToUtf8(opsysstring string, len1 int64) (result string, bytes_read u
 }
 
 // g_find_program_in_path
-// container is nil
+//
+// [ program ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FindProgramInPath(program string) (result string) {
 	iv, err := _I.Get(916, "find_program_in_path", "")
 	if err != nil {
@@ -19313,7 +21896,11 @@ func FindProgramInPath(program string) (result string) {
 }
 
 // g_format_size
-// container is nil
+//
+// [ size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FormatSize(size uint64) (result string) {
 	iv, err := _I.Get(917, "format_size", "")
 	if err != nil {
@@ -19329,7 +21916,11 @@ func FormatSize(size uint64) (result string) {
 }
 
 // g_format_size_for_display
-// container is nil
+//
+// [ size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FormatSizeForDisplay(size int64) (result string) {
 	iv, err := _I.Get(918, "format_size_for_display", "")
 	if err != nil {
@@ -19345,7 +21936,13 @@ func FormatSizeForDisplay(size int64) (result string) {
 }
 
 // g_format_size_full
-// container is nil
+//
+// [ size ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func FormatSizeFull(size uint64, flags FormatSizeFlags) (result string) {
 	iv, err := _I.Get(919, "format_size_full", "")
 	if err != nil {
@@ -19362,7 +21959,9 @@ func FormatSizeFull(size uint64, flags FormatSizeFlags) (result string) {
 }
 
 // g_free
-// container is nil
+//
+// [ mem ] trans: nothing
+//
 func Free(mem unsafe.Pointer) {
 	iv, err := _I.Get(920, "free", "")
 	if err != nil {
@@ -19375,7 +21974,9 @@ func Free(mem unsafe.Pointer) {
 }
 
 // g_get_application_name
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetApplicationName() (result string) {
 	iv, err := _I.Get(921, "get_application_name", "")
 	if err != nil {
@@ -19384,12 +21985,16 @@ func GetApplicationName() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_charset
-// container is nil
+//
+// [ charset ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func GetCharset() (result bool, charset string) {
 	iv, err := _I.Get(922, "get_charset", "")
 	if err != nil {
@@ -19401,13 +22006,15 @@ func GetCharset() (result bool, charset string) {
 	args := []gi.Argument{arg_charset}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	charset = outArgs[0].String().Take()
+	charset = outArgs[0].String().Copy()
 	result = ret.Bool()
 	return
 }
 
 // g_get_codeset
-// container is nil
+//
+// [ result ] trans: everything
+//
 func GetCodeset() (result string) {
 	iv, err := _I.Get(923, "get_codeset", "")
 	if err != nil {
@@ -19421,7 +22028,9 @@ func GetCodeset() (result string) {
 }
 
 // g_get_current_dir
-// container is nil
+//
+// [ result ] trans: everything
+//
 func GetCurrentDir() (result string) {
 	iv, err := _I.Get(924, "get_current_dir", "")
 	if err != nil {
@@ -19435,7 +22044,9 @@ func GetCurrentDir() (result string) {
 }
 
 // g_get_current_time
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetCurrentTime(result TimeVal) {
 	iv, err := _I.Get(925, "get_current_time", "")
 	if err != nil {
@@ -19448,7 +22059,9 @@ func GetCurrentTime(result TimeVal) {
 }
 
 // g_get_environ
-// container is nil
+//
+// [ result ] trans: everything
+//
 func GetEnviron() (result gi.CStrArray) {
 	iv, err := _I.Get(926, "get_environ", "")
 	if err != nil {
@@ -19463,7 +22076,11 @@ func GetEnviron() (result gi.CStrArray) {
 }
 
 // g_get_filename_charsets
-// container is nil
+//
+// [ filename_charsets ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func GetFilenameCharsets() (result bool, filename_charsets gi.CStrArray) {
 	iv, err := _I.Get(927, "get_filename_charsets", "")
 	if err != nil {
@@ -19481,7 +22098,9 @@ func GetFilenameCharsets() (result bool, filename_charsets gi.CStrArray) {
 }
 
 // g_get_home_dir
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetHomeDir() (result string) {
 	iv, err := _I.Get(928, "get_home_dir", "")
 	if err != nil {
@@ -19490,12 +22109,14 @@ func GetHomeDir() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_host_name
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetHostName() (result string) {
 	iv, err := _I.Get(929, "get_host_name", "")
 	if err != nil {
@@ -19504,12 +22125,14 @@ func GetHostName() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_language_names
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetLanguageNames() (result gi.CStrArray) {
 	iv, err := _I.Get(930, "get_language_names", "")
 	if err != nil {
@@ -19524,7 +22147,11 @@ func GetLanguageNames() (result gi.CStrArray) {
 }
 
 // g_get_language_names_with_category
-// container is nil
+//
+// [ category_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func GetLanguageNamesWithCategory(category_name string) (result gi.CStrArray) {
 	iv, err := _I.Get(931, "get_language_names_with_category", "")
 	if err != nil {
@@ -19543,7 +22170,11 @@ func GetLanguageNamesWithCategory(category_name string) (result gi.CStrArray) {
 }
 
 // g_get_locale_variants
-// container is nil
+//
+// [ locale ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func GetLocaleVariants(locale string) (result gi.CStrArray) {
 	iv, err := _I.Get(932, "get_locale_variants", "")
 	if err != nil {
@@ -19562,7 +22193,9 @@ func GetLocaleVariants(locale string) (result gi.CStrArray) {
 }
 
 // g_get_monotonic_time
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetMonotonicTime() (result int64) {
 	iv, err := _I.Get(933, "get_monotonic_time", "")
 	if err != nil {
@@ -19576,7 +22209,9 @@ func GetMonotonicTime() (result int64) {
 }
 
 // g_get_num_processors
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetNumProcessors() (result uint32) {
 	iv, err := _I.Get(934, "get_num_processors", "")
 	if err != nil {
@@ -19590,7 +22225,9 @@ func GetNumProcessors() (result uint32) {
 }
 
 // g_get_prgname
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetPrgname() (result string) {
 	iv, err := _I.Get(935, "get_prgname", "")
 	if err != nil {
@@ -19599,12 +22236,14 @@ func GetPrgname() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_real_name
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetRealName() (result string) {
 	iv, err := _I.Get(936, "get_real_name", "")
 	if err != nil {
@@ -19613,12 +22252,14 @@ func GetRealName() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_real_time
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetRealTime() (result int64) {
 	iv, err := _I.Get(937, "get_real_time", "")
 	if err != nil {
@@ -19632,7 +22273,9 @@ func GetRealTime() (result int64) {
 }
 
 // g_get_system_config_dirs
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetSystemConfigDirs() (result gi.CStrArray) {
 	iv, err := _I.Get(938, "get_system_config_dirs", "")
 	if err != nil {
@@ -19647,7 +22290,9 @@ func GetSystemConfigDirs() (result gi.CStrArray) {
 }
 
 // g_get_system_data_dirs
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetSystemDataDirs() (result gi.CStrArray) {
 	iv, err := _I.Get(939, "get_system_data_dirs", "")
 	if err != nil {
@@ -19662,7 +22307,9 @@ func GetSystemDataDirs() (result gi.CStrArray) {
 }
 
 // g_get_tmp_dir
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetTmpDir() (result string) {
 	iv, err := _I.Get(940, "get_tmp_dir", "")
 	if err != nil {
@@ -19671,12 +22318,14 @@ func GetTmpDir() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_user_cache_dir
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetUserCacheDir() (result string) {
 	iv, err := _I.Get(941, "get_user_cache_dir", "")
 	if err != nil {
@@ -19685,12 +22334,14 @@ func GetUserCacheDir() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_user_config_dir
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetUserConfigDir() (result string) {
 	iv, err := _I.Get(942, "get_user_config_dir", "")
 	if err != nil {
@@ -19699,12 +22350,14 @@ func GetUserConfigDir() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_user_data_dir
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetUserDataDir() (result string) {
 	iv, err := _I.Get(943, "get_user_data_dir", "")
 	if err != nil {
@@ -19713,12 +22366,14 @@ func GetUserDataDir() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_user_name
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetUserName() (result string) {
 	iv, err := _I.Get(944, "get_user_name", "")
 	if err != nil {
@@ -19727,12 +22382,14 @@ func GetUserName() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_user_runtime_dir
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func GetUserRuntimeDir() (result string) {
 	iv, err := _I.Get(945, "get_user_runtime_dir", "")
 	if err != nil {
@@ -19741,12 +22398,16 @@ func GetUserRuntimeDir() (result string) {
 	}
 	var ret gi.Argument
 	iv.Call(nil, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_get_user_special_dir
-// container is nil
+//
+// [ directory ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func GetUserSpecialDir(directory UserDirectoryEnum) (result string) {
 	iv, err := _I.Get(946, "get_user_special_dir", "")
 	if err != nil {
@@ -19757,12 +22418,16 @@ func GetUserSpecialDir(directory UserDirectoryEnum) (result string) {
 	args := []gi.Argument{arg_directory}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_getenv
-// container is nil
+//
+// [ variable ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Getenv(variable string) (result string) {
 	iv, err := _I.Get(947, "getenv", "")
 	if err != nil {
@@ -19775,12 +22440,18 @@ func Getenv(variable string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_variable)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_hash_table_add
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableAdd(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(948, "hash_table_add", "")
 	if err != nil {
@@ -19797,7 +22468,13 @@ func HashTableAdd(hash_table HashTable, key unsafe.Pointer) (result bool) {
 }
 
 // g_hash_table_contains
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableContains(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(949, "hash_table_contains", "")
 	if err != nil {
@@ -19814,7 +22491,9 @@ func HashTableContains(hash_table HashTable, key unsafe.Pointer) (result bool) {
 }
 
 // g_hash_table_destroy
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
 func HashTableDestroy(hash_table HashTable) {
 	iv, err := _I.Get(950, "hash_table_destroy", "")
 	if err != nil {
@@ -19827,7 +22506,15 @@ func HashTableDestroy(hash_table HashTable) {
 }
 
 // g_hash_table_insert
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableInsert(hash_table HashTable, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(951, "hash_table_insert", "")
 	if err != nil {
@@ -19845,7 +22532,13 @@ func HashTableInsert(hash_table HashTable, key unsafe.Pointer, value unsafe.Poin
 }
 
 // g_hash_table_lookup
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableLookup(hash_table HashTable, key unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(952, "hash_table_lookup", "")
 	if err != nil {
@@ -19862,7 +22555,17 @@ func HashTableLookup(hash_table HashTable, key unsafe.Pointer) (result unsafe.Po
 }
 
 // g_hash_table_lookup_extended
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
+// [ lookup_key ] trans: nothing
+//
+// [ orig_key ] trans: everything, dir: out
+//
+// [ value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func HashTableLookupExtended(hash_table HashTable, lookup_key unsafe.Pointer) (result bool, orig_key unsafe.Pointer, value unsafe.Pointer) {
 	iv, err := _I.Get(953, "hash_table_lookup_extended", "")
 	if err != nil {
@@ -19884,7 +22587,13 @@ func HashTableLookupExtended(hash_table HashTable, lookup_key unsafe.Pointer) (r
 }
 
 // g_hash_table_remove
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableRemove(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(954, "hash_table_remove", "")
 	if err != nil {
@@ -19901,7 +22610,9 @@ func HashTableRemove(hash_table HashTable, key unsafe.Pointer) (result bool) {
 }
 
 // g_hash_table_remove_all
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
 func HashTableRemoveAll(hash_table HashTable) {
 	iv, err := _I.Get(955, "hash_table_remove_all", "")
 	if err != nil {
@@ -19914,7 +22625,15 @@ func HashTableRemoveAll(hash_table HashTable) {
 }
 
 // g_hash_table_replace
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableReplace(hash_table HashTable, key unsafe.Pointer, value unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(956, "hash_table_replace", "")
 	if err != nil {
@@ -19932,7 +22651,11 @@ func HashTableReplace(hash_table HashTable, key unsafe.Pointer, value unsafe.Poi
 }
 
 // g_hash_table_size
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableSize(hash_table HashTable) (result uint32) {
 	iv, err := _I.Get(957, "hash_table_size", "")
 	if err != nil {
@@ -19948,7 +22671,13 @@ func HashTableSize(hash_table HashTable) (result uint32) {
 }
 
 // g_hash_table_steal
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
+// [ key ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HashTableSteal(hash_table HashTable, key unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(958, "hash_table_steal", "")
 	if err != nil {
@@ -19965,7 +22694,9 @@ func HashTableSteal(hash_table HashTable, key unsafe.Pointer) (result bool) {
 }
 
 // g_hash_table_steal_all
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
 func HashTableStealAll(hash_table HashTable) {
 	iv, err := _I.Get(959, "hash_table_steal_all", "")
 	if err != nil {
@@ -19978,7 +22709,17 @@ func HashTableStealAll(hash_table HashTable) {
 }
 
 // g_hash_table_steal_extended
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
+// [ lookup_key ] trans: nothing
+//
+// [ stolen_key ] trans: everything, dir: out
+//
+// [ stolen_value ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func HashTableStealExtended(hash_table HashTable, lookup_key unsafe.Pointer) (result bool, stolen_key unsafe.Pointer, stolen_value unsafe.Pointer) {
 	iv, err := _I.Get(960, "hash_table_steal_extended", "")
 	if err != nil {
@@ -20000,7 +22741,9 @@ func HashTableStealExtended(hash_table HashTable, lookup_key unsafe.Pointer) (re
 }
 
 // g_hash_table_unref
-// container is nil
+//
+// [ hash_table ] trans: nothing
+//
 func HashTableUnref(hash_table HashTable) {
 	iv, err := _I.Get(961, "hash_table_unref", "")
 	if err != nil {
@@ -20013,7 +22756,13 @@ func HashTableUnref(hash_table HashTable) {
 }
 
 // g_hook_destroy
-// container is nil
+//
+// [ hook_list ] trans: nothing
+//
+// [ hook_id ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HookDestroy(hook_list HookList, hook_id uint64) (result bool) {
 	iv, err := _I.Get(962, "hook_destroy", "")
 	if err != nil {
@@ -20030,7 +22779,11 @@ func HookDestroy(hook_list HookList, hook_id uint64) (result bool) {
 }
 
 // g_hook_destroy_link
-// container is nil
+//
+// [ hook_list ] trans: nothing
+//
+// [ hook ] trans: nothing
+//
 func HookDestroyLink(hook_list HookList, hook Hook) {
 	iv, err := _I.Get(963, "hook_destroy_link", "")
 	if err != nil {
@@ -20044,7 +22797,11 @@ func HookDestroyLink(hook_list HookList, hook Hook) {
 }
 
 // g_hook_free
-// container is nil
+//
+// [ hook_list ] trans: nothing
+//
+// [ hook ] trans: nothing
+//
 func HookFree(hook_list HookList, hook Hook) {
 	iv, err := _I.Get(964, "hook_free", "")
 	if err != nil {
@@ -20058,7 +22815,13 @@ func HookFree(hook_list HookList, hook Hook) {
 }
 
 // g_hook_insert_before
-// container is nil
+//
+// [ hook_list ] trans: nothing
+//
+// [ sibling ] trans: nothing
+//
+// [ hook ] trans: nothing
+//
 func HookInsertBefore(hook_list HookList, sibling Hook, hook Hook) {
 	iv, err := _I.Get(965, "hook_insert_before", "")
 	if err != nil {
@@ -20073,7 +22836,11 @@ func HookInsertBefore(hook_list HookList, sibling Hook, hook Hook) {
 }
 
 // g_hook_prepend
-// container is nil
+//
+// [ hook_list ] trans: nothing
+//
+// [ hook ] trans: nothing
+//
 func HookPrepend(hook_list HookList, hook Hook) {
 	iv, err := _I.Get(966, "hook_prepend", "")
 	if err != nil {
@@ -20087,7 +22854,11 @@ func HookPrepend(hook_list HookList, hook Hook) {
 }
 
 // g_hook_unref
-// container is nil
+//
+// [ hook_list ] trans: nothing
+//
+// [ hook ] trans: nothing
+//
 func HookUnref(hook_list HookList, hook Hook) {
 	iv, err := _I.Get(967, "hook_unref", "")
 	if err != nil {
@@ -20101,7 +22872,11 @@ func HookUnref(hook_list HookList, hook Hook) {
 }
 
 // g_hostname_is_ascii_encoded
-// container is nil
+//
+// [ hostname ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HostnameIsAsciiEncoded(hostname string) (result bool) {
 	iv, err := _I.Get(968, "hostname_is_ascii_encoded", "")
 	if err != nil {
@@ -20119,7 +22894,11 @@ func HostnameIsAsciiEncoded(hostname string) (result bool) {
 }
 
 // g_hostname_is_ip_address
-// container is nil
+//
+// [ hostname ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HostnameIsIpAddress(hostname string) (result bool) {
 	iv, err := _I.Get(969, "hostname_is_ip_address", "")
 	if err != nil {
@@ -20137,7 +22916,11 @@ func HostnameIsIpAddress(hostname string) (result bool) {
 }
 
 // g_hostname_is_non_ascii
-// container is nil
+//
+// [ hostname ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func HostnameIsNonAscii(hostname string) (result bool) {
 	iv, err := _I.Get(970, "hostname_is_non_ascii", "")
 	if err != nil {
@@ -20155,7 +22938,11 @@ func HostnameIsNonAscii(hostname string) (result bool) {
 }
 
 // g_hostname_to_ascii
-// container is nil
+//
+// [ hostname ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func HostnameToAscii(hostname string) (result string) {
 	iv, err := _I.Get(971, "hostname_to_ascii", "")
 	if err != nil {
@@ -20173,7 +22960,11 @@ func HostnameToAscii(hostname string) (result string) {
 }
 
 // g_hostname_to_unicode
-// container is nil
+//
+// [ hostname ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func HostnameToUnicode(hostname string) (result string) {
 	iv, err := _I.Get(972, "hostname_to_unicode", "")
 	if err != nil {
@@ -20191,7 +22982,17 @@ func HostnameToUnicode(hostname string) (result string) {
 }
 
 // g_idle_add_full
-// container is nil
+//
+// [ priority ] trans: nothing
+//
+// [ function ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IdleAdd(priority int32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(973, "idle_add", "")
 	if err != nil {
@@ -20210,7 +23011,11 @@ func IdleAdd(priority int32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Po
 }
 
 // g_idle_remove_by_data
-// container is nil
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IdleRemoveByData(data unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(974, "idle_remove_by_data", "")
 	if err != nil {
@@ -20226,7 +23031,9 @@ func IdleRemoveByData(data unsafe.Pointer) (result bool) {
 }
 
 // g_idle_source_new
-// container is nil
+//
+// [ result ] trans: everything
+//
 func IdleSourceNew() (result Source) {
 	iv, err := _I.Get(975, "idle_source_new", "")
 	if err != nil {
@@ -20240,7 +23047,13 @@ func IdleSourceNew() (result Source) {
 }
 
 // g_int64_equal
-// container is nil
+//
+// [ v1 ] trans: nothing
+//
+// [ v2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Int64Equal(v1 unsafe.Pointer, v2 unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(976, "int64_equal", "")
 	if err != nil {
@@ -20257,7 +23070,11 @@ func Int64Equal(v1 unsafe.Pointer, v2 unsafe.Pointer) (result bool) {
 }
 
 // g_int64_hash
-// container is nil
+//
+// [ v ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Int64Hash(v unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(977, "int64_hash", "")
 	if err != nil {
@@ -20273,7 +23090,13 @@ func Int64Hash(v unsafe.Pointer) (result uint32) {
 }
 
 // g_int_equal
-// container is nil
+//
+// [ v1 ] trans: nothing
+//
+// [ v2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IntEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(978, "int_equal", "")
 	if err != nil {
@@ -20290,7 +23113,11 @@ func IntEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) (result bool) {
 }
 
 // g_int_hash
-// container is nil
+//
+// [ v ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IntHash(v unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(979, "int_hash", "")
 	if err != nil {
@@ -20306,7 +23133,11 @@ func IntHash(v unsafe.Pointer) (result uint32) {
 }
 
 // g_intern_static_string
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func InternStaticString(string string) (result string) {
 	iv, err := _I.Get(980, "intern_static_string", "")
 	if err != nil {
@@ -20319,12 +23150,16 @@ func InternStaticString(string string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_string)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_intern_string
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func InternString(string string) (result string) {
 	iv, err := _I.Get(981, "intern_string", "")
 	if err != nil {
@@ -20337,12 +23172,26 @@ func InternString(string string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_string)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_io_add_watch_full
-// container is nil
+//
+// [ channel ] trans: nothing
+//
+// [ priority ] trans: nothing
+//
+// [ condition ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(982, "io_add_watch", "")
 	if err != nil {
@@ -20363,7 +23212,11 @@ func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, f
 }
 
 // g_io_channel_error_from_errno
-// container is nil
+//
+// [ en ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func IoChannelErrorFromErrno(en int32) (result IOChannelErrorEnum) {
 	iv, err := _I.Get(983, "io_channel_error_from_errno", "")
 	if err != nil {
@@ -20379,7 +23232,9 @@ func IoChannelErrorFromErrno(en int32) (result IOChannelErrorEnum) {
 }
 
 // g_io_channel_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func IoChannelErrorQuark() (result uint32) {
 	iv, err := _I.Get(984, "io_channel_error_quark", "")
 	if err != nil {
@@ -20393,7 +23248,13 @@ func IoChannelErrorQuark() (result uint32) {
 }
 
 // g_io_create_watch
-// container is nil
+//
+// [ channel ] trans: nothing
+//
+// [ condition ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func IoCreateWatch(channel IOChannel, condition IOConditionFlags) (result Source) {
 	iv, err := _I.Get(985, "io_create_watch", "")
 	if err != nil {
@@ -20410,7 +23271,9 @@ func IoCreateWatch(channel IOChannel, condition IOConditionFlags) (result Source
 }
 
 // g_key_file_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func KeyFileErrorQuark() (result uint32) {
 	iv, err := _I.Get(986, "key_file_error_quark", "")
 	if err != nil {
@@ -20424,7 +23287,9 @@ func KeyFileErrorQuark() (result uint32) {
 }
 
 // g_listenv
-// container is nil
+//
+// [ result ] trans: everything
+//
 func Listenv() (result gi.CStrArray) {
 	iv, err := _I.Get(987, "listenv", "")
 	if err != nil {
@@ -20439,8 +23304,17 @@ func Listenv() (result gi.CStrArray) {
 }
 
 // g_locale_from_utf8
-// container is nil
-// ret lenArgIdx 3
+//
+// [ utf8string ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ bytes_read ] trans: everything, dir: out
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func LocaleFromUtf8(utf8string string, len1 int64) (result gi.Uint8Array, bytes_read uint64, err error) {
 	iv, err := _I.Get(988, "locale_from_utf8", "")
 	if err != nil {
@@ -20467,8 +23341,17 @@ func LocaleFromUtf8(utf8string string, len1 int64) (result gi.Uint8Array, bytes_
 }
 
 // g_locale_to_utf8
-// container is nil
-// arg 0 opsysstring lenArgIdx 1
+//
+// [ opsysstring ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ bytes_read ] trans: everything, dir: out
+//
+// [ bytes_written ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func LocaleToUtf8(opsysstring gi.Uint8Array, len1 int64) (result string, bytes_read uint64, bytes_written uint64, err error) {
 	iv, err := _I.Get(989, "locale_to_utf8", "")
 	if err != nil {
@@ -20491,7 +23374,15 @@ func LocaleToUtf8(opsysstring gi.Uint8Array, len1 int64) (result string, bytes_r
 }
 
 // g_log_default_handler
-// container is nil
+//
+// [ log_domain ] trans: nothing
+//
+// [ log_level ] trans: nothing
+//
+// [ message ] trans: nothing
+//
+// [ unused_data ] trans: nothing
+//
 func LogDefaultHandler(log_domain string, log_level LogLevelFlags, message string, unused_data unsafe.Pointer) {
 	iv, err := _I.Get(990, "log_default_handler", "")
 	if err != nil {
@@ -20511,7 +23402,11 @@ func LogDefaultHandler(log_domain string, log_level LogLevelFlags, message strin
 }
 
 // g_log_remove_handler
-// container is nil
+//
+// [ log_domain ] trans: nothing
+//
+// [ handler_id ] trans: nothing
+//
 func LogRemoveHandler(log_domain string, handler_id uint32) {
 	iv, err := _I.Get(991, "log_remove_handler", "")
 	if err != nil {
@@ -20527,7 +23422,11 @@ func LogRemoveHandler(log_domain string, handler_id uint32) {
 }
 
 // g_log_set_always_fatal
-// container is nil
+//
+// [ fatal_mask ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func LogSetAlwaysFatal(fatal_mask LogLevelFlags) (result LogLevelFlags) {
 	iv, err := _I.Get(992, "log_set_always_fatal", "")
 	if err != nil {
@@ -20543,7 +23442,13 @@ func LogSetAlwaysFatal(fatal_mask LogLevelFlags) (result LogLevelFlags) {
 }
 
 // g_log_set_fatal_mask
-// container is nil
+//
+// [ log_domain ] trans: nothing
+//
+// [ fatal_mask ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func LogSetFatalMask(log_domain string, fatal_mask LogLevelFlags) (result LogLevelFlags) {
 	iv, err := _I.Get(993, "log_set_fatal_mask", "")
 	if err != nil {
@@ -20562,7 +23467,19 @@ func LogSetFatalMask(log_domain string, fatal_mask LogLevelFlags) (result LogLev
 }
 
 // g_log_set_handler_full
-// container is nil
+//
+// [ log_domain ] trans: nothing
+//
+// [ log_levels ] trans: nothing
+//
+// [ log_func ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ destroy ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func LogSetHandler(log_domain string, log_levels LogLevelFlags, log_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, destroy int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(994, "log_set_handler", "")
 	if err != nil {
@@ -20584,7 +23501,13 @@ func LogSetHandler(log_domain string, log_levels LogLevelFlags, log_func int /*T
 }
 
 // g_log_set_writer_func
-// container is nil
+//
+// [ func1 ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ user_data_free ] trans: nothing
+//
 func LogSetWriterFunc(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, user_data_free int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(995, "log_set_writer_func", "")
 	if err != nil {
@@ -20599,8 +23522,13 @@ func LogSetWriterFunc(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer
 }
 
 // g_log_structured_array
-// container is nil
-// arg 1 fields lenArgIdx 2
+//
+// [ log_level ] trans: nothing
+//
+// [ fields ] trans: nothing
+//
+// [ n_fields ] trans: nothing
+//
 func LogStructuredArray(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64) {
 	iv, err := _I.Get(996, "log_structured_array", "")
 	if err != nil {
@@ -20615,7 +23543,13 @@ func LogStructuredArray(log_level LogLevelFlags, fields unsafe.Pointer, n_fields
 }
 
 // g_log_variant
-// container is nil
+//
+// [ log_domain ] trans: nothing
+//
+// [ log_level ] trans: nothing
+//
+// [ fields ] trans: nothing
+//
 func LogVariant(log_domain string, log_level LogLevelFlags, fields Variant) {
 	iv, err := _I.Get(997, "log_variant", "")
 	if err != nil {
@@ -20632,8 +23566,17 @@ func LogVariant(log_domain string, log_level LogLevelFlags, fields Variant) {
 }
 
 // g_log_writer_default
-// container is nil
-// arg 1 fields lenArgIdx 2
+//
+// [ log_level ] trans: nothing
+//
+// [ fields ] trans: nothing
+//
+// [ n_fields ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func LogWriterDefault(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(998, "log_writer_default", "")
 	if err != nil {
@@ -20652,8 +23595,17 @@ func LogWriterDefault(log_level LogLevelFlags, fields unsafe.Pointer, n_fields u
 }
 
 // g_log_writer_format_fields
-// container is nil
-// arg 1 fields lenArgIdx 2
+//
+// [ log_level ] trans: nothing
+//
+// [ fields ] trans: nothing
+//
+// [ n_fields ] trans: nothing
+//
+// [ use_color ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func LogWriterFormatFields(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64, use_color bool) (result string) {
 	iv, err := _I.Get(999, "log_writer_format_fields", "")
 	if err != nil {
@@ -20672,7 +23624,11 @@ func LogWriterFormatFields(log_level LogLevelFlags, fields unsafe.Pointer, n_fie
 }
 
 // g_log_writer_is_journald
-// container is nil
+//
+// [ output_fd ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func LogWriterIsJournald(output_fd int32) (result bool) {
 	iv, err := _I.Get(1000, "log_writer_is_journald", "")
 	if err != nil {
@@ -20688,8 +23644,17 @@ func LogWriterIsJournald(output_fd int32) (result bool) {
 }
 
 // g_log_writer_journald
-// container is nil
-// arg 1 fields lenArgIdx 2
+//
+// [ log_level ] trans: nothing
+//
+// [ fields ] trans: nothing
+//
+// [ n_fields ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func LogWriterJournald(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(1001, "log_writer_journald", "")
 	if err != nil {
@@ -20708,8 +23673,17 @@ func LogWriterJournald(log_level LogLevelFlags, fields unsafe.Pointer, n_fields 
 }
 
 // g_log_writer_standard_streams
-// container is nil
-// arg 1 fields lenArgIdx 2
+//
+// [ log_level ] trans: nothing
+//
+// [ fields ] trans: nothing
+//
+// [ n_fields ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func LogWriterStandardStreams(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64, user_data unsafe.Pointer) (result LogWriterOutputEnum) {
 	iv, err := _I.Get(1002, "log_writer_standard_streams", "")
 	if err != nil {
@@ -20728,7 +23702,11 @@ func LogWriterStandardStreams(log_level LogLevelFlags, fields unsafe.Pointer, n_
 }
 
 // g_log_writer_supports_color
-// container is nil
+//
+// [ output_fd ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func LogWriterSupportsColor(output_fd int32) (result bool) {
 	iv, err := _I.Get(1003, "log_writer_supports_color", "")
 	if err != nil {
@@ -20744,7 +23722,9 @@ func LogWriterSupportsColor(output_fd int32) (result bool) {
 }
 
 // g_main_context_default
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func MainContextDefault() (result MainContext) {
 	iv, err := _I.Get(1004, "main_context_default", "")
 	if err != nil {
@@ -20758,7 +23738,9 @@ func MainContextDefault() (result MainContext) {
 }
 
 // g_main_context_get_thread_default
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func MainContextGetThreadDefault() (result MainContext) {
 	iv, err := _I.Get(1005, "main_context_get_thread_default", "")
 	if err != nil {
@@ -20772,7 +23754,9 @@ func MainContextGetThreadDefault() (result MainContext) {
 }
 
 // g_main_context_ref_thread_default
-// container is nil
+//
+// [ result ] trans: everything
+//
 func MainContextRefThreadDefault() (result MainContext) {
 	iv, err := _I.Get(1006, "main_context_ref_thread_default", "")
 	if err != nil {
@@ -20786,7 +23770,9 @@ func MainContextRefThreadDefault() (result MainContext) {
 }
 
 // g_main_current_source
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func MainCurrentSource() (result Source) {
 	iv, err := _I.Get(1007, "main_current_source", "")
 	if err != nil {
@@ -20800,7 +23786,9 @@ func MainCurrentSource() (result Source) {
 }
 
 // g_main_depth
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func MainDepth() (result int32) {
 	iv, err := _I.Get(1008, "main_depth", "")
 	if err != nil {
@@ -20814,7 +23802,11 @@ func MainDepth() (result int32) {
 }
 
 // g_malloc
-// container is nil
+//
+// [ n_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Malloc(n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1009, "malloc", "")
 	if err != nil {
@@ -20830,7 +23822,11 @@ func Malloc(n_bytes uint64) (result unsafe.Pointer) {
 }
 
 // g_malloc0
-// container is nil
+//
+// [ n_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Malloc0(n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1010, "malloc0", "")
 	if err != nil {
@@ -20846,7 +23842,13 @@ func Malloc0(n_bytes uint64) (result unsafe.Pointer) {
 }
 
 // g_malloc0_n
-// container is nil
+//
+// [ n_blocks ] trans: nothing
+//
+// [ n_block_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Malloc0N(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1011, "malloc0_n", "")
 	if err != nil {
@@ -20863,7 +23865,13 @@ func Malloc0N(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 }
 
 // g_malloc_n
-// container is nil
+//
+// [ n_blocks ] trans: nothing
+//
+// [ n_block_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func MallocN(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1012, "malloc_n", "")
 	if err != nil {
@@ -20880,7 +23888,9 @@ func MallocN(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 }
 
 // g_markup_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func MarkupErrorQuark() (result uint32) {
 	iv, err := _I.Get(1013, "markup_error_quark", "")
 	if err != nil {
@@ -20894,7 +23904,13 @@ func MarkupErrorQuark() (result uint32) {
 }
 
 // g_markup_escape_text
-// container is nil
+//
+// [ text ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func MarkupEscapeText(text string, length int64) (result string) {
 	iv, err := _I.Get(1014, "markup_escape_text", "")
 	if err != nil {
@@ -20913,7 +23929,9 @@ func MarkupEscapeText(text string, length int64) (result string) {
 }
 
 // g_mem_is_system_malloc
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func MemIsSystemMalloc() (result bool) {
 	iv, err := _I.Get(1015, "mem_is_system_malloc", "")
 	if err != nil {
@@ -20927,7 +23945,7 @@ func MemIsSystemMalloc() (result bool) {
 }
 
 // g_mem_profile
-// container is nil
+//
 func MemProfile() {
 	iv, err := _I.Get(1016, "mem_profile", "")
 	if err != nil {
@@ -20938,7 +23956,9 @@ func MemProfile() {
 }
 
 // g_mem_set_vtable
-// container is nil
+//
+// [ vtable ] trans: nothing
+//
 func MemSetVtable(vtable MemVTable) {
 	iv, err := _I.Get(1017, "mem_set_vtable", "")
 	if err != nil {
@@ -20951,7 +23971,13 @@ func MemSetVtable(vtable MemVTable) {
 }
 
 // g_memdup
-// container is nil
+//
+// [ mem ] trans: nothing
+//
+// [ byte_size ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Memdup(mem unsafe.Pointer, byte_size uint32) (result unsafe.Pointer) {
 	iv, err := _I.Get(1018, "memdup", "")
 	if err != nil {
@@ -20968,7 +23994,13 @@ func Memdup(mem unsafe.Pointer, byte_size uint32) (result unsafe.Pointer) {
 }
 
 // g_mkdir_with_parents
-// container is nil
+//
+// [ pathname ] trans: nothing
+//
+// [ mode ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func MkdirWithParents(pathname string, mode int32) (result int32) {
 	iv, err := _I.Get(1019, "mkdir_with_parents", "")
 	if err != nil {
@@ -20987,7 +24019,9 @@ func MkdirWithParents(pathname string, mode int32) (result int32) {
 }
 
 // g_nullify_pointer
-// container is nil
+//
+// [ nullify_location ] trans: nothing
+//
 func NullifyPointer(nullify_location unsafe.Pointer) {
 	iv, err := _I.Get(1020, "nullify_pointer", "")
 	if err != nil {
@@ -21000,7 +24034,9 @@ func NullifyPointer(nullify_location unsafe.Pointer) {
 }
 
 // g_number_parser_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func NumberParserErrorQuark() (result uint32) {
 	iv, err := _I.Get(1021, "number_parser_error_quark", "")
 	if err != nil {
@@ -21014,7 +24050,9 @@ func NumberParserErrorQuark() (result uint32) {
 }
 
 // g_on_error_query
-// container is nil
+//
+// [ prg_name ] trans: nothing
+//
 func OnErrorQuery(prg_name string) {
 	iv, err := _I.Get(1022, "on_error_query", "")
 	if err != nil {
@@ -21029,7 +24067,9 @@ func OnErrorQuery(prg_name string) {
 }
 
 // g_on_error_stack_trace
-// container is nil
+//
+// [ prg_name ] trans: nothing
+//
 func OnErrorStackTrace(prg_name string) {
 	iv, err := _I.Get(1023, "on_error_stack_trace", "")
 	if err != nil {
@@ -21044,7 +24084,11 @@ func OnErrorStackTrace(prg_name string) {
 }
 
 // g_once_init_enter
-// container is nil
+//
+// [ location ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func OnceInitEnter(location unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(1024, "once_init_enter", "")
 	if err != nil {
@@ -21060,7 +24104,11 @@ func OnceInitEnter(location unsafe.Pointer) (result bool) {
 }
 
 // g_once_init_leave
-// container is nil
+//
+// [ location ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func OnceInitLeave(location unsafe.Pointer, result uint64) {
 	iv, err := _I.Get(1025, "once_init_leave", "")
 	if err != nil {
@@ -21074,7 +24122,9 @@ func OnceInitLeave(location unsafe.Pointer, result uint64) {
 }
 
 // g_option_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func OptionErrorQuark() (result uint32) {
 	iv, err := _I.Get(1026, "option_error_quark", "")
 	if err != nil {
@@ -21088,8 +24138,15 @@ func OptionErrorQuark() (result uint32) {
 }
 
 // g_parse_debug_string
-// container is nil
-// arg 1 keys lenArgIdx 2
+//
+// [ string ] trans: nothing
+//
+// [ keys ] trans: nothing
+//
+// [ nkeys ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ParseDebugString(string string, keys unsafe.Pointer, nkeys uint32) (result uint32) {
 	iv, err := _I.Get(1027, "parse_debug_string", "")
 	if err != nil {
@@ -21109,7 +24166,11 @@ func ParseDebugString(string string, keys unsafe.Pointer, nkeys uint32) (result 
 }
 
 // g_path_get_basename
-// container is nil
+//
+// [ file_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func PathGetBasename(file_name string) (result string) {
 	iv, err := _I.Get(1028, "path_get_basename", "")
 	if err != nil {
@@ -21127,7 +24188,11 @@ func PathGetBasename(file_name string) (result string) {
 }
 
 // g_path_get_dirname
-// container is nil
+//
+// [ file_name ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func PathGetDirname(file_name string) (result string) {
 	iv, err := _I.Get(1029, "path_get_dirname", "")
 	if err != nil {
@@ -21145,7 +24210,11 @@ func PathGetDirname(file_name string) (result string) {
 }
 
 // g_path_is_absolute
-// container is nil
+//
+// [ file_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PathIsAbsolute(file_name string) (result bool) {
 	iv, err := _I.Get(1030, "path_is_absolute", "")
 	if err != nil {
@@ -21163,7 +24232,11 @@ func PathIsAbsolute(file_name string) (result bool) {
 }
 
 // g_path_skip_root
-// container is nil
+//
+// [ file_name ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PathSkipRoot(file_name string) (result string) {
 	iv, err := _I.Get(1031, "path_skip_root", "")
 	if err != nil {
@@ -21176,12 +24249,22 @@ func PathSkipRoot(file_name string) (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_file_name)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_pattern_match
-// container is nil
+//
+// [ pspec ] trans: nothing
+//
+// [ string_length ] trans: nothing
+//
+// [ string ] trans: nothing
+//
+// [ string_reversed ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PatternMatch(pspec PatternSpec, string_length uint32, string string, string_reversed string) (result bool) {
 	iv, err := _I.Get(1032, "pattern_match", "")
 	if err != nil {
@@ -21204,7 +24287,13 @@ func PatternMatch(pspec PatternSpec, string_length uint32, string string, string
 }
 
 // g_pattern_match_simple
-// container is nil
+//
+// [ pattern ] trans: nothing
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PatternMatchSimple(pattern string, string string) (result bool) {
 	iv, err := _I.Get(1033, "pattern_match_simple", "")
 	if err != nil {
@@ -21225,7 +24314,13 @@ func PatternMatchSimple(pattern string, string string) (result bool) {
 }
 
 // g_pattern_match_string
-// container is nil
+//
+// [ pspec ] trans: nothing
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PatternMatchString(pspec PatternSpec, string string) (result bool) {
 	iv, err := _I.Get(1034, "pattern_match_string", "")
 	if err != nil {
@@ -21244,7 +24339,11 @@ func PatternMatchString(pspec PatternSpec, string string) (result bool) {
 }
 
 // g_pointer_bit_lock
-// container is nil
+//
+// [ address ] trans: nothing
+//
+// [ lock_bit ] trans: nothing
+//
 func PointerBitLock(address unsafe.Pointer, lock_bit int32) {
 	iv, err := _I.Get(1035, "pointer_bit_lock", "")
 	if err != nil {
@@ -21258,7 +24357,13 @@ func PointerBitLock(address unsafe.Pointer, lock_bit int32) {
 }
 
 // g_pointer_bit_trylock
-// container is nil
+//
+// [ address ] trans: nothing
+//
+// [ lock_bit ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func PointerBitTrylock(address unsafe.Pointer, lock_bit int32) (result bool) {
 	iv, err := _I.Get(1036, "pointer_bit_trylock", "")
 	if err != nil {
@@ -21275,7 +24380,11 @@ func PointerBitTrylock(address unsafe.Pointer, lock_bit int32) (result bool) {
 }
 
 // g_pointer_bit_unlock
-// container is nil
+//
+// [ address ] trans: nothing
+//
+// [ lock_bit ] trans: nothing
+//
 func PointerBitUnlock(address unsafe.Pointer, lock_bit int32) {
 	iv, err := _I.Get(1037, "pointer_bit_unlock", "")
 	if err != nil {
@@ -21289,7 +24398,15 @@ func PointerBitUnlock(address unsafe.Pointer, lock_bit int32) {
 }
 
 // g_poll
-// container is nil
+//
+// [ fds ] trans: nothing
+//
+// [ nfds ] trans: nothing
+//
+// [ timeout ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Poll(fds PollFD, nfds uint32, timeout int32) (result int32) {
 	iv, err := _I.Get(1038, "poll", "")
 	if err != nil {
@@ -21307,7 +24424,11 @@ func Poll(fds PollFD, nfds uint32, timeout int32) (result int32) {
 }
 
 // g_propagate_error
-// container is nil
+//
+// [ dest ] trans: everything, dir: out
+//
+// [ src ] trans: everything
+//
 func PropagateError(src Error) (dest Error) {
 	iv, err := _I.Get(1039, "propagate_error", "")
 	if err != nil {
@@ -21324,7 +24445,11 @@ func PropagateError(src Error) (dest Error) {
 }
 
 // g_quark_from_static_string
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func QuarkFromStaticString(string string) (result uint32) {
 	iv, err := _I.Get(1040, "quark_from_static_string", "")
 	if err != nil {
@@ -21342,7 +24467,11 @@ func QuarkFromStaticString(string string) (result uint32) {
 }
 
 // g_quark_from_string
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func QuarkFromString(string string) (result uint32) {
 	iv, err := _I.Get(1041, "quark_from_string", "")
 	if err != nil {
@@ -21360,7 +24489,11 @@ func QuarkFromString(string string) (result uint32) {
 }
 
 // g_quark_to_string
-// container is nil
+//
+// [ quark ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func QuarkToString(quark uint32) (result string) {
 	iv, err := _I.Get(1042, "quark_to_string", "")
 	if err != nil {
@@ -21371,12 +24504,16 @@ func QuarkToString(quark uint32) (result string) {
 	args := []gi.Argument{arg_quark}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_quark_try_string
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func QuarkTryString(string string) (result uint32) {
 	iv, err := _I.Get(1043, "quark_try_string", "")
 	if err != nil {
@@ -21394,7 +24531,9 @@ func QuarkTryString(string string) (result uint32) {
 }
 
 // g_random_double
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func RandomDouble() (result float64) {
 	iv, err := _I.Get(1044, "random_double", "")
 	if err != nil {
@@ -21408,7 +24547,13 @@ func RandomDouble() (result float64) {
 }
 
 // g_random_double_range
-// container is nil
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RandomDoubleRange(begin float64, end float64) (result float64) {
 	iv, err := _I.Get(1045, "random_double_range", "")
 	if err != nil {
@@ -21425,7 +24570,9 @@ func RandomDoubleRange(begin float64, end float64) (result float64) {
 }
 
 // g_random_int
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func RandomInt() (result uint32) {
 	iv, err := _I.Get(1046, "random_int", "")
 	if err != nil {
@@ -21439,7 +24586,13 @@ func RandomInt() (result uint32) {
 }
 
 // g_random_int_range
-// container is nil
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RandomIntRange(begin int32, end int32) (result int32) {
 	iv, err := _I.Get(1047, "random_int_range", "")
 	if err != nil {
@@ -21456,7 +24609,9 @@ func RandomIntRange(begin int32, end int32) (result int32) {
 }
 
 // g_random_set_seed
-// container is nil
+//
+// [ seed ] trans: nothing
+//
 func RandomSetSeed(seed uint32) {
 	iv, err := _I.Get(1048, "random_set_seed", "")
 	if err != nil {
@@ -21469,7 +24624,11 @@ func RandomSetSeed(seed uint32) {
 }
 
 // g_rc_box_acquire
-// container is nil
+//
+// [ mem_block ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RcBoxAcquire(mem_block unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(1049, "rc_box_acquire", "")
 	if err != nil {
@@ -21485,7 +24644,11 @@ func RcBoxAcquire(mem_block unsafe.Pointer) (result unsafe.Pointer) {
 }
 
 // g_rc_box_alloc
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RcBoxAlloc(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1050, "rc_box_alloc", "")
 	if err != nil {
@@ -21501,7 +24664,11 @@ func RcBoxAlloc(block_size uint64) (result unsafe.Pointer) {
 }
 
 // g_rc_box_alloc0
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RcBoxAlloc0(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1051, "rc_box_alloc0", "")
 	if err != nil {
@@ -21517,7 +24684,13 @@ func RcBoxAlloc0(block_size uint64) (result unsafe.Pointer) {
 }
 
 // g_rc_box_dup
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ mem_block ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RcBoxDup(block_size uint64, mem_block unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(1052, "rc_box_dup", "")
 	if err != nil {
@@ -21534,7 +24707,11 @@ func RcBoxDup(block_size uint64, mem_block unsafe.Pointer) (result unsafe.Pointe
 }
 
 // g_rc_box_get_size
-// container is nil
+//
+// [ mem_block ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RcBoxGetSize(mem_block unsafe.Pointer) (result uint64) {
 	iv, err := _I.Get(1053, "rc_box_get_size", "")
 	if err != nil {
@@ -21550,7 +24727,9 @@ func RcBoxGetSize(mem_block unsafe.Pointer) (result uint64) {
 }
 
 // g_rc_box_release
-// container is nil
+//
+// [ mem_block ] trans: everything
+//
 func RcBoxRelease(mem_block unsafe.Pointer) {
 	iv, err := _I.Get(1054, "rc_box_release", "")
 	if err != nil {
@@ -21563,7 +24742,11 @@ func RcBoxRelease(mem_block unsafe.Pointer) {
 }
 
 // g_rc_box_release_full
-// container is nil
+//
+// [ mem_block ] trans: everything
+//
+// [ clear_func ] trans: nothing
+//
 func RcBoxReleaseFull(mem_block unsafe.Pointer, clear_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1055, "rc_box_release_full", "")
 	if err != nil {
@@ -21577,7 +24760,13 @@ func RcBoxReleaseFull(mem_block unsafe.Pointer, clear_func int /*TODO_TYPE CALLB
 }
 
 // g_realloc
-// container is nil
+//
+// [ mem ] trans: nothing
+//
+// [ n_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Realloc(mem unsafe.Pointer, n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1056, "realloc", "")
 	if err != nil {
@@ -21594,7 +24783,15 @@ func Realloc(mem unsafe.Pointer, n_bytes uint64) (result unsafe.Pointer) {
 }
 
 // g_realloc_n
-// container is nil
+//
+// [ mem ] trans: nothing
+//
+// [ n_blocks ] trans: nothing
+//
+// [ n_block_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func ReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1057, "realloc_n", "")
 	if err != nil {
@@ -21612,7 +24809,13 @@ func ReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) (result
 }
 
 // g_ref_count_compare
-// container is nil
+//
+// [ rc ] trans: nothing
+//
+// [ val ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RefCountCompare(rc int32, val int32) (result bool) {
 	iv, err := _I.Get(1058, "ref_count_compare", "")
 	if err != nil {
@@ -21629,7 +24832,11 @@ func RefCountCompare(rc int32, val int32) (result bool) {
 }
 
 // g_ref_count_dec
-// container is nil
+//
+// [ rc ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RefCountDec(rc int32) (result bool) {
 	iv, err := _I.Get(1059, "ref_count_dec", "")
 	if err != nil {
@@ -21645,7 +24852,9 @@ func RefCountDec(rc int32) (result bool) {
 }
 
 // g_ref_count_inc
-// container is nil
+//
+// [ rc ] trans: nothing
+//
 func RefCountInc(rc int32) {
 	iv, err := _I.Get(1060, "ref_count_inc", "")
 	if err != nil {
@@ -21658,7 +24867,9 @@ func RefCountInc(rc int32) {
 }
 
 // g_ref_count_init
-// container is nil
+//
+// [ rc ] trans: nothing
+//
 func RefCountInit(rc int32) {
 	iv, err := _I.Get(1061, "ref_count_init", "")
 	if err != nil {
@@ -21671,7 +24882,11 @@ func RefCountInit(rc int32) {
 }
 
 // g_ref_string_acquire
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RefStringAcquire(str string) (result string) {
 	iv, err := _I.Get(1062, "ref_string_acquire", "")
 	if err != nil {
@@ -21689,7 +24904,11 @@ func RefStringAcquire(str string) (result string) {
 }
 
 // g_ref_string_length
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RefStringLength(str string) (result uint64) {
 	iv, err := _I.Get(1063, "ref_string_length", "")
 	if err != nil {
@@ -21707,7 +24926,11 @@ func RefStringLength(str string) (result uint64) {
 }
 
 // g_ref_string_new
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RefStringNew(str string) (result string) {
 	iv, err := _I.Get(1064, "ref_string_new", "")
 	if err != nil {
@@ -21725,7 +24948,11 @@ func RefStringNew(str string) (result string) {
 }
 
 // g_ref_string_new_intern
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RefStringNewIntern(str string) (result string) {
 	iv, err := _I.Get(1065, "ref_string_new_intern", "")
 	if err != nil {
@@ -21743,7 +24970,13 @@ func RefStringNewIntern(str string) (result string) {
 }
 
 // g_ref_string_new_len
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RefStringNewLen(str string, len1 int64) (result string) {
 	iv, err := _I.Get(1066, "ref_string_new_len", "")
 	if err != nil {
@@ -21762,7 +24995,9 @@ func RefStringNewLen(str string, len1 int64) (result string) {
 }
 
 // g_ref_string_release
-// container is nil
+//
+// [ str ] trans: nothing
+//
 func RefStringRelease(str string) {
 	iv, err := _I.Get(1067, "ref_string_release", "")
 	if err != nil {
@@ -21777,7 +25012,13 @@ func RefStringRelease(str string) {
 }
 
 // g_regex_check_replacement
-// container is nil
+//
+// [ replacement ] trans: nothing
+//
+// [ has_references ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func RegexCheckReplacement(replacement string) (result bool, has_references bool, err error) {
 	iv, err := _I.Get(1068, "regex_check_replacement", "")
 	if err != nil {
@@ -21799,7 +25040,9 @@ func RegexCheckReplacement(replacement string) (result bool, has_references bool
 }
 
 // g_regex_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func RegexErrorQuark() (result uint32) {
 	iv, err := _I.Get(1069, "regex_error_quark", "")
 	if err != nil {
@@ -21813,7 +25056,13 @@ func RegexErrorQuark() (result uint32) {
 }
 
 // g_regex_escape_nul
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RegexEscapeNul(string string, length int32) (result string) {
 	iv, err := _I.Get(1070, "regex_escape_nul", "")
 	if err != nil {
@@ -21832,8 +25081,13 @@ func RegexEscapeNul(string string, length int32) (result string) {
 }
 
 // g_regex_escape_string
-// container is nil
-// arg 0 string lenArgIdx 1
+//
+// [ string ] trans: nothing
+//
+// [ length ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RegexEscapeString(string gi.CStrArray, length int32) (result string) {
 	iv, err := _I.Get(1071, "regex_escape_string", "")
 	if err != nil {
@@ -21850,7 +25104,17 @@ func RegexEscapeString(string gi.CStrArray, length int32) (result string) {
 }
 
 // g_regex_match_simple
-// container is nil
+//
+// [ pattern ] trans: nothing
+//
+// [ string ] trans: nothing
+//
+// [ compile_options ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func RegexMatchSimple(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result bool) {
 	iv, err := _I.Get(1072, "regex_match_simple", "")
 	if err != nil {
@@ -21873,7 +25137,17 @@ func RegexMatchSimple(pattern string, string string, compile_options RegexCompil
 }
 
 // g_regex_split_simple
-// container is nil
+//
+// [ pattern ] trans: nothing
+//
+// [ string ] trans: nothing
+//
+// [ compile_options ] trans: nothing
+//
+// [ match_options ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func RegexSplitSimple(pattern string, string string, compile_options RegexCompileFlags, match_options RegexMatchFlags) (result gi.CStrArray) {
 	iv, err := _I.Get(1073, "regex_split_simple", "")
 	if err != nil {
@@ -21897,7 +25171,7 @@ func RegexSplitSimple(pattern string, string string, compile_options RegexCompil
 }
 
 // g_reload_user_special_dirs_cache
-// container is nil
+//
 func ReloadUserSpecialDirsCache() {
 	iv, err := _I.Get(1074, "reload_user_special_dirs_cache", "")
 	if err != nil {
@@ -21908,7 +25182,11 @@ func ReloadUserSpecialDirsCache() {
 }
 
 // g_rmdir
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Rmdir(filename string) (result int32) {
 	iv, err := _I.Get(1075, "rmdir", "")
 	if err != nil {
@@ -21926,7 +25204,11 @@ func Rmdir(filename string) (result int32) {
 }
 
 // g_sequence_get
-// container is nil
+//
+// [ iter ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SequenceGet(iter SequenceIter) (result unsafe.Pointer) {
 	iv, err := _I.Get(1076, "sequence_get", "")
 	if err != nil {
@@ -21942,7 +25224,13 @@ func SequenceGet(iter SequenceIter) (result unsafe.Pointer) {
 }
 
 // g_sequence_insert_before
-// container is nil
+//
+// [ iter ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SequenceInsertBefore(iter SequenceIter, data unsafe.Pointer) (result SequenceIter) {
 	iv, err := _I.Get(1077, "sequence_insert_before", "")
 	if err != nil {
@@ -21959,7 +25247,11 @@ func SequenceInsertBefore(iter SequenceIter, data unsafe.Pointer) (result Sequen
 }
 
 // g_sequence_move
-// container is nil
+//
+// [ src ] trans: nothing
+//
+// [ dest ] trans: nothing
+//
 func SequenceMove(src SequenceIter, dest SequenceIter) {
 	iv, err := _I.Get(1078, "sequence_move", "")
 	if err != nil {
@@ -21973,7 +25265,13 @@ func SequenceMove(src SequenceIter, dest SequenceIter) {
 }
 
 // g_sequence_move_range
-// container is nil
+//
+// [ dest ] trans: nothing
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
 func SequenceMoveRange(dest SequenceIter, begin SequenceIter, end SequenceIter) {
 	iv, err := _I.Get(1079, "sequence_move_range", "")
 	if err != nil {
@@ -21988,7 +25286,13 @@ func SequenceMoveRange(dest SequenceIter, begin SequenceIter, end SequenceIter) 
 }
 
 // g_sequence_range_get_midpoint
-// container is nil
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SequenceRangeGetMidpoint(begin SequenceIter, end SequenceIter) (result SequenceIter) {
 	iv, err := _I.Get(1080, "sequence_range_get_midpoint", "")
 	if err != nil {
@@ -22005,7 +25309,9 @@ func SequenceRangeGetMidpoint(begin SequenceIter, end SequenceIter) (result Sequ
 }
 
 // g_sequence_remove
-// container is nil
+//
+// [ iter ] trans: nothing
+//
 func SequenceRemove(iter SequenceIter) {
 	iv, err := _I.Get(1081, "sequence_remove", "")
 	if err != nil {
@@ -22018,7 +25324,11 @@ func SequenceRemove(iter SequenceIter) {
 }
 
 // g_sequence_remove_range
-// container is nil
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
 func SequenceRemoveRange(begin SequenceIter, end SequenceIter) {
 	iv, err := _I.Get(1082, "sequence_remove_range", "")
 	if err != nil {
@@ -22032,7 +25342,11 @@ func SequenceRemoveRange(begin SequenceIter, end SequenceIter) {
 }
 
 // g_sequence_set
-// container is nil
+//
+// [ iter ] trans: nothing
+//
+// [ data ] trans: nothing
+//
 func SequenceSet(iter SequenceIter, data unsafe.Pointer) {
 	iv, err := _I.Get(1083, "sequence_set", "")
 	if err != nil {
@@ -22046,7 +25360,11 @@ func SequenceSet(iter SequenceIter, data unsafe.Pointer) {
 }
 
 // g_sequence_swap
-// container is nil
+//
+// [ a ] trans: nothing
+//
+// [ b ] trans: nothing
+//
 func SequenceSwap(a SequenceIter, b SequenceIter) {
 	iv, err := _I.Get(1084, "sequence_swap", "")
 	if err != nil {
@@ -22060,7 +25378,9 @@ func SequenceSwap(a SequenceIter, b SequenceIter) {
 }
 
 // g_set_application_name
-// container is nil
+//
+// [ application_name ] trans: nothing
+//
 func SetApplicationName(application_name string) {
 	iv, err := _I.Get(1085, "set_application_name", "")
 	if err != nil {
@@ -22075,7 +25395,15 @@ func SetApplicationName(application_name string) {
 }
 
 // g_set_error_literal
-// container is nil
+//
+// [ err1 ] trans: everything, dir: out
+//
+// [ domain ] trans: nothing
+//
+// [ code ] trans: nothing
+//
+// [ message ] trans: nothing
+//
 func SetErrorLiteral(domain uint32, code int32, message string) (err1 Error) {
 	iv, err := _I.Get(1086, "set_error_literal", "")
 	if err != nil {
@@ -22096,7 +25424,9 @@ func SetErrorLiteral(domain uint32, code int32, message string) (err1 Error) {
 }
 
 // g_set_prgname
-// container is nil
+//
+// [ prgname ] trans: nothing
+//
 func SetPrgname(prgname string) {
 	iv, err := _I.Get(1087, "set_prgname", "")
 	if err != nil {
@@ -22111,7 +25441,15 @@ func SetPrgname(prgname string) {
 }
 
 // g_setenv
-// container is nil
+//
+// [ variable ] trans: nothing
+//
+// [ value ] trans: nothing
+//
+// [ overwrite ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Setenv(variable string, value string, overwrite bool) (result bool) {
 	iv, err := _I.Get(1088, "setenv", "")
 	if err != nil {
@@ -22133,7 +25471,9 @@ func Setenv(variable string, value string, overwrite bool) (result bool) {
 }
 
 // g_shell_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func ShellErrorQuark() (result uint32) {
 	iv, err := _I.Get(1089, "shell_error_quark", "")
 	if err != nil {
@@ -22147,8 +25487,15 @@ func ShellErrorQuark() (result uint32) {
 }
 
 // g_shell_parse_argv
-// container is nil
-// arg 2 argvp lenArgIdx 1
+//
+// [ command_line ] trans: nothing
+//
+// [ argcp ] trans: everything, dir: out
+//
+// [ argvp ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func ShellParseArgv(command_line string) (result bool, argvp gi.CStrArray, err error) {
 	iv, err := _I.Get(1090, "shell_parse_argv", "")
 	if err != nil {
@@ -22174,7 +25521,11 @@ func ShellParseArgv(command_line string) (result bool, argvp gi.CStrArray, err e
 }
 
 // g_shell_quote
-// container is nil
+//
+// [ unquoted_string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ShellQuote(unquoted_string string) (result string) {
 	iv, err := _I.Get(1091, "shell_quote", "")
 	if err != nil {
@@ -22192,7 +25543,11 @@ func ShellQuote(unquoted_string string) (result string) {
 }
 
 // g_shell_unquote
-// container is nil
+//
+// [ quoted_string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func ShellUnquote(quoted_string string) (result string, err error) {
 	iv, err := _I.Get(1092, "shell_unquote", "")
 	if err != nil {
@@ -22212,7 +25567,11 @@ func ShellUnquote(quoted_string string) (result string, err error) {
 }
 
 // g_slice_alloc
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SliceAlloc(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1093, "slice_alloc", "")
 	if err != nil {
@@ -22228,7 +25587,11 @@ func SliceAlloc(block_size uint64) (result unsafe.Pointer) {
 }
 
 // g_slice_alloc0
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SliceAlloc0(block_size uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1094, "slice_alloc0", "")
 	if err != nil {
@@ -22244,7 +25607,13 @@ func SliceAlloc0(block_size uint64) (result unsafe.Pointer) {
 }
 
 // g_slice_copy
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ mem_block ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SliceCopy(block_size uint64, mem_block unsafe.Pointer) (result unsafe.Pointer) {
 	iv, err := _I.Get(1095, "slice_copy", "")
 	if err != nil {
@@ -22261,7 +25630,11 @@ func SliceCopy(block_size uint64, mem_block unsafe.Pointer) (result unsafe.Point
 }
 
 // g_slice_free1
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ mem_block ] trans: nothing
+//
 func SliceFree1(block_size uint64, mem_block unsafe.Pointer) {
 	iv, err := _I.Get(1096, "slice_free1", "")
 	if err != nil {
@@ -22275,7 +25648,13 @@ func SliceFree1(block_size uint64, mem_block unsafe.Pointer) {
 }
 
 // g_slice_free_chain_with_offset
-// container is nil
+//
+// [ block_size ] trans: nothing
+//
+// [ mem_chain ] trans: nothing
+//
+// [ next_offset ] trans: nothing
+//
 func SliceFreeChainWithOffset(block_size uint64, mem_chain unsafe.Pointer, next_offset uint64) {
 	iv, err := _I.Get(1097, "slice_free_chain_with_offset", "")
 	if err != nil {
@@ -22290,7 +25669,11 @@ func SliceFreeChainWithOffset(block_size uint64, mem_chain unsafe.Pointer, next_
 }
 
 // g_slice_get_config
-// container is nil
+//
+// [ ckey ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SliceGetConfig(ckey SliceConfigEnum) (result int64) {
 	iv, err := _I.Get(1098, "slice_get_config", "")
 	if err != nil {
@@ -22306,7 +25689,15 @@ func SliceGetConfig(ckey SliceConfigEnum) (result int64) {
 }
 
 // g_slice_get_config_state
-// container is nil
+//
+// [ ckey ] trans: nothing
+//
+// [ address ] trans: nothing
+//
+// [ n_values ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SliceGetConfigState(ckey SliceConfigEnum, address int64, n_values uint32) (result int64) {
 	iv, err := _I.Get(1099, "slice_get_config_state", "")
 	if err != nil {
@@ -22324,7 +25715,11 @@ func SliceGetConfigState(ckey SliceConfigEnum, address int64, n_values uint32) (
 }
 
 // g_slice_set_config
-// container is nil
+//
+// [ ckey ] trans: nothing
+//
+// [ value ] trans: nothing
+//
 func SliceSetConfig(ckey SliceConfigEnum, value int64) {
 	iv, err := _I.Get(1100, "slice_set_config", "")
 	if err != nil {
@@ -22338,7 +25733,11 @@ func SliceSetConfig(ckey SliceConfigEnum, value int64) {
 }
 
 // g_source_remove
-// container is nil
+//
+// [ tag ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SourceRemove(tag uint32) (result bool) {
 	iv, err := _I.Get(1101, "source_remove", "")
 	if err != nil {
@@ -22354,7 +25753,13 @@ func SourceRemove(tag uint32) (result bool) {
 }
 
 // g_source_remove_by_funcs_user_data
-// container is nil
+//
+// [ funcs ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SourceRemoveByFuncsUserData(funcs SourceFuncs, user_data unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(1102, "source_remove_by_funcs_user_data", "")
 	if err != nil {
@@ -22371,7 +25776,11 @@ func SourceRemoveByFuncsUserData(funcs SourceFuncs, user_data unsafe.Pointer) (r
 }
 
 // g_source_remove_by_user_data
-// container is nil
+//
+// [ user_data ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SourceRemoveByUserData(user_data unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(1103, "source_remove_by_user_data", "")
 	if err != nil {
@@ -22387,7 +25796,11 @@ func SourceRemoveByUserData(user_data unsafe.Pointer) (result bool) {
 }
 
 // g_source_set_name_by_id
-// container is nil
+//
+// [ tag ] trans: nothing
+//
+// [ name ] trans: nothing
+//
 func SourceSetNameById(tag uint32, name string) {
 	iv, err := _I.Get(1104, "source_set_name_by_id", "")
 	if err != nil {
@@ -22403,7 +25816,11 @@ func SourceSetNameById(tag uint32, name string) {
 }
 
 // g_spaced_primes_closest
-// container is nil
+//
+// [ num ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SpacedPrimesClosest(num uint32) (result uint32) {
 	iv, err := _I.Get(1105, "spaced_primes_closest", "")
 	if err != nil {
@@ -22419,7 +25836,23 @@ func SpacedPrimesClosest(num uint32) (result uint32) {
 }
 
 // g_spawn_async
-// container is nil
+//
+// [ working_directory ] trans: nothing
+//
+// [ argv ] trans: nothing
+//
+// [ envp ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ child_setup ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ child_pid ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1106, "spawn_async", "")
 	if err != nil {
@@ -22446,7 +25879,29 @@ func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, 
 }
 
 // g_spawn_async_with_fds
-// container is nil
+//
+// [ working_directory ] trans: nothing
+//
+// [ argv ] trans: nothing
+//
+// [ envp ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ child_setup ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ child_pid ] trans: everything, dir: out
+//
+// [ stdin_fd ] trans: nothing
+//
+// [ stdout_fd ] trans: nothing
+//
+// [ stderr_fd ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1107, "spawn_async_with_fds", "")
 	if err != nil {
@@ -22476,7 +25931,29 @@ func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStr
 }
 
 // g_spawn_async_with_pipes
-// container is nil
+//
+// [ working_directory ] trans: nothing
+//
+// [ argv ] trans: nothing
+//
+// [ envp ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ child_setup ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ child_pid ] trans: everything, dir: out
+//
+// [ standard_input ] trans: everything, dir: out
+//
+// [ standard_output ] trans: everything, dir: out
+//
+// [ standard_error ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
 	iv, err := _I.Get(1108, "spawn_async_with_pipes", "")
 	if err != nil {
@@ -22509,7 +25986,11 @@ func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CS
 }
 
 // g_spawn_check_exit_status
-// container is nil
+//
+// [ exit_status ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SpawnCheckExitStatus(exit_status int32) (result bool, err error) {
 	iv, err := _I.Get(1109, "spawn_check_exit_status", "")
 	if err != nil {
@@ -22527,7 +26008,9 @@ func SpawnCheckExitStatus(exit_status int32) (result bool, err error) {
 }
 
 // g_spawn_close_pid
-// container is nil
+//
+// [ pid ] trans: nothing
+//
 func SpawnClosePid(pid int32) {
 	iv, err := _I.Get(1110, "spawn_close_pid", "")
 	if err != nil {
@@ -22540,7 +26023,11 @@ func SpawnClosePid(pid int32) {
 }
 
 // g_spawn_command_line_async
-// container is nil
+//
+// [ command_line ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func SpawnCommandLineAsync(command_line string) (result bool, err error) {
 	iv, err := _I.Get(1111, "spawn_command_line_async", "")
 	if err != nil {
@@ -22560,7 +26047,17 @@ func SpawnCommandLineAsync(command_line string) (result bool, err error) {
 }
 
 // g_spawn_command_line_sync
-// container is nil
+//
+// [ command_line ] trans: nothing
+//
+// [ standard_output ] trans: everything, dir: out
+//
+// [ standard_error ] trans: everything, dir: out
+//
+// [ exit_status ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func SpawnCommandLineSync(command_line string) (result bool, standard_output gi.Uint8Array, standard_error gi.Uint8Array, exit_status int32, err error) {
 	iv, err := _I.Get(1112, "spawn_command_line_sync", "")
 	if err != nil {
@@ -22586,7 +26083,9 @@ func SpawnCommandLineSync(command_line string) (result bool, standard_output gi.
 }
 
 // g_spawn_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func SpawnErrorQuark() (result uint32) {
 	iv, err := _I.Get(1113, "spawn_error_quark", "")
 	if err != nil {
@@ -22600,7 +26099,9 @@ func SpawnErrorQuark() (result uint32) {
 }
 
 // g_spawn_exit_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func SpawnExitErrorQuark() (result uint32) {
 	iv, err := _I.Get(1114, "spawn_exit_error_quark", "")
 	if err != nil {
@@ -22614,7 +26115,27 @@ func SpawnExitErrorQuark() (result uint32) {
 }
 
 // g_spawn_sync
-// container is nil
+//
+// [ working_directory ] trans: nothing
+//
+// [ argv ] trans: nothing
+//
+// [ envp ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ child_setup ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ standard_output ] trans: everything, dir: out
+//
+// [ standard_error ] trans: everything, dir: out
+//
+// [ exit_status ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool, standard_output gi.Uint8Array, standard_error gi.Uint8Array, exit_status int32, err error) {
 	iv, err := _I.Get(1115, "spawn_sync", "")
 	if err != nil {
@@ -22645,7 +26166,13 @@ func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, f
 }
 
 // g_stpcpy
-// container is nil
+//
+// [ dest ] trans: nothing
+//
+// [ src ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Stpcpy(dest string, src string) (result string) {
 	iv, err := _I.Get(1116, "stpcpy", "")
 	if err != nil {
@@ -22666,7 +26193,13 @@ func Stpcpy(dest string, src string) (result string) {
 }
 
 // g_str_equal
-// container is nil
+//
+// [ v1 ] trans: nothing
+//
+// [ v2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StrEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) (result bool) {
 	iv, err := _I.Get(1117, "str_equal", "")
 	if err != nil {
@@ -22683,7 +26216,13 @@ func StrEqual(v1 unsafe.Pointer, v2 unsafe.Pointer) (result bool) {
 }
 
 // g_str_has_prefix
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ prefix ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StrHasPrefix(str string, prefix string) (result bool) {
 	iv, err := _I.Get(1118, "str_has_prefix", "")
 	if err != nil {
@@ -22704,7 +26243,13 @@ func StrHasPrefix(str string, prefix string) (result bool) {
 }
 
 // g_str_has_suffix
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ suffix ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StrHasSuffix(str string, suffix string) (result bool) {
 	iv, err := _I.Get(1119, "str_has_suffix", "")
 	if err != nil {
@@ -22725,7 +26270,11 @@ func StrHasSuffix(str string, suffix string) (result bool) {
 }
 
 // g_str_hash
-// container is nil
+//
+// [ v ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StrHash(v unsafe.Pointer) (result uint32) {
 	iv, err := _I.Get(1120, "str_hash", "")
 	if err != nil {
@@ -22741,7 +26290,11 @@ func StrHash(v unsafe.Pointer) (result uint32) {
 }
 
 // g_str_is_ascii
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StrIsAscii(str string) (result bool) {
 	iv, err := _I.Get(1121, "str_is_ascii", "")
 	if err != nil {
@@ -22759,7 +26312,15 @@ func StrIsAscii(str string) (result bool) {
 }
 
 // g_str_match_string
-// container is nil
+//
+// [ search_term ] trans: nothing
+//
+// [ potential_hit ] trans: nothing
+//
+// [ accept_alternates ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StrMatchString(search_term string, potential_hit string, accept_alternates bool) (result bool) {
 	iv, err := _I.Get(1122, "str_match_string", "")
 	if err != nil {
@@ -22781,7 +26342,13 @@ func StrMatchString(search_term string, potential_hit string, accept_alternates 
 }
 
 // g_str_to_ascii
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ from_locale ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func StrToAscii(str string, from_locale string) (result string) {
 	iv, err := _I.Get(1123, "str_to_ascii", "")
 	if err != nil {
@@ -22802,7 +26369,15 @@ func StrToAscii(str string, from_locale string) (result string) {
 }
 
 // g_str_tokenize_and_fold
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ translit_locale ] trans: nothing
+//
+// [ ascii_alternates ] trans: everything, dir: out
+//
+// [ result ] trans: everything
+//
 func StrTokenizeAndFold(string string, translit_locale string) (result gi.CStrArray, ascii_alternates gi.CStrArray) {
 	iv, err := _I.Get(1124, "str_tokenize_and_fold", "")
 	if err != nil {
@@ -22827,7 +26402,15 @@ func StrTokenizeAndFold(string string, translit_locale string) (result gi.CStrAr
 }
 
 // g_strcanon
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ valid_chars ] trans: nothing
+//
+// [ substitutor ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strcanon(string string, valid_chars string, substitutor int8) (result string) {
 	iv, err := _I.Get(1125, "strcanon", "")
 	if err != nil {
@@ -22849,7 +26432,13 @@ func Strcanon(string string, valid_chars string, substitutor int8) (result strin
 }
 
 // g_strcasecmp
-// container is nil
+//
+// [ s1 ] trans: nothing
+//
+// [ s2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Strcasecmp(s1 string, s2 string) (result int32) {
 	iv, err := _I.Get(1126, "strcasecmp", "")
 	if err != nil {
@@ -22870,7 +26459,11 @@ func Strcasecmp(s1 string, s2 string) (result int32) {
 }
 
 // g_strchomp
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strchomp(string string) (result string) {
 	iv, err := _I.Get(1127, "strchomp", "")
 	if err != nil {
@@ -22888,7 +26481,11 @@ func Strchomp(string string) (result string) {
 }
 
 // g_strchug
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strchug(string string) (result string) {
 	iv, err := _I.Get(1128, "strchug", "")
 	if err != nil {
@@ -22906,7 +26503,13 @@ func Strchug(string string) (result string) {
 }
 
 // g_strcmp0
-// container is nil
+//
+// [ str1 ] trans: nothing
+//
+// [ str2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Strcmp0(str1 string, str2 string) (result int32) {
 	iv, err := _I.Get(1129, "strcmp0", "")
 	if err != nil {
@@ -22927,7 +26530,11 @@ func Strcmp0(str1 string, str2 string) (result int32) {
 }
 
 // g_strcompress
-// container is nil
+//
+// [ source ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strcompress(source string) (result string) {
 	iv, err := _I.Get(1130, "strcompress", "")
 	if err != nil {
@@ -22945,7 +26552,15 @@ func Strcompress(source string) (result string) {
 }
 
 // g_strdelimit
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ delimiters ] trans: nothing
+//
+// [ new_delimiter ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strdelimit(string string, delimiters string, new_delimiter int8) (result string) {
 	iv, err := _I.Get(1131, "strdelimit", "")
 	if err != nil {
@@ -22967,7 +26582,11 @@ func Strdelimit(string string, delimiters string, new_delimiter int8) (result st
 }
 
 // g_strdown
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strdown(string string) (result string) {
 	iv, err := _I.Get(1132, "strdown", "")
 	if err != nil {
@@ -22985,7 +26604,11 @@ func Strdown(string string) (result string) {
 }
 
 // g_strdup
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strdup(str string) (result string) {
 	iv, err := _I.Get(1133, "strdup", "")
 	if err != nil {
@@ -23003,7 +26626,11 @@ func Strdup(str string) (result string) {
 }
 
 // g_strerror
-// container is nil
+//
+// [ errnum ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Strerror(errnum int32) (result string) {
 	iv, err := _I.Get(1134, "strerror", "")
 	if err != nil {
@@ -23014,12 +26641,18 @@ func Strerror(errnum int32) (result string) {
 	args := []gi.Argument{arg_errnum}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_strescape
-// container is nil
+//
+// [ source ] trans: nothing
+//
+// [ exceptions ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strescape(source string, exceptions string) (result string) {
 	iv, err := _I.Get(1135, "strescape", "")
 	if err != nil {
@@ -23040,7 +26673,9 @@ func Strescape(source string, exceptions string) (result string) {
 }
 
 // g_strfreev
-// container is nil
+//
+// [ str_array ] trans: nothing
+//
 func Strfreev(str_array string) {
 	iv, err := _I.Get(1136, "strfreev", "")
 	if err != nil {
@@ -23055,7 +26690,11 @@ func Strfreev(str_array string) {
 }
 
 // g_string_new
-// container is nil
+//
+// [ init ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func StringNew(init string) (result String) {
 	iv, err := _I.Get(1137, "string_new", "")
 	if err != nil {
@@ -23073,7 +26712,13 @@ func StringNew(init string) (result String) {
 }
 
 // g_string_new_len
-// container is nil
+//
+// [ init ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func StringNewLen(init string, len1 int64) (result String) {
 	iv, err := _I.Get(1138, "string_new_len", "")
 	if err != nil {
@@ -23092,7 +26737,11 @@ func StringNewLen(init string, len1 int64) (result String) {
 }
 
 // g_string_sized_new
-// container is nil
+//
+// [ dfl_size ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func StringSizedNew(dfl_size uint64) (result String) {
 	iv, err := _I.Get(1139, "string_sized_new", "")
 	if err != nil {
@@ -23108,7 +26757,13 @@ func StringSizedNew(dfl_size uint64) (result String) {
 }
 
 // g_strip_context
-// container is nil
+//
+// [ msgid ] trans: nothing
+//
+// [ msgval ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StripContext(msgid string, msgval string) (result string) {
 	iv, err := _I.Get(1140, "strip_context", "")
 	if err != nil {
@@ -23124,12 +26779,18 @@ func StripContext(msgid string, msgval string) (result string) {
 	iv.Call(args, &ret, nil)
 	gi.Free(c_msgid)
 	gi.Free(c_msgval)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_strjoinv
-// container is nil
+//
+// [ separator ] trans: nothing
+//
+// [ str_array ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strjoinv(separator string, str_array string) (result string) {
 	iv, err := _I.Get(1141, "strjoinv", "")
 	if err != nil {
@@ -23150,7 +26811,15 @@ func Strjoinv(separator string, str_array string) (result string) {
 }
 
 // g_strlcat
-// container is nil
+//
+// [ dest ] trans: nothing
+//
+// [ src ] trans: nothing
+//
+// [ dest_size ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Strlcat(dest string, src string, dest_size uint64) (result uint64) {
 	iv, err := _I.Get(1142, "strlcat", "")
 	if err != nil {
@@ -23172,7 +26841,15 @@ func Strlcat(dest string, src string, dest_size uint64) (result uint64) {
 }
 
 // g_strlcpy
-// container is nil
+//
+// [ dest ] trans: nothing
+//
+// [ src ] trans: nothing
+//
+// [ dest_size ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Strlcpy(dest string, src string, dest_size uint64) (result uint64) {
 	iv, err := _I.Get(1143, "strlcpy", "")
 	if err != nil {
@@ -23194,7 +26871,15 @@ func Strlcpy(dest string, src string, dest_size uint64) (result uint64) {
 }
 
 // g_strncasecmp
-// container is nil
+//
+// [ s1 ] trans: nothing
+//
+// [ s2 ] trans: nothing
+//
+// [ n ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Strncasecmp(s1 string, s2 string, n uint32) (result int32) {
 	iv, err := _I.Get(1144, "strncasecmp", "")
 	if err != nil {
@@ -23216,7 +26901,13 @@ func Strncasecmp(s1 string, s2 string, n uint32) (result int32) {
 }
 
 // g_strndup
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ n ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strndup(str string, n uint64) (result string) {
 	iv, err := _I.Get(1145, "strndup", "")
 	if err != nil {
@@ -23235,7 +26926,13 @@ func Strndup(str string, n uint64) (result string) {
 }
 
 // g_strnfill
-// container is nil
+//
+// [ length ] trans: nothing
+//
+// [ fill_char ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strnfill(length uint64, fill_char int8) (result string) {
 	iv, err := _I.Get(1146, "strnfill", "")
 	if err != nil {
@@ -23252,7 +26949,11 @@ func Strnfill(length uint64, fill_char int8) (result string) {
 }
 
 // g_strreverse
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strreverse(string string) (result string) {
 	iv, err := _I.Get(1147, "strreverse", "")
 	if err != nil {
@@ -23270,7 +26971,13 @@ func Strreverse(string string) (result string) {
 }
 
 // g_strrstr
-// container is nil
+//
+// [ haystack ] trans: nothing
+//
+// [ needle ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strrstr(haystack string, needle string) (result string) {
 	iv, err := _I.Get(1148, "strrstr", "")
 	if err != nil {
@@ -23291,7 +26998,15 @@ func Strrstr(haystack string, needle string) (result string) {
 }
 
 // g_strrstr_len
-// container is nil
+//
+// [ haystack ] trans: nothing
+//
+// [ haystack_len ] trans: nothing
+//
+// [ needle ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func StrrstrLen(haystack string, haystack_len int64, needle string) (result string) {
 	iv, err := _I.Get(1149, "strrstr_len", "")
 	if err != nil {
@@ -23313,7 +27028,11 @@ func StrrstrLen(haystack string, haystack_len int64, needle string) (result stri
 }
 
 // g_strsignal
-// container is nil
+//
+// [ signum ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Strsignal(signum int32) (result string) {
 	iv, err := _I.Get(1150, "strsignal", "")
 	if err != nil {
@@ -23324,12 +27043,20 @@ func Strsignal(signum int32) (result string) {
 	args := []gi.Argument{arg_signum}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_strstr_len
-// container is nil
+//
+// [ haystack ] trans: nothing
+//
+// [ haystack_len ] trans: nothing
+//
+// [ needle ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func StrstrLen(haystack string, haystack_len int64, needle string) (result string) {
 	iv, err := _I.Get(1151, "strstr_len", "")
 	if err != nil {
@@ -23351,7 +27078,13 @@ func StrstrLen(haystack string, haystack_len int64, needle string) (result strin
 }
 
 // g_strtod
-// container is nil
+//
+// [ nptr ] trans: nothing
+//
+// [ endptr ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func Strtod(nptr string) (result float64, endptr string) {
 	iv, err := _I.Get(1152, "strtod", "")
 	if err != nil {
@@ -23366,13 +27099,17 @@ func Strtod(nptr string) (result float64, endptr string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_nptr)
-	endptr = outArgs[0].String().Take()
+	endptr = outArgs[0].String().Copy()
 	result = ret.Double()
 	return
 }
 
 // g_strup
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Strup(string string) (result string) {
 	iv, err := _I.Get(1153, "strup", "")
 	if err != nil {
@@ -23390,7 +27127,13 @@ func Strup(string string) (result string) {
 }
 
 // g_strv_contains
-// container is nil
+//
+// [ strv ] trans: nothing
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StrvContains(strv string, str string) (result bool) {
 	iv, err := _I.Get(1154, "strv_contains", "")
 	if err != nil {
@@ -23411,7 +27154,9 @@ func StrvContains(strv string, str string) (result bool) {
 }
 
 // g_strv_get_type
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func StrvGetType() (result gi.GType) {
 	iv, err := _I.Get(1155, "strv_get_type", "")
 	if err != nil {
@@ -23425,7 +27170,11 @@ func StrvGetType() (result gi.GType) {
 }
 
 // g_strv_length
-// container is nil
+//
+// [ str_array ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func StrvLength(str_array string) (result uint32) {
 	iv, err := _I.Get(1156, "strv_length", "")
 	if err != nil {
@@ -23443,7 +27192,13 @@ func StrvLength(str_array string) (result uint32) {
 }
 
 // g_test_add_data_func
-// container is nil
+//
+// [ testpath ] trans: nothing
+//
+// [ test_data ] trans: nothing
+//
+// [ test_func ] trans: nothing
+//
 func TestAddDataFunc(testpath string, test_data unsafe.Pointer, test_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1157, "test_add_data_func", "")
 	if err != nil {
@@ -23460,7 +27215,15 @@ func TestAddDataFunc(testpath string, test_data unsafe.Pointer, test_func int /*
 }
 
 // g_test_add_data_func_full
-// container is nil
+//
+// [ testpath ] trans: nothing
+//
+// [ test_data ] trans: nothing
+//
+// [ test_func ] trans: nothing
+//
+// [ data_free_func ] trans: nothing
+//
 func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer, test_func int /*TODO_TYPE CALLBACK*/, data_free_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1158, "test_add_data_func_full", "")
 	if err != nil {
@@ -23478,7 +27241,11 @@ func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer, test_func in
 }
 
 // g_test_add_func
-// container is nil
+//
+// [ testpath ] trans: nothing
+//
+// [ test_func ] trans: nothing
+//
 func TestAddFunc(testpath string, test_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1159, "test_add_func", "")
 	if err != nil {
@@ -23494,7 +27261,15 @@ func TestAddFunc(testpath string, test_func int /*TODO_TYPE CALLBACK*/) {
 }
 
 // g_test_assert_expected_messages_internal
-// container is nil
+//
+// [ domain ] trans: nothing
+//
+// [ file ] trans: nothing
+//
+// [ line ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
 func TestAssertExpectedMessagesInternal(domain string, file string, line int32, func1 string) {
 	iv, err := _I.Get(1160, "test_assert_expected_messages_internal", "")
 	if err != nil {
@@ -23516,7 +27291,9 @@ func TestAssertExpectedMessagesInternal(domain string, file string, line int32, 
 }
 
 // g_test_bug
-// container is nil
+//
+// [ bug_uri_snippet ] trans: nothing
+//
 func TestBug(bug_uri_snippet string) {
 	iv, err := _I.Get(1161, "test_bug", "")
 	if err != nil {
@@ -23531,7 +27308,9 @@ func TestBug(bug_uri_snippet string) {
 }
 
 // g_test_bug_base
-// container is nil
+//
+// [ uri_pattern ] trans: nothing
+//
 func TestBugBase(uri_pattern string) {
 	iv, err := _I.Get(1162, "test_bug_base", "")
 	if err != nil {
@@ -23546,7 +27325,13 @@ func TestBugBase(uri_pattern string) {
 }
 
 // g_test_expect_message
-// container is nil
+//
+// [ log_domain ] trans: nothing
+//
+// [ log_level ] trans: nothing
+//
+// [ pattern ] trans: nothing
+//
 func TestExpectMessage(log_domain string, log_level LogLevelFlags, pattern string) {
 	iv, err := _I.Get(1163, "test_expect_message", "")
 	if err != nil {
@@ -23565,7 +27350,7 @@ func TestExpectMessage(log_domain string, log_level LogLevelFlags, pattern strin
 }
 
 // g_test_fail
-// container is nil
+//
 func TestFail() {
 	iv, err := _I.Get(1164, "test_fail", "")
 	if err != nil {
@@ -23576,7 +27361,9 @@ func TestFail() {
 }
 
 // g_test_failed
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TestFailed() (result bool) {
 	iv, err := _I.Get(1165, "test_failed", "")
 	if err != nil {
@@ -23590,7 +27377,11 @@ func TestFailed() (result bool) {
 }
 
 // g_test_get_dir
-// container is nil
+//
+// [ file_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TestGetDir(file_type TestFileTypeEnum) (result string) {
 	iv, err := _I.Get(1166, "test_get_dir", "")
 	if err != nil {
@@ -23601,12 +27392,14 @@ func TestGetDir(file_type TestFileTypeEnum) (result string) {
 	args := []gi.Argument{arg_file_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_test_incomplete
-// container is nil
+//
+// [ msg ] trans: nothing
+//
 func TestIncomplete(msg string) {
 	iv, err := _I.Get(1167, "test_incomplete", "")
 	if err != nil {
@@ -23621,7 +27414,11 @@ func TestIncomplete(msg string) {
 }
 
 // g_test_log_type_name
-// container is nil
+//
+// [ log_type ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TestLogTypeName(log_type TestLogTypeEnum) (result string) {
 	iv, err := _I.Get(1168, "test_log_type_name", "")
 	if err != nil {
@@ -23632,12 +27429,16 @@ func TestLogTypeName(log_type TestLogTypeEnum) (result string) {
 	args := []gi.Argument{arg_log_type}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.String().Take()
+	result = ret.String().Copy()
 	return
 }
 
 // g_test_queue_destroy
-// container is nil
+//
+// [ destroy_func ] trans: nothing
+//
+// [ destroy_data ] trans: nothing
+//
 func TestQueueDestroy(destroy_func int /*TODO_TYPE CALLBACK*/, destroy_data unsafe.Pointer) {
 	iv, err := _I.Get(1169, "test_queue_destroy", "")
 	if err != nil {
@@ -23651,7 +27452,9 @@ func TestQueueDestroy(destroy_func int /*TODO_TYPE CALLBACK*/, destroy_data unsa
 }
 
 // g_test_queue_free
-// container is nil
+//
+// [ gfree_pointer ] trans: nothing
+//
 func TestQueueFree(gfree_pointer unsafe.Pointer) {
 	iv, err := _I.Get(1170, "test_queue_free", "")
 	if err != nil {
@@ -23664,7 +27467,9 @@ func TestQueueFree(gfree_pointer unsafe.Pointer) {
 }
 
 // g_test_rand_double
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TestRandDouble() (result float64) {
 	iv, err := _I.Get(1171, "test_rand_double", "")
 	if err != nil {
@@ -23678,7 +27483,13 @@ func TestRandDouble() (result float64) {
 }
 
 // g_test_rand_double_range
-// container is nil
+//
+// [ range_start ] trans: nothing
+//
+// [ range_end ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TestRandDoubleRange(range_start float64, range_end float64) (result float64) {
 	iv, err := _I.Get(1172, "test_rand_double_range", "")
 	if err != nil {
@@ -23695,7 +27506,9 @@ func TestRandDoubleRange(range_start float64, range_end float64) (result float64
 }
 
 // g_test_rand_int
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TestRandInt() (result int32) {
 	iv, err := _I.Get(1173, "test_rand_int", "")
 	if err != nil {
@@ -23709,7 +27522,13 @@ func TestRandInt() (result int32) {
 }
 
 // g_test_rand_int_range
-// container is nil
+//
+// [ begin ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TestRandIntRange(begin int32, end int32) (result int32) {
 	iv, err := _I.Get(1174, "test_rand_int_range", "")
 	if err != nil {
@@ -23726,7 +27545,9 @@ func TestRandIntRange(begin int32, end int32) (result int32) {
 }
 
 // g_test_run
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TestRun() (result int32) {
 	iv, err := _I.Get(1175, "test_run", "")
 	if err != nil {
@@ -23740,7 +27561,11 @@ func TestRun() (result int32) {
 }
 
 // g_test_run_suite
-// container is nil
+//
+// [ suite ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TestRunSuite(suite TestSuite) (result int32) {
 	iv, err := _I.Get(1176, "test_run_suite", "")
 	if err != nil {
@@ -23756,7 +27581,7 @@ func TestRunSuite(suite TestSuite) (result int32) {
 }
 
 // g_test_set_nonfatal_assertions
-// container is nil
+//
 func TestSetNonfatalAssertions() {
 	iv, err := _I.Get(1177, "test_set_nonfatal_assertions", "")
 	if err != nil {
@@ -23767,7 +27592,9 @@ func TestSetNonfatalAssertions() {
 }
 
 // g_test_skip
-// container is nil
+//
+// [ msg ] trans: nothing
+//
 func TestSkip(msg string) {
 	iv, err := _I.Get(1178, "test_skip", "")
 	if err != nil {
@@ -23782,7 +27609,9 @@ func TestSkip(msg string) {
 }
 
 // g_test_subprocess
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TestSubprocess() (result bool) {
 	iv, err := _I.Get(1179, "test_subprocess", "")
 	if err != nil {
@@ -23796,7 +27625,9 @@ func TestSubprocess() (result bool) {
 }
 
 // g_test_timer_elapsed
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TestTimerElapsed() (result float64) {
 	iv, err := _I.Get(1180, "test_timer_elapsed", "")
 	if err != nil {
@@ -23810,7 +27641,9 @@ func TestTimerElapsed() (result float64) {
 }
 
 // g_test_timer_last
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TestTimerLast() (result float64) {
 	iv, err := _I.Get(1181, "test_timer_last", "")
 	if err != nil {
@@ -23824,7 +27657,7 @@ func TestTimerLast() (result float64) {
 }
 
 // g_test_timer_start
-// container is nil
+//
 func TestTimerStart() {
 	iv, err := _I.Get(1182, "test_timer_start", "")
 	if err != nil {
@@ -23835,7 +27668,19 @@ func TestTimerStart() {
 }
 
 // g_test_trap_assertions
-// container is nil
+//
+// [ domain ] trans: nothing
+//
+// [ file ] trans: nothing
+//
+// [ line ] trans: nothing
+//
+// [ func1 ] trans: nothing
+//
+// [ assertion_flags ] trans: nothing
+//
+// [ pattern ] trans: nothing
+//
 func TestTrapAssertions(domain string, file string, line int32, func1 string, assertion_flags uint64, pattern string) {
 	iv, err := _I.Get(1183, "test_trap_assertions", "")
 	if err != nil {
@@ -23861,7 +27706,13 @@ func TestTrapAssertions(domain string, file string, line int32, func1 string, as
 }
 
 // g_test_trap_fork
-// container is nil
+//
+// [ usec_timeout ] trans: nothing
+//
+// [ test_trap_flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TestTrapFork(usec_timeout uint64, test_trap_flags TestTrapFlags) (result bool) {
 	iv, err := _I.Get(1184, "test_trap_fork", "")
 	if err != nil {
@@ -23878,7 +27729,9 @@ func TestTrapFork(usec_timeout uint64, test_trap_flags TestTrapFlags) (result bo
 }
 
 // g_test_trap_has_passed
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TestTrapHasPassed() (result bool) {
 	iv, err := _I.Get(1185, "test_trap_has_passed", "")
 	if err != nil {
@@ -23892,7 +27745,9 @@ func TestTrapHasPassed() (result bool) {
 }
 
 // g_test_trap_reached_timeout
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func TestTrapReachedTimeout() (result bool) {
 	iv, err := _I.Get(1186, "test_trap_reached_timeout", "")
 	if err != nil {
@@ -23906,7 +27761,13 @@ func TestTrapReachedTimeout() (result bool) {
 }
 
 // g_test_trap_subprocess
-// container is nil
+//
+// [ test_path ] trans: nothing
+//
+// [ usec_timeout ] trans: nothing
+//
+// [ test_flags ] trans: nothing
+//
 func TestTrapSubprocess(test_path string, usec_timeout uint64, test_flags TestSubprocessFlags) {
 	iv, err := _I.Get(1187, "test_trap_subprocess", "")
 	if err != nil {
@@ -23923,7 +27784,9 @@ func TestTrapSubprocess(test_path string, usec_timeout uint64, test_flags TestSu
 }
 
 // g_thread_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func ThreadErrorQuark() (result uint32) {
 	iv, err := _I.Get(1188, "thread_error_quark", "")
 	if err != nil {
@@ -23937,7 +27800,9 @@ func ThreadErrorQuark() (result uint32) {
 }
 
 // g_thread_exit
-// container is nil
+//
+// [ retval ] trans: nothing
+//
 func ThreadExit(retval unsafe.Pointer) {
 	iv, err := _I.Get(1189, "thread_exit", "")
 	if err != nil {
@@ -23950,7 +27815,9 @@ func ThreadExit(retval unsafe.Pointer) {
 }
 
 // g_thread_pool_get_max_idle_time
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func ThreadPoolGetMaxIdleTime() (result uint32) {
 	iv, err := _I.Get(1190, "thread_pool_get_max_idle_time", "")
 	if err != nil {
@@ -23964,7 +27831,9 @@ func ThreadPoolGetMaxIdleTime() (result uint32) {
 }
 
 // g_thread_pool_get_max_unused_threads
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func ThreadPoolGetMaxUnusedThreads() (result int32) {
 	iv, err := _I.Get(1191, "thread_pool_get_max_unused_threads", "")
 	if err != nil {
@@ -23978,7 +27847,9 @@ func ThreadPoolGetMaxUnusedThreads() (result int32) {
 }
 
 // g_thread_pool_get_num_unused_threads
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func ThreadPoolGetNumUnusedThreads() (result uint32) {
 	iv, err := _I.Get(1192, "thread_pool_get_num_unused_threads", "")
 	if err != nil {
@@ -23992,7 +27863,9 @@ func ThreadPoolGetNumUnusedThreads() (result uint32) {
 }
 
 // g_thread_pool_set_max_idle_time
-// container is nil
+//
+// [ interval ] trans: nothing
+//
 func ThreadPoolSetMaxIdleTime(interval uint32) {
 	iv, err := _I.Get(1193, "thread_pool_set_max_idle_time", "")
 	if err != nil {
@@ -24005,7 +27878,9 @@ func ThreadPoolSetMaxIdleTime(interval uint32) {
 }
 
 // g_thread_pool_set_max_unused_threads
-// container is nil
+//
+// [ max_threads ] trans: nothing
+//
 func ThreadPoolSetMaxUnusedThreads(max_threads int32) {
 	iv, err := _I.Get(1194, "thread_pool_set_max_unused_threads", "")
 	if err != nil {
@@ -24018,7 +27893,7 @@ func ThreadPoolSetMaxUnusedThreads(max_threads int32) {
 }
 
 // g_thread_pool_stop_unused_threads
-// container is nil
+//
 func ThreadPoolStopUnusedThreads() {
 	iv, err := _I.Get(1195, "thread_pool_stop_unused_threads", "")
 	if err != nil {
@@ -24029,7 +27904,9 @@ func ThreadPoolStopUnusedThreads() {
 }
 
 // g_thread_self
-// container is nil
+//
+// [ result ] trans: everything
+//
 func ThreadSelf() (result Thread) {
 	iv, err := _I.Get(1196, "thread_self", "")
 	if err != nil {
@@ -24043,7 +27920,7 @@ func ThreadSelf() (result Thread) {
 }
 
 // g_thread_yield
-// container is nil
+//
 func ThreadYield() {
 	iv, err := _I.Get(1197, "thread_yield", "")
 	if err != nil {
@@ -24054,7 +27931,13 @@ func ThreadYield() {
 }
 
 // g_time_val_from_iso8601
-// container is nil
+//
+// [ iso_date ] trans: nothing
+//
+// [ time_ ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func TimeValFromIso8601(iso_date string, time_ TimeVal) (result bool) {
 	iv, err := _I.Get(1198, "time_val_from_iso8601", "")
 	if err != nil {
@@ -24073,7 +27956,19 @@ func TimeValFromIso8601(iso_date string, time_ TimeVal) (result bool) {
 }
 
 // g_timeout_add_full
-// container is nil
+//
+// [ priority ] trans: nothing
+//
+// [ interval ] trans: nothing
+//
+// [ function ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TimeoutAdd(priority int32, interval uint32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(1199, "timeout_add", "")
 	if err != nil {
@@ -24093,7 +27988,19 @@ func TimeoutAdd(priority int32, interval uint32, function int /*TODO_TYPE CALLBA
 }
 
 // g_timeout_add_seconds_full
-// container is nil
+//
+// [ priority ] trans: nothing
+//
+// [ interval ] trans: nothing
+//
+// [ function ] trans: nothing
+//
+// [ data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TimeoutAddSeconds(priority int32, interval uint32, function int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(1200, "timeout_add_seconds", "")
 	if err != nil {
@@ -24113,7 +28020,11 @@ func TimeoutAddSeconds(priority int32, interval uint32, function int /*TODO_TYPE
 }
 
 // g_timeout_source_new
-// container is nil
+//
+// [ interval ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func TimeoutSourceNew(interval uint32) (result Source) {
 	iv, err := _I.Get(1201, "timeout_source_new", "")
 	if err != nil {
@@ -24129,7 +28040,11 @@ func TimeoutSourceNew(interval uint32) (result Source) {
 }
 
 // g_timeout_source_new_seconds
-// container is nil
+//
+// [ interval ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func TimeoutSourceNewSeconds(interval uint32) (result Source) {
 	iv, err := _I.Get(1202, "timeout_source_new_seconds", "")
 	if err != nil {
@@ -24145,7 +28060,11 @@ func TimeoutSourceNewSeconds(interval uint32) (result Source) {
 }
 
 // g_trash_stack_height
-// container is nil
+//
+// [ stack_p ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TrashStackHeight(stack_p TrashStack) (result uint32) {
 	iv, err := _I.Get(1203, "trash_stack_height", "")
 	if err != nil {
@@ -24161,7 +28080,11 @@ func TrashStackHeight(stack_p TrashStack) (result uint32) {
 }
 
 // g_trash_stack_peek
-// container is nil
+//
+// [ stack_p ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TrashStackPeek(stack_p TrashStack) (result unsafe.Pointer) {
 	iv, err := _I.Get(1204, "trash_stack_peek", "")
 	if err != nil {
@@ -24177,7 +28100,11 @@ func TrashStackPeek(stack_p TrashStack) (result unsafe.Pointer) {
 }
 
 // g_trash_stack_pop
-// container is nil
+//
+// [ stack_p ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TrashStackPop(stack_p TrashStack) (result unsafe.Pointer) {
 	iv, err := _I.Get(1205, "trash_stack_pop", "")
 	if err != nil {
@@ -24193,7 +28120,11 @@ func TrashStackPop(stack_p TrashStack) (result unsafe.Pointer) {
 }
 
 // g_trash_stack_push
-// container is nil
+//
+// [ stack_p ] trans: nothing
+//
+// [ data_p ] trans: nothing
+//
 func TrashStackPush(stack_p TrashStack, data_p unsafe.Pointer) {
 	iv, err := _I.Get(1206, "trash_stack_push", "")
 	if err != nil {
@@ -24207,7 +28138,11 @@ func TrashStackPush(stack_p TrashStack, data_p unsafe.Pointer) {
 }
 
 // g_try_malloc
-// container is nil
+//
+// [ n_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TryMalloc(n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1207, "try_malloc", "")
 	if err != nil {
@@ -24223,7 +28158,11 @@ func TryMalloc(n_bytes uint64) (result unsafe.Pointer) {
 }
 
 // g_try_malloc0
-// container is nil
+//
+// [ n_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TryMalloc0(n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1208, "try_malloc0", "")
 	if err != nil {
@@ -24239,7 +28178,13 @@ func TryMalloc0(n_bytes uint64) (result unsafe.Pointer) {
 }
 
 // g_try_malloc0_n
-// container is nil
+//
+// [ n_blocks ] trans: nothing
+//
+// [ n_block_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TryMalloc0N(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1209, "try_malloc0_n", "")
 	if err != nil {
@@ -24256,7 +28201,13 @@ func TryMalloc0N(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) 
 }
 
 // g_try_malloc_n
-// container is nil
+//
+// [ n_blocks ] trans: nothing
+//
+// [ n_block_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TryMallocN(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1210, "try_malloc_n", "")
 	if err != nil {
@@ -24273,7 +28224,13 @@ func TryMallocN(n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 }
 
 // g_try_realloc
-// container is nil
+//
+// [ mem ] trans: nothing
+//
+// [ n_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TryRealloc(mem unsafe.Pointer, n_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1211, "try_realloc", "")
 	if err != nil {
@@ -24290,7 +28247,15 @@ func TryRealloc(mem unsafe.Pointer, n_bytes uint64) (result unsafe.Pointer) {
 }
 
 // g_try_realloc_n
-// container is nil
+//
+// [ mem ] trans: nothing
+//
+// [ n_blocks ] trans: nothing
+//
+// [ n_block_bytes ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func TryReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) (result unsafe.Pointer) {
 	iv, err := _I.Get(1212, "try_realloc_n", "")
 	if err != nil {
@@ -24308,7 +28273,17 @@ func TryReallocN(mem unsafe.Pointer, n_blocks uint64, n_block_bytes uint64) (res
 }
 
 // g_ucs4_to_utf16
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ items_read ] trans: nothing, dir: out
+//
+// [ items_written ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func Ucs4ToUtf16(str rune, len1 int64) (result uint16, items_read int64, items_written int64, err error) {
 	iv, err := _I.Get(1213, "ucs4_to_utf16", "")
 	if err != nil {
@@ -24331,7 +28306,17 @@ func Ucs4ToUtf16(str rune, len1 int64) (result uint16, items_read int64, items_w
 }
 
 // g_ucs4_to_utf8
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ items_read ] trans: nothing, dir: out
+//
+// [ items_written ] trans: nothing, dir: out
+//
+// [ result ] trans: everything
+//
 func Ucs4ToUtf8(str rune, len1 int64) (result string, items_read int64, items_written int64, err error) {
 	iv, err := _I.Get(1214, "ucs4_to_utf8", "")
 	if err != nil {
@@ -24354,7 +28339,11 @@ func Ucs4ToUtf8(str rune, len1 int64) (result string, items_read int64, items_wr
 }
 
 // g_unichar_break_type
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharBreakType(c rune) (result UnicodeBreakTypeEnum) {
 	iv, err := _I.Get(1215, "unichar_break_type", "")
 	if err != nil {
@@ -24370,7 +28359,11 @@ func UnicharBreakType(c rune) (result UnicodeBreakTypeEnum) {
 }
 
 // g_unichar_combining_class
-// container is nil
+//
+// [ uc ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharCombiningClass(uc rune) (result int32) {
 	iv, err := _I.Get(1216, "unichar_combining_class", "")
 	if err != nil {
@@ -24386,7 +28379,15 @@ func UnicharCombiningClass(uc rune) (result int32) {
 }
 
 // g_unichar_compose
-// container is nil
+//
+// [ a ] trans: nothing
+//
+// [ b ] trans: nothing
+//
+// [ ch ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharCompose(a rune, b rune, ch rune) (result bool) {
 	iv, err := _I.Get(1217, "unichar_compose", "")
 	if err != nil {
@@ -24404,7 +28405,15 @@ func UnicharCompose(a rune, b rune, ch rune) (result bool) {
 }
 
 // g_unichar_decompose
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ a ] trans: nothing
+//
+// [ b ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharDecompose(ch rune, a rune, b rune) (result bool) {
 	iv, err := _I.Get(1218, "unichar_decompose", "")
 	if err != nil {
@@ -24422,7 +28431,11 @@ func UnicharDecompose(ch rune, a rune, b rune) (result bool) {
 }
 
 // g_unichar_digit_value
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharDigitValue(c rune) (result int32) {
 	iv, err := _I.Get(1219, "unichar_digit_value", "")
 	if err != nil {
@@ -24438,7 +28451,17 @@ func UnicharDigitValue(c rune) (result int32) {
 }
 
 // g_unichar_fully_decompose
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ compat ] trans: nothing
+//
+// [ result ] trans: nothing
+//
+// [ result_len ] trans: nothing
+//
+// [ result1 ] trans: nothing
+//
 func UnicharFullyDecompose(ch rune, compat bool, result rune, result_len uint64) (result1 uint64) {
 	iv, err := _I.Get(1220, "unichar_fully_decompose", "")
 	if err != nil {
@@ -24457,7 +28480,13 @@ func UnicharFullyDecompose(ch rune, compat bool, result rune, result_len uint64)
 }
 
 // g_unichar_get_mirror_char
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ mirrored_ch ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharGetMirrorChar(ch rune, mirrored_ch rune) (result bool) {
 	iv, err := _I.Get(1221, "unichar_get_mirror_char", "")
 	if err != nil {
@@ -24474,7 +28503,11 @@ func UnicharGetMirrorChar(ch rune, mirrored_ch rune) (result bool) {
 }
 
 // g_unichar_get_script
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharGetScript(ch rune) (result UnicodeScriptEnum) {
 	iv, err := _I.Get(1222, "unichar_get_script", "")
 	if err != nil {
@@ -24490,7 +28523,11 @@ func UnicharGetScript(ch rune) (result UnicodeScriptEnum) {
 }
 
 // g_unichar_isalnum
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIsalnum(c rune) (result bool) {
 	iv, err := _I.Get(1223, "unichar_isalnum", "")
 	if err != nil {
@@ -24506,7 +28543,11 @@ func UnicharIsalnum(c rune) (result bool) {
 }
 
 // g_unichar_isalpha
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIsalpha(c rune) (result bool) {
 	iv, err := _I.Get(1224, "unichar_isalpha", "")
 	if err != nil {
@@ -24522,7 +28563,11 @@ func UnicharIsalpha(c rune) (result bool) {
 }
 
 // g_unichar_iscntrl
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIscntrl(c rune) (result bool) {
 	iv, err := _I.Get(1225, "unichar_iscntrl", "")
 	if err != nil {
@@ -24538,7 +28583,11 @@ func UnicharIscntrl(c rune) (result bool) {
 }
 
 // g_unichar_isdefined
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIsdefined(c rune) (result bool) {
 	iv, err := _I.Get(1226, "unichar_isdefined", "")
 	if err != nil {
@@ -24554,7 +28603,11 @@ func UnicharIsdefined(c rune) (result bool) {
 }
 
 // g_unichar_isdigit
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIsdigit(c rune) (result bool) {
 	iv, err := _I.Get(1227, "unichar_isdigit", "")
 	if err != nil {
@@ -24570,7 +28623,11 @@ func UnicharIsdigit(c rune) (result bool) {
 }
 
 // g_unichar_isgraph
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIsgraph(c rune) (result bool) {
 	iv, err := _I.Get(1228, "unichar_isgraph", "")
 	if err != nil {
@@ -24586,7 +28643,11 @@ func UnicharIsgraph(c rune) (result bool) {
 }
 
 // g_unichar_islower
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIslower(c rune) (result bool) {
 	iv, err := _I.Get(1229, "unichar_islower", "")
 	if err != nil {
@@ -24602,7 +28663,11 @@ func UnicharIslower(c rune) (result bool) {
 }
 
 // g_unichar_ismark
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIsmark(c rune) (result bool) {
 	iv, err := _I.Get(1230, "unichar_ismark", "")
 	if err != nil {
@@ -24618,7 +28683,11 @@ func UnicharIsmark(c rune) (result bool) {
 }
 
 // g_unichar_isprint
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIsprint(c rune) (result bool) {
 	iv, err := _I.Get(1231, "unichar_isprint", "")
 	if err != nil {
@@ -24634,7 +28703,11 @@ func UnicharIsprint(c rune) (result bool) {
 }
 
 // g_unichar_ispunct
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIspunct(c rune) (result bool) {
 	iv, err := _I.Get(1232, "unichar_ispunct", "")
 	if err != nil {
@@ -24650,7 +28723,11 @@ func UnicharIspunct(c rune) (result bool) {
 }
 
 // g_unichar_isspace
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIsspace(c rune) (result bool) {
 	iv, err := _I.Get(1233, "unichar_isspace", "")
 	if err != nil {
@@ -24666,7 +28743,11 @@ func UnicharIsspace(c rune) (result bool) {
 }
 
 // g_unichar_istitle
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIstitle(c rune) (result bool) {
 	iv, err := _I.Get(1234, "unichar_istitle", "")
 	if err != nil {
@@ -24682,7 +28763,11 @@ func UnicharIstitle(c rune) (result bool) {
 }
 
 // g_unichar_isupper
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIsupper(c rune) (result bool) {
 	iv, err := _I.Get(1235, "unichar_isupper", "")
 	if err != nil {
@@ -24698,7 +28783,11 @@ func UnicharIsupper(c rune) (result bool) {
 }
 
 // g_unichar_iswide
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIswide(c rune) (result bool) {
 	iv, err := _I.Get(1236, "unichar_iswide", "")
 	if err != nil {
@@ -24714,7 +28803,11 @@ func UnicharIswide(c rune) (result bool) {
 }
 
 // g_unichar_iswide_cjk
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIswideCjk(c rune) (result bool) {
 	iv, err := _I.Get(1237, "unichar_iswide_cjk", "")
 	if err != nil {
@@ -24730,7 +28823,11 @@ func UnicharIswideCjk(c rune) (result bool) {
 }
 
 // g_unichar_isxdigit
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIsxdigit(c rune) (result bool) {
 	iv, err := _I.Get(1238, "unichar_isxdigit", "")
 	if err != nil {
@@ -24746,7 +28843,11 @@ func UnicharIsxdigit(c rune) (result bool) {
 }
 
 // g_unichar_iszerowidth
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharIszerowidth(c rune) (result bool) {
 	iv, err := _I.Get(1239, "unichar_iszerowidth", "")
 	if err != nil {
@@ -24762,7 +28863,13 @@ func UnicharIszerowidth(c rune) (result bool) {
 }
 
 // g_unichar_to_utf8
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ outbuf ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func UnicharToUtf8(c rune) (result int32, outbuf string) {
 	iv, err := _I.Get(1240, "unichar_to_utf8", "")
 	if err != nil {
@@ -24775,13 +28882,17 @@ func UnicharToUtf8(c rune) (result int32, outbuf string) {
 	args := []gi.Argument{arg_c, arg_outbuf}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	outbuf = outArgs[0].String().Take()
+	outbuf = outArgs[0].String().Copy()
 	result = ret.Int32()
 	return
 }
 
 // g_unichar_tolower
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharTolower(c rune) (result rune) {
 	iv, err := _I.Get(1241, "unichar_tolower", "")
 	if err != nil {
@@ -24797,7 +28908,11 @@ func UnicharTolower(c rune) (result rune) {
 }
 
 // g_unichar_totitle
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharTotitle(c rune) (result rune) {
 	iv, err := _I.Get(1242, "unichar_totitle", "")
 	if err != nil {
@@ -24813,7 +28928,11 @@ func UnicharTotitle(c rune) (result rune) {
 }
 
 // g_unichar_toupper
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharToupper(c rune) (result rune) {
 	iv, err := _I.Get(1243, "unichar_toupper", "")
 	if err != nil {
@@ -24829,7 +28948,11 @@ func UnicharToupper(c rune) (result rune) {
 }
 
 // g_unichar_type
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharType(c rune) (result UnicodeTypeEnum) {
 	iv, err := _I.Get(1244, "unichar_type", "")
 	if err != nil {
@@ -24845,7 +28968,11 @@ func UnicharType(c rune) (result UnicodeTypeEnum) {
 }
 
 // g_unichar_validate
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharValidate(ch rune) (result bool) {
 	iv, err := _I.Get(1245, "unichar_validate", "")
 	if err != nil {
@@ -24861,7 +28988,11 @@ func UnicharValidate(ch rune) (result bool) {
 }
 
 // g_unichar_xdigit_value
-// container is nil
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicharXdigitValue(c rune) (result int32) {
 	iv, err := _I.Get(1246, "unichar_xdigit_value", "")
 	if err != nil {
@@ -24877,7 +29008,13 @@ func UnicharXdigitValue(c rune) (result int32) {
 }
 
 // g_unicode_canonical_decomposition
-// container is nil
+//
+// [ ch ] trans: nothing
+//
+// [ result_len ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicodeCanonicalDecomposition(ch rune, result_len uint64) (result rune) {
 	iv, err := _I.Get(1247, "unicode_canonical_decomposition", "")
 	if err != nil {
@@ -24894,7 +29031,11 @@ func UnicodeCanonicalDecomposition(ch rune, result_len uint64) (result rune) {
 }
 
 // g_unicode_canonical_ordering
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
 func UnicodeCanonicalOrdering(string rune, len1 uint64) {
 	iv, err := _I.Get(1248, "unicode_canonical_ordering", "")
 	if err != nil {
@@ -24908,7 +29049,11 @@ func UnicodeCanonicalOrdering(string rune, len1 uint64) {
 }
 
 // g_unicode_script_from_iso15924
-// container is nil
+//
+// [ iso15924 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicodeScriptFromIso15924(iso15924 uint32) (result UnicodeScriptEnum) {
 	iv, err := _I.Get(1249, "unicode_script_from_iso15924", "")
 	if err != nil {
@@ -24924,7 +29069,11 @@ func UnicodeScriptFromIso15924(iso15924 uint32) (result UnicodeScriptEnum) {
 }
 
 // g_unicode_script_to_iso15924
-// container is nil
+//
+// [ script ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnicodeScriptToIso15924(script UnicodeScriptEnum) (result uint32) {
 	iv, err := _I.Get(1250, "unicode_script_to_iso15924", "")
 	if err != nil {
@@ -24940,7 +29089,9 @@ func UnicodeScriptToIso15924(script UnicodeScriptEnum) (result uint32) {
 }
 
 // g_unix_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func UnixErrorQuark() (result uint32) {
 	iv, err := _I.Get(1251, "unix_error_quark", "")
 	if err != nil {
@@ -24954,7 +29105,21 @@ func UnixErrorQuark() (result uint32) {
 }
 
 // g_unix_fd_add_full
-// container is nil
+//
+// [ priority ] trans: nothing
+//
+// [ fd ] trans: nothing
+//
+// [ condition ] trans: nothing
+//
+// [ function ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, function int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(1252, "unix_fd_add_full", "")
 	if err != nil {
@@ -24975,7 +29140,13 @@ func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, functio
 }
 
 // g_unix_fd_source_new
-// container is nil
+//
+// [ fd ] trans: nothing
+//
+// [ condition ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UnixFdSourceNew(fd int32, condition IOConditionFlags) (result Source) {
 	iv, err := _I.Get(1253, "unix_fd_source_new", "")
 	if err != nil {
@@ -24992,7 +29163,13 @@ func UnixFdSourceNew(fd int32, condition IOConditionFlags) (result Source) {
 }
 
 // g_unix_open_pipe
-// container is nil
+//
+// [ fds ] trans: nothing
+//
+// [ flags ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixOpenPipe(fds int32, flags int32) (result bool, err error) {
 	iv, err := _I.Get(1254, "unix_open_pipe", "")
 	if err != nil {
@@ -25011,7 +29188,13 @@ func UnixOpenPipe(fds int32, flags int32) (result bool, err error) {
 }
 
 // g_unix_set_fd_nonblocking
-// container is nil
+//
+// [ fd ] trans: nothing
+//
+// [ nonblock ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixSetFdNonblocking(fd int32, nonblock bool) (result bool, err error) {
 	iv, err := _I.Get(1255, "unix_set_fd_nonblocking", "")
 	if err != nil {
@@ -25030,7 +29213,19 @@ func UnixSetFdNonblocking(fd int32, nonblock bool) (result bool, err error) {
 }
 
 // g_unix_signal_add_full
-// container is nil
+//
+// [ priority ] trans: nothing
+//
+// [ signum ] trans: nothing
+//
+// [ handler ] trans: nothing
+//
+// [ user_data ] trans: nothing
+//
+// [ notify ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UnixSignalAdd(priority int32, signum int32, handler int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
 	iv, err := _I.Get(1256, "unix_signal_add", "")
 	if err != nil {
@@ -25050,7 +29245,11 @@ func UnixSignalAdd(priority int32, signum int32, handler int /*TODO_TYPE CALLBAC
 }
 
 // g_unix_signal_source_new
-// container is nil
+//
+// [ signum ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UnixSignalSourceNew(signum int32) (result Source) {
 	iv, err := _I.Get(1257, "unix_signal_source_new", "")
 	if err != nil {
@@ -25066,7 +29265,11 @@ func UnixSignalSourceNew(signum int32) (result Source) {
 }
 
 // g_unlink
-// container is nil
+//
+// [ filename ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Unlink(filename string) (result int32) {
 	iv, err := _I.Get(1258, "unlink", "")
 	if err != nil {
@@ -25084,7 +29287,9 @@ func Unlink(filename string) (result int32) {
 }
 
 // g_unsetenv
-// container is nil
+//
+// [ variable ] trans: nothing
+//
 func Unsetenv(variable string) {
 	iv, err := _I.Get(1259, "unsetenv", "")
 	if err != nil {
@@ -25099,7 +29304,15 @@ func Unsetenv(variable string) {
 }
 
 // g_uri_escape_string
-// container is nil
+//
+// [ unescaped ] trans: nothing
+//
+// [ reserved_chars_allowed ] trans: nothing
+//
+// [ allow_utf8 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UriEscapeString(unescaped string, reserved_chars_allowed string, allow_utf8 bool) (result string) {
 	iv, err := _I.Get(1260, "uri_escape_string", "")
 	if err != nil {
@@ -25121,7 +29334,11 @@ func UriEscapeString(unescaped string, reserved_chars_allowed string, allow_utf8
 }
 
 // g_uri_list_extract_uris
-// container is nil
+//
+// [ uri_list ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UriListExtractUris(uri_list string) (result gi.CStrArray) {
 	iv, err := _I.Get(1261, "uri_list_extract_uris", "")
 	if err != nil {
@@ -25140,7 +29357,11 @@ func UriListExtractUris(uri_list string) (result gi.CStrArray) {
 }
 
 // g_uri_parse_scheme
-// container is nil
+//
+// [ uri ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UriParseScheme(uri string) (result string) {
 	iv, err := _I.Get(1262, "uri_parse_scheme", "")
 	if err != nil {
@@ -25158,7 +29379,15 @@ func UriParseScheme(uri string) (result string) {
 }
 
 // g_uri_unescape_segment
-// container is nil
+//
+// [ escaped_string ] trans: nothing
+//
+// [ escaped_string_end ] trans: nothing
+//
+// [ illegal_characters ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UriUnescapeSegment(escaped_string string, escaped_string_end string, illegal_characters string) (result string) {
 	iv, err := _I.Get(1263, "uri_unescape_segment", "")
 	if err != nil {
@@ -25182,7 +29411,13 @@ func UriUnescapeSegment(escaped_string string, escaped_string_end string, illega
 }
 
 // g_uri_unescape_string
-// container is nil
+//
+// [ escaped_string ] trans: nothing
+//
+// [ illegal_characters ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func UriUnescapeString(escaped_string string, illegal_characters string) (result string) {
 	iv, err := _I.Get(1264, "uri_unescape_string", "")
 	if err != nil {
@@ -25203,7 +29438,9 @@ func UriUnescapeString(escaped_string string, illegal_characters string) (result
 }
 
 // g_usleep
-// container is nil
+//
+// [ microseconds ] trans: nothing
+//
 func Usleep(microseconds uint64) {
 	iv, err := _I.Get(1265, "usleep", "")
 	if err != nil {
@@ -25216,7 +29453,17 @@ func Usleep(microseconds uint64) {
 }
 
 // g_utf16_to_ucs4
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ items_read ] trans: nothing, dir: out
+//
+// [ items_written ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func Utf16ToUcs4(str uint16, len1 int64) (result rune, items_read int64, items_written int64, err error) {
 	iv, err := _I.Get(1266, "utf16_to_ucs4", "")
 	if err != nil {
@@ -25239,7 +29486,17 @@ func Utf16ToUcs4(str uint16, len1 int64) (result rune, items_read int64, items_w
 }
 
 // g_utf16_to_utf8
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ items_read ] trans: nothing, dir: out
+//
+// [ items_written ] trans: nothing, dir: out
+//
+// [ result ] trans: everything
+//
 func Utf16ToUtf8(str uint16, len1 int64) (result string, items_read int64, items_written int64, err error) {
 	iv, err := _I.Get(1267, "utf16_to_utf8", "")
 	if err != nil {
@@ -25262,7 +29519,13 @@ func Utf16ToUtf8(str uint16, len1 int64) (result string, items_read int64, items
 }
 
 // g_utf8_casefold
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8Casefold(str string, len1 int64) (result string) {
 	iv, err := _I.Get(1268, "utf8_casefold", "")
 	if err != nil {
@@ -25281,7 +29544,13 @@ func Utf8Casefold(str string, len1 int64) (result string) {
 }
 
 // g_utf8_collate
-// container is nil
+//
+// [ str1 ] trans: nothing
+//
+// [ str2 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Utf8Collate(str1 string, str2 string) (result int32) {
 	iv, err := _I.Get(1269, "utf8_collate", "")
 	if err != nil {
@@ -25302,7 +29571,13 @@ func Utf8Collate(str1 string, str2 string) (result int32) {
 }
 
 // g_utf8_collate_key
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8CollateKey(str string, len1 int64) (result string) {
 	iv, err := _I.Get(1270, "utf8_collate_key", "")
 	if err != nil {
@@ -25321,7 +29596,13 @@ func Utf8CollateKey(str string, len1 int64) (result string) {
 }
 
 // g_utf8_collate_key_for_filename
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8CollateKeyForFilename(str string, len1 int64) (result string) {
 	iv, err := _I.Get(1271, "utf8_collate_key_for_filename", "")
 	if err != nil {
@@ -25340,7 +29621,13 @@ func Utf8CollateKeyForFilename(str string, len1 int64) (result string) {
 }
 
 // g_utf8_find_next_char
-// container is nil
+//
+// [ p ] trans: nothing
+//
+// [ end ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8FindNextChar(p string, end string) (result string) {
 	iv, err := _I.Get(1272, "utf8_find_next_char", "")
 	if err != nil {
@@ -25361,7 +29648,13 @@ func Utf8FindNextChar(p string, end string) (result string) {
 }
 
 // g_utf8_find_prev_char
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ p ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8FindPrevChar(str string, p string) (result string) {
 	iv, err := _I.Get(1273, "utf8_find_prev_char", "")
 	if err != nil {
@@ -25382,7 +29675,11 @@ func Utf8FindPrevChar(str string, p string) (result string) {
 }
 
 // g_utf8_get_char
-// container is nil
+//
+// [ p ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Utf8GetChar(p string) (result rune) {
 	iv, err := _I.Get(1274, "utf8_get_char", "")
 	if err != nil {
@@ -25400,7 +29697,13 @@ func Utf8GetChar(p string) (result rune) {
 }
 
 // g_utf8_get_char_validated
-// container is nil
+//
+// [ p ] trans: nothing
+//
+// [ max_len ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Utf8GetCharValidated(p string, max_len int64) (result rune) {
 	iv, err := _I.Get(1275, "utf8_get_char_validated", "")
 	if err != nil {
@@ -25419,7 +29722,13 @@ func Utf8GetCharValidated(p string, max_len int64) (result rune) {
 }
 
 // g_utf8_make_valid
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8MakeValid(str string, len1 int64) (result string) {
 	iv, err := _I.Get(1276, "utf8_make_valid", "")
 	if err != nil {
@@ -25438,7 +29747,15 @@ func Utf8MakeValid(str string, len1 int64) (result string) {
 }
 
 // g_utf8_normalize
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ mode ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8Normalize(str string, len1 int64, mode NormalizeModeEnum) (result string) {
 	iv, err := _I.Get(1277, "utf8_normalize", "")
 	if err != nil {
@@ -25458,7 +29775,13 @@ func Utf8Normalize(str string, len1 int64, mode NormalizeModeEnum) (result strin
 }
 
 // g_utf8_offset_to_pointer
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ offset ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8OffsetToPointer(str string, offset int64) (result string) {
 	iv, err := _I.Get(1278, "utf8_offset_to_pointer", "")
 	if err != nil {
@@ -25477,7 +29800,13 @@ func Utf8OffsetToPointer(str string, offset int64) (result string) {
 }
 
 // g_utf8_pointer_to_offset
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ pos ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Utf8PointerToOffset(str string, pos string) (result int64) {
 	iv, err := _I.Get(1279, "utf8_pointer_to_offset", "")
 	if err != nil {
@@ -25498,7 +29827,11 @@ func Utf8PointerToOffset(str string, pos string) (result int64) {
 }
 
 // g_utf8_prev_char
-// container is nil
+//
+// [ p ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8PrevChar(p string) (result string) {
 	iv, err := _I.Get(1280, "utf8_prev_char", "")
 	if err != nil {
@@ -25516,7 +29849,15 @@ func Utf8PrevChar(p string) (result string) {
 }
 
 // g_utf8_strchr
-// container is nil
+//
+// [ p ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8Strchr(p string, len1 int64, c rune) (result string) {
 	iv, err := _I.Get(1281, "utf8_strchr", "")
 	if err != nil {
@@ -25536,7 +29877,13 @@ func Utf8Strchr(p string, len1 int64, c rune) (result string) {
 }
 
 // g_utf8_strdown
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8Strdown(str string, len1 int64) (result string) {
 	iv, err := _I.Get(1282, "utf8_strdown", "")
 	if err != nil {
@@ -25555,7 +29902,13 @@ func Utf8Strdown(str string, len1 int64) (result string) {
 }
 
 // g_utf8_strlen
-// container is nil
+//
+// [ p ] trans: nothing
+//
+// [ max ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func Utf8Strlen(p string, max int64) (result int64) {
 	iv, err := _I.Get(1283, "utf8_strlen", "")
 	if err != nil {
@@ -25574,7 +29927,15 @@ func Utf8Strlen(p string, max int64) (result int64) {
 }
 
 // g_utf8_strncpy
-// container is nil
+//
+// [ dest ] trans: nothing
+//
+// [ src ] trans: nothing
+//
+// [ n ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8Strncpy(dest string, src string, n uint64) (result string) {
 	iv, err := _I.Get(1284, "utf8_strncpy", "")
 	if err != nil {
@@ -25596,7 +29957,15 @@ func Utf8Strncpy(dest string, src string, n uint64) (result string) {
 }
 
 // g_utf8_strrchr
-// container is nil
+//
+// [ p ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ c ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8Strrchr(p string, len1 int64, c rune) (result string) {
 	iv, err := _I.Get(1285, "utf8_strrchr", "")
 	if err != nil {
@@ -25616,7 +29985,13 @@ func Utf8Strrchr(p string, len1 int64, c rune) (result string) {
 }
 
 // g_utf8_strreverse
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8Strreverse(str string, len1 int64) (result string) {
 	iv, err := _I.Get(1286, "utf8_strreverse", "")
 	if err != nil {
@@ -25635,7 +30010,13 @@ func Utf8Strreverse(str string, len1 int64) (result string) {
 }
 
 // g_utf8_strup
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8Strup(str string, len1 int64) (result string) {
 	iv, err := _I.Get(1287, "utf8_strup", "")
 	if err != nil {
@@ -25654,7 +30035,15 @@ func Utf8Strup(str string, len1 int64) (result string) {
 }
 
 // g_utf8_substring
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ start_pos ] trans: nothing
+//
+// [ end_pos ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func Utf8Substring(str string, start_pos int64, end_pos int64) (result string) {
 	iv, err := _I.Get(1288, "utf8_substring", "")
 	if err != nil {
@@ -25674,7 +30063,17 @@ func Utf8Substring(str string, start_pos int64, end_pos int64) (result string) {
 }
 
 // g_utf8_to_ucs4
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ items_read ] trans: nothing, dir: out
+//
+// [ items_written ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func Utf8ToUcs4(str string, len1 int64) (result rune, items_read int64, items_written int64, err error) {
 	iv, err := _I.Get(1289, "utf8_to_ucs4", "")
 	if err != nil {
@@ -25699,7 +30098,15 @@ func Utf8ToUcs4(str string, len1 int64) (result rune, items_read int64, items_wr
 }
 
 // g_utf8_to_ucs4_fast
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ items_written ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func Utf8ToUcs4Fast(str string, len1 int64) (result rune, items_written int64) {
 	iv, err := _I.Get(1290, "utf8_to_ucs4_fast", "")
 	if err != nil {
@@ -25721,7 +30128,17 @@ func Utf8ToUcs4Fast(str string, len1 int64) (result rune, items_written int64) {
 }
 
 // g_utf8_to_utf16
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ len1 ] trans: nothing
+//
+// [ items_read ] trans: nothing, dir: out
+//
+// [ items_written ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func Utf8ToUtf16(str string, len1 int64) (result uint16, items_read int64, items_written int64, err error) {
 	iv, err := _I.Get(1291, "utf8_to_utf16", "")
 	if err != nil {
@@ -25746,8 +30163,15 @@ func Utf8ToUtf16(str string, len1 int64) (result uint16, items_read int64, items
 }
 
 // g_utf8_validate
-// container is nil
-// arg 0 str lenArgIdx 1
+//
+// [ str ] trans: nothing
+//
+// [ max_len ] trans: nothing
+//
+// [ end ] trans: nothing, dir: out
+//
+// [ result ] trans: nothing
+//
 func Utf8Validate(str gi.Uint8Array, max_len int64) (result bool, end string) {
 	iv, err := _I.Get(1292, "utf8_validate", "")
 	if err != nil {
@@ -25761,13 +30185,17 @@ func Utf8Validate(str gi.Uint8Array, max_len int64) (result bool, end string) {
 	args := []gi.Argument{arg_str, arg_max_len, arg_end}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	end = outArgs[0].String().Take()
+	end = outArgs[0].String().Copy()
 	result = ret.Bool()
 	return
 }
 
 // g_uuid_string_is_valid
-// container is nil
+//
+// [ str ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func UuidStringIsValid(str string) (result bool) {
 	iv, err := _I.Get(1293, "uuid_string_is_valid", "")
 	if err != nil {
@@ -25785,7 +30213,9 @@ func UuidStringIsValid(str string) (result bool) {
 }
 
 // g_uuid_string_random
-// container is nil
+//
+// [ result ] trans: everything
+//
 func UuidStringRandom() (result string) {
 	iv, err := _I.Get(1294, "uuid_string_random", "")
 	if err != nil {
@@ -25799,7 +30229,9 @@ func UuidStringRandom() (result string) {
 }
 
 // g_variant_get_gtype
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func VariantGetGtype() (result gi.GType) {
 	iv, err := _I.Get(1295, "variant_get_gtype", "")
 	if err != nil {
@@ -25813,7 +30245,11 @@ func VariantGetGtype() (result gi.GType) {
 }
 
 // g_variant_is_object_path
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VariantIsObjectPath(string string) (result bool) {
 	iv, err := _I.Get(1296, "variant_is_object_path", "")
 	if err != nil {
@@ -25831,7 +30267,11 @@ func VariantIsObjectPath(string string) (result bool) {
 }
 
 // g_variant_is_signature
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VariantIsSignature(string string) (result bool) {
 	iv, err := _I.Get(1297, "variant_is_signature", "")
 	if err != nil {
@@ -25849,7 +30289,17 @@ func VariantIsSignature(string string) (result bool) {
 }
 
 // g_variant_parse
-// container is nil
+//
+// [ type1 ] trans: nothing
+//
+// [ text ] trans: nothing
+//
+// [ limit ] trans: nothing
+//
+// [ endptr ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func VariantParse(type1 VariantType, text string, limit string, endptr string) (result Variant, err error) {
 	iv, err := _I.Get(1298, "variant_parse", "")
 	if err != nil {
@@ -25876,7 +30326,13 @@ func VariantParse(type1 VariantType, text string, limit string, endptr string) (
 }
 
 // g_variant_parse_error_print_context
-// container is nil
+//
+// [ error ] trans: nothing
+//
+// [ source_str ] trans: nothing
+//
+// [ result ] trans: everything
+//
 func VariantParseErrorPrintContext(error Error, source_str string) (result string) {
 	iv, err := _I.Get(1299, "variant_parse_error_print_context", "")
 	if err != nil {
@@ -25895,7 +30351,9 @@ func VariantParseErrorPrintContext(error Error, source_str string) (result strin
 }
 
 // g_variant_parse_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func VariantParseErrorQuark() (result uint32) {
 	iv, err := _I.Get(1300, "variant_parse_error_quark", "")
 	if err != nil {
@@ -25909,7 +30367,9 @@ func VariantParseErrorQuark() (result uint32) {
 }
 
 // g_variant_parser_get_error_quark
-// container is nil
+//
+// [ result ] trans: nothing
+//
 func VariantParserGetErrorQuark() (result uint32) {
 	iv, err := _I.Get(1301, "variant_parser_get_error_quark", "")
 	if err != nil {
@@ -25923,7 +30383,11 @@ func VariantParserGetErrorQuark() (result uint32) {
 }
 
 // g_variant_type_checked_
-// container is nil
+//
+// [ arg0 ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VariantTypeChecked_(arg0 string) (result VariantType) {
 	iv, err := _I.Get(1302, "variant_type_checked_", "")
 	if err != nil {
@@ -25941,7 +30405,11 @@ func VariantTypeChecked_(arg0 string) (result VariantType) {
 }
 
 // g_variant_type_string_get_depth_
-// container is nil
+//
+// [ type_string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VariantTypeStringGetDepth_(type_string string) (result uint64) {
 	iv, err := _I.Get(1303, "variant_type_string_get_depth_", "")
 	if err != nil {
@@ -25959,7 +30427,11 @@ func VariantTypeStringGetDepth_(type_string string) (result uint64) {
 }
 
 // g_variant_type_string_is_valid
-// container is nil
+//
+// [ type_string ] trans: nothing
+//
+// [ result ] trans: nothing
+//
 func VariantTypeStringIsValid(type_string string) (result bool) {
 	iv, err := _I.Get(1304, "variant_type_string_is_valid", "")
 	if err != nil {
@@ -25977,7 +30449,15 @@ func VariantTypeStringIsValid(type_string string) (result bool) {
 }
 
 // g_variant_type_string_scan
-// container is nil
+//
+// [ string ] trans: nothing
+//
+// [ limit ] trans: nothing
+//
+// [ endptr ] trans: everything, dir: out
+//
+// [ result ] trans: nothing
+//
 func VariantTypeStringScan(string string, limit string) (result bool, endptr string) {
 	iv, err := _I.Get(1305, "variant_type_string_scan", "")
 	if err != nil {
