@@ -4471,48 +4471,12 @@ func (v Value) SetStaticBoxed(v_boxed unsafe.Pointer) {
 	iv.Call(args, nil, nil)
 }
 
-// g_value_set_static_string
-//
-// [ v_string ] trans: nothing
-//
-func (v Value) SetStaticString(v_string string) {
-	iv, err := _I.Get(151, "Value", "set_static_string")
-	if err != nil {
-		log.Println("WARN:", err)
-		return
-	}
-	c_v_string := gi.CString(v_string)
-	arg_v := gi.NewPointerArgument(v.P)
-	arg_v_string := gi.NewStringArgument(c_v_string)
-	args := []gi.Argument{arg_v, arg_v_string}
-	iv.Call(args, nil, nil)
-	gi.Free(c_v_string)
-}
-
 // g_value_set_string
 //
 // [ v_string ] trans: nothing
 //
 func (v Value) SetString(v_string string) {
-	iv, err := _I.Get(152, "Value", "set_string")
-	if err != nil {
-		log.Println("WARN:", err)
-		return
-	}
-	c_v_string := gi.CString(v_string)
-	arg_v := gi.NewPointerArgument(v.P)
-	arg_v_string := gi.NewStringArgument(c_v_string)
-	args := []gi.Argument{arg_v, arg_v_string}
-	iv.Call(args, nil, nil)
-	gi.Free(c_v_string)
-}
-
-// g_value_set_string_take_ownership
-//
-// [ v_string ] trans: nothing
-//
-func (v Value) SetStringTakeOwnership(v_string string) {
-	iv, err := _I.Get(153, "Value", "set_string_take_ownership")
+	iv, err := _I.Get(151, "Value", "set_string")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4530,7 +4494,7 @@ func (v Value) SetStringTakeOwnership(v_string string) {
 // [ v_uchar ] trans: nothing
 //
 func (v Value) SetUchar(v_uchar uint8) {
-	iv, err := _I.Get(154, "Value", "set_uchar")
+	iv, err := _I.Get(152, "Value", "set_uchar")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4546,7 +4510,7 @@ func (v Value) SetUchar(v_uchar uint8) {
 // [ v_uint ] trans: nothing
 //
 func (v Value) SetUint(v_uint uint32) {
-	iv, err := _I.Get(155, "Value", "set_uint")
+	iv, err := _I.Get(153, "Value", "set_uint")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4562,7 +4526,7 @@ func (v Value) SetUint(v_uint uint32) {
 // [ v_uint64 ] trans: nothing
 //
 func (v Value) SetUint64(v_uint64 uint64) {
-	iv, err := _I.Get(156, "Value", "set_uint64")
+	iv, err := _I.Get(154, "Value", "set_uint64")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4578,7 +4542,7 @@ func (v Value) SetUint64(v_uint64 uint64) {
 // [ v_ulong ] trans: nothing
 //
 func (v Value) SetUlong(v_ulong uint64) {
-	iv, err := _I.Get(157, "Value", "set_ulong")
+	iv, err := _I.Get(155, "Value", "set_ulong")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4594,7 +4558,7 @@ func (v Value) SetUlong(v_ulong uint64) {
 // [ variant ] trans: nothing
 //
 func (v Value) SetVariant(variant glib.Variant) {
-	iv, err := _I.Get(158, "Value", "set_variant")
+	iv, err := _I.Get(156, "Value", "set_variant")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4610,7 +4574,7 @@ func (v Value) SetVariant(variant glib.Variant) {
 // [ v_boxed ] trans: nothing
 //
 func (v Value) TakeBoxed(v_boxed unsafe.Pointer) {
-	iv, err := _I.Get(159, "Value", "take_boxed")
+	iv, err := _I.Get(157, "Value", "take_boxed")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4626,7 +4590,7 @@ func (v Value) TakeBoxed(v_boxed unsafe.Pointer) {
 // [ v_string ] trans: nothing
 //
 func (v Value) TakeString(v_string string) {
-	iv, err := _I.Get(160, "Value", "take_string")
+	iv, err := _I.Get(158, "Value", "take_string")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4644,7 +4608,7 @@ func (v Value) TakeString(v_string string) {
 // [ variant ] trans: everything
 //
 func (v Value) TakeVariant(variant glib.Variant) {
-	iv, err := _I.Get(161, "Value", "take_variant")
+	iv, err := _I.Get(159, "Value", "take_variant")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4662,7 +4626,7 @@ func (v Value) TakeVariant(variant glib.Variant) {
 // [ result ] trans: nothing
 //
 func (v Value) Transform(dest_value Value) (result bool) {
-	iv, err := _I.Get(162, "Value", "transform")
+	iv, err := _I.Get(160, "Value", "transform")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4679,7 +4643,7 @@ func (v Value) Transform(dest_value Value) (result bool) {
 // g_value_unset
 //
 func (v Value) Unset() {
-	iv, err := _I.Get(163, "Value", "unset")
+	iv, err := _I.Get(161, "Value", "unset")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4698,7 +4662,7 @@ func (v Value) Unset() {
 // [ result ] trans: nothing
 //
 func ValueTypeCompatible1(src_type gi.GType, dest_type gi.GType) (result bool) {
-	iv, err := _I.Get(164, "Value", "type_compatible")
+	iv, err := _I.Get(162, "Value", "type_compatible")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4721,7 +4685,7 @@ func ValueTypeCompatible1(src_type gi.GType, dest_type gi.GType) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueTypeTransformable1(src_type gi.GType, dest_type gi.GType) (result bool) {
-	iv, err := _I.Get(165, "Value", "type_transformable")
+	iv, err := _I.Get(163, "Value", "type_transformable")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4754,7 +4718,7 @@ func ValueArrayGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewValueArray(n_prealloced uint32) (result ValueArray) {
-	iv, err := _I.Get(166, "ValueArray", "new")
+	iv, err := _I.Get(164, "ValueArray", "new")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4774,7 +4738,7 @@ func NewValueArray(n_prealloced uint32) (result ValueArray) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) Append(value Value) (result ValueArray) {
-	iv, err := _I.Get(167, "ValueArray", "append")
+	iv, err := _I.Get(165, "ValueArray", "append")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4793,7 +4757,7 @@ func (v ValueArray) Append(value Value) (result ValueArray) {
 // [ result ] trans: everything
 //
 func (v ValueArray) Copy() (result ValueArray) {
-	iv, err := _I.Get(168, "ValueArray", "copy")
+	iv, err := _I.Get(166, "ValueArray", "copy")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4813,7 +4777,7 @@ func (v ValueArray) Copy() (result ValueArray) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) GetNth(index_ uint32) (result Value) {
-	iv, err := _I.Get(169, "ValueArray", "get_nth")
+	iv, err := _I.Get(167, "ValueArray", "get_nth")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4836,7 +4800,7 @@ func (v ValueArray) GetNth(index_ uint32) (result Value) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) Insert(index_ uint32, value Value) (result ValueArray) {
-	iv, err := _I.Get(170, "ValueArray", "insert")
+	iv, err := _I.Get(168, "ValueArray", "insert")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4858,7 +4822,7 @@ func (v ValueArray) Insert(index_ uint32, value Value) (result ValueArray) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) Prepend(value Value) (result ValueArray) {
-	iv, err := _I.Get(171, "ValueArray", "prepend")
+	iv, err := _I.Get(169, "ValueArray", "prepend")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4879,7 +4843,7 @@ func (v ValueArray) Prepend(value Value) (result ValueArray) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
-	iv, err := _I.Get(172, "ValueArray", "remove")
+	iv, err := _I.Get(170, "ValueArray", "remove")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4902,7 +4866,7 @@ func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) Sort(compare_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result ValueArray) {
-	iv, err := _I.Get(173, "ValueArray", "sort")
+	iv, err := _I.Get(171, "ValueArray", "sort")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4976,7 +4940,7 @@ func _Value__data__unionGetType() gi.GType {
 // [ result ] trans: everything
 //
 func BoxedCopy(boxed_type gi.GType, src_boxed unsafe.Pointer) (result unsafe.Pointer) {
-	iv, err := _I.Get(174, "boxed_copy", "")
+	iv, err := _I.Get(172, "boxed_copy", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4997,7 +4961,7 @@ func BoxedCopy(boxed_type gi.GType, src_boxed unsafe.Pointer) (result unsafe.Poi
 // [ boxed ] trans: nothing
 //
 func BoxedFree(boxed_type gi.GType, boxed unsafe.Pointer) {
-	iv, err := _I.Get(175, "boxed_free", "")
+	iv, err := _I.Get(173, "boxed_free", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5023,7 +4987,7 @@ func BoxedFree(boxed_type gi.GType, boxed unsafe.Pointer) {
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalBoolean_BoxedBoxed(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(176, "cclosure_marshal_BOOLEAN__BOXED_BOXED", "")
+	iv, err := _I.Get(174, "cclosure_marshal_BOOLEAN__BOXED_BOXED", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5053,7 +5017,7 @@ func CclosureMarshalBoolean_BoxedBoxed(closure Closure, return_value Value, n_pa
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalBoolean_Flags(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(177, "cclosure_marshal_BOOLEAN__FLAGS", "")
+	iv, err := _I.Get(175, "cclosure_marshal_BOOLEAN__FLAGS", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5083,7 +5047,7 @@ func CclosureMarshalBoolean_Flags(closure Closure, return_value Value, n_param_v
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalString_ObjectPointer(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(178, "cclosure_marshal_STRING__OBJECT_POINTER", "")
+	iv, err := _I.Get(176, "cclosure_marshal_STRING__OBJECT_POINTER", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5113,7 +5077,7 @@ func CclosureMarshalString_ObjectPointer(closure Closure, return_value Value, n_
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Boolean(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(179, "cclosure_marshal_VOID__BOOLEAN", "")
+	iv, err := _I.Get(177, "cclosure_marshal_VOID__BOOLEAN", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5143,7 +5107,7 @@ func CclosureMarshalVoid_Boolean(closure Closure, return_value Value, n_param_va
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Boxed(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(180, "cclosure_marshal_VOID__BOXED", "")
+	iv, err := _I.Get(178, "cclosure_marshal_VOID__BOXED", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5173,7 +5137,7 @@ func CclosureMarshalVoid_Boxed(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Char(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(181, "cclosure_marshal_VOID__CHAR", "")
+	iv, err := _I.Get(179, "cclosure_marshal_VOID__CHAR", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5203,7 +5167,7 @@ func CclosureMarshalVoid_Char(closure Closure, return_value Value, n_param_value
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Double(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(182, "cclosure_marshal_VOID__DOUBLE", "")
+	iv, err := _I.Get(180, "cclosure_marshal_VOID__DOUBLE", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5233,7 +5197,7 @@ func CclosureMarshalVoid_Double(closure Closure, return_value Value, n_param_val
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Enum(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(183, "cclosure_marshal_VOID__ENUM", "")
+	iv, err := _I.Get(181, "cclosure_marshal_VOID__ENUM", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5263,7 +5227,7 @@ func CclosureMarshalVoid_Enum(closure Closure, return_value Value, n_param_value
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Flags(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(184, "cclosure_marshal_VOID__FLAGS", "")
+	iv, err := _I.Get(182, "cclosure_marshal_VOID__FLAGS", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5293,7 +5257,7 @@ func CclosureMarshalVoid_Flags(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Float(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(185, "cclosure_marshal_VOID__FLOAT", "")
+	iv, err := _I.Get(183, "cclosure_marshal_VOID__FLOAT", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5323,7 +5287,7 @@ func CclosureMarshalVoid_Float(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Int(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(186, "cclosure_marshal_VOID__INT", "")
+	iv, err := _I.Get(184, "cclosure_marshal_VOID__INT", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5353,7 +5317,7 @@ func CclosureMarshalVoid_Int(closure Closure, return_value Value, n_param_values
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Long(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(187, "cclosure_marshal_VOID__LONG", "")
+	iv, err := _I.Get(185, "cclosure_marshal_VOID__LONG", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5383,7 +5347,7 @@ func CclosureMarshalVoid_Long(closure Closure, return_value Value, n_param_value
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Object(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(188, "cclosure_marshal_VOID__OBJECT", "")
+	iv, err := _I.Get(186, "cclosure_marshal_VOID__OBJECT", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5413,7 +5377,7 @@ func CclosureMarshalVoid_Object(closure Closure, return_value Value, n_param_val
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Param(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(189, "cclosure_marshal_VOID__PARAM", "")
+	iv, err := _I.Get(187, "cclosure_marshal_VOID__PARAM", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5443,7 +5407,7 @@ func CclosureMarshalVoid_Param(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Pointer(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(190, "cclosure_marshal_VOID__POINTER", "")
+	iv, err := _I.Get(188, "cclosure_marshal_VOID__POINTER", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5473,7 +5437,7 @@ func CclosureMarshalVoid_Pointer(closure Closure, return_value Value, n_param_va
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_String(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(191, "cclosure_marshal_VOID__STRING", "")
+	iv, err := _I.Get(189, "cclosure_marshal_VOID__STRING", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5503,7 +5467,7 @@ func CclosureMarshalVoid_String(closure Closure, return_value Value, n_param_val
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Uchar(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(192, "cclosure_marshal_VOID__UCHAR", "")
+	iv, err := _I.Get(190, "cclosure_marshal_VOID__UCHAR", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5533,7 +5497,7 @@ func CclosureMarshalVoid_Uchar(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Uint(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(193, "cclosure_marshal_VOID__UINT", "")
+	iv, err := _I.Get(191, "cclosure_marshal_VOID__UINT", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5563,7 +5527,7 @@ func CclosureMarshalVoid_Uint(closure Closure, return_value Value, n_param_value
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_UintPointer(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(194, "cclosure_marshal_VOID__UINT_POINTER", "")
+	iv, err := _I.Get(192, "cclosure_marshal_VOID__UINT_POINTER", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5593,7 +5557,7 @@ func CclosureMarshalVoid_UintPointer(closure Closure, return_value Value, n_para
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Ulong(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(195, "cclosure_marshal_VOID__ULONG", "")
+	iv, err := _I.Get(193, "cclosure_marshal_VOID__ULONG", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5623,7 +5587,7 @@ func CclosureMarshalVoid_Ulong(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Variant(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(196, "cclosure_marshal_VOID__VARIANT", "")
+	iv, err := _I.Get(194, "cclosure_marshal_VOID__VARIANT", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5653,7 +5617,7 @@ func CclosureMarshalVoid_Variant(closure Closure, return_value Value, n_param_va
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Void(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(197, "cclosure_marshal_VOID__VOID", "")
+	iv, err := _I.Get(195, "cclosure_marshal_VOID__VOID", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5683,7 +5647,7 @@ func CclosureMarshalVoid_Void(closure Closure, return_value Value, n_param_value
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalGeneric(closure Closure, return_gvalue Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get(198, "cclosure_marshal_generic", "")
+	iv, err := _I.Get(196, "cclosure_marshal_generic", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5707,7 +5671,7 @@ func CclosureMarshalGeneric(closure Closure, return_gvalue Value, n_param_values
 // [ const_values ] trans: nothing
 //
 func EnumCompleteTypeInfo(g_enum_type gi.GType, const_values EnumValue) (info int /*TODO_TYPE tag: ifc, biType: struct*/) {
-	iv, err := _I.Get(199, "enum_complete_type_info", "")
+	iv, err := _I.Get(197, "enum_complete_type_info", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5731,7 +5695,7 @@ func EnumCompleteTypeInfo(g_enum_type gi.GType, const_values EnumValue) (info in
 // [ result ] trans: nothing
 //
 func EnumGetValue(enum_class EnumClass, value int32) (result EnumValue) {
-	iv, err := _I.Get(200, "enum_get_value", "")
+	iv, err := _I.Get(198, "enum_get_value", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5754,7 +5718,7 @@ func EnumGetValue(enum_class EnumClass, value int32) (result EnumValue) {
 // [ result ] trans: nothing
 //
 func EnumGetValueByName(enum_class EnumClass, name string) (result EnumValue) {
-	iv, err := _I.Get(201, "enum_get_value_by_name", "")
+	iv, err := _I.Get(199, "enum_get_value_by_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5779,7 +5743,7 @@ func EnumGetValueByName(enum_class EnumClass, name string) (result EnumValue) {
 // [ result ] trans: nothing
 //
 func EnumGetValueByNick(enum_class EnumClass, nick string) (result EnumValue) {
-	iv, err := _I.Get(202, "enum_get_value_by_nick", "")
+	iv, err := _I.Get(200, "enum_get_value_by_nick", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5804,7 +5768,7 @@ func EnumGetValueByNick(enum_class EnumClass, nick string) (result EnumValue) {
 // [ result ] trans: nothing
 //
 func EnumRegisterStatic(name string, const_static_values EnumValue) (result gi.GType) {
-	iv, err := _I.Get(203, "enum_register_static", "")
+	iv, err := _I.Get(201, "enum_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5829,7 +5793,7 @@ func EnumRegisterStatic(name string, const_static_values EnumValue) (result gi.G
 // [ result ] trans: everything
 //
 func EnumToString(g_enum_type gi.GType, value int32) (result string) {
-	iv, err := _I.Get(204, "enum_to_string", "")
+	iv, err := _I.Get(202, "enum_to_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5852,7 +5816,7 @@ func EnumToString(g_enum_type gi.GType, value int32) (result string) {
 // [ const_values ] trans: nothing
 //
 func FlagsCompleteTypeInfo(g_flags_type gi.GType, const_values FlagsValue) (info int /*TODO_TYPE tag: ifc, biType: struct*/) {
-	iv, err := _I.Get(205, "flags_complete_type_info", "")
+	iv, err := _I.Get(203, "flags_complete_type_info", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5876,7 +5840,7 @@ func FlagsCompleteTypeInfo(g_flags_type gi.GType, const_values FlagsValue) (info
 // [ result ] trans: nothing
 //
 func FlagsGetFirstValue(flags_class FlagsClass, value uint32) (result FlagsValue) {
-	iv, err := _I.Get(206, "flags_get_first_value", "")
+	iv, err := _I.Get(204, "flags_get_first_value", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5899,7 +5863,7 @@ func FlagsGetFirstValue(flags_class FlagsClass, value uint32) (result FlagsValue
 // [ result ] trans: nothing
 //
 func FlagsGetValueByName(flags_class FlagsClass, name string) (result FlagsValue) {
-	iv, err := _I.Get(207, "flags_get_value_by_name", "")
+	iv, err := _I.Get(205, "flags_get_value_by_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5924,7 +5888,7 @@ func FlagsGetValueByName(flags_class FlagsClass, name string) (result FlagsValue
 // [ result ] trans: nothing
 //
 func FlagsGetValueByNick(flags_class FlagsClass, nick string) (result FlagsValue) {
-	iv, err := _I.Get(208, "flags_get_value_by_nick", "")
+	iv, err := _I.Get(206, "flags_get_value_by_nick", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5949,7 +5913,7 @@ func FlagsGetValueByNick(flags_class FlagsClass, nick string) (result FlagsValue
 // [ result ] trans: nothing
 //
 func FlagsRegisterStatic(name string, const_static_values FlagsValue) (result gi.GType) {
-	iv, err := _I.Get(209, "flags_register_static", "")
+	iv, err := _I.Get(207, "flags_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5974,7 +5938,7 @@ func FlagsRegisterStatic(name string, const_static_values FlagsValue) (result gi
 // [ result ] trans: everything
 //
 func FlagsToString(flags_type gi.GType, value uint32) (result string) {
-	iv, err := _I.Get(210, "flags_to_string", "")
+	iv, err := _I.Get(208, "flags_to_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5993,7 +5957,7 @@ func FlagsToString(flags_type gi.GType, value uint32) (result string) {
 // [ result ] trans: nothing
 //
 func GtypeGetType() (result gi.GType) {
-	iv, err := _I.Get(211, "gtype_get_type", "")
+	iv, err := _I.Get(209, "gtype_get_type", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6019,7 +5983,7 @@ func GtypeGetType() (result gi.GType) {
 // [ result ] trans: everything
 //
 func ParamSpecBooleanF(name string, nick string, blurb string, default_value bool, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(212, "param_spec_boolean", "")
+	iv, err := _I.Get(210, "param_spec_boolean", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6057,7 +6021,7 @@ func ParamSpecBooleanF(name string, nick string, blurb string, default_value boo
 // [ result ] trans: everything
 //
 func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type gi.GType, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(213, "param_spec_boxed", "")
+	iv, err := _I.Get(211, "param_spec_boxed", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6099,7 +6063,7 @@ func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type gi.GType
 // [ result ] trans: everything
 //
 func ParamSpecCharF(name string, nick string, blurb string, minimum int8, maximum int8, default_value int8, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(214, "param_spec_char", "")
+	iv, err := _I.Get(212, "param_spec_char", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6143,7 +6107,7 @@ func ParamSpecCharF(name string, nick string, blurb string, minimum int8, maximu
 // [ result ] trans: everything
 //
 func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, maximum float64, default_value float64, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(215, "param_spec_double", "")
+	iv, err := _I.Get(213, "param_spec_double", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6185,7 +6149,7 @@ func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, m
 // [ result ] trans: everything
 //
 func ParamSpecEnumF(name string, nick string, blurb string, enum_type gi.GType, default_value int32, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(216, "param_spec_enum", "")
+	iv, err := _I.Get(214, "param_spec_enum", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6226,7 +6190,7 @@ func ParamSpecEnumF(name string, nick string, blurb string, enum_type gi.GType, 
 // [ result ] trans: everything
 //
 func ParamSpecFlagsF(name string, nick string, blurb string, flags_type gi.GType, default_value uint32, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(217, "param_spec_flags", "")
+	iv, err := _I.Get(215, "param_spec_flags", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6269,7 +6233,7 @@ func ParamSpecFlagsF(name string, nick string, blurb string, flags_type gi.GType
 // [ result ] trans: everything
 //
 func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, maximum float32, default_value float32, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(218, "param_spec_float", "")
+	iv, err := _I.Get(216, "param_spec_float", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6309,7 +6273,7 @@ func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, ma
 // [ result ] trans: everything
 //
 func ParamSpecGtype(name string, nick string, blurb string, is_a_type gi.GType, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(219, "param_spec_gtype", "")
+	iv, err := _I.Get(217, "param_spec_gtype", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6351,7 +6315,7 @@ func ParamSpecGtype(name string, nick string, blurb string, is_a_type gi.GType, 
 // [ result ] trans: everything
 //
 func ParamSpecIntF(name string, nick string, blurb string, minimum int32, maximum int32, default_value int32, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(220, "param_spec_int", "")
+	iv, err := _I.Get(218, "param_spec_int", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6395,7 +6359,7 @@ func ParamSpecIntF(name string, nick string, blurb string, minimum int32, maximu
 // [ result ] trans: everything
 //
 func ParamSpecInt64F(name string, nick string, blurb string, minimum int64, maximum int64, default_value int64, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(221, "param_spec_int64", "")
+	iv, err := _I.Get(219, "param_spec_int64", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6439,7 +6403,7 @@ func ParamSpecInt64F(name string, nick string, blurb string, minimum int64, maxi
 // [ result ] trans: everything
 //
 func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maximum int64, default_value int64, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(222, "param_spec_long", "")
+	iv, err := _I.Get(220, "param_spec_long", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6479,7 +6443,7 @@ func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maxim
 // [ result ] trans: everything
 //
 func ParamSpecObjectF(name string, nick string, blurb string, object_type gi.GType, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(223, "param_spec_object", "")
+	iv, err := _I.Get(221, "param_spec_object", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6517,7 +6481,7 @@ func ParamSpecObjectF(name string, nick string, blurb string, object_type gi.GTy
 // [ result ] trans: everything
 //
 func ParamSpecParamF(name string, nick string, blurb string, param_type gi.GType, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(224, "param_spec_param", "")
+	iv, err := _I.Get(222, "param_spec_param", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6553,7 +6517,7 @@ func ParamSpecParamF(name string, nick string, blurb string, param_type gi.GType
 // [ result ] trans: everything
 //
 func ParamSpecPointerF(name string, nick string, blurb string, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(225, "param_spec_pointer", "")
+	iv, err := _I.Get(223, "param_spec_pointer", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6582,7 +6546,7 @@ func ParamSpecPointerF(name string, nick string, blurb string, flags ParamFlags)
 // [ result ] trans: nothing
 //
 func ParamSpecPoolNew(type_prefixing bool) (result ParamSpecPool) {
-	iv, err := _I.Get(226, "param_spec_pool_new", "")
+	iv, err := _I.Get(224, "param_spec_pool_new", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6610,7 +6574,7 @@ func ParamSpecPoolNew(type_prefixing bool) (result ParamSpecPool) {
 // [ result ] trans: everything
 //
 func ParamSpecStringF(name string, nick string, blurb string, default_value string, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(227, "param_spec_string", "")
+	iv, err := _I.Get(225, "param_spec_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6654,7 +6618,7 @@ func ParamSpecStringF(name string, nick string, blurb string, default_value stri
 // [ result ] trans: everything
 //
 func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, default_value uint8, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(228, "param_spec_uchar", "")
+	iv, err := _I.Get(226, "param_spec_uchar", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6698,7 +6662,7 @@ func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maxim
 // [ result ] trans: everything
 //
 func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maximum uint32, default_value uint32, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(229, "param_spec_uint", "")
+	iv, err := _I.Get(227, "param_spec_uint", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6742,7 +6706,7 @@ func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maxim
 // [ result ] trans: everything
 //
 func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, default_value uint64, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(230, "param_spec_uint64", "")
+	iv, err := _I.Get(228, "param_spec_uint64", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6786,7 +6750,7 @@ func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, max
 // [ result ] trans: everything
 //
 func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, default_value uint64, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(231, "param_spec_ulong", "")
+	iv, err := _I.Get(229, "param_spec_ulong", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6826,7 +6790,7 @@ func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maxi
 // [ result ] trans: everything
 //
 func ParamSpecUnicharF(name string, nick string, blurb string, default_value rune, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(232, "param_spec_unichar", "")
+	iv, err := _I.Get(230, "param_spec_unichar", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6866,7 +6830,7 @@ func ParamSpecUnicharF(name string, nick string, blurb string, default_value run
 // [ result ] trans: everything
 //
 func ParamSpecVariantF(name string, nick string, blurb string, type1 glib.VariantType, default_value glib.Variant, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get(233, "param_spec_variant", "")
+	iv, err := _I.Get(231, "param_spec_variant", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6899,7 +6863,7 @@ func ParamSpecVariantF(name string, nick string, blurb string, type1 glib.Varian
 // [ result ] trans: nothing
 //
 func ParamTypeRegisterStatic(name string, pspec_info ParamSpecTypeInfo) (result gi.GType) {
-	iv, err := _I.Get(234, "param_type_register_static", "")
+	iv, err := _I.Get(232, "param_type_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6928,7 +6892,7 @@ func ParamTypeRegisterStatic(name string, pspec_info ParamSpecTypeInfo) (result 
 // [ result ] trans: nothing
 //
 func ParamValueConvert(pspec IParamSpec, src_value Value, dest_value Value, strict_validation bool) (result bool) {
-	iv, err := _I.Get(235, "param_value_convert", "")
+	iv, err := _I.Get(233, "param_value_convert", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6957,7 +6921,7 @@ func ParamValueConvert(pspec IParamSpec, src_value Value, dest_value Value, stri
 // [ result ] trans: nothing
 //
 func ParamValueDefaults(pspec IParamSpec, value Value) (result bool) {
-	iv, err := _I.Get(236, "param_value_defaults", "")
+	iv, err := _I.Get(234, "param_value_defaults", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6982,7 +6946,7 @@ func ParamValueDefaults(pspec IParamSpec, value Value) (result bool) {
 // [ value ] trans: nothing
 //
 func ParamValueSetDefault(pspec IParamSpec, value Value) {
-	iv, err := _I.Get(237, "param_value_set_default", "")
+	iv, err := _I.Get(235, "param_value_set_default", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7006,7 +6970,7 @@ func ParamValueSetDefault(pspec IParamSpec, value Value) {
 // [ result ] trans: nothing
 //
 func ParamValueValidate(pspec IParamSpec, value Value) (result bool) {
-	iv, err := _I.Get(238, "param_value_validate", "")
+	iv, err := _I.Get(236, "param_value_validate", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7035,7 +6999,7 @@ func ParamValueValidate(pspec IParamSpec, value Value) (result bool) {
 // [ result ] trans: nothing
 //
 func ParamValuesCmp(pspec IParamSpec, value1 Value, value2 Value) (result int32) {
-	iv, err := _I.Get(239, "param_values_cmp", "")
+	iv, err := _I.Get(237, "param_values_cmp", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7061,7 +7025,7 @@ func ParamValuesCmp(pspec IParamSpec, value1 Value, value2 Value) (result int32)
 // [ result ] trans: nothing
 //
 func PointerTypeRegisterStatic(name string) (result gi.GType) {
-	iv, err := _I.Get(240, "pointer_type_register_static", "")
+	iv, err := _I.Get(238, "pointer_type_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7089,7 +7053,7 @@ func PointerTypeRegisterStatic(name string) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func SignalAccumulatorFirstWins(ihint SignalInvocationHint, return_accu Value, handler_return Value, dummy unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(241, "signal_accumulator_first_wins", "")
+	iv, err := _I.Get(239, "signal_accumulator_first_wins", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7118,7 +7082,7 @@ func SignalAccumulatorFirstWins(ihint SignalInvocationHint, return_accu Value, h
 // [ result ] trans: nothing
 //
 func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value, handler_return Value, dummy unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(242, "signal_accumulator_true_handled", "")
+	iv, err := _I.Get(240, "signal_accumulator_true_handled", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7149,7 +7113,7 @@ func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value,
 // [ result ] trans: nothing
 //
 func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func int /*TODO_TYPE CALLBACK*/, hook_data unsafe.Pointer, data_destroy int /*TODO_TYPE CALLBACK*/) (result uint64) {
-	iv, err := _I.Get(243, "signal_add_emission_hook", "")
+	iv, err := _I.Get(241, "signal_add_emission_hook", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7173,7 +7137,7 @@ func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func int /*TODO
 // [ return_value ] trans: nothing
 //
 func SignalChainFromOverridden(instance_and_params unsafe.Pointer, return_value Value) {
-	iv, err := _I.Get(244, "signal_chain_from_overridden", "")
+	iv, err := _I.Get(242, "signal_chain_from_overridden", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7197,7 +7161,7 @@ func SignalChainFromOverridden(instance_and_params unsafe.Pointer, return_value 
 // [ result ] trans: nothing
 //
 func SignalConnectClosure(instance IObject, detailed_signal string, closure Closure, after bool) (result uint64) {
-	iv, err := _I.Get(245, "signal_connect_closure", "")
+	iv, err := _I.Get(243, "signal_connect_closure", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7234,7 +7198,7 @@ func SignalConnectClosure(instance IObject, detailed_signal string, closure Clos
 // [ result ] trans: nothing
 //
 func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32, closure Closure, after bool) (result uint64) {
-	iv, err := _I.Get(246, "signal_connect_closure_by_id", "")
+	iv, err := _I.Get(244, "signal_connect_closure_by_id", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7266,7 +7230,7 @@ func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32,
 // [ return_value ] trans: everything, dir: inout
 //
 func SignalEmitv(instance_and_params unsafe.Pointer, signal_id uint32, detail uint32, return_value int /*TODO:TYPE*/) {
-	iv, err := _I.Get(247, "signal_emitv", "")
+	iv, err := _I.Get(245, "signal_emitv", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7286,7 +7250,7 @@ func SignalEmitv(instance_and_params unsafe.Pointer, signal_id uint32, detail ui
 // [ result ] trans: nothing
 //
 func SignalGetInvocationHint(instance IObject) (result SignalInvocationHint) {
-	iv, err := _I.Get(248, "signal_get_invocation_hint", "")
+	iv, err := _I.Get(246, "signal_get_invocation_hint", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7310,7 +7274,7 @@ func SignalGetInvocationHint(instance IObject) (result SignalInvocationHint) {
 // [ handler_id ] trans: nothing
 //
 func SignalHandlerBlock(instance IObject, handler_id uint64) {
-	iv, err := _I.Get(249, "signal_handler_block", "")
+	iv, err := _I.Get(247, "signal_handler_block", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7332,7 +7296,7 @@ func SignalHandlerBlock(instance IObject, handler_id uint64) {
 // [ handler_id ] trans: nothing
 //
 func SignalHandlerDisconnect(instance IObject, handler_id uint64) {
-	iv, err := _I.Get(250, "signal_handler_disconnect", "")
+	iv, err := _I.Get(248, "signal_handler_disconnect", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7366,7 +7330,7 @@ func SignalHandlerDisconnect(instance IObject, handler_id uint64) {
 // [ result ] trans: nothing
 //
 func SignalHandlerFind(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint64) {
-	iv, err := _I.Get(251, "signal_handler_find", "")
+	iv, err := _I.Get(249, "signal_handler_find", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7398,7 +7362,7 @@ func SignalHandlerFind(instance IObject, mask SignalMatchTypeFlags, signal_id ui
 // [ result ] trans: nothing
 //
 func SignalHandlerIsConnected(instance IObject, handler_id uint64) (result bool) {
-	iv, err := _I.Get(252, "signal_handler_is_connected", "")
+	iv, err := _I.Get(250, "signal_handler_is_connected", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7423,7 +7387,7 @@ func SignalHandlerIsConnected(instance IObject, handler_id uint64) (result bool)
 // [ handler_id ] trans: nothing
 //
 func SignalHandlerUnblock(instance IObject, handler_id uint64) {
-	iv, err := _I.Get(253, "signal_handler_unblock", "")
+	iv, err := _I.Get(251, "signal_handler_unblock", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7457,7 +7421,7 @@ func SignalHandlerUnblock(instance IObject, handler_id uint64) {
 // [ result ] trans: nothing
 //
 func SignalHandlersBlockMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
-	iv, err := _I.Get(254, "signal_handlers_block_matched", "")
+	iv, err := _I.Get(252, "signal_handlers_block_matched", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7485,7 +7449,7 @@ func SignalHandlersBlockMatched(instance IObject, mask SignalMatchTypeFlags, sig
 // [ instance ] trans: nothing
 //
 func SignalHandlersDestroy(instance IObject) {
-	iv, err := _I.Get(255, "signal_handlers_destroy", "")
+	iv, err := _I.Get(253, "signal_handlers_destroy", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7518,7 +7482,7 @@ func SignalHandlersDestroy(instance IObject) {
 // [ result ] trans: nothing
 //
 func SignalHandlersDisconnectMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
-	iv, err := _I.Get(256, "signal_handlers_disconnect_matched", "")
+	iv, err := _I.Get(254, "signal_handlers_disconnect_matched", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7560,7 +7524,7 @@ func SignalHandlersDisconnectMatched(instance IObject, mask SignalMatchTypeFlags
 // [ result ] trans: nothing
 //
 func SignalHandlersUnblockMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
-	iv, err := _I.Get(257, "signal_handlers_unblock_matched", "")
+	iv, err := _I.Get(255, "signal_handlers_unblock_matched", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7596,7 +7560,7 @@ func SignalHandlersUnblockMatched(instance IObject, mask SignalMatchTypeFlags, s
 // [ result ] trans: nothing
 //
 func SignalHasHandlerPending(instance IObject, signal_id uint32, detail uint32, may_be_blocked bool) (result bool) {
-	iv, err := _I.Get(258, "signal_has_handler_pending", "")
+	iv, err := _I.Get(256, "signal_has_handler_pending", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7625,7 +7589,7 @@ func SignalHasHandlerPending(instance IObject, signal_id uint32, detail uint32, 
 // [ result ] trans: everything
 //
 func SignalListIds(itype gi.GType) (result gi.Uint32Array) {
-	iv, err := _I.Get(259, "signal_list_ids", "")
+	iv, err := _I.Get(257, "signal_list_ids", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7652,7 +7616,7 @@ func SignalListIds(itype gi.GType) (result gi.Uint32Array) {
 // [ result ] trans: nothing
 //
 func SignalLookup(name string, itype gi.GType) (result uint32) {
-	iv, err := _I.Get(260, "signal_lookup", "")
+	iv, err := _I.Get(258, "signal_lookup", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7675,7 +7639,7 @@ func SignalLookup(name string, itype gi.GType) (result uint32) {
 // [ result ] trans: nothing
 //
 func SignalName(signal_id uint32) (result string) {
-	iv, err := _I.Get(261, "signal_name", "")
+	iv, err := _I.Get(259, "signal_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7697,7 +7661,7 @@ func SignalName(signal_id uint32) (result string) {
 // [ class_closure ] trans: nothing
 //
 func SignalOverrideClassClosure(signal_id uint32, instance_type gi.GType, class_closure Closure) {
-	iv, err := _I.Get(262, "signal_override_class_closure", "")
+	iv, err := _I.Get(260, "signal_override_class_closure", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7724,7 +7688,7 @@ func SignalOverrideClassClosure(signal_id uint32, instance_type gi.GType, class_
 // [ result ] trans: nothing
 //
 func SignalParseName(detailed_signal string, itype gi.GType, force_detail_quark bool) (result bool, signal_id_p uint32, detail_p uint32) {
-	iv, err := _I.Get(263, "signal_parse_name", "")
+	iv, err := _I.Get(261, "signal_parse_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7753,7 +7717,7 @@ func SignalParseName(detailed_signal string, itype gi.GType, force_detail_quark 
 // [ query ] trans: nothing, dir: out
 //
 func SignalQueryF(signal_id uint32, query SignalQuery) {
-	iv, err := _I.Get(264, "signal_query", "")
+	iv, err := _I.Get(262, "signal_query", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7771,7 +7735,7 @@ func SignalQueryF(signal_id uint32, query SignalQuery) {
 // [ hook_id ] trans: nothing
 //
 func SignalRemoveEmissionHook(signal_id uint32, hook_id uint64) {
-	iv, err := _I.Get(265, "signal_remove_emission_hook", "")
+	iv, err := _I.Get(263, "signal_remove_emission_hook", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7791,7 +7755,7 @@ func SignalRemoveEmissionHook(signal_id uint32, hook_id uint64) {
 // [ va_marshaller ] trans: nothing
 //
 func SignalSetVaMarshaller(signal_id uint32, instance_type gi.GType, va_marshaller int /*TODO_TYPE isPtr: false, tag: interface*/) {
-	iv, err := _I.Get(266, "signal_set_va_marshaller", "")
+	iv, err := _I.Get(264, "signal_set_va_marshaller", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7812,7 +7776,7 @@ func SignalSetVaMarshaller(signal_id uint32, instance_type gi.GType, va_marshall
 // [ detail ] trans: nothing
 //
 func SignalStopEmission(instance IObject, signal_id uint32, detail uint32) {
-	iv, err := _I.Get(267, "signal_stop_emission", "")
+	iv, err := _I.Get(265, "signal_stop_emission", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7835,7 +7799,7 @@ func SignalStopEmission(instance IObject, signal_id uint32, detail uint32) {
 // [ detailed_signal ] trans: nothing
 //
 func SignalStopEmissionByName(instance IObject, detailed_signal string) {
-	iv, err := _I.Get(268, "signal_stop_emission_by_name", "")
+	iv, err := _I.Get(266, "signal_stop_emission_by_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7861,7 +7825,7 @@ func SignalStopEmissionByName(instance IObject, detailed_signal string) {
 // [ result ] trans: nothing
 //
 func SignalTypeCclosureNew(itype gi.GType, struct_offset uint32) (result Closure) {
-	iv, err := _I.Get(269, "signal_type_cclosure_new", "")
+	iv, err := _I.Get(267, "signal_type_cclosure_new", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7882,7 +7846,7 @@ func SignalTypeCclosureNew(itype gi.GType, struct_offset uint32) (result Closure
 // [ closure ] trans: nothing
 //
 func SourceSetClosure(source glib.Source, closure Closure) {
-	iv, err := _I.Get(270, "source_set_closure", "")
+	iv, err := _I.Get(268, "source_set_closure", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7898,7 +7862,7 @@ func SourceSetClosure(source glib.Source, closure Closure) {
 // [ source ] trans: nothing
 //
 func SourceSetDummyCallback(source glib.Source) {
-	iv, err := _I.Get(271, "source_set_dummy_callback", "")
+	iv, err := _I.Get(269, "source_set_dummy_callback", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7915,7 +7879,7 @@ func SourceSetDummyCallback(source glib.Source) {
 // [ result ] trans: everything
 //
 func StrdupValueContents(value Value) (result string) {
-	iv, err := _I.Get(272, "strdup_value_contents", "")
+	iv, err := _I.Get(270, "strdup_value_contents", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7935,7 +7899,7 @@ func StrdupValueContents(value Value) (result string) {
 // [ private_size ] trans: nothing
 //
 func TypeAddClassPrivate(class_type gi.GType, private_size uint64) {
-	iv, err := _I.Get(273, "type_add_class_private", "")
+	iv, err := _I.Get(271, "type_add_class_private", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7955,7 +7919,7 @@ func TypeAddClassPrivate(class_type gi.GType, private_size uint64) {
 // [ result ] trans: nothing
 //
 func TypeAddInstancePrivate(class_type gi.GType, private_size uint64) (result int32) {
-	iv, err := _I.Get(274, "type_add_instance_private", "")
+	iv, err := _I.Get(272, "type_add_instance_private", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7978,7 +7942,7 @@ func TypeAddInstancePrivate(class_type gi.GType, private_size uint64) (result in
 // [ plugin ] trans: nothing
 //
 func TypeAddInterfaceDynamic(instance_type gi.GType, interface_type gi.GType, plugin ITypePlugin) {
-	iv, err := _I.Get(275, "type_add_interface_dynamic", "")
+	iv, err := _I.Get(273, "type_add_interface_dynamic", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8003,7 +7967,7 @@ func TypeAddInterfaceDynamic(instance_type gi.GType, interface_type gi.GType, pl
 // [ info ] trans: nothing
 //
 func TypeAddInterfaceStatic(instance_type gi.GType, interface_type gi.GType, info InterfaceInfo) {
-	iv, err := _I.Get(276, "type_add_interface_static", "")
+	iv, err := _I.Get(274, "type_add_interface_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8024,7 +7988,7 @@ func TypeAddInterfaceStatic(instance_type gi.GType, interface_type gi.GType, inf
 // [ result ] trans: nothing
 //
 func TypeCheckClassIsA(g_class TypeClass, is_a_type gi.GType) (result bool) {
-	iv, err := _I.Get(277, "type_check_class_is_a", "")
+	iv, err := _I.Get(275, "type_check_class_is_a", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8045,7 +8009,7 @@ func TypeCheckClassIsA(g_class TypeClass, is_a_type gi.GType) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeCheckInstance(instance TypeInstance) (result bool) {
-	iv, err := _I.Get(278, "type_check_instance", "")
+	iv, err := _I.Get(276, "type_check_instance", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8067,7 +8031,7 @@ func TypeCheckInstance(instance TypeInstance) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeCheckInstanceIsA(instance TypeInstance, iface_type gi.GType) (result bool) {
-	iv, err := _I.Get(279, "type_check_instance_is_a", "")
+	iv, err := _I.Get(277, "type_check_instance_is_a", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8090,7 +8054,7 @@ func TypeCheckInstanceIsA(instance TypeInstance, iface_type gi.GType) (result bo
 // [ result ] trans: nothing
 //
 func TypeCheckInstanceIsFundamentallyA(instance TypeInstance, fundamental_type gi.GType) (result bool) {
-	iv, err := _I.Get(280, "type_check_instance_is_fundamentally_a", "")
+	iv, err := _I.Get(278, "type_check_instance_is_fundamentally_a", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8111,7 +8075,7 @@ func TypeCheckInstanceIsFundamentallyA(instance TypeInstance, fundamental_type g
 // [ result ] trans: nothing
 //
 func TypeCheckIsValueType(type1 gi.GType) (result bool) {
-	iv, err := _I.Get(281, "type_check_is_value_type", "")
+	iv, err := _I.Get(279, "type_check_is_value_type", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8131,7 +8095,7 @@ func TypeCheckIsValueType(type1 gi.GType) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeCheckValue(value Value) (result bool) {
-	iv, err := _I.Get(282, "type_check_value", "")
+	iv, err := _I.Get(280, "type_check_value", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8153,7 +8117,7 @@ func TypeCheckValue(value Value) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeCheckValueHolds(value Value, type1 gi.GType) (result bool) {
-	iv, err := _I.Get(283, "type_check_value_holds", "")
+	iv, err := _I.Get(281, "type_check_value_holds", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8176,7 +8140,7 @@ func TypeCheckValueHolds(value Value, type1 gi.GType) (result bool) {
 // [ result ] trans: everything
 //
 func TypeChildren(type1 gi.GType) (result gi.GTypeArray) {
-	iv, err := _I.Get(284, "type_children", "")
+	iv, err := _I.Get(282, "type_children", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8201,7 +8165,7 @@ func TypeChildren(type1 gi.GType) (result gi.GTypeArray) {
 // [ private_size_or_offset ] trans: nothing
 //
 func TypeClassAdjustPrivateOffset(g_class unsafe.Pointer, private_size_or_offset int32) {
-	iv, err := _I.Get(285, "type_class_adjust_private_offset", "")
+	iv, err := _I.Get(283, "type_class_adjust_private_offset", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8219,7 +8183,7 @@ func TypeClassAdjustPrivateOffset(g_class unsafe.Pointer, private_size_or_offset
 // [ result ] trans: nothing
 //
 func TypeClassPeek(type1 gi.GType) (result TypeClass) {
-	iv, err := _I.Get(286, "type_class_peek", "")
+	iv, err := _I.Get(284, "type_class_peek", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8239,7 +8203,7 @@ func TypeClassPeek(type1 gi.GType) (result TypeClass) {
 // [ result ] trans: nothing
 //
 func TypeClassPeekStatic(type1 gi.GType) (result TypeClass) {
-	iv, err := _I.Get(287, "type_class_peek_static", "")
+	iv, err := _I.Get(285, "type_class_peek_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8259,7 +8223,7 @@ func TypeClassPeekStatic(type1 gi.GType) (result TypeClass) {
 // [ result ] trans: nothing
 //
 func TypeClassRef(type1 gi.GType) (result TypeClass) {
-	iv, err := _I.Get(288, "type_class_ref", "")
+	iv, err := _I.Get(286, "type_class_ref", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8279,7 +8243,7 @@ func TypeClassRef(type1 gi.GType) (result TypeClass) {
 // [ result ] trans: nothing
 //
 func TypeDefaultInterfacePeek(g_type gi.GType) (result TypeInterface) {
-	iv, err := _I.Get(289, "type_default_interface_peek", "")
+	iv, err := _I.Get(287, "type_default_interface_peek", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8299,7 +8263,7 @@ func TypeDefaultInterfacePeek(g_type gi.GType) (result TypeInterface) {
 // [ result ] trans: nothing
 //
 func TypeDefaultInterfaceRef(g_type gi.GType) (result TypeInterface) {
-	iv, err := _I.Get(290, "type_default_interface_ref", "")
+	iv, err := _I.Get(288, "type_default_interface_ref", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8317,7 +8281,7 @@ func TypeDefaultInterfaceRef(g_type gi.GType) (result TypeInterface) {
 // [ g_iface ] trans: nothing
 //
 func TypeDefaultInterfaceUnref(g_iface TypeInterface) {
-	iv, err := _I.Get(291, "type_default_interface_unref", "")
+	iv, err := _I.Get(289, "type_default_interface_unref", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8334,7 +8298,7 @@ func TypeDefaultInterfaceUnref(g_iface TypeInterface) {
 // [ result ] trans: nothing
 //
 func TypeDepth(type1 gi.GType) (result uint32) {
-	iv, err := _I.Get(292, "type_depth", "")
+	iv, err := _I.Get(290, "type_depth", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8352,7 +8316,7 @@ func TypeDepth(type1 gi.GType) (result uint32) {
 // [ type1 ] trans: nothing
 //
 func TypeEnsure(type1 gi.GType) {
-	iv, err := _I.Get(293, "type_ensure", "")
+	iv, err := _I.Get(291, "type_ensure", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8367,7 +8331,7 @@ func TypeEnsure(type1 gi.GType) {
 // [ instance ] trans: nothing
 //
 func TypeFreeInstance(instance TypeInstance) {
-	iv, err := _I.Get(294, "type_free_instance", "")
+	iv, err := _I.Get(292, "type_free_instance", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8384,7 +8348,7 @@ func TypeFreeInstance(instance TypeInstance) {
 // [ result ] trans: nothing
 //
 func TypeFromName(name string) (result gi.GType) {
-	iv, err := _I.Get(295, "type_from_name", "")
+	iv, err := _I.Get(293, "type_from_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8406,7 +8370,7 @@ func TypeFromName(name string) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeFundamental(type_id gi.GType) (result gi.GType) {
-	iv, err := _I.Get(296, "type_fundamental", "")
+	iv, err := _I.Get(294, "type_fundamental", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8424,7 +8388,7 @@ func TypeFundamental(type_id gi.GType) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeFundamentalNext() (result gi.GType) {
-	iv, err := _I.Get(297, "type_fundamental_next", "")
+	iv, err := _I.Get(295, "type_fundamental_next", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8442,7 +8406,7 @@ func TypeFundamentalNext() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeGetInstanceCount(type1 gi.GType) (result int32) {
-	iv, err := _I.Get(298, "type_get_instance_count", "")
+	iv, err := _I.Get(296, "type_get_instance_count", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8462,7 +8426,7 @@ func TypeGetInstanceCount(type1 gi.GType) (result int32) {
 // [ result ] trans: nothing
 //
 func TypeGetPlugin(type1 gi.GType) (result TypePlugin) {
-	iv, err := _I.Get(299, "type_get_plugin", "")
+	iv, err := _I.Get(297, "type_get_plugin", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8484,7 +8448,7 @@ func TypeGetPlugin(type1 gi.GType) (result TypePlugin) {
 // [ result ] trans: nothing
 //
 func TypeGetQdata(type1 gi.GType, quark uint32) (result unsafe.Pointer) {
-	iv, err := _I.Get(300, "type_get_qdata", "")
+	iv, err := _I.Get(298, "type_get_qdata", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8503,7 +8467,7 @@ func TypeGetQdata(type1 gi.GType, quark uint32) (result unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func TypeGetTypeRegistrationSerial() (result uint32) {
-	iv, err := _I.Get(301, "type_get_type_registration_serial", "")
+	iv, err := _I.Get(299, "type_get_type_registration_serial", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8517,7 +8481,7 @@ func TypeGetTypeRegistrationSerial() (result uint32) {
 // g_type_init
 //
 func TypeInit() {
-	iv, err := _I.Get(302, "type_init", "")
+	iv, err := _I.Get(300, "type_init", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8530,7 +8494,7 @@ func TypeInit() {
 // [ debug_flags ] trans: nothing
 //
 func TypeInitWithDebugFlags(debug_flags TypeDebugFlags) {
-	iv, err := _I.Get(303, "type_init_with_debug_flags", "")
+	iv, err := _I.Get(301, "type_init_with_debug_flags", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8547,7 +8511,7 @@ func TypeInitWithDebugFlags(debug_flags TypeDebugFlags) {
 // [ prerequisite_type ] trans: nothing
 //
 func TypeInterfaceAddPrerequisite(interface_type gi.GType, prerequisite_type gi.GType) {
-	iv, err := _I.Get(304, "type_interface_add_prerequisite", "")
+	iv, err := _I.Get(302, "type_interface_add_prerequisite", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8567,7 +8531,7 @@ func TypeInterfaceAddPrerequisite(interface_type gi.GType, prerequisite_type gi.
 // [ result ] trans: nothing
 //
 func TypeInterfaceGetPlugin(instance_type gi.GType, interface_type gi.GType) (result TypePlugin) {
-	iv, err := _I.Get(305, "type_interface_get_plugin", "")
+	iv, err := _I.Get(303, "type_interface_get_plugin", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8590,7 +8554,7 @@ func TypeInterfaceGetPlugin(instance_type gi.GType, interface_type gi.GType) (re
 // [ result ] trans: nothing
 //
 func TypeInterfacePeek(instance_class TypeClass, iface_type gi.GType) (result TypeInterface) {
-	iv, err := _I.Get(306, "type_interface_peek", "")
+	iv, err := _I.Get(304, "type_interface_peek", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8613,7 +8577,7 @@ func TypeInterfacePeek(instance_class TypeClass, iface_type gi.GType) (result Ty
 // [ result ] trans: everything
 //
 func TypeInterfacePrerequisites(interface_type gi.GType) (result gi.GTypeArray) {
-	iv, err := _I.Get(307, "type_interface_prerequisites", "")
+	iv, err := _I.Get(305, "type_interface_prerequisites", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8640,7 +8604,7 @@ func TypeInterfacePrerequisites(interface_type gi.GType) (result gi.GTypeArray) 
 // [ result ] trans: everything
 //
 func TypeInterfaces(type1 gi.GType) (result gi.GTypeArray) {
-	iv, err := _I.Get(308, "type_interfaces", "")
+	iv, err := _I.Get(306, "type_interfaces", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8667,7 +8631,7 @@ func TypeInterfaces(type1 gi.GType) (result gi.GTypeArray) {
 // [ result ] trans: nothing
 //
 func TypeIsA(type1 gi.GType, is_a_type gi.GType) (result bool) {
-	iv, err := _I.Get(309, "type_is_a", "")
+	iv, err := _I.Get(307, "type_is_a", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8688,7 +8652,7 @@ func TypeIsA(type1 gi.GType, is_a_type gi.GType) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeName(type1 gi.GType) (result string) {
-	iv, err := _I.Get(310, "type_name", "")
+	iv, err := _I.Get(308, "type_name", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8708,7 +8672,7 @@ func TypeName(type1 gi.GType) (result string) {
 // [ result ] trans: nothing
 //
 func TypeNameFromClass(g_class TypeClass) (result string) {
-	iv, err := _I.Get(311, "type_name_from_class", "")
+	iv, err := _I.Get(309, "type_name_from_class", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8728,7 +8692,7 @@ func TypeNameFromClass(g_class TypeClass) (result string) {
 // [ result ] trans: nothing
 //
 func TypeNameFromInstance(instance TypeInstance) (result string) {
-	iv, err := _I.Get(312, "type_name_from_instance", "")
+	iv, err := _I.Get(310, "type_name_from_instance", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8750,7 +8714,7 @@ func TypeNameFromInstance(instance TypeInstance) (result string) {
 // [ result ] trans: nothing
 //
 func TypeNextBase(leaf_type gi.GType, root_type gi.GType) (result gi.GType) {
-	iv, err := _I.Get(313, "type_next_base", "")
+	iv, err := _I.Get(311, "type_next_base", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8771,7 +8735,7 @@ func TypeNextBase(leaf_type gi.GType, root_type gi.GType) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeParent(type1 gi.GType) (result gi.GType) {
-	iv, err := _I.Get(314, "type_parent", "")
+	iv, err := _I.Get(312, "type_parent", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8791,7 +8755,7 @@ func TypeParent(type1 gi.GType) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeQname(type1 gi.GType) (result uint32) {
-	iv, err := _I.Get(315, "type_qname", "")
+	iv, err := _I.Get(313, "type_qname", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8811,7 +8775,7 @@ func TypeQname(type1 gi.GType) (result uint32) {
 // [ query ] trans: nothing, dir: out
 //
 func TypeQueryF(type1 gi.GType, query TypeQuery) {
-	iv, err := _I.Get(316, "type_query", "")
+	iv, err := _I.Get(314, "type_query", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8835,7 +8799,7 @@ func TypeQueryF(type1 gi.GType, query TypeQuery) {
 // [ result ] trans: nothing
 //
 func TypeRegisterDynamic(parent_type gi.GType, type_name string, plugin ITypePlugin, flags TypeFlags) (result gi.GType) {
-	iv, err := _I.Get(317, "type_register_dynamic", "")
+	iv, err := _I.Get(315, "type_register_dynamic", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8872,7 +8836,7 @@ func TypeRegisterDynamic(parent_type gi.GType, type_name string, plugin ITypePlu
 // [ result ] trans: nothing
 //
 func TypeRegisterFundamental(type_id gi.GType, type_name string, info TypeInfo, finfo TypeFundamentalInfo, flags TypeFlags) (result gi.GType) {
-	iv, err := _I.Get(318, "type_register_fundamental", "")
+	iv, err := _I.Get(316, "type_register_fundamental", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8904,7 +8868,7 @@ func TypeRegisterFundamental(type_id gi.GType, type_name string, info TypeInfo, 
 // [ result ] trans: nothing
 //
 func TypeRegisterStatic(parent_type gi.GType, type_name string, info TypeInfo, flags TypeFlags) (result gi.GType) {
-	iv, err := _I.Get(319, "type_register_static", "")
+	iv, err := _I.Get(317, "type_register_static", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8931,7 +8895,7 @@ func TypeRegisterStatic(parent_type gi.GType, type_name string, info TypeInfo, f
 // [ data ] trans: nothing
 //
 func TypeSetQdata(type1 gi.GType, quark uint32, data unsafe.Pointer) {
-	iv, err := _I.Get(320, "type_set_qdata", "")
+	iv, err := _I.Get(318, "type_set_qdata", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8952,7 +8916,7 @@ func TypeSetQdata(type1 gi.GType, quark uint32, data unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func TypeTestFlags(type1 gi.GType, flags uint32) (result bool) {
-	iv, err := _I.Get(321, "type_test_flags", "")
+	iv, err := _I.Get(319, "type_test_flags", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8975,7 +8939,7 @@ func TypeTestFlags(type1 gi.GType, flags uint32) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueTypeCompatible(src_type gi.GType, dest_type gi.GType) (result bool) {
-	iv, err := _I.Get(322, "value_type_compatible", "")
+	iv, err := _I.Get(320, "value_type_compatible", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8998,7 +8962,7 @@ func ValueTypeCompatible(src_type gi.GType, dest_type gi.GType) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueTypeTransformable(src_type gi.GType, dest_type gi.GType) (result bool) {
-	iv, err := _I.Get(323, "value_type_transformable", "")
+	iv, err := _I.Get(321, "value_type_transformable", "")
 	if err != nil {
 		log.Println("WARN:", err)
 		return

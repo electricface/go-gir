@@ -6,21 +6,6 @@ package gobject
 #include <glib-object.h>
 #include <stdlib.h>
 
-static GValue *
-_g_value_alloc()
-{
-	return (g_new0(GValue, 1));
-}
-
-static GValue *
-_g_value_init(GType g_type)
-{
-	GValue          *value;
-
-	value = g_new0(GValue, 1);
-	return (g_value_init(value, g_type));
-}
-
 static gboolean
 _g_is_value(GValue *val)
 {
@@ -49,47 +34,39 @@ import "C"
 
 import (
 	"errors"
-	"github.com/electricface/go-gir/glib-2.0"
 	"unsafe"
 
+	"github.com/electricface/go-gir/glib-2.0"
 	"github.com/electricface/go-gir/util"
-	"github.com/electricface/go-gir3/gi-lite"
+	gi "github.com/electricface/go-gir3/gi-lite"
 )
 
 /*
  * GValue
  */
 
-// ValueAlloc allocates a Value and sets a runtime finalizer to call
-// g_value_unset() on the underlying GValue after leaving scope.
-// ValueAlloc() returns a non-nil error if the allocation failed.
-
-func ValueNew() Value {
-	return Value{unsafe.Pointer(C._g_value_alloc())}
+func NewValue() Value {
+	p := gi.Malloc0(SizeOfStructValue)
+	return Value{P: p}
 }
 
-func (v Value) Free() {
-	C.g_free(C.gpointer(v.P))
+func (v *Value) Free() {
+	gi.Free(v.P)
+	v.P = nil
 }
 
-func (v Value) native() *C.GValue {
+func (v Value) p() *C.GValue {
 	return (*C.GValue)(v.P)
 }
-
-// ValueInit is a wrapper around g_value_init() and allocates and
-// initializes a new Value with the Type t.
-//func (v Value) Init(gType Type) {
-//	C.g_value_init(v.native(), C.GType(gType))
-//}
 
 // Type is a wrapper around the G_VALUE_HOLDS_GTYPE() macro and
 // the g_value_get_gtype() function.  GetType() returns TYPE_INVALID if v
 // does not hold a Type, or otherwise returns the Type of v.
 func (v Value) Type() (actual gi.GType, fundamental gi.GType, err error) {
-	if !util.Int2Bool(int(C._g_is_value(v.native()))) {
+	if !util.Int2Bool(int(C._g_is_value(v.p()))) {
 		return actual, fundamental, errors.New("invalid GValue")
 	}
-	cActual := C._g_value_type(v.native())
+	cActual := C._g_value_type(v.p())
 	cFundamental := C._g_value_fundamental(cActual)
 	return gi.GType(cActual), gi.GType(cFundamental), nil
 }
@@ -310,7 +287,7 @@ func (v Value) get(typ gi.GType) (ret interface{}, err error) {
 var errTypeConvert = errors.New("type convert failed")
 
 func (v Value) Set(iVal interface{}) error {
-	cType := C._g_value_type(v.native())
+	cType := C._g_value_type(v.p())
 	gType := gi.GType(cType)
 	switch gType {
 	case TYPE_INVALID:

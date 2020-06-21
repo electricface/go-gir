@@ -3,13 +3,6 @@ package glib
 /*
 #cgo pkg-config: glib-2.0
 #include <glib.h>
-
-
-extern void myGFunc(gpointer data, gpointer user_data);
-
-static void* getPointer_myGFunc() {
-	return (void*)(myGFunc);
-}
 */
 import "C"
 
@@ -17,23 +10,6 @@ import (
 	gi "github.com/electricface/go-gir3/gi-lite"
 	"unsafe"
 )
-
-type GFuncStruct struct {
-	Data unsafe.Pointer
-}
-
-//export myGFunc
-func myGFunc(data C.gpointer, user_data C.gpointer) {
-	call := gi.GetFunc(uint(uintptr(user_data)))
-	args := &GFuncStruct{
-		Data: unsafe.Pointer(data),
-	}
-	call(args)
-}
-
-//func getPointer_myGFunc() unsafe.Pointer {
-//	return C.getPointer_myGFunc()
-//}
 
 func (v List) p() *C.GList {
 	return (*C.GList)(v.P)
@@ -52,8 +28,8 @@ func (v List) ForEach(fn func(item unsafe.Pointer)) {
 
 func (v List) ForEachC(fn func(args interface{})) {
 	fnId := gi.RegisterFunc(fn)
-	C.g_list_foreach(v.p(), C.GFunc(C.getPointer_myGFunc()), C.gpointer(fnId))
-	// todo unregister func fnId
+	C.g_list_foreach(v.p(), C.GFunc(GetPointer_myFunc()), C.gpointer(fnId))
+	gi.UnregisterFunc(fnId)
 }
 
 func (v *List) FullFree(fn func(item unsafe.Pointer)) {
@@ -76,9 +52,30 @@ func (v List) Previous() List {
 	return wrapList(native.prev)
 }
 
+// Free 释放所有被 List 使用的内存。如果列表的元素包含动态分配的内存，
+// 应该使用 FreeFull 或则首先释放它们。
 func (v *List) Free() {
 	C.g_list_free(v.p())
 	v.P = nil
+}
+
+func (v *List) FreeFull(freeFn func(item unsafe.Pointer)) {
+	v.ForEach(freeFn)
+	v.Free()
+}
+
+// Free1 释放一个元素，不会更新与列表中前和后的元素的链接关系，
+// 因此不应该在这个元素还是列表的一部分时调用这个函数。
+//
+// 它通常用在 RemoveLink 之后。
+func (v *List) Free1() {
+	C.g_list_free_1(v.p())
+	v.P = nil
+}
+
+func (v List) RemoveLink(lLink List) List {
+	ret := C.g_list_remove_link(v.p(), lLink.p())
+	return wrapList(ret)
 }
 
 func (v List) Data() unsafe.Pointer {
@@ -176,14 +173,25 @@ func (v SList) RemoveAll(data unsafe.Pointer) SList {
 	return wrapSList(list)
 }
 
-func (v SList) Free() {
+// Free 释放所有被 SList 使用的内存。如果列表的元素包含动态分配的内存，
+// 应该使用 FreeFull 或则首先释放它们。
+func (v *SList) Free() {
 	C.g_slist_free(v.p())
+	v.P = nil
 }
 
-// TODO g_slist_free_full
+func (v *SList) FreeFull(freeFn func(item unsafe.Pointer)) {
+	v.ForEach(freeFn)
+	v.Free()
+}
 
-func (v SList) Free1() {
+// Free1 释放一个元素，不会更新与列表中前和后的元素的链接关系，
+// 因此你不应该在这个元素还是列表的一部分时调用这个函数。
+//
+// 它通常用在 RemoveLink 之后。
+func (v *SList) Free1() {
 	C.g_slist_free_1(v.p())
+	v.P = nil
 }
 
 func (v SList) Length() uint {
@@ -218,6 +226,12 @@ func (v SList) ForEach(fn func(item unsafe.Pointer)) {
 	for l := v.p(); l != nil; l = l.next {
 		fn(unsafe.Pointer(l.data))
 	}
+}
+
+func (v SList) ForEachC(fn func(v interface{})) {
+	fnId := gi.RegisterFunc(fn)
+	C.g_slist_foreach(v.p(), C.GFunc(GetPointer_myFunc()), C.gpointer(fnId))
+	gi.UnregisterFunc(fnId)
 }
 
 func (v SList) Last() SList {
