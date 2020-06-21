@@ -1,4 +1,4 @@
-package gobject
+package g
 
 /*
 #cgo pkg-config: glib-2.0
@@ -37,7 +37,6 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/electricface/go-gir/glib-2.0"
 	"github.com/electricface/go-gir/util"
 	gi "github.com/electricface/go-gir3/gi-lite"
 )
@@ -347,7 +346,7 @@ func getValueType(iVal interface{}) (gType gi.GType, err error) {
 		gType = TYPE_PARAM
 	case Object:
 		gType = TYPE_OBJECT
-	case glib.Variant:
+	case Variant:
 		gType = TYPE_VARIANT
 	default:
 		err = errors.New("unsupported type")
@@ -503,7 +502,7 @@ func (v Value) Set(iVal interface{}) error {
 		v.SetObject(val)
 
 	case TYPE_VARIANT:
-		val, ok := iVal.(glib.Variant)
+		val, ok := iVal.(Variant)
 		if !ok {
 			return errTypeConvert
 		}

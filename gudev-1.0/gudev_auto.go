@@ -5,8 +5,7 @@ package gudev
 #include <gudev/gudev.h>
 */
 import "C"
-import "github.com/electricface/go-gir/glib-2.0"
-import "github.com/electricface/go-gir/gobject-2.0"
+import "github.com/electricface/go-gir/g-2.0"
 import "log"
 import "unsafe"
 import gi "github.com/electricface/go-gir3/gi-lite"
@@ -25,7 +24,7 @@ func init() {
 
 // Object Client
 type Client struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapClient(p unsafe.Pointer) (r Client) { r.P = p; return }
@@ -111,7 +110,7 @@ func (v Client) QueryByDeviceNumber(type1 DeviceTypeEnum, number uint64) (result
 //
 // [ result ] trans: everything
 //
-func (v Client) QueryBySubsystem(subsystem string) (result glib.List) {
+func (v Client) QueryBySubsystem(subsystem string) (result g.List) {
 	iv, err := _I.Get(3, "Client", "query_by_subsystem")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -192,7 +191,7 @@ func ClientPrivateGetType() gi.GType {
 
 // Object Device
 type Device struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapDevice(p unsafe.Pointer) (r Device) { r.P = p; return }
@@ -912,7 +911,7 @@ func DeviceTypeGetType() gi.GType {
 
 // Object Enumerator
 type Enumerator struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapEnumerator(p unsafe.Pointer) (r Enumerator) { r.P = p; return }
@@ -1170,7 +1169,7 @@ func (v Enumerator) AddSysfsPath(sysfs_path string) (result Enumerator) {
 //
 // [ result ] trans: everything
 //
-func (v Enumerator) Execute() (result glib.List) {
+func (v Enumerator) Execute() (result g.List) {
 	iv, err := _I.Get(49, "Enumerator", "execute")
 	if err != nil {
 		log.Println("WARN:", err)

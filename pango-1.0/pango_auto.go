@@ -17,8 +17,7 @@ return (void*)(myPangoFontsetForeachFunc);
 }
 */
 import "C"
-import "github.com/electricface/go-gir/glib-2.0"
-import "github.com/electricface/go-gir/gobject-2.0"
+import "github.com/electricface/go-gir/g-2.0"
 import "log"
 import "unsafe"
 import gi "github.com/electricface/go-gir3/gi-lite"
@@ -178,7 +177,7 @@ func AttrIteratorGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func (v AttrIterator) GetAttrs() (result glib.SList) {
+func (v AttrIterator) GetAttrs() (result g.SList) {
 	iv, err := _I.Get(0, "AttrIterator", "get_attrs")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -200,7 +199,7 @@ func (v AttrIterator) GetAttrs() (result glib.SList) {
 //
 // [ extra_attrs ] trans: everything
 //
-func (v AttrIterator) GetFont(desc FontDescription, language Language, extra_attrs glib.SList) {
+func (v AttrIterator) GetFont(desc FontDescription, language Language, extra_attrs g.SList) {
 	iv, err := _I.Get(1, "AttrIterator", "get_font")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -687,7 +686,7 @@ func (v Color) ToString() (result string) {
 
 // Object Context
 type Context struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapContext(p unsafe.Pointer) (r Context) { r.P = p; return }
@@ -1258,7 +1257,7 @@ func EllipsizeModeGetType() gi.GType {
 
 // Object Engine
 type Engine struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapEngine(p unsafe.Pointer) (r Engine) { r.P = p; return }
@@ -1330,7 +1329,7 @@ func EngineShapeGetType() gi.GType {
 // ignore GType struct EngineShapeClass
 // Object Font
 type Font struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapFont(p unsafe.Pointer) (r Font) { r.P = p; return }
@@ -2099,7 +2098,7 @@ func FontDescriptionFromString1(str string) (result FontDescription) {
 
 // Object FontFace
 type FontFace struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapFontFace(p unsafe.Pointer) (r FontFace) { r.P = p; return }
@@ -2195,7 +2194,7 @@ func (v FontFace) ListSizes() (sizes gi.Int32Array) {
 // ignore GType struct FontFaceClass
 // Object FontFamily
 type FontFamily struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapFontFamily(p unsafe.Pointer) (r FontFamily) { r.P = p; return }
@@ -2273,7 +2272,7 @@ func (v FontFamily) ListFaces() (faces gi.PointerArray) {
 // ignore GType struct FontFamilyClass
 // Object FontMap
 type FontMap struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapFontMap(p unsafe.Pointer) (r FontMap) { r.P = p; return }
@@ -2663,7 +2662,7 @@ func (v FontMetrics) Unref() {
 
 // Object Fontset
 type Fontset struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapFontset(p unsafe.Pointer) (r Fontset) { r.P = p; return }
@@ -2872,7 +2871,7 @@ func GlyphItemGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func (v GlyphItem) ApplyAttrs(text string, list AttrList) (result glib.SList) {
+func (v GlyphItem) ApplyAttrs(text string, list AttrList) (result g.SList) {
 	iv, err := _I.Get(119, "GlyphItem", "apply_attrs")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3650,7 +3649,7 @@ func LanguageFromString1(language string) (result Language) {
 
 // Object Layout
 type Layout struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapLayout(p unsafe.Pointer) (r Layout) { r.P = p; return }
@@ -4039,7 +4038,7 @@ func (v Layout) GetLineReadonly(line int32) (result LayoutLine) {
 //
 // [ result ] trans: nothing
 //
-func (v Layout) GetLines() (result glib.SList) {
+func (v Layout) GetLines() (result g.SList) {
 	iv, err := _I.Get(172, "Layout", "get_lines")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4057,7 +4056,7 @@ func (v Layout) GetLines() (result glib.SList) {
 //
 // [ result ] trans: nothing
 //
-func (v Layout) GetLinesReadonly() (result glib.SList) {
+func (v Layout) GetLinesReadonly() (result g.SList) {
 	iv, err := _I.Get(173, "Layout", "get_lines_readonly")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5586,7 +5585,7 @@ func RenderPartGetType() gi.GType {
 
 // Object Renderer
 type Renderer struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapRenderer(p unsafe.Pointer) (r Renderer) { r.P = p; return }
@@ -6995,7 +6994,7 @@ func IsZeroWidth(ch rune) (result bool) {
 //
 // [ result ] trans: everything
 //
-func Itemize(context IContext, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result glib.List) {
+func Itemize(context IContext, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result g.List) {
 	iv, err := _I.Get(299, "itemize", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7038,7 +7037,7 @@ func Itemize(context IContext, text string, start_index int32, length int32, att
 //
 // [ result ] trans: everything
 //
-func ItemizeWithBaseDir(context IContext, base_dir DirectionEnum, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result glib.List) {
+func ItemizeWithBaseDir(context IContext, base_dir DirectionEnum, text string, start_index int32, length int32, attrs AttrList, cached_iter AttrIterator) (result g.List) {
 	iv, err := _I.Get(300, "itemize_with_base_dir", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7143,7 +7142,7 @@ func LookupAliases(fontname string) (families gi.CStrArray) {
 //
 // [ result ] trans: nothing
 //
-func MarkupParserFinish(context glib.MarkupParseContext) (result bool, attr_list AttrList, text string, accel_char rune, err error) {
+func MarkupParserFinish(context g.MarkupParseContext) (result bool, attr_list AttrList, text string, accel_char rune, err error) {
 	iv, err := _I.Get(304, "markup_parser_finish", "")
 	if err != nil {
 		return
@@ -7171,7 +7170,7 @@ func MarkupParserFinish(context glib.MarkupParseContext) (result bool, attr_list
 //
 // [ result ] trans: nothing
 //
-func MarkupParserNew(accel_marker rune) (result glib.MarkupParseContext) {
+func MarkupParserNew(accel_marker rune) (result g.MarkupParseContext) {
 	iv, err := _I.Get(305, "markup_parser_new", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7423,7 +7422,7 @@ func QuantizeLineGeometry(thickness int /*TODO:TYPE*/, position int /*TODO:TYPE*
 //
 // [ result ] trans: nothing
 //
-func ReadLine(stream unsafe.Pointer, str glib.String) (result int32) {
+func ReadLine(stream unsafe.Pointer, str g.String) (result int32) {
 	iv, err := _I.Get(314, "read_line", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7444,7 +7443,7 @@ func ReadLine(stream unsafe.Pointer, str glib.String) (result int32) {
 //
 // [ result ] trans: everything
 //
-func ReorderItems(logical_items glib.List) (result glib.List) {
+func ReorderItems(logical_items g.List) (result g.List) {
 	iv, err := _I.Get(315, "reorder_items", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7490,7 +7489,7 @@ func ScanInt(pos int /*TODO:TYPE*/) (result bool, out int32) {
 //
 // [ result ] trans: nothing
 //
-func ScanString(pos int /*TODO:TYPE*/, out glib.String) (result bool) {
+func ScanString(pos int /*TODO:TYPE*/, out g.String) (result bool) {
 	iv, err := _I.Get(317, "scan_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7513,7 +7512,7 @@ func ScanString(pos int /*TODO:TYPE*/, out glib.String) (result bool) {
 //
 // [ result ] trans: nothing
 //
-func ScanWord(pos int /*TODO:TYPE*/, out glib.String) (result bool) {
+func ScanWord(pos int /*TODO:TYPE*/, out g.String) (result bool) {
 	iv, err := _I.Get(318, "scan_word", "")
 	if err != nil {
 		log.Println("WARN:", err)

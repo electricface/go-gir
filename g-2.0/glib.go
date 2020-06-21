@@ -1,4 +1,4 @@
-package glib
+package g
 
 /*
 #cgo pkg-config: glib-2.0

@@ -1,4 +1,4 @@
-package gobject
+package g
 
 import "unsafe"
 

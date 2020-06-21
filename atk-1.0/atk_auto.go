@@ -29,8 +29,7 @@ return (void*)(myAtkPropertyChangeHandler);
 }
 */
 import "C"
-import "github.com/electricface/go-gir/glib-2.0"
-import "github.com/electricface/go-gir/gobject-2.0"
+import "github.com/electricface/go-gir/g-2.0"
 import "log"
 import "unsafe"
 import gi "github.com/electricface/go-gir3/gi-lite"
@@ -227,7 +226,7 @@ func AttributeGetType() gi.GType {
 //
 // [ attrib_set ] trans: nothing
 //
-func AttributeSetFree1(attrib_set glib.SList) {
+func AttributeSetFree1(attrib_set g.SList) {
 	iv, err := _I.Get(7, "Attribute", "set_free")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -665,7 +664,7 @@ func (v *DocumentIfc) GetAttributeValue(attribute_name string) (result string) {
 //
 // [ result ] trans: nothing
 //
-func (v *DocumentIfc) GetAttributes() (result glib.SList) {
+func (v *DocumentIfc) GetAttributes() (result g.SList) {
 	iv, err := _I.Get(24, "Document", "get_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -919,7 +918,7 @@ func (v *EditableTextIfc) PasteText(position int32) {
 //
 // [ result ] trans: nothing
 //
-func (v *EditableTextIfc) SetRunAttributes(attrib_set glib.SList, start_offset int32, end_offset int32) (result bool) {
+func (v *EditableTextIfc) SetRunAttributes(attrib_set g.SList, start_offset int32, end_offset int32) (result bool) {
 	iv, err := _I.Get(36, "EditableText", "set_run_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1029,7 +1028,7 @@ func GObjectAccessibleGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func GObjectAccessibleForObject1(obj gobject.IObject) (result Object) {
+func GObjectAccessibleForObject1(obj g.IObject) (result Object) {
 	iv, err := _I.Get(38, "GObjectAccessible", "for_object")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1051,7 +1050,7 @@ func GObjectAccessibleForObject1(obj gobject.IObject) (result Object) {
 //
 // [ result ] trans: nothing
 //
-func (v GObjectAccessible) GetObject() (result gobject.Object) {
+func (v GObjectAccessible) GetObject() (result g.Object) {
 	iv, err := _I.Get(39, "GObjectAccessible", "get_object")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1069,7 +1068,7 @@ func (v GObjectAccessible) GetObject() (result gobject.Object) {
 // Object Hyperlink
 type Hyperlink struct {
 	ActionIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapHyperlink(p unsafe.Pointer) (r Hyperlink) { r.P = p; return }
@@ -1583,7 +1582,7 @@ func LayerGetType() gi.GType {
 
 // Object Misc
 type Misc struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapMisc(p unsafe.Pointer) (r Misc) { r.P = p; return }
@@ -1668,7 +1667,7 @@ func NoOpObjectGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func NewNoOpObject(obj gobject.IObject) (result NoOpObject) {
+func NewNoOpObject(obj g.IObject) (result NoOpObject) {
 	iv, err := _I.Get(61, "NoOpObject", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1721,7 +1720,7 @@ func NewNoOpObjectFactory() (result NoOpObjectFactory) {
 // ignore GType struct NoOpObjectFactoryClass
 // Object Object
 type Object struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapObject(p unsafe.Pointer) (r Object) { r.P = p; return }
@@ -1766,7 +1765,7 @@ func (v Object) AddRelationship(relationship RelationTypeEnum, target IObject) (
 //
 // [ result ] trans: everything
 //
-func (v Object) GetAttributes() (result glib.SList) {
+func (v Object) GetAttributes() (result g.SList) {
 	iv, err := _I.Get(64, "Object", "get_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2171,7 +2170,7 @@ func (v Object) SetRole(role RoleEnum) {
 // ignore GType struct ObjectClass
 // Object ObjectFactory
 type ObjectFactory struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapObjectFactory(p unsafe.Pointer) (r ObjectFactory) { r.P = p; return }
@@ -2190,7 +2189,7 @@ func ObjectFactoryGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func (v ObjectFactory) CreateAccessible(obj gobject.IObject) (result Object) {
+func (v ObjectFactory) CreateAccessible(obj g.IObject) (result Object) {
 	iv, err := _I.Get(86, "ObjectFactory", "create_accessible")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2456,7 +2455,7 @@ func RectangleGetType() gi.GType {
 
 // Object Registry
 type Registry struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapRegistry(p unsafe.Pointer) (r Registry) { r.P = p; return }
@@ -2533,7 +2532,7 @@ func (v Registry) SetFactoryType(type1 gi.GType, factory_type gi.GType) {
 // ignore GType struct RegistryClass
 // Object Relation
 type Relation struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapRelation(p unsafe.Pointer) (r Relation) { r.P = p; return }
@@ -2656,7 +2655,7 @@ func (v Relation) RemoveTarget(target IObject) (result bool) {
 // ignore GType struct RelationClass
 // Object RelationSet
 type RelationSet struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapRelationSet(p unsafe.Pointer) (r RelationSet) { r.P = p; return }
@@ -3269,7 +3268,7 @@ func (v Socket) IsOccupied() (result bool) {
 // ignore GType struct SocketClass
 // Object StateSet
 type StateSet struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapStateSet(p unsafe.Pointer) (r StateSet) { r.P = p; return }
@@ -3625,7 +3624,7 @@ func (v *StreamableContentIfc) GetNMimeTypes() (result int32) {
 //
 // [ result ] trans: everything
 //
-func (v *StreamableContentIfc) GetStream(mime_type string) (result glib.IOChannel) {
+func (v *StreamableContentIfc) GetStream(mime_type string) (result g.IOChannel) {
 	iv, err := _I.Get(137, "StreamableContent", "get_stream")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4644,7 +4643,7 @@ func (v *TextIfc) GetCharacterExtents(offset int32, coords CoordTypeEnum) (x int
 //
 // [ result ] trans: everything
 //
-func (v *TextIfc) GetDefaultAttributes() (result glib.SList) {
+func (v *TextIfc) GetDefaultAttributes() (result g.SList) {
 	iv, err := _I.Get(182, "Text", "get_default_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4738,7 +4737,7 @@ func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, coord_ty
 //
 // [ result ] trans: everything
 //
-func (v *TextIfc) GetRunAttributes(offset int32) (result glib.SList, start_offset int32, end_offset int32) {
+func (v *TextIfc) GetRunAttributes(offset int32) (result g.SList, start_offset int32, end_offset int32) {
 	iv, err := _I.Get(186, "Text", "get_run_attributes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5129,7 +5128,7 @@ func TextRectangleGetType() gi.GType {
 
 // Object Util
 type Util struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapUtil(p unsafe.Pointer) (r Util) { r.P = p; return }
@@ -5161,7 +5160,7 @@ func ValueGetType() gi.GType {
 //
 // [ value ] trans: nothing, dir: out
 //
-func (v *ValueIfc) GetCurrentValue(value gobject.Value) {
+func (v *ValueIfc) GetCurrentValue(value g.Value) {
 	iv, err := _I.Get(196, "Value", "get_current_value")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5195,7 +5194,7 @@ func (v *ValueIfc) GetIncrement() (result float64) {
 //
 // [ value ] trans: nothing, dir: out
 //
-func (v *ValueIfc) GetMaximumValue(value gobject.Value) {
+func (v *ValueIfc) GetMaximumValue(value g.Value) {
 	iv, err := _I.Get(198, "Value", "get_maximum_value")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5211,7 +5210,7 @@ func (v *ValueIfc) GetMaximumValue(value gobject.Value) {
 //
 // [ value ] trans: nothing, dir: out
 //
-func (v *ValueIfc) GetMinimumIncrement(value gobject.Value) {
+func (v *ValueIfc) GetMinimumIncrement(value g.Value) {
 	iv, err := _I.Get(199, "Value", "get_minimum_increment")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5227,7 +5226,7 @@ func (v *ValueIfc) GetMinimumIncrement(value gobject.Value) {
 //
 // [ value ] trans: nothing, dir: out
 //
-func (v *ValueIfc) GetMinimumValue(value gobject.Value) {
+func (v *ValueIfc) GetMinimumValue(value g.Value) {
 	iv, err := _I.Get(200, "Value", "get_minimum_value")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5261,7 +5260,7 @@ func (v *ValueIfc) GetRange() (result Range) {
 //
 // [ result ] trans: everything
 //
-func (v *ValueIfc) GetSubRanges() (result glib.SList) {
+func (v *ValueIfc) GetSubRanges() (result g.SList) {
 	iv, err := _I.Get(202, "Value", "get_sub_ranges")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5304,7 +5303,7 @@ func (v *ValueIfc) GetValueAndText() (value float64, text string) {
 //
 // [ result ] trans: nothing
 //
-func (v *ValueIfc) SetCurrentValue(value gobject.Value) (result bool) {
+func (v *ValueIfc) SetCurrentValue(value g.Value) (result bool) {
 	iv, err := _I.Get(204, "Value", "set_current_value")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5382,7 +5381,7 @@ func WindowGetType() gi.GType {
 //
 // [ attrib_set ] trans: nothing
 //
-func AttributeSetFree(attrib_set glib.SList) {
+func AttributeSetFree(attrib_set g.SList) {
 	iv, err := _I.Get(206, "attribute_set_free", "")
 	if err != nil {
 		log.Println("WARN:", err)

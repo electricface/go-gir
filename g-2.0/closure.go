@@ -1,4 +1,4 @@
-package gobject
+package g
 
 /*
 #cgo pkg-config: glib-2.0 gobject-2.0
@@ -34,7 +34,6 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/electricface/go-gir/glib-2.0"
 	"github.com/electricface/go-gir/util"
 )
 
@@ -213,29 +212,29 @@ func (v Object) connectClosure(after bool, detailedSignal string, f interface{})
 
 type SourceFunc func() bool
 
-func IdleAdd(f SourceFunc) uint {
-	src := glib.IdleSourceNew()
-	id := setupSourceFunc(src, f)
-	src.Unref()
-	return id
-}
+//func IdleAdd(f SourceFunc) uint {
+//	src := IdleSourceNew()
+//	id := setupSourceFunc(src, f)
+//	src.Unref()
+//	return id
+//}
 
-func TimeoutAdd(interval uint, f SourceFunc) uint {
-	src := glib.TimeoutSourceNew(uint32(interval))
-	id := setupSourceFunc(src, f)
-	src.Unref()
-	return id
-}
+//func TimeoutAdd(interval uint, f SourceFunc) uint {
+//	src := TimeoutSourceNew(uint32(interval))
+//	id := setupSourceFunc(src, f)
+//	src.Unref()
+//	return id
+//}
 
-func TimeoutAddSeconds(interval uint, f SourceFunc) uint {
-	src := glib.TimeoutSourceNewSeconds(uint32(interval))
-	id := setupSourceFunc(src, f)
-	src.Unref()
-	return id
-}
+//func TimeoutAddSeconds(interval uint, f SourceFunc) uint {
+//	src := TimeoutSourceNewSeconds(uint32(interval))
+//	id := setupSourceFunc(src, f)
+//	src.Unref()
+//	return id
+//}
 
-func setupSourceFunc(src glib.Source, f SourceFunc) uint {
+func setupSourceFunc(src Source, f SourceFunc) uint {
 	closure := ClosureNew(f)
 	SourceSetClosure(src, closure)
-	return uint(src.Attach(glib.MainContextDefault()))
+	return uint(src.Attach(MainContextDefault()))
 }

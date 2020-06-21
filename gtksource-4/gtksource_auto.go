@@ -7,11 +7,9 @@ package gtksource
 import "C"
 import "github.com/electricface/go-gir/atk-1.0"
 import "github.com/electricface/go-gir/cairo-1.0"
+import "github.com/electricface/go-gir/g-2.0"
 import "github.com/electricface/go-gir/gdk-3.0"
 import "github.com/electricface/go-gir/gdkpixbuf-2.0"
-import "github.com/electricface/go-gir/gio-2.0"
-import "github.com/electricface/go-gir/glib-2.0"
-import "github.com/electricface/go-gir/gobject-2.0"
 import "github.com/electricface/go-gir/gtk-3.0"
 import "log"
 import "unsafe"
@@ -426,7 +424,7 @@ func (v Buffer) GetMaxUndoLevels() (result int32) {
 //
 // [ result ] trans: container
 //
-func (v Buffer) GetSourceMarksAtIter(iter gtk.TextIter, category string) (result glib.SList) {
+func (v Buffer) GetSourceMarksAtIter(iter gtk.TextIter, category string) (result g.SList) {
 	iv, err := _I.Get(17, "Buffer", "get_source_marks_at_iter")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -452,7 +450,7 @@ func (v Buffer) GetSourceMarksAtIter(iter gtk.TextIter, category string) (result
 //
 // [ result ] trans: container
 //
-func (v Buffer) GetSourceMarksAtLine(line int32, category string) (result glib.SList) {
+func (v Buffer) GetSourceMarksAtLine(line int32, category string) (result g.SList) {
 	iv, err := _I.Get(18, "Buffer", "get_source_marks_at_line")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -831,7 +829,7 @@ func ChangeCaseTypeGetType() gi.GType {
 // Object Completion
 type Completion struct {
 	gtk.BuildableIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapCompletion(p unsafe.Pointer) (r Completion) { r.P = p; return }
@@ -928,7 +926,7 @@ func (v Completion) GetInfoWindow() (result CompletionInfo) {
 //
 // [ result ] trans: nothing
 //
-func (v Completion) GetProviders() (result glib.List) {
+func (v Completion) GetProviders() (result g.List) {
 	iv, err := _I.Get(40, "Completion", "get_providers")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1008,7 +1006,7 @@ func (v Completion) RemoveProvider(provider ICompletionProvider) (result bool, e
 //
 // [ result ] trans: nothing
 //
-func (v Completion) Start(providers glib.List, context ICompletionContext) (result bool) {
+func (v Completion) Start(providers g.List, context ICompletionContext) (result bool) {
 	iv, err := _I.Get(44, "Completion", "start")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1058,7 +1056,7 @@ func CompletionActivationGetType() gi.GType {
 // ignore GType struct CompletionClass
 // Object CompletionContext
 type CompletionContext struct {
-	gobject.InitiallyUnowned
+	g.InitiallyUnowned
 }
 
 func WrapCompletionContext(p unsafe.Pointer) (r CompletionContext) { r.P = p; return }
@@ -1079,7 +1077,7 @@ func CompletionContextGetType() gi.GType {
 //
 // [ finished ] trans: nothing
 //
-func (v CompletionContext) AddProposals(provider ICompletionProvider, proposals glib.List, finished bool) {
+func (v CompletionContext) AddProposals(provider ICompletionProvider, proposals g.List, finished bool) {
 	iv, err := _I.Get(46, "CompletionContext", "add_proposals")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1232,7 +1230,7 @@ func CompletionInfoPrivateGetType() gi.GType {
 // Object CompletionItem
 type CompletionItem struct {
 	CompletionProposalIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapCompletionItem(p unsafe.Pointer) (r CompletionItem) { r.P = p; return }
@@ -1266,7 +1264,7 @@ func NewCompletionItem() (result CompletionItem) {
 //
 // [ gicon ] trans: nothing
 //
-func (v CompletionItem) SetGicon(gicon gio.IIcon) {
+func (v CompletionItem) SetGicon(gicon g.IIcon) {
 	iv, err := _I.Get(52, "CompletionItem", "set_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1469,7 +1467,7 @@ func (v *CompletionProposalIfc) Equal(other ICompletionProposal) (result bool) {
 //
 // [ result ] trans: nothing
 //
-func (v *CompletionProposalIfc) GetGicon() (result gio.Icon) {
+func (v *CompletionProposalIfc) GetGicon() (result g.Icon) {
 	iv, err := _I.Get(61, "CompletionProposal", "get_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1674,7 +1672,7 @@ func (v *CompletionProviderIfc) GetActivation() (result CompletionActivationFlag
 //
 // [ result ] trans: nothing
 //
-func (v *CompletionProviderIfc) GetGicon() (result gio.Icon) {
+func (v *CompletionProviderIfc) GetGicon() (result g.Icon) {
 	iv, err := _I.Get(71, "CompletionProvider", "get_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1914,7 +1912,7 @@ func (v *CompletionProviderIfc) UpdateInfo(proposal ICompletionProposal, info IC
 // Object CompletionWords
 type CompletionWords struct {
 	CompletionProviderIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapCompletionWords(p unsafe.Pointer) (r CompletionWords) { r.P = p; return }
@@ -2140,7 +2138,7 @@ func EncodingGetFromCharset1(charset string) (result Encoding) {
 
 // Object File
 type File struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapFile(p unsafe.Pointer) (r File) { r.P = p; return }
@@ -2222,7 +2220,7 @@ func (v File) GetEncoding() (result Encoding) {
 //
 // [ result ] trans: nothing
 //
-func (v File) GetLocation() (result gio.File) {
+func (v File) GetLocation() (result g.File) {
 	iv, err := _I.Get(99, "File", "get_location")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2330,7 +2328,7 @@ func (v File) IsReadonly() (result bool) {
 //
 // [ location ] trans: nothing
 //
-func (v File) SetLocation(location gio.IFile) {
+func (v File) SetLocation(location g.IFile) {
 	iv, err := _I.Get(105, "File", "set_location")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2349,7 +2347,7 @@ func (v File) SetLocation(location gio.IFile) {
 // ignore GType struct FileClass
 // Object FileLoader
 type FileLoader struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapFileLoader(p unsafe.Pointer) (r FileLoader) { r.P = p; return }
@@ -2403,7 +2401,7 @@ func NewFileLoader(buffer IBuffer, file IFile) (result FileLoader) {
 //
 // [ result ] trans: everything
 //
-func NewFileLoaderFromStream(buffer IBuffer, file IFile, stream gio.IInputStream) (result FileLoader) {
+func NewFileLoaderFromStream(buffer IBuffer, file IFile, stream g.IInputStream) (result FileLoader) {
 	iv, err := _I.Get(107, "FileLoader", "new_from_stream")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2507,7 +2505,7 @@ func (v FileLoader) GetFile() (result File) {
 //
 // [ result ] trans: nothing
 //
-func (v FileLoader) GetInputStream() (result gio.InputStream) {
+func (v FileLoader) GetInputStream() (result g.InputStream) {
 	iv, err := _I.Get(112, "FileLoader", "get_input_stream")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2525,7 +2523,7 @@ func (v FileLoader) GetInputStream() (result gio.InputStream) {
 //
 // [ result ] trans: nothing
 //
-func (v FileLoader) GetLocation() (result gio.File) {
+func (v FileLoader) GetLocation() (result g.File) {
 	iv, err := _I.Get(113, "FileLoader", "get_location")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2573,7 +2571,7 @@ func (v FileLoader) GetNewlineType() (result NewlineTypeEnum) {
 //
 // [ user_data ] trans: nothing
 //
-func (v FileLoader) LoadAsync(io_priority int32, cancellable gio.ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE CALLBACK*/, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE CALLBACK*/, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(115, "FileLoader", "load_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2586,10 +2584,10 @@ func (v FileLoader) LoadAsync(io_priority int32, cancellable gio.ICancellable, p
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_progress_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myFileProgressCallback()))
+	arg_progress_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myFileProgressCallback()))
 	arg_progress_callback_data := gi.NewPointerArgument(progress_callback_data)
-	arg_progress_callback_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_progress_callback_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_progress_callback_notify, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -2601,7 +2599,7 @@ func (v FileLoader) LoadAsync(io_priority int32, cancellable gio.ICancellable, p
 //
 // [ result1 ] trans: nothing
 //
-func (v FileLoader) LoadFinish(result gio.IAsyncResult) (result1 bool, err error) {
+func (v FileLoader) LoadFinish(result g.IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(116, "FileLoader", "load_finish")
 	if err != nil {
 		return
@@ -2626,7 +2624,7 @@ func (v FileLoader) LoadFinish(result gio.IAsyncResult) (result1 bool, err error
 //
 // [ candidate_encodings ] trans: nothing
 //
-func (v FileLoader) SetCandidateEncodings(candidate_encodings glib.SList) {
+func (v FileLoader) SetCandidateEncodings(candidate_encodings g.SList) {
 	iv, err := _I.Get(117, "FileLoader", "set_candidate_encodings")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2675,7 +2673,7 @@ func FilePrivateGetType() gi.GType {
 
 // Object FileSaver
 type FileSaver struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapFileSaver(p unsafe.Pointer) (r FileSaver) { r.P = p; return }
@@ -2729,7 +2727,7 @@ func NewFileSaver(buffer IBuffer, file IFile) (result FileSaver) {
 //
 // [ result ] trans: everything
 //
-func NewFileSaverWithTarget(buffer IBuffer, file IFile, target_location gio.IFile) (result FileSaver) {
+func NewFileSaverWithTarget(buffer IBuffer, file IFile, target_location g.IFile) (result FileSaver) {
 	iv, err := _I.Get(119, "FileSaver", "new_with_target")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2851,7 +2849,7 @@ func (v FileSaver) GetFlags() (result FileSaverFlags) {
 //
 // [ result ] trans: nothing
 //
-func (v FileSaver) GetLocation() (result gio.File) {
+func (v FileSaver) GetLocation() (result g.File) {
 	iv, err := _I.Get(125, "FileSaver", "get_location")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2899,7 +2897,7 @@ func (v FileSaver) GetNewlineType() (result NewlineTypeEnum) {
 //
 // [ user_data ] trans: nothing
 //
-func (v FileSaver) SaveAsync(io_priority int32, cancellable gio.ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE CALLBACK*/, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE CALLBACK*/, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(127, "FileSaver", "save_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2912,10 +2910,10 @@ func (v FileSaver) SaveAsync(io_priority int32, cancellable gio.ICancellable, pr
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_progress_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myFileProgressCallback()))
+	arg_progress_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myFileProgressCallback()))
 	arg_progress_callback_data := gi.NewPointerArgument(progress_callback_data)
-	arg_progress_callback_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_progress_callback_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_progress_callback_notify, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -2927,7 +2925,7 @@ func (v FileSaver) SaveAsync(io_priority int32, cancellable gio.ICancellable, pr
 //
 // [ result1 ] trans: nothing
 //
-func (v FileSaver) SaveFinish(result gio.IAsyncResult) (result1 bool, err error) {
+func (v FileSaver) SaveFinish(result g.IAsyncResult) (result1 bool, err error) {
 	iv, err := _I.Get(128, "FileSaver", "save_finish")
 	if err != nil {
 		return
@@ -3053,7 +3051,7 @@ func FileSaverPrivateGetType() gi.GType {
 
 // Object Gutter
 type Gutter struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapGutter(p unsafe.Pointer) (r Gutter) { r.P = p; return }
@@ -3223,7 +3221,7 @@ func GutterPrivateGetType() gi.GType {
 
 // Object GutterRenderer
 type GutterRenderer struct {
-	gobject.InitiallyUnowned
+	g.InitiallyUnowned
 }
 
 func WrapGutterRenderer(p unsafe.Pointer) (r GutterRenderer) { r.P = p; return }
@@ -3738,7 +3736,7 @@ func NewGutterRendererPixbuf() (result GutterRendererPixbuf) {
 //
 // [ result ] trans: nothing
 //
-func (v GutterRendererPixbuf) GetGicon() (result gio.Icon) {
+func (v GutterRendererPixbuf) GetGicon() (result g.Icon) {
 	iv, err := _I.Get(163, "GutterRendererPixbuf", "get_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3792,7 +3790,7 @@ func (v GutterRendererPixbuf) GetPixbuf() (result gdkpixbuf.Pixbuf) {
 //
 // [ icon ] trans: nothing
 //
-func (v GutterRendererPixbuf) SetGicon(icon gio.IIcon) {
+func (v GutterRendererPixbuf) SetGicon(icon g.IIcon) {
 	iv, err := _I.Get(166, "GutterRendererPixbuf", "set_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4024,7 +4022,7 @@ func GutterRendererTextPrivateGetType() gi.GType {
 
 // Object Language
 type Language struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapLanguage(p unsafe.Pointer) (r Language) { r.P = p; return }
@@ -4238,7 +4236,7 @@ func (v Language) GetStyleName(style_id string) (result string) {
 // ignore GType struct LanguageClass
 // Object LanguageManager
 type LanguageManager struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapLanguageManager(p unsafe.Pointer) (r LanguageManager) { r.P = p; return }
@@ -4577,7 +4575,7 @@ func (v Mark) Prev(category string) (result Mark) {
 
 // Object MarkAttributes
 type MarkAttributes struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapMarkAttributes(p unsafe.Pointer) (r MarkAttributes) { r.P = p; return }
@@ -4631,7 +4629,7 @@ func (v MarkAttributes) GetBackground(background gdk.RGBA) (result bool) {
 //
 // [ result ] trans: nothing
 //
-func (v MarkAttributes) GetGicon() (result gio.Icon) {
+func (v MarkAttributes) GetGicon() (result g.Icon) {
 	iv, err := _I.Get(200, "MarkAttributes", "get_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4779,7 +4777,7 @@ func (v MarkAttributes) SetBackground(background gdk.RGBA) {
 //
 // [ gicon ] trans: nothing
 //
-func (v MarkAttributes) SetGicon(gicon gio.IIcon) {
+func (v MarkAttributes) SetGicon(gicon g.IIcon) {
 	iv, err := _I.Get(207, "MarkAttributes", "set_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4871,7 +4869,7 @@ func NewlineTypeGetType() gi.GType {
 
 // Object PrintCompositor
 type PrintCompositor struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapPrintCompositor(p unsafe.Pointer) (r PrintCompositor) { r.P = p; return }
@@ -5617,7 +5615,7 @@ func PrintCompositorPrivateGetType() gi.GType {
 
 // Object Region
 type Region struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapRegion(p unsafe.Pointer) (r Region) { r.P = p; return }
@@ -5950,7 +5948,7 @@ func (v RegionIter) Next() (result bool) {
 
 // Object SearchContext
 type SearchContext struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapSearchContext(p unsafe.Pointer) (r SearchContext) { r.P = p; return }
@@ -6036,7 +6034,7 @@ func (v SearchContext) Backward(iter gtk.TextIter, match_start gtk.TextIter, mat
 //
 // [ user_data ] trans: nothing
 //
-func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(264, "SearchContext", "backward_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6049,7 +6047,7 @@ func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable gio.ICancell
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -6067,7 +6065,7 @@ func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable gio.ICancell
 //
 // [ result1 ] trans: nothing
 //
-func (v SearchContext) BackwardFinish(result gio.IAsyncResult, match_start gtk.TextIter, match_end gtk.TextIter) (result1 bool, has_wrapped_around bool, err error) {
+func (v SearchContext) BackwardFinish(result g.IAsyncResult, match_start gtk.TextIter, match_end gtk.TextIter) (result1 bool, has_wrapped_around bool, err error) {
 	iv, err := _I.Get(265, "SearchContext", "backward_finish")
 	if err != nil {
 		return
@@ -6134,7 +6132,7 @@ func (v SearchContext) Forward(iter gtk.TextIter, match_start gtk.TextIter, matc
 //
 // [ user_data ] trans: nothing
 //
-func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(267, "SearchContext", "forward_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6147,7 +6145,7 @@ func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable gio.ICancella
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -6165,7 +6163,7 @@ func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable gio.ICancella
 //
 // [ result1 ] trans: nothing
 //
-func (v SearchContext) ForwardFinish(result gio.IAsyncResult, match_start gtk.TextIter, match_end gtk.TextIter) (result1 bool, has_wrapped_around bool, err error) {
+func (v SearchContext) ForwardFinish(result g.IAsyncResult, match_start gtk.TextIter, match_end gtk.TextIter) (result1 bool, has_wrapped_around bool, err error) {
 	iv, err := _I.Get(268, "SearchContext", "forward_finish")
 	if err != nil {
 		return
@@ -6290,7 +6288,7 @@ func (v SearchContext) GetOccurrencesCount() (result int32) {
 //
 // [ result ] trans: everything
 //
-func (v SearchContext) GetRegexError() (result glib.Error) {
+func (v SearchContext) GetRegexError() (result g.Error) {
 	iv, err := _I.Get(274, "SearchContext", "get_regex_error")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6433,7 +6431,7 @@ func SearchContextPrivateGetType() gi.GType {
 
 // Object SearchSettings
 type SearchSettings struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapSearchSettings(p unsafe.Pointer) (r SearchSettings) { r.P = p; return }
@@ -6677,7 +6675,7 @@ func SortFlagsGetType() gi.GType {
 
 // Object SpaceDrawer
 type SpaceDrawer struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapSpaceDrawer(p unsafe.Pointer) (r SpaceDrawer) { r.P = p; return }
@@ -6714,7 +6712,7 @@ func NewSpaceDrawer() (result SpaceDrawer) {
 //
 // [ flags ] trans: nothing
 //
-func (v SpaceDrawer) BindMatrixSetting(settings gio.ISettings, key string, flags gio.SettingsBindFlags) {
+func (v SpaceDrawer) BindMatrixSetting(settings g.ISettings, key string, flags g.SettingsBindFlags) {
 	iv, err := _I.Get(292, "SpaceDrawer", "bind_matrix_setting")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6756,7 +6754,7 @@ func (v SpaceDrawer) GetEnableMatrix() (result bool) {
 //
 // [ result ] trans: everything
 //
-func (v SpaceDrawer) GetMatrix() (result glib.Variant) {
+func (v SpaceDrawer) GetMatrix() (result g.Variant) {
 	iv, err := _I.Get(294, "SpaceDrawer", "get_matrix")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6811,7 +6809,7 @@ func (v SpaceDrawer) SetEnableMatrix(enable_matrix bool) {
 //
 // [ matrix ] trans: nothing
 //
-func (v SpaceDrawer) SetMatrix(matrix glib.Variant) {
+func (v SpaceDrawer) SetMatrix(matrix g.Variant) {
 	iv, err := _I.Get(297, "SpaceDrawer", "set_matrix")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6888,7 +6886,7 @@ func SpaceTypeFlagsGetType() gi.GType {
 
 // Object Style
 type Style struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapStyle(p unsafe.Pointer) (r Style) { r.P = p; return }
@@ -6942,7 +6940,7 @@ func (v Style) Copy() (result Style) {
 // ignore GType struct StyleClass
 // Object StyleScheme
 type StyleScheme struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapStyleScheme(p unsafe.Pointer) (r StyleScheme) { r.P = p; return }
@@ -7205,7 +7203,7 @@ func NewStyleSchemeChooserWidget() (result StyleSchemeChooserWidget) {
 // ignore GType struct StyleSchemeClass
 // Object StyleSchemeManager
 type StyleSchemeManager struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapStyleSchemeManager(p unsafe.Pointer) (r StyleSchemeManager) { r.P = p; return }
@@ -8265,7 +8263,7 @@ func CompletionErrorQuark() (result uint32) {
 //
 // [ result ] trans: container
 //
-func EncodingGetAll() (result glib.SList) {
+func EncodingGetAll() (result g.SList) {
 	iv, err := _I.Get(366, "encoding_get_all", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8297,7 +8295,7 @@ func EncodingGetCurrent() (result Encoding) {
 //
 // [ result ] trans: container
 //
-func EncodingGetDefaultCandidates() (result glib.SList) {
+func EncodingGetDefaultCandidates() (result g.SList) {
 	iv, err := _I.Get(368, "encoding_get_default_candidates", "")
 	if err != nil {
 		log.Println("WARN:", err)

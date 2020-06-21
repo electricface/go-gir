@@ -261,11 +261,9 @@ return (void*)(myGtkTreeViewSearchPositionFunc);
 import "C"
 import "github.com/electricface/go-gir/atk-1.0"
 import "github.com/electricface/go-gir/cairo-1.0"
+import "github.com/electricface/go-gir/g-2.0"
 import "github.com/electricface/go-gir/gdk-3.0"
 import "github.com/electricface/go-gir/gdkpixbuf-2.0"
-import "github.com/electricface/go-gir/gio-2.0"
-import "github.com/electricface/go-gir/glib-2.0"
-import "github.com/electricface/go-gir/gobject-2.0"
 import "github.com/electricface/go-gir/pango-1.0"
 import "log"
 import "unsafe"
@@ -901,7 +899,7 @@ func AccelFlagsGetType() gi.GType {
 
 // Object AccelGroup
 type AccelGroup struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapAccelGroup(p unsafe.Pointer) (r AccelGroup) { r.P = p; return }
@@ -936,7 +934,7 @@ func NewAccelGroup() (result AccelGroup) {
 //
 // [ result ] trans: nothing
 //
-func AccelGroupFromAccelClosure1(closure gobject.Closure) (result AccelGroup) {
+func AccelGroupFromAccelClosure1(closure g.Closure) (result AccelGroup) {
 	iv, err := _I.Get(33, "AccelGroup", "from_accel_closure")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -962,7 +960,7 @@ func AccelGroupFromAccelClosure1(closure gobject.Closure) (result AccelGroup) {
 //
 // [ result ] trans: nothing
 //
-func (v AccelGroup) Activate(accel_quark uint32, acceleratable gobject.IObject, accel_key uint32, accel_mods gdk.ModifierTypeFlags) (result bool) {
+func (v AccelGroup) Activate(accel_quark uint32, acceleratable g.IObject, accel_key uint32, accel_mods gdk.ModifierTypeFlags) (result bool) {
 	iv, err := _I.Get(34, "AccelGroup", "activate")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -994,7 +992,7 @@ func (v AccelGroup) Activate(accel_quark uint32, acceleratable gobject.IObject, 
 //
 // [ closure ] trans: nothing
 //
-func (v AccelGroup) Connect(accel_key uint32, accel_mods gdk.ModifierTypeFlags, accel_flags AccelFlags, closure gobject.Closure) {
+func (v AccelGroup) Connect(accel_key uint32, accel_mods gdk.ModifierTypeFlags, accel_flags AccelFlags, closure g.Closure) {
 	iv, err := _I.Get(35, "AccelGroup", "connect")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1015,7 +1013,7 @@ func (v AccelGroup) Connect(accel_key uint32, accel_mods gdk.ModifierTypeFlags, 
 //
 // [ closure ] trans: nothing
 //
-func (v AccelGroup) ConnectByPath(accel_path string, closure gobject.Closure) {
+func (v AccelGroup) ConnectByPath(accel_path string, closure g.Closure) {
 	iv, err := _I.Get(36, "AccelGroup", "connect_by_path")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1036,7 +1034,7 @@ func (v AccelGroup) ConnectByPath(accel_path string, closure gobject.Closure) {
 //
 // [ result ] trans: nothing
 //
-func (v AccelGroup) Disconnect(closure gobject.Closure) (result bool) {
+func (v AccelGroup) Disconnect(closure g.Closure) (result bool) {
 	iv, err := _I.Get(37, "AccelGroup", "disconnect")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1194,7 +1192,7 @@ func (v AccelGroup) Unlock() {
 
 type AccelGroupActivateStruct struct {
 	F_accel_group   AccelGroup
-	F_acceleratable gobject.Object
+	F_acceleratable g.Object
 	F_keyval        uint32
 	F_modifier      gdk.ModifierTypeFlags
 }
@@ -1223,7 +1221,7 @@ func AccelGroupEntryGetType() gi.GType {
 
 type AccelGroupFindFuncStruct struct {
 	F_key     AccelKey
-	F_closure gobject.Closure
+	F_closure g.Closure
 	F_data    unsafe.Pointer
 }
 
@@ -1399,7 +1397,7 @@ func (v AccelLabel) SetAccel(accelerator_key uint32, accelerator_mods gdk.Modifi
 //
 // [ accel_closure ] trans: nothing
 //
-func (v AccelLabel) SetAccelClosure(accel_closure gobject.Closure) {
+func (v AccelLabel) SetAccelClosure(accel_closure g.Closure) {
 	iv, err := _I.Get(51, "AccelLabel", "set_accel_closure")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1444,7 +1442,7 @@ func AccelLabelPrivateGetType() gi.GType {
 
 // Object AccelMap
 type AccelMap struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapAccelMap(p unsafe.Pointer) (r AccelMap) { r.P = p; return }
@@ -1600,7 +1598,7 @@ func AccelMapLoadFd1(fd int32) {
 //
 // [ scanner ] trans: nothing
 //
-func AccelMapLoadScanner1(scanner glib.Scanner) {
+func AccelMapLoadScanner1(scanner g.Scanner) {
 	iv, err := _I.Get(61, "AccelMap", "load_scanner")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1800,7 +1798,7 @@ func AccessiblePrivateGetType() gi.GType {
 // Object Action
 type Action struct {
 	BuildableIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapAction(p unsafe.Pointer) (r Action) { r.P = p; return }
@@ -1982,7 +1980,7 @@ func (v Action) DisconnectAccelerator() {
 //
 // [ result ] trans: nothing
 //
-func (v Action) GetAccelClosure() (result gobject.Closure) {
+func (v Action) GetAccelClosure() (result g.Closure) {
 	iv, err := _I.Get(79, "Action", "get_accel_closure")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2036,7 +2034,7 @@ func (v Action) GetAlwaysShowImage() (result bool) {
 //
 // [ result ] trans: nothing
 //
-func (v Action) GetGicon() (result gio.Icon) {
+func (v Action) GetGicon() (result g.Icon) {
 	iv, err := _I.Get(82, "Action", "get_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2126,7 +2124,7 @@ func (v Action) GetName() (result string) {
 //
 // [ result ] trans: nothing
 //
-func (v Action) GetProxies() (result glib.SList) {
+func (v Action) GetProxies() (result g.SList) {
 	iv, err := _I.Get(87, "Action", "get_proxies")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2360,7 +2358,7 @@ func (v Action) SetAlwaysShowImage(always_show bool) {
 //
 // [ icon ] trans: nothing
 //
-func (v Action) SetGicon(icon gio.IIcon) {
+func (v Action) SetGicon(icon g.IIcon) {
 	iv, err := _I.Get(100, "Action", "set_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2699,7 +2697,7 @@ func ActionEntryGetType() gi.GType {
 // Object ActionGroup
 type ActionGroup struct {
 	BuildableIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapActionGroup(p unsafe.Pointer) (r ActionGroup) { r.P = p; return }
@@ -2879,7 +2877,7 @@ func (v ActionGroup) GetVisible() (result bool) {
 //
 // [ result ] trans: container
 //
-func (v ActionGroup) ListActions() (result glib.List) {
+func (v ActionGroup) ListActions() (result g.List) {
 	iv, err := _I.Get(125, "ActionGroup", "list_actions")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2966,7 +2964,7 @@ func (v ActionGroup) SetTranslateFunc(func1 int /*TODO_TYPE CALLBACK*/, data uns
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTranslateFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -3085,7 +3083,7 @@ func (v *ActionableIfc) GetActionName() (result string) {
 //
 // [ result ] trans: nothing
 //
-func (v *ActionableIfc) GetActionTargetValue() (result glib.Variant) {
+func (v *ActionableIfc) GetActionTargetValue() (result g.Variant) {
 	iv, err := _I.Get(134, "Actionable", "get_action_target_value")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3121,7 +3119,7 @@ func (v *ActionableIfc) SetActionName(action_name string) {
 //
 // [ target_value ] trans: nothing
 //
-func (v *ActionableIfc) SetActionTargetValue(target_value glib.Variant) {
+func (v *ActionableIfc) SetActionTargetValue(target_value g.Variant) {
 	iv, err := _I.Get(136, "Actionable", "set_action_target_value")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3281,7 +3279,7 @@ func (v *ActivatableIfc) SyncActionProperties(action IAction) {
 // ignore GType struct ActivatableIface
 // Object Adjustment
 type Adjustment struct {
-	gobject.InitiallyUnowned
+	g.InitiallyUnowned
 }
 
 func WrapAdjustment(p unsafe.Pointer) (r Adjustment) { r.P = p; return }
@@ -3812,7 +3810,7 @@ func AppChooserGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func (v *AppChooserIfc) GetAppInfo() (result gio.AppInfo) {
+func (v *AppChooserIfc) GetAppInfo() (result g.AppInfo) {
 	iv, err := _I.Get(166, "AppChooser", "get_app_info")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3912,7 +3910,7 @@ func NewAppChooserButton(content_type string) (result AppChooserButton) {
 //
 // [ icon ] trans: nothing
 //
-func (v AppChooserButton) AppendCustomItem(name string, label string, icon gio.IIcon) {
+func (v AppChooserButton) AppendCustomItem(name string, label string, icon g.IIcon) {
 	iv, err := _I.Get(170, "AppChooserButton", "append_custom_item")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4111,7 +4109,7 @@ func AppChooserDialogGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func NewAppChooserDialog(parent IWindow, flags DialogFlags, file gio.IFile) (result AppChooserDialog) {
+func NewAppChooserDialog(parent IWindow, flags DialogFlags, file g.IFile) (result AppChooserDialog) {
 	iv, err := _I.Get(179, "AppChooserDialog", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4496,9 +4494,9 @@ func AppChooserWidgetPrivateGetType() gi.GType {
 
 // Object Application
 type Application struct {
-	gio.ActionGroupIfc
-	gio.ActionMapIfc
-	gio.Application
+	g.ActionGroupIfc
+	g.ActionMapIfc
+	g.Application
 }
 
 func WrapApplication(p unsafe.Pointer) (r Application) { r.P = p; return }
@@ -4521,7 +4519,7 @@ func ApplicationGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func NewApplication(application_id string, flags gio.ApplicationFlags) (result Application) {
+func NewApplication(application_id string, flags g.ApplicationFlags) (result Application) {
 	iv, err := _I.Get(197, "Application", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4546,7 +4544,7 @@ func NewApplication(application_id string, flags gio.ApplicationFlags) (result A
 //
 // [ parameter ] trans: nothing
 //
-func (v Application) AddAccelerator(accelerator string, action_name string, parameter glib.Variant) {
+func (v Application) AddAccelerator(accelerator string, action_name string, parameter g.Variant) {
 	iv, err := _I.Get(198, "Application", "add_accelerator")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4654,7 +4652,7 @@ func (v Application) GetActiveWindow() (result Window) {
 //
 // [ result ] trans: nothing
 //
-func (v Application) GetAppMenu() (result gio.MenuModel) {
+func (v Application) GetAppMenu() (result g.MenuModel) {
 	iv, err := _I.Get(203, "Application", "get_app_menu")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4674,7 +4672,7 @@ func (v Application) GetAppMenu() (result gio.MenuModel) {
 //
 // [ result ] trans: nothing
 //
-func (v Application) GetMenuById(id string) (result gio.Menu) {
+func (v Application) GetMenuById(id string) (result g.Menu) {
 	iv, err := _I.Get(204, "Application", "get_menu_by_id")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4695,7 +4693,7 @@ func (v Application) GetMenuById(id string) (result gio.Menu) {
 //
 // [ result ] trans: nothing
 //
-func (v Application) GetMenubar() (result gio.MenuModel) {
+func (v Application) GetMenubar() (result g.MenuModel) {
 	iv, err := _I.Get(205, "Application", "get_menubar")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4734,7 +4732,7 @@ func (v Application) GetWindowById(id uint32) (result Window) {
 //
 // [ result ] trans: nothing
 //
-func (v Application) GetWindows() (result glib.List) {
+func (v Application) GetWindows() (result g.List) {
 	iv, err := _I.Get(207, "Application", "get_windows")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4845,7 +4843,7 @@ func (v Application) PrefersAppMenu() (result bool) {
 //
 // [ parameter ] trans: nothing
 //
-func (v Application) RemoveAccelerator(action_name string, parameter glib.Variant) {
+func (v Application) RemoveAccelerator(action_name string, parameter g.Variant) {
 	iv, err := _I.Get(212, "Application", "remove_accelerator")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4905,7 +4903,7 @@ func (v Application) SetAccelsForAction(detailed_action_name string, accels gi.C
 //
 // [ app_menu ] trans: nothing
 //
-func (v Application) SetAppMenu(app_menu gio.IMenuModel) {
+func (v Application) SetAppMenu(app_menu g.IMenuModel) {
 	iv, err := _I.Get(215, "Application", "set_app_menu")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4925,7 +4923,7 @@ func (v Application) SetAppMenu(app_menu gio.IMenuModel) {
 //
 // [ menubar ] trans: nothing
 //
-func (v Application) SetMenubar(menubar gio.IMenuModel) {
+func (v Application) SetMenubar(menubar g.IMenuModel) {
 	iv, err := _I.Get(216, "Application", "set_menubar")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4986,8 +4984,8 @@ func ApplicationPrivateGetType() gi.GType {
 // Object ApplicationWindow
 type ApplicationWindow struct {
 	atk.ImplementorIfaceIfc
-	gio.ActionGroupIfc
-	gio.ActionMapIfc
+	g.ActionGroupIfc
+	g.ActionMapIfc
 	BuildableIfc
 	Window
 }
@@ -5800,7 +5798,7 @@ func (v Assistant) SetForwardPageFunc(page_func int /*TODO_TYPE CALLBACK*/, data
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_page_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myAssistantPageFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_page_func, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -6116,7 +6114,7 @@ func BindingEntryGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func BindingEntryAddSignalFromString1(binding_set BindingSet, signal_desc string) (result glib.TokenTypeEnum) {
+func BindingEntryAddSignalFromString1(binding_set BindingSet, signal_desc string) (result g.TokenTypeEnum) {
 	iv, err := _I.Get(257, "BindingEntry", "add_signal_from_string")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6129,7 +6127,7 @@ func BindingEntryAddSignalFromString1(binding_set BindingSet, signal_desc string
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_signal_desc)
-	result = glib.TokenTypeEnum(ret.Int())
+	result = g.TokenTypeEnum(ret.Int())
 	return
 }
 
@@ -6145,7 +6143,7 @@ func BindingEntryAddSignalFromString1(binding_set BindingSet, signal_desc string
 //
 // [ binding_args ] trans: nothing
 //
-func BindingEntryAddSignall1(binding_set BindingSet, keyval uint32, modifiers gdk.ModifierTypeFlags, signal_name string, binding_args glib.SList) {
+func BindingEntryAddSignall1(binding_set BindingSet, keyval uint32, modifiers gdk.ModifierTypeFlags, signal_name string, binding_args g.SList) {
 	iv, err := _I.Get(258, "BindingEntry", "add_signall")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6226,7 +6224,7 @@ func BindingSetGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func (v BindingSet) Activate(keyval uint32, modifiers gdk.ModifierTypeFlags, object gobject.IObject) (result bool) {
+func (v BindingSet) Activate(keyval uint32, modifiers gdk.ModifierTypeFlags, object g.IObject) (result bool) {
 	iv, err := _I.Get(261, "BindingSet", "activate")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6785,7 +6783,7 @@ func BuildableGetType() gi.GType {
 //
 // [ type1 ] trans: nothing
 //
-func (v *BuildableIfc) AddChild(builder IBuilder, child gobject.IObject, type1 string) {
+func (v *BuildableIfc) AddChild(builder IBuilder, child g.IObject, type1 string) {
 	iv, err := _I.Get(281, "Buildable", "add_child")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6817,7 +6815,7 @@ func (v *BuildableIfc) AddChild(builder IBuilder, child gobject.IObject, type1 s
 //
 // [ result ] trans: everything
 //
-func (v *BuildableIfc) ConstructChild(builder IBuilder, name string) (result gobject.Object) {
+func (v *BuildableIfc) ConstructChild(builder IBuilder, name string) (result g.Object) {
 	iv, err := _I.Get(282, "Buildable", "construct_child")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6849,7 +6847,7 @@ func (v *BuildableIfc) ConstructChild(builder IBuilder, name string) (result gob
 //
 // [ data ] trans: nothing
 //
-func (v *BuildableIfc) CustomFinished(builder IBuilder, child gobject.IObject, tagname string, data unsafe.Pointer) {
+func (v *BuildableIfc) CustomFinished(builder IBuilder, child g.IObject, tagname string, data unsafe.Pointer) {
 	iv, err := _I.Get(283, "Buildable", "custom_finished")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6884,7 +6882,7 @@ func (v *BuildableIfc) CustomFinished(builder IBuilder, child gobject.IObject, t
 //
 // [ data ] trans: nothing
 //
-func (v *BuildableIfc) CustomTagEnd(builder IBuilder, child gobject.IObject, tagname string, data unsafe.Pointer) {
+func (v *BuildableIfc) CustomTagEnd(builder IBuilder, child g.IObject, tagname string, data unsafe.Pointer) {
 	iv, err := _I.Get(284, "Buildable", "custom_tag_end")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6923,7 +6921,7 @@ func (v *BuildableIfc) CustomTagEnd(builder IBuilder, child gobject.IObject, tag
 //
 // [ result ] trans: nothing
 //
-func (v *BuildableIfc) CustomTagStart(builder IBuilder, child gobject.IObject, tagname string, parser glib.MarkupParser) (result bool, data unsafe.Pointer) {
+func (v *BuildableIfc) CustomTagStart(builder IBuilder, child g.IObject, tagname string, parser g.MarkupParser) (result bool, data unsafe.Pointer) {
 	iv, err := _I.Get(285, "Buildable", "custom_tag_start")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6962,7 +6960,7 @@ func (v *BuildableIfc) CustomTagStart(builder IBuilder, child gobject.IObject, t
 //
 // [ result ] trans: nothing
 //
-func (v *BuildableIfc) GetInternalChild(builder IBuilder, childname string) (result gobject.Object) {
+func (v *BuildableIfc) GetInternalChild(builder IBuilder, childname string) (result g.Object) {
 	iv, err := _I.Get(286, "Buildable", "get_internal_child")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7030,7 +7028,7 @@ func (v *BuildableIfc) ParserFinished(builder IBuilder) {
 //
 // [ value ] trans: nothing
 //
-func (v *BuildableIfc) SetBuildableProperty(builder IBuilder, name string, value gobject.Value) {
+func (v *BuildableIfc) SetBuildableProperty(builder IBuilder, name string, value g.Value) {
 	iv, err := _I.Get(289, "Buildable", "set_buildable_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7071,7 +7069,7 @@ func (v *BuildableIfc) SetName(name string) {
 // ignore GType struct BuildableIface
 // Object Builder
 type Builder struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapBuilder(p unsafe.Pointer) (r Builder) { r.P = p; return }
@@ -7184,7 +7182,7 @@ func (v Builder) AddCallbackSymbol(callback_name string, callback_symbol int /*T
 	c_callback_name := gi.CString(callback_name)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback_name := gi.NewStringArgument(c_callback_name)
-	arg_callback_symbol := gi.NewPointerArgument(unsafe.Pointer(gobject.GetPointer_myCallback()))
+	arg_callback_symbol := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myCallback()))
 	args := []gi.Argument{arg_v, arg_callback_name, arg_callback_symbol}
 	iv.Call(args, nil, nil)
 	gi.Free(c_callback_name)
@@ -7396,7 +7394,7 @@ func (v Builder) ConnectSignalsFull(func1 int /*TODO_TYPE CALLBACK*/, user_data 
 //
 // [ object ] trans: nothing
 //
-func (v Builder) ExposeObject(name string, object gobject.IObject) {
+func (v Builder) ExposeObject(name string, object g.IObject) {
 	iv, err := _I.Get(304, "Builder", "expose_object")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7477,7 +7475,7 @@ func (v Builder) GetApplication() (result Application) {
 //
 // [ result ] trans: nothing
 //
-func (v Builder) GetObject(name string) (result gobject.Object) {
+func (v Builder) GetObject(name string) (result g.Object) {
 	iv, err := _I.Get(307, "Builder", "get_object")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7498,7 +7496,7 @@ func (v Builder) GetObject(name string) (result gobject.Object) {
 //
 // [ result ] trans: container
 //
-func (v Builder) GetObjects() (result glib.SList) {
+func (v Builder) GetObjects() (result g.SList) {
 	iv, err := _I.Get(308, "Builder", "get_objects")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7601,7 +7599,7 @@ func (v Builder) SetTranslationDomain(domain string) {
 //
 // [ result ] trans: nothing
 //
-func (v Builder) ValueFromString(pspec gobject.IParamSpec, string string, value gobject.Value) (result bool, err error) {
+func (v Builder) ValueFromString(pspec g.IParamSpec, string string, value g.Value) (result bool, err error) {
 	iv, err := _I.Get(313, "Builder", "value_from_string")
 	if err != nil {
 		return
@@ -7636,7 +7634,7 @@ func (v Builder) ValueFromString(pspec gobject.IParamSpec, string string, value 
 //
 // [ result ] trans: nothing
 //
-func (v Builder) ValueFromStringType(type1 gi.GType, string string, value gobject.Value) (result bool, err error) {
+func (v Builder) ValueFromStringType(type1 gi.GType, string string, value g.Value) (result bool, err error) {
 	iv, err := _I.Get(314, "Builder", "value_from_string_type")
 	if err != nil {
 		return
@@ -7660,11 +7658,11 @@ func (v Builder) ValueFromStringType(type1 gi.GType, string string, value gobjec
 // ignore GType struct BuilderClass
 type BuilderConnectFuncStruct struct {
 	F_builder        Builder
-	F_object         gobject.Object
+	F_object         g.Object
 	F_signal_name    string
 	F_handler_name   string
-	F_connect_object gobject.Object
-	F_flags          gobject.ConnectFlags
+	F_connect_object g.Object
+	F_flags          g.ConnectFlags
 }
 
 func GetPointer_myBuilderConnectFunc() unsafe.Pointer {
@@ -7676,11 +7674,11 @@ func myGtkBuilderConnectFunc(builder *C.GtkBuilder, object *C.GObject, signal_na
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := &BuilderConnectFuncStruct{
 		F_builder:        WrapBuilder(unsafe.Pointer(builder)),
-		F_object:         gobject.WrapObject(unsafe.Pointer(object)),
+		F_object:         g.WrapObject(unsafe.Pointer(object)),
 		F_signal_name:    gi.GoString(unsafe.Pointer(signal_name)),
 		F_handler_name:   gi.GoString(unsafe.Pointer(handler_name)),
-		F_connect_object: gobject.WrapObject(unsafe.Pointer(connect_object)),
-		F_flags:          gobject.ConnectFlags(flags),
+		F_connect_object: g.WrapObject(unsafe.Pointer(connect_object)),
+		F_flags:          g.ConnectFlags(flags),
 	}
 	fn(args)
 }
@@ -8744,7 +8742,7 @@ func (v Calendar) SetDetailFunc(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Po
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCalendarDetailFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -9240,7 +9238,7 @@ func myGtkCellAllocCallback(renderer *C.GtkCellRenderer, cell_area *C.GdkRectang
 type CellArea struct {
 	BuildableIfc
 	CellLayoutIfc
-	gobject.InitiallyUnowned
+	g.InitiallyUnowned
 }
 
 func WrapCellArea(p unsafe.Pointer) (r CellArea) { r.P = p; return }
@@ -9504,7 +9502,7 @@ func (v CellArea) AttributeGetColumn(renderer ICellRenderer, attribute string) (
 //
 // [ value ] trans: nothing
 //
-func (v CellArea) CellGetProperty(renderer ICellRenderer, property_name string, value gobject.Value) {
+func (v CellArea) CellGetProperty(renderer ICellRenderer, property_name string, value g.Value) {
 	iv, err := _I.Get(386, "CellArea", "cell_get_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9532,7 +9530,7 @@ func (v CellArea) CellGetProperty(renderer ICellRenderer, property_name string, 
 //
 // [ value ] trans: nothing
 //
-func (v CellArea) CellSetProperty(renderer ICellRenderer, property_name string, value gobject.Value) {
+func (v CellArea) CellSetProperty(renderer ICellRenderer, property_name string, value g.Value) {
 	iv, err := _I.Get(387, "CellArea", "cell_set_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9902,7 +9900,7 @@ func (v CellArea) GetFocusFromSibling(renderer ICellRenderer) (result CellRender
 //
 // [ result ] trans: nothing
 //
-func (v CellArea) GetFocusSiblings(renderer ICellRenderer) (result glib.List) {
+func (v CellArea) GetFocusSiblings(renderer ICellRenderer) (result g.List) {
 	iv, err := _I.Get(401, "CellArea", "get_focus_siblings")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10505,7 +10503,7 @@ func CellAreaBoxPrivateGetType() gi.GType {
 // ignore GType struct CellAreaClass
 // Object CellAreaContext
 type CellAreaContext struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapCellAreaContext(p unsafe.Pointer) (r CellAreaContext) { r.P = p; return }
@@ -10916,7 +10914,7 @@ func (v *CellLayoutIfc) GetArea() (result CellArea) {
 //
 // [ result ] trans: container
 //
-func (v *CellLayoutIfc) GetCells() (result glib.List) {
+func (v *CellLayoutIfc) GetCells() (result g.List) {
 	iv, err := _I.Get(439, "CellLayout", "get_cells")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11023,7 +11021,7 @@ func (v *CellLayoutIfc) SetCellDataFunc(cell ICellRenderer, func1 int /*TODO_TYP
 	arg_cell := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCellLayoutDataFunc()))
 	arg_func_data := gi.NewPointerArgument(func_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_cell, arg_func1, arg_func_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -11048,7 +11046,7 @@ func myGtkCellLayoutDataFunc(cell_layout *C.GtkCellLayout, cell *C.GtkCellRender
 // ignore GType struct CellLayoutIface
 // Object CellRenderer
 type CellRenderer struct {
-	gobject.InitiallyUnowned
+	g.InitiallyUnowned
 }
 
 func WrapCellRenderer(p unsafe.Pointer) (r CellRenderer) { r.P = p; return }
@@ -12867,7 +12865,7 @@ func CheckMenuItemPrivateGetType() gi.GType {
 
 // Object Clipboard
 type Clipboard struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapClipboard(p unsafe.Pointer) (r Clipboard) { r.P = p; return }
@@ -12986,7 +12984,7 @@ func (v Clipboard) GetDisplay() (result gdk.Display) {
 //
 // [ result ] trans: nothing
 //
-func (v Clipboard) GetOwner() (result gobject.Object) {
+func (v Clipboard) GetOwner() (result g.Object) {
 	iv, err := _I.Get(517, "Clipboard", "get_owner")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15183,7 +15181,7 @@ func (v ComboBox) SetRowSeparatorFunc(func1 int /*TODO_TYPE CALLBACK*/, data uns
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewRowSeparatorFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -15583,7 +15581,7 @@ func (v Container) CheckResize() {
 //
 // [ value ] trans: nothing
 //
-func (v Container) ChildGetProperty(child IWidget, property_name string, value gobject.Value) {
+func (v Container) ChildGetProperty(child IWidget, property_name string, value g.Value) {
 	iv, err := _I.Get(632, "Container", "child_get_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15634,7 +15632,7 @@ func (v Container) ChildNotify(child IWidget, child_property string) {
 //
 // [ pspec ] trans: nothing
 //
-func (v Container) ChildNotifyByPspec(child IWidget, pspec gobject.IParamSpec) {
+func (v Container) ChildNotifyByPspec(child IWidget, pspec g.IParamSpec) {
 	iv, err := _I.Get(634, "Container", "child_notify_by_pspec")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15663,7 +15661,7 @@ func (v Container) ChildNotifyByPspec(child IWidget, pspec gobject.IParamSpec) {
 //
 // [ value ] trans: nothing
 //
-func (v Container) ChildSetProperty(child IWidget, property_name string, value gobject.Value) {
+func (v Container) ChildSetProperty(child IWidget, property_name string, value g.Value) {
 	iv, err := _I.Get(635, "Container", "child_set_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15761,7 +15759,7 @@ func (v Container) GetBorderWidth() (result uint32) {
 //
 // [ result ] trans: container
 //
-func (v Container) GetChildren() (result glib.List) {
+func (v Container) GetChildren() (result g.List) {
 	iv, err := _I.Get(640, "Container", "get_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15781,7 +15779,7 @@ func (v Container) GetChildren() (result glib.List) {
 //
 // [ result ] trans: nothing
 //
-func (v Container) GetFocusChain() (result bool, focusable_widgets glib.List) {
+func (v Container) GetFocusChain() (result bool, focusable_widgets g.List) {
 	iv, err := _I.Get(641, "Container", "get_focus_chain")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -15971,7 +15969,7 @@ func (v Container) SetBorderWidth(border_width uint32) {
 //
 // [ focusable_widgets ] trans: nothing
 //
-func (v Container) SetFocusChain(focusable_widgets glib.List) {
+func (v Container) SetFocusChain(focusable_widgets g.List) {
 	iv, err := _I.Get(651, "Container", "set_focus_chain")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16177,7 +16175,7 @@ func (v ContainerCellAccessible) AddChild(child ICellAccessible) {
 //
 // [ result ] trans: nothing
 //
-func (v ContainerCellAccessible) GetChildren() (result glib.List) {
+func (v ContainerCellAccessible) GetChildren() (result g.List) {
 	iv, err := _I.Get(660, "ContainerCellAccessible", "get_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16251,7 +16249,7 @@ func CornerTypeGetType() gi.GType {
 // Object CssProvider
 type CssProvider struct {
 	StyleProviderIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapCssProvider(p unsafe.Pointer) (r CssProvider) { r.P = p; return }
@@ -16340,7 +16338,7 @@ func (v CssProvider) LoadFromData(data gi.Uint8Array, length int64) (result bool
 //
 // [ result ] trans: nothing
 //
-func (v CssProvider) LoadFromFile(file gio.IFile) (result bool, err error) {
+func (v CssProvider) LoadFromFile(file g.IFile) (result bool, err error) {
 	iv, err := _I.Get(666, "CssProvider", "load_from_file")
 	if err != nil {
 		return
@@ -16500,7 +16498,7 @@ func (v CssSection) GetEndPosition() (result uint32) {
 //
 // [ result ] trans: nothing
 //
-func (v CssSection) GetFile() (result gio.File) {
+func (v CssSection) GetFile() (result g.File) {
 	iv, err := _I.Get(672, "CssSection", "get_file")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -17596,7 +17594,7 @@ func (v Entry) GetIconAtPos(x int32, y int32) (result int32) {
 //
 // [ result ] trans: nothing
 //
-func (v Entry) GetIconGicon(icon_pos EntryIconPositionEnum) (result gio.Icon) {
+func (v Entry) GetIconGicon(icon_pos EntryIconPositionEnum) (result g.Icon) {
 	iv, err := _I.Get(719, "Entry", "get_icon_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18337,7 +18335,7 @@ func (v Entry) SetIconDragSource(icon_pos EntryIconPositionEnum, target_list Tar
 //
 // [ icon ] trans: nothing
 //
-func (v Entry) SetIconFromGicon(icon_pos EntryIconPositionEnum, icon gio.IIcon) {
+func (v Entry) SetIconFromGicon(icon_pos EntryIconPositionEnum, icon g.IIcon) {
 	iv, err := _I.Get(759, "Entry", "set_icon_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -18778,7 +18776,7 @@ func EntryAccessiblePrivateGetType() gi.GType {
 
 // Object EntryBuffer
 type EntryBuffer struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapEntryBuffer(p unsafe.Pointer) (r EntryBuffer) { r.P = p; return }
@@ -19037,7 +19035,7 @@ func EntryBufferPrivateGetType() gi.GType {
 type EntryCompletion struct {
 	BuildableIfc
 	CellLayoutIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapEntryCompletion(p unsafe.Pointer) (r EntryCompletion) { r.P = p; return }
@@ -19428,7 +19426,7 @@ func (v EntryCompletion) SetMatchFunc(func1 int /*TODO_TYPE CALLBACK*/, func_dat
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEntryCompletionMatchFunc()))
 	arg_func_data := gi.NewPointerArgument(func_data)
-	arg_func_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_func_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_func_data, arg_func_notify}
 	iv.Call(args, nil, nil)
 }
@@ -19723,7 +19721,7 @@ func EventBoxPrivateGetType() gi.GType {
 
 // Object EventController
 type EventController struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapEventController(p unsafe.Pointer) (r EventController) { r.P = p; return }
@@ -20683,7 +20681,7 @@ func (v *FileChooserIfc) GetCurrentFolder() (result string) {
 //
 // [ result ] trans: everything
 //
-func (v *FileChooserIfc) GetCurrentFolderFile() (result gio.File) {
+func (v *FileChooserIfc) GetCurrentFolderFile() (result g.File) {
 	iv, err := _I.Get(865, "FileChooser", "get_current_folder_file")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20773,7 +20771,7 @@ func (v *FileChooserIfc) GetExtraWidget() (result Widget) {
 //
 // [ result ] trans: everything
 //
-func (v *FileChooserIfc) GetFile() (result gio.File) {
+func (v *FileChooserIfc) GetFile() (result g.File) {
 	iv, err := _I.Get(870, "FileChooser", "get_file")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20809,7 +20807,7 @@ func (v *FileChooserIfc) GetFilename() (result string) {
 //
 // [ result ] trans: everything
 //
-func (v *FileChooserIfc) GetFilenames() (result glib.SList) {
+func (v *FileChooserIfc) GetFilenames() (result g.SList) {
 	iv, err := _I.Get(872, "FileChooser", "get_filenames")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20827,7 +20825,7 @@ func (v *FileChooserIfc) GetFilenames() (result glib.SList) {
 //
 // [ result ] trans: everything
 //
-func (v *FileChooserIfc) GetFiles() (result glib.SList) {
+func (v *FileChooserIfc) GetFiles() (result g.SList) {
 	iv, err := _I.Get(873, "FileChooser", "get_files")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20881,7 +20879,7 @@ func (v *FileChooserIfc) GetLocalOnly() (result bool) {
 //
 // [ result ] trans: everything
 //
-func (v *FileChooserIfc) GetPreviewFile() (result gio.File) {
+func (v *FileChooserIfc) GetPreviewFile() (result g.File) {
 	iv, err := _I.Get(876, "FileChooser", "get_preview_file")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21025,7 +21023,7 @@ func (v *FileChooserIfc) GetUri() (result string) {
 //
 // [ result ] trans: everything
 //
-func (v *FileChooserIfc) GetUris() (result glib.SList) {
+func (v *FileChooserIfc) GetUris() (result g.SList) {
 	iv, err := _I.Get(884, "FileChooser", "get_uris")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21061,7 +21059,7 @@ func (v *FileChooserIfc) GetUsePreviewLabel() (result bool) {
 //
 // [ result ] trans: container
 //
-func (v *FileChooserIfc) ListFilters() (result glib.SList) {
+func (v *FileChooserIfc) ListFilters() (result g.SList) {
 	iv, err := _I.Get(886, "FileChooser", "list_filters")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21079,7 +21077,7 @@ func (v *FileChooserIfc) ListFilters() (result glib.SList) {
 //
 // [ result ] trans: everything
 //
-func (v *FileChooserIfc) ListShortcutFolderUris() (result glib.SList) {
+func (v *FileChooserIfc) ListShortcutFolderUris() (result g.SList) {
 	iv, err := _I.Get(887, "FileChooser", "list_shortcut_folder_uris")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21097,7 +21095,7 @@ func (v *FileChooserIfc) ListShortcutFolderUris() (result glib.SList) {
 //
 // [ result ] trans: everything
 //
-func (v *FileChooserIfc) ListShortcutFolders() (result glib.SList) {
+func (v *FileChooserIfc) ListShortcutFolders() (result g.SList) {
 	iv, err := _I.Get(888, "FileChooser", "list_shortcut_folders")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -21218,7 +21216,7 @@ func (v *FileChooserIfc) SelectAll() {
 //
 // [ result ] trans: nothing
 //
-func (v *FileChooserIfc) SelectFile(file gio.IFile) (result bool, err error) {
+func (v *FileChooserIfc) SelectFile(file g.IFile) (result bool, err error) {
 	iv, err := _I.Get(894, "FileChooser", "select_file")
 	if err != nil {
 		return
@@ -21369,7 +21367,7 @@ func (v *FileChooserIfc) SetCurrentFolder(filename string) (result bool) {
 //
 // [ result ] trans: nothing
 //
-func (v *FileChooserIfc) SetCurrentFolderFile(file gio.IFile) (result bool, err error) {
+func (v *FileChooserIfc) SetCurrentFolderFile(file g.IFile) (result bool, err error) {
 	iv, err := _I.Get(901, "FileChooser", "set_current_folder_file")
 	if err != nil {
 		return
@@ -21473,7 +21471,7 @@ func (v *FileChooserIfc) SetExtraWidget(extra_widget IWidget) {
 //
 // [ result ] trans: nothing
 //
-func (v *FileChooserIfc) SetFile(file gio.IFile) (result bool, err error) {
+func (v *FileChooserIfc) SetFile(file g.IFile) (result bool, err error) {
 	iv, err := _I.Get(906, "FileChooser", "set_file")
 	if err != nil {
 		return
@@ -21677,7 +21675,7 @@ func (v *FileChooserIfc) UnselectAll() {
 //
 // [ file ] trans: nothing
 //
-func (v *FileChooserIfc) UnselectFile(file gio.IFile) {
+func (v *FileChooserIfc) UnselectFile(file g.IFile) {
 	iv, err := _I.Get(917, "FileChooser", "unselect_file")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22181,7 +22179,7 @@ func FileChooserWidgetPrivateGetType() gi.GType {
 // Object FileFilter
 type FileFilter struct {
 	BuildableIfc
-	gobject.InitiallyUnowned
+	g.InitiallyUnowned
 }
 
 func WrapFileFilter(p unsafe.Pointer) (r FileFilter) { r.P = p; return }
@@ -22217,7 +22215,7 @@ func NewFileFilter() (result FileFilter) {
 //
 // [ result ] trans: everything
 //
-func NewFileFilterFromGvariant(variant glib.Variant) (result FileFilter) {
+func NewFileFilterFromGvariant(variant g.Variant) (result FileFilter) {
 	iv, err := _I.Get(935, "FileFilter", "new_from_gvariant")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22251,7 +22249,7 @@ func (v FileFilter) AddCustom(needed FileFilterFlags, func1 int /*TODO_TYPE CALL
 	arg_needed := gi.NewIntArgument(int(needed))
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFileFilterFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_needed, arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -22384,7 +22382,7 @@ func (v FileFilter) SetName(name string) {
 //
 // [ result ] trans: nothing
 //
-func (v FileFilter) ToGvariant() (result glib.Variant) {
+func (v FileFilter) ToGvariant() (result g.Variant) {
 	iv, err := _I.Get(944, "FileFilter", "to_gvariant")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22596,7 +22594,7 @@ func NewFlowBox() (result FlowBox) {
 //
 // [ user_data_free_func ] trans: nothing
 //
-func (v FlowBox) BindModel(model gio.IListModel, create_widget_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE CALLBACK*/) {
+func (v FlowBox) BindModel(model g.IListModel, create_widget_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(949, "FlowBox", "bind_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22610,7 +22608,7 @@ func (v FlowBox) BindModel(model gio.IListModel, create_widget_func int /*TODO_T
 	arg_model := gi.NewPointerArgument(tmp)
 	arg_create_widget_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFlowBoxCreateWidgetFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_user_data_free_func := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_user_data_free_func := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_model, arg_create_widget_func, arg_user_data, arg_user_data_free_func}
 	iv.Call(args, nil, nil)
 }
@@ -22772,7 +22770,7 @@ func (v FlowBox) GetRowSpacing() (result uint32) {
 //
 // [ result ] trans: container
 //
-func (v FlowBox) GetSelectedChildren() (result glib.List) {
+func (v FlowBox) GetSelectedChildren() (result g.List) {
 	iv, err := _I.Get(958, "FlowBox", "get_selected_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -22954,7 +22952,7 @@ func (v FlowBox) SetFilterFunc(filter_func int /*TODO_TYPE CALLBACK*/, user_data
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_filter_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFlowBoxFilterFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_filter_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -23076,7 +23074,7 @@ func (v FlowBox) SetSortFunc(sort_func int /*TODO_TYPE CALLBACK*/, user_data uns
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_sort_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFlowBoxSortFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_sort_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -23269,7 +23267,7 @@ func FlowBoxChildAccessibleGetType() gi.GType {
 // ignore GType struct FlowBoxChildClass
 // ignore GType struct FlowBoxClass
 type FlowBoxCreateWidgetFuncStruct struct {
-	F_item gobject.Object
+	F_item g.Object
 }
 
 func GetPointer_myFlowBoxCreateWidgetFunc() unsafe.Pointer {
@@ -23280,7 +23278,7 @@ func GetPointer_myFlowBoxCreateWidgetFunc() unsafe.Pointer {
 func myGtkFlowBoxCreateWidgetFunc(item *C.GObject, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := &FlowBoxCreateWidgetFuncStruct{
-		F_item: gobject.WrapObject(unsafe.Pointer(item)),
+		F_item: g.WrapObject(unsafe.Pointer(item)),
 	}
 	fn(args)
 }
@@ -23856,7 +23854,7 @@ func (v *FontChooserIfc) SetFilterFunc(filter int /*TODO_TYPE CALLBACK*/, user_d
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_filter := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFontFilterFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_filter, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -24896,7 +24894,7 @@ func (v GLArea) GetContext() (result gdk.GLContext) {
 //
 // [ result ] trans: nothing
 //
-func (v GLArea) GetError() (result glib.Error) {
+func (v GLArea) GetError() (result g.Error) {
 	iv, err := _I.Get(1052, "GLArea", "get_error")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25051,7 +25049,7 @@ func (v GLArea) SetAutoRender(auto_render bool) {
 //
 // [ error ] trans: nothing
 //
-func (v GLArea) SetError(error glib.Error) {
+func (v GLArea) SetError(error g.Error) {
 	iv, err := _I.Get(1061, "GLArea", "set_error")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25232,7 +25230,7 @@ func (v Gesture) GetDevice() (result gdk.Device) {
 //
 // [ result ] trans: container
 //
-func (v Gesture) GetGroup() (result glib.List) {
+func (v Gesture) GetGroup() (result g.List) {
 	iv, err := _I.Get(1070, "Gesture", "get_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -25340,7 +25338,7 @@ func (v Gesture) GetSequenceState(sequence gdk.EventSequence) (result EventSeque
 //
 // [ result ] trans: container
 //
-func (v Gesture) GetSequences() (result glib.List) {
+func (v Gesture) GetSequences() (result g.List) {
 	iv, err := _I.Get(1075, "Gesture", "get_sequences")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -27857,7 +27855,7 @@ func HeaderBarPrivateGetType() gi.GType {
 
 // Object IMContext
 type IMContext struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapIMContext(p unsafe.Pointer) (r IMContext) { r.P = p; return }
@@ -28286,7 +28284,7 @@ func IMStatusStyleGetType() gi.GType {
 // Object IconFactory
 type IconFactory struct {
 	BuildableIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapIconFactory(p unsafe.Pointer) (r IconFactory) { r.P = p; return }
@@ -28421,7 +28419,7 @@ func IconFactoryPrivateGetType() gi.GType {
 
 // Object IconInfo
 type IconInfo struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapIconInfo(p unsafe.Pointer) (r IconInfo) { r.P = p; return }
@@ -28651,7 +28649,7 @@ func (v IconInfo) LoadIcon() (result gdkpixbuf.Pixbuf, err error) {
 //
 // [ user_data ] trans: nothing
 //
-func (v IconInfo) LoadIconAsync(cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v IconInfo) LoadIconAsync(cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1213, "IconInfo", "load_icon_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28663,7 +28661,7 @@ func (v IconInfo) LoadIconAsync(cancellable gio.ICancellable, callback int /*TOD
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -28675,7 +28673,7 @@ func (v IconInfo) LoadIconAsync(cancellable gio.ICancellable, callback int /*TOD
 //
 // [ result ] trans: everything
 //
-func (v IconInfo) LoadIconFinish(res gio.IAsyncResult) (result gdkpixbuf.Pixbuf, err error) {
+func (v IconInfo) LoadIconFinish(res g.IAsyncResult) (result gdkpixbuf.Pixbuf, err error) {
 	iv, err := _I.Get(1214, "IconInfo", "load_icon_finish")
 	if err != nil {
 		return
@@ -28775,7 +28773,7 @@ func (v IconInfo) LoadSymbolic(fg gdk.RGBA, success_color gdk.RGBA, warning_colo
 //
 // [ user_data ] trans: nothing
 //
-func (v IconInfo) LoadSymbolicAsync(fg gdk.RGBA, success_color gdk.RGBA, warning_color gdk.RGBA, error_color gdk.RGBA, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v IconInfo) LoadSymbolicAsync(fg gdk.RGBA, success_color gdk.RGBA, warning_color gdk.RGBA, error_color gdk.RGBA, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1217, "IconInfo", "load_symbolic_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28791,7 +28789,7 @@ func (v IconInfo) LoadSymbolicAsync(fg gdk.RGBA, success_color gdk.RGBA, warning
 	arg_warning_color := gi.NewPointerArgument(warning_color.P)
 	arg_error_color := gi.NewPointerArgument(error_color.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_fg, arg_success_color, arg_warning_color, arg_error_color, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -28805,7 +28803,7 @@ func (v IconInfo) LoadSymbolicAsync(fg gdk.RGBA, success_color gdk.RGBA, warning
 //
 // [ result ] trans: everything
 //
-func (v IconInfo) LoadSymbolicFinish(res gio.IAsyncResult) (result gdkpixbuf.Pixbuf, was_symbolic bool, err error) {
+func (v IconInfo) LoadSymbolicFinish(res g.IAsyncResult) (result gdkpixbuf.Pixbuf, was_symbolic bool, err error) {
 	iv, err := _I.Get(1218, "IconInfo", "load_symbolic_finish")
 	if err != nil {
 		return
@@ -28869,7 +28867,7 @@ func (v IconInfo) LoadSymbolicForContext(context IStyleContext) (result gdkpixbu
 //
 // [ user_data ] trans: nothing
 //
-func (v IconInfo) LoadSymbolicForContextAsync(context IStyleContext, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v IconInfo) LoadSymbolicForContextAsync(context IStyleContext, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(1220, "IconInfo", "load_symbolic_for_context_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -28886,7 +28884,7 @@ func (v IconInfo) LoadSymbolicForContextAsync(context IStyleContext, cancellable
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_context := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_context, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -28900,7 +28898,7 @@ func (v IconInfo) LoadSymbolicForContextAsync(context IStyleContext, cancellable
 //
 // [ result ] trans: everything
 //
-func (v IconInfo) LoadSymbolicForContextFinish(res gio.IAsyncResult) (result gdkpixbuf.Pixbuf, was_symbolic bool, err error) {
+func (v IconInfo) LoadSymbolicForContextFinish(res g.IAsyncResult) (result gdkpixbuf.Pixbuf, was_symbolic bool, err error) {
 	iv, err := _I.Get(1221, "IconInfo", "load_symbolic_for_context_finish")
 	if err != nil {
 		return
@@ -29638,7 +29636,7 @@ func (v IconSource) SetStateWildcarded(setting bool) {
 
 // Object IconTheme
 type IconTheme struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapIconTheme(p unsafe.Pointer) (r IconTheme) { r.P = p; return }
@@ -29904,7 +29902,7 @@ func (v IconTheme) HasIcon(icon_name string) (result bool) {
 //
 // [ result ] trans: everything
 //
-func (v IconTheme) ListContexts() (result glib.List) {
+func (v IconTheme) ListContexts() (result g.List) {
 	iv, err := _I.Get(1267, "IconTheme", "list_contexts")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -29924,7 +29922,7 @@ func (v IconTheme) ListContexts() (result glib.List) {
 //
 // [ result ] trans: everything
 //
-func (v IconTheme) ListIcons(context string) (result glib.List) {
+func (v IconTheme) ListIcons(context string) (result g.List) {
 	iv, err := _I.Get(1268, "IconTheme", "list_icons")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30057,7 +30055,7 @@ func (v IconTheme) LoadSurface(icon_name string, size int32, scale int32, for_wi
 //
 // [ result ] trans: everything
 //
-func (v IconTheme) LookupByGicon(icon gio.IIcon, size int32, flags IconLookupFlags) (result IconInfo) {
+func (v IconTheme) LookupByGicon(icon g.IIcon, size int32, flags IconLookupFlags) (result IconInfo) {
 	iv, err := _I.Get(1272, "IconTheme", "lookup_by_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30090,7 +30088,7 @@ func (v IconTheme) LookupByGicon(icon gio.IIcon, size int32, flags IconLookupFla
 //
 // [ result ] trans: everything
 //
-func (v IconTheme) LookupByGiconForScale(icon gio.IIcon, size int32, scale int32, flags IconLookupFlags) (result IconInfo) {
+func (v IconTheme) LookupByGiconForScale(icon g.IIcon, size int32, scale int32, flags IconLookupFlags) (result IconInfo) {
 	iv, err := _I.Get(1273, "IconTheme", "lookup_by_gicon_for_scale")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -30907,7 +30905,7 @@ func (v IconView) GetRowSpacing() (result int32) {
 //
 // [ result ] trans: everything
 //
-func (v IconView) GetSelectedItems() (result glib.List) {
+func (v IconView) GetSelectedItems() (result g.List) {
 	iv, err := _I.Get(1308, "IconView", "get_selected_items")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31742,7 +31740,7 @@ func NewImageFromFile(filename string) (result Image) {
 //
 // [ result ] trans: nothing
 //
-func NewImageFromGicon(icon gio.IIcon, size int32) (result Image) {
+func NewImageFromGicon(icon g.IIcon, size int32) (result Image) {
 	iv, err := _I.Get(1348, "Image", "new_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31937,7 +31935,7 @@ func (v Image) GetAnimation() (result gdkpixbuf.PixbufAnimation) {
 //
 // [ size ] trans: everything, dir: out
 //
-func (v Image) GetGicon() (gicon gio.Icon, size int32) {
+func (v Image) GetGicon() (gicon g.Icon, size int32) {
 	iv, err := _I.Get(1357, "Image", "get_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -32121,7 +32119,7 @@ func (v Image) SetFromFile(filename string) {
 //
 // [ size ] trans: nothing
 //
-func (v Image) SetFromGicon(icon gio.IIcon, size int32) {
+func (v Image) SetFromGicon(icon g.IIcon, size int32) {
 	iv, err := _I.Get(1366, "Image", "set_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -34925,7 +34923,7 @@ func NewListBox() (result ListBox) {
 //
 // [ user_data_free_func ] trans: nothing
 //
-func (v ListBox) BindModel(model gio.IListModel, create_widget_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE CALLBACK*/) {
+func (v ListBox) BindModel(model g.IListModel, create_widget_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, user_data_free_func int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(1485, "ListBox", "bind_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -34939,7 +34937,7 @@ func (v ListBox) BindModel(model gio.IListModel, create_widget_func int /*TODO_T
 	arg_model := gi.NewPointerArgument(tmp)
 	arg_create_widget_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myListBoxCreateWidgetFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_user_data_free_func := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_user_data_free_func := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_model, arg_create_widget_func, arg_user_data, arg_user_data_free_func}
 	iv.Call(args, nil, nil)
 }
@@ -35077,7 +35075,7 @@ func (v ListBox) GetSelectedRow() (result ListBoxRow) {
 //
 // [ result ] trans: container
 //
-func (v ListBox) GetSelectedRows() (result glib.List) {
+func (v ListBox) GetSelectedRows() (result g.List) {
 	iv, err := _I.Get(1493, "ListBox", "get_selected_rows")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -35296,7 +35294,7 @@ func (v ListBox) SetFilterFunc(filter_func int /*TODO_TYPE CALLBACK*/, user_data
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_filter_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myListBoxFilterFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_filter_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -35318,7 +35316,7 @@ func (v ListBox) SetHeaderFunc(update_header int /*TODO_TYPE CALLBACK*/, user_da
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_update_header := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myListBoxUpdateHeaderFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_update_header, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -35376,7 +35374,7 @@ func (v ListBox) SetSortFunc(sort_func int /*TODO_TYPE CALLBACK*/, user_data uns
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_sort_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myListBoxSortFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_sort_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -35446,7 +35444,7 @@ func ListBoxAccessiblePrivateGetType() gi.GType {
 
 // ignore GType struct ListBoxClass
 type ListBoxCreateWidgetFuncStruct struct {
-	F_item gobject.Object
+	F_item g.Object
 }
 
 func GetPointer_myListBoxCreateWidgetFunc() unsafe.Pointer {
@@ -35457,7 +35455,7 @@ func GetPointer_myListBoxCreateWidgetFunc() unsafe.Pointer {
 func myGtkListBoxCreateWidgetFunc(item *C.GObject, user_data C.gpointer) {
 	fn := gi.GetFunc(uint(uintptr(user_data)))
 	args := &ListBoxCreateWidgetFuncStruct{
-		F_item: gobject.WrapObject(unsafe.Pointer(item)),
+		F_item: g.WrapObject(unsafe.Pointer(item)),
 	}
 	fn(args)
 }
@@ -35754,7 +35752,7 @@ type ListStore struct {
 	TreeDragSourceIfc
 	TreeModelIfc
 	TreeSortableIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapListStore(p unsafe.Pointer) (r ListStore) { r.P = p; return }
@@ -36048,7 +36046,7 @@ func (v ListStore) SetColumnTypes(n_columns int32, types gi.GTypeArray) {
 //
 // [ value ] trans: nothing
 //
-func (v ListStore) SetValue(iter TreeIter, column int32, value gobject.Value) {
+func (v ListStore) SetValue(iter TreeIter, column int32, value g.Value) {
 	iv, err := _I.Get(1536, "ListStore", "set_value")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -36146,7 +36144,7 @@ func LockButtonGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func NewLockButton(permission gio.IPermission) (result LockButton) {
+func NewLockButton(permission g.IPermission) (result LockButton) {
 	iv, err := _I.Get(1539, "LockButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -36168,7 +36166,7 @@ func NewLockButton(permission gio.IPermission) (result LockButton) {
 //
 // [ result ] trans: nothing
 //
-func (v LockButton) GetPermission() (result gio.Permission) {
+func (v LockButton) GetPermission() (result g.Permission) {
 	iv, err := _I.Get(1540, "LockButton", "get_permission")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -36186,7 +36184,7 @@ func (v LockButton) GetPermission() (result gio.Permission) {
 //
 // [ permission ] trans: nothing
 //
-func (v LockButton) SetPermission(permission gio.IPermission) {
+func (v LockButton) SetPermission(permission g.IPermission) {
 	iv, err := _I.Get(1541, "LockButton", "set_permission")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -36286,7 +36284,7 @@ func NewMenu() (result Menu) {
 //
 // [ result ] trans: nothing
 //
-func NewMenuFromModel(model gio.IMenuModel) (result Menu) {
+func NewMenuFromModel(model g.IMenuModel) (result Menu) {
 	iv, err := _I.Get(1543, "Menu", "new_from_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -36310,7 +36308,7 @@ func NewMenuFromModel(model gio.IMenuModel) (result Menu) {
 //
 // [ result ] trans: nothing
 //
-func MenuGetForAttachWidget1(widget IWidget) (result glib.List) {
+func MenuGetForAttachWidget1(widget IWidget) (result g.List) {
 	iv, err := _I.Get(1544, "Menu", "get_for_attach_widget")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -36731,7 +36729,7 @@ func (v Menu) PopupForDevice(device gdk.IDevice, parent_menu_shell IWidget, pare
 	arg_parent_menu_item := gi.NewPointerArgument(tmp2)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myMenuPositionFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	arg_button := gi.NewUint32Argument(button)
 	arg_activate_time := gi.NewUint32Argument(activate_time)
 	args := []gi.Argument{arg_v, arg_device, arg_parent_menu_shell, arg_parent_menu_item, arg_func1, arg_data, arg_destroy, arg_button, arg_activate_time}
@@ -36985,7 +36983,7 @@ func NewMenuBar() (result MenuBar) {
 //
 // [ result ] trans: nothing
 //
-func NewMenuBarFromModel(model gio.IMenuModel) (result MenuBar) {
+func NewMenuBarFromModel(model g.IMenuModel) (result MenuBar) {
 	iv, err := _I.Get(1574, "MenuBar", "new_from_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -37161,7 +37159,7 @@ func (v MenuButton) GetDirection() (result ArrowTypeEnum) {
 //
 // [ result ] trans: nothing
 //
-func (v MenuButton) GetMenuModel() (result gio.MenuModel) {
+func (v MenuButton) GetMenuModel() (result g.MenuModel) {
 	iv, err := _I.Get(1582, "MenuButton", "get_menu_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -37269,7 +37267,7 @@ func (v MenuButton) SetDirection(direction ArrowTypeEnum) {
 //
 // [ menu_model ] trans: nothing
 //
-func (v MenuButton) SetMenuModel(menu_model gio.IMenuModel) {
+func (v MenuButton) SetMenuModel(menu_model g.IMenuModel) {
 	iv, err := _I.Get(1588, "MenuButton", "set_menu_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -37926,7 +37924,7 @@ func (v MenuShell) Append(child IMenuItem) {
 //
 // [ with_separators ] trans: nothing
 //
-func (v MenuShell) BindModel(model gio.IMenuModel, action_namespace string, with_separators bool) {
+func (v MenuShell) BindModel(model g.IMenuModel, action_namespace string, with_separators bool) {
 	iv, err := _I.Get(1614, "MenuShell", "bind_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -38636,7 +38634,7 @@ func myGtkModuleInitFunc(argc *C.gint32, argv C.gpointer) {
 
 // Object MountOperation
 type MountOperation struct {
-	gio.MountOperation
+	g.MountOperation
 }
 
 func WrapMountOperation(p unsafe.Pointer) (r MountOperation) { r.P = p; return }
@@ -38801,7 +38799,7 @@ func MovementStepGetType() gi.GType {
 
 // Object NativeDialog
 type NativeDialog struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapNativeDialog(p unsafe.Pointer) (r NativeDialog) { r.P = p; return }
@@ -40160,8 +40158,8 @@ func NumberUpLayoutGetType() gi.GType {
 
 // Object NumerableIcon
 type NumerableIcon struct {
-	gio.IconIfc
-	gio.EmblemedIcon
+	g.IconIfc
+	g.EmblemedIcon
 }
 
 func WrapNumerableIcon(p unsafe.Pointer) (r NumerableIcon) { r.P = p; return }
@@ -40181,7 +40179,7 @@ func NumerableIconGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func NumerableIconNew1(base_icon gio.IIcon) (result gio.Icon) {
+func NumerableIconNew1(base_icon g.IIcon) (result g.Icon) {
 	iv, err := _I.Get(1705, "NumerableIcon", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -40207,7 +40205,7 @@ func NumerableIconNew1(base_icon gio.IIcon) (result gio.Icon) {
 //
 // [ result ] trans: everything
 //
-func NumerableIconNewWithStyleContext1(base_icon gio.IIcon, context IStyleContext) (result gio.Icon) {
+func NumerableIconNewWithStyleContext1(base_icon g.IIcon, context IStyleContext) (result g.Icon) {
 	iv, err := _I.Get(1706, "NumerableIcon", "new_with_style_context")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -40234,7 +40232,7 @@ func NumerableIconNewWithStyleContext1(base_icon gio.IIcon, context IStyleContex
 //
 // [ result ] trans: nothing
 //
-func (v NumerableIcon) GetBackgroundGicon() (result gio.Icon) {
+func (v NumerableIcon) GetBackgroundGicon() (result g.Icon) {
 	iv, err := _I.Get(1707, "NumerableIcon", "get_background_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -40324,7 +40322,7 @@ func (v NumerableIcon) GetStyleContext() (result StyleContext) {
 //
 // [ icon ] trans: nothing
 //
-func (v NumerableIcon) SetBackgroundGicon(icon gio.IIcon) {
+func (v NumerableIcon) SetBackgroundGicon(icon g.IIcon) {
 	iv, err := _I.Get(1712, "NumerableIcon", "set_background_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -40773,7 +40771,7 @@ func PadControllerGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func NewPadController(window IWindow, group gio.IActionGroup, pad gdk.IDevice) (result PadController) {
+func NewPadController(window IWindow, group g.IActionGroup, pad gdk.IDevice) (result PadController) {
 	iv, err := _I.Get(1727, "PadController", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -40896,7 +40894,7 @@ func PageSetGetType() gi.GType {
 
 // Object PageSetup
 type PageSetup struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapPageSetup(p unsafe.Pointer) (r PageSetup) { r.P = p; return }
@@ -40955,7 +40953,7 @@ func NewPageSetupFromFile(file_name string) (result PageSetup, err error) {
 //
 // [ result ] trans: everything
 //
-func NewPageSetupFromGvariant(variant glib.Variant) (result PageSetup) {
+func NewPageSetupFromGvariant(variant g.Variant) (result PageSetup) {
 	iv, err := _I.Get(1732, "PageSetup", "new_from_gvariant")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -40977,7 +40975,7 @@ func NewPageSetupFromGvariant(variant glib.Variant) (result PageSetup) {
 //
 // [ result ] trans: everything
 //
-func NewPageSetupFromKeyFile(key_file glib.KeyFile, group_name string) (result PageSetup, err error) {
+func NewPageSetupFromKeyFile(key_file g.KeyFile, group_name string) (result PageSetup, err error) {
 	iv, err := _I.Get(1733, "PageSetup", "new_from_key_file")
 	if err != nil {
 		return
@@ -41251,7 +41249,7 @@ func (v PageSetup) LoadFile(file_name string) (result bool, err error) {
 //
 // [ result ] trans: nothing
 //
-func (v PageSetup) LoadKeyFile(key_file glib.KeyFile, group_name string) (result bool, err error) {
+func (v PageSetup) LoadKeyFile(key_file g.KeyFile, group_name string) (result bool, err error) {
 	iv, err := _I.Get(1746, "PageSetup", "load_key_file")
 	if err != nil {
 		return
@@ -41424,7 +41422,7 @@ func (v PageSetup) ToFile(file_name string) (result bool, err error) {
 //
 // [ result ] trans: nothing
 //
-func (v PageSetup) ToGvariant() (result glib.Variant) {
+func (v PageSetup) ToGvariant() (result g.Variant) {
 	iv, err := _I.Get(1755, "PageSetup", "to_gvariant")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -41444,7 +41442,7 @@ func (v PageSetup) ToGvariant() (result glib.Variant) {
 //
 // [ group_name ] trans: nothing
 //
-func (v PageSetup) ToKeyFile(key_file glib.KeyFile, group_name string) {
+func (v PageSetup) ToKeyFile(key_file g.KeyFile, group_name string) {
 	iv, err := _I.Get(1756, "PageSetup", "to_key_file")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -41858,7 +41856,7 @@ func NewPaperSizeCustom(name string, display_name string, width float64, height 
 //
 // [ result ] trans: everything
 //
-func NewPaperSizeFromGvariant(variant glib.Variant) (result PaperSize) {
+func NewPaperSizeFromGvariant(variant g.Variant) (result PaperSize) {
 	iv, err := _I.Get(1771, "PaperSize", "new_from_gvariant")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -41908,7 +41906,7 @@ func NewPaperSizeFromIpp(ipp_name string, width float64, height float64) (result
 //
 // [ result ] trans: everything
 //
-func NewPaperSizeFromKeyFile(key_file glib.KeyFile, group_name string) (result PaperSize, err error) {
+func NewPaperSizeFromKeyFile(key_file g.KeyFile, group_name string) (result PaperSize, err error) {
 	iv, err := _I.Get(1773, "PaperSize", "new_from_key_file")
 	if err != nil {
 		return
@@ -42254,7 +42252,7 @@ func (v PaperSize) SetSize(width float64, height float64, unit UnitEnum) {
 //
 // [ result ] trans: nothing
 //
-func (v PaperSize) ToGvariant() (result glib.Variant) {
+func (v PaperSize) ToGvariant() (result g.Variant) {
 	iv, err := _I.Get(1790, "PaperSize", "to_gvariant")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42274,7 +42272,7 @@ func (v PaperSize) ToGvariant() (result glib.Variant) {
 //
 // [ group_name ] trans: nothing
 //
-func (v PaperSize) ToKeyFile(key_file glib.KeyFile, group_name string) {
+func (v PaperSize) ToKeyFile(key_file g.KeyFile, group_name string) {
 	iv, err := _I.Get(1791, "PaperSize", "to_key_file")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42295,7 +42293,7 @@ func (v PaperSize) ToKeyFile(key_file glib.KeyFile, group_name string) {
 //
 // [ result ] trans: everything
 //
-func PaperSizeGetPaperSizes1(include_custom bool) (result glib.List) {
+func PaperSizeGetPaperSizes1(include_custom bool) (result g.List) {
 	iv, err := _I.Get(1793, "PaperSize", "get_paper_sizes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42393,7 +42391,7 @@ func NewPlacesSidebar() (result PlacesSidebar) {
 //
 // [ location ] trans: nothing
 //
-func (v PlacesSidebar) AddShortcut(location gio.IFile) {
+func (v PlacesSidebar) AddShortcut(location g.IFile) {
 	iv, err := _I.Get(1795, "PlacesSidebar", "add_shortcut")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42431,7 +42429,7 @@ func (v PlacesSidebar) GetLocalOnly() (result bool) {
 //
 // [ result ] trans: everything
 //
-func (v PlacesSidebar) GetLocation() (result gio.File) {
+func (v PlacesSidebar) GetLocation() (result g.File) {
 	iv, err := _I.Get(1797, "PlacesSidebar", "get_location")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42451,7 +42449,7 @@ func (v PlacesSidebar) GetLocation() (result gio.File) {
 //
 // [ result ] trans: everything
 //
-func (v PlacesSidebar) GetNthBookmark(n int32) (result gio.File) {
+func (v PlacesSidebar) GetNthBookmark(n int32) (result g.File) {
 	iv, err := _I.Get(1798, "PlacesSidebar", "get_nth_bookmark")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42614,7 +42612,7 @@ func (v PlacesSidebar) GetShowTrash() (result bool) {
 //
 // [ result ] trans: everything
 //
-func (v PlacesSidebar) ListShortcuts() (result glib.SList) {
+func (v PlacesSidebar) ListShortcuts() (result g.SList) {
 	iv, err := _I.Get(1807, "PlacesSidebar", "list_shortcuts")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42632,7 +42630,7 @@ func (v PlacesSidebar) ListShortcuts() (result glib.SList) {
 //
 // [ location ] trans: nothing
 //
-func (v PlacesSidebar) RemoveShortcut(location gio.IFile) {
+func (v PlacesSidebar) RemoveShortcut(location g.IFile) {
 	iv, err := _I.Get(1808, "PlacesSidebar", "remove_shortcut")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -42691,7 +42689,7 @@ func (v PlacesSidebar) SetLocalOnly(local_only bool) {
 //
 // [ location ] trans: nothing
 //
-func (v PlacesSidebar) SetLocation(location gio.IFile) {
+func (v PlacesSidebar) SetLocation(location g.IFile) {
 	iv, err := _I.Get(1811, "PlacesSidebar", "set_location")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -43072,7 +43070,7 @@ func NewPopover(relative_to IWidget) (result Popover) {
 //
 // [ result ] trans: nothing
 //
-func NewPopoverFromModel(relative_to IWidget, model gio.IMenuModel) (result Popover) {
+func NewPopoverFromModel(relative_to IWidget, model g.IMenuModel) (result Popover) {
 	iv, err := _I.Get(1828, "Popover", "new_from_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -43101,7 +43099,7 @@ func NewPopoverFromModel(relative_to IWidget, model gio.IMenuModel) (result Popo
 //
 // [ action_namespace ] trans: nothing
 //
-func (v Popover) BindModel(model gio.IMenuModel, action_namespace string) {
+func (v Popover) BindModel(model g.IMenuModel, action_namespace string) {
 	iv, err := _I.Get(1829, "Popover", "bind_model")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -43508,7 +43506,7 @@ func PositionTypeGetType() gi.GType {
 
 // Object PrintContext
 type PrintContext struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapPrintContext(p unsafe.Pointer) (r PrintContext) { r.P = p; return }
@@ -43772,7 +43770,7 @@ func PrintErrorGetType() gi.GType {
 // Object PrintOperation
 type PrintOperation struct {
 	PrintOperationPreviewIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapPrintOperation(p unsafe.Pointer) (r PrintOperation) { r.P = p; return }
@@ -44441,7 +44439,7 @@ func PrintQualityGetType() gi.GType {
 
 // Object PrintSettings
 type PrintSettings struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapPrintSettings(p unsafe.Pointer) (r PrintSettings) { r.P = p; return }
@@ -44500,7 +44498,7 @@ func NewPrintSettingsFromFile(file_name string) (result PrintSettings, err error
 //
 // [ result ] trans: everything
 //
-func NewPrintSettingsFromGvariant(variant glib.Variant) (result PrintSettings) {
+func NewPrintSettingsFromGvariant(variant g.Variant) (result PrintSettings) {
 	iv, err := _I.Get(1894, "PrintSettings", "new_from_gvariant")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -44522,7 +44520,7 @@ func NewPrintSettingsFromGvariant(variant glib.Variant) (result PrintSettings) {
 //
 // [ result ] trans: everything
 //
-func NewPrintSettingsFromKeyFile(key_file glib.KeyFile, group_name string) (result PrintSettings, err error) {
+func NewPrintSettingsFromKeyFile(key_file g.KeyFile, group_name string) (result PrintSettings, err error) {
 	iv, err := _I.Get(1895, "PrintSettings", "new_from_key_file")
 	if err != nil {
 		return
@@ -45285,7 +45283,7 @@ func (v PrintSettings) LoadFile(file_name string) (result bool, err error) {
 //
 // [ result ] trans: nothing
 //
-func (v PrintSettings) LoadKeyFile(key_file glib.KeyFile, group_name string) (result bool, err error) {
+func (v PrintSettings) LoadKeyFile(key_file g.KeyFile, group_name string) (result bool, err error) {
 	iv, err := _I.Get(1933, "PrintSettings", "load_key_file")
 	if err != nil {
 		return
@@ -45868,7 +45866,7 @@ func (v PrintSettings) ToFile(file_name string) (result bool, err error) {
 //
 // [ result ] trans: nothing
 //
-func (v PrintSettings) ToGvariant() (result glib.Variant) {
+func (v PrintSettings) ToGvariant() (result g.Variant) {
 	iv, err := _I.Get(1965, "PrintSettings", "to_gvariant")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -45888,7 +45886,7 @@ func (v PrintSettings) ToGvariant() (result glib.Variant) {
 //
 // [ group_name ] trans: nothing
 //
-func (v PrintSettings) ToKeyFile(key_file glib.KeyFile, group_name string) {
+func (v PrintSettings) ToKeyFile(key_file g.KeyFile, group_name string) {
 	iv, err := _I.Get(1966, "PrintSettings", "to_key_file")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46351,7 +46349,7 @@ func (v RadioAction) GetCurrentValue() (result int32) {
 //
 // [ result ] trans: nothing
 //
-func (v RadioAction) GetGroup() (result glib.SList) {
+func (v RadioAction) GetGroup() (result g.SList) {
 	iv, err := _I.Get(1984, "RadioAction", "get_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46405,7 +46403,7 @@ func (v RadioAction) SetCurrentValue(current_value int32) {
 //
 // [ group ] trans: nothing
 //
-func (v RadioAction) SetGroup(group glib.SList) {
+func (v RadioAction) SetGroup(group g.SList) {
 	iv, err := _I.Get(1987, "RadioAction", "set_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46469,7 +46467,7 @@ func RadioButtonGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func NewRadioButton(group glib.SList) (result RadioButton) {
+func NewRadioButton(group g.SList) (result RadioButton) {
 	iv, err := _I.Get(1988, "RadioButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46515,7 +46513,7 @@ func NewRadioButtonFromWidget(radio_group_member IRadioButton) (result RadioButt
 //
 // [ result ] trans: nothing
 //
-func NewRadioButtonWithLabel(group glib.SList, label string) (result RadioButton) {
+func NewRadioButtonWithLabel(group g.SList, label string) (result RadioButton) {
 	iv, err := _I.Get(1990, "RadioButton", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46569,7 +46567,7 @@ func NewRadioButtonWithLabelFromWidget(radio_group_member IRadioButton, label st
 //
 // [ result ] trans: nothing
 //
-func NewRadioButtonWithMnemonic(group glib.SList, label string) (result RadioButton) {
+func NewRadioButtonWithMnemonic(group g.SList, label string) (result RadioButton) {
 	iv, err := _I.Get(1992, "RadioButton", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46619,7 +46617,7 @@ func NewRadioButtonWithMnemonicFromWidget(radio_group_member IRadioButton, label
 //
 // [ result ] trans: nothing
 //
-func (v RadioButton) GetGroup() (result glib.SList) {
+func (v RadioButton) GetGroup() (result g.SList) {
 	iv, err := _I.Get(1994, "RadioButton", "get_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46657,7 +46655,7 @@ func (v RadioButton) JoinGroup(group_source IRadioButton) {
 //
 // [ group ] trans: nothing
 //
-func (v RadioButton) SetGroup(group glib.SList) {
+func (v RadioButton) SetGroup(group g.SList) {
 	iv, err := _I.Get(1996, "RadioButton", "set_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46741,7 +46739,7 @@ func RadioMenuItemGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func NewRadioMenuItem(group glib.SList) (result RadioMenuItem) {
+func NewRadioMenuItem(group g.SList) (result RadioMenuItem) {
 	iv, err := _I.Get(1997, "RadioMenuItem", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46787,7 +46785,7 @@ func NewRadioMenuItemFromWidget(group IRadioMenuItem) (result RadioMenuItem) {
 //
 // [ result ] trans: nothing
 //
-func NewRadioMenuItemWithLabel(group glib.SList, label string) (result RadioMenuItem) {
+func NewRadioMenuItemWithLabel(group g.SList, label string) (result RadioMenuItem) {
 	iv, err := _I.Get(1999, "RadioMenuItem", "new_with_label")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46841,7 +46839,7 @@ func NewRadioMenuItemWithLabelFromWidget(group IRadioMenuItem, label string) (re
 //
 // [ result ] trans: nothing
 //
-func NewRadioMenuItemWithMnemonic(group glib.SList, label string) (result RadioMenuItem) {
+func NewRadioMenuItemWithMnemonic(group g.SList, label string) (result RadioMenuItem) {
 	iv, err := _I.Get(2001, "RadioMenuItem", "new_with_mnemonic")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46891,7 +46889,7 @@ func NewRadioMenuItemWithMnemonicFromWidget(group IRadioMenuItem, label string) 
 //
 // [ result ] trans: nothing
 //
-func (v RadioMenuItem) GetGroup() (result glib.SList) {
+func (v RadioMenuItem) GetGroup() (result g.SList) {
 	iv, err := _I.Get(2003, "RadioMenuItem", "get_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -46929,7 +46927,7 @@ func (v RadioMenuItem) JoinGroup(group_source IRadioMenuItem) {
 //
 // [ group ] trans: nothing
 //
-func (v RadioMenuItem) SetGroup(group glib.SList) {
+func (v RadioMenuItem) SetGroup(group g.SList) {
 	iv, err := _I.Get(2005, "RadioMenuItem", "set_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47013,7 +47011,7 @@ func RadioToolButtonGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func NewRadioToolButton(group glib.SList) (result RadioToolButton) {
+func NewRadioToolButton(group g.SList) (result RadioToolButton) {
 	iv, err := _I.Get(2006, "RadioToolButton", "new")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47035,7 +47033,7 @@ func NewRadioToolButton(group glib.SList) (result RadioToolButton) {
 //
 // [ result ] trans: nothing
 //
-func NewRadioToolButtonFromStock(group glib.SList, stock_id string) (result RadioToolButton) {
+func NewRadioToolButtonFromStock(group g.SList, stock_id string) (result RadioToolButton) {
 	iv, err := _I.Get(2007, "RadioToolButton", "new_from_stock")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47109,7 +47107,7 @@ func NewRadioToolButtonWithStockFromWidget(group IRadioToolButton, stock_id stri
 //
 // [ result ] trans: nothing
 //
-func (v RadioToolButton) GetGroup() (result glib.SList) {
+func (v RadioToolButton) GetGroup() (result g.SList) {
 	iv, err := _I.Get(2010, "RadioToolButton", "get_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47127,7 +47125,7 @@ func (v RadioToolButton) GetGroup() (result glib.SList) {
 //
 // [ group ] trans: nothing
 //
-func (v RadioToolButton) SetGroup(group glib.SList) {
+func (v RadioToolButton) SetGroup(group g.SList) {
 	iv, err := _I.Get(2011, "RadioToolButton", "set_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47738,7 +47736,7 @@ func RcPropertyGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func RcPropertyParseBorder1(pspec gobject.IParamSpec, gstring glib.String, property_value gobject.Value) (result bool) {
+func RcPropertyParseBorder1(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
 	iv, err := _I.Get(2040, "RcProperty", "parse_border")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47768,7 +47766,7 @@ func RcPropertyParseBorder1(pspec gobject.IParamSpec, gstring glib.String, prope
 //
 // [ result ] trans: nothing
 //
-func RcPropertyParseColor1(pspec gobject.IParamSpec, gstring glib.String, property_value gobject.Value) (result bool) {
+func RcPropertyParseColor1(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
 	iv, err := _I.Get(2041, "RcProperty", "parse_color")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47798,7 +47796,7 @@ func RcPropertyParseColor1(pspec gobject.IParamSpec, gstring glib.String, proper
 //
 // [ result ] trans: nothing
 //
-func RcPropertyParseEnum1(pspec gobject.IParamSpec, gstring glib.String, property_value gobject.Value) (result bool) {
+func RcPropertyParseEnum1(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
 	iv, err := _I.Get(2042, "RcProperty", "parse_enum")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47828,7 +47826,7 @@ func RcPropertyParseEnum1(pspec gobject.IParamSpec, gstring glib.String, propert
 //
 // [ result ] trans: nothing
 //
-func RcPropertyParseFlags1(pspec gobject.IParamSpec, gstring glib.String, property_value gobject.Value) (result bool) {
+func RcPropertyParseFlags1(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
 	iv, err := _I.Get(2043, "RcProperty", "parse_flags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47858,7 +47856,7 @@ func RcPropertyParseFlags1(pspec gobject.IParamSpec, gstring glib.String, proper
 //
 // [ result ] trans: nothing
 //
-func RcPropertyParseRequisition1(pspec gobject.IParamSpec, gstring glib.String, property_value gobject.Value) (result bool) {
+func RcPropertyParseRequisition1(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
 	iv, err := _I.Get(2044, "RcProperty", "parse_requisition")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -47879,9 +47877,9 @@ func RcPropertyParseRequisition1(pspec gobject.IParamSpec, gstring glib.String, 
 }
 
 type RcPropertyParserStruct struct {
-	F_pspec          gobject.ParamSpec
-	F_rc_string      glib.String
-	F_property_value gobject.Value
+	F_pspec          g.ParamSpec
+	F_rc_string      g.String
+	F_property_value g.Value
 }
 
 func GetPointer_myRcPropertyParser() unsafe.Pointer {
@@ -47895,7 +47893,7 @@ func myGtkRcPropertyParser(pspec *C.GParamSpec, rc_string *C.GString, property_v
 
 // Object RcStyle
 type RcStyle struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapRcStyle(p unsafe.Pointer) (r RcStyle) { r.P = p; return }
@@ -48231,7 +48229,7 @@ func (v *RecentChooserIfc) GetFilter() (result RecentFilter) {
 //
 // [ result ] trans: everything
 //
-func (v *RecentChooserIfc) GetItems() (result glib.List) {
+func (v *RecentChooserIfc) GetItems() (result g.List) {
 	iv, err := _I.Get(2055, "RecentChooser", "get_items")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -48419,7 +48417,7 @@ func (v *RecentChooserIfc) GetUris() (result gi.CStrArray) {
 //
 // [ result ] trans: container
 //
-func (v *RecentChooserIfc) ListFilters() (result glib.SList) {
+func (v *RecentChooserIfc) ListFilters() (result g.SList) {
 	iv, err := _I.Get(2065, "RecentChooser", "list_filters")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -48665,7 +48663,7 @@ func (v *RecentChooserIfc) SetSortFunc(sort_func int /*TODO_TYPE CALLBACK*/, sor
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_sort_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myRecentSortFunc()))
 	arg_sort_data := gi.NewPointerArgument(sort_data)
-	arg_data_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_data_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_sort_func, arg_sort_data, arg_data_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -48960,7 +48958,7 @@ func RecentDataGetType() gi.GType {
 // Object RecentFilter
 type RecentFilter struct {
 	BuildableIfc
-	gobject.InitiallyUnowned
+	g.InitiallyUnowned
 }
 
 func WrapRecentFilter(p unsafe.Pointer) (r RecentFilter) { r.P = p; return }
@@ -49044,7 +49042,7 @@ func (v RecentFilter) AddCustom(needed RecentFilterFlags, func1 int /*TODO_TYPE 
 	arg_needed := gi.NewIntArgument(int(needed))
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myRecentFilterFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_data_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_data_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_needed, arg_func1, arg_data, arg_data_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -49253,7 +49251,7 @@ func RecentInfoGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func (v RecentInfo) CreateAppInfo(app_name string) (result gio.AppInfo, err error) {
+func (v RecentInfo) CreateAppInfo(app_name string) (result g.AppInfo, err error) {
 	iv, err := _I.Get(2100, "RecentInfo", "create_app_info")
 	if err != nil {
 		return
@@ -49428,7 +49426,7 @@ func (v RecentInfo) GetDisplayName() (result string) {
 //
 // [ result ] trans: everything
 //
-func (v RecentInfo) GetGicon() (result gio.Icon) {
+func (v RecentInfo) GetGicon() (result g.Icon) {
 	iv, err := _I.Get(2108, "RecentInfo", "get_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -49751,7 +49749,7 @@ func (v RecentInfo) Unref() {
 
 // Object RecentManager
 type RecentManager struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapRecentManager(p unsafe.Pointer) (r RecentManager) { r.P = p; return }
@@ -49833,7 +49831,7 @@ func (v RecentManager) AddItem(uri string) (result bool) {
 //
 // [ result ] trans: everything
 //
-func (v RecentManager) GetItems() (result glib.List) {
+func (v RecentManager) GetItems() (result g.List) {
 	iv, err := _I.Get(2129, "RecentManager", "get_items")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -52762,7 +52760,7 @@ func SeparatorToolItemPrivateGetType() gi.GType {
 // Object Settings
 type Settings struct {
 	StyleProviderIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapSettings(p unsafe.Pointer) (r Settings) { r.P = p; return }
@@ -52804,7 +52802,7 @@ func SettingsGetForScreen1(screen gdk.IScreen) (result Settings) {
 //
 // [ pspec ] trans: nothing
 //
-func SettingsInstallProperty1(pspec gobject.IParamSpec) {
+func SettingsInstallProperty1(pspec g.IParamSpec) {
 	iv, err := _I.Get(2250, "Settings", "install_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -52825,7 +52823,7 @@ func SettingsInstallProperty1(pspec gobject.IParamSpec) {
 //
 // [ parser ] trans: nothing
 //
-func SettingsInstallPropertyParser1(pspec gobject.IParamSpec, parser int /*TODO_TYPE CALLBACK*/) {
+func SettingsInstallPropertyParser1(pspec g.IParamSpec, parser int /*TODO_TYPE CALLBACK*/) {
 	iv, err := _I.Get(2251, "Settings", "install_property_parser")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -53223,7 +53221,7 @@ func ShortcutsWindowGetType() gi.GType {
 // Object SizeGroup
 type SizeGroup struct {
 	BuildableIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapSizeGroup(p unsafe.Pointer) (r SizeGroup) { r.P = p; return }
@@ -53317,7 +53315,7 @@ func (v SizeGroup) GetMode() (result SizeGroupModeEnum) {
 //
 // [ result ] trans: nothing
 //
-func (v SizeGroup) GetWidgets() (result glib.SList) {
+func (v SizeGroup) GetWidgets() (result g.SList) {
 	iv, err := _I.Get(2266, "SizeGroup", "get_widgets")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -54882,7 +54880,7 @@ func StateTypeGetType() gi.GType {
 
 // Object StatusIcon
 type StatusIcon struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapStatusIcon(p unsafe.Pointer) (r StatusIcon) { r.P = p; return }
@@ -54939,7 +54937,7 @@ func NewStatusIconFromFile(filename string) (result StatusIcon) {
 //
 // [ result ] trans: everything
 //
-func NewStatusIconFromGicon(icon gio.IIcon) (result StatusIcon) {
+func NewStatusIconFromGicon(icon g.IIcon) (result StatusIcon) {
 	iv, err := _I.Get(2331, "StatusIcon", "new_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -55095,7 +55093,7 @@ func (v StatusIcon) GetGeometry(area gdk.Rectangle) (result bool, screen gdk.Scr
 //
 // [ result ] trans: nothing
 //
-func (v StatusIcon) GetGicon() (result gio.Icon) {
+func (v StatusIcon) GetGicon() (result g.Icon) {
 	iv, err := _I.Get(2337, "StatusIcon", "get_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -55365,7 +55363,7 @@ func (v StatusIcon) SetFromFile(filename string) {
 //
 // [ icon ] trans: nothing
 //
-func (v StatusIcon) SetFromGicon(icon gio.IIcon) {
+func (v StatusIcon) SetFromGicon(icon g.IIcon) {
 	iv, err := _I.Get(2352, "StatusIcon", "set_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -55793,7 +55791,7 @@ func (v StockItem) Free() {
 
 // Object Style
 type Style struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapStyle(p unsafe.Pointer) (r Style) { r.P = p; return }
@@ -55899,7 +55897,7 @@ func (v Style) Detach() {
 //
 // [ value ] trans: nothing, dir: out
 //
-func (v Style) GetStyleProperty(widget_type gi.GType, property_name string, value gobject.Value) {
+func (v Style) GetStyleProperty(widget_type gi.GType, property_name string, value g.Value) {
 	iv, err := _I.Get(2375, "Style", "get_style_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -56050,7 +56048,7 @@ func (v Style) SetBackground(window gdk.IWindow, state_type StateTypeEnum) {
 // ignore GType struct StyleClass
 // Object StyleContext
 type StyleContext struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapStyleContext(p unsafe.Pointer) (r StyleContext) { r.P = p; return }
@@ -56464,7 +56462,7 @@ func (v StyleContext) GetPath() (result WidgetPath) {
 //
 // [ value ] trans: everything, dir: out
 //
-func (v StyleContext) GetProperty(property string, state StateFlags, value gobject.Value) {
+func (v StyleContext) GetProperty(property string, state StateFlags, value g.Value) {
 	iv, err := _I.Get(2401, "StyleContext", "get_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -56563,7 +56561,7 @@ func (v StyleContext) GetState() (result StateFlags) {
 //
 // [ value ] trans: nothing
 //
-func (v StyleContext) GetStyleProperty(property_name string, value gobject.Value) {
+func (v StyleContext) GetStyleProperty(property_name string, value g.Value) {
 	iv, err := _I.Get(2406, "StyleContext", "get_style_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -56646,7 +56644,7 @@ func (v StyleContext) Invalidate() {
 //
 // [ result ] trans: container
 //
-func (v StyleContext) ListClasses() (result glib.List) {
+func (v StyleContext) ListClasses() (result g.List) {
 	iv, err := _I.Get(2410, "StyleContext", "list_classes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -56664,7 +56662,7 @@ func (v StyleContext) ListClasses() (result glib.List) {
 //
 // [ result ] trans: container
 //
-func (v StyleContext) ListRegions() (result glib.List) {
+func (v StyleContext) ListRegions() (result g.List) {
 	iv, err := _I.Get(2411, "StyleContext", "list_regions")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57128,7 +57126,7 @@ func StyleContextPrivateGetType() gi.GType {
 // Object StyleProperties
 type StyleProperties struct {
 	StyleProviderIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapStyleProperties(p unsafe.Pointer) (r StyleProperties) { r.P = p; return }
@@ -57181,7 +57179,7 @@ func (v StyleProperties) Clear() {
 //
 // [ result ] trans: nothing
 //
-func (v StyleProperties) GetProperty(property string, state StateFlags, value gobject.Value) (result bool) {
+func (v StyleProperties) GetProperty(property string, state StateFlags, value g.Value) (result bool) {
 	iv, err := _I.Get(2436, "StyleProperties", "get_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57275,7 +57273,7 @@ func (v StyleProperties) Merge(props_to_merge IStyleProperties, replace bool) {
 //
 // [ value ] trans: nothing
 //
-func (v StyleProperties) SetProperty(property string, state StateFlags, value gobject.Value) {
+func (v StyleProperties) SetProperty(property string, state StateFlags, value g.Value) {
 	iv, err := _I.Get(2440, "StyleProperties", "set_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -57325,7 +57323,7 @@ func StylePropertiesPrivateGetType() gi.GType {
 
 type StylePropertyParserStruct struct {
 	F_string string
-	F_value  gobject.Value
+	F_value  g.Value
 }
 
 func GetPointer_myStylePropertyParser() unsafe.Pointer {
@@ -57405,7 +57403,7 @@ func (v *StyleProviderIfc) GetStyle(path WidgetPath) (result StyleProperties) {
 //
 // [ result ] trans: nothing
 //
-func (v *StyleProviderIfc) GetStyleProperty(path WidgetPath, state StateFlags, pspec gobject.IParamSpec, value gobject.Value) (result bool) {
+func (v *StyleProviderIfc) GetStyleProperty(path WidgetPath, state StateFlags, pspec g.IParamSpec, value g.Value) (result bool) {
 	iv, err := _I.Get(2444, "StyleProvider", "get_style_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -58671,7 +58669,7 @@ func TextBTreeGetType() gi.GType {
 
 // Object TextBuffer
 type TextBuffer struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapTextBuffer(p unsafe.Pointer) (r TextBuffer) { r.P = p; return }
@@ -59963,7 +59961,7 @@ func (v TextBuffer) RegisterDeserializeFormat(mime_type string, function int /*T
 	arg_mime_type := gi.NewStringArgument(c_mime_type)
 	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTextBufferDeserializeFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_user_data_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_user_data_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_mime_type, arg_function, arg_user_data, arg_user_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -60018,7 +60016,7 @@ func (v TextBuffer) RegisterSerializeFormat(mime_type string, function int /*TOD
 	arg_mime_type := gi.NewStringArgument(c_mime_type)
 	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTextBufferSerializeFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_user_data_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_user_data_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_mime_type, arg_function, arg_user_data, arg_user_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -60398,7 +60396,7 @@ func myGtkTextCharPredicate(ch C.gunichar, user_data C.gpointer) {
 
 // Object TextChildAnchor
 type TextChildAnchor struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapTextChildAnchor(p unsafe.Pointer) (r TextChildAnchor) { r.P = p; return }
@@ -60449,7 +60447,7 @@ func (v TextChildAnchor) GetDeleted() (result bool) {
 //
 // [ result ] trans: container
 //
-func (v TextChildAnchor) GetWidgets() (result glib.List) {
+func (v TextChildAnchor) GetWidgets() (result g.List) {
 	iv, err := _I.Get(2568, "TextChildAnchor", "get_widgets")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -61754,7 +61752,7 @@ func (v TextIter) GetLineOffset() (result int32) {
 //
 // [ result ] trans: container
 //
-func (v TextIter) GetMarks() (result glib.SList) {
+func (v TextIter) GetMarks() (result g.SList) {
 	iv, err := _I.Get(2631, "TextIter", "get_marks")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -61829,7 +61827,7 @@ func (v TextIter) GetSlice(end TextIter) (result string) {
 //
 // [ result ] trans: container
 //
-func (v TextIter) GetTags() (result glib.SList) {
+func (v TextIter) GetTags() (result g.SList) {
 	iv, err := _I.Get(2635, "TextIter", "get_tags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -61870,7 +61868,7 @@ func (v TextIter) GetText(end TextIter) (result string) {
 //
 // [ result ] trans: container
 //
-func (v TextIter) GetToggledTags(toggled_on bool) (result glib.SList) {
+func (v TextIter) GetToggledTags(toggled_on bool) (result g.SList) {
 	iv, err := _I.Get(2637, "TextIter", "get_toggled_tags")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -62320,7 +62318,7 @@ func (v TextIter) TogglesTag(tag ITextTag) (result bool) {
 
 // Object TextMark
 type TextMark struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapTextMark(p unsafe.Pointer) (r TextMark) { r.P = p; return }
@@ -62481,7 +62479,7 @@ func TextSearchFlagsGetType() gi.GType {
 
 // Object TextTag
 type TextTag struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapTextTag(p unsafe.Pointer) (r TextTag) { r.P = p; return }
@@ -62542,7 +62540,7 @@ func (v TextTag) Changed(size_changed bool) {
 //
 // [ result ] trans: nothing
 //
-func (v TextTag) Event(event_object gobject.IObject, event gdk.Event, iter TextIter) (result bool) {
+func (v TextTag) Event(event_object g.IObject, event gdk.Event, iter TextIter) (result bool) {
 	iv, err := _I.Get(2670, "TextTag", "event")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -62611,7 +62609,7 @@ func TextTagPrivateGetType() gi.GType {
 // Object TextTagTable
 type TextTagTable struct {
 	BuildableIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapTextTagTable(p unsafe.Pointer) (r TextTagTable) { r.P = p; return }
@@ -64329,7 +64327,7 @@ func ThemeEngineGetType() gi.GType {
 
 // Object ThemingEngine
 type ThemingEngine struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapThemingEngine(p unsafe.Pointer) (r ThemingEngine) { r.P = p; return }
@@ -64561,7 +64559,7 @@ func (v ThemingEngine) GetPath() (result WidgetPath) {
 //
 // [ value ] trans: everything, dir: out
 //
-func (v ThemingEngine) GetProperty(property string, state StateFlags, value gobject.Value) {
+func (v ThemingEngine) GetProperty(property string, state StateFlags, value g.Value) {
 	iv, err := _I.Get(2763, "ThemingEngine", "get_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -64619,7 +64617,7 @@ func (v ThemingEngine) GetState() (result StateFlags) {
 //
 // [ value ] trans: nothing, dir: out
 //
-func (v ThemingEngine) GetStyleProperty(property_name string, value gobject.Value) {
+func (v ThemingEngine) GetStyleProperty(property_name string, value g.Value) {
 	iv, err := _I.Get(2766, "ThemingEngine", "get_style_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -67446,7 +67444,7 @@ func ToolbarStyleGetType() gi.GType {
 
 // Object Tooltip
 type Tooltip struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapTooltip(p unsafe.Pointer) (r Tooltip) { r.P = p; return }
@@ -67524,7 +67522,7 @@ func (v Tooltip) SetIcon(pixbuf gdkpixbuf.IPixbuf) {
 //
 // [ size ] trans: nothing
 //
-func (v Tooltip) SetIconFromGicon(gicon gio.IIcon, size int32) {
+func (v Tooltip) SetIconFromGicon(gicon g.IIcon, size int32) {
 	iv, err := _I.Get(2900, "Tooltip", "set_icon_from_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -67654,7 +67652,7 @@ func ToplevelAccessibleGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func (v ToplevelAccessible) GetChildren() (result glib.List) {
+func (v ToplevelAccessible) GetChildren() (result g.List) {
 	iv, err := _I.Get(2906, "ToplevelAccessible", "get_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -68171,7 +68169,7 @@ func (v *TreeModelIfc) GetStringFromIter(iter TreeIter) (result string) {
 //
 // [ value ] trans: nothing, dir: out
 //
-func (v *TreeModelIfc) GetValue(iter TreeIter, column int32, value gobject.Value) {
+func (v *TreeModelIfc) GetValue(iter TreeIter, column int32, value g.Value) {
 	iv, err := _I.Get(2924, "TreeModel", "get_value")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -68496,7 +68494,7 @@ func (v *TreeModelIfc) UnrefNode(iter TreeIter) {
 type TreeModelFilter struct {
 	TreeDragSourceIfc
 	TreeModelIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapTreeModelFilter(p unsafe.Pointer) (r TreeModelFilter) { r.P = p; return }
@@ -68663,7 +68661,7 @@ func (v TreeModelFilter) SetModifyFunc(n_columns int32, types gi.GTypeArray, fun
 	arg_types := gi.NewPointerArgument(types.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeModelFilterModifyFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_n_columns, arg_types, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -68701,7 +68699,7 @@ func (v TreeModelFilter) SetVisibleFunc(func1 int /*TODO_TYPE CALLBACK*/, data u
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeModelFilterVisibleFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -68784,7 +68782,7 @@ type TreeModelSort struct {
 	TreeDragSourceIfc
 	TreeModelIfc
 	TreeSortableIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapTreeModelSort(p unsafe.Pointer) (r TreeModelSort) { r.P = p; return }
@@ -69344,7 +69342,7 @@ func NewTreeRowReference(model ITreeModel, path TreePath) (result TreeRowReferen
 //
 // [ result ] trans: everything
 //
-func NewTreeRowReferenceProxy(proxy gobject.IObject, model ITreeModel, path TreePath) (result TreeRowReference) {
+func NewTreeRowReferenceProxy(proxy g.IObject, model ITreeModel, path TreePath) (result TreeRowReference) {
 	iv, err := _I.Get(2977, "TreeRowReference", "new_proxy")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -69459,7 +69457,7 @@ func (v TreeRowReference) Valid() (result bool) {
 //
 // [ path ] trans: nothing
 //
-func TreeRowReferenceDeleted1(proxy gobject.IObject, path TreePath) {
+func TreeRowReferenceDeleted1(proxy g.IObject, path TreePath) {
 	iv, err := _I.Get(2983, "TreeRowReference", "deleted")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -69481,7 +69479,7 @@ func TreeRowReferenceDeleted1(proxy gobject.IObject, path TreePath) {
 //
 // [ path ] trans: nothing
 //
-func TreeRowReferenceInserted1(proxy gobject.IObject, path TreePath) {
+func TreeRowReferenceInserted1(proxy g.IObject, path TreePath) {
 	iv, err := _I.Get(2984, "TreeRowReference", "inserted")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -69499,7 +69497,7 @@ func TreeRowReferenceInserted1(proxy gobject.IObject, path TreePath) {
 
 // Object TreeSelection
 type TreeSelection struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapTreeSelection(p unsafe.Pointer) (r TreeSelection) { r.P = p; return }
@@ -69580,7 +69578,7 @@ func (v TreeSelection) GetSelected(iter TreeIter) (result bool, model TreeModel)
 //
 // [ result ] trans: everything
 //
-func (v TreeSelection) GetSelectedRows() (result glib.List, model TreeModel) {
+func (v TreeSelection) GetSelectedRows() (result g.List, model TreeModel) {
 	iv, err := _I.Get(2988, "TreeSelection", "get_selected_rows")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -69773,7 +69771,7 @@ func (v TreeSelection) SetSelectFunction(func1 int /*TODO_TYPE CALLBACK*/, data 
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeSelectionFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -69962,7 +69960,7 @@ func (v *TreeSortableIfc) SetDefaultSortFunc(sort_func int /*TODO_TYPE CALLBACK*
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_sort_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeIterCompareFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_sort_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -70006,7 +70004,7 @@ func (v *TreeSortableIfc) SetSortFunc(sort_column_id int32, sort_func int /*TODO
 	arg_sort_column_id := gi.NewInt32Argument(sort_column_id)
 	arg_sort_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeIterCompareFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_sort_column_id, arg_sort_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -70032,7 +70030,7 @@ type TreeStore struct {
 	TreeDragSourceIfc
 	TreeModelIfc
 	TreeSortableIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapTreeStore(p unsafe.Pointer) (r TreeStore) { r.P = p; return }
@@ -70373,7 +70371,7 @@ func (v TreeStore) SetColumnTypes(n_columns int32, types gi.GTypeArray) {
 //
 // [ value ] trans: nothing
 //
-func (v TreeStore) SetValue(iter TreeIter, column int32, value gobject.Value) {
+func (v TreeStore) SetValue(iter TreeIter, column int32, value g.Value) {
 	iv, err := _I.Get(3024, "TreeStore", "set_value")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -70983,7 +70981,7 @@ func (v TreeView) GetColumn(n int32) (result TreeViewColumn) {
 //
 // [ result ] trans: container
 //
-func (v TreeView) GetColumns() (result glib.List) {
+func (v TreeView) GetColumns() (result g.List) {
 	iv, err := _I.Get(3050, "TreeView", "get_columns")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -71654,7 +71652,7 @@ func (v TreeView) InsertColumnWithDataFunc(position int32, title string, cell IC
 	arg_cell := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeCellDataFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_dnotify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_dnotify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_position, arg_title, arg_cell, arg_func1, arg_data, arg_dnotify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -71921,7 +71919,7 @@ func (v TreeView) SetColumnDragFunction(func1 int /*TODO_TYPE CALLBACK*/, user_d
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewColumnDropFunc()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -72002,7 +72000,7 @@ func (v TreeView) SetDestroyCountFunc(func1 int /*TODO_TYPE CALLBACK*/, data uns
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeDestroyCountFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -72263,7 +72261,7 @@ func (v TreeView) SetRowSeparatorFunc(func1 int /*TODO_TYPE CALLBACK*/, data uns
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewRowSeparatorFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -72353,7 +72351,7 @@ func (v TreeView) SetSearchEqualFunc(search_equal_func int /*TODO_TYPE CALLBACK*
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_search_equal_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewSearchEqualFunc()))
 	arg_search_user_data := gi.NewPointerArgument(search_user_data)
-	arg_search_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_search_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_search_equal_func, arg_search_user_data, arg_search_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -72375,7 +72373,7 @@ func (v TreeView) SetSearchPositionFunc(func1 int /*TODO_TYPE CALLBACK*/, data u
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewSearchPositionFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -72557,7 +72555,7 @@ func TreeViewAccessiblePrivateGetType() gi.GType {
 type TreeViewColumn struct {
 	BuildableIfc
 	CellLayoutIfc
-	gobject.InitiallyUnowned
+	g.InitiallyUnowned
 }
 
 func WrapTreeViewColumn(p unsafe.Pointer) (r TreeViewColumn) { r.P = p; return }
@@ -73280,7 +73278,7 @@ func (v TreeViewColumn) SetCellDataFunc(cell_renderer ICellRenderer, func1 int /
 	arg_cell_renderer := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeCellDataFunc()))
 	arg_func_data := gi.NewPointerArgument(func_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_cell_renderer, arg_func1, arg_func_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -73686,7 +73684,7 @@ func myGtkTreeViewSearchPositionFunc(tree_view *C.GtkTreeView, search_dialog *C.
 // Object UIManager
 type UIManager struct {
 	BuildableIfc
-	gobject.Object
+	g.Object
 }
 
 func WrapUIManager(p unsafe.Pointer) (r UIManager) { r.P = p; return }
@@ -73889,7 +73887,7 @@ func (v UIManager) GetAction(path string) (result Action) {
 //
 // [ result ] trans: nothing
 //
-func (v UIManager) GetActionGroups() (result glib.List) {
+func (v UIManager) GetActionGroups() (result g.List) {
 	iv, err := _I.Get(3183, "UIManager", "get_action_groups")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -73927,7 +73925,7 @@ func (v UIManager) GetAddTearoffs() (result bool) {
 //
 // [ result ] trans: container
 //
-func (v UIManager) GetToplevels(types UIManagerItemTypeFlags) (result glib.SList) {
+func (v UIManager) GetToplevels(types UIManagerItemTypeFlags) (result g.SList) {
 	iv, err := _I.Get(3185, "UIManager", "get_toplevels")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -74656,7 +74654,7 @@ func NewVolumeButton() (result VolumeButton) {
 type Widget struct {
 	atk.ImplementorIfaceIfc
 	BuildableIfc
-	gobject.InitiallyUnowned
+	g.InitiallyUnowned
 }
 
 func WrapWidget(p unsafe.Pointer) (r Widget) { r.P = p; return }
@@ -74816,7 +74814,7 @@ func (v Widget) AddTickCallback(callback int /*TODO_TYPE CALLBACK*/, user_data u
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTickCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_callback, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -75447,7 +75445,7 @@ func (v Widget) DragSourceSet(start_button_mask gdk.ModifierTypeFlags, targets u
 //
 // [ icon ] trans: nothing
 //
-func (v Widget) DragSourceSetIconGicon(icon gio.IIcon) {
+func (v Widget) DragSourceSetIconGicon(icon g.IIcon) {
 	iv, err := _I.Get(3252, "Widget", "drag_source_set_icon_gicon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -75661,7 +75659,7 @@ func (v Widget) GetAccessible() (result atk.Object) {
 //
 // [ result ] trans: nothing
 //
-func (v Widget) GetActionGroup(prefix string) (result gio.ActionGroup) {
+func (v Widget) GetActionGroup(prefix string) (result g.ActionGroup) {
 	iv, err := _I.Get(3265, "Widget", "get_action_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -76964,7 +76962,7 @@ func (v Widget) GetSupportMultidevice() (result bool) {
 //
 // [ result ] trans: nothing
 //
-func (v Widget) GetTemplateChild(widget_type gi.GType, name string) (result gobject.Object) {
+func (v Widget) GetTemplateChild(widget_type gi.GType, name string) (result g.Object) {
 	iv, err := _I.Get(3333, "Widget", "get_template_child")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -77424,7 +77422,7 @@ func (v Widget) InputShapeCombineRegion(region cairo.Region) {
 //
 // [ group ] trans: nothing
 //
-func (v Widget) InsertActionGroup(name string, group gio.IActionGroup) {
+func (v Widget) InsertActionGroup(name string, group g.IActionGroup) {
 	iv, err := _I.Get(3360, "Widget", "insert_action_group")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -77625,7 +77623,7 @@ func (v Widget) KeynavFailed(direction DirectionTypeEnum) (result bool) {
 //
 // [ result ] trans: container
 //
-func (v Widget) ListAccelClosures() (result glib.List) {
+func (v Widget) ListAccelClosures() (result g.List) {
 	iv, err := _I.Get(3370, "Widget", "list_accel_closures")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -77662,7 +77660,7 @@ func (v Widget) ListActionPrefixes() (result gi.CStrArray) {
 //
 // [ result ] trans: container
 //
-func (v Widget) ListMnemonicLabels() (result glib.List) {
+func (v Widget) ListMnemonicLabels() (result g.List) {
 	iv, err := _I.Get(3372, "Widget", "list_mnemonic_labels")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -79340,7 +79338,7 @@ func (v Widget) StyleAttach() {
 //
 // [ value ] trans: nothing
 //
-func (v Widget) StyleGetProperty(property_name string, value gobject.Value) {
+func (v Widget) StyleGetProperty(property_name string, value g.Value) {
 	iv, err := _I.Get(3467, "Widget", "style_get_property")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -80104,7 +80102,7 @@ func (v WidgetPath) IterHasRegion(pos int32, name string) (result bool, flags Re
 //
 // [ result ] trans: container
 //
-func (v WidgetPath) IterListClasses(pos int32) (result glib.SList) {
+func (v WidgetPath) IterListClasses(pos int32) (result g.SList) {
 	iv, err := _I.Get(3501, "WidgetPath", "iter_list_classes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -80125,7 +80123,7 @@ func (v WidgetPath) IterListClasses(pos int32) (result glib.SList) {
 //
 // [ result ] trans: container
 //
-func (v WidgetPath) IterListRegions(pos int32) (result glib.SList) {
+func (v WidgetPath) IterListRegions(pos int32) (result g.SList) {
 	iv, err := _I.Get(3502, "WidgetPath", "iter_list_regions")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -80456,7 +80454,7 @@ func WindowSetDefaultIconFromFile1(filename string) (result bool, err error) {
 //
 // [ list ] trans: container
 //
-func WindowSetDefaultIconList1(list glib.List) {
+func WindowSetDefaultIconList1(list g.List) {
 	iv, err := _I.Get(3521, "Window", "set_default_icon_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -81011,7 +81009,7 @@ func (v Window) GetIcon() (result gdkpixbuf.Pixbuf) {
 //
 // [ result ] trans: container
 //
-func (v Window) GetIconList() (result glib.List) {
+func (v Window) GetIconList() (result g.List) {
 	iv, err := _I.Get(3551, "Window", "get_icon_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -82059,7 +82057,7 @@ func (v Window) SetIconFromFile(filename string) (result bool, err error) {
 //
 // [ list ] trans: nothing
 //
-func (v Window) SetIconList(list glib.List) {
+func (v Window) SetIconList(list g.List) {
 	iv, err := _I.Get(3608, "Window", "set_icon_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -82513,7 +82511,7 @@ func WindowGeometryInfoGetType() gi.GType {
 
 // Object WindowGroup
 type WindowGroup struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapWindowGroup(p unsafe.Pointer) (r WindowGroup) { r.P = p; return }
@@ -82609,7 +82607,7 @@ func (v WindowGroup) GetCurrentGrab() (result Widget) {
 //
 // [ result ] trans: container
 //
-func (v WindowGroup) ListWindows() (result glib.List) {
+func (v WindowGroup) ListWindows() (result g.List) {
 	iv, err := _I.Get(3637, "WindowGroup", "list_windows")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -82718,7 +82716,7 @@ func WrapModeGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func AccelGroupsActivate(object gobject.IObject, accel_key uint32, accel_mods gdk.ModifierTypeFlags) (result bool) {
+func AccelGroupsActivate(object g.IObject, accel_key uint32, accel_mods gdk.ModifierTypeFlags) (result bool) {
 	iv, err := _I.Get(3639, "accel_groups_activate", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -82744,7 +82742,7 @@ func AccelGroupsActivate(object gobject.IObject, accel_key uint32, accel_mods gd
 //
 // [ result ] trans: nothing
 //
-func AccelGroupsFromObject(object gobject.IObject) (result glib.SList) {
+func AccelGroupsFromObject(object g.IObject) (result g.SList) {
 	iv, err := _I.Get(3640, "accel_groups_from_object", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -83018,7 +83016,7 @@ func AlternativeDialogButtonOrder(screen gdk.IScreen) (result bool) {
 //
 // [ result ] trans: nothing
 //
-func BindingEntryAddSignalFromString(binding_set BindingSet, signal_desc string) (result glib.TokenTypeEnum) {
+func BindingEntryAddSignalFromString(binding_set BindingSet, signal_desc string) (result g.TokenTypeEnum) {
 	iv, err := _I.Get(3651, "binding_entry_add_signal_from_string", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -83031,7 +83029,7 @@ func BindingEntryAddSignalFromString(binding_set BindingSet, signal_desc string)
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_signal_desc)
-	result = glib.TokenTypeEnum(ret.Int())
+	result = g.TokenTypeEnum(ret.Int())
 	return
 }
 
@@ -83047,7 +83045,7 @@ func BindingEntryAddSignalFromString(binding_set BindingSet, signal_desc string)
 //
 // [ binding_args ] trans: nothing
 //
-func BindingEntryAddSignall(binding_set BindingSet, keyval uint32, modifiers gdk.ModifierTypeFlags, signal_name string, binding_args glib.SList) {
+func BindingEntryAddSignall(binding_set BindingSet, keyval uint32, modifiers gdk.ModifierTypeFlags, signal_name string, binding_args g.SList) {
 	iv, err := _I.Get(3652, "binding_entry_add_signall", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -83138,7 +83136,7 @@ func BindingSetFind(set_name string) (result BindingSet) {
 //
 // [ result ] trans: nothing
 //
-func BindingsActivate(object gobject.IObject, keyval uint32, modifiers gdk.ModifierTypeFlags) (result bool) {
+func BindingsActivate(object g.IObject, keyval uint32, modifiers gdk.ModifierTypeFlags) (result bool) {
 	iv, err := _I.Get(3656, "bindings_activate", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -83166,7 +83164,7 @@ func BindingsActivate(object gobject.IObject, keyval uint32, modifiers gdk.Modif
 //
 // [ result ] trans: nothing
 //
-func BindingsActivateEvent(object gobject.IObject, event gdk.EventKey) (result bool) {
+func BindingsActivateEvent(object g.IObject, event gdk.EventKey) (result bool) {
 	iv, err := _I.Get(3657, "bindings_activate_event", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -83491,7 +83489,7 @@ func DragSetIconDefault(context gdk.IDragContext) {
 //
 // [ hot_y ] trans: nothing
 //
-func DragSetIconGicon(context gdk.IDragContext, icon gio.IIcon, hot_x int32, hot_y int32) {
+func DragSetIconGicon(context gdk.IDragContext, icon g.IIcon, hot_x int32, hot_y int32) {
 	iv, err := _I.Get(3671, "drag_set_icon_gicon", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -83965,7 +83963,7 @@ func GetMinorVersion() (result uint32) {
 //
 // [ result ] trans: everything
 //
-func GetOptionGroup(open_default_display bool) (result glib.OptionGroup) {
+func GetOptionGroup(open_default_display bool) (result g.OptionGroup) {
 	iv, err := _I.Get(3694, "get_option_group", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85402,7 +85400,7 @@ func PaperSizeGetDefault() (result string) {
 //
 // [ result ] trans: everything
 //
-func PaperSizeGetPaperSizes(include_custom bool) (result glib.List) {
+func PaperSizeGetPaperSizes(include_custom bool) (result g.List) {
 	iv, err := _I.Get(3733, "paper_size_get_paper_sizes", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85601,7 +85599,7 @@ func RcFindModuleInPath(module_file string) (result string) {
 //
 // [ result ] trans: everything
 //
-func RcFindPixmapInPath(settings ISettings, scanner glib.Scanner, pixmap_file string) (result string) {
+func RcFindPixmapInPath(settings ISettings, scanner g.Scanner, pixmap_file string) (result string) {
 	iv, err := _I.Get(3741, "rc_find_pixmap_in_path", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85790,7 +85788,7 @@ func RcParse(filename string) {
 //
 // [ result ] trans: nothing
 //
-func RcParseColor(scanner glib.Scanner, color gdk.Color) (result uint32) {
+func RcParseColor(scanner g.Scanner, color gdk.Color) (result uint32) {
 	iv, err := _I.Get(3750, "rc_parse_color", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85815,7 +85813,7 @@ func RcParseColor(scanner glib.Scanner, color gdk.Color) (result uint32) {
 //
 // [ result ] trans: nothing
 //
-func RcParseColorFull(scanner glib.Scanner, style IRcStyle, color gdk.Color) (result uint32) {
+func RcParseColorFull(scanner g.Scanner, style IRcStyle, color gdk.Color) (result uint32) {
 	iv, err := _I.Get(3751, "rc_parse_color_full", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85843,7 +85841,7 @@ func RcParseColorFull(scanner glib.Scanner, style IRcStyle, color gdk.Color) (re
 //
 // [ result ] trans: nothing
 //
-func RcParseState(scanner glib.Scanner) (result uint32, state StateTypeEnum) {
+func RcParseState(scanner g.Scanner) (result uint32, state StateTypeEnum) {
 	iv, err := _I.Get(3752, "rc_parse_state", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85887,7 +85885,7 @@ func RcParseString(rc_string string) {
 //
 // [ result ] trans: nothing
 //
-func RcPropertyParseBorder(pspec gobject.IParamSpec, gstring glib.String, property_value gobject.Value) (result bool) {
+func RcPropertyParseBorder(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
 	iv, err := _I.Get(3754, "rc_property_parse_border", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85917,7 +85915,7 @@ func RcPropertyParseBorder(pspec gobject.IParamSpec, gstring glib.String, proper
 //
 // [ result ] trans: nothing
 //
-func RcPropertyParseColor(pspec gobject.IParamSpec, gstring glib.String, property_value gobject.Value) (result bool) {
+func RcPropertyParseColor(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
 	iv, err := _I.Get(3755, "rc_property_parse_color", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85947,7 +85945,7 @@ func RcPropertyParseColor(pspec gobject.IParamSpec, gstring glib.String, propert
 //
 // [ result ] trans: nothing
 //
-func RcPropertyParseEnum(pspec gobject.IParamSpec, gstring glib.String, property_value gobject.Value) (result bool) {
+func RcPropertyParseEnum(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
 	iv, err := _I.Get(3756, "rc_property_parse_enum", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85977,7 +85975,7 @@ func RcPropertyParseEnum(pspec gobject.IParamSpec, gstring glib.String, property
 //
 // [ result ] trans: nothing
 //
-func RcPropertyParseFlags(pspec gobject.IParamSpec, gstring glib.String, property_value gobject.Value) (result bool) {
+func RcPropertyParseFlags(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
 	iv, err := _I.Get(3757, "rc_property_parse_flags", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -86007,7 +86005,7 @@ func RcPropertyParseFlags(pspec gobject.IParamSpec, gstring glib.String, propert
 //
 // [ result ] trans: nothing
 //
-func RcPropertyParseRequisition(pspec gobject.IParamSpec, gstring glib.String, property_value gobject.Value) (result bool) {
+func RcPropertyParseRequisition(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
 	iv, err := _I.Get(3758, "rc_property_parse_requisition", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -87154,7 +87152,7 @@ func StockAddStatic(items unsafe.Pointer, n_items uint32) {
 //
 // [ result ] trans: everything
 //
-func StockListIds() (result glib.SList) {
+func StockListIds() (result g.SList) {
 	iv, err := _I.Get(3797, "stock_list_ids", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -87211,7 +87209,7 @@ func StockSetTranslateFunc(domain string, func1 int /*TODO_TYPE CALLBACK*/, data
 	arg_domain := gi.NewStringArgument(c_domain)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTranslateFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_domain, arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 	gi.Free(c_domain)
@@ -87752,7 +87750,7 @@ func TreeGetRowDragData(selection_data SelectionData) (result bool, tree_model T
 //
 // [ path ] trans: nothing
 //
-func TreeRowReferenceDeleted(proxy gobject.IObject, path TreePath) {
+func TreeRowReferenceDeleted(proxy g.IObject, path TreePath) {
 	iv, err := _I.Get(3821, "tree_row_reference_deleted", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -87774,7 +87772,7 @@ func TreeRowReferenceDeleted(proxy gobject.IObject, path TreePath) {
 //
 // [ path ] trans: nothing
 //
-func TreeRowReferenceInserted(proxy gobject.IObject, path TreePath) {
+func TreeRowReferenceInserted(proxy g.IObject, path TreePath) {
 	iv, err := _I.Get(3822, "tree_row_reference_inserted", "")
 	if err != nil {
 		log.Println("WARN:", err)

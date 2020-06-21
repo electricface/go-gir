@@ -26,10 +26,8 @@ return (void*)(myGdkWindowInvalidateHandlerFunc);
 */
 import "C"
 import "github.com/electricface/go-gir/cairo-1.0"
+import "github.com/electricface/go-gir/g-2.0"
 import "github.com/electricface/go-gir/gdkpixbuf-2.0"
-import "github.com/electricface/go-gir/gio-2.0"
-import "github.com/electricface/go-gir/glib-2.0"
-import "github.com/electricface/go-gir/gobject-2.0"
 import "github.com/electricface/go-gir/pango-1.0"
 import "log"
 import "unsafe"
@@ -69,7 +67,7 @@ func AnchorHintsGetType() gi.GType {
 
 // Object AppLaunchContext
 type AppLaunchContext struct {
-	gio.AppLaunchContext
+	g.AppLaunchContext
 }
 
 func WrapAppLaunchContext(p unsafe.Pointer) (r AppLaunchContext) { r.P = p; return }
@@ -138,7 +136,7 @@ func (v AppLaunchContext) SetDisplay(display IDisplay) {
 //
 // [ icon ] trans: nothing
 //
-func (v AppLaunchContext) SetIcon(icon gio.IIcon) {
+func (v AppLaunchContext) SetIcon(icon g.IIcon) {
 	iv, err := _I.Get(3, "AppLaunchContext", "set_icon")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -485,7 +483,7 @@ func CrossingModeGetType() gi.GType {
 
 // Object Cursor
 type Cursor struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapCursor(p unsafe.Pointer) (r Cursor) { r.P = p; return }
@@ -849,7 +847,7 @@ func CursorTypeGetType() gi.GType {
 
 // Object Device
 type Device struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapDevice(p unsafe.Pointer) (r Device) { r.P = p; return }
@@ -1361,7 +1359,7 @@ func (v Device) Grab(window IWindow, grab_ownership GrabOwnershipEnum, owner_eve
 //
 // [ result ] trans: container
 //
-func (v Device) ListAxes() (result glib.List) {
+func (v Device) ListAxes() (result g.List) {
 	iv, err := _I.Get(49, "Device", "list_axes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1379,7 +1377,7 @@ func (v Device) ListAxes() (result glib.List) {
 //
 // [ result ] trans: container
 //
-func (v Device) ListSlaveDevices() (result glib.List) {
+func (v Device) ListSlaveDevices() (result g.List) {
 	iv, err := _I.Get(50, "Device", "list_slave_devices")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1499,7 +1497,7 @@ func (v Device) Warp(screen IScreen, x int32, y int32) {
 
 // Object DeviceManager
 type DeviceManager struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapDeviceManager(p unsafe.Pointer) (r DeviceManager) { r.P = p; return }
@@ -1554,7 +1552,7 @@ func (v DeviceManager) GetDisplay() (result Display) {
 //
 // [ result ] trans: container
 //
-func (v DeviceManager) ListDevices(type1 DeviceTypeEnum) (result glib.List) {
+func (v DeviceManager) ListDevices(type1 DeviceTypeEnum) (result g.List) {
 	iv, err := _I.Get(58, "DeviceManager", "list_devices")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1684,7 +1682,7 @@ func DevicePadFeatureGetType() gi.GType {
 // ignore GType struct DevicePadInterface
 // Object DeviceTool
 type DeviceTool struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapDeviceTool(p unsafe.Pointer) (r DeviceTool) { r.P = p; return }
@@ -1786,7 +1784,7 @@ func DeviceTypeGetType() gi.GType {
 
 // Object Display
 type Display struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapDisplay(p unsafe.Pointer) (r Display) { r.P = p; return }
@@ -2311,7 +2309,7 @@ func (v Display) KeyboardUngrab(time_ uint32) {
 //
 // [ result ] trans: nothing
 //
-func (v Display) ListDevices() (result glib.List) {
+func (v Display) ListDevices() (result g.List) {
 	iv, err := _I.Get(94, "Display", "list_devices")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2329,7 +2327,7 @@ func (v Display) ListDevices() (result glib.List) {
 //
 // [ result ] trans: container
 //
-func (v Display) ListSeats() (result glib.List) {
+func (v Display) ListSeats() (result g.List) {
 	iv, err := _I.Get(95, "Display", "list_seats")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2678,7 +2676,7 @@ func (v Display) WarpPointer(screen IScreen, x int32, y int32) {
 
 // Object DisplayManager
 type DisplayManager struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapDisplayManager(p unsafe.Pointer) (r DisplayManager) { r.P = p; return }
@@ -2713,7 +2711,7 @@ func (v DisplayManager) GetDefaultDisplay() (result Display) {
 //
 // [ result ] trans: container
 //
-func (v DisplayManager) ListDisplays() (result glib.SList) {
+func (v DisplayManager) ListDisplays() (result g.SList) {
 	iv, err := _I.Get(116, "DisplayManager", "list_displays")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2803,7 +2801,7 @@ func DragCancelReasonGetType() gi.GType {
 
 // Object DragContext
 type DragContext struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapDragContext(p unsafe.Pointer) (r DragContext) { r.P = p; return }
@@ -2964,7 +2962,7 @@ func (v DragContext) GetSuggestedAction() (result DragActionFlags) {
 //
 // [ result ] trans: nothing
 //
-func (v DragContext) ListTargets() (result glib.List) {
+func (v DragContext) ListTargets() (result g.List) {
 	iv, err := _I.Get(127, "DragContext", "list_targets")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3066,7 +3064,7 @@ func DragProtocolGetType() gi.GType {
 
 // Object DrawingContext
 type DrawingContext struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapDrawingContext(p unsafe.Pointer) (r DrawingContext) { r.P = p; return }
@@ -3885,7 +3883,7 @@ func EventHandlerSet1(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, not
 	}
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -4347,7 +4345,7 @@ func FilterReturnGetType() gi.GType {
 
 // Object FrameClock
 type FrameClock struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapFrameClock(p unsafe.Pointer) (r FrameClock) { r.P = p; return }
@@ -4715,7 +4713,7 @@ func FullscreenModeGetType() gi.GType {
 
 // Object GLContext
 type GLContext struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapGLContext(p unsafe.Pointer) (r GLContext) { r.P = p; return }
@@ -5114,7 +5112,7 @@ func InputSourceGetType() gi.GType {
 
 // Object Keymap
 type Keymap struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapKeymap(p unsafe.Pointer) (r Keymap) { r.P = p; return }
@@ -5526,7 +5524,7 @@ func ModifierTypeGetType() gi.GType {
 
 // Object Monitor
 type Monitor struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapMonitor(p unsafe.Pointer) (r Monitor) { r.P = p; return }
@@ -6005,7 +6003,7 @@ func (v Rectangle) Union(src2 Rectangle, dest Rectangle) {
 
 // Object Screen
 type Screen struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapScreen(p unsafe.Pointer) (r Screen) { r.P = p; return }
@@ -6395,7 +6393,7 @@ func (v Screen) GetRootWindow() (result Window) {
 //
 // [ result ] trans: nothing
 //
-func (v Screen) GetSetting(name string, value gobject.Value) (result bool) {
+func (v Screen) GetSetting(name string, value g.Value) (result bool) {
 	iv, err := _I.Get(266, "Screen", "get_setting")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6435,7 +6433,7 @@ func (v Screen) GetSystemVisual() (result Visual) {
 //
 // [ result ] trans: container
 //
-func (v Screen) GetToplevelWindows() (result glib.List) {
+func (v Screen) GetToplevelWindows() (result g.List) {
 	iv, err := _I.Get(268, "Screen", "get_toplevel_windows")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6489,7 +6487,7 @@ func (v Screen) GetWidthMm() (result int32) {
 //
 // [ result ] trans: everything
 //
-func (v Screen) GetWindowStack() (result glib.List) {
+func (v Screen) GetWindowStack() (result g.List) {
 	iv, err := _I.Get(271, "Screen", "get_window_stack")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6525,7 +6523,7 @@ func (v Screen) IsComposited() (result bool) {
 //
 // [ result ] trans: container
 //
-func (v Screen) ListVisuals() (result glib.List) {
+func (v Screen) ListVisuals() (result g.List) {
 	iv, err := _I.Get(273, "Screen", "list_visuals")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6607,7 +6605,7 @@ func ScrollDirectionGetType() gi.GType {
 
 // Object Seat
 type Seat struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapSeat(p unsafe.Pointer) (r Seat) { r.P = p; return }
@@ -6698,7 +6696,7 @@ func (v Seat) GetPointer() (result Device) {
 //
 // [ result ] trans: container
 //
-func (v Seat) GetSlaves(capabilities SeatCapabilitiesFlags) (result glib.List) {
+func (v Seat) GetSlaves(capabilities SeatCapabilitiesFlags) (result g.List) {
 	iv, err := _I.Get(281, "Seat", "get_slaves")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6900,7 +6898,7 @@ func VisibilityStateGetType() gi.GType {
 
 // Object Visual
 type Visual struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapVisual(p unsafe.Pointer) (r Visual) { r.P = p; return }
@@ -7219,7 +7217,7 @@ func WMFunctionGetType() gi.GType {
 
 // Object Window
 type Window struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapWindow(p unsafe.Pointer) (r Window) { r.P = p; return }
@@ -7911,7 +7909,7 @@ func (v Window) GetBackgroundPattern() (result cairo.Pattern) {
 //
 // [ result ] trans: container
 //
-func (v Window) GetChildren() (result glib.List) {
+func (v Window) GetChildren() (result g.List) {
 	iv, err := _I.Get(335, "Window", "get_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7931,7 +7929,7 @@ func (v Window) GetChildren() (result glib.List) {
 //
 // [ result ] trans: container
 //
-func (v Window) GetChildrenWithUserData(user_data unsafe.Pointer) (result glib.List) {
+func (v Window) GetChildrenWithUserData(user_data unsafe.Pointer) (result g.List) {
 	iv, err := _I.Get(336, "Window", "get_children_with_user_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9209,7 +9207,7 @@ func (v Window) MoveToRect(rect Rectangle, rect_anchor GravityEnum, window_ancho
 //
 // [ result ] trans: nothing
 //
-func (v Window) PeekChildren() (result glib.List) {
+func (v Window) PeekChildren() (result g.List) {
 	iv, err := _I.Get(400, "Window", "peek_children")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9667,7 +9665,7 @@ func (v Window) SetGroup(leader IWindow) {
 //
 // [ pixbufs ] trans: nothing
 //
-func (v Window) SetIconList(pixbufs glib.List) {
+func (v Window) SetIconList(pixbufs g.List) {
 	iv, err := _I.Get(426, "Window", "set_icon_list")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10032,7 +10030,7 @@ func (v Window) SetUrgencyHint(urgent bool) {
 //
 // [ user_data ] trans: nothing
 //
-func (v Window) SetUserData(user_data gobject.IObject) {
+func (v Window) SetUserData(user_data g.IObject) {
 	iv, err := _I.Get(447, "Window", "set_user_data")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10408,7 +10406,7 @@ func WindowWindowClassGetType() gi.GType {
 //
 // [ group ] trans: nothing
 //
-func AddOptionEntriesLibgtkOnly(group glib.OptionGroup) {
+func AddOptionEntriesLibgtkOnly(group g.OptionGroup) {
 	iv, err := _I.Get(459, "add_option_entries_libgtk_only", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10835,7 +10833,7 @@ func DragAbort(context IDragContext, time_ uint32) {
 //
 // [ result ] trans: everything
 //
-func DragBegin(window IWindow, targets glib.List) (result DragContext) {
+func DragBegin(window IWindow, targets g.List) (result DragContext) {
 	iv, err := _I.Get(478, "drag_begin", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10864,7 +10862,7 @@ func DragBegin(window IWindow, targets glib.List) (result DragContext) {
 //
 // [ result ] trans: everything
 //
-func DragBeginForDevice(window IWindow, device IDevice, targets glib.List) (result DragContext) {
+func DragBeginForDevice(window IWindow, device IDevice, targets g.List) (result DragContext) {
 	iv, err := _I.Get(479, "drag_begin_for_device", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10902,7 +10900,7 @@ func DragBeginForDevice(window IWindow, device IDevice, targets glib.List) (resu
 //
 // [ result ] trans: everything
 //
-func DragBeginFromPoint(window IWindow, device IDevice, targets glib.List, x_root int32, y_root int32) (result DragContext) {
+func DragBeginFromPoint(window IWindow, device IDevice, targets g.List, x_root int32, y_root int32) (result DragContext) {
 	iv, err := _I.Get(480, "drag_begin_from_point", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11263,7 +11261,7 @@ func EventHandlerSet(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, noti
 	}
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -11763,7 +11761,7 @@ func KeyvalToUpper(keyval uint32) (result uint32) {
 //
 // [ result ] trans: container
 //
-func ListVisuals() (result glib.List) {
+func ListVisuals() (result g.List) {
 	iv, err := _I.Get(520, "list_visuals", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12532,7 +12530,7 @@ func SetShowEvents(show_events bool) {
 //
 // [ result ] trans: nothing
 //
-func SettingGet(name string, value gobject.Value) (result bool) {
+func SettingGet(name string, value g.Value) (result bool) {
 	iv, err := _I.Get(551, "setting_get", "")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12731,9 +12729,9 @@ func ThreadsAddIdle(priority int32, function int /*TODO_TYPE CALLBACK*/, data un
 		return
 	}
 	arg_priority := gi.NewInt32Argument(priority)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_mySourceFunc()))
+	arg_function := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySourceFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -12763,9 +12761,9 @@ func ThreadsAddTimeout(priority int32, interval uint32, function int /*TODO_TYPE
 	}
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_interval := gi.NewUint32Argument(interval)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_mySourceFunc()))
+	arg_function := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySourceFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -12795,9 +12793,9 @@ func ThreadsAddTimeoutSeconds(priority int32, interval uint32, function int /*TO
 	}
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_interval := gi.NewUint32Argument(interval)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_mySourceFunc()))
+	arg_function := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySourceFunc()))
 	arg_data := gi.NewPointerArgument(data)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(glib.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

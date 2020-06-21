@@ -13,9 +13,7 @@ return (void*)(myGdkPixbufPixbufSaveFunc);
 }
 */
 import "C"
-import "github.com/electricface/go-gir/gio-2.0"
-import "github.com/electricface/go-gir/glib-2.0"
-import "github.com/electricface/go-gir/gobject-2.0"
+import "github.com/electricface/go-gir/g-2.0"
 import "log"
 import "unsafe"
 import gi "github.com/electricface/go-gir3/gi-lite"
@@ -61,9 +59,9 @@ func InterpTypeGetType() gi.GType {
 
 // Object Pixbuf
 type Pixbuf struct {
-	gio.IconIfc
-	gio.LoadableIconIfc
-	gobject.Object
+	g.IconIfc
+	g.LoadableIconIfc
+	g.Object
 }
 
 func WrapPixbuf(p unsafe.Pointer) (r Pixbuf) { r.P = p; return }
@@ -128,7 +126,7 @@ func NewPixbuf(colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32,
 //
 // [ result ] trans: everything
 //
-func NewPixbufFromBytes(data glib.Bytes, colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32) (result Pixbuf) {
+func NewPixbufFromBytes(data g.Bytes, colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32) (result Pixbuf) {
 	iv, err := _I.Get(1, "Pixbuf", "new_from_bytes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -372,7 +370,7 @@ func NewPixbufFromResourceAtScale(resource_path string, width int32, height int3
 //
 // [ result ] trans: everything
 //
-func NewPixbufFromStream(stream gio.IInputStream, cancellable gio.ICancellable) (result Pixbuf, err error) {
+func NewPixbufFromStream(stream g.IInputStream, cancellable g.ICancellable) (result Pixbuf, err error) {
 	iv, err := _I.Get(9, "Pixbuf", "new_from_stream")
 	if err != nil {
 		return
@@ -411,7 +409,7 @@ func NewPixbufFromStream(stream gio.IInputStream, cancellable gio.ICancellable) 
 //
 // [ result ] trans: everything
 //
-func NewPixbufFromStreamAtScale(stream gio.IInputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable gio.ICancellable) (result Pixbuf, err error) {
+func NewPixbufFromStreamAtScale(stream g.IInputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable g.ICancellable) (result Pixbuf, err error) {
 	iv, err := _I.Get(10, "Pixbuf", "new_from_stream_at_scale")
 	if err != nil {
 		return
@@ -445,7 +443,7 @@ func NewPixbufFromStreamAtScale(stream gio.IInputStream, width int32, height int
 //
 // [ result ] trans: everything
 //
-func NewPixbufFromStreamFinish(async_result gio.IAsyncResult) (result Pixbuf, err error) {
+func NewPixbufFromStreamFinish(async_result g.IAsyncResult) (result Pixbuf, err error) {
 	iv, err := _I.Get(11, "Pixbuf", "new_from_stream_finish")
 	if err != nil {
 		return
@@ -558,7 +556,7 @@ func PixbufGetFileInfo1(filename string) (result PixbufFormat, width int32, heig
 //
 // [ user_data ] trans: nothing
 //
-func PixbufGetFileInfoAsync1(filename string, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func PixbufGetFileInfoAsync1(filename string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(15, "Pixbuf", "get_file_info_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -571,7 +569,7 @@ func PixbufGetFileInfoAsync1(filename string, cancellable gio.ICancellable, call
 	}
 	arg_filename := gi.NewStringArgument(c_filename)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_filename, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -588,7 +586,7 @@ func PixbufGetFileInfoAsync1(filename string, cancellable gio.ICancellable, call
 //
 // [ result ] trans: nothing
 //
-func PixbufGetFileInfoFinish1(async_result gio.IAsyncResult) (result PixbufFormat, width int32, height int32, err error) {
+func PixbufGetFileInfoFinish1(async_result g.IAsyncResult) (result PixbufFormat, width int32, height int32, err error) {
 	iv, err := _I.Get(16, "Pixbuf", "get_file_info_finish")
 	if err != nil {
 		return
@@ -622,7 +620,7 @@ func PixbufGetFileInfoFinish1(async_result gio.IAsyncResult) (result PixbufForma
 //
 // [ user_data ] trans: nothing
 //
-func PixbufNewFromStreamAsync1(stream gio.IInputStream, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func PixbufNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(18, "Pixbuf", "new_from_stream_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -638,7 +636,7 @@ func PixbufNewFromStreamAsync1(stream gio.IInputStream, cancellable gio.ICancell
 	}
 	arg_stream := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -660,7 +658,7 @@ func PixbufNewFromStreamAsync1(stream gio.IInputStream, cancellable gio.ICancell
 //
 // [ user_data ] trans: nothing
 //
-func PixbufNewFromStreamAtScaleAsync1(stream gio.IInputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func PixbufNewFromStreamAtScaleAsync1(stream g.IInputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(19, "Pixbuf", "new_from_stream_at_scale_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -679,7 +677,7 @@ func PixbufNewFromStreamAtScaleAsync1(stream gio.IInputStream, width int32, heig
 	arg_height := gi.NewInt32Argument(height)
 	arg_preserve_aspect_ratio := gi.NewBoolArgument(preserve_aspect_ratio)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_stream, arg_width, arg_height, arg_preserve_aspect_ratio, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -691,7 +689,7 @@ func PixbufNewFromStreamAtScaleAsync1(stream gio.IInputStream, width int32, heig
 //
 // [ result ] trans: nothing
 //
-func PixbufSaveToStreamFinish1(async_result gio.IAsyncResult) (result bool, err error) {
+func PixbufSaveToStreamFinish1(async_result g.IAsyncResult) (result bool, err error) {
 	iv, err := _I.Get(20, "Pixbuf", "save_to_stream_finish")
 	if err != nil {
 		return
@@ -1166,7 +1164,7 @@ func (v Pixbuf) GetOption(key string) (result string) {
 //
 // [ result ] trans: container
 //
-func (v Pixbuf) GetOptions() (result glib.HashTable) {
+func (v Pixbuf) GetOptions() (result g.HashTable) {
 	iv, err := _I.Get(38, "Pixbuf", "get_options")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1275,7 +1273,7 @@ func (v Pixbuf) NewSubpixbuf(src_x int32, src_y int32, width int32, height int32
 //
 // [ result ] trans: everything
 //
-func (v Pixbuf) ReadPixelBytes() (result glib.Bytes) {
+func (v Pixbuf) ReadPixelBytes() (result g.Bytes) {
 	iv, err := _I.Get(43, "Pixbuf", "read_pixel_bytes")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1470,7 +1468,7 @@ func (v Pixbuf) SaveToCallbackv(save_func int /*TODO_TYPE CALLBACK*/, user_data 
 //
 // [ result ] trans: nothing
 //
-func (v Pixbuf) SaveToStreamv(stream gio.IOutputStream, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray, cancellable gio.ICancellable) (result bool, err error) {
+func (v Pixbuf) SaveToStreamv(stream g.IOutputStream, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray, cancellable g.ICancellable) (result bool, err error) {
 	iv, err := _I.Get(50, "Pixbuf", "save_to_streamv")
 	if err != nil {
 		return
@@ -1517,7 +1515,7 @@ func (v Pixbuf) SaveToStreamv(stream gio.IOutputStream, type1 string, option_key
 //
 // [ user_data ] trans: nothing
 //
-func (v Pixbuf) SaveToStreamvAsync(stream gio.IOutputStream, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v Pixbuf) SaveToStreamvAsync(stream g.IOutputStream, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(51, "Pixbuf", "save_to_streamv_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1538,7 +1536,7 @@ func (v Pixbuf) SaveToStreamvAsync(stream gio.IOutputStream, type1 string, optio
 	arg_option_keys := gi.NewPointerArgument(option_keys.P)
 	arg_option_values := gi.NewPointerArgument(option_values.P)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_stream, arg_type1, arg_option_keys, arg_option_values, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -1698,7 +1696,7 @@ func PixbufAlphaModeGetType() gi.GType {
 
 // Object PixbufAnimation
 type PixbufAnimation struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapPixbufAnimation(p unsafe.Pointer) (r PixbufAnimation) { r.P = p; return }
@@ -1767,7 +1765,7 @@ func NewPixbufAnimationFromResource(resource_path string) (result PixbufAnimatio
 //
 // [ result ] trans: everything
 //
-func NewPixbufAnimationFromStream(stream gio.IInputStream, cancellable gio.ICancellable) (result PixbufAnimation, err error) {
+func NewPixbufAnimationFromStream(stream g.IInputStream, cancellable g.ICancellable) (result PixbufAnimation, err error) {
 	iv, err := _I.Get(58, "PixbufAnimation", "new_from_stream")
 	if err != nil {
 		return
@@ -1798,7 +1796,7 @@ func NewPixbufAnimationFromStream(stream gio.IInputStream, cancellable gio.ICanc
 //
 // [ result ] trans: everything
 //
-func NewPixbufAnimationFromStreamFinish(async_result gio.IAsyncResult) (result PixbufAnimation, err error) {
+func NewPixbufAnimationFromStreamFinish(async_result g.IAsyncResult) (result PixbufAnimation, err error) {
 	iv, err := _I.Get(59, "PixbufAnimation", "new_from_stream_finish")
 	if err != nil {
 		return
@@ -1828,7 +1826,7 @@ func NewPixbufAnimationFromStreamFinish(async_result gio.IAsyncResult) (result P
 //
 // [ user_data ] trans: nothing
 //
-func PixbufAnimationNewFromStreamAsync1(stream gio.IInputStream, cancellable gio.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func PixbufAnimationNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
 	iv, err := _I.Get(60, "PixbufAnimation", "new_from_stream_async")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1844,7 +1842,7 @@ func PixbufAnimationNewFromStreamAsync1(stream gio.IInputStream, cancellable gio
 	}
 	arg_stream := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(gio.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
@@ -1874,7 +1872,7 @@ func (v PixbufAnimation) GetHeight() (result int32) {
 //
 // [ result ] trans: everything
 //
-func (v PixbufAnimation) GetIter(start_time glib.TimeVal) (result PixbufAnimationIter) {
+func (v PixbufAnimation) GetIter(start_time g.TimeVal) (result PixbufAnimationIter) {
 	iv, err := _I.Get(62, "PixbufAnimation", "get_iter")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1945,7 +1943,7 @@ func (v PixbufAnimation) IsStaticImage() (result bool) {
 
 // Object PixbufAnimationIter
 type PixbufAnimationIter struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapPixbufAnimationIter(p unsafe.Pointer) (r PixbufAnimationIter) { r.P = p; return }
@@ -1964,7 +1962,7 @@ func PixbufAnimationIterGetType() gi.GType {
 //
 // [ result ] trans: nothing
 //
-func (v PixbufAnimationIter) Advance(current_time glib.TimeVal) (result bool) {
+func (v PixbufAnimationIter) Advance(current_time g.TimeVal) (result bool) {
 	iv, err := _I.Get(66, "PixbufAnimationIter", "advance")
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2293,7 +2291,7 @@ func (v PixbufFormat) SetDisabled(disabled bool) {
 
 // Object PixbufLoader
 type PixbufLoader struct {
-	gobject.Object
+	g.Object
 }
 
 func WrapPixbufLoader(p unsafe.Pointer) (r PixbufLoader) { r.P = p; return }
@@ -2495,7 +2493,7 @@ func (v PixbufLoader) Write(buf gi.Uint8Array, count uint64) (result bool, err e
 //
 // [ result ] trans: nothing
 //
-func (v PixbufLoader) WriteBytes(buffer glib.Bytes) (result bool, err error) {
+func (v PixbufLoader) WriteBytes(buffer g.Bytes) (result bool, err error) {
 	iv, err := _I.Get(91, "PixbufLoader", "write_bytes")
 	if err != nil {
 		return
