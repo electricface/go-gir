@@ -34,6 +34,7 @@ import "C"
 
 import (
 	"errors"
+	"reflect"
 	"unsafe"
 
 	"github.com/electricface/go-gir/glib-2.0"
@@ -48,6 +49,26 @@ import (
 func NewValue() Value {
 	p := gi.Malloc0(SizeOfStructValue)
 	return Value{P: p}
+}
+
+func NewValueT(gType gi.GType) Value {
+	v := NewValue()
+	v.Init(gType)
+	return v
+}
+
+func NewValueWith(iVal interface{}) (Value, error) {
+	v := NewValue()
+	type0, err := getValueType(iVal)
+	if err != nil {
+		return Value{}, err
+	}
+	v.Init(type0)
+	err = v.Set(iVal)
+	if err != nil {
+		return Value{}, err
+	}
+	return v, nil
 }
 
 func (v *Value) Free() {
@@ -286,6 +307,54 @@ func (v Value) get(typ gi.GType) (ret interface{}, err error) {
 
 var errTypeConvert = errors.New("type convert failed")
 
+func getValueType(iVal interface{}) (gType gi.GType, err error) {
+	switch iVal.(type) {
+	case int8:
+		gType = TYPE_CHAR
+	case uint8:
+		gType = TYPE_UCHAR
+	case bool:
+		gType = TYPE_BOOLEAN
+	case int:
+		gType = TYPE_INT
+	case uint:
+		gType = TYPE_UINT
+	case int32:
+		gType = TYPE_INT
+	case uint32:
+		gType = TYPE_UINT
+	case gi.Long:
+		gType = TYPE_LONG
+	case gi.Ulong:
+		gType = TYPE_ULONG
+	case int64:
+		gType = TYPE_INT64
+	case uint64:
+		gType = TYPE_UINT64
+	case gi.Enum:
+		gType = TYPE_ENUM
+	case gi.Flags:
+		gType = TYPE_FLAGS
+	case float32:
+		gType = TYPE_FLOAT
+	case float64:
+		gType = TYPE_DOUBLE
+	case string:
+		gType = TYPE_STRING
+	case unsafe.Pointer:
+		gType = TYPE_POINTER
+	case ParamSpec:
+		gType = TYPE_PARAM
+	case Object:
+		gType = TYPE_OBJECT
+	case glib.Variant:
+		gType = TYPE_VARIANT
+	default:
+		err = errors.New("unsupported type")
+	}
+	return
+}
+
 func (v Value) Set(iVal interface{}) error {
 	cType := C._g_value_type(v.p())
 	gType := gi.GType(cType)
@@ -321,32 +390,40 @@ func (v Value) Set(iVal interface{}) error {
 		v.SetBoolean(val)
 
 	case TYPE_INT:
-		val, ok := iVal.(int32)
-		if !ok {
+		rv := reflect.ValueOf(iVal)
+		if rv.Type().ConvertibleTo(gi.TypeInt) {
+			val := rv.Int()
+			v.SetInt(int32(val))
+		} else {
 			return errTypeConvert
 		}
-		v.SetInt(val)
 
 	case TYPE_UINT:
-		val, ok := iVal.(uint32)
-		if !ok {
+		rv := reflect.ValueOf(iVal)
+		if rv.Type().ConvertibleTo(gi.TypeUint) {
+			val := rv.Uint()
+			v.SetUint(uint32(val))
+		} else {
 			return errTypeConvert
 		}
-		v.SetUint(val)
 
 	case TYPE_LONG:
-		val, ok := iVal.(int64)
-		if !ok {
+		rv := reflect.ValueOf(iVal)
+		if rv.Type().ConvertibleTo(gi.TypeInt) {
+			val := rv.Int()
+			v.SetLong(val)
+		} else {
 			return errTypeConvert
 		}
-		v.SetLong(val)
 
 	case TYPE_ULONG:
-		val, ok := iVal.(uint64)
-		if !ok {
+		rv := reflect.ValueOf(iVal)
+		if rv.Type().ConvertibleTo(gi.TypeUint) {
+			val := rv.Uint()
+			v.SetUlong(val)
+		} else {
 			return errTypeConvert
 		}
-		v.SetUlong(val)
 
 	case TYPE_INT64:
 		val, ok := iVal.(int64)
