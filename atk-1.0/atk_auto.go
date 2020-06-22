@@ -366,6 +366,8 @@ func (v *ComponentIfc) GetMdiZorder() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // atk_component_get_position
 //
 // [ x ] trans: everything, dir: out
@@ -392,6 +394,8 @@ func (v *ComponentIfc) GetPosition(coord_type CoordTypeEnum) (x int32, y int32) 
 	return
 }
 
+// Deprecated
+//
 // atk_component_get_size
 //
 // [ width ] trans: everything, dir: out
@@ -460,6 +464,8 @@ func (v *ComponentIfc) RefAccessibleAtPoint(x int32, y int32, coord_type CoordTy
 	return
 }
 
+// Deprecated
+//
 // atk_component_remove_focus_handler
 //
 // [ handler_id ] trans: nothing
@@ -696,6 +702,8 @@ func (v *DocumentIfc) GetCurrentPageNumber() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // atk_document_get_document
 //
 // [ result ] trans: nothing
@@ -714,6 +722,8 @@ func (v *DocumentIfc) GetDocument() (result unsafe.Pointer) {
 	return
 }
 
+// Deprecated
+//
 // atk_document_get_document_type
 //
 // [ result ] trans: nothing
@@ -732,6 +742,8 @@ func (v *DocumentIfc) GetDocumentType() (result string) {
 	return
 }
 
+// Deprecated
+//
 // atk_document_get_locale
 //
 // [ result ] trans: nothing
@@ -1196,6 +1208,8 @@ func (v Hyperlink) IsInline() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // atk_hyperlink_is_selected_link
 //
 // [ result ] trans: nothing
@@ -1595,6 +1609,10 @@ func MiscGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
+// Deprecated
+//
 // atk_misc_threads_enter
 //
 func (v Misc) ThreadsEnter() {
@@ -1608,6 +1626,8 @@ func (v Misc) ThreadsEnter() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // atk_misc_threads_leave
 //
 func (v Misc) ThreadsLeave() {
@@ -1815,6 +1835,8 @@ func (v Object) GetIndexInParent() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // atk_object_get_layer
 //
 // [ result ] trans: nothing
@@ -1833,6 +1855,8 @@ func (v Object) GetLayer() (result LayerEnum) {
 	return
 }
 
+// Deprecated
+//
 // atk_object_get_mdi_zorder
 //
 // [ result ] trans: nothing
@@ -2051,6 +2075,8 @@ func (v Object) RefStateSet() (result StateSet) {
 	return
 }
 
+// Deprecated
+//
 // atk_object_remove_property_change_handler
 //
 // [ handler_id ] trans: nothing
@@ -3739,6 +3765,8 @@ func (v *TableIfc) GetCaption() (result Object) {
 	return
 }
 
+// Deprecated
+//
 // atk_table_get_column_at_index
 //
 // [ index_ ] trans: nothing
@@ -3826,6 +3854,8 @@ func (v *TableIfc) GetColumnHeader(column int32) (result Object) {
 	return
 }
 
+// Deprecated
+//
 // atk_table_get_index_at
 //
 // [ row ] trans: nothing
@@ -3886,6 +3916,8 @@ func (v *TableIfc) GetNRows() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // atk_table_get_row_at_index
 //
 // [ index_ ] trans: nothing
@@ -4844,6 +4876,8 @@ func (v *TextIfc) GetText(start_offset int32, end_offset int32) (result string) 
 	return
 }
 
+// Deprecated
+//
 // atk_text_get_text_after_offset
 //
 // [ offset ] trans: nothing
@@ -4877,6 +4911,8 @@ func (v *TextIfc) GetTextAfterOffset(offset int32, boundary_type TextBoundaryEnu
 	return
 }
 
+// Deprecated
+//
 // atk_text_get_text_at_offset
 //
 // [ offset ] trans: nothing
@@ -4910,6 +4946,8 @@ func (v *TextIfc) GetTextAtOffset(offset int32, boundary_type TextBoundaryEnum) 
 	return
 }
 
+// Deprecated
+//
 // atk_text_get_text_before_offset
 //
 // [ offset ] trans: nothing
@@ -5156,6 +5194,8 @@ func ValueGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // atk_value_get_current_value
 //
 // [ value ] trans: nothing, dir: out
@@ -5190,6 +5230,8 @@ func (v *ValueIfc) GetIncrement() (result float64) {
 	return
 }
 
+// Deprecated
+//
 // atk_value_get_maximum_value
 //
 // [ value ] trans: nothing, dir: out
@@ -5206,6 +5248,8 @@ func (v *ValueIfc) GetMaximumValue(value g.Value) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // atk_value_get_minimum_increment
 //
 // [ value ] trans: nothing, dir: out
@@ -5222,6 +5266,8 @@ func (v *ValueIfc) GetMinimumIncrement(value g.Value) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // atk_value_get_minimum_value
 //
 // [ value ] trans: nothing, dir: out
@@ -5297,6 +5343,8 @@ func (v *ValueIfc) GetValueAndText() (value float64, text string) {
 	return
 }
 
+// Deprecated
+//
 // atk_value_set_current_value
 //
 // [ value ] trans: nothing
@@ -5392,6 +5440,8 @@ func AttributeSetFree(attrib_set g.SList) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // atk_focus_tracker_notify
 //
 // [ object ] trans: nothing
@@ -5651,6 +5701,8 @@ func RelationTypeRegister(name string) (result RelationTypeEnum) {
 	return
 }
 
+// Deprecated
+//
 // atk_remove_focus_tracker
 //
 // [ tracker_id ] trans: nothing
@@ -5758,6 +5810,8 @@ func RoleGetName(role RoleEnum) (result string) {
 	return
 }
 
+// Deprecated
+//
 // atk_role_register
 //
 // [ name ] trans: nothing

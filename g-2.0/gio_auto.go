@@ -2276,6 +2276,8 @@ func (v Application) SendNotification(id string, notification INotification) {
 	gi.Free(c_id)
 }
 
+// Deprecated
+//
 // g_application_set_action_group
 //
 // [ action_group ] trans: nothing
@@ -2788,6 +2790,8 @@ func AsyncInitableGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_async_initable_newv_async
 //
 // [ object_type ] trans: nothing
@@ -10866,6 +10870,8 @@ func (v DataInputStream) ReadUint64(cancellable ICancellable) (result uint64, er
 	return
 }
 
+// Deprecated
+//
 // g_data_input_stream_read_until
 //
 // [ stop_chars ] trans: nothing
@@ -10902,6 +10908,8 @@ func (v DataInputStream) ReadUntil(stop_chars string, cancellable ICancellable) 
 	return
 }
 
+// Deprecated
+//
 // g_data_input_stream_read_until_async
 //
 // [ stop_chars ] trans: nothing
@@ -10936,6 +10944,8 @@ func (v DataInputStream) ReadUntilAsync(stop_chars string, io_priority int32, ca
 	gi.Free(c_stop_chars)
 }
 
+// Deprecated
+//
 // g_data_input_stream_read_until_finish
 //
 // [ result ] trans: nothing
@@ -11793,6 +11803,8 @@ func DesktopAppInfoSearch1(search_string string) (result int /*TODO_TYPE array t
 	return
 }
 
+// Deprecated
+//
 // g_desktop_app_info_set_desktop_env
 //
 // [ desktop_env ] trans: nothing
@@ -12233,6 +12245,8 @@ func DesktopAppInfoLookupGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_desktop_app_info_lookup_get_default_for_uri_scheme
 //
 // [ uri_scheme ] trans: nothing
@@ -12380,6 +12394,8 @@ func (v *DriveIfc) CanStop() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // g_drive_eject
 //
 // [ flags ] trans: nothing
@@ -12409,6 +12425,8 @@ func (v *DriveIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, call
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_drive_eject_finish
 //
 // [ result ] trans: nothing
@@ -14580,6 +14598,8 @@ func (v *FileIfc) Dup() (result File) {
 	return
 }
 
+// Deprecated
+//
 // g_file_eject_mountable
 //
 // [ flags ] trans: nothing
@@ -14609,6 +14629,8 @@ func (v *FileIfc) EjectMountable(flags MountUnmountFlags, cancellable ICancellab
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_file_eject_mountable_finish
 //
 // [ result ] trans: nothing
@@ -17534,6 +17556,8 @@ func (v *FileIfc) TrashFinish(result IAsyncResult) (result1 bool, err error) {
 	return
 }
 
+// Deprecated
+//
 // g_file_unmount_mountable
 //
 // [ flags ] trans: nothing
@@ -17563,6 +17587,8 @@ func (v *FileIfc) UnmountMountable(flags MountUnmountFlags, cancellable ICancell
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_file_unmount_mountable_finish
 //
 // [ result ] trans: nothing
@@ -21060,6 +21086,8 @@ func IOSchedulerJobGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_io_scheduler_job_send_to_mainloop
 //
 // [ func1 ] trans: nothing
@@ -21087,6 +21115,8 @@ func (v IOSchedulerJob) SendToMainloop(func1 int /*TODO_TYPE CALLBACK*/, user_da
 	return
 }
 
+// Deprecated
+//
 // g_io_scheduler_job_send_to_mainloop_async
 //
 // [ func1 ] trans: nothing
@@ -22311,6 +22341,8 @@ func InitableGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_initable_newv
 //
 // [ object_type ] trans: nothing
@@ -24754,6 +24786,8 @@ func (v *MountIfc) CanUnmount() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // g_mount_eject
 //
 // [ flags ] trans: nothing
@@ -24783,6 +24817,8 @@ func (v *MountIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, call
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_mount_eject_finish
 //
 // [ result ] trans: nothing
@@ -25217,6 +25253,8 @@ func (v *MountIfc) Shadow() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_mount_unmount
 //
 // [ flags ] trans: nothing
@@ -25246,6 +25284,8 @@ func (v *MountIfc) Unmount(flags MountUnmountFlags, cancellable ICancellable, ca
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_mount_unmount_finish
 //
 // [ result ] trans: nothing
@@ -26491,6 +26531,8 @@ func (v Notification) SetTitle(title string) {
 	gi.Free(c_title)
 }
 
+// Deprecated
+//
 // g_notification_set_urgent
 //
 // [ urgent ] trans: nothing
@@ -29408,6 +29450,10 @@ func NewSettingsWithPath(schema_id string, path string) (result Settings) {
 	return
 }
 
+// Deprecated
+//
+// Deprecated
+//
 // g_settings_unbind
 //
 // [ object ] trans: nothing
@@ -29778,6 +29824,8 @@ func (v Settings) GetMapped(key string, mapping int /*TODO_TYPE CALLBACK*/, user
 	return
 }
 
+// Deprecated
+//
 // g_settings_get_range
 //
 // [ key ] trans: nothing
@@ -30001,6 +30049,8 @@ func (v Settings) ListKeys() (result gi.CStrArray) {
 	return
 }
 
+// Deprecated
+//
 // g_settings_range_check
 //
 // [ key ] trans: nothing
@@ -31216,6 +31266,8 @@ func NewSimpleActionGroup() (result SimpleActionGroup) {
 	return
 }
 
+// Deprecated
+//
 // g_simple_action_group_add_entries
 //
 // [ entries ] trans: nothing
@@ -31238,6 +31290,8 @@ func (v SimpleActionGroup) AddEntries(entries unsafe.Pointer, n_entries int32, u
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_simple_action_group_insert
 //
 // [ action ] trans: nothing
@@ -31258,6 +31312,8 @@ func (v SimpleActionGroup) Insert(action IAction) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_simple_action_group_lookup
 //
 // [ action_name ] trans: nothing
@@ -31281,6 +31337,8 @@ func (v SimpleActionGroup) Lookup(action_name string) (result Action) {
 	return
 }
 
+// Deprecated
+//
 // g_simple_action_group_remove
 //
 // [ action_name ] trans: nothing
@@ -31327,6 +31385,8 @@ func SimpleAsyncResultGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_simple_async_result_new
 //
 // [ source_object ] trans: nothing
@@ -31360,6 +31420,8 @@ func NewSimpleAsyncResult(source_object IObject, callback int /*TODO_TYPE CALLBA
 	return
 }
 
+// Deprecated
+//
 // g_simple_async_result_new_from_error
 //
 // [ source_object ] trans: nothing
@@ -31393,6 +31455,8 @@ func NewSimpleAsyncResultFromError(source_object IObject, callback int /*TODO_TY
 	return
 }
 
+// Deprecated
+//
 // g_simple_async_result_is_valid
 //
 // [ result ] trans: nothing
@@ -31427,6 +31491,8 @@ func SimpleAsyncResultIsValid1(result IAsyncResult, source IObject, source_tag u
 	return
 }
 
+// Deprecated
+//
 // g_simple_async_result_complete
 //
 func (v SimpleAsyncResult) Complete() {
@@ -31440,6 +31506,8 @@ func (v SimpleAsyncResult) Complete() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_simple_async_result_complete_in_idle
 //
 func (v SimpleAsyncResult) CompleteInIdle() {
@@ -31453,6 +31521,8 @@ func (v SimpleAsyncResult) CompleteInIdle() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_simple_async_result_get_op_res_gboolean
 //
 // [ result ] trans: nothing
@@ -31471,6 +31541,8 @@ func (v SimpleAsyncResult) GetOpResGboolean() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // g_simple_async_result_get_op_res_gssize
 //
 // [ result ] trans: nothing
@@ -31489,6 +31561,8 @@ func (v SimpleAsyncResult) GetOpResGssize() (result int64) {
 	return
 }
 
+// Deprecated
+//
 // g_simple_async_result_propagate_error
 //
 // [ result ] trans: nothing
@@ -31509,6 +31583,8 @@ func (v SimpleAsyncResult) PropagateError() (result bool, err error) {
 	return
 }
 
+// Deprecated
+//
 // g_simple_async_result_set_check_cancellable
 //
 // [ check_cancellable ] trans: nothing
@@ -31529,6 +31605,8 @@ func (v SimpleAsyncResult) SetCheckCancellable(check_cancellable ICancellable) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_simple_async_result_set_from_error
 //
 // [ error ] trans: nothing
@@ -31545,6 +31623,8 @@ func (v SimpleAsyncResult) SetFromError(error Error) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_simple_async_result_set_handle_cancellation
 //
 // [ handle_cancellation ] trans: nothing
@@ -31561,6 +31641,8 @@ func (v SimpleAsyncResult) SetHandleCancellation(handle_cancellation bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_simple_async_result_set_op_res_gboolean
 //
 // [ op_res ] trans: nothing
@@ -31577,6 +31659,8 @@ func (v SimpleAsyncResult) SetOpResGboolean(op_res bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_simple_async_result_set_op_res_gssize
 //
 // [ op_res ] trans: nothing
@@ -37886,6 +37970,8 @@ func (v *TlsClientConnectionIfc) GetServerIdentity() (result SocketConnectable) 
 	return
 }
 
+// Deprecated
+//
 // g_tls_client_connection_get_use_ssl3
 //
 // [ result ] trans: nothing
@@ -37942,6 +38028,8 @@ func (v *TlsClientConnectionIfc) SetServerIdentity(identity ISocketConnectable) 
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_tls_client_connection_set_use_ssl3
 //
 // [ use_ssl3 ] trans: nothing
@@ -38144,6 +38232,8 @@ func (v TlsConnection) GetRequireCloseNotify() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // g_tls_connection_get_use_system_certdb
 //
 // [ result ] trans: nothing
@@ -38337,6 +38427,8 @@ func (v TlsConnection) SetRequireCloseNotify(require_close_notify bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_tls_connection_set_use_system_certdb
 //
 // [ use_system_certdb ] trans: nothing
@@ -40334,6 +40426,8 @@ func UnixMountMonitorGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_unix_mount_monitor_new
 //
 // [ result ] trans: everything
@@ -40350,6 +40444,8 @@ func NewUnixMountMonitor() (result UnixMountMonitor) {
 	return
 }
 
+// Deprecated
+//
 // g_unix_mount_monitor_set_rate_limit
 //
 // [ limit_msec ] trans: nothing
@@ -40771,6 +40867,8 @@ func NewUnixSocketAddress(path string) (result UnixSocketAddress) {
 	return
 }
 
+// Deprecated
+//
 // g_unix_socket_address_new_abstract
 //
 // [ path ] trans: nothing
@@ -40838,6 +40936,8 @@ func (v UnixSocketAddress) GetAddressType() (result UnixSocketAddressTypeEnum) {
 	return
 }
 
+// Deprecated
+//
 // g_unix_socket_address_get_is_abstract
 //
 // [ result ] trans: nothing
@@ -41174,6 +41274,8 @@ func (v *VolumeIfc) CanMount() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // g_volume_eject
 //
 // [ flags ] trans: nothing
@@ -41203,6 +41305,8 @@ func (v *VolumeIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, cal
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_volume_eject_finish
 //
 // [ result ] trans: nothing
@@ -41576,6 +41680,8 @@ func VolumeMonitorGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_volume_monitor_adopt_orphan_mount
 //
 // [ mount ] trans: nothing
@@ -42201,6 +42307,8 @@ func AppInfoResetTypeAssociations(content_type string) {
 	gi.Free(c_content_type)
 }
 
+// Deprecated
+//
 // g_async_initable_newv_async
 //
 // [ object_type ] trans: nothing
@@ -43691,6 +43799,8 @@ func IconNewForString(str string) (result Icon, err error) {
 	return
 }
 
+// Deprecated
+//
 // g_initable_newv
 //
 // [ object_type ] trans: nothing
@@ -43923,6 +44033,8 @@ func IoModulesScanAllInDirectoryWithScope(dirname string, scope IOModuleScope) {
 	gi.Free(c_dirname)
 }
 
+// Deprecated
+//
 // g_io_scheduler_cancel_all_jobs
 //
 func IoSchedulerCancelAllJobs() {
@@ -43934,6 +44046,8 @@ func IoSchedulerCancelAllJobs() {
 	iv.Call(nil, nil, nil)
 }
 
+// Deprecated
+//
 // g_io_scheduler_push_job
 //
 // [ job_func ] trans: nothing
@@ -44501,6 +44615,8 @@ func SettingsSchemaSourceGetDefault() (result SettingsSchemaSource) {
 	return
 }
 
+// Deprecated
+//
 // g_simple_async_report_gerror_in_idle
 //
 // [ object ] trans: nothing

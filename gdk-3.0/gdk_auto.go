@@ -80,6 +80,8 @@ func AppLaunchContextGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gdk_app_launch_context_new
 //
 // [ result ] trans: everything
@@ -112,6 +114,8 @@ func (v AppLaunchContext) SetDesktop(desktop int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_app_launch_context_set_display
 //
 // [ display ] trans: nothing
@@ -336,6 +340,8 @@ func ByteOrderGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Struct Color
 type Color struct {
 	P unsafe.Pointer
@@ -348,6 +354,8 @@ func ColorGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gdk_color_copy
 //
 // [ result ] trans: everything
@@ -366,6 +374,8 @@ func (v Color) Copy() (result Color) {
 	return
 }
 
+// Deprecated
+//
 // gdk_color_equal
 //
 // [ colorb ] trans: nothing
@@ -387,6 +397,8 @@ func (v Color) Equal(colorb Color) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gdk_color_free
 //
 func (v Color) Free() {
@@ -400,6 +412,8 @@ func (v Color) Free() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_color_hash
 //
 // [ result ] trans: nothing
@@ -418,6 +432,8 @@ func (v Color) Hash() (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_color_to_string
 //
 // [ result ] trans: everything
@@ -436,6 +452,8 @@ func (v Color) ToString() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gdk_color_parse
 //
 // [ spec ] trans: nothing
@@ -496,6 +514,8 @@ func CursorGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gdk_cursor_new
 //
 // [ cursor_type ] trans: nothing
@@ -723,6 +743,8 @@ func (v Cursor) GetSurface() (result cairo.Surface, x_hot float64, y_hot float64
 	return
 }
 
+// Deprecated
+//
 // gdk_cursor_ref
 //
 // [ result ] trans: everything
@@ -741,6 +763,8 @@ func (v Cursor) Ref() (result Cursor) {
 	return
 }
 
+// Deprecated
+//
 // gdk_cursor_unref
 //
 func (v Cursor) Unref() {
@@ -860,6 +884,8 @@ func DeviceGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gdk_device_grab_info_libgtk_only
 //
 // [ display ] trans: nothing
@@ -1311,6 +1337,8 @@ func (v Device) GetWindowAtPositionDouble() (result Window, win_x float64, win_y
 	return
 }
 
+// Deprecated
+//
 // gdk_device_grab
 //
 // [ window ] trans: nothing
@@ -1453,6 +1481,8 @@ func (v Device) SetMode(mode InputModeEnum) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gdk_device_ungrab
 //
 // [ time_ ] trans: nothing
@@ -1510,6 +1540,8 @@ func DeviceManagerGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gdk_device_manager_get_client_pointer
 //
 // [ result ] trans: nothing
@@ -1546,6 +1578,8 @@ func (v DeviceManager) GetDisplay() (result Display) {
 	return
 }
 
+// Deprecated
+//
 // gdk_device_manager_list_devices
 //
 // [ type1 ] trans: nothing
@@ -1819,6 +1853,8 @@ func DisplayOpen1(display_name string) (result Display) {
 	return
 }
 
+// Deprecated
+//
 // gdk_display_beep
 //
 func (v Display) Beep() {
@@ -1973,6 +2009,8 @@ func (v Display) GetDefaultSeat() (result Seat) {
 	return
 }
 
+// Deprecated
+//
 // gdk_display_get_device_manager
 //
 // [ result ] trans: nothing
@@ -2120,6 +2158,8 @@ func (v Display) GetNMonitors() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_display_get_n_screens
 //
 // [ result ] trans: nothing
@@ -2156,6 +2196,8 @@ func (v Display) GetName() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gdk_display_get_pointer
 //
 // [ screen ] trans: nothing, dir: out
@@ -2205,6 +2247,8 @@ func (v Display) GetPrimaryMonitor() (result Monitor) {
 	return
 }
 
+// Deprecated
+//
 // gdk_display_get_screen
 //
 // [ screen_num ] trans: nothing
@@ -2226,6 +2270,8 @@ func (v Display) GetScreen(screen_num int32) (result Screen) {
 	return
 }
 
+// Deprecated
+//
 // gdk_display_get_window_at_pointer
 //
 // [ win_x ] trans: everything, dir: out
@@ -2289,6 +2335,8 @@ func (v Display) IsClosed() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gdk_display_keyboard_ungrab
 //
 // [ time_ ] trans: nothing
@@ -2305,6 +2353,8 @@ func (v Display) KeyboardUngrab(time_ uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_display_list_devices
 //
 // [ result ] trans: nothing
@@ -2377,6 +2427,8 @@ func (v Display) PeekEvent() (result Event) {
 	return
 }
 
+// Deprecated
+//
 // gdk_display_pointer_is_grabbed
 //
 // [ result ] trans: nothing
@@ -2395,6 +2447,8 @@ func (v Display) PointerIsGrabbed() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gdk_display_pointer_ungrab
 //
 // [ time_ ] trans: nothing
@@ -2527,6 +2581,8 @@ func (v Display) SupportsClipboardPersistence() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gdk_display_supports_composite
 //
 // [ result ] trans: nothing
@@ -2648,6 +2704,8 @@ func (v Display) Sync() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_display_warp_pointer
 //
 // [ screen ] trans: nothing
@@ -4290,6 +4348,8 @@ func EventTypeGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Struct EventVisibility
 type EventVisibility struct {
 	P unsafe.Pointer
@@ -5125,6 +5185,8 @@ func KeymapGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gdk_keymap_get_for_display
 //
 // [ display ] trans: nothing
@@ -6016,6 +6078,16 @@ func ScreenGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
+// Deprecated
+//
+// Deprecated
+//
+// Deprecated
+//
+// Deprecated
+//
 // gdk_screen_get_active_window
 //
 // [ result ] trans: everything
@@ -6070,6 +6142,8 @@ func (v Screen) GetFontOptions() (result cairo.FontOptions) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_height
 //
 // [ result ] trans: nothing
@@ -6088,6 +6162,8 @@ func (v Screen) GetHeight() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_height_mm
 //
 // [ result ] trans: nothing
@@ -6106,6 +6182,8 @@ func (v Screen) GetHeightMm() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_monitor_at_point
 //
 // [ x ] trans: nothing
@@ -6130,6 +6208,8 @@ func (v Screen) GetMonitorAtPoint(x int32, y int32) (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_monitor_at_window
 //
 // [ window ] trans: nothing
@@ -6155,6 +6235,8 @@ func (v Screen) GetMonitorAtWindow(window IWindow) (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_monitor_geometry
 //
 // [ monitor_num ] trans: nothing
@@ -6174,6 +6256,8 @@ func (v Screen) GetMonitorGeometry(monitor_num int32, dest Rectangle) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_screen_get_monitor_height_mm
 //
 // [ monitor_num ] trans: nothing
@@ -6195,6 +6279,8 @@ func (v Screen) GetMonitorHeightMm(monitor_num int32) (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_monitor_plug_name
 //
 // [ monitor_num ] trans: nothing
@@ -6216,6 +6302,8 @@ func (v Screen) GetMonitorPlugName(monitor_num int32) (result string) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_monitor_scale_factor
 //
 // [ monitor_num ] trans: nothing
@@ -6237,6 +6325,8 @@ func (v Screen) GetMonitorScaleFactor(monitor_num int32) (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_monitor_width_mm
 //
 // [ monitor_num ] trans: nothing
@@ -6258,6 +6348,8 @@ func (v Screen) GetMonitorWidthMm(monitor_num int32) (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_monitor_workarea
 //
 // [ monitor_num ] trans: nothing
@@ -6277,6 +6369,8 @@ func (v Screen) GetMonitorWorkarea(monitor_num int32, dest Rectangle) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_screen_get_n_monitors
 //
 // [ result ] trans: nothing
@@ -6295,6 +6389,8 @@ func (v Screen) GetNMonitors() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_number
 //
 // [ result ] trans: nothing
@@ -6313,6 +6409,8 @@ func (v Screen) GetNumber() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_primary_monitor
 //
 // [ result ] trans: nothing
@@ -6447,6 +6545,8 @@ func (v Screen) GetToplevelWindows() (result g.List) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_width
 //
 // [ result ] trans: nothing
@@ -6465,6 +6565,8 @@ func (v Screen) GetWidth() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_get_width_mm
 //
 // [ result ] trans: nothing
@@ -6537,6 +6639,8 @@ func (v Screen) ListVisuals() (result g.List) {
 	return
 }
 
+// Deprecated
+//
 // gdk_screen_make_display_name
 //
 // [ result ] trans: everything
@@ -6911,6 +7015,14 @@ func VisualGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
+// Deprecated
+//
+// Deprecated
+//
+// Deprecated
+//
 // gdk_visual_get_best_with_both
 //
 // [ depth ] trans: nothing
@@ -6934,6 +7046,8 @@ func VisualGetBestWithBoth1(depth int32, visual_type VisualTypeEnum) (result Vis
 	return
 }
 
+// Deprecated
+//
 // gdk_visual_get_best_with_depth
 //
 // [ depth ] trans: nothing
@@ -6954,6 +7068,8 @@ func VisualGetBestWithDepth1(depth int32) (result Visual) {
 	return
 }
 
+// Deprecated
+//
 // gdk_visual_get_best_with_type
 //
 // [ visual_type ] trans: nothing
@@ -6974,6 +7090,10 @@ func VisualGetBestWithType1(visual_type VisualTypeEnum) (result Visual) {
 	return
 }
 
+// Deprecated
+//
+// Deprecated
+//
 // gdk_visual_get_bits_per_rgb
 //
 // [ result ] trans: nothing
@@ -7019,6 +7139,8 @@ func (v Visual) GetBluePixelDetails() (mask uint32, shift int32, precision int32
 	return
 }
 
+// Deprecated
+//
 // gdk_visual_get_byte_order
 //
 // [ result ] trans: nothing
@@ -7037,6 +7159,8 @@ func (v Visual) GetByteOrder() (result ByteOrderEnum) {
 	return
 }
 
+// Deprecated
+//
 // gdk_visual_get_colormap_size
 //
 // [ result ] trans: nothing
@@ -7260,6 +7384,8 @@ func NewWindow(parent IWindow, attributes WindowAttr, attributes_mask WindowAttr
 	return
 }
 
+// Deprecated
+//
 // gdk_window_at_pointer
 //
 // [ win_x ] trans: everything, dir: out
@@ -7320,6 +7446,10 @@ func WindowConstrainSize1(geometry Geometry, flags WindowHintsFlags, width int32
 	return
 }
 
+// Deprecated
+//
+// Deprecated
+//
 // gdk_window_set_debug_updates
 //
 // [ setting ] trans: nothing
@@ -7426,6 +7556,8 @@ func (v Window) BeginMoveDragForDevice(device IDevice, button int32, root_x int3
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_window_begin_paint_rect
 //
 // [ rectangle ] trans: nothing
@@ -7442,6 +7574,8 @@ func (v Window) BeginPaintRect(rectangle Rectangle) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_window_begin_paint_region
 //
 // [ region ] trans: nothing
@@ -7521,6 +7655,8 @@ func (v Window) BeginResizeDragForDevice(edge WindowEdgeEnum, device IDevice, bu
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_window_configure_finished
 //
 func (v Window) ConfigureFinished() {
@@ -7708,6 +7844,8 @@ func (v Window) DestroyNotify() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_window_enable_synchronized_configure
 //
 func (v Window) EnableSynchronizedConfigure() {
@@ -7772,6 +7910,8 @@ func (v Window) EnsureNative() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gdk_window_flush
 //
 func (v Window) Flush() {
@@ -7801,6 +7941,8 @@ func (v Window) Focus(timestamp uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_window_freeze_toplevel_updates_libgtk_only
 //
 func (v Window) FreezeToplevelUpdatesLibgtkOnly() {
@@ -7887,6 +8029,8 @@ func (v Window) GetAcceptFocus() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gdk_window_get_background_pattern
 //
 // [ result ] trans: nothing
@@ -7962,6 +8106,8 @@ func (v Window) GetClipRegion() (result cairo.Region) {
 	return
 }
 
+// Deprecated
+//
 // gdk_window_get_composited
 //
 // [ result ] trans: nothing
@@ -8478,6 +8624,8 @@ func (v Window) GetPassThrough() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gdk_window_get_pointer
 //
 // [ x ] trans: everything, dir: out
@@ -9221,6 +9369,8 @@ func (v Window) PeekChildren() (result g.List) {
 	return
 }
 
+// Deprecated
+//
 // gdk_window_process_updates
 //
 // [ update_children ] trans: nothing
@@ -9366,6 +9516,8 @@ func (v Window) SetAcceptFocus(accept_focus bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_window_set_background
 //
 // [ color ] trans: nothing
@@ -9382,6 +9534,8 @@ func (v Window) SetBackground(color Color) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_window_set_background_pattern
 //
 // [ pattern ] trans: nothing
@@ -9398,6 +9552,8 @@ func (v Window) SetBackgroundPattern(pattern cairo.Pattern) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_window_set_background_rgba
 //
 // [ rgba ] trans: nothing
@@ -9440,6 +9596,8 @@ func (v Window) SetChildShapes() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_window_set_composited
 //
 // [ composited ] trans: nothing
@@ -9919,6 +10077,8 @@ func (v Window) SetStartupId(startup_id string) {
 	gi.Free(c_startup_id)
 }
 
+// Deprecated
+//
 // gdk_window_set_static_gravities
 //
 // [ use_static ] trans: nothing
@@ -10128,6 +10288,8 @@ func (v Window) Stick() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_window_thaw_toplevel_updates_libgtk_only
 //
 func (v Window) ThawToplevelUpdatesLibgtkOnly() {
@@ -10402,6 +10564,8 @@ func WindowWindowClassGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gdk_add_option_entries_libgtk_only
 //
 // [ group ] trans: nothing
@@ -10475,6 +10639,8 @@ func Beep() {
 	iv.Call(nil, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_cairo_create
 //
 // [ window ] trans: nothing
@@ -10641,6 +10807,8 @@ func CairoRegionCreateFromSurface(surface cairo.Surface) (result cairo.Region) {
 	return
 }
 
+// Deprecated
+//
 // gdk_cairo_set_source_color
 //
 // [ cr ] trans: nothing
@@ -10767,6 +10935,8 @@ func CairoSurfaceCreateFromPixbuf(pixbuf gdkpixbuf.IPixbuf, scale int32, for_win
 	return
 }
 
+// Deprecated
+//
 // gdk_color_parse
 //
 // [ spec ] trans: nothing
@@ -11428,6 +11598,8 @@ func GetDefaultRootWindow() (result Window) {
 	return
 }
 
+// Deprecated
+//
 // gdk_get_display
 //
 // [ result ] trans: everything
@@ -11545,6 +11717,8 @@ func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gdk_keyboard_grab
 //
 // [ window ] trans: nothing
@@ -11575,6 +11749,8 @@ func KeyboardGrab(window IWindow, owner_events bool, time_ uint32) (result GrabS
 	return
 }
 
+// Deprecated
+//
 // gdk_keyboard_ungrab
 //
 // [ time_ ] trans: nothing
@@ -11757,6 +11933,8 @@ func KeyvalToUpper(keyval uint32) (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // gdk_list_visuals
 //
 // [ result ] trans: container
@@ -12023,6 +12201,8 @@ func PixbufGetFromWindow(window IWindow, src_x int32, src_y int32, width int32, 
 	return
 }
 
+// Deprecated
+//
 // gdk_pointer_grab
 //
 // [ window ] trans: nothing
@@ -12070,6 +12250,8 @@ func PointerGrab(window IWindow, owner_events bool, event_mask EventMaskFlags, c
 	return
 }
 
+// Deprecated
+//
 // gdk_pointer_is_grabbed
 //
 // [ result ] trans: nothing
@@ -12086,6 +12268,8 @@ func PointerIsGrabbed() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gdk_pointer_ungrab
 //
 // [ time_ ] trans: nothing
@@ -12101,6 +12285,8 @@ func PointerUngrab(time_ uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_pre_parse_libgtk_only
 //
 func PreParseLibgtkOnly() {
@@ -12192,6 +12378,8 @@ func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, lengt
 	return
 }
 
+// Deprecated
+//
 // gdk_query_depths
 //
 // [ depths ] trans: nothing, dir: out
@@ -12217,6 +12405,8 @@ func QueryDepths() (depths gi.Int32Array) {
 	return
 }
 
+// Deprecated
+//
 // gdk_query_visual_types
 //
 // [ visual_types ] trans: nothing, dir: out
@@ -12803,6 +12993,8 @@ func ThreadsAddTimeoutSeconds(priority int32, interval uint32, function int /*TO
 	return
 }
 
+// Deprecated
+//
 // gdk_threads_enter
 //
 func ThreadsEnter() {
@@ -12814,6 +13006,8 @@ func ThreadsEnter() {
 	iv.Call(nil, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_threads_init
 //
 func ThreadsInit() {
@@ -12825,6 +13019,8 @@ func ThreadsInit() {
 	iv.Call(nil, nil, nil)
 }
 
+// Deprecated
+//
 // gdk_threads_leave
 //
 func ThreadsLeave() {

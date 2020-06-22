@@ -398,6 +398,8 @@ func (v AsyncQueue) PushUnlocked(data unsafe.Pointer) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_async_queue_ref_unlocked
 //
 func (v AsyncQueue) RefUnlocked() {
@@ -453,6 +455,8 @@ func (v AsyncQueue) RemoveUnlocked(item unsafe.Pointer) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // g_async_queue_timed_pop
 //
 // [ end_time ] trans: nothing
@@ -474,6 +478,8 @@ func (v AsyncQueue) TimedPop(end_time TimeVal) (result unsafe.Pointer) {
 	return
 }
 
+// Deprecated
+//
 // g_async_queue_timed_pop_unlocked
 //
 // [ end_time ] trans: nothing
@@ -599,6 +605,8 @@ func (v AsyncQueue) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_async_queue_unref_and_unlock
 //
 func (v AsyncQueue) UnrefAndUnlock() {
@@ -2895,6 +2903,8 @@ func (v Date) SetParse(str string) {
 	gi.Free(c_str)
 }
 
+// Deprecated
+//
 // g_date_set_time
 //
 // [ time_ ] trans: nothing
@@ -5681,6 +5691,8 @@ func IOChannelUnixNew(fd int32) (result IOChannel) {
 	return
 }
 
+// Deprecated
+//
 // g_io_channel_close
 //
 func (v IOChannel) Close() {
@@ -5856,6 +5868,8 @@ func (v IOChannel) Init() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_io_channel_read
 //
 // [ buf ] trans: nothing
@@ -6046,6 +6060,8 @@ func (v IOChannel) Ref() (result IOChannel) {
 	return
 }
 
+// Deprecated
+//
 // g_io_channel_seek
 //
 // [ offset ] trans: nothing
@@ -6267,6 +6283,8 @@ func (v IOChannel) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_io_channel_write
 //
 // [ buf ] trans: nothing
@@ -8338,6 +8356,8 @@ func (v MainContext) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_main_context_wait
 //
 // [ cond ] trans: nothing
@@ -8563,6 +8583,8 @@ func NewMappedFileFromFd(fd int32, writable bool) (result MappedFile, err error)
 	return
 }
 
+// Deprecated
+//
 // g_mapped_file_free
 //
 func (v MappedFile) Free() {
@@ -10204,6 +10226,8 @@ func (v OptionGroup) AddEntries(entries OptionEntry) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_option_group_free
 //
 func (v OptionGroup) Free() {
@@ -13020,6 +13044,8 @@ func (v Source) GetContext() (result MainContext) {
 	return
 }
 
+// Deprecated
+//
 // g_source_get_current_time
 //
 // [ timeval ] trans: nothing
@@ -13799,6 +13825,8 @@ func (v String) Assign(rval string) (result String) {
 	return
 }
 
+// Deprecated
+//
 // g_string_down
 //
 // [ result ] trans: nothing
@@ -14210,6 +14238,8 @@ func (v String) Truncate(len1 uint64) (result String) {
 	return
 }
 
+// Deprecated
+//
 // g_string_up
 //
 // [ result ] trans: nothing
@@ -14598,6 +14628,8 @@ func (v TestSuite) AddSuite(nestedsuite TestSuite) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // Flags TestTrapFlags
 type TestTrapFlags int
 
@@ -15378,6 +15410,8 @@ func myGLibTranslateFunc(str *C.gchar, data C.gpointer) {
 	// TODO: not found user_data
 }
 
+// Deprecated
+//
 // Struct TrashStack
 type TrashStack struct {
 	P unsafe.Pointer
@@ -15390,6 +15424,8 @@ func TrashStackGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_trash_stack_height
 //
 // [ result ] trans: nothing
@@ -15408,6 +15444,8 @@ func (v TrashStack) Height() (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // g_trash_stack_peek
 //
 // [ result ] trans: nothing
@@ -15426,6 +15464,8 @@ func (v TrashStack) Peek() (result unsafe.Pointer) {
 	return
 }
 
+// Deprecated
+//
 // g_trash_stack_pop
 //
 // [ result ] trans: nothing
@@ -15444,6 +15484,8 @@ func (v TrashStack) Pop() (result unsafe.Pointer) {
 	return
 }
 
+// Deprecated
+//
 // g_trash_stack_push
 //
 // [ data_p ] trans: nothing
@@ -17611,6 +17653,8 @@ func VariantParseErrorPrintContext1(error Error, source_str string) (result stri
 	return
 }
 
+// Deprecated
+//
 // Struct VariantBuilder
 type VariantBuilder struct {
 	P unsafe.Pointer
@@ -19183,6 +19227,8 @@ func AssertionMessageError(domain string, file string, line int32, func1 string,
 	gi.Free(c_expr)
 }
 
+// Deprecated
+//
 // g_atexit
 //
 // [ func1 ] trans: nothing
@@ -19290,6 +19336,8 @@ func AtomicIntDecAndTest(atomic int32) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // g_atomic_int_exchange_and_add
 //
 // [ atomic ] trans: nothing
@@ -19914,6 +19962,8 @@ func Base64EncodeStep(in gi.Uint8Array, len1 uint64, break_lines bool, state int
 	return
 }
 
+// Deprecated
+//
 // g_basename
 //
 // [ file_name ] trans: nothing
@@ -21915,6 +21965,8 @@ func FormatSize(size uint64) (result string) {
 	return
 }
 
+// Deprecated
+//
 // g_format_size_for_display
 //
 // [ size ] trans: nothing
@@ -23928,6 +23980,8 @@ func MarkupEscapeText(text string, length int64) (result string) {
 	return
 }
 
+// Deprecated
+//
 // g_mem_is_system_malloc
 //
 // [ result ] trans: nothing
@@ -23944,6 +23998,8 @@ func MemIsSystemMalloc() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // g_mem_profile
 //
 func MemProfile() {
@@ -23955,6 +24011,8 @@ func MemProfile() {
 	iv.Call(nil, nil, nil)
 }
 
+// Deprecated
+//
 // g_mem_set_vtable
 //
 // [ vtable ] trans: nothing
@@ -26431,6 +26489,8 @@ func Strcanon(string string, valid_chars string, substitutor int8) (result strin
 	return
 }
 
+// Deprecated
+//
 // g_strcasecmp
 //
 // [ s1 ] trans: nothing
@@ -26581,6 +26641,8 @@ func Strdelimit(string string, delimiters string, new_delimiter int8) (result st
 	return
 }
 
+// Deprecated
+//
 // g_strdown
 //
 // [ string ] trans: nothing
@@ -26870,6 +26932,8 @@ func Strlcpy(dest string, src string, dest_size uint64) (result uint64) {
 	return
 }
 
+// Deprecated
+//
 // g_strncasecmp
 //
 // [ s1 ] trans: nothing
@@ -27104,6 +27168,8 @@ func Strtod(nptr string) (result float64, endptr string) {
 	return
 }
 
+// Deprecated
+//
 // g_strup
 //
 // [ string ] trans: nothing
@@ -27705,6 +27771,8 @@ func TestTrapAssertions(domain string, file string, line int32, func1 string, as
 	gi.Free(c_pattern)
 }
 
+// Deprecated
+//
 // g_test_trap_fork
 //
 // [ usec_timeout ] trans: nothing
@@ -28059,6 +28127,8 @@ func TimeoutSourceNewSeconds(interval uint32) (result Source) {
 	return
 }
 
+// Deprecated
+//
 // g_trash_stack_height
 //
 // [ stack_p ] trans: nothing
@@ -28079,6 +28149,8 @@ func TrashStackHeight(stack_p TrashStack) (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // g_trash_stack_peek
 //
 // [ stack_p ] trans: nothing
@@ -28099,6 +28171,8 @@ func TrashStackPeek(stack_p TrashStack) (result unsafe.Pointer) {
 	return
 }
 
+// Deprecated
+//
 // g_trash_stack_pop
 //
 // [ stack_p ] trans: nothing
@@ -28119,6 +28193,8 @@ func TrashStackPop(stack_p TrashStack) (result unsafe.Pointer) {
 	return
 }
 
+// Deprecated
+//
 // g_trash_stack_push
 //
 // [ stack_p ] trans: nothing
@@ -29007,6 +29083,8 @@ func UnicharXdigitValue(c rune) (result int32) {
 	return
 }
 
+// Deprecated
+//
 // g_unicode_canonical_decomposition
 //
 // [ ch ] trans: nothing
@@ -30366,6 +30444,8 @@ func VariantParseErrorQuark() (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // g_variant_parser_get_error_quark
 //
 // [ result ] trans: nothing

@@ -1255,6 +1255,8 @@ func EllipsizeModeGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Object Engine
 type Engine struct {
 	g.Object
@@ -1271,6 +1273,8 @@ func EngineGetType() gi.GType {
 }
 
 // ignore GType struct EngineClass
+// Deprecated
+//
 // Struct EngineInfo
 type EngineInfo struct {
 	P unsafe.Pointer
@@ -1283,6 +1287,8 @@ func EngineInfoGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Object EngineLang
 type EngineLang struct {
 	Engine
@@ -1299,6 +1305,8 @@ func EngineLangGetType() gi.GType {
 }
 
 // ignore GType struct EngineLangClass
+// Deprecated
+//
 // Struct EngineScriptInfo
 type EngineScriptInfo struct {
 	P unsafe.Pointer
@@ -1311,6 +1319,8 @@ func EngineScriptInfoGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Object EngineShape
 type EngineShape struct {
 	Engine
@@ -2334,6 +2344,8 @@ func (v FontMap) GetSerial() (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // pango_font_map_get_shape_engine_type
 //
 // [ result ] trans: nothing
@@ -3415,6 +3427,8 @@ func GravityHintGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Struct IncludedModule
 type IncludedModule struct {
 	P unsafe.Pointer
@@ -6608,6 +6622,8 @@ func Break(text string, length int32, analysis Analysis, attrs unsafe.Pointer, a
 	gi.Free(c_text)
 }
 
+// Deprecated
+//
 // pango_config_key_get
 //
 // [ key ] trans: nothing
@@ -6630,6 +6646,8 @@ func ConfigKeyGet(key string) (result string) {
 	return
 }
 
+// Deprecated
+//
 // pango_config_key_get_system
 //
 // [ key ] trans: nothing
@@ -6776,6 +6794,8 @@ func FontDescriptionFromString(str string) (result FontDescription) {
 	return
 }
 
+// Deprecated
+//
 // pango_get_lib_subdirectory
 //
 // [ result ] trans: nothing
@@ -6847,6 +6867,8 @@ func GetMirrorChar(ch rune, mirrored_ch rune) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // pango_get_sysconf_subdirectory
 //
 // [ result ] trans: nothing
@@ -7101,6 +7123,8 @@ func LanguageGetDefault() (result Language) {
 	return
 }
 
+// Deprecated
+//
 // pango_lookup_aliases
 //
 // [ fontname ] trans: nothing
@@ -7184,6 +7208,8 @@ func MarkupParserNew(accel_marker rune) (result g.MarkupParseContext) {
 	return
 }
 
+// Deprecated
+//
 // pango_module_register
 //
 // [ module ] trans: nothing
@@ -7199,6 +7225,8 @@ func ModuleRegister(module IncludedModule) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // pango_parse_enum
 //
 // [ type1 ] trans: nothing
@@ -7414,6 +7442,8 @@ func QuantizeLineGeometry(thickness int /*TODO:TYPE*/, position int /*TODO:TYPE*
 	iv.Call(nil, nil, &outArgs[0])
 }
 
+// Deprecated
+//
 // pango_read_line
 //
 // [ stream ] trans: nothing
@@ -7457,6 +7487,8 @@ func ReorderItems(logical_items g.List) (result g.List) {
 	return
 }
 
+// Deprecated
+//
 // pango_scan_int
 //
 // [ pos ] trans: everything, dir: inout
@@ -7481,6 +7513,8 @@ func ScanInt(pos int /*TODO:TYPE*/) (result bool, out int32) {
 	return
 }
 
+// Deprecated
+//
 // pango_scan_string
 //
 // [ pos ] trans: everything, dir: inout
@@ -7504,6 +7538,8 @@ func ScanString(pos int /*TODO:TYPE*/, out g.String) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // pango_scan_word
 //
 // [ pos ] trans: everything, dir: inout
@@ -7627,6 +7663,8 @@ func ShapeFull(item_text string, item_length int32, paragraph_text string, parag
 	gi.Free(c_paragraph_text)
 }
 
+// Deprecated
+//
 // pango_skip_space
 //
 // [ pos ] trans: everything, dir: inout
@@ -7646,6 +7684,8 @@ func SkipSpace(pos int /*TODO:TYPE*/) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // pango_split_file_list
 //
 // [ str ] trans: nothing
@@ -7669,6 +7709,8 @@ func SplitFileList(str string) (result gi.CStrArray) {
 	return
 }
 
+// Deprecated
+//
 // pango_trim_string
 //
 // [ str ] trans: nothing

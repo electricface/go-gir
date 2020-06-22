@@ -1733,6 +1733,8 @@ func AccessibleGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_accessible_connect_widget_destroyed
 //
 func (v Accessible) ConnectWidgetDestroyed() {
@@ -1812,6 +1814,8 @@ func ActionGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_action_new
 //
 // [ name ] trans: nothing
@@ -1849,6 +1853,8 @@ func NewAction(name string, label string, tooltip string, stock_id string) (resu
 	return
 }
 
+// Deprecated
+//
 // gtk_action_activate
 //
 func (v Action) Activate() {
@@ -1862,6 +1868,8 @@ func (v Action) Activate() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_block_activate
 //
 func (v Action) BlockActivate() {
@@ -1875,6 +1883,8 @@ func (v Action) BlockActivate() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_connect_accelerator
 //
 func (v Action) ConnectAccelerator() {
@@ -1888,6 +1898,8 @@ func (v Action) ConnectAccelerator() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_create_icon
 //
 // [ icon_size ] trans: nothing
@@ -1909,6 +1921,8 @@ func (v Action) CreateIcon(icon_size int32) (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_create_menu
 //
 // [ result ] trans: nothing
@@ -1927,6 +1941,8 @@ func (v Action) CreateMenu() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_create_menu_item
 //
 // [ result ] trans: nothing
@@ -1945,6 +1961,8 @@ func (v Action) CreateMenuItem() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_create_tool_item
 //
 // [ result ] trans: nothing
@@ -1963,6 +1981,8 @@ func (v Action) CreateToolItem() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_disconnect_accelerator
 //
 func (v Action) DisconnectAccelerator() {
@@ -1976,6 +1996,8 @@ func (v Action) DisconnectAccelerator() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_get_accel_closure
 //
 // [ result ] trans: nothing
@@ -1994,6 +2016,8 @@ func (v Action) GetAccelClosure() (result g.Closure) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_accel_path
 //
 // [ result ] trans: nothing
@@ -2012,6 +2036,8 @@ func (v Action) GetAccelPath() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_always_show_image
 //
 // [ result ] trans: nothing
@@ -2030,6 +2056,8 @@ func (v Action) GetAlwaysShowImage() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_gicon
 //
 // [ result ] trans: nothing
@@ -2048,6 +2076,8 @@ func (v Action) GetGicon() (result g.Icon) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_icon_name
 //
 // [ result ] trans: nothing
@@ -2066,6 +2096,8 @@ func (v Action) GetIconName() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_is_important
 //
 // [ result ] trans: nothing
@@ -2084,6 +2116,8 @@ func (v Action) GetIsImportant() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_label
 //
 // [ result ] trans: nothing
@@ -2102,6 +2136,8 @@ func (v Action) GetLabel() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_name
 //
 // [ result ] trans: nothing
@@ -2120,6 +2156,8 @@ func (v Action) GetName() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_proxies
 //
 // [ result ] trans: nothing
@@ -2138,6 +2176,8 @@ func (v Action) GetProxies() (result g.SList) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_sensitive
 //
 // [ result ] trans: nothing
@@ -2156,6 +2196,8 @@ func (v Action) GetSensitive() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_short_label
 //
 // [ result ] trans: nothing
@@ -2174,6 +2216,8 @@ func (v Action) GetShortLabel() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_stock_id
 //
 // [ result ] trans: nothing
@@ -2192,6 +2236,8 @@ func (v Action) GetStockId() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_tooltip
 //
 // [ result ] trans: nothing
@@ -2210,6 +2256,8 @@ func (v Action) GetTooltip() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_visible
 //
 // [ result ] trans: nothing
@@ -2228,6 +2276,8 @@ func (v Action) GetVisible() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_visible_horizontal
 //
 // [ result ] trans: nothing
@@ -2246,6 +2296,8 @@ func (v Action) GetVisibleHorizontal() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_get_visible_vertical
 //
 // [ result ] trans: nothing
@@ -2264,6 +2316,8 @@ func (v Action) GetVisibleVertical() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_is_sensitive
 //
 // [ result ] trans: nothing
@@ -2282,6 +2336,8 @@ func (v Action) IsSensitive() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_is_visible
 //
 // [ result ] trans: nothing
@@ -2300,6 +2356,8 @@ func (v Action) IsVisible() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_set_accel_group
 //
 // [ accel_group ] trans: nothing
@@ -2320,6 +2378,8 @@ func (v Action) SetAccelGroup(accel_group IAccelGroup) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_set_accel_path
 //
 // [ accel_path ] trans: nothing
@@ -2338,6 +2398,8 @@ func (v Action) SetAccelPath(accel_path string) {
 	gi.Free(c_accel_path)
 }
 
+// Deprecated
+//
 // gtk_action_set_always_show_image
 //
 // [ always_show ] trans: nothing
@@ -2354,6 +2416,8 @@ func (v Action) SetAlwaysShowImage(always_show bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_set_gicon
 //
 // [ icon ] trans: nothing
@@ -2374,6 +2438,8 @@ func (v Action) SetGicon(icon g.IIcon) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_set_icon_name
 //
 // [ icon_name ] trans: nothing
@@ -2392,6 +2458,8 @@ func (v Action) SetIconName(icon_name string) {
 	gi.Free(c_icon_name)
 }
 
+// Deprecated
+//
 // gtk_action_set_is_important
 //
 // [ is_important ] trans: nothing
@@ -2408,6 +2476,8 @@ func (v Action) SetIsImportant(is_important bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_set_label
 //
 // [ label ] trans: nothing
@@ -2426,6 +2496,8 @@ func (v Action) SetLabel(label string) {
 	gi.Free(c_label)
 }
 
+// Deprecated
+//
 // gtk_action_set_sensitive
 //
 // [ sensitive ] trans: nothing
@@ -2442,6 +2514,8 @@ func (v Action) SetSensitive(sensitive bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_set_short_label
 //
 // [ short_label ] trans: nothing
@@ -2460,6 +2534,8 @@ func (v Action) SetShortLabel(short_label string) {
 	gi.Free(c_short_label)
 }
 
+// Deprecated
+//
 // gtk_action_set_stock_id
 //
 // [ stock_id ] trans: nothing
@@ -2478,6 +2554,8 @@ func (v Action) SetStockId(stock_id string) {
 	gi.Free(c_stock_id)
 }
 
+// Deprecated
+//
 // gtk_action_set_tooltip
 //
 // [ tooltip ] trans: nothing
@@ -2496,6 +2574,8 @@ func (v Action) SetTooltip(tooltip string) {
 	gi.Free(c_tooltip)
 }
 
+// Deprecated
+//
 // gtk_action_set_visible
 //
 // [ visible ] trans: nothing
@@ -2512,6 +2592,8 @@ func (v Action) SetVisible(visible bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_set_visible_horizontal
 //
 // [ visible_horizontal ] trans: nothing
@@ -2528,6 +2610,8 @@ func (v Action) SetVisibleHorizontal(visible_horizontal bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_set_visible_vertical
 //
 // [ visible_vertical ] trans: nothing
@@ -2544,6 +2628,8 @@ func (v Action) SetVisibleVertical(visible_vertical bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_unblock_activate
 //
 func (v Action) UnblockActivate() {
@@ -2682,6 +2768,8 @@ func ActionBarPrivateGetType() gi.GType {
 }
 
 // ignore GType struct ActionClass
+// Deprecated
+//
 // Struct ActionEntry
 type ActionEntry struct {
 	P unsafe.Pointer
@@ -2711,6 +2799,8 @@ func ActionGroupGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_action_group_new
 //
 // [ name ] trans: nothing
@@ -2733,6 +2823,8 @@ func NewActionGroup(name string) (result ActionGroup) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_group_add_action
 //
 // [ action ] trans: nothing
@@ -2753,6 +2845,8 @@ func (v ActionGroup) AddAction(action IAction) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_group_add_action_with_accel
 //
 // [ action ] trans: nothing
@@ -2778,6 +2872,8 @@ func (v ActionGroup) AddActionWithAccel(action IAction, accelerator string) {
 	gi.Free(c_accelerator)
 }
 
+// Deprecated
+//
 // gtk_action_group_get_accel_group
 //
 // [ result ] trans: nothing
@@ -2796,6 +2892,8 @@ func (v ActionGroup) GetAccelGroup() (result AccelGroup) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_group_get_action
 //
 // [ action_name ] trans: nothing
@@ -2819,6 +2917,8 @@ func (v ActionGroup) GetAction(action_name string) (result Action) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_group_get_name
 //
 // [ result ] trans: nothing
@@ -2837,6 +2937,8 @@ func (v ActionGroup) GetName() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_group_get_sensitive
 //
 // [ result ] trans: nothing
@@ -2855,6 +2957,8 @@ func (v ActionGroup) GetSensitive() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_group_get_visible
 //
 // [ result ] trans: nothing
@@ -2873,6 +2977,8 @@ func (v ActionGroup) GetVisible() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_group_list_actions
 //
 // [ result ] trans: container
@@ -2891,6 +2997,8 @@ func (v ActionGroup) ListActions() (result g.List) {
 	return
 }
 
+// Deprecated
+//
 // gtk_action_group_remove_action
 //
 // [ action ] trans: nothing
@@ -2911,6 +3019,8 @@ func (v ActionGroup) RemoveAction(action IAction) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_group_set_accel_group
 //
 // [ accel_group ] trans: nothing
@@ -2931,6 +3041,8 @@ func (v ActionGroup) SetAccelGroup(accel_group IAccelGroup) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_group_set_sensitive
 //
 // [ sensitive ] trans: nothing
@@ -2947,6 +3059,8 @@ func (v ActionGroup) SetSensitive(sensitive bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_group_set_translate_func
 //
 // [ func1 ] trans: nothing
@@ -2969,6 +3083,8 @@ func (v ActionGroup) SetTranslateFunc(func1 int /*TODO_TYPE CALLBACK*/, data uns
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_group_set_translation_domain
 //
 // [ domain ] trans: nothing
@@ -2987,6 +3103,8 @@ func (v ActionGroup) SetTranslationDomain(domain string) {
 	gi.Free(c_domain)
 }
 
+// Deprecated
+//
 // gtk_action_group_set_visible
 //
 // [ visible ] trans: nothing
@@ -3003,6 +3121,8 @@ func (v ActionGroup) SetVisible(visible bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_action_group_translate_string
 //
 // [ string ] trans: nothing
@@ -3164,6 +3284,8 @@ func ActivatableGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_activatable_do_set_related_action
 //
 // [ action ] trans: nothing
@@ -3184,6 +3306,8 @@ func (v *ActivatableIfc) DoSetRelatedAction(action IAction) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_activatable_get_related_action
 //
 // [ result ] trans: nothing
@@ -3202,6 +3326,8 @@ func (v *ActivatableIfc) GetRelatedAction() (result Action) {
 	return
 }
 
+// Deprecated
+//
 // gtk_activatable_get_use_action_appearance
 //
 // [ result ] trans: nothing
@@ -3220,6 +3346,8 @@ func (v *ActivatableIfc) GetUseActionAppearance() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_activatable_set_related_action
 //
 // [ action ] trans: nothing
@@ -3240,6 +3368,8 @@ func (v *ActivatableIfc) SetRelatedAction(action IAction) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_activatable_set_use_action_appearance
 //
 // [ use_appearance ] trans: nothing
@@ -3256,6 +3386,8 @@ func (v *ActivatableIfc) SetUseActionAppearance(use_appearance bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_activatable_sync_action_properties
 //
 // [ action ] trans: nothing
@@ -3327,6 +3459,8 @@ func NewAdjustment(value float64, lower float64, upper float64, step_increment f
 	return
 }
 
+// Deprecated
+//
 // gtk_adjustment_changed
 //
 func (v Adjustment) Changed() {
@@ -3612,6 +3746,8 @@ func (v Adjustment) SetValue(value float64) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_adjustment_value_changed
 //
 func (v Adjustment) ValueChanged() {
@@ -3671,6 +3807,8 @@ func AlignmentGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_alignment_new
 //
 // [ xalign ] trans: nothing
@@ -3700,6 +3838,8 @@ func NewAlignment(xalign float32, yalign float32, xscale float32, yscale float32
 	return
 }
 
+// Deprecated
+//
 // gtk_alignment_get_padding
 //
 // [ padding_top ] trans: everything, dir: out
@@ -3731,6 +3871,8 @@ func (v Alignment) GetPadding() (padding_top uint32, padding_bottom uint32, padd
 	return
 }
 
+// Deprecated
+//
 // gtk_alignment_set
 //
 // [ xalign ] trans: nothing
@@ -3756,6 +3898,8 @@ func (v Alignment) Set(xalign float32, yalign float32, xscale float32, yscale fl
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_alignment_set_padding
 //
 // [ padding_top ] trans: nothing
@@ -4536,6 +4680,8 @@ func NewApplication(application_id string, flags g.ApplicationFlags) (result App
 	return
 }
 
+// Deprecated
+//
 // gtk_application_add_accelerator
 //
 // [ accelerator ] trans: nothing
@@ -4837,6 +4983,8 @@ func (v Application) PrefersAppMenu() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_application_remove_accelerator
 //
 // [ action_name ] trans: nothing
@@ -5148,6 +5296,8 @@ func ArrowGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_arrow_new
 //
 // [ arrow_type ] trans: nothing
@@ -5171,6 +5321,8 @@ func NewArrow(arrow_type ArrowTypeEnum, shadow_type ShadowTypeEnum) (result Arro
 	return
 }
 
+// Deprecated
+//
 // gtk_arrow_set
 //
 // [ arrow_type ] trans: nothing
@@ -5550,6 +5702,8 @@ func (v Assistant) GetPageHasPadding(page IWidget) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_assistant_get_page_header_image
 //
 // [ page ] trans: nothing
@@ -5575,6 +5729,8 @@ func (v Assistant) GetPageHeaderImage(page IWidget) (result gdkpixbuf.Pixbuf) {
 	return
 }
 
+// Deprecated
+//
 // gtk_assistant_get_page_side_image
 //
 // [ page ] trans: nothing
@@ -5849,6 +6005,8 @@ func (v Assistant) SetPageHasPadding(page IWidget, has_padding bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_assistant_set_page_header_image
 //
 // [ page ] trans: nothing
@@ -5876,6 +6034,8 @@ func (v Assistant) SetPageHeaderImage(page IWidget, pixbuf gdkpixbuf.IPixbuf) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_assistant_set_page_side_image
 //
 // [ page ] trans: nothing
@@ -6245,6 +6405,8 @@ func (v BindingSet) Activate(keyval uint32, modifiers gdk.ModifierTypeFlags, obj
 	return
 }
 
+// Deprecated
+//
 // gtk_binding_set_add_path
 //
 // [ path_type ] trans: nothing
@@ -7782,6 +7944,8 @@ func NewButtonFromIconName(icon_name string, size int32) (result Button) {
 	return
 }
 
+// Deprecated
+//
 // gtk_button_new_from_stock
 //
 // [ stock_id ] trans: nothing
@@ -7861,6 +8025,8 @@ func (v Button) Clicked() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_button_enter
 //
 func (v Button) Enter() {
@@ -7874,6 +8040,8 @@ func (v Button) Enter() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_button_get_alignment
 //
 // [ xalign ] trans: everything, dir: out
@@ -7933,6 +8101,8 @@ func (v Button) GetEventWindow() (result gdk.Window) {
 	return
 }
 
+// Deprecated
+//
 // gtk_button_get_focus_on_click
 //
 // [ result ] trans: nothing
@@ -8023,6 +8193,8 @@ func (v Button) GetRelief() (result ReliefStyleEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_button_get_use_stock
 //
 // [ result ] trans: nothing
@@ -8059,6 +8231,8 @@ func (v Button) GetUseUnderline() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_button_leave
 //
 func (v Button) Leave() {
@@ -8072,6 +8246,8 @@ func (v Button) Leave() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_button_pressed
 //
 func (v Button) Pressed() {
@@ -8085,6 +8261,8 @@ func (v Button) Pressed() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_button_released
 //
 func (v Button) Released() {
@@ -8098,6 +8276,8 @@ func (v Button) Released() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_button_set_alignment
 //
 // [ xalign ] trans: nothing
@@ -8133,6 +8313,8 @@ func (v Button) SetAlwaysShowImage(always_show bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_button_set_focus_on_click
 //
 // [ focus_on_click ] trans: nothing
@@ -8219,6 +8401,8 @@ func (v Button) SetRelief(relief ReliefStyleEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_button_set_use_stock
 //
 // [ use_stock ] trans: nothing
@@ -11387,6 +11571,8 @@ func (v CellRenderer) GetSensitive() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_cell_renderer_get_size
 //
 // [ widget ] trans: nothing
@@ -12403,6 +12589,8 @@ func (v CellView) GetModel() (result TreeModel) {
 	return
 }
 
+// Deprecated
+//
 // gtk_cell_view_get_size_of_row
 //
 // [ path ] trans: nothing
@@ -12427,6 +12615,8 @@ func (v CellView) GetSizeOfRow(path TreePath, requisition Requisition) (result b
 	return
 }
 
+// Deprecated
+//
 // gtk_cell_view_set_background_color
 //
 // [ color ] trans: nothing
@@ -13600,6 +13790,8 @@ func NewColorButton() (result ColorButton) {
 	return
 }
 
+// Deprecated
+//
 // gtk_color_button_new_with_color
 //
 // [ color ] trans: nothing
@@ -13640,6 +13832,8 @@ func NewColorButtonWithRgba(rgba gdk.RGBA) (result ColorButton) {
 	return
 }
 
+// Deprecated
+//
 // gtk_color_button_get_alpha
 //
 // [ result ] trans: nothing
@@ -13658,6 +13852,8 @@ func (v ColorButton) GetAlpha() (result uint16) {
 	return
 }
 
+// Deprecated
+//
 // gtk_color_button_get_color
 //
 // [ color ] trans: nothing, dir: out
@@ -13692,6 +13888,8 @@ func (v ColorButton) GetTitle() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_color_button_get_use_alpha
 //
 // [ result ] trans: nothing
@@ -13710,6 +13908,8 @@ func (v ColorButton) GetUseAlpha() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_color_button_set_alpha
 //
 // [ alpha ] trans: nothing
@@ -13726,6 +13926,8 @@ func (v ColorButton) SetAlpha(alpha uint16) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_color_button_set_color
 //
 // [ color ] trans: nothing
@@ -13760,6 +13962,8 @@ func (v ColorButton) SetTitle(title string) {
 	gi.Free(c_title)
 }
 
+// Deprecated
+//
 // gtk_color_button_set_use_alpha
 //
 // [ use_alpha ] trans: nothing
@@ -14115,6 +14319,8 @@ func (v ColorSelection) GetCurrentAlpha() (result uint16) {
 	return
 }
 
+// Deprecated
+//
 // gtk_color_selection_get_current_color
 //
 // [ color ] trans: nothing, dir: out
@@ -14201,6 +14407,8 @@ func (v ColorSelection) GetPreviousAlpha() (result uint16) {
 	return
 }
 
+// Deprecated
+//
 // gtk_color_selection_get_previous_color
 //
 // [ color ] trans: nothing, dir: out
@@ -14267,6 +14475,8 @@ func (v ColorSelection) SetCurrentAlpha(alpha uint16) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_color_selection_set_current_color
 //
 // [ color ] trans: nothing
@@ -14347,6 +14557,8 @@ func (v ColorSelection) SetPreviousAlpha(alpha uint16) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_color_selection_set_previous_color
 //
 // [ color ] trans: nothing
@@ -14697,6 +14909,8 @@ func (v ComboBox) GetActiveIter(iter TreeIter) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_combo_box_get_add_tearoffs
 //
 // [ result ] trans: nothing
@@ -14769,6 +14983,8 @@ func (v ComboBox) GetEntryTextColumn() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_combo_box_get_focus_on_click
 //
 // [ result ] trans: nothing
@@ -14895,6 +15111,8 @@ func (v ComboBox) GetRowSpanColumn() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_combo_box_get_title
 //
 // [ result ] trans: nothing
@@ -15032,6 +15250,8 @@ func (v ComboBox) SetActiveIter(iter TreeIter) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_combo_box_set_add_tearoffs
 //
 // [ add_tearoffs ] trans: nothing
@@ -15096,6 +15316,8 @@ func (v ComboBox) SetEntryTextColumn(text_column int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_combo_box_set_focus_on_click
 //
 // [ focus_on_click ] trans: nothing
@@ -15202,6 +15424,8 @@ func (v ComboBox) SetRowSpanColumn(row_span int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_combo_box_set_title
 //
 // [ title ] trans: nothing
@@ -15773,6 +15997,8 @@ func (v Container) GetChildren() (result g.List) {
 	return
 }
 
+// Deprecated
+//
 // gtk_container_get_focus_chain
 //
 // [ focusable_widgets ] trans: container, dir: out
@@ -15875,6 +16101,8 @@ func (v Container) GetPathForChild(child IWidget) (result WidgetPath) {
 	return
 }
 
+// Deprecated
+//
 // gtk_container_get_resize_mode
 //
 // [ result ] trans: nothing
@@ -15936,6 +16164,8 @@ func (v Container) Remove(widget IWidget) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_container_resize_children
 //
 func (v Container) ResizeChildren() {
@@ -15965,6 +16195,8 @@ func (v Container) SetBorderWidth(border_width uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_container_set_focus_chain
 //
 // [ focusable_widgets ] trans: nothing
@@ -16041,6 +16273,8 @@ func (v Container) SetFocusVadjustment(adjustment IAdjustment) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_container_set_reallocate_redraws
 //
 // [ needs_redraws ] trans: nothing
@@ -16057,6 +16291,8 @@ func (v Container) SetReallocateRedraws(needs_redraws bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_container_set_resize_mode
 //
 // [ resize_mode ] trans: nothing
@@ -16073,6 +16309,8 @@ func (v Container) SetResizeMode(resize_mode ResizeModeEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_container_unset_focus_chain
 //
 func (v Container) UnsetFocusChain() {
@@ -16279,6 +16517,8 @@ func NewCssProvider() (result CssProvider) {
 	return
 }
 
+// Deprecated
+//
 // gtk_css_provider_get_named
 //
 // [ name ] trans: nothing
@@ -16786,6 +17026,8 @@ func (v Dialog) AddButton(button_text string, response_id int32) (result Widget)
 	return
 }
 
+// Deprecated
+//
 // gtk_dialog_get_action_area
 //
 // [ result ] trans: nothing
@@ -16920,6 +17162,8 @@ func (v Dialog) Run() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_dialog_set_alternative_button_order_from_array
 //
 // [ n_params ] trans: nothing
@@ -17672,6 +17916,8 @@ func (v Entry) GetIconSensitive(icon_pos EntryIconPositionEnum) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_entry_get_icon_stock
 //
 // [ icon_pos ] trans: nothing
@@ -17756,6 +18002,8 @@ func (v Entry) GetIconTooltipText(icon_pos EntryIconPositionEnum) (result string
 	return
 }
 
+// Deprecated
+//
 // gtk_entry_get_inner_border
 //
 // [ result ] trans: nothing
@@ -18396,6 +18644,8 @@ func (v Entry) SetIconFromPixbuf(icon_pos EntryIconPositionEnum, pixbuf gdkpixbu
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_entry_set_icon_from_stock
 //
 // [ icon_pos ] trans: nothing
@@ -18478,6 +18728,8 @@ func (v Entry) SetIconTooltipText(icon_pos EntryIconPositionEnum, tooltip string
 	gi.Free(c_tooltip)
 }
 
+// Deprecated
+//
 // gtk_entry_set_inner_border
 //
 // [ border ] trans: nothing
@@ -20243,6 +20495,8 @@ func (v Expander) GetResizeToplevel() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_expander_get_spacing
 //
 // [ result ] trans: nothing
@@ -20383,6 +20637,8 @@ func (v Expander) SetResizeToplevel(resize_toplevel bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_expander_set_spacing
 //
 // [ spacing ] trans: nothing
@@ -21814,6 +22070,8 @@ func NewFileChooserButtonWithDialog(dialog IDialog) (result FileChooserButton) {
 	return
 }
 
+// Deprecated
+//
 // gtk_file_chooser_button_get_focus_on_click
 //
 // [ result ] trans: nothing
@@ -21868,6 +22126,8 @@ func (v FileChooserButton) GetWidthChars() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_file_chooser_button_set_focus_on_click
 //
 // [ focus_on_click ] trans: nothing
@@ -23401,6 +23661,8 @@ func NewFontButtonWithFont(fontname string) (result FontButton) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_button_get_font_name
 //
 // [ result ] trans: nothing
@@ -23509,6 +23771,8 @@ func (v FontButton) GetUseSize() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_button_set_font_name
 //
 // [ fontname ] trans: nothing
@@ -24145,6 +24409,8 @@ func FontSelectionGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_font_selection_new
 //
 // [ result ] trans: nothing
@@ -24161,6 +24427,8 @@ func NewFontSelection() (result FontSelection) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_get_face
 //
 // [ result ] trans: nothing
@@ -24179,6 +24447,8 @@ func (v FontSelection) GetFace() (result pango.FontFace) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_get_face_list
 //
 // [ result ] trans: nothing
@@ -24197,6 +24467,8 @@ func (v FontSelection) GetFaceList() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_get_family
 //
 // [ result ] trans: nothing
@@ -24215,6 +24487,8 @@ func (v FontSelection) GetFamily() (result pango.FontFamily) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_get_family_list
 //
 // [ result ] trans: nothing
@@ -24233,6 +24507,8 @@ func (v FontSelection) GetFamilyList() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_get_font_name
 //
 // [ result ] trans: everything
@@ -24251,6 +24527,8 @@ func (v FontSelection) GetFontName() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_get_preview_entry
 //
 // [ result ] trans: nothing
@@ -24269,6 +24547,8 @@ func (v FontSelection) GetPreviewEntry() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_get_preview_text
 //
 // [ result ] trans: nothing
@@ -24287,6 +24567,8 @@ func (v FontSelection) GetPreviewText() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_get_size
 //
 // [ result ] trans: nothing
@@ -24305,6 +24587,8 @@ func (v FontSelection) GetSize() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_get_size_entry
 //
 // [ result ] trans: nothing
@@ -24323,6 +24607,8 @@ func (v FontSelection) GetSizeEntry() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_get_size_list
 //
 // [ result ] trans: nothing
@@ -24341,6 +24627,8 @@ func (v FontSelection) GetSizeList() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_set_font_name
 //
 // [ fontname ] trans: nothing
@@ -24364,6 +24652,8 @@ func (v FontSelection) SetFontName(fontname string) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_set_preview_text
 //
 // [ text ] trans: nothing
@@ -24402,6 +24692,8 @@ func FontSelectionDialogGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_font_selection_dialog_new
 //
 // [ title ] trans: nothing
@@ -24424,6 +24716,8 @@ func NewFontSelectionDialog(title string) (result FontSelectionDialog) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_dialog_get_cancel_button
 //
 // [ result ] trans: nothing
@@ -24442,6 +24736,8 @@ func (v FontSelectionDialog) GetCancelButton() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_dialog_get_font_name
 //
 // [ result ] trans: everything
@@ -24460,6 +24756,8 @@ func (v FontSelectionDialog) GetFontName() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_dialog_get_font_selection
 //
 // [ result ] trans: nothing
@@ -24478,6 +24776,8 @@ func (v FontSelectionDialog) GetFontSelection() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_dialog_get_ok_button
 //
 // [ result ] trans: nothing
@@ -24496,6 +24796,8 @@ func (v FontSelectionDialog) GetOkButton() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_dialog_get_preview_text
 //
 // [ result ] trans: nothing
@@ -24514,6 +24816,8 @@ func (v FontSelectionDialog) GetPreviewText() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_dialog_set_font_name
 //
 // [ fontname ] trans: nothing
@@ -24537,6 +24841,8 @@ func (v FontSelectionDialog) SetFontName(fontname string) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_font_selection_dialog_set_preview_text
 //
 // [ text ] trans: nothing
@@ -26296,6 +26602,8 @@ func GradientGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_gradient_new_linear
 //
 // [ x0 ] trans: nothing
@@ -26325,6 +26633,8 @@ func NewGradientLinear(x0 float64, y0 float64, x1 float64, y1 float64) (result G
 	return
 }
 
+// Deprecated
+//
 // gtk_gradient_new_radial
 //
 // [ x0 ] trans: nothing
@@ -26360,6 +26670,8 @@ func NewGradientRadial(x0 float64, y0 float64, radius0 float64, x1 float64, y1 f
 	return
 }
 
+// Deprecated
+//
 // gtk_gradient_add_color_stop
 //
 // [ offset ] trans: nothing
@@ -26379,6 +26691,8 @@ func (v Gradient) AddColorStop(offset float64, color SymbolicColor) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_gradient_ref
 //
 // [ result ] trans: everything
@@ -26397,6 +26711,8 @@ func (v Gradient) Ref() (result Gradient) {
 	return
 }
 
+// Deprecated
+//
 // gtk_gradient_resolve
 //
 // [ props ] trans: nothing
@@ -26452,6 +26768,8 @@ func (v Gradient) ResolveForContext(context IStyleContext) (result cairo.Pattern
 	return
 }
 
+// Deprecated
+//
 // gtk_gradient_to_string
 //
 // [ result ] trans: everything
@@ -26470,6 +26788,8 @@ func (v Gradient) ToString() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_gradient_unref
 //
 func (v Gradient) Unref() {
@@ -26941,6 +27261,8 @@ func HBoxGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_hbox_new
 //
 // [ homogeneous ] trans: nothing
@@ -26986,6 +27308,8 @@ func HButtonBoxGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_hbutton_box_new
 //
 // [ result ] trans: nothing
@@ -27024,6 +27348,8 @@ func HPanedGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_hpaned_new
 //
 // [ result ] trans: nothing
@@ -27252,6 +27578,8 @@ func HScaleGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_hscale_new
 //
 // [ adjustment ] trans: nothing
@@ -27276,6 +27604,8 @@ func NewHScale(adjustment IAdjustment) (result HScale) {
 	return
 }
 
+// Deprecated
+//
 // gtk_hscale_new_with_range
 //
 // [ min ] trans: nothing
@@ -27324,6 +27654,8 @@ func HScrollbarGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_hscrollbar_new
 //
 // [ adjustment ] trans: nothing
@@ -27370,6 +27702,8 @@ func HSeparatorGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_hseparator_new
 //
 // [ result ] trans: nothing
@@ -27406,6 +27740,8 @@ func HandleBoxGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_handle_box_new
 //
 // [ result ] trans: nothing
@@ -27422,6 +27758,8 @@ func NewHandleBox() (result HandleBox) {
 	return
 }
 
+// Deprecated
+//
 // gtk_handle_box_get_child_detached
 //
 // [ result ] trans: nothing
@@ -27440,6 +27778,8 @@ func (v HandleBox) GetChildDetached() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_handle_box_get_handle_position
 //
 // [ result ] trans: nothing
@@ -27458,6 +27798,8 @@ func (v HandleBox) GetHandlePosition() (result PositionTypeEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_handle_box_get_shadow_type
 //
 // [ result ] trans: nothing
@@ -27476,6 +27818,8 @@ func (v HandleBox) GetShadowType() (result ShadowTypeEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_handle_box_get_snap_edge
 //
 // [ result ] trans: nothing
@@ -27494,6 +27838,8 @@ func (v HandleBox) GetSnapEdge() (result PositionTypeEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_handle_box_set_handle_position
 //
 // [ position ] trans: nothing
@@ -27510,6 +27856,8 @@ func (v HandleBox) SetHandlePosition(position PositionTypeEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_handle_box_set_shadow_type
 //
 // [ type1 ] trans: nothing
@@ -27526,6 +27874,8 @@ func (v HandleBox) SetShadowType(type1 ShadowTypeEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_handle_box_set_snap_edge
 //
 // [ edge ] trans: nothing
@@ -28186,6 +28536,8 @@ func NewIMMulticontext() (result IMMulticontext) {
 	return
 }
 
+// Deprecated
+//
 // gtk_im_multicontext_append_menuitems
 //
 // [ menushell ] trans: nothing
@@ -28253,6 +28605,8 @@ func IMMulticontextPrivateGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Enum IMPreeditStyle
 type IMPreeditStyleEnum int
 
@@ -28267,6 +28621,8 @@ func IMPreeditStyleGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Enum IMStatusStyle
 type IMStatusStyleEnum int
 
@@ -28298,6 +28654,8 @@ func IconFactoryGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_icon_factory_new
 //
 // [ result ] trans: everything
@@ -28314,6 +28672,8 @@ func NewIconFactory() (result IconFactory) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_factory_lookup_default
 //
 // [ stock_id ] trans: nothing
@@ -28336,6 +28696,8 @@ func IconFactoryLookupDefault1(stock_id string) (result IconSet) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_factory_add
 //
 // [ stock_id ] trans: nothing
@@ -28357,6 +28719,8 @@ func (v IconFactory) Add(stock_id string, icon_set IconSet) {
 	gi.Free(c_stock_id)
 }
 
+// Deprecated
+//
 // gtk_icon_factory_add_default
 //
 func (v IconFactory) AddDefault() {
@@ -28370,6 +28734,8 @@ func (v IconFactory) AddDefault() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_icon_factory_lookup
 //
 // [ stock_id ] trans: nothing
@@ -28393,6 +28759,8 @@ func (v IconFactory) Lookup(stock_id string) (result IconSet) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_factory_remove_default
 //
 func (v IconFactory) RemoveDefault() {
@@ -28463,6 +28831,8 @@ func NewIconInfoForPixbuf(icon_theme IIconTheme, pixbuf gdkpixbuf.IPixbuf) (resu
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_info_get_attach_points
 //
 // [ points ] trans: everything, dir: out
@@ -28528,6 +28898,8 @@ func (v IconInfo) GetBaseSize() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_info_get_builtin_pixbuf
 //
 // [ result ] trans: nothing
@@ -28546,6 +28918,8 @@ func (v IconInfo) GetBuiltinPixbuf() (result gdkpixbuf.Pixbuf) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_info_get_display_name
 //
 // [ result ] trans: nothing
@@ -28564,6 +28938,8 @@ func (v IconInfo) GetDisplayName() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_info_get_embedded_rect
 //
 // [ rectangle ] trans: nothing, dir: out
@@ -28921,6 +29297,8 @@ func (v IconInfo) LoadSymbolicForContextFinish(res g.IAsyncResult) (result gdkpi
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_info_load_symbolic_for_style
 //
 // [ style ] trans: nothing
@@ -28955,6 +29333,8 @@ func (v IconInfo) LoadSymbolicForStyle(style IStyle, state StateTypeEnum) (resul
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_info_set_raw_coordinates
 //
 // [ raw_coordinates ] trans: nothing
@@ -29002,6 +29382,8 @@ func IconSetGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_icon_set_new
 //
 // [ result ] trans: everything
@@ -29018,6 +29400,8 @@ func NewIconSet() (result IconSet) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_set_new_from_pixbuf
 //
 // [ pixbuf ] trans: nothing
@@ -29042,6 +29426,8 @@ func NewIconSetFromPixbuf(pixbuf gdkpixbuf.IPixbuf) (result IconSet) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_set_add_source
 //
 // [ source ] trans: nothing
@@ -29058,6 +29444,8 @@ func (v IconSet) AddSource(source IconSource) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_icon_set_copy
 //
 // [ result ] trans: everything
@@ -29076,6 +29464,8 @@ func (v IconSet) Copy() (result IconSet) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_set_get_sizes
 //
 // [ sizes ] trans: everything, dir: out
@@ -29102,6 +29492,8 @@ func (v IconSet) GetSizes() (sizes gi.Int32Array) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_set_ref
 //
 // [ result ] trans: everything
@@ -29120,6 +29512,8 @@ func (v IconSet) Ref() (result IconSet) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_set_render_icon
 //
 // [ style ] trans: nothing
@@ -29166,6 +29560,8 @@ func (v IconSet) RenderIcon(style IStyle, direction TextDirectionEnum, state Sta
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_set_render_icon_pixbuf
 //
 // [ context ] trans: nothing
@@ -29194,6 +29590,8 @@ func (v IconSet) RenderIconPixbuf(context IStyleContext, size int32) (result gdk
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_set_render_icon_surface
 //
 // [ context ] trans: nothing
@@ -29232,6 +29630,8 @@ func (v IconSet) RenderIconSurface(context IStyleContext, size int32, scale int3
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_set_unref
 //
 func (v IconSet) Unref() {
@@ -29273,6 +29673,8 @@ func IconSourceGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_icon_source_new
 //
 // [ result ] trans: everything
@@ -29289,6 +29691,8 @@ func NewIconSource() (result IconSource) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_copy
 //
 // [ result ] trans: everything
@@ -29307,6 +29711,8 @@ func (v IconSource) Copy() (result IconSource) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_free
 //
 func (v IconSource) Free() {
@@ -29320,6 +29726,8 @@ func (v IconSource) Free() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_icon_source_get_direction
 //
 // [ result ] trans: nothing
@@ -29338,6 +29746,8 @@ func (v IconSource) GetDirection() (result TextDirectionEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_get_direction_wildcarded
 //
 // [ result ] trans: nothing
@@ -29356,6 +29766,8 @@ func (v IconSource) GetDirectionWildcarded() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_get_filename
 //
 // [ result ] trans: nothing
@@ -29374,6 +29786,8 @@ func (v IconSource) GetFilename() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_get_icon_name
 //
 // [ result ] trans: nothing
@@ -29392,6 +29806,8 @@ func (v IconSource) GetIconName() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_get_pixbuf
 //
 // [ result ] trans: nothing
@@ -29410,6 +29826,8 @@ func (v IconSource) GetPixbuf() (result gdkpixbuf.Pixbuf) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_get_size
 //
 // [ result ] trans: nothing
@@ -29428,6 +29846,8 @@ func (v IconSource) GetSize() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_get_size_wildcarded
 //
 // [ result ] trans: nothing
@@ -29446,6 +29866,8 @@ func (v IconSource) GetSizeWildcarded() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_get_state
 //
 // [ result ] trans: nothing
@@ -29464,6 +29886,8 @@ func (v IconSource) GetState() (result StateTypeEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_get_state_wildcarded
 //
 // [ result ] trans: nothing
@@ -29482,6 +29906,8 @@ func (v IconSource) GetStateWildcarded() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_source_set_direction
 //
 // [ direction ] trans: nothing
@@ -29498,6 +29924,8 @@ func (v IconSource) SetDirection(direction TextDirectionEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_icon_source_set_direction_wildcarded
 //
 // [ setting ] trans: nothing
@@ -29514,6 +29942,8 @@ func (v IconSource) SetDirectionWildcarded(setting bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_icon_source_set_filename
 //
 // [ filename ] trans: nothing
@@ -29532,6 +29962,8 @@ func (v IconSource) SetFilename(filename string) {
 	gi.Free(c_filename)
 }
 
+// Deprecated
+//
 // gtk_icon_source_set_icon_name
 //
 // [ icon_name ] trans: nothing
@@ -29550,6 +29982,8 @@ func (v IconSource) SetIconName(icon_name string) {
 	gi.Free(c_icon_name)
 }
 
+// Deprecated
+//
 // gtk_icon_source_set_pixbuf
 //
 // [ pixbuf ] trans: nothing
@@ -29570,6 +30004,8 @@ func (v IconSource) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_icon_source_set_size
 //
 // [ size ] trans: nothing
@@ -29586,6 +30022,8 @@ func (v IconSource) SetSize(size int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_icon_source_set_size_wildcarded
 //
 // [ setting ] trans: nothing
@@ -29602,6 +30040,8 @@ func (v IconSource) SetSizeWildcarded(setting bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_icon_source_set_state
 //
 // [ state ] trans: nothing
@@ -29618,6 +30058,8 @@ func (v IconSource) SetState(state StateTypeEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_icon_source_set_state_wildcarded
 //
 // [ setting ] trans: nothing
@@ -29665,6 +30107,8 @@ func NewIconTheme() (result IconTheme) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_theme_add_builtin_icon
 //
 // [ icon_name ] trans: nothing
@@ -31784,6 +32228,8 @@ func NewImageFromIconName(icon_name string, size int32) (result Image) {
 	return
 }
 
+// Deprecated
+//
 // gtk_image_new_from_icon_set
 //
 // [ icon_set ] trans: nothing
@@ -31853,6 +32299,8 @@ func NewImageFromResource(resource_path string) (result Image) {
 	return
 }
 
+// Deprecated
+//
 // gtk_image_new_from_stock
 //
 // [ stock_id ] trans: nothing
@@ -31975,6 +32423,8 @@ func (v Image) GetIconName() (icon_name string, size int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_image_get_icon_set
 //
 // [ icon_set ] trans: nothing, dir: out
@@ -32034,6 +32484,8 @@ func (v Image) GetPixelSize() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_image_get_stock
 //
 // [ stock_id ] trans: nothing, dir: out
@@ -32157,6 +32609,8 @@ func (v Image) SetFromIconName(icon_name string, size int32) {
 	gi.Free(c_icon_name)
 }
 
+// Deprecated
+//
 // gtk_image_set_from_icon_set
 //
 // [ icon_set ] trans: nothing
@@ -32214,6 +32668,8 @@ func (v Image) SetFromResource(resource_path string) {
 	gi.Free(c_resource_path)
 }
 
+// Deprecated
+//
 // gtk_image_set_from_stock
 //
 // [ stock_id ] trans: nothing
@@ -32355,6 +32811,8 @@ func ImageMenuItemGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_new
 //
 // [ result ] trans: nothing
@@ -32371,6 +32829,8 @@ func NewImageMenuItem() (result ImageMenuItem) {
 	return
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_new_from_stock
 //
 // [ stock_id ] trans: nothing
@@ -32400,6 +32860,8 @@ func NewImageMenuItemFromStock(stock_id string, accel_group IAccelGroup) (result
 	return
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_new_with_label
 //
 // [ label ] trans: nothing
@@ -32422,6 +32884,8 @@ func NewImageMenuItemWithLabel(label string) (result ImageMenuItem) {
 	return
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_new_with_mnemonic
 //
 // [ label ] trans: nothing
@@ -32444,6 +32908,8 @@ func NewImageMenuItemWithMnemonic(label string) (result ImageMenuItem) {
 	return
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_get_always_show_image
 //
 // [ result ] trans: nothing
@@ -32462,6 +32928,8 @@ func (v ImageMenuItem) GetAlwaysShowImage() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_get_image
 //
 // [ result ] trans: nothing
@@ -32480,6 +32948,8 @@ func (v ImageMenuItem) GetImage() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_get_use_stock
 //
 // [ result ] trans: nothing
@@ -32498,6 +32968,8 @@ func (v ImageMenuItem) GetUseStock() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_set_accel_group
 //
 // [ accel_group ] trans: nothing
@@ -32518,6 +32990,8 @@ func (v ImageMenuItem) SetAccelGroup(accel_group IAccelGroup) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_set_always_show_image
 //
 // [ always_show ] trans: nothing
@@ -32534,6 +33008,8 @@ func (v ImageMenuItem) SetAlwaysShowImage(always_show bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_set_image
 //
 // [ image ] trans: nothing
@@ -32554,6 +33030,8 @@ func (v ImageMenuItem) SetImage(image IWidget) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_image_menu_item_set_use_stock
 //
 // [ use_stock ] trans: nothing
@@ -34133,6 +34611,8 @@ func (v Layout) GetBinWindow() (result gdk.Window) {
 	return
 }
 
+// Deprecated
+//
 // gtk_layout_get_hadjustment
 //
 // [ result ] trans: nothing
@@ -34174,6 +34654,8 @@ func (v Layout) GetSize() (width uint32, height uint32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_layout_get_vadjustment
 //
 // [ result ] trans: nothing
@@ -34244,6 +34726,8 @@ func (v Layout) Put(child_widget IWidget, x int32, y int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_layout_set_hadjustment
 //
 // [ adjustment ] trans: nothing
@@ -34283,6 +34767,8 @@ func (v Layout) SetSize(width uint32, height uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_layout_set_vadjustment
 //
 // [ adjustment ] trans: nothing
@@ -36502,6 +36988,8 @@ func (v Menu) GetReserveToggleSize() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_menu_get_tearoff_state
 //
 // [ result ] trans: nothing
@@ -36520,6 +37008,8 @@ func (v Menu) GetTearoffState() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_menu_get_title
 //
 // [ result ] trans: nothing
@@ -36571,6 +37061,8 @@ func (v Menu) Popdown() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_menu_popup
 //
 // [ parent_menu_shell ] trans: nothing
@@ -36687,6 +37179,8 @@ func (v Menu) PopupAtWidget(widget IWidget, widget_anchor gdk.GravityEnum, menu_
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_menu_popup_for_device
 //
 // [ device ] trans: nothing
@@ -36878,6 +37372,8 @@ func (v Menu) SetScreen(screen gdk.IScreen) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_menu_set_tearoff_state
 //
 // [ torn_off ] trans: nothing
@@ -36894,6 +37390,8 @@ func (v Menu) SetTearoffState(torn_off bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_menu_set_title
 //
 // [ title ] trans: nothing
@@ -37575,6 +38073,8 @@ func (v MenuItem) GetReserveIndicator() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_menu_item_get_right_justified
 //
 // [ result ] trans: nothing
@@ -37694,6 +38194,8 @@ func (v MenuItem) SetReserveIndicator(reserve bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_menu_item_set_right_justified
 //
 // [ right_justified ] trans: nothing
@@ -38225,6 +38727,8 @@ func NewMenuToolButton(icon_widget IWidget, label string) (result MenuToolButton
 	return
 }
 
+// Deprecated
+//
 // gtk_menu_tool_button_new_from_stock
 //
 // [ stock_id ] trans: nothing
@@ -38351,6 +38855,8 @@ func MessageDialogGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_message_dialog_get_image
 //
 // [ result ] trans: nothing
@@ -38387,6 +38893,8 @@ func (v MessageDialog) GetMessageArea() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_message_dialog_set_image
 //
 // [ image ] trans: nothing
@@ -38471,6 +38979,8 @@ func MiscGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_misc_get_alignment
 //
 // [ xalign ] trans: everything, dir: out
@@ -38494,6 +39004,8 @@ func (v Misc) GetAlignment() (xalign float32, yalign float32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_misc_get_padding
 //
 // [ xpad ] trans: everything, dir: out
@@ -38517,6 +39029,8 @@ func (v Misc) GetPadding() (xpad int32, ypad int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_misc_set_alignment
 //
 // [ xalign ] trans: nothing
@@ -38536,6 +39050,8 @@ func (v Misc) SetAlignment(xalign float32, yalign float32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_misc_set_padding
 //
 // [ xpad ] trans: nothing
@@ -39347,6 +39863,8 @@ func (v Notebook) GetTabDetachable(child IWidget) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_notebook_get_tab_hborder
 //
 // [ result ] trans: nothing
@@ -39458,6 +39976,8 @@ func (v Notebook) GetTabReorderable(child IWidget) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_notebook_get_tab_vborder
 //
 // [ result ] trans: nothing
@@ -40173,6 +40693,8 @@ func NumerableIconGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_new
 //
 // [ base_icon ] trans: nothing
@@ -40197,6 +40719,8 @@ func NumerableIconNew1(base_icon g.IIcon) (result g.Icon) {
 	return
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_new_with_style_context
 //
 // [ base_icon ] trans: nothing
@@ -40228,6 +40752,8 @@ func NumerableIconNewWithStyleContext1(base_icon g.IIcon, context IStyleContext)
 	return
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_get_background_gicon
 //
 // [ result ] trans: nothing
@@ -40246,6 +40772,8 @@ func (v NumerableIcon) GetBackgroundGicon() (result g.Icon) {
 	return
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_get_background_icon_name
 //
 // [ result ] trans: nothing
@@ -40264,6 +40792,8 @@ func (v NumerableIcon) GetBackgroundIconName() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_get_count
 //
 // [ result ] trans: nothing
@@ -40282,6 +40812,8 @@ func (v NumerableIcon) GetCount() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_get_label
 //
 // [ result ] trans: nothing
@@ -40300,6 +40832,8 @@ func (v NumerableIcon) GetLabel() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_get_style_context
 //
 // [ result ] trans: nothing
@@ -40318,6 +40852,8 @@ func (v NumerableIcon) GetStyleContext() (result StyleContext) {
 	return
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_set_background_gicon
 //
 // [ icon ] trans: nothing
@@ -40338,6 +40874,8 @@ func (v NumerableIcon) SetBackgroundGicon(icon g.IIcon) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_set_background_icon_name
 //
 // [ icon_name ] trans: nothing
@@ -40356,6 +40894,8 @@ func (v NumerableIcon) SetBackgroundIconName(icon_name string) {
 	gi.Free(c_icon_name)
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_set_count
 //
 // [ count ] trans: nothing
@@ -40372,6 +40912,8 @@ func (v NumerableIcon) SetCount(count int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_set_label
 //
 // [ label ] trans: nothing
@@ -40390,6 +40932,8 @@ func (v NumerableIcon) SetLabel(label string) {
 	gi.Free(c_label)
 }
 
+// Deprecated
+//
 // gtk_numerable_icon_set_style_context
 //
 // [ style ] trans: nothing
@@ -42307,6 +42851,8 @@ func PaperSizeGetPaperSizes1(include_custom bool) (result g.List) {
 	return
 }
 
+// Deprecated
+//
 // Enum PathPriorityType
 type PathPriorityTypeEnum int
 
@@ -42324,6 +42870,8 @@ func PathPriorityTypeGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Enum PathType
 type PathTypeEnum int
 
@@ -42482,6 +43030,8 @@ func (v PlacesSidebar) GetOpenFlags() (result PlacesOpenFlags) {
 	return
 }
 
+// Deprecated
+//
 // gtk_places_sidebar_get_show_connect_to_server
 //
 // [ result ] trans: nothing
@@ -42721,6 +43271,8 @@ func (v PlacesSidebar) SetOpenFlags(flags PlacesOpenFlags) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_places_sidebar_set_show_connect_to_server
 //
 // [ show_connect_to_server ] trans: nothing
@@ -43229,6 +43781,8 @@ func (v Popover) GetRelativeTo() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_popover_get_transitions_enabled
 //
 // [ result ] trans: nothing
@@ -43377,6 +43931,8 @@ func (v Popover) SetRelativeTo(relative_to IWidget) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_popover_set_transitions_enabled
 //
 // [ transitions_enabled ] trans: nothing
@@ -46287,6 +46843,8 @@ func RadioActionGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_radio_action_new
 //
 // [ name ] trans: nothing
@@ -46327,6 +46885,8 @@ func NewRadioAction(name string, label string, tooltip string, stock_id string, 
 	return
 }
 
+// Deprecated
+//
 // gtk_radio_action_get_current_value
 //
 // [ result ] trans: nothing
@@ -46345,6 +46905,8 @@ func (v RadioAction) GetCurrentValue() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_radio_action_get_group
 //
 // [ result ] trans: nothing
@@ -46363,6 +46925,8 @@ func (v RadioAction) GetGroup() (result g.SList) {
 	return
 }
 
+// Deprecated
+//
 // gtk_radio_action_join_group
 //
 // [ group_source ] trans: nothing
@@ -46383,6 +46947,8 @@ func (v RadioAction) JoinGroup(group_source IRadioAction) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_radio_action_set_current_value
 //
 // [ current_value ] trans: nothing
@@ -46399,6 +46965,8 @@ func (v RadioAction) SetCurrentValue(current_value int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_radio_action_set_group
 //
 // [ group ] trans: nothing
@@ -46416,6 +46984,8 @@ func (v RadioAction) SetGroup(group g.SList) {
 }
 
 // ignore GType struct RadioActionClass
+// Deprecated
+//
 // Struct RadioActionEntry
 type RadioActionEntry struct {
 	P unsafe.Pointer
@@ -47025,6 +47595,8 @@ func NewRadioToolButton(group g.SList) (result RadioToolButton) {
 	return
 }
 
+// Deprecated
+//
 // gtk_radio_tool_button_new_from_stock
 //
 // [ group ] trans: nothing
@@ -47074,6 +47646,8 @@ func NewRadioToolButtonFromWidget(group IRadioToolButton) (result RadioToolButto
 	return
 }
 
+// Deprecated
+//
 // gtk_radio_tool_button_new_with_stock_from_widget
 //
 // [ group ] trans: nothing
@@ -47249,6 +47823,8 @@ func (v Range) GetLowerStepperSensitivity() (result SensitivityTypeEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_range_get_min_slider_size
 //
 // [ result ] trans: nothing
@@ -47517,6 +48093,8 @@ func (v Range) SetLowerStepperSensitivity(sensitivity SensitivityTypeEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_range_set_min_slider_size
 //
 // [ min_size ] trans: nothing
@@ -47906,6 +48484,8 @@ func RcStyleGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_rc_style_new
 //
 // [ result ] trans: everything
@@ -47922,6 +48502,8 @@ func NewRcStyle() (result RcStyle) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_style_copy
 //
 // [ result ] trans: everything
@@ -47941,6 +48523,8 @@ func (v RcStyle) Copy() (result RcStyle) {
 }
 
 // ignore GType struct RcStyleClass
+// Deprecated
+//
 // Enum RcTokenType
 type RcTokenTypeEnum int
 
@@ -48011,6 +48595,8 @@ func RecentActionGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_recent_action_new
 //
 // [ name ] trans: nothing
@@ -48048,6 +48634,8 @@ func NewRecentAction(name string, label string, tooltip string, stock_id string)
 	return
 }
 
+// Deprecated
+//
 // gtk_recent_action_new_for_manager
 //
 // [ name ] trans: nothing
@@ -48092,6 +48680,8 @@ func NewRecentActionForManager(name string, label string, tooltip string, stock_
 	return
 }
 
+// Deprecated
+//
 // gtk_recent_action_get_show_numbers
 //
 // [ result ] trans: nothing
@@ -48110,6 +48700,8 @@ func (v RecentAction) GetShowNumbers() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_recent_action_set_show_numbers
 //
 // [ show_numbers ] trans: nothing
@@ -51310,6 +51902,8 @@ func NewScrolledWindow(hadjustment IAdjustment, vadjustment IAdjustment) (result
 	return
 }
 
+// Deprecated
+//
 // gtk_scrolled_window_add_with_viewport
 //
 // [ child ] trans: nothing
@@ -52798,6 +53392,8 @@ func SettingsGetForScreen1(screen gdk.IScreen) (result Settings) {
 	return
 }
 
+// Deprecated
+//
 // gtk_settings_install_property
 //
 // [ pspec ] trans: nothing
@@ -52817,6 +53413,8 @@ func SettingsInstallProperty1(pspec g.IParamSpec) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_settings_install_property_parser
 //
 // [ pspec ] trans: nothing
@@ -52857,6 +53455,8 @@ func (v Settings) ResetProperty(name string) {
 	gi.Free(c_name)
 }
 
+// Deprecated
+//
 // gtk_settings_set_double_property
 //
 // [ name ] trans: nothing
@@ -52883,6 +53483,8 @@ func (v Settings) SetDoubleProperty(name string, v_double float64, origin string
 	gi.Free(c_origin)
 }
 
+// Deprecated
+//
 // gtk_settings_set_long_property
 //
 // [ name ] trans: nothing
@@ -52909,6 +53511,8 @@ func (v Settings) SetLongProperty(name string, v_long int64, origin string) {
 	gi.Free(c_origin)
 }
 
+// Deprecated
+//
 // gtk_settings_set_property_value
 //
 // [ name ] trans: nothing
@@ -52930,6 +53534,8 @@ func (v Settings) SetPropertyValue(name string, svalue SettingsValue) {
 	gi.Free(c_name)
 }
 
+// Deprecated
+//
 // gtk_settings_set_string_property
 //
 // [ name ] trans: nothing
@@ -53275,6 +53881,8 @@ func (v SizeGroup) AddWidget(widget IWidget) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_size_group_get_ignore_hidden
 //
 // [ result ] trans: nothing
@@ -53349,6 +53957,8 @@ func (v SizeGroup) RemoveWidget(widget IWidget) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_size_group_set_ignore_hidden
 //
 // [ ignore_hidden ] trans: nothing
@@ -54860,6 +55470,8 @@ func StateFlagsGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Enum StateType
 type StateTypeEnum int
 
@@ -54893,6 +55505,8 @@ func StatusIconGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_status_icon_new
 //
 // [ result ] trans: everything
@@ -54909,6 +55523,8 @@ func NewStatusIcon() (result StatusIcon) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_new_from_file
 //
 // [ filename ] trans: nothing
@@ -54931,6 +55547,8 @@ func NewStatusIconFromFile(filename string) (result StatusIcon) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_new_from_gicon
 //
 // [ icon ] trans: nothing
@@ -54955,6 +55573,8 @@ func NewStatusIconFromGicon(icon g.IIcon) (result StatusIcon) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_new_from_icon_name
 //
 // [ icon_name ] trans: nothing
@@ -54977,6 +55597,8 @@ func NewStatusIconFromIconName(icon_name string) (result StatusIcon) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_new_from_pixbuf
 //
 // [ pixbuf ] trans: nothing
@@ -55001,6 +55623,8 @@ func NewStatusIconFromPixbuf(pixbuf gdkpixbuf.IPixbuf) (result StatusIcon) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_new_from_stock
 //
 // [ stock_id ] trans: nothing
@@ -55023,6 +55647,8 @@ func NewStatusIconFromStock(stock_id string) (result StatusIcon) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_position_menu
 //
 // [ menu ] trans: nothing
@@ -55059,6 +55685,8 @@ func StatusIconPositionMenu1(menu IMenu, x int /*TODO:TYPE*/, y int /*TODO:TYPE*
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_geometry
 //
 // [ screen ] trans: nothing, dir: out
@@ -55089,6 +55717,8 @@ func (v StatusIcon) GetGeometry(area gdk.Rectangle) (result bool, screen gdk.Scr
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_gicon
 //
 // [ result ] trans: nothing
@@ -55107,6 +55737,8 @@ func (v StatusIcon) GetGicon() (result g.Icon) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_has_tooltip
 //
 // [ result ] trans: nothing
@@ -55125,6 +55757,8 @@ func (v StatusIcon) GetHasTooltip() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_icon_name
 //
 // [ result ] trans: nothing
@@ -55143,6 +55777,8 @@ func (v StatusIcon) GetIconName() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_pixbuf
 //
 // [ result ] trans: nothing
@@ -55161,6 +55797,8 @@ func (v StatusIcon) GetPixbuf() (result gdkpixbuf.Pixbuf) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_screen
 //
 // [ result ] trans: nothing
@@ -55179,6 +55817,8 @@ func (v StatusIcon) GetScreen() (result gdk.Screen) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_size
 //
 // [ result ] trans: nothing
@@ -55197,6 +55837,8 @@ func (v StatusIcon) GetSize() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_stock
 //
 // [ result ] trans: nothing
@@ -55215,6 +55857,8 @@ func (v StatusIcon) GetStock() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_storage_type
 //
 // [ result ] trans: nothing
@@ -55233,6 +55877,8 @@ func (v StatusIcon) GetStorageType() (result ImageTypeEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_title
 //
 // [ result ] trans: nothing
@@ -55251,6 +55897,8 @@ func (v StatusIcon) GetTitle() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_tooltip_markup
 //
 // [ result ] trans: everything
@@ -55269,6 +55917,8 @@ func (v StatusIcon) GetTooltipMarkup() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_tooltip_text
 //
 // [ result ] trans: everything
@@ -55287,6 +55937,8 @@ func (v StatusIcon) GetTooltipText() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_visible
 //
 // [ result ] trans: nothing
@@ -55305,6 +55957,8 @@ func (v StatusIcon) GetVisible() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_get_x11_window_id
 //
 // [ result ] trans: nothing
@@ -55323,6 +55977,8 @@ func (v StatusIcon) GetX11WindowId() (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_is_embedded
 //
 // [ result ] trans: nothing
@@ -55341,6 +55997,8 @@ func (v StatusIcon) IsEmbedded() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_from_file
 //
 // [ filename ] trans: nothing
@@ -55359,6 +56017,8 @@ func (v StatusIcon) SetFromFile(filename string) {
 	gi.Free(c_filename)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_from_gicon
 //
 // [ icon ] trans: nothing
@@ -55379,6 +56039,8 @@ func (v StatusIcon) SetFromGicon(icon g.IIcon) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_from_icon_name
 //
 // [ icon_name ] trans: nothing
@@ -55397,6 +56059,8 @@ func (v StatusIcon) SetFromIconName(icon_name string) {
 	gi.Free(c_icon_name)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_from_pixbuf
 //
 // [ pixbuf ] trans: nothing
@@ -55417,6 +56081,8 @@ func (v StatusIcon) SetFromPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_from_stock
 //
 // [ stock_id ] trans: nothing
@@ -55435,6 +56101,8 @@ func (v StatusIcon) SetFromStock(stock_id string) {
 	gi.Free(c_stock_id)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_has_tooltip
 //
 // [ has_tooltip ] trans: nothing
@@ -55451,6 +56119,8 @@ func (v StatusIcon) SetHasTooltip(has_tooltip bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_name
 //
 // [ name ] trans: nothing
@@ -55469,6 +56139,8 @@ func (v StatusIcon) SetName(name string) {
 	gi.Free(c_name)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_screen
 //
 // [ screen ] trans: nothing
@@ -55489,6 +56161,8 @@ func (v StatusIcon) SetScreen(screen gdk.IScreen) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_title
 //
 // [ title ] trans: nothing
@@ -55507,6 +56181,8 @@ func (v StatusIcon) SetTitle(title string) {
 	gi.Free(c_title)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_tooltip_markup
 //
 // [ markup ] trans: nothing
@@ -55525,6 +56201,8 @@ func (v StatusIcon) SetTooltipMarkup(markup string) {
 	gi.Free(c_markup)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_tooltip_text
 //
 // [ text ] trans: nothing
@@ -55543,6 +56221,8 @@ func (v StatusIcon) SetTooltipText(text string) {
 	gi.Free(c_text)
 }
 
+// Deprecated
+//
 // gtk_status_icon_set_visible
 //
 // [ visible ] trans: nothing
@@ -55764,6 +56444,8 @@ func StatusbarPrivateGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Struct StockItem
 type StockItem struct {
 	P unsafe.Pointer
@@ -55776,6 +56458,8 @@ func StockItemGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_stock_item_free
 //
 func (v StockItem) Free() {
@@ -55804,6 +56488,8 @@ func StyleGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_style_new
 //
 // [ result ] trans: everything
@@ -55820,6 +56506,8 @@ func NewStyle() (result Style) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_apply_default_background
 //
 // [ cr ] trans: nothing
@@ -55858,6 +56546,8 @@ func (v Style) ApplyDefaultBackground(cr cairo.Context, window gdk.IWindow, stat
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_copy
 //
 // [ result ] trans: everything
@@ -55876,6 +56566,8 @@ func (v Style) Copy() (result Style) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_detach
 //
 func (v Style) Detach() {
@@ -55931,6 +56623,8 @@ func (v Style) HasContext() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_lookup_color
 //
 // [ color_name ] trans: nothing
@@ -55957,6 +56651,8 @@ func (v Style) LookupColor(color_name string, color gdk.Color) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_lookup_icon_set
 //
 // [ stock_id ] trans: nothing
@@ -55980,6 +56676,8 @@ func (v Style) LookupIconSet(stock_id string) (result IconSet) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_render_icon
 //
 // [ source ] trans: nothing
@@ -56022,6 +56720,8 @@ func (v Style) RenderIcon(source IconSource, direction TextDirectionEnum, state 
 	return
 }
 
+// Deprecated
+//
 // gtk_style_set_background
 //
 // [ window ] trans: nothing
@@ -56192,6 +56892,8 @@ func (v StyleContext) AddProvider(provider IStyleProvider, priority uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_add_region
 //
 // [ region_name ] trans: nothing
@@ -56213,6 +56915,8 @@ func (v StyleContext) AddRegion(region_name string, flags RegionFlags) {
 	gi.Free(c_region_name)
 }
 
+// Deprecated
+//
 // gtk_style_context_cancel_animations
 //
 // [ region_id ] trans: nothing
@@ -56229,6 +56933,8 @@ func (v StyleContext) CancelAnimations(region_id unsafe.Pointer) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_get_background_color
 //
 // [ state ] trans: nothing
@@ -56267,6 +56973,8 @@ func (v StyleContext) GetBorder(state StateFlags, border Border) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_get_border_color
 //
 // [ state ] trans: nothing
@@ -56305,6 +57013,8 @@ func (v StyleContext) GetColor(state StateFlags, color gdk.RGBA) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_get_direction
 //
 // [ result ] trans: nothing
@@ -56323,6 +57033,8 @@ func (v StyleContext) GetDirection() (result TextDirectionEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_context_get_font
 //
 // [ state ] trans: nothing
@@ -56599,6 +57311,8 @@ func (v StyleContext) HasClass(class_name string) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_context_has_region
 //
 // [ region_name ] trans: nothing
@@ -56627,6 +57341,8 @@ func (v StyleContext) HasRegion(region_name string) (result bool, flags_return R
 	return
 }
 
+// Deprecated
+//
 // gtk_style_context_invalidate
 //
 func (v StyleContext) Invalidate() {
@@ -56658,6 +57374,8 @@ func (v StyleContext) ListClasses() (result g.List) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_context_list_regions
 //
 // [ result ] trans: container
@@ -56702,6 +57420,8 @@ func (v StyleContext) LookupColor(color_name string, color gdk.RGBA) (result boo
 	return
 }
 
+// Deprecated
+//
 // gtk_style_context_lookup_icon_set
 //
 // [ stock_id ] trans: nothing
@@ -56725,6 +57445,8 @@ func (v StyleContext) LookupIconSet(stock_id string) (result IconSet) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_context_notify_state_change
 //
 // [ window ] trans: nothing
@@ -56754,6 +57476,8 @@ func (v StyleContext) NotifyStateChange(window gdk.IWindow, region_id unsafe.Poi
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_pop_animatable_region
 //
 func (v StyleContext) PopAnimatableRegion() {
@@ -56767,6 +57491,8 @@ func (v StyleContext) PopAnimatableRegion() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_push_animatable_region
 //
 // [ region_id ] trans: nothing
@@ -56821,6 +57547,8 @@ func (v StyleContext) RemoveProvider(provider IStyleProvider) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_remove_region
 //
 // [ region_name ] trans: nothing
@@ -56865,6 +57593,8 @@ func (v StyleContext) Save() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_scroll_animations
 //
 // [ window ] trans: nothing
@@ -56891,6 +57621,8 @@ func (v StyleContext) ScrollAnimations(window gdk.IWindow, dx int32, dy int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_set_background
 //
 // [ window ] trans: nothing
@@ -56911,6 +57643,8 @@ func (v StyleContext) SetBackground(window gdk.IWindow) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_set_direction
 //
 // [ direction ] trans: nothing
@@ -57051,6 +57785,8 @@ func (v StyleContext) SetState(flags StateFlags) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_context_state_is_running
 //
 // [ state ] trans: nothing
@@ -57140,6 +57876,8 @@ func StylePropertiesGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_style_properties_new
 //
 // [ result ] trans: everything
@@ -57156,6 +57894,8 @@ func NewStyleProperties() (result StyleProperties) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_properties_clear
 //
 func (v StyleProperties) Clear() {
@@ -57169,6 +57909,8 @@ func (v StyleProperties) Clear() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_properties_get_property
 //
 // [ property ] trans: nothing
@@ -57198,6 +57940,8 @@ func (v StyleProperties) GetProperty(property string, state StateFlags, value g.
 	return
 }
 
+// Deprecated
+//
 // gtk_style_properties_lookup_color
 //
 // [ name ] trans: nothing
@@ -57221,6 +57965,8 @@ func (v StyleProperties) LookupColor(name string) (result SymbolicColor) {
 	return
 }
 
+// Deprecated
+//
 // gtk_style_properties_map_color
 //
 // [ name ] trans: nothing
@@ -57242,6 +57988,8 @@ func (v StyleProperties) MapColor(name string, color SymbolicColor) {
 	gi.Free(c_name)
 }
 
+// Deprecated
+//
 // gtk_style_properties_merge
 //
 // [ props_to_merge ] trans: nothing
@@ -57265,6 +58013,8 @@ func (v StyleProperties) Merge(props_to_merge IStyleProperties, replace bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_style_properties_set_property
 //
 // [ property ] trans: nothing
@@ -57289,6 +58039,8 @@ func (v StyleProperties) SetProperty(property string, state StateFlags, value g.
 	gi.Free(c_property)
 }
 
+// Deprecated
+//
 // gtk_style_properties_unset_property
 //
 // [ property ] trans: nothing
@@ -57349,6 +58101,8 @@ func StyleProviderGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_style_provider_get_icon_factory
 //
 // [ path ] trans: nothing
@@ -57370,6 +58124,8 @@ func (v *StyleProviderIfc) GetIconFactory(path WidgetPath) (result IconFactory) 
 	return
 }
 
+// Deprecated
+//
 // gtk_style_provider_get_style
 //
 // [ path ] trans: nothing
@@ -57584,6 +58340,8 @@ func SymbolicColorGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_symbolic_color_new_alpha
 //
 // [ color ] trans: nothing
@@ -57607,6 +58365,8 @@ func NewSymbolicColorAlpha(color SymbolicColor, factor float64) (result Symbolic
 	return
 }
 
+// Deprecated
+//
 // gtk_symbolic_color_new_literal
 //
 // [ color ] trans: nothing
@@ -57627,6 +58387,8 @@ func NewSymbolicColorLiteral(color gdk.RGBA) (result SymbolicColor) {
 	return
 }
 
+// Deprecated
+//
 // gtk_symbolic_color_new_mix
 //
 // [ color1 ] trans: nothing
@@ -57653,6 +58415,8 @@ func NewSymbolicColorMix(color1 SymbolicColor, color2 SymbolicColor, factor floa
 	return
 }
 
+// Deprecated
+//
 // gtk_symbolic_color_new_name
 //
 // [ name ] trans: nothing
@@ -57675,6 +58439,8 @@ func NewSymbolicColorName(name string) (result SymbolicColor) {
 	return
 }
 
+// Deprecated
+//
 // gtk_symbolic_color_new_shade
 //
 // [ color ] trans: nothing
@@ -57698,6 +58464,8 @@ func NewSymbolicColorShade(color SymbolicColor, factor float64) (result Symbolic
 	return
 }
 
+// Deprecated
+//
 // gtk_symbolic_color_new_win32
 //
 // [ theme_class ] trans: nothing
@@ -57723,6 +58491,8 @@ func NewSymbolicColorWin32(theme_class string, id int32) (result SymbolicColor) 
 	return
 }
 
+// Deprecated
+//
 // gtk_symbolic_color_ref
 //
 // [ result ] trans: everything
@@ -57741,6 +58511,8 @@ func (v SymbolicColor) Ref() (result SymbolicColor) {
 	return
 }
 
+// Deprecated
+//
 // gtk_symbolic_color_resolve
 //
 // [ props ] trans: nothing
@@ -57769,6 +58541,8 @@ func (v SymbolicColor) Resolve(props IStyleProperties, resolved_color gdk.RGBA) 
 	return
 }
 
+// Deprecated
+//
 // gtk_symbolic_color_to_string
 //
 // [ result ] trans: everything
@@ -57787,6 +58561,8 @@ func (v SymbolicColor) ToString() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_symbolic_color_unref
 //
 func (v SymbolicColor) Unref() {
@@ -57819,6 +58595,8 @@ func TableGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_table_new
 //
 // [ rows ] trans: nothing
@@ -57845,6 +58623,8 @@ func NewTable(rows uint32, columns uint32, homogeneous bool) (result Table) {
 	return
 }
 
+// Deprecated
+//
 // gtk_table_attach
 //
 // [ child ] trans: nothing
@@ -57889,6 +58669,8 @@ func (v Table) Attach(child IWidget, left_attach uint32, right_attach uint32, to
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_table_attach_defaults
 //
 // [ widget ] trans: nothing
@@ -57921,6 +58703,8 @@ func (v Table) AttachDefaults(widget IWidget, left_attach uint32, right_attach u
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_table_get_col_spacing
 //
 // [ column ] trans: nothing
@@ -57942,6 +58726,8 @@ func (v Table) GetColSpacing(column uint32) (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_table_get_default_col_spacing
 //
 // [ result ] trans: nothing
@@ -57960,6 +58746,8 @@ func (v Table) GetDefaultColSpacing() (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_table_get_default_row_spacing
 //
 // [ result ] trans: nothing
@@ -57978,6 +58766,8 @@ func (v Table) GetDefaultRowSpacing() (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_table_get_homogeneous
 //
 // [ result ] trans: nothing
@@ -57996,6 +58786,8 @@ func (v Table) GetHomogeneous() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_table_get_row_spacing
 //
 // [ row ] trans: nothing
@@ -58017,6 +58809,8 @@ func (v Table) GetRowSpacing(row uint32) (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_table_get_size
 //
 // [ rows ] trans: everything, dir: out
@@ -58040,6 +58834,8 @@ func (v Table) GetSize() (rows uint32, columns uint32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_table_resize
 //
 // [ rows ] trans: nothing
@@ -58059,6 +58855,8 @@ func (v Table) Resize(rows uint32, columns uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_table_set_col_spacing
 //
 // [ column ] trans: nothing
@@ -58078,6 +58876,8 @@ func (v Table) SetColSpacing(column uint32, spacing uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_table_set_col_spacings
 //
 // [ spacing ] trans: nothing
@@ -58094,6 +58894,8 @@ func (v Table) SetColSpacings(spacing uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_table_set_homogeneous
 //
 // [ homogeneous ] trans: nothing
@@ -58110,6 +58912,8 @@ func (v Table) SetHomogeneous(homogeneous bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_table_set_row_spacing
 //
 // [ row ] trans: nothing
@@ -58129,6 +58933,8 @@ func (v Table) SetRowSpacing(row uint32, spacing uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_table_set_row_spacings
 //
 // [ spacing ] trans: nothing
@@ -58525,6 +59331,8 @@ func TearoffMenuItemGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_tearoff_menu_item_new
 //
 // [ result ] trans: nothing
@@ -60916,6 +61724,8 @@ func (v TextIter) BackwardWordStarts(count int32) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_text_iter_begins_tag
 //
 // [ tag ] trans: nothing
@@ -63153,6 +63963,8 @@ func (v TextView) GetEditable() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_text_view_get_hadjustment
 //
 // [ result ] trans: nothing
@@ -63534,6 +64346,8 @@ func (v TextView) GetTopMargin() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_text_view_get_vadjustment
 //
 // [ result ] trans: nothing
@@ -64340,6 +65154,8 @@ func ThemingEngineGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_theming_engine_load
 //
 // [ name ] trans: nothing
@@ -64362,6 +65178,8 @@ func ThemingEngineLoad1(name string) (result ThemingEngine) {
 	return
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_background_color
 //
 // [ state ] trans: nothing
@@ -64381,6 +65199,8 @@ func (v ThemingEngine) GetBackgroundColor(state StateFlags, color gdk.RGBA) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_border
 //
 // [ state ] trans: nothing
@@ -64400,6 +65220,8 @@ func (v ThemingEngine) GetBorder(state StateFlags, border Border) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_border_color
 //
 // [ state ] trans: nothing
@@ -64419,6 +65241,8 @@ func (v ThemingEngine) GetBorderColor(state StateFlags, color gdk.RGBA) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_color
 //
 // [ state ] trans: nothing
@@ -64438,6 +65262,8 @@ func (v ThemingEngine) GetColor(state StateFlags, color gdk.RGBA) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_direction
 //
 // [ result ] trans: nothing
@@ -64456,6 +65282,8 @@ func (v ThemingEngine) GetDirection() (result TextDirectionEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_font
 //
 // [ state ] trans: nothing
@@ -64477,6 +65305,8 @@ func (v ThemingEngine) GetFont(state StateFlags) (result pango.FontDescription) 
 	return
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_junction_sides
 //
 // [ result ] trans: nothing
@@ -64495,6 +65325,8 @@ func (v ThemingEngine) GetJunctionSides() (result JunctionSidesFlags) {
 	return
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_margin
 //
 // [ state ] trans: nothing
@@ -64514,6 +65346,8 @@ func (v ThemingEngine) GetMargin(state StateFlags, margin Border) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_padding
 //
 // [ state ] trans: nothing
@@ -64533,6 +65367,8 @@ func (v ThemingEngine) GetPadding(state StateFlags, padding Border) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_path
 //
 // [ result ] trans: nothing
@@ -64551,6 +65387,8 @@ func (v ThemingEngine) GetPath() (result WidgetPath) {
 	return
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_property
 //
 // [ property ] trans: nothing
@@ -64575,6 +65413,8 @@ func (v ThemingEngine) GetProperty(property string, state StateFlags, value g.Va
 	gi.Free(c_property)
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_screen
 //
 // [ result ] trans: nothing
@@ -64593,6 +65433,8 @@ func (v ThemingEngine) GetScreen() (result gdk.Screen) {
 	return
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_state
 //
 // [ result ] trans: nothing
@@ -64611,6 +65453,8 @@ func (v ThemingEngine) GetState() (result StateFlags) {
 	return
 }
 
+// Deprecated
+//
 // gtk_theming_engine_get_style_property
 //
 // [ property_name ] trans: nothing
@@ -64632,6 +65476,8 @@ func (v ThemingEngine) GetStyleProperty(property_name string, value g.Value) {
 	gi.Free(c_property_name)
 }
 
+// Deprecated
+//
 // gtk_theming_engine_has_class
 //
 // [ style_class ] trans: nothing
@@ -64655,6 +65501,8 @@ func (v ThemingEngine) HasClass(style_class string) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_theming_engine_has_region
 //
 // [ style_region ] trans: nothing
@@ -64683,6 +65531,8 @@ func (v ThemingEngine) HasRegion(style_region string) (result bool, flags Region
 	return
 }
 
+// Deprecated
+//
 // gtk_theming_engine_lookup_color
 //
 // [ color_name ] trans: nothing
@@ -64709,6 +65559,8 @@ func (v ThemingEngine) LookupColor(color_name string, color gdk.RGBA) (result bo
 	return
 }
 
+// Deprecated
+//
 // gtk_theming_engine_state_is_running
 //
 // [ state ] trans: nothing
@@ -64782,6 +65634,8 @@ func ToggleActionGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_toggle_action_new
 //
 // [ name ] trans: nothing
@@ -64819,6 +65673,8 @@ func NewToggleAction(name string, label string, tooltip string, stock_id string)
 	return
 }
 
+// Deprecated
+//
 // gtk_toggle_action_get_active
 //
 // [ result ] trans: nothing
@@ -64837,6 +65693,8 @@ func (v ToggleAction) GetActive() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_toggle_action_get_draw_as_radio
 //
 // [ result ] trans: nothing
@@ -64855,6 +65713,8 @@ func (v ToggleAction) GetDrawAsRadio() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_toggle_action_set_active
 //
 // [ is_active ] trans: nothing
@@ -64871,6 +65731,8 @@ func (v ToggleAction) SetActive(is_active bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_toggle_action_set_draw_as_radio
 //
 // [ draw_as_radio ] trans: nothing
@@ -64887,6 +65749,8 @@ func (v ToggleAction) SetDrawAsRadio(draw_as_radio bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_toggle_action_toggled
 //
 func (v ToggleAction) Toggled() {
@@ -64901,6 +65765,8 @@ func (v ToggleAction) Toggled() {
 }
 
 // ignore GType struct ToggleActionClass
+// Deprecated
+//
 // Struct ToggleActionEntry
 type ToggleActionEntry struct {
 	P unsafe.Pointer
@@ -65203,6 +66069,8 @@ func NewToggleToolButton() (result ToggleToolButton) {
 	return
 }
 
+// Deprecated
+//
 // gtk_toggle_tool_button_new_from_stock
 //
 // [ stock_id ] trans: nothing
@@ -65322,6 +66190,8 @@ func NewToolButton(icon_widget IWidget, label string) (result ToolButton) {
 	return
 }
 
+// Deprecated
+//
 // gtk_tool_button_new_from_stock
 //
 // [ stock_id ] trans: nothing
@@ -65416,6 +66286,8 @@ func (v ToolButton) GetLabelWidget() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_tool_button_get_stock_id
 //
 // [ result ] trans: nothing
@@ -65528,6 +66400,8 @@ func (v ToolButton) SetLabelWidget(label_widget IWidget) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_tool_button_set_stock_id
 //
 // [ stock_id ] trans: nothing
@@ -66673,6 +67547,8 @@ func (v ToolPalette) GetGroupPosition(group IToolItemGroup) (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_tool_palette_get_hadjustment
 //
 // [ result ] trans: nothing
@@ -66727,6 +67603,8 @@ func (v ToolPalette) GetStyle() (result ToolbarStyleEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_tool_palette_get_vadjustment
 //
 // [ result ] trans: nothing
@@ -67414,6 +68292,8 @@ func ToolbarPrivateGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Enum ToolbarSpaceStyle
 type ToolbarSpaceStyleEnum int
 
@@ -67560,6 +68440,8 @@ func (v Tooltip) SetIconFromIconName(icon_name string, size int32) {
 	gi.Free(c_icon_name)
 }
 
+// Deprecated
+//
 // gtk_tooltip_set_icon_from_stock
 //
 // [ stock_id ] trans: nothing
@@ -71164,6 +72046,8 @@ func (v TreeView) GetGridLines() (result TreeViewGridLinesEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_tree_view_get_hadjustment
 //
 // [ result ] trans: nothing
@@ -71385,6 +72269,8 @@ func (v TreeView) GetRubberBanding() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_tree_view_get_rules_hint
 //
 // [ result ] trans: nothing
@@ -71530,6 +72416,8 @@ func (v TreeView) GetTooltipContext(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/, ke
 	return
 }
 
+// Deprecated
+//
 // gtk_tree_view_get_vadjustment
 //
 // [ result ] trans: nothing
@@ -71983,6 +72871,8 @@ func (v TreeView) SetCursorOnCell(path TreePath, focus_column ITreeViewColumn, f
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_tree_view_set_destroy_count_func
 //
 // [ func1 ] trans: nothing
@@ -72108,6 +72998,8 @@ func (v TreeView) SetGridLines(grid_lines TreeViewGridLinesEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_tree_view_set_hadjustment
 //
 // [ adjustment ] trans: nothing
@@ -72282,6 +73174,8 @@ func (v TreeView) SetRubberBanding(enable bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_tree_view_set_rules_hint
 //
 // [ setting ] trans: nothing
@@ -72470,6 +73364,8 @@ func (v TreeView) SetTooltipRow(tooltip ITooltip, path TreePath) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_tree_view_set_vadjustment
 //
 // [ adjustment ] trans: nothing
@@ -73698,6 +74594,8 @@ func UIManagerGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_ui_manager_new
 //
 // [ result ] trans: everything
@@ -73714,6 +74612,8 @@ func NewUIManager() (result UIManager) {
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_add_ui
 //
 // [ merge_id ] trans: nothing
@@ -73751,6 +74651,8 @@ func (v UIManager) AddUi(merge_id uint32, path string, name string, action strin
 	gi.Free(c_action)
 }
 
+// Deprecated
+//
 // gtk_ui_manager_add_ui_from_file
 //
 // [ filename ] trans: nothing
@@ -73776,6 +74678,8 @@ func (v UIManager) AddUiFromFile(filename string) (result uint32, err error) {
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_add_ui_from_resource
 //
 // [ resource_path ] trans: nothing
@@ -73801,6 +74705,8 @@ func (v UIManager) AddUiFromResource(resource_path string) (result uint32, err e
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_add_ui_from_string
 //
 // [ buffer ] trans: nothing
@@ -73829,6 +74735,8 @@ func (v UIManager) AddUiFromString(buffer string, length int64) (result uint32, 
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_ensure_update
 //
 func (v UIManager) EnsureUpdate() {
@@ -73842,6 +74750,8 @@ func (v UIManager) EnsureUpdate() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_ui_manager_get_accel_group
 //
 // [ result ] trans: nothing
@@ -73860,6 +74770,8 @@ func (v UIManager) GetAccelGroup() (result AccelGroup) {
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_get_action
 //
 // [ path ] trans: nothing
@@ -73883,6 +74795,8 @@ func (v UIManager) GetAction(path string) (result Action) {
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_get_action_groups
 //
 // [ result ] trans: nothing
@@ -73901,6 +74815,8 @@ func (v UIManager) GetActionGroups() (result g.List) {
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_get_add_tearoffs
 //
 // [ result ] trans: nothing
@@ -73919,6 +74835,8 @@ func (v UIManager) GetAddTearoffs() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_get_toplevels
 //
 // [ types ] trans: nothing
@@ -73940,6 +74858,8 @@ func (v UIManager) GetToplevels(types UIManagerItemTypeFlags) (result g.SList) {
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_get_ui
 //
 // [ result ] trans: everything
@@ -73958,6 +74878,8 @@ func (v UIManager) GetUi() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_get_widget
 //
 // [ path ] trans: nothing
@@ -73981,6 +74903,8 @@ func (v UIManager) GetWidget(path string) (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_insert_action_group
 //
 // [ action_group ] trans: nothing
@@ -74004,6 +74928,8 @@ func (v UIManager) InsertActionGroup(action_group IActionGroup, pos int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_ui_manager_new_merge_id
 //
 // [ result ] trans: nothing
@@ -74022,6 +74948,8 @@ func (v UIManager) NewMergeId() (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_ui_manager_remove_action_group
 //
 // [ action_group ] trans: nothing
@@ -74042,6 +74970,8 @@ func (v UIManager) RemoveActionGroup(action_group IActionGroup) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_ui_manager_remove_ui
 //
 // [ merge_id ] trans: nothing
@@ -74058,6 +74988,8 @@ func (v UIManager) RemoveUi(merge_id uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_ui_manager_set_add_tearoffs
 //
 // [ add_tearoffs ] trans: nothing
@@ -74075,6 +75007,8 @@ func (v UIManager) SetAddTearoffs(add_tearoffs bool) {
 }
 
 // ignore GType struct UIManagerClass
+// Deprecated
+//
 // Flags UIManagerItemType
 type UIManagerItemTypeFlags int
 
@@ -74143,6 +75077,8 @@ func VBoxGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_vbox_new
 //
 // [ homogeneous ] trans: nothing
@@ -74188,6 +75124,8 @@ func VButtonBoxGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_vbutton_box_new
 //
 // [ result ] trans: nothing
@@ -74226,6 +75164,8 @@ func VPanedGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_vpaned_new
 //
 // [ result ] trans: nothing
@@ -74264,6 +75204,8 @@ func VScaleGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_vscale_new
 //
 // [ adjustment ] trans: nothing
@@ -74288,6 +75230,8 @@ func NewVScale(adjustment IAdjustment) (result VScale) {
 	return
 }
 
+// Deprecated
+//
 // gtk_vscale_new_with_range
 //
 // [ min ] trans: nothing
@@ -74336,6 +75280,8 @@ func VScrollbarGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_vscrollbar_new
 //
 // [ adjustment ] trans: nothing
@@ -74382,6 +75328,8 @@ func VSeparatorGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // gtk_vseparator_new
 //
 // [ result ] trans: nothing
@@ -74469,6 +75417,8 @@ func (v Viewport) GetBinWindow() (result gdk.Window) {
 	return
 }
 
+// Deprecated
+//
 // gtk_viewport_get_hadjustment
 //
 // [ result ] trans: nothing
@@ -74505,6 +75455,8 @@ func (v Viewport) GetShadowType() (result ShadowTypeEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_viewport_get_vadjustment
 //
 // [ result ] trans: nothing
@@ -74541,6 +75493,8 @@ func (v Viewport) GetViewWindow() (result gdk.Window) {
 	return
 }
 
+// Deprecated
+//
 // gtk_viewport_set_hadjustment
 //
 // [ adjustment ] trans: nothing
@@ -74577,6 +75531,8 @@ func (v Viewport) SetShadowType(type1 ShadowTypeEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_viewport_set_vadjustment
 //
 // [ adjustment ] trans: nothing
@@ -74669,6 +75625,12 @@ func WidgetGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
+// Deprecated
+//
+// Deprecated
+//
 // gtk_widget_set_default_direction
 //
 // [ dir ] trans: nothing
@@ -74882,6 +75844,8 @@ func (v Widget) ChildNotify(child_property string) {
 	gi.Free(c_child_property)
 }
 
+// Deprecated
+//
 // gtk_widget_class_path
 //
 // [ path_length ] trans: everything, dir: out
@@ -75025,6 +75989,8 @@ func (v Widget) DeviceIsShadowed(device gdk.IDevice) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_drag_begin
 //
 // [ targets ] trans: nothing
@@ -75249,6 +76215,8 @@ func (v Widget) DragDestSet(flags DestDefaultsFlags, targets unsafe.Pointer, n_t
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_drag_dest_set_proxy
 //
 // [ proxy_window ] trans: nothing
@@ -75499,6 +76467,8 @@ func (v Widget) DragSourceSetIconPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_drag_source_set_icon_stock
 //
 // [ stock_id ] trans: nothing
@@ -75575,6 +76545,8 @@ func (v Widget) Draw(cr cairo.Context) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_ensure_style
 //
 func (v Widget) EnsureStyle() {
@@ -75843,6 +76815,8 @@ func (v Widget) GetCanFocus() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_get_child_requisition
 //
 // [ requisition ] trans: nothing, dir: out
@@ -75914,6 +76888,8 @@ func (v Widget) GetClipboard(selection gdk.Atom) (result Clipboard) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_get_composite_name
 //
 // [ result ] trans: everything
@@ -76270,6 +77246,8 @@ func (v Widget) GetMarginEnd() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_get_margin_left
 //
 // [ result ] trans: nothing
@@ -76288,6 +77266,8 @@ func (v Widget) GetMarginLeft() (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_get_margin_right
 //
 // [ result ] trans: nothing
@@ -76363,6 +77343,8 @@ func (v Widget) GetModifierMask(intent gdk.ModifierIntentEnum) (result gdk.Modif
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_get_modifier_style
 //
 // [ result ] trans: nothing
@@ -76507,6 +77489,8 @@ func (v Widget) GetPath() (result WidgetPath) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_get_pointer
 //
 // [ x ] trans: everything, dir: out
@@ -76735,6 +77719,8 @@ func (v Widget) GetRequestMode() (result SizeRequestModeEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_get_requisition
 //
 // [ requisition ] trans: nothing, dir: out
@@ -76751,6 +77737,8 @@ func (v Widget) GetRequisition(requisition Requisition) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_get_root_window
 //
 // [ result ] trans: nothing
@@ -76864,6 +77852,8 @@ func (v Widget) GetSizeRequest() (width int32, height int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_get_state
 //
 // [ result ] trans: nothing
@@ -76900,6 +77890,8 @@ func (v Widget) GetStateFlags() (result StateFlags) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_get_style
 //
 // [ result ] trans: nothing
@@ -77284,6 +78276,8 @@ func (v Widget) HasGrab() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_has_rc_style
 //
 // [ result ] trans: nothing
@@ -77490,6 +78484,8 @@ func (v Widget) IsAncestor(ancestor IWidget) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_is_composited
 //
 // [ result ] trans: nothing
@@ -77708,6 +78704,8 @@ func (v Widget) MnemonicActivate(group_cycling bool) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_modify_base
 //
 // [ state ] trans: nothing
@@ -77727,6 +78725,8 @@ func (v Widget) ModifyBase(state StateTypeEnum, color gdk.Color) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_modify_bg
 //
 // [ state ] trans: nothing
@@ -77746,6 +78746,8 @@ func (v Widget) ModifyBg(state StateTypeEnum, color gdk.Color) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_modify_cursor
 //
 // [ primary ] trans: nothing
@@ -77765,6 +78767,8 @@ func (v Widget) ModifyCursor(primary gdk.Color, secondary gdk.Color) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_modify_fg
 //
 // [ state ] trans: nothing
@@ -77784,6 +78788,8 @@ func (v Widget) ModifyFg(state StateTypeEnum, color gdk.Color) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_modify_font
 //
 // [ font_desc ] trans: nothing
@@ -77800,6 +78806,8 @@ func (v Widget) ModifyFont(font_desc pango.FontDescription) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_modify_style
 //
 // [ style ] trans: nothing
@@ -77820,6 +78828,8 @@ func (v Widget) ModifyStyle(style IRcStyle) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_modify_text
 //
 // [ state ] trans: nothing
@@ -77839,6 +78849,8 @@ func (v Widget) ModifyText(state StateTypeEnum, color gdk.Color) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_override_background_color
 //
 // [ state ] trans: nothing
@@ -77858,6 +78870,8 @@ func (v Widget) OverrideBackgroundColor(state StateFlags, color gdk.RGBA) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_override_color
 //
 // [ state ] trans: nothing
@@ -77877,6 +78891,8 @@ func (v Widget) OverrideColor(state StateFlags, color gdk.RGBA) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_override_cursor
 //
 // [ cursor ] trans: nothing
@@ -77896,6 +78912,8 @@ func (v Widget) OverrideCursor(cursor gdk.RGBA, secondary_cursor gdk.RGBA) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_override_font
 //
 // [ font_desc ] trans: nothing
@@ -77912,6 +78930,8 @@ func (v Widget) OverrideFont(font_desc pango.FontDescription) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_override_symbolic_color
 //
 // [ name ] trans: nothing
@@ -77933,6 +78953,8 @@ func (v Widget) OverrideSymbolicColor(name string, color gdk.RGBA) {
 	gi.Free(c_name)
 }
 
+// Deprecated
+//
 // gtk_widget_path
 //
 // [ path_length ] trans: everything, dir: out
@@ -78079,6 +79101,8 @@ func (v Widget) Realize() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_region_intersect
 //
 // [ region ] trans: nothing
@@ -78187,6 +79211,8 @@ func (v Widget) RemoveTickCallback(id uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_render_icon
 //
 // [ stock_id ] trans: nothing
@@ -78218,6 +79244,8 @@ func (v Widget) RenderIcon(stock_id string, size int32, detail string) (result g
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_render_icon_pixbuf
 //
 // [ stock_id ] trans: nothing
@@ -78244,6 +79272,8 @@ func (v Widget) RenderIconPixbuf(stock_id string, size int32) (result gdkpixbuf.
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_reparent
 //
 // [ new_parent ] trans: nothing
@@ -78264,6 +79294,8 @@ func (v Widget) Reparent(new_parent IWidget) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_reset_rc_styles
 //
 func (v Widget) ResetRcStyles() {
@@ -78290,6 +79322,8 @@ func (v Widget) ResetStyle() {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_send_expose
 //
 // [ event ] trans: nothing
@@ -78453,6 +79487,8 @@ func (v Widget) SetClip(clip gdk.Rectangle) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_set_composite_name
 //
 // [ name ] trans: nothing
@@ -78533,6 +79569,8 @@ func (v Widget) SetDirection(dir TextDirectionEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_set_double_buffered
 //
 // [ double_buffered ] trans: nothing
@@ -78745,6 +79783,8 @@ func (v Widget) SetMarginEnd(margin int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_set_margin_left
 //
 // [ margin ] trans: nothing
@@ -78761,6 +79801,8 @@ func (v Widget) SetMarginLeft(margin int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_set_margin_right
 //
 // [ margin ] trans: nothing
@@ -78982,6 +80024,8 @@ func (v Widget) SetSizeRequest(width int32, height int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_set_state
 //
 // [ state ] trans: nothing
@@ -79017,6 +80061,8 @@ func (v Widget) SetStateFlags(flags StateFlags, clear bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_set_style
 //
 // [ style ] trans: nothing
@@ -79303,6 +80349,8 @@ func (v Widget) SizeAllocateWithBaseline(allocation gdk.Rectangle, baseline int3
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_size_request
 //
 // [ requisition ] trans: nothing, dir: out
@@ -79319,6 +80367,8 @@ func (v Widget) SizeRequest(requisition Requisition) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_style_attach
 //
 func (v Widget) StyleAttach() {
@@ -79754,6 +80804,8 @@ func (v WidgetPath) IterAddClass(pos int32, name string) {
 	gi.Free(c_name)
 }
 
+// Deprecated
+//
 // gtk_widget_path_iter_add_region
 //
 // [ pos ] trans: nothing
@@ -79794,6 +80846,8 @@ func (v WidgetPath) IterClearClasses(pos int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_widget_path_iter_clear_regions
 //
 // [ pos ] trans: nothing
@@ -80036,6 +81090,8 @@ func (v WidgetPath) IterHasQname(pos int32, qname uint32) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_path_iter_has_qregion
 //
 // [ pos ] trans: nothing
@@ -80065,6 +81121,8 @@ func (v WidgetPath) IterHasQregion(pos int32, qname uint32) (result bool, flags 
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_path_iter_has_region
 //
 // [ pos ] trans: nothing
@@ -80117,6 +81175,8 @@ func (v WidgetPath) IterListClasses(pos int32) (result g.SList) {
 	return
 }
 
+// Deprecated
+//
 // gtk_widget_path_iter_list_regions
 //
 // [ pos ] trans: nothing
@@ -80159,6 +81219,8 @@ func (v WidgetPath) IterRemoveClass(pos int32, name string) {
 	gi.Free(c_name)
 }
 
+// Deprecated
+//
 // gtk_widget_path_iter_remove_region
 //
 // [ pos ] trans: nothing
@@ -80951,6 +82013,8 @@ func (v Window) GetGroup() (result WindowGroup) {
 	return
 }
 
+// Deprecated
+//
 // gtk_window_get_has_resize_grip
 //
 // [ result ] trans: nothing
@@ -81095,6 +82159,8 @@ func (v Window) GetModal() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_window_get_opacity
 //
 // [ result ] trans: nothing
@@ -81154,6 +82220,8 @@ func (v Window) GetResizable() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_window_get_resize_grip_area
 //
 // [ rect ] trans: nothing, dir: out
@@ -81519,6 +82587,8 @@ func (v Window) Move(x int32, y int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_window_parse_geometry
 //
 // [ geometry ] trans: nothing
@@ -81635,6 +82705,8 @@ func (v Window) RemoveMnemonic(keyval uint32, target IWidget) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_window_reshow_with_initial_size
 //
 func (v Window) ReshowWithInitialSize() {
@@ -81667,6 +82739,8 @@ func (v Window) Resize(width int32, height int32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_window_resize_grip_is_visible
 //
 // [ result ] trans: nothing
@@ -81685,6 +82759,8 @@ func (v Window) ResizeGripIsVisible() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_window_resize_to_geometry
 //
 // [ width ] trans: nothing
@@ -81796,6 +82872,8 @@ func (v Window) SetDefault(default_widget IWidget) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_window_set_default_geometry
 //
 // [ width ] trans: nothing
@@ -81960,6 +83038,8 @@ func (v Window) SetGravity(gravity gdk.GravityEnum) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_window_set_has_resize_grip
 //
 // [ value ] trans: nothing
@@ -82167,6 +83247,8 @@ func (v Window) SetModal(modal bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_window_set_opacity
 //
 // [ opacity ] trans: nothing
@@ -82393,6 +83475,8 @@ func (v Window) SetUrgencyHint(setting bool) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_window_set_wmclass
 //
 // [ wmclass_name ] trans: nothing
@@ -82984,6 +84068,8 @@ func AcceleratorValid(keyval uint32, modifiers gdk.ModifierTypeFlags) (result bo
 	return
 }
 
+// Deprecated
+//
 // gtk_alternative_dialog_button_order
 //
 // [ screen ] trans: nothing
@@ -83573,6 +84659,8 @@ func DragSetIconPixbuf(context gdk.IDragContext, pixbuf gdkpixbuf.IPixbuf, hot_x
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_drag_set_icon_stock
 //
 // [ context ] trans: nothing
@@ -83657,6 +84745,8 @@ func DragSetIconWidget(context gdk.IDragContext, widget IWidget, hot_x int32, ho
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_draw_insertion_cursor
 //
 // [ widget ] trans: nothing
@@ -83993,6 +85083,8 @@ func GrabGetCurrent() (result Widget) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_size_from_name
 //
 // [ name ] trans: nothing
@@ -84015,6 +85107,8 @@ func IconSizeFromName(name string) (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_size_get_name
 //
 // [ size ] trans: nothing
@@ -84064,6 +85158,8 @@ func IconSizeLookup(size int32) (result bool, width int32, height int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_size_lookup_for_settings
 //
 // [ settings ] trans: nothing
@@ -84100,6 +85196,8 @@ func IconSizeLookupForSettings(settings ISettings, size int32) (result bool, wid
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_size_register
 //
 // [ name ] trans: nothing
@@ -84128,6 +85226,8 @@ func IconSizeRegister(name string, width int32, height int32) (result int32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_icon_size_register_alias
 //
 // [ alias ] trans: nothing
@@ -84221,6 +85321,8 @@ func InitWithArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/, parameter_stri
 	return
 }
 
+// Deprecated
+//
 // gtk_key_snooper_remove
 //
 // [ snooper_handler_id ] trans: nothing
@@ -84325,6 +85427,8 @@ func MainQuit() {
 	iv.Call(nil, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_paint_arrow
 //
 // [ style ] trans: nothing
@@ -84383,6 +85487,8 @@ func PaintArrow(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_box
 //
 // [ style ] trans: nothing
@@ -84435,6 +85541,8 @@ func PaintBox(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_t
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_box_gap
 //
 // [ style ] trans: nothing
@@ -84496,6 +85604,8 @@ func PaintBoxGap(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_check
 //
 // [ style ] trans: nothing
@@ -84548,6 +85658,8 @@ func PaintCheck(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_diamond
 //
 // [ style ] trans: nothing
@@ -84600,6 +85712,8 @@ func PaintDiamond(style IStyle, cr cairo.Context, state_type StateTypeEnum, shad
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_expander
 //
 // [ style ] trans: nothing
@@ -84646,6 +85760,8 @@ func PaintExpander(style IStyle, cr cairo.Context, state_type StateTypeEnum, wid
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_extension
 //
 // [ style ] trans: nothing
@@ -84701,6 +85817,8 @@ func PaintExtension(style IStyle, cr cairo.Context, state_type StateTypeEnum, sh
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_flat_box
 //
 // [ style ] trans: nothing
@@ -84753,6 +85871,8 @@ func PaintFlatBox(style IStyle, cr cairo.Context, state_type StateTypeEnum, shad
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_focus
 //
 // [ style ] trans: nothing
@@ -84802,6 +85922,8 @@ func PaintFocus(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_handle
 //
 // [ style ] trans: nothing
@@ -84857,6 +85979,8 @@ func PaintHandle(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_hline
 //
 // [ style ] trans: nothing
@@ -84903,6 +86027,8 @@ func PaintHline(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_layout
 //
 // [ style ] trans: nothing
@@ -84956,6 +86082,8 @@ func PaintLayout(style IStyle, cr cairo.Context, state_type StateTypeEnum, use_t
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_option
 //
 // [ style ] trans: nothing
@@ -85008,6 +86136,8 @@ func PaintOption(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_resize_grip
 //
 // [ style ] trans: nothing
@@ -85060,6 +86190,8 @@ func PaintResizeGrip(style IStyle, cr cairo.Context, state_type StateTypeEnum, w
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_shadow
 //
 // [ style ] trans: nothing
@@ -85112,6 +86244,8 @@ func PaintShadow(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_shadow_gap
 //
 // [ style ] trans: nothing
@@ -85173,6 +86307,8 @@ func PaintShadowGap(style IStyle, cr cairo.Context, state_type StateTypeEnum, sh
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_slider
 //
 // [ style ] trans: nothing
@@ -85228,6 +86364,8 @@ func PaintSlider(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_spinner
 //
 // [ style ] trans: nothing
@@ -85280,6 +86418,8 @@ func PaintSpinner(style IStyle, cr cairo.Context, state_type StateTypeEnum, widg
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_tab
 //
 // [ style ] trans: nothing
@@ -85332,6 +86472,8 @@ func PaintTab(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_t
 	gi.Free(c_detail)
 }
 
+// Deprecated
+//
 // gtk_paint_vline
 //
 // [ style ] trans: nothing
@@ -85550,6 +86692,8 @@ func PropagateEvent(widget IWidget, event gdk.Event) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_rc_add_default_file
 //
 // [ filename ] trans: nothing
@@ -85567,6 +86711,8 @@ func RcAddDefaultFile(filename string) {
 	gi.Free(c_filename)
 }
 
+// Deprecated
+//
 // gtk_rc_find_module_in_path
 //
 // [ module_file ] trans: nothing
@@ -85589,6 +86735,8 @@ func RcFindModuleInPath(module_file string) (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_find_pixmap_in_path
 //
 // [ settings ] trans: nothing
@@ -85621,6 +86769,8 @@ func RcFindPixmapInPath(settings ISettings, scanner g.Scanner, pixmap_file strin
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_get_default_files
 //
 // [ result ] trans: nothing
@@ -85638,6 +86788,8 @@ func RcGetDefaultFiles() (result gi.CStrArray) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_get_im_module_file
 //
 // [ result ] trans: everything
@@ -85654,6 +86806,8 @@ func RcGetImModuleFile() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_get_im_module_path
 //
 // [ result ] trans: everything
@@ -85670,6 +86824,8 @@ func RcGetImModulePath() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_get_module_dir
 //
 // [ result ] trans: everything
@@ -85686,6 +86842,8 @@ func RcGetModuleDir() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_get_style
 //
 // [ widget ] trans: nothing
@@ -85710,6 +86868,8 @@ func RcGetStyle(widget IWidget) (result Style) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_get_style_by_paths
 //
 // [ settings ] trans: nothing
@@ -85747,6 +86907,8 @@ func RcGetStyleByPaths(settings ISettings, widget_path string, class_path string
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_get_theme_dir
 //
 // [ result ] trans: everything
@@ -85763,6 +86925,8 @@ func RcGetThemeDir() (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_parse
 //
 // [ filename ] trans: nothing
@@ -85780,6 +86944,8 @@ func RcParse(filename string) {
 	gi.Free(c_filename)
 }
 
+// Deprecated
+//
 // gtk_rc_parse_color
 //
 // [ scanner ] trans: nothing
@@ -85803,6 +86969,8 @@ func RcParseColor(scanner g.Scanner, color gdk.Color) (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_parse_color_full
 //
 // [ scanner ] trans: nothing
@@ -85833,6 +87001,10 @@ func RcParseColorFull(scanner g.Scanner, style IRcStyle, color gdk.Color) (resul
 	return
 }
 
+// Deprecated
+//
+// Deprecated
+//
 // gtk_rc_parse_state
 //
 // [ scanner ] trans: nothing
@@ -85858,6 +87030,8 @@ func RcParseState(scanner g.Scanner) (result uint32, state StateTypeEnum) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_parse_string
 //
 // [ rc_string ] trans: nothing
@@ -86025,6 +87199,8 @@ func RcPropertyParseRequisition(pspec g.IParamSpec, gstring g.String, property_v
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_reparse_all
 //
 // [ result ] trans: nothing
@@ -86041,6 +87217,8 @@ func RcReparseAll() (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_reparse_all_for_settings
 //
 // [ settings ] trans: nothing
@@ -86068,6 +87246,8 @@ func RcReparseAllForSettings(settings ISettings, force_load bool) (result bool) 
 	return
 }
 
+// Deprecated
+//
 // gtk_rc_reset_styles
 //
 // [ settings ] trans: nothing
@@ -86087,6 +87267,8 @@ func RcResetStyles(settings ISettings) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_rc_set_default_files
 //
 // [ filenames ] trans: nothing
@@ -86443,6 +87625,8 @@ func RenderFrame(context IStyleContext, cr cairo.Context, x float64, y float64, 
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_render_frame_gap
 //
 // [ context ] trans: nothing
@@ -86555,6 +87739,8 @@ func RenderIcon(context IStyleContext, cr cairo.Context, pixbuf gdkpixbuf.IPixbu
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_render_icon_pixbuf
 //
 // [ context ] trans: nothing
@@ -87112,6 +88298,8 @@ func ShowUriOnWindow(parent IWindow, uri string, timestamp uint32) (result bool,
 	return
 }
 
+// Deprecated
+//
 // gtk_stock_add
 //
 // [ items ] trans: nothing
@@ -87130,6 +88318,8 @@ func StockAdd(items unsafe.Pointer, n_items uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_stock_add_static
 //
 // [ items ] trans: nothing
@@ -87148,6 +88338,8 @@ func StockAddStatic(items unsafe.Pointer, n_items uint32) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_stock_list_ids
 //
 // [ result ] trans: everything
@@ -87164,6 +88356,8 @@ func StockListIds() (result g.SList) {
 	return
 }
 
+// Deprecated
+//
 // gtk_stock_lookup
 //
 // [ stock_id ] trans: nothing
@@ -87189,6 +88383,8 @@ func StockLookup(stock_id string, item StockItem) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_stock_set_translate_func
 //
 // [ domain ] trans: nothing
@@ -87362,6 +88558,8 @@ func TargetsIncludeUri(targets gi.PointerArray, n_targets int32) (result bool) {
 	return
 }
 
+// Deprecated
+//
 // gtk_test_create_simple_window
 //
 // [ window_title ] trans: nothing
@@ -87512,6 +88710,8 @@ func TestRegisterAllTypes() {
 	iv.Call(nil, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_test_slider_get_value
 //
 // [ widget ] trans: nothing
@@ -87536,6 +88736,8 @@ func TestSliderGetValue(widget IWidget) (result float64) {
 	return
 }
 
+// Deprecated
+//
 // gtk_test_slider_set_perc
 //
 // [ widget ] trans: nothing
@@ -87558,6 +88760,8 @@ func TestSliderSetPerc(widget IWidget, percentage float64) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // gtk_test_spin_button_click
 //
 // [ spinner ] trans: nothing
@@ -87588,6 +88792,8 @@ func TestSpinButtonClick(spinner ISpinButton, button uint32, upwards bool) (resu
 	return
 }
 
+// Deprecated
+//
 // gtk_test_text_get
 //
 // [ widget ] trans: nothing
@@ -87612,6 +88818,8 @@ func TestTextGet(widget IWidget) (result string) {
 	return
 }
 
+// Deprecated
+//
 // gtk_test_text_set
 //
 // [ widget ] trans: nothing
@@ -87636,6 +88844,8 @@ func TestTextSet(widget IWidget, string string) {
 	gi.Free(c_string)
 }
 
+// Deprecated
+//
 // gtk_test_widget_click
 //
 // [ widget ] trans: nothing

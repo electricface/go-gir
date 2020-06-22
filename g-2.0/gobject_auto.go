@@ -1408,6 +1408,8 @@ func ObjectGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_object_newv
 //
 // [ object_type ] trans: nothing
@@ -2743,6 +2745,8 @@ func ParamSpecVariantGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // Struct Parameter
 type Parameter struct {
 	P unsafe.Pointer
@@ -2887,6 +2891,8 @@ func TypeClassGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_type_class_add_private
 //
 // [ private_size ] trans: nothing
@@ -3047,6 +3053,8 @@ func myGObjectTypeClassCacheFunc(cache_data C.gpointer, g_class *C.GTypeClass) {
 	// TODO: not found user_data
 }
 
+// Deprecated
+//
 // Flags TypeDebugFlags
 type TypeDebugFlags int
 
@@ -3759,6 +3767,8 @@ func (v Value) GetBoxed() (result unsafe.Pointer) {
 	return
 }
 
+// Deprecated
+//
 // g_value_get_char
 //
 // [ result ] trans: nothing
@@ -4206,6 +4216,8 @@ func (v Value) SetBoxed(v_boxed unsafe.Pointer) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_value_set_boxed_take_ownership
 //
 // [ v_boxed ] trans: nothing
@@ -4222,6 +4234,8 @@ func (v Value) SetBoxedTakeOwnership(v_boxed unsafe.Pointer) {
 	iv.Call(args, nil, nil)
 }
 
+// Deprecated
+//
 // g_value_set_char
 //
 // [ v_char ] trans: nothing
@@ -4488,6 +4502,8 @@ func (v Value) SetString(v_string string) {
 	gi.Free(c_v_string)
 }
 
+// Deprecated
+//
 // g_value_set_uchar
 //
 // [ v_uchar ] trans: nothing
@@ -4710,6 +4726,8 @@ func ValueArrayGetType() gi.GType {
 	return ret
 }
 
+// Deprecated
+//
 // g_value_array_new
 //
 // [ n_prealloced ] trans: nothing
@@ -4730,6 +4748,8 @@ func NewValueArray(n_prealloced uint32) (result ValueArray) {
 	return
 }
 
+// Deprecated
+//
 // g_value_array_append
 //
 // [ value ] trans: nothing
@@ -4751,6 +4771,8 @@ func (v ValueArray) Append(value Value) (result ValueArray) {
 	return
 }
 
+// Deprecated
+//
 // g_value_array_copy
 //
 // [ result ] trans: everything
@@ -4769,6 +4791,8 @@ func (v ValueArray) Copy() (result ValueArray) {
 	return
 }
 
+// Deprecated
+//
 // g_value_array_get_nth
 //
 // [ index_ ] trans: nothing
@@ -4790,6 +4814,8 @@ func (v ValueArray) GetNth(index_ uint32) (result Value) {
 	return
 }
 
+// Deprecated
+//
 // g_value_array_insert
 //
 // [ index_ ] trans: nothing
@@ -4814,6 +4840,8 @@ func (v ValueArray) Insert(index_ uint32, value Value) (result ValueArray) {
 	return
 }
 
+// Deprecated
+//
 // g_value_array_prepend
 //
 // [ value ] trans: nothing
@@ -4835,6 +4863,8 @@ func (v ValueArray) Prepend(value Value) (result ValueArray) {
 	return
 }
 
+// Deprecated
+//
 // g_value_array_remove
 //
 // [ index_ ] trans: nothing
@@ -4856,6 +4886,8 @@ func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
 	return
 }
 
+// Deprecated
+//
 // g_value_array_sort_with_data
 //
 // [ compare_func ] trans: nothing
@@ -8477,6 +8509,8 @@ func TypeGetTypeRegistrationSerial() (result uint32) {
 	return
 }
 
+// Deprecated
+//
 // g_type_init
 //
 func TypeInit() {
@@ -8488,6 +8522,8 @@ func TypeInit() {
 	iv.Call(nil, nil, nil)
 }
 
+// Deprecated
+//
 // g_type_init_with_debug_flags
 //
 // [ debug_flags ] trans: nothing

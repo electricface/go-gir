@@ -277,6 +277,8 @@ func NewPixbufFromFileAtSize(filename string, width int32, height int32) (result
 	return
 }
 
+// Deprecated
+//
 // gdk_pixbuf_new_from_inline
 //
 // [ data_length ] trans: nothing
