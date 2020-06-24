@@ -307,7 +307,7 @@ const (
 	InfoTypeCallback   InfoTypeEnum = 2
 	InfoTypeStruct     InfoTypeEnum = 3
 	InfoTypeBoxed      InfoTypeEnum = 4
-	InfoTypeEnum1      InfoTypeEnum = 5
+	InfoTypeEnum       InfoTypeEnum = 5
 	InfoTypeFlags      InfoTypeEnum = 6
 	InfoTypeObject     InfoTypeEnum = 7
 	InfoTypeInterface  InfoTypeEnum = 8
@@ -829,6 +829,7 @@ func (v Repository) RequirePrivate(typelib_dir string, namespace_ string, versio
 }
 
 // ignore GType struct RepositoryClass
+
 // Enum RepositoryError
 type RepositoryErrorEnum int
 

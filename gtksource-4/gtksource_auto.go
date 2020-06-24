@@ -801,6 +801,7 @@ func (v Buffer) Undo() {
 }
 
 // ignore GType struct BufferClass
+
 // Struct BufferPrivate
 type BufferPrivate struct {
 	P unsafe.Pointer
@@ -1054,6 +1055,7 @@ func CompletionActivationGetType() gi.GType {
 }
 
 // ignore GType struct CompletionClass
+
 // Object CompletionContext
 type CompletionContext struct {
 	g.InitiallyUnowned
@@ -1135,6 +1137,7 @@ func (v CompletionContext) GetIter(iter gtk.TextIter) (result bool) {
 }
 
 // ignore GType struct CompletionContextClass
+
 // Struct CompletionContextPrivate
 type CompletionContextPrivate struct {
 	P unsafe.Pointer
@@ -1217,6 +1220,7 @@ func (v CompletionInfo) MoveToIter(view gtk.ITextView, iter gtk.TextIter) {
 }
 
 // ignore GType struct CompletionInfoClass
+
 // Struct CompletionInfoPrivate
 type CompletionInfoPrivate struct {
 	P unsafe.Pointer
@@ -1391,6 +1395,7 @@ func (v CompletionItem) SetText(text string) {
 }
 
 // ignore GType struct CompletionItemClass
+
 // Struct CompletionItemPrivate
 type CompletionItemPrivate struct {
 	P unsafe.Pointer
@@ -1608,6 +1613,7 @@ func (v *CompletionProposalIfc) Hash() (result uint32) {
 }
 
 // ignore GType struct CompletionProposalIface
+
 // Interface CompletionProvider
 type CompletionProvider struct {
 	CompletionProviderIfc
@@ -1909,6 +1915,7 @@ func (v *CompletionProviderIfc) UpdateInfo(proposal ICompletionProposal, info IC
 }
 
 // ignore GType struct CompletionProviderIface
+
 // Object CompletionWords
 type CompletionWords struct {
 	CompletionProviderIfc
@@ -1996,6 +2003,7 @@ func (v CompletionWords) Unregister(buffer gtk.ITextBuffer) {
 }
 
 // ignore GType struct CompletionWordsClass
+
 // Struct CompletionWordsPrivate
 type CompletionWordsPrivate struct {
 	P unsafe.Pointer
@@ -2345,6 +2353,7 @@ func (v File) SetLocation(location g.IFile) {
 }
 
 // ignore GType struct FileClass
+
 // Object FileLoader
 type FileLoader struct {
 	g.Object
@@ -2637,6 +2646,7 @@ func (v FileLoader) SetCandidateEncodings(candidate_encodings g.SList) {
 }
 
 // ignore GType struct FileLoaderClass
+
 // Enum FileLoaderError
 type FileLoaderErrorEnum int
 
@@ -3011,6 +3021,7 @@ func (v FileSaver) SetNewlineType(newline_type NewlineTypeEnum) {
 }
 
 // ignore GType struct FileSaverClass
+
 // Enum FileSaverError
 type FileSaverErrorEnum int
 
@@ -3209,6 +3220,7 @@ func (v Gutter) Reorder(renderer IGutterRenderer, position int32) {
 }
 
 // ignore GType struct GutterClass
+
 // Struct GutterPrivate
 type GutterPrivate struct {
 	P unsafe.Pointer
@@ -3701,6 +3713,7 @@ func GutterRendererAlignmentModeGetType() gi.GType {
 }
 
 // ignore GType struct GutterRendererClass
+
 // Object GutterRendererPixbuf
 type GutterRendererPixbuf struct {
 	GutterRenderer
@@ -3845,6 +3858,7 @@ func (v GutterRendererPixbuf) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 }
 
 // ignore GType struct GutterRendererPixbufClass
+
 // Struct GutterRendererPixbufPrivate
 type GutterRendererPixbufPrivate struct {
 	P unsafe.Pointer
@@ -4010,6 +4024,7 @@ func (v GutterRendererText) SetText(text string, length int32) {
 }
 
 // ignore GType struct GutterRendererTextClass
+
 // Struct GutterRendererTextPrivate
 type GutterRendererTextPrivate struct {
 	P unsafe.Pointer
@@ -4234,6 +4249,7 @@ func (v Language) GetStyleName(style_id string) (result string) {
 }
 
 // ignore GType struct LanguageClass
+
 // Object LanguageManager
 type LanguageManager struct {
 	g.Object
@@ -4371,6 +4387,7 @@ func (v LanguageManager) SetSearchPath(dirs gi.CStrArray) {
 }
 
 // ignore GType struct LanguageManagerClass
+
 // Struct LanguageManagerPrivate
 type LanguageManagerPrivate struct {
 	P unsafe.Pointer
@@ -4467,6 +4484,7 @@ func (v Map) SetView(view IView) {
 }
 
 // ignore GType struct MapClass
+
 // Object Mark
 type Mark struct {
 	gtk.TextMark
@@ -4832,6 +4850,7 @@ func (v MarkAttributes) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 }
 
 // ignore GType struct MarkAttributesClass
+
 // Struct MarkAttributesPrivate
 type MarkAttributesPrivate struct {
 	P unsafe.Pointer
@@ -4843,6 +4862,7 @@ func MarkAttributesPrivateGetType() gi.GType {
 }
 
 // ignore GType struct MarkClass
+
 // Struct MarkPrivate
 type MarkPrivate struct {
 	P unsafe.Pointer
@@ -5603,6 +5623,7 @@ func (v PrintCompositor) SetWrapMode(wrap_mode gtk.WrapModeEnum) {
 }
 
 // ignore GType struct PrintCompositorClass
+
 // Struct PrintCompositorPrivate
 type PrintCompositorPrivate struct {
 	P unsafe.Pointer
@@ -5874,6 +5895,7 @@ func (v Region) ToString() (result string) {
 }
 
 // ignore GType struct RegionClass
+
 // Struct RegionIter
 type RegionIter struct {
 	P unsafe.Pointer
@@ -6419,6 +6441,7 @@ func (v SearchContext) SetMatchStyle(match_style IStyle) {
 }
 
 // ignore GType struct SearchContextClass
+
 // Struct SearchContextPrivate
 type SearchContextPrivate struct {
 	P unsafe.Pointer
@@ -6633,6 +6656,7 @@ func (v SearchSettings) SetWrapAround(wrap_around bool) {
 }
 
 // ignore GType struct SearchSettingsClass
+
 // Struct SearchSettingsPrivate
 type SearchSettingsPrivate struct {
 	P unsafe.Pointer
@@ -6841,6 +6865,7 @@ func (v SpaceDrawer) SetTypesForLocations(locations SpaceLocationFlags, types Sp
 }
 
 // ignore GType struct SpaceDrawerClass
+
 // Struct SpaceDrawerPrivate
 type SpaceDrawerPrivate struct {
 	P unsafe.Pointer
@@ -6938,6 +6963,7 @@ func (v Style) Copy() (result Style) {
 }
 
 // ignore GType struct StyleClass
+
 // Object StyleScheme
 type StyleScheme struct {
 	g.Object
@@ -7161,7 +7187,9 @@ func NewStyleSchemeChooserButton() (result StyleSchemeChooserButton) {
 }
 
 // ignore GType struct StyleSchemeChooserButtonClass
+
 // ignore GType struct StyleSchemeChooserInterface
+
 // Object StyleSchemeChooserWidget
 type StyleSchemeChooserWidget struct {
 	atk.ImplementorIfaceIfc
@@ -7200,7 +7228,9 @@ func NewStyleSchemeChooserWidget() (result StyleSchemeChooserWidget) {
 }
 
 // ignore GType struct StyleSchemeChooserWidgetClass
+
 // ignore GType struct StyleSchemeClass
+
 // Object StyleSchemeManager
 type StyleSchemeManager struct {
 	g.Object
@@ -7359,6 +7389,7 @@ func (v StyleSchemeManager) SetSearchPath(path gi.CStrArray) {
 }
 
 // ignore GType struct StyleSchemeManagerClass
+
 // Struct StyleSchemeManagerPrivate
 type StyleSchemeManagerPrivate struct {
 	P unsafe.Pointer
@@ -7417,6 +7448,7 @@ func NewTag(name string) (result Tag) {
 }
 
 // ignore GType struct TagClass
+
 // Interface UndoManager
 type UndoManager struct {
 	UndoManagerIfc
@@ -7546,6 +7578,7 @@ func (v *UndoManagerIfc) Undo() {
 }
 
 // ignore GType struct UndoManagerIface
+
 // Object View
 type View struct {
 	atk.ImplementorIfaceIfc
@@ -8220,6 +8253,7 @@ func (v View) UnindentLines(start gtk.TextIter, end gtk.TextIter) {
 }
 
 // ignore GType struct ViewClass
+
 // Enum ViewGutterPosition
 type ViewGutterPositionEnum int
 

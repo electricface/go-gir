@@ -1714,6 +1714,7 @@ func DevicePadFeatureGetType() gi.GType {
 }
 
 // ignore GType struct DevicePadInterface
+
 // Object DeviceTool
 type DeviceTool struct {
 	g.Object
@@ -3208,6 +3209,7 @@ func (v DrawingContext) IsValid() (result bool) {
 }
 
 // ignore GType struct DrawingContextClass
+
 // Union Event
 type Event struct {
 	P unsafe.Pointer
@@ -4580,6 +4582,7 @@ func (v FrameClock) RequestPhase(phase FrameClockPhaseFlags) {
 }
 
 // ignore GType struct FrameClockClass
+
 // Flags FrameClockPhase
 type FrameClockPhaseFlags int
 
@@ -5794,6 +5797,7 @@ func (v Monitor) IsPrimary() (result bool) {
 }
 
 // ignore GType struct MonitorClass
+
 // Enum NotifyType
 type NotifyTypeEnum int
 
@@ -10417,6 +10421,7 @@ func myGdkWindowChildFunc(window *C.GdkWindow, user_data C.gpointer) {
 }
 
 // ignore GType struct WindowClass
+
 // Enum WindowEdge
 type WindowEdgeEnum int
 

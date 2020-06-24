@@ -873,6 +873,7 @@ func (v AboutDialog) SetWrapLicense(wrap_license bool) {
 }
 
 // ignore GType struct AboutDialogClass
+
 // Struct AboutDialogPrivate
 type AboutDialogPrivate struct {
 	P unsafe.Pointer
@@ -1207,6 +1208,7 @@ func myGtkAccelGroupActivate(accel_group *C.GtkAccelGroup, acceleratable *C.GObj
 }
 
 // ignore GType struct AccelGroupClass
+
 // Struct AccelGroupEntry
 type AccelGroupEntry struct {
 	P unsafe.Pointer
@@ -1430,6 +1432,7 @@ func (v AccelLabel) SetAccelWidget(accel_widget IWidget) {
 }
 
 // ignore GType struct AccelLabelClass
+
 // Struct AccelLabelPrivate
 type AccelLabelPrivate struct {
 	P unsafe.Pointer
@@ -1701,6 +1704,7 @@ func AccelMapUnlockPath1(accel_path string) {
 }
 
 // ignore GType struct AccelMapClass
+
 type AccelMapForeachStruct struct {
 	F_data       unsafe.Pointer
 	F_accel_path string
@@ -1787,6 +1791,7 @@ func (v Accessible) SetWidget(widget IWidget) {
 }
 
 // ignore GType struct AccessibleClass
+
 // Struct AccessiblePrivate
 type AccessiblePrivate struct {
 	P unsafe.Pointer
@@ -2757,6 +2762,7 @@ func (v ActionBar) SetCenterWidget(center_widget IWidget) {
 }
 
 // ignore GType struct ActionBarClass
+
 // Struct ActionBarPrivate
 type ActionBarPrivate struct {
 	P unsafe.Pointer
@@ -2768,6 +2774,7 @@ func ActionBarPrivateGetType() gi.GType {
 }
 
 // ignore GType struct ActionClass
+
 // Deprecated
 //
 // Struct ActionEntry
@@ -3147,6 +3154,7 @@ func (v ActionGroup) TranslateString(string string) (result string) {
 }
 
 // ignore GType struct ActionGroupClass
+
 // Struct ActionGroupPrivate
 type ActionGroupPrivate struct {
 	P unsafe.Pointer
@@ -3270,6 +3278,7 @@ func (v *ActionableIfc) SetDetailedActionName(detailed_action_name string) {
 }
 
 // ignore GType struct ActionableInterface
+
 // Interface Activatable
 type Activatable struct {
 	ActivatableIfc
@@ -3409,6 +3418,7 @@ func (v *ActivatableIfc) SyncActionProperties(action IAction) {
 }
 
 // ignore GType struct ActivatableIface
+
 // Object Adjustment
 type Adjustment struct {
 	g.InitiallyUnowned
@@ -3762,6 +3772,7 @@ func (v Adjustment) ValueChanged() {
 }
 
 // ignore GType struct AdjustmentClass
+
 // Struct AdjustmentPrivate
 type AdjustmentPrivate struct {
 	P unsafe.Pointer
@@ -3926,6 +3937,7 @@ func (v Alignment) SetPadding(padding_top uint32, padding_bottom uint32, padding
 }
 
 // ignore GType struct AlignmentClass
+
 // Struct AlignmentPrivate
 type AlignmentPrivate struct {
 	P unsafe.Pointer
@@ -4212,6 +4224,7 @@ func (v AppChooserButton) SetShowDialogItem(setting bool) {
 }
 
 // ignore GType struct AppChooserButtonClass
+
 // Struct AppChooserButtonPrivate
 type AppChooserButtonPrivate struct {
 	P unsafe.Pointer
@@ -4364,6 +4377,7 @@ func (v AppChooserDialog) SetHeading(heading string) {
 }
 
 // ignore GType struct AppChooserDialogClass
+
 // Struct AppChooserDialogPrivate
 type AppChooserDialogPrivate struct {
 	P unsafe.Pointer
@@ -4626,6 +4640,7 @@ func (v AppChooserWidget) SetShowRecommended(setting bool) {
 }
 
 // ignore GType struct AppChooserWidgetClass
+
 // Struct AppChooserWidgetPrivate
 type AppChooserWidgetPrivate struct {
 	P unsafe.Pointer
@@ -5104,6 +5119,7 @@ func (v Application) Uninhibit(cookie uint32) {
 }
 
 // ignore GType struct ApplicationClass
+
 // Flags ApplicationInhibitFlags
 type ApplicationInhibitFlags int
 
@@ -5267,6 +5283,7 @@ func (v ApplicationWindow) SetShowMenubar(show_menubar bool) {
 }
 
 // ignore GType struct ApplicationWindowClass
+
 // Struct ApplicationWindowPrivate
 type ApplicationWindowPrivate struct {
 	P unsafe.Pointer
@@ -5362,6 +5379,7 @@ func ArrowAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ArrowAccessibleClass
+
 // Struct ArrowAccessiblePrivate
 type ArrowAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -5373,6 +5391,7 @@ func ArrowAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct ArrowClass
+
 // Enum ArrowPlacement
 type ArrowPlacementEnum int
 
@@ -5492,6 +5511,7 @@ func (v AspectFrame) Set(xalign float32, yalign float32, ratio float32, obey_chi
 }
 
 // ignore GType struct AspectFrameClass
+
 // Struct AspectFramePrivate
 type AspectFramePrivate struct {
 	P unsafe.Pointer
@@ -6125,6 +6145,7 @@ func (v Assistant) UpdateButtonsState() {
 }
 
 // ignore GType struct AssistantClass
+
 type AssistantPageFuncStruct struct {
 	F_current_page int32
 	F_data         unsafe.Pointer
@@ -6232,6 +6253,7 @@ func (v Bin) GetChild() (result Widget) {
 }
 
 // ignore GType struct BinClass
+
 // Struct BinPrivate
 type BinPrivate struct {
 	P unsafe.Pointer
@@ -6487,6 +6509,7 @@ func BooleanCellAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct BooleanCellAccessibleClass
+
 // Struct BooleanCellAccessiblePrivate
 type BooleanCellAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -6913,6 +6936,7 @@ func (v Box) SetSpacing(spacing int32) {
 }
 
 // ignore GType struct BoxClass
+
 // Struct BoxPrivate
 type BoxPrivate struct {
 	P unsafe.Pointer
@@ -7229,6 +7253,7 @@ func (v *BuildableIfc) SetName(name string) {
 }
 
 // ignore GType struct BuildableIface
+
 // Object Builder
 type Builder struct {
 	g.Object
@@ -7818,6 +7843,7 @@ func (v Builder) ValueFromStringType(type1 gi.GType, string string, value g.Valu
 }
 
 // ignore GType struct BuilderClass
+
 type BuilderConnectFuncStruct struct {
 	F_builder        Builder
 	F_object         g.Object
@@ -8457,6 +8483,7 @@ func ButtonAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ButtonAccessibleClass
+
 // Struct ButtonAccessiblePrivate
 type ButtonAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -8639,6 +8666,7 @@ func (v ButtonBox) SetLayout(layout_style ButtonBoxStyleEnum) {
 }
 
 // ignore GType struct ButtonBoxClass
+
 // Struct ButtonBoxPrivate
 type ButtonBoxPrivate struct {
 	P unsafe.Pointer
@@ -8667,6 +8695,7 @@ func ButtonBoxStyleGetType() gi.GType {
 }
 
 // ignore GType struct ButtonClass
+
 // Struct ButtonPrivate
 type ButtonPrivate struct {
 	P unsafe.Pointer
@@ -8996,6 +9025,7 @@ func (v Calendar) UnmarkDay(day uint32) {
 }
 
 // ignore GType struct CalendarClass
+
 type CalendarDetailFuncStruct struct {
 	F_calendar Calendar
 	F_year     uint32
@@ -9081,6 +9111,7 @@ func CellAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct CellAccessibleClass
+
 // Interface CellAccessibleParent
 type CellAccessibleParent struct {
 	CellAccessibleParentIfc
@@ -9392,6 +9423,7 @@ func (v *CellAccessibleParentIfc) UpdateRelationset(cell ICellAccessible, relati
 }
 
 // ignore GType struct CellAccessibleParentIface
+
 // Struct CellAccessiblePrivate
 type CellAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -10674,6 +10706,7 @@ func (v CellAreaBox) SetSpacing(spacing int32) {
 }
 
 // ignore GType struct CellAreaBoxClass
+
 // Struct CellAreaBoxPrivate
 type CellAreaBoxPrivate struct {
 	P unsafe.Pointer
@@ -10685,6 +10718,7 @@ func CellAreaBoxPrivateGetType() gi.GType {
 }
 
 // ignore GType struct CellAreaClass
+
 // Object CellAreaContext
 type CellAreaContext struct {
 	g.Object
@@ -10910,6 +10944,7 @@ func (v CellAreaContext) Reset() {
 }
 
 // ignore GType struct CellAreaContextClass
+
 // Struct CellAreaContextPrivate
 type CellAreaContextPrivate struct {
 	P unsafe.Pointer
@@ -11001,6 +11036,7 @@ func (v *CellEditableIfc) StartEditing(event gdk.Event) {
 }
 
 // ignore GType struct CellEditableIface
+
 // Interface CellLayout
 type CellLayout struct {
 	CellLayoutIfc
@@ -11228,6 +11264,7 @@ func myGtkCellLayoutDataFunc(cell_layout *C.GtkCellLayout, cell *C.GtkCellRender
 }
 
 // ignore GType struct CellLayoutIface
+
 // Object CellRenderer
 type CellRenderer struct {
 	g.InitiallyUnowned
@@ -11889,6 +11926,7 @@ func NewCellRendererAccel() (result CellRendererAccel) {
 }
 
 // ignore GType struct CellRendererAccelClass
+
 // Enum CellRendererAccelMode
 type CellRendererAccelModeEnum int
 
@@ -11913,6 +11951,7 @@ func CellRendererAccelPrivateGetType() gi.GType {
 }
 
 // ignore GType struct CellRendererClass
+
 // Struct CellRendererClassPrivate
 type CellRendererClassPrivate struct {
 	P unsafe.Pointer
@@ -11955,6 +11994,7 @@ func NewCellRendererCombo() (result CellRendererCombo) {
 }
 
 // ignore GType struct CellRendererComboClass
+
 // Struct CellRendererComboPrivate
 type CellRendererComboPrivate struct {
 	P unsafe.Pointer
@@ -12011,6 +12051,7 @@ func NewCellRendererPixbuf() (result CellRendererPixbuf) {
 }
 
 // ignore GType struct CellRendererPixbufClass
+
 // Struct CellRendererPixbufPrivate
 type CellRendererPixbufPrivate struct {
 	P unsafe.Pointer
@@ -12065,6 +12106,7 @@ func NewCellRendererProgress() (result CellRendererProgress) {
 }
 
 // ignore GType struct CellRendererProgressClass
+
 // Struct CellRendererProgressPrivate
 type CellRendererProgressPrivate struct {
 	P unsafe.Pointer
@@ -12107,6 +12149,7 @@ func NewCellRendererSpin() (result CellRendererSpin) {
 }
 
 // ignore GType struct CellRendererSpinClass
+
 // Struct CellRendererSpinPrivate
 type CellRendererSpinPrivate struct {
 	P unsafe.Pointer
@@ -12149,6 +12192,7 @@ func NewCellRendererSpinner() (result CellRendererSpinner) {
 }
 
 // ignore GType struct CellRendererSpinnerClass
+
 // Struct CellRendererSpinnerPrivate
 type CellRendererSpinnerPrivate struct {
 	P unsafe.Pointer
@@ -12225,6 +12269,7 @@ func (v CellRendererText) SetFixedHeightFromFont(number_of_rows int32) {
 }
 
 // ignore GType struct CellRendererTextClass
+
 // Struct CellRendererTextPrivate
 type CellRendererTextPrivate struct {
 	P unsafe.Pointer
@@ -12369,6 +12414,7 @@ func (v CellRendererToggle) SetRadio(radio bool) {
 }
 
 // ignore GType struct CellRendererToggleClass
+
 // Struct CellRendererTogglePrivate
 type CellRendererTogglePrivate struct {
 	P unsafe.Pointer
@@ -12718,6 +12764,7 @@ func (v CellView) SetModel(model ITreeModel) {
 }
 
 // ignore GType struct CellViewClass
+
 // Struct CellViewPrivate
 type CellViewPrivate struct {
 	P unsafe.Pointer
@@ -12812,6 +12859,7 @@ func NewCheckButtonWithMnemonic(label string) (result CheckButton) {
 }
 
 // ignore GType struct CheckButtonClass
+
 // Object CheckMenuItem
 type CheckMenuItem struct {
 	atk.ImplementorIfaceIfc
@@ -13032,6 +13080,7 @@ func CheckMenuItemAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct CheckMenuItemAccessibleClass
+
 // Struct CheckMenuItemAccessiblePrivate
 type CheckMenuItemAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -13043,6 +13092,7 @@ func CheckMenuItemAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct CheckMenuItemClass
+
 // Struct CheckMenuItemPrivate
 type CheckMenuItemPrivate struct {
 	P unsafe.Pointer
@@ -13981,6 +14031,7 @@ func (v ColorButton) SetUseAlpha(use_alpha bool) {
 }
 
 // ignore GType struct ColorButtonClass
+
 // Struct ColorButtonPrivate
 type ColorButtonPrivate struct {
 	P unsafe.Pointer
@@ -14147,6 +14198,7 @@ func NewColorChooserDialog(title string, parent IWindow) (result ColorChooserDia
 }
 
 // ignore GType struct ColorChooserDialogClass
+
 // Struct ColorChooserDialogPrivate
 type ColorChooserDialogPrivate struct {
 	P unsafe.Pointer
@@ -14158,6 +14210,7 @@ func ColorChooserDialogPrivateGetType() gi.GType {
 }
 
 // ignore GType struct ColorChooserInterface
+
 // Object ColorChooserWidget
 type ColorChooserWidget struct {
 	atk.ImplementorIfaceIfc
@@ -14198,6 +14251,7 @@ func NewColorChooserWidget() (result ColorChooserWidget) {
 }
 
 // ignore GType struct ColorChooserWidgetClass
+
 // Struct ColorChooserWidgetPrivate
 type ColorChooserWidgetPrivate struct {
 	P unsafe.Pointer
@@ -14621,6 +14675,7 @@ func myGtkColorSelectionChangePaletteWithScreenFunc(screen *C.GdkScreen, colors 
 }
 
 // ignore GType struct ColorSelectionClass
+
 // Object ColorSelectionDialog
 type ColorSelectionDialog struct {
 	atk.ImplementorIfaceIfc
@@ -14681,6 +14736,7 @@ func (v ColorSelectionDialog) GetColorSelection() (result Widget) {
 }
 
 // ignore GType struct ColorSelectionDialogClass
+
 // Struct ColorSelectionDialogPrivate
 type ColorSelectionDialogPrivate struct {
 	P unsafe.Pointer
@@ -15482,6 +15538,7 @@ func ComboBoxAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ComboBoxAccessibleClass
+
 // Struct ComboBoxAccessiblePrivate
 type ComboBoxAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -15493,6 +15550,7 @@ func ComboBoxAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct ComboBoxClass
+
 // Struct ComboBoxPrivate
 type ComboBoxPrivate struct {
 	P unsafe.Pointer
@@ -15735,6 +15793,7 @@ func (v ComboBoxText) RemoveAll() {
 }
 
 // ignore GType struct ComboBoxTextClass
+
 // Struct ComboBoxTextPrivate
 type ComboBoxTextPrivate struct {
 	P unsafe.Pointer
@@ -16342,6 +16401,7 @@ func ContainerAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ContainerAccessibleClass
+
 // Struct ContainerAccessiblePrivate
 type ContainerAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -16448,6 +16508,7 @@ func (v ContainerCellAccessible) RemoveChild(child ICellAccessible) {
 }
 
 // ignore GType struct ContainerCellAccessibleClass
+
 // Struct ContainerCellAccessiblePrivate
 type ContainerCellAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -16459,6 +16520,7 @@ func ContainerCellAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct ContainerClass
+
 // Struct ContainerPrivate
 type ContainerPrivate struct {
 	P unsafe.Pointer
@@ -16661,6 +16723,7 @@ func (v CssProvider) ToString() (result string) {
 }
 
 // ignore GType struct CssProviderClass
+
 // Enum CssProviderError
 type CssProviderErrorEnum int
 
@@ -17219,6 +17282,7 @@ func (v Dialog) SetResponseSensitive(response_id int32, setting bool) {
 }
 
 // ignore GType struct DialogClass
+
 // Flags DialogFlags
 type DialogFlags int
 
@@ -17313,6 +17377,7 @@ func NewDrawingArea() (result DrawingArea) {
 }
 
 // ignore GType struct DrawingAreaClass
+
 // Interface Editable
 type Editable struct {
 	EditableIfc
@@ -17561,6 +17626,7 @@ func (v *EditableIfc) SetPosition(position int32) {
 }
 
 // ignore GType struct EditableInterface
+
 // Object Entry
 type Entry struct {
 	atk.ImplementorIfaceIfc
@@ -19016,6 +19082,7 @@ func EntryAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct EntryAccessibleClass
+
 // Struct EntryAccessiblePrivate
 type EntryAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -19272,6 +19339,7 @@ func (v EntryBuffer) SetText(chars string, n_chars int32) {
 }
 
 // ignore GType struct EntryBufferClass
+
 // Struct EntryBufferPrivate
 type EntryBufferPrivate struct {
 	P unsafe.Pointer
@@ -19283,6 +19351,7 @@ func EntryBufferPrivateGetType() gi.GType {
 }
 
 // ignore GType struct EntryClass
+
 // Object EntryCompletion
 type EntryCompletion struct {
 	BuildableIfc
@@ -19784,6 +19853,7 @@ func (v EntryCompletion) SetTextColumn(column int32) {
 }
 
 // ignore GType struct EntryCompletionClass
+
 type EntryCompletionMatchFuncStruct struct {
 	F_completion EntryCompletion
 	F_key        string
@@ -19961,6 +20031,7 @@ func (v EventBox) SetVisibleWindow(visible_window bool) {
 }
 
 // ignore GType struct EventBoxClass
+
 // Struct EventBoxPrivate
 type EventBoxPrivate struct {
 	P unsafe.Pointer
@@ -20073,6 +20144,7 @@ func (v EventController) SetPropagationPhase(phase PropagationPhaseEnum) {
 }
 
 // ignore GType struct EventControllerClass
+
 // Object EventControllerKey
 type EventControllerKey struct {
 	EventController
@@ -20194,6 +20266,7 @@ func (v EventControllerKey) SetImContext(im_context IIMContext) {
 }
 
 // ignore GType struct EventControllerKeyClass
+
 // Object EventControllerMotion
 type EventControllerMotion struct {
 	EventController
@@ -20234,6 +20307,7 @@ func NewEventControllerMotion(widget IWidget) (result EventControllerMotion) {
 }
 
 // ignore GType struct EventControllerMotionClass
+
 // Object EventControllerScroll
 type EventControllerScroll struct {
 	EventController
@@ -20311,6 +20385,7 @@ func (v EventControllerScroll) SetFlags(flags EventControllerScrollFlags) {
 }
 
 // ignore GType struct EventControllerScrollClass
+
 // Flags EventControllerScrollFlags
 type EventControllerScrollFlags int
 
@@ -20707,6 +20782,7 @@ func ExpanderAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ExpanderAccessibleClass
+
 // Struct ExpanderAccessiblePrivate
 type ExpanderAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -20718,6 +20794,7 @@ func ExpanderAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct ExpanderClass
+
 // Struct ExpanderPrivate
 type ExpanderPrivate struct {
 	P unsafe.Pointer
@@ -22179,6 +22256,7 @@ func (v FileChooserButton) SetWidthChars(n_chars int32) {
 }
 
 // ignore GType struct FileChooserButtonClass
+
 // Struct FileChooserButtonPrivate
 type FileChooserButtonPrivate struct {
 	P unsafe.Pointer
@@ -22225,6 +22303,7 @@ func FileChooserDialogGetType() gi.GType {
 }
 
 // ignore GType struct FileChooserDialogClass
+
 // Struct FileChooserDialogPrivate
 type FileChooserDialogPrivate struct {
 	P unsafe.Pointer
@@ -22382,6 +22461,7 @@ func (v FileChooserNative) SetCancelLabel(cancel_label string) {
 }
 
 // ignore GType struct FileChooserNativeClass
+
 // Object FileChooserWidget
 type FileChooserWidget struct {
 	atk.ImplementorIfaceIfc
@@ -22426,6 +22506,7 @@ func NewFileChooserWidget(action FileChooserActionEnum) (result FileChooserWidge
 }
 
 // ignore GType struct FileChooserWidgetClass
+
 // Struct FileChooserWidgetPrivate
 type FileChooserWidgetPrivate struct {
 	P unsafe.Pointer
@@ -22797,6 +22878,7 @@ func FixedChildGetType() gi.GType {
 }
 
 // ignore GType struct FixedClass
+
 // Struct FixedPrivate
 type FixedPrivate struct {
 	P unsafe.Pointer
@@ -23412,6 +23494,7 @@ func FlowBoxAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct FlowBoxAccessibleClass
+
 // Struct FlowBoxAccessiblePrivate
 type FlowBoxAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -23524,8 +23607,11 @@ func FlowBoxChildAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct FlowBoxChildAccessibleClass
+
 // ignore GType struct FlowBoxChildClass
+
 // ignore GType struct FlowBoxClass
+
 type FlowBoxCreateWidgetFuncStruct struct {
 	F_item g.Object
 }
@@ -23879,6 +23965,7 @@ func (v FontButton) SetUseSize(use_size bool) {
 }
 
 // ignore GType struct FontButtonClass
+
 // Struct FontButtonPrivate
 type FontButtonPrivate struct {
 	P unsafe.Pointer
@@ -24296,6 +24383,7 @@ func NewFontChooserDialog(title string, parent IWindow) (result FontChooserDialo
 }
 
 // ignore GType struct FontChooserDialogClass
+
 // Struct FontChooserDialogPrivate
 type FontChooserDialogPrivate struct {
 	P unsafe.Pointer
@@ -24307,6 +24395,7 @@ func FontChooserDialogPrivateGetType() gi.GType {
 }
 
 // ignore GType struct FontChooserIface
+
 // Flags FontChooserLevel
 type FontChooserLevelFlags int
 
@@ -24363,6 +24452,7 @@ func NewFontChooserWidget() (result FontChooserWidget) {
 }
 
 // ignore GType struct FontChooserWidgetClass
+
 // Struct FontChooserWidgetPrivate
 type FontChooserWidgetPrivate struct {
 	P unsafe.Pointer
@@ -24673,6 +24763,7 @@ func (v FontSelection) SetPreviewText(text string) {
 }
 
 // ignore GType struct FontSelectionClass
+
 // Object FontSelectionDialog
 type FontSelectionDialog struct {
 	atk.ImplementorIfaceIfc
@@ -24862,6 +24953,7 @@ func (v FontSelectionDialog) SetPreviewText(text string) {
 }
 
 // ignore GType struct FontSelectionDialogClass
+
 // Struct FontSelectionDialogPrivate
 type FontSelectionDialogPrivate struct {
 	P unsafe.Pointer
@@ -25091,6 +25183,7 @@ func FrameAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct FrameAccessibleClass
+
 // Struct FrameAccessiblePrivate
 type FrameAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -25102,6 +25195,7 @@ func FrameAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct FrameClass
+
 // Struct FramePrivate
 type FramePrivate struct {
 	P unsafe.Pointer
@@ -25451,6 +25545,7 @@ func (v GLArea) SetUseEs(use_es bool) {
 }
 
 // ignore GType struct GLAreaClass
+
 // Object Gesture
 type Gesture struct {
 	EventController
@@ -25857,6 +25952,7 @@ func (v Gesture) Ungroup() {
 }
 
 // ignore GType struct GestureClass
+
 // Object GestureDrag
 type GestureDrag struct {
 	GestureSingle
@@ -25951,6 +26047,7 @@ func (v GestureDrag) GetStartPoint() (result bool, x float64, y float64) {
 }
 
 // ignore GType struct GestureDragClass
+
 // Object GestureLongPress
 type GestureLongPress struct {
 	GestureSingle
@@ -25991,6 +26088,7 @@ func NewGestureLongPress(widget IWidget) (result GestureLongPress) {
 }
 
 // ignore GType struct GestureLongPressClass
+
 // Object GestureMultiPress
 type GestureMultiPress struct {
 	GestureSingle
@@ -26068,6 +26166,7 @@ func (v GestureMultiPress) SetArea(rect gdk.Rectangle) {
 }
 
 // ignore GType struct GestureMultiPressClass
+
 // Object GesturePan
 type GesturePan struct {
 	GestureDrag
@@ -26145,6 +26244,7 @@ func (v GesturePan) SetOrientation(orientation OrientationEnum) {
 }
 
 // ignore GType struct GesturePanClass
+
 // Object GestureRotate
 type GestureRotate struct {
 	Gesture
@@ -26203,6 +26303,7 @@ func (v GestureRotate) GetAngleDelta() (result float64) {
 }
 
 // ignore GType struct GestureRotateClass
+
 // Object GestureSingle
 type GestureSingle struct {
 	Gesture
@@ -26357,6 +26458,7 @@ func (v GestureSingle) SetTouchOnly(touch_only bool) {
 }
 
 // ignore GType struct GestureSingleClass
+
 // Object GestureStylus
 type GestureStylus struct {
 	GestureSingle
@@ -26467,6 +26569,7 @@ func (v GestureStylus) GetDeviceTool() (result gdk.DeviceTool) {
 }
 
 // ignore GType struct GestureStylusClass
+
 // Object GestureSwipe
 type GestureSwipe struct {
 	GestureSingle
@@ -26534,6 +26637,7 @@ func (v GestureSwipe) GetVelocity() (result bool, velocity_x float64, velocity_y
 }
 
 // ignore GType struct GestureSwipeClass
+
 // Object GestureZoom
 type GestureZoom struct {
 	Gesture
@@ -26592,6 +26696,7 @@ func (v GestureZoom) GetScaleDelta() (result float64) {
 }
 
 // ignore GType struct GestureZoomClass
+
 // Struct Gradient
 type Gradient struct {
 	P unsafe.Pointer
@@ -27230,6 +27335,7 @@ func (v Grid) SetRowSpacing(spacing uint32) {
 }
 
 // ignore GType struct GridClass
+
 // Struct GridPrivate
 type GridPrivate struct {
 	P unsafe.Pointer
@@ -27287,6 +27393,7 @@ func NewHBox(homogeneous bool, spacing int32) (result HBox) {
 }
 
 // ignore GType struct HBoxClass
+
 // Object HButtonBox
 type HButtonBox struct {
 	atk.ImplementorIfaceIfc
@@ -27327,6 +27434,7 @@ func NewHButtonBox() (result HButtonBox) {
 }
 
 // ignore GType struct HButtonBoxClass
+
 // Object HPaned
 type HPaned struct {
 	atk.ImplementorIfaceIfc
@@ -27367,6 +27475,7 @@ func NewHPaned() (result HPaned) {
 }
 
 // ignore GType struct HPanedClass
+
 // Object HSV
 type HSV struct {
 	atk.ImplementorIfaceIfc
@@ -27547,6 +27656,7 @@ func (v HSV) SetMetrics(size int32, ring_width int32) {
 }
 
 // ignore GType struct HSVClass
+
 // Struct HSVPrivate
 type HSVPrivate struct {
 	P unsafe.Pointer
@@ -27633,6 +27743,7 @@ func NewHScaleWithRange(min float64, max float64, step float64) (result HScale) 
 }
 
 // ignore GType struct HScaleClass
+
 // Object HScrollbar
 type HScrollbar struct {
 	atk.ImplementorIfaceIfc
@@ -27681,6 +27792,7 @@ func NewHScrollbar(adjustment IAdjustment) (result HScrollbar) {
 }
 
 // ignore GType struct HScrollbarClass
+
 // Object HSeparator
 type HSeparator struct {
 	atk.ImplementorIfaceIfc
@@ -27721,6 +27833,7 @@ func NewHSeparator() (result HSeparator) {
 }
 
 // ignore GType struct HSeparatorClass
+
 // Object HandleBox
 type HandleBox struct {
 	atk.ImplementorIfaceIfc
@@ -27893,6 +28006,7 @@ func (v HandleBox) SetSnapEdge(edge PositionTypeEnum) {
 }
 
 // ignore GType struct HandleBoxClass
+
 // Struct HandleBoxPrivate
 type HandleBoxPrivate struct {
 	P unsafe.Pointer
@@ -28193,6 +28307,7 @@ func (v HeaderBar) SetTitle(title string) {
 }
 
 // ignore GType struct HeaderBarClass
+
 // Struct HeaderBarPrivate
 type HeaderBarPrivate struct {
 	P unsafe.Pointer
@@ -28433,6 +28548,7 @@ func (v IMContext) SetUsePreedit(use_preedit bool) {
 }
 
 // ignore GType struct IMContextClass
+
 // Struct IMContextInfo
 type IMContextInfo struct {
 	P unsafe.Pointer
@@ -28495,6 +28611,7 @@ func (v IMContextSimple) AddComposeFile(compose_file string) {
 }
 
 // ignore GType struct IMContextSimpleClass
+
 // Struct IMContextSimplePrivate
 type IMContextSimplePrivate struct {
 	P unsafe.Pointer
@@ -28595,6 +28712,7 @@ func (v IMMulticontext) SetContextId(context_id string) {
 }
 
 // ignore GType struct IMMulticontextClass
+
 // Struct IMMulticontextPrivate
 type IMMulticontextPrivate struct {
 	P unsafe.Pointer
@@ -28775,6 +28893,7 @@ func (v IconFactory) RemoveDefault() {
 }
 
 // ignore GType struct IconFactoryClass
+
 // Struct IconFactoryPrivate
 type IconFactoryPrivate struct {
 	P unsafe.Pointer
@@ -29352,6 +29471,7 @@ func (v IconInfo) SetRawCoordinates(raw_coordinates bool) {
 }
 
 // ignore GType struct IconInfoClass
+
 // Flags IconLookupFlags
 type IconLookupFlags int
 
@@ -30709,6 +30829,7 @@ func (v IconTheme) SetSearchPath(path gi.CStrArray, n_elements int32) {
 }
 
 // ignore GType struct IconThemeClass
+
 // Enum IconThemeError
 type IconThemeErrorEnum int
 
@@ -32042,6 +32163,7 @@ func IconViewAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct IconViewAccessibleClass
+
 // Struct IconViewAccessiblePrivate
 type IconViewAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -32053,6 +32175,7 @@ func IconViewAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct IconViewClass
+
 // Enum IconViewDropPosition
 type IconViewDropPositionEnum int
 
@@ -32743,6 +32866,7 @@ func ImageAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ImageAccessibleClass
+
 // Struct ImageAccessiblePrivate
 type ImageAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -32777,6 +32901,7 @@ func ImageCellAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ImageCellAccessibleClass
+
 // Struct ImageCellAccessiblePrivate
 type ImageCellAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -32788,6 +32913,7 @@ func ImageCellAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct ImageClass
+
 // Object ImageMenuItem
 type ImageMenuItem struct {
 	atk.ImplementorIfaceIfc
@@ -33049,6 +33175,7 @@ func (v ImageMenuItem) SetUseStock(use_stock bool) {
 }
 
 // ignore GType struct ImageMenuItemClass
+
 // Struct ImageMenuItemPrivate
 type ImageMenuItemPrivate struct {
 	P unsafe.Pointer
@@ -33364,6 +33491,7 @@ func (v InfoBar) SetShowCloseButton(setting bool) {
 }
 
 // ignore GType struct InfoBarClass
+
 // Struct InfoBarPrivate
 type InfoBarPrivate struct {
 	P unsafe.Pointer
@@ -33516,6 +33644,7 @@ func (v Invisible) SetScreen(screen gdk.IScreen) {
 }
 
 // ignore GType struct InvisibleClass
+
 // Struct InvisiblePrivate
 type InvisiblePrivate struct {
 	P unsafe.Pointer
@@ -34510,6 +34639,7 @@ func LabelAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct LabelAccessibleClass
+
 // Struct LabelAccessiblePrivate
 type LabelAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -34521,6 +34651,7 @@ func LabelAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct LabelClass
+
 // Struct LabelPrivate
 type LabelPrivate struct {
 	P unsafe.Pointer
@@ -34790,6 +34921,7 @@ func (v Layout) SetVadjustment(adjustment IAdjustment) {
 }
 
 // ignore GType struct LayoutClass
+
 // Struct LayoutPrivate
 type LayoutPrivate struct {
 	P unsafe.Pointer
@@ -35117,6 +35249,7 @@ func LevelBarAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct LevelBarAccessibleClass
+
 // Struct LevelBarAccessiblePrivate
 type LevelBarAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -35128,6 +35261,7 @@ func LevelBarAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct LevelBarClass
+
 // Enum LevelBarMode
 type LevelBarModeEnum int
 
@@ -35343,6 +35477,7 @@ func LinkButtonAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct LinkButtonAccessibleClass
+
 // Struct LinkButtonAccessiblePrivate
 type LinkButtonAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -35354,6 +35489,7 @@ func LinkButtonAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct LinkButtonClass
+
 // Struct LinkButtonPrivate
 type LinkButtonPrivate struct {
 	P unsafe.Pointer
@@ -35918,6 +36054,7 @@ func ListBoxAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ListBoxAccessibleClass
+
 // Struct ListBoxAccessiblePrivate
 type ListBoxAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -35929,6 +36066,7 @@ func ListBoxAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct ListBoxClass
+
 type ListBoxCreateWidgetFuncStruct struct {
 	F_item g.Object
 }
@@ -36192,7 +36330,9 @@ func ListBoxRowAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ListBoxRowAccessibleClass
+
 // ignore GType struct ListBoxRowClass
+
 type ListBoxSortFuncStruct struct {
 	F_row1 ListBoxRow
 	F_row2 ListBoxRow
@@ -36591,6 +36731,7 @@ func (v ListStore) Swap(a TreeIter, b TreeIter) {
 }
 
 // ignore GType struct ListStoreClass
+
 // Struct ListStorePrivate
 type ListStorePrivate struct {
 	P unsafe.Pointer
@@ -36708,6 +36849,7 @@ func LockButtonAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct LockButtonAccessibleClass
+
 // Struct LockButtonAccessiblePrivate
 type LockButtonAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -36719,6 +36861,7 @@ func LockButtonAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct LockButtonClass
+
 // Struct LockButtonPrivate
 type LockButtonPrivate struct {
 	P unsafe.Pointer
@@ -37430,6 +37573,7 @@ func MenuAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct MenuAccessibleClass
+
 // Struct MenuAccessiblePrivate
 type MenuAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -37568,6 +37712,7 @@ func (v MenuBar) SetPackDirection(pack_dir PackDirectionEnum) {
 }
 
 // ignore GType struct MenuBarClass
+
 // Struct MenuBarPrivate
 type MenuBarPrivate struct {
 	P unsafe.Pointer
@@ -37859,6 +38004,7 @@ func MenuButtonAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct MenuButtonAccessibleClass
+
 // Struct MenuButtonAccessiblePrivate
 type MenuButtonAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -37870,6 +38016,7 @@ func MenuButtonAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct MenuButtonClass
+
 // Struct MenuButtonPrivate
 type MenuButtonPrivate struct {
 	P unsafe.Pointer
@@ -37881,6 +38028,7 @@ func MenuButtonPrivateGetType() gi.GType {
 }
 
 // ignore GType struct MenuClass
+
 type MenuDetachFuncStruct struct {
 	F_attach_widget Widget
 	F_menu          Menu
@@ -38302,6 +38450,7 @@ func MenuItemAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct MenuItemAccessibleClass
+
 // Struct MenuItemAccessiblePrivate
 type MenuItemAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -38313,6 +38462,7 @@ func MenuItemAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct MenuItemClass
+
 // Struct MenuItemPrivate
 type MenuItemPrivate struct {
 	P unsafe.Pointer
@@ -38654,6 +38804,7 @@ func MenuShellAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct MenuShellAccessibleClass
+
 // Struct MenuShellAccessiblePrivate
 type MenuShellAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -38665,6 +38816,7 @@ func MenuShellAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct MenuShellClass
+
 // Struct MenuShellPrivate
 type MenuShellPrivate struct {
 	P unsafe.Pointer
@@ -38826,6 +38978,7 @@ func (v MenuToolButton) SetMenu(menu IWidget) {
 }
 
 // ignore GType struct MenuToolButtonClass
+
 // Struct MenuToolButtonPrivate
 type MenuToolButtonPrivate struct {
 	P unsafe.Pointer
@@ -38934,6 +39087,7 @@ func (v MessageDialog) SetMarkup(str string) {
 }
 
 // ignore GType struct MessageDialogClass
+
 // Struct MessageDialogPrivate
 type MessageDialogPrivate struct {
 	P unsafe.Pointer
@@ -39072,6 +39226,7 @@ func (v Misc) SetPadding(xpad int32, ypad int32) {
 }
 
 // ignore GType struct MiscClass
+
 // Struct MiscPrivate
 type MiscPrivate struct {
 	P unsafe.Pointer
@@ -39282,6 +39437,7 @@ func (v MountOperation) SetScreen(screen gdk.IScreen) {
 }
 
 // ignore GType struct MountOperationClass
+
 // Struct MountOperationPrivate
 type MountOperationPrivate struct {
 	P unsafe.Pointer
@@ -39512,6 +39668,7 @@ func (v NativeDialog) Show() {
 }
 
 // ignore GType struct NativeDialogClass
+
 // Object Notebook
 type Notebook struct {
 	atk.ImplementorIfaceIfc
@@ -40551,6 +40708,7 @@ func NotebookAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct NotebookAccessibleClass
+
 // Struct NotebookAccessiblePrivate
 type NotebookAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -40562,6 +40720,7 @@ func NotebookAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct NotebookClass
+
 // Object NotebookPageAccessible
 type NotebookPageAccessible struct {
 	atk.ComponentIfc
@@ -40624,6 +40783,7 @@ func (v NotebookPageAccessible) Invalidate() {
 }
 
 // ignore GType struct NotebookPageAccessibleClass
+
 // Struct NotebookPageAccessiblePrivate
 type NotebookPageAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -40955,6 +41115,7 @@ func (v NumerableIcon) SetStyleContext(style IStyleContext) {
 }
 
 // ignore GType struct NumerableIconClass
+
 // Struct NumerableIconPrivate
 type NumerableIconPrivate struct {
 	P unsafe.Pointer
@@ -41037,6 +41198,7 @@ func (v OffscreenWindow) GetSurface() (result cairo.Surface) {
 }
 
 // ignore GType struct OffscreenWindowClass
+
 // Interface Orientable
 type Orientable struct {
 	OrientableIfc
@@ -41086,6 +41248,7 @@ func (v *OrientableIfc) SetOrientation(orientation OrientationEnum) {
 }
 
 // ignore GType struct OrientableIface
+
 // Enum Orientation
 type OrientationEnum int
 
@@ -41226,6 +41389,7 @@ func (v Overlay) SetOverlayPassThrough(widget IWidget, pass_through bool) {
 }
 
 // ignore GType struct OverlayClass
+
 // Struct OverlayPrivate
 type OverlayPrivate struct {
 	P unsafe.Pointer
@@ -41395,6 +41559,7 @@ func (v PadController) SetActionEntries(entries unsafe.Pointer, n_entries int32)
 }
 
 // ignore GType struct PadControllerClass
+
 // Enum PageOrientation
 type PageOrientationEnum int
 
@@ -42305,6 +42470,7 @@ func PanedAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct PanedAccessibleClass
+
 // Struct PanedAccessiblePrivate
 type PanedAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -42316,6 +42482,7 @@ func PanedAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct PanedClass
+
 // Struct PanedPrivate
 type PanedPrivate struct {
 	P unsafe.Pointer
@@ -43386,6 +43553,7 @@ func (v PlacesSidebar) SetShowTrash(show_trash bool) {
 }
 
 // ignore GType struct PlacesSidebarClass
+
 // Object Plug
 type Plug struct {
 	atk.ImplementorIfaceIfc
@@ -43546,6 +43714,7 @@ func (v Plug) GetSocketWindow() (result gdk.Window) {
 }
 
 // ignore GType struct PlugClass
+
 // Struct PlugPrivate
 type PlugPrivate struct {
 	P unsafe.Pointer
@@ -43967,7 +44136,9 @@ func PopoverAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct PopoverAccessibleClass
+
 // ignore GType struct PopoverClass
+
 // Enum PopoverConstraint
 type PopoverConstraintEnum int
 
@@ -44035,6 +44206,7 @@ func (v PopoverMenu) OpenSubmenu(name string) {
 }
 
 // ignore GType struct PopoverMenuClass
+
 // Struct PopoverPrivate
 type PopoverPrivate struct {
 	P unsafe.Pointer
@@ -44873,6 +45045,7 @@ func PrintOperationActionGetType() gi.GType {
 }
 
 // ignore GType struct PrintOperationClass
+
 // Interface PrintOperationPreview
 type PrintOperationPreview struct {
 	PrintOperationPreviewIfc
@@ -44938,6 +45111,7 @@ func (v *PrintOperationPreviewIfc) RenderPage(page_nr int32) {
 }
 
 // ignore GType struct PrintOperationPreviewIface
+
 // Struct PrintOperationPrivate
 type PrintOperationPrivate struct {
 	P unsafe.Pointer
@@ -46790,6 +46964,7 @@ func ProgressBarAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ProgressBarAccessibleClass
+
 // Struct ProgressBarAccessiblePrivate
 type ProgressBarAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -46801,6 +46976,7 @@ func ProgressBarAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct ProgressBarClass
+
 // Struct ProgressBarPrivate
 type ProgressBarPrivate struct {
 	P unsafe.Pointer
@@ -46984,6 +47160,7 @@ func (v RadioAction) SetGroup(group g.SList) {
 }
 
 // ignore GType struct RadioActionClass
+
 // Deprecated
 //
 // Struct RadioActionEntry
@@ -47259,6 +47436,7 @@ func RadioButtonAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct RadioButtonAccessibleClass
+
 // Struct RadioButtonAccessiblePrivate
 type RadioButtonAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -47270,6 +47448,7 @@ func RadioButtonAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct RadioButtonClass
+
 // Struct RadioButtonPrivate
 type RadioButtonPrivate struct {
 	P unsafe.Pointer
@@ -47531,6 +47710,7 @@ func RadioMenuItemAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct RadioMenuItemAccessibleClass
+
 // Struct RadioMenuItemAccessiblePrivate
 type RadioMenuItemAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -47542,6 +47722,7 @@ func RadioMenuItemAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct RadioMenuItemClass
+
 // Struct RadioMenuItemPrivate
 type RadioMenuItemPrivate struct {
 	P unsafe.Pointer
@@ -47712,6 +47893,7 @@ func (v RadioToolButton) SetGroup(group g.SList) {
 }
 
 // ignore GType struct RadioToolButtonClass
+
 // Object Range
 type Range struct {
 	atk.ImplementorIfaceIfc
@@ -48246,6 +48428,7 @@ func RangeAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct RangeAccessibleClass
+
 // Struct RangeAccessiblePrivate
 type RangeAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -48257,6 +48440,7 @@ func RangeAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct RangeClass
+
 // Struct RangePrivate
 type RangePrivate struct {
 	P unsafe.Pointer
@@ -48523,6 +48707,7 @@ func (v RcStyle) Copy() (result RcStyle) {
 }
 
 // ignore GType struct RcStyleClass
+
 // Deprecated
 //
 // Enum RcTokenType
@@ -48719,6 +48904,7 @@ func (v RecentAction) SetShowNumbers(show_numbers bool) {
 }
 
 // ignore GType struct RecentActionClass
+
 // Struct RecentActionPrivate
 type RecentActionPrivate struct {
 	P unsafe.Pointer
@@ -49329,6 +49515,7 @@ func RecentChooserDialogGetType() gi.GType {
 }
 
 // ignore GType struct RecentChooserDialogClass
+
 // Struct RecentChooserDialogPrivate
 type RecentChooserDialogPrivate struct {
 	P unsafe.Pointer
@@ -49353,6 +49540,7 @@ func RecentChooserErrorGetType() gi.GType {
 }
 
 // ignore GType struct RecentChooserIface
+
 // Object RecentChooserMenu
 type RecentChooserMenu struct {
 	atk.ImplementorIfaceIfc
@@ -49451,6 +49639,7 @@ func (v RecentChooserMenu) SetShowNumbers(show_numbers bool) {
 }
 
 // ignore GType struct RecentChooserMenuClass
+
 // Struct RecentChooserMenuPrivate
 type RecentChooserMenuPrivate struct {
 	P unsafe.Pointer
@@ -49525,6 +49714,7 @@ func NewRecentChooserWidgetForManager(manager IRecentManager) (result RecentChoo
 }
 
 // ignore GType struct RecentChooserWidgetClass
+
 // Struct RecentChooserWidgetPrivate
 type RecentChooserWidgetPrivate struct {
 	P unsafe.Pointer
@@ -50561,6 +50751,7 @@ func (v RecentManager) RemoveItem(uri string) (result bool, err error) {
 }
 
 // ignore GType struct RecentManagerClass
+
 // Enum RecentManagerError
 type RecentManagerErrorEnum int
 
@@ -50700,6 +50891,7 @@ func NewRendererCellAccessible(renderer ICellRenderer) (result RendererCellAcces
 }
 
 // ignore GType struct RendererCellAccessibleClass
+
 // Struct RendererCellAccessiblePrivate
 type RendererCellAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -50973,6 +51165,7 @@ func (v Revealer) SetTransitionType(transition RevealerTransitionTypeEnum) {
 }
 
 // ignore GType struct RevealerClass
+
 // Enum RevealerTransitionType
 type RevealerTransitionTypeEnum int
 
@@ -51301,6 +51494,7 @@ func ScaleAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ScaleAccessibleClass
+
 // Struct ScaleAccessiblePrivate
 type ScaleAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -51534,6 +51728,7 @@ func ScaleButtonAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ScaleButtonAccessibleClass
+
 // Struct ScaleButtonAccessiblePrivate
 type ScaleButtonAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -51545,6 +51740,7 @@ func ScaleButtonAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct ScaleButtonClass
+
 // Struct ScaleButtonPrivate
 type ScaleButtonPrivate struct {
 	P unsafe.Pointer
@@ -51556,6 +51752,7 @@ func ScaleButtonPrivateGetType() gi.GType {
 }
 
 // ignore GType struct ScaleClass
+
 // Struct ScalePrivate
 type ScalePrivate struct {
 	P unsafe.Pointer
@@ -51790,6 +51987,7 @@ func (v *ScrollableIfc) SetVscrollPolicy(policy ScrollablePolicyEnum) {
 }
 
 // ignore GType struct ScrollableInterface
+
 // Enum ScrollablePolicy
 type ScrollablePolicyEnum int
 
@@ -51852,6 +52050,7 @@ func NewScrollbar(orientation OrientationEnum, adjustment IAdjustment) (result S
 }
 
 // ignore GType struct ScrollbarClass
+
 // Object ScrolledWindow
 type ScrolledWindow struct {
 	atk.ImplementorIfaceIfc
@@ -52483,6 +52682,7 @@ func ScrolledWindowAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ScrolledWindowAccessibleClass
+
 // Struct ScrolledWindowAccessiblePrivate
 type ScrolledWindowAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -52494,6 +52694,7 @@ func ScrolledWindowAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct ScrolledWindowClass
+
 // Struct ScrolledWindowPrivate
 type ScrolledWindowPrivate struct {
 	P unsafe.Pointer
@@ -52649,6 +52850,7 @@ func (v SearchBar) SetShowCloseButton(visible bool) {
 }
 
 // ignore GType struct SearchBarClass
+
 // Object SearchEntry
 type SearchEntry struct {
 	atk.ImplementorIfaceIfc
@@ -52710,6 +52912,7 @@ func (v SearchEntry) HandleEvent(event gdk.Event) (result bool) {
 }
 
 // ignore GType struct SearchEntryClass
+
 // Struct SelectionData
 type SelectionData struct {
 	P unsafe.Pointer
@@ -53219,6 +53422,7 @@ func NewSeparator(orientation OrientationEnum) (result Separator) {
 }
 
 // ignore GType struct SeparatorClass
+
 // Object SeparatorMenuItem
 type SeparatorMenuItem struct {
 	atk.ImplementorIfaceIfc
@@ -53259,6 +53463,7 @@ func NewSeparatorMenuItem() (result SeparatorMenuItem) {
 }
 
 // ignore GType struct SeparatorMenuItemClass
+
 // Struct SeparatorPrivate
 type SeparatorPrivate struct {
 	P unsafe.Pointer
@@ -53341,6 +53546,7 @@ func (v SeparatorToolItem) SetDraw(draw bool) {
 }
 
 // ignore GType struct SeparatorToolItemClass
+
 // Struct SeparatorToolItemPrivate
 type SeparatorToolItemPrivate struct {
 	P unsafe.Pointer
@@ -53565,6 +53771,7 @@ func (v Settings) SetStringProperty(name string, v_string string, origin string)
 }
 
 // ignore GType struct SettingsClass
+
 // Struct SettingsPrivate
 type SettingsPrivate struct {
 	P unsafe.Pointer
@@ -53719,6 +53926,7 @@ func (v ShortcutLabel) SetDisabledText(disabled_text string) {
 }
 
 // ignore GType struct ShortcutLabelClass
+
 // Enum ShortcutType
 type ShortcutTypeEnum int
 
@@ -53760,6 +53968,7 @@ func ShortcutsGroupGetType() gi.GType {
 }
 
 // ignore GType struct ShortcutsGroupClass
+
 // Object ShortcutsSection
 type ShortcutsSection struct {
 	atk.ImplementorIfaceIfc
@@ -53782,6 +53991,7 @@ func ShortcutsSectionGetType() gi.GType {
 }
 
 // ignore GType struct ShortcutsSectionClass
+
 // Object ShortcutsShortcut
 type ShortcutsShortcut struct {
 	atk.ImplementorIfaceIfc
@@ -53804,6 +54014,7 @@ func ShortcutsShortcutGetType() gi.GType {
 }
 
 // ignore GType struct ShortcutsShortcutClass
+
 // Object ShortcutsWindow
 type ShortcutsWindow struct {
 	atk.ImplementorIfaceIfc
@@ -53824,6 +54035,7 @@ func ShortcutsWindowGetType() gi.GType {
 }
 
 // ignore GType struct ShortcutsWindowClass
+
 // Object SizeGroup
 type SizeGroup struct {
 	BuildableIfc
@@ -53992,6 +54204,7 @@ func (v SizeGroup) SetMode(mode SizeGroupModeEnum) {
 }
 
 // ignore GType struct SizeGroupClass
+
 // Enum SizeGroupMode
 type SizeGroupModeEnum int
 
@@ -54119,6 +54332,7 @@ func (v Socket) GetPlugWindow() (result gdk.Window) {
 }
 
 // ignore GType struct SocketClass
+
 // Struct SocketPrivate
 type SocketPrivate struct {
 	P unsafe.Pointer
@@ -54651,6 +54865,7 @@ func SpinButtonAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct SpinButtonAccessibleClass
+
 // Struct SpinButtonAccessiblePrivate
 type SpinButtonAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -54662,6 +54877,7 @@ func SpinButtonAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct SpinButtonClass
+
 // Struct SpinButtonPrivate
 type SpinButtonPrivate struct {
 	P unsafe.Pointer
@@ -54784,6 +55000,7 @@ func SpinnerAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct SpinnerAccessibleClass
+
 // Struct SpinnerAccessiblePrivate
 type SpinnerAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -54795,6 +55012,7 @@ func SpinnerAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct SpinnerClass
+
 // Struct SpinnerPrivate
 type SpinnerPrivate struct {
 	P unsafe.Pointer
@@ -55253,7 +55471,9 @@ func StackAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct StackAccessibleClass
+
 // ignore GType struct StackClass
+
 // Object StackSidebar
 type StackSidebar struct {
 	atk.ImplementorIfaceIfc
@@ -55328,6 +55548,7 @@ func (v StackSidebar) SetStack(stack IStack) {
 }
 
 // ignore GType struct StackSidebarClass
+
 // Struct StackSidebarPrivate
 type StackSidebarPrivate struct {
 	P unsafe.Pointer
@@ -55414,6 +55635,7 @@ func (v StackSwitcher) SetStack(stack IStack) {
 }
 
 // ignore GType struct StackSwitcherClass
+
 // Enum StackTransitionType
 type StackTransitionTypeEnum int
 
@@ -56240,6 +56462,7 @@ func (v StatusIcon) SetVisible(visible bool) {
 }
 
 // ignore GType struct StatusIconClass
+
 // Struct StatusIconPrivate
 type StatusIconPrivate struct {
 	P unsafe.Pointer
@@ -56423,6 +56646,7 @@ func StatusbarAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct StatusbarAccessibleClass
+
 // Struct StatusbarAccessiblePrivate
 type StatusbarAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -56434,6 +56658,7 @@ func StatusbarAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct StatusbarClass
+
 // Struct StatusbarPrivate
 type StatusbarPrivate struct {
 	P unsafe.Pointer
@@ -56746,6 +56971,7 @@ func (v Style) SetBackground(window gdk.IWindow, state_type StateTypeEnum) {
 }
 
 // ignore GType struct StyleClass
+
 // Object StyleContext
 type StyleContext struct {
 	g.Object
@@ -57835,6 +58061,7 @@ func (v StyleContext) ToString(flags StyleContextPrintFlags) (result string) {
 }
 
 // ignore GType struct StyleContextClass
+
 // Flags StyleContextPrintFlags
 type StyleContextPrintFlags int
 
@@ -58063,6 +58290,7 @@ func (v StyleProperties) UnsetProperty(property string, state StateFlags) {
 }
 
 // ignore GType struct StylePropertiesClass
+
 // Struct StylePropertiesPrivate
 type StylePropertiesPrivate struct {
 	P unsafe.Pointer
@@ -58182,6 +58410,7 @@ func (v *StyleProviderIfc) GetStyleProperty(path WidgetPath, state StateFlags, p
 }
 
 // ignore GType struct StyleProviderIface
+
 // Object Switch
 type Switch struct {
 	atk.ImplementorIfaceIfc
@@ -58309,6 +58538,7 @@ func SwitchAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct SwitchAccessibleClass
+
 // Struct SwitchAccessiblePrivate
 type SwitchAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -58320,6 +58550,7 @@ func SwitchAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct SwitchClass
+
 // Struct SwitchPrivate
 type SwitchPrivate struct {
 	P unsafe.Pointer
@@ -58964,6 +59195,7 @@ func TableChildGetType() gi.GType {
 }
 
 // ignore GType struct TableClass
+
 // Struct TablePrivate
 type TablePrivate struct {
 	P unsafe.Pointer
@@ -59350,6 +59582,7 @@ func NewTearoffMenuItem() (result TearoffMenuItem) {
 }
 
 // ignore GType struct TearoffMenuItemClass
+
 // Struct TearoffMenuItemPrivate
 type TearoffMenuItemPrivate struct {
 	P unsafe.Pointer
@@ -61075,6 +61308,7 @@ func (v TextBuffer) UnregisterSerializeFormat(format gdk.Atom) {
 }
 
 // ignore GType struct TextBufferClass
+
 type TextBufferDeserializeFuncStruct struct {
 	F_register_buffer TextBuffer
 	F_content_buffer  TextBuffer
@@ -61175,6 +61409,7 @@ func TextCellAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct TextCellAccessibleClass
+
 // Struct TextCellAccessiblePrivate
 type TextCellAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -61270,6 +61505,7 @@ func (v TextChildAnchor) GetWidgets() (result g.List) {
 }
 
 // ignore GType struct TextChildAnchorClass
+
 // Enum TextDirection
 type TextDirectionEnum int
 
@@ -63273,6 +63509,7 @@ func (v TextMark) SetVisible(setting bool) {
 }
 
 // ignore GType struct TextMarkClass
+
 // Flags TextSearchFlags
 type TextSearchFlags int
 
@@ -63406,6 +63643,7 @@ func (v TextTag) SetPriority(priority int32) {
 }
 
 // ignore GType struct TextTagClass
+
 // Struct TextTagPrivate
 type TextTagPrivate struct {
 	P unsafe.Pointer
@@ -63555,6 +63793,7 @@ func (v TextTagTable) Remove(tag ITextTag) {
 }
 
 // ignore GType struct TextTagTableClass
+
 type TextTagTableForeachStruct struct {
 	F_tag  TextTag
 	F_data unsafe.Pointer
@@ -65075,6 +65314,7 @@ func TextViewAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct TextViewAccessibleClass
+
 // Struct TextViewAccessiblePrivate
 type TextViewAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -65086,6 +65326,7 @@ func TextViewAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct TextViewClass
+
 // Enum TextViewLayer
 type TextViewLayerEnum int
 
@@ -65588,6 +65829,7 @@ func (v ThemingEngine) StateIsRunning(state StateTypeEnum) (result bool, progres
 }
 
 // ignore GType struct ThemingEngineClass
+
 // Struct ThemingEnginePrivate
 type ThemingEnginePrivate struct {
 	P unsafe.Pointer
@@ -65765,6 +66007,7 @@ func (v ToggleAction) Toggled() {
 }
 
 // ignore GType struct ToggleActionClass
+
 // Deprecated
 //
 // Struct ToggleActionEntry
@@ -66009,6 +66252,7 @@ func ToggleButtonAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct ToggleButtonAccessibleClass
+
 // Struct ToggleButtonAccessiblePrivate
 type ToggleButtonAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -66020,6 +66264,7 @@ func ToggleButtonAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct ToggleButtonClass
+
 // Struct ToggleButtonPrivate
 type ToggleButtonPrivate struct {
 	P unsafe.Pointer
@@ -66128,6 +66373,7 @@ func (v ToggleToolButton) SetActive(is_active bool) {
 }
 
 // ignore GType struct ToggleToolButtonClass
+
 // Struct ToggleToolButtonPrivate
 type ToggleToolButtonPrivate struct {
 	P unsafe.Pointer
@@ -66437,6 +66683,7 @@ func (v ToolButton) SetUseUnderline(use_underline bool) {
 }
 
 // ignore GType struct ToolButtonClass
+
 // Struct ToolButtonPrivate
 type ToolButtonPrivate struct {
 	P unsafe.Pointer
@@ -66961,6 +67208,7 @@ func (v ToolItem) ToolbarReconfigured() {
 }
 
 // ignore GType struct ToolItemClass
+
 // Object ToolItemGroup
 type ToolItemGroup struct {
 	atk.ImplementorIfaceIfc
@@ -67315,6 +67563,7 @@ func (v ToolItemGroup) SetLabelWidget(label_widget IWidget) {
 }
 
 // ignore GType struct ToolItemGroupClass
+
 // Struct ToolItemGroupPrivate
 type ToolItemGroupPrivate struct {
 	P unsafe.Pointer
@@ -67767,6 +68016,7 @@ func (v ToolPalette) UnsetStyle() {
 }
 
 // ignore GType struct ToolPaletteClass
+
 // Flags ToolPaletteDragTargets
 type ToolPaletteDragTargetsFlags int
 
@@ -67962,6 +68212,7 @@ func (v *ToolShellIfc) RebuildMenu() {
 }
 
 // ignore GType struct ToolShellIface
+
 // Object Toolbar
 type Toolbar struct {
 	atk.ImplementorIfaceIfc
@@ -68282,6 +68533,7 @@ func (v Toolbar) UnsetStyle() {
 }
 
 // ignore GType struct ToolbarClass
+
 // Struct ToolbarPrivate
 type ToolbarPrivate struct {
 	P unsafe.Pointer
@@ -68549,6 +68801,7 @@ func (v ToplevelAccessible) GetChildren() (result g.List) {
 }
 
 // ignore GType struct ToplevelAccessibleClass
+
 // Struct ToplevelAccessiblePrivate
 type ToplevelAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -68674,6 +68927,7 @@ func (v *TreeDragDestIfc) RowDropPossible(dest_path TreePath, selection_data Sel
 }
 
 // ignore GType struct TreeDragDestIface
+
 // Interface TreeDragSource
 type TreeDragSource struct {
 	TreeDragSourceIfc
@@ -68755,6 +69009,7 @@ func (v *TreeDragSourceIfc) RowDraggable(path TreePath) (result bool) {
 }
 
 // ignore GType struct TreeDragSourceIface
+
 // Struct TreeIter
 type TreeIter struct {
 	P unsafe.Pointer
@@ -69587,6 +69842,7 @@ func (v TreeModelFilter) SetVisibleFunc(func1 int /*TODO_TYPE CALLBACK*/, data u
 }
 
 // ignore GType struct TreeModelFilterClass
+
 type TreeModelFilterModifyFuncStruct struct {
 	F_model  TreeModel
 	F_iter   TreeIter
@@ -69659,6 +69915,7 @@ func myGtkTreeModelForeachFunc(model *C.GtkTreeModel, path *C.GtkTreePath, iter 
 }
 
 // ignore GType struct TreeModelIface
+
 // Object TreeModelSort
 type TreeModelSort struct {
 	TreeDragSourceIfc
@@ -69831,6 +70088,7 @@ func (v TreeModelSort) ResetDefaultSortFunc() {
 }
 
 // ignore GType struct TreeModelSortClass
+
 // Struct TreeModelSortPrivate
 type TreeModelSortPrivate struct {
 	P unsafe.Pointer
@@ -70723,6 +70981,7 @@ func (v TreeSelection) UnselectRange(start_path TreePath, end_path TreePath) {
 }
 
 // ignore GType struct TreeSelectionClass
+
 type TreeSelectionForeachFuncStruct struct {
 	F_model TreeModel
 	F_path  TreePath
@@ -70905,6 +71164,7 @@ func (v *TreeSortableIfc) SortColumnChanged() {
 }
 
 // ignore GType struct TreeSortableIface
+
 // Object TreeStore
 type TreeStore struct {
 	BuildableIfc
@@ -71312,6 +71572,7 @@ func (v TreeStore) Swap(a TreeIter, b TreeIter) {
 }
 
 // ignore GType struct TreeStoreClass
+
 // Struct TreeStorePrivate
 type TreeStorePrivate struct {
 	P unsafe.Pointer
@@ -73436,6 +73697,7 @@ func TreeViewAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct TreeViewAccessibleClass
+
 // Struct TreeViewAccessiblePrivate
 type TreeViewAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -73447,6 +73709,7 @@ func TreeViewAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct TreeViewClass
+
 // Object TreeViewColumn
 type TreeViewColumn struct {
 	BuildableIfc
@@ -74426,6 +74689,7 @@ func (v TreeViewColumn) SetWidget(widget IWidget) {
 }
 
 // ignore GType struct TreeViewColumnClass
+
 type TreeViewColumnDropFuncStruct struct {
 	F_tree_view   TreeView
 	F_column      TreeViewColumn
@@ -75007,6 +75271,7 @@ func (v UIManager) SetAddTearoffs(add_tearoffs bool) {
 }
 
 // ignore GType struct UIManagerClass
+
 // Deprecated
 //
 // Flags UIManagerItemType
@@ -75103,6 +75368,7 @@ func NewVBox(homogeneous bool, spacing int32) (result VBox) {
 }
 
 // ignore GType struct VBoxClass
+
 // Object VButtonBox
 type VButtonBox struct {
 	atk.ImplementorIfaceIfc
@@ -75143,6 +75409,7 @@ func NewVButtonBox() (result VButtonBox) {
 }
 
 // ignore GType struct VButtonBoxClass
+
 // Object VPaned
 type VPaned struct {
 	atk.ImplementorIfaceIfc
@@ -75183,6 +75450,7 @@ func NewVPaned() (result VPaned) {
 }
 
 // ignore GType struct VPanedClass
+
 // Object VScale
 type VScale struct {
 	atk.ImplementorIfaceIfc
@@ -75259,6 +75527,7 @@ func NewVScaleWithRange(min float64, max float64, step float64) (result VScale) 
 }
 
 // ignore GType struct VScaleClass
+
 // Object VScrollbar
 type VScrollbar struct {
 	atk.ImplementorIfaceIfc
@@ -75307,6 +75576,7 @@ func NewVScrollbar(adjustment IAdjustment) (result VScrollbar) {
 }
 
 // ignore GType struct VScrollbarClass
+
 // Object VSeparator
 type VSeparator struct {
 	atk.ImplementorIfaceIfc
@@ -75347,6 +75617,7 @@ func NewVSeparator() (result VSeparator) {
 }
 
 // ignore GType struct VSeparatorClass
+
 // Object Viewport
 type Viewport struct {
 	atk.ImplementorIfaceIfc
@@ -75554,6 +75825,7 @@ func (v Viewport) SetVadjustment(adjustment IAdjustment) {
 }
 
 // ignore GType struct ViewportClass
+
 // Struct ViewportPrivate
 type ViewportPrivate struct {
 	P unsafe.Pointer
@@ -75606,6 +75878,7 @@ func NewVolumeButton() (result VolumeButton) {
 }
 
 // ignore GType struct VolumeButtonClass
+
 // Object Widget
 type Widget struct {
 	atk.ImplementorIfaceIfc
@@ -80562,6 +80835,7 @@ func WidgetAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct WidgetAccessibleClass
+
 // Struct WidgetAccessiblePrivate
 type WidgetAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -80573,6 +80847,7 @@ func WidgetAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct WidgetClass
+
 // Struct WidgetClassPrivate
 type WidgetClassPrivate struct {
 	P unsafe.Pointer
@@ -83572,6 +83847,7 @@ func WindowAccessibleGetType() gi.GType {
 }
 
 // ignore GType struct WindowAccessibleClass
+
 // Struct WindowAccessiblePrivate
 type WindowAccessiblePrivate struct {
 	P unsafe.Pointer
@@ -83583,6 +83859,7 @@ func WindowAccessiblePrivateGetType() gi.GType {
 }
 
 // ignore GType struct WindowClass
+
 // Struct WindowGeometryInfo
 type WindowGeometryInfo struct {
 	P unsafe.Pointer
@@ -83726,6 +84003,7 @@ func (v WindowGroup) RemoveWindow(window IWindow) {
 }
 
 // ignore GType struct WindowGroupClass
+
 // Struct WindowGroupPrivate
 type WindowGroupPrivate struct {
 	P unsafe.Pointer

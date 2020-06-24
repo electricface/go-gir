@@ -385,6 +385,7 @@ func (v Pty) SpawnFinish(result g.IAsyncResult) (result1 bool, child_pid int32, 
 }
 
 // ignore GType struct PtyClass
+
 // Enum PtyError
 type PtyErrorEnum int
 
@@ -2662,6 +2663,7 @@ func (v Terminal) WriteContentsSync(stream g.IOutputStream, flags WriteFlagsEnum
 }
 
 // ignore GType struct TerminalClass
+
 // Struct TerminalClassPrivate
 type TerminalClassPrivate struct {
 	P unsafe.Pointer

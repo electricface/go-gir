@@ -210,6 +210,7 @@ func (v *ActionIfc) SetDescription(i int32, desc string) (result bool) {
 }
 
 // ignore GType struct ActionIface
+
 // Struct Attribute
 type Attribute struct {
 	P unsafe.Pointer
@@ -615,6 +616,7 @@ func (v *ComponentIfc) SetSize(width int32, height int32) (result bool) {
 }
 
 // ignore GType struct ComponentIface
+
 // Enum CoordType
 type CoordTypeEnum int
 
@@ -809,6 +811,7 @@ func (v *DocumentIfc) SetAttributeValue(attribute_name string, attribute_value s
 }
 
 // ignore GType struct DocumentIface
+
 // Interface EditableText
 type EditableText struct {
 	EditableTextIfc
@@ -966,6 +969,7 @@ func (v *EditableTextIfc) SetTextContents(string string) {
 }
 
 // ignore GType struct EditableTextIface
+
 type EventListenerStruct struct {
 	F_obj Object
 }
@@ -1077,6 +1081,7 @@ func (v GObjectAccessible) GetObject() (result g.Object) {
 }
 
 // ignore GType struct GObjectAccessibleClass
+
 // Object Hyperlink
 type Hyperlink struct {
 	ActionIfc
@@ -1247,6 +1252,7 @@ func (v Hyperlink) IsValid() (result bool) {
 }
 
 // ignore GType struct HyperlinkClass
+
 // Interface HyperlinkImpl
 type HyperlinkImpl struct {
 	HyperlinkImplIfc
@@ -1280,6 +1286,7 @@ func (v *HyperlinkImplIfc) GetHyperlink() (result Hyperlink) {
 }
 
 // ignore GType struct HyperlinkImplIface
+
 // Flags HyperlinkStateFlags
 type HyperlinkStateFlags int
 
@@ -1367,6 +1374,7 @@ func (v *HypertextIfc) GetNLinks() (result int32) {
 }
 
 // ignore GType struct HypertextIface
+
 // Interface Image
 type Image struct {
 	ImageIfc
@@ -1490,6 +1498,7 @@ func (v *ImageIfc) SetImageDescription(description string) (result bool) {
 }
 
 // ignore GType struct ImageIface
+
 // Struct Implementor
 type Implementor struct {
 	P unsafe.Pointer
@@ -1642,6 +1651,7 @@ func (v Misc) ThreadsLeave() {
 }
 
 // ignore GType struct MiscClass
+
 // Object NoOpObject
 type NoOpObject struct {
 	ActionIfc
@@ -1706,6 +1716,7 @@ func NewNoOpObject(obj g.IObject) (result NoOpObject) {
 }
 
 // ignore GType struct NoOpObjectClass
+
 // Object NoOpObjectFactory
 type NoOpObjectFactory struct {
 	ObjectFactory
@@ -1738,6 +1749,7 @@ func NewNoOpObjectFactory() (result NoOpObjectFactory) {
 }
 
 // ignore GType struct NoOpObjectFactoryClass
+
 // Object Object
 type Object struct {
 	g.Object
@@ -2194,6 +2206,7 @@ func (v Object) SetRole(role RoleEnum) {
 }
 
 // ignore GType struct ObjectClass
+
 // Object ObjectFactory
 type ObjectFactory struct {
 	g.Object
@@ -2266,6 +2279,7 @@ func (v ObjectFactory) Invalidate() {
 }
 
 // ignore GType struct ObjectFactoryClass
+
 // Object Plug
 type Plug struct {
 	ComponentIfc
@@ -2318,6 +2332,7 @@ func (v Plug) GetId() (result string) {
 }
 
 // ignore GType struct PlugClass
+
 type PropertyChangeHandlerStruct struct {
 	F_obj  Object
 	F_vals PropertyValues
@@ -2556,6 +2571,7 @@ func (v Registry) SetFactoryType(type1 gi.GType, factory_type gi.GType) {
 }
 
 // ignore GType struct RegistryClass
+
 // Object Relation
 type Relation struct {
 	g.Object
@@ -2679,6 +2695,7 @@ func (v Relation) RemoveTarget(target IObject) (result bool) {
 }
 
 // ignore GType struct RelationClass
+
 // Object RelationSet
 type RelationSet struct {
 	g.Object
@@ -2883,6 +2900,7 @@ func (v RelationSet) Remove(relation IRelation) {
 }
 
 // ignore GType struct RelationSetClass
+
 // Enum RelationType
 type RelationTypeEnum int
 
@@ -3222,6 +3240,7 @@ func (v *SelectionIfc) SelectAllSelection() (result bool) {
 }
 
 // ignore GType struct SelectionIface
+
 // Object Socket
 type Socket struct {
 	ComponentIfc
@@ -3292,6 +3311,7 @@ func (v Socket) IsOccupied() (result bool) {
 }
 
 // ignore GType struct SocketClass
+
 // Object StateSet
 type StateSet struct {
 	g.Object
@@ -3536,6 +3556,7 @@ func (v StateSet) XorSets(compare_set IStateSet) (result StateSet) {
 }
 
 // ignore GType struct StateSetClass
+
 // Enum StateType
 type StateTypeEnum int
 
@@ -3691,6 +3712,7 @@ func (v *StreamableContentIfc) GetUri(mime_type string) (result string) {
 }
 
 // ignore GType struct StreamableContentIface
+
 // Interface Table
 type Table struct {
 	TableIfc
@@ -4492,7 +4514,9 @@ func (v *TableCellIfc) GetTable() (result Object) {
 }
 
 // ignore GType struct TableCellIface
+
 // ignore GType struct TableIface
+
 // Interface Text
 type Text struct {
 	TextIfc
@@ -5140,6 +5164,7 @@ func TextGranularityGetType() gi.GType {
 }
 
 // ignore GType struct TextIface
+
 // Struct TextRange
 type TextRange struct {
 	P unsafe.Pointer
@@ -5180,6 +5205,7 @@ func UtilGetType() gi.GType {
 }
 
 // ignore GType struct UtilClass
+
 // Interface Value
 type Value struct {
 	ValueIfc
@@ -5383,6 +5409,7 @@ func (v *ValueIfc) SetValue(new_value float64) {
 }
 
 // ignore GType struct ValueIface
+
 // Enum ValueType
 type ValueTypeEnum int
 
@@ -5425,6 +5452,7 @@ func WindowGetType() gi.GType {
 }
 
 // ignore GType struct WindowIface
+
 // atk_attribute_set_free
 //
 // [ attrib_set ] trans: nothing

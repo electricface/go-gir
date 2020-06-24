@@ -1102,6 +1102,7 @@ func (v Context) SetMatrix(matrix Matrix) {
 }
 
 // ignore GType struct ContextClass
+
 // Struct Coverage
 type Coverage struct {
 	P unsafe.Pointer
@@ -1273,6 +1274,7 @@ func EngineGetType() gi.GType {
 }
 
 // ignore GType struct EngineClass
+
 // Deprecated
 //
 // Struct EngineInfo
@@ -1305,6 +1307,7 @@ func EngineLangGetType() gi.GType {
 }
 
 // ignore GType struct EngineLangClass
+
 // Deprecated
 //
 // Struct EngineScriptInfo
@@ -1337,6 +1340,7 @@ func EngineShapeGetType() gi.GType {
 }
 
 // ignore GType struct EngineShapeClass
+
 // Object Font
 type Font struct {
 	g.Object
@@ -1492,6 +1496,7 @@ func (v Font) GetMetrics(language Language) (result FontMetrics) {
 }
 
 // ignore GType struct FontClass
+
 // Struct FontDescription
 type FontDescription struct {
 	P unsafe.Pointer
@@ -2202,6 +2207,7 @@ func (v FontFace) ListSizes() (sizes gi.Int32Array) {
 }
 
 // ignore GType struct FontFaceClass
+
 // Object FontFamily
 type FontFamily struct {
 	g.Object
@@ -2280,6 +2286,7 @@ func (v FontFamily) ListFaces() (faces gi.PointerArray) {
 }
 
 // ignore GType struct FontFamilyClass
+
 // Object FontMap
 type FontMap struct {
 	g.Object
@@ -2450,6 +2457,7 @@ func (v FontMap) LoadFontset(context IContext, desc FontDescription, language La
 }
 
 // ignore GType struct FontMapClass
+
 // Flags FontMask
 type FontMaskFlags int
 
@@ -2746,6 +2754,7 @@ func (v Fontset) GetMetrics() (result FontMetrics) {
 }
 
 // ignore GType struct FontsetClass
+
 type FontsetForeachFuncStruct struct {
 	F_fontset Fontset
 	F_font    Font
@@ -2839,6 +2848,7 @@ func (v FontsetSimple) Size() (result int32) {
 }
 
 // ignore GType struct FontsetSimpleClass
+
 // Struct GlyphGeometry
 type GlyphGeometry struct {
 	P unsafe.Pointer
@@ -4776,6 +4786,7 @@ func (v Layout) XyToIndex(x int32, y int32) (result bool, index_ int32, trailing
 }
 
 // ignore GType struct LayoutClass
+
 // Struct LayoutIter
 type LayoutIter struct {
 	P unsafe.Pointer
@@ -6025,6 +6036,7 @@ func (v Renderer) SetMatrix(matrix Matrix) {
 }
 
 // ignore GType struct RendererClass
+
 // Struct RendererPrivate
 type RendererPrivate struct {
 	P unsafe.Pointer

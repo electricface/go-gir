@@ -732,7 +732,9 @@ func (v *ActionGroupIfc) QueryAction(action_name string) (result bool, enabled b
 }
 
 // ignore GType struct ActionGroupInterface
+
 // ignore GType struct ActionInterface
+
 // Interface ActionMap
 type ActionMap struct {
 	ActionMapIfc
@@ -831,6 +833,7 @@ func (v *ActionMapIfc) RemoveAction(action_name string) {
 }
 
 // ignore GType struct ActionMapInterface
+
 // Interface AppInfo
 type AppInfo struct {
 	AppInfoIfc
@@ -1598,6 +1601,7 @@ func AppInfoCreateFlagsGetType() gi.GType {
 }
 
 // ignore GType struct AppInfoIface
+
 // Object AppInfoMonitor
 type AppInfoMonitor struct {
 	Object
@@ -1779,6 +1783,7 @@ func (v AppLaunchContext) Unsetenv(variable string) {
 }
 
 // ignore GType struct AppLaunchContextClass
+
 // Struct AppLaunchContextPrivate
 type AppLaunchContextPrivate struct {
 	P unsafe.Pointer
@@ -2490,6 +2495,7 @@ func (v Application) WithdrawNotification(id string) {
 }
 
 // ignore GType struct ApplicationClass
+
 // Object ApplicationCommandLine
 type ApplicationCommandLine struct {
 	Object
@@ -2720,6 +2726,7 @@ func (v ApplicationCommandLine) SetExitStatus(exit_status int32) {
 }
 
 // ignore GType struct ApplicationCommandLineClass
+
 // Struct ApplicationCommandLinePrivate
 type ApplicationCommandLinePrivate struct {
 	P unsafe.Pointer
@@ -2913,6 +2920,7 @@ func (v *AsyncInitableIfc) NewFinish(res IAsyncResult) (result Object, err error
 }
 
 // ignore GType struct AsyncInitableIface
+
 type AsyncReadyCallbackStruct struct {
 	F_source_object Object
 	F_res           AsyncResult
@@ -3024,6 +3032,7 @@ func (v *AsyncResultIfc) LegacyPropagateError() (result bool, err error) {
 }
 
 // ignore GType struct AsyncResultIface
+
 // Object BufferedInputStream
 type BufferedInputStream struct {
 	SeekableIfc
@@ -3313,6 +3322,7 @@ func (v BufferedInputStream) SetBufferSize(size uint64) {
 }
 
 // ignore GType struct BufferedInputStreamClass
+
 // Struct BufferedInputStreamPrivate
 type BufferedInputStreamPrivate struct {
 	P unsafe.Pointer
@@ -3460,6 +3470,7 @@ func (v BufferedOutputStream) SetBufferSize(size uint64) {
 }
 
 // ignore GType struct BufferedOutputStreamClass
+
 // Struct BufferedOutputStreamPrivate
 type BufferedOutputStreamPrivate struct {
 	P unsafe.Pointer
@@ -3884,6 +3895,7 @@ func (v Cancellable) SetErrorIfCancelled() (result bool, err error) {
 }
 
 // ignore GType struct CancellableClass
+
 // Struct CancellablePrivate
 type CancellablePrivate struct {
 	P unsafe.Pointer
@@ -4012,6 +4024,7 @@ func (v CharsetConverter) SetUseFallback(use_fallback bool) {
 }
 
 // ignore GType struct CharsetConverterClass
+
 // Interface Converter
 type Converter struct {
 	ConverterIfc
@@ -4097,6 +4110,7 @@ func ConverterFlagsGetType() gi.GType {
 }
 
 // ignore GType struct ConverterIface
+
 // Object ConverterInputStream
 type ConverterInputStream struct {
 	PollableInputStreamIfc
@@ -4164,6 +4178,7 @@ func (v ConverterInputStream) GetConverter() (result Converter) {
 }
 
 // ignore GType struct ConverterInputStreamClass
+
 // Struct ConverterInputStreamPrivate
 type ConverterInputStreamPrivate struct {
 	P unsafe.Pointer
@@ -4241,6 +4256,7 @@ func (v ConverterOutputStream) GetConverter() (result Converter) {
 }
 
 // ignore GType struct ConverterOutputStreamClass
+
 // Struct ConverterOutputStreamPrivate
 type ConverterOutputStreamPrivate struct {
 	P unsafe.Pointer
@@ -4425,6 +4441,7 @@ func (v Credentials) ToString() (result string) {
 }
 
 // ignore GType struct CredentialsClass
+
 // Enum CredentialsType
 type CredentialsTypeEnum int
 
@@ -6311,6 +6328,7 @@ func myGioDBusInterfaceGetPropertyFunc(connection *C.GDBusConnection, sender *C.
 }
 
 // ignore GType struct DBusInterfaceIface
+
 // Struct DBusInterfaceInfo
 type DBusInterfaceInfo struct {
 	P unsafe.Pointer
@@ -6771,6 +6789,7 @@ func (v DBusInterfaceSkeleton) UnexportFromConnection(connection IDBusConnection
 }
 
 // ignore GType struct DBusInterfaceSkeletonClass
+
 // Flags DBusInterfaceSkeletonFlags
 type DBusInterfaceSkeletonFlags int
 
@@ -8370,6 +8389,7 @@ func (v *DBusObjectIfc) GetObjectPath() (result string) {
 }
 
 // ignore GType struct DBusObjectIface
+
 // Interface DBusObjectManager
 type DBusObjectManager struct {
 	DBusObjectManagerIfc
@@ -8827,6 +8847,7 @@ func (v DBusObjectManagerClient) GetNameOwner() (result string) {
 }
 
 // ignore GType struct DBusObjectManagerClientClass
+
 // Flags DBusObjectManagerClientFlags
 type DBusObjectManagerClientFlags int
 
@@ -8851,6 +8872,7 @@ func DBusObjectManagerClientPrivateGetType() gi.GType {
 }
 
 // ignore GType struct DBusObjectManagerIface
+
 // Object DBusObjectManagerServer
 type DBusObjectManagerServer struct {
 	DBusObjectManagerIfc
@@ -9017,6 +9039,7 @@ func (v DBusObjectManagerServer) Unexport(object_path string) (result bool) {
 }
 
 // ignore GType struct DBusObjectManagerServerClass
+
 // Struct DBusObjectManagerServerPrivate
 type DBusObjectManagerServerPrivate struct {
 	P unsafe.Pointer
@@ -9092,6 +9115,7 @@ func (v DBusObjectProxy) GetConnection() (result DBusConnection) {
 }
 
 // ignore GType struct DBusObjectProxyClass
+
 // Struct DBusObjectProxyPrivate
 type DBusObjectProxyPrivate struct {
 	P unsafe.Pointer
@@ -9231,6 +9255,7 @@ func (v DBusObjectSkeleton) SetObjectPath(object_path string) {
 }
 
 // ignore GType struct DBusObjectSkeletonClass
+
 // Struct DBusObjectSkeletonPrivate
 type DBusObjectSkeletonPrivate struct {
 	P unsafe.Pointer
@@ -10055,6 +10080,7 @@ func (v DBusProxy) SetInterfaceInfo(info DBusInterfaceInfo) {
 }
 
 // ignore GType struct DBusProxyClass
+
 // Flags DBusProxyFlags
 type DBusProxyFlags int
 
@@ -11117,6 +11143,7 @@ func (v DataInputStream) SetNewlineType(type1 DataStreamNewlineTypeEnum) {
 }
 
 // ignore GType struct DataInputStreamClass
+
 // Struct DataInputStreamPrivate
 type DataInputStreamPrivate struct {
 	P unsafe.Pointer
@@ -11445,6 +11472,7 @@ func (v DataOutputStream) SetByteOrder(order DataStreamByteOrderEnum) {
 }
 
 // ignore GType struct DataOutputStreamClass
+
 // Struct DataOutputStreamPrivate
 type DataOutputStreamPrivate struct {
 	P unsafe.Pointer
@@ -11659,6 +11687,7 @@ func (v *DatagramBasedIfc) SendMessages(messages unsafe.Pointer, num_messages ui
 }
 
 // ignore GType struct DatagramBasedInterface
+
 type DatagramBasedSourceFuncStruct struct {
 	F_datagram_based DatagramBased
 	F_condition      IOConditionFlags
@@ -12231,6 +12260,7 @@ func (v DesktopAppInfo) ListActions() (result gi.CStrArray) {
 }
 
 // ignore GType struct DesktopAppInfoClass
+
 // Interface DesktopAppInfoLookup
 type DesktopAppInfoLookup struct {
 	DesktopAppInfoLookupIfc
@@ -12271,6 +12301,7 @@ func (v *DesktopAppInfoLookupIfc) GetDefaultForUriScheme(uri_scheme string) (res
 }
 
 // ignore GType struct DesktopAppInfoLookupIface
+
 type DesktopAppLaunchCallbackStruct struct {
 	F_appinfo DesktopAppInfo
 	F_pid     int32
@@ -12937,6 +12968,7 @@ func (v *DriveIfc) StopFinish(result IAsyncResult) (result1 bool, err error) {
 }
 
 // ignore GType struct DriveIface
+
 // Flags DriveStartFlags
 type DriveStartFlags int
 
@@ -13103,6 +13135,7 @@ func (v *DtlsClientConnectionIfc) SetValidationFlags(flags TlsCertificateFlags) 
 }
 
 // ignore GType struct DtlsClientConnectionInterface
+
 // Interface DtlsConnection
 type DtlsConnection struct {
 	DtlsConnectionIfc
@@ -13625,6 +13658,7 @@ func (v *DtlsConnectionIfc) ShutdownFinish(result IAsyncResult) (result1 bool, e
 }
 
 // ignore GType struct DtlsConnectionInterface
+
 // Interface DtlsServerConnection
 type DtlsServerConnection struct {
 	DtlsServerConnectionIfc
@@ -13673,6 +13707,7 @@ func DtlsServerConnectionNew1(base_socket IDatagramBased, certificate ITlsCertif
 }
 
 // ignore GType struct DtlsServerConnectionInterface
+
 // Object Emblem
 type Emblem struct {
 	IconIfc
@@ -13778,6 +13813,7 @@ func (v Emblem) GetOrigin() (result EmblemOriginEnum) {
 }
 
 // ignore GType struct EmblemClass
+
 // Enum EmblemOrigin
 type EmblemOriginEnum int
 
@@ -13911,6 +13947,7 @@ func (v EmblemedIcon) GetIcon() (result Icon) {
 }
 
 // ignore GType struct EmblemedIconClass
+
 // Struct EmblemedIconPrivate
 type EmblemedIconPrivate struct {
 	P unsafe.Pointer
@@ -18118,6 +18155,7 @@ func (v *FileDescriptorBasedIfc) GetFd() (result int32) {
 }
 
 // ignore GType struct FileDescriptorBasedIface
+
 // Object FileEnumerator
 type FileEnumerator struct {
 	Object
@@ -18433,6 +18471,7 @@ func (v FileEnumerator) SetPending(pending bool) {
 }
 
 // ignore GType struct FileEnumeratorClass
+
 // Struct FileEnumeratorPrivate
 type FileEnumeratorPrivate struct {
 	P unsafe.Pointer
@@ -18572,6 +18611,7 @@ func (v FileIOStream) QueryInfoFinish(result IAsyncResult) (result1 FileInfo, er
 }
 
 // ignore GType struct FileIOStreamClass
+
 // Struct FileIOStreamPrivate
 type FileIOStreamPrivate struct {
 	P unsafe.Pointer
@@ -18644,7 +18684,9 @@ func (v FileIcon) GetFile() (result File) {
 }
 
 // ignore GType struct FileIconClass
+
 // ignore GType struct FileIface
+
 // Object FileInfo
 type FileInfo struct {
 	Object
@@ -19917,6 +19959,7 @@ func (v FileInfo) UnsetAttributeMask() {
 }
 
 // ignore GType struct FileInfoClass
+
 // Object FileInputStream
 type FileInputStream struct {
 	SeekableIfc
@@ -20028,6 +20071,7 @@ func (v FileInputStream) QueryInfoFinish(result IAsyncResult) (result1 FileInfo,
 }
 
 // ignore GType struct FileInputStreamClass
+
 // Struct FileInputStreamPrivate
 type FileInputStreamPrivate struct {
 	P unsafe.Pointer
@@ -20174,6 +20218,7 @@ func (v FileMonitor) SetRateLimit(limit_msecs int32) {
 }
 
 // ignore GType struct FileMonitorClass
+
 // Enum FileMonitorEvent
 type FileMonitorEventEnum int
 
@@ -20351,6 +20396,7 @@ func (v FileOutputStream) QueryInfoFinish(result IAsyncResult) (result1 FileInfo
 }
 
 // ignore GType struct FileOutputStreamClass
+
 // Struct FileOutputStreamPrivate
 type FileOutputStreamPrivate struct {
 	P unsafe.Pointer
@@ -20521,6 +20567,7 @@ func (v FilenameCompleter) SetDirsOnly(dirs_only bool) {
 }
 
 // ignore GType struct FilenameCompleterClass
+
 // Enum FilesystemPreviewType
 type FilesystemPreviewTypeEnum int
 
@@ -20603,6 +20650,7 @@ func (v FilterInputStream) SetCloseBaseStream(close_base bool) {
 }
 
 // ignore GType struct FilterInputStreamClass
+
 // Object FilterOutputStream
 type FilterOutputStream struct {
 	OutputStream
@@ -20671,6 +20719,7 @@ func (v FilterOutputStream) SetCloseBaseStream(close_base bool) {
 }
 
 // ignore GType struct FilterOutputStreamClass
+
 // Enum IOErrorEnum
 type IOErrorEnumEnum int
 
@@ -21022,6 +21071,7 @@ func (v IOModule) Unload() {
 }
 
 // ignore GType struct IOModuleClass
+
 // Struct IOModuleScope
 type IOModuleScope struct {
 	P unsafe.Pointer
@@ -21437,6 +21487,7 @@ func IOStreamAdapterGetType() gi.GType {
 }
 
 // ignore GType struct IOStreamClass
+
 // Struct IOStreamPrivate
 type IOStreamPrivate struct {
 	P unsafe.Pointer
@@ -21602,6 +21653,7 @@ func (v *IconIfc) ToString() (result string) {
 }
 
 // ignore GType struct IconIface
+
 // Object InetAddress
 type InetAddress struct {
 	Object
@@ -21962,6 +22014,7 @@ func (v InetAddress) ToString() (result string) {
 }
 
 // ignore GType struct InetAddressClass
+
 // Object InetAddressMask
 type InetAddressMask struct {
 	InitableIfc
@@ -22155,6 +22208,7 @@ func (v InetAddressMask) ToString() (result string) {
 }
 
 // ignore GType struct InetAddressMaskClass
+
 // Struct InetAddressMaskPrivate
 type InetAddressMaskPrivate struct {
 	P unsafe.Pointer
@@ -22317,6 +22371,7 @@ func (v InetSocketAddress) GetScopeId() (result uint32) {
 }
 
 // ignore GType struct InetSocketAddressClass
+
 // Struct InetSocketAddressPrivate
 type InetSocketAddressPrivate struct {
 	P unsafe.Pointer
@@ -22406,6 +22461,7 @@ func (v *InitableIfc) Init(cancellable ICancellable) (result bool, err error) {
 }
 
 // ignore GType struct InitableIface
+
 // Struct InputMessage
 type InputMessage struct {
 	P unsafe.Pointer
@@ -22962,6 +23018,7 @@ func (v InputStream) SkipFinish(result IAsyncResult) (result1 int64, err error) 
 }
 
 // ignore GType struct InputStreamClass
+
 // Struct InputStreamPrivate
 type InputStreamPrivate struct {
 	P unsafe.Pointer
@@ -23078,6 +23135,7 @@ func (v *ListModelIfc) ItemsChanged(position uint32, removed uint32, added uint3
 }
 
 // ignore GType struct ListModelInterface
+
 // Object ListStore
 type ListStore struct {
 	ListModelIfc
@@ -23263,6 +23321,7 @@ func (v ListStore) Splice(position uint32, n_removals uint32, additions unsafe.P
 }
 
 // ignore GType struct ListStoreClass
+
 // Interface LoadableIcon
 type LoadableIcon struct {
 	LoadableIconIfc
@@ -23372,6 +23431,7 @@ func (v *LoadableIconIfc) LoadFinish(res IAsyncResult) (result InputStream, type
 }
 
 // ignore GType struct LoadableIconIface
+
 // Object MemoryInputStream
 type MemoryInputStream struct {
 	PollableInputStreamIfc
@@ -23492,6 +23552,7 @@ func (v MemoryInputStream) AddData(data gi.Uint8Array, len1 int64, destroy int /
 }
 
 // ignore GType struct MemoryInputStreamClass
+
 // Struct MemoryInputStreamPrivate
 type MemoryInputStreamPrivate struct {
 	P unsafe.Pointer
@@ -23628,6 +23689,7 @@ func (v MemoryOutputStream) StealData() (result unsafe.Pointer) {
 }
 
 // ignore GType struct MemoryOutputStreamClass
+
 // Struct MemoryOutputStreamPrivate
 type MemoryOutputStreamPrivate struct {
 	P unsafe.Pointer
@@ -24099,6 +24161,7 @@ func (v MenuAttributeIter) Next() (result bool) {
 }
 
 // ignore GType struct MenuAttributeIterClass
+
 // Struct MenuAttributeIterPrivate
 type MenuAttributeIterPrivate struct {
 	P unsafe.Pointer
@@ -24545,6 +24608,7 @@ func (v MenuLinkIter) Next() (result bool) {
 }
 
 // ignore GType struct MenuLinkIterClass
+
 // Struct MenuLinkIterPrivate
 type MenuLinkIterPrivate struct {
 	P unsafe.Pointer
@@ -24726,6 +24790,7 @@ func (v MenuModel) IterateItemLinks(item_index int32) (result MenuLinkIter) {
 }
 
 // ignore GType struct MenuModelClass
+
 // Struct MenuModelPrivate
 type MenuModelPrivate struct {
 	P unsafe.Pointer
@@ -25390,6 +25455,7 @@ func (v *MountIfc) Unshadow() {
 }
 
 // ignore GType struct MountIface
+
 // Flags MountMountFlags
 type MountMountFlags int
 
@@ -25762,6 +25828,7 @@ func (v MountOperation) SetUsername(username string) {
 }
 
 // ignore GType struct MountOperationClass
+
 // Struct MountOperationPrivate
 type MountOperationPrivate struct {
 	P unsafe.Pointer
@@ -25825,6 +25892,7 @@ func NativeVolumeMonitorGetType() gi.GType {
 }
 
 // ignore GType struct NativeVolumeMonitorClass
+
 // Object NetworkAddress
 type NetworkAddress struct {
 	SocketConnectableIfc
@@ -25996,6 +26064,7 @@ func (v NetworkAddress) GetScheme() (result string) {
 }
 
 // ignore GType struct NetworkAddressClass
+
 // Struct NetworkAddressPrivate
 type NetworkAddressPrivate struct {
 	P unsafe.Pointer
@@ -26184,6 +26253,7 @@ func (v *NetworkMonitorIfc) GetNetworkMetered() (result bool) {
 }
 
 // ignore GType struct NetworkMonitorInterface
+
 // Object NetworkService
 type NetworkService struct {
 	SocketConnectableIfc
@@ -26324,6 +26394,7 @@ func (v NetworkService) SetScheme(scheme string) {
 }
 
 // ignore GType struct NetworkServiceClass
+
 // Struct NetworkServicePrivate
 type NetworkServicePrivate struct {
 	P unsafe.Pointer
@@ -27235,6 +27306,7 @@ func (v OutputStream) WriteFinish(result IAsyncResult) (result1 int64, err error
 }
 
 // ignore GType struct OutputStreamClass
+
 // Struct OutputStreamPrivate
 type OutputStreamPrivate struct {
 	P unsafe.Pointer
@@ -27537,6 +27609,7 @@ func (v Permission) ReleaseFinish(result IAsyncResult) (result1 bool, err error)
 }
 
 // ignore GType struct PermissionClass
+
 // Struct PermissionPrivate
 type PermissionPrivate struct {
 	P unsafe.Pointer
@@ -27656,6 +27729,7 @@ func (v *PollableInputStreamIfc) ReadNonblocking(buffer gi.Uint8Array, count uin
 }
 
 // ignore GType struct PollableInputStreamInterface
+
 // Interface PollableOutputStream
 type PollableOutputStream struct {
 	PollableOutputStreamIfc
@@ -27765,6 +27839,7 @@ func (v *PollableOutputStreamIfc) WriteNonblocking(buffer gi.Uint8Array, count u
 }
 
 // ignore GType struct PollableOutputStreamInterface
+
 type PollableSourceFuncStruct struct {
 	F_pollable_stream Object
 }
@@ -28189,6 +28264,7 @@ func (v ProxyAddress) GetUsername() (result string) {
 }
 
 // ignore GType struct ProxyAddressClass
+
 // Object ProxyAddressEnumerator
 type ProxyAddressEnumerator struct {
 	SocketAddressEnumerator
@@ -28205,6 +28281,7 @@ func ProxyAddressEnumeratorGetType() gi.GType {
 }
 
 // ignore GType struct ProxyAddressEnumeratorClass
+
 // Struct ProxyAddressEnumeratorPrivate
 type ProxyAddressEnumeratorPrivate struct {
 	P unsafe.Pointer
@@ -28226,6 +28303,7 @@ func ProxyAddressPrivateGetType() gi.GType {
 }
 
 // ignore GType struct ProxyInterface
+
 // Interface ProxyResolver
 type ProxyResolver struct {
 	ProxyResolverIfc
@@ -28351,6 +28429,7 @@ func (v *ProxyResolverIfc) LookupFinish(result IAsyncResult) (result1 gi.CStrArr
 }
 
 // ignore GType struct ProxyResolverInterface
+
 type ReallocFuncStruct struct {
 	F_data unsafe.Pointer
 	F_size uint64
@@ -28428,6 +28507,7 @@ func (v *RemoteActionGroupIfc) ChangeActionStateFull(action_name string, value V
 }
 
 // ignore GType struct RemoteActionGroupInterface
+
 // Object Resolver
 type Resolver struct {
 	Object
@@ -28847,6 +28927,7 @@ func (v Resolver) SetDefault() {
 }
 
 // ignore GType struct ResolverClass
+
 // Enum ResolverError
 type ResolverErrorEnum int
 
@@ -29291,6 +29372,7 @@ func (v *SeekableIfc) Truncate(offset int64, cancellable ICancellable) (result b
 }
 
 // ignore GType struct SeekableIface
+
 // Object Settings
 type Settings struct {
 	Object
@@ -30564,6 +30646,7 @@ func (v SettingsBackend) WritableChanged(key string) {
 }
 
 // ignore GType struct SettingsBackendClass
+
 // Struct SettingsBackendPrivate
 type SettingsBackendPrivate struct {
 	P unsafe.Pointer
@@ -30630,6 +30713,7 @@ func myGioSettingsBindSetMapping(value *C.GValue, expected_type *C.GVariantType,
 }
 
 // ignore GType struct SettingsClass
+
 type SettingsGetMappingStruct struct {
 	F_value  Variant
 	F_result unsafe.Pointer /*TODO_CB tag: void, isPtr: true*/
@@ -31358,6 +31442,7 @@ func (v SimpleActionGroup) Remove(action_name string) {
 }
 
 // ignore GType struct SimpleActionGroupClass
+
 // Struct SimpleActionGroupPrivate
 type SimpleActionGroupPrivate struct {
 	P unsafe.Pointer
@@ -31678,6 +31763,7 @@ func (v SimpleAsyncResult) SetOpResGssize(op_res int64) {
 }
 
 // ignore GType struct SimpleAsyncResultClass
+
 type SimpleAsyncThreadFuncStruct struct {
 	F_res         SimpleAsyncResult
 	F_object      Object
@@ -31878,6 +31964,7 @@ func (v SimpleProxyResolver) SetUriProxy(uri_scheme string, proxy string) {
 }
 
 // ignore GType struct SimpleProxyResolverClass
+
 // Struct SimpleProxyResolverPrivate
 type SimpleProxyResolverPrivate struct {
 	P unsafe.Pointer
@@ -33408,6 +33495,7 @@ func (v SocketAddress) ToNative(dest unsafe.Pointer, destlen uint64) (result boo
 }
 
 // ignore GType struct SocketAddressClass
+
 // Object SocketAddressEnumerator
 type SocketAddressEnumerator struct {
 	Object
@@ -33504,7 +33592,9 @@ func (v SocketAddressEnumerator) NextFinish(result IAsyncResult) (result1 Socket
 }
 
 // ignore GType struct SocketAddressEnumeratorClass
+
 // ignore GType struct SocketClass
+
 // Object SocketClient
 type SocketClient struct {
 	Object
@@ -34255,6 +34345,7 @@ func (v SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 }
 
 // ignore GType struct SocketClientClass
+
 // Enum SocketClientEvent
 type SocketClientEventEnum int
 
@@ -34354,6 +34445,7 @@ func (v *SocketConnectableIfc) ToString() (result string) {
 }
 
 // ignore GType struct SocketConnectableIface
+
 // Object SocketConnection
 type SocketConnection struct {
 	IOStream
@@ -34590,6 +34682,7 @@ func (v SocketConnection) IsConnected() (result bool) {
 }
 
 // ignore GType struct SocketConnectionClass
+
 // Struct SocketConnectionPrivate
 type SocketConnectionPrivate struct {
 	P unsafe.Pointer
@@ -34715,6 +34808,7 @@ func (v SocketControlMessage) Serialize(data unsafe.Pointer) {
 }
 
 // ignore GType struct SocketControlMessageClass
+
 // Struct SocketControlMessagePrivate
 type SocketControlMessagePrivate struct {
 	P unsafe.Pointer
@@ -35112,6 +35206,7 @@ func (v SocketListener) SetBacklog(listen_backlog int32) {
 }
 
 // ignore GType struct SocketListenerClass
+
 // Enum SocketListenerEvent
 type SocketListenerEventEnum int
 
@@ -35254,6 +35349,7 @@ func (v SocketService) Stop() {
 }
 
 // ignore GType struct SocketServiceClass
+
 // Struct SocketServicePrivate
 type SocketServicePrivate struct {
 	P unsafe.Pointer
@@ -36963,6 +37059,7 @@ func (v Task) SetTaskData(task_data unsafe.Pointer, task_data_destroy int /*TODO
 }
 
 // ignore GType struct TaskClass
+
 type TaskThreadFuncStruct struct {
 	F_task          Task
 	F_source_object Object
@@ -37029,6 +37126,7 @@ func (v TcpConnection) SetGracefulDisconnect(graceful_disconnect bool) {
 }
 
 // ignore GType struct TcpConnectionClass
+
 // Struct TcpConnectionPrivate
 type TcpConnectionPrivate struct {
 	P unsafe.Pointer
@@ -37104,6 +37202,7 @@ func (v TcpWrapperConnection) GetBaseIoStream() (result IOStream) {
 }
 
 // ignore GType struct TcpWrapperConnectionClass
+
 // Struct TcpWrapperConnectionPrivate
 type TcpWrapperConnectionPrivate struct {
 	P unsafe.Pointer
@@ -37394,6 +37493,7 @@ func (v ThemedIcon) PrependName(iconname string) {
 }
 
 // ignore GType struct ThemedIconClass
+
 // Object ThreadedSocketService
 type ThreadedSocketService struct {
 	SocketService
@@ -37430,6 +37530,7 @@ func NewThreadedSocketService(max_threads int32) (result ThreadedSocketService) 
 }
 
 // ignore GType struct ThreadedSocketServiceClass
+
 // Struct ThreadedSocketServicePrivate
 type ThreadedSocketServicePrivate struct {
 	P unsafe.Pointer
@@ -37631,6 +37732,7 @@ func (v *TlsBackendIfc) SupportsTls() (result bool) {
 }
 
 // ignore GType struct TlsBackendInterface
+
 // Object TlsCertificate
 type TlsCertificate struct {
 	Object
@@ -37826,6 +37928,7 @@ func (v TlsCertificate) Verify(identity ISocketConnectable, trusted_ca ITlsCerti
 }
 
 // ignore GType struct TlsCertificateClass
+
 // Flags TlsCertificateFlags
 type TlsCertificateFlags int
 
@@ -38063,6 +38166,7 @@ func (v *TlsClientConnectionIfc) SetValidationFlags(flags TlsCertificateFlags) {
 }
 
 // ignore GType struct TlsClientConnectionInterface
+
 // Object TlsConnection
 type TlsConnection struct {
 	IOStream
@@ -38446,6 +38550,7 @@ func (v TlsConnection) SetUseSystemCertdb(use_system_certdb bool) {
 }
 
 // ignore GType struct TlsConnectionClass
+
 // Struct TlsConnectionPrivate
 type TlsConnectionPrivate struct {
 	P unsafe.Pointer
@@ -38965,6 +39070,7 @@ func (v TlsDatabase) VerifyChainFinish(result IAsyncResult) (result1 TlsCertific
 }
 
 // ignore GType struct TlsDatabaseClass
+
 // Enum TlsDatabaseLookupFlags
 type TlsDatabaseLookupFlagsEnum int
 
@@ -39057,6 +39163,7 @@ func TlsFileDatabaseNew1(anchors string) (result TlsFileDatabase, err error) {
 }
 
 // ignore GType struct TlsFileDatabaseInterface
+
 // Object TlsInteraction
 type TlsInteraction struct {
 	Object
@@ -39338,6 +39445,7 @@ func (v TlsInteraction) RequestCertificateFinish(result IAsyncResult) (result1 T
 }
 
 // ignore GType struct TlsInteractionClass
+
 // Struct TlsInteractionPrivate
 type TlsInteractionPrivate struct {
 	P unsafe.Pointer
@@ -39571,6 +39679,7 @@ func (v TlsPassword) SetWarning(warning string) {
 }
 
 // ignore GType struct TlsPasswordClass
+
 // Flags TlsPasswordFlags
 type TlsPasswordFlags int
 
@@ -39658,6 +39767,7 @@ func TlsServerConnectionNew1(base_io_stream IIOStream, certificate ITlsCertifica
 }
 
 // ignore GType struct TlsServerConnectionInterface
+
 // Object UnixConnection
 type UnixConnection struct {
 	SocketConnection
@@ -39891,6 +40001,7 @@ func (v UnixConnection) SendFd(fd int32, cancellable ICancellable) (result bool,
 }
 
 // ignore GType struct UnixConnectionClass
+
 // Struct UnixConnectionPrivate
 type UnixConnectionPrivate struct {
 	P unsafe.Pointer
@@ -39975,6 +40086,7 @@ func (v UnixCredentialsMessage) GetCredentials() (result Credentials) {
 }
 
 // ignore GType struct UnixCredentialsMessageClass
+
 // Struct UnixCredentialsMessagePrivate
 type UnixCredentialsMessagePrivate struct {
 	P unsafe.Pointer
@@ -40154,6 +40266,7 @@ func (v UnixFDList) StealFds() (result gi.Int32Array) {
 }
 
 // ignore GType struct UnixFDListClass
+
 // Struct UnixFDListPrivate
 type UnixFDListPrivate struct {
 	P unsafe.Pointer
@@ -40286,6 +40399,7 @@ func (v UnixFDMessage) StealFds() (result gi.Int32Array) {
 }
 
 // ignore GType struct UnixFDMessageClass
+
 // Struct UnixFDMessagePrivate
 type UnixFDMessagePrivate struct {
 	P unsafe.Pointer
@@ -40391,6 +40505,7 @@ func (v UnixInputStream) SetCloseFd(close_fd bool) {
 }
 
 // ignore GType struct UnixInputStreamClass
+
 // Struct UnixInputStreamPrivate
 type UnixInputStreamPrivate struct {
 	P unsafe.Pointer
@@ -40463,6 +40578,7 @@ func (v UnixMountMonitor) SetRateLimit(limit_msec int32) {
 }
 
 // ignore GType struct UnixMountMonitorClass
+
 // Struct UnixMountPoint
 type UnixMountPoint struct {
 	P unsafe.Pointer
@@ -40818,6 +40934,7 @@ func (v UnixOutputStream) SetCloseFd(close_fd bool) {
 }
 
 // ignore GType struct UnixOutputStreamClass
+
 // Struct UnixOutputStreamPrivate
 type UnixOutputStreamPrivate struct {
 	P unsafe.Pointer
@@ -40993,6 +41110,7 @@ func (v UnixSocketAddress) GetPathLen() (result uint64) {
 }
 
 // ignore GType struct UnixSocketAddressClass
+
 // Struct UnixSocketAddressPrivate
 type UnixSocketAddressPrivate struct {
 	P unsafe.Pointer
@@ -41205,6 +41323,7 @@ func (v Vfs) UnregisterUriScheme(scheme string) (result bool) {
 }
 
 // ignore GType struct VfsClass
+
 type VfsFileLookupFuncStruct struct {
 	F_vfs        Vfs
 	F_identifier string
@@ -41665,6 +41784,7 @@ func (v *VolumeIfc) ShouldAutomount() (result bool) {
 }
 
 // ignore GType struct VolumeIface
+
 // Object VolumeMonitor
 type VolumeMonitor struct {
 	Object
@@ -41807,6 +41927,7 @@ func (v VolumeMonitor) GetVolumes() (result List) {
 }
 
 // ignore GType struct VolumeMonitorClass
+
 // Object ZlibCompressor
 type ZlibCompressor struct {
 	ConverterIfc
@@ -41886,6 +42007,7 @@ func (v ZlibCompressor) SetFileInfo(file_info IFileInfo) {
 }
 
 // ignore GType struct ZlibCompressorClass
+
 // Enum ZlibCompressorFormat
 type ZlibCompressorFormatEnum int
 
@@ -41956,6 +42078,7 @@ func (v ZlibDecompressor) GetFileInfo() (result FileInfo) {
 }
 
 // ignore GType struct ZlibDecompressorClass
+
 // g_action_name_is_valid
 //
 // [ action_name ] trans: nothing

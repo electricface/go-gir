@@ -2513,6 +2513,7 @@ func (v PixbufLoader) WriteBytes(buffer g.Bytes) (result bool, err error) {
 }
 
 // ignore GType struct PixbufLoaderClass
+
 // Enum PixbufRotation
 type PixbufRotationEnum int
 
@@ -2640,6 +2641,7 @@ func (v PixbufSimpleAnim) SetLoop(loop bool) {
 }
 
 // ignore GType struct PixbufSimpleAnimClass
+
 // Object PixbufSimpleAnimIter
 type PixbufSimpleAnimIter struct {
 	PixbufAnimationIter

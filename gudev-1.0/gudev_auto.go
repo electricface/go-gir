@@ -179,6 +179,7 @@ func (v Client) QueryBySysfsPath(sysfs_path string) (result Device) {
 }
 
 // ignore GType struct ClientClass
+
 // Struct ClientPrivate
 type ClientPrivate struct {
 	P unsafe.Pointer
@@ -885,6 +886,7 @@ func (v Device) HasSysfsAttr(key string) (result bool) {
 }
 
 // ignore GType struct DeviceClass
+
 // Struct DevicePrivate
 type DevicePrivate struct {
 	P unsafe.Pointer
@@ -1184,6 +1186,7 @@ func (v Enumerator) Execute() (result g.List) {
 }
 
 // ignore GType struct EnumeratorClass
+
 // Struct EnumeratorPrivate
 type EnumeratorPrivate struct {
 	P unsafe.Pointer

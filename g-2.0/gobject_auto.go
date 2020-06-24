@@ -1342,6 +1342,7 @@ func InitiallyUnownedGetType() gi.GType {
 }
 
 // ignore GType struct InitiallyUnownedClass
+
 type InstanceInitFuncStruct struct {
 	F_instance TypeInstance
 	F_g_class  TypeClass
@@ -1962,6 +1963,7 @@ func (v Object) WatchClosure(closure Closure) {
 }
 
 // ignore GType struct ObjectClass
+
 // Struct ObjectConstructParam
 type ObjectConstructParam struct {
 	P unsafe.Pointer
@@ -2282,6 +2284,7 @@ func ParamSpecCharGetType() gi.GType {
 }
 
 // ignore GType struct ParamSpecClass
+
 // Object ParamSpecDouble
 type ParamSpecDouble struct {
 	ParamSpec
@@ -3464,6 +3467,7 @@ func (v TypeModule) Use() (result bool) {
 }
 
 // ignore GType struct TypeModuleClass
+
 // Interface TypePlugin
 type TypePlugin struct {
 	TypePluginIfc
@@ -3549,6 +3553,7 @@ func (v *TypePluginIfc) Use() {
 }
 
 // ignore Class struct TypePluginClass, type of TypePlugin is interface
+
 type TypePluginCompleteInterfaceInfoStruct struct {
 	F_plugin         TypePlugin
 	F_instance_type  unsafe.Pointer /*TODO_CB tag: GType, isPtr: false*/
