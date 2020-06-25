@@ -551,3 +551,23 @@ func (v Value) IsValid() bool {
 	ret := C._g_is_value(v.p())
 	return util.Int2Bool(int(ret))
 }
+
+func (v Object) p() *C.GObject {
+	return (*C.GObject)(v.P)
+}
+
+func (v Object) GetClass() ObjectClass {
+	ret := C._g_object_get_class(v.p())
+	return ObjectClass{P: unsafe.Pointer(ret)}
+}
+
+func (v ObjectClass) p() *C.GObjectClass {
+	return (*C.GObjectClass)(v.P)
+}
+
+func (v ObjectClass) ListProperties1 () gi.PointerArray {
+	var nProps C.guint
+	ret := C.g_object_class_list_properties(v.p(), &nProps)
+	arr := gi.PointerArray{P: unsafe.Pointer(ret), Len: int(nProps)}
+	return arr
+}
