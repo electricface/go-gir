@@ -1,43 +1,10 @@
 package g
 
-/*
-#cgo pkg-config: glib-2.0
-#include <glib.h>
-#include <glib-object.h>
-#include <stdlib.h>
-
-static gboolean
-_g_is_value(GValue *val)
-{
-	return (G_IS_VALUE(val));
-}
-
-static GType
-_g_value_type(GValue *val)
-{
-	return (G_VALUE_TYPE(val));
-}
-
-static GType
-_g_value_fundamental(GType type)
-{
-	return (G_TYPE_FUNDAMENTAL(type));
-}
-
-static GObjectClass *
-_g_object_get_class (GObject *object)
-{
-	return (G_OBJECT_GET_CLASS(object));
-}
-*/
-import "C"
-
 import (
 	"errors"
 	"reflect"
 	"unsafe"
 
-	"github.com/electricface/go-gir/util"
 	gi "github.com/electricface/go-gir3/gi-lite"
 )
 
@@ -75,22 +42,6 @@ func (v *Value) Free() {
 	v.P = nil
 }
 
-func (v Value) p() *C.GValue {
-	return (*C.GValue)(v.P)
-}
-
-// Type is a wrapper around the G_VALUE_HOLDS_GTYPE() macro and
-// the g_value_get_gtype() function.  GetType() returns TYPE_INVALID if v
-// does not hold a Type, or otherwise returns the Type of v.
-func (v Value) Type() (actual gi.GType, fundamental gi.GType, err error) {
-	if !util.Int2Bool(int(C._g_is_value(v.p()))) {
-		return actual, fundamental, errors.New("invalid GValue")
-	}
-	cActual := C._g_value_type(v.p())
-	cFundamental := C._g_value_fundamental(cActual)
-	return gi.GType(cActual), gi.GType(cFundamental), nil
-}
-
 //var gvalueGetters = struct {
 //	m map[gi.GType]GValueGetter
 //	sync.Mutex
@@ -106,19 +57,17 @@ func (v Value) Type() (actual gi.GType, fundamental gi.GType, err error) {
 //	gvalueGetters.Unlock()
 //}
 
+
 func (v Value) Get() (interface{}, error) {
-	actualType, fundamentalType, err := v.Type()
-	if err != nil {
-		return nil, err
-	}
+	actualType := v.Type()
 	//fmt.Println("actual Type:", actualType)
 	//fmt.Println("fund Type:", fundamentalType)
 
 	val, err := v.get(actualType)
 	if err == nil {
-		// good
 		return val, nil
 	} else if err == errTypeUnknown {
+		fundamentalType := TypeFundamental(actualType)
 		// fallback to fundamental type
 		return v.get(fundamentalType)
 	}
@@ -355,8 +304,7 @@ func getValueType(iVal interface{}) (gType gi.GType, err error) {
 }
 
 func (v Value) Set(iVal interface{}) error {
-	cType := C._g_value_type(v.p())
-	gType := gi.GType(cType)
+	gType := v.Type()
 	switch gType {
 	case TYPE_INVALID:
 		return errors.New("type is invalid")

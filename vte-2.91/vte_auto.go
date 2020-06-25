@@ -13,7 +13,6 @@ return (void*)(myVteTerminalSpawnAsyncCallback);
 }
 */
 import "C"
-import "github.com/electricface/go-gir/atk-1.0"
 import "github.com/electricface/go-gir/g-2.0"
 import "github.com/electricface/go-gir/gdk-3.0"
 import "github.com/electricface/go-gir/gtk-3.0"
@@ -576,8 +575,6 @@ func myVteSelectionFunc(terminal *C.VteTerminal, column C.gint64, row C.gint64, 
 
 // Object Terminal
 type Terminal struct {
-	atk.ImplementorIfaceIfc
-	gtk.BuildableIfc
 	gtk.ScrollableIfc
 	gtk.Widget
 }
@@ -586,10 +583,8 @@ func WrapTerminal(p unsafe.Pointer) (r Terminal) { r.P = p; return }
 
 type ITerminal interface{ P_Terminal() unsafe.Pointer }
 
-func (v Terminal) P_Terminal() unsafe.Pointer         { return v.P }
-func (v Terminal) P_ImplementorIface() unsafe.Pointer { return v.P }
-func (v Terminal) P_Buildable() unsafe.Pointer        { return v.P }
-func (v Terminal) P_Scrollable() unsafe.Pointer       { return v.P }
+func (v Terminal) P_Terminal() unsafe.Pointer   { return v.P }
+func (v Terminal) P_Scrollable() unsafe.Pointer { return v.P }
 func TerminalGetType() gi.GType {
 	ret := _I.GetGType(10, "Terminal")
 	return ret

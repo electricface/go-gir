@@ -5,7 +5,6 @@ package gtksource
 #include <gtksourceview/gtksource.h>
 */
 import "C"
-import "github.com/electricface/go-gir/atk-1.0"
 import "github.com/electricface/go-gir/cairo-1.0"
 import "github.com/electricface/go-gir/g-2.0"
 import "github.com/electricface/go-gir/gdk-3.0"
@@ -1163,8 +1162,6 @@ func CompletionErrorGetType() gi.GType {
 
 // Object CompletionInfo
 type CompletionInfo struct {
-	atk.ImplementorIfaceIfc
-	gtk.BuildableIfc
 	gtk.Window
 }
 
@@ -1172,9 +1169,7 @@ func WrapCompletionInfo(p unsafe.Pointer) (r CompletionInfo) { r.P = p; return }
 
 type ICompletionInfo interface{ P_CompletionInfo() unsafe.Pointer }
 
-func (v CompletionInfo) P_CompletionInfo() unsafe.Pointer   { return v.P }
-func (v CompletionInfo) P_ImplementorIface() unsafe.Pointer { return v.P }
-func (v CompletionInfo) P_Buildable() unsafe.Pointer        { return v.P }
+func (v CompletionInfo) P_CompletionInfo() unsafe.Pointer { return v.P }
 func CompletionInfoGetType() gi.GType {
 	ret := _I.GetGType(10, "CompletionInfo")
 	return ret
@@ -4410,9 +4405,6 @@ func LanguagePrivateGetType() gi.GType {
 
 // Object Map
 type Map struct {
-	atk.ImplementorIfaceIfc
-	gtk.BuildableIfc
-	gtk.ScrollableIfc
 	View
 }
 
@@ -4420,10 +4412,7 @@ func WrapMap(p unsafe.Pointer) (r Map) { r.P = p; return }
 
 type IMap interface{ P_Map() unsafe.Pointer }
 
-func (v Map) P_Map() unsafe.Pointer              { return v.P }
-func (v Map) P_ImplementorIface() unsafe.Pointer { return v.P }
-func (v Map) P_Buildable() unsafe.Pointer        { return v.P }
-func (v Map) P_Scrollable() unsafe.Pointer       { return v.P }
+func (v Map) P_Map() unsafe.Pointer { return v.P }
 func MapGetType() gi.GType {
 	ret := _I.GetGType(44, "Map")
 	return ret
@@ -7147,10 +7136,6 @@ func (v *StyleSchemeChooserIfc) SetStyleScheme(scheme IStyleScheme) {
 
 // Object StyleSchemeChooserButton
 type StyleSchemeChooserButton struct {
-	atk.ImplementorIfaceIfc
-	gtk.ActionableIfc
-	gtk.ActivatableIfc
-	gtk.BuildableIfc
 	StyleSchemeChooserIfc
 	gtk.Button
 }
@@ -7160,10 +7145,6 @@ func WrapStyleSchemeChooserButton(p unsafe.Pointer) (r StyleSchemeChooserButton)
 type IStyleSchemeChooserButton interface{ P_StyleSchemeChooserButton() unsafe.Pointer }
 
 func (v StyleSchemeChooserButton) P_StyleSchemeChooserButton() unsafe.Pointer { return v.P }
-func (v StyleSchemeChooserButton) P_ImplementorIface() unsafe.Pointer         { return v.P }
-func (v StyleSchemeChooserButton) P_Actionable() unsafe.Pointer               { return v.P }
-func (v StyleSchemeChooserButton) P_Activatable() unsafe.Pointer              { return v.P }
-func (v StyleSchemeChooserButton) P_Buildable() unsafe.Pointer                { return v.P }
 func (v StyleSchemeChooserButton) P_StyleSchemeChooser() unsafe.Pointer       { return v.P }
 func StyleSchemeChooserButtonGetType() gi.GType {
 	ret := _I.GetGType(67, "StyleSchemeChooserButton")
@@ -7192,8 +7173,6 @@ func NewStyleSchemeChooserButton() (result StyleSchemeChooserButton) {
 
 // Object StyleSchemeChooserWidget
 type StyleSchemeChooserWidget struct {
-	atk.ImplementorIfaceIfc
-	gtk.BuildableIfc
 	StyleSchemeChooserIfc
 	gtk.Bin
 }
@@ -7203,8 +7182,6 @@ func WrapStyleSchemeChooserWidget(p unsafe.Pointer) (r StyleSchemeChooserWidget)
 type IStyleSchemeChooserWidget interface{ P_StyleSchemeChooserWidget() unsafe.Pointer }
 
 func (v StyleSchemeChooserWidget) P_StyleSchemeChooserWidget() unsafe.Pointer { return v.P }
-func (v StyleSchemeChooserWidget) P_ImplementorIface() unsafe.Pointer         { return v.P }
-func (v StyleSchemeChooserWidget) P_Buildable() unsafe.Pointer                { return v.P }
 func (v StyleSchemeChooserWidget) P_StyleSchemeChooser() unsafe.Pointer       { return v.P }
 func StyleSchemeChooserWidgetGetType() gi.GType {
 	ret := _I.GetGType(68, "StyleSchemeChooserWidget")
@@ -7581,9 +7558,6 @@ func (v *UndoManagerIfc) Undo() {
 
 // Object View
 type View struct {
-	atk.ImplementorIfaceIfc
-	gtk.BuildableIfc
-	gtk.ScrollableIfc
 	gtk.TextView
 }
 
@@ -7591,10 +7565,7 @@ func WrapView(p unsafe.Pointer) (r View) { r.P = p; return }
 
 type IView interface{ P_View() unsafe.Pointer }
 
-func (v View) P_View() unsafe.Pointer             { return v.P }
-func (v View) P_ImplementorIface() unsafe.Pointer { return v.P }
-func (v View) P_Buildable() unsafe.Pointer        { return v.P }
-func (v View) P_Scrollable() unsafe.Pointer       { return v.P }
+func (v View) P_View() unsafe.Pointer { return v.P }
 func ViewGetType() gi.GType {
 	ret := _I.GetGType(74, "View")
 	return ret
