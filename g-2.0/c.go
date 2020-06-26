@@ -565,9 +565,3 @@ func (v ObjectClass) p() *C.GObjectClass {
 	return (*C.GObjectClass)(v.P)
 }
 
-func (v ObjectClass) ListProperties1 () gi.PointerArray {
-	var nProps C.guint
-	ret := C.g_object_class_list_properties(v.p(), &nProps)
-	arr := gi.PointerArray{P: unsafe.Pointer(ret), Len: int(nProps)}
-	return arr
-}

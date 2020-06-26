@@ -1984,7 +1984,7 @@ func ObjectClassGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v ObjectClass) FindProperty(property_name string) (result ParamSpec) {
-	iv, err := _I.Get1(1368, "GObject", "ObjectClass", "find_property", 27, 0, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1368, "GObject", "ObjectClass", "find_property", 27, 0, gi.INFO_TYPE_STRUCT, gi.FindMethodNoCallFind)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2007,7 +2007,7 @@ func (v ObjectClass) FindProperty(property_name string) (result ParamSpec) {
 // [ pspecs ] trans: nothing
 //
 func (v ObjectClass) InstallProperties(n_pspecs uint32, pspecs gi.PointerArray) {
-	iv, err := _I.Get1(1369, "GObject", "ObjectClass", "install_properties", 27, 1, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1369, "GObject", "ObjectClass", "install_properties", 27, 1, gi.INFO_TYPE_STRUCT, gi.FindMethodNoCallFind)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2026,7 +2026,7 @@ func (v ObjectClass) InstallProperties(n_pspecs uint32, pspecs gi.PointerArray) 
 // [ pspec ] trans: nothing
 //
 func (v ObjectClass) InstallProperty(property_id uint32, pspec IParamSpec) {
-	iv, err := _I.Get1(1370, "GObject", "ObjectClass", "install_property", 27, 2, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1370, "GObject", "ObjectClass", "install_property", 27, 2, gi.INFO_TYPE_STRUCT, gi.FindMethodNoCallFind)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2049,7 +2049,7 @@ func (v ObjectClass) InstallProperty(property_id uint32, pspec IParamSpec) {
 // [ result ] trans: container
 //
 func (v ObjectClass) ListProperties() (result gi.PointerArray) {
-	iv, err := _I.Get1(1371, "GObject", "ObjectClass", "list_properties", 27, 3, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1371, "GObject", "ObjectClass", "list_properties", 27, 3, gi.INFO_TYPE_STRUCT, gi.FindMethodNoCallFind)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2074,7 +2074,7 @@ func (v ObjectClass) ListProperties() (result gi.PointerArray) {
 // [ name ] trans: nothing
 //
 func (v ObjectClass) OverrideProperty(property_id uint32, name string) {
-	iv, err := _I.Get1(1372, "GObject", "ObjectClass", "override_property", 27, 4, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1372, "GObject", "ObjectClass", "override_property", 27, 4, gi.INFO_TYPE_STRUCT, gi.FindMethodNoCallFind)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
