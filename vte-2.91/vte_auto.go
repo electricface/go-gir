@@ -128,7 +128,7 @@ func PtyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPtyForeignSync(fd int32, cancellable g.ICancellable) (result Pty, err error) {
-	iv, err := _I.Get(0, "Pty", "new_foreign_sync")
+	iv, err := _I.Get(0, "Pty", "new_foreign_sync", 8, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -157,7 +157,7 @@ func NewPtyForeignSync(fd int32, cancellable g.ICancellable) (result Pty, err er
 // [ result ] trans: everything
 //
 func NewPtySync(flags PtyFlags, cancellable g.ICancellable) (result Pty, err error) {
-	iv, err := _I.Get(1, "Pty", "new_sync")
+	iv, err := _I.Get(1, "Pty", "new_sync", 8, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -180,7 +180,7 @@ func NewPtySync(flags PtyFlags, cancellable g.ICancellable) (result Pty, err err
 // vte_pty_child_setup
 //
 func (v Pty) ChildSetup() {
-	iv, err := _I.Get(2, "Pty", "child_setup")
+	iv, err := _I.Get(2, "Pty", "child_setup", 8, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -195,7 +195,7 @@ func (v Pty) ChildSetup() {
 // vte_pty_close
 //
 func (v Pty) Close() {
-	iv, err := _I.Get(3, "Pty", "close")
+	iv, err := _I.Get(3, "Pty", "close", 8, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -210,7 +210,7 @@ func (v Pty) Close() {
 // [ result ] trans: nothing
 //
 func (v Pty) GetFd() (result int32) {
-	iv, err := _I.Get(4, "Pty", "get_fd")
+	iv, err := _I.Get(4, "Pty", "get_fd", 8, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -232,7 +232,7 @@ func (v Pty) GetFd() (result int32) {
 // [ result ] trans: nothing
 //
 func (v Pty) GetSize() (result bool, rows int32, columns int32, err error) {
-	iv, err := _I.Get(5, "Pty", "get_size")
+	iv, err := _I.Get(5, "Pty", "get_size", 8, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -260,7 +260,7 @@ func (v Pty) GetSize() (result bool, rows int32, columns int32, err error) {
 // [ result ] trans: nothing
 //
 func (v Pty) SetSize(rows int32, columns int32) (result bool, err error) {
-	iv, err := _I.Get(6, "Pty", "set_size")
+	iv, err := _I.Get(6, "Pty", "set_size", 8, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -284,7 +284,7 @@ func (v Pty) SetSize(rows int32, columns int32) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v Pty) SetUtf8(utf8 bool) (result bool, err error) {
-	iv, err := _I.Get(7, "Pty", "set_utf8")
+	iv, err := _I.Get(7, "Pty", "set_utf8", 8, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -325,7 +325,7 @@ func (v Pty) SetUtf8(utf8 bool) (result bool, err error) {
 // [ user_data ] trans: nothing
 //
 func (v Pty) SpawnAsync(working_directory string, argv gi.CStrArray, envv gi.CStrArray, spawn_flags g.SpawnFlags, child_setup int /*TODO_TYPE CALLBACK*/, child_setup_data unsafe.Pointer, child_setup_data_destroy int /*TODO_TYPE CALLBACK*/, timeout int32, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(8, "Pty", "spawn_async")
+	iv, err := _I.Get(8, "Pty", "spawn_async", 8, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -361,7 +361,7 @@ func (v Pty) SpawnAsync(working_directory string, argv gi.CStrArray, envv gi.CSt
 // [ result1 ] trans: nothing
 //
 func (v Pty) SpawnFinish(result g.IAsyncResult) (result1 bool, child_pid int32, err error) {
-	iv, err := _I.Get(9, "Pty", "spawn_finish")
+	iv, err := _I.Get(9, "Pty", "spawn_finish", 8, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -436,7 +436,7 @@ func RegexGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewRegexForMatch(pattern string, pattern_length int64, flags uint32) (result Regex, err error) {
-	iv, err := _I.Get(10, "Regex", "new_for_match")
+	iv, err := _I.Get(10, "Regex", "new_for_match", 13, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		return
 	}
@@ -466,7 +466,7 @@ func NewRegexForMatch(pattern string, pattern_length int64, flags uint32) (resul
 // [ result ] trans: everything
 //
 func NewRegexForSearch(pattern string, pattern_length int64, flags uint32) (result Regex, err error) {
-	iv, err := _I.Get(11, "Regex", "new_for_search")
+	iv, err := _I.Get(11, "Regex", "new_for_search", 13, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		return
 	}
@@ -492,7 +492,7 @@ func NewRegexForSearch(pattern string, pattern_length int64, flags uint32) (resu
 // [ result ] trans: nothing
 //
 func (v Regex) Jit(flags uint32) (result bool, err error) {
-	iv, err := _I.Get(12, "Regex", "jit")
+	iv, err := _I.Get(12, "Regex", "jit", 13, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		return
 	}
@@ -513,7 +513,7 @@ func (v Regex) Jit(flags uint32) (result bool, err error) {
 // [ result ] trans: everything
 //
 func (v Regex) Ref() (result Regex) {
-	iv, err := _I.Get(13, "Regex", "ref")
+	iv, err := _I.Get(13, "Regex", "ref", 13, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -531,7 +531,7 @@ func (v Regex) Ref() (result Regex) {
 // [ result ] trans: everything
 //
 func (v Regex) Unref() (result Regex) {
-	iv, err := _I.Get(14, "Regex", "unref")
+	iv, err := _I.Get(14, "Regex", "unref", 13, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -595,7 +595,7 @@ func TerminalGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewTerminal() (result Terminal) {
-	iv, err := _I.Get(15, "Terminal", "new")
+	iv, err := _I.Get(15, "Terminal", "new", 19, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -611,7 +611,7 @@ func NewTerminal() (result Terminal) {
 // vte_terminal_copy_clipboard
 //
 func (v Terminal) CopyClipboard() {
-	iv, err := _I.Get(16, "Terminal", "copy_clipboard")
+	iv, err := _I.Get(16, "Terminal", "copy_clipboard", 19, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -626,7 +626,7 @@ func (v Terminal) CopyClipboard() {
 // [ format ] trans: nothing
 //
 func (v Terminal) CopyClipboardFormat(format FormatEnum) {
-	iv, err := _I.Get(17, "Terminal", "copy_clipboard_format")
+	iv, err := _I.Get(17, "Terminal", "copy_clipboard_format", 19, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -640,7 +640,7 @@ func (v Terminal) CopyClipboardFormat(format FormatEnum) {
 // vte_terminal_copy_primary
 //
 func (v Terminal) CopyPrimary() {
-	iv, err := _I.Get(18, "Terminal", "copy_primary")
+	iv, err := _I.Get(18, "Terminal", "copy_primary", 19, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -667,7 +667,7 @@ func (v Terminal) CopyPrimary() {
 // [ result ] trans: nothing
 //
 func (v Terminal) EventCheckGregexSimple(event gdk.Event, regexes gi.PointerArray, match_flags g.RegexMatchFlags, matches gi.CStrArray) (result bool) {
-	iv, err := _I.Get(19, "Terminal", "event_check_gregex_simple")
+	iv, err := _I.Get(19, "Terminal", "event_check_gregex_simple", 19, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -704,7 +704,7 @@ func (v Terminal) EventCheckGregexSimple(event gdk.Event, regexes gi.PointerArra
 // [ result ] trans: nothing
 //
 func (v Terminal) EventCheckRegexSimple(event gdk.Event, regexes gi.PointerArray, match_flags uint32, matches gi.CStrArray) (result bool) {
-	iv, err := _I.Get(20, "Terminal", "event_check_regex_simple")
+	iv, err := _I.Get(20, "Terminal", "event_check_regex_simple", 19, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -733,7 +733,7 @@ func (v Terminal) EventCheckRegexSimple(event gdk.Event, regexes gi.PointerArray
 // [ length ] trans: nothing
 //
 func (v Terminal) Feed(data gi.Uint8Array, length int64) {
-	iv, err := _I.Get(21, "Terminal", "feed")
+	iv, err := _I.Get(21, "Terminal", "feed", 19, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -752,7 +752,7 @@ func (v Terminal) Feed(data gi.Uint8Array, length int64) {
 // [ length ] trans: nothing
 //
 func (v Terminal) FeedChild(text gi.Int8Array, length int64) {
-	iv, err := _I.Get(22, "Terminal", "feed_child")
+	iv, err := _I.Get(22, "Terminal", "feed_child", 19, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -771,7 +771,7 @@ func (v Terminal) FeedChild(text gi.Int8Array, length int64) {
 // [ length ] trans: nothing
 //
 func (v Terminal) FeedChildBinary(data gi.Uint8Array, length uint64) {
-	iv, err := _I.Get(23, "Terminal", "feed_child_binary")
+	iv, err := _I.Get(23, "Terminal", "feed_child_binary", 19, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -788,7 +788,7 @@ func (v Terminal) FeedChildBinary(data gi.Uint8Array, length uint64) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetAllowBold() (result bool) {
-	iv, err := _I.Get(24, "Terminal", "get_allow_bold")
+	iv, err := _I.Get(24, "Terminal", "get_allow_bold", 19, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -806,7 +806,7 @@ func (v Terminal) GetAllowBold() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetAllowHyperlink() (result bool) {
-	iv, err := _I.Get(25, "Terminal", "get_allow_hyperlink")
+	iv, err := _I.Get(25, "Terminal", "get_allow_hyperlink", 19, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -824,7 +824,7 @@ func (v Terminal) GetAllowHyperlink() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetAudibleBell() (result bool) {
-	iv, err := _I.Get(26, "Terminal", "get_audible_bell")
+	iv, err := _I.Get(26, "Terminal", "get_audible_bell", 19, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -842,7 +842,7 @@ func (v Terminal) GetAudibleBell() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetBoldIsBright() (result bool) {
-	iv, err := _I.Get(27, "Terminal", "get_bold_is_bright")
+	iv, err := _I.Get(27, "Terminal", "get_bold_is_bright", 19, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -860,7 +860,7 @@ func (v Terminal) GetBoldIsBright() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetCellHeightScale() (result float64) {
-	iv, err := _I.Get(28, "Terminal", "get_cell_height_scale")
+	iv, err := _I.Get(28, "Terminal", "get_cell_height_scale", 19, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -878,7 +878,7 @@ func (v Terminal) GetCellHeightScale() (result float64) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetCellWidthScale() (result float64) {
-	iv, err := _I.Get(29, "Terminal", "get_cell_width_scale")
+	iv, err := _I.Get(29, "Terminal", "get_cell_width_scale", 19, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -896,7 +896,7 @@ func (v Terminal) GetCellWidthScale() (result float64) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetCharHeight() (result int64) {
-	iv, err := _I.Get(30, "Terminal", "get_char_height")
+	iv, err := _I.Get(30, "Terminal", "get_char_height", 19, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -914,7 +914,7 @@ func (v Terminal) GetCharHeight() (result int64) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetCharWidth() (result int64) {
-	iv, err := _I.Get(31, "Terminal", "get_char_width")
+	iv, err := _I.Get(31, "Terminal", "get_char_width", 19, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -932,7 +932,7 @@ func (v Terminal) GetCharWidth() (result int64) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetCjkAmbiguousWidth() (result int32) {
-	iv, err := _I.Get(32, "Terminal", "get_cjk_ambiguous_width")
+	iv, err := _I.Get(32, "Terminal", "get_cjk_ambiguous_width", 19, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -950,7 +950,7 @@ func (v Terminal) GetCjkAmbiguousWidth() (result int32) {
 // [ color ] trans: nothing, dir: out
 //
 func (v Terminal) GetColorBackgroundForDraw(color gdk.RGBA) {
-	iv, err := _I.Get(33, "Terminal", "get_color_background_for_draw")
+	iv, err := _I.Get(33, "Terminal", "get_color_background_for_draw", 19, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -966,7 +966,7 @@ func (v Terminal) GetColorBackgroundForDraw(color gdk.RGBA) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetColumnCount() (result int64) {
-	iv, err := _I.Get(34, "Terminal", "get_column_count")
+	iv, err := _I.Get(34, "Terminal", "get_column_count", 19, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -984,7 +984,7 @@ func (v Terminal) GetColumnCount() (result int64) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetCurrentDirectoryUri() (result string) {
-	iv, err := _I.Get(35, "Terminal", "get_current_directory_uri")
+	iv, err := _I.Get(35, "Terminal", "get_current_directory_uri", 19, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1002,7 +1002,7 @@ func (v Terminal) GetCurrentDirectoryUri() (result string) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetCurrentFileUri() (result string) {
-	iv, err := _I.Get(36, "Terminal", "get_current_file_uri")
+	iv, err := _I.Get(36, "Terminal", "get_current_file_uri", 19, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1020,7 +1020,7 @@ func (v Terminal) GetCurrentFileUri() (result string) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetCursorBlinkMode() (result CursorBlinkModeEnum) {
-	iv, err := _I.Get(37, "Terminal", "get_cursor_blink_mode")
+	iv, err := _I.Get(37, "Terminal", "get_cursor_blink_mode", 19, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1040,7 +1040,7 @@ func (v Terminal) GetCursorBlinkMode() (result CursorBlinkModeEnum) {
 // [ row ] trans: everything, dir: out
 //
 func (v Terminal) GetCursorPosition() (column int64, row int64) {
-	iv, err := _I.Get(38, "Terminal", "get_cursor_position")
+	iv, err := _I.Get(38, "Terminal", "get_cursor_position", 19, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1061,7 +1061,7 @@ func (v Terminal) GetCursorPosition() (column int64, row int64) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetCursorShape() (result CursorShapeEnum) {
-	iv, err := _I.Get(39, "Terminal", "get_cursor_shape")
+	iv, err := _I.Get(39, "Terminal", "get_cursor_shape", 19, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1081,7 +1081,7 @@ func (v Terminal) GetCursorShape() (result CursorShapeEnum) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetEncoding() (result string) {
-	iv, err := _I.Get(40, "Terminal", "get_encoding")
+	iv, err := _I.Get(40, "Terminal", "get_encoding", 19, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1099,7 +1099,7 @@ func (v Terminal) GetEncoding() (result string) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetFont() (result pango.FontDescription) {
-	iv, err := _I.Get(41, "Terminal", "get_font")
+	iv, err := _I.Get(41, "Terminal", "get_font", 19, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1117,7 +1117,7 @@ func (v Terminal) GetFont() (result pango.FontDescription) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetFontScale() (result float64) {
-	iv, err := _I.Get(42, "Terminal", "get_font_scale")
+	iv, err := _I.Get(42, "Terminal", "get_font_scale", 19, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1141,7 +1141,7 @@ func (v Terminal) GetFontScale() (result float64) {
 // [ min_columns ] trans: nothing
 //
 func (v Terminal) GetGeometryHints(hints gdk.Geometry, min_rows int32, min_columns int32) {
-	iv, err := _I.Get(43, "Terminal", "get_geometry_hints")
+	iv, err := _I.Get(43, "Terminal", "get_geometry_hints", 19, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1159,7 +1159,7 @@ func (v Terminal) GetGeometryHints(hints gdk.Geometry, min_rows int32, min_colum
 // [ result ] trans: nothing
 //
 func (v Terminal) GetHasSelection() (result bool) {
-	iv, err := _I.Get(44, "Terminal", "get_has_selection")
+	iv, err := _I.Get(44, "Terminal", "get_has_selection", 19, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1179,7 +1179,7 @@ func (v Terminal) GetHasSelection() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetIconTitle() (result string) {
-	iv, err := _I.Get(45, "Terminal", "get_icon_title")
+	iv, err := _I.Get(45, "Terminal", "get_icon_title", 19, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1197,7 +1197,7 @@ func (v Terminal) GetIconTitle() (result string) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetInputEnabled() (result bool) {
-	iv, err := _I.Get(46, "Terminal", "get_input_enabled")
+	iv, err := _I.Get(46, "Terminal", "get_input_enabled", 19, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1215,7 +1215,7 @@ func (v Terminal) GetInputEnabled() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetMouseAutohide() (result bool) {
-	iv, err := _I.Get(47, "Terminal", "get_mouse_autohide")
+	iv, err := _I.Get(47, "Terminal", "get_mouse_autohide", 19, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1233,7 +1233,7 @@ func (v Terminal) GetMouseAutohide() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetPty() (result Pty) {
-	iv, err := _I.Get(48, "Terminal", "get_pty")
+	iv, err := _I.Get(48, "Terminal", "get_pty", 19, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1251,7 +1251,7 @@ func (v Terminal) GetPty() (result Pty) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetRewrapOnResize() (result bool) {
-	iv, err := _I.Get(49, "Terminal", "get_rewrap_on_resize")
+	iv, err := _I.Get(49, "Terminal", "get_rewrap_on_resize", 19, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1269,7 +1269,7 @@ func (v Terminal) GetRewrapOnResize() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetRowCount() (result int64) {
-	iv, err := _I.Get(50, "Terminal", "get_row_count")
+	iv, err := _I.Get(50, "Terminal", "get_row_count", 19, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1287,7 +1287,7 @@ func (v Terminal) GetRowCount() (result int64) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetScrollOnKeystroke() (result bool) {
-	iv, err := _I.Get(51, "Terminal", "get_scroll_on_keystroke")
+	iv, err := _I.Get(51, "Terminal", "get_scroll_on_keystroke", 19, 36, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1305,7 +1305,7 @@ func (v Terminal) GetScrollOnKeystroke() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetScrollOnOutput() (result bool) {
-	iv, err := _I.Get(52, "Terminal", "get_scroll_on_output")
+	iv, err := _I.Get(52, "Terminal", "get_scroll_on_output", 19, 37, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1323,7 +1323,7 @@ func (v Terminal) GetScrollOnOutput() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetScrollbackLines() (result int64) {
-	iv, err := _I.Get(53, "Terminal", "get_scrollback_lines")
+	iv, err := _I.Get(53, "Terminal", "get_scrollback_lines", 19, 38, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1347,7 +1347,7 @@ func (v Terminal) GetScrollbackLines() (result int64) {
 // [ result ] trans: everything
 //
 func (v Terminal) GetText(is_selected int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, attributes unsafe.Pointer /*TODO:TYPE*/) (result string) {
-	iv, err := _I.Get(54, "Terminal", "get_text")
+	iv, err := _I.Get(54, "Terminal", "get_text", 19, 39, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1368,7 +1368,7 @@ func (v Terminal) GetText(is_selected int /*TODO_TYPE CALLBACK*/, user_data unsa
 // [ result ] trans: nothing
 //
 func (v Terminal) GetTextBlinkMode() (result TextBlinkModeEnum) {
-	iv, err := _I.Get(55, "Terminal", "get_text_blink_mode")
+	iv, err := _I.Get(55, "Terminal", "get_text_blink_mode", 19, 40, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1392,7 +1392,7 @@ func (v Terminal) GetTextBlinkMode() (result TextBlinkModeEnum) {
 // [ result ] trans: everything
 //
 func (v Terminal) GetTextIncludeTrailingSpaces(is_selected int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, attributes unsafe.Pointer /*TODO:TYPE*/) (result string) {
-	iv, err := _I.Get(56, "Terminal", "get_text_include_trailing_spaces")
+	iv, err := _I.Get(56, "Terminal", "get_text_include_trailing_spaces", 19, 41, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1427,7 +1427,7 @@ func (v Terminal) GetTextIncludeTrailingSpaces(is_selected int /*TODO_TYPE CALLB
 // [ result ] trans: everything
 //
 func (v Terminal) GetTextRange(start_row int64, start_col int64, end_row int64, end_col int64, is_selected int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, attributes unsafe.Pointer /*TODO:TYPE*/) (result string) {
-	iv, err := _I.Get(57, "Terminal", "get_text_range")
+	iv, err := _I.Get(57, "Terminal", "get_text_range", 19, 42, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1452,7 +1452,7 @@ func (v Terminal) GetTextRange(start_row int64, start_col int64, end_row int64, 
 // [ result ] trans: nothing
 //
 func (v Terminal) GetWindowTitle() (result string) {
-	iv, err := _I.Get(58, "Terminal", "get_window_title")
+	iv, err := _I.Get(58, "Terminal", "get_window_title", 19, 43, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1470,7 +1470,7 @@ func (v Terminal) GetWindowTitle() (result string) {
 // [ result ] trans: nothing
 //
 func (v Terminal) GetWordCharExceptions() (result string) {
-	iv, err := _I.Get(59, "Terminal", "get_word_char_exceptions")
+	iv, err := _I.Get(59, "Terminal", "get_word_char_exceptions", 19, 44, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1490,7 +1490,7 @@ func (v Terminal) GetWordCharExceptions() (result string) {
 // [ result ] trans: everything
 //
 func (v Terminal) HyperlinkCheckEvent(event gdk.Event) (result string) {
-	iv, err := _I.Get(60, "Terminal", "hyperlink_check_event")
+	iv, err := _I.Get(60, "Terminal", "hyperlink_check_event", 19, 45, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1515,7 +1515,7 @@ func (v Terminal) HyperlinkCheckEvent(event gdk.Event) (result string) {
 // [ result ] trans: nothing
 //
 func (v Terminal) MatchAddGregex(gregex g.Regex, gflags g.RegexMatchFlags) (result int32) {
-	iv, err := _I.Get(61, "Terminal", "match_add_gregex")
+	iv, err := _I.Get(61, "Terminal", "match_add_gregex", 19, 46, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1539,7 +1539,7 @@ func (v Terminal) MatchAddGregex(gregex g.Regex, gflags g.RegexMatchFlags) (resu
 // [ result ] trans: nothing
 //
 func (v Terminal) MatchAddRegex(regex Regex, flags uint32) (result int32) {
-	iv, err := _I.Get(62, "Terminal", "match_add_regex")
+	iv, err := _I.Get(62, "Terminal", "match_add_regex", 19, 47, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1567,7 +1567,7 @@ func (v Terminal) MatchAddRegex(regex Regex, flags uint32) (result int32) {
 // [ result ] trans: everything
 //
 func (v Terminal) MatchCheck(column int64, row int64) (result string, tag int32) {
-	iv, err := _I.Get(63, "Terminal", "match_check")
+	iv, err := _I.Get(63, "Terminal", "match_check", 19, 48, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1594,7 +1594,7 @@ func (v Terminal) MatchCheck(column int64, row int64) (result string, tag int32)
 // [ result ] trans: everything
 //
 func (v Terminal) MatchCheckEvent(event gdk.Event) (result string, tag int32) {
-	iv, err := _I.Get(64, "Terminal", "match_check_event")
+	iv, err := _I.Get(64, "Terminal", "match_check_event", 19, 49, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1616,7 +1616,7 @@ func (v Terminal) MatchCheckEvent(event gdk.Event) (result string, tag int32) {
 // [ tag ] trans: nothing
 //
 func (v Terminal) MatchRemove(tag int32) {
-	iv, err := _I.Get(65, "Terminal", "match_remove")
+	iv, err := _I.Get(65, "Terminal", "match_remove", 19, 50, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1630,7 +1630,7 @@ func (v Terminal) MatchRemove(tag int32) {
 // vte_terminal_match_remove_all
 //
 func (v Terminal) MatchRemoveAll() {
-	iv, err := _I.Get(66, "Terminal", "match_remove_all")
+	iv, err := _I.Get(66, "Terminal", "match_remove_all", 19, 51, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1649,7 +1649,7 @@ func (v Terminal) MatchRemoveAll() {
 // [ cursor ] trans: nothing
 //
 func (v Terminal) MatchSetCursor(tag int32, cursor gdk.ICursor) {
-	iv, err := _I.Get(67, "Terminal", "match_set_cursor")
+	iv, err := _I.Get(67, "Terminal", "match_set_cursor", 19, 52, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1672,7 +1672,7 @@ func (v Terminal) MatchSetCursor(tag int32, cursor gdk.ICursor) {
 // [ cursor_name ] trans: nothing
 //
 func (v Terminal) MatchSetCursorName(tag int32, cursor_name string) {
-	iv, err := _I.Get(68, "Terminal", "match_set_cursor_name")
+	iv, err := _I.Get(68, "Terminal", "match_set_cursor_name", 19, 53, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1695,7 +1695,7 @@ func (v Terminal) MatchSetCursorName(tag int32, cursor_name string) {
 // [ cursor_type ] trans: nothing
 //
 func (v Terminal) MatchSetCursorType(tag int32, cursor_type gdk.CursorTypeEnum) {
-	iv, err := _I.Get(69, "Terminal", "match_set_cursor_type")
+	iv, err := _I.Get(69, "Terminal", "match_set_cursor_type", 19, 54, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1710,7 +1710,7 @@ func (v Terminal) MatchSetCursorType(tag int32, cursor_type gdk.CursorTypeEnum) 
 // vte_terminal_paste_clipboard
 //
 func (v Terminal) PasteClipboard() {
-	iv, err := _I.Get(70, "Terminal", "paste_clipboard")
+	iv, err := _I.Get(70, "Terminal", "paste_clipboard", 19, 55, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1723,7 +1723,7 @@ func (v Terminal) PasteClipboard() {
 // vte_terminal_paste_primary
 //
 func (v Terminal) PastePrimary() {
-	iv, err := _I.Get(71, "Terminal", "paste_primary")
+	iv, err := _I.Get(71, "Terminal", "paste_primary", 19, 56, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1742,7 +1742,7 @@ func (v Terminal) PastePrimary() {
 // [ result ] trans: everything
 //
 func (v Terminal) PtyNewSync(flags PtyFlags, cancellable g.ICancellable) (result Pty, err error) {
-	iv, err := _I.Get(72, "Terminal", "pty_new_sync")
+	iv, err := _I.Get(72, "Terminal", "pty_new_sync", 19, 57, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1770,7 +1770,7 @@ func (v Terminal) PtyNewSync(flags PtyFlags, cancellable g.ICancellable) (result
 // [ clear_history ] trans: nothing
 //
 func (v Terminal) Reset(clear_tabstops bool, clear_history bool) {
-	iv, err := _I.Get(73, "Terminal", "reset")
+	iv, err := _I.Get(73, "Terminal", "reset", 19, 58, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1787,7 +1787,7 @@ func (v Terminal) Reset(clear_tabstops bool, clear_history bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) SearchFindNext() (result bool) {
-	iv, err := _I.Get(74, "Terminal", "search_find_next")
+	iv, err := _I.Get(74, "Terminal", "search_find_next", 19, 59, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1805,7 +1805,7 @@ func (v Terminal) SearchFindNext() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) SearchFindPrevious() (result bool) {
-	iv, err := _I.Get(75, "Terminal", "search_find_previous")
+	iv, err := _I.Get(75, "Terminal", "search_find_previous", 19, 60, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1825,7 +1825,7 @@ func (v Terminal) SearchFindPrevious() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Terminal) SearchGetGregex() (result g.Regex) {
-	iv, err := _I.Get(76, "Terminal", "search_get_gregex")
+	iv, err := _I.Get(76, "Terminal", "search_get_gregex", 19, 61, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1843,7 +1843,7 @@ func (v Terminal) SearchGetGregex() (result g.Regex) {
 // [ result ] trans: nothing
 //
 func (v Terminal) SearchGetRegex() (result Regex) {
-	iv, err := _I.Get(77, "Terminal", "search_get_regex")
+	iv, err := _I.Get(77, "Terminal", "search_get_regex", 19, 62, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1861,7 +1861,7 @@ func (v Terminal) SearchGetRegex() (result Regex) {
 // [ result ] trans: nothing
 //
 func (v Terminal) SearchGetWrapAround() (result bool) {
-	iv, err := _I.Get(78, "Terminal", "search_get_wrap_around")
+	iv, err := _I.Get(78, "Terminal", "search_get_wrap_around", 19, 63, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1883,7 +1883,7 @@ func (v Terminal) SearchGetWrapAround() (result bool) {
 // [ gflags ] trans: nothing
 //
 func (v Terminal) SearchSetGregex(gregex g.Regex, gflags g.RegexMatchFlags) {
-	iv, err := _I.Get(79, "Terminal", "search_set_gregex")
+	iv, err := _I.Get(79, "Terminal", "search_set_gregex", 19, 64, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1902,7 +1902,7 @@ func (v Terminal) SearchSetGregex(gregex g.Regex, gflags g.RegexMatchFlags) {
 // [ flags ] trans: nothing
 //
 func (v Terminal) SearchSetRegex(regex Regex, flags uint32) {
-	iv, err := _I.Get(80, "Terminal", "search_set_regex")
+	iv, err := _I.Get(80, "Terminal", "search_set_regex", 19, 65, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1919,7 +1919,7 @@ func (v Terminal) SearchSetRegex(regex Regex, flags uint32) {
 // [ wrap_around ] trans: nothing
 //
 func (v Terminal) SearchSetWrapAround(wrap_around bool) {
-	iv, err := _I.Get(81, "Terminal", "search_set_wrap_around")
+	iv, err := _I.Get(81, "Terminal", "search_set_wrap_around", 19, 66, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1933,7 +1933,7 @@ func (v Terminal) SearchSetWrapAround(wrap_around bool) {
 // vte_terminal_select_all
 //
 func (v Terminal) SelectAll() {
-	iv, err := _I.Get(82, "Terminal", "select_all")
+	iv, err := _I.Get(82, "Terminal", "select_all", 19, 67, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1948,7 +1948,7 @@ func (v Terminal) SelectAll() {
 // [ allow_bold ] trans: nothing
 //
 func (v Terminal) SetAllowBold(allow_bold bool) {
-	iv, err := _I.Get(83, "Terminal", "set_allow_bold")
+	iv, err := _I.Get(83, "Terminal", "set_allow_bold", 19, 68, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1964,7 +1964,7 @@ func (v Terminal) SetAllowBold(allow_bold bool) {
 // [ allow_hyperlink ] trans: nothing
 //
 func (v Terminal) SetAllowHyperlink(allow_hyperlink bool) {
-	iv, err := _I.Get(84, "Terminal", "set_allow_hyperlink")
+	iv, err := _I.Get(84, "Terminal", "set_allow_hyperlink", 19, 69, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1980,7 +1980,7 @@ func (v Terminal) SetAllowHyperlink(allow_hyperlink bool) {
 // [ is_audible ] trans: nothing
 //
 func (v Terminal) SetAudibleBell(is_audible bool) {
-	iv, err := _I.Get(85, "Terminal", "set_audible_bell")
+	iv, err := _I.Get(85, "Terminal", "set_audible_bell", 19, 70, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1996,7 +1996,7 @@ func (v Terminal) SetAudibleBell(is_audible bool) {
 // [ binding ] trans: nothing
 //
 func (v Terminal) SetBackspaceBinding(binding EraseBindingEnum) {
-	iv, err := _I.Get(86, "Terminal", "set_backspace_binding")
+	iv, err := _I.Get(86, "Terminal", "set_backspace_binding", 19, 71, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2012,7 +2012,7 @@ func (v Terminal) SetBackspaceBinding(binding EraseBindingEnum) {
 // [ bold_is_bright ] trans: nothing
 //
 func (v Terminal) SetBoldIsBright(bold_is_bright bool) {
-	iv, err := _I.Get(87, "Terminal", "set_bold_is_bright")
+	iv, err := _I.Get(87, "Terminal", "set_bold_is_bright", 19, 72, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2028,7 +2028,7 @@ func (v Terminal) SetBoldIsBright(bold_is_bright bool) {
 // [ scale ] trans: nothing
 //
 func (v Terminal) SetCellHeightScale(scale float64) {
-	iv, err := _I.Get(88, "Terminal", "set_cell_height_scale")
+	iv, err := _I.Get(88, "Terminal", "set_cell_height_scale", 19, 73, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2044,7 +2044,7 @@ func (v Terminal) SetCellHeightScale(scale float64) {
 // [ scale ] trans: nothing
 //
 func (v Terminal) SetCellWidthScale(scale float64) {
-	iv, err := _I.Get(89, "Terminal", "set_cell_width_scale")
+	iv, err := _I.Get(89, "Terminal", "set_cell_width_scale", 19, 74, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2060,7 +2060,7 @@ func (v Terminal) SetCellWidthScale(scale float64) {
 // [ width ] trans: nothing
 //
 func (v Terminal) SetCjkAmbiguousWidth(width int32) {
-	iv, err := _I.Get(90, "Terminal", "set_cjk_ambiguous_width")
+	iv, err := _I.Get(90, "Terminal", "set_cjk_ambiguous_width", 19, 75, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2076,7 +2076,7 @@ func (v Terminal) SetCjkAmbiguousWidth(width int32) {
 // [ setting ] trans: nothing
 //
 func (v Terminal) SetClearBackground(setting bool) {
-	iv, err := _I.Get(91, "Terminal", "set_clear_background")
+	iv, err := _I.Get(91, "Terminal", "set_clear_background", 19, 76, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2092,7 +2092,7 @@ func (v Terminal) SetClearBackground(setting bool) {
 // [ background ] trans: nothing
 //
 func (v Terminal) SetColorBackground(background gdk.RGBA) {
-	iv, err := _I.Get(92, "Terminal", "set_color_background")
+	iv, err := _I.Get(92, "Terminal", "set_color_background", 19, 77, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2108,7 +2108,7 @@ func (v Terminal) SetColorBackground(background gdk.RGBA) {
 // [ bold ] trans: nothing
 //
 func (v Terminal) SetColorBold(bold gdk.RGBA) {
-	iv, err := _I.Get(93, "Terminal", "set_color_bold")
+	iv, err := _I.Get(93, "Terminal", "set_color_bold", 19, 78, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2124,7 +2124,7 @@ func (v Terminal) SetColorBold(bold gdk.RGBA) {
 // [ cursor_background ] trans: nothing
 //
 func (v Terminal) SetColorCursor(cursor_background gdk.RGBA) {
-	iv, err := _I.Get(94, "Terminal", "set_color_cursor")
+	iv, err := _I.Get(94, "Terminal", "set_color_cursor", 19, 79, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2140,7 +2140,7 @@ func (v Terminal) SetColorCursor(cursor_background gdk.RGBA) {
 // [ cursor_foreground ] trans: nothing
 //
 func (v Terminal) SetColorCursorForeground(cursor_foreground gdk.RGBA) {
-	iv, err := _I.Get(95, "Terminal", "set_color_cursor_foreground")
+	iv, err := _I.Get(95, "Terminal", "set_color_cursor_foreground", 19, 80, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2156,7 +2156,7 @@ func (v Terminal) SetColorCursorForeground(cursor_foreground gdk.RGBA) {
 // [ foreground ] trans: nothing
 //
 func (v Terminal) SetColorForeground(foreground gdk.RGBA) {
-	iv, err := _I.Get(96, "Terminal", "set_color_foreground")
+	iv, err := _I.Get(96, "Terminal", "set_color_foreground", 19, 81, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2172,7 +2172,7 @@ func (v Terminal) SetColorForeground(foreground gdk.RGBA) {
 // [ highlight_background ] trans: nothing
 //
 func (v Terminal) SetColorHighlight(highlight_background gdk.RGBA) {
-	iv, err := _I.Get(97, "Terminal", "set_color_highlight")
+	iv, err := _I.Get(97, "Terminal", "set_color_highlight", 19, 82, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2188,7 +2188,7 @@ func (v Terminal) SetColorHighlight(highlight_background gdk.RGBA) {
 // [ highlight_foreground ] trans: nothing
 //
 func (v Terminal) SetColorHighlightForeground(highlight_foreground gdk.RGBA) {
-	iv, err := _I.Get(98, "Terminal", "set_color_highlight_foreground")
+	iv, err := _I.Get(98, "Terminal", "set_color_highlight_foreground", 19, 83, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2210,7 +2210,7 @@ func (v Terminal) SetColorHighlightForeground(highlight_foreground gdk.RGBA) {
 // [ palette_size ] trans: nothing
 //
 func (v Terminal) SetColors(foreground gdk.RGBA, background gdk.RGBA, palette unsafe.Pointer, palette_size uint64) {
-	iv, err := _I.Get(99, "Terminal", "set_colors")
+	iv, err := _I.Get(99, "Terminal", "set_colors", 19, 84, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2229,7 +2229,7 @@ func (v Terminal) SetColors(foreground gdk.RGBA, background gdk.RGBA, palette un
 // [ mode ] trans: nothing
 //
 func (v Terminal) SetCursorBlinkMode(mode CursorBlinkModeEnum) {
-	iv, err := _I.Get(100, "Terminal", "set_cursor_blink_mode")
+	iv, err := _I.Get(100, "Terminal", "set_cursor_blink_mode", 19, 85, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2245,7 +2245,7 @@ func (v Terminal) SetCursorBlinkMode(mode CursorBlinkModeEnum) {
 // [ shape ] trans: nothing
 //
 func (v Terminal) SetCursorShape(shape CursorShapeEnum) {
-	iv, err := _I.Get(101, "Terminal", "set_cursor_shape")
+	iv, err := _I.Get(101, "Terminal", "set_cursor_shape", 19, 86, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2259,7 +2259,7 @@ func (v Terminal) SetCursorShape(shape CursorShapeEnum) {
 // vte_terminal_set_default_colors
 //
 func (v Terminal) SetDefaultColors() {
-	iv, err := _I.Get(102, "Terminal", "set_default_colors")
+	iv, err := _I.Get(102, "Terminal", "set_default_colors", 19, 87, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2274,7 +2274,7 @@ func (v Terminal) SetDefaultColors() {
 // [ binding ] trans: nothing
 //
 func (v Terminal) SetDeleteBinding(binding EraseBindingEnum) {
-	iv, err := _I.Get(103, "Terminal", "set_delete_binding")
+	iv, err := _I.Get(103, "Terminal", "set_delete_binding", 19, 88, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2294,7 +2294,7 @@ func (v Terminal) SetDeleteBinding(binding EraseBindingEnum) {
 // [ result ] trans: nothing
 //
 func (v Terminal) SetEncoding(codeset string) (result bool, err error) {
-	iv, err := _I.Get(104, "Terminal", "set_encoding")
+	iv, err := _I.Get(104, "Terminal", "set_encoding", 19, 89, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2317,7 +2317,7 @@ func (v Terminal) SetEncoding(codeset string) (result bool, err error) {
 // [ font_desc ] trans: nothing
 //
 func (v Terminal) SetFont(font_desc pango.FontDescription) {
-	iv, err := _I.Get(105, "Terminal", "set_font")
+	iv, err := _I.Get(105, "Terminal", "set_font", 19, 90, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2333,7 +2333,7 @@ func (v Terminal) SetFont(font_desc pango.FontDescription) {
 // [ scale ] trans: nothing
 //
 func (v Terminal) SetFontScale(scale float64) {
-	iv, err := _I.Get(106, "Terminal", "set_font_scale")
+	iv, err := _I.Get(106, "Terminal", "set_font_scale", 19, 91, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2351,7 +2351,7 @@ func (v Terminal) SetFontScale(scale float64) {
 // [ window ] trans: nothing
 //
 func (v Terminal) SetGeometryHintsForWindow(window gtk.IWindow) {
-	iv, err := _I.Get(107, "Terminal", "set_geometry_hints_for_window")
+	iv, err := _I.Get(107, "Terminal", "set_geometry_hints_for_window", 19, 92, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2371,7 +2371,7 @@ func (v Terminal) SetGeometryHintsForWindow(window gtk.IWindow) {
 // [ enabled ] trans: nothing
 //
 func (v Terminal) SetInputEnabled(enabled bool) {
-	iv, err := _I.Get(108, "Terminal", "set_input_enabled")
+	iv, err := _I.Get(108, "Terminal", "set_input_enabled", 19, 93, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2387,7 +2387,7 @@ func (v Terminal) SetInputEnabled(enabled bool) {
 // [ setting ] trans: nothing
 //
 func (v Terminal) SetMouseAutohide(setting bool) {
-	iv, err := _I.Get(109, "Terminal", "set_mouse_autohide")
+	iv, err := _I.Get(109, "Terminal", "set_mouse_autohide", 19, 94, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2403,7 +2403,7 @@ func (v Terminal) SetMouseAutohide(setting bool) {
 // [ pty ] trans: nothing
 //
 func (v Terminal) SetPty(pty IPty) {
-	iv, err := _I.Get(110, "Terminal", "set_pty")
+	iv, err := _I.Get(110, "Terminal", "set_pty", 19, 95, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2423,7 +2423,7 @@ func (v Terminal) SetPty(pty IPty) {
 // [ rewrap ] trans: nothing
 //
 func (v Terminal) SetRewrapOnResize(rewrap bool) {
-	iv, err := _I.Get(111, "Terminal", "set_rewrap_on_resize")
+	iv, err := _I.Get(111, "Terminal", "set_rewrap_on_resize", 19, 96, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2439,7 +2439,7 @@ func (v Terminal) SetRewrapOnResize(rewrap bool) {
 // [ scroll ] trans: nothing
 //
 func (v Terminal) SetScrollOnKeystroke(scroll bool) {
-	iv, err := _I.Get(112, "Terminal", "set_scroll_on_keystroke")
+	iv, err := _I.Get(112, "Terminal", "set_scroll_on_keystroke", 19, 97, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2455,7 +2455,7 @@ func (v Terminal) SetScrollOnKeystroke(scroll bool) {
 // [ scroll ] trans: nothing
 //
 func (v Terminal) SetScrollOnOutput(scroll bool) {
-	iv, err := _I.Get(113, "Terminal", "set_scroll_on_output")
+	iv, err := _I.Get(113, "Terminal", "set_scroll_on_output", 19, 98, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2471,7 +2471,7 @@ func (v Terminal) SetScrollOnOutput(scroll bool) {
 // [ lines ] trans: nothing
 //
 func (v Terminal) SetScrollbackLines(lines int64) {
-	iv, err := _I.Get(114, "Terminal", "set_scrollback_lines")
+	iv, err := _I.Get(114, "Terminal", "set_scrollback_lines", 19, 99, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2489,7 +2489,7 @@ func (v Terminal) SetScrollbackLines(lines int64) {
 // [ rows ] trans: nothing
 //
 func (v Terminal) SetSize(columns int64, rows int64) {
-	iv, err := _I.Get(115, "Terminal", "set_size")
+	iv, err := _I.Get(115, "Terminal", "set_size", 19, 100, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2506,7 +2506,7 @@ func (v Terminal) SetSize(columns int64, rows int64) {
 // [ text_blink_mode ] trans: nothing
 //
 func (v Terminal) SetTextBlinkMode(text_blink_mode TextBlinkModeEnum) {
-	iv, err := _I.Get(116, "Terminal", "set_text_blink_mode")
+	iv, err := _I.Get(116, "Terminal", "set_text_blink_mode", 19, 101, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2522,7 +2522,7 @@ func (v Terminal) SetTextBlinkMode(text_blink_mode TextBlinkModeEnum) {
 // [ exceptions ] trans: nothing
 //
 func (v Terminal) SetWordCharExceptions(exceptions string) {
-	iv, err := _I.Get(117, "Terminal", "set_word_char_exceptions")
+	iv, err := _I.Get(117, "Terminal", "set_word_char_exceptions", 19, 102, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2560,7 +2560,7 @@ func (v Terminal) SetWordCharExceptions(exceptions string) {
 // [ result ] trans: nothing
 //
 func (v Terminal) SpawnSync(pty_flags PtyFlags, working_directory string, argv gi.CStrArray, envv gi.CStrArray, spawn_flags g.SpawnFlags, child_setup int /*TODO_TYPE CALLBACK*/, child_setup_data unsafe.Pointer, cancellable g.ICancellable) (result bool, child_pid int32, err error) {
-	iv, err := _I.Get(118, "Terminal", "spawn_sync")
+	iv, err := _I.Get(118, "Terminal", "spawn_sync", 19, 103, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2594,7 +2594,7 @@ func (v Terminal) SpawnSync(pty_flags PtyFlags, working_directory string, argv g
 // vte_terminal_unselect_all
 //
 func (v Terminal) UnselectAll() {
-	iv, err := _I.Get(119, "Terminal", "unselect_all")
+	iv, err := _I.Get(119, "Terminal", "unselect_all", 19, 104, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2609,7 +2609,7 @@ func (v Terminal) UnselectAll() {
 // [ child_pid ] trans: nothing
 //
 func (v Terminal) WatchChild(child_pid int32) {
-	iv, err := _I.Get(120, "Terminal", "watch_child")
+	iv, err := _I.Get(120, "Terminal", "watch_child", 19, 105, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2631,7 +2631,7 @@ func (v Terminal) WatchChild(child_pid int32) {
 // [ result ] trans: nothing
 //
 func (v Terminal) WriteContentsSync(stream g.IOutputStream, flags WriteFlagsEnum, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(121, "Terminal", "write_contents_sync")
+	iv, err := _I.Get(121, "Terminal", "write_contents_sync", 19, 106, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2722,7 +2722,7 @@ func WriteFlagsGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func GetFeatures() (result string) {
-	iv, err := _I.Get(122, "get_features", "")
+	iv, err := _I.Get(122, "get_features", "", 25, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2738,7 +2738,7 @@ func GetFeatures() (result string) {
 // [ result ] trans: nothing
 //
 func GetMajorVersion() (result uint32) {
-	iv, err := _I.Get(123, "get_major_version", "")
+	iv, err := _I.Get(123, "get_major_version", "", 26, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2754,7 +2754,7 @@ func GetMajorVersion() (result uint32) {
 // [ result ] trans: nothing
 //
 func GetMicroVersion() (result uint32) {
-	iv, err := _I.Get(124, "get_micro_version", "")
+	iv, err := _I.Get(124, "get_micro_version", "", 27, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2770,7 +2770,7 @@ func GetMicroVersion() (result uint32) {
 // [ result ] trans: nothing
 //
 func GetMinorVersion() (result uint32) {
-	iv, err := _I.Get(125, "get_minor_version", "")
+	iv, err := _I.Get(125, "get_minor_version", "", 28, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2786,7 +2786,7 @@ func GetMinorVersion() (result uint32) {
 // [ result ] trans: everything
 //
 func GetUserShell() (result string) {
-	iv, err := _I.Get(126, "get_user_shell", "")
+	iv, err := _I.Get(126, "get_user_shell", "", 29, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2802,7 +2802,7 @@ func GetUserShell() (result string) {
 // [ result ] trans: nothing
 //
 func PtyErrorQuark() (result uint32) {
-	iv, err := _I.Get(127, "pty_error_quark", "")
+	iv, err := _I.Get(127, "pty_error_quark", "", 30, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2818,7 +2818,7 @@ func PtyErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func RegexErrorQuark() (result uint32) {
-	iv, err := _I.Get(128, "regex_error_quark", "")
+	iv, err := _I.Get(128, "regex_error_quark", "", 31, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

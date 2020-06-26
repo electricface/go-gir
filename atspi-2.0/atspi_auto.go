@@ -80,7 +80,7 @@ func AccessibleGetType() gi.GType {
 // atspi_accessible_clear_cache
 //
 func (v Accessible) ClearCache() {
-	iv, err := _I.Get(0, "Accessible", "clear_cache")
+	iv, err := _I.Get(0, "Accessible", "clear_cache", 0, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -97,7 +97,7 @@ func (v Accessible) ClearCache() {
 // [ result ] trans: everything
 //
 func (v Accessible) GetActionIface() (result Action) {
-	iv, err := _I.Get(1, "Accessible", "get_action_iface")
+	iv, err := _I.Get(1, "Accessible", "get_action_iface", 0, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -115,7 +115,7 @@ func (v Accessible) GetActionIface() (result Action) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetApplication() (result Accessible, err error) {
-	iv, err := _I.Get(2, "Accessible", "get_application")
+	iv, err := _I.Get(2, "Accessible", "get_application", 0, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -135,7 +135,7 @@ func (v Accessible) GetApplication() (result Accessible, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetAtspiVersion() (result string, err error) {
-	iv, err := _I.Get(3, "Accessible", "get_atspi_version")
+	iv, err := _I.Get(3, "Accessible", "get_atspi_version", 0, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -155,7 +155,7 @@ func (v Accessible) GetAtspiVersion() (result string, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetAttributes() (result g.HashTable, err error) {
-	iv, err := _I.Get(4, "Accessible", "get_attributes")
+	iv, err := _I.Get(4, "Accessible", "get_attributes", 0, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -175,7 +175,7 @@ func (v Accessible) GetAttributes() (result g.HashTable, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetAttributesAsArray() (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/, err error) {
-	iv, err := _I.Get(5, "Accessible", "get_attributes_as_array")
+	iv, err := _I.Get(5, "Accessible", "get_attributes_as_array", 0, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -197,7 +197,7 @@ func (v Accessible) GetAttributesAsArray() (result int /*TODO_TYPE array type: 1
 // [ result ] trans: everything
 //
 func (v Accessible) GetChildAtIndex(child_index int32) (result Accessible, err error) {
-	iv, err := _I.Get(6, "Accessible", "get_child_at_index")
+	iv, err := _I.Get(6, "Accessible", "get_child_at_index", 0, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -218,7 +218,7 @@ func (v Accessible) GetChildAtIndex(child_index int32) (result Accessible, err e
 // [ result ] trans: nothing
 //
 func (v Accessible) GetChildCount() (result int32, err error) {
-	iv, err := _I.Get(7, "Accessible", "get_child_count")
+	iv, err := _I.Get(7, "Accessible", "get_child_count", 0, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -240,7 +240,7 @@ func (v Accessible) GetChildCount() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetCollectionIface() (result Collection) {
-	iv, err := _I.Get(8, "Accessible", "get_collection_iface")
+	iv, err := _I.Get(8, "Accessible", "get_collection_iface", 0, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -260,7 +260,7 @@ func (v Accessible) GetCollectionIface() (result Collection) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetComponentIface() (result Component) {
-	iv, err := _I.Get(9, "Accessible", "get_component_iface")
+	iv, err := _I.Get(9, "Accessible", "get_component_iface", 0, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -278,7 +278,7 @@ func (v Accessible) GetComponentIface() (result Component) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetDescription() (result string, err error) {
-	iv, err := _I.Get(10, "Accessible", "get_description")
+	iv, err := _I.Get(10, "Accessible", "get_description", 0, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -300,7 +300,7 @@ func (v Accessible) GetDescription() (result string, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetDocumentIface() (result Document) {
-	iv, err := _I.Get(11, "Accessible", "get_document_iface")
+	iv, err := _I.Get(11, "Accessible", "get_document_iface", 0, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -320,7 +320,7 @@ func (v Accessible) GetDocumentIface() (result Document) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetEditableTextIface() (result EditableText) {
-	iv, err := _I.Get(12, "Accessible", "get_editable_text_iface")
+	iv, err := _I.Get(12, "Accessible", "get_editable_text_iface", 0, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -338,7 +338,7 @@ func (v Accessible) GetEditableTextIface() (result EditableText) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetHyperlink() (result Hyperlink) {
-	iv, err := _I.Get(13, "Accessible", "get_hyperlink")
+	iv, err := _I.Get(13, "Accessible", "get_hyperlink", 0, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -358,7 +358,7 @@ func (v Accessible) GetHyperlink() (result Hyperlink) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetHypertextIface() (result Hypertext) {
-	iv, err := _I.Get(14, "Accessible", "get_hypertext_iface")
+	iv, err := _I.Get(14, "Accessible", "get_hypertext_iface", 0, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -376,7 +376,7 @@ func (v Accessible) GetHypertextIface() (result Hypertext) {
 // [ result ] trans: nothing
 //
 func (v Accessible) GetId() (result int32, err error) {
-	iv, err := _I.Get(15, "Accessible", "get_id")
+	iv, err := _I.Get(15, "Accessible", "get_id", 0, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -398,7 +398,7 @@ func (v Accessible) GetId() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetImageIface() (result Image) {
-	iv, err := _I.Get(16, "Accessible", "get_image_iface")
+	iv, err := _I.Get(16, "Accessible", "get_image_iface", 0, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -416,7 +416,7 @@ func (v Accessible) GetImageIface() (result Image) {
 // [ result ] trans: nothing
 //
 func (v Accessible) GetIndexInParent() (result int32, err error) {
-	iv, err := _I.Get(17, "Accessible", "get_index_in_parent")
+	iv, err := _I.Get(17, "Accessible", "get_index_in_parent", 0, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -436,7 +436,7 @@ func (v Accessible) GetIndexInParent() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetInterfaces() (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/) {
-	iv, err := _I.Get(18, "Accessible", "get_interfaces")
+	iv, err := _I.Get(18, "Accessible", "get_interfaces", 0, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -454,7 +454,7 @@ func (v Accessible) GetInterfaces() (result int /*TODO_TYPE array type: 1, isZer
 // [ result ] trans: everything
 //
 func (v Accessible) GetLocalizedRoleName() (result string, err error) {
-	iv, err := _I.Get(19, "Accessible", "get_localized_role_name")
+	iv, err := _I.Get(19, "Accessible", "get_localized_role_name", 0, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -474,7 +474,7 @@ func (v Accessible) GetLocalizedRoleName() (result string, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetName() (result string, err error) {
-	iv, err := _I.Get(20, "Accessible", "get_name")
+	iv, err := _I.Get(20, "Accessible", "get_name", 0, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -494,7 +494,7 @@ func (v Accessible) GetName() (result string, err error) {
 // [ result ] trans: nothing
 //
 func (v Accessible) GetObjectLocale() (result string, err error) {
-	iv, err := _I.Get(21, "Accessible", "get_object_locale")
+	iv, err := _I.Get(21, "Accessible", "get_object_locale", 0, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -514,7 +514,7 @@ func (v Accessible) GetObjectLocale() (result string, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetParent() (result Accessible, err error) {
-	iv, err := _I.Get(22, "Accessible", "get_parent")
+	iv, err := _I.Get(22, "Accessible", "get_parent", 0, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -534,7 +534,7 @@ func (v Accessible) GetParent() (result Accessible, err error) {
 // [ result ] trans: nothing
 //
 func (v Accessible) GetProcessId() (result uint32, err error) {
-	iv, err := _I.Get(23, "Accessible", "get_process_id")
+	iv, err := _I.Get(23, "Accessible", "get_process_id", 0, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -554,7 +554,7 @@ func (v Accessible) GetProcessId() (result uint32, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetRelationSet() (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/, err error) {
-	iv, err := _I.Get(24, "Accessible", "get_relation_set")
+	iv, err := _I.Get(24, "Accessible", "get_relation_set", 0, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -574,7 +574,7 @@ func (v Accessible) GetRelationSet() (result int /*TODO_TYPE array type: 1, isZe
 // [ result ] trans: nothing
 //
 func (v Accessible) GetRole() (result RoleEnum, err error) {
-	iv, err := _I.Get(25, "Accessible", "get_role")
+	iv, err := _I.Get(25, "Accessible", "get_role", 0, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -594,7 +594,7 @@ func (v Accessible) GetRole() (result RoleEnum, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetRoleName() (result string, err error) {
-	iv, err := _I.Get(26, "Accessible", "get_role_name")
+	iv, err := _I.Get(26, "Accessible", "get_role_name", 0, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -616,7 +616,7 @@ func (v Accessible) GetRoleName() (result string, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetSelectionIface() (result Selection) {
-	iv, err := _I.Get(27, "Accessible", "get_selection_iface")
+	iv, err := _I.Get(27, "Accessible", "get_selection_iface", 0, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -634,7 +634,7 @@ func (v Accessible) GetSelectionIface() (result Selection) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetStateSet() (result StateSet) {
-	iv, err := _I.Get(28, "Accessible", "get_state_set")
+	iv, err := _I.Get(28, "Accessible", "get_state_set", 0, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -654,7 +654,7 @@ func (v Accessible) GetStateSet() (result StateSet) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetTableIface() (result Table) {
-	iv, err := _I.Get(29, "Accessible", "get_table_iface")
+	iv, err := _I.Get(29, "Accessible", "get_table_iface", 0, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -672,7 +672,7 @@ func (v Accessible) GetTableIface() (result Table) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetTableCell() (result TableCell) {
-	iv, err := _I.Get(30, "Accessible", "get_table_cell")
+	iv, err := _I.Get(30, "Accessible", "get_table_cell", 0, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -692,7 +692,7 @@ func (v Accessible) GetTableCell() (result TableCell) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetTextIface() (result Text) {
-	iv, err := _I.Get(31, "Accessible", "get_text_iface")
+	iv, err := _I.Get(31, "Accessible", "get_text_iface", 0, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -710,7 +710,7 @@ func (v Accessible) GetTextIface() (result Text) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetToolkitName() (result string, err error) {
-	iv, err := _I.Get(32, "Accessible", "get_toolkit_name")
+	iv, err := _I.Get(32, "Accessible", "get_toolkit_name", 0, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -730,7 +730,7 @@ func (v Accessible) GetToolkitName() (result string, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetToolkitVersion() (result string, err error) {
-	iv, err := _I.Get(33, "Accessible", "get_toolkit_version")
+	iv, err := _I.Get(33, "Accessible", "get_toolkit_version", 0, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -752,7 +752,7 @@ func (v Accessible) GetToolkitVersion() (result string, err error) {
 // [ result ] trans: everything
 //
 func (v Accessible) GetValueIface() (result Value) {
-	iv, err := _I.Get(34, "Accessible", "get_value_iface")
+	iv, err := _I.Get(34, "Accessible", "get_value_iface", 0, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -770,7 +770,7 @@ func (v Accessible) GetValueIface() (result Value) {
 // [ mask ] trans: nothing
 //
 func (v Accessible) SetCacheMask(mask CacheFlags) {
-	iv, err := _I.Get(35, "Accessible", "set_cache_mask")
+	iv, err := _I.Get(35, "Accessible", "set_cache_mask", 0, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -814,7 +814,7 @@ func ActionGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v *ActionIfc) DoAction(i int32) (result bool, err error) {
-	iv, err := _I.Get(36, "Action", "do_action")
+	iv, err := _I.Get(36, "Action", "do_action", 3, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -839,7 +839,7 @@ func (v *ActionIfc) DoAction(i int32) (result bool, err error) {
 // [ result ] trans: everything
 //
 func (v *ActionIfc) GetActionDescription(i int32) (result string, err error) {
-	iv, err := _I.Get(37, "Action", "get_action_description")
+	iv, err := _I.Get(37, "Action", "get_action_description", 3, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -862,7 +862,7 @@ func (v *ActionIfc) GetActionDescription(i int32) (result string, err error) {
 // [ result ] trans: everything
 //
 func (v *ActionIfc) GetKeyBinding(i int32) (result string, err error) {
-	iv, err := _I.Get(38, "Action", "get_key_binding")
+	iv, err := _I.Get(38, "Action", "get_key_binding", 3, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -885,7 +885,7 @@ func (v *ActionIfc) GetKeyBinding(i int32) (result string, err error) {
 // [ result ] trans: everything
 //
 func (v *ActionIfc) GetLocalizedName(i int32) (result string, err error) {
-	iv, err := _I.Get(39, "Action", "get_localized_name")
+	iv, err := _I.Get(39, "Action", "get_localized_name", 3, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -906,7 +906,7 @@ func (v *ActionIfc) GetLocalizedName(i int32) (result string, err error) {
 // [ result ] trans: nothing
 //
 func (v *ActionIfc) GetNActions() (result int32, err error) {
-	iv, err := _I.Get(40, "Action", "get_n_actions")
+	iv, err := _I.Get(40, "Action", "get_n_actions", 3, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -930,7 +930,7 @@ func (v *ActionIfc) GetNActions() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v *ActionIfc) GetActionName(i int32) (result string, err error) {
-	iv, err := _I.Get(41, "Action", "get_action_name")
+	iv, err := _I.Get(41, "Action", "get_action_name", 3, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1002,7 +1002,7 @@ func CollectionGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v *CollectionIfc) GetActiveDescendant() (result Accessible, err error) {
-	iv, err := _I.Get(42, "Collection", "get_active_descendant")
+	iv, err := _I.Get(42, "Collection", "get_active_descendant", 9, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1030,7 +1030,7 @@ func (v *CollectionIfc) GetActiveDescendant() (result Accessible, err error) {
 // [ result ] trans: everything
 //
 func (v *CollectionIfc) GetMatches(rule IMatchRule, sortby CollectionSortOrderEnum, count int32, traverse bool) (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/, err error) {
-	iv, err := _I.Get(43, "Collection", "get_matches")
+	iv, err := _I.Get(43, "Collection", "get_matches", 9, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1070,7 +1070,7 @@ func (v *CollectionIfc) GetMatches(rule IMatchRule, sortby CollectionSortOrderEn
 // [ result ] trans: everything
 //
 func (v *CollectionIfc) GetMatchesFrom(current_object IAccessible, rule IMatchRule, sortby CollectionSortOrderEnum, tree CollectionTreeTraversalTypeEnum, count int32, traverse bool) (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/, err error) {
-	iv, err := _I.Get(44, "Collection", "get_matches_from")
+	iv, err := _I.Get(44, "Collection", "get_matches_from", 9, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1118,7 +1118,7 @@ func (v *CollectionIfc) GetMatchesFrom(current_object IAccessible, rule IMatchRu
 // [ result ] trans: everything
 //
 func (v *CollectionIfc) GetMatchesTo(current_object IAccessible, rule IMatchRule, sortby CollectionSortOrderEnum, tree CollectionTreeTraversalTypeEnum, limit_scope bool, count int32, traverse bool) (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/, err error) {
-	iv, err := _I.Get(45, "Collection", "get_matches_to")
+	iv, err := _I.Get(45, "Collection", "get_matches_to", 9, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1155,7 +1155,7 @@ func (v *CollectionIfc) GetMatchesTo(current_object IAccessible, rule IMatchRule
 // [ result ] trans: nothing
 //
 func (v *CollectionIfc) IsAncestorOf(test IAccessible) (result bool, err error) {
-	iv, err := _I.Get(46, "Collection", "is_ancestor_of")
+	iv, err := _I.Get(46, "Collection", "is_ancestor_of", 9, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1251,7 +1251,7 @@ func ComponentGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v *ComponentIfc) Contains(x int32, y int32, ctype CoordTypeEnum) (result bool, err error) {
-	iv, err := _I.Get(47, "Component", "contains")
+	iv, err := _I.Get(47, "Component", "contains", 13, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1280,7 +1280,7 @@ func (v *ComponentIfc) Contains(x int32, y int32, ctype CoordTypeEnum) (result b
 // [ result ] trans: everything
 //
 func (v *ComponentIfc) GetAccessibleAtPoint(x int32, y int32, ctype CoordTypeEnum) (result Accessible, err error) {
-	iv, err := _I.Get(48, "Component", "get_accessible_at_point")
+	iv, err := _I.Get(48, "Component", "get_accessible_at_point", 13, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1303,7 +1303,7 @@ func (v *ComponentIfc) GetAccessibleAtPoint(x int32, y int32, ctype CoordTypeEnu
 // [ result ] trans: nothing
 //
 func (v *ComponentIfc) GetAlpha() (result float64, err error) {
-	iv, err := _I.Get(49, "Component", "get_alpha")
+	iv, err := _I.Get(49, "Component", "get_alpha", 13, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1325,7 +1325,7 @@ func (v *ComponentIfc) GetAlpha() (result float64, err error) {
 // [ result ] trans: everything
 //
 func (v *ComponentIfc) GetExtents(ctype CoordTypeEnum) (result Rect, err error) {
-	iv, err := _I.Get(50, "Component", "get_extents")
+	iv, err := _I.Get(50, "Component", "get_extents", 13, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1346,7 +1346,7 @@ func (v *ComponentIfc) GetExtents(ctype CoordTypeEnum) (result Rect, err error) 
 // [ result ] trans: nothing
 //
 func (v *ComponentIfc) GetLayer() (result ComponentLayerEnum, err error) {
-	iv, err := _I.Get(51, "Component", "get_layer")
+	iv, err := _I.Get(51, "Component", "get_layer", 13, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1366,7 +1366,7 @@ func (v *ComponentIfc) GetLayer() (result ComponentLayerEnum, err error) {
 // [ result ] trans: nothing
 //
 func (v *ComponentIfc) GetMdiZOrder() (result int16, err error) {
-	iv, err := _I.Get(52, "Component", "get_mdi_z_order")
+	iv, err := _I.Get(52, "Component", "get_mdi_z_order", 13, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1388,7 +1388,7 @@ func (v *ComponentIfc) GetMdiZOrder() (result int16, err error) {
 // [ result ] trans: everything
 //
 func (v *ComponentIfc) GetPosition(ctype CoordTypeEnum) (result Point, err error) {
-	iv, err := _I.Get(53, "Component", "get_position")
+	iv, err := _I.Get(53, "Component", "get_position", 13, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1409,7 +1409,7 @@ func (v *ComponentIfc) GetPosition(ctype CoordTypeEnum) (result Point, err error
 // [ result ] trans: everything
 //
 func (v *ComponentIfc) GetSize() (result Point, err error) {
-	iv, err := _I.Get(54, "Component", "get_size")
+	iv, err := _I.Get(54, "Component", "get_size", 13, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1429,7 +1429,7 @@ func (v *ComponentIfc) GetSize() (result Point, err error) {
 // [ result ] trans: nothing
 //
 func (v *ComponentIfc) GrabFocus() (result bool, err error) {
-	iv, err := _I.Get(55, "Component", "grab_focus")
+	iv, err := _I.Get(55, "Component", "grab_focus", 13, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1451,7 +1451,7 @@ func (v *ComponentIfc) GrabFocus() (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v *ComponentIfc) ScrollTo(type1 ScrollTypeEnum) (result bool, err error) {
-	iv, err := _I.Get(56, "Component", "scroll_to")
+	iv, err := _I.Get(56, "Component", "scroll_to", 13, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1478,7 +1478,7 @@ func (v *ComponentIfc) ScrollTo(type1 ScrollTypeEnum) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v *ComponentIfc) ScrollToPoint(coords CoordTypeEnum, x int32, y int32) (result bool, err error) {
-	iv, err := _I.Get(57, "Component", "scroll_to_point")
+	iv, err := _I.Get(57, "Component", "scroll_to_point", 13, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1511,7 +1511,7 @@ func (v *ComponentIfc) ScrollToPoint(coords CoordTypeEnum, x int32, y int32) (re
 // [ result ] trans: nothing
 //
 func (v *ComponentIfc) SetExtents(x int32, y int32, width int32, height int32, ctype CoordTypeEnum) (result bool, err error) {
-	iv, err := _I.Get(58, "Component", "set_extents")
+	iv, err := _I.Get(58, "Component", "set_extents", 13, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1542,7 +1542,7 @@ func (v *ComponentIfc) SetExtents(x int32, y int32, width int32, height int32, c
 // [ result ] trans: nothing
 //
 func (v *ComponentIfc) SetPosition(x int32, y int32, ctype CoordTypeEnum) (result bool, err error) {
-	iv, err := _I.Get(59, "Component", "set_position")
+	iv, err := _I.Get(59, "Component", "set_position", 13, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1569,7 +1569,7 @@ func (v *ComponentIfc) SetPosition(x int32, y int32, ctype CoordTypeEnum) (resul
 // [ result ] trans: nothing
 //
 func (v *ComponentIfc) SetSize(width int32, height int32) (result bool, err error) {
-	iv, err := _I.Get(60, "Component", "set_size")
+	iv, err := _I.Get(60, "Component", "set_size", 13, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1658,7 +1658,7 @@ func DeviceListenerGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewDeviceListener(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, callback_destroyed int /*TODO_TYPE CALLBACK*/) (result DeviceListener) {
-	iv, err := _I.Get(61, "DeviceListener", "new")
+	iv, err := _I.Get(61, "DeviceListener", "new", 45, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1682,7 +1682,7 @@ func NewDeviceListener(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Poi
 // [ user_data ] trans: nothing
 //
 func (v DeviceListener) AddCallback(callback int /*TODO_TYPE CALLBACK*/, callback_destroyed int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(62, "DeviceListener", "add_callback")
+	iv, err := _I.Get(62, "DeviceListener", "add_callback", 45, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1700,7 +1700,7 @@ func (v DeviceListener) AddCallback(callback int /*TODO_TYPE CALLBACK*/, callbac
 // [ callback ] trans: nothing
 //
 func (v DeviceListener) RemoveCallback(callback int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(63, "DeviceListener", "remove_callback")
+	iv, err := _I.Get(63, "DeviceListener", "remove_callback", 45, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1766,7 +1766,7 @@ func DocumentGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v *DocumentIfc) GetDocumentAttributeValue(attribute string) (result string, err error) {
-	iv, err := _I.Get(64, "Document", "get_document_attribute_value")
+	iv, err := _I.Get(64, "Document", "get_document_attribute_value", 49, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1791,7 +1791,7 @@ func (v *DocumentIfc) GetDocumentAttributeValue(attribute string) (result string
 // [ result ] trans: everything
 //
 func (v *DocumentIfc) GetDocumentAttributes() (result g.HashTable, err error) {
-	iv, err := _I.Get(65, "Document", "get_document_attributes")
+	iv, err := _I.Get(65, "Document", "get_document_attributes", 49, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1811,7 +1811,7 @@ func (v *DocumentIfc) GetDocumentAttributes() (result g.HashTable, err error) {
 // [ result ] trans: nothing
 //
 func (v *DocumentIfc) GetCurrentPageNumber() (result int32, err error) {
-	iv, err := _I.Get(66, "Document", "get_current_page_number")
+	iv, err := _I.Get(66, "Document", "get_current_page_number", 49, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1831,7 +1831,7 @@ func (v *DocumentIfc) GetCurrentPageNumber() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v *DocumentIfc) GetLocale() (result string, err error) {
-	iv, err := _I.Get(67, "Document", "get_locale")
+	iv, err := _I.Get(67, "Document", "get_locale", 49, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1851,7 +1851,7 @@ func (v *DocumentIfc) GetLocale() (result string, err error) {
 // [ result ] trans: nothing
 //
 func (v *DocumentIfc) GetPageCount() (result int32, err error) {
-	iv, err := _I.Get(68, "Document", "get_page_count")
+	iv, err := _I.Get(68, "Document", "get_page_count", 49, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1889,7 +1889,7 @@ func EditableTextGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v *EditableTextIfc) CopyText(start_pos int32, end_pos int32) (result bool, err error) {
-	iv, err := _I.Get(69, "EditableText", "copy_text")
+	iv, err := _I.Get(69, "EditableText", "copy_text", 51, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1915,7 +1915,7 @@ func (v *EditableTextIfc) CopyText(start_pos int32, end_pos int32) (result bool,
 // [ result ] trans: nothing
 //
 func (v *EditableTextIfc) CutText(start_pos int32, end_pos int32) (result bool, err error) {
-	iv, err := _I.Get(70, "EditableText", "cut_text")
+	iv, err := _I.Get(70, "EditableText", "cut_text", 51, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1941,7 +1941,7 @@ func (v *EditableTextIfc) CutText(start_pos int32, end_pos int32) (result bool, 
 // [ result ] trans: nothing
 //
 func (v *EditableTextIfc) DeleteText(start_pos int32, end_pos int32) (result bool, err error) {
-	iv, err := _I.Get(71, "EditableText", "delete_text")
+	iv, err := _I.Get(71, "EditableText", "delete_text", 51, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1969,7 +1969,7 @@ func (v *EditableTextIfc) DeleteText(start_pos int32, end_pos int32) (result boo
 // [ result ] trans: nothing
 //
 func (v *EditableTextIfc) InsertText(position int32, text string, length int32) (result bool, err error) {
-	iv, err := _I.Get(72, "EditableText", "insert_text")
+	iv, err := _I.Get(72, "EditableText", "insert_text", 51, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1996,7 +1996,7 @@ func (v *EditableTextIfc) InsertText(position int32, text string, length int32) 
 // [ result ] trans: nothing
 //
 func (v *EditableTextIfc) PasteText(position int32) (result bool, err error) {
-	iv, err := _I.Get(73, "EditableText", "paste_text")
+	iv, err := _I.Get(73, "EditableText", "paste_text", 51, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2019,7 +2019,7 @@ func (v *EditableTextIfc) PasteText(position int32) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v *EditableTextIfc) SetTextContents(new_contents string) (result bool, err error) {
-	iv, err := _I.Get(74, "EditableText", "set_text_contents")
+	iv, err := _I.Get(74, "EditableText", "set_text_contents", 51, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2075,7 +2075,7 @@ func EventListenerGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewEventListener(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, callback_destroyed int /*TODO_TYPE CALLBACK*/) (result EventListener) {
-	iv, err := _I.Get(77, "EventListener", "new")
+	iv, err := _I.Get(77, "EventListener", "new", 53, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2101,7 +2101,7 @@ func NewEventListener(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Poin
 // [ result ] trans: nothing
 //
 func EventListenerDeregisterFromCallback1(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, event_type string) (result bool, err error) {
-	iv, err := _I.Get(78, "EventListener", "deregister_from_callback")
+	iv, err := _I.Get(78, "EventListener", "deregister_from_callback", 53, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2133,7 +2133,7 @@ func EventListenerDeregisterFromCallback1(callback int /*TODO_TYPE CALLBACK*/, u
 // [ result ] trans: nothing
 //
 func EventListenerRegisterFromCallback1(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, callback_destroyed int /*TODO_TYPE CALLBACK*/, event_type string) (result bool, err error) {
-	iv, err := _I.Get(79, "EventListener", "register_from_callback")
+	iv, err := _I.Get(79, "EventListener", "register_from_callback", 53, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2168,7 +2168,7 @@ func EventListenerRegisterFromCallback1(callback int /*TODO_TYPE CALLBACK*/, use
 // [ result ] trans: nothing
 //
 func EventListenerRegisterFromCallbackFull1(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, callback_destroyed int /*TODO_TYPE CALLBACK*/, event_type string, properties int /*TODO_TYPE isPtr: true, tag: array*/) (result bool, err error) {
-	iv, err := _I.Get(80, "EventListener", "register_from_callback_full")
+	iv, err := _I.Get(80, "EventListener", "register_from_callback_full", 53, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2196,7 +2196,7 @@ func EventListenerRegisterFromCallbackFull1(callback int /*TODO_TYPE CALLBACK*/,
 // [ result ] trans: nothing
 //
 func (v EventListener) Deregister(event_type string) (result bool, err error) {
-	iv, err := _I.Get(81, "EventListener", "deregister")
+	iv, err := _I.Get(81, "EventListener", "deregister", 53, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2221,7 +2221,7 @@ func (v EventListener) Deregister(event_type string) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v EventListener) Register(event_type string) (result bool, err error) {
-	iv, err := _I.Get(82, "EventListener", "register")
+	iv, err := _I.Get(82, "EventListener", "register", 53, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2248,7 +2248,7 @@ func (v EventListener) Register(event_type string) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v EventListener) RegisterFull(event_type string, properties int /*TODO_TYPE isPtr: true, tag: array*/) (result bool, err error) {
-	iv, err := _I.Get(83, "EventListener", "register_full")
+	iv, err := _I.Get(83, "EventListener", "register_full", 53, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2346,7 +2346,7 @@ func HyperlinkGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Hyperlink) GetEndIndex() (result int32, err error) {
-	iv, err := _I.Get(84, "Hyperlink", "get_end_index")
+	iv, err := _I.Get(84, "Hyperlink", "get_end_index", 59, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2366,7 +2366,7 @@ func (v Hyperlink) GetEndIndex() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v Hyperlink) GetIndexRange() (result Range, err error) {
-	iv, err := _I.Get(85, "Hyperlink", "get_index_range")
+	iv, err := _I.Get(85, "Hyperlink", "get_index_range", 59, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2386,7 +2386,7 @@ func (v Hyperlink) GetIndexRange() (result Range, err error) {
 // [ result ] trans: nothing
 //
 func (v Hyperlink) GetNAnchors() (result int32, err error) {
-	iv, err := _I.Get(86, "Hyperlink", "get_n_anchors")
+	iv, err := _I.Get(86, "Hyperlink", "get_n_anchors", 59, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2408,7 +2408,7 @@ func (v Hyperlink) GetNAnchors() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v Hyperlink) GetObject(i int32) (result Accessible, err error) {
-	iv, err := _I.Get(87, "Hyperlink", "get_object")
+	iv, err := _I.Get(87, "Hyperlink", "get_object", 59, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2429,7 +2429,7 @@ func (v Hyperlink) GetObject(i int32) (result Accessible, err error) {
 // [ result ] trans: nothing
 //
 func (v Hyperlink) GetStartIndex() (result int32, err error) {
-	iv, err := _I.Get(88, "Hyperlink", "get_start_index")
+	iv, err := _I.Get(88, "Hyperlink", "get_start_index", 59, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2451,7 +2451,7 @@ func (v Hyperlink) GetStartIndex() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v Hyperlink) GetUri(i int32) (result string, err error) {
-	iv, err := _I.Get(89, "Hyperlink", "get_uri")
+	iv, err := _I.Get(89, "Hyperlink", "get_uri", 59, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2472,7 +2472,7 @@ func (v Hyperlink) GetUri(i int32) (result string, err error) {
 // [ result ] trans: nothing
 //
 func (v Hyperlink) IsValid() (result bool, err error) {
-	iv, err := _I.Get(90, "Hyperlink", "is_valid")
+	iv, err := _I.Get(90, "Hyperlink", "is_valid", 59, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2510,7 +2510,7 @@ func HypertextGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v *HypertextIfc) GetLink(link_index int32) (result Hyperlink, err error) {
-	iv, err := _I.Get(91, "Hypertext", "get_link")
+	iv, err := _I.Get(91, "Hypertext", "get_link", 61, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2533,7 +2533,7 @@ func (v *HypertextIfc) GetLink(link_index int32) (result Hyperlink, err error) {
 // [ result ] trans: nothing
 //
 func (v *HypertextIfc) GetLinkIndex(character_offset int32) (result int32, err error) {
-	iv, err := _I.Get(92, "Hypertext", "get_link_index")
+	iv, err := _I.Get(92, "Hypertext", "get_link_index", 61, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2554,7 +2554,7 @@ func (v *HypertextIfc) GetLinkIndex(character_offset int32) (result int32, err e
 // [ result ] trans: nothing
 //
 func (v *HypertextIfc) GetNLinks() (result int32, err error) {
-	iv, err := _I.Get(93, "Hypertext", "get_n_links")
+	iv, err := _I.Get(93, "Hypertext", "get_n_links", 61, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2588,7 +2588,7 @@ func ImageGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v *ImageIfc) GetImageDescription() (result string, err error) {
-	iv, err := _I.Get(94, "Image", "get_image_description")
+	iv, err := _I.Get(94, "Image", "get_image_description", 62, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2610,7 +2610,7 @@ func (v *ImageIfc) GetImageDescription() (result string, err error) {
 // [ result ] trans: everything
 //
 func (v *ImageIfc) GetImageExtents(ctype CoordTypeEnum) (result Rect, err error) {
-	iv, err := _I.Get(95, "Image", "get_image_extents")
+	iv, err := _I.Get(95, "Image", "get_image_extents", 62, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2631,7 +2631,7 @@ func (v *ImageIfc) GetImageExtents(ctype CoordTypeEnum) (result Rect, err error)
 // [ result ] trans: everything
 //
 func (v *ImageIfc) GetImageLocale() (result string, err error) {
-	iv, err := _I.Get(96, "Image", "get_image_locale")
+	iv, err := _I.Get(96, "Image", "get_image_locale", 62, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2653,7 +2653,7 @@ func (v *ImageIfc) GetImageLocale() (result string, err error) {
 // [ result ] trans: everything
 //
 func (v *ImageIfc) GetImagePosition(ctype CoordTypeEnum) (result Point, err error) {
-	iv, err := _I.Get(97, "Image", "get_image_position")
+	iv, err := _I.Get(97, "Image", "get_image_position", 62, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2674,7 +2674,7 @@ func (v *ImageIfc) GetImagePosition(ctype CoordTypeEnum) (result Point, err erro
 // [ result ] trans: everything
 //
 func (v *ImageIfc) GetImageSize() (result Point, err error) {
-	iv, err := _I.Get(98, "Image", "get_image_size")
+	iv, err := _I.Get(98, "Image", "get_image_size", 62, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2814,7 +2814,7 @@ func MatchRuleGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewMatchRule(states IStateSet, statematchtype CollectionMatchTypeEnum, attributes g.HashTable, attributematchtype CollectionMatchTypeEnum, roles int /*TODO_TYPE isPtr: true, tag: array*/, rolematchtype CollectionMatchTypeEnum, interfaces int /*TODO_TYPE isPtr: true, tag: array*/, interfacematchtype CollectionMatchTypeEnum, invert bool) (result MatchRule) {
-	iv, err := _I.Get(99, "MatchRule", "new")
+	iv, err := _I.Get(99, "MatchRule", "new", 73, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2894,7 +2894,7 @@ func PointGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v Point) Copy() (result Point) {
-	iv, err := _I.Get(100, "Point", "copy")
+	iv, err := _I.Get(100, "Point", "copy", 78, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2924,7 +2924,7 @@ func RangeGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v Range) Copy() (result Range) {
-	iv, err := _I.Get(101, "Range", "copy")
+	iv, err := _I.Get(101, "Range", "copy", 81, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2954,7 +2954,7 @@ func RectGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v Rect) Copy() (result Rect) {
-	iv, err := _I.Get(102, "Rect", "copy")
+	iv, err := _I.Get(102, "Rect", "copy", 82, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2987,7 +2987,7 @@ func RelationGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Relation) GetNTargets() (result int32) {
-	iv, err := _I.Get(103, "Relation", "get_n_targets")
+	iv, err := _I.Get(103, "Relation", "get_n_targets", 83, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3005,7 +3005,7 @@ func (v Relation) GetNTargets() (result int32) {
 // [ result ] trans: nothing
 //
 func (v Relation) GetRelationType() (result RelationTypeEnum) {
-	iv, err := _I.Get(104, "Relation", "get_relation_type")
+	iv, err := _I.Get(104, "Relation", "get_relation_type", 83, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3025,7 +3025,7 @@ func (v Relation) GetRelationType() (result RelationTypeEnum) {
 // [ result ] trans: everything
 //
 func (v Relation) GetTarget(i int32) (result Accessible) {
-	iv, err := _I.Get(105, "Relation", "get_target")
+	iv, err := _I.Get(105, "Relation", "get_target", 83, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3250,7 +3250,7 @@ func SelectionGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v *SelectionIfc) ClearSelection() (result bool, err error) {
-	iv, err := _I.Get(106, "Selection", "clear_selection")
+	iv, err := _I.Get(106, "Selection", "clear_selection", 91, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3272,7 +3272,7 @@ func (v *SelectionIfc) ClearSelection() (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v *SelectionIfc) DeselectChild(child_index int32) (result bool, err error) {
-	iv, err := _I.Get(107, "Selection", "deselect_child")
+	iv, err := _I.Get(107, "Selection", "deselect_child", 91, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3295,7 +3295,7 @@ func (v *SelectionIfc) DeselectChild(child_index int32) (result bool, err error)
 // [ result ] trans: nothing
 //
 func (v *SelectionIfc) DeselectSelectedChild(selected_child_index int32) (result bool, err error) {
-	iv, err := _I.Get(108, "Selection", "deselect_selected_child")
+	iv, err := _I.Get(108, "Selection", "deselect_selected_child", 91, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3316,7 +3316,7 @@ func (v *SelectionIfc) DeselectSelectedChild(selected_child_index int32) (result
 // [ result ] trans: nothing
 //
 func (v *SelectionIfc) GetNSelectedChildren() (result int32, err error) {
-	iv, err := _I.Get(109, "Selection", "get_n_selected_children")
+	iv, err := _I.Get(109, "Selection", "get_n_selected_children", 91, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3338,7 +3338,7 @@ func (v *SelectionIfc) GetNSelectedChildren() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v *SelectionIfc) GetSelectedChild(selected_child_index int32) (result Accessible, err error) {
-	iv, err := _I.Get(110, "Selection", "get_selected_child")
+	iv, err := _I.Get(110, "Selection", "get_selected_child", 91, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3361,7 +3361,7 @@ func (v *SelectionIfc) GetSelectedChild(selected_child_index int32) (result Acce
 // [ result ] trans: nothing
 //
 func (v *SelectionIfc) IsChildSelected(child_index int32) (result bool, err error) {
-	iv, err := _I.Get(111, "Selection", "is_child_selected")
+	iv, err := _I.Get(111, "Selection", "is_child_selected", 91, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3382,7 +3382,7 @@ func (v *SelectionIfc) IsChildSelected(child_index int32) (result bool, err erro
 // [ result ] trans: nothing
 //
 func (v *SelectionIfc) SelectAll() (result bool, err error) {
-	iv, err := _I.Get(112, "Selection", "select_all")
+	iv, err := _I.Get(112, "Selection", "select_all", 91, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3404,7 +3404,7 @@ func (v *SelectionIfc) SelectAll() (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v *SelectionIfc) SelectChild(child_index int32) (result bool, err error) {
-	iv, err := _I.Get(113, "Selection", "select_child")
+	iv, err := _I.Get(113, "Selection", "select_child", 91, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3442,7 +3442,7 @@ func StateSetGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewStateSet(states int /*TODO_TYPE isPtr: true, tag: array*/) (result StateSet) {
-	iv, err := _I.Get(114, "StateSet", "new")
+	iv, err := _I.Get(114, "StateSet", "new", 92, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3460,7 +3460,7 @@ func NewStateSet(states int /*TODO_TYPE isPtr: true, tag: array*/) (result State
 // [ state ] trans: nothing
 //
 func (v StateSet) Add(state StateTypeEnum) {
-	iv, err := _I.Get(115, "StateSet", "add")
+	iv, err := _I.Get(115, "StateSet", "add", 92, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3478,7 +3478,7 @@ func (v StateSet) Add(state StateTypeEnum) {
 // [ result ] trans: everything
 //
 func (v StateSet) Compare(set2 IStateSet) (result StateSet) {
-	iv, err := _I.Get(116, "StateSet", "compare")
+	iv, err := _I.Get(116, "StateSet", "compare", 92, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3503,7 +3503,7 @@ func (v StateSet) Compare(set2 IStateSet) (result StateSet) {
 // [ result ] trans: nothing
 //
 func (v StateSet) Contains(state StateTypeEnum) (result bool) {
-	iv, err := _I.Get(117, "StateSet", "contains")
+	iv, err := _I.Get(117, "StateSet", "contains", 92, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3524,7 +3524,7 @@ func (v StateSet) Contains(state StateTypeEnum) (result bool) {
 // [ result ] trans: nothing
 //
 func (v StateSet) Equals(set2 IStateSet) (result bool) {
-	iv, err := _I.Get(118, "StateSet", "equals")
+	iv, err := _I.Get(118, "StateSet", "equals", 92, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3547,7 +3547,7 @@ func (v StateSet) Equals(set2 IStateSet) (result bool) {
 // [ result ] trans: everything
 //
 func (v StateSet) GetStates() (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/) {
-	iv, err := _I.Get(119, "StateSet", "get_states")
+	iv, err := _I.Get(119, "StateSet", "get_states", 92, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3565,7 +3565,7 @@ func (v StateSet) GetStates() (result int /*TODO_TYPE array type: 1, isZeroTerm:
 // [ result ] trans: nothing
 //
 func (v StateSet) IsEmpty() (result bool) {
-	iv, err := _I.Get(120, "StateSet", "is_empty")
+	iv, err := _I.Get(120, "StateSet", "is_empty", 92, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3583,7 +3583,7 @@ func (v StateSet) IsEmpty() (result bool) {
 // [ state ] trans: nothing
 //
 func (v StateSet) Remove(state StateTypeEnum) {
-	iv, err := _I.Get(121, "StateSet", "remove")
+	iv, err := _I.Get(121, "StateSet", "remove", 92, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3601,7 +3601,7 @@ func (v StateSet) Remove(state StateTypeEnum) {
 // [ enabled ] trans: nothing
 //
 func (v StateSet) SetByName(name string, enabled bool) {
-	iv, err := _I.Get(122, "StateSet", "set_by_name")
+	iv, err := _I.Get(122, "StateSet", "set_by_name", 92, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3694,7 +3694,7 @@ func TableGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) AddColumnSelection(column int32) (result bool, err error) {
-	iv, err := _I.Get(123, "Table", "add_column_selection")
+	iv, err := _I.Get(123, "Table", "add_column_selection", 97, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3717,7 +3717,7 @@ func (v *TableIfc) AddColumnSelection(column int32) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) AddRowSelection(row int32) (result bool, err error) {
-	iv, err := _I.Get(124, "Table", "add_row_selection")
+	iv, err := _I.Get(124, "Table", "add_row_selection", 97, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3742,7 +3742,7 @@ func (v *TableIfc) AddRowSelection(row int32) (result bool, err error) {
 // [ result ] trans: everything
 //
 func (v *TableIfc) GetAccessibleAt(row int32, column int32) (result Accessible, err error) {
-	iv, err := _I.Get(125, "Table", "get_accessible_at")
+	iv, err := _I.Get(125, "Table", "get_accessible_at", 97, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3764,7 +3764,7 @@ func (v *TableIfc) GetAccessibleAt(row int32, column int32) (result Accessible, 
 // [ result ] trans: everything
 //
 func (v *TableIfc) GetCaption() (result Accessible, err error) {
-	iv, err := _I.Get(126, "Table", "get_caption")
+	iv, err := _I.Get(126, "Table", "get_caption", 97, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3786,7 +3786,7 @@ func (v *TableIfc) GetCaption() (result Accessible, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) GetColumnAtIndex(index int32) (result int32, err error) {
-	iv, err := _I.Get(127, "Table", "get_column_at_index")
+	iv, err := _I.Get(127, "Table", "get_column_at_index", 97, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3809,7 +3809,7 @@ func (v *TableIfc) GetColumnAtIndex(index int32) (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v *TableIfc) GetColumnDescription(column int32) (result string, err error) {
-	iv, err := _I.Get(128, "Table", "get_column_description")
+	iv, err := _I.Get(128, "Table", "get_column_description", 97, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3834,7 +3834,7 @@ func (v *TableIfc) GetColumnDescription(column int32) (result string, err error)
 // [ result ] trans: nothing
 //
 func (v *TableIfc) GetColumnExtentAt(row int32, column int32) (result int32, err error) {
-	iv, err := _I.Get(129, "Table", "get_column_extent_at")
+	iv, err := _I.Get(129, "Table", "get_column_extent_at", 97, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3858,7 +3858,7 @@ func (v *TableIfc) GetColumnExtentAt(row int32, column int32) (result int32, err
 // [ result ] trans: everything
 //
 func (v *TableIfc) GetColumnHeader(column int32) (result Accessible, err error) {
-	iv, err := _I.Get(130, "Table", "get_column_header")
+	iv, err := _I.Get(130, "Table", "get_column_header", 97, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3883,7 +3883,7 @@ func (v *TableIfc) GetColumnHeader(column int32) (result Accessible, err error) 
 // [ result ] trans: nothing
 //
 func (v *TableIfc) GetIndexAt(row int32, column int32) (result int32, err error) {
-	iv, err := _I.Get(131, "Table", "get_index_at")
+	iv, err := _I.Get(131, "Table", "get_index_at", 97, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3905,7 +3905,7 @@ func (v *TableIfc) GetIndexAt(row int32, column int32) (result int32, err error)
 // [ result ] trans: nothing
 //
 func (v *TableIfc) GetNColumns() (result int32, err error) {
-	iv, err := _I.Get(132, "Table", "get_n_columns")
+	iv, err := _I.Get(132, "Table", "get_n_columns", 97, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3925,7 +3925,7 @@ func (v *TableIfc) GetNColumns() (result int32, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) GetNRows() (result int32, err error) {
-	iv, err := _I.Get(133, "Table", "get_n_rows")
+	iv, err := _I.Get(133, "Table", "get_n_rows", 97, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3945,7 +3945,7 @@ func (v *TableIfc) GetNRows() (result int32, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) GetNSelectedColumns() (result int32, err error) {
-	iv, err := _I.Get(134, "Table", "get_n_selected_columns")
+	iv, err := _I.Get(134, "Table", "get_n_selected_columns", 97, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3965,7 +3965,7 @@ func (v *TableIfc) GetNSelectedColumns() (result int32, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) GetNSelectedRows() (result int32, err error) {
-	iv, err := _I.Get(135, "Table", "get_n_selected_rows")
+	iv, err := _I.Get(135, "Table", "get_n_selected_rows", 97, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3987,7 +3987,7 @@ func (v *TableIfc) GetNSelectedRows() (result int32, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) GetRowAtIndex(index int32) (result int32, err error) {
-	iv, err := _I.Get(136, "Table", "get_row_at_index")
+	iv, err := _I.Get(136, "Table", "get_row_at_index", 97, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4020,7 +4020,7 @@ func (v *TableIfc) GetRowAtIndex(index int32) (result int32, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) GetRowColumnExtentsAtIndex(index int32) (result bool, row int32, col int32, row_extents int32, col_extents int32, is_selected bool, err error) {
-	iv, err := _I.Get(137, "Table", "get_row_column_extents_at_index")
+	iv, err := _I.Get(137, "Table", "get_row_column_extents_at_index", 97, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4053,7 +4053,7 @@ func (v *TableIfc) GetRowColumnExtentsAtIndex(index int32) (result bool, row int
 // [ result ] trans: everything
 //
 func (v *TableIfc) GetRowDescription(row int32) (result string, err error) {
-	iv, err := _I.Get(138, "Table", "get_row_description")
+	iv, err := _I.Get(138, "Table", "get_row_description", 97, 15, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4078,7 +4078,7 @@ func (v *TableIfc) GetRowDescription(row int32) (result string, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) GetRowExtentAt(row int32, column int32) (result int32, err error) {
-	iv, err := _I.Get(139, "Table", "get_row_extent_at")
+	iv, err := _I.Get(139, "Table", "get_row_extent_at", 97, 16, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4102,7 +4102,7 @@ func (v *TableIfc) GetRowExtentAt(row int32, column int32) (result int32, err er
 // [ result ] trans: everything
 //
 func (v *TableIfc) GetRowHeader(row int32) (result Accessible, err error) {
-	iv, err := _I.Get(140, "Table", "get_row_header")
+	iv, err := _I.Get(140, "Table", "get_row_header", 97, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4123,7 +4123,7 @@ func (v *TableIfc) GetRowHeader(row int32) (result Accessible, err error) {
 // [ result ] trans: everything
 //
 func (v *TableIfc) GetSelectedColumns() (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/, err error) {
-	iv, err := _I.Get(141, "Table", "get_selected_columns")
+	iv, err := _I.Get(141, "Table", "get_selected_columns", 97, 18, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4143,7 +4143,7 @@ func (v *TableIfc) GetSelectedColumns() (result int /*TODO_TYPE array type: 1, i
 // [ result ] trans: everything
 //
 func (v *TableIfc) GetSelectedRows() (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/, err error) {
-	iv, err := _I.Get(142, "Table", "get_selected_rows")
+	iv, err := _I.Get(142, "Table", "get_selected_rows", 97, 19, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4163,7 +4163,7 @@ func (v *TableIfc) GetSelectedRows() (result int /*TODO_TYPE array type: 1, isZe
 // [ result ] trans: everything
 //
 func (v *TableIfc) GetSummary() (result Accessible, err error) {
-	iv, err := _I.Get(143, "Table", "get_summary")
+	iv, err := _I.Get(143, "Table", "get_summary", 97, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4185,7 +4185,7 @@ func (v *TableIfc) GetSummary() (result Accessible, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) IsColumnSelected(column int32) (result bool, err error) {
-	iv, err := _I.Get(144, "Table", "is_column_selected")
+	iv, err := _I.Get(144, "Table", "is_column_selected", 97, 21, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4208,7 +4208,7 @@ func (v *TableIfc) IsColumnSelected(column int32) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) IsRowSelected(row int32) (result bool, err error) {
-	iv, err := _I.Get(145, "Table", "is_row_selected")
+	iv, err := _I.Get(145, "Table", "is_row_selected", 97, 22, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4233,7 +4233,7 @@ func (v *TableIfc) IsRowSelected(row int32) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableIfc) IsSelected(row int32, column int32) (result bool, err error) {
-	iv, err := _I.Get(146, "Table", "is_selected")
+	iv, err := _I.Get(146, "Table", "is_selected", 97, 23, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4257,7 +4257,7 @@ func (v *TableIfc) IsSelected(row int32, column int32) (result bool, err error) 
 // [ result ] trans: nothing
 //
 func (v *TableIfc) RemoveColumnSelection(column int32) (result bool, err error) {
-	iv, err := _I.Get(147, "Table", "remove_column_selection")
+	iv, err := _I.Get(147, "Table", "remove_column_selection", 97, 24, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4280,7 +4280,7 @@ func (v *TableIfc) RemoveColumnSelection(column int32) (result bool, err error) 
 // [ result ] trans: nothing
 //
 func (v *TableIfc) RemoveRowSelection(row int32) (result bool, err error) {
-	iv, err := _I.Get(148, "Table", "remove_row_selection")
+	iv, err := _I.Get(148, "Table", "remove_row_selection", 97, 25, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4315,7 +4315,7 @@ func TableCellGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/, err error) {
-	iv, err := _I.Get(149, "TableCell", "get_column_header_cells")
+	iv, err := _I.Get(149, "TableCell", "get_column_header_cells", 98, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4335,7 +4335,7 @@ func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type
 // [ result ] trans: nothing
 //
 func (v *TableCellIfc) GetColumnIndex() (result int32, err error) {
-	iv, err := _I.Get(150, "TableCell", "get_column_index")
+	iv, err := _I.Get(150, "TableCell", "get_column_index", 98, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4355,7 +4355,7 @@ func (v *TableCellIfc) GetColumnIndex() (result int32, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableCellIfc) GetColumnSpan() (result int32, err error) {
-	iv, err := _I.Get(151, "TableCell", "get_column_span")
+	iv, err := _I.Get(151, "TableCell", "get_column_span", 98, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4379,7 +4379,7 @@ func (v *TableCellIfc) GetColumnSpan() (result int32, err error) {
 // [ result ] trans: nothing
 //
 func (v *TableCellIfc) GetPosition() (result int32, row int32, column int32, err error) {
-	iv, err := _I.Get(152, "TableCell", "get_position")
+	iv, err := _I.Get(152, "TableCell", "get_position", 98, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4409,7 +4409,7 @@ func (v *TableCellIfc) GetPosition() (result int32, row int32, column int32, err
 // [ column_span ] trans: everything, dir: out
 //
 func (v *TableCellIfc) GetRowColumnSpan() (row int32, column int32, row_span int32, column_span int32, err error) {
-	iv, err := _I.Get(153, "TableCell", "get_row_column_span")
+	iv, err := _I.Get(153, "TableCell", "get_row_column_span", 98, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4435,7 +4435,7 @@ func (v *TableCellIfc) GetRowColumnSpan() (row int32, column int32, row_span int
 // [ result ] trans: everything
 //
 func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/, err error) {
-	iv, err := _I.Get(154, "TableCell", "get_row_header_cells")
+	iv, err := _I.Get(154, "TableCell", "get_row_header_cells", 98, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4455,7 +4455,7 @@ func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2
 // [ result ] trans: nothing
 //
 func (v *TableCellIfc) GetRowSpan() (result int32, err error) {
-	iv, err := _I.Get(155, "TableCell", "get_row_span")
+	iv, err := _I.Get(155, "TableCell", "get_row_span", 98, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4475,7 +4475,7 @@ func (v *TableCellIfc) GetRowSpan() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v *TableCellIfc) GetTable() (result Accessible, err error) {
-	iv, err := _I.Get(156, "TableCell", "get_table")
+	iv, err := _I.Get(156, "TableCell", "get_table", 98, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4513,7 +4513,7 @@ func TextGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v *TextIfc) AddSelection(start_offset int32, end_offset int32) (result bool, err error) {
-	iv, err := _I.Get(157, "Text", "add_selection")
+	iv, err := _I.Get(157, "Text", "add_selection", 99, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4543,7 +4543,7 @@ func (v *TextIfc) AddSelection(start_offset int32, end_offset int32) (result boo
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetAttributeRun(offset int32, include_defaults bool) (result g.HashTable, start_offset int32, end_offset int32, err error) {
-	iv, err := _I.Get(158, "Text", "get_attribute_run")
+	iv, err := _I.Get(158, "Text", "get_attribute_run", 99, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4575,7 +4575,7 @@ func (v *TextIfc) GetAttributeRun(offset int32, include_defaults bool) (result g
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetTextAttributeValue(offset int32, attribute_name string) (result string, err error) {
-	iv, err := _I.Get(159, "Text", "get_text_attribute_value")
+	iv, err := _I.Get(159, "Text", "get_text_attribute_value", 99, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4607,7 +4607,7 @@ func (v *TextIfc) GetTextAttributeValue(offset int32, attribute_name string) (re
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetTextAttributes(offset int32) (result g.HashTable, start_offset int32, end_offset int32, err error) {
-	iv, err := _I.Get(160, "Text", "get_text_attributes")
+	iv, err := _I.Get(160, "Text", "get_text_attributes", 99, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4646,7 +4646,7 @@ func (v *TextIfc) GetTextAttributes(offset int32) (result g.HashTable, start_off
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetBoundedRanges(x int32, y int32, width int32, height int32, type1 CoordTypeEnum, clipTypeX TextClipTypeEnum, clipTypeY TextClipTypeEnum) (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/, err error) {
-	iv, err := _I.Get(161, "Text", "get_bounded_ranges")
+	iv, err := _I.Get(161, "Text", "get_bounded_ranges", 99, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4673,7 +4673,7 @@ func (v *TextIfc) GetBoundedRanges(x int32, y int32, width int32, height int32, 
 // [ result ] trans: nothing
 //
 func (v *TextIfc) GetCaretOffset() (result int32, err error) {
-	iv, err := _I.Get(162, "Text", "get_caret_offset")
+	iv, err := _I.Get(162, "Text", "get_caret_offset", 99, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4695,7 +4695,7 @@ func (v *TextIfc) GetCaretOffset() (result int32, err error) {
 // [ result ] trans: nothing
 //
 func (v *TextIfc) GetCharacterAtOffset(offset int32) (result uint32, err error) {
-	iv, err := _I.Get(163, "Text", "get_character_at_offset")
+	iv, err := _I.Get(163, "Text", "get_character_at_offset", 99, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4716,7 +4716,7 @@ func (v *TextIfc) GetCharacterAtOffset(offset int32) (result uint32, err error) 
 // [ result ] trans: nothing
 //
 func (v *TextIfc) GetCharacterCount() (result int32, err error) {
-	iv, err := _I.Get(164, "Text", "get_character_count")
+	iv, err := _I.Get(164, "Text", "get_character_count", 99, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4740,7 +4740,7 @@ func (v *TextIfc) GetCharacterCount() (result int32, err error) {
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetCharacterExtents(offset int32, type1 CoordTypeEnum) (result Rect, err error) {
-	iv, err := _I.Get(165, "Text", "get_character_extents")
+	iv, err := _I.Get(165, "Text", "get_character_extents", 99, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4762,7 +4762,7 @@ func (v *TextIfc) GetCharacterExtents(offset int32, type1 CoordTypeEnum) (result
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetDefaultAttributes() (result g.HashTable, err error) {
-	iv, err := _I.Get(166, "Text", "get_default_attributes")
+	iv, err := _I.Get(166, "Text", "get_default_attributes", 99, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4782,7 +4782,7 @@ func (v *TextIfc) GetDefaultAttributes() (result g.HashTable, err error) {
 // [ result ] trans: nothing
 //
 func (v *TextIfc) GetNSelections() (result int32, err error) {
-	iv, err := _I.Get(167, "Text", "get_n_selections")
+	iv, err := _I.Get(167, "Text", "get_n_selections", 99, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4808,7 +4808,7 @@ func (v *TextIfc) GetNSelections() (result int32, err error) {
 // [ result ] trans: nothing
 //
 func (v *TextIfc) GetOffsetAtPoint(x int32, y int32, type1 CoordTypeEnum) (result int32, err error) {
-	iv, err := _I.Get(168, "Text", "get_offset_at_point")
+	iv, err := _I.Get(168, "Text", "get_offset_at_point", 99, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4837,7 +4837,7 @@ func (v *TextIfc) GetOffsetAtPoint(x int32, y int32, type1 CoordTypeEnum) (resul
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, type1 CoordTypeEnum) (result Rect, err error) {
-	iv, err := _I.Get(169, "Text", "get_range_extents")
+	iv, err := _I.Get(169, "Text", "get_range_extents", 99, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4862,7 +4862,7 @@ func (v *TextIfc) GetRangeExtents(start_offset int32, end_offset int32, type1 Co
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetSelection(selection_num int32) (result Range, err error) {
-	iv, err := _I.Get(170, "Text", "get_selection")
+	iv, err := _I.Get(170, "Text", "get_selection", 99, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4887,7 +4887,7 @@ func (v *TextIfc) GetSelection(selection_num int32) (result Range, err error) {
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetStringAtOffset(offset int32, granularity TextGranularityEnum) (result TextRange, err error) {
-	iv, err := _I.Get(171, "Text", "get_string_at_offset")
+	iv, err := _I.Get(171, "Text", "get_string_at_offset", 99, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4913,7 +4913,7 @@ func (v *TextIfc) GetStringAtOffset(offset int32, granularity TextGranularityEnu
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetText(start_offset int32, end_offset int32) (result string, err error) {
-	iv, err := _I.Get(172, "Text", "get_text")
+	iv, err := _I.Get(172, "Text", "get_text", 99, 15, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4939,7 +4939,7 @@ func (v *TextIfc) GetText(start_offset int32, end_offset int32) (result string, 
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetTextAfterOffset(offset int32, type1 TextBoundaryTypeEnum) (result TextRange, err error) {
-	iv, err := _I.Get(173, "Text", "get_text_after_offset")
+	iv, err := _I.Get(173, "Text", "get_text_after_offset", 99, 16, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4967,7 +4967,7 @@ func (v *TextIfc) GetTextAfterOffset(offset int32, type1 TextBoundaryTypeEnum) (
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetTextAtOffset(offset int32, type1 TextBoundaryTypeEnum) (result TextRange, err error) {
-	iv, err := _I.Get(174, "Text", "get_text_at_offset")
+	iv, err := _I.Get(174, "Text", "get_text_at_offset", 99, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4993,7 +4993,7 @@ func (v *TextIfc) GetTextAtOffset(offset int32, type1 TextBoundaryTypeEnum) (res
 // [ result ] trans: everything
 //
 func (v *TextIfc) GetTextBeforeOffset(offset int32, type1 TextBoundaryTypeEnum) (result TextRange, err error) {
-	iv, err := _I.Get(175, "Text", "get_text_before_offset")
+	iv, err := _I.Get(175, "Text", "get_text_before_offset", 99, 18, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5017,7 +5017,7 @@ func (v *TextIfc) GetTextBeforeOffset(offset int32, type1 TextBoundaryTypeEnum) 
 // [ result ] trans: nothing
 //
 func (v *TextIfc) RemoveSelection(selection_num int32) (result bool, err error) {
-	iv, err := _I.Get(176, "Text", "remove_selection")
+	iv, err := _I.Get(176, "Text", "remove_selection", 99, 19, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5040,7 +5040,7 @@ func (v *TextIfc) RemoveSelection(selection_num int32) (result bool, err error) 
 // [ result ] trans: nothing
 //
 func (v *TextIfc) SetCaretOffset(new_offset int32) (result bool, err error) {
-	iv, err := _I.Get(177, "Text", "set_caret_offset")
+	iv, err := _I.Get(177, "Text", "set_caret_offset", 99, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5067,7 +5067,7 @@ func (v *TextIfc) SetCaretOffset(new_offset int32) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v *TextIfc) SetSelection(selection_num int32, start_offset int32, end_offset int32) (result bool, err error) {
-	iv, err := _I.Get(178, "Text", "set_selection")
+	iv, err := _I.Get(178, "Text", "set_selection", 99, 21, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5165,7 +5165,7 @@ func ValueGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v *ValueIfc) GetCurrentValue() (result float64, err error) {
-	iv, err := _I.Get(179, "Value", "get_current_value")
+	iv, err := _I.Get(179, "Value", "get_current_value", 104, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5185,7 +5185,7 @@ func (v *ValueIfc) GetCurrentValue() (result float64, err error) {
 // [ result ] trans: nothing
 //
 func (v *ValueIfc) GetMaximumValue() (result float64, err error) {
-	iv, err := _I.Get(180, "Value", "get_maximum_value")
+	iv, err := _I.Get(180, "Value", "get_maximum_value", 104, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5205,7 +5205,7 @@ func (v *ValueIfc) GetMaximumValue() (result float64, err error) {
 // [ result ] trans: nothing
 //
 func (v *ValueIfc) GetMinimumIncrement() (result float64, err error) {
-	iv, err := _I.Get(181, "Value", "get_minimum_increment")
+	iv, err := _I.Get(181, "Value", "get_minimum_increment", 104, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5225,7 +5225,7 @@ func (v *ValueIfc) GetMinimumIncrement() (result float64, err error) {
 // [ result ] trans: nothing
 //
 func (v *ValueIfc) GetMinimumValue() (result float64, err error) {
-	iv, err := _I.Get(182, "Value", "get_minimum_value")
+	iv, err := _I.Get(182, "Value", "get_minimum_value", 104, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5247,7 +5247,7 @@ func (v *ValueIfc) GetMinimumValue() (result float64, err error) {
 // [ result ] trans: nothing
 //
 func (v *ValueIfc) SetCurrentValue(new_value float64) (result bool, err error) {
-	iv, err := _I.Get(183, "Value", "set_current_value")
+	iv, err := _I.Get(183, "Value", "set_current_value", 104, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5272,7 +5272,7 @@ func (v *ValueIfc) SetCurrentValue(new_value float64) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func DeregisterDeviceEventListener(listener IDeviceListener, filter unsafe.Pointer) (result bool, err error) {
-	iv, err := _I.Get(184, "deregister_device_event_listener", "")
+	iv, err := _I.Get(184, "deregister_device_event_listener", "", 105, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -5305,7 +5305,7 @@ func DeregisterDeviceEventListener(listener IDeviceListener, filter unsafe.Point
 // [ result ] trans: nothing
 //
 func DeregisterKeystrokeListener(listener IDeviceListener, key_set int /*TODO_TYPE isPtr: true, tag: array*/, modmask uint32, event_types uint32) (result bool, err error) {
-	iv, err := _I.Get(185, "deregister_keystroke_listener", "")
+	iv, err := _I.Get(185, "deregister_keystroke_listener", "", 106, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -5330,7 +5330,7 @@ func DeregisterKeystrokeListener(listener IDeviceListener, key_set int /*TODO_TY
 // atspi_event_main
 //
 func EventMain() {
-	iv, err := _I.Get(186, "event_main", "")
+	iv, err := _I.Get(186, "event_main", "", 107, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5341,7 +5341,7 @@ func EventMain() {
 // atspi_event_quit
 //
 func EventQuit() {
-	iv, err := _I.Get(187, "event_quit", "")
+	iv, err := _I.Get(187, "event_quit", "", 108, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5354,7 +5354,7 @@ func EventQuit() {
 // [ result ] trans: nothing
 //
 func Exit() (result int32) {
-	iv, err := _I.Get(188, "exit", "")
+	iv, err := _I.Get(188, "exit", "", 109, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5376,7 +5376,7 @@ func Exit() (result int32) {
 // [ result ] trans: nothing
 //
 func GenerateKeyboardEvent(keyval int64, keystring string, synth_type KeySynthTypeEnum) (result bool, err error) {
-	iv, err := _I.Get(189, "generate_keyboard_event", "")
+	iv, err := _I.Get(189, "generate_keyboard_event", "", 110, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -5406,7 +5406,7 @@ func GenerateKeyboardEvent(keyval int64, keystring string, synth_type KeySynthTy
 // [ result ] trans: nothing
 //
 func GenerateMouseEvent(x int64, y int64, name string) (result bool, err error) {
-	iv, err := _I.Get(190, "generate_mouse_event", "")
+	iv, err := _I.Get(190, "generate_mouse_event", "", 111, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -5432,7 +5432,7 @@ func GenerateMouseEvent(x int64, y int64, name string) (result bool, err error) 
 // [ result ] trans: everything
 //
 func GetDesktop(i int32) (result Accessible) {
-	iv, err := _I.Get(191, "get_desktop", "")
+	iv, err := _I.Get(191, "get_desktop", "", 112, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5450,7 +5450,7 @@ func GetDesktop(i int32) (result Accessible) {
 // [ result ] trans: nothing
 //
 func GetDesktopCount() (result int32) {
-	iv, err := _I.Get(192, "get_desktop_count", "")
+	iv, err := _I.Get(192, "get_desktop_count", "", 113, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5466,7 +5466,7 @@ func GetDesktopCount() (result int32) {
 // [ result ] trans: everything
 //
 func GetDesktopList() (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/) {
-	iv, err := _I.Get(193, "get_desktop_list", "")
+	iv, err := _I.Get(193, "get_desktop_list", "", 114, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5482,7 +5482,7 @@ func GetDesktopList() (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/
 // [ result ] trans: nothing
 //
 func Init() (result int32) {
-	iv, err := _I.Get(194, "init", "")
+	iv, err := _I.Get(194, "init", "", 115, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5498,7 +5498,7 @@ func Init() (result int32) {
 // [ result ] trans: nothing
 //
 func IsInitialized() (result bool) {
-	iv, err := _I.Get(195, "is_initialized", "")
+	iv, err := _I.Get(195, "is_initialized", "", 116, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5520,7 +5520,7 @@ func IsInitialized() (result bool) {
 // [ result ] trans: nothing
 //
 func RegisterDeviceEventListener(listener IDeviceListener, event_types uint32, filter unsafe.Pointer) (result bool, err error) {
-	iv, err := _I.Get(196, "register_device_event_listener", "")
+	iv, err := _I.Get(196, "register_device_event_listener", "", 117, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -5556,7 +5556,7 @@ func RegisterDeviceEventListener(listener IDeviceListener, event_types uint32, f
 // [ result ] trans: nothing
 //
 func RegisterKeystrokeListener(listener IDeviceListener, key_set int /*TODO_TYPE isPtr: true, tag: array*/, modmask uint32, event_types uint32, sync_type KeyListenerSyncTypeFlags) (result bool, err error) {
-	iv, err := _I.Get(197, "register_keystroke_listener", "")
+	iv, err := _I.Get(197, "register_keystroke_listener", "", 118, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -5586,7 +5586,7 @@ func RegisterKeystrokeListener(listener IDeviceListener, key_set int /*TODO_TYPE
 // [ result ] trans: everything
 //
 func RoleGetName(role RoleEnum) (result string) {
-	iv, err := _I.Get(198, "role_get_name", "")
+	iv, err := _I.Get(198, "role_get_name", "", 119, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5604,7 +5604,7 @@ func RoleGetName(role RoleEnum) (result string) {
 // [ cnx ] trans: nothing
 //
 func SetMainContext(cnx g.MainContext) {
-	iv, err := _I.Get(199, "set_main_context", "")
+	iv, err := _I.Get(199, "set_main_context", "", 120, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5621,7 +5621,7 @@ func SetMainContext(cnx g.MainContext) {
 // [ startup_time ] trans: nothing
 //
 func SetTimeout(val int32, startup_time int32) {
-	iv, err := _I.Get(200, "set_timeout", "")
+	iv, err := _I.Get(200, "set_timeout", "", 121, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

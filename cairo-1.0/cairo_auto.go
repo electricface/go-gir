@@ -551,7 +551,7 @@ func RectangleIntGetType() gi.GType {
 // cairo_image_surface_create
 //
 func ImageSurfaceCreate() {
-	iv, err := _I.Get(0, "image_surface_create", "")
+	iv, err := _I.Get(0, "image_surface_create", "", 33, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

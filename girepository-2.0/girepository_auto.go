@@ -80,7 +80,7 @@ func BaseInfoGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v BaseInfo) Equal(info2 BaseInfo) (result bool) {
-	iv, err := _I.Get(0, "BaseInfo", "equal")
+	iv, err := _I.Get(0, "BaseInfo", "equal", 3, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -101,7 +101,7 @@ func (v BaseInfo) Equal(info2 BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func (v BaseInfo) GetAttribute(name string) (result string) {
-	iv, err := _I.Get(1, "BaseInfo", "get_attribute")
+	iv, err := _I.Get(1, "BaseInfo", "get_attribute", 3, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -122,7 +122,7 @@ func (v BaseInfo) GetAttribute(name string) (result string) {
 // [ result ] trans: nothing
 //
 func (v BaseInfo) GetContainer() (result BaseInfo) {
-	iv, err := _I.Get(2, "BaseInfo", "get_container")
+	iv, err := _I.Get(2, "BaseInfo", "get_container", 3, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -140,7 +140,7 @@ func (v BaseInfo) GetContainer() (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func (v BaseInfo) GetName() (result string) {
-	iv, err := _I.Get(3, "BaseInfo", "get_name")
+	iv, err := _I.Get(3, "BaseInfo", "get_name", 3, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -158,7 +158,7 @@ func (v BaseInfo) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v BaseInfo) GetNamespace() (result string) {
-	iv, err := _I.Get(4, "BaseInfo", "get_namespace")
+	iv, err := _I.Get(4, "BaseInfo", "get_namespace", 3, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -176,7 +176,7 @@ func (v BaseInfo) GetNamespace() (result string) {
 // [ result ] trans: nothing
 //
 func (v BaseInfo) GetType() (result InfoTypeEnum) {
-	iv, err := _I.Get(5, "BaseInfo", "get_type")
+	iv, err := _I.Get(5, "BaseInfo", "get_type", 3, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -194,7 +194,7 @@ func (v BaseInfo) GetType() (result InfoTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v BaseInfo) GetTypelib() (result Typelib) {
-	iv, err := _I.Get(6, "BaseInfo", "get_typelib")
+	iv, err := _I.Get(6, "BaseInfo", "get_typelib", 3, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -212,7 +212,7 @@ func (v BaseInfo) GetTypelib() (result Typelib) {
 // [ result ] trans: nothing
 //
 func (v BaseInfo) IsDeprecated() (result bool) {
-	iv, err := _I.Get(7, "BaseInfo", "is_deprecated")
+	iv, err := _I.Get(7, "BaseInfo", "is_deprecated", 3, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -236,7 +236,7 @@ func (v BaseInfo) IsDeprecated() (result bool) {
 // [ result ] trans: nothing
 //
 func (v BaseInfo) IterateAttributes(iterator int /*TODO:TYPE*/) (result bool, name string, value string) {
-	iv, err := _I.Get(8, "BaseInfo", "iterate_attributes")
+	iv, err := _I.Get(8, "BaseInfo", "iterate_attributes", 3, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -351,7 +351,7 @@ func RepositoryGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func RepositoryDump1(arg string) (result bool, err error) {
-	iv, err := _I.Get(9, "Repository", "dump")
+	iv, err := _I.Get(9, "Repository", "dump", 8, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -373,7 +373,7 @@ func RepositoryDump1(arg string) (result bool, err error) {
 // [ directory ] trans: nothing
 //
 func RepositoryPrependLibraryPath1(directory string) {
-	iv, err := _I.Get(14, "Repository", "prepend_library_path")
+	iv, err := _I.Get(14, "Repository", "prepend_library_path", 8, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -390,7 +390,7 @@ func RepositoryPrependLibraryPath1(directory string) {
 // [ directory ] trans: nothing
 //
 func RepositoryPrependSearchPath1(directory string) {
-	iv, err := _I.Get(15, "Repository", "prepend_search_path")
+	iv, err := _I.Get(15, "Repository", "prepend_search_path", 8, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -409,7 +409,7 @@ func RepositoryPrependSearchPath1(directory string) {
 // [ result ] trans: everything
 //
 func (v Repository) EnumerateVersions(namespace_ string) (result g.List) {
-	iv, err := _I.Get(16, "Repository", "enumerate_versions")
+	iv, err := _I.Get(16, "Repository", "enumerate_versions", 8, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -432,7 +432,7 @@ func (v Repository) EnumerateVersions(namespace_ string) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Repository) FindByErrorDomain(domain uint32) (result BaseInfo) {
-	iv, err := _I.Get(17, "Repository", "find_by_error_domain")
+	iv, err := _I.Get(17, "Repository", "find_by_error_domain", 8, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -453,7 +453,7 @@ func (v Repository) FindByErrorDomain(domain uint32) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func (v Repository) FindByGtype(gtype gi.GType) (result BaseInfo) {
-	iv, err := _I.Get(18, "Repository", "find_by_gtype")
+	iv, err := _I.Get(18, "Repository", "find_by_gtype", 8, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -476,7 +476,7 @@ func (v Repository) FindByGtype(gtype gi.GType) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func (v Repository) FindByName(namespace_ string, name string) (result BaseInfo) {
-	iv, err := _I.Get(19, "Repository", "find_by_name")
+	iv, err := _I.Get(19, "Repository", "find_by_name", 8, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -502,7 +502,7 @@ func (v Repository) FindByName(namespace_ string, name string) (result BaseInfo)
 // [ result ] trans: nothing
 //
 func (v Repository) GetCPrefix(namespace_ string) (result string) {
-	iv, err := _I.Get(20, "Repository", "get_c_prefix")
+	iv, err := _I.Get(20, "Repository", "get_c_prefix", 8, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -525,7 +525,7 @@ func (v Repository) GetCPrefix(namespace_ string) (result string) {
 // [ result ] trans: everything
 //
 func (v Repository) GetDependencies(namespace_ string) (result gi.CStrArray) {
-	iv, err := _I.Get(21, "Repository", "get_dependencies")
+	iv, err := _I.Get(21, "Repository", "get_dependencies", 8, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -549,7 +549,7 @@ func (v Repository) GetDependencies(namespace_ string) (result gi.CStrArray) {
 // [ result ] trans: everything
 //
 func (v Repository) GetImmediateDependencies(namespace_ string) (result gi.CStrArray) {
-	iv, err := _I.Get(22, "Repository", "get_immediate_dependencies")
+	iv, err := _I.Get(22, "Repository", "get_immediate_dependencies", 8, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -575,7 +575,7 @@ func (v Repository) GetImmediateDependencies(namespace_ string) (result gi.CStrA
 // [ result ] trans: everything
 //
 func (v Repository) GetInfo(namespace_ string, index int32) (result BaseInfo) {
-	iv, err := _I.Get(23, "Repository", "get_info")
+	iv, err := _I.Get(23, "Repository", "get_info", 8, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -597,7 +597,7 @@ func (v Repository) GetInfo(namespace_ string, index int32) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func (v Repository) GetLoadedNamespaces() (result gi.CStrArray) {
-	iv, err := _I.Get(24, "Repository", "get_loaded_namespaces")
+	iv, err := _I.Get(24, "Repository", "get_loaded_namespaces", 8, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -618,7 +618,7 @@ func (v Repository) GetLoadedNamespaces() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v Repository) GetNInfos(namespace_ string) (result int32) {
-	iv, err := _I.Get(25, "Repository", "get_n_infos")
+	iv, err := _I.Get(25, "Repository", "get_n_infos", 8, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -641,7 +641,7 @@ func (v Repository) GetNInfos(namespace_ string) (result int32) {
 // [ result ] trans: nothing
 //
 func (v Repository) GetSharedLibrary(namespace_ string) (result string) {
-	iv, err := _I.Get(26, "Repository", "get_shared_library")
+	iv, err := _I.Get(26, "Repository", "get_shared_library", 8, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -664,7 +664,7 @@ func (v Repository) GetSharedLibrary(namespace_ string) (result string) {
 // [ result ] trans: nothing
 //
 func (v Repository) GetTypelibPath(namespace_ string) (result string) {
-	iv, err := _I.Get(27, "Repository", "get_typelib_path")
+	iv, err := _I.Get(27, "Repository", "get_typelib_path", 8, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -687,7 +687,7 @@ func (v Repository) GetTypelibPath(namespace_ string) (result string) {
 // [ result ] trans: nothing
 //
 func (v Repository) GetVersion(namespace_ string) (result string) {
-	iv, err := _I.Get(28, "Repository", "get_version")
+	iv, err := _I.Get(28, "Repository", "get_version", 8, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -712,7 +712,7 @@ func (v Repository) GetVersion(namespace_ string) (result string) {
 // [ result ] trans: nothing
 //
 func (v Repository) IsRegistered(namespace_ string, version string) (result bool) {
-	iv, err := _I.Get(29, "Repository", "is_registered")
+	iv, err := _I.Get(29, "Repository", "is_registered", 8, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -740,7 +740,7 @@ func (v Repository) IsRegistered(namespace_ string, version string) (result bool
 // [ result ] trans: nothing
 //
 func (v Repository) LoadTypelib(typelib Typelib, flags RepositoryLoadFlags) (result string, err error) {
-	iv, err := _I.Get(30, "Repository", "load_typelib")
+	iv, err := _I.Get(30, "Repository", "load_typelib", 8, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -768,7 +768,7 @@ func (v Repository) LoadTypelib(typelib Typelib, flags RepositoryLoadFlags) (res
 // [ result ] trans: nothing
 //
 func (v Repository) Require(namespace_ string, version string, flags RepositoryLoadFlags) (result Typelib, err error) {
-	iv, err := _I.Get(31, "Repository", "require")
+	iv, err := _I.Get(31, "Repository", "require", 8, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -803,7 +803,7 @@ func (v Repository) Require(namespace_ string, version string, flags RepositoryL
 // [ result ] trans: nothing
 //
 func (v Repository) RequirePrivate(typelib_dir string, namespace_ string, version string, flags RepositoryLoadFlags) (result Typelib, err error) {
-	iv, err := _I.Get(32, "Repository", "require_private")
+	iv, err := _I.Get(32, "Repository", "require_private", 8, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -942,7 +942,7 @@ func TypelibGetType() gi.GType {
 // g_typelib_free
 //
 func (v Typelib) Free() {
-	iv, err := _I.Get(33, "Typelib", "free")
+	iv, err := _I.Get(33, "Typelib", "free", 16, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -957,7 +957,7 @@ func (v Typelib) Free() {
 // [ result ] trans: nothing
 //
 func (v Typelib) GetNamespace() (result string) {
-	iv, err := _I.Get(34, "Typelib", "get_namespace")
+	iv, err := _I.Get(34, "Typelib", "get_namespace", 16, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -979,7 +979,7 @@ func (v Typelib) GetNamespace() (result string) {
 // [ result ] trans: nothing
 //
 func (v Typelib) Symbol(symbol_name string, symbol unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(35, "Typelib", "symbol")
+	iv, err := _I.Get(35, "Typelib", "symbol", 16, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1028,7 +1028,7 @@ func VFuncInfoFlagsGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func ArgInfoGetClosure(info BaseInfo) (result int32) {
-	iv, err := _I.Get(36, "arg_info_get_closure", "")
+	iv, err := _I.Get(36, "arg_info_get_closure", "", 19, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1048,7 +1048,7 @@ func ArgInfoGetClosure(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func ArgInfoGetDestroy(info BaseInfo) (result int32) {
-	iv, err := _I.Get(37, "arg_info_get_destroy", "")
+	iv, err := _I.Get(37, "arg_info_get_destroy", "", 20, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1068,7 +1068,7 @@ func ArgInfoGetDestroy(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func ArgInfoGetDirection(info BaseInfo) (result DirectionEnum) {
-	iv, err := _I.Get(38, "arg_info_get_direction", "")
+	iv, err := _I.Get(38, "arg_info_get_direction", "", 21, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1088,7 +1088,7 @@ func ArgInfoGetDirection(info BaseInfo) (result DirectionEnum) {
 // [ result ] trans: nothing
 //
 func ArgInfoGetOwnershipTransfer(info BaseInfo) (result TransferEnum) {
-	iv, err := _I.Get(39, "arg_info_get_ownership_transfer", "")
+	iv, err := _I.Get(39, "arg_info_get_ownership_transfer", "", 22, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1108,7 +1108,7 @@ func ArgInfoGetOwnershipTransfer(info BaseInfo) (result TransferEnum) {
 // [ result ] trans: nothing
 //
 func ArgInfoGetScope(info BaseInfo) (result ScopeTypeEnum) {
-	iv, err := _I.Get(40, "arg_info_get_scope", "")
+	iv, err := _I.Get(40, "arg_info_get_scope", "", 23, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1128,7 +1128,7 @@ func ArgInfoGetScope(info BaseInfo) (result ScopeTypeEnum) {
 // [ result ] trans: everything
 //
 func ArgInfoGetType(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(41, "arg_info_get_type", "")
+	iv, err := _I.Get(41, "arg_info_get_type", "", 24, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1148,7 +1148,7 @@ func ArgInfoGetType(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func ArgInfoIsCallerAllocates(info BaseInfo) (result bool) {
-	iv, err := _I.Get(42, "arg_info_is_caller_allocates", "")
+	iv, err := _I.Get(42, "arg_info_is_caller_allocates", "", 25, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1168,7 +1168,7 @@ func ArgInfoIsCallerAllocates(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func ArgInfoIsOptional(info BaseInfo) (result bool) {
-	iv, err := _I.Get(43, "arg_info_is_optional", "")
+	iv, err := _I.Get(43, "arg_info_is_optional", "", 26, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1188,7 +1188,7 @@ func ArgInfoIsOptional(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func ArgInfoIsReturnValue(info BaseInfo) (result bool) {
-	iv, err := _I.Get(44, "arg_info_is_return_value", "")
+	iv, err := _I.Get(44, "arg_info_is_return_value", "", 27, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1208,7 +1208,7 @@ func ArgInfoIsReturnValue(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func ArgInfoIsSkip(info BaseInfo) (result bool) {
-	iv, err := _I.Get(45, "arg_info_is_skip", "")
+	iv, err := _I.Get(45, "arg_info_is_skip", "", 28, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1228,7 +1228,7 @@ func ArgInfoIsSkip(info BaseInfo) (result bool) {
 // [ type1 ] trans: nothing, dir: out
 //
 func ArgInfoLoadType(info BaseInfo, type1 BaseInfo) {
-	iv, err := _I.Get(46, "arg_info_load_type", "")
+	iv, err := _I.Get(46, "arg_info_load_type", "", 29, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1246,7 +1246,7 @@ func ArgInfoLoadType(info BaseInfo, type1 BaseInfo) {
 // [ result ] trans: nothing
 //
 func ArgInfoMayBeNull(info BaseInfo) (result bool) {
-	iv, err := _I.Get(47, "arg_info_may_be_null", "")
+	iv, err := _I.Get(47, "arg_info_may_be_null", "", 30, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1266,7 +1266,7 @@ func ArgInfoMayBeNull(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func CallableInfoCanThrowGerror(info BaseInfo) (result bool) {
-	iv, err := _I.Get(48, "callable_info_can_throw_gerror", "")
+	iv, err := _I.Get(48, "callable_info_can_throw_gerror", "", 31, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1288,7 +1288,7 @@ func CallableInfoCanThrowGerror(info BaseInfo) (result bool) {
 // [ result ] trans: everything
 //
 func CallableInfoGetArg(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(49, "callable_info_get_arg", "")
+	iv, err := _I.Get(49, "callable_info_get_arg", "", 32, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1309,7 +1309,7 @@ func CallableInfoGetArg(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func CallableInfoGetCallerOwns(info BaseInfo) (result TransferEnum) {
-	iv, err := _I.Get(50, "callable_info_get_caller_owns", "")
+	iv, err := _I.Get(50, "callable_info_get_caller_owns", "", 33, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1329,7 +1329,7 @@ func CallableInfoGetCallerOwns(info BaseInfo) (result TransferEnum) {
 // [ result ] trans: nothing
 //
 func CallableInfoGetInstanceOwnershipTransfer(info BaseInfo) (result TransferEnum) {
-	iv, err := _I.Get(51, "callable_info_get_instance_ownership_transfer", "")
+	iv, err := _I.Get(51, "callable_info_get_instance_ownership_transfer", "", 34, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1349,7 +1349,7 @@ func CallableInfoGetInstanceOwnershipTransfer(info BaseInfo) (result TransferEnu
 // [ result ] trans: nothing
 //
 func CallableInfoGetNArgs(info BaseInfo) (result int32) {
-	iv, err := _I.Get(52, "callable_info_get_n_args", "")
+	iv, err := _I.Get(52, "callable_info_get_n_args", "", 35, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1371,7 +1371,7 @@ func CallableInfoGetNArgs(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func CallableInfoGetReturnAttribute(info BaseInfo, name string) (result string) {
-	iv, err := _I.Get(53, "callable_info_get_return_attribute", "")
+	iv, err := _I.Get(53, "callable_info_get_return_attribute", "", 36, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1394,7 +1394,7 @@ func CallableInfoGetReturnAttribute(info BaseInfo, name string) (result string) 
 // [ result ] trans: everything
 //
 func CallableInfoGetReturnType(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(54, "callable_info_get_return_type", "")
+	iv, err := _I.Get(54, "callable_info_get_return_type", "", 37, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1430,7 +1430,7 @@ func CallableInfoGetReturnType(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func CallableInfoInvoke(info BaseInfo, function unsafe.Pointer, in_args unsafe.Pointer, n_in_args int32, out_args unsafe.Pointer, n_out_args int32, return_value Argument, is_method bool, throws bool) (result bool, err error) {
-	iv, err := _I.Get(55, "callable_info_invoke", "")
+	iv, err := _I.Get(55, "callable_info_invoke", "", 38, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -1460,7 +1460,7 @@ func CallableInfoInvoke(info BaseInfo, function unsafe.Pointer, in_args unsafe.P
 // [ result ] trans: nothing
 //
 func CallableInfoIsMethod(info BaseInfo) (result bool) {
-	iv, err := _I.Get(56, "callable_info_is_method", "")
+	iv, err := _I.Get(56, "callable_info_is_method", "", 39, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1486,7 +1486,7 @@ func CallableInfoIsMethod(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func CallableInfoIterateReturnAttributes(info BaseInfo, iterator int /*TODO:TYPE*/) (result bool, name string, value string) {
-	iv, err := _I.Get(57, "callable_info_iterate_return_attributes", "")
+	iv, err := _I.Get(57, "callable_info_iterate_return_attributes", "", 40, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1513,7 +1513,7 @@ func CallableInfoIterateReturnAttributes(info BaseInfo, iterator int /*TODO:TYPE
 // [ arg ] trans: nothing, dir: out
 //
 func CallableInfoLoadArg(info BaseInfo, n int32, arg BaseInfo) {
-	iv, err := _I.Get(58, "callable_info_load_arg", "")
+	iv, err := _I.Get(58, "callable_info_load_arg", "", 41, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1532,7 +1532,7 @@ func CallableInfoLoadArg(info BaseInfo, n int32, arg BaseInfo) {
 // [ type1 ] trans: nothing, dir: out
 //
 func CallableInfoLoadReturnType(info BaseInfo, type1 BaseInfo) {
-	iv, err := _I.Get(59, "callable_info_load_return_type", "")
+	iv, err := _I.Get(59, "callable_info_load_return_type", "", 42, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1550,7 +1550,7 @@ func CallableInfoLoadReturnType(info BaseInfo, type1 BaseInfo) {
 // [ result ] trans: nothing
 //
 func CallableInfoMayReturnNull(info BaseInfo) (result bool) {
-	iv, err := _I.Get(60, "callable_info_may_return_null", "")
+	iv, err := _I.Get(60, "callable_info_may_return_null", "", 43, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1570,7 +1570,7 @@ func CallableInfoMayReturnNull(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func CallableInfoSkipReturn(info BaseInfo) (result bool) {
-	iv, err := _I.Get(61, "callable_info_skip_return", "")
+	iv, err := _I.Get(61, "callable_info_skip_return", "", 44, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1590,7 +1590,7 @@ func CallableInfoSkipReturn(info BaseInfo) (result bool) {
 // [ result ] trans: everything
 //
 func ConstantInfoGetType(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(62, "constant_info_get_type", "")
+	iv, err := _I.Get(62, "constant_info_get_type", "", 45, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1610,7 +1610,7 @@ func ConstantInfoGetType(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func EnumInfoGetErrorDomain(info BaseInfo) (result string) {
-	iv, err := _I.Get(63, "enum_info_get_error_domain", "")
+	iv, err := _I.Get(63, "enum_info_get_error_domain", "", 46, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1632,7 +1632,7 @@ func EnumInfoGetErrorDomain(info BaseInfo) (result string) {
 // [ result ] trans: everything
 //
 func EnumInfoGetMethod(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(64, "enum_info_get_method", "")
+	iv, err := _I.Get(64, "enum_info_get_method", "", 47, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1653,7 +1653,7 @@ func EnumInfoGetMethod(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func EnumInfoGetNMethods(info BaseInfo) (result int32) {
-	iv, err := _I.Get(65, "enum_info_get_n_methods", "")
+	iv, err := _I.Get(65, "enum_info_get_n_methods", "", 48, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1673,7 +1673,7 @@ func EnumInfoGetNMethods(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func EnumInfoGetNValues(info BaseInfo) (result int32) {
-	iv, err := _I.Get(66, "enum_info_get_n_values", "")
+	iv, err := _I.Get(66, "enum_info_get_n_values", "", 49, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1693,7 +1693,7 @@ func EnumInfoGetNValues(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func EnumInfoGetStorageType(info BaseInfo) (result TypeTagEnum) {
-	iv, err := _I.Get(67, "enum_info_get_storage_type", "")
+	iv, err := _I.Get(67, "enum_info_get_storage_type", "", 50, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1715,7 +1715,7 @@ func EnumInfoGetStorageType(info BaseInfo) (result TypeTagEnum) {
 // [ result ] trans: everything
 //
 func EnumInfoGetValue(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(68, "enum_info_get_value", "")
+	iv, err := _I.Get(68, "enum_info_get_value", "", 51, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1736,7 +1736,7 @@ func EnumInfoGetValue(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func FieldInfoGetFlags(info BaseInfo) (result FieldInfoFlags) {
-	iv, err := _I.Get(69, "field_info_get_flags", "")
+	iv, err := _I.Get(69, "field_info_get_flags", "", 52, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1756,7 +1756,7 @@ func FieldInfoGetFlags(info BaseInfo) (result FieldInfoFlags) {
 // [ result ] trans: nothing
 //
 func FieldInfoGetOffset(info BaseInfo) (result int32) {
-	iv, err := _I.Get(70, "field_info_get_offset", "")
+	iv, err := _I.Get(70, "field_info_get_offset", "", 53, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1776,7 +1776,7 @@ func FieldInfoGetOffset(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func FieldInfoGetSize(info BaseInfo) (result int32) {
-	iv, err := _I.Get(71, "field_info_get_size", "")
+	iv, err := _I.Get(71, "field_info_get_size", "", 54, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1796,7 +1796,7 @@ func FieldInfoGetSize(info BaseInfo) (result int32) {
 // [ result ] trans: everything
 //
 func FieldInfoGetType(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(72, "field_info_get_type", "")
+	iv, err := _I.Get(72, "field_info_get_type", "", 55, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1816,7 +1816,7 @@ func FieldInfoGetType(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func FunctionInfoGetFlags(info BaseInfo) (result FunctionInfoFlags) {
-	iv, err := _I.Get(73, "function_info_get_flags", "")
+	iv, err := _I.Get(73, "function_info_get_flags", "", 56, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1836,7 +1836,7 @@ func FunctionInfoGetFlags(info BaseInfo) (result FunctionInfoFlags) {
 // [ result ] trans: everything
 //
 func FunctionInfoGetProperty(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(74, "function_info_get_property", "")
+	iv, err := _I.Get(74, "function_info_get_property", "", 57, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1856,7 +1856,7 @@ func FunctionInfoGetProperty(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func FunctionInfoGetSymbol(info BaseInfo) (result string) {
-	iv, err := _I.Get(75, "function_info_get_symbol", "")
+	iv, err := _I.Get(75, "function_info_get_symbol", "", 58, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1876,7 +1876,7 @@ func FunctionInfoGetSymbol(info BaseInfo) (result string) {
 // [ result ] trans: everything
 //
 func FunctionInfoGetVfunc(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(76, "function_info_get_vfunc", "")
+	iv, err := _I.Get(76, "function_info_get_vfunc", "", 59, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1902,7 +1902,7 @@ func FunctionInfoGetVfunc(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func InfoNew(type1 InfoTypeEnum, container BaseInfo, typelib Typelib, offset uint32) (result BaseInfo) {
-	iv, err := _I.Get(77, "info_new", "")
+	iv, err := _I.Get(77, "info_new", "", 60, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1925,7 +1925,7 @@ func InfoNew(type1 InfoTypeEnum, container BaseInfo, typelib Typelib, offset uin
 // [ result ] trans: nothing
 //
 func InfoTypeToString(type1 InfoTypeEnum) (result string) {
-	iv, err := _I.Get(78, "info_type_to_string", "")
+	iv, err := _I.Get(78, "info_type_to_string", "", 61, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1947,7 +1947,7 @@ func InfoTypeToString(type1 InfoTypeEnum) (result string) {
 // [ result ] trans: everything
 //
 func InterfaceInfoFindMethod(info BaseInfo, name string) (result BaseInfo) {
-	iv, err := _I.Get(79, "interface_info_find_method", "")
+	iv, err := _I.Get(79, "interface_info_find_method", "", 62, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1972,7 +1972,7 @@ func InterfaceInfoFindMethod(info BaseInfo, name string) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func InterfaceInfoFindSignal(info BaseInfo, name string) (result BaseInfo) {
-	iv, err := _I.Get(80, "interface_info_find_signal", "")
+	iv, err := _I.Get(80, "interface_info_find_signal", "", 63, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1997,7 +1997,7 @@ func InterfaceInfoFindSignal(info BaseInfo, name string) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func InterfaceInfoFindVfunc(info BaseInfo, name string) (result BaseInfo) {
-	iv, err := _I.Get(81, "interface_info_find_vfunc", "")
+	iv, err := _I.Get(81, "interface_info_find_vfunc", "", 64, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2022,7 +2022,7 @@ func InterfaceInfoFindVfunc(info BaseInfo, name string) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func InterfaceInfoGetConstant(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(82, "interface_info_get_constant", "")
+	iv, err := _I.Get(82, "interface_info_get_constant", "", 65, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2043,7 +2043,7 @@ func InterfaceInfoGetConstant(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func InterfaceInfoGetIfaceStruct(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(83, "interface_info_get_iface_struct", "")
+	iv, err := _I.Get(83, "interface_info_get_iface_struct", "", 66, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2065,7 +2065,7 @@ func InterfaceInfoGetIfaceStruct(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func InterfaceInfoGetMethod(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(84, "interface_info_get_method", "")
+	iv, err := _I.Get(84, "interface_info_get_method", "", 67, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2086,7 +2086,7 @@ func InterfaceInfoGetMethod(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func InterfaceInfoGetNConstants(info BaseInfo) (result int32) {
-	iv, err := _I.Get(85, "interface_info_get_n_constants", "")
+	iv, err := _I.Get(85, "interface_info_get_n_constants", "", 68, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2106,7 +2106,7 @@ func InterfaceInfoGetNConstants(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func InterfaceInfoGetNMethods(info BaseInfo) (result int32) {
-	iv, err := _I.Get(86, "interface_info_get_n_methods", "")
+	iv, err := _I.Get(86, "interface_info_get_n_methods", "", 69, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2126,7 +2126,7 @@ func InterfaceInfoGetNMethods(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func InterfaceInfoGetNPrerequisites(info BaseInfo) (result int32) {
-	iv, err := _I.Get(87, "interface_info_get_n_prerequisites", "")
+	iv, err := _I.Get(87, "interface_info_get_n_prerequisites", "", 70, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2146,7 +2146,7 @@ func InterfaceInfoGetNPrerequisites(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func InterfaceInfoGetNProperties(info BaseInfo) (result int32) {
-	iv, err := _I.Get(88, "interface_info_get_n_properties", "")
+	iv, err := _I.Get(88, "interface_info_get_n_properties", "", 71, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2166,7 +2166,7 @@ func InterfaceInfoGetNProperties(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func InterfaceInfoGetNSignals(info BaseInfo) (result int32) {
-	iv, err := _I.Get(89, "interface_info_get_n_signals", "")
+	iv, err := _I.Get(89, "interface_info_get_n_signals", "", 72, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2186,7 +2186,7 @@ func InterfaceInfoGetNSignals(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func InterfaceInfoGetNVfuncs(info BaseInfo) (result int32) {
-	iv, err := _I.Get(90, "interface_info_get_n_vfuncs", "")
+	iv, err := _I.Get(90, "interface_info_get_n_vfuncs", "", 73, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2208,7 +2208,7 @@ func InterfaceInfoGetNVfuncs(info BaseInfo) (result int32) {
 // [ result ] trans: everything
 //
 func InterfaceInfoGetPrerequisite(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(91, "interface_info_get_prerequisite", "")
+	iv, err := _I.Get(91, "interface_info_get_prerequisite", "", 74, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2231,7 +2231,7 @@ func InterfaceInfoGetPrerequisite(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func InterfaceInfoGetProperty(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(92, "interface_info_get_property", "")
+	iv, err := _I.Get(92, "interface_info_get_property", "", 75, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2254,7 +2254,7 @@ func InterfaceInfoGetProperty(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func InterfaceInfoGetSignal(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(93, "interface_info_get_signal", "")
+	iv, err := _I.Get(93, "interface_info_get_signal", "", 76, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2277,7 +2277,7 @@ func InterfaceInfoGetSignal(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func InterfaceInfoGetVfunc(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(94, "interface_info_get_vfunc", "")
+	iv, err := _I.Get(94, "interface_info_get_vfunc", "", 77, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2296,7 +2296,7 @@ func InterfaceInfoGetVfunc(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func InvokeErrorQuark() (result uint32) {
-	iv, err := _I.Get(95, "invoke_error_quark", "")
+	iv, err := _I.Get(95, "invoke_error_quark", "", 78, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2330,7 +2330,7 @@ func nvokeErrorGetType() gi.GType {
 // [ result ] trans: everything
 //
 func ObjectInfoFindMethod(info BaseInfo, name string) (result BaseInfo) {
-	iv, err := _I.Get(96, "object_info_find_method", "")
+	iv, err := _I.Get(96, "object_info_find_method", "", 80, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2357,7 +2357,7 @@ func ObjectInfoFindMethod(info BaseInfo, name string) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func ObjectInfoFindMethodUsingInterfaces(info BaseInfo, name string) (result BaseInfo, implementor BaseInfo) {
-	iv, err := _I.Get(97, "object_info_find_method_using_interfaces", "")
+	iv, err := _I.Get(97, "object_info_find_method_using_interfaces", "", 81, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2385,7 +2385,7 @@ func ObjectInfoFindMethodUsingInterfaces(info BaseInfo, name string) (result Bas
 // [ result ] trans: everything
 //
 func ObjectInfoFindSignal(info BaseInfo, name string) (result BaseInfo) {
-	iv, err := _I.Get(98, "object_info_find_signal", "")
+	iv, err := _I.Get(98, "object_info_find_signal", "", 82, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2410,7 +2410,7 @@ func ObjectInfoFindSignal(info BaseInfo, name string) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func ObjectInfoFindVfunc(info BaseInfo, name string) (result BaseInfo) {
-	iv, err := _I.Get(99, "object_info_find_vfunc", "")
+	iv, err := _I.Get(99, "object_info_find_vfunc", "", 83, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2437,7 +2437,7 @@ func ObjectInfoFindVfunc(info BaseInfo, name string) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func ObjectInfoFindVfuncUsingInterfaces(info BaseInfo, name string) (result BaseInfo, implementor BaseInfo) {
-	iv, err := _I.Get(100, "object_info_find_vfunc_using_interfaces", "")
+	iv, err := _I.Get(100, "object_info_find_vfunc_using_interfaces", "", 84, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2463,7 +2463,7 @@ func ObjectInfoFindVfuncUsingInterfaces(info BaseInfo, name string) (result Base
 // [ result ] trans: nothing
 //
 func ObjectInfoGetAbstract(info BaseInfo) (result bool) {
-	iv, err := _I.Get(101, "object_info_get_abstract", "")
+	iv, err := _I.Get(101, "object_info_get_abstract", "", 85, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2483,7 +2483,7 @@ func ObjectInfoGetAbstract(info BaseInfo) (result bool) {
 // [ result ] trans: everything
 //
 func ObjectInfoGetClassStruct(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(102, "object_info_get_class_struct", "")
+	iv, err := _I.Get(102, "object_info_get_class_struct", "", 86, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2505,7 +2505,7 @@ func ObjectInfoGetClassStruct(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func ObjectInfoGetConstant(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(103, "object_info_get_constant", "")
+	iv, err := _I.Get(103, "object_info_get_constant", "", 87, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2528,7 +2528,7 @@ func ObjectInfoGetConstant(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func ObjectInfoGetField(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(104, "object_info_get_field", "")
+	iv, err := _I.Get(104, "object_info_get_field", "", 88, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2549,7 +2549,7 @@ func ObjectInfoGetField(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetFundamental(info BaseInfo) (result bool) {
-	iv, err := _I.Get(105, "object_info_get_fundamental", "")
+	iv, err := _I.Get(105, "object_info_get_fundamental", "", 89, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2569,7 +2569,7 @@ func ObjectInfoGetFundamental(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetGetValueFunction(info BaseInfo) (result string) {
-	iv, err := _I.Get(106, "object_info_get_get_value_function", "")
+	iv, err := _I.Get(106, "object_info_get_get_value_function", "", 90, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2591,7 +2591,7 @@ func ObjectInfoGetGetValueFunction(info BaseInfo) (result string) {
 // [ result ] trans: everything
 //
 func ObjectInfoGetInterface(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(107, "object_info_get_interface", "")
+	iv, err := _I.Get(107, "object_info_get_interface", "", 91, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2614,7 +2614,7 @@ func ObjectInfoGetInterface(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func ObjectInfoGetMethod(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(108, "object_info_get_method", "")
+	iv, err := _I.Get(108, "object_info_get_method", "", 92, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2635,7 +2635,7 @@ func ObjectInfoGetMethod(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetNConstants(info BaseInfo) (result int32) {
-	iv, err := _I.Get(109, "object_info_get_n_constants", "")
+	iv, err := _I.Get(109, "object_info_get_n_constants", "", 93, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2655,7 +2655,7 @@ func ObjectInfoGetNConstants(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetNFields(info BaseInfo) (result int32) {
-	iv, err := _I.Get(110, "object_info_get_n_fields", "")
+	iv, err := _I.Get(110, "object_info_get_n_fields", "", 94, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2675,7 +2675,7 @@ func ObjectInfoGetNFields(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetNInterfaces(info BaseInfo) (result int32) {
-	iv, err := _I.Get(111, "object_info_get_n_interfaces", "")
+	iv, err := _I.Get(111, "object_info_get_n_interfaces", "", 95, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2695,7 +2695,7 @@ func ObjectInfoGetNInterfaces(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetNMethods(info BaseInfo) (result int32) {
-	iv, err := _I.Get(112, "object_info_get_n_methods", "")
+	iv, err := _I.Get(112, "object_info_get_n_methods", "", 96, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2715,7 +2715,7 @@ func ObjectInfoGetNMethods(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetNProperties(info BaseInfo) (result int32) {
-	iv, err := _I.Get(113, "object_info_get_n_properties", "")
+	iv, err := _I.Get(113, "object_info_get_n_properties", "", 97, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2735,7 +2735,7 @@ func ObjectInfoGetNProperties(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetNSignals(info BaseInfo) (result int32) {
-	iv, err := _I.Get(114, "object_info_get_n_signals", "")
+	iv, err := _I.Get(114, "object_info_get_n_signals", "", 98, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2755,7 +2755,7 @@ func ObjectInfoGetNSignals(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetNVfuncs(info BaseInfo) (result int32) {
-	iv, err := _I.Get(115, "object_info_get_n_vfuncs", "")
+	iv, err := _I.Get(115, "object_info_get_n_vfuncs", "", 99, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2775,7 +2775,7 @@ func ObjectInfoGetNVfuncs(info BaseInfo) (result int32) {
 // [ result ] trans: everything
 //
 func ObjectInfoGetParent(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(116, "object_info_get_parent", "")
+	iv, err := _I.Get(116, "object_info_get_parent", "", 100, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2797,7 +2797,7 @@ func ObjectInfoGetParent(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func ObjectInfoGetProperty(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(117, "object_info_get_property", "")
+	iv, err := _I.Get(117, "object_info_get_property", "", 101, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2818,7 +2818,7 @@ func ObjectInfoGetProperty(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetRefFunction(info BaseInfo) (result string) {
-	iv, err := _I.Get(118, "object_info_get_ref_function", "")
+	iv, err := _I.Get(118, "object_info_get_ref_function", "", 102, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2838,7 +2838,7 @@ func ObjectInfoGetRefFunction(info BaseInfo) (result string) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetSetValueFunction(info BaseInfo) (result string) {
-	iv, err := _I.Get(119, "object_info_get_set_value_function", "")
+	iv, err := _I.Get(119, "object_info_get_set_value_function", "", 103, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2860,7 +2860,7 @@ func ObjectInfoGetSetValueFunction(info BaseInfo) (result string) {
 // [ result ] trans: everything
 //
 func ObjectInfoGetSignal(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(120, "object_info_get_signal", "")
+	iv, err := _I.Get(120, "object_info_get_signal", "", 104, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2881,7 +2881,7 @@ func ObjectInfoGetSignal(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetTypeInit(info BaseInfo) (result string) {
-	iv, err := _I.Get(121, "object_info_get_type_init", "")
+	iv, err := _I.Get(121, "object_info_get_type_init", "", 105, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2901,7 +2901,7 @@ func ObjectInfoGetTypeInit(info BaseInfo) (result string) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetTypeName(info BaseInfo) (result string) {
-	iv, err := _I.Get(122, "object_info_get_type_name", "")
+	iv, err := _I.Get(122, "object_info_get_type_name", "", 106, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2921,7 +2921,7 @@ func ObjectInfoGetTypeName(info BaseInfo) (result string) {
 // [ result ] trans: nothing
 //
 func ObjectInfoGetUnrefFunction(info BaseInfo) (result string) {
-	iv, err := _I.Get(123, "object_info_get_unref_function", "")
+	iv, err := _I.Get(123, "object_info_get_unref_function", "", 107, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2943,7 +2943,7 @@ func ObjectInfoGetUnrefFunction(info BaseInfo) (result string) {
 // [ result ] trans: everything
 //
 func ObjectInfoGetVfunc(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(124, "object_info_get_vfunc", "")
+	iv, err := _I.Get(124, "object_info_get_vfunc", "", 108, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2964,7 +2964,7 @@ func ObjectInfoGetVfunc(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func PropertyInfoGetFlags(info BaseInfo) (result g.ParamFlags) {
-	iv, err := _I.Get(125, "property_info_get_flags", "")
+	iv, err := _I.Get(125, "property_info_get_flags", "", 109, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2984,7 +2984,7 @@ func PropertyInfoGetFlags(info BaseInfo) (result g.ParamFlags) {
 // [ result ] trans: nothing
 //
 func PropertyInfoGetOwnershipTransfer(info BaseInfo) (result TransferEnum) {
-	iv, err := _I.Get(126, "property_info_get_ownership_transfer", "")
+	iv, err := _I.Get(126, "property_info_get_ownership_transfer", "", 110, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3004,7 +3004,7 @@ func PropertyInfoGetOwnershipTransfer(info BaseInfo) (result TransferEnum) {
 // [ result ] trans: everything
 //
 func PropertyInfoGetType(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(127, "property_info_get_type", "")
+	iv, err := _I.Get(127, "property_info_get_type", "", 111, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3024,7 +3024,7 @@ func PropertyInfoGetType(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func RegisteredTypeInfoGetGType(info BaseInfo) (result gi.GType) {
-	iv, err := _I.Get(128, "registered_type_info_get_g_type", "")
+	iv, err := _I.Get(128, "registered_type_info_get_g_type", "", 112, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3044,7 +3044,7 @@ func RegisteredTypeInfoGetGType(info BaseInfo) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func RegisteredTypeInfoGetTypeInit(info BaseInfo) (result string) {
-	iv, err := _I.Get(129, "registered_type_info_get_type_init", "")
+	iv, err := _I.Get(129, "registered_type_info_get_type_init", "", 113, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3064,7 +3064,7 @@ func RegisteredTypeInfoGetTypeInit(info BaseInfo) (result string) {
 // [ result ] trans: nothing
 //
 func RegisteredTypeInfoGetTypeName(info BaseInfo) (result string) {
-	iv, err := _I.Get(130, "registered_type_info_get_type_name", "")
+	iv, err := _I.Get(130, "registered_type_info_get_type_name", "", 114, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3084,7 +3084,7 @@ func RegisteredTypeInfoGetTypeName(info BaseInfo) (result string) {
 // [ result ] trans: everything
 //
 func SignalInfoGetClassClosure(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(131, "signal_info_get_class_closure", "")
+	iv, err := _I.Get(131, "signal_info_get_class_closure", "", 115, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3104,7 +3104,7 @@ func SignalInfoGetClassClosure(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func SignalInfoGetFlags(info BaseInfo) (result g.SignalFlags) {
-	iv, err := _I.Get(132, "signal_info_get_flags", "")
+	iv, err := _I.Get(132, "signal_info_get_flags", "", 116, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3124,7 +3124,7 @@ func SignalInfoGetFlags(info BaseInfo) (result g.SignalFlags) {
 // [ result ] trans: nothing
 //
 func SignalInfoTrueStopsEmit(info BaseInfo) (result bool) {
-	iv, err := _I.Get(133, "signal_info_true_stops_emit", "")
+	iv, err := _I.Get(133, "signal_info_true_stops_emit", "", 117, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3146,7 +3146,7 @@ func SignalInfoTrueStopsEmit(info BaseInfo) (result bool) {
 // [ result ] trans: everything
 //
 func StructInfoFindField(info BaseInfo, name string) (result BaseInfo) {
-	iv, err := _I.Get(134, "struct_info_find_field", "")
+	iv, err := _I.Get(134, "struct_info_find_field", "", 118, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3171,7 +3171,7 @@ func StructInfoFindField(info BaseInfo, name string) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func StructInfoFindMethod(info BaseInfo, name string) (result BaseInfo) {
-	iv, err := _I.Get(135, "struct_info_find_method", "")
+	iv, err := _I.Get(135, "struct_info_find_method", "", 119, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3194,7 +3194,7 @@ func StructInfoFindMethod(info BaseInfo, name string) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func StructInfoGetAlignment(info BaseInfo) (result uint64) {
-	iv, err := _I.Get(136, "struct_info_get_alignment", "")
+	iv, err := _I.Get(136, "struct_info_get_alignment", "", 120, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3216,7 +3216,7 @@ func StructInfoGetAlignment(info BaseInfo) (result uint64) {
 // [ result ] trans: everything
 //
 func StructInfoGetField(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(137, "struct_info_get_field", "")
+	iv, err := _I.Get(137, "struct_info_get_field", "", 121, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3239,7 +3239,7 @@ func StructInfoGetField(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func StructInfoGetMethod(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(138, "struct_info_get_method", "")
+	iv, err := _I.Get(138, "struct_info_get_method", "", 122, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3260,7 +3260,7 @@ func StructInfoGetMethod(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func StructInfoGetNFields(info BaseInfo) (result int32) {
-	iv, err := _I.Get(139, "struct_info_get_n_fields", "")
+	iv, err := _I.Get(139, "struct_info_get_n_fields", "", 123, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3280,7 +3280,7 @@ func StructInfoGetNFields(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func StructInfoGetNMethods(info BaseInfo) (result int32) {
-	iv, err := _I.Get(140, "struct_info_get_n_methods", "")
+	iv, err := _I.Get(140, "struct_info_get_n_methods", "", 124, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3300,7 +3300,7 @@ func StructInfoGetNMethods(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func StructInfoGetSize(info BaseInfo) (result uint64) {
-	iv, err := _I.Get(141, "struct_info_get_size", "")
+	iv, err := _I.Get(141, "struct_info_get_size", "", 125, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3320,7 +3320,7 @@ func StructInfoGetSize(info BaseInfo) (result uint64) {
 // [ result ] trans: nothing
 //
 func StructInfoIsForeign(info BaseInfo) (result bool) {
-	iv, err := _I.Get(142, "struct_info_is_foreign", "")
+	iv, err := _I.Get(142, "struct_info_is_foreign", "", 126, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3340,7 +3340,7 @@ func StructInfoIsForeign(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func StructInfoIsGtypeStruct(info BaseInfo) (result bool) {
-	iv, err := _I.Get(143, "struct_info_is_gtype_struct", "")
+	iv, err := _I.Get(143, "struct_info_is_gtype_struct", "", 127, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3360,7 +3360,7 @@ func StructInfoIsGtypeStruct(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeInfoGetArrayFixedSize(info BaseInfo) (result int32) {
-	iv, err := _I.Get(144, "type_info_get_array_fixed_size", "")
+	iv, err := _I.Get(144, "type_info_get_array_fixed_size", "", 128, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3380,7 +3380,7 @@ func TypeInfoGetArrayFixedSize(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func TypeInfoGetArrayLength(info BaseInfo) (result int32) {
-	iv, err := _I.Get(145, "type_info_get_array_length", "")
+	iv, err := _I.Get(145, "type_info_get_array_length", "", 129, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3400,7 +3400,7 @@ func TypeInfoGetArrayLength(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func TypeInfoGetArrayType(info BaseInfo) (result ArrayTypeEnum) {
-	iv, err := _I.Get(146, "type_info_get_array_type", "")
+	iv, err := _I.Get(146, "type_info_get_array_type", "", 130, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3420,7 +3420,7 @@ func TypeInfoGetArrayType(info BaseInfo) (result ArrayTypeEnum) {
 // [ result ] trans: everything
 //
 func TypeInfoGetInterface(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(147, "type_info_get_interface", "")
+	iv, err := _I.Get(147, "type_info_get_interface", "", 131, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3442,7 +3442,7 @@ func TypeInfoGetInterface(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func TypeInfoGetParamType(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(148, "type_info_get_param_type", "")
+	iv, err := _I.Get(148, "type_info_get_param_type", "", 132, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3463,7 +3463,7 @@ func TypeInfoGetParamType(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func TypeInfoGetTag(info BaseInfo) (result TypeTagEnum) {
-	iv, err := _I.Get(149, "type_info_get_tag", "")
+	iv, err := _I.Get(149, "type_info_get_tag", "", 133, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3483,7 +3483,7 @@ func TypeInfoGetTag(info BaseInfo) (result TypeTagEnum) {
 // [ result ] trans: nothing
 //
 func TypeInfoIsPointer(info BaseInfo) (result bool) {
-	iv, err := _I.Get(150, "type_info_is_pointer", "")
+	iv, err := _I.Get(150, "type_info_is_pointer", "", 134, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3503,7 +3503,7 @@ func TypeInfoIsPointer(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeInfoIsZeroTerminated(info BaseInfo) (result bool) {
-	iv, err := _I.Get(151, "type_info_is_zero_terminated", "")
+	iv, err := _I.Get(151, "type_info_is_zero_terminated", "", 135, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3523,7 +3523,7 @@ func TypeInfoIsZeroTerminated(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeTagToString(type1 TypeTagEnum) (result string) {
-	iv, err := _I.Get(152, "type_tag_to_string", "")
+	iv, err := _I.Get(152, "type_tag_to_string", "", 136, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3545,7 +3545,7 @@ func TypeTagToString(type1 TypeTagEnum) (result string) {
 // [ result ] trans: everything
 //
 func UnionInfoFindMethod(info BaseInfo, name string) (result BaseInfo) {
-	iv, err := _I.Get(153, "union_info_find_method", "")
+	iv, err := _I.Get(153, "union_info_find_method", "", 137, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3568,7 +3568,7 @@ func UnionInfoFindMethod(info BaseInfo, name string) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func UnionInfoGetAlignment(info BaseInfo) (result uint64) {
-	iv, err := _I.Get(154, "union_info_get_alignment", "")
+	iv, err := _I.Get(154, "union_info_get_alignment", "", 138, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3590,7 +3590,7 @@ func UnionInfoGetAlignment(info BaseInfo) (result uint64) {
 // [ result ] trans: everything
 //
 func UnionInfoGetDiscriminator(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(155, "union_info_get_discriminator", "")
+	iv, err := _I.Get(155, "union_info_get_discriminator", "", 139, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3611,7 +3611,7 @@ func UnionInfoGetDiscriminator(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func UnionInfoGetDiscriminatorOffset(info BaseInfo) (result int32) {
-	iv, err := _I.Get(156, "union_info_get_discriminator_offset", "")
+	iv, err := _I.Get(156, "union_info_get_discriminator_offset", "", 140, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3631,7 +3631,7 @@ func UnionInfoGetDiscriminatorOffset(info BaseInfo) (result int32) {
 // [ result ] trans: everything
 //
 func UnionInfoGetDiscriminatorType(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(157, "union_info_get_discriminator_type", "")
+	iv, err := _I.Get(157, "union_info_get_discriminator_type", "", 141, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3653,7 +3653,7 @@ func UnionInfoGetDiscriminatorType(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func UnionInfoGetField(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(158, "union_info_get_field", "")
+	iv, err := _I.Get(158, "union_info_get_field", "", 142, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3676,7 +3676,7 @@ func UnionInfoGetField(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: everything
 //
 func UnionInfoGetMethod(info BaseInfo, n int32) (result BaseInfo) {
-	iv, err := _I.Get(159, "union_info_get_method", "")
+	iv, err := _I.Get(159, "union_info_get_method", "", 143, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3697,7 +3697,7 @@ func UnionInfoGetMethod(info BaseInfo, n int32) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func UnionInfoGetNFields(info BaseInfo) (result int32) {
-	iv, err := _I.Get(160, "union_info_get_n_fields", "")
+	iv, err := _I.Get(160, "union_info_get_n_fields", "", 144, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3717,7 +3717,7 @@ func UnionInfoGetNFields(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func UnionInfoGetNMethods(info BaseInfo) (result int32) {
-	iv, err := _I.Get(161, "union_info_get_n_methods", "")
+	iv, err := _I.Get(161, "union_info_get_n_methods", "", 145, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3737,7 +3737,7 @@ func UnionInfoGetNMethods(info BaseInfo) (result int32) {
 // [ result ] trans: nothing
 //
 func UnionInfoGetSize(info BaseInfo) (result uint64) {
-	iv, err := _I.Get(162, "union_info_get_size", "")
+	iv, err := _I.Get(162, "union_info_get_size", "", 146, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3757,7 +3757,7 @@ func UnionInfoGetSize(info BaseInfo) (result uint64) {
 // [ result ] trans: nothing
 //
 func UnionInfoIsDiscriminated(info BaseInfo) (result bool) {
-	iv, err := _I.Get(163, "union_info_is_discriminated", "")
+	iv, err := _I.Get(163, "union_info_is_discriminated", "", 147, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3777,7 +3777,7 @@ func UnionInfoIsDiscriminated(info BaseInfo) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueInfoGetValue(info BaseInfo) (result int64) {
-	iv, err := _I.Get(164, "value_info_get_value", "")
+	iv, err := _I.Get(164, "value_info_get_value", "", 148, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3799,7 +3799,7 @@ func ValueInfoGetValue(info BaseInfo) (result int64) {
 // [ result ] trans: nothing
 //
 func VfuncInfoGetAddress(info BaseInfo, implementor_gtype gi.GType) (result unsafe.Pointer, err error) {
-	iv, err := _I.Get(165, "vfunc_info_get_address", "")
+	iv, err := _I.Get(165, "vfunc_info_get_address", "", 149, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -3822,7 +3822,7 @@ func VfuncInfoGetAddress(info BaseInfo, implementor_gtype gi.GType) (result unsa
 // [ result ] trans: nothing
 //
 func VfuncInfoGetFlags(info BaseInfo) (result VFuncInfoFlags) {
-	iv, err := _I.Get(166, "vfunc_info_get_flags", "")
+	iv, err := _I.Get(166, "vfunc_info_get_flags", "", 150, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3842,7 +3842,7 @@ func VfuncInfoGetFlags(info BaseInfo) (result VFuncInfoFlags) {
 // [ result ] trans: everything
 //
 func VfuncInfoGetInvoker(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(167, "vfunc_info_get_invoker", "")
+	iv, err := _I.Get(167, "vfunc_info_get_invoker", "", 151, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3862,7 +3862,7 @@ func VfuncInfoGetInvoker(info BaseInfo) (result BaseInfo) {
 // [ result ] trans: nothing
 //
 func VfuncInfoGetOffset(info BaseInfo) (result int32) {
-	iv, err := _I.Get(168, "vfunc_info_get_offset", "")
+	iv, err := _I.Get(168, "vfunc_info_get_offset", "", 152, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3882,7 +3882,7 @@ func VfuncInfoGetOffset(info BaseInfo) (result int32) {
 // [ result ] trans: everything
 //
 func VfuncInfoGetSignal(info BaseInfo) (result BaseInfo) {
-	iv, err := _I.Get(169, "vfunc_info_get_signal", "")
+	iv, err := _I.Get(169, "vfunc_info_get_signal", "", 153, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

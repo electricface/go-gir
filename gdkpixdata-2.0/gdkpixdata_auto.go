@@ -46,7 +46,7 @@ func PixdataGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Pixdata) Deserialize(stream_length uint32, stream gi.Uint8Array) (result bool, err error) {
-	iv, err := _I.Get(0, "Pixdata", "deserialize")
+	iv, err := _I.Get(0, "Pixdata", "deserialize", 2, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		return
 	}
@@ -72,7 +72,7 @@ func (v Pixdata) Deserialize(stream_length uint32, stream gi.Uint8Array) (result
 // [ result ] trans: everything
 //
 func (v Pixdata) Serialize() (result gi.Uint8Array) {
-	iv, err := _I.Get(1, "Pixdata", "serialize")
+	iv, err := _I.Get(1, "Pixdata", "serialize", 2, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -101,7 +101,7 @@ func (v Pixdata) Serialize() (result gi.Uint8Array) {
 // [ result ] trans: everything
 //
 func (v Pixdata) ToCsource(name string, dump_type PixdataDumpTypeFlags) (result g.String) {
-	iv, err := _I.Get(2, "Pixdata", "to_csource")
+	iv, err := _I.Get(2, "Pixdata", "to_csource", 2, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -167,7 +167,7 @@ func PixdataTypeGetType() gi.GType {
 // [ result ] trans: everything
 //
 func PixbufFromPixdata(pixdata Pixdata, copy_pixels bool) (result gdkpixbuf.Pixbuf, err error) {
-	iv, err := _I.Get(3, "pixbuf_from_pixdata", "")
+	iv, err := _I.Get(3, "pixbuf_from_pixdata", "", 5, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}

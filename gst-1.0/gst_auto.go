@@ -303,7 +303,7 @@ func AllocationParamsGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v AllocationParams) Copy() (result AllocationParams) {
-	iv, err := _I.Get(0, "AllocationParams", "copy")
+	iv, err := _I.Get(0, "AllocationParams", "copy", 1, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -319,7 +319,7 @@ func (v AllocationParams) Copy() (result AllocationParams) {
 // gst_allocation_params_free
 //
 func (v AllocationParams) Free() {
-	iv, err := _I.Get(1, "AllocationParams", "free")
+	iv, err := _I.Get(1, "AllocationParams", "free", 1, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -332,7 +332,7 @@ func (v AllocationParams) Free() {
 // gst_allocation_params_init
 //
 func (v AllocationParams) Init() {
-	iv, err := _I.Get(2, "AllocationParams", "init")
+	iv, err := _I.Get(2, "AllocationParams", "init", 1, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -364,7 +364,7 @@ func AllocatorGetType() gi.GType {
 // [ result ] trans: everything
 //
 func AllocatorFind1(name string) (result Allocator) {
-	iv, err := _I.Get(3, "Allocator", "find")
+	iv, err := _I.Get(3, "Allocator", "find", 2, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -386,7 +386,7 @@ func AllocatorFind1(name string) (result Allocator) {
 // [ allocator ] trans: everything
 //
 func AllocatorRegister1(name string, allocator IAllocator) {
-	iv, err := _I.Get(4, "Allocator", "register")
+	iv, err := _I.Get(4, "Allocator", "register", 2, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -412,7 +412,7 @@ func AllocatorRegister1(name string, allocator IAllocator) {
 // [ result ] trans: everything
 //
 func (v Allocator) Alloc(size uint64, params AllocationParams) (result Memory) {
-	iv, err := _I.Get(5, "Allocator", "alloc")
+	iv, err := _I.Get(5, "Allocator", "alloc", 2, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -432,7 +432,7 @@ func (v Allocator) Alloc(size uint64, params AllocationParams) (result Memory) {
 // [ memory ] trans: everything
 //
 func (v Allocator) Free(memory Memory) {
-	iv, err := _I.Get(6, "Allocator", "free")
+	iv, err := _I.Get(6, "Allocator", "free", 2, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -446,7 +446,7 @@ func (v Allocator) Free(memory Memory) {
 // gst_allocator_set_default
 //
 func (v Allocator) SetDefault() {
-	iv, err := _I.Get(7, "Allocator", "set_default")
+	iv, err := _I.Get(7, "Allocator", "set_default", 2, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -498,7 +498,7 @@ func AtomicQueueGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewAtomicQueue(initial_size uint32) (result AtomicQueue) {
-	iv, err := _I.Get(8, "AtomicQueue", "new")
+	iv, err := _I.Get(8, "AtomicQueue", "new", 6, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -516,7 +516,7 @@ func NewAtomicQueue(initial_size uint32) (result AtomicQueue) {
 // [ result ] trans: nothing
 //
 func (v AtomicQueue) Length() (result uint32) {
-	iv, err := _I.Get(9, "AtomicQueue", "length")
+	iv, err := _I.Get(9, "AtomicQueue", "length", 6, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -534,7 +534,7 @@ func (v AtomicQueue) Length() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v AtomicQueue) Peek() (result unsafe.Pointer) {
-	iv, err := _I.Get(10, "AtomicQueue", "peek")
+	iv, err := _I.Get(10, "AtomicQueue", "peek", 6, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -552,7 +552,7 @@ func (v AtomicQueue) Peek() (result unsafe.Pointer) {
 // [ result ] trans: everything
 //
 func (v AtomicQueue) Pop() (result unsafe.Pointer) {
-	iv, err := _I.Get(11, "AtomicQueue", "pop")
+	iv, err := _I.Get(11, "AtomicQueue", "pop", 6, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -570,7 +570,7 @@ func (v AtomicQueue) Pop() (result unsafe.Pointer) {
 // [ data ] trans: nothing
 //
 func (v AtomicQueue) Push(data unsafe.Pointer) {
-	iv, err := _I.Get(12, "AtomicQueue", "push")
+	iv, err := _I.Get(12, "AtomicQueue", "push", 6, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -584,7 +584,7 @@ func (v AtomicQueue) Push(data unsafe.Pointer) {
 // gst_atomic_queue_ref
 //
 func (v AtomicQueue) Ref() {
-	iv, err := _I.Get(13, "AtomicQueue", "ref")
+	iv, err := _I.Get(13, "AtomicQueue", "ref", 6, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -597,7 +597,7 @@ func (v AtomicQueue) Ref() {
 // gst_atomic_queue_unref
 //
 func (v AtomicQueue) Unref() {
-	iv, err := _I.Get(14, "AtomicQueue", "unref")
+	iv, err := _I.Get(14, "AtomicQueue", "unref", 6, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -631,7 +631,7 @@ func BinGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewBin(name string) (result Bin) {
-	iv, err := _I.Get(15, "Bin", "new")
+	iv, err := _I.Get(15, "Bin", "new", 10, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -653,7 +653,7 @@ func NewBin(name string) (result Bin) {
 // [ result ] trans: nothing
 //
 func (v Bin) Add(element IElement) (result bool) {
-	iv, err := _I.Get(16, "Bin", "add")
+	iv, err := _I.Get(16, "Bin", "add", 10, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -678,7 +678,7 @@ func (v Bin) Add(element IElement) (result bool) {
 // [ result ] trans: everything
 //
 func (v Bin) FindUnlinkedPad(direction PadDirectionEnum) (result Pad) {
-	iv, err := _I.Get(17, "Bin", "find_unlinked_pad")
+	iv, err := _I.Get(17, "Bin", "find_unlinked_pad", 10, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -699,7 +699,7 @@ func (v Bin) FindUnlinkedPad(direction PadDirectionEnum) (result Pad) {
 // [ result ] trans: everything
 //
 func (v Bin) GetByInterface(iface gi.GType) (result Element) {
-	iv, err := _I.Get(18, "Bin", "get_by_interface")
+	iv, err := _I.Get(18, "Bin", "get_by_interface", 10, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -720,7 +720,7 @@ func (v Bin) GetByInterface(iface gi.GType) (result Element) {
 // [ result ] trans: everything
 //
 func (v Bin) GetByName(name string) (result Element) {
-	iv, err := _I.Get(19, "Bin", "get_by_name")
+	iv, err := _I.Get(19, "Bin", "get_by_name", 10, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -743,7 +743,7 @@ func (v Bin) GetByName(name string) (result Element) {
 // [ result ] trans: everything
 //
 func (v Bin) GetByNameRecurseUp(name string) (result Element) {
-	iv, err := _I.Get(20, "Bin", "get_by_name_recurse_up")
+	iv, err := _I.Get(20, "Bin", "get_by_name_recurse_up", 10, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -764,7 +764,7 @@ func (v Bin) GetByNameRecurseUp(name string) (result Element) {
 // [ result ] trans: nothing
 //
 func (v Bin) GetSuppressedFlags() (result ElementFlags) {
-	iv, err := _I.Get(21, "Bin", "get_suppressed_flags")
+	iv, err := _I.Get(21, "Bin", "get_suppressed_flags", 10, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -784,7 +784,7 @@ func (v Bin) GetSuppressedFlags() (result ElementFlags) {
 // [ result ] trans: everything
 //
 func (v Bin) IterateAllByInterface(iface gi.GType) (result Iterator) {
-	iv, err := _I.Get(22, "Bin", "iterate_all_by_interface")
+	iv, err := _I.Get(22, "Bin", "iterate_all_by_interface", 10, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -803,7 +803,7 @@ func (v Bin) IterateAllByInterface(iface gi.GType) (result Iterator) {
 // [ result ] trans: everything
 //
 func (v Bin) IterateElements() (result Iterator) {
-	iv, err := _I.Get(23, "Bin", "iterate_elements")
+	iv, err := _I.Get(23, "Bin", "iterate_elements", 10, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -821,7 +821,7 @@ func (v Bin) IterateElements() (result Iterator) {
 // [ result ] trans: everything
 //
 func (v Bin) IterateRecurse() (result Iterator) {
-	iv, err := _I.Get(24, "Bin", "iterate_recurse")
+	iv, err := _I.Get(24, "Bin", "iterate_recurse", 10, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -839,7 +839,7 @@ func (v Bin) IterateRecurse() (result Iterator) {
 // [ result ] trans: everything
 //
 func (v Bin) IterateSinks() (result Iterator) {
-	iv, err := _I.Get(25, "Bin", "iterate_sinks")
+	iv, err := _I.Get(25, "Bin", "iterate_sinks", 10, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -857,7 +857,7 @@ func (v Bin) IterateSinks() (result Iterator) {
 // [ result ] trans: everything
 //
 func (v Bin) IterateSorted() (result Iterator) {
-	iv, err := _I.Get(26, "Bin", "iterate_sorted")
+	iv, err := _I.Get(26, "Bin", "iterate_sorted", 10, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -875,7 +875,7 @@ func (v Bin) IterateSorted() (result Iterator) {
 // [ result ] trans: everything
 //
 func (v Bin) IterateSources() (result Iterator) {
-	iv, err := _I.Get(27, "Bin", "iterate_sources")
+	iv, err := _I.Get(27, "Bin", "iterate_sources", 10, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -893,7 +893,7 @@ func (v Bin) IterateSources() (result Iterator) {
 // [ result ] trans: nothing
 //
 func (v Bin) RecalculateLatency() (result bool) {
-	iv, err := _I.Get(28, "Bin", "recalculate_latency")
+	iv, err := _I.Get(28, "Bin", "recalculate_latency", 10, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -913,7 +913,7 @@ func (v Bin) RecalculateLatency() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Bin) Remove(element IElement) (result bool) {
-	iv, err := _I.Get(29, "Bin", "remove")
+	iv, err := _I.Get(29, "Bin", "remove", 10, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -936,7 +936,7 @@ func (v Bin) Remove(element IElement) (result bool) {
 // [ flags ] trans: nothing
 //
 func (v Bin) SetSuppressedFlags(flags ElementFlags) {
-	iv, err := _I.Get(30, "Bin", "set_suppressed_flags")
+	iv, err := _I.Get(30, "Bin", "set_suppressed_flags", 10, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -952,7 +952,7 @@ func (v Bin) SetSuppressedFlags(flags ElementFlags) {
 // [ result ] trans: nothing
 //
 func (v Bin) SyncChildrenStates() (result bool) {
-	iv, err := _I.Get(31, "Bin", "sync_children_states")
+	iv, err := _I.Get(31, "Bin", "sync_children_states", 10, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1023,7 +1023,7 @@ func BufferGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewBuffer() (result Buffer) {
-	iv, err := _I.Get(32, "Buffer", "new")
+	iv, err := _I.Get(32, "Buffer", "new", 15, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1045,7 +1045,7 @@ func NewBuffer() (result Buffer) {
 // [ result ] trans: everything
 //
 func NewBufferAllocate(allocator IAllocator, size uint64, params AllocationParams) (result Buffer) {
-	iv, err := _I.Get(33, "Buffer", "new_allocate")
+	iv, err := _I.Get(33, "Buffer", "new_allocate", 15, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1073,7 +1073,7 @@ func NewBufferAllocate(allocator IAllocator, size uint64, params AllocationParam
 // [ result ] trans: everything
 //
 func NewBufferWrapped(data gi.Uint8Array, size uint64) (result Buffer) {
-	iv, err := _I.Get(34, "Buffer", "new_wrapped")
+	iv, err := _I.Get(34, "Buffer", "new_wrapped", 15, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1106,7 +1106,7 @@ func NewBufferWrapped(data gi.Uint8Array, size uint64) (result Buffer) {
 // [ result ] trans: everything
 //
 func NewBufferWrappedFull(flags MemoryFlags, data gi.Uint8Array, maxsize uint64, offset uint64, size uint64, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result Buffer) {
-	iv, err := _I.Get(35, "Buffer", "new_wrapped_full")
+	iv, err := _I.Get(35, "Buffer", "new_wrapped_full", 15, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1134,7 +1134,7 @@ func NewBufferWrappedFull(flags MemoryFlags, data gi.Uint8Array, maxsize uint64,
 // [ result ] trans: nothing
 //
 func (v Buffer) AddMeta(info MetaInfo, params unsafe.Pointer) (result Meta) {
-	iv, err := _I.Get(36, "Buffer", "add_meta")
+	iv, err := _I.Get(36, "Buffer", "add_meta", 15, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1156,7 +1156,7 @@ func (v Buffer) AddMeta(info MetaInfo, params unsafe.Pointer) (result Meta) {
 // [ result ] trans: nothing
 //
 func (v Buffer) AddParentBufferMeta(ref Buffer) (result ParentBufferMeta) {
-	iv, err := _I.Get(37, "Buffer", "add_parent_buffer_meta")
+	iv, err := _I.Get(37, "Buffer", "add_parent_buffer_meta", 15, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1177,7 +1177,7 @@ func (v Buffer) AddParentBufferMeta(ref Buffer) (result ParentBufferMeta) {
 // [ result ] trans: nothing
 //
 func (v Buffer) AddProtectionMeta(info Structure) (result ProtectionMeta) {
-	iv, err := _I.Get(38, "Buffer", "add_protection_meta")
+	iv, err := _I.Get(38, "Buffer", "add_protection_meta", 15, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1202,7 +1202,7 @@ func (v Buffer) AddProtectionMeta(info Structure) (result ProtectionMeta) {
 // [ result ] trans: nothing
 //
 func (v Buffer) AddReferenceTimestampMeta(reference Caps, timestamp uint64, duration uint64) (result ReferenceTimestampMeta) {
-	iv, err := _I.Get(39, "Buffer", "add_reference_timestamp_meta")
+	iv, err := _I.Get(39, "Buffer", "add_reference_timestamp_meta", 15, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1225,7 +1225,7 @@ func (v Buffer) AddReferenceTimestampMeta(reference Caps, timestamp uint64, dura
 // [ result ] trans: everything
 //
 func (v Buffer) Append(buf2 Buffer) (result Buffer) {
-	iv, err := _I.Get(40, "Buffer", "append")
+	iv, err := _I.Get(40, "Buffer", "append", 15, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1244,7 +1244,7 @@ func (v Buffer) Append(buf2 Buffer) (result Buffer) {
 // [ mem ] trans: everything
 //
 func (v Buffer) AppendMemory(mem Memory) {
-	iv, err := _I.Get(41, "Buffer", "append_memory")
+	iv, err := _I.Get(41, "Buffer", "append_memory", 15, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1266,7 +1266,7 @@ func (v Buffer) AppendMemory(mem Memory) {
 // [ result ] trans: everything
 //
 func (v Buffer) AppendRegion(buf2 Buffer, offset int64, size int64) (result Buffer) {
-	iv, err := _I.Get(42, "Buffer", "append_region")
+	iv, err := _I.Get(42, "Buffer", "append_region", 15, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1287,7 +1287,7 @@ func (v Buffer) AppendRegion(buf2 Buffer, offset int64, size int64) (result Buff
 // [ result ] trans: everything
 //
 func (v Buffer) CopyDeep() (result Buffer) {
-	iv, err := _I.Get(43, "Buffer", "copy_deep")
+	iv, err := _I.Get(43, "Buffer", "copy_deep", 15, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1313,7 +1313,7 @@ func (v Buffer) CopyDeep() (result Buffer) {
 // [ result ] trans: nothing
 //
 func (v Buffer) CopyInto(src Buffer, flags BufferCopyFlags, offset uint64, size uint64) (result bool) {
-	iv, err := _I.Get(44, "Buffer", "copy_into")
+	iv, err := _I.Get(44, "Buffer", "copy_into", 15, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1341,7 +1341,7 @@ func (v Buffer) CopyInto(src Buffer, flags BufferCopyFlags, offset uint64, size 
 // [ result ] trans: everything
 //
 func (v Buffer) CopyRegion(flags BufferCopyFlags, offset uint64, size uint64) (result Buffer) {
-	iv, err := _I.Get(45, "Buffer", "copy_region")
+	iv, err := _I.Get(45, "Buffer", "copy_region", 15, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1368,7 +1368,7 @@ func (v Buffer) CopyRegion(flags BufferCopyFlags, offset uint64, size uint64) (r
 // [ result ] trans: nothing
 //
 func (v Buffer) Extract(offset uint64, dest gi.Uint8Array) (result uint64) {
-	iv, err := _I.Get(46, "Buffer", "extract")
+	iv, err := _I.Get(46, "Buffer", "extract", 15, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1399,7 +1399,7 @@ func (v Buffer) Extract(offset uint64, dest gi.Uint8Array) (result uint64) {
 // [ dest_size ] trans: everything, dir: out
 //
 func (v Buffer) ExtractDup(offset uint64, size uint64) (dest gi.Uint8Array) {
-	iv, err := _I.Get(47, "Buffer", "extract_dup")
+	iv, err := _I.Get(47, "Buffer", "extract_dup", 15, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1431,7 +1431,7 @@ func (v Buffer) ExtractDup(offset uint64, size uint64) (dest gi.Uint8Array) {
 // [ result ] trans: nothing
 //
 func (v Buffer) Fill(offset uint64, src gi.Uint8Array, size uint64) (result uint64) {
-	iv, err := _I.Get(48, "Buffer", "fill")
+	iv, err := _I.Get(48, "Buffer", "fill", 15, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1462,7 +1462,7 @@ func (v Buffer) Fill(offset uint64, src gi.Uint8Array, size uint64) (result uint
 // [ result ] trans: nothing
 //
 func (v Buffer) FindMemory(offset uint64, size uint64) (result bool, idx uint32, length uint32, skip uint64) {
-	iv, err := _I.Get(49, "Buffer", "find_memory")
+	iv, err := _I.Get(49, "Buffer", "find_memory", 15, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1493,7 +1493,7 @@ func (v Buffer) FindMemory(offset uint64, size uint64) (result bool, idx uint32,
 // [ result ] trans: nothing
 //
 func (v Buffer) ForeachMeta(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(50, "Buffer", "foreach_meta")
+	iv, err := _I.Get(50, "Buffer", "foreach_meta", 15, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1513,7 +1513,7 @@ func (v Buffer) ForeachMeta(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.P
 // [ result ] trans: everything
 //
 func (v Buffer) GetAllMemory() (result Memory) {
-	iv, err := _I.Get(51, "Buffer", "get_all_memory")
+	iv, err := _I.Get(51, "Buffer", "get_all_memory", 15, 19, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1531,7 +1531,7 @@ func (v Buffer) GetAllMemory() (result Memory) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetFlags() (result BufferFlags) {
-	iv, err := _I.Get(52, "Buffer", "get_flags")
+	iv, err := _I.Get(52, "Buffer", "get_flags", 15, 20, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1551,7 +1551,7 @@ func (v Buffer) GetFlags() (result BufferFlags) {
 // [ result ] trans: everything
 //
 func (v Buffer) GetMemory(idx uint32) (result Memory) {
-	iv, err := _I.Get(53, "Buffer", "get_memory")
+	iv, err := _I.Get(53, "Buffer", "get_memory", 15, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1574,7 +1574,7 @@ func (v Buffer) GetMemory(idx uint32) (result Memory) {
 // [ result ] trans: everything
 //
 func (v Buffer) GetMemoryRange(idx uint32, length int32) (result Memory) {
-	iv, err := _I.Get(54, "Buffer", "get_memory_range")
+	iv, err := _I.Get(54, "Buffer", "get_memory_range", 15, 22, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1596,7 +1596,7 @@ func (v Buffer) GetMemoryRange(idx uint32, length int32) (result Memory) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetMeta(api gi.GType) (result Meta) {
-	iv, err := _I.Get(55, "Buffer", "get_meta")
+	iv, err := _I.Get(55, "Buffer", "get_meta", 15, 23, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1617,7 +1617,7 @@ func (v Buffer) GetMeta(api gi.GType) (result Meta) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetNMeta(api_type gi.GType) (result uint32) {
-	iv, err := _I.Get(56, "Buffer", "get_n_meta")
+	iv, err := _I.Get(56, "Buffer", "get_n_meta", 15, 24, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1638,7 +1638,7 @@ func (v Buffer) GetNMeta(api_type gi.GType) (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetReferenceTimestampMeta(reference Caps) (result ReferenceTimestampMeta) {
-	iv, err := _I.Get(57, "Buffer", "get_reference_timestamp_meta")
+	iv, err := _I.Get(57, "Buffer", "get_reference_timestamp_meta", 15, 25, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1657,7 +1657,7 @@ func (v Buffer) GetReferenceTimestampMeta(reference Caps) (result ReferenceTimes
 // [ result ] trans: nothing
 //
 func (v Buffer) GetSize() (result uint64) {
-	iv, err := _I.Get(58, "Buffer", "get_size")
+	iv, err := _I.Get(58, "Buffer", "get_size", 15, 26, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1679,7 +1679,7 @@ func (v Buffer) GetSize() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetSizes() (result uint64, offset uint64, maxsize uint64) {
-	iv, err := _I.Get(59, "Buffer", "get_sizes")
+	iv, err := _I.Get(59, "Buffer", "get_sizes", 15, 27, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1710,7 +1710,7 @@ func (v Buffer) GetSizes() (result uint64, offset uint64, maxsize uint64) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetSizesRange(idx uint32, length int32) (result uint64, offset uint64, maxsize uint64) {
-	iv, err := _I.Get(60, "Buffer", "get_sizes_range")
+	iv, err := _I.Get(60, "Buffer", "get_sizes_range", 15, 28, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1737,7 +1737,7 @@ func (v Buffer) GetSizesRange(idx uint32, length int32) (result uint64, offset u
 // [ result ] trans: nothing
 //
 func (v Buffer) HasFlags(flags BufferFlags) (result bool) {
-	iv, err := _I.Get(61, "Buffer", "has_flags")
+	iv, err := _I.Get(61, "Buffer", "has_flags", 15, 29, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1758,7 +1758,7 @@ func (v Buffer) HasFlags(flags BufferFlags) (result bool) {
 // [ mem ] trans: everything
 //
 func (v Buffer) InsertMemory(idx int32, mem Memory) {
-	iv, err := _I.Get(62, "Buffer", "insert_memory")
+	iv, err := _I.Get(62, "Buffer", "insert_memory", 15, 30, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1775,7 +1775,7 @@ func (v Buffer) InsertMemory(idx int32, mem Memory) {
 // [ result ] trans: nothing
 //
 func (v Buffer) IsAllMemoryWritable() (result bool) {
-	iv, err := _I.Get(63, "Buffer", "is_all_memory_writable")
+	iv, err := _I.Get(63, "Buffer", "is_all_memory_writable", 15, 31, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1797,7 +1797,7 @@ func (v Buffer) IsAllMemoryWritable() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Buffer) IsMemoryRangeWritable(idx uint32, length int32) (result bool) {
-	iv, err := _I.Get(64, "Buffer", "is_memory_range_writable")
+	iv, err := _I.Get(64, "Buffer", "is_memory_range_writable", 15, 32, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1821,7 +1821,7 @@ func (v Buffer) IsMemoryRangeWritable(idx uint32, length int32) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Buffer) Map(info MapInfo, flags MapFlags) (result bool) {
-	iv, err := _I.Get(65, "Buffer", "map")
+	iv, err := _I.Get(65, "Buffer", "map", 15, 33, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1849,7 +1849,7 @@ func (v Buffer) Map(info MapInfo, flags MapFlags) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Buffer) MapRange(idx uint32, length int32, info MapInfo, flags MapFlags) (result bool) {
-	iv, err := _I.Get(66, "Buffer", "map_range")
+	iv, err := _I.Get(66, "Buffer", "map_range", 15, 34, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1877,7 +1877,7 @@ func (v Buffer) MapRange(idx uint32, length int32, info MapInfo, flags MapFlags)
 // [ result ] trans: nothing
 //
 func (v Buffer) Memcmp(offset uint64, mem gi.Uint8Array, size uint64) (result int32) {
-	iv, err := _I.Get(67, "Buffer", "memcmp")
+	iv, err := _I.Get(67, "Buffer", "memcmp", 15, 35, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1904,7 +1904,7 @@ func (v Buffer) Memcmp(offset uint64, mem gi.Uint8Array, size uint64) (result in
 // [ result ] trans: nothing
 //
 func (v Buffer) Memset(offset uint64, val uint8, size uint64) (result uint64) {
-	iv, err := _I.Get(68, "Buffer", "memset")
+	iv, err := _I.Get(68, "Buffer", "memset", 15, 36, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1925,7 +1925,7 @@ func (v Buffer) Memset(offset uint64, val uint8, size uint64) (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Buffer) NMemory() (result uint32) {
-	iv, err := _I.Get(69, "Buffer", "n_memory")
+	iv, err := _I.Get(69, "Buffer", "n_memory", 15, 37, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1945,7 +1945,7 @@ func (v Buffer) NMemory() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Buffer) PeekMemory(idx uint32) (result Memory) {
-	iv, err := _I.Get(70, "Buffer", "peek_memory")
+	iv, err := _I.Get(70, "Buffer", "peek_memory", 15, 38, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1964,7 +1964,7 @@ func (v Buffer) PeekMemory(idx uint32) (result Memory) {
 // [ mem ] trans: everything
 //
 func (v Buffer) PrependMemory(mem Memory) {
-	iv, err := _I.Get(71, "Buffer", "prepend_memory")
+	iv, err := _I.Get(71, "Buffer", "prepend_memory", 15, 39, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1978,7 +1978,7 @@ func (v Buffer) PrependMemory(mem Memory) {
 // gst_buffer_remove_all_memory
 //
 func (v Buffer) RemoveAllMemory() {
-	iv, err := _I.Get(72, "Buffer", "remove_all_memory")
+	iv, err := _I.Get(72, "Buffer", "remove_all_memory", 15, 40, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1993,7 +1993,7 @@ func (v Buffer) RemoveAllMemory() {
 // [ idx ] trans: nothing
 //
 func (v Buffer) RemoveMemory(idx uint32) {
-	iv, err := _I.Get(73, "Buffer", "remove_memory")
+	iv, err := _I.Get(73, "Buffer", "remove_memory", 15, 41, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2011,7 +2011,7 @@ func (v Buffer) RemoveMemory(idx uint32) {
 // [ length ] trans: nothing
 //
 func (v Buffer) RemoveMemoryRange(idx uint32, length int32) {
-	iv, err := _I.Get(74, "Buffer", "remove_memory_range")
+	iv, err := _I.Get(74, "Buffer", "remove_memory_range", 15, 42, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2030,7 +2030,7 @@ func (v Buffer) RemoveMemoryRange(idx uint32, length int32) {
 // [ result ] trans: nothing
 //
 func (v Buffer) RemoveMeta(meta Meta) (result bool) {
-	iv, err := _I.Get(75, "Buffer", "remove_meta")
+	iv, err := _I.Get(75, "Buffer", "remove_meta", 15, 43, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2049,7 +2049,7 @@ func (v Buffer) RemoveMeta(meta Meta) (result bool) {
 // [ mem ] trans: everything
 //
 func (v Buffer) ReplaceAllMemory(mem Memory) {
-	iv, err := _I.Get(76, "Buffer", "replace_all_memory")
+	iv, err := _I.Get(76, "Buffer", "replace_all_memory", 15, 44, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2067,7 +2067,7 @@ func (v Buffer) ReplaceAllMemory(mem Memory) {
 // [ mem ] trans: everything
 //
 func (v Buffer) ReplaceMemory(idx uint32, mem Memory) {
-	iv, err := _I.Get(77, "Buffer", "replace_memory")
+	iv, err := _I.Get(77, "Buffer", "replace_memory", 15, 45, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2088,7 +2088,7 @@ func (v Buffer) ReplaceMemory(idx uint32, mem Memory) {
 // [ mem ] trans: everything
 //
 func (v Buffer) ReplaceMemoryRange(idx uint32, length int32, mem Memory) {
-	iv, err := _I.Get(78, "Buffer", "replace_memory_range")
+	iv, err := _I.Get(78, "Buffer", "replace_memory_range", 15, 46, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2108,7 +2108,7 @@ func (v Buffer) ReplaceMemoryRange(idx uint32, length int32, mem Memory) {
 // [ size ] trans: nothing
 //
 func (v Buffer) Resize(offset int64, size int64) {
-	iv, err := _I.Get(79, "Buffer", "resize")
+	iv, err := _I.Get(79, "Buffer", "resize", 15, 47, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2133,7 +2133,7 @@ func (v Buffer) Resize(offset int64, size int64) {
 // [ result ] trans: nothing
 //
 func (v Buffer) ResizeRange(idx uint32, length int32, offset int64, size int64) (result bool) {
-	iv, err := _I.Get(80, "Buffer", "resize_range")
+	iv, err := _I.Get(80, "Buffer", "resize_range", 15, 48, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2157,7 +2157,7 @@ func (v Buffer) ResizeRange(idx uint32, length int32, offset int64, size int64) 
 // [ result ] trans: nothing
 //
 func (v Buffer) SetFlags(flags BufferFlags) (result bool) {
-	iv, err := _I.Get(81, "Buffer", "set_flags")
+	iv, err := _I.Get(81, "Buffer", "set_flags", 15, 49, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2176,7 +2176,7 @@ func (v Buffer) SetFlags(flags BufferFlags) (result bool) {
 // [ size ] trans: nothing
 //
 func (v Buffer) SetSize(size int64) {
-	iv, err := _I.Get(82, "Buffer", "set_size")
+	iv, err := _I.Get(82, "Buffer", "set_size", 15, 50, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2192,7 +2192,7 @@ func (v Buffer) SetSize(size int64) {
 // [ info ] trans: nothing
 //
 func (v Buffer) Unmap(info MapInfo) {
-	iv, err := _I.Get(83, "Buffer", "unmap")
+	iv, err := _I.Get(83, "Buffer", "unmap", 15, 51, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2210,7 +2210,7 @@ func (v Buffer) Unmap(info MapInfo) {
 // [ result ] trans: nothing
 //
 func (v Buffer) UnsetFlags(flags BufferFlags) (result bool) {
-	iv, err := _I.Get(84, "Buffer", "unset_flags")
+	iv, err := _I.Get(84, "Buffer", "unset_flags", 15, 52, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2301,7 +2301,7 @@ func BufferListGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewBufferList() (result BufferList) {
-	iv, err := _I.Get(86, "BufferList", "new")
+	iv, err := _I.Get(86, "BufferList", "new", 19, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2319,7 +2319,7 @@ func NewBufferList() (result BufferList) {
 // [ result ] trans: everything
 //
 func NewBufferListSized(size uint32) (result BufferList) {
-	iv, err := _I.Get(87, "BufferList", "new_sized")
+	iv, err := _I.Get(87, "BufferList", "new_sized", 19, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2337,7 +2337,7 @@ func NewBufferListSized(size uint32) (result BufferList) {
 // [ result ] trans: nothing
 //
 func (v BufferList) CalculateSize() (result uint64) {
-	iv, err := _I.Get(88, "BufferList", "calculate_size")
+	iv, err := _I.Get(88, "BufferList", "calculate_size", 19, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2355,7 +2355,7 @@ func (v BufferList) CalculateSize() (result uint64) {
 // [ result ] trans: everything
 //
 func (v BufferList) CopyDeep() (result BufferList) {
-	iv, err := _I.Get(89, "BufferList", "copy_deep")
+	iv, err := _I.Get(89, "BufferList", "copy_deep", 19, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2377,7 +2377,7 @@ func (v BufferList) CopyDeep() (result BufferList) {
 // [ result ] trans: nothing
 //
 func (v BufferList) Foreach(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(90, "BufferList", "foreach")
+	iv, err := _I.Get(90, "BufferList", "foreach", 19, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2399,7 +2399,7 @@ func (v BufferList) Foreach(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.P
 // [ result ] trans: nothing
 //
 func (v BufferList) Get(idx uint32) (result Buffer) {
-	iv, err := _I.Get(91, "BufferList", "get")
+	iv, err := _I.Get(91, "BufferList", "get", 19, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2420,7 +2420,7 @@ func (v BufferList) Get(idx uint32) (result Buffer) {
 // [ result ] trans: nothing
 //
 func (v BufferList) GetWritable(idx uint32) (result Buffer) {
-	iv, err := _I.Get(92, "BufferList", "get_writable")
+	iv, err := _I.Get(92, "BufferList", "get_writable", 19, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2441,7 +2441,7 @@ func (v BufferList) GetWritable(idx uint32) (result Buffer) {
 // [ buffer ] trans: everything
 //
 func (v BufferList) Insert(idx int32, buffer Buffer) {
-	iv, err := _I.Get(93, "BufferList", "insert")
+	iv, err := _I.Get(93, "BufferList", "insert", 19, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2458,7 +2458,7 @@ func (v BufferList) Insert(idx int32, buffer Buffer) {
 // [ result ] trans: nothing
 //
 func (v BufferList) Length() (result uint32) {
-	iv, err := _I.Get(94, "BufferList", "length")
+	iv, err := _I.Get(94, "BufferList", "length", 19, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2478,7 +2478,7 @@ func (v BufferList) Length() (result uint32) {
 // [ length ] trans: nothing
 //
 func (v BufferList) Remove(idx uint32, length uint32) {
-	iv, err := _I.Get(95, "BufferList", "remove")
+	iv, err := _I.Get(95, "BufferList", "remove", 19, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2529,7 +2529,7 @@ func BufferPoolGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewBufferPool() (result BufferPool) {
-	iv, err := _I.Get(96, "BufferPool", "new")
+	iv, err := _I.Get(96, "BufferPool", "new", 21, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2547,7 +2547,7 @@ func NewBufferPool() (result BufferPool) {
 // [ option ] trans: nothing
 //
 func BufferPoolConfigAddOption1(config Structure, option string) {
-	iv, err := _I.Get(97, "BufferPool", "config_add_option")
+	iv, err := _I.Get(97, "BufferPool", "config_add_option", 21, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2571,7 +2571,7 @@ func BufferPoolConfigAddOption1(config Structure, option string) {
 // [ result ] trans: nothing
 //
 func BufferPoolConfigGetAllocator1(config Structure, params AllocationParams) (result bool, allocator Allocator) {
-	iv, err := _I.Get(98, "BufferPool", "config_get_allocator")
+	iv, err := _I.Get(98, "BufferPool", "config_get_allocator", 21, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2597,7 +2597,7 @@ func BufferPoolConfigGetAllocator1(config Structure, params AllocationParams) (r
 // [ result ] trans: nothing
 //
 func BufferPoolConfigGetOption1(config Structure, index uint32) (result string) {
-	iv, err := _I.Get(99, "BufferPool", "config_get_option")
+	iv, err := _I.Get(99, "BufferPool", "config_get_option", 21, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2626,7 +2626,7 @@ func BufferPoolConfigGetOption1(config Structure, index uint32) (result string) 
 // [ result ] trans: nothing
 //
 func BufferPoolConfigGetParams1(config Structure) (result bool, caps Caps, size uint32, min_buffers uint32, max_buffers uint32) {
-	iv, err := _I.Get(100, "BufferPool", "config_get_params")
+	iv, err := _I.Get(100, "BufferPool", "config_get_params", 21, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2657,7 +2657,7 @@ func BufferPoolConfigGetParams1(config Structure) (result bool, caps Caps, size 
 // [ result ] trans: nothing
 //
 func BufferPoolConfigHasOption1(config Structure, option string) (result bool) {
-	iv, err := _I.Get(101, "BufferPool", "config_has_option")
+	iv, err := _I.Get(101, "BufferPool", "config_has_option", 21, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2680,7 +2680,7 @@ func BufferPoolConfigHasOption1(config Structure, option string) (result bool) {
 // [ result ] trans: nothing
 //
 func BufferPoolConfigNOptions1(config Structure) (result uint32) {
-	iv, err := _I.Get(102, "BufferPool", "config_n_options")
+	iv, err := _I.Get(102, "BufferPool", "config_n_options", 21, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2702,7 +2702,7 @@ func BufferPoolConfigNOptions1(config Structure) (result uint32) {
 // [ params ] trans: nothing
 //
 func BufferPoolConfigSetAllocator1(config Structure, allocator IAllocator, params AllocationParams) {
-	iv, err := _I.Get(103, "BufferPool", "config_set_allocator")
+	iv, err := _I.Get(103, "BufferPool", "config_set_allocator", 21, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2731,7 +2731,7 @@ func BufferPoolConfigSetAllocator1(config Structure, allocator IAllocator, param
 // [ max_buffers ] trans: nothing
 //
 func BufferPoolConfigSetParams1(config Structure, caps Caps, size uint32, min_buffers uint32, max_buffers uint32) {
-	iv, err := _I.Get(104, "BufferPool", "config_set_params")
+	iv, err := _I.Get(104, "BufferPool", "config_set_params", 21, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2760,7 +2760,7 @@ func BufferPoolConfigSetParams1(config Structure, caps Caps, size uint32, min_bu
 // [ result ] trans: nothing
 //
 func BufferPoolConfigValidateParams1(config Structure, caps Caps, size uint32, min_buffers uint32, max_buffers uint32) (result bool) {
-	iv, err := _I.Get(105, "BufferPool", "config_validate_params")
+	iv, err := _I.Get(105, "BufferPool", "config_validate_params", 21, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2786,7 +2786,7 @@ func BufferPoolConfigValidateParams1(config Structure, caps Caps, size uint32, m
 // [ result ] trans: nothing
 //
 func (v BufferPool) AcquireBuffer(params BufferPoolAcquireParams) (result FlowReturnEnum, buffer Buffer) {
-	iv, err := _I.Get(106, "BufferPool", "acquire_buffer")
+	iv, err := _I.Get(106, "BufferPool", "acquire_buffer", 21, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2808,7 +2808,7 @@ func (v BufferPool) AcquireBuffer(params BufferPoolAcquireParams) (result FlowRe
 // [ result ] trans: everything
 //
 func (v BufferPool) GetConfig() (result Structure) {
-	iv, err := _I.Get(107, "BufferPool", "get_config")
+	iv, err := _I.Get(107, "BufferPool", "get_config", 21, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2826,7 +2826,7 @@ func (v BufferPool) GetConfig() (result Structure) {
 // [ result ] trans: nothing
 //
 func (v BufferPool) GetOptions() (result gi.CStrArray) {
-	iv, err := _I.Get(108, "BufferPool", "get_options")
+	iv, err := _I.Get(108, "BufferPool", "get_options", 21, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2847,7 +2847,7 @@ func (v BufferPool) GetOptions() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v BufferPool) HasOption(option string) (result bool) {
-	iv, err := _I.Get(109, "BufferPool", "has_option")
+	iv, err := _I.Get(109, "BufferPool", "has_option", 21, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2868,7 +2868,7 @@ func (v BufferPool) HasOption(option string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v BufferPool) IsActive() (result bool) {
-	iv, err := _I.Get(110, "BufferPool", "is_active")
+	iv, err := _I.Get(110, "BufferPool", "is_active", 21, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2886,7 +2886,7 @@ func (v BufferPool) IsActive() (result bool) {
 // [ buffer ] trans: everything
 //
 func (v BufferPool) ReleaseBuffer(buffer Buffer) {
-	iv, err := _I.Get(111, "BufferPool", "release_buffer")
+	iv, err := _I.Get(111, "BufferPool", "release_buffer", 21, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2904,7 +2904,7 @@ func (v BufferPool) ReleaseBuffer(buffer Buffer) {
 // [ result ] trans: nothing
 //
 func (v BufferPool) SetActive(active bool) (result bool) {
-	iv, err := _I.Get(112, "BufferPool", "set_active")
+	iv, err := _I.Get(112, "BufferPool", "set_active", 21, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2925,7 +2925,7 @@ func (v BufferPool) SetActive(active bool) (result bool) {
 // [ result ] trans: nothing
 //
 func (v BufferPool) SetConfig(config Structure) (result bool) {
-	iv, err := _I.Get(113, "BufferPool", "set_config")
+	iv, err := _I.Get(113, "BufferPool", "set_config", 21, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2944,7 +2944,7 @@ func (v BufferPool) SetConfig(config Structure) (result bool) {
 // [ flushing ] trans: nothing
 //
 func (v BufferPool) SetFlushing(flushing bool) {
-	iv, err := _I.Get(114, "BufferPool", "set_flushing")
+	iv, err := _I.Get(114, "BufferPool", "set_flushing", 21, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3030,7 +3030,7 @@ func BusGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewBus() (result Bus) {
-	iv, err := _I.Get(115, "Bus", "new")
+	iv, err := _I.Get(115, "Bus", "new", 27, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3044,7 +3044,7 @@ func NewBus() (result Bus) {
 // gst_bus_add_signal_watch
 //
 func (v Bus) AddSignalWatch() {
-	iv, err := _I.Get(116, "Bus", "add_signal_watch")
+	iv, err := _I.Get(116, "Bus", "add_signal_watch", 27, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3059,7 +3059,7 @@ func (v Bus) AddSignalWatch() {
 // [ priority ] trans: nothing
 //
 func (v Bus) AddSignalWatchFull(priority int32) {
-	iv, err := _I.Get(117, "Bus", "add_signal_watch_full")
+	iv, err := _I.Get(117, "Bus", "add_signal_watch_full", 27, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3083,7 +3083,7 @@ func (v Bus) AddSignalWatchFull(priority int32) {
 // [ result ] trans: nothing
 //
 func (v Bus) AddWatch(priority int32, func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result uint32) {
-	iv, err := _I.Get(118, "Bus", "add_watch")
+	iv, err := _I.Get(118, "Bus", "add_watch", 27, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3109,7 +3109,7 @@ func (v Bus) AddWatch(priority int32, func1 int /*TODO_TYPE CALLBACK*/, user_dat
 // [ result ] trans: nothing
 //
 func (v Bus) AsyncSignalFunc(message Message, data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(119, "Bus", "async_signal_func")
+	iv, err := _I.Get(119, "Bus", "async_signal_func", 27, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3129,7 +3129,7 @@ func (v Bus) AsyncSignalFunc(message Message, data unsafe.Pointer) (result bool)
 // [ result ] trans: everything
 //
 func (v Bus) CreateWatch() (result g.Source) {
-	iv, err := _I.Get(120, "Bus", "create_watch")
+	iv, err := _I.Get(120, "Bus", "create_watch", 27, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3145,7 +3145,7 @@ func (v Bus) CreateWatch() (result g.Source) {
 // gst_bus_disable_sync_message_emission
 //
 func (v Bus) DisableSyncMessageEmission() {
-	iv, err := _I.Get(121, "Bus", "disable_sync_message_emission")
+	iv, err := _I.Get(121, "Bus", "disable_sync_message_emission", 27, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3158,7 +3158,7 @@ func (v Bus) DisableSyncMessageEmission() {
 // gst_bus_enable_sync_message_emission
 //
 func (v Bus) EnableSyncMessageEmission() {
-	iv, err := _I.Get(122, "Bus", "enable_sync_message_emission")
+	iv, err := _I.Get(122, "Bus", "enable_sync_message_emission", 27, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3173,7 +3173,7 @@ func (v Bus) EnableSyncMessageEmission() {
 // [ fd ] trans: nothing
 //
 func (v Bus) GetPollfd(fd g.PollFD) {
-	iv, err := _I.Get(123, "Bus", "get_pollfd")
+	iv, err := _I.Get(123, "Bus", "get_pollfd", 27, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3189,7 +3189,7 @@ func (v Bus) GetPollfd(fd g.PollFD) {
 // [ result ] trans: nothing
 //
 func (v Bus) HavePending() (result bool) {
-	iv, err := _I.Get(124, "Bus", "have_pending")
+	iv, err := _I.Get(124, "Bus", "have_pending", 27, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3207,7 +3207,7 @@ func (v Bus) HavePending() (result bool) {
 // [ result ] trans: everything
 //
 func (v Bus) Peek() (result Message) {
-	iv, err := _I.Get(125, "Bus", "peek")
+	iv, err := _I.Get(125, "Bus", "peek", 27, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3229,7 +3229,7 @@ func (v Bus) Peek() (result Message) {
 // [ result ] trans: everything
 //
 func (v Bus) PollF(events MessageTypeFlags, timeout uint64) (result Message) {
-	iv, err := _I.Get(126, "Bus", "poll")
+	iv, err := _I.Get(126, "Bus", "poll", 27, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3249,7 +3249,7 @@ func (v Bus) PollF(events MessageTypeFlags, timeout uint64) (result Message) {
 // [ result ] trans: everything
 //
 func (v Bus) Pop() (result Message) {
-	iv, err := _I.Get(127, "Bus", "pop")
+	iv, err := _I.Get(127, "Bus", "pop", 27, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3269,7 +3269,7 @@ func (v Bus) Pop() (result Message) {
 // [ result ] trans: everything
 //
 func (v Bus) PopFiltered(types MessageTypeFlags) (result Message) {
-	iv, err := _I.Get(128, "Bus", "pop_filtered")
+	iv, err := _I.Get(128, "Bus", "pop_filtered", 27, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3290,7 +3290,7 @@ func (v Bus) PopFiltered(types MessageTypeFlags) (result Message) {
 // [ result ] trans: nothing
 //
 func (v Bus) Post(message Message) (result bool) {
-	iv, err := _I.Get(129, "Bus", "post")
+	iv, err := _I.Get(129, "Bus", "post", 27, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3307,7 +3307,7 @@ func (v Bus) Post(message Message) (result bool) {
 // gst_bus_remove_signal_watch
 //
 func (v Bus) RemoveSignalWatch() {
-	iv, err := _I.Get(130, "Bus", "remove_signal_watch")
+	iv, err := _I.Get(130, "Bus", "remove_signal_watch", 27, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3322,7 +3322,7 @@ func (v Bus) RemoveSignalWatch() {
 // [ result ] trans: nothing
 //
 func (v Bus) RemoveWatch() (result bool) {
-	iv, err := _I.Get(131, "Bus", "remove_watch")
+	iv, err := _I.Get(131, "Bus", "remove_watch", 27, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3340,7 +3340,7 @@ func (v Bus) RemoveWatch() (result bool) {
 // [ flushing ] trans: nothing
 //
 func (v Bus) SetFlushing(flushing bool) {
-	iv, err := _I.Get(132, "Bus", "set_flushing")
+	iv, err := _I.Get(132, "Bus", "set_flushing", 27, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3360,7 +3360,7 @@ func (v Bus) SetFlushing(flushing bool) {
 // [ notify ] trans: nothing
 //
 func (v Bus) SetSyncHandler(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(133, "Bus", "set_sync_handler")
+	iv, err := _I.Get(133, "Bus", "set_sync_handler", 27, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3382,7 +3382,7 @@ func (v Bus) SetSyncHandler(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.P
 // [ result ] trans: nothing
 //
 func (v Bus) SyncSignalHandler(message Message, data unsafe.Pointer) (result BusSyncReplyEnum) {
-	iv, err := _I.Get(134, "Bus", "sync_signal_handler")
+	iv, err := _I.Get(134, "Bus", "sync_signal_handler", 27, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3404,7 +3404,7 @@ func (v Bus) SyncSignalHandler(message Message, data unsafe.Pointer) (result Bus
 // [ result ] trans: everything
 //
 func (v Bus) TimedPop(timeout uint64) (result Message) {
-	iv, err := _I.Get(135, "Bus", "timed_pop")
+	iv, err := _I.Get(135, "Bus", "timed_pop", 27, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3427,7 +3427,7 @@ func (v Bus) TimedPop(timeout uint64) (result Message) {
 // [ result ] trans: everything
 //
 func (v Bus) TimedPopFiltered(timeout uint64, types MessageTypeFlags) (result Message) {
-	iv, err := _I.Get(136, "Bus", "timed_pop_filtered")
+	iv, err := _I.Get(136, "Bus", "timed_pop_filtered", 27, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3536,7 +3536,7 @@ func CapsGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewCapsAny() (result Caps) {
-	iv, err := _I.Get(137, "Caps", "new_any")
+	iv, err := _I.Get(137, "Caps", "new_any", 37, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3552,7 +3552,7 @@ func NewCapsAny() (result Caps) {
 // [ result ] trans: everything
 //
 func NewCapsEmpty() (result Caps) {
-	iv, err := _I.Get(138, "Caps", "new_empty")
+	iv, err := _I.Get(138, "Caps", "new_empty", 37, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3570,7 +3570,7 @@ func NewCapsEmpty() (result Caps) {
 // [ result ] trans: everything
 //
 func NewCapsEmptySimple(media_type string) (result Caps) {
-	iv, err := _I.Get(139, "Caps", "new_empty_simple")
+	iv, err := _I.Get(139, "Caps", "new_empty_simple", 37, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3590,7 +3590,7 @@ func NewCapsEmptySimple(media_type string) (result Caps) {
 // [ caps2 ] trans: everything
 //
 func (v Caps) Append(caps2 Caps) {
-	iv, err := _I.Get(140, "Caps", "append")
+	iv, err := _I.Get(140, "Caps", "append", 37, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3606,7 +3606,7 @@ func (v Caps) Append(caps2 Caps) {
 // [ structure ] trans: everything
 //
 func (v Caps) AppendStructure(structure Structure) {
-	iv, err := _I.Get(141, "Caps", "append_structure")
+	iv, err := _I.Get(141, "Caps", "append_structure", 37, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3624,7 +3624,7 @@ func (v Caps) AppendStructure(structure Structure) {
 // [ features ] trans: everything
 //
 func (v Caps) AppendStructureFull(structure Structure, features CapsFeatures) {
-	iv, err := _I.Get(142, "Caps", "append_structure_full")
+	iv, err := _I.Get(142, "Caps", "append_structure_full", 37, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3643,7 +3643,7 @@ func (v Caps) AppendStructureFull(structure Structure, features CapsFeatures) {
 // [ result ] trans: nothing
 //
 func (v Caps) CanIntersect(caps2 Caps) (result bool) {
-	iv, err := _I.Get(143, "Caps", "can_intersect")
+	iv, err := _I.Get(143, "Caps", "can_intersect", 37, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3664,7 +3664,7 @@ func (v Caps) CanIntersect(caps2 Caps) (result bool) {
 // [ result ] trans: everything
 //
 func (v Caps) CopyNth(nth uint32) (result Caps) {
-	iv, err := _I.Get(144, "Caps", "copy_nth")
+	iv, err := _I.Get(144, "Caps", "copy_nth", 37, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3685,7 +3685,7 @@ func (v Caps) CopyNth(nth uint32) (result Caps) {
 // [ user_data ] trans: nothing
 //
 func (v Caps) FilterAndMapInPlace(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(145, "Caps", "filter_and_map_in_place")
+	iv, err := _I.Get(145, "Caps", "filter_and_map_in_place", 37, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3702,7 +3702,7 @@ func (v Caps) FilterAndMapInPlace(func1 int /*TODO_TYPE CALLBACK*/, user_data un
 // [ result ] trans: everything
 //
 func (v Caps) Fixate() (result Caps) {
-	iv, err := _I.Get(146, "Caps", "fixate")
+	iv, err := _I.Get(146, "Caps", "fixate", 37, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3724,7 +3724,7 @@ func (v Caps) Fixate() (result Caps) {
 // [ result ] trans: nothing
 //
 func (v Caps) Foreach(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(147, "Caps", "foreach")
+	iv, err := _I.Get(147, "Caps", "foreach", 37, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3746,7 +3746,7 @@ func (v Caps) Foreach(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer
 // [ result ] trans: nothing
 //
 func (v Caps) GetFeatures(index uint32) (result CapsFeatures) {
-	iv, err := _I.Get(148, "Caps", "get_features")
+	iv, err := _I.Get(148, "Caps", "get_features", 37, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3765,7 +3765,7 @@ func (v Caps) GetFeatures(index uint32) (result CapsFeatures) {
 // [ result ] trans: nothing
 //
 func (v Caps) GetSize() (result uint32) {
-	iv, err := _I.Get(149, "Caps", "get_size")
+	iv, err := _I.Get(149, "Caps", "get_size", 37, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3785,7 +3785,7 @@ func (v Caps) GetSize() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Caps) GetStructure(index uint32) (result Structure) {
-	iv, err := _I.Get(150, "Caps", "get_structure")
+	iv, err := _I.Get(150, "Caps", "get_structure", 37, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3806,7 +3806,7 @@ func (v Caps) GetStructure(index uint32) (result Structure) {
 // [ result ] trans: everything
 //
 func (v Caps) Intersect(caps2 Caps) (result Caps) {
-	iv, err := _I.Get(151, "Caps", "intersect")
+	iv, err := _I.Get(151, "Caps", "intersect", 37, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3829,7 +3829,7 @@ func (v Caps) Intersect(caps2 Caps) (result Caps) {
 // [ result ] trans: everything
 //
 func (v Caps) IntersectFull(caps2 Caps, mode CapsIntersectModeEnum) (result Caps) {
-	iv, err := _I.Get(152, "Caps", "intersect_full")
+	iv, err := _I.Get(152, "Caps", "intersect_full", 37, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3851,7 +3851,7 @@ func (v Caps) IntersectFull(caps2 Caps, mode CapsIntersectModeEnum) (result Caps
 // [ result ] trans: nothing
 //
 func (v Caps) IsAlwaysCompatible(caps2 Caps) (result bool) {
-	iv, err := _I.Get(153, "Caps", "is_always_compatible")
+	iv, err := _I.Get(153, "Caps", "is_always_compatible", 37, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3870,7 +3870,7 @@ func (v Caps) IsAlwaysCompatible(caps2 Caps) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Caps) IsAny() (result bool) {
-	iv, err := _I.Get(154, "Caps", "is_any")
+	iv, err := _I.Get(154, "Caps", "is_any", 37, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3888,7 +3888,7 @@ func (v Caps) IsAny() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Caps) IsEmpty() (result bool) {
-	iv, err := _I.Get(155, "Caps", "is_empty")
+	iv, err := _I.Get(155, "Caps", "is_empty", 37, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3908,7 +3908,7 @@ func (v Caps) IsEmpty() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Caps) IsEqual(caps2 Caps) (result bool) {
-	iv, err := _I.Get(156, "Caps", "is_equal")
+	iv, err := _I.Get(156, "Caps", "is_equal", 37, 19, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3929,7 +3929,7 @@ func (v Caps) IsEqual(caps2 Caps) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Caps) IsEqualFixed(caps2 Caps) (result bool) {
-	iv, err := _I.Get(157, "Caps", "is_equal_fixed")
+	iv, err := _I.Get(157, "Caps", "is_equal_fixed", 37, 20, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3948,7 +3948,7 @@ func (v Caps) IsEqualFixed(caps2 Caps) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Caps) IsFixed() (result bool) {
-	iv, err := _I.Get(158, "Caps", "is_fixed")
+	iv, err := _I.Get(158, "Caps", "is_fixed", 37, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3968,7 +3968,7 @@ func (v Caps) IsFixed() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Caps) IsStrictlyEqual(caps2 Caps) (result bool) {
-	iv, err := _I.Get(159, "Caps", "is_strictly_equal")
+	iv, err := _I.Get(159, "Caps", "is_strictly_equal", 37, 22, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3989,7 +3989,7 @@ func (v Caps) IsStrictlyEqual(caps2 Caps) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Caps) IsSubset(superset Caps) (result bool) {
-	iv, err := _I.Get(160, "Caps", "is_subset")
+	iv, err := _I.Get(160, "Caps", "is_subset", 37, 23, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4010,7 +4010,7 @@ func (v Caps) IsSubset(superset Caps) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Caps) IsSubsetStructure(structure Structure) (result bool) {
-	iv, err := _I.Get(161, "Caps", "is_subset_structure")
+	iv, err := _I.Get(161, "Caps", "is_subset_structure", 37, 24, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4033,7 +4033,7 @@ func (v Caps) IsSubsetStructure(structure Structure) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Caps) IsSubsetStructureFull(structure Structure, features CapsFeatures) (result bool) {
-	iv, err := _I.Get(162, "Caps", "is_subset_structure_full")
+	iv, err := _I.Get(162, "Caps", "is_subset_structure_full", 37, 25, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4057,7 +4057,7 @@ func (v Caps) IsSubsetStructureFull(structure Structure, features CapsFeatures) 
 // [ result ] trans: nothing
 //
 func (v Caps) MapInPlace(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(163, "Caps", "map_in_place")
+	iv, err := _I.Get(163, "Caps", "map_in_place", 37, 26, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4079,7 +4079,7 @@ func (v Caps) MapInPlace(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Poin
 // [ result ] trans: everything
 //
 func (v Caps) Merge(caps2 Caps) (result Caps) {
-	iv, err := _I.Get(164, "Caps", "merge")
+	iv, err := _I.Get(164, "Caps", "merge", 37, 27, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4100,7 +4100,7 @@ func (v Caps) Merge(caps2 Caps) (result Caps) {
 // [ result ] trans: everything
 //
 func (v Caps) MergeStructure(structure Structure) (result Caps) {
-	iv, err := _I.Get(165, "Caps", "merge_structure")
+	iv, err := _I.Get(165, "Caps", "merge_structure", 37, 28, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4123,7 +4123,7 @@ func (v Caps) MergeStructure(structure Structure) (result Caps) {
 // [ result ] trans: everything
 //
 func (v Caps) MergeStructureFull(structure Structure, features CapsFeatures) (result Caps) {
-	iv, err := _I.Get(166, "Caps", "merge_structure_full")
+	iv, err := _I.Get(166, "Caps", "merge_structure_full", 37, 29, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4143,7 +4143,7 @@ func (v Caps) MergeStructureFull(structure Structure, features CapsFeatures) (re
 // [ result ] trans: everything
 //
 func (v Caps) Normalize() (result Caps) {
-	iv, err := _I.Get(167, "Caps", "normalize")
+	iv, err := _I.Get(167, "Caps", "normalize", 37, 30, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4161,7 +4161,7 @@ func (v Caps) Normalize() (result Caps) {
 // [ idx ] trans: nothing
 //
 func (v Caps) RemoveStructure(idx uint32) {
-	iv, err := _I.Get(168, "Caps", "remove_structure")
+	iv, err := _I.Get(168, "Caps", "remove_structure", 37, 31, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4179,7 +4179,7 @@ func (v Caps) RemoveStructure(idx uint32) {
 // [ features ] trans: everything
 //
 func (v Caps) SetFeatures(index uint32, features CapsFeatures) {
-	iv, err := _I.Get(169, "Caps", "set_features")
+	iv, err := _I.Get(169, "Caps", "set_features", 37, 32, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4198,7 +4198,7 @@ func (v Caps) SetFeatures(index uint32, features CapsFeatures) {
 // [ value ] trans: nothing
 //
 func (v Caps) SetValue(field string, value g.Value) {
-	iv, err := _I.Get(170, "Caps", "set_value")
+	iv, err := _I.Get(170, "Caps", "set_value", 37, 33, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4217,7 +4217,7 @@ func (v Caps) SetValue(field string, value g.Value) {
 // [ result ] trans: everything
 //
 func (v Caps) Simplify() (result Caps) {
-	iv, err := _I.Get(171, "Caps", "simplify")
+	iv, err := _I.Get(171, "Caps", "simplify", 37, 34, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4237,7 +4237,7 @@ func (v Caps) Simplify() (result Caps) {
 // [ result ] trans: everything
 //
 func (v Caps) StealStructure(index uint32) (result Structure) {
-	iv, err := _I.Get(172, "Caps", "steal_structure")
+	iv, err := _I.Get(172, "Caps", "steal_structure", 37, 35, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4258,7 +4258,7 @@ func (v Caps) StealStructure(index uint32) (result Structure) {
 // [ result ] trans: everything
 //
 func (v Caps) Subtract(subtrahend Caps) (result Caps) {
-	iv, err := _I.Get(173, "Caps", "subtract")
+	iv, err := _I.Get(173, "Caps", "subtract", 37, 36, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4277,7 +4277,7 @@ func (v Caps) Subtract(subtrahend Caps) (result Caps) {
 // [ result ] trans: everything
 //
 func (v Caps) ToString() (result string) {
-	iv, err := _I.Get(174, "Caps", "to_string")
+	iv, err := _I.Get(174, "Caps", "to_string", 37, 37, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4295,7 +4295,7 @@ func (v Caps) ToString() (result string) {
 // [ result ] trans: everything
 //
 func (v Caps) Truncate() (result Caps) {
-	iv, err := _I.Get(175, "Caps", "truncate")
+	iv, err := _I.Get(175, "Caps", "truncate", 37, 38, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4315,7 +4315,7 @@ func (v Caps) Truncate() (result Caps) {
 // [ result ] trans: everything
 //
 func CapsFromString1(string string) (result Caps) {
-	iv, err := _I.Get(176, "Caps", "from_string")
+	iv, err := _I.Get(176, "Caps", "from_string", 37, 39, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4345,7 +4345,7 @@ func CapsFeaturesGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewCapsFeaturesAny() (result CapsFeatures) {
-	iv, err := _I.Get(177, "CapsFeatures", "new_any")
+	iv, err := _I.Get(177, "CapsFeatures", "new_any", 38, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4361,7 +4361,7 @@ func NewCapsFeaturesAny() (result CapsFeatures) {
 // [ result ] trans: everything
 //
 func NewCapsFeaturesEmpty() (result CapsFeatures) {
-	iv, err := _I.Get(178, "CapsFeatures", "new_empty")
+	iv, err := _I.Get(178, "CapsFeatures", "new_empty", 38, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4377,7 +4377,7 @@ func NewCapsFeaturesEmpty() (result CapsFeatures) {
 // [ feature ] trans: nothing
 //
 func (v CapsFeatures) Add(feature string) {
-	iv, err := _I.Get(179, "CapsFeatures", "add")
+	iv, err := _I.Get(179, "CapsFeatures", "add", 38, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4395,7 +4395,7 @@ func (v CapsFeatures) Add(feature string) {
 // [ feature ] trans: nothing
 //
 func (v CapsFeatures) AddId(feature uint32) {
-	iv, err := _I.Get(180, "CapsFeatures", "add_id")
+	iv, err := _I.Get(180, "CapsFeatures", "add_id", 38, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4413,7 +4413,7 @@ func (v CapsFeatures) AddId(feature uint32) {
 // [ result ] trans: nothing
 //
 func (v CapsFeatures) Contains(feature string) (result bool) {
-	iv, err := _I.Get(181, "CapsFeatures", "contains")
+	iv, err := _I.Get(181, "CapsFeatures", "contains", 38, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4436,7 +4436,7 @@ func (v CapsFeatures) Contains(feature string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v CapsFeatures) ContainsId(feature uint32) (result bool) {
-	iv, err := _I.Get(182, "CapsFeatures", "contains_id")
+	iv, err := _I.Get(182, "CapsFeatures", "contains_id", 38, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4455,7 +4455,7 @@ func (v CapsFeatures) ContainsId(feature uint32) (result bool) {
 // [ result ] trans: everything
 //
 func (v CapsFeatures) Copy() (result CapsFeatures) {
-	iv, err := _I.Get(183, "CapsFeatures", "copy")
+	iv, err := _I.Get(183, "CapsFeatures", "copy", 38, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4471,7 +4471,7 @@ func (v CapsFeatures) Copy() (result CapsFeatures) {
 // gst_caps_features_free
 //
 func (v CapsFeatures) Free() {
-	iv, err := _I.Get(184, "CapsFeatures", "free")
+	iv, err := _I.Get(184, "CapsFeatures", "free", 38, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4488,7 +4488,7 @@ func (v CapsFeatures) Free() {
 // [ result ] trans: nothing
 //
 func (v CapsFeatures) GetNth(i uint32) (result string) {
-	iv, err := _I.Get(185, "CapsFeatures", "get_nth")
+	iv, err := _I.Get(185, "CapsFeatures", "get_nth", 38, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4509,7 +4509,7 @@ func (v CapsFeatures) GetNth(i uint32) (result string) {
 // [ result ] trans: nothing
 //
 func (v CapsFeatures) GetNthId(i uint32) (result uint32) {
-	iv, err := _I.Get(186, "CapsFeatures", "get_nth_id")
+	iv, err := _I.Get(186, "CapsFeatures", "get_nth_id", 38, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4528,7 +4528,7 @@ func (v CapsFeatures) GetNthId(i uint32) (result uint32) {
 // [ result ] trans: nothing
 //
 func (v CapsFeatures) GetSize() (result uint32) {
-	iv, err := _I.Get(187, "CapsFeatures", "get_size")
+	iv, err := _I.Get(187, "CapsFeatures", "get_size", 38, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4546,7 +4546,7 @@ func (v CapsFeatures) GetSize() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v CapsFeatures) IsAny() (result bool) {
-	iv, err := _I.Get(188, "CapsFeatures", "is_any")
+	iv, err := _I.Get(188, "CapsFeatures", "is_any", 38, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4566,7 +4566,7 @@ func (v CapsFeatures) IsAny() (result bool) {
 // [ result ] trans: nothing
 //
 func (v CapsFeatures) IsEqual(features2 CapsFeatures) (result bool) {
-	iv, err := _I.Get(189, "CapsFeatures", "is_equal")
+	iv, err := _I.Get(189, "CapsFeatures", "is_equal", 38, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4585,7 +4585,7 @@ func (v CapsFeatures) IsEqual(features2 CapsFeatures) (result bool) {
 // [ feature ] trans: nothing
 //
 func (v CapsFeatures) Remove(feature string) {
-	iv, err := _I.Get(190, "CapsFeatures", "remove")
+	iv, err := _I.Get(190, "CapsFeatures", "remove", 38, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4603,7 +4603,7 @@ func (v CapsFeatures) Remove(feature string) {
 // [ feature ] trans: nothing
 //
 func (v CapsFeatures) RemoveId(feature uint32) {
-	iv, err := _I.Get(191, "CapsFeatures", "remove_id")
+	iv, err := _I.Get(191, "CapsFeatures", "remove_id", 38, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4621,7 +4621,7 @@ func (v CapsFeatures) RemoveId(feature uint32) {
 // [ result ] trans: nothing
 //
 func (v CapsFeatures) SetParentRefcount(refcount int32) (result bool) {
-	iv, err := _I.Get(192, "CapsFeatures", "set_parent_refcount")
+	iv, err := _I.Get(192, "CapsFeatures", "set_parent_refcount", 38, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4640,7 +4640,7 @@ func (v CapsFeatures) SetParentRefcount(refcount int32) (result bool) {
 // [ result ] trans: everything
 //
 func (v CapsFeatures) ToString() (result string) {
-	iv, err := _I.Get(193, "CapsFeatures", "to_string")
+	iv, err := _I.Get(193, "CapsFeatures", "to_string", 38, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4660,7 +4660,7 @@ func (v CapsFeatures) ToString() (result string) {
 // [ result ] trans: everything
 //
 func CapsFeaturesFromString1(features string) (result CapsFeatures) {
-	iv, err := _I.Get(194, "CapsFeatures", "from_string")
+	iv, err := _I.Get(194, "CapsFeatures", "from_string", 38, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4778,7 +4778,7 @@ func ChildProxyGetType() gi.GType {
 // [ name ] trans: nothing
 //
 func (v *ChildProxyIfc) ChildAdded(child g.IObject, name string) {
-	iv, err := _I.Get(195, "ChildProxy", "child_added")
+	iv, err := _I.Get(195, "ChildProxy", "child_added", 44, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4803,7 +4803,7 @@ func (v *ChildProxyIfc) ChildAdded(child g.IObject, name string) {
 // [ name ] trans: nothing
 //
 func (v *ChildProxyIfc) ChildRemoved(child g.IObject, name string) {
-	iv, err := _I.Get(196, "ChildProxy", "child_removed")
+	iv, err := _I.Get(196, "ChildProxy", "child_removed", 44, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4828,7 +4828,7 @@ func (v *ChildProxyIfc) ChildRemoved(child g.IObject, name string) {
 // [ result ] trans: everything
 //
 func (v *ChildProxyIfc) GetChildByIndex(index uint32) (result g.Object) {
-	iv, err := _I.Get(197, "ChildProxy", "get_child_by_index")
+	iv, err := _I.Get(197, "ChildProxy", "get_child_by_index", 44, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4849,7 +4849,7 @@ func (v *ChildProxyIfc) GetChildByIndex(index uint32) (result g.Object) {
 // [ result ] trans: everything
 //
 func (v *ChildProxyIfc) GetChildByName(name string) (result g.Object) {
-	iv, err := _I.Get(198, "ChildProxy", "get_child_by_name")
+	iv, err := _I.Get(198, "ChildProxy", "get_child_by_name", 44, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4870,7 +4870,7 @@ func (v *ChildProxyIfc) GetChildByName(name string) (result g.Object) {
 // [ result ] trans: nothing
 //
 func (v *ChildProxyIfc) GetChildrenCount() (result uint32) {
-	iv, err := _I.Get(199, "ChildProxy", "get_children_count")
+	iv, err := _I.Get(199, "ChildProxy", "get_children_count", 44, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4890,7 +4890,7 @@ func (v *ChildProxyIfc) GetChildrenCount() (result uint32) {
 // [ value ] trans: nothing, dir: out
 //
 func (v *ChildProxyIfc) GetProperty(name string, value g.Value) {
-	iv, err := _I.Get(200, "ChildProxy", "get_property")
+	iv, err := _I.Get(200, "ChildProxy", "get_property", 44, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4915,7 +4915,7 @@ func (v *ChildProxyIfc) GetProperty(name string, value g.Value) {
 // [ result ] trans: nothing
 //
 func (v *ChildProxyIfc) Lookup(name string) (result bool, target g.Object, pspec g.ParamSpec) {
-	iv, err := _I.Get(201, "ChildProxy", "lookup")
+	iv, err := _I.Get(201, "ChildProxy", "lookup", 44, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4943,7 +4943,7 @@ func (v *ChildProxyIfc) Lookup(name string) (result bool, target g.Object, pspec
 // [ value ] trans: nothing
 //
 func (v *ChildProxyIfc) SetProperty(name string, value g.Value) {
-	iv, err := _I.Get(202, "ChildProxy", "set_property")
+	iv, err := _I.Get(202, "ChildProxy", "set_property", 44, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4983,7 +4983,7 @@ func ClockGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func ClockIdCompareFunc1(id1 unsafe.Pointer, id2 unsafe.Pointer) (result int32) {
-	iv, err := _I.Get(203, "Clock", "id_compare_func")
+	iv, err := _I.Get(203, "Clock", "id_compare_func", 46, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5004,7 +5004,7 @@ func ClockIdCompareFunc1(id1 unsafe.Pointer, id2 unsafe.Pointer) (result int32) 
 // [ result ] trans: nothing
 //
 func ClockIdGetTime1(id unsafe.Pointer) (result uint64) {
-	iv, err := _I.Get(204, "Clock", "id_get_time")
+	iv, err := _I.Get(204, "Clock", "id_get_time", 46, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5024,7 +5024,7 @@ func ClockIdGetTime1(id unsafe.Pointer) (result uint64) {
 // [ result ] trans: everything
 //
 func ClockIdRef1(id unsafe.Pointer) (result unsafe.Pointer) {
-	iv, err := _I.Get(205, "Clock", "id_ref")
+	iv, err := _I.Get(205, "Clock", "id_ref", 46, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5042,7 +5042,7 @@ func ClockIdRef1(id unsafe.Pointer) (result unsafe.Pointer) {
 // [ id ] trans: everything
 //
 func ClockIdUnref1(id unsafe.Pointer) {
-	iv, err := _I.Get(206, "Clock", "id_unref")
+	iv, err := _I.Get(206, "Clock", "id_unref", 46, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5057,7 +5057,7 @@ func ClockIdUnref1(id unsafe.Pointer) {
 // [ id ] trans: nothing
 //
 func ClockIdUnschedule1(id unsafe.Pointer) {
-	iv, err := _I.Get(207, "Clock", "id_unschedule")
+	iv, err := _I.Get(207, "Clock", "id_unschedule", 46, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5076,7 +5076,7 @@ func ClockIdUnschedule1(id unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func ClockIdWait1(id unsafe.Pointer) (result ClockReturnEnum, jitter int64) {
-	iv, err := _I.Get(208, "Clock", "id_wait")
+	iv, err := _I.Get(208, "Clock", "id_wait", 46, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5105,7 +5105,7 @@ func ClockIdWait1(id unsafe.Pointer) (result ClockReturnEnum, jitter int64) {
 // [ result ] trans: nothing
 //
 func ClockIdWaitAsync1(id unsafe.Pointer, func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, destroy_data int /*TODO_TYPE CALLBACK*/) (result ClockReturnEnum) {
-	iv, err := _I.Get(209, "Clock", "id_wait_async")
+	iv, err := _I.Get(209, "Clock", "id_wait_async", 46, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5132,7 +5132,7 @@ func ClockIdWaitAsync1(id unsafe.Pointer, func1 int /*TODO_TYPE CALLBACK*/, user
 // [ result ] trans: nothing
 //
 func (v Clock) AddObservation(slave uint64, master uint64) (result bool, r_squared float64) {
-	iv, err := _I.Get(210, "Clock", "add_observation")
+	iv, err := _I.Get(210, "Clock", "add_observation", 46, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5169,7 +5169,7 @@ func (v Clock) AddObservation(slave uint64, master uint64) (result bool, r_squar
 // [ result ] trans: nothing
 //
 func (v Clock) AddObservationUnapplied(slave uint64, master uint64) (result bool, r_squared float64, internal uint64, external uint64, rate_num uint64, rate_denom uint64) {
-	iv, err := _I.Get(211, "Clock", "add_observation_unapplied")
+	iv, err := _I.Get(211, "Clock", "add_observation_unapplied", 46, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5202,7 +5202,7 @@ func (v Clock) AddObservationUnapplied(slave uint64, master uint64) (result bool
 // [ result ] trans: nothing
 //
 func (v Clock) AdjustUnlocked(internal uint64) (result uint64) {
-	iv, err := _I.Get(212, "Clock", "adjust_unlocked")
+	iv, err := _I.Get(212, "Clock", "adjust_unlocked", 46, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5231,7 +5231,7 @@ func (v Clock) AdjustUnlocked(internal uint64) (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Clock) AdjustWithCalibration(internal_target uint64, cinternal uint64, cexternal uint64, cnum uint64, cdenom uint64) (result uint64) {
-	iv, err := _I.Get(213, "Clock", "adjust_with_calibration")
+	iv, err := _I.Get(213, "Clock", "adjust_with_calibration", 46, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5260,7 +5260,7 @@ func (v Clock) AdjustWithCalibration(internal_target uint64, cinternal uint64, c
 // [ rate_denom ] trans: everything, dir: out
 //
 func (v Clock) GetCalibration() (internal uint64, external uint64, rate_num uint64, rate_denom uint64) {
-	iv, err := _I.Get(214, "Clock", "get_calibration")
+	iv, err := _I.Get(214, "Clock", "get_calibration", 46, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5285,7 +5285,7 @@ func (v Clock) GetCalibration() (internal uint64, external uint64, rate_num uint
 // [ result ] trans: nothing
 //
 func (v Clock) GetInternalTime() (result uint64) {
-	iv, err := _I.Get(215, "Clock", "get_internal_time")
+	iv, err := _I.Get(215, "Clock", "get_internal_time", 46, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5303,7 +5303,7 @@ func (v Clock) GetInternalTime() (result uint64) {
 // [ result ] trans: everything
 //
 func (v Clock) GetMaster() (result Clock) {
-	iv, err := _I.Get(216, "Clock", "get_master")
+	iv, err := _I.Get(216, "Clock", "get_master", 46, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5321,7 +5321,7 @@ func (v Clock) GetMaster() (result Clock) {
 // [ result ] trans: nothing
 //
 func (v Clock) GetResolution() (result uint64) {
-	iv, err := _I.Get(217, "Clock", "get_resolution")
+	iv, err := _I.Get(217, "Clock", "get_resolution", 46, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5339,7 +5339,7 @@ func (v Clock) GetResolution() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Clock) GetTime() (result uint64) {
-	iv, err := _I.Get(218, "Clock", "get_time")
+	iv, err := _I.Get(218, "Clock", "get_time", 46, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5357,7 +5357,7 @@ func (v Clock) GetTime() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Clock) GetTimeout() (result uint64) {
-	iv, err := _I.Get(219, "Clock", "get_timeout")
+	iv, err := _I.Get(219, "Clock", "get_timeout", 46, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5375,7 +5375,7 @@ func (v Clock) GetTimeout() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Clock) IsSynced() (result bool) {
-	iv, err := _I.Get(220, "Clock", "is_synced")
+	iv, err := _I.Get(220, "Clock", "is_synced", 46, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5397,7 +5397,7 @@ func (v Clock) IsSynced() (result bool) {
 // [ result ] trans: everything
 //
 func (v Clock) NewPeriodicId(start_time uint64, interval uint64) (result unsafe.Pointer) {
-	iv, err := _I.Get(221, "Clock", "new_periodic_id")
+	iv, err := _I.Get(221, "Clock", "new_periodic_id", 46, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5419,7 +5419,7 @@ func (v Clock) NewPeriodicId(start_time uint64, interval uint64) (result unsafe.
 // [ result ] trans: everything
 //
 func (v Clock) NewSingleShotId(time uint64) (result unsafe.Pointer) {
-	iv, err := _I.Get(222, "Clock", "new_single_shot_id")
+	iv, err := _I.Get(222, "Clock", "new_single_shot_id", 46, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5444,7 +5444,7 @@ func (v Clock) NewSingleShotId(time uint64) (result unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func (v Clock) PeriodicIdReinit(id unsafe.Pointer, start_time uint64, interval uint64) (result bool) {
-	iv, err := _I.Get(223, "Clock", "periodic_id_reinit")
+	iv, err := _I.Get(223, "Clock", "periodic_id_reinit", 46, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5471,7 +5471,7 @@ func (v Clock) PeriodicIdReinit(id unsafe.Pointer, start_time uint64, interval u
 // [ rate_denom ] trans: nothing
 //
 func (v Clock) SetCalibration(internal uint64, external uint64, rate_num uint64, rate_denom uint64) {
-	iv, err := _I.Get(224, "Clock", "set_calibration")
+	iv, err := _I.Get(224, "Clock", "set_calibration", 46, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5492,7 +5492,7 @@ func (v Clock) SetCalibration(internal uint64, external uint64, rate_num uint64,
 // [ result ] trans: nothing
 //
 func (v Clock) SetMaster(master IClock) (result bool) {
-	iv, err := _I.Get(225, "Clock", "set_master")
+	iv, err := _I.Get(225, "Clock", "set_master", 46, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5517,7 +5517,7 @@ func (v Clock) SetMaster(master IClock) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Clock) SetResolution(resolution uint64) (result uint64) {
-	iv, err := _I.Get(226, "Clock", "set_resolution")
+	iv, err := _I.Get(226, "Clock", "set_resolution", 46, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5536,7 +5536,7 @@ func (v Clock) SetResolution(resolution uint64) (result uint64) {
 // [ synced ] trans: nothing
 //
 func (v Clock) SetSynced(synced bool) {
-	iv, err := _I.Get(227, "Clock", "set_synced")
+	iv, err := _I.Get(227, "Clock", "set_synced", 46, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5552,7 +5552,7 @@ func (v Clock) SetSynced(synced bool) {
 // [ timeout ] trans: nothing
 //
 func (v Clock) SetTimeout(timeout uint64) {
-	iv, err := _I.Get(228, "Clock", "set_timeout")
+	iv, err := _I.Get(228, "Clock", "set_timeout", 46, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5572,7 +5572,7 @@ func (v Clock) SetTimeout(timeout uint64) {
 // [ result ] trans: nothing
 //
 func (v Clock) SingleShotIdReinit(id unsafe.Pointer, time uint64) (result bool) {
-	iv, err := _I.Get(229, "Clock", "single_shot_id_reinit")
+	iv, err := _I.Get(229, "Clock", "single_shot_id_reinit", 46, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5594,7 +5594,7 @@ func (v Clock) SingleShotIdReinit(id unsafe.Pointer, time uint64) (result bool) 
 // [ result ] trans: nothing
 //
 func (v Clock) UnadjustUnlocked(external uint64) (result uint64) {
-	iv, err := _I.Get(230, "Clock", "unadjust_unlocked")
+	iv, err := _I.Get(230, "Clock", "unadjust_unlocked", 46, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5623,7 +5623,7 @@ func (v Clock) UnadjustUnlocked(external uint64) (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Clock) UnadjustWithCalibration(external_target uint64, cinternal uint64, cexternal uint64, cnum uint64, cdenom uint64) (result uint64) {
-	iv, err := _I.Get(231, "Clock", "unadjust_with_calibration")
+	iv, err := _I.Get(231, "Clock", "unadjust_with_calibration", 46, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5648,7 +5648,7 @@ func (v Clock) UnadjustWithCalibration(external_target uint64, cinternal uint64,
 // [ result ] trans: nothing
 //
 func (v Clock) WaitForSync(timeout uint64) (result bool) {
-	iv, err := _I.Get(232, "Clock", "wait_for_sync")
+	iv, err := _I.Get(232, "Clock", "wait_for_sync", 46, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5791,7 +5791,7 @@ func ContextGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewContext(context_type string, persistent bool) (result Context) {
-	iv, err := _I.Get(233, "Context", "new")
+	iv, err := _I.Get(233, "Context", "new", 55, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5812,7 +5812,7 @@ func NewContext(context_type string, persistent bool) (result Context) {
 // [ result ] trans: nothing
 //
 func (v Context) GetContextType() (result string) {
-	iv, err := _I.Get(234, "Context", "get_context_type")
+	iv, err := _I.Get(234, "Context", "get_context_type", 55, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5830,7 +5830,7 @@ func (v Context) GetContextType() (result string) {
 // [ result ] trans: nothing
 //
 func (v Context) GetStructure() (result Structure) {
-	iv, err := _I.Get(235, "Context", "get_structure")
+	iv, err := _I.Get(235, "Context", "get_structure", 55, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5850,7 +5850,7 @@ func (v Context) GetStructure() (result Structure) {
 // [ result ] trans: nothing
 //
 func (v Context) HasContextType(context_type string) (result bool) {
-	iv, err := _I.Get(236, "Context", "has_context_type")
+	iv, err := _I.Get(236, "Context", "has_context_type", 55, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5871,7 +5871,7 @@ func (v Context) HasContextType(context_type string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Context) IsPersistent() (result bool) {
-	iv, err := _I.Get(237, "Context", "is_persistent")
+	iv, err := _I.Get(237, "Context", "is_persistent", 55, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5889,7 +5889,7 @@ func (v Context) IsPersistent() (result bool) {
 // [ result ] trans: everything
 //
 func (v Context) WritableStructure() (result Structure) {
-	iv, err := _I.Get(238, "Context", "writable_structure")
+	iv, err := _I.Get(238, "Context", "writable_structure", 55, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5930,7 +5930,7 @@ func ControlBindingGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v ControlBinding) GetGValueArray(timestamp uint64, interval uint64, n_values uint32, values unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(239, "ControlBinding", "get_g_value_array")
+	iv, err := _I.Get(239, "ControlBinding", "get_g_value_array", 56, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5954,7 +5954,7 @@ func (v ControlBinding) GetGValueArray(timestamp uint64, interval uint64, n_valu
 // [ result ] trans: everything
 //
 func (v ControlBinding) GetValue(timestamp uint64) (result g.Value) {
-	iv, err := _I.Get(240, "ControlBinding", "get_value")
+	iv, err := _I.Get(240, "ControlBinding", "get_value", 56, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5973,7 +5973,7 @@ func (v ControlBinding) GetValue(timestamp uint64) (result g.Value) {
 // [ result ] trans: nothing
 //
 func (v ControlBinding) IsDisabled() (result bool) {
-	iv, err := _I.Get(241, "ControlBinding", "is_disabled")
+	iv, err := _I.Get(241, "ControlBinding", "is_disabled", 56, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5991,7 +5991,7 @@ func (v ControlBinding) IsDisabled() (result bool) {
 // [ disabled ] trans: nothing
 //
 func (v ControlBinding) SetDisabled(disabled bool) {
-	iv, err := _I.Get(242, "ControlBinding", "set_disabled")
+	iv, err := _I.Get(242, "ControlBinding", "set_disabled", 56, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6013,7 +6013,7 @@ func (v ControlBinding) SetDisabled(disabled bool) {
 // [ result ] trans: nothing
 //
 func (v ControlBinding) SyncValues(object IObject, timestamp uint64, last_sync uint64) (result bool) {
-	iv, err := _I.Get(243, "ControlBinding", "sync_values")
+	iv, err := _I.Get(243, "ControlBinding", "sync_values", 56, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6084,7 +6084,7 @@ func ControlSourceGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v ControlSource) ControlSourceGetValue(timestamp uint64) (result bool, value float64) {
-	iv, err := _I.Get(244, "ControlSource", "control_source_get_value")
+	iv, err := _I.Get(244, "ControlSource", "control_source_get_value", 60, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6114,7 +6114,7 @@ func (v ControlSource) ControlSourceGetValue(timestamp uint64) (result bool, val
 // [ result ] trans: nothing
 //
 func (v ControlSource) ControlSourceGetValueArray(timestamp uint64, interval uint64, n_values uint32, values gi.DoubleArray) (result bool) {
-	iv, err := _I.Get(245, "ControlSource", "control_source_get_value_array")
+	iv, err := _I.Get(245, "ControlSource", "control_source_get_value_array", 60, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6220,7 +6220,7 @@ func DateTimeGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewDateTime(tzoffset float32, year int32, month int32, day int32, hour int32, minute int32, seconds float64) (result DateTime) {
-	iv, err := _I.Get(246, "DateTime", "new")
+	iv, err := _I.Get(246, "DateTime", "new", 68, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6246,7 +6246,7 @@ func NewDateTime(tzoffset float32, year int32, month int32, day int32, hour int3
 // [ result ] trans: everything
 //
 func NewDateTimeFromGDateTime(dt g.DateTime) (result DateTime) {
-	iv, err := _I.Get(247, "DateTime", "new_from_g_date_time")
+	iv, err := _I.Get(247, "DateTime", "new_from_g_date_time", 68, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6266,7 +6266,7 @@ func NewDateTimeFromGDateTime(dt g.DateTime) (result DateTime) {
 // [ result ] trans: everything
 //
 func NewDateTimeFromIso8601String(string string) (result DateTime) {
-	iv, err := _I.Get(248, "DateTime", "new_from_iso8601_string")
+	iv, err := _I.Get(248, "DateTime", "new_from_iso8601_string", 68, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6288,7 +6288,7 @@ func NewDateTimeFromIso8601String(string string) (result DateTime) {
 // [ result ] trans: everything
 //
 func NewDateTimeFromUnixEpochLocalTime(secs int64) (result DateTime) {
-	iv, err := _I.Get(249, "DateTime", "new_from_unix_epoch_local_time")
+	iv, err := _I.Get(249, "DateTime", "new_from_unix_epoch_local_time", 68, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6308,7 +6308,7 @@ func NewDateTimeFromUnixEpochLocalTime(secs int64) (result DateTime) {
 // [ result ] trans: everything
 //
 func NewDateTimeFromUnixEpochUtc(secs int64) (result DateTime) {
-	iv, err := _I.Get(250, "DateTime", "new_from_unix_epoch_utc")
+	iv, err := _I.Get(250, "DateTime", "new_from_unix_epoch_utc", 68, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6338,7 +6338,7 @@ func NewDateTimeFromUnixEpochUtc(secs int64) (result DateTime) {
 // [ result ] trans: everything
 //
 func NewDateTimeLocalTime(year int32, month int32, day int32, hour int32, minute int32, seconds float64) (result DateTime) {
-	iv, err := _I.Get(251, "DateTime", "new_local_time")
+	iv, err := _I.Get(251, "DateTime", "new_local_time", 68, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6361,7 +6361,7 @@ func NewDateTimeLocalTime(year int32, month int32, day int32, hour int32, minute
 // [ result ] trans: everything
 //
 func NewDateTimeNowLocalTime() (result DateTime) {
-	iv, err := _I.Get(252, "DateTime", "new_now_local_time")
+	iv, err := _I.Get(252, "DateTime", "new_now_local_time", 68, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6377,7 +6377,7 @@ func NewDateTimeNowLocalTime() (result DateTime) {
 // [ result ] trans: everything
 //
 func NewDateTimeNowUtc() (result DateTime) {
-	iv, err := _I.Get(253, "DateTime", "new_now_utc")
+	iv, err := _I.Get(253, "DateTime", "new_now_utc", 68, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6395,7 +6395,7 @@ func NewDateTimeNowUtc() (result DateTime) {
 // [ result ] trans: everything
 //
 func NewDateTimeY(year int32) (result DateTime) {
-	iv, err := _I.Get(254, "DateTime", "new_y")
+	iv, err := _I.Get(254, "DateTime", "new_y", 68, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6417,7 +6417,7 @@ func NewDateTimeY(year int32) (result DateTime) {
 // [ result ] trans: everything
 //
 func NewDateTimeYm(year int32, month int32) (result DateTime) {
-	iv, err := _I.Get(255, "DateTime", "new_ym")
+	iv, err := _I.Get(255, "DateTime", "new_ym", 68, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6442,7 +6442,7 @@ func NewDateTimeYm(year int32, month int32) (result DateTime) {
 // [ result ] trans: everything
 //
 func NewDateTimeYmd(year int32, month int32, day int32) (result DateTime) {
-	iv, err := _I.Get(256, "DateTime", "new_ymd")
+	iv, err := _I.Get(256, "DateTime", "new_ymd", 68, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6462,7 +6462,7 @@ func NewDateTimeYmd(year int32, month int32, day int32) (result DateTime) {
 // [ result ] trans: nothing
 //
 func (v DateTime) GetDay() (result int32) {
-	iv, err := _I.Get(257, "DateTime", "get_day")
+	iv, err := _I.Get(257, "DateTime", "get_day", 68, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6480,7 +6480,7 @@ func (v DateTime) GetDay() (result int32) {
 // [ result ] trans: nothing
 //
 func (v DateTime) GetHour() (result int32) {
-	iv, err := _I.Get(258, "DateTime", "get_hour")
+	iv, err := _I.Get(258, "DateTime", "get_hour", 68, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6498,7 +6498,7 @@ func (v DateTime) GetHour() (result int32) {
 // [ result ] trans: nothing
 //
 func (v DateTime) GetMicrosecond() (result int32) {
-	iv, err := _I.Get(259, "DateTime", "get_microsecond")
+	iv, err := _I.Get(259, "DateTime", "get_microsecond", 68, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6516,7 +6516,7 @@ func (v DateTime) GetMicrosecond() (result int32) {
 // [ result ] trans: nothing
 //
 func (v DateTime) GetMinute() (result int32) {
-	iv, err := _I.Get(260, "DateTime", "get_minute")
+	iv, err := _I.Get(260, "DateTime", "get_minute", 68, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6534,7 +6534,7 @@ func (v DateTime) GetMinute() (result int32) {
 // [ result ] trans: nothing
 //
 func (v DateTime) GetMonth() (result int32) {
-	iv, err := _I.Get(261, "DateTime", "get_month")
+	iv, err := _I.Get(261, "DateTime", "get_month", 68, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6552,7 +6552,7 @@ func (v DateTime) GetMonth() (result int32) {
 // [ result ] trans: nothing
 //
 func (v DateTime) GetSecond() (result int32) {
-	iv, err := _I.Get(262, "DateTime", "get_second")
+	iv, err := _I.Get(262, "DateTime", "get_second", 68, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6570,7 +6570,7 @@ func (v DateTime) GetSecond() (result int32) {
 // [ result ] trans: nothing
 //
 func (v DateTime) GetTimeZoneOffset() (result float32) {
-	iv, err := _I.Get(263, "DateTime", "get_time_zone_offset")
+	iv, err := _I.Get(263, "DateTime", "get_time_zone_offset", 68, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6588,7 +6588,7 @@ func (v DateTime) GetTimeZoneOffset() (result float32) {
 // [ result ] trans: nothing
 //
 func (v DateTime) GetYear() (result int32) {
-	iv, err := _I.Get(264, "DateTime", "get_year")
+	iv, err := _I.Get(264, "DateTime", "get_year", 68, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6606,7 +6606,7 @@ func (v DateTime) GetYear() (result int32) {
 // [ result ] trans: nothing
 //
 func (v DateTime) HasDay() (result bool) {
-	iv, err := _I.Get(265, "DateTime", "has_day")
+	iv, err := _I.Get(265, "DateTime", "has_day", 68, 19, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6624,7 +6624,7 @@ func (v DateTime) HasDay() (result bool) {
 // [ result ] trans: nothing
 //
 func (v DateTime) HasMonth() (result bool) {
-	iv, err := _I.Get(266, "DateTime", "has_month")
+	iv, err := _I.Get(266, "DateTime", "has_month", 68, 20, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6642,7 +6642,7 @@ func (v DateTime) HasMonth() (result bool) {
 // [ result ] trans: nothing
 //
 func (v DateTime) HasSecond() (result bool) {
-	iv, err := _I.Get(267, "DateTime", "has_second")
+	iv, err := _I.Get(267, "DateTime", "has_second", 68, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6660,7 +6660,7 @@ func (v DateTime) HasSecond() (result bool) {
 // [ result ] trans: nothing
 //
 func (v DateTime) HasTime() (result bool) {
-	iv, err := _I.Get(268, "DateTime", "has_time")
+	iv, err := _I.Get(268, "DateTime", "has_time", 68, 22, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6678,7 +6678,7 @@ func (v DateTime) HasTime() (result bool) {
 // [ result ] trans: nothing
 //
 func (v DateTime) HasYear() (result bool) {
-	iv, err := _I.Get(269, "DateTime", "has_year")
+	iv, err := _I.Get(269, "DateTime", "has_year", 68, 23, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6696,7 +6696,7 @@ func (v DateTime) HasYear() (result bool) {
 // [ result ] trans: everything
 //
 func (v DateTime) Ref() (result DateTime) {
-	iv, err := _I.Get(270, "DateTime", "ref")
+	iv, err := _I.Get(270, "DateTime", "ref", 68, 24, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6714,7 +6714,7 @@ func (v DateTime) Ref() (result DateTime) {
 // [ result ] trans: everything
 //
 func (v DateTime) ToGDateTime() (result g.DateTime) {
-	iv, err := _I.Get(271, "DateTime", "to_g_date_time")
+	iv, err := _I.Get(271, "DateTime", "to_g_date_time", 68, 25, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6732,7 +6732,7 @@ func (v DateTime) ToGDateTime() (result g.DateTime) {
 // [ result ] trans: everything
 //
 func (v DateTime) ToIso8601String() (result string) {
-	iv, err := _I.Get(272, "DateTime", "to_iso8601_string")
+	iv, err := _I.Get(272, "DateTime", "to_iso8601_string", 68, 26, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6748,7 +6748,7 @@ func (v DateTime) ToIso8601String() (result string) {
 // gst_date_time_unref
 //
 func (v DateTime) Unref() {
-	iv, err := _I.Get(273, "DateTime", "unref")
+	iv, err := _I.Get(273, "DateTime", "unref", 68, 27, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6773,7 +6773,7 @@ func DebugCategoryGetType() gi.GType {
 // gst_debug_category_free
 //
 func (v DebugCategory) Free() {
-	iv, err := _I.Get(274, "DebugCategory", "free")
+	iv, err := _I.Get(274, "DebugCategory", "free", 69, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6788,7 +6788,7 @@ func (v DebugCategory) Free() {
 // [ result ] trans: nothing
 //
 func (v DebugCategory) GetColor() (result uint32) {
-	iv, err := _I.Get(275, "DebugCategory", "get_color")
+	iv, err := _I.Get(275, "DebugCategory", "get_color", 69, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6806,7 +6806,7 @@ func (v DebugCategory) GetColor() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v DebugCategory) GetDescription() (result string) {
-	iv, err := _I.Get(276, "DebugCategory", "get_description")
+	iv, err := _I.Get(276, "DebugCategory", "get_description", 69, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6824,7 +6824,7 @@ func (v DebugCategory) GetDescription() (result string) {
 // [ result ] trans: nothing
 //
 func (v DebugCategory) GetName() (result string) {
-	iv, err := _I.Get(277, "DebugCategory", "get_name")
+	iv, err := _I.Get(277, "DebugCategory", "get_name", 69, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6842,7 +6842,7 @@ func (v DebugCategory) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v DebugCategory) GetThreshold() (result DebugLevelEnum) {
-	iv, err := _I.Get(278, "DebugCategory", "get_threshold")
+	iv, err := _I.Get(278, "DebugCategory", "get_threshold", 69, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6858,7 +6858,7 @@ func (v DebugCategory) GetThreshold() (result DebugLevelEnum) {
 // gst_debug_category_reset_threshold
 //
 func (v DebugCategory) ResetThreshold() {
-	iv, err := _I.Get(279, "DebugCategory", "reset_threshold")
+	iv, err := _I.Get(279, "DebugCategory", "reset_threshold", 69, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6873,7 +6873,7 @@ func (v DebugCategory) ResetThreshold() {
 // [ level ] trans: nothing
 //
 func (v DebugCategory) SetThreshold(level DebugLevelEnum) {
-	iv, err := _I.Get(280, "DebugCategory", "set_threshold")
+	iv, err := _I.Get(280, "DebugCategory", "set_threshold", 69, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6993,7 +6993,7 @@ func DebugMessageGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v DebugMessage) Get() (result string) {
-	iv, err := _I.Get(281, "DebugMessage", "get")
+	iv, err := _I.Get(281, "DebugMessage", "get", 75, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7028,7 +7028,7 @@ func DeviceGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v Device) CreateElement(name string) (result Element) {
-	iv, err := _I.Get(282, "Device", "create_element")
+	iv, err := _I.Get(282, "Device", "create_element", 76, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7049,7 +7049,7 @@ func (v Device) CreateElement(name string) (result Element) {
 // [ result ] trans: everything
 //
 func (v Device) GetCaps() (result Caps) {
-	iv, err := _I.Get(283, "Device", "get_caps")
+	iv, err := _I.Get(283, "Device", "get_caps", 76, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7067,7 +7067,7 @@ func (v Device) GetCaps() (result Caps) {
 // [ result ] trans: everything
 //
 func (v Device) GetDeviceClass() (result string) {
-	iv, err := _I.Get(284, "Device", "get_device_class")
+	iv, err := _I.Get(284, "Device", "get_device_class", 76, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7085,7 +7085,7 @@ func (v Device) GetDeviceClass() (result string) {
 // [ result ] trans: everything
 //
 func (v Device) GetDisplayName() (result string) {
-	iv, err := _I.Get(285, "Device", "get_display_name")
+	iv, err := _I.Get(285, "Device", "get_display_name", 76, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7103,7 +7103,7 @@ func (v Device) GetDisplayName() (result string) {
 // [ result ] trans: everything
 //
 func (v Device) GetProperties() (result Structure) {
-	iv, err := _I.Get(286, "Device", "get_properties")
+	iv, err := _I.Get(286, "Device", "get_properties", 76, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7123,7 +7123,7 @@ func (v Device) GetProperties() (result Structure) {
 // [ result ] trans: nothing
 //
 func (v Device) HasClasses(classes string) (result bool) {
-	iv, err := _I.Get(287, "Device", "has_classes")
+	iv, err := _I.Get(287, "Device", "has_classes", 76, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7146,7 +7146,7 @@ func (v Device) HasClasses(classes string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Device) HasClassesv(classes gi.CStrArray) (result bool) {
-	iv, err := _I.Get(288, "Device", "has_classesv")
+	iv, err := _I.Get(288, "Device", "has_classesv", 76, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7167,7 +7167,7 @@ func (v Device) HasClassesv(classes gi.CStrArray) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Device) ReconfigureElement(element IElement) (result bool) {
-	iv, err := _I.Get(289, "Device", "reconfigure_element")
+	iv, err := _I.Get(289, "Device", "reconfigure_element", 76, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7207,7 +7207,7 @@ func DeviceMonitorGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewDeviceMonitor() (result DeviceMonitor) {
-	iv, err := _I.Get(290, "DeviceMonitor", "new")
+	iv, err := _I.Get(290, "DeviceMonitor", "new", 78, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7227,7 +7227,7 @@ func NewDeviceMonitor() (result DeviceMonitor) {
 // [ result ] trans: nothing
 //
 func (v DeviceMonitor) AddFilter(classes string, caps Caps) (result uint32) {
-	iv, err := _I.Get(291, "DeviceMonitor", "add_filter")
+	iv, err := _I.Get(291, "DeviceMonitor", "add_filter", 78, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7249,7 +7249,7 @@ func (v DeviceMonitor) AddFilter(classes string, caps Caps) (result uint32) {
 // [ result ] trans: everything
 //
 func (v DeviceMonitor) GetBus() (result Bus) {
-	iv, err := _I.Get(292, "DeviceMonitor", "get_bus")
+	iv, err := _I.Get(292, "DeviceMonitor", "get_bus", 78, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7267,7 +7267,7 @@ func (v DeviceMonitor) GetBus() (result Bus) {
 // [ result ] trans: everything
 //
 func (v DeviceMonitor) GetDevices() (result g.List) {
-	iv, err := _I.Get(293, "DeviceMonitor", "get_devices")
+	iv, err := _I.Get(293, "DeviceMonitor", "get_devices", 78, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7285,7 +7285,7 @@ func (v DeviceMonitor) GetDevices() (result g.List) {
 // [ result ] trans: everything
 //
 func (v DeviceMonitor) GetProviders() (result gi.CStrArray) {
-	iv, err := _I.Get(294, "DeviceMonitor", "get_providers")
+	iv, err := _I.Get(294, "DeviceMonitor", "get_providers", 78, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7304,7 +7304,7 @@ func (v DeviceMonitor) GetProviders() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v DeviceMonitor) GetShowAllDevices() (result bool) {
-	iv, err := _I.Get(295, "DeviceMonitor", "get_show_all_devices")
+	iv, err := _I.Get(295, "DeviceMonitor", "get_show_all_devices", 78, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7324,7 +7324,7 @@ func (v DeviceMonitor) GetShowAllDevices() (result bool) {
 // [ result ] trans: nothing
 //
 func (v DeviceMonitor) RemoveFilter(filter_id uint32) (result bool) {
-	iv, err := _I.Get(296, "DeviceMonitor", "remove_filter")
+	iv, err := _I.Get(296, "DeviceMonitor", "remove_filter", 78, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7343,7 +7343,7 @@ func (v DeviceMonitor) RemoveFilter(filter_id uint32) (result bool) {
 // [ show_all ] trans: nothing
 //
 func (v DeviceMonitor) SetShowAllDevices(show_all bool) {
-	iv, err := _I.Get(297, "DeviceMonitor", "set_show_all_devices")
+	iv, err := _I.Get(297, "DeviceMonitor", "set_show_all_devices", 78, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7359,7 +7359,7 @@ func (v DeviceMonitor) SetShowAllDevices(show_all bool) {
 // [ result ] trans: nothing
 //
 func (v DeviceMonitor) Start() (result bool) {
-	iv, err := _I.Get(298, "DeviceMonitor", "start")
+	iv, err := _I.Get(298, "DeviceMonitor", "start", 78, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7375,7 +7375,7 @@ func (v DeviceMonitor) Start() (result bool) {
 // gst_device_monitor_stop
 //
 func (v DeviceMonitor) Stop() {
-	iv, err := _I.Get(299, "DeviceMonitor", "stop")
+	iv, err := _I.Get(299, "DeviceMonitor", "stop", 78, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7435,7 +7435,7 @@ func DeviceProviderGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func DeviceProviderRegister1(plugin IPlugin, name string, rank uint32, type1 gi.GType) (result bool) {
-	iv, err := _I.Get(300, "DeviceProvider", "register")
+	iv, err := _I.Get(300, "DeviceProvider", "register", 82, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7462,7 +7462,7 @@ func DeviceProviderRegister1(plugin IPlugin, name string, rank uint32, type1 gi.
 // [ result ] trans: nothing
 //
 func (v DeviceProvider) CanMonitor() (result bool) {
-	iv, err := _I.Get(301, "DeviceProvider", "can_monitor")
+	iv, err := _I.Get(301, "DeviceProvider", "can_monitor", 82, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7480,7 +7480,7 @@ func (v DeviceProvider) CanMonitor() (result bool) {
 // [ device ] trans: nothing
 //
 func (v DeviceProvider) DeviceAdd(device IDevice) {
-	iv, err := _I.Get(302, "DeviceProvider", "device_add")
+	iv, err := _I.Get(302, "DeviceProvider", "device_add", 82, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7500,7 +7500,7 @@ func (v DeviceProvider) DeviceAdd(device IDevice) {
 // [ device ] trans: nothing
 //
 func (v DeviceProvider) DeviceRemove(device IDevice) {
-	iv, err := _I.Get(303, "DeviceProvider", "device_remove")
+	iv, err := _I.Get(303, "DeviceProvider", "device_remove", 82, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7520,7 +7520,7 @@ func (v DeviceProvider) DeviceRemove(device IDevice) {
 // [ result ] trans: everything
 //
 func (v DeviceProvider) GetBus() (result Bus) {
-	iv, err := _I.Get(304, "DeviceProvider", "get_bus")
+	iv, err := _I.Get(304, "DeviceProvider", "get_bus", 82, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7538,7 +7538,7 @@ func (v DeviceProvider) GetBus() (result Bus) {
 // [ result ] trans: everything
 //
 func (v DeviceProvider) GetDevices() (result g.List) {
-	iv, err := _I.Get(305, "DeviceProvider", "get_devices")
+	iv, err := _I.Get(305, "DeviceProvider", "get_devices", 82, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7556,7 +7556,7 @@ func (v DeviceProvider) GetDevices() (result g.List) {
 // [ result ] trans: nothing
 //
 func (v DeviceProvider) GetFactory() (result DeviceProviderFactory) {
-	iv, err := _I.Get(306, "DeviceProvider", "get_factory")
+	iv, err := _I.Get(306, "DeviceProvider", "get_factory", 82, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7574,7 +7574,7 @@ func (v DeviceProvider) GetFactory() (result DeviceProviderFactory) {
 // [ result ] trans: everything
 //
 func (v DeviceProvider) GetHiddenProviders() (result gi.CStrArray) {
-	iv, err := _I.Get(307, "DeviceProvider", "get_hidden_providers")
+	iv, err := _I.Get(307, "DeviceProvider", "get_hidden_providers", 82, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7595,7 +7595,7 @@ func (v DeviceProvider) GetHiddenProviders() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v DeviceProvider) GetMetadata(key string) (result string) {
-	iv, err := _I.Get(308, "DeviceProvider", "get_metadata")
+	iv, err := _I.Get(308, "DeviceProvider", "get_metadata", 82, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7616,7 +7616,7 @@ func (v DeviceProvider) GetMetadata(key string) (result string) {
 // [ name ] trans: nothing
 //
 func (v DeviceProvider) HideProvider(name string) {
-	iv, err := _I.Get(309, "DeviceProvider", "hide_provider")
+	iv, err := _I.Get(309, "DeviceProvider", "hide_provider", 82, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7634,7 +7634,7 @@ func (v DeviceProvider) HideProvider(name string) {
 // [ result ] trans: nothing
 //
 func (v DeviceProvider) Start() (result bool) {
-	iv, err := _I.Get(310, "DeviceProvider", "start")
+	iv, err := _I.Get(310, "DeviceProvider", "start", 82, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7650,7 +7650,7 @@ func (v DeviceProvider) Start() (result bool) {
 // gst_device_provider_stop
 //
 func (v DeviceProvider) Stop() {
-	iv, err := _I.Get(311, "DeviceProvider", "stop")
+	iv, err := _I.Get(311, "DeviceProvider", "stop", 82, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7665,7 +7665,7 @@ func (v DeviceProvider) Stop() {
 // [ name ] trans: nothing
 //
 func (v DeviceProvider) UnhideProvider(name string) {
-	iv, err := _I.Get(312, "DeviceProvider", "unhide_provider")
+	iv, err := _I.Get(312, "DeviceProvider", "unhide_provider", 82, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7697,7 +7697,7 @@ func DeviceProviderClassGetType() gi.GType {
 // [ value ] trans: nothing
 //
 func (v DeviceProviderClass) AddMetadata(key string, value string) {
-	iv, err := _I.Get(313, "DeviceProviderClass", "add_metadata")
+	iv, err := _I.Get(313, "DeviceProviderClass", "add_metadata", 83, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7720,7 +7720,7 @@ func (v DeviceProviderClass) AddMetadata(key string, value string) {
 // [ value ] trans: everything
 //
 func (v DeviceProviderClass) AddStaticMetadata(key string, value string) {
-	iv, err := _I.Get(314, "DeviceProviderClass", "add_static_metadata")
+	iv, err := _I.Get(314, "DeviceProviderClass", "add_static_metadata", 83, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7743,7 +7743,7 @@ func (v DeviceProviderClass) AddStaticMetadata(key string, value string) {
 // [ result ] trans: nothing
 //
 func (v DeviceProviderClass) GetMetadata(key string) (result string) {
-	iv, err := _I.Get(315, "DeviceProviderClass", "get_metadata")
+	iv, err := _I.Get(315, "DeviceProviderClass", "get_metadata", 83, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7770,7 +7770,7 @@ func (v DeviceProviderClass) GetMetadata(key string) (result string) {
 // [ author ] trans: nothing
 //
 func (v DeviceProviderClass) SetMetadata(longname string, classification string, description string, author string) {
-	iv, err := _I.Get(316, "DeviceProviderClass", "set_metadata")
+	iv, err := _I.Get(316, "DeviceProviderClass", "set_metadata", 83, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7803,7 +7803,7 @@ func (v DeviceProviderClass) SetMetadata(longname string, classification string,
 // [ author ] trans: everything
 //
 func (v DeviceProviderClass) SetStaticMetadata(longname string, classification string, description string, author string) {
-	iv, err := _I.Get(317, "DeviceProviderClass", "set_static_metadata")
+	iv, err := _I.Get(317, "DeviceProviderClass", "set_static_metadata", 83, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7847,7 +7847,7 @@ func DeviceProviderFactoryGetType() gi.GType {
 // [ result ] trans: everything
 //
 func DeviceProviderFactoryFind1(name string) (result DeviceProviderFactory) {
-	iv, err := _I.Get(318, "DeviceProviderFactory", "find")
+	iv, err := _I.Get(318, "DeviceProviderFactory", "find", 84, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7869,7 +7869,7 @@ func DeviceProviderFactoryFind1(name string) (result DeviceProviderFactory) {
 // [ result ] trans: everything
 //
 func DeviceProviderFactoryGetByName1(factoryname string) (result DeviceProvider) {
-	iv, err := _I.Get(319, "DeviceProviderFactory", "get_by_name")
+	iv, err := _I.Get(319, "DeviceProviderFactory", "get_by_name", 84, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7891,7 +7891,7 @@ func DeviceProviderFactoryGetByName1(factoryname string) (result DeviceProvider)
 // [ result ] trans: everything
 //
 func DeviceProviderFactoryListGetDeviceProviders1(minrank RankEnum) (result g.List) {
-	iv, err := _I.Get(320, "DeviceProviderFactory", "list_get_device_providers")
+	iv, err := _I.Get(320, "DeviceProviderFactory", "list_get_device_providers", 84, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7909,7 +7909,7 @@ func DeviceProviderFactoryListGetDeviceProviders1(minrank RankEnum) (result g.Li
 // [ result ] trans: everything
 //
 func (v DeviceProviderFactory) Get() (result DeviceProvider) {
-	iv, err := _I.Get(321, "DeviceProviderFactory", "get")
+	iv, err := _I.Get(321, "DeviceProviderFactory", "get", 84, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7927,7 +7927,7 @@ func (v DeviceProviderFactory) Get() (result DeviceProvider) {
 // [ result ] trans: nothing
 //
 func (v DeviceProviderFactory) GetDeviceProviderType() (result gi.GType) {
-	iv, err := _I.Get(322, "DeviceProviderFactory", "get_device_provider_type")
+	iv, err := _I.Get(322, "DeviceProviderFactory", "get_device_provider_type", 84, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7947,7 +7947,7 @@ func (v DeviceProviderFactory) GetDeviceProviderType() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func (v DeviceProviderFactory) GetMetadata(key string) (result string) {
-	iv, err := _I.Get(323, "DeviceProviderFactory", "get_metadata")
+	iv, err := _I.Get(323, "DeviceProviderFactory", "get_metadata", 84, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7968,7 +7968,7 @@ func (v DeviceProviderFactory) GetMetadata(key string) (result string) {
 // [ result ] trans: everything
 //
 func (v DeviceProviderFactory) GetMetadataKeys() (result gi.CStrArray) {
-	iv, err := _I.Get(324, "DeviceProviderFactory", "get_metadata_keys")
+	iv, err := _I.Get(324, "DeviceProviderFactory", "get_metadata_keys", 84, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7989,7 +7989,7 @@ func (v DeviceProviderFactory) GetMetadataKeys() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v DeviceProviderFactory) HasClasses(classes string) (result bool) {
-	iv, err := _I.Get(325, "DeviceProviderFactory", "has_classes")
+	iv, err := _I.Get(325, "DeviceProviderFactory", "has_classes", 84, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8012,7 +8012,7 @@ func (v DeviceProviderFactory) HasClasses(classes string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v DeviceProviderFactory) HasClassesv(classes gi.CStrArray) (result bool) {
-	iv, err := _I.Get(326, "DeviceProviderFactory", "has_classesv")
+	iv, err := _I.Get(326, "DeviceProviderFactory", "has_classesv", 84, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8075,7 +8075,7 @@ func DynamicTypeFactoryGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func DynamicTypeFactoryLoad1(factoryname string) (result gi.GType) {
-	iv, err := _I.Get(327, "DynamicTypeFactory", "load")
+	iv, err := _I.Get(327, "DynamicTypeFactory", "load", 88, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8118,7 +8118,7 @@ func ElementGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func ElementMakeFromUri1(type1 URITypeEnum, uri string, elementname string) (result Element, err error) {
-	iv, err := _I.Get(328, "Element", "make_from_uri")
+	iv, err := _I.Get(328, "Element", "make_from_uri", 140, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -8152,7 +8152,7 @@ func ElementMakeFromUri1(type1 URITypeEnum, uri string, elementname string) (res
 // [ result ] trans: nothing
 //
 func ElementRegister1(plugin IPlugin, name string, rank uint32, type1 gi.GType) (result bool) {
-	iv, err := _I.Get(329, "Element", "register")
+	iv, err := _I.Get(329, "Element", "register", 140, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8181,7 +8181,7 @@ func ElementRegister1(plugin IPlugin, name string, rank uint32, type1 gi.GType) 
 // [ result ] trans: nothing
 //
 func ElementStateChangeReturnGetName1(state_ret StateChangeReturnEnum) (result string) {
-	iv, err := _I.Get(330, "Element", "state_change_return_get_name")
+	iv, err := _I.Get(330, "Element", "state_change_return_get_name", 140, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8201,7 +8201,7 @@ func ElementStateChangeReturnGetName1(state_ret StateChangeReturnEnum) (result s
 // [ result ] trans: nothing
 //
 func ElementStateGetName1(state StateEnum) (result string) {
-	iv, err := _I.Get(331, "Element", "state_get_name")
+	iv, err := _I.Get(331, "Element", "state_get_name", 140, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8217,7 +8217,7 @@ func ElementStateGetName1(state StateEnum) (result string) {
 // gst_element_abort_state
 //
 func (v Element) AbortState() {
-	iv, err := _I.Get(332, "Element", "abort_state")
+	iv, err := _I.Get(332, "Element", "abort_state", 140, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8234,7 +8234,7 @@ func (v Element) AbortState() {
 // [ result ] trans: nothing
 //
 func (v Element) AddPad(pad IPad) (result bool) {
-	iv, err := _I.Get(333, "Element", "add_pad")
+	iv, err := _I.Get(333, "Element", "add_pad", 140, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8261,7 +8261,7 @@ func (v Element) AddPad(pad IPad) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Element) AddPropertyDeepNotifyWatch(property_name string, include_value bool) (result uint64) {
-	iv, err := _I.Get(334, "Element", "add_property_deep_notify_watch")
+	iv, err := _I.Get(334, "Element", "add_property_deep_notify_watch", 140, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8287,7 +8287,7 @@ func (v Element) AddPropertyDeepNotifyWatch(property_name string, include_value 
 // [ result ] trans: nothing
 //
 func (v Element) AddPropertyNotifyWatch(property_name string, include_value bool) (result uint64) {
-	iv, err := _I.Get(335, "Element", "add_property_notify_watch")
+	iv, err := _I.Get(335, "Element", "add_property_notify_watch", 140, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8313,7 +8313,7 @@ func (v Element) AddPropertyNotifyWatch(property_name string, include_value bool
 // [ destroy_notify ] trans: nothing
 //
 func (v Element) CallAsync(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, destroy_notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(336, "Element", "call_async")
+	iv, err := _I.Get(336, "Element", "call_async", 140, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8333,7 +8333,7 @@ func (v Element) CallAsync(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Po
 // [ result ] trans: nothing
 //
 func (v Element) ChangeState(transition StateChangeEnum) (result StateChangeReturnEnum) {
-	iv, err := _I.Get(337, "Element", "change_state")
+	iv, err := _I.Get(337, "Element", "change_state", 140, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8354,7 +8354,7 @@ func (v Element) ChangeState(transition StateChangeEnum) (result StateChangeRetu
 // [ result ] trans: nothing
 //
 func (v Element) ContinueState(ret StateChangeReturnEnum) (result StateChangeReturnEnum) {
-	iv, err := _I.Get(338, "Element", "continue_state")
+	iv, err := _I.Get(338, "Element", "continue_state", 140, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8371,7 +8371,7 @@ func (v Element) ContinueState(ret StateChangeReturnEnum) (result StateChangeRet
 // gst_element_create_all_pads
 //
 func (v Element) CreateAllPads() {
-	iv, err := _I.Get(339, "Element", "create_all_pads")
+	iv, err := _I.Get(339, "Element", "create_all_pads", 140, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8390,7 +8390,7 @@ func (v Element) CreateAllPads() {
 // [ result ] trans: nothing
 //
 func (v Element) ForeachPad(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(340, "Element", "foreach_pad")
+	iv, err := _I.Get(340, "Element", "foreach_pad", 140, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8414,7 +8414,7 @@ func (v Element) ForeachPad(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.P
 // [ result ] trans: nothing
 //
 func (v Element) ForeachSinkPad(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(341, "Element", "foreach_sink_pad")
+	iv, err := _I.Get(341, "Element", "foreach_sink_pad", 140, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8438,7 +8438,7 @@ func (v Element) ForeachSinkPad(func1 int /*TODO_TYPE CALLBACK*/, user_data unsa
 // [ result ] trans: nothing
 //
 func (v Element) ForeachSrcPad(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(342, "Element", "foreach_src_pad")
+	iv, err := _I.Get(342, "Element", "foreach_src_pad", 140, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8458,7 +8458,7 @@ func (v Element) ForeachSrcPad(func1 int /*TODO_TYPE CALLBACK*/, user_data unsaf
 // [ result ] trans: nothing
 //
 func (v Element) GetBaseTime() (result uint64) {
-	iv, err := _I.Get(343, "Element", "get_base_time")
+	iv, err := _I.Get(343, "Element", "get_base_time", 140, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8476,7 +8476,7 @@ func (v Element) GetBaseTime() (result uint64) {
 // [ result ] trans: everything
 //
 func (v Element) GetBus() (result Bus) {
-	iv, err := _I.Get(344, "Element", "get_bus")
+	iv, err := _I.Get(344, "Element", "get_bus", 140, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8494,7 +8494,7 @@ func (v Element) GetBus() (result Bus) {
 // [ result ] trans: everything
 //
 func (v Element) GetClock() (result Clock) {
-	iv, err := _I.Get(345, "Element", "get_clock")
+	iv, err := _I.Get(345, "Element", "get_clock", 140, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8516,7 +8516,7 @@ func (v Element) GetClock() (result Clock) {
 // [ result ] trans: everything
 //
 func (v Element) GetCompatiblePad(pad IPad, caps Caps) (result Pad) {
-	iv, err := _I.Get(346, "Element", "get_compatible_pad")
+	iv, err := _I.Get(346, "Element", "get_compatible_pad", 140, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8542,7 +8542,7 @@ func (v Element) GetCompatiblePad(pad IPad, caps Caps) (result Pad) {
 // [ result ] trans: nothing
 //
 func (v Element) GetCompatiblePadTemplate(compattempl IPadTemplate) (result PadTemplate) {
-	iv, err := _I.Get(347, "Element", "get_compatible_pad_template")
+	iv, err := _I.Get(347, "Element", "get_compatible_pad_template", 140, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8567,7 +8567,7 @@ func (v Element) GetCompatiblePadTemplate(compattempl IPadTemplate) (result PadT
 // [ result ] trans: everything
 //
 func (v Element) GetContext(context_type string) (result Context) {
-	iv, err := _I.Get(348, "Element", "get_context")
+	iv, err := _I.Get(348, "Element", "get_context", 140, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8590,7 +8590,7 @@ func (v Element) GetContext(context_type string) (result Context) {
 // [ result ] trans: everything
 //
 func (v Element) GetContextUnlocked(context_type string) (result Context) {
-	iv, err := _I.Get(349, "Element", "get_context_unlocked")
+	iv, err := _I.Get(349, "Element", "get_context_unlocked", 140, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8611,7 +8611,7 @@ func (v Element) GetContextUnlocked(context_type string) (result Context) {
 // [ result ] trans: everything
 //
 func (v Element) GetContexts() (result g.List) {
-	iv, err := _I.Get(350, "Element", "get_contexts")
+	iv, err := _I.Get(350, "Element", "get_contexts", 140, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8629,7 +8629,7 @@ func (v Element) GetContexts() (result g.List) {
 // [ result ] trans: nothing
 //
 func (v Element) GetFactory() (result ElementFactory) {
-	iv, err := _I.Get(351, "Element", "get_factory")
+	iv, err := _I.Get(351, "Element", "get_factory", 140, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8649,7 +8649,7 @@ func (v Element) GetFactory() (result ElementFactory) {
 // [ result ] trans: nothing
 //
 func (v Element) GetMetadata(key string) (result string) {
-	iv, err := _I.Get(352, "Element", "get_metadata")
+	iv, err := _I.Get(352, "Element", "get_metadata", 140, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8672,7 +8672,7 @@ func (v Element) GetMetadata(key string) (result string) {
 // [ result ] trans: nothing
 //
 func (v Element) GetPadTemplate(name string) (result PadTemplate) {
-	iv, err := _I.Get(353, "Element", "get_pad_template")
+	iv, err := _I.Get(353, "Element", "get_pad_template", 140, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8693,7 +8693,7 @@ func (v Element) GetPadTemplate(name string) (result PadTemplate) {
 // [ result ] trans: nothing
 //
 func (v Element) GetPadTemplateList() (result g.List) {
-	iv, err := _I.Get(354, "Element", "get_pad_template_list")
+	iv, err := _I.Get(354, "Element", "get_pad_template_list", 140, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8713,7 +8713,7 @@ func (v Element) GetPadTemplateList() (result g.List) {
 // [ result ] trans: everything
 //
 func (v Element) GetRequestPad(name string) (result Pad) {
-	iv, err := _I.Get(355, "Element", "get_request_pad")
+	iv, err := _I.Get(355, "Element", "get_request_pad", 140, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8734,7 +8734,7 @@ func (v Element) GetRequestPad(name string) (result Pad) {
 // [ result ] trans: nothing
 //
 func (v Element) GetStartTime() (result uint64) {
-	iv, err := _I.Get(356, "Element", "get_start_time")
+	iv, err := _I.Get(356, "Element", "get_start_time", 140, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8758,7 +8758,7 @@ func (v Element) GetStartTime() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Element) GetState(timeout uint64) (result StateChangeReturnEnum, state StateEnum, pending StateEnum) {
-	iv, err := _I.Get(357, "Element", "get_state")
+	iv, err := _I.Get(357, "Element", "get_state", 140, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8784,7 +8784,7 @@ func (v Element) GetState(timeout uint64) (result StateChangeReturnEnum, state S
 // [ result ] trans: everything
 //
 func (v Element) GetStaticPad(name string) (result Pad) {
-	iv, err := _I.Get(358, "Element", "get_static_pad")
+	iv, err := _I.Get(358, "Element", "get_static_pad", 140, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8805,7 +8805,7 @@ func (v Element) GetStaticPad(name string) (result Pad) {
 // [ result ] trans: nothing
 //
 func (v Element) IsLockedState() (result bool) {
-	iv, err := _I.Get(359, "Element", "is_locked_state")
+	iv, err := _I.Get(359, "Element", "is_locked_state", 140, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8823,7 +8823,7 @@ func (v Element) IsLockedState() (result bool) {
 // [ result ] trans: everything
 //
 func (v Element) IteratePads() (result Iterator) {
-	iv, err := _I.Get(360, "Element", "iterate_pads")
+	iv, err := _I.Get(360, "Element", "iterate_pads", 140, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8841,7 +8841,7 @@ func (v Element) IteratePads() (result Iterator) {
 // [ result ] trans: everything
 //
 func (v Element) IterateSinkPads() (result Iterator) {
-	iv, err := _I.Get(361, "Element", "iterate_sink_pads")
+	iv, err := _I.Get(361, "Element", "iterate_sink_pads", 140, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8859,7 +8859,7 @@ func (v Element) IterateSinkPads() (result Iterator) {
 // [ result ] trans: everything
 //
 func (v Element) IterateSrcPads() (result Iterator) {
-	iv, err := _I.Get(362, "Element", "iterate_src_pads")
+	iv, err := _I.Get(362, "Element", "iterate_src_pads", 140, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8879,7 +8879,7 @@ func (v Element) IterateSrcPads() (result Iterator) {
 // [ result ] trans: nothing
 //
 func (v Element) Link(dest IElement) (result bool) {
-	iv, err := _I.Get(363, "Element", "link")
+	iv, err := _I.Get(363, "Element", "link", 140, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8906,7 +8906,7 @@ func (v Element) Link(dest IElement) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Element) LinkFiltered(dest IElement, filter Caps) (result bool) {
-	iv, err := _I.Get(364, "Element", "link_filtered")
+	iv, err := _I.Get(364, "Element", "link_filtered", 140, 36, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8936,7 +8936,7 @@ func (v Element) LinkFiltered(dest IElement, filter Caps) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Element) LinkPads(srcpadname string, dest IElement, destpadname string) (result bool) {
-	iv, err := _I.Get(365, "Element", "link_pads")
+	iv, err := _I.Get(365, "Element", "link_pads", 140, 37, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8973,7 +8973,7 @@ func (v Element) LinkPads(srcpadname string, dest IElement, destpadname string) 
 // [ result ] trans: nothing
 //
 func (v Element) LinkPadsFiltered(srcpadname string, dest IElement, destpadname string, filter Caps) (result bool) {
-	iv, err := _I.Get(366, "Element", "link_pads_filtered")
+	iv, err := _I.Get(366, "Element", "link_pads_filtered", 140, 38, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9011,7 +9011,7 @@ func (v Element) LinkPadsFiltered(srcpadname string, dest IElement, destpadname 
 // [ result ] trans: nothing
 //
 func (v Element) LinkPadsFull(srcpadname string, dest IElement, destpadname string, flags PadLinkCheckFlags) (result bool) {
-	iv, err := _I.Get(367, "Element", "link_pads_full")
+	iv, err := _I.Get(367, "Element", "link_pads_full", 140, 39, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9039,7 +9039,7 @@ func (v Element) LinkPadsFull(srcpadname string, dest IElement, destpadname stri
 // gst_element_lost_state
 //
 func (v Element) LostState() {
-	iv, err := _I.Get(368, "Element", "lost_state")
+	iv, err := _I.Get(368, "Element", "lost_state", 140, 40, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9068,7 +9068,7 @@ func (v Element) LostState() {
 // [ line ] trans: nothing
 //
 func (v Element) MessageFull(type1 MessageTypeFlags, domain uint32, code int32, text string, debug string, file string, function string, line int32) {
-	iv, err := _I.Get(369, "Element", "message_full")
+	iv, err := _I.Get(369, "Element", "message_full", 140, 41, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9115,7 +9115,7 @@ func (v Element) MessageFull(type1 MessageTypeFlags, domain uint32, code int32, 
 // [ structure ] trans: everything
 //
 func (v Element) MessageFullWithDetails(type1 MessageTypeFlags, domain uint32, code int32, text string, debug string, file string, function string, line int32, structure Structure) {
-	iv, err := _I.Get(370, "Element", "message_full_with_details")
+	iv, err := _I.Get(370, "Element", "message_full_with_details", 140, 42, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9145,7 +9145,7 @@ func (v Element) MessageFullWithDetails(type1 MessageTypeFlags, domain uint32, c
 // gst_element_no_more_pads
 //
 func (v Element) NoMorePads() {
-	iv, err := _I.Get(371, "Element", "no_more_pads")
+	iv, err := _I.Get(371, "Element", "no_more_pads", 140, 43, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9162,7 +9162,7 @@ func (v Element) NoMorePads() {
 // [ result ] trans: nothing
 //
 func (v Element) PostMessage(message Message) (result bool) {
-	iv, err := _I.Get(372, "Element", "post_message")
+	iv, err := _I.Get(372, "Element", "post_message", 140, 44, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9181,7 +9181,7 @@ func (v Element) PostMessage(message Message) (result bool) {
 // [ result ] trans: everything
 //
 func (v Element) ProvideClock() (result Clock) {
-	iv, err := _I.Get(373, "Element", "provide_clock")
+	iv, err := _I.Get(373, "Element", "provide_clock", 140, 45, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9201,7 +9201,7 @@ func (v Element) ProvideClock() (result Clock) {
 // [ result ] trans: nothing
 //
 func (v Element) QueryF(query Query) (result bool) {
-	iv, err := _I.Get(374, "Element", "query")
+	iv, err := _I.Get(374, "Element", "query", 140, 46, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9228,7 +9228,7 @@ func (v Element) QueryF(query Query) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Element) QueryConvert(src_format FormatEnum, src_val int64, dest_format FormatEnum) (result bool, dest_val int64) {
-	iv, err := _I.Get(375, "Element", "query_convert")
+	iv, err := _I.Get(375, "Element", "query_convert", 140, 47, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9256,7 +9256,7 @@ func (v Element) QueryConvert(src_format FormatEnum, src_val int64, dest_format 
 // [ result ] trans: nothing
 //
 func (v Element) QueryDuration(format FormatEnum) (result bool, duration int64) {
-	iv, err := _I.Get(376, "Element", "query_duration")
+	iv, err := _I.Get(376, "Element", "query_duration", 140, 48, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9282,7 +9282,7 @@ func (v Element) QueryDuration(format FormatEnum) (result bool, duration int64) 
 // [ result ] trans: nothing
 //
 func (v Element) QueryPosition(format FormatEnum) (result bool, cur int64) {
-	iv, err := _I.Get(377, "Element", "query_position")
+	iv, err := _I.Get(377, "Element", "query_position", 140, 49, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9304,7 +9304,7 @@ func (v Element) QueryPosition(format FormatEnum) (result bool, cur int64) {
 // [ pad ] trans: nothing
 //
 func (v Element) ReleaseRequestPad(pad IPad) {
-	iv, err := _I.Get(378, "Element", "release_request_pad")
+	iv, err := _I.Get(378, "Element", "release_request_pad", 140, 50, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9326,7 +9326,7 @@ func (v Element) ReleaseRequestPad(pad IPad) {
 // [ result ] trans: nothing
 //
 func (v Element) RemovePad(pad IPad) (result bool) {
-	iv, err := _I.Get(379, "Element", "remove_pad")
+	iv, err := _I.Get(379, "Element", "remove_pad", 140, 51, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9349,7 +9349,7 @@ func (v Element) RemovePad(pad IPad) (result bool) {
 // [ watch_id ] trans: nothing
 //
 func (v Element) RemovePropertyNotifyWatch(watch_id uint64) {
-	iv, err := _I.Get(380, "Element", "remove_property_notify_watch")
+	iv, err := _I.Get(380, "Element", "remove_property_notify_watch", 140, 52, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9371,7 +9371,7 @@ func (v Element) RemovePropertyNotifyWatch(watch_id uint64) {
 // [ result ] trans: everything
 //
 func (v Element) RequestPad(templ IPadTemplate, name string, caps Caps) (result Pad) {
-	iv, err := _I.Get(381, "Element", "request_pad")
+	iv, err := _I.Get(381, "Element", "request_pad", 140, 53, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9412,7 +9412,7 @@ func (v Element) RequestPad(templ IPadTemplate, name string, caps Caps) (result 
 // [ result ] trans: nothing
 //
 func (v Element) Seek(rate float64, format FormatEnum, flags SeekFlags, start_type SeekTypeEnum, start int64, stop_type SeekTypeEnum, stop int64) (result bool) {
-	iv, err := _I.Get(382, "Element", "seek")
+	iv, err := _I.Get(382, "Element", "seek", 140, 54, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9443,7 +9443,7 @@ func (v Element) Seek(rate float64, format FormatEnum, flags SeekFlags, start_ty
 // [ result ] trans: nothing
 //
 func (v Element) SeekSimple(format FormatEnum, seek_flags SeekFlags, seek_pos int64) (result bool) {
-	iv, err := _I.Get(383, "Element", "seek_simple")
+	iv, err := _I.Get(383, "Element", "seek_simple", 140, 55, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9466,7 +9466,7 @@ func (v Element) SeekSimple(format FormatEnum, seek_flags SeekFlags, seek_pos in
 // [ result ] trans: nothing
 //
 func (v Element) SendEvent(event Event) (result bool) {
-	iv, err := _I.Get(384, "Element", "send_event")
+	iv, err := _I.Get(384, "Element", "send_event", 140, 56, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9485,7 +9485,7 @@ func (v Element) SendEvent(event Event) (result bool) {
 // [ time ] trans: nothing
 //
 func (v Element) SetBaseTime(time uint64) {
-	iv, err := _I.Get(385, "Element", "set_base_time")
+	iv, err := _I.Get(385, "Element", "set_base_time", 140, 57, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9501,7 +9501,7 @@ func (v Element) SetBaseTime(time uint64) {
 // [ bus ] trans: nothing
 //
 func (v Element) SetBus(bus IBus) {
-	iv, err := _I.Get(386, "Element", "set_bus")
+	iv, err := _I.Get(386, "Element", "set_bus", 140, 58, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9523,7 +9523,7 @@ func (v Element) SetBus(bus IBus) {
 // [ result ] trans: nothing
 //
 func (v Element) SetClock(clock IClock) (result bool) {
-	iv, err := _I.Get(387, "Element", "set_clock")
+	iv, err := _I.Get(387, "Element", "set_clock", 140, 59, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9546,7 +9546,7 @@ func (v Element) SetClock(clock IClock) (result bool) {
 // [ context ] trans: nothing
 //
 func (v Element) SetContext(context Context) {
-	iv, err := _I.Get(388, "Element", "set_context")
+	iv, err := _I.Get(388, "Element", "set_context", 140, 60, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9564,7 +9564,7 @@ func (v Element) SetContext(context Context) {
 // [ result ] trans: nothing
 //
 func (v Element) SetLockedState(locked_state bool) (result bool) {
-	iv, err := _I.Get(389, "Element", "set_locked_state")
+	iv, err := _I.Get(389, "Element", "set_locked_state", 140, 61, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9583,7 +9583,7 @@ func (v Element) SetLockedState(locked_state bool) (result bool) {
 // [ time ] trans: nothing
 //
 func (v Element) SetStartTime(time uint64) {
-	iv, err := _I.Get(390, "Element", "set_start_time")
+	iv, err := _I.Get(390, "Element", "set_start_time", 140, 62, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9601,7 +9601,7 @@ func (v Element) SetStartTime(time uint64) {
 // [ result ] trans: nothing
 //
 func (v Element) SetState(state StateEnum) (result StateChangeReturnEnum) {
-	iv, err := _I.Get(391, "Element", "set_state")
+	iv, err := _I.Get(391, "Element", "set_state", 140, 63, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9620,7 +9620,7 @@ func (v Element) SetState(state StateEnum) (result StateChangeReturnEnum) {
 // [ result ] trans: nothing
 //
 func (v Element) SyncStateWithParent() (result bool) {
-	iv, err := _I.Get(392, "Element", "sync_state_with_parent")
+	iv, err := _I.Get(392, "Element", "sync_state_with_parent", 140, 64, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9638,7 +9638,7 @@ func (v Element) SyncStateWithParent() (result bool) {
 // [ dest ] trans: nothing
 //
 func (v Element) Unlink(dest IElement) {
-	iv, err := _I.Get(393, "Element", "unlink")
+	iv, err := _I.Get(393, "Element", "unlink", 140, 65, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9662,7 +9662,7 @@ func (v Element) Unlink(dest IElement) {
 // [ destpadname ] trans: nothing
 //
 func (v Element) UnlinkPads(srcpadname string, dest IElement, destpadname string) {
-	iv, err := _I.Get(394, "Element", "unlink_pads")
+	iv, err := _I.Get(394, "Element", "unlink_pads", 140, 66, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9719,7 +9719,7 @@ func ElementClassGetType() gi.GType {
 // [ value ] trans: nothing
 //
 func (v ElementClass) AddMetadata(key string, value string) {
-	iv, err := _I.Get(395, "ElementClass", "add_metadata")
+	iv, err := _I.Get(395, "ElementClass", "add_metadata", 142, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9740,7 +9740,7 @@ func (v ElementClass) AddMetadata(key string, value string) {
 // [ templ ] trans: nothing
 //
 func (v ElementClass) AddPadTemplate(templ IPadTemplate) {
-	iv, err := _I.Get(396, "ElementClass", "add_pad_template")
+	iv, err := _I.Get(396, "ElementClass", "add_pad_template", 142, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9762,7 +9762,7 @@ func (v ElementClass) AddPadTemplate(templ IPadTemplate) {
 // [ value ] trans: nothing
 //
 func (v ElementClass) AddStaticMetadata(key string, value string) {
-	iv, err := _I.Get(397, "ElementClass", "add_static_metadata")
+	iv, err := _I.Get(397, "ElementClass", "add_static_metadata", 142, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9783,7 +9783,7 @@ func (v ElementClass) AddStaticMetadata(key string, value string) {
 // [ static_templ ] trans: nothing
 //
 func (v ElementClass) AddStaticPadTemplate(static_templ StaticPadTemplate) {
-	iv, err := _I.Get(398, "ElementClass", "add_static_pad_template")
+	iv, err := _I.Get(398, "ElementClass", "add_static_pad_template", 142, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9801,7 +9801,7 @@ func (v ElementClass) AddStaticPadTemplate(static_templ StaticPadTemplate) {
 // [ pad_type ] trans: nothing
 //
 func (v ElementClass) AddStaticPadTemplateWithGtype(static_templ StaticPadTemplate, pad_type gi.GType) {
-	iv, err := _I.Get(399, "ElementClass", "add_static_pad_template_with_gtype")
+	iv, err := _I.Get(399, "ElementClass", "add_static_pad_template_with_gtype", 142, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9820,7 +9820,7 @@ func (v ElementClass) AddStaticPadTemplateWithGtype(static_templ StaticPadTempla
 // [ result ] trans: nothing
 //
 func (v ElementClass) GetMetadata(key string) (result string) {
-	iv, err := _I.Get(400, "ElementClass", "get_metadata")
+	iv, err := _I.Get(400, "ElementClass", "get_metadata", 142, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9843,7 +9843,7 @@ func (v ElementClass) GetMetadata(key string) (result string) {
 // [ result ] trans: nothing
 //
 func (v ElementClass) GetPadTemplate(name string) (result PadTemplate) {
-	iv, err := _I.Get(401, "ElementClass", "get_pad_template")
+	iv, err := _I.Get(401, "ElementClass", "get_pad_template", 142, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9864,7 +9864,7 @@ func (v ElementClass) GetPadTemplate(name string) (result PadTemplate) {
 // [ result ] trans: nothing
 //
 func (v ElementClass) GetPadTemplateList() (result g.List) {
-	iv, err := _I.Get(402, "ElementClass", "get_pad_template_list")
+	iv, err := _I.Get(402, "ElementClass", "get_pad_template_list", 142, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9888,7 +9888,7 @@ func (v ElementClass) GetPadTemplateList() (result g.List) {
 // [ author ] trans: nothing
 //
 func (v ElementClass) SetMetadata(longname string, classification string, description string, author string) {
-	iv, err := _I.Get(403, "ElementClass", "set_metadata")
+	iv, err := _I.Get(403, "ElementClass", "set_metadata", 142, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9921,7 +9921,7 @@ func (v ElementClass) SetMetadata(longname string, classification string, descri
 // [ author ] trans: nothing
 //
 func (v ElementClass) SetStaticMetadata(longname string, classification string, description string, author string) {
-	iv, err := _I.Get(404, "ElementClass", "set_static_metadata")
+	iv, err := _I.Get(404, "ElementClass", "set_static_metadata", 142, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9965,7 +9965,7 @@ func ElementFactoryGetType() gi.GType {
 // [ result ] trans: everything
 //
 func ElementFactoryFind1(name string) (result ElementFactory) {
-	iv, err := _I.Get(405, "ElementFactory", "find")
+	iv, err := _I.Get(405, "ElementFactory", "find", 143, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9993,7 +9993,7 @@ func ElementFactoryFind1(name string) (result ElementFactory) {
 // [ result ] trans: everything
 //
 func ElementFactoryListFilter1(list g.List, caps Caps, direction PadDirectionEnum, subsetonly bool) (result g.List) {
-	iv, err := _I.Get(406, "ElementFactory", "list_filter")
+	iv, err := _I.Get(406, "ElementFactory", "list_filter", 143, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10018,7 +10018,7 @@ func ElementFactoryListFilter1(list g.List, caps Caps, direction PadDirectionEnu
 // [ result ] trans: everything
 //
 func ElementFactoryListGetElements1(type1 uint64, minrank RankEnum) (result g.List) {
-	iv, err := _I.Get(407, "ElementFactory", "list_get_elements")
+	iv, err := _I.Get(407, "ElementFactory", "list_get_elements", 143, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10041,7 +10041,7 @@ func ElementFactoryListGetElements1(type1 uint64, minrank RankEnum) (result g.Li
 // [ result ] trans: nothing
 //
 func ElementFactoryMake1(factoryname string, name string) (result Element) {
-	iv, err := _I.Get(408, "ElementFactory", "make")
+	iv, err := _I.Get(408, "ElementFactory", "make", 143, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10066,7 +10066,7 @@ func ElementFactoryMake1(factoryname string, name string) (result Element) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) CanSinkAllCaps(caps Caps) (result bool) {
-	iv, err := _I.Get(409, "ElementFactory", "can_sink_all_caps")
+	iv, err := _I.Get(409, "ElementFactory", "can_sink_all_caps", 143, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10087,7 +10087,7 @@ func (v ElementFactory) CanSinkAllCaps(caps Caps) (result bool) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) CanSinkAnyCaps(caps Caps) (result bool) {
-	iv, err := _I.Get(410, "ElementFactory", "can_sink_any_caps")
+	iv, err := _I.Get(410, "ElementFactory", "can_sink_any_caps", 143, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10108,7 +10108,7 @@ func (v ElementFactory) CanSinkAnyCaps(caps Caps) (result bool) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) CanSrcAllCaps(caps Caps) (result bool) {
-	iv, err := _I.Get(411, "ElementFactory", "can_src_all_caps")
+	iv, err := _I.Get(411, "ElementFactory", "can_src_all_caps", 143, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10129,7 +10129,7 @@ func (v ElementFactory) CanSrcAllCaps(caps Caps) (result bool) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) CanSrcAnyCaps(caps Caps) (result bool) {
-	iv, err := _I.Get(412, "ElementFactory", "can_src_any_caps")
+	iv, err := _I.Get(412, "ElementFactory", "can_src_any_caps", 143, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10150,7 +10150,7 @@ func (v ElementFactory) CanSrcAnyCaps(caps Caps) (result bool) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) Create(name string) (result Element) {
-	iv, err := _I.Get(413, "ElementFactory", "create")
+	iv, err := _I.Get(413, "ElementFactory", "create", 143, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10171,7 +10171,7 @@ func (v ElementFactory) Create(name string) (result Element) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) GetElementType() (result gi.GType) {
-	iv, err := _I.Get(414, "ElementFactory", "get_element_type")
+	iv, err := _I.Get(414, "ElementFactory", "get_element_type", 143, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10191,7 +10191,7 @@ func (v ElementFactory) GetElementType() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) GetMetadata(key string) (result string) {
-	iv, err := _I.Get(415, "ElementFactory", "get_metadata")
+	iv, err := _I.Get(415, "ElementFactory", "get_metadata", 143, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10212,7 +10212,7 @@ func (v ElementFactory) GetMetadata(key string) (result string) {
 // [ result ] trans: everything
 //
 func (v ElementFactory) GetMetadataKeys() (result gi.CStrArray) {
-	iv, err := _I.Get(416, "ElementFactory", "get_metadata_keys")
+	iv, err := _I.Get(416, "ElementFactory", "get_metadata_keys", 143, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10231,7 +10231,7 @@ func (v ElementFactory) GetMetadataKeys() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) GetNumPadTemplates() (result uint32) {
-	iv, err := _I.Get(417, "ElementFactory", "get_num_pad_templates")
+	iv, err := _I.Get(417, "ElementFactory", "get_num_pad_templates", 143, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10249,7 +10249,7 @@ func (v ElementFactory) GetNumPadTemplates() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) GetStaticPadTemplates() (result g.List) {
-	iv, err := _I.Get(418, "ElementFactory", "get_static_pad_templates")
+	iv, err := _I.Get(418, "ElementFactory", "get_static_pad_templates", 143, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10267,7 +10267,7 @@ func (v ElementFactory) GetStaticPadTemplates() (result g.List) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) GetUriProtocols() (result gi.CStrArray) {
-	iv, err := _I.Get(419, "ElementFactory", "get_uri_protocols")
+	iv, err := _I.Get(419, "ElementFactory", "get_uri_protocols", 143, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10286,7 +10286,7 @@ func (v ElementFactory) GetUriProtocols() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) GetUriType() (result URITypeEnum) {
-	iv, err := _I.Get(420, "ElementFactory", "get_uri_type")
+	iv, err := _I.Get(420, "ElementFactory", "get_uri_type", 143, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10306,7 +10306,7 @@ func (v ElementFactory) GetUriType() (result URITypeEnum) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) HasInterface(interfacename string) (result bool) {
-	iv, err := _I.Get(421, "ElementFactory", "has_interface")
+	iv, err := _I.Get(421, "ElementFactory", "has_interface", 143, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10329,7 +10329,7 @@ func (v ElementFactory) HasInterface(interfacename string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v ElementFactory) ListIsType(type1 uint64) (result bool) {
-	iv, err := _I.Get(422, "ElementFactory", "list_is_type")
+	iv, err := _I.Get(422, "ElementFactory", "list_is_type", 143, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10407,7 +10407,7 @@ func EventGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewEventBufferSize(format FormatEnum, minsize int64, maxsize int64, async bool) (result Event) {
-	iv, err := _I.Get(423, "Event", "new_buffer_size")
+	iv, err := _I.Get(423, "Event", "new_buffer_size", 147, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10430,7 +10430,7 @@ func NewEventBufferSize(format FormatEnum, minsize int64, maxsize int64, async b
 // [ result ] trans: everything
 //
 func NewEventCaps(caps Caps) (result Event) {
-	iv, err := _I.Get(424, "Event", "new_caps")
+	iv, err := _I.Get(424, "Event", "new_caps", 147, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10452,7 +10452,7 @@ func NewEventCaps(caps Caps) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventCustom(type1 EventTypeEnum, structure Structure) (result Event) {
-	iv, err := _I.Get(425, "Event", "new_custom")
+	iv, err := _I.Get(425, "Event", "new_custom", 147, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10471,7 +10471,7 @@ func NewEventCustom(type1 EventTypeEnum, structure Structure) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventEos() (result Event) {
-	iv, err := _I.Get(426, "Event", "new_eos")
+	iv, err := _I.Get(426, "Event", "new_eos", 147, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10487,7 +10487,7 @@ func NewEventEos() (result Event) {
 // [ result ] trans: everything
 //
 func NewEventFlushStart() (result Event) {
-	iv, err := _I.Get(427, "Event", "new_flush_start")
+	iv, err := _I.Get(427, "Event", "new_flush_start", 147, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10505,7 +10505,7 @@ func NewEventFlushStart() (result Event) {
 // [ result ] trans: everything
 //
 func NewEventFlushStop(reset_time bool) (result Event) {
-	iv, err := _I.Get(428, "Event", "new_flush_stop")
+	iv, err := _I.Get(428, "Event", "new_flush_stop", 147, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10527,7 +10527,7 @@ func NewEventFlushStop(reset_time bool) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventGap(timestamp uint64, duration uint64) (result Event) {
-	iv, err := _I.Get(429, "Event", "new_gap")
+	iv, err := _I.Get(429, "Event", "new_gap", 147, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10548,7 +10548,7 @@ func NewEventGap(timestamp uint64, duration uint64) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventLatency(latency uint64) (result Event) {
-	iv, err := _I.Get(430, "Event", "new_latency")
+	iv, err := _I.Get(430, "Event", "new_latency", 147, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10568,7 +10568,7 @@ func NewEventLatency(latency uint64) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventNavigation(structure Structure) (result Event) {
-	iv, err := _I.Get(431, "Event", "new_navigation")
+	iv, err := _I.Get(431, "Event", "new_navigation", 147, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10592,7 +10592,7 @@ func NewEventNavigation(structure Structure) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventProtection(system_id string, data Buffer, origin string) (result Event) {
-	iv, err := _I.Get(432, "Event", "new_protection")
+	iv, err := _I.Get(432, "Event", "new_protection", 147, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10624,7 +10624,7 @@ func NewEventProtection(system_id string, data Buffer, origin string) (result Ev
 // [ result ] trans: everything
 //
 func NewEventQos(type1 QOSTypeEnum, proportion float64, diff int64, timestamp uint64) (result Event) {
-	iv, err := _I.Get(433, "Event", "new_qos")
+	iv, err := _I.Get(433, "Event", "new_qos", 147, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10645,7 +10645,7 @@ func NewEventQos(type1 QOSTypeEnum, proportion float64, diff int64, timestamp ui
 // [ result ] trans: everything
 //
 func NewEventReconfigure() (result Event) {
-	iv, err := _I.Get(434, "Event", "new_reconfigure")
+	iv, err := _I.Get(434, "Event", "new_reconfigure", 147, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10675,7 +10675,7 @@ func NewEventReconfigure() (result Event) {
 // [ result ] trans: everything
 //
 func NewEventSeek(rate float64, format FormatEnum, flags SeekFlags, start_type SeekTypeEnum, start int64, stop_type SeekTypeEnum, stop int64) (result Event) {
-	iv, err := _I.Get(435, "Event", "new_seek")
+	iv, err := _I.Get(435, "Event", "new_seek", 147, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10701,7 +10701,7 @@ func NewEventSeek(rate float64, format FormatEnum, flags SeekFlags, start_type S
 // [ result ] trans: everything
 //
 func NewEventSegment(segment Segment) (result Event) {
-	iv, err := _I.Get(436, "Event", "new_segment")
+	iv, err := _I.Get(436, "Event", "new_segment", 147, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10723,7 +10723,7 @@ func NewEventSegment(segment Segment) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventSegmentDone(format FormatEnum, position int64) (result Event) {
-	iv, err := _I.Get(437, "Event", "new_segment_done")
+	iv, err := _I.Get(437, "Event", "new_segment_done", 147, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10744,7 +10744,7 @@ func NewEventSegmentDone(format FormatEnum, position int64) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventSelectStreams(streams g.List) (result Event) {
-	iv, err := _I.Get(438, "Event", "new_select_streams")
+	iv, err := _I.Get(438, "Event", "new_select_streams", 147, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10766,7 +10766,7 @@ func NewEventSelectStreams(streams g.List) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventSinkMessage(name string, msg Message) (result Event) {
-	iv, err := _I.Get(439, "Event", "new_sink_message")
+	iv, err := _I.Get(439, "Event", "new_sink_message", 147, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10797,7 +10797,7 @@ func NewEventSinkMessage(name string, msg Message) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventStep(format FormatEnum, amount uint64, rate float64, flush bool, intermediate bool) (result Event) {
-	iv, err := _I.Get(440, "Event", "new_step")
+	iv, err := _I.Get(440, "Event", "new_step", 147, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10821,7 +10821,7 @@ func NewEventStep(format FormatEnum, amount uint64, rate float64, flush bool, in
 // [ result ] trans: everything
 //
 func NewEventStreamCollection(collection IStreamCollection) (result Event) {
-	iv, err := _I.Get(441, "Event", "new_stream_collection")
+	iv, err := _I.Get(441, "Event", "new_stream_collection", 147, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10845,7 +10845,7 @@ func NewEventStreamCollection(collection IStreamCollection) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventStreamGroupDone(group_id uint32) (result Event) {
-	iv, err := _I.Get(442, "Event", "new_stream_group_done")
+	iv, err := _I.Get(442, "Event", "new_stream_group_done", 147, 19, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10865,7 +10865,7 @@ func NewEventStreamGroupDone(group_id uint32) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventStreamStart(stream_id string) (result Event) {
-	iv, err := _I.Get(443, "Event", "new_stream_start")
+	iv, err := _I.Get(443, "Event", "new_stream_start", 147, 20, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10887,7 +10887,7 @@ func NewEventStreamStart(stream_id string) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventTag(taglist TagList) (result Event) {
-	iv, err := _I.Get(444, "Event", "new_tag")
+	iv, err := _I.Get(444, "Event", "new_tag", 147, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10909,7 +10909,7 @@ func NewEventTag(taglist TagList) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventToc(toc Toc, updated bool) (result Event) {
-	iv, err := _I.Get(445, "Event", "new_toc")
+	iv, err := _I.Get(445, "Event", "new_toc", 147, 22, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10930,7 +10930,7 @@ func NewEventToc(toc Toc, updated bool) (result Event) {
 // [ result ] trans: everything
 //
 func NewEventTocSelect(uid string) (result Event) {
-	iv, err := _I.Get(446, "Event", "new_toc_select")
+	iv, err := _I.Get(446, "Event", "new_toc_select", 147, 23, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10950,7 +10950,7 @@ func NewEventTocSelect(uid string) (result Event) {
 // [ segment ] trans: nothing
 //
 func (v Event) CopySegment(segment Segment) {
-	iv, err := _I.Get(447, "Event", "copy_segment")
+	iv, err := _I.Get(447, "Event", "copy_segment", 147, 24, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10966,7 +10966,7 @@ func (v Event) CopySegment(segment Segment) {
 // [ result ] trans: nothing
 //
 func (v Event) GetRunningTimeOffset() (result int64) {
-	iv, err := _I.Get(448, "Event", "get_running_time_offset")
+	iv, err := _I.Get(448, "Event", "get_running_time_offset", 147, 25, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10984,7 +10984,7 @@ func (v Event) GetRunningTimeOffset() (result int64) {
 // [ result ] trans: nothing
 //
 func (v Event) GetSeqnum() (result uint32) {
-	iv, err := _I.Get(449, "Event", "get_seqnum")
+	iv, err := _I.Get(449, "Event", "get_seqnum", 147, 26, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11002,7 +11002,7 @@ func (v Event) GetSeqnum() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Event) GetStructure() (result Structure) {
-	iv, err := _I.Get(450, "Event", "get_structure")
+	iv, err := _I.Get(450, "Event", "get_structure", 147, 27, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11022,7 +11022,7 @@ func (v Event) GetStructure() (result Structure) {
 // [ result ] trans: nothing
 //
 func (v Event) HasName(name string) (result bool) {
-	iv, err := _I.Get(451, "Event", "has_name")
+	iv, err := _I.Get(451, "Event", "has_name", 147, 28, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11049,7 +11049,7 @@ func (v Event) HasName(name string) (result bool) {
 // [ async ] trans: everything, dir: out
 //
 func (v Event) ParseBufferSize() (format FormatEnum, minsize int64, maxsize int64, async bool) {
-	iv, err := _I.Get(452, "Event", "parse_buffer_size")
+	iv, err := _I.Get(452, "Event", "parse_buffer_size", 147, 29, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11074,7 +11074,7 @@ func (v Event) ParseBufferSize() (format FormatEnum, minsize int64, maxsize int6
 // [ caps ] trans: nothing, dir: out
 //
 func (v Event) ParseCaps() (caps Caps) {
-	iv, err := _I.Get(453, "Event", "parse_caps")
+	iv, err := _I.Get(453, "Event", "parse_caps", 147, 30, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11093,7 +11093,7 @@ func (v Event) ParseCaps() (caps Caps) {
 // [ reset_time ] trans: everything, dir: out
 //
 func (v Event) ParseFlushStop() (reset_time bool) {
-	iv, err := _I.Get(454, "Event", "parse_flush_stop")
+	iv, err := _I.Get(454, "Event", "parse_flush_stop", 147, 31, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11114,7 +11114,7 @@ func (v Event) ParseFlushStop() (reset_time bool) {
 // [ duration ] trans: everything, dir: out
 //
 func (v Event) ParseGap() (timestamp uint64, duration uint64) {
-	iv, err := _I.Get(455, "Event", "parse_gap")
+	iv, err := _I.Get(455, "Event", "parse_gap", 147, 32, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11137,7 +11137,7 @@ func (v Event) ParseGap() (timestamp uint64, duration uint64) {
 // [ result ] trans: nothing
 //
 func (v Event) ParseGroupId() (result bool, group_id uint32) {
-	iv, err := _I.Get(456, "Event", "parse_group_id")
+	iv, err := _I.Get(456, "Event", "parse_group_id", 147, 33, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11158,7 +11158,7 @@ func (v Event) ParseGroupId() (result bool, group_id uint32) {
 // [ latency ] trans: everything, dir: out
 //
 func (v Event) ParseLatency() (latency uint64) {
-	iv, err := _I.Get(457, "Event", "parse_latency")
+	iv, err := _I.Get(457, "Event", "parse_latency", 147, 34, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11181,7 +11181,7 @@ func (v Event) ParseLatency() (latency uint64) {
 // [ origin ] trans: nothing, dir: out
 //
 func (v Event) ParseProtection() (system_id string, data Buffer, origin string) {
-	iv, err := _I.Get(458, "Event", "parse_protection")
+	iv, err := _I.Get(458, "Event", "parse_protection", 147, 35, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11210,7 +11210,7 @@ func (v Event) ParseProtection() (system_id string, data Buffer, origin string) 
 // [ timestamp ] trans: everything, dir: out
 //
 func (v Event) ParseQos() (type1 QOSTypeEnum, proportion float64, diff int64, timestamp uint64) {
-	iv, err := _I.Get(459, "Event", "parse_qos")
+	iv, err := _I.Get(459, "Event", "parse_qos", 147, 36, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11247,7 +11247,7 @@ func (v Event) ParseQos() (type1 QOSTypeEnum, proportion float64, diff int64, ti
 // [ stop ] trans: everything, dir: out
 //
 func (v Event) ParseSeek() (rate float64, format FormatEnum, flags SeekFlags, start_type SeekTypeEnum, start int64, stop_type SeekTypeEnum, stop int64) {
-	iv, err := _I.Get(460, "Event", "parse_seek")
+	iv, err := _I.Get(460, "Event", "parse_seek", 147, 37, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11278,7 +11278,7 @@ func (v Event) ParseSeek() (rate float64, format FormatEnum, flags SeekFlags, st
 // [ segment ] trans: nothing, dir: out
 //
 func (v Event) ParseSegment() (segment Segment) {
-	iv, err := _I.Get(461, "Event", "parse_segment")
+	iv, err := _I.Get(461, "Event", "parse_segment", 147, 38, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11299,7 +11299,7 @@ func (v Event) ParseSegment() (segment Segment) {
 // [ position ] trans: everything, dir: out
 //
 func (v Event) ParseSegmentDone() (format FormatEnum, position int64) {
-	iv, err := _I.Get(462, "Event", "parse_segment_done")
+	iv, err := _I.Get(462, "Event", "parse_segment_done", 147, 39, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11320,7 +11320,7 @@ func (v Event) ParseSegmentDone() (format FormatEnum, position int64) {
 // [ streams ] trans: everything, dir: out
 //
 func (v Event) ParseSelectStreams() (streams g.List) {
-	iv, err := _I.Get(463, "Event", "parse_select_streams")
+	iv, err := _I.Get(463, "Event", "parse_select_streams", 147, 40, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11339,7 +11339,7 @@ func (v Event) ParseSelectStreams() (streams g.List) {
 // [ msg ] trans: everything, dir: out
 //
 func (v Event) ParseSinkMessage() (msg Message) {
-	iv, err := _I.Get(464, "Event", "parse_sink_message")
+	iv, err := _I.Get(464, "Event", "parse_sink_message", 147, 41, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11366,7 +11366,7 @@ func (v Event) ParseSinkMessage() (msg Message) {
 // [ intermediate ] trans: everything, dir: out
 //
 func (v Event) ParseStep() (format FormatEnum, amount uint64, rate float64, flush bool, intermediate bool) {
-	iv, err := _I.Get(465, "Event", "parse_step")
+	iv, err := _I.Get(465, "Event", "parse_step", 147, 42, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11393,7 +11393,7 @@ func (v Event) ParseStep() (format FormatEnum, amount uint64, rate float64, flus
 // [ stream ] trans: everything, dir: out
 //
 func (v Event) ParseStream() (stream Stream) {
-	iv, err := _I.Get(466, "Event", "parse_stream")
+	iv, err := _I.Get(466, "Event", "parse_stream", 147, 43, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11412,7 +11412,7 @@ func (v Event) ParseStream() (stream Stream) {
 // [ collection ] trans: everything, dir: out
 //
 func (v Event) ParseStreamCollection() (collection StreamCollection) {
-	iv, err := _I.Get(467, "Event", "parse_stream_collection")
+	iv, err := _I.Get(467, "Event", "parse_stream_collection", 147, 44, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11431,7 +11431,7 @@ func (v Event) ParseStreamCollection() (collection StreamCollection) {
 // [ flags ] trans: everything, dir: out
 //
 func (v Event) ParseStreamFlags() (flags StreamFlags) {
-	iv, err := _I.Get(468, "Event", "parse_stream_flags")
+	iv, err := _I.Get(468, "Event", "parse_stream_flags", 147, 45, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11450,7 +11450,7 @@ func (v Event) ParseStreamFlags() (flags StreamFlags) {
 // [ group_id ] trans: everything, dir: out
 //
 func (v Event) ParseStreamGroupDone() (group_id uint32) {
-	iv, err := _I.Get(469, "Event", "parse_stream_group_done")
+	iv, err := _I.Get(469, "Event", "parse_stream_group_done", 147, 46, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11469,7 +11469,7 @@ func (v Event) ParseStreamGroupDone() (group_id uint32) {
 // [ stream_id ] trans: nothing, dir: out
 //
 func (v Event) ParseStreamStart() (stream_id string) {
-	iv, err := _I.Get(470, "Event", "parse_stream_start")
+	iv, err := _I.Get(470, "Event", "parse_stream_start", 147, 47, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11488,7 +11488,7 @@ func (v Event) ParseStreamStart() (stream_id string) {
 // [ taglist ] trans: nothing, dir: out
 //
 func (v Event) ParseTag() (taglist TagList) {
-	iv, err := _I.Get(471, "Event", "parse_tag")
+	iv, err := _I.Get(471, "Event", "parse_tag", 147, 48, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11509,7 +11509,7 @@ func (v Event) ParseTag() (taglist TagList) {
 // [ updated ] trans: everything, dir: out
 //
 func (v Event) ParseToc() (toc Toc, updated bool) {
-	iv, err := _I.Get(472, "Event", "parse_toc")
+	iv, err := _I.Get(472, "Event", "parse_toc", 147, 49, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11530,7 +11530,7 @@ func (v Event) ParseToc() (toc Toc, updated bool) {
 // [ uid ] trans: everything, dir: out
 //
 func (v Event) ParseTocSelect() (uid string) {
-	iv, err := _I.Get(473, "Event", "parse_toc_select")
+	iv, err := _I.Get(473, "Event", "parse_toc_select", 147, 50, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11549,7 +11549,7 @@ func (v Event) ParseTocSelect() (uid string) {
 // [ group_id ] trans: nothing
 //
 func (v Event) SetGroupId(group_id uint32) {
-	iv, err := _I.Get(474, "Event", "set_group_id")
+	iv, err := _I.Get(474, "Event", "set_group_id", 147, 51, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11565,7 +11565,7 @@ func (v Event) SetGroupId(group_id uint32) {
 // [ offset ] trans: nothing
 //
 func (v Event) SetRunningTimeOffset(offset int64) {
-	iv, err := _I.Get(475, "Event", "set_running_time_offset")
+	iv, err := _I.Get(475, "Event", "set_running_time_offset", 147, 52, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11581,7 +11581,7 @@ func (v Event) SetRunningTimeOffset(offset int64) {
 // [ seqnum ] trans: nothing
 //
 func (v Event) SetSeqnum(seqnum uint32) {
-	iv, err := _I.Get(476, "Event", "set_seqnum")
+	iv, err := _I.Get(476, "Event", "set_seqnum", 147, 53, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11597,7 +11597,7 @@ func (v Event) SetSeqnum(seqnum uint32) {
 // [ stream ] trans: nothing
 //
 func (v Event) SetStream(stream IStream) {
-	iv, err := _I.Get(477, "Event", "set_stream")
+	iv, err := _I.Get(477, "Event", "set_stream", 147, 54, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11617,7 +11617,7 @@ func (v Event) SetStream(stream IStream) {
 // [ flags ] trans: nothing
 //
 func (v Event) SetStreamFlags(flags StreamFlags) {
-	iv, err := _I.Get(478, "Event", "set_stream_flags")
+	iv, err := _I.Get(478, "Event", "set_stream_flags", 147, 55, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11633,7 +11633,7 @@ func (v Event) SetStreamFlags(flags StreamFlags) {
 // [ result ] trans: nothing
 //
 func (v Event) WritableStructure() (result Structure) {
-	iv, err := _I.Get(479, "Event", "writable_structure")
+	iv, err := _I.Get(479, "Event", "writable_structure", 147, 56, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11725,7 +11725,7 @@ func FlagSetGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func FlagSetRegister1(flags_type gi.GType) (result gi.GType) {
-	iv, err := _I.Get(480, "FlagSet", "register")
+	iv, err := _I.Get(480, "FlagSet", "register", 154, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11845,7 +11845,7 @@ func GhostPadGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewGhostPad(name string, target IPad) (result GhostPad) {
-	iv, err := _I.Get(481, "GhostPad", "new")
+	iv, err := _I.Get(481, "GhostPad", "new", 161, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11876,7 +11876,7 @@ func NewGhostPad(name string, target IPad) (result GhostPad) {
 // [ result ] trans: nothing
 //
 func NewGhostPadFromTemplate(name string, target IPad, templ IPadTemplate) (result GhostPad) {
-	iv, err := _I.Get(482, "GhostPad", "new_from_template")
+	iv, err := _I.Get(482, "GhostPad", "new_from_template", 161, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11910,7 +11910,7 @@ func NewGhostPadFromTemplate(name string, target IPad, templ IPadTemplate) (resu
 // [ result ] trans: nothing
 //
 func NewGhostPadNoTarget(name string, dir PadDirectionEnum) (result GhostPad) {
-	iv, err := _I.Get(483, "GhostPad", "new_no_target")
+	iv, err := _I.Get(483, "GhostPad", "new_no_target", 161, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11935,7 +11935,7 @@ func NewGhostPadNoTarget(name string, dir PadDirectionEnum) (result GhostPad) {
 // [ result ] trans: nothing
 //
 func NewGhostPadNoTargetFromTemplate(name string, templ IPadTemplate) (result GhostPad) {
-	iv, err := _I.Get(484, "GhostPad", "new_no_target_from_template")
+	iv, err := _I.Get(484, "GhostPad", "new_no_target_from_template", 161, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11968,7 +11968,7 @@ func NewGhostPadNoTargetFromTemplate(name string, templ IPadTemplate) (result Gh
 // [ result ] trans: nothing
 //
 func GhostPadActivateModeDefault1(pad IPad, parent IObject, mode PadModeEnum, active bool) (result bool) {
-	iv, err := _I.Get(485, "GhostPad", "activate_mode_default")
+	iv, err := _I.Get(485, "GhostPad", "activate_mode_default", 161, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12005,7 +12005,7 @@ func GhostPadActivateModeDefault1(pad IPad, parent IObject, mode PadModeEnum, ac
 // [ result ] trans: nothing
 //
 func GhostPadInternalActivateModeDefault1(pad IPad, parent IObject, mode PadModeEnum, active bool) (result bool) {
-	iv, err := _I.Get(486, "GhostPad", "internal_activate_mode_default")
+	iv, err := _I.Get(486, "GhostPad", "internal_activate_mode_default", 161, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12034,7 +12034,7 @@ func GhostPadInternalActivateModeDefault1(pad IPad, parent IObject, mode PadMode
 // [ result ] trans: nothing
 //
 func (v GhostPad) Construct() (result bool) {
-	iv, err := _I.Get(487, "GhostPad", "construct")
+	iv, err := _I.Get(487, "GhostPad", "construct", 161, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12052,7 +12052,7 @@ func (v GhostPad) Construct() (result bool) {
 // [ result ] trans: everything
 //
 func (v GhostPad) GetTarget() (result Pad) {
-	iv, err := _I.Get(488, "GhostPad", "get_target")
+	iv, err := _I.Get(488, "GhostPad", "get_target", 161, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12072,7 +12072,7 @@ func (v GhostPad) GetTarget() (result Pad) {
 // [ result ] trans: nothing
 //
 func (v GhostPad) SetTarget(newtarget IPad) (result bool) {
-	iv, err := _I.Get(489, "GhostPad", "set_target")
+	iv, err := _I.Get(489, "GhostPad", "set_target", 161, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12153,7 +12153,7 @@ func IteratorGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewIteratorSingle(type1 gi.GType, object g.Value) (result Iterator) {
-	iv, err := _I.Get(490, "Iterator", "new_single")
+	iv, err := _I.Get(490, "Iterator", "new_single", 166, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12172,7 +12172,7 @@ func NewIteratorSingle(type1 gi.GType, object g.Value) (result Iterator) {
 // [ result ] trans: everything
 //
 func (v Iterator) Copy() (result Iterator) {
-	iv, err := _I.Get(491, "Iterator", "copy")
+	iv, err := _I.Get(491, "Iterator", "copy", 166, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12194,7 +12194,7 @@ func (v Iterator) Copy() (result Iterator) {
 // [ result ] trans: everything
 //
 func (v Iterator) Filter(func1 int /*TODO_TYPE CALLBACK*/, user_data g.Value) (result Iterator) {
-	iv, err := _I.Get(492, "Iterator", "filter")
+	iv, err := _I.Get(492, "Iterator", "filter", 166, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12220,7 +12220,7 @@ func (v Iterator) Filter(func1 int /*TODO_TYPE CALLBACK*/, user_data g.Value) (r
 // [ result ] trans: nothing
 //
 func (v Iterator) FindCustom(func1 int /*TODO_TYPE CALLBACK*/, elem g.Value, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(493, "Iterator", "find_custom")
+	iv, err := _I.Get(493, "Iterator", "find_custom", 166, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12247,7 +12247,7 @@ func (v Iterator) FindCustom(func1 int /*TODO_TYPE CALLBACK*/, elem g.Value, use
 // [ result ] trans: nothing
 //
 func (v Iterator) Fold(func1 int /*TODO_TYPE CALLBACK*/, ret g.Value, user_data unsafe.Pointer) (result IteratorResultEnum) {
-	iv, err := _I.Get(494, "Iterator", "fold")
+	iv, err := _I.Get(494, "Iterator", "fold", 166, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12272,7 +12272,7 @@ func (v Iterator) Fold(func1 int /*TODO_TYPE CALLBACK*/, ret g.Value, user_data 
 // [ result ] trans: nothing
 //
 func (v Iterator) Foreach(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result IteratorResultEnum) {
-	iv, err := _I.Get(495, "Iterator", "foreach")
+	iv, err := _I.Get(495, "Iterator", "foreach", 166, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12290,7 +12290,7 @@ func (v Iterator) Foreach(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Poi
 // gst_iterator_free
 //
 func (v Iterator) Free() {
-	iv, err := _I.Get(496, "Iterator", "free")
+	iv, err := _I.Get(496, "Iterator", "free", 166, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12307,7 +12307,7 @@ func (v Iterator) Free() {
 // [ result ] trans: nothing
 //
 func (v Iterator) Next(elem g.Value) (result IteratorResultEnum) {
-	iv, err := _I.Get(497, "Iterator", "next")
+	iv, err := _I.Get(497, "Iterator", "next", 166, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12326,7 +12326,7 @@ func (v Iterator) Next(elem g.Value) (result IteratorResultEnum) {
 // [ other ] trans: nothing
 //
 func (v Iterator) Push(other Iterator) {
-	iv, err := _I.Get(498, "Iterator", "push")
+	iv, err := _I.Get(498, "Iterator", "push", 166, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12340,7 +12340,7 @@ func (v Iterator) Push(other Iterator) {
 // gst_iterator_resync
 //
 func (v Iterator) Resync() {
-	iv, err := _I.Get(499, "Iterator", "resync")
+	iv, err := _I.Get(499, "Iterator", "resync", 166, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12602,7 +12602,7 @@ func MemoryGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewMemoryWrapped(flags MemoryFlags, data gi.Uint8Array, maxsize uint64, offset uint64, size uint64, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result Memory) {
-	iv, err := _I.Get(500, "Memory", "new_wrapped")
+	iv, err := _I.Get(500, "Memory", "new_wrapped", 186, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12630,7 +12630,7 @@ func NewMemoryWrapped(flags MemoryFlags, data gi.Uint8Array, maxsize uint64, off
 // [ result ] trans: everything
 //
 func (v Memory) Copy(offset int64, size int64) (result Memory) {
-	iv, err := _I.Get(501, "Memory", "copy")
+	iv, err := _I.Get(501, "Memory", "copy", 186, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12654,7 +12654,7 @@ func (v Memory) Copy(offset int64, size int64) (result Memory) {
 // [ result ] trans: nothing
 //
 func (v Memory) GetSizes() (result uint64, offset uint64, maxsize uint64) {
-	iv, err := _I.Get(502, "Memory", "get_sizes")
+	iv, err := _I.Get(502, "Memory", "get_sizes", 186, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12681,7 +12681,7 @@ func (v Memory) GetSizes() (result uint64, offset uint64, maxsize uint64) {
 // [ result ] trans: nothing
 //
 func (v Memory) IsSpan(mem2 Memory) (result bool, offset uint64) {
-	iv, err := _I.Get(503, "Memory", "is_span")
+	iv, err := _I.Get(503, "Memory", "is_span", 186, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12705,7 +12705,7 @@ func (v Memory) IsSpan(mem2 Memory) (result bool, offset uint64) {
 // [ result ] trans: nothing
 //
 func (v Memory) IsType(mem_type string) (result bool) {
-	iv, err := _I.Get(504, "Memory", "is_type")
+	iv, err := _I.Get(504, "Memory", "is_type", 186, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12730,7 +12730,7 @@ func (v Memory) IsType(mem_type string) (result bool) {
 // [ result ] trans: everything
 //
 func (v Memory) MakeMapped(info MapInfo, flags MapFlags) (result Memory) {
-	iv, err := _I.Get(505, "Memory", "make_mapped")
+	iv, err := _I.Get(505, "Memory", "make_mapped", 186, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12754,7 +12754,7 @@ func (v Memory) MakeMapped(info MapInfo, flags MapFlags) (result Memory) {
 // [ result ] trans: nothing
 //
 func (v Memory) Map(info MapInfo, flags MapFlags) (result bool) {
-	iv, err := _I.Get(506, "Memory", "map")
+	iv, err := _I.Get(506, "Memory", "map", 186, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12776,7 +12776,7 @@ func (v Memory) Map(info MapInfo, flags MapFlags) (result bool) {
 // [ size ] trans: nothing
 //
 func (v Memory) Resize(offset int64, size uint64) {
-	iv, err := _I.Get(507, "Memory", "resize")
+	iv, err := _I.Get(507, "Memory", "resize", 186, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12797,7 +12797,7 @@ func (v Memory) Resize(offset int64, size uint64) {
 // [ result ] trans: everything
 //
 func (v Memory) Share(offset int64, size int64) (result Memory) {
-	iv, err := _I.Get(508, "Memory", "share")
+	iv, err := _I.Get(508, "Memory", "share", 186, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12817,7 +12817,7 @@ func (v Memory) Share(offset int64, size int64) (result Memory) {
 // [ info ] trans: nothing
 //
 func (v Memory) Unmap(info MapInfo) {
-	iv, err := _I.Get(509, "Memory", "unmap")
+	iv, err := _I.Get(509, "Memory", "unmap", 186, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12969,7 +12969,7 @@ func MessageGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewMessageApplication(src IObject, structure Structure) (result Message) {
-	iv, err := _I.Get(510, "Message", "new_application")
+	iv, err := _I.Get(510, "Message", "new_application", 195, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12996,7 +12996,7 @@ func NewMessageApplication(src IObject, structure Structure) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageAsyncDone(src IObject, running_time uint64) (result Message) {
-	iv, err := _I.Get(511, "Message", "new_async_done")
+	iv, err := _I.Get(511, "Message", "new_async_done", 195, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13021,7 +13021,7 @@ func NewMessageAsyncDone(src IObject, running_time uint64) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageAsyncStart(src IObject) (result Message) {
-	iv, err := _I.Get(512, "Message", "new_async_start")
+	iv, err := _I.Get(512, "Message", "new_async_start", 195, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13047,7 +13047,7 @@ func NewMessageAsyncStart(src IObject) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageBuffering(src IObject, percent int32) (result Message) {
-	iv, err := _I.Get(513, "Message", "new_buffering")
+	iv, err := _I.Get(513, "Message", "new_buffering", 195, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13074,7 +13074,7 @@ func NewMessageBuffering(src IObject, percent int32) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageClockLost(src IObject, clock IClock) (result Message) {
-	iv, err := _I.Get(514, "Message", "new_clock_lost")
+	iv, err := _I.Get(514, "Message", "new_clock_lost", 195, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13107,7 +13107,7 @@ func NewMessageClockLost(src IObject, clock IClock) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageClockProvide(src IObject, clock IClock, ready bool) (result Message) {
-	iv, err := _I.Get(515, "Message", "new_clock_provide")
+	iv, err := _I.Get(515, "Message", "new_clock_provide", 195, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13141,7 +13141,7 @@ func NewMessageClockProvide(src IObject, clock IClock, ready bool) (result Messa
 // [ result ] trans: everything
 //
 func NewMessageCustom(type1 MessageTypeFlags, src IObject, structure Structure) (result Message) {
-	iv, err := _I.Get(516, "Message", "new_custom")
+	iv, err := _I.Get(516, "Message", "new_custom", 195, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13169,7 +13169,7 @@ func NewMessageCustom(type1 MessageTypeFlags, src IObject, structure Structure) 
 // [ result ] trans: everything
 //
 func NewMessageDeviceAdded(src IObject, device IDevice) (result Message) {
-	iv, err := _I.Get(517, "Message", "new_device_added")
+	iv, err := _I.Get(517, "Message", "new_device_added", 195, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13200,7 +13200,7 @@ func NewMessageDeviceAdded(src IObject, device IDevice) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageDeviceRemoved(src IObject, device IDevice) (result Message) {
-	iv, err := _I.Get(518, "Message", "new_device_removed")
+	iv, err := _I.Get(518, "Message", "new_device_removed", 195, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13229,7 +13229,7 @@ func NewMessageDeviceRemoved(src IObject, device IDevice) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageDurationChanged(src IObject) (result Message) {
-	iv, err := _I.Get(519, "Message", "new_duration_changed")
+	iv, err := _I.Get(519, "Message", "new_duration_changed", 195, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13255,7 +13255,7 @@ func NewMessageDurationChanged(src IObject) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageElement(src IObject, structure Structure) (result Message) {
-	iv, err := _I.Get(520, "Message", "new_element")
+	iv, err := _I.Get(520, "Message", "new_element", 195, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13280,7 +13280,7 @@ func NewMessageElement(src IObject, structure Structure) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageEos(src IObject) (result Message) {
-	iv, err := _I.Get(521, "Message", "new_eos")
+	iv, err := _I.Get(521, "Message", "new_eos", 195, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13308,7 +13308,7 @@ func NewMessageEos(src IObject) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageError(src IObject, error g.Error, debug string) (result Message) {
-	iv, err := _I.Get(522, "Message", "new_error")
+	iv, err := _I.Get(522, "Message", "new_error", 195, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13342,7 +13342,7 @@ func NewMessageError(src IObject, error g.Error, debug string) (result Message) 
 // [ result ] trans: everything
 //
 func NewMessageErrorWithDetails(src IObject, error g.Error, debug string, details Structure) (result Message) {
-	iv, err := _I.Get(523, "Message", "new_error_with_details")
+	iv, err := _I.Get(523, "Message", "new_error_with_details", 195, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13373,7 +13373,7 @@ func NewMessageErrorWithDetails(src IObject, error g.Error, debug string, detail
 // [ result ] trans: everything
 //
 func NewMessageHaveContext(src IObject, context Context) (result Message) {
-	iv, err := _I.Get(524, "Message", "new_have_context")
+	iv, err := _I.Get(524, "Message", "new_have_context", 195, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13402,7 +13402,7 @@ func NewMessageHaveContext(src IObject, context Context) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageInfo(src IObject, error g.Error, debug string) (result Message) {
-	iv, err := _I.Get(525, "Message", "new_info")
+	iv, err := _I.Get(525, "Message", "new_info", 195, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13436,7 +13436,7 @@ func NewMessageInfo(src IObject, error g.Error, debug string) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageInfoWithDetails(src IObject, error g.Error, debug string, details Structure) (result Message) {
-	iv, err := _I.Get(526, "Message", "new_info_with_details")
+	iv, err := _I.Get(526, "Message", "new_info_with_details", 195, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13465,7 +13465,7 @@ func NewMessageInfoWithDetails(src IObject, error g.Error, debug string, details
 // [ result ] trans: everything
 //
 func NewMessageLatency(src IObject) (result Message) {
-	iv, err := _I.Get(527, "Message", "new_latency")
+	iv, err := _I.Get(527, "Message", "new_latency", 195, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13491,7 +13491,7 @@ func NewMessageLatency(src IObject) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageNeedContext(src IObject, context_type string) (result Message) {
-	iv, err := _I.Get(528, "Message", "new_need_context")
+	iv, err := _I.Get(528, "Message", "new_need_context", 195, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13520,7 +13520,7 @@ func NewMessageNeedContext(src IObject, context_type string) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageNewClock(src IObject, clock IClock) (result Message) {
-	iv, err := _I.Get(529, "Message", "new_new_clock")
+	iv, err := _I.Get(529, "Message", "new_new_clock", 195, 19, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13555,7 +13555,7 @@ func NewMessageNewClock(src IObject, clock IClock) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageProgress(src IObject, type1 ProgressTypeEnum, code string, text string) (result Message) {
-	iv, err := _I.Get(530, "Message", "new_progress")
+	iv, err := _I.Get(530, "Message", "new_progress", 195, 20, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13590,7 +13590,7 @@ func NewMessageProgress(src IObject, type1 ProgressTypeEnum, code string, text s
 // [ result ] trans: everything
 //
 func NewMessagePropertyNotify(src IObject, property_name string, val g.Value) (result Message) {
-	iv, err := _I.Get(531, "Message", "new_property_notify")
+	iv, err := _I.Get(531, "Message", "new_property_notify", 195, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13628,7 +13628,7 @@ func NewMessagePropertyNotify(src IObject, property_name string, val g.Value) (r
 // [ result ] trans: everything
 //
 func NewMessageQos(src IObject, live bool, running_time uint64, stream_time uint64, timestamp uint64, duration uint64) (result Message) {
-	iv, err := _I.Get(532, "Message", "new_qos")
+	iv, err := _I.Get(532, "Message", "new_qos", 195, 22, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13663,7 +13663,7 @@ func NewMessageQos(src IObject, live bool, running_time uint64, stream_time uint
 // [ result ] trans: everything
 //
 func NewMessageRedirect(src IObject, location string, tag_list TagList, entry_struct Structure) (result Message) {
-	iv, err := _I.Get(533, "Message", "new_redirect")
+	iv, err := _I.Get(533, "Message", "new_redirect", 195, 23, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13694,7 +13694,7 @@ func NewMessageRedirect(src IObject, location string, tag_list TagList, entry_st
 // [ result ] trans: everything
 //
 func NewMessageRequestState(src IObject, state StateEnum) (result Message) {
-	iv, err := _I.Get(534, "Message", "new_request_state")
+	iv, err := _I.Get(534, "Message", "new_request_state", 195, 24, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13721,7 +13721,7 @@ func NewMessageRequestState(src IObject, state StateEnum) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageResetTime(src IObject, running_time uint64) (result Message) {
-	iv, err := _I.Get(535, "Message", "new_reset_time")
+	iv, err := _I.Get(535, "Message", "new_reset_time", 195, 25, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13750,7 +13750,7 @@ func NewMessageResetTime(src IObject, running_time uint64) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageSegmentDone(src IObject, format FormatEnum, position int64) (result Message) {
-	iv, err := _I.Get(536, "Message", "new_segment_done")
+	iv, err := _I.Get(536, "Message", "new_segment_done", 195, 26, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13780,7 +13780,7 @@ func NewMessageSegmentDone(src IObject, format FormatEnum, position int64) (resu
 // [ result ] trans: everything
 //
 func NewMessageSegmentStart(src IObject, format FormatEnum, position int64) (result Message) {
-	iv, err := _I.Get(537, "Message", "new_segment_start")
+	iv, err := _I.Get(537, "Message", "new_segment_start", 195, 27, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13812,7 +13812,7 @@ func NewMessageSegmentStart(src IObject, format FormatEnum, position int64) (res
 // [ result ] trans: everything
 //
 func NewMessageStateChanged(src IObject, oldstate StateEnum, newstate StateEnum, pending StateEnum) (result Message) {
-	iv, err := _I.Get(538, "Message", "new_state_changed")
+	iv, err := _I.Get(538, "Message", "new_state_changed", 195, 28, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13839,7 +13839,7 @@ func NewMessageStateChanged(src IObject, oldstate StateEnum, newstate StateEnum,
 // [ result ] trans: everything
 //
 func NewMessageStateDirty(src IObject) (result Message) {
-	iv, err := _I.Get(539, "Message", "new_state_dirty")
+	iv, err := _I.Get(539, "Message", "new_state_dirty", 195, 29, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13877,7 +13877,7 @@ func NewMessageStateDirty(src IObject) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageStepDone(src IObject, format FormatEnum, amount uint64, rate float64, flush bool, intermediate bool, duration uint64, eos bool) (result Message) {
-	iv, err := _I.Get(540, "Message", "new_step_done")
+	iv, err := _I.Get(540, "Message", "new_step_done", 195, 30, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13920,7 +13920,7 @@ func NewMessageStepDone(src IObject, format FormatEnum, amount uint64, rate floa
 // [ result ] trans: everything
 //
 func NewMessageStepStart(src IObject, active bool, format FormatEnum, amount uint64, rate float64, flush bool, intermediate bool) (result Message) {
-	iv, err := _I.Get(541, "Message", "new_step_start")
+	iv, err := _I.Get(541, "Message", "new_step_start", 195, 31, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13952,7 +13952,7 @@ func NewMessageStepStart(src IObject, active bool, format FormatEnum, amount uin
 // [ result ] trans: everything
 //
 func NewMessageStreamCollection(src IObject, collection IStreamCollection) (result Message) {
-	iv, err := _I.Get(542, "Message", "new_stream_collection")
+	iv, err := _I.Get(542, "Message", "new_stream_collection", 195, 32, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13981,7 +13981,7 @@ func NewMessageStreamCollection(src IObject, collection IStreamCollection) (resu
 // [ result ] trans: everything
 //
 func NewMessageStreamStart(src IObject) (result Message) {
-	iv, err := _I.Get(543, "Message", "new_stream_start")
+	iv, err := _I.Get(543, "Message", "new_stream_start", 195, 33, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14009,7 +14009,7 @@ func NewMessageStreamStart(src IObject) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageStreamStatus(src IObject, type1 StreamStatusTypeEnum, owner IElement) (result Message) {
-	iv, err := _I.Get(544, "Message", "new_stream_status")
+	iv, err := _I.Get(544, "Message", "new_stream_status", 195, 34, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14041,7 +14041,7 @@ func NewMessageStreamStatus(src IObject, type1 StreamStatusTypeEnum, owner IElem
 // [ result ] trans: everything
 //
 func NewMessageStreamsSelected(src IObject, collection IStreamCollection) (result Message) {
-	iv, err := _I.Get(545, "Message", "new_streams_selected")
+	iv, err := _I.Get(545, "Message", "new_streams_selected", 195, 35, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14076,7 +14076,7 @@ func NewMessageStreamsSelected(src IObject, collection IStreamCollection) (resul
 // [ result ] trans: everything
 //
 func NewMessageStructureChange(src IObject, type1 StructureChangeTypeEnum, owner IElement, busy bool) (result Message) {
-	iv, err := _I.Get(546, "Message", "new_structure_change")
+	iv, err := _I.Get(546, "Message", "new_structure_change", 195, 36, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14109,7 +14109,7 @@ func NewMessageStructureChange(src IObject, type1 StructureChangeTypeEnum, owner
 // [ result ] trans: everything
 //
 func NewMessageTag(src IObject, tag_list TagList) (result Message) {
-	iv, err := _I.Get(547, "Message", "new_tag")
+	iv, err := _I.Get(547, "Message", "new_tag", 195, 37, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14138,7 +14138,7 @@ func NewMessageTag(src IObject, tag_list TagList) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageToc(src IObject, toc Toc, updated bool) (result Message) {
-	iv, err := _I.Get(548, "Message", "new_toc")
+	iv, err := _I.Get(548, "Message", "new_toc", 195, 38, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14168,7 +14168,7 @@ func NewMessageToc(src IObject, toc Toc, updated bool) (result Message) {
 // [ result ] trans: everything
 //
 func NewMessageWarning(src IObject, error g.Error, debug string) (result Message) {
-	iv, err := _I.Get(549, "Message", "new_warning")
+	iv, err := _I.Get(549, "Message", "new_warning", 195, 39, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14202,7 +14202,7 @@ func NewMessageWarning(src IObject, error g.Error, debug string) (result Message
 // [ result ] trans: everything
 //
 func NewMessageWarningWithDetails(src IObject, error g.Error, debug string, details Structure) (result Message) {
-	iv, err := _I.Get(550, "Message", "new_warning_with_details")
+	iv, err := _I.Get(550, "Message", "new_warning_with_details", 195, 40, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14233,7 +14233,7 @@ func NewMessageWarningWithDetails(src IObject, error g.Error, debug string, deta
 // [ entry_struct ] trans: everything
 //
 func (v Message) AddRedirectEntry(location string, tag_list TagList, entry_struct Structure) {
-	iv, err := _I.Get(551, "Message", "add_redirect_entry")
+	iv, err := _I.Get(551, "Message", "add_redirect_entry", 195, 41, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14253,7 +14253,7 @@ func (v Message) AddRedirectEntry(location string, tag_list TagList, entry_struc
 // [ result ] trans: nothing
 //
 func (v Message) GetNumRedirectEntries() (result uint64) {
-	iv, err := _I.Get(552, "Message", "get_num_redirect_entries")
+	iv, err := _I.Get(552, "Message", "get_num_redirect_entries", 195, 42, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14271,7 +14271,7 @@ func (v Message) GetNumRedirectEntries() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Message) GetSeqnum() (result uint32) {
-	iv, err := _I.Get(553, "Message", "get_seqnum")
+	iv, err := _I.Get(553, "Message", "get_seqnum", 195, 43, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14289,7 +14289,7 @@ func (v Message) GetSeqnum() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Message) GetStreamStatusObject() (result g.Value) {
-	iv, err := _I.Get(554, "Message", "get_stream_status_object")
+	iv, err := _I.Get(554, "Message", "get_stream_status_object", 195, 44, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14307,7 +14307,7 @@ func (v Message) GetStreamStatusObject() (result g.Value) {
 // [ result ] trans: nothing
 //
 func (v Message) GetStructure() (result Structure) {
-	iv, err := _I.Get(555, "Message", "get_structure")
+	iv, err := _I.Get(555, "Message", "get_structure", 195, 45, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14327,7 +14327,7 @@ func (v Message) GetStructure() (result Structure) {
 // [ result ] trans: nothing
 //
 func (v Message) HasName(name string) (result bool) {
-	iv, err := _I.Get(556, "Message", "has_name")
+	iv, err := _I.Get(556, "Message", "has_name", 195, 46, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14348,7 +14348,7 @@ func (v Message) HasName(name string) (result bool) {
 // [ running_time ] trans: everything, dir: out
 //
 func (v Message) ParseAsyncDone() (running_time uint64) {
-	iv, err := _I.Get(557, "Message", "parse_async_done")
+	iv, err := _I.Get(557, "Message", "parse_async_done", 195, 47, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14367,7 +14367,7 @@ func (v Message) ParseAsyncDone() (running_time uint64) {
 // [ percent ] trans: everything, dir: out
 //
 func (v Message) ParseBuffering() (percent int32) {
-	iv, err := _I.Get(558, "Message", "parse_buffering")
+	iv, err := _I.Get(558, "Message", "parse_buffering", 195, 48, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14392,7 +14392,7 @@ func (v Message) ParseBuffering() (percent int32) {
 // [ buffering_left ] trans: everything, dir: out
 //
 func (v Message) ParseBufferingStats() (mode BufferingModeEnum, avg_in int32, avg_out int32, buffering_left int64) {
-	iv, err := _I.Get(559, "Message", "parse_buffering_stats")
+	iv, err := _I.Get(559, "Message", "parse_buffering_stats", 195, 49, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14417,7 +14417,7 @@ func (v Message) ParseBufferingStats() (mode BufferingModeEnum, avg_in int32, av
 // [ clock ] trans: nothing, dir: out
 //
 func (v Message) ParseClockLost() (clock Clock) {
-	iv, err := _I.Get(560, "Message", "parse_clock_lost")
+	iv, err := _I.Get(560, "Message", "parse_clock_lost", 195, 50, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14438,7 +14438,7 @@ func (v Message) ParseClockLost() (clock Clock) {
 // [ ready ] trans: everything, dir: out
 //
 func (v Message) ParseClockProvide() (clock Clock, ready bool) {
-	iv, err := _I.Get(561, "Message", "parse_clock_provide")
+	iv, err := _I.Get(561, "Message", "parse_clock_provide", 195, 51, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14461,7 +14461,7 @@ func (v Message) ParseClockProvide() (clock Clock, ready bool) {
 // [ result ] trans: nothing
 //
 func (v Message) ParseContextType() (result bool, context_type string) {
-	iv, err := _I.Get(562, "Message", "parse_context_type")
+	iv, err := _I.Get(562, "Message", "parse_context_type", 195, 52, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14482,7 +14482,7 @@ func (v Message) ParseContextType() (result bool, context_type string) {
 // [ device ] trans: everything, dir: out
 //
 func (v Message) ParseDeviceAdded() (device Device) {
-	iv, err := _I.Get(563, "Message", "parse_device_added")
+	iv, err := _I.Get(563, "Message", "parse_device_added", 195, 53, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14501,7 +14501,7 @@ func (v Message) ParseDeviceAdded() (device Device) {
 // [ device ] trans: everything, dir: out
 //
 func (v Message) ParseDeviceRemoved() (device Device) {
-	iv, err := _I.Get(564, "Message", "parse_device_removed")
+	iv, err := _I.Get(564, "Message", "parse_device_removed", 195, 54, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14522,7 +14522,7 @@ func (v Message) ParseDeviceRemoved() (device Device) {
 // [ debug ] trans: everything, dir: out
 //
 func (v Message) ParseError() (gerror g.Error, debug string) {
-	iv, err := _I.Get(565, "Message", "parse_error")
+	iv, err := _I.Get(565, "Message", "parse_error", 195, 55, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14543,7 +14543,7 @@ func (v Message) ParseError() (gerror g.Error, debug string) {
 // [ structure ] trans: nothing, dir: out
 //
 func (v Message) ParseErrorDetails() (structure Structure) {
-	iv, err := _I.Get(566, "Message", "parse_error_details")
+	iv, err := _I.Get(566, "Message", "parse_error_details", 195, 56, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14564,7 +14564,7 @@ func (v Message) ParseErrorDetails() (structure Structure) {
 // [ result ] trans: nothing
 //
 func (v Message) ParseGroupId() (result bool, group_id uint32) {
-	iv, err := _I.Get(567, "Message", "parse_group_id")
+	iv, err := _I.Get(567, "Message", "parse_group_id", 195, 57, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14585,7 +14585,7 @@ func (v Message) ParseGroupId() (result bool, group_id uint32) {
 // [ context ] trans: everything, dir: out
 //
 func (v Message) ParseHaveContext() (context Context) {
-	iv, err := _I.Get(568, "Message", "parse_have_context")
+	iv, err := _I.Get(568, "Message", "parse_have_context", 195, 58, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14606,7 +14606,7 @@ func (v Message) ParseHaveContext() (context Context) {
 // [ debug ] trans: everything, dir: out
 //
 func (v Message) ParseInfo() (gerror g.Error, debug string) {
-	iv, err := _I.Get(569, "Message", "parse_info")
+	iv, err := _I.Get(569, "Message", "parse_info", 195, 59, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14627,7 +14627,7 @@ func (v Message) ParseInfo() (gerror g.Error, debug string) {
 // [ structure ] trans: nothing, dir: out
 //
 func (v Message) ParseInfoDetails() (structure Structure) {
-	iv, err := _I.Get(570, "Message", "parse_info_details")
+	iv, err := _I.Get(570, "Message", "parse_info_details", 195, 60, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14646,7 +14646,7 @@ func (v Message) ParseInfoDetails() (structure Structure) {
 // [ clock ] trans: nothing, dir: out
 //
 func (v Message) ParseNewClock() (clock Clock) {
-	iv, err := _I.Get(571, "Message", "parse_new_clock")
+	iv, err := _I.Get(571, "Message", "parse_new_clock", 195, 61, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14669,7 +14669,7 @@ func (v Message) ParseNewClock() (clock Clock) {
 // [ text ] trans: everything, dir: out
 //
 func (v Message) ParseProgress() (type1 ProgressTypeEnum, code string, text string) {
-	iv, err := _I.Get(572, "Message", "parse_progress")
+	iv, err := _I.Get(572, "Message", "parse_progress", 195, 62, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14696,7 +14696,7 @@ func (v Message) ParseProgress() (type1 ProgressTypeEnum, code string, text stri
 // [ property_value ] trans: nothing, dir: out
 //
 func (v Message) ParsePropertyNotify() (object Object, property_name string, property_value g.Value) {
-	iv, err := _I.Get(573, "Message", "parse_property_notify")
+	iv, err := _I.Get(573, "Message", "parse_property_notify", 195, 63, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14727,7 +14727,7 @@ func (v Message) ParsePropertyNotify() (object Object, property_name string, pro
 // [ duration ] trans: everything, dir: out
 //
 func (v Message) ParseQos() (live bool, running_time uint64, stream_time uint64, timestamp uint64, duration uint64) {
-	iv, err := _I.Get(574, "Message", "parse_qos")
+	iv, err := _I.Get(574, "Message", "parse_qos", 195, 64, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14758,7 +14758,7 @@ func (v Message) ParseQos() (live bool, running_time uint64, stream_time uint64,
 // [ dropped ] trans: everything, dir: out
 //
 func (v Message) ParseQosStats() (format FormatEnum, processed uint64, dropped uint64) {
-	iv, err := _I.Get(575, "Message", "parse_qos_stats")
+	iv, err := _I.Get(575, "Message", "parse_qos_stats", 195, 65, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14785,7 +14785,7 @@ func (v Message) ParseQosStats() (format FormatEnum, processed uint64, dropped u
 // [ quality ] trans: everything, dir: out
 //
 func (v Message) ParseQosValues() (jitter int64, proportion float64, quality int32) {
-	iv, err := _I.Get(576, "Message", "parse_qos_values")
+	iv, err := _I.Get(576, "Message", "parse_qos_values", 195, 66, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14814,7 +14814,7 @@ func (v Message) ParseQosValues() (jitter int64, proportion float64, quality int
 // [ entry_struct ] trans: nothing, dir: out
 //
 func (v Message) ParseRedirectEntry(entry_index uint64) (location string, tag_list TagList, entry_struct Structure) {
-	iv, err := _I.Get(577, "Message", "parse_redirect_entry")
+	iv, err := _I.Get(577, "Message", "parse_redirect_entry", 195, 67, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14838,7 +14838,7 @@ func (v Message) ParseRedirectEntry(entry_index uint64) (location string, tag_li
 // [ state ] trans: everything, dir: out
 //
 func (v Message) ParseRequestState() (state StateEnum) {
-	iv, err := _I.Get(578, "Message", "parse_request_state")
+	iv, err := _I.Get(578, "Message", "parse_request_state", 195, 68, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14857,7 +14857,7 @@ func (v Message) ParseRequestState() (state StateEnum) {
 // [ running_time ] trans: everything, dir: out
 //
 func (v Message) ParseResetTime() (running_time uint64) {
-	iv, err := _I.Get(579, "Message", "parse_reset_time")
+	iv, err := _I.Get(579, "Message", "parse_reset_time", 195, 69, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14878,7 +14878,7 @@ func (v Message) ParseResetTime() (running_time uint64) {
 // [ position ] trans: everything, dir: out
 //
 func (v Message) ParseSegmentDone() (format FormatEnum, position int64) {
-	iv, err := _I.Get(580, "Message", "parse_segment_done")
+	iv, err := _I.Get(580, "Message", "parse_segment_done", 195, 70, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14901,7 +14901,7 @@ func (v Message) ParseSegmentDone() (format FormatEnum, position int64) {
 // [ position ] trans: everything, dir: out
 //
 func (v Message) ParseSegmentStart() (format FormatEnum, position int64) {
-	iv, err := _I.Get(581, "Message", "parse_segment_start")
+	iv, err := _I.Get(581, "Message", "parse_segment_start", 195, 71, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14926,7 +14926,7 @@ func (v Message) ParseSegmentStart() (format FormatEnum, position int64) {
 // [ pending ] trans: everything, dir: out
 //
 func (v Message) ParseStateChanged() (oldstate StateEnum, newstate StateEnum, pending StateEnum) {
-	iv, err := _I.Get(582, "Message", "parse_state_changed")
+	iv, err := _I.Get(582, "Message", "parse_state_changed", 195, 72, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14961,7 +14961,7 @@ func (v Message) ParseStateChanged() (oldstate StateEnum, newstate StateEnum, pe
 // [ eos ] trans: everything, dir: out
 //
 func (v Message) ParseStepDone() (format FormatEnum, amount uint64, rate float64, flush bool, intermediate bool, duration uint64, eos bool) {
-	iv, err := _I.Get(583, "Message", "parse_step_done")
+	iv, err := _I.Get(583, "Message", "parse_step_done", 195, 73, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15002,7 +15002,7 @@ func (v Message) ParseStepDone() (format FormatEnum, amount uint64, rate float64
 // [ intermediate ] trans: everything, dir: out
 //
 func (v Message) ParseStepStart() (active bool, format FormatEnum, amount uint64, rate float64, flush bool, intermediate bool) {
-	iv, err := _I.Get(584, "Message", "parse_step_start")
+	iv, err := _I.Get(584, "Message", "parse_step_start", 195, 74, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15031,7 +15031,7 @@ func (v Message) ParseStepStart() (active bool, format FormatEnum, amount uint64
 // [ collection ] trans: everything, dir: out
 //
 func (v Message) ParseStreamCollection() (collection StreamCollection) {
-	iv, err := _I.Get(585, "Message", "parse_stream_collection")
+	iv, err := _I.Get(585, "Message", "parse_stream_collection", 195, 75, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15052,7 +15052,7 @@ func (v Message) ParseStreamCollection() (collection StreamCollection) {
 // [ owner ] trans: nothing, dir: out
 //
 func (v Message) ParseStreamStatus() (type1 StreamStatusTypeEnum, owner Element) {
-	iv, err := _I.Get(586, "Message", "parse_stream_status")
+	iv, err := _I.Get(586, "Message", "parse_stream_status", 195, 76, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15073,7 +15073,7 @@ func (v Message) ParseStreamStatus() (type1 StreamStatusTypeEnum, owner Element)
 // [ collection ] trans: everything, dir: out
 //
 func (v Message) ParseStreamsSelected() (collection StreamCollection) {
-	iv, err := _I.Get(587, "Message", "parse_streams_selected")
+	iv, err := _I.Get(587, "Message", "parse_streams_selected", 195, 77, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15096,7 +15096,7 @@ func (v Message) ParseStreamsSelected() (collection StreamCollection) {
 // [ busy ] trans: everything, dir: out
 //
 func (v Message) ParseStructureChange() (type1 StructureChangeTypeEnum, owner Element, busy bool) {
-	iv, err := _I.Get(588, "Message", "parse_structure_change")
+	iv, err := _I.Get(588, "Message", "parse_structure_change", 195, 78, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15119,7 +15119,7 @@ func (v Message) ParseStructureChange() (type1 StructureChangeTypeEnum, owner El
 // [ tag_list ] trans: everything, dir: out
 //
 func (v Message) ParseTag() (tag_list TagList) {
-	iv, err := _I.Get(589, "Message", "parse_tag")
+	iv, err := _I.Get(589, "Message", "parse_tag", 195, 79, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15140,7 +15140,7 @@ func (v Message) ParseTag() (tag_list TagList) {
 // [ updated ] trans: everything, dir: out
 //
 func (v Message) ParseToc() (toc Toc, updated bool) {
-	iv, err := _I.Get(590, "Message", "parse_toc")
+	iv, err := _I.Get(590, "Message", "parse_toc", 195, 80, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15163,7 +15163,7 @@ func (v Message) ParseToc() (toc Toc, updated bool) {
 // [ debug ] trans: everything, dir: out
 //
 func (v Message) ParseWarning() (gerror g.Error, debug string) {
-	iv, err := _I.Get(591, "Message", "parse_warning")
+	iv, err := _I.Get(591, "Message", "parse_warning", 195, 81, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15184,7 +15184,7 @@ func (v Message) ParseWarning() (gerror g.Error, debug string) {
 // [ structure ] trans: nothing, dir: out
 //
 func (v Message) ParseWarningDetails() (structure Structure) {
-	iv, err := _I.Get(592, "Message", "parse_warning_details")
+	iv, err := _I.Get(592, "Message", "parse_warning_details", 195, 82, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15209,7 +15209,7 @@ func (v Message) ParseWarningDetails() (structure Structure) {
 // [ buffering_left ] trans: nothing
 //
 func (v Message) SetBufferingStats(mode BufferingModeEnum, avg_in int32, avg_out int32, buffering_left int64) {
-	iv, err := _I.Get(593, "Message", "set_buffering_stats")
+	iv, err := _I.Get(593, "Message", "set_buffering_stats", 195, 83, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15228,7 +15228,7 @@ func (v Message) SetBufferingStats(mode BufferingModeEnum, avg_in int32, avg_out
 // [ group_id ] trans: nothing
 //
 func (v Message) SetGroupId(group_id uint32) {
-	iv, err := _I.Get(594, "Message", "set_group_id")
+	iv, err := _I.Get(594, "Message", "set_group_id", 195, 84, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15248,7 +15248,7 @@ func (v Message) SetGroupId(group_id uint32) {
 // [ dropped ] trans: nothing
 //
 func (v Message) SetQosStats(format FormatEnum, processed uint64, dropped uint64) {
-	iv, err := _I.Get(595, "Message", "set_qos_stats")
+	iv, err := _I.Get(595, "Message", "set_qos_stats", 195, 85, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15270,7 +15270,7 @@ func (v Message) SetQosStats(format FormatEnum, processed uint64, dropped uint64
 // [ quality ] trans: nothing
 //
 func (v Message) SetQosValues(jitter int64, proportion float64, quality int32) {
-	iv, err := _I.Get(596, "Message", "set_qos_values")
+	iv, err := _I.Get(596, "Message", "set_qos_values", 195, 86, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15288,7 +15288,7 @@ func (v Message) SetQosValues(jitter int64, proportion float64, quality int32) {
 // [ seqnum ] trans: nothing
 //
 func (v Message) SetSeqnum(seqnum uint32) {
-	iv, err := _I.Get(597, "Message", "set_seqnum")
+	iv, err := _I.Get(597, "Message", "set_seqnum", 195, 87, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15304,7 +15304,7 @@ func (v Message) SetSeqnum(seqnum uint32) {
 // [ object ] trans: nothing
 //
 func (v Message) SetStreamStatusObject(object g.Value) {
-	iv, err := _I.Get(598, "Message", "set_stream_status_object")
+	iv, err := _I.Get(598, "Message", "set_stream_status_object", 195, 88, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15320,7 +15320,7 @@ func (v Message) SetStreamStatusObject(object g.Value) {
 // [ stream ] trans: nothing
 //
 func (v Message) StreamsSelectedAdd(stream IStream) {
-	iv, err := _I.Get(599, "Message", "streams_selected_add")
+	iv, err := _I.Get(599, "Message", "streams_selected_add", 195, 89, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15340,7 +15340,7 @@ func (v Message) StreamsSelectedAdd(stream IStream) {
 // [ result ] trans: nothing
 //
 func (v Message) StreamsSelectedGetSize() (result uint32) {
-	iv, err := _I.Get(600, "Message", "streams_selected_get_size")
+	iv, err := _I.Get(600, "Message", "streams_selected_get_size", 195, 90, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15360,7 +15360,7 @@ func (v Message) StreamsSelectedGetSize() (result uint32) {
 // [ result ] trans: everything
 //
 func (v Message) StreamsSelectedGetStream(idx uint32) (result Stream) {
-	iv, err := _I.Get(601, "Message", "streams_selected_get_stream")
+	iv, err := _I.Get(601, "Message", "streams_selected_get_stream", 195, 91, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15379,7 +15379,7 @@ func (v Message) StreamsSelectedGetStream(idx uint32) (result Stream) {
 // [ result ] trans: nothing
 //
 func (v Message) WritableStructure() (result Structure) {
-	iv, err := _I.Get(602, "Message", "writable_structure")
+	iv, err := _I.Get(602, "Message", "writable_structure", 195, 92, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15462,7 +15462,7 @@ func MetaGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func MetaApiTypeGetTags1(api gi.GType) (result gi.CStrArray) {
-	iv, err := _I.Get(603, "Meta", "api_type_get_tags")
+	iv, err := _I.Get(603, "Meta", "api_type_get_tags", 197, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15485,7 +15485,7 @@ func MetaApiTypeGetTags1(api gi.GType) (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func MetaApiTypeHasTag1(api gi.GType, tag uint32) (result bool) {
-	iv, err := _I.Get(604, "Meta", "api_type_has_tag")
+	iv, err := _I.Get(604, "Meta", "api_type_has_tag", 197, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15508,7 +15508,7 @@ func MetaApiTypeHasTag1(api gi.GType, tag uint32) (result bool) {
 // [ result ] trans: nothing
 //
 func MetaApiTypeRegister1(api string, tags gi.CStrArray) (result gi.GType) {
-	iv, err := _I.Get(605, "Meta", "api_type_register")
+	iv, err := _I.Get(605, "Meta", "api_type_register", 197, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15531,7 +15531,7 @@ func MetaApiTypeRegister1(api string, tags gi.CStrArray) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func MetaGetInfo1(impl string) (result MetaInfo) {
-	iv, err := _I.Get(606, "Meta", "get_info")
+	iv, err := _I.Get(606, "Meta", "get_info", 197, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15563,7 +15563,7 @@ func MetaGetInfo1(impl string) (result MetaInfo) {
 // [ result ] trans: nothing
 //
 func MetaRegister1(api gi.GType, impl string, size uint64, init_func int /*TODO_TYPE CALLBACK*/, free_func int /*TODO_TYPE CALLBACK*/, transform_func int /*TODO_TYPE CALLBACK*/) (result MetaInfo) {
-	iv, err := _I.Get(607, "Meta", "register")
+	iv, err := _I.Get(607, "Meta", "register", 197, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15688,7 +15688,7 @@ func MiniObjectGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v MiniObject) GetQdata(quark uint32) (result unsafe.Pointer) {
-	iv, err := _I.Get(608, "MiniObject", "get_qdata")
+	iv, err := _I.Get(608, "MiniObject", "get_qdata", 204, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15707,7 +15707,7 @@ func (v MiniObject) GetQdata(quark uint32) (result unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func (v MiniObject) IsWritable() (result bool) {
-	iv, err := _I.Get(609, "MiniObject", "is_writable")
+	iv, err := _I.Get(609, "MiniObject", "is_writable", 204, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15727,7 +15727,7 @@ func (v MiniObject) IsWritable() (result bool) {
 // [ result ] trans: nothing
 //
 func (v MiniObject) Lock(flags LockFlags) (result bool) {
-	iv, err := _I.Get(610, "MiniObject", "lock")
+	iv, err := _I.Get(610, "MiniObject", "lock", 204, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15750,7 +15750,7 @@ func (v MiniObject) Lock(flags LockFlags) (result bool) {
 // [ destroy ] trans: nothing
 //
 func (v MiniObject) SetQdata(quark uint32, data unsafe.Pointer, destroy int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(611, "MiniObject", "set_qdata")
+	iv, err := _I.Get(611, "MiniObject", "set_qdata", 204, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15770,7 +15770,7 @@ func (v MiniObject) SetQdata(quark uint32, data unsafe.Pointer, destroy int /*TO
 // [ result ] trans: everything
 //
 func (v MiniObject) StealQdata(quark uint32) (result unsafe.Pointer) {
-	iv, err := _I.Get(612, "MiniObject", "steal_qdata")
+	iv, err := _I.Get(612, "MiniObject", "steal_qdata", 204, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15789,7 +15789,7 @@ func (v MiniObject) StealQdata(quark uint32) (result unsafe.Pointer) {
 // [ flags ] trans: nothing
 //
 func (v MiniObject) Unlock(flags LockFlags) {
-	iv, err := _I.Get(613, "MiniObject", "unlock")
+	iv, err := _I.Get(613, "MiniObject", "unlock", 204, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15807,7 +15807,7 @@ func (v MiniObject) Unlock(flags LockFlags) {
 // [ result ] trans: nothing
 //
 func (v MiniObject) Replace(newdata MiniObject) (result bool) {
-	iv, err := _I.Get(614, "MiniObject", "replace")
+	iv, err := _I.Get(614, "MiniObject", "replace", 204, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15828,7 +15828,7 @@ func (v MiniObject) Replace(newdata MiniObject) (result bool) {
 // [ result ] trans: nothing
 //
 func (v MiniObject) Take(newdata MiniObject) (result bool) {
-	iv, err := _I.Get(615, "MiniObject", "take")
+	iv, err := _I.Get(615, "MiniObject", "take", 204, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15924,7 +15924,7 @@ func ObjectGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func ObjectCheckUniqueness1(list g.List, name string) (result bool) {
-	iv, err := _I.Get(616, "Object", "check_uniqueness")
+	iv, err := _I.Get(616, "Object", "check_uniqueness", 210, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15949,7 +15949,7 @@ func ObjectCheckUniqueness1(list g.List, name string) (result bool) {
 // [ excluded_props ] trans: nothing
 //
 func (v Object) DefaultDeepNotify(orig IObject, pspec g.IParamSpec, excluded_props gi.CStrArray) {
-	iv, err := _I.Get(617, "Object", "default_deep_notify")
+	iv, err := _I.Get(617, "Object", "default_deep_notify", 210, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -15977,7 +15977,7 @@ func (v Object) DefaultDeepNotify(orig IObject, pspec g.IParamSpec, excluded_pro
 // [ result ] trans: nothing
 //
 func (v Object) Replace(newobj IObject) (result bool) {
-	iv, err := _I.Get(618, "Object", "replace")
+	iv, err := _I.Get(618, "Object", "replace", 210, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16002,7 +16002,7 @@ func (v Object) Replace(newobj IObject) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Object) AddControlBinding(binding IControlBinding) (result bool) {
-	iv, err := _I.Get(619, "Object", "add_control_binding")
+	iv, err := _I.Get(619, "Object", "add_control_binding", 210, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16027,7 +16027,7 @@ func (v Object) AddControlBinding(binding IControlBinding) (result bool) {
 // [ debug ] trans: nothing
 //
 func (v Object) DefaultError(error g.Error, debug string) {
-	iv, err := _I.Get(620, "Object", "default_error")
+	iv, err := _I.Get(620, "Object", "default_error", 210, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16048,7 +16048,7 @@ func (v Object) DefaultError(error g.Error, debug string) {
 // [ result ] trans: everything
 //
 func (v Object) GetControlBinding(property_name string) (result ControlBinding) {
-	iv, err := _I.Get(621, "Object", "get_control_binding")
+	iv, err := _I.Get(621, "Object", "get_control_binding", 210, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16069,7 +16069,7 @@ func (v Object) GetControlBinding(property_name string) (result ControlBinding) 
 // [ result ] trans: nothing
 //
 func (v Object) GetControlRate() (result uint64) {
-	iv, err := _I.Get(622, "Object", "get_control_rate")
+	iv, err := _I.Get(622, "Object", "get_control_rate", 210, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16097,7 +16097,7 @@ func (v Object) GetControlRate() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Object) GetGValueArray(property_name string, timestamp uint64, interval uint64, n_values uint32, values unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(623, "Object", "get_g_value_array")
+	iv, err := _I.Get(623, "Object", "get_g_value_array", 210, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16122,7 +16122,7 @@ func (v Object) GetGValueArray(property_name string, timestamp uint64, interval 
 // [ result ] trans: everything
 //
 func (v Object) GetName() (result string) {
-	iv, err := _I.Get(624, "Object", "get_name")
+	iv, err := _I.Get(624, "Object", "get_name", 210, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16140,7 +16140,7 @@ func (v Object) GetName() (result string) {
 // [ result ] trans: everything
 //
 func (v Object) GetParent() (result Object) {
-	iv, err := _I.Get(625, "Object", "get_parent")
+	iv, err := _I.Get(625, "Object", "get_parent", 210, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16158,7 +16158,7 @@ func (v Object) GetParent() (result Object) {
 // [ result ] trans: everything
 //
 func (v Object) GetPathString() (result string) {
-	iv, err := _I.Get(626, "Object", "get_path_string")
+	iv, err := _I.Get(626, "Object", "get_path_string", 210, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16180,7 +16180,7 @@ func (v Object) GetPathString() (result string) {
 // [ result ] trans: everything
 //
 func (v Object) GetValue(property_name string, timestamp uint64) (result g.Value) {
-	iv, err := _I.Get(627, "Object", "get_value")
+	iv, err := _I.Get(627, "Object", "get_value", 210, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16202,7 +16202,7 @@ func (v Object) GetValue(property_name string, timestamp uint64) (result g.Value
 // [ result ] trans: nothing
 //
 func (v Object) HasActiveControlBindings() (result bool) {
-	iv, err := _I.Get(628, "Object", "has_active_control_bindings")
+	iv, err := _I.Get(628, "Object", "has_active_control_bindings", 210, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16224,7 +16224,7 @@ func (v Object) HasActiveControlBindings() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Object) HasAncestor(ancestor IObject) (result bool) {
-	iv, err := _I.Get(629, "Object", "has_ancestor")
+	iv, err := _I.Get(629, "Object", "has_ancestor", 210, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16249,7 +16249,7 @@ func (v Object) HasAncestor(ancestor IObject) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Object) HasAsAncestor(ancestor IObject) (result bool) {
-	iv, err := _I.Get(630, "Object", "has_as_ancestor")
+	iv, err := _I.Get(630, "Object", "has_as_ancestor", 210, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16274,7 +16274,7 @@ func (v Object) HasAsAncestor(ancestor IObject) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Object) HasAsParent(parent IObject) (result bool) {
-	iv, err := _I.Get(631, "Object", "has_as_parent")
+	iv, err := _I.Get(631, "Object", "has_as_parent", 210, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16297,7 +16297,7 @@ func (v Object) HasAsParent(parent IObject) (result bool) {
 // [ result ] trans: everything
 //
 func (v Object) Ref() (result Object) {
-	iv, err := _I.Get(632, "Object", "ref")
+	iv, err := _I.Get(632, "Object", "ref", 210, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16317,7 +16317,7 @@ func (v Object) Ref() (result Object) {
 // [ result ] trans: nothing
 //
 func (v Object) RemoveControlBinding(binding IControlBinding) (result bool) {
-	iv, err := _I.Get(633, "Object", "remove_control_binding")
+	iv, err := _I.Get(633, "Object", "remove_control_binding", 210, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16342,7 +16342,7 @@ func (v Object) RemoveControlBinding(binding IControlBinding) (result bool) {
 // [ disabled ] trans: nothing
 //
 func (v Object) SetControlBindingDisabled(property_name string, disabled bool) {
-	iv, err := _I.Get(634, "Object", "set_control_binding_disabled")
+	iv, err := _I.Get(634, "Object", "set_control_binding_disabled", 210, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16361,7 +16361,7 @@ func (v Object) SetControlBindingDisabled(property_name string, disabled bool) {
 // [ disabled ] trans: nothing
 //
 func (v Object) SetControlBindingsDisabled(disabled bool) {
-	iv, err := _I.Get(635, "Object", "set_control_bindings_disabled")
+	iv, err := _I.Get(635, "Object", "set_control_bindings_disabled", 210, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16377,7 +16377,7 @@ func (v Object) SetControlBindingsDisabled(disabled bool) {
 // [ control_rate ] trans: nothing
 //
 func (v Object) SetControlRate(control_rate uint64) {
-	iv, err := _I.Get(636, "Object", "set_control_rate")
+	iv, err := _I.Get(636, "Object", "set_control_rate", 210, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16395,7 +16395,7 @@ func (v Object) SetControlRate(control_rate uint64) {
 // [ result ] trans: nothing
 //
 func (v Object) SetName(name string) (result bool) {
-	iv, err := _I.Get(637, "Object", "set_name")
+	iv, err := _I.Get(637, "Object", "set_name", 210, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16418,7 +16418,7 @@ func (v Object) SetName(name string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Object) SetParent(parent IObject) (result bool) {
-	iv, err := _I.Get(638, "Object", "set_parent")
+	iv, err := _I.Get(638, "Object", "set_parent", 210, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16441,7 +16441,7 @@ func (v Object) SetParent(parent IObject) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Object) SuggestNextSync() (result uint64) {
-	iv, err := _I.Get(639, "Object", "suggest_next_sync")
+	iv, err := _I.Get(639, "Object", "suggest_next_sync", 210, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16461,7 +16461,7 @@ func (v Object) SuggestNextSync() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Object) SyncValues(timestamp uint64) (result bool) {
-	iv, err := _I.Get(640, "Object", "sync_values")
+	iv, err := _I.Get(640, "Object", "sync_values", 210, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16478,7 +16478,7 @@ func (v Object) SyncValues(timestamp uint64) (result bool) {
 // gst_object_unparent
 //
 func (v Object) Unparent() {
-	iv, err := _I.Get(641, "Object", "unparent")
+	iv, err := _I.Get(641, "Object", "unparent", 210, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16491,7 +16491,7 @@ func (v Object) Unparent() {
 // gst_object_unref
 //
 func (v Object) Unref() {
-	iv, err := _I.Get(642, "Object", "unref")
+	iv, err := _I.Get(642, "Object", "unref", 210, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16540,7 +16540,7 @@ func PadGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewPad(name string, direction PadDirectionEnum) (result Pad) {
-	iv, err := _I.Get(643, "Pad", "new")
+	iv, err := _I.Get(643, "Pad", "new", 220, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16565,7 +16565,7 @@ func NewPad(name string, direction PadDirectionEnum) (result Pad) {
 // [ result ] trans: nothing
 //
 func NewPadFromStaticTemplate(templ StaticPadTemplate, name string) (result Pad) {
-	iv, err := _I.Get(644, "Pad", "new_from_static_template")
+	iv, err := _I.Get(644, "Pad", "new_from_static_template", 220, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16590,7 +16590,7 @@ func NewPadFromStaticTemplate(templ StaticPadTemplate, name string) (result Pad)
 // [ result ] trans: nothing
 //
 func NewPadFromTemplate(templ IPadTemplate, name string) (result Pad) {
-	iv, err := _I.Get(645, "Pad", "new_from_template")
+	iv, err := _I.Get(645, "Pad", "new_from_template", 220, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16617,7 +16617,7 @@ func NewPadFromTemplate(templ IPadTemplate, name string) (result Pad) {
 // [ result ] trans: nothing
 //
 func PadLinkGetName1(ret PadLinkReturnEnum) (result string) {
-	iv, err := _I.Get(646, "Pad", "link_get_name")
+	iv, err := _I.Get(646, "Pad", "link_get_name", 220, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16639,7 +16639,7 @@ func PadLinkGetName1(ret PadLinkReturnEnum) (result string) {
 // [ result ] trans: nothing
 //
 func (v Pad) ActivateMode(mode PadModeEnum, active bool) (result bool) {
-	iv, err := _I.Get(647, "Pad", "activate_mode")
+	iv, err := _I.Get(647, "Pad", "activate_mode", 220, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16667,7 +16667,7 @@ func (v Pad) ActivateMode(mode PadModeEnum, active bool) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) AddProbe(mask PadProbeTypeFlags, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, destroy_data int /*TODO_TYPE CALLBACK*/) (result uint64) {
-	iv, err := _I.Get(648, "Pad", "add_probe")
+	iv, err := _I.Get(648, "Pad", "add_probe", 220, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16691,7 +16691,7 @@ func (v Pad) AddProbe(mask PadProbeTypeFlags, callback int /*TODO_TYPE CALLBACK*
 // [ result ] trans: nothing
 //
 func (v Pad) CanLink(sinkpad IPad) (result bool) {
-	iv, err := _I.Get(649, "Pad", "can_link")
+	iv, err := _I.Get(649, "Pad", "can_link", 220, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16716,7 +16716,7 @@ func (v Pad) CanLink(sinkpad IPad) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) Chain(buffer Buffer) (result FlowReturnEnum) {
-	iv, err := _I.Get(650, "Pad", "chain")
+	iv, err := _I.Get(650, "Pad", "chain", 220, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16737,7 +16737,7 @@ func (v Pad) Chain(buffer Buffer) (result FlowReturnEnum) {
 // [ result ] trans: nothing
 //
 func (v Pad) ChainList(list BufferList) (result FlowReturnEnum) {
-	iv, err := _I.Get(651, "Pad", "chain_list")
+	iv, err := _I.Get(651, "Pad", "chain_list", 220, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16756,7 +16756,7 @@ func (v Pad) ChainList(list BufferList) (result FlowReturnEnum) {
 // [ result ] trans: nothing
 //
 func (v Pad) CheckReconfigure() (result bool) {
-	iv, err := _I.Get(652, "Pad", "check_reconfigure")
+	iv, err := _I.Get(652, "Pad", "check_reconfigure", 220, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16778,7 +16778,7 @@ func (v Pad) CheckReconfigure() (result bool) {
 // [ result ] trans: everything
 //
 func (v Pad) CreateStreamId(parent IElement, stream_id string) (result string) {
-	iv, err := _I.Get(653, "Pad", "create_stream_id")
+	iv, err := _I.Get(653, "Pad", "create_stream_id", 220, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16808,7 +16808,7 @@ func (v Pad) CreateStreamId(parent IElement, stream_id string) (result string) {
 // [ result ] trans: nothing
 //
 func (v Pad) EventDefault(parent IObject, event Event) (result bool) {
-	iv, err := _I.Get(654, "Pad", "event_default")
+	iv, err := _I.Get(654, "Pad", "event_default", 220, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16836,7 +16836,7 @@ func (v Pad) EventDefault(parent IObject, event Event) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) Forward(forward int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(655, "Pad", "forward")
+	iv, err := _I.Get(655, "Pad", "forward", 220, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16856,7 +16856,7 @@ func (v Pad) Forward(forward int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointe
 // [ result ] trans: everything
 //
 func (v Pad) GetAllowedCaps() (result Caps) {
-	iv, err := _I.Get(656, "Pad", "get_allowed_caps")
+	iv, err := _I.Get(656, "Pad", "get_allowed_caps", 220, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16874,7 +16874,7 @@ func (v Pad) GetAllowedCaps() (result Caps) {
 // [ result ] trans: everything
 //
 func (v Pad) GetCurrentCaps() (result Caps) {
-	iv, err := _I.Get(657, "Pad", "get_current_caps")
+	iv, err := _I.Get(657, "Pad", "get_current_caps", 220, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16892,7 +16892,7 @@ func (v Pad) GetCurrentCaps() (result Caps) {
 // [ result ] trans: nothing
 //
 func (v Pad) GetDirection() (result PadDirectionEnum) {
-	iv, err := _I.Get(658, "Pad", "get_direction")
+	iv, err := _I.Get(658, "Pad", "get_direction", 220, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16910,7 +16910,7 @@ func (v Pad) GetDirection() (result PadDirectionEnum) {
 // [ result ] trans: nothing
 //
 func (v Pad) GetElementPrivate() (result unsafe.Pointer) {
-	iv, err := _I.Get(659, "Pad", "get_element_private")
+	iv, err := _I.Get(659, "Pad", "get_element_private", 220, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16928,7 +16928,7 @@ func (v Pad) GetElementPrivate() (result unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func (v Pad) GetLastFlowReturn() (result FlowReturnEnum) {
-	iv, err := _I.Get(660, "Pad", "get_last_flow_return")
+	iv, err := _I.Get(660, "Pad", "get_last_flow_return", 220, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16946,7 +16946,7 @@ func (v Pad) GetLastFlowReturn() (result FlowReturnEnum) {
 // [ result ] trans: nothing
 //
 func (v Pad) GetOffset() (result int64) {
-	iv, err := _I.Get(661, "Pad", "get_offset")
+	iv, err := _I.Get(661, "Pad", "get_offset", 220, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16964,7 +16964,7 @@ func (v Pad) GetOffset() (result int64) {
 // [ result ] trans: everything
 //
 func (v Pad) GetPadTemplate() (result PadTemplate) {
-	iv, err := _I.Get(662, "Pad", "get_pad_template")
+	iv, err := _I.Get(662, "Pad", "get_pad_template", 220, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -16982,7 +16982,7 @@ func (v Pad) GetPadTemplate() (result PadTemplate) {
 // [ result ] trans: everything
 //
 func (v Pad) GetPadTemplateCaps() (result Caps) {
-	iv, err := _I.Get(663, "Pad", "get_pad_template_caps")
+	iv, err := _I.Get(663, "Pad", "get_pad_template_caps", 220, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17000,7 +17000,7 @@ func (v Pad) GetPadTemplateCaps() (result Caps) {
 // [ result ] trans: everything
 //
 func (v Pad) GetParentElement() (result Element) {
-	iv, err := _I.Get(664, "Pad", "get_parent_element")
+	iv, err := _I.Get(664, "Pad", "get_parent_element", 220, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17018,7 +17018,7 @@ func (v Pad) GetParentElement() (result Element) {
 // [ result ] trans: everything
 //
 func (v Pad) GetPeer() (result Pad) {
-	iv, err := _I.Get(665, "Pad", "get_peer")
+	iv, err := _I.Get(665, "Pad", "get_peer", 220, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17042,7 +17042,7 @@ func (v Pad) GetPeer() (result Pad) {
 // [ result ] trans: nothing
 //
 func (v Pad) GetRange(offset uint64, size uint32) (result FlowReturnEnum, buffer Buffer) {
-	iv, err := _I.Get(666, "Pad", "get_range")
+	iv, err := _I.Get(666, "Pad", "get_range", 220, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17069,7 +17069,7 @@ func (v Pad) GetRange(offset uint64, size uint32) (result FlowReturnEnum, buffer
 // [ result ] trans: everything
 //
 func (v Pad) GetStickyEvent(event_type EventTypeEnum, idx uint32) (result Event) {
-	iv, err := _I.Get(667, "Pad", "get_sticky_event")
+	iv, err := _I.Get(667, "Pad", "get_sticky_event", 220, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17089,7 +17089,7 @@ func (v Pad) GetStickyEvent(event_type EventTypeEnum, idx uint32) (result Event)
 // [ result ] trans: everything
 //
 func (v Pad) GetStream() (result Stream) {
-	iv, err := _I.Get(668, "Pad", "get_stream")
+	iv, err := _I.Get(668, "Pad", "get_stream", 220, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17107,7 +17107,7 @@ func (v Pad) GetStream() (result Stream) {
 // [ result ] trans: everything
 //
 func (v Pad) GetStreamId() (result string) {
-	iv, err := _I.Get(669, "Pad", "get_stream_id")
+	iv, err := _I.Get(669, "Pad", "get_stream_id", 220, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17125,7 +17125,7 @@ func (v Pad) GetStreamId() (result string) {
 // [ result ] trans: nothing
 //
 func (v Pad) GetTaskState() (result TaskStateEnum) {
-	iv, err := _I.Get(670, "Pad", "get_task_state")
+	iv, err := _I.Get(670, "Pad", "get_task_state", 220, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17143,7 +17143,7 @@ func (v Pad) GetTaskState() (result TaskStateEnum) {
 // [ result ] trans: nothing
 //
 func (v Pad) HasCurrentCaps() (result bool) {
-	iv, err := _I.Get(671, "Pad", "has_current_caps")
+	iv, err := _I.Get(671, "Pad", "has_current_caps", 220, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17161,7 +17161,7 @@ func (v Pad) HasCurrentCaps() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) IsActive() (result bool) {
-	iv, err := _I.Get(672, "Pad", "is_active")
+	iv, err := _I.Get(672, "Pad", "is_active", 220, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17179,7 +17179,7 @@ func (v Pad) IsActive() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) IsBlocked() (result bool) {
-	iv, err := _I.Get(673, "Pad", "is_blocked")
+	iv, err := _I.Get(673, "Pad", "is_blocked", 220, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17197,7 +17197,7 @@ func (v Pad) IsBlocked() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) IsBlocking() (result bool) {
-	iv, err := _I.Get(674, "Pad", "is_blocking")
+	iv, err := _I.Get(674, "Pad", "is_blocking", 220, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17215,7 +17215,7 @@ func (v Pad) IsBlocking() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) IsLinked() (result bool) {
-	iv, err := _I.Get(675, "Pad", "is_linked")
+	iv, err := _I.Get(675, "Pad", "is_linked", 220, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17233,7 +17233,7 @@ func (v Pad) IsLinked() (result bool) {
 // [ result ] trans: everything
 //
 func (v Pad) IterateInternalLinks() (result Iterator) {
-	iv, err := _I.Get(676, "Pad", "iterate_internal_links")
+	iv, err := _I.Get(676, "Pad", "iterate_internal_links", 220, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17253,7 +17253,7 @@ func (v Pad) IterateInternalLinks() (result Iterator) {
 // [ result ] trans: everything
 //
 func (v Pad) IterateInternalLinksDefault(parent IObject) (result Iterator) {
-	iv, err := _I.Get(677, "Pad", "iterate_internal_links_default")
+	iv, err := _I.Get(677, "Pad", "iterate_internal_links_default", 220, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17278,7 +17278,7 @@ func (v Pad) IterateInternalLinksDefault(parent IObject) (result Iterator) {
 // [ result ] trans: nothing
 //
 func (v Pad) Link(sinkpad IPad) (result PadLinkReturnEnum) {
-	iv, err := _I.Get(678, "Pad", "link")
+	iv, err := _I.Get(678, "Pad", "link", 220, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17305,7 +17305,7 @@ func (v Pad) Link(sinkpad IPad) (result PadLinkReturnEnum) {
 // [ result ] trans: nothing
 //
 func (v Pad) LinkFull(sinkpad IPad, flags PadLinkCheckFlags) (result PadLinkReturnEnum) {
-	iv, err := _I.Get(679, "Pad", "link_full")
+	iv, err := _I.Get(679, "Pad", "link_full", 220, 36, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17331,7 +17331,7 @@ func (v Pad) LinkFull(sinkpad IPad, flags PadLinkCheckFlags) (result PadLinkRetu
 // [ result ] trans: nothing
 //
 func (v Pad) LinkMaybeGhosting(sink IPad) (result bool) {
-	iv, err := _I.Get(680, "Pad", "link_maybe_ghosting")
+	iv, err := _I.Get(680, "Pad", "link_maybe_ghosting", 220, 37, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17358,7 +17358,7 @@ func (v Pad) LinkMaybeGhosting(sink IPad) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) LinkMaybeGhostingFull(sink IPad, flags PadLinkCheckFlags) (result bool) {
-	iv, err := _I.Get(681, "Pad", "link_maybe_ghosting_full")
+	iv, err := _I.Get(681, "Pad", "link_maybe_ghosting_full", 220, 38, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17380,7 +17380,7 @@ func (v Pad) LinkMaybeGhostingFull(sink IPad, flags PadLinkCheckFlags) (result b
 // gst_pad_mark_reconfigure
 //
 func (v Pad) MarkReconfigure() {
-	iv, err := _I.Get(682, "Pad", "mark_reconfigure")
+	iv, err := _I.Get(682, "Pad", "mark_reconfigure", 220, 39, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17395,7 +17395,7 @@ func (v Pad) MarkReconfigure() {
 // [ result ] trans: nothing
 //
 func (v Pad) NeedsReconfigure() (result bool) {
-	iv, err := _I.Get(683, "Pad", "needs_reconfigure")
+	iv, err := _I.Get(683, "Pad", "needs_reconfigure", 220, 40, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17413,7 +17413,7 @@ func (v Pad) NeedsReconfigure() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) PauseTask() (result bool) {
-	iv, err := _I.Get(684, "Pad", "pause_task")
+	iv, err := _I.Get(684, "Pad", "pause_task", 220, 41, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17433,7 +17433,7 @@ func (v Pad) PauseTask() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) PeerQuery(query Query) (result bool) {
-	iv, err := _I.Get(685, "Pad", "peer_query")
+	iv, err := _I.Get(685, "Pad", "peer_query", 220, 42, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17454,7 +17454,7 @@ func (v Pad) PeerQuery(query Query) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) PeerQueryAcceptCaps(caps Caps) (result bool) {
-	iv, err := _I.Get(686, "Pad", "peer_query_accept_caps")
+	iv, err := _I.Get(686, "Pad", "peer_query_accept_caps", 220, 43, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17475,7 +17475,7 @@ func (v Pad) PeerQueryAcceptCaps(caps Caps) (result bool) {
 // [ result ] trans: everything
 //
 func (v Pad) PeerQueryCaps(filter Caps) (result Caps) {
-	iv, err := _I.Get(687, "Pad", "peer_query_caps")
+	iv, err := _I.Get(687, "Pad", "peer_query_caps", 220, 44, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17502,7 +17502,7 @@ func (v Pad) PeerQueryCaps(filter Caps) (result Caps) {
 // [ result ] trans: nothing
 //
 func (v Pad) PeerQueryConvert(src_format FormatEnum, src_val int64, dest_format FormatEnum) (result bool, dest_val int64) {
-	iv, err := _I.Get(688, "Pad", "peer_query_convert")
+	iv, err := _I.Get(688, "Pad", "peer_query_convert", 220, 45, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17530,7 +17530,7 @@ func (v Pad) PeerQueryConvert(src_format FormatEnum, src_val int64, dest_format 
 // [ result ] trans: nothing
 //
 func (v Pad) PeerQueryDuration(format FormatEnum) (result bool, duration int64) {
-	iv, err := _I.Get(689, "Pad", "peer_query_duration")
+	iv, err := _I.Get(689, "Pad", "peer_query_duration", 220, 46, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17556,7 +17556,7 @@ func (v Pad) PeerQueryDuration(format FormatEnum) (result bool, duration int64) 
 // [ result ] trans: nothing
 //
 func (v Pad) PeerQueryPosition(format FormatEnum) (result bool, cur int64) {
-	iv, err := _I.Get(690, "Pad", "peer_query_position")
+	iv, err := _I.Get(690, "Pad", "peer_query_position", 220, 47, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17580,7 +17580,7 @@ func (v Pad) PeerQueryPosition(format FormatEnum) (result bool, cur int64) {
 // [ result ] trans: nothing
 //
 func (v Pad) ProxyQueryAcceptCaps(query Query) (result bool) {
-	iv, err := _I.Get(691, "Pad", "proxy_query_accept_caps")
+	iv, err := _I.Get(691, "Pad", "proxy_query_accept_caps", 220, 48, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17601,7 +17601,7 @@ func (v Pad) ProxyQueryAcceptCaps(query Query) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) ProxyQueryCaps(query Query) (result bool) {
-	iv, err := _I.Get(692, "Pad", "proxy_query_caps")
+	iv, err := _I.Get(692, "Pad", "proxy_query_caps", 220, 49, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17626,7 +17626,7 @@ func (v Pad) ProxyQueryCaps(query Query) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) PullRange(offset uint64, size uint32) (result FlowReturnEnum, buffer Buffer) {
-	iv, err := _I.Get(693, "Pad", "pull_range")
+	iv, err := _I.Get(693, "Pad", "pull_range", 220, 50, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17651,7 +17651,7 @@ func (v Pad) PullRange(offset uint64, size uint32) (result FlowReturnEnum, buffe
 // [ result ] trans: nothing
 //
 func (v Pad) Push(buffer Buffer) (result FlowReturnEnum) {
-	iv, err := _I.Get(694, "Pad", "push")
+	iv, err := _I.Get(694, "Pad", "push", 220, 51, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17672,7 +17672,7 @@ func (v Pad) Push(buffer Buffer) (result FlowReturnEnum) {
 // [ result ] trans: nothing
 //
 func (v Pad) PushEvent(event Event) (result bool) {
-	iv, err := _I.Get(695, "Pad", "push_event")
+	iv, err := _I.Get(695, "Pad", "push_event", 220, 52, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17693,7 +17693,7 @@ func (v Pad) PushEvent(event Event) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) PushList(list BufferList) (result FlowReturnEnum) {
-	iv, err := _I.Get(696, "Pad", "push_list")
+	iv, err := _I.Get(696, "Pad", "push_list", 220, 53, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17714,7 +17714,7 @@ func (v Pad) PushList(list BufferList) (result FlowReturnEnum) {
 // [ result ] trans: nothing
 //
 func (v Pad) QueryF(query Query) (result bool) {
-	iv, err := _I.Get(697, "Pad", "query")
+	iv, err := _I.Get(697, "Pad", "query", 220, 54, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17735,7 +17735,7 @@ func (v Pad) QueryF(query Query) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) QueryAcceptCaps(caps Caps) (result bool) {
-	iv, err := _I.Get(698, "Pad", "query_accept_caps")
+	iv, err := _I.Get(698, "Pad", "query_accept_caps", 220, 55, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17756,7 +17756,7 @@ func (v Pad) QueryAcceptCaps(caps Caps) (result bool) {
 // [ result ] trans: everything
 //
 func (v Pad) QueryCaps(filter Caps) (result Caps) {
-	iv, err := _I.Get(699, "Pad", "query_caps")
+	iv, err := _I.Get(699, "Pad", "query_caps", 220, 56, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17783,7 +17783,7 @@ func (v Pad) QueryCaps(filter Caps) (result Caps) {
 // [ result ] trans: nothing
 //
 func (v Pad) QueryConvert(src_format FormatEnum, src_val int64, dest_format FormatEnum) (result bool, dest_val int64) {
-	iv, err := _I.Get(700, "Pad", "query_convert")
+	iv, err := _I.Get(700, "Pad", "query_convert", 220, 57, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17811,7 +17811,7 @@ func (v Pad) QueryConvert(src_format FormatEnum, src_val int64, dest_format Form
 // [ result ] trans: nothing
 //
 func (v Pad) QueryDefault(parent IObject, query Query) (result bool) {
-	iv, err := _I.Get(701, "Pad", "query_default")
+	iv, err := _I.Get(701, "Pad", "query_default", 220, 58, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17839,7 +17839,7 @@ func (v Pad) QueryDefault(parent IObject, query Query) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) QueryDuration(format FormatEnum) (result bool, duration int64) {
-	iv, err := _I.Get(702, "Pad", "query_duration")
+	iv, err := _I.Get(702, "Pad", "query_duration", 220, 59, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17865,7 +17865,7 @@ func (v Pad) QueryDuration(format FormatEnum) (result bool, duration int64) {
 // [ result ] trans: nothing
 //
 func (v Pad) QueryPosition(format FormatEnum) (result bool, cur int64) {
-	iv, err := _I.Get(703, "Pad", "query_position")
+	iv, err := _I.Get(703, "Pad", "query_position", 220, 60, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17887,7 +17887,7 @@ func (v Pad) QueryPosition(format FormatEnum) (result bool, cur int64) {
 // [ id ] trans: nothing
 //
 func (v Pad) RemoveProbe(id uint64) {
-	iv, err := _I.Get(704, "Pad", "remove_probe")
+	iv, err := _I.Get(704, "Pad", "remove_probe", 220, 61, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17905,7 +17905,7 @@ func (v Pad) RemoveProbe(id uint64) {
 // [ result ] trans: nothing
 //
 func (v Pad) SendEvent(event Event) (result bool) {
-	iv, err := _I.Get(705, "Pad", "send_event")
+	iv, err := _I.Get(705, "Pad", "send_event", 220, 62, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17928,7 +17928,7 @@ func (v Pad) SendEvent(event Event) (result bool) {
 // [ notify ] trans: nothing
 //
 func (v Pad) SetActivateFunctionFull(activate int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(706, "Pad", "set_activate_function_full")
+	iv, err := _I.Get(706, "Pad", "set_activate_function_full", 220, 63, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17950,7 +17950,7 @@ func (v Pad) SetActivateFunctionFull(activate int /*TODO_TYPE CALLBACK*/, user_d
 // [ notify ] trans: nothing
 //
 func (v Pad) SetActivatemodeFunctionFull(activatemode int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(707, "Pad", "set_activatemode_function_full")
+	iv, err := _I.Get(707, "Pad", "set_activatemode_function_full", 220, 64, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17970,7 +17970,7 @@ func (v Pad) SetActivatemodeFunctionFull(activatemode int /*TODO_TYPE CALLBACK*/
 // [ result ] trans: nothing
 //
 func (v Pad) SetActive(active bool) (result bool) {
-	iv, err := _I.Get(708, "Pad", "set_active")
+	iv, err := _I.Get(708, "Pad", "set_active", 220, 65, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -17993,7 +17993,7 @@ func (v Pad) SetActive(active bool) (result bool) {
 // [ notify ] trans: nothing
 //
 func (v Pad) SetChainFunctionFull(chain int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(709, "Pad", "set_chain_function_full")
+	iv, err := _I.Get(709, "Pad", "set_chain_function_full", 220, 66, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18015,7 +18015,7 @@ func (v Pad) SetChainFunctionFull(chain int /*TODO_TYPE CALLBACK*/, user_data un
 // [ notify ] trans: nothing
 //
 func (v Pad) SetChainListFunctionFull(chainlist int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(710, "Pad", "set_chain_list_function_full")
+	iv, err := _I.Get(710, "Pad", "set_chain_list_function_full", 220, 67, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18033,7 +18033,7 @@ func (v Pad) SetChainListFunctionFull(chainlist int /*TODO_TYPE CALLBACK*/, user
 // [ priv ] trans: nothing
 //
 func (v Pad) SetElementPrivate(priv unsafe.Pointer) {
-	iv, err := _I.Get(711, "Pad", "set_element_private")
+	iv, err := _I.Get(711, "Pad", "set_element_private", 220, 68, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18053,7 +18053,7 @@ func (v Pad) SetElementPrivate(priv unsafe.Pointer) {
 // [ notify ] trans: nothing
 //
 func (v Pad) SetEventFullFunctionFull(event int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(712, "Pad", "set_event_full_function_full")
+	iv, err := _I.Get(712, "Pad", "set_event_full_function_full", 220, 69, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18075,7 +18075,7 @@ func (v Pad) SetEventFullFunctionFull(event int /*TODO_TYPE CALLBACK*/, user_dat
 // [ notify ] trans: nothing
 //
 func (v Pad) SetEventFunctionFull(event int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(713, "Pad", "set_event_function_full")
+	iv, err := _I.Get(713, "Pad", "set_event_function_full", 220, 70, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18097,7 +18097,7 @@ func (v Pad) SetEventFunctionFull(event int /*TODO_TYPE CALLBACK*/, user_data un
 // [ notify ] trans: nothing
 //
 func (v Pad) SetGetrangeFunctionFull(get int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(714, "Pad", "set_getrange_function_full")
+	iv, err := _I.Get(714, "Pad", "set_getrange_function_full", 220, 71, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18119,7 +18119,7 @@ func (v Pad) SetGetrangeFunctionFull(get int /*TODO_TYPE CALLBACK*/, user_data u
 // [ notify ] trans: nothing
 //
 func (v Pad) SetIterateInternalLinksFunctionFull(iterintlink int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(715, "Pad", "set_iterate_internal_links_function_full")
+	iv, err := _I.Get(715, "Pad", "set_iterate_internal_links_function_full", 220, 72, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18141,7 +18141,7 @@ func (v Pad) SetIterateInternalLinksFunctionFull(iterintlink int /*TODO_TYPE CAL
 // [ notify ] trans: nothing
 //
 func (v Pad) SetLinkFunctionFull(link int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(716, "Pad", "set_link_function_full")
+	iv, err := _I.Get(716, "Pad", "set_link_function_full", 220, 73, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18159,7 +18159,7 @@ func (v Pad) SetLinkFunctionFull(link int /*TODO_TYPE CALLBACK*/, user_data unsa
 // [ offset ] trans: nothing
 //
 func (v Pad) SetOffset(offset int64) {
-	iv, err := _I.Get(717, "Pad", "set_offset")
+	iv, err := _I.Get(717, "Pad", "set_offset", 220, 74, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18179,7 +18179,7 @@ func (v Pad) SetOffset(offset int64) {
 // [ notify ] trans: nothing
 //
 func (v Pad) SetQueryFunctionFull(query int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(718, "Pad", "set_query_function_full")
+	iv, err := _I.Get(718, "Pad", "set_query_function_full", 220, 75, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18201,7 +18201,7 @@ func (v Pad) SetQueryFunctionFull(query int /*TODO_TYPE CALLBACK*/, user_data un
 // [ notify ] trans: nothing
 //
 func (v Pad) SetUnlinkFunctionFull(unlink int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(719, "Pad", "set_unlink_function_full")
+	iv, err := _I.Get(719, "Pad", "set_unlink_function_full", 220, 76, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18225,7 +18225,7 @@ func (v Pad) SetUnlinkFunctionFull(unlink int /*TODO_TYPE CALLBACK*/, user_data 
 // [ result ] trans: nothing
 //
 func (v Pad) StartTask(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result bool) {
-	iv, err := _I.Get(720, "Pad", "start_task")
+	iv, err := _I.Get(720, "Pad", "start_task", 220, 77, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18248,7 +18248,7 @@ func (v Pad) StartTask(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointe
 // [ user_data ] trans: nothing
 //
 func (v Pad) StickyEventsForeach(foreach_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(721, "Pad", "sticky_events_foreach")
+	iv, err := _I.Get(721, "Pad", "sticky_events_foreach", 220, 78, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18265,7 +18265,7 @@ func (v Pad) StickyEventsForeach(foreach_func int /*TODO_TYPE CALLBACK*/, user_d
 // [ result ] trans: nothing
 //
 func (v Pad) StopTask() (result bool) {
-	iv, err := _I.Get(722, "Pad", "stop_task")
+	iv, err := _I.Get(722, "Pad", "stop_task", 220, 79, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18285,7 +18285,7 @@ func (v Pad) StopTask() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pad) StoreStickyEvent(event Event) (result FlowReturnEnum) {
-	iv, err := _I.Get(723, "Pad", "store_sticky_event")
+	iv, err := _I.Get(723, "Pad", "store_sticky_event", 220, 80, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18306,7 +18306,7 @@ func (v Pad) StoreStickyEvent(event Event) (result FlowReturnEnum) {
 // [ result ] trans: nothing
 //
 func (v Pad) Unlink(sinkpad IPad) (result bool) {
-	iv, err := _I.Get(724, "Pad", "unlink")
+	iv, err := _I.Get(724, "Pad", "unlink", 220, 81, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18327,7 +18327,7 @@ func (v Pad) Unlink(sinkpad IPad) (result bool) {
 // gst_pad_use_fixed_caps
 //
 func (v Pad) UseFixedCaps() {
-	iv, err := _I.Get(725, "Pad", "use_fixed_caps")
+	iv, err := _I.Get(725, "Pad", "use_fixed_caps", 220, 82, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18640,7 +18640,7 @@ func PadProbeInfoGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v PadProbeInfo) GetBuffer() (result Buffer) {
-	iv, err := _I.Get(726, "PadProbeInfo", "get_buffer")
+	iv, err := _I.Get(726, "PadProbeInfo", "get_buffer", 240, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18658,7 +18658,7 @@ func (v PadProbeInfo) GetBuffer() (result Buffer) {
 // [ result ] trans: nothing
 //
 func (v PadProbeInfo) GetBufferList() (result BufferList) {
-	iv, err := _I.Get(727, "PadProbeInfo", "get_buffer_list")
+	iv, err := _I.Get(727, "PadProbeInfo", "get_buffer_list", 240, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18676,7 +18676,7 @@ func (v PadProbeInfo) GetBufferList() (result BufferList) {
 // [ result ] trans: nothing
 //
 func (v PadProbeInfo) GetEvent() (result Event) {
-	iv, err := _I.Get(728, "PadProbeInfo", "get_event")
+	iv, err := _I.Get(728, "PadProbeInfo", "get_event", 240, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18694,7 +18694,7 @@ func (v PadProbeInfo) GetEvent() (result Event) {
 // [ result ] trans: nothing
 //
 func (v PadProbeInfo) GetQuery() (result Query) {
-	iv, err := _I.Get(729, "PadProbeInfo", "get_query")
+	iv, err := _I.Get(729, "PadProbeInfo", "get_query", 240, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18818,7 +18818,7 @@ func PadTemplateGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewPadTemplate(name_template string, direction PadDirectionEnum, presence PadPresenceEnum, caps Caps) (result PadTemplate) {
-	iv, err := _I.Get(730, "PadTemplate", "new")
+	iv, err := _I.Get(730, "PadTemplate", "new", 245, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18845,7 +18845,7 @@ func NewPadTemplate(name_template string, direction PadDirectionEnum, presence P
 // [ result ] trans: nothing
 //
 func NewPadTemplateFromStaticPadTemplateWithGtype(pad_template StaticPadTemplate, pad_type gi.GType) (result PadTemplate) {
-	iv, err := _I.Get(731, "PadTemplate", "new_from_static_pad_template_with_gtype")
+	iv, err := _I.Get(731, "PadTemplate", "new_from_static_pad_template_with_gtype", 245, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18874,7 +18874,7 @@ func NewPadTemplateFromStaticPadTemplateWithGtype(pad_template StaticPadTemplate
 // [ result ] trans: nothing
 //
 func NewPadTemplateWithGtype(name_template string, direction PadDirectionEnum, presence PadPresenceEnum, caps Caps, pad_type gi.GType) (result PadTemplate) {
-	iv, err := _I.Get(732, "PadTemplate", "new_with_gtype")
+	iv, err := _I.Get(732, "PadTemplate", "new_with_gtype", 245, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18898,7 +18898,7 @@ func NewPadTemplateWithGtype(name_template string, direction PadDirectionEnum, p
 // [ result ] trans: everything
 //
 func (v PadTemplate) GetCaps() (result Caps) {
-	iv, err := _I.Get(733, "PadTemplate", "get_caps")
+	iv, err := _I.Get(733, "PadTemplate", "get_caps", 245, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -18916,7 +18916,7 @@ func (v PadTemplate) GetCaps() (result Caps) {
 // [ pad ] trans: nothing
 //
 func (v PadTemplate) PadCreated(pad IPad) {
-	iv, err := _I.Get(734, "PadTemplate", "pad_created")
+	iv, err := _I.Get(734, "PadTemplate", "pad_created", 245, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19040,7 +19040,7 @@ func ParseContextGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewParseContext() (result ParseContext) {
-	iv, err := _I.Get(736, "ParseContext", "new")
+	iv, err := _I.Get(736, "ParseContext", "new", 254, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19056,7 +19056,7 @@ func NewParseContext() (result ParseContext) {
 // [ result ] trans: everything
 //
 func (v ParseContext) Copy() (result ParseContext) {
-	iv, err := _I.Get(737, "ParseContext", "copy")
+	iv, err := _I.Get(737, "ParseContext", "copy", 254, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19072,7 +19072,7 @@ func (v ParseContext) Copy() (result ParseContext) {
 // gst_parse_context_free
 //
 func (v ParseContext) Free() {
-	iv, err := _I.Get(738, "ParseContext", "free")
+	iv, err := _I.Get(738, "ParseContext", "free", 254, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19087,7 +19087,7 @@ func (v ParseContext) Free() {
 // [ result ] trans: everything
 //
 func (v ParseContext) GetMissingElements() (result gi.CStrArray) {
-	iv, err := _I.Get(739, "ParseContext", "get_missing_elements")
+	iv, err := _I.Get(739, "ParseContext", "get_missing_elements", 254, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19157,7 +19157,7 @@ func PipelineGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewPipeline(name string) (result Pipeline) {
-	iv, err := _I.Get(740, "Pipeline", "new")
+	iv, err := _I.Get(740, "Pipeline", "new", 257, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19175,7 +19175,7 @@ func NewPipeline(name string) (result Pipeline) {
 // gst_pipeline_auto_clock
 //
 func (v Pipeline) AutoClock() {
-	iv, err := _I.Get(741, "Pipeline", "auto_clock")
+	iv, err := _I.Get(741, "Pipeline", "auto_clock", 257, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19190,7 +19190,7 @@ func (v Pipeline) AutoClock() {
 // [ result ] trans: nothing
 //
 func (v Pipeline) GetAutoFlushBus() (result bool) {
-	iv, err := _I.Get(742, "Pipeline", "get_auto_flush_bus")
+	iv, err := _I.Get(742, "Pipeline", "get_auto_flush_bus", 257, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19208,7 +19208,7 @@ func (v Pipeline) GetAutoFlushBus() (result bool) {
 // [ result ] trans: everything
 //
 func (v Pipeline) GetBus() (result Bus) {
-	iv, err := _I.Get(743, "Pipeline", "get_bus")
+	iv, err := _I.Get(743, "Pipeline", "get_bus", 257, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19226,7 +19226,7 @@ func (v Pipeline) GetBus() (result Bus) {
 // [ result ] trans: nothing
 //
 func (v Pipeline) GetDelay() (result uint64) {
-	iv, err := _I.Get(744, "Pipeline", "get_delay")
+	iv, err := _I.Get(744, "Pipeline", "get_delay", 257, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19244,7 +19244,7 @@ func (v Pipeline) GetDelay() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Pipeline) GetLatency() (result uint64) {
-	iv, err := _I.Get(745, "Pipeline", "get_latency")
+	iv, err := _I.Get(745, "Pipeline", "get_latency", 257, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19262,7 +19262,7 @@ func (v Pipeline) GetLatency() (result uint64) {
 // [ result ] trans: everything
 //
 func (v Pipeline) GetPipelineClock() (result Clock) {
-	iv, err := _I.Get(746, "Pipeline", "get_pipeline_clock")
+	iv, err := _I.Get(746, "Pipeline", "get_pipeline_clock", 257, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19280,7 +19280,7 @@ func (v Pipeline) GetPipelineClock() (result Clock) {
 // [ auto_flush ] trans: nothing
 //
 func (v Pipeline) SetAutoFlushBus(auto_flush bool) {
-	iv, err := _I.Get(747, "Pipeline", "set_auto_flush_bus")
+	iv, err := _I.Get(747, "Pipeline", "set_auto_flush_bus", 257, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19296,7 +19296,7 @@ func (v Pipeline) SetAutoFlushBus(auto_flush bool) {
 // [ delay ] trans: nothing
 //
 func (v Pipeline) SetDelay(delay uint64) {
-	iv, err := _I.Get(748, "Pipeline", "set_delay")
+	iv, err := _I.Get(748, "Pipeline", "set_delay", 257, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19312,7 +19312,7 @@ func (v Pipeline) SetDelay(delay uint64) {
 // [ latency ] trans: nothing
 //
 func (v Pipeline) SetLatency(latency uint64) {
-	iv, err := _I.Get(749, "Pipeline", "set_latency")
+	iv, err := _I.Get(749, "Pipeline", "set_latency", 257, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19328,7 +19328,7 @@ func (v Pipeline) SetLatency(latency uint64) {
 // [ clock ] trans: nothing
 //
 func (v Pipeline) UseClock(clock IClock) {
-	iv, err := _I.Get(750, "Pipeline", "use_clock")
+	iv, err := _I.Get(750, "Pipeline", "use_clock", 257, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19388,7 +19388,7 @@ func PluginGetType() gi.GType {
 // [ list ] trans: everything
 //
 func PluginListFree1(list g.List) {
-	iv, err := _I.Get(751, "Plugin", "list_free")
+	iv, err := _I.Get(751, "Plugin", "list_free", 261, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19405,7 +19405,7 @@ func PluginListFree1(list g.List) {
 // [ result ] trans: everything
 //
 func PluginLoadByName1(name string) (result Plugin) {
-	iv, err := _I.Get(752, "Plugin", "load_by_name")
+	iv, err := _I.Get(752, "Plugin", "load_by_name", 261, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19427,7 +19427,7 @@ func PluginLoadByName1(name string) (result Plugin) {
 // [ result ] trans: everything
 //
 func PluginLoadFile1(filename string) (result Plugin, err error) {
-	iv, err := _I.Get(753, "Plugin", "load_file")
+	iv, err := _I.Get(753, "Plugin", "load_file", 261, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -19469,7 +19469,7 @@ func PluginLoadFile1(filename string) (result Plugin, err error) {
 // [ result ] trans: nothing
 //
 func PluginRegisterStatic1(major_version int32, minor_version int32, name string, description string, init_func int /*TODO_TYPE CALLBACK*/, version string, license string, source string, package1 string, origin string) (result bool) {
-	iv, err := _I.Get(754, "Plugin", "register_static")
+	iv, err := _I.Get(754, "Plugin", "register_static", 261, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19532,7 +19532,7 @@ func PluginRegisterStatic1(major_version int32, minor_version int32, name string
 // [ result ] trans: nothing
 //
 func PluginRegisterStaticFull1(major_version int32, minor_version int32, name string, description string, init_full_func int /*TODO_TYPE CALLBACK*/, version string, license string, source string, package1 string, origin string, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(755, "Plugin", "register_static_full")
+	iv, err := _I.Get(755, "Plugin", "register_static_full", 261, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19580,7 +19580,7 @@ func PluginRegisterStaticFull1(major_version int32, minor_version int32, name st
 // [ flags ] trans: nothing
 //
 func (v Plugin) AddDependency(env_vars gi.CStrArray, paths gi.CStrArray, names gi.CStrArray, flags PluginDependencyFlags) {
-	iv, err := _I.Get(756, "Plugin", "add_dependency")
+	iv, err := _I.Get(756, "Plugin", "add_dependency", 261, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19605,7 +19605,7 @@ func (v Plugin) AddDependency(env_vars gi.CStrArray, paths gi.CStrArray, names g
 // [ flags ] trans: nothing
 //
 func (v Plugin) AddDependencySimple(env_vars string, paths string, names string, flags PluginDependencyFlags) {
-	iv, err := _I.Get(757, "Plugin", "add_dependency_simple")
+	iv, err := _I.Get(757, "Plugin", "add_dependency_simple", 261, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19630,7 +19630,7 @@ func (v Plugin) AddDependencySimple(env_vars string, paths string, names string,
 // [ result ] trans: nothing
 //
 func (v Plugin) GetCacheData() (result Structure) {
-	iv, err := _I.Get(758, "Plugin", "get_cache_data")
+	iv, err := _I.Get(758, "Plugin", "get_cache_data", 261, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19648,7 +19648,7 @@ func (v Plugin) GetCacheData() (result Structure) {
 // [ result ] trans: nothing
 //
 func (v Plugin) GetDescription() (result string) {
-	iv, err := _I.Get(759, "Plugin", "get_description")
+	iv, err := _I.Get(759, "Plugin", "get_description", 261, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19666,7 +19666,7 @@ func (v Plugin) GetDescription() (result string) {
 // [ result ] trans: nothing
 //
 func (v Plugin) GetFilename() (result string) {
-	iv, err := _I.Get(760, "Plugin", "get_filename")
+	iv, err := _I.Get(760, "Plugin", "get_filename", 261, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19684,7 +19684,7 @@ func (v Plugin) GetFilename() (result string) {
 // [ result ] trans: nothing
 //
 func (v Plugin) GetLicense() (result string) {
-	iv, err := _I.Get(761, "Plugin", "get_license")
+	iv, err := _I.Get(761, "Plugin", "get_license", 261, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19702,7 +19702,7 @@ func (v Plugin) GetLicense() (result string) {
 // [ result ] trans: nothing
 //
 func (v Plugin) GetName() (result string) {
-	iv, err := _I.Get(762, "Plugin", "get_name")
+	iv, err := _I.Get(762, "Plugin", "get_name", 261, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19720,7 +19720,7 @@ func (v Plugin) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v Plugin) GetOrigin() (result string) {
-	iv, err := _I.Get(763, "Plugin", "get_origin")
+	iv, err := _I.Get(763, "Plugin", "get_origin", 261, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19738,7 +19738,7 @@ func (v Plugin) GetOrigin() (result string) {
 // [ result ] trans: nothing
 //
 func (v Plugin) GetPackage() (result string) {
-	iv, err := _I.Get(764, "Plugin", "get_package")
+	iv, err := _I.Get(764, "Plugin", "get_package", 261, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19756,7 +19756,7 @@ func (v Plugin) GetPackage() (result string) {
 // [ result ] trans: nothing
 //
 func (v Plugin) GetReleaseDateString() (result string) {
-	iv, err := _I.Get(765, "Plugin", "get_release_date_string")
+	iv, err := _I.Get(765, "Plugin", "get_release_date_string", 261, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19774,7 +19774,7 @@ func (v Plugin) GetReleaseDateString() (result string) {
 // [ result ] trans: nothing
 //
 func (v Plugin) GetSource() (result string) {
-	iv, err := _I.Get(766, "Plugin", "get_source")
+	iv, err := _I.Get(766, "Plugin", "get_source", 261, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19792,7 +19792,7 @@ func (v Plugin) GetSource() (result string) {
 // [ result ] trans: nothing
 //
 func (v Plugin) GetVersion() (result string) {
-	iv, err := _I.Get(767, "Plugin", "get_version")
+	iv, err := _I.Get(767, "Plugin", "get_version", 261, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19810,7 +19810,7 @@ func (v Plugin) GetVersion() (result string) {
 // [ result ] trans: nothing
 //
 func (v Plugin) IsLoaded() (result bool) {
-	iv, err := _I.Get(768, "Plugin", "is_loaded")
+	iv, err := _I.Get(768, "Plugin", "is_loaded", 261, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19828,7 +19828,7 @@ func (v Plugin) IsLoaded() (result bool) {
 // [ result ] trans: everything
 //
 func (v Plugin) Load() (result Plugin) {
-	iv, err := _I.Get(769, "Plugin", "load")
+	iv, err := _I.Get(769, "Plugin", "load", 261, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19846,7 +19846,7 @@ func (v Plugin) Load() (result Plugin) {
 // [ cache_data ] trans: everything
 //
 func (v Plugin) SetCacheData(cache_data Structure) {
-	iv, err := _I.Get(770, "Plugin", "set_cache_data")
+	iv, err := _I.Get(770, "Plugin", "set_cache_data", 261, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19924,7 +19924,7 @@ func PluginFeatureGetType() gi.GType {
 // [ result ] trans: everything
 //
 func PluginFeatureListCopy1(list g.List) (result g.List) {
-	iv, err := _I.Get(771, "PluginFeature", "list_copy")
+	iv, err := _I.Get(771, "PluginFeature", "list_copy", 266, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19942,7 +19942,7 @@ func PluginFeatureListCopy1(list g.List) (result g.List) {
 // [ list ] trans: nothing
 //
 func PluginFeatureListDebug1(list g.List) {
-	iv, err := _I.Get(772, "PluginFeature", "list_debug")
+	iv, err := _I.Get(772, "PluginFeature", "list_debug", 266, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19957,7 +19957,7 @@ func PluginFeatureListDebug1(list g.List) {
 // [ list ] trans: everything
 //
 func PluginFeatureListFree1(list g.List) {
-	iv, err := _I.Get(773, "PluginFeature", "list_free")
+	iv, err := _I.Get(773, "PluginFeature", "list_free", 266, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -19976,7 +19976,7 @@ func PluginFeatureListFree1(list g.List) {
 // [ result ] trans: nothing
 //
 func PluginFeatureRankCompareFunc1(p1 unsafe.Pointer, p2 unsafe.Pointer) (result int32) {
-	iv, err := _I.Get(774, "PluginFeature", "rank_compare_func")
+	iv, err := _I.Get(774, "PluginFeature", "rank_compare_func", 266, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20001,7 +20001,7 @@ func PluginFeatureRankCompareFunc1(p1 unsafe.Pointer, p2 unsafe.Pointer) (result
 // [ result ] trans: nothing
 //
 func (v PluginFeature) CheckVersion(min_major uint32, min_minor uint32, min_micro uint32) (result bool) {
-	iv, err := _I.Get(775, "PluginFeature", "check_version")
+	iv, err := _I.Get(775, "PluginFeature", "check_version", 266, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20022,7 +20022,7 @@ func (v PluginFeature) CheckVersion(min_major uint32, min_minor uint32, min_micr
 // [ result ] trans: everything
 //
 func (v PluginFeature) GetPlugin() (result Plugin) {
-	iv, err := _I.Get(776, "PluginFeature", "get_plugin")
+	iv, err := _I.Get(776, "PluginFeature", "get_plugin", 266, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20040,7 +20040,7 @@ func (v PluginFeature) GetPlugin() (result Plugin) {
 // [ result ] trans: nothing
 //
 func (v PluginFeature) GetPluginName() (result string) {
-	iv, err := _I.Get(777, "PluginFeature", "get_plugin_name")
+	iv, err := _I.Get(777, "PluginFeature", "get_plugin_name", 266, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20058,7 +20058,7 @@ func (v PluginFeature) GetPluginName() (result string) {
 // [ result ] trans: nothing
 //
 func (v PluginFeature) GetRank() (result uint32) {
-	iv, err := _I.Get(778, "PluginFeature", "get_rank")
+	iv, err := _I.Get(778, "PluginFeature", "get_rank", 266, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20076,7 +20076,7 @@ func (v PluginFeature) GetRank() (result uint32) {
 // [ result ] trans: everything
 //
 func (v PluginFeature) Load() (result PluginFeature) {
-	iv, err := _I.Get(779, "PluginFeature", "load")
+	iv, err := _I.Get(779, "PluginFeature", "load", 266, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20094,7 +20094,7 @@ func (v PluginFeature) Load() (result PluginFeature) {
 // [ rank ] trans: nothing
 //
 func (v PluginFeature) SetRank(rank uint32) {
-	iv, err := _I.Get(780, "PluginFeature", "set_rank")
+	iv, err := _I.Get(780, "PluginFeature", "set_rank", 266, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20201,7 +20201,7 @@ func PollGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Poll) AddFd(fd PollFD) (result bool) {
-	iv, err := _I.Get(781, "Poll", "add_fd")
+	iv, err := _I.Get(781, "Poll", "add_fd", 273, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20222,7 +20222,7 @@ func (v Poll) AddFd(fd PollFD) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Poll) FdCanRead(fd PollFD) (result bool) {
-	iv, err := _I.Get(782, "Poll", "fd_can_read")
+	iv, err := _I.Get(782, "Poll", "fd_can_read", 273, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20243,7 +20243,7 @@ func (v Poll) FdCanRead(fd PollFD) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Poll) FdCanWrite(fd PollFD) (result bool) {
-	iv, err := _I.Get(783, "Poll", "fd_can_write")
+	iv, err := _I.Get(783, "Poll", "fd_can_write", 273, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20266,7 +20266,7 @@ func (v Poll) FdCanWrite(fd PollFD) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Poll) FdCtlRead(fd PollFD, active bool) (result bool) {
-	iv, err := _I.Get(784, "Poll", "fd_ctl_read")
+	iv, err := _I.Get(784, "Poll", "fd_ctl_read", 273, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20290,7 +20290,7 @@ func (v Poll) FdCtlRead(fd PollFD, active bool) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Poll) FdCtlWrite(fd PollFD, active bool) (result bool) {
-	iv, err := _I.Get(785, "Poll", "fd_ctl_write")
+	iv, err := _I.Get(785, "Poll", "fd_ctl_write", 273, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20312,7 +20312,7 @@ func (v Poll) FdCtlWrite(fd PollFD, active bool) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Poll) FdHasClosed(fd PollFD) (result bool) {
-	iv, err := _I.Get(786, "Poll", "fd_has_closed")
+	iv, err := _I.Get(786, "Poll", "fd_has_closed", 273, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20333,7 +20333,7 @@ func (v Poll) FdHasClosed(fd PollFD) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Poll) FdHasError(fd PollFD) (result bool) {
-	iv, err := _I.Get(787, "Poll", "fd_has_error")
+	iv, err := _I.Get(787, "Poll", "fd_has_error", 273, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20352,7 +20352,7 @@ func (v Poll) FdHasError(fd PollFD) (result bool) {
 // [ fd ] trans: nothing
 //
 func (v Poll) FdIgnored(fd PollFD) {
-	iv, err := _I.Get(788, "Poll", "fd_ignored")
+	iv, err := _I.Get(788, "Poll", "fd_ignored", 273, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20366,7 +20366,7 @@ func (v Poll) FdIgnored(fd PollFD) {
 // gst_poll_free
 //
 func (v Poll) Free() {
-	iv, err := _I.Get(789, "Poll", "free")
+	iv, err := _I.Get(789, "Poll", "free", 273, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20381,7 +20381,7 @@ func (v Poll) Free() {
 // [ fd ] trans: nothing
 //
 func (v Poll) GetReadGpollfd(fd g.PollFD) {
-	iv, err := _I.Get(790, "Poll", "get_read_gpollfd")
+	iv, err := _I.Get(790, "Poll", "get_read_gpollfd", 273, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20397,7 +20397,7 @@ func (v Poll) GetReadGpollfd(fd g.PollFD) {
 // [ result ] trans: nothing
 //
 func (v Poll) ReadControl() (result bool) {
-	iv, err := _I.Get(791, "Poll", "read_control")
+	iv, err := _I.Get(791, "Poll", "read_control", 273, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20417,7 +20417,7 @@ func (v Poll) ReadControl() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Poll) RemoveFd(fd PollFD) (result bool) {
-	iv, err := _I.Get(792, "Poll", "remove_fd")
+	iv, err := _I.Get(792, "Poll", "remove_fd", 273, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20434,7 +20434,7 @@ func (v Poll) RemoveFd(fd PollFD) (result bool) {
 // gst_poll_restart
 //
 func (v Poll) Restart() {
-	iv, err := _I.Get(793, "Poll", "restart")
+	iv, err := _I.Get(793, "Poll", "restart", 273, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20451,7 +20451,7 @@ func (v Poll) Restart() {
 // [ result ] trans: nothing
 //
 func (v Poll) SetControllable(controllable bool) (result bool) {
-	iv, err := _I.Get(794, "Poll", "set_controllable")
+	iv, err := _I.Get(794, "Poll", "set_controllable", 273, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20470,7 +20470,7 @@ func (v Poll) SetControllable(controllable bool) (result bool) {
 // [ flushing ] trans: nothing
 //
 func (v Poll) SetFlushing(flushing bool) {
-	iv, err := _I.Get(795, "Poll", "set_flushing")
+	iv, err := _I.Get(795, "Poll", "set_flushing", 273, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20488,7 +20488,7 @@ func (v Poll) SetFlushing(flushing bool) {
 // [ result ] trans: nothing
 //
 func (v Poll) Wait(timeout uint64) (result int32) {
-	iv, err := _I.Get(796, "Poll", "wait")
+	iv, err := _I.Get(796, "Poll", "wait", 273, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20507,7 +20507,7 @@ func (v Poll) Wait(timeout uint64) (result int32) {
 // [ result ] trans: nothing
 //
 func (v Poll) WriteControl() (result bool) {
-	iv, err := _I.Get(797, "Poll", "write_control")
+	iv, err := _I.Get(797, "Poll", "write_control", 273, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20535,7 +20535,7 @@ func PollFDGetType() gi.GType {
 // gst_poll_fd_init
 //
 func (v PollFD) Init() {
-	iv, err := _I.Get(798, "PollFD", "init")
+	iv, err := _I.Get(798, "PollFD", "init", 274, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20566,7 +20566,7 @@ func PresetGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func PresetSetAppDir1(app_dir string) (result bool) {
-	iv, err := _I.Get(800, "Preset", "set_app_dir")
+	iv, err := _I.Get(800, "Preset", "set_app_dir", 275, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20588,7 +20588,7 @@ func PresetSetAppDir1(app_dir string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v *PresetIfc) DeletePreset(name string) (result bool) {
-	iv, err := _I.Get(801, "Preset", "delete_preset")
+	iv, err := _I.Get(801, "Preset", "delete_preset", 275, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20615,7 +20615,7 @@ func (v *PresetIfc) DeletePreset(name string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v *PresetIfc) GetMeta(name string, tag string) (result bool, value string) {
-	iv, err := _I.Get(802, "Preset", "get_meta")
+	iv, err := _I.Get(802, "Preset", "get_meta", 275, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20642,7 +20642,7 @@ func (v *PresetIfc) GetMeta(name string, tag string) (result bool, value string)
 // [ result ] trans: everything
 //
 func (v *PresetIfc) GetPresetNames() (result gi.CStrArray) {
-	iv, err := _I.Get(803, "Preset", "get_preset_names")
+	iv, err := _I.Get(803, "Preset", "get_preset_names", 275, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20661,7 +20661,7 @@ func (v *PresetIfc) GetPresetNames() (result gi.CStrArray) {
 // [ result ] trans: everything
 //
 func (v *PresetIfc) GetPropertyNames() (result gi.CStrArray) {
-	iv, err := _I.Get(804, "Preset", "get_property_names")
+	iv, err := _I.Get(804, "Preset", "get_property_names", 275, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20680,7 +20680,7 @@ func (v *PresetIfc) GetPropertyNames() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v *PresetIfc) IsEditable() (result bool) {
-	iv, err := _I.Get(805, "Preset", "is_editable")
+	iv, err := _I.Get(805, "Preset", "is_editable", 275, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20700,7 +20700,7 @@ func (v *PresetIfc) IsEditable() (result bool) {
 // [ result ] trans: nothing
 //
 func (v *PresetIfc) LoadPreset(name string) (result bool) {
-	iv, err := _I.Get(806, "Preset", "load_preset")
+	iv, err := _I.Get(806, "Preset", "load_preset", 275, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20725,7 +20725,7 @@ func (v *PresetIfc) LoadPreset(name string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v *PresetIfc) RenamePreset(old_name string, new_name string) (result bool) {
-	iv, err := _I.Get(807, "Preset", "rename_preset")
+	iv, err := _I.Get(807, "Preset", "rename_preset", 275, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20751,7 +20751,7 @@ func (v *PresetIfc) RenamePreset(old_name string, new_name string) (result bool)
 // [ result ] trans: nothing
 //
 func (v *PresetIfc) SavePreset(name string) (result bool) {
-	iv, err := _I.Get(808, "Preset", "save_preset")
+	iv, err := _I.Get(808, "Preset", "save_preset", 275, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20778,7 +20778,7 @@ func (v *PresetIfc) SavePreset(name string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v *PresetIfc) SetMeta(name string, tag string, value string) (result bool) {
-	iv, err := _I.Get(809, "Preset", "set_meta")
+	iv, err := _I.Get(809, "Preset", "set_meta", 275, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20835,7 +20835,7 @@ func PromiseGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPromise() (result Promise) {
-	iv, err := _I.Get(810, "Promise", "new")
+	iv, err := _I.Get(810, "Promise", "new", 278, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20857,7 +20857,7 @@ func NewPromise() (result Promise) {
 // [ result ] trans: everything
 //
 func NewPromiseWithChangeFunc(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result Promise) {
-	iv, err := _I.Get(811, "Promise", "new_with_change_func")
+	iv, err := _I.Get(811, "Promise", "new_with_change_func", 278, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20875,7 +20875,7 @@ func NewPromiseWithChangeFunc(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe
 // gst_promise_expire
 //
 func (v Promise) Expire() {
-	iv, err := _I.Get(812, "Promise", "expire")
+	iv, err := _I.Get(812, "Promise", "expire", 278, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20890,7 +20890,7 @@ func (v Promise) Expire() {
 // [ result ] trans: nothing
 //
 func (v Promise) GetReply() (result Structure) {
-	iv, err := _I.Get(813, "Promise", "get_reply")
+	iv, err := _I.Get(813, "Promise", "get_reply", 278, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20906,7 +20906,7 @@ func (v Promise) GetReply() (result Structure) {
 // gst_promise_interrupt
 //
 func (v Promise) Interrupt() {
-	iv, err := _I.Get(814, "Promise", "interrupt")
+	iv, err := _I.Get(814, "Promise", "interrupt", 278, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20921,7 +20921,7 @@ func (v Promise) Interrupt() {
 // [ s ] trans: everything
 //
 func (v Promise) Reply(s Structure) {
-	iv, err := _I.Get(815, "Promise", "reply")
+	iv, err := _I.Get(815, "Promise", "reply", 278, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -20937,7 +20937,7 @@ func (v Promise) Reply(s Structure) {
 // [ result ] trans: nothing
 //
 func (v Promise) Wait() (result PromiseResultEnum) {
-	iv, err := _I.Get(816, "Promise", "wait")
+	iv, err := _I.Get(816, "Promise", "wait", 278, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21020,7 +21020,7 @@ func ProxyPadGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func ProxyPadChainDefault1(pad IPad, parent IObject, buffer Buffer) (result FlowReturnEnum) {
-	iv, err := _I.Get(818, "ProxyPad", "chain_default")
+	iv, err := _I.Get(818, "ProxyPad", "chain_default", 282, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21054,7 +21054,7 @@ func ProxyPadChainDefault1(pad IPad, parent IObject, buffer Buffer) (result Flow
 // [ result ] trans: nothing
 //
 func ProxyPadChainListDefault1(pad IPad, parent IObject, list BufferList) (result FlowReturnEnum) {
-	iv, err := _I.Get(819, "ProxyPad", "chain_list_default")
+	iv, err := _I.Get(819, "ProxyPad", "chain_list_default", 282, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21092,7 +21092,7 @@ func ProxyPadChainListDefault1(pad IPad, parent IObject, list BufferList) (resul
 // [ result ] trans: nothing
 //
 func ProxyPadGetrangeDefault1(pad IPad, parent IObject, offset uint64, size uint32) (result FlowReturnEnum, buffer Buffer) {
-	iv, err := _I.Get(820, "ProxyPad", "getrange_default")
+	iv, err := _I.Get(820, "ProxyPad", "getrange_default", 282, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21128,7 +21128,7 @@ func ProxyPadGetrangeDefault1(pad IPad, parent IObject, offset uint64, size uint
 // [ result ] trans: everything
 //
 func ProxyPadIterateInternalLinksDefault1(pad IPad, parent IObject) (result Iterator) {
-	iv, err := _I.Get(821, "ProxyPad", "iterate_internal_links_default")
+	iv, err := _I.Get(821, "ProxyPad", "iterate_internal_links_default", 282, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21155,7 +21155,7 @@ func ProxyPadIterateInternalLinksDefault1(pad IPad, parent IObject) (result Iter
 // [ result ] trans: everything
 //
 func (v ProxyPad) GetInternal() (result ProxyPad) {
-	iv, err := _I.Get(822, "ProxyPad", "get_internal")
+	iv, err := _I.Get(822, "ProxyPad", "get_internal", 282, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21213,7 +21213,7 @@ func QueryGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewQueryAcceptCaps(caps Caps) (result Query) {
-	iv, err := _I.Get(823, "Query", "new_accept_caps")
+	iv, err := _I.Get(823, "Query", "new_accept_caps", 288, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21235,7 +21235,7 @@ func NewQueryAcceptCaps(caps Caps) (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryAllocation(caps Caps, need_pool bool) (result Query) {
-	iv, err := _I.Get(824, "Query", "new_allocation")
+	iv, err := _I.Get(824, "Query", "new_allocation", 288, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21256,7 +21256,7 @@ func NewQueryAllocation(caps Caps, need_pool bool) (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryBuffering(format FormatEnum) (result Query) {
-	iv, err := _I.Get(825, "Query", "new_buffering")
+	iv, err := _I.Get(825, "Query", "new_buffering", 288, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21276,7 +21276,7 @@ func NewQueryBuffering(format FormatEnum) (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryCaps(filter Caps) (result Query) {
-	iv, err := _I.Get(826, "Query", "new_caps")
+	iv, err := _I.Get(826, "Query", "new_caps", 288, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21296,7 +21296,7 @@ func NewQueryCaps(filter Caps) (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryContext(context_type string) (result Query) {
-	iv, err := _I.Get(827, "Query", "new_context")
+	iv, err := _I.Get(827, "Query", "new_context", 288, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21322,7 +21322,7 @@ func NewQueryContext(context_type string) (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryConvert(src_format FormatEnum, value int64, dest_format FormatEnum) (result Query) {
-	iv, err := _I.Get(828, "Query", "new_convert")
+	iv, err := _I.Get(828, "Query", "new_convert", 288, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21346,7 +21346,7 @@ func NewQueryConvert(src_format FormatEnum, value int64, dest_format FormatEnum)
 // [ result ] trans: everything
 //
 func NewQueryCustom(type1 QueryTypeEnum, structure Structure) (result Query) {
-	iv, err := _I.Get(829, "Query", "new_custom")
+	iv, err := _I.Get(829, "Query", "new_custom", 288, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21365,7 +21365,7 @@ func NewQueryCustom(type1 QueryTypeEnum, structure Structure) (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryDrain() (result Query) {
-	iv, err := _I.Get(830, "Query", "new_drain")
+	iv, err := _I.Get(830, "Query", "new_drain", 288, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21383,7 +21383,7 @@ func NewQueryDrain() (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryDuration(format FormatEnum) (result Query) {
-	iv, err := _I.Get(831, "Query", "new_duration")
+	iv, err := _I.Get(831, "Query", "new_duration", 288, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21401,7 +21401,7 @@ func NewQueryDuration(format FormatEnum) (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryFormats() (result Query) {
-	iv, err := _I.Get(832, "Query", "new_formats")
+	iv, err := _I.Get(832, "Query", "new_formats", 288, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21417,7 +21417,7 @@ func NewQueryFormats() (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryLatency() (result Query) {
-	iv, err := _I.Get(833, "Query", "new_latency")
+	iv, err := _I.Get(833, "Query", "new_latency", 288, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21435,7 +21435,7 @@ func NewQueryLatency() (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryPosition(format FormatEnum) (result Query) {
-	iv, err := _I.Get(834, "Query", "new_position")
+	iv, err := _I.Get(834, "Query", "new_position", 288, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21453,7 +21453,7 @@ func NewQueryPosition(format FormatEnum) (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryScheduling() (result Query) {
-	iv, err := _I.Get(835, "Query", "new_scheduling")
+	iv, err := _I.Get(835, "Query", "new_scheduling", 288, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21471,7 +21471,7 @@ func NewQueryScheduling() (result Query) {
 // [ result ] trans: everything
 //
 func NewQuerySeeking(format FormatEnum) (result Query) {
-	iv, err := _I.Get(836, "Query", "new_seeking")
+	iv, err := _I.Get(836, "Query", "new_seeking", 288, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21491,7 +21491,7 @@ func NewQuerySeeking(format FormatEnum) (result Query) {
 // [ result ] trans: everything
 //
 func NewQuerySegment(format FormatEnum) (result Query) {
-	iv, err := _I.Get(837, "Query", "new_segment")
+	iv, err := _I.Get(837, "Query", "new_segment", 288, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21509,7 +21509,7 @@ func NewQuerySegment(format FormatEnum) (result Query) {
 // [ result ] trans: everything
 //
 func NewQueryUri() (result Query) {
-	iv, err := _I.Get(838, "Query", "new_uri")
+	iv, err := _I.Get(838, "Query", "new_uri", 288, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21527,7 +21527,7 @@ func NewQueryUri() (result Query) {
 // [ params ] trans: nothing
 //
 func (v Query) AddAllocationMeta(api gi.GType, params Structure) {
-	iv, err := _I.Get(839, "Query", "add_allocation_meta")
+	iv, err := _I.Get(839, "Query", "add_allocation_meta", 288, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21546,7 +21546,7 @@ func (v Query) AddAllocationMeta(api gi.GType, params Structure) {
 // [ params ] trans: nothing
 //
 func (v Query) AddAllocationParam(allocator IAllocator, params AllocationParams) {
-	iv, err := _I.Get(840, "Query", "add_allocation_param")
+	iv, err := _I.Get(840, "Query", "add_allocation_param", 288, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21573,7 +21573,7 @@ func (v Query) AddAllocationParam(allocator IAllocator, params AllocationParams)
 // [ max_buffers ] trans: nothing
 //
 func (v Query) AddAllocationPool(pool IBufferPool, size uint32, min_buffers uint32, max_buffers uint32) {
-	iv, err := _I.Get(841, "Query", "add_allocation_pool")
+	iv, err := _I.Get(841, "Query", "add_allocation_pool", 288, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21600,7 +21600,7 @@ func (v Query) AddAllocationPool(pool IBufferPool, size uint32, min_buffers uint
 // [ result ] trans: nothing
 //
 func (v Query) AddBufferingRange(start int64, stop int64) (result bool) {
-	iv, err := _I.Get(842, "Query", "add_buffering_range")
+	iv, err := _I.Get(842, "Query", "add_buffering_range", 288, 19, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21620,7 +21620,7 @@ func (v Query) AddBufferingRange(start int64, stop int64) (result bool) {
 // [ mode ] trans: nothing
 //
 func (v Query) AddSchedulingMode(mode PadModeEnum) {
-	iv, err := _I.Get(843, "Query", "add_scheduling_mode")
+	iv, err := _I.Get(843, "Query", "add_scheduling_mode", 288, 20, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21640,7 +21640,7 @@ func (v Query) AddSchedulingMode(mode PadModeEnum) {
 // [ result ] trans: nothing
 //
 func (v Query) FindAllocationMeta(api gi.GType) (result bool, index uint32) {
-	iv, err := _I.Get(844, "Query", "find_allocation_meta")
+	iv, err := _I.Get(844, "Query", "find_allocation_meta", 288, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21662,7 +21662,7 @@ func (v Query) FindAllocationMeta(api gi.GType) (result bool, index uint32) {
 // [ result ] trans: nothing
 //
 func (v Query) GetNAllocationMetas() (result uint32) {
-	iv, err := _I.Get(845, "Query", "get_n_allocation_metas")
+	iv, err := _I.Get(845, "Query", "get_n_allocation_metas", 288, 22, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21680,7 +21680,7 @@ func (v Query) GetNAllocationMetas() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Query) GetNAllocationParams() (result uint32) {
-	iv, err := _I.Get(846, "Query", "get_n_allocation_params")
+	iv, err := _I.Get(846, "Query", "get_n_allocation_params", 288, 23, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21698,7 +21698,7 @@ func (v Query) GetNAllocationParams() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Query) GetNAllocationPools() (result uint32) {
-	iv, err := _I.Get(847, "Query", "get_n_allocation_pools")
+	iv, err := _I.Get(847, "Query", "get_n_allocation_pools", 288, 24, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21716,7 +21716,7 @@ func (v Query) GetNAllocationPools() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Query) GetNBufferingRanges() (result uint32) {
-	iv, err := _I.Get(848, "Query", "get_n_buffering_ranges")
+	iv, err := _I.Get(848, "Query", "get_n_buffering_ranges", 288, 25, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21734,7 +21734,7 @@ func (v Query) GetNBufferingRanges() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Query) GetNSchedulingModes() (result uint32) {
-	iv, err := _I.Get(849, "Query", "get_n_scheduling_modes")
+	iv, err := _I.Get(849, "Query", "get_n_scheduling_modes", 288, 26, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21752,7 +21752,7 @@ func (v Query) GetNSchedulingModes() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Query) GetStructure() (result Structure) {
-	iv, err := _I.Get(850, "Query", "get_structure")
+	iv, err := _I.Get(850, "Query", "get_structure", 288, 27, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21772,7 +21772,7 @@ func (v Query) GetStructure() (result Structure) {
 // [ result ] trans: nothing
 //
 func (v Query) HasSchedulingMode(mode PadModeEnum) (result bool) {
-	iv, err := _I.Get(851, "Query", "has_scheduling_mode")
+	iv, err := _I.Get(851, "Query", "has_scheduling_mode", 288, 28, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21795,7 +21795,7 @@ func (v Query) HasSchedulingMode(mode PadModeEnum) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Query) HasSchedulingModeWithFlags(mode PadModeEnum, flags SchedulingFlags) (result bool) {
-	iv, err := _I.Get(852, "Query", "has_scheduling_mode_with_flags")
+	iv, err := _I.Get(852, "Query", "has_scheduling_mode_with_flags", 288, 29, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21815,7 +21815,7 @@ func (v Query) HasSchedulingModeWithFlags(mode PadModeEnum, flags SchedulingFlag
 // [ caps ] trans: nothing, dir: out
 //
 func (v Query) ParseAcceptCaps() (caps Caps) {
-	iv, err := _I.Get(853, "Query", "parse_accept_caps")
+	iv, err := _I.Get(853, "Query", "parse_accept_caps", 288, 30, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21834,7 +21834,7 @@ func (v Query) ParseAcceptCaps() (caps Caps) {
 // [ result ] trans: everything, dir: out
 //
 func (v Query) ParseAcceptCapsResult() (result bool) {
-	iv, err := _I.Get(854, "Query", "parse_accept_caps_result")
+	iv, err := _I.Get(854, "Query", "parse_accept_caps_result", 288, 31, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21855,7 +21855,7 @@ func (v Query) ParseAcceptCapsResult() (result bool) {
 // [ need_pool ] trans: everything, dir: out
 //
 func (v Query) ParseAllocation() (caps Caps, need_pool bool) {
-	iv, err := _I.Get(855, "Query", "parse_allocation")
+	iv, err := _I.Get(855, "Query", "parse_allocation", 288, 32, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21878,7 +21878,7 @@ func (v Query) ParseAllocation() (caps Caps, need_pool bool) {
 // [ percent ] trans: everything, dir: out
 //
 func (v Query) ParseBufferingPercent() (busy bool, percent int32) {
-	iv, err := _I.Get(856, "Query", "parse_buffering_percent")
+	iv, err := _I.Get(856, "Query", "parse_buffering_percent", 288, 33, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21905,7 +21905,7 @@ func (v Query) ParseBufferingPercent() (busy bool, percent int32) {
 // [ estimated_total ] trans: everything, dir: out
 //
 func (v Query) ParseBufferingRange() (format FormatEnum, start int64, stop int64, estimated_total int64) {
-	iv, err := _I.Get(857, "Query", "parse_buffering_range")
+	iv, err := _I.Get(857, "Query", "parse_buffering_range", 288, 34, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21936,7 +21936,7 @@ func (v Query) ParseBufferingRange() (format FormatEnum, start int64, stop int64
 // [ buffering_left ] trans: everything, dir: out
 //
 func (v Query) ParseBufferingStats() (mode BufferingModeEnum, avg_in int32, avg_out int32, buffering_left int64) {
-	iv, err := _I.Get(858, "Query", "parse_buffering_stats")
+	iv, err := _I.Get(858, "Query", "parse_buffering_stats", 288, 35, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21961,7 +21961,7 @@ func (v Query) ParseBufferingStats() (mode BufferingModeEnum, avg_in int32, avg_
 // [ filter ] trans: nothing, dir: out
 //
 func (v Query) ParseCaps() (filter Caps) {
-	iv, err := _I.Get(859, "Query", "parse_caps")
+	iv, err := _I.Get(859, "Query", "parse_caps", 288, 36, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21980,7 +21980,7 @@ func (v Query) ParseCaps() (filter Caps) {
 // [ caps ] trans: nothing, dir: out
 //
 func (v Query) ParseCapsResult() (caps Caps) {
-	iv, err := _I.Get(860, "Query", "parse_caps_result")
+	iv, err := _I.Get(860, "Query", "parse_caps_result", 288, 37, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21999,7 +21999,7 @@ func (v Query) ParseCapsResult() (caps Caps) {
 // [ context ] trans: nothing, dir: out
 //
 func (v Query) ParseContextF() (context Context) {
-	iv, err := _I.Get(861, "Query", "parse_context")
+	iv, err := _I.Get(861, "Query", "parse_context", 288, 38, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22020,7 +22020,7 @@ func (v Query) ParseContextF() (context Context) {
 // [ result ] trans: nothing
 //
 func (v Query) ParseContextType() (result bool, context_type string) {
-	iv, err := _I.Get(862, "Query", "parse_context_type")
+	iv, err := _I.Get(862, "Query", "parse_context_type", 288, 39, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22047,7 +22047,7 @@ func (v Query) ParseContextType() (result bool, context_type string) {
 // [ dest_value ] trans: everything, dir: out
 //
 func (v Query) ParseConvert() (src_format FormatEnum, src_value int64, dest_format FormatEnum, dest_value int64) {
-	iv, err := _I.Get(863, "Query", "parse_convert")
+	iv, err := _I.Get(863, "Query", "parse_convert", 288, 40, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22074,7 +22074,7 @@ func (v Query) ParseConvert() (src_format FormatEnum, src_value int64, dest_form
 // [ duration ] trans: everything, dir: out
 //
 func (v Query) ParseDuration() (format FormatEnum, duration int64) {
-	iv, err := _I.Get(864, "Query", "parse_duration")
+	iv, err := _I.Get(864, "Query", "parse_duration", 288, 41, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22099,7 +22099,7 @@ func (v Query) ParseDuration() (format FormatEnum, duration int64) {
 // [ max_latency ] trans: everything, dir: out
 //
 func (v Query) ParseLatency() (live bool, min_latency uint64, max_latency uint64) {
-	iv, err := _I.Get(865, "Query", "parse_latency")
+	iv, err := _I.Get(865, "Query", "parse_latency", 288, 42, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22122,7 +22122,7 @@ func (v Query) ParseLatency() (live bool, min_latency uint64, max_latency uint64
 // [ n_formats ] trans: everything, dir: out
 //
 func (v Query) ParseNFormats() (n_formats uint32) {
-	iv, err := _I.Get(866, "Query", "parse_n_formats")
+	iv, err := _I.Get(866, "Query", "parse_n_formats", 288, 43, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22145,7 +22145,7 @@ func (v Query) ParseNFormats() (n_formats uint32) {
 // [ result ] trans: nothing
 //
 func (v Query) ParseNthAllocationMeta(index uint32) (result gi.GType, params Structure) {
-	iv, err := _I.Get(867, "Query", "parse_nth_allocation_meta")
+	iv, err := _I.Get(867, "Query", "parse_nth_allocation_meta", 288, 44, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22171,7 +22171,7 @@ func (v Query) ParseNthAllocationMeta(index uint32) (result gi.GType, params Str
 // [ params ] trans: nothing, dir: out
 //
 func (v Query) ParseNthAllocationParam(index uint32, params AllocationParams) (allocator Allocator) {
-	iv, err := _I.Get(868, "Query", "parse_nth_allocation_param")
+	iv, err := _I.Get(868, "Query", "parse_nth_allocation_param", 288, 45, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22200,7 +22200,7 @@ func (v Query) ParseNthAllocationParam(index uint32, params AllocationParams) (a
 // [ max_buffers ] trans: everything, dir: out
 //
 func (v Query) ParseNthAllocationPool(index uint32) (pool BufferPool, size uint32, min_buffers uint32, max_buffers uint32) {
-	iv, err := _I.Get(869, "Query", "parse_nth_allocation_pool")
+	iv, err := _I.Get(869, "Query", "parse_nth_allocation_pool", 288, 46, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22232,7 +22232,7 @@ func (v Query) ParseNthAllocationPool(index uint32) (pool BufferPool, size uint3
 // [ result ] trans: nothing
 //
 func (v Query) ParseNthBufferingRange(index uint32) (result bool, start int64, stop int64) {
-	iv, err := _I.Get(870, "Query", "parse_nth_buffering_range")
+	iv, err := _I.Get(870, "Query", "parse_nth_buffering_range", 288, 47, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22258,7 +22258,7 @@ func (v Query) ParseNthBufferingRange(index uint32) (result bool, start int64, s
 // [ format ] trans: everything, dir: out
 //
 func (v Query) ParseNthFormat(nth uint32) (format FormatEnum) {
-	iv, err := _I.Get(871, "Query", "parse_nth_format")
+	iv, err := _I.Get(871, "Query", "parse_nth_format", 288, 48, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22280,7 +22280,7 @@ func (v Query) ParseNthFormat(nth uint32) (format FormatEnum) {
 // [ result ] trans: nothing
 //
 func (v Query) ParseNthSchedulingMode(index uint32) (result PadModeEnum) {
-	iv, err := _I.Get(872, "Query", "parse_nth_scheduling_mode")
+	iv, err := _I.Get(872, "Query", "parse_nth_scheduling_mode", 288, 49, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22301,7 +22301,7 @@ func (v Query) ParseNthSchedulingMode(index uint32) (result PadModeEnum) {
 // [ cur ] trans: everything, dir: out
 //
 func (v Query) ParsePosition() (format FormatEnum, cur int64) {
-	iv, err := _I.Get(873, "Query", "parse_position")
+	iv, err := _I.Get(873, "Query", "parse_position", 288, 50, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22328,7 +22328,7 @@ func (v Query) ParsePosition() (format FormatEnum, cur int64) {
 // [ align ] trans: everything, dir: out
 //
 func (v Query) ParseScheduling() (flags SchedulingFlags, minsize int32, maxsize int32, align int32) {
-	iv, err := _I.Get(874, "Query", "parse_scheduling")
+	iv, err := _I.Get(874, "Query", "parse_scheduling", 288, 51, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22359,7 +22359,7 @@ func (v Query) ParseScheduling() (flags SchedulingFlags, minsize int32, maxsize 
 // [ segment_end ] trans: everything, dir: out
 //
 func (v Query) ParseSeeking() (format FormatEnum, seekable bool, segment_start int64, segment_end int64) {
-	iv, err := _I.Get(875, "Query", "parse_seeking")
+	iv, err := _I.Get(875, "Query", "parse_seeking", 288, 52, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22390,7 +22390,7 @@ func (v Query) ParseSeeking() (format FormatEnum, seekable bool, segment_start i
 // [ stop_value ] trans: everything, dir: out
 //
 func (v Query) ParseSegment() (rate float64, format FormatEnum, start_value int64, stop_value int64) {
-	iv, err := _I.Get(876, "Query", "parse_segment")
+	iv, err := _I.Get(876, "Query", "parse_segment", 288, 53, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22415,7 +22415,7 @@ func (v Query) ParseSegment() (rate float64, format FormatEnum, start_value int6
 // [ uri ] trans: everything, dir: out
 //
 func (v Query) ParseUri() (uri string) {
-	iv, err := _I.Get(877, "Query", "parse_uri")
+	iv, err := _I.Get(877, "Query", "parse_uri", 288, 54, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22434,7 +22434,7 @@ func (v Query) ParseUri() (uri string) {
 // [ uri ] trans: everything, dir: out
 //
 func (v Query) ParseUriRedirection() (uri string) {
-	iv, err := _I.Get(878, "Query", "parse_uri_redirection")
+	iv, err := _I.Get(878, "Query", "parse_uri_redirection", 288, 55, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22453,7 +22453,7 @@ func (v Query) ParseUriRedirection() (uri string) {
 // [ permanent ] trans: everything, dir: out
 //
 func (v Query) ParseUriRedirectionPermanent() (permanent bool) {
-	iv, err := _I.Get(879, "Query", "parse_uri_redirection_permanent")
+	iv, err := _I.Get(879, "Query", "parse_uri_redirection_permanent", 288, 56, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22472,7 +22472,7 @@ func (v Query) ParseUriRedirectionPermanent() (permanent bool) {
 // [ index ] trans: nothing
 //
 func (v Query) RemoveNthAllocationMeta(index uint32) {
-	iv, err := _I.Get(880, "Query", "remove_nth_allocation_meta")
+	iv, err := _I.Get(880, "Query", "remove_nth_allocation_meta", 288, 57, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22488,7 +22488,7 @@ func (v Query) RemoveNthAllocationMeta(index uint32) {
 // [ index ] trans: nothing
 //
 func (v Query) RemoveNthAllocationParam(index uint32) {
-	iv, err := _I.Get(881, "Query", "remove_nth_allocation_param")
+	iv, err := _I.Get(881, "Query", "remove_nth_allocation_param", 288, 58, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22504,7 +22504,7 @@ func (v Query) RemoveNthAllocationParam(index uint32) {
 // [ index ] trans: nothing
 //
 func (v Query) RemoveNthAllocationPool(index uint32) {
-	iv, err := _I.Get(882, "Query", "remove_nth_allocation_pool")
+	iv, err := _I.Get(882, "Query", "remove_nth_allocation_pool", 288, 59, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22520,7 +22520,7 @@ func (v Query) RemoveNthAllocationPool(index uint32) {
 // [ result ] trans: nothing
 //
 func (v Query) SetAcceptCapsResult(result bool) {
-	iv, err := _I.Get(883, "Query", "set_accept_caps_result")
+	iv, err := _I.Get(883, "Query", "set_accept_caps_result", 288, 60, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22538,7 +22538,7 @@ func (v Query) SetAcceptCapsResult(result bool) {
 // [ percent ] trans: nothing
 //
 func (v Query) SetBufferingPercent(busy bool, percent int32) {
-	iv, err := _I.Get(884, "Query", "set_buffering_percent")
+	iv, err := _I.Get(884, "Query", "set_buffering_percent", 288, 61, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22561,7 +22561,7 @@ func (v Query) SetBufferingPercent(busy bool, percent int32) {
 // [ estimated_total ] trans: nothing
 //
 func (v Query) SetBufferingRange(format FormatEnum, start int64, stop int64, estimated_total int64) {
-	iv, err := _I.Get(885, "Query", "set_buffering_range")
+	iv, err := _I.Get(885, "Query", "set_buffering_range", 288, 62, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22586,7 +22586,7 @@ func (v Query) SetBufferingRange(format FormatEnum, start int64, stop int64, est
 // [ buffering_left ] trans: nothing
 //
 func (v Query) SetBufferingStats(mode BufferingModeEnum, avg_in int32, avg_out int32, buffering_left int64) {
-	iv, err := _I.Get(886, "Query", "set_buffering_stats")
+	iv, err := _I.Get(886, "Query", "set_buffering_stats", 288, 63, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22605,7 +22605,7 @@ func (v Query) SetBufferingStats(mode BufferingModeEnum, avg_in int32, avg_out i
 // [ caps ] trans: nothing
 //
 func (v Query) SetCapsResult(caps Caps) {
-	iv, err := _I.Get(887, "Query", "set_caps_result")
+	iv, err := _I.Get(887, "Query", "set_caps_result", 288, 64, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22621,7 +22621,7 @@ func (v Query) SetCapsResult(caps Caps) {
 // [ context ] trans: nothing
 //
 func (v Query) SetContext(context Context) {
-	iv, err := _I.Get(888, "Query", "set_context")
+	iv, err := _I.Get(888, "Query", "set_context", 288, 65, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22643,7 +22643,7 @@ func (v Query) SetContext(context Context) {
 // [ dest_value ] trans: nothing
 //
 func (v Query) SetConvert(src_format FormatEnum, src_value int64, dest_format FormatEnum, dest_value int64) {
-	iv, err := _I.Get(889, "Query", "set_convert")
+	iv, err := _I.Get(889, "Query", "set_convert", 288, 66, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22664,7 +22664,7 @@ func (v Query) SetConvert(src_format FormatEnum, src_value int64, dest_format Fo
 // [ duration ] trans: nothing
 //
 func (v Query) SetDuration(format FormatEnum, duration int64) {
-	iv, err := _I.Get(890, "Query", "set_duration")
+	iv, err := _I.Get(890, "Query", "set_duration", 288, 67, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22683,7 +22683,7 @@ func (v Query) SetDuration(format FormatEnum, duration int64) {
 // [ formats ] trans: nothing
 //
 func (v Query) SetFormatsv(n_formats int32, formats unsafe.Pointer) {
-	iv, err := _I.Get(891, "Query", "set_formatsv")
+	iv, err := _I.Get(891, "Query", "set_formatsv", 288, 68, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22704,7 +22704,7 @@ func (v Query) SetFormatsv(n_formats int32, formats unsafe.Pointer) {
 // [ max_latency ] trans: nothing
 //
 func (v Query) SetLatency(live bool, min_latency uint64, max_latency uint64) {
-	iv, err := _I.Get(892, "Query", "set_latency")
+	iv, err := _I.Get(892, "Query", "set_latency", 288, 69, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22726,7 +22726,7 @@ func (v Query) SetLatency(live bool, min_latency uint64, max_latency uint64) {
 // [ params ] trans: nothing
 //
 func (v Query) SetNthAllocationParam(index uint32, allocator IAllocator, params AllocationParams) {
-	iv, err := _I.Get(893, "Query", "set_nth_allocation_param")
+	iv, err := _I.Get(893, "Query", "set_nth_allocation_param", 288, 70, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22756,7 +22756,7 @@ func (v Query) SetNthAllocationParam(index uint32, allocator IAllocator, params 
 // [ max_buffers ] trans: nothing
 //
 func (v Query) SetNthAllocationPool(index uint32, pool IBufferPool, size uint32, min_buffers uint32, max_buffers uint32) {
-	iv, err := _I.Get(894, "Query", "set_nth_allocation_pool")
+	iv, err := _I.Get(894, "Query", "set_nth_allocation_pool", 288, 71, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22782,7 +22782,7 @@ func (v Query) SetNthAllocationPool(index uint32, pool IBufferPool, size uint32,
 // [ cur ] trans: nothing
 //
 func (v Query) SetPosition(format FormatEnum, cur int64) {
-	iv, err := _I.Get(895, "Query", "set_position")
+	iv, err := _I.Get(895, "Query", "set_position", 288, 72, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22805,7 +22805,7 @@ func (v Query) SetPosition(format FormatEnum, cur int64) {
 // [ align ] trans: nothing
 //
 func (v Query) SetScheduling(flags SchedulingFlags, minsize int32, maxsize int32, align int32) {
-	iv, err := _I.Get(896, "Query", "set_scheduling")
+	iv, err := _I.Get(896, "Query", "set_scheduling", 288, 73, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22830,7 +22830,7 @@ func (v Query) SetScheduling(flags SchedulingFlags, minsize int32, maxsize int32
 // [ segment_end ] trans: nothing
 //
 func (v Query) SetSeeking(format FormatEnum, seekable bool, segment_start int64, segment_end int64) {
-	iv, err := _I.Get(897, "Query", "set_seeking")
+	iv, err := _I.Get(897, "Query", "set_seeking", 288, 74, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22855,7 +22855,7 @@ func (v Query) SetSeeking(format FormatEnum, seekable bool, segment_start int64,
 // [ stop_value ] trans: nothing
 //
 func (v Query) SetSegment(rate float64, format FormatEnum, start_value int64, stop_value int64) {
-	iv, err := _I.Get(898, "Query", "set_segment")
+	iv, err := _I.Get(898, "Query", "set_segment", 288, 75, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22874,7 +22874,7 @@ func (v Query) SetSegment(rate float64, format FormatEnum, start_value int64, st
 // [ uri ] trans: nothing
 //
 func (v Query) SetUri(uri string) {
-	iv, err := _I.Get(899, "Query", "set_uri")
+	iv, err := _I.Get(899, "Query", "set_uri", 288, 76, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22892,7 +22892,7 @@ func (v Query) SetUri(uri string) {
 // [ uri ] trans: nothing
 //
 func (v Query) SetUriRedirection(uri string) {
-	iv, err := _I.Get(900, "Query", "set_uri_redirection")
+	iv, err := _I.Get(900, "Query", "set_uri_redirection", 288, 77, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22910,7 +22910,7 @@ func (v Query) SetUriRedirection(uri string) {
 // [ permanent ] trans: nothing
 //
 func (v Query) SetUriRedirectionPermanent(permanent bool) {
-	iv, err := _I.Get(901, "Query", "set_uri_redirection_permanent")
+	iv, err := _I.Get(901, "Query", "set_uri_redirection_permanent", 288, 78, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -22926,7 +22926,7 @@ func (v Query) SetUriRedirectionPermanent(permanent bool) {
 // [ result ] trans: nothing
 //
 func (v Query) WritableStructure() (result Structure) {
-	iv, err := _I.Get(902, "Query", "writable_structure")
+	iv, err := _I.Get(902, "Query", "writable_structure", 288, 79, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23030,7 +23030,7 @@ func RegistryGetType() gi.GType {
 // [ enabled ] trans: nothing
 //
 func RegistryForkSetEnabled1(enabled bool) {
-	iv, err := _I.Get(905, "Registry", "fork_set_enabled")
+	iv, err := _I.Get(905, "Registry", "fork_set_enabled", 293, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23047,7 +23047,7 @@ func RegistryForkSetEnabled1(enabled bool) {
 // [ result ] trans: nothing
 //
 func (v Registry) AddFeature(feature IPluginFeature) (result bool) {
-	iv, err := _I.Get(907, "Registry", "add_feature")
+	iv, err := _I.Get(907, "Registry", "add_feature", 293, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23072,7 +23072,7 @@ func (v Registry) AddFeature(feature IPluginFeature) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Registry) AddPlugin(plugin IPlugin) (result bool) {
-	iv, err := _I.Get(908, "Registry", "add_plugin")
+	iv, err := _I.Get(908, "Registry", "add_plugin", 293, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23103,7 +23103,7 @@ func (v Registry) AddPlugin(plugin IPlugin) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Registry) CheckFeatureVersion(feature_name string, min_major uint32, min_minor uint32, min_micro uint32) (result bool) {
-	iv, err := _I.Get(909, "Registry", "check_feature_version")
+	iv, err := _I.Get(909, "Registry", "check_feature_version", 293, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23133,7 +23133,7 @@ func (v Registry) CheckFeatureVersion(feature_name string, min_major uint32, min
 // [ result ] trans: everything
 //
 func (v Registry) FeatureFilter(filter int /*TODO_TYPE CALLBACK*/, first bool, user_data unsafe.Pointer) (result g.List) {
-	iv, err := _I.Get(910, "Registry", "feature_filter")
+	iv, err := _I.Get(910, "Registry", "feature_filter", 293, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23158,7 +23158,7 @@ func (v Registry) FeatureFilter(filter int /*TODO_TYPE CALLBACK*/, first bool, u
 // [ result ] trans: everything
 //
 func (v Registry) FindFeature(name string, type1 gi.GType) (result PluginFeature) {
-	iv, err := _I.Get(911, "Registry", "find_feature")
+	iv, err := _I.Get(911, "Registry", "find_feature", 293, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23182,7 +23182,7 @@ func (v Registry) FindFeature(name string, type1 gi.GType) (result PluginFeature
 // [ result ] trans: everything
 //
 func (v Registry) FindPlugin(name string) (result Plugin) {
-	iv, err := _I.Get(912, "Registry", "find_plugin")
+	iv, err := _I.Get(912, "Registry", "find_plugin", 293, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23205,7 +23205,7 @@ func (v Registry) FindPlugin(name string) (result Plugin) {
 // [ result ] trans: everything
 //
 func (v Registry) GetFeatureList(type1 gi.GType) (result g.List) {
-	iv, err := _I.Get(913, "Registry", "get_feature_list")
+	iv, err := _I.Get(913, "Registry", "get_feature_list", 293, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23226,7 +23226,7 @@ func (v Registry) GetFeatureList(type1 gi.GType) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Registry) GetFeatureListByPlugin(name string) (result g.List) {
-	iv, err := _I.Get(914, "Registry", "get_feature_list_by_plugin")
+	iv, err := _I.Get(914, "Registry", "get_feature_list_by_plugin", 293, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23247,7 +23247,7 @@ func (v Registry) GetFeatureListByPlugin(name string) (result g.List) {
 // [ result ] trans: nothing
 //
 func (v Registry) GetFeatureListCookie() (result uint32) {
-	iv, err := _I.Get(915, "Registry", "get_feature_list_cookie")
+	iv, err := _I.Get(915, "Registry", "get_feature_list_cookie", 293, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23265,7 +23265,7 @@ func (v Registry) GetFeatureListCookie() (result uint32) {
 // [ result ] trans: everything
 //
 func (v Registry) GetPluginList() (result g.List) {
-	iv, err := _I.Get(916, "Registry", "get_plugin_list")
+	iv, err := _I.Get(916, "Registry", "get_plugin_list", 293, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23285,7 +23285,7 @@ func (v Registry) GetPluginList() (result g.List) {
 // [ result ] trans: everything
 //
 func (v Registry) Lookup(filename string) (result Plugin) {
-	iv, err := _I.Get(917, "Registry", "lookup")
+	iv, err := _I.Get(917, "Registry", "lookup", 293, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23308,7 +23308,7 @@ func (v Registry) Lookup(filename string) (result Plugin) {
 // [ result ] trans: everything
 //
 func (v Registry) LookupFeature(name string) (result PluginFeature) {
-	iv, err := _I.Get(918, "Registry", "lookup_feature")
+	iv, err := _I.Get(918, "Registry", "lookup_feature", 293, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23335,7 +23335,7 @@ func (v Registry) LookupFeature(name string) (result PluginFeature) {
 // [ result ] trans: everything
 //
 func (v Registry) PluginFilter(filter int /*TODO_TYPE CALLBACK*/, first bool, user_data unsafe.Pointer) (result g.List) {
-	iv, err := _I.Get(919, "Registry", "plugin_filter")
+	iv, err := _I.Get(919, "Registry", "plugin_filter", 293, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23356,7 +23356,7 @@ func (v Registry) PluginFilter(filter int /*TODO_TYPE CALLBACK*/, first bool, us
 // [ feature ] trans: nothing
 //
 func (v Registry) RemoveFeature(feature IPluginFeature) {
-	iv, err := _I.Get(920, "Registry", "remove_feature")
+	iv, err := _I.Get(920, "Registry", "remove_feature", 293, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23376,7 +23376,7 @@ func (v Registry) RemoveFeature(feature IPluginFeature) {
 // [ plugin ] trans: nothing
 //
 func (v Registry) RemovePlugin(plugin IPlugin) {
-	iv, err := _I.Get(921, "Registry", "remove_plugin")
+	iv, err := _I.Get(921, "Registry", "remove_plugin", 293, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23398,7 +23398,7 @@ func (v Registry) RemovePlugin(plugin IPlugin) {
 // [ result ] trans: nothing
 //
 func (v Registry) ScanPath(path string) (result bool) {
-	iv, err := _I.Get(922, "Registry", "scan_path")
+	iv, err := _I.Get(922, "Registry", "scan_path", 293, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23476,7 +23476,7 @@ func SampleGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewSample(buffer Buffer, caps Caps, segment Segment, info Structure) (result Sample) {
-	iv, err := _I.Get(923, "Sample", "new")
+	iv, err := _I.Get(923, "Sample", "new", 301, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23497,7 +23497,7 @@ func NewSample(buffer Buffer, caps Caps, segment Segment, info Structure) (resul
 // [ result ] trans: nothing
 //
 func (v Sample) GetBuffer() (result Buffer) {
-	iv, err := _I.Get(924, "Sample", "get_buffer")
+	iv, err := _I.Get(924, "Sample", "get_buffer", 301, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23515,7 +23515,7 @@ func (v Sample) GetBuffer() (result Buffer) {
 // [ result ] trans: nothing
 //
 func (v Sample) GetBufferList() (result BufferList) {
-	iv, err := _I.Get(925, "Sample", "get_buffer_list")
+	iv, err := _I.Get(925, "Sample", "get_buffer_list", 301, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23533,7 +23533,7 @@ func (v Sample) GetBufferList() (result BufferList) {
 // [ result ] trans: nothing
 //
 func (v Sample) GetCaps() (result Caps) {
-	iv, err := _I.Get(926, "Sample", "get_caps")
+	iv, err := _I.Get(926, "Sample", "get_caps", 301, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23551,7 +23551,7 @@ func (v Sample) GetCaps() (result Caps) {
 // [ result ] trans: nothing
 //
 func (v Sample) GetInfo() (result Structure) {
-	iv, err := _I.Get(927, "Sample", "get_info")
+	iv, err := _I.Get(927, "Sample", "get_info", 301, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23569,7 +23569,7 @@ func (v Sample) GetInfo() (result Structure) {
 // [ result ] trans: nothing
 //
 func (v Sample) GetSegment() (result Segment) {
-	iv, err := _I.Get(928, "Sample", "get_segment")
+	iv, err := _I.Get(928, "Sample", "get_segment", 301, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23587,7 +23587,7 @@ func (v Sample) GetSegment() (result Segment) {
 // [ buffer_list ] trans: nothing
 //
 func (v Sample) SetBufferList(buffer_list BufferList) {
-	iv, err := _I.Get(929, "Sample", "set_buffer_list")
+	iv, err := _I.Get(929, "Sample", "set_buffer_list", 301, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23680,7 +23680,7 @@ func SegmentGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewSegment() (result Segment) {
-	iv, err := _I.Get(930, "Segment", "new")
+	iv, err := _I.Get(930, "Segment", "new", 306, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23706,7 +23706,7 @@ func NewSegment() (result Segment) {
 // [ result ] trans: nothing
 //
 func (v Segment) Clip(format FormatEnum, start uint64, stop uint64) (result bool, clip_start uint64, clip_stop uint64) {
-	iv, err := _I.Get(931, "Segment", "clip")
+	iv, err := _I.Get(931, "Segment", "clip", 306, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23732,7 +23732,7 @@ func (v Segment) Clip(format FormatEnum, start uint64, stop uint64) (result bool
 // [ result ] trans: everything
 //
 func (v Segment) Copy() (result Segment) {
-	iv, err := _I.Get(932, "Segment", "copy")
+	iv, err := _I.Get(932, "Segment", "copy", 306, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23750,7 +23750,7 @@ func (v Segment) Copy() (result Segment) {
 // [ dest ] trans: nothing
 //
 func (v Segment) CopyInto(dest Segment) {
-	iv, err := _I.Get(933, "Segment", "copy_into")
+	iv, err := _I.Get(933, "Segment", "copy_into", 306, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23782,7 +23782,7 @@ func (v Segment) CopyInto(dest Segment) {
 // [ result ] trans: nothing
 //
 func (v Segment) DoSeek(rate float64, format FormatEnum, flags SeekFlags, start_type SeekTypeEnum, start uint64, stop_type SeekTypeEnum, stop uint64) (result bool, update bool) {
-	iv, err := _I.Get(934, "Segment", "do_seek")
+	iv, err := _I.Get(934, "Segment", "do_seek", 306, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23808,7 +23808,7 @@ func (v Segment) DoSeek(rate float64, format FormatEnum, flags SeekFlags, start_
 // gst_segment_free
 //
 func (v Segment) Free() {
-	iv, err := _I.Get(935, "Segment", "free")
+	iv, err := _I.Get(935, "Segment", "free", 306, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23823,7 +23823,7 @@ func (v Segment) Free() {
 // [ format ] trans: nothing
 //
 func (v Segment) Init(format FormatEnum) {
-	iv, err := _I.Get(936, "Segment", "init")
+	iv, err := _I.Get(936, "Segment", "init", 306, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23841,7 +23841,7 @@ func (v Segment) Init(format FormatEnum) {
 // [ result ] trans: nothing
 //
 func (v Segment) IsEqual(s1 Segment) (result bool) {
-	iv, err := _I.Get(937, "Segment", "is_equal")
+	iv, err := _I.Get(937, "Segment", "is_equal", 306, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23864,7 +23864,7 @@ func (v Segment) IsEqual(s1 Segment) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Segment) OffsetRunningTime(format FormatEnum, offset int64) (result bool) {
-	iv, err := _I.Get(938, "Segment", "offset_running_time")
+	iv, err := _I.Get(938, "Segment", "offset_running_time", 306, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23888,7 +23888,7 @@ func (v Segment) OffsetRunningTime(format FormatEnum, offset int64) (result bool
 // [ result ] trans: nothing
 //
 func (v Segment) PositionFromRunningTime(format FormatEnum, running_time uint64) (result uint64) {
-	iv, err := _I.Get(939, "Segment", "position_from_running_time")
+	iv, err := _I.Get(939, "Segment", "position_from_running_time", 306, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23914,7 +23914,7 @@ func (v Segment) PositionFromRunningTime(format FormatEnum, running_time uint64)
 // [ result ] trans: nothing
 //
 func (v Segment) PositionFromRunningTimeFull(format FormatEnum, running_time uint64) (result int32, position uint64) {
-	iv, err := _I.Get(940, "Segment", "position_from_running_time_full")
+	iv, err := _I.Get(940, "Segment", "position_from_running_time_full", 306, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23941,7 +23941,7 @@ func (v Segment) PositionFromRunningTimeFull(format FormatEnum, running_time uin
 // [ result ] trans: nothing
 //
 func (v Segment) PositionFromStreamTime(format FormatEnum, stream_time uint64) (result uint64) {
-	iv, err := _I.Get(941, "Segment", "position_from_stream_time")
+	iv, err := _I.Get(941, "Segment", "position_from_stream_time", 306, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23967,7 +23967,7 @@ func (v Segment) PositionFromStreamTime(format FormatEnum, stream_time uint64) (
 // [ result ] trans: nothing
 //
 func (v Segment) PositionFromStreamTimeFull(format FormatEnum, stream_time uint64) (result int32, position uint64) {
-	iv, err := _I.Get(942, "Segment", "position_from_stream_time_full")
+	iv, err := _I.Get(942, "Segment", "position_from_stream_time_full", 306, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -23994,7 +23994,7 @@ func (v Segment) PositionFromStreamTimeFull(format FormatEnum, stream_time uint6
 // [ result ] trans: nothing
 //
 func (v Segment) SetRunningTime(format FormatEnum, running_time uint64) (result bool) {
-	iv, err := _I.Get(943, "Segment", "set_running_time")
+	iv, err := _I.Get(943, "Segment", "set_running_time", 306, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24020,7 +24020,7 @@ func (v Segment) SetRunningTime(format FormatEnum, running_time uint64) (result 
 // [ result ] trans: nothing
 //
 func (v Segment) ToPosition(format FormatEnum, running_time uint64) (result uint64) {
-	iv, err := _I.Get(944, "Segment", "to_position")
+	iv, err := _I.Get(944, "Segment", "to_position", 306, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24044,7 +24044,7 @@ func (v Segment) ToPosition(format FormatEnum, running_time uint64) (result uint
 // [ result ] trans: nothing
 //
 func (v Segment) ToRunningTime(format FormatEnum, position uint64) (result uint64) {
-	iv, err := _I.Get(945, "Segment", "to_running_time")
+	iv, err := _I.Get(945, "Segment", "to_running_time", 306, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24070,7 +24070,7 @@ func (v Segment) ToRunningTime(format FormatEnum, position uint64) (result uint6
 // [ result ] trans: nothing
 //
 func (v Segment) ToRunningTimeFull(format FormatEnum, position uint64) (result int32, running_time uint64) {
-	iv, err := _I.Get(946, "Segment", "to_running_time_full")
+	iv, err := _I.Get(946, "Segment", "to_running_time_full", 306, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24097,7 +24097,7 @@ func (v Segment) ToRunningTimeFull(format FormatEnum, position uint64) (result i
 // [ result ] trans: nothing
 //
 func (v Segment) ToStreamTime(format FormatEnum, position uint64) (result uint64) {
-	iv, err := _I.Get(947, "Segment", "to_stream_time")
+	iv, err := _I.Get(947, "Segment", "to_stream_time", 306, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24123,7 +24123,7 @@ func (v Segment) ToStreamTime(format FormatEnum, position uint64) (result uint64
 // [ result ] trans: nothing
 //
 func (v Segment) ToStreamTimeFull(format FormatEnum, position uint64) (result int32, stream_time uint64) {
-	iv, err := _I.Get(948, "Segment", "to_stream_time_full")
+	iv, err := _I.Get(948, "Segment", "to_stream_time_full", 306, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24238,7 +24238,7 @@ func StaticCapsGetType() gi.GType {
 // gst_static_caps_cleanup
 //
 func (v StaticCaps) Cleanup() {
-	iv, err := _I.Get(949, "StaticCaps", "cleanup")
+	iv, err := _I.Get(949, "StaticCaps", "cleanup", 312, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24253,7 +24253,7 @@ func (v StaticCaps) Cleanup() {
 // [ result ] trans: everything
 //
 func (v StaticCaps) Get() (result Caps) {
-	iv, err := _I.Get(950, "StaticCaps", "get")
+	iv, err := _I.Get(950, "StaticCaps", "get", 312, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24283,7 +24283,7 @@ func StaticPadTemplateGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v StaticPadTemplate) Get() (result PadTemplate) {
-	iv, err := _I.Get(951, "StaticPadTemplate", "get")
+	iv, err := _I.Get(951, "StaticPadTemplate", "get", 313, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24301,7 +24301,7 @@ func (v StaticPadTemplate) Get() (result PadTemplate) {
 // [ result ] trans: everything
 //
 func (v StaticPadTemplate) GetCaps() (result Caps) {
-	iv, err := _I.Get(952, "StaticPadTemplate", "get_caps")
+	iv, err := _I.Get(952, "StaticPadTemplate", "get_caps", 313, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24342,7 +24342,7 @@ func StreamGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewStream(stream_id string, caps Caps, type1 StreamTypeFlags, flags StreamFlags) (result Stream) {
-	iv, err := _I.Get(953, "Stream", "new")
+	iv, err := _I.Get(953, "Stream", "new", 314, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24365,7 +24365,7 @@ func NewStream(stream_id string, caps Caps, type1 StreamTypeFlags, flags StreamF
 // [ result ] trans: everything
 //
 func (v Stream) GetCaps() (result Caps) {
-	iv, err := _I.Get(954, "Stream", "get_caps")
+	iv, err := _I.Get(954, "Stream", "get_caps", 314, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24383,7 +24383,7 @@ func (v Stream) GetCaps() (result Caps) {
 // [ result ] trans: nothing
 //
 func (v Stream) GetStreamFlags() (result StreamFlags) {
-	iv, err := _I.Get(955, "Stream", "get_stream_flags")
+	iv, err := _I.Get(955, "Stream", "get_stream_flags", 314, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24401,7 +24401,7 @@ func (v Stream) GetStreamFlags() (result StreamFlags) {
 // [ result ] trans: nothing
 //
 func (v Stream) GetStreamId() (result string) {
-	iv, err := _I.Get(956, "Stream", "get_stream_id")
+	iv, err := _I.Get(956, "Stream", "get_stream_id", 314, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24419,7 +24419,7 @@ func (v Stream) GetStreamId() (result string) {
 // [ result ] trans: nothing
 //
 func (v Stream) GetStreamType() (result StreamTypeFlags) {
-	iv, err := _I.Get(957, "Stream", "get_stream_type")
+	iv, err := _I.Get(957, "Stream", "get_stream_type", 314, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24437,7 +24437,7 @@ func (v Stream) GetStreamType() (result StreamTypeFlags) {
 // [ result ] trans: everything
 //
 func (v Stream) GetTags() (result TagList) {
-	iv, err := _I.Get(958, "Stream", "get_tags")
+	iv, err := _I.Get(958, "Stream", "get_tags", 314, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24455,7 +24455,7 @@ func (v Stream) GetTags() (result TagList) {
 // [ caps ] trans: nothing
 //
 func (v Stream) SetCaps(caps Caps) {
-	iv, err := _I.Get(959, "Stream", "set_caps")
+	iv, err := _I.Get(959, "Stream", "set_caps", 314, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24471,7 +24471,7 @@ func (v Stream) SetCaps(caps Caps) {
 // [ flags ] trans: nothing
 //
 func (v Stream) SetStreamFlags(flags StreamFlags) {
-	iv, err := _I.Get(960, "Stream", "set_stream_flags")
+	iv, err := _I.Get(960, "Stream", "set_stream_flags", 314, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24487,7 +24487,7 @@ func (v Stream) SetStreamFlags(flags StreamFlags) {
 // [ stream_type ] trans: nothing
 //
 func (v Stream) SetStreamType(stream_type StreamTypeFlags) {
-	iv, err := _I.Get(961, "Stream", "set_stream_type")
+	iv, err := _I.Get(961, "Stream", "set_stream_type", 314, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24503,7 +24503,7 @@ func (v Stream) SetStreamType(stream_type StreamTypeFlags) {
 // [ tags ] trans: nothing
 //
 func (v Stream) SetTags(tags TagList) {
-	iv, err := _I.Get(962, "Stream", "set_tags")
+	iv, err := _I.Get(962, "Stream", "set_tags", 314, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24538,7 +24538,7 @@ func StreamCollectionGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewStreamCollection(upstream_id string) (result StreamCollection) {
-	iv, err := _I.Get(963, "StreamCollection", "new")
+	iv, err := _I.Get(963, "StreamCollection", "new", 316, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24560,7 +24560,7 @@ func NewStreamCollection(upstream_id string) (result StreamCollection) {
 // [ result ] trans: nothing
 //
 func (v StreamCollection) AddStream(stream IStream) (result bool) {
-	iv, err := _I.Get(964, "StreamCollection", "add_stream")
+	iv, err := _I.Get(964, "StreamCollection", "add_stream", 316, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24583,7 +24583,7 @@ func (v StreamCollection) AddStream(stream IStream) (result bool) {
 // [ result ] trans: nothing
 //
 func (v StreamCollection) GetSize() (result uint32) {
-	iv, err := _I.Get(965, "StreamCollection", "get_size")
+	iv, err := _I.Get(965, "StreamCollection", "get_size", 316, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24603,7 +24603,7 @@ func (v StreamCollection) GetSize() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v StreamCollection) GetStream(index uint32) (result Stream) {
-	iv, err := _I.Get(966, "StreamCollection", "get_stream")
+	iv, err := _I.Get(966, "StreamCollection", "get_stream", 316, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24622,7 +24622,7 @@ func (v StreamCollection) GetStream(index uint32) (result Stream) {
 // [ result ] trans: nothing
 //
 func (v StreamCollection) GetUpstreamId() (result string) {
-	iv, err := _I.Get(967, "StreamCollection", "get_upstream_id")
+	iv, err := _I.Get(967, "StreamCollection", "get_upstream_id", 316, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24750,7 +24750,7 @@ func StructureGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewStructureEmpty(name string) (result Structure) {
-	iv, err := _I.Get(968, "Structure", "new_empty")
+	iv, err := _I.Get(968, "Structure", "new_empty", 324, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24772,7 +24772,7 @@ func NewStructureEmpty(name string) (result Structure) {
 // [ result ] trans: everything
 //
 func NewStructureFromString(string string) (result Structure) {
-	iv, err := _I.Get(969, "Structure", "new_from_string")
+	iv, err := _I.Get(969, "Structure", "new_from_string", 324, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24794,7 +24794,7 @@ func NewStructureFromString(string string) (result Structure) {
 // [ result ] trans: everything
 //
 func NewStructureIdEmpty(quark uint32) (result Structure) {
-	iv, err := _I.Get(970, "Structure", "new_id_empty")
+	iv, err := _I.Get(970, "Structure", "new_id_empty", 324, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24814,7 +24814,7 @@ func NewStructureIdEmpty(quark uint32) (result Structure) {
 // [ result ] trans: nothing
 //
 func (v Structure) CanIntersect(struct2 Structure) (result bool) {
-	iv, err := _I.Get(971, "Structure", "can_intersect")
+	iv, err := _I.Get(971, "Structure", "can_intersect", 324, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24833,7 +24833,7 @@ func (v Structure) CanIntersect(struct2 Structure) (result bool) {
 // [ result ] trans: everything
 //
 func (v Structure) Copy() (result Structure) {
-	iv, err := _I.Get(972, "Structure", "copy")
+	iv, err := _I.Get(972, "Structure", "copy", 324, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24853,7 +24853,7 @@ func (v Structure) Copy() (result Structure) {
 // [ user_data ] trans: nothing
 //
 func (v Structure) FilterAndMapInPlace(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(973, "Structure", "filter_and_map_in_place")
+	iv, err := _I.Get(973, "Structure", "filter_and_map_in_place", 324, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24868,7 +24868,7 @@ func (v Structure) FilterAndMapInPlace(func1 int /*TODO_TYPE CALLBACK*/, user_da
 // gst_structure_fixate
 //
 func (v Structure) Fixate() {
-	iv, err := _I.Get(974, "Structure", "fixate")
+	iv, err := _I.Get(974, "Structure", "fixate", 324, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24885,7 +24885,7 @@ func (v Structure) Fixate() {
 // [ result ] trans: nothing
 //
 func (v Structure) FixateField(field_name string) (result bool) {
-	iv, err := _I.Get(975, "Structure", "fixate_field")
+	iv, err := _I.Get(975, "Structure", "fixate_field", 324, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24910,7 +24910,7 @@ func (v Structure) FixateField(field_name string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Structure) FixateFieldBoolean(field_name string, target bool) (result bool) {
-	iv, err := _I.Get(976, "Structure", "fixate_field_boolean")
+	iv, err := _I.Get(976, "Structure", "fixate_field_boolean", 324, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24936,7 +24936,7 @@ func (v Structure) FixateFieldBoolean(field_name string, target bool) (result bo
 // [ result ] trans: nothing
 //
 func (v Structure) FixateFieldNearestDouble(field_name string, target float64) (result bool) {
-	iv, err := _I.Get(977, "Structure", "fixate_field_nearest_double")
+	iv, err := _I.Get(977, "Structure", "fixate_field_nearest_double", 324, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24964,7 +24964,7 @@ func (v Structure) FixateFieldNearestDouble(field_name string, target float64) (
 // [ result ] trans: nothing
 //
 func (v Structure) FixateFieldNearestFraction(field_name string, target_numerator int32, target_denominator int32) (result bool) {
-	iv, err := _I.Get(978, "Structure", "fixate_field_nearest_fraction")
+	iv, err := _I.Get(978, "Structure", "fixate_field_nearest_fraction", 324, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -24991,7 +24991,7 @@ func (v Structure) FixateFieldNearestFraction(field_name string, target_numerato
 // [ result ] trans: nothing
 //
 func (v Structure) FixateFieldNearestInt(field_name string, target int32) (result bool) {
-	iv, err := _I.Get(979, "Structure", "fixate_field_nearest_int")
+	iv, err := _I.Get(979, "Structure", "fixate_field_nearest_int", 324, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25017,7 +25017,7 @@ func (v Structure) FixateFieldNearestInt(field_name string, target int32) (resul
 // [ result ] trans: nothing
 //
 func (v Structure) FixateFieldString(field_name string, target string) (result bool) {
-	iv, err := _I.Get(980, "Structure", "fixate_field_string")
+	iv, err := _I.Get(980, "Structure", "fixate_field_string", 324, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25045,7 +25045,7 @@ func (v Structure) FixateFieldString(field_name string, target string) (result b
 // [ result ] trans: nothing
 //
 func (v Structure) Foreach(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(981, "Structure", "foreach")
+	iv, err := _I.Get(981, "Structure", "foreach", 324, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25063,7 +25063,7 @@ func (v Structure) Foreach(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Po
 // gst_structure_free
 //
 func (v Structure) Free() {
-	iv, err := _I.Get(982, "Structure", "free")
+	iv, err := _I.Get(982, "Structure", "free", 324, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25082,7 +25082,7 @@ func (v Structure) Free() {
 // [ result ] trans: nothing
 //
 func (v Structure) GetArray(fieldname string) (result bool, array g.ValueArray) {
-	iv, err := _I.Get(983, "Structure", "get_array")
+	iv, err := _I.Get(983, "Structure", "get_array", 324, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25110,7 +25110,7 @@ func (v Structure) GetArray(fieldname string) (result bool, array g.ValueArray) 
 // [ result ] trans: nothing
 //
 func (v Structure) GetBoolean(fieldname string) (result bool, value bool) {
-	iv, err := _I.Get(984, "Structure", "get_boolean")
+	iv, err := _I.Get(984, "Structure", "get_boolean", 324, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25138,7 +25138,7 @@ func (v Structure) GetBoolean(fieldname string) (result bool, value bool) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetClockTime(fieldname string) (result bool, value uint64) {
-	iv, err := _I.Get(985, "Structure", "get_clock_time")
+	iv, err := _I.Get(985, "Structure", "get_clock_time", 324, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25166,7 +25166,7 @@ func (v Structure) GetClockTime(fieldname string) (result bool, value uint64) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetDate(fieldname string) (result bool, value g.Date) {
-	iv, err := _I.Get(986, "Structure", "get_date")
+	iv, err := _I.Get(986, "Structure", "get_date", 324, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25194,7 +25194,7 @@ func (v Structure) GetDate(fieldname string) (result bool, value g.Date) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetDateTime(fieldname string) (result bool, value DateTime) {
-	iv, err := _I.Get(987, "Structure", "get_date_time")
+	iv, err := _I.Get(987, "Structure", "get_date_time", 324, 19, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25222,7 +25222,7 @@ func (v Structure) GetDateTime(fieldname string) (result bool, value DateTime) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetDouble(fieldname string) (result bool, value float64) {
-	iv, err := _I.Get(988, "Structure", "get_double")
+	iv, err := _I.Get(988, "Structure", "get_double", 324, 20, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25252,7 +25252,7 @@ func (v Structure) GetDouble(fieldname string) (result bool, value float64) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetEnum(fieldname string, enumtype gi.GType) (result bool, value int32) {
-	iv, err := _I.Get(989, "Structure", "get_enum")
+	iv, err := _I.Get(989, "Structure", "get_enum", 324, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25279,7 +25279,7 @@ func (v Structure) GetEnum(fieldname string, enumtype gi.GType) (result bool, va
 // [ result ] trans: nothing
 //
 func (v Structure) GetFieldType(fieldname string) (result gi.GType) {
-	iv, err := _I.Get(990, "Structure", "get_field_type")
+	iv, err := _I.Get(990, "Structure", "get_field_type", 324, 22, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25306,7 +25306,7 @@ func (v Structure) GetFieldType(fieldname string) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetFlagset(fieldname string) (result bool, value_flags uint32, value_mask uint32) {
-	iv, err := _I.Get(991, "Structure", "get_flagset")
+	iv, err := _I.Get(991, "Structure", "get_flagset", 324, 23, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25338,7 +25338,7 @@ func (v Structure) GetFlagset(fieldname string) (result bool, value_flags uint32
 // [ result ] trans: nothing
 //
 func (v Structure) GetFraction(fieldname string) (result bool, value_numerator int32, value_denominator int32) {
-	iv, err := _I.Get(992, "Structure", "get_fraction")
+	iv, err := _I.Get(992, "Structure", "get_fraction", 324, 24, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25368,7 +25368,7 @@ func (v Structure) GetFraction(fieldname string) (result bool, value_numerator i
 // [ result ] trans: nothing
 //
 func (v Structure) GetInt(fieldname string) (result bool, value int32) {
-	iv, err := _I.Get(993, "Structure", "get_int")
+	iv, err := _I.Get(993, "Structure", "get_int", 324, 25, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25396,7 +25396,7 @@ func (v Structure) GetInt(fieldname string) (result bool, value int32) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetInt64(fieldname string) (result bool, value int64) {
-	iv, err := _I.Get(994, "Structure", "get_int64")
+	iv, err := _I.Get(994, "Structure", "get_int64", 324, 26, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25424,7 +25424,7 @@ func (v Structure) GetInt64(fieldname string) (result bool, value int64) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetList(fieldname string) (result bool, array g.ValueArray) {
-	iv, err := _I.Get(995, "Structure", "get_list")
+	iv, err := _I.Get(995, "Structure", "get_list", 324, 27, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25448,7 +25448,7 @@ func (v Structure) GetList(fieldname string) (result bool, array g.ValueArray) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetName() (result string) {
-	iv, err := _I.Get(996, "Structure", "get_name")
+	iv, err := _I.Get(996, "Structure", "get_name", 324, 28, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25466,7 +25466,7 @@ func (v Structure) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetNameId() (result uint32) {
-	iv, err := _I.Get(997, "Structure", "get_name_id")
+	iv, err := _I.Get(997, "Structure", "get_name_id", 324, 29, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25486,7 +25486,7 @@ func (v Structure) GetNameId() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetString(fieldname string) (result string) {
-	iv, err := _I.Get(998, "Structure", "get_string")
+	iv, err := _I.Get(998, "Structure", "get_string", 324, 30, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25511,7 +25511,7 @@ func (v Structure) GetString(fieldname string) (result string) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetUint(fieldname string) (result bool, value uint32) {
-	iv, err := _I.Get(999, "Structure", "get_uint")
+	iv, err := _I.Get(999, "Structure", "get_uint", 324, 31, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25539,7 +25539,7 @@ func (v Structure) GetUint(fieldname string) (result bool, value uint32) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetUint64(fieldname string) (result bool, value uint64) {
-	iv, err := _I.Get(1000, "Structure", "get_uint64")
+	iv, err := _I.Get(1000, "Structure", "get_uint64", 324, 32, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25565,7 +25565,7 @@ func (v Structure) GetUint64(fieldname string) (result bool, value uint64) {
 // [ result ] trans: nothing
 //
 func (v Structure) GetValue(fieldname string) (result g.Value) {
-	iv, err := _I.Get(1001, "Structure", "get_value")
+	iv, err := _I.Get(1001, "Structure", "get_value", 324, 33, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25588,7 +25588,7 @@ func (v Structure) GetValue(fieldname string) (result g.Value) {
 // [ result ] trans: nothing
 //
 func (v Structure) HasField(fieldname string) (result bool) {
-	iv, err := _I.Get(1002, "Structure", "has_field")
+	iv, err := _I.Get(1002, "Structure", "has_field", 324, 34, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25613,7 +25613,7 @@ func (v Structure) HasField(fieldname string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Structure) HasFieldTyped(fieldname string, type1 gi.GType) (result bool) {
-	iv, err := _I.Get(1003, "Structure", "has_field_typed")
+	iv, err := _I.Get(1003, "Structure", "has_field_typed", 324, 35, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25637,7 +25637,7 @@ func (v Structure) HasFieldTyped(fieldname string, type1 gi.GType) (result bool)
 // [ result ] trans: nothing
 //
 func (v Structure) HasName(name string) (result bool) {
-	iv, err := _I.Get(1004, "Structure", "has_name")
+	iv, err := _I.Get(1004, "Structure", "has_name", 324, 36, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25660,7 +25660,7 @@ func (v Structure) HasName(name string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Structure) IdGetValue(field uint32) (result g.Value) {
-	iv, err := _I.Get(1005, "Structure", "id_get_value")
+	iv, err := _I.Get(1005, "Structure", "id_get_value", 324, 37, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25681,7 +25681,7 @@ func (v Structure) IdGetValue(field uint32) (result g.Value) {
 // [ result ] trans: nothing
 //
 func (v Structure) IdHasField(field uint32) (result bool) {
-	iv, err := _I.Get(1006, "Structure", "id_has_field")
+	iv, err := _I.Get(1006, "Structure", "id_has_field", 324, 38, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25704,7 +25704,7 @@ func (v Structure) IdHasField(field uint32) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Structure) IdHasFieldTyped(field uint32, type1 gi.GType) (result bool) {
-	iv, err := _I.Get(1007, "Structure", "id_has_field_typed")
+	iv, err := _I.Get(1007, "Structure", "id_has_field_typed", 324, 39, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25726,7 +25726,7 @@ func (v Structure) IdHasFieldTyped(field uint32, type1 gi.GType) (result bool) {
 // [ value ] trans: nothing
 //
 func (v Structure) IdSetValue(field uint32, value g.Value) {
-	iv, err := _I.Get(1008, "Structure", "id_set_value")
+	iv, err := _I.Get(1008, "Structure", "id_set_value", 324, 40, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25745,7 +25745,7 @@ func (v Structure) IdSetValue(field uint32, value g.Value) {
 // [ value ] trans: everything
 //
 func (v Structure) IdTakeValue(field uint32, value g.Value) {
-	iv, err := _I.Get(1009, "Structure", "id_take_value")
+	iv, err := _I.Get(1009, "Structure", "id_take_value", 324, 41, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25764,7 +25764,7 @@ func (v Structure) IdTakeValue(field uint32, value g.Value) {
 // [ result ] trans: everything
 //
 func (v Structure) Intersect(struct2 Structure) (result Structure) {
-	iv, err := _I.Get(1010, "Structure", "intersect")
+	iv, err := _I.Get(1010, "Structure", "intersect", 324, 42, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25785,7 +25785,7 @@ func (v Structure) Intersect(struct2 Structure) (result Structure) {
 // [ result ] trans: nothing
 //
 func (v Structure) IsEqual(structure2 Structure) (result bool) {
-	iv, err := _I.Get(1011, "Structure", "is_equal")
+	iv, err := _I.Get(1011, "Structure", "is_equal", 324, 43, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25806,7 +25806,7 @@ func (v Structure) IsEqual(structure2 Structure) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Structure) IsSubset(superset Structure) (result bool) {
-	iv, err := _I.Get(1012, "Structure", "is_subset")
+	iv, err := _I.Get(1012, "Structure", "is_subset", 324, 44, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25829,7 +25829,7 @@ func (v Structure) IsSubset(superset Structure) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Structure) MapInPlace(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(1013, "Structure", "map_in_place")
+	iv, err := _I.Get(1013, "Structure", "map_in_place", 324, 45, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25849,7 +25849,7 @@ func (v Structure) MapInPlace(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe
 // [ result ] trans: nothing
 //
 func (v Structure) NFields() (result int32) {
-	iv, err := _I.Get(1014, "Structure", "n_fields")
+	iv, err := _I.Get(1014, "Structure", "n_fields", 324, 46, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25869,7 +25869,7 @@ func (v Structure) NFields() (result int32) {
 // [ result ] trans: nothing
 //
 func (v Structure) NthFieldName(index uint32) (result string) {
-	iv, err := _I.Get(1015, "Structure", "nth_field_name")
+	iv, err := _I.Get(1015, "Structure", "nth_field_name", 324, 47, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25886,7 +25886,7 @@ func (v Structure) NthFieldName(index uint32) (result string) {
 // gst_structure_remove_all_fields
 //
 func (v Structure) RemoveAllFields() {
-	iv, err := _I.Get(1016, "Structure", "remove_all_fields")
+	iv, err := _I.Get(1016, "Structure", "remove_all_fields", 324, 48, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25901,7 +25901,7 @@ func (v Structure) RemoveAllFields() {
 // [ fieldname ] trans: nothing
 //
 func (v Structure) RemoveField(fieldname string) {
-	iv, err := _I.Get(1017, "Structure", "remove_field")
+	iv, err := _I.Get(1017, "Structure", "remove_field", 324, 49, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25921,7 +25921,7 @@ func (v Structure) RemoveField(fieldname string) {
 // [ array ] trans: nothing
 //
 func (v Structure) SetArray(fieldname string, array g.ValueArray) {
-	iv, err := _I.Get(1018, "Structure", "set_array")
+	iv, err := _I.Get(1018, "Structure", "set_array", 324, 50, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25942,7 +25942,7 @@ func (v Structure) SetArray(fieldname string, array g.ValueArray) {
 // [ array ] trans: nothing
 //
 func (v Structure) SetList(fieldname string, array g.ValueArray) {
-	iv, err := _I.Get(1019, "Structure", "set_list")
+	iv, err := _I.Get(1019, "Structure", "set_list", 324, 51, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25961,7 +25961,7 @@ func (v Structure) SetList(fieldname string, array g.ValueArray) {
 // [ name ] trans: nothing
 //
 func (v Structure) SetName(name string) {
-	iv, err := _I.Get(1020, "Structure", "set_name")
+	iv, err := _I.Get(1020, "Structure", "set_name", 324, 52, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -25981,7 +25981,7 @@ func (v Structure) SetName(name string) {
 // [ result ] trans: nothing
 //
 func (v Structure) SetParentRefcount(refcount int32) (result bool) {
-	iv, err := _I.Get(1021, "Structure", "set_parent_refcount")
+	iv, err := _I.Get(1021, "Structure", "set_parent_refcount", 324, 53, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26002,7 +26002,7 @@ func (v Structure) SetParentRefcount(refcount int32) (result bool) {
 // [ value ] trans: nothing
 //
 func (v Structure) SetValue(fieldname string, value g.Value) {
-	iv, err := _I.Get(1022, "Structure", "set_value")
+	iv, err := _I.Get(1022, "Structure", "set_value", 324, 54, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26023,7 +26023,7 @@ func (v Structure) SetValue(fieldname string, value g.Value) {
 // [ value ] trans: everything
 //
 func (v Structure) TakeValue(fieldname string, value g.Value) {
-	iv, err := _I.Get(1023, "Structure", "take_value")
+	iv, err := _I.Get(1023, "Structure", "take_value", 324, 55, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26042,7 +26042,7 @@ func (v Structure) TakeValue(fieldname string, value g.Value) {
 // [ result ] trans: everything
 //
 func (v Structure) ToString() (result string) {
-	iv, err := _I.Get(1024, "Structure", "to_string")
+	iv, err := _I.Get(1024, "Structure", "to_string", 324, 56, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26064,7 +26064,7 @@ func (v Structure) ToString() (result string) {
 // [ result ] trans: everything
 //
 func StructureFromString1(string string) (result Structure, end string) {
-	iv, err := _I.Get(1025, "Structure", "from_string")
+	iv, err := _I.Get(1025, "Structure", "from_string", 324, 57, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26172,7 +26172,7 @@ func SystemClockGetType() gi.GType {
 // [ new_clock ] trans: nothing
 //
 func SystemClockSetDefault1(new_clock IClock) {
-	iv, err := _I.Get(1027, "SystemClock", "set_default")
+	iv, err := _I.Get(1027, "SystemClock", "set_default", 329, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26250,7 +26250,7 @@ func TagListGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewTagListEmpty() (result TagList) {
-	iv, err := _I.Get(1028, "TagList", "new_empty")
+	iv, err := _I.Get(1028, "TagList", "new_empty", 421, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26268,7 +26268,7 @@ func NewTagListEmpty() (result TagList) {
 // [ result ] trans: everything
 //
 func NewTagListFromString(str string) (result TagList) {
-	iv, err := _I.Get(1029, "TagList", "new_from_string")
+	iv, err := _I.Get(1029, "TagList", "new_from_string", 421, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26292,7 +26292,7 @@ func NewTagListFromString(str string) (result TagList) {
 // [ value ] trans: nothing
 //
 func (v TagList) AddValue(mode TagMergeModeEnum, tag string, value g.Value) {
-	iv, err := _I.Get(1030, "TagList", "add_value")
+	iv, err := _I.Get(1030, "TagList", "add_value", 421, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26314,7 +26314,7 @@ func (v TagList) AddValue(mode TagMergeModeEnum, tag string, value g.Value) {
 // [ user_data ] trans: nothing
 //
 func (v TagList) Foreach(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(1031, "TagList", "foreach")
+	iv, err := _I.Get(1031, "TagList", "foreach", 421, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26335,7 +26335,7 @@ func (v TagList) Foreach(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Poin
 // [ result ] trans: nothing
 //
 func (v TagList) GetBoolean(tag string) (result bool, value bool) {
-	iv, err := _I.Get(1032, "TagList", "get_boolean")
+	iv, err := _I.Get(1032, "TagList", "get_boolean", 421, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26365,7 +26365,7 @@ func (v TagList) GetBoolean(tag string) (result bool, value bool) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetBooleanIndex(tag string, index uint32) (result bool, value bool) {
-	iv, err := _I.Get(1033, "TagList", "get_boolean_index")
+	iv, err := _I.Get(1033, "TagList", "get_boolean_index", 421, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26394,7 +26394,7 @@ func (v TagList) GetBooleanIndex(tag string, index uint32) (result bool, value b
 // [ result ] trans: nothing
 //
 func (v TagList) GetDate(tag string) (result bool, value g.Date) {
-	iv, err := _I.Get(1034, "TagList", "get_date")
+	iv, err := _I.Get(1034, "TagList", "get_date", 421, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26424,7 +26424,7 @@ func (v TagList) GetDate(tag string) (result bool, value g.Date) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetDateIndex(tag string, index uint32) (result bool, value g.Date) {
-	iv, err := _I.Get(1035, "TagList", "get_date_index")
+	iv, err := _I.Get(1035, "TagList", "get_date_index", 421, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26453,7 +26453,7 @@ func (v TagList) GetDateIndex(tag string, index uint32) (result bool, value g.Da
 // [ result ] trans: nothing
 //
 func (v TagList) GetDateTime(tag string) (result bool, value DateTime) {
-	iv, err := _I.Get(1036, "TagList", "get_date_time")
+	iv, err := _I.Get(1036, "TagList", "get_date_time", 421, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26483,7 +26483,7 @@ func (v TagList) GetDateTime(tag string) (result bool, value DateTime) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetDateTimeIndex(tag string, index uint32) (result bool, value DateTime) {
-	iv, err := _I.Get(1037, "TagList", "get_date_time_index")
+	iv, err := _I.Get(1037, "TagList", "get_date_time_index", 421, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26512,7 +26512,7 @@ func (v TagList) GetDateTimeIndex(tag string, index uint32) (result bool, value 
 // [ result ] trans: nothing
 //
 func (v TagList) GetDouble(tag string) (result bool, value float64) {
-	iv, err := _I.Get(1038, "TagList", "get_double")
+	iv, err := _I.Get(1038, "TagList", "get_double", 421, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26542,7 +26542,7 @@ func (v TagList) GetDouble(tag string) (result bool, value float64) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetDoubleIndex(tag string, index uint32) (result bool, value float64) {
-	iv, err := _I.Get(1039, "TagList", "get_double_index")
+	iv, err := _I.Get(1039, "TagList", "get_double_index", 421, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26571,7 +26571,7 @@ func (v TagList) GetDoubleIndex(tag string, index uint32) (result bool, value fl
 // [ result ] trans: nothing
 //
 func (v TagList) GetFloat(tag string) (result bool, value float32) {
-	iv, err := _I.Get(1040, "TagList", "get_float")
+	iv, err := _I.Get(1040, "TagList", "get_float", 421, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26601,7 +26601,7 @@ func (v TagList) GetFloat(tag string) (result bool, value float32) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetFloatIndex(tag string, index uint32) (result bool, value float32) {
-	iv, err := _I.Get(1041, "TagList", "get_float_index")
+	iv, err := _I.Get(1041, "TagList", "get_float_index", 421, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26630,7 +26630,7 @@ func (v TagList) GetFloatIndex(tag string, index uint32) (result bool, value flo
 // [ result ] trans: nothing
 //
 func (v TagList) GetInt(tag string) (result bool, value int32) {
-	iv, err := _I.Get(1042, "TagList", "get_int")
+	iv, err := _I.Get(1042, "TagList", "get_int", 421, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26658,7 +26658,7 @@ func (v TagList) GetInt(tag string) (result bool, value int32) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetInt64(tag string) (result bool, value int64) {
-	iv, err := _I.Get(1043, "TagList", "get_int64")
+	iv, err := _I.Get(1043, "TagList", "get_int64", 421, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26688,7 +26688,7 @@ func (v TagList) GetInt64(tag string) (result bool, value int64) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetInt64Index(tag string, index uint32) (result bool, value int64) {
-	iv, err := _I.Get(1044, "TagList", "get_int64_index")
+	iv, err := _I.Get(1044, "TagList", "get_int64_index", 421, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26719,7 +26719,7 @@ func (v TagList) GetInt64Index(tag string, index uint32) (result bool, value int
 // [ result ] trans: nothing
 //
 func (v TagList) GetIntIndex(tag string, index uint32) (result bool, value int32) {
-	iv, err := _I.Get(1045, "TagList", "get_int_index")
+	iv, err := _I.Get(1045, "TagList", "get_int_index", 421, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26748,7 +26748,7 @@ func (v TagList) GetIntIndex(tag string, index uint32) (result bool, value int32
 // [ result ] trans: nothing
 //
 func (v TagList) GetPointer(tag string) (result bool, value unsafe.Pointer) {
-	iv, err := _I.Get(1046, "TagList", "get_pointer")
+	iv, err := _I.Get(1046, "TagList", "get_pointer", 421, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26778,7 +26778,7 @@ func (v TagList) GetPointer(tag string) (result bool, value unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetPointerIndex(tag string, index uint32) (result bool, value unsafe.Pointer) {
-	iv, err := _I.Get(1047, "TagList", "get_pointer_index")
+	iv, err := _I.Get(1047, "TagList", "get_pointer_index", 421, 19, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26807,7 +26807,7 @@ func (v TagList) GetPointerIndex(tag string, index uint32) (result bool, value u
 // [ result ] trans: nothing
 //
 func (v TagList) GetSample(tag string) (result bool, sample Sample) {
-	iv, err := _I.Get(1048, "TagList", "get_sample")
+	iv, err := _I.Get(1048, "TagList", "get_sample", 421, 20, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26837,7 +26837,7 @@ func (v TagList) GetSample(tag string) (result bool, sample Sample) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetSampleIndex(tag string, index uint32) (result bool, sample Sample) {
-	iv, err := _I.Get(1049, "TagList", "get_sample_index")
+	iv, err := _I.Get(1049, "TagList", "get_sample_index", 421, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26862,7 +26862,7 @@ func (v TagList) GetSampleIndex(tag string, index uint32) (result bool, sample S
 // [ result ] trans: nothing
 //
 func (v TagList) GetScope() (result TagScopeEnum) {
-	iv, err := _I.Get(1050, "TagList", "get_scope")
+	iv, err := _I.Get(1050, "TagList", "get_scope", 421, 22, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26884,7 +26884,7 @@ func (v TagList) GetScope() (result TagScopeEnum) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetString(tag string) (result bool, value string) {
-	iv, err := _I.Get(1051, "TagList", "get_string")
+	iv, err := _I.Get(1051, "TagList", "get_string", 421, 23, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26914,7 +26914,7 @@ func (v TagList) GetString(tag string) (result bool, value string) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetStringIndex(tag string, index uint32) (result bool, value string) {
-	iv, err := _I.Get(1052, "TagList", "get_string_index")
+	iv, err := _I.Get(1052, "TagList", "get_string_index", 421, 24, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26941,7 +26941,7 @@ func (v TagList) GetStringIndex(tag string, index uint32) (result bool, value st
 // [ result ] trans: nothing
 //
 func (v TagList) GetTagSize(tag string) (result uint32) {
-	iv, err := _I.Get(1053, "TagList", "get_tag_size")
+	iv, err := _I.Get(1053, "TagList", "get_tag_size", 421, 25, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26966,7 +26966,7 @@ func (v TagList) GetTagSize(tag string) (result uint32) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetUint(tag string) (result bool, value uint32) {
-	iv, err := _I.Get(1054, "TagList", "get_uint")
+	iv, err := _I.Get(1054, "TagList", "get_uint", 421, 26, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -26994,7 +26994,7 @@ func (v TagList) GetUint(tag string) (result bool, value uint32) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetUint64(tag string) (result bool, value uint64) {
-	iv, err := _I.Get(1055, "TagList", "get_uint64")
+	iv, err := _I.Get(1055, "TagList", "get_uint64", 421, 27, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27024,7 +27024,7 @@ func (v TagList) GetUint64(tag string) (result bool, value uint64) {
 // [ result ] trans: nothing
 //
 func (v TagList) GetUint64Index(tag string, index uint32) (result bool, value uint64) {
-	iv, err := _I.Get(1056, "TagList", "get_uint64_index")
+	iv, err := _I.Get(1056, "TagList", "get_uint64_index", 421, 28, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27055,7 +27055,7 @@ func (v TagList) GetUint64Index(tag string, index uint32) (result bool, value ui
 // [ result ] trans: nothing
 //
 func (v TagList) GetUintIndex(tag string, index uint32) (result bool, value uint32) {
-	iv, err := _I.Get(1057, "TagList", "get_uint_index")
+	iv, err := _I.Get(1057, "TagList", "get_uint_index", 421, 29, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27084,7 +27084,7 @@ func (v TagList) GetUintIndex(tag string, index uint32) (result bool, value uint
 // [ result ] trans: nothing
 //
 func (v TagList) GetValueIndex(tag string, index uint32) (result g.Value) {
-	iv, err := _I.Get(1058, "TagList", "get_value_index")
+	iv, err := _I.Get(1058, "TagList", "get_value_index", 421, 30, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27108,7 +27108,7 @@ func (v TagList) GetValueIndex(tag string, index uint32) (result g.Value) {
 // [ mode ] trans: nothing
 //
 func (v TagList) Insert(from TagList, mode TagMergeModeEnum) {
-	iv, err := _I.Get(1059, "TagList", "insert")
+	iv, err := _I.Get(1059, "TagList", "insert", 421, 31, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27125,7 +27125,7 @@ func (v TagList) Insert(from TagList, mode TagMergeModeEnum) {
 // [ result ] trans: nothing
 //
 func (v TagList) IsEmpty() (result bool) {
-	iv, err := _I.Get(1060, "TagList", "is_empty")
+	iv, err := _I.Get(1060, "TagList", "is_empty", 421, 32, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27145,7 +27145,7 @@ func (v TagList) IsEmpty() (result bool) {
 // [ result ] trans: nothing
 //
 func (v TagList) IsEqual(list2 TagList) (result bool) {
-	iv, err := _I.Get(1061, "TagList", "is_equal")
+	iv, err := _I.Get(1061, "TagList", "is_equal", 421, 33, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27168,7 +27168,7 @@ func (v TagList) IsEqual(list2 TagList) (result bool) {
 // [ result ] trans: everything
 //
 func (v TagList) Merge(list2 TagList, mode TagMergeModeEnum) (result TagList) {
-	iv, err := _I.Get(1062, "TagList", "merge")
+	iv, err := _I.Get(1062, "TagList", "merge", 421, 34, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27188,7 +27188,7 @@ func (v TagList) Merge(list2 TagList, mode TagMergeModeEnum) (result TagList) {
 // [ result ] trans: nothing
 //
 func (v TagList) NTags() (result int32) {
-	iv, err := _I.Get(1063, "TagList", "n_tags")
+	iv, err := _I.Get(1063, "TagList", "n_tags", 421, 35, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27208,7 +27208,7 @@ func (v TagList) NTags() (result int32) {
 // [ result ] trans: nothing
 //
 func (v TagList) NthTagName(index uint32) (result string) {
-	iv, err := _I.Get(1064, "TagList", "nth_tag_name")
+	iv, err := _I.Get(1064, "TagList", "nth_tag_name", 421, 36, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27233,7 +27233,7 @@ func (v TagList) NthTagName(index uint32) (result string) {
 // [ result ] trans: nothing
 //
 func (v TagList) PeekStringIndex(tag string, index uint32) (result bool, value string) {
-	iv, err := _I.Get(1065, "TagList", "peek_string_index")
+	iv, err := _I.Get(1065, "TagList", "peek_string_index", 421, 37, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27258,7 +27258,7 @@ func (v TagList) PeekStringIndex(tag string, index uint32) (result bool, value s
 // [ tag ] trans: nothing
 //
 func (v TagList) RemoveTag(tag string) {
-	iv, err := _I.Get(1066, "TagList", "remove_tag")
+	iv, err := _I.Get(1066, "TagList", "remove_tag", 421, 38, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27276,7 +27276,7 @@ func (v TagList) RemoveTag(tag string) {
 // [ scope ] trans: nothing
 //
 func (v TagList) SetScope(scope TagScopeEnum) {
-	iv, err := _I.Get(1067, "TagList", "set_scope")
+	iv, err := _I.Get(1067, "TagList", "set_scope", 421, 39, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27292,7 +27292,7 @@ func (v TagList) SetScope(scope TagScopeEnum) {
 // [ result ] trans: everything
 //
 func (v TagList) ToString() (result string) {
-	iv, err := _I.Get(1068, "TagList", "to_string")
+	iv, err := _I.Get(1068, "TagList", "to_string", 421, 40, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27316,7 +27316,7 @@ func (v TagList) ToString() (result string) {
 // [ result ] trans: nothing
 //
 func TagListCopyValue1(dest g.Value, list TagList, tag string) (result bool) {
-	iv, err := _I.Get(1069, "TagList", "copy_value")
+	iv, err := _I.Get(1069, "TagList", "copy_value", 421, 41, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27402,7 +27402,7 @@ func TagSetterGetType() gi.GType {
 // [ value ] trans: nothing
 //
 func (v *TagSetterIfc) AddTagValue(mode TagMergeModeEnum, tag string, value g.Value) {
-	iv, err := _I.Get(1070, "TagSetter", "add_tag_value")
+	iv, err := _I.Get(1070, "TagSetter", "add_tag_value", 425, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27422,7 +27422,7 @@ func (v *TagSetterIfc) AddTagValue(mode TagMergeModeEnum, tag string, value g.Va
 // [ result ] trans: nothing
 //
 func (v *TagSetterIfc) GetTagList() (result TagList) {
-	iv, err := _I.Get(1071, "TagSetter", "get_tag_list")
+	iv, err := _I.Get(1071, "TagSetter", "get_tag_list", 425, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27440,7 +27440,7 @@ func (v *TagSetterIfc) GetTagList() (result TagList) {
 // [ result ] trans: nothing
 //
 func (v *TagSetterIfc) GetTagMergeMode() (result TagMergeModeEnum) {
-	iv, err := _I.Get(1072, "TagSetter", "get_tag_merge_mode")
+	iv, err := _I.Get(1072, "TagSetter", "get_tag_merge_mode", 425, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27460,7 +27460,7 @@ func (v *TagSetterIfc) GetTagMergeMode() (result TagMergeModeEnum) {
 // [ mode ] trans: nothing
 //
 func (v *TagSetterIfc) MergeTags(list TagList, mode TagMergeModeEnum) {
-	iv, err := _I.Get(1073, "TagSetter", "merge_tags")
+	iv, err := _I.Get(1073, "TagSetter", "merge_tags", 425, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27475,7 +27475,7 @@ func (v *TagSetterIfc) MergeTags(list TagList, mode TagMergeModeEnum) {
 // gst_tag_setter_reset_tags
 //
 func (v *TagSetterIfc) ResetTags() {
-	iv, err := _I.Get(1074, "TagSetter", "reset_tags")
+	iv, err := _I.Get(1074, "TagSetter", "reset_tags", 425, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27490,7 +27490,7 @@ func (v *TagSetterIfc) ResetTags() {
 // [ mode ] trans: nothing
 //
 func (v *TagSetterIfc) SetTagMergeMode(mode TagMergeModeEnum) {
-	iv, err := _I.Get(1075, "TagSetter", "set_tag_merge_mode")
+	iv, err := _I.Get(1075, "TagSetter", "set_tag_merge_mode", 425, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27529,7 +27529,7 @@ func TaskGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewTask(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) (result Task) {
-	iv, err := _I.Get(1076, "Task", "new")
+	iv, err := _I.Get(1076, "Task", "new", 427, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27549,7 +27549,7 @@ func NewTask(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify 
 // [ result ] trans: everything
 //
 func (v Task) GetPool() (result TaskPool) {
-	iv, err := _I.Get(1078, "Task", "get_pool")
+	iv, err := _I.Get(1078, "Task", "get_pool", 427, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27567,7 +27567,7 @@ func (v Task) GetPool() (result TaskPool) {
 // [ result ] trans: nothing
 //
 func (v Task) GetState() (result TaskStateEnum) {
-	iv, err := _I.Get(1079, "Task", "get_state")
+	iv, err := _I.Get(1079, "Task", "get_state", 427, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27585,7 +27585,7 @@ func (v Task) GetState() (result TaskStateEnum) {
 // [ result ] trans: nothing
 //
 func (v Task) Join() (result bool) {
-	iv, err := _I.Get(1080, "Task", "join")
+	iv, err := _I.Get(1080, "Task", "join", 427, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27603,7 +27603,7 @@ func (v Task) Join() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Task) Pause() (result bool) {
-	iv, err := _I.Get(1081, "Task", "pause")
+	iv, err := _I.Get(1081, "Task", "pause", 427, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27625,7 +27625,7 @@ func (v Task) Pause() (result bool) {
 // [ notify ] trans: nothing
 //
 func (v Task) SetEnterCallback(enter_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(1082, "Task", "set_enter_callback")
+	iv, err := _I.Get(1082, "Task", "set_enter_callback", 427, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27647,7 +27647,7 @@ func (v Task) SetEnterCallback(enter_func int /*TODO_TYPE CALLBACK*/, user_data 
 // [ notify ] trans: nothing
 //
 func (v Task) SetLeaveCallback(leave_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(1083, "Task", "set_leave_callback")
+	iv, err := _I.Get(1083, "Task", "set_leave_callback", 427, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27665,7 +27665,7 @@ func (v Task) SetLeaveCallback(leave_func int /*TODO_TYPE CALLBACK*/, user_data 
 // [ mutex ] trans: nothing
 //
 func (v Task) SetLock(mutex g.RecMutex) {
-	iv, err := _I.Get(1084, "Task", "set_lock")
+	iv, err := _I.Get(1084, "Task", "set_lock", 427, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27681,7 +27681,7 @@ func (v Task) SetLock(mutex g.RecMutex) {
 // [ pool ] trans: nothing
 //
 func (v Task) SetPool(pool ITaskPool) {
-	iv, err := _I.Get(1085, "Task", "set_pool")
+	iv, err := _I.Get(1085, "Task", "set_pool", 427, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27703,7 +27703,7 @@ func (v Task) SetPool(pool ITaskPool) {
 // [ result ] trans: nothing
 //
 func (v Task) SetState(state TaskStateEnum) (result bool) {
-	iv, err := _I.Get(1086, "Task", "set_state")
+	iv, err := _I.Get(1086, "Task", "set_state", 427, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27722,7 +27722,7 @@ func (v Task) SetState(state TaskStateEnum) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Task) Start() (result bool) {
-	iv, err := _I.Get(1087, "Task", "start")
+	iv, err := _I.Get(1087, "Task", "start", 427, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27740,7 +27740,7 @@ func (v Task) Start() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Task) Stop() (result bool) {
-	iv, err := _I.Get(1088, "Task", "stop")
+	iv, err := _I.Get(1088, "Task", "stop", 427, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27789,7 +27789,7 @@ func TaskPoolGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewTaskPool() (result TaskPool) {
-	iv, err := _I.Get(1089, "TaskPool", "new")
+	iv, err := _I.Get(1089, "TaskPool", "new", 430, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27803,7 +27803,7 @@ func NewTaskPool() (result TaskPool) {
 // gst_task_pool_cleanup
 //
 func (v TaskPool) Cleanup() {
-	iv, err := _I.Get(1090, "TaskPool", "cleanup")
+	iv, err := _I.Get(1090, "TaskPool", "cleanup", 430, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27818,7 +27818,7 @@ func (v TaskPool) Cleanup() {
 // [ id ] trans: nothing
 //
 func (v TaskPool) Join(id unsafe.Pointer) {
-	iv, err := _I.Get(1091, "TaskPool", "join")
+	iv, err := _I.Get(1091, "TaskPool", "join", 430, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27832,7 +27832,7 @@ func (v TaskPool) Join(id unsafe.Pointer) {
 // gst_task_pool_prepare
 //
 func (v TaskPool) Prepare() (err error) {
-	iv, err := _I.Get(1092, "TaskPool", "prepare")
+	iv, err := _I.Get(1092, "TaskPool", "prepare", 430, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -27854,7 +27854,7 @@ func (v TaskPool) Prepare() (err error) {
 // [ result ] trans: nothing
 //
 func (v TaskPool) Push(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result unsafe.Pointer, err error) {
-	iv, err := _I.Get(1093, "TaskPool", "push")
+	iv, err := _I.Get(1093, "TaskPool", "push", 430, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -27959,7 +27959,7 @@ func TocGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewToc(scope TocScopeEnum) (result Toc) {
-	iv, err := _I.Get(1094, "Toc", "new")
+	iv, err := _I.Get(1094, "Toc", "new", 437, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27977,7 +27977,7 @@ func NewToc(scope TocScopeEnum) (result Toc) {
 // [ entry ] trans: everything
 //
 func (v Toc) AppendEntry(entry TocEntry) {
-	iv, err := _I.Get(1095, "Toc", "append_entry")
+	iv, err := _I.Get(1095, "Toc", "append_entry", 437, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -27991,7 +27991,7 @@ func (v Toc) AppendEntry(entry TocEntry) {
 // gst_toc_dump
 //
 func (v Toc) Dump() {
-	iv, err := _I.Get(1096, "Toc", "dump")
+	iv, err := _I.Get(1096, "Toc", "dump", 437, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28008,7 +28008,7 @@ func (v Toc) Dump() {
 // [ result ] trans: nothing
 //
 func (v Toc) FindEntry(uid string) (result TocEntry) {
-	iv, err := _I.Get(1097, "Toc", "find_entry")
+	iv, err := _I.Get(1097, "Toc", "find_entry", 437, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28029,7 +28029,7 @@ func (v Toc) FindEntry(uid string) (result TocEntry) {
 // [ result ] trans: nothing
 //
 func (v Toc) GetEntries() (result g.List) {
-	iv, err := _I.Get(1098, "Toc", "get_entries")
+	iv, err := _I.Get(1098, "Toc", "get_entries", 437, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28047,7 +28047,7 @@ func (v Toc) GetEntries() (result g.List) {
 // [ result ] trans: nothing
 //
 func (v Toc) GetScope() (result TocScopeEnum) {
-	iv, err := _I.Get(1099, "Toc", "get_scope")
+	iv, err := _I.Get(1099, "Toc", "get_scope", 437, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28065,7 +28065,7 @@ func (v Toc) GetScope() (result TocScopeEnum) {
 // [ result ] trans: nothing
 //
 func (v Toc) GetTags() (result TagList) {
-	iv, err := _I.Get(1100, "Toc", "get_tags")
+	iv, err := _I.Get(1100, "Toc", "get_tags", 437, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28085,7 +28085,7 @@ func (v Toc) GetTags() (result TagList) {
 // [ mode ] trans: nothing
 //
 func (v Toc) MergeTags(tags TagList, mode TagMergeModeEnum) {
-	iv, err := _I.Get(1101, "Toc", "merge_tags")
+	iv, err := _I.Get(1101, "Toc", "merge_tags", 437, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28102,7 +28102,7 @@ func (v Toc) MergeTags(tags TagList, mode TagMergeModeEnum) {
 // [ tags ] trans: everything
 //
 func (v Toc) SetTags(tags TagList) {
-	iv, err := _I.Get(1102, "Toc", "set_tags")
+	iv, err := _I.Get(1102, "Toc", "set_tags", 437, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28132,7 +28132,7 @@ func TocEntryGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewTocEntry(type1 TocEntryTypeEnum, uid string) (result TocEntry) {
-	iv, err := _I.Get(1103, "TocEntry", "new")
+	iv, err := _I.Get(1103, "TocEntry", "new", 438, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28153,7 +28153,7 @@ func NewTocEntry(type1 TocEntryTypeEnum, uid string) (result TocEntry) {
 // [ subentry ] trans: everything
 //
 func (v TocEntry) AppendSubEntry(subentry TocEntry) {
-	iv, err := _I.Get(1104, "TocEntry", "append_sub_entry")
+	iv, err := _I.Get(1104, "TocEntry", "append_sub_entry", 438, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28169,7 +28169,7 @@ func (v TocEntry) AppendSubEntry(subentry TocEntry) {
 // [ result ] trans: nothing
 //
 func (v TocEntry) GetEntryType() (result TocEntryTypeEnum) {
-	iv, err := _I.Get(1105, "TocEntry", "get_entry_type")
+	iv, err := _I.Get(1105, "TocEntry", "get_entry_type", 438, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28191,7 +28191,7 @@ func (v TocEntry) GetEntryType() (result TocEntryTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v TocEntry) GetLoop() (result bool, loop_type TocLoopTypeEnum, repeat_count int32) {
-	iv, err := _I.Get(1106, "TocEntry", "get_loop")
+	iv, err := _I.Get(1106, "TocEntry", "get_loop", 438, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28214,7 +28214,7 @@ func (v TocEntry) GetLoop() (result bool, loop_type TocLoopTypeEnum, repeat_coun
 // [ result ] trans: nothing
 //
 func (v TocEntry) GetParent() (result TocEntry) {
-	iv, err := _I.Get(1107, "TocEntry", "get_parent")
+	iv, err := _I.Get(1107, "TocEntry", "get_parent", 438, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28236,7 +28236,7 @@ func (v TocEntry) GetParent() (result TocEntry) {
 // [ result ] trans: nothing
 //
 func (v TocEntry) GetStartStopTimes() (result bool, start int64, stop int64) {
-	iv, err := _I.Get(1108, "TocEntry", "get_start_stop_times")
+	iv, err := _I.Get(1108, "TocEntry", "get_start_stop_times", 438, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28259,7 +28259,7 @@ func (v TocEntry) GetStartStopTimes() (result bool, start int64, stop int64) {
 // [ result ] trans: nothing
 //
 func (v TocEntry) GetSubEntries() (result g.List) {
-	iv, err := _I.Get(1109, "TocEntry", "get_sub_entries")
+	iv, err := _I.Get(1109, "TocEntry", "get_sub_entries", 438, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28277,7 +28277,7 @@ func (v TocEntry) GetSubEntries() (result g.List) {
 // [ result ] trans: nothing
 //
 func (v TocEntry) GetTags() (result TagList) {
-	iv, err := _I.Get(1110, "TocEntry", "get_tags")
+	iv, err := _I.Get(1110, "TocEntry", "get_tags", 438, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28295,7 +28295,7 @@ func (v TocEntry) GetTags() (result TagList) {
 // [ result ] trans: nothing
 //
 func (v TocEntry) GetToc() (result Toc) {
-	iv, err := _I.Get(1111, "TocEntry", "get_toc")
+	iv, err := _I.Get(1111, "TocEntry", "get_toc", 438, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28313,7 +28313,7 @@ func (v TocEntry) GetToc() (result Toc) {
 // [ result ] trans: nothing
 //
 func (v TocEntry) GetUid() (result string) {
-	iv, err := _I.Get(1112, "TocEntry", "get_uid")
+	iv, err := _I.Get(1112, "TocEntry", "get_uid", 438, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28331,7 +28331,7 @@ func (v TocEntry) GetUid() (result string) {
 // [ result ] trans: nothing
 //
 func (v TocEntry) IsAlternative() (result bool) {
-	iv, err := _I.Get(1113, "TocEntry", "is_alternative")
+	iv, err := _I.Get(1113, "TocEntry", "is_alternative", 438, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28349,7 +28349,7 @@ func (v TocEntry) IsAlternative() (result bool) {
 // [ result ] trans: nothing
 //
 func (v TocEntry) IsSequence() (result bool) {
-	iv, err := _I.Get(1114, "TocEntry", "is_sequence")
+	iv, err := _I.Get(1114, "TocEntry", "is_sequence", 438, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28369,7 +28369,7 @@ func (v TocEntry) IsSequence() (result bool) {
 // [ mode ] trans: nothing
 //
 func (v TocEntry) MergeTags(tags TagList, mode TagMergeModeEnum) {
-	iv, err := _I.Get(1115, "TocEntry", "merge_tags")
+	iv, err := _I.Get(1115, "TocEntry", "merge_tags", 438, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28388,7 +28388,7 @@ func (v TocEntry) MergeTags(tags TagList, mode TagMergeModeEnum) {
 // [ repeat_count ] trans: nothing
 //
 func (v TocEntry) SetLoop(loop_type TocLoopTypeEnum, repeat_count int32) {
-	iv, err := _I.Get(1116, "TocEntry", "set_loop")
+	iv, err := _I.Get(1116, "TocEntry", "set_loop", 438, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28407,7 +28407,7 @@ func (v TocEntry) SetLoop(loop_type TocLoopTypeEnum, repeat_count int32) {
 // [ stop ] trans: nothing
 //
 func (v TocEntry) SetStartStopTimes(start int64, stop int64) {
-	iv, err := _I.Get(1117, "TocEntry", "set_start_stop_times")
+	iv, err := _I.Get(1117, "TocEntry", "set_start_stop_times", 438, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28424,7 +28424,7 @@ func (v TocEntry) SetStartStopTimes(start int64, stop int64) {
 // [ tags ] trans: everything
 //
 func (v TocEntry) SetTags(tags TagList) {
-	iv, err := _I.Get(1118, "TocEntry", "set_tags")
+	iv, err := _I.Get(1118, "TocEntry", "set_tags", 438, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28500,7 +28500,7 @@ func TocSetterGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v *TocSetterIfc) GetToc() (result Toc) {
-	iv, err := _I.Get(1119, "TocSetter", "get_toc")
+	iv, err := _I.Get(1119, "TocSetter", "get_toc", 442, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28516,7 +28516,7 @@ func (v *TocSetterIfc) GetToc() (result Toc) {
 // gst_toc_setter_reset
 //
 func (v *TocSetterIfc) Reset() {
-	iv, err := _I.Get(1120, "TocSetter", "reset")
+	iv, err := _I.Get(1120, "TocSetter", "reset", 442, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28531,7 +28531,7 @@ func (v *TocSetterIfc) Reset() {
 // [ toc ] trans: nothing
 //
 func (v *TocSetterIfc) SetToc(toc Toc) {
-	iv, err := _I.Get(1121, "TocSetter", "set_toc")
+	iv, err := _I.Get(1121, "TocSetter", "set_toc", 442, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28581,7 +28581,7 @@ func TracerFactoryGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v TracerFactory) GetTracerType() (result gi.GType) {
-	iv, err := _I.Get(1123, "TracerFactory", "get_tracer_type")
+	iv, err := _I.Get(1123, "TracerFactory", "get_tracer_type", 446, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28669,7 +28669,7 @@ func TypeFindGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v TypeFind) GetLength() (result uint64) {
-	iv, err := _I.Get(1124, "TypeFind", "get_length")
+	iv, err := _I.Get(1124, "TypeFind", "get_length", 453, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28691,7 +28691,7 @@ func (v TypeFind) GetLength() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v TypeFind) Peek(offset int64) (result gi.Uint8Array) {
-	iv, err := _I.Get(1125, "TypeFind", "peek")
+	iv, err := _I.Get(1125, "TypeFind", "peek", 453, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28717,7 +28717,7 @@ func (v TypeFind) Peek(offset int64) (result gi.Uint8Array) {
 // [ caps ] trans: nothing
 //
 func (v TypeFind) Suggest(probability uint32, caps Caps) {
-	iv, err := _I.Get(1126, "TypeFind", "suggest")
+	iv, err := _I.Get(1126, "TypeFind", "suggest", 453, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28750,7 +28750,7 @@ func (v TypeFind) Suggest(probability uint32, caps Caps) {
 // [ result ] trans: nothing
 //
 func TypeFindRegister1(plugin IPlugin, name string, rank uint32, func1 int /*TODO_TYPE CALLBACK*/, extensions string, possible_caps Caps, data unsafe.Pointer, data_notify int /*TODO_TYPE CALLBACK*/) (result bool) {
-	iv, err := _I.Get(1127, "TypeFind", "register")
+	iv, err := _I.Get(1127, "TypeFind", "register", 453, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28798,7 +28798,7 @@ func TypeFindFactoryGetType() gi.GType {
 // [ find ] trans: nothing
 //
 func (v TypeFindFactory) CallFunction(find TypeFind) {
-	iv, err := _I.Get(1129, "TypeFindFactory", "call_function")
+	iv, err := _I.Get(1129, "TypeFindFactory", "call_function", 454, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28814,7 +28814,7 @@ func (v TypeFindFactory) CallFunction(find TypeFind) {
 // [ result ] trans: nothing
 //
 func (v TypeFindFactory) GetCaps() (result Caps) {
-	iv, err := _I.Get(1130, "TypeFindFactory", "get_caps")
+	iv, err := _I.Get(1130, "TypeFindFactory", "get_caps", 454, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28832,7 +28832,7 @@ func (v TypeFindFactory) GetCaps() (result Caps) {
 // [ result ] trans: nothing
 //
 func (v TypeFindFactory) GetExtensions() (result gi.CStrArray) {
-	iv, err := _I.Get(1131, "TypeFindFactory", "get_extensions")
+	iv, err := _I.Get(1131, "TypeFindFactory", "get_extensions", 454, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28851,7 +28851,7 @@ func (v TypeFindFactory) GetExtensions() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v TypeFindFactory) HasFunction() (result bool) {
-	iv, err := _I.Get(1132, "TypeFindFactory", "has_function")
+	iv, err := _I.Get(1132, "TypeFindFactory", "has_function", 454, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28934,7 +28934,7 @@ func URIHandlerGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v *URIHandlerIfc) GetProtocols() (result gi.CStrArray) {
-	iv, err := _I.Get(1133, "URIHandler", "get_protocols")
+	iv, err := _I.Get(1133, "URIHandler", "get_protocols", 459, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28953,7 +28953,7 @@ func (v *URIHandlerIfc) GetProtocols() (result gi.CStrArray) {
 // [ result ] trans: everything
 //
 func (v *URIHandlerIfc) GetUri() (result string) {
-	iv, err := _I.Get(1134, "URIHandler", "get_uri")
+	iv, err := _I.Get(1134, "URIHandler", "get_uri", 459, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28971,7 +28971,7 @@ func (v *URIHandlerIfc) GetUri() (result string) {
 // [ result ] trans: nothing
 //
 func (v *URIHandlerIfc) GetUriType() (result URITypeEnum) {
-	iv, err := _I.Get(1135, "URIHandler", "get_uri_type")
+	iv, err := _I.Get(1135, "URIHandler", "get_uri_type", 459, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -28991,7 +28991,7 @@ func (v *URIHandlerIfc) GetUriType() (result URITypeEnum) {
 // [ result ] trans: nothing
 //
 func (v *URIHandlerIfc) SetUri(uri string) (result bool, err error) {
-	iv, err := _I.Get(1136, "URIHandler", "set_uri")
+	iv, err := _I.Get(1136, "URIHandler", "set_uri", 459, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -29054,7 +29054,7 @@ func UriGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewUri(scheme string, userinfo string, host string, port uint32, path string, query string, fragment string) (result Uri) {
-	iv, err := _I.Get(1137, "Uri", "new")
+	iv, err := _I.Get(1137, "Uri", "new", 464, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29092,7 +29092,7 @@ func NewUri(scheme string, userinfo string, host string, port uint32, path strin
 // [ result ] trans: nothing
 //
 func (v Uri) AppendPath(relative_path string) (result bool) {
-	iv, err := _I.Get(1138, "Uri", "append_path")
+	iv, err := _I.Get(1138, "Uri", "append_path", 464, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29115,7 +29115,7 @@ func (v Uri) AppendPath(relative_path string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) AppendPathSegment(path_segment string) (result bool) {
-	iv, err := _I.Get(1139, "Uri", "append_path_segment")
+	iv, err := _I.Get(1139, "Uri", "append_path_segment", 464, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29138,7 +29138,7 @@ func (v Uri) AppendPathSegment(path_segment string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) Equal(second Uri) (result bool) {
-	iv, err := _I.Get(1140, "Uri", "equal")
+	iv, err := _I.Get(1140, "Uri", "equal", 464, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29159,7 +29159,7 @@ func (v Uri) Equal(second Uri) (result bool) {
 // [ result ] trans: everything
 //
 func (v Uri) FromStringWithBase(uri string) (result Uri) {
-	iv, err := _I.Get(1141, "Uri", "from_string_with_base")
+	iv, err := _I.Get(1141, "Uri", "from_string_with_base", 464, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29180,7 +29180,7 @@ func (v Uri) FromStringWithBase(uri string) (result Uri) {
 // [ result ] trans: nothing
 //
 func (v Uri) GetFragment() (result string) {
-	iv, err := _I.Get(1142, "Uri", "get_fragment")
+	iv, err := _I.Get(1142, "Uri", "get_fragment", 464, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29198,7 +29198,7 @@ func (v Uri) GetFragment() (result string) {
 // [ result ] trans: nothing
 //
 func (v Uri) GetHost() (result string) {
-	iv, err := _I.Get(1143, "Uri", "get_host")
+	iv, err := _I.Get(1143, "Uri", "get_host", 464, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29216,7 +29216,7 @@ func (v Uri) GetHost() (result string) {
 // [ result ] trans: everything
 //
 func (v Uri) GetMediaFragmentTable() (result g.HashTable) {
-	iv, err := _I.Get(1144, "Uri", "get_media_fragment_table")
+	iv, err := _I.Get(1144, "Uri", "get_media_fragment_table", 464, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29234,7 +29234,7 @@ func (v Uri) GetMediaFragmentTable() (result g.HashTable) {
 // [ result ] trans: everything
 //
 func (v Uri) GetPath() (result string) {
-	iv, err := _I.Get(1145, "Uri", "get_path")
+	iv, err := _I.Get(1145, "Uri", "get_path", 464, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29252,7 +29252,7 @@ func (v Uri) GetPath() (result string) {
 // [ result ] trans: everything
 //
 func (v Uri) GetPathSegments() (result g.List) {
-	iv, err := _I.Get(1146, "Uri", "get_path_segments")
+	iv, err := _I.Get(1146, "Uri", "get_path_segments", 464, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29270,7 +29270,7 @@ func (v Uri) GetPathSegments() (result g.List) {
 // [ result ] trans: everything
 //
 func (v Uri) GetPathString() (result string) {
-	iv, err := _I.Get(1147, "Uri", "get_path_string")
+	iv, err := _I.Get(1147, "Uri", "get_path_string", 464, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29288,7 +29288,7 @@ func (v Uri) GetPathString() (result string) {
 // [ result ] trans: nothing
 //
 func (v Uri) GetPort() (result uint32) {
-	iv, err := _I.Get(1148, "Uri", "get_port")
+	iv, err := _I.Get(1148, "Uri", "get_port", 464, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29306,7 +29306,7 @@ func (v Uri) GetPort() (result uint32) {
 // [ result ] trans: container
 //
 func (v Uri) GetQueryKeys() (result g.List) {
-	iv, err := _I.Get(1149, "Uri", "get_query_keys")
+	iv, err := _I.Get(1149, "Uri", "get_query_keys", 464, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29324,7 +29324,7 @@ func (v Uri) GetQueryKeys() (result g.List) {
 // [ result ] trans: everything
 //
 func (v Uri) GetQueryString() (result string) {
-	iv, err := _I.Get(1150, "Uri", "get_query_string")
+	iv, err := _I.Get(1150, "Uri", "get_query_string", 464, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29342,7 +29342,7 @@ func (v Uri) GetQueryString() (result string) {
 // [ result ] trans: everything
 //
 func (v Uri) GetQueryTable() (result g.HashTable) {
-	iv, err := _I.Get(1151, "Uri", "get_query_table")
+	iv, err := _I.Get(1151, "Uri", "get_query_table", 464, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29362,7 +29362,7 @@ func (v Uri) GetQueryTable() (result g.HashTable) {
 // [ result ] trans: nothing
 //
 func (v Uri) GetQueryValue(query_key string) (result string) {
-	iv, err := _I.Get(1152, "Uri", "get_query_value")
+	iv, err := _I.Get(1152, "Uri", "get_query_value", 464, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29383,7 +29383,7 @@ func (v Uri) GetQueryValue(query_key string) (result string) {
 // [ result ] trans: nothing
 //
 func (v Uri) GetScheme() (result string) {
-	iv, err := _I.Get(1153, "Uri", "get_scheme")
+	iv, err := _I.Get(1153, "Uri", "get_scheme", 464, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29401,7 +29401,7 @@ func (v Uri) GetScheme() (result string) {
 // [ result ] trans: nothing
 //
 func (v Uri) GetUserinfo() (result string) {
-	iv, err := _I.Get(1154, "Uri", "get_userinfo")
+	iv, err := _I.Get(1154, "Uri", "get_userinfo", 464, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29419,7 +29419,7 @@ func (v Uri) GetUserinfo() (result string) {
 // [ result ] trans: nothing
 //
 func (v Uri) IsNormalized() (result bool) {
-	iv, err := _I.Get(1155, "Uri", "is_normalized")
+	iv, err := _I.Get(1155, "Uri", "is_normalized", 464, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29437,7 +29437,7 @@ func (v Uri) IsNormalized() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) IsWritable() (result bool) {
-	iv, err := _I.Get(1156, "Uri", "is_writable")
+	iv, err := _I.Get(1156, "Uri", "is_writable", 464, 19, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29457,7 +29457,7 @@ func (v Uri) IsWritable() (result bool) {
 // [ result ] trans: everything
 //
 func (v Uri) Join(ref_uri Uri) (result Uri) {
-	iv, err := _I.Get(1157, "Uri", "join")
+	iv, err := _I.Get(1157, "Uri", "join", 464, 20, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29476,7 +29476,7 @@ func (v Uri) Join(ref_uri Uri) (result Uri) {
 // [ result ] trans: everything
 //
 func (v Uri) MakeWritable() (result Uri) {
-	iv, err := _I.Get(1158, "Uri", "make_writable")
+	iv, err := _I.Get(1158, "Uri", "make_writable", 464, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29508,7 +29508,7 @@ func (v Uri) MakeWritable() (result Uri) {
 // [ result ] trans: everything
 //
 func (v Uri) NewWithBase(scheme string, userinfo string, host string, port uint32, path string, query string, fragment string) (result Uri) {
-	iv, err := _I.Get(1159, "Uri", "new_with_base")
+	iv, err := _I.Get(1159, "Uri", "new_with_base", 464, 22, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29545,7 +29545,7 @@ func (v Uri) NewWithBase(scheme string, userinfo string, host string, port uint3
 // [ result ] trans: nothing
 //
 func (v Uri) Normalize() (result bool) {
-	iv, err := _I.Get(1160, "Uri", "normalize")
+	iv, err := _I.Get(1160, "Uri", "normalize", 464, 23, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29565,7 +29565,7 @@ func (v Uri) Normalize() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) QueryHasKey(query_key string) (result bool) {
-	iv, err := _I.Get(1161, "Uri", "query_has_key")
+	iv, err := _I.Get(1161, "Uri", "query_has_key", 464, 24, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29588,7 +29588,7 @@ func (v Uri) QueryHasKey(query_key string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) RemoveQueryKey(query_key string) (result bool) {
-	iv, err := _I.Get(1162, "Uri", "remove_query_key")
+	iv, err := _I.Get(1162, "Uri", "remove_query_key", 464, 25, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29611,7 +29611,7 @@ func (v Uri) RemoveQueryKey(query_key string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetFragment(fragment string) (result bool) {
-	iv, err := _I.Get(1163, "Uri", "set_fragment")
+	iv, err := _I.Get(1163, "Uri", "set_fragment", 464, 26, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29634,7 +29634,7 @@ func (v Uri) SetFragment(fragment string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetHost(host string) (result bool) {
-	iv, err := _I.Get(1164, "Uri", "set_host")
+	iv, err := _I.Get(1164, "Uri", "set_host", 464, 27, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29657,7 +29657,7 @@ func (v Uri) SetHost(host string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetPath(path string) (result bool) {
-	iv, err := _I.Get(1165, "Uri", "set_path")
+	iv, err := _I.Get(1165, "Uri", "set_path", 464, 28, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29680,7 +29680,7 @@ func (v Uri) SetPath(path string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetPathSegments(path_segments g.List) (result bool) {
-	iv, err := _I.Get(1166, "Uri", "set_path_segments")
+	iv, err := _I.Get(1166, "Uri", "set_path_segments", 464, 29, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29701,7 +29701,7 @@ func (v Uri) SetPathSegments(path_segments g.List) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetPathString(path string) (result bool) {
-	iv, err := _I.Get(1167, "Uri", "set_path_string")
+	iv, err := _I.Get(1167, "Uri", "set_path_string", 464, 30, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29724,7 +29724,7 @@ func (v Uri) SetPathString(path string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetPort(port uint32) (result bool) {
-	iv, err := _I.Get(1168, "Uri", "set_port")
+	iv, err := _I.Get(1168, "Uri", "set_port", 464, 31, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29745,7 +29745,7 @@ func (v Uri) SetPort(port uint32) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetQueryString(query string) (result bool) {
-	iv, err := _I.Get(1169, "Uri", "set_query_string")
+	iv, err := _I.Get(1169, "Uri", "set_query_string", 464, 32, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29768,7 +29768,7 @@ func (v Uri) SetQueryString(query string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetQueryTable(query_table g.HashTable) (result bool) {
-	iv, err := _I.Get(1170, "Uri", "set_query_table")
+	iv, err := _I.Get(1170, "Uri", "set_query_table", 464, 33, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29791,7 +29791,7 @@ func (v Uri) SetQueryTable(query_table g.HashTable) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetQueryValue(query_key string, query_value string) (result bool) {
-	iv, err := _I.Get(1171, "Uri", "set_query_value")
+	iv, err := _I.Get(1171, "Uri", "set_query_value", 464, 34, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29817,7 +29817,7 @@ func (v Uri) SetQueryValue(query_key string, query_value string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetScheme(scheme string) (result bool) {
-	iv, err := _I.Get(1172, "Uri", "set_scheme")
+	iv, err := _I.Get(1172, "Uri", "set_scheme", 464, 35, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29840,7 +29840,7 @@ func (v Uri) SetScheme(scheme string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Uri) SetUserinfo(userinfo string) (result bool) {
-	iv, err := _I.Get(1173, "Uri", "set_userinfo")
+	iv, err := _I.Get(1173, "Uri", "set_userinfo", 464, 36, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29861,7 +29861,7 @@ func (v Uri) SetUserinfo(userinfo string) (result bool) {
 // [ result ] trans: everything
 //
 func (v Uri) ToString() (result string) {
-	iv, err := _I.Get(1174, "Uri", "to_string")
+	iv, err := _I.Get(1174, "Uri", "to_string", 464, 37, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29885,7 +29885,7 @@ func (v Uri) ToString() (result string) {
 // [ result ] trans: everything
 //
 func UriConstruct1(protocol string, location string) (result string) {
-	iv, err := _I.Get(1175, "Uri", "construct")
+	iv, err := _I.Get(1175, "Uri", "construct", 464, 38, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29910,7 +29910,7 @@ func UriConstruct1(protocol string, location string) (result string) {
 // [ result ] trans: everything
 //
 func UriFromString1(uri string) (result Uri) {
-	iv, err := _I.Get(1176, "Uri", "from_string")
+	iv, err := _I.Get(1176, "Uri", "from_string", 464, 39, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29932,7 +29932,7 @@ func UriFromString1(uri string) (result Uri) {
 // [ result ] trans: everything
 //
 func UriGetLocation1(uri string) (result string) {
-	iv, err := _I.Get(1177, "Uri", "get_location")
+	iv, err := _I.Get(1177, "Uri", "get_location", 464, 40, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29954,7 +29954,7 @@ func UriGetLocation1(uri string) (result string) {
 // [ result ] trans: everything
 //
 func UriGetProtocol1(uri string) (result string) {
-	iv, err := _I.Get(1178, "Uri", "get_protocol")
+	iv, err := _I.Get(1178, "Uri", "get_protocol", 464, 41, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -29978,7 +29978,7 @@ func UriGetProtocol1(uri string) (result string) {
 // [ result ] trans: nothing
 //
 func UriHasProtocol1(uri string, protocol string) (result bool) {
-	iv, err := _I.Get(1179, "Uri", "has_protocol")
+	iv, err := _I.Get(1179, "Uri", "has_protocol", 464, 42, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30003,7 +30003,7 @@ func UriHasProtocol1(uri string, protocol string) (result bool) {
 // [ result ] trans: nothing
 //
 func UriIsValid1(uri string) (result bool) {
-	iv, err := _I.Get(1180, "Uri", "is_valid")
+	iv, err := _I.Get(1180, "Uri", "is_valid", 464, 43, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30027,7 +30027,7 @@ func UriIsValid1(uri string) (result bool) {
 // [ result ] trans: everything
 //
 func UriJoinStrings1(base_uri string, ref_uri string) (result string) {
-	iv, err := _I.Get(1181, "Uri", "join_strings")
+	iv, err := _I.Get(1181, "Uri", "join_strings", 464, 44, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30054,7 +30054,7 @@ func UriJoinStrings1(base_uri string, ref_uri string) (result string) {
 // [ result ] trans: nothing
 //
 func UriProtocolIsSupported1(type1 URITypeEnum, protocol string) (result bool) {
-	iv, err := _I.Get(1182, "Uri", "protocol_is_supported")
+	iv, err := _I.Get(1182, "Uri", "protocol_is_supported", 464, 45, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30077,7 +30077,7 @@ func UriProtocolIsSupported1(type1 URITypeEnum, protocol string) (result bool) {
 // [ result ] trans: nothing
 //
 func UriProtocolIsValid1(protocol string) (result bool) {
-	iv, err := _I.Get(1183, "Uri", "protocol_is_valid")
+	iv, err := _I.Get(1183, "Uri", "protocol_is_valid", 464, 46, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30114,7 +30114,7 @@ func ValueArrayGetType() gi.GType {
 // [ append_value ] trans: everything
 //
 func ValueArrayAppendAndTakeValue1(value g.Value, append_value g.Value) {
-	iv, err := _I.Get(1184, "ValueArray", "append_and_take_value")
+	iv, err := _I.Get(1184, "ValueArray", "append_and_take_value", 473, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30132,7 +30132,7 @@ func ValueArrayAppendAndTakeValue1(value g.Value, append_value g.Value) {
 // [ append_value ] trans: nothing
 //
 func ValueArrayAppendValue1(value g.Value, append_value g.Value) {
-	iv, err := _I.Get(1185, "ValueArray", "append_value")
+	iv, err := _I.Get(1185, "ValueArray", "append_value", 473, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30150,7 +30150,7 @@ func ValueArrayAppendValue1(value g.Value, append_value g.Value) {
 // [ result ] trans: nothing
 //
 func ValueArrayGetSize1(value g.Value) (result uint32) {
-	iv, err := _I.Get(1186, "ValueArray", "get_size")
+	iv, err := _I.Get(1186, "ValueArray", "get_size", 473, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30172,7 +30172,7 @@ func ValueArrayGetSize1(value g.Value) (result uint32) {
 // [ result ] trans: nothing
 //
 func ValueArrayGetValue1(value g.Value, index uint32) (result g.Value) {
-	iv, err := _I.Get(1187, "ValueArray", "get_value")
+	iv, err := _I.Get(1187, "ValueArray", "get_value", 473, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30193,7 +30193,7 @@ func ValueArrayGetValue1(value g.Value, index uint32) (result g.Value) {
 // [ prepend_value ] trans: nothing
 //
 func ValueArrayPrependValue1(value g.Value, prepend_value g.Value) {
-	iv, err := _I.Get(1188, "ValueArray", "prepend_value")
+	iv, err := _I.Get(1188, "ValueArray", "prepend_value", 473, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30254,7 +30254,7 @@ func ValueListGetType() gi.GType {
 // [ append_value ] trans: everything
 //
 func ValueListAppendAndTakeValue1(value g.Value, append_value g.Value) {
-	iv, err := _I.Get(1189, "ValueList", "append_and_take_value")
+	iv, err := _I.Get(1189, "ValueList", "append_and_take_value", 476, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30272,7 +30272,7 @@ func ValueListAppendAndTakeValue1(value g.Value, append_value g.Value) {
 // [ append_value ] trans: nothing
 //
 func ValueListAppendValue1(value g.Value, append_value g.Value) {
-	iv, err := _I.Get(1190, "ValueList", "append_value")
+	iv, err := _I.Get(1190, "ValueList", "append_value", 476, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30292,7 +30292,7 @@ func ValueListAppendValue1(value g.Value, append_value g.Value) {
 // [ value2 ] trans: nothing
 //
 func ValueListConcat1(dest g.Value, value1 g.Value, value2 g.Value) {
-	iv, err := _I.Get(1191, "ValueList", "concat")
+	iv, err := _I.Get(1191, "ValueList", "concat", 476, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30311,7 +30311,7 @@ func ValueListConcat1(dest g.Value, value1 g.Value, value2 g.Value) {
 // [ result ] trans: nothing
 //
 func ValueListGetSize1(value g.Value) (result uint32) {
-	iv, err := _I.Get(1192, "ValueList", "get_size")
+	iv, err := _I.Get(1192, "ValueList", "get_size", 476, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30333,7 +30333,7 @@ func ValueListGetSize1(value g.Value) (result uint32) {
 // [ result ] trans: nothing
 //
 func ValueListGetValue1(value g.Value, index uint32) (result g.Value) {
-	iv, err := _I.Get(1193, "ValueList", "get_value")
+	iv, err := _I.Get(1193, "ValueList", "get_value", 476, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30356,7 +30356,7 @@ func ValueListGetValue1(value g.Value, index uint32) (result g.Value) {
 // [ value2 ] trans: nothing
 //
 func ValueListMerge1(dest g.Value, value1 g.Value, value2 g.Value) {
-	iv, err := _I.Get(1194, "ValueList", "merge")
+	iv, err := _I.Get(1194, "ValueList", "merge", 476, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30375,7 +30375,7 @@ func ValueListMerge1(dest g.Value, value1 g.Value, value2 g.Value) {
 // [ prepend_value ] trans: nothing
 //
 func ValueListPrependValue1(value g.Value, prepend_value g.Value) {
-	iv, err := _I.Get(1195, "ValueList", "prepend_value")
+	iv, err := _I.Get(1195, "ValueList", "prepend_value", 476, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30416,7 +30416,7 @@ func ValueTableGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func BufferGetMaxMemory() (result uint32) {
-	iv, err := _I.Get(1196, "buffer_get_max_memory", "")
+	iv, err := _I.Get(1196, "buffer_get_max_memory", "", 479, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30434,7 +30434,7 @@ func BufferGetMaxMemory() (result uint32) {
 // [ result ] trans: everything
 //
 func CapsFeaturesFromString(features string) (result CapsFeatures) {
-	iv, err := _I.Get(1197, "caps_features_from_string", "")
+	iv, err := _I.Get(1197, "caps_features_from_string", "", 480, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30456,7 +30456,7 @@ func CapsFeaturesFromString(features string) (result CapsFeatures) {
 // [ result ] trans: everything
 //
 func CapsFromString(string string) (result Caps) {
-	iv, err := _I.Get(1198, "caps_from_string", "")
+	iv, err := _I.Get(1198, "caps_from_string", "", 481, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30476,7 +30476,7 @@ func CapsFromString(string string) (result Caps) {
 // [ result ] trans: nothing
 //
 func CoreErrorQuark() (result uint32) {
-	iv, err := _I.Get(1199, "core_error_quark", "")
+	iv, err := _I.Get(1199, "core_error_quark", "", 482, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30496,7 +30496,7 @@ func CoreErrorQuark() (result uint32) {
 // [ notify ] trans: nothing
 //
 func DebugAddLogFunction(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(1200, "debug_add_log_function", "")
+	iv, err := _I.Get(1200, "debug_add_log_function", "", 483, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30515,7 +30515,7 @@ func DebugAddLogFunction(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Poin
 // [ thread_timeout ] trans: nothing
 //
 func DebugAddRingBufferLogger(max_size_per_thread uint32, thread_timeout uint32) {
-	iv, err := _I.Get(1201, "debug_add_ring_buffer_logger", "")
+	iv, err := _I.Get(1201, "debug_add_ring_buffer_logger", "", 484, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30535,7 +30535,7 @@ func DebugAddRingBufferLogger(max_size_per_thread uint32, thread_timeout uint32)
 // [ result ] trans: everything
 //
 func DebugBinToDotData(bin IBin, details DebugGraphDetailsFlags) (result string) {
-	iv, err := _I.Get(1202, "debug_bin_to_dot_data", "")
+	iv, err := _I.Get(1202, "debug_bin_to_dot_data", "", 485, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30562,7 +30562,7 @@ func DebugBinToDotData(bin IBin, details DebugGraphDetailsFlags) (result string)
 // [ file_name ] trans: nothing
 //
 func DebugBinToDotFile(bin IBin, details DebugGraphDetailsFlags, file_name string) {
-	iv, err := _I.Get(1203, "debug_bin_to_dot_file", "")
+	iv, err := _I.Get(1203, "debug_bin_to_dot_file", "", 486, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30589,7 +30589,7 @@ func DebugBinToDotFile(bin IBin, details DebugGraphDetailsFlags, file_name strin
 // [ file_name ] trans: nothing
 //
 func DebugBinToDotFileWithTs(bin IBin, details DebugGraphDetailsFlags, file_name string) {
-	iv, err := _I.Get(1204, "debug_bin_to_dot_file_with_ts", "")
+	iv, err := _I.Get(1204, "debug_bin_to_dot_file_with_ts", "", 487, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30614,7 +30614,7 @@ func DebugBinToDotFileWithTs(bin IBin, details DebugGraphDetailsFlags, file_name
 // [ result ] trans: everything
 //
 func DebugConstructTermColor(colorinfo uint32) (result string) {
-	iv, err := _I.Get(1205, "debug_construct_term_color", "")
+	iv, err := _I.Get(1205, "debug_construct_term_color", "", 488, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30634,7 +30634,7 @@ func DebugConstructTermColor(colorinfo uint32) (result string) {
 // [ result ] trans: nothing
 //
 func DebugConstructWinColor(colorinfo uint32) (result int32) {
-	iv, err := _I.Get(1206, "debug_construct_win_color", "")
+	iv, err := _I.Get(1206, "debug_construct_win_color", "", 489, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30652,7 +30652,7 @@ func DebugConstructWinColor(colorinfo uint32) (result int32) {
 // [ result ] trans: container
 //
 func DebugGetAllCategories() (result g.SList) {
-	iv, err := _I.Get(1207, "debug_get_all_categories", "")
+	iv, err := _I.Get(1207, "debug_get_all_categories", "", 490, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30668,7 +30668,7 @@ func DebugGetAllCategories() (result g.SList) {
 // [ result ] trans: nothing
 //
 func DebugGetColorMode() (result DebugColorModeEnum) {
-	iv, err := _I.Get(1208, "debug_get_color_mode", "")
+	iv, err := _I.Get(1208, "debug_get_color_mode", "", 491, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30684,7 +30684,7 @@ func DebugGetColorMode() (result DebugColorModeEnum) {
 // [ result ] trans: nothing
 //
 func DebugGetDefaultThreshold() (result DebugLevelEnum) {
-	iv, err := _I.Get(1209, "debug_get_default_threshold", "")
+	iv, err := _I.Get(1209, "debug_get_default_threshold", "", 492, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30702,7 +30702,7 @@ func DebugGetDefaultThreshold() (result DebugLevelEnum) {
 // [ result ] trans: everything
 //
 func DebugGetStackTrace(flags StackTraceFlags) (result string) {
-	iv, err := _I.Get(1210, "debug_get_stack_trace", "")
+	iv, err := _I.Get(1210, "debug_get_stack_trace", "", 493, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30720,7 +30720,7 @@ func DebugGetStackTrace(flags StackTraceFlags) (result string) {
 // [ result ] trans: nothing
 //
 func DebugIsActive() (result bool) {
-	iv, err := _I.Get(1211, "debug_is_active", "")
+	iv, err := _I.Get(1211, "debug_is_active", "", 494, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30736,7 +30736,7 @@ func DebugIsActive() (result bool) {
 // [ result ] trans: nothing
 //
 func DebugIsColored() (result bool) {
-	iv, err := _I.Get(1212, "debug_is_colored", "")
+	iv, err := _I.Get(1212, "debug_is_colored", "", 495, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30754,7 +30754,7 @@ func DebugIsColored() (result bool) {
 // [ result ] trans: nothing
 //
 func DebugLevelGetName(level DebugLevelEnum) (result string) {
-	iv, err := _I.Get(1213, "debug_level_get_name", "")
+	iv, err := _I.Get(1213, "debug_level_get_name", "", 496, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30786,7 +30786,7 @@ func DebugLevelGetName(level DebugLevelEnum) (result string) {
 // [ user_data ] trans: nothing
 //
 func DebugLogDefault(category DebugCategory, level DebugLevelEnum, file string, function string, line int32, object g.IObject, message DebugMessage, user_data unsafe.Pointer) {
-	iv, err := _I.Get(1214, "debug_log_default", "")
+	iv, err := _I.Get(1214, "debug_log_default", "", 497, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30814,7 +30814,7 @@ func DebugLogDefault(category DebugCategory, level DebugLevelEnum, file string, 
 // gst_debug_print_stack_trace
 //
 func DebugPrintStackTrace() {
-	iv, err := _I.Get(1215, "debug_print_stack_trace", "")
+	iv, err := _I.Get(1215, "debug_print_stack_trace", "", 498, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30829,7 +30829,7 @@ func DebugPrintStackTrace() {
 // [ result ] trans: nothing
 //
 func DebugRemoveLogFunction(func1 int /*TODO_TYPE CALLBACK*/) (result uint32) {
-	iv, err := _I.Get(1216, "debug_remove_log_function", "")
+	iv, err := _I.Get(1216, "debug_remove_log_function", "", 499, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30849,7 +30849,7 @@ func DebugRemoveLogFunction(func1 int /*TODO_TYPE CALLBACK*/) (result uint32) {
 // [ result ] trans: nothing
 //
 func DebugRemoveLogFunctionByData(data unsafe.Pointer) (result uint32) {
-	iv, err := _I.Get(1217, "debug_remove_log_function_by_data", "")
+	iv, err := _I.Get(1217, "debug_remove_log_function_by_data", "", 500, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30865,7 +30865,7 @@ func DebugRemoveLogFunctionByData(data unsafe.Pointer) (result uint32) {
 // gst_debug_remove_ring_buffer_logger
 //
 func DebugRemoveRingBufferLogger() {
-	iv, err := _I.Get(1218, "debug_remove_ring_buffer_logger", "")
+	iv, err := _I.Get(1218, "debug_remove_ring_buffer_logger", "", 501, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30878,7 +30878,7 @@ func DebugRemoveRingBufferLogger() {
 // [ result ] trans: everything
 //
 func DebugRingBufferLoggerGetLogs() (result gi.CStrArray) {
-	iv, err := _I.Get(1219, "debug_ring_buffer_logger_get_logs", "")
+	iv, err := _I.Get(1219, "debug_ring_buffer_logger_get_logs", "", 502, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30895,7 +30895,7 @@ func DebugRingBufferLoggerGetLogs() (result gi.CStrArray) {
 // [ active ] trans: nothing
 //
 func DebugSetActive(active bool) {
-	iv, err := _I.Get(1220, "debug_set_active", "")
+	iv, err := _I.Get(1220, "debug_set_active", "", 503, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30910,7 +30910,7 @@ func DebugSetActive(active bool) {
 // [ mode ] trans: nothing
 //
 func DebugSetColorMode(mode DebugColorModeEnum) {
-	iv, err := _I.Get(1221, "debug_set_color_mode", "")
+	iv, err := _I.Get(1221, "debug_set_color_mode", "", 504, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30925,7 +30925,7 @@ func DebugSetColorMode(mode DebugColorModeEnum) {
 // [ mode ] trans: nothing
 //
 func DebugSetColorModeFromString(mode string) {
-	iv, err := _I.Get(1222, "debug_set_color_mode_from_string", "")
+	iv, err := _I.Get(1222, "debug_set_color_mode_from_string", "", 505, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30942,7 +30942,7 @@ func DebugSetColorModeFromString(mode string) {
 // [ colored ] trans: nothing
 //
 func DebugSetColored(colored bool) {
-	iv, err := _I.Get(1223, "debug_set_colored", "")
+	iv, err := _I.Get(1223, "debug_set_colored", "", 506, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30957,7 +30957,7 @@ func DebugSetColored(colored bool) {
 // [ level ] trans: nothing
 //
 func DebugSetDefaultThreshold(level DebugLevelEnum) {
-	iv, err := _I.Get(1224, "debug_set_default_threshold", "")
+	iv, err := _I.Get(1224, "debug_set_default_threshold", "", 507, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30974,7 +30974,7 @@ func DebugSetDefaultThreshold(level DebugLevelEnum) {
 // [ level ] trans: nothing
 //
 func DebugSetThresholdForName(name string, level DebugLevelEnum) {
-	iv, err := _I.Get(1225, "debug_set_threshold_for_name", "")
+	iv, err := _I.Get(1225, "debug_set_threshold_for_name", "", 508, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -30994,7 +30994,7 @@ func DebugSetThresholdForName(name string, level DebugLevelEnum) {
 // [ reset ] trans: nothing
 //
 func DebugSetThresholdFromString(list string, reset bool) {
-	iv, err := _I.Get(1226, "debug_set_threshold_from_string", "")
+	iv, err := _I.Get(1226, "debug_set_threshold_from_string", "", 509, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31012,7 +31012,7 @@ func DebugSetThresholdFromString(list string, reset bool) {
 // [ name ] trans: nothing
 //
 func DebugUnsetThresholdForName(name string) {
-	iv, err := _I.Get(1227, "debug_unset_threshold_for_name", "")
+	iv, err := _I.Get(1227, "debug_unset_threshold_for_name", "", 510, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31027,7 +31027,7 @@ func DebugUnsetThresholdForName(name string) {
 // gst_deinit
 //
 func Deinit() {
-	iv, err := _I.Get(1228, "deinit", "")
+	iv, err := _I.Get(1228, "deinit", "", 511, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31044,7 +31044,7 @@ func Deinit() {
 // [ result ] trans: nothing
 //
 func DynamicTypeRegister(plugin IPlugin, type1 gi.GType) (result bool) {
-	iv, err := _I.Get(1229, "dynamic_type_register", "")
+	iv, err := _I.Get(1229, "dynamic_type_register", "", 512, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31071,7 +31071,7 @@ func DynamicTypeRegister(plugin IPlugin, type1 gi.GType) (result bool) {
 // [ result ] trans: everything
 //
 func ErrorGetMessage(domain uint32, code int32) (result string) {
-	iv, err := _I.Get(1230, "error_get_message", "")
+	iv, err := _I.Get(1230, "error_get_message", "", 513, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31092,7 +31092,7 @@ func ErrorGetMessage(domain uint32, code int32) (result string) {
 // [ result ] trans: nothing
 //
 func EventTypeGetFlags(type1 EventTypeEnum) (result EventTypeFlags) {
-	iv, err := _I.Get(1231, "event_type_get_flags", "")
+	iv, err := _I.Get(1231, "event_type_get_flags", "", 514, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31112,7 +31112,7 @@ func EventTypeGetFlags(type1 EventTypeEnum) (result EventTypeFlags) {
 // [ result ] trans: nothing
 //
 func EventTypeGetName(type1 EventTypeEnum) (result string) {
-	iv, err := _I.Get(1232, "event_type_get_name", "")
+	iv, err := _I.Get(1232, "event_type_get_name", "", 515, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31132,7 +31132,7 @@ func EventTypeGetName(type1 EventTypeEnum) (result string) {
 // [ result ] trans: nothing
 //
 func EventTypeToQuark(type1 EventTypeEnum) (result uint32) {
-	iv, err := _I.Get(1233, "event_type_to_quark", "")
+	iv, err := _I.Get(1233, "event_type_to_quark", "", 516, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31152,7 +31152,7 @@ func EventTypeToQuark(type1 EventTypeEnum) (result uint32) {
 // [ result ] trans: everything
 //
 func FilenameToUri(filename string) (result string, err error) {
-	iv, err := _I.Get(1234, "filename_to_uri", "")
+	iv, err := _I.Get(1234, "filename_to_uri", "", 517, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -31176,7 +31176,7 @@ func FilenameToUri(filename string) (result string, err error) {
 // [ result ] trans: nothing
 //
 func FlowGetName(ret FlowReturnEnum) (result string) {
-	iv, err := _I.Get(1235, "flow_get_name", "")
+	iv, err := _I.Get(1235, "flow_get_name", "", 518, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31196,7 +31196,7 @@ func FlowGetName(ret FlowReturnEnum) (result string) {
 // [ result ] trans: nothing
 //
 func FlowToQuark(ret FlowReturnEnum) (result uint32) {
-	iv, err := _I.Get(1236, "flow_to_quark", "")
+	iv, err := _I.Get(1236, "flow_to_quark", "", 519, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31216,7 +31216,7 @@ func FlowToQuark(ret FlowReturnEnum) (result uint32) {
 // [ result ] trans: nothing
 //
 func FormatGetByNick(nick string) (result FormatEnum) {
-	iv, err := _I.Get(1237, "format_get_by_nick", "")
+	iv, err := _I.Get(1237, "format_get_by_nick", "", 520, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31238,7 +31238,7 @@ func FormatGetByNick(nick string) (result FormatEnum) {
 // [ result ] trans: nothing
 //
 func FormatGetDetails(format FormatEnum) (result FormatDefinition) {
-	iv, err := _I.Get(1238, "format_get_details", "")
+	iv, err := _I.Get(1238, "format_get_details", "", 521, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31258,7 +31258,7 @@ func FormatGetDetails(format FormatEnum) (result FormatDefinition) {
 // [ result ] trans: nothing
 //
 func FormatGetName(format FormatEnum) (result string) {
-	iv, err := _I.Get(1239, "format_get_name", "")
+	iv, err := _I.Get(1239, "format_get_name", "", 522, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31276,7 +31276,7 @@ func FormatGetName(format FormatEnum) (result string) {
 // [ result ] trans: everything
 //
 func FormatIterateDefinitions() (result Iterator) {
-	iv, err := _I.Get(1240, "format_iterate_definitions", "")
+	iv, err := _I.Get(1240, "format_iterate_definitions", "", 523, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31296,7 +31296,7 @@ func FormatIterateDefinitions() (result Iterator) {
 // [ result ] trans: nothing
 //
 func FormatRegister(nick string, description string) (result FormatEnum) {
-	iv, err := _I.Get(1241, "format_register", "")
+	iv, err := _I.Get(1241, "format_register", "", 524, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31321,7 +31321,7 @@ func FormatRegister(nick string, description string) (result FormatEnum) {
 // [ result ] trans: nothing
 //
 func FormatToQuark(format FormatEnum) (result uint32) {
-	iv, err := _I.Get(1242, "format_to_quark", "")
+	iv, err := _I.Get(1242, "format_to_quark", "", 525, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31343,7 +31343,7 @@ func FormatToQuark(format FormatEnum) (result uint32) {
 // [ result ] trans: nothing
 //
 func FormatsContains(formats unsafe.Pointer, format FormatEnum) (result bool) {
-	iv, err := _I.Get(1243, "formats_contains", "")
+	iv, err := _I.Get(1243, "formats_contains", "", 526, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31362,7 +31362,7 @@ func FormatsContains(formats unsafe.Pointer, format FormatEnum) (result bool) {
 // [ result ] trans: nothing
 //
 func GetMainExecutablePath() (result string) {
-	iv, err := _I.Get(1244, "get_main_executable_path", "")
+	iv, err := _I.Get(1244, "get_main_executable_path", "", 527, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31380,7 +31380,7 @@ func GetMainExecutablePath() (result string) {
 // [ argv ] trans: everything, dir: inout
 //
 func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
-	iv, err := _I.Get(1245, "init", "")
+	iv, err := _I.Get(1245, "init", "", 528, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31398,7 +31398,7 @@ func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 // [ result ] trans: nothing
 //
 func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool, err error) {
-	iv, err := _I.Get(1246, "init_check", "")
+	iv, err := _I.Get(1246, "init_check", "", 529, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -31419,7 +31419,7 @@ func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool, err
 // [ result ] trans: nothing
 //
 func IsCapsFeatures(obj unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(1247, "is_caps_features", "")
+	iv, err := _I.Get(1247, "is_caps_features", "", 530, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31437,7 +31437,7 @@ func IsCapsFeatures(obj unsafe.Pointer) (result bool) {
 // [ result ] trans: nothing
 //
 func IsInitialized() (result bool) {
-	iv, err := _I.Get(1248, "is_initialized", "")
+	iv, err := _I.Get(1248, "is_initialized", "", 531, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31453,7 +31453,7 @@ func IsInitialized() (result bool) {
 // [ result ] trans: nothing
 //
 func LibraryErrorQuark() (result uint32) {
-	iv, err := _I.Get(1249, "library_error_quark", "")
+	iv, err := _I.Get(1249, "library_error_quark", "", 532, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31471,7 +31471,7 @@ func LibraryErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func MessageTypeGetName(type1 MessageTypeFlags) (result string) {
-	iv, err := _I.Get(1250, "message_type_get_name", "")
+	iv, err := _I.Get(1250, "message_type_get_name", "", 533, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31491,7 +31491,7 @@ func MessageTypeGetName(type1 MessageTypeFlags) (result string) {
 // [ result ] trans: nothing
 //
 func MessageTypeToQuark(type1 MessageTypeFlags) (result uint32) {
-	iv, err := _I.Get(1251, "message_type_to_quark", "")
+	iv, err := _I.Get(1251, "message_type_to_quark", "", 534, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31511,7 +31511,7 @@ func MessageTypeToQuark(type1 MessageTypeFlags) (result uint32) {
 // [ result ] trans: nothing
 //
 func MetaApiTypeGetTags(api gi.GType) (result gi.CStrArray) {
-	iv, err := _I.Get(1252, "meta_api_type_get_tags", "")
+	iv, err := _I.Get(1252, "meta_api_type_get_tags", "", 535, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31534,7 +31534,7 @@ func MetaApiTypeGetTags(api gi.GType) (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func MetaApiTypeHasTag(api gi.GType, tag uint32) (result bool) {
-	iv, err := _I.Get(1253, "meta_api_type_has_tag", "")
+	iv, err := _I.Get(1253, "meta_api_type_has_tag", "", 536, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31557,7 +31557,7 @@ func MetaApiTypeHasTag(api gi.GType, tag uint32) (result bool) {
 // [ result ] trans: nothing
 //
 func MetaApiTypeRegister(api string, tags gi.CStrArray) (result gi.GType) {
-	iv, err := _I.Get(1254, "meta_api_type_register", "")
+	iv, err := _I.Get(1254, "meta_api_type_register", "", 537, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31580,7 +31580,7 @@ func MetaApiTypeRegister(api string, tags gi.CStrArray) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func MetaGetInfo(impl string) (result MetaInfo) {
-	iv, err := _I.Get(1255, "meta_get_info", "")
+	iv, err := _I.Get(1255, "meta_get_info", "", 538, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31612,7 +31612,7 @@ func MetaGetInfo(impl string) (result MetaInfo) {
 // [ result ] trans: nothing
 //
 func MetaRegister(api gi.GType, impl string, size uint64, init_func int /*TODO_TYPE CALLBACK*/, free_func int /*TODO_TYPE CALLBACK*/, transform_func int /*TODO_TYPE CALLBACK*/) (result MetaInfo) {
-	iv, err := _I.Get(1256, "meta_register", "")
+	iv, err := _I.Get(1256, "meta_register", "", 539, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31641,7 +31641,7 @@ func MetaRegister(api gi.GType, impl string, size uint64, init_func int /*TODO_T
 // [ result ] trans: nothing
 //
 func MiniObjectReplace(olddata int /*TODO:TYPE*/, newdata MiniObject) (result bool) {
-	iv, err := _I.Get(1257, "mini_object_replace", "")
+	iv, err := _I.Get(1257, "mini_object_replace", "", 540, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31664,7 +31664,7 @@ func MiniObjectReplace(olddata int /*TODO:TYPE*/, newdata MiniObject) (result bo
 // [ result ] trans: nothing
 //
 func MiniObjectTake(olddata int /*TODO:TYPE*/, newdata MiniObject) (result bool) {
-	iv, err := _I.Get(1258, "mini_object_take", "")
+	iv, err := _I.Get(1258, "mini_object_take", "", 541, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31685,7 +31685,7 @@ func MiniObjectTake(olddata int /*TODO:TYPE*/, newdata MiniObject) (result bool)
 // [ result ] trans: nothing
 //
 func PadModeGetName(mode PadModeEnum) (result string) {
-	iv, err := _I.Get(1259, "pad_mode_get_name", "")
+	iv, err := _I.Get(1259, "pad_mode_get_name", "", 542, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31713,7 +31713,7 @@ func PadModeGetName(mode PadModeEnum) (result string) {
 // [ result ] trans: everything
 //
 func ParamSpecArrayF(name string, nick string, blurb string, element_spec g.IParamSpec, flags g.ParamFlags) (result g.ParamSpec) {
-	iv, err := _I.Get(1260, "param_spec_array", "")
+	iv, err := _I.Get(1260, "param_spec_array", "", 543, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31765,7 +31765,7 @@ func ParamSpecArrayF(name string, nick string, blurb string, element_spec g.IPar
 // [ result ] trans: everything
 //
 func ParamSpecFractionF(name string, nick string, blurb string, min_num int32, min_denom int32, max_num int32, max_denom int32, default_num int32, default_denom int32, flags g.ParamFlags) (result g.ParamSpec) {
-	iv, err := _I.Get(1261, "param_spec_fraction", "")
+	iv, err := _I.Get(1261, "param_spec_fraction", "", 544, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31798,7 +31798,7 @@ func ParamSpecFractionF(name string, nick string, blurb string, min_num int32, m
 // [ result ] trans: nothing
 //
 func ParentBufferMetaApiGetType() (result gi.GType) {
-	iv, err := _I.Get(1262, "parent_buffer_meta_api_get_type", "")
+	iv, err := _I.Get(1262, "parent_buffer_meta_api_get_type", "", 545, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31814,7 +31814,7 @@ func ParentBufferMetaApiGetType() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func ParentBufferMetaGetInfo() (result MetaInfo) {
-	iv, err := _I.Get(1263, "parent_buffer_meta_get_info", "")
+	iv, err := _I.Get(1263, "parent_buffer_meta_get_info", "", 546, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31834,7 +31834,7 @@ func ParentBufferMetaGetInfo() (result MetaInfo) {
 // [ result ] trans: nothing
 //
 func ParseBinFromDescription(bin_description string, ghost_unlinked_pads bool) (result Bin, err error) {
-	iv, err := _I.Get(1264, "parse_bin_from_description", "")
+	iv, err := _I.Get(1264, "parse_bin_from_description", "", 547, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -31865,7 +31865,7 @@ func ParseBinFromDescription(bin_description string, ghost_unlinked_pads bool) (
 // [ result ] trans: nothing
 //
 func ParseBinFromDescriptionFull(bin_description string, ghost_unlinked_pads bool, context ParseContext, flags ParseFlags) (result Element, err error) {
-	iv, err := _I.Get(1265, "parse_bin_from_description_full", "")
+	iv, err := _I.Get(1265, "parse_bin_from_description_full", "", 548, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -31890,7 +31890,7 @@ func ParseBinFromDescriptionFull(bin_description string, ghost_unlinked_pads boo
 // [ result ] trans: nothing
 //
 func ParseErrorQuark() (result uint32) {
-	iv, err := _I.Get(1266, "parse_error_quark", "")
+	iv, err := _I.Get(1266, "parse_error_quark", "", 549, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -31908,7 +31908,7 @@ func ParseErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func ParseLaunch(pipeline_description string) (result Element, err error) {
-	iv, err := _I.Get(1267, "parse_launch", "")
+	iv, err := _I.Get(1267, "parse_launch", "", 550, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -31936,7 +31936,7 @@ func ParseLaunch(pipeline_description string) (result Element, err error) {
 // [ result ] trans: nothing
 //
 func ParseLaunchFull(pipeline_description string, context ParseContext, flags ParseFlags) (result Element, err error) {
-	iv, err := _I.Get(1268, "parse_launch_full", "")
+	iv, err := _I.Get(1268, "parse_launch_full", "", 551, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -31962,7 +31962,7 @@ func ParseLaunchFull(pipeline_description string, context ParseContext, flags Pa
 // [ result ] trans: nothing
 //
 func ParseLaunchv(argv gi.CStrArray) (result Element, err error) {
-	iv, err := _I.Get(1269, "parse_launchv", "")
+	iv, err := _I.Get(1269, "parse_launchv", "", 552, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -31988,7 +31988,7 @@ func ParseLaunchv(argv gi.CStrArray) (result Element, err error) {
 // [ result ] trans: nothing
 //
 func ParseLaunchvFull(argv gi.CStrArray, context ParseContext, flags ParseFlags) (result Element, err error) {
-	iv, err := _I.Get(1270, "parse_launchv_full", "")
+	iv, err := _I.Get(1270, "parse_launchv_full", "", 553, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -32010,7 +32010,7 @@ func ParseLaunchvFull(argv gi.CStrArray, context ParseContext, flags ParseFlags)
 // [ result ] trans: nothing
 //
 func PluginErrorQuark() (result uint32) {
-	iv, err := _I.Get(1271, "plugin_error_quark", "")
+	iv, err := _I.Get(1271, "plugin_error_quark", "", 554, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32026,7 +32026,7 @@ func PluginErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func PresetGetAppDir() (result string) {
-	iv, err := _I.Get(1272, "preset_get_app_dir", "")
+	iv, err := _I.Get(1272, "preset_get_app_dir", "", 555, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32044,7 +32044,7 @@ func PresetGetAppDir() (result string) {
 // [ result ] trans: nothing
 //
 func PresetSetAppDir(app_dir string) (result bool) {
-	iv, err := _I.Get(1273, "preset_set_app_dir", "")
+	iv, err := _I.Get(1273, "preset_set_app_dir", "", 556, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32066,7 +32066,7 @@ func PresetSetAppDir(app_dir string) (result bool) {
 // [ result ] trans: everything
 //
 func ProtectionFilterSystemsByAvailableDecryptors(system_identifiers gi.CStrArray) (result gi.CStrArray) {
-	iv, err := _I.Get(1274, "protection_filter_systems_by_available_decryptors", "")
+	iv, err := _I.Get(1274, "protection_filter_systems_by_available_decryptors", "", 557, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32085,7 +32085,7 @@ func ProtectionFilterSystemsByAvailableDecryptors(system_identifiers gi.CStrArra
 // [ result ] trans: nothing
 //
 func ProtectionMetaApiGetType() (result gi.GType) {
-	iv, err := _I.Get(1275, "protection_meta_api_get_type", "")
+	iv, err := _I.Get(1275, "protection_meta_api_get_type", "", 558, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32101,7 +32101,7 @@ func ProtectionMetaApiGetType() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func ProtectionMetaGetInfo() (result MetaInfo) {
-	iv, err := _I.Get(1276, "protection_meta_get_info", "")
+	iv, err := _I.Get(1276, "protection_meta_get_info", "", 559, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32119,7 +32119,7 @@ func ProtectionMetaGetInfo() (result MetaInfo) {
 // [ result ] trans: nothing
 //
 func ProtectionSelectSystem(system_identifiers gi.CStrArray) (result string) {
-	iv, err := _I.Get(1277, "protection_select_system", "")
+	iv, err := _I.Get(1277, "protection_select_system", "", 560, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32139,7 +32139,7 @@ func ProtectionSelectSystem(system_identifiers gi.CStrArray) (result string) {
 // [ result ] trans: nothing
 //
 func QueryTypeGetFlags(type1 QueryTypeEnum) (result QueryTypeFlags) {
-	iv, err := _I.Get(1278, "query_type_get_flags", "")
+	iv, err := _I.Get(1278, "query_type_get_flags", "", 561, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32159,7 +32159,7 @@ func QueryTypeGetFlags(type1 QueryTypeEnum) (result QueryTypeFlags) {
 // [ result ] trans: nothing
 //
 func QueryTypeGetName(type1 QueryTypeEnum) (result string) {
-	iv, err := _I.Get(1279, "query_type_get_name", "")
+	iv, err := _I.Get(1279, "query_type_get_name", "", 562, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32179,7 +32179,7 @@ func QueryTypeGetName(type1 QueryTypeEnum) (result string) {
 // [ result ] trans: nothing
 //
 func QueryTypeToQuark(type1 QueryTypeEnum) (result uint32) {
-	iv, err := _I.Get(1280, "query_type_to_quark", "")
+	iv, err := _I.Get(1280, "query_type_to_quark", "", 563, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32197,7 +32197,7 @@ func QueryTypeToQuark(type1 QueryTypeEnum) (result uint32) {
 // [ result ] trans: nothing
 //
 func ReferenceTimestampMetaApiGetType() (result gi.GType) {
-	iv, err := _I.Get(1281, "reference_timestamp_meta_api_get_type", "")
+	iv, err := _I.Get(1281, "reference_timestamp_meta_api_get_type", "", 564, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32213,7 +32213,7 @@ func ReferenceTimestampMetaApiGetType() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func ReferenceTimestampMetaGetInfo() (result MetaInfo) {
-	iv, err := _I.Get(1282, "reference_timestamp_meta_get_info", "")
+	iv, err := _I.Get(1282, "reference_timestamp_meta_get_info", "", 565, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32229,7 +32229,7 @@ func ReferenceTimestampMetaGetInfo() (result MetaInfo) {
 // [ result ] trans: nothing
 //
 func ResourceErrorQuark() (result uint32) {
-	iv, err := _I.Get(1283, "resource_error_quark", "")
+	iv, err := _I.Get(1283, "resource_error_quark", "", 566, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32245,7 +32245,7 @@ func ResourceErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func SegtrapIsEnabled() (result bool) {
-	iv, err := _I.Get(1284, "segtrap_is_enabled", "")
+	iv, err := _I.Get(1284, "segtrap_is_enabled", "", 567, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32261,7 +32261,7 @@ func SegtrapIsEnabled() (result bool) {
 // [ enabled ] trans: nothing
 //
 func SegtrapSetEnabled(enabled bool) {
-	iv, err := _I.Get(1285, "segtrap_set_enabled", "")
+	iv, err := _I.Get(1285, "segtrap_set_enabled", "", 568, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32278,7 +32278,7 @@ func SegtrapSetEnabled(enabled bool) {
 // [ result ] trans: nothing
 //
 func StateChangeGetName(transition StateChangeEnum) (result string) {
-	iv, err := _I.Get(1286, "state_change_get_name", "")
+	iv, err := _I.Get(1286, "state_change_get_name", "", 569, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32296,7 +32296,7 @@ func StateChangeGetName(transition StateChangeEnum) (result string) {
 // [ result ] trans: nothing
 //
 func StaticCapsGetType() (result gi.GType) {
-	iv, err := _I.Get(1287, "static_caps_get_type", "")
+	iv, err := _I.Get(1287, "static_caps_get_type", "", 570, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32312,7 +32312,7 @@ func StaticCapsGetType() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func StaticPadTemplateGetType() (result gi.GType) {
-	iv, err := _I.Get(1288, "static_pad_template_get_type", "")
+	iv, err := _I.Get(1288, "static_pad_template_get_type", "", 571, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32328,7 +32328,7 @@ func StaticPadTemplateGetType() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func StreamErrorQuark() (result uint32) {
-	iv, err := _I.Get(1289, "stream_error_quark", "")
+	iv, err := _I.Get(1289, "stream_error_quark", "", 572, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32346,7 +32346,7 @@ func StreamErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func StreamTypeGetName(stype StreamTypeFlags) (result string) {
-	iv, err := _I.Get(1290, "stream_type_get_name", "")
+	iv, err := _I.Get(1290, "stream_type_get_name", "", 573, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32368,7 +32368,7 @@ func StreamTypeGetName(stype StreamTypeFlags) (result string) {
 // [ result ] trans: everything
 //
 func StructureFromString(string string) (result Structure, end string) {
-	iv, err := _I.Get(1291, "structure_from_string", "")
+	iv, err := _I.Get(1291, "structure_from_string", "", 574, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32393,7 +32393,7 @@ func StructureFromString(string string) (result Structure, end string) {
 // [ result ] trans: nothing
 //
 func TagExists(tag string) (result bool) {
-	iv, err := _I.Get(1292, "tag_exists", "")
+	iv, err := _I.Get(1292, "tag_exists", "", 575, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32415,7 +32415,7 @@ func TagExists(tag string) (result bool) {
 // [ result ] trans: nothing
 //
 func TagGetDescription(tag string) (result string) {
-	iv, err := _I.Get(1293, "tag_get_description", "")
+	iv, err := _I.Get(1293, "tag_get_description", "", 576, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32437,7 +32437,7 @@ func TagGetDescription(tag string) (result string) {
 // [ result ] trans: nothing
 //
 func TagGetFlag(tag string) (result TagFlagEnum) {
-	iv, err := _I.Get(1294, "tag_get_flag", "")
+	iv, err := _I.Get(1294, "tag_get_flag", "", 577, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32459,7 +32459,7 @@ func TagGetFlag(tag string) (result TagFlagEnum) {
 // [ result ] trans: nothing
 //
 func TagGetNick(tag string) (result string) {
-	iv, err := _I.Get(1295, "tag_get_nick", "")
+	iv, err := _I.Get(1295, "tag_get_nick", "", 578, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32481,7 +32481,7 @@ func TagGetNick(tag string) (result string) {
 // [ result ] trans: nothing
 //
 func TagGetType(tag string) (result gi.GType) {
-	iv, err := _I.Get(1296, "tag_get_type", "")
+	iv, err := _I.Get(1296, "tag_get_type", "", 579, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32503,7 +32503,7 @@ func TagGetType(tag string) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TagIsFixed(tag string) (result bool) {
-	iv, err := _I.Get(1297, "tag_is_fixed", "")
+	iv, err := _I.Get(1297, "tag_is_fixed", "", 580, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32529,7 +32529,7 @@ func TagIsFixed(tag string) (result bool) {
 // [ result ] trans: nothing
 //
 func TagListCopyValue(dest g.Value, list TagList, tag string) (result bool) {
-	iv, err := _I.Get(1298, "tag_list_copy_value", "")
+	iv, err := _I.Get(1298, "tag_list_copy_value", "", 581, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32553,7 +32553,7 @@ func TagListCopyValue(dest g.Value, list TagList, tag string) (result bool) {
 // [ src ] trans: nothing
 //
 func TagMergeStringsWithComma(dest g.Value, src g.Value) {
-	iv, err := _I.Get(1299, "tag_merge_strings_with_comma", "")
+	iv, err := _I.Get(1299, "tag_merge_strings_with_comma", "", 582, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32571,7 +32571,7 @@ func TagMergeStringsWithComma(dest g.Value, src g.Value) {
 // [ src ] trans: nothing
 //
 func TagMergeUseFirst(dest g.Value, src g.Value) {
-	iv, err := _I.Get(1300, "tag_merge_use_first", "")
+	iv, err := _I.Get(1300, "tag_merge_use_first", "", 583, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32597,7 +32597,7 @@ func TagMergeUseFirst(dest g.Value, src g.Value) {
 // [ func1 ] trans: nothing
 //
 func TagRegister(name string, flag TagFlagEnum, type1 gi.GType, nick string, blurb string, func1 int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(1301, "tag_register", "")
+	iv, err := _I.Get(1301, "tag_register", "", 584, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32633,7 +32633,7 @@ func TagRegister(name string, flag TagFlagEnum, type1 gi.GType, nick string, blu
 // [ func1 ] trans: nothing
 //
 func TagRegisterStatic(name string, flag TagFlagEnum, type1 gi.GType, nick string, blurb string, func1 int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(1302, "tag_register_static", "")
+	iv, err := _I.Get(1302, "tag_register_static", "", 585, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32661,7 +32661,7 @@ func TagRegisterStatic(name string, flag TagFlagEnum, type1 gi.GType, nick strin
 // [ result ] trans: nothing
 //
 func TocEntryTypeGetNick(type1 TocEntryTypeEnum) (result string) {
-	iv, err := _I.Get(1303, "toc_entry_type_get_nick", "")
+	iv, err := _I.Get(1303, "toc_entry_type_get_nick", "", 586, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32679,7 +32679,7 @@ func TocEntryTypeGetNick(type1 TocEntryTypeEnum) (result string) {
 // [ result ] trans: nothing
 //
 func TypeFindGetType() (result gi.GType) {
-	iv, err := _I.Get(1304, "type_find_get_type", "")
+	iv, err := _I.Get(1304, "type_find_get_type", "", 587, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32711,7 +32711,7 @@ func TypeFindGetType() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeFindRegister(plugin IPlugin, name string, rank uint32, func1 int /*TODO_TYPE CALLBACK*/, extensions string, possible_caps Caps, data unsafe.Pointer, data_notify int /*TODO_TYPE CALLBACK*/) (result bool) {
-	iv, err := _I.Get(1305, "type_find_register", "")
+	iv, err := _I.Get(1305, "type_find_register", "", 588, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32744,7 +32744,7 @@ func TypeFindRegister(plugin IPlugin, name string, rank uint32, func1 int /*TODO
 // [ result ] trans: nothing
 //
 func UpdateRegistry() (result bool) {
-	iv, err := _I.Get(1306, "update_registry", "")
+	iv, err := _I.Get(1306, "update_registry", "", 589, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32766,7 +32766,7 @@ func UpdateRegistry() (result bool) {
 // [ result ] trans: everything
 //
 func UriConstruct(protocol string, location string) (result string) {
-	iv, err := _I.Get(1307, "uri_construct", "")
+	iv, err := _I.Get(1307, "uri_construct", "", 590, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32789,7 +32789,7 @@ func UriConstruct(protocol string, location string) (result string) {
 // [ result ] trans: nothing
 //
 func UriErrorQuark() (result uint32) {
-	iv, err := _I.Get(1308, "uri_error_quark", "")
+	iv, err := _I.Get(1308, "uri_error_quark", "", 591, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32807,7 +32807,7 @@ func UriErrorQuark() (result uint32) {
 // [ result ] trans: everything
 //
 func UriFromString(uri string) (result Uri) {
-	iv, err := _I.Get(1309, "uri_from_string", "")
+	iv, err := _I.Get(1309, "uri_from_string", "", 592, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32829,7 +32829,7 @@ func UriFromString(uri string) (result Uri) {
 // [ result ] trans: everything
 //
 func UriGetLocation(uri string) (result string) {
-	iv, err := _I.Get(1310, "uri_get_location", "")
+	iv, err := _I.Get(1310, "uri_get_location", "", 593, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32851,7 +32851,7 @@ func UriGetLocation(uri string) (result string) {
 // [ result ] trans: everything
 //
 func UriGetProtocol(uri string) (result string) {
-	iv, err := _I.Get(1311, "uri_get_protocol", "")
+	iv, err := _I.Get(1311, "uri_get_protocol", "", 594, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32875,7 +32875,7 @@ func UriGetProtocol(uri string) (result string) {
 // [ result ] trans: nothing
 //
 func UriHasProtocol(uri string, protocol string) (result bool) {
-	iv, err := _I.Get(1312, "uri_has_protocol", "")
+	iv, err := _I.Get(1312, "uri_has_protocol", "", 595, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32900,7 +32900,7 @@ func UriHasProtocol(uri string, protocol string) (result bool) {
 // [ result ] trans: nothing
 //
 func UriIsValid(uri string) (result bool) {
-	iv, err := _I.Get(1313, "uri_is_valid", "")
+	iv, err := _I.Get(1313, "uri_is_valid", "", 596, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32924,7 +32924,7 @@ func UriIsValid(uri string) (result bool) {
 // [ result ] trans: everything
 //
 func UriJoinStrings(base_uri string, ref_uri string) (result string) {
-	iv, err := _I.Get(1314, "uri_join_strings", "")
+	iv, err := _I.Get(1314, "uri_join_strings", "", 597, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32951,7 +32951,7 @@ func UriJoinStrings(base_uri string, ref_uri string) (result string) {
 // [ result ] trans: nothing
 //
 func UriProtocolIsSupported(type1 URITypeEnum, protocol string) (result bool) {
-	iv, err := _I.Get(1315, "uri_protocol_is_supported", "")
+	iv, err := _I.Get(1315, "uri_protocol_is_supported", "", 598, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -32974,7 +32974,7 @@ func UriProtocolIsSupported(type1 URITypeEnum, protocol string) (result bool) {
 // [ result ] trans: nothing
 //
 func UriProtocolIsValid(protocol string) (result bool) {
-	iv, err := _I.Get(1316, "uri_protocol_is_valid", "")
+	iv, err := _I.Get(1316, "uri_protocol_is_valid", "", 599, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33008,7 +33008,7 @@ func UriProtocolIsValid(protocol string) (result bool) {
 // [ result ] trans: nothing
 //
 func UtilArrayBinarySearch(array unsafe.Pointer, num_elements uint32, element_size uint64, search_func int /*TODO_TYPE CALLBACK*/, mode SearchModeEnum, search_data unsafe.Pointer, user_data unsafe.Pointer) (result unsafe.Pointer) {
-	iv, err := _I.Get(1317, "util_array_binary_search", "")
+	iv, err := _I.Get(1317, "util_array_binary_search", "", 600, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33036,7 +33036,7 @@ func UtilArrayBinarySearch(array unsafe.Pointer, num_elements uint32, element_si
 // [ dest_d ] trans: everything, dir: out
 //
 func UtilDoubleToFraction(src float64) (dest_n int32, dest_d int32) {
-	iv, err := _I.Get(1318, "util_double_to_fraction", "")
+	iv, err := _I.Get(1318, "util_double_to_fraction", "", 601, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33057,7 +33057,7 @@ func UtilDoubleToFraction(src float64) (dest_n int32, dest_d int32) {
 // [ buf ] trans: nothing
 //
 func UtilDumpBuffer(buf Buffer) {
-	iv, err := _I.Get(1319, "util_dump_buffer", "")
+	iv, err := _I.Get(1319, "util_dump_buffer", "", 602, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33074,7 +33074,7 @@ func UtilDumpBuffer(buf Buffer) {
 // [ size ] trans: nothing
 //
 func UtilDumpMem(mem gi.Uint8Array, size uint32) {
-	iv, err := _I.Get(1320, "util_dump_mem", "")
+	iv, err := _I.Get(1320, "util_dump_mem", "", 603, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33102,7 +33102,7 @@ func UtilDumpMem(mem gi.Uint8Array, size uint32) {
 // [ result ] trans: nothing
 //
 func UtilFractionAdd(a_n int32, a_d int32, b_n int32, b_d int32) (result bool, res_n int32, res_d int32) {
-	iv, err := _I.Get(1321, "util_fraction_add", "")
+	iv, err := _I.Get(1321, "util_fraction_add", "", 604, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33136,7 +33136,7 @@ func UtilFractionAdd(a_n int32, a_d int32, b_n int32, b_d int32) (result bool, r
 // [ result ] trans: nothing
 //
 func UtilFractionCompare(a_n int32, a_d int32, b_n int32, b_d int32) (result int32) {
-	iv, err := _I.Get(1322, "util_fraction_compare", "")
+	iv, err := _I.Get(1322, "util_fraction_compare", "", 605, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33169,7 +33169,7 @@ func UtilFractionCompare(a_n int32, a_d int32, b_n int32, b_d int32) (result int
 // [ result ] trans: nothing
 //
 func UtilFractionMultiply(a_n int32, a_d int32, b_n int32, b_d int32) (result bool, res_n int32, res_d int32) {
-	iv, err := _I.Get(1323, "util_fraction_multiply", "")
+	iv, err := _I.Get(1323, "util_fraction_multiply", "", 606, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33199,7 +33199,7 @@ func UtilFractionMultiply(a_n int32, a_d int32, b_n int32, b_d int32) (result bo
 // [ dest ] trans: everything, dir: out
 //
 func UtilFractionToDouble(src_n int32, src_d int32) (dest float64) {
-	iv, err := _I.Get(1324, "util_fraction_to_double", "")
+	iv, err := _I.Get(1324, "util_fraction_to_double", "", 607, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33221,7 +33221,7 @@ func UtilFractionToDouble(src_n int32, src_d int32) (dest float64) {
 // [ result ] trans: nothing
 //
 func UtilGdoubleToGuint64(value float64) (result uint64) {
-	iv, err := _I.Get(1325, "util_gdouble_to_guint64", "")
+	iv, err := _I.Get(1325, "util_gdouble_to_guint64", "", 608, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33245,7 +33245,7 @@ func UtilGdoubleToGuint64(value float64) (result uint64) {
 // [ result ] trans: nothing
 //
 func UtilGetObjectArray(object g.IObject, name string) (result bool, array g.ValueArray) {
-	iv, err := _I.Get(1326, "util_get_object_array", "")
+	iv, err := _I.Get(1326, "util_get_object_array", "", 609, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33273,7 +33273,7 @@ func UtilGetObjectArray(object g.IObject, name string) (result bool, array g.Val
 // [ result ] trans: nothing
 //
 func UtilGetTimestamp() (result uint64) {
-	iv, err := _I.Get(1327, "util_get_timestamp", "")
+	iv, err := _I.Get(1327, "util_get_timestamp", "", 610, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33293,7 +33293,7 @@ func UtilGetTimestamp() (result uint64) {
 // [ result ] trans: nothing
 //
 func UtilGreatestCommonDivisor(a int32, b int32) (result int32) {
-	iv, err := _I.Get(1328, "util_greatest_common_divisor", "")
+	iv, err := _I.Get(1328, "util_greatest_common_divisor", "", 611, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33316,7 +33316,7 @@ func UtilGreatestCommonDivisor(a int32, b int32) (result int32) {
 // [ result ] trans: nothing
 //
 func UtilGreatestCommonDivisorInt64(a int64, b int64) (result int64) {
-	iv, err := _I.Get(1329, "util_greatest_common_divisor_int64", "")
+	iv, err := _I.Get(1329, "util_greatest_common_divisor_int64", "", 612, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33335,7 +33335,7 @@ func UtilGreatestCommonDivisorInt64(a int64, b int64) (result int64) {
 // [ result ] trans: nothing
 //
 func UtilGroupIdNext() (result uint32) {
-	iv, err := _I.Get(1330, "util_group_id_next", "")
+	iv, err := _I.Get(1330, "util_group_id_next", "", 613, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33353,7 +33353,7 @@ func UtilGroupIdNext() (result uint32) {
 // [ result ] trans: nothing
 //
 func UtilGuint64ToGdouble(value uint64) (result float64) {
-	iv, err := _I.Get(1331, "util_guint64_to_gdouble", "")
+	iv, err := _I.Get(1331, "util_guint64_to_gdouble", "", 614, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33375,7 +33375,7 @@ func UtilGuint64ToGdouble(value uint64) (result float64) {
 // [ result ] trans: nothing
 //
 func UtilSeqnumCompare(s1 uint32, s2 uint32) (result int32) {
-	iv, err := _I.Get(1332, "util_seqnum_compare", "")
+	iv, err := _I.Get(1332, "util_seqnum_compare", "", 615, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33394,7 +33394,7 @@ func UtilSeqnumCompare(s1 uint32, s2 uint32) (result int32) {
 // [ result ] trans: nothing
 //
 func UtilSeqnumNext() (result uint32) {
-	iv, err := _I.Get(1333, "util_seqnum_next", "")
+	iv, err := _I.Get(1333, "util_seqnum_next", "", 616, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33414,7 +33414,7 @@ func UtilSeqnumNext() (result uint32) {
 // [ value ] trans: nothing
 //
 func UtilSetObjectArg(object g.IObject, name string, value string) {
-	iv, err := _I.Get(1334, "util_set_object_arg", "")
+	iv, err := _I.Get(1334, "util_set_object_arg", "", 617, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33445,7 +33445,7 @@ func UtilSetObjectArg(object g.IObject, name string, value string) {
 // [ result ] trans: nothing
 //
 func UtilSetObjectArray(object g.IObject, name string, array g.ValueArray) (result bool) {
-	iv, err := _I.Get(1335, "util_set_object_array", "")
+	iv, err := _I.Get(1335, "util_set_object_array", "", 618, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33473,7 +33473,7 @@ func UtilSetObjectArray(object g.IObject, name string, array g.ValueArray) (resu
 // [ value_str ] trans: nothing
 //
 func UtilSetValueFromString(value g.Value, value_str string) {
-	iv, err := _I.Get(1336, "util_set_value_from_string", "")
+	iv, err := _I.Get(1336, "util_set_value_from_string", "", 619, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33497,7 +33497,7 @@ func UtilSetValueFromString(value g.Value, value_str string) {
 // [ result ] trans: nothing
 //
 func UtilUint64Scale(val uint64, num uint64, denom uint64) (result uint64) {
-	iv, err := _I.Get(1337, "util_uint64_scale", "")
+	iv, err := _I.Get(1337, "util_uint64_scale", "", 620, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33523,7 +33523,7 @@ func UtilUint64Scale(val uint64, num uint64, denom uint64) (result uint64) {
 // [ result ] trans: nothing
 //
 func UtilUint64ScaleCeil(val uint64, num uint64, denom uint64) (result uint64) {
-	iv, err := _I.Get(1338, "util_uint64_scale_ceil", "")
+	iv, err := _I.Get(1338, "util_uint64_scale_ceil", "", 621, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33549,7 +33549,7 @@ func UtilUint64ScaleCeil(val uint64, num uint64, denom uint64) (result uint64) {
 // [ result ] trans: nothing
 //
 func UtilUint64ScaleInt(val uint64, num int32, denom int32) (result uint64) {
-	iv, err := _I.Get(1339, "util_uint64_scale_int", "")
+	iv, err := _I.Get(1339, "util_uint64_scale_int", "", 622, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33575,7 +33575,7 @@ func UtilUint64ScaleInt(val uint64, num int32, denom int32) (result uint64) {
 // [ result ] trans: nothing
 //
 func UtilUint64ScaleIntCeil(val uint64, num int32, denom int32) (result uint64) {
-	iv, err := _I.Get(1340, "util_uint64_scale_int_ceil", "")
+	iv, err := _I.Get(1340, "util_uint64_scale_int_ceil", "", 623, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33601,7 +33601,7 @@ func UtilUint64ScaleIntCeil(val uint64, num int32, denom int32) (result uint64) 
 // [ result ] trans: nothing
 //
 func UtilUint64ScaleIntRound(val uint64, num int32, denom int32) (result uint64) {
-	iv, err := _I.Get(1341, "util_uint64_scale_int_round", "")
+	iv, err := _I.Get(1341, "util_uint64_scale_int_round", "", 624, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33627,7 +33627,7 @@ func UtilUint64ScaleIntRound(val uint64, num int32, denom int32) (result uint64)
 // [ result ] trans: nothing
 //
 func UtilUint64ScaleRound(val uint64, num uint64, denom uint64) (result uint64) {
-	iv, err := _I.Get(1342, "util_uint64_scale_round", "")
+	iv, err := _I.Get(1342, "util_uint64_scale_round", "", 625, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33651,7 +33651,7 @@ func UtilUint64ScaleRound(val uint64, num uint64, denom uint64) (result uint64) 
 // [ result ] trans: nothing
 //
 func ValueCanCompare(value1 g.Value, value2 g.Value) (result bool) {
-	iv, err := _I.Get(1343, "value_can_compare", "")
+	iv, err := _I.Get(1343, "value_can_compare", "", 626, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33674,7 +33674,7 @@ func ValueCanCompare(value1 g.Value, value2 g.Value) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueCanIntersect(value1 g.Value, value2 g.Value) (result bool) {
-	iv, err := _I.Get(1344, "value_can_intersect", "")
+	iv, err := _I.Get(1344, "value_can_intersect", "", 627, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33697,7 +33697,7 @@ func ValueCanIntersect(value1 g.Value, value2 g.Value) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueCanSubtract(minuend g.Value, subtrahend g.Value) (result bool) {
-	iv, err := _I.Get(1345, "value_can_subtract", "")
+	iv, err := _I.Get(1345, "value_can_subtract", "", 628, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33720,7 +33720,7 @@ func ValueCanSubtract(minuend g.Value, subtrahend g.Value) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueCanUnion(value1 g.Value, value2 g.Value) (result bool) {
-	iv, err := _I.Get(1346, "value_can_union", "")
+	iv, err := _I.Get(1346, "value_can_union", "", 629, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33743,7 +33743,7 @@ func ValueCanUnion(value1 g.Value, value2 g.Value) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueCompare(value1 g.Value, value2 g.Value) (result int32) {
-	iv, err := _I.Get(1347, "value_compare", "")
+	iv, err := _I.Get(1347, "value_compare", "", 630, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33766,7 +33766,7 @@ func ValueCompare(value1 g.Value, value2 g.Value) (result int32) {
 // [ result ] trans: nothing
 //
 func ValueDeserialize(dest g.Value, src string) (result bool) {
-	iv, err := _I.Get(1348, "value_deserialize", "")
+	iv, err := _I.Get(1348, "value_deserialize", "", 631, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33791,7 +33791,7 @@ func ValueDeserialize(dest g.Value, src string) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueFixate(dest g.Value, src g.Value) (result bool) {
-	iv, err := _I.Get(1349, "value_fixate", "")
+	iv, err := _I.Get(1349, "value_fixate", "", 632, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33816,7 +33816,7 @@ func ValueFixate(dest g.Value, src g.Value) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueFractionMultiply(product g.Value, factor1 g.Value, factor2 g.Value) (result bool) {
-	iv, err := _I.Get(1350, "value_fraction_multiply", "")
+	iv, err := _I.Get(1350, "value_fraction_multiply", "", 633, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33842,7 +33842,7 @@ func ValueFractionMultiply(product g.Value, factor1 g.Value, factor2 g.Value) (r
 // [ result ] trans: nothing
 //
 func ValueFractionSubtract(dest g.Value, minuend g.Value, subtrahend g.Value) (result bool) {
-	iv, err := _I.Get(1351, "value_fraction_subtract", "")
+	iv, err := _I.Get(1351, "value_fraction_subtract", "", 634, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33864,7 +33864,7 @@ func ValueFractionSubtract(dest g.Value, minuend g.Value, subtrahend g.Value) (r
 // [ result ] trans: nothing
 //
 func ValueGetBitmask(value g.Value) (result uint64) {
-	iv, err := _I.Get(1352, "value_get_bitmask", "")
+	iv, err := _I.Get(1352, "value_get_bitmask", "", 635, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33884,7 +33884,7 @@ func ValueGetBitmask(value g.Value) (result uint64) {
 // [ result ] trans: nothing
 //
 func ValueGetCaps(value g.Value) (result Caps) {
-	iv, err := _I.Get(1353, "value_get_caps", "")
+	iv, err := _I.Get(1353, "value_get_caps", "", 636, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33904,7 +33904,7 @@ func ValueGetCaps(value g.Value) (result Caps) {
 // [ result ] trans: nothing
 //
 func ValueGetCapsFeatures(value g.Value) (result CapsFeatures) {
-	iv, err := _I.Get(1354, "value_get_caps_features", "")
+	iv, err := _I.Get(1354, "value_get_caps_features", "", 637, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33924,7 +33924,7 @@ func ValueGetCapsFeatures(value g.Value) (result CapsFeatures) {
 // [ result ] trans: nothing
 //
 func ValueGetDoubleRangeMax(value g.Value) (result float64) {
-	iv, err := _I.Get(1355, "value_get_double_range_max", "")
+	iv, err := _I.Get(1355, "value_get_double_range_max", "", 638, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33944,7 +33944,7 @@ func ValueGetDoubleRangeMax(value g.Value) (result float64) {
 // [ result ] trans: nothing
 //
 func ValueGetDoubleRangeMin(value g.Value) (result float64) {
-	iv, err := _I.Get(1356, "value_get_double_range_min", "")
+	iv, err := _I.Get(1356, "value_get_double_range_min", "", 639, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33964,7 +33964,7 @@ func ValueGetDoubleRangeMin(value g.Value) (result float64) {
 // [ result ] trans: nothing
 //
 func ValueGetFlagsetFlags(value g.Value) (result uint32) {
-	iv, err := _I.Get(1357, "value_get_flagset_flags", "")
+	iv, err := _I.Get(1357, "value_get_flagset_flags", "", 640, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -33984,7 +33984,7 @@ func ValueGetFlagsetFlags(value g.Value) (result uint32) {
 // [ result ] trans: nothing
 //
 func ValueGetFlagsetMask(value g.Value) (result uint32) {
-	iv, err := _I.Get(1358, "value_get_flagset_mask", "")
+	iv, err := _I.Get(1358, "value_get_flagset_mask", "", 641, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34004,7 +34004,7 @@ func ValueGetFlagsetMask(value g.Value) (result uint32) {
 // [ result ] trans: nothing
 //
 func ValueGetFractionDenominator(value g.Value) (result int32) {
-	iv, err := _I.Get(1359, "value_get_fraction_denominator", "")
+	iv, err := _I.Get(1359, "value_get_fraction_denominator", "", 642, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34024,7 +34024,7 @@ func ValueGetFractionDenominator(value g.Value) (result int32) {
 // [ result ] trans: nothing
 //
 func ValueGetFractionNumerator(value g.Value) (result int32) {
-	iv, err := _I.Get(1360, "value_get_fraction_numerator", "")
+	iv, err := _I.Get(1360, "value_get_fraction_numerator", "", 643, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34044,7 +34044,7 @@ func ValueGetFractionNumerator(value g.Value) (result int32) {
 // [ result ] trans: nothing
 //
 func ValueGetFractionRangeMax(value g.Value) (result g.Value) {
-	iv, err := _I.Get(1361, "value_get_fraction_range_max", "")
+	iv, err := _I.Get(1361, "value_get_fraction_range_max", "", 644, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34064,7 +34064,7 @@ func ValueGetFractionRangeMax(value g.Value) (result g.Value) {
 // [ result ] trans: nothing
 //
 func ValueGetFractionRangeMin(value g.Value) (result g.Value) {
-	iv, err := _I.Get(1362, "value_get_fraction_range_min", "")
+	iv, err := _I.Get(1362, "value_get_fraction_range_min", "", 645, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34084,7 +34084,7 @@ func ValueGetFractionRangeMin(value g.Value) (result g.Value) {
 // [ result ] trans: nothing
 //
 func ValueGetInt64RangeMax(value g.Value) (result int64) {
-	iv, err := _I.Get(1363, "value_get_int64_range_max", "")
+	iv, err := _I.Get(1363, "value_get_int64_range_max", "", 646, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34104,7 +34104,7 @@ func ValueGetInt64RangeMax(value g.Value) (result int64) {
 // [ result ] trans: nothing
 //
 func ValueGetInt64RangeMin(value g.Value) (result int64) {
-	iv, err := _I.Get(1364, "value_get_int64_range_min", "")
+	iv, err := _I.Get(1364, "value_get_int64_range_min", "", 647, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34124,7 +34124,7 @@ func ValueGetInt64RangeMin(value g.Value) (result int64) {
 // [ result ] trans: nothing
 //
 func ValueGetInt64RangeStep(value g.Value) (result int64) {
-	iv, err := _I.Get(1365, "value_get_int64_range_step", "")
+	iv, err := _I.Get(1365, "value_get_int64_range_step", "", 648, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34144,7 +34144,7 @@ func ValueGetInt64RangeStep(value g.Value) (result int64) {
 // [ result ] trans: nothing
 //
 func ValueGetIntRangeMax(value g.Value) (result int32) {
-	iv, err := _I.Get(1366, "value_get_int_range_max", "")
+	iv, err := _I.Get(1366, "value_get_int_range_max", "", 649, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34164,7 +34164,7 @@ func ValueGetIntRangeMax(value g.Value) (result int32) {
 // [ result ] trans: nothing
 //
 func ValueGetIntRangeMin(value g.Value) (result int32) {
-	iv, err := _I.Get(1367, "value_get_int_range_min", "")
+	iv, err := _I.Get(1367, "value_get_int_range_min", "", 650, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34184,7 +34184,7 @@ func ValueGetIntRangeMin(value g.Value) (result int32) {
 // [ result ] trans: nothing
 //
 func ValueGetIntRangeStep(value g.Value) (result int32) {
-	iv, err := _I.Get(1368, "value_get_int_range_step", "")
+	iv, err := _I.Get(1368, "value_get_int_range_step", "", 651, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34204,7 +34204,7 @@ func ValueGetIntRangeStep(value g.Value) (result int32) {
 // [ result ] trans: nothing
 //
 func ValueGetStructure(value g.Value) (result Structure) {
-	iv, err := _I.Get(1369, "value_get_structure", "")
+	iv, err := _I.Get(1369, "value_get_structure", "", 652, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34224,7 +34224,7 @@ func ValueGetStructure(value g.Value) (result Structure) {
 // [ src ] trans: nothing
 //
 func ValueInitAndCopy(dest g.Value, src g.Value) {
-	iv, err := _I.Get(1370, "value_init_and_copy", "")
+	iv, err := _I.Get(1370, "value_init_and_copy", "", 653, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34246,7 +34246,7 @@ func ValueInitAndCopy(dest g.Value, src g.Value) {
 // [ result ] trans: nothing
 //
 func ValueIntersect(dest g.Value, value1 g.Value, value2 g.Value) (result bool) {
-	iv, err := _I.Get(1371, "value_intersect", "")
+	iv, err := _I.Get(1371, "value_intersect", "", 654, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34268,7 +34268,7 @@ func ValueIntersect(dest g.Value, value1 g.Value, value2 g.Value) (result bool) 
 // [ result ] trans: nothing
 //
 func ValueIsFixed(value g.Value) (result bool) {
-	iv, err := _I.Get(1372, "value_is_fixed", "")
+	iv, err := _I.Get(1372, "value_is_fixed", "", 655, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34290,7 +34290,7 @@ func ValueIsFixed(value g.Value) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueIsSubset(value1 g.Value, value2 g.Value) (result bool) {
-	iv, err := _I.Get(1373, "value_is_subset", "")
+	iv, err := _I.Get(1373, "value_is_subset", "", 656, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34309,7 +34309,7 @@ func ValueIsSubset(value1 g.Value, value2 g.Value) (result bool) {
 // [ table ] trans: nothing
 //
 func ValueRegister(table ValueTable) {
-	iv, err := _I.Get(1374, "value_register", "")
+	iv, err := _I.Get(1374, "value_register", "", 657, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34326,7 +34326,7 @@ func ValueRegister(table ValueTable) {
 // [ result ] trans: everything
 //
 func ValueSerialize(value g.Value) (result string) {
-	iv, err := _I.Get(1375, "value_serialize", "")
+	iv, err := _I.Get(1375, "value_serialize", "", 658, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34346,7 +34346,7 @@ func ValueSerialize(value g.Value) (result string) {
 // [ bitmask ] trans: nothing
 //
 func ValueSetBitmask(value g.Value, bitmask uint64) {
-	iv, err := _I.Get(1376, "value_set_bitmask", "")
+	iv, err := _I.Get(1376, "value_set_bitmask", "", 659, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34364,7 +34364,7 @@ func ValueSetBitmask(value g.Value, bitmask uint64) {
 // [ caps ] trans: nothing
 //
 func ValueSetCaps(value g.Value, caps Caps) {
-	iv, err := _I.Get(1377, "value_set_caps", "")
+	iv, err := _I.Get(1377, "value_set_caps", "", 660, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34382,7 +34382,7 @@ func ValueSetCaps(value g.Value, caps Caps) {
 // [ features ] trans: nothing
 //
 func ValueSetCapsFeatures(value g.Value, features CapsFeatures) {
-	iv, err := _I.Get(1378, "value_set_caps_features", "")
+	iv, err := _I.Get(1378, "value_set_caps_features", "", 661, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34402,7 +34402,7 @@ func ValueSetCapsFeatures(value g.Value, features CapsFeatures) {
 // [ end ] trans: nothing
 //
 func ValueSetDoubleRange(value g.Value, start float64, end float64) {
-	iv, err := _I.Get(1379, "value_set_double_range", "")
+	iv, err := _I.Get(1379, "value_set_double_range", "", 662, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34423,7 +34423,7 @@ func ValueSetDoubleRange(value g.Value, start float64, end float64) {
 // [ mask ] trans: nothing
 //
 func ValueSetFlagset(value g.Value, flags uint32, mask uint32) {
-	iv, err := _I.Get(1380, "value_set_flagset", "")
+	iv, err := _I.Get(1380, "value_set_flagset", "", 663, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34444,7 +34444,7 @@ func ValueSetFlagset(value g.Value, flags uint32, mask uint32) {
 // [ denominator ] trans: nothing
 //
 func ValueSetFraction(value g.Value, numerator int32, denominator int32) {
-	iv, err := _I.Get(1381, "value_set_fraction", "")
+	iv, err := _I.Get(1381, "value_set_fraction", "", 664, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34465,7 +34465,7 @@ func ValueSetFraction(value g.Value, numerator int32, denominator int32) {
 // [ end ] trans: nothing
 //
 func ValueSetFractionRange(value g.Value, start g.Value, end g.Value) {
-	iv, err := _I.Get(1382, "value_set_fraction_range", "")
+	iv, err := _I.Get(1382, "value_set_fraction_range", "", 665, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34490,7 +34490,7 @@ func ValueSetFractionRange(value g.Value, start g.Value, end g.Value) {
 // [ denominator_end ] trans: nothing
 //
 func ValueSetFractionRangeFull(value g.Value, numerator_start int32, denominator_start int32, numerator_end int32, denominator_end int32) {
-	iv, err := _I.Get(1383, "value_set_fraction_range_full", "")
+	iv, err := _I.Get(1383, "value_set_fraction_range_full", "", 666, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34513,7 +34513,7 @@ func ValueSetFractionRangeFull(value g.Value, numerator_start int32, denominator
 // [ end ] trans: nothing
 //
 func ValueSetInt64Range(value g.Value, start int64, end int64) {
-	iv, err := _I.Get(1384, "value_set_int64_range", "")
+	iv, err := _I.Get(1384, "value_set_int64_range", "", 667, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34536,7 +34536,7 @@ func ValueSetInt64Range(value g.Value, start int64, end int64) {
 // [ step ] trans: nothing
 //
 func ValueSetInt64RangeStep(value g.Value, start int64, end int64, step int64) {
-	iv, err := _I.Get(1385, "value_set_int64_range_step", "")
+	iv, err := _I.Get(1385, "value_set_int64_range_step", "", 668, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34558,7 +34558,7 @@ func ValueSetInt64RangeStep(value g.Value, start int64, end int64, step int64) {
 // [ end ] trans: nothing
 //
 func ValueSetIntRange(value g.Value, start int32, end int32) {
-	iv, err := _I.Get(1386, "value_set_int_range", "")
+	iv, err := _I.Get(1386, "value_set_int_range", "", 669, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34581,7 +34581,7 @@ func ValueSetIntRange(value g.Value, start int32, end int32) {
 // [ step ] trans: nothing
 //
 func ValueSetIntRangeStep(value g.Value, start int32, end int32, step int32) {
-	iv, err := _I.Get(1387, "value_set_int_range_step", "")
+	iv, err := _I.Get(1387, "value_set_int_range_step", "", 670, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34601,7 +34601,7 @@ func ValueSetIntRangeStep(value g.Value, start int32, end int32, step int32) {
 // [ structure ] trans: nothing
 //
 func ValueSetStructure(value g.Value, structure Structure) {
-	iv, err := _I.Get(1388, "value_set_structure", "")
+	iv, err := _I.Get(1388, "value_set_structure", "", 671, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34623,7 +34623,7 @@ func ValueSetStructure(value g.Value, structure Structure) {
 // [ result ] trans: nothing
 //
 func ValueSubtract(dest g.Value, minuend g.Value, subtrahend g.Value) (result bool) {
-	iv, err := _I.Get(1389, "value_subtract", "")
+	iv, err := _I.Get(1389, "value_subtract", "", 672, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34649,7 +34649,7 @@ func ValueSubtract(dest g.Value, minuend g.Value, subtrahend g.Value) (result bo
 // [ result ] trans: nothing
 //
 func ValueUnion(dest g.Value, value1 g.Value, value2 g.Value) (result bool) {
-	iv, err := _I.Get(1390, "value_union", "")
+	iv, err := _I.Get(1390, "value_union", "", 673, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34675,7 +34675,7 @@ func ValueUnion(dest g.Value, value1 g.Value, value2 g.Value) (result bool) {
 // [ nano ] trans: everything, dir: out
 //
 func Version() (major uint32, minor uint32, micro uint32, nano uint32) {
-	iv, err := _I.Get(1391, "version", "")
+	iv, err := _I.Get(1391, "version", "", 674, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -34699,7 +34699,7 @@ func Version() (major uint32, minor uint32, micro uint32, nano uint32) {
 // [ result ] trans: everything
 //
 func VersionString() (result string) {
-	iv, err := _I.Get(1392, "version_string", "")
+	iv, err := _I.Get(1392, "version_string", "", 675, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

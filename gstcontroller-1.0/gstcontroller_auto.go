@@ -63,7 +63,7 @@ func ARGBControlBindingGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewARGBControlBinding(object gst.IObject, property_name string, cs_a gst.IControlSource, cs_r gst.IControlSource, cs_g gst.IControlSource, cs_b gst.IControlSource) (result ARGBControlBinding) {
-	iv, err := _I.Get(0, "ARGBControlBinding", "new")
+	iv, err := _I.Get(0, "ARGBControlBinding", "new", 0, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -122,7 +122,7 @@ func ControlPointGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v ControlPoint) Copy() (result ControlPoint) {
-	iv, err := _I.Get(1, "ControlPoint", "copy")
+	iv, err := _I.Get(1, "ControlPoint", "copy", 2, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -138,7 +138,7 @@ func (v ControlPoint) Copy() (result ControlPoint) {
 // gst_control_point_free
 //
 func (v ControlPoint) Free() {
-	iv, err := _I.Get(2, "ControlPoint", "free")
+	iv, err := _I.Get(2, "ControlPoint", "free", 2, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -174,7 +174,7 @@ func DirectControlBindingGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewDirectControlBinding(object gst.IObject, property_name string, cs gst.IControlSource) (result DirectControlBinding) {
-	iv, err := _I.Get(3, "DirectControlBinding", "new")
+	iv, err := _I.Get(3, "DirectControlBinding", "new", 3, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -210,7 +210,7 @@ func NewDirectControlBinding(object gst.IObject, property_name string, cs gst.IC
 // [ result ] trans: nothing
 //
 func NewDirectControlBindingAbsolute(object gst.IObject, property_name string, cs gst.IControlSource) (result DirectControlBinding) {
-	iv, err := _I.Get(4, "DirectControlBinding", "new_absolute")
+	iv, err := _I.Get(4, "DirectControlBinding", "new_absolute", 3, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -287,7 +287,7 @@ func InterpolationControlSourceGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewInterpolationControlSource() (result InterpolationControlSource) {
-	iv, err := _I.Get(5, "InterpolationControlSource", "new")
+	iv, err := _I.Get(5, "InterpolationControlSource", "new", 7, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -345,7 +345,7 @@ func LFOControlSourceGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewLFOControlSource() (result LFOControlSource) {
-	iv, err := _I.Get(6, "LFOControlSource", "new")
+	iv, err := _I.Get(6, "LFOControlSource", "new", 11, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -412,7 +412,7 @@ func ProxyControlBindingGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewProxyControlBinding(object gst.IObject, property_name string, ref_object gst.IObject, ref_property_name string) (result ProxyControlBinding) {
-	iv, err := _I.Get(7, "ProxyControlBinding", "new")
+	iv, err := _I.Get(7, "ProxyControlBinding", "new", 15, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -464,7 +464,7 @@ func TimedValueControlSourceGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v TimedValueControlSource) FindControlPointIter(timestamp uint64) (result g.SequenceIter) {
-	iv, err := _I.Get(8, "TimedValueControlSource", "find_control_point_iter")
+	iv, err := _I.Get(8, "TimedValueControlSource", "find_control_point_iter", 17, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -483,7 +483,7 @@ func (v TimedValueControlSource) FindControlPointIter(timestamp uint64) (result 
 // [ result ] trans: container
 //
 func (v TimedValueControlSource) GetAll() (result g.List) {
-	iv, err := _I.Get(9, "TimedValueControlSource", "get_all")
+	iv, err := _I.Get(9, "TimedValueControlSource", "get_all", 17, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -501,7 +501,7 @@ func (v TimedValueControlSource) GetAll() (result g.List) {
 // [ result ] trans: nothing
 //
 func (v TimedValueControlSource) GetCount() (result int32) {
-	iv, err := _I.Get(10, "TimedValueControlSource", "get_count")
+	iv, err := _I.Get(10, "TimedValueControlSource", "get_count", 17, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -523,7 +523,7 @@ func (v TimedValueControlSource) GetCount() (result int32) {
 // [ result ] trans: nothing
 //
 func (v TimedValueControlSource) Set(timestamp uint64, value float64) (result bool) {
-	iv, err := _I.Get(11, "TimedValueControlSource", "set")
+	iv, err := _I.Get(11, "TimedValueControlSource", "set", 17, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -545,7 +545,7 @@ func (v TimedValueControlSource) Set(timestamp uint64, value float64) (result bo
 // [ result ] trans: nothing
 //
 func (v TimedValueControlSource) SetFromList(timedvalues g.SList) (result bool) {
-	iv, err := _I.Get(12, "TimedValueControlSource", "set_from_list")
+	iv, err := _I.Get(12, "TimedValueControlSource", "set_from_list", 17, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -566,7 +566,7 @@ func (v TimedValueControlSource) SetFromList(timedvalues g.SList) (result bool) 
 // [ result ] trans: nothing
 //
 func (v TimedValueControlSource) Unset(timestamp uint64) (result bool) {
-	iv, err := _I.Get(13, "TimedValueControlSource", "unset")
+	iv, err := _I.Get(13, "TimedValueControlSource", "unset", 17, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -583,7 +583,7 @@ func (v TimedValueControlSource) Unset(timestamp uint64) (result bool) {
 // gst_timed_value_control_source_unset_all
 //
 func (v TimedValueControlSource) UnsetAll() {
-	iv, err := _I.Get(14, "TimedValueControlSource", "unset_all")
+	iv, err := _I.Get(14, "TimedValueControlSource", "unset_all", 17, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -625,7 +625,7 @@ func TriggerControlSourceGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewTriggerControlSource() (result TriggerControlSource) {
-	iv, err := _I.Get(15, "TriggerControlSource", "new")
+	iv, err := _I.Get(15, "TriggerControlSource", "new", 20, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -653,7 +653,7 @@ func TriggerControlSourcePrivateGetType() gi.GType {
 // [ self ] trans: nothing
 //
 func TimedValueControlInvalidateCache(self ITimedValueControlSource) {
-	iv, err := _I.Get(16, "timed_value_control_invalidate_cache", "")
+	iv, err := _I.Get(16, "timed_value_control_invalidate_cache", "", 23, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

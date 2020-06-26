@@ -5,7 +5,7 @@ import "unsafe"
 import "log"
 
 func Init(argc int, argv int) {
-	iv, err := _I.Get(3703, "init", "")
+	iv, err := _I.Get(3703, "init", "", -1, -1, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

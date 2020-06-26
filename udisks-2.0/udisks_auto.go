@@ -45,7 +45,7 @@ func BlockGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func BlockOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(1, "Block", "override_properties")
+	iv, err := _I.Get(1, "Block", "override_properties", 0, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -72,7 +72,7 @@ func BlockOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (re
 // [ user_data ] trans: nothing
 //
 func (v *BlockIfc) CallAddConfigurationItem(arg_item g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(2, "Block", "call_add_configuration_item")
+	iv, err := _I.Get(2, "Block", "call_add_configuration_item", 0, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -98,7 +98,7 @@ func (v *BlockIfc) CallAddConfigurationItem(arg_item g.Variant, arg_options g.Va
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallAddConfigurationItemFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(3, "Block", "call_add_configuration_item_finish")
+	iv, err := _I.Get(3, "Block", "call_add_configuration_item_finish", 0, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -129,7 +129,7 @@ func (v *BlockIfc) CallAddConfigurationItemFinish(res g.IAsyncResult) (result bo
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallAddConfigurationItemSync(arg_item g.Variant, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(4, "Block", "call_add_configuration_item_sync")
+	iv, err := _I.Get(4, "Block", "call_add_configuration_item_sync", 0, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -164,7 +164,7 @@ func (v *BlockIfc) CallAddConfigurationItemSync(arg_item g.Variant, arg_options 
 // [ user_data ] trans: nothing
 //
 func (v *BlockIfc) CallFormat(arg_type string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(5, "Block", "call_format")
+	iv, err := _I.Get(5, "Block", "call_format", 0, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -192,7 +192,7 @@ func (v *BlockIfc) CallFormat(arg_type string, arg_options g.Variant, cancellabl
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallFormatFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(6, "Block", "call_format_finish")
+	iv, err := _I.Get(6, "Block", "call_format_finish", 0, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -223,7 +223,7 @@ func (v *BlockIfc) CallFormatFinish(res g.IAsyncResult) (result bool, err error)
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallFormatSync(arg_type string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(7, "Block", "call_format_sync")
+	iv, err := _I.Get(7, "Block", "call_format_sync", 0, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -258,7 +258,7 @@ func (v *BlockIfc) CallFormatSync(arg_type string, arg_options g.Variant, cancel
 // [ user_data ] trans: nothing
 //
 func (v *BlockIfc) CallGetSecretConfiguration(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(8, "Block", "call_get_secret_configuration")
+	iv, err := _I.Get(8, "Block", "call_get_secret_configuration", 0, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -285,7 +285,7 @@ func (v *BlockIfc) CallGetSecretConfiguration(arg_options g.Variant, cancellable
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallGetSecretConfigurationFinish(res g.IAsyncResult) (result bool, out_configuration g.Variant, err error) {
-	iv, err := _I.Get(9, "Block", "call_get_secret_configuration_finish")
+	iv, err := _I.Get(9, "Block", "call_get_secret_configuration_finish", 0, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -318,7 +318,7 @@ func (v *BlockIfc) CallGetSecretConfigurationFinish(res g.IAsyncResult) (result 
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallGetSecretConfigurationSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, out_configuration g.Variant, err error) {
-	iv, err := _I.Get(10, "Block", "call_get_secret_configuration_sync")
+	iv, err := _I.Get(10, "Block", "call_get_secret_configuration_sync", 0, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -356,7 +356,7 @@ func (v *BlockIfc) CallGetSecretConfigurationSync(arg_options g.Variant, cancell
 // [ user_data ] trans: nothing
 //
 func (v *BlockIfc) CallOpenDevice(arg_mode string, arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(11, "Block", "call_open_device")
+	iv, err := _I.Get(11, "Block", "call_open_device", 0, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -393,7 +393,7 @@ func (v *BlockIfc) CallOpenDevice(arg_mode string, arg_options g.Variant, fd_lis
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallOpenDeviceFinish(res g.IAsyncResult) (result bool, out_fd g.Variant, out_fd_list g.UnixFDList, err error) {
-	iv, err := _I.Get(12, "Block", "call_open_device_finish")
+	iv, err := _I.Get(12, "Block", "call_open_device_finish", 0, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -434,7 +434,7 @@ func (v *BlockIfc) CallOpenDeviceFinish(res g.IAsyncResult) (result bool, out_fd
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallOpenDeviceSync(arg_mode string, arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable) (result bool, out_fd g.Variant, out_fd_list g.UnixFDList, err error) {
-	iv, err := _I.Get(13, "Block", "call_open_device_sync")
+	iv, err := _I.Get(13, "Block", "call_open_device_sync", 0, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -480,7 +480,7 @@ func (v *BlockIfc) CallOpenDeviceSync(arg_mode string, arg_options g.Variant, fd
 // [ user_data ] trans: nothing
 //
 func (v *BlockIfc) CallOpenForBackup(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(14, "Block", "call_open_for_backup")
+	iv, err := _I.Get(14, "Block", "call_open_for_backup", 0, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -514,7 +514,7 @@ func (v *BlockIfc) CallOpenForBackup(arg_options g.Variant, fd_list g.IUnixFDLis
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallOpenForBackupFinish(res g.IAsyncResult) (result bool, out_fd g.Variant, out_fd_list g.UnixFDList, err error) {
-	iv, err := _I.Get(15, "Block", "call_open_for_backup_finish")
+	iv, err := _I.Get(15, "Block", "call_open_for_backup_finish", 0, 15, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -553,7 +553,7 @@ func (v *BlockIfc) CallOpenForBackupFinish(res g.IAsyncResult) (result bool, out
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallOpenForBackupSync(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable) (result bool, out_fd g.Variant, out_fd_list g.UnixFDList, err error) {
-	iv, err := _I.Get(16, "Block", "call_open_for_backup_sync")
+	iv, err := _I.Get(16, "Block", "call_open_for_backup_sync", 0, 16, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -596,7 +596,7 @@ func (v *BlockIfc) CallOpenForBackupSync(arg_options g.Variant, fd_list g.IUnixF
 // [ user_data ] trans: nothing
 //
 func (v *BlockIfc) CallOpenForBenchmark(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(17, "Block", "call_open_for_benchmark")
+	iv, err := _I.Get(17, "Block", "call_open_for_benchmark", 0, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -630,7 +630,7 @@ func (v *BlockIfc) CallOpenForBenchmark(arg_options g.Variant, fd_list g.IUnixFD
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallOpenForBenchmarkFinish(res g.IAsyncResult) (result bool, out_fd g.Variant, out_fd_list g.UnixFDList, err error) {
-	iv, err := _I.Get(18, "Block", "call_open_for_benchmark_finish")
+	iv, err := _I.Get(18, "Block", "call_open_for_benchmark_finish", 0, 18, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -669,7 +669,7 @@ func (v *BlockIfc) CallOpenForBenchmarkFinish(res g.IAsyncResult) (result bool, 
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallOpenForBenchmarkSync(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable) (result bool, out_fd g.Variant, out_fd_list g.UnixFDList, err error) {
-	iv, err := _I.Get(19, "Block", "call_open_for_benchmark_sync")
+	iv, err := _I.Get(19, "Block", "call_open_for_benchmark_sync", 0, 19, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -712,7 +712,7 @@ func (v *BlockIfc) CallOpenForBenchmarkSync(arg_options g.Variant, fd_list g.IUn
 // [ user_data ] trans: nothing
 //
 func (v *BlockIfc) CallOpenForRestore(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(20, "Block", "call_open_for_restore")
+	iv, err := _I.Get(20, "Block", "call_open_for_restore", 0, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -746,7 +746,7 @@ func (v *BlockIfc) CallOpenForRestore(arg_options g.Variant, fd_list g.IUnixFDLi
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallOpenForRestoreFinish(res g.IAsyncResult) (result bool, out_fd g.Variant, out_fd_list g.UnixFDList, err error) {
-	iv, err := _I.Get(21, "Block", "call_open_for_restore_finish")
+	iv, err := _I.Get(21, "Block", "call_open_for_restore_finish", 0, 21, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -785,7 +785,7 @@ func (v *BlockIfc) CallOpenForRestoreFinish(res g.IAsyncResult) (result bool, ou
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallOpenForRestoreSync(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable) (result bool, out_fd g.Variant, out_fd_list g.UnixFDList, err error) {
-	iv, err := _I.Get(22, "Block", "call_open_for_restore_sync")
+	iv, err := _I.Get(22, "Block", "call_open_for_restore_sync", 0, 22, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -828,7 +828,7 @@ func (v *BlockIfc) CallOpenForRestoreSync(arg_options g.Variant, fd_list g.IUnix
 // [ user_data ] trans: nothing
 //
 func (v *BlockIfc) CallRemoveConfigurationItem(arg_item g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(23, "Block", "call_remove_configuration_item")
+	iv, err := _I.Get(23, "Block", "call_remove_configuration_item", 0, 23, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -854,7 +854,7 @@ func (v *BlockIfc) CallRemoveConfigurationItem(arg_item g.Variant, arg_options g
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallRemoveConfigurationItemFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(24, "Block", "call_remove_configuration_item_finish")
+	iv, err := _I.Get(24, "Block", "call_remove_configuration_item_finish", 0, 24, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -885,7 +885,7 @@ func (v *BlockIfc) CallRemoveConfigurationItemFinish(res g.IAsyncResult) (result
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallRemoveConfigurationItemSync(arg_item g.Variant, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(25, "Block", "call_remove_configuration_item_sync")
+	iv, err := _I.Get(25, "Block", "call_remove_configuration_item_sync", 0, 25, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -918,7 +918,7 @@ func (v *BlockIfc) CallRemoveConfigurationItemSync(arg_item g.Variant, arg_optio
 // [ user_data ] trans: nothing
 //
 func (v *BlockIfc) CallRescan(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(26, "Block", "call_rescan")
+	iv, err := _I.Get(26, "Block", "call_rescan", 0, 26, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -943,7 +943,7 @@ func (v *BlockIfc) CallRescan(arg_options g.Variant, cancellable g.ICancellable,
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallRescanFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(27, "Block", "call_rescan_finish")
+	iv, err := _I.Get(27, "Block", "call_rescan_finish", 0, 27, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -972,7 +972,7 @@ func (v *BlockIfc) CallRescanFinish(res g.IAsyncResult) (result bool, err error)
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallRescanSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(28, "Block", "call_rescan_sync")
+	iv, err := _I.Get(28, "Block", "call_rescan_sync", 0, 28, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1008,7 +1008,7 @@ func (v *BlockIfc) CallRescanSync(arg_options g.Variant, cancellable g.ICancella
 // [ user_data ] trans: nothing
 //
 func (v *BlockIfc) CallUpdateConfigurationItem(arg_old_item g.Variant, arg_new_item g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(29, "Block", "call_update_configuration_item")
+	iv, err := _I.Get(29, "Block", "call_update_configuration_item", 0, 29, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1035,7 +1035,7 @@ func (v *BlockIfc) CallUpdateConfigurationItem(arg_old_item g.Variant, arg_new_i
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallUpdateConfigurationItemFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(30, "Block", "call_update_configuration_item_finish")
+	iv, err := _I.Get(30, "Block", "call_update_configuration_item_finish", 0, 30, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1068,7 +1068,7 @@ func (v *BlockIfc) CallUpdateConfigurationItemFinish(res g.IAsyncResult) (result
 // [ result ] trans: nothing
 //
 func (v *BlockIfc) CallUpdateConfigurationItemSync(arg_old_item g.Variant, arg_new_item g.Variant, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(31, "Block", "call_update_configuration_item_sync")
+	iv, err := _I.Get(31, "Block", "call_update_configuration_item_sync", 0, 31, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -1096,7 +1096,7 @@ func (v *BlockIfc) CallUpdateConfigurationItemSync(arg_old_item g.Variant, arg_n
 // [ invocation ] trans: everything
 //
 func (v *BlockIfc) CompleteAddConfigurationItem(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(32, "Block", "complete_add_configuration_item")
+	iv, err := _I.Get(32, "Block", "complete_add_configuration_item", 0, 32, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1116,7 +1116,7 @@ func (v *BlockIfc) CompleteAddConfigurationItem(invocation g.IDBusMethodInvocati
 // [ invocation ] trans: everything
 //
 func (v *BlockIfc) CompleteFormat(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(33, "Block", "complete_format")
+	iv, err := _I.Get(33, "Block", "complete_format", 0, 33, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1138,7 +1138,7 @@ func (v *BlockIfc) CompleteFormat(invocation g.IDBusMethodInvocation) {
 // [ configuration ] trans: nothing
 //
 func (v *BlockIfc) CompleteGetSecretConfiguration(invocation g.IDBusMethodInvocation, configuration g.Variant) {
-	iv, err := _I.Get(34, "Block", "complete_get_secret_configuration")
+	iv, err := _I.Get(34, "Block", "complete_get_secret_configuration", 0, 34, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1163,7 +1163,7 @@ func (v *BlockIfc) CompleteGetSecretConfiguration(invocation g.IDBusMethodInvoca
 // [ fd ] trans: nothing
 //
 func (v *BlockIfc) CompleteOpenDevice(invocation g.IDBusMethodInvocation, fd_list g.IUnixFDList, fd g.Variant) {
-	iv, err := _I.Get(35, "Block", "complete_open_device")
+	iv, err := _I.Get(35, "Block", "complete_open_device", 0, 35, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1193,7 +1193,7 @@ func (v *BlockIfc) CompleteOpenDevice(invocation g.IDBusMethodInvocation, fd_lis
 // [ fd ] trans: nothing
 //
 func (v *BlockIfc) CompleteOpenForBackup(invocation g.IDBusMethodInvocation, fd_list g.IUnixFDList, fd g.Variant) {
-	iv, err := _I.Get(36, "Block", "complete_open_for_backup")
+	iv, err := _I.Get(36, "Block", "complete_open_for_backup", 0, 36, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1223,7 +1223,7 @@ func (v *BlockIfc) CompleteOpenForBackup(invocation g.IDBusMethodInvocation, fd_
 // [ fd ] trans: nothing
 //
 func (v *BlockIfc) CompleteOpenForBenchmark(invocation g.IDBusMethodInvocation, fd_list g.IUnixFDList, fd g.Variant) {
-	iv, err := _I.Get(37, "Block", "complete_open_for_benchmark")
+	iv, err := _I.Get(37, "Block", "complete_open_for_benchmark", 0, 37, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1253,7 +1253,7 @@ func (v *BlockIfc) CompleteOpenForBenchmark(invocation g.IDBusMethodInvocation, 
 // [ fd ] trans: nothing
 //
 func (v *BlockIfc) CompleteOpenForRestore(invocation g.IDBusMethodInvocation, fd_list g.IUnixFDList, fd g.Variant) {
-	iv, err := _I.Get(38, "Block", "complete_open_for_restore")
+	iv, err := _I.Get(38, "Block", "complete_open_for_restore", 0, 38, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1279,7 +1279,7 @@ func (v *BlockIfc) CompleteOpenForRestore(invocation g.IDBusMethodInvocation, fd
 // [ invocation ] trans: everything
 //
 func (v *BlockIfc) CompleteRemoveConfigurationItem(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(39, "Block", "complete_remove_configuration_item")
+	iv, err := _I.Get(39, "Block", "complete_remove_configuration_item", 0, 39, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1299,7 +1299,7 @@ func (v *BlockIfc) CompleteRemoveConfigurationItem(invocation g.IDBusMethodInvoc
 // [ invocation ] trans: everything
 //
 func (v *BlockIfc) CompleteRescan(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(40, "Block", "complete_rescan")
+	iv, err := _I.Get(40, "Block", "complete_rescan", 0, 40, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1319,7 +1319,7 @@ func (v *BlockIfc) CompleteRescan(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *BlockIfc) CompleteUpdateConfigurationItem(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(41, "Block", "complete_update_configuration_item")
+	iv, err := _I.Get(41, "Block", "complete_update_configuration_item", 0, 41, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1360,7 +1360,7 @@ func BlockProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewBlockProxyFinish(res g.IAsyncResult) (result BlockProxy, err error) {
-	iv, err := _I.Get(42, "BlockProxy", "new_finish")
+	iv, err := _I.Get(42, "BlockProxy", "new_finish", 2, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1386,7 +1386,7 @@ func NewBlockProxyFinish(res g.IAsyncResult) (result BlockProxy, err error) {
 // [ result ] trans: everything
 //
 func NewBlockProxyForBusFinish(res g.IAsyncResult) (result BlockProxy, err error) {
-	iv, err := _I.Get(43, "BlockProxy", "new_for_bus_finish")
+	iv, err := _I.Get(43, "BlockProxy", "new_for_bus_finish", 2, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1420,7 +1420,7 @@ func NewBlockProxyForBusFinish(res g.IAsyncResult) (result BlockProxy, err error
 // [ result ] trans: everything
 //
 func NewBlockProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result BlockProxy, err error) {
-	iv, err := _I.Get(44, "BlockProxy", "new_for_bus_sync")
+	iv, err := _I.Get(44, "BlockProxy", "new_for_bus_sync", 2, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1462,7 +1462,7 @@ func NewBlockProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, nam
 // [ result ] trans: everything
 //
 func NewBlockProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result BlockProxy, err error) {
-	iv, err := _I.Get(45, "BlockProxy", "new_sync")
+	iv, err := _I.Get(45, "BlockProxy", "new_sync", 2, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1510,7 +1510,7 @@ func NewBlockProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, nam
 // [ user_data ] trans: nothing
 //
 func BlockProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(46, "BlockProxy", "new")
+	iv, err := _I.Get(46, "BlockProxy", "new", 2, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1555,7 +1555,7 @@ func BlockProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name s
 // [ user_data ] trans: nothing
 //
 func BlockProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(47, "BlockProxy", "new_for_bus")
+	iv, err := _I.Get(47, "BlockProxy", "new_for_bus", 2, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1613,7 +1613,7 @@ func BlockSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewBlockSkeleton() (result BlockSkeleton) {
-	iv, err := _I.Get(48, "BlockSkeleton", "new")
+	iv, err := _I.Get(48, "BlockSkeleton", "new", 5, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1662,7 +1662,7 @@ func ClientGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewClientFinish(res g.IAsyncResult) (result Client, err error) {
-	iv, err := _I.Get(49, "Client", "new_finish")
+	iv, err := _I.Get(49, "Client", "new_finish", 8, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1688,7 +1688,7 @@ func NewClientFinish(res g.IAsyncResult) (result Client, err error) {
 // [ result ] trans: everything
 //
 func NewClientSync(cancellable g.ICancellable) (result Client, err error) {
-	iv, err := _I.Get(50, "Client", "new_sync")
+	iv, err := _I.Get(50, "Client", "new_sync", 8, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1714,7 +1714,7 @@ func NewClientSync(cancellable g.ICancellable) (result Client, err error) {
 // [ result ] trans: everything
 //
 func ClientGetJobDescriptionFromOperation1(operation string) (result string) {
-	iv, err := _I.Get(51, "Client", "get_job_description_from_operation")
+	iv, err := _I.Get(51, "Client", "get_job_description_from_operation", 8, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1738,7 +1738,7 @@ func ClientGetJobDescriptionFromOperation1(operation string) (result string) {
 // [ user_data ] trans: nothing
 //
 func ClientNew1(cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(52, "Client", "new")
+	iv, err := _I.Get(52, "Client", "new", 8, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1761,7 +1761,7 @@ func ClientNew1(cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/,
 // [ result ] trans: everything
 //
 func (v Client) GetAllBlocksForMdraid(raid IMDRaid) (result g.List) {
-	iv, err := _I.Get(53, "Client", "get_all_blocks_for_mdraid")
+	iv, err := _I.Get(53, "Client", "get_all_blocks_for_mdraid", 8, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1786,7 +1786,7 @@ func (v Client) GetAllBlocksForMdraid(raid IMDRaid) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Client) GetBlockForDev(block_device_number uint64) (result Block) {
-	iv, err := _I.Get(54, "Client", "get_block_for_dev")
+	iv, err := _I.Get(54, "Client", "get_block_for_dev", 8, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1809,7 +1809,7 @@ func (v Client) GetBlockForDev(block_device_number uint64) (result Block) {
 // [ result ] trans: everything
 //
 func (v Client) GetBlockForDrive(drive IDrive, get_physical bool) (result Block) {
-	iv, err := _I.Get(55, "Client", "get_block_for_drive")
+	iv, err := _I.Get(55, "Client", "get_block_for_drive", 8, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1835,7 +1835,7 @@ func (v Client) GetBlockForDrive(drive IDrive, get_physical bool) (result Block)
 // [ result ] trans: everything
 //
 func (v Client) GetBlockForLabel(label string) (result g.List) {
-	iv, err := _I.Get(56, "Client", "get_block_for_label")
+	iv, err := _I.Get(56, "Client", "get_block_for_label", 8, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1858,7 +1858,7 @@ func (v Client) GetBlockForLabel(label string) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Client) GetBlockForMdraid(raid IMDRaid) (result Block) {
-	iv, err := _I.Get(57, "Client", "get_block_for_mdraid")
+	iv, err := _I.Get(57, "Client", "get_block_for_mdraid", 8, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1883,7 +1883,7 @@ func (v Client) GetBlockForMdraid(raid IMDRaid) (result Block) {
 // [ result ] trans: everything
 //
 func (v Client) GetBlockForUuid(uuid string) (result g.List) {
-	iv, err := _I.Get(58, "Client", "get_block_for_uuid")
+	iv, err := _I.Get(58, "Client", "get_block_for_uuid", 8, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1906,7 +1906,7 @@ func (v Client) GetBlockForUuid(uuid string) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Client) GetCleartextBlock(block IBlock) (result Block) {
-	iv, err := _I.Get(59, "Client", "get_cleartext_block")
+	iv, err := _I.Get(59, "Client", "get_cleartext_block", 8, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1931,7 +1931,7 @@ func (v Client) GetCleartextBlock(block IBlock) (result Block) {
 // [ result ] trans: everything
 //
 func (v Client) GetDriveForBlock(block IBlock) (result Drive) {
-	iv, err := _I.Get(60, "Client", "get_drive_for_block")
+	iv, err := _I.Get(60, "Client", "get_drive_for_block", 8, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1966,7 +1966,7 @@ func (v Client) GetDriveForBlock(block IBlock) (result Drive) {
 // [ out_media_icon ] trans: everything, dir: out
 //
 func (v Client) GetDriveInfo(drive IDrive) (out_name string, out_description string, out_drive_icon g.Icon, out_media_description string, out_media_icon g.Icon) {
-	iv, err := _I.Get(61, "Client", "get_drive_info")
+	iv, err := _I.Get(61, "Client", "get_drive_info", 8, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2000,7 +2000,7 @@ func (v Client) GetDriveInfo(drive IDrive) (out_name string, out_description str
 // [ result ] trans: everything
 //
 func (v Client) GetDriveSiblings(drive IDrive) (result g.List) {
-	iv, err := _I.Get(62, "Client", "get_drive_siblings")
+	iv, err := _I.Get(62, "Client", "get_drive_siblings", 8, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2031,7 +2031,7 @@ func (v Client) GetDriveSiblings(drive IDrive) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Client) GetIdForDisplay(usage string, type1 string, version string, long_string bool) (result string) {
-	iv, err := _I.Get(63, "Client", "get_id_for_display")
+	iv, err := _I.Get(63, "Client", "get_id_for_display", 8, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2061,7 +2061,7 @@ func (v Client) GetIdForDisplay(usage string, type1 string, version string, long
 // [ result ] trans: everything
 //
 func (v Client) GetJobDescription(job IJob) (result string) {
-	iv, err := _I.Get(64, "Client", "get_job_description")
+	iv, err := _I.Get(64, "Client", "get_job_description", 8, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2086,7 +2086,7 @@ func (v Client) GetJobDescription(job IJob) (result string) {
 // [ result ] trans: everything
 //
 func (v Client) GetJobsForObject(object IObject) (result g.List) {
-	iv, err := _I.Get(65, "Client", "get_jobs_for_object")
+	iv, err := _I.Get(65, "Client", "get_jobs_for_object", 8, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2111,7 +2111,7 @@ func (v Client) GetJobsForObject(object IObject) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Client) GetLoopForBlock(block IBlock) (result Loop) {
-	iv, err := _I.Get(66, "Client", "get_loop_for_block")
+	iv, err := _I.Get(66, "Client", "get_loop_for_block", 8, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2134,7 +2134,7 @@ func (v Client) GetLoopForBlock(block IBlock) (result Loop) {
 // [ result ] trans: nothing
 //
 func (v Client) GetManager() (result Manager) {
-	iv, err := _I.Get(67, "Client", "get_manager")
+	iv, err := _I.Get(67, "Client", "get_manager", 8, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2154,7 +2154,7 @@ func (v Client) GetManager() (result Manager) {
 // [ result ] trans: everything
 //
 func (v Client) GetMdraidForBlock(block IBlock) (result MDRaid) {
-	iv, err := _I.Get(68, "Client", "get_mdraid_for_block")
+	iv, err := _I.Get(68, "Client", "get_mdraid_for_block", 8, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2179,7 +2179,7 @@ func (v Client) GetMdraidForBlock(block IBlock) (result MDRaid) {
 // [ result ] trans: everything
 //
 func (v Client) GetMediaCompatForDisplay(media_compat string) (result string) {
-	iv, err := _I.Get(69, "Client", "get_media_compat_for_display")
+	iv, err := _I.Get(69, "Client", "get_media_compat_for_display", 8, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2202,7 +2202,7 @@ func (v Client) GetMediaCompatForDisplay(media_compat string) (result string) {
 // [ result ] trans: everything
 //
 func (v Client) GetMembersForMdraid(raid IMDRaid) (result g.List) {
-	iv, err := _I.Get(70, "Client", "get_members_for_mdraid")
+	iv, err := _I.Get(70, "Client", "get_members_for_mdraid", 8, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2227,7 +2227,7 @@ func (v Client) GetMembersForMdraid(raid IMDRaid) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Client) GetObject(object_path string) (result Object) {
-	iv, err := _I.Get(71, "Client", "get_object")
+	iv, err := _I.Get(71, "Client", "get_object", 8, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2250,7 +2250,7 @@ func (v Client) GetObject(object_path string) (result Object) {
 // [ result ] trans: everything
 //
 func (v Client) GetObjectInfo(object IObject) (result ObjectInfo) {
-	iv, err := _I.Get(72, "Client", "get_object_info")
+	iv, err := _I.Get(72, "Client", "get_object_info", 8, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2273,7 +2273,7 @@ func (v Client) GetObjectInfo(object IObject) (result ObjectInfo) {
 // [ result ] trans: nothing
 //
 func (v Client) GetObjectManager() (result g.DBusObjectManager) {
-	iv, err := _I.Get(73, "Client", "get_object_manager")
+	iv, err := _I.Get(73, "Client", "get_object_manager", 8, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2293,7 +2293,7 @@ func (v Client) GetObjectManager() (result g.DBusObjectManager) {
 // [ result ] trans: everything
 //
 func (v Client) GetPartitionInfo(partition IPartition) (result string) {
-	iv, err := _I.Get(74, "Client", "get_partition_info")
+	iv, err := _I.Get(74, "Client", "get_partition_info", 8, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2318,7 +2318,7 @@ func (v Client) GetPartitionInfo(partition IPartition) (result string) {
 // [ result ] trans: everything
 //
 func (v Client) GetPartitionTable(partition IPartition) (result PartitionTable) {
-	iv, err := _I.Get(75, "Client", "get_partition_table")
+	iv, err := _I.Get(75, "Client", "get_partition_table", 8, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2345,7 +2345,7 @@ func (v Client) GetPartitionTable(partition IPartition) (result PartitionTable) 
 // [ result ] trans: nothing
 //
 func (v Client) GetPartitionTableSubtypeForDisplay(partition_table_type string, partition_table_subtype string) (result string) {
-	iv, err := _I.Get(76, "Client", "get_partition_table_subtype_for_display")
+	iv, err := _I.Get(76, "Client", "get_partition_table_subtype_for_display", 8, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2371,7 +2371,7 @@ func (v Client) GetPartitionTableSubtypeForDisplay(partition_table_type string, 
 // [ result ] trans: container
 //
 func (v Client) GetPartitionTableSubtypes(partition_table_type string) (result gi.CStrArray) {
-	iv, err := _I.Get(77, "Client", "get_partition_table_subtypes")
+	iv, err := _I.Get(77, "Client", "get_partition_table_subtypes", 8, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2395,7 +2395,7 @@ func (v Client) GetPartitionTableSubtypes(partition_table_type string) (result g
 // [ result ] trans: nothing
 //
 func (v Client) GetPartitionTableTypeForDisplay(partition_table_type string) (result string) {
-	iv, err := _I.Get(78, "Client", "get_partition_table_type_for_display")
+	iv, err := _I.Get(78, "Client", "get_partition_table_type_for_display", 8, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2422,7 +2422,7 @@ func (v Client) GetPartitionTableTypeForDisplay(partition_table_type string) (re
 // [ result ] trans: nothing
 //
 func (v Client) GetPartitionTypeAndSubtypeForDisplay(partition_table_type string, partition_table_subtype string, partition_type string) (result string) {
-	iv, err := _I.Get(79, "Client", "get_partition_type_and_subtype_for_display")
+	iv, err := _I.Get(79, "Client", "get_partition_type_and_subtype_for_display", 8, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2453,7 +2453,7 @@ func (v Client) GetPartitionTypeAndSubtypeForDisplay(partition_table_type string
 // [ result ] trans: nothing
 //
 func (v Client) GetPartitionTypeForDisplay(partition_table_type string, partition_type string) (result string) {
-	iv, err := _I.Get(80, "Client", "get_partition_type_for_display")
+	iv, err := _I.Get(80, "Client", "get_partition_type_for_display", 8, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2481,7 +2481,7 @@ func (v Client) GetPartitionTypeForDisplay(partition_table_type string, partitio
 // [ result ] trans: everything
 //
 func (v Client) GetPartitionTypeInfos(partition_table_type string, partition_table_subtype string) (result g.List) {
-	iv, err := _I.Get(81, "Client", "get_partition_type_infos")
+	iv, err := _I.Get(81, "Client", "get_partition_type_infos", 8, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2507,7 +2507,7 @@ func (v Client) GetPartitionTypeInfos(partition_table_type string, partition_tab
 // [ result ] trans: everything
 //
 func (v Client) GetPartitions(table IPartitionTable) (result g.List) {
-	iv, err := _I.Get(82, "Client", "get_partitions")
+	iv, err := _I.Get(82, "Client", "get_partitions", 8, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2536,7 +2536,7 @@ func (v Client) GetPartitions(table IPartitionTable) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Client) GetSizeForDisplay(size uint64, use_pow2 bool, long_string bool) (result string) {
-	iv, err := _I.Get(83, "Client", "get_size_for_display")
+	iv, err := _I.Get(83, "Client", "get_size_for_display", 8, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2559,7 +2559,7 @@ func (v Client) GetSizeForDisplay(size uint64, use_pow2 bool, long_string bool) 
 // [ result ] trans: nothing
 //
 func (v Client) PeekObject(object_path string) (result Object) {
-	iv, err := _I.Get(84, "Client", "peek_object")
+	iv, err := _I.Get(84, "Client", "peek_object", 8, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2578,7 +2578,7 @@ func (v Client) PeekObject(object_path string) (result Object) {
 // udisks_client_queue_changed
 //
 func (v Client) QueueChanged() {
-	iv, err := _I.Get(85, "Client", "queue_changed")
+	iv, err := _I.Get(85, "Client", "queue_changed", 8, 36, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2591,7 +2591,7 @@ func (v Client) QueueChanged() {
 // udisks_client_settle
 //
 func (v Client) Settle() {
-	iv, err := _I.Get(86, "Client", "settle")
+	iv, err := _I.Get(86, "Client", "settle", 8, 37, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2624,7 +2624,7 @@ func DriveGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func DriveOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(88, "Drive", "override_properties")
+	iv, err := _I.Get(88, "Drive", "override_properties", 9, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2649,7 +2649,7 @@ func DriveOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (re
 // [ user_data ] trans: nothing
 //
 func (v *DriveIfc) CallEject(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(89, "Drive", "call_eject")
+	iv, err := _I.Get(89, "Drive", "call_eject", 9, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2674,7 +2674,7 @@ func (v *DriveIfc) CallEject(arg_options g.Variant, cancellable g.ICancellable, 
 // [ result ] trans: nothing
 //
 func (v *DriveIfc) CallEjectFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(90, "Drive", "call_eject_finish")
+	iv, err := _I.Get(90, "Drive", "call_eject_finish", 9, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2703,7 +2703,7 @@ func (v *DriveIfc) CallEjectFinish(res g.IAsyncResult) (result bool, err error) 
 // [ result ] trans: nothing
 //
 func (v *DriveIfc) CallEjectSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(91, "Drive", "call_eject_sync")
+	iv, err := _I.Get(91, "Drive", "call_eject_sync", 9, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2735,7 +2735,7 @@ func (v *DriveIfc) CallEjectSync(arg_options g.Variant, cancellable g.ICancellab
 // [ user_data ] trans: nothing
 //
 func (v *DriveIfc) CallPowerOff(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(92, "Drive", "call_power_off")
+	iv, err := _I.Get(92, "Drive", "call_power_off", 9, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2760,7 +2760,7 @@ func (v *DriveIfc) CallPowerOff(arg_options g.Variant, cancellable g.ICancellabl
 // [ result ] trans: nothing
 //
 func (v *DriveIfc) CallPowerOffFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(93, "Drive", "call_power_off_finish")
+	iv, err := _I.Get(93, "Drive", "call_power_off_finish", 9, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2789,7 +2789,7 @@ func (v *DriveIfc) CallPowerOffFinish(res g.IAsyncResult) (result bool, err erro
 // [ result ] trans: nothing
 //
 func (v *DriveIfc) CallPowerOffSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(94, "Drive", "call_power_off_sync")
+	iv, err := _I.Get(94, "Drive", "call_power_off_sync", 9, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2823,7 +2823,7 @@ func (v *DriveIfc) CallPowerOffSync(arg_options g.Variant, cancellable g.ICancel
 // [ user_data ] trans: nothing
 //
 func (v *DriveIfc) CallSetConfiguration(arg_value g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(95, "Drive", "call_set_configuration")
+	iv, err := _I.Get(95, "Drive", "call_set_configuration", 9, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2849,7 +2849,7 @@ func (v *DriveIfc) CallSetConfiguration(arg_value g.Variant, arg_options g.Varia
 // [ result ] trans: nothing
 //
 func (v *DriveIfc) CallSetConfigurationFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(96, "Drive", "call_set_configuration_finish")
+	iv, err := _I.Get(96, "Drive", "call_set_configuration_finish", 9, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2880,7 +2880,7 @@ func (v *DriveIfc) CallSetConfigurationFinish(res g.IAsyncResult) (result bool, 
 // [ result ] trans: nothing
 //
 func (v *DriveIfc) CallSetConfigurationSync(arg_value g.Variant, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(97, "Drive", "call_set_configuration_sync")
+	iv, err := _I.Get(97, "Drive", "call_set_configuration_sync", 9, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -2907,7 +2907,7 @@ func (v *DriveIfc) CallSetConfigurationSync(arg_value g.Variant, arg_options g.V
 // [ invocation ] trans: everything
 //
 func (v *DriveIfc) CompleteEject(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(98, "Drive", "complete_eject")
+	iv, err := _I.Get(98, "Drive", "complete_eject", 9, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2927,7 +2927,7 @@ func (v *DriveIfc) CompleteEject(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *DriveIfc) CompletePowerOff(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(99, "Drive", "complete_power_off")
+	iv, err := _I.Get(99, "Drive", "complete_power_off", 9, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2947,7 +2947,7 @@ func (v *DriveIfc) CompletePowerOff(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *DriveIfc) CompleteSetConfiguration(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(100, "Drive", "complete_set_configuration")
+	iv, err := _I.Get(100, "Drive", "complete_set_configuration", 9, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2985,7 +2985,7 @@ func DriveAtaGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func DriveAtaOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(102, "DriveAta", "override_properties")
+	iv, err := _I.Get(102, "DriveAta", "override_properties", 10, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3010,7 +3010,7 @@ func DriveAtaOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) 
 // [ user_data ] trans: nothing
 //
 func (v *DriveAtaIfc) CallPmGetState(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(103, "DriveAta", "call_pm_get_state")
+	iv, err := _I.Get(103, "DriveAta", "call_pm_get_state", 10, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3037,7 +3037,7 @@ func (v *DriveAtaIfc) CallPmGetState(arg_options g.Variant, cancellable g.ICance
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallPmGetStateFinish(res g.IAsyncResult) (result bool, out_state uint8, err error) {
-	iv, err := _I.Get(104, "DriveAta", "call_pm_get_state_finish")
+	iv, err := _I.Get(104, "DriveAta", "call_pm_get_state_finish", 10, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3070,7 +3070,7 @@ func (v *DriveAtaIfc) CallPmGetStateFinish(res g.IAsyncResult) (result bool, out
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallPmGetStateSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, out_state uint8, err error) {
-	iv, err := _I.Get(105, "DriveAta", "call_pm_get_state_sync")
+	iv, err := _I.Get(105, "DriveAta", "call_pm_get_state_sync", 10, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3104,7 +3104,7 @@ func (v *DriveAtaIfc) CallPmGetStateSync(arg_options g.Variant, cancellable g.IC
 // [ user_data ] trans: nothing
 //
 func (v *DriveAtaIfc) CallPmStandby(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(106, "DriveAta", "call_pm_standby")
+	iv, err := _I.Get(106, "DriveAta", "call_pm_standby", 10, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3129,7 +3129,7 @@ func (v *DriveAtaIfc) CallPmStandby(arg_options g.Variant, cancellable g.ICancel
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallPmStandbyFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(107, "DriveAta", "call_pm_standby_finish")
+	iv, err := _I.Get(107, "DriveAta", "call_pm_standby_finish", 10, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3158,7 +3158,7 @@ func (v *DriveAtaIfc) CallPmStandbyFinish(res g.IAsyncResult) (result bool, err 
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallPmStandbySync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(108, "DriveAta", "call_pm_standby_sync")
+	iv, err := _I.Get(108, "DriveAta", "call_pm_standby_sync", 10, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3190,7 +3190,7 @@ func (v *DriveAtaIfc) CallPmStandbySync(arg_options g.Variant, cancellable g.ICa
 // [ user_data ] trans: nothing
 //
 func (v *DriveAtaIfc) CallPmWakeup(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(109, "DriveAta", "call_pm_wakeup")
+	iv, err := _I.Get(109, "DriveAta", "call_pm_wakeup", 10, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3215,7 +3215,7 @@ func (v *DriveAtaIfc) CallPmWakeup(arg_options g.Variant, cancellable g.ICancell
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallPmWakeupFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(110, "DriveAta", "call_pm_wakeup_finish")
+	iv, err := _I.Get(110, "DriveAta", "call_pm_wakeup_finish", 10, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3244,7 +3244,7 @@ func (v *DriveAtaIfc) CallPmWakeupFinish(res g.IAsyncResult) (result bool, err e
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallPmWakeupSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(111, "DriveAta", "call_pm_wakeup_sync")
+	iv, err := _I.Get(111, "DriveAta", "call_pm_wakeup_sync", 10, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3276,7 +3276,7 @@ func (v *DriveAtaIfc) CallPmWakeupSync(arg_options g.Variant, cancellable g.ICan
 // [ user_data ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSecurityEraseUnit(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(112, "DriveAta", "call_security_erase_unit")
+	iv, err := _I.Get(112, "DriveAta", "call_security_erase_unit", 10, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3301,7 +3301,7 @@ func (v *DriveAtaIfc) CallSecurityEraseUnit(arg_options g.Variant, cancellable g
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSecurityEraseUnitFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(113, "DriveAta", "call_security_erase_unit_finish")
+	iv, err := _I.Get(113, "DriveAta", "call_security_erase_unit_finish", 10, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3330,7 +3330,7 @@ func (v *DriveAtaIfc) CallSecurityEraseUnitFinish(res g.IAsyncResult) (result bo
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSecurityEraseUnitSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(114, "DriveAta", "call_security_erase_unit_sync")
+	iv, err := _I.Get(114, "DriveAta", "call_security_erase_unit_sync", 10, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3362,7 +3362,7 @@ func (v *DriveAtaIfc) CallSecurityEraseUnitSync(arg_options g.Variant, cancellab
 // [ user_data ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartGetAttributes(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(115, "DriveAta", "call_smart_get_attributes")
+	iv, err := _I.Get(115, "DriveAta", "call_smart_get_attributes", 10, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3389,7 +3389,7 @@ func (v *DriveAtaIfc) CallSmartGetAttributes(arg_options g.Variant, cancellable 
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartGetAttributesFinish(res g.IAsyncResult) (result bool, out_attributes g.Variant, err error) {
-	iv, err := _I.Get(116, "DriveAta", "call_smart_get_attributes_finish")
+	iv, err := _I.Get(116, "DriveAta", "call_smart_get_attributes_finish", 10, 15, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3422,7 +3422,7 @@ func (v *DriveAtaIfc) CallSmartGetAttributesFinish(res g.IAsyncResult) (result b
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartGetAttributesSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, out_attributes g.Variant, err error) {
-	iv, err := _I.Get(117, "DriveAta", "call_smart_get_attributes_sync")
+	iv, err := _I.Get(117, "DriveAta", "call_smart_get_attributes_sync", 10, 16, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3456,7 +3456,7 @@ func (v *DriveAtaIfc) CallSmartGetAttributesSync(arg_options g.Variant, cancella
 // [ user_data ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartSelftestAbort(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(118, "DriveAta", "call_smart_selftest_abort")
+	iv, err := _I.Get(118, "DriveAta", "call_smart_selftest_abort", 10, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3481,7 +3481,7 @@ func (v *DriveAtaIfc) CallSmartSelftestAbort(arg_options g.Variant, cancellable 
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartSelftestAbortFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(119, "DriveAta", "call_smart_selftest_abort_finish")
+	iv, err := _I.Get(119, "DriveAta", "call_smart_selftest_abort_finish", 10, 18, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3510,7 +3510,7 @@ func (v *DriveAtaIfc) CallSmartSelftestAbortFinish(res g.IAsyncResult) (result b
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartSelftestAbortSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(120, "DriveAta", "call_smart_selftest_abort_sync")
+	iv, err := _I.Get(120, "DriveAta", "call_smart_selftest_abort_sync", 10, 19, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3544,7 +3544,7 @@ func (v *DriveAtaIfc) CallSmartSelftestAbortSync(arg_options g.Variant, cancella
 // [ user_data ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartSelftestStart(arg_type string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(121, "DriveAta", "call_smart_selftest_start")
+	iv, err := _I.Get(121, "DriveAta", "call_smart_selftest_start", 10, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3572,7 +3572,7 @@ func (v *DriveAtaIfc) CallSmartSelftestStart(arg_type string, arg_options g.Vari
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartSelftestStartFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(122, "DriveAta", "call_smart_selftest_start_finish")
+	iv, err := _I.Get(122, "DriveAta", "call_smart_selftest_start_finish", 10, 21, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3603,7 +3603,7 @@ func (v *DriveAtaIfc) CallSmartSelftestStartFinish(res g.IAsyncResult) (result b
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartSelftestStartSync(arg_type string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(123, "DriveAta", "call_smart_selftest_start_sync")
+	iv, err := _I.Get(123, "DriveAta", "call_smart_selftest_start_sync", 10, 22, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3640,7 +3640,7 @@ func (v *DriveAtaIfc) CallSmartSelftestStartSync(arg_type string, arg_options g.
 // [ user_data ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartSetEnabled(arg_value bool, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(124, "DriveAta", "call_smart_set_enabled")
+	iv, err := _I.Get(124, "DriveAta", "call_smart_set_enabled", 10, 23, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3666,7 +3666,7 @@ func (v *DriveAtaIfc) CallSmartSetEnabled(arg_value bool, arg_options g.Variant,
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartSetEnabledFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(125, "DriveAta", "call_smart_set_enabled_finish")
+	iv, err := _I.Get(125, "DriveAta", "call_smart_set_enabled_finish", 10, 24, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3697,7 +3697,7 @@ func (v *DriveAtaIfc) CallSmartSetEnabledFinish(res g.IAsyncResult) (result bool
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartSetEnabledSync(arg_value bool, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(126, "DriveAta", "call_smart_set_enabled_sync")
+	iv, err := _I.Get(126, "DriveAta", "call_smart_set_enabled_sync", 10, 25, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3730,7 +3730,7 @@ func (v *DriveAtaIfc) CallSmartSetEnabledSync(arg_value bool, arg_options g.Vari
 // [ user_data ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartUpdate(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(127, "DriveAta", "call_smart_update")
+	iv, err := _I.Get(127, "DriveAta", "call_smart_update", 10, 26, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3755,7 +3755,7 @@ func (v *DriveAtaIfc) CallSmartUpdate(arg_options g.Variant, cancellable g.ICanc
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartUpdateFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(128, "DriveAta", "call_smart_update_finish")
+	iv, err := _I.Get(128, "DriveAta", "call_smart_update_finish", 10, 27, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3784,7 +3784,7 @@ func (v *DriveAtaIfc) CallSmartUpdateFinish(res g.IAsyncResult) (result bool, er
 // [ result ] trans: nothing
 //
 func (v *DriveAtaIfc) CallSmartUpdateSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(129, "DriveAta", "call_smart_update_sync")
+	iv, err := _I.Get(129, "DriveAta", "call_smart_update_sync", 10, 28, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -3812,7 +3812,7 @@ func (v *DriveAtaIfc) CallSmartUpdateSync(arg_options g.Variant, cancellable g.I
 // [ state ] trans: nothing
 //
 func (v *DriveAtaIfc) CompletePmGetState(invocation g.IDBusMethodInvocation, state uint8) {
-	iv, err := _I.Get(130, "DriveAta", "complete_pm_get_state")
+	iv, err := _I.Get(130, "DriveAta", "complete_pm_get_state", 10, 29, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3833,7 +3833,7 @@ func (v *DriveAtaIfc) CompletePmGetState(invocation g.IDBusMethodInvocation, sta
 // [ invocation ] trans: everything
 //
 func (v *DriveAtaIfc) CompletePmStandby(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(131, "DriveAta", "complete_pm_standby")
+	iv, err := _I.Get(131, "DriveAta", "complete_pm_standby", 10, 30, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3853,7 +3853,7 @@ func (v *DriveAtaIfc) CompletePmStandby(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *DriveAtaIfc) CompletePmWakeup(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(132, "DriveAta", "complete_pm_wakeup")
+	iv, err := _I.Get(132, "DriveAta", "complete_pm_wakeup", 10, 31, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3873,7 +3873,7 @@ func (v *DriveAtaIfc) CompletePmWakeup(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *DriveAtaIfc) CompleteSecurityEraseUnit(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(133, "DriveAta", "complete_security_erase_unit")
+	iv, err := _I.Get(133, "DriveAta", "complete_security_erase_unit", 10, 32, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3895,7 +3895,7 @@ func (v *DriveAtaIfc) CompleteSecurityEraseUnit(invocation g.IDBusMethodInvocati
 // [ attributes ] trans: nothing
 //
 func (v *DriveAtaIfc) CompleteSmartGetAttributes(invocation g.IDBusMethodInvocation, attributes g.Variant) {
-	iv, err := _I.Get(134, "DriveAta", "complete_smart_get_attributes")
+	iv, err := _I.Get(134, "DriveAta", "complete_smart_get_attributes", 10, 33, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3916,7 +3916,7 @@ func (v *DriveAtaIfc) CompleteSmartGetAttributes(invocation g.IDBusMethodInvocat
 // [ invocation ] trans: everything
 //
 func (v *DriveAtaIfc) CompleteSmartSelftestAbort(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(135, "DriveAta", "complete_smart_selftest_abort")
+	iv, err := _I.Get(135, "DriveAta", "complete_smart_selftest_abort", 10, 34, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3936,7 +3936,7 @@ func (v *DriveAtaIfc) CompleteSmartSelftestAbort(invocation g.IDBusMethodInvocat
 // [ invocation ] trans: everything
 //
 func (v *DriveAtaIfc) CompleteSmartSelftestStart(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(136, "DriveAta", "complete_smart_selftest_start")
+	iv, err := _I.Get(136, "DriveAta", "complete_smart_selftest_start", 10, 35, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3956,7 +3956,7 @@ func (v *DriveAtaIfc) CompleteSmartSelftestStart(invocation g.IDBusMethodInvocat
 // [ invocation ] trans: everything
 //
 func (v *DriveAtaIfc) CompleteSmartSetEnabled(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(137, "DriveAta", "complete_smart_set_enabled")
+	iv, err := _I.Get(137, "DriveAta", "complete_smart_set_enabled", 10, 36, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3976,7 +3976,7 @@ func (v *DriveAtaIfc) CompleteSmartSetEnabled(invocation g.IDBusMethodInvocation
 // [ invocation ] trans: everything
 //
 func (v *DriveAtaIfc) CompleteSmartUpdate(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(138, "DriveAta", "complete_smart_update")
+	iv, err := _I.Get(138, "DriveAta", "complete_smart_update", 10, 37, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4017,7 +4017,7 @@ func DriveAtaProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewDriveAtaProxyFinish(res g.IAsyncResult) (result DriveAtaProxy, err error) {
-	iv, err := _I.Get(139, "DriveAtaProxy", "new_finish")
+	iv, err := _I.Get(139, "DriveAtaProxy", "new_finish", 12, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -4043,7 +4043,7 @@ func NewDriveAtaProxyFinish(res g.IAsyncResult) (result DriveAtaProxy, err error
 // [ result ] trans: everything
 //
 func NewDriveAtaProxyForBusFinish(res g.IAsyncResult) (result DriveAtaProxy, err error) {
-	iv, err := _I.Get(140, "DriveAtaProxy", "new_for_bus_finish")
+	iv, err := _I.Get(140, "DriveAtaProxy", "new_for_bus_finish", 12, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -4077,7 +4077,7 @@ func NewDriveAtaProxyForBusFinish(res g.IAsyncResult) (result DriveAtaProxy, err
 // [ result ] trans: everything
 //
 func NewDriveAtaProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result DriveAtaProxy, err error) {
-	iv, err := _I.Get(141, "DriveAtaProxy", "new_for_bus_sync")
+	iv, err := _I.Get(141, "DriveAtaProxy", "new_for_bus_sync", 12, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -4119,7 +4119,7 @@ func NewDriveAtaProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, 
 // [ result ] trans: everything
 //
 func NewDriveAtaProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result DriveAtaProxy, err error) {
-	iv, err := _I.Get(142, "DriveAtaProxy", "new_sync")
+	iv, err := _I.Get(142, "DriveAtaProxy", "new_sync", 12, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -4167,7 +4167,7 @@ func NewDriveAtaProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, 
 // [ user_data ] trans: nothing
 //
 func DriveAtaProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(143, "DriveAtaProxy", "new")
+	iv, err := _I.Get(143, "DriveAtaProxy", "new", 12, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4212,7 +4212,7 @@ func DriveAtaProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, nam
 // [ user_data ] trans: nothing
 //
 func DriveAtaProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(144, "DriveAtaProxy", "new_for_bus")
+	iv, err := _I.Get(144, "DriveAtaProxy", "new_for_bus", 12, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4270,7 +4270,7 @@ func DriveAtaSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewDriveAtaSkeleton() (result DriveAtaSkeleton) {
-	iv, err := _I.Get(145, "DriveAtaSkeleton", "new")
+	iv, err := _I.Get(145, "DriveAtaSkeleton", "new", 15, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4319,7 +4319,7 @@ func DriveProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewDriveProxyFinish(res g.IAsyncResult) (result DriveProxy, err error) {
-	iv, err := _I.Get(146, "DriveProxy", "new_finish")
+	iv, err := _I.Get(146, "DriveProxy", "new_finish", 19, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -4345,7 +4345,7 @@ func NewDriveProxyFinish(res g.IAsyncResult) (result DriveProxy, err error) {
 // [ result ] trans: everything
 //
 func NewDriveProxyForBusFinish(res g.IAsyncResult) (result DriveProxy, err error) {
-	iv, err := _I.Get(147, "DriveProxy", "new_for_bus_finish")
+	iv, err := _I.Get(147, "DriveProxy", "new_for_bus_finish", 19, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -4379,7 +4379,7 @@ func NewDriveProxyForBusFinish(res g.IAsyncResult) (result DriveProxy, err error
 // [ result ] trans: everything
 //
 func NewDriveProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result DriveProxy, err error) {
-	iv, err := _I.Get(148, "DriveProxy", "new_for_bus_sync")
+	iv, err := _I.Get(148, "DriveProxy", "new_for_bus_sync", 19, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -4421,7 +4421,7 @@ func NewDriveProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, nam
 // [ result ] trans: everything
 //
 func NewDriveProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result DriveProxy, err error) {
-	iv, err := _I.Get(149, "DriveProxy", "new_sync")
+	iv, err := _I.Get(149, "DriveProxy", "new_sync", 19, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -4469,7 +4469,7 @@ func NewDriveProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, nam
 // [ user_data ] trans: nothing
 //
 func DriveProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(150, "DriveProxy", "new")
+	iv, err := _I.Get(150, "DriveProxy", "new", 19, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4514,7 +4514,7 @@ func DriveProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name s
 // [ user_data ] trans: nothing
 //
 func DriveProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(151, "DriveProxy", "new_for_bus")
+	iv, err := _I.Get(151, "DriveProxy", "new_for_bus", 19, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4572,7 +4572,7 @@ func DriveSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewDriveSkeleton() (result DriveSkeleton) {
-	iv, err := _I.Get(152, "DriveSkeleton", "new")
+	iv, err := _I.Get(152, "DriveSkeleton", "new", 22, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4618,7 +4618,7 @@ func EncryptedGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func EncryptedOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(154, "Encrypted", "override_properties")
+	iv, err := _I.Get(154, "Encrypted", "override_properties", 26, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4647,7 +4647,7 @@ func EncryptedOverrideProperties1(klass g.ObjectClass, property_id_begin uint32)
 // [ user_data ] trans: nothing
 //
 func (v *EncryptedIfc) CallChangePassphrase(arg_passphrase string, arg_new_passphrase string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(155, "Encrypted", "call_change_passphrase")
+	iv, err := _I.Get(155, "Encrypted", "call_change_passphrase", 26, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4678,7 +4678,7 @@ func (v *EncryptedIfc) CallChangePassphrase(arg_passphrase string, arg_new_passp
 // [ result ] trans: nothing
 //
 func (v *EncryptedIfc) CallChangePassphraseFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(156, "Encrypted", "call_change_passphrase_finish")
+	iv, err := _I.Get(156, "Encrypted", "call_change_passphrase_finish", 26, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4711,7 +4711,7 @@ func (v *EncryptedIfc) CallChangePassphraseFinish(res g.IAsyncResult) (result bo
 // [ result ] trans: nothing
 //
 func (v *EncryptedIfc) CallChangePassphraseSync(arg_passphrase string, arg_new_passphrase string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(157, "Encrypted", "call_change_passphrase_sync")
+	iv, err := _I.Get(157, "Encrypted", "call_change_passphrase_sync", 26, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4749,7 +4749,7 @@ func (v *EncryptedIfc) CallChangePassphraseSync(arg_passphrase string, arg_new_p
 // [ user_data ] trans: nothing
 //
 func (v *EncryptedIfc) CallLock(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(158, "Encrypted", "call_lock")
+	iv, err := _I.Get(158, "Encrypted", "call_lock", 26, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4774,7 +4774,7 @@ func (v *EncryptedIfc) CallLock(arg_options g.Variant, cancellable g.ICancellabl
 // [ result ] trans: nothing
 //
 func (v *EncryptedIfc) CallLockFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(159, "Encrypted", "call_lock_finish")
+	iv, err := _I.Get(159, "Encrypted", "call_lock_finish", 26, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4803,7 +4803,7 @@ func (v *EncryptedIfc) CallLockFinish(res g.IAsyncResult) (result bool, err erro
 // [ result ] trans: nothing
 //
 func (v *EncryptedIfc) CallLockSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(160, "Encrypted", "call_lock_sync")
+	iv, err := _I.Get(160, "Encrypted", "call_lock_sync", 26, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4837,7 +4837,7 @@ func (v *EncryptedIfc) CallLockSync(arg_options g.Variant, cancellable g.ICancel
 // [ user_data ] trans: nothing
 //
 func (v *EncryptedIfc) CallResize(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(161, "Encrypted", "call_resize")
+	iv, err := _I.Get(161, "Encrypted", "call_resize", 26, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4863,7 +4863,7 @@ func (v *EncryptedIfc) CallResize(arg_size uint64, arg_options g.Variant, cancel
 // [ result ] trans: nothing
 //
 func (v *EncryptedIfc) CallResizeFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(162, "Encrypted", "call_resize_finish")
+	iv, err := _I.Get(162, "Encrypted", "call_resize_finish", 26, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4894,7 +4894,7 @@ func (v *EncryptedIfc) CallResizeFinish(res g.IAsyncResult) (result bool, err er
 // [ result ] trans: nothing
 //
 func (v *EncryptedIfc) CallResizeSync(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(163, "Encrypted", "call_resize_sync")
+	iv, err := _I.Get(163, "Encrypted", "call_resize_sync", 26, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4929,7 +4929,7 @@ func (v *EncryptedIfc) CallResizeSync(arg_size uint64, arg_options g.Variant, ca
 // [ user_data ] trans: nothing
 //
 func (v *EncryptedIfc) CallUnlock(arg_passphrase string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(164, "Encrypted", "call_unlock")
+	iv, err := _I.Get(164, "Encrypted", "call_unlock", 26, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4959,7 +4959,7 @@ func (v *EncryptedIfc) CallUnlock(arg_passphrase string, arg_options g.Variant, 
 // [ result ] trans: nothing
 //
 func (v *EncryptedIfc) CallUnlockFinish(res g.IAsyncResult) (result bool, out_cleartext_device string, err error) {
-	iv, err := _I.Get(165, "Encrypted", "call_unlock_finish")
+	iv, err := _I.Get(165, "Encrypted", "call_unlock_finish", 26, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -4994,7 +4994,7 @@ func (v *EncryptedIfc) CallUnlockFinish(res g.IAsyncResult) (result bool, out_cl
 // [ result ] trans: nothing
 //
 func (v *EncryptedIfc) CallUnlockSync(arg_passphrase string, arg_options g.Variant, cancellable g.ICancellable) (result bool, out_cleartext_device string, err error) {
-	iv, err := _I.Get(166, "Encrypted", "call_unlock_sync")
+	iv, err := _I.Get(166, "Encrypted", "call_unlock_sync", 26, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5025,7 +5025,7 @@ func (v *EncryptedIfc) CallUnlockSync(arg_passphrase string, arg_options g.Varia
 // [ invocation ] trans: everything
 //
 func (v *EncryptedIfc) CompleteChangePassphrase(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(167, "Encrypted", "complete_change_passphrase")
+	iv, err := _I.Get(167, "Encrypted", "complete_change_passphrase", 26, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5045,7 +5045,7 @@ func (v *EncryptedIfc) CompleteChangePassphrase(invocation g.IDBusMethodInvocati
 // [ invocation ] trans: everything
 //
 func (v *EncryptedIfc) CompleteLock(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(168, "Encrypted", "complete_lock")
+	iv, err := _I.Get(168, "Encrypted", "complete_lock", 26, 15, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5065,7 +5065,7 @@ func (v *EncryptedIfc) CompleteLock(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *EncryptedIfc) CompleteResize(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(169, "Encrypted", "complete_resize")
+	iv, err := _I.Get(169, "Encrypted", "complete_resize", 26, 16, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5087,7 +5087,7 @@ func (v *EncryptedIfc) CompleteResize(invocation g.IDBusMethodInvocation) {
 // [ cleartext_device ] trans: nothing
 //
 func (v *EncryptedIfc) CompleteUnlock(invocation g.IDBusMethodInvocation, cleartext_device string) {
-	iv, err := _I.Get(170, "Encrypted", "complete_unlock")
+	iv, err := _I.Get(170, "Encrypted", "complete_unlock", 26, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5131,7 +5131,7 @@ func EncryptedProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewEncryptedProxyFinish(res g.IAsyncResult) (result EncryptedProxy, err error) {
-	iv, err := _I.Get(171, "EncryptedProxy", "new_finish")
+	iv, err := _I.Get(171, "EncryptedProxy", "new_finish", 28, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -5157,7 +5157,7 @@ func NewEncryptedProxyFinish(res g.IAsyncResult) (result EncryptedProxy, err err
 // [ result ] trans: everything
 //
 func NewEncryptedProxyForBusFinish(res g.IAsyncResult) (result EncryptedProxy, err error) {
-	iv, err := _I.Get(172, "EncryptedProxy", "new_for_bus_finish")
+	iv, err := _I.Get(172, "EncryptedProxy", "new_for_bus_finish", 28, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -5191,7 +5191,7 @@ func NewEncryptedProxyForBusFinish(res g.IAsyncResult) (result EncryptedProxy, e
 // [ result ] trans: everything
 //
 func NewEncryptedProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result EncryptedProxy, err error) {
-	iv, err := _I.Get(173, "EncryptedProxy", "new_for_bus_sync")
+	iv, err := _I.Get(173, "EncryptedProxy", "new_for_bus_sync", 28, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -5233,7 +5233,7 @@ func NewEncryptedProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags,
 // [ result ] trans: everything
 //
 func NewEncryptedProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result EncryptedProxy, err error) {
-	iv, err := _I.Get(174, "EncryptedProxy", "new_sync")
+	iv, err := _I.Get(174, "EncryptedProxy", "new_sync", 28, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -5281,7 +5281,7 @@ func NewEncryptedProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags,
 // [ user_data ] trans: nothing
 //
 func EncryptedProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(175, "EncryptedProxy", "new")
+	iv, err := _I.Get(175, "EncryptedProxy", "new", 28, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5326,7 +5326,7 @@ func EncryptedProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 // [ user_data ] trans: nothing
 //
 func EncryptedProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(176, "EncryptedProxy", "new_for_bus")
+	iv, err := _I.Get(176, "EncryptedProxy", "new_for_bus", 28, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5384,7 +5384,7 @@ func EncryptedSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewEncryptedSkeleton() (result EncryptedSkeleton) {
-	iv, err := _I.Get(177, "EncryptedSkeleton", "new")
+	iv, err := _I.Get(177, "EncryptedSkeleton", "new", 31, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5468,7 +5468,7 @@ func FilesystemGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func FilesystemOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(179, "Filesystem", "override_properties")
+	iv, err := _I.Get(179, "Filesystem", "override_properties", 35, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5493,7 +5493,7 @@ func FilesystemOverrideProperties1(klass g.ObjectClass, property_id_begin uint32
 // [ user_data ] trans: nothing
 //
 func (v *FilesystemIfc) CallCheck(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(180, "Filesystem", "call_check")
+	iv, err := _I.Get(180, "Filesystem", "call_check", 35, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5520,7 +5520,7 @@ func (v *FilesystemIfc) CallCheck(arg_options g.Variant, cancellable g.ICancella
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallCheckFinish(res g.IAsyncResult) (result bool, out_consistent bool, err error) {
-	iv, err := _I.Get(181, "Filesystem", "call_check_finish")
+	iv, err := _I.Get(181, "Filesystem", "call_check_finish", 35, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5553,7 +5553,7 @@ func (v *FilesystemIfc) CallCheckFinish(res g.IAsyncResult) (result bool, out_co
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallCheckSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, out_consistent bool, err error) {
-	iv, err := _I.Get(182, "Filesystem", "call_check_sync")
+	iv, err := _I.Get(182, "Filesystem", "call_check_sync", 35, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5587,7 +5587,7 @@ func (v *FilesystemIfc) CallCheckSync(arg_options g.Variant, cancellable g.ICanc
 // [ user_data ] trans: nothing
 //
 func (v *FilesystemIfc) CallMount(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(183, "Filesystem", "call_mount")
+	iv, err := _I.Get(183, "Filesystem", "call_mount", 35, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5614,7 +5614,7 @@ func (v *FilesystemIfc) CallMount(arg_options g.Variant, cancellable g.ICancella
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallMountFinish(res g.IAsyncResult) (result bool, out_mount_path string, err error) {
-	iv, err := _I.Get(184, "Filesystem", "call_mount_finish")
+	iv, err := _I.Get(184, "Filesystem", "call_mount_finish", 35, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5647,7 +5647,7 @@ func (v *FilesystemIfc) CallMountFinish(res g.IAsyncResult) (result bool, out_mo
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallMountSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, out_mount_path string, err error) {
-	iv, err := _I.Get(185, "Filesystem", "call_mount_sync")
+	iv, err := _I.Get(185, "Filesystem", "call_mount_sync", 35, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5681,7 +5681,7 @@ func (v *FilesystemIfc) CallMountSync(arg_options g.Variant, cancellable g.ICanc
 // [ user_data ] trans: nothing
 //
 func (v *FilesystemIfc) CallRepair(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(186, "Filesystem", "call_repair")
+	iv, err := _I.Get(186, "Filesystem", "call_repair", 35, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5708,7 +5708,7 @@ func (v *FilesystemIfc) CallRepair(arg_options g.Variant, cancellable g.ICancell
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallRepairFinish(res g.IAsyncResult) (result bool, out_repaired bool, err error) {
-	iv, err := _I.Get(187, "Filesystem", "call_repair_finish")
+	iv, err := _I.Get(187, "Filesystem", "call_repair_finish", 35, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5741,7 +5741,7 @@ func (v *FilesystemIfc) CallRepairFinish(res g.IAsyncResult) (result bool, out_r
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallRepairSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, out_repaired bool, err error) {
-	iv, err := _I.Get(188, "Filesystem", "call_repair_sync")
+	iv, err := _I.Get(188, "Filesystem", "call_repair_sync", 35, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5777,7 +5777,7 @@ func (v *FilesystemIfc) CallRepairSync(arg_options g.Variant, cancellable g.ICan
 // [ user_data ] trans: nothing
 //
 func (v *FilesystemIfc) CallResize(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(189, "Filesystem", "call_resize")
+	iv, err := _I.Get(189, "Filesystem", "call_resize", 35, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5803,7 +5803,7 @@ func (v *FilesystemIfc) CallResize(arg_size uint64, arg_options g.Variant, cance
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallResizeFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(190, "Filesystem", "call_resize_finish")
+	iv, err := _I.Get(190, "Filesystem", "call_resize_finish", 35, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5834,7 +5834,7 @@ func (v *FilesystemIfc) CallResizeFinish(res g.IAsyncResult) (result bool, err e
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallResizeSync(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(191, "Filesystem", "call_resize_sync")
+	iv, err := _I.Get(191, "Filesystem", "call_resize_sync", 35, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5869,7 +5869,7 @@ func (v *FilesystemIfc) CallResizeSync(arg_size uint64, arg_options g.Variant, c
 // [ user_data ] trans: nothing
 //
 func (v *FilesystemIfc) CallSetLabel(arg_label string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(192, "Filesystem", "call_set_label")
+	iv, err := _I.Get(192, "Filesystem", "call_set_label", 35, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5897,7 +5897,7 @@ func (v *FilesystemIfc) CallSetLabel(arg_label string, arg_options g.Variant, ca
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallSetLabelFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(193, "Filesystem", "call_set_label_finish")
+	iv, err := _I.Get(193, "Filesystem", "call_set_label_finish", 35, 15, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5928,7 +5928,7 @@ func (v *FilesystemIfc) CallSetLabelFinish(res g.IAsyncResult) (result bool, err
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallSetLabelSync(arg_label string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(194, "Filesystem", "call_set_label_sync")
+	iv, err := _I.Get(194, "Filesystem", "call_set_label_sync", 35, 16, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -5963,7 +5963,7 @@ func (v *FilesystemIfc) CallSetLabelSync(arg_label string, arg_options g.Variant
 // [ user_data ] trans: nothing
 //
 func (v *FilesystemIfc) CallTakeOwnership(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(195, "Filesystem", "call_take_ownership")
+	iv, err := _I.Get(195, "Filesystem", "call_take_ownership", 35, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5988,7 +5988,7 @@ func (v *FilesystemIfc) CallTakeOwnership(arg_options g.Variant, cancellable g.I
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallTakeOwnershipFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(196, "Filesystem", "call_take_ownership_finish")
+	iv, err := _I.Get(196, "Filesystem", "call_take_ownership_finish", 35, 18, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -6017,7 +6017,7 @@ func (v *FilesystemIfc) CallTakeOwnershipFinish(res g.IAsyncResult) (result bool
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallTakeOwnershipSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(197, "Filesystem", "call_take_ownership_sync")
+	iv, err := _I.Get(197, "Filesystem", "call_take_ownership_sync", 35, 19, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -6049,7 +6049,7 @@ func (v *FilesystemIfc) CallTakeOwnershipSync(arg_options g.Variant, cancellable
 // [ user_data ] trans: nothing
 //
 func (v *FilesystemIfc) CallUnmount(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(198, "Filesystem", "call_unmount")
+	iv, err := _I.Get(198, "Filesystem", "call_unmount", 35, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6074,7 +6074,7 @@ func (v *FilesystemIfc) CallUnmount(arg_options g.Variant, cancellable g.ICancel
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallUnmountFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(199, "Filesystem", "call_unmount_finish")
+	iv, err := _I.Get(199, "Filesystem", "call_unmount_finish", 35, 21, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -6103,7 +6103,7 @@ func (v *FilesystemIfc) CallUnmountFinish(res g.IAsyncResult) (result bool, err 
 // [ result ] trans: nothing
 //
 func (v *FilesystemIfc) CallUnmountSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(200, "Filesystem", "call_unmount_sync")
+	iv, err := _I.Get(200, "Filesystem", "call_unmount_sync", 35, 22, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -6131,7 +6131,7 @@ func (v *FilesystemIfc) CallUnmountSync(arg_options g.Variant, cancellable g.ICa
 // [ consistent ] trans: nothing
 //
 func (v *FilesystemIfc) CompleteCheck(invocation g.IDBusMethodInvocation, consistent bool) {
-	iv, err := _I.Get(201, "Filesystem", "complete_check")
+	iv, err := _I.Get(201, "Filesystem", "complete_check", 35, 23, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6154,7 +6154,7 @@ func (v *FilesystemIfc) CompleteCheck(invocation g.IDBusMethodInvocation, consis
 // [ mount_path ] trans: nothing
 //
 func (v *FilesystemIfc) CompleteMount(invocation g.IDBusMethodInvocation, mount_path string) {
-	iv, err := _I.Get(202, "Filesystem", "complete_mount")
+	iv, err := _I.Get(202, "Filesystem", "complete_mount", 35, 24, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6179,7 +6179,7 @@ func (v *FilesystemIfc) CompleteMount(invocation g.IDBusMethodInvocation, mount_
 // [ repaired ] trans: nothing
 //
 func (v *FilesystemIfc) CompleteRepair(invocation g.IDBusMethodInvocation, repaired bool) {
-	iv, err := _I.Get(203, "Filesystem", "complete_repair")
+	iv, err := _I.Get(203, "Filesystem", "complete_repair", 35, 25, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6200,7 +6200,7 @@ func (v *FilesystemIfc) CompleteRepair(invocation g.IDBusMethodInvocation, repai
 // [ invocation ] trans: everything
 //
 func (v *FilesystemIfc) CompleteResize(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(204, "Filesystem", "complete_resize")
+	iv, err := _I.Get(204, "Filesystem", "complete_resize", 35, 26, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6220,7 +6220,7 @@ func (v *FilesystemIfc) CompleteResize(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *FilesystemIfc) CompleteSetLabel(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(205, "Filesystem", "complete_set_label")
+	iv, err := _I.Get(205, "Filesystem", "complete_set_label", 35, 27, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6240,7 +6240,7 @@ func (v *FilesystemIfc) CompleteSetLabel(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *FilesystemIfc) CompleteTakeOwnership(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(206, "Filesystem", "complete_take_ownership")
+	iv, err := _I.Get(206, "Filesystem", "complete_take_ownership", 35, 28, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6260,7 +6260,7 @@ func (v *FilesystemIfc) CompleteTakeOwnership(invocation g.IDBusMethodInvocation
 // [ invocation ] trans: everything
 //
 func (v *FilesystemIfc) CompleteUnmount(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(207, "Filesystem", "complete_unmount")
+	iv, err := _I.Get(207, "Filesystem", "complete_unmount", 35, 29, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6301,7 +6301,7 @@ func FilesystemProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewFilesystemProxyFinish(res g.IAsyncResult) (result FilesystemProxy, err error) {
-	iv, err := _I.Get(208, "FilesystemProxy", "new_finish")
+	iv, err := _I.Get(208, "FilesystemProxy", "new_finish", 37, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6327,7 +6327,7 @@ func NewFilesystemProxyFinish(res g.IAsyncResult) (result FilesystemProxy, err e
 // [ result ] trans: everything
 //
 func NewFilesystemProxyForBusFinish(res g.IAsyncResult) (result FilesystemProxy, err error) {
-	iv, err := _I.Get(209, "FilesystemProxy", "new_for_bus_finish")
+	iv, err := _I.Get(209, "FilesystemProxy", "new_for_bus_finish", 37, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6361,7 +6361,7 @@ func NewFilesystemProxyForBusFinish(res g.IAsyncResult) (result FilesystemProxy,
 // [ result ] trans: everything
 //
 func NewFilesystemProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result FilesystemProxy, err error) {
-	iv, err := _I.Get(210, "FilesystemProxy", "new_for_bus_sync")
+	iv, err := _I.Get(210, "FilesystemProxy", "new_for_bus_sync", 37, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6403,7 +6403,7 @@ func NewFilesystemProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags
 // [ result ] trans: everything
 //
 func NewFilesystemProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result FilesystemProxy, err error) {
-	iv, err := _I.Get(211, "FilesystemProxy", "new_sync")
+	iv, err := _I.Get(211, "FilesystemProxy", "new_sync", 37, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6451,7 +6451,7 @@ func NewFilesystemProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags
 // [ user_data ] trans: nothing
 //
 func FilesystemProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(212, "FilesystemProxy", "new")
+	iv, err := _I.Get(212, "FilesystemProxy", "new", 37, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6496,7 +6496,7 @@ func FilesystemProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, n
 // [ user_data ] trans: nothing
 //
 func FilesystemProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(213, "FilesystemProxy", "new_for_bus")
+	iv, err := _I.Get(213, "FilesystemProxy", "new_for_bus", 37, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6554,7 +6554,7 @@ func FilesystemSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewFilesystemSkeleton() (result FilesystemSkeleton) {
-	iv, err := _I.Get(214, "FilesystemSkeleton", "new")
+	iv, err := _I.Get(214, "FilesystemSkeleton", "new", 40, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6600,7 +6600,7 @@ func JobGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func JobOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(216, "Job", "override_properties")
+	iv, err := _I.Get(216, "Job", "override_properties", 43, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6625,7 +6625,7 @@ func JobOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (resu
 // [ user_data ] trans: nothing
 //
 func (v *JobIfc) CallCancel(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(217, "Job", "call_cancel")
+	iv, err := _I.Get(217, "Job", "call_cancel", 43, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6650,7 +6650,7 @@ func (v *JobIfc) CallCancel(arg_options g.Variant, cancellable g.ICancellable, c
 // [ result ] trans: nothing
 //
 func (v *JobIfc) CallCancelFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(218, "Job", "call_cancel_finish")
+	iv, err := _I.Get(218, "Job", "call_cancel_finish", 43, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -6679,7 +6679,7 @@ func (v *JobIfc) CallCancelFinish(res g.IAsyncResult) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v *JobIfc) CallCancelSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(219, "Job", "call_cancel_sync")
+	iv, err := _I.Get(219, "Job", "call_cancel_sync", 43, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -6705,7 +6705,7 @@ func (v *JobIfc) CallCancelSync(arg_options g.Variant, cancellable g.ICancellabl
 // [ invocation ] trans: everything
 //
 func (v *JobIfc) CompleteCancel(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(220, "Job", "complete_cancel")
+	iv, err := _I.Get(220, "Job", "complete_cancel", 43, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6727,7 +6727,7 @@ func (v *JobIfc) CompleteCancel(invocation g.IDBusMethodInvocation) {
 // [ arg_message ] trans: nothing
 //
 func (v *JobIfc) EmitCompleted(arg_success bool, arg_message string) {
-	iv, err := _I.Get(221, "Job", "emit_completed")
+	iv, err := _I.Get(221, "Job", "emit_completed", 43, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6767,7 +6767,7 @@ func JobProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewJobProxyFinish(res g.IAsyncResult) (result JobProxy, err error) {
-	iv, err := _I.Get(222, "JobProxy", "new_finish")
+	iv, err := _I.Get(222, "JobProxy", "new_finish", 45, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6793,7 +6793,7 @@ func NewJobProxyFinish(res g.IAsyncResult) (result JobProxy, err error) {
 // [ result ] trans: everything
 //
 func NewJobProxyForBusFinish(res g.IAsyncResult) (result JobProxy, err error) {
-	iv, err := _I.Get(223, "JobProxy", "new_for_bus_finish")
+	iv, err := _I.Get(223, "JobProxy", "new_for_bus_finish", 45, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6827,7 +6827,7 @@ func NewJobProxyForBusFinish(res g.IAsyncResult) (result JobProxy, err error) {
 // [ result ] trans: everything
 //
 func NewJobProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result JobProxy, err error) {
-	iv, err := _I.Get(224, "JobProxy", "new_for_bus_sync")
+	iv, err := _I.Get(224, "JobProxy", "new_for_bus_sync", 45, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6869,7 +6869,7 @@ func NewJobProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name 
 // [ result ] trans: everything
 //
 func NewJobProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result JobProxy, err error) {
-	iv, err := _I.Get(225, "JobProxy", "new_sync")
+	iv, err := _I.Get(225, "JobProxy", "new_sync", 45, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6917,7 +6917,7 @@ func NewJobProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name 
 // [ user_data ] trans: nothing
 //
 func JobProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(226, "JobProxy", "new")
+	iv, err := _I.Get(226, "JobProxy", "new", 45, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6962,7 +6962,7 @@ func JobProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name str
 // [ user_data ] trans: nothing
 //
 func JobProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(227, "JobProxy", "new_for_bus")
+	iv, err := _I.Get(227, "JobProxy", "new_for_bus", 45, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7020,7 +7020,7 @@ func JobSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewJobSkeleton() (result JobSkeleton) {
-	iv, err := _I.Get(228, "JobSkeleton", "new")
+	iv, err := _I.Get(228, "JobSkeleton", "new", 48, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7066,7 +7066,7 @@ func LoopGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func LoopOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(230, "Loop", "override_properties")
+	iv, err := _I.Get(230, "Loop", "override_properties", 51, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7091,7 +7091,7 @@ func LoopOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (res
 // [ user_data ] trans: nothing
 //
 func (v *LoopIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(231, "Loop", "call_delete")
+	iv, err := _I.Get(231, "Loop", "call_delete", 51, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7116,7 +7116,7 @@ func (v *LoopIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, 
 // [ result ] trans: nothing
 //
 func (v *LoopIfc) CallDeleteFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(232, "Loop", "call_delete_finish")
+	iv, err := _I.Get(232, "Loop", "call_delete_finish", 51, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7145,7 +7145,7 @@ func (v *LoopIfc) CallDeleteFinish(res g.IAsyncResult) (result bool, err error) 
 // [ result ] trans: nothing
 //
 func (v *LoopIfc) CallDeleteSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(233, "Loop", "call_delete_sync")
+	iv, err := _I.Get(233, "Loop", "call_delete_sync", 51, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7179,7 +7179,7 @@ func (v *LoopIfc) CallDeleteSync(arg_options g.Variant, cancellable g.ICancellab
 // [ user_data ] trans: nothing
 //
 func (v *LoopIfc) CallSetAutoclear(arg_value bool, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(234, "Loop", "call_set_autoclear")
+	iv, err := _I.Get(234, "Loop", "call_set_autoclear", 51, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7205,7 +7205,7 @@ func (v *LoopIfc) CallSetAutoclear(arg_value bool, arg_options g.Variant, cancel
 // [ result ] trans: nothing
 //
 func (v *LoopIfc) CallSetAutoclearFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(235, "Loop", "call_set_autoclear_finish")
+	iv, err := _I.Get(235, "Loop", "call_set_autoclear_finish", 51, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7236,7 +7236,7 @@ func (v *LoopIfc) CallSetAutoclearFinish(res g.IAsyncResult) (result bool, err e
 // [ result ] trans: nothing
 //
 func (v *LoopIfc) CallSetAutoclearSync(arg_value bool, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(236, "Loop", "call_set_autoclear_sync")
+	iv, err := _I.Get(236, "Loop", "call_set_autoclear_sync", 51, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7263,7 +7263,7 @@ func (v *LoopIfc) CallSetAutoclearSync(arg_value bool, arg_options g.Variant, ca
 // [ invocation ] trans: everything
 //
 func (v *LoopIfc) CompleteDelete(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(237, "Loop", "complete_delete")
+	iv, err := _I.Get(237, "Loop", "complete_delete", 51, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7283,7 +7283,7 @@ func (v *LoopIfc) CompleteDelete(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *LoopIfc) CompleteSetAutoclear(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(238, "Loop", "complete_set_autoclear")
+	iv, err := _I.Get(238, "Loop", "complete_set_autoclear", 51, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7324,7 +7324,7 @@ func LoopProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewLoopProxyFinish(res g.IAsyncResult) (result LoopProxy, err error) {
-	iv, err := _I.Get(239, "LoopProxy", "new_finish")
+	iv, err := _I.Get(239, "LoopProxy", "new_finish", 53, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -7350,7 +7350,7 @@ func NewLoopProxyFinish(res g.IAsyncResult) (result LoopProxy, err error) {
 // [ result ] trans: everything
 //
 func NewLoopProxyForBusFinish(res g.IAsyncResult) (result LoopProxy, err error) {
-	iv, err := _I.Get(240, "LoopProxy", "new_for_bus_finish")
+	iv, err := _I.Get(240, "LoopProxy", "new_for_bus_finish", 53, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -7384,7 +7384,7 @@ func NewLoopProxyForBusFinish(res g.IAsyncResult) (result LoopProxy, err error) 
 // [ result ] trans: everything
 //
 func NewLoopProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result LoopProxy, err error) {
-	iv, err := _I.Get(241, "LoopProxy", "new_for_bus_sync")
+	iv, err := _I.Get(241, "LoopProxy", "new_for_bus_sync", 53, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -7426,7 +7426,7 @@ func NewLoopProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name
 // [ result ] trans: everything
 //
 func NewLoopProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result LoopProxy, err error) {
-	iv, err := _I.Get(242, "LoopProxy", "new_sync")
+	iv, err := _I.Get(242, "LoopProxy", "new_sync", 53, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -7474,7 +7474,7 @@ func NewLoopProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name
 // [ user_data ] trans: nothing
 //
 func LoopProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(243, "LoopProxy", "new")
+	iv, err := _I.Get(243, "LoopProxy", "new", 53, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7519,7 +7519,7 @@ func LoopProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name st
 // [ user_data ] trans: nothing
 //
 func LoopProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(244, "LoopProxy", "new_for_bus")
+	iv, err := _I.Get(244, "LoopProxy", "new_for_bus", 53, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7577,7 +7577,7 @@ func LoopSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewLoopSkeleton() (result LoopSkeleton) {
-	iv, err := _I.Get(245, "LoopSkeleton", "new")
+	iv, err := _I.Get(245, "LoopSkeleton", "new", 56, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7623,7 +7623,7 @@ func MDRaidGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func MDRaidOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(247, "MDRaid", "override_properties")
+	iv, err := _I.Get(247, "MDRaid", "override_properties", 60, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7650,7 +7650,7 @@ func MDRaidOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (r
 // [ user_data ] trans: nothing
 //
 func (v *MDRaidIfc) CallAddDevice(arg_device string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(248, "MDRaid", "call_add_device")
+	iv, err := _I.Get(248, "MDRaid", "call_add_device", 60, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7678,7 +7678,7 @@ func (v *MDRaidIfc) CallAddDevice(arg_device string, arg_options g.Variant, canc
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallAddDeviceFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(249, "MDRaid", "call_add_device_finish")
+	iv, err := _I.Get(249, "MDRaid", "call_add_device_finish", 60, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7709,7 +7709,7 @@ func (v *MDRaidIfc) CallAddDeviceFinish(res g.IAsyncResult) (result bool, err er
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallAddDeviceSync(arg_device string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(250, "MDRaid", "call_add_device_sync")
+	iv, err := _I.Get(250, "MDRaid", "call_add_device_sync", 60, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7744,7 +7744,7 @@ func (v *MDRaidIfc) CallAddDeviceSync(arg_device string, arg_options g.Variant, 
 // [ user_data ] trans: nothing
 //
 func (v *MDRaidIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(251, "MDRaid", "call_delete")
+	iv, err := _I.Get(251, "MDRaid", "call_delete", 60, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7769,7 +7769,7 @@ func (v *MDRaidIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallDeleteFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(252, "MDRaid", "call_delete_finish")
+	iv, err := _I.Get(252, "MDRaid", "call_delete_finish", 60, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7798,7 +7798,7 @@ func (v *MDRaidIfc) CallDeleteFinish(res g.IAsyncResult) (result bool, err error
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallDeleteSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(253, "MDRaid", "call_delete_sync")
+	iv, err := _I.Get(253, "MDRaid", "call_delete_sync", 60, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7832,7 +7832,7 @@ func (v *MDRaidIfc) CallDeleteSync(arg_options g.Variant, cancellable g.ICancell
 // [ user_data ] trans: nothing
 //
 func (v *MDRaidIfc) CallRemoveDevice(arg_device string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(254, "MDRaid", "call_remove_device")
+	iv, err := _I.Get(254, "MDRaid", "call_remove_device", 60, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7860,7 +7860,7 @@ func (v *MDRaidIfc) CallRemoveDevice(arg_device string, arg_options g.Variant, c
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallRemoveDeviceFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(255, "MDRaid", "call_remove_device_finish")
+	iv, err := _I.Get(255, "MDRaid", "call_remove_device_finish", 60, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7891,7 +7891,7 @@ func (v *MDRaidIfc) CallRemoveDeviceFinish(res g.IAsyncResult) (result bool, err
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallRemoveDeviceSync(arg_device string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(256, "MDRaid", "call_remove_device_sync")
+	iv, err := _I.Get(256, "MDRaid", "call_remove_device_sync", 60, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7928,7 +7928,7 @@ func (v *MDRaidIfc) CallRemoveDeviceSync(arg_device string, arg_options g.Varian
 // [ user_data ] trans: nothing
 //
 func (v *MDRaidIfc) CallRequestSyncAction(arg_sync_action string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(257, "MDRaid", "call_request_sync_action")
+	iv, err := _I.Get(257, "MDRaid", "call_request_sync_action", 60, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7956,7 +7956,7 @@ func (v *MDRaidIfc) CallRequestSyncAction(arg_sync_action string, arg_options g.
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallRequestSyncActionFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(258, "MDRaid", "call_request_sync_action_finish")
+	iv, err := _I.Get(258, "MDRaid", "call_request_sync_action_finish", 60, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -7987,7 +7987,7 @@ func (v *MDRaidIfc) CallRequestSyncActionFinish(res g.IAsyncResult) (result bool
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallRequestSyncActionSync(arg_sync_action string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(259, "MDRaid", "call_request_sync_action_sync")
+	iv, err := _I.Get(259, "MDRaid", "call_request_sync_action_sync", 60, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8024,7 +8024,7 @@ func (v *MDRaidIfc) CallRequestSyncActionSync(arg_sync_action string, arg_option
 // [ user_data ] trans: nothing
 //
 func (v *MDRaidIfc) CallSetBitmapLocation(arg_value string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(260, "MDRaid", "call_set_bitmap_location")
+	iv, err := _I.Get(260, "MDRaid", "call_set_bitmap_location", 60, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8052,7 +8052,7 @@ func (v *MDRaidIfc) CallSetBitmapLocation(arg_value string, arg_options g.Varian
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallSetBitmapLocationFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(261, "MDRaid", "call_set_bitmap_location_finish")
+	iv, err := _I.Get(261, "MDRaid", "call_set_bitmap_location_finish", 60, 15, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8083,7 +8083,7 @@ func (v *MDRaidIfc) CallSetBitmapLocationFinish(res g.IAsyncResult) (result bool
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallSetBitmapLocationSync(arg_value string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(262, "MDRaid", "call_set_bitmap_location_sync")
+	iv, err := _I.Get(262, "MDRaid", "call_set_bitmap_location_sync", 60, 16, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8118,7 +8118,7 @@ func (v *MDRaidIfc) CallSetBitmapLocationSync(arg_value string, arg_options g.Va
 // [ user_data ] trans: nothing
 //
 func (v *MDRaidIfc) CallStart(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(263, "MDRaid", "call_start")
+	iv, err := _I.Get(263, "MDRaid", "call_start", 60, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8143,7 +8143,7 @@ func (v *MDRaidIfc) CallStart(arg_options g.Variant, cancellable g.ICancellable,
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallStartFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(264, "MDRaid", "call_start_finish")
+	iv, err := _I.Get(264, "MDRaid", "call_start_finish", 60, 18, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8172,7 +8172,7 @@ func (v *MDRaidIfc) CallStartFinish(res g.IAsyncResult) (result bool, err error)
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallStartSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(265, "MDRaid", "call_start_sync")
+	iv, err := _I.Get(265, "MDRaid", "call_start_sync", 60, 19, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8204,7 +8204,7 @@ func (v *MDRaidIfc) CallStartSync(arg_options g.Variant, cancellable g.ICancella
 // [ user_data ] trans: nothing
 //
 func (v *MDRaidIfc) CallStop(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(266, "MDRaid", "call_stop")
+	iv, err := _I.Get(266, "MDRaid", "call_stop", 60, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8229,7 +8229,7 @@ func (v *MDRaidIfc) CallStop(arg_options g.Variant, cancellable g.ICancellable, 
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallStopFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(267, "MDRaid", "call_stop_finish")
+	iv, err := _I.Get(267, "MDRaid", "call_stop_finish", 60, 21, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8258,7 +8258,7 @@ func (v *MDRaidIfc) CallStopFinish(res g.IAsyncResult) (result bool, err error) 
 // [ result ] trans: nothing
 //
 func (v *MDRaidIfc) CallStopSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(268, "MDRaid", "call_stop_sync")
+	iv, err := _I.Get(268, "MDRaid", "call_stop_sync", 60, 22, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8284,7 +8284,7 @@ func (v *MDRaidIfc) CallStopSync(arg_options g.Variant, cancellable g.ICancellab
 // [ invocation ] trans: everything
 //
 func (v *MDRaidIfc) CompleteAddDevice(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(269, "MDRaid", "complete_add_device")
+	iv, err := _I.Get(269, "MDRaid", "complete_add_device", 60, 23, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8304,7 +8304,7 @@ func (v *MDRaidIfc) CompleteAddDevice(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *MDRaidIfc) CompleteDelete(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(270, "MDRaid", "complete_delete")
+	iv, err := _I.Get(270, "MDRaid", "complete_delete", 60, 24, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8324,7 +8324,7 @@ func (v *MDRaidIfc) CompleteDelete(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *MDRaidIfc) CompleteRemoveDevice(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(271, "MDRaid", "complete_remove_device")
+	iv, err := _I.Get(271, "MDRaid", "complete_remove_device", 60, 25, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8344,7 +8344,7 @@ func (v *MDRaidIfc) CompleteRemoveDevice(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *MDRaidIfc) CompleteRequestSyncAction(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(272, "MDRaid", "complete_request_sync_action")
+	iv, err := _I.Get(272, "MDRaid", "complete_request_sync_action", 60, 26, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8364,7 +8364,7 @@ func (v *MDRaidIfc) CompleteRequestSyncAction(invocation g.IDBusMethodInvocation
 // [ invocation ] trans: everything
 //
 func (v *MDRaidIfc) CompleteSetBitmapLocation(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(273, "MDRaid", "complete_set_bitmap_location")
+	iv, err := _I.Get(273, "MDRaid", "complete_set_bitmap_location", 60, 27, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8384,7 +8384,7 @@ func (v *MDRaidIfc) CompleteSetBitmapLocation(invocation g.IDBusMethodInvocation
 // [ invocation ] trans: everything
 //
 func (v *MDRaidIfc) CompleteStart(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(274, "MDRaid", "complete_start")
+	iv, err := _I.Get(274, "MDRaid", "complete_start", 60, 28, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8404,7 +8404,7 @@ func (v *MDRaidIfc) CompleteStart(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *MDRaidIfc) CompleteStop(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(275, "MDRaid", "complete_stop")
+	iv, err := _I.Get(275, "MDRaid", "complete_stop", 60, 29, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8445,7 +8445,7 @@ func MDRaidProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewMDRaidProxyFinish(res g.IAsyncResult) (result MDRaidProxy, err error) {
-	iv, err := _I.Get(276, "MDRaidProxy", "new_finish")
+	iv, err := _I.Get(276, "MDRaidProxy", "new_finish", 62, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -8471,7 +8471,7 @@ func NewMDRaidProxyFinish(res g.IAsyncResult) (result MDRaidProxy, err error) {
 // [ result ] trans: everything
 //
 func NewMDRaidProxyForBusFinish(res g.IAsyncResult) (result MDRaidProxy, err error) {
-	iv, err := _I.Get(277, "MDRaidProxy", "new_for_bus_finish")
+	iv, err := _I.Get(277, "MDRaidProxy", "new_for_bus_finish", 62, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -8505,7 +8505,7 @@ func NewMDRaidProxyForBusFinish(res g.IAsyncResult) (result MDRaidProxy, err err
 // [ result ] trans: everything
 //
 func NewMDRaidProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result MDRaidProxy, err error) {
-	iv, err := _I.Get(278, "MDRaidProxy", "new_for_bus_sync")
+	iv, err := _I.Get(278, "MDRaidProxy", "new_for_bus_sync", 62, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -8547,7 +8547,7 @@ func NewMDRaidProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, na
 // [ result ] trans: everything
 //
 func NewMDRaidProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result MDRaidProxy, err error) {
-	iv, err := _I.Get(279, "MDRaidProxy", "new_sync")
+	iv, err := _I.Get(279, "MDRaidProxy", "new_sync", 62, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -8595,7 +8595,7 @@ func NewMDRaidProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 // [ user_data ] trans: nothing
 //
 func MDRaidProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(280, "MDRaidProxy", "new")
+	iv, err := _I.Get(280, "MDRaidProxy", "new", 62, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8640,7 +8640,7 @@ func MDRaidProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name 
 // [ user_data ] trans: nothing
 //
 func MDRaidProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(281, "MDRaidProxy", "new_for_bus")
+	iv, err := _I.Get(281, "MDRaidProxy", "new_for_bus", 62, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8698,7 +8698,7 @@ func MDRaidSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewMDRaidSkeleton() (result MDRaidSkeleton) {
-	iv, err := _I.Get(282, "MDRaidSkeleton", "new")
+	iv, err := _I.Get(282, "MDRaidSkeleton", "new", 65, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8744,7 +8744,7 @@ func ManagerGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func ManagerOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(284, "Manager", "override_properties")
+	iv, err := _I.Get(284, "Manager", "override_properties", 70, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8769,7 +8769,7 @@ func ManagerOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (
 // [ user_data ] trans: nothing
 //
 func (v *ManagerIfc) CallCanCheck(arg_type string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(285, "Manager", "call_can_check")
+	iv, err := _I.Get(285, "Manager", "call_can_check", 70, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8798,7 +8798,7 @@ func (v *ManagerIfc) CallCanCheck(arg_type string, cancellable g.ICancellable, c
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallCanCheckFinish(res g.IAsyncResult) (result bool, out_available g.Variant, err error) {
-	iv, err := _I.Get(286, "Manager", "call_can_check_finish")
+	iv, err := _I.Get(286, "Manager", "call_can_check_finish", 70, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8831,7 +8831,7 @@ func (v *ManagerIfc) CallCanCheckFinish(res g.IAsyncResult) (result bool, out_av
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallCanCheckSync(arg_type string, cancellable g.ICancellable) (result bool, out_available g.Variant, err error) {
-	iv, err := _I.Get(287, "Manager", "call_can_check_sync")
+	iv, err := _I.Get(287, "Manager", "call_can_check_sync", 70, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8867,7 +8867,7 @@ func (v *ManagerIfc) CallCanCheckSync(arg_type string, cancellable g.ICancellabl
 // [ user_data ] trans: nothing
 //
 func (v *ManagerIfc) CallCanFormat(arg_type string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(288, "Manager", "call_can_format")
+	iv, err := _I.Get(288, "Manager", "call_can_format", 70, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8896,7 +8896,7 @@ func (v *ManagerIfc) CallCanFormat(arg_type string, cancellable g.ICancellable, 
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallCanFormatFinish(res g.IAsyncResult) (result bool, out_available g.Variant, err error) {
-	iv, err := _I.Get(289, "Manager", "call_can_format_finish")
+	iv, err := _I.Get(289, "Manager", "call_can_format_finish", 70, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8929,7 +8929,7 @@ func (v *ManagerIfc) CallCanFormatFinish(res g.IAsyncResult) (result bool, out_a
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallCanFormatSync(arg_type string, cancellable g.ICancellable) (result bool, out_available g.Variant, err error) {
-	iv, err := _I.Get(290, "Manager", "call_can_format_sync")
+	iv, err := _I.Get(290, "Manager", "call_can_format_sync", 70, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -8965,7 +8965,7 @@ func (v *ManagerIfc) CallCanFormatSync(arg_type string, cancellable g.ICancellab
 // [ user_data ] trans: nothing
 //
 func (v *ManagerIfc) CallCanRepair(arg_type string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(291, "Manager", "call_can_repair")
+	iv, err := _I.Get(291, "Manager", "call_can_repair", 70, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8994,7 +8994,7 @@ func (v *ManagerIfc) CallCanRepair(arg_type string, cancellable g.ICancellable, 
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallCanRepairFinish(res g.IAsyncResult) (result bool, out_available g.Variant, err error) {
-	iv, err := _I.Get(292, "Manager", "call_can_repair_finish")
+	iv, err := _I.Get(292, "Manager", "call_can_repair_finish", 70, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9027,7 +9027,7 @@ func (v *ManagerIfc) CallCanRepairFinish(res g.IAsyncResult) (result bool, out_a
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallCanRepairSync(arg_type string, cancellable g.ICancellable) (result bool, out_available g.Variant, err error) {
-	iv, err := _I.Get(293, "Manager", "call_can_repair_sync")
+	iv, err := _I.Get(293, "Manager", "call_can_repair_sync", 70, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9063,7 +9063,7 @@ func (v *ManagerIfc) CallCanRepairSync(arg_type string, cancellable g.ICancellab
 // [ user_data ] trans: nothing
 //
 func (v *ManagerIfc) CallCanResize(arg_type string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(294, "Manager", "call_can_resize")
+	iv, err := _I.Get(294, "Manager", "call_can_resize", 70, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9092,7 +9092,7 @@ func (v *ManagerIfc) CallCanResize(arg_type string, cancellable g.ICancellable, 
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallCanResizeFinish(res g.IAsyncResult) (result bool, out_available g.Variant, err error) {
-	iv, err := _I.Get(295, "Manager", "call_can_resize_finish")
+	iv, err := _I.Get(295, "Manager", "call_can_resize_finish", 70, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9125,7 +9125,7 @@ func (v *ManagerIfc) CallCanResizeFinish(res g.IAsyncResult) (result bool, out_a
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallCanResizeSync(arg_type string, cancellable g.ICancellable) (result bool, out_available g.Variant, err error) {
-	iv, err := _I.Get(296, "Manager", "call_can_resize_sync")
+	iv, err := _I.Get(296, "Manager", "call_can_resize_sync", 70, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9161,7 +9161,7 @@ func (v *ManagerIfc) CallCanResizeSync(arg_type string, cancellable g.ICancellab
 // [ user_data ] trans: nothing
 //
 func (v *ManagerIfc) CallEnableModules(arg_enable bool, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(297, "Manager", "call_enable_modules")
+	iv, err := _I.Get(297, "Manager", "call_enable_modules", 70, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9186,7 +9186,7 @@ func (v *ManagerIfc) CallEnableModules(arg_enable bool, cancellable g.ICancellab
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallEnableModulesFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(298, "Manager", "call_enable_modules_finish")
+	iv, err := _I.Get(298, "Manager", "call_enable_modules_finish", 70, 15, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9215,7 +9215,7 @@ func (v *ManagerIfc) CallEnableModulesFinish(res g.IAsyncResult) (result bool, e
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallEnableModulesSync(arg_enable bool, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(299, "Manager", "call_enable_modules_sync")
+	iv, err := _I.Get(299, "Manager", "call_enable_modules_sync", 70, 16, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9247,7 +9247,7 @@ func (v *ManagerIfc) CallEnableModulesSync(arg_enable bool, cancellable g.ICance
 // [ user_data ] trans: nothing
 //
 func (v *ManagerIfc) CallGetBlockDevices(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(300, "Manager", "call_get_block_devices")
+	iv, err := _I.Get(300, "Manager", "call_get_block_devices", 70, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9274,7 +9274,7 @@ func (v *ManagerIfc) CallGetBlockDevices(arg_options g.Variant, cancellable g.IC
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallGetBlockDevicesFinish(res g.IAsyncResult) (result bool, out_block_objects gi.CStrArray, err error) {
-	iv, err := _I.Get(301, "Manager", "call_get_block_devices_finish")
+	iv, err := _I.Get(301, "Manager", "call_get_block_devices_finish", 70, 18, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9307,7 +9307,7 @@ func (v *ManagerIfc) CallGetBlockDevicesFinish(res g.IAsyncResult) (result bool,
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallGetBlockDevicesSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, out_block_objects gi.CStrArray, err error) {
-	iv, err := _I.Get(302, "Manager", "call_get_block_devices_sync")
+	iv, err := _I.Get(302, "Manager", "call_get_block_devices_sync", 70, 19, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9345,7 +9345,7 @@ func (v *ManagerIfc) CallGetBlockDevicesSync(arg_options g.Variant, cancellable 
 // [ user_data ] trans: nothing
 //
 func (v *ManagerIfc) CallLoopSetup(arg_fd g.Variant, arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(303, "Manager", "call_loop_setup")
+	iv, err := _I.Get(303, "Manager", "call_loop_setup", 70, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9380,7 +9380,7 @@ func (v *ManagerIfc) CallLoopSetup(arg_fd g.Variant, arg_options g.Variant, fd_l
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallLoopSetupFinish(res g.IAsyncResult) (result bool, out_resulting_device string, out_fd_list g.UnixFDList, err error) {
-	iv, err := _I.Get(304, "Manager", "call_loop_setup_finish")
+	iv, err := _I.Get(304, "Manager", "call_loop_setup_finish", 70, 21, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9421,7 +9421,7 @@ func (v *ManagerIfc) CallLoopSetupFinish(res g.IAsyncResult) (result bool, out_r
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallLoopSetupSync(arg_fd g.Variant, arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable) (result bool, out_resulting_device string, out_fd_list g.UnixFDList, err error) {
-	iv, err := _I.Get(305, "Manager", "call_loop_setup_sync")
+	iv, err := _I.Get(305, "Manager", "call_loop_setup_sync", 70, 22, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9471,7 +9471,7 @@ func (v *ManagerIfc) CallLoopSetupSync(arg_fd g.Variant, arg_options g.Variant, 
 // [ user_data ] trans: nothing
 //
 func (v *ManagerIfc) CallMdraidCreate(arg_blocks string, arg_level string, arg_name string, arg_chunk uint64, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(306, "Manager", "call_mdraid_create")
+	iv, err := _I.Get(306, "Manager", "call_mdraid_create", 70, 23, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9508,7 +9508,7 @@ func (v *ManagerIfc) CallMdraidCreate(arg_blocks string, arg_level string, arg_n
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallMdraidCreateFinish(res g.IAsyncResult) (result bool, out_resulting_array string, err error) {
-	iv, err := _I.Get(307, "Manager", "call_mdraid_create_finish")
+	iv, err := _I.Get(307, "Manager", "call_mdraid_create_finish", 70, 24, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9549,7 +9549,7 @@ func (v *ManagerIfc) CallMdraidCreateFinish(res g.IAsyncResult) (result bool, ou
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallMdraidCreateSync(arg_blocks string, arg_level string, arg_name string, arg_chunk uint64, arg_options g.Variant, cancellable g.ICancellable) (result bool, out_resulting_array string, err error) {
-	iv, err := _I.Get(308, "Manager", "call_mdraid_create_sync")
+	iv, err := _I.Get(308, "Manager", "call_mdraid_create_sync", 70, 25, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9595,7 +9595,7 @@ func (v *ManagerIfc) CallMdraidCreateSync(arg_blocks string, arg_level string, a
 // [ user_data ] trans: nothing
 //
 func (v *ManagerIfc) CallResolveDevice(arg_devspec g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(309, "Manager", "call_resolve_device")
+	iv, err := _I.Get(309, "Manager", "call_resolve_device", 70, 26, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9623,7 +9623,7 @@ func (v *ManagerIfc) CallResolveDevice(arg_devspec g.Variant, arg_options g.Vari
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallResolveDeviceFinish(res g.IAsyncResult) (result bool, out_devices gi.CStrArray, err error) {
-	iv, err := _I.Get(310, "Manager", "call_resolve_device_finish")
+	iv, err := _I.Get(310, "Manager", "call_resolve_device_finish", 70, 27, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9658,7 +9658,7 @@ func (v *ManagerIfc) CallResolveDeviceFinish(res g.IAsyncResult) (result bool, o
 // [ result ] trans: nothing
 //
 func (v *ManagerIfc) CallResolveDeviceSync(arg_devspec g.Variant, arg_options g.Variant, cancellable g.ICancellable) (result bool, out_devices gi.CStrArray, err error) {
-	iv, err := _I.Get(311, "Manager", "call_resolve_device_sync")
+	iv, err := _I.Get(311, "Manager", "call_resolve_device_sync", 70, 28, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -9689,7 +9689,7 @@ func (v *ManagerIfc) CallResolveDeviceSync(arg_devspec g.Variant, arg_options g.
 // [ available ] trans: nothing
 //
 func (v *ManagerIfc) CompleteCanCheck(invocation g.IDBusMethodInvocation, available g.Variant) {
-	iv, err := _I.Get(312, "Manager", "complete_can_check")
+	iv, err := _I.Get(312, "Manager", "complete_can_check", 70, 29, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9712,7 +9712,7 @@ func (v *ManagerIfc) CompleteCanCheck(invocation g.IDBusMethodInvocation, availa
 // [ available ] trans: nothing
 //
 func (v *ManagerIfc) CompleteCanFormat(invocation g.IDBusMethodInvocation, available g.Variant) {
-	iv, err := _I.Get(313, "Manager", "complete_can_format")
+	iv, err := _I.Get(313, "Manager", "complete_can_format", 70, 30, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9735,7 +9735,7 @@ func (v *ManagerIfc) CompleteCanFormat(invocation g.IDBusMethodInvocation, avail
 // [ available ] trans: nothing
 //
 func (v *ManagerIfc) CompleteCanRepair(invocation g.IDBusMethodInvocation, available g.Variant) {
-	iv, err := _I.Get(314, "Manager", "complete_can_repair")
+	iv, err := _I.Get(314, "Manager", "complete_can_repair", 70, 31, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9758,7 +9758,7 @@ func (v *ManagerIfc) CompleteCanRepair(invocation g.IDBusMethodInvocation, avail
 // [ available ] trans: nothing
 //
 func (v *ManagerIfc) CompleteCanResize(invocation g.IDBusMethodInvocation, available g.Variant) {
-	iv, err := _I.Get(315, "Manager", "complete_can_resize")
+	iv, err := _I.Get(315, "Manager", "complete_can_resize", 70, 32, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9779,7 +9779,7 @@ func (v *ManagerIfc) CompleteCanResize(invocation g.IDBusMethodInvocation, avail
 // [ invocation ] trans: everything
 //
 func (v *ManagerIfc) CompleteEnableModules(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(316, "Manager", "complete_enable_modules")
+	iv, err := _I.Get(316, "Manager", "complete_enable_modules", 70, 33, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9801,7 +9801,7 @@ func (v *ManagerIfc) CompleteEnableModules(invocation g.IDBusMethodInvocation) {
 // [ block_objects ] trans: nothing
 //
 func (v *ManagerIfc) CompleteGetBlockDevices(invocation g.IDBusMethodInvocation, block_objects string) {
-	iv, err := _I.Get(317, "Manager", "complete_get_block_devices")
+	iv, err := _I.Get(317, "Manager", "complete_get_block_devices", 70, 34, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9828,7 +9828,7 @@ func (v *ManagerIfc) CompleteGetBlockDevices(invocation g.IDBusMethodInvocation,
 // [ resulting_device ] trans: nothing
 //
 func (v *ManagerIfc) CompleteLoopSetup(invocation g.IDBusMethodInvocation, fd_list g.IUnixFDList, resulting_device string) {
-	iv, err := _I.Get(318, "Manager", "complete_loop_setup")
+	iv, err := _I.Get(318, "Manager", "complete_loop_setup", 70, 35, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9858,7 +9858,7 @@ func (v *ManagerIfc) CompleteLoopSetup(invocation g.IDBusMethodInvocation, fd_li
 // [ resulting_array ] trans: nothing
 //
 func (v *ManagerIfc) CompleteMdraidCreate(invocation g.IDBusMethodInvocation, resulting_array string) {
-	iv, err := _I.Get(319, "Manager", "complete_mdraid_create")
+	iv, err := _I.Get(319, "Manager", "complete_mdraid_create", 70, 36, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9883,7 +9883,7 @@ func (v *ManagerIfc) CompleteMdraidCreate(invocation g.IDBusMethodInvocation, re
 // [ devices ] trans: nothing
 //
 func (v *ManagerIfc) CompleteResolveDevice(invocation g.IDBusMethodInvocation, devices string) {
-	iv, err := _I.Get(320, "Manager", "complete_resolve_device")
+	iv, err := _I.Get(320, "Manager", "complete_resolve_device", 70, 37, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9927,7 +9927,7 @@ func ManagerProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewManagerProxyFinish(res g.IAsyncResult) (result ManagerProxy, err error) {
-	iv, err := _I.Get(321, "ManagerProxy", "new_finish")
+	iv, err := _I.Get(321, "ManagerProxy", "new_finish", 72, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -9953,7 +9953,7 @@ func NewManagerProxyFinish(res g.IAsyncResult) (result ManagerProxy, err error) 
 // [ result ] trans: everything
 //
 func NewManagerProxyForBusFinish(res g.IAsyncResult) (result ManagerProxy, err error) {
-	iv, err := _I.Get(322, "ManagerProxy", "new_for_bus_finish")
+	iv, err := _I.Get(322, "ManagerProxy", "new_for_bus_finish", 72, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -9987,7 +9987,7 @@ func NewManagerProxyForBusFinish(res g.IAsyncResult) (result ManagerProxy, err e
 // [ result ] trans: everything
 //
 func NewManagerProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result ManagerProxy, err error) {
-	iv, err := _I.Get(323, "ManagerProxy", "new_for_bus_sync")
+	iv, err := _I.Get(323, "ManagerProxy", "new_for_bus_sync", 72, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -10029,7 +10029,7 @@ func NewManagerProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, n
 // [ result ] trans: everything
 //
 func NewManagerProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result ManagerProxy, err error) {
-	iv, err := _I.Get(324, "ManagerProxy", "new_sync")
+	iv, err := _I.Get(324, "ManagerProxy", "new_sync", 72, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -10077,7 +10077,7 @@ func NewManagerProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, n
 // [ user_data ] trans: nothing
 //
 func ManagerProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(325, "ManagerProxy", "new")
+	iv, err := _I.Get(325, "ManagerProxy", "new", 72, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10122,7 +10122,7 @@ func ManagerProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name
 // [ user_data ] trans: nothing
 //
 func ManagerProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(326, "ManagerProxy", "new_for_bus")
+	iv, err := _I.Get(326, "ManagerProxy", "new_for_bus", 72, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10180,7 +10180,7 @@ func ManagerSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewManagerSkeleton() (result ManagerSkeleton) {
-	iv, err := _I.Get(327, "ManagerSkeleton", "new")
+	iv, err := _I.Get(327, "ManagerSkeleton", "new", 75, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10222,7 +10222,7 @@ func ObjectGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetBlock() (result Block) {
-	iv, err := _I.Get(328, "Object", "get_block")
+	iv, err := _I.Get(328, "Object", "get_block", 78, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10240,7 +10240,7 @@ func (v *ObjectIfc) GetBlock() (result Block) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetDrive() (result Drive) {
-	iv, err := _I.Get(329, "Object", "get_drive")
+	iv, err := _I.Get(329, "Object", "get_drive", 78, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10258,7 +10258,7 @@ func (v *ObjectIfc) GetDrive() (result Drive) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetDriveAta() (result DriveAta) {
-	iv, err := _I.Get(330, "Object", "get_drive_ata")
+	iv, err := _I.Get(330, "Object", "get_drive_ata", 78, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10276,7 +10276,7 @@ func (v *ObjectIfc) GetDriveAta() (result DriveAta) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetEncrypted() (result Encrypted) {
-	iv, err := _I.Get(331, "Object", "get_encrypted")
+	iv, err := _I.Get(331, "Object", "get_encrypted", 78, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10294,7 +10294,7 @@ func (v *ObjectIfc) GetEncrypted() (result Encrypted) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetFilesystem() (result Filesystem) {
-	iv, err := _I.Get(332, "Object", "get_filesystem")
+	iv, err := _I.Get(332, "Object", "get_filesystem", 78, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10312,7 +10312,7 @@ func (v *ObjectIfc) GetFilesystem() (result Filesystem) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetJob() (result Job) {
-	iv, err := _I.Get(333, "Object", "get_job")
+	iv, err := _I.Get(333, "Object", "get_job", 78, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10330,7 +10330,7 @@ func (v *ObjectIfc) GetJob() (result Job) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetLoop() (result Loop) {
-	iv, err := _I.Get(334, "Object", "get_loop")
+	iv, err := _I.Get(334, "Object", "get_loop", 78, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10348,7 +10348,7 @@ func (v *ObjectIfc) GetLoop() (result Loop) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetManager() (result Manager) {
-	iv, err := _I.Get(335, "Object", "get_manager")
+	iv, err := _I.Get(335, "Object", "get_manager", 78, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10366,7 +10366,7 @@ func (v *ObjectIfc) GetManager() (result Manager) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetMdraid() (result MDRaid) {
-	iv, err := _I.Get(336, "Object", "get_mdraid")
+	iv, err := _I.Get(336, "Object", "get_mdraid", 78, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10384,7 +10384,7 @@ func (v *ObjectIfc) GetMdraid() (result MDRaid) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetPartition() (result Partition) {
-	iv, err := _I.Get(337, "Object", "get_partition")
+	iv, err := _I.Get(337, "Object", "get_partition", 78, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10402,7 +10402,7 @@ func (v *ObjectIfc) GetPartition() (result Partition) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetPartitionTable() (result PartitionTable) {
-	iv, err := _I.Get(338, "Object", "get_partition_table")
+	iv, err := _I.Get(338, "Object", "get_partition_table", 78, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10420,7 +10420,7 @@ func (v *ObjectIfc) GetPartitionTable() (result PartitionTable) {
 // [ result ] trans: everything
 //
 func (v *ObjectIfc) GetSwapspace() (result Swapspace) {
-	iv, err := _I.Get(339, "Object", "get_swapspace")
+	iv, err := _I.Get(339, "Object", "get_swapspace", 78, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10455,7 +10455,7 @@ func ObjectInfoGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v ObjectInfo) GetDescription() (result string) {
-	iv, err := _I.Get(340, "ObjectInfo", "get_description")
+	iv, err := _I.Get(340, "ObjectInfo", "get_description", 80, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10473,7 +10473,7 @@ func (v ObjectInfo) GetDescription() (result string) {
 // [ result ] trans: nothing
 //
 func (v ObjectInfo) GetIcon() (result g.Icon) {
-	iv, err := _I.Get(341, "ObjectInfo", "get_icon")
+	iv, err := _I.Get(341, "ObjectInfo", "get_icon", 80, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10491,7 +10491,7 @@ func (v ObjectInfo) GetIcon() (result g.Icon) {
 // [ result ] trans: nothing
 //
 func (v ObjectInfo) GetIconSymbolic() (result g.Icon) {
-	iv, err := _I.Get(342, "ObjectInfo", "get_icon_symbolic")
+	iv, err := _I.Get(342, "ObjectInfo", "get_icon_symbolic", 80, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10509,7 +10509,7 @@ func (v ObjectInfo) GetIconSymbolic() (result g.Icon) {
 // [ result ] trans: nothing
 //
 func (v ObjectInfo) GetMediaDescription() (result string) {
-	iv, err := _I.Get(343, "ObjectInfo", "get_media_description")
+	iv, err := _I.Get(343, "ObjectInfo", "get_media_description", 80, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10527,7 +10527,7 @@ func (v ObjectInfo) GetMediaDescription() (result string) {
 // [ result ] trans: nothing
 //
 func (v ObjectInfo) GetMediaIcon() (result g.Icon) {
-	iv, err := _I.Get(344, "ObjectInfo", "get_media_icon")
+	iv, err := _I.Get(344, "ObjectInfo", "get_media_icon", 80, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10545,7 +10545,7 @@ func (v ObjectInfo) GetMediaIcon() (result g.Icon) {
 // [ result ] trans: nothing
 //
 func (v ObjectInfo) GetMediaIconSymbolic() (result g.Icon) {
-	iv, err := _I.Get(345, "ObjectInfo", "get_media_icon_symbolic")
+	iv, err := _I.Get(345, "ObjectInfo", "get_media_icon_symbolic", 80, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10563,7 +10563,7 @@ func (v ObjectInfo) GetMediaIconSymbolic() (result g.Icon) {
 // [ result ] trans: nothing
 //
 func (v ObjectInfo) GetName() (result string) {
-	iv, err := _I.Get(346, "ObjectInfo", "get_name")
+	iv, err := _I.Get(346, "ObjectInfo", "get_name", 80, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10581,7 +10581,7 @@ func (v ObjectInfo) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v ObjectInfo) GetObject() (result Object) {
-	iv, err := _I.Get(347, "ObjectInfo", "get_object")
+	iv, err := _I.Get(347, "ObjectInfo", "get_object", 80, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10599,7 +10599,7 @@ func (v ObjectInfo) GetObject() (result Object) {
 // [ result ] trans: nothing
 //
 func (v ObjectInfo) GetOneLiner() (result string) {
-	iv, err := _I.Get(348, "ObjectInfo", "get_one_liner")
+	iv, err := _I.Get(348, "ObjectInfo", "get_one_liner", 80, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10617,7 +10617,7 @@ func (v ObjectInfo) GetOneLiner() (result string) {
 // [ result ] trans: nothing
 //
 func (v ObjectInfo) GetSortKey() (result string) {
-	iv, err := _I.Get(349, "ObjectInfo", "get_sort_key")
+	iv, err := _I.Get(349, "ObjectInfo", "get_sort_key", 80, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10652,7 +10652,7 @@ func ObjectManagerClientGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewObjectManagerClientFinish(res g.IAsyncResult) (result ObjectManagerClient, err error) {
-	iv, err := _I.Get(350, "ObjectManagerClient", "new_finish")
+	iv, err := _I.Get(350, "ObjectManagerClient", "new_finish", 81, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -10678,7 +10678,7 @@ func NewObjectManagerClientFinish(res g.IAsyncResult) (result ObjectManagerClien
 // [ result ] trans: everything
 //
 func NewObjectManagerClientForBusFinish(res g.IAsyncResult) (result ObjectManagerClient, err error) {
-	iv, err := _I.Get(351, "ObjectManagerClient", "new_for_bus_finish")
+	iv, err := _I.Get(351, "ObjectManagerClient", "new_for_bus_finish", 81, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -10712,7 +10712,7 @@ func NewObjectManagerClientForBusFinish(res g.IAsyncResult) (result ObjectManage
 // [ result ] trans: everything
 //
 func NewObjectManagerClientForBusSync(bus_type g.BusTypeEnum, flags g.DBusObjectManagerClientFlags, name string, object_path string, cancellable g.ICancellable) (result ObjectManagerClient, err error) {
-	iv, err := _I.Get(352, "ObjectManagerClient", "new_for_bus_sync")
+	iv, err := _I.Get(352, "ObjectManagerClient", "new_for_bus_sync", 81, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -10754,7 +10754,7 @@ func NewObjectManagerClientForBusSync(bus_type g.BusTypeEnum, flags g.DBusObject
 // [ result ] trans: everything
 //
 func NewObjectManagerClientSync(connection g.IDBusConnection, flags g.DBusObjectManagerClientFlags, name string, object_path string, cancellable g.ICancellable) (result ObjectManagerClient, err error) {
-	iv, err := _I.Get(353, "ObjectManagerClient", "new_sync")
+	iv, err := _I.Get(353, "ObjectManagerClient", "new_sync", 81, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -10798,7 +10798,7 @@ func NewObjectManagerClientSync(connection g.IDBusConnection, flags g.DBusObject
 // [ result ] trans: nothing
 //
 func ObjectManagerClientGetProxyType1(manager g.IDBusObjectManagerClient, object_path string, interface_name string, user_data unsafe.Pointer) (result gi.GType) {
-	iv, err := _I.Get(354, "ObjectManagerClient", "get_proxy_type")
+	iv, err := _I.Get(354, "ObjectManagerClient", "get_proxy_type", 81, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10839,7 +10839,7 @@ func ObjectManagerClientGetProxyType1(manager g.IDBusObjectManagerClient, object
 // [ user_data ] trans: nothing
 //
 func ObjectManagerClientNew1(connection g.IDBusConnection, flags g.DBusObjectManagerClientFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(355, "ObjectManagerClient", "new")
+	iv, err := _I.Get(355, "ObjectManagerClient", "new", 81, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10884,7 +10884,7 @@ func ObjectManagerClientNew1(connection g.IDBusConnection, flags g.DBusObjectMan
 // [ user_data ] trans: nothing
 //
 func ObjectManagerClientNewForBus1(bus_type g.BusTypeEnum, flags g.DBusObjectManagerClientFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(356, "ObjectManagerClient", "new_for_bus")
+	iv, err := _I.Get(356, "ObjectManagerClient", "new_for_bus", 81, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -10946,7 +10946,7 @@ func ObjectProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewObjectProxy(connection g.IDBusConnection, object_path string) (result ObjectProxy) {
-	iv, err := _I.Get(357, "ObjectProxy", "new")
+	iv, err := _I.Get(357, "ObjectProxy", "new", 84, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11002,7 +11002,7 @@ func ObjectSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewObjectSkeleton(object_path string) (result ObjectSkeleton) {
-	iv, err := _I.Get(358, "ObjectSkeleton", "new")
+	iv, err := _I.Get(358, "ObjectSkeleton", "new", 87, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11022,7 +11022,7 @@ func NewObjectSkeleton(object_path string) (result ObjectSkeleton) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetBlock(interface_ IBlock) {
-	iv, err := _I.Get(359, "ObjectSkeleton", "set_block")
+	iv, err := _I.Get(359, "ObjectSkeleton", "set_block", 87, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11042,7 +11042,7 @@ func (v ObjectSkeleton) SetBlock(interface_ IBlock) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetDrive(interface_ IDrive) {
-	iv, err := _I.Get(360, "ObjectSkeleton", "set_drive")
+	iv, err := _I.Get(360, "ObjectSkeleton", "set_drive", 87, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11062,7 +11062,7 @@ func (v ObjectSkeleton) SetDrive(interface_ IDrive) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetDriveAta(interface_ IDriveAta) {
-	iv, err := _I.Get(361, "ObjectSkeleton", "set_drive_ata")
+	iv, err := _I.Get(361, "ObjectSkeleton", "set_drive_ata", 87, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11082,7 +11082,7 @@ func (v ObjectSkeleton) SetDriveAta(interface_ IDriveAta) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetEncrypted(interface_ IEncrypted) {
-	iv, err := _I.Get(362, "ObjectSkeleton", "set_encrypted")
+	iv, err := _I.Get(362, "ObjectSkeleton", "set_encrypted", 87, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11102,7 +11102,7 @@ func (v ObjectSkeleton) SetEncrypted(interface_ IEncrypted) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetFilesystem(interface_ IFilesystem) {
-	iv, err := _I.Get(363, "ObjectSkeleton", "set_filesystem")
+	iv, err := _I.Get(363, "ObjectSkeleton", "set_filesystem", 87, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11122,7 +11122,7 @@ func (v ObjectSkeleton) SetFilesystem(interface_ IFilesystem) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetJob(interface_ IJob) {
-	iv, err := _I.Get(364, "ObjectSkeleton", "set_job")
+	iv, err := _I.Get(364, "ObjectSkeleton", "set_job", 87, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11142,7 +11142,7 @@ func (v ObjectSkeleton) SetJob(interface_ IJob) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetLoop(interface_ ILoop) {
-	iv, err := _I.Get(365, "ObjectSkeleton", "set_loop")
+	iv, err := _I.Get(365, "ObjectSkeleton", "set_loop", 87, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11162,7 +11162,7 @@ func (v ObjectSkeleton) SetLoop(interface_ ILoop) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetManager(interface_ IManager) {
-	iv, err := _I.Get(366, "ObjectSkeleton", "set_manager")
+	iv, err := _I.Get(366, "ObjectSkeleton", "set_manager", 87, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11182,7 +11182,7 @@ func (v ObjectSkeleton) SetManager(interface_ IManager) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetMdraid(interface_ IMDRaid) {
-	iv, err := _I.Get(367, "ObjectSkeleton", "set_mdraid")
+	iv, err := _I.Get(367, "ObjectSkeleton", "set_mdraid", 87, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11202,7 +11202,7 @@ func (v ObjectSkeleton) SetMdraid(interface_ IMDRaid) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetPartition(interface_ IPartition) {
-	iv, err := _I.Get(368, "ObjectSkeleton", "set_partition")
+	iv, err := _I.Get(368, "ObjectSkeleton", "set_partition", 87, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11222,7 +11222,7 @@ func (v ObjectSkeleton) SetPartition(interface_ IPartition) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetPartitionTable(interface_ IPartitionTable) {
-	iv, err := _I.Get(369, "ObjectSkeleton", "set_partition_table")
+	iv, err := _I.Get(369, "ObjectSkeleton", "set_partition_table", 87, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11242,7 +11242,7 @@ func (v ObjectSkeleton) SetPartitionTable(interface_ IPartitionTable) {
 // [ interface_ ] trans: nothing
 //
 func (v ObjectSkeleton) SetSwapspace(interface_ ISwapspace) {
-	iv, err := _I.Get(370, "ObjectSkeleton", "set_swapspace")
+	iv, err := _I.Get(370, "ObjectSkeleton", "set_swapspace", 87, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11292,7 +11292,7 @@ func PartitionGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func PartitionOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(372, "Partition", "override_properties")
+	iv, err := _I.Get(372, "Partition", "override_properties", 90, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11317,7 +11317,7 @@ func PartitionOverrideProperties1(klass g.ObjectClass, property_id_begin uint32)
 // [ user_data ] trans: nothing
 //
 func (v *PartitionIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(373, "Partition", "call_delete")
+	iv, err := _I.Get(373, "Partition", "call_delete", 90, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11342,7 +11342,7 @@ func (v *PartitionIfc) CallDelete(arg_options g.Variant, cancellable g.ICancella
 // [ result ] trans: nothing
 //
 func (v *PartitionIfc) CallDeleteFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(374, "Partition", "call_delete_finish")
+	iv, err := _I.Get(374, "Partition", "call_delete_finish", 90, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -11371,7 +11371,7 @@ func (v *PartitionIfc) CallDeleteFinish(res g.IAsyncResult) (result bool, err er
 // [ result ] trans: nothing
 //
 func (v *PartitionIfc) CallDeleteSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(375, "Partition", "call_delete_sync")
+	iv, err := _I.Get(375, "Partition", "call_delete_sync", 90, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -11405,7 +11405,7 @@ func (v *PartitionIfc) CallDeleteSync(arg_options g.Variant, cancellable g.ICanc
 // [ user_data ] trans: nothing
 //
 func (v *PartitionIfc) CallResize(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(376, "Partition", "call_resize")
+	iv, err := _I.Get(376, "Partition", "call_resize", 90, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11431,7 +11431,7 @@ func (v *PartitionIfc) CallResize(arg_size uint64, arg_options g.Variant, cancel
 // [ result ] trans: nothing
 //
 func (v *PartitionIfc) CallResizeFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(377, "Partition", "call_resize_finish")
+	iv, err := _I.Get(377, "Partition", "call_resize_finish", 90, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -11462,7 +11462,7 @@ func (v *PartitionIfc) CallResizeFinish(res g.IAsyncResult) (result bool, err er
 // [ result ] trans: nothing
 //
 func (v *PartitionIfc) CallResizeSync(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(378, "Partition", "call_resize_sync")
+	iv, err := _I.Get(378, "Partition", "call_resize_sync", 90, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -11497,7 +11497,7 @@ func (v *PartitionIfc) CallResizeSync(arg_size uint64, arg_options g.Variant, ca
 // [ user_data ] trans: nothing
 //
 func (v *PartitionIfc) CallSetFlags(arg_flags uint64, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(379, "Partition", "call_set_flags")
+	iv, err := _I.Get(379, "Partition", "call_set_flags", 90, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11523,7 +11523,7 @@ func (v *PartitionIfc) CallSetFlags(arg_flags uint64, arg_options g.Variant, can
 // [ result ] trans: nothing
 //
 func (v *PartitionIfc) CallSetFlagsFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(380, "Partition", "call_set_flags_finish")
+	iv, err := _I.Get(380, "Partition", "call_set_flags_finish", 90, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -11554,7 +11554,7 @@ func (v *PartitionIfc) CallSetFlagsFinish(res g.IAsyncResult) (result bool, err 
 // [ result ] trans: nothing
 //
 func (v *PartitionIfc) CallSetFlagsSync(arg_flags uint64, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(381, "Partition", "call_set_flags_sync")
+	iv, err := _I.Get(381, "Partition", "call_set_flags_sync", 90, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -11589,7 +11589,7 @@ func (v *PartitionIfc) CallSetFlagsSync(arg_flags uint64, arg_options g.Variant,
 // [ user_data ] trans: nothing
 //
 func (v *PartitionIfc) CallSetName(arg_name string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(382, "Partition", "call_set_name")
+	iv, err := _I.Get(382, "Partition", "call_set_name", 90, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11617,7 +11617,7 @@ func (v *PartitionIfc) CallSetName(arg_name string, arg_options g.Variant, cance
 // [ result ] trans: nothing
 //
 func (v *PartitionIfc) CallSetNameFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(383, "Partition", "call_set_name_finish")
+	iv, err := _I.Get(383, "Partition", "call_set_name_finish", 90, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -11648,7 +11648,7 @@ func (v *PartitionIfc) CallSetNameFinish(res g.IAsyncResult) (result bool, err e
 // [ result ] trans: nothing
 //
 func (v *PartitionIfc) CallSetNameSync(arg_name string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(384, "Partition", "call_set_name_sync")
+	iv, err := _I.Get(384, "Partition", "call_set_name_sync", 90, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -11685,7 +11685,7 @@ func (v *PartitionIfc) CallSetNameSync(arg_name string, arg_options g.Variant, c
 // [ user_data ] trans: nothing
 //
 func (v *PartitionIfc) CallSetType(arg_type string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(385, "Partition", "call_set_type")
+	iv, err := _I.Get(385, "Partition", "call_set_type", 90, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11713,7 +11713,7 @@ func (v *PartitionIfc) CallSetType(arg_type string, arg_options g.Variant, cance
 // [ result ] trans: nothing
 //
 func (v *PartitionIfc) CallSetTypeFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(386, "Partition", "call_set_type_finish")
+	iv, err := _I.Get(386, "Partition", "call_set_type_finish", 90, 15, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -11744,7 +11744,7 @@ func (v *PartitionIfc) CallSetTypeFinish(res g.IAsyncResult) (result bool, err e
 // [ result ] trans: nothing
 //
 func (v *PartitionIfc) CallSetTypeSync(arg_type string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(387, "Partition", "call_set_type_sync")
+	iv, err := _I.Get(387, "Partition", "call_set_type_sync", 90, 16, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -11773,7 +11773,7 @@ func (v *PartitionIfc) CallSetTypeSync(arg_type string, arg_options g.Variant, c
 // [ invocation ] trans: everything
 //
 func (v *PartitionIfc) CompleteDelete(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(388, "Partition", "complete_delete")
+	iv, err := _I.Get(388, "Partition", "complete_delete", 90, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11793,7 +11793,7 @@ func (v *PartitionIfc) CompleteDelete(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *PartitionIfc) CompleteResize(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(389, "Partition", "complete_resize")
+	iv, err := _I.Get(389, "Partition", "complete_resize", 90, 18, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11813,7 +11813,7 @@ func (v *PartitionIfc) CompleteResize(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *PartitionIfc) CompleteSetFlags(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(390, "Partition", "complete_set_flags")
+	iv, err := _I.Get(390, "Partition", "complete_set_flags", 90, 19, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11833,7 +11833,7 @@ func (v *PartitionIfc) CompleteSetFlags(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *PartitionIfc) CompleteSetName(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(391, "Partition", "complete_set_name")
+	iv, err := _I.Get(391, "Partition", "complete_set_name", 90, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11853,7 +11853,7 @@ func (v *PartitionIfc) CompleteSetName(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *PartitionIfc) CompleteSetType(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(392, "Partition", "complete_set_type")
+	iv, err := _I.Get(392, "Partition", "complete_set_type", 90, 21, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -11894,7 +11894,7 @@ func PartitionProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPartitionProxyFinish(res g.IAsyncResult) (result PartitionProxy, err error) {
-	iv, err := _I.Get(393, "PartitionProxy", "new_finish")
+	iv, err := _I.Get(393, "PartitionProxy", "new_finish", 92, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -11920,7 +11920,7 @@ func NewPartitionProxyFinish(res g.IAsyncResult) (result PartitionProxy, err err
 // [ result ] trans: everything
 //
 func NewPartitionProxyForBusFinish(res g.IAsyncResult) (result PartitionProxy, err error) {
-	iv, err := _I.Get(394, "PartitionProxy", "new_for_bus_finish")
+	iv, err := _I.Get(394, "PartitionProxy", "new_for_bus_finish", 92, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -11954,7 +11954,7 @@ func NewPartitionProxyForBusFinish(res g.IAsyncResult) (result PartitionProxy, e
 // [ result ] trans: everything
 //
 func NewPartitionProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result PartitionProxy, err error) {
-	iv, err := _I.Get(395, "PartitionProxy", "new_for_bus_sync")
+	iv, err := _I.Get(395, "PartitionProxy", "new_for_bus_sync", 92, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -11996,7 +11996,7 @@ func NewPartitionProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags,
 // [ result ] trans: everything
 //
 func NewPartitionProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result PartitionProxy, err error) {
-	iv, err := _I.Get(396, "PartitionProxy", "new_sync")
+	iv, err := _I.Get(396, "PartitionProxy", "new_sync", 92, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -12044,7 +12044,7 @@ func NewPartitionProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags,
 // [ user_data ] trans: nothing
 //
 func PartitionProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(397, "PartitionProxy", "new")
+	iv, err := _I.Get(397, "PartitionProxy", "new", 92, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12089,7 +12089,7 @@ func PartitionProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 // [ user_data ] trans: nothing
 //
 func PartitionProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(398, "PartitionProxy", "new_for_bus")
+	iv, err := _I.Get(398, "PartitionProxy", "new_for_bus", 92, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12147,7 +12147,7 @@ func PartitionSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPartitionSkeleton() (result PartitionSkeleton) {
-	iv, err := _I.Get(399, "PartitionSkeleton", "new")
+	iv, err := _I.Get(399, "PartitionSkeleton", "new", 95, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12193,7 +12193,7 @@ func PartitionTableGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func PartitionTableOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(401, "PartitionTable", "override_properties")
+	iv, err := _I.Get(401, "PartitionTable", "override_properties", 98, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12226,7 +12226,7 @@ func PartitionTableOverrideProperties1(klass g.ObjectClass, property_id_begin ui
 // [ user_data ] trans: nothing
 //
 func (v *PartitionTableIfc) CallCreatePartition(arg_offset uint64, arg_size uint64, arg_type string, arg_name string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(402, "PartitionTable", "call_create_partition")
+	iv, err := _I.Get(402, "PartitionTable", "call_create_partition", 98, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12275,7 +12275,7 @@ func (v *PartitionTableIfc) CallCreatePartition(arg_offset uint64, arg_size uint
 // [ user_data ] trans: nothing
 //
 func (v *PartitionTableIfc) CallCreatePartitionAndFormat(arg_offset uint64, arg_size uint64, arg_type string, arg_name string, arg_options g.Variant, arg_format_type string, arg_format_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(403, "PartitionTable", "call_create_partition_and_format")
+	iv, err := _I.Get(403, "PartitionTable", "call_create_partition_and_format", 98, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12314,7 +12314,7 @@ func (v *PartitionTableIfc) CallCreatePartitionAndFormat(arg_offset uint64, arg_
 // [ result ] trans: nothing
 //
 func (v *PartitionTableIfc) CallCreatePartitionAndFormatFinish(res g.IAsyncResult) (result bool, out_created_partition string, err error) {
-	iv, err := _I.Get(404, "PartitionTable", "call_create_partition_and_format_finish")
+	iv, err := _I.Get(404, "PartitionTable", "call_create_partition_and_format_finish", 98, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -12359,7 +12359,7 @@ func (v *PartitionTableIfc) CallCreatePartitionAndFormatFinish(res g.IAsyncResul
 // [ result ] trans: nothing
 //
 func (v *PartitionTableIfc) CallCreatePartitionAndFormatSync(arg_offset uint64, arg_size uint64, arg_type string, arg_name string, arg_options g.Variant, arg_format_type string, arg_format_options g.Variant, cancellable g.ICancellable) (result bool, out_created_partition string, err error) {
-	iv, err := _I.Get(405, "PartitionTable", "call_create_partition_and_format_sync")
+	iv, err := _I.Get(405, "PartitionTable", "call_create_partition_and_format_sync", 98, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -12403,7 +12403,7 @@ func (v *PartitionTableIfc) CallCreatePartitionAndFormatSync(arg_offset uint64, 
 // [ result ] trans: nothing
 //
 func (v *PartitionTableIfc) CallCreatePartitionFinish(res g.IAsyncResult) (result bool, out_created_partition string, err error) {
-	iv, err := _I.Get(406, "PartitionTable", "call_create_partition_finish")
+	iv, err := _I.Get(406, "PartitionTable", "call_create_partition_finish", 98, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -12444,7 +12444,7 @@ func (v *PartitionTableIfc) CallCreatePartitionFinish(res g.IAsyncResult) (resul
 // [ result ] trans: nothing
 //
 func (v *PartitionTableIfc) CallCreatePartitionSync(arg_offset uint64, arg_size uint64, arg_type string, arg_name string, arg_options g.Variant, cancellable g.ICancellable) (result bool, out_created_partition string, err error) {
-	iv, err := _I.Get(407, "PartitionTable", "call_create_partition_sync")
+	iv, err := _I.Get(407, "PartitionTable", "call_create_partition_sync", 98, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -12482,7 +12482,7 @@ func (v *PartitionTableIfc) CallCreatePartitionSync(arg_offset uint64, arg_size 
 // [ created_partition ] trans: nothing
 //
 func (v *PartitionTableIfc) CompleteCreatePartition(invocation g.IDBusMethodInvocation, created_partition string) {
-	iv, err := _I.Get(408, "PartitionTable", "complete_create_partition")
+	iv, err := _I.Get(408, "PartitionTable", "complete_create_partition", 98, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12507,7 +12507,7 @@ func (v *PartitionTableIfc) CompleteCreatePartition(invocation g.IDBusMethodInvo
 // [ created_partition ] trans: nothing
 //
 func (v *PartitionTableIfc) CompleteCreatePartitionAndFormat(invocation g.IDBusMethodInvocation, created_partition string) {
-	iv, err := _I.Get(409, "PartitionTable", "complete_create_partition_and_format")
+	iv, err := _I.Get(409, "PartitionTable", "complete_create_partition_and_format", 98, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12551,7 +12551,7 @@ func PartitionTableProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPartitionTableProxyFinish(res g.IAsyncResult) (result PartitionTableProxy, err error) {
-	iv, err := _I.Get(410, "PartitionTableProxy", "new_finish")
+	iv, err := _I.Get(410, "PartitionTableProxy", "new_finish", 100, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -12577,7 +12577,7 @@ func NewPartitionTableProxyFinish(res g.IAsyncResult) (result PartitionTableProx
 // [ result ] trans: everything
 //
 func NewPartitionTableProxyForBusFinish(res g.IAsyncResult) (result PartitionTableProxy, err error) {
-	iv, err := _I.Get(411, "PartitionTableProxy", "new_for_bus_finish")
+	iv, err := _I.Get(411, "PartitionTableProxy", "new_for_bus_finish", 100, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -12611,7 +12611,7 @@ func NewPartitionTableProxyForBusFinish(res g.IAsyncResult) (result PartitionTab
 // [ result ] trans: everything
 //
 func NewPartitionTableProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result PartitionTableProxy, err error) {
-	iv, err := _I.Get(412, "PartitionTableProxy", "new_for_bus_sync")
+	iv, err := _I.Get(412, "PartitionTableProxy", "new_for_bus_sync", 100, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -12653,7 +12653,7 @@ func NewPartitionTableProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyF
 // [ result ] trans: everything
 //
 func NewPartitionTableProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result PartitionTableProxy, err error) {
-	iv, err := _I.Get(413, "PartitionTableProxy", "new_sync")
+	iv, err := _I.Get(413, "PartitionTableProxy", "new_sync", 100, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -12701,7 +12701,7 @@ func NewPartitionTableProxySync(connection g.IDBusConnection, flags g.DBusProxyF
 // [ user_data ] trans: nothing
 //
 func PartitionTableProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(414, "PartitionTableProxy", "new")
+	iv, err := _I.Get(414, "PartitionTableProxy", "new", 100, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12746,7 +12746,7 @@ func PartitionTableProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlag
 // [ user_data ] trans: nothing
 //
 func PartitionTableProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(415, "PartitionTableProxy", "new_for_bus")
+	iv, err := _I.Get(415, "PartitionTableProxy", "new_for_bus", 100, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12804,7 +12804,7 @@ func PartitionTableSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPartitionTableSkeleton() (result PartitionTableSkeleton) {
-	iv, err := _I.Get(416, "PartitionTableSkeleton", "new")
+	iv, err := _I.Get(416, "PartitionTableSkeleton", "new", 103, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12842,7 +12842,7 @@ func PartitionTypeInfoGetType() gi.GType {
 // udisks_partition_type_info_free
 //
 func (v PartitionTypeInfo) Free() {
-	iv, err := _I.Get(417, "PartitionTypeInfo", "free")
+	iv, err := _I.Get(417, "PartitionTypeInfo", "free", 106, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12892,7 +12892,7 @@ func SwapspaceGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func SwapspaceOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(419, "Swapspace", "override_properties")
+	iv, err := _I.Get(419, "Swapspace", "override_properties", 108, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12919,7 +12919,7 @@ func SwapspaceOverrideProperties1(klass g.ObjectClass, property_id_begin uint32)
 // [ user_data ] trans: nothing
 //
 func (v *SwapspaceIfc) CallSetLabel(arg_label string, arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(420, "Swapspace", "call_set_label")
+	iv, err := _I.Get(420, "Swapspace", "call_set_label", 108, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -12947,7 +12947,7 @@ func (v *SwapspaceIfc) CallSetLabel(arg_label string, arg_options g.Variant, can
 // [ result ] trans: nothing
 //
 func (v *SwapspaceIfc) CallSetLabelFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(421, "Swapspace", "call_set_label_finish")
+	iv, err := _I.Get(421, "Swapspace", "call_set_label_finish", 108, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -12978,7 +12978,7 @@ func (v *SwapspaceIfc) CallSetLabelFinish(res g.IAsyncResult) (result bool, err 
 // [ result ] trans: nothing
 //
 func (v *SwapspaceIfc) CallSetLabelSync(arg_label string, arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(422, "Swapspace", "call_set_label_sync")
+	iv, err := _I.Get(422, "Swapspace", "call_set_label_sync", 108, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -13013,7 +13013,7 @@ func (v *SwapspaceIfc) CallSetLabelSync(arg_label string, arg_options g.Variant,
 // [ user_data ] trans: nothing
 //
 func (v *SwapspaceIfc) CallStart(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(423, "Swapspace", "call_start")
+	iv, err := _I.Get(423, "Swapspace", "call_start", 108, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13038,7 +13038,7 @@ func (v *SwapspaceIfc) CallStart(arg_options g.Variant, cancellable g.ICancellab
 // [ result ] trans: nothing
 //
 func (v *SwapspaceIfc) CallStartFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(424, "Swapspace", "call_start_finish")
+	iv, err := _I.Get(424, "Swapspace", "call_start_finish", 108, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -13067,7 +13067,7 @@ func (v *SwapspaceIfc) CallStartFinish(res g.IAsyncResult) (result bool, err err
 // [ result ] trans: nothing
 //
 func (v *SwapspaceIfc) CallStartSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(425, "Swapspace", "call_start_sync")
+	iv, err := _I.Get(425, "Swapspace", "call_start_sync", 108, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -13099,7 +13099,7 @@ func (v *SwapspaceIfc) CallStartSync(arg_options g.Variant, cancellable g.ICance
 // [ user_data ] trans: nothing
 //
 func (v *SwapspaceIfc) CallStop(arg_options g.Variant, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(426, "Swapspace", "call_stop")
+	iv, err := _I.Get(426, "Swapspace", "call_stop", 108, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13124,7 +13124,7 @@ func (v *SwapspaceIfc) CallStop(arg_options g.Variant, cancellable g.ICancellabl
 // [ result ] trans: nothing
 //
 func (v *SwapspaceIfc) CallStopFinish(res g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(427, "Swapspace", "call_stop_finish")
+	iv, err := _I.Get(427, "Swapspace", "call_stop_finish", 108, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -13153,7 +13153,7 @@ func (v *SwapspaceIfc) CallStopFinish(res g.IAsyncResult) (result bool, err erro
 // [ result ] trans: nothing
 //
 func (v *SwapspaceIfc) CallStopSync(arg_options g.Variant, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(428, "Swapspace", "call_stop_sync")
+	iv, err := _I.Get(428, "Swapspace", "call_stop_sync", 108, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
 	}
@@ -13179,7 +13179,7 @@ func (v *SwapspaceIfc) CallStopSync(arg_options g.Variant, cancellable g.ICancel
 // [ invocation ] trans: everything
 //
 func (v *SwapspaceIfc) CompleteSetLabel(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(429, "Swapspace", "complete_set_label")
+	iv, err := _I.Get(429, "Swapspace", "complete_set_label", 108, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13199,7 +13199,7 @@ func (v *SwapspaceIfc) CompleteSetLabel(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *SwapspaceIfc) CompleteStart(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(430, "Swapspace", "complete_start")
+	iv, err := _I.Get(430, "Swapspace", "complete_start", 108, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13219,7 +13219,7 @@ func (v *SwapspaceIfc) CompleteStart(invocation g.IDBusMethodInvocation) {
 // [ invocation ] trans: everything
 //
 func (v *SwapspaceIfc) CompleteStop(invocation g.IDBusMethodInvocation) {
-	iv, err := _I.Get(431, "Swapspace", "complete_stop")
+	iv, err := _I.Get(431, "Swapspace", "complete_stop", 108, 13, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13260,7 +13260,7 @@ func SwapspaceProxyGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewSwapspaceProxyFinish(res g.IAsyncResult) (result SwapspaceProxy, err error) {
-	iv, err := _I.Get(432, "SwapspaceProxy", "new_finish")
+	iv, err := _I.Get(432, "SwapspaceProxy", "new_finish", 110, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -13286,7 +13286,7 @@ func NewSwapspaceProxyFinish(res g.IAsyncResult) (result SwapspaceProxy, err err
 // [ result ] trans: everything
 //
 func NewSwapspaceProxyForBusFinish(res g.IAsyncResult) (result SwapspaceProxy, err error) {
-	iv, err := _I.Get(433, "SwapspaceProxy", "new_for_bus_finish")
+	iv, err := _I.Get(433, "SwapspaceProxy", "new_for_bus_finish", 110, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -13320,7 +13320,7 @@ func NewSwapspaceProxyForBusFinish(res g.IAsyncResult) (result SwapspaceProxy, e
 // [ result ] trans: everything
 //
 func NewSwapspaceProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result SwapspaceProxy, err error) {
-	iv, err := _I.Get(434, "SwapspaceProxy", "new_for_bus_sync")
+	iv, err := _I.Get(434, "SwapspaceProxy", "new_for_bus_sync", 110, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -13362,7 +13362,7 @@ func NewSwapspaceProxyForBusSync(bus_type g.BusTypeEnum, flags g.DBusProxyFlags,
 // [ result ] trans: everything
 //
 func NewSwapspaceProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable) (result SwapspaceProxy, err error) {
-	iv, err := _I.Get(435, "SwapspaceProxy", "new_sync")
+	iv, err := _I.Get(435, "SwapspaceProxy", "new_sync", 110, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -13410,7 +13410,7 @@ func NewSwapspaceProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags,
 // [ user_data ] trans: nothing
 //
 func SwapspaceProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(436, "SwapspaceProxy", "new")
+	iv, err := _I.Get(436, "SwapspaceProxy", "new", 110, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13455,7 +13455,7 @@ func SwapspaceProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 // [ user_data ] trans: nothing
 //
 func SwapspaceProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(437, "SwapspaceProxy", "new_for_bus")
+	iv, err := _I.Get(437, "SwapspaceProxy", "new_for_bus", 110, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13513,7 +13513,7 @@ func SwapspaceSkeletonGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewSwapspaceSkeleton() (result SwapspaceSkeleton) {
-	iv, err := _I.Get(438, "SwapspaceSkeleton", "new")
+	iv, err := _I.Get(438, "SwapspaceSkeleton", "new", 113, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13541,7 +13541,7 @@ func SwapspaceSkeletonPrivateGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func BlockInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(439, "block_interface_info", "")
+	iv, err := _I.Get(439, "block_interface_info", "", 116, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13561,7 +13561,7 @@ func BlockInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func BlockOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(440, "block_override_properties", "")
+	iv, err := _I.Get(440, "block_override_properties", "", 117, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13580,7 +13580,7 @@ func BlockOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (res
 // [ result ] trans: nothing
 //
 func DriveAtaInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(441, "drive_ata_interface_info", "")
+	iv, err := _I.Get(441, "drive_ata_interface_info", "", 118, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13600,7 +13600,7 @@ func DriveAtaInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func DriveAtaOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(442, "drive_ata_override_properties", "")
+	iv, err := _I.Get(442, "drive_ata_override_properties", "", 119, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13619,7 +13619,7 @@ func DriveAtaOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (
 // [ result ] trans: nothing
 //
 func DriveInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(443, "drive_interface_info", "")
+	iv, err := _I.Get(443, "drive_interface_info", "", 120, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13639,7 +13639,7 @@ func DriveInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func DriveOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(444, "drive_override_properties", "")
+	iv, err := _I.Get(444, "drive_override_properties", "", 121, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13658,7 +13658,7 @@ func DriveOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (res
 // [ result ] trans: nothing
 //
 func EncryptedInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(445, "encrypted_interface_info", "")
+	iv, err := _I.Get(445, "encrypted_interface_info", "", 122, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13678,7 +13678,7 @@ func EncryptedInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func EncryptedOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(446, "encrypted_override_properties", "")
+	iv, err := _I.Get(446, "encrypted_override_properties", "", 123, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13697,7 +13697,7 @@ func EncryptedOverrideProperties(klass g.ObjectClass, property_id_begin uint32) 
 // [ result ] trans: nothing
 //
 func ErrorQuark() (result uint32) {
-	iv, err := _I.Get(447, "error_quark", "")
+	iv, err := _I.Get(447, "error_quark", "", 124, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13713,7 +13713,7 @@ func ErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func FilesystemInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(448, "filesystem_interface_info", "")
+	iv, err := _I.Get(448, "filesystem_interface_info", "", 125, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13733,7 +13733,7 @@ func FilesystemInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func FilesystemOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(449, "filesystem_override_properties", "")
+	iv, err := _I.Get(449, "filesystem_override_properties", "", 126, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13752,7 +13752,7 @@ func FilesystemOverrideProperties(klass g.ObjectClass, property_id_begin uint32)
 // [ result ] trans: nothing
 //
 func JobInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(450, "job_interface_info", "")
+	iv, err := _I.Get(450, "job_interface_info", "", 127, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13772,7 +13772,7 @@ func JobInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func JobOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(451, "job_override_properties", "")
+	iv, err := _I.Get(451, "job_override_properties", "", 128, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13791,7 +13791,7 @@ func JobOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (resul
 // [ result ] trans: nothing
 //
 func LoopInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(452, "loop_interface_info", "")
+	iv, err := _I.Get(452, "loop_interface_info", "", 129, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13811,7 +13811,7 @@ func LoopInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func LoopOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(453, "loop_override_properties", "")
+	iv, err := _I.Get(453, "loop_override_properties", "", 130, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13830,7 +13830,7 @@ func LoopOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (resu
 // [ result ] trans: nothing
 //
 func ManagerInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(454, "manager_interface_info", "")
+	iv, err := _I.Get(454, "manager_interface_info", "", 131, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13850,7 +13850,7 @@ func ManagerInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func ManagerOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(455, "manager_override_properties", "")
+	iv, err := _I.Get(455, "manager_override_properties", "", 132, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13869,7 +13869,7 @@ func ManagerOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (r
 // [ result ] trans: nothing
 //
 func MdraidInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(456, "mdraid_interface_info", "")
+	iv, err := _I.Get(456, "mdraid_interface_info", "", 133, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13889,7 +13889,7 @@ func MdraidInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func MdraidOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(457, "mdraid_override_properties", "")
+	iv, err := _I.Get(457, "mdraid_override_properties", "", 134, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13908,7 +13908,7 @@ func MdraidOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (re
 // [ result ] trans: nothing
 //
 func PartitionInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(458, "partition_interface_info", "")
+	iv, err := _I.Get(458, "partition_interface_info", "", 135, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13928,7 +13928,7 @@ func PartitionInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func PartitionOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(459, "partition_override_properties", "")
+	iv, err := _I.Get(459, "partition_override_properties", "", 136, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13947,7 +13947,7 @@ func PartitionOverrideProperties(klass g.ObjectClass, property_id_begin uint32) 
 // [ result ] trans: nothing
 //
 func PartitionTableInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(460, "partition_table_interface_info", "")
+	iv, err := _I.Get(460, "partition_table_interface_info", "", 137, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13967,7 +13967,7 @@ func PartitionTableInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func PartitionTableOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(461, "partition_table_override_properties", "")
+	iv, err := _I.Get(461, "partition_table_override_properties", "", 138, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -13986,7 +13986,7 @@ func PartitionTableOverrideProperties(klass g.ObjectClass, property_id_begin uin
 // [ result ] trans: nothing
 //
 func SwapspaceInterfaceInfo() (result g.DBusInterfaceInfo) {
-	iv, err := _I.Get(462, "swapspace_interface_info", "")
+	iv, err := _I.Get(462, "swapspace_interface_info", "", 139, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -14006,7 +14006,7 @@ func SwapspaceInterfaceInfo() (result g.DBusInterfaceInfo) {
 // [ result ] trans: nothing
 //
 func SwapspaceOverrideProperties(klass g.ObjectClass, property_id_begin uint32) (result uint32) {
-	iv, err := _I.Get(463, "swapspace_override_properties", "")
+	iv, err := _I.Get(463, "swapspace_override_properties", "", 140, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

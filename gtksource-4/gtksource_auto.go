@@ -76,7 +76,7 @@ func BufferGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewBuffer(table gtk.ITextTagTable) (result Buffer) {
-	iv, err := _I.Get(0, "Buffer", "new")
+	iv, err := _I.Get(0, "Buffer", "new", 2, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -100,7 +100,7 @@ func NewBuffer(table gtk.ITextTagTable) (result Buffer) {
 // [ result ] trans: everything
 //
 func NewBufferWithLanguage(language ILanguage) (result Buffer) {
-	iv, err := _I.Get(1, "Buffer", "new_with_language")
+	iv, err := _I.Get(1, "Buffer", "new_with_language", 2, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -126,7 +126,7 @@ func NewBufferWithLanguage(language ILanguage) (result Buffer) {
 // [ result ] trans: nothing
 //
 func (v Buffer) BackwardIterToSourceMark(iter gtk.TextIter, category string) (result bool) {
-	iv, err := _I.Get(2, "Buffer", "backward_iter_to_source_mark")
+	iv, err := _I.Get(2, "Buffer", "backward_iter_to_source_mark", 2, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -146,7 +146,7 @@ func (v Buffer) BackwardIterToSourceMark(iter gtk.TextIter, category string) (re
 // gtk_source_buffer_begin_not_undoable_action
 //
 func (v Buffer) BeginNotUndoableAction() {
-	iv, err := _I.Get(3, "Buffer", "begin_not_undoable_action")
+	iv, err := _I.Get(3, "Buffer", "begin_not_undoable_action", 2, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -161,7 +161,7 @@ func (v Buffer) BeginNotUndoableAction() {
 // [ result ] trans: nothing
 //
 func (v Buffer) CanRedo() (result bool) {
-	iv, err := _I.Get(4, "Buffer", "can_redo")
+	iv, err := _I.Get(4, "Buffer", "can_redo", 2, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -179,7 +179,7 @@ func (v Buffer) CanRedo() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Buffer) CanUndo() (result bool) {
-	iv, err := _I.Get(5, "Buffer", "can_undo")
+	iv, err := _I.Get(5, "Buffer", "can_undo", 2, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -201,7 +201,7 @@ func (v Buffer) CanUndo() (result bool) {
 // [ end ] trans: nothing
 //
 func (v Buffer) ChangeCase(case_type ChangeCaseTypeEnum, start gtk.TextIter, end gtk.TextIter) {
-	iv, err := _I.Get(6, "Buffer", "change_case")
+	iv, err := _I.Get(6, "Buffer", "change_case", 2, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -225,7 +225,7 @@ func (v Buffer) ChangeCase(case_type ChangeCaseTypeEnum, start gtk.TextIter, end
 // [ result ] trans: nothing
 //
 func (v Buffer) CreateSourceMark(name string, category string, where gtk.TextIter) (result Mark) {
-	iv, err := _I.Get(7, "Buffer", "create_source_mark")
+	iv, err := _I.Get(7, "Buffer", "create_source_mark", 2, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -248,7 +248,7 @@ func (v Buffer) CreateSourceMark(name string, category string, where gtk.TextIte
 // gtk_source_buffer_end_not_undoable_action
 //
 func (v Buffer) EndNotUndoableAction() {
-	iv, err := _I.Get(8, "Buffer", "end_not_undoable_action")
+	iv, err := _I.Get(8, "Buffer", "end_not_undoable_action", 2, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -265,7 +265,7 @@ func (v Buffer) EndNotUndoableAction() {
 // [ end ] trans: nothing
 //
 func (v Buffer) EnsureHighlight(start gtk.TextIter, end gtk.TextIter) {
-	iv, err := _I.Get(9, "Buffer", "ensure_highlight")
+	iv, err := _I.Get(9, "Buffer", "ensure_highlight", 2, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -286,7 +286,7 @@ func (v Buffer) EnsureHighlight(start gtk.TextIter, end gtk.TextIter) {
 // [ result ] trans: nothing
 //
 func (v Buffer) ForwardIterToSourceMark(iter gtk.TextIter, category string) (result bool) {
-	iv, err := _I.Get(10, "Buffer", "forward_iter_to_source_mark")
+	iv, err := _I.Get(10, "Buffer", "forward_iter_to_source_mark", 2, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -310,7 +310,7 @@ func (v Buffer) ForwardIterToSourceMark(iter gtk.TextIter, category string) (res
 // [ result ] trans: everything
 //
 func (v Buffer) GetContextClassesAtIter(iter gtk.TextIter) (result gi.CStrArray) {
-	iv, err := _I.Get(11, "Buffer", "get_context_classes_at_iter")
+	iv, err := _I.Get(11, "Buffer", "get_context_classes_at_iter", 2, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -330,7 +330,7 @@ func (v Buffer) GetContextClassesAtIter(iter gtk.TextIter) (result gi.CStrArray)
 // [ result ] trans: nothing
 //
 func (v Buffer) GetHighlightMatchingBrackets() (result bool) {
-	iv, err := _I.Get(12, "Buffer", "get_highlight_matching_brackets")
+	iv, err := _I.Get(12, "Buffer", "get_highlight_matching_brackets", 2, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -348,7 +348,7 @@ func (v Buffer) GetHighlightMatchingBrackets() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetHighlightSyntax() (result bool) {
-	iv, err := _I.Get(13, "Buffer", "get_highlight_syntax")
+	iv, err := _I.Get(13, "Buffer", "get_highlight_syntax", 2, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -366,7 +366,7 @@ func (v Buffer) GetHighlightSyntax() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetImplicitTrailingNewline() (result bool) {
-	iv, err := _I.Get(14, "Buffer", "get_implicit_trailing_newline")
+	iv, err := _I.Get(14, "Buffer", "get_implicit_trailing_newline", 2, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -384,7 +384,7 @@ func (v Buffer) GetImplicitTrailingNewline() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetLanguage() (result Language) {
-	iv, err := _I.Get(15, "Buffer", "get_language")
+	iv, err := _I.Get(15, "Buffer", "get_language", 2, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -402,7 +402,7 @@ func (v Buffer) GetLanguage() (result Language) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetMaxUndoLevels() (result int32) {
-	iv, err := _I.Get(16, "Buffer", "get_max_undo_levels")
+	iv, err := _I.Get(16, "Buffer", "get_max_undo_levels", 2, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -424,7 +424,7 @@ func (v Buffer) GetMaxUndoLevels() (result int32) {
 // [ result ] trans: container
 //
 func (v Buffer) GetSourceMarksAtIter(iter gtk.TextIter, category string) (result g.SList) {
-	iv, err := _I.Get(17, "Buffer", "get_source_marks_at_iter")
+	iv, err := _I.Get(17, "Buffer", "get_source_marks_at_iter", 2, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -450,7 +450,7 @@ func (v Buffer) GetSourceMarksAtIter(iter gtk.TextIter, category string) (result
 // [ result ] trans: container
 //
 func (v Buffer) GetSourceMarksAtLine(line int32, category string) (result g.SList) {
-	iv, err := _I.Get(18, "Buffer", "get_source_marks_at_line")
+	iv, err := _I.Get(18, "Buffer", "get_source_marks_at_line", 2, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -472,7 +472,7 @@ func (v Buffer) GetSourceMarksAtLine(line int32, category string) (result g.SLis
 // [ result ] trans: nothing
 //
 func (v Buffer) GetStyleScheme() (result StyleScheme) {
-	iv, err := _I.Get(19, "Buffer", "get_style_scheme")
+	iv, err := _I.Get(19, "Buffer", "get_style_scheme", 2, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -490,7 +490,7 @@ func (v Buffer) GetStyleScheme() (result StyleScheme) {
 // [ result ] trans: nothing
 //
 func (v Buffer) GetUndoManager() (result UndoManager) {
-	iv, err := _I.Get(20, "Buffer", "get_undo_manager")
+	iv, err := _I.Get(20, "Buffer", "get_undo_manager", 2, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -512,7 +512,7 @@ func (v Buffer) GetUndoManager() (result UndoManager) {
 // [ result ] trans: nothing
 //
 func (v Buffer) IterBackwardToContextClassToggle(iter gtk.TextIter, context_class string) (result bool) {
-	iv, err := _I.Get(21, "Buffer", "iter_backward_to_context_class_toggle")
+	iv, err := _I.Get(21, "Buffer", "iter_backward_to_context_class_toggle", 2, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -538,7 +538,7 @@ func (v Buffer) IterBackwardToContextClassToggle(iter gtk.TextIter, context_clas
 // [ result ] trans: nothing
 //
 func (v Buffer) IterForwardToContextClassToggle(iter gtk.TextIter, context_class string) (result bool) {
-	iv, err := _I.Get(22, "Buffer", "iter_forward_to_context_class_toggle")
+	iv, err := _I.Get(22, "Buffer", "iter_forward_to_context_class_toggle", 2, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -564,7 +564,7 @@ func (v Buffer) IterForwardToContextClassToggle(iter gtk.TextIter, context_class
 // [ result ] trans: nothing
 //
 func (v Buffer) IterHasContextClass(iter gtk.TextIter, context_class string) (result bool) {
-	iv, err := _I.Get(23, "Buffer", "iter_has_context_class")
+	iv, err := _I.Get(23, "Buffer", "iter_has_context_class", 2, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -588,7 +588,7 @@ func (v Buffer) IterHasContextClass(iter gtk.TextIter, context_class string) (re
 // [ end ] trans: nothing
 //
 func (v Buffer) JoinLines(start gtk.TextIter, end gtk.TextIter) {
-	iv, err := _I.Get(24, "Buffer", "join_lines")
+	iv, err := _I.Get(24, "Buffer", "join_lines", 2, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -603,7 +603,7 @@ func (v Buffer) JoinLines(start gtk.TextIter, end gtk.TextIter) {
 // gtk_source_buffer_redo
 //
 func (v Buffer) Redo() {
-	iv, err := _I.Get(25, "Buffer", "redo")
+	iv, err := _I.Get(25, "Buffer", "redo", 2, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -622,7 +622,7 @@ func (v Buffer) Redo() {
 // [ category ] trans: nothing
 //
 func (v Buffer) RemoveSourceMarks(start gtk.TextIter, end gtk.TextIter, category string) {
-	iv, err := _I.Get(26, "Buffer", "remove_source_marks")
+	iv, err := _I.Get(26, "Buffer", "remove_source_marks", 2, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -642,7 +642,7 @@ func (v Buffer) RemoveSourceMarks(start gtk.TextIter, end gtk.TextIter, category
 // [ highlight ] trans: nothing
 //
 func (v Buffer) SetHighlightMatchingBrackets(highlight bool) {
-	iv, err := _I.Get(27, "Buffer", "set_highlight_matching_brackets")
+	iv, err := _I.Get(27, "Buffer", "set_highlight_matching_brackets", 2, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -658,7 +658,7 @@ func (v Buffer) SetHighlightMatchingBrackets(highlight bool) {
 // [ highlight ] trans: nothing
 //
 func (v Buffer) SetHighlightSyntax(highlight bool) {
-	iv, err := _I.Get(28, "Buffer", "set_highlight_syntax")
+	iv, err := _I.Get(28, "Buffer", "set_highlight_syntax", 2, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -674,7 +674,7 @@ func (v Buffer) SetHighlightSyntax(highlight bool) {
 // [ implicit_trailing_newline ] trans: nothing
 //
 func (v Buffer) SetImplicitTrailingNewline(implicit_trailing_newline bool) {
-	iv, err := _I.Get(29, "Buffer", "set_implicit_trailing_newline")
+	iv, err := _I.Get(29, "Buffer", "set_implicit_trailing_newline", 2, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -690,7 +690,7 @@ func (v Buffer) SetImplicitTrailingNewline(implicit_trailing_newline bool) {
 // [ language ] trans: nothing
 //
 func (v Buffer) SetLanguage(language ILanguage) {
-	iv, err := _I.Get(30, "Buffer", "set_language")
+	iv, err := _I.Get(30, "Buffer", "set_language", 2, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -710,7 +710,7 @@ func (v Buffer) SetLanguage(language ILanguage) {
 // [ max_undo_levels ] trans: nothing
 //
 func (v Buffer) SetMaxUndoLevels(max_undo_levels int32) {
-	iv, err := _I.Get(31, "Buffer", "set_max_undo_levels")
+	iv, err := _I.Get(31, "Buffer", "set_max_undo_levels", 2, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -726,7 +726,7 @@ func (v Buffer) SetMaxUndoLevels(max_undo_levels int32) {
 // [ scheme ] trans: nothing
 //
 func (v Buffer) SetStyleScheme(scheme IStyleScheme) {
-	iv, err := _I.Get(32, "Buffer", "set_style_scheme")
+	iv, err := _I.Get(32, "Buffer", "set_style_scheme", 2, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -746,7 +746,7 @@ func (v Buffer) SetStyleScheme(scheme IStyleScheme) {
 // [ manager ] trans: nothing
 //
 func (v Buffer) SetUndoManager(manager IUndoManager) {
-	iv, err := _I.Get(33, "Buffer", "set_undo_manager")
+	iv, err := _I.Get(33, "Buffer", "set_undo_manager", 2, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -772,7 +772,7 @@ func (v Buffer) SetUndoManager(manager IUndoManager) {
 // [ column ] trans: nothing
 //
 func (v Buffer) SortLines(start gtk.TextIter, end gtk.TextIter, flags SortFlags, column int32) {
-	iv, err := _I.Get(34, "Buffer", "sort_lines")
+	iv, err := _I.Get(34, "Buffer", "sort_lines", 2, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -789,7 +789,7 @@ func (v Buffer) SortLines(start gtk.TextIter, end gtk.TextIter, flags SortFlags,
 // gtk_source_buffer_undo
 //
 func (v Buffer) Undo() {
-	iv, err := _I.Get(35, "Buffer", "undo")
+	iv, err := _I.Get(35, "Buffer", "undo", 2, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -850,7 +850,7 @@ func CompletionGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Completion) AddProvider(provider ICompletionProvider) (result bool, err error) {
-	iv, err := _I.Get(36, "Completion", "add_provider")
+	iv, err := _I.Get(36, "Completion", "add_provider", 6, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -873,7 +873,7 @@ func (v Completion) AddProvider(provider ICompletionProvider) (result bool, err 
 // gtk_source_completion_block_interactive
 //
 func (v Completion) BlockInteractive() {
-	iv, err := _I.Get(37, "Completion", "block_interactive")
+	iv, err := _I.Get(37, "Completion", "block_interactive", 6, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -890,7 +890,7 @@ func (v Completion) BlockInteractive() {
 // [ result ] trans: nothing
 //
 func (v Completion) CreateContext(position gtk.TextIter) (result CompletionContext) {
-	iv, err := _I.Get(38, "Completion", "create_context")
+	iv, err := _I.Get(38, "Completion", "create_context", 6, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -909,7 +909,7 @@ func (v Completion) CreateContext(position gtk.TextIter) (result CompletionConte
 // [ result ] trans: nothing
 //
 func (v Completion) GetInfoWindow() (result CompletionInfo) {
-	iv, err := _I.Get(39, "Completion", "get_info_window")
+	iv, err := _I.Get(39, "Completion", "get_info_window", 6, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -927,7 +927,7 @@ func (v Completion) GetInfoWindow() (result CompletionInfo) {
 // [ result ] trans: nothing
 //
 func (v Completion) GetProviders() (result g.List) {
-	iv, err := _I.Get(40, "Completion", "get_providers")
+	iv, err := _I.Get(40, "Completion", "get_providers", 6, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -945,7 +945,7 @@ func (v Completion) GetProviders() (result g.List) {
 // [ result ] trans: nothing
 //
 func (v Completion) GetView() (result View) {
-	iv, err := _I.Get(41, "Completion", "get_view")
+	iv, err := _I.Get(41, "Completion", "get_view", 6, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -961,7 +961,7 @@ func (v Completion) GetView() (result View) {
 // gtk_source_completion_hide
 //
 func (v Completion) Hide() {
-	iv, err := _I.Get(42, "Completion", "hide")
+	iv, err := _I.Get(42, "Completion", "hide", 6, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -978,7 +978,7 @@ func (v Completion) Hide() {
 // [ result ] trans: nothing
 //
 func (v Completion) RemoveProvider(provider ICompletionProvider) (result bool, err error) {
-	iv, err := _I.Get(43, "Completion", "remove_provider")
+	iv, err := _I.Get(43, "Completion", "remove_provider", 6, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1007,7 +1007,7 @@ func (v Completion) RemoveProvider(provider ICompletionProvider) (result bool, e
 // [ result ] trans: nothing
 //
 func (v Completion) Start(providers g.List, context ICompletionContext) (result bool) {
-	iv, err := _I.Get(44, "Completion", "start")
+	iv, err := _I.Get(44, "Completion", "start", 6, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1029,7 +1029,7 @@ func (v Completion) Start(providers g.List, context ICompletionContext) (result 
 // gtk_source_completion_unblock_interactive
 //
 func (v Completion) UnblockInteractive() {
-	iv, err := _I.Get(45, "Completion", "unblock_interactive")
+	iv, err := _I.Get(45, "Completion", "unblock_interactive", 6, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1079,7 +1079,7 @@ func CompletionContextGetType() gi.GType {
 // [ finished ] trans: nothing
 //
 func (v CompletionContext) AddProposals(provider ICompletionProvider, proposals g.List, finished bool) {
-	iv, err := _I.Get(46, "CompletionContext", "add_proposals")
+	iv, err := _I.Get(46, "CompletionContext", "add_proposals", 9, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1101,7 +1101,7 @@ func (v CompletionContext) AddProposals(provider ICompletionProvider, proposals 
 // [ result ] trans: nothing
 //
 func (v CompletionContext) GetActivation() (result CompletionActivationFlags) {
-	iv, err := _I.Get(47, "CompletionContext", "get_activation")
+	iv, err := _I.Get(47, "CompletionContext", "get_activation", 9, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1121,7 +1121,7 @@ func (v CompletionContext) GetActivation() (result CompletionActivationFlags) {
 // [ result ] trans: nothing
 //
 func (v CompletionContext) GetIter(iter gtk.TextIter) (result bool) {
-	iv, err := _I.Get(48, "CompletionContext", "get_iter")
+	iv, err := _I.Get(48, "CompletionContext", "get_iter", 9, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1180,7 +1180,7 @@ func CompletionInfoGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewCompletionInfo() (result CompletionInfo) {
-	iv, err := _I.Get(49, "CompletionInfo", "new")
+	iv, err := _I.Get(49, "CompletionInfo", "new", 13, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1198,7 +1198,7 @@ func NewCompletionInfo() (result CompletionInfo) {
 // [ iter ] trans: nothing
 //
 func (v CompletionInfo) MoveToIter(view gtk.ITextView, iter gtk.TextIter) {
-	iv, err := _I.Get(50, "CompletionInfo", "move_to_iter")
+	iv, err := _I.Get(50, "CompletionInfo", "move_to_iter", 13, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1248,7 +1248,7 @@ func CompletionItemGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewCompletionItem() (result CompletionItem) {
-	iv, err := _I.Get(51, "CompletionItem", "new")
+	iv, err := _I.Get(51, "CompletionItem", "new", 16, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1264,7 +1264,7 @@ func NewCompletionItem() (result CompletionItem) {
 // [ gicon ] trans: nothing
 //
 func (v CompletionItem) SetGicon(gicon g.IIcon) {
-	iv, err := _I.Get(52, "CompletionItem", "set_gicon")
+	iv, err := _I.Get(52, "CompletionItem", "set_gicon", 16, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1284,7 +1284,7 @@ func (v CompletionItem) SetGicon(gicon g.IIcon) {
 // [ icon ] trans: nothing
 //
 func (v CompletionItem) SetIcon(icon gdkpixbuf.IPixbuf) {
-	iv, err := _I.Get(53, "CompletionItem", "set_icon")
+	iv, err := _I.Get(53, "CompletionItem", "set_icon", 16, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1304,7 +1304,7 @@ func (v CompletionItem) SetIcon(icon gdkpixbuf.IPixbuf) {
 // [ icon_name ] trans: nothing
 //
 func (v CompletionItem) SetIconName(icon_name string) {
-	iv, err := _I.Get(54, "CompletionItem", "set_icon_name")
+	iv, err := _I.Get(54, "CompletionItem", "set_icon_name", 16, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1322,7 +1322,7 @@ func (v CompletionItem) SetIconName(icon_name string) {
 // [ info ] trans: nothing
 //
 func (v CompletionItem) SetInfo(info string) {
-	iv, err := _I.Get(55, "CompletionItem", "set_info")
+	iv, err := _I.Get(55, "CompletionItem", "set_info", 16, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1340,7 +1340,7 @@ func (v CompletionItem) SetInfo(info string) {
 // [ label ] trans: nothing
 //
 func (v CompletionItem) SetLabel(label string) {
-	iv, err := _I.Get(56, "CompletionItem", "set_label")
+	iv, err := _I.Get(56, "CompletionItem", "set_label", 16, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1358,7 +1358,7 @@ func (v CompletionItem) SetLabel(label string) {
 // [ markup ] trans: nothing
 //
 func (v CompletionItem) SetMarkup(markup string) {
-	iv, err := _I.Get(57, "CompletionItem", "set_markup")
+	iv, err := _I.Get(57, "CompletionItem", "set_markup", 16, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1376,7 +1376,7 @@ func (v CompletionItem) SetMarkup(markup string) {
 // [ text ] trans: nothing
 //
 func (v CompletionItem) SetText(text string) {
-	iv, err := _I.Get(58, "CompletionItem", "set_text")
+	iv, err := _I.Get(58, "CompletionItem", "set_text", 16, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1428,7 +1428,7 @@ func CompletionProposalGetType() gi.GType {
 // gtk_source_completion_proposal_changed
 //
 func (v *CompletionProposalIfc) Changed() {
-	iv, err := _I.Get(59, "CompletionProposal", "changed")
+	iv, err := _I.Get(59, "CompletionProposal", "changed", 20, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1445,7 +1445,7 @@ func (v *CompletionProposalIfc) Changed() {
 // [ result ] trans: nothing
 //
 func (v *CompletionProposalIfc) Equal(other ICompletionProposal) (result bool) {
-	iv, err := _I.Get(60, "CompletionProposal", "equal")
+	iv, err := _I.Get(60, "CompletionProposal", "equal", 20, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1468,7 +1468,7 @@ func (v *CompletionProposalIfc) Equal(other ICompletionProposal) (result bool) {
 // [ result ] trans: nothing
 //
 func (v *CompletionProposalIfc) GetGicon() (result g.Icon) {
-	iv, err := _I.Get(61, "CompletionProposal", "get_gicon")
+	iv, err := _I.Get(61, "CompletionProposal", "get_gicon", 20, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1486,7 +1486,7 @@ func (v *CompletionProposalIfc) GetGicon() (result g.Icon) {
 // [ result ] trans: nothing
 //
 func (v *CompletionProposalIfc) GetIcon() (result gdkpixbuf.Pixbuf) {
-	iv, err := _I.Get(62, "CompletionProposal", "get_icon")
+	iv, err := _I.Get(62, "CompletionProposal", "get_icon", 20, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1504,7 +1504,7 @@ func (v *CompletionProposalIfc) GetIcon() (result gdkpixbuf.Pixbuf) {
 // [ result ] trans: nothing
 //
 func (v *CompletionProposalIfc) GetIconName() (result string) {
-	iv, err := _I.Get(63, "CompletionProposal", "get_icon_name")
+	iv, err := _I.Get(63, "CompletionProposal", "get_icon_name", 20, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1522,7 +1522,7 @@ func (v *CompletionProposalIfc) GetIconName() (result string) {
 // [ result ] trans: everything
 //
 func (v *CompletionProposalIfc) GetInfo() (result string) {
-	iv, err := _I.Get(64, "CompletionProposal", "get_info")
+	iv, err := _I.Get(64, "CompletionProposal", "get_info", 20, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1540,7 +1540,7 @@ func (v *CompletionProposalIfc) GetInfo() (result string) {
 // [ result ] trans: everything
 //
 func (v *CompletionProposalIfc) GetLabel() (result string) {
-	iv, err := _I.Get(65, "CompletionProposal", "get_label")
+	iv, err := _I.Get(65, "CompletionProposal", "get_label", 20, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1558,7 +1558,7 @@ func (v *CompletionProposalIfc) GetLabel() (result string) {
 // [ result ] trans: everything
 //
 func (v *CompletionProposalIfc) GetMarkup() (result string) {
-	iv, err := _I.Get(66, "CompletionProposal", "get_markup")
+	iv, err := _I.Get(66, "CompletionProposal", "get_markup", 20, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1576,7 +1576,7 @@ func (v *CompletionProposalIfc) GetMarkup() (result string) {
 // [ result ] trans: everything
 //
 func (v *CompletionProposalIfc) GetText() (result string) {
-	iv, err := _I.Get(67, "CompletionProposal", "get_text")
+	iv, err := _I.Get(67, "CompletionProposal", "get_text", 20, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1594,7 +1594,7 @@ func (v *CompletionProposalIfc) GetText() (result string) {
 // [ result ] trans: nothing
 //
 func (v *CompletionProposalIfc) Hash() (result uint32) {
-	iv, err := _I.Get(68, "CompletionProposal", "hash")
+	iv, err := _I.Get(68, "CompletionProposal", "hash", 20, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1632,7 +1632,7 @@ func CompletionProviderGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v *CompletionProviderIfc) ActivateProposal(proposal ICompletionProposal, iter gtk.TextIter) (result bool) {
-	iv, err := _I.Get(69, "CompletionProvider", "activate_proposal")
+	iv, err := _I.Get(69, "CompletionProvider", "activate_proposal", 22, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1656,7 +1656,7 @@ func (v *CompletionProviderIfc) ActivateProposal(proposal ICompletionProposal, i
 // [ result ] trans: nothing
 //
 func (v *CompletionProviderIfc) GetActivation() (result CompletionActivationFlags) {
-	iv, err := _I.Get(70, "CompletionProvider", "get_activation")
+	iv, err := _I.Get(70, "CompletionProvider", "get_activation", 22, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1674,7 +1674,7 @@ func (v *CompletionProviderIfc) GetActivation() (result CompletionActivationFlag
 // [ result ] trans: nothing
 //
 func (v *CompletionProviderIfc) GetGicon() (result g.Icon) {
-	iv, err := _I.Get(71, "CompletionProvider", "get_gicon")
+	iv, err := _I.Get(71, "CompletionProvider", "get_gicon", 22, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1692,7 +1692,7 @@ func (v *CompletionProviderIfc) GetGicon() (result g.Icon) {
 // [ result ] trans: nothing
 //
 func (v *CompletionProviderIfc) GetIcon() (result gdkpixbuf.Pixbuf) {
-	iv, err := _I.Get(72, "CompletionProvider", "get_icon")
+	iv, err := _I.Get(72, "CompletionProvider", "get_icon", 22, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1710,7 +1710,7 @@ func (v *CompletionProviderIfc) GetIcon() (result gdkpixbuf.Pixbuf) {
 // [ result ] trans: nothing
 //
 func (v *CompletionProviderIfc) GetIconName() (result string) {
-	iv, err := _I.Get(73, "CompletionProvider", "get_icon_name")
+	iv, err := _I.Get(73, "CompletionProvider", "get_icon_name", 22, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1730,7 +1730,7 @@ func (v *CompletionProviderIfc) GetIconName() (result string) {
 // [ result ] trans: nothing
 //
 func (v *CompletionProviderIfc) GetInfoWidget(proposal ICompletionProposal) (result gtk.Widget) {
-	iv, err := _I.Get(74, "CompletionProvider", "get_info_widget")
+	iv, err := _I.Get(74, "CompletionProvider", "get_info_widget", 22, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1753,7 +1753,7 @@ func (v *CompletionProviderIfc) GetInfoWidget(proposal ICompletionProposal) (res
 // [ result ] trans: nothing
 //
 func (v *CompletionProviderIfc) GetInteractiveDelay() (result int32) {
-	iv, err := _I.Get(75, "CompletionProvider", "get_interactive_delay")
+	iv, err := _I.Get(75, "CompletionProvider", "get_interactive_delay", 22, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1771,7 +1771,7 @@ func (v *CompletionProviderIfc) GetInteractiveDelay() (result int32) {
 // [ result ] trans: everything
 //
 func (v *CompletionProviderIfc) GetName() (result string) {
-	iv, err := _I.Get(76, "CompletionProvider", "get_name")
+	iv, err := _I.Get(76, "CompletionProvider", "get_name", 22, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1789,7 +1789,7 @@ func (v *CompletionProviderIfc) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v *CompletionProviderIfc) GetPriority() (result int32) {
-	iv, err := _I.Get(77, "CompletionProvider", "get_priority")
+	iv, err := _I.Get(77, "CompletionProvider", "get_priority", 22, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1813,7 +1813,7 @@ func (v *CompletionProviderIfc) GetPriority() (result int32) {
 // [ result ] trans: nothing
 //
 func (v *CompletionProviderIfc) GetStartIter(context ICompletionContext, proposal ICompletionProposal, iter gtk.TextIter) (result bool) {
-	iv, err := _I.Get(78, "CompletionProvider", "get_start_iter")
+	iv, err := _I.Get(78, "CompletionProvider", "get_start_iter", 22, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1844,7 +1844,7 @@ func (v *CompletionProviderIfc) GetStartIter(context ICompletionContext, proposa
 // [ result ] trans: nothing
 //
 func (v *CompletionProviderIfc) Match(context ICompletionContext) (result bool) {
-	iv, err := _I.Get(79, "CompletionProvider", "match")
+	iv, err := _I.Get(79, "CompletionProvider", "match", 22, 10, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1867,7 +1867,7 @@ func (v *CompletionProviderIfc) Match(context ICompletionContext) (result bool) 
 // [ context ] trans: nothing
 //
 func (v *CompletionProviderIfc) Populate(context ICompletionContext) {
-	iv, err := _I.Get(80, "CompletionProvider", "populate")
+	iv, err := _I.Get(80, "CompletionProvider", "populate", 22, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1889,7 +1889,7 @@ func (v *CompletionProviderIfc) Populate(context ICompletionContext) {
 // [ info ] trans: nothing
 //
 func (v *CompletionProviderIfc) UpdateInfo(proposal ICompletionProposal, info ICompletionInfo) {
-	iv, err := _I.Get(81, "CompletionProvider", "update_info")
+	iv, err := _I.Get(81, "CompletionProvider", "update_info", 22, 12, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1937,7 +1937,7 @@ func CompletionWordsGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewCompletionWords(name string, icon gdkpixbuf.IPixbuf) (result CompletionWords) {
-	iv, err := _I.Get(82, "CompletionWords", "new")
+	iv, err := _I.Get(82, "CompletionWords", "new", 24, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1962,7 +1962,7 @@ func NewCompletionWords(name string, icon gdkpixbuf.IPixbuf) (result CompletionW
 // [ buffer ] trans: nothing
 //
 func (v CompletionWords) Register(buffer gtk.ITextBuffer) {
-	iv, err := _I.Get(83, "CompletionWords", "register")
+	iv, err := _I.Get(83, "CompletionWords", "register", 24, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1982,7 +1982,7 @@ func (v CompletionWords) Register(buffer gtk.ITextBuffer) {
 // [ buffer ] trans: nothing
 //
 func (v CompletionWords) Unregister(buffer gtk.ITextBuffer) {
-	iv, err := _I.Get(84, "CompletionWords", "unregister")
+	iv, err := _I.Get(84, "CompletionWords", "unregister", 24, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2037,7 +2037,7 @@ func EncodingGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v Encoding) Copy() (result Encoding) {
-	iv, err := _I.Get(85, "Encoding", "copy")
+	iv, err := _I.Get(85, "Encoding", "copy", 28, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2053,7 +2053,7 @@ func (v Encoding) Copy() (result Encoding) {
 // gtk_source_encoding_free
 //
 func (v Encoding) Free() {
-	iv, err := _I.Get(86, "Encoding", "free")
+	iv, err := _I.Get(86, "Encoding", "free", 28, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2068,7 +2068,7 @@ func (v Encoding) Free() {
 // [ result ] trans: nothing
 //
 func (v Encoding) GetCharset() (result string) {
-	iv, err := _I.Get(87, "Encoding", "get_charset")
+	iv, err := _I.Get(87, "Encoding", "get_charset", 28, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2086,7 +2086,7 @@ func (v Encoding) GetCharset() (result string) {
 // [ result ] trans: nothing
 //
 func (v Encoding) GetName() (result string) {
-	iv, err := _I.Get(88, "Encoding", "get_name")
+	iv, err := _I.Get(88, "Encoding", "get_name", 28, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2104,7 +2104,7 @@ func (v Encoding) GetName() (result string) {
 // [ result ] trans: everything
 //
 func (v Encoding) ToString() (result string) {
-	iv, err := _I.Get(89, "Encoding", "to_string")
+	iv, err := _I.Get(89, "Encoding", "to_string", 28, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2124,7 +2124,7 @@ func (v Encoding) ToString() (result string) {
 // [ result ] trans: nothing
 //
 func EncodingGetFromCharset1(charset string) (result Encoding) {
-	iv, err := _I.Get(93, "Encoding", "get_from_charset")
+	iv, err := _I.Get(93, "Encoding", "get_from_charset", 28, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2159,7 +2159,7 @@ func FileGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewFile() (result File) {
-	iv, err := _I.Get(95, "File", "new")
+	iv, err := _I.Get(95, "File", "new", 29, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2173,7 +2173,7 @@ func NewFile() (result File) {
 // gtk_source_file_check_file_on_disk
 //
 func (v File) CheckFileOnDisk() {
-	iv, err := _I.Get(96, "File", "check_file_on_disk")
+	iv, err := _I.Get(96, "File", "check_file_on_disk", 29, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2188,7 +2188,7 @@ func (v File) CheckFileOnDisk() {
 // [ result ] trans: nothing
 //
 func (v File) GetCompressionType() (result CompressionTypeEnum) {
-	iv, err := _I.Get(97, "File", "get_compression_type")
+	iv, err := _I.Get(97, "File", "get_compression_type", 29, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2206,7 +2206,7 @@ func (v File) GetCompressionType() (result CompressionTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v File) GetEncoding() (result Encoding) {
-	iv, err := _I.Get(98, "File", "get_encoding")
+	iv, err := _I.Get(98, "File", "get_encoding", 29, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2224,7 +2224,7 @@ func (v File) GetEncoding() (result Encoding) {
 // [ result ] trans: nothing
 //
 func (v File) GetLocation() (result g.File) {
-	iv, err := _I.Get(99, "File", "get_location")
+	iv, err := _I.Get(99, "File", "get_location", 29, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2242,7 +2242,7 @@ func (v File) GetLocation() (result g.File) {
 // [ result ] trans: nothing
 //
 func (v File) GetNewlineType() (result NewlineTypeEnum) {
-	iv, err := _I.Get(100, "File", "get_newline_type")
+	iv, err := _I.Get(100, "File", "get_newline_type", 29, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2260,7 +2260,7 @@ func (v File) GetNewlineType() (result NewlineTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v File) IsDeleted() (result bool) {
-	iv, err := _I.Get(101, "File", "is_deleted")
+	iv, err := _I.Get(101, "File", "is_deleted", 29, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2278,7 +2278,7 @@ func (v File) IsDeleted() (result bool) {
 // [ result ] trans: nothing
 //
 func (v File) IsExternallyModified() (result bool) {
-	iv, err := _I.Get(102, "File", "is_externally_modified")
+	iv, err := _I.Get(102, "File", "is_externally_modified", 29, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2296,7 +2296,7 @@ func (v File) IsExternallyModified() (result bool) {
 // [ result ] trans: nothing
 //
 func (v File) IsLocal() (result bool) {
-	iv, err := _I.Get(103, "File", "is_local")
+	iv, err := _I.Get(103, "File", "is_local", 29, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2314,7 +2314,7 @@ func (v File) IsLocal() (result bool) {
 // [ result ] trans: nothing
 //
 func (v File) IsReadonly() (result bool) {
-	iv, err := _I.Get(104, "File", "is_readonly")
+	iv, err := _I.Get(104, "File", "is_readonly", 29, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2332,7 +2332,7 @@ func (v File) IsReadonly() (result bool) {
 // [ location ] trans: nothing
 //
 func (v File) SetLocation(location g.IFile) {
-	iv, err := _I.Get(105, "File", "set_location")
+	iv, err := _I.Get(105, "File", "set_location", 29, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2373,7 +2373,7 @@ func FileLoaderGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewFileLoader(buffer IBuffer, file IFile) (result FileLoader) {
-	iv, err := _I.Get(106, "FileLoader", "new")
+	iv, err := _I.Get(106, "FileLoader", "new", 31, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2406,7 +2406,7 @@ func NewFileLoader(buffer IBuffer, file IFile) (result FileLoader) {
 // [ result ] trans: everything
 //
 func NewFileLoaderFromStream(buffer IBuffer, file IFile, stream g.IInputStream) (result FileLoader) {
-	iv, err := _I.Get(107, "FileLoader", "new_from_stream")
+	iv, err := _I.Get(107, "FileLoader", "new_from_stream", 31, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2438,7 +2438,7 @@ func NewFileLoaderFromStream(buffer IBuffer, file IFile, stream g.IInputStream) 
 // [ result ] trans: nothing
 //
 func (v FileLoader) GetBuffer() (result Buffer) {
-	iv, err := _I.Get(108, "FileLoader", "get_buffer")
+	iv, err := _I.Get(108, "FileLoader", "get_buffer", 31, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2456,7 +2456,7 @@ func (v FileLoader) GetBuffer() (result Buffer) {
 // [ result ] trans: nothing
 //
 func (v FileLoader) GetCompressionType() (result CompressionTypeEnum) {
-	iv, err := _I.Get(109, "FileLoader", "get_compression_type")
+	iv, err := _I.Get(109, "FileLoader", "get_compression_type", 31, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2474,7 +2474,7 @@ func (v FileLoader) GetCompressionType() (result CompressionTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v FileLoader) GetEncoding() (result Encoding) {
-	iv, err := _I.Get(110, "FileLoader", "get_encoding")
+	iv, err := _I.Get(110, "FileLoader", "get_encoding", 31, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2492,7 +2492,7 @@ func (v FileLoader) GetEncoding() (result Encoding) {
 // [ result ] trans: nothing
 //
 func (v FileLoader) GetFile() (result File) {
-	iv, err := _I.Get(111, "FileLoader", "get_file")
+	iv, err := _I.Get(111, "FileLoader", "get_file", 31, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2510,7 +2510,7 @@ func (v FileLoader) GetFile() (result File) {
 // [ result ] trans: nothing
 //
 func (v FileLoader) GetInputStream() (result g.InputStream) {
-	iv, err := _I.Get(112, "FileLoader", "get_input_stream")
+	iv, err := _I.Get(112, "FileLoader", "get_input_stream", 31, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2528,7 +2528,7 @@ func (v FileLoader) GetInputStream() (result g.InputStream) {
 // [ result ] trans: nothing
 //
 func (v FileLoader) GetLocation() (result g.File) {
-	iv, err := _I.Get(113, "FileLoader", "get_location")
+	iv, err := _I.Get(113, "FileLoader", "get_location", 31, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2546,7 +2546,7 @@ func (v FileLoader) GetLocation() (result g.File) {
 // [ result ] trans: nothing
 //
 func (v FileLoader) GetNewlineType() (result NewlineTypeEnum) {
-	iv, err := _I.Get(114, "FileLoader", "get_newline_type")
+	iv, err := _I.Get(114, "FileLoader", "get_newline_type", 31, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2576,7 +2576,7 @@ func (v FileLoader) GetNewlineType() (result NewlineTypeEnum) {
 // [ user_data ] trans: nothing
 //
 func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE CALLBACK*/, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(115, "FileLoader", "load_async")
+	iv, err := _I.Get(115, "FileLoader", "load_async", 31, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2604,7 +2604,7 @@ func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, pro
 // [ result1 ] trans: nothing
 //
 func (v FileLoader) LoadFinish(result g.IAsyncResult) (result1 bool, err error) {
-	iv, err := _I.Get(116, "FileLoader", "load_finish")
+	iv, err := _I.Get(116, "FileLoader", "load_finish", 31, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2629,7 +2629,7 @@ func (v FileLoader) LoadFinish(result g.IAsyncResult) (result1 bool, err error) 
 // [ candidate_encodings ] trans: nothing
 //
 func (v FileLoader) SetCandidateEncodings(candidate_encodings g.SList) {
-	iv, err := _I.Get(117, "FileLoader", "set_candidate_encodings")
+	iv, err := _I.Get(117, "FileLoader", "set_candidate_encodings", 31, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2700,7 +2700,7 @@ func FileSaverGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewFileSaver(buffer IBuffer, file IFile) (result FileSaver) {
-	iv, err := _I.Get(118, "FileSaver", "new")
+	iv, err := _I.Get(118, "FileSaver", "new", 36, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2733,7 +2733,7 @@ func NewFileSaver(buffer IBuffer, file IFile) (result FileSaver) {
 // [ result ] trans: everything
 //
 func NewFileSaverWithTarget(buffer IBuffer, file IFile, target_location g.IFile) (result FileSaver) {
-	iv, err := _I.Get(119, "FileSaver", "new_with_target")
+	iv, err := _I.Get(119, "FileSaver", "new_with_target", 36, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2765,7 +2765,7 @@ func NewFileSaverWithTarget(buffer IBuffer, file IFile, target_location g.IFile)
 // [ result ] trans: nothing
 //
 func (v FileSaver) GetBuffer() (result Buffer) {
-	iv, err := _I.Get(120, "FileSaver", "get_buffer")
+	iv, err := _I.Get(120, "FileSaver", "get_buffer", 36, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2783,7 +2783,7 @@ func (v FileSaver) GetBuffer() (result Buffer) {
 // [ result ] trans: nothing
 //
 func (v FileSaver) GetCompressionType() (result CompressionTypeEnum) {
-	iv, err := _I.Get(121, "FileSaver", "get_compression_type")
+	iv, err := _I.Get(121, "FileSaver", "get_compression_type", 36, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2801,7 +2801,7 @@ func (v FileSaver) GetCompressionType() (result CompressionTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v FileSaver) GetEncoding() (result Encoding) {
-	iv, err := _I.Get(122, "FileSaver", "get_encoding")
+	iv, err := _I.Get(122, "FileSaver", "get_encoding", 36, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2819,7 +2819,7 @@ func (v FileSaver) GetEncoding() (result Encoding) {
 // [ result ] trans: nothing
 //
 func (v FileSaver) GetFile() (result File) {
-	iv, err := _I.Get(123, "FileSaver", "get_file")
+	iv, err := _I.Get(123, "FileSaver", "get_file", 36, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2837,7 +2837,7 @@ func (v FileSaver) GetFile() (result File) {
 // [ result ] trans: nothing
 //
 func (v FileSaver) GetFlags() (result FileSaverFlags) {
-	iv, err := _I.Get(124, "FileSaver", "get_flags")
+	iv, err := _I.Get(124, "FileSaver", "get_flags", 36, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2855,7 +2855,7 @@ func (v FileSaver) GetFlags() (result FileSaverFlags) {
 // [ result ] trans: nothing
 //
 func (v FileSaver) GetLocation() (result g.File) {
-	iv, err := _I.Get(125, "FileSaver", "get_location")
+	iv, err := _I.Get(125, "FileSaver", "get_location", 36, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2873,7 +2873,7 @@ func (v FileSaver) GetLocation() (result g.File) {
 // [ result ] trans: nothing
 //
 func (v FileSaver) GetNewlineType() (result NewlineTypeEnum) {
-	iv, err := _I.Get(126, "FileSaver", "get_newline_type")
+	iv, err := _I.Get(126, "FileSaver", "get_newline_type", 36, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2903,7 +2903,7 @@ func (v FileSaver) GetNewlineType() (result NewlineTypeEnum) {
 // [ user_data ] trans: nothing
 //
 func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, progress_callback int /*TODO_TYPE CALLBACK*/, progress_callback_data unsafe.Pointer, progress_callback_notify int /*TODO_TYPE CALLBACK*/, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(127, "FileSaver", "save_async")
+	iv, err := _I.Get(127, "FileSaver", "save_async", 36, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2931,7 +2931,7 @@ func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, prog
 // [ result1 ] trans: nothing
 //
 func (v FileSaver) SaveFinish(result g.IAsyncResult) (result1 bool, err error) {
-	iv, err := _I.Get(128, "FileSaver", "save_finish")
+	iv, err := _I.Get(128, "FileSaver", "save_finish", 36, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2956,7 +2956,7 @@ func (v FileSaver) SaveFinish(result g.IAsyncResult) (result1 bool, err error) {
 // [ compression_type ] trans: nothing
 //
 func (v FileSaver) SetCompressionType(compression_type CompressionTypeEnum) {
-	iv, err := _I.Get(129, "FileSaver", "set_compression_type")
+	iv, err := _I.Get(129, "FileSaver", "set_compression_type", 36, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2972,7 +2972,7 @@ func (v FileSaver) SetCompressionType(compression_type CompressionTypeEnum) {
 // [ encoding ] trans: nothing
 //
 func (v FileSaver) SetEncoding(encoding Encoding) {
-	iv, err := _I.Get(130, "FileSaver", "set_encoding")
+	iv, err := _I.Get(130, "FileSaver", "set_encoding", 36, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2988,7 +2988,7 @@ func (v FileSaver) SetEncoding(encoding Encoding) {
 // [ flags ] trans: nothing
 //
 func (v FileSaver) SetFlags(flags FileSaverFlags) {
-	iv, err := _I.Get(131, "FileSaver", "set_flags")
+	iv, err := _I.Get(131, "FileSaver", "set_flags", 36, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3004,7 +3004,7 @@ func (v FileSaver) SetFlags(flags FileSaverFlags) {
 // [ newline_type ] trans: nothing
 //
 func (v FileSaver) SetNewlineType(newline_type NewlineTypeEnum) {
-	iv, err := _I.Get(132, "FileSaver", "set_newline_type")
+	iv, err := _I.Get(132, "FileSaver", "set_newline_type", 36, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3079,7 +3079,7 @@ func GutterGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Gutter) GetRendererAtPos(x int32, y int32) (result GutterRenderer) {
-	iv, err := _I.Get(133, "Gutter", "get_renderer_at_pos")
+	iv, err := _I.Get(133, "Gutter", "get_renderer_at_pos", 41, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3099,7 +3099,7 @@ func (v Gutter) GetRendererAtPos(x int32, y int32) (result GutterRenderer) {
 // [ result ] trans: nothing
 //
 func (v Gutter) GetView() (result View) {
-	iv, err := _I.Get(134, "Gutter", "get_view")
+	iv, err := _I.Get(134, "Gutter", "get_view", 41, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3117,7 +3117,7 @@ func (v Gutter) GetView() (result View) {
 // [ result ] trans: nothing
 //
 func (v Gutter) GetWindowType() (result gtk.TextWindowTypeEnum) {
-	iv, err := _I.Get(135, "Gutter", "get_window_type")
+	iv, err := _I.Get(135, "Gutter", "get_window_type", 41, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3139,7 +3139,7 @@ func (v Gutter) GetWindowType() (result gtk.TextWindowTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v Gutter) Insert(renderer IGutterRenderer, position int32) (result bool) {
-	iv, err := _I.Get(136, "Gutter", "insert")
+	iv, err := _I.Get(136, "Gutter", "insert", 41, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3161,7 +3161,7 @@ func (v Gutter) Insert(renderer IGutterRenderer, position int32) (result bool) {
 // gtk_source_gutter_queue_draw
 //
 func (v Gutter) QueueDraw() {
-	iv, err := _I.Get(137, "Gutter", "queue_draw")
+	iv, err := _I.Get(137, "Gutter", "queue_draw", 41, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3176,7 +3176,7 @@ func (v Gutter) QueueDraw() {
 // [ renderer ] trans: nothing
 //
 func (v Gutter) Remove(renderer IGutterRenderer) {
-	iv, err := _I.Get(138, "Gutter", "remove")
+	iv, err := _I.Get(138, "Gutter", "remove", 41, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3198,7 +3198,7 @@ func (v Gutter) Remove(renderer IGutterRenderer) {
 // [ position ] trans: nothing
 //
 func (v Gutter) Reorder(renderer IGutterRenderer, position int32) {
-	iv, err := _I.Get(139, "Gutter", "reorder")
+	iv, err := _I.Get(139, "Gutter", "reorder", 41, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3250,7 +3250,7 @@ func GutterRendererGetType() gi.GType {
 // [ event ] trans: nothing
 //
 func (v GutterRenderer) Activate(iter gtk.TextIter, area gdk.Rectangle, event gdk.Event) {
-	iv, err := _I.Get(140, "GutterRenderer", "activate")
+	iv, err := _I.Get(140, "GutterRenderer", "activate", 44, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3276,7 +3276,7 @@ func (v GutterRenderer) Activate(iter gtk.TextIter, area gdk.Rectangle, event gd
 // [ end ] trans: nothing
 //
 func (v GutterRenderer) Begin(cr cairo.Context, background_area gdk.Rectangle, cell_area gdk.Rectangle, start gtk.TextIter, end gtk.TextIter) {
-	iv, err := _I.Get(141, "GutterRenderer", "begin")
+	iv, err := _I.Get(141, "GutterRenderer", "begin", 44, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3306,7 +3306,7 @@ func (v GutterRenderer) Begin(cr cairo.Context, background_area gdk.Rectangle, c
 // [ state ] trans: nothing
 //
 func (v GutterRenderer) Draw(cr cairo.Context, background_area gdk.Rectangle, cell_area gdk.Rectangle, start gtk.TextIter, end gtk.TextIter, state GutterRendererStateFlags) {
-	iv, err := _I.Get(142, "GutterRenderer", "draw")
+	iv, err := _I.Get(142, "GutterRenderer", "draw", 44, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3325,7 +3325,7 @@ func (v GutterRenderer) Draw(cr cairo.Context, background_area gdk.Rectangle, ce
 // gtk_source_gutter_renderer_end
 //
 func (v GutterRenderer) End() {
-	iv, err := _I.Get(143, "GutterRenderer", "end")
+	iv, err := _I.Get(143, "GutterRenderer", "end", 44, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3342,7 +3342,7 @@ func (v GutterRenderer) End() {
 // [ yalign ] trans: nothing, dir: out
 //
 func (v GutterRenderer) GetAlignment() (xalign float32, yalign float32) {
-	iv, err := _I.Get(144, "GutterRenderer", "get_alignment")
+	iv, err := _I.Get(144, "GutterRenderer", "get_alignment", 44, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3363,7 +3363,7 @@ func (v GutterRenderer) GetAlignment() (xalign float32, yalign float32) {
 // [ result ] trans: nothing
 //
 func (v GutterRenderer) GetAlignmentMode() (result GutterRendererAlignmentModeEnum) {
-	iv, err := _I.Get(145, "GutterRenderer", "get_alignment_mode")
+	iv, err := _I.Get(145, "GutterRenderer", "get_alignment_mode", 44, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3383,7 +3383,7 @@ func (v GutterRenderer) GetAlignmentMode() (result GutterRendererAlignmentModeEn
 // [ result ] trans: nothing
 //
 func (v GutterRenderer) GetBackground(color gdk.RGBA) (result bool) {
-	iv, err := _I.Get(146, "GutterRenderer", "get_background")
+	iv, err := _I.Get(146, "GutterRenderer", "get_background", 44, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3404,7 +3404,7 @@ func (v GutterRenderer) GetBackground(color gdk.RGBA) (result bool) {
 // [ ypad ] trans: nothing, dir: out
 //
 func (v GutterRenderer) GetPadding() (xpad int32, ypad int32) {
-	iv, err := _I.Get(147, "GutterRenderer", "get_padding")
+	iv, err := _I.Get(147, "GutterRenderer", "get_padding", 44, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3425,7 +3425,7 @@ func (v GutterRenderer) GetPadding() (xpad int32, ypad int32) {
 // [ result ] trans: nothing
 //
 func (v GutterRenderer) GetSize() (result int32) {
-	iv, err := _I.Get(148, "GutterRenderer", "get_size")
+	iv, err := _I.Get(148, "GutterRenderer", "get_size", 44, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3443,7 +3443,7 @@ func (v GutterRenderer) GetSize() (result int32) {
 // [ result ] trans: nothing
 //
 func (v GutterRenderer) GetView() (result gtk.TextView) {
-	iv, err := _I.Get(149, "GutterRenderer", "get_view")
+	iv, err := _I.Get(149, "GutterRenderer", "get_view", 44, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3461,7 +3461,7 @@ func (v GutterRenderer) GetView() (result gtk.TextView) {
 // [ result ] trans: nothing
 //
 func (v GutterRenderer) GetVisible() (result bool) {
-	iv, err := _I.Get(150, "GutterRenderer", "get_visible")
+	iv, err := _I.Get(150, "GutterRenderer", "get_visible", 44, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3479,7 +3479,7 @@ func (v GutterRenderer) GetVisible() (result bool) {
 // [ result ] trans: nothing
 //
 func (v GutterRenderer) GetWindowType() (result gtk.TextWindowTypeEnum) {
-	iv, err := _I.Get(151, "GutterRenderer", "get_window_type")
+	iv, err := _I.Get(151, "GutterRenderer", "get_window_type", 44, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3503,7 +3503,7 @@ func (v GutterRenderer) GetWindowType() (result gtk.TextWindowTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v GutterRenderer) QueryActivatable(iter gtk.TextIter, area gdk.Rectangle, event gdk.Event) (result bool) {
-	iv, err := _I.Get(152, "GutterRenderer", "query_activatable")
+	iv, err := _I.Get(152, "GutterRenderer", "query_activatable", 44, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3528,7 +3528,7 @@ func (v GutterRenderer) QueryActivatable(iter gtk.TextIter, area gdk.Rectangle, 
 // [ state ] trans: nothing
 //
 func (v GutterRenderer) QueryData(start gtk.TextIter, end gtk.TextIter, state GutterRendererStateFlags) {
-	iv, err := _I.Get(153, "GutterRenderer", "query_data")
+	iv, err := _I.Get(153, "GutterRenderer", "query_data", 44, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3556,7 +3556,7 @@ func (v GutterRenderer) QueryData(start gtk.TextIter, end gtk.TextIter, state Gu
 // [ result ] trans: nothing
 //
 func (v GutterRenderer) QueryTooltip(iter gtk.TextIter, area gdk.Rectangle, x int32, y int32, tooltip gtk.ITooltip) (result bool) {
-	iv, err := _I.Get(154, "GutterRenderer", "query_tooltip")
+	iv, err := _I.Get(154, "GutterRenderer", "query_tooltip", 44, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3581,7 +3581,7 @@ func (v GutterRenderer) QueryTooltip(iter gtk.TextIter, area gdk.Rectangle, x in
 // gtk_source_gutter_renderer_queue_draw
 //
 func (v GutterRenderer) QueueDraw() {
-	iv, err := _I.Get(155, "GutterRenderer", "queue_draw")
+	iv, err := _I.Get(155, "GutterRenderer", "queue_draw", 44, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3598,7 +3598,7 @@ func (v GutterRenderer) QueueDraw() {
 // [ yalign ] trans: nothing
 //
 func (v GutterRenderer) SetAlignment(xalign float32, yalign float32) {
-	iv, err := _I.Get(156, "GutterRenderer", "set_alignment")
+	iv, err := _I.Get(156, "GutterRenderer", "set_alignment", 44, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3615,7 +3615,7 @@ func (v GutterRenderer) SetAlignment(xalign float32, yalign float32) {
 // [ mode ] trans: nothing
 //
 func (v GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentModeEnum) {
-	iv, err := _I.Get(157, "GutterRenderer", "set_alignment_mode")
+	iv, err := _I.Get(157, "GutterRenderer", "set_alignment_mode", 44, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3631,7 +3631,7 @@ func (v GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentModeEnum) {
 // [ color ] trans: nothing
 //
 func (v GutterRenderer) SetBackground(color gdk.RGBA) {
-	iv, err := _I.Get(158, "GutterRenderer", "set_background")
+	iv, err := _I.Get(158, "GutterRenderer", "set_background", 44, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3649,7 +3649,7 @@ func (v GutterRenderer) SetBackground(color gdk.RGBA) {
 // [ ypad ] trans: nothing
 //
 func (v GutterRenderer) SetPadding(xpad int32, ypad int32) {
-	iv, err := _I.Get(159, "GutterRenderer", "set_padding")
+	iv, err := _I.Get(159, "GutterRenderer", "set_padding", 44, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3666,7 +3666,7 @@ func (v GutterRenderer) SetPadding(xpad int32, ypad int32) {
 // [ size ] trans: nothing
 //
 func (v GutterRenderer) SetSize(size int32) {
-	iv, err := _I.Get(160, "GutterRenderer", "set_size")
+	iv, err := _I.Get(160, "GutterRenderer", "set_size", 44, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3682,7 +3682,7 @@ func (v GutterRenderer) SetSize(size int32) {
 // [ visible ] trans: nothing
 //
 func (v GutterRenderer) SetVisible(visible bool) {
-	iv, err := _I.Get(161, "GutterRenderer", "set_visible")
+	iv, err := _I.Get(161, "GutterRenderer", "set_visible", 44, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3729,7 +3729,7 @@ func GutterRendererPixbufGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewGutterRendererPixbuf() (result GutterRendererPixbuf) {
-	iv, err := _I.Get(162, "GutterRendererPixbuf", "new")
+	iv, err := _I.Get(162, "GutterRendererPixbuf", "new", 47, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3745,7 +3745,7 @@ func NewGutterRendererPixbuf() (result GutterRendererPixbuf) {
 // [ result ] trans: nothing
 //
 func (v GutterRendererPixbuf) GetGicon() (result g.Icon) {
-	iv, err := _I.Get(163, "GutterRendererPixbuf", "get_gicon")
+	iv, err := _I.Get(163, "GutterRendererPixbuf", "get_gicon", 47, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3763,7 +3763,7 @@ func (v GutterRendererPixbuf) GetGicon() (result g.Icon) {
 // [ result ] trans: nothing
 //
 func (v GutterRendererPixbuf) GetIconName() (result string) {
-	iv, err := _I.Get(164, "GutterRendererPixbuf", "get_icon_name")
+	iv, err := _I.Get(164, "GutterRendererPixbuf", "get_icon_name", 47, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3781,7 +3781,7 @@ func (v GutterRendererPixbuf) GetIconName() (result string) {
 // [ result ] trans: nothing
 //
 func (v GutterRendererPixbuf) GetPixbuf() (result gdkpixbuf.Pixbuf) {
-	iv, err := _I.Get(165, "GutterRendererPixbuf", "get_pixbuf")
+	iv, err := _I.Get(165, "GutterRendererPixbuf", "get_pixbuf", 47, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3799,7 +3799,7 @@ func (v GutterRendererPixbuf) GetPixbuf() (result gdkpixbuf.Pixbuf) {
 // [ icon ] trans: nothing
 //
 func (v GutterRendererPixbuf) SetGicon(icon g.IIcon) {
-	iv, err := _I.Get(166, "GutterRendererPixbuf", "set_gicon")
+	iv, err := _I.Get(166, "GutterRendererPixbuf", "set_gicon", 47, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3819,7 +3819,7 @@ func (v GutterRendererPixbuf) SetGicon(icon g.IIcon) {
 // [ icon_name ] trans: nothing
 //
 func (v GutterRendererPixbuf) SetIconName(icon_name string) {
-	iv, err := _I.Get(167, "GutterRendererPixbuf", "set_icon_name")
+	iv, err := _I.Get(167, "GutterRendererPixbuf", "set_icon_name", 47, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3837,7 +3837,7 @@ func (v GutterRendererPixbuf) SetIconName(icon_name string) {
 // [ pixbuf ] trans: nothing
 //
 func (v GutterRendererPixbuf) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) {
-	iv, err := _I.Get(168, "GutterRendererPixbuf", "set_pixbuf")
+	iv, err := _I.Get(168, "GutterRendererPixbuf", "set_pixbuf", 47, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3909,7 +3909,7 @@ func GutterRendererTextGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewGutterRendererText() (result GutterRendererText) {
-	iv, err := _I.Get(169, "GutterRendererText", "new")
+	iv, err := _I.Get(169, "GutterRendererText", "new", 52, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3929,7 +3929,7 @@ func NewGutterRendererText() (result GutterRendererText) {
 // [ height ] trans: everything, dir: out
 //
 func (v GutterRendererText) Measure(text string) (width int32, height int32) {
-	iv, err := _I.Get(170, "GutterRendererText", "measure")
+	iv, err := _I.Get(170, "GutterRendererText", "measure", 52, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3957,7 +3957,7 @@ func (v GutterRendererText) Measure(text string) (width int32, height int32) {
 // [ height ] trans: everything, dir: out
 //
 func (v GutterRendererText) MeasureMarkup(markup string) (width int32, height int32) {
-	iv, err := _I.Get(171, "GutterRendererText", "measure_markup")
+	iv, err := _I.Get(171, "GutterRendererText", "measure_markup", 52, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3983,7 +3983,7 @@ func (v GutterRendererText) MeasureMarkup(markup string) (width int32, height in
 // [ length ] trans: nothing
 //
 func (v GutterRendererText) SetMarkup(markup string, length int32) {
-	iv, err := _I.Get(172, "GutterRendererText", "set_markup")
+	iv, err := _I.Get(172, "GutterRendererText", "set_markup", 52, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4004,7 +4004,7 @@ func (v GutterRendererText) SetMarkup(markup string, length int32) {
 // [ length ] trans: nothing
 //
 func (v GutterRendererText) SetText(text string, length int32) {
-	iv, err := _I.Get(173, "GutterRendererText", "set_text")
+	iv, err := _I.Get(173, "GutterRendererText", "set_text", 52, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4050,7 +4050,7 @@ func LanguageGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v Language) GetGlobs() (result gi.CStrArray) {
-	iv, err := _I.Get(174, "Language", "get_globs")
+	iv, err := _I.Get(174, "Language", "get_globs", 55, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4069,7 +4069,7 @@ func (v Language) GetGlobs() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v Language) GetHidden() (result bool) {
-	iv, err := _I.Get(175, "Language", "get_hidden")
+	iv, err := _I.Get(175, "Language", "get_hidden", 55, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4087,7 +4087,7 @@ func (v Language) GetHidden() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Language) GetId() (result string) {
-	iv, err := _I.Get(176, "Language", "get_id")
+	iv, err := _I.Get(176, "Language", "get_id", 55, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4107,7 +4107,7 @@ func (v Language) GetId() (result string) {
 // [ result ] trans: nothing
 //
 func (v Language) GetMetadata(name string) (result string) {
-	iv, err := _I.Get(177, "Language", "get_metadata")
+	iv, err := _I.Get(177, "Language", "get_metadata", 55, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4128,7 +4128,7 @@ func (v Language) GetMetadata(name string) (result string) {
 // [ result ] trans: everything
 //
 func (v Language) GetMimeTypes() (result gi.CStrArray) {
-	iv, err := _I.Get(178, "Language", "get_mime_types")
+	iv, err := _I.Get(178, "Language", "get_mime_types", 55, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4147,7 +4147,7 @@ func (v Language) GetMimeTypes() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v Language) GetName() (result string) {
-	iv, err := _I.Get(179, "Language", "get_name")
+	iv, err := _I.Get(179, "Language", "get_name", 55, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4165,7 +4165,7 @@ func (v Language) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v Language) GetSection() (result string) {
-	iv, err := _I.Get(180, "Language", "get_section")
+	iv, err := _I.Get(180, "Language", "get_section", 55, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4185,7 +4185,7 @@ func (v Language) GetSection() (result string) {
 // [ result ] trans: nothing
 //
 func (v Language) GetStyleFallback(style_id string) (result string) {
-	iv, err := _I.Get(181, "Language", "get_style_fallback")
+	iv, err := _I.Get(181, "Language", "get_style_fallback", 55, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4206,7 +4206,7 @@ func (v Language) GetStyleFallback(style_id string) (result string) {
 // [ result ] trans: everything
 //
 func (v Language) GetStyleIds() (result gi.CStrArray) {
-	iv, err := _I.Get(182, "Language", "get_style_ids")
+	iv, err := _I.Get(182, "Language", "get_style_ids", 55, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4227,7 +4227,7 @@ func (v Language) GetStyleIds() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v Language) GetStyleName(style_id string) (result string) {
-	iv, err := _I.Get(183, "Language", "get_style_name")
+	iv, err := _I.Get(183, "Language", "get_style_name", 55, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4265,7 +4265,7 @@ func LanguageManagerGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewLanguageManager() (result LanguageManager) {
-	iv, err := _I.Get(184, "LanguageManager", "new")
+	iv, err := _I.Get(184, "LanguageManager", "new", 57, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4283,7 +4283,7 @@ func NewLanguageManager() (result LanguageManager) {
 // [ result ] trans: nothing
 //
 func (v LanguageManager) GetLanguage(id string) (result Language) {
-	iv, err := _I.Get(186, "LanguageManager", "get_language")
+	iv, err := _I.Get(186, "LanguageManager", "get_language", 57, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4304,7 +4304,7 @@ func (v LanguageManager) GetLanguage(id string) (result Language) {
 // [ result ] trans: nothing
 //
 func (v LanguageManager) GetLanguageIds() (result gi.CStrArray) {
-	iv, err := _I.Get(187, "LanguageManager", "get_language_ids")
+	iv, err := _I.Get(187, "LanguageManager", "get_language_ids", 57, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4323,7 +4323,7 @@ func (v LanguageManager) GetLanguageIds() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v LanguageManager) GetSearchPath() (result gi.CStrArray) {
-	iv, err := _I.Get(188, "LanguageManager", "get_search_path")
+	iv, err := _I.Get(188, "LanguageManager", "get_search_path", 57, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4346,7 +4346,7 @@ func (v LanguageManager) GetSearchPath() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v LanguageManager) GuessLanguage(filename string, content_type string) (result Language) {
-	iv, err := _I.Get(189, "LanguageManager", "guess_language")
+	iv, err := _I.Get(189, "LanguageManager", "guess_language", 57, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4370,7 +4370,7 @@ func (v LanguageManager) GuessLanguage(filename string, content_type string) (re
 // [ dirs ] trans: nothing
 //
 func (v LanguageManager) SetSearchPath(dirs gi.CStrArray) {
-	iv, err := _I.Get(190, "LanguageManager", "set_search_path")
+	iv, err := _I.Get(190, "LanguageManager", "set_search_path", 57, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4423,7 +4423,7 @@ func MapGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewMap() (result Map) {
-	iv, err := _I.Get(191, "Map", "new")
+	iv, err := _I.Get(191, "Map", "new", 61, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4439,7 +4439,7 @@ func NewMap() (result Map) {
 // [ result ] trans: nothing
 //
 func (v Map) GetView() (result View) {
-	iv, err := _I.Get(192, "Map", "get_view")
+	iv, err := _I.Get(192, "Map", "get_view", 61, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4457,7 +4457,7 @@ func (v Map) GetView() (result View) {
 // [ view ] trans: nothing
 //
 func (v Map) SetView(view IView) {
-	iv, err := _I.Get(193, "Map", "set_view")
+	iv, err := _I.Get(193, "Map", "set_view", 61, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4498,7 +4498,7 @@ func MarkGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewMark(name string, category string) (result Mark) {
-	iv, err := _I.Get(194, "Mark", "new")
+	iv, err := _I.Get(194, "Mark", "new", 63, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4521,7 +4521,7 @@ func NewMark(name string, category string) (result Mark) {
 // [ result ] trans: nothing
 //
 func (v Mark) GetCategory() (result string) {
-	iv, err := _I.Get(195, "Mark", "get_category")
+	iv, err := _I.Get(195, "Mark", "get_category", 63, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4541,7 +4541,7 @@ func (v Mark) GetCategory() (result string) {
 // [ result ] trans: nothing
 //
 func (v Mark) Next(category string) (result Mark) {
-	iv, err := _I.Get(196, "Mark", "next")
+	iv, err := _I.Get(196, "Mark", "next", 63, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4564,7 +4564,7 @@ func (v Mark) Next(category string) (result Mark) {
 // [ result ] trans: nothing
 //
 func (v Mark) Prev(category string) (result Mark) {
-	iv, err := _I.Get(197, "Mark", "prev")
+	iv, err := _I.Get(197, "Mark", "prev", 63, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4600,7 +4600,7 @@ func MarkAttributesGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewMarkAttributes() (result MarkAttributes) {
-	iv, err := _I.Get(198, "MarkAttributes", "new")
+	iv, err := _I.Get(198, "MarkAttributes", "new", 64, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4618,7 +4618,7 @@ func NewMarkAttributes() (result MarkAttributes) {
 // [ result ] trans: nothing
 //
 func (v MarkAttributes) GetBackground(background gdk.RGBA) (result bool) {
-	iv, err := _I.Get(199, "MarkAttributes", "get_background")
+	iv, err := _I.Get(199, "MarkAttributes", "get_background", 64, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4637,7 +4637,7 @@ func (v MarkAttributes) GetBackground(background gdk.RGBA) (result bool) {
 // [ result ] trans: nothing
 //
 func (v MarkAttributes) GetGicon() (result g.Icon) {
-	iv, err := _I.Get(200, "MarkAttributes", "get_gicon")
+	iv, err := _I.Get(200, "MarkAttributes", "get_gicon", 64, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4655,7 +4655,7 @@ func (v MarkAttributes) GetGicon() (result g.Icon) {
 // [ result ] trans: nothing
 //
 func (v MarkAttributes) GetIconName() (result string) {
-	iv, err := _I.Get(201, "MarkAttributes", "get_icon_name")
+	iv, err := _I.Get(201, "MarkAttributes", "get_icon_name", 64, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4673,7 +4673,7 @@ func (v MarkAttributes) GetIconName() (result string) {
 // [ result ] trans: nothing
 //
 func (v MarkAttributes) GetPixbuf() (result gdkpixbuf.Pixbuf) {
-	iv, err := _I.Get(202, "MarkAttributes", "get_pixbuf")
+	iv, err := _I.Get(202, "MarkAttributes", "get_pixbuf", 64, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4693,7 +4693,7 @@ func (v MarkAttributes) GetPixbuf() (result gdkpixbuf.Pixbuf) {
 // [ result ] trans: everything
 //
 func (v MarkAttributes) GetTooltipMarkup(mark IMark) (result string) {
-	iv, err := _I.Get(203, "MarkAttributes", "get_tooltip_markup")
+	iv, err := _I.Get(203, "MarkAttributes", "get_tooltip_markup", 64, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4718,7 +4718,7 @@ func (v MarkAttributes) GetTooltipMarkup(mark IMark) (result string) {
 // [ result ] trans: everything
 //
 func (v MarkAttributes) GetTooltipText(mark IMark) (result string) {
-	iv, err := _I.Get(204, "MarkAttributes", "get_tooltip_text")
+	iv, err := _I.Get(204, "MarkAttributes", "get_tooltip_text", 64, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4745,7 +4745,7 @@ func (v MarkAttributes) GetTooltipText(mark IMark) (result string) {
 // [ result ] trans: nothing
 //
 func (v MarkAttributes) RenderIcon(widget gtk.IWidget, size int32) (result gdkpixbuf.Pixbuf) {
-	iv, err := _I.Get(205, "MarkAttributes", "render_icon")
+	iv, err := _I.Get(205, "MarkAttributes", "render_icon", 64, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4769,7 +4769,7 @@ func (v MarkAttributes) RenderIcon(widget gtk.IWidget, size int32) (result gdkpi
 // [ background ] trans: nothing
 //
 func (v MarkAttributes) SetBackground(background gdk.RGBA) {
-	iv, err := _I.Get(206, "MarkAttributes", "set_background")
+	iv, err := _I.Get(206, "MarkAttributes", "set_background", 64, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4785,7 +4785,7 @@ func (v MarkAttributes) SetBackground(background gdk.RGBA) {
 // [ gicon ] trans: nothing
 //
 func (v MarkAttributes) SetGicon(gicon g.IIcon) {
-	iv, err := _I.Get(207, "MarkAttributes", "set_gicon")
+	iv, err := _I.Get(207, "MarkAttributes", "set_gicon", 64, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4805,7 +4805,7 @@ func (v MarkAttributes) SetGicon(gicon g.IIcon) {
 // [ icon_name ] trans: nothing
 //
 func (v MarkAttributes) SetIconName(icon_name string) {
-	iv, err := _I.Get(208, "MarkAttributes", "set_icon_name")
+	iv, err := _I.Get(208, "MarkAttributes", "set_icon_name", 64, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4823,7 +4823,7 @@ func (v MarkAttributes) SetIconName(icon_name string) {
 // [ pixbuf ] trans: nothing
 //
 func (v MarkAttributes) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) {
-	iv, err := _I.Get(209, "MarkAttributes", "set_pixbuf")
+	iv, err := _I.Get(209, "MarkAttributes", "set_pixbuf", 64, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4898,7 +4898,7 @@ func PrintCompositorGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPrintCompositor(buffer IBuffer) (result PrintCompositor) {
-	iv, err := _I.Get(210, "PrintCompositor", "new")
+	iv, err := _I.Get(210, "PrintCompositor", "new", 70, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4922,7 +4922,7 @@ func NewPrintCompositor(buffer IBuffer) (result PrintCompositor) {
 // [ result ] trans: everything
 //
 func NewPrintCompositorFromView(view IView) (result PrintCompositor) {
-	iv, err := _I.Get(211, "PrintCompositor", "new_from_view")
+	iv, err := _I.Get(211, "PrintCompositor", "new_from_view", 70, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4946,7 +4946,7 @@ func NewPrintCompositorFromView(view IView) (result PrintCompositor) {
 // [ page_nr ] trans: nothing
 //
 func (v PrintCompositor) DrawPage(context gtk.IPrintContext, page_nr int32) {
-	iv, err := _I.Get(212, "PrintCompositor", "draw_page")
+	iv, err := _I.Get(212, "PrintCompositor", "draw_page", 70, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4967,7 +4967,7 @@ func (v PrintCompositor) DrawPage(context gtk.IPrintContext, page_nr int32) {
 // [ result ] trans: everything
 //
 func (v PrintCompositor) GetBodyFontName() (result string) {
-	iv, err := _I.Get(213, "PrintCompositor", "get_body_font_name")
+	iv, err := _I.Get(213, "PrintCompositor", "get_body_font_name", 70, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4987,7 +4987,7 @@ func (v PrintCompositor) GetBodyFontName() (result string) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetBottomMargin(unit gtk.UnitEnum) (result float64) {
-	iv, err := _I.Get(214, "PrintCompositor", "get_bottom_margin")
+	iv, err := _I.Get(214, "PrintCompositor", "get_bottom_margin", 70, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5006,7 +5006,7 @@ func (v PrintCompositor) GetBottomMargin(unit gtk.UnitEnum) (result float64) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetBuffer() (result Buffer) {
-	iv, err := _I.Get(215, "PrintCompositor", "get_buffer")
+	iv, err := _I.Get(215, "PrintCompositor", "get_buffer", 70, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5024,7 +5024,7 @@ func (v PrintCompositor) GetBuffer() (result Buffer) {
 // [ result ] trans: everything
 //
 func (v PrintCompositor) GetFooterFontName() (result string) {
-	iv, err := _I.Get(216, "PrintCompositor", "get_footer_font_name")
+	iv, err := _I.Get(216, "PrintCompositor", "get_footer_font_name", 70, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5042,7 +5042,7 @@ func (v PrintCompositor) GetFooterFontName() (result string) {
 // [ result ] trans: everything
 //
 func (v PrintCompositor) GetHeaderFontName() (result string) {
-	iv, err := _I.Get(217, "PrintCompositor", "get_header_font_name")
+	iv, err := _I.Get(217, "PrintCompositor", "get_header_font_name", 70, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5060,7 +5060,7 @@ func (v PrintCompositor) GetHeaderFontName() (result string) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetHighlightSyntax() (result bool) {
-	iv, err := _I.Get(218, "PrintCompositor", "get_highlight_syntax")
+	iv, err := _I.Get(218, "PrintCompositor", "get_highlight_syntax", 70, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5080,7 +5080,7 @@ func (v PrintCompositor) GetHighlightSyntax() (result bool) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetLeftMargin(unit gtk.UnitEnum) (result float64) {
-	iv, err := _I.Get(219, "PrintCompositor", "get_left_margin")
+	iv, err := _I.Get(219, "PrintCompositor", "get_left_margin", 70, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5099,7 +5099,7 @@ func (v PrintCompositor) GetLeftMargin(unit gtk.UnitEnum) (result float64) {
 // [ result ] trans: everything
 //
 func (v PrintCompositor) GetLineNumbersFontName() (result string) {
-	iv, err := _I.Get(220, "PrintCompositor", "get_line_numbers_font_name")
+	iv, err := _I.Get(220, "PrintCompositor", "get_line_numbers_font_name", 70, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5117,7 +5117,7 @@ func (v PrintCompositor) GetLineNumbersFontName() (result string) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetNPages() (result int32) {
-	iv, err := _I.Get(221, "PrintCompositor", "get_n_pages")
+	iv, err := _I.Get(221, "PrintCompositor", "get_n_pages", 70, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5135,7 +5135,7 @@ func (v PrintCompositor) GetNPages() (result int32) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetPaginationProgress() (result float64) {
-	iv, err := _I.Get(222, "PrintCompositor", "get_pagination_progress")
+	iv, err := _I.Get(222, "PrintCompositor", "get_pagination_progress", 70, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5153,7 +5153,7 @@ func (v PrintCompositor) GetPaginationProgress() (result float64) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetPrintFooter() (result bool) {
-	iv, err := _I.Get(223, "PrintCompositor", "get_print_footer")
+	iv, err := _I.Get(223, "PrintCompositor", "get_print_footer", 70, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5171,7 +5171,7 @@ func (v PrintCompositor) GetPrintFooter() (result bool) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetPrintHeader() (result bool) {
-	iv, err := _I.Get(224, "PrintCompositor", "get_print_header")
+	iv, err := _I.Get(224, "PrintCompositor", "get_print_header", 70, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5189,7 +5189,7 @@ func (v PrintCompositor) GetPrintHeader() (result bool) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetPrintLineNumbers() (result uint32) {
-	iv, err := _I.Get(225, "PrintCompositor", "get_print_line_numbers")
+	iv, err := _I.Get(225, "PrintCompositor", "get_print_line_numbers", 70, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5209,7 +5209,7 @@ func (v PrintCompositor) GetPrintLineNumbers() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetRightMargin(unit gtk.UnitEnum) (result float64) {
-	iv, err := _I.Get(226, "PrintCompositor", "get_right_margin")
+	iv, err := _I.Get(226, "PrintCompositor", "get_right_margin", 70, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5228,7 +5228,7 @@ func (v PrintCompositor) GetRightMargin(unit gtk.UnitEnum) (result float64) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetTabWidth() (result uint32) {
-	iv, err := _I.Get(227, "PrintCompositor", "get_tab_width")
+	iv, err := _I.Get(227, "PrintCompositor", "get_tab_width", 70, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5248,7 +5248,7 @@ func (v PrintCompositor) GetTabWidth() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetTopMargin(unit gtk.UnitEnum) (result float64) {
-	iv, err := _I.Get(228, "PrintCompositor", "get_top_margin")
+	iv, err := _I.Get(228, "PrintCompositor", "get_top_margin", 70, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5267,7 +5267,7 @@ func (v PrintCompositor) GetTopMargin(unit gtk.UnitEnum) (result float64) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) GetWrapMode() (result gtk.WrapModeEnum) {
-	iv, err := _I.Get(229, "PrintCompositor", "get_wrap_mode")
+	iv, err := _I.Get(229, "PrintCompositor", "get_wrap_mode", 70, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5287,7 +5287,7 @@ func (v PrintCompositor) GetWrapMode() (result gtk.WrapModeEnum) {
 // [ result ] trans: nothing
 //
 func (v PrintCompositor) Paginate(context gtk.IPrintContext) (result bool) {
-	iv, err := _I.Get(230, "PrintCompositor", "paginate")
+	iv, err := _I.Get(230, "PrintCompositor", "paginate", 70, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5310,7 +5310,7 @@ func (v PrintCompositor) Paginate(context gtk.IPrintContext) (result bool) {
 // [ font_name ] trans: nothing
 //
 func (v PrintCompositor) SetBodyFontName(font_name string) {
-	iv, err := _I.Get(231, "PrintCompositor", "set_body_font_name")
+	iv, err := _I.Get(231, "PrintCompositor", "set_body_font_name", 70, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5330,7 +5330,7 @@ func (v PrintCompositor) SetBodyFontName(font_name string) {
 // [ unit ] trans: nothing
 //
 func (v PrintCompositor) SetBottomMargin(margin float64, unit gtk.UnitEnum) {
-	iv, err := _I.Get(232, "PrintCompositor", "set_bottom_margin")
+	iv, err := _I.Get(232, "PrintCompositor", "set_bottom_margin", 70, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5347,7 +5347,7 @@ func (v PrintCompositor) SetBottomMargin(margin float64, unit gtk.UnitEnum) {
 // [ font_name ] trans: nothing
 //
 func (v PrintCompositor) SetFooterFontName(font_name string) {
-	iv, err := _I.Get(233, "PrintCompositor", "set_footer_font_name")
+	iv, err := _I.Get(233, "PrintCompositor", "set_footer_font_name", 70, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5371,7 +5371,7 @@ func (v PrintCompositor) SetFooterFontName(font_name string) {
 // [ right ] trans: nothing
 //
 func (v PrintCompositor) SetFooterFormat(separator bool, left string, center string, right string) {
-	iv, err := _I.Get(234, "PrintCompositor", "set_footer_format")
+	iv, err := _I.Get(234, "PrintCompositor", "set_footer_format", 70, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5396,7 +5396,7 @@ func (v PrintCompositor) SetFooterFormat(separator bool, left string, center str
 // [ font_name ] trans: nothing
 //
 func (v PrintCompositor) SetHeaderFontName(font_name string) {
-	iv, err := _I.Get(235, "PrintCompositor", "set_header_font_name")
+	iv, err := _I.Get(235, "PrintCompositor", "set_header_font_name", 70, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5420,7 +5420,7 @@ func (v PrintCompositor) SetHeaderFontName(font_name string) {
 // [ right ] trans: nothing
 //
 func (v PrintCompositor) SetHeaderFormat(separator bool, left string, center string, right string) {
-	iv, err := _I.Get(236, "PrintCompositor", "set_header_format")
+	iv, err := _I.Get(236, "PrintCompositor", "set_header_format", 70, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5445,7 +5445,7 @@ func (v PrintCompositor) SetHeaderFormat(separator bool, left string, center str
 // [ highlight ] trans: nothing
 //
 func (v PrintCompositor) SetHighlightSyntax(highlight bool) {
-	iv, err := _I.Get(237, "PrintCompositor", "set_highlight_syntax")
+	iv, err := _I.Get(237, "PrintCompositor", "set_highlight_syntax", 70, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5463,7 +5463,7 @@ func (v PrintCompositor) SetHighlightSyntax(highlight bool) {
 // [ unit ] trans: nothing
 //
 func (v PrintCompositor) SetLeftMargin(margin float64, unit gtk.UnitEnum) {
-	iv, err := _I.Get(238, "PrintCompositor", "set_left_margin")
+	iv, err := _I.Get(238, "PrintCompositor", "set_left_margin", 70, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5480,7 +5480,7 @@ func (v PrintCompositor) SetLeftMargin(margin float64, unit gtk.UnitEnum) {
 // [ font_name ] trans: nothing
 //
 func (v PrintCompositor) SetLineNumbersFontName(font_name string) {
-	iv, err := _I.Get(239, "PrintCompositor", "set_line_numbers_font_name")
+	iv, err := _I.Get(239, "PrintCompositor", "set_line_numbers_font_name", 70, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5498,7 +5498,7 @@ func (v PrintCompositor) SetLineNumbersFontName(font_name string) {
 // [ print1 ] trans: nothing
 //
 func (v PrintCompositor) SetPrintFooter(print1 bool) {
-	iv, err := _I.Get(240, "PrintCompositor", "set_print_footer")
+	iv, err := _I.Get(240, "PrintCompositor", "set_print_footer", 70, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5514,7 +5514,7 @@ func (v PrintCompositor) SetPrintFooter(print1 bool) {
 // [ print1 ] trans: nothing
 //
 func (v PrintCompositor) SetPrintHeader(print1 bool) {
-	iv, err := _I.Get(241, "PrintCompositor", "set_print_header")
+	iv, err := _I.Get(241, "PrintCompositor", "set_print_header", 70, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5530,7 +5530,7 @@ func (v PrintCompositor) SetPrintHeader(print1 bool) {
 // [ interval ] trans: nothing
 //
 func (v PrintCompositor) SetPrintLineNumbers(interval uint32) {
-	iv, err := _I.Get(242, "PrintCompositor", "set_print_line_numbers")
+	iv, err := _I.Get(242, "PrintCompositor", "set_print_line_numbers", 70, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5548,7 +5548,7 @@ func (v PrintCompositor) SetPrintLineNumbers(interval uint32) {
 // [ unit ] trans: nothing
 //
 func (v PrintCompositor) SetRightMargin(margin float64, unit gtk.UnitEnum) {
-	iv, err := _I.Get(243, "PrintCompositor", "set_right_margin")
+	iv, err := _I.Get(243, "PrintCompositor", "set_right_margin", 70, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5565,7 +5565,7 @@ func (v PrintCompositor) SetRightMargin(margin float64, unit gtk.UnitEnum) {
 // [ width ] trans: nothing
 //
 func (v PrintCompositor) SetTabWidth(width uint32) {
-	iv, err := _I.Get(244, "PrintCompositor", "set_tab_width")
+	iv, err := _I.Get(244, "PrintCompositor", "set_tab_width", 70, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5583,7 +5583,7 @@ func (v PrintCompositor) SetTabWidth(width uint32) {
 // [ unit ] trans: nothing
 //
 func (v PrintCompositor) SetTopMargin(margin float64, unit gtk.UnitEnum) {
-	iv, err := _I.Get(245, "PrintCompositor", "set_top_margin")
+	iv, err := _I.Get(245, "PrintCompositor", "set_top_margin", 70, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5600,7 +5600,7 @@ func (v PrintCompositor) SetTopMargin(margin float64, unit gtk.UnitEnum) {
 // [ wrap_mode ] trans: nothing
 //
 func (v PrintCompositor) SetWrapMode(wrap_mode gtk.WrapModeEnum) {
-	iv, err := _I.Get(246, "PrintCompositor", "set_wrap_mode")
+	iv, err := _I.Get(246, "PrintCompositor", "set_wrap_mode", 70, 36, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5645,7 +5645,7 @@ func RegionGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewRegion(buffer gtk.ITextBuffer) (result Region) {
-	iv, err := _I.Get(247, "Region", "new")
+	iv, err := _I.Get(247, "Region", "new", 73, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5667,7 +5667,7 @@ func NewRegion(buffer gtk.ITextBuffer) (result Region) {
 // [ region_to_add ] trans: nothing
 //
 func (v Region) AddRegion(region_to_add IRegion) {
-	iv, err := _I.Get(248, "Region", "add_region")
+	iv, err := _I.Get(248, "Region", "add_region", 73, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5689,7 +5689,7 @@ func (v Region) AddRegion(region_to_add IRegion) {
 // [ _end ] trans: nothing
 //
 func (v Region) AddSubregion(_start gtk.TextIter, _end gtk.TextIter) {
-	iv, err := _I.Get(249, "Region", "add_subregion")
+	iv, err := _I.Get(249, "Region", "add_subregion", 73, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5710,7 +5710,7 @@ func (v Region) AddSubregion(_start gtk.TextIter, _end gtk.TextIter) {
 // [ result ] trans: nothing
 //
 func (v Region) GetBounds(start gtk.TextIter, end gtk.TextIter) (result bool) {
-	iv, err := _I.Get(250, "Region", "get_bounds")
+	iv, err := _I.Get(250, "Region", "get_bounds", 73, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5730,7 +5730,7 @@ func (v Region) GetBounds(start gtk.TextIter, end gtk.TextIter) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Region) GetBuffer() (result gtk.TextBuffer) {
-	iv, err := _I.Get(251, "Region", "get_buffer")
+	iv, err := _I.Get(251, "Region", "get_buffer", 73, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5748,7 +5748,7 @@ func (v Region) GetBuffer() (result gtk.TextBuffer) {
 // [ iter ] trans: nothing, dir: out
 //
 func (v Region) GetStartRegionIter(iter RegionIter) {
-	iv, err := _I.Get(252, "Region", "get_start_region_iter")
+	iv, err := _I.Get(252, "Region", "get_start_region_iter", 73, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5766,7 +5766,7 @@ func (v Region) GetStartRegionIter(iter RegionIter) {
 // [ result ] trans: everything
 //
 func (v Region) IntersectRegion(region2 IRegion) (result Region) {
-	iv, err := _I.Get(253, "Region", "intersect_region")
+	iv, err := _I.Get(253, "Region", "intersect_region", 73, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5793,7 +5793,7 @@ func (v Region) IntersectRegion(region2 IRegion) (result Region) {
 // [ result ] trans: everything
 //
 func (v Region) IntersectSubregion(_start gtk.TextIter, _end gtk.TextIter) (result Region) {
-	iv, err := _I.Get(254, "Region", "intersect_subregion")
+	iv, err := _I.Get(254, "Region", "intersect_subregion", 73, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5813,7 +5813,7 @@ func (v Region) IntersectSubregion(_start gtk.TextIter, _end gtk.TextIter) (resu
 // [ result ] trans: nothing
 //
 func (v Region) IsEmpty() (result bool) {
-	iv, err := _I.Get(255, "Region", "is_empty")
+	iv, err := _I.Get(255, "Region", "is_empty", 73, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5831,7 +5831,7 @@ func (v Region) IsEmpty() (result bool) {
 // [ region_to_subtract ] trans: nothing
 //
 func (v Region) SubtractRegion(region_to_subtract IRegion) {
-	iv, err := _I.Get(256, "Region", "subtract_region")
+	iv, err := _I.Get(256, "Region", "subtract_region", 73, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5853,7 +5853,7 @@ func (v Region) SubtractRegion(region_to_subtract IRegion) {
 // [ _end ] trans: nothing
 //
 func (v Region) SubtractSubregion(_start gtk.TextIter, _end gtk.TextIter) {
-	iv, err := _I.Get(257, "Region", "subtract_subregion")
+	iv, err := _I.Get(257, "Region", "subtract_subregion", 73, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5870,7 +5870,7 @@ func (v Region) SubtractSubregion(_start gtk.TextIter, _end gtk.TextIter) {
 // [ result ] trans: everything
 //
 func (v Region) ToString() (result string) {
-	iv, err := _I.Get(258, "Region", "to_string")
+	iv, err := _I.Get(258, "Region", "to_string", 73, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5906,7 +5906,7 @@ func RegionIterGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v RegionIter) GetSubregion(start gtk.TextIter, end gtk.TextIter) (result bool) {
-	iv, err := _I.Get(259, "RegionIter", "get_subregion")
+	iv, err := _I.Get(259, "RegionIter", "get_subregion", 75, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5926,7 +5926,7 @@ func (v RegionIter) GetSubregion(start gtk.TextIter, end gtk.TextIter) (result b
 // [ result ] trans: nothing
 //
 func (v RegionIter) IsEnd() (result bool) {
-	iv, err := _I.Get(260, "RegionIter", "is_end")
+	iv, err := _I.Get(260, "RegionIter", "is_end", 75, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5944,7 +5944,7 @@ func (v RegionIter) IsEnd() (result bool) {
 // [ result ] trans: nothing
 //
 func (v RegionIter) Next() (result bool) {
-	iv, err := _I.Get(261, "RegionIter", "next")
+	iv, err := _I.Get(261, "RegionIter", "next", 75, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5981,7 +5981,7 @@ func SearchContextGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewSearchContext(buffer IBuffer, settings ISearchSettings) (result SearchContext) {
-	iv, err := _I.Get(262, "SearchContext", "new")
+	iv, err := _I.Get(262, "SearchContext", "new", 76, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6016,7 +6016,7 @@ func NewSearchContext(buffer IBuffer, settings ISearchSettings) (result SearchCo
 // [ result ] trans: nothing
 //
 func (v SearchContext) Backward(iter gtk.TextIter, match_start gtk.TextIter, match_end gtk.TextIter) (result bool, has_wrapped_around bool) {
-	iv, err := _I.Get(263, "SearchContext", "backward")
+	iv, err := _I.Get(263, "SearchContext", "backward", 76, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6046,7 +6046,7 @@ func (v SearchContext) Backward(iter gtk.TextIter, match_start gtk.TextIter, mat
 // [ user_data ] trans: nothing
 //
 func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(264, "SearchContext", "backward_async")
+	iv, err := _I.Get(264, "SearchContext", "backward_async", 76, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6077,7 +6077,7 @@ func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellab
 // [ result1 ] trans: nothing
 //
 func (v SearchContext) BackwardFinish(result g.IAsyncResult, match_start gtk.TextIter, match_end gtk.TextIter) (result1 bool, has_wrapped_around bool, err error) {
-	iv, err := _I.Get(265, "SearchContext", "backward_finish")
+	iv, err := _I.Get(265, "SearchContext", "backward_finish", 76, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6114,7 +6114,7 @@ func (v SearchContext) BackwardFinish(result g.IAsyncResult, match_start gtk.Tex
 // [ result ] trans: nothing
 //
 func (v SearchContext) Forward(iter gtk.TextIter, match_start gtk.TextIter, match_end gtk.TextIter) (result bool, has_wrapped_around bool) {
-	iv, err := _I.Get(266, "SearchContext", "forward")
+	iv, err := _I.Get(266, "SearchContext", "forward", 76, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6144,7 +6144,7 @@ func (v SearchContext) Forward(iter gtk.TextIter, match_start gtk.TextIter, matc
 // [ user_data ] trans: nothing
 //
 func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(267, "SearchContext", "forward_async")
+	iv, err := _I.Get(267, "SearchContext", "forward_async", 76, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6175,7 +6175,7 @@ func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellabl
 // [ result1 ] trans: nothing
 //
 func (v SearchContext) ForwardFinish(result g.IAsyncResult, match_start gtk.TextIter, match_end gtk.TextIter) (result1 bool, has_wrapped_around bool, err error) {
-	iv, err := _I.Get(268, "SearchContext", "forward_finish")
+	iv, err := _I.Get(268, "SearchContext", "forward_finish", 76, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6204,7 +6204,7 @@ func (v SearchContext) ForwardFinish(result g.IAsyncResult, match_start gtk.Text
 // [ result ] trans: nothing
 //
 func (v SearchContext) GetBuffer() (result Buffer) {
-	iv, err := _I.Get(269, "SearchContext", "get_buffer")
+	iv, err := _I.Get(269, "SearchContext", "get_buffer", 76, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6222,7 +6222,7 @@ func (v SearchContext) GetBuffer() (result Buffer) {
 // [ result ] trans: nothing
 //
 func (v SearchContext) GetHighlight() (result bool) {
-	iv, err := _I.Get(270, "SearchContext", "get_highlight")
+	iv, err := _I.Get(270, "SearchContext", "get_highlight", 76, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6240,7 +6240,7 @@ func (v SearchContext) GetHighlight() (result bool) {
 // [ result ] trans: nothing
 //
 func (v SearchContext) GetMatchStyle() (result Style) {
-	iv, err := _I.Get(271, "SearchContext", "get_match_style")
+	iv, err := _I.Get(271, "SearchContext", "get_match_style", 76, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6262,7 +6262,7 @@ func (v SearchContext) GetMatchStyle() (result Style) {
 // [ result ] trans: nothing
 //
 func (v SearchContext) GetOccurrencePosition(match_start gtk.TextIter, match_end gtk.TextIter) (result int32) {
-	iv, err := _I.Get(272, "SearchContext", "get_occurrence_position")
+	iv, err := _I.Get(272, "SearchContext", "get_occurrence_position", 76, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6282,7 +6282,7 @@ func (v SearchContext) GetOccurrencePosition(match_start gtk.TextIter, match_end
 // [ result ] trans: nothing
 //
 func (v SearchContext) GetOccurrencesCount() (result int32) {
-	iv, err := _I.Get(273, "SearchContext", "get_occurrences_count")
+	iv, err := _I.Get(273, "SearchContext", "get_occurrences_count", 76, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6300,7 +6300,7 @@ func (v SearchContext) GetOccurrencesCount() (result int32) {
 // [ result ] trans: everything
 //
 func (v SearchContext) GetRegexError() (result g.Error) {
-	iv, err := _I.Get(274, "SearchContext", "get_regex_error")
+	iv, err := _I.Get(274, "SearchContext", "get_regex_error", 76, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6318,7 +6318,7 @@ func (v SearchContext) GetRegexError() (result g.Error) {
 // [ result ] trans: nothing
 //
 func (v SearchContext) GetSettings() (result SearchSettings) {
-	iv, err := _I.Get(275, "SearchContext", "get_settings")
+	iv, err := _I.Get(275, "SearchContext", "get_settings", 76, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6344,7 +6344,7 @@ func (v SearchContext) GetSettings() (result SearchSettings) {
 // [ result ] trans: nothing
 //
 func (v SearchContext) Replace(match_start gtk.TextIter, match_end gtk.TextIter, replace string, replace_length int32) (result bool, err error) {
-	iv, err := _I.Get(276, "SearchContext", "replace")
+	iv, err := _I.Get(276, "SearchContext", "replace", 76, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6374,7 +6374,7 @@ func (v SearchContext) Replace(match_start gtk.TextIter, match_end gtk.TextIter,
 // [ result ] trans: nothing
 //
 func (v SearchContext) ReplaceAll(replace string, replace_length int32) (result uint32, err error) {
-	iv, err := _I.Get(277, "SearchContext", "replace_all")
+	iv, err := _I.Get(277, "SearchContext", "replace_all", 76, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -6398,7 +6398,7 @@ func (v SearchContext) ReplaceAll(replace string, replace_length int32) (result 
 // [ highlight ] trans: nothing
 //
 func (v SearchContext) SetHighlight(highlight bool) {
-	iv, err := _I.Get(278, "SearchContext", "set_highlight")
+	iv, err := _I.Get(278, "SearchContext", "set_highlight", 76, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6414,7 +6414,7 @@ func (v SearchContext) SetHighlight(highlight bool) {
 // [ match_style ] trans: nothing
 //
 func (v SearchContext) SetMatchStyle(match_style IStyle) {
-	iv, err := _I.Get(279, "SearchContext", "set_match_style")
+	iv, err := _I.Get(279, "SearchContext", "set_match_style", 76, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6461,7 +6461,7 @@ func SearchSettingsGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewSearchSettings() (result SearchSettings) {
-	iv, err := _I.Get(280, "SearchSettings", "new")
+	iv, err := _I.Get(280, "SearchSettings", "new", 79, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6477,7 +6477,7 @@ func NewSearchSettings() (result SearchSettings) {
 // [ result ] trans: nothing
 //
 func (v SearchSettings) GetAtWordBoundaries() (result bool) {
-	iv, err := _I.Get(281, "SearchSettings", "get_at_word_boundaries")
+	iv, err := _I.Get(281, "SearchSettings", "get_at_word_boundaries", 79, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6495,7 +6495,7 @@ func (v SearchSettings) GetAtWordBoundaries() (result bool) {
 // [ result ] trans: nothing
 //
 func (v SearchSettings) GetCaseSensitive() (result bool) {
-	iv, err := _I.Get(282, "SearchSettings", "get_case_sensitive")
+	iv, err := _I.Get(282, "SearchSettings", "get_case_sensitive", 79, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6513,7 +6513,7 @@ func (v SearchSettings) GetCaseSensitive() (result bool) {
 // [ result ] trans: nothing
 //
 func (v SearchSettings) GetRegexEnabled() (result bool) {
-	iv, err := _I.Get(283, "SearchSettings", "get_regex_enabled")
+	iv, err := _I.Get(283, "SearchSettings", "get_regex_enabled", 79, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6531,7 +6531,7 @@ func (v SearchSettings) GetRegexEnabled() (result bool) {
 // [ result ] trans: nothing
 //
 func (v SearchSettings) GetSearchText() (result string) {
-	iv, err := _I.Get(284, "SearchSettings", "get_search_text")
+	iv, err := _I.Get(284, "SearchSettings", "get_search_text", 79, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6549,7 +6549,7 @@ func (v SearchSettings) GetSearchText() (result string) {
 // [ result ] trans: nothing
 //
 func (v SearchSettings) GetWrapAround() (result bool) {
-	iv, err := _I.Get(285, "SearchSettings", "get_wrap_around")
+	iv, err := _I.Get(285, "SearchSettings", "get_wrap_around", 79, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6567,7 +6567,7 @@ func (v SearchSettings) GetWrapAround() (result bool) {
 // [ at_word_boundaries ] trans: nothing
 //
 func (v SearchSettings) SetAtWordBoundaries(at_word_boundaries bool) {
-	iv, err := _I.Get(286, "SearchSettings", "set_at_word_boundaries")
+	iv, err := _I.Get(286, "SearchSettings", "set_at_word_boundaries", 79, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6583,7 +6583,7 @@ func (v SearchSettings) SetAtWordBoundaries(at_word_boundaries bool) {
 // [ case_sensitive ] trans: nothing
 //
 func (v SearchSettings) SetCaseSensitive(case_sensitive bool) {
-	iv, err := _I.Get(287, "SearchSettings", "set_case_sensitive")
+	iv, err := _I.Get(287, "SearchSettings", "set_case_sensitive", 79, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6599,7 +6599,7 @@ func (v SearchSettings) SetCaseSensitive(case_sensitive bool) {
 // [ regex_enabled ] trans: nothing
 //
 func (v SearchSettings) SetRegexEnabled(regex_enabled bool) {
-	iv, err := _I.Get(288, "SearchSettings", "set_regex_enabled")
+	iv, err := _I.Get(288, "SearchSettings", "set_regex_enabled", 79, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6615,7 +6615,7 @@ func (v SearchSettings) SetRegexEnabled(regex_enabled bool) {
 // [ search_text ] trans: nothing
 //
 func (v SearchSettings) SetSearchText(search_text string) {
-	iv, err := _I.Get(289, "SearchSettings", "set_search_text")
+	iv, err := _I.Get(289, "SearchSettings", "set_search_text", 79, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6633,7 +6633,7 @@ func (v SearchSettings) SetSearchText(search_text string) {
 // [ wrap_around ] trans: nothing
 //
 func (v SearchSettings) SetWrapAround(wrap_around bool) {
-	iv, err := _I.Get(290, "SearchSettings", "set_wrap_around")
+	iv, err := _I.Get(290, "SearchSettings", "set_wrap_around", 79, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6706,7 +6706,7 @@ func SpaceDrawerGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewSpaceDrawer() (result SpaceDrawer) {
-	iv, err := _I.Get(291, "SpaceDrawer", "new")
+	iv, err := _I.Get(291, "SpaceDrawer", "new", 84, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6726,7 +6726,7 @@ func NewSpaceDrawer() (result SpaceDrawer) {
 // [ flags ] trans: nothing
 //
 func (v SpaceDrawer) BindMatrixSetting(settings g.ISettings, key string, flags g.SettingsBindFlags) {
-	iv, err := _I.Get(292, "SpaceDrawer", "bind_matrix_setting")
+	iv, err := _I.Get(292, "SpaceDrawer", "bind_matrix_setting", 84, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6750,7 +6750,7 @@ func (v SpaceDrawer) BindMatrixSetting(settings g.ISettings, key string, flags g
 // [ result ] trans: nothing
 //
 func (v SpaceDrawer) GetEnableMatrix() (result bool) {
-	iv, err := _I.Get(293, "SpaceDrawer", "get_enable_matrix")
+	iv, err := _I.Get(293, "SpaceDrawer", "get_enable_matrix", 84, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6768,7 +6768,7 @@ func (v SpaceDrawer) GetEnableMatrix() (result bool) {
 // [ result ] trans: everything
 //
 func (v SpaceDrawer) GetMatrix() (result g.Variant) {
-	iv, err := _I.Get(294, "SpaceDrawer", "get_matrix")
+	iv, err := _I.Get(294, "SpaceDrawer", "get_matrix", 84, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6788,7 +6788,7 @@ func (v SpaceDrawer) GetMatrix() (result g.Variant) {
 // [ result ] trans: nothing
 //
 func (v SpaceDrawer) GetTypesForLocations(locations SpaceLocationFlags) (result SpaceTypeFlags) {
-	iv, err := _I.Get(295, "SpaceDrawer", "get_types_for_locations")
+	iv, err := _I.Get(295, "SpaceDrawer", "get_types_for_locations", 84, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6807,7 +6807,7 @@ func (v SpaceDrawer) GetTypesForLocations(locations SpaceLocationFlags) (result 
 // [ enable_matrix ] trans: nothing
 //
 func (v SpaceDrawer) SetEnableMatrix(enable_matrix bool) {
-	iv, err := _I.Get(296, "SpaceDrawer", "set_enable_matrix")
+	iv, err := _I.Get(296, "SpaceDrawer", "set_enable_matrix", 84, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6823,7 +6823,7 @@ func (v SpaceDrawer) SetEnableMatrix(enable_matrix bool) {
 // [ matrix ] trans: nothing
 //
 func (v SpaceDrawer) SetMatrix(matrix g.Variant) {
-	iv, err := _I.Get(297, "SpaceDrawer", "set_matrix")
+	iv, err := _I.Get(297, "SpaceDrawer", "set_matrix", 84, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6841,7 +6841,7 @@ func (v SpaceDrawer) SetMatrix(matrix g.Variant) {
 // [ types ] trans: nothing
 //
 func (v SpaceDrawer) SetTypesForLocations(locations SpaceLocationFlags, types SpaceTypeFlags) {
-	iv, err := _I.Get(298, "SpaceDrawer", "set_types_for_locations")
+	iv, err := _I.Get(298, "SpaceDrawer", "set_types_for_locations", 84, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6918,7 +6918,7 @@ func StyleGetType() gi.GType {
 // [ tag ] trans: nothing
 //
 func (v Style) Apply(tag gtk.ITextTag) {
-	iv, err := _I.Get(299, "Style", "apply")
+	iv, err := _I.Get(299, "Style", "apply", 89, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6938,7 +6938,7 @@ func (v Style) Apply(tag gtk.ITextTag) {
 // [ result ] trans: everything
 //
 func (v Style) Copy() (result Style) {
-	iv, err := _I.Get(300, "Style", "copy")
+	iv, err := _I.Get(300, "Style", "copy", 89, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6973,7 +6973,7 @@ func StyleSchemeGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v StyleScheme) GetAuthors() (result gi.CStrArray) {
-	iv, err := _I.Get(301, "StyleScheme", "get_authors")
+	iv, err := _I.Get(301, "StyleScheme", "get_authors", 91, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6992,7 +6992,7 @@ func (v StyleScheme) GetAuthors() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v StyleScheme) GetDescription() (result string) {
-	iv, err := _I.Get(302, "StyleScheme", "get_description")
+	iv, err := _I.Get(302, "StyleScheme", "get_description", 91, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7010,7 +7010,7 @@ func (v StyleScheme) GetDescription() (result string) {
 // [ result ] trans: nothing
 //
 func (v StyleScheme) GetFilename() (result string) {
-	iv, err := _I.Get(303, "StyleScheme", "get_filename")
+	iv, err := _I.Get(303, "StyleScheme", "get_filename", 91, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7028,7 +7028,7 @@ func (v StyleScheme) GetFilename() (result string) {
 // [ result ] trans: nothing
 //
 func (v StyleScheme) GetId() (result string) {
-	iv, err := _I.Get(304, "StyleScheme", "get_id")
+	iv, err := _I.Get(304, "StyleScheme", "get_id", 91, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7046,7 +7046,7 @@ func (v StyleScheme) GetId() (result string) {
 // [ result ] trans: nothing
 //
 func (v StyleScheme) GetName() (result string) {
-	iv, err := _I.Get(305, "StyleScheme", "get_name")
+	iv, err := _I.Get(305, "StyleScheme", "get_name", 91, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7066,7 +7066,7 @@ func (v StyleScheme) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v StyleScheme) GetStyle(style_id string) (result Style) {
-	iv, err := _I.Get(306, "StyleScheme", "get_style")
+	iv, err := _I.Get(306, "StyleScheme", "get_style", 91, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7101,7 +7101,7 @@ func StyleSchemeChooserGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v *StyleSchemeChooserIfc) GetStyleScheme() (result StyleScheme) {
-	iv, err := _I.Get(307, "StyleSchemeChooser", "get_style_scheme")
+	iv, err := _I.Get(307, "StyleSchemeChooser", "get_style_scheme", 92, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7119,7 +7119,7 @@ func (v *StyleSchemeChooserIfc) GetStyleScheme() (result StyleScheme) {
 // [ scheme ] trans: nothing
 //
 func (v *StyleSchemeChooserIfc) SetStyleScheme(scheme IStyleScheme) {
-	iv, err := _I.Get(308, "StyleSchemeChooser", "set_style_scheme")
+	iv, err := _I.Get(308, "StyleSchemeChooser", "set_style_scheme", 92, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7156,7 +7156,7 @@ func StyleSchemeChooserButtonGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewStyleSchemeChooserButton() (result StyleSchemeChooserButton) {
-	iv, err := _I.Get(309, "StyleSchemeChooserButton", "new")
+	iv, err := _I.Get(309, "StyleSchemeChooserButton", "new", 93, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7193,7 +7193,7 @@ func StyleSchemeChooserWidgetGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewStyleSchemeChooserWidget() (result StyleSchemeChooserWidget) {
-	iv, err := _I.Get(310, "StyleSchemeChooserWidget", "new")
+	iv, err := _I.Get(310, "StyleSchemeChooserWidget", "new", 96, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7228,7 +7228,7 @@ func StyleSchemeManagerGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewStyleSchemeManager() (result StyleSchemeManager) {
-	iv, err := _I.Get(311, "StyleSchemeManager", "new")
+	iv, err := _I.Get(311, "StyleSchemeManager", "new", 99, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7244,7 +7244,7 @@ func NewStyleSchemeManager() (result StyleSchemeManager) {
 // [ path ] trans: nothing
 //
 func (v StyleSchemeManager) AppendSearchPath(path string) {
-	iv, err := _I.Get(313, "StyleSchemeManager", "append_search_path")
+	iv, err := _I.Get(313, "StyleSchemeManager", "append_search_path", 99, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7260,7 +7260,7 @@ func (v StyleSchemeManager) AppendSearchPath(path string) {
 // gtk_source_style_scheme_manager_force_rescan
 //
 func (v StyleSchemeManager) ForceRescan() {
-	iv, err := _I.Get(314, "StyleSchemeManager", "force_rescan")
+	iv, err := _I.Get(314, "StyleSchemeManager", "force_rescan", 99, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7277,7 +7277,7 @@ func (v StyleSchemeManager) ForceRescan() {
 // [ result ] trans: nothing
 //
 func (v StyleSchemeManager) GetScheme(scheme_id string) (result StyleScheme) {
-	iv, err := _I.Get(315, "StyleSchemeManager", "get_scheme")
+	iv, err := _I.Get(315, "StyleSchemeManager", "get_scheme", 99, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7298,7 +7298,7 @@ func (v StyleSchemeManager) GetScheme(scheme_id string) (result StyleScheme) {
 // [ result ] trans: nothing
 //
 func (v StyleSchemeManager) GetSchemeIds() (result gi.CStrArray) {
-	iv, err := _I.Get(316, "StyleSchemeManager", "get_scheme_ids")
+	iv, err := _I.Get(316, "StyleSchemeManager", "get_scheme_ids", 99, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7317,7 +7317,7 @@ func (v StyleSchemeManager) GetSchemeIds() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v StyleSchemeManager) GetSearchPath() (result gi.CStrArray) {
-	iv, err := _I.Get(317, "StyleSchemeManager", "get_search_path")
+	iv, err := _I.Get(317, "StyleSchemeManager", "get_search_path", 99, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7336,7 +7336,7 @@ func (v StyleSchemeManager) GetSearchPath() (result gi.CStrArray) {
 // [ path ] trans: nothing
 //
 func (v StyleSchemeManager) PrependSearchPath(path string) {
-	iv, err := _I.Get(318, "StyleSchemeManager", "prepend_search_path")
+	iv, err := _I.Get(318, "StyleSchemeManager", "prepend_search_path", 99, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7354,7 +7354,7 @@ func (v StyleSchemeManager) PrependSearchPath(path string) {
 // [ path ] trans: nothing
 //
 func (v StyleSchemeManager) SetSearchPath(path gi.CStrArray) {
-	iv, err := _I.Get(319, "StyleSchemeManager", "set_search_path")
+	iv, err := _I.Get(319, "StyleSchemeManager", "set_search_path", 99, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7409,7 +7409,7 @@ func TagGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewTag(name string) (result Tag) {
-	iv, err := _I.Get(320, "Tag", "new")
+	iv, err := _I.Get(320, "Tag", "new", 103, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7443,7 +7443,7 @@ func UndoManagerGetType() gi.GType {
 // gtk_source_undo_manager_begin_not_undoable_action
 //
 func (v *UndoManagerIfc) BeginNotUndoableAction() {
-	iv, err := _I.Get(321, "UndoManager", "begin_not_undoable_action")
+	iv, err := _I.Get(321, "UndoManager", "begin_not_undoable_action", 105, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7458,7 +7458,7 @@ func (v *UndoManagerIfc) BeginNotUndoableAction() {
 // [ result ] trans: nothing
 //
 func (v *UndoManagerIfc) CanRedo() (result bool) {
-	iv, err := _I.Get(322, "UndoManager", "can_redo")
+	iv, err := _I.Get(322, "UndoManager", "can_redo", 105, 1, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7474,7 +7474,7 @@ func (v *UndoManagerIfc) CanRedo() (result bool) {
 // gtk_source_undo_manager_can_redo_changed
 //
 func (v *UndoManagerIfc) CanRedoChanged() {
-	iv, err := _I.Get(323, "UndoManager", "can_redo_changed")
+	iv, err := _I.Get(323, "UndoManager", "can_redo_changed", 105, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7489,7 +7489,7 @@ func (v *UndoManagerIfc) CanRedoChanged() {
 // [ result ] trans: nothing
 //
 func (v *UndoManagerIfc) CanUndo() (result bool) {
-	iv, err := _I.Get(324, "UndoManager", "can_undo")
+	iv, err := _I.Get(324, "UndoManager", "can_undo", 105, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7505,7 +7505,7 @@ func (v *UndoManagerIfc) CanUndo() (result bool) {
 // gtk_source_undo_manager_can_undo_changed
 //
 func (v *UndoManagerIfc) CanUndoChanged() {
-	iv, err := _I.Get(325, "UndoManager", "can_undo_changed")
+	iv, err := _I.Get(325, "UndoManager", "can_undo_changed", 105, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7518,7 +7518,7 @@ func (v *UndoManagerIfc) CanUndoChanged() {
 // gtk_source_undo_manager_end_not_undoable_action
 //
 func (v *UndoManagerIfc) EndNotUndoableAction() {
-	iv, err := _I.Get(326, "UndoManager", "end_not_undoable_action")
+	iv, err := _I.Get(326, "UndoManager", "end_not_undoable_action", 105, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7531,7 +7531,7 @@ func (v *UndoManagerIfc) EndNotUndoableAction() {
 // gtk_source_undo_manager_redo
 //
 func (v *UndoManagerIfc) Redo() {
-	iv, err := _I.Get(327, "UndoManager", "redo")
+	iv, err := _I.Get(327, "UndoManager", "redo", 105, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7544,7 +7544,7 @@ func (v *UndoManagerIfc) Redo() {
 // gtk_source_undo_manager_undo
 //
 func (v *UndoManagerIfc) Undo() {
-	iv, err := _I.Get(328, "UndoManager", "undo")
+	iv, err := _I.Get(328, "UndoManager", "undo", 105, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7576,7 +7576,7 @@ func ViewGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func NewView() (result View) {
-	iv, err := _I.Get(329, "View", "new")
+	iv, err := _I.Get(329, "View", "new", 107, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7594,7 +7594,7 @@ func NewView() (result View) {
 // [ result ] trans: nothing
 //
 func NewViewWithBuffer(buffer IBuffer) (result View) {
-	iv, err := _I.Get(330, "View", "new_with_buffer")
+	iv, err := _I.Get(330, "View", "new_with_buffer", 107, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7616,7 +7616,7 @@ func NewViewWithBuffer(buffer IBuffer) (result View) {
 // [ result ] trans: nothing
 //
 func (v View) GetAutoIndent() (result bool) {
-	iv, err := _I.Get(331, "View", "get_auto_indent")
+	iv, err := _I.Get(331, "View", "get_auto_indent", 107, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7634,7 +7634,7 @@ func (v View) GetAutoIndent() (result bool) {
 // [ result ] trans: nothing
 //
 func (v View) GetBackgroundPattern() (result BackgroundPatternTypeEnum) {
-	iv, err := _I.Get(332, "View", "get_background_pattern")
+	iv, err := _I.Get(332, "View", "get_background_pattern", 107, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7652,7 +7652,7 @@ func (v View) GetBackgroundPattern() (result BackgroundPatternTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v View) GetCompletion() (result Completion) {
-	iv, err := _I.Get(333, "View", "get_completion")
+	iv, err := _I.Get(333, "View", "get_completion", 107, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7672,7 +7672,7 @@ func (v View) GetCompletion() (result Completion) {
 // [ result ] trans: nothing
 //
 func (v View) GetGutter(window_type gtk.TextWindowTypeEnum) (result Gutter) {
-	iv, err := _I.Get(334, "View", "get_gutter")
+	iv, err := _I.Get(334, "View", "get_gutter", 107, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7691,7 +7691,7 @@ func (v View) GetGutter(window_type gtk.TextWindowTypeEnum) (result Gutter) {
 // [ result ] trans: nothing
 //
 func (v View) GetHighlightCurrentLine() (result bool) {
-	iv, err := _I.Get(335, "View", "get_highlight_current_line")
+	iv, err := _I.Get(335, "View", "get_highlight_current_line", 107, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7709,7 +7709,7 @@ func (v View) GetHighlightCurrentLine() (result bool) {
 // [ result ] trans: nothing
 //
 func (v View) GetIndentOnTab() (result bool) {
-	iv, err := _I.Get(336, "View", "get_indent_on_tab")
+	iv, err := _I.Get(336, "View", "get_indent_on_tab", 107, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7727,7 +7727,7 @@ func (v View) GetIndentOnTab() (result bool) {
 // [ result ] trans: nothing
 //
 func (v View) GetIndentWidth() (result int32) {
-	iv, err := _I.Get(337, "View", "get_indent_width")
+	iv, err := _I.Get(337, "View", "get_indent_width", 107, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7745,7 +7745,7 @@ func (v View) GetIndentWidth() (result int32) {
 // [ result ] trans: nothing
 //
 func (v View) GetInsertSpacesInsteadOfTabs() (result bool) {
-	iv, err := _I.Get(338, "View", "get_insert_spaces_instead_of_tabs")
+	iv, err := _I.Get(338, "View", "get_insert_spaces_instead_of_tabs", 107, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7767,7 +7767,7 @@ func (v View) GetInsertSpacesInsteadOfTabs() (result bool) {
 // [ result ] trans: nothing
 //
 func (v View) GetMarkAttributes(category string, priority int32) (result MarkAttributes) {
-	iv, err := _I.Get(339, "View", "get_mark_attributes")
+	iv, err := _I.Get(339, "View", "get_mark_attributes", 107, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7789,7 +7789,7 @@ func (v View) GetMarkAttributes(category string, priority int32) (result MarkAtt
 // [ result ] trans: nothing
 //
 func (v View) GetRightMarginPosition() (result uint32) {
-	iv, err := _I.Get(340, "View", "get_right_margin_position")
+	iv, err := _I.Get(340, "View", "get_right_margin_position", 107, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7807,7 +7807,7 @@ func (v View) GetRightMarginPosition() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v View) GetShowLineMarks() (result bool) {
-	iv, err := _I.Get(341, "View", "get_show_line_marks")
+	iv, err := _I.Get(341, "View", "get_show_line_marks", 107, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7825,7 +7825,7 @@ func (v View) GetShowLineMarks() (result bool) {
 // [ result ] trans: nothing
 //
 func (v View) GetShowLineNumbers() (result bool) {
-	iv, err := _I.Get(342, "View", "get_show_line_numbers")
+	iv, err := _I.Get(342, "View", "get_show_line_numbers", 107, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7843,7 +7843,7 @@ func (v View) GetShowLineNumbers() (result bool) {
 // [ result ] trans: nothing
 //
 func (v View) GetShowRightMargin() (result bool) {
-	iv, err := _I.Get(343, "View", "get_show_right_margin")
+	iv, err := _I.Get(343, "View", "get_show_right_margin", 107, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7861,7 +7861,7 @@ func (v View) GetShowRightMargin() (result bool) {
 // [ result ] trans: nothing
 //
 func (v View) GetSmartBackspace() (result bool) {
-	iv, err := _I.Get(344, "View", "get_smart_backspace")
+	iv, err := _I.Get(344, "View", "get_smart_backspace", 107, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7879,7 +7879,7 @@ func (v View) GetSmartBackspace() (result bool) {
 // [ result ] trans: nothing
 //
 func (v View) GetSmartHomeEnd() (result SmartHomeEndTypeEnum) {
-	iv, err := _I.Get(345, "View", "get_smart_home_end")
+	iv, err := _I.Get(345, "View", "get_smart_home_end", 107, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7897,7 +7897,7 @@ func (v View) GetSmartHomeEnd() (result SmartHomeEndTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v View) GetSpaceDrawer() (result SpaceDrawer) {
-	iv, err := _I.Get(346, "View", "get_space_drawer")
+	iv, err := _I.Get(346, "View", "get_space_drawer", 107, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7915,7 +7915,7 @@ func (v View) GetSpaceDrawer() (result SpaceDrawer) {
 // [ result ] trans: nothing
 //
 func (v View) GetTabWidth() (result uint32) {
-	iv, err := _I.Get(347, "View", "get_tab_width")
+	iv, err := _I.Get(347, "View", "get_tab_width", 107, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7935,7 +7935,7 @@ func (v View) GetTabWidth() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v View) GetVisualColumn(iter gtk.TextIter) (result uint32) {
-	iv, err := _I.Get(348, "View", "get_visual_column")
+	iv, err := _I.Get(348, "View", "get_visual_column", 107, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7956,7 +7956,7 @@ func (v View) GetVisualColumn(iter gtk.TextIter) (result uint32) {
 // [ end ] trans: nothing
 //
 func (v View) IndentLines(start gtk.TextIter, end gtk.TextIter) {
-	iv, err := _I.Get(349, "View", "indent_lines")
+	iv, err := _I.Get(349, "View", "indent_lines", 107, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7973,7 +7973,7 @@ func (v View) IndentLines(start gtk.TextIter, end gtk.TextIter) {
 // [ enable ] trans: nothing
 //
 func (v View) SetAutoIndent(enable bool) {
-	iv, err := _I.Get(350, "View", "set_auto_indent")
+	iv, err := _I.Get(350, "View", "set_auto_indent", 107, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7989,7 +7989,7 @@ func (v View) SetAutoIndent(enable bool) {
 // [ background_pattern ] trans: nothing
 //
 func (v View) SetBackgroundPattern(background_pattern BackgroundPatternTypeEnum) {
-	iv, err := _I.Get(351, "View", "set_background_pattern")
+	iv, err := _I.Get(351, "View", "set_background_pattern", 107, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8005,7 +8005,7 @@ func (v View) SetBackgroundPattern(background_pattern BackgroundPatternTypeEnum)
 // [ highlight ] trans: nothing
 //
 func (v View) SetHighlightCurrentLine(highlight bool) {
-	iv, err := _I.Get(352, "View", "set_highlight_current_line")
+	iv, err := _I.Get(352, "View", "set_highlight_current_line", 107, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8021,7 +8021,7 @@ func (v View) SetHighlightCurrentLine(highlight bool) {
 // [ enable ] trans: nothing
 //
 func (v View) SetIndentOnTab(enable bool) {
-	iv, err := _I.Get(353, "View", "set_indent_on_tab")
+	iv, err := _I.Get(353, "View", "set_indent_on_tab", 107, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8037,7 +8037,7 @@ func (v View) SetIndentOnTab(enable bool) {
 // [ width ] trans: nothing
 //
 func (v View) SetIndentWidth(width int32) {
-	iv, err := _I.Get(354, "View", "set_indent_width")
+	iv, err := _I.Get(354, "View", "set_indent_width", 107, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8053,7 +8053,7 @@ func (v View) SetIndentWidth(width int32) {
 // [ enable ] trans: nothing
 //
 func (v View) SetInsertSpacesInsteadOfTabs(enable bool) {
-	iv, err := _I.Get(355, "View", "set_insert_spaces_instead_of_tabs")
+	iv, err := _I.Get(355, "View", "set_insert_spaces_instead_of_tabs", 107, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8073,7 +8073,7 @@ func (v View) SetInsertSpacesInsteadOfTabs(enable bool) {
 // [ priority ] trans: nothing
 //
 func (v View) SetMarkAttributes(category string, attributes IMarkAttributes, priority int32) {
-	iv, err := _I.Get(356, "View", "set_mark_attributes")
+	iv, err := _I.Get(356, "View", "set_mark_attributes", 107, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8097,7 +8097,7 @@ func (v View) SetMarkAttributes(category string, attributes IMarkAttributes, pri
 // [ pos ] trans: nothing
 //
 func (v View) SetRightMarginPosition(pos uint32) {
-	iv, err := _I.Get(357, "View", "set_right_margin_position")
+	iv, err := _I.Get(357, "View", "set_right_margin_position", 107, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8113,7 +8113,7 @@ func (v View) SetRightMarginPosition(pos uint32) {
 // [ show ] trans: nothing
 //
 func (v View) SetShowLineMarks(show bool) {
-	iv, err := _I.Get(358, "View", "set_show_line_marks")
+	iv, err := _I.Get(358, "View", "set_show_line_marks", 107, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8129,7 +8129,7 @@ func (v View) SetShowLineMarks(show bool) {
 // [ show ] trans: nothing
 //
 func (v View) SetShowLineNumbers(show bool) {
-	iv, err := _I.Get(359, "View", "set_show_line_numbers")
+	iv, err := _I.Get(359, "View", "set_show_line_numbers", 107, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8145,7 +8145,7 @@ func (v View) SetShowLineNumbers(show bool) {
 // [ show ] trans: nothing
 //
 func (v View) SetShowRightMargin(show bool) {
-	iv, err := _I.Get(360, "View", "set_show_right_margin")
+	iv, err := _I.Get(360, "View", "set_show_right_margin", 107, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8161,7 +8161,7 @@ func (v View) SetShowRightMargin(show bool) {
 // [ smart_backspace ] trans: nothing
 //
 func (v View) SetSmartBackspace(smart_backspace bool) {
-	iv, err := _I.Get(361, "View", "set_smart_backspace")
+	iv, err := _I.Get(361, "View", "set_smart_backspace", 107, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8177,7 +8177,7 @@ func (v View) SetSmartBackspace(smart_backspace bool) {
 // [ smart_home_end ] trans: nothing
 //
 func (v View) SetSmartHomeEnd(smart_home_end SmartHomeEndTypeEnum) {
-	iv, err := _I.Get(362, "View", "set_smart_home_end")
+	iv, err := _I.Get(362, "View", "set_smart_home_end", 107, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8193,7 +8193,7 @@ func (v View) SetSmartHomeEnd(smart_home_end SmartHomeEndTypeEnum) {
 // [ width ] trans: nothing
 //
 func (v View) SetTabWidth(width uint32) {
-	iv, err := _I.Get(363, "View", "set_tab_width")
+	iv, err := _I.Get(363, "View", "set_tab_width", 107, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8211,7 +8211,7 @@ func (v View) SetTabWidth(width uint32) {
 // [ end ] trans: nothing
 //
 func (v View) UnindentLines(start gtk.TextIter, end gtk.TextIter) {
-	iv, err := _I.Get(364, "View", "unindent_lines")
+	iv, err := _I.Get(364, "View", "unindent_lines", 107, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8253,7 +8253,7 @@ func ViewPrivateGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func CompletionErrorQuark() (result uint32) {
-	iv, err := _I.Get(365, "completion_error_quark", "")
+	iv, err := _I.Get(365, "completion_error_quark", "", 111, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8269,7 +8269,7 @@ func CompletionErrorQuark() (result uint32) {
 // [ result ] trans: container
 //
 func EncodingGetAll() (result g.SList) {
-	iv, err := _I.Get(366, "encoding_get_all", "")
+	iv, err := _I.Get(366, "encoding_get_all", "", 112, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8285,7 +8285,7 @@ func EncodingGetAll() (result g.SList) {
 // [ result ] trans: nothing
 //
 func EncodingGetCurrent() (result Encoding) {
-	iv, err := _I.Get(367, "encoding_get_current", "")
+	iv, err := _I.Get(367, "encoding_get_current", "", 113, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8301,7 +8301,7 @@ func EncodingGetCurrent() (result Encoding) {
 // [ result ] trans: container
 //
 func EncodingGetDefaultCandidates() (result g.SList) {
-	iv, err := _I.Get(368, "encoding_get_default_candidates", "")
+	iv, err := _I.Get(368, "encoding_get_default_candidates", "", 114, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8319,7 +8319,7 @@ func EncodingGetDefaultCandidates() (result g.SList) {
 // [ result ] trans: nothing
 //
 func EncodingGetFromCharset(charset string) (result Encoding) {
-	iv, err := _I.Get(369, "encoding_get_from_charset", "")
+	iv, err := _I.Get(369, "encoding_get_from_charset", "", 115, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8339,7 +8339,7 @@ func EncodingGetFromCharset(charset string) (result Encoding) {
 // [ result ] trans: nothing
 //
 func EncodingGetUtf8() (result Encoding) {
-	iv, err := _I.Get(370, "encoding_get_utf8", "")
+	iv, err := _I.Get(370, "encoding_get_utf8", "", 116, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8355,7 +8355,7 @@ func EncodingGetUtf8() (result Encoding) {
 // [ result ] trans: nothing
 //
 func FileLoaderErrorQuark() (result uint32) {
-	iv, err := _I.Get(371, "file_loader_error_quark", "")
+	iv, err := _I.Get(371, "file_loader_error_quark", "", 117, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8371,7 +8371,7 @@ func FileLoaderErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func FileSaverErrorQuark() (result uint32) {
-	iv, err := _I.Get(372, "file_saver_error_quark", "")
+	iv, err := _I.Get(372, "file_saver_error_quark", "", 118, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8385,7 +8385,7 @@ func FileSaverErrorQuark() (result uint32) {
 // gtk_source_finalize
 //
 func Finalize() {
-	iv, err := _I.Get(373, "finalize", "")
+	iv, err := _I.Get(373, "finalize", "", 119, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8396,7 +8396,7 @@ func Finalize() {
 // gtk_source_init
 //
 func Init() {
-	iv, err := _I.Get(374, "init", "")
+	iv, err := _I.Get(374, "init", "", 120, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8411,7 +8411,7 @@ func Init() {
 // [ result ] trans: everything
 //
 func UtilsEscapeSearchText(text string) (result string) {
-	iv, err := _I.Get(375, "utils_escape_search_text", "")
+	iv, err := _I.Get(375, "utils_escape_search_text", "", 121, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8433,7 +8433,7 @@ func UtilsEscapeSearchText(text string) (result string) {
 // [ result ] trans: everything
 //
 func UtilsUnescapeSearchText(text string) (result string) {
-	iv, err := _I.Get(376, "utils_unescape_search_text", "")
+	iv, err := _I.Get(376, "utils_unescape_search_text", "", 122, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

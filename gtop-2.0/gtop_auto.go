@@ -43,7 +43,7 @@ func glibtopGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v glibtop) CallL(command uint32, send_size uint64, send_buf unsafe.Pointer, recv_size uint64, recv_buf unsafe.Pointer) (result unsafe.Pointer) {
-	iv, err := _I.Get(0, "glibtop", "call_l")
+	iv, err := _I.Get(0, "glibtop", "call_l", 360, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -76,7 +76,7 @@ func (v glibtop) CallL(command uint32, send_size uint64, send_buf unsafe.Pointer
 // [ result ] trans: nothing
 //
 func (v glibtop) CallS(command uint32, send_size uint64, send_buf unsafe.Pointer, recv_size uint64, recv_buf unsafe.Pointer) (result unsafe.Pointer) {
-	iv, err := _I.Get(1, "glibtop", "call_s")
+	iv, err := _I.Get(1, "glibtop", "call_s", 360, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -97,7 +97,7 @@ func (v glibtop) CallS(command uint32, send_size uint64, send_buf unsafe.Pointer
 // glibtop_close_p
 //
 func (v glibtop) CloseP() {
-	iv, err := _I.Get(2, "glibtop", "close_p")
+	iv, err := _I.Get(2, "glibtop", "close_p", 360, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -110,7 +110,7 @@ func (v glibtop) CloseP() {
 // glibtop_close_r
 //
 func (v glibtop) CloseR() {
-	iv, err := _I.Get(3, "glibtop", "close_r")
+	iv, err := _I.Get(3, "glibtop", "close_r", 360, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -123,7 +123,7 @@ func (v glibtop) CloseR() {
 // glibtop_close_s
 //
 func (v glibtop) CloseS() {
-	iv, err := _I.Get(4, "glibtop", "close_s")
+	iv, err := _I.Get(4, "glibtop", "close_s", 360, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -138,7 +138,7 @@ func (v glibtop) CloseS() {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetCpuL(buf glibtop_cpu) {
-	iv, err := _I.Get(5, "glibtop", "get_cpu_l")
+	iv, err := _I.Get(5, "glibtop", "get_cpu_l", 360, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -154,7 +154,7 @@ func (v glibtop) GetCpuL(buf glibtop_cpu) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetCpuS(buf glibtop_cpu) {
-	iv, err := _I.Get(6, "glibtop", "get_cpu_s")
+	iv, err := _I.Get(6, "glibtop", "get_cpu_s", 360, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -172,7 +172,7 @@ func (v glibtop) GetCpuS(buf glibtop_cpu) {
 // [ mount_dir ] trans: nothing
 //
 func (v glibtop) GetFsusageL(buf glibtop_fsusage, mount_dir string) {
-	iv, err := _I.Get(7, "glibtop", "get_fsusage_l")
+	iv, err := _I.Get(7, "glibtop", "get_fsusage_l", 360, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -193,7 +193,7 @@ func (v glibtop) GetFsusageL(buf glibtop_fsusage, mount_dir string) {
 // [ mount_dir ] trans: nothing
 //
 func (v glibtop) GetFsusageS(buf glibtop_fsusage, mount_dir string) {
-	iv, err := _I.Get(8, "glibtop", "get_fsusage_s")
+	iv, err := _I.Get(8, "glibtop", "get_fsusage_s", 360, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -212,7 +212,7 @@ func (v glibtop) GetFsusageS(buf glibtop_fsusage, mount_dir string) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetLoadavgL(buf glibtop_loadavg) {
-	iv, err := _I.Get(9, "glibtop", "get_loadavg_l")
+	iv, err := _I.Get(9, "glibtop", "get_loadavg_l", 360, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -228,7 +228,7 @@ func (v glibtop) GetLoadavgL(buf glibtop_loadavg) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetLoadavgS(buf glibtop_loadavg) {
-	iv, err := _I.Get(10, "glibtop", "get_loadavg_s")
+	iv, err := _I.Get(10, "glibtop", "get_loadavg_s", 360, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -244,7 +244,7 @@ func (v glibtop) GetLoadavgS(buf glibtop_loadavg) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetMemL(buf glibtop_mem) {
-	iv, err := _I.Get(11, "glibtop", "get_mem_l")
+	iv, err := _I.Get(11, "glibtop", "get_mem_l", 360, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -260,7 +260,7 @@ func (v glibtop) GetMemL(buf glibtop_mem) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetMemS(buf glibtop_mem) {
-	iv, err := _I.Get(12, "glibtop", "get_mem_s")
+	iv, err := _I.Get(12, "glibtop", "get_mem_s", 360, 12, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -280,7 +280,7 @@ func (v glibtop) GetMemS(buf glibtop_mem) {
 // [ result ] trans: nothing
 //
 func (v glibtop) GetMountlistL(buf glibtop_mountlist, all_fs int32) (result glibtop_mountentry) {
-	iv, err := _I.Get(13, "glibtop", "get_mountlist_l")
+	iv, err := _I.Get(13, "glibtop", "get_mountlist_l", 360, 13, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -304,7 +304,7 @@ func (v glibtop) GetMountlistL(buf glibtop_mountlist, all_fs int32) (result glib
 // [ result ] trans: nothing
 //
 func (v glibtop) GetMountlistS(buf glibtop_mountlist, all_fs int32) (result glibtop_mountentry) {
-	iv, err := _I.Get(14, "glibtop", "get_mountlist_s")
+	iv, err := _I.Get(14, "glibtop", "get_mountlist_s", 360, 14, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -324,7 +324,7 @@ func (v glibtop) GetMountlistS(buf glibtop_mountlist, all_fs int32) (result glib
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetMsgLimitsL(buf glibtop_msg_limits) {
-	iv, err := _I.Get(15, "glibtop", "get_msg_limits_l")
+	iv, err := _I.Get(15, "glibtop", "get_msg_limits_l", 360, 15, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -340,7 +340,7 @@ func (v glibtop) GetMsgLimitsL(buf glibtop_msg_limits) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetMsgLimitsS(buf glibtop_msg_limits) {
-	iv, err := _I.Get(16, "glibtop", "get_msg_limits_s")
+	iv, err := _I.Get(16, "glibtop", "get_msg_limits_s", 360, 16, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -358,7 +358,7 @@ func (v glibtop) GetMsgLimitsS(buf glibtop_msg_limits) {
 // [ result ] trans: nothing
 //
 func (v glibtop) GetNetlistL(buf glibtop_netlist) (result gi.CStrArray) {
-	iv, err := _I.Get(17, "glibtop", "get_netlist_l")
+	iv, err := _I.Get(17, "glibtop", "get_netlist_l", 360, 17, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -380,7 +380,7 @@ func (v glibtop) GetNetlistL(buf glibtop_netlist) (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v glibtop) GetNetlistS(buf glibtop_netlist) (result gi.CStrArray) {
-	iv, err := _I.Get(18, "glibtop", "get_netlist_s")
+	iv, err := _I.Get(18, "glibtop", "get_netlist_s", 360, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -402,7 +402,7 @@ func (v glibtop) GetNetlistS(buf glibtop_netlist) (result gi.CStrArray) {
 // [ interface1 ] trans: nothing
 //
 func (v glibtop) GetNetloadL(buf glibtop_netload, interface1 string) {
-	iv, err := _I.Get(19, "glibtop", "get_netload_l")
+	iv, err := _I.Get(19, "glibtop", "get_netload_l", 360, 19, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -423,7 +423,7 @@ func (v glibtop) GetNetloadL(buf glibtop_netload, interface1 string) {
 // [ interface1 ] trans: nothing
 //
 func (v glibtop) GetNetloadS(buf glibtop_netload, interface1 string) {
-	iv, err := _I.Get(20, "glibtop", "get_netload_s")
+	iv, err := _I.Get(20, "glibtop", "get_netload_s", 360, 20, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -448,7 +448,7 @@ func (v glibtop) GetNetloadS(buf glibtop_netload, interface1 string) {
 // [ result ] trans: nothing
 //
 func (v glibtop) GetParameterL(parameter uint32, data_ptr unsafe.Pointer, data_size uint64) (result uint64) {
-	iv, err := _I.Get(21, "glibtop", "get_parameter_l")
+	iv, err := _I.Get(21, "glibtop", "get_parameter_l", 360, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -471,7 +471,7 @@ func (v glibtop) GetParameterL(parameter uint32, data_ptr unsafe.Pointer, data_s
 // [ device ] trans: nothing
 //
 func (v glibtop) GetPppL(buf glibtop_ppp, device uint16) {
-	iv, err := _I.Get(22, "glibtop", "get_ppp_l")
+	iv, err := _I.Get(22, "glibtop", "get_ppp_l", 360, 22, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -490,7 +490,7 @@ func (v glibtop) GetPppL(buf glibtop_ppp, device uint16) {
 // [ device ] trans: nothing
 //
 func (v glibtop) GetPppS(buf glibtop_ppp, device uint16) {
-	iv, err := _I.Get(23, "glibtop", "get_ppp_s")
+	iv, err := _I.Get(23, "glibtop", "get_ppp_s", 360, 23, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -511,7 +511,7 @@ func (v glibtop) GetPppS(buf glibtop_ppp, device uint16) {
 // [ result ] trans: nothing
 //
 func (v glibtop) GetProcAffinityL(buf glibtop_proc_affinity, pid int32) (result uint16) {
-	iv, err := _I.Get(24, "glibtop", "get_proc_affinity_l")
+	iv, err := _I.Get(24, "glibtop", "get_proc_affinity_l", 360, 24, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -535,7 +535,7 @@ func (v glibtop) GetProcAffinityL(buf glibtop_proc_affinity, pid int32) (result 
 // [ result ] trans: nothing
 //
 func (v glibtop) GetProcAffinityS(buf glibtop_proc_affinity, pid int32) (result uint16) {
-	iv, err := _I.Get(25, "glibtop", "get_proc_affinity_s")
+	iv, err := _I.Get(25, "glibtop", "get_proc_affinity_s", 360, 25, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -561,7 +561,7 @@ func (v glibtop) GetProcAffinityS(buf glibtop_proc_affinity, pid int32) (result 
 // [ result ] trans: everything
 //
 func (v glibtop) GetProcArgsL(buf glibtop_proc_args, pid int32, max_len uint32) (result string) {
-	iv, err := _I.Get(26, "glibtop", "get_proc_args_l")
+	iv, err := _I.Get(26, "glibtop", "get_proc_args_l", 360, 26, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -588,7 +588,7 @@ func (v glibtop) GetProcArgsL(buf glibtop_proc_args, pid int32, max_len uint32) 
 // [ result ] trans: everything
 //
 func (v glibtop) GetProcArgsS(buf glibtop_proc_args, pid int32, max_len uint32) (result string) {
-	iv, err := _I.Get(27, "glibtop", "get_proc_args_s")
+	iv, err := _I.Get(27, "glibtop", "get_proc_args_s", 360, 27, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -611,7 +611,7 @@ func (v glibtop) GetProcArgsS(buf glibtop_proc_args, pid int32, max_len uint32) 
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcIoL(buf glibtop_proc_io, pid int32) {
-	iv, err := _I.Get(28, "glibtop", "get_proc_io_l")
+	iv, err := _I.Get(28, "glibtop", "get_proc_io_l", 360, 28, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -630,7 +630,7 @@ func (v glibtop) GetProcIoL(buf glibtop_proc_io, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcIoS(buf glibtop_proc_io, pid int32) {
-	iv, err := _I.Get(29, "glibtop", "get_proc_io_s")
+	iv, err := _I.Get(29, "glibtop", "get_proc_io_s", 360, 29, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -649,7 +649,7 @@ func (v glibtop) GetProcIoS(buf glibtop_proc_io, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcKernelL(buf glibtop_proc_kernel, pid int32) {
-	iv, err := _I.Get(30, "glibtop", "get_proc_kernel_l")
+	iv, err := _I.Get(30, "glibtop", "get_proc_kernel_l", 360, 30, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -668,7 +668,7 @@ func (v glibtop) GetProcKernelL(buf glibtop_proc_kernel, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcKernelS(buf glibtop_proc_kernel, pid int32) {
-	iv, err := _I.Get(31, "glibtop", "get_proc_kernel_s")
+	iv, err := _I.Get(31, "glibtop", "get_proc_kernel_s", 360, 31, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -689,7 +689,7 @@ func (v glibtop) GetProcKernelS(buf glibtop_proc_kernel, pid int32) {
 // [ result ] trans: nothing
 //
 func (v glibtop) GetProcMapL(buf glibtop_proc_map, pid int32) (result glibtop_map_entry) {
-	iv, err := _I.Get(32, "glibtop", "get_proc_map_l")
+	iv, err := _I.Get(32, "glibtop", "get_proc_map_l", 360, 32, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -713,7 +713,7 @@ func (v glibtop) GetProcMapL(buf glibtop_proc_map, pid int32) (result glibtop_ma
 // [ result ] trans: nothing
 //
 func (v glibtop) GetProcMapS(buf glibtop_proc_map, pid int32) (result glibtop_map_entry) {
-	iv, err := _I.Get(33, "glibtop", "get_proc_map_s")
+	iv, err := _I.Get(33, "glibtop", "get_proc_map_s", 360, 33, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -735,7 +735,7 @@ func (v glibtop) GetProcMapS(buf glibtop_proc_map, pid int32) (result glibtop_ma
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcMemL(buf glibtop_proc_mem, pid int32) {
-	iv, err := _I.Get(34, "glibtop", "get_proc_mem_l")
+	iv, err := _I.Get(34, "glibtop", "get_proc_mem_l", 360, 34, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -754,7 +754,7 @@ func (v glibtop) GetProcMemL(buf glibtop_proc_mem, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcMemS(buf glibtop_proc_mem, pid int32) {
-	iv, err := _I.Get(35, "glibtop", "get_proc_mem_s")
+	iv, err := _I.Get(35, "glibtop", "get_proc_mem_s", 360, 35, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -775,7 +775,7 @@ func (v glibtop) GetProcMemS(buf glibtop_proc_mem, pid int32) {
 // [ result ] trans: nothing
 //
 func (v glibtop) GetProcOpenFilesL(buf glibtop_proc_open_files, pid int32) (result glibtop_open_files_entry) {
-	iv, err := _I.Get(36, "glibtop", "get_proc_open_files_l")
+	iv, err := _I.Get(36, "glibtop", "get_proc_open_files_l", 360, 36, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -799,7 +799,7 @@ func (v glibtop) GetProcOpenFilesL(buf glibtop_proc_open_files, pid int32) (resu
 // [ result ] trans: everything
 //
 func (v glibtop) GetProcOpenFilesS(buf glibtop_proc_open_files, pid int32) (result glibtop_open_files_entry) {
-	iv, err := _I.Get(37, "glibtop", "get_proc_open_files_s")
+	iv, err := _I.Get(37, "glibtop", "get_proc_open_files_s", 360, 37, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -821,7 +821,7 @@ func (v glibtop) GetProcOpenFilesS(buf glibtop_proc_open_files, pid int32) (resu
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcSegmentL(buf glibtop_proc_segment, pid int32) {
-	iv, err := _I.Get(38, "glibtop", "get_proc_segment_l")
+	iv, err := _I.Get(38, "glibtop", "get_proc_segment_l", 360, 38, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -840,7 +840,7 @@ func (v glibtop) GetProcSegmentL(buf glibtop_proc_segment, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcSegmentS(buf glibtop_proc_segment, pid int32) {
-	iv, err := _I.Get(39, "glibtop", "get_proc_segment_s")
+	iv, err := _I.Get(39, "glibtop", "get_proc_segment_s", 360, 39, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -859,7 +859,7 @@ func (v glibtop) GetProcSegmentS(buf glibtop_proc_segment, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcSignalL(buf glibtop_proc_signal, pid int32) {
-	iv, err := _I.Get(40, "glibtop", "get_proc_signal_l")
+	iv, err := _I.Get(40, "glibtop", "get_proc_signal_l", 360, 40, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -878,7 +878,7 @@ func (v glibtop) GetProcSignalL(buf glibtop_proc_signal, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcSignalS(buf glibtop_proc_signal, pid int32) {
-	iv, err := _I.Get(41, "glibtop", "get_proc_signal_s")
+	iv, err := _I.Get(41, "glibtop", "get_proc_signal_s", 360, 41, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -897,7 +897,7 @@ func (v glibtop) GetProcSignalS(buf glibtop_proc_signal, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcStateL(buf glibtop_proc_state, pid int32) {
-	iv, err := _I.Get(42, "glibtop", "get_proc_state_l")
+	iv, err := _I.Get(42, "glibtop", "get_proc_state_l", 360, 42, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -916,7 +916,7 @@ func (v glibtop) GetProcStateL(buf glibtop_proc_state, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcStateS(buf glibtop_proc_state, pid int32) {
-	iv, err := _I.Get(43, "glibtop", "get_proc_state_s")
+	iv, err := _I.Get(43, "glibtop", "get_proc_state_s", 360, 43, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -935,7 +935,7 @@ func (v glibtop) GetProcStateS(buf glibtop_proc_state, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcTimeL(buf glibtop_proc_time, pid int32) {
-	iv, err := _I.Get(44, "glibtop", "get_proc_time_l")
+	iv, err := _I.Get(44, "glibtop", "get_proc_time_l", 360, 44, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -954,7 +954,7 @@ func (v glibtop) GetProcTimeL(buf glibtop_proc_time, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcTimeS(buf glibtop_proc_time, pid int32) {
-	iv, err := _I.Get(45, "glibtop", "get_proc_time_s")
+	iv, err := _I.Get(45, "glibtop", "get_proc_time_s", 360, 45, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -973,7 +973,7 @@ func (v glibtop) GetProcTimeS(buf glibtop_proc_time, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcUidL(buf glibtop_proc_uid, pid int32) {
-	iv, err := _I.Get(46, "glibtop", "get_proc_uid_l")
+	iv, err := _I.Get(46, "glibtop", "get_proc_uid_l", 360, 46, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -992,7 +992,7 @@ func (v glibtop) GetProcUidL(buf glibtop_proc_uid, pid int32) {
 // [ pid ] trans: nothing
 //
 func (v glibtop) GetProcUidS(buf glibtop_proc_uid, pid int32) {
-	iv, err := _I.Get(47, "glibtop", "get_proc_uid_s")
+	iv, err := _I.Get(47, "glibtop", "get_proc_uid_s", 360, 47, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1015,7 +1015,7 @@ func (v glibtop) GetProcUidS(buf glibtop_proc_uid, pid int32) {
 // [ result ] trans: nothing
 //
 func (v glibtop) GetProclistL(buf glibtop_proclist, which int64, arg int64) (result gi.Int32Array) {
-	iv, err := _I.Get(48, "glibtop", "get_proclist_l")
+	iv, err := _I.Get(48, "glibtop", "get_proclist_l", 360, 48, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1042,7 +1042,7 @@ func (v glibtop) GetProclistL(buf glibtop_proclist, which int64, arg int64) (res
 // [ result ] trans: nothing
 //
 func (v glibtop) GetProclistS(buf glibtop_proclist, which int64, arg int64) (result gi.Int32Array) {
-	iv, err := _I.Get(49, "glibtop", "get_proclist_s")
+	iv, err := _I.Get(49, "glibtop", "get_proclist_s", 360, 49, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1063,7 +1063,7 @@ func (v glibtop) GetProclistS(buf glibtop_proclist, which int64, arg int64) (res
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetSemLimitsL(buf glibtop_sem_limits) {
-	iv, err := _I.Get(50, "glibtop", "get_sem_limits_l")
+	iv, err := _I.Get(50, "glibtop", "get_sem_limits_l", 360, 50, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1079,7 +1079,7 @@ func (v glibtop) GetSemLimitsL(buf glibtop_sem_limits) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetSemLimitsS(buf glibtop_sem_limits) {
-	iv, err := _I.Get(51, "glibtop", "get_sem_limits_s")
+	iv, err := _I.Get(51, "glibtop", "get_sem_limits_s", 360, 51, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1095,7 +1095,7 @@ func (v glibtop) GetSemLimitsS(buf glibtop_sem_limits) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetShmLimitsL(buf glibtop_shm_limits) {
-	iv, err := _I.Get(52, "glibtop", "get_shm_limits_l")
+	iv, err := _I.Get(52, "glibtop", "get_shm_limits_l", 360, 52, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1111,7 +1111,7 @@ func (v glibtop) GetShmLimitsL(buf glibtop_shm_limits) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetShmLimitsS(buf glibtop_shm_limits) {
-	iv, err := _I.Get(53, "glibtop", "get_shm_limits_s")
+	iv, err := _I.Get(53, "glibtop", "get_shm_limits_s", 360, 53, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1127,7 +1127,7 @@ func (v glibtop) GetShmLimitsS(buf glibtop_shm_limits) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetSwapL(buf glibtop_swap) {
-	iv, err := _I.Get(54, "glibtop", "get_swap_l")
+	iv, err := _I.Get(54, "glibtop", "get_swap_l", 360, 54, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1143,7 +1143,7 @@ func (v glibtop) GetSwapL(buf glibtop_swap) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetSwapS(buf glibtop_swap) {
-	iv, err := _I.Get(55, "glibtop", "get_swap_s")
+	iv, err := _I.Get(55, "glibtop", "get_swap_s", 360, 55, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1159,7 +1159,7 @@ func (v glibtop) GetSwapS(buf glibtop_swap) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetSysdepsR(buf glibtop_sysdeps) {
-	iv, err := _I.Get(56, "glibtop", "get_sysdeps_r")
+	iv, err := _I.Get(56, "glibtop", "get_sysdeps_r", 360, 56, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1175,7 +1175,7 @@ func (v glibtop) GetSysdepsR(buf glibtop_sysdeps) {
 // [ result ] trans: nothing
 //
 func (v glibtop) GetSysinfoS() (result glibtop_sysinfo) {
-	iv, err := _I.Get(57, "glibtop", "get_sysinfo_s")
+	iv, err := _I.Get(57, "glibtop", "get_sysinfo_s", 360, 57, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1193,7 +1193,7 @@ func (v glibtop) GetSysinfoS() (result glibtop_sysinfo) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetUptimeL(buf glibtop_uptime) {
-	iv, err := _I.Get(58, "glibtop", "get_uptime_l")
+	iv, err := _I.Get(58, "glibtop", "get_uptime_l", 360, 58, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1209,7 +1209,7 @@ func (v glibtop) GetUptimeL(buf glibtop_uptime) {
 // [ buf ] trans: nothing
 //
 func (v glibtop) GetUptimeS(buf glibtop_uptime) {
-	iv, err := _I.Get(59, "glibtop", "get_uptime_s")
+	iv, err := _I.Get(59, "glibtop", "get_uptime_s", 360, 59, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1227,7 +1227,7 @@ func (v glibtop) GetUptimeS(buf glibtop_uptime) {
 // [ flags ] trans: nothing
 //
 func (v glibtop) InitP(features uint64, flags uint32) {
-	iv, err := _I.Get(60, "glibtop", "init_p")
+	iv, err := _I.Get(60, "glibtop", "init_p", 360, 60, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1248,7 +1248,7 @@ func (v glibtop) InitP(features uint64, flags uint32) {
 // [ flags ] trans: nothing
 //
 func (v glibtop) OpenL(program_name string, features uint64, flags uint32) {
-	iv, err := _I.Get(61, "glibtop", "open_l")
+	iv, err := _I.Get(61, "glibtop", "open_l", 360, 61, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1272,7 +1272,7 @@ func (v glibtop) OpenL(program_name string, features uint64, flags uint32) {
 // [ flags ] trans: nothing
 //
 func (v glibtop) OpenP(program_name string, features uint64, flags uint32) {
-	iv, err := _I.Get(62, "glibtop", "open_p")
+	iv, err := _I.Get(62, "glibtop", "open_p", 360, 62, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1296,7 +1296,7 @@ func (v glibtop) OpenP(program_name string, features uint64, flags uint32) {
 // [ flags ] trans: nothing
 //
 func (v glibtop) OpenS(program_name string, features uint64, flags uint32) {
-	iv, err := _I.Get(63, "glibtop", "open_s")
+	iv, err := _I.Get(63, "glibtop", "open_s", 360, 63, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1320,7 +1320,7 @@ func (v glibtop) OpenS(program_name string, features uint64, flags uint32) {
 // [ data_size ] trans: nothing
 //
 func (v glibtop) SetParameterL(parameter uint32, data_ptr unsafe.Pointer, data_size uint64) {
-	iv, err := _I.Get(64, "glibtop", "set_parameter_l")
+	iv, err := _I.Get(64, "glibtop", "set_parameter_l", 360, 64, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1338,7 +1338,7 @@ func (v glibtop) SetParameterL(parameter uint32, data_ptr unsafe.Pointer, data_s
 // [ buf ] trans: nothing
 //
 func glibtopGetCpu1(buf glibtop_cpu) {
-	iv, err := _I.Get(66, "glibtop", "get_cpu")
+	iv, err := _I.Get(66, "glibtop", "get_cpu", 360, 66, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1355,7 +1355,7 @@ func glibtopGetCpu1(buf glibtop_cpu) {
 // [ mount_dir ] trans: nothing
 //
 func glibtopGetFsusage1(buf glibtop_fsusage, mount_dir string) {
-	iv, err := _I.Get(67, "glibtop", "get_fsusage")
+	iv, err := _I.Get(67, "glibtop", "get_fsusage", 360, 67, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1373,7 +1373,7 @@ func glibtopGetFsusage1(buf glibtop_fsusage, mount_dir string) {
 // [ buf ] trans: nothing
 //
 func glibtopGetLoadavg1(buf glibtop_loadavg) {
-	iv, err := _I.Get(68, "glibtop", "get_loadavg")
+	iv, err := _I.Get(68, "glibtop", "get_loadavg", 360, 68, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1388,7 +1388,7 @@ func glibtopGetLoadavg1(buf glibtop_loadavg) {
 // [ buf ] trans: nothing
 //
 func glibtopGetMem1(buf glibtop_mem) {
-	iv, err := _I.Get(69, "glibtop", "get_mem")
+	iv, err := _I.Get(69, "glibtop", "get_mem", 360, 69, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1407,7 +1407,7 @@ func glibtopGetMem1(buf glibtop_mem) {
 // [ result ] trans: everything
 //
 func glibtopGetMountlist1(buf glibtop_mountlist, all_fs int32) (result glibtop_mountentry) {
-	iv, err := _I.Get(70, "glibtop", "get_mountlist")
+	iv, err := _I.Get(70, "glibtop", "get_mountlist", 360, 70, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1426,7 +1426,7 @@ func glibtopGetMountlist1(buf glibtop_mountlist, all_fs int32) (result glibtop_m
 // [ buf ] trans: nothing
 //
 func glibtopGetMsgLimits1(buf glibtop_msg_limits) {
-	iv, err := _I.Get(71, "glibtop", "get_msg_limits")
+	iv, err := _I.Get(71, "glibtop", "get_msg_limits", 360, 71, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1443,7 +1443,7 @@ func glibtopGetMsgLimits1(buf glibtop_msg_limits) {
 // [ result ] trans: nothing
 //
 func glibtopGetNetlist1(buf glibtop_netlist) (result gi.CStrArray) {
-	iv, err := _I.Get(72, "glibtop", "get_netlist")
+	iv, err := _I.Get(72, "glibtop", "get_netlist", 360, 72, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1464,7 +1464,7 @@ func glibtopGetNetlist1(buf glibtop_netlist) (result gi.CStrArray) {
 // [ interface1 ] trans: nothing
 //
 func glibtopGetNetload1(buf glibtop_netload, interface1 string) {
-	iv, err := _I.Get(73, "glibtop", "get_netload")
+	iv, err := _I.Get(73, "glibtop", "get_netload", 360, 73, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1484,7 +1484,7 @@ func glibtopGetNetload1(buf glibtop_netload, interface1 string) {
 // [ device ] trans: nothing
 //
 func glibtopGetPpp1(buf glibtop_ppp, device uint16) {
-	iv, err := _I.Get(74, "glibtop", "get_ppp")
+	iv, err := _I.Get(74, "glibtop", "get_ppp", 360, 74, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1504,7 +1504,7 @@ func glibtopGetPpp1(buf glibtop_ppp, device uint16) {
 // [ result ] trans: nothing
 //
 func glibtopGetProcAffinity1(buf glibtop_proc_affinity, pid int32) (result uint16) {
-	iv, err := _I.Get(75, "glibtop", "get_proc_affinity")
+	iv, err := _I.Get(75, "glibtop", "get_proc_affinity", 360, 75, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1529,7 +1529,7 @@ func glibtopGetProcAffinity1(buf glibtop_proc_affinity, pid int32) (result uint1
 // [ result ] trans: everything
 //
 func glibtopGetProcArgs1(buf glibtop_proc_args, pid int32, max_len uint32) (result string) {
-	iv, err := _I.Get(76, "glibtop", "get_proc_args")
+	iv, err := _I.Get(76, "glibtop", "get_proc_args", 360, 76, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1555,7 +1555,7 @@ func glibtopGetProcArgs1(buf glibtop_proc_args, pid int32, max_len uint32) (resu
 // [ result ] trans: everything
 //
 func glibtopGetProcArgv1(buf glibtop_proc_args, pid int32, max_len uint32) (result gi.CStrArray) {
-	iv, err := _I.Get(77, "glibtop", "get_proc_argv")
+	iv, err := _I.Get(77, "glibtop", "get_proc_argv", 360, 77, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1578,7 +1578,7 @@ func glibtopGetProcArgv1(buf glibtop_proc_args, pid int32, max_len uint32) (resu
 // [ pid ] trans: nothing
 //
 func glibtopGetProcIo1(buf glibtop_proc_io, pid int32) {
-	iv, err := _I.Get(78, "glibtop", "get_proc_io")
+	iv, err := _I.Get(78, "glibtop", "get_proc_io", 360, 78, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1596,7 +1596,7 @@ func glibtopGetProcIo1(buf glibtop_proc_io, pid int32) {
 // [ pid ] trans: nothing
 //
 func glibtopGetProcKernel1(buf glibtop_proc_kernel, pid int32) {
-	iv, err := _I.Get(79, "glibtop", "get_proc_kernel")
+	iv, err := _I.Get(79, "glibtop", "get_proc_kernel", 360, 79, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1616,7 +1616,7 @@ func glibtopGetProcKernel1(buf glibtop_proc_kernel, pid int32) {
 // [ result ] trans: nothing
 //
 func glibtopGetProcMap1(buf glibtop_proc_map, pid int32) (result glibtop_map_entry) {
-	iv, err := _I.Get(80, "glibtop", "get_proc_map")
+	iv, err := _I.Get(80, "glibtop", "get_proc_map", 360, 80, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1637,7 +1637,7 @@ func glibtopGetProcMap1(buf glibtop_proc_map, pid int32) (result glibtop_map_ent
 // [ pid ] trans: nothing
 //
 func glibtopGetProcMem1(buf glibtop_proc_mem, pid int32) {
-	iv, err := _I.Get(81, "glibtop", "get_proc_mem")
+	iv, err := _I.Get(81, "glibtop", "get_proc_mem", 360, 81, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1657,7 +1657,7 @@ func glibtopGetProcMem1(buf glibtop_proc_mem, pid int32) {
 // [ result ] trans: nothing
 //
 func glibtopGetProcOpenFiles1(buf glibtop_proc_open_files, pid int32) (result glibtop_open_files_entry) {
-	iv, err := _I.Get(82, "glibtop", "get_proc_open_files")
+	iv, err := _I.Get(82, "glibtop", "get_proc_open_files", 360, 82, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1678,7 +1678,7 @@ func glibtopGetProcOpenFiles1(buf glibtop_proc_open_files, pid int32) (result gl
 // [ pid ] trans: nothing
 //
 func glibtopGetProcSegment1(buf glibtop_proc_segment, pid int32) {
-	iv, err := _I.Get(83, "glibtop", "get_proc_segment")
+	iv, err := _I.Get(83, "glibtop", "get_proc_segment", 360, 83, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1696,7 +1696,7 @@ func glibtopGetProcSegment1(buf glibtop_proc_segment, pid int32) {
 // [ pid ] trans: nothing
 //
 func glibtopGetProcSignal1(buf glibtop_proc_signal, pid int32) {
-	iv, err := _I.Get(84, "glibtop", "get_proc_signal")
+	iv, err := _I.Get(84, "glibtop", "get_proc_signal", 360, 84, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1714,7 +1714,7 @@ func glibtopGetProcSignal1(buf glibtop_proc_signal, pid int32) {
 // [ pid ] trans: nothing
 //
 func glibtopGetProcState1(buf glibtop_proc_state, pid int32) {
-	iv, err := _I.Get(85, "glibtop", "get_proc_state")
+	iv, err := _I.Get(85, "glibtop", "get_proc_state", 360, 85, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1732,7 +1732,7 @@ func glibtopGetProcState1(buf glibtop_proc_state, pid int32) {
 // [ pid ] trans: nothing
 //
 func glibtopGetProcTime1(buf glibtop_proc_time, pid int32) {
-	iv, err := _I.Get(86, "glibtop", "get_proc_time")
+	iv, err := _I.Get(86, "glibtop", "get_proc_time", 360, 86, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1750,7 +1750,7 @@ func glibtopGetProcTime1(buf glibtop_proc_time, pid int32) {
 // [ pid ] trans: nothing
 //
 func glibtopGetProcUid1(buf glibtop_proc_uid, pid int32) {
-	iv, err := _I.Get(87, "glibtop", "get_proc_uid")
+	iv, err := _I.Get(87, "glibtop", "get_proc_uid", 360, 87, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1770,7 +1770,7 @@ func glibtopGetProcUid1(buf glibtop_proc_uid, pid int32) {
 // [ result ] trans: everything
 //
 func glibtopGetProcWd1(buf glibtop_proc_wd, pid int32) (result gi.CStrArray) {
-	iv, err := _I.Get(88, "glibtop", "get_proc_wd")
+	iv, err := _I.Get(88, "glibtop", "get_proc_wd", 360, 88, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1796,7 +1796,7 @@ func glibtopGetProcWd1(buf glibtop_proc_wd, pid int32) (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func glibtopGetProclist1(buf glibtop_proclist, which int64, arg int64) (result gi.Int32Array) {
-	iv, err := _I.Get(89, "glibtop", "get_proclist")
+	iv, err := _I.Get(89, "glibtop", "get_proclist", 360, 89, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1816,7 +1816,7 @@ func glibtopGetProclist1(buf glibtop_proclist, which int64, arg int64) (result g
 // [ buf ] trans: nothing
 //
 func glibtopGetSemLimits1(buf glibtop_sem_limits) {
-	iv, err := _I.Get(90, "glibtop", "get_sem_limits")
+	iv, err := _I.Get(90, "glibtop", "get_sem_limits", 360, 90, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1831,7 +1831,7 @@ func glibtopGetSemLimits1(buf glibtop_sem_limits) {
 // [ buf ] trans: nothing
 //
 func glibtopGetShmLimits1(buf glibtop_shm_limits) {
-	iv, err := _I.Get(91, "glibtop", "get_shm_limits")
+	iv, err := _I.Get(91, "glibtop", "get_shm_limits", 360, 91, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1846,7 +1846,7 @@ func glibtopGetShmLimits1(buf glibtop_shm_limits) {
 // [ buf ] trans: nothing
 //
 func glibtopGetSwap1(buf glibtop_swap) {
-	iv, err := _I.Get(92, "glibtop", "get_swap")
+	iv, err := _I.Get(92, "glibtop", "get_swap", 360, 92, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1861,7 +1861,7 @@ func glibtopGetSwap1(buf glibtop_swap) {
 // [ buf ] trans: nothing
 //
 func glibtopGetSysdeps1(buf glibtop_sysdeps) {
-	iv, err := _I.Get(93, "glibtop", "get_sysdeps")
+	iv, err := _I.Get(93, "glibtop", "get_sysdeps", 360, 93, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1876,7 +1876,7 @@ func glibtopGetSysdeps1(buf glibtop_sysdeps) {
 // [ buf ] trans: nothing
 //
 func glibtopGetUptime1(buf glibtop_uptime) {
-	iv, err := _I.Get(95, "glibtop", "get_uptime")
+	iv, err := _I.Get(95, "glibtop", "get_uptime", 360, 95, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1895,7 +1895,7 @@ func glibtopGetUptime1(buf glibtop_uptime) {
 // [ result ] trans: nothing
 //
 func (v glibtop) InitR(features uint64, flags uint32) (result glibtop) {
-	iv, err := _I.Get(97, "glibtop", "init_r")
+	iv, err := _I.Get(97, "glibtop", "init_r", 360, 97, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1919,7 +1919,7 @@ func (v glibtop) InitR(features uint64, flags uint32) (result glibtop) {
 // [ result ] trans: nothing
 //
 func (v glibtop) InitS(features uint64, flags uint32) (result glibtop) {
-	iv, err := _I.Get(98, "glibtop", "init_s")
+	iv, err := _I.Get(98, "glibtop", "init_s", 360, 98, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1941,7 +1941,7 @@ func (v glibtop) InitS(features uint64, flags uint32) (result glibtop) {
 // [ result ] trans: nothing
 //
 func glibtopInternetAddr1(host string) (result int64) {
-	iv, err := _I.Get(99, "glibtop", "internet_addr")
+	iv, err := _I.Get(99, "glibtop", "internet_addr", 360, 99, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1967,7 +1967,7 @@ func glibtopInternetAddr1(host string) (result int64) {
 // [ result ] trans: nothing
 //
 func glibtopMakeConnection1(hostarg string, portarg int32, s int32) (result int32) {
-	iv, err := _I.Get(100, "glibtop", "make_connection")
+	iv, err := _I.Get(100, "glibtop", "make_connection", 360, 100, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1987,7 +1987,7 @@ func glibtopMakeConnection1(hostarg string, portarg int32, s int32) (result int3
 // glibtop_close
 //
 func GlibtopClose() {
-	iv, err := _I.Get(101, "glibtop_close", "")
+	iv, err := _I.Get(101, "glibtop_close", "", 361, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2048,7 +2048,7 @@ func glibtop_fsusageGetType() gi.GType {
 // [ buf ] trans: nothing
 //
 func GlibtopGetCpu(buf glibtop_cpu) {
-	iv, err := _I.Get(102, "glibtop_get_cpu", "")
+	iv, err := _I.Get(102, "glibtop_get_cpu", "", 366, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2065,7 +2065,7 @@ func GlibtopGetCpu(buf glibtop_cpu) {
 // [ mount_dir ] trans: nothing
 //
 func GlibtopGetFsusage(buf glibtop_fsusage, mount_dir string) {
-	iv, err := _I.Get(103, "glibtop_get_fsusage", "")
+	iv, err := _I.Get(103, "glibtop_get_fsusage", "", 367, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2083,7 +2083,7 @@ func GlibtopGetFsusage(buf glibtop_fsusage, mount_dir string) {
 // [ buf ] trans: nothing
 //
 func GlibtopGetLoadavg(buf glibtop_loadavg) {
-	iv, err := _I.Get(104, "glibtop_get_loadavg", "")
+	iv, err := _I.Get(104, "glibtop_get_loadavg", "", 368, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2098,7 +2098,7 @@ func GlibtopGetLoadavg(buf glibtop_loadavg) {
 // [ buf ] trans: nothing
 //
 func GlibtopGetMem(buf glibtop_mem) {
-	iv, err := _I.Get(105, "glibtop_get_mem", "")
+	iv, err := _I.Get(105, "glibtop_get_mem", "", 369, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2117,7 +2117,7 @@ func GlibtopGetMem(buf glibtop_mem) {
 // [ result ] trans: everything
 //
 func GlibtopGetMountlist(buf glibtop_mountlist, all_fs int32) (result glibtop_mountentry) {
-	iv, err := _I.Get(106, "glibtop_get_mountlist", "")
+	iv, err := _I.Get(106, "glibtop_get_mountlist", "", 370, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2136,7 +2136,7 @@ func GlibtopGetMountlist(buf glibtop_mountlist, all_fs int32) (result glibtop_mo
 // [ buf ] trans: nothing
 //
 func GlibtopGetMsgLimits(buf glibtop_msg_limits) {
-	iv, err := _I.Get(107, "glibtop_get_msg_limits", "")
+	iv, err := _I.Get(107, "glibtop_get_msg_limits", "", 371, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2153,7 +2153,7 @@ func GlibtopGetMsgLimits(buf glibtop_msg_limits) {
 // [ result ] trans: nothing
 //
 func GlibtopGetNetlist(buf glibtop_netlist) (result gi.CStrArray) {
-	iv, err := _I.Get(108, "glibtop_get_netlist", "")
+	iv, err := _I.Get(108, "glibtop_get_netlist", "", 372, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2174,7 +2174,7 @@ func GlibtopGetNetlist(buf glibtop_netlist) (result gi.CStrArray) {
 // [ interface1 ] trans: nothing
 //
 func GlibtopGetNetload(buf glibtop_netload, interface1 string) {
-	iv, err := _I.Get(109, "glibtop_get_netload", "")
+	iv, err := _I.Get(109, "glibtop_get_netload", "", 373, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2194,7 +2194,7 @@ func GlibtopGetNetload(buf glibtop_netload, interface1 string) {
 // [ device ] trans: nothing
 //
 func GlibtopGetPpp(buf glibtop_ppp, device uint16) {
-	iv, err := _I.Get(110, "glibtop_get_ppp", "")
+	iv, err := _I.Get(110, "glibtop_get_ppp", "", 374, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2214,7 +2214,7 @@ func GlibtopGetPpp(buf glibtop_ppp, device uint16) {
 // [ result ] trans: nothing
 //
 func GlibtopGetProcAffinity(buf glibtop_proc_affinity, pid int32) (result uint16) {
-	iv, err := _I.Get(111, "glibtop_get_proc_affinity", "")
+	iv, err := _I.Get(111, "glibtop_get_proc_affinity", "", 375, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2239,7 +2239,7 @@ func GlibtopGetProcAffinity(buf glibtop_proc_affinity, pid int32) (result uint16
 // [ result ] trans: everything
 //
 func GlibtopGetProcArgs(buf glibtop_proc_args, pid int32, max_len uint32) (result string) {
-	iv, err := _I.Get(112, "glibtop_get_proc_args", "")
+	iv, err := _I.Get(112, "glibtop_get_proc_args", "", 376, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2265,7 +2265,7 @@ func GlibtopGetProcArgs(buf glibtop_proc_args, pid int32, max_len uint32) (resul
 // [ result ] trans: everything
 //
 func GlibtopGetProcArgv(buf glibtop_proc_args, pid int32, max_len uint32) (result gi.CStrArray) {
-	iv, err := _I.Get(113, "glibtop_get_proc_argv", "")
+	iv, err := _I.Get(113, "glibtop_get_proc_argv", "", 377, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2288,7 +2288,7 @@ func GlibtopGetProcArgv(buf glibtop_proc_args, pid int32, max_len uint32) (resul
 // [ pid ] trans: nothing
 //
 func GlibtopGetProcIo(buf glibtop_proc_io, pid int32) {
-	iv, err := _I.Get(114, "glibtop_get_proc_io", "")
+	iv, err := _I.Get(114, "glibtop_get_proc_io", "", 378, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2306,7 +2306,7 @@ func GlibtopGetProcIo(buf glibtop_proc_io, pid int32) {
 // [ pid ] trans: nothing
 //
 func GlibtopGetProcKernel(buf glibtop_proc_kernel, pid int32) {
-	iv, err := _I.Get(115, "glibtop_get_proc_kernel", "")
+	iv, err := _I.Get(115, "glibtop_get_proc_kernel", "", 379, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2326,7 +2326,7 @@ func GlibtopGetProcKernel(buf glibtop_proc_kernel, pid int32) {
 // [ result ] trans: nothing
 //
 func GlibtopGetProcMap(buf glibtop_proc_map, pid int32) (result glibtop_map_entry) {
-	iv, err := _I.Get(116, "glibtop_get_proc_map", "")
+	iv, err := _I.Get(116, "glibtop_get_proc_map", "", 380, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2347,7 +2347,7 @@ func GlibtopGetProcMap(buf glibtop_proc_map, pid int32) (result glibtop_map_entr
 // [ pid ] trans: nothing
 //
 func GlibtopGetProcMem(buf glibtop_proc_mem, pid int32) {
-	iv, err := _I.Get(117, "glibtop_get_proc_mem", "")
+	iv, err := _I.Get(117, "glibtop_get_proc_mem", "", 381, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2367,7 +2367,7 @@ func GlibtopGetProcMem(buf glibtop_proc_mem, pid int32) {
 // [ result ] trans: nothing
 //
 func GlibtopGetProcOpenFiles(buf glibtop_proc_open_files, pid int32) (result glibtop_open_files_entry) {
-	iv, err := _I.Get(118, "glibtop_get_proc_open_files", "")
+	iv, err := _I.Get(118, "glibtop_get_proc_open_files", "", 382, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2388,7 +2388,7 @@ func GlibtopGetProcOpenFiles(buf glibtop_proc_open_files, pid int32) (result gli
 // [ pid ] trans: nothing
 //
 func GlibtopGetProcSegment(buf glibtop_proc_segment, pid int32) {
-	iv, err := _I.Get(119, "glibtop_get_proc_segment", "")
+	iv, err := _I.Get(119, "glibtop_get_proc_segment", "", 383, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2406,7 +2406,7 @@ func GlibtopGetProcSegment(buf glibtop_proc_segment, pid int32) {
 // [ pid ] trans: nothing
 //
 func GlibtopGetProcSignal(buf glibtop_proc_signal, pid int32) {
-	iv, err := _I.Get(120, "glibtop_get_proc_signal", "")
+	iv, err := _I.Get(120, "glibtop_get_proc_signal", "", 384, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2424,7 +2424,7 @@ func GlibtopGetProcSignal(buf glibtop_proc_signal, pid int32) {
 // [ pid ] trans: nothing
 //
 func GlibtopGetProcState(buf glibtop_proc_state, pid int32) {
-	iv, err := _I.Get(121, "glibtop_get_proc_state", "")
+	iv, err := _I.Get(121, "glibtop_get_proc_state", "", 385, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2442,7 +2442,7 @@ func GlibtopGetProcState(buf glibtop_proc_state, pid int32) {
 // [ pid ] trans: nothing
 //
 func GlibtopGetProcTime(buf glibtop_proc_time, pid int32) {
-	iv, err := _I.Get(122, "glibtop_get_proc_time", "")
+	iv, err := _I.Get(122, "glibtop_get_proc_time", "", 386, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2460,7 +2460,7 @@ func GlibtopGetProcTime(buf glibtop_proc_time, pid int32) {
 // [ pid ] trans: nothing
 //
 func GlibtopGetProcUid(buf glibtop_proc_uid, pid int32) {
-	iv, err := _I.Get(123, "glibtop_get_proc_uid", "")
+	iv, err := _I.Get(123, "glibtop_get_proc_uid", "", 387, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2480,7 +2480,7 @@ func GlibtopGetProcUid(buf glibtop_proc_uid, pid int32) {
 // [ result ] trans: everything
 //
 func GlibtopGetProcWd(buf glibtop_proc_wd, pid int32) (result gi.CStrArray) {
-	iv, err := _I.Get(124, "glibtop_get_proc_wd", "")
+	iv, err := _I.Get(124, "glibtop_get_proc_wd", "", 388, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2506,7 +2506,7 @@ func GlibtopGetProcWd(buf glibtop_proc_wd, pid int32) (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func GlibtopGetProclist(buf glibtop_proclist, which int64, arg int64) (result gi.Int32Array) {
-	iv, err := _I.Get(125, "glibtop_get_proclist", "")
+	iv, err := _I.Get(125, "glibtop_get_proclist", "", 389, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2526,7 +2526,7 @@ func GlibtopGetProclist(buf glibtop_proclist, which int64, arg int64) (result gi
 // [ buf ] trans: nothing
 //
 func GlibtopGetSemLimits(buf glibtop_sem_limits) {
-	iv, err := _I.Get(126, "glibtop_get_sem_limits", "")
+	iv, err := _I.Get(126, "glibtop_get_sem_limits", "", 390, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2541,7 +2541,7 @@ func GlibtopGetSemLimits(buf glibtop_sem_limits) {
 // [ buf ] trans: nothing
 //
 func GlibtopGetShmLimits(buf glibtop_shm_limits) {
-	iv, err := _I.Get(127, "glibtop_get_shm_limits", "")
+	iv, err := _I.Get(127, "glibtop_get_shm_limits", "", 391, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2556,7 +2556,7 @@ func GlibtopGetShmLimits(buf glibtop_shm_limits) {
 // [ buf ] trans: nothing
 //
 func GlibtopGetSwap(buf glibtop_swap) {
-	iv, err := _I.Get(128, "glibtop_get_swap", "")
+	iv, err := _I.Get(128, "glibtop_get_swap", "", 392, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2571,7 +2571,7 @@ func GlibtopGetSwap(buf glibtop_swap) {
 // [ buf ] trans: nothing
 //
 func GlibtopGetSysdeps(buf glibtop_sysdeps) {
-	iv, err := _I.Get(129, "glibtop_get_sysdeps", "")
+	iv, err := _I.Get(129, "glibtop_get_sysdeps", "", 393, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2586,7 +2586,7 @@ func GlibtopGetSysdeps(buf glibtop_sysdeps) {
 // [ result ] trans: nothing
 //
 func GlibtopGetSysinfo() (result glibtop_sysinfo) {
-	iv, err := _I.Get(130, "glibtop_get_sysinfo", "")
+	iv, err := _I.Get(130, "glibtop_get_sysinfo", "", 394, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2602,7 +2602,7 @@ func GlibtopGetSysinfo() (result glibtop_sysinfo) {
 // [ buf ] trans: nothing
 //
 func GlibtopGetUptime(buf glibtop_uptime) {
-	iv, err := _I.Get(131, "glibtop_get_uptime", "")
+	iv, err := _I.Get(131, "glibtop_get_uptime", "", 395, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2617,7 +2617,7 @@ func GlibtopGetUptime(buf glibtop_uptime) {
 // [ result ] trans: nothing
 //
 func GlibtopInit() (result glibtop) {
-	iv, err := _I.Get(132, "glibtop_init", "")
+	iv, err := _I.Get(132, "glibtop_init", "", 396, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2639,7 +2639,7 @@ func GlibtopInit() (result glibtop) {
 // [ result ] trans: nothing
 //
 func GlibtopInitR(features uint64, flags uint32) (result glibtop, server_ptr glibtop) {
-	iv, err := _I.Get(133, "glibtop_init_r", "")
+	iv, err := _I.Get(133, "glibtop_init_r", "", 397, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2667,7 +2667,7 @@ func GlibtopInitR(features uint64, flags uint32) (result glibtop, server_ptr gli
 // [ result ] trans: nothing
 //
 func GlibtopInitS(features uint64, flags uint32) (result glibtop, server_ptr glibtop) {
-	iv, err := _I.Get(134, "glibtop_init_s", "")
+	iv, err := _I.Get(134, "glibtop_init_s", "", 398, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2691,7 +2691,7 @@ func GlibtopInitS(features uint64, flags uint32) (result glibtop, server_ptr gli
 // [ result ] trans: nothing
 //
 func GlibtopInternetAddr(host string) (result int64) {
-	iv, err := _I.Get(135, "glibtop_internet_addr", "")
+	iv, err := _I.Get(135, "glibtop_internet_addr", "", 399, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2739,7 +2739,7 @@ func glibtop_machineGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func GlibtopMakeConnection(hostarg string, portarg int32, s int32) (result int32) {
-	iv, err := _I.Get(136, "glibtop_make_connection", "")
+	iv, err := _I.Get(136, "glibtop_make_connection", "", 402, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

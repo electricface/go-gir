@@ -67,7 +67,7 @@ func NetClientClockGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewNetClientClock(name string, remote_address string, remote_port int32, base_time uint64) (result NetClientClock) {
-	iv, err := _I.Get(1, "NetClientClock", "new")
+	iv, err := _I.Get(1, "NetClientClock", "new", 2, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -130,7 +130,7 @@ func NetTimePacketGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewNetTimePacket(buffer gi.Uint8Array) (result NetTimePacket) {
-	iv, err := _I.Get(3, "NetTimePacket", "new")
+	iv, err := _I.Get(3, "NetTimePacket", "new", 6, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -148,7 +148,7 @@ func NewNetTimePacket(buffer gi.Uint8Array) (result NetTimePacket) {
 // [ result ] trans: everything
 //
 func (v NetTimePacket) Copy() (result NetTimePacket) {
-	iv, err := _I.Get(4, "NetTimePacket", "copy")
+	iv, err := _I.Get(4, "NetTimePacket", "copy", 6, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -164,7 +164,7 @@ func (v NetTimePacket) Copy() (result NetTimePacket) {
 // gst_net_time_packet_free
 //
 func (v NetTimePacket) Free() {
-	iv, err := _I.Get(5, "NetTimePacket", "free")
+	iv, err := _I.Get(5, "NetTimePacket", "free", 6, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -183,7 +183,7 @@ func (v NetTimePacket) Free() {
 // [ result ] trans: nothing
 //
 func (v NetTimePacket) Send(socket g.ISocket, dest_address g.ISocketAddress) (result bool, err error) {
-	iv, err := _I.Get(6, "NetTimePacket", "send")
+	iv, err := _I.Get(6, "NetTimePacket", "send", 6, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		return
 	}
@@ -213,7 +213,7 @@ func (v NetTimePacket) Send(socket g.ISocket, dest_address g.ISocketAddress) (re
 // [ result ] trans: nothing
 //
 func (v NetTimePacket) Serialize() (result uint8) {
-	iv, err := _I.Get(7, "NetTimePacket", "serialize")
+	iv, err := _I.Get(7, "NetTimePacket", "serialize", 6, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -235,7 +235,7 @@ func (v NetTimePacket) Serialize() (result uint8) {
 // [ result ] trans: everything
 //
 func NetTimePacketReceive1(socket g.ISocket) (result NetTimePacket, src_address g.SocketAddress, err error) {
-	iv, err := _I.Get(8, "NetTimePacket", "receive")
+	iv, err := _I.Get(8, "NetTimePacket", "receive", 6, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		return
 	}
@@ -284,7 +284,7 @@ func NetTimeProviderGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewNetTimeProvider(clock gst.IClock, address string, port int32) (result NetTimeProvider) {
-	iv, err := _I.Get(9, "NetTimeProvider", "new")
+	iv, err := _I.Get(9, "NetTimeProvider", "new", 7, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -345,7 +345,7 @@ func NtpClockGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewNtpClock(name string, remote_address string, remote_port int32, base_time uint64) (result NtpClock) {
-	iv, err := _I.Get(10, "NtpClock", "new")
+	iv, err := _I.Get(10, "NtpClock", "new", 10, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -391,7 +391,7 @@ func PtpClockGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPtpClock(name string, domain uint32) (result PtpClock) {
-	iv, err := _I.Get(11, "PtpClock", "new")
+	iv, err := _I.Get(11, "PtpClock", "new", 17, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -447,7 +447,7 @@ func myGstNetPtpStatisticsCallback(domain C.guint8, stats *C.GstStructure, user_
 // [ result ] trans: nothing
 //
 func BufferAddNetAddressMeta(buffer gst.Buffer, addr g.ISocketAddress) (result NetAddressMeta) {
-	iv, err := _I.Get(12, "buffer_add_net_address_meta", "")
+	iv, err := _I.Get(12, "buffer_add_net_address_meta", "", 21, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -474,7 +474,7 @@ func BufferAddNetAddressMeta(buffer gst.Buffer, addr g.ISocketAddress) (result N
 // [ result ] trans: nothing
 //
 func BufferAddNetControlMessageMeta(buffer gst.Buffer, message g.ISocketControlMessage) (result NetControlMessageMeta) {
-	iv, err := _I.Get(13, "buffer_add_net_control_message_meta", "")
+	iv, err := _I.Get(13, "buffer_add_net_control_message_meta", "", 22, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -499,7 +499,7 @@ func BufferAddNetControlMessageMeta(buffer gst.Buffer, message g.ISocketControlM
 // [ result ] trans: nothing
 //
 func BufferGetNetAddressMeta(buffer gst.Buffer) (result NetAddressMeta) {
-	iv, err := _I.Get(14, "buffer_get_net_address_meta", "")
+	iv, err := _I.Get(14, "buffer_get_net_address_meta", "", 23, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -517,7 +517,7 @@ func BufferGetNetAddressMeta(buffer gst.Buffer) (result NetAddressMeta) {
 // [ result ] trans: nothing
 //
 func NetAddressMetaApiGetType() (result gi.GType) {
-	iv, err := _I.Get(15, "net_address_meta_api_get_type", "")
+	iv, err := _I.Get(15, "net_address_meta_api_get_type", "", 24, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -533,7 +533,7 @@ func NetAddressMetaApiGetType() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func NetAddressMetaGetInfo() (result gst.MetaInfo) {
-	iv, err := _I.Get(16, "net_address_meta_get_info", "")
+	iv, err := _I.Get(16, "net_address_meta_get_info", "", 25, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -549,7 +549,7 @@ func NetAddressMetaGetInfo() (result gst.MetaInfo) {
 // [ result ] trans: nothing
 //
 func NetControlMessageMetaApiGetType() (result gi.GType) {
-	iv, err := _I.Get(17, "net_control_message_meta_api_get_type", "")
+	iv, err := _I.Get(17, "net_control_message_meta_api_get_type", "", 26, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -565,7 +565,7 @@ func NetControlMessageMetaApiGetType() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func NetControlMessageMetaGetInfo() (result gst.MetaInfo) {
-	iv, err := _I.Get(18, "net_control_message_meta_get_info", "")
+	iv, err := _I.Get(18, "net_control_message_meta_get_info", "", 27, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -585,7 +585,7 @@ func NetControlMessageMetaGetInfo() (result gst.MetaInfo) {
 // [ result ] trans: everything
 //
 func NetTimePacketReceive(socket g.ISocket) (result NetTimePacket, src_address g.SocketAddress, err error) {
-	iv, err := _I.Get(19, "net_time_packet_receive", "")
+	iv, err := _I.Get(19, "net_time_packet_receive", "", 28, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -609,7 +609,7 @@ func NetTimePacketReceive(socket g.ISocket) (result NetTimePacket, src_address g
 // gst_ptp_deinit
 //
 func PtpDeinit() {
-	iv, err := _I.Get(20, "ptp_deinit", "")
+	iv, err := _I.Get(20, "ptp_deinit", "", 29, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -626,7 +626,7 @@ func PtpDeinit() {
 // [ result ] trans: nothing
 //
 func PtpInit(clock_id uint64, interfaces gi.CStrArray) (result bool) {
-	iv, err := _I.Get(21, "ptp_init", "")
+	iv, err := _I.Get(21, "ptp_init", "", 30, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -645,7 +645,7 @@ func PtpInit(clock_id uint64, interfaces gi.CStrArray) (result bool) {
 // [ result ] trans: nothing
 //
 func PtpIsInitialized() (result bool) {
-	iv, err := _I.Get(22, "ptp_is_initialized", "")
+	iv, err := _I.Get(22, "ptp_is_initialized", "", 31, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -661,7 +661,7 @@ func PtpIsInitialized() (result bool) {
 // [ result ] trans: nothing
 //
 func PtpIsSupported() (result bool) {
-	iv, err := _I.Get(23, "ptp_is_supported", "")
+	iv, err := _I.Get(23, "ptp_is_supported", "", 32, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -683,7 +683,7 @@ func PtpIsSupported() (result bool) {
 // [ result ] trans: nothing
 //
 func PtpStatisticsCallbackAdd(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, destroy_data int /*TODO_TYPE CALLBACK*/) (result uint64) {
-	iv, err := _I.Get(24, "ptp_statistics_callback_add", "")
+	iv, err := _I.Get(24, "ptp_statistics_callback_add", "", 33, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -703,7 +703,7 @@ func PtpStatisticsCallbackAdd(callback int /*TODO_TYPE CALLBACK*/, user_data uns
 // [ id ] trans: nothing
 //
 func PtpStatisticsCallbackRemove(id uint64) {
-	iv, err := _I.Get(25, "ptp_statistics_callback_remove", "")
+	iv, err := _I.Get(25, "ptp_statistics_callback_remove", "", 34, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

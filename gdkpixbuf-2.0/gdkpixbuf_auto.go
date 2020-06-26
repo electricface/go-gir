@@ -91,7 +91,7 @@ func PixbufGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPixbuf(colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32) (result Pixbuf) {
-	iv, err := _I.Get(0, "Pixbuf", "new")
+	iv, err := _I.Get(0, "Pixbuf", "new", 7, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -127,7 +127,7 @@ func NewPixbuf(colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32,
 // [ result ] trans: everything
 //
 func NewPixbufFromBytes(data g.Bytes, colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32) (result Pixbuf) {
-	iv, err := _I.Get(1, "Pixbuf", "new_from_bytes")
+	iv, err := _I.Get(1, "Pixbuf", "new_from_bytes", 7, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -169,7 +169,7 @@ func NewPixbufFromBytes(data g.Bytes, colorspace ColorspaceEnum, has_alpha bool,
 // [ result ] trans: everything
 //
 func NewPixbufFromData(data gi.Uint8Array, colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32, rowstride int32, destroy_fn int /*TODO_TYPE CALLBACK*/, destroy_fn_data unsafe.Pointer) (result Pixbuf) {
-	iv, err := _I.Get(2, "Pixbuf", "new_from_data")
+	iv, err := _I.Get(2, "Pixbuf", "new_from_data", 7, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -197,7 +197,7 @@ func NewPixbufFromData(data gi.Uint8Array, colorspace ColorspaceEnum, has_alpha 
 // [ result ] trans: everything
 //
 func NewPixbufFromFile(filename string) (result Pixbuf, err error) {
-	iv, err := _I.Get(3, "Pixbuf", "new_from_file")
+	iv, err := _I.Get(3, "Pixbuf", "new_from_file", 7, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -227,7 +227,7 @@ func NewPixbufFromFile(filename string) (result Pixbuf, err error) {
 // [ result ] trans: everything
 //
 func NewPixbufFromFileAtScale(filename string, width int32, height int32, preserve_aspect_ratio bool) (result Pixbuf, err error) {
-	iv, err := _I.Get(4, "Pixbuf", "new_from_file_at_scale")
+	iv, err := _I.Get(4, "Pixbuf", "new_from_file_at_scale", 7, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -258,7 +258,7 @@ func NewPixbufFromFileAtScale(filename string, width int32, height int32, preser
 // [ result ] trans: everything
 //
 func NewPixbufFromFileAtSize(filename string, width int32, height int32) (result Pixbuf, err error) {
-	iv, err := _I.Get(5, "Pixbuf", "new_from_file_at_size")
+	iv, err := _I.Get(5, "Pixbuf", "new_from_file_at_size", 7, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -290,7 +290,7 @@ func NewPixbufFromFileAtSize(filename string, width int32, height int32) (result
 // [ result ] trans: everything
 //
 func NewPixbufFromInline(data_length int32, data gi.Uint8Array, copy_pixels bool) (result Pixbuf, err error) {
-	iv, err := _I.Get(6, "Pixbuf", "new_from_inline")
+	iv, err := _I.Get(6, "Pixbuf", "new_from_inline", 7, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -314,7 +314,7 @@ func NewPixbufFromInline(data_length int32, data gi.Uint8Array, copy_pixels bool
 // [ result ] trans: everything
 //
 func NewPixbufFromResource(resource_path string) (result Pixbuf, err error) {
-	iv, err := _I.Get(7, "Pixbuf", "new_from_resource")
+	iv, err := _I.Get(7, "Pixbuf", "new_from_resource", 7, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -344,7 +344,7 @@ func NewPixbufFromResource(resource_path string) (result Pixbuf, err error) {
 // [ result ] trans: everything
 //
 func NewPixbufFromResourceAtScale(resource_path string, width int32, height int32, preserve_aspect_ratio bool) (result Pixbuf, err error) {
-	iv, err := _I.Get(8, "Pixbuf", "new_from_resource_at_scale")
+	iv, err := _I.Get(8, "Pixbuf", "new_from_resource_at_scale", 7, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -373,7 +373,7 @@ func NewPixbufFromResourceAtScale(resource_path string, width int32, height int3
 // [ result ] trans: everything
 //
 func NewPixbufFromStream(stream g.IInputStream, cancellable g.ICancellable) (result Pixbuf, err error) {
-	iv, err := _I.Get(9, "Pixbuf", "new_from_stream")
+	iv, err := _I.Get(9, "Pixbuf", "new_from_stream", 7, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -412,7 +412,7 @@ func NewPixbufFromStream(stream g.IInputStream, cancellable g.ICancellable) (res
 // [ result ] trans: everything
 //
 func NewPixbufFromStreamAtScale(stream g.IInputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable g.ICancellable) (result Pixbuf, err error) {
-	iv, err := _I.Get(10, "Pixbuf", "new_from_stream_at_scale")
+	iv, err := _I.Get(10, "Pixbuf", "new_from_stream_at_scale", 7, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -446,7 +446,7 @@ func NewPixbufFromStreamAtScale(stream g.IInputStream, width int32, height int32
 // [ result ] trans: everything
 //
 func NewPixbufFromStreamFinish(async_result g.IAsyncResult) (result Pixbuf, err error) {
-	iv, err := _I.Get(11, "Pixbuf", "new_from_stream_finish")
+	iv, err := _I.Get(11, "Pixbuf", "new_from_stream_finish", 7, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -472,7 +472,7 @@ func NewPixbufFromStreamFinish(async_result g.IAsyncResult) (result Pixbuf, err 
 // [ result ] trans: everything
 //
 func NewPixbufFromXpmData(data gi.CStrArray) (result Pixbuf) {
-	iv, err := _I.Get(12, "Pixbuf", "new_from_xpm_data")
+	iv, err := _I.Get(12, "Pixbuf", "new_from_xpm_data", 7, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -500,7 +500,7 @@ func NewPixbufFromXpmData(data gi.CStrArray) (result Pixbuf) {
 // [ result ] trans: nothing
 //
 func PixbufCalculateRowstride1(colorspace ColorspaceEnum, has_alpha bool, bits_per_sample int32, width int32, height int32) (result int32) {
-	iv, err := _I.Get(13, "Pixbuf", "calculate_rowstride")
+	iv, err := _I.Get(13, "Pixbuf", "calculate_rowstride", 7, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -528,7 +528,7 @@ func PixbufCalculateRowstride1(colorspace ColorspaceEnum, has_alpha bool, bits_p
 // [ result ] trans: nothing
 //
 func PixbufGetFileInfo1(filename string) (result PixbufFormat, width int32, height int32) {
-	iv, err := _I.Get(14, "Pixbuf", "get_file_info")
+	iv, err := _I.Get(14, "Pixbuf", "get_file_info", 7, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -559,7 +559,7 @@ func PixbufGetFileInfo1(filename string) (result PixbufFormat, width int32, heig
 // [ user_data ] trans: nothing
 //
 func PixbufGetFileInfoAsync1(filename string, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(15, "Pixbuf", "get_file_info_async")
+	iv, err := _I.Get(15, "Pixbuf", "get_file_info_async", 7, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -589,7 +589,7 @@ func PixbufGetFileInfoAsync1(filename string, cancellable g.ICancellable, callba
 // [ result ] trans: nothing
 //
 func PixbufGetFileInfoFinish1(async_result g.IAsyncResult) (result PixbufFormat, width int32, height int32, err error) {
-	iv, err := _I.Get(16, "Pixbuf", "get_file_info_finish")
+	iv, err := _I.Get(16, "Pixbuf", "get_file_info_finish", 7, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -623,7 +623,7 @@ func PixbufGetFileInfoFinish1(async_result g.IAsyncResult) (result PixbufFormat,
 // [ user_data ] trans: nothing
 //
 func PixbufNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(18, "Pixbuf", "new_from_stream_async")
+	iv, err := _I.Get(18, "Pixbuf", "new_from_stream_async", 7, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -661,7 +661,7 @@ func PixbufNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICancellable
 // [ user_data ] trans: nothing
 //
 func PixbufNewFromStreamAtScaleAsync1(stream g.IInputStream, width int32, height int32, preserve_aspect_ratio bool, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(19, "Pixbuf", "new_from_stream_at_scale_async")
+	iv, err := _I.Get(19, "Pixbuf", "new_from_stream_at_scale_async", 7, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -692,7 +692,7 @@ func PixbufNewFromStreamAtScaleAsync1(stream g.IInputStream, width int32, height
 // [ result ] trans: nothing
 //
 func PixbufSaveToStreamFinish1(async_result g.IAsyncResult) (result bool, err error) {
-	iv, err := _I.Get(20, "Pixbuf", "save_to_stream_finish")
+	iv, err := _I.Get(20, "Pixbuf", "save_to_stream_finish", 7, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -724,7 +724,7 @@ func PixbufSaveToStreamFinish1(async_result g.IAsyncResult) (result bool, err er
 // [ result ] trans: everything
 //
 func (v Pixbuf) AddAlpha(substitute_color bool, r uint8, g uint8, b uint8) (result Pixbuf) {
-	iv, err := _I.Get(21, "Pixbuf", "add_alpha")
+	iv, err := _I.Get(21, "Pixbuf", "add_alpha", 7, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -746,7 +746,7 @@ func (v Pixbuf) AddAlpha(substitute_color bool, r uint8, g uint8, b uint8) (resu
 // [ result ] trans: everything
 //
 func (v Pixbuf) ApplyEmbeddedOrientation() (result Pixbuf) {
-	iv, err := _I.Get(22, "Pixbuf", "apply_embedded_orientation")
+	iv, err := _I.Get(22, "Pixbuf", "apply_embedded_orientation", 7, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -784,7 +784,7 @@ func (v Pixbuf) ApplyEmbeddedOrientation() (result Pixbuf) {
 // [ overall_alpha ] trans: nothing
 //
 func (v Pixbuf) Composite(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type InterpTypeEnum, overall_alpha int32) {
-	iv, err := _I.Get(23, "Pixbuf", "composite")
+	iv, err := _I.Get(23, "Pixbuf", "composite", 7, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -844,7 +844,7 @@ func (v Pixbuf) Composite(dest IPixbuf, dest_x int32, dest_y int32, dest_width i
 // [ color2 ] trans: nothing
 //
 func (v Pixbuf) CompositeColor(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type InterpTypeEnum, overall_alpha int32, check_x int32, check_y int32, check_size int32, color1 uint32, color2 uint32) {
-	iv, err := _I.Get(24, "Pixbuf", "composite_color")
+	iv, err := _I.Get(24, "Pixbuf", "composite_color", 7, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -893,7 +893,7 @@ func (v Pixbuf) CompositeColor(dest IPixbuf, dest_x int32, dest_y int32, dest_wi
 // [ result ] trans: everything
 //
 func (v Pixbuf) CompositeColorSimple(dest_width int32, dest_height int32, interp_type InterpTypeEnum, overall_alpha int32, check_size int32, color1 uint32, color2 uint32) (result Pixbuf) {
-	iv, err := _I.Get(25, "Pixbuf", "composite_color_simple")
+	iv, err := _I.Get(25, "Pixbuf", "composite_color_simple", 7, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -918,7 +918,7 @@ func (v Pixbuf) CompositeColorSimple(dest_width int32, dest_height int32, interp
 // [ result ] trans: everything
 //
 func (v Pixbuf) Copy() (result Pixbuf) {
-	iv, err := _I.Get(26, "Pixbuf", "copy")
+	iv, err := _I.Get(26, "Pixbuf", "copy", 7, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -948,7 +948,7 @@ func (v Pixbuf) Copy() (result Pixbuf) {
 // [ dest_y ] trans: nothing
 //
 func (v Pixbuf) CopyArea(src_x int32, src_y int32, width int32, height int32, dest_pixbuf IPixbuf, dest_x int32, dest_y int32) {
-	iv, err := _I.Get(27, "Pixbuf", "copy_area")
+	iv, err := _I.Get(27, "Pixbuf", "copy_area", 7, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -976,7 +976,7 @@ func (v Pixbuf) CopyArea(src_x int32, src_y int32, width int32, height int32, de
 // [ result ] trans: nothing
 //
 func (v Pixbuf) CopyOptions(dest_pixbuf IPixbuf) (result bool) {
-	iv, err := _I.Get(28, "Pixbuf", "copy_options")
+	iv, err := _I.Get(28, "Pixbuf", "copy_options", 7, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -999,7 +999,7 @@ func (v Pixbuf) CopyOptions(dest_pixbuf IPixbuf) (result bool) {
 // [ pixel ] trans: nothing
 //
 func (v Pixbuf) Fill(pixel uint32) {
-	iv, err := _I.Get(29, "Pixbuf", "fill")
+	iv, err := _I.Get(29, "Pixbuf", "fill", 7, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1017,7 +1017,7 @@ func (v Pixbuf) Fill(pixel uint32) {
 // [ result ] trans: everything
 //
 func (v Pixbuf) Flip(horizontal bool) (result Pixbuf) {
-	iv, err := _I.Get(30, "Pixbuf", "flip")
+	iv, err := _I.Get(30, "Pixbuf", "flip", 7, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1036,7 +1036,7 @@ func (v Pixbuf) Flip(horizontal bool) (result Pixbuf) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) GetBitsPerSample() (result int32) {
-	iv, err := _I.Get(31, "Pixbuf", "get_bits_per_sample")
+	iv, err := _I.Get(31, "Pixbuf", "get_bits_per_sample", 7, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1054,7 +1054,7 @@ func (v Pixbuf) GetBitsPerSample() (result int32) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) GetByteLength() (result uint64) {
-	iv, err := _I.Get(32, "Pixbuf", "get_byte_length")
+	iv, err := _I.Get(32, "Pixbuf", "get_byte_length", 7, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1072,7 +1072,7 @@ func (v Pixbuf) GetByteLength() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) GetColorspace() (result ColorspaceEnum) {
-	iv, err := _I.Get(33, "Pixbuf", "get_colorspace")
+	iv, err := _I.Get(33, "Pixbuf", "get_colorspace", 7, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1090,7 +1090,7 @@ func (v Pixbuf) GetColorspace() (result ColorspaceEnum) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) GetHasAlpha() (result bool) {
-	iv, err := _I.Get(34, "Pixbuf", "get_has_alpha")
+	iv, err := _I.Get(34, "Pixbuf", "get_has_alpha", 7, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1108,7 +1108,7 @@ func (v Pixbuf) GetHasAlpha() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) GetHeight() (result int32) {
-	iv, err := _I.Get(35, "Pixbuf", "get_height")
+	iv, err := _I.Get(35, "Pixbuf", "get_height", 7, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1126,7 +1126,7 @@ func (v Pixbuf) GetHeight() (result int32) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) GetNChannels() (result int32) {
-	iv, err := _I.Get(36, "Pixbuf", "get_n_channels")
+	iv, err := _I.Get(36, "Pixbuf", "get_n_channels", 7, 36, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1146,7 +1146,7 @@ func (v Pixbuf) GetNChannels() (result int32) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) GetOption(key string) (result string) {
-	iv, err := _I.Get(37, "Pixbuf", "get_option")
+	iv, err := _I.Get(37, "Pixbuf", "get_option", 7, 37, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1167,7 +1167,7 @@ func (v Pixbuf) GetOption(key string) (result string) {
 // [ result ] trans: container
 //
 func (v Pixbuf) GetOptions() (result g.HashTable) {
-	iv, err := _I.Get(38, "Pixbuf", "get_options")
+	iv, err := _I.Get(38, "Pixbuf", "get_options", 7, 38, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1187,7 +1187,7 @@ func (v Pixbuf) GetOptions() (result g.HashTable) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) GetPixels() (result gi.Uint8Array) {
-	iv, err := _I.Get(39, "Pixbuf", "get_pixels")
+	iv, err := _I.Get(39, "Pixbuf", "get_pixels", 7, 39, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1210,7 +1210,7 @@ func (v Pixbuf) GetPixels() (result gi.Uint8Array) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) GetRowstride() (result int32) {
-	iv, err := _I.Get(40, "Pixbuf", "get_rowstride")
+	iv, err := _I.Get(40, "Pixbuf", "get_rowstride", 7, 40, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1228,7 +1228,7 @@ func (v Pixbuf) GetRowstride() (result int32) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) GetWidth() (result int32) {
-	iv, err := _I.Get(41, "Pixbuf", "get_width")
+	iv, err := _I.Get(41, "Pixbuf", "get_width", 7, 41, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1254,7 +1254,7 @@ func (v Pixbuf) GetWidth() (result int32) {
 // [ result ] trans: everything
 //
 func (v Pixbuf) NewSubpixbuf(src_x int32, src_y int32, width int32, height int32) (result Pixbuf) {
-	iv, err := _I.Get(42, "Pixbuf", "new_subpixbuf")
+	iv, err := _I.Get(42, "Pixbuf", "new_subpixbuf", 7, 42, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1276,7 +1276,7 @@ func (v Pixbuf) NewSubpixbuf(src_x int32, src_y int32, width int32, height int32
 // [ result ] trans: everything
 //
 func (v Pixbuf) ReadPixelBytes() (result g.Bytes) {
-	iv, err := _I.Get(43, "Pixbuf", "read_pixel_bytes")
+	iv, err := _I.Get(43, "Pixbuf", "read_pixel_bytes", 7, 43, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1294,7 +1294,7 @@ func (v Pixbuf) ReadPixelBytes() (result g.Bytes) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) ReadPixels() (result uint8) {
-	iv, err := _I.Get(44, "Pixbuf", "read_pixels")
+	iv, err := _I.Get(44, "Pixbuf", "read_pixels", 7, 44, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1314,7 +1314,7 @@ func (v Pixbuf) ReadPixels() (result uint8) {
 // [ result ] trans: nothing
 //
 func (v Pixbuf) RemoveOption(key string) (result bool) {
-	iv, err := _I.Get(45, "Pixbuf", "remove_option")
+	iv, err := _I.Get(45, "Pixbuf", "remove_option", 7, 45, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1337,7 +1337,7 @@ func (v Pixbuf) RemoveOption(key string) (result bool) {
 // [ result ] trans: everything
 //
 func (v Pixbuf) RotateSimple(angle PixbufRotationEnum) (result Pixbuf) {
-	iv, err := _I.Get(46, "Pixbuf", "rotate_simple")
+	iv, err := _I.Get(46, "Pixbuf", "rotate_simple", 7, 46, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1360,7 +1360,7 @@ func (v Pixbuf) RotateSimple(angle PixbufRotationEnum) (result Pixbuf) {
 // [ pixelate ] trans: nothing
 //
 func (v Pixbuf) SaturateAndPixelate(dest IPixbuf, saturation float32, pixelate bool) {
-	iv, err := _I.Get(47, "Pixbuf", "saturate_and_pixelate")
+	iv, err := _I.Get(47, "Pixbuf", "saturate_and_pixelate", 7, 47, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1392,7 +1392,7 @@ func (v Pixbuf) SaturateAndPixelate(dest IPixbuf, saturation float32, pixelate b
 // [ result ] trans: nothing
 //
 func (v Pixbuf) SaveToBufferv(type1 string, option_keys gi.CStrArray, option_values gi.CStrArray) (result bool, buffer gi.Uint8Array, err error) {
-	iv, err := _I.Get(48, "Pixbuf", "save_to_bufferv")
+	iv, err := _I.Get(48, "Pixbuf", "save_to_bufferv", 7, 48, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1434,7 +1434,7 @@ func (v Pixbuf) SaveToBufferv(type1 string, option_keys gi.CStrArray, option_val
 // [ result ] trans: nothing
 //
 func (v Pixbuf) SaveToCallbackv(save_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray) (result bool, err error) {
-	iv, err := _I.Get(49, "Pixbuf", "save_to_callbackv")
+	iv, err := _I.Get(49, "Pixbuf", "save_to_callbackv", 7, 49, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1471,7 +1471,7 @@ func (v Pixbuf) SaveToCallbackv(save_func int /*TODO_TYPE CALLBACK*/, user_data 
 // [ result ] trans: nothing
 //
 func (v Pixbuf) SaveToStreamv(stream g.IOutputStream, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(50, "Pixbuf", "save_to_streamv")
+	iv, err := _I.Get(50, "Pixbuf", "save_to_streamv", 7, 50, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1518,7 +1518,7 @@ func (v Pixbuf) SaveToStreamv(stream g.IOutputStream, type1 string, option_keys 
 // [ user_data ] trans: nothing
 //
 func (v Pixbuf) SaveToStreamvAsync(stream g.IOutputStream, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(51, "Pixbuf", "save_to_streamv_async")
+	iv, err := _I.Get(51, "Pixbuf", "save_to_streamv_async", 7, 51, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1558,7 +1558,7 @@ func (v Pixbuf) SaveToStreamvAsync(stream g.IOutputStream, type1 string, option_
 // [ result ] trans: nothing
 //
 func (v Pixbuf) Savev(filename string, type1 string, option_keys gi.CStrArray, option_values gi.CStrArray) (result bool, err error) {
-	iv, err := _I.Get(52, "Pixbuf", "savev")
+	iv, err := _I.Get(52, "Pixbuf", "savev", 7, 52, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1604,7 +1604,7 @@ func (v Pixbuf) Savev(filename string, type1 string, option_keys gi.CStrArray, o
 // [ interp_type ] trans: nothing
 //
 func (v Pixbuf) Scale(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32, dest_height int32, offset_x float64, offset_y float64, scale_x float64, scale_y float64, interp_type InterpTypeEnum) {
-	iv, err := _I.Get(53, "Pixbuf", "scale")
+	iv, err := _I.Get(53, "Pixbuf", "scale", 7, 53, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1639,7 +1639,7 @@ func (v Pixbuf) Scale(dest IPixbuf, dest_x int32, dest_y int32, dest_width int32
 // [ result ] trans: everything
 //
 func (v Pixbuf) ScaleSimple(dest_width int32, dest_height int32, interp_type InterpTypeEnum) (result Pixbuf) {
-	iv, err := _I.Get(54, "Pixbuf", "scale_simple")
+	iv, err := _I.Get(54, "Pixbuf", "scale_simple", 7, 54, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1664,7 +1664,7 @@ func (v Pixbuf) ScaleSimple(dest_width int32, dest_height int32, interp_type Int
 // [ result ] trans: nothing
 //
 func (v Pixbuf) SetOption(key string, value string) (result bool) {
-	iv, err := _I.Get(55, "Pixbuf", "set_option")
+	iv, err := _I.Get(55, "Pixbuf", "set_option", 7, 55, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1718,7 +1718,7 @@ func PixbufAnimationGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPixbufAnimationFromFile(filename string) (result PixbufAnimation, err error) {
-	iv, err := _I.Get(56, "PixbufAnimation", "new_from_file")
+	iv, err := _I.Get(56, "PixbufAnimation", "new_from_file", 9, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1742,7 +1742,7 @@ func NewPixbufAnimationFromFile(filename string) (result PixbufAnimation, err er
 // [ result ] trans: everything
 //
 func NewPixbufAnimationFromResource(resource_path string) (result PixbufAnimation, err error) {
-	iv, err := _I.Get(57, "PixbufAnimation", "new_from_resource")
+	iv, err := _I.Get(57, "PixbufAnimation", "new_from_resource", 9, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1768,7 +1768,7 @@ func NewPixbufAnimationFromResource(resource_path string) (result PixbufAnimatio
 // [ result ] trans: everything
 //
 func NewPixbufAnimationFromStream(stream g.IInputStream, cancellable g.ICancellable) (result PixbufAnimation, err error) {
-	iv, err := _I.Get(58, "PixbufAnimation", "new_from_stream")
+	iv, err := _I.Get(58, "PixbufAnimation", "new_from_stream", 9, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1799,7 +1799,7 @@ func NewPixbufAnimationFromStream(stream g.IInputStream, cancellable g.ICancella
 // [ result ] trans: everything
 //
 func NewPixbufAnimationFromStreamFinish(async_result g.IAsyncResult) (result PixbufAnimation, err error) {
-	iv, err := _I.Get(59, "PixbufAnimation", "new_from_stream_finish")
+	iv, err := _I.Get(59, "PixbufAnimation", "new_from_stream_finish", 9, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1829,7 +1829,7 @@ func NewPixbufAnimationFromStreamFinish(async_result g.IAsyncResult) (result Pix
 // [ user_data ] trans: nothing
 //
 func PixbufAnimationNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICancellable, callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
-	iv, err := _I.Get(60, "PixbufAnimation", "new_from_stream_async")
+	iv, err := _I.Get(60, "PixbufAnimation", "new_from_stream_async", 9, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1855,7 +1855,7 @@ func PixbufAnimationNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICa
 // [ result ] trans: nothing
 //
 func (v PixbufAnimation) GetHeight() (result int32) {
-	iv, err := _I.Get(61, "PixbufAnimation", "get_height")
+	iv, err := _I.Get(61, "PixbufAnimation", "get_height", 9, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1875,7 +1875,7 @@ func (v PixbufAnimation) GetHeight() (result int32) {
 // [ result ] trans: everything
 //
 func (v PixbufAnimation) GetIter(start_time g.TimeVal) (result PixbufAnimationIter) {
-	iv, err := _I.Get(62, "PixbufAnimation", "get_iter")
+	iv, err := _I.Get(62, "PixbufAnimation", "get_iter", 9, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1894,7 +1894,7 @@ func (v PixbufAnimation) GetIter(start_time g.TimeVal) (result PixbufAnimationIt
 // [ result ] trans: nothing
 //
 func (v PixbufAnimation) GetStaticImage() (result Pixbuf) {
-	iv, err := _I.Get(63, "PixbufAnimation", "get_static_image")
+	iv, err := _I.Get(63, "PixbufAnimation", "get_static_image", 9, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1912,7 +1912,7 @@ func (v PixbufAnimation) GetStaticImage() (result Pixbuf) {
 // [ result ] trans: nothing
 //
 func (v PixbufAnimation) GetWidth() (result int32) {
-	iv, err := _I.Get(64, "PixbufAnimation", "get_width")
+	iv, err := _I.Get(64, "PixbufAnimation", "get_width", 9, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1930,7 +1930,7 @@ func (v PixbufAnimation) GetWidth() (result int32) {
 // [ result ] trans: nothing
 //
 func (v PixbufAnimation) IsStaticImage() (result bool) {
-	iv, err := _I.Get(65, "PixbufAnimation", "is_static_image")
+	iv, err := _I.Get(65, "PixbufAnimation", "is_static_image", 9, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1965,7 +1965,7 @@ func PixbufAnimationIterGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v PixbufAnimationIter) Advance(current_time g.TimeVal) (result bool) {
-	iv, err := _I.Get(66, "PixbufAnimationIter", "advance")
+	iv, err := _I.Get(66, "PixbufAnimationIter", "advance", 10, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1984,7 +1984,7 @@ func (v PixbufAnimationIter) Advance(current_time g.TimeVal) (result bool) {
 // [ result ] trans: nothing
 //
 func (v PixbufAnimationIter) GetDelayTime() (result int32) {
-	iv, err := _I.Get(67, "PixbufAnimationIter", "get_delay_time")
+	iv, err := _I.Get(67, "PixbufAnimationIter", "get_delay_time", 10, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2002,7 +2002,7 @@ func (v PixbufAnimationIter) GetDelayTime() (result int32) {
 // [ result ] trans: nothing
 //
 func (v PixbufAnimationIter) GetPixbuf() (result Pixbuf) {
-	iv, err := _I.Get(68, "PixbufAnimationIter", "get_pixbuf")
+	iv, err := _I.Get(68, "PixbufAnimationIter", "get_pixbuf", 10, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2020,7 +2020,7 @@ func (v PixbufAnimationIter) GetPixbuf() (result Pixbuf) {
 // [ result ] trans: nothing
 //
 func (v PixbufAnimationIter) OnCurrentlyLoadingFrame() (result bool) {
-	iv, err := _I.Get(69, "PixbufAnimationIter", "on_currently_loading_frame")
+	iv, err := _I.Get(69, "PixbufAnimationIter", "on_currently_loading_frame", 10, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2080,7 +2080,7 @@ func PixbufFormatGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v PixbufFormat) Copy() (result PixbufFormat) {
-	iv, err := _I.Get(70, "PixbufFormat", "copy")
+	iv, err := _I.Get(70, "PixbufFormat", "copy", 13, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2096,7 +2096,7 @@ func (v PixbufFormat) Copy() (result PixbufFormat) {
 // gdk_pixbuf_format_free
 //
 func (v PixbufFormat) Free() {
-	iv, err := _I.Get(71, "PixbufFormat", "free")
+	iv, err := _I.Get(71, "PixbufFormat", "free", 13, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2111,7 +2111,7 @@ func (v PixbufFormat) Free() {
 // [ result ] trans: everything
 //
 func (v PixbufFormat) GetDescription() (result string) {
-	iv, err := _I.Get(72, "PixbufFormat", "get_description")
+	iv, err := _I.Get(72, "PixbufFormat", "get_description", 13, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2129,7 +2129,7 @@ func (v PixbufFormat) GetDescription() (result string) {
 // [ result ] trans: everything
 //
 func (v PixbufFormat) GetExtensions() (result gi.CStrArray) {
-	iv, err := _I.Get(73, "PixbufFormat", "get_extensions")
+	iv, err := _I.Get(73, "PixbufFormat", "get_extensions", 13, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2148,7 +2148,7 @@ func (v PixbufFormat) GetExtensions() (result gi.CStrArray) {
 // [ result ] trans: everything
 //
 func (v PixbufFormat) GetLicense() (result string) {
-	iv, err := _I.Get(74, "PixbufFormat", "get_license")
+	iv, err := _I.Get(74, "PixbufFormat", "get_license", 13, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2166,7 +2166,7 @@ func (v PixbufFormat) GetLicense() (result string) {
 // [ result ] trans: everything
 //
 func (v PixbufFormat) GetMimeTypes() (result gi.CStrArray) {
-	iv, err := _I.Get(75, "PixbufFormat", "get_mime_types")
+	iv, err := _I.Get(75, "PixbufFormat", "get_mime_types", 13, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2185,7 +2185,7 @@ func (v PixbufFormat) GetMimeTypes() (result gi.CStrArray) {
 // [ result ] trans: everything
 //
 func (v PixbufFormat) GetName() (result string) {
-	iv, err := _I.Get(76, "PixbufFormat", "get_name")
+	iv, err := _I.Get(76, "PixbufFormat", "get_name", 13, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2203,7 +2203,7 @@ func (v PixbufFormat) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v PixbufFormat) IsDisabled() (result bool) {
-	iv, err := _I.Get(77, "PixbufFormat", "is_disabled")
+	iv, err := _I.Get(77, "PixbufFormat", "is_disabled", 13, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2223,7 +2223,7 @@ func (v PixbufFormat) IsDisabled() (result bool) {
 // [ result ] trans: nothing
 //
 func (v PixbufFormat) IsSaveOptionSupported(option_key string) (result bool) {
-	iv, err := _I.Get(78, "PixbufFormat", "is_save_option_supported")
+	iv, err := _I.Get(78, "PixbufFormat", "is_save_option_supported", 13, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2244,7 +2244,7 @@ func (v PixbufFormat) IsSaveOptionSupported(option_key string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v PixbufFormat) IsScalable() (result bool) {
-	iv, err := _I.Get(79, "PixbufFormat", "is_scalable")
+	iv, err := _I.Get(79, "PixbufFormat", "is_scalable", 13, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2262,7 +2262,7 @@ func (v PixbufFormat) IsScalable() (result bool) {
 // [ result ] trans: nothing
 //
 func (v PixbufFormat) IsWritable() (result bool) {
-	iv, err := _I.Get(80, "PixbufFormat", "is_writable")
+	iv, err := _I.Get(80, "PixbufFormat", "is_writable", 13, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2280,7 +2280,7 @@ func (v PixbufFormat) IsWritable() (result bool) {
 // [ disabled ] trans: nothing
 //
 func (v PixbufFormat) SetDisabled(disabled bool) {
-	iv, err := _I.Get(81, "PixbufFormat", "set_disabled")
+	iv, err := _I.Get(81, "PixbufFormat", "set_disabled", 13, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2311,7 +2311,7 @@ func PixbufLoaderGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPixbufLoader() (result PixbufLoader) {
-	iv, err := _I.Get(82, "PixbufLoader", "new")
+	iv, err := _I.Get(82, "PixbufLoader", "new", 14, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2329,7 +2329,7 @@ func NewPixbufLoader() (result PixbufLoader) {
 // [ result ] trans: everything
 //
 func NewPixbufLoaderWithMimeType(mime_type string) (result PixbufLoader, err error) {
-	iv, err := _I.Get(83, "PixbufLoader", "new_with_mime_type")
+	iv, err := _I.Get(83, "PixbufLoader", "new_with_mime_type", 14, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2353,7 +2353,7 @@ func NewPixbufLoaderWithMimeType(mime_type string) (result PixbufLoader, err err
 // [ result ] trans: everything
 //
 func NewPixbufLoaderWithType(image_type string) (result PixbufLoader, err error) {
-	iv, err := _I.Get(84, "PixbufLoader", "new_with_type")
+	iv, err := _I.Get(84, "PixbufLoader", "new_with_type", 14, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2375,7 +2375,7 @@ func NewPixbufLoaderWithType(image_type string) (result PixbufLoader, err error)
 // [ result ] trans: nothing
 //
 func (v PixbufLoader) Close() (result bool, err error) {
-	iv, err := _I.Get(85, "PixbufLoader", "close")
+	iv, err := _I.Get(85, "PixbufLoader", "close", 14, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2395,7 +2395,7 @@ func (v PixbufLoader) Close() (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v PixbufLoader) GetAnimation() (result PixbufAnimation) {
-	iv, err := _I.Get(86, "PixbufLoader", "get_animation")
+	iv, err := _I.Get(86, "PixbufLoader", "get_animation", 14, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2413,7 +2413,7 @@ func (v PixbufLoader) GetAnimation() (result PixbufAnimation) {
 // [ result ] trans: nothing
 //
 func (v PixbufLoader) GetFormat() (result PixbufFormat) {
-	iv, err := _I.Get(87, "PixbufLoader", "get_format")
+	iv, err := _I.Get(87, "PixbufLoader", "get_format", 14, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2431,7 +2431,7 @@ func (v PixbufLoader) GetFormat() (result PixbufFormat) {
 // [ result ] trans: nothing
 //
 func (v PixbufLoader) GetPixbuf() (result Pixbuf) {
-	iv, err := _I.Get(88, "PixbufLoader", "get_pixbuf")
+	iv, err := _I.Get(88, "PixbufLoader", "get_pixbuf", 14, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2451,7 +2451,7 @@ func (v PixbufLoader) GetPixbuf() (result Pixbuf) {
 // [ height ] trans: nothing
 //
 func (v PixbufLoader) SetSize(width int32, height int32) {
-	iv, err := _I.Get(89, "PixbufLoader", "set_size")
+	iv, err := _I.Get(89, "PixbufLoader", "set_size", 14, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2472,7 +2472,7 @@ func (v PixbufLoader) SetSize(width int32, height int32) {
 // [ result ] trans: nothing
 //
 func (v PixbufLoader) Write(buf gi.Uint8Array, count uint64) (result bool, err error) {
-	iv, err := _I.Get(90, "PixbufLoader", "write")
+	iv, err := _I.Get(90, "PixbufLoader", "write", 14, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2496,7 +2496,7 @@ func (v PixbufLoader) Write(buf gi.Uint8Array, count uint64) (result bool, err e
 // [ result ] trans: nothing
 //
 func (v PixbufLoader) WriteBytes(buffer g.Bytes) (result bool, err error) {
-	iv, err := _I.Get(91, "PixbufLoader", "write_bytes")
+	iv, err := _I.Get(91, "PixbufLoader", "write_bytes", 14, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2571,7 +2571,7 @@ func PixbufSimpleAnimGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPixbufSimpleAnim(width int32, height int32, rate float32) (result PixbufSimpleAnim) {
-	iv, err := _I.Get(92, "PixbufSimpleAnim", "new")
+	iv, err := _I.Get(92, "PixbufSimpleAnim", "new", 18, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2591,7 +2591,7 @@ func NewPixbufSimpleAnim(width int32, height int32, rate float32) (result Pixbuf
 // [ pixbuf ] trans: nothing
 //
 func (v PixbufSimpleAnim) AddFrame(pixbuf IPixbuf) {
-	iv, err := _I.Get(93, "PixbufSimpleAnim", "add_frame")
+	iv, err := _I.Get(93, "PixbufSimpleAnim", "add_frame", 18, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2611,7 +2611,7 @@ func (v PixbufSimpleAnim) AddFrame(pixbuf IPixbuf) {
 // [ result ] trans: nothing
 //
 func (v PixbufSimpleAnim) GetLoop() (result bool) {
-	iv, err := _I.Get(94, "PixbufSimpleAnim", "get_loop")
+	iv, err := _I.Get(94, "PixbufSimpleAnim", "get_loop", 18, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2629,7 +2629,7 @@ func (v PixbufSimpleAnim) GetLoop() (result bool) {
 // [ loop ] trans: nothing
 //
 func (v PixbufSimpleAnim) SetLoop(loop bool) {
-	iv, err := _I.Get(95, "PixbufSimpleAnim", "set_loop")
+	iv, err := _I.Get(95, "PixbufSimpleAnim", "set_loop", 18, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2662,7 +2662,7 @@ func PixbufSimpleAnimIterGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func PixbufErrorQuark() (result uint32) {
-	iv, err := _I.Get(96, "pixbuf_error_quark", "")
+	iv, err := _I.Get(96, "pixbuf_error_quark", "", 21, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

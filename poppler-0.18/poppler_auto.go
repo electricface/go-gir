@@ -48,7 +48,7 @@ func ActionGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v Action) Copy() (result Action) {
-	iv, err := _I.Get(0, "Action", "copy")
+	iv, err := _I.Get(0, "Action", "copy", 9, 0, gi.INFO_TYPE_UNION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -64,7 +64,7 @@ func (v Action) Copy() (result Action) {
 // poppler_action_free
 //
 func (v Action) Free() {
-	iv, err := _I.Get(1, "Action", "free")
+	iv, err := _I.Get(1, "Action", "free", 9, 1, gi.INFO_TYPE_UNION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -277,7 +277,7 @@ func AnnotGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Annot) GetAnnotType() (result AnnotTypeEnum) {
-	iv, err := _I.Get(2, "Annot", "get_annot_type")
+	iv, err := _I.Get(2, "Annot", "get_annot_type", 24, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -295,7 +295,7 @@ func (v Annot) GetAnnotType() (result AnnotTypeEnum) {
 // [ result ] trans: everything
 //
 func (v Annot) GetColor() (result Color) {
-	iv, err := _I.Get(3, "Annot", "get_color")
+	iv, err := _I.Get(3, "Annot", "get_color", 24, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -313,7 +313,7 @@ func (v Annot) GetColor() (result Color) {
 // [ result ] trans: everything
 //
 func (v Annot) GetContents() (result string) {
-	iv, err := _I.Get(4, "Annot", "get_contents")
+	iv, err := _I.Get(4, "Annot", "get_contents", 24, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -331,7 +331,7 @@ func (v Annot) GetContents() (result string) {
 // [ result ] trans: nothing
 //
 func (v Annot) GetFlags() (result AnnotFlagFlags) {
-	iv, err := _I.Get(5, "Annot", "get_flags")
+	iv, err := _I.Get(5, "Annot", "get_flags", 24, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -349,7 +349,7 @@ func (v Annot) GetFlags() (result AnnotFlagFlags) {
 // [ result ] trans: everything
 //
 func (v Annot) GetModified() (result string) {
-	iv, err := _I.Get(6, "Annot", "get_modified")
+	iv, err := _I.Get(6, "Annot", "get_modified", 24, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -367,7 +367,7 @@ func (v Annot) GetModified() (result string) {
 // [ result ] trans: everything
 //
 func (v Annot) GetName() (result string) {
-	iv, err := _I.Get(7, "Annot", "get_name")
+	iv, err := _I.Get(7, "Annot", "get_name", 24, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -385,7 +385,7 @@ func (v Annot) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v Annot) GetPageIndex() (result int32) {
-	iv, err := _I.Get(8, "Annot", "get_page_index")
+	iv, err := _I.Get(8, "Annot", "get_page_index", 24, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -403,7 +403,7 @@ func (v Annot) GetPageIndex() (result int32) {
 // [ poppler_rect ] trans: nothing, dir: out
 //
 func (v Annot) GetRectangle(poppler_rect Rectangle) {
-	iv, err := _I.Get(9, "Annot", "get_rectangle")
+	iv, err := _I.Get(9, "Annot", "get_rectangle", 24, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -419,7 +419,7 @@ func (v Annot) GetRectangle(poppler_rect Rectangle) {
 // [ poppler_color ] trans: nothing
 //
 func (v Annot) SetColor(poppler_color Color) {
-	iv, err := _I.Get(10, "Annot", "set_color")
+	iv, err := _I.Get(10, "Annot", "set_color", 24, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -435,7 +435,7 @@ func (v Annot) SetColor(poppler_color Color) {
 // [ contents ] trans: nothing
 //
 func (v Annot) SetContents(contents string) {
-	iv, err := _I.Get(11, "Annot", "set_contents")
+	iv, err := _I.Get(11, "Annot", "set_contents", 24, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -453,7 +453,7 @@ func (v Annot) SetContents(contents string) {
 // [ flags ] trans: nothing
 //
 func (v Annot) SetFlags(flags AnnotFlagFlags) {
-	iv, err := _I.Get(12, "Annot", "set_flags")
+	iv, err := _I.Get(12, "Annot", "set_flags", 24, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -469,7 +469,7 @@ func (v Annot) SetFlags(flags AnnotFlagFlags) {
 // [ poppler_rect ] trans: nothing
 //
 func (v Annot) SetRectangle(poppler_rect Rectangle) {
-	iv, err := _I.Get(13, "Annot", "set_rectangle")
+	iv, err := _I.Get(13, "Annot", "set_rectangle", 24, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -497,7 +497,7 @@ func AnnotCalloutLineGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewAnnotCalloutLine() (result AnnotCalloutLine) {
-	iv, err := _I.Get(14, "AnnotCalloutLine", "new")
+	iv, err := _I.Get(14, "AnnotCalloutLine", "new", 25, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -513,7 +513,7 @@ func NewAnnotCalloutLine() (result AnnotCalloutLine) {
 // [ result ] trans: everything
 //
 func (v AnnotCalloutLine) Copy() (result AnnotCalloutLine) {
-	iv, err := _I.Get(15, "AnnotCalloutLine", "copy")
+	iv, err := _I.Get(15, "AnnotCalloutLine", "copy", 25, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -529,7 +529,7 @@ func (v AnnotCalloutLine) Copy() (result AnnotCalloutLine) {
 // poppler_annot_callout_line_free
 //
 func (v AnnotCalloutLine) Free() {
-	iv, err := _I.Get(16, "AnnotCalloutLine", "free")
+	iv, err := _I.Get(16, "AnnotCalloutLine", "free", 25, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -563,7 +563,7 @@ func AnnotCircleGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewAnnotCircle(doc IDocument, rect Rectangle) (result AnnotCircle) {
-	iv, err := _I.Get(17, "AnnotCircle", "new")
+	iv, err := _I.Get(17, "AnnotCircle", "new", 26, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -586,7 +586,7 @@ func NewAnnotCircle(doc IDocument, rect Rectangle) (result AnnotCircle) {
 // [ result ] trans: everything
 //
 func (v AnnotCircle) GetInteriorColor() (result Color) {
-	iv, err := _I.Get(18, "AnnotCircle", "get_interior_color")
+	iv, err := _I.Get(18, "AnnotCircle", "get_interior_color", 26, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -604,7 +604,7 @@ func (v AnnotCircle) GetInteriorColor() (result Color) {
 // [ poppler_color ] trans: nothing
 //
 func (v AnnotCircle) SetInteriorColor(poppler_color Color) {
-	iv, err := _I.Get(19, "AnnotCircle", "set_interior_color")
+	iv, err := _I.Get(19, "AnnotCircle", "set_interior_color", 26, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -648,7 +648,7 @@ func AnnotFileAttachmentGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v AnnotFileAttachment) GetAttachment() (result Attachment) {
-	iv, err := _I.Get(20, "AnnotFileAttachment", "get_attachment")
+	iv, err := _I.Get(20, "AnnotFileAttachment", "get_attachment", 28, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -666,7 +666,7 @@ func (v AnnotFileAttachment) GetAttachment() (result Attachment) {
 // [ result ] trans: everything
 //
 func (v AnnotFileAttachment) GetName() (result string) {
-	iv, err := _I.Get(21, "AnnotFileAttachment", "get_name")
+	iv, err := _I.Get(21, "AnnotFileAttachment", "get_name", 28, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -721,7 +721,7 @@ func AnnotFreeTextGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v AnnotFreeText) GetCalloutLine() (result AnnotCalloutLine) {
-	iv, err := _I.Get(22, "AnnotFreeText", "get_callout_line")
+	iv, err := _I.Get(22, "AnnotFreeText", "get_callout_line", 30, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -739,7 +739,7 @@ func (v AnnotFreeText) GetCalloutLine() (result AnnotCalloutLine) {
 // [ result ] trans: nothing
 //
 func (v AnnotFreeText) GetQuadding() (result AnnotFreeTextQuaddingEnum) {
-	iv, err := _I.Get(23, "AnnotFreeText", "get_quadding")
+	iv, err := _I.Get(23, "AnnotFreeText", "get_quadding", 30, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -794,7 +794,7 @@ func AnnotLineGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewAnnotLine(doc IDocument, rect Rectangle, start Point, end Point) (result AnnotLine) {
-	iv, err := _I.Get(24, "AnnotLine", "new")
+	iv, err := _I.Get(24, "AnnotLine", "new", 32, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -821,7 +821,7 @@ func NewAnnotLine(doc IDocument, rect Rectangle, start Point, end Point) (result
 // [ end ] trans: nothing
 //
 func (v AnnotLine) SetVertices(start Point, end Point) {
-	iv, err := _I.Get(25, "AnnotLine", "set_vertices")
+	iv, err := _I.Get(25, "AnnotLine", "set_vertices", 32, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -850,7 +850,7 @@ func AnnotMappingGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewAnnotMapping() (result AnnotMapping) {
-	iv, err := _I.Get(26, "AnnotMapping", "new")
+	iv, err := _I.Get(26, "AnnotMapping", "new", 33, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -866,7 +866,7 @@ func NewAnnotMapping() (result AnnotMapping) {
 // [ result ] trans: everything
 //
 func (v AnnotMapping) Copy() (result AnnotMapping) {
-	iv, err := _I.Get(27, "AnnotMapping", "copy")
+	iv, err := _I.Get(27, "AnnotMapping", "copy", 33, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -882,7 +882,7 @@ func (v AnnotMapping) Copy() (result AnnotMapping) {
 // poppler_annot_mapping_free
 //
 func (v AnnotMapping) Free() {
-	iv, err := _I.Get(28, "AnnotMapping", "free")
+	iv, err := _I.Get(28, "AnnotMapping", "free", 33, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -912,7 +912,7 @@ func AnnotMarkupGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v AnnotMarkup) GetDate() (result g.Date) {
-	iv, err := _I.Get(29, "AnnotMarkup", "get_date")
+	iv, err := _I.Get(29, "AnnotMarkup", "get_date", 34, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -930,7 +930,7 @@ func (v AnnotMarkup) GetDate() (result g.Date) {
 // [ result ] trans: nothing
 //
 func (v AnnotMarkup) GetExternalData() (result AnnotExternalDataTypeEnum) {
-	iv, err := _I.Get(30, "AnnotMarkup", "get_external_data")
+	iv, err := _I.Get(30, "AnnotMarkup", "get_external_data", 34, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -948,7 +948,7 @@ func (v AnnotMarkup) GetExternalData() (result AnnotExternalDataTypeEnum) {
 // [ result ] trans: everything
 //
 func (v AnnotMarkup) GetLabel() (result string) {
-	iv, err := _I.Get(31, "AnnotMarkup", "get_label")
+	iv, err := _I.Get(31, "AnnotMarkup", "get_label", 34, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -966,7 +966,7 @@ func (v AnnotMarkup) GetLabel() (result string) {
 // [ result ] trans: nothing
 //
 func (v AnnotMarkup) GetOpacity() (result float64) {
-	iv, err := _I.Get(32, "AnnotMarkup", "get_opacity")
+	iv, err := _I.Get(32, "AnnotMarkup", "get_opacity", 34, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -984,7 +984,7 @@ func (v AnnotMarkup) GetOpacity() (result float64) {
 // [ result ] trans: nothing
 //
 func (v AnnotMarkup) GetPopupIsOpen() (result bool) {
-	iv, err := _I.Get(33, "AnnotMarkup", "get_popup_is_open")
+	iv, err := _I.Get(33, "AnnotMarkup", "get_popup_is_open", 34, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1004,7 +1004,7 @@ func (v AnnotMarkup) GetPopupIsOpen() (result bool) {
 // [ result ] trans: nothing
 //
 func (v AnnotMarkup) GetPopupRectangle(poppler_rect Rectangle) (result bool) {
-	iv, err := _I.Get(34, "AnnotMarkup", "get_popup_rectangle")
+	iv, err := _I.Get(34, "AnnotMarkup", "get_popup_rectangle", 34, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1023,7 +1023,7 @@ func (v AnnotMarkup) GetPopupRectangle(poppler_rect Rectangle) (result bool) {
 // [ result ] trans: nothing
 //
 func (v AnnotMarkup) GetReplyTo() (result AnnotMarkupReplyTypeEnum) {
-	iv, err := _I.Get(35, "AnnotMarkup", "get_reply_to")
+	iv, err := _I.Get(35, "AnnotMarkup", "get_reply_to", 34, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1041,7 +1041,7 @@ func (v AnnotMarkup) GetReplyTo() (result AnnotMarkupReplyTypeEnum) {
 // [ result ] trans: everything
 //
 func (v AnnotMarkup) GetSubject() (result string) {
-	iv, err := _I.Get(36, "AnnotMarkup", "get_subject")
+	iv, err := _I.Get(36, "AnnotMarkup", "get_subject", 34, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1059,7 +1059,7 @@ func (v AnnotMarkup) GetSubject() (result string) {
 // [ result ] trans: nothing
 //
 func (v AnnotMarkup) HasPopup() (result bool) {
-	iv, err := _I.Get(37, "AnnotMarkup", "has_popup")
+	iv, err := _I.Get(37, "AnnotMarkup", "has_popup", 34, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1077,7 +1077,7 @@ func (v AnnotMarkup) HasPopup() (result bool) {
 // [ label ] trans: nothing
 //
 func (v AnnotMarkup) SetLabel(label string) {
-	iv, err := _I.Get(38, "AnnotMarkup", "set_label")
+	iv, err := _I.Get(38, "AnnotMarkup", "set_label", 34, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1095,7 +1095,7 @@ func (v AnnotMarkup) SetLabel(label string) {
 // [ opacity ] trans: nothing
 //
 func (v AnnotMarkup) SetOpacity(opacity float64) {
-	iv, err := _I.Get(39, "AnnotMarkup", "set_opacity")
+	iv, err := _I.Get(39, "AnnotMarkup", "set_opacity", 34, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1111,7 +1111,7 @@ func (v AnnotMarkup) SetOpacity(opacity float64) {
 // [ popup_rect ] trans: nothing
 //
 func (v AnnotMarkup) SetPopup(popup_rect Rectangle) {
-	iv, err := _I.Get(40, "AnnotMarkup", "set_popup")
+	iv, err := _I.Get(40, "AnnotMarkup", "set_popup", 34, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1127,7 +1127,7 @@ func (v AnnotMarkup) SetPopup(popup_rect Rectangle) {
 // [ is_open ] trans: nothing
 //
 func (v AnnotMarkup) SetPopupIsOpen(is_open bool) {
-	iv, err := _I.Get(41, "AnnotMarkup", "set_popup_is_open")
+	iv, err := _I.Get(41, "AnnotMarkup", "set_popup_is_open", 34, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1143,7 +1143,7 @@ func (v AnnotMarkup) SetPopupIsOpen(is_open bool) {
 // [ poppler_rect ] trans: nothing
 //
 func (v AnnotMarkup) SetPopupRectangle(poppler_rect Rectangle) {
-	iv, err := _I.Get(42, "AnnotMarkup", "set_popup_rectangle")
+	iv, err := _I.Get(42, "AnnotMarkup", "set_popup_rectangle", 34, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1187,7 +1187,7 @@ func AnnotMovieGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v AnnotMovie) GetMovie() (result Movie) {
-	iv, err := _I.Get(43, "AnnotMovie", "get_movie")
+	iv, err := _I.Get(43, "AnnotMovie", "get_movie", 36, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1205,7 +1205,7 @@ func (v AnnotMovie) GetMovie() (result Movie) {
 // [ result ] trans: everything
 //
 func (v AnnotMovie) GetTitle() (result string) {
-	iv, err := _I.Get(44, "AnnotMovie", "get_title")
+	iv, err := _I.Get(44, "AnnotMovie", "get_title", 36, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1238,7 +1238,7 @@ func AnnotScreenGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v AnnotScreen) GetAction() (result Action) {
-	iv, err := _I.Get(45, "AnnotScreen", "get_action")
+	iv, err := _I.Get(45, "AnnotScreen", "get_action", 37, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1275,7 +1275,7 @@ func AnnotSquareGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewAnnotSquare(doc IDocument, rect Rectangle) (result AnnotSquare) {
-	iv, err := _I.Get(46, "AnnotSquare", "new")
+	iv, err := _I.Get(46, "AnnotSquare", "new", 38, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1298,7 +1298,7 @@ func NewAnnotSquare(doc IDocument, rect Rectangle) (result AnnotSquare) {
 // [ result ] trans: everything
 //
 func (v AnnotSquare) GetInteriorColor() (result Color) {
-	iv, err := _I.Get(47, "AnnotSquare", "get_interior_color")
+	iv, err := _I.Get(47, "AnnotSquare", "get_interior_color", 38, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1316,7 +1316,7 @@ func (v AnnotSquare) GetInteriorColor() (result Color) {
 // [ poppler_color ] trans: nothing
 //
 func (v AnnotSquare) SetInteriorColor(poppler_color Color) {
-	iv, err := _I.Get(48, "AnnotSquare", "set_interior_color")
+	iv, err := _I.Get(48, "AnnotSquare", "set_interior_color", 38, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1351,7 +1351,7 @@ func AnnotTextGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewAnnotText(doc IDocument, rect Rectangle) (result AnnotText) {
-	iv, err := _I.Get(49, "AnnotText", "new")
+	iv, err := _I.Get(49, "AnnotText", "new", 39, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1374,7 +1374,7 @@ func NewAnnotText(doc IDocument, rect Rectangle) (result AnnotText) {
 // [ result ] trans: everything
 //
 func (v AnnotText) GetIcon() (result string) {
-	iv, err := _I.Get(50, "AnnotText", "get_icon")
+	iv, err := _I.Get(50, "AnnotText", "get_icon", 39, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1392,7 +1392,7 @@ func (v AnnotText) GetIcon() (result string) {
 // [ result ] trans: nothing
 //
 func (v AnnotText) GetIsOpen() (result bool) {
-	iv, err := _I.Get(51, "AnnotText", "get_is_open")
+	iv, err := _I.Get(51, "AnnotText", "get_is_open", 39, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1410,7 +1410,7 @@ func (v AnnotText) GetIsOpen() (result bool) {
 // [ result ] trans: nothing
 //
 func (v AnnotText) GetState() (result AnnotTextStateEnum) {
-	iv, err := _I.Get(52, "AnnotText", "get_state")
+	iv, err := _I.Get(52, "AnnotText", "get_state", 39, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1428,7 +1428,7 @@ func (v AnnotText) GetState() (result AnnotTextStateEnum) {
 // [ icon ] trans: nothing
 //
 func (v AnnotText) SetIcon(icon string) {
-	iv, err := _I.Get(53, "AnnotText", "set_icon")
+	iv, err := _I.Get(53, "AnnotText", "set_icon", 39, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1446,7 +1446,7 @@ func (v AnnotText) SetIcon(icon string) {
 // [ is_open ] trans: nothing
 //
 func (v AnnotText) SetIsOpen(is_open bool) {
-	iv, err := _I.Get(54, "AnnotText", "set_is_open")
+	iv, err := _I.Get(54, "AnnotText", "set_is_open", 39, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1483,7 +1483,7 @@ func AnnotTextMarkupGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewAnnotTextMarkupHighlight(doc IDocument, rect Rectangle, quadrilaterals int /*TODO_TYPE isPtr: true, tag: array*/) (result AnnotTextMarkup) {
-	iv, err := _I.Get(55, "AnnotTextMarkup", "new_highlight")
+	iv, err := _I.Get(55, "AnnotTextMarkup", "new_highlight", 40, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1513,7 +1513,7 @@ func NewAnnotTextMarkupHighlight(doc IDocument, rect Rectangle, quadrilaterals i
 // [ result ] trans: everything
 //
 func NewAnnotTextMarkupSquiggly(doc IDocument, rect Rectangle, quadrilaterals int /*TODO_TYPE isPtr: true, tag: array*/) (result AnnotTextMarkup) {
-	iv, err := _I.Get(56, "AnnotTextMarkup", "new_squiggly")
+	iv, err := _I.Get(56, "AnnotTextMarkup", "new_squiggly", 40, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1543,7 +1543,7 @@ func NewAnnotTextMarkupSquiggly(doc IDocument, rect Rectangle, quadrilaterals in
 // [ result ] trans: everything
 //
 func NewAnnotTextMarkupStrikeout(doc IDocument, rect Rectangle, quadrilaterals int /*TODO_TYPE isPtr: true, tag: array*/) (result AnnotTextMarkup) {
-	iv, err := _I.Get(57, "AnnotTextMarkup", "new_strikeout")
+	iv, err := _I.Get(57, "AnnotTextMarkup", "new_strikeout", 40, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1573,7 +1573,7 @@ func NewAnnotTextMarkupStrikeout(doc IDocument, rect Rectangle, quadrilaterals i
 // [ result ] trans: everything
 //
 func NewAnnotTextMarkupUnderline(doc IDocument, rect Rectangle, quadrilaterals int /*TODO_TYPE isPtr: true, tag: array*/) (result AnnotTextMarkup) {
-	iv, err := _I.Get(58, "AnnotTextMarkup", "new_underline")
+	iv, err := _I.Get(58, "AnnotTextMarkup", "new_underline", 40, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1597,7 +1597,7 @@ func NewAnnotTextMarkupUnderline(doc IDocument, rect Rectangle, quadrilaterals i
 // [ result ] trans: everything
 //
 func (v AnnotTextMarkup) GetQuadrilaterals() (result int /*TODO_TYPE array type: 1, isZeroTerm: false*/) {
-	iv, err := _I.Get(59, "AnnotTextMarkup", "get_quadrilaterals")
+	iv, err := _I.Get(59, "AnnotTextMarkup", "get_quadrilaterals", 40, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1615,7 +1615,7 @@ func (v AnnotTextMarkup) GetQuadrilaterals() (result int /*TODO_TYPE array type:
 // [ quadrilaterals ] trans: nothing
 //
 func (v AnnotTextMarkup) SetQuadrilaterals(quadrilaterals int /*TODO_TYPE isPtr: true, tag: array*/) {
-	iv, err := _I.Get(60, "AnnotTextMarkup", "set_quadrilaterals")
+	iv, err := _I.Get(60, "AnnotTextMarkup", "set_quadrilaterals", 40, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1704,7 +1704,7 @@ func AttachmentGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Attachment) Save(filename string) (result bool, err error) {
-	iv, err := _I.Get(61, "Attachment", "save")
+	iv, err := _I.Get(61, "Attachment", "save", 43, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1731,7 +1731,7 @@ func (v Attachment) Save(filename string) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v Attachment) SaveToCallback(save_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool, err error) {
-	iv, err := _I.Get(62, "Attachment", "save_to_callback")
+	iv, err := _I.Get(62, "Attachment", "save_to_callback", 43, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1796,7 +1796,7 @@ func ColorGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewColor() (result Color) {
-	iv, err := _I.Get(63, "Color", "new")
+	iv, err := _I.Get(63, "Color", "new", 47, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1812,7 +1812,7 @@ func NewColor() (result Color) {
 // [ result ] trans: everything
 //
 func (v Color) Copy() (result Color) {
-	iv, err := _I.Get(64, "Color", "copy")
+	iv, err := _I.Get(64, "Color", "copy", 47, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1828,7 +1828,7 @@ func (v Color) Copy() (result Color) {
 // poppler_color_free
 //
 func (v Color) Free() {
-	iv, err := _I.Get(65, "Color", "free")
+	iv, err := _I.Get(65, "Color", "free", 47, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1855,7 +1855,7 @@ func DestGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v Dest) Copy() (result Dest) {
-	iv, err := _I.Get(66, "Dest", "copy")
+	iv, err := _I.Get(66, "Dest", "copy", 48, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1871,7 +1871,7 @@ func (v Dest) Copy() (result Dest) {
 // poppler_dest_free
 //
 func (v Dest) Free() {
-	iv, err := _I.Get(67, "Dest", "free")
+	iv, err := _I.Get(67, "Dest", "free", 48, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1928,7 +1928,7 @@ func DocumentGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewDocumentFromData(data string, length int32, password string) (result Document, err error) {
-	iv, err := _I.Get(68, "Document", "new_from_data")
+	iv, err := _I.Get(68, "Document", "new_from_data", 50, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1958,7 +1958,7 @@ func NewDocumentFromData(data string, length int32, password string) (result Doc
 // [ result ] trans: everything
 //
 func NewDocumentFromFile(uri string, password string) (result Document, err error) {
-	iv, err := _I.Get(69, "Document", "new_from_file")
+	iv, err := _I.Get(69, "Document", "new_from_file", 50, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -1989,7 +1989,7 @@ func NewDocumentFromFile(uri string, password string) (result Document, err erro
 // [ result ] trans: everything
 //
 func NewDocumentFromGfile(file g.IFile, password string, cancellable g.ICancellable) (result Document, err error) {
-	iv, err := _I.Get(70, "Document", "new_from_gfile")
+	iv, err := _I.Get(70, "Document", "new_from_gfile", 50, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2029,7 +2029,7 @@ func NewDocumentFromGfile(file g.IFile, password string, cancellable g.ICancella
 // [ result ] trans: everything
 //
 func NewDocumentFromStream(stream g.IInputStream, length int64, password string, cancellable g.ICancellable) (result Document, err error) {
-	iv, err := _I.Get(71, "Document", "new_from_stream")
+	iv, err := _I.Get(71, "Document", "new_from_stream", 50, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2064,7 +2064,7 @@ func NewDocumentFromStream(stream g.IInputStream, length int64, password string,
 // [ result ] trans: everything
 //
 func (v Document) FindDest(link_name string) (result Dest) {
-	iv, err := _I.Get(72, "Document", "find_dest")
+	iv, err := _I.Get(72, "Document", "find_dest", 50, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2085,7 +2085,7 @@ func (v Document) FindDest(link_name string) (result Dest) {
 // [ result ] trans: everything
 //
 func (v Document) GetAttachments() (result g.List) {
-	iv, err := _I.Get(73, "Document", "get_attachments")
+	iv, err := _I.Get(73, "Document", "get_attachments", 50, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2103,7 +2103,7 @@ func (v Document) GetAttachments() (result g.List) {
 // [ result ] trans: everything
 //
 func (v Document) GetAuthor() (result string) {
-	iv, err := _I.Get(74, "Document", "get_author")
+	iv, err := _I.Get(74, "Document", "get_author", 50, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2121,7 +2121,7 @@ func (v Document) GetAuthor() (result string) {
 // [ result ] trans: nothing
 //
 func (v Document) GetCreationDate() (result int64) {
-	iv, err := _I.Get(75, "Document", "get_creation_date")
+	iv, err := _I.Get(75, "Document", "get_creation_date", 50, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2139,7 +2139,7 @@ func (v Document) GetCreationDate() (result int64) {
 // [ result ] trans: everything
 //
 func (v Document) GetCreator() (result string) {
-	iv, err := _I.Get(76, "Document", "get_creator")
+	iv, err := _I.Get(76, "Document", "get_creator", 50, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2159,7 +2159,7 @@ func (v Document) GetCreator() (result string) {
 // [ result ] trans: everything
 //
 func (v Document) GetFormField(id int32) (result FormField) {
-	iv, err := _I.Get(77, "Document", "get_form_field")
+	iv, err := _I.Get(77, "Document", "get_form_field", 50, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2182,7 +2182,7 @@ func (v Document) GetFormField(id int32) (result FormField) {
 // [ result ] trans: nothing
 //
 func (v Document) GetId() (result bool, permanent_id string, update_id string) {
-	iv, err := _I.Get(78, "Document", "get_id")
+	iv, err := _I.Get(78, "Document", "get_id", 50, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2205,7 +2205,7 @@ func (v Document) GetId() (result bool, permanent_id string, update_id string) {
 // [ result ] trans: everything
 //
 func (v Document) GetKeywords() (result string) {
-	iv, err := _I.Get(79, "Document", "get_keywords")
+	iv, err := _I.Get(79, "Document", "get_keywords", 50, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2223,7 +2223,7 @@ func (v Document) GetKeywords() (result string) {
 // [ result ] trans: everything
 //
 func (v Document) GetMetadata() (result string) {
-	iv, err := _I.Get(80, "Document", "get_metadata")
+	iv, err := _I.Get(80, "Document", "get_metadata", 50, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2241,7 +2241,7 @@ func (v Document) GetMetadata() (result string) {
 // [ result ] trans: nothing
 //
 func (v Document) GetModificationDate() (result int64) {
-	iv, err := _I.Get(81, "Document", "get_modification_date")
+	iv, err := _I.Get(81, "Document", "get_modification_date", 50, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2259,7 +2259,7 @@ func (v Document) GetModificationDate() (result int64) {
 // [ result ] trans: nothing
 //
 func (v Document) GetNAttachments() (result uint32) {
-	iv, err := _I.Get(82, "Document", "get_n_attachments")
+	iv, err := _I.Get(82, "Document", "get_n_attachments", 50, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2277,7 +2277,7 @@ func (v Document) GetNAttachments() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v Document) GetNPages() (result int32) {
-	iv, err := _I.Get(83, "Document", "get_n_pages")
+	iv, err := _I.Get(83, "Document", "get_n_pages", 50, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2297,7 +2297,7 @@ func (v Document) GetNPages() (result int32) {
 // [ result ] trans: everything
 //
 func (v Document) GetPage(index int32) (result Page) {
-	iv, err := _I.Get(84, "Document", "get_page")
+	iv, err := _I.Get(84, "Document", "get_page", 50, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2318,7 +2318,7 @@ func (v Document) GetPage(index int32) (result Page) {
 // [ result ] trans: everything
 //
 func (v Document) GetPageByLabel(label string) (result Page) {
-	iv, err := _I.Get(85, "Document", "get_page_by_label")
+	iv, err := _I.Get(85, "Document", "get_page_by_label", 50, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2339,7 +2339,7 @@ func (v Document) GetPageByLabel(label string) (result Page) {
 // [ result ] trans: nothing
 //
 func (v Document) GetPageLayout() (result PageLayoutEnum) {
-	iv, err := _I.Get(86, "Document", "get_page_layout")
+	iv, err := _I.Get(86, "Document", "get_page_layout", 50, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2357,7 +2357,7 @@ func (v Document) GetPageLayout() (result PageLayoutEnum) {
 // [ result ] trans: nothing
 //
 func (v Document) GetPageMode() (result PageModeEnum) {
-	iv, err := _I.Get(87, "Document", "get_page_mode")
+	iv, err := _I.Get(87, "Document", "get_page_mode", 50, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2375,7 +2375,7 @@ func (v Document) GetPageMode() (result PageModeEnum) {
 // [ result ] trans: nothing
 //
 func (v Document) GetPdfConformance() (result PDFConformanceEnum) {
-	iv, err := _I.Get(88, "Document", "get_pdf_conformance")
+	iv, err := _I.Get(88, "Document", "get_pdf_conformance", 50, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2393,7 +2393,7 @@ func (v Document) GetPdfConformance() (result PDFConformanceEnum) {
 // [ result ] trans: nothing
 //
 func (v Document) GetPdfPart() (result PDFPartEnum) {
-	iv, err := _I.Get(89, "Document", "get_pdf_part")
+	iv, err := _I.Get(89, "Document", "get_pdf_part", 50, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2411,7 +2411,7 @@ func (v Document) GetPdfPart() (result PDFPartEnum) {
 // [ result ] trans: nothing
 //
 func (v Document) GetPdfSubtype() (result PDFSubtypeEnum) {
-	iv, err := _I.Get(90, "Document", "get_pdf_subtype")
+	iv, err := _I.Get(90, "Document", "get_pdf_subtype", 50, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2429,7 +2429,7 @@ func (v Document) GetPdfSubtype() (result PDFSubtypeEnum) {
 // [ result ] trans: everything
 //
 func (v Document) GetPdfSubtypeString() (result string) {
-	iv, err := _I.Get(91, "Document", "get_pdf_subtype_string")
+	iv, err := _I.Get(91, "Document", "get_pdf_subtype_string", 50, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2449,7 +2449,7 @@ func (v Document) GetPdfSubtypeString() (result string) {
 // [ minor_version ] trans: everything, dir: out
 //
 func (v Document) GetPdfVersion() (major_version uint32, minor_version uint32) {
-	iv, err := _I.Get(92, "Document", "get_pdf_version")
+	iv, err := _I.Get(92, "Document", "get_pdf_version", 50, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2470,7 +2470,7 @@ func (v Document) GetPdfVersion() (major_version uint32, minor_version uint32) {
 // [ result ] trans: everything
 //
 func (v Document) GetPdfVersionString() (result string) {
-	iv, err := _I.Get(93, "Document", "get_pdf_version_string")
+	iv, err := _I.Get(93, "Document", "get_pdf_version_string", 50, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2488,7 +2488,7 @@ func (v Document) GetPdfVersionString() (result string) {
 // [ result ] trans: nothing
 //
 func (v Document) GetPermissions() (result PermissionsFlags) {
-	iv, err := _I.Get(94, "Document", "get_permissions")
+	iv, err := _I.Get(94, "Document", "get_permissions", 50, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2506,7 +2506,7 @@ func (v Document) GetPermissions() (result PermissionsFlags) {
 // [ result ] trans: everything
 //
 func (v Document) GetProducer() (result string) {
-	iv, err := _I.Get(95, "Document", "get_producer")
+	iv, err := _I.Get(95, "Document", "get_producer", 50, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2524,7 +2524,7 @@ func (v Document) GetProducer() (result string) {
 // [ result ] trans: everything
 //
 func (v Document) GetSubject() (result string) {
-	iv, err := _I.Get(96, "Document", "get_subject")
+	iv, err := _I.Get(96, "Document", "get_subject", 50, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2542,7 +2542,7 @@ func (v Document) GetSubject() (result string) {
 // [ result ] trans: everything
 //
 func (v Document) GetTitle() (result string) {
-	iv, err := _I.Get(97, "Document", "get_title")
+	iv, err := _I.Get(97, "Document", "get_title", 50, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2560,7 +2560,7 @@ func (v Document) GetTitle() (result string) {
 // [ result ] trans: nothing
 //
 func (v Document) HasAttachments() (result bool) {
-	iv, err := _I.Get(98, "Document", "has_attachments")
+	iv, err := _I.Get(98, "Document", "has_attachments", 50, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2578,7 +2578,7 @@ func (v Document) HasAttachments() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Document) IsLinearized() (result bool) {
-	iv, err := _I.Get(99, "Document", "is_linearized")
+	iv, err := _I.Get(99, "Document", "is_linearized", 50, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2598,7 +2598,7 @@ func (v Document) IsLinearized() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Document) Save(uri string) (result bool, err error) {
-	iv, err := _I.Get(100, "Document", "save")
+	iv, err := _I.Get(100, "Document", "save", 50, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2623,7 +2623,7 @@ func (v Document) Save(uri string) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v Document) SaveACopy(uri string) (result bool, err error) {
-	iv, err := _I.Get(101, "Document", "save_a_copy")
+	iv, err := _I.Get(101, "Document", "save_a_copy", 50, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -2646,7 +2646,7 @@ func (v Document) SaveACopy(uri string) (result bool, err error) {
 // [ author ] trans: nothing
 //
 func (v Document) SetAuthor(author string) {
-	iv, err := _I.Get(102, "Document", "set_author")
+	iv, err := _I.Get(102, "Document", "set_author", 50, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2664,7 +2664,7 @@ func (v Document) SetAuthor(author string) {
 // [ creation_date ] trans: nothing
 //
 func (v Document) SetCreationDate(creation_date int64) {
-	iv, err := _I.Get(103, "Document", "set_creation_date")
+	iv, err := _I.Get(103, "Document", "set_creation_date", 50, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2680,7 +2680,7 @@ func (v Document) SetCreationDate(creation_date int64) {
 // [ creator ] trans: nothing
 //
 func (v Document) SetCreator(creator string) {
-	iv, err := _I.Get(104, "Document", "set_creator")
+	iv, err := _I.Get(104, "Document", "set_creator", 50, 36, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2698,7 +2698,7 @@ func (v Document) SetCreator(creator string) {
 // [ keywords ] trans: nothing
 //
 func (v Document) SetKeywords(keywords string) {
-	iv, err := _I.Get(105, "Document", "set_keywords")
+	iv, err := _I.Get(105, "Document", "set_keywords", 50, 37, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2716,7 +2716,7 @@ func (v Document) SetKeywords(keywords string) {
 // [ modification_date ] trans: nothing
 //
 func (v Document) SetModificationDate(modification_date int64) {
-	iv, err := _I.Get(106, "Document", "set_modification_date")
+	iv, err := _I.Get(106, "Document", "set_modification_date", 50, 38, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2732,7 +2732,7 @@ func (v Document) SetModificationDate(modification_date int64) {
 // [ producer ] trans: nothing
 //
 func (v Document) SetProducer(producer string) {
-	iv, err := _I.Get(107, "Document", "set_producer")
+	iv, err := _I.Get(107, "Document", "set_producer", 50, 39, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2750,7 +2750,7 @@ func (v Document) SetProducer(producer string) {
 // [ subject ] trans: nothing
 //
 func (v Document) SetSubject(subject string) {
-	iv, err := _I.Get(108, "Document", "set_subject")
+	iv, err := _I.Get(108, "Document", "set_subject", 50, 40, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2768,7 +2768,7 @@ func (v Document) SetSubject(subject string) {
 // [ title ] trans: nothing
 //
 func (v Document) SetTitle(title string) {
-	iv, err := _I.Get(109, "Document", "set_title")
+	iv, err := _I.Get(109, "Document", "set_title", 50, 41, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2834,7 +2834,7 @@ func FontInfoGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewFontInfo(document IDocument) (result FontInfo) {
-	iv, err := _I.Get(110, "FontInfo", "new")
+	iv, err := _I.Get(110, "FontInfo", "new", 53, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2854,7 +2854,7 @@ func NewFontInfo(document IDocument) (result FontInfo) {
 // poppler_font_info_free
 //
 func (v FontInfo) Free() {
-	iv, err := _I.Get(111, "FontInfo", "free")
+	iv, err := _I.Get(111, "FontInfo", "free", 53, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2873,7 +2873,7 @@ func (v FontInfo) Free() {
 // [ result ] trans: nothing
 //
 func (v FontInfo) Scan(n_pages int32) (result bool, iter FontsIter) {
-	iv, err := _I.Get(112, "FontInfo", "scan")
+	iv, err := _I.Get(112, "FontInfo", "scan", 53, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2928,7 +2928,7 @@ func FontsIterGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v FontsIter) Copy() (result FontsIter) {
-	iv, err := _I.Get(113, "FontsIter", "copy")
+	iv, err := _I.Get(113, "FontsIter", "copy", 55, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2944,7 +2944,7 @@ func (v FontsIter) Copy() (result FontsIter) {
 // poppler_fonts_iter_free
 //
 func (v FontsIter) Free() {
-	iv, err := _I.Get(114, "FontsIter", "free")
+	iv, err := _I.Get(114, "FontsIter", "free", 55, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2959,7 +2959,7 @@ func (v FontsIter) Free() {
 // [ result ] trans: nothing
 //
 func (v FontsIter) GetEncoding() (result string) {
-	iv, err := _I.Get(115, "FontsIter", "get_encoding")
+	iv, err := _I.Get(115, "FontsIter", "get_encoding", 55, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2977,7 +2977,7 @@ func (v FontsIter) GetEncoding() (result string) {
 // [ result ] trans: nothing
 //
 func (v FontsIter) GetFileName() (result string) {
-	iv, err := _I.Get(116, "FontsIter", "get_file_name")
+	iv, err := _I.Get(116, "FontsIter", "get_file_name", 55, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -2995,7 +2995,7 @@ func (v FontsIter) GetFileName() (result string) {
 // [ result ] trans: nothing
 //
 func (v FontsIter) GetFontType() (result FontTypeEnum) {
-	iv, err := _I.Get(117, "FontsIter", "get_font_type")
+	iv, err := _I.Get(117, "FontsIter", "get_font_type", 55, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3013,7 +3013,7 @@ func (v FontsIter) GetFontType() (result FontTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v FontsIter) GetFullName() (result string) {
-	iv, err := _I.Get(118, "FontsIter", "get_full_name")
+	iv, err := _I.Get(118, "FontsIter", "get_full_name", 55, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3031,7 +3031,7 @@ func (v FontsIter) GetFullName() (result string) {
 // [ result ] trans: nothing
 //
 func (v FontsIter) GetName() (result string) {
-	iv, err := _I.Get(119, "FontsIter", "get_name")
+	iv, err := _I.Get(119, "FontsIter", "get_name", 55, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3049,7 +3049,7 @@ func (v FontsIter) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v FontsIter) GetSubstituteName() (result string) {
-	iv, err := _I.Get(120, "FontsIter", "get_substitute_name")
+	iv, err := _I.Get(120, "FontsIter", "get_substitute_name", 55, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3067,7 +3067,7 @@ func (v FontsIter) GetSubstituteName() (result string) {
 // [ result ] trans: nothing
 //
 func (v FontsIter) IsEmbedded() (result bool) {
-	iv, err := _I.Get(121, "FontsIter", "is_embedded")
+	iv, err := _I.Get(121, "FontsIter", "is_embedded", 55, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3085,7 +3085,7 @@ func (v FontsIter) IsEmbedded() (result bool) {
 // [ result ] trans: nothing
 //
 func (v FontsIter) IsSubset() (result bool) {
-	iv, err := _I.Get(122, "FontsIter", "is_subset")
+	iv, err := _I.Get(122, "FontsIter", "is_subset", 55, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3103,7 +3103,7 @@ func (v FontsIter) IsSubset() (result bool) {
 // [ result ] trans: nothing
 //
 func (v FontsIter) Next() (result bool) {
-	iv, err := _I.Get(123, "FontsIter", "next")
+	iv, err := _I.Get(123, "FontsIter", "next", 55, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3163,7 +3163,7 @@ func FormFieldGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v FormField) ButtonGetButtonType() (result FormButtonTypeEnum) {
-	iv, err := _I.Get(124, "FormField", "button_get_button_type")
+	iv, err := _I.Get(124, "FormField", "button_get_button_type", 58, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3181,7 +3181,7 @@ func (v FormField) ButtonGetButtonType() (result FormButtonTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v FormField) ButtonGetState() (result bool) {
-	iv, err := _I.Get(125, "FormField", "button_get_state")
+	iv, err := _I.Get(125, "FormField", "button_get_state", 58, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3199,7 +3199,7 @@ func (v FormField) ButtonGetState() (result bool) {
 // [ state ] trans: nothing
 //
 func (v FormField) ButtonSetState(state bool) {
-	iv, err := _I.Get(126, "FormField", "button_set_state")
+	iv, err := _I.Get(126, "FormField", "button_set_state", 58, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3215,7 +3215,7 @@ func (v FormField) ButtonSetState(state bool) {
 // [ result ] trans: nothing
 //
 func (v FormField) ChoiceCanSelectMultiple() (result bool) {
-	iv, err := _I.Get(127, "FormField", "choice_can_select_multiple")
+	iv, err := _I.Get(127, "FormField", "choice_can_select_multiple", 58, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3233,7 +3233,7 @@ func (v FormField) ChoiceCanSelectMultiple() (result bool) {
 // [ result ] trans: nothing
 //
 func (v FormField) ChoiceCommitOnChange() (result bool) {
-	iv, err := _I.Get(128, "FormField", "choice_commit_on_change")
+	iv, err := _I.Get(128, "FormField", "choice_commit_on_change", 58, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3251,7 +3251,7 @@ func (v FormField) ChoiceCommitOnChange() (result bool) {
 // [ result ] trans: nothing
 //
 func (v FormField) ChoiceDoSpellCheck() (result bool) {
-	iv, err := _I.Get(129, "FormField", "choice_do_spell_check")
+	iv, err := _I.Get(129, "FormField", "choice_do_spell_check", 58, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3269,7 +3269,7 @@ func (v FormField) ChoiceDoSpellCheck() (result bool) {
 // [ result ] trans: nothing
 //
 func (v FormField) ChoiceGetChoiceType() (result FormChoiceTypeEnum) {
-	iv, err := _I.Get(130, "FormField", "choice_get_choice_type")
+	iv, err := _I.Get(130, "FormField", "choice_get_choice_type", 58, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3289,7 +3289,7 @@ func (v FormField) ChoiceGetChoiceType() (result FormChoiceTypeEnum) {
 // [ result ] trans: everything
 //
 func (v FormField) ChoiceGetItem(index int32) (result string) {
-	iv, err := _I.Get(131, "FormField", "choice_get_item")
+	iv, err := _I.Get(131, "FormField", "choice_get_item", 58, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3308,7 +3308,7 @@ func (v FormField) ChoiceGetItem(index int32) (result string) {
 // [ result ] trans: nothing
 //
 func (v FormField) ChoiceGetNItems() (result int32) {
-	iv, err := _I.Get(132, "FormField", "choice_get_n_items")
+	iv, err := _I.Get(132, "FormField", "choice_get_n_items", 58, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3326,7 +3326,7 @@ func (v FormField) ChoiceGetNItems() (result int32) {
 // [ result ] trans: everything
 //
 func (v FormField) ChoiceGetText() (result string) {
-	iv, err := _I.Get(133, "FormField", "choice_get_text")
+	iv, err := _I.Get(133, "FormField", "choice_get_text", 58, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3344,7 +3344,7 @@ func (v FormField) ChoiceGetText() (result string) {
 // [ result ] trans: nothing
 //
 func (v FormField) ChoiceIsEditable() (result bool) {
-	iv, err := _I.Get(134, "FormField", "choice_is_editable")
+	iv, err := _I.Get(134, "FormField", "choice_is_editable", 58, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3364,7 +3364,7 @@ func (v FormField) ChoiceIsEditable() (result bool) {
 // [ result ] trans: nothing
 //
 func (v FormField) ChoiceIsItemSelected(index int32) (result bool) {
-	iv, err := _I.Get(135, "FormField", "choice_is_item_selected")
+	iv, err := _I.Get(135, "FormField", "choice_is_item_selected", 58, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3383,7 +3383,7 @@ func (v FormField) ChoiceIsItemSelected(index int32) (result bool) {
 // [ index ] trans: nothing
 //
 func (v FormField) ChoiceSelectItem(index int32) {
-	iv, err := _I.Get(136, "FormField", "choice_select_item")
+	iv, err := _I.Get(136, "FormField", "choice_select_item", 58, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3399,7 +3399,7 @@ func (v FormField) ChoiceSelectItem(index int32) {
 // [ text ] trans: nothing
 //
 func (v FormField) ChoiceSetText(text string) {
-	iv, err := _I.Get(137, "FormField", "choice_set_text")
+	iv, err := _I.Get(137, "FormField", "choice_set_text", 58, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3417,7 +3417,7 @@ func (v FormField) ChoiceSetText(text string) {
 // [ index ] trans: nothing
 //
 func (v FormField) ChoiceToggleItem(index int32) {
-	iv, err := _I.Get(138, "FormField", "choice_toggle_item")
+	iv, err := _I.Get(138, "FormField", "choice_toggle_item", 58, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3431,7 +3431,7 @@ func (v FormField) ChoiceToggleItem(index int32) {
 // poppler_form_field_choice_unselect_all
 //
 func (v FormField) ChoiceUnselectAll() {
-	iv, err := _I.Get(139, "FormField", "choice_unselect_all")
+	iv, err := _I.Get(139, "FormField", "choice_unselect_all", 58, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3446,7 +3446,7 @@ func (v FormField) ChoiceUnselectAll() {
 // [ result ] trans: nothing
 //
 func (v FormField) GetAction() (result Action) {
-	iv, err := _I.Get(140, "FormField", "get_action")
+	iv, err := _I.Get(140, "FormField", "get_action", 58, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3464,7 +3464,7 @@ func (v FormField) GetAction() (result Action) {
 // [ result ] trans: nothing
 //
 func (v FormField) GetFieldType() (result FormFieldTypeEnum) {
-	iv, err := _I.Get(141, "FormField", "get_field_type")
+	iv, err := _I.Get(141, "FormField", "get_field_type", 58, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3482,7 +3482,7 @@ func (v FormField) GetFieldType() (result FormFieldTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v FormField) GetFontSize() (result float64) {
-	iv, err := _I.Get(142, "FormField", "get_font_size")
+	iv, err := _I.Get(142, "FormField", "get_font_size", 58, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3500,7 +3500,7 @@ func (v FormField) GetFontSize() (result float64) {
 // [ result ] trans: nothing
 //
 func (v FormField) GetId() (result int32) {
-	iv, err := _I.Get(143, "FormField", "get_id")
+	iv, err := _I.Get(143, "FormField", "get_id", 58, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3518,7 +3518,7 @@ func (v FormField) GetId() (result int32) {
 // [ result ] trans: everything
 //
 func (v FormField) GetMappingName() (result string) {
-	iv, err := _I.Get(144, "FormField", "get_mapping_name")
+	iv, err := _I.Get(144, "FormField", "get_mapping_name", 58, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3536,7 +3536,7 @@ func (v FormField) GetMappingName() (result string) {
 // [ result ] trans: everything
 //
 func (v FormField) GetName() (result string) {
-	iv, err := _I.Get(145, "FormField", "get_name")
+	iv, err := _I.Get(145, "FormField", "get_name", 58, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3554,7 +3554,7 @@ func (v FormField) GetName() (result string) {
 // [ result ] trans: everything
 //
 func (v FormField) GetPartialName() (result string) {
-	iv, err := _I.Get(146, "FormField", "get_partial_name")
+	iv, err := _I.Get(146, "FormField", "get_partial_name", 58, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3572,7 +3572,7 @@ func (v FormField) GetPartialName() (result string) {
 // [ result ] trans: nothing
 //
 func (v FormField) IsReadOnly() (result bool) {
-	iv, err := _I.Get(147, "FormField", "is_read_only")
+	iv, err := _I.Get(147, "FormField", "is_read_only", 58, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3590,7 +3590,7 @@ func (v FormField) IsReadOnly() (result bool) {
 // [ result ] trans: nothing
 //
 func (v FormField) TextDoScroll() (result bool) {
-	iv, err := _I.Get(148, "FormField", "text_do_scroll")
+	iv, err := _I.Get(148, "FormField", "text_do_scroll", 58, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3608,7 +3608,7 @@ func (v FormField) TextDoScroll() (result bool) {
 // [ result ] trans: nothing
 //
 func (v FormField) TextDoSpellCheck() (result bool) {
-	iv, err := _I.Get(149, "FormField", "text_do_spell_check")
+	iv, err := _I.Get(149, "FormField", "text_do_spell_check", 58, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3626,7 +3626,7 @@ func (v FormField) TextDoSpellCheck() (result bool) {
 // [ result ] trans: nothing
 //
 func (v FormField) TextGetMaxLen() (result int32) {
-	iv, err := _I.Get(150, "FormField", "text_get_max_len")
+	iv, err := _I.Get(150, "FormField", "text_get_max_len", 58, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3644,7 +3644,7 @@ func (v FormField) TextGetMaxLen() (result int32) {
 // [ result ] trans: everything
 //
 func (v FormField) TextGetText() (result string) {
-	iv, err := _I.Get(151, "FormField", "text_get_text")
+	iv, err := _I.Get(151, "FormField", "text_get_text", 58, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3662,7 +3662,7 @@ func (v FormField) TextGetText() (result string) {
 // [ result ] trans: nothing
 //
 func (v FormField) TextGetTextType() (result FormTextTypeEnum) {
-	iv, err := _I.Get(152, "FormField", "text_get_text_type")
+	iv, err := _I.Get(152, "FormField", "text_get_text_type", 58, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3680,7 +3680,7 @@ func (v FormField) TextGetTextType() (result FormTextTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v FormField) TextIsPassword() (result bool) {
-	iv, err := _I.Get(153, "FormField", "text_is_password")
+	iv, err := _I.Get(153, "FormField", "text_is_password", 58, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3698,7 +3698,7 @@ func (v FormField) TextIsPassword() (result bool) {
 // [ result ] trans: nothing
 //
 func (v FormField) TextIsRichText() (result bool) {
-	iv, err := _I.Get(154, "FormField", "text_is_rich_text")
+	iv, err := _I.Get(154, "FormField", "text_is_rich_text", 58, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3716,7 +3716,7 @@ func (v FormField) TextIsRichText() (result bool) {
 // [ text ] trans: nothing
 //
 func (v FormField) TextSetText(text string) {
-	iv, err := _I.Get(155, "FormField", "text_set_text")
+	iv, err := _I.Get(155, "FormField", "text_set_text", 58, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3746,7 +3746,7 @@ func FormFieldMappingGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewFormFieldMapping() (result FormFieldMapping) {
-	iv, err := _I.Get(156, "FormFieldMapping", "new")
+	iv, err := _I.Get(156, "FormFieldMapping", "new", 59, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3762,7 +3762,7 @@ func NewFormFieldMapping() (result FormFieldMapping) {
 // [ result ] trans: everything
 //
 func (v FormFieldMapping) Copy() (result FormFieldMapping) {
-	iv, err := _I.Get(157, "FormFieldMapping", "copy")
+	iv, err := _I.Get(157, "FormFieldMapping", "copy", 59, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3778,7 +3778,7 @@ func (v FormFieldMapping) Copy() (result FormFieldMapping) {
 // poppler_form_field_mapping_free
 //
 func (v FormFieldMapping) Free() {
-	iv, err := _I.Get(158, "FormFieldMapping", "free")
+	iv, err := _I.Get(158, "FormFieldMapping", "free", 59, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3835,7 +3835,7 @@ func ImageMappingGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewImageMapping() (result ImageMapping) {
-	iv, err := _I.Get(159, "ImageMapping", "new")
+	iv, err := _I.Get(159, "ImageMapping", "new", 63, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3851,7 +3851,7 @@ func NewImageMapping() (result ImageMapping) {
 // [ result ] trans: everything
 //
 func (v ImageMapping) Copy() (result ImageMapping) {
-	iv, err := _I.Get(160, "ImageMapping", "copy")
+	iv, err := _I.Get(160, "ImageMapping", "copy", 63, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3867,7 +3867,7 @@ func (v ImageMapping) Copy() (result ImageMapping) {
 // poppler_image_mapping_free
 //
 func (v ImageMapping) Free() {
-	iv, err := _I.Get(161, "ImageMapping", "free")
+	iv, err := _I.Get(161, "ImageMapping", "free", 63, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3894,7 +3894,7 @@ func IndexIterGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewIndexIter(document IDocument) (result IndexIter) {
-	iv, err := _I.Get(162, "IndexIter", "new")
+	iv, err := _I.Get(162, "IndexIter", "new", 64, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3916,7 +3916,7 @@ func NewIndexIter(document IDocument) (result IndexIter) {
 // [ result ] trans: everything
 //
 func (v IndexIter) Copy() (result IndexIter) {
-	iv, err := _I.Get(163, "IndexIter", "copy")
+	iv, err := _I.Get(163, "IndexIter", "copy", 64, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3932,7 +3932,7 @@ func (v IndexIter) Copy() (result IndexIter) {
 // poppler_index_iter_free
 //
 func (v IndexIter) Free() {
-	iv, err := _I.Get(164, "IndexIter", "free")
+	iv, err := _I.Get(164, "IndexIter", "free", 64, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3947,7 +3947,7 @@ func (v IndexIter) Free() {
 // [ result ] trans: everything
 //
 func (v IndexIter) GetAction() (result Action) {
-	iv, err := _I.Get(165, "IndexIter", "get_action")
+	iv, err := _I.Get(165, "IndexIter", "get_action", 64, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3965,7 +3965,7 @@ func (v IndexIter) GetAction() (result Action) {
 // [ result ] trans: everything
 //
 func (v IndexIter) GetChild() (result IndexIter) {
-	iv, err := _I.Get(166, "IndexIter", "get_child")
+	iv, err := _I.Get(166, "IndexIter", "get_child", 64, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -3983,7 +3983,7 @@ func (v IndexIter) GetChild() (result IndexIter) {
 // [ result ] trans: nothing
 //
 func (v IndexIter) IsOpen() (result bool) {
-	iv, err := _I.Get(167, "IndexIter", "is_open")
+	iv, err := _I.Get(167, "IndexIter", "is_open", 64, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4001,7 +4001,7 @@ func (v IndexIter) IsOpen() (result bool) {
 // [ result ] trans: nothing
 //
 func (v IndexIter) Next() (result bool) {
-	iv, err := _I.Get(168, "IndexIter", "next")
+	iv, err := _I.Get(168, "IndexIter", "next", 64, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4034,7 +4034,7 @@ func LayerGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Layer) GetRadioButtonGroupId() (result int32) {
-	iv, err := _I.Get(169, "Layer", "get_radio_button_group_id")
+	iv, err := _I.Get(169, "Layer", "get_radio_button_group_id", 65, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4052,7 +4052,7 @@ func (v Layer) GetRadioButtonGroupId() (result int32) {
 // [ result ] trans: nothing
 //
 func (v Layer) GetTitle() (result string) {
-	iv, err := _I.Get(170, "Layer", "get_title")
+	iv, err := _I.Get(170, "Layer", "get_title", 65, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4068,7 +4068,7 @@ func (v Layer) GetTitle() (result string) {
 // poppler_layer_hide
 //
 func (v Layer) Hide() {
-	iv, err := _I.Get(171, "Layer", "hide")
+	iv, err := _I.Get(171, "Layer", "hide", 65, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4083,7 +4083,7 @@ func (v Layer) Hide() {
 // [ result ] trans: nothing
 //
 func (v Layer) IsParent() (result bool) {
-	iv, err := _I.Get(172, "Layer", "is_parent")
+	iv, err := _I.Get(172, "Layer", "is_parent", 65, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4101,7 +4101,7 @@ func (v Layer) IsParent() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Layer) IsVisible() (result bool) {
-	iv, err := _I.Get(173, "Layer", "is_visible")
+	iv, err := _I.Get(173, "Layer", "is_visible", 65, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4117,7 +4117,7 @@ func (v Layer) IsVisible() (result bool) {
 // poppler_layer_show
 //
 func (v Layer) Show() {
-	iv, err := _I.Get(174, "Layer", "show")
+	iv, err := _I.Get(174, "Layer", "show", 65, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4144,7 +4144,7 @@ func LayersIterGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewLayersIter(document IDocument) (result LayersIter) {
-	iv, err := _I.Get(175, "LayersIter", "new")
+	iv, err := _I.Get(175, "LayersIter", "new", 66, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4166,7 +4166,7 @@ func NewLayersIter(document IDocument) (result LayersIter) {
 // [ result ] trans: everything
 //
 func (v LayersIter) Copy() (result LayersIter) {
-	iv, err := _I.Get(176, "LayersIter", "copy")
+	iv, err := _I.Get(176, "LayersIter", "copy", 66, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4182,7 +4182,7 @@ func (v LayersIter) Copy() (result LayersIter) {
 // poppler_layers_iter_free
 //
 func (v LayersIter) Free() {
-	iv, err := _I.Get(177, "LayersIter", "free")
+	iv, err := _I.Get(177, "LayersIter", "free", 66, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4197,7 +4197,7 @@ func (v LayersIter) Free() {
 // [ result ] trans: everything
 //
 func (v LayersIter) GetChild() (result LayersIter) {
-	iv, err := _I.Get(178, "LayersIter", "get_child")
+	iv, err := _I.Get(178, "LayersIter", "get_child", 66, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4215,7 +4215,7 @@ func (v LayersIter) GetChild() (result LayersIter) {
 // [ result ] trans: everything
 //
 func (v LayersIter) GetLayer() (result Layer) {
-	iv, err := _I.Get(179, "LayersIter", "get_layer")
+	iv, err := _I.Get(179, "LayersIter", "get_layer", 66, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4233,7 +4233,7 @@ func (v LayersIter) GetLayer() (result Layer) {
 // [ result ] trans: everything
 //
 func (v LayersIter) GetTitle() (result string) {
-	iv, err := _I.Get(180, "LayersIter", "get_title")
+	iv, err := _I.Get(180, "LayersIter", "get_title", 66, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4251,7 +4251,7 @@ func (v LayersIter) GetTitle() (result string) {
 // [ result ] trans: nothing
 //
 func (v LayersIter) Next() (result bool) {
-	iv, err := _I.Get(181, "LayersIter", "next")
+	iv, err := _I.Get(181, "LayersIter", "next", 66, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4281,7 +4281,7 @@ func LinkMappingGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewLinkMapping() (result LinkMapping) {
-	iv, err := _I.Get(182, "LinkMapping", "new")
+	iv, err := _I.Get(182, "LinkMapping", "new", 67, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4297,7 +4297,7 @@ func NewLinkMapping() (result LinkMapping) {
 // [ result ] trans: everything
 //
 func (v LinkMapping) Copy() (result LinkMapping) {
-	iv, err := _I.Get(183, "LinkMapping", "copy")
+	iv, err := _I.Get(183, "LinkMapping", "copy", 67, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4313,7 +4313,7 @@ func (v LinkMapping) Copy() (result LinkMapping) {
 // poppler_link_mapping_free
 //
 func (v LinkMapping) Free() {
-	iv, err := _I.Get(184, "LinkMapping", "free")
+	iv, err := _I.Get(184, "LinkMapping", "free", 67, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4343,7 +4343,7 @@ func MediaGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Media) GetFilename() (result string) {
-	iv, err := _I.Get(185, "Media", "get_filename")
+	iv, err := _I.Get(185, "Media", "get_filename", 71, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4361,7 +4361,7 @@ func (v Media) GetFilename() (result string) {
 // [ result ] trans: nothing
 //
 func (v Media) GetMimeType() (result string) {
-	iv, err := _I.Get(186, "Media", "get_mime_type")
+	iv, err := _I.Get(186, "Media", "get_mime_type", 71, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4379,7 +4379,7 @@ func (v Media) GetMimeType() (result string) {
 // [ result ] trans: nothing
 //
 func (v Media) IsEmbedded() (result bool) {
-	iv, err := _I.Get(187, "Media", "is_embedded")
+	iv, err := _I.Get(187, "Media", "is_embedded", 71, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4399,7 +4399,7 @@ func (v Media) IsEmbedded() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Media) Save(filename string) (result bool, err error) {
-	iv, err := _I.Get(188, "Media", "save")
+	iv, err := _I.Get(188, "Media", "save", 71, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -4426,7 +4426,7 @@ func (v Media) Save(filename string) (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v Media) SaveToCallback(save_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool, err error) {
-	iv, err := _I.Get(189, "Media", "save_to_callback")
+	iv, err := _I.Get(189, "Media", "save_to_callback", 71, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -4478,7 +4478,7 @@ func MovieGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Movie) GetFilename() (result string) {
-	iv, err := _I.Get(190, "Movie", "get_filename")
+	iv, err := _I.Get(190, "Movie", "get_filename", 73, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4496,7 +4496,7 @@ func (v Movie) GetFilename() (result string) {
 // [ result ] trans: nothing
 //
 func (v Movie) GetPlayMode() (result MoviePlayModeEnum) {
-	iv, err := _I.Get(191, "Movie", "get_play_mode")
+	iv, err := _I.Get(191, "Movie", "get_play_mode", 73, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4514,7 +4514,7 @@ func (v Movie) GetPlayMode() (result MoviePlayModeEnum) {
 // [ result ] trans: nothing
 //
 func (v Movie) NeedPoster() (result bool) {
-	iv, err := _I.Get(192, "Movie", "need_poster")
+	iv, err := _I.Get(192, "Movie", "need_poster", 73, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4532,7 +4532,7 @@ func (v Movie) NeedPoster() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Movie) ShowControls() (result bool) {
-	iv, err := _I.Get(193, "Movie", "show_controls")
+	iv, err := _I.Get(193, "Movie", "show_controls", 73, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4647,7 +4647,7 @@ func PSFileGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPSFile(document IDocument, filename string, first_page int32, n_pages int32) (result PSFile) {
-	iv, err := _I.Get(194, "PSFile", "new")
+	iv, err := _I.Get(194, "PSFile", "new", 78, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4672,7 +4672,7 @@ func NewPSFile(document IDocument, filename string, first_page int32, n_pages in
 // poppler_ps_file_free
 //
 func (v PSFile) Free() {
-	iv, err := _I.Get(195, "PSFile", "free")
+	iv, err := _I.Get(195, "PSFile", "free", 78, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4687,7 +4687,7 @@ func (v PSFile) Free() {
 // [ duplex ] trans: nothing
 //
 func (v PSFile) SetDuplex(duplex bool) {
-	iv, err := _I.Get(196, "PSFile", "set_duplex")
+	iv, err := _I.Get(196, "PSFile", "set_duplex", 78, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4705,7 +4705,7 @@ func (v PSFile) SetDuplex(duplex bool) {
 // [ height ] trans: nothing
 //
 func (v PSFile) SetPaperSize(width float64, height float64) {
-	iv, err := _I.Get(197, "PSFile", "set_paper_size")
+	iv, err := _I.Get(197, "PSFile", "set_paper_size", 78, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4737,7 +4737,7 @@ func PageGetType() gi.GType {
 // [ list ] trans: nothing
 //
 func PageFreeAnnotMapping1(list g.List) {
-	iv, err := _I.Get(198, "Page", "free_annot_mapping")
+	iv, err := _I.Get(198, "Page", "free_annot_mapping", 79, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4752,7 +4752,7 @@ func PageFreeAnnotMapping1(list g.List) {
 // [ list ] trans: nothing
 //
 func PageFreeFormFieldMapping1(list g.List) {
-	iv, err := _I.Get(199, "Page", "free_form_field_mapping")
+	iv, err := _I.Get(199, "Page", "free_form_field_mapping", 79, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4767,7 +4767,7 @@ func PageFreeFormFieldMapping1(list g.List) {
 // [ list ] trans: nothing
 //
 func PageFreeImageMapping1(list g.List) {
-	iv, err := _I.Get(200, "Page", "free_image_mapping")
+	iv, err := _I.Get(200, "Page", "free_image_mapping", 79, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4782,7 +4782,7 @@ func PageFreeImageMapping1(list g.List) {
 // [ list ] trans: nothing
 //
 func PageFreeLinkMapping1(list g.List) {
-	iv, err := _I.Get(201, "Page", "free_link_mapping")
+	iv, err := _I.Get(201, "Page", "free_link_mapping", 79, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4797,7 +4797,7 @@ func PageFreeLinkMapping1(list g.List) {
 // [ list ] trans: nothing
 //
 func PageFreeTextAttributes1(list g.List) {
-	iv, err := _I.Get(202, "Page", "free_text_attributes")
+	iv, err := _I.Get(202, "Page", "free_text_attributes", 79, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4814,7 +4814,7 @@ func PageFreeTextAttributes1(list g.List) {
 // [ region ] trans: nothing
 //
 func PageSelectionRegionFree1(region g.List) {
-	iv, err := _I.Get(203, "Page", "selection_region_free")
+	iv, err := _I.Get(203, "Page", "selection_region_free", 79, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4829,7 +4829,7 @@ func PageSelectionRegionFree1(region g.List) {
 // [ annot ] trans: nothing
 //
 func (v Page) AddAnnot(annot IAnnot) {
-	iv, err := _I.Get(204, "Page", "add_annot")
+	iv, err := _I.Get(204, "Page", "add_annot", 79, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4851,7 +4851,7 @@ func (v Page) AddAnnot(annot IAnnot) {
 // [ result ] trans: everything
 //
 func (v Page) FindText(text string) (result g.List) {
-	iv, err := _I.Get(205, "Page", "find_text")
+	iv, err := _I.Get(205, "Page", "find_text", 79, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4876,7 +4876,7 @@ func (v Page) FindText(text string) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Page) FindTextWithOptions(text string, options FindFlags) (result g.List) {
-	iv, err := _I.Get(206, "Page", "find_text_with_options")
+	iv, err := _I.Get(206, "Page", "find_text_with_options", 79, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4898,7 +4898,7 @@ func (v Page) FindTextWithOptions(text string, options FindFlags) (result g.List
 // [ result ] trans: everything
 //
 func (v Page) GetAnnotMapping() (result g.List) {
-	iv, err := _I.Get(207, "Page", "get_annot_mapping")
+	iv, err := _I.Get(207, "Page", "get_annot_mapping", 79, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4916,7 +4916,7 @@ func (v Page) GetAnnotMapping() (result g.List) {
 // [ rect ] trans: nothing, dir: out
 //
 func (v Page) GetCropBox(rect Rectangle) {
-	iv, err := _I.Get(208, "Page", "get_crop_box")
+	iv, err := _I.Get(208, "Page", "get_crop_box", 79, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4932,7 +4932,7 @@ func (v Page) GetCropBox(rect Rectangle) {
 // [ result ] trans: nothing
 //
 func (v Page) GetDuration() (result float64) {
-	iv, err := _I.Get(209, "Page", "get_duration")
+	iv, err := _I.Get(209, "Page", "get_duration", 79, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4950,7 +4950,7 @@ func (v Page) GetDuration() (result float64) {
 // [ result ] trans: everything
 //
 func (v Page) GetFormFieldMapping() (result g.List) {
-	iv, err := _I.Get(210, "Page", "get_form_field_mapping")
+	iv, err := _I.Get(210, "Page", "get_form_field_mapping", 79, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4970,7 +4970,7 @@ func (v Page) GetFormFieldMapping() (result g.List) {
 // [ result ] trans: everything
 //
 func (v Page) GetImage(image_id int32) (result cairo.Surface) {
-	iv, err := _I.Get(211, "Page", "get_image")
+	iv, err := _I.Get(211, "Page", "get_image", 79, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4989,7 +4989,7 @@ func (v Page) GetImage(image_id int32) (result cairo.Surface) {
 // [ result ] trans: everything
 //
 func (v Page) GetImageMapping() (result g.List) {
-	iv, err := _I.Get(212, "Page", "get_image_mapping")
+	iv, err := _I.Get(212, "Page", "get_image_mapping", 79, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5007,7 +5007,7 @@ func (v Page) GetImageMapping() (result g.List) {
 // [ result ] trans: nothing
 //
 func (v Page) GetIndex() (result int32) {
-	iv, err := _I.Get(213, "Page", "get_index")
+	iv, err := _I.Get(213, "Page", "get_index", 79, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5025,7 +5025,7 @@ func (v Page) GetIndex() (result int32) {
 // [ result ] trans: everything
 //
 func (v Page) GetLabel() (result string) {
-	iv, err := _I.Get(214, "Page", "get_label")
+	iv, err := _I.Get(214, "Page", "get_label", 79, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5043,7 +5043,7 @@ func (v Page) GetLabel() (result string) {
 // [ result ] trans: everything
 //
 func (v Page) GetLinkMapping() (result g.List) {
-	iv, err := _I.Get(215, "Page", "get_link_mapping")
+	iv, err := _I.Get(215, "Page", "get_link_mapping", 79, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5067,7 +5067,7 @@ func (v Page) GetLinkMapping() (result g.List) {
 // [ result ] trans: everything
 //
 func (v Page) GetSelectedRegion(scale float64, style SelectionStyleEnum, selection Rectangle) (result cairo.Region) {
-	iv, err := _I.Get(216, "Page", "get_selected_region")
+	iv, err := _I.Get(216, "Page", "get_selected_region", 79, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5092,7 +5092,7 @@ func (v Page) GetSelectedRegion(scale float64, style SelectionStyleEnum, selecti
 // [ result ] trans: everything
 //
 func (v Page) GetSelectedText(style SelectionStyleEnum, selection Rectangle) (result string) {
-	iv, err := _I.Get(217, "Page", "get_selected_text")
+	iv, err := _I.Get(217, "Page", "get_selected_text", 79, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5120,7 +5120,7 @@ func (v Page) GetSelectedText(style SelectionStyleEnum, selection Rectangle) (re
 // [ result ] trans: everything
 //
 func (v Page) GetSelectionRegion(scale float64, style SelectionStyleEnum, selection Rectangle) (result g.List) {
-	iv, err := _I.Get(218, "Page", "get_selection_region")
+	iv, err := _I.Get(218, "Page", "get_selection_region", 79, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5143,7 +5143,7 @@ func (v Page) GetSelectionRegion(scale float64, style SelectionStyleEnum, select
 // [ height ] trans: everything, dir: out
 //
 func (v Page) GetSize() (width float64, height float64) {
-	iv, err := _I.Get(219, "Page", "get_size")
+	iv, err := _I.Get(219, "Page", "get_size", 79, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5164,7 +5164,7 @@ func (v Page) GetSize() (width float64, height float64) {
 // [ result ] trans: everything
 //
 func (v Page) GetText() (result string) {
-	iv, err := _I.Get(220, "Page", "get_text")
+	iv, err := _I.Get(220, "Page", "get_text", 79, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5182,7 +5182,7 @@ func (v Page) GetText() (result string) {
 // [ result ] trans: everything
 //
 func (v Page) GetTextAttributes() (result g.List) {
-	iv, err := _I.Get(221, "Page", "get_text_attributes")
+	iv, err := _I.Get(221, "Page", "get_text_attributes", 79, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5202,7 +5202,7 @@ func (v Page) GetTextAttributes() (result g.List) {
 // [ result ] trans: everything
 //
 func (v Page) GetTextAttributesForArea(area Rectangle) (result g.List) {
-	iv, err := _I.Get(222, "Page", "get_text_attributes_for_area")
+	iv, err := _I.Get(222, "Page", "get_text_attributes_for_area", 79, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5223,7 +5223,7 @@ func (v Page) GetTextAttributesForArea(area Rectangle) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Page) GetTextForArea(area Rectangle) (result string) {
-	iv, err := _I.Get(223, "Page", "get_text_for_area")
+	iv, err := _I.Get(223, "Page", "get_text_for_area", 79, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5246,7 +5246,7 @@ func (v Page) GetTextForArea(area Rectangle) (result string) {
 // [ result ] trans: nothing
 //
 func (v Page) GetTextLayout() (result bool, rectangles unsafe.Pointer) {
-	iv, err := _I.Get(224, "Page", "get_text_layout")
+	iv, err := _I.Get(224, "Page", "get_text_layout", 79, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5277,7 +5277,7 @@ func (v Page) GetTextLayout() (result bool, rectangles unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func (v Page) GetTextLayoutForArea(area Rectangle) (result bool, rectangles unsafe.Pointer) {
-	iv, err := _I.Get(225, "Page", "get_text_layout_for_area")
+	iv, err := _I.Get(225, "Page", "get_text_layout_for_area", 79, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5303,7 +5303,7 @@ func (v Page) GetTextLayoutForArea(area Rectangle) (result bool, rectangles unsa
 // [ result ] trans: everything
 //
 func (v Page) GetThumbnail() (result cairo.Surface) {
-	iv, err := _I.Get(226, "Page", "get_thumbnail")
+	iv, err := _I.Get(226, "Page", "get_thumbnail", 79, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5325,7 +5325,7 @@ func (v Page) GetThumbnail() (result cairo.Surface) {
 // [ result ] trans: nothing
 //
 func (v Page) GetThumbnailSize() (result bool, width int32, height int32) {
-	iv, err := _I.Get(227, "Page", "get_thumbnail_size")
+	iv, err := _I.Get(227, "Page", "get_thumbnail_size", 79, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5348,7 +5348,7 @@ func (v Page) GetThumbnailSize() (result bool, width int32, height int32) {
 // [ result ] trans: everything
 //
 func (v Page) GetTransition() (result PageTransition) {
-	iv, err := _I.Get(228, "Page", "get_transition")
+	iv, err := _I.Get(228, "Page", "get_transition", 79, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5366,7 +5366,7 @@ func (v Page) GetTransition() (result PageTransition) {
 // [ annot ] trans: nothing
 //
 func (v Page) RemoveAnnot(annot IAnnot) {
-	iv, err := _I.Get(229, "Page", "remove_annot")
+	iv, err := _I.Get(229, "Page", "remove_annot", 79, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5386,7 +5386,7 @@ func (v Page) RemoveAnnot(annot IAnnot) {
 // [ cairo ] trans: nothing
 //
 func (v Page) Render(cairo cairo.Context) {
-	iv, err := _I.Get(230, "Page", "render")
+	iv, err := _I.Get(230, "Page", "render", 79, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5402,7 +5402,7 @@ func (v Page) Render(cairo cairo.Context) {
 // [ cairo ] trans: nothing
 //
 func (v Page) RenderForPrinting(cairo cairo.Context) {
-	iv, err := _I.Get(231, "Page", "render_for_printing")
+	iv, err := _I.Get(231, "Page", "render_for_printing", 79, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5420,7 +5420,7 @@ func (v Page) RenderForPrinting(cairo cairo.Context) {
 // [ options ] trans: nothing
 //
 func (v Page) RenderForPrintingWithOptions(cairo cairo.Context, options PrintFlags) {
-	iv, err := _I.Get(232, "Page", "render_for_printing_with_options")
+	iv, err := _I.Get(232, "Page", "render_for_printing_with_options", 79, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5447,7 +5447,7 @@ func (v Page) RenderForPrintingWithOptions(cairo cairo.Context, options PrintFla
 // [ background_color ] trans: nothing
 //
 func (v Page) RenderSelection(cairo cairo.Context, selection Rectangle, old_selection Rectangle, style SelectionStyleEnum, glyph_color Color, background_color Color) {
-	iv, err := _I.Get(233, "Page", "render_selection")
+	iv, err := _I.Get(233, "Page", "render_selection", 79, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5468,7 +5468,7 @@ func (v Page) RenderSelection(cairo cairo.Context, selection Rectangle, old_sele
 // [ ps_file ] trans: nothing
 //
 func (v Page) RenderToPs(ps_file IPSFile) {
-	iv, err := _I.Get(234, "Page", "render_to_ps")
+	iv, err := _I.Get(234, "Page", "render_to_ps", 79, 36, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5536,7 +5536,7 @@ func PageTransitionGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPageTransition() (result PageTransition) {
-	iv, err := _I.Get(235, "PageTransition", "new")
+	iv, err := _I.Get(235, "PageTransition", "new", 82, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5552,7 +5552,7 @@ func NewPageTransition() (result PageTransition) {
 // [ result ] trans: everything
 //
 func (v PageTransition) Copy() (result PageTransition) {
-	iv, err := _I.Get(236, "PageTransition", "copy")
+	iv, err := _I.Get(236, "PageTransition", "copy", 82, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5568,7 +5568,7 @@ func (v PageTransition) Copy() (result PageTransition) {
 // poppler_page_transition_free
 //
 func (v PageTransition) Free() {
-	iv, err := _I.Get(237, "PageTransition", "free")
+	iv, err := _I.Get(237, "PageTransition", "free", 82, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5664,7 +5664,7 @@ func PointGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewPoint() (result Point) {
-	iv, err := _I.Get(238, "Point", "new")
+	iv, err := _I.Get(238, "Point", "new", 87, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5680,7 +5680,7 @@ func NewPoint() (result Point) {
 // [ result ] trans: everything
 //
 func (v Point) Copy() (result Point) {
-	iv, err := _I.Get(239, "Point", "copy")
+	iv, err := _I.Get(239, "Point", "copy", 87, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5696,7 +5696,7 @@ func (v Point) Copy() (result Point) {
 // poppler_point_free
 //
 func (v Point) Free() {
-	iv, err := _I.Get(240, "Point", "free")
+	iv, err := _I.Get(240, "Point", "free", 87, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5738,7 +5738,7 @@ func QuadrilateralGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewQuadrilateral() (result Quadrilateral) {
-	iv, err := _I.Get(241, "Quadrilateral", "new")
+	iv, err := _I.Get(241, "Quadrilateral", "new", 89, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5754,7 +5754,7 @@ func NewQuadrilateral() (result Quadrilateral) {
 // [ result ] trans: everything
 //
 func (v Quadrilateral) Copy() (result Quadrilateral) {
-	iv, err := _I.Get(242, "Quadrilateral", "copy")
+	iv, err := _I.Get(242, "Quadrilateral", "copy", 89, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5770,7 +5770,7 @@ func (v Quadrilateral) Copy() (result Quadrilateral) {
 // poppler_quadrilateral_free
 //
 func (v Quadrilateral) Free() {
-	iv, err := _I.Get(243, "Quadrilateral", "free")
+	iv, err := _I.Get(243, "Quadrilateral", "free", 89, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5797,7 +5797,7 @@ func RectangleGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewRectangle() (result Rectangle) {
-	iv, err := _I.Get(244, "Rectangle", "new")
+	iv, err := _I.Get(244, "Rectangle", "new", 90, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5813,7 +5813,7 @@ func NewRectangle() (result Rectangle) {
 // [ result ] trans: everything
 //
 func (v Rectangle) Copy() (result Rectangle) {
-	iv, err := _I.Get(245, "Rectangle", "copy")
+	iv, err := _I.Get(245, "Rectangle", "copy", 90, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5829,7 +5829,7 @@ func (v Rectangle) Copy() (result Rectangle) {
 // poppler_rectangle_free
 //
 func (v Rectangle) Free() {
-	iv, err := _I.Get(246, "Rectangle", "free")
+	iv, err := _I.Get(246, "Rectangle", "free", 90, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5908,7 +5908,7 @@ func StructureElementGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetAbbreviation() (result string) {
-	iv, err := _I.Get(247, "StructureElement", "get_abbreviation")
+	iv, err := _I.Get(247, "StructureElement", "get_abbreviation", 94, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5926,7 +5926,7 @@ func (v StructureElement) GetAbbreviation() (result string) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetActualText() (result string) {
-	iv, err := _I.Get(248, "StructureElement", "get_actual_text")
+	iv, err := _I.Get(248, "StructureElement", "get_actual_text", 94, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5944,7 +5944,7 @@ func (v StructureElement) GetActualText() (result string) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetAltText() (result string) {
-	iv, err := _I.Get(249, "StructureElement", "get_alt_text")
+	iv, err := _I.Get(249, "StructureElement", "get_alt_text", 94, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5964,7 +5964,7 @@ func (v StructureElement) GetAltText() (result string) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetBackgroundColor(color Color) (result bool) {
-	iv, err := _I.Get(250, "StructureElement", "get_background_color")
+	iv, err := _I.Get(250, "StructureElement", "get_background_color", 94, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5983,7 +5983,7 @@ func (v StructureElement) GetBackgroundColor(color Color) (result bool) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetBaselineShift() (result float64) {
-	iv, err := _I.Get(251, "StructureElement", "get_baseline_shift")
+	iv, err := _I.Get(251, "StructureElement", "get_baseline_shift", 94, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6001,7 +6001,7 @@ func (v StructureElement) GetBaselineShift() (result float64) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetBlockAlign() (result StructureBlockAlignEnum) {
-	iv, err := _I.Get(252, "StructureElement", "get_block_align")
+	iv, err := _I.Get(252, "StructureElement", "get_block_align", 94, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6021,7 +6021,7 @@ func (v StructureElement) GetBlockAlign() (result StructureBlockAlignEnum) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetBorderColor(colors unsafe.Pointer) (result bool) {
-	iv, err := _I.Get(253, "StructureElement", "get_border_color")
+	iv, err := _I.Get(253, "StructureElement", "get_border_color", 94, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6040,7 +6040,7 @@ func (v StructureElement) GetBorderColor(colors unsafe.Pointer) (result bool) {
 // [ border_styles ] trans: everything, dir: out
 //
 func (v StructureElement) GetBorderStyle() (border_styles unsafe.Pointer) {
-	iv, err := _I.Get(254, "StructureElement", "get_border_style")
+	iv, err := _I.Get(254, "StructureElement", "get_border_style", 94, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6061,7 +6061,7 @@ func (v StructureElement) GetBorderStyle() (border_styles unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetBorderThickness() (result bool, border_thicknesses gi.DoubleArray) {
-	iv, err := _I.Get(255, "StructureElement", "get_border_thickness")
+	iv, err := _I.Get(255, "StructureElement", "get_border_thickness", 94, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6084,7 +6084,7 @@ func (v StructureElement) GetBorderThickness() (result bool, border_thicknesses 
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetBoundingBox(bounding_box Rectangle) (result bool) {
-	iv, err := _I.Get(256, "StructureElement", "get_bounding_box")
+	iv, err := _I.Get(256, "StructureElement", "get_bounding_box", 94, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6105,7 +6105,7 @@ func (v StructureElement) GetBoundingBox(bounding_box Rectangle) (result bool) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetColor(color Color) (result bool) {
-	iv, err := _I.Get(257, "StructureElement", "get_color")
+	iv, err := _I.Get(257, "StructureElement", "get_color", 94, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6124,7 +6124,7 @@ func (v StructureElement) GetColor(color Color) (result bool) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetColumnCount() (result uint32) {
-	iv, err := _I.Get(258, "StructureElement", "get_column_count")
+	iv, err := _I.Get(258, "StructureElement", "get_column_count", 94, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6144,7 +6144,7 @@ func (v StructureElement) GetColumnCount() (result uint32) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetColumnGaps() (result gi.DoubleArray) {
-	iv, err := _I.Get(259, "StructureElement", "get_column_gaps")
+	iv, err := _I.Get(259, "StructureElement", "get_column_gaps", 94, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6169,7 +6169,7 @@ func (v StructureElement) GetColumnGaps() (result gi.DoubleArray) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetColumnWidths() (result gi.DoubleArray) {
-	iv, err := _I.Get(260, "StructureElement", "get_column_widths")
+	iv, err := _I.Get(260, "StructureElement", "get_column_widths", 94, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6192,7 +6192,7 @@ func (v StructureElement) GetColumnWidths() (result gi.DoubleArray) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetEndIndent() (result float64) {
-	iv, err := _I.Get(261, "StructureElement", "get_end_indent")
+	iv, err := _I.Get(261, "StructureElement", "get_end_indent", 94, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6210,7 +6210,7 @@ func (v StructureElement) GetEndIndent() (result float64) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetFormDescription() (result string) {
-	iv, err := _I.Get(262, "StructureElement", "get_form_description")
+	iv, err := _I.Get(262, "StructureElement", "get_form_description", 94, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6228,7 +6228,7 @@ func (v StructureElement) GetFormDescription() (result string) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetFormRole() (result StructureFormRoleEnum) {
-	iv, err := _I.Get(263, "StructureElement", "get_form_role")
+	iv, err := _I.Get(263, "StructureElement", "get_form_role", 94, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6246,7 +6246,7 @@ func (v StructureElement) GetFormRole() (result StructureFormRoleEnum) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetFormState() (result StructureFormStateEnum) {
-	iv, err := _I.Get(264, "StructureElement", "get_form_state")
+	iv, err := _I.Get(264, "StructureElement", "get_form_state", 94, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6264,7 +6264,7 @@ func (v StructureElement) GetFormState() (result StructureFormStateEnum) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetGlyphOrientation() (result StructureGlyphOrientationEnum) {
-	iv, err := _I.Get(265, "StructureElement", "get_glyph_orientation")
+	iv, err := _I.Get(265, "StructureElement", "get_glyph_orientation", 94, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6282,7 +6282,7 @@ func (v StructureElement) GetGlyphOrientation() (result StructureGlyphOrientatio
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetHeight() (result float64) {
-	iv, err := _I.Get(266, "StructureElement", "get_height")
+	iv, err := _I.Get(266, "StructureElement", "get_height", 94, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6300,7 +6300,7 @@ func (v StructureElement) GetHeight() (result float64) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetId() (result string) {
-	iv, err := _I.Get(267, "StructureElement", "get_id")
+	iv, err := _I.Get(267, "StructureElement", "get_id", 94, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6318,7 +6318,7 @@ func (v StructureElement) GetId() (result string) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetInlineAlign() (result StructureInlineAlignEnum) {
-	iv, err := _I.Get(268, "StructureElement", "get_inline_align")
+	iv, err := _I.Get(268, "StructureElement", "get_inline_align", 94, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6336,7 +6336,7 @@ func (v StructureElement) GetInlineAlign() (result StructureInlineAlignEnum) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetKind() (result StructureElementKindEnum) {
-	iv, err := _I.Get(269, "StructureElement", "get_kind")
+	iv, err := _I.Get(269, "StructureElement", "get_kind", 94, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6354,7 +6354,7 @@ func (v StructureElement) GetKind() (result StructureElementKindEnum) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetLanguage() (result string) {
-	iv, err := _I.Get(270, "StructureElement", "get_language")
+	iv, err := _I.Get(270, "StructureElement", "get_language", 94, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6372,7 +6372,7 @@ func (v StructureElement) GetLanguage() (result string) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetLineHeight() (result float64) {
-	iv, err := _I.Get(271, "StructureElement", "get_line_height")
+	iv, err := _I.Get(271, "StructureElement", "get_line_height", 94, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6390,7 +6390,7 @@ func (v StructureElement) GetLineHeight() (result float64) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetListNumbering() (result StructureListNumberingEnum) {
-	iv, err := _I.Get(272, "StructureElement", "get_list_numbering")
+	iv, err := _I.Get(272, "StructureElement", "get_list_numbering", 94, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6408,7 +6408,7 @@ func (v StructureElement) GetListNumbering() (result StructureListNumberingEnum)
 // [ paddings ] trans: everything, dir: out
 //
 func (v StructureElement) GetPadding() (paddings gi.DoubleArray) {
-	iv, err := _I.Get(273, "StructureElement", "get_padding")
+	iv, err := _I.Get(273, "StructureElement", "get_padding", 94, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6427,7 +6427,7 @@ func (v StructureElement) GetPadding() (paddings gi.DoubleArray) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetPage() (result int32) {
-	iv, err := _I.Get(274, "StructureElement", "get_page")
+	iv, err := _I.Get(274, "StructureElement", "get_page", 94, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6445,7 +6445,7 @@ func (v StructureElement) GetPage() (result int32) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetPlacement() (result StructurePlacementEnum) {
-	iv, err := _I.Get(275, "StructureElement", "get_placement")
+	iv, err := _I.Get(275, "StructureElement", "get_placement", 94, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6463,7 +6463,7 @@ func (v StructureElement) GetPlacement() (result StructurePlacementEnum) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetRubyAlign() (result StructureRubyAlignEnum) {
-	iv, err := _I.Get(276, "StructureElement", "get_ruby_align")
+	iv, err := _I.Get(276, "StructureElement", "get_ruby_align", 94, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6481,7 +6481,7 @@ func (v StructureElement) GetRubyAlign() (result StructureRubyAlignEnum) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetRubyPosition() (result StructureRubyPositionEnum) {
-	iv, err := _I.Get(277, "StructureElement", "get_ruby_position")
+	iv, err := _I.Get(277, "StructureElement", "get_ruby_position", 94, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6499,7 +6499,7 @@ func (v StructureElement) GetRubyPosition() (result StructureRubyPositionEnum) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetSpaceAfter() (result float64) {
-	iv, err := _I.Get(278, "StructureElement", "get_space_after")
+	iv, err := _I.Get(278, "StructureElement", "get_space_after", 94, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6517,7 +6517,7 @@ func (v StructureElement) GetSpaceAfter() (result float64) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetSpaceBefore() (result float64) {
-	iv, err := _I.Get(279, "StructureElement", "get_space_before")
+	iv, err := _I.Get(279, "StructureElement", "get_space_before", 94, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6535,7 +6535,7 @@ func (v StructureElement) GetSpaceBefore() (result float64) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetStartIndent() (result float64) {
-	iv, err := _I.Get(280, "StructureElement", "get_start_indent")
+	iv, err := _I.Get(280, "StructureElement", "get_start_indent", 94, 33, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6553,7 +6553,7 @@ func (v StructureElement) GetStartIndent() (result float64) {
 // [ border_styles ] trans: everything, dir: out
 //
 func (v StructureElement) GetTableBorderStyle() (border_styles unsafe.Pointer) {
-	iv, err := _I.Get(281, "StructureElement", "get_table_border_style")
+	iv, err := _I.Get(281, "StructureElement", "get_table_border_style", 94, 34, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6572,7 +6572,7 @@ func (v StructureElement) GetTableBorderStyle() (border_styles unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetTableColumnSpan() (result uint32) {
-	iv, err := _I.Get(282, "StructureElement", "get_table_column_span")
+	iv, err := _I.Get(282, "StructureElement", "get_table_column_span", 94, 35, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6590,7 +6590,7 @@ func (v StructureElement) GetTableColumnSpan() (result uint32) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetTableHeaders() (result gi.CStrArray) {
-	iv, err := _I.Get(283, "StructureElement", "get_table_headers")
+	iv, err := _I.Get(283, "StructureElement", "get_table_headers", 94, 36, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6609,7 +6609,7 @@ func (v StructureElement) GetTableHeaders() (result gi.CStrArray) {
 // [ paddings ] trans: everything, dir: out
 //
 func (v StructureElement) GetTablePadding() (paddings gi.DoubleArray) {
-	iv, err := _I.Get(284, "StructureElement", "get_table_padding")
+	iv, err := _I.Get(284, "StructureElement", "get_table_padding", 94, 37, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6628,7 +6628,7 @@ func (v StructureElement) GetTablePadding() (paddings gi.DoubleArray) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetTableRowSpan() (result uint32) {
-	iv, err := _I.Get(285, "StructureElement", "get_table_row_span")
+	iv, err := _I.Get(285, "StructureElement", "get_table_row_span", 94, 38, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6646,7 +6646,7 @@ func (v StructureElement) GetTableRowSpan() (result uint32) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetTableScope() (result StructureTableScopeEnum) {
-	iv, err := _I.Get(286, "StructureElement", "get_table_scope")
+	iv, err := _I.Get(286, "StructureElement", "get_table_scope", 94, 39, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6664,7 +6664,7 @@ func (v StructureElement) GetTableScope() (result StructureTableScopeEnum) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetTableSummary() (result string) {
-	iv, err := _I.Get(287, "StructureElement", "get_table_summary")
+	iv, err := _I.Get(287, "StructureElement", "get_table_summary", 94, 40, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6684,7 +6684,7 @@ func (v StructureElement) GetTableSummary() (result string) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetText(flags StructureGetTextFlags) (result string) {
-	iv, err := _I.Get(288, "StructureElement", "get_text")
+	iv, err := _I.Get(288, "StructureElement", "get_text", 94, 41, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6703,7 +6703,7 @@ func (v StructureElement) GetText(flags StructureGetTextFlags) (result string) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetTextAlign() (result StructureTextAlignEnum) {
-	iv, err := _I.Get(289, "StructureElement", "get_text_align")
+	iv, err := _I.Get(289, "StructureElement", "get_text_align", 94, 42, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6723,7 +6723,7 @@ func (v StructureElement) GetTextAlign() (result StructureTextAlignEnum) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetTextDecorationColor(color Color) (result bool) {
-	iv, err := _I.Get(290, "StructureElement", "get_text_decoration_color")
+	iv, err := _I.Get(290, "StructureElement", "get_text_decoration_color", 94, 43, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6742,7 +6742,7 @@ func (v StructureElement) GetTextDecorationColor(color Color) (result bool) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetTextDecorationThickness() (result float64) {
-	iv, err := _I.Get(291, "StructureElement", "get_text_decoration_thickness")
+	iv, err := _I.Get(291, "StructureElement", "get_text_decoration_thickness", 94, 44, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6760,7 +6760,7 @@ func (v StructureElement) GetTextDecorationThickness() (result float64) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetTextDecorationType() (result StructureTextDecorationEnum) {
-	iv, err := _I.Get(292, "StructureElement", "get_text_decoration_type")
+	iv, err := _I.Get(292, "StructureElement", "get_text_decoration_type", 94, 45, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6778,7 +6778,7 @@ func (v StructureElement) GetTextDecorationType() (result StructureTextDecoratio
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetTextIndent() (result float64) {
-	iv, err := _I.Get(293, "StructureElement", "get_text_indent")
+	iv, err := _I.Get(293, "StructureElement", "get_text_indent", 94, 46, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6798,7 +6798,7 @@ func (v StructureElement) GetTextIndent() (result float64) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetTextSpans() (result unsafe.Pointer) {
-	iv, err := _I.Get(294, "StructureElement", "get_text_spans")
+	iv, err := _I.Get(294, "StructureElement", "get_text_spans", 94, 47, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6821,7 +6821,7 @@ func (v StructureElement) GetTextSpans() (result unsafe.Pointer) {
 // [ result ] trans: everything
 //
 func (v StructureElement) GetTitle() (result string) {
-	iv, err := _I.Get(295, "StructureElement", "get_title")
+	iv, err := _I.Get(295, "StructureElement", "get_title", 94, 48, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6839,7 +6839,7 @@ func (v StructureElement) GetTitle() (result string) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetWidth() (result float64) {
-	iv, err := _I.Get(296, "StructureElement", "get_width")
+	iv, err := _I.Get(296, "StructureElement", "get_width", 94, 49, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6857,7 +6857,7 @@ func (v StructureElement) GetWidth() (result float64) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) GetWritingMode() (result StructureWritingModeEnum) {
-	iv, err := _I.Get(297, "StructureElement", "get_writing_mode")
+	iv, err := _I.Get(297, "StructureElement", "get_writing_mode", 94, 50, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6875,7 +6875,7 @@ func (v StructureElement) GetWritingMode() (result StructureWritingModeEnum) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) IsBlock() (result bool) {
-	iv, err := _I.Get(298, "StructureElement", "is_block")
+	iv, err := _I.Get(298, "StructureElement", "is_block", 94, 51, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6893,7 +6893,7 @@ func (v StructureElement) IsBlock() (result bool) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) IsContent() (result bool) {
-	iv, err := _I.Get(299, "StructureElement", "is_content")
+	iv, err := _I.Get(299, "StructureElement", "is_content", 94, 52, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6911,7 +6911,7 @@ func (v StructureElement) IsContent() (result bool) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) IsGrouping() (result bool) {
-	iv, err := _I.Get(300, "StructureElement", "is_grouping")
+	iv, err := _I.Get(300, "StructureElement", "is_grouping", 94, 53, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6929,7 +6929,7 @@ func (v StructureElement) IsGrouping() (result bool) {
 // [ result ] trans: nothing
 //
 func (v StructureElement) IsInline() (result bool) {
-	iv, err := _I.Get(301, "StructureElement", "is_inline")
+	iv, err := _I.Get(301, "StructureElement", "is_inline", 94, 54, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6959,7 +6959,7 @@ func StructureElementIterGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewStructureElementIter(poppler_document IDocument) (result StructureElementIter) {
-	iv, err := _I.Get(302, "StructureElementIter", "new")
+	iv, err := _I.Get(302, "StructureElementIter", "new", 95, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6981,7 +6981,7 @@ func NewStructureElementIter(poppler_document IDocument) (result StructureElemen
 // [ result ] trans: everything
 //
 func (v StructureElementIter) Copy() (result StructureElementIter) {
-	iv, err := _I.Get(303, "StructureElementIter", "copy")
+	iv, err := _I.Get(303, "StructureElementIter", "copy", 95, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6997,7 +6997,7 @@ func (v StructureElementIter) Copy() (result StructureElementIter) {
 // poppler_structure_element_iter_free
 //
 func (v StructureElementIter) Free() {
-	iv, err := _I.Get(304, "StructureElementIter", "free")
+	iv, err := _I.Get(304, "StructureElementIter", "free", 95, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7012,7 +7012,7 @@ func (v StructureElementIter) Free() {
 // [ result ] trans: everything
 //
 func (v StructureElementIter) GetChild() (result StructureElementIter) {
-	iv, err := _I.Get(305, "StructureElementIter", "get_child")
+	iv, err := _I.Get(305, "StructureElementIter", "get_child", 95, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7030,7 +7030,7 @@ func (v StructureElementIter) GetChild() (result StructureElementIter) {
 // [ result ] trans: everything
 //
 func (v StructureElementIter) GetElement() (result StructureElement) {
-	iv, err := _I.Get(306, "StructureElementIter", "get_element")
+	iv, err := _I.Get(306, "StructureElementIter", "get_element", 95, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7048,7 +7048,7 @@ func (v StructureElementIter) GetElement() (result StructureElement) {
 // [ result ] trans: nothing
 //
 func (v StructureElementIter) Next() (result bool) {
-	iv, err := _I.Get(307, "StructureElementIter", "next")
+	iv, err := _I.Get(307, "StructureElementIter", "next", 95, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7338,7 +7338,7 @@ func TextAttributesGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewTextAttributes() (result TextAttributes) {
-	iv, err := _I.Get(308, "TextAttributes", "new")
+	iv, err := _I.Get(308, "TextAttributes", "new", 110, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7354,7 +7354,7 @@ func NewTextAttributes() (result TextAttributes) {
 // [ result ] trans: everything
 //
 func (v TextAttributes) Copy() (result TextAttributes) {
-	iv, err := _I.Get(309, "TextAttributes", "copy")
+	iv, err := _I.Get(309, "TextAttributes", "copy", 110, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7370,7 +7370,7 @@ func (v TextAttributes) Copy() (result TextAttributes) {
 // poppler_text_attributes_free
 //
 func (v TextAttributes) Free() {
-	iv, err := _I.Get(310, "TextAttributes", "free")
+	iv, err := _I.Get(310, "TextAttributes", "free", 110, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7395,7 +7395,7 @@ func TextSpanGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v TextSpan) Copy() (result TextSpan) {
-	iv, err := _I.Get(311, "TextSpan", "copy")
+	iv, err := _I.Get(311, "TextSpan", "copy", 111, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7411,7 +7411,7 @@ func (v TextSpan) Copy() (result TextSpan) {
 // poppler_text_span_free
 //
 func (v TextSpan) Free() {
-	iv, err := _I.Get(312, "TextSpan", "free")
+	iv, err := _I.Get(312, "TextSpan", "free", 111, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7426,7 +7426,7 @@ func (v TextSpan) Free() {
 // [ color ] trans: nothing, dir: out
 //
 func (v TextSpan) GetColor(color Color) {
-	iv, err := _I.Get(313, "TextSpan", "get_color")
+	iv, err := _I.Get(313, "TextSpan", "get_color", 111, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7442,7 +7442,7 @@ func (v TextSpan) GetColor(color Color) {
 // [ result ] trans: nothing
 //
 func (v TextSpan) GetFontName() (result string) {
-	iv, err := _I.Get(314, "TextSpan", "get_font_name")
+	iv, err := _I.Get(314, "TextSpan", "get_font_name", 111, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7460,7 +7460,7 @@ func (v TextSpan) GetFontName() (result string) {
 // [ result ] trans: nothing
 //
 func (v TextSpan) GetText() (result string) {
-	iv, err := _I.Get(315, "TextSpan", "get_text")
+	iv, err := _I.Get(315, "TextSpan", "get_text", 111, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7478,7 +7478,7 @@ func (v TextSpan) GetText() (result string) {
 // [ result ] trans: nothing
 //
 func (v TextSpan) IsBoldFont() (result bool) {
-	iv, err := _I.Get(316, "TextSpan", "is_bold_font")
+	iv, err := _I.Get(316, "TextSpan", "is_bold_font", 111, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7496,7 +7496,7 @@ func (v TextSpan) IsBoldFont() (result bool) {
 // [ result ] trans: nothing
 //
 func (v TextSpan) IsFixedWidthFont() (result bool) {
-	iv, err := _I.Get(317, "TextSpan", "is_fixed_width_font")
+	iv, err := _I.Get(317, "TextSpan", "is_fixed_width_font", 111, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7514,7 +7514,7 @@ func (v TextSpan) IsFixedWidthFont() (result bool) {
 // [ result ] trans: nothing
 //
 func (v TextSpan) IsSerifFont() (result bool) {
-	iv, err := _I.Get(318, "TextSpan", "is_serif_font")
+	iv, err := _I.Get(318, "TextSpan", "is_serif_font", 111, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7555,7 +7555,7 @@ func ViewerPreferencesGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func DateParse(date string, timet int64) (result bool) {
-	iv, err := _I.Get(319, "date_parse", "")
+	iv, err := _I.Get(319, "date_parse", "", 113, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7576,7 +7576,7 @@ func DateParse(date string, timet int64) (result bool) {
 // [ result ] trans: nothing
 //
 func ErrorQuark() (result uint32) {
-	iv, err := _I.Get(320, "error_quark", "")
+	iv, err := _I.Get(320, "error_quark", "", 114, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7592,7 +7592,7 @@ func ErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func GetBackend() (result BackendEnum) {
-	iv, err := _I.Get(321, "get_backend", "")
+	iv, err := _I.Get(321, "get_backend", "", 115, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7608,7 +7608,7 @@ func GetBackend() (result BackendEnum) {
 // [ result ] trans: nothing
 //
 func GetVersion() (result string) {
-	iv, err := _I.Get(322, "get_version", "")
+	iv, err := _I.Get(322, "get_version", "", 116, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

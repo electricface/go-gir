@@ -44,7 +44,7 @@ func ClientGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewClient(subsystems gi.CStrArray) (result Client) {
-	iv, err := _I.Get(0, "Client", "new")
+	iv, err := _I.Get(0, "Client", "new", 0, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -64,7 +64,7 @@ func NewClient(subsystems gi.CStrArray) (result Client) {
 // [ result ] trans: everything
 //
 func (v Client) QueryByDeviceFile(device_file string) (result Device) {
-	iv, err := _I.Get(1, "Client", "query_by_device_file")
+	iv, err := _I.Get(1, "Client", "query_by_device_file", 0, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89,7 +89,7 @@ func (v Client) QueryByDeviceFile(device_file string) (result Device) {
 // [ result ] trans: everything
 //
 func (v Client) QueryByDeviceNumber(type1 DeviceTypeEnum, number uint64) (result Device) {
-	iv, err := _I.Get(2, "Client", "query_by_device_number")
+	iv, err := _I.Get(2, "Client", "query_by_device_number", 0, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -111,7 +111,7 @@ func (v Client) QueryByDeviceNumber(type1 DeviceTypeEnum, number uint64) (result
 // [ result ] trans: everything
 //
 func (v Client) QueryBySubsystem(subsystem string) (result g.List) {
-	iv, err := _I.Get(3, "Client", "query_by_subsystem")
+	iv, err := _I.Get(3, "Client", "query_by_subsystem", 0, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -136,7 +136,7 @@ func (v Client) QueryBySubsystem(subsystem string) (result g.List) {
 // [ result ] trans: everything
 //
 func (v Client) QueryBySubsystemAndName(subsystem string, name string) (result Device) {
-	iv, err := _I.Get(4, "Client", "query_by_subsystem_and_name")
+	iv, err := _I.Get(4, "Client", "query_by_subsystem_and_name", 0, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -162,7 +162,7 @@ func (v Client) QueryBySubsystemAndName(subsystem string, name string) (result D
 // [ result ] trans: everything
 //
 func (v Client) QueryBySysfsPath(sysfs_path string) (result Device) {
-	iv, err := _I.Get(5, "Client", "query_by_sysfs_path")
+	iv, err := _I.Get(5, "Client", "query_by_sysfs_path", 0, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -210,7 +210,7 @@ func DeviceGetType() gi.GType {
 // [ result ] trans: nothing
 //
 func (v Device) GetAction() (result string) {
-	iv, err := _I.Get(6, "Device", "get_action")
+	iv, err := _I.Get(6, "Device", "get_action", 3, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -228,7 +228,7 @@ func (v Device) GetAction() (result string) {
 // [ result ] trans: nothing
 //
 func (v Device) GetDeviceFile() (result string) {
-	iv, err := _I.Get(7, "Device", "get_device_file")
+	iv, err := _I.Get(7, "Device", "get_device_file", 3, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -246,7 +246,7 @@ func (v Device) GetDeviceFile() (result string) {
 // [ result ] trans: nothing
 //
 func (v Device) GetDeviceFileSymlinks() (result gi.CStrArray) {
-	iv, err := _I.Get(8, "Device", "get_device_file_symlinks")
+	iv, err := _I.Get(8, "Device", "get_device_file_symlinks", 3, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -265,7 +265,7 @@ func (v Device) GetDeviceFileSymlinks() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v Device) GetDeviceNumber() (result uint64) {
-	iv, err := _I.Get(9, "Device", "get_device_number")
+	iv, err := _I.Get(9, "Device", "get_device_number", 3, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -283,7 +283,7 @@ func (v Device) GetDeviceNumber() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Device) GetDeviceType() (result DeviceTypeEnum) {
-	iv, err := _I.Get(10, "Device", "get_device_type")
+	iv, err := _I.Get(10, "Device", "get_device_type", 3, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -301,7 +301,7 @@ func (v Device) GetDeviceType() (result DeviceTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v Device) GetDevtype() (result string) {
-	iv, err := _I.Get(11, "Device", "get_devtype")
+	iv, err := _I.Get(11, "Device", "get_devtype", 3, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -319,7 +319,7 @@ func (v Device) GetDevtype() (result string) {
 // [ result ] trans: nothing
 //
 func (v Device) GetDriver() (result string) {
-	iv, err := _I.Get(12, "Device", "get_driver")
+	iv, err := _I.Get(12, "Device", "get_driver", 3, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -337,7 +337,7 @@ func (v Device) GetDriver() (result string) {
 // [ result ] trans: nothing
 //
 func (v Device) GetIsInitialized() (result bool) {
-	iv, err := _I.Get(13, "Device", "get_is_initialized")
+	iv, err := _I.Get(13, "Device", "get_is_initialized", 3, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -355,7 +355,7 @@ func (v Device) GetIsInitialized() (result bool) {
 // [ result ] trans: nothing
 //
 func (v Device) GetName() (result string) {
-	iv, err := _I.Get(14, "Device", "get_name")
+	iv, err := _I.Get(14, "Device", "get_name", 3, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -373,7 +373,7 @@ func (v Device) GetName() (result string) {
 // [ result ] trans: nothing
 //
 func (v Device) GetNumber() (result string) {
-	iv, err := _I.Get(15, "Device", "get_number")
+	iv, err := _I.Get(15, "Device", "get_number", 3, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -391,7 +391,7 @@ func (v Device) GetNumber() (result string) {
 // [ result ] trans: everything
 //
 func (v Device) GetParent() (result Device) {
-	iv, err := _I.Get(16, "Device", "get_parent")
+	iv, err := _I.Get(16, "Device", "get_parent", 3, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -413,7 +413,7 @@ func (v Device) GetParent() (result Device) {
 // [ result ] trans: everything
 //
 func (v Device) GetParentWithSubsystem(subsystem string, devtype string) (result Device) {
-	iv, err := _I.Get(17, "Device", "get_parent_with_subsystem")
+	iv, err := _I.Get(17, "Device", "get_parent_with_subsystem", 3, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -439,7 +439,7 @@ func (v Device) GetParentWithSubsystem(subsystem string, devtype string) (result
 // [ result ] trans: nothing
 //
 func (v Device) GetProperty(key string) (result string) {
-	iv, err := _I.Get(18, "Device", "get_property")
+	iv, err := _I.Get(18, "Device", "get_property", 3, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -462,7 +462,7 @@ func (v Device) GetProperty(key string) (result string) {
 // [ result ] trans: nothing
 //
 func (v Device) GetPropertyAsBoolean(key string) (result bool) {
-	iv, err := _I.Get(19, "Device", "get_property_as_boolean")
+	iv, err := _I.Get(19, "Device", "get_property_as_boolean", 3, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -485,7 +485,7 @@ func (v Device) GetPropertyAsBoolean(key string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Device) GetPropertyAsDouble(key string) (result float64) {
-	iv, err := _I.Get(20, "Device", "get_property_as_double")
+	iv, err := _I.Get(20, "Device", "get_property_as_double", 3, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -508,7 +508,7 @@ func (v Device) GetPropertyAsDouble(key string) (result float64) {
 // [ result ] trans: nothing
 //
 func (v Device) GetPropertyAsInt(key string) (result int32) {
-	iv, err := _I.Get(21, "Device", "get_property_as_int")
+	iv, err := _I.Get(21, "Device", "get_property_as_int", 3, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -531,7 +531,7 @@ func (v Device) GetPropertyAsInt(key string) (result int32) {
 // [ result ] trans: nothing
 //
 func (v Device) GetPropertyAsStrv(key string) (result gi.CStrArray) {
-	iv, err := _I.Get(22, "Device", "get_property_as_strv")
+	iv, err := _I.Get(22, "Device", "get_property_as_strv", 3, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -555,7 +555,7 @@ func (v Device) GetPropertyAsStrv(key string) (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v Device) GetPropertyAsUint64(key string) (result uint64) {
-	iv, err := _I.Get(23, "Device", "get_property_as_uint64")
+	iv, err := _I.Get(23, "Device", "get_property_as_uint64", 3, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -576,7 +576,7 @@ func (v Device) GetPropertyAsUint64(key string) (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Device) GetPropertyKeys() (result gi.CStrArray) {
-	iv, err := _I.Get(24, "Device", "get_property_keys")
+	iv, err := _I.Get(24, "Device", "get_property_keys", 3, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -595,7 +595,7 @@ func (v Device) GetPropertyKeys() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v Device) GetSeqnum() (result uint64) {
-	iv, err := _I.Get(25, "Device", "get_seqnum")
+	iv, err := _I.Get(25, "Device", "get_seqnum", 3, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -613,7 +613,7 @@ func (v Device) GetSeqnum() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Device) GetSubsystem() (result string) {
-	iv, err := _I.Get(26, "Device", "get_subsystem")
+	iv, err := _I.Get(26, "Device", "get_subsystem", 3, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -633,7 +633,7 @@ func (v Device) GetSubsystem() (result string) {
 // [ result ] trans: nothing
 //
 func (v Device) GetSysfsAttr(name string) (result string) {
-	iv, err := _I.Get(27, "Device", "get_sysfs_attr")
+	iv, err := _I.Get(27, "Device", "get_sysfs_attr", 3, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -656,7 +656,7 @@ func (v Device) GetSysfsAttr(name string) (result string) {
 // [ result ] trans: nothing
 //
 func (v Device) GetSysfsAttrAsBoolean(name string) (result bool) {
-	iv, err := _I.Get(28, "Device", "get_sysfs_attr_as_boolean")
+	iv, err := _I.Get(28, "Device", "get_sysfs_attr_as_boolean", 3, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -679,7 +679,7 @@ func (v Device) GetSysfsAttrAsBoolean(name string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Device) GetSysfsAttrAsDouble(name string) (result float64) {
-	iv, err := _I.Get(29, "Device", "get_sysfs_attr_as_double")
+	iv, err := _I.Get(29, "Device", "get_sysfs_attr_as_double", 3, 23, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -702,7 +702,7 @@ func (v Device) GetSysfsAttrAsDouble(name string) (result float64) {
 // [ result ] trans: nothing
 //
 func (v Device) GetSysfsAttrAsInt(name string) (result int32) {
-	iv, err := _I.Get(30, "Device", "get_sysfs_attr_as_int")
+	iv, err := _I.Get(30, "Device", "get_sysfs_attr_as_int", 3, 24, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -725,7 +725,7 @@ func (v Device) GetSysfsAttrAsInt(name string) (result int32) {
 // [ result ] trans: nothing
 //
 func (v Device) GetSysfsAttrAsStrv(name string) (result gi.CStrArray) {
-	iv, err := _I.Get(31, "Device", "get_sysfs_attr_as_strv")
+	iv, err := _I.Get(31, "Device", "get_sysfs_attr_as_strv", 3, 25, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -749,7 +749,7 @@ func (v Device) GetSysfsAttrAsStrv(name string) (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v Device) GetSysfsAttrAsUint64(name string) (result uint64) {
-	iv, err := _I.Get(32, "Device", "get_sysfs_attr_as_uint64")
+	iv, err := _I.Get(32, "Device", "get_sysfs_attr_as_uint64", 3, 26, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -770,7 +770,7 @@ func (v Device) GetSysfsAttrAsUint64(name string) (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Device) GetSysfsAttrKeys() (result gi.CStrArray) {
-	iv, err := _I.Get(33, "Device", "get_sysfs_attr_keys")
+	iv, err := _I.Get(33, "Device", "get_sysfs_attr_keys", 3, 27, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -789,7 +789,7 @@ func (v Device) GetSysfsAttrKeys() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v Device) GetSysfsPath() (result string) {
-	iv, err := _I.Get(34, "Device", "get_sysfs_path")
+	iv, err := _I.Get(34, "Device", "get_sysfs_path", 3, 28, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -807,7 +807,7 @@ func (v Device) GetSysfsPath() (result string) {
 // [ result ] trans: nothing
 //
 func (v Device) GetTags() (result gi.CStrArray) {
-	iv, err := _I.Get(35, "Device", "get_tags")
+	iv, err := _I.Get(35, "Device", "get_tags", 3, 29, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -826,7 +826,7 @@ func (v Device) GetTags() (result gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func (v Device) GetUsecSinceInitialized() (result uint64) {
-	iv, err := _I.Get(36, "Device", "get_usec_since_initialized")
+	iv, err := _I.Get(36, "Device", "get_usec_since_initialized", 3, 30, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -846,7 +846,7 @@ func (v Device) GetUsecSinceInitialized() (result uint64) {
 // [ result ] trans: nothing
 //
 func (v Device) HasProperty(key string) (result bool) {
-	iv, err := _I.Get(37, "Device", "has_property")
+	iv, err := _I.Get(37, "Device", "has_property", 3, 31, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -869,7 +869,7 @@ func (v Device) HasProperty(key string) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Device) HasSysfsAttr(key string) (result bool) {
-	iv, err := _I.Get(38, "Device", "has_sysfs_attr")
+	iv, err := _I.Get(38, "Device", "has_sysfs_attr", 3, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -933,7 +933,7 @@ func EnumeratorGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewEnumerator(client IClient) (result Enumerator) {
-	iv, err := _I.Get(39, "Enumerator", "new")
+	iv, err := _I.Get(39, "Enumerator", "new", 7, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -955,7 +955,7 @@ func NewEnumerator(client IClient) (result Enumerator) {
 // [ result ] trans: nothing
 //
 func (v Enumerator) AddMatchIsInitialized() (result Enumerator) {
-	iv, err := _I.Get(40, "Enumerator", "add_match_is_initialized")
+	iv, err := _I.Get(40, "Enumerator", "add_match_is_initialized", 7, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -975,7 +975,7 @@ func (v Enumerator) AddMatchIsInitialized() (result Enumerator) {
 // [ result ] trans: nothing
 //
 func (v Enumerator) AddMatchName(name string) (result Enumerator) {
-	iv, err := _I.Get(41, "Enumerator", "add_match_name")
+	iv, err := _I.Get(41, "Enumerator", "add_match_name", 7, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1000,7 +1000,7 @@ func (v Enumerator) AddMatchName(name string) (result Enumerator) {
 // [ result ] trans: nothing
 //
 func (v Enumerator) AddMatchProperty(name string, value string) (result Enumerator) {
-	iv, err := _I.Get(42, "Enumerator", "add_match_property")
+	iv, err := _I.Get(42, "Enumerator", "add_match_property", 7, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1026,7 +1026,7 @@ func (v Enumerator) AddMatchProperty(name string, value string) (result Enumerat
 // [ result ] trans: nothing
 //
 func (v Enumerator) AddMatchSubsystem(subsystem string) (result Enumerator) {
-	iv, err := _I.Get(43, "Enumerator", "add_match_subsystem")
+	iv, err := _I.Get(43, "Enumerator", "add_match_subsystem", 7, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1051,7 +1051,7 @@ func (v Enumerator) AddMatchSubsystem(subsystem string) (result Enumerator) {
 // [ result ] trans: nothing
 //
 func (v Enumerator) AddMatchSysfsAttr(name string, value string) (result Enumerator) {
-	iv, err := _I.Get(44, "Enumerator", "add_match_sysfs_attr")
+	iv, err := _I.Get(44, "Enumerator", "add_match_sysfs_attr", 7, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1077,7 +1077,7 @@ func (v Enumerator) AddMatchSysfsAttr(name string, value string) (result Enumera
 // [ result ] trans: nothing
 //
 func (v Enumerator) AddMatchTag(tag string) (result Enumerator) {
-	iv, err := _I.Get(45, "Enumerator", "add_match_tag")
+	iv, err := _I.Get(45, "Enumerator", "add_match_tag", 7, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1100,7 +1100,7 @@ func (v Enumerator) AddMatchTag(tag string) (result Enumerator) {
 // [ result ] trans: nothing
 //
 func (v Enumerator) AddNomatchSubsystem(subsystem string) (result Enumerator) {
-	iv, err := _I.Get(46, "Enumerator", "add_nomatch_subsystem")
+	iv, err := _I.Get(46, "Enumerator", "add_nomatch_subsystem", 7, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1125,7 +1125,7 @@ func (v Enumerator) AddNomatchSubsystem(subsystem string) (result Enumerator) {
 // [ result ] trans: nothing
 //
 func (v Enumerator) AddNomatchSysfsAttr(name string, value string) (result Enumerator) {
-	iv, err := _I.Get(47, "Enumerator", "add_nomatch_sysfs_attr")
+	iv, err := _I.Get(47, "Enumerator", "add_nomatch_sysfs_attr", 7, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1151,7 +1151,7 @@ func (v Enumerator) AddNomatchSysfsAttr(name string, value string) (result Enume
 // [ result ] trans: nothing
 //
 func (v Enumerator) AddSysfsPath(sysfs_path string) (result Enumerator) {
-	iv, err := _I.Get(48, "Enumerator", "add_sysfs_path")
+	iv, err := _I.Get(48, "Enumerator", "add_sysfs_path", 7, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -1172,7 +1172,7 @@ func (v Enumerator) AddSysfsPath(sysfs_path string) (result Enumerator) {
 // [ result ] trans: everything
 //
 func (v Enumerator) Execute() (result g.List) {
-	iv, err := _I.Get(49, "Enumerator", "execute")
+	iv, err := _I.Get(49, "Enumerator", "execute", 7, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

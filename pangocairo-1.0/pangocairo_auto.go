@@ -47,7 +47,7 @@ func FontGetType() gi.GType {
 // [ result ] trans: everything
 //
 func (v *FontIfc) GetScaledFont() (result cairo.ScaledFont) {
-	iv, err := _I.Get(0, "Font", "get_scaled_font")
+	iv, err := _I.Get(0, "Font", "get_scaled_font", 0, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -81,7 +81,7 @@ func FontMapGetType() gi.GType {
 // [ result ] trans: everything
 //
 func FontMapNewForFontType1(fonttype cairo.FontTypeEnum) (result pango.FontMap) {
-	iv, err := _I.Get(3, "FontMap", "new_for_font_type")
+	iv, err := _I.Get(3, "FontMap", "new_for_font_type", 1, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -99,7 +99,7 @@ func FontMapNewForFontType1(fonttype cairo.FontTypeEnum) (result pango.FontMap) 
 // [ result ] trans: nothing
 //
 func (v *FontMapIfc) GetFontType() (result cairo.FontTypeEnum) {
-	iv, err := _I.Get(4, "FontMap", "get_font_type")
+	iv, err := _I.Get(4, "FontMap", "get_font_type", 1, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -117,7 +117,7 @@ func (v *FontMapIfc) GetFontType() (result cairo.FontTypeEnum) {
 // [ result ] trans: nothing
 //
 func (v *FontMapIfc) GetResolution() (result float64) {
-	iv, err := _I.Get(5, "FontMap", "get_resolution")
+	iv, err := _I.Get(5, "FontMap", "get_resolution", 1, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -133,7 +133,7 @@ func (v *FontMapIfc) GetResolution() (result float64) {
 // pango_cairo_font_map_set_default
 //
 func (v *FontMapIfc) SetDefault() {
-	iv, err := _I.Get(6, "FontMap", "set_default")
+	iv, err := _I.Get(6, "FontMap", "set_default", 1, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -148,7 +148,7 @@ func (v *FontMapIfc) SetDefault() {
 // [ dpi ] trans: nothing
 //
 func (v *FontMapIfc) SetResolution(dpi float64) {
-	iv, err := _I.Get(7, "FontMap", "set_resolution")
+	iv, err := _I.Get(7, "FontMap", "set_resolution", 1, 6, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -182,7 +182,7 @@ func myPangoCairoShapeRendererFunc(cr *C.cairo_t, attr *C.PangoAttrShape, do_pat
 // [ result ] trans: nothing
 //
 func ContextGetFontOptions(context pango.IContext) (result cairo.FontOptions) {
-	iv, err := _I.Get(8, "context_get_font_options", "")
+	iv, err := _I.Get(8, "context_get_font_options", "", 3, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -206,7 +206,7 @@ func ContextGetFontOptions(context pango.IContext) (result cairo.FontOptions) {
 // [ result ] trans: nothing
 //
 func ContextGetResolution(context pango.IContext) (result float64) {
-	iv, err := _I.Get(9, "context_get_resolution", "")
+	iv, err := _I.Get(9, "context_get_resolution", "", 4, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -230,7 +230,7 @@ func ContextGetResolution(context pango.IContext) (result float64) {
 // [ options ] trans: nothing
 //
 func ContextSetFontOptions(context pango.IContext, options cairo.FontOptions) {
-	iv, err := _I.Get(10, "context_set_font_options", "")
+	iv, err := _I.Get(10, "context_set_font_options", "", 5, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -252,7 +252,7 @@ func ContextSetFontOptions(context pango.IContext, options cairo.FontOptions) {
 // [ dpi ] trans: nothing
 //
 func ContextSetResolution(context pango.IContext, dpi float64) {
-	iv, err := _I.Get(11, "context_set_resolution", "")
+	iv, err := _I.Get(11, "context_set_resolution", "", 6, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -278,7 +278,7 @@ func ContextSetResolution(context pango.IContext, dpi float64) {
 // [ dnotify ] trans: nothing
 //
 func ContextSetShapeRenderer(context pango.IContext, func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, dnotify int /*TODO_TYPE CALLBACK*/) {
-	iv, err := _I.Get(12, "context_set_shape_renderer", "")
+	iv, err := _I.Get(12, "context_set_shape_renderer", "", 7, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -302,7 +302,7 @@ func ContextSetShapeRenderer(context pango.IContext, func1 int /*TODO_TYPE CALLB
 // [ result ] trans: everything
 //
 func CreateContext(cr cairo.Context) (result pango.Context) {
-	iv, err := _I.Get(13, "create_context", "")
+	iv, err := _I.Get(13, "create_context", "", 8, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -322,7 +322,7 @@ func CreateContext(cr cairo.Context) (result pango.Context) {
 // [ result ] trans: everything
 //
 func CreateLayout(cr cairo.Context) (result pango.Layout) {
-	iv, err := _I.Get(14, "create_layout", "")
+	iv, err := _I.Get(14, "create_layout", "", 9, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -348,7 +348,7 @@ func CreateLayout(cr cairo.Context) (result pango.Layout) {
 // [ height ] trans: nothing
 //
 func ErrorUnderlinePath(cr cairo.Context, x float64, y float64, width float64, height float64) {
-	iv, err := _I.Get(15, "error_underline_path", "")
+	iv, err := _I.Get(15, "error_underline_path", "", 10, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -367,7 +367,7 @@ func ErrorUnderlinePath(cr cairo.Context, x float64, y float64, width float64, h
 // [ result ] trans: nothing
 //
 func FontMapGetDefault() (result pango.FontMap) {
-	iv, err := _I.Get(16, "font_map_get_default", "")
+	iv, err := _I.Get(16, "font_map_get_default", "", 11, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -383,7 +383,7 @@ func FontMapGetDefault() (result pango.FontMap) {
 // [ result ] trans: everything
 //
 func FontMapNew() (result pango.FontMap) {
-	iv, err := _I.Get(17, "font_map_new", "")
+	iv, err := _I.Get(17, "font_map_new", "", 12, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -401,7 +401,7 @@ func FontMapNew() (result pango.FontMap) {
 // [ result ] trans: everything
 //
 func FontMapNewForFontType(fonttype cairo.FontTypeEnum) (result pango.FontMap) {
-	iv, err := _I.Get(18, "font_map_new_for_font_type", "")
+	iv, err := _I.Get(18, "font_map_new_for_font_type", "", 13, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -423,7 +423,7 @@ func FontMapNewForFontType(fonttype cairo.FontTypeEnum) (result pango.FontMap) {
 // [ glyphs ] trans: nothing
 //
 func GlyphStringPath(cr cairo.Context, font pango.IFont, glyphs pango.GlyphString) {
-	iv, err := _I.Get(19, "glyph_string_path", "")
+	iv, err := _I.Get(19, "glyph_string_path", "", 14, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -446,7 +446,7 @@ func GlyphStringPath(cr cairo.Context, font pango.IFont, glyphs pango.GlyphStrin
 // [ line ] trans: nothing
 //
 func LayoutLinePath(cr cairo.Context, line pango.LayoutLine) {
-	iv, err := _I.Get(20, "layout_line_path", "")
+	iv, err := _I.Get(20, "layout_line_path", "", 15, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -464,7 +464,7 @@ func LayoutLinePath(cr cairo.Context, line pango.LayoutLine) {
 // [ layout ] trans: nothing
 //
 func LayoutPath(cr cairo.Context, layout pango.ILayout) {
-	iv, err := _I.Get(21, "layout_path", "")
+	iv, err := _I.Get(21, "layout_path", "", 16, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -492,7 +492,7 @@ func LayoutPath(cr cairo.Context, layout pango.ILayout) {
 // [ height ] trans: nothing
 //
 func ShowErrorUnderline(cr cairo.Context, x float64, y float64, width float64, height float64) {
-	iv, err := _I.Get(22, "show_error_underline", "")
+	iv, err := _I.Get(22, "show_error_underline", "", 17, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -515,7 +515,7 @@ func ShowErrorUnderline(cr cairo.Context, x float64, y float64, width float64, h
 // [ glyph_item ] trans: nothing
 //
 func ShowGlyphItem(cr cairo.Context, text string, glyph_item pango.GlyphItem) {
-	iv, err := _I.Get(23, "show_glyph_item", "")
+	iv, err := _I.Get(23, "show_glyph_item", "", 18, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -538,7 +538,7 @@ func ShowGlyphItem(cr cairo.Context, text string, glyph_item pango.GlyphItem) {
 // [ glyphs ] trans: nothing
 //
 func ShowGlyphString(cr cairo.Context, font pango.IFont, glyphs pango.GlyphString) {
-	iv, err := _I.Get(24, "show_glyph_string", "")
+	iv, err := _I.Get(24, "show_glyph_string", "", 19, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -561,7 +561,7 @@ func ShowGlyphString(cr cairo.Context, font pango.IFont, glyphs pango.GlyphStrin
 // [ layout ] trans: nothing
 //
 func ShowLayout(cr cairo.Context, layout pango.ILayout) {
-	iv, err := _I.Get(25, "show_layout", "")
+	iv, err := _I.Get(25, "show_layout", "", 20, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -583,7 +583,7 @@ func ShowLayout(cr cairo.Context, layout pango.ILayout) {
 // [ line ] trans: nothing
 //
 func ShowLayoutLine(cr cairo.Context, line pango.LayoutLine) {
-	iv, err := _I.Get(26, "show_layout_line", "")
+	iv, err := _I.Get(26, "show_layout_line", "", 21, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -601,7 +601,7 @@ func ShowLayoutLine(cr cairo.Context, line pango.LayoutLine) {
 // [ context ] trans: nothing
 //
 func UpdateContext(cr cairo.Context, context pango.IContext) {
-	iv, err := _I.Get(27, "update_context", "")
+	iv, err := _I.Get(27, "update_context", "", 22, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -623,7 +623,7 @@ func UpdateContext(cr cairo.Context, context pango.IContext) {
 // [ layout ] trans: nothing
 //
 func UpdateLayout(cr cairo.Context, layout pango.ILayout) {
-	iv, err := _I.Get(28, "update_layout", "")
+	iv, err := _I.Get(28, "update_layout", "", 23, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

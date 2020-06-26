@@ -68,7 +68,7 @@ func HandleGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewHandle() (result Handle) {
-	iv, err := _I.Get(0, "Handle", "new")
+	iv, err := _I.Get(0, "Handle", "new", 2, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88,7 +88,7 @@ func NewHandle() (result Handle) {
 // [ result ] trans: everything
 //
 func NewHandleFromData(data gi.Uint8Array, data_len uint64) (result Handle, err error) {
-	iv, err := _I.Get(1, "Handle", "new_from_data")
+	iv, err := _I.Get(1, "Handle", "new_from_data", 2, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -111,7 +111,7 @@ func NewHandleFromData(data gi.Uint8Array, data_len uint64) (result Handle, err 
 // [ result ] trans: everything
 //
 func NewHandleFromFile(file_name string) (result Handle, err error) {
-	iv, err := _I.Get(2, "Handle", "new_from_file")
+	iv, err := _I.Get(2, "Handle", "new_from_file", 2, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -139,7 +139,7 @@ func NewHandleFromFile(file_name string) (result Handle, err error) {
 // [ result ] trans: everything
 //
 func NewHandleFromGfileSync(file g.IFile, flags HandleFlags, cancellable g.ICancellable) (result Handle, err error) {
-	iv, err := _I.Get(3, "Handle", "new_from_gfile_sync")
+	iv, err := _I.Get(3, "Handle", "new_from_gfile_sync", 2, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -177,7 +177,7 @@ func NewHandleFromGfileSync(file g.IFile, flags HandleFlags, cancellable g.ICanc
 // [ result ] trans: everything
 //
 func NewHandleFromStreamSync(input_stream g.IInputStream, base_file g.IFile, flags HandleFlags, cancellable g.ICancellable) (result Handle, err error) {
-	iv, err := _I.Get(4, "Handle", "new_from_stream_sync")
+	iv, err := _I.Get(4, "Handle", "new_from_stream_sync", 2, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -214,7 +214,7 @@ func NewHandleFromStreamSync(input_stream g.IInputStream, base_file g.IFile, fla
 // [ result ] trans: everything
 //
 func NewHandleWithFlags(flags HandleFlags) (result Handle) {
-	iv, err := _I.Get(5, "Handle", "new_with_flags")
+	iv, err := _I.Get(5, "Handle", "new_with_flags", 2, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -232,7 +232,7 @@ func NewHandleWithFlags(flags HandleFlags) (result Handle) {
 // [ result ] trans: nothing
 //
 func (v Handle) Close() (result bool, err error) {
-	iv, err := _I.Get(6, "Handle", "close")
+	iv, err := _I.Get(6, "Handle", "close", 2, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -252,7 +252,7 @@ func (v Handle) Close() (result bool, err error) {
 // [ result ] trans: nothing
 //
 func (v Handle) GetBaseUri() (result string) {
-	iv, err := _I.Get(7, "Handle", "get_base_uri")
+	iv, err := _I.Get(7, "Handle", "get_base_uri", 2, 7, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -270,7 +270,7 @@ func (v Handle) GetBaseUri() (result string) {
 // [ dimension_data ] trans: nothing, dir: out
 //
 func (v Handle) GetDimensions(dimension_data DimensionData) {
-	iv, err := _I.Get(8, "Handle", "get_dimensions")
+	iv, err := _I.Get(8, "Handle", "get_dimensions", 2, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -290,7 +290,7 @@ func (v Handle) GetDimensions(dimension_data DimensionData) {
 // [ result ] trans: nothing
 //
 func (v Handle) GetDimensionsSub(dimension_data DimensionData, id string) (result bool) {
-	iv, err := _I.Get(9, "Handle", "get_dimensions_sub")
+	iv, err := _I.Get(9, "Handle", "get_dimensions_sub", 2, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -312,7 +312,7 @@ func (v Handle) GetDimensionsSub(dimension_data DimensionData, id string) (resul
 // [ result ] trans: everything
 //
 func (v Handle) GetPixbuf() (result gdkpixbuf.Pixbuf) {
-	iv, err := _I.Get(10, "Handle", "get_pixbuf")
+	iv, err := _I.Get(10, "Handle", "get_pixbuf", 2, 10, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -332,7 +332,7 @@ func (v Handle) GetPixbuf() (result gdkpixbuf.Pixbuf) {
 // [ result ] trans: everything
 //
 func (v Handle) GetPixbufSub(id string) (result gdkpixbuf.Pixbuf) {
-	iv, err := _I.Get(11, "Handle", "get_pixbuf_sub")
+	iv, err := _I.Get(11, "Handle", "get_pixbuf_sub", 2, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -357,7 +357,7 @@ func (v Handle) GetPixbufSub(id string) (result gdkpixbuf.Pixbuf) {
 // [ result ] trans: nothing
 //
 func (v Handle) GetPositionSub(position_data PositionData, id string) (result bool) {
-	iv, err := _I.Get(12, "Handle", "get_position_sub")
+	iv, err := _I.Get(12, "Handle", "get_position_sub", 2, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -381,7 +381,7 @@ func (v Handle) GetPositionSub(position_data PositionData, id string) (result bo
 // [ result ] trans: nothing
 //
 func (v Handle) HasSub(id string) (result bool) {
-	iv, err := _I.Get(13, "Handle", "has_sub")
+	iv, err := _I.Get(13, "Handle", "has_sub", 2, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -402,7 +402,7 @@ func (v Handle) HasSub(id string) (result bool) {
 // [ testing ] trans: nothing
 //
 func (v Handle) InternalSetTesting(testing bool) {
-	iv, err := _I.Get(14, "Handle", "internal_set_testing")
+	iv, err := _I.Get(14, "Handle", "internal_set_testing", 2, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -422,7 +422,7 @@ func (v Handle) InternalSetTesting(testing bool) {
 // [ result ] trans: nothing
 //
 func (v Handle) ReadStreamSync(stream g.IInputStream, cancellable g.ICancellable) (result bool, err error) {
-	iv, err := _I.Get(15, "Handle", "read_stream_sync")
+	iv, err := _I.Get(15, "Handle", "read_stream_sync", 2, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -454,7 +454,7 @@ func (v Handle) ReadStreamSync(stream g.IInputStream, cancellable g.ICancellable
 // [ result ] trans: nothing
 //
 func (v Handle) RenderCairo(cr cairo.Context) (result bool) {
-	iv, err := _I.Get(16, "Handle", "render_cairo")
+	iv, err := _I.Get(16, "Handle", "render_cairo", 2, 16, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -477,7 +477,7 @@ func (v Handle) RenderCairo(cr cairo.Context) (result bool) {
 // [ result ] trans: nothing
 //
 func (v Handle) RenderCairoSub(cr cairo.Context, id string) (result bool) {
-	iv, err := _I.Get(17, "Handle", "render_cairo_sub")
+	iv, err := _I.Get(17, "Handle", "render_cairo_sub", 2, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -499,7 +499,7 @@ func (v Handle) RenderCairoSub(cr cairo.Context, id string) (result bool) {
 // [ base_file ] trans: nothing
 //
 func (v Handle) SetBaseGfile(base_file g.IFile) {
-	iv, err := _I.Get(18, "Handle", "set_base_gfile")
+	iv, err := _I.Get(18, "Handle", "set_base_gfile", 2, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -519,7 +519,7 @@ func (v Handle) SetBaseGfile(base_file g.IFile) {
 // [ base_uri ] trans: nothing
 //
 func (v Handle) SetBaseUri(base_uri string) {
-	iv, err := _I.Get(19, "Handle", "set_base_uri")
+	iv, err := _I.Get(19, "Handle", "set_base_uri", 2, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -537,7 +537,7 @@ func (v Handle) SetBaseUri(base_uri string) {
 // [ dpi ] trans: nothing
 //
 func (v Handle) SetDpi(dpi float64) {
-	iv, err := _I.Get(20, "Handle", "set_dpi")
+	iv, err := _I.Get(20, "Handle", "set_dpi", 2, 20, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -555,7 +555,7 @@ func (v Handle) SetDpi(dpi float64) {
 // [ dpi_y ] trans: nothing
 //
 func (v Handle) SetDpiXY(dpi_x float64, dpi_y float64) {
-	iv, err := _I.Get(21, "Handle", "set_dpi_x_y")
+	iv, err := _I.Get(21, "Handle", "set_dpi_x_y", 2, 21, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -576,7 +576,7 @@ func (v Handle) SetDpiXY(dpi_x float64, dpi_y float64) {
 // [ result ] trans: nothing
 //
 func (v Handle) Write(buf gi.Uint8Array, count uint64) (result bool, err error) {
-	iv, err := _I.Get(22, "Handle", "write")
+	iv, err := _I.Get(22, "Handle", "write", 2, 22, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
@@ -634,7 +634,7 @@ func PositionDataGetType() gi.GType {
 // rsvg_cleanup
 //
 func Cleanup() {
-	iv, err := _I.Get(23, "cleanup", "")
+	iv, err := _I.Get(23, "cleanup", "", 11, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -647,7 +647,7 @@ func Cleanup() {
 // [ result ] trans: nothing
 //
 func ErrorQuark() (result uint32) {
-	iv, err := _I.Get(24, "error_quark", "")
+	iv, err := _I.Get(24, "error_quark", "", 12, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -665,7 +665,7 @@ func ErrorQuark() (result uint32) {
 // [ dpi ] trans: nothing
 //
 func SetDefaultDpi(dpi float64) {
-	iv, err := _I.Get(25, "set_default_dpi", "")
+	iv, err := _I.Get(25, "set_default_dpi", "", 13, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -684,7 +684,7 @@ func SetDefaultDpi(dpi float64) {
 // [ dpi_y ] trans: nothing
 //
 func SetDefaultDpiXY(dpi_x float64, dpi_y float64) {
-	iv, err := _I.Get(26, "set_default_dpi_x_y", "")
+	iv, err := _I.Get(26, "set_default_dpi_x_y", "", 14, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
