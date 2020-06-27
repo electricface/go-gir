@@ -32,12 +32,12 @@ return (void*)(myPangoCairoShapeRendererFunc);
 }
 */
 import "C"
-import "github.com/electricface/go-gir/cairo-1.0"
-import "github.com/electricface/go-gir/g-2.0"
-import "github.com/electricface/go-gir/pango-1.0"
+import "github.com/linuxdeepin/go-gir/cairo-1.0"
+import "github.com/linuxdeepin/go-gir/g-2.0"
+import "github.com/linuxdeepin/go-gir/gi"
+import "github.com/linuxdeepin/go-gir/pango-1.0"
 import "log"
 import "unsafe"
-import gi "github.com/electricface/go-gir3/gi-lite"
 
 var _I = gi.NewInvokerCache("PangoCairo")
 var _ unsafe.Pointer

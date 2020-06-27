@@ -36,11 +36,11 @@ return (void*)(myPopplerMediaSaveFunc);
 }
 */
 import "C"
-import "github.com/electricface/go-gir/cairo-1.0"
-import "github.com/electricface/go-gir/g-2.0"
+import "github.com/linuxdeepin/go-gir/cairo-1.0"
+import "github.com/linuxdeepin/go-gir/g-2.0"
+import "github.com/linuxdeepin/go-gir/gi"
 import "log"
 import "unsafe"
-import gi "github.com/electricface/go-gir3/gi-lite"
 
 var _I = gi.NewInvokerCache("Poppler")
 var _ unsafe.Pointer

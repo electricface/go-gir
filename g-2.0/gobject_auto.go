@@ -136,9 +136,9 @@ return (void*)(myGObjectWeakNotify);
 }
 */
 import "C"
+import "github.com/linuxdeepin/go-gir/gi"
 import "log"
 import "unsafe"
-import gi "github.com/electricface/go-gir3/gi-lite"
 
 var _ gi.GType
 var _ unsafe.Pointer
