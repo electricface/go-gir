@@ -26,7 +26,7 @@ package pangocairo
 /*
 #cgo pkg-config: pangocairo
 #include <pango/pangocairo.h>
-extern void myPangoCairoShapeRendererFunc(cairo_t* cr, PangoCairoAttrShape* attr, gboolean do_path, gpointer data);
+extern void myPangoCairoShapeRendererFunc(cairo_t* cr, PangoAttrShape* attr, gboolean do_path, gpointer data);
 static void* getPointer_myPangoCairoShapeRendererFunc() {
 return (void*)(myPangoCairoShapeRendererFunc);
 }
@@ -194,7 +194,7 @@ func GetPointer_myShapeRendererFunc() unsafe.Pointer {
 }
 
 //export myPangoCairoShapeRendererFunc
-func myPangoCairoShapeRendererFunc(cr *C.cairo_t, attr *C.PangoCairoAttrShape, do_path C.gboolean, data C.gpointer) {
+func myPangoCairoShapeRendererFunc(cr *C.cairo_t, attr *C.PangoAttrShape, do_path C.gboolean, data C.gpointer) {
 	// TODO: not found user_data
 }
 
