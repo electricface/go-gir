@@ -2704,3 +2704,9 @@ const (
 	PIXBUF_MINOR      = 38
 	PIXBUF_VERSION    = "2.38.1"
 )
+const (
+	SigAreaPrepared = "area-prepared"
+	SigAreaUpdated  = "area-updated"
+	SigClosed       = "closed"
+	SigSizePrepared = "size-prepared"
+)

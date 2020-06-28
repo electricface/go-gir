@@ -34911,3 +34911,28 @@ const (
 	VERSION_MINOR                         = 14
 	VERSION_NANO                          = 0
 )
+const (
+	SigChildAdded         = "child-added"
+	SigChildRemoved       = "child-removed"
+	SigDeepElementAdded   = "deep-element-added"
+	SigDeepElementRemoved = "deep-element-removed"
+	SigDeepNotify         = "deep-notify"
+	SigDoLatency          = "do-latency"
+	SigElementAdded       = "element-added"
+	SigElementRemoved     = "element-removed"
+	SigFeatureAdded       = "feature-added"
+	SigLinked             = "linked"
+	SigMessage            = "message"
+	SigNoMorePads         = "no-more-pads"
+	SigPadAdded           = "pad-added"
+	SigPadCreated         = "pad-created"
+	SigPadRemoved         = "pad-removed"
+	SigPluginAdded        = "plugin-added"
+	SigProviderHidden     = "provider-hidden"
+	SigProviderUnhidden   = "provider-unhidden"
+	SigRemoved            = "removed"
+	SigStreamNotify       = "stream-notify"
+	SigSyncMessage        = "sync-message"
+	SigSynced             = "synced"
+	SigUnlinked           = "unlinked"
+)

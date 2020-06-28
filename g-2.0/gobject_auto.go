@@ -9184,3 +9184,6 @@ const (
 	VALUE_COLLECT_FORMAT_MAX_LENGTH = 8
 	VALUE_NOCOPY_CONTENTS           = 134217728
 )
+const (
+	SigNotify = "notify"
+)

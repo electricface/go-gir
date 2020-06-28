@@ -1222,3 +1222,6 @@ func EnumeratorPrivateGetType() gi.GType {
 
 // constants
 const ()
+const (
+	SigUevent = "uevent"
+)

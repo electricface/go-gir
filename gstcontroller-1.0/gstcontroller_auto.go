@@ -692,3 +692,8 @@ func TimedValueControlInvalidateCache(self ITimedValueControlSource) {
 
 // constants
 const ()
+const (
+	SigValueAdded   = "value-added"
+	SigValueChanged = "value-changed"
+	SigValueRemoved = "value-removed"
+)
