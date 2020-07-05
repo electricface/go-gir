@@ -330,7 +330,7 @@ const (
 	InfoTypeCallback   InfoTypeEnum = 2
 	InfoTypeStruct     InfoTypeEnum = 3
 	InfoTypeBoxed      InfoTypeEnum = 4
-	InfoTypeEnum       InfoTypeEnum = 5
+	InfoTypeEnum0      InfoTypeEnum = 5
 	InfoTypeFlags      InfoTypeEnum = 6
 	InfoTypeObject     InfoTypeEnum = 7
 	InfoTypeInterface  InfoTypeEnum = 8
@@ -388,6 +388,70 @@ func RepositoryDump1(arg string) (result bool, err error) {
 	gi.Free(c_arg)
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
+	return
+}
+
+// g_irepository_error_quark
+//
+// [ result ] trans: nothing
+//
+func RepositoryErrorQuark1() (result uint32) {
+	iv, err := _I.Get(10, "Repository", "error_quark", 8, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
+// g_irepository_get_default
+//
+// [ result ] trans: nothing
+//
+func RepositoryGetDefault1() (result Repository) {
+	iv, err := _I.Get(11, "Repository", "get_default", 8, 2, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// g_irepository_get_option_group
+//
+// [ result ] trans: everything
+//
+func RepositoryGetOptionGroup1() (result g.OptionGroup) {
+	iv, err := _I.Get(12, "Repository", "get_option_group", 8, 3, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// g_irepository_get_search_path
+//
+// [ result ] trans: nothing
+//
+func RepositoryGetSearchPath1() (result g.SList) {
+	iv, err := _I.Get(13, "Repository", "get_search_path", 8, 4, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
 	return
 }
 

@@ -2247,6 +2247,22 @@ func (v Buffer) UnsetFlags(flags BufferFlags) (result bool) {
 	return
 }
 
+// gst_buffer_get_max_memory
+//
+// [ result ] trans: nothing
+//
+func BufferGetMaxMemory1() (result uint32) {
+	iv, err := _I.Get(85, "Buffer", "get_max_memory", 15, 53, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
 // Flags BufferCopyFlags
 type BufferCopyFlags int
 
@@ -19048,6 +19064,22 @@ func ParentBufferMetaGetType() gi.GType {
 	return ret
 }
 
+// gst_parent_buffer_meta_get_info
+//
+// [ result ] trans: nothing
+//
+func ParentBufferMetaGetInfo1() (result MetaInfo) {
+	iv, err := _I.Get(735, "ParentBufferMeta", "get_info", 253, 0, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Struct ParseContext
 type ParseContext struct {
 	P unsafe.Pointer
@@ -20582,6 +20614,22 @@ func PresetGetType() gi.GType {
 	return ret
 }
 
+// gst_preset_get_app_dir
+//
+// [ result ] trans: nothing
+//
+func PresetGetAppDir1() (result string) {
+	iv, err := _I.Get(799, "Preset", "get_app_dir", 275, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.String().Copy()
+	return
+}
+
 // gst_preset_set_app_dir
 //
 // [ app_dir ] trans: nothing
@@ -21015,6 +21063,22 @@ const SizeOfStructProtectionMeta = 24
 func ProtectionMetaGetType() gi.GType {
 	ret := _I.GetGType(128, "ProtectionMeta")
 	return ret
+}
+
+// gst_protection_meta_get_info
+//
+// [ result ] trans: nothing
+//
+func ProtectionMetaGetInfo1() (result MetaInfo) {
+	iv, err := _I.Get(817, "ProtectionMeta", "get_info", 281, 0, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // Object ProxyPad
@@ -23033,6 +23097,22 @@ func ReferenceTimestampMetaGetType() gi.GType {
 	return ret
 }
 
+// gst_reference_timestamp_meta_get_info
+//
+// [ result ] trans: nothing
+//
+func ReferenceTimestampMetaGetInfo1() (result MetaInfo) {
+	iv, err := _I.Get(903, "ReferenceTimestampMeta", "get_info", 292, 0, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Object Registry
 type Registry struct {
 	Object
@@ -23048,6 +23128,22 @@ func RegistryGetType() gi.GType {
 	return ret
 }
 
+// gst_registry_fork_is_enabled
+//
+// [ result ] trans: nothing
+//
+func RegistryForkIsEnabled1() (result bool) {
+	iv, err := _I.Get(904, "Registry", "fork_is_enabled", 293, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Bool()
+	return
+}
+
 // gst_registry_fork_set_enabled
 //
 // [ enabled ] trans: nothing
@@ -23061,6 +23157,22 @@ func RegistryForkSetEnabled1(enabled bool) {
 	arg_enabled := gi.NewBoolArgument(enabled)
 	args := []gi.Argument{arg_enabled}
 	iv.Call(args, nil, nil)
+}
+
+// gst_registry_get
+//
+// [ result ] trans: nothing
+//
+func RegistryGet1() (result Registry) {
+	iv, err := _I.Get(906, "Registry", "get", 293, 2, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // gst_registry_add_feature
@@ -26190,6 +26302,22 @@ func SystemClockGetType() gi.GType {
 	return ret
 }
 
+// gst_system_clock_obtain
+//
+// [ result ] trans: everything
+//
+func SystemClockObtain1() (result Clock) {
+	iv, err := _I.Get(1026, "SystemClock", "obtain", 329, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gst_system_clock_set_default
 //
 // [ new_clock ] trans: nothing
@@ -27567,6 +27695,17 @@ func NewTask(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, notify 
 	return
 }
 
+// gst_task_cleanup_all
+//
+func TaskCleanupAll1() {
+	iv, err := _I.Get(1077, "Task", "cleanup_all", 427, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
+}
+
 // gst_task_get_pool
 //
 // [ result ] trans: everything
@@ -28599,6 +28738,22 @@ func TracerFactoryGetType() gi.GType {
 	return ret
 }
 
+// gst_tracer_factory_get_list
+//
+// [ result ] trans: everything
+//
+func TracerFactoryGetList1() (result g.List) {
+	iv, err := _I.Get(1122, "TracerFactory", "get_list", 446, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gst_tracer_factory_get_tracer_type
 //
 // [ result ] trans: nothing
@@ -28814,6 +28969,22 @@ func (v TypeFindFactory) P_TypeFindFactory() unsafe.Pointer { return v.P }
 func TypeFindFactoryGetType() gi.GType {
 	ret := _I.GetGType(188, "TypeFindFactory")
 	return ret
+}
+
+// gst_type_find_factory_get_list
+//
+// [ result ] trans: everything
+//
+func TypeFindFactoryGetList1() (result g.List) {
+	iv, err := _I.Get(1128, "TypeFindFactory", "get_list", 454, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // gst_type_find_factory_call_function

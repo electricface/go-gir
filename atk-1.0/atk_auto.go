@@ -1643,6 +1643,22 @@ func MiscGetType() gi.GType {
 
 // Deprecated
 //
+// atk_misc_get_instance
+//
+// [ result ] trans: nothing
+//
+func MiscGetInstance1() (result Misc) {
+	iv, err := _I.Get(58, "Misc", "get_instance", 36, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Deprecated
 //
 // atk_misc_threads_enter

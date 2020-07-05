@@ -59,6 +59,22 @@ func BlockGetType() gi.GType {
 	return ret
 }
 
+// udisks_block_interface_info
+//
+// [ result ] trans: nothing
+//
+func BlockInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(0, "Block", "interface_info", 0, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // udisks_block_override_properties
 //
 // [ klass ] trans: nothing
@@ -2638,6 +2654,22 @@ func DriveGetType() gi.GType {
 	return ret
 }
 
+// udisks_drive_interface_info
+//
+// [ result ] trans: nothing
+//
+func DriveInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(87, "Drive", "interface_info", 9, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // udisks_drive_override_properties
 //
 // [ klass ] trans: nothing
@@ -2997,6 +3029,22 @@ func (v DriveAta) P_DriveAta() unsafe.Pointer { return v.P }
 func DriveAtaGetType() gi.GType {
 	ret := _I.GetGType(7, "DriveAta")
 	return ret
+}
+
+// udisks_drive_ata_interface_info
+//
+// [ result ] trans: nothing
+//
+func DriveAtaInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(101, "DriveAta", "interface_info", 10, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // udisks_drive_ata_override_properties
@@ -4632,6 +4680,22 @@ func EncryptedGetType() gi.GType {
 	return ret
 }
 
+// udisks_encrypted_interface_info
+//
+// [ result ] trans: nothing
+//
+func EncryptedInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(153, "Encrypted", "interface_info", 26, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // udisks_encrypted_override_properties
 //
 // [ klass ] trans: nothing
@@ -5480,6 +5544,22 @@ func (v Filesystem) P_Filesystem() unsafe.Pointer { return v.P }
 func FilesystemGetType() gi.GType {
 	ret := _I.GetGType(22, "Filesystem")
 	return ret
+}
+
+// udisks_filesystem_interface_info
+//
+// [ result ] trans: nothing
+//
+func FilesystemInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(178, "Filesystem", "interface_info", 35, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // udisks_filesystem_override_properties
@@ -6614,6 +6694,22 @@ func JobGetType() gi.GType {
 	return ret
 }
 
+// udisks_job_interface_info
+//
+// [ result ] trans: nothing
+//
+func JobInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(215, "Job", "interface_info", 43, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // udisks_job_override_properties
 //
 // [ klass ] trans: nothing
@@ -7078,6 +7174,22 @@ func (v Loop) P_Loop() unsafe.Pointer { return v.P }
 func LoopGetType() gi.GType {
 	ret := _I.GetGType(32, "Loop")
 	return ret
+}
+
+// udisks_loop_interface_info
+//
+// [ result ] trans: nothing
+//
+func LoopInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(229, "Loop", "interface_info", 51, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // udisks_loop_override_properties
@@ -7635,6 +7747,22 @@ func (v MDRaid) P_MDRaid() unsafe.Pointer { return v.P }
 func MDRaidGetType() gi.GType {
 	ret := _I.GetGType(37, "MDRaid")
 	return ret
+}
+
+// udisks_mdraid_interface_info
+//
+// [ result ] trans: nothing
+//
+func MDRaidInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(246, "MDRaid", "interface_info", 60, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // udisks_mdraid_override_properties
@@ -8756,6 +8884,22 @@ func (v Manager) P_Manager() unsafe.Pointer { return v.P }
 func ManagerGetType() gi.GType {
 	ret := _I.GetGType(42, "Manager")
 	return ret
+}
+
+// udisks_manager_interface_info
+//
+// [ result ] trans: nothing
+//
+func ManagerInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(283, "Manager", "interface_info", 70, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // udisks_manager_override_properties
@@ -11306,6 +11450,22 @@ func PartitionGetType() gi.GType {
 	return ret
 }
 
+// udisks_partition_interface_info
+//
+// [ result ] trans: nothing
+//
+func PartitionInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(371, "Partition", "interface_info", 90, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // udisks_partition_override_properties
 //
 // [ klass ] trans: nothing
@@ -12207,6 +12367,22 @@ func PartitionTableGetType() gi.GType {
 	return ret
 }
 
+// udisks_partition_table_interface_info
+//
+// [ result ] trans: nothing
+//
+func PartitionTableInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(400, "PartitionTable", "interface_info", 98, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // udisks_partition_table_override_properties
 //
 // [ klass ] trans: nothing
@@ -12904,6 +13080,22 @@ func (v Swapspace) P_Swapspace() unsafe.Pointer { return v.P }
 func SwapspaceGetType() gi.GType {
 	ret := _I.GetGType(67, "Swapspace")
 	return ret
+}
+
+// udisks_swapspace_interface_info
+//
+// [ result ] trans: nothing
+//
+func SwapspaceInterfaceInfo1() (result g.DBusInterfaceInfo) {
+	iv, err := _I.Get(418, "Swapspace", "interface_info", 108, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // udisks_swapspace_override_properties

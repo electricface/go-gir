@@ -1647,6 +1647,22 @@ func (v BookmarkFile) ToFile(filename string) (result bool, err error) {
 	return
 }
 
+// g_bookmark_file_error_quark
+//
+// [ result ] trans: nothing
+//
+func BookmarkFileErrorQuark1() (result uint32) {
+	iv, err := _I.Get(59, "BookmarkFile", "error_quark", 6, 38, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
 // Enum BookmarkFileError
 type BookmarkFileErrorEnum int
 
@@ -1717,6 +1733,22 @@ func ByteArrayFreeToBytes1(array ByteArray) (result Bytes) {
 	args := []gi.Argument{arg_array}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// g_byte_array_new
+//
+// [ result ] trans: everything
+//
+func ByteArrayNew1() (result ByteArray) {
+	iv, err := _I.Get(62, "ByteArray", "new", 8, 2, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
 	result.P = ret.Pointer()
 	return
 }
@@ -6410,6 +6442,22 @@ func IOChannelErrorFromErrno1(en int32) (result IOChannelErrorEnum) {
 	return
 }
 
+// g_io_channel_error_quark
+//
+// [ result ] trans: nothing
+//
+func IOChannelErrorQuark1() (result uint32) {
+	iv, err := _I.Get(264, "IOChannel", "error_quark", 92, 34, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
 // Enum IOChannelError
 type IOChannelErrorEnum int
 
@@ -7859,6 +7907,22 @@ func (v KeyFile) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// g_key_file_error_quark
+//
+// [ result ] trans: nothing
+//
+func KeyFileErrorQuark1() (result uint32) {
+	iv, err := _I.Get(311, "KeyFile", "error_quark", 129, 46, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
 // Enum KeyFileError
 type KeyFileErrorEnum int
 
@@ -8416,6 +8480,54 @@ func (v MainContext) Wakeup() {
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
 	iv.Call(args, nil, nil)
+}
+
+// g_main_context_default
+//
+// [ result ] trans: nothing
+//
+func MainContextDefault1() (result MainContext) {
+	iv, err := _I.Get(334, "MainContext", "default", 161, 22, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// g_main_context_get_thread_default
+//
+// [ result ] trans: nothing
+//
+func MainContextGetThreadDefault1() (result MainContext) {
+	iv, err := _I.Get(335, "MainContext", "get_thread_default", 161, 23, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// g_main_context_ref_thread_default
+//
+// [ result ] trans: everything
+//
+func MainContextRefThreadDefault1() (result MainContext) {
+	iv, err := _I.Get(336, "MainContext", "ref_thread_default", 161, 24, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // Struct MainLoop
@@ -11721,6 +11833,22 @@ func RegexCheckReplacement1(replacement string) (result bool, has_references boo
 	return
 }
 
+// g_regex_error_quark
+//
+// [ result ] trans: nothing
+//
+func RegexErrorQuark1() (result uint32) {
+	iv, err := _I.Get(486, "Regex", "error_quark", 210, 20, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
 // g_regex_escape_nul
 //
 // [ string ] trans: nothing
@@ -14726,6 +14854,22 @@ func (v Thread) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+// g_thread_error_quark
+//
+// [ result ] trans: nothing
+//
+func ThreadErrorQuark1() (result uint32) {
+	iv, err := _I.Get(605, "Thread", "error_quark", 272, 3, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
 // g_thread_exit
 //
 // [ retval ] trans: nothing
@@ -14739,6 +14883,33 @@ func ThreadExit1(retval unsafe.Pointer) {
 	arg_retval := gi.NewPointerArgument(retval)
 	args := []gi.Argument{arg_retval}
 	iv.Call(args, nil, nil)
+}
+
+// g_thread_self
+//
+// [ result ] trans: everything
+//
+func ThreadSelf1() (result Thread) {
+	iv, err := _I.Get(607, "Thread", "self", 272, 5, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// g_thread_yield
+//
+func ThreadYield1() {
+	iv, err := _I.Get(608, "Thread", "yield", 272, 6, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
 }
 
 // Enum ThreadError
@@ -14918,6 +15089,54 @@ func (v ThreadPool) Unprocessed() (result uint32) {
 	return
 }
 
+// g_thread_pool_get_max_idle_time
+//
+// [ result ] trans: nothing
+//
+func ThreadPoolGetMaxIdleTime1() (result uint32) {
+	iv, err := _I.Get(616, "ThreadPool", "get_max_idle_time", 275, 7, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
+// g_thread_pool_get_max_unused_threads
+//
+// [ result ] trans: nothing
+//
+func ThreadPoolGetMaxUnusedThreads1() (result int32) {
+	iv, err := _I.Get(617, "ThreadPool", "get_max_unused_threads", 275, 8, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Int32()
+	return
+}
+
+// g_thread_pool_get_num_unused_threads
+//
+// [ result ] trans: nothing
+//
+func ThreadPoolGetNumUnusedThreads1() (result uint32) {
+	iv, err := _I.Get(618, "ThreadPool", "get_num_unused_threads", 275, 9, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
 // g_thread_pool_set_max_idle_time
 //
 // [ interval ] trans: nothing
@@ -14946,6 +15165,17 @@ func ThreadPoolSetMaxUnusedThreads1(max_threads int32) {
 	arg_max_threads := gi.NewInt32Argument(max_threads)
 	args := []gi.Argument{arg_max_threads}
 	iv.Call(args, nil, nil)
+}
+
+// g_thread_pool_stop_unused_threads
+//
+func ThreadPoolStopUnusedThreads1() {
+	iv, err := _I.Get(621, "ThreadPool", "stop_unused_threads", 275, 12, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
 }
 
 // Enum TimeType
@@ -17676,8 +17906,40 @@ func VariantParseErrorPrintContext1(error Error, source_str string) (result stri
 	return
 }
 
+// g_variant_parse_error_quark
+//
+// [ result ] trans: nothing
+//
+func VariantParseErrorQuark1() (result uint32) {
+	iv, err := _I.Get(733, "Variant", "parse_error_quark", 299, 76, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
 // Deprecated
 //
+// g_variant_parser_get_error_quark
+//
+// [ result ] trans: nothing
+//
+func VariantParserGetErrorQuark1() (result uint32) {
+	iv, err := _I.Get(734, "Variant", "parser_get_error_quark", 299, 77, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Uint32()
+	return
+}
+
 // Struct VariantBuilder
 type VariantBuilder struct {
 	P unsafe.Pointer

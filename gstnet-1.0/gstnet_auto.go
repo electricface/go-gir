@@ -62,6 +62,22 @@ func NetAddressMetaGetType() gi.GType {
 	return ret
 }
 
+// gst_net_address_meta_get_info
+//
+// [ result ] trans: nothing
+//
+func NetAddressMetaGetInfo1() (result gst.MetaInfo) {
+	iv, err := _I.Get(0, "NetAddressMeta", "get_info", 1, 0, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Object NetClientClock
 type NetClientClock struct {
 	gst.SystemClock
@@ -132,6 +148,22 @@ const SizeOfStructNetControlMessageMeta = 24
 func NetControlMessageMetaGetType() gi.GType {
 	ret := _I.GetGType(3, "NetControlMessageMeta")
 	return ret
+}
+
+// gst_net_control_message_meta_get_info
+//
+// [ result ] trans: nothing
+//
+func NetControlMessageMetaGetInfo1() (result gst.MetaInfo) {
+	iv, err := _I.Get(2, "NetControlMessageMeta", "get_info", 5, 0, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // Struct NetTimePacket

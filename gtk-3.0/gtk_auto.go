@@ -1580,6 +1580,22 @@ func AccelMapForeachUnfiltered1(data unsafe.Pointer, foreach_func int /*TODO_TYP
 	iv.Call(args, nil, nil)
 }
 
+// gtk_accel_map_get
+//
+// [ result ] trans: nothing
+//
+func AccelMapGet1() (result AccelMap) {
+	iv, err := _I.Get(58, "AccelMap", "get", 14, 5, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gtk_accel_map_load
 //
 // [ file_name ] trans: nothing
@@ -16654,6 +16670,22 @@ func NewCssProvider() (result CssProvider) {
 
 // Deprecated
 //
+// gtk_css_provider_get_default
+//
+// [ result ] trans: nothing
+//
+func CssProviderGetDefault1() (result CssProvider) {
+	iv, err := _I.Get(672, "CssProvider", "get_default", 227, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gtk_css_provider_get_named
 //
 // [ name ] trans: nothing
@@ -30183,6 +30215,22 @@ func IconThemeAddBuiltinIcon1(icon_name string, size int32, pixbuf gdkpixbuf.IPi
 	gi.Free(c_icon_name)
 }
 
+// gtk_icon_theme_get_default
+//
+// [ result ] trans: nothing
+//
+func IconThemeGetDefault1() (result IconTheme) {
+	iv, err := _I.Get(1266, "IconTheme", "get_default", 411, 2, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gtk_icon_theme_get_for_screen
 //
 // [ screen ] trans: nothing
@@ -42749,6 +42797,22 @@ func (v PaperSize) ToKeyFile(key_file g.KeyFile, group_name string) {
 	gi.Free(c_group_name)
 }
 
+// gtk_paper_size_get_default
+//
+// [ result ] trans: nothing
+//
+func PaperSizeGetDefault1() (result string) {
+	iv, err := _I.Get(1801, "PaperSize", "get_default", 631, 23, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.String().Copy()
+	return
+}
+
 // gtk_paper_size_get_paper_sizes
 //
 // [ include_custom ] trans: nothing
@@ -50227,6 +50291,22 @@ func NewRecentManager() (result RecentManager) {
 	return
 }
 
+// gtk_recent_manager_get_default
+//
+// [ result ] trans: nothing
+//
+func RecentManagerGetDefault1() (result RecentManager) {
+	iv, err := _I.Get(2135, "RecentManager", "get_default", 724, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gtk_recent_manager_add_full
 //
 // [ uri ] trans: nothing
@@ -53163,6 +53243,22 @@ func (v Settings) P_StyleProvider() unsafe.Pointer { return v.P }
 func SettingsGetType() gi.GType {
 	ret := _I.GetGType(485, "Settings")
 	return ret
+}
+
+// gtk_settings_get_default
+//
+// [ result ] trans: nothing
+//
+func SettingsGetDefault1() (result Settings) {
+	iv, err := _I.Get(2257, "Settings", "get_default", 990, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // gtk_settings_get_for_screen
@@ -67064,6 +67160,38 @@ func NewToolPalette() (result ToolPalette) {
 	return
 }
 
+// gtk_tool_palette_get_drag_target_group
+//
+// [ result ] trans: nothing
+//
+func ToolPaletteGetDragTargetGroup1() (result TargetEntry) {
+	iv, err := _I.Get(2860, "ToolPalette", "get_drag_target_group", 1148, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// gtk_tool_palette_get_drag_target_item
+//
+// [ result ] trans: nothing
+//
+func ToolPaletteGetDragTargetItem1() (result TargetEntry) {
+	iv, err := _I.Get(2861, "ToolPalette", "get_drag_target_item", 1148, 2, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gtk_tool_palette_add_drag_dest
 //
 // [ widget ] trans: nothing
@@ -75279,12 +75407,66 @@ func WidgetGetType() gi.GType {
 	return ret
 }
 
+// gtk_widget_get_default_direction
+//
+// [ result ] trans: nothing
+//
+func WidgetGetDefaultDirection1() (result TextDirectionEnum) {
+	iv, err := _I.Get(3219, "Widget", "get_default_direction", 1235, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = TextDirectionEnum(ret.Int())
+	return
+}
+
 // Deprecated
 //
+// gtk_widget_get_default_style
+//
+// [ result ] trans: nothing
+//
+func WidgetGetDefaultStyle1() (result Style) {
+	iv, err := _I.Get(3220, "Widget", "get_default_style", 1235, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Deprecated
 //
+// gtk_widget_pop_composite_child
+//
+func WidgetPopCompositeChild1() {
+	iv, err := _I.Get(3221, "Widget", "pop_composite_child", 1235, 2, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
+}
+
 // Deprecated
 //
+// gtk_widget_push_composite_child
+//
+func WidgetPushCompositeChild1() {
+	iv, err := _I.Get(3222, "Widget", "push_composite_child", 1235, 3, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
+}
+
 // gtk_widget_set_default_direction
 //
 // [ dir ] trans: nothing
@@ -81349,6 +81531,54 @@ func NewWindow(type1 WindowTypeEnum) (result Window) {
 	args := []gi.Argument{arg_type1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// gtk_window_get_default_icon_list
+//
+// [ result ] trans: container
+//
+func WindowGetDefaultIconList1() (result g.List) {
+	iv, err := _I.Get(3536, "Window", "get_default_icon_list", 1244, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// gtk_window_get_default_icon_name
+//
+// [ result ] trans: nothing
+//
+func WindowGetDefaultIconName1() (result string) {
+	iv, err := _I.Get(3537, "Window", "get_default_icon_name", 1244, 2, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.String().Copy()
+	return
+}
+
+// gtk_window_list_toplevels
+//
+// [ result ] trans: container
+//
+func WindowListToplevels1() (result g.List) {
+	iv, err := _I.Get(3538, "Window", "list_toplevels", 1244, 3, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
 	result.P = ret.Pointer()
 	return
 }

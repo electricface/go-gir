@@ -903,6 +903,22 @@ func AppInfoCreateFromCommandline1(commandline string, application_name string, 
 	return
 }
 
+// g_app_info_get_all
+//
+// [ result ] trans: everything
+//
+func AppInfoGetAll1() (result List) {
+	iv, err := _I.Get1(1663, "Gio", "AppInfo", "get_all", 7, 1, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // g_app_info_get_all_for_type
 //
 // [ content_type ] trans: nothing
@@ -1640,6 +1656,22 @@ func AppInfoMonitorGetType() gi.GType {
 	return ret
 }
 
+// g_app_info_monitor_get
+//
+// [ result ] trans: everything
+//
+func AppInfoMonitorGet1() (result AppInfoMonitor) {
+	iv, err := _I.Get1(1696, "Gio", "AppInfoMonitor", "get", 10, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Object AppLaunchContext
 type AppLaunchContext struct {
 	Object
@@ -1857,6 +1889,22 @@ func NewApplication(application_id string, flags ApplicationFlags) (result Appli
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_application_id)
+	result.P = ret.Pointer()
+	return
+}
+
+// g_application_get_default
+//
+// [ result ] trans: nothing
+//
+func ApplicationGetDefault1() (result Application) {
+	iv, err := _I.Get1(1705, "Gio", "Application", "get_default", 14, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
 	result.P = ret.Pointer()
 	return
 }
@@ -3722,6 +3770,22 @@ func CancellableGetType() gi.GType {
 //
 func NewCancellable() (result Cancellable) {
 	iv, err := _I.Get1(1779, "Gio", "Cancellable", "new", 42, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// g_cancellable_get_current
+//
+// [ result ] trans: nothing
+//
+func CancellableGetCurrent1() (result Cancellable) {
+	iv, err := _I.Get1(1780, "Gio", "Cancellable", "get_current", 42, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -21063,6 +21127,23 @@ func NewIOModule(filename string) (result IOModule) {
 	return
 }
 
+// g_io_module_query
+//
+// [ result ] trans: everything
+//
+func IOModuleQuery1() (result gi.CStrArray) {
+	iv, err := _I.Get1(2406, "Gio", "IOModule", "query", 290, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
+	return
+}
+
 // g_io_module_load
 //
 func (v IOModule) Load() {
@@ -26121,6 +26202,22 @@ func NetworkMonitorGetType() gi.GType {
 	return ret
 }
 
+// g_network_monitor_get_default
+//
+// [ result ] trans: nothing
+//
+func NetworkMonitorGetDefault1() (result NetworkMonitor) {
+	iv, err := _I.Get1(2608, "Gio", "NetworkMonitor", "get_default", 366, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // g_network_monitor_can_reach
 //
 // [ connectable ] trans: nothing
@@ -28333,6 +28430,22 @@ func ProxyResolverGetType() gi.GType {
 	return ret
 }
 
+// g_proxy_resolver_get_default
+//
+// [ result ] trans: nothing
+//
+func ProxyResolverGetDefault1() (result ProxyResolver) {
+	iv, err := _I.Get1(2686, "Gio", "ProxyResolver", "get_default", 399, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // g_proxy_resolver_is_supported
 //
 // [ result ] trans: nothing
@@ -28536,6 +28649,22 @@ func (v Resolver) P_Resolver() unsafe.Pointer { return v.P }
 func ResolverGetType() gi.GType {
 	ret := _I.GetGType1(401, "Gio", "Resolver")
 	return ret
+}
+
+// g_resolver_get_default
+//
+// [ result ] trans: everything
+//
+func ResolverGetDefault1() (result Resolver) {
+	iv, err := _I.Get1(2693, "Gio", "Resolver", "get_default", 404, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // g_resolver_lookup_by_address
@@ -29549,8 +29678,53 @@ func NewSettingsWithPath(schema_id string, path string) (result Settings) {
 
 // Deprecated
 //
+// g_settings_list_relocatable_schemas
+//
+// [ result ] trans: nothing
+//
+func SettingsListRelocatableSchemas1() (result gi.CStrArray) {
+	iv, err := _I.Get1(2727, "Gio", "Settings", "list_relocatable_schemas", 416, 5, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
+	return
+}
+
 // Deprecated
 //
+// g_settings_list_schemas
+//
+// [ result ] trans: nothing
+//
+func SettingsListSchemas1() (result gi.CStrArray) {
+	iv, err := _I.Get1(2728, "Gio", "Settings", "list_schemas", 416, 6, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = gi.CStrArray{P: ret.Pointer(), Len: -1}
+	result.SetLenZT()
+	return
+}
+
+// g_settings_sync
+//
+func SettingsSync1() {
+	iv, err := _I.Get1(2729, "Gio", "Settings", "sync", 416, 7, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
+}
+
 // g_settings_unbind
 //
 // [ object ] trans: nothing
@@ -30539,6 +30713,22 @@ func SettingsBackendFlattenTree1(tree Tree) (path string, keys gi.CStrArray, val
 	return
 }
 
+// g_settings_backend_get_default
+//
+// [ result ] trans: everything
+//
+func SettingsBackendGetDefault1() (result SettingsBackend) {
+	iv, err := _I.Get1(2771, "Gio", "SettingsBackend", "get_default", 417, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // g_settings_backend_changed
 //
 // [ key ] trans: nothing
@@ -31210,6 +31400,22 @@ func (v SettingsSchemaSource) Unref() {
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
 	iv.Call(args, nil, nil)
+}
+
+// g_settings_schema_source_get_default
+//
+// [ result ] trans: nothing
+//
+func SettingsSchemaSourceGetDefault1() (result SettingsSchemaSource) {
+	iv, err := _I.Get1(2800, "Gio", "SettingsSchemaSource", "get_default", 428, 5, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // Object SimpleAction
@@ -37263,6 +37469,17 @@ func NewTestDBus(flags TestDBusFlags) (result TestDBus) {
 	return
 }
 
+// g_test_dbus_unset
+//
+func TestDBusUnset1() {
+	iv, err := _I.Get1(3040, "Gio", "TestDBus", "unset", 489, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
+}
+
 // g_test_dbus_add_service_dir
 //
 // [ path ] trans: nothing
@@ -37582,6 +37799,22 @@ func (v TlsBackend) P_TlsBackend() unsafe.Pointer { return v.P }
 func TlsBackendGetType() gi.GType {
 	ret := _I.GetGType1(463, "Gio", "TlsBackend")
 	return ret
+}
+
+// g_tls_backend_get_default
+//
+// [ result ] trans: nothing
+//
+func TlsBackendGetDefault1() (result TlsBackend) {
+	iv, err := _I.Get1(3054, "Gio", "TlsBackend", "get_default", 497, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // g_tls_backend_get_certificate_type
@@ -40082,6 +40315,22 @@ func NewUnixCredentialsMessageWithCredentials(credentials ICredentials) (result 
 	return
 }
 
+// g_unix_credentials_message_is_supported
+//
+// [ result ] trans: nothing
+//
+func UnixCredentialsMessageIsSupported1() (result bool) {
+	iv, err := _I.Get1(3141, "Gio", "UnixCredentialsMessage", "is_supported", 531, 2, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Bool()
+	return
+}
+
 // g_unix_credentials_message_get_credentials
 //
 // [ result ] trans: nothing
@@ -40574,6 +40823,22 @@ func NewUnixMountMonitor() (result UnixMountMonitor) {
 	return
 }
 
+// g_unix_mount_monitor_get
+//
+// [ result ] trans: everything
+//
+func UnixMountMonitorGet1() (result UnixMountMonitor) {
+	iv, err := _I.Get1(3160, "Gio", "UnixMountMonitor", "get", 544, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Deprecated
 //
 // g_unix_mount_monitor_set_rate_limit
@@ -41048,6 +41313,22 @@ func NewUnixSocketAddressWithType(path gi.Int8Array, path_len int32, type1 UnixS
 	return
 }
 
+// g_unix_socket_address_abstract_names_supported
+//
+// [ result ] trans: nothing
+//
+func UnixSocketAddressAbstractNamesSupported1() (result bool) {
+	iv, err := _I.Get1(3183, "Gio", "UnixSocketAddress", "abstract_names_supported", 550, 3, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Bool()
+	return
+}
+
 // g_unix_socket_address_get_address_type
 //
 // [ result ] trans: nothing
@@ -41163,6 +41444,38 @@ func (v Vfs) P_Vfs() unsafe.Pointer { return v.P }
 func VfsGetType() gi.GType {
 	ret := _I.GetGType1(503, "Gio", "Vfs")
 	return ret
+}
+
+// g_vfs_get_default
+//
+// [ result ] trans: nothing
+//
+func VfsGetDefault1() (result Vfs) {
+	iv, err := _I.Get1(3188, "Gio", "Vfs", "get_default", 562, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// g_vfs_get_local
+//
+// [ result ] trans: nothing
+//
+func VfsGetLocal1() (result Vfs) {
+	iv, err := _I.Get1(3189, "Gio", "Vfs", "get_local", 562, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // g_vfs_get_file_for_path
@@ -41835,6 +42148,22 @@ func VolumeMonitorAdoptOrphanMount1(mount IMount) (result Volume) {
 	args := []gi.Argument{arg_mount}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// g_volume_monitor_get
+//
+// [ result ] trans: everything
+//
+func VolumeMonitorGet1() (result VolumeMonitor) {
+	iv, err := _I.Get1(3217, "Gio", "VolumeMonitor", "get", 567, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
 	result.P = ret.Pointer()
 	return
 }

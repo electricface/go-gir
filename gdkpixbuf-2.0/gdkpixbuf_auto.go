@@ -635,6 +635,22 @@ func PixbufGetFileInfoFinish1(async_result g.IAsyncResult) (result PixbufFormat,
 	return
 }
 
+// gdk_pixbuf_get_formats
+//
+// [ result ] trans: container
+//
+func PixbufGetFormats1() (result g.SList) {
+	iv, err := _I.Get(17, "Pixbuf", "get_formats", 7, 17, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gdk_pixbuf_new_from_stream_async
 //
 // [ stream ] trans: nothing

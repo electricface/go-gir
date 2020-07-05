@@ -560,4 +560,3 @@ func (v Object) GetClass() ObjectClass {
 func (v ObjectClass) p() *C.GObjectClass {
 	return (*C.GObjectClass)(v.P)
 }
-

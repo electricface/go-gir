@@ -3694,6 +3694,22 @@ func LanguageFromString1(language string) (result Language) {
 	return
 }
 
+// pango_language_get_default
+//
+// [ result ] trans: nothing
+//
+func LanguageGetDefault1() (result Language) {
+	iv, err := _I.Get(151, "Language", "get_default", 68, 6, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Object Layout
 type Layout struct {
 	g.Object

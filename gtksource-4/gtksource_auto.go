@@ -2140,6 +2140,54 @@ func (v Encoding) ToString() (result string) {
 	return
 }
 
+// gtk_source_encoding_get_all
+//
+// [ result ] trans: container
+//
+func EncodingGetAll1() (result g.SList) {
+	iv, err := _I.Get(90, "Encoding", "get_all", 28, 5, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// gtk_source_encoding_get_current
+//
+// [ result ] trans: nothing
+//
+func EncodingGetCurrent1() (result Encoding) {
+	iv, err := _I.Get(91, "Encoding", "get_current", 28, 6, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// gtk_source_encoding_get_default_candidates
+//
+// [ result ] trans: container
+//
+func EncodingGetDefaultCandidates1() (result g.SList) {
+	iv, err := _I.Get(92, "Encoding", "get_default_candidates", 28, 7, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gtk_source_encoding_get_from_charset
 //
 // [ charset ] trans: nothing
@@ -2158,6 +2206,22 @@ func EncodingGetFromCharset1(charset string) (result Encoding) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_charset)
+	result.P = ret.Pointer()
+	return
+}
+
+// gtk_source_encoding_get_utf8
+//
+// [ result ] trans: nothing
+//
+func EncodingGetUtf81() (result Encoding) {
+	iv, err := _I.Get(94, "Encoding", "get_utf8", 28, 9, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
 	result.P = ret.Pointer()
 	return
 }
@@ -4289,6 +4353,22 @@ func LanguageManagerGetType() gi.GType {
 //
 func NewLanguageManager() (result LanguageManager) {
 	iv, err := _I.Get(184, "LanguageManager", "new", 57, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// gtk_source_language_manager_get_default
+//
+// [ result ] trans: nothing
+//
+func LanguageManagerGetDefault1() (result LanguageManager) {
+	iv, err := _I.Get(185, "LanguageManager", "get_default", 57, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7252,6 +7332,22 @@ func StyleSchemeManagerGetType() gi.GType {
 //
 func NewStyleSchemeManager() (result StyleSchemeManager) {
 	iv, err := _I.Get(311, "StyleSchemeManager", "new", 99, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// gtk_source_style_scheme_manager_get_default
+//
+// [ result ] trans: nothing
+//
+func StyleSchemeManagerGetDefault1() (result StyleSchemeManager) {
+	iv, err := _I.Get(312, "StyleSchemeManager", "get_default", 99, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

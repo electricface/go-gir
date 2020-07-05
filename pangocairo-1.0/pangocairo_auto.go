@@ -97,6 +97,38 @@ func FontMapGetType() gi.GType {
 	return ret
 }
 
+// pango_cairo_font_map_get_default
+//
+// [ result ] trans: nothing
+//
+func FontMapGetDefault1() (result pango.FontMap) {
+	iv, err := _I.Get(1, "FontMap", "get_default", 1, 0, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
+// pango_cairo_font_map_new
+//
+// [ result ] trans: everything
+//
+func FontMapNew1() (result pango.FontMap) {
+	iv, err := _I.Get(2, "FontMap", "new", 1, 1, gi.INFO_TYPE_INTERFACE, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // pango_cairo_font_map_new_for_font_type
 //
 // [ fonttype ] trans: nothing

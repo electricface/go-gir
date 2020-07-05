@@ -2072,6 +2072,28 @@ func EventGetType() gi.GType {
 	return ret
 }
 
+// atspi_event_main
+//
+func EventMain1() {
+	iv, err := _I.Get(75, "Event", "main", 52, 0, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
+}
+
+// atspi_event_quit
+//
+func EventQuit1() {
+	iv, err := _I.Get(76, "Event", "quit", 52, 1, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
+}
+
 // Object EventListener
 type EventListener struct {
 	g.Object

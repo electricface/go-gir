@@ -1855,6 +1855,22 @@ func DisplayGetType() gi.GType {
 	return ret
 }
 
+// gdk_display_get_default
+//
+// [ result ] trans: nothing
+//
+func DisplayGetDefault1() (result Display) {
+	iv, err := _I.Get(66, "Display", "get_default", 22, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gdk_display_open
 //
 // [ display_name ] trans: nothing
@@ -1879,6 +1895,22 @@ func DisplayOpen1(display_name string) (result Display) {
 
 // Deprecated
 //
+// gdk_display_open_default_libgtk_only
+//
+// [ result ] trans: nothing
+//
+func DisplayOpenDefaultLibgtkOnly1() (result Display) {
+	iv, err := _I.Get(68, "Display", "open_default_libgtk_only", 22, 2, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gdk_display_beep
 //
 func (v Display) Beep() {
@@ -2769,6 +2801,22 @@ func (v DisplayManager) P_DisplayManager() unsafe.Pointer { return v.P }
 func DisplayManagerGetType() gi.GType {
 	ret := _I.GetGType(18, "DisplayManager")
 	return ret
+}
+
+// gdk_display_manager_get
+//
+// [ result ] trans: nothing
+//
+func DisplayManagerGet1() (result DisplayManager) {
+	iv, err := _I.Get(114, "DisplayManager", "get", 23, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // gdk_display_manager_get_default_display
@@ -3950,6 +3998,22 @@ func (v Event) TriggersContextMenu() (result bool) {
 	return
 }
 
+// gdk_event_get
+//
+// [ result ] trans: everything
+//
+func EventGet1() (result Event) {
+	iv, err := _I.Get(169, "Event", "get", 32, 34, gi.INFO_TYPE_UNION, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gdk_event_handler_set
 //
 // [ func1 ] trans: nothing
@@ -3969,6 +4033,22 @@ func EventHandlerSet1(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer, not
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
+}
+
+// gdk_event_peek
+//
+// [ result ] trans: everything
+//
+func EventPeek1() (result Event) {
+	iv, err := _I.Get(171, "Event", "peek", 32, 36, gi.INFO_TYPE_UNION, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // gdk_event_request_motions
@@ -4812,6 +4892,33 @@ func GLContextGetType() gi.GType {
 	return ret
 }
 
+// gdk_gl_context_clear_current
+//
+func GLContextClearCurrent1() {
+	iv, err := _I.Get(190, "GLContext", "clear_current", 69, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
+}
+
+// gdk_gl_context_get_current
+//
+// [ result ] trans: nothing
+//
+func GLContextGetCurrent1() (result GLContext) {
+	iv, err := _I.Get(191, "GLContext", "get_current", 69, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gdk_gl_context_get_debug_enabled
 //
 // [ result ] trans: nothing
@@ -5213,6 +5320,22 @@ func KeymapGetType() gi.GType {
 
 // Deprecated
 //
+// gdk_keymap_get_default
+//
+// [ result ] trans: nothing
+//
+func KeymapGetDefault1() (result Keymap) {
+	iv, err := _I.Get(207, "Keymap", "get_default", 2347, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // gdk_keymap_get_for_display
 //
 // [ display ] trans: nothing
@@ -6105,14 +6228,94 @@ func ScreenGetType() gi.GType {
 	return ret
 }
 
+// gdk_screen_get_default
+//
+// [ result ] trans: nothing
+//
+func ScreenGetDefault1() (result Screen) {
+	iv, err := _I.Get(242, "Screen", "get_default", 2363, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Deprecated
 //
+// gdk_screen_height
+//
+// [ result ] trans: nothing
+//
+func ScreenHeight1() (result int32) {
+	iv, err := _I.Get(243, "Screen", "height", 2363, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Int32()
+	return
+}
+
 // Deprecated
 //
+// gdk_screen_height_mm
+//
+// [ result ] trans: nothing
+//
+func ScreenHeightMm1() (result int32) {
+	iv, err := _I.Get(244, "Screen", "height_mm", 2363, 2, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Int32()
+	return
+}
+
 // Deprecated
 //
+// gdk_screen_width
+//
+// [ result ] trans: nothing
+//
+func ScreenWidth1() (result int32) {
+	iv, err := _I.Get(245, "Screen", "width", 2363, 3, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Int32()
+	return
+}
+
 // Deprecated
 //
+// gdk_screen_width_mm
+//
+// [ result ] trans: nothing
+//
+func ScreenWidthMm1() (result int32) {
+	iv, err := _I.Get(246, "Screen", "width_mm", 2363, 4, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Int32()
+	return
+}
+
 // Deprecated
 //
 // gdk_screen_get_active_window
@@ -7044,10 +7247,58 @@ func VisualGetType() gi.GType {
 
 // Deprecated
 //
+// gdk_visual_get_best
+//
+// [ result ] trans: nothing
+//
+func VisualGetBest1() (result Visual) {
+	iv, err := _I.Get(284, "Visual", "get_best", 2374, 0, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Deprecated
 //
+// gdk_visual_get_best_depth
+//
+// [ result ] trans: nothing
+//
+func VisualGetBestDepth1() (result int32) {
+	iv, err := _I.Get(285, "Visual", "get_best_depth", 2374, 1, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = ret.Int32()
+	return
+}
+
 // Deprecated
 //
+// gdk_visual_get_best_type
+//
+// [ result ] trans: nothing
+//
+func VisualGetBestType1() (result VisualTypeEnum) {
+	iv, err := _I.Get(286, "Visual", "get_best_type", 2374, 2, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result = VisualTypeEnum(ret.Int())
+	return
+}
+
 // Deprecated
 //
 // gdk_visual_get_best_with_both
@@ -7119,6 +7370,22 @@ func VisualGetBestWithType1(visual_type VisualTypeEnum) (result Visual) {
 
 // Deprecated
 //
+// gdk_visual_get_system
+//
+// [ result ] trans: nothing
+//
+func VisualGetSystem1() (result Visual) {
+	iv, err := _I.Get(290, "Visual", "get_system", 2374, 6, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // Deprecated
 //
 // gdk_visual_get_bits_per_rgb
@@ -7475,6 +7742,17 @@ func WindowConstrainSize1(geometry Geometry, flags WindowHintsFlags, width int32
 
 // Deprecated
 //
+// gdk_window_process_all_updates
+//
+func WindowProcessAllUpdates1() {
+	iv, err := _I.Get(303, "Window", "process_all_updates", 2378, 3, gi.INFO_TYPE_OBJECT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
+}
+
 // Deprecated
 //
 // gdk_window_set_debug_updates

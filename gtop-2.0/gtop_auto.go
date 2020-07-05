@@ -1356,6 +1356,17 @@ func (v glibtop) SetParameterL(parameter uint32, data_ptr unsafe.Pointer, data_s
 	iv.Call(args, nil, nil)
 }
 
+// glibtop_close
+//
+func glibtopClose1() {
+	iv, err := _I.Get(65, "glibtop", "close", 360, 65, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	iv.Call(nil, nil, nil)
+}
+
 // glibtop_get_cpu
 //
 // [ buf ] trans: nothing
@@ -1894,6 +1905,22 @@ func glibtopGetSysdeps1(buf glibtop_sysdeps) {
 	iv.Call(args, nil, nil)
 }
 
+// glibtop_get_sysinfo
+//
+// [ result ] trans: nothing
+//
+func glibtopGetSysinfo1() (result glibtop_sysinfo) {
+	iv, err := _I.Get(94, "glibtop", "get_sysinfo", 360, 94, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
+}
+
 // glibtop_get_uptime
 //
 // [ buf ] trans: nothing
@@ -1907,6 +1934,22 @@ func glibtopGetUptime1(buf glibtop_uptime) {
 	arg_buf := gi.NewPointerArgument(buf.P)
 	args := []gi.Argument{arg_buf}
 	iv.Call(args, nil, nil)
+}
+
+// glibtop_init
+//
+// [ result ] trans: nothing
+//
+func glibtopInit1() (result glibtop) {
+	iv, err := _I.Get(96, "glibtop", "init", 360, 96, gi.INFO_TYPE_STRUCT, 0)
+	if err != nil {
+		log.Println("WARN:", err)
+		return
+	}
+	var ret gi.Argument
+	iv.Call(nil, &ret, nil)
+	result.P = ret.Pointer()
+	return
 }
 
 // glibtop_init_r
