@@ -28,12 +28,12 @@ package gtksource
 #include <gtksourceview/gtksource.h>
 */
 import "C"
-import "github.com/linuxdeepin/go-gir/cairo-1.0"
-import "github.com/linuxdeepin/go-gir/g-2.0"
-import "github.com/linuxdeepin/go-gir/gdk-3.0"
-import "github.com/linuxdeepin/go-gir/gdkpixbuf-2.0"
-import "github.com/linuxdeepin/go-gir/gi"
-import "github.com/linuxdeepin/go-gir/gtk-3.0"
+import "github.com/electricface/go-gir/cairo-1.0"
+import "github.com/electricface/go-gir/g-2.0"
+import "github.com/electricface/go-gir/gdk-3.0"
+import "github.com/electricface/go-gir/gdkpixbuf-2.0"
+import "github.com/electricface/go-gir/gi"
+import "github.com/electricface/go-gir/gtk-3.0"
 import "log"
 import "unsafe"
 

@@ -48,11 +48,11 @@ return (void*)(myGdkWindowInvalidateHandlerFunc);
 }
 */
 import "C"
-import "github.com/linuxdeepin/go-gir/cairo-1.0"
-import "github.com/linuxdeepin/go-gir/g-2.0"
-import "github.com/linuxdeepin/go-gir/gdkpixbuf-2.0"
-import "github.com/linuxdeepin/go-gir/gi"
-import "github.com/linuxdeepin/go-gir/pango-1.0"
+import "github.com/electricface/go-gir/cairo-1.0"
+import "github.com/electricface/go-gir/g-2.0"
+import "github.com/electricface/go-gir/gdkpixbuf-2.0"
+import "github.com/electricface/go-gir/gi"
+import "github.com/electricface/go-gir/pango-1.0"
 import "log"
 import "unsafe"
 
