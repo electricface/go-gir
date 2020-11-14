@@ -116,9 +116,14 @@ func GetPointer_myAttrDataCopyFunc() unsafe.Pointer {
 
 //export myPangoAttrDataCopyFunc
 func myPangoAttrDataCopyFunc(user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &AttrDataCopyFuncStruct{}
-	fn(args)
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &AttrDataCopyFuncStruct{}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
+	}
 }
 
 type AttrFilterFuncStruct struct {
@@ -131,11 +136,16 @@ func GetPointer_myAttrFilterFunc() unsafe.Pointer {
 
 //export myPangoAttrFilterFunc
 func myPangoAttrFilterFunc(attribute *C.PangoAttribute, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &AttrFilterFuncStruct{
-		F_attribute: Attribute{P: unsafe.Pointer(attribute)},
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &AttrFilterFuncStruct{
+			F_attribute: Attribute{P: unsafe.Pointer(attribute)},
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 // Struct AttrFloat
@@ -357,18 +367,20 @@ func (v AttrList) Copy() (result AttrList) {
 //
 // [ result ] trans: everything
 //
-func (v AttrList) Filter(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer) (result AttrList) {
+func (v AttrList) Filter(fn func(v interface{})) (result AttrList) {
 	iv, err := _I.Get(7, "AttrList", "filter", 15, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myAttrFilterFunc()))
-	arg_data := gi.NewPointerArgument(data)
-	args := []gi.Argument{arg_v, arg_func1, arg_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	gi.UnregisterFunc(cId)
 	result.P = ret.Pointer()
 	return
 }
@@ -2724,17 +2736,19 @@ func FontsetGetType() gi.GType {
 //
 // [ data ] trans: nothing
 //
-func (v Fontset) Foreach(func1 int /*TODO_TYPE CALLBACK*/, data unsafe.Pointer) {
+func (v Fontset) Foreach(fn func(v interface{})) {
 	iv, err := _I.Get(113, "Fontset", "foreach", 50, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFontsetForeachFunc()))
-	arg_data := gi.NewPointerArgument(data)
-	args := []gi.Argument{arg_v, arg_func1, arg_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
+	gi.UnregisterFunc(cId)
 }
 
 // pango_fontset_get_font
@@ -2789,12 +2803,17 @@ func GetPointer_myFontsetForeachFunc() unsafe.Pointer {
 
 //export myPangoFontsetForeachFunc
 func myPangoFontsetForeachFunc(fontset *C.PangoFontset, font *C.PangoFont, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &FontsetForeachFuncStruct{
-		F_fontset: WrapFontset(unsafe.Pointer(fontset)),
-		F_font:    WrapFont(unsafe.Pointer(font)),
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &FontsetForeachFuncStruct{
+			F_fontset: WrapFontset(unsafe.Pointer(fontset)),
+			F_font:    WrapFont(unsafe.Pointer(font)),
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 // Object FontsetSimple

@@ -1753,19 +1753,21 @@ func (v Attachment) Save(filename string) (result bool, err error) {
 //
 // [ result ] trans: nothing
 //
-func (v Attachment) SaveToCallback(save_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool, err error) {
+func (v Attachment) SaveToCallback(fn func(v interface{})) (result bool, err error) {
 	iv, err := _I.Get(62, "Attachment", "save_to_callback", 43, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_save_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myAttachmentSaveFunc()))
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_fn := gi.NewPointerArgument(cId)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	args := []gi.Argument{arg_v, arg_save_func, arg_user_data, arg_err}
+	args := []gi.Argument{arg_v, arg_save_func, arg_fn, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	gi.UnregisterFunc(cId)
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
 	return
@@ -4448,19 +4450,21 @@ func (v Media) Save(filename string) (result bool, err error) {
 //
 // [ result ] trans: nothing
 //
-func (v Media) SaveToCallback(save_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result bool, err error) {
+func (v Media) SaveToCallback(fn func(v interface{})) (result bool, err error) {
 	iv, err := _I.Get(189, "Media", "save_to_callback", 71, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_save_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myMediaSaveFunc()))
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_fn := gi.NewPointerArgument(cId)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	args := []gi.Argument{arg_v, arg_save_func, arg_user_data, arg_err}
+	args := []gi.Argument{arg_v, arg_save_func, arg_fn, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	gi.UnregisterFunc(cId)
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
 	return

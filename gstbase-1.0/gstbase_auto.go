@@ -5404,7 +5404,7 @@ func NewCollectPads() (result CollectPads) {
 //
 // [ result ] trans: nothing
 //
-func (v CollectPads) AddPad(pad gst.IPad, size uint32, destroy_notify int /*TODO_TYPE CALLBACK*/, lock bool) (result CollectData) {
+func (v CollectPads) AddPad(pad gst.IPad, size uint32, lock bool) (result CollectData) {
 	iv, err := _I.Get(244, "CollectPads", "add_pad", 33, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5651,17 +5651,19 @@ func (v CollectPads) RemovePad(pad gst.IPad) (result bool) {
 //
 // [ user_data ] trans: nothing
 //
-func (v CollectPads) SetBufferFunction(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v CollectPads) SetBufferFunction(fn func(v interface{})) {
 	iv, err := _I.Get(254, "CollectPads", "set_buffer_function", 33, 11, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsBufferFunction()))
-	arg_user_data := gi.NewPointerArgument(user_data)
-	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
+	gi.UnregisterFunc(cId)
 }
 
 // gst_collect_pads_set_clip_function
@@ -5670,17 +5672,19 @@ func (v CollectPads) SetBufferFunction(func1 int /*TODO_TYPE CALLBACK*/, user_da
 //
 // [ user_data ] trans: nothing
 //
-func (v CollectPads) SetClipFunction(clipfunc int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v CollectPads) SetClipFunction(fn func(v interface{})) {
 	iv, err := _I.Get(255, "CollectPads", "set_clip_function", 33, 12, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_clipfunc := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsClipFunction()))
-	arg_user_data := gi.NewPointerArgument(user_data)
-	args := []gi.Argument{arg_v, arg_clipfunc, arg_user_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_clipfunc, arg_fn}
 	iv.Call(args, nil, nil)
+	gi.UnregisterFunc(cId)
 }
 
 // gst_collect_pads_set_compare_function
@@ -5689,17 +5693,19 @@ func (v CollectPads) SetClipFunction(clipfunc int /*TODO_TYPE CALLBACK*/, user_d
 //
 // [ user_data ] trans: nothing
 //
-func (v CollectPads) SetCompareFunction(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v CollectPads) SetCompareFunction(fn func(v interface{})) {
 	iv, err := _I.Get(256, "CollectPads", "set_compare_function", 33, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsCompareFunction()))
-	arg_user_data := gi.NewPointerArgument(user_data)
-	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
+	gi.UnregisterFunc(cId)
 }
 
 // gst_collect_pads_set_event_function
@@ -5708,17 +5714,19 @@ func (v CollectPads) SetCompareFunction(func1 int /*TODO_TYPE CALLBACK*/, user_d
 //
 // [ user_data ] trans: nothing
 //
-func (v CollectPads) SetEventFunction(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v CollectPads) SetEventFunction(fn func(v interface{})) {
 	iv, err := _I.Get(257, "CollectPads", "set_event_function", 33, 14, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsEventFunction()))
-	arg_user_data := gi.NewPointerArgument(user_data)
-	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
+	gi.UnregisterFunc(cId)
 }
 
 // gst_collect_pads_set_flush_function
@@ -5727,17 +5735,19 @@ func (v CollectPads) SetEventFunction(func1 int /*TODO_TYPE CALLBACK*/, user_dat
 //
 // [ user_data ] trans: nothing
 //
-func (v CollectPads) SetFlushFunction(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v CollectPads) SetFlushFunction(fn func(v interface{})) {
 	iv, err := _I.Get(258, "CollectPads", "set_flush_function", 33, 15, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsFlushFunction()))
-	arg_user_data := gi.NewPointerArgument(user_data)
-	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
+	gi.UnregisterFunc(cId)
 }
 
 // gst_collect_pads_set_flushing
@@ -5762,17 +5772,19 @@ func (v CollectPads) SetFlushing(flushing bool) {
 //
 // [ user_data ] trans: nothing
 //
-func (v CollectPads) SetFunction(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v CollectPads) SetFunction(fn func(v interface{})) {
 	iv, err := _I.Get(260, "CollectPads", "set_function", 33, 17, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsFunction()))
-	arg_user_data := gi.NewPointerArgument(user_data)
-	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
+	gi.UnregisterFunc(cId)
 }
 
 // gst_collect_pads_set_query_function
@@ -5781,17 +5793,19 @@ func (v CollectPads) SetFunction(func1 int /*TODO_TYPE CALLBACK*/, user_data uns
 //
 // [ user_data ] trans: nothing
 //
-func (v CollectPads) SetQueryFunction(func1 int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v CollectPads) SetQueryFunction(fn func(v interface{})) {
 	iv, err := _I.Get(261, "CollectPads", "set_query_function", 33, 18, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsQueryFunction()))
-	arg_user_data := gi.NewPointerArgument(user_data)
-	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
+	gi.UnregisterFunc(cId)
 }
 
 // gst_collect_pads_set_waiting
@@ -5903,13 +5917,18 @@ func GetPointer_myCollectPadsBufferFunction() unsafe.Pointer {
 
 //export myGstBaseCollectPadsBufferFunction
 func myGstBaseCollectPadsBufferFunction(pads *C.GstCollectPads, data *C.GstCollectData, buffer *C.GstBuffer, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &CollectPadsBufferFunctionStruct{
-		F_pads:   WrapCollectPads(unsafe.Pointer(pads)),
-		F_data:   CollectData{P: unsafe.Pointer(data)},
-		F_buffer: gst.Buffer{P: unsafe.Pointer(buffer)},
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &CollectPadsBufferFunctionStruct{
+			F_pads:   WrapCollectPads(unsafe.Pointer(pads)),
+			F_data:   CollectData{P: unsafe.Pointer(data)},
+			F_buffer: gst.Buffer{P: unsafe.Pointer(buffer)},
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 // ignore GType struct CollectPadsClass
@@ -5927,14 +5946,19 @@ func GetPointer_myCollectPadsClipFunction() unsafe.Pointer {
 
 //export myGstBaseCollectPadsClipFunction
 func myGstBaseCollectPadsClipFunction(pads *C.GstCollectPads, data *C.GstCollectData, inbuffer *C.GstBuffer, outbuffer C.gpointer, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &CollectPadsClipFunctionStruct{
-		F_pads:      WrapCollectPads(unsafe.Pointer(pads)),
-		F_data:      CollectData{P: unsafe.Pointer(data)},
-		F_inbuffer:  gst.Buffer{P: unsafe.Pointer(inbuffer)},
-		F_outbuffer: unsafe.Pointer(outbuffer),
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &CollectPadsClipFunctionStruct{
+			F_pads:      WrapCollectPads(unsafe.Pointer(pads)),
+			F_data:      CollectData{P: unsafe.Pointer(data)},
+			F_inbuffer:  gst.Buffer{P: unsafe.Pointer(inbuffer)},
+			F_outbuffer: unsafe.Pointer(outbuffer),
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 type CollectPadsCompareFunctionStruct struct {
@@ -5951,15 +5975,20 @@ func GetPointer_myCollectPadsCompareFunction() unsafe.Pointer {
 
 //export myGstBaseCollectPadsCompareFunction
 func myGstBaseCollectPadsCompareFunction(pads *C.GstCollectPads, data1 *C.GstCollectData, timestamp1 C.guint64, data2 *C.GstCollectData, timestamp2 C.guint64, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &CollectPadsCompareFunctionStruct{
-		F_pads:       WrapCollectPads(unsafe.Pointer(pads)),
-		F_data1:      CollectData{P: unsafe.Pointer(data1)},
-		F_timestamp1: uint64(timestamp1),
-		F_data2:      CollectData{P: unsafe.Pointer(data2)},
-		F_timestamp2: uint64(timestamp2),
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &CollectPadsCompareFunctionStruct{
+			F_pads:       WrapCollectPads(unsafe.Pointer(pads)),
+			F_data1:      CollectData{P: unsafe.Pointer(data1)},
+			F_timestamp1: uint64(timestamp1),
+			F_data2:      CollectData{P: unsafe.Pointer(data2)},
+			F_timestamp2: uint64(timestamp2),
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 type CollectPadsEventFunctionStruct struct {
@@ -5974,13 +6003,18 @@ func GetPointer_myCollectPadsEventFunction() unsafe.Pointer {
 
 //export myGstBaseCollectPadsEventFunction
 func myGstBaseCollectPadsEventFunction(pads *C.GstCollectPads, pad *C.GstCollectData, event *C.GstEvent, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &CollectPadsEventFunctionStruct{
-		F_pads:  WrapCollectPads(unsafe.Pointer(pads)),
-		F_pad:   CollectData{P: unsafe.Pointer(pad)},
-		F_event: gst.Event{P: unsafe.Pointer(event)},
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &CollectPadsEventFunctionStruct{
+			F_pads:  WrapCollectPads(unsafe.Pointer(pads)),
+			F_pad:   CollectData{P: unsafe.Pointer(pad)},
+			F_event: gst.Event{P: unsafe.Pointer(event)},
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 type CollectPadsFlushFunctionStruct struct {
@@ -5993,11 +6027,16 @@ func GetPointer_myCollectPadsFlushFunction() unsafe.Pointer {
 
 //export myGstBaseCollectPadsFlushFunction
 func myGstBaseCollectPadsFlushFunction(pads *C.GstCollectPads, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &CollectPadsFlushFunctionStruct{
-		F_pads: WrapCollectPads(unsafe.Pointer(pads)),
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &CollectPadsFlushFunctionStruct{
+			F_pads: WrapCollectPads(unsafe.Pointer(pads)),
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 type CollectPadsFunctionStruct struct {
@@ -6010,11 +6049,16 @@ func GetPointer_myCollectPadsFunction() unsafe.Pointer {
 
 //export myGstBaseCollectPadsFunction
 func myGstBaseCollectPadsFunction(pads *C.GstCollectPads, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &CollectPadsFunctionStruct{
-		F_pads: WrapCollectPads(unsafe.Pointer(pads)),
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &CollectPadsFunctionStruct{
+			F_pads: WrapCollectPads(unsafe.Pointer(pads)),
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 // Struct CollectPadsPrivate
@@ -6039,13 +6083,18 @@ func GetPointer_myCollectPadsQueryFunction() unsafe.Pointer {
 
 //export myGstBaseCollectPadsQueryFunction
 func myGstBaseCollectPadsQueryFunction(pads *C.GstCollectPads, pad *C.GstCollectData, query *C.GstQuery, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &CollectPadsQueryFunctionStruct{
-		F_pads:  WrapCollectPads(unsafe.Pointer(pads)),
-		F_pad:   CollectData{P: unsafe.Pointer(pad)},
-		F_query: gst.Query{P: unsafe.Pointer(query)},
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &CollectPadsQueryFunctionStruct{
+			F_pads:  WrapCollectPads(unsafe.Pointer(pads)),
+			F_pad:   CollectData{P: unsafe.Pointer(pad)},
+			F_query: gst.Query{P: unsafe.Pointer(query)},
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 // Flags CollectPadsStateFlags
@@ -6477,7 +6526,7 @@ func TypeFindHelperForExtension(obj gst.IObject, extension string) (result gst.C
 //
 // [ result ] trans: everything
 //
-func TypeFindHelperGetRange(obj gst.IObject, parent gst.IObject, func1 int /*TODO_TYPE CALLBACK*/, size uint64, extension string) (result gst.Caps, prob gst.TypeFindProbabilityEnum) {
+func TypeFindHelperGetRange(obj gst.IObject, parent gst.IObject, size uint64, extension string) (result gst.Caps, prob gst.TypeFindProbabilityEnum) {
 	iv, err := _I.Get(281, "type_find_helper_get_range", "", 57, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6526,7 +6575,7 @@ func TypeFindHelperGetRange(obj gst.IObject, parent gst.IObject, func1 int /*TOD
 //
 // [ result ] trans: nothing
 //
-func TypeFindHelperGetRangeFull(obj gst.IObject, parent gst.IObject, func1 int /*TODO_TYPE CALLBACK*/, size uint64, extension string) (result gst.FlowReturnEnum, caps gst.Caps, prob gst.TypeFindProbabilityEnum) {
+func TypeFindHelperGetRangeFull(obj gst.IObject, parent gst.IObject, size uint64, extension string) (result gst.FlowReturnEnum, caps gst.Caps, prob gst.TypeFindProbabilityEnum) {
 	iv, err := _I.Get(282, "type_find_helper_get_range_full", "", 58, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)

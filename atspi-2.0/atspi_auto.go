@@ -1680,16 +1680,17 @@ func DeviceListenerGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func NewDeviceListener(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, callback_destroyed int /*TODO_TYPE CALLBACK*/) (result DeviceListener) {
+func NewDeviceListener(fn func(v interface{})) (result DeviceListener) {
 	iv, err := _I.Get(61, "DeviceListener", "new", 45, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDeviceListenerCB()))
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_fn := gi.NewPointerArgument(cId)
 	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
-	args := []gi.Argument{arg_callback, arg_user_data, arg_callback_destroyed}
+	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result.P = ret.Pointer()
@@ -1704,17 +1705,18 @@ func NewDeviceListener(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Poi
 //
 // [ user_data ] trans: nothing
 //
-func (v DeviceListener) AddCallback(callback int /*TODO_TYPE CALLBACK*/, callback_destroyed int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) {
+func (v DeviceListener) AddCallback(fn func(v interface{})) {
 	iv, err := _I.Get(62, "DeviceListener", "add_callback", 45, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDeviceListenerCB()))
 	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
-	arg_user_data := gi.NewPointerArgument(user_data)
-	args := []gi.Argument{arg_v, arg_callback, arg_callback_destroyed, arg_user_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_callback, arg_callback_destroyed, arg_fn}
 	iv.Call(args, nil, nil)
 }
 
@@ -1722,7 +1724,7 @@ func (v DeviceListener) AddCallback(callback int /*TODO_TYPE CALLBACK*/, callbac
 //
 // [ callback ] trans: nothing
 //
-func (v DeviceListener) RemoveCallback(callback int /*TODO_TYPE CALLBACK*/) {
+func (v DeviceListener) RemoveCallback() {
 	iv, err := _I.Get(63, "DeviceListener", "remove_callback", 45, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1744,11 +1746,16 @@ func GetPointer_myDeviceListenerCB() unsafe.Pointer {
 
 //export myAtspiDeviceListenerCB
 func myAtspiDeviceListenerCB(stroke *C.AtspiDeviceEvent, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &DeviceListenerCBStruct{
-		F_stroke: DeviceEvent{P: unsafe.Pointer(stroke)},
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &DeviceListenerCBStruct{
+			F_stroke: DeviceEvent{P: unsafe.Pointer(stroke)},
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 // ignore GType struct DeviceListenerClass
@@ -2119,16 +2126,17 @@ func EventListenerGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func NewEventListener(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, callback_destroyed int /*TODO_TYPE CALLBACK*/) (result EventListener) {
+func NewEventListener(fn func(v interface{})) (result EventListener) {
 	iv, err := _I.Get(77, "EventListener", "new", 53, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_fn := gi.NewPointerArgument(cId)
 	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
-	args := []gi.Argument{arg_callback, arg_user_data, arg_callback_destroyed}
+	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result.P = ret.Pointer()
@@ -2145,20 +2153,22 @@ func NewEventListener(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Poin
 //
 // [ result ] trans: nothing
 //
-func EventListenerDeregisterFromCallback1(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, event_type string) (result bool, err error) {
+func EventListenerDeregisterFromCallback1(fn func(v interface{}), event_type string) (result bool, err error) {
 	iv, err := _I.Get(78, "EventListener", "deregister_from_callback", 53, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	c_event_type := gi.CString(event_type)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_fn := gi.NewPointerArgument(cId)
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	args := []gi.Argument{arg_callback, arg_user_data, arg_event_type, arg_err}
+	args := []gi.Argument{arg_callback, arg_fn, arg_event_type, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	gi.UnregisterFunc(cId)
 	gi.Free(c_event_type)
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
@@ -2177,19 +2187,20 @@ func EventListenerDeregisterFromCallback1(callback int /*TODO_TYPE CALLBACK*/, u
 //
 // [ result ] trans: nothing
 //
-func EventListenerRegisterFromCallback1(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, callback_destroyed int /*TODO_TYPE CALLBACK*/, event_type string) (result bool, err error) {
+func EventListenerRegisterFromCallback1(fn func(v interface{}), event_type string) (result bool, err error) {
 	iv, err := _I.Get(79, "EventListener", "register_from_callback", 53, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
+	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	c_event_type := gi.CString(event_type)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_fn := gi.NewPointerArgument(cId)
 	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	args := []gi.Argument{arg_callback, arg_user_data, arg_callback_destroyed, arg_event_type, arg_err}
+	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed, arg_event_type, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_event_type)
@@ -2212,20 +2223,21 @@ func EventListenerRegisterFromCallback1(callback int /*TODO_TYPE CALLBACK*/, use
 //
 // [ result ] trans: nothing
 //
-func EventListenerRegisterFromCallbackFull1(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, callback_destroyed int /*TODO_TYPE CALLBACK*/, event_type string, properties int /*TODO_TYPE isPtr: true, tag: array*/) (result bool, err error) {
+func EventListenerRegisterFromCallbackFull1(fn func(v interface{}), event_type string, properties int /*TODO_TYPE isPtr: true, tag: array*/) (result bool, err error) {
 	iv, err := _I.Get(80, "EventListener", "register_from_callback_full", 53, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
+	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	c_event_type := gi.CString(event_type)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_fn := gi.NewPointerArgument(cId)
 	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_properties := gi.NewIntArgument(properties) /*TODO*/
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
-	args := []gi.Argument{arg_callback, arg_user_data, arg_callback_destroyed, arg_event_type, arg_properties, arg_err}
+	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed, arg_event_type, arg_properties, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_event_type)
@@ -2322,11 +2334,16 @@ func GetPointer_myEventListenerCB() unsafe.Pointer {
 
 //export myAtspiEventListenerCB
 func myAtspiEventListenerCB(event *C.AtspiEvent, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &EventListenerCBStruct{
-		F_event: Event{P: unsafe.Pointer(event)},
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &EventListenerCBStruct{
+			F_event: Event{P: unsafe.Pointer(event)},
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 // ignore GType struct EventListenerClass

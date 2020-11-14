@@ -485,12 +485,17 @@ func GetPointer_myPtpStatisticsCallback() unsafe.Pointer {
 
 //export myGstNetPtpStatisticsCallback
 func myGstNetPtpStatisticsCallback(domain C.guint8, stats *C.GstStructure, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &PtpStatisticsCallbackStruct{
-		F_domain: uint8(domain),
-		F_stats:  gst.Structure{P: unsafe.Pointer(stats)},
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &PtpStatisticsCallbackStruct{
+			F_domain: uint8(domain),
+			F_stats:  gst.Structure{P: unsafe.Pointer(stats)},
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 // gst_buffer_add_net_address_meta
@@ -737,16 +742,17 @@ func PtpIsSupported() (result bool) {
 //
 // [ result ] trans: nothing
 //
-func PtpStatisticsCallbackAdd(callback int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer, destroy_data int /*TODO_TYPE CALLBACK*/) (result uint64) {
+func PtpStatisticsCallbackAdd(fn func(v interface{})) (result uint64) {
 	iv, err := _I.Get(24, "ptp_statistics_callback_add", "", 33, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPtpStatisticsCallback()))
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_fn := gi.NewPointerArgument(cId)
 	arg_destroy_data := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
-	args := []gi.Argument{arg_callback, arg_user_data, arg_destroy_data}
+	args := []gi.Argument{arg_callback, arg_fn, arg_destroy_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Uint64()

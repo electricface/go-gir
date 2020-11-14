@@ -1041,9 +1041,14 @@ func GetPointer_myFunction() unsafe.Pointer {
 
 //export myAtkFunction
 func myAtkFunction(user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &FunctionStruct{}
-	fn(args)
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &FunctionStruct{}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
+	}
 }
 
 // Object GObjectAccessible
@@ -1600,11 +1605,16 @@ func GetPointer_myKeySnoopFunc() unsafe.Pointer {
 
 //export myAtkKeySnoopFunc
 func myAtkKeySnoopFunc(event *C.AtkKeyEventStruct, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &KeySnoopFuncStruct{
-		F_event: KeyEventStruct{P: unsafe.Pointer(event)},
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &KeySnoopFuncStruct{
+			F_event: KeyEventStruct{P: unsafe.Pointer(event)},
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 // Enum Layer

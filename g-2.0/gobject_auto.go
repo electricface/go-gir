@@ -323,13 +323,18 @@ func GetPointer_myBindingTransformFunc() unsafe.Pointer {
 
 //export myGObjectBindingTransformFunc
 func myGObjectBindingTransformFunc(binding *C.GBinding, from_value *C.GValue, to_value *C.GValue, user_data C.gpointer) {
-	fn := gi.GetFunc(uint(uintptr(user_data)))
-	args := &BindingTransformFuncStruct{
-		F_binding:    WrapBinding(unsafe.Pointer(binding)),
-		F_from_value: Value{P: unsafe.Pointer(from_value)},
-		F_to_value:   Value{P: unsafe.Pointer(to_value)},
+	closure := gi.GetFunc(uint(uintptr(user_data)))
+	if closure.Fn != nil {
+		args := &BindingTransformFuncStruct{
+			F_binding:    WrapBinding(unsafe.Pointer(binding)),
+			F_from_value: Value{P: unsafe.Pointer(from_value)},
+			F_to_value:   Value{P: unsafe.Pointer(to_value)},
+		}
+		closure.Fn(args)
+		if closure.Scope == gi.ScopeAsync {
+			gi.UnregisterFunc(unsafe.Pointer(user_data))
+		}
 	}
-	fn(args)
 }
 
 type BoxedCopyFuncStruct struct {
@@ -5051,18 +5056,20 @@ func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
 //
 // [ result ] trans: nothing
 //
-func (v ValueArray) Sort(compare_func int /*TODO_TYPE CALLBACK*/, user_data unsafe.Pointer) (result ValueArray) {
+func (v ValueArray) Sort(fn func(v interface{})) (result ValueArray) {
 	iv, err := _I.Get1(1482, "GObject", "ValueArray", "sort", 105, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_compare_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCompareDataFunc()))
-	arg_user_data := gi.NewPointerArgument(user_data)
-	args := []gi.Argument{arg_v, arg_compare_func, arg_user_data}
+	arg_fn := gi.NewPointerArgument(cId)
+	args := []gi.Argument{arg_v, arg_compare_func, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	gi.UnregisterFunc(cId)
 	result.P = ret.Pointer()
 	return
 }
@@ -7298,18 +7305,19 @@ func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value,
 //
 // [ result ] trans: nothing
 //
-func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func int /*TODO_TYPE CALLBACK*/, hook_data unsafe.Pointer, data_destroy int /*TODO_TYPE CALLBACK*/) (result uint64) {
+func SignalAddEmissionHook(signal_id uint32, detail uint32, fn func(v interface{})) (result uint64) {
 	iv, err := _I.Get1(1552, "GObject", "signal_add_emission_hook", "", 179, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
+	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_hook_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySignalEmissionHook()))
-	arg_hook_data := gi.NewPointerArgument(hook_data)
+	arg_fn := gi.NewPointerArgument(cId)
 	arg_data_destroy := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
-	args := []gi.Argument{arg_signal_id, arg_detail, arg_hook_func, arg_hook_data, arg_data_destroy}
+	args := []gi.Argument{arg_signal_id, arg_detail, arg_hook_func, arg_fn, arg_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Uint64()
