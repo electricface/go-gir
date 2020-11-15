@@ -4644,12 +4644,14 @@ func (v Value) SetStaticBoxed(v_boxed unsafe.Pointer) {
 	iv.Call(args, nil, nil)
 }
 
+// black function Value.SetStaticString
+
 // g_value_set_string
 //
 // [ v_string ] trans: nothing
 //
 func (v Value) SetString(v_string string) {
-	iv, err := _I.Get1(1462, "GObject", "Value", "set_string", 104, 49, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1463, "GObject", "Value", "set_string", 104, 49, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4664,12 +4666,15 @@ func (v Value) SetString(v_string string) {
 
 // Deprecated
 //
+
+// black function Value.SetStringTakeOwnership
+
 // g_value_set_uchar
 //
 // [ v_uchar ] trans: nothing
 //
 func (v Value) SetUchar(v_uchar uint8) {
-	iv, err := _I.Get1(1463, "GObject", "Value", "set_uchar", 104, 51, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1465, "GObject", "Value", "set_uchar", 104, 51, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4685,7 +4690,7 @@ func (v Value) SetUchar(v_uchar uint8) {
 // [ v_uint ] trans: nothing
 //
 func (v Value) SetUint(v_uint uint32) {
-	iv, err := _I.Get1(1464, "GObject", "Value", "set_uint", 104, 52, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1466, "GObject", "Value", "set_uint", 104, 52, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4701,7 +4706,7 @@ func (v Value) SetUint(v_uint uint32) {
 // [ v_uint64 ] trans: nothing
 //
 func (v Value) SetUint64(v_uint64 uint64) {
-	iv, err := _I.Get1(1465, "GObject", "Value", "set_uint64", 104, 53, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1467, "GObject", "Value", "set_uint64", 104, 53, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4717,7 +4722,7 @@ func (v Value) SetUint64(v_uint64 uint64) {
 // [ v_ulong ] trans: nothing
 //
 func (v Value) SetUlong(v_ulong uint64) {
-	iv, err := _I.Get1(1466, "GObject", "Value", "set_ulong", 104, 54, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1468, "GObject", "Value", "set_ulong", 104, 54, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4733,7 +4738,7 @@ func (v Value) SetUlong(v_ulong uint64) {
 // [ variant ] trans: nothing
 //
 func (v Value) SetVariant(variant Variant) {
-	iv, err := _I.Get1(1467, "GObject", "Value", "set_variant", 104, 55, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1469, "GObject", "Value", "set_variant", 104, 55, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4749,7 +4754,7 @@ func (v Value) SetVariant(variant Variant) {
 // [ v_boxed ] trans: nothing
 //
 func (v Value) TakeBoxed(v_boxed unsafe.Pointer) {
-	iv, err := _I.Get1(1468, "GObject", "Value", "take_boxed", 104, 56, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1470, "GObject", "Value", "take_boxed", 104, 56, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4765,7 +4770,7 @@ func (v Value) TakeBoxed(v_boxed unsafe.Pointer) {
 // [ v_string ] trans: nothing
 //
 func (v Value) TakeString(v_string string) {
-	iv, err := _I.Get1(1469, "GObject", "Value", "take_string", 104, 57, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1471, "GObject", "Value", "take_string", 104, 57, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4783,7 +4788,7 @@ func (v Value) TakeString(v_string string) {
 // [ variant ] trans: everything
 //
 func (v Value) TakeVariant(variant Variant) {
-	iv, err := _I.Get1(1470, "GObject", "Value", "take_variant", 104, 58, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1472, "GObject", "Value", "take_variant", 104, 58, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4801,7 +4806,7 @@ func (v Value) TakeVariant(variant Variant) {
 // [ result ] trans: nothing
 //
 func (v Value) Transform(dest_value Value) (result bool) {
-	iv, err := _I.Get1(1471, "GObject", "Value", "transform", 104, 59, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1473, "GObject", "Value", "transform", 104, 59, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4818,7 +4823,7 @@ func (v Value) Transform(dest_value Value) (result bool) {
 // g_value_unset
 //
 func (v Value) Unset() {
-	iv, err := _I.Get1(1472, "GObject", "Value", "unset", 104, 60, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1474, "GObject", "Value", "unset", 104, 60, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4837,7 +4842,7 @@ func (v Value) Unset() {
 // [ result ] trans: nothing
 //
 func ValueTypeCompatible1(src_type gi.GType, dest_type gi.GType) (result bool) {
-	iv, err := _I.Get1(1473, "GObject", "Value", "type_compatible", 104, 61, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1475, "GObject", "Value", "type_compatible", 104, 61, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4860,7 +4865,7 @@ func ValueTypeCompatible1(src_type gi.GType, dest_type gi.GType) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueTypeTransformable1(src_type gi.GType, dest_type gi.GType) (result bool) {
-	iv, err := _I.Get1(1474, "GObject", "Value", "type_transformable", 104, 62, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1476, "GObject", "Value", "type_transformable", 104, 62, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4895,7 +4900,7 @@ func ValueArrayGetType() gi.GType {
 // [ result ] trans: everything
 //
 func NewValueArray(n_prealloced uint32) (result ValueArray) {
-	iv, err := _I.Get1(1475, "GObject", "ValueArray", "new", 105, 0, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1477, "GObject", "ValueArray", "new", 105, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4917,7 +4922,7 @@ func NewValueArray(n_prealloced uint32) (result ValueArray) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) Append(value Value) (result ValueArray) {
-	iv, err := _I.Get1(1476, "GObject", "ValueArray", "append", 105, 1, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1478, "GObject", "ValueArray", "append", 105, 1, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4938,7 +4943,7 @@ func (v ValueArray) Append(value Value) (result ValueArray) {
 // [ result ] trans: everything
 //
 func (v ValueArray) Copy() (result ValueArray) {
-	iv, err := _I.Get1(1477, "GObject", "ValueArray", "copy", 105, 2, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1479, "GObject", "ValueArray", "copy", 105, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4960,7 +4965,7 @@ func (v ValueArray) Copy() (result ValueArray) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) GetNth(index_ uint32) (result Value) {
-	iv, err := _I.Get1(1478, "GObject", "ValueArray", "get_nth", 105, 3, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1480, "GObject", "ValueArray", "get_nth", 105, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -4985,7 +4990,7 @@ func (v ValueArray) GetNth(index_ uint32) (result Value) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) Insert(index_ uint32, value Value) (result ValueArray) {
-	iv, err := _I.Get1(1479, "GObject", "ValueArray", "insert", 105, 4, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1481, "GObject", "ValueArray", "insert", 105, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5009,7 +5014,7 @@ func (v ValueArray) Insert(index_ uint32, value Value) (result ValueArray) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) Prepend(value Value) (result ValueArray) {
-	iv, err := _I.Get1(1480, "GObject", "ValueArray", "prepend", 105, 5, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1482, "GObject", "ValueArray", "prepend", 105, 5, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5032,7 +5037,7 @@ func (v ValueArray) Prepend(value Value) (result ValueArray) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
-	iv, err := _I.Get1(1481, "GObject", "ValueArray", "remove", 105, 6, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1483, "GObject", "ValueArray", "remove", 105, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5057,7 +5062,7 @@ func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
 // [ result ] trans: nothing
 //
 func (v ValueArray) Sort(fn func(v interface{})) (result ValueArray) {
-	iv, err := _I.Get1(1482, "GObject", "ValueArray", "sort", 105, 7, gi.INFO_TYPE_STRUCT, 0)
+	iv, err := _I.Get1(1484, "GObject", "ValueArray", "sort", 105, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5133,7 +5138,7 @@ func _Value__data__unionGetType() gi.GType {
 // [ result ] trans: everything
 //
 func BoxedCopy(boxed_type gi.GType, src_boxed unsafe.Pointer) (result unsafe.Pointer) {
-	iv, err := _I.Get1(1483, "GObject", "boxed_copy", "", 110, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1485, "GObject", "boxed_copy", "", 110, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5154,7 +5159,7 @@ func BoxedCopy(boxed_type gi.GType, src_boxed unsafe.Pointer) (result unsafe.Poi
 // [ boxed ] trans: nothing
 //
 func BoxedFree(boxed_type gi.GType, boxed unsafe.Pointer) {
-	iv, err := _I.Get1(1484, "GObject", "boxed_free", "", 111, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1486, "GObject", "boxed_free", "", 111, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5180,7 +5185,7 @@ func BoxedFree(boxed_type gi.GType, boxed unsafe.Pointer) {
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalBoolean_BoxedBoxed(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1485, "GObject", "cclosure_marshal_BOOLEAN__BOXED_BOXED", "", 112, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1487, "GObject", "cclosure_marshal_BOOLEAN__BOXED_BOXED", "", 112, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5210,7 +5215,7 @@ func CclosureMarshalBoolean_BoxedBoxed(closure Closure, return_value Value, n_pa
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalBoolean_Flags(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1486, "GObject", "cclosure_marshal_BOOLEAN__FLAGS", "", 113, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1488, "GObject", "cclosure_marshal_BOOLEAN__FLAGS", "", 113, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5240,7 +5245,7 @@ func CclosureMarshalBoolean_Flags(closure Closure, return_value Value, n_param_v
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalString_ObjectPointer(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1487, "GObject", "cclosure_marshal_STRING__OBJECT_POINTER", "", 114, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1489, "GObject", "cclosure_marshal_STRING__OBJECT_POINTER", "", 114, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5270,7 +5275,7 @@ func CclosureMarshalString_ObjectPointer(closure Closure, return_value Value, n_
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Boolean(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1488, "GObject", "cclosure_marshal_VOID__BOOLEAN", "", 115, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1490, "GObject", "cclosure_marshal_VOID__BOOLEAN", "", 115, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5300,7 +5305,7 @@ func CclosureMarshalVoid_Boolean(closure Closure, return_value Value, n_param_va
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Boxed(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1489, "GObject", "cclosure_marshal_VOID__BOXED", "", 116, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1491, "GObject", "cclosure_marshal_VOID__BOXED", "", 116, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5330,7 +5335,7 @@ func CclosureMarshalVoid_Boxed(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Char(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1490, "GObject", "cclosure_marshal_VOID__CHAR", "", 117, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1492, "GObject", "cclosure_marshal_VOID__CHAR", "", 117, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5360,7 +5365,7 @@ func CclosureMarshalVoid_Char(closure Closure, return_value Value, n_param_value
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Double(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1491, "GObject", "cclosure_marshal_VOID__DOUBLE", "", 118, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1493, "GObject", "cclosure_marshal_VOID__DOUBLE", "", 118, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5390,7 +5395,7 @@ func CclosureMarshalVoid_Double(closure Closure, return_value Value, n_param_val
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Enum(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1492, "GObject", "cclosure_marshal_VOID__ENUM", "", 119, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1494, "GObject", "cclosure_marshal_VOID__ENUM", "", 119, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5420,7 +5425,7 @@ func CclosureMarshalVoid_Enum(closure Closure, return_value Value, n_param_value
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Flags(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1493, "GObject", "cclosure_marshal_VOID__FLAGS", "", 120, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1495, "GObject", "cclosure_marshal_VOID__FLAGS", "", 120, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5450,7 +5455,7 @@ func CclosureMarshalVoid_Flags(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Float(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1494, "GObject", "cclosure_marshal_VOID__FLOAT", "", 121, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1496, "GObject", "cclosure_marshal_VOID__FLOAT", "", 121, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5480,7 +5485,7 @@ func CclosureMarshalVoid_Float(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Int(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1495, "GObject", "cclosure_marshal_VOID__INT", "", 122, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1497, "GObject", "cclosure_marshal_VOID__INT", "", 122, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5510,7 +5515,7 @@ func CclosureMarshalVoid_Int(closure Closure, return_value Value, n_param_values
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Long(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1496, "GObject", "cclosure_marshal_VOID__LONG", "", 123, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1498, "GObject", "cclosure_marshal_VOID__LONG", "", 123, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5540,7 +5545,7 @@ func CclosureMarshalVoid_Long(closure Closure, return_value Value, n_param_value
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Object(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1497, "GObject", "cclosure_marshal_VOID__OBJECT", "", 124, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1499, "GObject", "cclosure_marshal_VOID__OBJECT", "", 124, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5570,7 +5575,7 @@ func CclosureMarshalVoid_Object(closure Closure, return_value Value, n_param_val
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Param(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1498, "GObject", "cclosure_marshal_VOID__PARAM", "", 125, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1500, "GObject", "cclosure_marshal_VOID__PARAM", "", 125, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5600,7 +5605,7 @@ func CclosureMarshalVoid_Param(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Pointer(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1499, "GObject", "cclosure_marshal_VOID__POINTER", "", 126, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1501, "GObject", "cclosure_marshal_VOID__POINTER", "", 126, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5630,7 +5635,7 @@ func CclosureMarshalVoid_Pointer(closure Closure, return_value Value, n_param_va
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_String(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1500, "GObject", "cclosure_marshal_VOID__STRING", "", 127, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1502, "GObject", "cclosure_marshal_VOID__STRING", "", 127, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5660,7 +5665,7 @@ func CclosureMarshalVoid_String(closure Closure, return_value Value, n_param_val
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Uchar(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1501, "GObject", "cclosure_marshal_VOID__UCHAR", "", 128, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1503, "GObject", "cclosure_marshal_VOID__UCHAR", "", 128, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5690,7 +5695,7 @@ func CclosureMarshalVoid_Uchar(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Uint(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1502, "GObject", "cclosure_marshal_VOID__UINT", "", 129, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1504, "GObject", "cclosure_marshal_VOID__UINT", "", 129, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5720,7 +5725,7 @@ func CclosureMarshalVoid_Uint(closure Closure, return_value Value, n_param_value
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_UintPointer(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1503, "GObject", "cclosure_marshal_VOID__UINT_POINTER", "", 130, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1505, "GObject", "cclosure_marshal_VOID__UINT_POINTER", "", 130, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5750,7 +5755,7 @@ func CclosureMarshalVoid_UintPointer(closure Closure, return_value Value, n_para
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Ulong(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1504, "GObject", "cclosure_marshal_VOID__ULONG", "", 131, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1506, "GObject", "cclosure_marshal_VOID__ULONG", "", 131, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5780,7 +5785,7 @@ func CclosureMarshalVoid_Ulong(closure Closure, return_value Value, n_param_valu
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Variant(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1505, "GObject", "cclosure_marshal_VOID__VARIANT", "", 132, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1507, "GObject", "cclosure_marshal_VOID__VARIANT", "", 132, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5810,7 +5815,7 @@ func CclosureMarshalVoid_Variant(closure Closure, return_value Value, n_param_va
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalVoid_Void(closure Closure, return_value Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1506, "GObject", "cclosure_marshal_VOID__VOID", "", 133, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1508, "GObject", "cclosure_marshal_VOID__VOID", "", 133, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5840,7 +5845,7 @@ func CclosureMarshalVoid_Void(closure Closure, return_value Value, n_param_value
 // [ marshal_data ] trans: nothing
 //
 func CclosureMarshalGeneric(closure Closure, return_gvalue Value, n_param_values uint32, param_values Value, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer) {
-	iv, err := _I.Get1(1507, "GObject", "cclosure_marshal_generic", "", 134, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1509, "GObject", "cclosure_marshal_generic", "", 134, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5864,7 +5869,7 @@ func CclosureMarshalGeneric(closure Closure, return_gvalue Value, n_param_values
 // [ const_values ] trans: nothing
 //
 func EnumCompleteTypeInfo(g_enum_type gi.GType, const_values EnumValue) (info int /*TODO_TYPE tag: ifc, biType: struct*/) {
-	iv, err := _I.Get1(1508, "GObject", "enum_complete_type_info", "", 135, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1510, "GObject", "enum_complete_type_info", "", 135, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5888,7 +5893,7 @@ func EnumCompleteTypeInfo(g_enum_type gi.GType, const_values EnumValue) (info in
 // [ result ] trans: nothing
 //
 func EnumGetValue(enum_class EnumClass, value int32) (result EnumValue) {
-	iv, err := _I.Get1(1509, "GObject", "enum_get_value", "", 136, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1511, "GObject", "enum_get_value", "", 136, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5911,7 +5916,7 @@ func EnumGetValue(enum_class EnumClass, value int32) (result EnumValue) {
 // [ result ] trans: nothing
 //
 func EnumGetValueByName(enum_class EnumClass, name string) (result EnumValue) {
-	iv, err := _I.Get1(1510, "GObject", "enum_get_value_by_name", "", 137, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1512, "GObject", "enum_get_value_by_name", "", 137, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5936,7 +5941,7 @@ func EnumGetValueByName(enum_class EnumClass, name string) (result EnumValue) {
 // [ result ] trans: nothing
 //
 func EnumGetValueByNick(enum_class EnumClass, nick string) (result EnumValue) {
-	iv, err := _I.Get1(1511, "GObject", "enum_get_value_by_nick", "", 138, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1513, "GObject", "enum_get_value_by_nick", "", 138, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5961,7 +5966,7 @@ func EnumGetValueByNick(enum_class EnumClass, nick string) (result EnumValue) {
 // [ result ] trans: nothing
 //
 func EnumRegisterStatic(name string, const_static_values EnumValue) (result gi.GType) {
-	iv, err := _I.Get1(1512, "GObject", "enum_register_static", "", 139, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1514, "GObject", "enum_register_static", "", 139, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -5986,7 +5991,7 @@ func EnumRegisterStatic(name string, const_static_values EnumValue) (result gi.G
 // [ result ] trans: everything
 //
 func EnumToString(g_enum_type gi.GType, value int32) (result string) {
-	iv, err := _I.Get1(1513, "GObject", "enum_to_string", "", 140, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1515, "GObject", "enum_to_string", "", 140, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6009,7 +6014,7 @@ func EnumToString(g_enum_type gi.GType, value int32) (result string) {
 // [ const_values ] trans: nothing
 //
 func FlagsCompleteTypeInfo(g_flags_type gi.GType, const_values FlagsValue) (info int /*TODO_TYPE tag: ifc, biType: struct*/) {
-	iv, err := _I.Get1(1514, "GObject", "flags_complete_type_info", "", 141, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1516, "GObject", "flags_complete_type_info", "", 141, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6033,7 +6038,7 @@ func FlagsCompleteTypeInfo(g_flags_type gi.GType, const_values FlagsValue) (info
 // [ result ] trans: nothing
 //
 func FlagsGetFirstValue(flags_class FlagsClass, value uint32) (result FlagsValue) {
-	iv, err := _I.Get1(1515, "GObject", "flags_get_first_value", "", 142, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1517, "GObject", "flags_get_first_value", "", 142, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6056,7 +6061,7 @@ func FlagsGetFirstValue(flags_class FlagsClass, value uint32) (result FlagsValue
 // [ result ] trans: nothing
 //
 func FlagsGetValueByName(flags_class FlagsClass, name string) (result FlagsValue) {
-	iv, err := _I.Get1(1516, "GObject", "flags_get_value_by_name", "", 143, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1518, "GObject", "flags_get_value_by_name", "", 143, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6081,7 +6086,7 @@ func FlagsGetValueByName(flags_class FlagsClass, name string) (result FlagsValue
 // [ result ] trans: nothing
 //
 func FlagsGetValueByNick(flags_class FlagsClass, nick string) (result FlagsValue) {
-	iv, err := _I.Get1(1517, "GObject", "flags_get_value_by_nick", "", 144, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1519, "GObject", "flags_get_value_by_nick", "", 144, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6106,7 +6111,7 @@ func FlagsGetValueByNick(flags_class FlagsClass, nick string) (result FlagsValue
 // [ result ] trans: nothing
 //
 func FlagsRegisterStatic(name string, const_static_values FlagsValue) (result gi.GType) {
-	iv, err := _I.Get1(1518, "GObject", "flags_register_static", "", 145, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1520, "GObject", "flags_register_static", "", 145, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6131,7 +6136,7 @@ func FlagsRegisterStatic(name string, const_static_values FlagsValue) (result gi
 // [ result ] trans: everything
 //
 func FlagsToString(flags_type gi.GType, value uint32) (result string) {
-	iv, err := _I.Get1(1519, "GObject", "flags_to_string", "", 146, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1521, "GObject", "flags_to_string", "", 146, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6150,7 +6155,7 @@ func FlagsToString(flags_type gi.GType, value uint32) (result string) {
 // [ result ] trans: nothing
 //
 func GtypeGetType() (result gi.GType) {
-	iv, err := _I.Get1(1520, "GObject", "gtype_get_type", "", 147, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1522, "GObject", "gtype_get_type", "", 147, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6176,7 +6181,7 @@ func GtypeGetType() (result gi.GType) {
 // [ result ] trans: everything
 //
 func ParamSpecBooleanF(name string, nick string, blurb string, default_value bool, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1521, "GObject", "param_spec_boolean", "", 148, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1523, "GObject", "param_spec_boolean", "", 148, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6214,7 +6219,7 @@ func ParamSpecBooleanF(name string, nick string, blurb string, default_value boo
 // [ result ] trans: everything
 //
 func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type gi.GType, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1522, "GObject", "param_spec_boxed", "", 149, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1524, "GObject", "param_spec_boxed", "", 149, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6256,7 +6261,7 @@ func ParamSpecBoxedF(name string, nick string, blurb string, boxed_type gi.GType
 // [ result ] trans: everything
 //
 func ParamSpecCharF(name string, nick string, blurb string, minimum int8, maximum int8, default_value int8, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1523, "GObject", "param_spec_char", "", 150, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1525, "GObject", "param_spec_char", "", 150, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6300,7 +6305,7 @@ func ParamSpecCharF(name string, nick string, blurb string, minimum int8, maximu
 // [ result ] trans: everything
 //
 func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, maximum float64, default_value float64, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1524, "GObject", "param_spec_double", "", 151, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1526, "GObject", "param_spec_double", "", 151, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6342,7 +6347,7 @@ func ParamSpecDoubleF(name string, nick string, blurb string, minimum float64, m
 // [ result ] trans: everything
 //
 func ParamSpecEnumF(name string, nick string, blurb string, enum_type gi.GType, default_value int32, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1525, "GObject", "param_spec_enum", "", 152, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1527, "GObject", "param_spec_enum", "", 152, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6383,7 +6388,7 @@ func ParamSpecEnumF(name string, nick string, blurb string, enum_type gi.GType, 
 // [ result ] trans: everything
 //
 func ParamSpecFlagsF(name string, nick string, blurb string, flags_type gi.GType, default_value uint32, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1526, "GObject", "param_spec_flags", "", 153, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1528, "GObject", "param_spec_flags", "", 153, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6426,7 +6431,7 @@ func ParamSpecFlagsF(name string, nick string, blurb string, flags_type gi.GType
 // [ result ] trans: everything
 //
 func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, maximum float32, default_value float32, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1527, "GObject", "param_spec_float", "", 154, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1529, "GObject", "param_spec_float", "", 154, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6466,7 +6471,7 @@ func ParamSpecFloatF(name string, nick string, blurb string, minimum float32, ma
 // [ result ] trans: everything
 //
 func ParamSpecGtype(name string, nick string, blurb string, is_a_type gi.GType, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1528, "GObject", "param_spec_gtype", "", 155, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1530, "GObject", "param_spec_gtype", "", 155, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6508,7 +6513,7 @@ func ParamSpecGtype(name string, nick string, blurb string, is_a_type gi.GType, 
 // [ result ] trans: everything
 //
 func ParamSpecIntF(name string, nick string, blurb string, minimum int32, maximum int32, default_value int32, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1529, "GObject", "param_spec_int", "", 156, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1531, "GObject", "param_spec_int", "", 156, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6552,7 +6557,7 @@ func ParamSpecIntF(name string, nick string, blurb string, minimum int32, maximu
 // [ result ] trans: everything
 //
 func ParamSpecInt64F(name string, nick string, blurb string, minimum int64, maximum int64, default_value int64, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1530, "GObject", "param_spec_int64", "", 157, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1532, "GObject", "param_spec_int64", "", 157, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6596,7 +6601,7 @@ func ParamSpecInt64F(name string, nick string, blurb string, minimum int64, maxi
 // [ result ] trans: everything
 //
 func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maximum int64, default_value int64, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1531, "GObject", "param_spec_long", "", 158, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1533, "GObject", "param_spec_long", "", 158, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6636,7 +6641,7 @@ func ParamSpecLongF(name string, nick string, blurb string, minimum int64, maxim
 // [ result ] trans: everything
 //
 func ParamSpecObjectF(name string, nick string, blurb string, object_type gi.GType, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1532, "GObject", "param_spec_object", "", 159, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1534, "GObject", "param_spec_object", "", 159, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6674,7 +6679,7 @@ func ParamSpecObjectF(name string, nick string, blurb string, object_type gi.GTy
 // [ result ] trans: everything
 //
 func ParamSpecParamF(name string, nick string, blurb string, param_type gi.GType, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1533, "GObject", "param_spec_param", "", 160, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1535, "GObject", "param_spec_param", "", 160, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6710,7 +6715,7 @@ func ParamSpecParamF(name string, nick string, blurb string, param_type gi.GType
 // [ result ] trans: everything
 //
 func ParamSpecPointerF(name string, nick string, blurb string, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1534, "GObject", "param_spec_pointer", "", 161, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1536, "GObject", "param_spec_pointer", "", 161, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6739,7 +6744,7 @@ func ParamSpecPointerF(name string, nick string, blurb string, flags ParamFlags)
 // [ result ] trans: nothing
 //
 func ParamSpecPoolNew(type_prefixing bool) (result ParamSpecPool) {
-	iv, err := _I.Get1(1535, "GObject", "param_spec_pool_new", "", 162, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1537, "GObject", "param_spec_pool_new", "", 162, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6767,7 +6772,7 @@ func ParamSpecPoolNew(type_prefixing bool) (result ParamSpecPool) {
 // [ result ] trans: everything
 //
 func ParamSpecStringF(name string, nick string, blurb string, default_value string, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1536, "GObject", "param_spec_string", "", 163, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1538, "GObject", "param_spec_string", "", 163, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6811,7 +6816,7 @@ func ParamSpecStringF(name string, nick string, blurb string, default_value stri
 // [ result ] trans: everything
 //
 func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maximum uint8, default_value uint8, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1537, "GObject", "param_spec_uchar", "", 164, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1539, "GObject", "param_spec_uchar", "", 164, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6855,7 +6860,7 @@ func ParamSpecUchar(name string, nick string, blurb string, minimum uint8, maxim
 // [ result ] trans: everything
 //
 func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maximum uint32, default_value uint32, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1538, "GObject", "param_spec_uint", "", 165, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1540, "GObject", "param_spec_uint", "", 165, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6899,7 +6904,7 @@ func ParamSpecUint(name string, nick string, blurb string, minimum uint32, maxim
 // [ result ] trans: everything
 //
 func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, maximum uint64, default_value uint64, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1539, "GObject", "param_spec_uint64", "", 166, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1541, "GObject", "param_spec_uint64", "", 166, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6943,7 +6948,7 @@ func ParamSpecUint64(name string, nick string, blurb string, minimum uint64, max
 // [ result ] trans: everything
 //
 func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maximum uint64, default_value uint64, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1540, "GObject", "param_spec_ulong", "", 167, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1542, "GObject", "param_spec_ulong", "", 167, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -6983,7 +6988,7 @@ func ParamSpecUlong(name string, nick string, blurb string, minimum uint64, maxi
 // [ result ] trans: everything
 //
 func ParamSpecUnicharF(name string, nick string, blurb string, default_value rune, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1541, "GObject", "param_spec_unichar", "", 168, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1543, "GObject", "param_spec_unichar", "", 168, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7023,7 +7028,7 @@ func ParamSpecUnicharF(name string, nick string, blurb string, default_value run
 // [ result ] trans: everything
 //
 func ParamSpecVariantF(name string, nick string, blurb string, type1 VariantType, default_value Variant, flags ParamFlags) (result ParamSpec) {
-	iv, err := _I.Get1(1542, "GObject", "param_spec_variant", "", 169, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1544, "GObject", "param_spec_variant", "", 169, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7056,7 +7061,7 @@ func ParamSpecVariantF(name string, nick string, blurb string, type1 VariantType
 // [ result ] trans: nothing
 //
 func ParamTypeRegisterStatic(name string, pspec_info ParamSpecTypeInfo) (result gi.GType) {
-	iv, err := _I.Get1(1543, "GObject", "param_type_register_static", "", 170, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1545, "GObject", "param_type_register_static", "", 170, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7085,7 +7090,7 @@ func ParamTypeRegisterStatic(name string, pspec_info ParamSpecTypeInfo) (result 
 // [ result ] trans: nothing
 //
 func ParamValueConvert(pspec IParamSpec, src_value Value, dest_value Value, strict_validation bool) (result bool) {
-	iv, err := _I.Get1(1544, "GObject", "param_value_convert", "", 171, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1546, "GObject", "param_value_convert", "", 171, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7114,7 +7119,7 @@ func ParamValueConvert(pspec IParamSpec, src_value Value, dest_value Value, stri
 // [ result ] trans: nothing
 //
 func ParamValueDefaults(pspec IParamSpec, value Value) (result bool) {
-	iv, err := _I.Get1(1545, "GObject", "param_value_defaults", "", 172, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1547, "GObject", "param_value_defaults", "", 172, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7139,7 +7144,7 @@ func ParamValueDefaults(pspec IParamSpec, value Value) (result bool) {
 // [ value ] trans: nothing
 //
 func ParamValueSetDefault(pspec IParamSpec, value Value) {
-	iv, err := _I.Get1(1546, "GObject", "param_value_set_default", "", 173, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1548, "GObject", "param_value_set_default", "", 173, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7163,7 +7168,7 @@ func ParamValueSetDefault(pspec IParamSpec, value Value) {
 // [ result ] trans: nothing
 //
 func ParamValueValidate(pspec IParamSpec, value Value) (result bool) {
-	iv, err := _I.Get1(1547, "GObject", "param_value_validate", "", 174, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1549, "GObject", "param_value_validate", "", 174, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7192,7 +7197,7 @@ func ParamValueValidate(pspec IParamSpec, value Value) (result bool) {
 // [ result ] trans: nothing
 //
 func ParamValuesCmp(pspec IParamSpec, value1 Value, value2 Value) (result int32) {
-	iv, err := _I.Get1(1548, "GObject", "param_values_cmp", "", 175, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1550, "GObject", "param_values_cmp", "", 175, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7218,7 +7223,7 @@ func ParamValuesCmp(pspec IParamSpec, value1 Value, value2 Value) (result int32)
 // [ result ] trans: nothing
 //
 func PointerTypeRegisterStatic(name string) (result gi.GType) {
-	iv, err := _I.Get1(1549, "GObject", "pointer_type_register_static", "", 176, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1551, "GObject", "pointer_type_register_static", "", 176, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7246,7 +7251,7 @@ func PointerTypeRegisterStatic(name string) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func SignalAccumulatorFirstWins(ihint SignalInvocationHint, return_accu Value, handler_return Value, dummy unsafe.Pointer) (result bool) {
-	iv, err := _I.Get1(1550, "GObject", "signal_accumulator_first_wins", "", 177, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1552, "GObject", "signal_accumulator_first_wins", "", 177, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7275,7 +7280,7 @@ func SignalAccumulatorFirstWins(ihint SignalInvocationHint, return_accu Value, h
 // [ result ] trans: nothing
 //
 func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value, handler_return Value, dummy unsafe.Pointer) (result bool) {
-	iv, err := _I.Get1(1551, "GObject", "signal_accumulator_true_handled", "", 178, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1553, "GObject", "signal_accumulator_true_handled", "", 178, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7306,7 +7311,7 @@ func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value,
 // [ result ] trans: nothing
 //
 func SignalAddEmissionHook(signal_id uint32, detail uint32, fn func(v interface{})) (result uint64) {
-	iv, err := _I.Get1(1552, "GObject", "signal_add_emission_hook", "", 179, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1554, "GObject", "signal_add_emission_hook", "", 179, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7331,7 +7336,7 @@ func SignalAddEmissionHook(signal_id uint32, detail uint32, fn func(v interface{
 // [ return_value ] trans: nothing
 //
 func SignalChainFromOverridden(instance_and_params unsafe.Pointer, return_value Value) {
-	iv, err := _I.Get1(1553, "GObject", "signal_chain_from_overridden", "", 180, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1555, "GObject", "signal_chain_from_overridden", "", 180, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7355,7 +7360,7 @@ func SignalChainFromOverridden(instance_and_params unsafe.Pointer, return_value 
 // [ result ] trans: nothing
 //
 func SignalConnectClosure(instance IObject, detailed_signal string, closure Closure, after bool) (result uint64) {
-	iv, err := _I.Get1(1554, "GObject", "signal_connect_closure", "", 181, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1556, "GObject", "signal_connect_closure", "", 181, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7392,7 +7397,7 @@ func SignalConnectClosure(instance IObject, detailed_signal string, closure Clos
 // [ result ] trans: nothing
 //
 func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32, closure Closure, after bool) (result uint64) {
-	iv, err := _I.Get1(1555, "GObject", "signal_connect_closure_by_id", "", 182, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1557, "GObject", "signal_connect_closure_by_id", "", 182, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7424,7 +7429,7 @@ func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32,
 // [ return_value ] trans: everything, dir: inout
 //
 func SignalEmitv(instance_and_params unsafe.Pointer, signal_id uint32, detail uint32, return_value int /*TODO:TYPE*/) {
-	iv, err := _I.Get1(1556, "GObject", "signal_emitv", "", 183, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1558, "GObject", "signal_emitv", "", 183, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7444,7 +7449,7 @@ func SignalEmitv(instance_and_params unsafe.Pointer, signal_id uint32, detail ui
 // [ result ] trans: nothing
 //
 func SignalGetInvocationHint(instance IObject) (result SignalInvocationHint) {
-	iv, err := _I.Get1(1557, "GObject", "signal_get_invocation_hint", "", 184, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1559, "GObject", "signal_get_invocation_hint", "", 184, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7468,7 +7473,7 @@ func SignalGetInvocationHint(instance IObject) (result SignalInvocationHint) {
 // [ handler_id ] trans: nothing
 //
 func SignalHandlerBlock(instance IObject, handler_id uint64) {
-	iv, err := _I.Get1(1558, "GObject", "signal_handler_block", "", 185, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1560, "GObject", "signal_handler_block", "", 185, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7490,7 +7495,7 @@ func SignalHandlerBlock(instance IObject, handler_id uint64) {
 // [ handler_id ] trans: nothing
 //
 func SignalHandlerDisconnect(instance IObject, handler_id uint64) {
-	iv, err := _I.Get1(1559, "GObject", "signal_handler_disconnect", "", 186, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1561, "GObject", "signal_handler_disconnect", "", 186, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7524,7 +7529,7 @@ func SignalHandlerDisconnect(instance IObject, handler_id uint64) {
 // [ result ] trans: nothing
 //
 func SignalHandlerFind(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint64) {
-	iv, err := _I.Get1(1560, "GObject", "signal_handler_find", "", 187, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1562, "GObject", "signal_handler_find", "", 187, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7556,7 +7561,7 @@ func SignalHandlerFind(instance IObject, mask SignalMatchTypeFlags, signal_id ui
 // [ result ] trans: nothing
 //
 func SignalHandlerIsConnected(instance IObject, handler_id uint64) (result bool) {
-	iv, err := _I.Get1(1561, "GObject", "signal_handler_is_connected", "", 188, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1563, "GObject", "signal_handler_is_connected", "", 188, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7581,7 +7586,7 @@ func SignalHandlerIsConnected(instance IObject, handler_id uint64) (result bool)
 // [ handler_id ] trans: nothing
 //
 func SignalHandlerUnblock(instance IObject, handler_id uint64) {
-	iv, err := _I.Get1(1562, "GObject", "signal_handler_unblock", "", 189, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1564, "GObject", "signal_handler_unblock", "", 189, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7615,7 +7620,7 @@ func SignalHandlerUnblock(instance IObject, handler_id uint64) {
 // [ result ] trans: nothing
 //
 func SignalHandlersBlockMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
-	iv, err := _I.Get1(1563, "GObject", "signal_handlers_block_matched", "", 190, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1565, "GObject", "signal_handlers_block_matched", "", 190, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7643,7 +7648,7 @@ func SignalHandlersBlockMatched(instance IObject, mask SignalMatchTypeFlags, sig
 // [ instance ] trans: nothing
 //
 func SignalHandlersDestroy(instance IObject) {
-	iv, err := _I.Get1(1564, "GObject", "signal_handlers_destroy", "", 191, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1566, "GObject", "signal_handlers_destroy", "", 191, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7676,7 +7681,7 @@ func SignalHandlersDestroy(instance IObject) {
 // [ result ] trans: nothing
 //
 func SignalHandlersDisconnectMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
-	iv, err := _I.Get1(1565, "GObject", "signal_handlers_disconnect_matched", "", 192, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1567, "GObject", "signal_handlers_disconnect_matched", "", 192, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7718,7 +7723,7 @@ func SignalHandlersDisconnectMatched(instance IObject, mask SignalMatchTypeFlags
 // [ result ] trans: nothing
 //
 func SignalHandlersUnblockMatched(instance IObject, mask SignalMatchTypeFlags, signal_id uint32, detail uint32, closure Closure, func1 unsafe.Pointer, data unsafe.Pointer) (result uint32) {
-	iv, err := _I.Get1(1566, "GObject", "signal_handlers_unblock_matched", "", 193, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1568, "GObject", "signal_handlers_unblock_matched", "", 193, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7754,7 +7759,7 @@ func SignalHandlersUnblockMatched(instance IObject, mask SignalMatchTypeFlags, s
 // [ result ] trans: nothing
 //
 func SignalHasHandlerPending(instance IObject, signal_id uint32, detail uint32, may_be_blocked bool) (result bool) {
-	iv, err := _I.Get1(1567, "GObject", "signal_has_handler_pending", "", 194, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1569, "GObject", "signal_has_handler_pending", "", 194, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7783,7 +7788,7 @@ func SignalHasHandlerPending(instance IObject, signal_id uint32, detail uint32, 
 // [ result ] trans: everything
 //
 func SignalListIds(itype gi.GType) (result gi.Uint32Array) {
-	iv, err := _I.Get1(1568, "GObject", "signal_list_ids", "", 195, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1570, "GObject", "signal_list_ids", "", 195, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7810,7 +7815,7 @@ func SignalListIds(itype gi.GType) (result gi.Uint32Array) {
 // [ result ] trans: nothing
 //
 func SignalLookup(name string, itype gi.GType) (result uint32) {
-	iv, err := _I.Get1(1569, "GObject", "signal_lookup", "", 196, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1571, "GObject", "signal_lookup", "", 196, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7833,7 +7838,7 @@ func SignalLookup(name string, itype gi.GType) (result uint32) {
 // [ result ] trans: nothing
 //
 func SignalName(signal_id uint32) (result string) {
-	iv, err := _I.Get1(1570, "GObject", "signal_name", "", 197, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1572, "GObject", "signal_name", "", 197, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7855,7 +7860,7 @@ func SignalName(signal_id uint32) (result string) {
 // [ class_closure ] trans: nothing
 //
 func SignalOverrideClassClosure(signal_id uint32, instance_type gi.GType, class_closure Closure) {
-	iv, err := _I.Get1(1571, "GObject", "signal_override_class_closure", "", 198, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1573, "GObject", "signal_override_class_closure", "", 198, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7882,7 +7887,7 @@ func SignalOverrideClassClosure(signal_id uint32, instance_type gi.GType, class_
 // [ result ] trans: nothing
 //
 func SignalParseName(detailed_signal string, itype gi.GType, force_detail_quark bool) (result bool, signal_id_p uint32, detail_p uint32) {
-	iv, err := _I.Get1(1572, "GObject", "signal_parse_name", "", 199, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1574, "GObject", "signal_parse_name", "", 199, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7911,7 +7916,7 @@ func SignalParseName(detailed_signal string, itype gi.GType, force_detail_quark 
 // [ query ] trans: nothing, dir: out
 //
 func SignalQueryF(signal_id uint32, query SignalQuery) {
-	iv, err := _I.Get1(1573, "GObject", "signal_query", "", 200, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1575, "GObject", "signal_query", "", 200, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7929,7 +7934,7 @@ func SignalQueryF(signal_id uint32, query SignalQuery) {
 // [ hook_id ] trans: nothing
 //
 func SignalRemoveEmissionHook(signal_id uint32, hook_id uint64) {
-	iv, err := _I.Get1(1574, "GObject", "signal_remove_emission_hook", "", 201, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1576, "GObject", "signal_remove_emission_hook", "", 201, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7949,7 +7954,7 @@ func SignalRemoveEmissionHook(signal_id uint32, hook_id uint64) {
 // [ va_marshaller ] trans: nothing
 //
 func SignalSetVaMarshaller(signal_id uint32, instance_type gi.GType, va_marshaller int /*TODO_TYPE isPtr: false, tag: interface*/) {
-	iv, err := _I.Get1(1575, "GObject", "signal_set_va_marshaller", "", 202, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1577, "GObject", "signal_set_va_marshaller", "", 202, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7970,7 +7975,7 @@ func SignalSetVaMarshaller(signal_id uint32, instance_type gi.GType, va_marshall
 // [ detail ] trans: nothing
 //
 func SignalStopEmission(instance IObject, signal_id uint32, detail uint32) {
-	iv, err := _I.Get1(1576, "GObject", "signal_stop_emission", "", 203, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1578, "GObject", "signal_stop_emission", "", 203, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -7993,7 +7998,7 @@ func SignalStopEmission(instance IObject, signal_id uint32, detail uint32) {
 // [ detailed_signal ] trans: nothing
 //
 func SignalStopEmissionByName(instance IObject, detailed_signal string) {
-	iv, err := _I.Get1(1577, "GObject", "signal_stop_emission_by_name", "", 204, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1579, "GObject", "signal_stop_emission_by_name", "", 204, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8019,7 +8024,7 @@ func SignalStopEmissionByName(instance IObject, detailed_signal string) {
 // [ result ] trans: nothing
 //
 func SignalTypeCclosureNew(itype gi.GType, struct_offset uint32) (result Closure) {
-	iv, err := _I.Get1(1578, "GObject", "signal_type_cclosure_new", "", 205, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1580, "GObject", "signal_type_cclosure_new", "", 205, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8040,7 +8045,7 @@ func SignalTypeCclosureNew(itype gi.GType, struct_offset uint32) (result Closure
 // [ closure ] trans: nothing
 //
 func SourceSetClosure(source Source, closure Closure) {
-	iv, err := _I.Get1(1579, "GObject", "source_set_closure", "", 206, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1581, "GObject", "source_set_closure", "", 206, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8056,7 +8061,7 @@ func SourceSetClosure(source Source, closure Closure) {
 // [ source ] trans: nothing
 //
 func SourceSetDummyCallback(source Source) {
-	iv, err := _I.Get1(1580, "GObject", "source_set_dummy_callback", "", 207, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1582, "GObject", "source_set_dummy_callback", "", 207, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8073,7 +8078,7 @@ func SourceSetDummyCallback(source Source) {
 // [ result ] trans: everything
 //
 func StrdupValueContents(value Value) (result string) {
-	iv, err := _I.Get1(1581, "GObject", "strdup_value_contents", "", 208, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1583, "GObject", "strdup_value_contents", "", 208, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8093,7 +8098,7 @@ func StrdupValueContents(value Value) (result string) {
 // [ private_size ] trans: nothing
 //
 func TypeAddClassPrivate(class_type gi.GType, private_size uint64) {
-	iv, err := _I.Get1(1582, "GObject", "type_add_class_private", "", 209, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1584, "GObject", "type_add_class_private", "", 209, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8113,7 +8118,7 @@ func TypeAddClassPrivate(class_type gi.GType, private_size uint64) {
 // [ result ] trans: nothing
 //
 func TypeAddInstancePrivate(class_type gi.GType, private_size uint64) (result int32) {
-	iv, err := _I.Get1(1583, "GObject", "type_add_instance_private", "", 210, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1585, "GObject", "type_add_instance_private", "", 210, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8136,7 +8141,7 @@ func TypeAddInstancePrivate(class_type gi.GType, private_size uint64) (result in
 // [ plugin ] trans: nothing
 //
 func TypeAddInterfaceDynamic(instance_type gi.GType, interface_type gi.GType, plugin ITypePlugin) {
-	iv, err := _I.Get1(1584, "GObject", "type_add_interface_dynamic", "", 211, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1586, "GObject", "type_add_interface_dynamic", "", 211, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8161,7 +8166,7 @@ func TypeAddInterfaceDynamic(instance_type gi.GType, interface_type gi.GType, pl
 // [ info ] trans: nothing
 //
 func TypeAddInterfaceStatic(instance_type gi.GType, interface_type gi.GType, info InterfaceInfo) {
-	iv, err := _I.Get1(1585, "GObject", "type_add_interface_static", "", 212, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1587, "GObject", "type_add_interface_static", "", 212, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8182,7 +8187,7 @@ func TypeAddInterfaceStatic(instance_type gi.GType, interface_type gi.GType, inf
 // [ result ] trans: nothing
 //
 func TypeCheckClassIsA(g_class TypeClass, is_a_type gi.GType) (result bool) {
-	iv, err := _I.Get1(1586, "GObject", "type_check_class_is_a", "", 213, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1588, "GObject", "type_check_class_is_a", "", 213, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8203,7 +8208,7 @@ func TypeCheckClassIsA(g_class TypeClass, is_a_type gi.GType) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeCheckInstance(instance TypeInstance) (result bool) {
-	iv, err := _I.Get1(1587, "GObject", "type_check_instance", "", 214, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1589, "GObject", "type_check_instance", "", 214, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8225,7 +8230,7 @@ func TypeCheckInstance(instance TypeInstance) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeCheckInstanceIsA(instance TypeInstance, iface_type gi.GType) (result bool) {
-	iv, err := _I.Get1(1588, "GObject", "type_check_instance_is_a", "", 215, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1590, "GObject", "type_check_instance_is_a", "", 215, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8248,7 +8253,7 @@ func TypeCheckInstanceIsA(instance TypeInstance, iface_type gi.GType) (result bo
 // [ result ] trans: nothing
 //
 func TypeCheckInstanceIsFundamentallyA(instance TypeInstance, fundamental_type gi.GType) (result bool) {
-	iv, err := _I.Get1(1589, "GObject", "type_check_instance_is_fundamentally_a", "", 216, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1591, "GObject", "type_check_instance_is_fundamentally_a", "", 216, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8269,7 +8274,7 @@ func TypeCheckInstanceIsFundamentallyA(instance TypeInstance, fundamental_type g
 // [ result ] trans: nothing
 //
 func TypeCheckIsValueType(type1 gi.GType) (result bool) {
-	iv, err := _I.Get1(1590, "GObject", "type_check_is_value_type", "", 217, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1592, "GObject", "type_check_is_value_type", "", 217, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8289,7 +8294,7 @@ func TypeCheckIsValueType(type1 gi.GType) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeCheckValue(value Value) (result bool) {
-	iv, err := _I.Get1(1591, "GObject", "type_check_value", "", 218, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1593, "GObject", "type_check_value", "", 218, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8311,7 +8316,7 @@ func TypeCheckValue(value Value) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeCheckValueHolds(value Value, type1 gi.GType) (result bool) {
-	iv, err := _I.Get1(1592, "GObject", "type_check_value_holds", "", 219, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1594, "GObject", "type_check_value_holds", "", 219, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8334,7 +8339,7 @@ func TypeCheckValueHolds(value Value, type1 gi.GType) (result bool) {
 // [ result ] trans: everything
 //
 func TypeChildren(type1 gi.GType) (result gi.GTypeArray) {
-	iv, err := _I.Get1(1593, "GObject", "type_children", "", 220, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1595, "GObject", "type_children", "", 220, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8359,7 +8364,7 @@ func TypeChildren(type1 gi.GType) (result gi.GTypeArray) {
 // [ private_size_or_offset ] trans: nothing
 //
 func TypeClassAdjustPrivateOffset(g_class unsafe.Pointer, private_size_or_offset int32) {
-	iv, err := _I.Get1(1594, "GObject", "type_class_adjust_private_offset", "", 221, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1596, "GObject", "type_class_adjust_private_offset", "", 221, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8377,7 +8382,7 @@ func TypeClassAdjustPrivateOffset(g_class unsafe.Pointer, private_size_or_offset
 // [ result ] trans: nothing
 //
 func TypeClassPeek(type1 gi.GType) (result TypeClass) {
-	iv, err := _I.Get1(1595, "GObject", "type_class_peek", "", 222, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1597, "GObject", "type_class_peek", "", 222, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8397,7 +8402,7 @@ func TypeClassPeek(type1 gi.GType) (result TypeClass) {
 // [ result ] trans: nothing
 //
 func TypeClassPeekStatic(type1 gi.GType) (result TypeClass) {
-	iv, err := _I.Get1(1596, "GObject", "type_class_peek_static", "", 223, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1598, "GObject", "type_class_peek_static", "", 223, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8417,7 +8422,7 @@ func TypeClassPeekStatic(type1 gi.GType) (result TypeClass) {
 // [ result ] trans: nothing
 //
 func TypeClassRef(type1 gi.GType) (result TypeClass) {
-	iv, err := _I.Get1(1597, "GObject", "type_class_ref", "", 224, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1599, "GObject", "type_class_ref", "", 224, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8437,7 +8442,7 @@ func TypeClassRef(type1 gi.GType) (result TypeClass) {
 // [ result ] trans: nothing
 //
 func TypeDefaultInterfacePeek(g_type gi.GType) (result TypeInterface) {
-	iv, err := _I.Get1(1598, "GObject", "type_default_interface_peek", "", 225, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1600, "GObject", "type_default_interface_peek", "", 225, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8457,7 +8462,7 @@ func TypeDefaultInterfacePeek(g_type gi.GType) (result TypeInterface) {
 // [ result ] trans: nothing
 //
 func TypeDefaultInterfaceRef(g_type gi.GType) (result TypeInterface) {
-	iv, err := _I.Get1(1599, "GObject", "type_default_interface_ref", "", 226, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1601, "GObject", "type_default_interface_ref", "", 226, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8475,7 +8480,7 @@ func TypeDefaultInterfaceRef(g_type gi.GType) (result TypeInterface) {
 // [ g_iface ] trans: nothing
 //
 func TypeDefaultInterfaceUnref(g_iface TypeInterface) {
-	iv, err := _I.Get1(1600, "GObject", "type_default_interface_unref", "", 227, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1602, "GObject", "type_default_interface_unref", "", 227, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8492,7 +8497,7 @@ func TypeDefaultInterfaceUnref(g_iface TypeInterface) {
 // [ result ] trans: nothing
 //
 func TypeDepth(type1 gi.GType) (result uint32) {
-	iv, err := _I.Get1(1601, "GObject", "type_depth", "", 228, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1603, "GObject", "type_depth", "", 228, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8510,7 +8515,7 @@ func TypeDepth(type1 gi.GType) (result uint32) {
 // [ type1 ] trans: nothing
 //
 func TypeEnsure(type1 gi.GType) {
-	iv, err := _I.Get1(1602, "GObject", "type_ensure", "", 229, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1604, "GObject", "type_ensure", "", 229, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8525,7 +8530,7 @@ func TypeEnsure(type1 gi.GType) {
 // [ instance ] trans: nothing
 //
 func TypeFreeInstance(instance TypeInstance) {
-	iv, err := _I.Get1(1603, "GObject", "type_free_instance", "", 230, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1605, "GObject", "type_free_instance", "", 230, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8542,7 +8547,7 @@ func TypeFreeInstance(instance TypeInstance) {
 // [ result ] trans: nothing
 //
 func TypeFromName(name string) (result gi.GType) {
-	iv, err := _I.Get1(1604, "GObject", "type_from_name", "", 231, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1606, "GObject", "type_from_name", "", 231, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8564,7 +8569,7 @@ func TypeFromName(name string) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeFundamental(type_id gi.GType) (result gi.GType) {
-	iv, err := _I.Get1(1605, "GObject", "type_fundamental", "", 232, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1607, "GObject", "type_fundamental", "", 232, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8582,7 +8587,7 @@ func TypeFundamental(type_id gi.GType) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeFundamentalNext() (result gi.GType) {
-	iv, err := _I.Get1(1606, "GObject", "type_fundamental_next", "", 233, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1608, "GObject", "type_fundamental_next", "", 233, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8600,7 +8605,7 @@ func TypeFundamentalNext() (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeGetInstanceCount(type1 gi.GType) (result int32) {
-	iv, err := _I.Get1(1607, "GObject", "type_get_instance_count", "", 234, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1609, "GObject", "type_get_instance_count", "", 234, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8620,7 +8625,7 @@ func TypeGetInstanceCount(type1 gi.GType) (result int32) {
 // [ result ] trans: nothing
 //
 func TypeGetPlugin(type1 gi.GType) (result TypePlugin) {
-	iv, err := _I.Get1(1608, "GObject", "type_get_plugin", "", 235, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1610, "GObject", "type_get_plugin", "", 235, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8642,7 +8647,7 @@ func TypeGetPlugin(type1 gi.GType) (result TypePlugin) {
 // [ result ] trans: nothing
 //
 func TypeGetQdata(type1 gi.GType, quark uint32) (result unsafe.Pointer) {
-	iv, err := _I.Get1(1609, "GObject", "type_get_qdata", "", 236, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1611, "GObject", "type_get_qdata", "", 236, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8661,7 +8666,7 @@ func TypeGetQdata(type1 gi.GType, quark uint32) (result unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func TypeGetTypeRegistrationSerial() (result uint32) {
-	iv, err := _I.Get1(1610, "GObject", "type_get_type_registration_serial", "", 237, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1612, "GObject", "type_get_type_registration_serial", "", 237, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8677,7 +8682,7 @@ func TypeGetTypeRegistrationSerial() (result uint32) {
 // g_type_init
 //
 func TypeInit() {
-	iv, err := _I.Get1(1611, "GObject", "type_init", "", 238, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1613, "GObject", "type_init", "", 238, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8692,7 +8697,7 @@ func TypeInit() {
 // [ debug_flags ] trans: nothing
 //
 func TypeInitWithDebugFlags(debug_flags TypeDebugFlags) {
-	iv, err := _I.Get1(1612, "GObject", "type_init_with_debug_flags", "", 239, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1614, "GObject", "type_init_with_debug_flags", "", 239, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8709,7 +8714,7 @@ func TypeInitWithDebugFlags(debug_flags TypeDebugFlags) {
 // [ prerequisite_type ] trans: nothing
 //
 func TypeInterfaceAddPrerequisite(interface_type gi.GType, prerequisite_type gi.GType) {
-	iv, err := _I.Get1(1613, "GObject", "type_interface_add_prerequisite", "", 240, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1615, "GObject", "type_interface_add_prerequisite", "", 240, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8729,7 +8734,7 @@ func TypeInterfaceAddPrerequisite(interface_type gi.GType, prerequisite_type gi.
 // [ result ] trans: nothing
 //
 func TypeInterfaceGetPlugin(instance_type gi.GType, interface_type gi.GType) (result TypePlugin) {
-	iv, err := _I.Get1(1614, "GObject", "type_interface_get_plugin", "", 241, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1616, "GObject", "type_interface_get_plugin", "", 241, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8752,7 +8757,7 @@ func TypeInterfaceGetPlugin(instance_type gi.GType, interface_type gi.GType) (re
 // [ result ] trans: nothing
 //
 func TypeInterfacePeek(instance_class TypeClass, iface_type gi.GType) (result TypeInterface) {
-	iv, err := _I.Get1(1615, "GObject", "type_interface_peek", "", 242, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1617, "GObject", "type_interface_peek", "", 242, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8775,7 +8780,7 @@ func TypeInterfacePeek(instance_class TypeClass, iface_type gi.GType) (result Ty
 // [ result ] trans: everything
 //
 func TypeInterfacePrerequisites(interface_type gi.GType) (result gi.GTypeArray) {
-	iv, err := _I.Get1(1616, "GObject", "type_interface_prerequisites", "", 243, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1618, "GObject", "type_interface_prerequisites", "", 243, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8802,7 +8807,7 @@ func TypeInterfacePrerequisites(interface_type gi.GType) (result gi.GTypeArray) 
 // [ result ] trans: everything
 //
 func TypeInterfaces(type1 gi.GType) (result gi.GTypeArray) {
-	iv, err := _I.Get1(1617, "GObject", "type_interfaces", "", 244, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1619, "GObject", "type_interfaces", "", 244, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8829,7 +8834,7 @@ func TypeInterfaces(type1 gi.GType) (result gi.GTypeArray) {
 // [ result ] trans: nothing
 //
 func TypeIsA(type1 gi.GType, is_a_type gi.GType) (result bool) {
-	iv, err := _I.Get1(1618, "GObject", "type_is_a", "", 245, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1620, "GObject", "type_is_a", "", 245, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8850,7 +8855,7 @@ func TypeIsA(type1 gi.GType, is_a_type gi.GType) (result bool) {
 // [ result ] trans: nothing
 //
 func TypeName(type1 gi.GType) (result string) {
-	iv, err := _I.Get1(1619, "GObject", "type_name", "", 246, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1621, "GObject", "type_name", "", 246, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8870,7 +8875,7 @@ func TypeName(type1 gi.GType) (result string) {
 // [ result ] trans: nothing
 //
 func TypeNameFromClass(g_class TypeClass) (result string) {
-	iv, err := _I.Get1(1620, "GObject", "type_name_from_class", "", 247, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1622, "GObject", "type_name_from_class", "", 247, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8890,7 +8895,7 @@ func TypeNameFromClass(g_class TypeClass) (result string) {
 // [ result ] trans: nothing
 //
 func TypeNameFromInstance(instance TypeInstance) (result string) {
-	iv, err := _I.Get1(1621, "GObject", "type_name_from_instance", "", 248, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1623, "GObject", "type_name_from_instance", "", 248, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8912,7 +8917,7 @@ func TypeNameFromInstance(instance TypeInstance) (result string) {
 // [ result ] trans: nothing
 //
 func TypeNextBase(leaf_type gi.GType, root_type gi.GType) (result gi.GType) {
-	iv, err := _I.Get1(1622, "GObject", "type_next_base", "", 249, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1624, "GObject", "type_next_base", "", 249, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8933,7 +8938,7 @@ func TypeNextBase(leaf_type gi.GType, root_type gi.GType) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeParent(type1 gi.GType) (result gi.GType) {
-	iv, err := _I.Get1(1623, "GObject", "type_parent", "", 250, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1625, "GObject", "type_parent", "", 250, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8953,7 +8958,7 @@ func TypeParent(type1 gi.GType) (result gi.GType) {
 // [ result ] trans: nothing
 //
 func TypeQname(type1 gi.GType) (result uint32) {
-	iv, err := _I.Get1(1624, "GObject", "type_qname", "", 251, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1626, "GObject", "type_qname", "", 251, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8973,7 +8978,7 @@ func TypeQname(type1 gi.GType) (result uint32) {
 // [ query ] trans: nothing, dir: out
 //
 func TypeQueryF(type1 gi.GType, query TypeQuery) {
-	iv, err := _I.Get1(1625, "GObject", "type_query", "", 252, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1627, "GObject", "type_query", "", 252, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -8997,7 +9002,7 @@ func TypeQueryF(type1 gi.GType, query TypeQuery) {
 // [ result ] trans: nothing
 //
 func TypeRegisterDynamic(parent_type gi.GType, type_name string, plugin ITypePlugin, flags TypeFlags) (result gi.GType) {
-	iv, err := _I.Get1(1626, "GObject", "type_register_dynamic", "", 253, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1628, "GObject", "type_register_dynamic", "", 253, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9034,7 +9039,7 @@ func TypeRegisterDynamic(parent_type gi.GType, type_name string, plugin ITypePlu
 // [ result ] trans: nothing
 //
 func TypeRegisterFundamental(type_id gi.GType, type_name string, info TypeInfo, finfo TypeFundamentalInfo, flags TypeFlags) (result gi.GType) {
-	iv, err := _I.Get1(1627, "GObject", "type_register_fundamental", "", 254, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1629, "GObject", "type_register_fundamental", "", 254, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9066,7 +9071,7 @@ func TypeRegisterFundamental(type_id gi.GType, type_name string, info TypeInfo, 
 // [ result ] trans: nothing
 //
 func TypeRegisterStatic(parent_type gi.GType, type_name string, info TypeInfo, flags TypeFlags) (result gi.GType) {
-	iv, err := _I.Get1(1628, "GObject", "type_register_static", "", 255, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1630, "GObject", "type_register_static", "", 255, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9093,7 +9098,7 @@ func TypeRegisterStatic(parent_type gi.GType, type_name string, info TypeInfo, f
 // [ data ] trans: nothing
 //
 func TypeSetQdata(type1 gi.GType, quark uint32, data unsafe.Pointer) {
-	iv, err := _I.Get1(1629, "GObject", "type_set_qdata", "", 256, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1631, "GObject", "type_set_qdata", "", 256, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9114,7 +9119,7 @@ func TypeSetQdata(type1 gi.GType, quark uint32, data unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func TypeTestFlags(type1 gi.GType, flags uint32) (result bool) {
-	iv, err := _I.Get1(1630, "GObject", "type_test_flags", "", 257, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1632, "GObject", "type_test_flags", "", 257, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9137,7 +9142,7 @@ func TypeTestFlags(type1 gi.GType, flags uint32) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueTypeCompatible(src_type gi.GType, dest_type gi.GType) (result bool) {
-	iv, err := _I.Get1(1631, "GObject", "value_type_compatible", "", 258, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1633, "GObject", "value_type_compatible", "", 258, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -9160,7 +9165,7 @@ func ValueTypeCompatible(src_type gi.GType, dest_type gi.GType) (result bool) {
 // [ result ] trans: nothing
 //
 func ValueTypeTransformable(src_type gi.GType, dest_type gi.GType) (result bool) {
-	iv, err := _I.Get1(1632, "GObject", "value_type_transformable", "", 259, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get1(1634, "GObject", "value_type_transformable", "", 259, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

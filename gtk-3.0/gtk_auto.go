@@ -85590,6 +85590,8 @@ func IconThemeErrorQuark() (result uint32) {
 	return
 }
 
+// black function Init
+
 // gtk_init_check
 //
 // [ argc ] trans: everything, dir: inout
@@ -85599,7 +85601,7 @@ func IconThemeErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
-	iv, err := _I.Get(3724, "init_check", "", 1322, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3725, "init_check", "", 1322, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85626,7 +85628,7 @@ func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 // [ result ] trans: nothing
 //
 func InitWithArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/, parameter_string string, entries unsafe.Pointer, translation_domain string) (result bool, err error) {
-	iv, err := _I.Get(3725, "init_with_args", "", 1323, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3726, "init_with_args", "", 1323, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -85654,7 +85656,7 @@ func InitWithArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/, parameter_stri
 // [ snooper_handler_id ] trans: nothing
 //
 func KeySnooperRemove(snooper_handler_id uint32) {
-	iv, err := _I.Get(3726, "key_snooper_remove", "", 1324, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3727, "key_snooper_remove", "", 1324, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85667,7 +85669,7 @@ func KeySnooperRemove(snooper_handler_id uint32) {
 // gtk_main
 //
 func Main() {
-	iv, err := _I.Get(3727, "main", "", 1325, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3728, "main", "", 1325, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85680,7 +85682,7 @@ func Main() {
 // [ event ] trans: nothing
 //
 func MainDoEvent(event gdk.Event) {
-	iv, err := _I.Get(3728, "main_do_event", "", 1326, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3729, "main_do_event", "", 1326, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85695,7 +85697,7 @@ func MainDoEvent(event gdk.Event) {
 // [ result ] trans: nothing
 //
 func MainIteration() (result bool) {
-	iv, err := _I.Get(3729, "main_iteration", "", 1327, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3730, "main_iteration", "", 1327, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85713,7 +85715,7 @@ func MainIteration() (result bool) {
 // [ result ] trans: nothing
 //
 func MainIterationDo(blocking bool) (result bool) {
-	iv, err := _I.Get(3730, "main_iteration_do", "", 1328, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3731, "main_iteration_do", "", 1328, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85731,7 +85733,7 @@ func MainIterationDo(blocking bool) (result bool) {
 // [ result ] trans: nothing
 //
 func MainLevel() (result uint32) {
-	iv, err := _I.Get(3731, "main_level", "", 1329, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3732, "main_level", "", 1329, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85745,7 +85747,7 @@ func MainLevel() (result uint32) {
 // gtk_main_quit
 //
 func MainQuit() {
-	iv, err := _I.Get(3732, "main_quit", "", 1330, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3733, "main_quit", "", 1330, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85782,7 +85784,7 @@ func MainQuit() {
 // [ height ] trans: nothing
 //
 func PaintArrow(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, arrow_type ArrowTypeEnum, fill bool, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3733, "paint_arrow", "", 1331, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3734, "paint_arrow", "", 1331, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85838,7 +85840,7 @@ func PaintArrow(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow
 // [ height ] trans: nothing
 //
 func PaintBox(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3734, "paint_box", "", 1332, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3735, "paint_box", "", 1332, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85898,7 +85900,7 @@ func PaintBox(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_t
 // [ gap_width ] trans: nothing
 //
 func PaintBoxGap(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32, gap_side PositionTypeEnum, gap_x int32, gap_width int32) {
-	iv, err := _I.Get(3735, "paint_box_gap", "", 1333, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3736, "paint_box_gap", "", 1333, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -85955,7 +85957,7 @@ func PaintBoxGap(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 // [ height ] trans: nothing
 //
 func PaintCheck(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3736, "paint_check", "", 1334, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3737, "paint_check", "", 1334, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86009,7 +86011,7 @@ func PaintCheck(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow
 // [ height ] trans: nothing
 //
 func PaintDiamond(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3737, "paint_diamond", "", 1335, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3738, "paint_diamond", "", 1335, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86059,7 +86061,7 @@ func PaintDiamond(style IStyle, cr cairo.Context, state_type StateTypeEnum, shad
 // [ expander_style ] trans: nothing
 //
 func PaintExpander(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget IWidget, detail string, x int32, y int32, expander_style ExpanderStyleEnum) {
-	iv, err := _I.Get(3738, "paint_expander", "", 1336, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3739, "paint_expander", "", 1336, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86113,7 +86115,7 @@ func PaintExpander(style IStyle, cr cairo.Context, state_type StateTypeEnum, wid
 // [ gap_side ] trans: nothing
 //
 func PaintExtension(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32, gap_side PositionTypeEnum) {
-	iv, err := _I.Get(3739, "paint_extension", "", 1337, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3740, "paint_extension", "", 1337, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86168,7 +86170,7 @@ func PaintExtension(style IStyle, cr cairo.Context, state_type StateTypeEnum, sh
 // [ height ] trans: nothing
 //
 func PaintFlatBox(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3740, "paint_flat_box", "", 1338, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3741, "paint_flat_box", "", 1338, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86220,7 +86222,7 @@ func PaintFlatBox(style IStyle, cr cairo.Context, state_type StateTypeEnum, shad
 // [ height ] trans: nothing
 //
 func PaintFocus(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3741, "paint_focus", "", 1339, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3742, "paint_focus", "", 1339, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86275,7 +86277,7 @@ func PaintFocus(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget
 // [ orientation ] trans: nothing
 //
 func PaintHandle(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32, orientation OrientationEnum) {
-	iv, err := _I.Get(3742, "paint_handle", "", 1340, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3743, "paint_handle", "", 1340, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86326,7 +86328,7 @@ func PaintHandle(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 // [ y ] trans: nothing
 //
 func PaintHline(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget IWidget, detail string, x1 int32, x2 int32, y int32) {
-	iv, err := _I.Get(3743, "paint_hline", "", 1341, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3744, "paint_hline", "", 1341, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86376,7 +86378,7 @@ func PaintHline(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget
 // [ layout ] trans: nothing
 //
 func PaintLayout(style IStyle, cr cairo.Context, state_type StateTypeEnum, use_text bool, widget IWidget, detail string, x int32, y int32, layout pango.ILayout) {
-	iv, err := _I.Get(3744, "paint_layout", "", 1342, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3745, "paint_layout", "", 1342, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86433,7 +86435,7 @@ func PaintLayout(style IStyle, cr cairo.Context, state_type StateTypeEnum, use_t
 // [ height ] trans: nothing
 //
 func PaintOption(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3745, "paint_option", "", 1343, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3746, "paint_option", "", 1343, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86487,7 +86489,7 @@ func PaintOption(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 // [ height ] trans: nothing
 //
 func PaintResizeGrip(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget IWidget, detail string, edge gdk.WindowEdgeEnum, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3746, "paint_resize_grip", "", 1344, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3747, "paint_resize_grip", "", 1344, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86541,7 +86543,7 @@ func PaintResizeGrip(style IStyle, cr cairo.Context, state_type StateTypeEnum, w
 // [ height ] trans: nothing
 //
 func PaintShadow(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3747, "paint_shadow", "", 1345, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3748, "paint_shadow", "", 1345, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86601,7 +86603,7 @@ func PaintShadow(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 // [ gap_width ] trans: nothing
 //
 func PaintShadowGap(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32, gap_side PositionTypeEnum, gap_x int32, gap_width int32) {
-	iv, err := _I.Get(3748, "paint_shadow_gap", "", 1346, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3749, "paint_shadow_gap", "", 1346, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86660,7 +86662,7 @@ func PaintShadowGap(style IStyle, cr cairo.Context, state_type StateTypeEnum, sh
 // [ orientation ] trans: nothing
 //
 func PaintSlider(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32, orientation OrientationEnum) {
-	iv, err := _I.Get(3749, "paint_slider", "", 1347, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3750, "paint_slider", "", 1347, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86715,7 +86717,7 @@ func PaintSlider(style IStyle, cr cairo.Context, state_type StateTypeEnum, shado
 // [ height ] trans: nothing
 //
 func PaintSpinner(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget IWidget, detail string, step uint32, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3750, "paint_spinner", "", 1348, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3751, "paint_spinner", "", 1348, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86769,7 +86771,7 @@ func PaintSpinner(style IStyle, cr cairo.Context, state_type StateTypeEnum, widg
 // [ height ] trans: nothing
 //
 func PaintTab(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_type ShadowTypeEnum, widget IWidget, detail string, x int32, y int32, width int32, height int32) {
-	iv, err := _I.Get(3751, "paint_tab", "", 1349, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3752, "paint_tab", "", 1349, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86819,7 +86821,7 @@ func PaintTab(style IStyle, cr cairo.Context, state_type StateTypeEnum, shadow_t
 // [ x ] trans: nothing
 //
 func PaintVline(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget IWidget, detail string, y1_ int32, y2_ int32, x int32) {
-	iv, err := _I.Get(3752, "paint_vline", "", 1350, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3753, "paint_vline", "", 1350, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86851,7 +86853,7 @@ func PaintVline(style IStyle, cr cairo.Context, state_type StateTypeEnum, widget
 // [ result ] trans: nothing
 //
 func PaperSizeGetDefault() (result string) {
-	iv, err := _I.Get(3753, "paper_size_get_default", "", 1351, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3754, "paper_size_get_default", "", 1351, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86869,7 +86871,7 @@ func PaperSizeGetDefault() (result string) {
 // [ result ] trans: everything
 //
 func PaperSizeGetPaperSizes(include_custom bool) (result g.List) {
-	iv, err := _I.Get(3754, "paper_size_get_paper_sizes", "", 1352, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3755, "paper_size_get_paper_sizes", "", 1352, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86891,7 +86893,7 @@ func PaperSizeGetPaperSizes(include_custom bool) (result g.List) {
 // [ result ] trans: nothing
 //
 func ParseArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
-	iv, err := _I.Get(3755, "parse_args", "", 1353, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3756, "parse_args", "", 1353, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86908,7 +86910,7 @@ func ParseArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 // [ result ] trans: nothing
 //
 func PrintErrorQuark() (result uint32) {
-	iv, err := _I.Get(3756, "print_error_quark", "", 1354, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3757, "print_error_quark", "", 1354, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86930,7 +86932,7 @@ func PrintErrorQuark() (result uint32) {
 // [ result ] trans: everything
 //
 func PrintRunPageSetupDialog(parent IWindow, page_setup IPageSetup, settings IPrintSettings) (result PageSetup) {
-	iv, err := _I.Get(3757, "print_run_page_setup_dialog", "", 1355, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3758, "print_run_page_setup_dialog", "", 1355, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -86970,7 +86972,7 @@ func PrintRunPageSetupDialog(parent IWindow, page_setup IPageSetup, settings IPr
 // [ data ] trans: nothing
 //
 func PrintRunPageSetupDialogAsync(parent IWindow, page_setup IPageSetup, settings IPrintSettings, fn func(v interface{})) {
-	iv, err := _I.Get(3758, "print_run_page_setup_dialog_async", "", 1356, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3759, "print_run_page_setup_dialog_async", "", 1356, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87004,7 +87006,7 @@ func PrintRunPageSetupDialogAsync(parent IWindow, page_setup IPageSetup, setting
 // [ event ] trans: nothing
 //
 func PropagateEvent(widget IWidget, event gdk.Event) {
-	iv, err := _I.Get(3759, "propagate_event", "", 1357, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3760, "propagate_event", "", 1357, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87026,7 +87028,7 @@ func PropagateEvent(widget IWidget, event gdk.Event) {
 // [ filename ] trans: nothing
 //
 func RcAddDefaultFile(filename string) {
-	iv, err := _I.Get(3760, "rc_add_default_file", "", 1358, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3761, "rc_add_default_file", "", 1358, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87047,7 +87049,7 @@ func RcAddDefaultFile(filename string) {
 // [ result ] trans: everything
 //
 func RcFindModuleInPath(module_file string) (result string) {
-	iv, err := _I.Get(3761, "rc_find_module_in_path", "", 1359, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3762, "rc_find_module_in_path", "", 1359, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87075,7 +87077,7 @@ func RcFindModuleInPath(module_file string) (result string) {
 // [ result ] trans: everything
 //
 func RcFindPixmapInPath(settings ISettings, scanner g.Scanner, pixmap_file string) (result string) {
-	iv, err := _I.Get(3762, "rc_find_pixmap_in_path", "", 1360, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3763, "rc_find_pixmap_in_path", "", 1360, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87103,7 +87105,7 @@ func RcFindPixmapInPath(settings ISettings, scanner g.Scanner, pixmap_file strin
 // [ result ] trans: nothing
 //
 func RcGetDefaultFiles() (result gi.CStrArray) {
-	iv, err := _I.Get(3763, "rc_get_default_files", "", 1361, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3764, "rc_get_default_files", "", 1361, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87122,7 +87124,7 @@ func RcGetDefaultFiles() (result gi.CStrArray) {
 // [ result ] trans: everything
 //
 func RcGetImModuleFile() (result string) {
-	iv, err := _I.Get(3764, "rc_get_im_module_file", "", 1362, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3765, "rc_get_im_module_file", "", 1362, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87140,7 +87142,7 @@ func RcGetImModuleFile() (result string) {
 // [ result ] trans: everything
 //
 func RcGetImModulePath() (result string) {
-	iv, err := _I.Get(3765, "rc_get_im_module_path", "", 1363, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3766, "rc_get_im_module_path", "", 1363, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87158,7 +87160,7 @@ func RcGetImModulePath() (result string) {
 // [ result ] trans: everything
 //
 func RcGetModuleDir() (result string) {
-	iv, err := _I.Get(3766, "rc_get_module_dir", "", 1364, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3767, "rc_get_module_dir", "", 1364, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87178,7 +87180,7 @@ func RcGetModuleDir() (result string) {
 // [ result ] trans: nothing
 //
 func RcGetStyle(widget IWidget) (result Style) {
-	iv, err := _I.Get(3767, "rc_get_style", "", 1365, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3768, "rc_get_style", "", 1365, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87210,7 +87212,7 @@ func RcGetStyle(widget IWidget) (result Style) {
 // [ result ] trans: nothing
 //
 func RcGetStyleByPaths(settings ISettings, widget_path string, class_path string, type1 gi.GType) (result Style) {
-	iv, err := _I.Get(3768, "rc_get_style_by_paths", "", 1366, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3769, "rc_get_style_by_paths", "", 1366, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87241,7 +87243,7 @@ func RcGetStyleByPaths(settings ISettings, widget_path string, class_path string
 // [ result ] trans: everything
 //
 func RcGetThemeDir() (result string) {
-	iv, err := _I.Get(3769, "rc_get_theme_dir", "", 1367, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3770, "rc_get_theme_dir", "", 1367, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87259,7 +87261,7 @@ func RcGetThemeDir() (result string) {
 // [ filename ] trans: nothing
 //
 func RcParse(filename string) {
-	iv, err := _I.Get(3770, "rc_parse", "", 1368, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3771, "rc_parse", "", 1368, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87282,7 +87284,7 @@ func RcParse(filename string) {
 // [ result ] trans: nothing
 //
 func RcParseColor(scanner g.Scanner, color gdk.Color) (result uint32) {
-	iv, err := _I.Get(3771, "rc_parse_color", "", 1369, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3772, "rc_parse_color", "", 1369, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87309,7 +87311,7 @@ func RcParseColor(scanner g.Scanner, color gdk.Color) (result uint32) {
 // [ result ] trans: nothing
 //
 func RcParseColorFull(scanner g.Scanner, style IRcStyle, color gdk.Color) (result uint32) {
-	iv, err := _I.Get(3772, "rc_parse_color_full", "", 1370, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3773, "rc_parse_color_full", "", 1370, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87330,6 +87332,9 @@ func RcParseColorFull(scanner g.Scanner, style IRcStyle, color gdk.Color) (resul
 
 // Deprecated
 //
+
+// black function RcParsePriority
+
 // Deprecated
 //
 // gtk_rc_parse_state
@@ -87341,7 +87346,7 @@ func RcParseColorFull(scanner g.Scanner, style IRcStyle, color gdk.Color) (resul
 // [ result ] trans: nothing
 //
 func RcParseState(scanner g.Scanner) (result uint32, state StateTypeEnum) {
-	iv, err := _I.Get(3773, "rc_parse_state", "", 1372, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3775, "rc_parse_state", "", 1372, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87364,7 +87369,7 @@ func RcParseState(scanner g.Scanner) (result uint32, state StateTypeEnum) {
 // [ rc_string ] trans: nothing
 //
 func RcParseString(rc_string string) {
-	iv, err := _I.Get(3774, "rc_parse_string", "", 1373, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3776, "rc_parse_string", "", 1373, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87387,7 +87392,7 @@ func RcParseString(rc_string string) {
 // [ result ] trans: nothing
 //
 func RcPropertyParseBorder(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
-	iv, err := _I.Get(3775, "rc_property_parse_border", "", 1374, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3777, "rc_property_parse_border", "", 1374, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87417,7 +87422,7 @@ func RcPropertyParseBorder(pspec g.IParamSpec, gstring g.String, property_value 
 // [ result ] trans: nothing
 //
 func RcPropertyParseColor(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
-	iv, err := _I.Get(3776, "rc_property_parse_color", "", 1375, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3778, "rc_property_parse_color", "", 1375, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87447,7 +87452,7 @@ func RcPropertyParseColor(pspec g.IParamSpec, gstring g.String, property_value g
 // [ result ] trans: nothing
 //
 func RcPropertyParseEnum(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
-	iv, err := _I.Get(3777, "rc_property_parse_enum", "", 1376, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3779, "rc_property_parse_enum", "", 1376, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87477,7 +87482,7 @@ func RcPropertyParseEnum(pspec g.IParamSpec, gstring g.String, property_value g.
 // [ result ] trans: nothing
 //
 func RcPropertyParseFlags(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
-	iv, err := _I.Get(3778, "rc_property_parse_flags", "", 1377, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3780, "rc_property_parse_flags", "", 1377, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87507,7 +87512,7 @@ func RcPropertyParseFlags(pspec g.IParamSpec, gstring g.String, property_value g
 // [ result ] trans: nothing
 //
 func RcPropertyParseRequisition(pspec g.IParamSpec, gstring g.String, property_value g.Value) (result bool) {
-	iv, err := _I.Get(3779, "rc_property_parse_requisition", "", 1378, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3781, "rc_property_parse_requisition", "", 1378, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87533,7 +87538,7 @@ func RcPropertyParseRequisition(pspec g.IParamSpec, gstring g.String, property_v
 // [ result ] trans: nothing
 //
 func RcReparseAll() (result bool) {
-	iv, err := _I.Get(3780, "rc_reparse_all", "", 1379, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3782, "rc_reparse_all", "", 1379, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87555,7 +87560,7 @@ func RcReparseAll() (result bool) {
 // [ result ] trans: nothing
 //
 func RcReparseAllForSettings(settings ISettings, force_load bool) (result bool) {
-	iv, err := _I.Get(3781, "rc_reparse_all_for_settings", "", 1380, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3783, "rc_reparse_all_for_settings", "", 1380, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87580,7 +87585,7 @@ func RcReparseAllForSettings(settings ISettings, force_load bool) (result bool) 
 // [ settings ] trans: nothing
 //
 func RcResetStyles(settings ISettings) {
-	iv, err := _I.Get(3782, "rc_reset_styles", "", 1381, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3784, "rc_reset_styles", "", 1381, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87601,7 +87606,7 @@ func RcResetStyles(settings ISettings) {
 // [ filenames ] trans: nothing
 //
 func RcSetDefaultFiles(filenames gi.CStrArray) {
-	iv, err := _I.Get(3783, "rc_set_default_files", "", 1382, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3785, "rc_set_default_files", "", 1382, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87616,7 +87621,7 @@ func RcSetDefaultFiles(filenames gi.CStrArray) {
 // [ result ] trans: nothing
 //
 func RecentChooserErrorQuark() (result uint32) {
-	iv, err := _I.Get(3784, "recent_chooser_error_quark", "", 1383, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3786, "recent_chooser_error_quark", "", 1383, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87632,7 +87637,7 @@ func RecentChooserErrorQuark() (result uint32) {
 // [ result ] trans: nothing
 //
 func RecentManagerErrorQuark() (result uint32) {
-	iv, err := _I.Get(3785, "recent_manager_error_quark", "", 1384, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3787, "recent_manager_error_quark", "", 1384, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87658,7 +87663,7 @@ func RecentManagerErrorQuark() (result uint32) {
 // [ height ] trans: nothing
 //
 func RenderActivity(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64) {
-	iv, err := _I.Get(3786, "render_activity", "", 1385, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3788, "render_activity", "", 1385, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87692,7 +87697,7 @@ func RenderActivity(context IStyleContext, cr cairo.Context, x float64, y float6
 // [ size ] trans: nothing
 //
 func RenderArrow(context IStyleContext, cr cairo.Context, angle float64, x float64, y float64, size float64) {
-	iv, err := _I.Get(3787, "render_arrow", "", 1386, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3789, "render_arrow", "", 1386, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87726,7 +87731,7 @@ func RenderArrow(context IStyleContext, cr cairo.Context, angle float64, x float
 // [ height ] trans: nothing
 //
 func RenderBackground(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64) {
-	iv, err := _I.Get(3788, "render_background", "", 1387, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3790, "render_background", "", 1387, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87760,7 +87765,7 @@ func RenderBackground(context IStyleContext, cr cairo.Context, x float64, y floa
 // [ out_clip ] trans: nothing, dir: out
 //
 func RenderBackgroundGetClip(context IStyleContext, x float64, y float64, width float64, height float64, out_clip gdk.Rectangle) {
-	iv, err := _I.Get(3789, "render_background_get_clip", "", 1388, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3791, "render_background_get_clip", "", 1388, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87794,7 +87799,7 @@ func RenderBackgroundGetClip(context IStyleContext, x float64, y float64, width 
 // [ height ] trans: nothing
 //
 func RenderCheck(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64) {
-	iv, err := _I.Get(3790, "render_check", "", 1389, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3792, "render_check", "", 1389, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87828,7 +87833,7 @@ func RenderCheck(context IStyleContext, cr cairo.Context, x float64, y float64, 
 // [ height ] trans: nothing
 //
 func RenderExpander(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64) {
-	iv, err := _I.Get(3791, "render_expander", "", 1390, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3793, "render_expander", "", 1390, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87864,7 +87869,7 @@ func RenderExpander(context IStyleContext, cr cairo.Context, x float64, y float6
 // [ gap_side ] trans: nothing
 //
 func RenderExtension(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64, gap_side PositionTypeEnum) {
-	iv, err := _I.Get(3792, "render_extension", "", 1391, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3794, "render_extension", "", 1391, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87899,7 +87904,7 @@ func RenderExtension(context IStyleContext, cr cairo.Context, x float64, y float
 // [ height ] trans: nothing
 //
 func RenderFocus(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64) {
-	iv, err := _I.Get(3793, "render_focus", "", 1392, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3795, "render_focus", "", 1392, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87933,7 +87938,7 @@ func RenderFocus(context IStyleContext, cr cairo.Context, x float64, y float64, 
 // [ height ] trans: nothing
 //
 func RenderFrame(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64) {
-	iv, err := _I.Get(3794, "render_frame", "", 1393, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3796, "render_frame", "", 1393, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -87975,7 +87980,7 @@ func RenderFrame(context IStyleContext, cr cairo.Context, x float64, y float64, 
 // [ xy1_gap ] trans: nothing
 //
 func RenderFrameGap(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64, gap_side PositionTypeEnum, xy0_gap float64, xy1_gap float64) {
-	iv, err := _I.Get(3795, "render_frame_gap", "", 1394, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3797, "render_frame_gap", "", 1394, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88012,7 +88017,7 @@ func RenderFrameGap(context IStyleContext, cr cairo.Context, x float64, y float6
 // [ height ] trans: nothing
 //
 func RenderHandle(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64) {
-	iv, err := _I.Get(3796, "render_handle", "", 1395, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3798, "render_handle", "", 1395, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88044,7 +88049,7 @@ func RenderHandle(context IStyleContext, cr cairo.Context, x float64, y float64,
 // [ y ] trans: nothing
 //
 func RenderIcon(context IStyleContext, cr cairo.Context, pixbuf gdkpixbuf.IPixbuf, x float64, y float64) {
-	iv, err := _I.Get(3797, "render_icon", "", 1396, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3799, "render_icon", "", 1396, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88079,7 +88084,7 @@ func RenderIcon(context IStyleContext, cr cairo.Context, pixbuf gdkpixbuf.IPixbu
 // [ result ] trans: everything
 //
 func RenderIconPixbuf(context IStyleContext, source IconSource, size int32) (result gdkpixbuf.Pixbuf) {
-	iv, err := _I.Get(3798, "render_icon_pixbuf", "", 1397, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3800, "render_icon_pixbuf", "", 1397, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88111,7 +88116,7 @@ func RenderIconPixbuf(context IStyleContext, source IconSource, size int32) (res
 // [ y ] trans: nothing
 //
 func RenderIconSurface(context IStyleContext, cr cairo.Context, surface cairo.Surface, x float64, y float64) {
-	iv, err := _I.Get(3799, "render_icon_surface", "", 1398, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3801, "render_icon_surface", "", 1398, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88146,7 +88151,7 @@ func RenderIconSurface(context IStyleContext, cr cairo.Context, surface cairo.Su
 // [ direction ] trans: nothing
 //
 func RenderInsertionCursor(context IStyleContext, cr cairo.Context, x float64, y float64, layout pango.ILayout, index int32, direction pango.DirectionEnum) {
-	iv, err := _I.Get(3800, "render_insertion_cursor", "", 1399, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3802, "render_insertion_cursor", "", 1399, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88183,7 +88188,7 @@ func RenderInsertionCursor(context IStyleContext, cr cairo.Context, x float64, y
 // [ layout ] trans: nothing
 //
 func RenderLayout(context IStyleContext, cr cairo.Context, x float64, y float64, layout pango.ILayout) {
-	iv, err := _I.Get(3801, "render_layout", "", 1400, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3803, "render_layout", "", 1400, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88220,7 +88225,7 @@ func RenderLayout(context IStyleContext, cr cairo.Context, x float64, y float64,
 // [ y1 ] trans: nothing
 //
 func RenderLine(context IStyleContext, cr cairo.Context, x0 float64, y0 float64, x1 float64, y1 float64) {
-	iv, err := _I.Get(3802, "render_line", "", 1401, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3804, "render_line", "", 1401, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88254,7 +88259,7 @@ func RenderLine(context IStyleContext, cr cairo.Context, x0 float64, y0 float64,
 // [ height ] trans: nothing
 //
 func RenderOption(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64) {
-	iv, err := _I.Get(3803, "render_option", "", 1402, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3805, "render_option", "", 1402, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88290,7 +88295,7 @@ func RenderOption(context IStyleContext, cr cairo.Context, x float64, y float64,
 // [ orientation ] trans: nothing
 //
 func RenderSlider(context IStyleContext, cr cairo.Context, x float64, y float64, width float64, height float64, orientation OrientationEnum) {
-	iv, err := _I.Get(3804, "render_slider", "", 1403, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3806, "render_slider", "", 1403, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88325,7 +88330,7 @@ func RenderSlider(context IStyleContext, cr cairo.Context, x float64, y float64,
 // [ v ] trans: everything, dir: out
 //
 func RgbToHsv(r float64, g float64, b float64) (h float64, s float64, v float64) {
-	iv, err := _I.Get(3805, "rgb_to_hsv", "", 1404, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3807, "rgb_to_hsv", "", 1404, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88356,7 +88361,7 @@ func RgbToHsv(r float64, g float64, b float64) (h float64, s float64, v float64)
 // [ info ] trans: nothing
 //
 func SelectionAddTarget(widget IWidget, selection gdk.Atom, target gdk.Atom, info uint32) {
-	iv, err := _I.Get(3806, "selection_add_target", "", 1405, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3808, "selection_add_target", "", 1405, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88384,7 +88389,7 @@ func SelectionAddTarget(widget IWidget, selection gdk.Atom, target gdk.Atom, inf
 // [ ntargets ] trans: nothing
 //
 func SelectionAddTargets(widget IWidget, selection gdk.Atom, targets unsafe.Pointer, ntargets uint32) {
-	iv, err := _I.Get(3807, "selection_add_targets", "", 1406, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3809, "selection_add_targets", "", 1406, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88408,7 +88413,7 @@ func SelectionAddTargets(widget IWidget, selection gdk.Atom, targets unsafe.Poin
 // [ selection ] trans: nothing
 //
 func SelectionClearTargets(widget IWidget, selection gdk.Atom) {
-	iv, err := _I.Get(3808, "selection_clear_targets", "", 1407, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3810, "selection_clear_targets", "", 1407, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88436,7 +88441,7 @@ func SelectionClearTargets(widget IWidget, selection gdk.Atom) {
 // [ result ] trans: nothing
 //
 func SelectionConvert(widget IWidget, selection gdk.Atom, target gdk.Atom, time_ uint32) (result bool) {
-	iv, err := _I.Get(3809, "selection_convert", "", 1408, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3811, "selection_convert", "", 1408, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88467,7 +88472,7 @@ func SelectionConvert(widget IWidget, selection gdk.Atom, target gdk.Atom, time_
 // [ result ] trans: nothing
 //
 func SelectionOwnerSet(widget IWidget, selection gdk.Atom, time_ uint32) (result bool) {
-	iv, err := _I.Get(3810, "selection_owner_set", "", 1409, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3812, "selection_owner_set", "", 1409, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88499,7 +88504,7 @@ func SelectionOwnerSet(widget IWidget, selection gdk.Atom, time_ uint32) (result
 // [ result ] trans: nothing
 //
 func SelectionOwnerSetForDisplay(display gdk.IDisplay, widget IWidget, selection gdk.Atom, time_ uint32) (result bool) {
-	iv, err := _I.Get(3811, "selection_owner_set_for_display", "", 1410, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3813, "selection_owner_set_for_display", "", 1410, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88528,7 +88533,7 @@ func SelectionOwnerSetForDisplay(display gdk.IDisplay, widget IWidget, selection
 // [ widget ] trans: nothing
 //
 func SelectionRemoveAll(widget IWidget) {
-	iv, err := _I.Get(3812, "selection_remove_all", "", 1411, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3814, "selection_remove_all", "", 1411, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88547,7 +88552,7 @@ func SelectionRemoveAll(widget IWidget) {
 // [ flags ] trans: nothing
 //
 func SetDebugFlags(flags uint32) {
-	iv, err := _I.Get(3813, "set_debug_flags", "", 1412, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3815, "set_debug_flags", "", 1412, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88568,7 +88573,7 @@ func SetDebugFlags(flags uint32) {
 // [ result ] trans: nothing
 //
 func ShowUri(screen gdk.IScreen, uri string, timestamp uint32) (result bool, err error) {
-	iv, err := _I.Get(3814, "show_uri", "", 1413, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3816, "show_uri", "", 1413, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -88602,7 +88607,7 @@ func ShowUri(screen gdk.IScreen, uri string, timestamp uint32) (result bool, err
 // [ result ] trans: nothing
 //
 func ShowUriOnWindow(parent IWindow, uri string, timestamp uint32) (result bool, err error) {
-	iv, err := _I.Get(3815, "show_uri_on_window", "", 1414, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3817, "show_uri_on_window", "", 1414, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
@@ -88634,7 +88639,7 @@ func ShowUriOnWindow(parent IWindow, uri string, timestamp uint32) (result bool,
 // [ n_items ] trans: nothing
 //
 func StockAdd(items unsafe.Pointer, n_items uint32) {
-	iv, err := _I.Get(3816, "stock_add", "", 1415, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3818, "stock_add", "", 1415, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88654,7 +88659,7 @@ func StockAdd(items unsafe.Pointer, n_items uint32) {
 // [ n_items ] trans: nothing
 //
 func StockAddStatic(items unsafe.Pointer, n_items uint32) {
-	iv, err := _I.Get(3817, "stock_add_static", "", 1416, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3819, "stock_add_static", "", 1416, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88672,7 +88677,7 @@ func StockAddStatic(items unsafe.Pointer, n_items uint32) {
 // [ result ] trans: everything
 //
 func StockListIds() (result g.SList) {
-	iv, err := _I.Get(3818, "stock_list_ids", "", 1417, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3820, "stock_list_ids", "", 1417, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88694,7 +88699,7 @@ func StockListIds() (result g.SList) {
 // [ result ] trans: nothing
 //
 func StockLookup(stock_id string, item StockItem) (result bool) {
-	iv, err := _I.Get(3819, "stock_lookup", "", 1418, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3821, "stock_lookup", "", 1418, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88723,7 +88728,7 @@ func StockLookup(stock_id string, item StockItem) (result bool) {
 // [ notify ] trans: nothing
 //
 func StockSetTranslateFunc(domain string, fn func(v interface{})) {
-	iv, err := _I.Get(3820, "stock_set_translate_func", "", 1419, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3822, "stock_set_translate_func", "", 1419, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88746,7 +88751,7 @@ func StockSetTranslateFunc(domain string, fn func(v interface{})) {
 // [ n_targets ] trans: nothing
 //
 func TargetTableFree(targets unsafe.Pointer, n_targets int32) {
-	iv, err := _I.Get(3821, "target_table_free", "", 1420, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3823, "target_table_free", "", 1420, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88766,7 +88771,7 @@ func TargetTableFree(targets unsafe.Pointer, n_targets int32) {
 // [ result ] trans: everything
 //
 func TargetTableNewFromList(list TargetList) (result unsafe.Pointer) {
-	iv, err := _I.Get(3822, "target_table_new_from_list", "", 1421, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3824, "target_table_new_from_list", "", 1421, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88795,7 +88800,7 @@ func TargetTableNewFromList(list TargetList) (result unsafe.Pointer) {
 // [ result ] trans: nothing
 //
 func TargetsIncludeImage(targets gi.PointerArray, n_targets int32, writable bool) (result bool) {
-	iv, err := _I.Get(3823, "targets_include_image", "", 1422, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3825, "targets_include_image", "", 1422, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88821,7 +88826,7 @@ func TargetsIncludeImage(targets gi.PointerArray, n_targets int32, writable bool
 // [ result ] trans: nothing
 //
 func TargetsIncludeRichText(targets gi.PointerArray, n_targets int32, buffer ITextBuffer) (result bool) {
-	iv, err := _I.Get(3824, "targets_include_rich_text", "", 1423, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3826, "targets_include_rich_text", "", 1423, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88849,7 +88854,7 @@ func TargetsIncludeRichText(targets gi.PointerArray, n_targets int32, buffer ITe
 // [ result ] trans: nothing
 //
 func TargetsIncludeText(targets gi.PointerArray, n_targets int32) (result bool) {
-	iv, err := _I.Get(3825, "targets_include_text", "", 1424, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3827, "targets_include_text", "", 1424, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88872,7 +88877,7 @@ func TargetsIncludeText(targets gi.PointerArray, n_targets int32) (result bool) 
 // [ result ] trans: nothing
 //
 func TargetsIncludeUri(targets gi.PointerArray, n_targets int32) (result bool) {
-	iv, err := _I.Get(3826, "targets_include_uri", "", 1425, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3828, "targets_include_uri", "", 1425, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88897,7 +88902,7 @@ func TargetsIncludeUri(targets gi.PointerArray, n_targets int32) (result bool) {
 // [ result ] trans: nothing
 //
 func TestCreateSimpleWindow(window_title string, dialog_text string) (result Widget) {
-	iv, err := _I.Get(3827, "test_create_simple_window", "", 1426, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3829, "test_create_simple_window", "", 1426, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88924,7 +88929,7 @@ func TestCreateSimpleWindow(window_title string, dialog_text string) (result Wid
 // [ result ] trans: nothing
 //
 func TestFindLabel(widget IWidget, label_pattern string) (result Widget) {
-	iv, err := _I.Get(3828, "test_find_label", "", 1427, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3830, "test_find_label", "", 1427, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88953,7 +88958,7 @@ func TestFindLabel(widget IWidget, label_pattern string) (result Widget) {
 // [ result ] trans: nothing
 //
 func TestFindSibling(base_widget IWidget, widget_type gi.GType) (result Widget) {
-	iv, err := _I.Get(3829, "test_find_sibling", "", 1428, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3831, "test_find_sibling", "", 1428, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -88982,7 +88987,7 @@ func TestFindSibling(base_widget IWidget, widget_type gi.GType) (result Widget) 
 // [ result ] trans: nothing
 //
 func TestFindWidget(widget IWidget, label_pattern string, widget_type gi.GType) (result Widget) {
-	iv, err := _I.Get(3830, "test_find_widget", "", 1429, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3832, "test_find_widget", "", 1429, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89010,7 +89015,7 @@ func TestFindWidget(widget IWidget, label_pattern string, widget_type gi.GType) 
 // [ result ] trans: nothing
 //
 func TestListAllTypes() (result gi.GTypeArray) {
-	iv, err := _I.Get(3831, "test_list_all_types", "", 1430, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3833, "test_list_all_types", "", 1430, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89030,7 +89035,7 @@ func TestListAllTypes() (result gi.GTypeArray) {
 // gtk_test_register_all_types
 //
 func TestRegisterAllTypes() {
-	iv, err := _I.Get(3832, "test_register_all_types", "", 1431, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3834, "test_register_all_types", "", 1431, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89047,7 +89052,7 @@ func TestRegisterAllTypes() {
 // [ result ] trans: nothing
 //
 func TestSliderGetValue(widget IWidget) (result float64) {
-	iv, err := _I.Get(3833, "test_slider_get_value", "", 1432, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3835, "test_slider_get_value", "", 1432, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89073,7 +89078,7 @@ func TestSliderGetValue(widget IWidget) (result float64) {
 // [ percentage ] trans: nothing
 //
 func TestSliderSetPerc(widget IWidget, percentage float64) {
-	iv, err := _I.Get(3834, "test_slider_set_perc", "", 1433, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3836, "test_slider_set_perc", "", 1433, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89101,7 +89106,7 @@ func TestSliderSetPerc(widget IWidget, percentage float64) {
 // [ result ] trans: nothing
 //
 func TestSpinButtonClick(spinner ISpinButton, button uint32, upwards bool) (result bool) {
-	iv, err := _I.Get(3835, "test_spin_button_click", "", 1434, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3837, "test_spin_button_click", "", 1434, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89129,7 +89134,7 @@ func TestSpinButtonClick(spinner ISpinButton, button uint32, upwards bool) (resu
 // [ result ] trans: everything
 //
 func TestTextGet(widget IWidget) (result string) {
-	iv, err := _I.Get(3836, "test_text_get", "", 1435, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3838, "test_text_get", "", 1435, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89155,7 +89160,7 @@ func TestTextGet(widget IWidget) (result string) {
 // [ string ] trans: nothing
 //
 func TestTextSet(widget IWidget, string string) {
-	iv, err := _I.Get(3837, "test_text_set", "", 1436, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3839, "test_text_set", "", 1436, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89185,7 +89190,7 @@ func TestTextSet(widget IWidget, string string) {
 // [ result ] trans: nothing
 //
 func TestWidgetClick(widget IWidget, button uint32, modifiers gdk.ModifierTypeFlags) (result bool) {
-	iv, err := _I.Get(3838, "test_widget_click", "", 1437, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3840, "test_widget_click", "", 1437, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89215,7 +89220,7 @@ func TestWidgetClick(widget IWidget, button uint32, modifiers gdk.ModifierTypeFl
 // [ result ] trans: nothing
 //
 func TestWidgetSendKey(widget IWidget, keyval uint32, modifiers gdk.ModifierTypeFlags) (result bool) {
-	iv, err := _I.Get(3839, "test_widget_send_key", "", 1438, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3841, "test_widget_send_key", "", 1438, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89239,7 +89244,7 @@ func TestWidgetSendKey(widget IWidget, keyval uint32, modifiers gdk.ModifierType
 // [ widget ] trans: nothing
 //
 func TestWidgetWaitForDraw(widget IWidget) {
-	iv, err := _I.Get(3840, "test_widget_wait_for_draw", "", 1439, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3842, "test_widget_wait_for_draw", "", 1439, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89264,7 +89269,7 @@ func TestWidgetWaitForDraw(widget IWidget) {
 // [ result ] trans: nothing
 //
 func TreeGetRowDragData(selection_data SelectionData) (result bool, tree_model TreeModel, path TreePath) {
-	iv, err := _I.Get(3841, "tree_get_row_drag_data", "", 1440, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3843, "tree_get_row_drag_data", "", 1440, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89289,7 +89294,7 @@ func TreeGetRowDragData(selection_data SelectionData) (result bool, tree_model T
 // [ path ] trans: nothing
 //
 func TreeRowReferenceDeleted(proxy g.IObject, path TreePath) {
-	iv, err := _I.Get(3842, "tree_row_reference_deleted", "", 1441, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3844, "tree_row_reference_deleted", "", 1441, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89311,7 +89316,7 @@ func TreeRowReferenceDeleted(proxy g.IObject, path TreePath) {
 // [ path ] trans: nothing
 //
 func TreeRowReferenceInserted(proxy g.IObject, path TreePath) {
-	iv, err := _I.Get(3843, "tree_row_reference_inserted", "", 1442, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3845, "tree_row_reference_inserted", "", 1442, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89337,7 +89342,7 @@ func TreeRowReferenceInserted(proxy g.IObject, path TreePath) {
 // [ result ] trans: nothing
 //
 func TreeSetRowDragData(selection_data SelectionData, tree_model ITreeModel, path TreePath) (result bool) {
-	iv, err := _I.Get(3844, "tree_set_row_drag_data", "", 1443, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3846, "tree_set_row_drag_data", "", 1443, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
@@ -89361,7 +89366,7 @@ func TreeSetRowDragData(selection_data SelectionData, tree_model ITreeModel, pat
 // [ result ] trans: nothing
 //
 func True() (result bool) {
-	iv, err := _I.Get(3845, "true", "", 1444, 0, gi.INFO_TYPE_FUNCTION, 0)
+	iv, err := _I.Get(3847, "true", "", 1444, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return

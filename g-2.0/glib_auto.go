@@ -23407,35 +23407,7 @@ func HostnameToUnicode(hostname string) (result string) {
 	return
 }
 
-// g_idle_add_full
-//
-// [ priority ] trans: nothing
-//
-// [ function ] trans: nothing
-//
-// [ data ] trans: nothing
-//
-// [ notify ] trans: nothing
-//
-// [ result ] trans: nothing
-//
-func IdleAdd(priority int32, fn func(v interface{})) (result uint32) {
-	iv, err := _I.Get(973, "idle_add", "", 499, 0, gi.INFO_TYPE_FUNCTION, 0)
-	if err != nil {
-		log.Println("WARN:", err)
-		return
-	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_priority := gi.NewInt32Argument(priority)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
-	args := []gi.Argument{arg_priority, arg_function, arg_fn, arg_notify}
-	var ret gi.Argument
-	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
-	return
-}
+// black function IdleAdd
 
 // g_idle_remove_by_data
 //
@@ -28405,71 +28377,9 @@ func TimeValFromIso8601(iso_date string, time_ TimeVal) (result bool) {
 	return
 }
 
-// g_timeout_add_full
-//
-// [ priority ] trans: nothing
-//
-// [ interval ] trans: nothing
-//
-// [ function ] trans: nothing
-//
-// [ data ] trans: nothing
-//
-// [ notify ] trans: nothing
-//
-// [ result ] trans: nothing
-//
-func TimeoutAdd(priority int32, interval uint32, fn func(v interface{})) (result uint32) {
-	iv, err := _I.Get(1199, "timeout_add", "", 725, 0, gi.INFO_TYPE_FUNCTION, 0)
-	if err != nil {
-		log.Println("WARN:", err)
-		return
-	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_priority := gi.NewInt32Argument(priority)
-	arg_interval := gi.NewUint32Argument(interval)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
-	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_fn, arg_notify}
-	var ret gi.Argument
-	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
-	return
-}
+// black function TimeoutAdd
 
-// g_timeout_add_seconds_full
-//
-// [ priority ] trans: nothing
-//
-// [ interval ] trans: nothing
-//
-// [ function ] trans: nothing
-//
-// [ data ] trans: nothing
-//
-// [ notify ] trans: nothing
-//
-// [ result ] trans: nothing
-//
-func TimeoutAddSeconds(priority int32, interval uint32, fn func(v interface{})) (result uint32) {
-	iv, err := _I.Get(1200, "timeout_add_seconds", "", 726, 0, gi.INFO_TYPE_FUNCTION, 0)
-	if err != nil {
-		log.Println("WARN:", err)
-		return
-	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_priority := gi.NewInt32Argument(priority)
-	arg_interval := gi.NewUint32Argument(interval)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
-	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_fn, arg_notify}
-	var ret gi.Argument
-	iv.Call(args, &ret, nil)
-	result = ret.Uint32()
-	return
-}
+// black function TimeoutAddSeconds
 
 // g_timeout_source_new
 //
