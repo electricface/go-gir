@@ -43,34 +43,34 @@ const (
 	ScopeNotified
 )
 
-var funcNextId uint
-var funcMap = make(map[uint]Closure)
-var funcMapMu sync.RWMutex
+var _funcNextId uint
+var _funcMap = make(map[uint]Closure)
+var _funcMapMu sync.RWMutex
 
-func RegisterFunc(fn func(v interface{}), scope Scope) unsafe.Pointer {
-	funcMapMu.Lock()
+func RegisterFunc(fn func(v interface{}), scope Scope) uint {
+	_funcMapMu.Lock()
 
-	id := funcNextId
-	funcMap[id] = Closure{
+	id := _funcNextId
+	_funcMap[id] = Closure{
 		Fn:    fn,
 		Scope: scope,
 	}
-	funcNextId++
+	_funcNextId++
 
-	funcMapMu.Unlock()
-	return unsafe.Pointer(uintptr(unsafe.Pointer(nil)) + uintptr(id))
+	_funcMapMu.Unlock()
+	return id
 }
 
-func UnregisterFunc(fnId unsafe.Pointer) {
-	funcMapMu.Lock()
-	delete(funcMap, uint(uintptr(fnId)))
-	funcMapMu.Unlock()
+func UnregisterFunc(id uint) {
+	_funcMapMu.Lock()
+	delete(_funcMap, id)
+	_funcMapMu.Unlock()
 }
 
 func GetFunc(id uint) Closure {
-	funcMapMu.RLock()
-	c := funcMap[id]
-	funcMapMu.RUnlock()
+	_funcMapMu.RLock()
+	c := _funcMap[id]
+	_funcMapMu.RUnlock()
 	return c
 }
 
@@ -254,6 +254,10 @@ func Bool2Int(v bool) int {
 	return 0
 }
 
+func Uint2Ptr(n uint) unsafe.Pointer {
+	return unsafe.Pointer(uintptr(unsafe.Pointer(nil)) + uintptr(n))
+}
+
 type Enum int
 
 type Flags uint
@@ -264,3 +268,66 @@ type Ulong uint64
 
 var TypeInt = reflect.TypeOf(0)
 var TypeUint = reflect.TypeOf(uint(0))
+
+func Store(args []interface{}, destSlice ...interface{}) {
+	for i, arg := range args {
+		if i >= len(destSlice) {
+			break
+		}
+		dest := destSlice[i]
+		store(arg, dest)
+	}
+}
+
+func StoreStruct(args []interface{}, dest interface{}) {
+	rv := reflect.ValueOf(dest)
+	if rv.Kind() == reflect.Ptr {
+		elem := rv.Elem()
+		if elem.Kind() == reflect.Struct {
+			num := elem.NumField()
+			for i := 0; i < num; i++ {
+				if i >= len(args) {
+					break
+				}
+				src := args[i]
+				f := elem.Field(i)
+				store(src, f.Addr().Interface())
+			}
+		}
+	}
+}
+
+func store(src interface{}, dest interface{}) {
+	switch a := src.(type) {
+	case unsafe.Pointer:
+		left, ok := dest.(*unsafe.Pointer)
+		if ok {
+			*left = a
+		} else {
+			storeStructFieldP(dest, a)
+		}
+	default:
+		srcRv := reflect.ValueOf(src)
+		if srcRv.Kind() == reflect.Struct {
+			p := srcRv.FieldByName("P")
+			if p.Kind() == reflect.UnsafePointer {
+				// src 是有 P unsafe.Pointer 在字段的结构体，比如 g.Object
+				storeStructFieldP(dest, unsafe.Pointer(p.Pointer()))
+			}
+		}
+		// TODO: 支持更多的类型
+	}
+}
+
+func storeStructFieldP(dest interface{}, ptr unsafe.Pointer) {
+	rv := reflect.ValueOf(dest)
+	if rv.Kind() == reflect.Ptr {
+		elem := rv.Elem()
+		if elem.Kind() == reflect.Struct {
+			p := elem.FieldByName("P")
+			if p.IsValid() && p.Kind() == reflect.UnsafePointer {
+				p.SetPointer(ptr)
+			}
+		}
+	}
+}

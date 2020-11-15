@@ -1140,7 +1140,7 @@ func NewBufferWrappedFull(flags MemoryFlags, data gi.Uint8Array, maxsize uint64,
 	arg_maxsize := gi.NewUint64Argument(maxsize)
 	arg_offset := gi.NewUint64Argument(offset)
 	arg_size := gi.NewUint64Argument(size)
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_flags, arg_data, arg_maxsize, arg_offset, arg_size, arg_fn, arg_notify}
 	var ret gi.Argument
@@ -1525,7 +1525,7 @@ func (v Buffer) ForeachMeta(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myBufferForeachMetaFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2328,7 +2328,7 @@ func myGstBufferForeachMetaFunc(buffer *C.GstBuffer, meta C.gpointer, user_data 
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -2432,7 +2432,7 @@ func (v BufferList) Foreach(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myBufferListFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2558,7 +2558,7 @@ func myGstBufferListFunc(buffer C.gpointer, idx C.guint32, user_data C.gpointer)
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -3146,7 +3146,7 @@ func (v Bus) AddWatch(priority int32, fn func(v interface{})) (result uint32) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myBusFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_priority, arg_func1, arg_fn, arg_notify}
 	var ret gi.Argument
@@ -3423,7 +3423,7 @@ func (v Bus) SetSyncHandler(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myBusSyncHandler()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -3532,7 +3532,7 @@ func myGstBusFunc(bus *C.GstBus, message *C.GstMessage, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -3566,7 +3566,7 @@ func myGstBusSyncHandler(bus *C.GstBus, message *C.GstMessage, user_data C.gpoin
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -3759,7 +3759,7 @@ func (v Caps) FilterAndMapInPlace(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCapsFilterMapFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -3800,7 +3800,7 @@ func (v Caps) Foreach(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCapsForeachFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4135,7 +4135,7 @@ func (v Caps) MapInPlace(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCapsMapFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -4766,7 +4766,7 @@ func myGstCapsFilterMapFunc(features *C.GstCapsFeatures, structure *C.GstStructu
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -4802,7 +4802,7 @@ func myGstCapsForeachFunc(features *C.GstCapsFeatures, structure *C.GstStructure
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -4839,7 +4839,7 @@ func myGstCapsMapFunc(features *C.GstCapsFeatures, structure *C.GstStructure, us
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -5200,7 +5200,7 @@ func ClockIdWaitAsync1(id unsafe.Pointer, fn func(v interface{})) (result ClockR
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_id := gi.NewPointerArgument(id)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myClockCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy_data := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_id, arg_func1, arg_fn, arg_destroy_data}
 	var ret gi.Argument
@@ -5771,7 +5771,7 @@ func myGstClockCallback(clock *C.GstClock, time C.guint64, id C.gpointer, user_d
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -8414,7 +8414,7 @@ func (v Element) CallAsync(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myElementCallAsyncFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy_notify}
 	iv.Call(args, nil, nil)
@@ -8492,7 +8492,7 @@ func (v Element) ForeachPad(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myElementForeachPadFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -8518,7 +8518,7 @@ func (v Element) ForeachSinkPad(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myElementForeachPadFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -8544,7 +8544,7 @@ func (v Element) ForeachSrcPad(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myElementForeachPadFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9800,7 +9800,7 @@ func myGstElementCallAsyncFunc(element *C.GstElement, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -10487,7 +10487,7 @@ func myGstElementForeachPadFunc(element *C.GstElement, pad *C.GstPad, user_data 
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -12339,7 +12339,7 @@ func (v Iterator) FindCustom(elem g.Value, fn func(v interface{})) (result bool)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myCompareFunc()))
 	arg_elem := gi.NewPointerArgument(elem.P)
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_elem, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -12368,7 +12368,7 @@ func (v Iterator) Fold(ret g.Value, fn func(v interface{})) (result IteratorResu
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myIteratorFoldFunction()))
 	arg_ret := gi.NewPointerArgument(ret.P)
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_ret, arg_fn}
 	var ret1 gi.Argument
 	iv.Call(args, &ret1, nil)
@@ -12394,7 +12394,7 @@ func (v Iterator) Foreach(fn func(v interface{})) (result IteratorResultEnum) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myIteratorForeachFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -12499,7 +12499,7 @@ func myGstIteratorFoldFunction(item *C.GValue, ret *C.GValue, user_data C.gpoint
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -12521,7 +12521,7 @@ func myGstIteratorForeachFunction(item *C.GValue, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -12671,7 +12671,7 @@ func myGstLogFunction(category *C.GstDebugCategory, level C.GstDebugLevel, file 
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -12744,7 +12744,7 @@ func NewMemoryWrapped(flags MemoryFlags, data gi.Uint8Array, maxsize uint64, off
 	arg_maxsize := gi.NewUint64Argument(maxsize)
 	arg_offset := gi.NewUint64Argument(offset)
 	arg_size := gi.NewUint64Argument(size)
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_flags, arg_data, arg_maxsize, arg_offset, arg_size, arg_fn, arg_notify}
 	var ret gi.Argument
@@ -16032,7 +16032,7 @@ func myGstMiniObjectNotify(user_data C.gpointer, obj *C.GstMiniObject) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -16813,7 +16813,7 @@ func (v Pad) AddProbe(mask PadProbeTypeFlags, fn func(v interface{})) (result ui
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_mask := gi.NewIntArgument(int(mask))
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadProbeCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy_data := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_mask, arg_callback, arg_fn, arg_destroy_data}
 	var ret gi.Argument
@@ -16982,7 +16982,7 @@ func (v Pad) Forward(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_forward := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadForwardFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_forward, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -18076,7 +18076,7 @@ func (v Pad) SetActivateFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_activate := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadActivateFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_activate, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18099,7 +18099,7 @@ func (v Pad) SetActivatemodeFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_activatemode := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadActivateModeFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_activatemode, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18143,7 +18143,7 @@ func (v Pad) SetChainFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_chain := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadChainFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_chain, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18166,7 +18166,7 @@ func (v Pad) SetChainListFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_chainlist := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadChainListFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_chainlist, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18205,7 +18205,7 @@ func (v Pad) SetEventFullFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_event := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadEventFullFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_event, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18228,7 +18228,7 @@ func (v Pad) SetEventFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_event := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadEventFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_event, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18251,7 +18251,7 @@ func (v Pad) SetGetrangeFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_get := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadGetRangeFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_get, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18274,7 +18274,7 @@ func (v Pad) SetIterateInternalLinksFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iterintlink := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadIterIntLinkFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_iterintlink, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18297,7 +18297,7 @@ func (v Pad) SetLinkFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_link := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadLinkFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_link, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18336,7 +18336,7 @@ func (v Pad) SetQueryFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_query := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadQueryFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_query, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18359,7 +18359,7 @@ func (v Pad) SetUnlinkFunctionFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_unlink := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadUnlinkFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_unlink, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -18384,7 +18384,7 @@ func (v Pad) StartTask(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTaskFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_notify}
 	var ret gi.Argument
@@ -18408,7 +18408,7 @@ func (v Pad) StickyEventsForeach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_foreach_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPadStickyEventsForeachFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_foreach_func, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -18639,7 +18639,7 @@ func myGstPadForwardFunction(pad *C.GstPad, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -18782,7 +18782,7 @@ func myGstPadProbeCallback(pad *C.GstPad, info *C.GstPadProbeInfo, user_data C.g
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -18954,7 +18954,7 @@ func myGstPadStickyEventsForeachFunction(pad *C.GstPad, event *C.GstEvent, user_
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -19740,7 +19740,7 @@ func PluginRegisterStaticFull1(major_version int32, minor_version int32, name st
 	arg_source := gi.NewStringArgument(c_source)
 	arg_package1 := gi.NewStringArgument(c_package1)
 	arg_origin := gi.NewStringArgument(c_origin)
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_major_version, arg_minor_version, arg_name, arg_description, arg_init_full_func, arg_version, arg_license, arg_source, arg_package1, arg_origin, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -20311,7 +20311,7 @@ func myGstPluginFeatureFilter(feature *C.GstPluginFeature, user_data C.gpointer)
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -20333,7 +20333,7 @@ func myGstPluginFilter(plugin *C.GstPlugin, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -20368,7 +20368,7 @@ func myGstPluginInitFullFunc(plugin *C.GstPlugin, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -21082,7 +21082,7 @@ func NewPromiseWithChangeFunc(fn func(v interface{})) (result Promise) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPromiseChangeFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_func1, arg_fn, arg_notify}
 	var ret gi.Argument
@@ -21186,7 +21186,7 @@ func myGstPromiseChangeFunc(promise *C.GstPromise, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -23430,7 +23430,7 @@ func (v Registry) FeatureFilter(first bool, fn func(v interface{})) (result g.Li
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_filter := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPluginFeatureFilter()))
 	arg_first := gi.NewBoolArgument(first)
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_filter, arg_first, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23634,7 +23634,7 @@ func (v Registry) PluginFilter(first bool, fn func(v interface{})) (result g.Lis
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_filter := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPluginFilter()))
 	arg_first := gi.NewBoolArgument(first)
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_filter, arg_first, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -25153,7 +25153,7 @@ func (v Structure) FilterAndMapInPlace(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myStructureFilterMapFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -25347,7 +25347,7 @@ func (v Structure) Foreach(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myStructureForeachFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -26133,7 +26133,7 @@ func (v Structure) MapInPlace(fn func(v interface{})) (result bool) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myStructureMapFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -26412,7 +26412,7 @@ func myGstStructureFilterMapFunc(field_id C.guint32, value *C.GValue, user_data 
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -26436,7 +26436,7 @@ func myGstStructureForeachFunc(field_id C.guint32, value *C.GValue, user_data C.
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -26460,7 +26460,7 @@ func myGstStructureMapFunc(field_id C.guint32, value *C.GValue, user_data C.gpoi
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -26562,7 +26562,7 @@ func myGstTagForeachFunc(list *C.GstTagList, tag *C.gchar, user_data C.gpointer)
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -26656,7 +26656,7 @@ func (v TagList) Foreach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTagForeachFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -27872,7 +27872,7 @@ func NewTask(fn func(v interface{})) (result Task) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTaskFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_func1, arg_fn, arg_notify}
 	var ret gi.Argument
@@ -27981,7 +27981,7 @@ func (v Task) SetEnterCallback(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_enter_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTaskThreadFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_enter_func, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -28004,7 +28004,7 @@ func (v Task) SetLeaveCallback(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_leave_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTaskThreadFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_leave_func, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -28119,7 +28119,7 @@ func myGstTaskFunction(user_data C.gpointer) {
 		args := &TaskFunctionStruct{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -28217,7 +28217,7 @@ func (v TaskPool) Push(fn func(v interface{})) (result unsafe.Pointer, err error
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTaskPoolFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_err}
 	var ret gi.Argument
@@ -28243,7 +28243,7 @@ func myGstTaskPoolFunction(user_data C.gpointer) {
 		args := &TaskPoolFunctionStruct{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -28291,7 +28291,7 @@ func myGstTaskThreadFunc(task *C.GstTask, thread *C.GThread, user_data C.gpointe
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -29150,7 +29150,7 @@ func TypeFindRegister1(plugin IPlugin, name string, rank uint32, extensions stri
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTypeFindFunction()))
 	arg_extensions := gi.NewStringArgument(c_extensions)
 	arg_possible_caps := gi.NewPointerArgument(possible_caps.P)
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_data_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_plugin, arg_name, arg_rank, arg_func1, arg_extensions, arg_possible_caps, arg_fn, arg_data_notify}
 	var ret gi.Argument
@@ -29282,7 +29282,7 @@ func myGstTypeFindFunction(find *C.GstTypeFind, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -30907,7 +30907,7 @@ func DebugAddLogFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myLogFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -33134,7 +33134,7 @@ func TypeFindRegister(plugin IPlugin, name string, rank uint32, extensions strin
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTypeFindFunction()))
 	arg_extensions := gi.NewStringArgument(c_extensions)
 	arg_possible_caps := gi.NewPointerArgument(possible_caps.P)
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_data_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_plugin, arg_name, arg_rank, arg_func1, arg_extensions, arg_possible_caps, arg_fn, arg_data_notify}
 	var ret gi.Argument
@@ -33426,7 +33426,7 @@ func UtilArrayBinarySearch(array unsafe.Pointer, num_elements uint32, element_si
 	arg_search_func := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myCompareDataFunc()))
 	arg_mode := gi.NewIntArgument(int(mode))
 	arg_search_data := gi.NewPointerArgument(search_data)
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_array, arg_num_elements, arg_element_size, arg_search_func, arg_mode, arg_search_data, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

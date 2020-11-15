@@ -5660,7 +5660,7 @@ func (v CollectPads) SetBufferFunction(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsBufferFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -5681,7 +5681,7 @@ func (v CollectPads) SetClipFunction(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_clipfunc := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsClipFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_clipfunc, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -5702,7 +5702,7 @@ func (v CollectPads) SetCompareFunction(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsCompareFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -5723,7 +5723,7 @@ func (v CollectPads) SetEventFunction(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsEventFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -5744,7 +5744,7 @@ func (v CollectPads) SetFlushFunction(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsFlushFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -5781,7 +5781,7 @@ func (v CollectPads) SetFunction(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -5802,7 +5802,7 @@ func (v CollectPads) SetQueryFunction(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsQueryFunction()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -5926,7 +5926,7 @@ func myGstBaseCollectPadsBufferFunction(pads *C.GstCollectPads, data *C.GstColle
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -5956,7 +5956,7 @@ func myGstBaseCollectPadsClipFunction(pads *C.GstCollectPads, data *C.GstCollect
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -5986,7 +5986,7 @@ func myGstBaseCollectPadsCompareFunction(pads *C.GstCollectPads, data1 *C.GstCol
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -6012,7 +6012,7 @@ func myGstBaseCollectPadsEventFunction(pads *C.GstCollectPads, pad *C.GstCollect
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -6034,7 +6034,7 @@ func myGstBaseCollectPadsFlushFunction(pads *C.GstCollectPads, user_data C.gpoin
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -6056,7 +6056,7 @@ func myGstBaseCollectPadsFunction(pads *C.GstCollectPads, user_data C.gpointer) 
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -6092,7 +6092,7 @@ func myGstBaseCollectPadsQueryFunction(pads *C.GstCollectPads, pad *C.GstCollect
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }

@@ -493,7 +493,7 @@ func myGstNetPtpStatisticsCallback(domain C.guint8, stats *C.GstStructure, user_
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -750,7 +750,7 @@ func PtpStatisticsCallbackAdd(fn func(v interface{})) (result uint64) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPtpStatisticsCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy_data := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_callback, arg_fn, arg_destroy_data}
 	var ret gi.Argument

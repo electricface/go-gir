@@ -1046,7 +1046,7 @@ func myAtkFunction(user_data C.gpointer) {
 		args := &FunctionStruct{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -1612,7 +1612,7 @@ func myAtkKeySnoopFunc(event *C.AtkKeyEventStruct, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }

@@ -4030,7 +4030,7 @@ func EventHandlerSet1(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -7086,7 +7086,7 @@ func (v Seat) Grab(window IWindow, capabilities SeatCapabilitiesFlags, owner_eve
 	arg_cursor := gi.NewPointerArgument(tmp1)
 	arg_event := gi.NewPointerArgument(event.P)
 	arg_prepare_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySeatGrabPrepareFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_window, arg_capabilities, arg_owner_events, arg_cursor, arg_event, arg_prepare_func, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -7145,7 +7145,7 @@ func myGdkSeatGrabPrepareFunc(seat *C.GdkSeat, window *C.GdkWindow, user_data C.
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -9367,7 +9367,7 @@ func (v Window) InvalidateMaybeRecurse(region cairo.Region, fn func(v interface{
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_region := gi.NewPointerArgument(region.P)
 	arg_child_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myWindowChildFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_region, arg_child_func, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -10731,7 +10731,7 @@ func myGdkWindowChildFunc(window *C.GdkWindow, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -11752,7 +11752,7 @@ func EventHandlerSet(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -13243,7 +13243,7 @@ func ThreadsAddIdle(priority int32, fn func(v interface{})) (result uint32) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_function := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySourceFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_function, arg_fn, arg_notify}
 	var ret gi.Argument
@@ -13276,7 +13276,7 @@ func ThreadsAddTimeout(priority int32, interval uint32, fn func(v interface{})) 
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_interval := gi.NewUint32Argument(interval)
 	arg_function := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySourceFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_fn, arg_notify}
 	var ret gi.Argument
@@ -13309,7 +13309,7 @@ func ThreadsAddTimeoutSeconds(priority int32, interval uint32, fn func(v interfa
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_interval := gi.NewUint32Argument(interval)
 	arg_function := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySourceFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_fn, arg_notify}
 	var ret gi.Argument

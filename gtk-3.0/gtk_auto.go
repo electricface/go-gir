@@ -1110,7 +1110,7 @@ func (v AccelGroup) Find(fn func(v interface{})) (result AccelKey) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_find_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myAccelGroupFindFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_find_func, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3114,7 +3114,7 @@ func (v ActionGroup) SetTranslateFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTranslateFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -5960,7 +5960,7 @@ func (v Assistant) SetForwardPageFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_page_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myAssistantPageFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_page_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -7544,7 +7544,7 @@ func (v Builder) ConnectSignalsFull(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myBuilderConnectFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -7846,7 +7846,7 @@ func myGtkBuilderConnectFunc(builder *C.GtkBuilder, object *C.GObject, signal_na
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -8919,7 +8919,7 @@ func (v Calendar) SetDetailFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCalendarDetailFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -9014,7 +9014,7 @@ func myGtkCalendarDetailFunc(calendar *C.GtkCalendar, year C.guint32, month C.gu
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -9856,7 +9856,7 @@ func (v CellArea) Foreach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCellCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -9897,7 +9897,7 @@ func (v CellArea) ForeachAlloc(context ICellAreaContext, widget IWidget, cell_ar
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_background_area := gi.NewPointerArgument(background_area.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCellAllocCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_context, arg_widget, arg_cell_area, arg_background_area, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -11292,7 +11292,7 @@ func (v *CellLayoutIfc) SetCellDataFunc(cell ICellRenderer, fn func(v interface{
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_cell := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCellLayoutDataFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_cell, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -13308,7 +13308,7 @@ func (v Clipboard) RequestContents(target gdk.Atom, fn func(v interface{})) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_target := gi.NewPointerArgument(target.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myClipboardReceivedFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_target, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -13328,7 +13328,7 @@ func (v Clipboard) RequestImage(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myClipboardImageReceivedFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -13355,7 +13355,7 @@ func (v Clipboard) RequestRichText(buffer ITextBuffer, fn func(v interface{})) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_buffer := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myClipboardRichTextReceivedFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_buffer, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -13375,7 +13375,7 @@ func (v Clipboard) RequestTargets(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myClipboardTargetsReceivedFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -13395,7 +13395,7 @@ func (v Clipboard) RequestText(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myClipboardTextReceivedFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -13415,7 +13415,7 @@ func (v Clipboard) RequestUris(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myClipboardURIReceivedFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -15485,7 +15485,7 @@ func (v ComboBox) SetRowSeparatorFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewRowSeparatorFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -16010,7 +16010,7 @@ func (v Container) Forall(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -16031,7 +16031,7 @@ func (v Container) Foreach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -19871,7 +19871,7 @@ func (v EntryCompletion) SetMatchFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEntryCompletionMatchFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_func_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_func_notify}
 	iv.Call(args, nil, nil)
@@ -20000,7 +20000,7 @@ func myGtkEntryCompletionMatchFunc(completion *C.GtkEntryCompletion, key *C.gcha
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -22694,7 +22694,7 @@ func (v FileFilter) AddCustom(needed FileFilterFlags, fn func(v interface{})) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_needed := gi.NewIntArgument(int(needed))
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFileFilterFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_needed, arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
@@ -23047,7 +23047,7 @@ func (v FlowBox) BindModel(model g.IListModel, fn func(v interface{})) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_model := gi.NewPointerArgument(tmp)
 	arg_create_widget_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFlowBoxCreateWidgetFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_user_data_free_func := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_model, arg_create_widget_func, arg_fn, arg_user_data_free_func}
 	iv.Call(args, nil, nil)
@@ -23339,7 +23339,7 @@ func (v FlowBox) SelectedForeach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFlowBoxForeachFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -23394,7 +23394,7 @@ func (v FlowBox) SetFilterFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_filter_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFlowBoxFilterFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_filter_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -23517,7 +23517,7 @@ func (v FlowBox) SetSortFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_sort_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFlowBoxSortFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_sort_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -23723,7 +23723,7 @@ func myGtkFlowBoxCreateWidgetFunc(item *C.GObject, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -23745,7 +23745,7 @@ func myGtkFlowBoxFilterFunc(child *C.GtkFlowBoxChild, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -23769,7 +23769,7 @@ func myGtkFlowBoxForeachFunc(box *C.GtkFlowBox, child *C.GtkFlowBoxChild, user_d
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -23793,7 +23793,7 @@ func myGtkFlowBoxSortFunc(child1 *C.GtkFlowBoxChild, child2 *C.GtkFlowBoxChild, 
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -24311,7 +24311,7 @@ func (v *FontChooserIfc) SetFilterFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_filter := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFontFilterFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_filter, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -29183,7 +29183,7 @@ func (v IconInfo) LoadIconAsync(cancellable g.ICancellable, fn func(v interface{
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -29312,7 +29312,7 @@ func (v IconInfo) LoadSymbolicAsync(fg gdk.RGBA, success_color gdk.RGBA, warning
 	arg_error_color := gi.NewPointerArgument(error_color.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_fg, arg_success_color, arg_warning_color, arg_error_color, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -29408,7 +29408,7 @@ func (v IconInfo) LoadSymbolicForContextAsync(context IStyleContext, cancellable
 	arg_context := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_context, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -31766,7 +31766,7 @@ func (v IconView) SelectedForeach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myIconViewForeachFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -35535,7 +35535,7 @@ func (v ListBox) BindModel(model g.IListModel, fn func(v interface{})) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_model := gi.NewPointerArgument(tmp)
 	arg_create_widget_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myListBoxCreateWidgetFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_user_data_free_func := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_model, arg_create_widget_func, arg_fn, arg_user_data_free_func}
 	iv.Call(args, nil, nil)
@@ -35836,7 +35836,7 @@ func (v ListBox) SelectedForeach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myListBoxForeachFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -35895,7 +35895,7 @@ func (v ListBox) SetFilterFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_filter_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myListBoxFilterFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_filter_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -35918,7 +35918,7 @@ func (v ListBox) SetHeaderFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_update_header := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myListBoxUpdateHeaderFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_update_header, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -35977,7 +35977,7 @@ func (v ListBox) SetSortFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_sort_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myListBoxSortFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_sort_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -36064,7 +36064,7 @@ func myGtkListBoxCreateWidgetFunc(item *C.GObject, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -36086,7 +36086,7 @@ func myGtkListBoxFilterFunc(row *C.GtkListBoxRow, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -36110,7 +36110,7 @@ func myGtkListBoxForeachFunc(box *C.GtkListBox, row *C.GtkListBoxRow, user_data 
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -36341,7 +36341,7 @@ func myGtkListBoxSortFunc(row1 *C.GtkListBoxRow, row2 *C.GtkListBoxRow, user_dat
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -36365,7 +36365,7 @@ func myGtkListBoxUpdateHeaderFunc(row *C.GtkListBoxRow, before *C.GtkListBoxRow,
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -37220,7 +37220,7 @@ func (v Menu) Popup(parent_menu_shell IWidget, parent_menu_item IWidget, fn func
 	arg_parent_menu_shell := gi.NewPointerArgument(tmp)
 	arg_parent_menu_item := gi.NewPointerArgument(tmp1)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myMenuPositionFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_button := gi.NewUint32Argument(button)
 	arg_activate_time := gi.NewUint32Argument(activate_time)
 	args := []gi.Argument{arg_v, arg_parent_menu_shell, arg_parent_menu_item, arg_func1, arg_fn, arg_button, arg_activate_time}
@@ -37348,7 +37348,7 @@ func (v Menu) PopupForDevice(device gdk.IDevice, parent_menu_shell IWidget, pare
 	arg_parent_menu_shell := gi.NewPointerArgument(tmp1)
 	arg_parent_menu_item := gi.NewPointerArgument(tmp2)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myMenuPositionFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	arg_button := gi.NewUint32Argument(button)
 	arg_activate_time := gi.NewUint32Argument(activate_time)
@@ -38451,7 +38451,7 @@ func myGtkMenuPositionFunc(menu *C.GtkMenu, x C.gpointer, y C.gpointer, push_in 
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -45208,7 +45208,7 @@ func (v PrintSettings) Foreach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPrintSettingsFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -46576,7 +46576,7 @@ func myGtkPrintSettingsFunc(key *C.gchar, value *C.gchar, user_data C.gpointer) 
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -49302,7 +49302,7 @@ func (v *RecentChooserIfc) SetSortFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_sort_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myRecentSortFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_data_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_sort_func, arg_fn, arg_data_destroy}
 	iv.Call(args, nil, nil)
@@ -49672,7 +49672,7 @@ func (v RecentFilter) AddCustom(needed RecentFilterFlags, fn func(v interface{})
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_needed := gi.NewIntArgument(int(needed))
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myRecentFilterFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_data_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_needed, arg_func1, arg_fn, arg_data_destroy}
 	iv.Call(args, nil, nil)
@@ -49854,7 +49854,7 @@ func myGtkRecentFilterFunc(filter_info *C.GtkRecentFilterInfo, user_data C.gpoin
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -50669,7 +50669,7 @@ func myGtkRecentSortFunc(a *C.GtkRecentInfo, b *C.GtkRecentInfo, user_data C.gpo
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -60721,7 +60721,7 @@ func (v TextBuffer) RegisterDeserializeFormat(mime_type string, fn func(v interf
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_mime_type := gi.NewStringArgument(c_mime_type)
 	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTextBufferDeserializeFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_user_data_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_mime_type, arg_function, arg_fn, arg_user_data_destroy}
 	var ret gi.Argument
@@ -60777,7 +60777,7 @@ func (v TextBuffer) RegisterSerializeFormat(mime_type string, fn func(v interfac
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_mime_type := gi.NewStringArgument(c_mime_type)
 	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTextBufferSerializeFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_user_data_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_mime_type, arg_function, arg_fn, arg_user_data_destroy}
 	var ret gi.Argument
@@ -61057,7 +61057,7 @@ func myGtkTextBufferDeserializeFunc(register_buffer *C.GtkTextBuffer, content_bu
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -61097,7 +61097,7 @@ func myGtkTextBufferSerializeFunc(register_buffer *C.GtkTextBuffer, content_buff
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -61162,7 +61162,7 @@ func myGtkTextCharPredicate(ch C.gunichar, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -61388,7 +61388,7 @@ func (v TextIter) BackwardFindChar(fn func(v interface{}), limit TextIter) (resu
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_pred := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTextCharPredicate()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_limit := gi.NewPointerArgument(limit.P)
 	args := []gi.Argument{arg_v, arg_pred, arg_fn, arg_limit}
 	var ret gi.Argument
@@ -61997,7 +61997,7 @@ func (v TextIter) ForwardFindChar(fn func(v interface{}), limit TextIter) (resul
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_pred := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTextCharPredicate()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_limit := gi.NewPointerArgument(limit.P)
 	args := []gi.Argument{arg_v, arg_pred, arg_fn, arg_limit}
 	var ret gi.Argument
@@ -63461,7 +63461,7 @@ func (v TextTagTable) Foreach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTextTagTableForeach()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -65589,7 +65589,7 @@ func myGtkTickCallback(widget *C.GtkWidget, frame_clock *C.GdkFrameClock, user_d
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -68585,7 +68585,7 @@ func myGtkTreeDestroyCountFunc(tree_view *C.GtkTreeView, path *C.GtkTreePath, ch
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -68800,7 +68800,7 @@ func myGtkTreeIterCompareFunc(model *C.GtkTreeModel, a *C.GtkTreeIter, b *C.GtkT
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -68855,7 +68855,7 @@ func (v *TreeModelIfc) Foreach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeModelForeachFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -69531,7 +69531,7 @@ func (v TreeModelFilter) SetModifyFunc(n_columns int32, types gi.GTypeArray, fn 
 	arg_n_columns := gi.NewInt32Argument(n_columns)
 	arg_types := gi.NewPointerArgument(types.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeModelFilterModifyFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_n_columns, arg_types, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -69570,7 +69570,7 @@ func (v TreeModelFilter) SetVisibleFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeModelFilterVisibleFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -70609,7 +70609,7 @@ func (v TreeSelection) SelectedForeach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeSelectionForeachFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -70648,7 +70648,7 @@ func (v TreeSelection) SetSelectFunction(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeSelectionFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -70839,7 +70839,7 @@ func (v *TreeSortableIfc) SetDefaultSortFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_sort_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeIterCompareFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_sort_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -70884,7 +70884,7 @@ func (v *TreeSortableIfc) SetSortFunc(sort_column_id int32, fn func(v interface{
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_sort_column_id := gi.NewInt32Argument(sort_column_id)
 	arg_sort_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeIterCompareFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_sort_column_id, arg_sort_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -72537,7 +72537,7 @@ func (v TreeView) InsertColumnWithDataFunc(position int32, title string, cell IC
 	arg_title := gi.NewStringArgument(c_title)
 	arg_cell := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeCellDataFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_dnotify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_position, arg_title, arg_cell, arg_func1, arg_fn, arg_dnotify}
 	var ret gi.Argument
@@ -72621,7 +72621,7 @@ func (v TreeView) MapExpandedRows(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewMappingFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -72807,7 +72807,7 @@ func (v TreeView) SetColumnDragFunction(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewColumnDropFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -72891,7 +72891,7 @@ func (v TreeView) SetDestroyCountFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeDestroyCountFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -73155,7 +73155,7 @@ func (v TreeView) SetRowSeparatorFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewRowSeparatorFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -73248,7 +73248,7 @@ func (v TreeView) SetSearchEqualFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_search_equal_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewSearchEqualFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_search_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_search_equal_func, arg_fn, arg_search_destroy}
 	iv.Call(args, nil, nil)
@@ -73271,7 +73271,7 @@ func (v TreeView) SetSearchPositionFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeViewSearchPositionFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -74179,7 +74179,7 @@ func (v TreeViewColumn) SetCellDataFunc(cell_renderer ICellRenderer, fn func(v i
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_cell_renderer := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTreeCellDataFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_cell_renderer, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
@@ -74523,7 +74523,7 @@ func myGtkTreeViewMappingFunc(tree_view *C.GtkTreeView, path *C.GtkTreePath, use
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -74589,7 +74589,7 @@ func myGtkTreeViewSearchPositionFunc(tree_view *C.GtkTreeView, search_dialog *C.
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -75806,7 +75806,7 @@ func (v Widget) AddTickCallback(fn func(v interface{})) (result uint32) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTickCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_callback, arg_fn, arg_notify}
 	var ret gi.Argument
@@ -80796,7 +80796,7 @@ func (v WidgetClass) SetConnectFunc(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_connect_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myBuilderConnectFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_connect_data_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_v, arg_connect_func, arg_fn, arg_connect_data_destroy}
 	iv.Call(args, nil, nil)
@@ -86994,7 +86994,7 @@ func PrintRunPageSetupDialogAsync(parent IWindow, page_setup IPageSetup, setting
 	arg_page_setup := gi.NewPointerArgument(tmp1)
 	arg_settings := gi.NewPointerArgument(tmp2)
 	arg_done_cb := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPageSetupDoneFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_parent, arg_page_setup, arg_settings, arg_done_cb, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -88737,7 +88737,7 @@ func StockSetTranslateFunc(domain string, fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_domain := gi.NewStringArgument(c_domain)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTranslateFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_domain, arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)

@@ -1688,7 +1688,7 @@ func NewDeviceListener(fn func(v interface{})) (result DeviceListener) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDeviceListenerCB()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed}
 	var ret gi.Argument
@@ -1715,7 +1715,7 @@ func (v DeviceListener) AddCallback(fn func(v interface{})) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDeviceListenerCB()))
 	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_callback_destroyed, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -1753,7 +1753,7 @@ func myAtspiDeviceListenerCB(stroke *C.AtspiDeviceEvent, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -2134,7 +2134,7 @@ func NewEventListener(fn func(v interface{})) (result EventListener) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed}
 	var ret gi.Argument
@@ -2162,7 +2162,7 @@ func EventListenerDeregisterFromCallback1(fn func(v interface{}), event_type str
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	c_event_type := gi.CString(event_type)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_callback, arg_fn, arg_event_type, arg_err}
@@ -2196,7 +2196,7 @@ func EventListenerRegisterFromCallback1(fn func(v interface{}), event_type strin
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	c_event_type := gi.CString(event_type)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -2232,7 +2232,7 @@ func EventListenerRegisterFromCallbackFull1(fn func(v interface{}), event_type s
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	c_event_type := gi.CString(event_type)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_properties := gi.NewIntArgument(properties) /*TODO*/
@@ -2341,7 +2341,7 @@ func myAtspiEventListenerCB(event *C.AtspiEvent, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }

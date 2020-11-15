@@ -121,7 +121,7 @@ func myPangoAttrDataCopyFunc(user_data C.gpointer) {
 		args := &AttrDataCopyFuncStruct{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -143,7 +143,7 @@ func myPangoAttrFilterFunc(attribute *C.PangoAttribute, user_data C.gpointer) {
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }
@@ -389,7 +389,7 @@ func (v AttrList) Filter(fn func(v interface{})) (result AttrList) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myAttrFilterFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2758,7 +2758,7 @@ func (v Fontset) Foreach(fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFontsetForeachFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
@@ -2824,7 +2824,7 @@ func myPangoFontsetForeachFunc(fontset *C.PangoFontset, font *C.PangoFont, user_
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(unsafe.Pointer(user_data))
+			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
 }

@@ -206,7 +206,7 @@ func NewPixbufFromData(data gi.Uint8Array, colorspace ColorspaceEnum, has_alpha 
 	arg_height := gi.NewInt32Argument(height)
 	arg_rowstride := gi.NewInt32Argument(rowstride)
 	arg_destroy_fn := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPixbufDestroyNotify()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_data, arg_colorspace, arg_has_alpha, arg_bits_per_sample, arg_width, arg_height, arg_rowstride, arg_destroy_fn, arg_fn}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -597,7 +597,7 @@ func PixbufGetFileInfoAsync1(filename string, cancellable g.ICancellable, fn fun
 	arg_filename := gi.NewStringArgument(c_filename)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_filename, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.Free(c_filename)
@@ -681,7 +681,7 @@ func PixbufNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICancellable
 	arg_stream := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -723,7 +723,7 @@ func PixbufNewFromStreamAtScaleAsync1(stream g.IInputStream, width int32, height
 	arg_preserve_aspect_ratio := gi.NewBoolArgument(preserve_aspect_ratio)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_stream, arg_width, arg_height, arg_preserve_aspect_ratio, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -1486,7 +1486,7 @@ func (v Pixbuf) SaveToCallbackv(fn func(v interface{}), type1 string, option_key
 	c_type1 := gi.CString(type1)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_save_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPixbufSaveFunc()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_type1 := gi.NewStringArgument(c_type1)
 	arg_option_keys := gi.NewPointerArgument(option_keys.P)
 	arg_option_values := gi.NewPointerArgument(option_values.P)
@@ -1585,7 +1585,7 @@ func (v Pixbuf) SaveToStreamvAsync(stream g.IOutputStream, type1 string, option_
 	arg_option_values := gi.NewPointerArgument(option_values.P)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_stream, arg_type1, arg_option_keys, arg_option_values, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 	gi.Free(c_type1)
@@ -1892,7 +1892,7 @@ func PixbufAnimationNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICa
 	arg_stream := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }

@@ -2678,10 +2678,10 @@ func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, fn 
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_progress_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myFileProgressCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_progress_callback_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn1 := gi.NewPointerArgument(cId1)
+	arg_fn1 := gi.NewPointerArgumentU(cId1)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_fn, arg_progress_callback_notify, arg_callback, arg_fn1}
 	iv.Call(args, nil, nil)
 }
@@ -3007,10 +3007,10 @@ func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, fn f
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_progress_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myFileProgressCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_progress_callback_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn1 := gi.NewPointerArgument(cId1)
+	arg_fn1 := gi.NewPointerArgumentU(cId1)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_fn, arg_progress_callback_notify, arg_callback, arg_fn1}
 	iv.Call(args, nil, nil)
 }
@@ -6167,7 +6167,7 @@ func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellab
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
@@ -6266,7 +6266,7 @@ func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellabl
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
-	arg_fn := gi.NewPointerArgument(cId)
+	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
 }
