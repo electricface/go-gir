@@ -4271,26 +4271,7 @@ func (v Value) GetVariant() (result Variant) {
 	return
 }
 
-// g_value_init
-//
-// [ g_type ] trans: nothing
-//
-// [ result ] trans: nothing
-//
-func (v Value) Init(g_type gi.GType) (result Value) {
-	iv, err := _I.Get1(1440, "GObject", "Value", "init", 104, 26, gi.INFO_TYPE_STRUCT, 0)
-	if err != nil {
-		log.Println("WARN:", err)
-		return
-	}
-	arg_v := gi.NewPointerArgument(v.P)
-	arg_g_type := gi.NewUintArgument(uint(g_type))
-	args := []gi.Argument{arg_v, arg_g_type}
-	var ret gi.Argument
-	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
-	return
-}
+// black function Value.Init
 
 // g_value_init_from_instance
 //
@@ -4326,23 +4307,7 @@ func (v Value) PeekPointer() (result unsafe.Pointer) {
 	return
 }
 
-// g_value_reset
-//
-// [ result ] trans: everything
-//
-func (v Value) Reset() (result Value) {
-	iv, err := _I.Get1(1443, "GObject", "Value", "reset", 104, 29, gi.INFO_TYPE_STRUCT, 0)
-	if err != nil {
-		log.Println("WARN:", err)
-		return
-	}
-	arg_v := gi.NewPointerArgument(v.P)
-	args := []gi.Argument{arg_v}
-	var ret gi.Argument
-	iv.Call(args, &ret, nil)
-	result.P = ret.Pointer()
-	return
-}
+// black function Value.Reset
 
 // g_value_set_boolean
 //
@@ -4820,18 +4785,7 @@ func (v Value) Transform(dest_value Value) (result bool) {
 	return
 }
 
-// g_value_unset
-//
-func (v Value) Unset() {
-	iv, err := _I.Get1(1474, "GObject", "Value", "unset", 104, 60, gi.INFO_TYPE_STRUCT, 0)
-	if err != nil {
-		log.Println("WARN:", err)
-		return
-	}
-	arg_v := gi.NewPointerArgument(v.P)
-	args := []gi.Argument{arg_v}
-	iv.Call(args, nil, nil)
-}
+// black function Value.Unset
 
 // g_value_type_compatible
 //
