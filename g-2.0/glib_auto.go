@@ -6103,8 +6103,8 @@ func (v IOChannel) ReadToEnd() (result IOStatusEnum, str_return gi.Uint8Array, e
 	err = gi.ToError(outArgs[2].Pointer())
 	str_return.P = outArgs[0].Pointer()
 	length = outArgs[1].Uint64()
-	result = IOStatusEnum(ret.Int())
 	str_return.Len = int(length)
+	result = IOStatusEnum(ret.Int())
 	return
 }
 
@@ -8286,9 +8286,9 @@ func (v MainContext) InvokeFull(priority int32, fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_priority := gi.NewInt32Argument(priority)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
+	arg_function := gi.NewPointerArgument(GetPointer_mySourceFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_v, arg_priority, arg_function, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -8930,7 +8930,7 @@ func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_dat
 	arg_parser := gi.NewPointerArgument(parser.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_user_data_dnotify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_user_data_dnotify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_parser, arg_flags, arg_user_data, arg_user_data_dnotify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -10259,9 +10259,9 @@ func (v OptionContext) SetTranslateFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTranslateFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myTranslateFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_destroy_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy_notify}
 	iv.Call(args, nil, nil)
 }
@@ -10381,7 +10381,7 @@ func NewOptionGroup(name string, description string, help_description string, us
 	arg_description := gi.NewStringArgument(c_description)
 	arg_help_description := gi.NewStringArgument(c_help_description)
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_name, arg_description, arg_help_description, arg_user_data, arg_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -10457,9 +10457,9 @@ func (v OptionGroup) SetTranslateFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTranslateFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myTranslateFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_destroy_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy_notify}
 	iv.Call(args, nil, nil)
 }
@@ -10717,7 +10717,7 @@ func (v Queue) FreeFull() {
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_free_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_free_func := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_v, arg_free_func}
 	iv.Call(args, nil, nil)
 }
@@ -13496,9 +13496,9 @@ func (v Source) SetCallback(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_mySourceFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -16624,7 +16624,7 @@ func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trus
 	arg_data := gi.NewPointerArgument(data.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_trusted := gi.NewBoolArgument(trusted)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_type1, arg_data, arg_size, arg_trusted, arg_notify, arg_user_data}
 	var ret gi.Argument
@@ -19608,7 +19608,7 @@ func Atexit() {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myVoidFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myVoidFunc())
 	args := []gi.Argument{arg_func1}
 	iv.Call(args, nil, nil)
 }
@@ -20116,7 +20116,7 @@ func AtomicRcBoxReleaseFull(mem_block unsafe.Pointer) {
 		return
 	}
 	arg_mem_block := gi.NewPointerArgument(mem_block)
-	arg_clear_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_clear_func := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_mem_block, arg_clear_func}
 	iv.Call(args, nil, nil)
 }
@@ -20756,9 +20756,9 @@ func ChildWatchAdd(priority int32, pid int32, fn func(v interface{})) (result ui
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_pid := gi.NewInt32Argument(pid)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myChildWatchFunc()))
+	arg_function := gi.NewPointerArgument(GetPointer_myChildWatchFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_priority, arg_pid, arg_function, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21119,7 +21119,7 @@ func DatalistForeach(datalist Data, fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_datalist := gi.NewPointerArgument(datalist.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDataForeachFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myDataForeachFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_datalist, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -21261,7 +21261,7 @@ func DatasetForeach(dataset_location unsafe.Pointer, fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_dataset_location := gi.NewPointerArgument(dataset_location)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDataForeachFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myDataForeachFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_dataset_location, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -22014,8 +22014,8 @@ func FileGetContents(filename string) (result bool, contents gi.Uint8Array, err 
 	err = gi.ToError(outArgs[2].Pointer())
 	contents.P = outArgs[0].Pointer()
 	length = outArgs[1].Uint64()
-	result = ret.Bool()
 	contents.Len = int(length)
+	result = ret.Bool()
 	return
 }
 
@@ -23601,9 +23601,9 @@ func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, f
 	arg_channel := gi.NewPointerArgument(channel.P)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_condition := gi.NewIntArgument(int(condition))
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myIOFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myIOFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_channel, arg_priority, arg_condition, arg_func1, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23890,9 +23890,9 @@ func LogSetHandler(log_domain string, log_levels LogLevelFlags, fn func(v interf
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_log_domain := gi.NewStringArgument(c_log_domain)
 	arg_log_levels := gi.NewIntArgument(int(log_levels))
-	arg_log_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myLogFunc()))
+	arg_log_func := gi.NewPointerArgument(GetPointer_myLogFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_destroy := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_log_domain, arg_log_levels, arg_log_func, arg_fn, arg_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23916,9 +23916,9 @@ func LogSetWriterFunc(fn func(v interface{})) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myLogWriterFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myLogWriterFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_user_data_free := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_user_data_free := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_func1, arg_fn, arg_user_data_free}
 	iv.Call(args, nil, nil)
 }
@@ -25162,7 +25162,7 @@ func RcBoxReleaseFull(mem_block unsafe.Pointer) {
 		return
 	}
 	arg_mem_block := gi.NewPointerArgument(mem_block)
-	arg_clear_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_clear_func := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_mem_block, arg_clear_func}
 	iv.Call(args, nil, nil)
 }
@@ -26273,7 +26273,7 @@ func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, 
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySpawnChildSetupFunc()))
+	arg_child_setup := gi.NewPointerArgument(GetPointer_mySpawnChildSetupFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -26323,7 +26323,7 @@ func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStr
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySpawnChildSetupFunc()))
+	arg_child_setup := gi.NewPointerArgument(GetPointer_mySpawnChildSetupFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_stdin_fd := gi.NewInt32Argument(stdin_fd)
@@ -26376,7 +26376,7 @@ func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CS
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySpawnChildSetupFunc()))
+	arg_child_setup := gi.NewPointerArgument(GetPointer_mySpawnChildSetupFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_standard_input := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -26559,7 +26559,7 @@ func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, f
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySpawnChildSetupFunc()))
+	arg_child_setup := gi.NewPointerArgument(GetPointer_mySpawnChildSetupFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_standard_output := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_standard_error := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -27628,7 +27628,7 @@ func TestAddDataFunc(testpath string, test_data unsafe.Pointer) {
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
 	arg_test_data := gi.NewPointerArgument(test_data)
-	arg_test_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTestDataFunc()))
+	arg_test_func := gi.NewPointerArgument(GetPointer_myTestDataFunc())
 	args := []gi.Argument{arg_testpath, arg_test_data, arg_test_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -27653,8 +27653,8 @@ func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer) {
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
 	arg_test_data := gi.NewPointerArgument(test_data)
-	arg_test_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTestDataFunc()))
-	arg_data_free_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_test_func := gi.NewPointerArgument(GetPointer_myTestDataFunc())
+	arg_data_free_func := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_testpath, arg_test_data, arg_test_func, arg_data_free_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -27674,7 +27674,7 @@ func TestAddFunc(testpath string) {
 	}
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
-	arg_test_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTestFunc()))
+	arg_test_func := gi.NewPointerArgument(GetPointer_myTestFunc())
 	args := []gi.Argument{arg_testpath, arg_test_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -27865,7 +27865,7 @@ func TestQueueDestroy(destroy_data unsafe.Pointer) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_destroy_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_destroy_func := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	arg_destroy_data := gi.NewPointerArgument(destroy_data)
 	args := []gi.Argument{arg_destroy_func, arg_destroy_data}
 	iv.Call(args, nil, nil)
@@ -29502,9 +29502,9 @@ func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, fn func
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_fd := gi.NewInt32Argument(fd)
 	arg_condition := gi.NewIntArgument(int(condition))
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myUnixFDSourceFunc()))
+	arg_function := gi.NewPointerArgument(GetPointer_myUnixFDSourceFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_priority, arg_fd, arg_condition, arg_function, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -29608,9 +29608,9 @@ func UnixSignalAdd(priority int32, signum int32, fn func(v interface{})) (result
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_signum := gi.NewInt32Argument(signum)
-	arg_handler := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySourceFunc()))
+	arg_handler := gi.NewPointerArgument(GetPointer_mySourceFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_priority, arg_signum, arg_handler, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

@@ -3082,8 +3082,8 @@ func (v ByteReader) DupData() (result bool, val gi.Uint8Array) {
 	_ = size
 	size = outArgs[0].Uint32()
 	val.P = outArgs[1].Pointer()
-	result = ret.Bool()
 	val.Len = int(size)
+	result = ret.Bool()
 	return
 }
 
@@ -3194,8 +3194,8 @@ func (v ByteReader) GetData() (result bool, val gi.Uint8Array) {
 	_ = size
 	size = outArgs[0].Uint32()
 	val.P = outArgs[1].Pointer()
-	result = ret.Bool()
 	val.Len = int(size)
+	result = ret.Bool()
 	return
 }
 
@@ -3891,8 +3891,8 @@ func (v ByteReader) PeekData() (result bool, val gi.Uint8Array) {
 	_ = size
 	size = outArgs[0].Uint32()
 	val.P = outArgs[1].Pointer()
-	result = ret.Bool()
 	val.Len = int(size)
+	result = ret.Bool()
 	return
 }
 
@@ -5417,7 +5417,7 @@ func (v CollectPads) AddPad(pad gst.IPad, size uint32, lock bool) (result Collec
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_pad := gi.NewPointerArgument(tmp)
 	arg_size := gi.NewUint32Argument(size)
-	arg_destroy_notify := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectDataDestroyNotify()))
+	arg_destroy_notify := gi.NewPointerArgument(GetPointer_myCollectDataDestroyNotify())
 	arg_lock := gi.NewBoolArgument(lock)
 	args := []gi.Argument{arg_v, arg_pad, arg_size, arg_destroy_notify, arg_lock}
 	var ret gi.Argument
@@ -5659,7 +5659,7 @@ func (v CollectPads) SetBufferFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsBufferFunction()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsBufferFunction())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5680,7 +5680,7 @@ func (v CollectPads) SetClipFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_clipfunc := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsClipFunction()))
+	arg_clipfunc := gi.NewPointerArgument(GetPointer_myCollectPadsClipFunction())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_clipfunc, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5701,7 +5701,7 @@ func (v CollectPads) SetCompareFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsCompareFunction()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsCompareFunction())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5722,7 +5722,7 @@ func (v CollectPads) SetEventFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsEventFunction()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsEventFunction())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5743,7 +5743,7 @@ func (v CollectPads) SetFlushFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsFlushFunction()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsFlushFunction())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5780,7 +5780,7 @@ func (v CollectPads) SetFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsFunction()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsFunction())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5801,7 +5801,7 @@ func (v CollectPads) SetQueryFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCollectPadsQueryFunction()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsQueryFunction())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -6544,7 +6544,7 @@ func TypeFindHelperGetRange(obj gst.IObject, parent gst.IObject, size uint64, ex
 	c_extension := gi.CString(extension)
 	arg_obj := gi.NewPointerArgument(tmp)
 	arg_parent := gi.NewPointerArgument(tmp1)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTypeFindHelperGetRangeFunction()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myTypeFindHelperGetRangeFunction())
 	arg_size := gi.NewUint64Argument(size)
 	arg_extension := gi.NewStringArgument(c_extension)
 	arg_prob := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -6593,7 +6593,7 @@ func TypeFindHelperGetRangeFull(obj gst.IObject, parent gst.IObject, size uint64
 	c_extension := gi.CString(extension)
 	arg_obj := gi.NewPointerArgument(tmp)
 	arg_parent := gi.NewPointerArgument(tmp1)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myTypeFindHelperGetRangeFunction()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myTypeFindHelperGetRangeFunction())
 	arg_size := gi.NewUint64Argument(size)
 	arg_extension := gi.NewStringArgument(c_extension)
 	arg_caps := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))

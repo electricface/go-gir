@@ -5023,7 +5023,7 @@ func (v ValueArray) Sort(fn func(v interface{})) (result ValueArray) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_compare_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myCompareDataFunc()))
+	arg_compare_func := gi.NewPointerArgument(GetPointer_myCompareDataFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_compare_func, arg_fn}
 	var ret gi.Argument
@@ -7273,9 +7273,9 @@ func SignalAddEmissionHook(signal_id uint32, detail uint32, fn func(v interface{
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
-	arg_hook_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySignalEmissionHook()))
+	arg_hook_func := gi.NewPointerArgument(GetPointer_mySignalEmissionHook())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_data_destroy := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDestroyNotify()))
+	arg_data_destroy := gi.NewPointerArgument(GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_signal_id, arg_detail, arg_hook_func, arg_fn, arg_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

@@ -365,12 +365,12 @@ func (v Pty) SpawnAsync(working_directory string, argv gi.CStrArray, envv gi.CSt
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envv := gi.NewPointerArgument(envv.P)
 	arg_spawn_flags := gi.NewIntArgument(int(spawn_flags))
-	arg_fn := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySpawnChildSetupFunc()))
+	arg_fn := gi.NewPointerArgument(g.GetPointer_mySpawnChildSetupFunc())
 	arg_fn1 := gi.NewPointerArgumentU(cId)
-	arg_child_setup_data_destroy := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_child_setup_data_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	arg_timeout := gi.NewInt32Argument(timeout)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myAsyncReadyCallback()))
+	arg_callback := gi.NewPointerArgument(g.GetPointer_myAsyncReadyCallback())
 	arg_fn2 := gi.NewPointerArgumentU(cId1)
 	args := []gi.Argument{arg_v, arg_working_directory, arg_argv, arg_envv, arg_spawn_flags, arg_fn, arg_fn1, arg_child_setup_data_destroy, arg_timeout, arg_cancellable, arg_callback, arg_fn2}
 	iv.Call(args, nil, nil)
@@ -1379,7 +1379,7 @@ func (v Terminal) GetText(fn func(v interface{}), attributes unsafe.Pointer /*TO
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_is_selected := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySelectionFunc()))
+	arg_is_selected := gi.NewPointerArgument(GetPointer_mySelectionFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_attributes := gi.NewPointerArgument(attributes /*TODO*/)
 	args := []gi.Argument{arg_v, arg_is_selected, arg_fn, arg_attributes}
@@ -1426,7 +1426,7 @@ func (v Terminal) GetTextIncludeTrailingSpaces(fn func(v interface{}), attribute
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_is_selected := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySelectionFunc()))
+	arg_is_selected := gi.NewPointerArgument(GetPointer_mySelectionFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_attributes := gi.NewPointerArgument(attributes /*TODO*/)
 	args := []gi.Argument{arg_v, arg_is_selected, arg_fn, arg_attributes}
@@ -1467,7 +1467,7 @@ func (v Terminal) GetTextRange(start_row int64, start_col int64, end_row int64, 
 	arg_start_col := gi.NewInt64Argument(start_col)
 	arg_end_row := gi.NewInt64Argument(end_row)
 	arg_end_col := gi.NewInt64Argument(end_col)
-	arg_is_selected := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySelectionFunc()))
+	arg_is_selected := gi.NewPointerArgument(GetPointer_mySelectionFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_attributes := gi.NewPointerArgument(attributes /*TODO*/)
 	args := []gi.Argument{arg_v, arg_start_row, arg_start_col, arg_end_row, arg_end_col, arg_is_selected, arg_fn, arg_attributes}
@@ -2608,7 +2608,7 @@ func (v Terminal) SpawnSync(pty_flags PtyFlags, working_directory string, argv g
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envv := gi.NewPointerArgument(envv.P)
 	arg_spawn_flags := gi.NewIntArgument(int(spawn_flags))
-	arg_child_setup := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySpawnChildSetupFunc()))
+	arg_child_setup := gi.NewPointerArgument(g.GetPointer_mySpawnChildSetupFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_cancellable := gi.NewPointerArgument(tmp)

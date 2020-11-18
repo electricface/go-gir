@@ -344,9 +344,9 @@ func ContextSetShapeRenderer(context pango.IContext, fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_context := gi.NewPointerArgument(tmp)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myShapeRendererFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myShapeRendererFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_dnotify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_dnotify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_context, arg_func1, arg_fn, arg_dnotify}
 	iv.Call(args, nil, nil)
 }

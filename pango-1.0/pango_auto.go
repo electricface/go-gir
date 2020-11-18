@@ -388,7 +388,7 @@ func (v AttrList) Filter(fn func(v interface{})) (result AttrList) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myAttrFilterFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myAttrFilterFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -2757,7 +2757,7 @@ func (v Fontset) Foreach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myFontsetForeachFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myFontsetForeachFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)

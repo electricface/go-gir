@@ -749,9 +749,9 @@ func PtpStatisticsCallbackAdd(fn func(v interface{})) (result uint64) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myPtpStatisticsCallback()))
+	arg_callback := gi.NewPointerArgument(GetPointer_myPtpStatisticsCallback())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy_data := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_destroy_data := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_callback, arg_fn, arg_destroy_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

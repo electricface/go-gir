@@ -4029,9 +4029,9 @@ func EventHandlerSet1(fn func(v interface{})) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myEventFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -5445,8 +5445,8 @@ func (v Keymap) GetEntriesForKeycode(hardware_keycode uint32) (result bool, keys
 	keys = outArgs[0].Pointer()
 	keyvals.P = outArgs[1].Pointer()
 	n_entries = outArgs[2].Int32()
-	result = ret.Bool()
 	keyvals.Len = int(n_entries)
+	result = ret.Bool()
 	return
 }
 
@@ -7085,7 +7085,7 @@ func (v Seat) Grab(window IWindow, capabilities SeatCapabilitiesFlags, owner_eve
 	arg_owner_events := gi.NewBoolArgument(owner_events)
 	arg_cursor := gi.NewPointerArgument(tmp1)
 	arg_event := gi.NewPointerArgument(event.P)
-	arg_prepare_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_mySeatGrabPrepareFunc()))
+	arg_prepare_func := gi.NewPointerArgument(GetPointer_mySeatGrabPrepareFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_window, arg_capabilities, arg_owner_events, arg_cursor, arg_event, arg_prepare_func, arg_fn}
 	var ret gi.Argument
@@ -9366,7 +9366,7 @@ func (v Window) InvalidateMaybeRecurse(region cairo.Region, fn func(v interface{
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_region := gi.NewPointerArgument(region.P)
-	arg_child_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myWindowChildFunc()))
+	arg_child_func := gi.NewPointerArgument(GetPointer_myWindowChildFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_region, arg_child_func, arg_fn}
 	iv.Call(args, nil, nil)
@@ -11751,9 +11751,9 @@ func EventHandlerSet(fn func(v interface{})) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_func1 := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventFunc()))
+	arg_func1 := gi.NewPointerArgument(GetPointer_myEventFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -12695,8 +12695,8 @@ func PropertyGet(window IWindow, property Atom, type1 Atom, offset uint64, lengt
 	actual_format = outArgs[0].Int32()
 	actual_length = outArgs[1].Int32()
 	data.P = outArgs[2].Pointer()
-	result = ret.Bool()
 	data.Len = int(actual_length)
+	result = ret.Bool()
 	return
 }
 
@@ -13242,9 +13242,9 @@ func ThreadsAddIdle(priority int32, fn func(v interface{})) (result uint32) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySourceFunc()))
+	arg_function := gi.NewPointerArgument(g.GetPointer_mySourceFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_priority, arg_function, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -13275,9 +13275,9 @@ func ThreadsAddTimeout(priority int32, interval uint32, fn func(v interface{})) 
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_interval := gi.NewUint32Argument(interval)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySourceFunc()))
+	arg_function := gi.NewPointerArgument(g.GetPointer_mySourceFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -13308,9 +13308,9 @@ func ThreadsAddTimeoutSeconds(priority int32, interval uint32, fn func(v interfa
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_interval := gi.NewUint32Argument(interval)
-	arg_function := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_mySourceFunc()))
+	arg_function := gi.NewPointerArgument(g.GetPointer_mySourceFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

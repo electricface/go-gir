@@ -1761,7 +1761,7 @@ func (v Attachment) SaveToCallback(fn func(v interface{})) (result bool, err err
 	var outArgs [1]gi.Argument
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_save_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myAttachmentSaveFunc()))
+	arg_save_func := gi.NewPointerArgument(GetPointer_myAttachmentSaveFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_save_func, arg_fn, arg_err}
@@ -4458,7 +4458,7 @@ func (v Media) SaveToCallback(fn func(v interface{})) (result bool, err error) {
 	var outArgs [1]gi.Argument
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_save_func := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myMediaSaveFunc()))
+	arg_save_func := gi.NewPointerArgument(GetPointer_myMediaSaveFunc())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_save_func, arg_fn, arg_err}

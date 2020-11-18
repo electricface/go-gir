@@ -1687,9 +1687,9 @@ func NewDeviceListener(fn func(v interface{})) (result DeviceListener) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDeviceListenerCB()))
+	arg_callback := gi.NewPointerArgument(GetPointer_myDeviceListenerCB())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_callback_destroyed := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1713,8 +1713,8 @@ func (v DeviceListener) AddCallback(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDeviceListenerCB()))
-	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_callback := gi.NewPointerArgument(GetPointer_myDeviceListenerCB())
+	arg_callback_destroyed := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_callback_destroyed, arg_fn}
 	iv.Call(args, nil, nil)
@@ -1731,7 +1731,7 @@ func (v DeviceListener) RemoveCallback() {
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myDeviceListenerCB()))
+	arg_callback := gi.NewPointerArgument(GetPointer_myDeviceListenerCB())
 	args := []gi.Argument{arg_v, arg_callback}
 	iv.Call(args, nil, nil)
 }
@@ -2133,9 +2133,9 @@ func NewEventListener(fn func(v interface{})) (result EventListener) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
+	arg_callback := gi.NewPointerArgument(GetPointer_myEventListenerCB())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_callback_destroyed := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2161,7 +2161,7 @@ func EventListenerDeregisterFromCallback1(fn func(v interface{}), event_type str
 	var outArgs [1]gi.Argument
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	c_event_type := gi.CString(event_type)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
+	arg_callback := gi.NewPointerArgument(GetPointer_myEventListenerCB())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -2195,9 +2195,9 @@ func EventListenerRegisterFromCallback1(fn func(v interface{}), event_type strin
 	var outArgs [1]gi.Argument
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	c_event_type := gi.CString(event_type)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
+	arg_callback := gi.NewPointerArgument(GetPointer_myEventListenerCB())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_callback_destroyed := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed, arg_event_type, arg_err}
@@ -2231,9 +2231,9 @@ func EventListenerRegisterFromCallbackFull1(fn func(v interface{}), event_type s
 	var outArgs [1]gi.Argument
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	c_event_type := gi.CString(event_type)
-	arg_callback := gi.NewPointerArgument(unsafe.Pointer(GetPointer_myEventListenerCB()))
+	arg_callback := gi.NewPointerArgument(GetPointer_myEventListenerCB())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_callback_destroyed := gi.NewPointerArgument(unsafe.Pointer(g.GetPointer_myDestroyNotify()))
+	arg_callback_destroyed := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_properties := gi.NewIntArgument(properties) /*TODO*/
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
