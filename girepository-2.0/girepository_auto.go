@@ -258,7 +258,7 @@ func (v BaseInfo) IsDeprecated() (result bool) {
 //
 // [ result ] trans: nothing
 //
-func (v BaseInfo) IterateAttributes(iterator int /*TODO:TYPE*/) (result bool, name string, value string) {
+func (v BaseInfo) IterateAttributes(iterator int /*TODO:DIR_INOUT*/) (result bool, name string, value string) {
 	iv, err := _I.Get(8, "BaseInfo", "iterate_attributes", 3, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1572,7 +1572,7 @@ func CallableInfoIsMethod(info BaseInfo) (result bool) {
 //
 // [ result ] trans: nothing
 //
-func CallableInfoIterateReturnAttributes(info BaseInfo, iterator int /*TODO:TYPE*/) (result bool, name string, value string) {
+func CallableInfoIterateReturnAttributes(info BaseInfo, iterator int /*TODO:DIR_INOUT*/) (result bool, name string, value string) {
 	iv, err := _I.Get(57, "callable_info_iterate_return_attributes", "", 40, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)

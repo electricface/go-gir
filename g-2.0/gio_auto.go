@@ -33354,7 +33354,7 @@ func (v Socket) ReceiveFrom(buffer gi.Uint8Array, size uint64, cancellable ICanc
 //
 // [ result ] trans: nothing
 //
-func (v Socket) ReceiveMessage(vectors unsafe.Pointer, num_vectors int32, flags int /*TODO:TYPE*/, cancellable ICancellable) (result int64, address SocketAddress, messages gi.PointerArray, err error) {
+func (v Socket) ReceiveMessage(vectors unsafe.Pointer, num_vectors int32, flags int /*TODO:DIR_INOUT*/, cancellable ICancellable) (result int64, address SocketAddress, messages gi.PointerArray, err error) {
 	iv, err := _I.Get1(2869, "Gio", "Socket", "receive_message", 441, 37, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return

@@ -17675,7 +17675,7 @@ func (v *EditableIfc) GetSelectionBounds() (result bool, start_pos int32, end_po
 //
 // [ position ] trans: everything, dir: inout
 //
-func (v *EditableIfc) InsertText(new_text string, new_text_length int32, position int /*TODO:TYPE*/) {
+func (v *EditableIfc) InsertText(new_text string, new_text_length int32, position int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(710, "Editable", "insert_text", 244, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31612,7 +31612,7 @@ func (v IconView) GetTooltipColumn() (result int32) {
 //
 // [ result ] trans: nothing
 //
-func (v IconView) GetTooltipContext(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/, keyboard_tip bool, iter TreeIter) (result bool, model TreeModel, path TreePath) {
+func (v IconView) GetTooltipContext(x int /*TODO:DIR_INOUT*/, y int /*TODO:DIR_INOUT*/, keyboard_tip bool, iter TreeIter) (result bool, model TreeModel, path TreePath) {
 	iv, err := _I.Get(1322, "IconView", "get_tooltip_context", 415, 32, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -38373,7 +38373,7 @@ func (v MenuItem) ToggleSizeAllocate(allocation int32) {
 //
 // [ requisition ] trans: everything, dir: inout
 //
-func (v MenuItem) ToggleSizeRequest(requisition int /*TODO:TYPE*/) {
+func (v MenuItem) ToggleSizeRequest(requisition int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(1620, "MenuItem", "toggle_size_request", 517, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -55628,7 +55628,7 @@ func NewStatusIconFromStock(stock_id string) (result StatusIcon) {
 //
 // [ user_data ] trans: nothing
 //
-func StatusIconPositionMenu1(menu IMenu, x int /*TODO:TYPE*/, y int /*TODO:TYPE*/, user_data IStatusIcon) (push_in bool) {
+func StatusIconPositionMenu1(menu IMenu, x int /*TODO:DIR_INOUT*/, y int /*TODO:DIR_INOUT*/, user_data IStatusIcon) (push_in bool) {
 	iv, err := _I.Get(2344, "StatusIcon", "position_menu", 1041, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -72392,7 +72392,7 @@ func (v TreeView) GetTooltipColumn() (result int32) {
 //
 // [ result ] trans: nothing
 //
-func (v TreeView) GetTooltipContext(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/, keyboard_tip bool, iter TreeIter) (result bool, model TreeModel, path TreePath) {
+func (v TreeView) GetTooltipContext(x int /*TODO:DIR_INOUT*/, y int /*TODO:DIR_INOUT*/, keyboard_tip bool, iter TreeIter) (result bool, model TreeModel, path TreePath) {
 	iv, err := _I.Get(3085, "TreeView", "get_tooltip_context", 1196, 49, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -75983,7 +75983,7 @@ func (v Widget) Destroy() {
 //
 // [ widget_pointer ] trans: nothing, dir: inout
 //
-func (v Widget) Destroyed(widget_pointer int /*TODO:TYPE*/) {
+func (v Widget) Destroyed(widget_pointer int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(3238, "Widget", "destroyed", 1235, 19, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85600,7 +85600,7 @@ func IconThemeErrorQuark() (result uint32) {
 //
 // [ result ] trans: nothing
 //
-func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
+func InitCheck(argc int /*TODO:DIR_INOUT*/, argv int /*TODO:DIR_INOUT*/) (result bool) {
 	iv, err := _I.Get(3725, "init_check", "", 1322, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -85627,7 +85627,7 @@ func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
 //
 // [ result ] trans: nothing
 //
-func InitWithArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/, parameter_string string, entries unsafe.Pointer, translation_domain string) (result bool, err error) {
+func InitWithArgs(argc int /*TODO:DIR_INOUT*/, argv int /*TODO:DIR_INOUT*/, parameter_string string, entries unsafe.Pointer, translation_domain string) (result bool, err error) {
 	iv, err := _I.Get(3726, "init_with_args", "", 1323, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
@@ -86892,7 +86892,7 @@ func PaperSizeGetPaperSizes(include_custom bool) (result g.List) {
 //
 // [ result ] trans: nothing
 //
-func ParseArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
+func ParseArgs(argc int /*TODO:DIR_INOUT*/, argv int /*TODO:DIR_INOUT*/) (result bool) {
 	iv, err := _I.Get(3756, "parse_args", "", 1353, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -87329,9 +87329,6 @@ func RcParseColorFull(scanner g.Scanner, style IRcStyle, color gdk.Color) (resul
 	result = ret.Uint32()
 	return
 }
-
-// Deprecated
-//
 
 // black function RcParsePriority
 

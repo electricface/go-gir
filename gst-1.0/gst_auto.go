@@ -31784,7 +31784,7 @@ func GetMainExecutablePath() (result string) {
 //
 // [ argv ] trans: everything, dir: inout
 //
-func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
+func Init(argc int /*TODO:DIR_INOUT*/, argv int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(1245, "init", "", 528, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -31802,7 +31802,7 @@ func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 //
 // [ result ] trans: nothing
 //
-func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool, err error) {
+func InitCheck(argc int /*TODO:DIR_INOUT*/, argv int /*TODO:DIR_INOUT*/) (result bool, err error) {
 	iv, err := _I.Get(1246, "init_check", "", 529, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
@@ -32045,7 +32045,7 @@ func MetaRegister(api gi.GType, impl string, size uint64) (result MetaInfo) {
 //
 // [ result ] trans: nothing
 //
-func MiniObjectReplace(olddata int /*TODO:TYPE*/, newdata MiniObject) (result bool) {
+func MiniObjectReplace(olddata int /*TODO:DIR_INOUT*/, newdata MiniObject) (result bool) {
 	iv, err := _I.Get(1257, "mini_object_replace", "", 540, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -32068,7 +32068,7 @@ func MiniObjectReplace(olddata int /*TODO:TYPE*/, newdata MiniObject) (result bo
 //
 // [ result ] trans: nothing
 //
-func MiniObjectTake(olddata int /*TODO:TYPE*/, newdata MiniObject) (result bool) {
+func MiniObjectTake(olddata int /*TODO:DIR_INOUT*/, newdata MiniObject) (result bool) {
 	iv, err := _I.Get(1258, "mini_object_take", "", 541, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)

@@ -4629,9 +4629,6 @@ func (v Value) SetString(v_string string) {
 	gi.Free(c_v_string)
 }
 
-// Deprecated
-//
-
 // black function Value.SetStringTakeOwnership
 
 // g_value_set_uchar
@@ -7382,7 +7379,7 @@ func SignalConnectClosureById(instance IObject, signal_id uint32, detail uint32,
 //
 // [ return_value ] trans: everything, dir: inout
 //
-func SignalEmitv(instance_and_params unsafe.Pointer, signal_id uint32, detail uint32, return_value int /*TODO:TYPE*/) {
+func SignalEmitv(instance_and_params unsafe.Pointer, signal_id uint32, detail uint32, return_value int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get1(1558, "GObject", "signal_emitv", "", 183, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)

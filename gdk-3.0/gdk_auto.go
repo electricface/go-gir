@@ -5365,7 +5365,7 @@ func KeymapGetForDisplay1(display IDisplay) (result Keymap) {
 //
 // [ state ] trans: everything, dir: inout
 //
-func (v Keymap) AddVirtualModifiers(state int /*TODO:TYPE*/) {
+func (v Keymap) AddVirtualModifiers(state int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(209, "Keymap", "add_virtual_modifiers", 2347, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5602,7 +5602,7 @@ func (v Keymap) LookupKey(key KeymapKey) (result uint32) {
 //
 // [ result ] trans: nothing
 //
-func (v Keymap) MapVirtualModifiers(state int /*TODO:TYPE*/) (result bool) {
+func (v Keymap) MapVirtualModifiers(state int /*TODO:DIR_INOUT*/) (result bool) {
 	iv, err := _I.Get(220, "Keymap", "map_virtual_modifiers", 2347, 13, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12008,7 +12008,7 @@ func GlErrorQuark() (result uint32) {
 //
 // [ argv ] trans: everything, dir: inout
 //
-func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
+func Init(argc int /*TODO:DIR_INOUT*/, argv int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(508, "init", "", 2440, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12026,7 +12026,7 @@ func Init(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
 //
 // [ result ] trans: nothing
 //
-func InitCheck(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool) {
+func InitCheck(argc int /*TODO:DIR_INOUT*/, argv int /*TODO:DIR_INOUT*/) (result bool) {
 	iv, err := _I.Get(509, "init_check", "", 2441, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12445,7 +12445,7 @@ func PangoContextGetForScreen(screen IScreen) (result pango.Context) {
 //
 // [ argv ] trans: everything, dir: inout
 //
-func ParseArgs(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) {
+func ParseArgs(argc int /*TODO:DIR_INOUT*/, argv int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(529, "parse_args", "", 2461, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)

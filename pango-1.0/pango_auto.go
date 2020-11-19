@@ -5571,7 +5571,7 @@ func (v Matrix) Scale(scale_x float64, scale_y float64) {
 //
 // [ dy ] trans: everything, dir: inout
 //
-func (v Matrix) TransformDistance(dx int /*TODO:TYPE*/, dy int /*TODO:TYPE*/) {
+func (v Matrix) TransformDistance(dx int /*TODO:DIR_INOUT*/, dy int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(244, "Matrix", "transform_distance", 76, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5587,7 +5587,7 @@ func (v Matrix) TransformDistance(dx int /*TODO:TYPE*/, dy int /*TODO:TYPE*/) {
 //
 // [ rect ] trans: everything, dir: inout
 //
-func (v Matrix) TransformPixelRectangle(rect int /*TODO:TYPE*/) {
+func (v Matrix) TransformPixelRectangle(rect int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(245, "Matrix", "transform_pixel_rectangle", 76, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5605,7 +5605,7 @@ func (v Matrix) TransformPixelRectangle(rect int /*TODO:TYPE*/) {
 //
 // [ y ] trans: everything, dir: inout
 //
-func (v Matrix) TransformPoint(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/) {
+func (v Matrix) TransformPoint(x int /*TODO:DIR_INOUT*/, y int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(246, "Matrix", "transform_point", 76, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5621,7 +5621,7 @@ func (v Matrix) TransformPoint(x int /*TODO:TYPE*/, y int /*TODO:TYPE*/) {
 //
 // [ rect ] trans: everything, dir: inout
 //
-func (v Matrix) TransformRectangle(rect int /*TODO:TYPE*/) {
+func (v Matrix) TransformRectangle(rect int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(247, "Matrix", "transform_rectangle", 76, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7517,7 +7517,7 @@ func ParseWeight(str string, warn bool) (result bool, weight WeightEnum) {
 //
 // [ position ] trans: everything, dir: inout
 //
-func QuantizeLineGeometry(thickness int /*TODO:TYPE*/, position int /*TODO:TYPE*/) {
+func QuantizeLineGeometry(thickness int /*TODO:DIR_INOUT*/, position int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(315, "quantize_line_geometry", "", 132, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7582,7 +7582,7 @@ func ReorderItems(logical_items g.List) (result g.List) {
 //
 // [ result ] trans: nothing
 //
-func ScanInt(pos int /*TODO:TYPE*/) (result bool, out int32) {
+func ScanInt(pos int /*TODO:DIR_INOUT*/) (result bool, out int32) {
 	iv, err := _I.Get(318, "scan_int", "", 135, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7608,7 +7608,7 @@ func ScanInt(pos int /*TODO:TYPE*/) (result bool, out int32) {
 //
 // [ result ] trans: nothing
 //
-func ScanString(pos int /*TODO:TYPE*/, out g.String) (result bool) {
+func ScanString(pos int /*TODO:DIR_INOUT*/, out g.String) (result bool) {
 	iv, err := _I.Get(319, "scan_string", "", 136, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7633,7 +7633,7 @@ func ScanString(pos int /*TODO:TYPE*/, out g.String) (result bool) {
 //
 // [ result ] trans: nothing
 //
-func ScanWord(pos int /*TODO:TYPE*/, out g.String) (result bool) {
+func ScanWord(pos int /*TODO:DIR_INOUT*/, out g.String) (result bool) {
 	iv, err := _I.Get(320, "scan_word", "", 137, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7756,7 +7756,7 @@ func ShapeFull(item_text string, item_length int32, paragraph_text string, parag
 //
 // [ result ] trans: nothing
 //
-func SkipSpace(pos int /*TODO:TYPE*/) (result bool) {
+func SkipSpace(pos int /*TODO:DIR_INOUT*/) (result bool) {
 	iv, err := _I.Get(325, "skip_space", "", 142, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)

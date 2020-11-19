@@ -5325,7 +5325,7 @@ func HmacGetType() gi.GType {
 //
 // [ digest_len ] trans: everything, dir: inout
 //
-func (v Hmac) GetDigest(buffer gi.Uint8Array, digest_len int /*TODO:TYPE*/) {
+func (v Hmac) GetDigest(buffer gi.Uint8Array, digest_len int /*TODO:DIR_INOUT*/) {
 	iv, err := _I.Get(215, "Hmac", "get_digest", 79, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10105,7 +10105,7 @@ func (v OptionContext) GetSummary() (result string) {
 //
 // [ result ] trans: nothing
 //
-func (v OptionContext) Parse(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (result bool, err error) {
+func (v OptionContext) Parse(argc int /*TODO:DIR_INOUT*/, argv int /*TODO:DIR_INOUT*/) (result bool, err error) {
 	iv, err := _I.Get(405, "OptionContext", "parse", 182, 10, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		return
@@ -10127,7 +10127,7 @@ func (v OptionContext) Parse(argc int /*TODO:TYPE*/, argv int /*TODO:TYPE*/) (re
 //
 // [ result ] trans: nothing
 //
-func (v OptionContext) ParseStrv(arguments int /*TODO:TYPE*/) (result bool, err error) {
+func (v OptionContext) ParseStrv(arguments int /*TODO:DIR_INOUT*/) (result bool, err error) {
 	iv, err := _I.Get(406, "OptionContext", "parse_strv", 182, 11, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		return
@@ -20231,7 +20231,7 @@ func Base64Decode(text string) (result gi.Uint8Array) {
 //
 // [ result ] trans: nothing
 //
-func Base64DecodeInplace(text int /*TODO:TYPE*/, out_len int /*TODO:TYPE*/) (result uint8) {
+func Base64DecodeInplace(text int /*TODO:DIR_INOUT*/, out_len int /*TODO:DIR_INOUT*/) (result uint8) {
 	iv, err := _I.Get(831, "base64_decode_inplace", "", 357, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20279,7 +20279,7 @@ func Base64Encode(data gi.Uint8Array, len1 uint64) (result string) {
 //
 // [ result ] trans: nothing
 //
-func Base64EncodeClose(break_lines bool, state int /*TODO:TYPE*/, save int /*TODO:TYPE*/) (result uint64, out gi.Uint8Array) {
+func Base64EncodeClose(break_lines bool, state int /*TODO:DIR_INOUT*/, save int /*TODO:DIR_INOUT*/) (result uint64, out gi.Uint8Array) {
 	iv, err := _I.Get(833, "base64_encode_close", "", 359, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -20312,7 +20312,7 @@ func Base64EncodeClose(break_lines bool, state int /*TODO:TYPE*/, save int /*TOD
 //
 // [ result ] trans: nothing
 //
-func Base64EncodeStep(in gi.Uint8Array, len1 uint64, break_lines bool, state int /*TODO:TYPE*/, save int /*TODO:TYPE*/) (result uint64, out gi.Uint8Array) {
+func Base64EncodeStep(in gi.Uint8Array, len1 uint64, break_lines bool, state int /*TODO:DIR_INOUT*/, save int /*TODO:DIR_INOUT*/) (result uint64, out gi.Uint8Array) {
 	iv, err := _I.Get(834, "base64_encode_step", "", 360, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
