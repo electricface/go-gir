@@ -5819,7 +5819,7 @@ func CclosureMarshalGeneric(closure Closure, return_gvalue Value, n_param_values
 //
 // [ const_values ] trans: nothing
 //
-func EnumCompleteTypeInfo(g_enum_type gi.GType, const_values EnumValue) (info int /*TODO_TYPE tag: ifc, biType: struct*/) {
+func EnumCompleteTypeInfo(g_enum_type gi.GType, const_values EnumValue) (info TypeInfo) {
 	iv, err := _I.Get1(1510, "GObject", "enum_complete_type_info", "", 135, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5831,7 +5831,7 @@ func EnumCompleteTypeInfo(g_enum_type gi.GType, const_values EnumValue) (info in
 	arg_const_values := gi.NewPointerArgument(const_values.P)
 	args := []gi.Argument{arg_g_enum_type, arg_info, arg_const_values}
 	iv.Call(args, nil, &outArgs[0])
-	info = outArgs[0].Int() /*TODO*/
+	info.P = outArgs[0].Pointer()
 	return
 }
 
@@ -5964,7 +5964,7 @@ func EnumToString(g_enum_type gi.GType, value int32) (result string) {
 //
 // [ const_values ] trans: nothing
 //
-func FlagsCompleteTypeInfo(g_flags_type gi.GType, const_values FlagsValue) (info int /*TODO_TYPE tag: ifc, biType: struct*/) {
+func FlagsCompleteTypeInfo(g_flags_type gi.GType, const_values FlagsValue) (info TypeInfo) {
 	iv, err := _I.Get1(1516, "GObject", "flags_complete_type_info", "", 141, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5976,7 +5976,7 @@ func FlagsCompleteTypeInfo(g_flags_type gi.GType, const_values FlagsValue) (info
 	arg_const_values := gi.NewPointerArgument(const_values.P)
 	args := []gi.Argument{arg_g_flags_type, arg_info, arg_const_values}
 	iv.Call(args, nil, &outArgs[0])
-	info = outArgs[0].Int() /*TODO*/
+	info.P = outArgs[0].Pointer()
 	return
 }
 
@@ -7896,26 +7896,7 @@ func SignalRemoveEmissionHook(signal_id uint32, hook_id uint64) {
 	iv.Call(args, nil, nil)
 }
 
-// g_signal_set_va_marshaller
-//
-// [ signal_id ] trans: nothing
-//
-// [ instance_type ] trans: nothing
-//
-// [ va_marshaller ] trans: nothing
-//
-func SignalSetVaMarshaller(signal_id uint32, instance_type gi.GType, va_marshaller int /*TODO_TYPE isPtr: false, tag: interface*/) {
-	iv, err := _I.Get1(1577, "GObject", "signal_set_va_marshaller", "", 202, 0, gi.INFO_TYPE_FUNCTION, 0)
-	if err != nil {
-		log.Println("WARN:", err)
-		return
-	}
-	arg_signal_id := gi.NewUint32Argument(signal_id)
-	arg_instance_type := gi.NewUintArgument(uint(instance_type))
-	arg_va_marshaller := gi.NewIntArgument(va_marshaller) /*TODO*/
-	args := []gi.Argument{arg_signal_id, arg_instance_type, arg_va_marshaller}
-	iv.Call(args, nil, nil)
-}
+// black function SignalSetVaMarshaller
 
 // g_signal_stop_emission
 //

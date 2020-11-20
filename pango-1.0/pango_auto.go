@@ -6493,7 +6493,7 @@ func (v TabArray) GetTab(tab_index int32) (alignment TabAlignEnum, location int3
 //
 // [ locations ] trans: everything, dir: out
 //
-func (v TabArray) GetTabs() (alignments int /*TODO_TYPE tag: ifc, biType: enum*/, locations gi.Int32Array) {
+func (v TabArray) GetTabs() (alignments int /*TODO_TYPE tag: ifc, biType: enum, callerAlloc: false, isPtr: true*/, locations gi.Int32Array) {
 	iv, err := _I.Get(277, "TabArray", "get_tabs", 89, 6, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)

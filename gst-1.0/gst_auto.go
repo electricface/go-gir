@@ -24522,10 +24522,7 @@ type StaticCaps struct {
 
 const SizeOfStructStaticCaps = 48
 
-func StaticCapsGetType() gi.GType {
-	ret := _I.GetGType(151, "StaticCaps")
-	return ret
-}
+// noGetType StaticCaps
 
 // gst_static_caps_cleanup
 //
@@ -24565,10 +24562,7 @@ type StaticPadTemplate struct {
 
 const SizeOfStructStaticPadTemplate = 64
 
-func StaticPadTemplateGetType() gi.GType {
-	ret := _I.GetGType(152, "StaticPadTemplate")
-	return ret
-}
+// noGetType StaticPadTemplate
 
 // gst_static_pad_template_get
 //
@@ -29041,10 +29035,7 @@ type TypeFind struct {
 
 const SizeOfStructTypeFind = 64
 
-func TypeFindGetType() gi.GType {
-	ret := _I.GetGType(187, "TypeFind")
-	return ret
-}
+// noGetType TypeFind
 
 // gst_type_find_get_length
 //
