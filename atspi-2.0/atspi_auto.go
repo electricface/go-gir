@@ -26,21 +26,21 @@ package atspi
 /*
 #cgo pkg-config: atspi-2
 #include <atspi/atspi.h>
-extern void myAtspiDeviceListenerCB(AtspiDeviceEvent* stroke, gpointer user_data);
-static void* getPointer_myAtspiDeviceListenerCB() {
-return (void*)(myAtspiDeviceListenerCB);
+extern void giAtspiDeviceListenerCB(AtspiDeviceEvent* stroke, gpointer user_data);
+static void* getAtspiDeviceListenerCBWrapper() {
+    return (void*)(giAtspiDeviceListenerCB);
 }
-extern void myAtspiDeviceListenerSimpleCB(AtspiDeviceEvent* stroke);
-static void* getPointer_myAtspiDeviceListenerSimpleCB() {
-return (void*)(myAtspiDeviceListenerSimpleCB);
+extern void giAtspiDeviceListenerSimpleCB(AtspiDeviceEvent* stroke);
+static void* getAtspiDeviceListenerSimpleCBWrapper() {
+    return (void*)(giAtspiDeviceListenerSimpleCB);
 }
-extern void myAtspiEventListenerCB(AtspiEvent* event, gpointer user_data);
-static void* getPointer_myAtspiEventListenerCB() {
-return (void*)(myAtspiEventListenerCB);
+extern void giAtspiEventListenerCB(AtspiEvent* event, gpointer user_data);
+static void* getAtspiEventListenerCBWrapper() {
+    return (void*)(giAtspiEventListenerCB);
 }
-extern void myAtspiEventListenerSimpleCB(AtspiEvent* event);
-static void* getPointer_myAtspiEventListenerSimpleCB() {
-return (void*)(myAtspiEventListenerSimpleCB);
+extern void giAtspiEventListenerSimpleCB(AtspiEvent* event);
+static void* getAtspiEventListenerSimpleCBWrapper() {
+    return (void*)(giAtspiEventListenerSimpleCB);
 }
 */
 import "C"
@@ -1687,9 +1687,9 @@ func NewDeviceListener(fn func(v interface{})) (result DeviceListener) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_callback := gi.NewPointerArgument(GetPointer_myDeviceListenerCB())
+	arg_callback := gi.NewPointerArgument(GetDeviceListenerCBWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_callback_destroyed := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_callback_destroyed := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1713,8 +1713,8 @@ func (v DeviceListener) AddCallback(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myDeviceListenerCB())
-	arg_callback_destroyed := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_callback := gi.NewPointerArgument(GetDeviceListenerCBWrapper())
+	arg_callback_destroyed := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_callback_destroyed, arg_fn}
 	iv.Call(args, nil, nil)
@@ -1731,25 +1731,25 @@ func (v DeviceListener) RemoveCallback() {
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myDeviceListenerCB())
+	arg_callback := gi.NewPointerArgument(GetDeviceListenerCBWrapper())
 	args := []gi.Argument{arg_v, arg_callback}
 	iv.Call(args, nil, nil)
 }
 
-type DeviceListenerCBStruct struct {
-	F_stroke DeviceEvent
+type DeviceListenerCBArg struct {
+	Stroke DeviceEvent
 }
 
-func GetPointer_myDeviceListenerCB() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myAtspiDeviceListenerCB())
+func GetDeviceListenerCBWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getAtspiDeviceListenerCBWrapper())
 }
 
-//export myAtspiDeviceListenerCB
-func myAtspiDeviceListenerCB(stroke *C.AtspiDeviceEvent, user_data C.gpointer) {
+//export giAtspiDeviceListenerCB
+func giAtspiDeviceListenerCB(stroke *C.AtspiDeviceEvent, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &DeviceListenerCBStruct{
-			F_stroke: DeviceEvent{P: unsafe.Pointer(stroke)},
+		args := &DeviceListenerCBArg{
+			Stroke: DeviceEvent{P: unsafe.Pointer(stroke)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -1760,16 +1760,16 @@ func myAtspiDeviceListenerCB(stroke *C.AtspiDeviceEvent, user_data C.gpointer) {
 
 // ignore GType struct DeviceListenerClass
 
-type DeviceListenerSimpleCBStruct struct {
-	F_stroke DeviceEvent
+type DeviceListenerSimpleCBArg struct {
+	Stroke DeviceEvent
 }
 
-func GetPointer_myDeviceListenerSimpleCB() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myAtspiDeviceListenerSimpleCB())
+func GetDeviceListenerSimpleCBWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getAtspiDeviceListenerSimpleCBWrapper())
 }
 
-//export myAtspiDeviceListenerSimpleCB
-func myAtspiDeviceListenerSimpleCB(stroke *C.AtspiDeviceEvent) {
+//export giAtspiDeviceListenerSimpleCB
+func giAtspiDeviceListenerSimpleCB(stroke *C.AtspiDeviceEvent) {
 	// TODO: not found user_data
 }
 
@@ -2133,9 +2133,9 @@ func NewEventListener(fn func(v interface{})) (result EventListener) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_callback := gi.NewPointerArgument(GetPointer_myEventListenerCB())
+	arg_callback := gi.NewPointerArgument(GetEventListenerCBWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_callback_destroyed := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_callback_destroyed := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -2161,7 +2161,7 @@ func EventListenerDeregisterFromCallback1(fn func(v interface{}), event_type str
 	var outArgs [1]gi.Argument
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	c_event_type := gi.CString(event_type)
-	arg_callback := gi.NewPointerArgument(GetPointer_myEventListenerCB())
+	arg_callback := gi.NewPointerArgument(GetEventListenerCBWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -2195,9 +2195,9 @@ func EventListenerRegisterFromCallback1(fn func(v interface{}), event_type strin
 	var outArgs [1]gi.Argument
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	c_event_type := gi.CString(event_type)
-	arg_callback := gi.NewPointerArgument(GetPointer_myEventListenerCB())
+	arg_callback := gi.NewPointerArgument(GetEventListenerCBWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_callback_destroyed := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_callback_destroyed := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_callback, arg_fn, arg_callback_destroyed, arg_event_type, arg_err}
@@ -2231,9 +2231,9 @@ func EventListenerRegisterFromCallbackFull1(fn func(v interface{}), event_type s
 	var outArgs [1]gi.Argument
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	c_event_type := gi.CString(event_type)
-	arg_callback := gi.NewPointerArgument(GetPointer_myEventListenerCB())
+	arg_callback := gi.NewPointerArgument(GetEventListenerCBWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_callback_destroyed := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_callback_destroyed := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	arg_event_type := gi.NewStringArgument(c_event_type)
 	arg_properties := gi.NewIntArgument(properties) /*TODO*/
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -2324,20 +2324,20 @@ func (v EventListener) RegisterFull(event_type string, properties int /*TODO_TYP
 	return
 }
 
-type EventListenerCBStruct struct {
-	F_event Event
+type EventListenerCBArg struct {
+	Event Event
 }
 
-func GetPointer_myEventListenerCB() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myAtspiEventListenerCB())
+func GetEventListenerCBWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getAtspiEventListenerCBWrapper())
 }
 
-//export myAtspiEventListenerCB
-func myAtspiEventListenerCB(event *C.AtspiEvent, user_data C.gpointer) {
+//export giAtspiEventListenerCB
+func giAtspiEventListenerCB(event *C.AtspiEvent, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &EventListenerCBStruct{
-			F_event: Event{P: unsafe.Pointer(event)},
+		args := &EventListenerCBArg{
+			Event: Event{P: unsafe.Pointer(event)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -2360,16 +2360,16 @@ func EventListenerModeGetType() gi.GType {
 	return ret
 }
 
-type EventListenerSimpleCBStruct struct {
-	F_event Event
+type EventListenerSimpleCBArg struct {
+	Event Event
 }
 
-func GetPointer_myEventListenerSimpleCB() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myAtspiEventListenerSimpleCB())
+func GetEventListenerSimpleCBWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getAtspiEventListenerSimpleCBWrapper())
 }
 
-//export myAtspiEventListenerSimpleCB
-func myAtspiEventListenerSimpleCB(event *C.AtspiEvent) {
+//export giAtspiEventListenerSimpleCB
+func giAtspiEventListenerSimpleCB(event *C.AtspiEvent) {
 	// TODO: not found user_data
 }
 
@@ -4376,7 +4376,7 @@ func TableCellGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/, err error) {
+func (v *TableCellIfc) GetColumnHeaderCells() (result g.PtrArray, err error) {
 	iv, err := _I.Get(149, "TableCell", "get_column_header_cells", 98, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
@@ -4388,7 +4388,7 @@ func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	err = gi.ToError(outArgs[0].Pointer())
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4496,7 +4496,7 @@ func (v *TableCellIfc) GetRowColumnSpan() (row int32, column int32, row_span int
 //
 // [ result ] trans: everything
 //
-func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/, err error) {
+func (v *TableCellIfc) GetRowHeaderCells() (result g.PtrArray, err error) {
 	iv, err := _I.Get(154, "TableCell", "get_row_header_cells", 98, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		return
@@ -4508,7 +4508,7 @@ func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	err = gi.ToError(outArgs[0].Pointer())
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 

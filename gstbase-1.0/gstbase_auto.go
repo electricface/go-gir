@@ -26,49 +26,49 @@ package gstbase
 /*
 #cgo pkg-config: gstreamer-base-1.0
 #include <gst/base/base.h>
-extern void myGstBaseCollectDataDestroyNotify(GstCollectData* data);
-static void* getPointer_myGstBaseCollectDataDestroyNotify() {
-return (void*)(myGstBaseCollectDataDestroyNotify);
+extern void giGstBaseCollectDataDestroyNotify(GstCollectData* data);
+static void* getGstBaseCollectDataDestroyNotifyWrapper() {
+    return (void*)(giGstBaseCollectDataDestroyNotify);
 }
-extern void myGstBaseCollectPadsBufferFunction(GstCollectPads* pads, GstCollectData* data, GstBuffer* buffer, gpointer user_data);
-static void* getPointer_myGstBaseCollectPadsBufferFunction() {
-return (void*)(myGstBaseCollectPadsBufferFunction);
+extern void giGstBaseCollectPadsBufferFunction(GstCollectPads* pads, GstCollectData* data, GstBuffer* buffer, gpointer user_data);
+static void* getGstBaseCollectPadsBufferFunctionWrapper() {
+    return (void*)(giGstBaseCollectPadsBufferFunction);
 }
-extern void myGstBaseCollectPadsClipFunction(GstCollectPads* pads, GstCollectData* data, GstBuffer* inbuffer, gpointer outbuffer, gpointer user_data);
-static void* getPointer_myGstBaseCollectPadsClipFunction() {
-return (void*)(myGstBaseCollectPadsClipFunction);
+extern void giGstBaseCollectPadsClipFunction(GstCollectPads* pads, GstCollectData* data, GstBuffer* inbuffer, gpointer outbuffer, gpointer user_data);
+static void* getGstBaseCollectPadsClipFunctionWrapper() {
+    return (void*)(giGstBaseCollectPadsClipFunction);
 }
-extern void myGstBaseCollectPadsCompareFunction(GstCollectPads* pads, GstCollectData* data1, guint64 timestamp1, GstCollectData* data2, guint64 timestamp2, gpointer user_data);
-static void* getPointer_myGstBaseCollectPadsCompareFunction() {
-return (void*)(myGstBaseCollectPadsCompareFunction);
+extern void giGstBaseCollectPadsCompareFunction(GstCollectPads* pads, GstCollectData* data1, guint64 timestamp1, GstCollectData* data2, guint64 timestamp2, gpointer user_data);
+static void* getGstBaseCollectPadsCompareFunctionWrapper() {
+    return (void*)(giGstBaseCollectPadsCompareFunction);
 }
-extern void myGstBaseCollectPadsEventFunction(GstCollectPads* pads, GstCollectData* pad, GstEvent* event, gpointer user_data);
-static void* getPointer_myGstBaseCollectPadsEventFunction() {
-return (void*)(myGstBaseCollectPadsEventFunction);
+extern void giGstBaseCollectPadsEventFunction(GstCollectPads* pads, GstCollectData* pad, GstEvent* event, gpointer user_data);
+static void* getGstBaseCollectPadsEventFunctionWrapper() {
+    return (void*)(giGstBaseCollectPadsEventFunction);
 }
-extern void myGstBaseCollectPadsFlushFunction(GstCollectPads* pads, gpointer user_data);
-static void* getPointer_myGstBaseCollectPadsFlushFunction() {
-return (void*)(myGstBaseCollectPadsFlushFunction);
+extern void giGstBaseCollectPadsFlushFunction(GstCollectPads* pads, gpointer user_data);
+static void* getGstBaseCollectPadsFlushFunctionWrapper() {
+    return (void*)(giGstBaseCollectPadsFlushFunction);
 }
-extern void myGstBaseCollectPadsFunction(GstCollectPads* pads, gpointer user_data);
-static void* getPointer_myGstBaseCollectPadsFunction() {
-return (void*)(myGstBaseCollectPadsFunction);
+extern void giGstBaseCollectPadsFunction(GstCollectPads* pads, gpointer user_data);
+static void* getGstBaseCollectPadsFunctionWrapper() {
+    return (void*)(giGstBaseCollectPadsFunction);
 }
-extern void myGstBaseCollectPadsQueryFunction(GstCollectPads* pads, GstCollectData* pad, GstQuery* query, gpointer user_data);
-static void* getPointer_myGstBaseCollectPadsQueryFunction() {
-return (void*)(myGstBaseCollectPadsQueryFunction);
+extern void giGstBaseCollectPadsQueryFunction(GstCollectPads* pads, GstCollectData* pad, GstQuery* query, gpointer user_data);
+static void* getGstBaseCollectPadsQueryFunctionWrapper() {
+    return (void*)(giGstBaseCollectPadsQueryFunction);
 }
-extern void myGstBaseDataQueueEmptyCallback(GstDataQueue* queue, gpointer checkdata);
-static void* getPointer_myGstBaseDataQueueEmptyCallback() {
-return (void*)(myGstBaseDataQueueEmptyCallback);
+extern void giGstBaseDataQueueEmptyCallback(GstDataQueue* queue, gpointer checkdata);
+static void* getGstBaseDataQueueEmptyCallbackWrapper() {
+    return (void*)(giGstBaseDataQueueEmptyCallback);
 }
-extern void myGstBaseDataQueueFullCallback(GstDataQueue* queue, gpointer checkdata);
-static void* getPointer_myGstBaseDataQueueFullCallback() {
-return (void*)(myGstBaseDataQueueFullCallback);
+extern void giGstBaseDataQueueFullCallback(GstDataQueue* queue, gpointer checkdata);
+static void* getGstBaseDataQueueFullCallbackWrapper() {
+    return (void*)(giGstBaseDataQueueFullCallback);
 }
-extern void myGstBaseTypeFindHelperGetRangeFunction(GstObject* obj, GstObject* parent, guint64 offset, guint32 length, gpointer buffer);
-static void* getPointer_myGstBaseTypeFindHelperGetRangeFunction() {
-return (void*)(myGstBaseTypeFindHelperGetRangeFunction);
+extern void giGstBaseTypeFindHelperGetRangeFunction(GstObject* obj, GstObject* parent, guint64 offset, guint32 length, gpointer buffer);
+static void* getGstBaseTypeFindHelperGetRangeFunctionWrapper() {
+    return (void*)(giGstBaseTypeFindHelperGetRangeFunction);
 }
 */
 import "C"
@@ -5338,16 +5338,16 @@ func CollectDataGetType() gi.GType {
 	return ret
 }
 
-type CollectDataDestroyNotifyStruct struct {
-	F_data CollectData
+type CollectDataDestroyNotifyArg struct {
+	Data CollectData
 }
 
-func GetPointer_myCollectDataDestroyNotify() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseCollectDataDestroyNotify())
+func GetCollectDataDestroyNotifyWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseCollectDataDestroyNotifyWrapper())
 }
 
-//export myGstBaseCollectDataDestroyNotify
-func myGstBaseCollectDataDestroyNotify(data *C.GstCollectData) {
+//export giGstBaseCollectDataDestroyNotify
+func giGstBaseCollectDataDestroyNotify(data *C.GstCollectData) {
 	// TODO: not found user_data
 }
 
@@ -5417,7 +5417,7 @@ func (v CollectPads) AddPad(pad gst.IPad, size uint32, lock bool) (result Collec
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_pad := gi.NewPointerArgument(tmp)
 	arg_size := gi.NewUint32Argument(size)
-	arg_destroy_notify := gi.NewPointerArgument(GetPointer_myCollectDataDestroyNotify())
+	arg_destroy_notify := gi.NewPointerArgument(GetCollectDataDestroyNotifyWrapper())
 	arg_lock := gi.NewBoolArgument(lock)
 	args := []gi.Argument{arg_v, arg_pad, arg_size, arg_destroy_notify, arg_lock}
 	var ret gi.Argument
@@ -5659,7 +5659,7 @@ func (v CollectPads) SetBufferFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsBufferFunction())
+	arg_func1 := gi.NewPointerArgument(GetCollectPadsBufferFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5680,7 +5680,7 @@ func (v CollectPads) SetClipFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_clipfunc := gi.NewPointerArgument(GetPointer_myCollectPadsClipFunction())
+	arg_clipfunc := gi.NewPointerArgument(GetCollectPadsClipFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_clipfunc, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5701,7 +5701,7 @@ func (v CollectPads) SetCompareFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsCompareFunction())
+	arg_func1 := gi.NewPointerArgument(GetCollectPadsCompareFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5722,7 +5722,7 @@ func (v CollectPads) SetEventFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsEventFunction())
+	arg_func1 := gi.NewPointerArgument(GetCollectPadsEventFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5743,7 +5743,7 @@ func (v CollectPads) SetFlushFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsFlushFunction())
+	arg_func1 := gi.NewPointerArgument(GetCollectPadsFlushFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5780,7 +5780,7 @@ func (v CollectPads) SetFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsFunction())
+	arg_func1 := gi.NewPointerArgument(GetCollectPadsFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5801,7 +5801,7 @@ func (v CollectPads) SetQueryFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCollectPadsQueryFunction())
+	arg_func1 := gi.NewPointerArgument(GetCollectPadsQueryFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -5905,24 +5905,24 @@ func (v CollectPads) TakeBuffer(data CollectData, size uint32) (result gst.Buffe
 	return
 }
 
-type CollectPadsBufferFunctionStruct struct {
-	F_pads   CollectPads
-	F_data   CollectData
-	F_buffer gst.Buffer
+type CollectPadsBufferFunctionArgs struct {
+	Pads   CollectPads
+	Data   CollectData
+	Buffer gst.Buffer
 }
 
-func GetPointer_myCollectPadsBufferFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseCollectPadsBufferFunction())
+func GetCollectPadsBufferFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseCollectPadsBufferFunctionWrapper())
 }
 
-//export myGstBaseCollectPadsBufferFunction
-func myGstBaseCollectPadsBufferFunction(pads *C.GstCollectPads, data *C.GstCollectData, buffer *C.GstBuffer, user_data C.gpointer) {
+//export giGstBaseCollectPadsBufferFunction
+func giGstBaseCollectPadsBufferFunction(pads *C.GstCollectPads, data *C.GstCollectData, buffer *C.GstBuffer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CollectPadsBufferFunctionStruct{
-			F_pads:   WrapCollectPads(unsafe.Pointer(pads)),
-			F_data:   CollectData{P: unsafe.Pointer(data)},
-			F_buffer: gst.Buffer{P: unsafe.Pointer(buffer)},
+		args := &CollectPadsBufferFunctionArgs{
+			Pads:   WrapCollectPads(unsafe.Pointer(pads)),
+			Data:   CollectData{P: unsafe.Pointer(data)},
+			Buffer: gst.Buffer{P: unsafe.Pointer(buffer)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -5933,26 +5933,26 @@ func myGstBaseCollectPadsBufferFunction(pads *C.GstCollectPads, data *C.GstColle
 
 // ignore GType struct CollectPadsClass
 
-type CollectPadsClipFunctionStruct struct {
-	F_pads      CollectPads
-	F_data      CollectData
-	F_inbuffer  gst.Buffer
-	F_outbuffer unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+type CollectPadsClipFunctionArgs struct {
+	Pads      CollectPads
+	Data      CollectData
+	Inbuffer  gst.Buffer
+	Outbuffer unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
 }
 
-func GetPointer_myCollectPadsClipFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseCollectPadsClipFunction())
+func GetCollectPadsClipFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseCollectPadsClipFunctionWrapper())
 }
 
-//export myGstBaseCollectPadsClipFunction
-func myGstBaseCollectPadsClipFunction(pads *C.GstCollectPads, data *C.GstCollectData, inbuffer *C.GstBuffer, outbuffer C.gpointer, user_data C.gpointer) {
+//export giGstBaseCollectPadsClipFunction
+func giGstBaseCollectPadsClipFunction(pads *C.GstCollectPads, data *C.GstCollectData, inbuffer *C.GstBuffer, outbuffer C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CollectPadsClipFunctionStruct{
-			F_pads:      WrapCollectPads(unsafe.Pointer(pads)),
-			F_data:      CollectData{P: unsafe.Pointer(data)},
-			F_inbuffer:  gst.Buffer{P: unsafe.Pointer(inbuffer)},
-			F_outbuffer: unsafe.Pointer(outbuffer),
+		args := &CollectPadsClipFunctionArgs{
+			Pads:      WrapCollectPads(unsafe.Pointer(pads)),
+			Data:      CollectData{P: unsafe.Pointer(data)},
+			Inbuffer:  gst.Buffer{P: unsafe.Pointer(inbuffer)},
+			Outbuffer: unsafe.Pointer(outbuffer),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -5961,28 +5961,28 @@ func myGstBaseCollectPadsClipFunction(pads *C.GstCollectPads, data *C.GstCollect
 	}
 }
 
-type CollectPadsCompareFunctionStruct struct {
-	F_pads       CollectPads
-	F_data1      CollectData
-	F_timestamp1 uint64
-	F_data2      CollectData
-	F_timestamp2 uint64
+type CollectPadsCompareFunctionArgs struct {
+	Pads       CollectPads
+	Data1      CollectData
+	Timestamp1 uint64
+	Data2      CollectData
+	Timestamp2 uint64
 }
 
-func GetPointer_myCollectPadsCompareFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseCollectPadsCompareFunction())
+func GetCollectPadsCompareFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseCollectPadsCompareFunctionWrapper())
 }
 
-//export myGstBaseCollectPadsCompareFunction
-func myGstBaseCollectPadsCompareFunction(pads *C.GstCollectPads, data1 *C.GstCollectData, timestamp1 C.guint64, data2 *C.GstCollectData, timestamp2 C.guint64, user_data C.gpointer) {
+//export giGstBaseCollectPadsCompareFunction
+func giGstBaseCollectPadsCompareFunction(pads *C.GstCollectPads, data1 *C.GstCollectData, timestamp1 C.guint64, data2 *C.GstCollectData, timestamp2 C.guint64, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CollectPadsCompareFunctionStruct{
-			F_pads:       WrapCollectPads(unsafe.Pointer(pads)),
-			F_data1:      CollectData{P: unsafe.Pointer(data1)},
-			F_timestamp1: uint64(timestamp1),
-			F_data2:      CollectData{P: unsafe.Pointer(data2)},
-			F_timestamp2: uint64(timestamp2),
+		args := &CollectPadsCompareFunctionArgs{
+			Pads:       WrapCollectPads(unsafe.Pointer(pads)),
+			Data1:      CollectData{P: unsafe.Pointer(data1)},
+			Timestamp1: uint64(timestamp1),
+			Data2:      CollectData{P: unsafe.Pointer(data2)},
+			Timestamp2: uint64(timestamp2),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -5991,24 +5991,24 @@ func myGstBaseCollectPadsCompareFunction(pads *C.GstCollectPads, data1 *C.GstCol
 	}
 }
 
-type CollectPadsEventFunctionStruct struct {
-	F_pads  CollectPads
-	F_pad   CollectData
-	F_event gst.Event
+type CollectPadsEventFunctionArgs struct {
+	Pads  CollectPads
+	Pad   CollectData
+	Event gst.Event
 }
 
-func GetPointer_myCollectPadsEventFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseCollectPadsEventFunction())
+func GetCollectPadsEventFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseCollectPadsEventFunctionWrapper())
 }
 
-//export myGstBaseCollectPadsEventFunction
-func myGstBaseCollectPadsEventFunction(pads *C.GstCollectPads, pad *C.GstCollectData, event *C.GstEvent, user_data C.gpointer) {
+//export giGstBaseCollectPadsEventFunction
+func giGstBaseCollectPadsEventFunction(pads *C.GstCollectPads, pad *C.GstCollectData, event *C.GstEvent, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CollectPadsEventFunctionStruct{
-			F_pads:  WrapCollectPads(unsafe.Pointer(pads)),
-			F_pad:   CollectData{P: unsafe.Pointer(pad)},
-			F_event: gst.Event{P: unsafe.Pointer(event)},
+		args := &CollectPadsEventFunctionArgs{
+			Pads:  WrapCollectPads(unsafe.Pointer(pads)),
+			Pad:   CollectData{P: unsafe.Pointer(pad)},
+			Event: gst.Event{P: unsafe.Pointer(event)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -6017,20 +6017,20 @@ func myGstBaseCollectPadsEventFunction(pads *C.GstCollectPads, pad *C.GstCollect
 	}
 }
 
-type CollectPadsFlushFunctionStruct struct {
-	F_pads CollectPads
+type CollectPadsFlushFunctionArg struct {
+	Pads CollectPads
 }
 
-func GetPointer_myCollectPadsFlushFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseCollectPadsFlushFunction())
+func GetCollectPadsFlushFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseCollectPadsFlushFunctionWrapper())
 }
 
-//export myGstBaseCollectPadsFlushFunction
-func myGstBaseCollectPadsFlushFunction(pads *C.GstCollectPads, user_data C.gpointer) {
+//export giGstBaseCollectPadsFlushFunction
+func giGstBaseCollectPadsFlushFunction(pads *C.GstCollectPads, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CollectPadsFlushFunctionStruct{
-			F_pads: WrapCollectPads(unsafe.Pointer(pads)),
+		args := &CollectPadsFlushFunctionArg{
+			Pads: WrapCollectPads(unsafe.Pointer(pads)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -6039,20 +6039,20 @@ func myGstBaseCollectPadsFlushFunction(pads *C.GstCollectPads, user_data C.gpoin
 	}
 }
 
-type CollectPadsFunctionStruct struct {
-	F_pads CollectPads
+type CollectPadsFunctionArg struct {
+	Pads CollectPads
 }
 
-func GetPointer_myCollectPadsFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseCollectPadsFunction())
+func GetCollectPadsFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseCollectPadsFunctionWrapper())
 }
 
-//export myGstBaseCollectPadsFunction
-func myGstBaseCollectPadsFunction(pads *C.GstCollectPads, user_data C.gpointer) {
+//export giGstBaseCollectPadsFunction
+func giGstBaseCollectPadsFunction(pads *C.GstCollectPads, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CollectPadsFunctionStruct{
-			F_pads: WrapCollectPads(unsafe.Pointer(pads)),
+		args := &CollectPadsFunctionArg{
+			Pads: WrapCollectPads(unsafe.Pointer(pads)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -6071,24 +6071,24 @@ func CollectPadsPrivateGetType() gi.GType {
 	return ret
 }
 
-type CollectPadsQueryFunctionStruct struct {
-	F_pads  CollectPads
-	F_pad   CollectData
-	F_query gst.Query
+type CollectPadsQueryFunctionArgs struct {
+	Pads  CollectPads
+	Pad   CollectData
+	Query gst.Query
 }
 
-func GetPointer_myCollectPadsQueryFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseCollectPadsQueryFunction())
+func GetCollectPadsQueryFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseCollectPadsQueryFunctionWrapper())
 }
 
-//export myGstBaseCollectPadsQueryFunction
-func myGstBaseCollectPadsQueryFunction(pads *C.GstCollectPads, pad *C.GstCollectData, query *C.GstQuery, user_data C.gpointer) {
+//export giGstBaseCollectPadsQueryFunction
+func giGstBaseCollectPadsQueryFunction(pads *C.GstCollectPads, pad *C.GstCollectData, query *C.GstQuery, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CollectPadsQueryFunctionStruct{
-			F_pads:  WrapCollectPads(unsafe.Pointer(pads)),
-			F_pad:   CollectData{P: unsafe.Pointer(pad)},
-			F_query: gst.Query{P: unsafe.Pointer(query)},
+		args := &CollectPadsQueryFunctionArgs{
+			Pads:  WrapCollectPads(unsafe.Pointer(pads)),
+			Pad:   CollectData{P: unsafe.Pointer(pad)},
+			Query: gst.Query{P: unsafe.Pointer(query)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -6130,31 +6130,31 @@ func DataQueueGetType() gi.GType {
 
 // ignore GType struct DataQueueClass
 
-type DataQueueEmptyCallbackStruct struct {
-	F_queue     DataQueue
-	F_checkdata unsafe.Pointer
+type DataQueueEmptyCallbackArgs struct {
+	Queue     DataQueue
+	Checkdata unsafe.Pointer
 }
 
-func GetPointer_myDataQueueEmptyCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseDataQueueEmptyCallback())
+func GetDataQueueEmptyCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseDataQueueEmptyCallbackWrapper())
 }
 
-//export myGstBaseDataQueueEmptyCallback
-func myGstBaseDataQueueEmptyCallback(queue *C.GstDataQueue, checkdata C.gpointer) {
+//export giGstBaseDataQueueEmptyCallback
+func giGstBaseDataQueueEmptyCallback(queue *C.GstDataQueue, checkdata C.gpointer) {
 	// TODO: not found user_data
 }
 
-type DataQueueFullCallbackStruct struct {
-	F_queue     DataQueue
-	F_checkdata unsafe.Pointer
+type DataQueueFullCallbackArgs struct {
+	Queue     DataQueue
+	Checkdata unsafe.Pointer
 }
 
-func GetPointer_myDataQueueFullCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseDataQueueFullCallback())
+func GetDataQueueFullCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseDataQueueFullCallbackWrapper())
 }
 
-//export myGstBaseDataQueueFullCallback
-func myGstBaseDataQueueFullCallback(queue *C.GstDataQueue, checkdata C.gpointer) {
+//export giGstBaseDataQueueFullCallback
+func giGstBaseDataQueueFullCallback(queue *C.GstDataQueue, checkdata C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -6370,20 +6370,20 @@ func PushSrcGetType() gi.GType {
 
 // ignore GType struct PushSrcClass
 
-type TypeFindHelperGetRangeFunctionStruct struct {
-	F_obj    gst.Object
-	F_parent gst.Object
-	F_offset uint64
-	F_length uint32
-	F_buffer unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+type TypeFindHelperGetRangeFunctionArgs struct {
+	Obj    gst.Object
+	Parent gst.Object
+	Offset uint64
+	Length uint32
+	Buffer unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
 }
 
-func GetPointer_myTypeFindHelperGetRangeFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBaseTypeFindHelperGetRangeFunction())
+func GetTypeFindHelperGetRangeFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBaseTypeFindHelperGetRangeFunctionWrapper())
 }
 
-//export myGstBaseTypeFindHelperGetRangeFunction
-func myGstBaseTypeFindHelperGetRangeFunction(obj *C.GstObject, parent *C.GstObject, offset C.guint64, length C.guint32, buffer C.gpointer) {
+//export giGstBaseTypeFindHelperGetRangeFunction
+func giGstBaseTypeFindHelperGetRangeFunction(obj *C.GstObject, parent *C.GstObject, offset C.guint64, length C.guint32, buffer C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -6544,7 +6544,7 @@ func TypeFindHelperGetRange(obj gst.IObject, parent gst.IObject, size uint64, ex
 	c_extension := gi.CString(extension)
 	arg_obj := gi.NewPointerArgument(tmp)
 	arg_parent := gi.NewPointerArgument(tmp1)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTypeFindHelperGetRangeFunction())
+	arg_func1 := gi.NewPointerArgument(GetTypeFindHelperGetRangeFunctionWrapper())
 	arg_size := gi.NewUint64Argument(size)
 	arg_extension := gi.NewStringArgument(c_extension)
 	arg_prob := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
@@ -6593,7 +6593,7 @@ func TypeFindHelperGetRangeFull(obj gst.IObject, parent gst.IObject, size uint64
 	c_extension := gi.CString(extension)
 	arg_obj := gi.NewPointerArgument(tmp)
 	arg_parent := gi.NewPointerArgument(tmp1)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTypeFindHelperGetRangeFunction())
+	arg_func1 := gi.NewPointerArgument(GetTypeFindHelperGetRangeFunctionWrapper())
 	arg_size := gi.NewUint64Argument(size)
 	arg_extension := gi.NewStringArgument(c_extension)
 	arg_caps := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))

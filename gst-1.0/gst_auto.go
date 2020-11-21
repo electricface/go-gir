@@ -26,269 +26,269 @@ package gst
 /*
 #cgo pkg-config: gstreamer-1.0
 #include <gst/gst.h>
-extern void myGstBufferForeachMetaFunc(GstBuffer* buffer, gpointer meta, gpointer user_data);
-static void* getPointer_myGstBufferForeachMetaFunc() {
-return (void*)(myGstBufferForeachMetaFunc);
-}
-extern void myGstBufferListFunc(gpointer buffer, guint32 idx, gpointer user_data);
-static void* getPointer_myGstBufferListFunc() {
-return (void*)(myGstBufferListFunc);
-}
-extern void myGstBusFunc(GstBus* bus, GstMessage* message, gpointer user_data);
-static void* getPointer_myGstBusFunc() {
-return (void*)(myGstBusFunc);
-}
-extern void myGstBusSyncHandler(GstBus* bus, GstMessage* message, gpointer user_data);
-static void* getPointer_myGstBusSyncHandler() {
-return (void*)(myGstBusSyncHandler);
-}
-extern void myGstCapsFilterMapFunc(GstCapsFeatures* features, GstStructure* structure, gpointer user_data);
-static void* getPointer_myGstCapsFilterMapFunc() {
-return (void*)(myGstCapsFilterMapFunc);
-}
-extern void myGstCapsForeachFunc(GstCapsFeatures* features, GstStructure* structure, gpointer user_data);
-static void* getPointer_myGstCapsForeachFunc() {
-return (void*)(myGstCapsForeachFunc);
-}
-extern void myGstCapsMapFunc(GstCapsFeatures* features, GstStructure* structure, gpointer user_data);
-static void* getPointer_myGstCapsMapFunc() {
-return (void*)(myGstCapsMapFunc);
-}
-extern void myGstClockCallback(GstClock* clock, guint64 time, gpointer id, gpointer user_data);
-static void* getPointer_myGstClockCallback() {
-return (void*)(myGstClockCallback);
-}
-extern void myGstControlBindingConvert(GstControlBinding* binding, gdouble src_value, GValue* dest_value);
-static void* getPointer_myGstControlBindingConvert() {
-return (void*)(myGstControlBindingConvert);
-}
-extern void myGstControlSourceGetValue(GstControlSource* self, guint64 timestamp, gdouble* value);
-static void* getPointer_myGstControlSourceGetValue() {
-return (void*)(myGstControlSourceGetValue);
-}
-extern void myGstControlSourceGetValueArray(GstControlSource* self, guint64 timestamp, guint64 interval, guint32 n_values, gdouble* values);
-static void* getPointer_myGstControlSourceGetValueArray() {
-return (void*)(myGstControlSourceGetValueArray);
-}
-extern void myGstDebugFuncPtr();
-static void* getPointer_myGstDebugFuncPtr() {
-return (void*)(myGstDebugFuncPtr);
-}
-extern void myGstElementCallAsyncFunc(GstElement* element, gpointer user_data);
-static void* getPointer_myGstElementCallAsyncFunc() {
-return (void*)(myGstElementCallAsyncFunc);
-}
-extern void myGstElementForeachPadFunc(GstElement* element, GstPad* pad, gpointer user_data);
-static void* getPointer_myGstElementForeachPadFunc() {
-return (void*)(myGstElementForeachPadFunc);
-}
-extern void myGstIteratorCopyFunction(GstIterator* it, GstIterator* copy1);
-static void* getPointer_myGstIteratorCopyFunction() {
-return (void*)(myGstIteratorCopyFunction);
-}
-extern void myGstIteratorFoldFunction(GValue* item, GValue* ret, gpointer user_data);
-static void* getPointer_myGstIteratorFoldFunction() {
-return (void*)(myGstIteratorFoldFunction);
-}
-extern void myGstIteratorForeachFunction(GValue* item, gpointer user_data);
-static void* getPointer_myGstIteratorForeachFunction() {
-return (void*)(myGstIteratorForeachFunction);
-}
-extern void myGstIteratorFreeFunction(GstIterator* it);
-static void* getPointer_myGstIteratorFreeFunction() {
-return (void*)(myGstIteratorFreeFunction);
-}
-extern void myGstIteratorItemFunction(GstIterator* it, GValue* item);
-static void* getPointer_myGstIteratorItemFunction() {
-return (void*)(myGstIteratorItemFunction);
-}
-extern void myGstIteratorNextFunction(GstIterator* it, GValue* result);
-static void* getPointer_myGstIteratorNextFunction() {
-return (void*)(myGstIteratorNextFunction);
-}
-extern void myGstIteratorResyncFunction(GstIterator* it);
-static void* getPointer_myGstIteratorResyncFunction() {
-return (void*)(myGstIteratorResyncFunction);
-}
-extern void myGstLogFunction(GstDebugCategory* category, GstDebugLevel level, gchar* file, gchar* function, gint32 line, GObject* object, GstDebugMessage* message, gpointer user_data);
-static void* getPointer_myGstLogFunction() {
-return (void*)(myGstLogFunction);
-}
-extern void myGstMemoryCopyFunction(GstMemory* mem, gint64 offset, gint64 size);
-static void* getPointer_myGstMemoryCopyFunction() {
-return (void*)(myGstMemoryCopyFunction);
-}
-extern void myGstMemoryIsSpanFunction(GstMemory* mem1, GstMemory* mem2, guint64* offset);
-static void* getPointer_myGstMemoryIsSpanFunction() {
-return (void*)(myGstMemoryIsSpanFunction);
-}
-extern void myGstMemoryMapFullFunction(GstMemory* mem, GstMapInfo* info, guint64 maxsize);
-static void* getPointer_myGstMemoryMapFullFunction() {
-return (void*)(myGstMemoryMapFullFunction);
-}
-extern void myGstMemoryMapFunction(GstMemory* mem, guint64 maxsize, GstMapFlags flags);
-static void* getPointer_myGstMemoryMapFunction() {
-return (void*)(myGstMemoryMapFunction);
-}
-extern void myGstMemoryShareFunction(GstMemory* mem, gint64 offset, gint64 size);
-static void* getPointer_myGstMemoryShareFunction() {
-return (void*)(myGstMemoryShareFunction);
-}
-extern void myGstMemoryUnmapFullFunction(GstMemory* mem, GstMapInfo* info);
-static void* getPointer_myGstMemoryUnmapFullFunction() {
-return (void*)(myGstMemoryUnmapFullFunction);
-}
-extern void myGstMemoryUnmapFunction(GstMemory* mem);
-static void* getPointer_myGstMemoryUnmapFunction() {
-return (void*)(myGstMemoryUnmapFunction);
-}
-extern void myGstMetaFreeFunction(GstMeta* meta, GstBuffer* buffer);
-static void* getPointer_myGstMetaFreeFunction() {
-return (void*)(myGstMetaFreeFunction);
-}
-extern void myGstMetaInitFunction(GstMeta* meta, gpointer params, GstBuffer* buffer);
-static void* getPointer_myGstMetaInitFunction() {
-return (void*)(myGstMetaInitFunction);
-}
-extern void myGstMetaTransformFunction(GstBuffer* transbuf, GstMeta* meta, GstBuffer* buffer, guint32 type1, gpointer data);
-static void* getPointer_myGstMetaTransformFunction() {
-return (void*)(myGstMetaTransformFunction);
-}
-extern void myGstMiniObjectDisposeFunction(GstMiniObject* obj);
-static void* getPointer_myGstMiniObjectDisposeFunction() {
-return (void*)(myGstMiniObjectDisposeFunction);
-}
-extern void myGstMiniObjectFreeFunction(GstMiniObject* obj);
-static void* getPointer_myGstMiniObjectFreeFunction() {
-return (void*)(myGstMiniObjectFreeFunction);
-}
-extern void myGstMiniObjectNotify(gpointer user_data, GstMiniObject* obj);
-static void* getPointer_myGstMiniObjectNotify() {
-return (void*)(myGstMiniObjectNotify);
-}
-extern void myGstPadActivateFunction(GstPad* pad, GstObject* parent);
-static void* getPointer_myGstPadActivateFunction() {
-return (void*)(myGstPadActivateFunction);
-}
-extern void myGstPadActivateModeFunction(GstPad* pad, GstObject* parent, GstPadMode mode, gboolean active);
-static void* getPointer_myGstPadActivateModeFunction() {
-return (void*)(myGstPadActivateModeFunction);
-}
-extern void myGstPadChainFunction(GstPad* pad, GstObject* parent, GstBuffer* buffer);
-static void* getPointer_myGstPadChainFunction() {
-return (void*)(myGstPadChainFunction);
-}
-extern void myGstPadChainListFunction(GstPad* pad, GstObject* parent, GstBufferList* list);
-static void* getPointer_myGstPadChainListFunction() {
-return (void*)(myGstPadChainListFunction);
-}
-extern void myGstPadEventFullFunction(GstPad* pad, GstObject* parent, GstEvent* event);
-static void* getPointer_myGstPadEventFullFunction() {
-return (void*)(myGstPadEventFullFunction);
-}
-extern void myGstPadEventFunction(GstPad* pad, GstObject* parent, GstEvent* event);
-static void* getPointer_myGstPadEventFunction() {
-return (void*)(myGstPadEventFunction);
-}
-extern void myGstPadForwardFunction(GstPad* pad, gpointer user_data);
-static void* getPointer_myGstPadForwardFunction() {
-return (void*)(myGstPadForwardFunction);
-}
-extern void myGstPadGetRangeFunction(GstPad* pad, GstObject* parent, guint64 offset, guint32 length, GstBuffer* buffer);
-static void* getPointer_myGstPadGetRangeFunction() {
-return (void*)(myGstPadGetRangeFunction);
-}
-extern void myGstPadIterIntLinkFunction(GstPad* pad, GstObject* parent);
-static void* getPointer_myGstPadIterIntLinkFunction() {
-return (void*)(myGstPadIterIntLinkFunction);
-}
-extern void myGstPadLinkFunction(GstPad* pad, GstObject* parent, GstPad* peer);
-static void* getPointer_myGstPadLinkFunction() {
-return (void*)(myGstPadLinkFunction);
-}
-extern void myGstPadProbeCallback(GstPad* pad, GstPadProbeInfo* info, gpointer user_data);
-static void* getPointer_myGstPadProbeCallback() {
-return (void*)(myGstPadProbeCallback);
-}
-extern void myGstPadQueryFunction(GstPad* pad, GstObject* parent, GstQuery* query);
-static void* getPointer_myGstPadQueryFunction() {
-return (void*)(myGstPadQueryFunction);
-}
-extern void myGstPadStickyEventsForeachFunction(GstPad* pad, GstEvent* event, gpointer user_data);
-static void* getPointer_myGstPadStickyEventsForeachFunction() {
-return (void*)(myGstPadStickyEventsForeachFunction);
-}
-extern void myGstPadUnlinkFunction(GstPad* pad, GstObject* parent);
-static void* getPointer_myGstPadUnlinkFunction() {
-return (void*)(myGstPadUnlinkFunction);
-}
-extern void myGstPluginFeatureFilter(GstPluginFeature* feature, gpointer user_data);
-static void* getPointer_myGstPluginFeatureFilter() {
-return (void*)(myGstPluginFeatureFilter);
-}
-extern void myGstPluginFilter(GstPlugin* plugin, gpointer user_data);
-static void* getPointer_myGstPluginFilter() {
-return (void*)(myGstPluginFilter);
-}
-extern void myGstPluginInitFullFunc(GstPlugin* plugin, gpointer user_data);
-static void* getPointer_myGstPluginInitFullFunc() {
-return (void*)(myGstPluginInitFullFunc);
-}
-extern void myGstPluginInitFunc(GstPlugin* plugin);
-static void* getPointer_myGstPluginInitFunc() {
-return (void*)(myGstPluginInitFunc);
-}
-extern void myGstPromiseChangeFunc(GstPromise* promise, gpointer user_data);
-static void* getPointer_myGstPromiseChangeFunc() {
-return (void*)(myGstPromiseChangeFunc);
-}
-extern void myGstStructureFilterMapFunc(guint32 field_id, GValue* value, gpointer user_data);
-static void* getPointer_myGstStructureFilterMapFunc() {
-return (void*)(myGstStructureFilterMapFunc);
-}
-extern void myGstStructureForeachFunc(guint32 field_id, GValue* value, gpointer user_data);
-static void* getPointer_myGstStructureForeachFunc() {
-return (void*)(myGstStructureForeachFunc);
-}
-extern void myGstStructureMapFunc(guint32 field_id, GValue* value, gpointer user_data);
-static void* getPointer_myGstStructureMapFunc() {
-return (void*)(myGstStructureMapFunc);
-}
-extern void myGstTagForeachFunc(GstTagList* list, gchar* tag, gpointer user_data);
-static void* getPointer_myGstTagForeachFunc() {
-return (void*)(myGstTagForeachFunc);
-}
-extern void myGstTagMergeFunc(GValue* dest, GValue* src);
-static void* getPointer_myGstTagMergeFunc() {
-return (void*)(myGstTagMergeFunc);
-}
-extern void myGstTaskFunction(gpointer user_data);
-static void* getPointer_myGstTaskFunction() {
-return (void*)(myGstTaskFunction);
-}
-extern void myGstTaskPoolFunction(gpointer user_data);
-static void* getPointer_myGstTaskPoolFunction() {
-return (void*)(myGstTaskPoolFunction);
-}
-extern void myGstTaskThreadFunc(GstTask* task, GThread* thread, gpointer user_data);
-static void* getPointer_myGstTaskThreadFunc() {
-return (void*)(myGstTaskThreadFunc);
-}
-extern void myGstTypeFindFunction(GstTypeFind* find, gpointer user_data);
-static void* getPointer_myGstTypeFindFunction() {
-return (void*)(myGstTypeFindFunction);
-}
-extern void myGstValueCompareFunc(GValue* value1, GValue* value2);
-static void* getPointer_myGstValueCompareFunc() {
-return (void*)(myGstValueCompareFunc);
-}
-extern void myGstValueDeserializeFunc(GValue* dest, gchar* s);
-static void* getPointer_myGstValueDeserializeFunc() {
-return (void*)(myGstValueDeserializeFunc);
-}
-extern void myGstValueSerializeFunc(GValue* value1);
-static void* getPointer_myGstValueSerializeFunc() {
-return (void*)(myGstValueSerializeFunc);
+extern void giGstBufferForeachMetaFunc(GstBuffer* buffer, gpointer meta, gpointer user_data);
+static void* getGstBufferForeachMetaFuncWrapper() {
+    return (void*)(giGstBufferForeachMetaFunc);
+}
+extern void giGstBufferListFunc(gpointer buffer, guint32 idx, gpointer user_data);
+static void* getGstBufferListFuncWrapper() {
+    return (void*)(giGstBufferListFunc);
+}
+extern void giGstBusFunc(GstBus* bus, GstMessage* message, gpointer user_data);
+static void* getGstBusFuncWrapper() {
+    return (void*)(giGstBusFunc);
+}
+extern void giGstBusSyncHandler(GstBus* bus, GstMessage* message, gpointer user_data);
+static void* getGstBusSyncHandlerWrapper() {
+    return (void*)(giGstBusSyncHandler);
+}
+extern void giGstCapsFilterMapFunc(GstCapsFeatures* features, GstStructure* structure, gpointer user_data);
+static void* getGstCapsFilterMapFuncWrapper() {
+    return (void*)(giGstCapsFilterMapFunc);
+}
+extern void giGstCapsForeachFunc(GstCapsFeatures* features, GstStructure* structure, gpointer user_data);
+static void* getGstCapsForeachFuncWrapper() {
+    return (void*)(giGstCapsForeachFunc);
+}
+extern void giGstCapsMapFunc(GstCapsFeatures* features, GstStructure* structure, gpointer user_data);
+static void* getGstCapsMapFuncWrapper() {
+    return (void*)(giGstCapsMapFunc);
+}
+extern void giGstClockCallback(GstClock* clock, guint64 time, gpointer id, gpointer user_data);
+static void* getGstClockCallbackWrapper() {
+    return (void*)(giGstClockCallback);
+}
+extern void giGstControlBindingConvert(GstControlBinding* binding, gdouble src_value, GValue* dest_value);
+static void* getGstControlBindingConvertWrapper() {
+    return (void*)(giGstControlBindingConvert);
+}
+extern void giGstControlSourceGetValue(GstControlSource* self, guint64 timestamp, gdouble* value);
+static void* getGstControlSourceGetValueWrapper() {
+    return (void*)(giGstControlSourceGetValue);
+}
+extern void giGstControlSourceGetValueArray(GstControlSource* self, guint64 timestamp, guint64 interval, guint32 n_values, gdouble* values);
+static void* getGstControlSourceGetValueArrayWrapper() {
+    return (void*)(giGstControlSourceGetValueArray);
+}
+extern void giGstDebugFuncPtr();
+static void* getGstDebugFuncPtrWrapper() {
+    return (void*)(giGstDebugFuncPtr);
+}
+extern void giGstElementCallAsyncFunc(GstElement* element, gpointer user_data);
+static void* getGstElementCallAsyncFuncWrapper() {
+    return (void*)(giGstElementCallAsyncFunc);
+}
+extern void giGstElementForeachPadFunc(GstElement* element, GstPad* pad, gpointer user_data);
+static void* getGstElementForeachPadFuncWrapper() {
+    return (void*)(giGstElementForeachPadFunc);
+}
+extern void giGstIteratorCopyFunction(GstIterator* it, GstIterator* copy1);
+static void* getGstIteratorCopyFunctionWrapper() {
+    return (void*)(giGstIteratorCopyFunction);
+}
+extern void giGstIteratorFoldFunction(GValue* item, GValue* ret, gpointer user_data);
+static void* getGstIteratorFoldFunctionWrapper() {
+    return (void*)(giGstIteratorFoldFunction);
+}
+extern void giGstIteratorForeachFunction(GValue* item, gpointer user_data);
+static void* getGstIteratorForeachFunctionWrapper() {
+    return (void*)(giGstIteratorForeachFunction);
+}
+extern void giGstIteratorFreeFunction(GstIterator* it);
+static void* getGstIteratorFreeFunctionWrapper() {
+    return (void*)(giGstIteratorFreeFunction);
+}
+extern void giGstIteratorItemFunction(GstIterator* it, GValue* item);
+static void* getGstIteratorItemFunctionWrapper() {
+    return (void*)(giGstIteratorItemFunction);
+}
+extern void giGstIteratorNextFunction(GstIterator* it, GValue* result);
+static void* getGstIteratorNextFunctionWrapper() {
+    return (void*)(giGstIteratorNextFunction);
+}
+extern void giGstIteratorResyncFunction(GstIterator* it);
+static void* getGstIteratorResyncFunctionWrapper() {
+    return (void*)(giGstIteratorResyncFunction);
+}
+extern void giGstLogFunction(GstDebugCategory* category, GstDebugLevel level, gchar* file, gchar* function, gint32 line, GObject* object, GstDebugMessage* message, gpointer user_data);
+static void* getGstLogFunctionWrapper() {
+    return (void*)(giGstLogFunction);
+}
+extern void giGstMemoryCopyFunction(GstMemory* mem, gint64 offset, gint64 size);
+static void* getGstMemoryCopyFunctionWrapper() {
+    return (void*)(giGstMemoryCopyFunction);
+}
+extern void giGstMemoryIsSpanFunction(GstMemory* mem1, GstMemory* mem2, guint64* offset);
+static void* getGstMemoryIsSpanFunctionWrapper() {
+    return (void*)(giGstMemoryIsSpanFunction);
+}
+extern void giGstMemoryMapFullFunction(GstMemory* mem, GstMapInfo* info, guint64 maxsize);
+static void* getGstMemoryMapFullFunctionWrapper() {
+    return (void*)(giGstMemoryMapFullFunction);
+}
+extern void giGstMemoryMapFunction(GstMemory* mem, guint64 maxsize, GstMapFlags flags);
+static void* getGstMemoryMapFunctionWrapper() {
+    return (void*)(giGstMemoryMapFunction);
+}
+extern void giGstMemoryShareFunction(GstMemory* mem, gint64 offset, gint64 size);
+static void* getGstMemoryShareFunctionWrapper() {
+    return (void*)(giGstMemoryShareFunction);
+}
+extern void giGstMemoryUnmapFullFunction(GstMemory* mem, GstMapInfo* info);
+static void* getGstMemoryUnmapFullFunctionWrapper() {
+    return (void*)(giGstMemoryUnmapFullFunction);
+}
+extern void giGstMemoryUnmapFunction(GstMemory* mem);
+static void* getGstMemoryUnmapFunctionWrapper() {
+    return (void*)(giGstMemoryUnmapFunction);
+}
+extern void giGstMetaFreeFunction(GstMeta* meta, GstBuffer* buffer);
+static void* getGstMetaFreeFunctionWrapper() {
+    return (void*)(giGstMetaFreeFunction);
+}
+extern void giGstMetaInitFunction(GstMeta* meta, gpointer params, GstBuffer* buffer);
+static void* getGstMetaInitFunctionWrapper() {
+    return (void*)(giGstMetaInitFunction);
+}
+extern void giGstMetaTransformFunction(GstBuffer* transbuf, GstMeta* meta, GstBuffer* buffer, guint32 type1, gpointer data);
+static void* getGstMetaTransformFunctionWrapper() {
+    return (void*)(giGstMetaTransformFunction);
+}
+extern void giGstMiniObjectDisposeFunction(GstMiniObject* obj);
+static void* getGstMiniObjectDisposeFunctionWrapper() {
+    return (void*)(giGstMiniObjectDisposeFunction);
+}
+extern void giGstMiniObjectFreeFunction(GstMiniObject* obj);
+static void* getGstMiniObjectFreeFunctionWrapper() {
+    return (void*)(giGstMiniObjectFreeFunction);
+}
+extern void giGstMiniObjectNotify(gpointer user_data, GstMiniObject* obj);
+static void* getGstMiniObjectNotifyWrapper() {
+    return (void*)(giGstMiniObjectNotify);
+}
+extern void giGstPadActivateFunction(GstPad* pad, GstObject* parent);
+static void* getGstPadActivateFunctionWrapper() {
+    return (void*)(giGstPadActivateFunction);
+}
+extern void giGstPadActivateModeFunction(GstPad* pad, GstObject* parent, GstPadMode mode, gboolean active);
+static void* getGstPadActivateModeFunctionWrapper() {
+    return (void*)(giGstPadActivateModeFunction);
+}
+extern void giGstPadChainFunction(GstPad* pad, GstObject* parent, GstBuffer* buffer);
+static void* getGstPadChainFunctionWrapper() {
+    return (void*)(giGstPadChainFunction);
+}
+extern void giGstPadChainListFunction(GstPad* pad, GstObject* parent, GstBufferList* list);
+static void* getGstPadChainListFunctionWrapper() {
+    return (void*)(giGstPadChainListFunction);
+}
+extern void giGstPadEventFullFunction(GstPad* pad, GstObject* parent, GstEvent* event);
+static void* getGstPadEventFullFunctionWrapper() {
+    return (void*)(giGstPadEventFullFunction);
+}
+extern void giGstPadEventFunction(GstPad* pad, GstObject* parent, GstEvent* event);
+static void* getGstPadEventFunctionWrapper() {
+    return (void*)(giGstPadEventFunction);
+}
+extern void giGstPadForwardFunction(GstPad* pad, gpointer user_data);
+static void* getGstPadForwardFunctionWrapper() {
+    return (void*)(giGstPadForwardFunction);
+}
+extern void giGstPadGetRangeFunction(GstPad* pad, GstObject* parent, guint64 offset, guint32 length, GstBuffer* buffer);
+static void* getGstPadGetRangeFunctionWrapper() {
+    return (void*)(giGstPadGetRangeFunction);
+}
+extern void giGstPadIterIntLinkFunction(GstPad* pad, GstObject* parent);
+static void* getGstPadIterIntLinkFunctionWrapper() {
+    return (void*)(giGstPadIterIntLinkFunction);
+}
+extern void giGstPadLinkFunction(GstPad* pad, GstObject* parent, GstPad* peer);
+static void* getGstPadLinkFunctionWrapper() {
+    return (void*)(giGstPadLinkFunction);
+}
+extern void giGstPadProbeCallback(GstPad* pad, GstPadProbeInfo* info, gpointer user_data);
+static void* getGstPadProbeCallbackWrapper() {
+    return (void*)(giGstPadProbeCallback);
+}
+extern void giGstPadQueryFunction(GstPad* pad, GstObject* parent, GstQuery* query);
+static void* getGstPadQueryFunctionWrapper() {
+    return (void*)(giGstPadQueryFunction);
+}
+extern void giGstPadStickyEventsForeachFunction(GstPad* pad, GstEvent* event, gpointer user_data);
+static void* getGstPadStickyEventsForeachFunctionWrapper() {
+    return (void*)(giGstPadStickyEventsForeachFunction);
+}
+extern void giGstPadUnlinkFunction(GstPad* pad, GstObject* parent);
+static void* getGstPadUnlinkFunctionWrapper() {
+    return (void*)(giGstPadUnlinkFunction);
+}
+extern void giGstPluginFeatureFilter(GstPluginFeature* feature, gpointer user_data);
+static void* getGstPluginFeatureFilterWrapper() {
+    return (void*)(giGstPluginFeatureFilter);
+}
+extern void giGstPluginFilter(GstPlugin* plugin, gpointer user_data);
+static void* getGstPluginFilterWrapper() {
+    return (void*)(giGstPluginFilter);
+}
+extern void giGstPluginInitFullFunc(GstPlugin* plugin, gpointer user_data);
+static void* getGstPluginInitFullFuncWrapper() {
+    return (void*)(giGstPluginInitFullFunc);
+}
+extern void giGstPluginInitFunc(GstPlugin* plugin);
+static void* getGstPluginInitFuncWrapper() {
+    return (void*)(giGstPluginInitFunc);
+}
+extern void giGstPromiseChangeFunc(GstPromise* promise, gpointer user_data);
+static void* getGstPromiseChangeFuncWrapper() {
+    return (void*)(giGstPromiseChangeFunc);
+}
+extern void giGstStructureFilterMapFunc(guint32 field_id, GValue* value, gpointer user_data);
+static void* getGstStructureFilterMapFuncWrapper() {
+    return (void*)(giGstStructureFilterMapFunc);
+}
+extern void giGstStructureForeachFunc(guint32 field_id, GValue* value, gpointer user_data);
+static void* getGstStructureForeachFuncWrapper() {
+    return (void*)(giGstStructureForeachFunc);
+}
+extern void giGstStructureMapFunc(guint32 field_id, GValue* value, gpointer user_data);
+static void* getGstStructureMapFuncWrapper() {
+    return (void*)(giGstStructureMapFunc);
+}
+extern void giGstTagForeachFunc(GstTagList* list, gchar* tag, gpointer user_data);
+static void* getGstTagForeachFuncWrapper() {
+    return (void*)(giGstTagForeachFunc);
+}
+extern void giGstTagMergeFunc(GValue* dest, GValue* src);
+static void* getGstTagMergeFuncWrapper() {
+    return (void*)(giGstTagMergeFunc);
+}
+extern void giGstTaskFunction(gpointer user_data);
+static void* getGstTaskFunctionWrapper() {
+    return (void*)(giGstTaskFunction);
+}
+extern void giGstTaskPoolFunction(gpointer user_data);
+static void* getGstTaskPoolFunctionWrapper() {
+    return (void*)(giGstTaskPoolFunction);
+}
+extern void giGstTaskThreadFunc(GstTask* task, GThread* thread, gpointer user_data);
+static void* getGstTaskThreadFuncWrapper() {
+    return (void*)(giGstTaskThreadFunc);
+}
+extern void giGstTypeFindFunction(GstTypeFind* find, gpointer user_data);
+static void* getGstTypeFindFunctionWrapper() {
+    return (void*)(giGstTypeFindFunction);
+}
+extern void giGstValueCompareFunc(GValue* value1, GValue* value2);
+static void* getGstValueCompareFuncWrapper() {
+    return (void*)(giGstValueCompareFunc);
+}
+extern void giGstValueDeserializeFunc(GValue* dest, gchar* s);
+static void* getGstValueDeserializeFuncWrapper() {
+    return (void*)(giGstValueDeserializeFunc);
+}
+extern void giGstValueSerializeFunc(GValue* value1);
+static void* getGstValueSerializeFuncWrapper() {
+    return (void*)(giGstValueSerializeFunc);
 }
 */
 import "C"
@@ -1141,7 +1141,7 @@ func NewBufferWrappedFull(flags MemoryFlags, data gi.Uint8Array, maxsize uint64,
 	arg_offset := gi.NewUint64Argument(offset)
 	arg_size := gi.NewUint64Argument(size)
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_flags, arg_data, arg_maxsize, arg_offset, arg_size, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -1524,7 +1524,7 @@ func (v Buffer) ForeachMeta(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myBufferForeachMetaFunc())
+	arg_func1 := gi.NewPointerArgument(GetBufferForeachMetaFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -2309,22 +2309,22 @@ func BufferFlagsGetType() gi.GType {
 	return ret
 }
 
-type BufferForeachMetaFuncStruct struct {
-	F_buffer Buffer
-	F_meta   unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+type BufferForeachMetaFuncArgs struct {
+	Buffer Buffer
+	Meta   unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
 }
 
-func GetPointer_myBufferForeachMetaFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBufferForeachMetaFunc())
+func GetBufferForeachMetaFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBufferForeachMetaFuncWrapper())
 }
 
-//export myGstBufferForeachMetaFunc
-func myGstBufferForeachMetaFunc(buffer *C.GstBuffer, meta C.gpointer, user_data C.gpointer) {
+//export giGstBufferForeachMetaFunc
+func giGstBufferForeachMetaFunc(buffer *C.GstBuffer, meta C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &BufferForeachMetaFuncStruct{
-			F_buffer: Buffer{P: unsafe.Pointer(buffer)},
-			F_meta:   unsafe.Pointer(meta),
+		args := &BufferForeachMetaFuncArgs{
+			Buffer: Buffer{P: unsafe.Pointer(buffer)},
+			Meta:   unsafe.Pointer(meta),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -2431,7 +2431,7 @@ func (v BufferList) Foreach(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myBufferListFunc())
+	arg_func1 := gi.NewPointerArgument(GetBufferListFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -2539,22 +2539,22 @@ func (v BufferList) Remove(idx uint32, length uint32) {
 	iv.Call(args, nil, nil)
 }
 
-type BufferListFuncStruct struct {
-	F_buffer unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
-	F_idx    uint32
+type BufferListFuncArgs struct {
+	Buffer unsafe.Pointer /*TODO_CB tag: interface, isPtr: true*/
+	Idx    uint32
 }
 
-func GetPointer_myBufferListFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBufferListFunc())
+func GetBufferListFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBufferListFuncWrapper())
 }
 
-//export myGstBufferListFunc
-func myGstBufferListFunc(buffer C.gpointer, idx C.guint32, user_data C.gpointer) {
+//export giGstBufferListFunc
+func giGstBufferListFunc(buffer C.gpointer, idx C.guint32, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &BufferListFuncStruct{
-			F_buffer: unsafe.Pointer(buffer),
-			F_idx:    uint32(idx),
+		args := &BufferListFuncArgs{
+			Buffer: unsafe.Pointer(buffer),
+			Idx:    uint32(idx),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -3145,9 +3145,9 @@ func (v Bus) AddWatch(priority int32, fn func(v interface{})) (result uint32) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_priority := gi.NewInt32Argument(priority)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myBusFunc())
+	arg_func1 := gi.NewPointerArgument(GetBusFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_priority, arg_func1, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -3422,9 +3422,9 @@ func (v Bus) SetSyncHandler(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myBusSyncHandler())
+	arg_func1 := gi.NewPointerArgument(GetBusSyncHandlerWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -3513,22 +3513,22 @@ func BusFlagsGetType() gi.GType {
 	return ret
 }
 
-type BusFuncStruct struct {
-	F_bus     Bus
-	F_message Message
+type BusFuncArgs struct {
+	Bus     Bus
+	Message Message
 }
 
-func GetPointer_myBusFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBusFunc())
+func GetBusFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBusFuncWrapper())
 }
 
-//export myGstBusFunc
-func myGstBusFunc(bus *C.GstBus, message *C.GstMessage, user_data C.gpointer) {
+//export giGstBusFunc
+func giGstBusFunc(bus *C.GstBus, message *C.GstMessage, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &BusFuncStruct{
-			F_bus:     WrapBus(unsafe.Pointer(bus)),
-			F_message: Message{P: unsafe.Pointer(message)},
+		args := &BusFuncArgs{
+			Bus:     WrapBus(unsafe.Pointer(bus)),
+			Message: Message{P: unsafe.Pointer(message)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -3547,22 +3547,22 @@ func BusPrivateGetType() gi.GType {
 	return ret
 }
 
-type BusSyncHandlerStruct struct {
-	F_bus     Bus
-	F_message Message
+type BusSyncHandlerArgs struct {
+	Bus     Bus
+	Message Message
 }
 
-func GetPointer_myBusSyncHandler() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstBusSyncHandler())
+func GetBusSyncHandlerWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstBusSyncHandlerWrapper())
 }
 
-//export myGstBusSyncHandler
-func myGstBusSyncHandler(bus *C.GstBus, message *C.GstMessage, user_data C.gpointer) {
+//export giGstBusSyncHandler
+func giGstBusSyncHandler(bus *C.GstBus, message *C.GstMessage, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &BusSyncHandlerStruct{
-			F_bus:     WrapBus(unsafe.Pointer(bus)),
-			F_message: Message{P: unsafe.Pointer(message)},
+		args := &BusSyncHandlerArgs{
+			Bus:     WrapBus(unsafe.Pointer(bus)),
+			Message: Message{P: unsafe.Pointer(message)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -3758,7 +3758,7 @@ func (v Caps) FilterAndMapInPlace(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCapsFilterMapFunc())
+	arg_func1 := gi.NewPointerArgument(GetCapsFilterMapFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -3799,7 +3799,7 @@ func (v Caps) Foreach(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCapsForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetCapsForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -4134,7 +4134,7 @@ func (v Caps) MapInPlace(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCapsMapFunc())
+	arg_func1 := gi.NewPointerArgument(GetCapsMapFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -4747,22 +4747,22 @@ func CapsFeaturesFromString1(features string) (result CapsFeatures) {
 	return
 }
 
-type CapsFilterMapFuncStruct struct {
-	F_features  CapsFeatures
-	F_structure Structure
+type CapsFilterMapFuncArgs struct {
+	Features  CapsFeatures
+	Structure Structure
 }
 
-func GetPointer_myCapsFilterMapFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstCapsFilterMapFunc())
+func GetCapsFilterMapFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstCapsFilterMapFuncWrapper())
 }
 
-//export myGstCapsFilterMapFunc
-func myGstCapsFilterMapFunc(features *C.GstCapsFeatures, structure *C.GstStructure, user_data C.gpointer) {
+//export giGstCapsFilterMapFunc
+func giGstCapsFilterMapFunc(features *C.GstCapsFeatures, structure *C.GstStructure, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CapsFilterMapFuncStruct{
-			F_features:  CapsFeatures{P: unsafe.Pointer(features)},
-			F_structure: Structure{P: unsafe.Pointer(structure)},
+		args := &CapsFilterMapFuncArgs{
+			Features:  CapsFeatures{P: unsafe.Pointer(features)},
+			Structure: Structure{P: unsafe.Pointer(structure)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -4783,22 +4783,22 @@ func CapsFlagsGetType() gi.GType {
 	return ret
 }
 
-type CapsForeachFuncStruct struct {
-	F_features  CapsFeatures
-	F_structure Structure
+type CapsForeachFuncArgs struct {
+	Features  CapsFeatures
+	Structure Structure
 }
 
-func GetPointer_myCapsForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstCapsForeachFunc())
+func GetCapsForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstCapsForeachFuncWrapper())
 }
 
-//export myGstCapsForeachFunc
-func myGstCapsForeachFunc(features *C.GstCapsFeatures, structure *C.GstStructure, user_data C.gpointer) {
+//export giGstCapsForeachFunc
+func giGstCapsForeachFunc(features *C.GstCapsFeatures, structure *C.GstStructure, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CapsForeachFuncStruct{
-			F_features:  CapsFeatures{P: unsafe.Pointer(features)},
-			F_structure: Structure{P: unsafe.Pointer(structure)},
+		args := &CapsForeachFuncArgs{
+			Features:  CapsFeatures{P: unsafe.Pointer(features)},
+			Structure: Structure{P: unsafe.Pointer(structure)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -4820,22 +4820,22 @@ func CapsIntersectModeGetType() gi.GType {
 	return ret
 }
 
-type CapsMapFuncStruct struct {
-	F_features  CapsFeatures
-	F_structure Structure
+type CapsMapFuncArgs struct {
+	Features  CapsFeatures
+	Structure Structure
 }
 
-func GetPointer_myCapsMapFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstCapsMapFunc())
+func GetCapsMapFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstCapsMapFuncWrapper())
 }
 
-//export myGstCapsMapFunc
-func myGstCapsMapFunc(features *C.GstCapsFeatures, structure *C.GstStructure, user_data C.gpointer) {
+//export giGstCapsMapFunc
+func giGstCapsMapFunc(features *C.GstCapsFeatures, structure *C.GstStructure, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CapsMapFuncStruct{
-			F_features:  CapsFeatures{P: unsafe.Pointer(features)},
-			F_structure: Structure{P: unsafe.Pointer(structure)},
+		args := &CapsMapFuncArgs{
+			Features:  CapsFeatures{P: unsafe.Pointer(features)},
+			Structure: Structure{P: unsafe.Pointer(structure)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -5199,9 +5199,9 @@ func ClockIdWaitAsync1(id unsafe.Pointer, fn func(v interface{})) (result ClockR
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_id := gi.NewPointerArgument(id)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myClockCallback())
+	arg_func1 := gi.NewPointerArgument(GetClockCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy_data := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy_data := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_id, arg_func1, arg_fn, arg_destroy_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -5750,24 +5750,24 @@ func (v Clock) WaitForSync(timeout uint64) (result bool) {
 	return
 }
 
-type ClockCallbackStruct struct {
-	F_clock Clock
-	F_time  uint64
-	F_id    unsafe.Pointer
+type ClockCallbackArgs struct {
+	Clock Clock
+	Time  uint64
+	Id    unsafe.Pointer
 }
 
-func GetPointer_myClockCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstClockCallback())
+func GetClockCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstClockCallbackWrapper())
 }
 
-//export myGstClockCallback
-func myGstClockCallback(clock *C.GstClock, time C.guint64, id C.gpointer, user_data C.gpointer) {
+//export giGstClockCallback
+func giGstClockCallback(clock *C.GstClock, time C.guint64, id C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &ClockCallbackStruct{
-			F_clock: WrapClock(unsafe.Pointer(clock)),
-			F_time:  uint64(time),
-			F_id:    unsafe.Pointer(id),
+		args := &ClockCallbackArgs{
+			Clock: WrapClock(unsafe.Pointer(clock)),
+			Time:  uint64(time),
+			Id:    unsafe.Pointer(id),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -6128,18 +6128,18 @@ func (v ControlBinding) SyncValues(object IObject, timestamp uint64, last_sync u
 
 // ignore GType struct ControlBindingClass
 
-type ControlBindingConvertStruct struct {
-	F_binding    ControlBinding
-	F_src_value  float64
-	F_dest_value g.Value
+type ControlBindingConvertArgs struct {
+	Binding   ControlBinding
+	SrcValue  float64
+	DestValue g.Value
 }
 
-func GetPointer_myControlBindingConvert() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstControlBindingConvert())
+func GetControlBindingConvertWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstControlBindingConvertWrapper())
 }
 
-//export myGstControlBindingConvert
-func myGstControlBindingConvert(binding *C.GstControlBinding, src_value C.gdouble, dest_value *C.GValue) {
+//export giGstControlBindingConvert
+func giGstControlBindingConvert(binding *C.GstControlBinding, src_value C.gdouble, dest_value *C.GValue) {
 	// TODO: not found user_data
 }
 
@@ -6226,35 +6226,35 @@ func (v ControlSource) ControlSourceGetValueArray(timestamp uint64, interval uin
 
 // ignore GType struct ControlSourceClass
 
-type ControlSourceGetValueStruct struct {
-	F_self      ControlSource
-	F_timestamp uint64
-	F_value     *float64
+type ControlSourceGetValueArgs struct {
+	Self      ControlSource
+	Timestamp uint64
+	Value     *float64
 }
 
-func GetPointer_myControlSourceGetValue() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstControlSourceGetValue())
+func GetControlSourceGetValueWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstControlSourceGetValueWrapper())
 }
 
-//export myGstControlSourceGetValue
-func myGstControlSourceGetValue(self *C.GstControlSource, timestamp C.guint64, value *C.gdouble) {
+//export giGstControlSourceGetValue
+func giGstControlSourceGetValue(self *C.GstControlSource, timestamp C.guint64, value *C.gdouble) {
 	// TODO: not found user_data
 }
 
-type ControlSourceGetValueArrayStruct struct {
-	F_self      ControlSource
-	F_timestamp uint64
-	F_interval  uint64
-	F_n_values  uint32
-	F_values    *float64
+type ControlSourceGetValueArrayArgs struct {
+	Self      ControlSource
+	Timestamp uint64
+	Interval  uint64
+	NValues   uint32
+	Values    *float64
 }
 
-func GetPointer_myControlSourceGetValueArray() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstControlSourceGetValueArray())
+func GetControlSourceGetValueArrayWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstControlSourceGetValueArrayWrapper())
 }
 
-//export myGstControlSourceGetValueArray
-func myGstControlSourceGetValueArray(self *C.GstControlSource, timestamp C.guint64, interval C.guint64, n_values C.guint32, values *C.gdouble) {
+//export giGstControlSourceGetValueArray
+func giGstControlSourceGetValueArray(self *C.GstControlSource, timestamp C.guint64, interval C.guint64, n_values C.guint32, values *C.gdouble) {
 	// TODO: not found user_data
 }
 
@@ -7020,15 +7020,15 @@ func DebugColorModeGetType() gi.GType {
 	return ret
 }
 
-type DebugFuncPtrStruct struct {
+type DebugFuncPtrArg struct {
 }
 
-func GetPointer_myDebugFuncPtr() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstDebugFuncPtr())
+func GetDebugFuncPtrWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstDebugFuncPtrWrapper())
 }
 
-//export myGstDebugFuncPtr
-func myGstDebugFuncPtr() {
+//export giGstDebugFuncPtr
+func giGstDebugFuncPtr() {
 	// TODO: not found user_data
 }
 
@@ -8413,9 +8413,9 @@ func (v Element) CallAsync(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myElementCallAsyncFunc())
+	arg_func1 := gi.NewPointerArgument(GetElementCallAsyncFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy_notify}
 	iv.Call(args, nil, nil)
 }
@@ -8491,7 +8491,7 @@ func (v Element) ForeachPad(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myElementForeachPadFunc())
+	arg_func1 := gi.NewPointerArgument(GetElementForeachPadFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -8517,7 +8517,7 @@ func (v Element) ForeachSinkPad(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myElementForeachPadFunc())
+	arg_func1 := gi.NewPointerArgument(GetElementForeachPadFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -8543,7 +8543,7 @@ func (v Element) ForeachSrcPad(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myElementForeachPadFunc())
+	arg_func1 := gi.NewPointerArgument(GetElementForeachPadFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -9783,20 +9783,20 @@ func (v Element) UnlinkPads(srcpadname string, dest IElement, destpadname string
 	gi.Free(c_destpadname)
 }
 
-type ElementCallAsyncFuncStruct struct {
-	F_element Element
+type ElementCallAsyncFuncArg struct {
+	Element Element
 }
 
-func GetPointer_myElementCallAsyncFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstElementCallAsyncFunc())
+func GetElementCallAsyncFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstElementCallAsyncFuncWrapper())
 }
 
-//export myGstElementCallAsyncFunc
-func myGstElementCallAsyncFunc(element *C.GstElement, user_data C.gpointer) {
+//export giGstElementCallAsyncFunc
+func giGstElementCallAsyncFunc(element *C.GstElement, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &ElementCallAsyncFuncStruct{
-			F_element: WrapElement(unsafe.Pointer(element)),
+		args := &ElementCallAsyncFuncArg{
+			Element: WrapElement(unsafe.Pointer(element)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -10468,22 +10468,22 @@ func ElementFlagsGetType() gi.GType {
 	return ret
 }
 
-type ElementForeachPadFuncStruct struct {
-	F_element Element
-	F_pad     Pad
+type ElementForeachPadFuncArgs struct {
+	Element Element
+	Pad     Pad
 }
 
-func GetPointer_myElementForeachPadFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstElementForeachPadFunc())
+func GetElementForeachPadFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstElementForeachPadFuncWrapper())
 }
 
-//export myGstElementForeachPadFunc
-func myGstElementForeachPadFunc(element *C.GstElement, pad *C.GstPad, user_data C.gpointer) {
+//export giGstElementForeachPadFunc
+func giGstElementForeachPadFunc(element *C.GstElement, pad *C.GstPad, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &ElementForeachPadFuncStruct{
-			F_element: WrapElement(unsafe.Pointer(element)),
-			F_pad:     WrapPad(unsafe.Pointer(pad)),
+		args := &ElementForeachPadFuncArgs{
+			Element: WrapElement(unsafe.Pointer(element)),
+			Pad:     WrapPad(unsafe.Pointer(pad)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -12310,7 +12310,7 @@ func (v Iterator) Filter(user_data g.Value) (result Iterator) {
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(g.GetPointer_myCompareFunc())
+	arg_func1 := gi.NewPointerArgument(g.GetCompareFuncWrapper())
 	arg_user_data := gi.NewPointerArgument(user_data.P)
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	var ret gi.Argument
@@ -12337,7 +12337,7 @@ func (v Iterator) FindCustom(elem g.Value, fn func(v interface{})) (result bool)
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(g.GetPointer_myCompareFunc())
+	arg_func1 := gi.NewPointerArgument(g.GetCompareFuncWrapper())
 	arg_elem := gi.NewPointerArgument(elem.P)
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_elem, arg_fn}
@@ -12366,7 +12366,7 @@ func (v Iterator) Fold(ret g.Value, fn func(v interface{})) (result IteratorResu
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myIteratorFoldFunction())
+	arg_func1 := gi.NewPointerArgument(GetIteratorFoldFunctionWrapper())
 	arg_ret := gi.NewPointerArgument(ret.P)
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_ret, arg_fn}
@@ -12393,7 +12393,7 @@ func (v Iterator) Foreach(fn func(v interface{})) (result IteratorResultEnum) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myIteratorForeachFunction())
+	arg_func1 := gi.NewPointerArgument(GetIteratorForeachFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -12466,36 +12466,36 @@ func (v Iterator) Resync() {
 	iv.Call(args, nil, nil)
 }
 
-type IteratorCopyFunctionStruct struct {
-	F_it    Iterator
-	F_copy1 Iterator
+type IteratorCopyFunctionArgs struct {
+	It   Iterator
+	Copy Iterator
 }
 
-func GetPointer_myIteratorCopyFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstIteratorCopyFunction())
+func GetIteratorCopyFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstIteratorCopyFunctionWrapper())
 }
 
-//export myGstIteratorCopyFunction
-func myGstIteratorCopyFunction(it *C.GstIterator, copy1 *C.GstIterator) {
+//export giGstIteratorCopyFunction
+func giGstIteratorCopyFunction(it *C.GstIterator, copy1 *C.GstIterator) {
 	// TODO: not found user_data
 }
 
-type IteratorFoldFunctionStruct struct {
-	F_item g.Value
-	F_ret  g.Value
+type IteratorFoldFunctionArgs struct {
+	Item g.Value
+	Ret  g.Value
 }
 
-func GetPointer_myIteratorFoldFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstIteratorFoldFunction())
+func GetIteratorFoldFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstIteratorFoldFunctionWrapper())
 }
 
-//export myGstIteratorFoldFunction
-func myGstIteratorFoldFunction(item *C.GValue, ret *C.GValue, user_data C.gpointer) {
+//export giGstIteratorFoldFunction
+func giGstIteratorFoldFunction(item *C.GValue, ret *C.GValue, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &IteratorFoldFunctionStruct{
-			F_item: g.Value{P: unsafe.Pointer(item)},
-			F_ret:  g.Value{P: unsafe.Pointer(ret)},
+		args := &IteratorFoldFunctionArgs{
+			Item: g.Value{P: unsafe.Pointer(item)},
+			Ret:  g.Value{P: unsafe.Pointer(ret)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -12504,20 +12504,20 @@ func myGstIteratorFoldFunction(item *C.GValue, ret *C.GValue, user_data C.gpoint
 	}
 }
 
-type IteratorForeachFunctionStruct struct {
-	F_item g.Value
+type IteratorForeachFunctionArg struct {
+	Item g.Value
 }
 
-func GetPointer_myIteratorForeachFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstIteratorForeachFunction())
+func GetIteratorForeachFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstIteratorForeachFunctionWrapper())
 }
 
-//export myGstIteratorForeachFunction
-func myGstIteratorForeachFunction(item *C.GValue, user_data C.gpointer) {
+//export giGstIteratorForeachFunction
+func giGstIteratorForeachFunction(item *C.GValue, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &IteratorForeachFunctionStruct{
-			F_item: g.Value{P: unsafe.Pointer(item)},
+		args := &IteratorForeachFunctionArg{
+			Item: g.Value{P: unsafe.Pointer(item)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -12526,16 +12526,16 @@ func myGstIteratorForeachFunction(item *C.GValue, user_data C.gpointer) {
 	}
 }
 
-type IteratorFreeFunctionStruct struct {
-	F_it Iterator
+type IteratorFreeFunctionArg struct {
+	It Iterator
 }
 
-func GetPointer_myIteratorFreeFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstIteratorFreeFunction())
+func GetIteratorFreeFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstIteratorFreeFunctionWrapper())
 }
 
-//export myGstIteratorFreeFunction
-func myGstIteratorFreeFunction(it *C.GstIterator) {
+//export giGstIteratorFreeFunction
+func giGstIteratorFreeFunction(it *C.GstIterator) {
 	// TODO: not found user_data
 }
 
@@ -12553,31 +12553,31 @@ func IteratorItemGetType() gi.GType {
 	return ret
 }
 
-type IteratorItemFunctionStruct struct {
-	F_it   Iterator
-	F_item g.Value
+type IteratorItemFunctionArgs struct {
+	It   Iterator
+	Item g.Value
 }
 
-func GetPointer_myIteratorItemFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstIteratorItemFunction())
+func GetIteratorItemFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstIteratorItemFunctionWrapper())
 }
 
-//export myGstIteratorItemFunction
-func myGstIteratorItemFunction(it *C.GstIterator, item *C.GValue) {
+//export giGstIteratorItemFunction
+func giGstIteratorItemFunction(it *C.GstIterator, item *C.GValue) {
 	// TODO: not found user_data
 }
 
-type IteratorNextFunctionStruct struct {
-	F_it     Iterator
-	F_result g.Value
+type IteratorNextFunctionArgs struct {
+	It     Iterator
+	Result g.Value
 }
 
-func GetPointer_myIteratorNextFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstIteratorNextFunction())
+func GetIteratorNextFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstIteratorNextFunctionWrapper())
 }
 
-//export myGstIteratorNextFunction
-func myGstIteratorNextFunction(it *C.GstIterator, result *C.GValue) {
+//export giGstIteratorNextFunction
+func giGstIteratorNextFunction(it *C.GstIterator, result *C.GValue) {
 	// TODO: not found user_data
 }
 
@@ -12596,16 +12596,16 @@ func IteratorResultGetType() gi.GType {
 	return ret
 }
 
-type IteratorResyncFunctionStruct struct {
-	F_it Iterator
+type IteratorResyncFunctionArg struct {
+	It Iterator
 }
 
-func GetPointer_myIteratorResyncFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstIteratorResyncFunction())
+func GetIteratorResyncFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstIteratorResyncFunctionWrapper())
 }
 
-//export myGstIteratorResyncFunction
-func myGstIteratorResyncFunction(it *C.GstIterator) {
+//export giGstIteratorResyncFunction
+func giGstIteratorResyncFunction(it *C.GstIterator) {
 	// TODO: not found user_data
 }
 
@@ -12642,32 +12642,32 @@ func LockFlagsGetType() gi.GType {
 	return ret
 }
 
-type LogFunctionStruct struct {
-	F_category DebugCategory
-	F_level    DebugLevelEnum
-	F_file     string
-	F_function string
-	F_line     int32
-	F_object   g.Object
-	F_message  DebugMessage
+type LogFunctionArgs struct {
+	Category DebugCategory
+	Level    DebugLevelEnum
+	File     string
+	Function string
+	Line     int32
+	Object   g.Object
+	Message  DebugMessage
 }
 
-func GetPointer_myLogFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstLogFunction())
+func GetLogFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstLogFunctionWrapper())
 }
 
-//export myGstLogFunction
-func myGstLogFunction(category *C.GstDebugCategory, level C.GstDebugLevel, file *C.gchar, function *C.gchar, line C.gint32, object *C.GObject, message *C.GstDebugMessage, user_data C.gpointer) {
+//export giGstLogFunction
+func giGstLogFunction(category *C.GstDebugCategory, level C.GstDebugLevel, file *C.gchar, function *C.gchar, line C.gint32, object *C.GObject, message *C.GstDebugMessage, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &LogFunctionStruct{
-			F_category: DebugCategory{P: unsafe.Pointer(category)},
-			F_level:    DebugLevelEnum(level),
-			F_file:     gi.GoString(unsafe.Pointer(file)),
-			F_function: gi.GoString(unsafe.Pointer(function)),
-			F_line:     int32(line),
-			F_object:   g.WrapObject(unsafe.Pointer(object)),
-			F_message:  DebugMessage{P: unsafe.Pointer(message)},
+		args := &LogFunctionArgs{
+			Category: DebugCategory{P: unsafe.Pointer(category)},
+			Level:    DebugLevelEnum(level),
+			File:     gi.GoString(unsafe.Pointer(file)),
+			Function: gi.GoString(unsafe.Pointer(function)),
+			Line:     int32(line),
+			Object:   g.WrapObject(unsafe.Pointer(object)),
+			Message:  DebugMessage{P: unsafe.Pointer(message)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -12745,7 +12745,7 @@ func NewMemoryWrapped(flags MemoryFlags, data gi.Uint8Array, maxsize uint64, off
 	arg_offset := gi.NewUint64Argument(offset)
 	arg_size := gi.NewUint64Argument(size)
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_flags, arg_data, arg_maxsize, arg_offset, arg_size, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -12960,18 +12960,18 @@ func (v Memory) Unmap(info MapInfo) {
 	iv.Call(args, nil, nil)
 }
 
-type MemoryCopyFunctionStruct struct {
-	F_mem    Memory
-	F_offset int64
-	F_size   int64
+type MemoryCopyFunctionArgs struct {
+	Mem    Memory
+	Offset int64
+	Size   int64
 }
 
-func GetPointer_myMemoryCopyFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMemoryCopyFunction())
+func GetMemoryCopyFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMemoryCopyFunctionWrapper())
 }
 
-//export myGstMemoryCopyFunction
-func myGstMemoryCopyFunction(mem *C.GstMemory, offset C.gint64, size C.gint64) {
+//export giGstMemoryCopyFunction
+func giGstMemoryCopyFunction(mem *C.GstMemory, offset C.gint64, size C.gint64) {
 	// TODO: not found user_data
 }
 
@@ -12993,90 +12993,90 @@ func MemoryFlagsGetType() gi.GType {
 	return ret
 }
 
-type MemoryIsSpanFunctionStruct struct {
-	F_mem1   Memory
-	F_mem2   Memory
-	F_offset *uint64
+type MemoryIsSpanFunctionArgs struct {
+	Mem1   Memory
+	Mem2   Memory
+	Offset *uint64
 }
 
-func GetPointer_myMemoryIsSpanFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMemoryIsSpanFunction())
+func GetMemoryIsSpanFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMemoryIsSpanFunctionWrapper())
 }
 
-//export myGstMemoryIsSpanFunction
-func myGstMemoryIsSpanFunction(mem1 *C.GstMemory, mem2 *C.GstMemory, offset *C.guint64) {
+//export giGstMemoryIsSpanFunction
+func giGstMemoryIsSpanFunction(mem1 *C.GstMemory, mem2 *C.GstMemory, offset *C.guint64) {
 	// TODO: not found user_data
 }
 
-type MemoryMapFullFunctionStruct struct {
-	F_mem     Memory
-	F_info    MapInfo
-	F_maxsize uint64
+type MemoryMapFullFunctionArgs struct {
+	Mem     Memory
+	Info    MapInfo
+	Maxsize uint64
 }
 
-func GetPointer_myMemoryMapFullFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMemoryMapFullFunction())
+func GetMemoryMapFullFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMemoryMapFullFunctionWrapper())
 }
 
-//export myGstMemoryMapFullFunction
-func myGstMemoryMapFullFunction(mem *C.GstMemory, info *C.GstMapInfo, maxsize C.guint64) {
+//export giGstMemoryMapFullFunction
+func giGstMemoryMapFullFunction(mem *C.GstMemory, info *C.GstMapInfo, maxsize C.guint64) {
 	// TODO: not found user_data
 }
 
-type MemoryMapFunctionStruct struct {
-	F_mem     Memory
-	F_maxsize uint64
-	F_flags   MapFlags
+type MemoryMapFunctionArgs struct {
+	Mem     Memory
+	Maxsize uint64
+	Flags   MapFlags
 }
 
-func GetPointer_myMemoryMapFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMemoryMapFunction())
+func GetMemoryMapFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMemoryMapFunctionWrapper())
 }
 
-//export myGstMemoryMapFunction
-func myGstMemoryMapFunction(mem *C.GstMemory, maxsize C.guint64, flags C.GstMapFlags) {
+//export giGstMemoryMapFunction
+func giGstMemoryMapFunction(mem *C.GstMemory, maxsize C.guint64, flags C.GstMapFlags) {
 	// TODO: not found user_data
 }
 
-type MemoryShareFunctionStruct struct {
-	F_mem    Memory
-	F_offset int64
-	F_size   int64
+type MemoryShareFunctionArgs struct {
+	Mem    Memory
+	Offset int64
+	Size   int64
 }
 
-func GetPointer_myMemoryShareFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMemoryShareFunction())
+func GetMemoryShareFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMemoryShareFunctionWrapper())
 }
 
-//export myGstMemoryShareFunction
-func myGstMemoryShareFunction(mem *C.GstMemory, offset C.gint64, size C.gint64) {
+//export giGstMemoryShareFunction
+func giGstMemoryShareFunction(mem *C.GstMemory, offset C.gint64, size C.gint64) {
 	// TODO: not found user_data
 }
 
-type MemoryUnmapFullFunctionStruct struct {
-	F_mem  Memory
-	F_info MapInfo
+type MemoryUnmapFullFunctionArgs struct {
+	Mem  Memory
+	Info MapInfo
 }
 
-func GetPointer_myMemoryUnmapFullFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMemoryUnmapFullFunction())
+func GetMemoryUnmapFullFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMemoryUnmapFullFunctionWrapper())
 }
 
-//export myGstMemoryUnmapFullFunction
-func myGstMemoryUnmapFullFunction(mem *C.GstMemory, info *C.GstMapInfo) {
+//export giGstMemoryUnmapFullFunction
+func giGstMemoryUnmapFullFunction(mem *C.GstMemory, info *C.GstMapInfo) {
 	// TODO: not found user_data
 }
 
-type MemoryUnmapFunctionStruct struct {
-	F_mem Memory
+type MemoryUnmapFunctionArg struct {
+	Mem Memory
 }
 
-func GetPointer_myMemoryUnmapFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMemoryUnmapFunction())
+func GetMemoryUnmapFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMemoryUnmapFunctionWrapper())
 }
 
-//export myGstMemoryUnmapFunction
-func myGstMemoryUnmapFunction(mem *C.GstMemory) {
+//export giGstMemoryUnmapFunction
+func giGstMemoryUnmapFunction(mem *C.GstMemory) {
 	// TODO: not found user_data
 }
 
@@ -15704,9 +15704,9 @@ func MetaRegister1(api gi.GType, impl string, size uint64) (result MetaInfo) {
 	arg_api := gi.NewUintArgument(uint(api))
 	arg_impl := gi.NewStringArgument(c_impl)
 	arg_size := gi.NewUint64Argument(size)
-	arg_init_func := gi.NewPointerArgument(GetPointer_myMetaInitFunction())
-	arg_free_func := gi.NewPointerArgument(GetPointer_myMetaFreeFunction())
-	arg_transform_func := gi.NewPointerArgument(GetPointer_myMetaTransformFunction())
+	arg_init_func := gi.NewPointerArgument(GetMetaInitFunctionWrapper())
+	arg_free_func := gi.NewPointerArgument(GetMetaFreeFunctionWrapper())
+	arg_transform_func := gi.NewPointerArgument(GetMetaTransformFunctionWrapper())
 	args := []gi.Argument{arg_api, arg_impl, arg_size, arg_init_func, arg_free_func, arg_transform_func}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -15731,17 +15731,17 @@ func MetaFlagsGetType() gi.GType {
 	return ret
 }
 
-type MetaFreeFunctionStruct struct {
-	F_meta   Meta
-	F_buffer Buffer
+type MetaFreeFunctionArgs struct {
+	Meta   Meta
+	Buffer Buffer
 }
 
-func GetPointer_myMetaFreeFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMetaFreeFunction())
+func GetMetaFreeFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMetaFreeFunctionWrapper())
 }
 
-//export myGstMetaFreeFunction
-func myGstMetaFreeFunction(meta *C.GstMeta, buffer *C.GstBuffer) {
+//export giGstMetaFreeFunction
+func giGstMetaFreeFunction(meta *C.GstMeta, buffer *C.GstBuffer) {
 	// TODO: not found user_data
 }
 
@@ -15757,18 +15757,18 @@ func MetaInfoGetType() gi.GType {
 	return ret
 }
 
-type MetaInitFunctionStruct struct {
-	F_meta   Meta
-	F_params unsafe.Pointer
-	F_buffer Buffer
+type MetaInitFunctionArgs struct {
+	Meta   Meta
+	Params unsafe.Pointer
+	Buffer Buffer
 }
 
-func GetPointer_myMetaInitFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMetaInitFunction())
+func GetMetaInitFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMetaInitFunctionWrapper())
 }
 
-//export myGstMetaInitFunction
-func myGstMetaInitFunction(meta *C.GstMeta, params C.gpointer, buffer *C.GstBuffer) {
+//export giGstMetaInitFunction
+func giGstMetaInitFunction(meta *C.GstMeta, params C.gpointer, buffer *C.GstBuffer) {
 	// TODO: not found user_data
 }
 
@@ -15784,20 +15784,20 @@ func MetaTransformCopyGetType() gi.GType {
 	return ret
 }
 
-type MetaTransformFunctionStruct struct {
-	F_transbuf Buffer
-	F_meta     Meta
-	F_buffer   Buffer
-	F_type1    uint32
-	F_data     unsafe.Pointer
+type MetaTransformFunctionArgs struct {
+	Transbuf Buffer
+	Meta     Meta
+	Buffer   Buffer
+	Type     uint32
+	Data     unsafe.Pointer
 }
 
-func GetPointer_myMetaTransformFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMetaTransformFunction())
+func GetMetaTransformFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMetaTransformFunctionWrapper())
 }
 
-//export myGstMetaTransformFunction
-func myGstMetaTransformFunction(transbuf *C.GstBuffer, meta *C.GstMeta, buffer *C.GstBuffer, type1 C.guint32, data C.gpointer) {
+//export giGstMetaTransformFunction
+func giGstMetaTransformFunction(transbuf *C.GstBuffer, meta *C.GstMeta, buffer *C.GstBuffer, type1 C.guint32, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -15890,7 +15890,7 @@ func (v MiniObject) SetQdata(quark uint32, data unsafe.Pointer) {
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_quark := gi.NewUint32Argument(quark)
 	arg_data := gi.NewPointerArgument(data)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_quark, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -15974,16 +15974,16 @@ func (v MiniObject) Take(newdata MiniObject) (result bool) {
 	return
 }
 
-type MiniObjectDisposeFunctionStruct struct {
-	F_obj MiniObject
+type MiniObjectDisposeFunctionArg struct {
+	Obj MiniObject
 }
 
-func GetPointer_myMiniObjectDisposeFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMiniObjectDisposeFunction())
+func GetMiniObjectDisposeFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMiniObjectDisposeFunctionWrapper())
 }
 
-//export myGstMiniObjectDisposeFunction
-func myGstMiniObjectDisposeFunction(obj *C.GstMiniObject) {
+//export giGstMiniObjectDisposeFunction
+func giGstMiniObjectDisposeFunction(obj *C.GstMiniObject) {
 	// TODO: not found user_data
 }
 
@@ -16002,33 +16002,33 @@ func MiniObjectFlagsGetType() gi.GType {
 	return ret
 }
 
-type MiniObjectFreeFunctionStruct struct {
-	F_obj MiniObject
+type MiniObjectFreeFunctionArg struct {
+	Obj MiniObject
 }
 
-func GetPointer_myMiniObjectFreeFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMiniObjectFreeFunction())
+func GetMiniObjectFreeFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMiniObjectFreeFunctionWrapper())
 }
 
-//export myGstMiniObjectFreeFunction
-func myGstMiniObjectFreeFunction(obj *C.GstMiniObject) {
+//export giGstMiniObjectFreeFunction
+func giGstMiniObjectFreeFunction(obj *C.GstMiniObject) {
 	// TODO: not found user_data
 }
 
-type MiniObjectNotifyStruct struct {
-	F_obj MiniObject
+type MiniObjectNotifyArg struct {
+	Obj MiniObject
 }
 
-func GetPointer_myMiniObjectNotify() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstMiniObjectNotify())
+func GetMiniObjectNotifyWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstMiniObjectNotifyWrapper())
 }
 
-//export myGstMiniObjectNotify
-func myGstMiniObjectNotify(user_data C.gpointer, obj *C.GstMiniObject) {
+//export giGstMiniObjectNotify
+func giGstMiniObjectNotify(user_data C.gpointer, obj *C.GstMiniObject) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &MiniObjectNotifyStruct{
-			F_obj: MiniObject{P: unsafe.Pointer(obj)},
+		args := &MiniObjectNotifyArg{
+			Obj: MiniObject{P: unsafe.Pointer(obj)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -16812,9 +16812,9 @@ func (v Pad) AddProbe(mask PadProbeTypeFlags, fn func(v interface{})) (result ui
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_mask := gi.NewIntArgument(int(mask))
-	arg_callback := gi.NewPointerArgument(GetPointer_myPadProbeCallback())
+	arg_callback := gi.NewPointerArgument(GetPadProbeCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy_data := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy_data := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_mask, arg_callback, arg_fn, arg_destroy_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -16981,7 +16981,7 @@ func (v Pad) Forward(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_forward := gi.NewPointerArgument(GetPointer_myPadForwardFunction())
+	arg_forward := gi.NewPointerArgument(GetPadForwardFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_forward, arg_fn}
 	var ret gi.Argument
@@ -18075,9 +18075,9 @@ func (v Pad) SetActivateFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_activate := gi.NewPointerArgument(GetPointer_myPadActivateFunction())
+	arg_activate := gi.NewPointerArgument(GetPadActivateFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_activate, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18098,9 +18098,9 @@ func (v Pad) SetActivatemodeFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_activatemode := gi.NewPointerArgument(GetPointer_myPadActivateModeFunction())
+	arg_activatemode := gi.NewPointerArgument(GetPadActivateModeFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_activatemode, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18142,9 +18142,9 @@ func (v Pad) SetChainFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_chain := gi.NewPointerArgument(GetPointer_myPadChainFunction())
+	arg_chain := gi.NewPointerArgument(GetPadChainFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_chain, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18165,9 +18165,9 @@ func (v Pad) SetChainListFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_chainlist := gi.NewPointerArgument(GetPointer_myPadChainListFunction())
+	arg_chainlist := gi.NewPointerArgument(GetPadChainListFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_chainlist, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18204,9 +18204,9 @@ func (v Pad) SetEventFullFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_event := gi.NewPointerArgument(GetPointer_myPadEventFullFunction())
+	arg_event := gi.NewPointerArgument(GetPadEventFullFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_event, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18227,9 +18227,9 @@ func (v Pad) SetEventFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_event := gi.NewPointerArgument(GetPointer_myPadEventFunction())
+	arg_event := gi.NewPointerArgument(GetPadEventFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_event, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18250,9 +18250,9 @@ func (v Pad) SetGetrangeFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_get := gi.NewPointerArgument(GetPointer_myPadGetRangeFunction())
+	arg_get := gi.NewPointerArgument(GetPadGetRangeFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_get, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18273,9 +18273,9 @@ func (v Pad) SetIterateInternalLinksFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_iterintlink := gi.NewPointerArgument(GetPointer_myPadIterIntLinkFunction())
+	arg_iterintlink := gi.NewPointerArgument(GetPadIterIntLinkFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_iterintlink, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18296,9 +18296,9 @@ func (v Pad) SetLinkFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_link := gi.NewPointerArgument(GetPointer_myPadLinkFunction())
+	arg_link := gi.NewPointerArgument(GetPadLinkFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_link, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18335,9 +18335,9 @@ func (v Pad) SetQueryFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_query := gi.NewPointerArgument(GetPointer_myPadQueryFunction())
+	arg_query := gi.NewPointerArgument(GetPadQueryFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_query, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18358,9 +18358,9 @@ func (v Pad) SetUnlinkFunctionFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_unlink := gi.NewPointerArgument(GetPointer_myPadUnlinkFunction())
+	arg_unlink := gi.NewPointerArgument(GetPadUnlinkFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_unlink, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -18383,9 +18383,9 @@ func (v Pad) StartTask(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTaskFunction())
+	arg_func1 := gi.NewPointerArgument(GetTaskFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -18407,7 +18407,7 @@ func (v Pad) StickyEventsForeach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_foreach_func := gi.NewPointerArgument(GetPointer_myPadStickyEventsForeachFunction())
+	arg_foreach_func := gi.NewPointerArgument(GetPadStickyEventsForeachFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_foreach_func, arg_fn}
 	iv.Call(args, nil, nil)
@@ -18491,63 +18491,63 @@ func (v Pad) UseFixedCaps() {
 	iv.Call(args, nil, nil)
 }
 
-type PadActivateFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
+type PadActivateFunctionArgs struct {
+	Pad    Pad
+	Parent Object
 }
 
-func GetPointer_myPadActivateFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadActivateFunction())
+func GetPadActivateFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadActivateFunctionWrapper())
 }
 
-//export myGstPadActivateFunction
-func myGstPadActivateFunction(pad *C.GstPad, parent *C.GstObject) {
+//export giGstPadActivateFunction
+func giGstPadActivateFunction(pad *C.GstPad, parent *C.GstObject) {
 	// TODO: not found user_data
 }
 
-type PadActivateModeFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
-	F_mode   PadModeEnum
-	F_active bool
+type PadActivateModeFunctionArgs struct {
+	Pad    Pad
+	Parent Object
+	Mode   PadModeEnum
+	Active bool
 }
 
-func GetPointer_myPadActivateModeFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadActivateModeFunction())
+func GetPadActivateModeFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadActivateModeFunctionWrapper())
 }
 
-//export myGstPadActivateModeFunction
-func myGstPadActivateModeFunction(pad *C.GstPad, parent *C.GstObject, mode C.GstPadMode, active C.gboolean) {
+//export giGstPadActivateModeFunction
+func giGstPadActivateModeFunction(pad *C.GstPad, parent *C.GstObject, mode C.GstPadMode, active C.gboolean) {
 	// TODO: not found user_data
 }
 
-type PadChainFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
-	F_buffer Buffer
+type PadChainFunctionArgs struct {
+	Pad    Pad
+	Parent Object
+	Buffer Buffer
 }
 
-func GetPointer_myPadChainFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadChainFunction())
+func GetPadChainFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadChainFunctionWrapper())
 }
 
-//export myGstPadChainFunction
-func myGstPadChainFunction(pad *C.GstPad, parent *C.GstObject, buffer *C.GstBuffer) {
+//export giGstPadChainFunction
+func giGstPadChainFunction(pad *C.GstPad, parent *C.GstObject, buffer *C.GstBuffer) {
 	// TODO: not found user_data
 }
 
-type PadChainListFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
-	F_list   BufferList
+type PadChainListFunctionArgs struct {
+	Pad    Pad
+	Parent Object
+	List   BufferList
 }
 
-func GetPointer_myPadChainListFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadChainListFunction())
+func GetPadChainListFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadChainListFunctionWrapper())
 }
 
-//export myGstPadChainListFunction
-func myGstPadChainListFunction(pad *C.GstPad, parent *C.GstObject, list *C.GstBufferList) {
+//export giGstPadChainListFunction
+func giGstPadChainListFunction(pad *C.GstPad, parent *C.GstObject, list *C.GstBufferList) {
 	// TODO: not found user_data
 }
 
@@ -18567,33 +18567,33 @@ func PadDirectionGetType() gi.GType {
 	return ret
 }
 
-type PadEventFullFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
-	F_event  Event
+type PadEventFullFunctionArgs struct {
+	Pad    Pad
+	Parent Object
+	Event  Event
 }
 
-func GetPointer_myPadEventFullFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadEventFullFunction())
+func GetPadEventFullFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadEventFullFunctionWrapper())
 }
 
-//export myGstPadEventFullFunction
-func myGstPadEventFullFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstEvent) {
+//export giGstPadEventFullFunction
+func giGstPadEventFullFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstEvent) {
 	// TODO: not found user_data
 }
 
-type PadEventFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
-	F_event  Event
+type PadEventFunctionArgs struct {
+	Pad    Pad
+	Parent Object
+	Event  Event
 }
 
-func GetPointer_myPadEventFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadEventFunction())
+func GetPadEventFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadEventFunctionWrapper())
 }
 
-//export myGstPadEventFunction
-func myGstPadEventFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstEvent) {
+//export giGstPadEventFunction
+func giGstPadEventFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstEvent) {
 	// TODO: not found user_data
 }
 
@@ -18622,20 +18622,20 @@ func PadFlagsGetType() gi.GType {
 	return ret
 }
 
-type PadForwardFunctionStruct struct {
-	F_pad Pad
+type PadForwardFunctionArg struct {
+	Pad Pad
 }
 
-func GetPointer_myPadForwardFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadForwardFunction())
+func GetPadForwardFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadForwardFunctionWrapper())
 }
 
-//export myGstPadForwardFunction
-func myGstPadForwardFunction(pad *C.GstPad, user_data C.gpointer) {
+//export giGstPadForwardFunction
+func giGstPadForwardFunction(pad *C.GstPad, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &PadForwardFunctionStruct{
-			F_pad: WrapPad(unsafe.Pointer(pad)),
+		args := &PadForwardFunctionArg{
+			Pad: WrapPad(unsafe.Pointer(pad)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -18644,34 +18644,34 @@ func myGstPadForwardFunction(pad *C.GstPad, user_data C.gpointer) {
 	}
 }
 
-type PadGetRangeFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
-	F_offset uint64
-	F_length uint32
-	F_buffer Buffer
+type PadGetRangeFunctionArgs struct {
+	Pad    Pad
+	Parent Object
+	Offset uint64
+	Length uint32
+	Buffer Buffer
 }
 
-func GetPointer_myPadGetRangeFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadGetRangeFunction())
+func GetPadGetRangeFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadGetRangeFunctionWrapper())
 }
 
-//export myGstPadGetRangeFunction
-func myGstPadGetRangeFunction(pad *C.GstPad, parent *C.GstObject, offset C.guint64, length C.guint32, buffer *C.GstBuffer) {
+//export giGstPadGetRangeFunction
+func giGstPadGetRangeFunction(pad *C.GstPad, parent *C.GstObject, offset C.guint64, length C.guint32, buffer *C.GstBuffer) {
 	// TODO: not found user_data
 }
 
-type PadIterIntLinkFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
+type PadIterIntLinkFunctionArgs struct {
+	Pad    Pad
+	Parent Object
 }
 
-func GetPointer_myPadIterIntLinkFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadIterIntLinkFunction())
+func GetPadIterIntLinkFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadIterIntLinkFunctionWrapper())
 }
 
-//export myGstPadIterIntLinkFunction
-func myGstPadIterIntLinkFunction(pad *C.GstPad, parent *C.GstObject) {
+//export giGstPadIterIntLinkFunction
+func giGstPadIterIntLinkFunction(pad *C.GstPad, parent *C.GstObject) {
 	// TODO: not found user_data
 }
 
@@ -18692,18 +18692,18 @@ func PadLinkCheckGetType() gi.GType {
 	return ret
 }
 
-type PadLinkFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
-	F_peer   Pad
+type PadLinkFunctionArgs struct {
+	Pad    Pad
+	Parent Object
+	Peer   Pad
 }
 
-func GetPointer_myPadLinkFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadLinkFunction())
+func GetPadLinkFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadLinkFunctionWrapper())
 }
 
-//export myGstPadLinkFunction
-func myGstPadLinkFunction(pad *C.GstPad, parent *C.GstObject, peer *C.GstPad) {
+//export giGstPadLinkFunction
+func giGstPadLinkFunction(pad *C.GstPad, parent *C.GstObject, peer *C.GstPad) {
 	// TODO: not found user_data
 }
 
@@ -18763,22 +18763,22 @@ func PadPrivateGetType() gi.GType {
 	return ret
 }
 
-type PadProbeCallbackStruct struct {
-	F_pad  Pad
-	F_info PadProbeInfo
+type PadProbeCallbackArgs struct {
+	Pad  Pad
+	Info PadProbeInfo
 }
 
-func GetPointer_myPadProbeCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadProbeCallback())
+func GetPadProbeCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadProbeCallbackWrapper())
 }
 
-//export myGstPadProbeCallback
-func myGstPadProbeCallback(pad *C.GstPad, info *C.GstPadProbeInfo, user_data C.gpointer) {
+//export giGstPadProbeCallback
+func giGstPadProbeCallback(pad *C.GstPad, info *C.GstPadProbeInfo, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &PadProbeCallbackStruct{
-			F_pad:  WrapPad(unsafe.Pointer(pad)),
-			F_info: PadProbeInfo{P: unsafe.Pointer(info)},
+		args := &PadProbeCallbackArgs{
+			Pad:  WrapPad(unsafe.Pointer(pad)),
+			Info: PadProbeInfo{P: unsafe.Pointer(info)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -18920,37 +18920,37 @@ func PadProbeTypeGetType() gi.GType {
 	return ret
 }
 
-type PadQueryFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
-	F_query  Query
+type PadQueryFunctionArgs struct {
+	Pad    Pad
+	Parent Object
+	Query  Query
 }
 
-func GetPointer_myPadQueryFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadQueryFunction())
+func GetPadQueryFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadQueryFunctionWrapper())
 }
 
-//export myGstPadQueryFunction
-func myGstPadQueryFunction(pad *C.GstPad, parent *C.GstObject, query *C.GstQuery) {
+//export giGstPadQueryFunction
+func giGstPadQueryFunction(pad *C.GstPad, parent *C.GstObject, query *C.GstQuery) {
 	// TODO: not found user_data
 }
 
-type PadStickyEventsForeachFunctionStruct struct {
-	F_pad   Pad
-	F_event Event
+type PadStickyEventsForeachFunctionArgs struct {
+	Pad   Pad
+	Event Event
 }
 
-func GetPointer_myPadStickyEventsForeachFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadStickyEventsForeachFunction())
+func GetPadStickyEventsForeachFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadStickyEventsForeachFunctionWrapper())
 }
 
-//export myGstPadStickyEventsForeachFunction
-func myGstPadStickyEventsForeachFunction(pad *C.GstPad, event *C.GstEvent, user_data C.gpointer) {
+//export giGstPadStickyEventsForeachFunction
+func giGstPadStickyEventsForeachFunction(pad *C.GstPad, event *C.GstEvent, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &PadStickyEventsForeachFunctionStruct{
-			F_pad:   WrapPad(unsafe.Pointer(pad)),
-			F_event: Event{P: unsafe.Pointer(event)},
+		args := &PadStickyEventsForeachFunctionArgs{
+			Pad:   WrapPad(unsafe.Pointer(pad)),
+			Event: Event{P: unsafe.Pointer(event)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -19114,17 +19114,17 @@ func PadTemplateFlagsGetType() gi.GType {
 	return ret
 }
 
-type PadUnlinkFunctionStruct struct {
-	F_pad    Pad
-	F_parent Object
+type PadUnlinkFunctionArgs struct {
+	Pad    Pad
+	Parent Object
 }
 
-func GetPointer_myPadUnlinkFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPadUnlinkFunction())
+func GetPadUnlinkFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPadUnlinkFunctionWrapper())
 }
 
-//export myGstPadUnlinkFunction
-func myGstPadUnlinkFunction(pad *C.GstPad, parent *C.GstObject) {
+//export giGstPadUnlinkFunction
+func giGstPadUnlinkFunction(pad *C.GstPad, parent *C.GstObject) {
 	// TODO: not found user_data
 }
 
@@ -19670,7 +19670,7 @@ func PluginRegisterStatic1(major_version int32, minor_version int32, name string
 	arg_minor_version := gi.NewInt32Argument(minor_version)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_description := gi.NewStringArgument(c_description)
-	arg_init_func := gi.NewPointerArgument(GetPointer_myPluginInitFunc())
+	arg_init_func := gi.NewPointerArgument(GetPluginInitFuncWrapper())
 	arg_version := gi.NewStringArgument(c_version)
 	arg_license := gi.NewStringArgument(c_license)
 	arg_source := gi.NewStringArgument(c_source)
@@ -19734,7 +19734,7 @@ func PluginRegisterStaticFull1(major_version int32, minor_version int32, name st
 	arg_minor_version := gi.NewInt32Argument(minor_version)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_description := gi.NewStringArgument(c_description)
-	arg_init_full_func := gi.NewPointerArgument(GetPointer_myPluginInitFullFunc())
+	arg_init_full_func := gi.NewPointerArgument(GetPluginInitFullFuncWrapper())
 	arg_version := gi.NewStringArgument(c_version)
 	arg_license := gi.NewStringArgument(c_license)
 	arg_source := gi.NewStringArgument(c_source)
@@ -20294,20 +20294,20 @@ func (v PluginFeature) SetRank(rank uint32) {
 
 // ignore GType struct PluginFeatureClass
 
-type PluginFeatureFilterStruct struct {
-	F_feature PluginFeature
+type PluginFeatureFilterArg struct {
+	Feature PluginFeature
 }
 
-func GetPointer_myPluginFeatureFilter() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPluginFeatureFilter())
+func GetPluginFeatureFilterWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPluginFeatureFilterWrapper())
 }
 
-//export myGstPluginFeatureFilter
-func myGstPluginFeatureFilter(feature *C.GstPluginFeature, user_data C.gpointer) {
+//export giGstPluginFeatureFilter
+func giGstPluginFeatureFilter(feature *C.GstPluginFeature, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &PluginFeatureFilterStruct{
-			F_feature: WrapPluginFeature(unsafe.Pointer(feature)),
+		args := &PluginFeatureFilterArg{
+			Feature: WrapPluginFeature(unsafe.Pointer(feature)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -20316,20 +20316,20 @@ func myGstPluginFeatureFilter(feature *C.GstPluginFeature, user_data C.gpointer)
 	}
 }
 
-type PluginFilterStruct struct {
-	F_plugin Plugin
+type PluginFilterArg struct {
+	Plugin Plugin
 }
 
-func GetPointer_myPluginFilter() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPluginFilter())
+func GetPluginFilterWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPluginFilterWrapper())
 }
 
-//export myGstPluginFilter
-func myGstPluginFilter(plugin *C.GstPlugin, user_data C.gpointer) {
+//export giGstPluginFilter
+func giGstPluginFilter(plugin *C.GstPlugin, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &PluginFilterStruct{
-			F_plugin: WrapPlugin(unsafe.Pointer(plugin)),
+		args := &PluginFilterArg{
+			Plugin: WrapPlugin(unsafe.Pointer(plugin)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -20351,20 +20351,20 @@ func PluginFlagsGetType() gi.GType {
 	return ret
 }
 
-type PluginInitFullFuncStruct struct {
-	F_plugin Plugin
+type PluginInitFullFuncArg struct {
+	Plugin Plugin
 }
 
-func GetPointer_myPluginInitFullFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPluginInitFullFunc())
+func GetPluginInitFullFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPluginInitFullFuncWrapper())
 }
 
-//export myGstPluginInitFullFunc
-func myGstPluginInitFullFunc(plugin *C.GstPlugin, user_data C.gpointer) {
+//export giGstPluginInitFullFunc
+func giGstPluginInitFullFunc(plugin *C.GstPlugin, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &PluginInitFullFuncStruct{
-			F_plugin: WrapPlugin(unsafe.Pointer(plugin)),
+		args := &PluginInitFullFuncArg{
+			Plugin: WrapPlugin(unsafe.Pointer(plugin)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -20373,16 +20373,16 @@ func myGstPluginInitFullFunc(plugin *C.GstPlugin, user_data C.gpointer) {
 	}
 }
 
-type PluginInitFuncStruct struct {
-	F_plugin Plugin
+type PluginInitFuncArg struct {
+	Plugin Plugin
 }
 
-func GetPointer_myPluginInitFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPluginInitFunc())
+func GetPluginInitFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPluginInitFuncWrapper())
 }
 
-//export myGstPluginInitFunc
-func myGstPluginInitFunc(plugin *C.GstPlugin) {
+//export giGstPluginInitFunc
+func giGstPluginInitFunc(plugin *C.GstPlugin) {
 	// TODO: not found user_data
 }
 
@@ -21081,9 +21081,9 @@ func NewPromiseWithChangeFunc(fn func(v interface{})) (result Promise) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myPromiseChangeFunc())
+	arg_func1 := gi.NewPointerArgument(GetPromiseChangeFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_func1, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21169,20 +21169,20 @@ func (v Promise) Wait() (result PromiseResultEnum) {
 	return
 }
 
-type PromiseChangeFuncStruct struct {
-	F_promise Promise
+type PromiseChangeFuncArg struct {
+	Promise Promise
 }
 
-func GetPointer_myPromiseChangeFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstPromiseChangeFunc())
+func GetPromiseChangeFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstPromiseChangeFuncWrapper())
 }
 
-//export myGstPromiseChangeFunc
-func myGstPromiseChangeFunc(promise *C.GstPromise, user_data C.gpointer) {
+//export giGstPromiseChangeFunc
+func giGstPromiseChangeFunc(promise *C.GstPromise, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &PromiseChangeFuncStruct{
-			F_promise: Promise{P: unsafe.Pointer(promise)},
+		args := &PromiseChangeFuncArg{
+			Promise: Promise{P: unsafe.Pointer(promise)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -23428,7 +23428,7 @@ func (v Registry) FeatureFilter(first bool, fn func(v interface{})) (result g.Li
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_filter := gi.NewPointerArgument(GetPointer_myPluginFeatureFilter())
+	arg_filter := gi.NewPointerArgument(GetPluginFeatureFilterWrapper())
 	arg_first := gi.NewBoolArgument(first)
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_filter, arg_first, arg_fn}
@@ -23632,7 +23632,7 @@ func (v Registry) PluginFilter(first bool, fn func(v interface{})) (result g.Lis
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_filter := gi.NewPointerArgument(GetPointer_myPluginFilter())
+	arg_filter := gi.NewPointerArgument(GetPluginFilterWrapper())
 	arg_first := gi.NewBoolArgument(first)
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_filter, arg_first, arg_fn}
@@ -25146,7 +25146,7 @@ func (v Structure) FilterAndMapInPlace(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myStructureFilterMapFunc())
+	arg_func1 := gi.NewPointerArgument(GetStructureFilterMapFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -25340,7 +25340,7 @@ func (v Structure) Foreach(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myStructureForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetStructureForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -26126,7 +26126,7 @@ func (v Structure) MapInPlace(fn func(v interface{})) (result bool) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myStructureMapFunc())
+	arg_func1 := gi.NewPointerArgument(GetStructureMapFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -26387,22 +26387,22 @@ func StructureChangeTypeGetType() gi.GType {
 	return ret
 }
 
-type StructureFilterMapFuncStruct struct {
-	F_field_id uint32
-	F_value    g.Value
+type StructureFilterMapFuncArgs struct {
+	FieldId uint32
+	Value   g.Value
 }
 
-func GetPointer_myStructureFilterMapFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstStructureFilterMapFunc())
+func GetStructureFilterMapFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstStructureFilterMapFuncWrapper())
 }
 
-//export myGstStructureFilterMapFunc
-func myGstStructureFilterMapFunc(field_id C.guint32, value *C.GValue, user_data C.gpointer) {
+//export giGstStructureFilterMapFunc
+func giGstStructureFilterMapFunc(field_id C.guint32, value *C.GValue, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &StructureFilterMapFuncStruct{
-			F_field_id: uint32(field_id),
-			F_value:    g.Value{P: unsafe.Pointer(value)},
+		args := &StructureFilterMapFuncArgs{
+			FieldId: uint32(field_id),
+			Value:   g.Value{P: unsafe.Pointer(value)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -26411,22 +26411,22 @@ func myGstStructureFilterMapFunc(field_id C.guint32, value *C.GValue, user_data 
 	}
 }
 
-type StructureForeachFuncStruct struct {
-	F_field_id uint32
-	F_value    g.Value
+type StructureForeachFuncArgs struct {
+	FieldId uint32
+	Value   g.Value
 }
 
-func GetPointer_myStructureForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstStructureForeachFunc())
+func GetStructureForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstStructureForeachFuncWrapper())
 }
 
-//export myGstStructureForeachFunc
-func myGstStructureForeachFunc(field_id C.guint32, value *C.GValue, user_data C.gpointer) {
+//export giGstStructureForeachFunc
+func giGstStructureForeachFunc(field_id C.guint32, value *C.GValue, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &StructureForeachFuncStruct{
-			F_field_id: uint32(field_id),
-			F_value:    g.Value{P: unsafe.Pointer(value)},
+		args := &StructureForeachFuncArgs{
+			FieldId: uint32(field_id),
+			Value:   g.Value{P: unsafe.Pointer(value)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -26435,22 +26435,22 @@ func myGstStructureForeachFunc(field_id C.guint32, value *C.GValue, user_data C.
 	}
 }
 
-type StructureMapFuncStruct struct {
-	F_field_id uint32
-	F_value    g.Value
+type StructureMapFuncArgs struct {
+	FieldId uint32
+	Value   g.Value
 }
 
-func GetPointer_myStructureMapFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstStructureMapFunc())
+func GetStructureMapFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstStructureMapFuncWrapper())
 }
 
-//export myGstStructureMapFunc
-func myGstStructureMapFunc(field_id C.guint32, value *C.GValue, user_data C.gpointer) {
+//export giGstStructureMapFunc
+func giGstStructureMapFunc(field_id C.guint32, value *C.GValue, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &StructureMapFuncStruct{
-			F_field_id: uint32(field_id),
-			F_value:    g.Value{P: unsafe.Pointer(value)},
+		args := &StructureMapFuncArgs{
+			FieldId: uint32(field_id),
+			Value:   g.Value{P: unsafe.Pointer(value)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -26537,22 +26537,22 @@ func TagFlagGetType() gi.GType {
 	return ret
 }
 
-type TagForeachFuncStruct struct {
-	F_list TagList
-	F_tag  string
+type TagForeachFuncArgs struct {
+	List TagList
+	Tag  string
 }
 
-func GetPointer_myTagForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstTagForeachFunc())
+func GetTagForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstTagForeachFuncWrapper())
 }
 
-//export myGstTagForeachFunc
-func myGstTagForeachFunc(list *C.GstTagList, tag *C.gchar, user_data C.gpointer) {
+//export giGstTagForeachFunc
+func giGstTagForeachFunc(list *C.GstTagList, tag *C.gchar, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TagForeachFuncStruct{
-			F_list: TagList{P: unsafe.Pointer(list)},
-			F_tag:  gi.GoString(unsafe.Pointer(tag)),
+		args := &TagForeachFuncArgs{
+			List: TagList{P: unsafe.Pointer(list)},
+			Tag:  gi.GoString(unsafe.Pointer(tag)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -26649,7 +26649,7 @@ func (v TagList) Foreach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTagForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetTagForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -27663,17 +27663,17 @@ func TagListCopyValue1(dest g.Value, list TagList, tag string) (result bool) {
 	return
 }
 
-type TagMergeFuncStruct struct {
-	F_dest g.Value
-	F_src  g.Value
+type TagMergeFuncArgs struct {
+	Dest g.Value
+	Src  g.Value
 }
 
-func GetPointer_myTagMergeFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstTagMergeFunc())
+func GetTagMergeFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstTagMergeFuncWrapper())
 }
 
-//export myGstTagMergeFunc
-func myGstTagMergeFunc(dest *C.GValue, src *C.GValue) {
+//export giGstTagMergeFunc
+func giGstTagMergeFunc(dest *C.GValue, src *C.GValue) {
 	// TODO: not found user_data
 }
 
@@ -27865,9 +27865,9 @@ func NewTask(fn func(v interface{})) (result Task) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTaskFunction())
+	arg_func1 := gi.NewPointerArgument(GetTaskFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_func1, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -27974,9 +27974,9 @@ func (v Task) SetEnterCallback(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_enter_func := gi.NewPointerArgument(GetPointer_myTaskThreadFunc())
+	arg_enter_func := gi.NewPointerArgument(GetTaskThreadFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_enter_func, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -27997,9 +27997,9 @@ func (v Task) SetLeaveCallback(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_leave_func := gi.NewPointerArgument(GetPointer_myTaskThreadFunc())
+	arg_leave_func := gi.NewPointerArgument(GetTaskThreadFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_leave_func, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -28099,18 +28099,18 @@ func (v Task) Stop() (result bool) {
 
 // ignore GType struct TaskClass
 
-type TaskFunctionStruct struct {
+type TaskFunctionArg struct {
 }
 
-func GetPointer_myTaskFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstTaskFunction())
+func GetTaskFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstTaskFunctionWrapper())
 }
 
-//export myGstTaskFunction
-func myGstTaskFunction(user_data C.gpointer) {
+//export giGstTaskFunction
+func giGstTaskFunction(user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TaskFunctionStruct{}
+		args := &TaskFunctionArg{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
@@ -28210,7 +28210,7 @@ func (v TaskPool) Push(fn func(v interface{})) (result unsafe.Pointer, err error
 	var outArgs [1]gi.Argument
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTaskPoolFunction())
+	arg_func1 := gi.NewPointerArgument(GetTaskPoolFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_err}
@@ -28223,18 +28223,18 @@ func (v TaskPool) Push(fn func(v interface{})) (result unsafe.Pointer, err error
 
 // ignore GType struct TaskPoolClass
 
-type TaskPoolFunctionStruct struct {
+type TaskPoolFunctionArg struct {
 }
 
-func GetPointer_myTaskPoolFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstTaskPoolFunction())
+func GetTaskPoolFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstTaskPoolFunctionWrapper())
 }
 
-//export myGstTaskPoolFunction
-func myGstTaskPoolFunction(user_data C.gpointer) {
+//export giGstTaskPoolFunction
+func giGstTaskPoolFunction(user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TaskPoolFunctionStruct{}
+		args := &TaskPoolFunctionArg{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
@@ -28266,22 +28266,22 @@ func TaskStateGetType() gi.GType {
 	return ret
 }
 
-type TaskThreadFuncStruct struct {
-	F_task   Task
-	F_thread g.Thread
+type TaskThreadFuncArgs struct {
+	Task   Task
+	Thread g.Thread
 }
 
-func GetPointer_myTaskThreadFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstTaskThreadFunc())
+func GetTaskThreadFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstTaskThreadFuncWrapper())
 }
 
-//export myGstTaskThreadFunc
-func myGstTaskThreadFunc(task *C.GstTask, thread *C.GThread, user_data C.gpointer) {
+//export giGstTaskThreadFunc
+func giGstTaskThreadFunc(task *C.GstTask, thread *C.GThread, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TaskThreadFuncStruct{
-			F_task:   WrapTask(unsafe.Pointer(task)),
-			F_thread: g.Thread{P: unsafe.Pointer(thread)},
+		args := &TaskThreadFuncArgs{
+			Task:   WrapTask(unsafe.Pointer(task)),
+			Thread: g.Thread{P: unsafe.Pointer(thread)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -29138,11 +29138,11 @@ func TypeFindRegister1(plugin IPlugin, name string, rank uint32, extensions stri
 	arg_plugin := gi.NewPointerArgument(tmp)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_rank := gi.NewUint32Argument(rank)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTypeFindFunction())
+	arg_func1 := gi.NewPointerArgument(GetTypeFindFunctionWrapper())
 	arg_extensions := gi.NewStringArgument(c_extensions)
 	arg_possible_caps := gi.NewPointerArgument(possible_caps.P)
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_data_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_data_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_plugin, arg_name, arg_rank, arg_func1, arg_extensions, arg_possible_caps, arg_fn, arg_data_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -29256,20 +29256,20 @@ func (v TypeFindFactory) HasFunction() (result bool) {
 
 // ignore GType struct TypeFindFactoryClass
 
-type TypeFindFunctionStruct struct {
-	F_find TypeFind
+type TypeFindFunctionArg struct {
+	Find TypeFind
 }
 
-func GetPointer_myTypeFindFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstTypeFindFunction())
+func GetTypeFindFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstTypeFindFunctionWrapper())
 }
 
-//export myGstTypeFindFunction
-func myGstTypeFindFunction(find *C.GstTypeFind, user_data C.gpointer) {
+//export giGstTypeFindFunction
+func giGstTypeFindFunction(find *C.GstTypeFind, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TypeFindFunctionStruct{
-			F_find: TypeFind{P: unsafe.Pointer(find)},
+		args := &TypeFindFunctionArg{
+			Find: TypeFind{P: unsafe.Pointer(find)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -30599,31 +30599,31 @@ func ValueArrayPrependValue1(value g.Value, prepend_value g.Value) {
 	iv.Call(args, nil, nil)
 }
 
-type ValueCompareFuncStruct struct {
-	F_value1 g.Value
-	F_value2 g.Value
+type ValueCompareFuncArgs struct {
+	Value1 g.Value
+	Value2 g.Value
 }
 
-func GetPointer_myValueCompareFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstValueCompareFunc())
+func GetValueCompareFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstValueCompareFuncWrapper())
 }
 
-//export myGstValueCompareFunc
-func myGstValueCompareFunc(value1 *C.GValue, value2 *C.GValue) {
+//export giGstValueCompareFunc
+func giGstValueCompareFunc(value1 *C.GValue, value2 *C.GValue) {
 	// TODO: not found user_data
 }
 
-type ValueDeserializeFuncStruct struct {
-	F_dest g.Value
-	F_s    string
+type ValueDeserializeFuncArgs struct {
+	Dest g.Value
+	S    string
 }
 
-func GetPointer_myValueDeserializeFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstValueDeserializeFunc())
+func GetValueDeserializeFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstValueDeserializeFuncWrapper())
 }
 
-//export myGstValueDeserializeFunc
-func myGstValueDeserializeFunc(dest *C.GValue, s *C.gchar) {
+//export giGstValueDeserializeFunc
+func giGstValueDeserializeFunc(dest *C.GValue, s *C.gchar) {
 	// TODO: not found user_data
 }
 
@@ -30781,16 +30781,16 @@ func ValueListPrependValue1(value g.Value, prepend_value g.Value) {
 	iv.Call(args, nil, nil)
 }
 
-type ValueSerializeFuncStruct struct {
-	F_value1 g.Value
+type ValueSerializeFuncArg struct {
+	Value1 g.Value
 }
 
-func GetPointer_myValueSerializeFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstValueSerializeFunc())
+func GetValueSerializeFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstValueSerializeFuncWrapper())
 }
 
-//export myGstValueSerializeFunc
-func myGstValueSerializeFunc(value1 *C.GValue) {
+//export giGstValueSerializeFunc
+func giGstValueSerializeFunc(value1 *C.GValue) {
 	// TODO: not found user_data
 }
 
@@ -30897,9 +30897,9 @@ func DebugAddLogFunction(fn func(v interface{})) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myLogFunction())
+	arg_func1 := gi.NewPointerArgument(GetLogFunctionWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -31230,7 +31230,7 @@ func DebugRemoveLogFunction() (result uint32) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_func1 := gi.NewPointerArgument(GetPointer_myLogFunction())
+	arg_func1 := gi.NewPointerArgument(GetLogFunctionWrapper())
 	args := []gi.Argument{arg_func1}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -32017,9 +32017,9 @@ func MetaRegister(api gi.GType, impl string, size uint64) (result MetaInfo) {
 	arg_api := gi.NewUintArgument(uint(api))
 	arg_impl := gi.NewStringArgument(c_impl)
 	arg_size := gi.NewUint64Argument(size)
-	arg_init_func := gi.NewPointerArgument(GetPointer_myMetaInitFunction())
-	arg_free_func := gi.NewPointerArgument(GetPointer_myMetaFreeFunction())
-	arg_transform_func := gi.NewPointerArgument(GetPointer_myMetaTransformFunction())
+	arg_init_func := gi.NewPointerArgument(GetMetaInitFunctionWrapper())
+	arg_free_func := gi.NewPointerArgument(GetMetaFreeFunctionWrapper())
+	arg_transform_func := gi.NewPointerArgument(GetMetaTransformFunctionWrapper())
 	args := []gi.Argument{arg_api, arg_impl, arg_size, arg_init_func, arg_free_func, arg_transform_func}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -33006,7 +33006,7 @@ func TagRegister(name string, flag TagFlagEnum, type1 gi.GType, nick string, blu
 	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTagMergeFunc())
+	arg_func1 := gi.NewPointerArgument(GetTagMergeFuncWrapper())
 	args := []gi.Argument{arg_name, arg_flag, arg_type1, arg_nick, arg_blurb, arg_func1}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -33042,7 +33042,7 @@ func TagRegisterStatic(name string, flag TagFlagEnum, type1 gi.GType, nick strin
 	arg_type1 := gi.NewUintArgument(uint(type1))
 	arg_nick := gi.NewStringArgument(c_nick)
 	arg_blurb := gi.NewStringArgument(c_blurb)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTagMergeFunc())
+	arg_func1 := gi.NewPointerArgument(GetTagMergeFuncWrapper())
 	args := []gi.Argument{arg_name, arg_flag, arg_type1, arg_nick, arg_blurb, arg_func1}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -33122,11 +33122,11 @@ func TypeFindRegister(plugin IPlugin, name string, rank uint32, extensions strin
 	arg_plugin := gi.NewPointerArgument(tmp)
 	arg_name := gi.NewStringArgument(c_name)
 	arg_rank := gi.NewUint32Argument(rank)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTypeFindFunction())
+	arg_func1 := gi.NewPointerArgument(GetTypeFindFunctionWrapper())
 	arg_extensions := gi.NewStringArgument(c_extensions)
 	arg_possible_caps := gi.NewPointerArgument(possible_caps.P)
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_data_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_data_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_plugin, arg_name, arg_rank, arg_func1, arg_extensions, arg_possible_caps, arg_fn, arg_data_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -33414,7 +33414,7 @@ func UtilArrayBinarySearch(array unsafe.Pointer, num_elements uint32, element_si
 	arg_array := gi.NewPointerArgument(array)
 	arg_num_elements := gi.NewUint32Argument(num_elements)
 	arg_element_size := gi.NewUint64Argument(element_size)
-	arg_search_func := gi.NewPointerArgument(g.GetPointer_myCompareDataFunc())
+	arg_search_func := gi.NewPointerArgument(g.GetCompareDataFuncWrapper())
 	arg_mode := gi.NewIntArgument(int(mode))
 	arg_search_data := gi.NewPointerArgument(search_data)
 	arg_fn := gi.NewPointerArgumentU(cId)

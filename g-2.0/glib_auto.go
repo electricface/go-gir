@@ -26,189 +26,189 @@ package g
 /*
 #cgo pkg-config: glib-2.0
 #include <glib.h>
-extern void myGLibChildWatchFunc(gint32 pid, gint32 status, gpointer user_data);
-static void* getPointer_myGLibChildWatchFunc() {
-return (void*)(myGLibChildWatchFunc);
+extern void giGLibChildWatchFunc(gint32 pid, gint32 status, gpointer user_data);
+static void* getGLibChildWatchFuncWrapper() {
+    return (void*)(giGLibChildWatchFunc);
 }
-extern void myGLibClearHandleFunc(guint32 handle_id);
-static void* getPointer_myGLibClearHandleFunc() {
-return (void*)(myGLibClearHandleFunc);
+extern void giGLibClearHandleFunc(guint32 handle_id);
+static void* getGLibClearHandleFuncWrapper() {
+    return (void*)(giGLibClearHandleFunc);
 }
-extern void myGLibCompareDataFunc(gpointer a, gpointer b, gpointer user_data);
-static void* getPointer_myGLibCompareDataFunc() {
-return (void*)(myGLibCompareDataFunc);
+extern void giGLibCompareDataFunc(gpointer a, gpointer b, gpointer user_data);
+static void* getGLibCompareDataFuncWrapper() {
+    return (void*)(giGLibCompareDataFunc);
 }
-extern void myGLibCompareFunc(gpointer a, gpointer b);
-static void* getPointer_myGLibCompareFunc() {
-return (void*)(myGLibCompareFunc);
+extern void giGLibCompareFunc(gpointer a, gpointer b);
+static void* getGLibCompareFuncWrapper() {
+    return (void*)(giGLibCompareFunc);
 }
-extern void myGLibCopyFunc(gpointer src, gpointer data);
-static void* getPointer_myGLibCopyFunc() {
-return (void*)(myGLibCopyFunc);
+extern void giGLibCopyFunc(gpointer src, gpointer data);
+static void* getGLibCopyFuncWrapper() {
+    return (void*)(giGLibCopyFunc);
 }
-extern void myGLibDataForeachFunc(guint32 key_id, gpointer data, gpointer user_data);
-static void* getPointer_myGLibDataForeachFunc() {
-return (void*)(myGLibDataForeachFunc);
+extern void giGLibDataForeachFunc(guint32 key_id, gpointer data, gpointer user_data);
+static void* getGLibDataForeachFuncWrapper() {
+    return (void*)(giGLibDataForeachFunc);
 }
-extern void myGLibDestroyNotify(gpointer data);
-static void* getPointer_myGLibDestroyNotify() {
-return (void*)(myGLibDestroyNotify);
+extern void giGLibDestroyNotify(gpointer data);
+static void* getGLibDestroyNotifyWrapper() {
+    return (void*)(giGLibDestroyNotify);
 }
-extern void myGLibDuplicateFunc(gpointer data, gpointer user_data);
-static void* getPointer_myGLibDuplicateFunc() {
-return (void*)(myGLibDuplicateFunc);
+extern void giGLibDuplicateFunc(gpointer data, gpointer user_data);
+static void* getGLibDuplicateFuncWrapper() {
+    return (void*)(giGLibDuplicateFunc);
 }
-extern void myGLibEqualFunc(gpointer a, gpointer b);
-static void* getPointer_myGLibEqualFunc() {
-return (void*)(myGLibEqualFunc);
+extern void giGLibEqualFunc(gpointer a, gpointer b);
+static void* getGLibEqualFuncWrapper() {
+    return (void*)(giGLibEqualFunc);
 }
-extern void myGLibFreeFunc(gpointer data);
-static void* getPointer_myGLibFreeFunc() {
-return (void*)(myGLibFreeFunc);
+extern void giGLibFreeFunc(gpointer data);
+static void* getGLibFreeFuncWrapper() {
+    return (void*)(giGLibFreeFunc);
 }
-extern void myGLibFunc(gpointer data, gpointer user_data);
-static void* getPointer_myGLibFunc() {
-return (void*)(myGLibFunc);
+extern void giGLibFunc(gpointer data, gpointer user_data);
+static void* getGLibFuncWrapper() {
+    return (void*)(giGLibFunc);
 }
-extern void myGLibHFunc(gpointer key, gpointer value, gpointer user_data);
-static void* getPointer_myGLibHFunc() {
-return (void*)(myGLibHFunc);
+extern void giGLibHFunc(gpointer key, gpointer value, gpointer user_data);
+static void* getGLibHFuncWrapper() {
+    return (void*)(giGLibHFunc);
 }
-extern void myGLibHRFunc(gpointer key, gpointer value, gpointer user_data);
-static void* getPointer_myGLibHRFunc() {
-return (void*)(myGLibHRFunc);
+extern void giGLibHRFunc(gpointer key, gpointer value, gpointer user_data);
+static void* getGLibHRFuncWrapper() {
+    return (void*)(giGLibHRFunc);
 }
-extern void myGLibHashFunc(gpointer key);
-static void* getPointer_myGLibHashFunc() {
-return (void*)(myGLibHashFunc);
+extern void giGLibHashFunc(gpointer key);
+static void* getGLibHashFuncWrapper() {
+    return (void*)(giGLibHashFunc);
 }
-extern void myGLibHookCheckFunc(gpointer data);
-static void* getPointer_myGLibHookCheckFunc() {
-return (void*)(myGLibHookCheckFunc);
+extern void giGLibHookCheckFunc(gpointer data);
+static void* getGLibHookCheckFuncWrapper() {
+    return (void*)(giGLibHookCheckFunc);
 }
-extern void myGLibHookCheckMarshaller(GHook* hook, gpointer marshal_data);
-static void* getPointer_myGLibHookCheckMarshaller() {
-return (void*)(myGLibHookCheckMarshaller);
+extern void giGLibHookCheckMarshaller(GHook* hook, gpointer marshal_data);
+static void* getGLibHookCheckMarshallerWrapper() {
+    return (void*)(giGLibHookCheckMarshaller);
 }
-extern void myGLibHookCompareFunc(GHook* new_hook, GHook* sibling);
-static void* getPointer_myGLibHookCompareFunc() {
-return (void*)(myGLibHookCompareFunc);
+extern void giGLibHookCompareFunc(GHook* new_hook, GHook* sibling);
+static void* getGLibHookCompareFuncWrapper() {
+    return (void*)(giGLibHookCompareFunc);
 }
-extern void myGLibHookFinalizeFunc(GHookList* hook_list, GHook* hook);
-static void* getPointer_myGLibHookFinalizeFunc() {
-return (void*)(myGLibHookFinalizeFunc);
+extern void giGLibHookFinalizeFunc(GHookList* hook_list, GHook* hook);
+static void* getGLibHookFinalizeFuncWrapper() {
+    return (void*)(giGLibHookFinalizeFunc);
 }
-extern void myGLibHookFindFunc(GHook* hook, gpointer data);
-static void* getPointer_myGLibHookFindFunc() {
-return (void*)(myGLibHookFindFunc);
+extern void giGLibHookFindFunc(GHook* hook, gpointer data);
+static void* getGLibHookFindFuncWrapper() {
+    return (void*)(giGLibHookFindFunc);
 }
-extern void myGLibHookFunc(gpointer data);
-static void* getPointer_myGLibHookFunc() {
-return (void*)(myGLibHookFunc);
+extern void giGLibHookFunc(gpointer data);
+static void* getGLibHookFuncWrapper() {
+    return (void*)(giGLibHookFunc);
 }
-extern void myGLibHookMarshaller(GHook* hook, gpointer marshal_data);
-static void* getPointer_myGLibHookMarshaller() {
-return (void*)(myGLibHookMarshaller);
+extern void giGLibHookMarshaller(GHook* hook, gpointer marshal_data);
+static void* getGLibHookMarshallerWrapper() {
+    return (void*)(giGLibHookMarshaller);
 }
-extern void myGLibIOFunc(GIOChannel* source, GIOCondition condition, gpointer data);
-static void* getPointer_myGLibIOFunc() {
-return (void*)(myGLibIOFunc);
+extern void giGLibIOFunc(GIOChannel* source, GIOCondition condition, gpointer data);
+static void* getGLibIOFuncWrapper() {
+    return (void*)(giGLibIOFunc);
 }
-extern void myGLibLogFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
-static void* getPointer_myGLibLogFunc() {
-return (void*)(myGLibLogFunc);
+extern void giGLibLogFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
+static void* getGLibLogFuncWrapper() {
+    return (void*)(giGLibLogFunc);
 }
-extern void myGLibLogWriterFunc(GLogLevelFlags log_level, gpointer fields, guint64 n_fields, gpointer user_data);
-static void* getPointer_myGLibLogWriterFunc() {
-return (void*)(myGLibLogWriterFunc);
+extern void giGLibLogWriterFunc(GLogLevelFlags log_level, gpointer fields, guint64 n_fields, gpointer user_data);
+static void* getGLibLogWriterFuncWrapper() {
+    return (void*)(giGLibLogWriterFunc);
 }
-extern void myGLibNodeForeachFunc(GNode* node, gpointer data);
-static void* getPointer_myGLibNodeForeachFunc() {
-return (void*)(myGLibNodeForeachFunc);
+extern void giGLibNodeForeachFunc(GNode* node, gpointer data);
+static void* getGLibNodeForeachFuncWrapper() {
+    return (void*)(giGLibNodeForeachFunc);
 }
-extern void myGLibNodeTraverseFunc(GNode* node, gpointer data);
-static void* getPointer_myGLibNodeTraverseFunc() {
-return (void*)(myGLibNodeTraverseFunc);
+extern void giGLibNodeTraverseFunc(GNode* node, gpointer data);
+static void* getGLibNodeTraverseFuncWrapper() {
+    return (void*)(giGLibNodeTraverseFunc);
 }
-extern void myGLibOptionArgFunc(gchar* option_name, gchar* value, gpointer data);
-static void* getPointer_myGLibOptionArgFunc() {
-return (void*)(myGLibOptionArgFunc);
+extern void giGLibOptionArgFunc(gchar* option_name, gchar* value, gpointer data);
+static void* getGLibOptionArgFuncWrapper() {
+    return (void*)(giGLibOptionArgFunc);
 }
-extern void myGLibOptionErrorFunc(GOptionContext* context, GOptionGroup* group, gpointer data);
-static void* getPointer_myGLibOptionErrorFunc() {
-return (void*)(myGLibOptionErrorFunc);
+extern void giGLibOptionErrorFunc(GOptionContext* context, GOptionGroup* group, gpointer data);
+static void* getGLibOptionErrorFuncWrapper() {
+    return (void*)(giGLibOptionErrorFunc);
 }
-extern void myGLibOptionParseFunc(GOptionContext* context, GOptionGroup* group, gpointer data);
-static void* getPointer_myGLibOptionParseFunc() {
-return (void*)(myGLibOptionParseFunc);
+extern void giGLibOptionParseFunc(GOptionContext* context, GOptionGroup* group, gpointer data);
+static void* getGLibOptionParseFuncWrapper() {
+    return (void*)(giGLibOptionParseFunc);
 }
-extern void myGLibPollFunc(GPollFD* ufds, guint32 nfsd, gint32 timeout_);
-static void* getPointer_myGLibPollFunc() {
-return (void*)(myGLibPollFunc);
+extern void giGLibPollFunc(GPollFD* ufds, guint32 nfsd, gint32 timeout_);
+static void* getGLibPollFuncWrapper() {
+    return (void*)(giGLibPollFunc);
 }
-extern void myGLibPrintFunc(gchar* string);
-static void* getPointer_myGLibPrintFunc() {
-return (void*)(myGLibPrintFunc);
+extern void giGLibPrintFunc(gchar* string);
+static void* getGLibPrintFuncWrapper() {
+    return (void*)(giGLibPrintFunc);
 }
-extern void myGLibRegexEvalCallback(GMatchInfo* match_info, GString* result, gpointer user_data);
-static void* getPointer_myGLibRegexEvalCallback() {
-return (void*)(myGLibRegexEvalCallback);
+extern void giGLibRegexEvalCallback(GMatchInfo* match_info, GString* result, gpointer user_data);
+static void* getGLibRegexEvalCallbackWrapper() {
+    return (void*)(giGLibRegexEvalCallback);
 }
-extern void myGLibScannerMsgFunc(GScanner* scanner, gchar* message, gboolean error);
-static void* getPointer_myGLibScannerMsgFunc() {
-return (void*)(myGLibScannerMsgFunc);
+extern void giGLibScannerMsgFunc(GScanner* scanner, gchar* message, gboolean error);
+static void* getGLibScannerMsgFuncWrapper() {
+    return (void*)(giGLibScannerMsgFunc);
 }
-extern void myGLibSequenceIterCompareFunc(GSequenceIter* a, GSequenceIter* b, gpointer data);
-static void* getPointer_myGLibSequenceIterCompareFunc() {
-return (void*)(myGLibSequenceIterCompareFunc);
+extern void giGLibSequenceIterCompareFunc(GSequenceIter* a, GSequenceIter* b, gpointer data);
+static void* getGLibSequenceIterCompareFuncWrapper() {
+    return (void*)(giGLibSequenceIterCompareFunc);
 }
-extern void myGLibSourceDummyMarshal();
-static void* getPointer_myGLibSourceDummyMarshal() {
-return (void*)(myGLibSourceDummyMarshal);
+extern void giGLibSourceDummyMarshal();
+static void* getGLibSourceDummyMarshalWrapper() {
+    return (void*)(giGLibSourceDummyMarshal);
 }
-extern void myGLibSourceFunc(gpointer user_data);
-static void* getPointer_myGLibSourceFunc() {
-return (void*)(myGLibSourceFunc);
+extern void giGLibSourceFunc(gpointer user_data);
+static void* getGLibSourceFuncWrapper() {
+    return (void*)(giGLibSourceFunc);
 }
-extern void myGLibSpawnChildSetupFunc(gpointer user_data);
-static void* getPointer_myGLibSpawnChildSetupFunc() {
-return (void*)(myGLibSpawnChildSetupFunc);
+extern void giGLibSpawnChildSetupFunc(gpointer user_data);
+static void* getGLibSpawnChildSetupFuncWrapper() {
+    return (void*)(giGLibSpawnChildSetupFunc);
 }
-extern void myGLibTestDataFunc(gpointer user_data);
-static void* getPointer_myGLibTestDataFunc() {
-return (void*)(myGLibTestDataFunc);
+extern void giGLibTestDataFunc(gpointer user_data);
+static void* getGLibTestDataFuncWrapper() {
+    return (void*)(giGLibTestDataFunc);
 }
-extern void myGLibTestFixtureFunc(gpointer fixture, gpointer user_data);
-static void* getPointer_myGLibTestFixtureFunc() {
-return (void*)(myGLibTestFixtureFunc);
+extern void giGLibTestFixtureFunc(gpointer fixture, gpointer user_data);
+static void* getGLibTestFixtureFuncWrapper() {
+    return (void*)(giGLibTestFixtureFunc);
 }
-extern void myGLibTestFunc();
-static void* getPointer_myGLibTestFunc() {
-return (void*)(myGLibTestFunc);
+extern void giGLibTestFunc();
+static void* getGLibTestFuncWrapper() {
+    return (void*)(giGLibTestFunc);
 }
-extern void myGLibTestLogFatalFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
-static void* getPointer_myGLibTestLogFatalFunc() {
-return (void*)(myGLibTestLogFatalFunc);
+extern void giGLibTestLogFatalFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
+static void* getGLibTestLogFatalFuncWrapper() {
+    return (void*)(giGLibTestLogFatalFunc);
 }
-extern void myGLibThreadFunc(gpointer data);
-static void* getPointer_myGLibThreadFunc() {
-return (void*)(myGLibThreadFunc);
+extern void giGLibThreadFunc(gpointer data);
+static void* getGLibThreadFuncWrapper() {
+    return (void*)(giGLibThreadFunc);
 }
-extern void myGLibTranslateFunc(gchar* str, gpointer data);
-static void* getPointer_myGLibTranslateFunc() {
-return (void*)(myGLibTranslateFunc);
+extern void giGLibTranslateFunc(gchar* str, gpointer data);
+static void* getGLibTranslateFuncWrapper() {
+    return (void*)(giGLibTranslateFunc);
 }
-extern void myGLibTraverseFunc(gpointer key, gpointer value, gpointer data);
-static void* getPointer_myGLibTraverseFunc() {
-return (void*)(myGLibTraverseFunc);
+extern void giGLibTraverseFunc(gpointer key, gpointer value, gpointer data);
+static void* getGLibTraverseFuncWrapper() {
+    return (void*)(giGLibTraverseFunc);
 }
-extern void myGLibUnixFDSourceFunc(gint32 fd, GIOCondition condition, gpointer user_data);
-static void* getPointer_myGLibUnixFDSourceFunc() {
-return (void*)(myGLibUnixFDSourceFunc);
+extern void giGLibUnixFDSourceFunc(gint32 fd, GIOCondition condition, gpointer user_data);
+static void* getGLibUnixFDSourceFuncWrapper() {
+    return (void*)(giGLibUnixFDSourceFunc);
 }
-extern void myGLibVoidFunc();
-static void* getPointer_myGLibVoidFunc() {
-return (void*)(myGLibVoidFunc);
+extern void giGLibVoidFunc();
+static void* getGLibVoidFuncWrapper() {
+    return (void*)(giGLibVoidFunc);
 }
 */
 import "C"
@@ -2195,22 +2195,22 @@ func ChecksumTypeGetType() gi.GType {
 	return ret
 }
 
-type ChildWatchFuncStruct struct {
-	F_pid    int32
-	F_status int32
+type ChildWatchFuncArgs struct {
+	Pid    int32
+	Status int32
 }
 
-func GetPointer_myChildWatchFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibChildWatchFunc())
+func GetChildWatchFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibChildWatchFuncWrapper())
 }
 
-//export myGLibChildWatchFunc
-func myGLibChildWatchFunc(pid C.gint32, status C.gint32, user_data C.gpointer) {
+//export giGLibChildWatchFunc
+func giGLibChildWatchFunc(pid C.gint32, status C.gint32, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &ChildWatchFuncStruct{
-			F_pid:    int32(pid),
-			F_status: int32(status),
+		args := &ChildWatchFuncArgs{
+			Pid:    int32(pid),
+			Status: int32(status),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -2219,35 +2219,35 @@ func myGLibChildWatchFunc(pid C.gint32, status C.gint32, user_data C.gpointer) {
 	}
 }
 
-type ClearHandleFuncStruct struct {
-	F_handle_id uint32
+type ClearHandleFuncArg struct {
+	HandleId uint32
 }
 
-func GetPointer_myClearHandleFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibClearHandleFunc())
+func GetClearHandleFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibClearHandleFuncWrapper())
 }
 
-//export myGLibClearHandleFunc
-func myGLibClearHandleFunc(handle_id C.guint32) {
+//export giGLibClearHandleFunc
+func giGLibClearHandleFunc(handle_id C.guint32) {
 	// TODO: not found user_data
 }
 
-type CompareDataFuncStruct struct {
-	F_a unsafe.Pointer
-	F_b unsafe.Pointer
+type CompareDataFuncArgs struct {
+	A unsafe.Pointer
+	B unsafe.Pointer
 }
 
-func GetPointer_myCompareDataFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibCompareDataFunc())
+func GetCompareDataFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibCompareDataFuncWrapper())
 }
 
-//export myGLibCompareDataFunc
-func myGLibCompareDataFunc(a C.gpointer, b C.gpointer, user_data C.gpointer) {
+//export giGLibCompareDataFunc
+func giGLibCompareDataFunc(a C.gpointer, b C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CompareDataFuncStruct{
-			F_a: unsafe.Pointer(a),
-			F_b: unsafe.Pointer(b),
+		args := &CompareDataFuncArgs{
+			A: unsafe.Pointer(a),
+			B: unsafe.Pointer(b),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -2256,17 +2256,17 @@ func myGLibCompareDataFunc(a C.gpointer, b C.gpointer, user_data C.gpointer) {
 	}
 }
 
-type CompareFuncStruct struct {
-	F_a unsafe.Pointer
-	F_b unsafe.Pointer
+type CompareFuncArgs struct {
+	A unsafe.Pointer
+	B unsafe.Pointer
 }
 
-func GetPointer_myCompareFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibCompareFunc())
+func GetCompareFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibCompareFuncWrapper())
 }
 
-//export myGLibCompareFunc
-func myGLibCompareFunc(a C.gpointer, b C.gpointer) {
+//export giGLibCompareFunc
+func giGLibCompareFunc(a C.gpointer, b C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -2393,17 +2393,17 @@ func ConvertErrorGetType() gi.GType {
 	return ret
 }
 
-type CopyFuncStruct struct {
-	F_src  unsafe.Pointer
-	F_data unsafe.Pointer
+type CopyFuncArgs struct {
+	Src  unsafe.Pointer
+	Data unsafe.Pointer
 }
 
-func GetPointer_myCopyFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibCopyFunc())
+func GetCopyFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibCopyFuncWrapper())
 }
 
-//export myGLibCopyFunc
-func myGLibCopyFunc(src C.gpointer, data C.gpointer) {
+//export giGLibCopyFunc
+func giGLibCopyFunc(src C.gpointer, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -2417,22 +2417,22 @@ func DataGetType() gi.GType {
 	return ret
 }
 
-type DataForeachFuncStruct struct {
-	F_key_id uint32
-	F_data   unsafe.Pointer
+type DataForeachFuncArgs struct {
+	KeyId uint32
+	Data  unsafe.Pointer
 }
 
-func GetPointer_myDataForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibDataForeachFunc())
+func GetDataForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibDataForeachFuncWrapper())
 }
 
-//export myGLibDataForeachFunc
-func myGLibDataForeachFunc(key_id C.guint32, data C.gpointer, user_data C.gpointer) {
+//export giGLibDataForeachFunc
+func giGLibDataForeachFunc(key_id C.guint32, data C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &DataForeachFuncStruct{
-			F_key_id: uint32(key_id),
-			F_data:   unsafe.Pointer(data),
+		args := &DataForeachFuncArgs{
+			KeyId: uint32(key_id),
+			Data:  unsafe.Pointer(data),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -4463,16 +4463,16 @@ func DebugKeyGetType() gi.GType {
 	return ret
 }
 
-type DestroyNotifyStruct struct {
-	F_data unsafe.Pointer
+type DestroyNotifyArg struct {
+	Data unsafe.Pointer
 }
 
-func GetPointer_myDestroyNotify() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibDestroyNotify())
+func GetDestroyNotifyWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibDestroyNotifyWrapper())
 }
 
-//export myGLibDestroyNotify
-func myGLibDestroyNotify(data C.gpointer) {
+//export giGLibDestroyNotify
+func giGLibDestroyNotify(data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -4566,20 +4566,20 @@ func DoubleIEEE754GetType() gi.GType {
 	return ret
 }
 
-type DuplicateFuncStruct struct {
-	F_data unsafe.Pointer
+type DuplicateFuncArg struct {
+	Data unsafe.Pointer
 }
 
-func GetPointer_myDuplicateFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibDuplicateFunc())
+func GetDuplicateFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibDuplicateFuncWrapper())
 }
 
-//export myGLibDuplicateFunc
-func myGLibDuplicateFunc(data C.gpointer, user_data C.gpointer) {
+//export giGLibDuplicateFunc
+func giGLibDuplicateFunc(data C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &DuplicateFuncStruct{
-			F_data: unsafe.Pointer(data),
+		args := &DuplicateFuncArg{
+			Data: unsafe.Pointer(data),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -4588,17 +4588,17 @@ func myGLibDuplicateFunc(data C.gpointer, user_data C.gpointer) {
 	}
 }
 
-type EqualFuncStruct struct {
-	F_a unsafe.Pointer
-	F_b unsafe.Pointer
+type EqualFuncArgs struct {
+	A unsafe.Pointer
+	B unsafe.Pointer
 }
 
-func GetPointer_myEqualFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibEqualFunc())
+func GetEqualFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibEqualFuncWrapper())
 }
 
-//export myGLibEqualFunc
-func myGLibEqualFunc(a C.gpointer, b C.gpointer) {
+//export giGLibEqualFunc
+func giGLibEqualFunc(a C.gpointer, b C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -4795,33 +4795,33 @@ func FormatSizeFlagsGetType() gi.GType {
 	return ret
 }
 
-type FreeFuncStruct struct {
-	F_data unsafe.Pointer
+type FreeFuncArg struct {
+	Data unsafe.Pointer
 }
 
-func GetPointer_myFreeFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibFreeFunc())
+func GetFreeFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibFreeFuncWrapper())
 }
 
-//export myGLibFreeFunc
-func myGLibFreeFunc(data C.gpointer) {
+//export giGLibFreeFunc
+func giGLibFreeFunc(data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type FuncStruct struct {
-	F_data unsafe.Pointer
+type FuncArg struct {
+	Data unsafe.Pointer
 }
 
-func GetPointer_myFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibFunc())
+func GetFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibFuncWrapper())
 }
 
-//export myGLibFunc
-func myGLibFunc(data C.gpointer, user_data C.gpointer) {
+//export giGLibFunc
+func giGLibFunc(data C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &FuncStruct{
-			F_data: unsafe.Pointer(data),
+		args := &FuncArg{
+			Data: unsafe.Pointer(data),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -4830,22 +4830,22 @@ func myGLibFunc(data C.gpointer, user_data C.gpointer) {
 	}
 }
 
-type HFuncStruct struct {
-	F_key   unsafe.Pointer
-	F_value unsafe.Pointer
+type HFuncArgs struct {
+	Key   unsafe.Pointer
+	Value unsafe.Pointer
 }
 
-func GetPointer_myHFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibHFunc())
+func GetHFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibHFuncWrapper())
 }
 
-//export myGLibHFunc
-func myGLibHFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
+//export giGLibHFunc
+func giGLibHFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &HFuncStruct{
-			F_key:   unsafe.Pointer(key),
-			F_value: unsafe.Pointer(value),
+		args := &HFuncArgs{
+			Key:   unsafe.Pointer(key),
+			Value: unsafe.Pointer(value),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -4854,22 +4854,22 @@ func myGLibHFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
 	}
 }
 
-type HRFuncStruct struct {
-	F_key   unsafe.Pointer
-	F_value unsafe.Pointer
+type HRFuncArgs struct {
+	Key   unsafe.Pointer
+	Value unsafe.Pointer
 }
 
-func GetPointer_myHRFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibHRFunc())
+func GetHRFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibHRFuncWrapper())
 }
 
-//export myGLibHRFunc
-func myGLibHRFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
+//export giGLibHRFunc
+func giGLibHRFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &HRFuncStruct{
-			F_key:   unsafe.Pointer(key),
-			F_value: unsafe.Pointer(value),
+		args := &HRFuncArgs{
+			Key:   unsafe.Pointer(key),
+			Value: unsafe.Pointer(value),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -4878,16 +4878,16 @@ func myGLibHRFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
 	}
 }
 
-type HashFuncStruct struct {
-	F_key unsafe.Pointer
+type HashFuncArg struct {
+	Key unsafe.Pointer
 }
 
-func GetPointer_myHashFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibHashFunc())
+func GetHashFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibHashFuncWrapper())
 }
 
-//export myGLibHashFunc
-func myGLibHashFunc(key C.gpointer) {
+//export giGLibHashFunc
+func giGLibHashFunc(key C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -5537,72 +5537,72 @@ func HookUnref1(hook_list HookList, hook Hook) {
 	iv.Call(args, nil, nil)
 }
 
-type HookCheckFuncStruct struct {
-	F_data unsafe.Pointer
+type HookCheckFuncArg struct {
+	Data unsafe.Pointer
 }
 
-func GetPointer_myHookCheckFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibHookCheckFunc())
+func GetHookCheckFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibHookCheckFuncWrapper())
 }
 
-//export myGLibHookCheckFunc
-func myGLibHookCheckFunc(data C.gpointer) {
+//export giGLibHookCheckFunc
+func giGLibHookCheckFunc(data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type HookCheckMarshallerStruct struct {
-	F_hook         Hook
-	F_marshal_data unsafe.Pointer
+type HookCheckMarshallerArgs struct {
+	Hook        Hook
+	MarshalData unsafe.Pointer
 }
 
-func GetPointer_myHookCheckMarshaller() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibHookCheckMarshaller())
+func GetHookCheckMarshallerWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibHookCheckMarshallerWrapper())
 }
 
-//export myGLibHookCheckMarshaller
-func myGLibHookCheckMarshaller(hook *C.GHook, marshal_data C.gpointer) {
+//export giGLibHookCheckMarshaller
+func giGLibHookCheckMarshaller(hook *C.GHook, marshal_data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type HookCompareFuncStruct struct {
-	F_new_hook Hook
-	F_sibling  Hook
+type HookCompareFuncArgs struct {
+	NewHook Hook
+	Sibling Hook
 }
 
-func GetPointer_myHookCompareFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibHookCompareFunc())
+func GetHookCompareFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibHookCompareFuncWrapper())
 }
 
-//export myGLibHookCompareFunc
-func myGLibHookCompareFunc(new_hook *C.GHook, sibling *C.GHook) {
+//export giGLibHookCompareFunc
+func giGLibHookCompareFunc(new_hook *C.GHook, sibling *C.GHook) {
 	// TODO: not found user_data
 }
 
-type HookFinalizeFuncStruct struct {
-	F_hook_list HookList
-	F_hook      Hook
+type HookFinalizeFuncArgs struct {
+	HookList HookList
+	Hook     Hook
 }
 
-func GetPointer_myHookFinalizeFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibHookFinalizeFunc())
+func GetHookFinalizeFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibHookFinalizeFuncWrapper())
 }
 
-//export myGLibHookFinalizeFunc
-func myGLibHookFinalizeFunc(hook_list *C.GHookList, hook *C.GHook) {
+//export giGLibHookFinalizeFunc
+func giGLibHookFinalizeFunc(hook_list *C.GHookList, hook *C.GHook) {
 	// TODO: not found user_data
 }
 
-type HookFindFuncStruct struct {
-	F_hook Hook
-	F_data unsafe.Pointer
+type HookFindFuncArgs struct {
+	Hook Hook
+	Data unsafe.Pointer
 }
 
-func GetPointer_myHookFindFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibHookFindFunc())
+func GetHookFindFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibHookFindFuncWrapper())
 }
 
-//export myGLibHookFindFunc
-func myGLibHookFindFunc(hook *C.GHook, data C.gpointer) {
+//export giGLibHookFindFunc
+func giGLibHookFindFunc(hook *C.GHook, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -5620,16 +5620,16 @@ func HookFlagMaskGetType() gi.GType {
 	return ret
 }
 
-type HookFuncStruct struct {
-	F_data unsafe.Pointer
+type HookFuncArg struct {
+	Data unsafe.Pointer
 }
 
-func GetPointer_myHookFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibHookFunc())
+func GetHookFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibHookFuncWrapper())
 }
 
-//export myGLibHookFunc
-func myGLibHookFunc(data C.gpointer) {
+//export giGLibHookFunc
+func giGLibHookFunc(data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -5706,17 +5706,17 @@ func (v HookList) InvokeCheck(may_recurse bool) {
 	iv.Call(args, nil, nil)
 }
 
-type HookMarshallerStruct struct {
-	F_hook         Hook
-	F_marshal_data unsafe.Pointer
+type HookMarshallerArgs struct {
+	Hook        Hook
+	MarshalData unsafe.Pointer
 }
 
-func GetPointer_myHookMarshaller() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibHookMarshaller())
+func GetHookMarshallerWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibHookMarshallerWrapper())
 }
 
-//export myGLibHookMarshaller
-func myGLibHookMarshaller(hook *C.GHook, marshal_data C.gpointer) {
+//export giGLibHookMarshaller
+func giGLibHookMarshaller(hook *C.GHook, marshal_data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -6565,18 +6565,18 @@ func IOFlagsGetType() gi.GType {
 	return ret
 }
 
-type IOFuncStruct struct {
-	F_source    IOChannel
-	F_condition IOConditionFlags
-	F_data      unsafe.Pointer
+type IOFuncArgs struct {
+	Source    IOChannel
+	Condition IOConditionFlags
+	Data      unsafe.Pointer
 }
 
-func GetPointer_myIOFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibIOFunc())
+func GetIOFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibIOFuncWrapper())
 }
 
-//export myGLibIOFunc
-func myGLibIOFunc(source *C.GIOChannel, condition C.GIOCondition, data C.gpointer) {
+//export giGLibIOFunc
+func giGLibIOFunc(source *C.GIOChannel, condition C.GIOCondition, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -8013,24 +8013,24 @@ func LogFieldGetType() gi.GType {
 	return ret
 }
 
-type LogFuncStruct struct {
-	F_log_domain string
-	F_log_level  LogLevelFlags
-	F_message    string
+type LogFuncArgs struct {
+	LogDomain string
+	LogLevel  LogLevelFlags
+	Message   string
 }
 
-func GetPointer_myLogFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibLogFunc())
+func GetLogFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibLogFuncWrapper())
 }
 
-//export myGLibLogFunc
-func myGLibLogFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
+//export giGLibLogFunc
+func giGLibLogFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &LogFuncStruct{
-			F_log_domain: gi.GoString(unsafe.Pointer(log_domain)),
-			F_log_level:  LogLevelFlags(log_level),
-			F_message:    gi.GoString(unsafe.Pointer(message)),
+		args := &LogFuncArgs{
+			LogDomain: gi.GoString(unsafe.Pointer(log_domain)),
+			LogLevel:  LogLevelFlags(log_level),
+			Message:   gi.GoString(unsafe.Pointer(message)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -8059,24 +8059,24 @@ func LogLevelFlagsGetType() gi.GType {
 	return ret
 }
 
-type LogWriterFuncStruct struct {
-	F_log_level LogLevelFlags
-	F_fields    unsafe.Pointer
-	F_n_fields  uint64
+type LogWriterFuncArgs struct {
+	LogLevel LogLevelFlags
+	Fields   unsafe.Pointer
+	NFields  uint64
 }
 
-func GetPointer_myLogWriterFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibLogWriterFunc())
+func GetLogWriterFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibLogWriterFuncWrapper())
 }
 
-//export myGLibLogWriterFunc
-func myGLibLogWriterFunc(log_level C.GLogLevelFlags, fields C.gpointer, n_fields C.guint64, user_data C.gpointer) {
+//export giGLibLogWriterFunc
+func giGLibLogWriterFunc(log_level C.GLogLevelFlags, fields C.gpointer, n_fields C.guint64, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &LogWriterFuncStruct{
-			F_log_level: LogLevelFlags(log_level),
-			F_fields:    unsafe.Pointer(fields),
-			F_n_fields:  uint64(n_fields),
+		args := &LogWriterFuncArgs{
+			LogLevel: LogLevelFlags(log_level),
+			Fields:   unsafe.Pointer(fields),
+			NFields:  uint64(n_fields),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -8286,9 +8286,9 @@ func (v MainContext) InvokeFull(priority int32, fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_priority := gi.NewInt32Argument(priority)
-	arg_function := gi.NewPointerArgument(GetPointer_mySourceFunc())
+	arg_function := gi.NewPointerArgument(GetSourceFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_priority, arg_function, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -8930,7 +8930,7 @@ func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_dat
 	arg_parser := gi.NewPointerArgument(parser.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_user_data_dnotify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_user_data_dnotify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_parser, arg_flags, arg_user_data, arg_user_data_dnotify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9746,31 +9746,31 @@ func (v Node) Unlink() {
 	iv.Call(args, nil, nil)
 }
 
-type NodeForeachFuncStruct struct {
-	F_node Node
-	F_data unsafe.Pointer
+type NodeForeachFuncArgs struct {
+	Node Node
+	Data unsafe.Pointer
 }
 
-func GetPointer_myNodeForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibNodeForeachFunc())
+func GetNodeForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibNodeForeachFuncWrapper())
 }
 
-//export myGLibNodeForeachFunc
-func myGLibNodeForeachFunc(node *C.GNode, data C.gpointer) {
+//export giGLibNodeForeachFunc
+func giGLibNodeForeachFunc(node *C.GNode, data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type NodeTraverseFuncStruct struct {
-	F_node Node
-	F_data unsafe.Pointer
+type NodeTraverseFuncArgs struct {
+	Node Node
+	Data unsafe.Pointer
 }
 
-func GetPointer_myNodeTraverseFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibNodeTraverseFunc())
+func GetNodeTraverseFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibNodeTraverseFuncWrapper())
 }
 
-//export myGLibNodeTraverseFunc
-func myGLibNodeTraverseFunc(node *C.GNode, data C.gpointer) {
+//export giGLibNodeTraverseFunc
+func giGLibNodeTraverseFunc(node *C.GNode, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -9890,18 +9890,18 @@ func OptionArgGetType() gi.GType {
 	return ret
 }
 
-type OptionArgFuncStruct struct {
-	F_option_name string
-	F_value       string
-	F_data        unsafe.Pointer
+type OptionArgFuncArgs struct {
+	OptionName string
+	Value      string
+	Data       unsafe.Pointer
 }
 
-func GetPointer_myOptionArgFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibOptionArgFunc())
+func GetOptionArgFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibOptionArgFuncWrapper())
 }
 
-//export myGLibOptionArgFunc
-func myGLibOptionArgFunc(option_name *C.gchar, value *C.gchar, data C.gpointer) {
+//export giGLibOptionArgFunc
+func giGLibOptionArgFunc(option_name *C.gchar, value *C.gchar, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -10259,9 +10259,9 @@ func (v OptionContext) SetTranslateFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTranslateFunc())
+	arg_func1 := gi.NewPointerArgument(GetTranslateFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_destroy_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy_notify}
 	iv.Call(args, nil, nil)
 }
@@ -10310,18 +10310,18 @@ func OptionErrorGetType() gi.GType {
 	return ret
 }
 
-type OptionErrorFuncStruct struct {
-	F_context OptionContext
-	F_group   OptionGroup
-	F_data    unsafe.Pointer
+type OptionErrorFuncArgs struct {
+	Context OptionContext
+	Group   OptionGroup
+	Data    unsafe.Pointer
 }
 
-func GetPointer_myOptionErrorFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibOptionErrorFunc())
+func GetOptionErrorFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibOptionErrorFuncWrapper())
 }
 
-//export myGLibOptionErrorFunc
-func myGLibOptionErrorFunc(context *C.GOptionContext, group *C.GOptionGroup, data C.gpointer) {
+//export giGLibOptionErrorFunc
+func giGLibOptionErrorFunc(context *C.GOptionContext, group *C.GOptionGroup, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -10381,7 +10381,7 @@ func NewOptionGroup(name string, description string, help_description string, us
 	arg_description := gi.NewStringArgument(c_description)
 	arg_help_description := gi.NewStringArgument(c_help_description)
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_name, arg_description, arg_help_description, arg_user_data, arg_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -10457,9 +10457,9 @@ func (v OptionGroup) SetTranslateFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTranslateFunc())
+	arg_func1 := gi.NewPointerArgument(GetTranslateFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_destroy_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy_notify}
 	iv.Call(args, nil, nil)
 }
@@ -10495,18 +10495,18 @@ func (v OptionGroup) Unref() {
 	iv.Call(args, nil, nil)
 }
 
-type OptionParseFuncStruct struct {
-	F_context OptionContext
-	F_group   OptionGroup
-	F_data    unsafe.Pointer
+type OptionParseFuncArgs struct {
+	Context OptionContext
+	Group   OptionGroup
+	Data    unsafe.Pointer
 }
 
-func GetPointer_myOptionParseFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibOptionParseFunc())
+func GetOptionParseFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibOptionParseFuncWrapper())
 }
 
-//export myGLibOptionParseFunc
-func myGLibOptionParseFunc(context *C.GOptionContext, group *C.GOptionGroup, data C.gpointer) {
+//export giGLibOptionParseFunc
+func giGLibOptionParseFunc(context *C.GOptionContext, group *C.GOptionGroup, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -10566,31 +10566,31 @@ func PollFDGetType() gi.GType {
 	return ret
 }
 
-type PollFuncStruct struct {
-	F_ufds     PollFD
-	F_nfsd     uint32
-	F_timeout_ int32
+type PollFuncArgs struct {
+	Ufds     PollFD
+	Nfsd     uint32
+	Timeout_ int32
 }
 
-func GetPointer_myPollFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibPollFunc())
+func GetPollFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibPollFuncWrapper())
 }
 
-//export myGLibPollFunc
-func myGLibPollFunc(ufds *C.GPollFD, nfsd C.guint32, timeout_ C.gint32) {
+//export giGLibPollFunc
+func giGLibPollFunc(ufds *C.GPollFD, nfsd C.guint32, timeout_ C.gint32) {
 	// TODO: not found user_data
 }
 
-type PrintFuncStruct struct {
-	F_string string
+type PrintFuncArg struct {
+	String string
 }
 
-func GetPointer_myPrintFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibPrintFunc())
+func GetPrintFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibPrintFuncWrapper())
 }
 
-//export myGLibPrintFunc
-func myGLibPrintFunc(string *C.gchar) {
+//export giGLibPrintFunc
+func giGLibPrintFunc(string *C.gchar) {
 	// TODO: not found user_data
 }
 
@@ -10717,7 +10717,7 @@ func (v Queue) FreeFull() {
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_free_func := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_free_func := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_free_func}
 	iv.Call(args, nil, nil)
 }
@@ -12109,22 +12109,22 @@ func RegexErrorGetType() gi.GType {
 	return ret
 }
 
-type RegexEvalCallbackStruct struct {
-	F_match_info MatchInfo
-	F_result     String
+type RegexEvalCallbackArgs struct {
+	MatchInfo MatchInfo
+	Result    String
 }
 
-func GetPointer_myRegexEvalCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibRegexEvalCallback())
+func GetRegexEvalCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibRegexEvalCallbackWrapper())
 }
 
-//export myGLibRegexEvalCallback
-func myGLibRegexEvalCallback(match_info *C.GMatchInfo, result *C.GString, user_data C.gpointer) {
+//export giGLibRegexEvalCallback
+func giGLibRegexEvalCallback(match_info *C.GMatchInfo, result *C.GString, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &RegexEvalCallbackStruct{
-			F_match_info: MatchInfo{P: unsafe.Pointer(match_info)},
-			F_result:     String{P: unsafe.Pointer(result)},
+		args := &RegexEvalCallbackArgs{
+			MatchInfo: MatchInfo{P: unsafe.Pointer(match_info)},
+			Result:    String{P: unsafe.Pointer(result)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -12520,18 +12520,18 @@ func ScannerConfigGetType() gi.GType {
 	return ret
 }
 
-type ScannerMsgFuncStruct struct {
-	F_scanner Scanner
-	F_message string
-	F_error   bool
+type ScannerMsgFuncArgs struct {
+	Scanner Scanner
+	Message string
+	Error   bool
 }
 
-func GetPointer_myScannerMsgFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibScannerMsgFunc())
+func GetScannerMsgFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibScannerMsgFuncWrapper())
 }
 
-//export myGLibScannerMsgFunc
-func myGLibScannerMsgFunc(scanner *C.GScanner, message *C.gchar, error C.gboolean) {
+//export giGLibScannerMsgFunc
+func giGLibScannerMsgFunc(scanner *C.GScanner, message *C.gchar, error C.gboolean) {
 	// TODO: not found user_data
 }
 
@@ -13041,18 +13041,18 @@ func (v SequenceIter) Prev() (result SequenceIter) {
 	return
 }
 
-type SequenceIterCompareFuncStruct struct {
-	F_a    SequenceIter
-	F_b    SequenceIter
-	F_data unsafe.Pointer
+type SequenceIterCompareFuncArgs struct {
+	A    SequenceIter
+	B    SequenceIter
+	Data unsafe.Pointer
 }
 
-func GetPointer_mySequenceIterCompareFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibSequenceIterCompareFunc())
+func GetSequenceIterCompareFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibSequenceIterCompareFuncWrapper())
 }
 
-//export myGLibSequenceIterCompareFunc
-func myGLibSequenceIterCompareFunc(a *C.GSequenceIter, b *C.GSequenceIter, data C.gpointer) {
+//export giGLibSequenceIterCompareFunc
+func giGLibSequenceIterCompareFunc(a *C.GSequenceIter, b *C.GSequenceIter, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -13496,9 +13496,9 @@ func (v Source) SetCallback(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_mySourceFunc())
+	arg_func1 := gi.NewPointerArgument(GetSourceFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -13712,30 +13712,30 @@ func SourceCallbackFuncsGetType() gi.GType {
 	return ret
 }
 
-type SourceDummyMarshalStruct struct {
+type SourceDummyMarshalArg struct {
 }
 
-func GetPointer_mySourceDummyMarshal() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibSourceDummyMarshal())
+func GetSourceDummyMarshalWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibSourceDummyMarshalWrapper())
 }
 
-//export myGLibSourceDummyMarshal
-func myGLibSourceDummyMarshal() {
+//export giGLibSourceDummyMarshal
+func giGLibSourceDummyMarshal() {
 	// TODO: not found user_data
 }
 
-type SourceFuncStruct struct {
+type SourceFuncArg struct {
 }
 
-func GetPointer_mySourceFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibSourceFunc())
+func GetSourceFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibSourceFuncWrapper())
 }
 
-//export myGLibSourceFunc
-func myGLibSourceFunc(user_data C.gpointer) {
+//export giGLibSourceFunc
+func giGLibSourceFunc(user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &SourceFuncStruct{}
+		args := &SourceFuncArg{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
@@ -13765,18 +13765,18 @@ func SourcePrivateGetType() gi.GType {
 	return ret
 }
 
-type SpawnChildSetupFuncStruct struct {
+type SpawnChildSetupFuncArg struct {
 }
 
-func GetPointer_mySpawnChildSetupFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibSpawnChildSetupFunc())
+func GetSpawnChildSetupFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibSpawnChildSetupFuncWrapper())
 }
 
-//export myGLibSpawnChildSetupFunc
-func myGLibSpawnChildSetupFunc(user_data C.gpointer) {
+//export giGLibSpawnChildSetupFunc
+func giGLibSpawnChildSetupFunc(user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &SpawnChildSetupFuncStruct{}
+		args := &SpawnChildSetupFuncArg{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
@@ -14603,18 +14603,18 @@ func TestConfigGetType() gi.GType {
 	return ret
 }
 
-type TestDataFuncStruct struct {
+type TestDataFuncArg struct {
 }
 
-func GetPointer_myTestDataFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibTestDataFunc())
+func GetTestDataFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibTestDataFuncWrapper())
 }
 
-//export myGLibTestDataFunc
-func myGLibTestDataFunc(user_data C.gpointer) {
+//export giGLibTestDataFunc
+func giGLibTestDataFunc(user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TestDataFuncStruct{}
+		args := &TestDataFuncArg{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
@@ -14635,20 +14635,20 @@ func TestFileTypeGetType() gi.GType {
 	return ret
 }
 
-type TestFixtureFuncStruct struct {
-	F_fixture unsafe.Pointer
+type TestFixtureFuncArg struct {
+	Fixture unsafe.Pointer
 }
 
-func GetPointer_myTestFixtureFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibTestFixtureFunc())
+func GetTestFixtureFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibTestFixtureFuncWrapper())
 }
 
-//export myGLibTestFixtureFunc
-func myGLibTestFixtureFunc(fixture C.gpointer, user_data C.gpointer) {
+//export giGLibTestFixtureFunc
+func giGLibTestFixtureFunc(fixture C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TestFixtureFuncStruct{
-			F_fixture: unsafe.Pointer(fixture),
+		args := &TestFixtureFuncArg{
+			Fixture: unsafe.Pointer(fixture),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -14657,15 +14657,15 @@ func myGLibTestFixtureFunc(fixture C.gpointer, user_data C.gpointer) {
 	}
 }
 
-type TestFuncStruct struct {
+type TestFuncArg struct {
 }
 
-func GetPointer_myTestFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibTestFunc())
+func GetTestFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibTestFuncWrapper())
 }
 
-//export myGLibTestFunc
-func myGLibTestFunc() {
+//export giGLibTestFunc
+func giGLibTestFunc() {
 	// TODO: not found user_data
 }
 
@@ -14713,24 +14713,24 @@ func (v TestLogBuffer) Push(n_bytes uint32, bytes uint8) {
 	iv.Call(args, nil, nil)
 }
 
-type TestLogFatalFuncStruct struct {
-	F_log_domain string
-	F_log_level  LogLevelFlags
-	F_message    string
+type TestLogFatalFuncArgs struct {
+	LogDomain string
+	LogLevel  LogLevelFlags
+	Message   string
 }
 
-func GetPointer_myTestLogFatalFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibTestLogFatalFunc())
+func GetTestLogFatalFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibTestLogFatalFuncWrapper())
 }
 
-//export myGLibTestLogFatalFunc
-func myGLibTestLogFatalFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
+//export giGLibTestLogFatalFunc
+func giGLibTestLogFatalFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TestLogFatalFuncStruct{
-			F_log_domain: gi.GoString(unsafe.Pointer(log_domain)),
-			F_log_level:  LogLevelFlags(log_level),
-			F_message:    gi.GoString(unsafe.Pointer(message)),
+		args := &TestLogFatalFuncArgs{
+			LogDomain: gi.GoString(unsafe.Pointer(log_domain)),
+			LogLevel:  LogLevelFlags(log_level),
+			Message:   gi.GoString(unsafe.Pointer(message)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -15003,16 +15003,16 @@ func ThreadErrorGetType() gi.GType {
 	return ret
 }
 
-type ThreadFuncStruct struct {
-	F_data unsafe.Pointer
+type ThreadFuncArg struct {
+	Data unsafe.Pointer
 }
 
-func GetPointer_myThreadFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibThreadFunc())
+func GetThreadFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibThreadFuncWrapper())
 }
 
-//export myGLibThreadFunc
-func myGLibThreadFunc(data C.gpointer) {
+//export giGLibThreadFunc
+func giGLibThreadFunc(data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -15728,17 +15728,17 @@ func TokenValueGetType() gi.GType {
 	return ret
 }
 
-type TranslateFuncStruct struct {
-	F_str  string
-	F_data unsafe.Pointer
+type TranslateFuncArgs struct {
+	Str  string
+	Data unsafe.Pointer
 }
 
-func GetPointer_myTranslateFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibTranslateFunc())
+func GetTranslateFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibTranslateFuncWrapper())
 }
 
-//export myGLibTranslateFunc
-func myGLibTranslateFunc(str *C.gchar, data C.gpointer) {
+//export giGLibTranslateFunc
+func giGLibTranslateFunc(str *C.gchar, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -15851,18 +15851,18 @@ func TraverseFlagsGetType() gi.GType {
 	return ret
 }
 
-type TraverseFuncStruct struct {
-	F_key   unsafe.Pointer
-	F_value unsafe.Pointer
-	F_data  unsafe.Pointer
+type TraverseFuncArgs struct {
+	Key   unsafe.Pointer
+	Value unsafe.Pointer
+	Data  unsafe.Pointer
 }
 
-func GetPointer_myTraverseFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibTraverseFunc())
+func GetTraverseFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibTraverseFuncWrapper())
 }
 
-//export myGLibTraverseFunc
-func myGLibTraverseFunc(key C.gpointer, value C.gpointer, data C.gpointer) {
+//export giGLibTraverseFunc
+func giGLibTraverseFunc(key C.gpointer, value C.gpointer, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -16337,22 +16337,22 @@ func UnicodeTypeGetType() gi.GType {
 	return ret
 }
 
-type UnixFDSourceFuncStruct struct {
-	F_fd        int32
-	F_condition IOConditionFlags
+type UnixFDSourceFuncArgs struct {
+	Fd        int32
+	Condition IOConditionFlags
 }
 
-func GetPointer_myUnixFDSourceFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibUnixFDSourceFunc())
+func GetUnixFDSourceFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibUnixFDSourceFuncWrapper())
 }
 
-//export myGLibUnixFDSourceFunc
-func myGLibUnixFDSourceFunc(fd C.gint32, condition C.GIOCondition, user_data C.gpointer) {
+//export giGLibUnixFDSourceFunc
+func giGLibUnixFDSourceFunc(fd C.gint32, condition C.GIOCondition, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &UnixFDSourceFuncStruct{
-			F_fd:        int32(fd),
-			F_condition: IOConditionFlags(condition),
+		args := &UnixFDSourceFuncArgs{
+			Fd:        int32(fd),
+			Condition: IOConditionFlags(condition),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -16624,7 +16624,7 @@ func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trus
 	arg_data := gi.NewPointerArgument(data.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_trusted := gi.NewBoolArgument(trusted)
-	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_type1, arg_data, arg_size, arg_trusted, arg_notify, arg_user_data}
 	var ret gi.Argument
@@ -18987,15 +18987,15 @@ func VariantTypeStringScan1(string string, limit string) (result bool, endptr st
 	return
 }
 
-type VoidFuncStruct struct {
+type VoidFuncArg struct {
 }
 
-func GetPointer_myVoidFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGLibVoidFunc())
+func GetVoidFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGLibVoidFuncWrapper())
 }
 
-//export myGLibVoidFunc
-func myGLibVoidFunc() {
+//export giGLibVoidFunc
+func giGLibVoidFunc() {
 	// TODO: not found user_data
 }
 
@@ -19609,7 +19609,7 @@ func Atexit() {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_func1 := gi.NewPointerArgument(GetPointer_myVoidFunc())
+	arg_func1 := gi.NewPointerArgument(GetVoidFuncWrapper())
 	args := []gi.Argument{arg_func1}
 	iv.Call(args, nil, nil)
 }
@@ -20117,7 +20117,7 @@ func AtomicRcBoxReleaseFull(mem_block unsafe.Pointer) {
 		return
 	}
 	arg_mem_block := gi.NewPointerArgument(mem_block)
-	arg_clear_func := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_clear_func := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_mem_block, arg_clear_func}
 	iv.Call(args, nil, nil)
 }
@@ -20757,9 +20757,9 @@ func ChildWatchAdd(priority int32, pid int32, fn func(v interface{})) (result ui
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_pid := gi.NewInt32Argument(pid)
-	arg_function := gi.NewPointerArgument(GetPointer_myChildWatchFunc())
+	arg_function := gi.NewPointerArgument(GetChildWatchFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_priority, arg_pid, arg_function, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -21120,7 +21120,7 @@ func DatalistForeach(datalist Data, fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_datalist := gi.NewPointerArgument(datalist.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myDataForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetDataForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_datalist, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -21262,7 +21262,7 @@ func DatasetForeach(dataset_location unsafe.Pointer, fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_dataset_location := gi.NewPointerArgument(dataset_location)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myDataForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetDataForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_dataset_location, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -23602,9 +23602,9 @@ func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, f
 	arg_channel := gi.NewPointerArgument(channel.P)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_condition := gi.NewIntArgument(int(condition))
-	arg_func1 := gi.NewPointerArgument(GetPointer_myIOFunc())
+	arg_func1 := gi.NewPointerArgument(GetIOFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_channel, arg_priority, arg_condition, arg_func1, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23891,9 +23891,9 @@ func LogSetHandler(log_domain string, log_levels LogLevelFlags, fn func(v interf
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_log_domain := gi.NewStringArgument(c_log_domain)
 	arg_log_levels := gi.NewIntArgument(int(log_levels))
-	arg_log_func := gi.NewPointerArgument(GetPointer_myLogFunc())
+	arg_log_func := gi.NewPointerArgument(GetLogFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_log_domain, arg_log_levels, arg_log_func, arg_fn, arg_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -23917,9 +23917,9 @@ func LogSetWriterFunc(fn func(v interface{})) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myLogWriterFunc())
+	arg_func1 := gi.NewPointerArgument(GetLogWriterFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_user_data_free := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_user_data_free := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_func1, arg_fn, arg_user_data_free}
 	iv.Call(args, nil, nil)
 }
@@ -25163,7 +25163,7 @@ func RcBoxReleaseFull(mem_block unsafe.Pointer) {
 		return
 	}
 	arg_mem_block := gi.NewPointerArgument(mem_block)
-	arg_clear_func := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_clear_func := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_mem_block, arg_clear_func}
 	iv.Call(args, nil, nil)
 }
@@ -26274,7 +26274,7 @@ func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, 
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewPointerArgument(GetPointer_mySpawnChildSetupFunc())
+	arg_child_setup := gi.NewPointerArgument(GetSpawnChildSetupFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -26324,7 +26324,7 @@ func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStr
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewPointerArgument(GetPointer_mySpawnChildSetupFunc())
+	arg_child_setup := gi.NewPointerArgument(GetSpawnChildSetupFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_stdin_fd := gi.NewInt32Argument(stdin_fd)
@@ -26377,7 +26377,7 @@ func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CS
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewPointerArgument(GetPointer_mySpawnChildSetupFunc())
+	arg_child_setup := gi.NewPointerArgument(GetSpawnChildSetupFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_standard_input := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -26560,7 +26560,7 @@ func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, f
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
-	arg_child_setup := gi.NewPointerArgument(GetPointer_mySpawnChildSetupFunc())
+	arg_child_setup := gi.NewPointerArgument(GetSpawnChildSetupFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_standard_output := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_standard_error := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -27629,7 +27629,7 @@ func TestAddDataFunc(testpath string, test_data unsafe.Pointer) {
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
 	arg_test_data := gi.NewPointerArgument(test_data)
-	arg_test_func := gi.NewPointerArgument(GetPointer_myTestDataFunc())
+	arg_test_func := gi.NewPointerArgument(GetTestDataFuncWrapper())
 	args := []gi.Argument{arg_testpath, arg_test_data, arg_test_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -27654,8 +27654,8 @@ func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer) {
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
 	arg_test_data := gi.NewPointerArgument(test_data)
-	arg_test_func := gi.NewPointerArgument(GetPointer_myTestDataFunc())
-	arg_data_free_func := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_test_func := gi.NewPointerArgument(GetTestDataFuncWrapper())
+	arg_data_free_func := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_testpath, arg_test_data, arg_test_func, arg_data_free_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -27675,7 +27675,7 @@ func TestAddFunc(testpath string) {
 	}
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
-	arg_test_func := gi.NewPointerArgument(GetPointer_myTestFunc())
+	arg_test_func := gi.NewPointerArgument(GetTestFuncWrapper())
 	args := []gi.Argument{arg_testpath, arg_test_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -27866,7 +27866,7 @@ func TestQueueDestroy(destroy_data unsafe.Pointer) {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_destroy_func := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_destroy_func := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	arg_destroy_data := gi.NewPointerArgument(destroy_data)
 	args := []gi.Argument{arg_destroy_func, arg_destroy_data}
 	iv.Call(args, nil, nil)
@@ -29503,9 +29503,9 @@ func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, fn func
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_fd := gi.NewInt32Argument(fd)
 	arg_condition := gi.NewIntArgument(int(condition))
-	arg_function := gi.NewPointerArgument(GetPointer_myUnixFDSourceFunc())
+	arg_function := gi.NewPointerArgument(GetUnixFDSourceFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_priority, arg_fd, arg_condition, arg_function, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -29609,9 +29609,9 @@ func UnixSignalAdd(priority int32, signum int32, fn func(v interface{})) (result
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_signum := gi.NewInt32Argument(signum)
-	arg_handler := gi.NewPointerArgument(GetPointer_mySourceFunc())
+	arg_handler := gi.NewPointerArgument(GetSourceFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_priority, arg_signum, arg_handler, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

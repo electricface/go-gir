@@ -26,9 +26,9 @@ package pangocairo
 /*
 #cgo pkg-config: pangocairo
 #include <pango/pangocairo.h>
-extern void myPangoCairoShapeRendererFunc(cairo_t* cr, PangoAttrShape* attr, gboolean do_path, gpointer data);
-static void* getPointer_myPangoCairoShapeRendererFunc() {
-return (void*)(myPangoCairoShapeRendererFunc);
+extern void giPangoCairoShapeRendererFunc(cairo_t* cr, PangoAttrShape* attr, gboolean do_path, gpointer data);
+static void* getPangoCairoShapeRendererFuncWrapper() {
+    return (void*)(giPangoCairoShapeRendererFunc);
 }
 */
 import "C"
@@ -214,19 +214,19 @@ func (v *FontMapIfc) SetResolution(dpi float64) {
 	iv.Call(args, nil, nil)
 }
 
-type ShapeRendererFuncStruct struct {
-	F_cr      cairo.Context
-	F_attr    pango.AttrShape
-	F_do_path bool
-	F_data    unsafe.Pointer
+type ShapeRendererFuncArgs struct {
+	Cr     cairo.Context
+	Attr   pango.AttrShape
+	DoPath bool
+	Data   unsafe.Pointer
 }
 
-func GetPointer_myShapeRendererFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myPangoCairoShapeRendererFunc())
+func GetShapeRendererFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getPangoCairoShapeRendererFuncWrapper())
 }
 
-//export myPangoCairoShapeRendererFunc
-func myPangoCairoShapeRendererFunc(cr *C.cairo_t, attr *C.PangoAttrShape, do_path C.gboolean, data C.gpointer) {
+//export giPangoCairoShapeRendererFunc
+func giPangoCairoShapeRendererFunc(cr *C.cairo_t, attr *C.PangoAttrShape, do_path C.gboolean, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -344,9 +344,9 @@ func ContextSetShapeRenderer(context pango.IContext, fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_context := gi.NewPointerArgument(tmp)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myShapeRendererFunc())
+	arg_func1 := gi.NewPointerArgument(GetShapeRendererFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_dnotify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_dnotify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_context, arg_func1, arg_fn, arg_dnotify}
 	iv.Call(args, nil, nil)
 }

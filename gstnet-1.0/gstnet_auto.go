@@ -26,9 +26,9 @@ package gstnet
 /*
 #cgo pkg-config: gstreamer-net-1.0
 #include <gst/net/net.h>
-extern void myGstNetPtpStatisticsCallback(guint8 domain, GstStructure* stats, gpointer user_data);
-static void* getPointer_myGstNetPtpStatisticsCallback() {
-return (void*)(myGstNetPtpStatisticsCallback);
+extern void giGstNetPtpStatisticsCallback(guint8 domain, GstStructure* stats, gpointer user_data);
+static void* getGstNetPtpStatisticsCallbackWrapper() {
+    return (void*)(giGstNetPtpStatisticsCallback);
 }
 */
 import "C"
@@ -474,22 +474,22 @@ func PtpClockPrivateGetType() gi.GType {
 	return ret
 }
 
-type PtpStatisticsCallbackStruct struct {
-	F_domain uint8
-	F_stats  gst.Structure
+type PtpStatisticsCallbackArgs struct {
+	Domain uint8
+	Stats  gst.Structure
 }
 
-func GetPointer_myPtpStatisticsCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstNetPtpStatisticsCallback())
+func GetPtpStatisticsCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstNetPtpStatisticsCallbackWrapper())
 }
 
-//export myGstNetPtpStatisticsCallback
-func myGstNetPtpStatisticsCallback(domain C.guint8, stats *C.GstStructure, user_data C.gpointer) {
+//export giGstNetPtpStatisticsCallback
+func giGstNetPtpStatisticsCallback(domain C.guint8, stats *C.GstStructure, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &PtpStatisticsCallbackStruct{
-			F_domain: uint8(domain),
-			F_stats:  gst.Structure{P: unsafe.Pointer(stats)},
+		args := &PtpStatisticsCallbackArgs{
+			Domain: uint8(domain),
+			Stats:  gst.Structure{P: unsafe.Pointer(stats)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -749,9 +749,9 @@ func PtpStatisticsCallbackAdd(fn func(v interface{})) (result uint64) {
 		return
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	arg_callback := gi.NewPointerArgument(GetPointer_myPtpStatisticsCallback())
+	arg_callback := gi.NewPointerArgument(GetPtpStatisticsCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy_data := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy_data := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_callback, arg_fn, arg_destroy_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

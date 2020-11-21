@@ -28,257 +28,257 @@ package gtk
 #include <gtk/gtk-a11y.h>
 #include <gtk/gtk.h>
 #include <gtk/gtkx.h>
-extern void myGtkAccelGroupActivate(GtkAccelGroup* accel_group, GObject* acceleratable, guint32 keyval, GdkModifierType modifier);
-static void* getPointer_myGtkAccelGroupActivate() {
-return (void*)(myGtkAccelGroupActivate);
+extern void giGtkAccelGroupActivate(GtkAccelGroup* accel_group, GObject* acceleratable, guint32 keyval, GdkModifierType modifier);
+static void* getGtkAccelGroupActivateWrapper() {
+    return (void*)(giGtkAccelGroupActivate);
 }
-extern void myGtkAccelGroupFindFunc(GtkAccelKey* key, GClosure* closure, gpointer data);
-static void* getPointer_myGtkAccelGroupFindFunc() {
-return (void*)(myGtkAccelGroupFindFunc);
+extern void giGtkAccelGroupFindFunc(GtkAccelKey* key, GClosure* closure, gpointer data);
+static void* getGtkAccelGroupFindFuncWrapper() {
+    return (void*)(giGtkAccelGroupFindFunc);
 }
-extern void myGtkAccelMapForeach(gpointer data, gchar* accel_path, guint32 accel_key, GdkModifierType accel_mods, gboolean changed);
-static void* getPointer_myGtkAccelMapForeach() {
-return (void*)(myGtkAccelMapForeach);
+extern void giGtkAccelMapForeach(gpointer data, gchar* accel_path, guint32 accel_key, GdkModifierType accel_mods, gboolean changed);
+static void* getGtkAccelMapForeachWrapper() {
+    return (void*)(giGtkAccelMapForeach);
 }
-extern void myGtkAssistantPageFunc(gint32 current_page, gpointer data);
-static void* getPointer_myGtkAssistantPageFunc() {
-return (void*)(myGtkAssistantPageFunc);
+extern void giGtkAssistantPageFunc(gint32 current_page, gpointer data);
+static void* getGtkAssistantPageFuncWrapper() {
+    return (void*)(giGtkAssistantPageFunc);
 }
-extern void myGtkBuilderConnectFunc(GtkBuilder* builder, GObject* object, gchar* signal_name, gchar* handler_name, GObject* connect_object, GConnectFlags flags, gpointer user_data);
-static void* getPointer_myGtkBuilderConnectFunc() {
-return (void*)(myGtkBuilderConnectFunc);
+extern void giGtkBuilderConnectFunc(GtkBuilder* builder, GObject* object, gchar* signal_name, gchar* handler_name, GObject* connect_object, GConnectFlags flags, gpointer user_data);
+static void* getGtkBuilderConnectFuncWrapper() {
+    return (void*)(giGtkBuilderConnectFunc);
 }
-extern void myGtkCalendarDetailFunc(GtkCalendar* calendar, guint32 year, guint32 month, guint32 day, gpointer user_data);
-static void* getPointer_myGtkCalendarDetailFunc() {
-return (void*)(myGtkCalendarDetailFunc);
+extern void giGtkCalendarDetailFunc(GtkCalendar* calendar, guint32 year, guint32 month, guint32 day, gpointer user_data);
+static void* getGtkCalendarDetailFuncWrapper() {
+    return (void*)(giGtkCalendarDetailFunc);
 }
-extern void myGtkCallback(GtkWidget* widget, gpointer data);
-static void* getPointer_myGtkCallback() {
-return (void*)(myGtkCallback);
+extern void giGtkCallback(GtkWidget* widget, gpointer data);
+static void* getGtkCallbackWrapper() {
+    return (void*)(giGtkCallback);
 }
-extern void myGtkCellAllocCallback(GtkCellRenderer* renderer, GdkRectangle* cell_area, GdkRectangle* cell_background, gpointer data);
-static void* getPointer_myGtkCellAllocCallback() {
-return (void*)(myGtkCellAllocCallback);
+extern void giGtkCellAllocCallback(GtkCellRenderer* renderer, GdkRectangle* cell_area, GdkRectangle* cell_background, gpointer data);
+static void* getGtkCellAllocCallbackWrapper() {
+    return (void*)(giGtkCellAllocCallback);
 }
-extern void myGtkCellCallback(GtkCellRenderer* renderer, gpointer data);
-static void* getPointer_myGtkCellCallback() {
-return (void*)(myGtkCellCallback);
+extern void giGtkCellCallback(GtkCellRenderer* renderer, gpointer data);
+static void* getGtkCellCallbackWrapper() {
+    return (void*)(giGtkCellCallback);
 }
-extern void myGtkCellLayoutDataFunc(GtkCellLayout* cell_layout, GtkCellRenderer* cell, GtkTreeModel* tree_model, GtkTreeIter* iter, gpointer data);
-static void* getPointer_myGtkCellLayoutDataFunc() {
-return (void*)(myGtkCellLayoutDataFunc);
+extern void giGtkCellLayoutDataFunc(GtkCellLayout* cell_layout, GtkCellRenderer* cell, GtkTreeModel* tree_model, GtkTreeIter* iter, gpointer data);
+static void* getGtkCellLayoutDataFuncWrapper() {
+    return (void*)(giGtkCellLayoutDataFunc);
 }
-extern void myGtkClipboardClearFunc(GtkClipboard* clipboard, gpointer user_data_or_owner);
-static void* getPointer_myGtkClipboardClearFunc() {
-return (void*)(myGtkClipboardClearFunc);
+extern void giGtkClipboardClearFunc(GtkClipboard* clipboard, gpointer user_data_or_owner);
+static void* getGtkClipboardClearFuncWrapper() {
+    return (void*)(giGtkClipboardClearFunc);
 }
-extern void myGtkClipboardGetFunc(GtkClipboard* clipboard, GtkSelectionData* selection_data, guint32 info, gpointer user_data_or_owner);
-static void* getPointer_myGtkClipboardGetFunc() {
-return (void*)(myGtkClipboardGetFunc);
+extern void giGtkClipboardGetFunc(GtkClipboard* clipboard, GtkSelectionData* selection_data, guint32 info, gpointer user_data_or_owner);
+static void* getGtkClipboardGetFuncWrapper() {
+    return (void*)(giGtkClipboardGetFunc);
 }
-extern void myGtkClipboardImageReceivedFunc(GtkClipboard* clipboard, GdkPixbuf* pixbuf, gpointer data);
-static void* getPointer_myGtkClipboardImageReceivedFunc() {
-return (void*)(myGtkClipboardImageReceivedFunc);
+extern void giGtkClipboardImageReceivedFunc(GtkClipboard* clipboard, GdkPixbuf* pixbuf, gpointer data);
+static void* getGtkClipboardImageReceivedFuncWrapper() {
+    return (void*)(giGtkClipboardImageReceivedFunc);
 }
-extern void myGtkClipboardReceivedFunc(GtkClipboard* clipboard, GtkSelectionData* selection_data, gpointer data);
-static void* getPointer_myGtkClipboardReceivedFunc() {
-return (void*)(myGtkClipboardReceivedFunc);
+extern void giGtkClipboardReceivedFunc(GtkClipboard* clipboard, GtkSelectionData* selection_data, gpointer data);
+static void* getGtkClipboardReceivedFuncWrapper() {
+    return (void*)(giGtkClipboardReceivedFunc);
 }
-extern void myGtkClipboardRichTextReceivedFunc(GtkClipboard* clipboard, GdkAtom* format, gchar* text, guint64 length, gpointer data);
-static void* getPointer_myGtkClipboardRichTextReceivedFunc() {
-return (void*)(myGtkClipboardRichTextReceivedFunc);
+extern void giGtkClipboardRichTextReceivedFunc(GtkClipboard* clipboard, GdkAtom* format, gchar* text, guint64 length, gpointer data);
+static void* getGtkClipboardRichTextReceivedFuncWrapper() {
+    return (void*)(giGtkClipboardRichTextReceivedFunc);
 }
-extern void myGtkClipboardTargetsReceivedFunc(GtkClipboard* clipboard, gpointer atoms, gint32 n_atoms, gpointer data);
-static void* getPointer_myGtkClipboardTargetsReceivedFunc() {
-return (void*)(myGtkClipboardTargetsReceivedFunc);
+extern void giGtkClipboardTargetsReceivedFunc(GtkClipboard* clipboard, gpointer atoms, gint32 n_atoms, gpointer data);
+static void* getGtkClipboardTargetsReceivedFuncWrapper() {
+    return (void*)(giGtkClipboardTargetsReceivedFunc);
 }
-extern void myGtkClipboardTextReceivedFunc(GtkClipboard* clipboard, gchar* text, gpointer data);
-static void* getPointer_myGtkClipboardTextReceivedFunc() {
-return (void*)(myGtkClipboardTextReceivedFunc);
+extern void giGtkClipboardTextReceivedFunc(GtkClipboard* clipboard, gchar* text, gpointer data);
+static void* getGtkClipboardTextReceivedFuncWrapper() {
+    return (void*)(giGtkClipboardTextReceivedFunc);
 }
-extern void myGtkClipboardURIReceivedFunc(GtkClipboard* clipboard, gpointer uris, gpointer data);
-static void* getPointer_myGtkClipboardURIReceivedFunc() {
-return (void*)(myGtkClipboardURIReceivedFunc);
+extern void giGtkClipboardURIReceivedFunc(GtkClipboard* clipboard, gpointer uris, gpointer data);
+static void* getGtkClipboardURIReceivedFuncWrapper() {
+    return (void*)(giGtkClipboardURIReceivedFunc);
 }
-extern void myGtkColorSelectionChangePaletteFunc(gpointer colors, gint32 n_colors);
-static void* getPointer_myGtkColorSelectionChangePaletteFunc() {
-return (void*)(myGtkColorSelectionChangePaletteFunc);
+extern void giGtkColorSelectionChangePaletteFunc(gpointer colors, gint32 n_colors);
+static void* getGtkColorSelectionChangePaletteFuncWrapper() {
+    return (void*)(giGtkColorSelectionChangePaletteFunc);
 }
-extern void myGtkColorSelectionChangePaletteWithScreenFunc(GdkScreen* screen, gpointer colors, gint32 n_colors);
-static void* getPointer_myGtkColorSelectionChangePaletteWithScreenFunc() {
-return (void*)(myGtkColorSelectionChangePaletteWithScreenFunc);
+extern void giGtkColorSelectionChangePaletteWithScreenFunc(GdkScreen* screen, gpointer colors, gint32 n_colors);
+static void* getGtkColorSelectionChangePaletteWithScreenFuncWrapper() {
+    return (void*)(giGtkColorSelectionChangePaletteWithScreenFunc);
 }
-extern void myGtkEntryCompletionMatchFunc(GtkEntryCompletion* completion, gchar* key, GtkTreeIter* iter, gpointer user_data);
-static void* getPointer_myGtkEntryCompletionMatchFunc() {
-return (void*)(myGtkEntryCompletionMatchFunc);
+extern void giGtkEntryCompletionMatchFunc(GtkEntryCompletion* completion, gchar* key, GtkTreeIter* iter, gpointer user_data);
+static void* getGtkEntryCompletionMatchFuncWrapper() {
+    return (void*)(giGtkEntryCompletionMatchFunc);
 }
-extern void myGtkFileFilterFunc(GtkFileFilterInfo* filter_info, gpointer data);
-static void* getPointer_myGtkFileFilterFunc() {
-return (void*)(myGtkFileFilterFunc);
+extern void giGtkFileFilterFunc(GtkFileFilterInfo* filter_info, gpointer data);
+static void* getGtkFileFilterFuncWrapper() {
+    return (void*)(giGtkFileFilterFunc);
 }
-extern void myGtkFlowBoxCreateWidgetFunc(GObject* item, gpointer user_data);
-static void* getPointer_myGtkFlowBoxCreateWidgetFunc() {
-return (void*)(myGtkFlowBoxCreateWidgetFunc);
+extern void giGtkFlowBoxCreateWidgetFunc(GObject* item, gpointer user_data);
+static void* getGtkFlowBoxCreateWidgetFuncWrapper() {
+    return (void*)(giGtkFlowBoxCreateWidgetFunc);
 }
-extern void myGtkFlowBoxFilterFunc(GtkFlowBoxChild* child, gpointer user_data);
-static void* getPointer_myGtkFlowBoxFilterFunc() {
-return (void*)(myGtkFlowBoxFilterFunc);
+extern void giGtkFlowBoxFilterFunc(GtkFlowBoxChild* child, gpointer user_data);
+static void* getGtkFlowBoxFilterFuncWrapper() {
+    return (void*)(giGtkFlowBoxFilterFunc);
 }
-extern void myGtkFlowBoxForeachFunc(GtkFlowBox* box, GtkFlowBoxChild* child, gpointer user_data);
-static void* getPointer_myGtkFlowBoxForeachFunc() {
-return (void*)(myGtkFlowBoxForeachFunc);
+extern void giGtkFlowBoxForeachFunc(GtkFlowBox* box, GtkFlowBoxChild* child, gpointer user_data);
+static void* getGtkFlowBoxForeachFuncWrapper() {
+    return (void*)(giGtkFlowBoxForeachFunc);
 }
-extern void myGtkFlowBoxSortFunc(GtkFlowBoxChild* child1, GtkFlowBoxChild* child2, gpointer user_data);
-static void* getPointer_myGtkFlowBoxSortFunc() {
-return (void*)(myGtkFlowBoxSortFunc);
+extern void giGtkFlowBoxSortFunc(GtkFlowBoxChild* child1, GtkFlowBoxChild* child2, gpointer user_data);
+static void* getGtkFlowBoxSortFuncWrapper() {
+    return (void*)(giGtkFlowBoxSortFunc);
 }
-extern void myGtkFontFilterFunc(PangoFontFamily* family, PangoFontFace* face, gpointer data);
-static void* getPointer_myGtkFontFilterFunc() {
-return (void*)(myGtkFontFilterFunc);
+extern void giGtkFontFilterFunc(PangoFontFamily* family, PangoFontFace* face, gpointer data);
+static void* getGtkFontFilterFuncWrapper() {
+    return (void*)(giGtkFontFilterFunc);
 }
-extern void myGtkIconViewForeachFunc(GtkIconView* icon_view, GtkTreePath* path, gpointer data);
-static void* getPointer_myGtkIconViewForeachFunc() {
-return (void*)(myGtkIconViewForeachFunc);
+extern void giGtkIconViewForeachFunc(GtkIconView* icon_view, GtkTreePath* path, gpointer data);
+static void* getGtkIconViewForeachFuncWrapper() {
+    return (void*)(giGtkIconViewForeachFunc);
 }
-extern void myGtkKeySnoopFunc(GtkWidget* grab_widget, GdkEventKey* event, gpointer func_data);
-static void* getPointer_myGtkKeySnoopFunc() {
-return (void*)(myGtkKeySnoopFunc);
+extern void giGtkKeySnoopFunc(GtkWidget* grab_widget, GdkEventKey* event, gpointer func_data);
+static void* getGtkKeySnoopFuncWrapper() {
+    return (void*)(giGtkKeySnoopFunc);
 }
-extern void myGtkListBoxCreateWidgetFunc(GObject* item, gpointer user_data);
-static void* getPointer_myGtkListBoxCreateWidgetFunc() {
-return (void*)(myGtkListBoxCreateWidgetFunc);
+extern void giGtkListBoxCreateWidgetFunc(GObject* item, gpointer user_data);
+static void* getGtkListBoxCreateWidgetFuncWrapper() {
+    return (void*)(giGtkListBoxCreateWidgetFunc);
 }
-extern void myGtkListBoxFilterFunc(GtkListBoxRow* row, gpointer user_data);
-static void* getPointer_myGtkListBoxFilterFunc() {
-return (void*)(myGtkListBoxFilterFunc);
+extern void giGtkListBoxFilterFunc(GtkListBoxRow* row, gpointer user_data);
+static void* getGtkListBoxFilterFuncWrapper() {
+    return (void*)(giGtkListBoxFilterFunc);
 }
-extern void myGtkListBoxForeachFunc(GtkListBox* box, GtkListBoxRow* row, gpointer user_data);
-static void* getPointer_myGtkListBoxForeachFunc() {
-return (void*)(myGtkListBoxForeachFunc);
+extern void giGtkListBoxForeachFunc(GtkListBox* box, GtkListBoxRow* row, gpointer user_data);
+static void* getGtkListBoxForeachFuncWrapper() {
+    return (void*)(giGtkListBoxForeachFunc);
 }
-extern void myGtkListBoxSortFunc(GtkListBoxRow* row1, GtkListBoxRow* row2, gpointer user_data);
-static void* getPointer_myGtkListBoxSortFunc() {
-return (void*)(myGtkListBoxSortFunc);
+extern void giGtkListBoxSortFunc(GtkListBoxRow* row1, GtkListBoxRow* row2, gpointer user_data);
+static void* getGtkListBoxSortFuncWrapper() {
+    return (void*)(giGtkListBoxSortFunc);
 }
-extern void myGtkListBoxUpdateHeaderFunc(GtkListBoxRow* row, GtkListBoxRow* before, gpointer user_data);
-static void* getPointer_myGtkListBoxUpdateHeaderFunc() {
-return (void*)(myGtkListBoxUpdateHeaderFunc);
+extern void giGtkListBoxUpdateHeaderFunc(GtkListBoxRow* row, GtkListBoxRow* before, gpointer user_data);
+static void* getGtkListBoxUpdateHeaderFuncWrapper() {
+    return (void*)(giGtkListBoxUpdateHeaderFunc);
 }
-extern void myGtkMenuDetachFunc(GtkWidget* attach_widget, GtkMenu* menu);
-static void* getPointer_myGtkMenuDetachFunc() {
-return (void*)(myGtkMenuDetachFunc);
+extern void giGtkMenuDetachFunc(GtkWidget* attach_widget, GtkMenu* menu);
+static void* getGtkMenuDetachFuncWrapper() {
+    return (void*)(giGtkMenuDetachFunc);
 }
-extern void myGtkMenuPositionFunc(GtkMenu* menu, gpointer x, gpointer y, gpointer push_in, gpointer user_data);
-static void* getPointer_myGtkMenuPositionFunc() {
-return (void*)(myGtkMenuPositionFunc);
+extern void giGtkMenuPositionFunc(GtkMenu* menu, gpointer x, gpointer y, gpointer push_in, gpointer user_data);
+static void* getGtkMenuPositionFuncWrapper() {
+    return (void*)(giGtkMenuPositionFunc);
 }
-extern void myGtkModuleDisplayInitFunc(GdkDisplay* display);
-static void* getPointer_myGtkModuleDisplayInitFunc() {
-return (void*)(myGtkModuleDisplayInitFunc);
+extern void giGtkModuleDisplayInitFunc(GdkDisplay* display);
+static void* getGtkModuleDisplayInitFuncWrapper() {
+    return (void*)(giGtkModuleDisplayInitFunc);
 }
-extern void myGtkModuleInitFunc(gint32* argc, gpointer argv);
-static void* getPointer_myGtkModuleInitFunc() {
-return (void*)(myGtkModuleInitFunc);
+extern void giGtkModuleInitFunc(gint32* argc, gpointer argv);
+static void* getGtkModuleInitFuncWrapper() {
+    return (void*)(giGtkModuleInitFunc);
 }
-extern void myGtkPageSetupDoneFunc(GtkPageSetup* page_setup, gpointer data);
-static void* getPointer_myGtkPageSetupDoneFunc() {
-return (void*)(myGtkPageSetupDoneFunc);
+extern void giGtkPageSetupDoneFunc(GtkPageSetup* page_setup, gpointer data);
+static void* getGtkPageSetupDoneFuncWrapper() {
+    return (void*)(giGtkPageSetupDoneFunc);
 }
-extern void myGtkPrintSettingsFunc(gchar* key, gchar* value, gpointer user_data);
-static void* getPointer_myGtkPrintSettingsFunc() {
-return (void*)(myGtkPrintSettingsFunc);
+extern void giGtkPrintSettingsFunc(gchar* key, gchar* value, gpointer user_data);
+static void* getGtkPrintSettingsFuncWrapper() {
+    return (void*)(giGtkPrintSettingsFunc);
 }
-extern void myGtkRcPropertyParser(GParamSpec* pspec, GString* rc_string, GValue* property_value);
-static void* getPointer_myGtkRcPropertyParser() {
-return (void*)(myGtkRcPropertyParser);
+extern void giGtkRcPropertyParser(GParamSpec* pspec, GString* rc_string, GValue* property_value);
+static void* getGtkRcPropertyParserWrapper() {
+    return (void*)(giGtkRcPropertyParser);
 }
-extern void myGtkRecentFilterFunc(GtkRecentFilterInfo* filter_info, gpointer user_data);
-static void* getPointer_myGtkRecentFilterFunc() {
-return (void*)(myGtkRecentFilterFunc);
+extern void giGtkRecentFilterFunc(GtkRecentFilterInfo* filter_info, gpointer user_data);
+static void* getGtkRecentFilterFuncWrapper() {
+    return (void*)(giGtkRecentFilterFunc);
 }
-extern void myGtkRecentSortFunc(GtkRecentInfo* a, GtkRecentInfo* b, gpointer user_data);
-static void* getPointer_myGtkRecentSortFunc() {
-return (void*)(myGtkRecentSortFunc);
+extern void giGtkRecentSortFunc(GtkRecentInfo* a, GtkRecentInfo* b, gpointer user_data);
+static void* getGtkRecentSortFuncWrapper() {
+    return (void*)(giGtkRecentSortFunc);
 }
-extern void myGtkStylePropertyParser(gchar* string, GValue* value);
-static void* getPointer_myGtkStylePropertyParser() {
-return (void*)(myGtkStylePropertyParser);
+extern void giGtkStylePropertyParser(gchar* string, GValue* value);
+static void* getGtkStylePropertyParserWrapper() {
+    return (void*)(giGtkStylePropertyParser);
 }
-extern void myGtkTextBufferDeserializeFunc(GtkTextBuffer* register_buffer, GtkTextBuffer* content_buffer, GtkTextIter* iter, gpointer data, guint64 length, gboolean create_tags, gpointer user_data);
-static void* getPointer_myGtkTextBufferDeserializeFunc() {
-return (void*)(myGtkTextBufferDeserializeFunc);
+extern void giGtkTextBufferDeserializeFunc(GtkTextBuffer* register_buffer, GtkTextBuffer* content_buffer, GtkTextIter* iter, gpointer data, guint64 length, gboolean create_tags, gpointer user_data);
+static void* getGtkTextBufferDeserializeFuncWrapper() {
+    return (void*)(giGtkTextBufferDeserializeFunc);
 }
-extern void myGtkTextBufferSerializeFunc(GtkTextBuffer* register_buffer, GtkTextBuffer* content_buffer, GtkTextIter* start, GtkTextIter* end, guint64* length, gpointer user_data);
-static void* getPointer_myGtkTextBufferSerializeFunc() {
-return (void*)(myGtkTextBufferSerializeFunc);
+extern void giGtkTextBufferSerializeFunc(GtkTextBuffer* register_buffer, GtkTextBuffer* content_buffer, GtkTextIter* start, GtkTextIter* end, guint64* length, gpointer user_data);
+static void* getGtkTextBufferSerializeFuncWrapper() {
+    return (void*)(giGtkTextBufferSerializeFunc);
 }
-extern void myGtkTextCharPredicate(gunichar ch, gpointer user_data);
-static void* getPointer_myGtkTextCharPredicate() {
-return (void*)(myGtkTextCharPredicate);
+extern void giGtkTextCharPredicate(gunichar ch, gpointer user_data);
+static void* getGtkTextCharPredicateWrapper() {
+    return (void*)(giGtkTextCharPredicate);
 }
-extern void myGtkTextTagTableForeach(GtkTextTag* tag, gpointer data);
-static void* getPointer_myGtkTextTagTableForeach() {
-return (void*)(myGtkTextTagTableForeach);
+extern void giGtkTextTagTableForeach(GtkTextTag* tag, gpointer data);
+static void* getGtkTextTagTableForeachWrapper() {
+    return (void*)(giGtkTextTagTableForeach);
 }
-extern void myGtkTickCallback(GtkWidget* widget, GdkFrameClock* frame_clock, gpointer user_data);
-static void* getPointer_myGtkTickCallback() {
-return (void*)(myGtkTickCallback);
+extern void giGtkTickCallback(GtkWidget* widget, GdkFrameClock* frame_clock, gpointer user_data);
+static void* getGtkTickCallbackWrapper() {
+    return (void*)(giGtkTickCallback);
 }
-extern void myGtkTranslateFunc(gchar* path, gpointer func_data);
-static void* getPointer_myGtkTranslateFunc() {
-return (void*)(myGtkTranslateFunc);
+extern void giGtkTranslateFunc(gchar* path, gpointer func_data);
+static void* getGtkTranslateFuncWrapper() {
+    return (void*)(giGtkTranslateFunc);
 }
-extern void myGtkTreeCellDataFunc(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell, GtkTreeModel* tree_model, GtkTreeIter* iter, gpointer data);
-static void* getPointer_myGtkTreeCellDataFunc() {
-return (void*)(myGtkTreeCellDataFunc);
+extern void giGtkTreeCellDataFunc(GtkTreeViewColumn* tree_column, GtkCellRenderer* cell, GtkTreeModel* tree_model, GtkTreeIter* iter, gpointer data);
+static void* getGtkTreeCellDataFuncWrapper() {
+    return (void*)(giGtkTreeCellDataFunc);
 }
-extern void myGtkTreeDestroyCountFunc(GtkTreeView* tree_view, GtkTreePath* path, gint32 children, gpointer user_data);
-static void* getPointer_myGtkTreeDestroyCountFunc() {
-return (void*)(myGtkTreeDestroyCountFunc);
+extern void giGtkTreeDestroyCountFunc(GtkTreeView* tree_view, GtkTreePath* path, gint32 children, gpointer user_data);
+static void* getGtkTreeDestroyCountFuncWrapper() {
+    return (void*)(giGtkTreeDestroyCountFunc);
 }
-extern void myGtkTreeIterCompareFunc(GtkTreeModel* model, GtkTreeIter* a, GtkTreeIter* b, gpointer user_data);
-static void* getPointer_myGtkTreeIterCompareFunc() {
-return (void*)(myGtkTreeIterCompareFunc);
+extern void giGtkTreeIterCompareFunc(GtkTreeModel* model, GtkTreeIter* a, GtkTreeIter* b, gpointer user_data);
+static void* getGtkTreeIterCompareFuncWrapper() {
+    return (void*)(giGtkTreeIterCompareFunc);
 }
-extern void myGtkTreeModelFilterModifyFunc(GtkTreeModel* model, GtkTreeIter* iter, gpointer value, gint32 column, gpointer data);
-static void* getPointer_myGtkTreeModelFilterModifyFunc() {
-return (void*)(myGtkTreeModelFilterModifyFunc);
+extern void giGtkTreeModelFilterModifyFunc(GtkTreeModel* model, GtkTreeIter* iter, gpointer value, gint32 column, gpointer data);
+static void* getGtkTreeModelFilterModifyFuncWrapper() {
+    return (void*)(giGtkTreeModelFilterModifyFunc);
 }
-extern void myGtkTreeModelFilterVisibleFunc(GtkTreeModel* model, GtkTreeIter* iter, gpointer data);
-static void* getPointer_myGtkTreeModelFilterVisibleFunc() {
-return (void*)(myGtkTreeModelFilterVisibleFunc);
+extern void giGtkTreeModelFilterVisibleFunc(GtkTreeModel* model, GtkTreeIter* iter, gpointer data);
+static void* getGtkTreeModelFilterVisibleFuncWrapper() {
+    return (void*)(giGtkTreeModelFilterVisibleFunc);
 }
-extern void myGtkTreeModelForeachFunc(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, gpointer data);
-static void* getPointer_myGtkTreeModelForeachFunc() {
-return (void*)(myGtkTreeModelForeachFunc);
+extern void giGtkTreeModelForeachFunc(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, gpointer data);
+static void* getGtkTreeModelForeachFuncWrapper() {
+    return (void*)(giGtkTreeModelForeachFunc);
 }
-extern void myGtkTreeSelectionForeachFunc(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, gpointer data);
-static void* getPointer_myGtkTreeSelectionForeachFunc() {
-return (void*)(myGtkTreeSelectionForeachFunc);
+extern void giGtkTreeSelectionForeachFunc(GtkTreeModel* model, GtkTreePath* path, GtkTreeIter* iter, gpointer data);
+static void* getGtkTreeSelectionForeachFuncWrapper() {
+    return (void*)(giGtkTreeSelectionForeachFunc);
 }
-extern void myGtkTreeSelectionFunc(GtkTreeSelection* selection, GtkTreeModel* model, GtkTreePath* path, gboolean path_currently_selected, gpointer data);
-static void* getPointer_myGtkTreeSelectionFunc() {
-return (void*)(myGtkTreeSelectionFunc);
+extern void giGtkTreeSelectionFunc(GtkTreeSelection* selection, GtkTreeModel* model, GtkTreePath* path, gboolean path_currently_selected, gpointer data);
+static void* getGtkTreeSelectionFuncWrapper() {
+    return (void*)(giGtkTreeSelectionFunc);
 }
-extern void myGtkTreeViewColumnDropFunc(GtkTreeView* tree_view, GtkTreeViewColumn* column, GtkTreeViewColumn* prev_column, GtkTreeViewColumn* next_column, gpointer data);
-static void* getPointer_myGtkTreeViewColumnDropFunc() {
-return (void*)(myGtkTreeViewColumnDropFunc);
+extern void giGtkTreeViewColumnDropFunc(GtkTreeView* tree_view, GtkTreeViewColumn* column, GtkTreeViewColumn* prev_column, GtkTreeViewColumn* next_column, gpointer data);
+static void* getGtkTreeViewColumnDropFuncWrapper() {
+    return (void*)(giGtkTreeViewColumnDropFunc);
 }
-extern void myGtkTreeViewMappingFunc(GtkTreeView* tree_view, GtkTreePath* path, gpointer user_data);
-static void* getPointer_myGtkTreeViewMappingFunc() {
-return (void*)(myGtkTreeViewMappingFunc);
+extern void giGtkTreeViewMappingFunc(GtkTreeView* tree_view, GtkTreePath* path, gpointer user_data);
+static void* getGtkTreeViewMappingFuncWrapper() {
+    return (void*)(giGtkTreeViewMappingFunc);
 }
-extern void myGtkTreeViewRowSeparatorFunc(GtkTreeModel* model, GtkTreeIter* iter, gpointer data);
-static void* getPointer_myGtkTreeViewRowSeparatorFunc() {
-return (void*)(myGtkTreeViewRowSeparatorFunc);
+extern void giGtkTreeViewRowSeparatorFunc(GtkTreeModel* model, GtkTreeIter* iter, gpointer data);
+static void* getGtkTreeViewRowSeparatorFuncWrapper() {
+    return (void*)(giGtkTreeViewRowSeparatorFunc);
 }
-extern void myGtkTreeViewSearchEqualFunc(GtkTreeModel* model, gint32 column, gchar* key, GtkTreeIter* iter, gpointer search_data);
-static void* getPointer_myGtkTreeViewSearchEqualFunc() {
-return (void*)(myGtkTreeViewSearchEqualFunc);
+extern void giGtkTreeViewSearchEqualFunc(GtkTreeModel* model, gint32 column, gchar* key, GtkTreeIter* iter, gpointer search_data);
+static void* getGtkTreeViewSearchEqualFuncWrapper() {
+    return (void*)(giGtkTreeViewSearchEqualFunc);
 }
-extern void myGtkTreeViewSearchPositionFunc(GtkTreeView* tree_view, GtkWidget* search_dialog, gpointer user_data);
-static void* getPointer_myGtkTreeViewSearchPositionFunc() {
-return (void*)(myGtkTreeViewSearchPositionFunc);
+extern void giGtkTreeViewSearchPositionFunc(GtkTreeView* tree_view, GtkWidget* search_dialog, gpointer user_data);
+static void* getGtkTreeViewSearchPositionFuncWrapper() {
+    return (void*)(giGtkTreeViewSearchPositionFunc);
 }
 */
 import "C"
@@ -1109,7 +1109,7 @@ func (v AccelGroup) Find(fn func(v interface{})) (result AccelKey) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_find_func := gi.NewPointerArgument(GetPointer_myAccelGroupFindFunc())
+	arg_find_func := gi.NewPointerArgument(GetAccelGroupFindFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_find_func, arg_fn}
 	var ret gi.Argument
@@ -1212,19 +1212,19 @@ func (v AccelGroup) Unlock() {
 	iv.Call(args, nil, nil)
 }
 
-type AccelGroupActivateStruct struct {
-	F_accel_group   AccelGroup
-	F_acceleratable g.Object
-	F_keyval        uint32
-	F_modifier      gdk.ModifierTypeFlags
+type AccelGroupActivateArgs struct {
+	AccelGroup    AccelGroup
+	Acceleratable g.Object
+	Keyval        uint32
+	Modifier      gdk.ModifierTypeFlags
 }
 
-func GetPointer_myAccelGroupActivate() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkAccelGroupActivate())
+func GetAccelGroupActivateWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkAccelGroupActivateWrapper())
 }
 
-//export myGtkAccelGroupActivate
-func myGtkAccelGroupActivate(accel_group *C.GtkAccelGroup, acceleratable *C.GObject, keyval C.guint32, modifier C.GdkModifierType) {
+//export giGtkAccelGroupActivate
+func giGtkAccelGroupActivate(accel_group *C.GtkAccelGroup, acceleratable *C.GObject, keyval C.guint32, modifier C.GdkModifierType) {
 	// TODO: not found user_data
 }
 
@@ -1242,18 +1242,18 @@ func AccelGroupEntryGetType() gi.GType {
 	return ret
 }
 
-type AccelGroupFindFuncStruct struct {
-	F_key     AccelKey
-	F_closure g.Closure
-	F_data    unsafe.Pointer
+type AccelGroupFindFuncArgs struct {
+	Key     AccelKey
+	Closure g.Closure
+	Data    unsafe.Pointer
 }
 
-func GetPointer_myAccelGroupFindFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkAccelGroupFindFunc())
+func GetAccelGroupFindFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkAccelGroupFindFuncWrapper())
 }
 
-//export myGtkAccelGroupFindFunc
-func myGtkAccelGroupFindFunc(key *C.GtkAccelKey, closure *C.GClosure, data C.gpointer) {
+//export giGtkAccelGroupFindFunc
+func giGtkAccelGroupFindFunc(key *C.GtkAccelKey, closure *C.GClosure, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -1559,7 +1559,7 @@ func AccelMapForeach1(data unsafe.Pointer) {
 		return
 	}
 	arg_data := gi.NewPointerArgument(data)
-	arg_foreach_func := gi.NewPointerArgument(GetPointer_myAccelMapForeach())
+	arg_foreach_func := gi.NewPointerArgument(GetAccelMapForeachWrapper())
 	args := []gi.Argument{arg_data, arg_foreach_func}
 	iv.Call(args, nil, nil)
 }
@@ -1577,7 +1577,7 @@ func AccelMapForeachUnfiltered1(data unsafe.Pointer) {
 		return
 	}
 	arg_data := gi.NewPointerArgument(data)
-	arg_foreach_func := gi.NewPointerArgument(GetPointer_myAccelMapForeach())
+	arg_foreach_func := gi.NewPointerArgument(GetAccelMapForeachWrapper())
 	args := []gi.Argument{arg_data, arg_foreach_func}
 	iv.Call(args, nil, nil)
 }
@@ -1738,20 +1738,20 @@ func AccelMapUnlockPath1(accel_path string) {
 
 // ignore GType struct AccelMapClass
 
-type AccelMapForeachStruct struct {
-	F_data       unsafe.Pointer
-	F_accel_path string
-	F_accel_key  uint32
-	F_accel_mods gdk.ModifierTypeFlags
-	F_changed    bool
+type AccelMapForeachArgs struct {
+	Data      unsafe.Pointer
+	AccelPath string
+	AccelKey  uint32
+	AccelMods gdk.ModifierTypeFlags
+	Changed   bool
 }
 
-func GetPointer_myAccelMapForeach() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkAccelMapForeach())
+func GetAccelMapForeachWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkAccelMapForeachWrapper())
 }
 
-//export myGtkAccelMapForeach
-func myGtkAccelMapForeach(data C.gpointer, accel_path *C.gchar, accel_key C.guint32, accel_mods C.GdkModifierType, changed C.gboolean) {
+//export giGtkAccelMapForeach
+func giGtkAccelMapForeach(data C.gpointer, accel_path *C.gchar, accel_key C.guint32, accel_mods C.GdkModifierType, changed C.gboolean) {
 	// TODO: not found user_data
 }
 
@@ -3113,9 +3113,9 @@ func (v ActionGroup) SetTranslateFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTranslateFunc())
+	arg_func1 := gi.NewPointerArgument(GetTranslateFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -5959,9 +5959,9 @@ func (v Assistant) SetForwardPageFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_page_func := gi.NewPointerArgument(GetPointer_myAssistantPageFunc())
+	arg_page_func := gi.NewPointerArgument(GetAssistantPageFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_page_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -6133,17 +6133,17 @@ func (v Assistant) UpdateButtonsState() {
 
 // ignore GType struct AssistantClass
 
-type AssistantPageFuncStruct struct {
-	F_current_page int32
-	F_data         unsafe.Pointer
+type AssistantPageFuncArgs struct {
+	CurrentPage int32
+	Data        unsafe.Pointer
 }
 
-func GetPointer_myAssistantPageFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkAssistantPageFunc())
+func GetAssistantPageFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkAssistantPageFuncWrapper())
 }
 
-//export myGtkAssistantPageFunc
-func myGtkAssistantPageFunc(current_page C.gint32, data C.gpointer) {
+//export giGtkAssistantPageFunc
+func giGtkAssistantPageFunc(current_page C.gint32, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -7342,7 +7342,7 @@ func (v Builder) AddCallbackSymbol(callback_name string) {
 	c_callback_name := gi.CString(callback_name)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback_name := gi.NewStringArgument(c_callback_name)
-	arg_callback_symbol := gi.NewPointerArgument(g.GetPointer_myCallback())
+	arg_callback_symbol := gi.NewPointerArgument(g.GetCallbackWrapper())
 	args := []gi.Argument{arg_v, arg_callback_name, arg_callback_symbol}
 	iv.Call(args, nil, nil)
 	gi.Free(c_callback_name)
@@ -7543,7 +7543,7 @@ func (v Builder) ConnectSignalsFull(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myBuilderConnectFunc())
+	arg_func1 := gi.NewPointerArgument(GetBuilderConnectFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -7819,30 +7819,30 @@ func (v Builder) ValueFromStringType(type1 gi.GType, string string, value g.Valu
 
 // ignore GType struct BuilderClass
 
-type BuilderConnectFuncStruct struct {
-	F_builder        Builder
-	F_object         g.Object
-	F_signal_name    string
-	F_handler_name   string
-	F_connect_object g.Object
-	F_flags          g.ConnectFlags
+type BuilderConnectFuncArgs struct {
+	Builder       Builder
+	Object        g.Object
+	SignalName    string
+	HandlerName   string
+	ConnectObject g.Object
+	Flags         g.ConnectFlags
 }
 
-func GetPointer_myBuilderConnectFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkBuilderConnectFunc())
+func GetBuilderConnectFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkBuilderConnectFuncWrapper())
 }
 
-//export myGtkBuilderConnectFunc
-func myGtkBuilderConnectFunc(builder *C.GtkBuilder, object *C.GObject, signal_name *C.gchar, handler_name *C.gchar, connect_object *C.GObject, flags C.GConnectFlags, user_data C.gpointer) {
+//export giGtkBuilderConnectFunc
+func giGtkBuilderConnectFunc(builder *C.GtkBuilder, object *C.GObject, signal_name *C.gchar, handler_name *C.gchar, connect_object *C.GObject, flags C.GConnectFlags, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &BuilderConnectFuncStruct{
-			F_builder:        WrapBuilder(unsafe.Pointer(builder)),
-			F_object:         g.WrapObject(unsafe.Pointer(object)),
-			F_signal_name:    gi.GoString(unsafe.Pointer(signal_name)),
-			F_handler_name:   gi.GoString(unsafe.Pointer(handler_name)),
-			F_connect_object: g.WrapObject(unsafe.Pointer(connect_object)),
-			F_flags:          g.ConnectFlags(flags),
+		args := &BuilderConnectFuncArgs{
+			Builder:       WrapBuilder(unsafe.Pointer(builder)),
+			Object:        g.WrapObject(unsafe.Pointer(object)),
+			SignalName:    gi.GoString(unsafe.Pointer(signal_name)),
+			HandlerName:   gi.GoString(unsafe.Pointer(handler_name)),
+			ConnectObject: g.WrapObject(unsafe.Pointer(connect_object)),
+			Flags:         g.ConnectFlags(flags),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -8918,9 +8918,9 @@ func (v Calendar) SetDetailFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCalendarDetailFunc())
+	arg_func1 := gi.NewPointerArgument(GetCalendarDetailFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -8991,26 +8991,26 @@ func (v Calendar) UnmarkDay(day uint32) {
 
 // ignore GType struct CalendarClass
 
-type CalendarDetailFuncStruct struct {
-	F_calendar Calendar
-	F_year     uint32
-	F_month    uint32
-	F_day      uint32
+type CalendarDetailFuncArgs struct {
+	Calendar Calendar
+	Year     uint32
+	Month    uint32
+	Day      uint32
 }
 
-func GetPointer_myCalendarDetailFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkCalendarDetailFunc())
+func GetCalendarDetailFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkCalendarDetailFuncWrapper())
 }
 
-//export myGtkCalendarDetailFunc
-func myGtkCalendarDetailFunc(calendar *C.GtkCalendar, year C.guint32, month C.guint32, day C.guint32, user_data C.gpointer) {
+//export giGtkCalendarDetailFunc
+func giGtkCalendarDetailFunc(calendar *C.GtkCalendar, year C.guint32, month C.guint32, day C.guint32, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &CalendarDetailFuncStruct{
-			F_calendar: WrapCalendar(unsafe.Pointer(calendar)),
-			F_year:     uint32(year),
-			F_month:    uint32(month),
-			F_day:      uint32(day),
+		args := &CalendarDetailFuncArgs{
+			Calendar: WrapCalendar(unsafe.Pointer(calendar)),
+			Year:     uint32(year),
+			Month:    uint32(month),
+			Day:      uint32(day),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -9045,17 +9045,17 @@ func CalendarPrivateGetType() gi.GType {
 	return ret
 }
 
-type CallbackStruct struct {
-	F_widget Widget
-	F_data   unsafe.Pointer
+type CallbackArgs struct {
+	Widget Widget
+	Data   unsafe.Pointer
 }
 
-func GetPointer_myCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkCallback())
+func GetCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkCallbackWrapper())
 }
 
-//export myGtkCallback
-func myGtkCallback(widget *C.GtkWidget, data C.gpointer) {
+//export giGtkCallback
+func giGtkCallback(widget *C.GtkWidget, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -9271,7 +9271,7 @@ func (v *CellAccessibleParentIfc) GetChildIndex(cell ICellAccessible) (result in
 //
 // [ result ] trans: everything
 //
-func (v *CellAccessibleParentIfc) GetColumnHeaderCells(cell ICellAccessible) (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
+func (v *CellAccessibleParentIfc) GetColumnHeaderCells(cell ICellAccessible) (result g.PtrArray) {
 	iv, err := _I.Get(373, "CellAccessibleParent", "get_column_header_cells", 119, 7, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9286,7 +9286,7 @@ func (v *CellAccessibleParentIfc) GetColumnHeaderCells(cell ICellAccessible) (re
 	args := []gi.Argument{arg_v, arg_cell}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9321,7 +9321,7 @@ func (v *CellAccessibleParentIfc) GetRendererState(cell ICellAccessible) (result
 //
 // [ result ] trans: everything
 //
-func (v *CellAccessibleParentIfc) GetRowHeaderCells(cell ICellAccessible) (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
+func (v *CellAccessibleParentIfc) GetRowHeaderCells(cell ICellAccessible) (result g.PtrArray) {
 	iv, err := _I.Get(375, "CellAccessibleParent", "get_row_header_cells", 119, 9, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9336,7 +9336,7 @@ func (v *CellAccessibleParentIfc) GetRowHeaderCells(cell ICellAccessible) (resul
 	args := []gi.Argument{arg_v, arg_cell}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -9404,19 +9404,19 @@ func CellAccessiblePrivateGetType() gi.GType {
 	return ret
 }
 
-type CellAllocCallbackStruct struct {
-	F_renderer        CellRenderer
-	F_cell_area       gdk.Rectangle
-	F_cell_background gdk.Rectangle
-	F_data            unsafe.Pointer
+type CellAllocCallbackArgs struct {
+	Renderer       CellRenderer
+	CellArea       gdk.Rectangle
+	CellBackground gdk.Rectangle
+	Data           unsafe.Pointer
 }
 
-func GetPointer_myCellAllocCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkCellAllocCallback())
+func GetCellAllocCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkCellAllocCallbackWrapper())
 }
 
-//export myGtkCellAllocCallback
-func myGtkCellAllocCallback(renderer *C.GtkCellRenderer, cell_area *C.GdkRectangle, cell_background *C.GdkRectangle, data C.gpointer) {
+//export giGtkCellAllocCallback
+func giGtkCellAllocCallback(renderer *C.GtkCellRenderer, cell_area *C.GdkRectangle, cell_background *C.GdkRectangle, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -9855,7 +9855,7 @@ func (v CellArea) Foreach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myCellCallback())
+	arg_callback := gi.NewPointerArgument(GetCellCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -9896,7 +9896,7 @@ func (v CellArea) ForeachAlloc(context ICellAreaContext, widget IWidget, cell_ar
 	arg_widget := gi.NewPointerArgument(tmp1)
 	arg_cell_area := gi.NewPointerArgument(cell_area.P)
 	arg_background_area := gi.NewPointerArgument(background_area.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myCellAllocCallback())
+	arg_callback := gi.NewPointerArgument(GetCellAllocCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_context, arg_widget, arg_cell_area, arg_background_area, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -11016,17 +11016,17 @@ func CellAreaPrivateGetType() gi.GType {
 	return ret
 }
 
-type CellCallbackStruct struct {
-	F_renderer CellRenderer
-	F_data     unsafe.Pointer
+type CellCallbackArgs struct {
+	Renderer CellRenderer
+	Data     unsafe.Pointer
 }
 
-func GetPointer_myCellCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkCellCallback())
+func GetCellCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkCellCallbackWrapper())
 }
 
-//export myGtkCellCallback
-func myGtkCellCallback(renderer *C.GtkCellRenderer, data C.gpointer) {
+//export giGtkCellCallback
+func giGtkCellCallback(renderer *C.GtkCellRenderer, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -11291,27 +11291,27 @@ func (v *CellLayoutIfc) SetCellDataFunc(cell ICellRenderer, fn func(v interface{
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_cell := gi.NewPointerArgument(tmp)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myCellLayoutDataFunc())
+	arg_func1 := gi.NewPointerArgument(GetCellLayoutDataFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_cell, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
 
-type CellLayoutDataFuncStruct struct {
-	F_cell_layout CellLayout
-	F_cell        CellRenderer
-	F_tree_model  TreeModel
-	F_iter        TreeIter
-	F_data        unsafe.Pointer
+type CellLayoutDataFuncArgs struct {
+	CellLayout CellLayout
+	Cell       CellRenderer
+	TreeModel  TreeModel
+	Iter       TreeIter
+	Data       unsafe.Pointer
 }
 
-func GetPointer_myCellLayoutDataFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkCellLayoutDataFunc())
+func GetCellLayoutDataFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkCellLayoutDataFuncWrapper())
 }
 
-//export myGtkCellLayoutDataFunc
-func myGtkCellLayoutDataFunc(cell_layout *C.GtkCellLayout, cell *C.GtkCellRenderer, tree_model *C.GtkTreeModel, iter *C.GtkTreeIter, data C.gpointer) {
+//export giGtkCellLayoutDataFunc
+func giGtkCellLayoutDataFunc(cell_layout *C.GtkCellLayout, cell *C.GtkCellRenderer, tree_model *C.GtkTreeModel, iter *C.GtkTreeIter, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -13307,7 +13307,7 @@ func (v Clipboard) RequestContents(target gdk.Atom, fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_target := gi.NewPointerArgument(target.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myClipboardReceivedFunc())
+	arg_callback := gi.NewPointerArgument(GetClipboardReceivedFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_target, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -13327,7 +13327,7 @@ func (v Clipboard) RequestImage(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myClipboardImageReceivedFunc())
+	arg_callback := gi.NewPointerArgument(GetClipboardImageReceivedFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -13354,7 +13354,7 @@ func (v Clipboard) RequestRichText(buffer ITextBuffer, fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_buffer := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(GetPointer_myClipboardRichTextReceivedFunc())
+	arg_callback := gi.NewPointerArgument(GetClipboardRichTextReceivedFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_buffer, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -13374,7 +13374,7 @@ func (v Clipboard) RequestTargets(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myClipboardTargetsReceivedFunc())
+	arg_callback := gi.NewPointerArgument(GetClipboardTargetsReceivedFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -13394,7 +13394,7 @@ func (v Clipboard) RequestText(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myClipboardTextReceivedFunc())
+	arg_callback := gi.NewPointerArgument(GetClipboardTextReceivedFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -13414,7 +13414,7 @@ func (v Clipboard) RequestUris(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myClipboardURIReceivedFunc())
+	arg_callback := gi.NewPointerArgument(GetClipboardURIReceivedFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -13734,126 +13734,126 @@ func (v Clipboard) WaitIsUrisAvailable() (result bool) {
 	return
 }
 
-type ClipboardClearFuncStruct struct {
-	F_clipboard          Clipboard
-	F_user_data_or_owner unsafe.Pointer
+type ClipboardClearFuncArgs struct {
+	Clipboard       Clipboard
+	UserDataOrOwner unsafe.Pointer
 }
 
-func GetPointer_myClipboardClearFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkClipboardClearFunc())
+func GetClipboardClearFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkClipboardClearFuncWrapper())
 }
 
-//export myGtkClipboardClearFunc
-func myGtkClipboardClearFunc(clipboard *C.GtkClipboard, user_data_or_owner C.gpointer) {
+//export giGtkClipboardClearFunc
+func giGtkClipboardClearFunc(clipboard *C.GtkClipboard, user_data_or_owner C.gpointer) {
 	// TODO: not found user_data
 }
 
-type ClipboardGetFuncStruct struct {
-	F_clipboard          Clipboard
-	F_selection_data     SelectionData
-	F_info               uint32
-	F_user_data_or_owner unsafe.Pointer
+type ClipboardGetFuncArgs struct {
+	Clipboard       Clipboard
+	SelectionData   SelectionData
+	Info            uint32
+	UserDataOrOwner unsafe.Pointer
 }
 
-func GetPointer_myClipboardGetFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkClipboardGetFunc())
+func GetClipboardGetFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkClipboardGetFuncWrapper())
 }
 
-//export myGtkClipboardGetFunc
-func myGtkClipboardGetFunc(clipboard *C.GtkClipboard, selection_data *C.GtkSelectionData, info C.guint32, user_data_or_owner C.gpointer) {
+//export giGtkClipboardGetFunc
+func giGtkClipboardGetFunc(clipboard *C.GtkClipboard, selection_data *C.GtkSelectionData, info C.guint32, user_data_or_owner C.gpointer) {
 	// TODO: not found user_data
 }
 
-type ClipboardImageReceivedFuncStruct struct {
-	F_clipboard Clipboard
-	F_pixbuf    gdkpixbuf.Pixbuf
-	F_data      unsafe.Pointer
+type ClipboardImageReceivedFuncArgs struct {
+	Clipboard Clipboard
+	Pixbuf    gdkpixbuf.Pixbuf
+	Data      unsafe.Pointer
 }
 
-func GetPointer_myClipboardImageReceivedFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkClipboardImageReceivedFunc())
+func GetClipboardImageReceivedFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkClipboardImageReceivedFuncWrapper())
 }
 
-//export myGtkClipboardImageReceivedFunc
-func myGtkClipboardImageReceivedFunc(clipboard *C.GtkClipboard, pixbuf *C.GdkPixbuf, data C.gpointer) {
+//export giGtkClipboardImageReceivedFunc
+func giGtkClipboardImageReceivedFunc(clipboard *C.GtkClipboard, pixbuf *C.GdkPixbuf, data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type ClipboardReceivedFuncStruct struct {
-	F_clipboard      Clipboard
-	F_selection_data SelectionData
-	F_data           unsafe.Pointer
+type ClipboardReceivedFuncArgs struct {
+	Clipboard     Clipboard
+	SelectionData SelectionData
+	Data          unsafe.Pointer
 }
 
-func GetPointer_myClipboardReceivedFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkClipboardReceivedFunc())
+func GetClipboardReceivedFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkClipboardReceivedFuncWrapper())
 }
 
-//export myGtkClipboardReceivedFunc
-func myGtkClipboardReceivedFunc(clipboard *C.GtkClipboard, selection_data *C.GtkSelectionData, data C.gpointer) {
+//export giGtkClipboardReceivedFunc
+func giGtkClipboardReceivedFunc(clipboard *C.GtkClipboard, selection_data *C.GtkSelectionData, data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type ClipboardRichTextReceivedFuncStruct struct {
-	F_clipboard Clipboard
-	F_format    gdk.Atom
-	F_text      string
-	F_length    uint64
-	F_data      unsafe.Pointer
+type ClipboardRichTextReceivedFuncArgs struct {
+	Clipboard Clipboard
+	Format    gdk.Atom
+	Text      string
+	Length    uint64
+	Data      unsafe.Pointer
 }
 
-func GetPointer_myClipboardRichTextReceivedFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkClipboardRichTextReceivedFunc())
+func GetClipboardRichTextReceivedFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkClipboardRichTextReceivedFuncWrapper())
 }
 
-//export myGtkClipboardRichTextReceivedFunc
-func myGtkClipboardRichTextReceivedFunc(clipboard *C.GtkClipboard, format *C.GdkAtom, text *C.gchar, length C.guint64, data C.gpointer) {
+//export giGtkClipboardRichTextReceivedFunc
+func giGtkClipboardRichTextReceivedFunc(clipboard *C.GtkClipboard, format *C.GdkAtom, text *C.gchar, length C.guint64, data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type ClipboardTargetsReceivedFuncStruct struct {
-	F_clipboard Clipboard
-	F_atoms     unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/
-	F_n_atoms   int32
-	F_data      unsafe.Pointer
+type ClipboardTargetsReceivedFuncArgs struct {
+	Clipboard Clipboard
+	Atoms     unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/
+	NAtoms    int32
+	Data      unsafe.Pointer
 }
 
-func GetPointer_myClipboardTargetsReceivedFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkClipboardTargetsReceivedFunc())
+func GetClipboardTargetsReceivedFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkClipboardTargetsReceivedFuncWrapper())
 }
 
-//export myGtkClipboardTargetsReceivedFunc
-func myGtkClipboardTargetsReceivedFunc(clipboard *C.GtkClipboard, atoms C.gpointer, n_atoms C.gint32, data C.gpointer) {
+//export giGtkClipboardTargetsReceivedFunc
+func giGtkClipboardTargetsReceivedFunc(clipboard *C.GtkClipboard, atoms C.gpointer, n_atoms C.gint32, data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type ClipboardTextReceivedFuncStruct struct {
-	F_clipboard Clipboard
-	F_text      string
-	F_data      unsafe.Pointer
+type ClipboardTextReceivedFuncArgs struct {
+	Clipboard Clipboard
+	Text      string
+	Data      unsafe.Pointer
 }
 
-func GetPointer_myClipboardTextReceivedFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkClipboardTextReceivedFunc())
+func GetClipboardTextReceivedFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkClipboardTextReceivedFuncWrapper())
 }
 
-//export myGtkClipboardTextReceivedFunc
-func myGtkClipboardTextReceivedFunc(clipboard *C.GtkClipboard, text *C.gchar, data C.gpointer) {
+//export giGtkClipboardTextReceivedFunc
+func giGtkClipboardTextReceivedFunc(clipboard *C.GtkClipboard, text *C.gchar, data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type ClipboardURIReceivedFuncStruct struct {
-	F_clipboard Clipboard
-	F_uris      unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/
-	F_data      unsafe.Pointer
+type ClipboardURIReceivedFuncArgs struct {
+	Clipboard Clipboard
+	Uris      unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/
+	Data      unsafe.Pointer
 }
 
-func GetPointer_myClipboardURIReceivedFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkClipboardURIReceivedFunc())
+func GetClipboardURIReceivedFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkClipboardURIReceivedFuncWrapper())
 }
 
-//export myGtkClipboardURIReceivedFunc
-func myGtkClipboardURIReceivedFunc(clipboard *C.GtkClipboard, uris C.gpointer, data C.gpointer) {
+//export giGtkClipboardURIReceivedFunc
+func giGtkClipboardURIReceivedFunc(clipboard *C.GtkClipboard, uris C.gpointer, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -14679,32 +14679,32 @@ func (v ColorSelection) SetPreviousRgba(rgba gdk.RGBA) {
 	iv.Call(args, nil, nil)
 }
 
-type ColorSelectionChangePaletteFuncStruct struct {
-	F_colors   unsafe.Pointer
-	F_n_colors int32
+type ColorSelectionChangePaletteFuncArgs struct {
+	Colors  unsafe.Pointer
+	NColors int32
 }
 
-func GetPointer_myColorSelectionChangePaletteFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkColorSelectionChangePaletteFunc())
+func GetColorSelectionChangePaletteFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkColorSelectionChangePaletteFuncWrapper())
 }
 
-//export myGtkColorSelectionChangePaletteFunc
-func myGtkColorSelectionChangePaletteFunc(colors C.gpointer, n_colors C.gint32) {
+//export giGtkColorSelectionChangePaletteFunc
+func giGtkColorSelectionChangePaletteFunc(colors C.gpointer, n_colors C.gint32) {
 	// TODO: not found user_data
 }
 
-type ColorSelectionChangePaletteWithScreenFuncStruct struct {
-	F_screen   gdk.Screen
-	F_colors   unsafe.Pointer
-	F_n_colors int32
+type ColorSelectionChangePaletteWithScreenFuncArgs struct {
+	Screen  gdk.Screen
+	Colors  unsafe.Pointer
+	NColors int32
 }
 
-func GetPointer_myColorSelectionChangePaletteWithScreenFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkColorSelectionChangePaletteWithScreenFunc())
+func GetColorSelectionChangePaletteWithScreenFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkColorSelectionChangePaletteWithScreenFuncWrapper())
 }
 
-//export myGtkColorSelectionChangePaletteWithScreenFunc
-func myGtkColorSelectionChangePaletteWithScreenFunc(screen *C.GdkScreen, colors C.gpointer, n_colors C.gint32) {
+//export giGtkColorSelectionChangePaletteWithScreenFunc
+func giGtkColorSelectionChangePaletteWithScreenFunc(screen *C.GdkScreen, colors C.gpointer, n_colors C.gint32) {
 	// TODO: not found user_data
 }
 
@@ -15484,9 +15484,9 @@ func (v ComboBox) SetRowSeparatorFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeViewRowSeparatorFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeViewRowSeparatorFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -16009,7 +16009,7 @@ func (v Container) Forall(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myCallback())
+	arg_callback := gi.NewPointerArgument(GetCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -16030,7 +16030,7 @@ func (v Container) Foreach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myCallback())
+	arg_callback := gi.NewPointerArgument(GetCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -19870,9 +19870,9 @@ func (v EntryCompletion) SetMatchFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myEntryCompletionMatchFunc())
+	arg_func1 := gi.NewPointerArgument(GetEntryCompletionMatchFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_func_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_func_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_func_notify}
 	iv.Call(args, nil, nil)
 }
@@ -19979,24 +19979,24 @@ func (v EntryCompletion) SetTextColumn(column int32) {
 
 // ignore GType struct EntryCompletionClass
 
-type EntryCompletionMatchFuncStruct struct {
-	F_completion EntryCompletion
-	F_key        string
-	F_iter       TreeIter
+type EntryCompletionMatchFuncArgs struct {
+	Completion EntryCompletion
+	Key        string
+	Iter       TreeIter
 }
 
-func GetPointer_myEntryCompletionMatchFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkEntryCompletionMatchFunc())
+func GetEntryCompletionMatchFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkEntryCompletionMatchFuncWrapper())
 }
 
-//export myGtkEntryCompletionMatchFunc
-func myGtkEntryCompletionMatchFunc(completion *C.GtkEntryCompletion, key *C.gchar, iter *C.GtkTreeIter, user_data C.gpointer) {
+//export giGtkEntryCompletionMatchFunc
+func giGtkEntryCompletionMatchFunc(completion *C.GtkEntryCompletion, key *C.gchar, iter *C.GtkTreeIter, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &EntryCompletionMatchFuncStruct{
-			F_completion: WrapEntryCompletion(unsafe.Pointer(completion)),
-			F_key:        gi.GoString(unsafe.Pointer(key)),
-			F_iter:       TreeIter{P: unsafe.Pointer(iter)},
+		args := &EntryCompletionMatchFuncArgs{
+			Completion: WrapEntryCompletion(unsafe.Pointer(completion)),
+			Key:        gi.GoString(unsafe.Pointer(key)),
+			Iter:       TreeIter{P: unsafe.Pointer(iter)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -22693,9 +22693,9 @@ func (v FileFilter) AddCustom(needed FileFilterFlags, fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_needed := gi.NewIntArgument(int(needed))
-	arg_func1 := gi.NewPointerArgument(GetPointer_myFileFilterFunc())
+	arg_func1 := gi.NewPointerArgument(GetFileFilterFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_needed, arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -22857,17 +22857,17 @@ func FileFilterFlagsGetType() gi.GType {
 	return ret
 }
 
-type FileFilterFuncStruct struct {
-	F_filter_info FileFilterInfo
-	F_data        unsafe.Pointer
+type FileFilterFuncArgs struct {
+	FilterInfo FileFilterInfo
+	Data       unsafe.Pointer
 }
 
-func GetPointer_myFileFilterFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkFileFilterFunc())
+func GetFileFilterFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkFileFilterFuncWrapper())
 }
 
-//export myGtkFileFilterFunc
-func myGtkFileFilterFunc(filter_info *C.GtkFileFilterInfo, data C.gpointer) {
+//export giGtkFileFilterFunc
+func giGtkFileFilterFunc(filter_info *C.GtkFileFilterInfo, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -23046,9 +23046,9 @@ func (v FlowBox) BindModel(model g.IListModel, fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_model := gi.NewPointerArgument(tmp)
-	arg_create_widget_func := gi.NewPointerArgument(GetPointer_myFlowBoxCreateWidgetFunc())
+	arg_create_widget_func := gi.NewPointerArgument(GetFlowBoxCreateWidgetFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_user_data_free_func := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_user_data_free_func := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_model, arg_create_widget_func, arg_fn, arg_user_data_free_func}
 	iv.Call(args, nil, nil)
 }
@@ -23338,7 +23338,7 @@ func (v FlowBox) SelectedForeach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myFlowBoxForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetFlowBoxForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -23393,9 +23393,9 @@ func (v FlowBox) SetFilterFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_filter_func := gi.NewPointerArgument(GetPointer_myFlowBoxFilterFunc())
+	arg_filter_func := gi.NewPointerArgument(GetFlowBoxFilterFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_filter_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -23516,9 +23516,9 @@ func (v FlowBox) SetSortFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_sort_func := gi.NewPointerArgument(GetPointer_myFlowBoxSortFunc())
+	arg_sort_func := gi.NewPointerArgument(GetFlowBoxSortFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_sort_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -23706,20 +23706,20 @@ func FlowBoxChildAccessibleGetType() gi.GType {
 
 // ignore GType struct FlowBoxClass
 
-type FlowBoxCreateWidgetFuncStruct struct {
-	F_item g.Object
+type FlowBoxCreateWidgetFuncArg struct {
+	Item g.Object
 }
 
-func GetPointer_myFlowBoxCreateWidgetFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkFlowBoxCreateWidgetFunc())
+func GetFlowBoxCreateWidgetFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkFlowBoxCreateWidgetFuncWrapper())
 }
 
-//export myGtkFlowBoxCreateWidgetFunc
-func myGtkFlowBoxCreateWidgetFunc(item *C.GObject, user_data C.gpointer) {
+//export giGtkFlowBoxCreateWidgetFunc
+func giGtkFlowBoxCreateWidgetFunc(item *C.GObject, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &FlowBoxCreateWidgetFuncStruct{
-			F_item: g.WrapObject(unsafe.Pointer(item)),
+		args := &FlowBoxCreateWidgetFuncArg{
+			Item: g.WrapObject(unsafe.Pointer(item)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -23728,20 +23728,20 @@ func myGtkFlowBoxCreateWidgetFunc(item *C.GObject, user_data C.gpointer) {
 	}
 }
 
-type FlowBoxFilterFuncStruct struct {
-	F_child FlowBoxChild
+type FlowBoxFilterFuncArg struct {
+	Child FlowBoxChild
 }
 
-func GetPointer_myFlowBoxFilterFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkFlowBoxFilterFunc())
+func GetFlowBoxFilterFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkFlowBoxFilterFuncWrapper())
 }
 
-//export myGtkFlowBoxFilterFunc
-func myGtkFlowBoxFilterFunc(child *C.GtkFlowBoxChild, user_data C.gpointer) {
+//export giGtkFlowBoxFilterFunc
+func giGtkFlowBoxFilterFunc(child *C.GtkFlowBoxChild, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &FlowBoxFilterFuncStruct{
-			F_child: WrapFlowBoxChild(unsafe.Pointer(child)),
+		args := &FlowBoxFilterFuncArg{
+			Child: WrapFlowBoxChild(unsafe.Pointer(child)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -23750,22 +23750,22 @@ func myGtkFlowBoxFilterFunc(child *C.GtkFlowBoxChild, user_data C.gpointer) {
 	}
 }
 
-type FlowBoxForeachFuncStruct struct {
-	F_box   FlowBox
-	F_child FlowBoxChild
+type FlowBoxForeachFuncArgs struct {
+	Box   FlowBox
+	Child FlowBoxChild
 }
 
-func GetPointer_myFlowBoxForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkFlowBoxForeachFunc())
+func GetFlowBoxForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkFlowBoxForeachFuncWrapper())
 }
 
-//export myGtkFlowBoxForeachFunc
-func myGtkFlowBoxForeachFunc(box *C.GtkFlowBox, child *C.GtkFlowBoxChild, user_data C.gpointer) {
+//export giGtkFlowBoxForeachFunc
+func giGtkFlowBoxForeachFunc(box *C.GtkFlowBox, child *C.GtkFlowBoxChild, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &FlowBoxForeachFuncStruct{
-			F_box:   WrapFlowBox(unsafe.Pointer(box)),
-			F_child: WrapFlowBoxChild(unsafe.Pointer(child)),
+		args := &FlowBoxForeachFuncArgs{
+			Box:   WrapFlowBox(unsafe.Pointer(box)),
+			Child: WrapFlowBoxChild(unsafe.Pointer(child)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -23774,22 +23774,22 @@ func myGtkFlowBoxForeachFunc(box *C.GtkFlowBox, child *C.GtkFlowBoxChild, user_d
 	}
 }
 
-type FlowBoxSortFuncStruct struct {
-	F_child1 FlowBoxChild
-	F_child2 FlowBoxChild
+type FlowBoxSortFuncArgs struct {
+	Child1 FlowBoxChild
+	Child2 FlowBoxChild
 }
 
-func GetPointer_myFlowBoxSortFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkFlowBoxSortFunc())
+func GetFlowBoxSortFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkFlowBoxSortFuncWrapper())
 }
 
-//export myGtkFlowBoxSortFunc
-func myGtkFlowBoxSortFunc(child1 *C.GtkFlowBoxChild, child2 *C.GtkFlowBoxChild, user_data C.gpointer) {
+//export giGtkFlowBoxSortFunc
+func giGtkFlowBoxSortFunc(child1 *C.GtkFlowBoxChild, child2 *C.GtkFlowBoxChild, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &FlowBoxSortFuncStruct{
-			F_child1: WrapFlowBoxChild(unsafe.Pointer(child1)),
-			F_child2: WrapFlowBoxChild(unsafe.Pointer(child2)),
+		args := &FlowBoxSortFuncArgs{
+			Child1: WrapFlowBoxChild(unsafe.Pointer(child1)),
+			Child2: WrapFlowBoxChild(unsafe.Pointer(child2)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -24310,9 +24310,9 @@ func (v *FontChooserIfc) SetFilterFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_filter := gi.NewPointerArgument(GetPointer_myFontFilterFunc())
+	arg_filter := gi.NewPointerArgument(GetFontFilterFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_filter, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -24560,18 +24560,18 @@ func FontChooserWidgetPrivateGetType() gi.GType {
 	return ret
 }
 
-type FontFilterFuncStruct struct {
-	F_family pango.FontFamily
-	F_face   pango.FontFace
-	F_data   unsafe.Pointer
+type FontFilterFuncArgs struct {
+	Family pango.FontFamily
+	Face   pango.FontFace
+	Data   unsafe.Pointer
 }
 
-func GetPointer_myFontFilterFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkFontFilterFunc())
+func GetFontFilterFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkFontFilterFuncWrapper())
 }
 
-//export myGtkFontFilterFunc
-func myGtkFontFilterFunc(family *C.PangoFontFamily, face *C.PangoFontFace, data C.gpointer) {
+//export giGtkFontFilterFunc
+func giGtkFontFilterFunc(family *C.PangoFontFamily, face *C.PangoFontFace, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -29182,7 +29182,7 @@ func (v IconInfo) LoadIconAsync(cancellable g.ICancellable, fn func(v interface{
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetPointer_myAsyncReadyCallback())
+	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -29311,7 +29311,7 @@ func (v IconInfo) LoadSymbolicAsync(fg gdk.RGBA, success_color gdk.RGBA, warning
 	arg_warning_color := gi.NewPointerArgument(warning_color.P)
 	arg_error_color := gi.NewPointerArgument(error_color.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetPointer_myAsyncReadyCallback())
+	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_fg, arg_success_color, arg_warning_color, arg_error_color, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -29407,7 +29407,7 @@ func (v IconInfo) LoadSymbolicForContextAsync(context IStyleContext, cancellable
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_context := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetPointer_myAsyncReadyCallback())
+	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_context, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -31766,7 +31766,7 @@ func (v IconView) SelectedForeach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myIconViewForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetIconViewForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -32234,18 +32234,18 @@ func IconViewDropPositionGetType() gi.GType {
 	return ret
 }
 
-type IconViewForeachFuncStruct struct {
-	F_icon_view IconView
-	F_path      TreePath
-	F_data      unsafe.Pointer
+type IconViewForeachFuncArgs struct {
+	IconView IconView
+	Path     TreePath
+	Data     unsafe.Pointer
 }
 
-func GetPointer_myIconViewForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkIconViewForeachFunc())
+func GetIconViewForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkIconViewForeachFuncWrapper())
 }
 
-//export myGtkIconViewForeachFunc
-func myGtkIconViewForeachFunc(icon_view *C.GtkIconView, path *C.GtkTreePath, data C.gpointer) {
+//export giGtkIconViewForeachFunc
+func giGtkIconViewForeachFunc(icon_view *C.GtkIconView, path *C.GtkTreePath, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -33701,18 +33701,18 @@ func JustificationGetType() gi.GType {
 	return ret
 }
 
-type KeySnoopFuncStruct struct {
-	F_grab_widget Widget
-	F_event       gdk.EventKey
-	F_func_data   unsafe.Pointer
+type KeySnoopFuncArgs struct {
+	GrabWidget Widget
+	Event      gdk.EventKey
+	FuncData   unsafe.Pointer
 }
 
-func GetPointer_myKeySnoopFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkKeySnoopFunc())
+func GetKeySnoopFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkKeySnoopFuncWrapper())
 }
 
-//export myGtkKeySnoopFunc
-func myGtkKeySnoopFunc(grab_widget *C.GtkWidget, event *C.GdkEventKey, func_data C.gpointer) {
+//export giGtkKeySnoopFunc
+func giGtkKeySnoopFunc(grab_widget *C.GtkWidget, event *C.GdkEventKey, func_data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -35535,9 +35535,9 @@ func (v ListBox) BindModel(model g.IListModel, fn func(v interface{})) {
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_model := gi.NewPointerArgument(tmp)
-	arg_create_widget_func := gi.NewPointerArgument(GetPointer_myListBoxCreateWidgetFunc())
+	arg_create_widget_func := gi.NewPointerArgument(GetListBoxCreateWidgetFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_user_data_free_func := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_user_data_free_func := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_model, arg_create_widget_func, arg_fn, arg_user_data_free_func}
 	iv.Call(args, nil, nil)
 }
@@ -35836,7 +35836,7 @@ func (v ListBox) SelectedForeach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myListBoxForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetListBoxForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -35895,9 +35895,9 @@ func (v ListBox) SetFilterFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_filter_func := gi.NewPointerArgument(GetPointer_myListBoxFilterFunc())
+	arg_filter_func := gi.NewPointerArgument(GetListBoxFilterFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_filter_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -35918,9 +35918,9 @@ func (v ListBox) SetHeaderFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_update_header := gi.NewPointerArgument(GetPointer_myListBoxUpdateHeaderFunc())
+	arg_update_header := gi.NewPointerArgument(GetListBoxUpdateHeaderFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_update_header, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -35977,9 +35977,9 @@ func (v ListBox) SetSortFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_sort_func := gi.NewPointerArgument(GetPointer_myListBoxSortFunc())
+	arg_sort_func := gi.NewPointerArgument(GetListBoxSortFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_sort_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -36048,20 +36048,20 @@ func ListBoxAccessiblePrivateGetType() gi.GType {
 
 // ignore GType struct ListBoxClass
 
-type ListBoxCreateWidgetFuncStruct struct {
-	F_item g.Object
+type ListBoxCreateWidgetFuncArg struct {
+	Item g.Object
 }
 
-func GetPointer_myListBoxCreateWidgetFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkListBoxCreateWidgetFunc())
+func GetListBoxCreateWidgetFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkListBoxCreateWidgetFuncWrapper())
 }
 
-//export myGtkListBoxCreateWidgetFunc
-func myGtkListBoxCreateWidgetFunc(item *C.GObject, user_data C.gpointer) {
+//export giGtkListBoxCreateWidgetFunc
+func giGtkListBoxCreateWidgetFunc(item *C.GObject, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &ListBoxCreateWidgetFuncStruct{
-			F_item: g.WrapObject(unsafe.Pointer(item)),
+		args := &ListBoxCreateWidgetFuncArg{
+			Item: g.WrapObject(unsafe.Pointer(item)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -36070,20 +36070,20 @@ func myGtkListBoxCreateWidgetFunc(item *C.GObject, user_data C.gpointer) {
 	}
 }
 
-type ListBoxFilterFuncStruct struct {
-	F_row ListBoxRow
+type ListBoxFilterFuncArg struct {
+	Row ListBoxRow
 }
 
-func GetPointer_myListBoxFilterFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkListBoxFilterFunc())
+func GetListBoxFilterFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkListBoxFilterFuncWrapper())
 }
 
-//export myGtkListBoxFilterFunc
-func myGtkListBoxFilterFunc(row *C.GtkListBoxRow, user_data C.gpointer) {
+//export giGtkListBoxFilterFunc
+func giGtkListBoxFilterFunc(row *C.GtkListBoxRow, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &ListBoxFilterFuncStruct{
-			F_row: WrapListBoxRow(unsafe.Pointer(row)),
+		args := &ListBoxFilterFuncArg{
+			Row: WrapListBoxRow(unsafe.Pointer(row)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -36092,22 +36092,22 @@ func myGtkListBoxFilterFunc(row *C.GtkListBoxRow, user_data C.gpointer) {
 	}
 }
 
-type ListBoxForeachFuncStruct struct {
-	F_box ListBox
-	F_row ListBoxRow
+type ListBoxForeachFuncArgs struct {
+	Box ListBox
+	Row ListBoxRow
 }
 
-func GetPointer_myListBoxForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkListBoxForeachFunc())
+func GetListBoxForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkListBoxForeachFuncWrapper())
 }
 
-//export myGtkListBoxForeachFunc
-func myGtkListBoxForeachFunc(box *C.GtkListBox, row *C.GtkListBoxRow, user_data C.gpointer) {
+//export giGtkListBoxForeachFunc
+func giGtkListBoxForeachFunc(box *C.GtkListBox, row *C.GtkListBoxRow, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &ListBoxForeachFuncStruct{
-			F_box: WrapListBox(unsafe.Pointer(box)),
-			F_row: WrapListBoxRow(unsafe.Pointer(row)),
+		args := &ListBoxForeachFuncArgs{
+			Box: WrapListBox(unsafe.Pointer(box)),
+			Row: WrapListBoxRow(unsafe.Pointer(row)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -36323,22 +36323,22 @@ func ListBoxRowAccessibleGetType() gi.GType {
 
 // ignore GType struct ListBoxRowClass
 
-type ListBoxSortFuncStruct struct {
-	F_row1 ListBoxRow
-	F_row2 ListBoxRow
+type ListBoxSortFuncArgs struct {
+	Row1 ListBoxRow
+	Row2 ListBoxRow
 }
 
-func GetPointer_myListBoxSortFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkListBoxSortFunc())
+func GetListBoxSortFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkListBoxSortFuncWrapper())
 }
 
-//export myGtkListBoxSortFunc
-func myGtkListBoxSortFunc(row1 *C.GtkListBoxRow, row2 *C.GtkListBoxRow, user_data C.gpointer) {
+//export giGtkListBoxSortFunc
+func giGtkListBoxSortFunc(row1 *C.GtkListBoxRow, row2 *C.GtkListBoxRow, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &ListBoxSortFuncStruct{
-			F_row1: WrapListBoxRow(unsafe.Pointer(row1)),
-			F_row2: WrapListBoxRow(unsafe.Pointer(row2)),
+		args := &ListBoxSortFuncArgs{
+			Row1: WrapListBoxRow(unsafe.Pointer(row1)),
+			Row2: WrapListBoxRow(unsafe.Pointer(row2)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -36347,22 +36347,22 @@ func myGtkListBoxSortFunc(row1 *C.GtkListBoxRow, row2 *C.GtkListBoxRow, user_dat
 	}
 }
 
-type ListBoxUpdateHeaderFuncStruct struct {
-	F_row    ListBoxRow
-	F_before ListBoxRow
+type ListBoxUpdateHeaderFuncArgs struct {
+	Row    ListBoxRow
+	Before ListBoxRow
 }
 
-func GetPointer_myListBoxUpdateHeaderFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkListBoxUpdateHeaderFunc())
+func GetListBoxUpdateHeaderFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkListBoxUpdateHeaderFuncWrapper())
 }
 
-//export myGtkListBoxUpdateHeaderFunc
-func myGtkListBoxUpdateHeaderFunc(row *C.GtkListBoxRow, before *C.GtkListBoxRow, user_data C.gpointer) {
+//export giGtkListBoxUpdateHeaderFunc
+func giGtkListBoxUpdateHeaderFunc(row *C.GtkListBoxRow, before *C.GtkListBoxRow, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &ListBoxUpdateHeaderFuncStruct{
-			F_row:    WrapListBoxRow(unsafe.Pointer(row)),
-			F_before: WrapListBoxRow(unsafe.Pointer(before)),
+		args := &ListBoxUpdateHeaderFuncArgs{
+			Row:    WrapListBoxRow(unsafe.Pointer(row)),
+			Before: WrapListBoxRow(unsafe.Pointer(before)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -36987,7 +36987,7 @@ func (v Menu) AttachToWidget(attach_widget IWidget) {
 	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_attach_widget := gi.NewPointerArgument(tmp)
-	arg_detacher := gi.NewPointerArgument(GetPointer_myMenuDetachFunc())
+	arg_detacher := gi.NewPointerArgument(GetMenuDetachFuncWrapper())
 	args := []gi.Argument{arg_v, arg_attach_widget, arg_detacher}
 	iv.Call(args, nil, nil)
 }
@@ -37220,7 +37220,7 @@ func (v Menu) Popup(parent_menu_shell IWidget, parent_menu_item IWidget, fn func
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_parent_menu_shell := gi.NewPointerArgument(tmp)
 	arg_parent_menu_item := gi.NewPointerArgument(tmp1)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myMenuPositionFunc())
+	arg_func1 := gi.NewPointerArgument(GetMenuPositionFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_button := gi.NewUint32Argument(button)
 	arg_activate_time := gi.NewUint32Argument(activate_time)
@@ -37348,9 +37348,9 @@ func (v Menu) PopupForDevice(device gdk.IDevice, parent_menu_shell IWidget, pare
 	arg_device := gi.NewPointerArgument(tmp)
 	arg_parent_menu_shell := gi.NewPointerArgument(tmp1)
 	arg_parent_menu_item := gi.NewPointerArgument(tmp2)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myMenuPositionFunc())
+	arg_func1 := gi.NewPointerArgument(GetMenuPositionFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	arg_button := gi.NewUint32Argument(button)
 	arg_activate_time := gi.NewUint32Argument(activate_time)
 	args := []gi.Argument{arg_v, arg_device, arg_parent_menu_shell, arg_parent_menu_item, arg_func1, arg_fn, arg_destroy, arg_button, arg_activate_time}
@@ -37991,17 +37991,17 @@ func MenuButtonPrivateGetType() gi.GType {
 
 // ignore GType struct MenuClass
 
-type MenuDetachFuncStruct struct {
-	F_attach_widget Widget
-	F_menu          Menu
+type MenuDetachFuncArgs struct {
+	AttachWidget Widget
+	Menu         Menu
 }
 
-func GetPointer_myMenuDetachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkMenuDetachFunc())
+func GetMenuDetachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkMenuDetachFuncWrapper())
 }
 
-//export myGtkMenuDetachFunc
-func myGtkMenuDetachFunc(attach_widget *C.GtkWidget, menu *C.GtkMenu) {
+//export giGtkMenuDetachFunc
+func giGtkMenuDetachFunc(attach_widget *C.GtkWidget, menu *C.GtkMenu) {
 	// TODO: not found user_data
 }
 
@@ -38429,26 +38429,26 @@ func MenuItemPrivateGetType() gi.GType {
 	return ret
 }
 
-type MenuPositionFuncStruct struct {
-	F_menu    Menu
-	F_x       unsafe.Pointer /*TODO_CB tag: gint32, isPtr: false*/
-	F_y       unsafe.Pointer /*TODO_CB tag: gint32, isPtr: false*/
-	F_push_in unsafe.Pointer /*TODO_CB tag: gboolean, isPtr: false*/
+type MenuPositionFuncArgs struct {
+	Menu   Menu
+	X      unsafe.Pointer /*TODO_CB tag: gint32, isPtr: false*/
+	Y      unsafe.Pointer /*TODO_CB tag: gint32, isPtr: false*/
+	PushIn unsafe.Pointer /*TODO_CB tag: gboolean, isPtr: false*/
 }
 
-func GetPointer_myMenuPositionFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkMenuPositionFunc())
+func GetMenuPositionFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkMenuPositionFuncWrapper())
 }
 
-//export myGtkMenuPositionFunc
-func myGtkMenuPositionFunc(menu *C.GtkMenu, x C.gpointer, y C.gpointer, push_in C.gpointer, user_data C.gpointer) {
+//export giGtkMenuPositionFunc
+func giGtkMenuPositionFunc(menu *C.GtkMenu, x C.gpointer, y C.gpointer, push_in C.gpointer, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &MenuPositionFuncStruct{
-			F_menu:    WrapMenu(unsafe.Pointer(menu)),
-			F_x:       unsafe.Pointer(x),
-			F_y:       unsafe.Pointer(y),
-			F_push_in: unsafe.Pointer(push_in),
+		args := &MenuPositionFuncArgs{
+			Menu:   WrapMenu(unsafe.Pointer(menu)),
+			X:      unsafe.Pointer(x),
+			Y:      unsafe.Pointer(y),
+			PushIn: unsafe.Pointer(push_in),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -39207,30 +39207,30 @@ func NewModelButton() (result ModelButton) {
 	return
 }
 
-type ModuleDisplayInitFuncStruct struct {
-	F_display gdk.Display
+type ModuleDisplayInitFuncArg struct {
+	Display gdk.Display
 }
 
-func GetPointer_myModuleDisplayInitFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkModuleDisplayInitFunc())
+func GetModuleDisplayInitFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkModuleDisplayInitFuncWrapper())
 }
 
-//export myGtkModuleDisplayInitFunc
-func myGtkModuleDisplayInitFunc(display *C.GdkDisplay) {
+//export giGtkModuleDisplayInitFunc
+func giGtkModuleDisplayInitFunc(display *C.GdkDisplay) {
 	// TODO: not found user_data
 }
 
-type ModuleInitFuncStruct struct {
-	F_argc *int32
-	F_argv unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/
+type ModuleInitFuncArgs struct {
+	Argc *int32
+	Argv unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/
 }
 
-func GetPointer_myModuleInitFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkModuleInitFunc())
+func GetModuleInitFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkModuleInitFuncWrapper())
 }
 
-//export myGtkModuleInitFunc
-func myGtkModuleInitFunc(argc *C.gint32, argv C.gpointer) {
+//export giGtkModuleInitFunc
+func giGtkModuleInitFunc(argc *C.gint32, argv C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -42081,17 +42081,17 @@ func (v PageSetup) ToKeyFile(key_file g.KeyFile, group_name string) {
 	gi.Free(c_group_name)
 }
 
-type PageSetupDoneFuncStruct struct {
-	F_page_setup PageSetup
-	F_data       unsafe.Pointer
+type PageSetupDoneFuncArgs struct {
+	PageSetup PageSetup
+	Data      unsafe.Pointer
 }
 
-func GetPointer_myPageSetupDoneFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkPageSetupDoneFunc())
+func GetPageSetupDoneFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkPageSetupDoneFuncWrapper())
 }
 
-//export myGtkPageSetupDoneFunc
-func myGtkPageSetupDoneFunc(page_setup *C.GtkPageSetup, data C.gpointer) {
+//export giGtkPageSetupDoneFunc
+func giGtkPageSetupDoneFunc(page_setup *C.GtkPageSetup, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -45208,7 +45208,7 @@ func (v PrintSettings) Foreach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myPrintSettingsFunc())
+	arg_func1 := gi.NewPointerArgument(GetPrintSettingsFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -46558,22 +46558,22 @@ func (v PrintSettings) Unset(key string) {
 	gi.Free(c_key)
 }
 
-type PrintSettingsFuncStruct struct {
-	F_key   string
-	F_value string
+type PrintSettingsFuncArgs struct {
+	Key   string
+	Value string
 }
 
-func GetPointer_myPrintSettingsFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkPrintSettingsFunc())
+func GetPrintSettingsFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkPrintSettingsFuncWrapper())
 }
 
-//export myGtkPrintSettingsFunc
-func myGtkPrintSettingsFunc(key *C.gchar, value *C.gchar, user_data C.gpointer) {
+//export giGtkPrintSettingsFunc
+func giGtkPrintSettingsFunc(key *C.gchar, value *C.gchar, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &PrintSettingsFuncStruct{
-			F_key:   gi.GoString(unsafe.Pointer(key)),
-			F_value: gi.GoString(unsafe.Pointer(value)),
+		args := &PrintSettingsFuncArgs{
+			Key:   gi.GoString(unsafe.Pointer(key)),
+			Value: gi.GoString(unsafe.Pointer(value)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -48502,18 +48502,18 @@ func RcPropertyParseRequisition1(pspec g.IParamSpec, gstring g.String, property_
 	return
 }
 
-type RcPropertyParserStruct struct {
-	F_pspec          g.ParamSpec
-	F_rc_string      g.String
-	F_property_value g.Value
+type RcPropertyParserArgs struct {
+	Pspec         g.ParamSpec
+	RcString      g.String
+	PropertyValue g.Value
 }
 
-func GetPointer_myRcPropertyParser() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkRcPropertyParser())
+func GetRcPropertyParserWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkRcPropertyParserWrapper())
 }
 
-//export myGtkRcPropertyParser
-func myGtkRcPropertyParser(pspec *C.GParamSpec, rc_string *C.GString, property_value *C.GValue) {
+//export giGtkRcPropertyParser
+func giGtkRcPropertyParser(pspec *C.GParamSpec, rc_string *C.GString, property_value *C.GValue) {
 	// TODO: not found user_data
 }
 
@@ -49302,9 +49302,9 @@ func (v *RecentChooserIfc) SetSortFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_sort_func := gi.NewPointerArgument(GetPointer_myRecentSortFunc())
+	arg_sort_func := gi.NewPointerArgument(GetRecentSortFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_data_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_data_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_sort_func, arg_fn, arg_data_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -49672,9 +49672,9 @@ func (v RecentFilter) AddCustom(needed RecentFilterFlags, fn func(v interface{})
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_needed := gi.NewIntArgument(int(needed))
-	arg_func1 := gi.NewPointerArgument(GetPointer_myRecentFilterFunc())
+	arg_func1 := gi.NewPointerArgument(GetRecentFilterFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_data_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_data_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_needed, arg_func1, arg_fn, arg_data_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -49838,20 +49838,20 @@ func RecentFilterFlagsGetType() gi.GType {
 	return ret
 }
 
-type RecentFilterFuncStruct struct {
-	F_filter_info RecentFilterInfo
+type RecentFilterFuncArg struct {
+	FilterInfo RecentFilterInfo
 }
 
-func GetPointer_myRecentFilterFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkRecentFilterFunc())
+func GetRecentFilterFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkRecentFilterFuncWrapper())
 }
 
-//export myGtkRecentFilterFunc
-func myGtkRecentFilterFunc(filter_info *C.GtkRecentFilterInfo, user_data C.gpointer) {
+//export giGtkRecentFilterFunc
+func giGtkRecentFilterFunc(filter_info *C.GtkRecentFilterInfo, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &RecentFilterFuncStruct{
-			F_filter_info: RecentFilterInfo{P: unsafe.Pointer(filter_info)},
+		args := &RecentFilterFuncArg{
+			FilterInfo: RecentFilterInfo{P: unsafe.Pointer(filter_info)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -50651,22 +50651,22 @@ func RecentManagerPrivateGetType() gi.GType {
 	return ret
 }
 
-type RecentSortFuncStruct struct {
-	F_a RecentInfo
-	F_b RecentInfo
+type RecentSortFuncArgs struct {
+	A RecentInfo
+	B RecentInfo
 }
 
-func GetPointer_myRecentSortFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkRecentSortFunc())
+func GetRecentSortFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkRecentSortFuncWrapper())
 }
 
-//export myGtkRecentSortFunc
-func myGtkRecentSortFunc(a *C.GtkRecentInfo, b *C.GtkRecentInfo, user_data C.gpointer) {
+//export giGtkRecentSortFunc
+func giGtkRecentSortFunc(a *C.GtkRecentInfo, b *C.GtkRecentInfo, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &RecentSortFuncStruct{
-			F_a: RecentInfo{P: unsafe.Pointer(a)},
-			F_b: RecentInfo{P: unsafe.Pointer(b)},
+		args := &RecentSortFuncArgs{
+			A: RecentInfo{P: unsafe.Pointer(a)},
+			B: RecentInfo{P: unsafe.Pointer(b)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -53454,7 +53454,7 @@ func SettingsInstallPropertyParser1(pspec g.IParamSpec) {
 		tmp = pspec.P_ParamSpec()
 	}
 	arg_pspec := gi.NewPointerArgument(tmp)
-	arg_parser := gi.NewPointerArgument(GetPointer_myRcPropertyParser())
+	arg_parser := gi.NewPointerArgument(GetRcPropertyParserWrapper())
 	args := []gi.Argument{arg_pspec, arg_parser}
 	iv.Call(args, nil, nil)
 }
@@ -58039,17 +58039,17 @@ func StylePropertiesPrivateGetType() gi.GType {
 	return ret
 }
 
-type StylePropertyParserStruct struct {
-	F_string string
-	F_value  g.Value
+type StylePropertyParserArgs struct {
+	String string
+	Value  g.Value
 }
 
-func GetPointer_myStylePropertyParser() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkStylePropertyParser())
+func GetStylePropertyParserWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkStylePropertyParserWrapper())
 }
 
-//export myGtkStylePropertyParser
-func myGtkStylePropertyParser(string *C.gchar, value *C.GValue) {
+//export giGtkStylePropertyParser
+func giGtkStylePropertyParser(string *C.gchar, value *C.GValue) {
 	// TODO: not found user_data
 }
 
@@ -60721,9 +60721,9 @@ func (v TextBuffer) RegisterDeserializeFormat(mime_type string, fn func(v interf
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_mime_type := gi.NewStringArgument(c_mime_type)
-	arg_function := gi.NewPointerArgument(GetPointer_myTextBufferDeserializeFunc())
+	arg_function := gi.NewPointerArgument(GetTextBufferDeserializeFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_user_data_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_user_data_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_mime_type, arg_function, arg_fn, arg_user_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -60777,9 +60777,9 @@ func (v TextBuffer) RegisterSerializeFormat(mime_type string, fn func(v interfac
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_mime_type := gi.NewStringArgument(c_mime_type)
-	arg_function := gi.NewPointerArgument(GetPointer_myTextBufferSerializeFunc())
+	arg_function := gi.NewPointerArgument(GetTextBufferSerializeFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_user_data_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_user_data_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_mime_type, arg_function, arg_fn, arg_user_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -61031,30 +61031,30 @@ func (v TextBuffer) UnregisterSerializeFormat(format gdk.Atom) {
 
 // ignore GType struct TextBufferClass
 
-type TextBufferDeserializeFuncStruct struct {
-	F_register_buffer TextBuffer
-	F_content_buffer  TextBuffer
-	F_iter            TextIter
-	F_data            gi.Uint8Array
-	F_length          uint64
-	F_create_tags     bool
+type TextBufferDeserializeFuncArgs struct {
+	RegisterBuffer TextBuffer
+	ContentBuffer  TextBuffer
+	Iter           TextIter
+	Data           gi.Uint8Array
+	Length         uint64
+	CreateTags     bool
 }
 
-func GetPointer_myTextBufferDeserializeFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTextBufferDeserializeFunc())
+func GetTextBufferDeserializeFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTextBufferDeserializeFuncWrapper())
 }
 
-//export myGtkTextBufferDeserializeFunc
-func myGtkTextBufferDeserializeFunc(register_buffer *C.GtkTextBuffer, content_buffer *C.GtkTextBuffer, iter *C.GtkTextIter, data C.gpointer, length C.guint64, create_tags C.gboolean, user_data C.gpointer) {
+//export giGtkTextBufferDeserializeFunc
+func giGtkTextBufferDeserializeFunc(register_buffer *C.GtkTextBuffer, content_buffer *C.GtkTextBuffer, iter *C.GtkTextIter, data C.gpointer, length C.guint64, create_tags C.gboolean, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TextBufferDeserializeFuncStruct{
-			F_register_buffer: WrapTextBuffer(unsafe.Pointer(register_buffer)),
-			F_content_buffer:  WrapTextBuffer(unsafe.Pointer(content_buffer)),
-			F_iter:            TextIter{P: unsafe.Pointer(iter)},
-			F_data:            gi.Uint8Array{P: unsafe.Pointer(data)},
-			F_length:          uint64(length),
-			F_create_tags:     gi.Int2Bool(int(create_tags)),
+		args := &TextBufferDeserializeFuncArgs{
+			RegisterBuffer: WrapTextBuffer(unsafe.Pointer(register_buffer)),
+			ContentBuffer:  WrapTextBuffer(unsafe.Pointer(content_buffer)),
+			Iter:           TextIter{P: unsafe.Pointer(iter)},
+			Data:           gi.Uint8Array{P: unsafe.Pointer(data)},
+			Length:         uint64(length),
+			CreateTags:     gi.Int2Bool(int(create_tags)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -61073,28 +61073,28 @@ func TextBufferPrivateGetType() gi.GType {
 	return ret
 }
 
-type TextBufferSerializeFuncStruct struct {
-	F_register_buffer TextBuffer
-	F_content_buffer  TextBuffer
-	F_start           TextIter
-	F_end             TextIter
-	F_length          *uint64
+type TextBufferSerializeFuncArgs struct {
+	RegisterBuffer TextBuffer
+	ContentBuffer  TextBuffer
+	Start          TextIter
+	End            TextIter
+	Length         *uint64
 }
 
-func GetPointer_myTextBufferSerializeFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTextBufferSerializeFunc())
+func GetTextBufferSerializeFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTextBufferSerializeFuncWrapper())
 }
 
-//export myGtkTextBufferSerializeFunc
-func myGtkTextBufferSerializeFunc(register_buffer *C.GtkTextBuffer, content_buffer *C.GtkTextBuffer, start *C.GtkTextIter, end *C.GtkTextIter, length *C.guint64, user_data C.gpointer) {
+//export giGtkTextBufferSerializeFunc
+func giGtkTextBufferSerializeFunc(register_buffer *C.GtkTextBuffer, content_buffer *C.GtkTextBuffer, start *C.GtkTextIter, end *C.GtkTextIter, length *C.guint64, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TextBufferSerializeFuncStruct{
-			F_register_buffer: WrapTextBuffer(unsafe.Pointer(register_buffer)),
-			F_content_buffer:  WrapTextBuffer(unsafe.Pointer(content_buffer)),
-			F_start:           TextIter{P: unsafe.Pointer(start)},
-			F_end:             TextIter{P: unsafe.Pointer(end)},
-			F_length:          (*uint64)(unsafe.Pointer(length)),
+		args := &TextBufferSerializeFuncArgs{
+			RegisterBuffer: WrapTextBuffer(unsafe.Pointer(register_buffer)),
+			ContentBuffer:  WrapTextBuffer(unsafe.Pointer(content_buffer)),
+			Start:          TextIter{P: unsafe.Pointer(start)},
+			End:            TextIter{P: unsafe.Pointer(end)},
+			Length:         (*uint64)(unsafe.Pointer(length)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -61146,20 +61146,20 @@ func TextCellAccessiblePrivateGetType() gi.GType {
 	return ret
 }
 
-type TextCharPredicateStruct struct {
-	F_ch rune
+type TextCharPredicateArg struct {
+	Ch rune
 }
 
-func GetPointer_myTextCharPredicate() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTextCharPredicate())
+func GetTextCharPredicateWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTextCharPredicateWrapper())
 }
 
-//export myGtkTextCharPredicate
-func myGtkTextCharPredicate(ch C.gunichar, user_data C.gpointer) {
+//export giGtkTextCharPredicate
+func giGtkTextCharPredicate(ch C.gunichar, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TextCharPredicateStruct{
-			F_ch: rune(ch),
+		args := &TextCharPredicateArg{
+			Ch: rune(ch),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -61388,7 +61388,7 @@ func (v TextIter) BackwardFindChar(fn func(v interface{}), limit TextIter) (resu
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pred := gi.NewPointerArgument(GetPointer_myTextCharPredicate())
+	arg_pred := gi.NewPointerArgument(GetTextCharPredicateWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_limit := gi.NewPointerArgument(limit.P)
 	args := []gi.Argument{arg_v, arg_pred, arg_fn, arg_limit}
@@ -61997,7 +61997,7 @@ func (v TextIter) ForwardFindChar(fn func(v interface{}), limit TextIter) (resul
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_pred := gi.NewPointerArgument(GetPointer_myTextCharPredicate())
+	arg_pred := gi.NewPointerArgument(GetTextCharPredicateWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_limit := gi.NewPointerArgument(limit.P)
 	args := []gi.Argument{arg_v, arg_pred, arg_fn, arg_limit}
@@ -63461,7 +63461,7 @@ func (v TextTagTable) Foreach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTextTagTableForeach())
+	arg_func1 := gi.NewPointerArgument(GetTextTagTableForeachWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -63531,17 +63531,17 @@ func (v TextTagTable) Remove(tag ITextTag) {
 
 // ignore GType struct TextTagTableClass
 
-type TextTagTableForeachStruct struct {
-	F_tag  TextTag
-	F_data unsafe.Pointer
+type TextTagTableForeachArgs struct {
+	Tag  TextTag
+	Data unsafe.Pointer
 }
 
-func GetPointer_myTextTagTableForeach() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTextTagTableForeach())
+func GetTextTagTableForeachWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTextTagTableForeachWrapper())
 }
 
-//export myGtkTextTagTableForeach
-func myGtkTextTagTableForeach(tag *C.GtkTextTag, data C.gpointer) {
+//export giGtkTextTagTableForeach
+func giGtkTextTagTableForeach(tag *C.GtkTextTag, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -65571,22 +65571,22 @@ func ThemingEnginePrivateGetType() gi.GType {
 	return ret
 }
 
-type TickCallbackStruct struct {
-	F_widget      Widget
-	F_frame_clock gdk.FrameClock
+type TickCallbackArgs struct {
+	Widget     Widget
+	FrameClock gdk.FrameClock
 }
 
-func GetPointer_myTickCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTickCallback())
+func GetTickCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTickCallbackWrapper())
 }
 
-//export myGtkTickCallback
-func myGtkTickCallback(widget *C.GtkWidget, frame_clock *C.GdkFrameClock, user_data C.gpointer) {
+//export giGtkTickCallback
+func giGtkTickCallback(widget *C.GtkWidget, frame_clock *C.GdkFrameClock, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TickCallbackStruct{
-			F_widget:      WrapWidget(unsafe.Pointer(widget)),
-			F_frame_clock: gdk.WrapFrameClock(unsafe.Pointer(frame_clock)),
+		args := &TickCallbackArgs{
+			Widget:     WrapWidget(unsafe.Pointer(widget)),
+			FrameClock: gdk.WrapFrameClock(unsafe.Pointer(frame_clock)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -68534,55 +68534,55 @@ func ToplevelAccessiblePrivateGetType() gi.GType {
 	return ret
 }
 
-type TranslateFuncStruct struct {
-	F_path      string
-	F_func_data unsafe.Pointer
+type TranslateFuncArgs struct {
+	Path     string
+	FuncData unsafe.Pointer
 }
 
-func GetPointer_myTranslateFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTranslateFunc())
+func GetTranslateFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTranslateFuncWrapper())
 }
 
-//export myGtkTranslateFunc
-func myGtkTranslateFunc(path *C.gchar, func_data C.gpointer) {
+//export giGtkTranslateFunc
+func giGtkTranslateFunc(path *C.gchar, func_data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type TreeCellDataFuncStruct struct {
-	F_tree_column TreeViewColumn
-	F_cell        CellRenderer
-	F_tree_model  TreeModel
-	F_iter        TreeIter
-	F_data        unsafe.Pointer
+type TreeCellDataFuncArgs struct {
+	TreeColumn TreeViewColumn
+	Cell       CellRenderer
+	TreeModel  TreeModel
+	Iter       TreeIter
+	Data       unsafe.Pointer
 }
 
-func GetPointer_myTreeCellDataFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeCellDataFunc())
+func GetTreeCellDataFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeCellDataFuncWrapper())
 }
 
-//export myGtkTreeCellDataFunc
-func myGtkTreeCellDataFunc(tree_column *C.GtkTreeViewColumn, cell *C.GtkCellRenderer, tree_model *C.GtkTreeModel, iter *C.GtkTreeIter, data C.gpointer) {
+//export giGtkTreeCellDataFunc
+func giGtkTreeCellDataFunc(tree_column *C.GtkTreeViewColumn, cell *C.GtkCellRenderer, tree_model *C.GtkTreeModel, iter *C.GtkTreeIter, data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type TreeDestroyCountFuncStruct struct {
-	F_tree_view TreeView
-	F_path      TreePath
-	F_children  int32
+type TreeDestroyCountFuncArgs struct {
+	TreeView TreeView
+	Path     TreePath
+	Children int32
 }
 
-func GetPointer_myTreeDestroyCountFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeDestroyCountFunc())
+func GetTreeDestroyCountFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeDestroyCountFuncWrapper())
 }
 
-//export myGtkTreeDestroyCountFunc
-func myGtkTreeDestroyCountFunc(tree_view *C.GtkTreeView, path *C.GtkTreePath, children C.gint32, user_data C.gpointer) {
+//export giGtkTreeDestroyCountFunc
+func giGtkTreeDestroyCountFunc(tree_view *C.GtkTreeView, path *C.GtkTreePath, children C.gint32, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TreeDestroyCountFuncStruct{
-			F_tree_view: WrapTreeView(unsafe.Pointer(tree_view)),
-			F_path:      TreePath{P: unsafe.Pointer(path)},
-			F_children:  int32(children),
+		args := &TreeDestroyCountFuncArgs{
+			TreeView: WrapTreeView(unsafe.Pointer(tree_view)),
+			Path:     TreePath{P: unsafe.Pointer(path)},
+			Children: int32(children),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -68780,24 +68780,24 @@ func (v TreeIter) Free() {
 	iv.Call(args, nil, nil)
 }
 
-type TreeIterCompareFuncStruct struct {
-	F_model TreeModel
-	F_a     TreeIter
-	F_b     TreeIter
+type TreeIterCompareFuncArgs struct {
+	Model TreeModel
+	A     TreeIter
+	B     TreeIter
 }
 
-func GetPointer_myTreeIterCompareFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeIterCompareFunc())
+func GetTreeIterCompareFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeIterCompareFuncWrapper())
 }
 
-//export myGtkTreeIterCompareFunc
-func myGtkTreeIterCompareFunc(model *C.GtkTreeModel, a *C.GtkTreeIter, b *C.GtkTreeIter, user_data C.gpointer) {
+//export giGtkTreeIterCompareFunc
+func giGtkTreeIterCompareFunc(model *C.GtkTreeModel, a *C.GtkTreeIter, b *C.GtkTreeIter, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TreeIterCompareFuncStruct{
-			F_model: TreeModel{P: unsafe.Pointer(model)},
-			F_a:     TreeIter{P: unsafe.Pointer(a)},
-			F_b:     TreeIter{P: unsafe.Pointer(b)},
+		args := &TreeIterCompareFuncArgs{
+			Model: TreeModel{P: unsafe.Pointer(model)},
+			A:     TreeIter{P: unsafe.Pointer(a)},
+			B:     TreeIter{P: unsafe.Pointer(b)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -68855,7 +68855,7 @@ func (v *TreeModelIfc) Foreach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeModelForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeModelForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -69531,9 +69531,9 @@ func (v TreeModelFilter) SetModifyFunc(n_columns int32, types gi.GTypeArray, fn 
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_n_columns := gi.NewInt32Argument(n_columns)
 	arg_types := gi.NewPointerArgument(types.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeModelFilterModifyFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeModelFilterModifyFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_n_columns, arg_types, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -69570,29 +69570,29 @@ func (v TreeModelFilter) SetVisibleFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeModelFilterVisibleFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeModelFilterVisibleFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
 
 // ignore GType struct TreeModelFilterClass
 
-type TreeModelFilterModifyFuncStruct struct {
-	F_model  TreeModel
-	F_iter   TreeIter
-	F_value  unsafe.Pointer /*TODO_CB tag: interface, isPtr: false*/
-	F_column int32
-	F_data   unsafe.Pointer
+type TreeModelFilterModifyFuncArgs struct {
+	Model  TreeModel
+	Iter   TreeIter
+	Value  unsafe.Pointer /*TODO_CB tag: interface, isPtr: false*/
+	Column int32
+	Data   unsafe.Pointer
 }
 
-func GetPointer_myTreeModelFilterModifyFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeModelFilterModifyFunc())
+func GetTreeModelFilterModifyFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeModelFilterModifyFuncWrapper())
 }
 
-//export myGtkTreeModelFilterModifyFunc
-func myGtkTreeModelFilterModifyFunc(model *C.GtkTreeModel, iter *C.GtkTreeIter, value C.gpointer, column C.gint32, data C.gpointer) {
+//export giGtkTreeModelFilterModifyFunc
+func giGtkTreeModelFilterModifyFunc(model *C.GtkTreeModel, iter *C.GtkTreeIter, value C.gpointer, column C.gint32, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -69606,18 +69606,18 @@ func TreeModelFilterPrivateGetType() gi.GType {
 	return ret
 }
 
-type TreeModelFilterVisibleFuncStruct struct {
-	F_model TreeModel
-	F_iter  TreeIter
-	F_data  unsafe.Pointer
+type TreeModelFilterVisibleFuncArgs struct {
+	Model TreeModel
+	Iter  TreeIter
+	Data  unsafe.Pointer
 }
 
-func GetPointer_myTreeModelFilterVisibleFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeModelFilterVisibleFunc())
+func GetTreeModelFilterVisibleFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeModelFilterVisibleFuncWrapper())
 }
 
-//export myGtkTreeModelFilterVisibleFunc
-func myGtkTreeModelFilterVisibleFunc(model *C.GtkTreeModel, iter *C.GtkTreeIter, data C.gpointer) {
+//export giGtkTreeModelFilterVisibleFunc
+func giGtkTreeModelFilterVisibleFunc(model *C.GtkTreeModel, iter *C.GtkTreeIter, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -69634,19 +69634,19 @@ func TreeModelFlagsGetType() gi.GType {
 	return ret
 }
 
-type TreeModelForeachFuncStruct struct {
-	F_model TreeModel
-	F_path  TreePath
-	F_iter  TreeIter
-	F_data  unsafe.Pointer
+type TreeModelForeachFuncArgs struct {
+	Model TreeModel
+	Path  TreePath
+	Iter  TreeIter
+	Data  unsafe.Pointer
 }
 
-func GetPointer_myTreeModelForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeModelForeachFunc())
+func GetTreeModelForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeModelForeachFuncWrapper())
 }
 
-//export myGtkTreeModelForeachFunc
-func myGtkTreeModelForeachFunc(model *C.GtkTreeModel, path *C.GtkTreePath, iter *C.GtkTreeIter, data C.gpointer) {
+//export giGtkTreeModelForeachFunc
+func giGtkTreeModelForeachFunc(model *C.GtkTreeModel, path *C.GtkTreePath, iter *C.GtkTreeIter, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -70609,7 +70609,7 @@ func (v TreeSelection) SelectedForeach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeSelectionForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeSelectionForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -70648,9 +70648,9 @@ func (v TreeSelection) SetSelectFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeSelectionFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeSelectionFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -70721,36 +70721,36 @@ func (v TreeSelection) UnselectRange(start_path TreePath, end_path TreePath) {
 
 // ignore GType struct TreeSelectionClass
 
-type TreeSelectionForeachFuncStruct struct {
-	F_model TreeModel
-	F_path  TreePath
-	F_iter  TreeIter
-	F_data  unsafe.Pointer
+type TreeSelectionForeachFuncArgs struct {
+	Model TreeModel
+	Path  TreePath
+	Iter  TreeIter
+	Data  unsafe.Pointer
 }
 
-func GetPointer_myTreeSelectionForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeSelectionForeachFunc())
+func GetTreeSelectionForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeSelectionForeachFuncWrapper())
 }
 
-//export myGtkTreeSelectionForeachFunc
-func myGtkTreeSelectionForeachFunc(model *C.GtkTreeModel, path *C.GtkTreePath, iter *C.GtkTreeIter, data C.gpointer) {
+//export giGtkTreeSelectionForeachFunc
+func giGtkTreeSelectionForeachFunc(model *C.GtkTreeModel, path *C.GtkTreePath, iter *C.GtkTreeIter, data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type TreeSelectionFuncStruct struct {
-	F_selection               TreeSelection
-	F_model                   TreeModel
-	F_path                    TreePath
-	F_path_currently_selected bool
-	F_data                    unsafe.Pointer
+type TreeSelectionFuncArgs struct {
+	Selection             TreeSelection
+	Model                 TreeModel
+	Path                  TreePath
+	PathCurrentlySelected bool
+	Data                  unsafe.Pointer
 }
 
-func GetPointer_myTreeSelectionFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeSelectionFunc())
+func GetTreeSelectionFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeSelectionFuncWrapper())
 }
 
-//export myGtkTreeSelectionFunc
-func myGtkTreeSelectionFunc(selection *C.GtkTreeSelection, model *C.GtkTreeModel, path *C.GtkTreePath, path_currently_selected C.gboolean, data C.gpointer) {
+//export giGtkTreeSelectionFunc
+func giGtkTreeSelectionFunc(selection *C.GtkTreeSelection, model *C.GtkTreeModel, path *C.GtkTreePath, path_currently_selected C.gboolean, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -70839,9 +70839,9 @@ func (v *TreeSortableIfc) SetDefaultSortFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
-	arg_sort_func := gi.NewPointerArgument(GetPointer_myTreeIterCompareFunc())
+	arg_sort_func := gi.NewPointerArgument(GetTreeIterCompareFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_sort_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -70884,9 +70884,9 @@ func (v *TreeSortableIfc) SetSortFunc(sort_column_id int32, fn func(v interface{
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_sort_column_id := gi.NewInt32Argument(sort_column_id)
-	arg_sort_func := gi.NewPointerArgument(GetPointer_myTreeIterCompareFunc())
+	arg_sort_func := gi.NewPointerArgument(GetTreeIterCompareFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_sort_column_id, arg_sort_func, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -72537,9 +72537,9 @@ func (v TreeView) InsertColumnWithDataFunc(position int32, title string, cell IC
 	arg_position := gi.NewInt32Argument(position)
 	arg_title := gi.NewStringArgument(c_title)
 	arg_cell := gi.NewPointerArgument(tmp)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeCellDataFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeCellDataFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_dnotify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_dnotify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_position, arg_title, arg_cell, arg_func1, arg_fn, arg_dnotify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -72621,7 +72621,7 @@ func (v TreeView) MapExpandedRows(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeViewMappingFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeViewMappingFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -72807,9 +72807,9 @@ func (v TreeView) SetColumnDragFunction(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeViewColumnDropFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeViewColumnDropFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -72891,9 +72891,9 @@ func (v TreeView) SetDestroyCountFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeDestroyCountFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeDestroyCountFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -73155,9 +73155,9 @@ func (v TreeView) SetRowSeparatorFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeViewRowSeparatorFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeViewRowSeparatorFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -73248,9 +73248,9 @@ func (v TreeView) SetSearchEqualFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_search_equal_func := gi.NewPointerArgument(GetPointer_myTreeViewSearchEqualFunc())
+	arg_search_equal_func := gi.NewPointerArgument(GetTreeViewSearchEqualFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_search_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_search_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_search_equal_func, arg_fn, arg_search_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -73271,9 +73271,9 @@ func (v TreeView) SetSearchPositionFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeViewSearchPositionFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeViewSearchPositionFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -74179,9 +74179,9 @@ func (v TreeViewColumn) SetCellDataFunc(cell_renderer ICellRenderer, fn func(v i
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_cell_renderer := gi.NewPointerArgument(tmp)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTreeCellDataFunc())
+	arg_func1 := gi.NewPointerArgument(GetTreeCellDataFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_cell_renderer, arg_func1, arg_fn, arg_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -74434,20 +74434,20 @@ func (v TreeViewColumn) SetWidget(widget IWidget) {
 
 // ignore GType struct TreeViewColumnClass
 
-type TreeViewColumnDropFuncStruct struct {
-	F_tree_view   TreeView
-	F_column      TreeViewColumn
-	F_prev_column TreeViewColumn
-	F_next_column TreeViewColumn
-	F_data        unsafe.Pointer
+type TreeViewColumnDropFuncArgs struct {
+	TreeView   TreeView
+	Column     TreeViewColumn
+	PrevColumn TreeViewColumn
+	NextColumn TreeViewColumn
+	Data       unsafe.Pointer
 }
 
-func GetPointer_myTreeViewColumnDropFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeViewColumnDropFunc())
+func GetTreeViewColumnDropFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeViewColumnDropFuncWrapper())
 }
 
-//export myGtkTreeViewColumnDropFunc
-func myGtkTreeViewColumnDropFunc(tree_view *C.GtkTreeView, column *C.GtkTreeViewColumn, prev_column *C.GtkTreeViewColumn, next_column *C.GtkTreeViewColumn, data C.gpointer) {
+//export giGtkTreeViewColumnDropFunc
+func giGtkTreeViewColumnDropFunc(tree_view *C.GtkTreeView, column *C.GtkTreeViewColumn, prev_column *C.GtkTreeViewColumn, next_column *C.GtkTreeViewColumn, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -74505,22 +74505,22 @@ func TreeViewGridLinesGetType() gi.GType {
 	return ret
 }
 
-type TreeViewMappingFuncStruct struct {
-	F_tree_view TreeView
-	F_path      TreePath
+type TreeViewMappingFuncArgs struct {
+	TreeView TreeView
+	Path     TreePath
 }
 
-func GetPointer_myTreeViewMappingFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeViewMappingFunc())
+func GetTreeViewMappingFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeViewMappingFuncWrapper())
 }
 
-//export myGtkTreeViewMappingFunc
-func myGtkTreeViewMappingFunc(tree_view *C.GtkTreeView, path *C.GtkTreePath, user_data C.gpointer) {
+//export giGtkTreeViewMappingFunc
+func giGtkTreeViewMappingFunc(tree_view *C.GtkTreeView, path *C.GtkTreePath, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TreeViewMappingFuncStruct{
-			F_tree_view: WrapTreeView(unsafe.Pointer(tree_view)),
-			F_path:      TreePath{P: unsafe.Pointer(path)},
+		args := &TreeViewMappingFuncArgs{
+			TreeView: WrapTreeView(unsafe.Pointer(tree_view)),
+			Path:     TreePath{P: unsafe.Pointer(path)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -74539,54 +74539,54 @@ func TreeViewPrivateGetType() gi.GType {
 	return ret
 }
 
-type TreeViewRowSeparatorFuncStruct struct {
-	F_model TreeModel
-	F_iter  TreeIter
-	F_data  unsafe.Pointer
+type TreeViewRowSeparatorFuncArgs struct {
+	Model TreeModel
+	Iter  TreeIter
+	Data  unsafe.Pointer
 }
 
-func GetPointer_myTreeViewRowSeparatorFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeViewRowSeparatorFunc())
+func GetTreeViewRowSeparatorFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeViewRowSeparatorFuncWrapper())
 }
 
-//export myGtkTreeViewRowSeparatorFunc
-func myGtkTreeViewRowSeparatorFunc(model *C.GtkTreeModel, iter *C.GtkTreeIter, data C.gpointer) {
+//export giGtkTreeViewRowSeparatorFunc
+func giGtkTreeViewRowSeparatorFunc(model *C.GtkTreeModel, iter *C.GtkTreeIter, data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type TreeViewSearchEqualFuncStruct struct {
-	F_model       TreeModel
-	F_column      int32
-	F_key         string
-	F_iter        TreeIter
-	F_search_data unsafe.Pointer
+type TreeViewSearchEqualFuncArgs struct {
+	Model      TreeModel
+	Column     int32
+	Key        string
+	Iter       TreeIter
+	SearchData unsafe.Pointer
 }
 
-func GetPointer_myTreeViewSearchEqualFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeViewSearchEqualFunc())
+func GetTreeViewSearchEqualFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeViewSearchEqualFuncWrapper())
 }
 
-//export myGtkTreeViewSearchEqualFunc
-func myGtkTreeViewSearchEqualFunc(model *C.GtkTreeModel, column C.gint32, key *C.gchar, iter *C.GtkTreeIter, search_data C.gpointer) {
+//export giGtkTreeViewSearchEqualFunc
+func giGtkTreeViewSearchEqualFunc(model *C.GtkTreeModel, column C.gint32, key *C.gchar, iter *C.GtkTreeIter, search_data C.gpointer) {
 	// TODO: not found user_data
 }
 
-type TreeViewSearchPositionFuncStruct struct {
-	F_tree_view     TreeView
-	F_search_dialog Widget
+type TreeViewSearchPositionFuncArgs struct {
+	TreeView     TreeView
+	SearchDialog Widget
 }
 
-func GetPointer_myTreeViewSearchPositionFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGtkTreeViewSearchPositionFunc())
+func GetTreeViewSearchPositionFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGtkTreeViewSearchPositionFuncWrapper())
 }
 
-//export myGtkTreeViewSearchPositionFunc
-func myGtkTreeViewSearchPositionFunc(tree_view *C.GtkTreeView, search_dialog *C.GtkWidget, user_data C.gpointer) {
+//export giGtkTreeViewSearchPositionFunc
+func giGtkTreeViewSearchPositionFunc(tree_view *C.GtkTreeView, search_dialog *C.GtkWidget, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TreeViewSearchPositionFuncStruct{
-			F_tree_view:     WrapTreeView(unsafe.Pointer(tree_view)),
-			F_search_dialog: WrapWidget(unsafe.Pointer(search_dialog)),
+		args := &TreeViewSearchPositionFuncArgs{
+			TreeView:     WrapTreeView(unsafe.Pointer(tree_view)),
+			SearchDialog: WrapWidget(unsafe.Pointer(search_dialog)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -75806,9 +75806,9 @@ func (v Widget) AddTickCallback(fn func(v interface{})) (result uint32) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_callback := gi.NewPointerArgument(GetPointer_myTickCallback())
+	arg_callback := gi.NewPointerArgument(GetTickCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_callback, arg_fn, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -80632,7 +80632,7 @@ func (v WidgetClass) BindTemplateCallbackFull(callback_name string) {
 	c_callback_name := gi.CString(callback_name)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_callback_name := gi.NewStringArgument(c_callback_name)
-	arg_callback_symbol := gi.NewPointerArgument(g.GetPointer_myCallback())
+	arg_callback_symbol := gi.NewPointerArgument(g.GetCallbackWrapper())
 	args := []gi.Argument{arg_v, arg_callback_name, arg_callback_symbol}
 	iv.Call(args, nil, nil)
 	gi.Free(c_callback_name)
@@ -80796,9 +80796,9 @@ func (v WidgetClass) SetConnectFunc(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_connect_func := gi.NewPointerArgument(GetPointer_myBuilderConnectFunc())
+	arg_connect_func := gi.NewPointerArgument(GetBuilderConnectFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_connect_data_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_connect_data_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_v, arg_connect_func, arg_fn, arg_connect_data_destroy}
 	iv.Call(args, nil, nil)
 }
@@ -86994,7 +86994,7 @@ func PrintRunPageSetupDialogAsync(parent IWindow, page_setup IPageSetup, setting
 	arg_parent := gi.NewPointerArgument(tmp)
 	arg_page_setup := gi.NewPointerArgument(tmp1)
 	arg_settings := gi.NewPointerArgument(tmp2)
-	arg_done_cb := gi.NewPointerArgument(GetPointer_myPageSetupDoneFunc())
+	arg_done_cb := gi.NewPointerArgument(GetPageSetupDoneFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_parent, arg_page_setup, arg_settings, arg_done_cb, arg_fn}
 	iv.Call(args, nil, nil)
@@ -88734,9 +88734,9 @@ func StockSetTranslateFunc(domain string, fn func(v interface{})) {
 	c_domain := gi.CString(domain)
 	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
 	arg_domain := gi.NewStringArgument(c_domain)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myTranslateFunc())
+	arg_func1 := gi.NewPointerArgument(GetTranslateFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_domain, arg_func1, arg_fn, arg_notify}
 	iv.Call(args, nil, nil)
 	gi.Free(c_domain)

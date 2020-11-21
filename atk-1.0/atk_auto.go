@@ -26,29 +26,29 @@ package atk
 /*
 #cgo pkg-config: atk
 #include <atk/atk.h>
-extern void myAtkEventListener(AtkObject* obj);
-static void* getPointer_myAtkEventListener() {
-return (void*)(myAtkEventListener);
+extern void giAtkEventListener(AtkObject* obj);
+static void* getAtkEventListenerWrapper() {
+    return (void*)(giAtkEventListener);
 }
-extern void myAtkEventListenerInit();
-static void* getPointer_myAtkEventListenerInit() {
-return (void*)(myAtkEventListenerInit);
+extern void giAtkEventListenerInit();
+static void* getAtkEventListenerInitWrapper() {
+    return (void*)(giAtkEventListenerInit);
 }
-extern void myAtkFocusHandler(AtkObject* object, gboolean focus_in);
-static void* getPointer_myAtkFocusHandler() {
-return (void*)(myAtkFocusHandler);
+extern void giAtkFocusHandler(AtkObject* object, gboolean focus_in);
+static void* getAtkFocusHandlerWrapper() {
+    return (void*)(giAtkFocusHandler);
 }
-extern void myAtkFunction(gpointer user_data);
-static void* getPointer_myAtkFunction() {
-return (void*)(myAtkFunction);
+extern void giAtkFunction(gpointer user_data);
+static void* getAtkFunctionWrapper() {
+    return (void*)(giAtkFunction);
 }
-extern void myAtkKeySnoopFunc(AtkKeyEventStruct* event, gpointer user_data);
-static void* getPointer_myAtkKeySnoopFunc() {
-return (void*)(myAtkKeySnoopFunc);
+extern void giAtkKeySnoopFunc(AtkKeyEventStruct* event, gpointer user_data);
+static void* getAtkKeySnoopFuncWrapper() {
+    return (void*)(giAtkKeySnoopFunc);
 }
-extern void myAtkPropertyChangeHandler(AtkObject* obj, AtkPropertyValues* vals);
-static void* getPointer_myAtkPropertyChangeHandler() {
-return (void*)(myAtkPropertyChangeHandler);
+extern void giAtkPropertyChangeHandler(AtkObject* obj, AtkPropertyValues* vals);
+static void* getAtkPropertyChangeHandlerWrapper() {
+    return (void*)(giAtkPropertyChangeHandler);
 }
 */
 import "C"
@@ -993,57 +993,57 @@ func (v *EditableTextIfc) SetTextContents(string string) {
 
 // ignore GType struct EditableTextIface
 
-type EventListenerStruct struct {
-	F_obj Object
+type EventListenerArg struct {
+	Obj Object
 }
 
-func GetPointer_myEventListener() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myAtkEventListener())
+func GetEventListenerWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getAtkEventListenerWrapper())
 }
 
-//export myAtkEventListener
-func myAtkEventListener(obj *C.AtkObject) {
+//export giAtkEventListener
+func giAtkEventListener(obj *C.AtkObject) {
 	// TODO: not found user_data
 }
 
-type EventListenerInitStruct struct {
+type EventListenerInitArg struct {
 }
 
-func GetPointer_myEventListenerInit() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myAtkEventListenerInit())
+func GetEventListenerInitWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getAtkEventListenerInitWrapper())
 }
 
-//export myAtkEventListenerInit
-func myAtkEventListenerInit() {
+//export giAtkEventListenerInit
+func giAtkEventListenerInit() {
 	// TODO: not found user_data
 }
 
-type FocusHandlerStruct struct {
-	F_object   Object
-	F_focus_in bool
+type FocusHandlerArgs struct {
+	Object  Object
+	FocusIn bool
 }
 
-func GetPointer_myFocusHandler() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myAtkFocusHandler())
+func GetFocusHandlerWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getAtkFocusHandlerWrapper())
 }
 
-//export myAtkFocusHandler
-func myAtkFocusHandler(object *C.AtkObject, focus_in C.gboolean) {
+//export giAtkFocusHandler
+func giAtkFocusHandler(object *C.AtkObject, focus_in C.gboolean) {
 	// TODO: not found user_data
 }
 
-type FunctionStruct struct {
+type FunctionArg struct {
 }
 
-func GetPointer_myFunction() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myAtkFunction())
+func GetFunctionWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getAtkFunctionWrapper())
 }
 
-//export myAtkFunction
-func myAtkFunction(user_data C.gpointer) {
+//export giAtkFunction
+func giAtkFunction(user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &FunctionStruct{}
+		args := &FunctionArg{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
@@ -1595,20 +1595,20 @@ func KeyEventTypeGetType() gi.GType {
 	return ret
 }
 
-type KeySnoopFuncStruct struct {
-	F_event KeyEventStruct
+type KeySnoopFuncArg struct {
+	Event KeyEventStruct
 }
 
-func GetPointer_myKeySnoopFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myAtkKeySnoopFunc())
+func GetKeySnoopFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getAtkKeySnoopFuncWrapper())
 }
 
-//export myAtkKeySnoopFunc
-func myAtkKeySnoopFunc(event *C.AtkKeyEventStruct, user_data C.gpointer) {
+//export giAtkKeySnoopFunc
+func giAtkKeySnoopFunc(event *C.AtkKeyEventStruct, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &KeySnoopFuncStruct{
-			F_event: KeyEventStruct{P: unsafe.Pointer(event)},
+		args := &KeySnoopFuncArg{
+			Event: KeyEventStruct{P: unsafe.Pointer(event)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -2382,17 +2382,17 @@ func (v Plug) GetId() (result string) {
 
 // ignore GType struct PlugClass
 
-type PropertyChangeHandlerStruct struct {
-	F_obj  Object
-	F_vals PropertyValues
+type PropertyChangeHandlerArgs struct {
+	Obj  Object
+	Vals PropertyValues
 }
 
-func GetPointer_myPropertyChangeHandler() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myAtkPropertyChangeHandler())
+func GetPropertyChangeHandlerWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getAtkPropertyChangeHandlerWrapper())
 }
 
-//export myAtkPropertyChangeHandler
-func myAtkPropertyChangeHandler(obj *C.AtkObject, vals *C.AtkPropertyValues) {
+//export giAtkPropertyChangeHandler
+func giAtkPropertyChangeHandler(obj *C.AtkObject, vals *C.AtkPropertyValues) {
 	// TODO: not found user_data
 }
 
@@ -2704,7 +2704,7 @@ func (v Relation) GetRelationType() (result RelationTypeEnum) {
 //
 // [ result ] trans: nothing
 //
-func (v Relation) GetTarget() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
+func (v Relation) GetTarget() (result g.PtrArray) {
 	iv, err := _I.Get(103, "Relation", "get_target", 54, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2714,7 +2714,7 @@ func (v Relation) GetTarget() (result int /*TODO_TYPE array type: 2, isZeroTerm:
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4414,7 +4414,7 @@ func TableCellGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
+func (v *TableCellIfc) GetColumnHeaderCells() (result g.PtrArray) {
 	iv, err := _I.Get(168, "TableCell", "get_column_header_cells", 71, 0, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4424,7 +4424,7 @@ func (v *TableCellIfc) GetColumnHeaderCells() (result int /*TODO_TYPE array type
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 
@@ -4512,7 +4512,7 @@ func (v *TableCellIfc) GetRowColumnSpan() (result bool, row int32, column int32,
 //
 // [ result ] trans: everything
 //
-func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2, isZeroTerm: false*/) {
+func (v *TableCellIfc) GetRowHeaderCells() (result g.PtrArray) {
 	iv, err := _I.Get(172, "TableCell", "get_row_header_cells", 71, 4, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4522,7 +4522,7 @@ func (v *TableCellIfc) GetRowHeaderCells() (result int /*TODO_TYPE array type: 2
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = ret.Int() /*TODO*/
+	result.P = ret.Pointer()
 	return
 }
 

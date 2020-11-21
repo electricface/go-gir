@@ -26,13 +26,13 @@ package gdkpixbuf
 /*
 #cgo pkg-config: gdk-pixbuf-2.0
 #include <gdk-pixbuf/gdk-pixbuf.h>
-extern void myGdkPixbufPixbufDestroyNotify(gpointer pixels, gpointer data);
-static void* getPointer_myGdkPixbufPixbufDestroyNotify() {
-return (void*)(myGdkPixbufPixbufDestroyNotify);
+extern void giGdkPixbufPixbufDestroyNotify(gpointer pixels, gpointer data);
+static void* getGdkPixbufPixbufDestroyNotifyWrapper() {
+    return (void*)(giGdkPixbufPixbufDestroyNotify);
 }
-extern void myGdkPixbufPixbufSaveFunc(gpointer buf, guint64 count, gpointer error, gpointer data);
-static void* getPointer_myGdkPixbufPixbufSaveFunc() {
-return (void*)(myGdkPixbufPixbufSaveFunc);
+extern void giGdkPixbufPixbufSaveFunc(gpointer buf, guint64 count, gpointer error, gpointer data);
+static void* getGdkPixbufPixbufSaveFuncWrapper() {
+    return (void*)(giGdkPixbufPixbufSaveFunc);
 }
 */
 import "C"
@@ -205,7 +205,7 @@ func NewPixbufFromData(data gi.Uint8Array, colorspace ColorspaceEnum, has_alpha 
 	arg_width := gi.NewInt32Argument(width)
 	arg_height := gi.NewInt32Argument(height)
 	arg_rowstride := gi.NewInt32Argument(rowstride)
-	arg_destroy_fn := gi.NewPointerArgument(GetPointer_myPixbufDestroyNotify())
+	arg_destroy_fn := gi.NewPointerArgument(GetPixbufDestroyNotifyWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_data, arg_colorspace, arg_has_alpha, arg_bits_per_sample, arg_width, arg_height, arg_rowstride, arg_destroy_fn, arg_fn}
 	var ret gi.Argument
@@ -596,7 +596,7 @@ func PixbufGetFileInfoAsync1(filename string, cancellable g.ICancellable, fn fun
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_filename := gi.NewStringArgument(c_filename)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetPointer_myAsyncReadyCallback())
+	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_filename, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -680,7 +680,7 @@ func PixbufNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICancellable
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_stream := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetPointer_myAsyncReadyCallback())
+	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -722,7 +722,7 @@ func PixbufNewFromStreamAtScaleAsync1(stream g.IInputStream, width int32, height
 	arg_height := gi.NewInt32Argument(height)
 	arg_preserve_aspect_ratio := gi.NewBoolArgument(preserve_aspect_ratio)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetPointer_myAsyncReadyCallback())
+	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_stream, arg_width, arg_height, arg_preserve_aspect_ratio, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -1485,7 +1485,7 @@ func (v Pixbuf) SaveToCallbackv(fn func(v interface{}), type1 string, option_key
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	c_type1 := gi.CString(type1)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_save_func := gi.NewPointerArgument(GetPointer_myPixbufSaveFunc())
+	arg_save_func := gi.NewPointerArgument(GetPixbufSaveFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_type1 := gi.NewStringArgument(c_type1)
 	arg_option_keys := gi.NewPointerArgument(option_keys.P)
@@ -1584,7 +1584,7 @@ func (v Pixbuf) SaveToStreamvAsync(stream g.IOutputStream, type1 string, option_
 	arg_option_keys := gi.NewPointerArgument(option_keys.P)
 	arg_option_values := gi.NewPointerArgument(option_values.P)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetPointer_myAsyncReadyCallback())
+	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_stream, arg_type1, arg_option_keys, arg_option_values, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -1891,7 +1891,7 @@ func PixbufAnimationNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICa
 	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
 	arg_stream := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetPointer_myAsyncReadyCallback())
+	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_callback, arg_fn}
 	iv.Call(args, nil, nil)
@@ -2080,17 +2080,17 @@ func (v PixbufAnimationIter) OnCurrentlyLoadingFrame() (result bool) {
 	return
 }
 
-type PixbufDestroyNotifyStruct struct {
-	F_pixels gi.Uint8Array
-	F_data   unsafe.Pointer
+type PixbufDestroyNotifyArgs struct {
+	Pixels gi.Uint8Array
+	Data   unsafe.Pointer
 }
 
-func GetPointer_myPixbufDestroyNotify() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGdkPixbufPixbufDestroyNotify())
+func GetPixbufDestroyNotifyWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGdkPixbufPixbufDestroyNotifyWrapper())
 }
 
-//export myGdkPixbufPixbufDestroyNotify
-func myGdkPixbufPixbufDestroyNotify(pixels C.gpointer, data C.gpointer) {
+//export giGdkPixbufPixbufDestroyNotify
+func giGdkPixbufPixbufDestroyNotify(pixels C.gpointer, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -2576,19 +2576,19 @@ func PixbufRotationGetType() gi.GType {
 	return ret
 }
 
-type PixbufSaveFuncStruct struct {
-	F_buf   gi.Uint8Array
-	F_count uint64
-	F_error unsafe.Pointer /*TODO_CB tag: error, isPtr: true*/
-	F_data  unsafe.Pointer
+type PixbufSaveFuncArgs struct {
+	Buf   gi.Uint8Array
+	Count uint64
+	Error unsafe.Pointer /*TODO_CB tag: error, isPtr: true*/
+	Data  unsafe.Pointer
 }
 
-func GetPointer_myPixbufSaveFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGdkPixbufPixbufSaveFunc())
+func GetPixbufSaveFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGdkPixbufPixbufSaveFuncWrapper())
 }
 
-//export myGdkPixbufPixbufSaveFunc
-func myGdkPixbufPixbufSaveFunc(buf C.gpointer, count C.guint64, error C.gpointer, data C.gpointer) {
+//export giGdkPixbufPixbufSaveFunc
+func giGdkPixbufPixbufSaveFunc(buf C.gpointer, count C.guint64, error C.gpointer, data C.gpointer) {
 	// TODO: not found user_data
 }
 

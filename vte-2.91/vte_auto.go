@@ -26,13 +26,13 @@ package vte
 /*
 #cgo pkg-config: vte-2.91
 #include <vte/vte.h>
-extern void myVteSelectionFunc(VteTerminal* terminal, gint64 column, gint64 row, gpointer data);
-static void* getPointer_myVteSelectionFunc() {
-return (void*)(myVteSelectionFunc);
+extern void giVteSelectionFunc(VteTerminal* terminal, gint64 column, gint64 row, gpointer data);
+static void* getVteSelectionFuncWrapper() {
+    return (void*)(giVteSelectionFunc);
 }
-extern void myVteTerminalSpawnAsyncCallback(VteTerminal* terminal, gint32 pid, GError** error, gpointer user_data);
-static void* getPointer_myVteTerminalSpawnAsyncCallback() {
-return (void*)(myVteTerminalSpawnAsyncCallback);
+extern void giVteTerminalSpawnAsyncCallback(VteTerminal* terminal, gint32 pid, GError** error, gpointer user_data);
+static void* getVteTerminalSpawnAsyncCallbackWrapper() {
+    return (void*)(giVteTerminalSpawnAsyncCallback);
 }
 */
 import "C"
@@ -365,12 +365,12 @@ func (v Pty) SpawnAsync(working_directory string, argv gi.CStrArray, envv gi.CSt
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envv := gi.NewPointerArgument(envv.P)
 	arg_spawn_flags := gi.NewIntArgument(int(spawn_flags))
-	arg_fn := gi.NewPointerArgument(g.GetPointer_mySpawnChildSetupFunc())
+	arg_fn := gi.NewPointerArgument(g.GetSpawnChildSetupFuncWrapper())
 	arg_fn1 := gi.NewPointerArgumentU(cId)
-	arg_child_setup_data_destroy := gi.NewPointerArgument(g.GetPointer_myDestroyNotify())
+	arg_child_setup_data_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	arg_timeout := gi.NewInt32Argument(timeout)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetPointer_myAsyncReadyCallback())
+	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
 	arg_fn2 := gi.NewPointerArgumentU(cId1)
 	args := []gi.Argument{arg_v, arg_working_directory, arg_argv, arg_envv, arg_spawn_flags, arg_fn, arg_fn1, arg_child_setup_data_destroy, arg_timeout, arg_cancellable, arg_callback, arg_fn2}
 	iv.Call(args, nil, nil)
@@ -582,19 +582,19 @@ func RegexErrorGetType() gi.GType {
 	return ret
 }
 
-type SelectionFuncStruct struct {
-	F_terminal Terminal
-	F_column   int64
-	F_row      int64
-	F_data     unsafe.Pointer
+type SelectionFuncArgs struct {
+	Terminal Terminal
+	Column   int64
+	Row      int64
+	Data     unsafe.Pointer
 }
 
-func GetPointer_mySelectionFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myVteSelectionFunc())
+func GetSelectionFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getVteSelectionFuncWrapper())
 }
 
-//export myVteSelectionFunc
-func myVteSelectionFunc(terminal *C.VteTerminal, column C.gint64, row C.gint64, data C.gpointer) {
+//export giVteSelectionFunc
+func giVteSelectionFunc(terminal *C.VteTerminal, column C.gint64, row C.gint64, data C.gpointer) {
 	// TODO: not found user_data
 }
 
@@ -1379,7 +1379,7 @@ func (v Terminal) GetText(fn func(v interface{}), attributes unsafe.Pointer /*TO
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_is_selected := gi.NewPointerArgument(GetPointer_mySelectionFunc())
+	arg_is_selected := gi.NewPointerArgument(GetSelectionFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_attributes := gi.NewPointerArgument(attributes /*TODO*/)
 	args := []gi.Argument{arg_v, arg_is_selected, arg_fn, arg_attributes}
@@ -1426,7 +1426,7 @@ func (v Terminal) GetTextIncludeTrailingSpaces(fn func(v interface{}), attribute
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_is_selected := gi.NewPointerArgument(GetPointer_mySelectionFunc())
+	arg_is_selected := gi.NewPointerArgument(GetSelectionFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_attributes := gi.NewPointerArgument(attributes /*TODO*/)
 	args := []gi.Argument{arg_v, arg_is_selected, arg_fn, arg_attributes}
@@ -1467,7 +1467,7 @@ func (v Terminal) GetTextRange(start_row int64, start_col int64, end_row int64, 
 	arg_start_col := gi.NewInt64Argument(start_col)
 	arg_end_row := gi.NewInt64Argument(end_row)
 	arg_end_col := gi.NewInt64Argument(end_col)
-	arg_is_selected := gi.NewPointerArgument(GetPointer_mySelectionFunc())
+	arg_is_selected := gi.NewPointerArgument(GetSelectionFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_attributes := gi.NewPointerArgument(attributes /*TODO*/)
 	args := []gi.Argument{arg_v, arg_start_row, arg_start_col, arg_end_row, arg_end_col, arg_is_selected, arg_fn, arg_attributes}
@@ -2608,7 +2608,7 @@ func (v Terminal) SpawnSync(pty_flags PtyFlags, working_directory string, argv g
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envv := gi.NewPointerArgument(envv.P)
 	arg_spawn_flags := gi.NewIntArgument(int(spawn_flags))
-	arg_child_setup := gi.NewPointerArgument(g.GetPointer_mySpawnChildSetupFunc())
+	arg_child_setup := gi.NewPointerArgument(g.GetSpawnChildSetupFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_cancellable := gi.NewPointerArgument(tmp)
@@ -2702,24 +2702,24 @@ func TerminalClassPrivateGetType() gi.GType {
 	return ret
 }
 
-type TerminalSpawnAsyncCallbackStruct struct {
-	F_terminal Terminal
-	F_pid      int32
-	F_error    unsafe.Pointer
+type TerminalSpawnAsyncCallbackArgs struct {
+	Terminal Terminal
+	Pid      int32
+	Error    unsafe.Pointer
 }
 
-func GetPointer_myTerminalSpawnAsyncCallback() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myVteTerminalSpawnAsyncCallback())
+func GetTerminalSpawnAsyncCallbackWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getVteTerminalSpawnAsyncCallbackWrapper())
 }
 
-//export myVteTerminalSpawnAsyncCallback
-func myVteTerminalSpawnAsyncCallback(terminal *C.VteTerminal, pid C.gint32, error **C.GError, user_data C.gpointer) {
+//export giVteTerminalSpawnAsyncCallback
+func giVteTerminalSpawnAsyncCallback(terminal *C.VteTerminal, pid C.gint32, error **C.GError, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &TerminalSpawnAsyncCallbackStruct{
-			F_terminal: WrapTerminal(unsafe.Pointer(terminal)),
-			F_pid:      int32(pid),
-			F_error:    unsafe.Pointer(error),
+		args := &TerminalSpawnAsyncCallbackArgs{
+			Terminal: WrapTerminal(unsafe.Pointer(terminal)),
+			Pid:      int32(pid),
+			Error:    unsafe.Pointer(error),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {

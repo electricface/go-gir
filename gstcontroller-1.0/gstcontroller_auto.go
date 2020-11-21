@@ -26,13 +26,13 @@ package gstcontroller
 /*
 #cgo pkg-config: gstreamer-controller-1.0
 #include <gst/controller/controller.h>
-extern void myGstControllerDirectControlBindingConvertGValue(GstDirectControlBinding* self, gdouble src_value, GValue* dest_value);
-static void* getPointer_myGstControllerDirectControlBindingConvertGValue() {
-return (void*)(myGstControllerDirectControlBindingConvertGValue);
+extern void giGstControllerDirectControlBindingConvertGValue(GstDirectControlBinding* self, gdouble src_value, GValue* dest_value);
+static void* getGstControllerDirectControlBindingConvertGValueWrapper() {
+    return (void*)(giGstControllerDirectControlBindingConvertGValue);
 }
-extern void myGstControllerDirectControlBindingConvertValue(GstDirectControlBinding* self, gdouble src_value, gpointer dest_value);
-static void* getPointer_myGstControllerDirectControlBindingConvertValue() {
-return (void*)(myGstControllerDirectControlBindingConvertValue);
+extern void giGstControllerDirectControlBindingConvertValue(GstDirectControlBinding* self, gdouble src_value, gpointer dest_value);
+static void* getGstControllerDirectControlBindingConvertValueWrapper() {
+    return (void*)(giGstControllerDirectControlBindingConvertValue);
 }
 */
 import "C"
@@ -260,33 +260,33 @@ func NewDirectControlBindingAbsolute(object gst.IObject, property_name string, c
 
 // ignore GType struct DirectControlBindingClass
 
-type DirectControlBindingConvertGValueStruct struct {
-	F_self       DirectControlBinding
-	F_src_value  float64
-	F_dest_value g.Value
+type DirectControlBindingConvertGValueArgs struct {
+	Self      DirectControlBinding
+	SrcValue  float64
+	DestValue g.Value
 }
 
-func GetPointer_myDirectControlBindingConvertGValue() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstControllerDirectControlBindingConvertGValue())
+func GetDirectControlBindingConvertGValueWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstControllerDirectControlBindingConvertGValueWrapper())
 }
 
-//export myGstControllerDirectControlBindingConvertGValue
-func myGstControllerDirectControlBindingConvertGValue(self *C.GstDirectControlBinding, src_value C.gdouble, dest_value *C.GValue) {
+//export giGstControllerDirectControlBindingConvertGValue
+func giGstControllerDirectControlBindingConvertGValue(self *C.GstDirectControlBinding, src_value C.gdouble, dest_value *C.GValue) {
 	// TODO: not found user_data
 }
 
-type DirectControlBindingConvertValueStruct struct {
-	F_self       DirectControlBinding
-	F_src_value  float64
-	F_dest_value unsafe.Pointer
+type DirectControlBindingConvertValueArgs struct {
+	Self      DirectControlBinding
+	SrcValue  float64
+	DestValue unsafe.Pointer
 }
 
-func GetPointer_myDirectControlBindingConvertValue() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myGstControllerDirectControlBindingConvertValue())
+func GetDirectControlBindingConvertValueWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getGstControllerDirectControlBindingConvertValueWrapper())
 }
 
-//export myGstControllerDirectControlBindingConvertValue
-func myGstControllerDirectControlBindingConvertValue(self *C.GstDirectControlBinding, src_value C.gdouble, dest_value C.gpointer) {
+//export giGstControllerDirectControlBindingConvertValue
+func giGstControllerDirectControlBindingConvertValue(self *C.GstDirectControlBinding, src_value C.gdouble, dest_value C.gpointer) {
 	// TODO: not found user_data
 }
 

@@ -26,17 +26,17 @@ package pango
 /*
 #cgo pkg-config: pango
 #include <pango/pango.h>
-extern void myPangoAttrDataCopyFunc(gpointer user_data);
-static void* getPointer_myPangoAttrDataCopyFunc() {
-return (void*)(myPangoAttrDataCopyFunc);
+extern void giPangoAttrDataCopyFunc(gpointer user_data);
+static void* getPangoAttrDataCopyFuncWrapper() {
+    return (void*)(giPangoAttrDataCopyFunc);
 }
-extern void myPangoAttrFilterFunc(PangoAttribute* attribute, gpointer user_data);
-static void* getPointer_myPangoAttrFilterFunc() {
-return (void*)(myPangoAttrFilterFunc);
+extern void giPangoAttrFilterFunc(PangoAttribute* attribute, gpointer user_data);
+static void* getPangoAttrFilterFuncWrapper() {
+    return (void*)(giPangoAttrFilterFunc);
 }
-extern void myPangoFontsetForeachFunc(PangoFontset* fontset, PangoFont* font, gpointer user_data);
-static void* getPointer_myPangoFontsetForeachFunc() {
-return (void*)(myPangoFontsetForeachFunc);
+extern void giPangoFontsetForeachFunc(PangoFontset* fontset, PangoFont* font, gpointer user_data);
+static void* getPangoFontsetForeachFuncWrapper() {
+    return (void*)(giPangoFontsetForeachFunc);
 }
 */
 import "C"
@@ -107,18 +107,18 @@ func AttrColorGetType() gi.GType {
 	return ret
 }
 
-type AttrDataCopyFuncStruct struct {
+type AttrDataCopyFuncArg struct {
 }
 
-func GetPointer_myAttrDataCopyFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myPangoAttrDataCopyFunc())
+func GetAttrDataCopyFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getPangoAttrDataCopyFuncWrapper())
 }
 
-//export myPangoAttrDataCopyFunc
-func myPangoAttrDataCopyFunc(user_data C.gpointer) {
+//export giPangoAttrDataCopyFunc
+func giPangoAttrDataCopyFunc(user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &AttrDataCopyFuncStruct{}
+		args := &AttrDataCopyFuncArg{}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
@@ -126,20 +126,20 @@ func myPangoAttrDataCopyFunc(user_data C.gpointer) {
 	}
 }
 
-type AttrFilterFuncStruct struct {
-	F_attribute Attribute
+type AttrFilterFuncArg struct {
+	Attribute Attribute
 }
 
-func GetPointer_myAttrFilterFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myPangoAttrFilterFunc())
+func GetAttrFilterFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getPangoAttrFilterFuncWrapper())
 }
 
-//export myPangoAttrFilterFunc
-func myPangoAttrFilterFunc(attribute *C.PangoAttribute, user_data C.gpointer) {
+//export giPangoAttrFilterFunc
+func giPangoAttrFilterFunc(attribute *C.PangoAttribute, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &AttrFilterFuncStruct{
-			F_attribute: Attribute{P: unsafe.Pointer(attribute)},
+		args := &AttrFilterFuncArg{
+			Attribute: Attribute{P: unsafe.Pointer(attribute)},
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
@@ -388,7 +388,7 @@ func (v AttrList) Filter(fn func(v interface{})) (result AttrList) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myAttrFilterFunc())
+	arg_func1 := gi.NewPointerArgument(GetAttrFilterFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	var ret gi.Argument
@@ -2757,7 +2757,7 @@ func (v Fontset) Foreach(fn func(v interface{})) {
 	}
 	cId := gi.RegisterFunc(fn, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_func1 := gi.NewPointerArgument(GetPointer_myFontsetForeachFunc())
+	arg_func1 := gi.NewPointerArgument(GetFontsetForeachFuncWrapper())
 	arg_fn := gi.NewPointerArgumentU(cId)
 	args := []gi.Argument{arg_v, arg_func1, arg_fn}
 	iv.Call(args, nil, nil)
@@ -2805,22 +2805,22 @@ func (v Fontset) GetMetrics() (result FontMetrics) {
 
 // ignore GType struct FontsetClass
 
-type FontsetForeachFuncStruct struct {
-	F_fontset Fontset
-	F_font    Font
+type FontsetForeachFuncArgs struct {
+	Fontset Fontset
+	Font    Font
 }
 
-func GetPointer_myFontsetForeachFunc() unsafe.Pointer {
-	return unsafe.Pointer(C.getPointer_myPangoFontsetForeachFunc())
+func GetFontsetForeachFuncWrapper() unsafe.Pointer {
+	return unsafe.Pointer(C.getPangoFontsetForeachFuncWrapper())
 }
 
-//export myPangoFontsetForeachFunc
-func myPangoFontsetForeachFunc(fontset *C.PangoFontset, font *C.PangoFont, user_data C.gpointer) {
+//export giPangoFontsetForeachFunc
+func giPangoFontsetForeachFunc(fontset *C.PangoFontset, font *C.PangoFont, user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
-		args := &FontsetForeachFuncStruct{
-			F_fontset: WrapFontset(unsafe.Pointer(fontset)),
-			F_font:    WrapFont(unsafe.Pointer(font)),
+		args := &FontsetForeachFuncArgs{
+			Fontset: WrapFontset(unsafe.Pointer(fontset)),
+			Font:    WrapFont(unsafe.Pointer(font)),
 		}
 		closure.Fn(args)
 		if closure.Scope == gi.ScopeAsync {
