@@ -85591,7 +85591,7 @@ func IconThemeErrorQuark() (result uint32) {
 	return
 }
 
-// black function Init
+// denied function Init
 
 // gtk_init_check
 //
@@ -87331,7 +87331,7 @@ func RcParseColorFull(scanner g.Scanner, style IRcStyle, color gdk.Color) (resul
 	return
 }
 
-// black function RcParsePriority
+// denied function RcParsePriority
 
 // Deprecated
 //

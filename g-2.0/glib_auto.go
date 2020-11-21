@@ -23408,7 +23408,7 @@ func HostnameToUnicode(hostname string) (result string) {
 	return
 }
 
-// black function IdleAdd
+// denied function IdleAdd
 
 // g_idle_remove_by_data
 //
@@ -28378,9 +28378,9 @@ func TimeValFromIso8601(iso_date string, time_ TimeVal) (result bool) {
 	return
 }
 
-// black function TimeoutAdd
+// denied function TimeoutAdd
 
-// black function TimeoutAddSeconds
+// denied function TimeoutAddSeconds
 
 // g_timeout_source_new
 //

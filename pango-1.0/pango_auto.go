@@ -7206,7 +7206,7 @@ func LanguageGetDefault() (result Language) {
 	return
 }
 
-// black function Log2visGetEmbeddingLevels
+// denied function Log2visGetEmbeddingLevels
 
 // Deprecated
 //
