@@ -5322,7 +5322,7 @@ func (v ByteWriter) ResetAndGetData() (result gi.Uint8Array) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = gi.Uint8Array{P: ret.Pointer(), Len: int(0)}
+	result = gi.Uint8Array{P: ret.Pointer()}
 	return
 }
 

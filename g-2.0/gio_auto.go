@@ -7341,7 +7341,8 @@ func (v DBusMessage) GetHeaderFields() (result gi.Uint8Array) {
 	args := []gi.Argument{arg_v}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	result = gi.Uint8Array{P: ret.Pointer(), Len: int(0)}
+	result = gi.Uint8Array{P: ret.Pointer()}
+	result.SetLenZT()
 	return
 }
 
@@ -10873,7 +10874,8 @@ func (v DataInputStream) ReadLine(cancellable ICancellable) (result gi.Uint8Arra
 	iv.Call(args, &ret, &outArgs[0])
 	err = gi.ToError(outArgs[1].Pointer())
 	length = outArgs[0].Uint64()
-	result = gi.Uint8Array{P: ret.Pointer(), Len: int(0)}
+	result = gi.Uint8Array{P: ret.Pointer()}
+	result.SetLenZT()
 	return
 }
 
@@ -10934,7 +10936,8 @@ func (v DataInputStream) ReadLineFinish(result IAsyncResult) (result1 gi.Uint8Ar
 	iv.Call(args, &ret, &outArgs[0])
 	err = gi.ToError(outArgs[1].Pointer())
 	length = outArgs[0].Uint64()
-	result1 = gi.Uint8Array{P: ret.Pointer(), Len: int(0)}
+	result1 = gi.Uint8Array{P: ret.Pointer()}
+	result1.SetLenZT()
 	return
 }
 
@@ -12008,7 +12011,7 @@ func DesktopAppInfoGetImplementations1(interface1 string) (result List) {
 //
 // [ result ] trans: everything
 //
-func DesktopAppInfoSearch1(search_string string) (result int /*TODO_TYPE array type c, elemTypeTag: array, isPtr: true*/) {
+func DesktopAppInfoSearch1(search_string string) (result gi.CStrvArray) {
 	iv, err := _I.Get1(2068, "Gio", "DesktopAppInfo", "search", 139, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12020,7 +12023,8 @@ func DesktopAppInfoSearch1(search_string string) (result int /*TODO_TYPE array t
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_search_string)
-	result = ret.Int() /*TODO*/
+	result = gi.CStrvArray{P: ret.Pointer()}
+	result.SetLenZT()
 	return
 }
 

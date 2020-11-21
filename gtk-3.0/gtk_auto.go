@@ -30454,7 +30454,8 @@ func (v IconTheme) GetIconSizes(icon_name string) (result gi.Int32Array) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_icon_name)
-	result = gi.Int32Array{P: ret.Pointer(), Len: int(0)}
+	result = gi.Int32Array{P: ret.Pointer()}
+	result.SetLenZT()
 	return
 }
 
