@@ -72,9 +72,9 @@ static void* getGstBaseTypeFindHelperGetRangeFunctionWrapper() {
 }
 */
 import "C"
-import "github.com/linuxdeepin/go-gir/g-2.0"
-import "github.com/linuxdeepin/go-gir/gi"
-import "github.com/linuxdeepin/go-gir/gst-1.0"
+import "github.com/electricface/go-gir/g-2.0"
+import "github.com/electricface/go-gir/gi"
+import "github.com/electricface/go-gir/gst-1.0"
 import "log"
 import "unsafe"
 

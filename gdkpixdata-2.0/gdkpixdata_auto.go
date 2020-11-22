@@ -28,9 +28,9 @@ package gdkpixdata
 #include <gdk-pixbuf/gdk-pixdata.h>
 */
 import "C"
-import "github.com/linuxdeepin/go-gir/g-2.0"
-import "github.com/linuxdeepin/go-gir/gdkpixbuf-2.0"
-import "github.com/linuxdeepin/go-gir/gi"
+import "github.com/electricface/go-gir/g-2.0"
+import "github.com/electricface/go-gir/gdkpixbuf-2.0"
+import "github.com/electricface/go-gir/gi"
 import "log"
 import "unsafe"
 

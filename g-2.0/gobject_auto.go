@@ -136,7 +136,7 @@ static void* getGObjectWeakNotifyWrapper() {
 }
 */
 import "C"
-import "github.com/linuxdeepin/go-gir/gi"
+import "github.com/electricface/go-gir/gi"
 import "log"
 import "unsafe"
 

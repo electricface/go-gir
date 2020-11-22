@@ -36,9 +36,9 @@ static void* getPopplerMediaSaveFuncWrapper() {
 }
 */
 import "C"
-import "github.com/linuxdeepin/go-gir/cairo-1.0"
-import "github.com/linuxdeepin/go-gir/g-2.0"
-import "github.com/linuxdeepin/go-gir/gi"
+import "github.com/electricface/go-gir/cairo-1.0"
+import "github.com/electricface/go-gir/g-2.0"
+import "github.com/electricface/go-gir/gi"
 import "log"
 import "unsafe"
 
