@@ -2662,7 +2662,7 @@ func (v FileLoader) GetNewlineType() (result NewlineTypeEnum) {
 //
 // [ user_data ] trans: nothing
 //
-func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, fn func(v interface{}), fn1 func(v interface{})) {
+func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, progress_callback interface{}, callback interface{}) {
 	iv, err := _I.Get(115, "FileLoader", "load_async", 31, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2672,17 +2672,17 @@ func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, fn 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	cId1 := gi.RegisterFunc(fn1, gi.ScopeAsync)
+	cId := gi.RegisterFunc(progress_callback, gi.ScopeNotified)
+	cId1 := gi.RegisterFunc(callback, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_progress_callback := gi.NewPointerArgument(g.GetFileProgressCallbackWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_progress_callback_data := gi.NewPointerArgumentU(cId)
 	arg_progress_callback_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_fn1 := gi.NewPointerArgumentU(cId1)
-	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_fn, arg_progress_callback_notify, arg_callback, arg_fn1}
+	arg_user_data := gi.NewPointerArgumentU(cId1)
+	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_progress_callback_notify, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
 
@@ -2991,7 +2991,7 @@ func (v FileSaver) GetNewlineType() (result NewlineTypeEnum) {
 //
 // [ user_data ] trans: nothing
 //
-func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, fn func(v interface{}), fn1 func(v interface{})) {
+func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, progress_callback interface{}, callback interface{}) {
 	iv, err := _I.Get(127, "FileSaver", "save_async", 36, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3001,17 +3001,17 @@ func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, fn f
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
-	cId1 := gi.RegisterFunc(fn1, gi.ScopeAsync)
+	cId := gi.RegisterFunc(progress_callback, gi.ScopeNotified)
+	cId1 := gi.RegisterFunc(callback, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_progress_callback := gi.NewPointerArgument(g.GetFileProgressCallbackWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_progress_callback_data := gi.NewPointerArgumentU(cId)
 	arg_progress_callback_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
 	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_fn1 := gi.NewPointerArgumentU(cId1)
-	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_fn, arg_progress_callback_notify, arg_callback, arg_fn1}
+	arg_user_data := gi.NewPointerArgumentU(cId1)
+	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_progress_callback_notify, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
 
@@ -6152,7 +6152,7 @@ func (v SearchContext) Backward(iter gtk.TextIter, match_start gtk.TextIter, mat
 //
 // [ user_data ] trans: nothing
 //
-func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellable, fn func(v interface{})) {
+func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellable, callback interface{}) {
 	iv, err := _I.Get(264, "SearchContext", "backward_async", 76, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6162,13 +6162,13 @@ func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellab
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
+	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
-	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_fn}
+	arg_user_data := gi.NewPointerArgumentU(cId)
+	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
 
@@ -6251,7 +6251,7 @@ func (v SearchContext) Forward(iter gtk.TextIter, match_start gtk.TextIter, matc
 //
 // [ user_data ] trans: nothing
 //
-func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellable, fn func(v interface{})) {
+func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellable, callback interface{}) {
 	iv, err := _I.Get(267, "SearchContext", "forward_async", 76, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6261,13 +6261,13 @@ func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellabl
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
+	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
-	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_fn}
+	arg_user_data := gi.NewPointerArgumentU(cId)
+	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
 

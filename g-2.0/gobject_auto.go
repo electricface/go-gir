@@ -34,11 +34,11 @@ extern void giGObjectBaseInitFunc(GTypeClass* g_class);
 static void* getGObjectBaseInitFuncWrapper() {
     return (void*)(giGObjectBaseInitFunc);
 }
-extern void giGObjectBindingTransformFunc(GBinding* binding, GValue* from_value, GValue* to_value, gpointer user_data);
+extern gboolean giGObjectBindingTransformFunc(GBinding* binding, GValue* from_value, GValue* to_value, gpointer user_data);
 static void* getGObjectBindingTransformFuncWrapper() {
     return (void*)(giGObjectBindingTransformFunc);
 }
-extern void giGObjectBoxedCopyFunc(gpointer boxed);
+extern gpointer giGObjectBoxedCopyFunc(gpointer boxed);
 static void* getGObjectBoxedCopyFuncWrapper() {
     return (void*)(giGObjectBoxedCopyFunc);
 }
@@ -90,11 +90,11 @@ extern void giGObjectObjectSetPropertyFunc(GObject* object, guint32 property_id,
 static void* getGObjectObjectSetPropertyFuncWrapper() {
     return (void*)(giGObjectObjectSetPropertyFunc);
 }
-extern void giGObjectSignalAccumulator(GSignalInvocationHint* ihint, GValue* return_accu, GValue* handler_return, gpointer data);
+extern gboolean giGObjectSignalAccumulator(GSignalInvocationHint* ihint, GValue* return_accu, GValue* handler_return, gpointer data);
 static void* getGObjectSignalAccumulatorWrapper() {
     return (void*)(giGObjectSignalAccumulator);
 }
-extern void giGObjectSignalEmissionHook(GSignalInvocationHint* ihint, guint32 n_param_values, gpointer param_values, gpointer data);
+extern gboolean giGObjectSignalEmissionHook(GSignalInvocationHint* ihint, guint32 n_param_values, gpointer param_values, gpointer data);
 static void* getGObjectSignalEmissionHookWrapper() {
     return (void*)(giGObjectSignalEmissionHook);
 }
@@ -102,7 +102,7 @@ extern void giGObjectToggleNotify(gpointer data, GObject* object, gboolean is_la
 static void* getGObjectToggleNotifyWrapper() {
     return (void*)(giGObjectToggleNotify);
 }
-extern void giGObjectTypeClassCacheFunc(gpointer cache_data, GTypeClass* g_class);
+extern gboolean giGObjectTypeClassCacheFunc(gpointer cache_data, GTypeClass* g_class);
 static void* getGObjectTypeClassCacheFuncWrapper() {
     return (void*)(giGObjectTypeClassCacheFunc);
 }
@@ -322,7 +322,7 @@ func GetBindingTransformFuncWrapper() unsafe.Pointer {
 }
 
 //export giGObjectBindingTransformFunc
-func giGObjectBindingTransformFunc(binding *C.GBinding, from_value *C.GValue, to_value *C.GValue, user_data C.gpointer) {
+func giGObjectBindingTransformFunc(binding *C.GBinding, from_value *C.GValue, to_value *C.GValue, user_data C.gpointer) (c_result C.gboolean) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &BindingTransformFuncArgs{
@@ -330,11 +330,14 @@ func giGObjectBindingTransformFunc(binding *C.GBinding, from_value *C.GValue, to
 			FromValue: Value{P: unsafe.Pointer(from_value)},
 			ToValue:   Value{P: unsafe.Pointer(to_value)},
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*BindingTransformFuncArgs) bool)
+		result := fn(args)
+		c_result = C.gboolean(gi.Bool2Int(result))
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 type BoxedCopyFuncArg struct {
@@ -346,8 +349,9 @@ func GetBoxedCopyFuncWrapper() unsafe.Pointer {
 }
 
 //export giGObjectBoxedCopyFunc
-func giGObjectBoxedCopyFunc(boxed C.gpointer) {
+func giGObjectBoxedCopyFunc(boxed C.gpointer) (c_result C.gpointer) {
 	// TODO: not found user_data
+	return
 }
 
 type BoxedFreeFuncArg struct {
@@ -2929,8 +2933,9 @@ func GetSignalAccumulatorWrapper() unsafe.Pointer {
 }
 
 //export giGObjectSignalAccumulator
-func giGObjectSignalAccumulator(ihint *C.GSignalInvocationHint, return_accu *C.GValue, handler_return *C.GValue, data C.gpointer) {
+func giGObjectSignalAccumulator(ihint *C.GSignalInvocationHint, return_accu *C.GValue, handler_return *C.GValue, data C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 type SignalEmissionHookArgs struct {
@@ -2945,8 +2950,9 @@ func GetSignalEmissionHookWrapper() unsafe.Pointer {
 }
 
 //export giGObjectSignalEmissionHook
-func giGObjectSignalEmissionHook(ihint *C.GSignalInvocationHint, n_param_values C.guint32, param_values C.gpointer, data C.gpointer) {
+func giGObjectSignalEmissionHook(ihint *C.GSignalInvocationHint, n_param_values C.guint32, param_values C.gpointer, data C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 // Flags SignalFlags
@@ -3207,8 +3213,9 @@ func GetTypeClassCacheFuncWrapper() unsafe.Pointer {
 }
 
 //export giGObjectTypeClassCacheFunc
-func giGObjectTypeClassCacheFunc(cache_data C.gpointer, g_class *C.GTypeClass) {
+func giGObjectTypeClassCacheFunc(cache_data C.gpointer, g_class *C.GTypeClass) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 // Deprecated
@@ -5012,17 +5019,17 @@ func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
 //
 // [ result ] trans: nothing
 //
-func (v ValueArray) Sort(fn func(v interface{})) (result ValueArray) {
+func (v ValueArray) Sort(compare_func interface{}) (result ValueArray) {
 	iv, err := _I.Get1(1484, "GObject", "ValueArray", "sort", 105, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeCall)
+	cId := gi.RegisterFunc(compare_func, gi.ScopeCall)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_compare_func := gi.NewPointerArgument(GetCompareDataFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
-	args := []gi.Argument{arg_v, arg_compare_func, arg_fn}
+	arg_user_data := gi.NewPointerArgumentU(cId)
+	args := []gi.Argument{arg_v, arg_compare_func, arg_user_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFunc(cId)
@@ -7261,19 +7268,19 @@ func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value,
 //
 // [ result ] trans: nothing
 //
-func SignalAddEmissionHook(signal_id uint32, detail uint32, fn func(v interface{})) (result uint64) {
+func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func interface{}) (result uint64) {
 	iv, err := _I.Get1(1554, "GObject", "signal_add_emission_hook", "", 179, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(hook_func, gi.ScopeNotified)
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_hook_func := gi.NewPointerArgument(GetSignalEmissionHookWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_hook_data := gi.NewPointerArgumentU(cId)
 	arg_data_destroy := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_signal_id, arg_detail, arg_hook_func, arg_fn, arg_data_destroy}
+	args := []gi.Argument{arg_signal_id, arg_detail, arg_hook_func, arg_hook_data, arg_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Uint64()

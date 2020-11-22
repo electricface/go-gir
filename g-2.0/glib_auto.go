@@ -34,15 +34,15 @@ extern void giGLibClearHandleFunc(guint32 handle_id);
 static void* getGLibClearHandleFuncWrapper() {
     return (void*)(giGLibClearHandleFunc);
 }
-extern void giGLibCompareDataFunc(gpointer a, gpointer b, gpointer user_data);
+extern gint32 giGLibCompareDataFunc(gpointer a, gpointer b, gpointer user_data);
 static void* getGLibCompareDataFuncWrapper() {
     return (void*)(giGLibCompareDataFunc);
 }
-extern void giGLibCompareFunc(gpointer a, gpointer b);
+extern gint32 giGLibCompareFunc(gpointer a, gpointer b);
 static void* getGLibCompareFuncWrapper() {
     return (void*)(giGLibCompareFunc);
 }
-extern void giGLibCopyFunc(gpointer src, gpointer data);
+extern gpointer giGLibCopyFunc(gpointer src, gpointer data);
 static void* getGLibCopyFuncWrapper() {
     return (void*)(giGLibCopyFunc);
 }
@@ -54,11 +54,11 @@ extern void giGLibDestroyNotify(gpointer data);
 static void* getGLibDestroyNotifyWrapper() {
     return (void*)(giGLibDestroyNotify);
 }
-extern void giGLibDuplicateFunc(gpointer data, gpointer user_data);
+extern gpointer giGLibDuplicateFunc(gpointer data, gpointer user_data);
 static void* getGLibDuplicateFuncWrapper() {
     return (void*)(giGLibDuplicateFunc);
 }
-extern void giGLibEqualFunc(gpointer a, gpointer b);
+extern gboolean giGLibEqualFunc(gpointer a, gpointer b);
 static void* getGLibEqualFuncWrapper() {
     return (void*)(giGLibEqualFunc);
 }
@@ -74,23 +74,23 @@ extern void giGLibHFunc(gpointer key, gpointer value, gpointer user_data);
 static void* getGLibHFuncWrapper() {
     return (void*)(giGLibHFunc);
 }
-extern void giGLibHRFunc(gpointer key, gpointer value, gpointer user_data);
+extern gboolean giGLibHRFunc(gpointer key, gpointer value, gpointer user_data);
 static void* getGLibHRFuncWrapper() {
     return (void*)(giGLibHRFunc);
 }
-extern void giGLibHashFunc(gpointer key);
+extern guint32 giGLibHashFunc(gpointer key);
 static void* getGLibHashFuncWrapper() {
     return (void*)(giGLibHashFunc);
 }
-extern void giGLibHookCheckFunc(gpointer data);
+extern gboolean giGLibHookCheckFunc(gpointer data);
 static void* getGLibHookCheckFuncWrapper() {
     return (void*)(giGLibHookCheckFunc);
 }
-extern void giGLibHookCheckMarshaller(GHook* hook, gpointer marshal_data);
+extern gboolean giGLibHookCheckMarshaller(GHook* hook, gpointer marshal_data);
 static void* getGLibHookCheckMarshallerWrapper() {
     return (void*)(giGLibHookCheckMarshaller);
 }
-extern void giGLibHookCompareFunc(GHook* new_hook, GHook* sibling);
+extern gint32 giGLibHookCompareFunc(GHook* new_hook, GHook* sibling);
 static void* getGLibHookCompareFuncWrapper() {
     return (void*)(giGLibHookCompareFunc);
 }
@@ -98,7 +98,7 @@ extern void giGLibHookFinalizeFunc(GHookList* hook_list, GHook* hook);
 static void* getGLibHookFinalizeFuncWrapper() {
     return (void*)(giGLibHookFinalizeFunc);
 }
-extern void giGLibHookFindFunc(GHook* hook, gpointer data);
+extern gboolean giGLibHookFindFunc(GHook* hook, gpointer data);
 static void* getGLibHookFindFuncWrapper() {
     return (void*)(giGLibHookFindFunc);
 }
@@ -110,7 +110,7 @@ extern void giGLibHookMarshaller(GHook* hook, gpointer marshal_data);
 static void* getGLibHookMarshallerWrapper() {
     return (void*)(giGLibHookMarshaller);
 }
-extern void giGLibIOFunc(GIOChannel* source, GIOCondition condition, gpointer data);
+extern gboolean giGLibIOFunc(GIOChannel* source, GIOCondition condition, gpointer data);
 static void* getGLibIOFuncWrapper() {
     return (void*)(giGLibIOFunc);
 }
@@ -118,7 +118,7 @@ extern void giGLibLogFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* me
 static void* getGLibLogFuncWrapper() {
     return (void*)(giGLibLogFunc);
 }
-extern void giGLibLogWriterFunc(GLogLevelFlags log_level, gpointer fields, guint64 n_fields, gpointer user_data);
+extern gpointer giGLibLogWriterFunc(GLogLevelFlags log_level, gpointer fields, guint64 n_fields, gpointer user_data);
 static void* getGLibLogWriterFuncWrapper() {
     return (void*)(giGLibLogWriterFunc);
 }
@@ -126,11 +126,11 @@ extern void giGLibNodeForeachFunc(GNode* node, gpointer data);
 static void* getGLibNodeForeachFuncWrapper() {
     return (void*)(giGLibNodeForeachFunc);
 }
-extern void giGLibNodeTraverseFunc(GNode* node, gpointer data);
+extern gboolean giGLibNodeTraverseFunc(GNode* node, gpointer data);
 static void* getGLibNodeTraverseFuncWrapper() {
     return (void*)(giGLibNodeTraverseFunc);
 }
-extern void giGLibOptionArgFunc(gchar* option_name, gchar* value, gpointer data);
+extern gboolean giGLibOptionArgFunc(gchar* option_name, gchar* value, gpointer data);
 static void* getGLibOptionArgFuncWrapper() {
     return (void*)(giGLibOptionArgFunc);
 }
@@ -138,11 +138,11 @@ extern void giGLibOptionErrorFunc(GOptionContext* context, GOptionGroup* group, 
 static void* getGLibOptionErrorFuncWrapper() {
     return (void*)(giGLibOptionErrorFunc);
 }
-extern void giGLibOptionParseFunc(GOptionContext* context, GOptionGroup* group, gpointer data);
+extern gboolean giGLibOptionParseFunc(GOptionContext* context, GOptionGroup* group, gpointer data);
 static void* getGLibOptionParseFuncWrapper() {
     return (void*)(giGLibOptionParseFunc);
 }
-extern void giGLibPollFunc(GPollFD* ufds, guint32 nfsd, gint32 timeout_);
+extern gint32 giGLibPollFunc(GPollFD* ufds, guint32 nfsd, gint32 timeout_);
 static void* getGLibPollFuncWrapper() {
     return (void*)(giGLibPollFunc);
 }
@@ -150,7 +150,7 @@ extern void giGLibPrintFunc(gchar* string);
 static void* getGLibPrintFuncWrapper() {
     return (void*)(giGLibPrintFunc);
 }
-extern void giGLibRegexEvalCallback(GMatchInfo* match_info, GString* result, gpointer user_data);
+extern gboolean giGLibRegexEvalCallback(GMatchInfo* match_info, GString* result, gpointer user_data);
 static void* getGLibRegexEvalCallbackWrapper() {
     return (void*)(giGLibRegexEvalCallback);
 }
@@ -158,7 +158,7 @@ extern void giGLibScannerMsgFunc(GScanner* scanner, gchar* message, gboolean err
 static void* getGLibScannerMsgFuncWrapper() {
     return (void*)(giGLibScannerMsgFunc);
 }
-extern void giGLibSequenceIterCompareFunc(GSequenceIter* a, GSequenceIter* b, gpointer data);
+extern gint32 giGLibSequenceIterCompareFunc(GSequenceIter* a, GSequenceIter* b, gpointer data);
 static void* getGLibSequenceIterCompareFuncWrapper() {
     return (void*)(giGLibSequenceIterCompareFunc);
 }
@@ -166,7 +166,7 @@ extern void giGLibSourceDummyMarshal();
 static void* getGLibSourceDummyMarshalWrapper() {
     return (void*)(giGLibSourceDummyMarshal);
 }
-extern void giGLibSourceFunc(gpointer user_data);
+extern gboolean giGLibSourceFunc(gpointer user_data);
 static void* getGLibSourceFuncWrapper() {
     return (void*)(giGLibSourceFunc);
 }
@@ -186,23 +186,23 @@ extern void giGLibTestFunc();
 static void* getGLibTestFuncWrapper() {
     return (void*)(giGLibTestFunc);
 }
-extern void giGLibTestLogFatalFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
+extern gboolean giGLibTestLogFatalFunc(gchar* log_domain, GLogLevelFlags log_level, gchar* message, gpointer user_data);
 static void* getGLibTestLogFatalFuncWrapper() {
     return (void*)(giGLibTestLogFatalFunc);
 }
-extern void giGLibThreadFunc(gpointer data);
+extern gpointer giGLibThreadFunc(gpointer data);
 static void* getGLibThreadFuncWrapper() {
     return (void*)(giGLibThreadFunc);
 }
-extern void giGLibTranslateFunc(gchar* str, gpointer data);
+extern gchar* giGLibTranslateFunc(gchar* str, gpointer data);
 static void* getGLibTranslateFuncWrapper() {
     return (void*)(giGLibTranslateFunc);
 }
-extern void giGLibTraverseFunc(gpointer key, gpointer value, gpointer data);
+extern gboolean giGLibTraverseFunc(gpointer key, gpointer value, gpointer data);
 static void* getGLibTraverseFuncWrapper() {
     return (void*)(giGLibTraverseFunc);
 }
-extern void giGLibUnixFDSourceFunc(gint32 fd, GIOCondition condition, gpointer user_data);
+extern gboolean giGLibUnixFDSourceFunc(gint32 fd, GIOCondition condition, gpointer user_data);
 static void* getGLibUnixFDSourceFuncWrapper() {
     return (void*)(giGLibUnixFDSourceFunc);
 }
@@ -2212,7 +2212,8 @@ func giGLibChildWatchFunc(pid C.gint32, status C.gint32, user_data C.gpointer) {
 			Pid:    int32(pid),
 			Status: int32(status),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*ChildWatchFuncArgs))
+		fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
@@ -2242,18 +2243,21 @@ func GetCompareDataFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibCompareDataFunc
-func giGLibCompareDataFunc(a C.gpointer, b C.gpointer, user_data C.gpointer) {
+func giGLibCompareDataFunc(a C.gpointer, b C.gpointer, user_data C.gpointer) (c_result C.gint32) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &CompareDataFuncArgs{
 			A: unsafe.Pointer(a),
 			B: unsafe.Pointer(b),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*CompareDataFuncArgs) int32)
+		result := fn(args)
+		c_result = C.gint32(result)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 type CompareFuncArgs struct {
@@ -2266,8 +2270,9 @@ func GetCompareFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibCompareFunc
-func giGLibCompareFunc(a C.gpointer, b C.gpointer) {
+func giGLibCompareFunc(a C.gpointer, b C.gpointer) (c_result C.gint32) {
 	// TODO: not found user_data
+	return
 }
 
 // Struct Cond
@@ -2403,8 +2408,9 @@ func GetCopyFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibCopyFunc
-func giGLibCopyFunc(src C.gpointer, data C.gpointer) {
+func giGLibCopyFunc(src C.gpointer, data C.gpointer) (c_result C.gpointer) {
 	// TODO: not found user_data
+	return
 }
 
 // Struct Data
@@ -2434,7 +2440,8 @@ func giGLibDataForeachFunc(key_id C.guint32, data C.gpointer, user_data C.gpoint
 			KeyId: uint32(key_id),
 			Data:  unsafe.Pointer(data),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*DataForeachFuncArgs))
+		fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
@@ -4473,7 +4480,7 @@ func GetDestroyNotifyWrapper() unsafe.Pointer {
 
 //export giGLibDestroyNotify
 func giGLibDestroyNotify(data C.gpointer) {
-	// TODO: not found user_data
+	handleDestroyNotify(unsafe.Pointer(data))
 }
 
 // Struct Dir
@@ -4575,17 +4582,20 @@ func GetDuplicateFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibDuplicateFunc
-func giGLibDuplicateFunc(data C.gpointer, user_data C.gpointer) {
+func giGLibDuplicateFunc(data C.gpointer, user_data C.gpointer) (c_result C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &DuplicateFuncArg{
 			Data: unsafe.Pointer(data),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*DuplicateFuncArg) unsafe.Pointer)
+		result := fn(args)
+		c_result = C.gpointer(unsafe.Pointer(result))
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 type EqualFuncArgs struct {
@@ -4598,8 +4608,9 @@ func GetEqualFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibEqualFunc
-func giGLibEqualFunc(a C.gpointer, b C.gpointer) {
+func giGLibEqualFunc(a C.gpointer, b C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 // Struct Error
@@ -4823,7 +4834,8 @@ func giGLibFunc(data C.gpointer, user_data C.gpointer) {
 		args := &FuncArg{
 			Data: unsafe.Pointer(data),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*FuncArg))
+		fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
@@ -4847,7 +4859,8 @@ func giGLibHFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
 			Key:   unsafe.Pointer(key),
 			Value: unsafe.Pointer(value),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*HFuncArgs))
+		fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
@@ -4864,18 +4877,21 @@ func GetHRFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibHRFunc
-func giGLibHRFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) {
+func giGLibHRFunc(key C.gpointer, value C.gpointer, user_data C.gpointer) (c_result C.gboolean) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &HRFuncArgs{
 			Key:   unsafe.Pointer(key),
 			Value: unsafe.Pointer(value),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*HRFuncArgs) bool)
+		result := fn(args)
+		c_result = C.gboolean(gi.Bool2Int(result))
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 type HashFuncArg struct {
@@ -4887,8 +4903,9 @@ func GetHashFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibHashFunc
-func giGLibHashFunc(key C.gpointer) {
+func giGLibHashFunc(key C.gpointer) (c_result C.guint32) {
 	// TODO: not found user_data
+	return
 }
 
 // Struct HashTable
@@ -5546,8 +5563,9 @@ func GetHookCheckFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibHookCheckFunc
-func giGLibHookCheckFunc(data C.gpointer) {
+func giGLibHookCheckFunc(data C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 type HookCheckMarshallerArgs struct {
@@ -5560,8 +5578,9 @@ func GetHookCheckMarshallerWrapper() unsafe.Pointer {
 }
 
 //export giGLibHookCheckMarshaller
-func giGLibHookCheckMarshaller(hook *C.GHook, marshal_data C.gpointer) {
+func giGLibHookCheckMarshaller(hook *C.GHook, marshal_data C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 type HookCompareFuncArgs struct {
@@ -5574,8 +5593,9 @@ func GetHookCompareFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibHookCompareFunc
-func giGLibHookCompareFunc(new_hook *C.GHook, sibling *C.GHook) {
+func giGLibHookCompareFunc(new_hook *C.GHook, sibling *C.GHook) (c_result C.gint32) {
 	// TODO: not found user_data
+	return
 }
 
 type HookFinalizeFuncArgs struct {
@@ -5602,8 +5622,9 @@ func GetHookFindFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibHookFindFunc
-func giGLibHookFindFunc(hook *C.GHook, data C.gpointer) {
+func giGLibHookFindFunc(hook *C.GHook, data C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 // Flags HookFlagMask
@@ -6576,8 +6597,9 @@ func GetIOFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibIOFunc
-func giGLibIOFunc(source *C.GIOChannel, condition C.GIOCondition, data C.gpointer) {
+func giGLibIOFunc(source *C.GIOChannel, condition C.GIOCondition, data C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 // Struct IOFuncs
@@ -8032,7 +8054,8 @@ func giGLibLogFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.g
 			LogLevel:  LogLevelFlags(log_level),
 			Message:   gi.GoString(unsafe.Pointer(message)),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*LogFuncArgs))
+		fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
@@ -8070,7 +8093,7 @@ func GetLogWriterFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibLogWriterFunc
-func giGLibLogWriterFunc(log_level C.GLogLevelFlags, fields C.gpointer, n_fields C.guint64, user_data C.gpointer) {
+func giGLibLogWriterFunc(log_level C.GLogLevelFlags, fields C.gpointer, n_fields C.guint64, user_data C.gpointer) (c_result C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &LogWriterFuncArgs{
@@ -8078,11 +8101,14 @@ func giGLibLogWriterFunc(log_level C.GLogLevelFlags, fields C.gpointer, n_fields
 			Fields:   unsafe.Pointer(fields),
 			NFields:  uint64(n_fields),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*LogWriterFuncArgs) unsafe.Pointer /*TODO_CB tag: interface, isPtr: false*/)
+		result := fn(args)
+		c_result = C.gpointer(result)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 // Enum LogWriterOutput
@@ -8277,19 +8303,19 @@ func (v MainContext) FindSourceByUserData(user_data unsafe.Pointer) (result Sour
 //
 // [ notify ] trans: nothing
 //
-func (v MainContext) InvokeFull(priority int32, fn func(v interface{})) {
+func (v MainContext) InvokeFull(priority int32, function interface{}) {
 	iv, err := _I.Get(320, "MainContext", "invoke_full", 161, 8, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(function, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_function := gi.NewPointerArgument(GetSourceFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_data := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_v, arg_priority, arg_function, arg_fn, arg_notify}
+	args := []gi.Argument{arg_v, arg_priority, arg_function, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 }
 
@@ -8921,7 +8947,7 @@ func MarkupParseContextGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_data unsafe.Pointer) (result MarkupParseContext) {
+func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_data unsafe.Pointer, user_data_dnotify unsafe.Pointer) (result MarkupParseContext) {
 	iv, err := _I.Get(352, "MarkupParseContext", "new", 166, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8930,7 +8956,7 @@ func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_dat
 	arg_parser := gi.NewPointerArgument(parser.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_user_data_dnotify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
+	arg_user_data_dnotify := gi.NewPointerArgument(user_data_dnotify)
 	args := []gi.Argument{arg_parser, arg_flags, arg_user_data, arg_user_data_dnotify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -9770,8 +9796,9 @@ func GetNodeTraverseFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibNodeTraverseFunc
-func giGLibNodeTraverseFunc(node *C.GNode, data C.gpointer) {
+func giGLibNodeTraverseFunc(node *C.GNode, data C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 // Enum NormalizeMode
@@ -9901,8 +9928,9 @@ func GetOptionArgFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibOptionArgFunc
-func giGLibOptionArgFunc(option_name *C.gchar, value *C.gchar, data C.gpointer) {
+func giGLibOptionArgFunc(option_name *C.gchar, value *C.gchar, data C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 // Struct OptionContext
@@ -10251,18 +10279,18 @@ func (v OptionContext) SetSummary(summary string) {
 //
 // [ destroy_notify ] trans: nothing
 //
-func (v OptionContext) SetTranslateFunc(fn func(v interface{})) {
+func (v OptionContext) SetTranslateFunc(func1 interface{}) {
 	iv, err := _I.Get(413, "OptionContext", "set_translate_func", 182, 18, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(func1, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(GetTranslateFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_data := gi.NewPointerArgumentU(cId)
 	arg_destroy_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy_notify}
+	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy_notify}
 	iv.Call(args, nil, nil)
 }
 
@@ -10368,7 +10396,7 @@ func OptionGroupGetType() gi.GType {
 //
 // [ result ] trans: everything
 //
-func NewOptionGroup(name string, description string, help_description string, user_data unsafe.Pointer) (result OptionGroup) {
+func NewOptionGroup(name string, description string, help_description string, user_data unsafe.Pointer, destroy unsafe.Pointer) (result OptionGroup) {
 	iv, err := _I.Get(415, "OptionGroup", "new", 187, 0, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10381,7 +10409,7 @@ func NewOptionGroup(name string, description string, help_description string, us
 	arg_description := gi.NewStringArgument(c_description)
 	arg_help_description := gi.NewStringArgument(c_help_description)
 	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy := gi.NewPointerArgument(GetDestroyNotifyWrapper())
+	arg_destroy := gi.NewPointerArgument(destroy)
 	args := []gi.Argument{arg_name, arg_description, arg_help_description, arg_user_data, arg_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -10449,18 +10477,18 @@ func (v OptionGroup) Ref() (result OptionGroup) {
 //
 // [ destroy_notify ] trans: nothing
 //
-func (v OptionGroup) SetTranslateFunc(fn func(v interface{})) {
+func (v OptionGroup) SetTranslateFunc(func1 interface{}) {
 	iv, err := _I.Get(419, "OptionGroup", "set_translate_func", 187, 4, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(func1, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(GetTranslateFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_data := gi.NewPointerArgumentU(cId)
 	arg_destroy_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_destroy_notify}
+	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy_notify}
 	iv.Call(args, nil, nil)
 }
 
@@ -10506,8 +10534,9 @@ func GetOptionParseFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibOptionParseFunc
-func giGLibOptionParseFunc(context *C.GOptionContext, group *C.GOptionGroup, data C.gpointer) {
+func giGLibOptionParseFunc(context *C.GOptionContext, group *C.GOptionGroup, data C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 // Struct PatternSpec
@@ -10577,8 +10606,9 @@ func GetPollFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibPollFunc
-func giGLibPollFunc(ufds *C.GPollFD, nfsd C.guint32, timeout_ C.gint32) {
+func giGLibPollFunc(ufds *C.GPollFD, nfsd C.guint32, timeout_ C.gint32) (c_result C.gint32) {
 	// TODO: not found user_data
+	return
 }
 
 type PrintFuncArg struct {
@@ -10710,14 +10740,14 @@ func (v Queue) Free() {
 //
 // [ free_func ] trans: nothing
 //
-func (v Queue) FreeFull() {
+func (v Queue) FreeFull(free_func unsafe.Pointer) {
 	iv, err := _I.Get(429, "Queue", "free_full", 206, 2, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_free_func := gi.NewPointerArgument(GetDestroyNotifyWrapper())
+	arg_free_func := gi.NewPointerArgument(free_func)
 	args := []gi.Argument{arg_v, arg_free_func}
 	iv.Call(args, nil, nil)
 }
@@ -12119,18 +12149,21 @@ func GetRegexEvalCallbackWrapper() unsafe.Pointer {
 }
 
 //export giGLibRegexEvalCallback
-func giGLibRegexEvalCallback(match_info *C.GMatchInfo, result *C.GString, user_data C.gpointer) {
+func giGLibRegexEvalCallback(match_info *C.GMatchInfo, result *C.GString, user_data C.gpointer) (c_result C.gboolean) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &RegexEvalCallbackArgs{
 			MatchInfo: MatchInfo{P: unsafe.Pointer(match_info)},
 			Result:    String{P: unsafe.Pointer(result)},
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*RegexEvalCallbackArgs) bool)
+		result1 := fn(args)
+		c_result = C.gboolean(gi.Bool2Int(result1))
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 // Flags RegexMatchFlags
@@ -13052,8 +13085,9 @@ func GetSequenceIterCompareFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibSequenceIterCompareFunc
-func giGLibSequenceIterCompareFunc(a *C.GSequenceIter, b *C.GSequenceIter, data C.gpointer) {
+func giGLibSequenceIterCompareFunc(a *C.GSequenceIter, b *C.GSequenceIter, data C.gpointer) (c_result C.gint32) {
 	// TODO: not found user_data
+	return
 }
 
 // Enum ShellError
@@ -13488,18 +13522,18 @@ func (v Source) RemoveUnixFd(tag unsafe.Pointer) {
 //
 // [ notify ] trans: nothing
 //
-func (v Source) SetCallback(fn func(v interface{})) {
+func (v Source) SetCallback(func1 interface{}) {
 	iv, err := _I.Get(553, "Source", "set_callback", 241, 21, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(func1, gi.ScopeNotified)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(GetSourceFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_data := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_v, arg_func1, arg_fn, arg_notify}
+	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 }
 
@@ -13732,15 +13766,18 @@ func GetSourceFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibSourceFunc
-func giGLibSourceFunc(user_data C.gpointer) {
+func giGLibSourceFunc(user_data C.gpointer) (c_result C.gboolean) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &SourceFuncArg{}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*SourceFuncArg) bool)
+		result := fn(args)
+		c_result = C.gboolean(gi.Bool2Int(result))
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 // Struct SourceFuncs
@@ -13777,7 +13814,8 @@ func giGLibSpawnChildSetupFunc(user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &SpawnChildSetupFuncArg{}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*SpawnChildSetupFuncArg))
+		fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
@@ -14615,7 +14653,8 @@ func giGLibTestDataFunc(user_data C.gpointer) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &TestDataFuncArg{}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*TestDataFuncArg))
+		fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
@@ -14650,7 +14689,8 @@ func giGLibTestFixtureFunc(fixture C.gpointer, user_data C.gpointer) {
 		args := &TestFixtureFuncArg{
 			Fixture: unsafe.Pointer(fixture),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*TestFixtureFuncArg))
+		fn(args)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
@@ -14724,7 +14764,7 @@ func GetTestLogFatalFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibTestLogFatalFunc
-func giGLibTestLogFatalFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) {
+func giGLibTestLogFatalFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, message *C.gchar, user_data C.gpointer) (c_result C.gboolean) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &TestLogFatalFuncArgs{
@@ -14732,11 +14772,14 @@ func giGLibTestLogFatalFunc(log_domain *C.gchar, log_level C.GLogLevelFlags, mes
 			LogLevel:  LogLevelFlags(log_level),
 			Message:   gi.GoString(unsafe.Pointer(message)),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*TestLogFatalFuncArgs) bool)
+		result := fn(args)
+		c_result = C.gboolean(gi.Bool2Int(result))
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 // Struct TestLogMsg
@@ -15012,8 +15055,9 @@ func GetThreadFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibThreadFunc
-func giGLibThreadFunc(data C.gpointer) {
+func giGLibThreadFunc(data C.gpointer) (c_result C.gpointer) {
 	// TODO: not found user_data
+	return
 }
 
 // Struct ThreadPool
@@ -15738,8 +15782,9 @@ func GetTranslateFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibTranslateFunc
-func giGLibTranslateFunc(str *C.gchar, data C.gpointer) {
+func giGLibTranslateFunc(str *C.gchar, data C.gpointer) (c_result *C.gchar) {
 	// TODO: not found user_data
+	return
 }
 
 // Deprecated
@@ -15862,8 +15907,9 @@ func GetTraverseFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibTraverseFunc
-func giGLibTraverseFunc(key C.gpointer, value C.gpointer, data C.gpointer) {
+func giGLibTraverseFunc(key C.gpointer, value C.gpointer, data C.gpointer) (c_result C.gboolean) {
 	// TODO: not found user_data
+	return
 }
 
 // Enum TraverseType
@@ -16347,18 +16393,21 @@ func GetUnixFDSourceFuncWrapper() unsafe.Pointer {
 }
 
 //export giGLibUnixFDSourceFunc
-func giGLibUnixFDSourceFunc(fd C.gint32, condition C.GIOCondition, user_data C.gpointer) {
+func giGLibUnixFDSourceFunc(fd C.gint32, condition C.GIOCondition, user_data C.gpointer) (c_result C.gboolean) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &UnixFDSourceFuncArgs{
 			Fd:        int32(fd),
 			Condition: IOConditionFlags(condition),
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*UnixFDSourceFuncArgs) bool)
+		result := fn(args)
+		c_result = C.gboolean(gi.Bool2Int(result))
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 // Enum UserDirectory
@@ -16614,7 +16663,7 @@ func NewVariantFromBytes(type1 VariantType, bytes Bytes, trusted bool) (result V
 //
 // [ result ] trans: nothing
 //
-func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trusted bool, user_data unsafe.Pointer) (result Variant) {
+func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trusted bool, notify unsafe.Pointer, user_data unsafe.Pointer) (result Variant) {
 	iv, err := _I.Get(666, "Variant", "new_from_data", 299, 9, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -16624,7 +16673,7 @@ func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trus
 	arg_data := gi.NewPointerArgument(data.P)
 	arg_size := gi.NewUint64Argument(size)
 	arg_trusted := gi.NewBoolArgument(trusted)
-	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
+	arg_notify := gi.NewPointerArgument(notify)
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_type1, arg_data, arg_size, arg_trusted, arg_notify, arg_user_data}
 	var ret gi.Argument
@@ -19603,13 +19652,13 @@ func AssertionMessageError(domain string, file string, line int32, func1 string,
 //
 // [ func1 ] trans: nothing
 //
-func Atexit() {
+func Atexit(func1 unsafe.Pointer) {
 	iv, err := _I.Get(801, "atexit", "", 327, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_func1 := gi.NewPointerArgument(GetVoidFuncWrapper())
+	arg_func1 := gi.NewPointerArgument(func1)
 	args := []gi.Argument{arg_func1}
 	iv.Call(args, nil, nil)
 }
@@ -20110,14 +20159,14 @@ func AtomicRcBoxRelease(mem_block unsafe.Pointer) {
 //
 // [ clear_func ] trans: nothing
 //
-func AtomicRcBoxReleaseFull(mem_block unsafe.Pointer) {
+func AtomicRcBoxReleaseFull(mem_block unsafe.Pointer, clear_func unsafe.Pointer) {
 	iv, err := _I.Get(825, "atomic_rc_box_release_full", "", 351, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_mem_block := gi.NewPointerArgument(mem_block)
-	arg_clear_func := gi.NewPointerArgument(GetDestroyNotifyWrapper())
+	arg_clear_func := gi.NewPointerArgument(clear_func)
 	args := []gi.Argument{arg_mem_block, arg_clear_func}
 	iv.Call(args, nil, nil)
 }
@@ -20748,19 +20797,19 @@ func ChecksumTypeGetLength(checksum_type ChecksumTypeEnum) (result int64) {
 //
 // [ result ] trans: nothing
 //
-func ChildWatchAdd(priority int32, pid int32, fn func(v interface{})) (result uint32) {
+func ChildWatchAdd(priority int32, pid int32, function interface{}) (result uint32) {
 	iv, err := _I.Get(854, "child_watch_add", "", 380, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(function, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_pid := gi.NewInt32Argument(pid)
 	arg_function := gi.NewPointerArgument(GetChildWatchFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_data := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_priority, arg_pid, arg_function, arg_fn, arg_notify}
+	args := []gi.Argument{arg_priority, arg_pid, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Uint32()
@@ -21112,17 +21161,17 @@ func ConvertWithFallback(str gi.Uint8Array, len1 int64, to_codeset string, from_
 //
 // [ user_data ] trans: nothing
 //
-func DatalistForeach(datalist Data, fn func(v interface{})) {
+func DatalistForeach(datalist Data, func1 interface{}) {
 	iv, err := _I.Get(867, "datalist_foreach", "", 393, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeCall)
+	cId := gi.RegisterFunc(func1, gi.ScopeCall)
 	arg_datalist := gi.NewPointerArgument(datalist.P)
 	arg_func1 := gi.NewPointerArgument(GetDataForeachFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
-	args := []gi.Argument{arg_datalist, arg_func1, arg_fn}
+	arg_user_data := gi.NewPointerArgumentU(cId)
+	args := []gi.Argument{arg_datalist, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
 }
@@ -21254,17 +21303,17 @@ func DatasetDestroy(dataset_location unsafe.Pointer) {
 //
 // [ user_data ] trans: nothing
 //
-func DatasetForeach(dataset_location unsafe.Pointer, fn func(v interface{})) {
+func DatasetForeach(dataset_location unsafe.Pointer, func1 interface{}) {
 	iv, err := _I.Get(874, "dataset_foreach", "", 400, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeCall)
+	cId := gi.RegisterFunc(func1, gi.ScopeCall)
 	arg_dataset_location := gi.NewPointerArgument(dataset_location)
 	arg_func1 := gi.NewPointerArgument(GetDataForeachFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
-	args := []gi.Argument{arg_dataset_location, arg_func1, arg_fn}
+	arg_user_data := gi.NewPointerArgumentU(cId)
+	args := []gi.Argument{arg_dataset_location, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFunc(cId)
 }
@@ -23592,20 +23641,20 @@ func InternString(string string) (result string) {
 //
 // [ result ] trans: nothing
 //
-func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, fn func(v interface{})) (result uint32) {
+func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, func1 interface{}) (result uint32) {
 	iv, err := _I.Get(982, "io_add_watch", "", 508, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(func1, gi.ScopeNotified)
 	arg_channel := gi.NewPointerArgument(channel.P)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_condition := gi.NewIntArgument(int(condition))
 	arg_func1 := gi.NewPointerArgument(GetIOFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_user_data := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_channel, arg_priority, arg_condition, arg_func1, arg_fn, arg_notify}
+	args := []gi.Argument{arg_channel, arg_priority, arg_condition, arg_func1, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Uint32()
@@ -23881,20 +23930,20 @@ func LogSetFatalMask(log_domain string, fatal_mask LogLevelFlags) (result LogLev
 //
 // [ result ] trans: nothing
 //
-func LogSetHandler(log_domain string, log_levels LogLevelFlags, fn func(v interface{})) (result uint32) {
+func LogSetHandler(log_domain string, log_levels LogLevelFlags, log_func interface{}) (result uint32) {
 	iv, err := _I.Get(994, "log_set_handler", "", 520, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_log_domain := gi.CString(log_domain)
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(log_func, gi.ScopeNotified)
 	arg_log_domain := gi.NewStringArgument(c_log_domain)
 	arg_log_levels := gi.NewIntArgument(int(log_levels))
 	arg_log_func := gi.NewPointerArgument(GetLogFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_user_data := gi.NewPointerArgumentU(cId)
 	arg_destroy := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_log_domain, arg_log_levels, arg_log_func, arg_fn, arg_destroy}
+	args := []gi.Argument{arg_log_domain, arg_log_levels, arg_log_func, arg_user_data, arg_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_log_domain)
@@ -23910,17 +23959,17 @@ func LogSetHandler(log_domain string, log_levels LogLevelFlags, fn func(v interf
 //
 // [ user_data_free ] trans: nothing
 //
-func LogSetWriterFunc(fn func(v interface{})) {
+func LogSetWriterFunc(func1 interface{}) {
 	iv, err := _I.Get(995, "log_set_writer_func", "", 521, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(func1, gi.ScopeNotified)
 	arg_func1 := gi.NewPointerArgument(GetLogWriterFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_user_data := gi.NewPointerArgumentU(cId)
 	arg_user_data_free := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_func1, arg_fn, arg_user_data_free}
+	args := []gi.Argument{arg_func1, arg_user_data, arg_user_data_free}
 	iv.Call(args, nil, nil)
 }
 
@@ -25156,14 +25205,14 @@ func RcBoxRelease(mem_block unsafe.Pointer) {
 //
 // [ clear_func ] trans: nothing
 //
-func RcBoxReleaseFull(mem_block unsafe.Pointer) {
+func RcBoxReleaseFull(mem_block unsafe.Pointer, clear_func unsafe.Pointer) {
 	iv, err := _I.Get(1055, "rc_box_release_full", "", 581, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	arg_mem_block := gi.NewPointerArgument(mem_block)
-	arg_clear_func := gi.NewPointerArgument(GetDestroyNotifyWrapper())
+	arg_clear_func := gi.NewPointerArgument(clear_func)
 	args := []gi.Argument{arg_mem_block, arg_clear_func}
 	iv.Call(args, nil, nil)
 }
@@ -26262,23 +26311,23 @@ func SpacedPrimesClosest(num uint32) (result uint32) {
 //
 // [ result ] trans: nothing
 //
-func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, fn func(v interface{})) (result bool, child_pid int32, err error) {
+func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup interface{}) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1106, "spawn_async", "", 632, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	c_working_directory := gi.CString(working_directory)
-	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
+	cId := gi.RegisterFunc(child_setup, gi.ScopeAsync)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewPointerArgument(GetSpawnChildSetupFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_user_data := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
-	args := []gi.Argument{arg_working_directory, arg_argv, arg_envp, arg_flags, arg_child_setup, arg_fn, arg_child_pid, arg_err}
+	args := []gi.Argument{arg_working_directory, arg_argv, arg_envp, arg_flags, arg_child_setup, arg_user_data, arg_child_pid, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
@@ -26312,26 +26361,26 @@ func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, 
 //
 // [ result ] trans: nothing
 //
-func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, fn func(v interface{}), stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
+func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup interface{}, stdin_fd int32, stdout_fd int32, stderr_fd int32) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(1107, "spawn_async_with_fds", "", 633, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	c_working_directory := gi.CString(working_directory)
-	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
+	cId := gi.RegisterFunc(child_setup, gi.ScopeAsync)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewPointerArgument(GetSpawnChildSetupFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_user_data := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_stdin_fd := gi.NewInt32Argument(stdin_fd)
 	arg_stdout_fd := gi.NewInt32Argument(stdout_fd)
 	arg_stderr_fd := gi.NewInt32Argument(stderr_fd)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
-	args := []gi.Argument{arg_working_directory, arg_argv, arg_envp, arg_flags, arg_child_setup, arg_fn, arg_child_pid, arg_stdin_fd, arg_stdout_fd, arg_stderr_fd, arg_err}
+	args := []gi.Argument{arg_working_directory, arg_argv, arg_envp, arg_flags, arg_child_setup, arg_user_data, arg_child_pid, arg_stdin_fd, arg_stdout_fd, arg_stderr_fd, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
@@ -26365,26 +26414,26 @@ func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStr
 //
 // [ result ] trans: nothing
 //
-func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, fn func(v interface{})) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
+func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup interface{}) (result bool, child_pid int32, standard_input int32, standard_output int32, standard_error int32, err error) {
 	iv, err := _I.Get(1108, "spawn_async_with_pipes", "", 634, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [5]gi.Argument
 	c_working_directory := gi.CString(working_directory)
-	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
+	cId := gi.RegisterFunc(child_setup, gi.ScopeAsync)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewPointerArgument(GetSpawnChildSetupFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_user_data := gi.NewPointerArgumentU(cId)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_standard_input := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_standard_output := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
 	arg_standard_error := gi.NewPointerArgument(unsafe.Pointer(&outArgs[3]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[4]))
-	args := []gi.Argument{arg_working_directory, arg_argv, arg_envp, arg_flags, arg_child_setup, arg_fn, arg_child_pid, arg_standard_input, arg_standard_output, arg_standard_error, arg_err}
+	args := []gi.Argument{arg_working_directory, arg_argv, arg_envp, arg_flags, arg_child_setup, arg_user_data, arg_child_pid, arg_standard_input, arg_standard_output, arg_standard_error, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
@@ -26548,25 +26597,25 @@ func SpawnExitErrorQuark() (result uint32) {
 //
 // [ result ] trans: nothing
 //
-func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, fn func(v interface{})) (result bool, standard_output gi.Uint8Array, standard_error gi.Uint8Array, exit_status int32, err error) {
+func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, flags SpawnFlags, child_setup interface{}) (result bool, standard_output gi.Uint8Array, standard_error gi.Uint8Array, exit_status int32, err error) {
 	iv, err := _I.Get(1115, "spawn_sync", "", 641, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [4]gi.Argument
 	c_working_directory := gi.CString(working_directory)
-	cId := gi.RegisterFunc(fn, gi.ScopeAsync)
+	cId := gi.RegisterFunc(child_setup, gi.ScopeAsync)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envp := gi.NewPointerArgument(envp.P)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_child_setup := gi.NewPointerArgument(GetSpawnChildSetupFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_user_data := gi.NewPointerArgumentU(cId)
 	arg_standard_output := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_standard_error := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
 	arg_exit_status := gi.NewPointerArgument(unsafe.Pointer(&outArgs[2]))
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[3]))
-	args := []gi.Argument{arg_working_directory, arg_argv, arg_envp, arg_flags, arg_child_setup, arg_fn, arg_standard_output, arg_standard_error, arg_exit_status, arg_err}
+	args := []gi.Argument{arg_working_directory, arg_argv, arg_envp, arg_flags, arg_child_setup, arg_user_data, arg_standard_output, arg_standard_error, arg_exit_status, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
@@ -27620,7 +27669,7 @@ func StrvLength(str_array string) (result uint32) {
 //
 // [ test_func ] trans: nothing
 //
-func TestAddDataFunc(testpath string, test_data unsafe.Pointer) {
+func TestAddDataFunc(testpath string, test_data unsafe.Pointer, test_func unsafe.Pointer) {
 	iv, err := _I.Get(1157, "test_add_data_func", "", 683, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -27629,7 +27678,7 @@ func TestAddDataFunc(testpath string, test_data unsafe.Pointer) {
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
 	arg_test_data := gi.NewPointerArgument(test_data)
-	arg_test_func := gi.NewPointerArgument(GetTestDataFuncWrapper())
+	arg_test_func := gi.NewPointerArgument(test_func)
 	args := []gi.Argument{arg_testpath, arg_test_data, arg_test_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -27645,7 +27694,7 @@ func TestAddDataFunc(testpath string, test_data unsafe.Pointer) {
 //
 // [ data_free_func ] trans: nothing
 //
-func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer) {
+func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer, test_func unsafe.Pointer) {
 	iv, err := _I.Get(1158, "test_add_data_func_full", "", 684, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -27654,7 +27703,7 @@ func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer) {
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
 	arg_test_data := gi.NewPointerArgument(test_data)
-	arg_test_func := gi.NewPointerArgument(GetTestDataFuncWrapper())
+	arg_test_func := gi.NewPointerArgument(test_func)
 	arg_data_free_func := gi.NewPointerArgument(GetDestroyNotifyWrapper())
 	args := []gi.Argument{arg_testpath, arg_test_data, arg_test_func, arg_data_free_func}
 	iv.Call(args, nil, nil)
@@ -27667,7 +27716,7 @@ func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer) {
 //
 // [ test_func ] trans: nothing
 //
-func TestAddFunc(testpath string) {
+func TestAddFunc(testpath string, test_func unsafe.Pointer) {
 	iv, err := _I.Get(1159, "test_add_func", "", 685, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -27675,7 +27724,7 @@ func TestAddFunc(testpath string) {
 	}
 	c_testpath := gi.CString(testpath)
 	arg_testpath := gi.NewStringArgument(c_testpath)
-	arg_test_func := gi.NewPointerArgument(GetTestFuncWrapper())
+	arg_test_func := gi.NewPointerArgument(test_func)
 	args := []gi.Argument{arg_testpath, arg_test_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
@@ -27860,13 +27909,13 @@ func TestLogTypeName(log_type TestLogTypeEnum) (result string) {
 //
 // [ destroy_data ] trans: nothing
 //
-func TestQueueDestroy(destroy_data unsafe.Pointer) {
+func TestQueueDestroy(destroy_func unsafe.Pointer, destroy_data unsafe.Pointer) {
 	iv, err := _I.Get(1169, "test_queue_destroy", "", 695, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	arg_destroy_func := gi.NewPointerArgument(GetDestroyNotifyWrapper())
+	arg_destroy_func := gi.NewPointerArgument(destroy_func)
 	arg_destroy_data := gi.NewPointerArgument(destroy_data)
 	args := []gi.Argument{arg_destroy_func, arg_destroy_data}
 	iv.Call(args, nil, nil)
@@ -29493,20 +29542,20 @@ func UnixErrorQuark() (result uint32) {
 //
 // [ result ] trans: nothing
 //
-func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, fn func(v interface{})) (result uint32) {
+func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, function interface{}) (result uint32) {
 	iv, err := _I.Get(1252, "unix_fd_add_full", "", 778, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(function, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_fd := gi.NewInt32Argument(fd)
 	arg_condition := gi.NewIntArgument(int(condition))
 	arg_function := gi.NewPointerArgument(GetUnixFDSourceFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_user_data := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_priority, arg_fd, arg_condition, arg_function, arg_fn, arg_notify}
+	args := []gi.Argument{arg_priority, arg_fd, arg_condition, arg_function, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Uint32()
@@ -29600,19 +29649,19 @@ func UnixSetFdNonblocking(fd int32, nonblock bool) (result bool, err error) {
 //
 // [ result ] trans: nothing
 //
-func UnixSignalAdd(priority int32, signum int32, fn func(v interface{})) (result uint32) {
+func UnixSignalAdd(priority int32, signum int32, handler interface{}) (result uint32) {
 	iv, err := _I.Get(1256, "unix_signal_add", "", 782, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(handler, gi.ScopeNotified)
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_signum := gi.NewInt32Argument(signum)
 	arg_handler := gi.NewPointerArgument(GetSourceFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_user_data := gi.NewPointerArgumentU(cId)
 	arg_notify := gi.NewPointerArgument(GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_priority, arg_signum, arg_handler, arg_fn, arg_notify}
+	args := []gi.Argument{arg_priority, arg_signum, arg_handler, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Uint32()

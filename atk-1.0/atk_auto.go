@@ -38,11 +38,11 @@ extern void giAtkFocusHandler(AtkObject* object, gboolean focus_in);
 static void* getAtkFocusHandlerWrapper() {
     return (void*)(giAtkFocusHandler);
 }
-extern void giAtkFunction(gpointer user_data);
+extern gboolean giAtkFunction(gpointer user_data);
 static void* getAtkFunctionWrapper() {
     return (void*)(giAtkFunction);
 }
-extern void giAtkKeySnoopFunc(AtkKeyEventStruct* event, gpointer user_data);
+extern gint32 giAtkKeySnoopFunc(AtkKeyEventStruct* event, gpointer user_data);
 static void* getAtkKeySnoopFuncWrapper() {
     return (void*)(giAtkKeySnoopFunc);
 }
@@ -1040,15 +1040,18 @@ func GetFunctionWrapper() unsafe.Pointer {
 }
 
 //export giAtkFunction
-func giAtkFunction(user_data C.gpointer) {
+func giAtkFunction(user_data C.gpointer) (c_result C.gboolean) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &FunctionArg{}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*FunctionArg) bool)
+		result := fn(args)
+		c_result = C.gboolean(gi.Bool2Int(result))
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 // Object GObjectAccessible
@@ -1604,17 +1607,20 @@ func GetKeySnoopFuncWrapper() unsafe.Pointer {
 }
 
 //export giAtkKeySnoopFunc
-func giAtkKeySnoopFunc(event *C.AtkKeyEventStruct, user_data C.gpointer) {
+func giAtkKeySnoopFunc(event *C.AtkKeyEventStruct, user_data C.gpointer) (c_result C.gint32) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &KeySnoopFuncArg{
 			Event: KeyEventStruct{P: unsafe.Pointer(event)},
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*KeySnoopFuncArg) int32)
+		result := fn(args)
+		c_result = C.gint32(result)
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 // Enum Layer

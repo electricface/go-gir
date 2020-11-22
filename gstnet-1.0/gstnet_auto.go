@@ -26,7 +26,7 @@ package gstnet
 /*
 #cgo pkg-config: gstreamer-net-1.0
 #include <gst/net/net.h>
-extern void giGstNetPtpStatisticsCallback(guint8 domain, GstStructure* stats, gpointer user_data);
+extern gboolean giGstNetPtpStatisticsCallback(guint8 domain, GstStructure* stats, gpointer user_data);
 static void* getGstNetPtpStatisticsCallbackWrapper() {
     return (void*)(giGstNetPtpStatisticsCallback);
 }
@@ -484,18 +484,21 @@ func GetPtpStatisticsCallbackWrapper() unsafe.Pointer {
 }
 
 //export giGstNetPtpStatisticsCallback
-func giGstNetPtpStatisticsCallback(domain C.guint8, stats *C.GstStructure, user_data C.gpointer) {
+func giGstNetPtpStatisticsCallback(domain C.guint8, stats *C.GstStructure, user_data C.gpointer) (c_result C.gboolean) {
 	closure := gi.GetFunc(uint(uintptr(user_data)))
 	if closure.Fn != nil {
 		args := &PtpStatisticsCallbackArgs{
 			Domain: uint8(domain),
 			Stats:  gst.Structure{P: unsafe.Pointer(stats)},
 		}
-		closure.Fn(args)
+		fn := closure.Fn.(func(*PtpStatisticsCallbackArgs) bool)
+		result := fn(args)
+		c_result = C.gboolean(gi.Bool2Int(result))
 		if closure.Scope == gi.ScopeAsync {
 			gi.UnregisterFunc(uint(uintptr(user_data)))
 		}
 	}
+	return
 }
 
 // gst_buffer_add_net_address_meta
@@ -742,17 +745,17 @@ func PtpIsSupported() (result bool) {
 //
 // [ result ] trans: nothing
 //
-func PtpStatisticsCallbackAdd(fn func(v interface{})) (result uint64) {
+func PtpStatisticsCallbackAdd(callback interface{}) (result uint64) {
 	iv, err := _I.Get(24, "ptp_statistics_callback_add", "", 33, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(callback, gi.ScopeNotified)
 	arg_callback := gi.NewPointerArgument(GetPtpStatisticsCallbackWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_user_data := gi.NewPointerArgumentU(cId)
 	arg_destroy_data := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_callback, arg_fn, arg_destroy_data}
+	args := []gi.Argument{arg_callback, arg_user_data, arg_destroy_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Uint64()

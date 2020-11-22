@@ -332,7 +332,7 @@ func ContextSetResolution(context pango.IContext, dpi float64) {
 //
 // [ dnotify ] trans: nothing
 //
-func ContextSetShapeRenderer(context pango.IContext, fn func(v interface{})) {
+func ContextSetShapeRenderer(context pango.IContext, func1 interface{}) {
 	iv, err := _I.Get(12, "context_set_shape_renderer", "", 7, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -342,12 +342,12 @@ func ContextSetShapeRenderer(context pango.IContext, fn func(v interface{})) {
 	if context != nil {
 		tmp = context.P_Context()
 	}
-	cId := gi.RegisterFunc(fn, gi.ScopeNotified)
+	cId := gi.RegisterFunc(func1, gi.ScopeNotified)
 	arg_context := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewPointerArgument(GetShapeRendererFuncWrapper())
-	arg_fn := gi.NewPointerArgumentU(cId)
+	arg_data := gi.NewPointerArgumentU(cId)
 	arg_dnotify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
-	args := []gi.Argument{arg_context, arg_func1, arg_fn, arg_dnotify}
+	args := []gi.Argument{arg_context, arg_func1, arg_data, arg_dnotify}
 	iv.Call(args, nil, nil)
 }
 
