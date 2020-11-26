@@ -110,7 +110,7 @@ func BlockOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (re
 //
 // [ user_data ] trans: nothing
 //
-func (v *BlockIfc) CallAddConfigurationItem(arg_item g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *BlockIfc) CallAddConfigurationItem(arg_item g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(2, "Block", "call_add_configuration_item", 0, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -120,13 +120,17 @@ func (v *BlockIfc) CallAddConfigurationItem(arg_item g.Variant, arg_options g.Va
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_item := gi.NewPointerArgument(arg_item.P)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_item, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -203,7 +207,7 @@ func (v *BlockIfc) CallAddConfigurationItemSync(arg_item g.Variant, arg_options 
 //
 // [ user_data ] trans: nothing
 //
-func (v *BlockIfc) CallFormat(arg_type string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *BlockIfc) CallFormat(arg_type string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(5, "Block", "call_format", 0, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -214,13 +218,17 @@ func (v *BlockIfc) CallFormat(arg_type string, arg_options g.Variant, cancellabl
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_type := gi.NewStringArgument(c_arg_type)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_type, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
@@ -298,7 +306,7 @@ func (v *BlockIfc) CallFormatSync(arg_type string, arg_options g.Variant, cancel
 //
 // [ user_data ] trans: nothing
 //
-func (v *BlockIfc) CallGetSecretConfiguration(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *BlockIfc) CallGetSecretConfiguration(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(8, "Block", "call_get_secret_configuration", 0, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -308,12 +316,16 @@ func (v *BlockIfc) CallGetSecretConfiguration(arg_options g.Variant, cancellable
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -397,7 +409,7 @@ func (v *BlockIfc) CallGetSecretConfigurationSync(arg_options g.Variant, cancell
 //
 // [ user_data ] trans: nothing
 //
-func (v *BlockIfc) CallOpenDevice(arg_mode string, arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback interface{}) {
+func (v *BlockIfc) CallOpenDevice(arg_mode string, arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(11, "Block", "call_open_device", 0, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -412,14 +424,18 @@ func (v *BlockIfc) CallOpenDevice(arg_mode string, arg_options g.Variant, fd_lis
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_mode := gi.NewStringArgument(c_arg_mode)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_fd_list := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_mode, arg_arg_options, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_mode)
@@ -522,7 +538,7 @@ func (v *BlockIfc) CallOpenDeviceSync(arg_mode string, arg_options g.Variant, fd
 //
 // [ user_data ] trans: nothing
 //
-func (v *BlockIfc) CallOpenForBackup(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback interface{}) {
+func (v *BlockIfc) CallOpenForBackup(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(14, "Block", "call_open_for_backup", 0, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -536,13 +552,17 @@ func (v *BlockIfc) CallOpenForBackup(arg_options g.Variant, fd_list g.IUnixFDLis
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_fd_list := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -639,7 +659,7 @@ func (v *BlockIfc) CallOpenForBackupSync(arg_options g.Variant, fd_list g.IUnixF
 //
 // [ user_data ] trans: nothing
 //
-func (v *BlockIfc) CallOpenForBenchmark(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback interface{}) {
+func (v *BlockIfc) CallOpenForBenchmark(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(17, "Block", "call_open_for_benchmark", 0, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -653,13 +673,17 @@ func (v *BlockIfc) CallOpenForBenchmark(arg_options g.Variant, fd_list g.IUnixFD
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_fd_list := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -756,7 +780,7 @@ func (v *BlockIfc) CallOpenForBenchmarkSync(arg_options g.Variant, fd_list g.IUn
 //
 // [ user_data ] trans: nothing
 //
-func (v *BlockIfc) CallOpenForRestore(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback interface{}) {
+func (v *BlockIfc) CallOpenForRestore(arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(20, "Block", "call_open_for_restore", 0, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -770,13 +794,17 @@ func (v *BlockIfc) CallOpenForRestore(arg_options g.Variant, fd_list g.IUnixFDLi
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_fd_list := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -873,7 +901,7 @@ func (v *BlockIfc) CallOpenForRestoreSync(arg_options g.Variant, fd_list g.IUnix
 //
 // [ user_data ] trans: nothing
 //
-func (v *BlockIfc) CallRemoveConfigurationItem(arg_item g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *BlockIfc) CallRemoveConfigurationItem(arg_item g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(23, "Block", "call_remove_configuration_item", 0, 23, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -883,13 +911,17 @@ func (v *BlockIfc) CallRemoveConfigurationItem(arg_item g.Variant, arg_options g
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_item := gi.NewPointerArgument(arg_item.P)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_item, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -964,7 +996,7 @@ func (v *BlockIfc) CallRemoveConfigurationItemSync(arg_item g.Variant, arg_optio
 //
 // [ user_data ] trans: nothing
 //
-func (v *BlockIfc) CallRescan(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *BlockIfc) CallRescan(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(26, "Block", "call_rescan", 0, 26, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -974,12 +1006,16 @@ func (v *BlockIfc) CallRescan(arg_options g.Variant, cancellable g.ICancellable,
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -1055,7 +1091,7 @@ func (v *BlockIfc) CallRescanSync(arg_options g.Variant, cancellable g.ICancella
 //
 // [ user_data ] trans: nothing
 //
-func (v *BlockIfc) CallUpdateConfigurationItem(arg_old_item g.Variant, arg_new_item g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *BlockIfc) CallUpdateConfigurationItem(arg_old_item g.Variant, arg_new_item g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(29, "Block", "call_update_configuration_item", 0, 29, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1065,14 +1101,18 @@ func (v *BlockIfc) CallUpdateConfigurationItem(arg_old_item g.Variant, arg_new_i
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_old_item := gi.NewPointerArgument(arg_old_item.P)
 	arg_arg_new_item := gi.NewPointerArgument(arg_new_item.P)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_old_item, arg_arg_new_item, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -1558,7 +1598,7 @@ func NewBlockProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, nam
 //
 // [ user_data ] trans: nothing
 //
-func BlockProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func BlockProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(46, "BlockProxy", "new", 2, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1574,14 +1614,18 @@ func BlockProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name s
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -1604,7 +1648,7 @@ func BlockProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name s
 //
 // [ user_data ] trans: nothing
 //
-func BlockProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func BlockProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(47, "BlockProxy", "new_for_bus", 2, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1616,14 +1660,18 @@ func BlockProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name s
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -1788,7 +1836,7 @@ func ClientGetJobDescriptionFromOperation1(operation string) (result string) {
 //
 // [ user_data ] trans: nothing
 //
-func ClientNew1(cancellable g.ICancellable, callback interface{}) {
+func ClientNew1(cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(52, "Client", "new", 8, 3, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -1798,10 +1846,14 @@ func ClientNew1(cancellable g.ICancellable, callback interface{}) {
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -2716,7 +2768,7 @@ func DriveOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (re
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveIfc) CallEject(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveIfc) CallEject(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(89, "Drive", "call_eject", 9, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2726,12 +2778,16 @@ func (v *DriveIfc) CallEject(arg_options g.Variant, cancellable g.ICancellable, 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -2803,7 +2859,7 @@ func (v *DriveIfc) CallEjectSync(arg_options g.Variant, cancellable g.ICancellab
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveIfc) CallPowerOff(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveIfc) CallPowerOff(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(92, "Drive", "call_power_off", 9, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2813,12 +2869,16 @@ func (v *DriveIfc) CallPowerOff(arg_options g.Variant, cancellable g.ICancellabl
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -2892,7 +2952,7 @@ func (v *DriveIfc) CallPowerOffSync(arg_options g.Variant, cancellable g.ICancel
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveIfc) CallSetConfiguration(arg_value g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveIfc) CallSetConfiguration(arg_value g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(95, "Drive", "call_set_configuration", 9, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2902,13 +2962,17 @@ func (v *DriveIfc) CallSetConfiguration(arg_value g.Variant, arg_options g.Varia
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_value := gi.NewPointerArgument(arg_value.P)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_value, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -3096,7 +3160,7 @@ func DriveAtaOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) 
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveAtaIfc) CallPmGetState(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveAtaIfc) CallPmGetState(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(103, "DriveAta", "call_pm_get_state", 10, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3106,12 +3170,16 @@ func (v *DriveAtaIfc) CallPmGetState(arg_options g.Variant, cancellable g.ICance
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -3191,7 +3259,7 @@ func (v *DriveAtaIfc) CallPmGetStateSync(arg_options g.Variant, cancellable g.IC
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveAtaIfc) CallPmStandby(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveAtaIfc) CallPmStandby(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(106, "DriveAta", "call_pm_standby", 10, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3201,12 +3269,16 @@ func (v *DriveAtaIfc) CallPmStandby(arg_options g.Variant, cancellable g.ICancel
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -3278,7 +3350,7 @@ func (v *DriveAtaIfc) CallPmStandbySync(arg_options g.Variant, cancellable g.ICa
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveAtaIfc) CallPmWakeup(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveAtaIfc) CallPmWakeup(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(109, "DriveAta", "call_pm_wakeup", 10, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3288,12 +3360,16 @@ func (v *DriveAtaIfc) CallPmWakeup(arg_options g.Variant, cancellable g.ICancell
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -3365,7 +3441,7 @@ func (v *DriveAtaIfc) CallPmWakeupSync(arg_options g.Variant, cancellable g.ICan
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveAtaIfc) CallSecurityEraseUnit(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveAtaIfc) CallSecurityEraseUnit(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(112, "DriveAta", "call_security_erase_unit", 10, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3375,12 +3451,16 @@ func (v *DriveAtaIfc) CallSecurityEraseUnit(arg_options g.Variant, cancellable g
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -3452,7 +3532,7 @@ func (v *DriveAtaIfc) CallSecurityEraseUnitSync(arg_options g.Variant, cancellab
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveAtaIfc) CallSmartGetAttributes(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveAtaIfc) CallSmartGetAttributes(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(115, "DriveAta", "call_smart_get_attributes", 10, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3462,12 +3542,16 @@ func (v *DriveAtaIfc) CallSmartGetAttributes(arg_options g.Variant, cancellable 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -3547,7 +3631,7 @@ func (v *DriveAtaIfc) CallSmartGetAttributesSync(arg_options g.Variant, cancella
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveAtaIfc) CallSmartSelftestAbort(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveAtaIfc) CallSmartSelftestAbort(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(118, "DriveAta", "call_smart_selftest_abort", 10, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3557,12 +3641,16 @@ func (v *DriveAtaIfc) CallSmartSelftestAbort(arg_options g.Variant, cancellable 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -3636,7 +3724,7 @@ func (v *DriveAtaIfc) CallSmartSelftestAbortSync(arg_options g.Variant, cancella
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveAtaIfc) CallSmartSelftestStart(arg_type string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveAtaIfc) CallSmartSelftestStart(arg_type string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(121, "DriveAta", "call_smart_selftest_start", 10, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3647,13 +3735,17 @@ func (v *DriveAtaIfc) CallSmartSelftestStart(arg_type string, arg_options g.Vari
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_type := gi.NewStringArgument(c_arg_type)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_type, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
@@ -3733,7 +3825,7 @@ func (v *DriveAtaIfc) CallSmartSelftestStartSync(arg_type string, arg_options g.
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveAtaIfc) CallSmartSetEnabled(arg_value bool, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveAtaIfc) CallSmartSetEnabled(arg_value bool, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(124, "DriveAta", "call_smart_set_enabled", 10, 23, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3743,13 +3835,17 @@ func (v *DriveAtaIfc) CallSmartSetEnabled(arg_value bool, arg_options g.Variant,
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_value := gi.NewBoolArgument(arg_value)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_value, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -3824,7 +3920,7 @@ func (v *DriveAtaIfc) CallSmartSetEnabledSync(arg_value bool, arg_options g.Vari
 //
 // [ user_data ] trans: nothing
 //
-func (v *DriveAtaIfc) CallSmartUpdate(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *DriveAtaIfc) CallSmartUpdate(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(127, "DriveAta", "call_smart_update", 10, 26, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3834,12 +3930,16 @@ func (v *DriveAtaIfc) CallSmartUpdate(arg_options g.Variant, cancellable g.ICanc
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -4262,7 +4362,7 @@ func NewDriveAtaProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, 
 //
 // [ user_data ] trans: nothing
 //
-func DriveAtaProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func DriveAtaProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(143, "DriveAtaProxy", "new", 12, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4278,14 +4378,18 @@ func DriveAtaProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, nam
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -4308,7 +4412,7 @@ func DriveAtaProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, nam
 //
 // [ user_data ] trans: nothing
 //
-func DriveAtaProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func DriveAtaProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(144, "DriveAtaProxy", "new_for_bus", 12, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4320,14 +4424,18 @@ func DriveAtaProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, nam
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -4566,7 +4674,7 @@ func NewDriveProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, nam
 //
 // [ user_data ] trans: nothing
 //
-func DriveProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func DriveProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(150, "DriveProxy", "new", 19, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4582,14 +4690,18 @@ func DriveProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name s
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -4612,7 +4724,7 @@ func DriveProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name s
 //
 // [ user_data ] trans: nothing
 //
-func DriveProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func DriveProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(151, "DriveProxy", "new_for_bus", 19, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4624,14 +4736,18 @@ func DriveProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name s
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -4762,7 +4878,7 @@ func EncryptedOverrideProperties1(klass g.ObjectClass, property_id_begin uint32)
 //
 // [ user_data ] trans: nothing
 //
-func (v *EncryptedIfc) CallChangePassphrase(arg_passphrase string, arg_new_passphrase string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *EncryptedIfc) CallChangePassphrase(arg_passphrase string, arg_new_passphrase string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(155, "Encrypted", "call_change_passphrase", 26, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4774,14 +4890,18 @@ func (v *EncryptedIfc) CallChangePassphrase(arg_passphrase string, arg_new_passp
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_passphrase := gi.NewStringArgument(c_arg_passphrase)
 	arg_arg_new_passphrase := gi.NewStringArgument(c_arg_new_passphrase)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_passphrase, arg_arg_new_passphrase, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_passphrase)
@@ -4865,7 +4985,7 @@ func (v *EncryptedIfc) CallChangePassphraseSync(arg_passphrase string, arg_new_p
 //
 // [ user_data ] trans: nothing
 //
-func (v *EncryptedIfc) CallLock(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *EncryptedIfc) CallLock(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(158, "Encrypted", "call_lock", 26, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4875,12 +4995,16 @@ func (v *EncryptedIfc) CallLock(arg_options g.Variant, cancellable g.ICancellabl
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -4954,7 +5078,7 @@ func (v *EncryptedIfc) CallLockSync(arg_options g.Variant, cancellable g.ICancel
 //
 // [ user_data ] trans: nothing
 //
-func (v *EncryptedIfc) CallResize(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *EncryptedIfc) CallResize(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(161, "Encrypted", "call_resize", 26, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -4964,13 +5088,17 @@ func (v *EncryptedIfc) CallResize(arg_size uint64, arg_options g.Variant, cancel
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_size := gi.NewUint64Argument(arg_size)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_size, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -5047,7 +5175,7 @@ func (v *EncryptedIfc) CallResizeSync(arg_size uint64, arg_options g.Variant, ca
 //
 // [ user_data ] trans: nothing
 //
-func (v *EncryptedIfc) CallUnlock(arg_passphrase string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *EncryptedIfc) CallUnlock(arg_passphrase string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(164, "Encrypted", "call_unlock", 26, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5058,13 +5186,17 @@ func (v *EncryptedIfc) CallUnlock(arg_passphrase string, arg_options g.Variant, 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_passphrase := gi.NewStringArgument(c_arg_passphrase)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_passphrase, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_passphrase)
@@ -5400,7 +5532,7 @@ func NewEncryptedProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags,
 //
 // [ user_data ] trans: nothing
 //
-func EncryptedProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func EncryptedProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(175, "EncryptedProxy", "new", 28, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5416,14 +5548,18 @@ func EncryptedProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -5446,7 +5582,7 @@ func EncryptedProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 //
 // [ user_data ] trans: nothing
 //
-func EncryptedProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func EncryptedProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(176, "EncryptedProxy", "new_for_bus", 28, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5458,14 +5594,18 @@ func EncryptedProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, na
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -5630,7 +5770,7 @@ func FilesystemOverrideProperties1(klass g.ObjectClass, property_id_begin uint32
 //
 // [ user_data ] trans: nothing
 //
-func (v *FilesystemIfc) CallCheck(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *FilesystemIfc) CallCheck(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(180, "Filesystem", "call_check", 35, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5640,12 +5780,16 @@ func (v *FilesystemIfc) CallCheck(arg_options g.Variant, cancellable g.ICancella
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -5725,7 +5869,7 @@ func (v *FilesystemIfc) CallCheckSync(arg_options g.Variant, cancellable g.ICanc
 //
 // [ user_data ] trans: nothing
 //
-func (v *FilesystemIfc) CallMount(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *FilesystemIfc) CallMount(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(183, "Filesystem", "call_mount", 35, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5735,12 +5879,16 @@ func (v *FilesystemIfc) CallMount(arg_options g.Variant, cancellable g.ICancella
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -5820,7 +5968,7 @@ func (v *FilesystemIfc) CallMountSync(arg_options g.Variant, cancellable g.ICanc
 //
 // [ user_data ] trans: nothing
 //
-func (v *FilesystemIfc) CallRepair(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *FilesystemIfc) CallRepair(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(186, "Filesystem", "call_repair", 35, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5830,12 +5978,16 @@ func (v *FilesystemIfc) CallRepair(arg_options g.Variant, cancellable g.ICancell
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -5917,7 +6069,7 @@ func (v *FilesystemIfc) CallRepairSync(arg_options g.Variant, cancellable g.ICan
 //
 // [ user_data ] trans: nothing
 //
-func (v *FilesystemIfc) CallResize(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *FilesystemIfc) CallResize(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(189, "Filesystem", "call_resize", 35, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -5927,13 +6079,17 @@ func (v *FilesystemIfc) CallResize(arg_size uint64, arg_options g.Variant, cance
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_size := gi.NewUint64Argument(arg_size)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_size, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -6010,7 +6166,7 @@ func (v *FilesystemIfc) CallResizeSync(arg_size uint64, arg_options g.Variant, c
 //
 // [ user_data ] trans: nothing
 //
-func (v *FilesystemIfc) CallSetLabel(arg_label string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *FilesystemIfc) CallSetLabel(arg_label string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(192, "Filesystem", "call_set_label", 35, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6021,13 +6177,17 @@ func (v *FilesystemIfc) CallSetLabel(arg_label string, arg_options g.Variant, ca
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_label := gi.NewStringArgument(c_arg_label)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_label, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_label)
@@ -6105,7 +6265,7 @@ func (v *FilesystemIfc) CallSetLabelSync(arg_label string, arg_options g.Variant
 //
 // [ user_data ] trans: nothing
 //
-func (v *FilesystemIfc) CallTakeOwnership(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *FilesystemIfc) CallTakeOwnership(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(195, "Filesystem", "call_take_ownership", 35, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6115,12 +6275,16 @@ func (v *FilesystemIfc) CallTakeOwnership(arg_options g.Variant, cancellable g.I
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -6192,7 +6356,7 @@ func (v *FilesystemIfc) CallTakeOwnershipSync(arg_options g.Variant, cancellable
 //
 // [ user_data ] trans: nothing
 //
-func (v *FilesystemIfc) CallUnmount(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *FilesystemIfc) CallUnmount(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(198, "Filesystem", "call_unmount", 35, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6202,12 +6366,16 @@ func (v *FilesystemIfc) CallUnmount(arg_options g.Variant, cancellable g.ICancel
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -6595,7 +6763,7 @@ func NewFilesystemProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags
 //
 // [ user_data ] trans: nothing
 //
-func FilesystemProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func FilesystemProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(212, "FilesystemProxy", "new", 37, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6611,14 +6779,18 @@ func FilesystemProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, n
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -6641,7 +6813,7 @@ func FilesystemProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, n
 //
 // [ user_data ] trans: nothing
 //
-func FilesystemProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func FilesystemProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(213, "FilesystemProxy", "new_for_bus", 37, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6653,14 +6825,18 @@ func FilesystemProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, n
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -6787,7 +6963,7 @@ func JobOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (resu
 //
 // [ user_data ] trans: nothing
 //
-func (v *JobIfc) CallCancel(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *JobIfc) CallCancel(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(217, "Job", "call_cancel", 43, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6797,12 +6973,16 @@ func (v *JobIfc) CallCancel(arg_options g.Variant, cancellable g.ICancellable, c
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -7080,7 +7260,7 @@ func NewJobProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name 
 //
 // [ user_data ] trans: nothing
 //
-func JobProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func JobProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(226, "JobProxy", "new", 45, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7096,14 +7276,18 @@ func JobProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name str
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -7126,7 +7310,7 @@ func JobProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name str
 //
 // [ user_data ] trans: nothing
 //
-func JobProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func JobProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(227, "JobProxy", "new_for_bus", 45, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7138,14 +7322,18 @@ func JobProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name str
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -7272,7 +7460,7 @@ func LoopOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (res
 //
 // [ user_data ] trans: nothing
 //
-func (v *LoopIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *LoopIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(231, "Loop", "call_delete", 51, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7282,12 +7470,16 @@ func (v *LoopIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -7361,7 +7553,7 @@ func (v *LoopIfc) CallDeleteSync(arg_options g.Variant, cancellable g.ICancellab
 //
 // [ user_data ] trans: nothing
 //
-func (v *LoopIfc) CallSetAutoclear(arg_value bool, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *LoopIfc) CallSetAutoclear(arg_value bool, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(234, "Loop", "call_set_autoclear", 51, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7371,13 +7563,17 @@ func (v *LoopIfc) CallSetAutoclear(arg_value bool, arg_options g.Variant, cancel
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_value := gi.NewBoolArgument(arg_value)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_value, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -7657,7 +7853,7 @@ func NewLoopProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, name
 //
 // [ user_data ] trans: nothing
 //
-func LoopProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func LoopProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(243, "LoopProxy", "new", 53, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7673,14 +7869,18 @@ func LoopProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name st
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -7703,7 +7903,7 @@ func LoopProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name st
 //
 // [ user_data ] trans: nothing
 //
-func LoopProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func LoopProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(244, "LoopProxy", "new_for_bus", 53, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7715,14 +7915,18 @@ func LoopProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name st
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -7851,7 +8055,7 @@ func MDRaidOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (r
 //
 // [ user_data ] trans: nothing
 //
-func (v *MDRaidIfc) CallAddDevice(arg_device string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *MDRaidIfc) CallAddDevice(arg_device string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(248, "MDRaid", "call_add_device", 60, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7862,13 +8066,17 @@ func (v *MDRaidIfc) CallAddDevice(arg_device string, arg_options g.Variant, canc
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_device := gi.NewStringArgument(c_arg_device)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_device, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_device)
@@ -7946,7 +8154,7 @@ func (v *MDRaidIfc) CallAddDeviceSync(arg_device string, arg_options g.Variant, 
 //
 // [ user_data ] trans: nothing
 //
-func (v *MDRaidIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *MDRaidIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(251, "MDRaid", "call_delete", 60, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7956,12 +8164,16 @@ func (v *MDRaidIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -8035,7 +8247,7 @@ func (v *MDRaidIfc) CallDeleteSync(arg_options g.Variant, cancellable g.ICancell
 //
 // [ user_data ] trans: nothing
 //
-func (v *MDRaidIfc) CallRemoveDevice(arg_device string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *MDRaidIfc) CallRemoveDevice(arg_device string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(254, "MDRaid", "call_remove_device", 60, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8046,13 +8258,17 @@ func (v *MDRaidIfc) CallRemoveDevice(arg_device string, arg_options g.Variant, c
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_device := gi.NewStringArgument(c_arg_device)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_device, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_device)
@@ -8132,7 +8348,7 @@ func (v *MDRaidIfc) CallRemoveDeviceSync(arg_device string, arg_options g.Varian
 //
 // [ user_data ] trans: nothing
 //
-func (v *MDRaidIfc) CallRequestSyncAction(arg_sync_action string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *MDRaidIfc) CallRequestSyncAction(arg_sync_action string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(257, "MDRaid", "call_request_sync_action", 60, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8143,13 +8359,17 @@ func (v *MDRaidIfc) CallRequestSyncAction(arg_sync_action string, arg_options g.
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_sync_action := gi.NewStringArgument(c_arg_sync_action)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_sync_action, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_sync_action)
@@ -8229,7 +8449,7 @@ func (v *MDRaidIfc) CallRequestSyncActionSync(arg_sync_action string, arg_option
 //
 // [ user_data ] trans: nothing
 //
-func (v *MDRaidIfc) CallSetBitmapLocation(arg_value string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *MDRaidIfc) CallSetBitmapLocation(arg_value string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(260, "MDRaid", "call_set_bitmap_location", 60, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8240,13 +8460,17 @@ func (v *MDRaidIfc) CallSetBitmapLocation(arg_value string, arg_options g.Varian
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_value := gi.NewStringArgument(c_arg_value)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_value, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_value)
@@ -8324,7 +8548,7 @@ func (v *MDRaidIfc) CallSetBitmapLocationSync(arg_value string, arg_options g.Va
 //
 // [ user_data ] trans: nothing
 //
-func (v *MDRaidIfc) CallStart(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *MDRaidIfc) CallStart(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(263, "MDRaid", "call_start", 60, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8334,12 +8558,16 @@ func (v *MDRaidIfc) CallStart(arg_options g.Variant, cancellable g.ICancellable,
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -8411,7 +8639,7 @@ func (v *MDRaidIfc) CallStartSync(arg_options g.Variant, cancellable g.ICancella
 //
 // [ user_data ] trans: nothing
 //
-func (v *MDRaidIfc) CallStop(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *MDRaidIfc) CallStop(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(266, "MDRaid", "call_stop", 60, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8421,12 +8649,16 @@ func (v *MDRaidIfc) CallStop(arg_options g.Variant, cancellable g.ICancellable, 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -8803,7 +9035,7 @@ func NewMDRaidProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 //
 // [ user_data ] trans: nothing
 //
-func MDRaidProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func MDRaidProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(280, "MDRaidProxy", "new", 62, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8819,14 +9051,18 @@ func MDRaidProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name 
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -8849,7 +9085,7 @@ func MDRaidProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name 
 //
 // [ user_data ] trans: nothing
 //
-func MDRaidProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func MDRaidProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(281, "MDRaidProxy", "new_for_bus", 62, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -8861,14 +9097,18 @@ func MDRaidProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -8995,7 +9235,7 @@ func ManagerOverrideProperties1(klass g.ObjectClass, property_id_begin uint32) (
 //
 // [ user_data ] trans: nothing
 //
-func (v *ManagerIfc) CallCanCheck(arg_type string, cancellable g.ICancellable, callback interface{}) {
+func (v *ManagerIfc) CallCanCheck(arg_type string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(285, "Manager", "call_can_check", 70, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9006,12 +9246,16 @@ func (v *ManagerIfc) CallCanCheck(arg_type string, cancellable g.ICancellable, c
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_type := gi.NewStringArgument(c_arg_type)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_type, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
@@ -9094,7 +9338,7 @@ func (v *ManagerIfc) CallCanCheckSync(arg_type string, cancellable g.ICancellabl
 //
 // [ user_data ] trans: nothing
 //
-func (v *ManagerIfc) CallCanFormat(arg_type string, cancellable g.ICancellable, callback interface{}) {
+func (v *ManagerIfc) CallCanFormat(arg_type string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(288, "Manager", "call_can_format", 70, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9105,12 +9349,16 @@ func (v *ManagerIfc) CallCanFormat(arg_type string, cancellable g.ICancellable, 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_type := gi.NewStringArgument(c_arg_type)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_type, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
@@ -9193,7 +9441,7 @@ func (v *ManagerIfc) CallCanFormatSync(arg_type string, cancellable g.ICancellab
 //
 // [ user_data ] trans: nothing
 //
-func (v *ManagerIfc) CallCanRepair(arg_type string, cancellable g.ICancellable, callback interface{}) {
+func (v *ManagerIfc) CallCanRepair(arg_type string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(291, "Manager", "call_can_repair", 70, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9204,12 +9452,16 @@ func (v *ManagerIfc) CallCanRepair(arg_type string, cancellable g.ICancellable, 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_type := gi.NewStringArgument(c_arg_type)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_type, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
@@ -9292,7 +9544,7 @@ func (v *ManagerIfc) CallCanRepairSync(arg_type string, cancellable g.ICancellab
 //
 // [ user_data ] trans: nothing
 //
-func (v *ManagerIfc) CallCanResize(arg_type string, cancellable g.ICancellable, callback interface{}) {
+func (v *ManagerIfc) CallCanResize(arg_type string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(294, "Manager", "call_can_resize", 70, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9303,12 +9555,16 @@ func (v *ManagerIfc) CallCanResize(arg_type string, cancellable g.ICancellable, 
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_type := gi.NewStringArgument(c_arg_type)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_type, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
@@ -9391,7 +9647,7 @@ func (v *ManagerIfc) CallCanResizeSync(arg_type string, cancellable g.ICancellab
 //
 // [ user_data ] trans: nothing
 //
-func (v *ManagerIfc) CallEnableModules(arg_enable bool, cancellable g.ICancellable, callback interface{}) {
+func (v *ManagerIfc) CallEnableModules(arg_enable bool, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(297, "Manager", "call_enable_modules", 70, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9401,12 +9657,16 @@ func (v *ManagerIfc) CallEnableModules(arg_enable bool, cancellable g.ICancellab
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_enable := gi.NewBoolArgument(arg_enable)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_enable, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -9478,7 +9738,7 @@ func (v *ManagerIfc) CallEnableModulesSync(arg_enable bool, cancellable g.ICance
 //
 // [ user_data ] trans: nothing
 //
-func (v *ManagerIfc) CallGetBlockDevices(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *ManagerIfc) CallGetBlockDevices(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(300, "Manager", "call_get_block_devices", 70, 17, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9488,12 +9748,16 @@ func (v *ManagerIfc) CallGetBlockDevices(arg_options g.Variant, cancellable g.IC
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -9577,7 +9841,7 @@ func (v *ManagerIfc) CallGetBlockDevicesSync(arg_options g.Variant, cancellable 
 //
 // [ user_data ] trans: nothing
 //
-func (v *ManagerIfc) CallLoopSetup(arg_fd g.Variant, arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback interface{}) {
+func (v *ManagerIfc) CallLoopSetup(arg_fd g.Variant, arg_options g.Variant, fd_list g.IUnixFDList, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(303, "Manager", "call_loop_setup", 70, 20, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9591,14 +9855,18 @@ func (v *ManagerIfc) CallLoopSetup(arg_fd g.Variant, arg_options g.Variant, fd_l
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_fd := gi.NewPointerArgument(arg_fd.P)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_fd_list := gi.NewPointerArgument(tmp)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_fd, arg_arg_options, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -9704,7 +9972,7 @@ func (v *ManagerIfc) CallLoopSetupSync(arg_fd g.Variant, arg_options g.Variant, 
 //
 // [ user_data ] trans: nothing
 //
-func (v *ManagerIfc) CallMdraidCreate(arg_blocks string, arg_level string, arg_name string, arg_chunk uint64, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *ManagerIfc) CallMdraidCreate(arg_blocks string, arg_level string, arg_name string, arg_chunk uint64, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(306, "Manager", "call_mdraid_create", 70, 23, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9717,7 +9985,11 @@ func (v *ManagerIfc) CallMdraidCreate(arg_blocks string, arg_level string, arg_n
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_blocks := gi.NewStringArgument(c_arg_blocks)
 	arg_arg_level := gi.NewStringArgument(c_arg_level)
@@ -9725,8 +9997,8 @@ func (v *ManagerIfc) CallMdraidCreate(arg_blocks string, arg_level string, arg_n
 	arg_arg_chunk := gi.NewUint64Argument(arg_chunk)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_blocks, arg_arg_level, arg_arg_name, arg_arg_chunk, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_blocks)
@@ -9829,7 +10101,7 @@ func (v *ManagerIfc) CallMdraidCreateSync(arg_blocks string, arg_level string, a
 //
 // [ user_data ] trans: nothing
 //
-func (v *ManagerIfc) CallResolveDevice(arg_devspec g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *ManagerIfc) CallResolveDevice(arg_devspec g.Variant, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(309, "Manager", "call_resolve_device", 70, 26, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -9839,13 +10111,17 @@ func (v *ManagerIfc) CallResolveDevice(arg_devspec g.Variant, arg_options g.Vari
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_devspec := gi.NewPointerArgument(arg_devspec.P)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_devspec, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -10312,7 +10588,7 @@ func NewManagerProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags, n
 //
 // [ user_data ] trans: nothing
 //
-func ManagerProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func ManagerProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(325, "ManagerProxy", "new", 72, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10328,14 +10604,18 @@ func ManagerProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -10358,7 +10638,7 @@ func ManagerProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name
 //
 // [ user_data ] trans: nothing
 //
-func ManagerProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func ManagerProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(326, "ManagerProxy", "new_for_bus", 72, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -10370,14 +10650,18 @@ func ManagerProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -11076,7 +11360,7 @@ func ObjectManagerClientGetProxyType1(manager g.IDBusObjectManagerClient, object
 //
 // [ user_data ] trans: nothing
 //
-func ObjectManagerClientNew1(connection g.IDBusConnection, flags g.DBusObjectManagerClientFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func ObjectManagerClientNew1(connection g.IDBusConnection, flags g.DBusObjectManagerClientFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(355, "ObjectManagerClient", "new", 81, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11092,14 +11376,18 @@ func ObjectManagerClientNew1(connection g.IDBusConnection, flags g.DBusObjectMan
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -11122,7 +11410,7 @@ func ObjectManagerClientNew1(connection g.IDBusConnection, flags g.DBusObjectMan
 //
 // [ user_data ] trans: nothing
 //
-func ObjectManagerClientNewForBus1(bus_type g.BusTypeEnum, flags g.DBusObjectManagerClientFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func ObjectManagerClientNewForBus1(bus_type g.BusTypeEnum, flags g.DBusObjectManagerClientFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(356, "ObjectManagerClient", "new_for_bus", 81, 6, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11134,14 +11422,18 @@ func ObjectManagerClientNewForBus1(bus_type g.BusTypeEnum, flags g.DBusObjectMan
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -11572,7 +11864,7 @@ func PartitionOverrideProperties1(klass g.ObjectClass, property_id_begin uint32)
 //
 // [ user_data ] trans: nothing
 //
-func (v *PartitionIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *PartitionIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(373, "Partition", "call_delete", 90, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11582,12 +11874,16 @@ func (v *PartitionIfc) CallDelete(arg_options g.Variant, cancellable g.ICancella
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -11661,7 +11957,7 @@ func (v *PartitionIfc) CallDeleteSync(arg_options g.Variant, cancellable g.ICanc
 //
 // [ user_data ] trans: nothing
 //
-func (v *PartitionIfc) CallResize(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *PartitionIfc) CallResize(arg_size uint64, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(376, "Partition", "call_resize", 90, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11671,13 +11967,17 @@ func (v *PartitionIfc) CallResize(arg_size uint64, arg_options g.Variant, cancel
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_size := gi.NewUint64Argument(arg_size)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_size, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -11754,7 +12054,7 @@ func (v *PartitionIfc) CallResizeSync(arg_size uint64, arg_options g.Variant, ca
 //
 // [ user_data ] trans: nothing
 //
-func (v *PartitionIfc) CallSetFlags(arg_flags uint64, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *PartitionIfc) CallSetFlags(arg_flags uint64, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(379, "Partition", "call_set_flags", 90, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11764,13 +12064,17 @@ func (v *PartitionIfc) CallSetFlags(arg_flags uint64, arg_options g.Variant, can
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_flags := gi.NewUint64Argument(arg_flags)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_flags, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -11847,7 +12151,7 @@ func (v *PartitionIfc) CallSetFlagsSync(arg_flags uint64, arg_options g.Variant,
 //
 // [ user_data ] trans: nothing
 //
-func (v *PartitionIfc) CallSetName(arg_name string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *PartitionIfc) CallSetName(arg_name string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(382, "Partition", "call_set_name", 90, 11, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11858,13 +12162,17 @@ func (v *PartitionIfc) CallSetName(arg_name string, arg_options g.Variant, cance
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_name := gi.NewStringArgument(c_arg_name)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_name, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_name)
@@ -11944,7 +12252,7 @@ func (v *PartitionIfc) CallSetNameSync(arg_name string, arg_options g.Variant, c
 //
 // [ user_data ] trans: nothing
 //
-func (v *PartitionIfc) CallSetType(arg_type string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *PartitionIfc) CallSetType(arg_type string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(385, "Partition", "call_set_type", 90, 14, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -11955,13 +12263,17 @@ func (v *PartitionIfc) CallSetType(arg_type string, arg_options g.Variant, cance
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_type := gi.NewStringArgument(c_arg_type)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_type, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
@@ -12304,7 +12616,7 @@ func NewPartitionProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags,
 //
 // [ user_data ] trans: nothing
 //
-func PartitionProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func PartitionProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(397, "PartitionProxy", "new", 92, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12320,14 +12632,18 @@ func PartitionProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -12350,7 +12666,7 @@ func PartitionProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 //
 // [ user_data ] trans: nothing
 //
-func PartitionProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func PartitionProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(398, "PartitionProxy", "new_for_bus", 92, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12362,14 +12678,18 @@ func PartitionProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, na
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -12504,7 +12824,7 @@ func PartitionTableOverrideProperties1(klass g.ObjectClass, property_id_begin ui
 //
 // [ user_data ] trans: nothing
 //
-func (v *PartitionTableIfc) CallCreatePartition(arg_offset uint64, arg_size uint64, arg_type string, arg_name string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *PartitionTableIfc) CallCreatePartition(arg_offset uint64, arg_size uint64, arg_type string, arg_name string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(402, "PartitionTable", "call_create_partition", 98, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12516,7 +12836,11 @@ func (v *PartitionTableIfc) CallCreatePartition(arg_offset uint64, arg_size uint
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_offset := gi.NewUint64Argument(arg_offset)
 	arg_arg_size := gi.NewUint64Argument(arg_size)
@@ -12524,8 +12848,8 @@ func (v *PartitionTableIfc) CallCreatePartition(arg_offset uint64, arg_size uint
 	arg_arg_name := gi.NewStringArgument(c_arg_name)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_offset, arg_arg_size, arg_arg_type, arg_arg_name, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
@@ -12554,7 +12878,7 @@ func (v *PartitionTableIfc) CallCreatePartition(arg_offset uint64, arg_size uint
 //
 // [ user_data ] trans: nothing
 //
-func (v *PartitionTableIfc) CallCreatePartitionAndFormat(arg_offset uint64, arg_size uint64, arg_type string, arg_name string, arg_options g.Variant, arg_format_type string, arg_format_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *PartitionTableIfc) CallCreatePartitionAndFormat(arg_offset uint64, arg_size uint64, arg_type string, arg_name string, arg_options g.Variant, arg_format_type string, arg_format_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(403, "PartitionTable", "call_create_partition_and_format", 98, 3, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12567,7 +12891,11 @@ func (v *PartitionTableIfc) CallCreatePartitionAndFormat(arg_offset uint64, arg_
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_offset := gi.NewUint64Argument(arg_offset)
 	arg_arg_size := gi.NewUint64Argument(arg_size)
@@ -12577,8 +12905,8 @@ func (v *PartitionTableIfc) CallCreatePartitionAndFormat(arg_offset uint64, arg_
 	arg_arg_format_type := gi.NewStringArgument(c_arg_format_type)
 	arg_arg_format_options := gi.NewPointerArgument(arg_format_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_offset, arg_arg_size, arg_arg_type, arg_arg_name, arg_arg_options, arg_arg_format_type, arg_arg_format_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
@@ -12981,7 +13309,7 @@ func NewPartitionTableProxySync(connection g.IDBusConnection, flags g.DBusProxyF
 //
 // [ user_data ] trans: nothing
 //
-func PartitionTableProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func PartitionTableProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(414, "PartitionTableProxy", "new", 100, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -12997,14 +13325,18 @@ func PartitionTableProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlag
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -13027,7 +13359,7 @@ func PartitionTableProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlag
 //
 // [ user_data ] trans: nothing
 //
-func PartitionTableProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func PartitionTableProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(415, "PartitionTableProxy", "new_for_bus", 100, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13039,14 +13371,18 @@ func PartitionTableProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlag
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -13217,7 +13553,7 @@ func SwapspaceOverrideProperties1(klass g.ObjectClass, property_id_begin uint32)
 //
 // [ user_data ] trans: nothing
 //
-func (v *SwapspaceIfc) CallSetLabel(arg_label string, arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *SwapspaceIfc) CallSetLabel(arg_label string, arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(420, "Swapspace", "call_set_label", 108, 2, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13228,13 +13564,17 @@ func (v *SwapspaceIfc) CallSetLabel(arg_label string, arg_options g.Variant, can
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_label := gi.NewStringArgument(c_arg_label)
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_label, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_label)
@@ -13312,7 +13652,7 @@ func (v *SwapspaceIfc) CallSetLabelSync(arg_label string, arg_options g.Variant,
 //
 // [ user_data ] trans: nothing
 //
-func (v *SwapspaceIfc) CallStart(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *SwapspaceIfc) CallStart(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(423, "Swapspace", "call_start", 108, 5, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13322,12 +13662,16 @@ func (v *SwapspaceIfc) CallStart(arg_options g.Variant, cancellable g.ICancellab
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -13399,7 +13743,7 @@ func (v *SwapspaceIfc) CallStartSync(arg_options g.Variant, cancellable g.ICance
 //
 // [ user_data ] trans: nothing
 //
-func (v *SwapspaceIfc) CallStop(arg_options g.Variant, cancellable g.ICancellable, callback interface{}) {
+func (v *SwapspaceIfc) CallStop(arg_options g.Variant, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(426, "Swapspace", "call_stop", 108, 8, gi.INFO_TYPE_INTERFACE, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13409,12 +13753,16 @@ func (v *SwapspaceIfc) CallStop(arg_options g.Variant, cancellable g.ICancellabl
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_v := gi.NewPointerArgument(*(*unsafe.Pointer)(unsafe.Pointer(v)))
 	arg_arg_options := gi.NewPointerArgument(arg_options.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 }
@@ -13711,7 +14059,7 @@ func NewSwapspaceProxySync(connection g.IDBusConnection, flags g.DBusProxyFlags,
 //
 // [ user_data ] trans: nothing
 //
-func SwapspaceProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func SwapspaceProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(436, "SwapspaceProxy", "new", 110, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13727,14 +14075,18 @@ func SwapspaceProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 	if cancellable != nil {
 		tmp1 = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_connection := gi.NewPointerArgument(tmp)
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp1)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_connection, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
@@ -13757,7 +14109,7 @@ func SwapspaceProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 //
 // [ user_data ] trans: nothing
 //
-func SwapspaceProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback interface{}) {
+func SwapspaceProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name string, object_path string, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(437, "SwapspaceProxy", "new_for_bus", 110, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -13769,14 +14121,18 @@ func SwapspaceProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, na
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo)
+	_ = cId
 	arg_bus_type := gi.NewIntArgument(int(bus_type))
 	arg_flags := gi.NewIntArgument(int(flags))
 	arg_name := gi.NewStringArgument(c_name)
 	arg_object_path := gi.NewStringArgument(c_object_path)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_callback := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_flags, arg_name, arg_object_path, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)

@@ -26,14 +26,6 @@ package vte
 /*
 #cgo pkg-config: vte-2.91
 #include <vte/vte.h>
-extern gboolean giVteSelectionFunc(VteTerminal* terminal, gint64 column, gint64 row, gpointer data);
-static void* getVteSelectionFuncWrapper() {
-    return (void*)(giVteSelectionFunc);
-}
-extern void giVteTerminalSpawnAsyncCallback(VteTerminal* terminal, gint32 pid, GError** error, gpointer user_data);
-static void* getVteTerminalSpawnAsyncCallbackWrapper() {
-    return (void*)(giVteTerminalSpawnAsyncCallback);
-}
 */
 import "C"
 import "github.com/linuxdeepin/go-gir/g-2.0"
@@ -347,31 +339,44 @@ func (v Pty) SetUtf8(utf8 bool) (result bool, err error) {
 //
 // [ user_data ] trans: nothing
 //
-func (v Pty) SpawnAsync(working_directory string, argv gi.CStrArray, envv gi.CStrArray, spawn_flags g.SpawnFlags, child_setup interface{}, timeout int32, cancellable g.ICancellable, callback interface{}) {
+func (v Pty) SpawnAsync(working_directory string, argv gi.CStrArray, envv gi.CStrArray, spawn_flags g.SpawnFlags, child_setup g.SpawnChildSetupFunc, child_setup_data unsafe.Pointer, child_setup_data_destroy g.DestroyNotify, timeout int32, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
 	iv, err := _I.Get(8, "Pty", "spawn_async", 8, 8, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
 	c_working_directory := gi.CString(working_directory)
-	cId := gi.RegisterFunc(child_setup, gi.ScopeNotified)
+	callableInfo := gi.GetCallableInfo("GLib", "SpawnChildSetupFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallSpawnChildSetupFunc(child_setup, __result, __args)
+	}, gi.ScopeNotified, callableInfo)
+	_ = cId
+	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
+	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallDestroyNotify(child_setup_data_destroy, __result, __args)
+	}, gi.ScopeAsync, callableInfo1)
+	_ = cId1
 	var tmp unsafe.Pointer
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	cId1 := gi.RegisterFunc(callback, gi.ScopeAsync)
+	callableInfo2 := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+	cId2, funcPtr2 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallAsyncReadyCallback(callback, __result, __args)
+	}, gi.ScopeAsync, callableInfo2)
+	_ = cId2
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_working_directory := gi.NewStringArgument(c_working_directory)
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envv := gi.NewPointerArgument(envv.P)
 	arg_spawn_flags := gi.NewIntArgument(int(spawn_flags))
-	arg_child_setup := gi.NewPointerArgument(g.GetSpawnChildSetupFuncWrapper())
-	arg_child_setup_data := gi.NewPointerArgumentU(cId)
-	arg_child_setup_data_destroy := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
+	arg_child_setup := gi.NewPointerArgument(funcPtr)
+	arg_child_setup_data := gi.NewPointerArgument(child_setup_data)
+	arg_child_setup_data_destroy := gi.NewPointerArgument(funcPtr1)
 	arg_timeout := gi.NewInt32Argument(timeout)
 	arg_cancellable := gi.NewPointerArgument(tmp)
-	arg_callback := gi.NewPointerArgument(g.GetAsyncReadyCallbackWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId1)
+	arg_callback := gi.NewPointerArgument(funcPtr2)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_working_directory, arg_argv, arg_envv, arg_spawn_flags, arg_child_setup, arg_child_setup_data, arg_child_setup_data_destroy, arg_timeout, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_working_directory)
@@ -582,21 +587,10 @@ func RegexErrorGetType() gi.GType {
 	return ret
 }
 
-type SelectionFuncArgs struct {
-	Terminal Terminal
-	Column   int64
-	Row      int64
-	Data     unsafe.Pointer
-}
+type SelectionFunc func(terminal Terminal, column int64, row int64, data unsafe.Pointer) (result bool)
 
-func GetSelectionFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getVteSelectionFuncWrapper())
-}
-
-//export giVteSelectionFunc
-func giVteSelectionFunc(terminal *C.VteTerminal, column C.gint64, row C.gint64, data C.gpointer) (c_result C.gboolean) {
-	// TODO: not found user_data
-	return
+func CallSelectionFunc(fn SelectionFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Object Terminal
@@ -1372,21 +1366,24 @@ func (v Terminal) GetScrollbackLines() (result int64) {
 //
 // [ result ] trans: everything
 //
-func (v Terminal) GetText(is_selected interface{}, attributes unsafe.Pointer /*TODO:TYPE*/) (result string) {
+func (v Terminal) GetText(is_selected SelectionFunc, user_data unsafe.Pointer, attributes unsafe.Pointer /*TODO:TYPE*/) (result string) {
 	iv, err := _I.Get(54, "Terminal", "get_text", 19, 39, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(is_selected, gi.ScopeCall)
+	callableInfo := gi.GetCallableInfo("Vte", "SelectionFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallSelectionFunc(is_selected, __result, __args)
+	}, gi.ScopeCall, callableInfo)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_is_selected := gi.NewPointerArgument(GetSelectionFuncWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_is_selected := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_attributes := gi.NewPointerArgument(attributes /*TODO*/)
 	args := []gi.Argument{arg_v, arg_is_selected, arg_user_data, arg_attributes}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	gi.UnregisterFunc(cId)
+	gi.UnregisterFClosure(cId)
 	result = ret.String().Take()
 	return
 }
@@ -1419,21 +1416,24 @@ func (v Terminal) GetTextBlinkMode() (result TextBlinkModeEnum) {
 //
 // [ result ] trans: everything
 //
-func (v Terminal) GetTextIncludeTrailingSpaces(is_selected interface{}, attributes unsafe.Pointer /*TODO:TYPE*/) (result string) {
+func (v Terminal) GetTextIncludeTrailingSpaces(is_selected SelectionFunc, user_data unsafe.Pointer, attributes unsafe.Pointer /*TODO:TYPE*/) (result string) {
 	iv, err := _I.Get(56, "Terminal", "get_text_include_trailing_spaces", 19, 41, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(is_selected, gi.ScopeCall)
+	callableInfo := gi.GetCallableInfo("Vte", "SelectionFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallSelectionFunc(is_selected, __result, __args)
+	}, gi.ScopeCall, callableInfo)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_is_selected := gi.NewPointerArgument(GetSelectionFuncWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_is_selected := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_attributes := gi.NewPointerArgument(attributes /*TODO*/)
 	args := []gi.Argument{arg_v, arg_is_selected, arg_user_data, arg_attributes}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	gi.UnregisterFunc(cId)
+	gi.UnregisterFClosure(cId)
 	result = ret.String().Take()
 	return
 }
@@ -1456,25 +1456,28 @@ func (v Terminal) GetTextIncludeTrailingSpaces(is_selected interface{}, attribut
 //
 // [ result ] trans: everything
 //
-func (v Terminal) GetTextRange(start_row int64, start_col int64, end_row int64, end_col int64, is_selected interface{}, attributes unsafe.Pointer /*TODO:TYPE*/) (result string) {
+func (v Terminal) GetTextRange(start_row int64, start_col int64, end_row int64, end_col int64, is_selected SelectionFunc, user_data unsafe.Pointer, attributes unsafe.Pointer /*TODO:TYPE*/) (result string) {
 	iv, err := _I.Get(57, "Terminal", "get_text_range", 19, 42, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(is_selected, gi.ScopeCall)
+	callableInfo := gi.GetCallableInfo("Vte", "SelectionFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallSelectionFunc(is_selected, __result, __args)
+	}, gi.ScopeCall, callableInfo)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_start_row := gi.NewInt64Argument(start_row)
 	arg_start_col := gi.NewInt64Argument(start_col)
 	arg_end_row := gi.NewInt64Argument(end_row)
 	arg_end_col := gi.NewInt64Argument(end_col)
-	arg_is_selected := gi.NewPointerArgument(GetSelectionFuncWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_is_selected := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_attributes := gi.NewPointerArgument(attributes /*TODO*/)
 	args := []gi.Argument{arg_v, arg_start_row, arg_start_col, arg_end_row, arg_end_col, arg_is_selected, arg_user_data, arg_attributes}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	gi.UnregisterFunc(cId)
+	gi.UnregisterFClosure(cId)
 	result = ret.String().Take()
 	return
 }
@@ -2591,14 +2594,17 @@ func (v Terminal) SetWordCharExceptions(exceptions string) {
 //
 // [ result ] trans: nothing
 //
-func (v Terminal) SpawnSync(pty_flags PtyFlags, working_directory string, argv gi.CStrArray, envv gi.CStrArray, spawn_flags g.SpawnFlags, child_setup interface{}, cancellable g.ICancellable) (result bool, child_pid int32, err error) {
+func (v Terminal) SpawnSync(pty_flags PtyFlags, working_directory string, argv gi.CStrArray, envv gi.CStrArray, spawn_flags g.SpawnFlags, child_setup g.SpawnChildSetupFunc, child_setup_data unsafe.Pointer, cancellable g.ICancellable) (result bool, child_pid int32, err error) {
 	iv, err := _I.Get(118, "Terminal", "spawn_sync", 19, 103, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [2]gi.Argument
 	c_working_directory := gi.CString(working_directory)
-	cId := gi.RegisterFunc(child_setup, gi.ScopeCall)
+	callableInfo := gi.GetCallableInfo("GLib", "SpawnChildSetupFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallSpawnChildSetupFunc(child_setup, __result, __args)
+	}, gi.ScopeCall, callableInfo)
 	var tmp unsafe.Pointer
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
@@ -2609,8 +2615,8 @@ func (v Terminal) SpawnSync(pty_flags PtyFlags, working_directory string, argv g
 	arg_argv := gi.NewPointerArgument(argv.P)
 	arg_envv := gi.NewPointerArgument(envv.P)
 	arg_spawn_flags := gi.NewIntArgument(int(spawn_flags))
-	arg_child_setup := gi.NewPointerArgument(g.GetSpawnChildSetupFuncWrapper())
-	arg_child_setup_data := gi.NewPointerArgumentU(cId)
+	arg_child_setup := gi.NewPointerArgument(funcPtr)
+	arg_child_setup_data := gi.NewPointerArgument(child_setup_data)
 	arg_child_pid := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[1]))
@@ -2618,7 +2624,7 @@ func (v Terminal) SpawnSync(pty_flags PtyFlags, working_directory string, argv g
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
-	gi.UnregisterFunc(cId)
+	gi.UnregisterFClosure(cId)
 	err = gi.ToError(outArgs[1].Pointer())
 	child_pid = outArgs[0].Int32()
 	result = ret.Bool()
@@ -2703,31 +2709,10 @@ func TerminalClassPrivateGetType() gi.GType {
 	return ret
 }
 
-type TerminalSpawnAsyncCallbackArgs struct {
-	Terminal Terminal
-	Pid      int32
-	Error    unsafe.Pointer
-}
+type TerminalSpawnAsyncCallback func(terminal Terminal, pid int32, user_data unsafe.Pointer) (error error)
 
-func GetTerminalSpawnAsyncCallbackWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getVteTerminalSpawnAsyncCallbackWrapper())
-}
-
-//export giVteTerminalSpawnAsyncCallback
-func giVteTerminalSpawnAsyncCallback(terminal *C.VteTerminal, pid C.gint32, error **C.GError, user_data C.gpointer) {
-	closure := gi.GetFunc(uint(uintptr(user_data)))
-	if closure.Fn != nil {
-		args := &TerminalSpawnAsyncCallbackArgs{
-			Terminal: WrapTerminal(unsafe.Pointer(terminal)),
-			Pid:      int32(pid),
-			Error:    unsafe.Pointer(error),
-		}
-		fn := closure.Fn.(func(*TerminalSpawnAsyncCallbackArgs))
-		fn(args)
-		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(uint(uintptr(user_data)))
-		}
-	}
+func CallTerminalSpawnAsyncCallback(fn TerminalSpawnAsyncCallback, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Enum TextBlinkMode

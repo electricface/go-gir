@@ -22,37 +22,68 @@
 package gi
 
 /*
-   #include <stdlib.h>
-   #include <girepository.h>
-   #include <girffi.h>
-   #include <ffi.h>
+#include <stdlib.h>
+#include <girepository.h>
+#include <girffi.h>
+#include <ffi.h>
+#include <glib.h>
+#include <stdio.h>
 
-   static inline void free_string(char *p) { free(p); }
-   static inline void free_gstring(gchar *p) { if (p) g_free(p); }
-   static inline char *gpointer_to_charp(gpointer p) { return p; }
-   static inline gchar **next_gcharptr(gchar **s) { return s+1; }
+static inline void free_string(char *p) { free(p); }
+static inline void free_gstring(gchar *p) { if (p) g_free(p); }
+static inline char *gpointer_to_charp(gpointer p) { return p; }
+static inline gchar **next_gcharptr(gchar **s) { return s+1; }
 
-   static void wrap_ffi_call(ffi_cif *cif, void (*fn)(void), void *rvalue,
-   	GIArgument *args, int n_args, void *out_args) {
+static void wrap_ffi_call(ffi_cif *cif, void (*fn)(void), void *rvalue,
+    GIArgument *args, int n_args, void *out_args) {
 
-   	void **avalue = NULL;
-   	if (n_args > 0) {
-   		avalue = (void**)alloca(sizeof(gpointer) * n_args);
-   		int i;
-   		for (i = 0; i < n_args; i++) {
-   			avalue[i] = &args[i];
-   		}
-   	}
-   	ffi_call(cif, fn, rvalue, avalue);
-   }
+    void **avalue = NULL;
+    if (n_args > 0) {
+        avalue = (void**)alloca(sizeof(gpointer) * n_args);
+        int i;
+        for (i = 0; i < n_args; i++) {
+            avalue[i] = &args[i];
+        }
+    }
+    ffi_call(cif, fn, rvalue, avalue);
+}
 
-   #cgo pkg-config: gobject-introspection-1.0 gobject-introspection-no-export-1.0 libffi
+extern void goGiClosureHandle (ffi_cif *cif,
+                     void    *result,
+                     void   **args,
+                     void    *data);
+
+
+static void call_my_destroy_fn(void* ptr) {
+	GDestroyNotify d = ptr;
+	d( (void*)( 0xdeadbeef) );
+}
+
+#cgo pkg-config: gobject-introspection-1.0 gobject-introspection-no-export-1.0 libffi
 */
 import "C"
 import (
 	"errors"
 	"unsafe"
 )
+
+//export goGiClosureHandle
+func goGiClosureHandle(cif *C.ffi_cif, result unsafe.Pointer, args *unsafe.Pointer, userData unsafe.Pointer) {
+	id := uint(uintptr(userData))
+	closure := GetFClosure(id)
+	if closure.Fn != nil {
+		nArgs := int(cif.nargs)
+		argsSlice := (*(*[arrLenMax]unsafe.Pointer)(unsafe.Pointer(args)))[:nArgs:nArgs]
+		closure.Fn(result, argsSlice)
+		if closure.Scope == ScopeAsync {
+			UnregisterFClosure(id)
+		}
+	}
+}
+
+func CallMyDestroyFn(ptr unsafe.Pointer) {
+	C.call_my_destroy_fn(ptr)
+}
 
 type GType uint
 
@@ -223,6 +254,35 @@ func (it InfoType) String() string {
 
 type CallableInfo struct {
 	BaseInfo
+}
+
+func WrapCallableInfo(p unsafe.Pointer) (ret CallableInfo) {
+	ret.P = p
+	return
+}
+
+func (v CallableInfo) p() *C.GICallableInfo {
+	return (*C.GICallableInfo)(v.P)
+}
+
+// g_callable_info_prepare_closure
+func (v CallableInfo) PrepareClosure(userData unsafe.Pointer) FFIClosure {
+	var cif C.ffi_cif
+	ret := C.g_callable_info_prepare_closure(v.p(), &cif, (*[0]byte)(C.goGiClosureHandle), C.gpointer(userData))
+	return FFIClosure{p: ret}
+}
+
+// g_callable_info_free_closure
+func (v CallableInfo) FreeClosure(c FFIClosure) {
+	C.g_callable_info_free_closure(v.p(), c.p)
+}
+
+type FFIClosure struct {
+	p *C.ffi_closure
+}
+
+func (v FFIClosure) ExecPtr() unsafe.Pointer {
+	return unsafe.Pointer(v.p)
 }
 
 type RegisteredTypeInfo struct {

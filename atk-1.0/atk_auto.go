@@ -26,30 +26,6 @@ package atk
 /*
 #cgo pkg-config: atk
 #include <atk/atk.h>
-extern void giAtkEventListener(AtkObject* obj);
-static void* getAtkEventListenerWrapper() {
-    return (void*)(giAtkEventListener);
-}
-extern void giAtkEventListenerInit();
-static void* getAtkEventListenerInitWrapper() {
-    return (void*)(giAtkEventListenerInit);
-}
-extern void giAtkFocusHandler(AtkObject* object, gboolean focus_in);
-static void* getAtkFocusHandlerWrapper() {
-    return (void*)(giAtkFocusHandler);
-}
-extern gboolean giAtkFunction(gpointer user_data);
-static void* getAtkFunctionWrapper() {
-    return (void*)(giAtkFunction);
-}
-extern gint32 giAtkKeySnoopFunc(AtkKeyEventStruct* event, gpointer user_data);
-static void* getAtkKeySnoopFuncWrapper() {
-    return (void*)(giAtkKeySnoopFunc);
-}
-extern void giAtkPropertyChangeHandler(AtkObject* obj, AtkPropertyValues* vals);
-static void* getAtkPropertyChangeHandlerWrapper() {
-    return (void*)(giAtkPropertyChangeHandler);
-}
 */
 import "C"
 import "github.com/linuxdeepin/go-gir/g-2.0"
@@ -993,65 +969,28 @@ func (v *EditableTextIfc) SetTextContents(string string) {
 
 // ignore GType struct EditableTextIface
 
-type EventListenerArg struct {
-	Obj Object
+type EventListener func(obj Object)
+
+func CallEventListener(fn EventListener, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetEventListenerWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getAtkEventListenerWrapper())
+type EventListenerInit func()
+
+func CallEventListenerInit(fn EventListenerInit, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-//export giAtkEventListener
-func giAtkEventListener(obj *C.AtkObject) {
-	// TODO: not found user_data
+type FocusHandler func(object Object, focus_in bool)
+
+func CallFocusHandler(fn FocusHandler, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-type EventListenerInitArg struct {
-}
+type Function func(user_data unsafe.Pointer) (result bool)
 
-func GetEventListenerInitWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getAtkEventListenerInitWrapper())
-}
-
-//export giAtkEventListenerInit
-func giAtkEventListenerInit() {
-	// TODO: not found user_data
-}
-
-type FocusHandlerArgs struct {
-	Object  Object
-	FocusIn bool
-}
-
-func GetFocusHandlerWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getAtkFocusHandlerWrapper())
-}
-
-//export giAtkFocusHandler
-func giAtkFocusHandler(object *C.AtkObject, focus_in C.gboolean) {
-	// TODO: not found user_data
-}
-
-type FunctionArg struct {
-}
-
-func GetFunctionWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getAtkFunctionWrapper())
-}
-
-//export giAtkFunction
-func giAtkFunction(user_data C.gpointer) (c_result C.gboolean) {
-	closure := gi.GetFunc(uint(uintptr(user_data)))
-	if closure.Fn != nil {
-		args := &FunctionArg{}
-		fn := closure.Fn.(func(*FunctionArg) bool)
-		result := fn(args)
-		c_result = C.gboolean(gi.Bool2Int(result))
-		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(uint(uintptr(user_data)))
-		}
-	}
-	return
+func CallFunction(fn Function, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Object GObjectAccessible
@@ -1598,29 +1537,10 @@ func KeyEventTypeGetType() gi.GType {
 	return ret
 }
 
-type KeySnoopFuncArg struct {
-	Event KeyEventStruct
-}
+type KeySnoopFunc func(event KeyEventStruct, user_data unsafe.Pointer) (result int32)
 
-func GetKeySnoopFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getAtkKeySnoopFuncWrapper())
-}
-
-//export giAtkKeySnoopFunc
-func giAtkKeySnoopFunc(event *C.AtkKeyEventStruct, user_data C.gpointer) (c_result C.gint32) {
-	closure := gi.GetFunc(uint(uintptr(user_data)))
-	if closure.Fn != nil {
-		args := &KeySnoopFuncArg{
-			Event: KeyEventStruct{P: unsafe.Pointer(event)},
-		}
-		fn := closure.Fn.(func(*KeySnoopFuncArg) int32)
-		result := fn(args)
-		c_result = C.gint32(result)
-		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(uint(uintptr(user_data)))
-		}
-	}
-	return
+func CallKeySnoopFunc(fn KeySnoopFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Enum Layer
@@ -2388,18 +2308,10 @@ func (v Plug) GetId() (result string) {
 
 // ignore GType struct PlugClass
 
-type PropertyChangeHandlerArgs struct {
-	Obj  Object
-	Vals PropertyValues
-}
+type PropertyChangeHandler func(obj Object, vals PropertyValues)
 
-func GetPropertyChangeHandlerWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getAtkPropertyChangeHandlerWrapper())
-}
-
-//export giAtkPropertyChangeHandler
-func giAtkPropertyChangeHandler(obj *C.AtkObject, vals *C.AtkPropertyValues) {
-	// TODO: not found user_data
+func CallPropertyChangeHandler(fn PropertyChangeHandler, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Struct PropertyValues

@@ -26,114 +26,6 @@ package g
 /*
 #cgo pkg-config: gobject-2.0
 #include <glib-object.h>
-extern void giGObjectBaseFinalizeFunc(GTypeClass* g_class);
-static void* getGObjectBaseFinalizeFuncWrapper() {
-    return (void*)(giGObjectBaseFinalizeFunc);
-}
-extern void giGObjectBaseInitFunc(GTypeClass* g_class);
-static void* getGObjectBaseInitFuncWrapper() {
-    return (void*)(giGObjectBaseInitFunc);
-}
-extern gboolean giGObjectBindingTransformFunc(GBinding* binding, GValue* from_value, GValue* to_value, gpointer user_data);
-static void* getGObjectBindingTransformFuncWrapper() {
-    return (void*)(giGObjectBindingTransformFunc);
-}
-extern gpointer giGObjectBoxedCopyFunc(gpointer boxed);
-static void* getGObjectBoxedCopyFuncWrapper() {
-    return (void*)(giGObjectBoxedCopyFunc);
-}
-extern void giGObjectBoxedFreeFunc(gpointer boxed);
-static void* getGObjectBoxedFreeFuncWrapper() {
-    return (void*)(giGObjectBoxedFreeFunc);
-}
-extern void giGObjectCallback();
-static void* getGObjectCallbackWrapper() {
-    return (void*)(giGObjectCallback);
-}
-extern void giGObjectClassFinalizeFunc(GTypeClass* g_class, gpointer class_data);
-static void* getGObjectClassFinalizeFuncWrapper() {
-    return (void*)(giGObjectClassFinalizeFunc);
-}
-extern void giGObjectClassInitFunc(GTypeClass* g_class, gpointer class_data);
-static void* getGObjectClassInitFuncWrapper() {
-    return (void*)(giGObjectClassInitFunc);
-}
-extern void giGObjectClosureMarshal(GClosure* closure, GValue* return_value, guint32 n_param_values, gpointer param_values, gpointer invocation_hint, gpointer marshal_data);
-static void* getGObjectClosureMarshalWrapper() {
-    return (void*)(giGObjectClosureMarshal);
-}
-extern void giGObjectClosureNotify(gpointer data, GClosure* closure);
-static void* getGObjectClosureNotifyWrapper() {
-    return (void*)(giGObjectClosureNotify);
-}
-extern void giGObjectInstanceInitFunc(GTypeInstance* instance, GTypeClass* g_class);
-static void* getGObjectInstanceInitFuncWrapper() {
-    return (void*)(giGObjectInstanceInitFunc);
-}
-extern void giGObjectInterfaceFinalizeFunc(GTypeInterface* g_iface, gpointer iface_data);
-static void* getGObjectInterfaceFinalizeFuncWrapper() {
-    return (void*)(giGObjectInterfaceFinalizeFunc);
-}
-extern void giGObjectInterfaceInitFunc(GTypeInterface* g_iface, gpointer iface_data);
-static void* getGObjectInterfaceInitFuncWrapper() {
-    return (void*)(giGObjectInterfaceInitFunc);
-}
-extern void giGObjectObjectFinalizeFunc(GObject* object);
-static void* getGObjectObjectFinalizeFuncWrapper() {
-    return (void*)(giGObjectObjectFinalizeFunc);
-}
-extern void giGObjectObjectGetPropertyFunc(GObject* object, guint32 property_id, GValue* value, GParamSpec* pspec);
-static void* getGObjectObjectGetPropertyFuncWrapper() {
-    return (void*)(giGObjectObjectGetPropertyFunc);
-}
-extern void giGObjectObjectSetPropertyFunc(GObject* object, guint32 property_id, GValue* value, GParamSpec* pspec);
-static void* getGObjectObjectSetPropertyFuncWrapper() {
-    return (void*)(giGObjectObjectSetPropertyFunc);
-}
-extern gboolean giGObjectSignalAccumulator(GSignalInvocationHint* ihint, GValue* return_accu, GValue* handler_return, gpointer data);
-static void* getGObjectSignalAccumulatorWrapper() {
-    return (void*)(giGObjectSignalAccumulator);
-}
-extern gboolean giGObjectSignalEmissionHook(GSignalInvocationHint* ihint, guint32 n_param_values, gpointer param_values, gpointer data);
-static void* getGObjectSignalEmissionHookWrapper() {
-    return (void*)(giGObjectSignalEmissionHook);
-}
-extern void giGObjectToggleNotify(gpointer data, GObject* object, gboolean is_last_ref);
-static void* getGObjectToggleNotifyWrapper() {
-    return (void*)(giGObjectToggleNotify);
-}
-extern gboolean giGObjectTypeClassCacheFunc(gpointer cache_data, GTypeClass* g_class);
-static void* getGObjectTypeClassCacheFuncWrapper() {
-    return (void*)(giGObjectTypeClassCacheFunc);
-}
-extern void giGObjectTypeInterfaceCheckFunc(gpointer check_data, GTypeInterface* g_iface);
-static void* getGObjectTypeInterfaceCheckFuncWrapper() {
-    return (void*)(giGObjectTypeInterfaceCheckFunc);
-}
-extern void giGObjectTypePluginCompleteInterfaceInfo(GTypePlugin* plugin, gpointer instance_type, gpointer interface_type, GInterfaceInfo* info);
-static void* getGObjectTypePluginCompleteInterfaceInfoWrapper() {
-    return (void*)(giGObjectTypePluginCompleteInterfaceInfo);
-}
-extern void giGObjectTypePluginCompleteTypeInfo(GTypePlugin* plugin, gpointer g_type, GTypeInfo* info, GTypeValueTable* value_table);
-static void* getGObjectTypePluginCompleteTypeInfoWrapper() {
-    return (void*)(giGObjectTypePluginCompleteTypeInfo);
-}
-extern void giGObjectTypePluginUnuse(GTypePlugin* plugin);
-static void* getGObjectTypePluginUnuseWrapper() {
-    return (void*)(giGObjectTypePluginUnuse);
-}
-extern void giGObjectTypePluginUse(GTypePlugin* plugin);
-static void* getGObjectTypePluginUseWrapper() {
-    return (void*)(giGObjectTypePluginUse);
-}
-extern void giGObjectValueTransform(GValue* src_value, GValue* dest_value);
-static void* getGObjectValueTransformWrapper() {
-    return (void*)(giGObjectValueTransform);
-}
-extern void giGObjectWeakNotify(gpointer data, GObject* where_the_object_was);
-static void* getGObjectWeakNotifyWrapper() {
-    return (void*)(giGObjectWeakNotify);
-}
 */
 import "C"
 import "github.com/linuxdeepin/go-gir/gi"
@@ -152,30 +44,16 @@ func init() {
 	}
 }
 
-type BaseFinalizeFuncArg struct {
-	GClass TypeClass
+type BaseFinalizeFunc func(g_class TypeClass)
+
+func CallBaseFinalizeFunc(fn BaseFinalizeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetBaseFinalizeFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectBaseFinalizeFuncWrapper())
-}
+type BaseInitFunc func(g_class TypeClass)
 
-//export giGObjectBaseFinalizeFunc
-func giGObjectBaseFinalizeFunc(g_class *C.GTypeClass) {
-	// TODO: not found user_data
-}
-
-type BaseInitFuncArg struct {
-	GClass TypeClass
-}
-
-func GetBaseInitFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectBaseInitFuncWrapper())
-}
-
-//export giGObjectBaseInitFunc
-func giGObjectBaseInitFunc(g_class *C.GTypeClass) {
-	// TODO: not found user_data
+func CallBaseInitFunc(fn BaseInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Object Binding
@@ -311,60 +189,22 @@ func BindingFlagsGetType() gi.GType {
 	return ret
 }
 
-type BindingTransformFuncArgs struct {
-	Binding   Binding
-	FromValue Value
-	ToValue   Value
+type BindingTransformFunc func(binding Binding, from_value Value, to_value Value, user_data unsafe.Pointer) (result bool)
+
+func CallBindingTransformFunc(fn BindingTransformFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetBindingTransformFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectBindingTransformFuncWrapper())
+type BoxedCopyFunc func(boxed unsafe.Pointer) (result unsafe.Pointer)
+
+func CallBoxedCopyFunc(fn BoxedCopyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-//export giGObjectBindingTransformFunc
-func giGObjectBindingTransformFunc(binding *C.GBinding, from_value *C.GValue, to_value *C.GValue, user_data C.gpointer) (c_result C.gboolean) {
-	closure := gi.GetFunc(uint(uintptr(user_data)))
-	if closure.Fn != nil {
-		args := &BindingTransformFuncArgs{
-			Binding:   WrapBinding(unsafe.Pointer(binding)),
-			FromValue: Value{P: unsafe.Pointer(from_value)},
-			ToValue:   Value{P: unsafe.Pointer(to_value)},
-		}
-		fn := closure.Fn.(func(*BindingTransformFuncArgs) bool)
-		result := fn(args)
-		c_result = C.gboolean(gi.Bool2Int(result))
-		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(uint(uintptr(user_data)))
-		}
-	}
-	return
-}
+type BoxedFreeFunc func(boxed unsafe.Pointer)
 
-type BoxedCopyFuncArg struct {
-	Boxed unsafe.Pointer
-}
-
-func GetBoxedCopyFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectBoxedCopyFuncWrapper())
-}
-
-//export giGObjectBoxedCopyFunc
-func giGObjectBoxedCopyFunc(boxed C.gpointer) (c_result C.gpointer) {
-	// TODO: not found user_data
-	return
-}
-
-type BoxedFreeFuncArg struct {
-	Boxed unsafe.Pointer
-}
-
-func GetBoxedFreeFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectBoxedFreeFuncWrapper())
-}
-
-//export giGObjectBoxedFreeFunc
-func giGObjectBoxedFreeFunc(boxed C.gpointer) {
-	// TODO: not found user_data
+func CallBoxedFreeFunc(fn BoxedFreeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Struct CClosure
@@ -1069,44 +909,22 @@ func CClosureMarshalGeneric1(closure Closure, return_gvalue Value, n_param_value
 	iv.Call(args, nil, nil)
 }
 
-type CallbackArg struct {
+type Callback func()
+
+func CallCallback(fn Callback, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetCallbackWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectCallbackWrapper())
+type ClassFinalizeFunc func(g_class TypeClass, class_data unsafe.Pointer)
+
+func CallClassFinalizeFunc(fn ClassFinalizeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-//export giGObjectCallback
-func giGObjectCallback() {
-	// TODO: not found user_data
-}
+type ClassInitFunc func(g_class TypeClass, class_data unsafe.Pointer)
 
-type ClassFinalizeFuncArgs struct {
-	GClass    TypeClass
-	ClassData unsafe.Pointer
-}
-
-func GetClassFinalizeFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectClassFinalizeFuncWrapper())
-}
-
-//export giGObjectClassFinalizeFunc
-func giGObjectClassFinalizeFunc(g_class *C.GTypeClass, class_data C.gpointer) {
-	// TODO: not found user_data
-}
-
-type ClassInitFuncArgs struct {
-	GClass    TypeClass
-	ClassData unsafe.Pointer
-}
-
-func GetClassInitFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectClassInitFuncWrapper())
-}
-
-//export giGObjectClassInitFunc
-func giGObjectClassInitFunc(g_class *C.GTypeClass, class_data C.gpointer) {
-	// TODO: not found user_data
+func CallClassInitFunc(fn ClassInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Struct Closure
@@ -1253,36 +1071,16 @@ func (v Closure) Unref() {
 	iv.Call(args, nil, nil)
 }
 
-type ClosureMarshalArgs struct {
-	Closure        Closure
-	ReturnValue    Value
-	NParamValues   uint32
-	ParamValues    unsafe.Pointer
-	InvocationHint unsafe.Pointer
-	MarshalData    unsafe.Pointer
+type ClosureMarshal func(closure Closure, return_value Value, n_param_values uint32, param_values unsafe.Pointer, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer)
+
+func CallClosureMarshal(fn ClosureMarshal, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetClosureMarshalWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectClosureMarshalWrapper())
-}
+type ClosureNotify func(data unsafe.Pointer, closure Closure)
 
-//export giGObjectClosureMarshal
-func giGObjectClosureMarshal(closure *C.GClosure, return_value *C.GValue, n_param_values C.guint32, param_values C.gpointer, invocation_hint C.gpointer, marshal_data C.gpointer) {
-	// TODO: not found user_data
-}
-
-type ClosureNotifyArgs struct {
-	Data    unsafe.Pointer
-	Closure Closure
-}
-
-func GetClosureNotifyWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectClosureNotifyWrapper())
-}
-
-//export giGObjectClosureNotify
-func giGObjectClosureNotify(data C.gpointer, closure *C.GClosure) {
-	// TODO: not found user_data
+func CallClosureNotify(fn ClosureNotify, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Struct ClosureNotifyData
@@ -1375,32 +1173,16 @@ func InitiallyUnownedGetType() gi.GType {
 
 // ignore GType struct InitiallyUnownedClass
 
-type InstanceInitFuncArgs struct {
-	Instance TypeInstance
-	GClass   TypeClass
+type InstanceInitFunc func(instance TypeInstance, g_class TypeClass)
+
+func CallInstanceInitFunc(fn InstanceInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetInstanceInitFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectInstanceInitFuncWrapper())
-}
+type InterfaceFinalizeFunc func(g_iface TypeInterface, iface_data unsafe.Pointer)
 
-//export giGObjectInstanceInitFunc
-func giGObjectInstanceInitFunc(instance *C.GTypeInstance, g_class *C.GTypeClass) {
-	// TODO: not found user_data
-}
-
-type InterfaceFinalizeFuncArgs struct {
-	GIface    TypeInterface
-	IfaceData unsafe.Pointer
-}
-
-func GetInterfaceFinalizeFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectInterfaceFinalizeFuncWrapper())
-}
-
-//export giGObjectInterfaceFinalizeFunc
-func giGObjectInterfaceFinalizeFunc(g_iface *C.GTypeInterface, iface_data C.gpointer) {
-	// TODO: not found user_data
+func CallInterfaceFinalizeFunc(fn InterfaceFinalizeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Struct InterfaceInfo
@@ -1415,18 +1197,10 @@ func InterfaceInfoGetType() gi.GType {
 	return ret
 }
 
-type InterfaceInitFuncArgs struct {
-	GIface    TypeInterface
-	IfaceData unsafe.Pointer
-}
+type InterfaceInitFunc func(g_iface TypeInterface, iface_data unsafe.Pointer)
 
-func GetInterfaceInitFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectInterfaceInitFuncWrapper())
-}
-
-//export giGObjectInterfaceInitFunc
-func giGObjectInterfaceInitFunc(g_iface *C.GTypeInterface, iface_data C.gpointer) {
-	// TODO: not found user_data
+func CallInterfaceInitFunc(fn InterfaceInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Object Object
@@ -2132,49 +1906,22 @@ func ObjectConstructParamGetType() gi.GType {
 	return ret
 }
 
-type ObjectFinalizeFuncArg struct {
-	Object Object
+type ObjectFinalizeFunc func(object Object)
+
+func CallObjectFinalizeFunc(fn ObjectFinalizeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetObjectFinalizeFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectObjectFinalizeFuncWrapper())
+type ObjectGetPropertyFunc func(object Object, property_id uint32, value Value, pspec ParamSpec)
+
+func CallObjectGetPropertyFunc(fn ObjectGetPropertyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-//export giGObjectObjectFinalizeFunc
-func giGObjectObjectFinalizeFunc(object *C.GObject) {
-	// TODO: not found user_data
-}
+type ObjectSetPropertyFunc func(object Object, property_id uint32, value Value, pspec ParamSpec)
 
-type ObjectGetPropertyFuncArgs struct {
-	Object     Object
-	PropertyId uint32
-	Value      Value
-	Pspec      ParamSpec
-}
-
-func GetObjectGetPropertyFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectObjectGetPropertyFuncWrapper())
-}
-
-//export giGObjectObjectGetPropertyFunc
-func giGObjectObjectGetPropertyFunc(object *C.GObject, property_id C.guint32, value *C.GValue, pspec *C.GParamSpec) {
-	// TODO: not found user_data
-}
-
-type ObjectSetPropertyFuncArgs struct {
-	Object     Object
-	PropertyId uint32
-	Value      Value
-	Pspec      ParamSpec
-}
-
-func GetObjectSetPropertyFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectObjectSetPropertyFuncWrapper())
-}
-
-//export giGObjectObjectSetPropertyFunc
-func giGObjectObjectSetPropertyFunc(object *C.GObject, property_id C.guint32, value *C.GValue, pspec *C.GParamSpec) {
-	// TODO: not found user_data
+func CallObjectSetPropertyFunc(fn ObjectSetPropertyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Flags ParamFlags
@@ -2921,38 +2668,16 @@ func ParameterGetType() gi.GType {
 	return ret
 }
 
-type SignalAccumulatorArgs struct {
-	Ihint         SignalInvocationHint
-	ReturnAccu    Value
-	HandlerReturn Value
-	Data          unsafe.Pointer
+type SignalAccumulator func(ihint SignalInvocationHint, return_accu Value, handler_return Value, data unsafe.Pointer) (result bool)
+
+func CallSignalAccumulator(fn SignalAccumulator, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetSignalAccumulatorWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectSignalAccumulatorWrapper())
-}
+type SignalEmissionHook func(ihint SignalInvocationHint, n_param_values uint32, param_values unsafe.Pointer, data unsafe.Pointer) (result bool)
 
-//export giGObjectSignalAccumulator
-func giGObjectSignalAccumulator(ihint *C.GSignalInvocationHint, return_accu *C.GValue, handler_return *C.GValue, data C.gpointer) (c_result C.gboolean) {
-	// TODO: not found user_data
-	return
-}
-
-type SignalEmissionHookArgs struct {
-	Ihint        SignalInvocationHint
-	NParamValues uint32
-	ParamValues  unsafe.Pointer
-	Data         unsafe.Pointer
-}
-
-func GetSignalEmissionHookWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectSignalEmissionHookWrapper())
-}
-
-//export giGObjectSignalEmissionHook
-func giGObjectSignalEmissionHook(ihint *C.GSignalInvocationHint, n_param_values C.guint32, param_values C.gpointer, data C.gpointer) (c_result C.gboolean) {
-	// TODO: not found user_data
-	return
+func CallSignalEmissionHook(fn SignalEmissionHook, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Flags SignalFlags
@@ -3016,19 +2741,10 @@ func SignalQueryGetType() gi.GType {
 	return ret
 }
 
-type ToggleNotifyArgs struct {
-	Data      unsafe.Pointer
-	Object    Object
-	IsLastRef bool
-}
+type ToggleNotify func(data unsafe.Pointer, object Object, is_last_ref bool)
 
-func GetToggleNotifyWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectToggleNotifyWrapper())
-}
-
-//export giGObjectToggleNotify
-func giGObjectToggleNotify(data C.gpointer, object *C.GObject, is_last_ref C.gboolean) {
-	// TODO: not found user_data
+func CallToggleNotify(fn ToggleNotify, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Union TypeCValue
@@ -3203,19 +2919,10 @@ func TypeClassRef1(type1 gi.GType) (result TypeClass) {
 	return
 }
 
-type TypeClassCacheFuncArgs struct {
-	CacheData unsafe.Pointer
-	GClass    TypeClass
-}
+type TypeClassCacheFunc func(cache_data unsafe.Pointer, g_class TypeClass) (result bool)
 
-func GetTypeClassCacheFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectTypeClassCacheFuncWrapper())
-}
-
-//export giGObjectTypeClassCacheFunc
-func giGObjectTypeClassCacheFunc(cache_data C.gpointer, g_class *C.GTypeClass) (c_result C.gboolean) {
-	// TODO: not found user_data
-	return
+func CallTypeClassCacheFunc(fn TypeClassCacheFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Deprecated
@@ -3442,18 +3149,10 @@ func TypeInterfacePrerequisites1(interface_type gi.GType) (result gi.GTypeArray)
 	return
 }
 
-type TypeInterfaceCheckFuncArgs struct {
-	CheckData unsafe.Pointer
-	GIface    TypeInterface
-}
+type TypeInterfaceCheckFunc func(check_data unsafe.Pointer, g_iface TypeInterface)
 
-func GetTypeInterfaceCheckFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectTypeInterfaceCheckFuncWrapper())
-}
-
-//export giGObjectTypeInterfaceCheckFunc
-func giGObjectTypeInterfaceCheckFunc(check_data C.gpointer, g_iface *C.GTypeInterface) {
-	// TODO: not found user_data
+func CallTypeInterfaceCheckFunc(fn TypeInterfaceCheckFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Object TypeModule
@@ -3716,62 +3415,28 @@ func (v *TypePluginIfc) Use() {
 
 // ignore Class struct TypePluginClass, type of TypePlugin is interface
 
-type TypePluginCompleteInterfaceInfoArgs struct {
-	Plugin        TypePlugin
-	InstanceType  unsafe.Pointer /*TODO_CB tag: GType, isPtr: false*/
-	InterfaceType unsafe.Pointer /*TODO_CB tag: GType, isPtr: false*/
-	Info          InterfaceInfo
+type TypePluginCompleteInterfaceInfo func(plugin TypePlugin, instance_type gi.GType, interface_type gi.GType, info InterfaceInfo)
+
+func CallTypePluginCompleteInterfaceInfo(fn TypePluginCompleteInterfaceInfo, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetTypePluginCompleteInterfaceInfoWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectTypePluginCompleteInterfaceInfoWrapper())
+type TypePluginCompleteTypeInfo func(plugin TypePlugin, g_type gi.GType, info TypeInfo, value_table TypeValueTable)
+
+func CallTypePluginCompleteTypeInfo(fn TypePluginCompleteTypeInfo, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-//export giGObjectTypePluginCompleteInterfaceInfo
-func giGObjectTypePluginCompleteInterfaceInfo(plugin *C.GTypePlugin, instance_type C.gpointer, interface_type C.gpointer, info *C.GInterfaceInfo) {
-	// TODO: not found user_data
+type TypePluginUnuse func(plugin TypePlugin)
+
+func CallTypePluginUnuse(fn TypePluginUnuse, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-type TypePluginCompleteTypeInfoArgs struct {
-	Plugin     TypePlugin
-	GType      unsafe.Pointer /*TODO_CB tag: GType, isPtr: false*/
-	Info       TypeInfo
-	ValueTable TypeValueTable
-}
+type TypePluginUse func(plugin TypePlugin)
 
-func GetTypePluginCompleteTypeInfoWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectTypePluginCompleteTypeInfoWrapper())
-}
-
-//export giGObjectTypePluginCompleteTypeInfo
-func giGObjectTypePluginCompleteTypeInfo(plugin *C.GTypePlugin, g_type C.gpointer, info *C.GTypeInfo, value_table *C.GTypeValueTable) {
-	// TODO: not found user_data
-}
-
-type TypePluginUnuseArg struct {
-	Plugin TypePlugin
-}
-
-func GetTypePluginUnuseWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectTypePluginUnuseWrapper())
-}
-
-//export giGObjectTypePluginUnuse
-func giGObjectTypePluginUnuse(plugin *C.GTypePlugin) {
-	// TODO: not found user_data
-}
-
-type TypePluginUseArg struct {
-	Plugin TypePlugin
-}
-
-func GetTypePluginUseWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectTypePluginUseWrapper())
-}
-
-//export giGObjectTypePluginUse
-func giGObjectTypePluginUse(plugin *C.GTypePlugin) {
-	// TODO: not found user_data
+func CallTypePluginUse(fn TypePluginUse, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Struct TypeQuery
@@ -5019,50 +4684,37 @@ func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
 //
 // [ result ] trans: nothing
 //
-func (v ValueArray) Sort(compare_func interface{}) (result ValueArray) {
+func (v ValueArray) Sort(compare_func CompareDataFunc, user_data unsafe.Pointer) (result ValueArray) {
 	iv, err := _I.Get1(1484, "GObject", "ValueArray", "sort", 105, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(compare_func, gi.ScopeCall)
+	callableInfo := gi.GetCallableInfo("GLib", "CompareDataFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallCompareDataFunc(compare_func, __result, __args)
+	}, gi.ScopeCall, callableInfo)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_compare_func := gi.NewPointerArgument(GetCompareDataFuncWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_compare_func := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_compare_func, arg_user_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	gi.UnregisterFunc(cId)
+	gi.UnregisterFClosure(cId)
 	result.P = ret.Pointer()
 	return
 }
 
-type ValueTransformArgs struct {
-	SrcValue  Value
-	DestValue Value
+type ValueTransform func(src_value Value, dest_value Value)
+
+func CallValueTransform(fn ValueTransform, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetValueTransformWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectValueTransformWrapper())
-}
+type WeakNotify func(data unsafe.Pointer, where_the_object_was Object)
 
-//export giGObjectValueTransform
-func giGObjectValueTransform(src_value *C.GValue, dest_value *C.GValue) {
-	// TODO: not found user_data
-}
-
-type WeakNotifyArgs struct {
-	Data              unsafe.Pointer
-	WhereTheObjectWas Object
-}
-
-func GetWeakNotifyWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGObjectWeakNotifyWrapper())
-}
-
-//export giGObjectWeakNotify
-func giGObjectWeakNotify(data C.gpointer, where_the_object_was *C.GObject) {
-	// TODO: not found user_data
+func CallWeakNotify(fn WeakNotify, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Struct WeakRef
@@ -7268,18 +6920,27 @@ func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value,
 //
 // [ result ] trans: nothing
 //
-func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func interface{}) (result uint64) {
+func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func SignalEmissionHook, hook_data unsafe.Pointer, data_destroy DestroyNotify) (result uint64) {
 	iv, err := _I.Get1(1554, "GObject", "signal_add_emission_hook", "", 179, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(hook_func, gi.ScopeNotified)
+	callableInfo := gi.GetCallableInfo("GObject", "SignalEmissionHook")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallSignalEmissionHook(hook_func, __result, __args)
+	}, gi.ScopeNotified, callableInfo)
+	_ = cId
+	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
+	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallDestroyNotify(data_destroy, __result, __args)
+	}, gi.ScopeAsync, callableInfo1)
+	_ = cId1
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
-	arg_hook_func := gi.NewPointerArgument(GetSignalEmissionHookWrapper())
-	arg_hook_data := gi.NewPointerArgumentU(cId)
-	arg_data_destroy := gi.NewPointerArgument(GetDestroyNotifyWrapper())
+	arg_hook_func := gi.NewPointerArgument(funcPtr)
+	arg_hook_data := gi.NewPointerArgument(hook_data)
+	arg_data_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_signal_id, arg_detail, arg_hook_func, arg_hook_data, arg_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

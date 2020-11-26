@@ -26,10 +26,6 @@ package pangocairo
 /*
 #cgo pkg-config: pangocairo
 #include <pango/pangocairo.h>
-extern void giPangoCairoShapeRendererFunc(cairo_t* cr, PangoAttrShape* attr, gboolean do_path, gpointer data);
-static void* getPangoCairoShapeRendererFuncWrapper() {
-    return (void*)(giPangoCairoShapeRendererFunc);
-}
 */
 import "C"
 import "github.com/linuxdeepin/go-gir/cairo-1.0"
@@ -214,20 +210,10 @@ func (v *FontMapIfc) SetResolution(dpi float64) {
 	iv.Call(args, nil, nil)
 }
 
-type ShapeRendererFuncArgs struct {
-	Cr     cairo.Context
-	Attr   pango.AttrShape
-	DoPath bool
-	Data   unsafe.Pointer
-}
+type ShapeRendererFunc func(cr cairo.Context, attr pango.AttrShape, do_path bool, data unsafe.Pointer)
 
-func GetShapeRendererFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getPangoCairoShapeRendererFuncWrapper())
-}
-
-//export giPangoCairoShapeRendererFunc
-func giPangoCairoShapeRendererFunc(cr *C.cairo_t, attr *C.PangoAttrShape, do_path C.gboolean, data C.gpointer) {
-	// TODO: not found user_data
+func CallShapeRendererFunc(fn ShapeRendererFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // pango_cairo_context_get_font_options
@@ -332,7 +318,7 @@ func ContextSetResolution(context pango.IContext, dpi float64) {
 //
 // [ dnotify ] trans: nothing
 //
-func ContextSetShapeRenderer(context pango.IContext, func1 interface{}) {
+func ContextSetShapeRenderer(context pango.IContext, func1 ShapeRendererFunc, data unsafe.Pointer, dnotify g.DestroyNotify) {
 	iv, err := _I.Get(12, "context_set_shape_renderer", "", 7, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -342,11 +328,20 @@ func ContextSetShapeRenderer(context pango.IContext, func1 interface{}) {
 	if context != nil {
 		tmp = context.P_Context()
 	}
-	cId := gi.RegisterFunc(func1, gi.ScopeNotified)
+	callableInfo := gi.GetCallableInfo("PangoCairo", "ShapeRendererFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallShapeRendererFunc(func1, __result, __args)
+	}, gi.ScopeNotified, callableInfo)
+	_ = cId
+	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
+	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallDestroyNotify(dnotify, __result, __args)
+	}, gi.ScopeAsync, callableInfo1)
+	_ = cId1
 	arg_context := gi.NewPointerArgument(tmp)
-	arg_func1 := gi.NewPointerArgument(GetShapeRendererFuncWrapper())
-	arg_data := gi.NewPointerArgumentU(cId)
-	arg_dnotify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
+	arg_func1 := gi.NewPointerArgument(funcPtr)
+	arg_data := gi.NewPointerArgument(data)
+	arg_dnotify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_context, arg_func1, arg_data, arg_dnotify}
 	iv.Call(args, nil, nil)
 }

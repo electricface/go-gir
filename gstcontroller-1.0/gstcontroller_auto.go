@@ -26,14 +26,6 @@ package gstcontroller
 /*
 #cgo pkg-config: gstreamer-controller-1.0
 #include <gst/controller/controller.h>
-extern void giGstControllerDirectControlBindingConvertGValue(GstDirectControlBinding* self, gdouble src_value, GValue* dest_value);
-static void* getGstControllerDirectControlBindingConvertGValueWrapper() {
-    return (void*)(giGstControllerDirectControlBindingConvertGValue);
-}
-extern void giGstControllerDirectControlBindingConvertValue(GstDirectControlBinding* self, gdouble src_value, gpointer dest_value);
-static void* getGstControllerDirectControlBindingConvertValueWrapper() {
-    return (void*)(giGstControllerDirectControlBindingConvertValue);
-}
 */
 import "C"
 import "github.com/linuxdeepin/go-gir/g-2.0"
@@ -260,34 +252,16 @@ func NewDirectControlBindingAbsolute(object gst.IObject, property_name string, c
 
 // ignore GType struct DirectControlBindingClass
 
-type DirectControlBindingConvertGValueArgs struct {
-	Self      DirectControlBinding
-	SrcValue  float64
-	DestValue g.Value
+type DirectControlBindingConvertGValue func(self DirectControlBinding, src_value float64, dest_value g.Value)
+
+func CallDirectControlBindingConvertGValue(fn DirectControlBindingConvertGValue, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
-func GetDirectControlBindingConvertGValueWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGstControllerDirectControlBindingConvertGValueWrapper())
-}
+type DirectControlBindingConvertValue func(self DirectControlBinding, src_value float64, dest_value unsafe.Pointer)
 
-//export giGstControllerDirectControlBindingConvertGValue
-func giGstControllerDirectControlBindingConvertGValue(self *C.GstDirectControlBinding, src_value C.gdouble, dest_value *C.GValue) {
-	// TODO: not found user_data
-}
-
-type DirectControlBindingConvertValueArgs struct {
-	Self      DirectControlBinding
-	SrcValue  float64
-	DestValue unsafe.Pointer
-}
-
-func GetDirectControlBindingConvertValueWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGstControllerDirectControlBindingConvertValueWrapper())
-}
-
-//export giGstControllerDirectControlBindingConvertValue
-func giGstControllerDirectControlBindingConvertValue(self *C.GstDirectControlBinding, src_value C.gdouble, dest_value C.gpointer) {
-	// TODO: not found user_data
+func CallDirectControlBindingConvertValue(fn DirectControlBindingConvertValue, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Object InterpolationControlSource

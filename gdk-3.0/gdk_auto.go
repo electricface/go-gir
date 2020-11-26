@@ -26,26 +26,6 @@ package gdk
 /*
 #cgo pkg-config: gdk-3.0
 #include <gdk/gdk.h>
-extern void giGdkEventFunc(GdkEvent* event, gpointer data);
-static void* getGdkEventFuncWrapper() {
-    return (void*)(giGdkEventFunc);
-}
-extern gpointer giGdkFilterFunc(gpointer xevent, GdkEvent* event, gpointer data);
-static void* getGdkFilterFuncWrapper() {
-    return (void*)(giGdkFilterFunc);
-}
-extern void giGdkSeatGrabPrepareFunc(GdkSeat* seat, GdkWindow* window, gpointer user_data);
-static void* getGdkSeatGrabPrepareFuncWrapper() {
-    return (void*)(giGdkSeatGrabPrepareFunc);
-}
-extern gboolean giGdkWindowChildFunc(GdkWindow* window, gpointer user_data);
-static void* getGdkWindowChildFuncWrapper() {
-    return (void*)(giGdkWindowChildFunc);
-}
-extern void giGdkWindowInvalidateHandlerFunc(GdkWindow* window, cairo_region_t* region);
-static void* getGdkWindowInvalidateHandlerFuncWrapper() {
-    return (void*)(giGdkWindowInvalidateHandlerFunc);
-}
 */
 import "C"
 import "github.com/linuxdeepin/go-gir/cairo-1.0"
@@ -4022,16 +4002,25 @@ func EventGet1() (result Event) {
 //
 // [ notify ] trans: nothing
 //
-func EventHandlerSet1(func1 interface{}) {
+func EventHandlerSet1(func1 EventFunc, data unsafe.Pointer, notify g.DestroyNotify) {
 	iv, err := _I.Get(170, "Event", "handler_set", 32, 35, gi.INFO_TYPE_UNION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(func1, gi.ScopeNotified)
-	arg_func1 := gi.NewPointerArgument(GetEventFuncWrapper())
-	arg_data := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
+	callableInfo := gi.GetCallableInfo("Gdk", "EventFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallEventFunc(func1, __result, __args)
+	}, gi.ScopeNotified, callableInfo)
+	_ = cId
+	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
+	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallDestroyNotify(notify, __result, __args)
+	}, gi.ScopeAsync, callableInfo1)
+	_ = cId1
+	arg_func1 := gi.NewPointerArgument(funcPtr)
+	arg_data := gi.NewPointerArgument(data)
+	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -4151,18 +4140,10 @@ func EventFocusGetType() gi.GType {
 	return ret
 }
 
-type EventFuncArgs struct {
-	Event Event
-	Data  unsafe.Pointer
-}
+type EventFunc func(event Event, data unsafe.Pointer)
 
-func GetEventFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGdkEventFuncWrapper())
-}
-
-//export giGdkEventFunc
-func giGdkEventFunc(event *C.GdkEvent, data C.gpointer) {
-	// TODO: not found user_data
+func CallEventFunc(fn EventFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Struct EventGrabBroken
@@ -4480,20 +4461,10 @@ func EventWindowStateGetType() gi.GType {
 	return ret
 }
 
-type FilterFuncArgs struct {
-	Xevent unsafe.Pointer
-	Event  Event
-	Data   unsafe.Pointer
-}
+type FilterFunc func(xevent unsafe.Pointer, event Event, data unsafe.Pointer)
 
-func GetFilterFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGdkFilterFuncWrapper())
-}
-
-//export giGdkFilterFunc
-func giGdkFilterFunc(xevent C.gpointer, event *C.GdkEvent, data C.gpointer) (c_result C.gpointer) {
-	// TODO: not found user_data
-	return
+func CallFilterFunc(fn FilterFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Enum FilterReturn
@@ -7065,7 +7036,7 @@ func (v Seat) GetSlaves(capabilities SeatCapabilitiesFlags) (result g.List) {
 //
 // [ result ] trans: nothing
 //
-func (v Seat) Grab(window IWindow, capabilities SeatCapabilitiesFlags, owner_events bool, cursor ICursor, event Event, prepare_func interface{}) (result GrabStatusEnum) {
+func (v Seat) Grab(window IWindow, capabilities SeatCapabilitiesFlags, owner_events bool, cursor ICursor, event Event, prepare_func SeatGrabPrepareFunc, prepare_func_data unsafe.Pointer) (result GrabStatusEnum) {
 	iv, err := _I.Get(282, "Seat", "grab", 2365, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -7079,19 +7050,22 @@ func (v Seat) Grab(window IWindow, capabilities SeatCapabilitiesFlags, owner_eve
 	if cursor != nil {
 		tmp1 = cursor.P_Cursor()
 	}
-	cId := gi.RegisterFunc(prepare_func, gi.ScopeCall)
+	callableInfo := gi.GetCallableInfo("Gdk", "SeatGrabPrepareFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallSeatGrabPrepareFunc(prepare_func, __result, __args)
+	}, gi.ScopeCall, callableInfo)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_window := gi.NewPointerArgument(tmp)
 	arg_capabilities := gi.NewIntArgument(int(capabilities))
 	arg_owner_events := gi.NewBoolArgument(owner_events)
 	arg_cursor := gi.NewPointerArgument(tmp1)
 	arg_event := gi.NewPointerArgument(event.P)
-	arg_prepare_func := gi.NewPointerArgument(GetSeatGrabPrepareFuncWrapper())
-	arg_prepare_func_data := gi.NewPointerArgumentU(cId)
+	arg_prepare_func := gi.NewPointerArgument(funcPtr)
+	arg_prepare_func_data := gi.NewPointerArgument(prepare_func_data)
 	args := []gi.Argument{arg_v, arg_window, arg_capabilities, arg_owner_events, arg_cursor, arg_event, arg_prepare_func, arg_prepare_func_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	gi.UnregisterFunc(cId)
+	gi.UnregisterFClosure(cId)
 	result = GrabStatusEnum(ret.Int())
 	return
 }
@@ -7127,29 +7101,10 @@ func SeatCapabilitiesGetType() gi.GType {
 	return ret
 }
 
-type SeatGrabPrepareFuncArgs struct {
-	Seat   Seat
-	Window Window
-}
+type SeatGrabPrepareFunc func(seat Seat, window Window, user_data unsafe.Pointer)
 
-func GetSeatGrabPrepareFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGdkSeatGrabPrepareFuncWrapper())
-}
-
-//export giGdkSeatGrabPrepareFunc
-func giGdkSeatGrabPrepareFunc(seat *C.GdkSeat, window *C.GdkWindow, user_data C.gpointer) {
-	closure := gi.GetFunc(uint(uintptr(user_data)))
-	if closure.Fn != nil {
-		args := &SeatGrabPrepareFuncArgs{
-			Seat:   WrapSeat(unsafe.Pointer(seat)),
-			Window: WrapWindow(unsafe.Pointer(window)),
-		}
-		fn := closure.Fn.(func(*SeatGrabPrepareFuncArgs))
-		fn(args)
-		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(uint(uintptr(user_data)))
-		}
-	}
+func CallSeatGrabPrepareFunc(fn SeatGrabPrepareFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Enum SettingAction
@@ -9359,20 +9314,23 @@ func (v Window) InputShapeCombineRegion(shape_region cairo.Region, offset_x int3
 //
 // [ user_data ] trans: nothing
 //
-func (v Window) InvalidateMaybeRecurse(region cairo.Region, child_func interface{}) {
+func (v Window) InvalidateMaybeRecurse(region cairo.Region, child_func WindowChildFunc, user_data unsafe.Pointer) {
 	iv, err := _I.Get(383, "Window", "invalidate_maybe_recurse", 2378, 83, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(child_func, gi.ScopeCall)
+	callableInfo := gi.GetCallableInfo("Gdk", "WindowChildFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallWindowChildFunc(child_func, __result, __args)
+	}, gi.ScopeCall, callableInfo)
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_region := gi.NewPointerArgument(region.P)
-	arg_child_func := gi.NewPointerArgument(GetWindowChildFuncWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_child_func := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_region, arg_child_func, arg_user_data}
 	iv.Call(args, nil, nil)
-	gi.UnregisterFunc(cId)
+	gi.UnregisterFClosure(cId)
 }
 
 // gdk_window_invalidate_rect
@@ -10716,29 +10674,10 @@ func WindowAttributesTypeGetType() gi.GType {
 	return ret
 }
 
-type WindowChildFuncArg struct {
-	Window Window
-}
+type WindowChildFunc func(window Window, user_data unsafe.Pointer) (result bool)
 
-func GetWindowChildFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGdkWindowChildFuncWrapper())
-}
-
-//export giGdkWindowChildFunc
-func giGdkWindowChildFunc(window *C.GdkWindow, user_data C.gpointer) (c_result C.gboolean) {
-	closure := gi.GetFunc(uint(uintptr(user_data)))
-	if closure.Fn != nil {
-		args := &WindowChildFuncArg{
-			Window: WrapWindow(unsafe.Pointer(window)),
-		}
-		fn := closure.Fn.(func(*WindowChildFuncArg) bool)
-		result := fn(args)
-		c_result = C.gboolean(gi.Bool2Int(result))
-		if closure.Scope == gi.ScopeAsync {
-			gi.UnregisterFunc(uint(uintptr(user_data)))
-		}
-	}
-	return
+func CallWindowChildFunc(fn WindowChildFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // ignore GType struct WindowClass
@@ -10782,18 +10721,10 @@ func WindowHintsGetType() gi.GType {
 	return ret
 }
 
-type WindowInvalidateHandlerFuncArgs struct {
-	Window Window
-	Region cairo.Region
-}
+type WindowInvalidateHandlerFunc func(window Window, region cairo.Region)
 
-func GetWindowInvalidateHandlerFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getGdkWindowInvalidateHandlerFuncWrapper())
-}
-
-//export giGdkWindowInvalidateHandlerFunc
-func giGdkWindowInvalidateHandlerFunc(window *C.GdkWindow, region *C.cairo_region_t) {
-	// TODO: not found user_data
+func CallWindowInvalidateHandlerFunc(fn WindowInvalidateHandlerFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Struct WindowRedirect
@@ -11749,16 +11680,25 @@ func EventGet() (result Event) {
 //
 // [ notify ] trans: nothing
 //
-func EventHandlerSet(func1 interface{}) {
+func EventHandlerSet(func1 EventFunc, data unsafe.Pointer, notify g.DestroyNotify) {
 	iv, err := _I.Get(494, "event_handler_set", "", 2426, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(func1, gi.ScopeNotified)
-	arg_func1 := gi.NewPointerArgument(GetEventFuncWrapper())
-	arg_data := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
+	callableInfo := gi.GetCallableInfo("Gdk", "EventFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallEventFunc(func1, __result, __args)
+	}, gi.ScopeNotified, callableInfo)
+	_ = cId
+	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
+	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallDestroyNotify(notify, __result, __args)
+	}, gi.ScopeAsync, callableInfo1)
+	_ = cId1
+	arg_func1 := gi.NewPointerArgument(funcPtr)
+	arg_data := gi.NewPointerArgument(data)
+	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 }
@@ -13239,17 +13179,26 @@ func TextPropertyToUtf8ListForDisplay(display IDisplay, encoding Atom, format in
 //
 // [ result ] trans: nothing
 //
-func ThreadsAddIdle(priority int32, function interface{}) (result uint32) {
+func ThreadsAddIdle(priority int32, function g.SourceFunc, data unsafe.Pointer, notify g.DestroyNotify) (result uint32) {
 	iv, err := _I.Get(557, "threads_add_idle", "", 2489, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(function, gi.ScopeNotified)
+	callableInfo := gi.GetCallableInfo("GLib", "SourceFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallSourceFunc(function, __result, __args)
+	}, gi.ScopeNotified, callableInfo)
+	_ = cId
+	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
+	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallDestroyNotify(notify, __result, __args)
+	}, gi.ScopeAsync, callableInfo1)
+	_ = cId1
 	arg_priority := gi.NewInt32Argument(priority)
-	arg_function := gi.NewPointerArgument(g.GetSourceFuncWrapper())
-	arg_data := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
+	arg_function := gi.NewPointerArgument(funcPtr)
+	arg_data := gi.NewPointerArgument(data)
+	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_priority, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -13271,18 +13220,27 @@ func ThreadsAddIdle(priority int32, function interface{}) (result uint32) {
 //
 // [ result ] trans: nothing
 //
-func ThreadsAddTimeout(priority int32, interval uint32, function interface{}) (result uint32) {
+func ThreadsAddTimeout(priority int32, interval uint32, function g.SourceFunc, data unsafe.Pointer, notify g.DestroyNotify) (result uint32) {
 	iv, err := _I.Get(558, "threads_add_timeout", "", 2490, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(function, gi.ScopeNotified)
+	callableInfo := gi.GetCallableInfo("GLib", "SourceFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallSourceFunc(function, __result, __args)
+	}, gi.ScopeNotified, callableInfo)
+	_ = cId
+	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
+	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallDestroyNotify(notify, __result, __args)
+	}, gi.ScopeAsync, callableInfo1)
+	_ = cId1
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_interval := gi.NewUint32Argument(interval)
-	arg_function := gi.NewPointerArgument(g.GetSourceFuncWrapper())
-	arg_data := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
+	arg_function := gi.NewPointerArgument(funcPtr)
+	arg_data := gi.NewPointerArgument(data)
+	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
@@ -13304,18 +13262,27 @@ func ThreadsAddTimeout(priority int32, interval uint32, function interface{}) (r
 //
 // [ result ] trans: nothing
 //
-func ThreadsAddTimeoutSeconds(priority int32, interval uint32, function interface{}) (result uint32) {
+func ThreadsAddTimeoutSeconds(priority int32, interval uint32, function g.SourceFunc, data unsafe.Pointer, notify g.DestroyNotify) (result uint32) {
 	iv, err := _I.Get(559, "threads_add_timeout_seconds", "", 2491, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	cId := gi.RegisterFunc(function, gi.ScopeNotified)
+	callableInfo := gi.GetCallableInfo("GLib", "SourceFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallSourceFunc(function, __result, __args)
+	}, gi.ScopeNotified, callableInfo)
+	_ = cId
+	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
+	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		g.CallDestroyNotify(notify, __result, __args)
+	}, gi.ScopeAsync, callableInfo1)
+	_ = cId1
 	arg_priority := gi.NewInt32Argument(priority)
 	arg_interval := gi.NewUint32Argument(interval)
-	arg_function := gi.NewPointerArgument(g.GetSourceFuncWrapper())
-	arg_data := gi.NewPointerArgumentU(cId)
-	arg_notify := gi.NewPointerArgument(g.GetDestroyNotifyWrapper())
+	arg_function := gi.NewPointerArgument(funcPtr)
+	arg_data := gi.NewPointerArgument(data)
+	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)

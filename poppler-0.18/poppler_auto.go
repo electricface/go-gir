@@ -26,14 +26,6 @@ package poppler
 /*
 #cgo pkg-config: poppler-glib
 #include <poppler.h>
-extern gboolean giPopplerAttachmentSaveFunc(gpointer buf, guint64 count, gpointer data);
-static void* getPopplerAttachmentSaveFuncWrapper() {
-    return (void*)(giPopplerAttachmentSaveFunc);
-}
-extern gboolean giPopplerMediaSaveFunc(gpointer buf, guint64 count, gpointer data);
-static void* getPopplerMediaSaveFuncWrapper() {
-    return (void*)(giPopplerMediaSaveFunc);
-}
 */
 import "C"
 import "github.com/linuxdeepin/go-gir/cairo-1.0"
@@ -1753,21 +1745,24 @@ func (v Attachment) Save(filename string) (result bool, err error) {
 //
 // [ result ] trans: nothing
 //
-func (v Attachment) SaveToCallback(save_func interface{}) (result bool, err error) {
+func (v Attachment) SaveToCallback(save_func AttachmentSaveFunc, user_data unsafe.Pointer) (result bool, err error) {
 	iv, err := _I.Get(62, "Attachment", "save_to_callback", 43, 1, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	cId := gi.RegisterFunc(save_func, gi.ScopeCall)
+	callableInfo := gi.GetCallableInfo("Poppler", "AttachmentSaveFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallAttachmentSaveFunc(save_func, __result, __args)
+	}, gi.ScopeCall, callableInfo)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_save_func := gi.NewPointerArgument(GetAttachmentSaveFuncWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_save_func := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_save_func, arg_user_data, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	gi.UnregisterFunc(cId)
+	gi.UnregisterFClosure(cId)
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
 	return
@@ -1775,20 +1770,10 @@ func (v Attachment) SaveToCallback(save_func interface{}) (result bool, err erro
 
 // ignore GType struct AttachmentClass
 
-type AttachmentSaveFuncArgs struct {
-	Buf   gi.Uint8Array
-	Count uint64
-	Data  unsafe.Pointer
-}
+type AttachmentSaveFunc func(buf gi.Uint8Array, count uint64, data unsafe.Pointer) (result bool)
 
-func GetAttachmentSaveFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getPopplerAttachmentSaveFuncWrapper())
-}
-
-//export giPopplerAttachmentSaveFunc
-func giPopplerAttachmentSaveFunc(buf C.gpointer, count C.guint64, data C.gpointer) (c_result C.gboolean) {
-	// TODO: not found user_data
-	return
+func CallAttachmentSaveFunc(fn AttachmentSaveFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Enum Backend
@@ -4451,40 +4436,33 @@ func (v Media) Save(filename string) (result bool, err error) {
 //
 // [ result ] trans: nothing
 //
-func (v Media) SaveToCallback(save_func interface{}) (result bool, err error) {
+func (v Media) SaveToCallback(save_func MediaSaveFunc, user_data unsafe.Pointer) (result bool, err error) {
 	iv, err := _I.Get(189, "Media", "save_to_callback", 71, 4, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		return
 	}
 	var outArgs [1]gi.Argument
-	cId := gi.RegisterFunc(save_func, gi.ScopeCall)
+	callableInfo := gi.GetCallableInfo("Poppler", "MediaSaveFunc")
+	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+		CallMediaSaveFunc(save_func, __result, __args)
+	}, gi.ScopeCall, callableInfo)
 	arg_v := gi.NewPointerArgument(v.P)
-	arg_save_func := gi.NewPointerArgument(GetMediaSaveFuncWrapper())
-	arg_user_data := gi.NewPointerArgumentU(cId)
+	arg_save_func := gi.NewPointerArgument(funcPtr)
+	arg_user_data := gi.NewPointerArgument(user_data)
 	arg_err := gi.NewPointerArgument(unsafe.Pointer(&outArgs[0]))
 	args := []gi.Argument{arg_v, arg_save_func, arg_user_data, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
-	gi.UnregisterFunc(cId)
+	gi.UnregisterFClosure(cId)
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
 	return
 }
 
-type MediaSaveFuncArgs struct {
-	Buf   gi.Uint8Array
-	Count uint64
-	Data  unsafe.Pointer
-}
+type MediaSaveFunc func(buf gi.Uint8Array, count uint64, data unsafe.Pointer) (result bool)
 
-func GetMediaSaveFuncWrapper() unsafe.Pointer {
-	return unsafe.Pointer(C.getPopplerMediaSaveFuncWrapper())
-}
-
-//export giPopplerMediaSaveFunc
-func giPopplerMediaSaveFunc(buf C.gpointer, count C.guint64, data C.gpointer) (c_result C.gboolean) {
-	// TODO: not found user_data
-	return
+func CallMediaSaveFunc(fn MediaSaveFunc, result unsafe.Pointer, args []unsafe.Pointer) {
+	// fn()
 }
 
 // Object Movie
