@@ -213,7 +213,14 @@ func (v *FontMapIfc) SetResolution(dpi float64) {
 type ShapeRendererFunc func(cr cairo.Context, attr pango.AttrShape, do_path bool, data unsafe.Pointer)
 
 func CallShapeRendererFunc(fn ShapeRendererFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	cr := cairo.Context{P: *(*unsafe.Pointer)(args[0])}
+	attr := pango.AttrShape{P: *(*unsafe.Pointer)(args[1])}
+	do_path := *(*bool)(args[2])
+	data := *(*unsafe.Pointer)(args[3])
+	fn(cr, attr, do_path, data)
 }
 
 // pango_cairo_context_get_font_options
@@ -344,6 +351,8 @@ func ContextSetShapeRenderer(context pango.IContext, func1 ShapeRendererFunc, da
 	arg_dnotify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_context, arg_func1, arg_data, arg_dnotify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // pango_cairo_create_context

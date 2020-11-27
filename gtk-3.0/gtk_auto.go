@@ -866,6 +866,7 @@ func (v AccelGroup) Find(find_func AccelGroupFindFunc, data unsafe.Pointer) (res
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -966,7 +967,14 @@ func (v AccelGroup) Unlock() {
 type AccelGroupActivate func(accel_group AccelGroup, acceleratable g.Object, keyval uint32, modifier gdk.ModifierTypeFlags) (result bool)
 
 func CallAccelGroupActivate(fn AccelGroupActivate, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	accel_group := WrapAccelGroup(*(*unsafe.Pointer)(args[0]))
+	acceleratable := g.WrapObject(*(*unsafe.Pointer)(args[1]))
+	keyval := *(*uint32)(args[2])
+	modifier := *(*gdk.ModifierTypeFlags)(args[3])
+	fn(accel_group, acceleratable, keyval, modifier)
 }
 
 // ignore GType struct AccelGroupClass
@@ -986,7 +994,13 @@ func AccelGroupEntryGetType() gi.GType {
 type AccelGroupFindFunc func(key AccelKey, closure g.Closure, data unsafe.Pointer) (result bool)
 
 func CallAccelGroupFindFunc(fn AccelGroupFindFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	key := AccelKey{P: *(*unsafe.Pointer)(args[0])}
+	closure := g.Closure{P: *(*unsafe.Pointer)(args[1])}
+	data := *(*unsafe.Pointer)(args[2])
+	fn(key, closure, data)
 }
 
 // Struct AccelGroupPrivate
@@ -1299,6 +1313,7 @@ func AccelMapForeach1(data unsafe.Pointer, foreach_func AccelMapForeach) {
 	args := []gi.Argument{arg_data, arg_foreach_func}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_accel_map_foreach_unfiltered
@@ -1322,6 +1337,7 @@ func AccelMapForeachUnfiltered1(data unsafe.Pointer, foreach_func AccelMapForeac
 	args := []gi.Argument{arg_data, arg_foreach_func}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_accel_map_get
@@ -1483,7 +1499,15 @@ func AccelMapUnlockPath1(accel_path string) {
 type AccelMapForeach func(data unsafe.Pointer, accel_path string, accel_key uint32, accel_mods gdk.ModifierTypeFlags, changed bool)
 
 func CallAccelMapForeach(fn AccelMapForeach, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	accel_path := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	accel_key := *(*uint32)(args[2])
+	accel_mods := *(*gdk.ModifierTypeFlags)(args[3])
+	changed := *(*bool)(args[4])
+	fn(data, accel_path, accel_key, accel_mods, changed)
 }
 
 // Object Accessible
@@ -2858,6 +2882,8 @@ func (v ActionGroup) SetTranslateFunc(func1 TranslateFunc, data unsafe.Pointer, 
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // Deprecated
@@ -5713,6 +5739,8 @@ func (v Assistant) SetForwardPageFunc(page_func AssistantPageFunc, data unsafe.P
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_page_func, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_assistant_set_page_complete
@@ -5885,7 +5913,12 @@ func (v Assistant) UpdateButtonsState() {
 type AssistantPageFunc func(current_page int32, data unsafe.Pointer) (result int32)
 
 func CallAssistantPageFunc(fn AssistantPageFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	current_page := *(*int32)(args[0])
+	data := *(*unsafe.Pointer)(args[1])
+	fn(current_page, data)
 }
 
 // Enum AssistantPageType
@@ -7092,6 +7125,7 @@ func (v Builder) AddCallbackSymbol(callback_name string, callback_symbol g.Callb
 	args := []gi.Argument{arg_v, arg_callback_name, arg_callback_symbol}
 	iv.Call(args, nil, nil)
 	gi.Free(c_callback_name)
+	callableInfo.Unref()
 }
 
 // gtk_builder_add_from_file
@@ -7297,6 +7331,7 @@ func (v Builder) ConnectSignalsFull(func1 BuilderConnectFunc, user_data unsafe.P
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_builder_expose_object
@@ -7571,7 +7606,17 @@ func (v Builder) ValueFromStringType(type1 gi.GType, string string, value g.Valu
 type BuilderConnectFunc func(builder Builder, object g.Object, signal_name string, handler_name string, connect_object g.Object, flags g.ConnectFlags, user_data unsafe.Pointer)
 
 func CallBuilderConnectFunc(fn BuilderConnectFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	builder := WrapBuilder(*(*unsafe.Pointer)(args[0]))
+	object := g.WrapObject(*(*unsafe.Pointer)(args[1]))
+	signal_name := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	handler_name := gi.GoString(*(*unsafe.Pointer)(args[3]))
+	connect_object := g.WrapObject(*(*unsafe.Pointer)(args[4]))
+	flags := *(*g.ConnectFlags)(args[5])
+	user_data := *(*unsafe.Pointer)(args[6])
+	fn(builder, object, signal_name, handler_name, connect_object, flags, user_data)
 }
 
 // Enum BuilderError
@@ -8655,6 +8700,8 @@ func (v Calendar) SetDetailFunc(func1 CalendarDetailFunc, data unsafe.Pointer, d
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_calendar_set_detail_height_rows
@@ -8726,7 +8773,15 @@ func (v Calendar) UnmarkDay(day uint32) {
 type CalendarDetailFunc func(calendar Calendar, year uint32, month uint32, day uint32, user_data unsafe.Pointer) (result string)
 
 func CallCalendarDetailFunc(fn CalendarDetailFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	calendar := WrapCalendar(*(*unsafe.Pointer)(args[0]))
+	year := *(*uint32)(args[1])
+	month := *(*uint32)(args[2])
+	day := *(*uint32)(args[3])
+	user_data := *(*unsafe.Pointer)(args[4])
+	fn(calendar, year, month, day, user_data)
 }
 
 // Flags CalendarDisplayOptions
@@ -8758,7 +8813,12 @@ func CalendarPrivateGetType() gi.GType {
 type Callback func(widget Widget, data unsafe.Pointer)
 
 func CallCallback(fn Callback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	widget := WrapWidget(*(*unsafe.Pointer)(args[0]))
+	data := *(*unsafe.Pointer)(args[1])
+	fn(widget, data)
 }
 
 // Object CellAccessible
@@ -9109,7 +9169,14 @@ func CellAccessiblePrivateGetType() gi.GType {
 type CellAllocCallback func(renderer CellRenderer, cell_area gdk.Rectangle, cell_background gdk.Rectangle, data unsafe.Pointer) (result bool)
 
 func CallCellAllocCallback(fn CellAllocCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	renderer := WrapCellRenderer(*(*unsafe.Pointer)(args[0]))
+	cell_area := gdk.Rectangle{P: *(*unsafe.Pointer)(args[1])}
+	cell_background := gdk.Rectangle{P: *(*unsafe.Pointer)(args[2])}
+	data := *(*unsafe.Pointer)(args[3])
+	fn(renderer, cell_area, cell_background, data)
 }
 
 // Object CellArea
@@ -9555,6 +9622,7 @@ func (v CellArea) Foreach(callback CellCallback, callback_data unsafe.Pointer) {
 	args := []gi.Argument{arg_v, arg_callback, arg_callback_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_cell_area_foreach_alloc
@@ -9599,6 +9667,7 @@ func (v CellArea) ForeachAlloc(context ICellAreaContext, widget IWidget, cell_ar
 	args := []gi.Argument{arg_v, arg_context, arg_widget, arg_cell_area, arg_background_area, arg_callback, arg_callback_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_cell_area_get_cell_allocation
@@ -10717,7 +10786,12 @@ func CellAreaPrivateGetType() gi.GType {
 type CellCallback func(renderer CellRenderer, data unsafe.Pointer) (result bool)
 
 func CallCellCallback(fn CellCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	renderer := WrapCellRenderer(*(*unsafe.Pointer)(args[0]))
+	data := *(*unsafe.Pointer)(args[1])
+	fn(renderer, data)
 }
 
 // Interface CellEditable
@@ -10995,12 +11069,22 @@ func (v *CellLayoutIfc) SetCellDataFunc(cell ICellRenderer, func1 CellLayoutData
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_cell, arg_func1, arg_func_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 type CellLayoutDataFunc func(cell_layout CellLayout, cell CellRenderer, tree_model TreeModel, iter TreeIter, data unsafe.Pointer)
 
 func CallCellLayoutDataFunc(fn CellLayoutDataFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	cell_layout := CellLayout{P: *(*unsafe.Pointer)(args[0])}
+	cell := WrapCellRenderer(*(*unsafe.Pointer)(args[1]))
+	tree_model := TreeModel{P: *(*unsafe.Pointer)(args[2])}
+	iter := TreeIter{P: *(*unsafe.Pointer)(args[3])}
+	data := *(*unsafe.Pointer)(args[4])
+	fn(cell_layout, cell, tree_model, iter, data)
 }
 
 // ignore GType struct CellLayoutIface
@@ -13003,6 +13087,7 @@ func (v Clipboard) RequestContents(target gdk.Atom, callback ClipboardReceivedFu
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_target, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_clipboard_request_image
@@ -13027,6 +13112,7 @@ func (v Clipboard) RequestImage(callback ClipboardImageReceivedFunc, user_data u
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_clipboard_request_rich_text
@@ -13058,6 +13144,7 @@ func (v Clipboard) RequestRichText(buffer ITextBuffer, callback ClipboardRichTex
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_buffer, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_clipboard_request_targets
@@ -13082,6 +13169,7 @@ func (v Clipboard) RequestTargets(callback ClipboardTargetsReceivedFunc, user_da
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_clipboard_request_text
@@ -13106,6 +13194,7 @@ func (v Clipboard) RequestText(callback ClipboardTextReceivedFunc, user_data uns
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_clipboard_request_uris
@@ -13130,6 +13219,7 @@ func (v Clipboard) RequestUris(callback ClipboardURIReceivedFunc, user_data unsa
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_clipboard_set_can_store
@@ -13449,49 +13539,100 @@ func (v Clipboard) WaitIsUrisAvailable() (result bool) {
 type ClipboardClearFunc func(clipboard Clipboard, user_data_or_owner unsafe.Pointer)
 
 func CallClipboardClearFunc(fn ClipboardClearFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	clipboard := WrapClipboard(*(*unsafe.Pointer)(args[0]))
+	user_data_or_owner := *(*unsafe.Pointer)(args[1])
+	fn(clipboard, user_data_or_owner)
 }
 
 type ClipboardGetFunc func(clipboard Clipboard, selection_data SelectionData, info uint32, user_data_or_owner unsafe.Pointer)
 
 func CallClipboardGetFunc(fn ClipboardGetFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	clipboard := WrapClipboard(*(*unsafe.Pointer)(args[0]))
+	selection_data := SelectionData{P: *(*unsafe.Pointer)(args[1])}
+	info := *(*uint32)(args[2])
+	user_data_or_owner := *(*unsafe.Pointer)(args[3])
+	fn(clipboard, selection_data, info, user_data_or_owner)
 }
 
 type ClipboardImageReceivedFunc func(clipboard Clipboard, pixbuf gdkpixbuf.Pixbuf, data unsafe.Pointer)
 
 func CallClipboardImageReceivedFunc(fn ClipboardImageReceivedFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	clipboard := WrapClipboard(*(*unsafe.Pointer)(args[0]))
+	pixbuf := gdkpixbuf.WrapPixbuf(*(*unsafe.Pointer)(args[1]))
+	data := *(*unsafe.Pointer)(args[2])
+	fn(clipboard, pixbuf, data)
 }
 
 type ClipboardReceivedFunc func(clipboard Clipboard, selection_data SelectionData, data unsafe.Pointer)
 
 func CallClipboardReceivedFunc(fn ClipboardReceivedFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	clipboard := WrapClipboard(*(*unsafe.Pointer)(args[0]))
+	selection_data := SelectionData{P: *(*unsafe.Pointer)(args[1])}
+	data := *(*unsafe.Pointer)(args[2])
+	fn(clipboard, selection_data, data)
 }
 
 type ClipboardRichTextReceivedFunc func(clipboard Clipboard, format gdk.Atom, text string, length uint64, data unsafe.Pointer)
 
 func CallClipboardRichTextReceivedFunc(fn ClipboardRichTextReceivedFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	clipboard := WrapClipboard(*(*unsafe.Pointer)(args[0]))
+	format := gdk.Atom{P: *(*unsafe.Pointer)(args[1])}
+	text := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	length := *(*uint64)(args[3])
+	data := *(*unsafe.Pointer)(args[4])
+	fn(clipboard, format, text, length, data)
 }
 
 type ClipboardTargetsReceivedFunc func(clipboard Clipboard, atoms unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/, n_atoms int32, data unsafe.Pointer)
 
 func CallClipboardTargetsReceivedFunc(fn ClipboardTargetsReceivedFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	clipboard := WrapClipboard(*(*unsafe.Pointer)(args[0]))
+	atoms := *(*unsafe.Pointer)(args[1])
+	n_atoms := *(*int32)(args[2])
+	data := *(*unsafe.Pointer)(args[3])
+	fn(clipboard, atoms, n_atoms, data)
 }
 
 type ClipboardTextReceivedFunc func(clipboard Clipboard, text string, data unsafe.Pointer)
 
 func CallClipboardTextReceivedFunc(fn ClipboardTextReceivedFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	clipboard := WrapClipboard(*(*unsafe.Pointer)(args[0]))
+	text := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	data := *(*unsafe.Pointer)(args[2])
+	fn(clipboard, text, data)
 }
 
 type ClipboardURIReceivedFunc func(clipboard Clipboard, uris unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/, data unsafe.Pointer)
 
 func CallClipboardURIReceivedFunc(fn ClipboardURIReceivedFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	clipboard := WrapClipboard(*(*unsafe.Pointer)(args[0]))
+	uris := *(*unsafe.Pointer)(args[1])
+	data := *(*unsafe.Pointer)(args[2])
+	fn(clipboard, uris, data)
 }
 
 // Object ColorButton
@@ -14319,13 +14460,24 @@ func (v ColorSelection) SetPreviousRgba(rgba gdk.RGBA) {
 type ColorSelectionChangePaletteFunc func(colors unsafe.Pointer, n_colors int32)
 
 func CallColorSelectionChangePaletteFunc(fn ColorSelectionChangePaletteFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	colors := *(*unsafe.Pointer)(args[0])
+	n_colors := *(*int32)(args[1])
+	fn(colors, n_colors)
 }
 
 type ColorSelectionChangePaletteWithScreenFunc func(screen gdk.Screen, colors unsafe.Pointer, n_colors int32)
 
 func CallColorSelectionChangePaletteWithScreenFunc(fn ColorSelectionChangePaletteWithScreenFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	screen := gdk.WrapScreen(*(*unsafe.Pointer)(args[0]))
+	colors := *(*unsafe.Pointer)(args[1])
+	n_colors := *(*int32)(args[2])
+	fn(screen, colors, n_colors)
 }
 
 // ignore GType struct ColorSelectionClass
@@ -15118,6 +15270,8 @@ func (v ComboBox) SetRowSeparatorFunc(func1 TreeViewRowSeparatorFunc, data unsaf
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_combo_box_set_row_span_column
@@ -15646,6 +15800,7 @@ func (v Container) Forall(callback Callback, callback_data unsafe.Pointer) {
 	args := []gi.Argument{arg_v, arg_callback, arg_callback_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_container_foreach
@@ -15670,6 +15825,7 @@ func (v Container) Foreach(callback Callback, callback_data unsafe.Pointer) {
 	args := []gi.Argument{arg_v, arg_callback, arg_callback_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_container_get_border_width
@@ -19519,6 +19675,8 @@ func (v EntryCompletion) SetMatchFunc(func1 EntryCompletionMatchFunc, func_data 
 	arg_func_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_func_data, arg_func_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_entry_completion_set_minimum_key_length
@@ -19626,7 +19784,14 @@ func (v EntryCompletion) SetTextColumn(column int32) {
 type EntryCompletionMatchFunc func(completion EntryCompletion, key string, iter TreeIter, user_data unsafe.Pointer) (result bool)
 
 func CallEntryCompletionMatchFunc(fn EntryCompletionMatchFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	completion := WrapEntryCompletion(*(*unsafe.Pointer)(args[0]))
+	key := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	iter := TreeIter{P: *(*unsafe.Pointer)(args[2])}
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(completion, key, iter, user_data)
 }
 
 // Struct EntryCompletionPrivate
@@ -22331,6 +22496,8 @@ func (v FileFilter) AddCustom(needed FileFilterFlags, func1 FileFilterFunc, data
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_needed, arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_file_filter_add_mime_type
@@ -22493,7 +22660,12 @@ func FileFilterFlagsGetType() gi.GType {
 type FileFilterFunc func(filter_info FileFilterInfo, data unsafe.Pointer) (result bool)
 
 func CallFileFilterFunc(fn FileFilterFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	filter_info := FileFilterInfo{P: *(*unsafe.Pointer)(args[0])}
+	data := *(*unsafe.Pointer)(args[1])
+	fn(filter_info, data)
 }
 
 // Struct FileFilterInfo
@@ -22685,6 +22857,8 @@ func (v FlowBox) BindModel(model g.IListModel, create_widget_func FlowBoxCreateW
 	arg_user_data_free_func := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_model, arg_create_widget_func, arg_user_data, arg_user_data_free_func}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_flow_box_get_activate_on_single_click
@@ -22980,6 +23154,7 @@ func (v FlowBox) SelectedForeach(func1 FlowBoxForeachFunc, data unsafe.Pointer) 
 	args := []gi.Argument{arg_v, arg_func1, arg_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_flow_box_set_activate_on_single_click
@@ -23044,6 +23219,8 @@ func (v FlowBox) SetFilterFunc(filter_func FlowBoxFilterFunc, user_data unsafe.P
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_filter_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_flow_box_set_hadjustment
@@ -23176,6 +23353,8 @@ func (v FlowBox) SetSortFunc(sort_func FlowBoxSortFunc, user_data unsafe.Pointer
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_sort_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_flow_box_set_vadjustment
@@ -23364,25 +23543,47 @@ func FlowBoxChildAccessibleGetType() gi.GType {
 type FlowBoxCreateWidgetFunc func(item g.Object, user_data unsafe.Pointer) (result Widget)
 
 func CallFlowBoxCreateWidgetFunc(fn FlowBoxCreateWidgetFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	item := g.WrapObject(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(item, user_data)
 }
 
 type FlowBoxFilterFunc func(child FlowBoxChild, user_data unsafe.Pointer) (result bool)
 
 func CallFlowBoxFilterFunc(fn FlowBoxFilterFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	child := WrapFlowBoxChild(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(child, user_data)
 }
 
 type FlowBoxForeachFunc func(box FlowBox, child FlowBoxChild, user_data unsafe.Pointer)
 
 func CallFlowBoxForeachFunc(fn FlowBoxForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	box := WrapFlowBox(*(*unsafe.Pointer)(args[0]))
+	child := WrapFlowBoxChild(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(box, child, user_data)
 }
 
 type FlowBoxSortFunc func(child1 FlowBoxChild, child2 FlowBoxChild, user_data unsafe.Pointer) (result int32)
 
 func CallFlowBoxSortFunc(fn FlowBoxSortFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	child1 := WrapFlowBoxChild(*(*unsafe.Pointer)(args[0]))
+	child2 := WrapFlowBoxChild(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(child1, child2, user_data)
 }
 
 // Object FontButton
@@ -23911,6 +24112,8 @@ func (v *FontChooserIfc) SetFilterFunc(filter FontFilterFunc, user_data unsafe.P
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_filter, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_font_chooser_set_font
@@ -24159,7 +24362,13 @@ func FontChooserWidgetPrivateGetType() gi.GType {
 type FontFilterFunc func(family pango.FontFamily, face pango.FontFace, data unsafe.Pointer) (result bool)
 
 func CallFontFilterFunc(fn FontFilterFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	family := pango.WrapFontFamily(*(*unsafe.Pointer)(args[0]))
+	face := pango.WrapFontFace(*(*unsafe.Pointer)(args[1]))
+	data := *(*unsafe.Pointer)(args[2])
+	fn(family, face, data)
 }
 
 // Object FontSelection
@@ -28777,6 +28986,7 @@ func (v IconInfo) LoadIconAsync(cancellable g.ICancellable, callback g.AsyncRead
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_icon_info_load_icon_finish
@@ -28910,6 +29120,7 @@ func (v IconInfo) LoadSymbolicAsync(fg gdk.RGBA, success_color gdk.RGBA, warning
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_fg, arg_success_color, arg_warning_color, arg_error_color, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_icon_info_load_symbolic_finish
@@ -29010,6 +29221,7 @@ func (v IconInfo) LoadSymbolicForContextAsync(context IStyleContext, cancellable
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_context, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_icon_info_load_symbolic_for_context_finish
@@ -31373,6 +31585,7 @@ func (v IconView) SelectedForeach(func1 IconViewForeachFunc, data unsafe.Pointer
 	args := []gi.Argument{arg_v, arg_func1, arg_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_icon_view_set_activate_on_single_click
@@ -31839,7 +32052,13 @@ func IconViewDropPositionGetType() gi.GType {
 type IconViewForeachFunc func(icon_view IconView, path TreePath, data unsafe.Pointer)
 
 func CallIconViewForeachFunc(fn IconViewForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	icon_view := WrapIconView(*(*unsafe.Pointer)(args[0]))
+	path := TreePath{P: *(*unsafe.Pointer)(args[1])}
+	data := *(*unsafe.Pointer)(args[2])
+	fn(icon_view, path, data)
 }
 
 // Struct IconViewPrivate
@@ -33297,7 +33516,13 @@ func JustificationGetType() gi.GType {
 type KeySnoopFunc func(grab_widget Widget, event gdk.EventKey, func_data unsafe.Pointer) (result int32)
 
 func CallKeySnoopFunc(fn KeySnoopFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	grab_widget := WrapWidget(*(*unsafe.Pointer)(args[0]))
+	event := gdk.EventKey{P: *(*unsafe.Pointer)(args[1])}
+	func_data := *(*unsafe.Pointer)(args[2])
+	fn(grab_widget, event, func_data)
 }
 
 // Object Label
@@ -35133,6 +35358,8 @@ func (v ListBox) BindModel(model g.IListModel, create_widget_func ListBoxCreateW
 	arg_user_data_free_func := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_model, arg_create_widget_func, arg_user_data, arg_user_data_free_func}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_list_box_drag_highlight_row
@@ -35437,6 +35664,7 @@ func (v ListBox) SelectedForeach(func1 ListBoxForeachFunc, data unsafe.Pointer) 
 	args := []gi.Argument{arg_v, arg_func1, arg_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_list_box_set_activate_on_single_click
@@ -35505,6 +35733,8 @@ func (v ListBox) SetFilterFunc(filter_func ListBoxFilterFunc, user_data unsafe.P
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_filter_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_list_box_set_header_func
@@ -35537,6 +35767,8 @@ func (v ListBox) SetHeaderFunc(update_header ListBoxUpdateHeaderFunc, user_data 
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_update_header, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_list_box_set_placeholder
@@ -35605,6 +35837,8 @@ func (v ListBox) SetSortFunc(sort_func ListBoxSortFunc, user_data unsafe.Pointer
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_sort_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_list_box_unselect_all
@@ -35674,19 +35908,35 @@ func ListBoxAccessiblePrivateGetType() gi.GType {
 type ListBoxCreateWidgetFunc func(item g.Object, user_data unsafe.Pointer) (result Widget)
 
 func CallListBoxCreateWidgetFunc(fn ListBoxCreateWidgetFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	item := g.WrapObject(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(item, user_data)
 }
 
 type ListBoxFilterFunc func(row ListBoxRow, user_data unsafe.Pointer) (result bool)
 
 func CallListBoxFilterFunc(fn ListBoxFilterFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	row := WrapListBoxRow(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(row, user_data)
 }
 
 type ListBoxForeachFunc func(box ListBox, row ListBoxRow, user_data unsafe.Pointer)
 
 func CallListBoxForeachFunc(fn ListBoxForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	box := WrapListBox(*(*unsafe.Pointer)(args[0]))
+	row := WrapListBoxRow(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(box, row, user_data)
 }
 
 // Object ListBoxRow
@@ -35899,13 +36149,25 @@ func ListBoxRowAccessibleGetType() gi.GType {
 type ListBoxSortFunc func(row1 ListBoxRow, row2 ListBoxRow, user_data unsafe.Pointer) (result int32)
 
 func CallListBoxSortFunc(fn ListBoxSortFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	row1 := WrapListBoxRow(*(*unsafe.Pointer)(args[0]))
+	row2 := WrapListBoxRow(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(row1, row2, user_data)
 }
 
 type ListBoxUpdateHeaderFunc func(row ListBoxRow, before ListBoxRow, user_data unsafe.Pointer)
 
 func CallListBoxUpdateHeaderFunc(fn ListBoxUpdateHeaderFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	row := WrapListBoxRow(*(*unsafe.Pointer)(args[0]))
+	before := WrapListBoxRow(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(row, before, user_data)
 }
 
 // Object ListStore
@@ -36532,6 +36794,7 @@ func (v Menu) AttachToWidget(attach_widget IWidget, detacher MenuDetachFunc) {
 	arg_detacher := gi.NewPointerArgument(funcPtr)
 	args := []gi.Argument{arg_v, arg_attach_widget, arg_detacher}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_menu_detach
@@ -36772,6 +37035,7 @@ func (v Menu) Popup(parent_menu_shell IWidget, parent_menu_item IWidget, func1 M
 	arg_activate_time := gi.NewUint32Argument(activate_time)
 	args := []gi.Argument{arg_v, arg_parent_menu_shell, arg_parent_menu_item, arg_func1, arg_data, arg_button, arg_activate_time}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_menu_popup_at_pointer
@@ -36910,6 +37174,8 @@ func (v Menu) PopupForDevice(device gdk.IDevice, parent_menu_shell IWidget, pare
 	arg_activate_time := gi.NewUint32Argument(activate_time)
 	args := []gi.Argument{arg_v, arg_device, arg_parent_menu_shell, arg_parent_menu_item, arg_func1, arg_data, arg_destroy, arg_button, arg_activate_time}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_menu_reorder_child
@@ -37549,7 +37815,12 @@ func MenuButtonPrivateGetType() gi.GType {
 type MenuDetachFunc func(attach_widget Widget, menu Menu)
 
 func CallMenuDetachFunc(fn MenuDetachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	attach_widget := WrapWidget(*(*unsafe.Pointer)(args[0]))
+	menu := WrapMenu(*(*unsafe.Pointer)(args[1]))
+	fn(attach_widget, menu)
 }
 
 // Enum MenuDirectionType
@@ -37979,7 +38250,16 @@ func MenuItemPrivateGetType() gi.GType {
 type MenuPositionFunc func(menu Menu, x unsafe.Pointer /*TODO_CB dir:inout tag: gint32, isPtr: false*/, y unsafe.Pointer /*TODO_CB dir:inout tag: gint32, isPtr: false*/, user_data unsafe.Pointer) (push_in unsafe.Pointer /*TODO_CB dir:out tag: gboolean, isPtr: false*/)
 
 func CallMenuPositionFunc(fn MenuPositionFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	menu := WrapMenu(*(*unsafe.Pointer)(args[0]))
+	x := *(*unsafe.Pointer)(args[1])
+	y := *(*unsafe.Pointer)(args[2])
+	push_in := *(*unsafe.Pointer)(args[3])
+	_ = push_in
+	user_data := *(*unsafe.Pointer)(args[4])
+	fn(menu, x, y, user_data)
 }
 
 // Struct MenuPrivate
@@ -38735,13 +39015,22 @@ func NewModelButton() (result ModelButton) {
 type ModuleDisplayInitFunc func(display gdk.Display)
 
 func CallModuleDisplayInitFunc(fn ModuleDisplayInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	display := gdk.WrapDisplay(*(*unsafe.Pointer)(args[0]))
+	fn(display)
 }
 
 type ModuleInitFunc func(argc *int32, argv unsafe.Pointer /*TODO_CB tag: array, isPtr: true*/)
 
 func CallModuleInitFunc(fn ModuleInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	argc := *(**int32)(args[0])
+	argv := *(*unsafe.Pointer)(args[1])
+	fn(argc, argv)
 }
 
 // Object MountOperation
@@ -41594,7 +41883,12 @@ func (v PageSetup) ToKeyFile(key_file g.KeyFile, group_name string) {
 type PageSetupDoneFunc func(page_setup PageSetup, data unsafe.Pointer)
 
 func CallPageSetupDoneFunc(fn PageSetupDoneFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	page_setup := WrapPageSetup(*(*unsafe.Pointer)(args[0]))
+	data := *(*unsafe.Pointer)(args[1])
+	fn(page_setup, data)
 }
 
 // Enum PanDirection
@@ -44718,6 +45012,7 @@ func (v PrintSettings) Foreach(func1 PrintSettingsFunc, user_data unsafe.Pointer
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_print_settings_get
@@ -46066,7 +46361,13 @@ func (v PrintSettings) Unset(key string) {
 type PrintSettingsFunc func(key string, value string, user_data unsafe.Pointer)
 
 func CallPrintSettingsFunc(fn PrintSettingsFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	key := gi.GoString(*(*unsafe.Pointer)(args[0]))
+	value := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(key, value, user_data)
 }
 
 // Enum PrintStatus
@@ -47992,7 +48293,13 @@ func RcPropertyParseRequisition1(pspec g.IParamSpec, gstring g.String, property_
 type RcPropertyParser func(pspec g.ParamSpec, rc_string g.String, property_value g.Value) (result bool)
 
 func CallRcPropertyParser(fn RcPropertyParser, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pspec := g.WrapParamSpec(*(*unsafe.Pointer)(args[0]))
+	rc_string := g.String{P: *(*unsafe.Pointer)(args[1])}
+	property_value := g.Value{P: *(*unsafe.Pointer)(args[2])}
+	fn(pspec, rc_string, property_value)
 }
 
 // Object RcStyle
@@ -48794,6 +49101,8 @@ func (v *RecentChooserIfc) SetSortFunc(sort_func RecentSortFunc, sort_data unsaf
 	arg_data_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_sort_func, arg_sort_data, arg_data_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_recent_chooser_set_sort_type
@@ -49173,6 +49482,8 @@ func (v RecentFilter) AddCustom(needed RecentFilterFlags, func1 RecentFilterFunc
 	arg_data_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_needed, arg_func1, arg_data, arg_data_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_recent_filter_add_group
@@ -49337,7 +49648,12 @@ func RecentFilterFlagsGetType() gi.GType {
 type RecentFilterFunc func(filter_info RecentFilterInfo, user_data unsafe.Pointer) (result bool)
 
 func CallRecentFilterFunc(fn RecentFilterFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	filter_info := RecentFilterInfo{P: *(*unsafe.Pointer)(args[0])}
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(filter_info, user_data)
 }
 
 // Struct RecentFilterInfo
@@ -50134,7 +50450,13 @@ func RecentManagerPrivateGetType() gi.GType {
 type RecentSortFunc func(a RecentInfo, b RecentInfo, user_data unsafe.Pointer) (result int32)
 
 func CallRecentSortFunc(fn RecentSortFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	a := RecentInfo{P: *(*unsafe.Pointer)(args[0])}
+	b := RecentInfo{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(a, b, user_data)
 }
 
 // Enum RecentSortType
@@ -52924,6 +53246,7 @@ func SettingsInstallPropertyParser1(pspec g.IParamSpec, parser RcPropertyParser)
 	args := []gi.Argument{arg_pspec, arg_parser}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_settings_reset_property
@@ -57509,7 +57832,12 @@ func StylePropertiesPrivateGetType() gi.GType {
 type StylePropertyParser func(string string, value g.Value) (result bool)
 
 func CallStylePropertyParser(fn StylePropertyParser, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	string := gi.GoString(*(*unsafe.Pointer)(args[0]))
+	value := g.Value{P: *(*unsafe.Pointer)(args[1])}
+	fn(string, value)
 }
 
 // Interface StyleProvider
@@ -60196,6 +60524,8 @@ func (v TextBuffer) RegisterDeserializeFormat(mime_type string, function TextBuf
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_mime_type)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -60261,6 +60591,8 @@ func (v TextBuffer) RegisterSerializeFormat(mime_type string, function TextBuffe
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_mime_type)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -60511,7 +60843,17 @@ func (v TextBuffer) UnregisterSerializeFormat(format gdk.Atom) {
 type TextBufferDeserializeFunc func(register_buffer TextBuffer, content_buffer TextBuffer, iter TextIter, data gi.Uint8Array, length uint64, create_tags bool, user_data unsafe.Pointer) (result bool)
 
 func CallTextBufferDeserializeFunc(fn TextBufferDeserializeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	register_buffer := WrapTextBuffer(*(*unsafe.Pointer)(args[0]))
+	content_buffer := WrapTextBuffer(*(*unsafe.Pointer)(args[1]))
+	iter := TextIter{P: *(*unsafe.Pointer)(args[2])}
+	data := gi.Uint8Array{P: *(*unsafe.Pointer)(args[3])}
+	length := *(*uint64)(args[4])
+	create_tags := *(*bool)(args[5])
+	user_data := *(*unsafe.Pointer)(args[6])
+	fn(register_buffer, content_buffer, iter, data, length, create_tags, user_data)
 }
 
 // Struct TextBufferPrivate
@@ -60527,7 +60869,16 @@ func TextBufferPrivateGetType() gi.GType {
 type TextBufferSerializeFunc func(register_buffer TextBuffer, content_buffer TextBuffer, start TextIter, end TextIter, length *uint64, user_data unsafe.Pointer) (result *uint8)
 
 func CallTextBufferSerializeFunc(fn TextBufferSerializeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	register_buffer := WrapTextBuffer(*(*unsafe.Pointer)(args[0]))
+	content_buffer := WrapTextBuffer(*(*unsafe.Pointer)(args[1]))
+	start := TextIter{P: *(*unsafe.Pointer)(args[2])}
+	end := TextIter{P: *(*unsafe.Pointer)(args[3])}
+	length := *(**uint64)(args[4])
+	user_data := *(*unsafe.Pointer)(args[5])
+	fn(register_buffer, content_buffer, start, end, length, user_data)
 }
 
 // Enum TextBufferTargetInfo
@@ -60576,7 +60927,12 @@ func TextCellAccessiblePrivateGetType() gi.GType {
 type TextCharPredicate func(ch rune, user_data unsafe.Pointer) (result bool)
 
 func CallTextCharPredicate(fn TextCharPredicate, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	ch := *(*rune)(args[0])
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(ch, user_data)
 }
 
 // Object TextChildAnchor
@@ -60809,6 +61165,7 @@ func (v TextIter) BackwardFindChar(pred TextCharPredicate, user_data unsafe.Poin
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -61421,6 +61778,7 @@ func (v TextIter) ForwardFindChar(pred TextCharPredicate, user_data unsafe.Point
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -62886,6 +63244,7 @@ func (v TextTagTable) Foreach(func1 TextTagTableForeach, data unsafe.Pointer) {
 	args := []gi.Argument{arg_v, arg_func1, arg_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_text_tag_table_get_size
@@ -62954,7 +63313,12 @@ func (v TextTagTable) Remove(tag ITextTag) {
 type TextTagTableForeach func(tag TextTag, data unsafe.Pointer)
 
 func CallTextTagTableForeach(fn TextTagTableForeach, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	tag := WrapTextTag(*(*unsafe.Pointer)(args[0]))
+	data := *(*unsafe.Pointer)(args[1])
+	fn(tag, data)
 }
 
 // Struct TextTagTablePrivate
@@ -64986,7 +65350,13 @@ func ThemingEnginePrivateGetType() gi.GType {
 type TickCallback func(widget Widget, frame_clock gdk.FrameClock, user_data unsafe.Pointer) (result bool)
 
 func CallTickCallback(fn TickCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	widget := WrapWidget(*(*unsafe.Pointer)(args[0]))
+	frame_clock := gdk.WrapFrameClock(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(widget, frame_clock, user_data)
 }
 
 // Object ToggleAction
@@ -67931,19 +68301,39 @@ func ToplevelAccessiblePrivateGetType() gi.GType {
 type TranslateFunc func(path string, func_data unsafe.Pointer) (result string)
 
 func CallTranslateFunc(fn TranslateFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	path := gi.GoString(*(*unsafe.Pointer)(args[0]))
+	func_data := *(*unsafe.Pointer)(args[1])
+	fn(path, func_data)
 }
 
 type TreeCellDataFunc func(tree_column TreeViewColumn, cell CellRenderer, tree_model TreeModel, iter TreeIter, data unsafe.Pointer)
 
 func CallTreeCellDataFunc(fn TreeCellDataFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	tree_column := WrapTreeViewColumn(*(*unsafe.Pointer)(args[0]))
+	cell := WrapCellRenderer(*(*unsafe.Pointer)(args[1]))
+	tree_model := TreeModel{P: *(*unsafe.Pointer)(args[2])}
+	iter := TreeIter{P: *(*unsafe.Pointer)(args[3])}
+	data := *(*unsafe.Pointer)(args[4])
+	fn(tree_column, cell, tree_model, iter, data)
 }
 
 type TreeDestroyCountFunc func(tree_view TreeView, path TreePath, children int32, user_data unsafe.Pointer)
 
 func CallTreeDestroyCountFunc(fn TreeDestroyCountFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	tree_view := WrapTreeView(*(*unsafe.Pointer)(args[0]))
+	path := TreePath{P: *(*unsafe.Pointer)(args[1])}
+	children := *(*int32)(args[2])
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(tree_view, path, children, user_data)
 }
 
 // Interface TreeDragDest
@@ -68138,7 +68528,14 @@ func (v TreeIter) Free() {
 type TreeIterCompareFunc func(model TreeModel, a TreeIter, b TreeIter, user_data unsafe.Pointer) (result int32)
 
 func CallTreeIterCompareFunc(fn TreeIterCompareFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	model := TreeModel{P: *(*unsafe.Pointer)(args[0])}
+	a := TreeIter{P: *(*unsafe.Pointer)(args[1])}
+	b := TreeIter{P: *(*unsafe.Pointer)(args[2])}
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(model, a, b, user_data)
 }
 
 // Interface TreeModel
@@ -68198,6 +68595,7 @@ func (v *TreeModelIfc) Foreach(func1 TreeModelForeachFunc, user_data unsafe.Poin
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_tree_model_get_column_type
@@ -68883,6 +69281,8 @@ func (v TreeModelFilter) SetModifyFunc(n_columns int32, types gi.GTypeArray, fun
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_n_columns, arg_types, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_tree_model_filter_set_visible_column
@@ -68931,6 +69331,8 @@ func (v TreeModelFilter) SetVisibleFunc(func1 TreeModelFilterVisibleFunc, data u
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // ignore GType struct TreeModelFilterClass
@@ -68938,7 +69340,16 @@ func (v TreeModelFilter) SetVisibleFunc(func1 TreeModelFilterVisibleFunc, data u
 type TreeModelFilterModifyFunc func(model TreeModel, iter TreeIter, column int32, data unsafe.Pointer) (value unsafe.Pointer /*TODO_CB dir:out tag: interface, isPtr: false*/)
 
 func CallTreeModelFilterModifyFunc(fn TreeModelFilterModifyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	model := TreeModel{P: *(*unsafe.Pointer)(args[0])}
+	iter := TreeIter{P: *(*unsafe.Pointer)(args[1])}
+	value := *(*unsafe.Pointer)(args[2])
+	_ = value
+	column := *(*int32)(args[3])
+	data := *(*unsafe.Pointer)(args[4])
+	fn(model, iter, column, data)
 }
 
 // Struct TreeModelFilterPrivate
@@ -68954,7 +69365,13 @@ func TreeModelFilterPrivateGetType() gi.GType {
 type TreeModelFilterVisibleFunc func(model TreeModel, iter TreeIter, data unsafe.Pointer) (result bool)
 
 func CallTreeModelFilterVisibleFunc(fn TreeModelFilterVisibleFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	model := TreeModel{P: *(*unsafe.Pointer)(args[0])}
+	iter := TreeIter{P: *(*unsafe.Pointer)(args[1])}
+	data := *(*unsafe.Pointer)(args[2])
+	fn(model, iter, data)
 }
 
 // Flags TreeModelFlags
@@ -68973,7 +69390,14 @@ func TreeModelFlagsGetType() gi.GType {
 type TreeModelForeachFunc func(model TreeModel, path TreePath, iter TreeIter, data unsafe.Pointer) (result bool)
 
 func CallTreeModelForeachFunc(fn TreeModelForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	model := TreeModel{P: *(*unsafe.Pointer)(args[0])}
+	path := TreePath{P: *(*unsafe.Pointer)(args[1])}
+	iter := TreeIter{P: *(*unsafe.Pointer)(args[2])}
+	data := *(*unsafe.Pointer)(args[3])
+	fn(model, path, iter, data)
 }
 
 // ignore GType struct TreeModelIface
@@ -69943,6 +70367,7 @@ func (v TreeSelection) SelectedForeach(func1 TreeSelectionForeachFunc, data unsa
 	args := []gi.Argument{arg_v, arg_func1, arg_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_tree_selection_set_mode
@@ -69991,6 +70416,8 @@ func (v TreeSelection) SetSelectFunction(func1 TreeSelectionFunc, data unsafe.Po
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_tree_selection_unselect_all
@@ -70062,13 +70489,28 @@ func (v TreeSelection) UnselectRange(start_path TreePath, end_path TreePath) {
 type TreeSelectionForeachFunc func(model TreeModel, path TreePath, iter TreeIter, data unsafe.Pointer)
 
 func CallTreeSelectionForeachFunc(fn TreeSelectionForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	model := TreeModel{P: *(*unsafe.Pointer)(args[0])}
+	path := TreePath{P: *(*unsafe.Pointer)(args[1])}
+	iter := TreeIter{P: *(*unsafe.Pointer)(args[2])}
+	data := *(*unsafe.Pointer)(args[3])
+	fn(model, path, iter, data)
 }
 
 type TreeSelectionFunc func(selection TreeSelection, model TreeModel, path TreePath, path_currently_selected bool, data unsafe.Pointer) (result bool)
 
 func CallTreeSelectionFunc(fn TreeSelectionFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	selection := WrapTreeSelection(*(*unsafe.Pointer)(args[0]))
+	model := TreeModel{P: *(*unsafe.Pointer)(args[1])}
+	path := TreePath{P: *(*unsafe.Pointer)(args[2])}
+	path_currently_selected := *(*bool)(args[3])
+	data := *(*unsafe.Pointer)(args[4])
+	fn(selection, model, path, path_currently_selected, data)
 }
 
 // Struct TreeSelectionPrivate
@@ -70170,6 +70612,8 @@ func (v *TreeSortableIfc) SetDefaultSortFunc(sort_func TreeIterCompareFunc, user
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_sort_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_tree_sortable_set_sort_column_id
@@ -70224,6 +70668,8 @@ func (v *TreeSortableIfc) SetSortFunc(sort_column_id int32, sort_func TreeIterCo
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_sort_column_id, arg_sort_func, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_tree_sortable_sort_column_changed
@@ -71888,6 +72334,8 @@ func (v TreeView) InsertColumnWithDataFunc(position int32, title string, cell IC
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_title)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Int32()
 	return
 }
@@ -71973,6 +72421,7 @@ func (v TreeView) MapExpandedRows(func1 TreeViewMappingFunc, data unsafe.Pointer
 	args := []gi.Argument{arg_v, arg_func1, arg_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gtk_tree_view_move_column_after
@@ -72168,6 +72617,8 @@ func (v TreeView) SetColumnDragFunction(func1 TreeViewColumnDropFunc, user_data 
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_tree_view_set_cursor
@@ -72261,6 +72712,8 @@ func (v TreeView) SetDestroyCountFunc(func1 TreeDestroyCountFunc, data unsafe.Po
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_tree_view_set_drag_dest_row
@@ -72534,6 +72987,8 @@ func (v TreeView) SetRowSeparatorFunc(func1 TreeViewRowSeparatorFunc, data unsaf
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_tree_view_set_rubber_banding
@@ -72636,6 +73091,8 @@ func (v TreeView) SetSearchEqualFunc(search_equal_func TreeViewSearchEqualFunc, 
 	arg_search_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_search_equal_func, arg_search_user_data, arg_search_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_tree_view_set_search_position_func
@@ -72668,6 +73125,8 @@ func (v TreeView) SetSearchPositionFunc(func1 TreeViewSearchPositionFunc, data u
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_tree_view_set_show_expanders
@@ -73585,6 +74044,8 @@ func (v TreeViewColumn) SetCellDataFunc(cell_renderer ICellRenderer, func1 TreeC
 	arg_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_cell_renderer, arg_func1, arg_func_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_tree_view_column_set_clickable
@@ -73838,7 +74299,15 @@ func (v TreeViewColumn) SetWidget(widget IWidget) {
 type TreeViewColumnDropFunc func(tree_view TreeView, column TreeViewColumn, prev_column TreeViewColumn, next_column TreeViewColumn, data unsafe.Pointer) (result bool)
 
 func CallTreeViewColumnDropFunc(fn TreeViewColumnDropFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	tree_view := WrapTreeView(*(*unsafe.Pointer)(args[0]))
+	column := WrapTreeViewColumn(*(*unsafe.Pointer)(args[1]))
+	prev_column := WrapTreeViewColumn(*(*unsafe.Pointer)(args[2]))
+	next_column := WrapTreeViewColumn(*(*unsafe.Pointer)(args[3]))
+	data := *(*unsafe.Pointer)(args[4])
+	fn(tree_view, column, prev_column, next_column, data)
 }
 
 // Struct TreeViewColumnPrivate
@@ -73898,7 +74367,13 @@ func TreeViewGridLinesGetType() gi.GType {
 type TreeViewMappingFunc func(tree_view TreeView, path TreePath, user_data unsafe.Pointer)
 
 func CallTreeViewMappingFunc(fn TreeViewMappingFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	tree_view := WrapTreeView(*(*unsafe.Pointer)(args[0]))
+	path := TreePath{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(tree_view, path, user_data)
 }
 
 // Struct TreeViewPrivate
@@ -73914,19 +74389,39 @@ func TreeViewPrivateGetType() gi.GType {
 type TreeViewRowSeparatorFunc func(model TreeModel, iter TreeIter, data unsafe.Pointer) (result bool)
 
 func CallTreeViewRowSeparatorFunc(fn TreeViewRowSeparatorFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	model := TreeModel{P: *(*unsafe.Pointer)(args[0])}
+	iter := TreeIter{P: *(*unsafe.Pointer)(args[1])}
+	data := *(*unsafe.Pointer)(args[2])
+	fn(model, iter, data)
 }
 
 type TreeViewSearchEqualFunc func(model TreeModel, column int32, key string, iter TreeIter, search_data unsafe.Pointer) (result bool)
 
 func CallTreeViewSearchEqualFunc(fn TreeViewSearchEqualFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	model := TreeModel{P: *(*unsafe.Pointer)(args[0])}
+	column := *(*int32)(args[1])
+	key := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	iter := TreeIter{P: *(*unsafe.Pointer)(args[3])}
+	search_data := *(*unsafe.Pointer)(args[4])
+	fn(model, column, key, iter, search_data)
 }
 
 type TreeViewSearchPositionFunc func(tree_view TreeView, search_dialog Widget, user_data unsafe.Pointer)
 
 func CallTreeViewSearchPositionFunc(fn TreeViewSearchPositionFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	tree_view := WrapTreeView(*(*unsafe.Pointer)(args[0]))
+	search_dialog := WrapWidget(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(tree_view, search_dialog, user_data)
 }
 
 // Object UIManager
@@ -75155,6 +75650,8 @@ func (v Widget) AddTickCallback(callback TickCallback, user_data unsafe.Pointer,
 	args := []gi.Argument{arg_v, arg_callback, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -79984,6 +80481,7 @@ func (v WidgetClass) BindTemplateCallbackFull(callback_name string, callback_sym
 	args := []gi.Argument{arg_v, arg_callback_name, arg_callback_symbol}
 	iv.Call(args, nil, nil)
 	gi.Free(c_callback_name)
+	callableInfo.Unref()
 }
 
 // gtk_widget_class_bind_template_child_full
@@ -80158,6 +80656,8 @@ func (v WidgetClass) SetConnectFunc(connect_func BuilderConnectFunc, connect_dat
 	arg_connect_data_destroy := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_connect_func, arg_connect_data, arg_connect_data_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_widget_class_set_css_name
@@ -86359,6 +86859,7 @@ func PrintRunPageSetupDialogAsync(parent IWindow, page_setup IPageSetup, setting
 	arg_data := gi.NewPointerArgument(data)
 	args := []gi.Argument{arg_parent, arg_page_setup, arg_settings, arg_done_cb, arg_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_propagate_event
@@ -88110,6 +88611,8 @@ func StockSetTranslateFunc(domain string, func1 TranslateFunc, data unsafe.Point
 	args := []gi.Argument{arg_domain, arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
 	gi.Free(c_domain)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gtk_target_table_free

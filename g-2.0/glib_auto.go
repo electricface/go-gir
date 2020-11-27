@@ -2014,25 +2014,46 @@ func ChecksumTypeGetType() gi.GType {
 type ChildWatchFunc func(pid int32, status int32, user_data unsafe.Pointer)
 
 func CallChildWatchFunc(fn ChildWatchFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pid := *(*int32)(args[0])
+	status := *(*int32)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(pid, status, user_data)
 }
 
 type ClearHandleFunc func(handle_id uint32)
 
 func CallClearHandleFunc(fn ClearHandleFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	handle_id := *(*uint32)(args[0])
+	fn(handle_id)
 }
 
 type CompareDataFunc func(a unsafe.Pointer, b unsafe.Pointer, user_data unsafe.Pointer) (result int32)
 
 func CallCompareDataFunc(fn CompareDataFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	a := *(*unsafe.Pointer)(args[0])
+	b := *(*unsafe.Pointer)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(a, b, user_data)
 }
 
 type CompareFunc func(a unsafe.Pointer, b unsafe.Pointer) (result int32)
 
 func CallCompareFunc(fn CompareFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	a := *(*unsafe.Pointer)(args[0])
+	b := *(*unsafe.Pointer)(args[1])
+	fn(a, b)
 }
 
 // Struct Cond
@@ -2161,7 +2182,12 @@ func ConvertErrorGetType() gi.GType {
 type CopyFunc func(src unsafe.Pointer, data unsafe.Pointer) (result unsafe.Pointer)
 
 func CallCopyFunc(fn CopyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	src := *(*unsafe.Pointer)(args[0])
+	data := *(*unsafe.Pointer)(args[1])
+	fn(src, data)
 }
 
 // Struct Data
@@ -2177,7 +2203,13 @@ func DataGetType() gi.GType {
 type DataForeachFunc func(key_id uint32, data unsafe.Pointer, user_data unsafe.Pointer)
 
 func CallDataForeachFunc(fn DataForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	key_id := *(*uint32)(args[0])
+	data := *(*unsafe.Pointer)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(key_id, data, user_data)
 }
 
 // Struct Date
@@ -4205,7 +4237,11 @@ func DebugKeyGetType() gi.GType {
 type DestroyNotify func(data unsafe.Pointer)
 
 func CallDestroyNotify(fn DestroyNotify, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	fn(data)
 }
 
 // Struct Dir
@@ -4301,13 +4337,23 @@ func DoubleIEEE754GetType() gi.GType {
 type DuplicateFunc func(data unsafe.Pointer, user_data unsafe.Pointer) (result unsafe.Pointer)
 
 func CallDuplicateFunc(fn DuplicateFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(data, user_data)
 }
 
 type EqualFunc func(a unsafe.Pointer, b unsafe.Pointer) (result bool)
 
 func CallEqualFunc(fn EqualFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	a := *(*unsafe.Pointer)(args[0])
+	b := *(*unsafe.Pointer)(args[1])
+	fn(a, b)
 }
 
 // Struct Error
@@ -4506,31 +4552,56 @@ func FormatSizeFlagsGetType() gi.GType {
 type FreeFunc func(data unsafe.Pointer)
 
 func CallFreeFunc(fn FreeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	fn(data)
 }
 
 type Func func(data unsafe.Pointer, user_data unsafe.Pointer)
 
 func CallFunc(fn Func, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(data, user_data)
 }
 
 type HFunc func(key unsafe.Pointer, value unsafe.Pointer, user_data unsafe.Pointer)
 
 func CallHFunc(fn HFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	key := *(*unsafe.Pointer)(args[0])
+	value := *(*unsafe.Pointer)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(key, value, user_data)
 }
 
 type HRFunc func(key unsafe.Pointer, value unsafe.Pointer, user_data unsafe.Pointer) (result bool)
 
 func CallHRFunc(fn HRFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	key := *(*unsafe.Pointer)(args[0])
+	value := *(*unsafe.Pointer)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(key, value, user_data)
 }
 
 type HashFunc func(key unsafe.Pointer) (result uint32)
 
 func CallHashFunc(fn HashFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	key := *(*unsafe.Pointer)(args[0])
+	fn(key)
 }
 
 // Struct HashTable
@@ -5182,31 +5253,55 @@ func HookUnref1(hook_list HookList, hook Hook) {
 type HookCheckFunc func(data unsafe.Pointer) (result bool)
 
 func CallHookCheckFunc(fn HookCheckFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	fn(data)
 }
 
 type HookCheckMarshaller func(hook Hook, marshal_data unsafe.Pointer) (result bool)
 
 func CallHookCheckMarshaller(fn HookCheckMarshaller, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	hook := Hook{P: *(*unsafe.Pointer)(args[0])}
+	marshal_data := *(*unsafe.Pointer)(args[1])
+	fn(hook, marshal_data)
 }
 
 type HookCompareFunc func(new_hook Hook, sibling Hook) (result int32)
 
 func CallHookCompareFunc(fn HookCompareFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	new_hook := Hook{P: *(*unsafe.Pointer)(args[0])}
+	sibling := Hook{P: *(*unsafe.Pointer)(args[1])}
+	fn(new_hook, sibling)
 }
 
 type HookFinalizeFunc func(hook_list HookList, hook Hook)
 
 func CallHookFinalizeFunc(fn HookFinalizeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	hook_list := HookList{P: *(*unsafe.Pointer)(args[0])}
+	hook := Hook{P: *(*unsafe.Pointer)(args[1])}
+	fn(hook_list, hook)
 }
 
 type HookFindFunc func(hook Hook, data unsafe.Pointer) (result bool)
 
 func CallHookFindFunc(fn HookFindFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	hook := Hook{P: *(*unsafe.Pointer)(args[0])}
+	data := *(*unsafe.Pointer)(args[1])
+	fn(hook, data)
 }
 
 // Flags HookFlagMask
@@ -5226,7 +5321,11 @@ func HookFlagMaskGetType() gi.GType {
 type HookFunc func(data unsafe.Pointer)
 
 func CallHookFunc(fn HookFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	fn(data)
 }
 
 // Struct HookList
@@ -5305,7 +5404,12 @@ func (v HookList) InvokeCheck(may_recurse bool) {
 type HookMarshaller func(hook Hook, marshal_data unsafe.Pointer)
 
 func CallHookMarshaller(fn HookMarshaller, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	hook := Hook{P: *(*unsafe.Pointer)(args[0])}
+	marshal_data := *(*unsafe.Pointer)(args[1])
+	fn(hook, marshal_data)
 }
 
 // Struct IOChannel
@@ -6156,7 +6260,13 @@ func IOFlagsGetType() gi.GType {
 type IOFunc func(source IOChannel, condition IOConditionFlags, data unsafe.Pointer) (result bool)
 
 func CallIOFunc(fn IOFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	source := IOChannel{P: *(*unsafe.Pointer)(args[0])}
+	condition := *(*IOConditionFlags)(args[1])
+	data := *(*unsafe.Pointer)(args[2])
+	fn(source, condition, data)
 }
 
 // Struct IOFuncs
@@ -7595,7 +7705,14 @@ func LogFieldGetType() gi.GType {
 type LogFunc func(log_domain string, log_level LogLevelFlags, message string, user_data unsafe.Pointer)
 
 func CallLogFunc(fn LogFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	log_domain := gi.GoString(*(*unsafe.Pointer)(args[0]))
+	log_level := *(*LogLevelFlags)(args[1])
+	message := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(log_domain, log_level, message, user_data)
 }
 
 // Flags LogLevelFlags
@@ -7621,7 +7738,14 @@ func LogLevelFlagsGetType() gi.GType {
 type LogWriterFunc func(log_level LogLevelFlags, fields unsafe.Pointer, n_fields uint64, user_data unsafe.Pointer)
 
 func CallLogWriterFunc(fn LogWriterFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	log_level := *(*LogLevelFlags)(args[0])
+	fields := *(*unsafe.Pointer)(args[1])
+	n_fields := *(*uint64)(args[2])
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(log_level, fields, n_fields, user_data)
 }
 
 // Enum LogWriterOutput
@@ -7839,6 +7963,8 @@ func (v MainContext) InvokeFull(priority int32, function SourceFunc, data unsafe
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_priority, arg_function, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // g_main_context_is_owner
@@ -8487,6 +8613,7 @@ func NewMarkupParseContext(parser MarkupParser, flags MarkupParseFlags, user_dat
 	args := []gi.Argument{arg_parser, arg_flags, arg_user_data, arg_user_data_dnotify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -9302,13 +9429,23 @@ func (v Node) Unlink() {
 type NodeForeachFunc func(node Node, data unsafe.Pointer)
 
 func CallNodeForeachFunc(fn NodeForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	node := Node{P: *(*unsafe.Pointer)(args[0])}
+	data := *(*unsafe.Pointer)(args[1])
+	fn(node, data)
 }
 
 type NodeTraverseFunc func(node Node, data unsafe.Pointer) (result bool)
 
 func CallNodeTraverseFunc(fn NodeTraverseFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	node := Node{P: *(*unsafe.Pointer)(args[0])}
+	data := *(*unsafe.Pointer)(args[1])
+	fn(node, data)
 }
 
 // Enum NormalizeMode
@@ -9430,7 +9567,13 @@ func OptionArgGetType() gi.GType {
 type OptionArgFunc func(option_name string, value string, data unsafe.Pointer) (result bool)
 
 func CallOptionArgFunc(fn OptionArgFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	option_name := gi.GoString(*(*unsafe.Pointer)(args[0]))
+	value := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	data := *(*unsafe.Pointer)(args[2])
+	fn(option_name, value, data)
 }
 
 // Struct OptionContext
@@ -9801,6 +9944,8 @@ func (v OptionContext) SetTranslateFunc(func1 TranslateFunc, data unsafe.Pointer
 	arg_destroy_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // g_option_context_set_translation_domain
@@ -9850,7 +9995,13 @@ func OptionErrorGetType() gi.GType {
 type OptionErrorFunc func(context OptionContext, group OptionGroup, data unsafe.Pointer)
 
 func CallOptionErrorFunc(fn OptionErrorFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	context := OptionContext{P: *(*unsafe.Pointer)(args[0])}
+	group := OptionGroup{P: *(*unsafe.Pointer)(args[1])}
+	data := *(*unsafe.Pointer)(args[2])
+	fn(context, group, data)
 }
 
 // Flags OptionFlags
@@ -9921,6 +10072,7 @@ func NewOptionGroup(name string, description string, help_description string, us
 	gi.Free(c_name)
 	gi.Free(c_description)
 	gi.Free(c_help_description)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -10004,6 +10156,8 @@ func (v OptionGroup) SetTranslateFunc(func1 TranslateFunc, data unsafe.Pointer, 
 	arg_destroy_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_destroy_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // g_option_group_set_translation_domain
@@ -10040,7 +10194,13 @@ func (v OptionGroup) Unref() {
 type OptionParseFunc func(context OptionContext, group OptionGroup, data unsafe.Pointer) (result bool)
 
 func CallOptionParseFunc(fn OptionParseFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	context := OptionContext{P: *(*unsafe.Pointer)(args[0])}
+	group := OptionGroup{P: *(*unsafe.Pointer)(args[1])}
+	data := *(*unsafe.Pointer)(args[2])
+	fn(context, group, data)
 }
 
 // Struct PatternSpec
@@ -10102,13 +10262,23 @@ func PollFDGetType() gi.GType {
 type PollFunc func(ufds PollFD, nfsd uint32, timeout_ int32) (result int32)
 
 func CallPollFunc(fn PollFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	ufds := PollFD{P: *(*unsafe.Pointer)(args[0])}
+	nfsd := *(*uint32)(args[1])
+	timeout_ := *(*int32)(args[2])
+	fn(ufds, nfsd, timeout_)
 }
 
 type PrintFunc func(string string)
 
 func CallPrintFunc(fn PrintFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	string := gi.GoString(*(*unsafe.Pointer)(args[0]))
+	fn(string)
 }
 
 // Struct Private
@@ -10242,6 +10412,7 @@ func (v Queue) FreeFull(free_func DestroyNotify) {
 	arg_free_func := gi.NewPointerArgument(funcPtr)
 	args := []gi.Argument{arg_v, arg_free_func}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_queue_get_length
@@ -11634,7 +11805,13 @@ func RegexErrorGetType() gi.GType {
 type RegexEvalCallback func(match_info MatchInfo, result String, user_data unsafe.Pointer) (result1 bool)
 
 func CallRegexEvalCallback(fn RegexEvalCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	match_info := MatchInfo{P: *(*unsafe.Pointer)(args[0])}
+	result1 := String{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(match_info, result1, user_data)
 }
 
 // Flags RegexMatchFlags
@@ -12027,7 +12204,13 @@ func ScannerConfigGetType() gi.GType {
 type ScannerMsgFunc func(scanner Scanner, message string, error bool)
 
 func CallScannerMsgFunc(fn ScannerMsgFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	scanner := Scanner{P: *(*unsafe.Pointer)(args[0])}
+	message := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	error := *(*bool)(args[2])
+	fn(scanner, message, error)
 }
 
 // Enum SeekType
@@ -12539,7 +12722,13 @@ func (v SequenceIter) Prev() (result SequenceIter) {
 type SequenceIterCompareFunc func(a SequenceIter, b SequenceIter, data unsafe.Pointer) (result int32)
 
 func CallSequenceIterCompareFunc(fn SequenceIterCompareFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	a := SequenceIter{P: *(*unsafe.Pointer)(args[0])}
+	b := SequenceIter{P: *(*unsafe.Pointer)(args[1])}
+	data := *(*unsafe.Pointer)(args[2])
+	fn(a, b, data)
 }
 
 // Enum ShellError
@@ -12996,6 +13185,8 @@ func (v Source) SetCallback(func1 SourceFunc, data unsafe.Pointer, notify Destro
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // g_source_set_callback_indirect
@@ -13210,13 +13401,20 @@ func SourceCallbackFuncsGetType() gi.GType {
 type SourceDummyMarshal func()
 
 func CallSourceDummyMarshal(fn SourceDummyMarshal, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	fn()
 }
 
 type SourceFunc func(user_data unsafe.Pointer) (result bool)
 
 func CallSourceFunc(fn SourceFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	user_data := *(*unsafe.Pointer)(args[0])
+	fn(user_data)
 }
 
 // Struct SourceFuncs
@@ -13244,7 +13442,11 @@ func SourcePrivateGetType() gi.GType {
 type SpawnChildSetupFunc func(user_data unsafe.Pointer)
 
 func CallSpawnChildSetupFunc(fn SpawnChildSetupFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	user_data := *(*unsafe.Pointer)(args[0])
+	fn(user_data)
 }
 
 // Enum SpawnError
@@ -14069,7 +14271,11 @@ func TestConfigGetType() gi.GType {
 type TestDataFunc func(user_data unsafe.Pointer)
 
 func CallTestDataFunc(fn TestDataFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	user_data := *(*unsafe.Pointer)(args[0])
+	fn(user_data)
 }
 
 // Enum TestFileType
@@ -14088,13 +14294,21 @@ func TestFileTypeGetType() gi.GType {
 type TestFixtureFunc func(fixture unsafe.Pointer, user_data unsafe.Pointer)
 
 func CallTestFixtureFunc(fn TestFixtureFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	fixture := *(*unsafe.Pointer)(args[0])
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(fixture, user_data)
 }
 
 type TestFunc func()
 
 func CallTestFunc(fn TestFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	fn()
 }
 
 // Struct TestLogBuffer
@@ -14144,7 +14358,14 @@ func (v TestLogBuffer) Push(n_bytes uint32, bytes uint8) {
 type TestLogFatalFunc func(log_domain string, log_level LogLevelFlags, message string, user_data unsafe.Pointer) (result bool)
 
 func CallTestLogFatalFunc(fn TestLogFatalFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	log_domain := gi.GoString(*(*unsafe.Pointer)(args[0]))
+	log_level := *(*LogLevelFlags)(args[1])
+	message := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(log_domain, log_level, message, user_data)
 }
 
 // Struct TestLogMsg
@@ -14414,7 +14635,11 @@ func ThreadErrorGetType() gi.GType {
 type ThreadFunc func(data unsafe.Pointer) (result unsafe.Pointer)
 
 func CallThreadFunc(fn ThreadFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	fn(data)
 }
 
 // Struct ThreadPool
@@ -15132,7 +15357,12 @@ func TokenValueGetType() gi.GType {
 type TranslateFunc func(str string, data unsafe.Pointer) (result string)
 
 func CallTranslateFunc(fn TranslateFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	str := gi.GoString(*(*unsafe.Pointer)(args[0]))
+	data := *(*unsafe.Pointer)(args[1])
+	fn(str, data)
 }
 
 // Deprecated
@@ -15247,7 +15477,13 @@ func TraverseFlagsGetType() gi.GType {
 type TraverseFunc func(key unsafe.Pointer, value unsafe.Pointer, data unsafe.Pointer) (result bool)
 
 func CallTraverseFunc(fn TraverseFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	key := *(*unsafe.Pointer)(args[0])
+	value := *(*unsafe.Pointer)(args[1])
+	data := *(*unsafe.Pointer)(args[2])
+	fn(key, value, data)
 }
 
 // Enum TraverseType
@@ -15724,7 +15960,13 @@ func UnicodeTypeGetType() gi.GType {
 type UnixFDSourceFunc func(fd int32, condition IOConditionFlags, user_data unsafe.Pointer) (result bool)
 
 func CallUnixFDSourceFunc(fn UnixFDSourceFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	fd := *(*int32)(args[0])
+	condition := *(*IOConditionFlags)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(fd, condition, user_data)
 }
 
 // Enum UserDirectory
@@ -16000,6 +16242,7 @@ func NewVariantFromData(type1 VariantType, data gi.Uint8Array, size uint64, trus
 	args := []gi.Argument{arg_type1, arg_data, arg_size, arg_trusted, arg_notify, arg_user_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -18361,7 +18604,10 @@ func VariantTypeStringScan1(string string, limit string) (result bool, endptr st
 type VoidFunc func()
 
 func CallVoidFunc(fn VoidFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	fn()
 }
 
 // g_access
@@ -18982,6 +19228,7 @@ func Atexit(func1 VoidFunc) {
 	arg_func1 := gi.NewPointerArgument(funcPtr)
 	args := []gi.Argument{arg_func1}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_atomic_int_add
@@ -19495,6 +19742,7 @@ func AtomicRcBoxReleaseFull(mem_block unsafe.Pointer, clear_func DestroyNotify) 
 	arg_clear_func := gi.NewPointerArgument(funcPtr)
 	args := []gi.Argument{arg_mem_block, arg_clear_func}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_atomic_ref_count_compare
@@ -20147,6 +20395,8 @@ func ChildWatchAdd(priority int32, pid int32, function ChildWatchFunc, data unsa
 	args := []gi.Argument{arg_priority, arg_pid, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -20512,6 +20762,7 @@ func DatalistForeach(datalist Data, func1 DataForeachFunc, user_data unsafe.Poin
 	args := []gi.Argument{arg_datalist, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // g_datalist_get_data
@@ -20657,6 +20908,7 @@ func DatasetForeach(dataset_location unsafe.Pointer, func1 DataForeachFunc, user
 	args := []gi.Argument{arg_dataset_location, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // g_dataset_id_get_data
@@ -23007,6 +23259,8 @@ func IoAddWatch(channel IOChannel, priority int32, condition IOConditionFlags, f
 	args := []gi.Argument{arg_channel, arg_priority, arg_condition, arg_func1, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -23306,6 +23560,8 @@ func LogSetHandler(log_domain string, log_levels LogLevelFlags, log_func LogFunc
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_log_domain)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -23339,6 +23595,8 @@ func LogSetWriterFunc(func1 LogWriterFunc, user_data unsafe.Pointer, user_data_f
 	arg_user_data_free := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_func1, arg_user_data, arg_user_data_free}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // g_log_structured_array
@@ -24588,6 +24846,7 @@ func RcBoxReleaseFull(mem_block unsafe.Pointer, clear_func DestroyNotify) {
 	arg_clear_func := gi.NewPointerArgument(funcPtr)
 	args := []gi.Argument{arg_mem_block, arg_clear_func}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_realloc
@@ -25708,6 +25967,7 @@ func SpawnAsync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, 
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[1].Pointer())
 	child_pid = outArgs[0].Int32()
 	result = ret.Bool()
@@ -25765,6 +26025,7 @@ func SpawnAsyncWithFds(working_directory string, argv gi.CStrArray, envp gi.CStr
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[1].Pointer())
 	child_pid = outArgs[0].Int32()
 	result = ret.Bool()
@@ -25822,6 +26083,7 @@ func SpawnAsyncWithPipes(working_directory string, argv gi.CStrArray, envp gi.CS
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[4].Pointer())
 	child_pid = outArgs[0].Int32()
 	standard_input = outArgs[1].Int32()
@@ -26008,6 +26270,7 @@ func SpawnSync(working_directory string, argv gi.CStrArray, envp gi.CStrArray, f
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[3].Pointer())
 	standard_output.P = outArgs[0].Pointer()
 	standard_error.P = outArgs[1].Pointer()
@@ -27076,6 +27339,7 @@ func TestAddDataFunc(testpath string, test_data unsafe.Pointer, test_func TestDa
 	args := []gi.Argument{arg_testpath, arg_test_data, arg_test_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
+	callableInfo.Unref()
 }
 
 // g_test_add_data_func_full
@@ -27112,6 +27376,8 @@ func TestAddDataFuncFull(testpath string, test_data unsafe.Pointer, test_func Te
 	args := []gi.Argument{arg_testpath, arg_test_data, arg_test_func, arg_data_free_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // g_test_add_func
@@ -27137,6 +27403,7 @@ func TestAddFunc(testpath string, test_func TestFunc) {
 	args := []gi.Argument{arg_testpath, arg_test_func}
 	iv.Call(args, nil, nil)
 	gi.Free(c_testpath)
+	callableInfo.Unref()
 }
 
 // g_test_assert_expected_messages_internal
@@ -27333,6 +27600,7 @@ func TestQueueDestroy(destroy_func DestroyNotify, destroy_data unsafe.Pointer) {
 	arg_destroy_data := gi.NewPointerArgument(destroy_data)
 	args := []gi.Argument{arg_destroy_func, arg_destroy_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_test_queue_free
@@ -28981,6 +29249,8 @@ func UnixFdAddFull(priority int32, fd int32, condition IOConditionFlags, functio
 	args := []gi.Argument{arg_priority, arg_fd, arg_condition, arg_function, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -29096,6 +29366,8 @@ func UnixSignalAdd(priority int32, signum int32, handler SourceFunc, user_data u
 	args := []gi.Argument{arg_priority, arg_signum, arg_handler, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }

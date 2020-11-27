@@ -2697,6 +2697,9 @@ func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, pro
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_progress_callback_notify, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
+	callableInfo2.Unref()
 }
 
 // gtk_source_file_loader_load_finish
@@ -3039,6 +3042,9 @@ func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, prog
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_progress_callback_notify, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
+	callableInfo2.Unref()
 }
 
 // gtk_source_file_saver_save_finish
@@ -6200,6 +6206,7 @@ func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellab
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_source_search_context_backward_finish
@@ -6303,6 +6310,7 @@ func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellabl
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gtk_source_search_context_forward_finish

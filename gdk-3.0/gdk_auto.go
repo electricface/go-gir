@@ -4023,6 +4023,8 @@ func EventHandlerSet1(func1 EventFunc, data unsafe.Pointer, notify g.DestroyNoti
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gdk_event_peek
@@ -4143,7 +4145,12 @@ func EventFocusGetType() gi.GType {
 type EventFunc func(event Event, data unsafe.Pointer)
 
 func CallEventFunc(fn EventFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	event := Event{P: *(*unsafe.Pointer)(args[0])}
+	data := *(*unsafe.Pointer)(args[1])
+	fn(event, data)
 }
 
 // Struct EventGrabBroken
@@ -4464,7 +4471,13 @@ func EventWindowStateGetType() gi.GType {
 type FilterFunc func(xevent unsafe.Pointer, event Event, data unsafe.Pointer)
 
 func CallFilterFunc(fn FilterFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	xevent := *(*unsafe.Pointer)(args[0])
+	event := Event{P: *(*unsafe.Pointer)(args[1])}
+	data := *(*unsafe.Pointer)(args[2])
+	fn(xevent, event, data)
 }
 
 // Enum FilterReturn
@@ -7066,6 +7079,7 @@ func (v Seat) Grab(window IWindow, capabilities SeatCapabilitiesFlags, owner_eve
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = GrabStatusEnum(ret.Int())
 	return
 }
@@ -7104,7 +7118,13 @@ func SeatCapabilitiesGetType() gi.GType {
 type SeatGrabPrepareFunc func(seat Seat, window Window, user_data unsafe.Pointer)
 
 func CallSeatGrabPrepareFunc(fn SeatGrabPrepareFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	seat := WrapSeat(*(*unsafe.Pointer)(args[0]))
+	window := WrapWindow(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(seat, window, user_data)
 }
 
 // Enum SettingAction
@@ -9331,6 +9351,7 @@ func (v Window) InvalidateMaybeRecurse(region cairo.Region, child_func WindowChi
 	args := []gi.Argument{arg_v, arg_region, arg_child_func, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gdk_window_invalidate_rect
@@ -10677,7 +10698,12 @@ func WindowAttributesTypeGetType() gi.GType {
 type WindowChildFunc func(window Window, user_data unsafe.Pointer) (result bool)
 
 func CallWindowChildFunc(fn WindowChildFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	window := WrapWindow(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(window, user_data)
 }
 
 // ignore GType struct WindowClass
@@ -10724,7 +10750,12 @@ func WindowHintsGetType() gi.GType {
 type WindowInvalidateHandlerFunc func(window Window, region cairo.Region)
 
 func CallWindowInvalidateHandlerFunc(fn WindowInvalidateHandlerFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	window := WrapWindow(*(*unsafe.Pointer)(args[0]))
+	region := cairo.Region{P: *(*unsafe.Pointer)(args[1])}
+	fn(window, region)
 }
 
 // Struct WindowRedirect
@@ -11701,6 +11732,8 @@ func EventHandlerSet(func1 EventFunc, data unsafe.Pointer, notify g.DestroyNotif
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_func1, arg_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gdk_event_peek
@@ -13202,6 +13235,8 @@ func ThreadsAddIdle(priority int32, function g.SourceFunc, data unsafe.Pointer, 
 	args := []gi.Argument{arg_priority, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -13244,6 +13279,8 @@ func ThreadsAddTimeout(priority int32, interval uint32, function g.SourceFunc, d
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -13286,6 +13323,8 @@ func ThreadsAddTimeoutSeconds(priority int32, interval uint32, function g.Source
 	args := []gi.Argument{arg_priority, arg_interval, arg_function, arg_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }

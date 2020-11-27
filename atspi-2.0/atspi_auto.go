@@ -1686,6 +1686,8 @@ func NewDeviceListener(callback DeviceListenerCB, user_data unsafe.Pointer, call
 	args := []gi.Argument{arg_callback, arg_user_data, arg_callback_destroyed}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -1720,6 +1722,8 @@ func (v DeviceListener) AddCallback(callback DeviceListenerCB, callback_destroye
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_callback, arg_callback_destroyed, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // atspi_device_listener_remove_callback
@@ -1741,12 +1745,18 @@ func (v DeviceListener) RemoveCallback(callback DeviceListenerCB) {
 	args := []gi.Argument{arg_v, arg_callback}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 type DeviceListenerCB func(stroke DeviceEvent, user_data unsafe.Pointer) (result bool)
 
 func CallDeviceListenerCB(fn DeviceListenerCB, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	stroke := DeviceEvent{P: *(*unsafe.Pointer)(args[0])}
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(stroke, user_data)
 }
 
 // ignore GType struct DeviceListenerClass
@@ -1754,7 +1764,11 @@ func CallDeviceListenerCB(fn DeviceListenerCB, result unsafe.Pointer, args []uns
 type DeviceListenerSimpleCB func(stroke DeviceEvent) (result bool)
 
 func CallDeviceListenerSimpleCB(fn DeviceListenerSimpleCB, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	stroke := DeviceEvent{P: *(*unsafe.Pointer)(args[0])}
+	fn(stroke)
 }
 
 // Interface Document
@@ -2132,6 +2146,8 @@ func NewEventListener(callback EventListenerCB, user_data unsafe.Pointer, callba
 	args := []gi.Argument{arg_callback, arg_user_data, arg_callback_destroyed}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -2165,6 +2181,7 @@ func EventListenerDeregisterFromCallback1(callback EventListenerCB, user_data un
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	gi.Free(c_event_type)
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
@@ -2208,6 +2225,8 @@ func EventListenerRegisterFromCallback1(callback EventListenerCB, user_data unsa
 	args := []gi.Argument{arg_callback, arg_user_data, arg_callback_destroyed, arg_event_type, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	gi.Free(c_event_type)
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
@@ -2254,6 +2273,8 @@ func EventListenerRegisterFromCallbackFull1(callback EventListenerCB, user_data 
 	args := []gi.Argument{arg_callback, arg_user_data, arg_callback_destroyed, arg_event_type, arg_properties, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	gi.Free(c_event_type)
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
@@ -2341,7 +2362,12 @@ func (v EventListener) RegisterFull(event_type string, properties int /*TODO_TYP
 type EventListenerCB func(event Event, user_data unsafe.Pointer)
 
 func CallEventListenerCB(fn EventListenerCB, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	event := Event{P: *(*unsafe.Pointer)(args[0])}
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(event, user_data)
 }
 
 // ignore GType struct EventListenerClass
@@ -2361,7 +2387,11 @@ func EventListenerModeGetType() gi.GType {
 type EventListenerSimpleCB func(event Event)
 
 func CallEventListenerSimpleCB(fn EventListenerSimpleCB, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	event := Event{P: *(*unsafe.Pointer)(args[0])}
+	fn(event)
 }
 
 // Enum EventType

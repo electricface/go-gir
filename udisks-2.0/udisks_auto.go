@@ -133,6 +133,7 @@ func (v *BlockIfc) CallAddConfigurationItem(arg_item g.Variant, arg_options g.Va
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_item, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_block_call_add_configuration_item_finish
@@ -232,6 +233,7 @@ func (v *BlockIfc) CallFormat(arg_type string, arg_options g.Variant, cancellabl
 	args := []gi.Argument{arg_v, arg_arg_type, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
+	callableInfo.Unref()
 }
 
 // udisks_block_call_format_finish
@@ -328,6 +330,7 @@ func (v *BlockIfc) CallGetSecretConfiguration(arg_options g.Variant, cancellable
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_block_call_get_secret_configuration_finish
@@ -439,6 +442,7 @@ func (v *BlockIfc) CallOpenDevice(arg_mode string, arg_options g.Variant, fd_lis
 	args := []gi.Argument{arg_v, arg_arg_mode, arg_arg_options, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_mode)
+	callableInfo.Unref()
 }
 
 // udisks_block_call_open_device_finish
@@ -565,6 +569,7 @@ func (v *BlockIfc) CallOpenForBackup(arg_options g.Variant, fd_list g.IUnixFDLis
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_block_call_open_for_backup_finish
@@ -686,6 +691,7 @@ func (v *BlockIfc) CallOpenForBenchmark(arg_options g.Variant, fd_list g.IUnixFD
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_block_call_open_for_benchmark_finish
@@ -807,6 +813,7 @@ func (v *BlockIfc) CallOpenForRestore(arg_options g.Variant, fd_list g.IUnixFDLi
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_block_call_open_for_restore_finish
@@ -924,6 +931,7 @@ func (v *BlockIfc) CallRemoveConfigurationItem(arg_item g.Variant, arg_options g
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_item, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_block_call_remove_configuration_item_finish
@@ -1018,6 +1026,7 @@ func (v *BlockIfc) CallRescan(arg_options g.Variant, cancellable g.ICancellable,
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_block_call_rescan_finish
@@ -1115,6 +1124,7 @@ func (v *BlockIfc) CallUpdateConfigurationItem(arg_old_item g.Variant, arg_new_i
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_old_item, arg_arg_new_item, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_block_call_update_configuration_item_finish
@@ -1630,6 +1640,7 @@ func BlockProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name s
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_block_proxy_new_for_bus
@@ -1676,6 +1687,7 @@ func BlockProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name s
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct BlockProxyClass
@@ -1856,6 +1868,7 @@ func ClientNew1(cancellable g.ICancellable, callback g.AsyncReadyCallback, user_
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_client_get_all_blocks_for_mdraid
@@ -2790,6 +2803,7 @@ func (v *DriveIfc) CallEject(arg_options g.Variant, cancellable g.ICancellable, 
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_call_eject_finish
@@ -2881,6 +2895,7 @@ func (v *DriveIfc) CallPowerOff(arg_options g.Variant, cancellable g.ICancellabl
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_call_power_off_finish
@@ -2975,6 +2990,7 @@ func (v *DriveIfc) CallSetConfiguration(arg_value g.Variant, arg_options g.Varia
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_value, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_call_set_configuration_finish
@@ -3182,6 +3198,7 @@ func (v *DriveAtaIfc) CallPmGetState(arg_options g.Variant, cancellable g.ICance
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_ata_call_pm_get_state_finish
@@ -3281,6 +3298,7 @@ func (v *DriveAtaIfc) CallPmStandby(arg_options g.Variant, cancellable g.ICancel
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_ata_call_pm_standby_finish
@@ -3372,6 +3390,7 @@ func (v *DriveAtaIfc) CallPmWakeup(arg_options g.Variant, cancellable g.ICancell
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_ata_call_pm_wakeup_finish
@@ -3463,6 +3482,7 @@ func (v *DriveAtaIfc) CallSecurityEraseUnit(arg_options g.Variant, cancellable g
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_ata_call_security_erase_unit_finish
@@ -3554,6 +3574,7 @@ func (v *DriveAtaIfc) CallSmartGetAttributes(arg_options g.Variant, cancellable 
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_ata_call_smart_get_attributes_finish
@@ -3653,6 +3674,7 @@ func (v *DriveAtaIfc) CallSmartSelftestAbort(arg_options g.Variant, cancellable 
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_ata_call_smart_selftest_abort_finish
@@ -3749,6 +3771,7 @@ func (v *DriveAtaIfc) CallSmartSelftestStart(arg_type string, arg_options g.Vari
 	args := []gi.Argument{arg_v, arg_arg_type, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
+	callableInfo.Unref()
 }
 
 // udisks_drive_ata_call_smart_selftest_start_finish
@@ -3848,6 +3871,7 @@ func (v *DriveAtaIfc) CallSmartSetEnabled(arg_value bool, arg_options g.Variant,
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_value, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_ata_call_smart_set_enabled_finish
@@ -3942,6 +3966,7 @@ func (v *DriveAtaIfc) CallSmartUpdate(arg_options g.Variant, cancellable g.ICanc
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_drive_ata_call_smart_update_finish
@@ -4394,6 +4419,7 @@ func DriveAtaProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, nam
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_drive_ata_proxy_new_for_bus
@@ -4440,6 +4466,7 @@ func DriveAtaProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, nam
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct DriveAtaProxyClass
@@ -4706,6 +4733,7 @@ func DriveProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name s
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_drive_proxy_new_for_bus
@@ -4752,6 +4780,7 @@ func DriveProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name s
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct DriveProxyClass
@@ -4906,6 +4935,7 @@ func (v *EncryptedIfc) CallChangePassphrase(arg_passphrase string, arg_new_passp
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_passphrase)
 	gi.Free(c_arg_new_passphrase)
+	callableInfo.Unref()
 }
 
 // udisks_encrypted_call_change_passphrase_finish
@@ -5007,6 +5037,7 @@ func (v *EncryptedIfc) CallLock(arg_options g.Variant, cancellable g.ICancellabl
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_encrypted_call_lock_finish
@@ -5101,6 +5132,7 @@ func (v *EncryptedIfc) CallResize(arg_size uint64, arg_options g.Variant, cancel
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_size, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_encrypted_call_resize_finish
@@ -5200,6 +5232,7 @@ func (v *EncryptedIfc) CallUnlock(arg_passphrase string, arg_options g.Variant, 
 	args := []gi.Argument{arg_v, arg_arg_passphrase, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_passphrase)
+	callableInfo.Unref()
 }
 
 // udisks_encrypted_call_unlock_finish
@@ -5564,6 +5597,7 @@ func EncryptedProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_encrypted_proxy_new_for_bus
@@ -5610,6 +5644,7 @@ func EncryptedProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, na
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct EncryptedProxyClass
@@ -5792,6 +5827,7 @@ func (v *FilesystemIfc) CallCheck(arg_options g.Variant, cancellable g.ICancella
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_filesystem_call_check_finish
@@ -5891,6 +5927,7 @@ func (v *FilesystemIfc) CallMount(arg_options g.Variant, cancellable g.ICancella
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_filesystem_call_mount_finish
@@ -5990,6 +6027,7 @@ func (v *FilesystemIfc) CallRepair(arg_options g.Variant, cancellable g.ICancell
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_filesystem_call_repair_finish
@@ -6092,6 +6130,7 @@ func (v *FilesystemIfc) CallResize(arg_size uint64, arg_options g.Variant, cance
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_size, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_filesystem_call_resize_finish
@@ -6191,6 +6230,7 @@ func (v *FilesystemIfc) CallSetLabel(arg_label string, arg_options g.Variant, ca
 	args := []gi.Argument{arg_v, arg_arg_label, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_label)
+	callableInfo.Unref()
 }
 
 // udisks_filesystem_call_set_label_finish
@@ -6287,6 +6327,7 @@ func (v *FilesystemIfc) CallTakeOwnership(arg_options g.Variant, cancellable g.I
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_filesystem_call_take_ownership_finish
@@ -6378,6 +6419,7 @@ func (v *FilesystemIfc) CallUnmount(arg_options g.Variant, cancellable g.ICancel
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_filesystem_call_unmount_finish
@@ -6795,6 +6837,7 @@ func FilesystemProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, n
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_filesystem_proxy_new_for_bus
@@ -6841,6 +6884,7 @@ func FilesystemProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, n
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct FilesystemProxyClass
@@ -6985,6 +7029,7 @@ func (v *JobIfc) CallCancel(arg_options g.Variant, cancellable g.ICancellable, c
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_job_call_cancel_finish
@@ -7292,6 +7337,7 @@ func JobProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name str
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_job_proxy_new_for_bus
@@ -7338,6 +7384,7 @@ func JobProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name str
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct JobProxyClass
@@ -7482,6 +7529,7 @@ func (v *LoopIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable, 
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_loop_call_delete_finish
@@ -7576,6 +7624,7 @@ func (v *LoopIfc) CallSetAutoclear(arg_value bool, arg_options g.Variant, cancel
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_value, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_loop_call_set_autoclear_finish
@@ -7885,6 +7934,7 @@ func LoopProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name st
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_loop_proxy_new_for_bus
@@ -7931,6 +7981,7 @@ func LoopProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name st
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct LoopProxyClass
@@ -8080,6 +8131,7 @@ func (v *MDRaidIfc) CallAddDevice(arg_device string, arg_options g.Variant, canc
 	args := []gi.Argument{arg_v, arg_arg_device, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_device)
+	callableInfo.Unref()
 }
 
 // udisks_mdraid_call_add_device_finish
@@ -8176,6 +8228,7 @@ func (v *MDRaidIfc) CallDelete(arg_options g.Variant, cancellable g.ICancellable
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_mdraid_call_delete_finish
@@ -8272,6 +8325,7 @@ func (v *MDRaidIfc) CallRemoveDevice(arg_device string, arg_options g.Variant, c
 	args := []gi.Argument{arg_v, arg_arg_device, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_device)
+	callableInfo.Unref()
 }
 
 // udisks_mdraid_call_remove_device_finish
@@ -8373,6 +8427,7 @@ func (v *MDRaidIfc) CallRequestSyncAction(arg_sync_action string, arg_options g.
 	args := []gi.Argument{arg_v, arg_arg_sync_action, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_sync_action)
+	callableInfo.Unref()
 }
 
 // udisks_mdraid_call_request_sync_action_finish
@@ -8474,6 +8529,7 @@ func (v *MDRaidIfc) CallSetBitmapLocation(arg_value string, arg_options g.Varian
 	args := []gi.Argument{arg_v, arg_arg_value, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_value)
+	callableInfo.Unref()
 }
 
 // udisks_mdraid_call_set_bitmap_location_finish
@@ -8570,6 +8626,7 @@ func (v *MDRaidIfc) CallStart(arg_options g.Variant, cancellable g.ICancellable,
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_mdraid_call_start_finish
@@ -8661,6 +8718,7 @@ func (v *MDRaidIfc) CallStop(arg_options g.Variant, cancellable g.ICancellable, 
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_mdraid_call_stop_finish
@@ -9067,6 +9125,7 @@ func MDRaidProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name 
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_mdraid_proxy_new_for_bus
@@ -9113,6 +9172,7 @@ func MDRaidProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name 
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct MDRaidProxyClass
@@ -9259,6 +9319,7 @@ func (v *ManagerIfc) CallCanCheck(arg_type string, cancellable g.ICancellable, c
 	args := []gi.Argument{arg_v, arg_arg_type, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
+	callableInfo.Unref()
 }
 
 // udisks_manager_call_can_check_finish
@@ -9362,6 +9423,7 @@ func (v *ManagerIfc) CallCanFormat(arg_type string, cancellable g.ICancellable, 
 	args := []gi.Argument{arg_v, arg_arg_type, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
+	callableInfo.Unref()
 }
 
 // udisks_manager_call_can_format_finish
@@ -9465,6 +9527,7 @@ func (v *ManagerIfc) CallCanRepair(arg_type string, cancellable g.ICancellable, 
 	args := []gi.Argument{arg_v, arg_arg_type, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
+	callableInfo.Unref()
 }
 
 // udisks_manager_call_can_repair_finish
@@ -9568,6 +9631,7 @@ func (v *ManagerIfc) CallCanResize(arg_type string, cancellable g.ICancellable, 
 	args := []gi.Argument{arg_v, arg_arg_type, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
+	callableInfo.Unref()
 }
 
 // udisks_manager_call_can_resize_finish
@@ -9669,6 +9733,7 @@ func (v *ManagerIfc) CallEnableModules(arg_enable bool, cancellable g.ICancellab
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_enable, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_manager_call_enable_modules_finish
@@ -9760,6 +9825,7 @@ func (v *ManagerIfc) CallGetBlockDevices(arg_options g.Variant, cancellable g.IC
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_manager_call_get_block_devices_finish
@@ -9869,6 +9935,7 @@ func (v *ManagerIfc) CallLoopSetup(arg_fd g.Variant, arg_options g.Variant, fd_l
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_fd, arg_arg_options, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_manager_call_loop_setup_finish
@@ -10004,6 +10071,7 @@ func (v *ManagerIfc) CallMdraidCreate(arg_blocks string, arg_level string, arg_n
 	gi.Free(c_arg_blocks)
 	gi.Free(c_arg_level)
 	gi.Free(c_arg_name)
+	callableInfo.Unref()
 }
 
 // udisks_manager_call_mdraid_create_finish
@@ -10124,6 +10192,7 @@ func (v *ManagerIfc) CallResolveDevice(arg_devspec g.Variant, arg_options g.Vari
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_devspec, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_manager_call_resolve_device_finish
@@ -10620,6 +10689,7 @@ func ManagerProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, name
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_manager_proxy_new_for_bus
@@ -10666,6 +10736,7 @@ func ManagerProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct ManagerProxyClass
@@ -11392,6 +11463,7 @@ func ObjectManagerClientNew1(connection g.IDBusConnection, flags g.DBusObjectMan
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_object_manager_client_new_for_bus
@@ -11438,6 +11510,7 @@ func ObjectManagerClientNewForBus1(bus_type g.BusTypeEnum, flags g.DBusObjectMan
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct ObjectManagerClientClass
@@ -11886,6 +11959,7 @@ func (v *PartitionIfc) CallDelete(arg_options g.Variant, cancellable g.ICancella
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_partition_call_delete_finish
@@ -11980,6 +12054,7 @@ func (v *PartitionIfc) CallResize(arg_size uint64, arg_options g.Variant, cancel
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_size, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_partition_call_resize_finish
@@ -12077,6 +12152,7 @@ func (v *PartitionIfc) CallSetFlags(arg_flags uint64, arg_options g.Variant, can
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_flags, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_partition_call_set_flags_finish
@@ -12176,6 +12252,7 @@ func (v *PartitionIfc) CallSetName(arg_name string, arg_options g.Variant, cance
 	args := []gi.Argument{arg_v, arg_arg_name, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_name)
+	callableInfo.Unref()
 }
 
 // udisks_partition_call_set_name_finish
@@ -12277,6 +12354,7 @@ func (v *PartitionIfc) CallSetType(arg_type string, arg_options g.Variant, cance
 	args := []gi.Argument{arg_v, arg_arg_type, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
+	callableInfo.Unref()
 }
 
 // udisks_partition_call_set_type_finish
@@ -12648,6 +12726,7 @@ func PartitionProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_partition_proxy_new_for_bus
@@ -12694,6 +12773,7 @@ func PartitionProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, na
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct PartitionProxyClass
@@ -12854,6 +12934,7 @@ func (v *PartitionTableIfc) CallCreatePartition(arg_offset uint64, arg_size uint
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_type)
 	gi.Free(c_arg_name)
+	callableInfo.Unref()
 }
 
 // udisks_partition_table_call_create_partition_and_format
@@ -12912,6 +12993,7 @@ func (v *PartitionTableIfc) CallCreatePartitionAndFormat(arg_offset uint64, arg_
 	gi.Free(c_arg_type)
 	gi.Free(c_arg_name)
 	gi.Free(c_arg_format_type)
+	callableInfo.Unref()
 }
 
 // udisks_partition_table_call_create_partition_and_format_finish
@@ -13341,6 +13423,7 @@ func PartitionTableProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlag
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_partition_table_proxy_new_for_bus
@@ -13387,6 +13470,7 @@ func PartitionTableProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlag
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct PartitionTableProxyClass
@@ -13578,6 +13662,7 @@ func (v *SwapspaceIfc) CallSetLabel(arg_label string, arg_options g.Variant, can
 	args := []gi.Argument{arg_v, arg_arg_label, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_arg_label)
+	callableInfo.Unref()
 }
 
 // udisks_swapspace_call_set_label_finish
@@ -13674,6 +13759,7 @@ func (v *SwapspaceIfc) CallStart(arg_options g.Variant, cancellable g.ICancellab
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_swapspace_call_start_finish
@@ -13765,6 +13851,7 @@ func (v *SwapspaceIfc) CallStop(arg_options g.Variant, cancellable g.ICancellabl
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_arg_options, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // udisks_swapspace_call_stop_finish
@@ -14091,6 +14178,7 @@ func SwapspaceProxyNew1(connection g.IDBusConnection, flags g.DBusProxyFlags, na
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // udisks_swapspace_proxy_new_for_bus
@@ -14137,6 +14225,7 @@ func SwapspaceProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, na
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 }
 
 // ignore GType struct SwapspaceProxyClass

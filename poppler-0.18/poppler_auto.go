@@ -1763,6 +1763,7 @@ func (v Attachment) SaveToCallback(save_func AttachmentSaveFunc, user_data unsaf
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
 	return
@@ -1773,7 +1774,13 @@ func (v Attachment) SaveToCallback(save_func AttachmentSaveFunc, user_data unsaf
 type AttachmentSaveFunc func(buf gi.Uint8Array, count uint64, data unsafe.Pointer) (result bool)
 
 func CallAttachmentSaveFunc(fn AttachmentSaveFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	buf := gi.Uint8Array{P: *(*unsafe.Pointer)(args[0])}
+	count := *(*uint64)(args[1])
+	data := *(*unsafe.Pointer)(args[2])
+	fn(buf, count, data)
 }
 
 // Enum Backend
@@ -4454,6 +4461,7 @@ func (v Media) SaveToCallback(save_func MediaSaveFunc, user_data unsafe.Pointer)
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
 	return
@@ -4462,7 +4470,13 @@ func (v Media) SaveToCallback(save_func MediaSaveFunc, user_data unsafe.Pointer)
 type MediaSaveFunc func(buf gi.Uint8Array, count uint64, data unsafe.Pointer) (result bool)
 
 func CallMediaSaveFunc(fn MediaSaveFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	buf := gi.Uint8Array{P: *(*unsafe.Pointer)(args[0])}
+	count := *(*uint64)(args[1])
+	data := *(*unsafe.Pointer)(args[2])
+	fn(buf, count, data)
 }
 
 // Object Movie

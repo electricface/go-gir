@@ -47,13 +47,21 @@ func init() {
 type BaseFinalizeFunc func(g_class TypeClass)
 
 func CallBaseFinalizeFunc(fn BaseFinalizeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	g_class := TypeClass{P: *(*unsafe.Pointer)(args[0])}
+	fn(g_class)
 }
 
 type BaseInitFunc func(g_class TypeClass)
 
 func CallBaseInitFunc(fn BaseInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	g_class := TypeClass{P: *(*unsafe.Pointer)(args[0])}
+	fn(g_class)
 }
 
 // Object Binding
@@ -192,19 +200,34 @@ func BindingFlagsGetType() gi.GType {
 type BindingTransformFunc func(binding Binding, from_value Value, to_value Value, user_data unsafe.Pointer) (result bool)
 
 func CallBindingTransformFunc(fn BindingTransformFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	binding := WrapBinding(*(*unsafe.Pointer)(args[0]))
+	from_value := Value{P: *(*unsafe.Pointer)(args[1])}
+	to_value := Value{P: *(*unsafe.Pointer)(args[2])}
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(binding, from_value, to_value, user_data)
 }
 
 type BoxedCopyFunc func(boxed unsafe.Pointer) (result unsafe.Pointer)
 
 func CallBoxedCopyFunc(fn BoxedCopyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	boxed := *(*unsafe.Pointer)(args[0])
+	fn(boxed)
 }
 
 type BoxedFreeFunc func(boxed unsafe.Pointer)
 
 func CallBoxedFreeFunc(fn BoxedFreeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	boxed := *(*unsafe.Pointer)(args[0])
+	fn(boxed)
 }
 
 // Struct CClosure
@@ -912,19 +935,32 @@ func CClosureMarshalGeneric1(closure Closure, return_gvalue Value, n_param_value
 type Callback func()
 
 func CallCallback(fn Callback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	fn()
 }
 
 type ClassFinalizeFunc func(g_class TypeClass, class_data unsafe.Pointer)
 
 func CallClassFinalizeFunc(fn ClassFinalizeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	g_class := TypeClass{P: *(*unsafe.Pointer)(args[0])}
+	class_data := *(*unsafe.Pointer)(args[1])
+	fn(g_class, class_data)
 }
 
 type ClassInitFunc func(g_class TypeClass, class_data unsafe.Pointer)
 
 func CallClassInitFunc(fn ClassInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	g_class := TypeClass{P: *(*unsafe.Pointer)(args[0])}
+	class_data := *(*unsafe.Pointer)(args[1])
+	fn(g_class, class_data)
 }
 
 // Struct Closure
@@ -1074,13 +1110,27 @@ func (v Closure) Unref() {
 type ClosureMarshal func(closure Closure, return_value Value, n_param_values uint32, param_values unsafe.Pointer, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer)
 
 func CallClosureMarshal(fn ClosureMarshal, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	closure := Closure{P: *(*unsafe.Pointer)(args[0])}
+	return_value := Value{P: *(*unsafe.Pointer)(args[1])}
+	n_param_values := *(*uint32)(args[2])
+	param_values := *(*unsafe.Pointer)(args[3])
+	invocation_hint := *(*unsafe.Pointer)(args[4])
+	marshal_data := *(*unsafe.Pointer)(args[5])
+	fn(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
 }
 
 type ClosureNotify func(data unsafe.Pointer, closure Closure)
 
 func CallClosureNotify(fn ClosureNotify, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	closure := Closure{P: *(*unsafe.Pointer)(args[1])}
+	fn(data, closure)
 }
 
 // Struct ClosureNotifyData
@@ -1176,13 +1226,23 @@ func InitiallyUnownedGetType() gi.GType {
 type InstanceInitFunc func(instance TypeInstance, g_class TypeClass)
 
 func CallInstanceInitFunc(fn InstanceInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	instance := TypeInstance{P: *(*unsafe.Pointer)(args[0])}
+	g_class := TypeClass{P: *(*unsafe.Pointer)(args[1])}
+	fn(instance, g_class)
 }
 
 type InterfaceFinalizeFunc func(g_iface TypeInterface, iface_data unsafe.Pointer)
 
 func CallInterfaceFinalizeFunc(fn InterfaceFinalizeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	g_iface := TypeInterface{P: *(*unsafe.Pointer)(args[0])}
+	iface_data := *(*unsafe.Pointer)(args[1])
+	fn(g_iface, iface_data)
 }
 
 // Struct InterfaceInfo
@@ -1200,7 +1260,12 @@ func InterfaceInfoGetType() gi.GType {
 type InterfaceInitFunc func(g_iface TypeInterface, iface_data unsafe.Pointer)
 
 func CallInterfaceInitFunc(fn InterfaceInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	g_iface := TypeInterface{P: *(*unsafe.Pointer)(args[0])}
+	iface_data := *(*unsafe.Pointer)(args[1])
+	fn(g_iface, iface_data)
 }
 
 // Object Object
@@ -1909,19 +1974,37 @@ func ObjectConstructParamGetType() gi.GType {
 type ObjectFinalizeFunc func(object Object)
 
 func CallObjectFinalizeFunc(fn ObjectFinalizeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	object := WrapObject(*(*unsafe.Pointer)(args[0]))
+	fn(object)
 }
 
 type ObjectGetPropertyFunc func(object Object, property_id uint32, value Value, pspec ParamSpec)
 
 func CallObjectGetPropertyFunc(fn ObjectGetPropertyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	object := WrapObject(*(*unsafe.Pointer)(args[0]))
+	property_id := *(*uint32)(args[1])
+	value := Value{P: *(*unsafe.Pointer)(args[2])}
+	pspec := WrapParamSpec(*(*unsafe.Pointer)(args[3]))
+	fn(object, property_id, value, pspec)
 }
 
 type ObjectSetPropertyFunc func(object Object, property_id uint32, value Value, pspec ParamSpec)
 
 func CallObjectSetPropertyFunc(fn ObjectSetPropertyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	object := WrapObject(*(*unsafe.Pointer)(args[0]))
+	property_id := *(*uint32)(args[1])
+	value := Value{P: *(*unsafe.Pointer)(args[2])}
+	pspec := WrapParamSpec(*(*unsafe.Pointer)(args[3]))
+	fn(object, property_id, value, pspec)
 }
 
 // Flags ParamFlags
@@ -2671,13 +2754,27 @@ func ParameterGetType() gi.GType {
 type SignalAccumulator func(ihint SignalInvocationHint, return_accu Value, handler_return Value, data unsafe.Pointer) (result bool)
 
 func CallSignalAccumulator(fn SignalAccumulator, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	ihint := SignalInvocationHint{P: *(*unsafe.Pointer)(args[0])}
+	return_accu := Value{P: *(*unsafe.Pointer)(args[1])}
+	handler_return := Value{P: *(*unsafe.Pointer)(args[2])}
+	data := *(*unsafe.Pointer)(args[3])
+	fn(ihint, return_accu, handler_return, data)
 }
 
 type SignalEmissionHook func(ihint SignalInvocationHint, n_param_values uint32, param_values unsafe.Pointer, data unsafe.Pointer) (result bool)
 
 func CallSignalEmissionHook(fn SignalEmissionHook, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	ihint := SignalInvocationHint{P: *(*unsafe.Pointer)(args[0])}
+	n_param_values := *(*uint32)(args[1])
+	param_values := *(*unsafe.Pointer)(args[2])
+	data := *(*unsafe.Pointer)(args[3])
+	fn(ihint, n_param_values, param_values, data)
 }
 
 // Flags SignalFlags
@@ -2744,7 +2841,13 @@ func SignalQueryGetType() gi.GType {
 type ToggleNotify func(data unsafe.Pointer, object Object, is_last_ref bool)
 
 func CallToggleNotify(fn ToggleNotify, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	object := WrapObject(*(*unsafe.Pointer)(args[1]))
+	is_last_ref := *(*bool)(args[2])
+	fn(data, object, is_last_ref)
 }
 
 // Union TypeCValue
@@ -2922,7 +3025,12 @@ func TypeClassRef1(type1 gi.GType) (result TypeClass) {
 type TypeClassCacheFunc func(cache_data unsafe.Pointer, g_class TypeClass) (result bool)
 
 func CallTypeClassCacheFunc(fn TypeClassCacheFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	cache_data := *(*unsafe.Pointer)(args[0])
+	g_class := TypeClass{P: *(*unsafe.Pointer)(args[1])}
+	fn(cache_data, g_class)
 }
 
 // Deprecated
@@ -3152,7 +3260,12 @@ func TypeInterfacePrerequisites1(interface_type gi.GType) (result gi.GTypeArray)
 type TypeInterfaceCheckFunc func(check_data unsafe.Pointer, g_iface TypeInterface)
 
 func CallTypeInterfaceCheckFunc(fn TypeInterfaceCheckFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	check_data := *(*unsafe.Pointer)(args[0])
+	g_iface := TypeInterface{P: *(*unsafe.Pointer)(args[1])}
+	fn(check_data, g_iface)
 }
 
 // Object TypeModule
@@ -3418,25 +3531,47 @@ func (v *TypePluginIfc) Use() {
 type TypePluginCompleteInterfaceInfo func(plugin TypePlugin, instance_type gi.GType, interface_type gi.GType, info InterfaceInfo)
 
 func CallTypePluginCompleteInterfaceInfo(fn TypePluginCompleteInterfaceInfo, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	plugin := TypePlugin{P: *(*unsafe.Pointer)(args[0])}
+	instance_type := *(*gi.GType)(args[1])
+	interface_type := *(*gi.GType)(args[2])
+	info := InterfaceInfo{P: *(*unsafe.Pointer)(args[3])}
+	fn(plugin, instance_type, interface_type, info)
 }
 
 type TypePluginCompleteTypeInfo func(plugin TypePlugin, g_type gi.GType, info TypeInfo, value_table TypeValueTable)
 
 func CallTypePluginCompleteTypeInfo(fn TypePluginCompleteTypeInfo, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	plugin := TypePlugin{P: *(*unsafe.Pointer)(args[0])}
+	g_type := *(*gi.GType)(args[1])
+	info := TypeInfo{P: *(*unsafe.Pointer)(args[2])}
+	value_table := TypeValueTable{P: *(*unsafe.Pointer)(args[3])}
+	fn(plugin, g_type, info, value_table)
 }
 
 type TypePluginUnuse func(plugin TypePlugin)
 
 func CallTypePluginUnuse(fn TypePluginUnuse, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	plugin := TypePlugin{P: *(*unsafe.Pointer)(args[0])}
+	fn(plugin)
 }
 
 type TypePluginUse func(plugin TypePlugin)
 
 func CallTypePluginUse(fn TypePluginUse, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	plugin := TypePlugin{P: *(*unsafe.Pointer)(args[0])}
+	fn(plugin)
 }
 
 // Struct TypeQuery
@@ -4701,6 +4836,7 @@ func (v ValueArray) Sort(compare_func CompareDataFunc, user_data unsafe.Pointer)
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -4708,13 +4844,23 @@ func (v ValueArray) Sort(compare_func CompareDataFunc, user_data unsafe.Pointer)
 type ValueTransform func(src_value Value, dest_value Value)
 
 func CallValueTransform(fn ValueTransform, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	src_value := Value{P: *(*unsafe.Pointer)(args[0])}
+	dest_value := Value{P: *(*unsafe.Pointer)(args[1])}
+	fn(src_value, dest_value)
 }
 
 type WeakNotify func(data unsafe.Pointer, where_the_object_was Object)
 
 func CallWeakNotify(fn WeakNotify, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	where_the_object_was := WrapObject(*(*unsafe.Pointer)(args[1]))
+	fn(data, where_the_object_was)
 }
 
 // Struct WeakRef
@@ -6944,6 +7090,8 @@ func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func SignalEmis
 	args := []gi.Argument{arg_signal_id, arg_detail, arg_hook_func, arg_hook_data, arg_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint64()
 	return
 }

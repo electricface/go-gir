@@ -380,6 +380,9 @@ func (v Pty) SpawnAsync(working_directory string, argv gi.CStrArray, envv gi.CSt
 	args := []gi.Argument{arg_v, arg_working_directory, arg_argv, arg_envv, arg_spawn_flags, arg_child_setup, arg_child_setup_data, arg_child_setup_data_destroy, arg_timeout, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_working_directory)
+	callableInfo.Unref()
+	callableInfo1.Unref()
+	callableInfo2.Unref()
 }
 
 // vte_pty_spawn_finish
@@ -590,7 +593,14 @@ func RegexErrorGetType() gi.GType {
 type SelectionFunc func(terminal Terminal, column int64, row int64, data unsafe.Pointer) (result bool)
 
 func CallSelectionFunc(fn SelectionFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	terminal := WrapTerminal(*(*unsafe.Pointer)(args[0]))
+	column := *(*int64)(args[1])
+	row := *(*int64)(args[2])
+	data := *(*unsafe.Pointer)(args[3])
+	fn(terminal, column, row, data)
 }
 
 // Object Terminal
@@ -1384,6 +1394,7 @@ func (v Terminal) GetText(is_selected SelectionFunc, user_data unsafe.Pointer, a
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.String().Take()
 	return
 }
@@ -1434,6 +1445,7 @@ func (v Terminal) GetTextIncludeTrailingSpaces(is_selected SelectionFunc, user_d
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.String().Take()
 	return
 }
@@ -1478,6 +1490,7 @@ func (v Terminal) GetTextRange(start_row int64, start_col int64, end_row int64, 
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.String().Take()
 	return
 }
@@ -2625,6 +2638,7 @@ func (v Terminal) SpawnSync(pty_flags PtyFlags, working_directory string, argv g
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_working_directory)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[1].Pointer())
 	child_pid = outArgs[0].Int32()
 	result = ret.Bool()
@@ -2712,7 +2726,13 @@ func TerminalClassPrivateGetType() gi.GType {
 type TerminalSpawnAsyncCallback func(terminal Terminal, pid int32, user_data unsafe.Pointer) (error error)
 
 func CallTerminalSpawnAsyncCallback(fn TerminalSpawnAsyncCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	terminal := WrapTerminal(*(*unsafe.Pointer)(args[0]))
+	pid := *(*int32)(args[1])
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(terminal, pid, user_data)
 }
 
 // Enum TextBlinkMode

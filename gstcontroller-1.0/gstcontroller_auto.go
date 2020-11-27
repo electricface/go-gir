@@ -255,13 +255,25 @@ func NewDirectControlBindingAbsolute(object gst.IObject, property_name string, c
 type DirectControlBindingConvertGValue func(self DirectControlBinding, src_value float64, dest_value g.Value)
 
 func CallDirectControlBindingConvertGValue(fn DirectControlBindingConvertGValue, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	self := WrapDirectControlBinding(*(*unsafe.Pointer)(args[0]))
+	src_value := *(*float64)(args[1])
+	dest_value := g.Value{P: *(*unsafe.Pointer)(args[2])}
+	fn(self, src_value, dest_value)
 }
 
 type DirectControlBindingConvertValue func(self DirectControlBinding, src_value float64, dest_value unsafe.Pointer)
 
 func CallDirectControlBindingConvertValue(fn DirectControlBindingConvertValue, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	self := WrapDirectControlBinding(*(*unsafe.Pointer)(args[0]))
+	src_value := *(*float64)(args[1])
+	dest_value := *(*unsafe.Pointer)(args[2])
+	fn(self, src_value, dest_value)
 }
 
 // Object InterpolationControlSource

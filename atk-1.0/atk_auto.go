@@ -972,25 +972,41 @@ func (v *EditableTextIfc) SetTextContents(string string) {
 type EventListener func(obj Object)
 
 func CallEventListener(fn EventListener, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	obj := WrapObject(*(*unsafe.Pointer)(args[0]))
+	fn(obj)
 }
 
 type EventListenerInit func()
 
 func CallEventListenerInit(fn EventListenerInit, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	fn()
 }
 
 type FocusHandler func(object Object, focus_in bool)
 
 func CallFocusHandler(fn FocusHandler, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	object := WrapObject(*(*unsafe.Pointer)(args[0]))
+	focus_in := *(*bool)(args[1])
+	fn(object, focus_in)
 }
 
 type Function func(user_data unsafe.Pointer) (result bool)
 
 func CallFunction(fn Function, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	user_data := *(*unsafe.Pointer)(args[0])
+	fn(user_data)
 }
 
 // Object GObjectAccessible
@@ -1540,7 +1556,12 @@ func KeyEventTypeGetType() gi.GType {
 type KeySnoopFunc func(event KeyEventStruct, user_data unsafe.Pointer) (result int32)
 
 func CallKeySnoopFunc(fn KeySnoopFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	event := KeyEventStruct{P: *(*unsafe.Pointer)(args[0])}
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(event, user_data)
 }
 
 // Enum Layer
@@ -2311,7 +2332,12 @@ func (v Plug) GetId() (result string) {
 type PropertyChangeHandler func(obj Object, vals PropertyValues)
 
 func CallPropertyChangeHandler(fn PropertyChangeHandler, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	obj := WrapObject(*(*unsafe.Pointer)(args[0]))
+	vals := PropertyValues{P: *(*unsafe.Pointer)(args[1])}
+	fn(obj, vals)
 }
 
 // Struct PropertyValues

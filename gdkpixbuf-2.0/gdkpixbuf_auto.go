@@ -206,6 +206,7 @@ func NewPixbufFromData(data gi.Uint8Array, colorspace ColorspaceEnum, has_alpha 
 	args := []gi.Argument{arg_data, arg_colorspace, arg_has_alpha, arg_bits_per_sample, arg_width, arg_height, arg_rowstride, arg_destroy_fn, arg_destroy_fn_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -601,6 +602,7 @@ func PixbufGetFileInfoAsync1(filename string, cancellable g.ICancellable, callba
 	args := []gi.Argument{arg_filename, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_filename)
+	callableInfo.Unref()
 }
 
 // gdk_pixbuf_get_file_info_finish
@@ -688,6 +690,7 @@ func PixbufNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICancellable
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gdk_pixbuf_new_from_stream_at_scale_async
@@ -734,6 +737,7 @@ func PixbufNewFromStreamAtScaleAsync1(stream g.IInputStream, width int32, height
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_stream, arg_width, arg_height, arg_preserve_aspect_ratio, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gdk_pixbuf_save_to_stream_finish
@@ -1506,6 +1510,7 @@ func (v Pixbuf) SaveToCallbackv(save_func PixbufSaveFunc, user_data unsafe.Point
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	gi.Free(c_type1)
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
@@ -1604,6 +1609,7 @@ func (v Pixbuf) SaveToStreamvAsync(stream g.IOutputStream, type1 string, option_
 	args := []gi.Argument{arg_v, arg_stream, arg_type1, arg_option_keys, arg_option_values, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_type1)
+	callableInfo.Unref()
 }
 
 // gdk_pixbuf_savev
@@ -1914,6 +1920,7 @@ func PixbufAnimationNewFromStreamAsync1(stream g.IInputStream, cancellable g.ICa
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_stream, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gdk_pixbuf_animation_get_height
@@ -2102,7 +2109,12 @@ func (v PixbufAnimationIter) OnCurrentlyLoadingFrame() (result bool) {
 type PixbufDestroyNotify func(pixels gi.Uint8Array, data unsafe.Pointer)
 
 func CallPixbufDestroyNotify(fn PixbufDestroyNotify, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pixels := gi.Uint8Array{P: *(*unsafe.Pointer)(args[0])}
+	data := *(*unsafe.Pointer)(args[1])
+	fn(pixels, data)
 }
 
 // Enum PixbufError
@@ -2590,7 +2602,15 @@ func PixbufRotationGetType() gi.GType {
 type PixbufSaveFunc func(buf gi.Uint8Array, count uint64, data unsafe.Pointer) (error unsafe.Pointer /*TODO_CB dir:out tag: error, isPtr: true*/, result bool)
 
 func CallPixbufSaveFunc(fn PixbufSaveFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	buf := gi.Uint8Array{P: *(*unsafe.Pointer)(args[0])}
+	count := *(*uint64)(args[1])
+	error := *(*unsafe.Pointer)(args[2])
+	_ = error
+	data := *(*unsafe.Pointer)(args[3])
+	fn(buf, count, data)
 }
 
 // Object PixbufSimpleAnim

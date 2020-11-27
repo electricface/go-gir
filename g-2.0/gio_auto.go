@@ -983,6 +983,7 @@ func AppInfoLaunchDefaultForUriAsync1(uri string, context IAppLaunchContext, can
 	args := []gi.Argument{arg_uri, arg_context, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_uri)
+	callableInfo.Unref()
 }
 
 // g_app_info_launch_default_for_uri_finish
@@ -2795,6 +2796,7 @@ func AsyncInitableNewvAsync1(object_type gi.GType, n_parameters uint32, paramete
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_object_type, arg_n_parameters, arg_parameters, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_async_initable_init_async
@@ -2829,6 +2831,7 @@ func (v *AsyncInitableIfc) InitAsync(io_priority int32, cancellable ICancellable
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_async_initable_init_finish
@@ -2890,7 +2893,13 @@ func (v *AsyncInitableIfc) NewFinish(res IAsyncResult) (result Object, err error
 type AsyncReadyCallback func(source_object Object, res AsyncResult, user_data unsafe.Pointer)
 
 func CallAsyncReadyCallback(fn AsyncReadyCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	source_object := WrapObject(*(*unsafe.Pointer)(args[0]))
+	res := AsyncResult{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(source_object, res, user_data)
 }
 
 // Interface AsyncResult
@@ -3119,6 +3128,7 @@ func (v BufferedInputStream) FillAsync(count int64, io_priority int32, cancellab
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_buffered_input_stream_fill_finish
@@ -3442,25 +3452,50 @@ func BufferedOutputStreamPrivateGetType() gi.GType {
 type BusAcquiredCallback func(connection DBusConnection, name string, user_data unsafe.Pointer)
 
 func CallBusAcquiredCallback(fn BusAcquiredCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	name := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(connection, name, user_data)
 }
 
 type BusNameAcquiredCallback func(connection DBusConnection, name string, user_data unsafe.Pointer)
 
 func CallBusNameAcquiredCallback(fn BusNameAcquiredCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	name := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(connection, name, user_data)
 }
 
 type BusNameAppearedCallback func(connection DBusConnection, name string, name_owner string, user_data unsafe.Pointer)
 
 func CallBusNameAppearedCallback(fn BusNameAppearedCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	name := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	name_owner := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(connection, name, name_owner, user_data)
 }
 
 type BusNameLostCallback func(connection DBusConnection, name string, user_data unsafe.Pointer)
 
 func CallBusNameLostCallback(fn BusNameLostCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	name := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(connection, name, user_data)
 }
 
 // Flags BusNameOwnerFlags
@@ -3481,7 +3516,13 @@ func BusNameOwnerFlagsGetType() gi.GType {
 type BusNameVanishedCallback func(connection DBusConnection, name string, user_data unsafe.Pointer)
 
 func CallBusNameVanishedCallback(fn BusNameVanishedCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	name := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(connection, name, user_data)
 }
 
 // Flags BusNameWatcherFlags
@@ -3662,6 +3703,8 @@ func (v Cancellable) Connect(callback Callback, data unsafe.Pointer, data_destro
 	args := []gi.Argument{arg_v, arg_callback, arg_data, arg_data_destroy_func}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint64()
 	return
 }
@@ -3826,7 +3869,12 @@ func CancellablePrivateGetType() gi.GType {
 type CancellableSourceFunc func(cancellable Cancellable, user_data unsafe.Pointer) (result bool)
 
 func CallCancellableSourceFunc(fn CancellableSourceFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	cancellable := WrapCancellable(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(cancellable, user_data)
 }
 
 // Object CharsetConverter
@@ -4852,6 +4900,7 @@ func DBusConnectionNew1(stream IIOStream, guid string, flags DBusConnectionFlags
 	args := []gi.Argument{arg_stream, arg_guid, arg_flags, arg_observer, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_guid)
+	callableInfo.Unref()
 }
 
 // g_dbus_connection_new_for_address
@@ -4897,6 +4946,7 @@ func DBusConnectionNewForAddress1(address string, flags DBusConnectionFlags, obs
 	args := []gi.Argument{arg_address, arg_flags, arg_observer, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_address)
+	callableInfo.Unref()
 }
 
 // g_dbus_connection_add_filter
@@ -4932,6 +4982,8 @@ func (v DBusConnection) AddFilter(filter_function DBusMessageFilterFunction, use
 	args := []gi.Argument{arg_v, arg_filter_function, arg_user_data, arg_user_data_free_func}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -4997,6 +5049,7 @@ func (v DBusConnection) Call(bus_name string, object_path string, interface_name
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
 	gi.Free(c_method_name)
+	callableInfo.Unref()
 }
 
 // g_dbus_connection_call_finish
@@ -5153,6 +5206,7 @@ func (v DBusConnection) CallWithUnixFdList(bus_name string, object_path string, 
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
 	gi.Free(c_method_name)
+	callableInfo.Unref()
 }
 
 // g_dbus_connection_call_with_unix_fd_list_finish
@@ -5285,6 +5339,7 @@ func (v DBusConnection) Close(cancellable ICancellable, callback AsyncReadyCallb
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_dbus_connection_close_finish
@@ -5477,6 +5532,7 @@ func (v DBusConnection) Flush(cancellable ICancellable, callback AsyncReadyCallb
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_dbus_connection_flush_finish
@@ -5751,6 +5807,7 @@ func (v DBusConnection) RegisterSubtree(object_path string, vtable DBusSubtreeVT
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_object_path)
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Uint32()
 	return
@@ -5852,6 +5909,7 @@ func (v DBusConnection) SendMessageWithReply(message IDBusMessage, flags DBusSen
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_message, arg_flags, arg_timeout_msec, arg_out_serial, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, &outArgs[0])
+	callableInfo.Unref()
 	out_serial = outArgs[0].Uint32()
 	return
 }
@@ -6004,6 +6062,8 @@ func (v DBusConnection) SignalSubscribe(sender string, interface_name string, me
 	gi.Free(c_member)
 	gi.Free(c_object_path)
 	gi.Free(c_arg0)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -6269,7 +6329,16 @@ func (v *DBusInterfaceIfc) SetObject(object IDBusObject) {
 type DBusInterfaceGetPropertyFunc func(connection DBusConnection, sender string, object_path string, interface_name string, property_name string, user_data unsafe.Pointer) (error error, result Variant)
 
 func CallDBusInterfaceGetPropertyFunc(fn DBusInterfaceGetPropertyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	sender := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	object_path := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	interface_name := gi.GoString(*(*unsafe.Pointer)(args[3]))
+	property_name := gi.GoString(*(*unsafe.Pointer)(args[4]))
+	user_data := *(*unsafe.Pointer)(args[6])
+	fn(connection, sender, object_path, interface_name, property_name, user_data)
 }
 
 // ignore GType struct DBusInterfaceIface
@@ -6434,13 +6503,34 @@ func (v DBusInterfaceInfo) Unref() {
 type DBusInterfaceMethodCallFunc func(connection DBusConnection, sender string, object_path string, interface_name string, method_name string, parameters Variant, invocation DBusMethodInvocation, user_data unsafe.Pointer)
 
 func CallDBusInterfaceMethodCallFunc(fn DBusInterfaceMethodCallFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	sender := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	object_path := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	interface_name := gi.GoString(*(*unsafe.Pointer)(args[3]))
+	method_name := gi.GoString(*(*unsafe.Pointer)(args[4]))
+	parameters := Variant{P: *(*unsafe.Pointer)(args[5])}
+	invocation := WrapDBusMethodInvocation(*(*unsafe.Pointer)(args[6]))
+	user_data := *(*unsafe.Pointer)(args[7])
+	fn(connection, sender, object_path, interface_name, method_name, parameters, invocation, user_data)
 }
 
 type DBusInterfaceSetPropertyFunc func(connection DBusConnection, sender string, object_path string, interface_name string, property_name string, value Variant, user_data unsafe.Pointer) (error error, result bool)
 
 func CallDBusInterfaceSetPropertyFunc(fn DBusInterfaceSetPropertyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	sender := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	object_path := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	interface_name := gi.GoString(*(*unsafe.Pointer)(args[3]))
+	property_name := gi.GoString(*(*unsafe.Pointer)(args[4]))
+	value := Variant{P: *(*unsafe.Pointer)(args[5])}
+	user_data := *(*unsafe.Pointer)(args[7])
+	fn(connection, sender, object_path, interface_name, property_name, value, user_data)
 }
 
 // Object DBusInterfaceSkeleton
@@ -7714,7 +7804,14 @@ func DBusMessageByteOrderGetType() gi.GType {
 type DBusMessageFilterFunction func(connection DBusConnection, message DBusMessage, incoming bool, user_data unsafe.Pointer) (result DBusMessage)
 
 func CallDBusMessageFilterFunction(fn DBusMessageFilterFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	message := WrapDBusMessage(*(*unsafe.Pointer)(args[1]))
+	incoming := *(*bool)(args[2])
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(connection, message, incoming, user_data)
 }
 
 // Flags DBusMessageFlags
@@ -8505,6 +8602,8 @@ func NewDBusObjectManagerClientForBusSync(bus_type BusTypeEnum, flags DBusObject
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	err = gi.ToError(outArgs[0].Pointer())
 	result.P = ret.Pointer()
 	return
@@ -8570,6 +8669,8 @@ func NewDBusObjectManagerClientSync(connection IDBusConnection, flags DBusObject
 	iv.Call(args, &ret, &outArgs[0])
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	err = gi.ToError(outArgs[0].Pointer())
 	result.P = ret.Pointer()
 	return
@@ -8642,6 +8743,9 @@ func DBusObjectManagerClientNew1(connection IDBusConnection, flags DBusObjectMan
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
+	callableInfo1.Unref()
+	callableInfo2.Unref()
 }
 
 // g_dbus_object_manager_client_new_for_bus
@@ -8707,6 +8811,9 @@ func DBusObjectManagerClientNewForBus1(bus_type BusTypeEnum, flags DBusObjectMan
 	iv.Call(args, nil, nil)
 	gi.Free(c_name)
 	gi.Free(c_object_path)
+	callableInfo.Unref()
+	callableInfo1.Unref()
+	callableInfo2.Unref()
 }
 
 // g_dbus_object_manager_client_get_connection
@@ -9491,6 +9598,7 @@ func DBusProxyNew1(connection IDBusConnection, flags DBusProxyFlags, info DBusIn
 	gi.Free(c_name)
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
+	callableInfo.Unref()
 }
 
 // g_dbus_proxy_new_for_bus
@@ -9545,6 +9653,7 @@ func DBusProxyNewForBus1(bus_type BusTypeEnum, flags DBusProxyFlags, info DBusIn
 	gi.Free(c_name)
 	gi.Free(c_object_path)
 	gi.Free(c_interface_name)
+	callableInfo.Unref()
 }
 
 // g_dbus_proxy_call
@@ -9590,6 +9699,7 @@ func (v DBusProxy) Call(method_name string, parameters Variant, flags DBusCallFl
 	args := []gi.Argument{arg_v, arg_method_name, arg_parameters, arg_flags, arg_timeout_msec, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_method_name)
+	callableInfo.Unref()
 }
 
 // g_dbus_proxy_call_finish
@@ -9710,6 +9820,7 @@ func (v DBusProxy) CallWithUnixFdList(method_name string, parameters Variant, fl
 	args := []gi.Argument{arg_v, arg_method_name, arg_parameters, arg_flags, arg_timeout_msec, arg_fd_list, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_method_name)
+	callableInfo.Unref()
 }
 
 // g_dbus_proxy_call_with_unix_fd_list_finish
@@ -10066,7 +10177,14 @@ func DBusProxyPrivateGetType() gi.GType {
 type DBusProxyTypeFunc func(manager DBusObjectManagerClient, object_path string, interface_name string, user_data unsafe.Pointer) (result gi.GType)
 
 func CallDBusProxyTypeFunc(fn DBusProxyTypeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	manager := WrapDBusObjectManagerClient(*(*unsafe.Pointer)(args[0]))
+	object_path := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	interface_name := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(manager, object_path, interface_name, user_data)
 }
 
 // Flags DBusSendMessageFlags
@@ -10260,7 +10378,17 @@ func DBusServerFlagsGetType() gi.GType {
 type DBusSignalCallback func(connection DBusConnection, sender_name string, object_path string, interface_name string, signal_name string, parameters Variant, user_data unsafe.Pointer)
 
 func CallDBusSignalCallback(fn DBusSignalCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	sender_name := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	object_path := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	interface_name := gi.GoString(*(*unsafe.Pointer)(args[3]))
+	signal_name := gi.GoString(*(*unsafe.Pointer)(args[4]))
+	parameters := Variant{P: *(*unsafe.Pointer)(args[5])}
+	user_data := *(*unsafe.Pointer)(args[6])
+	fn(connection, sender_name, object_path, interface_name, signal_name, parameters, user_data)
 }
 
 // Flags DBusSignalFlags
@@ -10324,7 +10452,17 @@ func (v DBusSignalInfo) Unref() {
 type DBusSubtreeDispatchFunc func(connection DBusConnection, sender string, object_path string, interface_name string, node string, out_user_data unsafe.Pointer, user_data unsafe.Pointer) (result DBusInterfaceVTable)
 
 func CallDBusSubtreeDispatchFunc(fn DBusSubtreeDispatchFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	sender := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	object_path := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	interface_name := gi.GoString(*(*unsafe.Pointer)(args[3]))
+	node := gi.GoString(*(*unsafe.Pointer)(args[4]))
+	out_user_data := *(*unsafe.Pointer)(args[5])
+	user_data := *(*unsafe.Pointer)(args[6])
+	fn(connection, sender, object_path, interface_name, node, out_user_data, user_data)
 }
 
 // Flags DBusSubtreeFlags
@@ -10343,7 +10481,15 @@ func DBusSubtreeFlagsGetType() gi.GType {
 type DBusSubtreeIntrospectFunc func(connection DBusConnection, sender string, object_path string, node string, user_data unsafe.Pointer) (result DBusInterfaceInfo)
 
 func CallDBusSubtreeIntrospectFunc(fn DBusSubtreeIntrospectFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	connection := WrapDBusConnection(*(*unsafe.Pointer)(args[0]))
+	sender := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	object_path := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	node := gi.GoString(*(*unsafe.Pointer)(args[3]))
+	user_data := *(*unsafe.Pointer)(args[4])
+	fn(connection, sender, object_path, node, user_data)
 }
 
 // Struct DBusSubtreeVTable
@@ -10605,6 +10751,7 @@ func (v DataInputStream) ReadLineAsync(io_priority int32, cancellable ICancellab
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_data_input_stream_read_line_finish
@@ -10859,6 +11006,7 @@ func (v DataInputStream) ReadUntilAsync(stop_chars string, io_priority int32, ca
 	args := []gi.Argument{arg_v, arg_stop_chars, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_stop_chars)
+	callableInfo.Unref()
 }
 
 // Deprecated
@@ -10973,6 +11121,7 @@ func (v DataInputStream) ReadUptoAsync(stop_chars string, stop_chars_len int64, 
 	args := []gi.Argument{arg_v, arg_stop_chars, arg_stop_chars_len, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_stop_chars)
+	callableInfo.Unref()
 }
 
 // g_data_input_stream_read_upto_finish
@@ -11587,7 +11736,13 @@ func (v *DatagramBasedIfc) SendMessages(messages unsafe.Pointer, num_messages ui
 type DatagramBasedSourceFunc func(datagram_based DatagramBased, condition IOConditionFlags, user_data unsafe.Pointer) (result bool)
 
 func CallDatagramBasedSourceFunc(fn DatagramBasedSourceFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	datagram_based := DatagramBased{P: *(*unsafe.Pointer)(args[0])}
+	condition := *(*IOConditionFlags)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(datagram_based, condition, user_data)
 }
 
 // Object DesktopAppInfo
@@ -12074,7 +12229,9 @@ func (v DesktopAppInfo) LaunchUrisAsManager(uris List, launch_context IAppLaunch
 	args := []gi.Argument{arg_v, arg_uris, arg_launch_context, arg_spawn_flags, arg_user_setup, arg_user_setup_data, arg_pid_callback, arg_pid_callback_data, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	callableInfo.Unref()
 	gi.UnregisterFClosure(cId1)
+	callableInfo1.Unref()
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
 	return
@@ -12138,7 +12295,9 @@ func (v DesktopAppInfo) LaunchUrisAsManagerWithFds(uris List, launch_context IAp
 	args := []gi.Argument{arg_v, arg_uris, arg_launch_context, arg_spawn_flags, arg_user_setup, arg_user_setup_data, arg_pid_callback, arg_pid_callback_data, arg_stdin_fd, arg_stdout_fd, arg_stderr_fd, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	callableInfo.Unref()
 	gi.UnregisterFClosure(cId1)
+	callableInfo1.Unref()
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
 	return
@@ -12209,7 +12368,13 @@ func (v *DesktopAppInfoLookupIfc) GetDefaultForUriScheme(uri_scheme string) (res
 type DesktopAppLaunchCallback func(appinfo DesktopAppInfo, pid int32, user_data unsafe.Pointer)
 
 func CallDesktopAppLaunchCallback(fn DesktopAppLaunchCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	appinfo := WrapDesktopAppInfo(*(*unsafe.Pointer)(args[0]))
+	pid := *(*int32)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(appinfo, pid, user_data)
 }
 
 // Interface Drive
@@ -12350,6 +12515,7 @@ func (v *DriveIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, call
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // Deprecated
@@ -12420,6 +12586,7 @@ func (v *DriveIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation I
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_drive_eject_with_operation_finish
@@ -12718,6 +12885,7 @@ func (v *DriveIfc) PollForMedia(cancellable ICancellable, callback AsyncReadyCal
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_drive_poll_for_media_finish
@@ -12786,6 +12954,7 @@ func (v *DriveIfc) Start(flags DriveStartFlags, mount_operation IMountOperation,
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_drive_start_finish
@@ -12854,6 +13023,7 @@ func (v *DriveIfc) Stop(flags MountUnmountFlags, mount_operation IMountOperation
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_drive_stop_finish
@@ -13125,6 +13295,7 @@ func (v *DtlsConnectionIfc) CloseAsync(io_priority int32, cancellable ICancellab
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_dtls_connection_close_finish
@@ -13367,6 +13538,7 @@ func (v *DtlsConnectionIfc) HandshakeAsync(io_priority int32, cancellable ICance
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_dtls_connection_handshake_finish
@@ -13559,6 +13731,7 @@ func (v *DtlsConnectionIfc) ShutdownAsync(shutdown_read bool, shutdown_write boo
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_shutdown_read, arg_shutdown_write, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_dtls_connection_shutdown_finish
@@ -14111,6 +14284,7 @@ func (v *FileIfc) AppendToAsync(flags FileCreateFlags, io_priority int32, cancel
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_append_to_finish
@@ -14183,6 +14357,7 @@ func (v *FileIfc) Copy(destination IFile, flags FileCopyFlags, cancellable ICanc
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
 	return
@@ -14241,6 +14416,8 @@ func (v *FileIfc) CopyAsync(destination IFile, flags FileCopyFlags, io_priority 
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_destination, arg_flags, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // g_file_copy_attributes
@@ -14372,6 +14549,7 @@ func (v *FileIfc) CreateAsync(flags FileCreateFlags, io_priority int32, cancella
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_create_finish
@@ -14466,6 +14644,7 @@ func (v *FileIfc) CreateReadwriteAsync(flags FileCreateFlags, io_priority int32,
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_create_readwrite_finish
@@ -14554,6 +14733,7 @@ func (v *FileIfc) DeleteAsync(io_priority int32, cancellable ICancellable, callb
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_delete_finish
@@ -14635,6 +14815,7 @@ func (v *FileIfc) EjectMountable(flags MountUnmountFlags, cancellable ICancellab
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // Deprecated
@@ -14705,6 +14886,7 @@ func (v *FileIfc) EjectMountableWithOperation(flags MountUnmountFlags, mount_ope
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_eject_mountable_with_operation_finish
@@ -14809,6 +14991,7 @@ func (v *FileIfc) EnumerateChildrenAsync(attributes string, flags FileQueryInfoF
 	args := []gi.Argument{arg_v, arg_attributes, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_attributes)
+	callableInfo.Unref()
 }
 
 // g_file_enumerate_children_finish
@@ -14922,6 +15105,7 @@ func (v *FileIfc) FindEnclosingMountAsync(io_priority int32, cancellable ICancel
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_find_enclosing_mount_finish
@@ -15301,6 +15485,7 @@ func (v *FileIfc) LoadBytesAsync(cancellable ICancellable, callback AsyncReadyCa
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_load_bytes_finish
@@ -15405,6 +15590,7 @@ func (v *FileIfc) LoadContentsAsync(cancellable ICancellable, callback AsyncRead
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_load_contents_finish
@@ -15550,6 +15736,7 @@ func (v *FileIfc) MakeDirectoryAsync(io_priority int32, cancellable ICancellable
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_make_directory_finish
@@ -15806,6 +15993,7 @@ func (v *FileIfc) MountEnclosingVolume(flags MountMountFlags, mount_operation IM
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_mount_enclosing_volume_finish
@@ -15874,6 +16062,7 @@ func (v *FileIfc) MountMountable(flags MountMountFlags, mount_operation IMountOp
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_mount_mountable_finish
@@ -15946,6 +16135,7 @@ func (v *FileIfc) Move(destination IFile, flags FileCopyFlags, cancellable ICanc
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Bool()
 	return
@@ -16010,6 +16200,7 @@ func (v *FileIfc) OpenReadwriteAsync(io_priority int32, cancellable ICancellable
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_open_readwrite_finish
@@ -16086,6 +16277,7 @@ func (v *FileIfc) PollMountable(cancellable ICancellable, callback AsyncReadyCal
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_poll_mountable_finish
@@ -16264,6 +16456,7 @@ func (v *FileIfc) QueryFilesystemInfoAsync(attributes string, io_priority int32,
 	args := []gi.Argument{arg_v, arg_attributes, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_attributes)
+	callableInfo.Unref()
 }
 
 // g_file_query_filesystem_info_finish
@@ -16368,6 +16561,7 @@ func (v *FileIfc) QueryInfoAsync(attributes string, flags FileQueryInfoFlags, io
 	args := []gi.Argument{arg_v, arg_attributes, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_attributes)
+	callableInfo.Unref()
 }
 
 // g_file_query_info_finish
@@ -16510,6 +16704,7 @@ func (v *FileIfc) ReadAsync(io_priority int32, cancellable ICancellable, callbac
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_read_finish
@@ -16620,6 +16815,7 @@ func (v *FileIfc) ReplaceAsync(etag string, make_backup bool, flags FileCreateFl
 	args := []gi.Argument{arg_v, arg_etag, arg_make_backup, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_etag)
+	callableInfo.Unref()
 }
 
 // g_file_replace_contents
@@ -16716,6 +16912,7 @@ func (v *FileIfc) ReplaceContentsAsync(contents gi.Uint8Array, length uint64, et
 	args := []gi.Argument{arg_v, arg_contents, arg_length, arg_etag, arg_make_backup, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_etag)
+	callableInfo.Unref()
 }
 
 // g_file_replace_contents_bytes_async
@@ -16761,6 +16958,7 @@ func (v *FileIfc) ReplaceContentsBytesAsync(contents Bytes, etag string, make_ba
 	args := []gi.Argument{arg_v, arg_contents, arg_etag, arg_make_backup, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_etag)
+	callableInfo.Unref()
 }
 
 // g_file_replace_contents_finish
@@ -16902,6 +17100,7 @@ func (v *FileIfc) ReplaceReadwriteAsync(etag string, make_backup bool, flags Fil
 	args := []gi.Argument{arg_v, arg_etag, arg_make_backup, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_etag)
+	callableInfo.Unref()
 }
 
 // g_file_replace_readwrite_finish
@@ -17269,6 +17468,7 @@ func (v *FileIfc) SetAttributesAsync(info IFileInfo, flags FileQueryInfoFlags, i
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_info, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_set_attributes_finish
@@ -17408,6 +17608,7 @@ func (v *FileIfc) SetDisplayNameAsync(display_name string, io_priority int32, ca
 	args := []gi.Argument{arg_v, arg_display_name, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_display_name)
+	callableInfo.Unref()
 }
 
 // g_file_set_display_name_finish
@@ -17476,6 +17677,7 @@ func (v *FileIfc) StartMountable(flags DriveStartFlags, start_operation IMountOp
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_start_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_start_mountable_finish
@@ -17544,6 +17746,7 @@ func (v *FileIfc) StopMountable(flags MountUnmountFlags, mount_operation IMountO
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_stop_mountable_finish
@@ -17650,6 +17853,7 @@ func (v *FileIfc) TrashAsync(io_priority int32, cancellable ICancellable, callba
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_trash_finish
@@ -17713,6 +17917,7 @@ func (v *FileIfc) UnmountMountable(flags MountUnmountFlags, cancellable ICancell
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // Deprecated
@@ -17783,6 +17988,7 @@ func (v *FileIfc) UnmountMountableWithOperation(flags MountUnmountFlags, mount_o
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_unmount_mountable_with_operation_finish
@@ -18326,6 +18532,7 @@ func (v FileEnumerator) CloseAsync(io_priority int32, cancellable ICancellable, 
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_enumerator_close_finish
@@ -18531,6 +18738,7 @@ func (v FileEnumerator) NextFilesAsync(num_files int32, io_priority int32, cance
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_num_files, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_file_enumerator_next_files_finish
@@ -18692,6 +18900,7 @@ func (v FileIOStream) QueryInfoAsync(attributes string, io_priority int32, cance
 	args := []gi.Argument{arg_v, arg_attributes, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_attributes)
+	callableInfo.Unref()
 }
 
 // g_file_io_stream_query_info_finish
@@ -20157,6 +20366,7 @@ func (v FileInputStream) QueryInfoAsync(attributes string, io_priority int32, ca
 	args := []gi.Argument{arg_v, arg_attributes, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_attributes)
+	callableInfo.Unref()
 }
 
 // g_file_input_stream_query_info_finish
@@ -20216,7 +20426,15 @@ func FileMeasureFlagsGetType() gi.GType {
 type FileMeasureProgressCallback func(reporting bool, current_size uint64, num_dirs uint64, num_files uint64, user_data unsafe.Pointer)
 
 func CallFileMeasureProgressCallback(fn FileMeasureProgressCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	reporting := *(*bool)(args[0])
+	current_size := *(*uint64)(args[1])
+	num_dirs := *(*uint64)(args[2])
+	num_files := *(*uint64)(args[3])
+	user_data := *(*unsafe.Pointer)(args[4])
+	fn(reporting, current_size, num_dirs, num_files, user_data)
 }
 
 // Object FileMonitor
@@ -20470,6 +20688,7 @@ func (v FileOutputStream) QueryInfoAsync(attributes string, io_priority int32, c
 	args := []gi.Argument{arg_v, arg_attributes, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_attributes)
+	callableInfo.Unref()
 }
 
 // g_file_output_stream_query_info_finish
@@ -20514,7 +20733,13 @@ func FileOutputStreamPrivateGetType() gi.GType {
 type FileProgressCallback func(current_num_bytes int64, total_num_bytes int64, user_data unsafe.Pointer)
 
 func CallFileProgressCallback(fn FileProgressCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	current_num_bytes := *(*int64)(args[0])
+	total_num_bytes := *(*int64)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(current_num_bytes, total_num_bytes, user_data)
 }
 
 // Flags FileQueryInfoFlags
@@ -20533,7 +20758,13 @@ func FileQueryInfoFlagsGetType() gi.GType {
 type FileReadMoreCallback func(file_contents string, file_size int64, callback_data unsafe.Pointer) (result bool)
 
 func CallFileReadMoreCallback(fn FileReadMoreCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	file_contents := gi.GoString(*(*unsafe.Pointer)(args[0]))
+	file_size := *(*int64)(args[1])
+	callback_data := *(*unsafe.Pointer)(args[2])
+	fn(file_contents, file_size, callback_data)
 }
 
 // Enum FileType
@@ -21268,6 +21499,8 @@ func (v IOSchedulerJob) SendToMainloop(func1 SourceFunc, user_data unsafe.Pointe
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Bool()
 	return
 }
@@ -21304,12 +21537,20 @@ func (v IOSchedulerJob) SendToMainloopAsync(func1 SourceFunc, user_data unsafe.P
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 type IOSchedulerJobFunc func(job IOSchedulerJob, cancellable Cancellable, user_data unsafe.Pointer) (result bool)
 
 func CallIOSchedulerJobFunc(fn IOSchedulerJobFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	job := IOSchedulerJob{P: *(*unsafe.Pointer)(args[0])}
+	cancellable := WrapCancellable(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(job, cancellable, user_data)
 }
 
 // Object IOStream
@@ -21425,6 +21666,7 @@ func (v IOStream) CloseAsync(io_priority int32, cancellable ICancellable, callba
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_io_stream_close_finish
@@ -21588,6 +21830,7 @@ func (v IOStream) SpliceAsync(stream2 IIOStream, flags IOStreamSpliceFlags, io_p
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_stream2, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // Struct IOStreamAdapter
@@ -22673,6 +22916,7 @@ func (v InputStream) CloseAsync(io_priority int32, cancellable ICancellable, cal
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_input_stream_close_finish
@@ -22846,6 +23090,7 @@ func (v InputStream) ReadAllAsync(buffer gi.Uint8Array, count uint64, io_priorit
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_input_stream_read_all_finish
@@ -22917,6 +23162,7 @@ func (v InputStream) ReadAsync(buffer gi.Uint8Array, count uint64, io_priority i
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_input_stream_read_bytes
@@ -22984,6 +23230,7 @@ func (v InputStream) ReadBytesAsync(count uint64, io_priority int32, cancellable
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_input_stream_read_bytes_finish
@@ -23125,6 +23372,7 @@ func (v InputStream) SkipAsync(count uint64, io_priority int32, cancellable ICan
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_input_stream_skip_finish
@@ -23385,6 +23633,7 @@ func (v ListStore) InsertSorted(item IObject, compare_func CompareDataFunc, user
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -23440,6 +23689,7 @@ func (v ListStore) Sort(compare_func CompareDataFunc, user_data unsafe.Pointer) 
 	args := []gi.Argument{arg_v, arg_compare_func, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // g_list_store_splice
@@ -23549,6 +23799,7 @@ func (v *LoadableIconIfc) LoadAsync(size int32, cancellable ICancellable, callba
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_size, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_loadable_icon_load_finish
@@ -23666,6 +23917,7 @@ func NewMemoryInputStreamFromData(data gi.Uint8Array, len1 int64, destroy Destro
 	args := []gi.Argument{arg_data, arg_len1, arg_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -23711,6 +23963,7 @@ func (v MemoryInputStream) AddData(data gi.Uint8Array, len1 int64, destroy Destr
 	arg_destroy := gi.NewPointerArgument(funcPtr)
 	args := []gi.Argument{arg_v, arg_data, arg_len1, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // ignore GType struct MemoryInputStreamClass
@@ -25047,6 +25300,7 @@ func (v *MountIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, call
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // Deprecated
@@ -25117,6 +25371,7 @@ func (v *MountIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation I
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_mount_eject_with_operation_finish
@@ -25340,6 +25595,7 @@ func (v *MountIfc) GuessContentType(force_rescan bool, cancellable ICancellable,
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_force_rescan, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_mount_guess_content_type_finish
@@ -25458,6 +25714,7 @@ func (v *MountIfc) Remount(flags MountMountFlags, mount_operation IMountOperatio
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_mount_remount_finish
@@ -25534,6 +25791,7 @@ func (v *MountIfc) Unmount(flags MountUnmountFlags, cancellable ICancellable, ca
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // Deprecated
@@ -25604,6 +25862,7 @@ func (v *MountIfc) UnmountWithOperation(flags MountUnmountFlags, mount_operation
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_mount_unmount_with_operation_finish
@@ -26382,6 +26641,7 @@ func (v *NetworkMonitorIfc) CanReachAsync(connectable ISocketConnectable, cancel
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_connectable, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_network_monitor_can_reach_finish
@@ -26947,6 +27207,7 @@ func (v OutputStream) CloseAsync(io_priority int32, cancellable ICancellable, ca
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_output_stream_close_finish
@@ -27035,6 +27296,7 @@ func (v OutputStream) FlushAsync(io_priority int32, cancellable ICancellable, ca
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_output_stream_flush_finish
@@ -27217,6 +27479,7 @@ func (v OutputStream) SpliceAsync(source IInputStream, flags OutputStreamSpliceF
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_source, arg_flags, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_output_stream_splice_finish
@@ -27354,6 +27617,7 @@ func (v OutputStream) WriteAllAsync(buffer gi.Uint8Array, count uint64, io_prior
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_output_stream_write_all_finish
@@ -27425,6 +27689,7 @@ func (v OutputStream) WriteAsync(buffer gi.Uint8Array, count uint64, io_priority
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_buffer, arg_count, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_output_stream_write_bytes
@@ -27492,6 +27757,7 @@ func (v OutputStream) WriteBytesAsync(bytes Bytes, io_priority int32, cancellabl
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_bytes, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_output_stream_write_bytes_finish
@@ -27671,6 +27937,7 @@ func (v Permission) AcquireAsync(cancellable ICancellable, callback AsyncReadyCa
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_permission_acquire_finish
@@ -27832,6 +28099,7 @@ func (v Permission) ReleaseAsync(cancellable ICancellable, callback AsyncReadyCa
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_permission_release_finish
@@ -28096,7 +28364,12 @@ func (v *PollableOutputStreamIfc) WriteNonblocking(buffer gi.Uint8Array, count u
 type PollableSourceFunc func(pollable_stream Object, user_data unsafe.Pointer) (result bool)
 
 func CallPollableSourceFunc(fn PollableSourceFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pollable_stream := WrapObject(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(pollable_stream, user_data)
 }
 
 // Object PropertyAction
@@ -28270,6 +28543,7 @@ func (v *ProxyIfc) ConnectAsync(connection IIOStream, proxy_address IProxyAddres
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_connection, arg_proxy_address, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_proxy_connect_finish
@@ -28664,6 +28938,7 @@ func (v *ProxyResolverIfc) LookupAsync(uri string, cancellable ICancellable, cal
 	args := []gi.Argument{arg_v, arg_uri, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_uri)
+	callableInfo.Unref()
 }
 
 // g_proxy_resolver_lookup_finish
@@ -28699,7 +28974,12 @@ func (v *ProxyResolverIfc) LookupFinish(result IAsyncResult) (result1 gi.CStrArr
 type ReallocFunc func(data unsafe.Pointer, size uint64) (result unsafe.Pointer)
 
 func CallReallocFunc(fn ReallocFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := *(*unsafe.Pointer)(args[0])
+	size := *(*uint64)(args[1])
+	fn(data, size)
 }
 
 // Interface RemoteActionGroup
@@ -28867,6 +29147,7 @@ func (v Resolver) LookupByAddressAsync(address IInetAddress, cancellable ICancel
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_address, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_resolver_lookup_by_address_finish
@@ -28962,6 +29243,7 @@ func (v Resolver) LookupByNameAsync(hostname string, cancellable ICancellable, c
 	args := []gi.Argument{arg_v, arg_hostname, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_hostname)
+	callableInfo.Unref()
 }
 
 // g_resolver_lookup_by_name_finish
@@ -29063,6 +29345,7 @@ func (v Resolver) LookupRecordsAsync(rrname string, record_type ResolverRecordTy
 	args := []gi.Argument{arg_v, arg_rrname, arg_record_type, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_rrname)
+	callableInfo.Unref()
 }
 
 // g_resolver_lookup_records_finish
@@ -29178,6 +29461,7 @@ func (v Resolver) LookupServiceAsync(service string, protocol string, domain str
 	gi.Free(c_service)
 	gi.Free(c_protocol)
 	gi.Free(c_domain)
+	callableInfo.Unref()
 }
 
 // g_resolver_lookup_service_finish
@@ -30246,6 +30530,7 @@ func (v Settings) GetMapped(key string, mapping SettingsGetMapping, user_data un
 	iv.Call(args, &ret, nil)
 	gi.Free(c_key)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Pointer()
 	return
 }
@@ -31037,13 +31322,25 @@ func SettingsBindFlagsGetType() gi.GType {
 type SettingsBindGetMapping func(value Value, variant Variant, user_data unsafe.Pointer) (result bool)
 
 func CallSettingsBindGetMapping(fn SettingsBindGetMapping, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	value := Value{P: *(*unsafe.Pointer)(args[0])}
+	variant := Variant{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(value, variant, user_data)
 }
 
 type SettingsBindSetMapping func(value Value, expected_type VariantType, user_data unsafe.Pointer) (result Variant)
 
 func CallSettingsBindSetMapping(fn SettingsBindSetMapping, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	value := Value{P: *(*unsafe.Pointer)(args[0])}
+	expected_type := VariantType{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(value, expected_type, user_data)
 }
 
 // ignore GType struct SettingsClass
@@ -31051,7 +31348,14 @@ func CallSettingsBindSetMapping(fn SettingsBindSetMapping, result unsafe.Pointer
 type SettingsGetMapping func(value Variant, user_data unsafe.Pointer) (result unsafe.Pointer /*TODO_CB dir:out tag: void, isPtr: true*/, result1 bool)
 
 func CallSettingsGetMapping(fn SettingsGetMapping, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	value := Variant{P: *(*unsafe.Pointer)(args[0])}
+	result1 := *(*unsafe.Pointer)(args[1])
+	_ = result1
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(value, user_data)
 }
 
 // Struct SettingsPrivate
@@ -31843,6 +32147,7 @@ func NewSimpleAsyncResult(source_object IObject, callback AsyncReadyCallback, us
 	args := []gi.Argument{arg_source_object, arg_callback, arg_user_data, arg_source_tag}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -31883,6 +32188,7 @@ func NewSimpleAsyncResultFromError(source_object IObject, callback AsyncReadyCal
 	args := []gi.Argument{arg_source_object, arg_callback, arg_user_data, arg_error}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -32114,7 +32420,13 @@ func (v SimpleAsyncResult) SetOpResGssize(op_res int64) {
 type SimpleAsyncThreadFunc func(res SimpleAsyncResult, object Object, cancellable Cancellable)
 
 func CallSimpleAsyncThreadFunc(fn SimpleAsyncThreadFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	res := WrapSimpleAsyncResult(*(*unsafe.Pointer)(args[0]))
+	object := WrapObject(*(*unsafe.Pointer)(args[1]))
+	cancellable := WrapCancellable(*(*unsafe.Pointer)(args[2]))
+	fn(res, object, cancellable)
 }
 
 // Object SimpleIOStream
@@ -33905,6 +34217,7 @@ func (v SocketAddressEnumerator) NextAsync(cancellable ICancellable, callback As
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_socket_address_enumerator_next_finish
@@ -34057,6 +34370,7 @@ func (v SocketClient) ConnectAsync(connectable ISocketConnectable, cancellable I
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_connectable, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_socket_client_connect_finish
@@ -34158,6 +34472,7 @@ func (v SocketClient) ConnectToHostAsync(host_and_port string, default_port uint
 	args := []gi.Argument{arg_v, arg_host_and_port, arg_default_port, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_host_and_port)
+	callableInfo.Unref()
 }
 
 // g_socket_client_connect_to_host_finish
@@ -34263,6 +34578,7 @@ func (v SocketClient) ConnectToServiceAsync(domain string, service string, cance
 	iv.Call(args, nil, nil)
 	gi.Free(c_domain)
 	gi.Free(c_service)
+	callableInfo.Unref()
 }
 
 // g_socket_client_connect_to_service_finish
@@ -34364,6 +34680,7 @@ func (v SocketClient) ConnectToUriAsync(uri string, default_port uint16, cancell
 	args := []gi.Argument{arg_v, arg_uri, arg_default_port, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_uri)
+	callableInfo.Unref()
 }
 
 // g_socket_client_connect_to_uri_finish
@@ -34944,6 +35261,7 @@ func (v SocketConnection) ConnectAsync(address ISocketAddress, cancellable ICanc
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_address, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_socket_connection_connect_finish
@@ -35293,6 +35611,7 @@ func (v SocketListener) AcceptAsync(cancellable ICancellable, callback AsyncRead
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_socket_listener_accept_finish
@@ -35386,6 +35705,7 @@ func (v SocketListener) AcceptSocketAsync(cancellable ICancellable, callback Asy
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_socket_listener_accept_socket_finish
@@ -35741,7 +36061,13 @@ func SocketServicePrivateGetType() gi.GType {
 type SocketSourceFunc func(socket Socket, condition IOConditionFlags, user_data unsafe.Pointer) (result bool)
 
 func CallSocketSourceFunc(fn SocketSourceFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	socket := WrapSocket(*(*unsafe.Pointer)(args[0]))
+	condition := *(*IOConditionFlags)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(socket, condition, user_data)
 }
 
 // Enum SocketType
@@ -36071,6 +36397,7 @@ func (v Subprocess) CommunicateAsync(stdin_buf Bytes, cancellable ICancellable, 
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_stdin_buf, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_subprocess_communicate_finish
@@ -36182,6 +36509,7 @@ func (v Subprocess) CommunicateUtf8Async(stdin_buf string, cancellable ICancella
 	args := []gi.Argument{arg_v, arg_stdin_buf, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_stdin_buf)
+	callableInfo.Unref()
 }
 
 // g_subprocess_communicate_utf8_finish
@@ -36484,6 +36812,7 @@ func (v Subprocess) WaitAsync(cancellable ICancellable, callback AsyncReadyCallb
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_subprocess_wait_check
@@ -36542,6 +36871,7 @@ func (v Subprocess) WaitCheckAsync(cancellable ICancellable, callback AsyncReady
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_subprocess_wait_check_finish
@@ -36969,6 +37299,7 @@ func NewTask(source_object IObject, cancellable ICancellable, callback AsyncRead
 	args := []gi.Argument{arg_source_object, arg_cancellable, arg_callback, arg_callback_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -37038,6 +37369,7 @@ func TaskReportError1(source_object IObject, callback AsyncReadyCallback, callba
 	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_source_object, arg_callback, arg_callback_data, arg_source_tag, arg_error}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_task_get_cancellable
@@ -37368,6 +37700,7 @@ func (v Task) ReturnPointer(result unsafe.Pointer, result_destroy DestroyNotify)
 	arg_result_destroy := gi.NewPointerArgument(funcPtr)
 	args := []gi.Argument{arg_v, arg_result, arg_result_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_task_set_check_cancellable
@@ -37461,6 +37794,7 @@ func (v Task) SetTaskData(task_data unsafe.Pointer, task_data_destroy DestroyNot
 	arg_task_data_destroy := gi.NewPointerArgument(funcPtr)
 	args := []gi.Argument{arg_v, arg_task_data, arg_task_data_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // ignore GType struct TaskClass
@@ -37468,7 +37802,14 @@ func (v Task) SetTaskData(task_data unsafe.Pointer, task_data_destroy DestroyNot
 type TaskThreadFunc func(task Task, source_object Object, task_data unsafe.Pointer, cancellable Cancellable)
 
 func CallTaskThreadFunc(fn TaskThreadFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	task := WrapTask(*(*unsafe.Pointer)(args[0]))
+	source_object := WrapObject(*(*unsafe.Pointer)(args[1]))
+	task_data := *(*unsafe.Pointer)(args[2])
+	cancellable := WrapCancellable(*(*unsafe.Pointer)(args[3]))
+	fn(task, source_object, task_data, cancellable)
 }
 
 // Object TcpConnection
@@ -38837,6 +39178,7 @@ func (v TlsConnection) HandshakeAsync(io_priority int32, cancellable ICancellabl
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_tls_connection_handshake_finish
@@ -39114,6 +39456,7 @@ func (v TlsDatabase) LookupCertificateForHandleAsync(handle string, interaction 
 	args := []gi.Argument{arg_v, arg_handle, arg_interaction, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_handle)
+	callableInfo.Unref()
 }
 
 // g_tls_database_lookup_certificate_for_handle_finish
@@ -39233,6 +39576,7 @@ func (v TlsDatabase) LookupCertificateIssuerAsync(certificate ITlsCertificate, i
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_certificate, arg_interaction, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_tls_database_lookup_certificate_issuer_finish
@@ -39344,6 +39688,7 @@ func (v TlsDatabase) LookupCertificatesIssuedByAsync(issuer_raw_dn ByteArray, in
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_issuer_raw_dn, arg_interaction, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_tls_database_lookup_certificates_issued_by_finish
@@ -39487,6 +39832,7 @@ func (v TlsDatabase) VerifyChainAsync(chain ITlsCertificate, purpose string, ide
 	args := []gi.Argument{arg_v, arg_chain, arg_purpose, arg_identity, arg_interaction, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_purpose)
+	callableInfo.Unref()
 }
 
 // g_tls_database_verify_chain_finish
@@ -39696,6 +40042,7 @@ func (v TlsInteraction) AskPasswordAsync(password ITlsPassword, cancellable ICan
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_password, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_tls_interaction_ask_password_finish
@@ -39872,6 +40219,7 @@ func (v TlsInteraction) RequestCertificateAsync(connection ITlsConnection, flags
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_connection, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_tls_interaction_request_certificate_finish
@@ -40120,6 +40468,7 @@ func (v TlsPassword) SetValueFull(value gi.Uint8Array, length int64, destroy Des
 	arg_destroy := gi.NewPointerArgument(funcPtr)
 	args := []gi.Argument{arg_v, arg_value, arg_length, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_tls_password_set_warning
@@ -40301,6 +40650,7 @@ func (v UnixConnection) ReceiveCredentialsAsync(cancellable ICancellable, callba
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_unix_connection_receive_credentials_finish
@@ -40413,6 +40763,7 @@ func (v UnixConnection) SendCredentialsAsync(cancellable ICancellable, callback 
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_unix_connection_send_credentials_finish
@@ -41865,6 +42216,10 @@ func (v Vfs) RegisterUriScheme(scheme string, uri_func VfsFileLookupFunc, uri_da
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_scheme)
+	callableInfo.Unref()
+	callableInfo1.Unref()
+	callableInfo2.Unref()
+	callableInfo3.Unref()
 	result = ret.Bool()
 	return
 }
@@ -41897,7 +42252,13 @@ func (v Vfs) UnregisterUriScheme(scheme string) (result bool) {
 type VfsFileLookupFunc func(vfs Vfs, identifier string, user_data unsafe.Pointer) (result File)
 
 func CallVfsFileLookupFunc(fn VfsFileLookupFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	vfs := WrapVfs(*(*unsafe.Pointer)(args[0]))
+	identifier := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(vfs, identifier, user_data)
 }
 
 // Interface Volume
@@ -41984,6 +42345,7 @@ func (v *VolumeIfc) Eject(flags MountUnmountFlags, cancellable ICancellable, cal
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // Deprecated
@@ -42054,6 +42416,7 @@ func (v *VolumeIfc) EjectWithOperation(flags MountUnmountFlags, mount_operation 
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_volume_eject_with_operation_finish
@@ -42308,6 +42671,7 @@ func (v *VolumeIfc) MountF(flags MountMountFlags, mount_operation IMountOperatio
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_v, arg_flags, arg_mount_operation, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_volume_mount_finish
@@ -42978,6 +43342,7 @@ func AppInfoLaunchDefaultForUriAsync(uri string, context IAppLaunchContext, canc
 	args := []gi.Argument{arg_uri, arg_context, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_uri)
+	callableInfo.Unref()
 }
 
 // g_app_info_launch_default_for_uri_finish
@@ -43065,6 +43430,7 @@ func AsyncInitableNewvAsync(object_type gi.GType, n_parameters uint32, parameter
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_object_type, arg_n_parameters, arg_parameters, arg_io_priority, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_bus_get
@@ -43098,6 +43464,7 @@ func BusGet(bus_type BusTypeEnum, cancellable ICancellable, callback AsyncReadyC
 	arg_user_data := gi.NewPointerArgument(user_data)
 	args := []gi.Argument{arg_bus_type, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_bus_get_finish
@@ -43747,6 +44114,7 @@ func DbusAddressGetStream(address string, cancellable ICancellable, callback Asy
 	args := []gi.Argument{arg_address, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.Free(c_address)
+	callableInfo.Unref()
 }
 
 // g_dbus_address_get_stream_finish
@@ -44818,6 +45186,8 @@ func IoSchedulerPushJob(job_func IOSchedulerJobFunc, user_data unsafe.Pointer, n
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	args := []gi.Argument{arg_job_func, arg_user_data, arg_notify, arg_io_priority, arg_cancellable}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // g_keyfile_settings_backend_new
@@ -45389,6 +45759,7 @@ func SimpleAsyncReportGerrorInIdle(object IObject, callback AsyncReadyCallback, 
 	arg_error := gi.NewPointerArgument(error.P)
 	args := []gi.Argument{arg_object, arg_callback, arg_user_data, arg_error}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // g_tls_backend_get_default

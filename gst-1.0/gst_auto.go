@@ -885,6 +885,7 @@ func NewBufferWrappedFull(flags MemoryFlags, data gi.Uint8Array, maxsize uint64,
 	args := []gi.Argument{arg_flags, arg_data, arg_maxsize, arg_offset, arg_size, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -1273,6 +1274,7 @@ func (v Buffer) ForeachMeta(func1 BufferForeachMetaFunc, user_data unsafe.Pointe
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -2055,7 +2057,14 @@ func BufferFlagsGetType() gi.GType {
 type BufferForeachMetaFunc func(buffer Buffer, user_data unsafe.Pointer) (meta unsafe.Pointer /*TODO_CB dir:out tag: interface, isPtr: true*/, result bool)
 
 func CallBufferForeachMetaFunc(fn BufferForeachMetaFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	buffer := Buffer{P: *(*unsafe.Pointer)(args[0])}
+	meta := *(*unsafe.Pointer)(args[1])
+	_ = meta
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(buffer, user_data)
 }
 
 // Struct BufferList
@@ -2165,6 +2174,7 @@ func (v BufferList) Foreach(func1 BufferListFunc, user_data unsafe.Pointer) (res
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -2270,7 +2280,14 @@ func (v BufferList) Remove(idx uint32, length uint32) {
 type BufferListFunc func(idx uint32, user_data unsafe.Pointer) (buffer unsafe.Pointer /*TODO_CB dir:out tag: interface, isPtr: true*/, result bool)
 
 func CallBufferListFunc(fn BufferListFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	buffer := *(*unsafe.Pointer)(args[0])
+	_ = buffer
+	idx := *(*uint32)(args[1])
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(idx, user_data)
 }
 
 // Object BufferPool
@@ -2870,6 +2887,8 @@ func (v Bus) AddWatch(priority int32, func1 BusFunc, user_data unsafe.Pointer, n
 	args := []gi.Argument{arg_v, arg_priority, arg_func1, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -3155,6 +3174,8 @@ func (v Bus) SetSyncHandler(func1 BusSyncHandler, user_data unsafe.Pointer, noti
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_bus_sync_signal_handler
@@ -3244,7 +3265,13 @@ func BusFlagsGetType() gi.GType {
 type BusFunc func(bus Bus, message Message, user_data unsafe.Pointer) (result bool)
 
 func CallBusFunc(fn BusFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	bus := WrapBus(*(*unsafe.Pointer)(args[0]))
+	message := Message{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(bus, message, user_data)
 }
 
 // Struct BusPrivate
@@ -3260,7 +3287,13 @@ func BusPrivateGetType() gi.GType {
 type BusSyncHandler func(bus Bus, message Message, user_data unsafe.Pointer)
 
 func CallBusSyncHandler(fn BusSyncHandler, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	bus := WrapBus(*(*unsafe.Pointer)(args[0]))
+	message := Message{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(bus, message, user_data)
 }
 
 // Enum BusSyncReply
@@ -3458,6 +3491,7 @@ func (v Caps) FilterAndMapInPlace(func1 CapsFilterMapFunc, user_data unsafe.Poin
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_caps_fixate
@@ -3503,6 +3537,7 @@ func (v Caps) Foreach(func1 CapsForeachFunc, user_data unsafe.Pointer) (result b
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -3841,6 +3876,7 @@ func (v Caps) MapInPlace(func1 CapsMapFunc, user_data unsafe.Pointer) (result bo
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -4451,7 +4487,13 @@ func CapsFeaturesFromString1(features string) (result CapsFeatures) {
 type CapsFilterMapFunc func(features CapsFeatures, structure Structure, user_data unsafe.Pointer) (result bool)
 
 func CallCapsFilterMapFunc(fn CapsFilterMapFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	features := CapsFeatures{P: *(*unsafe.Pointer)(args[0])}
+	structure := Structure{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(features, structure, user_data)
 }
 
 // Flags CapsFlags
@@ -4469,7 +4511,13 @@ func CapsFlagsGetType() gi.GType {
 type CapsForeachFunc func(features CapsFeatures, structure Structure, user_data unsafe.Pointer) (result bool)
 
 func CallCapsForeachFunc(fn CapsForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	features := CapsFeatures{P: *(*unsafe.Pointer)(args[0])}
+	structure := Structure{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(features, structure, user_data)
 }
 
 // Enum CapsIntersectMode
@@ -4488,7 +4536,13 @@ func CapsIntersectModeGetType() gi.GType {
 type CapsMapFunc func(features CapsFeatures, structure Structure, user_data unsafe.Pointer) (result bool)
 
 func CallCapsMapFunc(fn CapsMapFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	features := CapsFeatures{P: *(*unsafe.Pointer)(args[0])}
+	structure := Structure{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(features, structure, user_data)
 }
 
 // Interface ChildProxy
@@ -4861,6 +4915,8 @@ func ClockIdWaitAsync1(id unsafe.Pointer, func1 ClockCallback, user_data unsafe.
 	args := []gi.Argument{arg_id, arg_func1, arg_user_data, arg_destroy_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ClockReturnEnum(ret.Int())
 	return
 }
@@ -5409,7 +5465,14 @@ func (v Clock) WaitForSync(timeout uint64) (result bool) {
 type ClockCallback func(clock Clock, time uint64, id unsafe.Pointer, user_data unsafe.Pointer) (result bool)
 
 func CallClockCallback(fn ClockCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	clock := WrapClock(*(*unsafe.Pointer)(args[0]))
+	time := *(*uint64)(args[1])
+	id := *(*unsafe.Pointer)(args[2])
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(clock, time, id, user_data)
 }
 
 // ignore GType struct ClockClass
@@ -5767,7 +5830,13 @@ func (v ControlBinding) SyncValues(object IObject, timestamp uint64, last_sync u
 type ControlBindingConvert func(binding ControlBinding, src_value float64, dest_value g.Value)
 
 func CallControlBindingConvert(fn ControlBindingConvert, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	binding := WrapControlBinding(*(*unsafe.Pointer)(args[0]))
+	src_value := *(*float64)(args[1])
+	dest_value := g.Value{P: *(*unsafe.Pointer)(args[2])}
+	fn(binding, src_value, dest_value)
 }
 
 // Struct ControlBindingPrivate
@@ -5856,13 +5925,27 @@ func (v ControlSource) ControlSourceGetValueArray(timestamp uint64, interval uin
 type ControlSourceGetValue func(self ControlSource, timestamp uint64, value *float64) (result bool)
 
 func CallControlSourceGetValue(fn ControlSourceGetValue, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	self := WrapControlSource(*(*unsafe.Pointer)(args[0]))
+	timestamp := *(*uint64)(args[1])
+	value := *(**float64)(args[2])
+	fn(self, timestamp, value)
 }
 
 type ControlSourceGetValueArray func(self ControlSource, timestamp uint64, interval uint64, n_values uint32, values *float64) (result bool)
 
 func CallControlSourceGetValueArray(fn ControlSourceGetValueArray, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	self := WrapControlSource(*(*unsafe.Pointer)(args[0]))
+	timestamp := *(*uint64)(args[1])
+	interval := *(*uint64)(args[2])
+	n_values := *(*uint32)(args[3])
+	values := *(**float64)(args[4])
+	fn(self, timestamp, interval, n_values, values)
 }
 
 // Enum CoreError
@@ -6630,7 +6713,10 @@ func DebugColorModeGetType() gi.GType {
 type DebugFuncPtr func()
 
 func CallDebugFuncPtr(fn DebugFuncPtr, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	fn()
 }
 
 // Flags DebugGraphDetails
@@ -8028,6 +8114,8 @@ func (v Element) CallAsync(func1 ElementCallAsyncFunc, user_data unsafe.Pointer,
 	arg_destroy_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data, arg_destroy_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_element_change_state
@@ -8110,6 +8198,7 @@ func (v Element) ForeachPad(func1 ElementForeachPadFunc, user_data unsafe.Pointe
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -8139,6 +8228,7 @@ func (v Element) ForeachSinkPad(func1 ElementForeachPadFunc, user_data unsafe.Po
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -8168,6 +8258,7 @@ func (v Element) ForeachSrcPad(func1 ElementForeachPadFunc, user_data unsafe.Poi
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -9405,7 +9496,12 @@ func (v Element) UnlinkPads(srcpadname string, dest IElement, destpadname string
 type ElementCallAsyncFunc func(element Element, user_data unsafe.Pointer)
 
 func CallElementCallAsyncFunc(fn ElementCallAsyncFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	element := WrapElement(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(element, user_data)
 }
 
 // Struct ElementClass
@@ -10074,7 +10170,13 @@ func ElementFlagsGetType() gi.GType {
 type ElementForeachPadFunc func(element Element, pad Pad, user_data unsafe.Pointer) (result bool)
 
 func CallElementForeachPadFunc(fn ElementForeachPadFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	element := WrapElement(*(*unsafe.Pointer)(args[0]))
+	pad := WrapPad(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(element, pad, user_data)
 }
 
 // Struct Event
@@ -11905,6 +12007,7 @@ func (v Iterator) Filter(func1 g.CompareFunc, user_data g.Value) (result Iterato
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -11937,6 +12040,7 @@ func (v Iterator) FindCustom(func1 g.CompareFunc, elem g.Value, user_data unsafe
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -11969,6 +12073,7 @@ func (v Iterator) Fold(func1 IteratorFoldFunction, ret g.Value, user_data unsafe
 	var ret1 gi.Argument
 	iv.Call(args, &ret1, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = IteratorResultEnum(ret1.Int())
 	return
 }
@@ -11998,6 +12103,7 @@ func (v Iterator) Foreach(func1 IteratorForeachFunction, user_data unsafe.Pointe
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = IteratorResultEnum(ret.Int())
 	return
 }
@@ -12068,25 +12174,45 @@ func (v Iterator) Resync() {
 type IteratorCopyFunction func(it Iterator, copy1 Iterator)
 
 func CallIteratorCopyFunction(fn IteratorCopyFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	it := Iterator{P: *(*unsafe.Pointer)(args[0])}
+	copy1 := Iterator{P: *(*unsafe.Pointer)(args[1])}
+	fn(it, copy1)
 }
 
 type IteratorFoldFunction func(item g.Value, ret g.Value, user_data unsafe.Pointer) (result bool)
 
 func CallIteratorFoldFunction(fn IteratorFoldFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	item := g.Value{P: *(*unsafe.Pointer)(args[0])}
+	ret := g.Value{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(item, ret, user_data)
 }
 
 type IteratorForeachFunction func(item g.Value, user_data unsafe.Pointer)
 
 func CallIteratorForeachFunction(fn IteratorForeachFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	item := g.Value{P: *(*unsafe.Pointer)(args[0])}
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(item, user_data)
 }
 
 type IteratorFreeFunction func(it Iterator)
 
 func CallIteratorFreeFunction(fn IteratorFreeFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	it := Iterator{P: *(*unsafe.Pointer)(args[0])}
+	fn(it)
 }
 
 // Enum IteratorItem
@@ -12106,13 +12232,23 @@ func IteratorItemGetType() gi.GType {
 type IteratorItemFunction func(it Iterator, item g.Value)
 
 func CallIteratorItemFunction(fn IteratorItemFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	it := Iterator{P: *(*unsafe.Pointer)(args[0])}
+	item := g.Value{P: *(*unsafe.Pointer)(args[1])}
+	fn(it, item)
 }
 
 type IteratorNextFunction func(it Iterator, result g.Value)
 
 func CallIteratorNextFunction(fn IteratorNextFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	it := Iterator{P: *(*unsafe.Pointer)(args[0])}
+	result1 := g.Value{P: *(*unsafe.Pointer)(args[1])}
+	fn(it, result1)
 }
 
 // Enum IteratorResult
@@ -12133,7 +12269,11 @@ func IteratorResultGetType() gi.GType {
 type IteratorResyncFunction func(it Iterator)
 
 func CallIteratorResyncFunction(fn IteratorResyncFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	it := Iterator{P: *(*unsafe.Pointer)(args[0])}
+	fn(it)
 }
 
 // Enum LibraryError
@@ -12172,7 +12312,18 @@ func LockFlagsGetType() gi.GType {
 type LogFunction func(category DebugCategory, level DebugLevelEnum, file string, function string, line int32, object g.Object, message DebugMessage, user_data unsafe.Pointer)
 
 func CallLogFunction(fn LogFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	category := DebugCategory{P: *(*unsafe.Pointer)(args[0])}
+	level := *(*DebugLevelEnum)(args[1])
+	file := gi.GoString(*(*unsafe.Pointer)(args[2]))
+	function := gi.GoString(*(*unsafe.Pointer)(args[3]))
+	line := *(*int32)(args[4])
+	object := g.WrapObject(*(*unsafe.Pointer)(args[5]))
+	message := DebugMessage{P: *(*unsafe.Pointer)(args[6])}
+	user_data := *(*unsafe.Pointer)(args[7])
+	fn(category, level, file, function, line, object, message, user_data)
 }
 
 // Flags MapFlags
@@ -12252,6 +12403,7 @@ func NewMemoryWrapped(flags MemoryFlags, data gi.Uint8Array, maxsize uint64, off
 	args := []gi.Argument{arg_flags, arg_data, arg_maxsize, arg_offset, arg_size, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -12466,7 +12618,13 @@ func (v Memory) Unmap(info MapInfo) {
 type MemoryCopyFunction func(mem Memory, offset int64, size int64) (result Memory)
 
 func CallMemoryCopyFunction(fn MemoryCopyFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	mem := Memory{P: *(*unsafe.Pointer)(args[0])}
+	offset := *(*int64)(args[1])
+	size := *(*int64)(args[2])
+	fn(mem, offset, size)
 }
 
 // Flags MemoryFlags
@@ -12490,37 +12648,70 @@ func MemoryFlagsGetType() gi.GType {
 type MemoryIsSpanFunction func(mem1 Memory, mem2 Memory, offset *uint64) (result bool)
 
 func CallMemoryIsSpanFunction(fn MemoryIsSpanFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	mem1 := Memory{P: *(*unsafe.Pointer)(args[0])}
+	mem2 := Memory{P: *(*unsafe.Pointer)(args[1])}
+	offset := *(**uint64)(args[2])
+	fn(mem1, mem2, offset)
 }
 
 type MemoryMapFullFunction func(mem Memory, info MapInfo, maxsize uint64) (result unsafe.Pointer)
 
 func CallMemoryMapFullFunction(fn MemoryMapFullFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	mem := Memory{P: *(*unsafe.Pointer)(args[0])}
+	info := MapInfo{P: *(*unsafe.Pointer)(args[1])}
+	maxsize := *(*uint64)(args[2])
+	fn(mem, info, maxsize)
 }
 
 type MemoryMapFunction func(mem Memory, maxsize uint64, flags MapFlags) (result unsafe.Pointer)
 
 func CallMemoryMapFunction(fn MemoryMapFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	mem := Memory{P: *(*unsafe.Pointer)(args[0])}
+	maxsize := *(*uint64)(args[1])
+	flags := *(*MapFlags)(args[2])
+	fn(mem, maxsize, flags)
 }
 
 type MemoryShareFunction func(mem Memory, offset int64, size int64) (result Memory)
 
 func CallMemoryShareFunction(fn MemoryShareFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	mem := Memory{P: *(*unsafe.Pointer)(args[0])}
+	offset := *(*int64)(args[1])
+	size := *(*int64)(args[2])
+	fn(mem, offset, size)
 }
 
 type MemoryUnmapFullFunction func(mem Memory, info MapInfo)
 
 func CallMemoryUnmapFullFunction(fn MemoryUnmapFullFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	mem := Memory{P: *(*unsafe.Pointer)(args[0])}
+	info := MapInfo{P: *(*unsafe.Pointer)(args[1])}
+	fn(mem, info)
 }
 
 type MemoryUnmapFunction func(mem Memory)
 
 func CallMemoryUnmapFunction(fn MemoryUnmapFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	mem := Memory{P: *(*unsafe.Pointer)(args[0])}
+	fn(mem)
 }
 
 // Struct Message
@@ -15169,6 +15360,9 @@ func MetaRegister1(api gi.GType, impl string, size uint64, init_func MetaInitFun
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_impl)
+	callableInfo.Unref()
+	callableInfo1.Unref()
+	callableInfo2.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -15192,7 +15386,12 @@ func MetaFlagsGetType() gi.GType {
 type MetaFreeFunction func(meta Meta, buffer Buffer)
 
 func CallMetaFreeFunction(fn MetaFreeFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	meta := Meta{P: *(*unsafe.Pointer)(args[0])}
+	buffer := Buffer{P: *(*unsafe.Pointer)(args[1])}
+	fn(meta, buffer)
 }
 
 // Struct MetaInfo
@@ -15210,7 +15409,13 @@ func MetaInfoGetType() gi.GType {
 type MetaInitFunction func(meta Meta, params unsafe.Pointer, buffer Buffer) (result bool)
 
 func CallMetaInitFunction(fn MetaInitFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	meta := Meta{P: *(*unsafe.Pointer)(args[0])}
+	params := *(*unsafe.Pointer)(args[1])
+	buffer := Buffer{P: *(*unsafe.Pointer)(args[2])}
+	fn(meta, params, buffer)
 }
 
 // Struct MetaTransformCopy
@@ -15228,7 +15433,15 @@ func MetaTransformCopyGetType() gi.GType {
 type MetaTransformFunction func(transbuf Buffer, meta Meta, buffer Buffer, type1 uint32, data unsafe.Pointer) (result bool)
 
 func CallMetaTransformFunction(fn MetaTransformFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	transbuf := Buffer{P: *(*unsafe.Pointer)(args[0])}
+	meta := Meta{P: *(*unsafe.Pointer)(args[1])}
+	buffer := Buffer{P: *(*unsafe.Pointer)(args[2])}
+	type1 := *(*uint32)(args[3])
+	data := *(*unsafe.Pointer)(args[4])
+	fn(transbuf, meta, buffer, type1, data)
 }
 
 // Struct MiniObject
@@ -15328,6 +15541,7 @@ func (v MiniObject) SetQdata(quark uint32, data unsafe.Pointer, destroy g.Destro
 	arg_destroy := gi.NewPointerArgument(funcPtr)
 	args := []gi.Argument{arg_v, arg_quark, arg_data, arg_destroy}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
 }
 
 // gst_mini_object_steal_qdata
@@ -15412,7 +15626,11 @@ func (v MiniObject) Take(newdata MiniObject) (result bool) {
 type MiniObjectDisposeFunction func(obj MiniObject) (result bool)
 
 func CallMiniObjectDisposeFunction(fn MiniObjectDisposeFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	obj := MiniObject{P: *(*unsafe.Pointer)(args[0])}
+	fn(obj)
 }
 
 // Flags MiniObjectFlags
@@ -15433,13 +15651,22 @@ func MiniObjectFlagsGetType() gi.GType {
 type MiniObjectFreeFunction func(obj MiniObject)
 
 func CallMiniObjectFreeFunction(fn MiniObjectFreeFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	obj := MiniObject{P: *(*unsafe.Pointer)(args[0])}
+	fn(obj)
 }
 
 type MiniObjectNotify func(user_data unsafe.Pointer, obj MiniObject)
 
 func CallMiniObjectNotify(fn MiniObjectNotify, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	user_data := *(*unsafe.Pointer)(args[0])
+	obj := MiniObject{P: *(*unsafe.Pointer)(args[1])}
+	fn(user_data, obj)
 }
 
 // Object Object
@@ -16232,6 +16459,8 @@ func (v Pad) AddProbe(mask PadProbeTypeFlags, callback PadProbeCallback, user_da
 	args := []gi.Argument{arg_v, arg_mask, arg_callback, arg_user_data, arg_destroy_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint64()
 	return
 }
@@ -16404,6 +16633,7 @@ func (v Pad) Forward(forward PadForwardFunction, user_data unsafe.Pointer) (resu
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -17506,6 +17736,8 @@ func (v Pad) SetActivateFunctionFull(activate PadActivateFunction, user_data uns
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_activate, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_set_activatemode_function_full
@@ -17538,6 +17770,8 @@ func (v Pad) SetActivatemodeFunctionFull(activatemode PadActivateModeFunction, u
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_activatemode, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_set_active
@@ -17591,6 +17825,8 @@ func (v Pad) SetChainFunctionFull(chain PadChainFunction, user_data unsafe.Point
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_chain, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_set_chain_list_function_full
@@ -17623,6 +17859,8 @@ func (v Pad) SetChainListFunctionFull(chainlist PadChainListFunction, user_data 
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_chainlist, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_set_element_private
@@ -17671,6 +17909,8 @@ func (v Pad) SetEventFullFunctionFull(event PadEventFullFunction, user_data unsa
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_event, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_set_event_function_full
@@ -17703,6 +17943,8 @@ func (v Pad) SetEventFunctionFull(event PadEventFunction, user_data unsafe.Point
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_event, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_set_getrange_function_full
@@ -17735,6 +17977,8 @@ func (v Pad) SetGetrangeFunctionFull(get PadGetRangeFunction, user_data unsafe.P
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_get, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_set_iterate_internal_links_function_full
@@ -17767,6 +18011,8 @@ func (v Pad) SetIterateInternalLinksFunctionFull(iterintlink PadIterIntLinkFunct
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_iterintlink, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_set_link_function_full
@@ -17799,6 +18045,8 @@ func (v Pad) SetLinkFunctionFull(link PadLinkFunction, user_data unsafe.Pointer,
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_link, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_set_offset
@@ -17847,6 +18095,8 @@ func (v Pad) SetQueryFunctionFull(query PadQueryFunction, user_data unsafe.Point
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_query, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_set_unlink_function_full
@@ -17879,6 +18129,8 @@ func (v Pad) SetUnlinkFunctionFull(unlink PadUnlinkFunction, user_data unsafe.Po
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_unlink, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_pad_start_task
@@ -17914,6 +18166,8 @@ func (v Pad) StartTask(func1 TaskFunction, user_data unsafe.Pointer, notify g.De
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Bool()
 	return
 }
@@ -17940,6 +18194,7 @@ func (v Pad) StickyEventsForeach(foreach_func PadStickyEventsForeachFunction, us
 	args := []gi.Argument{arg_v, arg_foreach_func, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_pad_stop_task
@@ -18022,25 +18277,49 @@ func (v Pad) UseFixedCaps() {
 type PadActivateFunction func(pad Pad, parent Object) (result bool)
 
 func CallPadActivateFunction(fn PadActivateFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	fn(pad, parent)
 }
 
 type PadActivateModeFunction func(pad Pad, parent Object, mode PadModeEnum, active bool) (result bool)
 
 func CallPadActivateModeFunction(fn PadActivateModeFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	mode := *(*PadModeEnum)(args[2])
+	active := *(*bool)(args[3])
+	fn(pad, parent, mode, active)
 }
 
 type PadChainFunction func(pad Pad, parent Object, buffer Buffer)
 
 func CallPadChainFunction(fn PadChainFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	buffer := Buffer{P: *(*unsafe.Pointer)(args[2])}
+	fn(pad, parent, buffer)
 }
 
 type PadChainListFunction func(pad Pad, parent Object, list BufferList)
 
 func CallPadChainListFunction(fn PadChainListFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	list := BufferList{P: *(*unsafe.Pointer)(args[2])}
+	fn(pad, parent, list)
 }
 
 // ignore GType struct PadClass
@@ -18062,13 +18341,25 @@ func PadDirectionGetType() gi.GType {
 type PadEventFullFunction func(pad Pad, parent Object, event Event)
 
 func CallPadEventFullFunction(fn PadEventFullFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	event := Event{P: *(*unsafe.Pointer)(args[2])}
+	fn(pad, parent, event)
 }
 
 type PadEventFunction func(pad Pad, parent Object, event Event) (result bool)
 
 func CallPadEventFunction(fn PadEventFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	event := Event{P: *(*unsafe.Pointer)(args[2])}
+	fn(pad, parent, event)
 }
 
 // Flags PadFlags
@@ -18099,19 +18390,37 @@ func PadFlagsGetType() gi.GType {
 type PadForwardFunction func(pad Pad, user_data unsafe.Pointer) (result bool)
 
 func CallPadForwardFunction(fn PadForwardFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(pad, user_data)
 }
 
 type PadGetRangeFunction func(pad Pad, parent Object, offset uint64, length uint32, buffer Buffer)
 
 func CallPadGetRangeFunction(fn PadGetRangeFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	offset := *(*uint64)(args[2])
+	length := *(*uint32)(args[3])
+	buffer := Buffer{P: *(*unsafe.Pointer)(args[4])}
+	fn(pad, parent, offset, length, buffer)
 }
 
 type PadIterIntLinkFunction func(pad Pad, parent Object) (result Iterator)
 
 func CallPadIterIntLinkFunction(fn PadIterIntLinkFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	fn(pad, parent)
 }
 
 // Flags PadLinkCheck
@@ -18134,7 +18443,13 @@ func PadLinkCheckGetType() gi.GType {
 type PadLinkFunction func(pad Pad, parent Object, peer Pad)
 
 func CallPadLinkFunction(fn PadLinkFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	peer := WrapPad(*(*unsafe.Pointer)(args[2]))
+	fn(pad, parent, peer)
 }
 
 // Enum PadLinkReturn
@@ -18196,7 +18511,13 @@ func PadPrivateGetType() gi.GType {
 type PadProbeCallback func(pad Pad, info PadProbeInfo, user_data unsafe.Pointer)
 
 func CallPadProbeCallback(fn PadProbeCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	info := PadProbeInfo{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(pad, info, user_data)
 }
 
 // Struct PadProbeInfo
@@ -18335,13 +18656,25 @@ func PadProbeTypeGetType() gi.GType {
 type PadQueryFunction func(pad Pad, parent Object, query Query) (result bool)
 
 func CallPadQueryFunction(fn PadQueryFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	query := Query{P: *(*unsafe.Pointer)(args[2])}
+	fn(pad, parent, query)
 }
 
 type PadStickyEventsForeachFunction func(pad Pad, event Event, user_data unsafe.Pointer) (result bool)
 
 func CallPadStickyEventsForeachFunction(fn PadStickyEventsForeachFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	event := Event{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(pad, event, user_data)
 }
 
 // Object PadTemplate
@@ -18502,7 +18835,12 @@ func PadTemplateFlagsGetType() gi.GType {
 type PadUnlinkFunction func(pad Pad, parent Object)
 
 func CallPadUnlinkFunction(fn PadUnlinkFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pad := WrapPad(*(*unsafe.Pointer)(args[0]))
+	parent := WrapObject(*(*unsafe.Pointer)(args[1]))
+	fn(pad, parent)
 }
 
 // Object ParamArray
@@ -19063,6 +19401,7 @@ func PluginRegisterStatic1(major_version int32, minor_version int32, name string
 	gi.Free(c_name)
 	gi.Free(c_description)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	gi.Free(c_version)
 	gi.Free(c_license)
 	gi.Free(c_source)
@@ -19132,6 +19471,7 @@ func PluginRegisterStaticFull1(major_version int32, minor_version int32, name st
 	gi.Free(c_name)
 	gi.Free(c_description)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	gi.Free(c_version)
 	gi.Free(c_license)
 	gi.Free(c_source)
@@ -19682,13 +20022,23 @@ func (v PluginFeature) SetRank(rank uint32) {
 type PluginFeatureFilter func(feature PluginFeature, user_data unsafe.Pointer) (result bool)
 
 func CallPluginFeatureFilter(fn PluginFeatureFilter, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	feature := WrapPluginFeature(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(feature, user_data)
 }
 
 type PluginFilter func(plugin Plugin, user_data unsafe.Pointer) (result bool)
 
 func CallPluginFilter(fn PluginFilter, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	plugin := WrapPlugin(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(plugin, user_data)
 }
 
 // Flags PluginFlags
@@ -19707,13 +20057,22 @@ func PluginFlagsGetType() gi.GType {
 type PluginInitFullFunc func(plugin Plugin, user_data unsafe.Pointer) (result bool)
 
 func CallPluginInitFullFunc(fn PluginInitFullFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	plugin := WrapPlugin(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(plugin, user_data)
 }
 
 type PluginInitFunc func(plugin Plugin) (result bool)
 
 func CallPluginInitFunc(fn PluginInitFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	plugin := WrapPlugin(*(*unsafe.Pointer)(args[0]))
+	fn(plugin)
 }
 
 // Struct Poll
@@ -20426,6 +20785,8 @@ func NewPromiseWithChangeFunc(func1 PromiseChangeFunc, user_data unsafe.Pointer,
 	args := []gi.Argument{arg_func1, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -20511,7 +20872,12 @@ func (v Promise) Wait() (result PromiseResultEnum) {
 type PromiseChangeFunc func(promise Promise, user_data unsafe.Pointer)
 
 func CallPromiseChangeFunc(fn PromiseChangeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	promise := Promise{P: *(*unsafe.Pointer)(args[0])}
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(promise, user_data)
 }
 
 // Enum PromiseResult
@@ -22761,6 +23127,7 @@ func (v Registry) FeatureFilter(filter PluginFeatureFilter, first bool, user_dat
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -22968,6 +23335,7 @@ func (v Registry) PluginFilter(filter PluginFilter, first bool, user_data unsafe
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -24483,6 +24851,7 @@ func (v Structure) FilterAndMapInPlace(func1 StructureFilterMapFunc, user_data u
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_structure_fixate
@@ -24681,6 +25050,7 @@ func (v Structure) Foreach(func1 StructureForeachFunc, user_data unsafe.Pointer)
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -25470,6 +25840,7 @@ func (v Structure) MapInPlace(func1 StructureMapFunc, user_data unsafe.Pointer) 
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Bool()
 	return
 }
@@ -25728,19 +26099,37 @@ func StructureChangeTypeGetType() gi.GType {
 type StructureFilterMapFunc func(field_id uint32, value g.Value, user_data unsafe.Pointer) (result bool)
 
 func CallStructureFilterMapFunc(fn StructureFilterMapFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	field_id := *(*uint32)(args[0])
+	value := g.Value{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(field_id, value, user_data)
 }
 
 type StructureForeachFunc func(field_id uint32, value g.Value, user_data unsafe.Pointer) (result bool)
 
 func CallStructureForeachFunc(fn StructureForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	field_id := *(*uint32)(args[0])
+	value := g.Value{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(field_id, value, user_data)
 }
 
 type StructureMapFunc func(field_id uint32, value g.Value, user_data unsafe.Pointer) (result bool)
 
 func CallStructureMapFunc(fn StructureMapFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	field_id := *(*uint32)(args[0])
+	value := g.Value{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(field_id, value, user_data)
 }
 
 // Object SystemClock
@@ -25824,7 +26213,13 @@ func TagFlagGetType() gi.GType {
 type TagForeachFunc func(list TagList, tag string, user_data unsafe.Pointer)
 
 func CallTagForeachFunc(fn TagForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	list := TagList{P: *(*unsafe.Pointer)(args[0])}
+	tag := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(list, tag, user_data)
 }
 
 // Struct TagList
@@ -25923,6 +26318,7 @@ func (v TagList) Foreach(func1 TagForeachFunc, user_data unsafe.Pointer) {
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_tag_list_get_boolean
@@ -26935,7 +27331,12 @@ func TagListCopyValue1(dest g.Value, list TagList, tag string) (result bool) {
 type TagMergeFunc func(dest g.Value, src g.Value)
 
 func CallTagMergeFunc(fn TagMergeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	dest := g.Value{P: *(*unsafe.Pointer)(args[0])}
+	src := g.Value{P: *(*unsafe.Pointer)(args[1])}
+	fn(dest, src)
 }
 
 // Enum TagMergeMode
@@ -27141,6 +27542,8 @@ func NewTask(func1 TaskFunction, user_data unsafe.Pointer, notify g.DestroyNotif
 	args := []gi.Argument{arg_func1, arg_user_data, arg_notify}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -27258,6 +27661,8 @@ func (v Task) SetEnterCallback(enter_func TaskThreadFunc, user_data unsafe.Point
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_enter_func, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_task_set_leave_callback
@@ -27290,6 +27695,8 @@ func (v Task) SetLeaveCallback(leave_func TaskThreadFunc, user_data unsafe.Point
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_v, arg_leave_func, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_task_set_lock
@@ -27390,7 +27797,11 @@ func (v Task) Stop() (result bool) {
 type TaskFunction func(user_data unsafe.Pointer)
 
 func CallTaskFunction(fn TaskFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	user_data := *(*unsafe.Pointer)(args[0])
+	fn(user_data)
 }
 
 // Object TaskPool
@@ -27495,6 +27906,7 @@ func (v TaskPool) Push(func1 TaskPoolFunction, user_data unsafe.Pointer) (result
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data, arg_err}
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
+	callableInfo.Unref()
 	err = gi.ToError(outArgs[0].Pointer())
 	result = ret.Pointer()
 	return
@@ -27505,7 +27917,11 @@ func (v TaskPool) Push(func1 TaskPoolFunction, user_data unsafe.Pointer) (result
 type TaskPoolFunction func(user_data unsafe.Pointer)
 
 func CallTaskPoolFunction(fn TaskPoolFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	user_data := *(*unsafe.Pointer)(args[0])
+	fn(user_data)
 }
 
 // Struct TaskPrivate
@@ -27535,7 +27951,13 @@ func TaskStateGetType() gi.GType {
 type TaskThreadFunc func(task Task, thread g.Thread, user_data unsafe.Pointer)
 
 func CallTaskThreadFunc(fn TaskThreadFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	task := WrapTask(*(*unsafe.Pointer)(args[0]))
+	thread := g.Thread{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(task, thread, user_data)
 }
 
 // Struct TimedValue
@@ -28404,7 +28826,9 @@ func TypeFindRegister1(plugin IPlugin, name string, rank uint32, func1 TypeFindF
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
+	callableInfo.Unref()
 	gi.Free(c_extensions)
+	callableInfo1.Unref()
 	result = ret.Bool()
 	return
 }
@@ -28516,7 +28940,12 @@ func (v TypeFindFactory) HasFunction() (result bool) {
 type TypeFindFunction func(find TypeFind, user_data unsafe.Pointer)
 
 func CallTypeFindFunction(fn TypeFindFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	find := TypeFind{P: *(*unsafe.Pointer)(args[0])}
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(find, user_data)
 }
 
 // Enum TypeFindProbability
@@ -29843,13 +30272,23 @@ func ValueArrayPrependValue1(value g.Value, prepend_value g.Value) {
 type ValueCompareFunc func(value1 g.Value, value2 g.Value) (result int32)
 
 func CallValueCompareFunc(fn ValueCompareFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	value1 := g.Value{P: *(*unsafe.Pointer)(args[0])}
+	value2 := g.Value{P: *(*unsafe.Pointer)(args[1])}
+	fn(value1, value2)
 }
 
 type ValueDeserializeFunc func(dest g.Value, s string) (result bool)
 
 func CallValueDeserializeFunc(fn ValueDeserializeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	dest := g.Value{P: *(*unsafe.Pointer)(args[0])}
+	s := gi.GoString(*(*unsafe.Pointer)(args[1]))
+	fn(dest, s)
 }
 
 // Object ValueList
@@ -30009,7 +30448,11 @@ func ValueListPrependValue1(value g.Value, prepend_value g.Value) {
 type ValueSerializeFunc func(value1 g.Value) (result string)
 
 func CallValueSerializeFunc(fn ValueSerializeFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	value1 := g.Value{P: *(*unsafe.Pointer)(args[0])}
+	fn(value1)
 }
 
 // Struct ValueTable
@@ -30129,6 +30572,8 @@ func DebugAddLogFunction(func1 LogFunction, user_data unsafe.Pointer, notify g.D
 	arg_notify := gi.NewPointerArgument(funcPtr1)
 	args := []gi.Argument{arg_func1, arg_user_data, arg_notify}
 	iv.Call(args, nil, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 }
 
 // gst_debug_add_ring_buffer_logger
@@ -30466,6 +30911,7 @@ func DebugRemoveLogFunction(func1 LogFunction) (result uint32) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Uint32()
 	return
 }
@@ -31271,6 +31717,9 @@ func MetaRegister(api gi.GType, impl string, size uint64, init_func MetaInitFunc
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_impl)
+	callableInfo.Unref()
+	callableInfo1.Unref()
+	callableInfo2.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -32264,6 +32713,7 @@ func TagRegister(name string, flag TagFlagEnum, type1 gi.GType, nick string, blu
 	gi.Free(c_nick)
 	gi.Free(c_blurb)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_tag_register_static
@@ -32305,6 +32755,7 @@ func TagRegisterStatic(name string, flag TagFlagEnum, type1 gi.GType, nick strin
 	gi.Free(c_nick)
 	gi.Free(c_blurb)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_toc_entry_type_get_nick
@@ -32397,7 +32848,9 @@ func TypeFindRegister(plugin IPlugin, name string, rank uint32, func1 TypeFindFu
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.Free(c_name)
+	callableInfo.Unref()
 	gi.Free(c_extensions)
+	callableInfo1.Unref()
 	result = ret.Bool()
 	return
 }
@@ -32691,6 +33144,7 @@ func UtilArrayBinarySearch(array unsafe.Pointer, num_elements uint32, element_si
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result = ret.Pointer()
 	return
 }

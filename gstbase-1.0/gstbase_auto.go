@@ -5297,7 +5297,11 @@ func CollectDataGetType() gi.GType {
 type CollectDataDestroyNotify func(data CollectData)
 
 func CallCollectDataDestroyNotify(fn CollectDataDestroyNotify, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	data := CollectData{P: *(*unsafe.Pointer)(args[0])}
+	fn(data)
 }
 
 // Struct CollectDataPrivate
@@ -5376,6 +5380,7 @@ func (v CollectPads) AddPad(pad gst.IPad, size uint32, destroy_notify CollectDat
 	args := []gi.Argument{arg_v, arg_pad, arg_size, arg_destroy_notify, arg_lock}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -5621,6 +5626,7 @@ func (v CollectPads) SetBufferFunction(func1 CollectPadsBufferFunction, user_dat
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_collect_pads_set_clip_function
@@ -5645,6 +5651,7 @@ func (v CollectPads) SetClipFunction(clipfunc CollectPadsClipFunction, user_data
 	args := []gi.Argument{arg_v, arg_clipfunc, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_collect_pads_set_compare_function
@@ -5669,6 +5676,7 @@ func (v CollectPads) SetCompareFunction(func1 CollectPadsCompareFunction, user_d
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_collect_pads_set_event_function
@@ -5693,6 +5701,7 @@ func (v CollectPads) SetEventFunction(func1 CollectPadsEventFunction, user_data 
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_collect_pads_set_flush_function
@@ -5717,6 +5726,7 @@ func (v CollectPads) SetFlushFunction(func1 CollectPadsFlushFunction, user_data 
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_collect_pads_set_flushing
@@ -5757,6 +5767,7 @@ func (v CollectPads) SetFunction(func1 CollectPadsFunction, user_data unsafe.Poi
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_collect_pads_set_query_function
@@ -5781,6 +5792,7 @@ func (v CollectPads) SetQueryFunction(func1 CollectPadsQueryFunction, user_data 
 	args := []gi.Argument{arg_v, arg_func1, arg_user_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // gst_collect_pads_set_waiting
@@ -5883,7 +5895,14 @@ func (v CollectPads) TakeBuffer(data CollectData, size uint32) (result gst.Buffe
 type CollectPadsBufferFunction func(pads CollectPads, data CollectData, buffer gst.Buffer, user_data unsafe.Pointer)
 
 func CallCollectPadsBufferFunction(fn CollectPadsBufferFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pads := WrapCollectPads(*(*unsafe.Pointer)(args[0]))
+	data := CollectData{P: *(*unsafe.Pointer)(args[1])}
+	buffer := gst.Buffer{P: *(*unsafe.Pointer)(args[2])}
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(pads, data, buffer, user_data)
 }
 
 // ignore GType struct CollectPadsClass
@@ -5891,31 +5910,66 @@ func CallCollectPadsBufferFunction(fn CollectPadsBufferFunction, result unsafe.P
 type CollectPadsClipFunction func(pads CollectPads, data CollectData, inbuffer gst.Buffer, user_data unsafe.Pointer) (outbuffer unsafe.Pointer /*TODO_CB dir:out tag: interface, isPtr: true*/)
 
 func CallCollectPadsClipFunction(fn CollectPadsClipFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pads := WrapCollectPads(*(*unsafe.Pointer)(args[0]))
+	data := CollectData{P: *(*unsafe.Pointer)(args[1])}
+	inbuffer := gst.Buffer{P: *(*unsafe.Pointer)(args[2])}
+	outbuffer := *(*unsafe.Pointer)(args[3])
+	_ = outbuffer
+	user_data := *(*unsafe.Pointer)(args[4])
+	fn(pads, data, inbuffer, user_data)
 }
 
 type CollectPadsCompareFunction func(pads CollectPads, data1 CollectData, timestamp1 uint64, data2 CollectData, timestamp2 uint64, user_data unsafe.Pointer) (result int32)
 
 func CallCollectPadsCompareFunction(fn CollectPadsCompareFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pads := WrapCollectPads(*(*unsafe.Pointer)(args[0]))
+	data1 := CollectData{P: *(*unsafe.Pointer)(args[1])}
+	timestamp1 := *(*uint64)(args[2])
+	data2 := CollectData{P: *(*unsafe.Pointer)(args[3])}
+	timestamp2 := *(*uint64)(args[4])
+	user_data := *(*unsafe.Pointer)(args[5])
+	fn(pads, data1, timestamp1, data2, timestamp2, user_data)
 }
 
 type CollectPadsEventFunction func(pads CollectPads, pad CollectData, event gst.Event, user_data unsafe.Pointer) (result bool)
 
 func CallCollectPadsEventFunction(fn CollectPadsEventFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pads := WrapCollectPads(*(*unsafe.Pointer)(args[0]))
+	pad := CollectData{P: *(*unsafe.Pointer)(args[1])}
+	event := gst.Event{P: *(*unsafe.Pointer)(args[2])}
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(pads, pad, event, user_data)
 }
 
 type CollectPadsFlushFunction func(pads CollectPads, user_data unsafe.Pointer)
 
 func CallCollectPadsFlushFunction(fn CollectPadsFlushFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pads := WrapCollectPads(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(pads, user_data)
 }
 
 type CollectPadsFunction func(pads CollectPads, user_data unsafe.Pointer)
 
 func CallCollectPadsFunction(fn CollectPadsFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pads := WrapCollectPads(*(*unsafe.Pointer)(args[0]))
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(pads, user_data)
 }
 
 // Struct CollectPadsPrivate
@@ -5931,7 +5985,14 @@ func CollectPadsPrivateGetType() gi.GType {
 type CollectPadsQueryFunction func(pads CollectPads, pad CollectData, query gst.Query, user_data unsafe.Pointer) (result bool)
 
 func CallCollectPadsQueryFunction(fn CollectPadsQueryFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	pads := WrapCollectPads(*(*unsafe.Pointer)(args[0]))
+	pad := CollectData{P: *(*unsafe.Pointer)(args[1])}
+	query := gst.Query{P: *(*unsafe.Pointer)(args[2])}
+	user_data := *(*unsafe.Pointer)(args[3])
+	fn(pads, pad, query, user_data)
 }
 
 // Flags CollectPadsStateFlags
@@ -5970,13 +6031,23 @@ func DataQueueGetType() gi.GType {
 type DataQueueEmptyCallback func(queue DataQueue, checkdata unsafe.Pointer)
 
 func CallDataQueueEmptyCallback(fn DataQueueEmptyCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	queue := WrapDataQueue(*(*unsafe.Pointer)(args[0]))
+	checkdata := *(*unsafe.Pointer)(args[1])
+	fn(queue, checkdata)
 }
 
 type DataQueueFullCallback func(queue DataQueue, checkdata unsafe.Pointer)
 
 func CallDataQueueFullCallback(fn DataQueueFullCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	queue := WrapDataQueue(*(*unsafe.Pointer)(args[0]))
+	checkdata := *(*unsafe.Pointer)(args[1])
+	fn(queue, checkdata)
 }
 
 // Struct DataQueuePrivate
@@ -6194,7 +6265,16 @@ func PushSrcGetType() gi.GType {
 type TypeFindHelperGetRangeFunction func(obj gst.Object, parent gst.Object, offset uint64, length uint32) (buffer unsafe.Pointer /*TODO_CB dir:out tag: interface, isPtr: true*/)
 
 func CallTypeFindHelperGetRangeFunction(fn TypeFindHelperGetRangeFunction, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	obj := gst.WrapObject(*(*unsafe.Pointer)(args[0]))
+	parent := gst.WrapObject(*(*unsafe.Pointer)(args[1]))
+	offset := *(*uint64)(args[2])
+	length := *(*uint32)(args[3])
+	buffer := *(*unsafe.Pointer)(args[4])
+	_ = buffer
+	fn(obj, parent, offset, length)
 }
 
 // gst_type_find_helper
@@ -6366,6 +6446,7 @@ func TypeFindHelperGetRange(obj gst.IObject, parent gst.IObject, func1 TypeFindH
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	gi.Free(c_extension)
 	prob = gst.TypeFindProbabilityEnum(outArgs[0].Int())
 	result.P = ret.Pointer()
@@ -6421,6 +6502,7 @@ func TypeFindHelperGetRangeFull(obj gst.IObject, parent gst.IObject, func1 TypeF
 	var ret gi.Argument
 	iv.Call(args, &ret, &outArgs[0])
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	gi.Free(c_extension)
 	caps.P = outArgs[0].Pointer()
 	prob = gst.TypeFindProbabilityEnum(outArgs[1].Int())

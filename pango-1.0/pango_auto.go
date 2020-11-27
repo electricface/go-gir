@@ -98,13 +98,22 @@ func AttrColorGetType() gi.GType {
 type AttrDataCopyFunc func(user_data unsafe.Pointer) (result unsafe.Pointer)
 
 func CallAttrDataCopyFunc(fn AttrDataCopyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	user_data := *(*unsafe.Pointer)(args[0])
+	fn(user_data)
 }
 
 type AttrFilterFunc func(attribute Attribute, user_data unsafe.Pointer) (result bool)
 
 func CallAttrFilterFunc(fn AttrFilterFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	attribute := Attribute{P: *(*unsafe.Pointer)(args[0])}
+	user_data := *(*unsafe.Pointer)(args[1])
+	fn(attribute, user_data)
 }
 
 // Struct AttrFloat
@@ -356,6 +365,7 @@ func (v AttrList) Filter(func1 AttrFilterFunc, data unsafe.Pointer) (result Attr
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -2727,6 +2737,7 @@ func (v Fontset) Foreach(func1 FontsetForeachFunc, data unsafe.Pointer) {
 	args := []gi.Argument{arg_v, arg_func1, arg_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
+	callableInfo.Unref()
 }
 
 // pango_fontset_get_font
@@ -2773,7 +2784,13 @@ func (v Fontset) GetMetrics() (result FontMetrics) {
 type FontsetForeachFunc func(fontset Fontset, font Font, user_data unsafe.Pointer) (result bool)
 
 func CallFontsetForeachFunc(fn FontsetForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	fontset := WrapFontset(*(*unsafe.Pointer)(args[0]))
+	font := WrapFont(*(*unsafe.Pointer)(args[1]))
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(fontset, font, user_data)
 }
 
 // Object FontsetSimple

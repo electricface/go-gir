@@ -473,7 +473,13 @@ func PtpClockPrivateGetType() gi.GType {
 type PtpStatisticsCallback func(domain uint8, stats gst.Structure, user_data unsafe.Pointer) (result bool)
 
 func CallPtpStatisticsCallback(fn PtpStatisticsCallback, result unsafe.Pointer, args []unsafe.Pointer) {
-	// fn()
+	if fn == nil {
+		return
+	}
+	domain := *(*uint8)(args[0])
+	stats := gst.Structure{P: *(*unsafe.Pointer)(args[1])}
+	user_data := *(*unsafe.Pointer)(args[2])
+	fn(domain, stats, user_data)
 }
 
 // gst_buffer_add_net_address_meta
@@ -742,6 +748,8 @@ func PtpStatisticsCallbackAdd(callback PtpStatisticsCallback, user_data unsafe.P
 	args := []gi.Argument{arg_callback, arg_user_data, arg_destroy_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
+	callableInfo.Unref()
+	callableInfo1.Unref()
 	result = ret.Uint64()
 	return
 }
