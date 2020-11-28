@@ -999,14 +999,14 @@ func CallFocusHandler(fn FocusHandler, result unsafe.Pointer, args []unsafe.Poin
 	fn(object, focus_in)
 }
 
-type Function func(user_data unsafe.Pointer) (result bool)
+type Function func() (result bool)
 
 func CallFunction(fn Function, result unsafe.Pointer, args []unsafe.Pointer) {
 	if fn == nil {
 		return
 	}
-	user_data := *(*unsafe.Pointer)(args[0])
-	fn(user_data)
+	fnRet := fn()
+	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
 // Object GObjectAccessible
@@ -1553,15 +1553,15 @@ func KeyEventTypeGetType() gi.GType {
 	return ret
 }
 
-type KeySnoopFunc func(event KeyEventStruct, user_data unsafe.Pointer) (result int32)
+type KeySnoopFunc func(event KeyEventStruct) (result int32)
 
 func CallKeySnoopFunc(fn KeySnoopFunc, result unsafe.Pointer, args []unsafe.Pointer) {
 	if fn == nil {
 		return
 	}
 	event := KeyEventStruct{P: *(*unsafe.Pointer)(args[0])}
-	user_data := *(*unsafe.Pointer)(args[1])
-	fn(event, user_data)
+	fnRet := fn(event)
+	*(*int32)(result) = fnRet
 }
 
 // Enum Layer

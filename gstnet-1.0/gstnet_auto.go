@@ -470,7 +470,7 @@ func PtpClockPrivateGetType() gi.GType {
 	return ret
 }
 
-type PtpStatisticsCallback func(domain uint8, stats gst.Structure, user_data unsafe.Pointer) (result bool)
+type PtpStatisticsCallback func(domain uint8, stats gst.Structure) (result bool)
 
 func CallPtpStatisticsCallback(fn PtpStatisticsCallback, result unsafe.Pointer, args []unsafe.Pointer) {
 	if fn == nil {
@@ -478,8 +478,8 @@ func CallPtpStatisticsCallback(fn PtpStatisticsCallback, result unsafe.Pointer, 
 	}
 	domain := *(*uint8)(args[0])
 	stats := gst.Structure{P: *(*unsafe.Pointer)(args[1])}
-	user_data := *(*unsafe.Pointer)(args[2])
-	fn(domain, stats, user_data)
+	fnRet := fn(domain, stats)
+	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
 // gst_buffer_add_net_address_meta
@@ -726,30 +726,27 @@ func PtpIsSupported() (result bool) {
 //
 // [ result ] trans: nothing
 //
-func PtpStatisticsCallbackAdd(callback PtpStatisticsCallback, user_data unsafe.Pointer, destroy_data g.DestroyNotify) (result uint64) {
+func PtpStatisticsCallbackAdd(callback PtpStatisticsCallback) (result uint64) {
 	iv, err := _I.Get(24, "ptp_statistics_callback_add", "", 33, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	callableInfo := gi.GetCallableInfo("GstNet", "PtpStatisticsCallback")
-	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		CallPtpStatisticsCallback(callback, __result, __args)
-	}, gi.ScopeNotified, callableInfo)
-	_ = cId
-	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
-	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		g.CallDestroyNotify(destroy_data, __result, __args)
-	}, gi.ScopeAsync, callableInfo1)
-	_ = cId1
+	var cId uint
+	var funcPtr unsafe.Pointer
+	if callback != nil {
+		callableInfo := gi.GetCallableInfo("GstNet", "PtpStatisticsCallback")
+		cId, funcPtr = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			CallPtpStatisticsCallback(callback, __result, __args)
+		}, gi.ScopeNotified, callableInfo)
+		callableInfo.Unref()
+	}
 	arg_callback := gi.NewPointerArgument(funcPtr)
-	arg_user_data := gi.NewPointerArgument(user_data)
-	arg_destroy_data := gi.NewPointerArgument(funcPtr1)
+	arg_user_data := gi.NewPointerArgument(gi.Uint2Ptr(cId))
+	arg_destroy_data := gi.NewPointerArgument(gi.GetClosureDestroyNotifyPtr())
 	args := []gi.Argument{arg_callback, arg_user_data, arg_destroy_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	callableInfo.Unref()
-	callableInfo1.Unref()
 	result = ret.Uint64()
 	return
 }

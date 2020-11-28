@@ -29,7 +29,6 @@ package pangocairo
 */
 import "C"
 import "github.com/linuxdeepin/go-gir/cairo-1.0"
-import "github.com/linuxdeepin/go-gir/g-2.0"
 import "github.com/linuxdeepin/go-gir/gi"
 import "github.com/linuxdeepin/go-gir/pango-1.0"
 import "log"
@@ -325,7 +324,7 @@ func ContextSetResolution(context pango.IContext, dpi float64) {
 //
 // [ dnotify ] trans: nothing
 //
-func ContextSetShapeRenderer(context pango.IContext, func1 ShapeRendererFunc, data unsafe.Pointer, dnotify g.DestroyNotify) {
+func ContextSetShapeRenderer(context pango.IContext, func1 ShapeRendererFunc) {
 	iv, err := _I.Get(12, "context_set_shape_renderer", "", 7, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -335,24 +334,21 @@ func ContextSetShapeRenderer(context pango.IContext, func1 ShapeRendererFunc, da
 	if context != nil {
 		tmp = context.P_Context()
 	}
-	callableInfo := gi.GetCallableInfo("PangoCairo", "ShapeRendererFunc")
-	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		CallShapeRendererFunc(func1, __result, __args)
-	}, gi.ScopeNotified, callableInfo)
-	_ = cId
-	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
-	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		g.CallDestroyNotify(dnotify, __result, __args)
-	}, gi.ScopeAsync, callableInfo1)
-	_ = cId1
+	var cId uint
+	var funcPtr unsafe.Pointer
+	if func1 != nil {
+		callableInfo := gi.GetCallableInfo("PangoCairo", "ShapeRendererFunc")
+		cId, funcPtr = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			CallShapeRendererFunc(func1, __result, __args)
+		}, gi.ScopeNotified, callableInfo)
+		callableInfo.Unref()
+	}
 	arg_context := gi.NewPointerArgument(tmp)
 	arg_func1 := gi.NewPointerArgument(funcPtr)
-	arg_data := gi.NewPointerArgument(data)
-	arg_dnotify := gi.NewPointerArgument(funcPtr1)
+	arg_data := gi.NewPointerArgument(gi.Uint2Ptr(cId))
+	arg_dnotify := gi.NewPointerArgument(gi.GetClosureDestroyNotifyPtr())
 	args := []gi.Argument{arg_context, arg_func1, arg_data, arg_dnotify}
 	iv.Call(args, nil, nil)
-	callableInfo.Unref()
-	callableInfo1.Unref()
 }
 
 // pango_cairo_create_context

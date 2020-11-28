@@ -58,6 +58,7 @@ func RegisterFClosure(fn FClosureFunc, scope Scope, callableInfo CallableInfo) (
 	id := _fClosureNextId
 	_fClosureNextId++
 	ffiClosure := callableInfo.PrepareClosure(Uint2Ptr(id))
+	callableInfo.Ref()
 	_fClosureMap[id] = FClosure{
 		Fn:           fn,
 		Scope:        scope,
@@ -80,6 +81,7 @@ func UnregisterFClosure(id uint) {
 			fmt.Printf("gi.UnregisterFunc %p %v id: %v\n", closure.Fn, closure.Scope, id)
 		}
 		closure.CallableInfo.FreeClosure(closure.FFIClosure)
+		closure.CallableInfo.Unref()
 		delete(_fClosureMap, id)
 	} else {
 		if debugOn {
@@ -94,6 +96,13 @@ func GetFClosure(id uint) FClosure {
 	c := _fClosureMap[id]
 	_fClosureMapMu.RUnlock()
 	return c
+}
+
+func handleClosureDestroy(id unsafe.Pointer) {
+	if id == nil {
+		return
+	}
+	UnregisterFClosure(uint(uintptr(id)))
 }
 
 type Closure struct {

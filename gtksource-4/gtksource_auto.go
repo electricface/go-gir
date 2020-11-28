@@ -2662,7 +2662,7 @@ func (v FileLoader) GetNewlineType() (result NewlineTypeEnum) {
 //
 // [ user_data ] trans: nothing
 //
-func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, progress_callback g.FileProgressCallback, progress_callback_data unsafe.Pointer, progress_callback_notify g.DestroyNotify, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
+func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, progress_callback g.FileProgressCallback, callback g.AsyncReadyCallback) {
 	iv, err := _I.Get(115, "FileLoader", "load_async", 31, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -2672,34 +2672,33 @@ func (v FileLoader) LoadAsync(io_priority int32, cancellable g.ICancellable, pro
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	callableInfo := gi.GetCallableInfo("Gio", "FileProgressCallback")
-	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		g.CallFileProgressCallback(progress_callback, __result, __args)
-	}, gi.ScopeNotified, callableInfo)
-	_ = cId
-	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
-	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		g.CallDestroyNotify(progress_callback_notify, __result, __args)
-	}, gi.ScopeAsync, callableInfo1)
-	_ = cId1
-	callableInfo2 := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
-	cId2, funcPtr2 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		g.CallAsyncReadyCallback(callback, __result, __args)
-	}, gi.ScopeAsync, callableInfo2)
-	_ = cId2
+	var cId uint
+	var funcPtr unsafe.Pointer
+	if progress_callback != nil {
+		callableInfo := gi.GetCallableInfo("Gio", "FileProgressCallback")
+		cId, funcPtr = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			g.CallFileProgressCallback(progress_callback, __result, __args)
+		}, gi.ScopeNotified, callableInfo)
+		callableInfo.Unref()
+	}
+	var funcPtr1 unsafe.Pointer
+	if callback != nil {
+		callableInfo1 := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+		_, funcPtr1 = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			g.CallAsyncReadyCallback(callback, __result, __args)
+		}, gi.ScopeAsync, callableInfo1)
+		callableInfo1.Unref()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_progress_callback := gi.NewPointerArgument(funcPtr)
-	arg_progress_callback_data := gi.NewPointerArgument(progress_callback_data)
-	arg_progress_callback_notify := gi.NewPointerArgument(funcPtr1)
-	arg_callback := gi.NewPointerArgument(funcPtr2)
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_progress_callback_data := gi.NewPointerArgument(gi.Uint2Ptr(cId))
+	arg_progress_callback_notify := gi.NewPointerArgument(gi.GetClosureDestroyNotifyPtr())
+	arg_callback := gi.NewPointerArgument(funcPtr1)
+	arg_user_data := gi.NewPointerArgument(nil)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_progress_callback_notify, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
-	callableInfo.Unref()
-	callableInfo1.Unref()
-	callableInfo2.Unref()
 }
 
 // gtk_source_file_loader_load_finish
@@ -3007,7 +3006,7 @@ func (v FileSaver) GetNewlineType() (result NewlineTypeEnum) {
 //
 // [ user_data ] trans: nothing
 //
-func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, progress_callback g.FileProgressCallback, progress_callback_data unsafe.Pointer, progress_callback_notify g.DestroyNotify, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
+func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, progress_callback g.FileProgressCallback, callback g.AsyncReadyCallback) {
 	iv, err := _I.Get(127, "FileSaver", "save_async", 36, 9, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -3017,34 +3016,33 @@ func (v FileSaver) SaveAsync(io_priority int32, cancellable g.ICancellable, prog
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	callableInfo := gi.GetCallableInfo("Gio", "FileProgressCallback")
-	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		g.CallFileProgressCallback(progress_callback, __result, __args)
-	}, gi.ScopeNotified, callableInfo)
-	_ = cId
-	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
-	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		g.CallDestroyNotify(progress_callback_notify, __result, __args)
-	}, gi.ScopeAsync, callableInfo1)
-	_ = cId1
-	callableInfo2 := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
-	cId2, funcPtr2 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		g.CallAsyncReadyCallback(callback, __result, __args)
-	}, gi.ScopeAsync, callableInfo2)
-	_ = cId2
+	var cId uint
+	var funcPtr unsafe.Pointer
+	if progress_callback != nil {
+		callableInfo := gi.GetCallableInfo("Gio", "FileProgressCallback")
+		cId, funcPtr = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			g.CallFileProgressCallback(progress_callback, __result, __args)
+		}, gi.ScopeNotified, callableInfo)
+		callableInfo.Unref()
+	}
+	var funcPtr1 unsafe.Pointer
+	if callback != nil {
+		callableInfo1 := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+		_, funcPtr1 = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			g.CallAsyncReadyCallback(callback, __result, __args)
+		}, gi.ScopeAsync, callableInfo1)
+		callableInfo1.Unref()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_io_priority := gi.NewInt32Argument(io_priority)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_progress_callback := gi.NewPointerArgument(funcPtr)
-	arg_progress_callback_data := gi.NewPointerArgument(progress_callback_data)
-	arg_progress_callback_notify := gi.NewPointerArgument(funcPtr1)
-	arg_callback := gi.NewPointerArgument(funcPtr2)
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_progress_callback_data := gi.NewPointerArgument(gi.Uint2Ptr(cId))
+	arg_progress_callback_notify := gi.NewPointerArgument(gi.GetClosureDestroyNotifyPtr())
+	arg_callback := gi.NewPointerArgument(funcPtr1)
+	arg_user_data := gi.NewPointerArgument(nil)
 	args := []gi.Argument{arg_v, arg_io_priority, arg_cancellable, arg_progress_callback, arg_progress_callback_data, arg_progress_callback_notify, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
-	callableInfo.Unref()
-	callableInfo1.Unref()
-	callableInfo2.Unref()
 }
 
 // gtk_source_file_saver_save_finish
@@ -6184,7 +6182,7 @@ func (v SearchContext) Backward(iter gtk.TextIter, match_start gtk.TextIter, mat
 //
 // [ user_data ] trans: nothing
 //
-func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
+func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellable, callback g.AsyncReadyCallback) {
 	iv, err := _I.Get(264, "SearchContext", "backward_async", 76, 2, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6194,19 +6192,21 @@ func (v SearchContext) BackwardAsync(iter gtk.TextIter, cancellable g.ICancellab
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
-	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		g.CallAsyncReadyCallback(callback, __result, __args)
-	}, gi.ScopeAsync, callableInfo)
-	_ = cId
+	var funcPtr unsafe.Pointer
+	if callback != nil {
+		callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+		_, funcPtr = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			g.CallAsyncReadyCallback(callback, __result, __args)
+		}, gi.ScopeAsync, callableInfo)
+		callableInfo.Unref()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewPointerArgument(funcPtr)
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_user_data := gi.NewPointerArgument(nil)
 	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
-	callableInfo.Unref()
 }
 
 // gtk_source_search_context_backward_finish
@@ -6288,7 +6288,7 @@ func (v SearchContext) Forward(iter gtk.TextIter, match_start gtk.TextIter, matc
 //
 // [ user_data ] trans: nothing
 //
-func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellable, callback g.AsyncReadyCallback, user_data unsafe.Pointer) {
+func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellable, callback g.AsyncReadyCallback) {
 	iv, err := _I.Get(267, "SearchContext", "forward_async", 76, 5, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
@@ -6298,19 +6298,21 @@ func (v SearchContext) ForwardAsync(iter gtk.TextIter, cancellable g.ICancellabl
 	if cancellable != nil {
 		tmp = cancellable.P_Cancellable()
 	}
-	callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
-	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		g.CallAsyncReadyCallback(callback, __result, __args)
-	}, gi.ScopeAsync, callableInfo)
-	_ = cId
+	var funcPtr unsafe.Pointer
+	if callback != nil {
+		callableInfo := gi.GetCallableInfo("Gio", "AsyncReadyCallback")
+		_, funcPtr = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			g.CallAsyncReadyCallback(callback, __result, __args)
+		}, gi.ScopeAsync, callableInfo)
+		callableInfo.Unref()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_iter := gi.NewPointerArgument(iter.P)
 	arg_cancellable := gi.NewPointerArgument(tmp)
 	arg_callback := gi.NewPointerArgument(funcPtr)
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_user_data := gi.NewPointerArgument(nil)
 	args := []gi.Argument{arg_v, arg_iter, arg_cancellable, arg_callback, arg_user_data}
 	iv.Call(args, nil, nil)
-	callableInfo.Unref()
 }
 
 // gtk_source_search_context_forward_finish

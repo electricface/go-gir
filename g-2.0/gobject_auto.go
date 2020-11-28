@@ -197,7 +197,7 @@ func BindingFlagsGetType() gi.GType {
 	return ret
 }
 
-type BindingTransformFunc func(binding Binding, from_value Value, to_value Value, user_data unsafe.Pointer) (result bool)
+type BindingTransformFunc func(binding Binding, from_value Value, to_value Value) (result bool)
 
 func CallBindingTransformFunc(fn BindingTransformFunc, result unsafe.Pointer, args []unsafe.Pointer) {
 	if fn == nil {
@@ -206,8 +206,8 @@ func CallBindingTransformFunc(fn BindingTransformFunc, result unsafe.Pointer, ar
 	binding := WrapBinding(*(*unsafe.Pointer)(args[0]))
 	from_value := Value{P: *(*unsafe.Pointer)(args[1])}
 	to_value := Value{P: *(*unsafe.Pointer)(args[2])}
-	user_data := *(*unsafe.Pointer)(args[3])
-	fn(binding, from_value, to_value, user_data)
+	fnRet := fn(binding, from_value, to_value)
+	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
 type BoxedCopyFunc func(boxed unsafe.Pointer) (result unsafe.Pointer)
@@ -217,7 +217,8 @@ func CallBoxedCopyFunc(fn BoxedCopyFunc, result unsafe.Pointer, args []unsafe.Po
 		return
 	}
 	boxed := *(*unsafe.Pointer)(args[0])
-	fn(boxed)
+	fnRet := fn(boxed)
+	*(*unsafe.Pointer)(result) = fnRet
 }
 
 type BoxedFreeFunc func(boxed unsafe.Pointer)
@@ -2761,7 +2762,8 @@ func CallSignalAccumulator(fn SignalAccumulator, result unsafe.Pointer, args []u
 	return_accu := Value{P: *(*unsafe.Pointer)(args[1])}
 	handler_return := Value{P: *(*unsafe.Pointer)(args[2])}
 	data := *(*unsafe.Pointer)(args[3])
-	fn(ihint, return_accu, handler_return, data)
+	fnRet := fn(ihint, return_accu, handler_return, data)
+	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
 type SignalEmissionHook func(ihint SignalInvocationHint, n_param_values uint32, param_values unsafe.Pointer, data unsafe.Pointer) (result bool)
@@ -2774,7 +2776,8 @@ func CallSignalEmissionHook(fn SignalEmissionHook, result unsafe.Pointer, args [
 	n_param_values := *(*uint32)(args[1])
 	param_values := *(*unsafe.Pointer)(args[2])
 	data := *(*unsafe.Pointer)(args[3])
-	fn(ihint, n_param_values, param_values, data)
+	fnRet := fn(ihint, n_param_values, param_values, data)
+	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
 // Flags SignalFlags
@@ -3030,7 +3033,8 @@ func CallTypeClassCacheFunc(fn TypeClassCacheFunc, result unsafe.Pointer, args [
 	}
 	cache_data := *(*unsafe.Pointer)(args[0])
 	g_class := TypeClass{P: *(*unsafe.Pointer)(args[1])}
-	fn(cache_data, g_class)
+	fnRet := fn(cache_data, g_class)
+	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
 // Deprecated
@@ -4819,24 +4823,28 @@ func (v ValueArray) Remove(index_ uint32) (result ValueArray) {
 //
 // [ result ] trans: nothing
 //
-func (v ValueArray) Sort(compare_func CompareDataFunc, user_data unsafe.Pointer) (result ValueArray) {
+func (v ValueArray) Sort(compare_func CompareDataFunc) (result ValueArray) {
 	iv, err := _I.Get1(1484, "GObject", "ValueArray", "sort", 105, 7, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	callableInfo := gi.GetCallableInfo("GLib", "CompareDataFunc")
-	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		CallCompareDataFunc(compare_func, __result, __args)
-	}, gi.ScopeCall, callableInfo)
+	var cId uint
+	var funcPtr unsafe.Pointer
+	if compare_func != nil {
+		callableInfo := gi.GetCallableInfo("GLib", "CompareDataFunc")
+		cId, funcPtr = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			CallCompareDataFunc(compare_func, __result, __args)
+		}, gi.ScopeCall, callableInfo)
+		callableInfo.Unref()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_compare_func := gi.NewPointerArgument(funcPtr)
-	arg_user_data := gi.NewPointerArgument(user_data)
+	arg_user_data := gi.NewPointerArgument(nil)
 	args := []gi.Argument{arg_v, arg_compare_func, arg_user_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
-	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -7066,32 +7074,29 @@ func SignalAccumulatorTrueHandled(ihint SignalInvocationHint, return_accu Value,
 //
 // [ result ] trans: nothing
 //
-func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func SignalEmissionHook, hook_data unsafe.Pointer, data_destroy DestroyNotify) (result uint64) {
+func SignalAddEmissionHook(signal_id uint32, detail uint32, hook_func SignalEmissionHook) (result uint64) {
 	iv, err := _I.Get1(1554, "GObject", "signal_add_emission_hook", "", 179, 0, gi.INFO_TYPE_FUNCTION, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	callableInfo := gi.GetCallableInfo("GObject", "SignalEmissionHook")
-	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		CallSignalEmissionHook(hook_func, __result, __args)
-	}, gi.ScopeNotified, callableInfo)
-	_ = cId
-	callableInfo1 := gi.GetCallableInfo("GLib", "DestroyNotify")
-	cId1, funcPtr1 := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		CallDestroyNotify(data_destroy, __result, __args)
-	}, gi.ScopeAsync, callableInfo1)
-	_ = cId1
+	var cId uint
+	var funcPtr unsafe.Pointer
+	if hook_func != nil {
+		callableInfo := gi.GetCallableInfo("GObject", "SignalEmissionHook")
+		cId, funcPtr = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			CallSignalEmissionHook(hook_func, __result, __args)
+		}, gi.ScopeNotified, callableInfo)
+		callableInfo.Unref()
+	}
 	arg_signal_id := gi.NewUint32Argument(signal_id)
 	arg_detail := gi.NewUint32Argument(detail)
 	arg_hook_func := gi.NewPointerArgument(funcPtr)
-	arg_hook_data := gi.NewPointerArgument(hook_data)
-	arg_data_destroy := gi.NewPointerArgument(funcPtr1)
+	arg_hook_data := gi.NewPointerArgument(gi.Uint2Ptr(cId))
+	arg_data_destroy := gi.NewPointerArgument(gi.GetClosureDestroyNotifyPtr())
 	args := []gi.Argument{arg_signal_id, arg_detail, arg_hook_func, arg_hook_data, arg_data_destroy}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
-	callableInfo.Unref()
-	callableInfo1.Unref()
 	result = ret.Uint64()
 	return
 }

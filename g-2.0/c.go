@@ -271,7 +271,7 @@ func sourceAttach(src *C.struct__GSource, fn SourceFunc) (SourceHandle, error) {
 	// f returns false.  The error is ignored here, as this will
 	// always be a function.
 	f := func() interface{} {
-		return fn(nil)
+		return fn()
 	}
 	closure := ClosureNew(f)
 

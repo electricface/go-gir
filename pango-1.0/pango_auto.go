@@ -95,25 +95,25 @@ func AttrColorGetType() gi.GType {
 	return ret
 }
 
-type AttrDataCopyFunc func(user_data unsafe.Pointer) (result unsafe.Pointer)
+type AttrDataCopyFunc func() (result unsafe.Pointer)
 
 func CallAttrDataCopyFunc(fn AttrDataCopyFunc, result unsafe.Pointer, args []unsafe.Pointer) {
 	if fn == nil {
 		return
 	}
-	user_data := *(*unsafe.Pointer)(args[0])
-	fn(user_data)
+	fnRet := fn()
+	*(*unsafe.Pointer)(result) = fnRet
 }
 
-type AttrFilterFunc func(attribute Attribute, user_data unsafe.Pointer) (result bool)
+type AttrFilterFunc func(attribute Attribute) (result bool)
 
 func CallAttrFilterFunc(fn AttrFilterFunc, result unsafe.Pointer, args []unsafe.Pointer) {
 	if fn == nil {
 		return
 	}
 	attribute := Attribute{P: *(*unsafe.Pointer)(args[0])}
-	user_data := *(*unsafe.Pointer)(args[1])
-	fn(attribute, user_data)
+	fnRet := fn(attribute)
+	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
 // Struct AttrFloat
@@ -348,24 +348,28 @@ func (v AttrList) Copy() (result AttrList) {
 //
 // [ result ] trans: everything
 //
-func (v AttrList) Filter(func1 AttrFilterFunc, data unsafe.Pointer) (result AttrList) {
+func (v AttrList) Filter(func1 AttrFilterFunc) (result AttrList) {
 	iv, err := _I.Get(8, "AttrList", "filter", 15, 3, gi.INFO_TYPE_STRUCT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	callableInfo := gi.GetCallableInfo("Pango", "AttrFilterFunc")
-	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		CallAttrFilterFunc(func1, __result, __args)
-	}, gi.ScopeCall, callableInfo)
+	var cId uint
+	var funcPtr unsafe.Pointer
+	if func1 != nil {
+		callableInfo := gi.GetCallableInfo("Pango", "AttrFilterFunc")
+		cId, funcPtr = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			CallAttrFilterFunc(func1, __result, __args)
+		}, gi.ScopeCall, callableInfo)
+		callableInfo.Unref()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(funcPtr)
-	arg_data := gi.NewPointerArgument(data)
+	arg_data := gi.NewPointerArgument(nil)
 	args := []gi.Argument{arg_v, arg_func1, arg_data}
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	gi.UnregisterFClosure(cId)
-	callableInfo.Unref()
 	result.P = ret.Pointer()
 	return
 }
@@ -2721,23 +2725,27 @@ func FontsetGetType() gi.GType {
 //
 // [ data ] trans: nothing
 //
-func (v Fontset) Foreach(func1 FontsetForeachFunc, data unsafe.Pointer) {
+func (v Fontset) Foreach(func1 FontsetForeachFunc) {
 	iv, err := _I.Get(114, "Fontset", "foreach", 50, 0, gi.INFO_TYPE_OBJECT, 0)
 	if err != nil {
 		log.Println("WARN:", err)
 		return
 	}
-	callableInfo := gi.GetCallableInfo("Pango", "FontsetForeachFunc")
-	cId, funcPtr := gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
-		CallFontsetForeachFunc(func1, __result, __args)
-	}, gi.ScopeCall, callableInfo)
+	var cId uint
+	var funcPtr unsafe.Pointer
+	if func1 != nil {
+		callableInfo := gi.GetCallableInfo("Pango", "FontsetForeachFunc")
+		cId, funcPtr = gi.RegisterFClosure(func(__result unsafe.Pointer, __args []unsafe.Pointer) {
+			CallFontsetForeachFunc(func1, __result, __args)
+		}, gi.ScopeCall, callableInfo)
+		callableInfo.Unref()
+	}
 	arg_v := gi.NewPointerArgument(v.P)
 	arg_func1 := gi.NewPointerArgument(funcPtr)
-	arg_data := gi.NewPointerArgument(data)
+	arg_data := gi.NewPointerArgument(nil)
 	args := []gi.Argument{arg_v, arg_func1, arg_data}
 	iv.Call(args, nil, nil)
 	gi.UnregisterFClosure(cId)
-	callableInfo.Unref()
 }
 
 // pango_fontset_get_font
@@ -2781,7 +2789,7 @@ func (v Fontset) GetMetrics() (result FontMetrics) {
 
 // ignore GType struct FontsetClass
 
-type FontsetForeachFunc func(fontset Fontset, font Font, user_data unsafe.Pointer) (result bool)
+type FontsetForeachFunc func(fontset Fontset, font Font) (result bool)
 
 func CallFontsetForeachFunc(fn FontsetForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
 	if fn == nil {
@@ -2789,8 +2797,8 @@ func CallFontsetForeachFunc(fn FontsetForeachFunc, result unsafe.Pointer, args [
 	}
 	fontset := WrapFontset(*(*unsafe.Pointer)(args[0]))
 	font := WrapFont(*(*unsafe.Pointer)(args[1]))
-	user_data := *(*unsafe.Pointer)(args[2])
-	fn(fontset, font, user_data)
+	fnRet := fn(fontset, font)
+	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
 // Object FontsetSimple
