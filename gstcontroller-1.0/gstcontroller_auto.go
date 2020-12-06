@@ -170,9 +170,15 @@ func (v ControlPoint) Timestamp() (result uint64) {
 	result = uint64(v.p().timestamp)
 	return
 }
+func (v ControlPoint) SetTimestamp(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().timestamp)) = value
+}
 func (v ControlPoint) Value() (result float64) {
 	result = float64(v.p().value)
 	return
+}
+func (v ControlPoint) SetValue(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().value)) = value
 }
 
 // Object DirectControlBinding

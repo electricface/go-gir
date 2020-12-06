@@ -107,17 +107,28 @@ func (v AllocationParams) p() *C.GstAllocationParams {
 func (v AllocationParams) Flags() (result int /*TODO*/) {
 	return
 }
+func (v AllocationParams) SetFlags(value int /*TODO*/) {
+}
 func (v AllocationParams) Align() (result uint64) {
 	result = uint64(v.p().align)
 	return
+}
+func (v AllocationParams) SetAlign(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().align)) = value
 }
 func (v AllocationParams) Prefix() (result uint64) {
 	result = uint64(v.p().prefix)
 	return
 }
+func (v AllocationParams) SetPrefix(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().prefix)) = value
+}
 func (v AllocationParams) Padding() (result uint64) {
 	result = uint64(v.p().padding)
 	return
+}
+func (v AllocationParams) SetPadding(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().padding)) = value
 }
 func (v AllocationParams) _GstReserved() (result int /*TODO*/) {
 	return
@@ -2029,28 +2040,47 @@ func (v Buffer) p() *C.GstBuffer {
 func (v Buffer) MiniObject() (result int /*TODO*/) {
 	return
 }
+func (v Buffer) SetMiniObject(value int /*TODO*/) {
+}
 func (v Buffer) Pool() (result int /*TODO*/) {
 	return
+}
+func (v Buffer) SetPool(value int /*TODO*/) {
 }
 func (v Buffer) Pts() (result uint64) {
 	result = uint64(v.p().pts)
 	return
 }
+func (v Buffer) SetPts(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().pts)) = value
+}
 func (v Buffer) Dts() (result uint64) {
 	result = uint64(v.p().dts)
 	return
+}
+func (v Buffer) SetDts(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().dts)) = value
 }
 func (v Buffer) Duration() (result uint64) {
 	result = uint64(v.p().duration)
 	return
 }
+func (v Buffer) SetDuration(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().duration)) = value
+}
 func (v Buffer) Offset() (result uint64) {
 	result = uint64(v.p().offset)
 	return
 }
+func (v Buffer) SetOffset(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().offset)) = value
+}
 func (v Buffer) OffsetEnd() (result uint64) {
 	result = uint64(v.p().offset_end)
 	return
+}
+func (v Buffer) SetOffsetEnd(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().offset_end)) = value
 }
 
 // Flags BufferCopyFlags
@@ -2816,16 +2846,26 @@ func (v BufferPoolAcquireParams) p() *C.GstBufferPoolAcquireParams {
 func (v BufferPoolAcquireParams) Format() (result int /*TODO*/) {
 	return
 }
+func (v BufferPoolAcquireParams) SetFormat(value int /*TODO*/) {
+}
 func (v BufferPoolAcquireParams) Start() (result int64) {
 	result = int64(v.p().start)
 	return
+}
+func (v BufferPoolAcquireParams) SetStart(value int64) {
+	*(*int64)(unsafe.Pointer(&v.p().start)) = value
 }
 func (v BufferPoolAcquireParams) Stop() (result int64) {
 	result = int64(v.p().stop)
 	return
 }
+func (v BufferPoolAcquireParams) SetStop(value int64) {
+	*(*int64)(unsafe.Pointer(&v.p().stop)) = value
+}
 func (v BufferPoolAcquireParams) Flags() (result int /*TODO*/) {
 	return
+}
+func (v BufferPoolAcquireParams) SetFlags(value int /*TODO*/) {
 }
 func (v BufferPoolAcquireParams) _GstReserved() (result int /*TODO*/) {
 	return
@@ -4202,6 +4242,8 @@ func (v Caps) p() *C.GstCaps {
 func (v Caps) MiniObject() (result int /*TODO*/) {
 	return
 }
+func (v Caps) SetMiniObject(value int /*TODO*/) {
+}
 
 // Struct CapsFeatures
 type CapsFeatures struct {
@@ -5557,40 +5599,65 @@ func (v ClockEntry) Refcount() (result int32) {
 	result = int32(v.p().refcount)
 	return
 }
+func (v ClockEntry) SetRefcount(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().refcount)) = value
+}
 func (v ClockEntry) Clock() (result int /*TODO*/) {
 	return
 }
+func (v ClockEntry) SetClock(value int /*TODO*/) {
+}
 func (v ClockEntry) Type() (result int /*TODO*/) {
 	return
+}
+func (v ClockEntry) SetType(value int /*TODO*/) {
 }
 func (v ClockEntry) Time() (result uint64) {
 	result = uint64(v.p().time)
 	return
 }
+func (v ClockEntry) SetTime(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().time)) = value
+}
 func (v ClockEntry) Interval() (result uint64) {
 	result = uint64(v.p().interval)
 	return
 }
+func (v ClockEntry) SetInterval(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().interval)) = value
+}
 func (v ClockEntry) Status() (result int /*TODO*/) {
 	return
 }
+func (v ClockEntry) SetStatus(value int /*TODO*/) {
+}
 func (v ClockEntry) Func() (result int /*TODO*/) {
 	return
+}
+func (v ClockEntry) SetFunc(value int /*TODO*/) {
 }
 func (v ClockEntry) UserData() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().user_data)
 	return
 }
+func (v ClockEntry) SetUserData(value unsafe.Pointer) {
+}
 func (v ClockEntry) DestroyData() (result int /*TODO*/) {
 	return
+}
+func (v ClockEntry) SetDestroyData(value int /*TODO*/) {
 }
 func (v ClockEntry) Unscheduled() (result bool) {
 	result = gi.Int2Bool(int(v.p().unscheduled))
 	return
 }
+func (v ClockEntry) SetUnscheduled(value bool) {
+}
 func (v ClockEntry) WokenUp() (result bool) {
 	result = gi.Int2Bool(int(v.p().woken_up))
 	return
+}
+func (v ClockEntry) SetWokenUp(value bool) {
 }
 func (v ClockEntry) _GstReserved() (result int /*TODO*/) {
 	return
@@ -11647,17 +11714,22 @@ func (v Event) p() *C.GstEvent {
 func (v Event) MiniObject() (result int /*TODO*/) {
 	return
 }
+func (v Event) SetMiniObject(value int /*TODO*/) {
+}
 func (v Event) Type() (result int /*TODO*/) {
 	return
+}
+func (v Event) SetType(value int /*TODO*/) {
 }
 func (v Event) Timestamp() (result uint64) {
 	result = uint64(v.p().timestamp)
 	return
 }
-func (v Event) Seqnum() (result uint32) {
-	result = uint32(v.p().seqnum)
-	return
+func (v Event) SetTimestamp(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().timestamp)) = value
 }
+
+// denied field Event.seqnum
 
 // Enum EventType
 type EventTypeEnum int
@@ -11810,15 +11882,24 @@ func (v FormatDefinition) p() *C.GstFormatDefinition {
 func (v FormatDefinition) Value() (result int /*TODO*/) {
 	return
 }
+func (v FormatDefinition) SetValue(value int /*TODO*/) {
+}
 func (v FormatDefinition) Nick() (result int /*TODO*/) {
 	return
+}
+func (v FormatDefinition) SetNick(value int /*TODO*/) {
 }
 func (v FormatDefinition) Description() (result int /*TODO*/) {
 	return
 }
+func (v FormatDefinition) SetDescription(value int /*TODO*/) {
+}
 func (v FormatDefinition) Quark() (result uint32) {
 	result = uint32(v.p().quark)
 	return
+}
+func (v FormatDefinition) SetQuark(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().quark)) = value
 }
 
 // Object Fraction
@@ -12423,6 +12504,8 @@ func (v Iterator) p() *C.GstIterator {
 func (v Iterator) Item() (result int /*TODO*/) {
 	return
 }
+func (v Iterator) SetItem(value int /*TODO*/) {
+}
 
 // denied field Iterator.resync
 
@@ -12431,23 +12514,37 @@ func (v Iterator) Item() (result int /*TODO*/) {
 func (v Iterator) Pushed() (result int /*TODO*/) {
 	return
 }
+func (v Iterator) SetPushed(value int /*TODO*/) {
+}
 func (v Iterator) Type() (result gi.GType) {
 	result = gi.GType(v.p()._type)
 	return
 }
+func (v Iterator) SetType(value gi.GType) {
+}
 func (v Iterator) Lock() (result int /*TODO*/) {
 	return
+}
+func (v Iterator) SetLock(value int /*TODO*/) {
 }
 func (v Iterator) Cookie() (result uint32) {
 	result = uint32(v.p().cookie)
 	return
 }
+func (v Iterator) SetCookie(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().cookie)) = value
+}
 func (v Iterator) MasterCookie() (result int /*TODO*/) {
 	return
+}
+func (v Iterator) SetMasterCookie(value int /*TODO*/) {
 }
 func (v Iterator) Size() (result uint32) {
 	result = uint32(v.p().size)
 	return
+}
+func (v Iterator) SetSize(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().size)) = value
 }
 func (v Iterator) _GstReserved() (result int /*TODO*/) {
 	return
@@ -12640,22 +12737,36 @@ func (v MapInfo) p() *C.GstMapInfo {
 func (v MapInfo) Memory() (result int /*TODO*/) {
 	return
 }
+func (v MapInfo) SetMemory(value int /*TODO*/) {
+}
 func (v MapInfo) Flags() (result int /*TODO*/) {
 	return
 }
+func (v MapInfo) SetFlags(value int /*TODO*/) {
+}
 func (v MapInfo) Data() (result int /*TODO*/) {
 	return
+}
+func (v MapInfo) SetData(value int /*TODO*/) {
 }
 func (v MapInfo) Size() (result uint64) {
 	result = uint64(v.p().size)
 	return
 }
+func (v MapInfo) SetSize(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().size)) = value
+}
 func (v MapInfo) Maxsize() (result uint64) {
 	result = uint64(v.p().maxsize)
 	return
 }
+func (v MapInfo) SetMaxsize(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().maxsize)) = value
+}
 func (v MapInfo) UserData() (result int /*TODO*/) {
 	return
+}
+func (v MapInfo) SetUserData(value int /*TODO*/) {
 }
 func (v MapInfo) _GstReserved() (result int /*TODO*/) {
 	return
@@ -12932,27 +13043,45 @@ func (v Memory) p() *C.GstMemory {
 func (v Memory) MiniObject() (result int /*TODO*/) {
 	return
 }
+func (v Memory) SetMiniObject(value int /*TODO*/) {
+}
 func (v Memory) Allocator() (result int /*TODO*/) {
 	return
 }
+func (v Memory) SetAllocator(value int /*TODO*/) {
+}
 func (v Memory) Parent() (result int /*TODO*/) {
 	return
+}
+func (v Memory) SetParent(value int /*TODO*/) {
 }
 func (v Memory) Maxsize() (result uint64) {
 	result = uint64(v.p().maxsize)
 	return
 }
+func (v Memory) SetMaxsize(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().maxsize)) = value
+}
 func (v Memory) Align() (result uint64) {
 	result = uint64(v.p().align)
 	return
+}
+func (v Memory) SetAlign(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().align)) = value
 }
 func (v Memory) Offset() (result uint64) {
 	result = uint64(v.p().offset)
 	return
 }
+func (v Memory) SetOffset(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().offset)) = value
+}
 func (v Memory) Size() (result uint64) {
 	result = uint64(v.p().size)
 	return
+}
+func (v Memory) SetSize(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().size)) = value
 }
 
 type MemoryCopyFunction func(mem Memory, offset int64, size int64) (result Memory)
@@ -15509,20 +15638,28 @@ func (v Message) p() *C.GstMessage {
 func (v Message) MiniObject() (result int /*TODO*/) {
 	return
 }
+func (v Message) SetMiniObject(value int /*TODO*/) {
+}
 func (v Message) Type() (result int /*TODO*/) {
 	return
+}
+func (v Message) SetType(value int /*TODO*/) {
 }
 func (v Message) Timestamp() (result uint64) {
 	result = uint64(v.p().timestamp)
 	return
 }
+func (v Message) SetTimestamp(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().timestamp)) = value
+}
 func (v Message) Src() (result int /*TODO*/) {
 	return
 }
-func (v Message) Seqnum() (result uint32) {
-	result = uint32(v.p().seqnum)
-	return
+func (v Message) SetSrc(value int /*TODO*/) {
 }
+
+// denied field Message.seqnum
+
 func (v Message) Lock() (result int /*TODO*/) {
 	return
 }
@@ -15751,8 +15888,12 @@ func (v Meta) p() *C.GstMeta {
 func (v Meta) Flags() (result int /*TODO*/) {
 	return
 }
+func (v Meta) SetFlags(value int /*TODO*/) {
+}
 func (v Meta) Info() (result int /*TODO*/) {
 	return
+}
+func (v Meta) SetInfo(value int /*TODO*/) {
 }
 
 // Flags MetaFlags
@@ -15801,22 +15942,35 @@ func (v MetaInfo) Api() (result gi.GType) {
 	result = gi.GType(v.p().api)
 	return
 }
+func (v MetaInfo) SetApi(value gi.GType) {
+}
 func (v MetaInfo) Type() (result gi.GType) {
 	result = gi.GType(v.p()._type)
 	return
+}
+func (v MetaInfo) SetType(value gi.GType) {
 }
 func (v MetaInfo) Size() (result uint64) {
 	result = uint64(v.p().size)
 	return
 }
+func (v MetaInfo) SetSize(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().size)) = value
+}
 func (v MetaInfo) InitFunc() (result int /*TODO*/) {
 	return
+}
+func (v MetaInfo) SetInitFunc(value int /*TODO*/) {
 }
 func (v MetaInfo) FreeFunc() (result int /*TODO*/) {
 	return
 }
+func (v MetaInfo) SetFreeFunc(value int /*TODO*/) {
+}
 func (v MetaInfo) TransformFunc() (result int /*TODO*/) {
 	return
+}
+func (v MetaInfo) SetTransformFunc(value int /*TODO*/) {
 }
 
 type MetaInitFunction func(meta Meta, params unsafe.Pointer, buffer Buffer) (result bool)
@@ -15851,13 +16005,21 @@ func (v MetaTransformCopy) Region() (result bool) {
 	result = gi.Int2Bool(int(v.p().region))
 	return
 }
+func (v MetaTransformCopy) SetRegion(value bool) {
+}
 func (v MetaTransformCopy) Offset() (result uint64) {
 	result = uint64(v.p().offset)
 	return
 }
+func (v MetaTransformCopy) SetOffset(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().offset)) = value
+}
 func (v MetaTransformCopy) Size() (result uint64) {
 	result = uint64(v.p().size)
 	return
+}
+func (v MetaTransformCopy) SetSize(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().size)) = value
 }
 
 type MetaTransformFunction func(transbuf Buffer, meta Meta, buffer Buffer, type1 uint32, data unsafe.Pointer) (result bool)
@@ -16063,27 +16225,44 @@ func (v MiniObject) Type() (result gi.GType) {
 	result = gi.GType(v.p()._type)
 	return
 }
+func (v MiniObject) SetType(value gi.GType) {
+}
 func (v MiniObject) Refcount() (result int32) {
 	result = int32(v.p().refcount)
 	return
+}
+func (v MiniObject) SetRefcount(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().refcount)) = value
 }
 func (v MiniObject) Lockstate() (result int32) {
 	result = int32(v.p().lockstate)
 	return
 }
+func (v MiniObject) SetLockstate(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().lockstate)) = value
+}
 func (v MiniObject) Flags() (result uint32) {
 	result = uint32(v.p().flags)
 	return
+}
+func (v MiniObject) SetFlags(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().flags)) = value
 }
 func (v MiniObject) Copy() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().copy)
 	return
 }
+func (v MiniObject) SetCopy(value unsafe.Pointer) {
+}
 func (v MiniObject) Dispose() (result int /*TODO*/) {
 	return
 }
+func (v MiniObject) SetDispose(value int /*TODO*/) {
+}
 func (v MiniObject) Free() (result int /*TODO*/) {
 	return
+}
+func (v MiniObject) SetFree(value int /*TODO*/) {
 }
 func (v MiniObject) NQdata() (result uint32) {
 	result = uint32(v.p().n_qdata)
@@ -19051,21 +19230,34 @@ func (v PadProbeInfo) p() *C.GstPadProbeInfo {
 func (v PadProbeInfo) Type() (result int /*TODO*/) {
 	return
 }
+func (v PadProbeInfo) SetType(value int /*TODO*/) {
+}
 func (v PadProbeInfo) Id() (result uint64) {
 	result = uint64(v.p().id)
 	return
+}
+func (v PadProbeInfo) SetId(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().id)) = value
 }
 func (v PadProbeInfo) Data() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().data)
 	return
 }
+func (v PadProbeInfo) SetData(value unsafe.Pointer) {
+}
 func (v PadProbeInfo) Offset() (result uint64) {
 	result = uint64(v.p().offset)
 	return
 }
+func (v PadProbeInfo) SetOffset(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().offset)) = value
+}
 func (v PadProbeInfo) Size() (result uint32) {
 	result = uint32(v.p().size)
 	return
+}
+func (v PadProbeInfo) SetSize(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().size)) = value
 }
 
 // Enum PadProbeReturn
@@ -19356,8 +19548,12 @@ func (v ParamSpecArray) p() *C.GstParamSpecArray {
 func (v ParamSpecArray) ParentInstance() (result int /*TODO*/) {
 	return
 }
+func (v ParamSpecArray) SetParentInstance(value int /*TODO*/) {
+}
 func (v ParamSpecArray) ElementSpec() (result int /*TODO*/) {
 	return
+}
+func (v ParamSpecArray) SetElementSpec(value int /*TODO*/) {
 }
 
 // Struct ParamSpecFraction
@@ -19378,29 +19574,49 @@ func (v ParamSpecFraction) p() *C.GstParamSpecFraction {
 func (v ParamSpecFraction) ParentInstance() (result int /*TODO*/) {
 	return
 }
+func (v ParamSpecFraction) SetParentInstance(value int /*TODO*/) {
+}
 func (v ParamSpecFraction) MinNum() (result int32) {
 	result = int32(v.p().min_num)
 	return
+}
+func (v ParamSpecFraction) SetMinNum(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().min_num)) = value
 }
 func (v ParamSpecFraction) MinDen() (result int32) {
 	result = int32(v.p().min_den)
 	return
 }
+func (v ParamSpecFraction) SetMinDen(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().min_den)) = value
+}
 func (v ParamSpecFraction) MaxNum() (result int32) {
 	result = int32(v.p().max_num)
 	return
+}
+func (v ParamSpecFraction) SetMaxNum(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().max_num)) = value
 }
 func (v ParamSpecFraction) MaxDen() (result int32) {
 	result = int32(v.p().max_den)
 	return
 }
+func (v ParamSpecFraction) SetMaxDen(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().max_den)) = value
+}
 func (v ParamSpecFraction) DefNum() (result int32) {
 	result = int32(v.p().def_num)
 	return
 }
+func (v ParamSpecFraction) SetDefNum(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().def_num)) = value
+}
 func (v ParamSpecFraction) DefDen() (result int32) {
 	result = int32(v.p().def_den)
 	return
+}
+func (v ParamSpecFraction) SetDefDen(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().def_den)) = value
 }
 
 // Struct ParentBufferMeta
@@ -19437,8 +19653,12 @@ func (v ParentBufferMeta) p() *C.GstParentBufferMeta {
 func (v ParentBufferMeta) Parent() (result int /*TODO*/) {
 	return
 }
+func (v ParentBufferMeta) SetParent(value int /*TODO*/) {
+}
 func (v ParentBufferMeta) Buffer() (result int /*TODO*/) {
 	return
+}
+func (v ParentBufferMeta) SetBuffer(value int /*TODO*/) {
 }
 
 // Struct ParseContext
@@ -20323,36 +20543,60 @@ func (v PluginDesc) MajorVersion() (result int32) {
 	result = int32(v.p().major_version)
 	return
 }
+func (v PluginDesc) SetMajorVersion(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().major_version)) = value
+}
 func (v PluginDesc) MinorVersion() (result int32) {
 	result = int32(v.p().minor_version)
 	return
 }
+func (v PluginDesc) SetMinorVersion(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().minor_version)) = value
+}
 func (v PluginDesc) Name() (result int /*TODO*/) {
 	return
+}
+func (v PluginDesc) SetName(value int /*TODO*/) {
 }
 func (v PluginDesc) Description() (result int /*TODO*/) {
 	return
 }
+func (v PluginDesc) SetDescription(value int /*TODO*/) {
+}
 func (v PluginDesc) PluginInit() (result int /*TODO*/) {
 	return
+}
+func (v PluginDesc) SetPluginInit(value int /*TODO*/) {
 }
 func (v PluginDesc) Version() (result int /*TODO*/) {
 	return
 }
+func (v PluginDesc) SetVersion(value int /*TODO*/) {
+}
 func (v PluginDesc) License() (result int /*TODO*/) {
 	return
+}
+func (v PluginDesc) SetLicense(value int /*TODO*/) {
 }
 func (v PluginDesc) Source() (result int /*TODO*/) {
 	return
 }
+func (v PluginDesc) SetSource(value int /*TODO*/) {
+}
 func (v PluginDesc) Package() (result int /*TODO*/) {
 	return
+}
+func (v PluginDesc) SetPackage(value int /*TODO*/) {
 }
 func (v PluginDesc) Origin() (result int /*TODO*/) {
 	return
 }
+func (v PluginDesc) SetOrigin(value int /*TODO*/) {
+}
 func (v PluginDesc) ReleaseDatetime() (result int /*TODO*/) {
 	return
+}
+func (v PluginDesc) SetReleaseDatetime(value int /*TODO*/) {
 }
 func (v PluginDesc) _GstReserved() (result int /*TODO*/) {
 	return
@@ -21002,6 +21246,9 @@ func (v PollFD) Fd() (result int32) {
 	result = int32(v.p().fd)
 	return
 }
+func (v PollFD) SetFd(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().fd)) = value
+}
 func (v PollFD) Idx() (result int32) {
 	result = int32(v.p().idx)
 	return
@@ -21443,6 +21690,8 @@ func (v Promise) p() *C.GstPromise {
 func (v Promise) Parent() (result int /*TODO*/) {
 	return
 }
+func (v Promise) SetParent(value int /*TODO*/) {
+}
 
 type PromiseChangeFunc func(promise Promise)
 
@@ -21503,8 +21752,12 @@ func (v ProtectionMeta) p() *C.GstProtectionMeta {
 func (v ProtectionMeta) Meta() (result int /*TODO*/) {
 	return
 }
+func (v ProtectionMeta) SetMeta(value int /*TODO*/) {
+}
 func (v ProtectionMeta) Info() (result int /*TODO*/) {
 	return
+}
+func (v ProtectionMeta) SetInfo(value int /*TODO*/) {
 }
 
 // Object ProxyPad
@@ -23450,8 +23703,12 @@ func (v Query) p() *C.GstQuery {
 func (v Query) MiniObject() (result int /*TODO*/) {
 	return
 }
+func (v Query) SetMiniObject(value int /*TODO*/) {
+}
 func (v Query) Type() (result int /*TODO*/) {
 	return
+}
+func (v Query) SetType(value int /*TODO*/) {
 }
 
 // Enum QueryType
@@ -23547,16 +23804,26 @@ func (v ReferenceTimestampMeta) p() *C.GstReferenceTimestampMeta {
 func (v ReferenceTimestampMeta) Parent() (result int /*TODO*/) {
 	return
 }
+func (v ReferenceTimestampMeta) SetParent(value int /*TODO*/) {
+}
 func (v ReferenceTimestampMeta) Reference() (result int /*TODO*/) {
 	return
+}
+func (v ReferenceTimestampMeta) SetReference(value int /*TODO*/) {
 }
 func (v ReferenceTimestampMeta) Timestamp() (result uint64) {
 	result = uint64(v.p().timestamp)
 	return
 }
+func (v ReferenceTimestampMeta) SetTimestamp(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().timestamp)) = value
+}
 func (v ReferenceTimestampMeta) Duration() (result uint64) {
 	result = uint64(v.p().duration)
 	return
+}
+func (v ReferenceTimestampMeta) SetDuration(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().duration)) = value
 }
 
 // Object Registry
@@ -24740,44 +25007,75 @@ func (v Segment) p() *C.GstSegment {
 func (v Segment) Flags() (result int /*TODO*/) {
 	return
 }
+func (v Segment) SetFlags(value int /*TODO*/) {
+}
 func (v Segment) Rate() (result float64) {
 	result = float64(v.p().rate)
 	return
+}
+func (v Segment) SetRate(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().rate)) = value
 }
 func (v Segment) AppliedRate() (result float64) {
 	result = float64(v.p().applied_rate)
 	return
 }
+func (v Segment) SetAppliedRate(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().applied_rate)) = value
+}
 func (v Segment) Format() (result int /*TODO*/) {
 	return
+}
+func (v Segment) SetFormat(value int /*TODO*/) {
 }
 func (v Segment) Base() (result uint64) {
 	result = uint64(v.p().base)
 	return
 }
+func (v Segment) SetBase(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().base)) = value
+}
 func (v Segment) Offset() (result uint64) {
 	result = uint64(v.p().offset)
 	return
+}
+func (v Segment) SetOffset(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().offset)) = value
 }
 func (v Segment) Start() (result uint64) {
 	result = uint64(v.p().start)
 	return
 }
+func (v Segment) SetStart(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().start)) = value
+}
 func (v Segment) Stop() (result uint64) {
 	result = uint64(v.p().stop)
 	return
+}
+func (v Segment) SetStop(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().stop)) = value
 }
 func (v Segment) Time() (result uint64) {
 	result = uint64(v.p().time)
 	return
 }
+func (v Segment) SetTime(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().time)) = value
+}
 func (v Segment) Position() (result uint64) {
 	result = uint64(v.p().position)
 	return
 }
+func (v Segment) SetPosition(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().position)) = value
+}
 func (v Segment) Duration() (result uint64) {
 	result = uint64(v.p().duration)
 	return
+}
+func (v Segment) SetDuration(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().duration)) = value
 }
 func (v Segment) _GstReserved() (result int /*TODO*/) {
 	return
@@ -24911,8 +25209,12 @@ func (v StaticCaps) p() *C.GstStaticCaps {
 func (v StaticCaps) Caps() (result int /*TODO*/) {
 	return
 }
+func (v StaticCaps) SetCaps(value int /*TODO*/) {
+}
 func (v StaticCaps) String() (result int /*TODO*/) {
 	return
+}
+func (v StaticCaps) SetString(value int /*TODO*/) {
 }
 func (v StaticCaps) _GstReserved() (result int /*TODO*/) {
 	return
@@ -24969,14 +25271,22 @@ func (v StaticPadTemplate) p() *C.GstStaticPadTemplate {
 func (v StaticPadTemplate) NameTemplate() (result int /*TODO*/) {
 	return
 }
+func (v StaticPadTemplate) SetNameTemplate(value int /*TODO*/) {
+}
 func (v StaticPadTemplate) Direction() (result int /*TODO*/) {
 	return
+}
+func (v StaticPadTemplate) SetDirection(value int /*TODO*/) {
 }
 func (v StaticPadTemplate) Presence() (result int /*TODO*/) {
 	return
 }
+func (v StaticPadTemplate) SetPresence(value int /*TODO*/) {
+}
 func (v StaticPadTemplate) StaticCaps() (result int /*TODO*/) {
 	return
+}
+func (v StaticPadTemplate) SetStaticCaps(value int /*TODO*/) {
 }
 
 // Object Stream
@@ -26768,6 +27078,8 @@ func (v Structure) Type() (result gi.GType) {
 	result = gi.GType(v.p()._type)
 	return
 }
+func (v Structure) SetType(value gi.GType) {
+}
 func (v Structure) Name() (result uint32) {
 	result = uint32(v.p().name)
 	return
@@ -28019,6 +28331,8 @@ func (v TagList) p() *C.GstTagList {
 func (v TagList) MiniObject() (result int /*TODO*/) {
 	return
 }
+func (v TagList) SetMiniObject(value int /*TODO*/) {
+}
 
 type TagMergeFunc func(dest g.Value, src g.Value)
 
@@ -28653,9 +28967,15 @@ func (v TimedValue) Timestamp() (result uint64) {
 	result = uint64(v.p().timestamp)
 	return
 }
+func (v TimedValue) SetTimestamp(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().timestamp)) = value
+}
 func (v TimedValue) Value() (result float64) {
 	result = float64(v.p().value)
 	return
+}
+func (v TimedValue) SetValue(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().value)) = value
 }
 
 // Struct Toc
@@ -29519,6 +29839,8 @@ func (v TypeFind) p() *C.GstTypeFind {
 func (v TypeFind) Data() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().data)
 	return
+}
+func (v TypeFind) SetData(value unsafe.Pointer) {
 }
 
 // denied field TypeFind.get_length
@@ -31170,14 +31492,22 @@ func (v ValueTable) Type() (result gi.GType) {
 	result = gi.GType(v.p()._type)
 	return
 }
+func (v ValueTable) SetType(value gi.GType) {
+}
 func (v ValueTable) Compare() (result int /*TODO*/) {
 	return
+}
+func (v ValueTable) SetCompare(value int /*TODO*/) {
 }
 func (v ValueTable) Serialize() (result int /*TODO*/) {
 	return
 }
+func (v ValueTable) SetSerialize(value int /*TODO*/) {
+}
 func (v ValueTable) Deserialize() (result int /*TODO*/) {
 	return
+}
+func (v ValueTable) SetDeserialize(value int /*TODO*/) {
 }
 func (v ValueTable) _GstReserved() (result int /*TODO*/) {
 	return

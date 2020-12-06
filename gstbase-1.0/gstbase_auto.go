@@ -1353,20 +1353,33 @@ func (v BaseParseFrame) p() *C.GstBaseParseFrame {
 func (v BaseParseFrame) Buffer() (result int /*TODO*/) {
 	return
 }
+func (v BaseParseFrame) SetBuffer(value int /*TODO*/) {
+}
 func (v BaseParseFrame) OutBuffer() (result int /*TODO*/) {
 	return
+}
+func (v BaseParseFrame) SetOutBuffer(value int /*TODO*/) {
 }
 func (v BaseParseFrame) Flags() (result uint32) {
 	result = uint32(v.p().flags)
 	return
 }
+func (v BaseParseFrame) SetFlags(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().flags)) = value
+}
 func (v BaseParseFrame) Offset() (result uint64) {
 	result = uint64(v.p().offset)
 	return
 }
+func (v BaseParseFrame) SetOffset(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().offset)) = value
+}
 func (v BaseParseFrame) Overhead() (result int32) {
 	result = int32(v.p().overhead)
 	return
+}
+func (v BaseParseFrame) SetOverhead(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().overhead)) = value
 }
 func (v BaseParseFrame) Size() (result int32) {
 	result = int32(v.p().size)
@@ -2995,17 +3008,28 @@ func (v BitReader) p() *C.GstBitReader {
 func (v BitReader) Data() (result int /*TODO*/) {
 	return
 }
+func (v BitReader) SetData(value int /*TODO*/) {
+}
 func (v BitReader) Size() (result uint32) {
 	result = uint32(v.p().size)
 	return
+}
+func (v BitReader) SetSize(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().size)) = value
 }
 func (v BitReader) Byte() (result uint32) {
 	result = uint32(v.p().byte)
 	return
 }
+func (v BitReader) SetByte(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().byte)) = value
+}
 func (v BitReader) Bit() (result uint32) {
 	result = uint32(v.p().bit)
 	return
+}
+func (v BitReader) SetBit(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().bit)) = value
 }
 func (v BitReader) _GstReserved() (result int /*TODO*/) {
 	return
@@ -4493,13 +4517,21 @@ func (v ByteReader) p() *C.GstByteReader {
 func (v ByteReader) Data() (result int /*TODO*/) {
 	return
 }
+func (v ByteReader) SetData(value int /*TODO*/) {
+}
 func (v ByteReader) Size() (result uint32) {
 	result = uint32(v.p().size)
 	return
 }
+func (v ByteReader) SetSize(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().size)) = value
+}
 func (v ByteReader) Byte() (result uint32) {
 	result = uint32(v.p().byte)
 	return
+}
+func (v ByteReader) SetByte(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().byte)) = value
 }
 func (v ByteReader) _GstReserved() (result int /*TODO*/) {
 	return
@@ -5316,17 +5348,26 @@ func (v ByteWriter) p() *C.GstByteWriter {
 func (v ByteWriter) Parent() (result int /*TODO*/) {
 	return
 }
+func (v ByteWriter) SetParent(value int /*TODO*/) {
+}
 func (v ByteWriter) AllocSize() (result uint32) {
 	result = uint32(v.p().alloc_size)
 	return
+}
+func (v ByteWriter) SetAllocSize(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().alloc_size)) = value
 }
 func (v ByteWriter) Fixed() (result bool) {
 	result = gi.Int2Bool(int(v.p().fixed))
 	return
 }
+func (v ByteWriter) SetFixed(value bool) {
+}
 func (v ByteWriter) Owned() (result bool) {
 	result = gi.Int2Bool(int(v.p().owned))
 	return
+}
+func (v ByteWriter) SetOwned(value bool) {
 }
 func (v ByteWriter) _GstReserved() (result int /*TODO*/) {
 	return
@@ -5350,18 +5391,29 @@ func (v CollectData) p() *C.GstCollectData {
 func (v CollectData) Collect() (result int /*TODO*/) {
 	return
 }
+func (v CollectData) SetCollect(value int /*TODO*/) {
+}
 func (v CollectData) Pad() (result int /*TODO*/) {
 	return
 }
+func (v CollectData) SetPad(value int /*TODO*/) {
+}
 func (v CollectData) Buffer() (result int /*TODO*/) {
 	return
+}
+func (v CollectData) SetBuffer(value int /*TODO*/) {
 }
 func (v CollectData) Pos() (result uint32) {
 	result = uint32(v.p().pos)
 	return
 }
+func (v CollectData) SetPos(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().pos)) = value
+}
 func (v CollectData) Segment() (result int /*TODO*/) {
 	return
+}
+func (v CollectData) SetSegment(value int /*TODO*/) {
 }
 func (v CollectData) State() (result int /*TODO*/) {
 	return

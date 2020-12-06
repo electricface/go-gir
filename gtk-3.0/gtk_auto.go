@@ -994,12 +994,19 @@ func (v AccelGroupEntry) p() *C.GtkAccelGroupEntry {
 func (v AccelGroupEntry) Key() (result int /*TODO*/) {
 	return
 }
+func (v AccelGroupEntry) SetKey(value int /*TODO*/) {
+}
 func (v AccelGroupEntry) Closure() (result int /*TODO*/) {
 	return
+}
+func (v AccelGroupEntry) SetClosure(value int /*TODO*/) {
 }
 func (v AccelGroupEntry) AccelPathQuark() (result uint32) {
 	result = uint32(v.p().accel_path_quark)
 	return
+}
+func (v AccelGroupEntry) SetAccelPathQuark(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().accel_path_quark)) = value
 }
 
 type AccelGroupFindFunc func(key AccelKey, closure g.Closure) (result bool)
@@ -1035,8 +1042,13 @@ func (v AccelKey) AccelKey() (result uint32) {
 	result = uint32(v.p().accel_key)
 	return
 }
+func (v AccelKey) SetAccelKey(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().accel_key)) = value
+}
 func (v AccelKey) AccelMods() (result int /*TODO*/) {
 	return
+}
+func (v AccelKey) SetAccelMods(value int /*TODO*/) {
 }
 
 // TODO: ignore struct AccelKey field accel_flags, bits(=16) > 0
@@ -2579,20 +2591,32 @@ func (v ActionEntry) p() *C.GtkActionEntry {
 func (v ActionEntry) Name() (result int /*TODO*/) {
 	return
 }
+func (v ActionEntry) SetName(value int /*TODO*/) {
+}
 func (v ActionEntry) StockId() (result int /*TODO*/) {
 	return
+}
+func (v ActionEntry) SetStockId(value int /*TODO*/) {
 }
 func (v ActionEntry) Label() (result int /*TODO*/) {
 	return
 }
+func (v ActionEntry) SetLabel(value int /*TODO*/) {
+}
 func (v ActionEntry) Accelerator() (result int /*TODO*/) {
 	return
+}
+func (v ActionEntry) SetAccelerator(value int /*TODO*/) {
 }
 func (v ActionEntry) Tooltip() (result int /*TODO*/) {
 	return
 }
+func (v ActionEntry) SetTooltip(value int /*TODO*/) {
+}
 func (v ActionEntry) Callback() (result int /*TODO*/) {
 	return
+}
+func (v ActionEntry) SetCallback(value int /*TODO*/) {
 }
 
 // Object ActionGroup
@@ -5944,6 +5968,8 @@ func (v BindingArg) ArgType() (result gi.GType) {
 	result = gi.GType(v.p().arg_type)
 	return
 }
+func (v BindingArg) SetArgType(value gi.GType) {
+}
 
 // Struct BindingEntry
 type BindingEntry struct {
@@ -6060,11 +6086,18 @@ func (v BindingEntry) Keyval() (result uint32) {
 	result = uint32(v.p().keyval)
 	return
 }
+func (v BindingEntry) SetKeyval(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().keyval)) = value
+}
 func (v BindingEntry) Modifiers() (result int /*TODO*/) {
 	return
 }
+func (v BindingEntry) SetModifiers(value int /*TODO*/) {
+}
 func (v BindingEntry) BindingSet() (result int /*TODO*/) {
 	return
+}
+func (v BindingEntry) SetBindingSet(value int /*TODO*/) {
 }
 
 // TODO: ignore struct BindingEntry field destroyed, bits(=1) > 0
@@ -6076,11 +6109,17 @@ func (v BindingEntry) BindingSet() (result int /*TODO*/) {
 func (v BindingEntry) SetNext() (result int /*TODO*/) {
 	return
 }
+func (v BindingEntry) SetSetNext(value int /*TODO*/) {
+}
 func (v BindingEntry) HashNext() (result int /*TODO*/) {
 	return
 }
+func (v BindingEntry) SetHashNext(value int /*TODO*/) {
+}
 func (v BindingEntry) Signals() (result int /*TODO*/) {
 	return
+}
+func (v BindingEntry) SetSignals(value int /*TODO*/) {
 }
 
 // Struct BindingSet
@@ -6180,24 +6219,39 @@ func (v BindingSet) p() *C.GtkBindingSet {
 func (v BindingSet) SetName() (result int /*TODO*/) {
 	return
 }
+func (v BindingSet) SetSetName(value int /*TODO*/) {
+}
 func (v BindingSet) Priority() (result int32) {
 	result = int32(v.p().priority)
 	return
 }
+func (v BindingSet) SetPriority(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().priority)) = value
+}
 func (v BindingSet) WidgetPathPspecs() (result int /*TODO*/) {
 	return
+}
+func (v BindingSet) SetWidgetPathPspecs(value int /*TODO*/) {
 }
 func (v BindingSet) WidgetClassPspecs() (result int /*TODO*/) {
 	return
 }
+func (v BindingSet) SetWidgetClassPspecs(value int /*TODO*/) {
+}
 func (v BindingSet) ClassBranchPspecs() (result int /*TODO*/) {
 	return
+}
+func (v BindingSet) SetClassBranchPspecs(value int /*TODO*/) {
 }
 func (v BindingSet) Entries() (result int /*TODO*/) {
 	return
 }
+func (v BindingSet) SetEntries(value int /*TODO*/) {
+}
 func (v BindingSet) Current() (result int /*TODO*/) {
 	return
+}
+func (v BindingSet) SetCurrent(value int /*TODO*/) {
 }
 
 // TODO: ignore struct BindingSet field parsed, bits(=1) > 0
@@ -6220,15 +6274,24 @@ func (v BindingSignal) p() *C.GtkBindingSignal {
 func (v BindingSignal) Next() (result int /*TODO*/) {
 	return
 }
+func (v BindingSignal) SetNext(value int /*TODO*/) {
+}
 func (v BindingSignal) SignalName() (result int /*TODO*/) {
 	return
+}
+func (v BindingSignal) SetSignalName(value int /*TODO*/) {
 }
 func (v BindingSignal) NArgs() (result uint32) {
 	result = uint32(v.p().n_args)
 	return
 }
+func (v BindingSignal) SetNArgs(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().n_args)) = value
+}
 func (v BindingSignal) Args() (result int /*TODO*/) {
 	return
+}
+func (v BindingSignal) SetArgs(value int /*TODO*/) {
 }
 
 // Object BooleanCellAccessible
@@ -6316,17 +6379,29 @@ func (v Border) Left() (result int16) {
 	result = int16(v.p().left)
 	return
 }
+func (v Border) SetLeft(value int16) {
+	*(*int16)(unsafe.Pointer(&v.p().left)) = value
+}
 func (v Border) Right() (result int16) {
 	result = int16(v.p().right)
 	return
+}
+func (v Border) SetRight(value int16) {
+	*(*int16)(unsafe.Pointer(&v.p().right)) = value
 }
 func (v Border) Top() (result int16) {
 	result = int16(v.p().top)
 	return
 }
+func (v Border) SetTop(value int16) {
+	*(*int16)(unsafe.Pointer(&v.p().top)) = value
+}
 func (v Border) Bottom() (result int16) {
 	result = int16(v.p().bottom)
 	return
+}
+func (v Border) SetBottom(value int16) {
+	*(*int16)(unsafe.Pointer(&v.p().bottom)) = value
 }
 
 // Enum BorderStyle
@@ -22553,17 +22628,27 @@ func (v FileFilterInfo) p() *C.GtkFileFilterInfo {
 func (v FileFilterInfo) Contains() (result int /*TODO*/) {
 	return
 }
+func (v FileFilterInfo) SetContains(value int /*TODO*/) {
+}
 func (v FileFilterInfo) Filename() (result int /*TODO*/) {
 	return
+}
+func (v FileFilterInfo) SetFilename(value int /*TODO*/) {
 }
 func (v FileFilterInfo) Uri() (result int /*TODO*/) {
 	return
 }
+func (v FileFilterInfo) SetUri(value int /*TODO*/) {
+}
 func (v FileFilterInfo) DisplayName() (result int /*TODO*/) {
 	return
 }
+func (v FileFilterInfo) SetDisplayName(value int /*TODO*/) {
+}
 func (v FileFilterInfo) MimeType() (result int /*TODO*/) {
 	return
+}
+func (v FileFilterInfo) SetMimeType(value int /*TODO*/) {
 }
 
 // Object Fixed
@@ -22667,13 +22752,21 @@ func (v FixedChild) p() *C.GtkFixedChild {
 func (v FixedChild) Widget() (result int /*TODO*/) {
 	return
 }
+func (v FixedChild) SetWidget(value int /*TODO*/) {
+}
 func (v FixedChild) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v FixedChild) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v FixedChild) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v FixedChild) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 
 // ignore GType struct FixedClass
@@ -28176,17 +28269,27 @@ func (v IMContextInfo) p() *C.GtkIMContextInfo {
 func (v IMContextInfo) ContextId() (result int /*TODO*/) {
 	return
 }
+func (v IMContextInfo) SetContextId(value int /*TODO*/) {
+}
 func (v IMContextInfo) ContextName() (result int /*TODO*/) {
 	return
+}
+func (v IMContextInfo) SetContextName(value int /*TODO*/) {
 }
 func (v IMContextInfo) Domain() (result int /*TODO*/) {
 	return
 }
+func (v IMContextInfo) SetDomain(value int /*TODO*/) {
+}
 func (v IMContextInfo) DomainDirname() (result int /*TODO*/) {
 	return
 }
+func (v IMContextInfo) SetDomainDirname(value int /*TODO*/) {
+}
 func (v IMContextInfo) DefaultLocales() (result int /*TODO*/) {
 	return
+}
+func (v IMContextInfo) SetDefaultLocales(value int /*TODO*/) {
 }
 
 // Object IMContextSimple
@@ -40638,19 +40741,31 @@ func (v PadActionEntry) p() *C.GtkPadActionEntry {
 func (v PadActionEntry) Type() (result int /*TODO*/) {
 	return
 }
+func (v PadActionEntry) SetType(value int /*TODO*/) {
+}
 func (v PadActionEntry) Index() (result int32) {
 	result = int32(v.p().index)
 	return
+}
+func (v PadActionEntry) SetIndex(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().index)) = value
 }
 func (v PadActionEntry) Mode() (result int32) {
 	result = int32(v.p().mode)
 	return
 }
+func (v PadActionEntry) SetMode(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().mode)) = value
+}
 func (v PadActionEntry) Label() (result int /*TODO*/) {
 	return
 }
+func (v PadActionEntry) SetLabel(value int /*TODO*/) {
+}
 func (v PadActionEntry) ActionName() (result int /*TODO*/) {
 	return
+}
+func (v PadActionEntry) SetActionName(value int /*TODO*/) {
 }
 
 // Enum PadActionType
@@ -40807,9 +40922,15 @@ func (v PageRange) Start() (result int32) {
 	result = int32(v.p().start)
 	return
 }
+func (v PageRange) SetStart(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().start)) = value
+}
 func (v PageRange) End() (result int32) {
 	result = int32(v.p().end)
 	return
+}
+func (v PageRange) SetEnd(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().end)) = value
 }
 
 // Enum PageSet
@@ -46332,21 +46453,34 @@ func (v RadioActionEntry) p() *C.GtkRadioActionEntry {
 func (v RadioActionEntry) Name() (result int /*TODO*/) {
 	return
 }
+func (v RadioActionEntry) SetName(value int /*TODO*/) {
+}
 func (v RadioActionEntry) StockId() (result int /*TODO*/) {
 	return
+}
+func (v RadioActionEntry) SetStockId(value int /*TODO*/) {
 }
 func (v RadioActionEntry) Label() (result int /*TODO*/) {
 	return
 }
+func (v RadioActionEntry) SetLabel(value int /*TODO*/) {
+}
 func (v RadioActionEntry) Accelerator() (result int /*TODO*/) {
 	return
+}
+func (v RadioActionEntry) SetAccelerator(value int /*TODO*/) {
 }
 func (v RadioActionEntry) Tooltip() (result int /*TODO*/) {
 	return
 }
+func (v RadioActionEntry) SetTooltip(value int /*TODO*/) {
+}
 func (v RadioActionEntry) Value() (result int32) {
 	result = int32(v.p().value)
 	return
+}
+func (v RadioActionEntry) SetValue(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().value)) = value
 }
 
 // ignore private struct RadioActionPrivate, type of RadioAction is object
@@ -47721,15 +47855,25 @@ func (v RcProperty) TypeName() (result uint32) {
 	result = uint32(v.p().type_name)
 	return
 }
+func (v RcProperty) SetTypeName(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().type_name)) = value
+}
 func (v RcProperty) PropertyName() (result uint32) {
 	result = uint32(v.p().property_name)
 	return
 }
+func (v RcProperty) SetPropertyName(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().property_name)) = value
+}
 func (v RcProperty) Origin() (result int /*TODO*/) {
 	return
 }
+func (v RcProperty) SetOrigin(value int /*TODO*/) {
+}
 func (v RcProperty) Value() (result int /*TODO*/) {
 	return
+}
+func (v RcProperty) SetValue(value int /*TODO*/) {
 }
 
 type RcPropertyParser func(pspec g.ParamSpec, rc_string g.String, property_value g.Value) (result bool)
@@ -48796,24 +48940,38 @@ func (v RecentData) p() *C.GtkRecentData {
 func (v RecentData) DisplayName() (result int /*TODO*/) {
 	return
 }
+func (v RecentData) SetDisplayName(value int /*TODO*/) {
+}
 func (v RecentData) Description() (result int /*TODO*/) {
 	return
+}
+func (v RecentData) SetDescription(value int /*TODO*/) {
 }
 func (v RecentData) MimeType() (result int /*TODO*/) {
 	return
 }
+func (v RecentData) SetMimeType(value int /*TODO*/) {
+}
 func (v RecentData) AppName() (result int /*TODO*/) {
 	return
+}
+func (v RecentData) SetAppName(value int /*TODO*/) {
 }
 func (v RecentData) AppExec() (result int /*TODO*/) {
 	return
 }
+func (v RecentData) SetAppExec(value int /*TODO*/) {
+}
 func (v RecentData) Groups() (result int /*TODO*/) {
 	return
+}
+func (v RecentData) SetGroups(value int /*TODO*/) {
 }
 func (v RecentData) IsPrivate() (result bool) {
 	result = gi.Int2Bool(int(v.p().is_private))
 	return
+}
+func (v RecentData) SetIsPrivate(value bool) {
 }
 
 // Object RecentFilter
@@ -49105,24 +49263,39 @@ func (v RecentFilterInfo) p() *C.GtkRecentFilterInfo {
 func (v RecentFilterInfo) Contains() (result int /*TODO*/) {
 	return
 }
+func (v RecentFilterInfo) SetContains(value int /*TODO*/) {
+}
 func (v RecentFilterInfo) Uri() (result int /*TODO*/) {
 	return
+}
+func (v RecentFilterInfo) SetUri(value int /*TODO*/) {
 }
 func (v RecentFilterInfo) DisplayName() (result int /*TODO*/) {
 	return
 }
+func (v RecentFilterInfo) SetDisplayName(value int /*TODO*/) {
+}
 func (v RecentFilterInfo) MimeType() (result int /*TODO*/) {
 	return
+}
+func (v RecentFilterInfo) SetMimeType(value int /*TODO*/) {
 }
 func (v RecentFilterInfo) Applications() (result int /*TODO*/) {
 	return
 }
+func (v RecentFilterInfo) SetApplications(value int /*TODO*/) {
+}
 func (v RecentFilterInfo) Groups() (result int /*TODO*/) {
 	return
+}
+func (v RecentFilterInfo) SetGroups(value int /*TODO*/) {
 }
 func (v RecentFilterInfo) Age() (result int32) {
 	result = int32(v.p().age)
 	return
+}
+func (v RecentFilterInfo) SetAge(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().age)) = value
 }
 
 // Struct RecentInfo
@@ -50016,13 +50189,21 @@ func (v RequestedSize) Data() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().data)
 	return
 }
+func (v RequestedSize) SetData(value unsafe.Pointer) {
+}
 func (v RequestedSize) MinimumSize() (result int32) {
 	result = int32(v.p().minimum_size)
 	return
 }
+func (v RequestedSize) SetMinimumSize(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().minimum_size)) = value
+}
 func (v RequestedSize) NaturalSize() (result int32) {
 	result = int32(v.p().natural_size)
 	return
+}
+func (v RequestedSize) SetNaturalSize(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().natural_size)) = value
 }
 
 // Struct Requisition
@@ -50091,9 +50272,15 @@ func (v Requisition) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v Requisition) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v Requisition) Height() (result int32) {
 	result = int32(v.p().height)
 	return
+}
+func (v Requisition) SetHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height)) = value
 }
 
 // Enum ResizeMode
@@ -52807,8 +52994,12 @@ func (v SettingsValue) p() *C.GtkSettingsValue {
 func (v SettingsValue) Origin() (result int /*TODO*/) {
 	return
 }
+func (v SettingsValue) SetOrigin(value int /*TODO*/) {
+}
 func (v SettingsValue) Value() (result int /*TODO*/) {
 	return
+}
+func (v SettingsValue) SetValue(value int /*TODO*/) {
 }
 
 // Enum ShadowType
@@ -55563,18 +55754,29 @@ func (v StockItem) p() *C.GtkStockItem {
 func (v StockItem) StockId() (result int /*TODO*/) {
 	return
 }
+func (v StockItem) SetStockId(value int /*TODO*/) {
+}
 func (v StockItem) Label() (result int /*TODO*/) {
 	return
 }
+func (v StockItem) SetLabel(value int /*TODO*/) {
+}
 func (v StockItem) Modifier() (result int /*TODO*/) {
 	return
+}
+func (v StockItem) SetModifier(value int /*TODO*/) {
 }
 func (v StockItem) Keyval() (result uint32) {
 	result = uint32(v.p().keyval)
 	return
 }
+func (v StockItem) SetKeyval(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().keyval)) = value
+}
 func (v StockItem) TranslationDomain() (result int /*TODO*/) {
 	return
+}
+func (v StockItem) SetTranslationDomain(value int /*TODO*/) {
 }
 
 // Object Style
@@ -58035,29 +58237,49 @@ func (v TableChild) p() *C.GtkTableChild {
 func (v TableChild) Widget() (result int /*TODO*/) {
 	return
 }
+func (v TableChild) SetWidget(value int /*TODO*/) {
+}
 func (v TableChild) LeftAttach() (result uint16) {
 	result = uint16(v.p().left_attach)
 	return
+}
+func (v TableChild) SetLeftAttach(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().left_attach)) = value
 }
 func (v TableChild) RightAttach() (result uint16) {
 	result = uint16(v.p().right_attach)
 	return
 }
+func (v TableChild) SetRightAttach(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().right_attach)) = value
+}
 func (v TableChild) TopAttach() (result uint16) {
 	result = uint16(v.p().top_attach)
 	return
+}
+func (v TableChild) SetTopAttach(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().top_attach)) = value
 }
 func (v TableChild) BottomAttach() (result uint16) {
 	result = uint16(v.p().bottom_attach)
 	return
 }
+func (v TableChild) SetBottomAttach(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().bottom_attach)) = value
+}
 func (v TableChild) Xpadding() (result uint16) {
 	result = uint16(v.p().xpadding)
 	return
 }
+func (v TableChild) SetXpadding(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().xpadding)) = value
+}
 func (v TableChild) Ypadding() (result uint16) {
 	result = uint16(v.p().ypadding)
 	return
+}
+func (v TableChild) SetYpadding(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().ypadding)) = value
 }
 
 // TODO: ignore struct TableChild field xexpand, bits(=1) > 0
@@ -58095,13 +58317,22 @@ func (v TableRowCol) Requisition() (result uint16) {
 	result = uint16(v.p().requisition)
 	return
 }
+func (v TableRowCol) SetRequisition(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().requisition)) = value
+}
 func (v TableRowCol) Allocation() (result uint16) {
 	result = uint16(v.p().allocation)
 	return
 }
+func (v TableRowCol) SetAllocation(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().allocation)) = value
+}
 func (v TableRowCol) Spacing() (result uint16) {
 	result = uint16(v.p().spacing)
 	return
+}
+func (v TableRowCol) SetSpacing(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().spacing)) = value
 }
 
 // TODO: ignore struct TableRowCol field need_expand, bits(=1) > 0
@@ -58191,13 +58422,21 @@ func (v TargetEntry) p() *C.GtkTargetEntry {
 func (v TargetEntry) Target() (result int /*TODO*/) {
 	return
 }
+func (v TargetEntry) SetTarget(value int /*TODO*/) {
+}
 func (v TargetEntry) Flags() (result uint32) {
 	result = uint32(v.p().flags)
 	return
 }
+func (v TargetEntry) SetFlags(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().flags)) = value
+}
 func (v TargetEntry) Info() (result uint32) {
 	result = uint32(v.p().info)
 	return
+}
+func (v TargetEntry) SetInfo(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().info)) = value
 }
 
 // Flags TargetFlags
@@ -58457,13 +58696,21 @@ func (v TargetPair) p() *C.GtkTargetPair {
 func (v TargetPair) Target() (result int /*TODO*/) {
 	return
 }
+func (v TargetPair) SetTarget(value int /*TODO*/) {
+}
 func (v TargetPair) Flags() (result uint32) {
 	result = uint32(v.p().flags)
 	return
 }
+func (v TargetPair) SetFlags(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().flags)) = value
+}
 func (v TargetPair) Info() (result uint32) {
 	result = uint32(v.p().info)
 	return
+}
+func (v TargetPair) SetInfo(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().info)) = value
 }
 
 // Object TearoffMenuItem
@@ -58521,12 +58768,19 @@ func (v TextAppearance) p() *C.GtkTextAppearance {
 func (v TextAppearance) BgColor() (result int /*TODO*/) {
 	return
 }
+func (v TextAppearance) SetBgColor(value int /*TODO*/) {
+}
 func (v TextAppearance) FgColor() (result int /*TODO*/) {
 	return
+}
+func (v TextAppearance) SetFgColor(value int /*TODO*/) {
 }
 func (v TextAppearance) Rise() (result int32) {
 	result = int32(v.p().rise)
 	return
+}
+func (v TextAppearance) SetRise(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().rise)) = value
 }
 
 // TODO: ignore struct TextAppearance field underline, bits(=4) > 0
@@ -58642,51 +58896,86 @@ func (v TextAttributes) Refcount() (result uint32) {
 func (v TextAttributes) Appearance() (result int /*TODO*/) {
 	return
 }
+func (v TextAttributes) SetAppearance(value int /*TODO*/) {
+}
 func (v TextAttributes) Justification() (result int /*TODO*/) {
 	return
+}
+func (v TextAttributes) SetJustification(value int /*TODO*/) {
 }
 func (v TextAttributes) Direction() (result int /*TODO*/) {
 	return
 }
+func (v TextAttributes) SetDirection(value int /*TODO*/) {
+}
 func (v TextAttributes) Font() (result int /*TODO*/) {
 	return
+}
+func (v TextAttributes) SetFont(value int /*TODO*/) {
 }
 func (v TextAttributes) FontScale() (result float64) {
 	result = float64(v.p().font_scale)
 	return
 }
+func (v TextAttributes) SetFontScale(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().font_scale)) = value
+}
 func (v TextAttributes) LeftMargin() (result int32) {
 	result = int32(v.p().left_margin)
 	return
+}
+func (v TextAttributes) SetLeftMargin(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().left_margin)) = value
 }
 func (v TextAttributes) RightMargin() (result int32) {
 	result = int32(v.p().right_margin)
 	return
 }
+func (v TextAttributes) SetRightMargin(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().right_margin)) = value
+}
 func (v TextAttributes) Indent() (result int32) {
 	result = int32(v.p().indent)
 	return
+}
+func (v TextAttributes) SetIndent(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().indent)) = value
 }
 func (v TextAttributes) PixelsAboveLines() (result int32) {
 	result = int32(v.p().pixels_above_lines)
 	return
 }
+func (v TextAttributes) SetPixelsAboveLines(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().pixels_above_lines)) = value
+}
 func (v TextAttributes) PixelsBelowLines() (result int32) {
 	result = int32(v.p().pixels_below_lines)
 	return
+}
+func (v TextAttributes) SetPixelsBelowLines(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().pixels_below_lines)) = value
 }
 func (v TextAttributes) PixelsInsideWrap() (result int32) {
 	result = int32(v.p().pixels_inside_wrap)
 	return
 }
+func (v TextAttributes) SetPixelsInsideWrap(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().pixels_inside_wrap)) = value
+}
 func (v TextAttributes) Tabs() (result int /*TODO*/) {
 	return
+}
+func (v TextAttributes) SetTabs(value int /*TODO*/) {
 }
 func (v TextAttributes) WrapMode() (result int /*TODO*/) {
 	return
 }
+func (v TextAttributes) SetWrapMode(value int /*TODO*/) {
+}
 func (v TextAttributes) Language() (result int /*TODO*/) {
 	return
+}
+func (v TextAttributes) SetLanguage(value int /*TODO*/) {
 }
 func (v TextAttributes) PgBgColor() (result int /*TODO*/) {
 	return
@@ -58706,6 +58995,9 @@ func (v TextAttributes) PgBgRgba() (result int /*TODO*/) {
 func (v TextAttributes) LetterSpacing() (result int32) {
 	result = int32(v.p().letter_spacing)
 	return
+}
+func (v TextAttributes) SetLetterSpacing(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().letter_spacing)) = value
 }
 
 // Struct TextBTree
@@ -65038,24 +65330,38 @@ func (v ToggleActionEntry) p() *C.GtkToggleActionEntry {
 func (v ToggleActionEntry) Name() (result int /*TODO*/) {
 	return
 }
+func (v ToggleActionEntry) SetName(value int /*TODO*/) {
+}
 func (v ToggleActionEntry) StockId() (result int /*TODO*/) {
 	return
+}
+func (v ToggleActionEntry) SetStockId(value int /*TODO*/) {
 }
 func (v ToggleActionEntry) Label() (result int /*TODO*/) {
 	return
 }
+func (v ToggleActionEntry) SetLabel(value int /*TODO*/) {
+}
 func (v ToggleActionEntry) Accelerator() (result int /*TODO*/) {
 	return
+}
+func (v ToggleActionEntry) SetAccelerator(value int /*TODO*/) {
 }
 func (v ToggleActionEntry) Tooltip() (result int /*TODO*/) {
 	return
 }
+func (v ToggleActionEntry) SetTooltip(value int /*TODO*/) {
+}
 func (v ToggleActionEntry) Callback() (result int /*TODO*/) {
 	return
+}
+func (v ToggleActionEntry) SetCallback(value int /*TODO*/) {
 }
 func (v ToggleActionEntry) IsActive() (result bool) {
 	result = gi.Int2Bool(int(v.p().is_active))
 	return
+}
+func (v ToggleActionEntry) SetIsActive(value bool) {
 }
 
 // ignore private struct ToggleActionPrivate, type of ToggleAction is object
@@ -67988,17 +68294,26 @@ func (v TreeIter) Stamp() (result int32) {
 	result = int32(v.p().stamp)
 	return
 }
+func (v TreeIter) SetStamp(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().stamp)) = value
+}
 func (v TreeIter) UserData() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().user_data)
 	return
+}
+func (v TreeIter) SetUserData(value unsafe.Pointer) {
 }
 func (v TreeIter) UserData2() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().user_data2)
 	return
 }
+func (v TreeIter) SetUserData2(value unsafe.Pointer) {
+}
 func (v TreeIter) UserData3() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().user_data3)
 	return
+}
+func (v TreeIter) SetUserData3(value unsafe.Pointer) {
 }
 
 type TreeIterCompareFunc func(model TreeModel, a TreeIter, b TreeIter) (result int32)

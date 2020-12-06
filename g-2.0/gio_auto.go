@@ -305,14 +305,20 @@ func (v ActionEntry) p() *C.GActionEntry {
 func (v ActionEntry) Name() (result int /*TODO*/) {
 	return
 }
+func (v ActionEntry) SetName(value int /*TODO*/) {
+}
 func (v ActionEntry) Activate() (result int /*TODO*/) {
 	return
 }
 func (v ActionEntry) ParameterType() (result int /*TODO*/) {
 	return
 }
+func (v ActionEntry) SetParameterType(value int /*TODO*/) {
+}
 func (v ActionEntry) State() (result int /*TODO*/) {
 	return
+}
+func (v ActionEntry) SetState(value int /*TODO*/) {
 }
 func (v ActionEntry) ChangeState() (result int /*TODO*/) {
 	return
@@ -4498,14 +4504,23 @@ func (v DBusAnnotationInfo) RefCount() (result int32) {
 	result = int32(v.p().ref_count)
 	return
 }
+func (v DBusAnnotationInfo) SetRefCount(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
+}
 func (v DBusAnnotationInfo) Key() (result int /*TODO*/) {
 	return
+}
+func (v DBusAnnotationInfo) SetKey(value int /*TODO*/) {
 }
 func (v DBusAnnotationInfo) Value() (result int /*TODO*/) {
 	return
 }
+func (v DBusAnnotationInfo) SetValue(value int /*TODO*/) {
+}
 func (v DBusAnnotationInfo) Annotations() (result int /*TODO*/) {
 	return
+}
+func (v DBusAnnotationInfo) SetAnnotations(value int /*TODO*/) {
 }
 
 // Struct DBusArgInfo
@@ -4558,14 +4573,23 @@ func (v DBusArgInfo) RefCount() (result int32) {
 	result = int32(v.p().ref_count)
 	return
 }
+func (v DBusArgInfo) SetRefCount(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
+}
 func (v DBusArgInfo) Name() (result int /*TODO*/) {
 	return
+}
+func (v DBusArgInfo) SetName(value int /*TODO*/) {
 }
 func (v DBusArgInfo) Signature() (result int /*TODO*/) {
 	return
 }
+func (v DBusArgInfo) SetSignature(value int /*TODO*/) {
+}
 func (v DBusArgInfo) Annotations() (result int /*TODO*/) {
 	return
+}
+func (v DBusArgInfo) SetAnnotations(value int /*TODO*/) {
 }
 
 // Object DBusAuthObserver
@@ -6264,8 +6288,13 @@ func (v DBusErrorEntry) ErrorCode() (result int32) {
 	result = int32(v.p().error_code)
 	return
 }
+func (v DBusErrorEntry) SetErrorCode(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().error_code)) = value
+}
 func (v DBusErrorEntry) DbusErrorName() (result int /*TODO*/) {
 	return
+}
+func (v DBusErrorEntry) SetDbusErrorName(value int /*TODO*/) {
 }
 
 // Interface DBusInterface
@@ -6520,20 +6549,33 @@ func (v DBusInterfaceInfo) RefCount() (result int32) {
 	result = int32(v.p().ref_count)
 	return
 }
+func (v DBusInterfaceInfo) SetRefCount(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
+}
 func (v DBusInterfaceInfo) Name() (result int /*TODO*/) {
 	return
+}
+func (v DBusInterfaceInfo) SetName(value int /*TODO*/) {
 }
 func (v DBusInterfaceInfo) Methods() (result int /*TODO*/) {
 	return
 }
+func (v DBusInterfaceInfo) SetMethods(value int /*TODO*/) {
+}
 func (v DBusInterfaceInfo) Signals() (result int /*TODO*/) {
 	return
+}
+func (v DBusInterfaceInfo) SetSignals(value int /*TODO*/) {
 }
 func (v DBusInterfaceInfo) Properties() (result int /*TODO*/) {
 	return
 }
+func (v DBusInterfaceInfo) SetProperties(value int /*TODO*/) {
+}
 func (v DBusInterfaceInfo) Annotations() (result int /*TODO*/) {
 	return
+}
+func (v DBusInterfaceInfo) SetAnnotations(value int /*TODO*/) {
 }
 
 type DBusInterfaceMethodCallFunc func(connection DBusConnection, sender string, object_path string, interface_name string, method_name string, parameters Variant, invocation DBusMethodInvocation)
@@ -6848,11 +6890,17 @@ func (v DBusInterfaceVTable) p() *C.GDBusInterfaceVTable {
 func (v DBusInterfaceVTable) MethodCall() (result int /*TODO*/) {
 	return
 }
+func (v DBusInterfaceVTable) SetMethodCall(value int /*TODO*/) {
+}
 func (v DBusInterfaceVTable) GetProperty() (result int /*TODO*/) {
 	return
 }
+func (v DBusInterfaceVTable) SetGetProperty(value int /*TODO*/) {
+}
 func (v DBusInterfaceVTable) SetProperty() (result int /*TODO*/) {
 	return
+}
+func (v DBusInterfaceVTable) SetSetProperty(value int /*TODO*/) {
 }
 func (v DBusInterfaceVTable) Padding() (result int /*TODO*/) {
 	return
@@ -7960,17 +8008,28 @@ func (v DBusMethodInfo) RefCount() (result int32) {
 	result = int32(v.p().ref_count)
 	return
 }
+func (v DBusMethodInfo) SetRefCount(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
+}
 func (v DBusMethodInfo) Name() (result int /*TODO*/) {
 	return
+}
+func (v DBusMethodInfo) SetName(value int /*TODO*/) {
 }
 func (v DBusMethodInfo) InArgs() (result int /*TODO*/) {
 	return
 }
+func (v DBusMethodInfo) SetInArgs(value int /*TODO*/) {
+}
 func (v DBusMethodInfo) OutArgs() (result int /*TODO*/) {
 	return
 }
+func (v DBusMethodInfo) SetOutArgs(value int /*TODO*/) {
+}
 func (v DBusMethodInfo) Annotations() (result int /*TODO*/) {
 	return
+}
+func (v DBusMethodInfo) SetAnnotations(value int /*TODO*/) {
 }
 
 // Object DBusMethodInvocation
@@ -8368,17 +8427,28 @@ func (v DBusNodeInfo) RefCount() (result int32) {
 	result = int32(v.p().ref_count)
 	return
 }
+func (v DBusNodeInfo) SetRefCount(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
+}
 func (v DBusNodeInfo) Path() (result int /*TODO*/) {
 	return
+}
+func (v DBusNodeInfo) SetPath(value int /*TODO*/) {
 }
 func (v DBusNodeInfo) Interfaces() (result int /*TODO*/) {
 	return
 }
+func (v DBusNodeInfo) SetInterfaces(value int /*TODO*/) {
+}
 func (v DBusNodeInfo) Nodes() (result int /*TODO*/) {
 	return
 }
+func (v DBusNodeInfo) SetNodes(value int /*TODO*/) {
+}
 func (v DBusNodeInfo) Annotations() (result int /*TODO*/) {
 	return
+}
+func (v DBusNodeInfo) SetAnnotations(value int /*TODO*/) {
 }
 
 // Interface DBusObject
@@ -9402,17 +9472,28 @@ func (v DBusPropertyInfo) RefCount() (result int32) {
 	result = int32(v.p().ref_count)
 	return
 }
+func (v DBusPropertyInfo) SetRefCount(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
+}
 func (v DBusPropertyInfo) Name() (result int /*TODO*/) {
 	return
+}
+func (v DBusPropertyInfo) SetName(value int /*TODO*/) {
 }
 func (v DBusPropertyInfo) Signature() (result int /*TODO*/) {
 	return
 }
+func (v DBusPropertyInfo) SetSignature(value int /*TODO*/) {
+}
 func (v DBusPropertyInfo) Flags() (result int /*TODO*/) {
 	return
 }
+func (v DBusPropertyInfo) SetFlags(value int /*TODO*/) {
+}
 func (v DBusPropertyInfo) Annotations() (result int /*TODO*/) {
 	return
+}
+func (v DBusPropertyInfo) SetAnnotations(value int /*TODO*/) {
 }
 
 // Flags DBusPropertyInfoFlags
@@ -10519,14 +10600,23 @@ func (v DBusSignalInfo) RefCount() (result int32) {
 	result = int32(v.p().ref_count)
 	return
 }
+func (v DBusSignalInfo) SetRefCount(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
+}
 func (v DBusSignalInfo) Name() (result int /*TODO*/) {
 	return
+}
+func (v DBusSignalInfo) SetName(value int /*TODO*/) {
 }
 func (v DBusSignalInfo) Args() (result int /*TODO*/) {
 	return
 }
+func (v DBusSignalInfo) SetArgs(value int /*TODO*/) {
+}
 func (v DBusSignalInfo) Annotations() (result int /*TODO*/) {
 	return
+}
+func (v DBusSignalInfo) SetAnnotations(value int /*TODO*/) {
 }
 
 type DBusSubtreeDispatchFunc func(connection DBusConnection, sender string, object_path string, interface_name string, node string, out_user_data unsafe.Pointer) (result DBusInterfaceVTable)
@@ -10591,11 +10681,17 @@ func (v DBusSubtreeVTable) Enumerate() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().enumerate)
 	return
 }
+func (v DBusSubtreeVTable) SetEnumerate(value unsafe.Pointer) {
+}
 func (v DBusSubtreeVTable) Introspect() (result int /*TODO*/) {
 	return
 }
+func (v DBusSubtreeVTable) SetIntrospect(value int /*TODO*/) {
+}
 func (v DBusSubtreeVTable) Dispatch() (result int /*TODO*/) {
 	return
+}
+func (v DBusSubtreeVTable) SetDispatch(value int /*TODO*/) {
 }
 func (v DBusSubtreeVTable) Padding() (result int /*TODO*/) {
 	return
@@ -18212,11 +18308,17 @@ func (v FileAttributeInfo) p() *C.GFileAttributeInfo {
 func (v FileAttributeInfo) Name() (result int /*TODO*/) {
 	return
 }
+func (v FileAttributeInfo) SetName(value int /*TODO*/) {
+}
 func (v FileAttributeInfo) Type() (result int /*TODO*/) {
 	return
 }
+func (v FileAttributeInfo) SetType(value int /*TODO*/) {
+}
 func (v FileAttributeInfo) Flags() (result int /*TODO*/) {
 	return
+}
+func (v FileAttributeInfo) SetFlags(value int /*TODO*/) {
 }
 
 // Flags FileAttributeInfoFlags
@@ -18363,9 +18465,14 @@ func (v FileAttributeInfoList) p() *C.GFileAttributeInfoList {
 func (v FileAttributeInfoList) Infos() (result int /*TODO*/) {
 	return
 }
+func (v FileAttributeInfoList) SetInfos(value int /*TODO*/) {
+}
 func (v FileAttributeInfoList) NInfos() (result int32) {
 	result = int32(v.p().n_infos)
 	return
+}
+func (v FileAttributeInfoList) SetNInfos(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().n_infos)) = value
 }
 
 // Struct FileAttributeMatcher
@@ -22969,26 +23076,43 @@ func (v InputMessage) p() *C.GInputMessage {
 func (v InputMessage) Address() (result int /*TODO*/) {
 	return
 }
+func (v InputMessage) SetAddress(value int /*TODO*/) {
+}
 func (v InputMessage) Vectors() (result int /*TODO*/) {
 	return
+}
+func (v InputMessage) SetVectors(value int /*TODO*/) {
 }
 func (v InputMessage) NumVectors() (result uint32) {
 	result = uint32(v.p().num_vectors)
 	return
 }
+func (v InputMessage) SetNumVectors(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().num_vectors)) = value
+}
 func (v InputMessage) BytesReceived() (result uint64) {
 	result = uint64(v.p().bytes_received)
 	return
+}
+func (v InputMessage) SetBytesReceived(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().bytes_received)) = value
 }
 func (v InputMessage) Flags() (result int32) {
 	result = int32(v.p().flags)
 	return
 }
+func (v InputMessage) SetFlags(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().flags)) = value
+}
 func (v InputMessage) ControlMessages() (result int /*TODO*/) {
 	return
 }
+func (v InputMessage) SetControlMessages(value int /*TODO*/) {
+}
 func (v InputMessage) NumControlMessages() (result int /*TODO*/) {
 	return
+}
+func (v InputMessage) SetNumControlMessages(value int /*TODO*/) {
 }
 
 // Object InputStream
@@ -23597,9 +23721,14 @@ func (v InputVector) Buffer() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().buffer)
 	return
 }
+func (v InputVector) SetBuffer(value unsafe.Pointer) {
+}
 func (v InputVector) Size() (result uint64) {
 	result = uint64(v.p().size)
 	return
+}
+func (v InputVector) SetSize(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().size)) = value
 }
 
 // Interface ListModel
@@ -27266,23 +27395,38 @@ func (v OutputMessage) p() *C.GOutputMessage {
 func (v OutputMessage) Address() (result int /*TODO*/) {
 	return
 }
+func (v OutputMessage) SetAddress(value int /*TODO*/) {
+}
 func (v OutputMessage) Vectors() (result int /*TODO*/) {
 	return
+}
+func (v OutputMessage) SetVectors(value int /*TODO*/) {
 }
 func (v OutputMessage) NumVectors() (result uint32) {
 	result = uint32(v.p().num_vectors)
 	return
 }
+func (v OutputMessage) SetNumVectors(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().num_vectors)) = value
+}
 func (v OutputMessage) BytesSent() (result uint32) {
 	result = uint32(v.p().bytes_sent)
 	return
 }
+func (v OutputMessage) SetBytesSent(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().bytes_sent)) = value
+}
 func (v OutputMessage) ControlMessages() (result int /*TODO*/) {
 	return
+}
+func (v OutputMessage) SetControlMessages(value int /*TODO*/) {
 }
 func (v OutputMessage) NumControlMessages() (result uint32) {
 	result = uint32(v.p().num_control_messages)
 	return
+}
+func (v OutputMessage) SetNumControlMessages(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().num_control_messages)) = value
 }
 
 // Object OutputStream
@@ -28028,9 +28172,14 @@ func (v OutputVector) Buffer() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().buffer)
 	return
 }
+func (v OutputVector) SetBuffer(value unsafe.Pointer) {
+}
 func (v OutputVector) Size() (result uint64) {
 	result = uint64(v.p().size)
 	return
+}
+func (v OutputVector) SetSize(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().size)) = value
 }
 
 // Enum PasswordSave

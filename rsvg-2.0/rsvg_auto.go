@@ -66,17 +66,29 @@ func (v DimensionData) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v DimensionData) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v DimensionData) Height() (result int32) {
 	result = int32(v.p().height)
 	return
+}
+func (v DimensionData) SetHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height)) = value
 }
 func (v DimensionData) Em() (result float64) {
 	result = float64(v.p().em)
 	return
 }
+func (v DimensionData) SetEm(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().em)) = value
+}
 func (v DimensionData) Ex() (result float64) {
 	result = float64(v.p().ex)
 	return
+}
+func (v DimensionData) SetEx(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().ex)) = value
 }
 
 // Enum Error
@@ -673,9 +685,15 @@ func (v PositionData) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v PositionData) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v PositionData) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v PositionData) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 
 // rsvg_cleanup

@@ -80,8 +80,12 @@ func (v NetAddressMeta) p() *C.GstNetAddressMeta {
 func (v NetAddressMeta) Meta() (result int /*TODO*/) {
 	return
 }
+func (v NetAddressMeta) SetMeta(value int /*TODO*/) {
+}
 func (v NetAddressMeta) Addr() (result int /*TODO*/) {
 	return
+}
+func (v NetAddressMeta) SetAddr(value int /*TODO*/) {
 }
 
 // Object NetClientClock
@@ -170,8 +174,12 @@ func (v NetControlMessageMeta) p() *C.GstNetControlMessageMeta {
 func (v NetControlMessageMeta) Meta() (result int /*TODO*/) {
 	return
 }
+func (v NetControlMessageMeta) SetMeta(value int /*TODO*/) {
+}
 func (v NetControlMessageMeta) Message() (result int /*TODO*/) {
 	return
+}
+func (v NetControlMessageMeta) SetMessage(value int /*TODO*/) {
 }
 
 // Struct NetTimePacket
@@ -326,9 +334,15 @@ func (v NetTimePacket) LocalTime() (result uint64) {
 	result = uint64(v.p().local_time)
 	return
 }
+func (v NetTimePacket) SetLocalTime(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().local_time)) = value
+}
 func (v NetTimePacket) RemoteTime() (result uint64) {
 	result = uint64(v.p().remote_time)
 	return
+}
+func (v NetTimePacket) SetRemoteTime(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().remote_time)) = value
 }
 
 // Object NetTimeProvider

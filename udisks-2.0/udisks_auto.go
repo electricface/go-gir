@@ -13529,14 +13529,22 @@ func (v PartitionTypeInfo) p() *C.UDisksPartitionTypeInfo {
 func (v PartitionTypeInfo) TableType() (result int /*TODO*/) {
 	return
 }
+func (v PartitionTypeInfo) SetTableType(value int /*TODO*/) {
+}
 func (v PartitionTypeInfo) TableSubtype() (result int /*TODO*/) {
 	return
+}
+func (v PartitionTypeInfo) SetTableSubtype(value int /*TODO*/) {
 }
 func (v PartitionTypeInfo) Type() (result int /*TODO*/) {
 	return
 }
+func (v PartitionTypeInfo) SetType(value int /*TODO*/) {
+}
 func (v PartitionTypeInfo) Flags() (result int /*TODO*/) {
 	return
+}
+func (v PartitionTypeInfo) SetFlags(value int /*TODO*/) {
 }
 
 // Flags PartitionTypeInfoFlags

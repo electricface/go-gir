@@ -148,28 +148,48 @@ func (v Pixdata) Magic() (result uint32) {
 	result = uint32(v.p().magic)
 	return
 }
+func (v Pixdata) SetMagic(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().magic)) = value
+}
 func (v Pixdata) Length() (result int32) {
 	result = int32(v.p().length)
 	return
+}
+func (v Pixdata) SetLength(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().length)) = value
 }
 func (v Pixdata) PixdataType() (result uint32) {
 	result = uint32(v.p().pixdata_type)
 	return
 }
+func (v Pixdata) SetPixdataType(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().pixdata_type)) = value
+}
 func (v Pixdata) Rowstride() (result uint32) {
 	result = uint32(v.p().rowstride)
 	return
+}
+func (v Pixdata) SetRowstride(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().rowstride)) = value
 }
 func (v Pixdata) Width() (result uint32) {
 	result = uint32(v.p().width)
 	return
 }
+func (v Pixdata) SetWidth(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v Pixdata) Height() (result uint32) {
 	result = uint32(v.p().height)
 	return
 }
+func (v Pixdata) SetHeight(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().height)) = value
+}
 func (v Pixdata) PixelData() (result int /*TODO*/) {
 	return
+}
+func (v Pixdata) SetPixelData(value int /*TODO*/) {
 }
 
 // Flags PixdataDumpType

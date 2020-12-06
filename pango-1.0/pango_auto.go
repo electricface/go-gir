@@ -80,33 +80,55 @@ func (v Analysis) p() *C.PangoAnalysis {
 func (v Analysis) ShapeEngine() (result int /*TODO*/) {
 	return
 }
+func (v Analysis) SetShapeEngine(value int /*TODO*/) {
+}
 func (v Analysis) LangEngine() (result int /*TODO*/) {
 	return
 }
+func (v Analysis) SetLangEngine(value int /*TODO*/) {
+}
 func (v Analysis) Font() (result int /*TODO*/) {
 	return
+}
+func (v Analysis) SetFont(value int /*TODO*/) {
 }
 func (v Analysis) Level() (result uint8) {
 	result = uint8(v.p().level)
 	return
 }
+func (v Analysis) SetLevel(value uint8) {
+	*(*uint8)(unsafe.Pointer(&v.p().level)) = value
+}
 func (v Analysis) Gravity() (result uint8) {
 	result = uint8(v.p().gravity)
 	return
+}
+func (v Analysis) SetGravity(value uint8) {
+	*(*uint8)(unsafe.Pointer(&v.p().gravity)) = value
 }
 func (v Analysis) Flags() (result uint8) {
 	result = uint8(v.p().flags)
 	return
 }
+func (v Analysis) SetFlags(value uint8) {
+	*(*uint8)(unsafe.Pointer(&v.p().flags)) = value
+}
 func (v Analysis) Script() (result uint8) {
 	result = uint8(v.p().script)
 	return
 }
+func (v Analysis) SetScript(value uint8) {
+	*(*uint8)(unsafe.Pointer(&v.p().script)) = value
+}
 func (v Analysis) Language() (result int /*TODO*/) {
 	return
 }
+func (v Analysis) SetLanguage(value int /*TODO*/) {
+}
 func (v Analysis) ExtraAttrs() (result int /*TODO*/) {
 	return
+}
+func (v Analysis) SetExtraAttrs(value int /*TODO*/) {
 }
 
 // Struct AttrClass
@@ -126,6 +148,8 @@ func (v AttrClass) p() *C.PangoAttrClass {
 }
 func (v AttrClass) Type() (result int /*TODO*/) {
 	return
+}
+func (v AttrClass) SetType(value int /*TODO*/) {
 }
 func (v AttrClass) Copy() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().copy)
@@ -156,8 +180,12 @@ func (v AttrColor) p() *C.PangoAttrColor {
 func (v AttrColor) Attr() (result int /*TODO*/) {
 	return
 }
+func (v AttrColor) SetAttr(value int /*TODO*/) {
+}
 func (v AttrColor) Color() (result int /*TODO*/) {
 	return
+}
+func (v AttrColor) SetColor(value int /*TODO*/) {
 }
 
 type AttrDataCopyFunc func() (result unsafe.Pointer)
@@ -199,9 +227,14 @@ func (v AttrFloat) p() *C.PangoAttrFloat {
 func (v AttrFloat) Attr() (result int /*TODO*/) {
 	return
 }
+func (v AttrFloat) SetAttr(value int /*TODO*/) {
+}
 func (v AttrFloat) Value() (result float64) {
 	result = float64(v.p().value)
 	return
+}
+func (v AttrFloat) SetValue(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().value)) = value
 }
 
 // Struct AttrFontDesc
@@ -222,8 +255,12 @@ func (v AttrFontDesc) p() *C.PangoAttrFontDesc {
 func (v AttrFontDesc) Attr() (result int /*TODO*/) {
 	return
 }
+func (v AttrFontDesc) SetAttr(value int /*TODO*/) {
+}
 func (v AttrFontDesc) Desc() (result int /*TODO*/) {
 	return
+}
+func (v AttrFontDesc) SetDesc(value int /*TODO*/) {
 }
 
 // Struct AttrFontFeatures
@@ -244,8 +281,12 @@ func (v AttrFontFeatures) p() *C.PangoAttrFontFeatures {
 func (v AttrFontFeatures) Attr() (result int /*TODO*/) {
 	return
 }
+func (v AttrFontFeatures) SetAttr(value int /*TODO*/) {
+}
 func (v AttrFontFeatures) Features() (result int /*TODO*/) {
 	return
+}
+func (v AttrFontFeatures) SetFeatures(value int /*TODO*/) {
 }
 
 // Struct AttrInt
@@ -266,9 +307,14 @@ func (v AttrInt) p() *C.PangoAttrInt {
 func (v AttrInt) Attr() (result int /*TODO*/) {
 	return
 }
+func (v AttrInt) SetAttr(value int /*TODO*/) {
+}
 func (v AttrInt) Value() (result int32) {
 	result = int32(v.p().value)
 	return
+}
+func (v AttrInt) SetValue(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().value)) = value
 }
 
 // Struct AttrIterator
@@ -393,8 +439,12 @@ func (v AttrLanguage) p() *C.PangoAttrLanguage {
 func (v AttrLanguage) Attr() (result int /*TODO*/) {
 	return
 }
+func (v AttrLanguage) SetAttr(value int /*TODO*/) {
+}
 func (v AttrLanguage) Value() (result int /*TODO*/) {
 	return
+}
+func (v AttrLanguage) SetValue(value int /*TODO*/) {
 }
 
 // Struct AttrList
@@ -594,21 +644,33 @@ func (v AttrShape) p() *C.PangoAttrShape {
 func (v AttrShape) Attr() (result int /*TODO*/) {
 	return
 }
+func (v AttrShape) SetAttr(value int /*TODO*/) {
+}
 func (v AttrShape) InkRect() (result int /*TODO*/) {
 	return
 }
+func (v AttrShape) SetInkRect(value int /*TODO*/) {
+}
 func (v AttrShape) LogicalRect() (result int /*TODO*/) {
 	return
+}
+func (v AttrShape) SetLogicalRect(value int /*TODO*/) {
 }
 func (v AttrShape) Data() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().data)
 	return
 }
+func (v AttrShape) SetData(value unsafe.Pointer) {
+}
 func (v AttrShape) CopyFunc() (result int /*TODO*/) {
 	return
 }
+func (v AttrShape) SetCopyFunc(value int /*TODO*/) {
+}
 func (v AttrShape) DestroyFunc() (result int /*TODO*/) {
 	return
+}
+func (v AttrShape) SetDestroyFunc(value int /*TODO*/) {
 }
 
 // Struct AttrSize
@@ -629,9 +691,14 @@ func (v AttrSize) p() *C.PangoAttrSize {
 func (v AttrSize) Attr() (result int /*TODO*/) {
 	return
 }
+func (v AttrSize) SetAttr(value int /*TODO*/) {
+}
 func (v AttrSize) Size() (result int32) {
 	result = int32(v.p().size)
 	return
+}
+func (v AttrSize) SetSize(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().size)) = value
 }
 
 // TODO: ignore struct AttrSize field absolute, bits(=1) > 0
@@ -654,8 +721,12 @@ func (v AttrString) p() *C.PangoAttrString {
 func (v AttrString) Attr() (result int /*TODO*/) {
 	return
 }
+func (v AttrString) SetAttr(value int /*TODO*/) {
+}
 func (v AttrString) Value() (result int /*TODO*/) {
 	return
+}
+func (v AttrString) SetValue(value int /*TODO*/) {
 }
 
 // Enum AttrType
@@ -763,13 +834,21 @@ func (v Attribute) p() *C.PangoAttribute {
 func (v Attribute) Klass() (result int /*TODO*/) {
 	return
 }
+func (v Attribute) SetKlass(value int /*TODO*/) {
+}
 func (v Attribute) StartIndex() (result uint32) {
 	result = uint32(v.p().start_index)
 	return
 }
+func (v Attribute) SetStartIndex(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().start_index)) = value
+}
 func (v Attribute) EndIndex() (result uint32) {
 	result = uint32(v.p().end_index)
 	return
+}
+func (v Attribute) SetEndIndex(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().end_index)) = value
 }
 
 // Enum BidiType
@@ -893,13 +972,22 @@ func (v Color) Red() (result uint16) {
 	result = uint16(v.p().red)
 	return
 }
+func (v Color) SetRed(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().red)) = value
+}
 func (v Color) Green() (result uint16) {
 	result = uint16(v.p().green)
 	return
 }
+func (v Color) SetGreen(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().green)) = value
+}
 func (v Color) Blue() (result uint16) {
 	result = uint16(v.p().blue)
 	return
+}
+func (v Color) SetBlue(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().blue)) = value
 }
 
 // Object Context
@@ -1513,18 +1601,29 @@ func (v EngineInfo) p() *C.PangoEngineInfo {
 func (v EngineInfo) Id() (result int /*TODO*/) {
 	return
 }
+func (v EngineInfo) SetId(value int /*TODO*/) {
+}
 func (v EngineInfo) EngineType() (result int /*TODO*/) {
 	return
+}
+func (v EngineInfo) SetEngineType(value int /*TODO*/) {
 }
 func (v EngineInfo) RenderType() (result int /*TODO*/) {
 	return
 }
+func (v EngineInfo) SetRenderType(value int /*TODO*/) {
+}
 func (v EngineInfo) Scripts() (result int /*TODO*/) {
 	return
+}
+func (v EngineInfo) SetScripts(value int /*TODO*/) {
 }
 func (v EngineInfo) NScripts() (result int32) {
 	result = int32(v.p().n_scripts)
 	return
+}
+func (v EngineInfo) SetNScripts(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().n_scripts)) = value
 }
 
 // Deprecated
@@ -1566,8 +1665,12 @@ func (v EngineScriptInfo) p() *C.PangoEngineScriptInfo {
 func (v EngineScriptInfo) Script() (result int /*TODO*/) {
 	return
 }
+func (v EngineScriptInfo) SetScript(value int /*TODO*/) {
+}
 func (v EngineScriptInfo) Langs() (result int /*TODO*/) {
 	return
+}
+func (v EngineScriptInfo) SetLangs(value int /*TODO*/) {
 }
 
 // Deprecated
@@ -3159,13 +3262,22 @@ func (v GlyphGeometry) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v GlyphGeometry) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v GlyphGeometry) XOffset() (result int32) {
 	result = int32(v.p().x_offset)
 	return
 }
+func (v GlyphGeometry) SetXOffset(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x_offset)) = value
+}
 func (v GlyphGeometry) YOffset() (result int32) {
 	result = int32(v.p().y_offset)
 	return
+}
+func (v GlyphGeometry) SetYOffset(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y_offset)) = value
 }
 
 // Struct GlyphInfo
@@ -3187,11 +3299,18 @@ func (v GlyphInfo) Glyph() (result uint32) {
 	result = uint32(v.p().glyph)
 	return
 }
+func (v GlyphInfo) SetGlyph(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().glyph)) = value
+}
 func (v GlyphInfo) Geometry() (result int /*TODO*/) {
 	return
 }
+func (v GlyphInfo) SetGeometry(value int /*TODO*/) {
+}
 func (v GlyphInfo) Attr() (result int /*TODO*/) {
 	return
+}
+func (v GlyphInfo) SetAttr(value int /*TODO*/) {
 }
 
 // Struct GlyphItem
@@ -3340,8 +3459,12 @@ func (v GlyphItem) p() *C.PangoGlyphItem {
 func (v GlyphItem) Item() (result int /*TODO*/) {
 	return
 }
+func (v GlyphItem) SetItem(value int /*TODO*/) {
+}
 func (v GlyphItem) Glyphs() (result int /*TODO*/) {
 	return
+}
+func (v GlyphItem) SetGlyphs(value int /*TODO*/) {
 }
 
 // Struct GlyphItemIter
@@ -3481,32 +3604,54 @@ func (v GlyphItemIter) p() *C.PangoGlyphItemIter {
 func (v GlyphItemIter) GlyphItem() (result int /*TODO*/) {
 	return
 }
+func (v GlyphItemIter) SetGlyphItem(value int /*TODO*/) {
+}
 func (v GlyphItemIter) Text() (result int /*TODO*/) {
 	return
+}
+func (v GlyphItemIter) SetText(value int /*TODO*/) {
 }
 func (v GlyphItemIter) StartGlyph() (result int32) {
 	result = int32(v.p().start_glyph)
 	return
 }
+func (v GlyphItemIter) SetStartGlyph(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().start_glyph)) = value
+}
 func (v GlyphItemIter) StartIndex() (result int32) {
 	result = int32(v.p().start_index)
 	return
+}
+func (v GlyphItemIter) SetStartIndex(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().start_index)) = value
 }
 func (v GlyphItemIter) StartChar() (result int32) {
 	result = int32(v.p().start_char)
 	return
 }
+func (v GlyphItemIter) SetStartChar(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().start_char)) = value
+}
 func (v GlyphItemIter) EndGlyph() (result int32) {
 	result = int32(v.p().end_glyph)
 	return
+}
+func (v GlyphItemIter) SetEndGlyph(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().end_glyph)) = value
 }
 func (v GlyphItemIter) EndIndex() (result int32) {
 	result = int32(v.p().end_index)
 	return
 }
+func (v GlyphItemIter) SetEndIndex(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().end_index)) = value
+}
 func (v GlyphItemIter) EndChar() (result int32) {
 	result = int32(v.p().end_char)
 	return
+}
+func (v GlyphItemIter) SetEndChar(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().end_char)) = value
 }
 
 // Struct GlyphString
@@ -3767,11 +3912,18 @@ func (v GlyphString) NumGlyphs() (result int32) {
 	result = int32(v.p().num_glyphs)
 	return
 }
+func (v GlyphString) SetNumGlyphs(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().num_glyphs)) = value
+}
 func (v GlyphString) Glyphs() (result int /*TODO*/) {
 	return
 }
+func (v GlyphString) SetGlyphs(value int /*TODO*/) {
+}
 func (v GlyphString) LogClusters() (result int /*TODO*/) {
 	return
+}
+func (v GlyphString) SetLogClusters(value int /*TODO*/) {
 }
 func (v GlyphString) Space() (result int32) {
 	result = int32(v.p().space)
@@ -3947,16 +4099,27 @@ func (v Item) Offset() (result int32) {
 	result = int32(v.p().offset)
 	return
 }
+func (v Item) SetOffset(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().offset)) = value
+}
 func (v Item) Length() (result int32) {
 	result = int32(v.p().length)
 	return
+}
+func (v Item) SetLength(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().length)) = value
 }
 func (v Item) NumChars() (result int32) {
 	result = int32(v.p().num_chars)
 	return
 }
+func (v Item) SetNumChars(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().num_chars)) = value
+}
 func (v Item) Analysis() (result int /*TODO*/) {
 	return
+}
+func (v Item) SetAnalysis(value int /*TODO*/) {
 }
 
 // Struct Language
@@ -5774,16 +5937,26 @@ func (v LayoutLine) p() *C.PangoLayoutLine {
 func (v LayoutLine) Layout() (result int /*TODO*/) {
 	return
 }
+func (v LayoutLine) SetLayout(value int /*TODO*/) {
+}
 func (v LayoutLine) StartIndex() (result int32) {
 	result = int32(v.p().start_index)
 	return
+}
+func (v LayoutLine) SetStartIndex(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().start_index)) = value
 }
 func (v LayoutLine) Length() (result int32) {
 	result = int32(v.p().length)
 	return
 }
+func (v LayoutLine) SetLength(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().length)) = value
+}
 func (v LayoutLine) Runs() (result int /*TODO*/) {
 	return
+}
+func (v LayoutLine) SetRuns(value int /*TODO*/) {
 }
 
 // TODO: ignore struct LayoutLine field is_paragraph_start, bits(=1) > 0
@@ -6081,25 +6254,43 @@ func (v Matrix) Xx() (result float64) {
 	result = float64(v.p().xx)
 	return
 }
+func (v Matrix) SetXx(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().xx)) = value
+}
 func (v Matrix) Xy() (result float64) {
 	result = float64(v.p().xy)
 	return
+}
+func (v Matrix) SetXy(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().xy)) = value
 }
 func (v Matrix) Yx() (result float64) {
 	result = float64(v.p().yx)
 	return
 }
+func (v Matrix) SetYx(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().yx)) = value
+}
 func (v Matrix) Yy() (result float64) {
 	result = float64(v.p().yy)
 	return
+}
+func (v Matrix) SetYy(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().yy)) = value
 }
 func (v Matrix) X0() (result float64) {
 	result = float64(v.p().x0)
 	return
 }
+func (v Matrix) SetX0(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x0)) = value
+}
 func (v Matrix) Y0() (result float64) {
 	result = float64(v.p().y0)
 	return
+}
+func (v Matrix) SetY0(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y0)) = value
 }
 
 // Struct Rectangle
@@ -6121,17 +6312,29 @@ func (v Rectangle) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v Rectangle) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v Rectangle) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v Rectangle) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 func (v Rectangle) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v Rectangle) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v Rectangle) Height() (result int32) {
 	result = int32(v.p().height)
 	return
+}
+func (v Rectangle) SetHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height)) = value
 }
 
 // Enum RenderPart

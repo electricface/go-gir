@@ -489,17 +489,29 @@ func (v Color) Pixel() (result uint32) {
 	result = uint32(v.p().pixel)
 	return
 }
+func (v Color) SetPixel(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().pixel)) = value
+}
 func (v Color) Red() (result uint16) {
 	result = uint16(v.p().red)
 	return
+}
+func (v Color) SetRed(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().red)) = value
 }
 func (v Color) Green() (result uint16) {
 	result = uint16(v.p().green)
 	return
 }
+func (v Color) SetGreen(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().green)) = value
+}
 func (v Color) Blue() (result uint16) {
 	result = uint16(v.p().blue)
 	return
+}
+func (v Color) SetBlue(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().blue)) = value
 }
 
 // Enum CrossingMode
@@ -4093,12 +4105,19 @@ func (v EventAny) p() *C.GdkEventAny {
 func (v EventAny) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventAny) SetType(value int /*TODO*/) {
+}
 func (v EventAny) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventAny) SetWindow(value int /*TODO*/) {
 }
 func (v EventAny) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
+}
+func (v EventAny) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
 }
 
 // Struct EventButton
@@ -4119,45 +4138,76 @@ func (v EventButton) p() *C.GdkEventButton {
 func (v EventButton) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventButton) SetType(value int /*TODO*/) {
+}
 func (v EventButton) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventButton) SetWindow(value int /*TODO*/) {
 }
 func (v EventButton) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventButton) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventButton) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
+}
+func (v EventButton) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
 }
 func (v EventButton) X() (result float64) {
 	result = float64(v.p().x)
 	return
 }
+func (v EventButton) SetX(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v EventButton) Y() (result float64) {
 	result = float64(v.p().y)
 	return
 }
+func (v EventButton) SetY(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y)) = value
+}
 func (v EventButton) Axes() (result int /*TODO*/) {
 	return
 }
+func (v EventButton) SetAxes(value int /*TODO*/) {
+}
 func (v EventButton) State() (result int /*TODO*/) {
 	return
+}
+func (v EventButton) SetState(value int /*TODO*/) {
 }
 func (v EventButton) Button() (result uint32) {
 	result = uint32(v.p().button)
 	return
 }
+func (v EventButton) SetButton(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().button)) = value
+}
 func (v EventButton) Device() (result int /*TODO*/) {
 	return
+}
+func (v EventButton) SetDevice(value int /*TODO*/) {
 }
 func (v EventButton) XRoot() (result float64) {
 	result = float64(v.p().x_root)
 	return
 }
+func (v EventButton) SetXRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x_root)) = value
+}
 func (v EventButton) YRoot() (result float64) {
 	result = float64(v.p().y_root)
 	return
+}
+func (v EventButton) SetYRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y_root)) = value
 }
 
 // Struct EventConfigure
@@ -4178,28 +4228,47 @@ func (v EventConfigure) p() *C.GdkEventConfigure {
 func (v EventConfigure) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventConfigure) SetType(value int /*TODO*/) {
+}
 func (v EventConfigure) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventConfigure) SetWindow(value int /*TODO*/) {
 }
 func (v EventConfigure) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventConfigure) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventConfigure) X() (result int32) {
 	result = int32(v.p().x)
 	return
+}
+func (v EventConfigure) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
 }
 func (v EventConfigure) Y() (result int32) {
 	result = int32(v.p().y)
 	return
 }
+func (v EventConfigure) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
+}
 func (v EventConfigure) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v EventConfigure) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v EventConfigure) Height() (result int32) {
 	result = int32(v.p().height)
 	return
+}
+func (v EventConfigure) SetHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height)) = value
 }
 
 // Struct EventCrossing
@@ -4220,48 +4289,80 @@ func (v EventCrossing) p() *C.GdkEventCrossing {
 func (v EventCrossing) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventCrossing) SetType(value int /*TODO*/) {
+}
 func (v EventCrossing) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventCrossing) SetWindow(value int /*TODO*/) {
 }
 func (v EventCrossing) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventCrossing) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventCrossing) Subwindow() (result int /*TODO*/) {
 	return
+}
+func (v EventCrossing) SetSubwindow(value int /*TODO*/) {
 }
 func (v EventCrossing) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
 }
+func (v EventCrossing) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
+}
 func (v EventCrossing) X() (result float64) {
 	result = float64(v.p().x)
 	return
+}
+func (v EventCrossing) SetX(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x)) = value
 }
 func (v EventCrossing) Y() (result float64) {
 	result = float64(v.p().y)
 	return
 }
+func (v EventCrossing) SetY(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y)) = value
+}
 func (v EventCrossing) XRoot() (result float64) {
 	result = float64(v.p().x_root)
 	return
+}
+func (v EventCrossing) SetXRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x_root)) = value
 }
 func (v EventCrossing) YRoot() (result float64) {
 	result = float64(v.p().y_root)
 	return
 }
+func (v EventCrossing) SetYRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y_root)) = value
+}
 func (v EventCrossing) Mode() (result int /*TODO*/) {
 	return
 }
+func (v EventCrossing) SetMode(value int /*TODO*/) {
+}
 func (v EventCrossing) Detail() (result int /*TODO*/) {
 	return
+}
+func (v EventCrossing) SetDetail(value int /*TODO*/) {
 }
 func (v EventCrossing) Focus() (result bool) {
 	result = gi.Int2Bool(int(v.p().focus))
 	return
 }
+func (v EventCrossing) SetFocus(value bool) {
+}
 func (v EventCrossing) State() (result int /*TODO*/) {
 	return
+}
+func (v EventCrossing) SetState(value int /*TODO*/) {
 }
 
 // Struct EventDND
@@ -4282,27 +4383,45 @@ func (v EventDND) p() *C.GdkEventDND {
 func (v EventDND) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventDND) SetType(value int /*TODO*/) {
+}
 func (v EventDND) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventDND) SetWindow(value int /*TODO*/) {
 }
 func (v EventDND) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventDND) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventDND) Context() (result int /*TODO*/) {
 	return
+}
+func (v EventDND) SetContext(value int /*TODO*/) {
 }
 func (v EventDND) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
 }
+func (v EventDND) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
+}
 func (v EventDND) XRoot() (result int16) {
 	result = int16(v.p().x_root)
 	return
 }
+func (v EventDND) SetXRoot(value int16) {
+	*(*int16)(unsafe.Pointer(&v.p().x_root)) = value
+}
 func (v EventDND) YRoot() (result int16) {
 	result = int16(v.p().y_root)
 	return
+}
+func (v EventDND) SetYRoot(value int16) {
+	*(*int16)(unsafe.Pointer(&v.p().y_root)) = value
 }
 
 // Struct EventExpose
@@ -4323,22 +4442,36 @@ func (v EventExpose) p() *C.GdkEventExpose {
 func (v EventExpose) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventExpose) SetType(value int /*TODO*/) {
+}
 func (v EventExpose) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventExpose) SetWindow(value int /*TODO*/) {
 }
 func (v EventExpose) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventExpose) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventExpose) Area() (result int /*TODO*/) {
 	return
+}
+func (v EventExpose) SetArea(value int /*TODO*/) {
 }
 func (v EventExpose) Region() (result int /*TODO*/) {
 	return
 }
+func (v EventExpose) SetRegion(value int /*TODO*/) {
+}
 func (v EventExpose) Count() (result int32) {
 	result = int32(v.p().count)
 	return
+}
+func (v EventExpose) SetCount(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().count)) = value
 }
 
 // Struct EventFocus
@@ -4359,16 +4492,26 @@ func (v EventFocus) p() *C.GdkEventFocus {
 func (v EventFocus) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventFocus) SetType(value int /*TODO*/) {
+}
 func (v EventFocus) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventFocus) SetWindow(value int /*TODO*/) {
 }
 func (v EventFocus) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventFocus) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventFocus) In() (result int16) {
 	result = int16(v.p().in)
 	return
+}
+func (v EventFocus) SetIn(value int16) {
+	*(*int16)(unsafe.Pointer(&v.p().in)) = value
 }
 
 type EventFunc func(event Event)
@@ -4399,23 +4542,36 @@ func (v EventGrabBroken) p() *C.GdkEventGrabBroken {
 func (v EventGrabBroken) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventGrabBroken) SetType(value int /*TODO*/) {
+}
 func (v EventGrabBroken) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventGrabBroken) SetWindow(value int /*TODO*/) {
 }
 func (v EventGrabBroken) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventGrabBroken) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventGrabBroken) Keyboard() (result bool) {
 	result = gi.Int2Bool(int(v.p().keyboard))
 	return
+}
+func (v EventGrabBroken) SetKeyboard(value bool) {
 }
 func (v EventGrabBroken) Implicit() (result bool) {
 	result = gi.Int2Bool(int(v.p().implicit))
 	return
 }
+func (v EventGrabBroken) SetImplicit(value bool) {
+}
 func (v EventGrabBroken) GrabWindow() (result int /*TODO*/) {
 	return
+}
+func (v EventGrabBroken) SetGrabWindow(value int /*TODO*/) {
 }
 
 // Struct EventKey
@@ -4436,38 +4592,64 @@ func (v EventKey) p() *C.GdkEventKey {
 func (v EventKey) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventKey) SetType(value int /*TODO*/) {
+}
 func (v EventKey) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventKey) SetWindow(value int /*TODO*/) {
 }
 func (v EventKey) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventKey) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventKey) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
 }
+func (v EventKey) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
+}
 func (v EventKey) State() (result int /*TODO*/) {
 	return
+}
+func (v EventKey) SetState(value int /*TODO*/) {
 }
 func (v EventKey) Keyval() (result uint32) {
 	result = uint32(v.p().keyval)
 	return
 }
+func (v EventKey) SetKeyval(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().keyval)) = value
+}
 func (v EventKey) Length() (result int32) {
 	result = int32(v.p().length)
 	return
 }
+func (v EventKey) SetLength(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().length)) = value
+}
 func (v EventKey) String() (result int /*TODO*/) {
 	return
+}
+func (v EventKey) SetString(value int /*TODO*/) {
 }
 func (v EventKey) HardwareKeycode() (result uint16) {
 	result = uint16(v.p().hardware_keycode)
 	return
 }
+func (v EventKey) SetHardwareKeycode(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().hardware_keycode)) = value
+}
 func (v EventKey) Group() (result uint8) {
 	result = uint8(v.p().group)
 	return
+}
+func (v EventKey) SetGroup(value uint8) {
+	*(*uint8)(unsafe.Pointer(&v.p().group)) = value
 }
 
 // TODO: ignore struct EventKey field is_modifier, bits(=1) > 0
@@ -4527,45 +4709,76 @@ func (v EventMotion) p() *C.GdkEventMotion {
 func (v EventMotion) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventMotion) SetType(value int /*TODO*/) {
+}
 func (v EventMotion) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventMotion) SetWindow(value int /*TODO*/) {
 }
 func (v EventMotion) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventMotion) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventMotion) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
+}
+func (v EventMotion) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
 }
 func (v EventMotion) X() (result float64) {
 	result = float64(v.p().x)
 	return
 }
+func (v EventMotion) SetX(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v EventMotion) Y() (result float64) {
 	result = float64(v.p().y)
 	return
 }
+func (v EventMotion) SetY(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y)) = value
+}
 func (v EventMotion) Axes() (result int /*TODO*/) {
 	return
 }
+func (v EventMotion) SetAxes(value int /*TODO*/) {
+}
 func (v EventMotion) State() (result int /*TODO*/) {
 	return
+}
+func (v EventMotion) SetState(value int /*TODO*/) {
 }
 func (v EventMotion) IsHint() (result int16) {
 	result = int16(v.p().is_hint)
 	return
 }
+func (v EventMotion) SetIsHint(value int16) {
+	*(*int16)(unsafe.Pointer(&v.p().is_hint)) = value
+}
 func (v EventMotion) Device() (result int /*TODO*/) {
 	return
+}
+func (v EventMotion) SetDevice(value int /*TODO*/) {
 }
 func (v EventMotion) XRoot() (result float64) {
 	result = float64(v.p().x_root)
 	return
 }
+func (v EventMotion) SetXRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x_root)) = value
+}
 func (v EventMotion) YRoot() (result float64) {
 	result = float64(v.p().y_root)
 	return
+}
+func (v EventMotion) SetYRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y_root)) = value
 }
 
 // Struct EventOwnerChange
@@ -4586,29 +4799,48 @@ func (v EventOwnerChange) p() *C.GdkEventOwnerChange {
 func (v EventOwnerChange) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventOwnerChange) SetType(value int /*TODO*/) {
+}
 func (v EventOwnerChange) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventOwnerChange) SetWindow(value int /*TODO*/) {
 }
 func (v EventOwnerChange) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventOwnerChange) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventOwnerChange) Owner() (result int /*TODO*/) {
 	return
+}
+func (v EventOwnerChange) SetOwner(value int /*TODO*/) {
 }
 func (v EventOwnerChange) Reason() (result int /*TODO*/) {
 	return
 }
+func (v EventOwnerChange) SetReason(value int /*TODO*/) {
+}
 func (v EventOwnerChange) Selection() (result int /*TODO*/) {
 	return
+}
+func (v EventOwnerChange) SetSelection(value int /*TODO*/) {
 }
 func (v EventOwnerChange) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
 }
+func (v EventOwnerChange) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
+}
 func (v EventOwnerChange) SelectionTime() (result uint32) {
 	result = uint32(v.p().selection_time)
 	return
+}
+func (v EventOwnerChange) SetSelectionTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().selection_time)) = value
 }
 
 // Struct EventPadAxis
@@ -4629,32 +4861,54 @@ func (v EventPadAxis) p() *C.GdkEventPadAxis {
 func (v EventPadAxis) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventPadAxis) SetType(value int /*TODO*/) {
+}
 func (v EventPadAxis) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventPadAxis) SetWindow(value int /*TODO*/) {
 }
 func (v EventPadAxis) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventPadAxis) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventPadAxis) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
+}
+func (v EventPadAxis) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
 }
 func (v EventPadAxis) Group() (result uint32) {
 	result = uint32(v.p().group)
 	return
 }
+func (v EventPadAxis) SetGroup(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().group)) = value
+}
 func (v EventPadAxis) Index() (result uint32) {
 	result = uint32(v.p().index)
 	return
+}
+func (v EventPadAxis) SetIndex(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().index)) = value
 }
 func (v EventPadAxis) Mode() (result uint32) {
 	result = uint32(v.p().mode)
 	return
 }
+func (v EventPadAxis) SetMode(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().mode)) = value
+}
 func (v EventPadAxis) Value() (result float64) {
 	result = float64(v.p().value)
 	return
+}
+func (v EventPadAxis) SetValue(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().value)) = value
 }
 
 // Struct EventPadButton
@@ -4675,28 +4929,47 @@ func (v EventPadButton) p() *C.GdkEventPadButton {
 func (v EventPadButton) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventPadButton) SetType(value int /*TODO*/) {
+}
 func (v EventPadButton) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventPadButton) SetWindow(value int /*TODO*/) {
 }
 func (v EventPadButton) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventPadButton) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventPadButton) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
+}
+func (v EventPadButton) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
 }
 func (v EventPadButton) Group() (result uint32) {
 	result = uint32(v.p().group)
 	return
 }
+func (v EventPadButton) SetGroup(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().group)) = value
+}
 func (v EventPadButton) Button() (result uint32) {
 	result = uint32(v.p().button)
 	return
 }
+func (v EventPadButton) SetButton(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().button)) = value
+}
 func (v EventPadButton) Mode() (result uint32) {
 	result = uint32(v.p().mode)
 	return
+}
+func (v EventPadButton) SetMode(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().mode)) = value
 }
 
 // Struct EventPadGroupMode
@@ -4717,24 +4990,40 @@ func (v EventPadGroupMode) p() *C.GdkEventPadGroupMode {
 func (v EventPadGroupMode) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventPadGroupMode) SetType(value int /*TODO*/) {
+}
 func (v EventPadGroupMode) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventPadGroupMode) SetWindow(value int /*TODO*/) {
 }
 func (v EventPadGroupMode) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventPadGroupMode) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventPadGroupMode) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
+}
+func (v EventPadGroupMode) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
 }
 func (v EventPadGroupMode) Group() (result uint32) {
 	result = uint32(v.p().group)
 	return
 }
+func (v EventPadGroupMode) SetGroup(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().group)) = value
+}
 func (v EventPadGroupMode) Mode() (result uint32) {
 	result = uint32(v.p().mode)
 	return
+}
+func (v EventPadGroupMode) SetMode(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().mode)) = value
 }
 
 // Struct EventProperty
@@ -4755,22 +5044,36 @@ func (v EventProperty) p() *C.GdkEventProperty {
 func (v EventProperty) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventProperty) SetType(value int /*TODO*/) {
+}
 func (v EventProperty) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventProperty) SetWindow(value int /*TODO*/) {
 }
 func (v EventProperty) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventProperty) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventProperty) Atom() (result int /*TODO*/) {
 	return
+}
+func (v EventProperty) SetAtom(value int /*TODO*/) {
 }
 func (v EventProperty) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
 }
+func (v EventProperty) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
+}
 func (v EventProperty) State() (result int /*TODO*/) {
 	return
+}
+func (v EventProperty) SetState(value int /*TODO*/) {
 }
 
 // Struct EventProximity
@@ -4791,19 +5094,31 @@ func (v EventProximity) p() *C.GdkEventProximity {
 func (v EventProximity) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventProximity) SetType(value int /*TODO*/) {
+}
 func (v EventProximity) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventProximity) SetWindow(value int /*TODO*/) {
 }
 func (v EventProximity) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventProximity) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventProximity) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
 }
+func (v EventProximity) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
+}
 func (v EventProximity) Device() (result int /*TODO*/) {
 	return
+}
+func (v EventProximity) SetDevice(value int /*TODO*/) {
 }
 
 // Struct EventScroll
@@ -4824,49 +5139,83 @@ func (v EventScroll) p() *C.GdkEventScroll {
 func (v EventScroll) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventScroll) SetType(value int /*TODO*/) {
+}
 func (v EventScroll) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventScroll) SetWindow(value int /*TODO*/) {
 }
 func (v EventScroll) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventScroll) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventScroll) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
+}
+func (v EventScroll) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
 }
 func (v EventScroll) X() (result float64) {
 	result = float64(v.p().x)
 	return
 }
+func (v EventScroll) SetX(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v EventScroll) Y() (result float64) {
 	result = float64(v.p().y)
 	return
 }
+func (v EventScroll) SetY(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y)) = value
+}
 func (v EventScroll) State() (result int /*TODO*/) {
 	return
+}
+func (v EventScroll) SetState(value int /*TODO*/) {
 }
 func (v EventScroll) Direction() (result int /*TODO*/) {
 	return
 }
+func (v EventScroll) SetDirection(value int /*TODO*/) {
+}
 func (v EventScroll) Device() (result int /*TODO*/) {
 	return
+}
+func (v EventScroll) SetDevice(value int /*TODO*/) {
 }
 func (v EventScroll) XRoot() (result float64) {
 	result = float64(v.p().x_root)
 	return
 }
+func (v EventScroll) SetXRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x_root)) = value
+}
 func (v EventScroll) YRoot() (result float64) {
 	result = float64(v.p().y_root)
 	return
+}
+func (v EventScroll) SetYRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y_root)) = value
 }
 func (v EventScroll) DeltaX() (result float64) {
 	result = float64(v.p().delta_x)
 	return
 }
+func (v EventScroll) SetDeltaX(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().delta_x)) = value
+}
 func (v EventScroll) DeltaY() (result float64) {
 	result = float64(v.p().delta_y)
 	return
+}
+func (v EventScroll) SetDeltaY(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().delta_y)) = value
 }
 
 // TODO: ignore struct EventScroll field is_stop, bits(=1) > 0
@@ -4889,28 +5238,46 @@ func (v EventSelection) p() *C.GdkEventSelection {
 func (v EventSelection) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventSelection) SetType(value int /*TODO*/) {
+}
 func (v EventSelection) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventSelection) SetWindow(value int /*TODO*/) {
 }
 func (v EventSelection) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventSelection) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventSelection) Selection() (result int /*TODO*/) {
 	return
+}
+func (v EventSelection) SetSelection(value int /*TODO*/) {
 }
 func (v EventSelection) Target() (result int /*TODO*/) {
 	return
 }
+func (v EventSelection) SetTarget(value int /*TODO*/) {
+}
 func (v EventSelection) Property() (result int /*TODO*/) {
 	return
+}
+func (v EventSelection) SetProperty(value int /*TODO*/) {
 }
 func (v EventSelection) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
 }
+func (v EventSelection) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
+}
 func (v EventSelection) Requestor() (result int /*TODO*/) {
 	return
+}
+func (v EventSelection) SetRequestor(value int /*TODO*/) {
 }
 
 // Struct EventSequence
@@ -4941,18 +5308,29 @@ func (v EventSetting) p() *C.GdkEventSetting {
 func (v EventSetting) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventSetting) SetType(value int /*TODO*/) {
+}
 func (v EventSetting) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventSetting) SetWindow(value int /*TODO*/) {
 }
 func (v EventSetting) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventSetting) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventSetting) Action() (result int /*TODO*/) {
 	return
 }
+func (v EventSetting) SetAction(value int /*TODO*/) {
+}
 func (v EventSetting) Name() (result int /*TODO*/) {
 	return
+}
+func (v EventSetting) SetName(value int /*TODO*/) {
 }
 
 // Struct EventTouch
@@ -4973,48 +5351,80 @@ func (v EventTouch) p() *C.GdkEventTouch {
 func (v EventTouch) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventTouch) SetType(value int /*TODO*/) {
+}
 func (v EventTouch) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventTouch) SetWindow(value int /*TODO*/) {
 }
 func (v EventTouch) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventTouch) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventTouch) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
+}
+func (v EventTouch) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
 }
 func (v EventTouch) X() (result float64) {
 	result = float64(v.p().x)
 	return
 }
+func (v EventTouch) SetX(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v EventTouch) Y() (result float64) {
 	result = float64(v.p().y)
 	return
 }
+func (v EventTouch) SetY(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y)) = value
+}
 func (v EventTouch) Axes() (result int /*TODO*/) {
 	return
+}
+func (v EventTouch) SetAxes(value int /*TODO*/) {
 }
 func (v EventTouch) State() (result int /*TODO*/) {
 	return
 }
+func (v EventTouch) SetState(value int /*TODO*/) {
+}
 func (v EventTouch) Sequence() (result int /*TODO*/) {
 	return
+}
+func (v EventTouch) SetSequence(value int /*TODO*/) {
 }
 func (v EventTouch) EmulatingPointer() (result bool) {
 	result = gi.Int2Bool(int(v.p().emulating_pointer))
 	return
 }
+func (v EventTouch) SetEmulatingPointer(value bool) {
+}
 func (v EventTouch) Device() (result int /*TODO*/) {
 	return
+}
+func (v EventTouch) SetDevice(value int /*TODO*/) {
 }
 func (v EventTouch) XRoot() (result float64) {
 	result = float64(v.p().x_root)
 	return
 }
+func (v EventTouch) SetXRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x_root)) = value
+}
 func (v EventTouch) YRoot() (result float64) {
 	result = float64(v.p().y_root)
 	return
+}
+func (v EventTouch) SetYRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y_root)) = value
 }
 
 // Struct EventTouchpadPinch
@@ -5035,59 +5445,101 @@ func (v EventTouchpadPinch) p() *C.GdkEventTouchpadPinch {
 func (v EventTouchpadPinch) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventTouchpadPinch) SetType(value int /*TODO*/) {
+}
 func (v EventTouchpadPinch) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventTouchpadPinch) SetWindow(value int /*TODO*/) {
 }
 func (v EventTouchpadPinch) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventTouchpadPinch) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventTouchpadPinch) Phase() (result int8) {
 	result = int8(v.p().phase)
 	return
+}
+func (v EventTouchpadPinch) SetPhase(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().phase)) = value
 }
 func (v EventTouchpadPinch) NFingers() (result int8) {
 	result = int8(v.p().n_fingers)
 	return
 }
+func (v EventTouchpadPinch) SetNFingers(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().n_fingers)) = value
+}
 func (v EventTouchpadPinch) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
+}
+func (v EventTouchpadPinch) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
 }
 func (v EventTouchpadPinch) X() (result float64) {
 	result = float64(v.p().x)
 	return
 }
+func (v EventTouchpadPinch) SetX(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v EventTouchpadPinch) Y() (result float64) {
 	result = float64(v.p().y)
 	return
+}
+func (v EventTouchpadPinch) SetY(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y)) = value
 }
 func (v EventTouchpadPinch) Dx() (result float64) {
 	result = float64(v.p().dx)
 	return
 }
+func (v EventTouchpadPinch) SetDx(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().dx)) = value
+}
 func (v EventTouchpadPinch) Dy() (result float64) {
 	result = float64(v.p().dy)
 	return
+}
+func (v EventTouchpadPinch) SetDy(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().dy)) = value
 }
 func (v EventTouchpadPinch) AngleDelta() (result float64) {
 	result = float64(v.p().angle_delta)
 	return
 }
+func (v EventTouchpadPinch) SetAngleDelta(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().angle_delta)) = value
+}
 func (v EventTouchpadPinch) Scale() (result float64) {
 	result = float64(v.p().scale)
 	return
+}
+func (v EventTouchpadPinch) SetScale(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().scale)) = value
 }
 func (v EventTouchpadPinch) XRoot() (result float64) {
 	result = float64(v.p().x_root)
 	return
 }
+func (v EventTouchpadPinch) SetXRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x_root)) = value
+}
 func (v EventTouchpadPinch) YRoot() (result float64) {
 	result = float64(v.p().y_root)
 	return
 }
+func (v EventTouchpadPinch) SetYRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y_root)) = value
+}
 func (v EventTouchpadPinch) State() (result int /*TODO*/) {
 	return
+}
+func (v EventTouchpadPinch) SetState(value int /*TODO*/) {
 }
 
 // Struct EventTouchpadSwipe
@@ -5108,51 +5560,87 @@ func (v EventTouchpadSwipe) p() *C.GdkEventTouchpadSwipe {
 func (v EventTouchpadSwipe) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventTouchpadSwipe) SetType(value int /*TODO*/) {
+}
 func (v EventTouchpadSwipe) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventTouchpadSwipe) SetWindow(value int /*TODO*/) {
 }
 func (v EventTouchpadSwipe) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventTouchpadSwipe) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventTouchpadSwipe) Phase() (result int8) {
 	result = int8(v.p().phase)
 	return
+}
+func (v EventTouchpadSwipe) SetPhase(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().phase)) = value
 }
 func (v EventTouchpadSwipe) NFingers() (result int8) {
 	result = int8(v.p().n_fingers)
 	return
 }
+func (v EventTouchpadSwipe) SetNFingers(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().n_fingers)) = value
+}
 func (v EventTouchpadSwipe) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
+}
+func (v EventTouchpadSwipe) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
 }
 func (v EventTouchpadSwipe) X() (result float64) {
 	result = float64(v.p().x)
 	return
 }
+func (v EventTouchpadSwipe) SetX(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v EventTouchpadSwipe) Y() (result float64) {
 	result = float64(v.p().y)
 	return
+}
+func (v EventTouchpadSwipe) SetY(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y)) = value
 }
 func (v EventTouchpadSwipe) Dx() (result float64) {
 	result = float64(v.p().dx)
 	return
 }
+func (v EventTouchpadSwipe) SetDx(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().dx)) = value
+}
 func (v EventTouchpadSwipe) Dy() (result float64) {
 	result = float64(v.p().dy)
 	return
+}
+func (v EventTouchpadSwipe) SetDy(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().dy)) = value
 }
 func (v EventTouchpadSwipe) XRoot() (result float64) {
 	result = float64(v.p().x_root)
 	return
 }
+func (v EventTouchpadSwipe) SetXRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x_root)) = value
+}
 func (v EventTouchpadSwipe) YRoot() (result float64) {
 	result = float64(v.p().y_root)
 	return
 }
+func (v EventTouchpadSwipe) SetYRoot(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y_root)) = value
+}
 func (v EventTouchpadSwipe) State() (result int /*TODO*/) {
 	return
+}
+func (v EventTouchpadSwipe) SetState(value int /*TODO*/) {
 }
 
 // Enum EventType
@@ -5237,15 +5725,24 @@ func (v EventVisibility) p() *C.GdkEventVisibility {
 func (v EventVisibility) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventVisibility) SetType(value int /*TODO*/) {
+}
 func (v EventVisibility) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventVisibility) SetWindow(value int /*TODO*/) {
 }
 func (v EventVisibility) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventVisibility) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventVisibility) State() (result int /*TODO*/) {
 	return
+}
+func (v EventVisibility) SetState(value int /*TODO*/) {
 }
 
 // Struct EventWindowState
@@ -5266,18 +5763,29 @@ func (v EventWindowState) p() *C.GdkEventWindowState {
 func (v EventWindowState) Type() (result int /*TODO*/) {
 	return
 }
+func (v EventWindowState) SetType(value int /*TODO*/) {
+}
 func (v EventWindowState) Window() (result int /*TODO*/) {
 	return
+}
+func (v EventWindowState) SetWindow(value int /*TODO*/) {
 }
 func (v EventWindowState) SendEvent() (result int8) {
 	result = int8(v.p().send_event)
 	return
 }
+func (v EventWindowState) SetSendEvent(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().send_event)) = value
+}
 func (v EventWindowState) ChangedMask() (result int /*TODO*/) {
 	return
 }
+func (v EventWindowState) SetChangedMask(value int /*TODO*/) {
+}
 func (v EventWindowState) NewWindowState() (result int /*TODO*/) {
 	return
+}
+func (v EventWindowState) SetNewWindowState(value int /*TODO*/) {
 }
 
 type FilterFunc func(xevent unsafe.Pointer, event Event) (result FilterReturnEnum)
@@ -6014,44 +6522,76 @@ func (v Geometry) MinWidth() (result int32) {
 	result = int32(v.p().min_width)
 	return
 }
+func (v Geometry) SetMinWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().min_width)) = value
+}
 func (v Geometry) MinHeight() (result int32) {
 	result = int32(v.p().min_height)
 	return
+}
+func (v Geometry) SetMinHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().min_height)) = value
 }
 func (v Geometry) MaxWidth() (result int32) {
 	result = int32(v.p().max_width)
 	return
 }
+func (v Geometry) SetMaxWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().max_width)) = value
+}
 func (v Geometry) MaxHeight() (result int32) {
 	result = int32(v.p().max_height)
 	return
+}
+func (v Geometry) SetMaxHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().max_height)) = value
 }
 func (v Geometry) BaseWidth() (result int32) {
 	result = int32(v.p().base_width)
 	return
 }
+func (v Geometry) SetBaseWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().base_width)) = value
+}
 func (v Geometry) BaseHeight() (result int32) {
 	result = int32(v.p().base_height)
 	return
+}
+func (v Geometry) SetBaseHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().base_height)) = value
 }
 func (v Geometry) WidthInc() (result int32) {
 	result = int32(v.p().width_inc)
 	return
 }
+func (v Geometry) SetWidthInc(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width_inc)) = value
+}
 func (v Geometry) HeightInc() (result int32) {
 	result = int32(v.p().height_inc)
 	return
+}
+func (v Geometry) SetHeightInc(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height_inc)) = value
 }
 func (v Geometry) MinAspect() (result float64) {
 	result = float64(v.p().min_aspect)
 	return
 }
+func (v Geometry) SetMinAspect(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().min_aspect)) = value
+}
 func (v Geometry) MaxAspect() (result float64) {
 	result = float64(v.p().max_aspect)
 	return
 }
+func (v Geometry) SetMaxAspect(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().max_aspect)) = value
+}
 func (v Geometry) WinGravity() (result int /*TODO*/) {
 	return
+}
+func (v Geometry) SetWinGravity(value int /*TODO*/) {
 }
 
 // Enum GrabOwnership
@@ -6516,13 +7056,22 @@ func (v KeymapKey) Keycode() (result uint32) {
 	result = uint32(v.p().keycode)
 	return
 }
+func (v KeymapKey) SetKeycode(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().keycode)) = value
+}
 func (v KeymapKey) Group() (result int32) {
 	result = int32(v.p().group)
 	return
 }
+func (v KeymapKey) SetGroup(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().group)) = value
+}
 func (v KeymapKey) Level() (result int32) {
 	result = int32(v.p().level)
 	return
+}
+func (v KeymapKey) SetLevel(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().level)) = value
 }
 
 // Enum ModifierIntent
@@ -6847,9 +7396,15 @@ func (v Point) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v Point) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v Point) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v Point) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 
 // Enum PropMode
@@ -7009,17 +7564,29 @@ func (v RGBA) Red() (result float64) {
 	result = float64(v.p().red)
 	return
 }
+func (v RGBA) SetRed(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().red)) = value
+}
 func (v RGBA) Green() (result float64) {
 	result = float64(v.p().green)
 	return
+}
+func (v RGBA) SetGreen(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().green)) = value
 }
 func (v RGBA) Blue() (result float64) {
 	result = float64(v.p().blue)
 	return
 }
+func (v RGBA) SetBlue(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().blue)) = value
+}
 func (v RGBA) Alpha() (result float64) {
 	result = float64(v.p().alpha)
 	return
+}
+func (v RGBA) SetAlpha(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().alpha)) = value
 }
 
 // Struct Rectangle
@@ -7105,17 +7672,29 @@ func (v Rectangle) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v Rectangle) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v Rectangle) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v Rectangle) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 func (v Rectangle) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v Rectangle) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v Rectangle) Height() (result int32) {
 	result = int32(v.p().height)
 	return
+}
+func (v Rectangle) SetHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height)) = value
 }
 
 // Object Screen
@@ -8115,8 +8694,13 @@ func (v TimeCoord) Time() (result uint32) {
 	result = uint32(v.p().time)
 	return
 }
+func (v TimeCoord) SetTime(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().time)) = value
+}
 func (v TimeCoord) Axes() (result int /*TODO*/) {
 	return
+}
+func (v TimeCoord) SetAxes(value int /*TODO*/) {
 }
 
 // Enum TouchpadGesturePhase
@@ -11619,50 +12203,83 @@ func (v WindowAttr) p() *C.GdkWindowAttr {
 func (v WindowAttr) Title() (result int /*TODO*/) {
 	return
 }
+func (v WindowAttr) SetTitle(value int /*TODO*/) {
+}
 func (v WindowAttr) EventMask() (result int32) {
 	result = int32(v.p().event_mask)
 	return
+}
+func (v WindowAttr) SetEventMask(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().event_mask)) = value
 }
 func (v WindowAttr) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v WindowAttr) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v WindowAttr) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v WindowAttr) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 func (v WindowAttr) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v WindowAttr) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v WindowAttr) Height() (result int32) {
 	result = int32(v.p().height)
 	return
 }
+func (v WindowAttr) SetHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height)) = value
+}
 func (v WindowAttr) Wclass() (result int /*TODO*/) {
 	return
+}
+func (v WindowAttr) SetWclass(value int /*TODO*/) {
 }
 func (v WindowAttr) Visual() (result int /*TODO*/) {
 	return
 }
+func (v WindowAttr) SetVisual(value int /*TODO*/) {
+}
 func (v WindowAttr) WindowType() (result int /*TODO*/) {
 	return
+}
+func (v WindowAttr) SetWindowType(value int /*TODO*/) {
 }
 func (v WindowAttr) Cursor() (result int /*TODO*/) {
 	return
 }
+func (v WindowAttr) SetCursor(value int /*TODO*/) {
+}
 func (v WindowAttr) WmclassName() (result int /*TODO*/) {
 	return
 }
+func (v WindowAttr) SetWmclassName(value int /*TODO*/) {
+}
 func (v WindowAttr) WmclassClass() (result int /*TODO*/) {
 	return
+}
+func (v WindowAttr) SetWmclassClass(value int /*TODO*/) {
 }
 func (v WindowAttr) OverrideRedirect() (result bool) {
 	result = gi.Int2Bool(int(v.p().override_redirect))
 	return
 }
+func (v WindowAttr) SetOverrideRedirect(value bool) {
+}
 func (v WindowAttr) TypeHint() (result int /*TODO*/) {
 	return
+}
+func (v WindowAttr) SetTypeHint(value int /*TODO*/) {
 }
 
 // Flags WindowAttributesType

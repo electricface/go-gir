@@ -939,9 +939,13 @@ func (v CClosure) p() *C.GCClosure {
 func (v CClosure) Closure() (result int /*TODO*/) {
 	return
 }
+func (v CClosure) SetClosure(value int /*TODO*/) {
+}
 func (v CClosure) Callback() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().callback)
 	return
+}
+func (v CClosure) SetCallback(value unsafe.Pointer) {
 }
 
 type Callback func()
@@ -1199,8 +1203,12 @@ func (v ClosureNotifyData) Data() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().data)
 	return
 }
+func (v ClosureNotifyData) SetData(value unsafe.Pointer) {
+}
 func (v ClosureNotifyData) Notify() (result int /*TODO*/) {
 	return
+}
+func (v ClosureNotifyData) SetNotify(value int /*TODO*/) {
 }
 
 // Flags ConnectFlags
@@ -1234,20 +1242,33 @@ func (v EnumClass) p() *C.GEnumClass {
 func (v EnumClass) GTypeClass() (result int /*TODO*/) {
 	return
 }
+func (v EnumClass) SetGTypeClass(value int /*TODO*/) {
+}
 func (v EnumClass) Minimum() (result int32) {
 	result = int32(v.p().minimum)
 	return
+}
+func (v EnumClass) SetMinimum(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().minimum)) = value
 }
 func (v EnumClass) Maximum() (result int32) {
 	result = int32(v.p().maximum)
 	return
 }
+func (v EnumClass) SetMaximum(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().maximum)) = value
+}
 func (v EnumClass) NValues() (result uint32) {
 	result = uint32(v.p().n_values)
 	return
 }
+func (v EnumClass) SetNValues(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().n_values)) = value
+}
 func (v EnumClass) Values() (result int /*TODO*/) {
 	return
+}
+func (v EnumClass) SetValues(value int /*TODO*/) {
 }
 
 // Struct EnumValue
@@ -1269,11 +1290,18 @@ func (v EnumValue) Value() (result int32) {
 	result = int32(v.p().value)
 	return
 }
+func (v EnumValue) SetValue(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().value)) = value
+}
 func (v EnumValue) ValueName() (result int /*TODO*/) {
 	return
 }
+func (v EnumValue) SetValueName(value int /*TODO*/) {
+}
 func (v EnumValue) ValueNick() (result int /*TODO*/) {
 	return
+}
+func (v EnumValue) SetValueNick(value int /*TODO*/) {
 }
 
 // Struct FlagsClass
@@ -1294,16 +1322,26 @@ func (v FlagsClass) p() *C.GFlagsClass {
 func (v FlagsClass) GTypeClass() (result int /*TODO*/) {
 	return
 }
+func (v FlagsClass) SetGTypeClass(value int /*TODO*/) {
+}
 func (v FlagsClass) Mask() (result uint32) {
 	result = uint32(v.p().mask)
 	return
+}
+func (v FlagsClass) SetMask(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().mask)) = value
 }
 func (v FlagsClass) NValues() (result uint32) {
 	result = uint32(v.p().n_values)
 	return
 }
+func (v FlagsClass) SetNValues(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().n_values)) = value
+}
 func (v FlagsClass) Values() (result int /*TODO*/) {
 	return
+}
+func (v FlagsClass) SetValues(value int /*TODO*/) {
 }
 
 // Struct FlagsValue
@@ -1325,11 +1363,18 @@ func (v FlagsValue) Value() (result uint32) {
 	result = uint32(v.p().value)
 	return
 }
+func (v FlagsValue) SetValue(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().value)) = value
+}
 func (v FlagsValue) ValueName() (result int /*TODO*/) {
 	return
 }
+func (v FlagsValue) SetValueName(value int /*TODO*/) {
+}
 func (v FlagsValue) ValueNick() (result int /*TODO*/) {
 	return
+}
+func (v FlagsValue) SetValueNick(value int /*TODO*/) {
 }
 
 // Object InitiallyUnowned
@@ -1389,12 +1434,18 @@ func (v InterfaceInfo) p() *C.GInterfaceInfo {
 func (v InterfaceInfo) InterfaceInit() (result int /*TODO*/) {
 	return
 }
+func (v InterfaceInfo) SetInterfaceInit(value int /*TODO*/) {
+}
 func (v InterfaceInfo) InterfaceFinalize() (result int /*TODO*/) {
 	return
+}
+func (v InterfaceInfo) SetInterfaceFinalize(value int /*TODO*/) {
 }
 func (v InterfaceInfo) InterfaceData() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().interface_data)
 	return
+}
+func (v InterfaceInfo) SetInterfaceData(value unsafe.Pointer) {
 }
 
 type InterfaceInitFunc func(g_iface TypeInterface, iface_data unsafe.Pointer)
@@ -2159,8 +2210,12 @@ func (v ObjectConstructParam) p() *C.GObjectConstructParam {
 func (v ObjectConstructParam) Pspec() (result int /*TODO*/) {
 	return
 }
+func (v ObjectConstructParam) SetPspec(value int /*TODO*/) {
+}
 func (v ObjectConstructParam) Value() (result int /*TODO*/) {
 	return
+}
+func (v ObjectConstructParam) SetValue(value int /*TODO*/) {
 }
 
 type ObjectFinalizeFunc func(object Object)
@@ -2831,9 +2886,15 @@ func (v ParamSpecTypeInfo) InstanceSize() (result uint16) {
 	result = uint16(v.p().instance_size)
 	return
 }
+func (v ParamSpecTypeInfo) SetInstanceSize(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().instance_size)) = value
+}
 func (v ParamSpecTypeInfo) NPreallocs() (result uint16) {
 	result = uint16(v.p().n_preallocs)
 	return
+}
+func (v ParamSpecTypeInfo) SetNPreallocs(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().n_preallocs)) = value
 }
 func (v ParamSpecTypeInfo) InstanceInit() (result int /*TODO*/) {
 	return
@@ -2841,6 +2902,8 @@ func (v ParamSpecTypeInfo) InstanceInit() (result int /*TODO*/) {
 func (v ParamSpecTypeInfo) ValueType() (result gi.GType) {
 	result = gi.GType(v.p().value_type)
 	return
+}
+func (v ParamSpecTypeInfo) SetValueType(value gi.GType) {
 }
 func (v ParamSpecTypeInfo) Finalize() (result int /*TODO*/) {
 	return
@@ -2980,8 +3043,12 @@ func (v Parameter) p() *C.GParameter {
 func (v Parameter) Name() (result int /*TODO*/) {
 	return
 }
+func (v Parameter) SetName(value int /*TODO*/) {
+}
 func (v Parameter) Value() (result int /*TODO*/) {
 	return
+}
+func (v Parameter) SetValue(value int /*TODO*/) {
 }
 
 type SignalAccumulator func(ihint SignalInvocationHint, return_accu Value, handler_return Value, data unsafe.Pointer) (result bool)
@@ -3051,12 +3118,20 @@ func (v SignalInvocationHint) SignalId() (result uint32) {
 	result = uint32(v.p().signal_id)
 	return
 }
+func (v SignalInvocationHint) SetSignalId(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().signal_id)) = value
+}
 func (v SignalInvocationHint) Detail() (result uint32) {
 	result = uint32(v.p().detail)
 	return
 }
+func (v SignalInvocationHint) SetDetail(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().detail)) = value
+}
 func (v SignalInvocationHint) RunType() (result int /*TODO*/) {
 	return
+}
+func (v SignalInvocationHint) SetRunType(value int /*TODO*/) {
 }
 
 // Flags SignalMatchType
@@ -3095,26 +3170,42 @@ func (v SignalQuery) SignalId() (result uint32) {
 	result = uint32(v.p().signal_id)
 	return
 }
+func (v SignalQuery) SetSignalId(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().signal_id)) = value
+}
 func (v SignalQuery) SignalName() (result int /*TODO*/) {
 	return
+}
+func (v SignalQuery) SetSignalName(value int /*TODO*/) {
 }
 func (v SignalQuery) Itype() (result gi.GType) {
 	result = gi.GType(v.p().itype)
 	return
 }
+func (v SignalQuery) SetItype(value gi.GType) {
+}
 func (v SignalQuery) SignalFlags() (result int /*TODO*/) {
 	return
+}
+func (v SignalQuery) SetSignalFlags(value int /*TODO*/) {
 }
 func (v SignalQuery) ReturnType() (result gi.GType) {
 	result = gi.GType(v.p().return_type)
 	return
 }
+func (v SignalQuery) SetReturnType(value gi.GType) {
+}
 func (v SignalQuery) NParams() (result uint32) {
 	result = uint32(v.p().n_params)
 	return
 }
+func (v SignalQuery) SetNParams(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().n_params)) = value
+}
 func (v SignalQuery) ParamTypes() (result int /*TODO*/) {
 	return
+}
+func (v SignalQuery) SetParamTypes(value int /*TODO*/) {
 }
 
 type ToggleNotify func(data unsafe.Pointer, object Object, is_last_ref bool)
@@ -3385,6 +3476,8 @@ func (v TypeFundamentalInfo) p() *C.GTypeFundamentalInfo {
 func (v TypeFundamentalInfo) TypeFlags() (result int /*TODO*/) {
 	return
 }
+func (v TypeFundamentalInfo) SetTypeFlags(value int /*TODO*/) {
+}
 
 // Struct TypeInfo
 type TypeInfo struct {
@@ -3405,35 +3498,58 @@ func (v TypeInfo) ClassSize() (result uint16) {
 	result = uint16(v.p().class_size)
 	return
 }
+func (v TypeInfo) SetClassSize(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().class_size)) = value
+}
 func (v TypeInfo) BaseInit() (result int /*TODO*/) {
 	return
+}
+func (v TypeInfo) SetBaseInit(value int /*TODO*/) {
 }
 func (v TypeInfo) BaseFinalize() (result int /*TODO*/) {
 	return
 }
+func (v TypeInfo) SetBaseFinalize(value int /*TODO*/) {
+}
 func (v TypeInfo) ClassInit() (result int /*TODO*/) {
 	return
 }
+func (v TypeInfo) SetClassInit(value int /*TODO*/) {
+}
 func (v TypeInfo) ClassFinalize() (result int /*TODO*/) {
 	return
+}
+func (v TypeInfo) SetClassFinalize(value int /*TODO*/) {
 }
 func (v TypeInfo) ClassData() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().class_data)
 	return
 }
+func (v TypeInfo) SetClassData(value unsafe.Pointer) {
+}
 func (v TypeInfo) InstanceSize() (result uint16) {
 	result = uint16(v.p().instance_size)
 	return
+}
+func (v TypeInfo) SetInstanceSize(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().instance_size)) = value
 }
 func (v TypeInfo) NPreallocs() (result uint16) {
 	result = uint16(v.p().n_preallocs)
 	return
 }
+func (v TypeInfo) SetNPreallocs(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().n_preallocs)) = value
+}
 func (v TypeInfo) InstanceInit() (result int /*TODO*/) {
 	return
 }
+func (v TypeInfo) SetInstanceInit(value int /*TODO*/) {
+}
 func (v TypeInfo) ValueTable() (result int /*TODO*/) {
 	return
+}
+func (v TypeInfo) SetValueTable(value int /*TODO*/) {
 }
 
 // Struct TypeInstance
@@ -3945,16 +4061,26 @@ func (v TypeQuery) Type() (result gi.GType) {
 	result = gi.GType(v.p()._type)
 	return
 }
+func (v TypeQuery) SetType(value gi.GType) {
+}
 func (v TypeQuery) TypeName() (result int /*TODO*/) {
 	return
+}
+func (v TypeQuery) SetTypeName(value int /*TODO*/) {
 }
 func (v TypeQuery) ClassSize() (result uint32) {
 	result = uint32(v.p().class_size)
 	return
 }
+func (v TypeQuery) SetClassSize(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().class_size)) = value
+}
 func (v TypeQuery) InstanceSize() (result uint32) {
 	result = uint32(v.p().instance_size)
 	return
+}
+func (v TypeQuery) SetInstanceSize(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().instance_size)) = value
 }
 
 // Struct TypeValueTable
@@ -3987,11 +4113,15 @@ func (v TypeValueTable) ValuePeekPointer() (result int /*TODO*/) {
 func (v TypeValueTable) CollectFormat() (result int /*TODO*/) {
 	return
 }
+func (v TypeValueTable) SetCollectFormat(value int /*TODO*/) {
+}
 func (v TypeValueTable) CollectValue() (result int /*TODO*/) {
 	return
 }
 func (v TypeValueTable) LcopyFormat() (result int /*TODO*/) {
 	return
+}
+func (v TypeValueTable) SetLcopyFormat(value int /*TODO*/) {
 }
 func (v TypeValueTable) LcopyValue() (result int /*TODO*/) {
 	return
@@ -5046,6 +5176,8 @@ func (v Value) GType() (result gi.GType) {
 func (v Value) Data() (result int /*TODO*/) {
 	return
 }
+func (v Value) SetData(value int /*TODO*/) {
+}
 
 // Struct ValueArray
 type ValueArray struct {
@@ -5262,8 +5394,13 @@ func (v ValueArray) NValues() (result uint32) {
 	result = uint32(v.p().n_values)
 	return
 }
+func (v ValueArray) SetNValues(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().n_values)) = value
+}
 func (v ValueArray) Values() (result int /*TODO*/) {
 	return
+}
+func (v ValueArray) SetValues(value int /*TODO*/) {
 }
 func (v ValueArray) NPrealloced() (result uint32) {
 	result = uint32(v.p().n_prealloced)

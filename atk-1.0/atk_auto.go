@@ -243,8 +243,12 @@ func (v Attribute) p() *C.AtkAttribute {
 func (v Attribute) Name() (result int /*TODO*/) {
 	return
 }
+func (v Attribute) SetName(value int /*TODO*/) {
+}
 func (v Attribute) Value() (result int /*TODO*/) {
 	return
+}
+func (v Attribute) SetValue(value int /*TODO*/) {
 }
 
 // Interface Component
@@ -1556,28 +1560,48 @@ func (v KeyEventStruct) Type() (result int32) {
 	result = int32(v.p()._type)
 	return
 }
+func (v KeyEventStruct) SetType(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p()._type)) = value
+}
 func (v KeyEventStruct) State() (result uint32) {
 	result = uint32(v.p().state)
 	return
+}
+func (v KeyEventStruct) SetState(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().state)) = value
 }
 func (v KeyEventStruct) Keyval() (result uint32) {
 	result = uint32(v.p().keyval)
 	return
 }
+func (v KeyEventStruct) SetKeyval(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().keyval)) = value
+}
 func (v KeyEventStruct) Length() (result int32) {
 	result = int32(v.p().length)
 	return
 }
+func (v KeyEventStruct) SetLength(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().length)) = value
+}
 func (v KeyEventStruct) String() (result int /*TODO*/) {
 	return
+}
+func (v KeyEventStruct) SetString(value int /*TODO*/) {
 }
 func (v KeyEventStruct) Keycode() (result uint16) {
 	result = uint16(v.p().keycode)
 	return
 }
+func (v KeyEventStruct) SetKeycode(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().keycode)) = value
+}
 func (v KeyEventStruct) Timestamp() (result uint32) {
 	result = uint32(v.p().timestamp)
 	return
+}
+func (v KeyEventStruct) SetTimestamp(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().timestamp)) = value
 }
 
 // Enum KeyEventType
@@ -2399,11 +2423,17 @@ func (v PropertyValues) p() *C.AtkPropertyValues {
 func (v PropertyValues) PropertyName() (result int /*TODO*/) {
 	return
 }
+func (v PropertyValues) SetPropertyName(value int /*TODO*/) {
+}
 func (v PropertyValues) OldValue() (result int /*TODO*/) {
 	return
 }
+func (v PropertyValues) SetOldValue(value int /*TODO*/) {
+}
 func (v PropertyValues) NewValue() (result int /*TODO*/) {
 	return
+}
+func (v PropertyValues) SetNewValue(value int /*TODO*/) {
 }
 
 // Struct Range
@@ -2548,17 +2578,29 @@ func (v Rectangle) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v Rectangle) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v Rectangle) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v Rectangle) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 func (v Rectangle) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v Rectangle) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v Rectangle) Height() (result int32) {
 	result = int32(v.p().height)
 	return
+}
+func (v Rectangle) SetHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height)) = value
 }
 
 // Object Registry
@@ -5250,16 +5292,26 @@ func (v TextRange) p() *C.AtkTextRange {
 func (v TextRange) Bounds() (result int /*TODO*/) {
 	return
 }
+func (v TextRange) SetBounds(value int /*TODO*/) {
+}
 func (v TextRange) StartOffset() (result int32) {
 	result = int32(v.p().start_offset)
 	return
+}
+func (v TextRange) SetStartOffset(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().start_offset)) = value
 }
 func (v TextRange) EndOffset() (result int32) {
 	result = int32(v.p().end_offset)
 	return
 }
+func (v TextRange) SetEndOffset(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().end_offset)) = value
+}
 func (v TextRange) Content() (result int /*TODO*/) {
 	return
+}
+func (v TextRange) SetContent(value int /*TODO*/) {
 }
 
 // Struct TextRectangle
@@ -5281,17 +5333,29 @@ func (v TextRectangle) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v TextRectangle) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v TextRectangle) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v TextRectangle) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 func (v TextRectangle) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v TextRectangle) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v TextRectangle) Height() (result int32) {
 	result = int32(v.p().height)
 	return
+}
+func (v TextRectangle) SetHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height)) = value
 }
 
 // Object Util

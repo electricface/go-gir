@@ -963,30 +963,48 @@ func (v Application) p() *C.AtspiApplication {
 func (v Application) Parent() (result int /*TODO*/) {
 	return
 }
+func (v Application) SetParent(value int /*TODO*/) {
+}
 func (v Application) Hash() (result int /*TODO*/) {
 	return
+}
+func (v Application) SetHash(value int /*TODO*/) {
 }
 func (v Application) BusName() (result int /*TODO*/) {
 	return
 }
+func (v Application) SetBusName(value int /*TODO*/) {
+}
 func (v Application) Bus() (result int /*TODO*/) {
 	return
+}
+func (v Application) SetBus(value int /*TODO*/) {
 }
 func (v Application) Root() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().root)
 	return
 }
+func (v Application) SetRoot(value unsafe.Pointer) {
+}
 func (v Application) Cache() (result int /*TODO*/) {
 	return
+}
+func (v Application) SetCache(value int /*TODO*/) {
 }
 func (v Application) ToolkitName() (result int /*TODO*/) {
 	return
 }
+func (v Application) SetToolkitName(value int /*TODO*/) {
+}
 func (v Application) ToolkitVersion() (result int /*TODO*/) {
 	return
 }
+func (v Application) SetToolkitVersion(value int /*TODO*/) {
+}
 func (v Application) AtspiVersion() (result int /*TODO*/) {
 	return
+}
+func (v Application) SetAtspiVersion(value int /*TODO*/) {
 }
 
 // denied field Application.time_added
@@ -1671,28 +1689,46 @@ func (v DeviceEvent) p() *C.AtspiDeviceEvent {
 func (v DeviceEvent) Type() (result int /*TODO*/) {
 	return
 }
+func (v DeviceEvent) SetType(value int /*TODO*/) {
+}
 func (v DeviceEvent) Id() (result uint32) {
 	result = uint32(v.p().id)
 	return
+}
+func (v DeviceEvent) SetId(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().id)) = value
 }
 func (v DeviceEvent) HwCode() (result uint16) {
 	result = uint16(v.p().hw_code)
 	return
 }
+func (v DeviceEvent) SetHwCode(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().hw_code)) = value
+}
 func (v DeviceEvent) Modifiers() (result uint16) {
 	result = uint16(v.p().modifiers)
 	return
+}
+func (v DeviceEvent) SetModifiers(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().modifiers)) = value
 }
 func (v DeviceEvent) Timestamp() (result uint32) {
 	result = uint32(v.p().timestamp)
 	return
 }
+func (v DeviceEvent) SetTimestamp(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().timestamp)) = value
+}
 func (v DeviceEvent) EventString() (result int /*TODO*/) {
 	return
+}
+func (v DeviceEvent) SetEventString(value int /*TODO*/) {
 }
 func (v DeviceEvent) IsText() (result bool) {
 	result = gi.Int2Bool(int(v.p().is_text))
 	return
+}
+func (v DeviceEvent) SetIsText(value bool) {
 }
 
 // Object DeviceListener
@@ -2160,19 +2196,31 @@ func (v Event) p() *C.AtspiEvent {
 func (v Event) Type() (result int /*TODO*/) {
 	return
 }
+func (v Event) SetType(value int /*TODO*/) {
+}
 func (v Event) Source() (result int /*TODO*/) {
 	return
+}
+func (v Event) SetSource(value int /*TODO*/) {
 }
 func (v Event) Detail1() (result int32) {
 	result = int32(v.p().detail1)
 	return
 }
+func (v Event) SetDetail1(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().detail1)) = value
+}
 func (v Event) Detail2() (result int32) {
 	result = int32(v.p().detail2)
 	return
 }
+func (v Event) SetDetail2(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().detail2)) = value
+}
 func (v Event) AnyData() (result int /*TODO*/) {
 	return
+}
+func (v Event) SetAnyData(value int /*TODO*/) {
 }
 
 // Object EventListener
@@ -2461,13 +2509,19 @@ func (v EventListenerMode) Synchronous() (result bool) {
 	result = gi.Int2Bool(int(v.p().synchronous))
 	return
 }
+func (v EventListenerMode) SetSynchronous(value bool) {
+}
 func (v EventListenerMode) Preemptive() (result bool) {
 	result = gi.Int2Bool(int(v.p().preemptive))
 	return
 }
+func (v EventListenerMode) SetPreemptive(value bool) {
+}
 func (v EventListenerMode) Global() (result bool) {
 	result = gi.Int2Bool(int(v.p().global))
 	return
+}
+func (v EventListenerMode) SetGlobal(value bool) {
 }
 
 type EventListenerSimpleCB func(event Event)
@@ -2877,16 +2931,27 @@ func (v KeyDefinition) Keycode() (result int32) {
 	result = int32(v.p().keycode)
 	return
 }
+func (v KeyDefinition) SetKeycode(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().keycode)) = value
+}
 func (v KeyDefinition) Keysym() (result int32) {
 	result = int32(v.p().keysym)
 	return
 }
+func (v KeyDefinition) SetKeysym(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().keysym)) = value
+}
 func (v KeyDefinition) Keystring() (result int /*TODO*/) {
 	return
+}
+func (v KeyDefinition) SetKeystring(value int /*TODO*/) {
 }
 func (v KeyDefinition) Unused() (result int32) {
 	result = int32(v.p().unused)
 	return
+}
+func (v KeyDefinition) SetUnused(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().unused)) = value
 }
 
 // Enum KeyEventType
@@ -2935,15 +3000,24 @@ func (v KeySet) p() *C.AtspiKeySet {
 func (v KeySet) Keysyms() (result int /*TODO*/) {
 	return
 }
+func (v KeySet) SetKeysyms(value int /*TODO*/) {
+}
 func (v KeySet) Keycodes() (result int /*TODO*/) {
 	return
+}
+func (v KeySet) SetKeycodes(value int /*TODO*/) {
 }
 func (v KeySet) Keystrings() (result int /*TODO*/) {
 	return
 }
+func (v KeySet) SetKeystrings(value int /*TODO*/) {
+}
 func (v KeySet) Len() (result int16) {
 	result = int16(v.p().len)
 	return
+}
+func (v KeySet) SetLen(value int16) {
+	*(*int16)(unsafe.Pointer(&v.p().len)) = value
 }
 
 // Enum KeySynthType
@@ -3119,9 +3193,15 @@ func (v Point) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v Point) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v Point) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v Point) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 
 // Struct Range
@@ -3161,9 +3241,15 @@ func (v Range) StartOffset() (result int32) {
 	result = int32(v.p().start_offset)
 	return
 }
+func (v Range) SetStartOffset(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().start_offset)) = value
+}
 func (v Range) EndOffset() (result int32) {
 	result = int32(v.p().end_offset)
 	return
+}
+func (v Range) SetEndOffset(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().end_offset)) = value
 }
 
 // Struct Rect
@@ -3203,17 +3289,29 @@ func (v Rect) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v Rect) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v Rect) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v Rect) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 func (v Rect) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v Rect) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v Rect) Height() (result int32) {
 	result = int32(v.p().height)
 	return
+}
+func (v Rect) SetHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height)) = value
 }
 
 // Object Relation
@@ -5402,12 +5500,20 @@ func (v TextRange) StartOffset() (result int32) {
 	result = int32(v.p().start_offset)
 	return
 }
+func (v TextRange) SetStartOffset(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().start_offset)) = value
+}
 func (v TextRange) EndOffset() (result int32) {
 	result = int32(v.p().end_offset)
 	return
 }
+func (v TextRange) SetEndOffset(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().end_offset)) = value
+}
 func (v TextRange) Content() (result int /*TODO*/) {
 	return
+}
+func (v TextRange) SetContent(value int /*TODO*/) {
 }
 
 // Interface Value

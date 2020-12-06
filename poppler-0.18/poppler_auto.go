@@ -107,8 +107,12 @@ func (v ActionAny) p() *C.PopplerActionAny {
 func (v ActionAny) Type() (result int /*TODO*/) {
 	return
 }
+func (v ActionAny) SetType(value int /*TODO*/) {
+}
 func (v ActionAny) Title() (result int /*TODO*/) {
 	return
+}
+func (v ActionAny) SetTitle(value int /*TODO*/) {
 }
 
 // Struct ActionGotoDest
@@ -129,11 +133,17 @@ func (v ActionGotoDest) p() *C.PopplerActionGotoDest {
 func (v ActionGotoDest) Type() (result int /*TODO*/) {
 	return
 }
+func (v ActionGotoDest) SetType(value int /*TODO*/) {
+}
 func (v ActionGotoDest) Title() (result int /*TODO*/) {
 	return
 }
+func (v ActionGotoDest) SetTitle(value int /*TODO*/) {
+}
 func (v ActionGotoDest) Dest() (result int /*TODO*/) {
 	return
+}
+func (v ActionGotoDest) SetDest(value int /*TODO*/) {
 }
 
 // Struct ActionGotoRemote
@@ -154,14 +164,22 @@ func (v ActionGotoRemote) p() *C.PopplerActionGotoRemote {
 func (v ActionGotoRemote) Type() (result int /*TODO*/) {
 	return
 }
+func (v ActionGotoRemote) SetType(value int /*TODO*/) {
+}
 func (v ActionGotoRemote) Title() (result int /*TODO*/) {
 	return
+}
+func (v ActionGotoRemote) SetTitle(value int /*TODO*/) {
 }
 func (v ActionGotoRemote) FileName() (result int /*TODO*/) {
 	return
 }
+func (v ActionGotoRemote) SetFileName(value int /*TODO*/) {
+}
 func (v ActionGotoRemote) Dest() (result int /*TODO*/) {
 	return
+}
+func (v ActionGotoRemote) SetDest(value int /*TODO*/) {
 }
 
 // Struct ActionJavascript
@@ -182,11 +200,17 @@ func (v ActionJavascript) p() *C.PopplerActionJavascript {
 func (v ActionJavascript) Type() (result int /*TODO*/) {
 	return
 }
+func (v ActionJavascript) SetType(value int /*TODO*/) {
+}
 func (v ActionJavascript) Title() (result int /*TODO*/) {
 	return
 }
+func (v ActionJavascript) SetTitle(value int /*TODO*/) {
+}
 func (v ActionJavascript) Script() (result int /*TODO*/) {
 	return
+}
+func (v ActionJavascript) SetScript(value int /*TODO*/) {
 }
 
 // Struct ActionLaunch
@@ -207,14 +231,22 @@ func (v ActionLaunch) p() *C.PopplerActionLaunch {
 func (v ActionLaunch) Type() (result int /*TODO*/) {
 	return
 }
+func (v ActionLaunch) SetType(value int /*TODO*/) {
+}
 func (v ActionLaunch) Title() (result int /*TODO*/) {
 	return
+}
+func (v ActionLaunch) SetTitle(value int /*TODO*/) {
 }
 func (v ActionLaunch) FileName() (result int /*TODO*/) {
 	return
 }
+func (v ActionLaunch) SetFileName(value int /*TODO*/) {
+}
 func (v ActionLaunch) Params() (result int /*TODO*/) {
 	return
+}
+func (v ActionLaunch) SetParams(value int /*TODO*/) {
 }
 
 // Struct ActionLayer
@@ -235,8 +267,12 @@ func (v ActionLayer) p() *C.PopplerActionLayer {
 func (v ActionLayer) Action() (result int /*TODO*/) {
 	return
 }
+func (v ActionLayer) SetAction(value int /*TODO*/) {
+}
 func (v ActionLayer) Layers() (result int /*TODO*/) {
 	return
+}
+func (v ActionLayer) SetLayers(value int /*TODO*/) {
 }
 
 // Enum ActionLayerAction
@@ -271,14 +307,22 @@ func (v ActionMovie) p() *C.PopplerActionMovie {
 func (v ActionMovie) Type() (result int /*TODO*/) {
 	return
 }
+func (v ActionMovie) SetType(value int /*TODO*/) {
+}
 func (v ActionMovie) Title() (result int /*TODO*/) {
 	return
+}
+func (v ActionMovie) SetTitle(value int /*TODO*/) {
 }
 func (v ActionMovie) Operation() (result int /*TODO*/) {
 	return
 }
+func (v ActionMovie) SetOperation(value int /*TODO*/) {
+}
 func (v ActionMovie) Movie() (result int /*TODO*/) {
 	return
+}
+func (v ActionMovie) SetMovie(value int /*TODO*/) {
 }
 
 // Enum ActionMovieOperation
@@ -314,11 +358,17 @@ func (v ActionNamed) p() *C.PopplerActionNamed {
 func (v ActionNamed) Type() (result int /*TODO*/) {
 	return
 }
+func (v ActionNamed) SetType(value int /*TODO*/) {
+}
 func (v ActionNamed) Title() (result int /*TODO*/) {
 	return
 }
+func (v ActionNamed) SetTitle(value int /*TODO*/) {
+}
 func (v ActionNamed) NamedDest() (result int /*TODO*/) {
 	return
+}
+func (v ActionNamed) SetNamedDest(value int /*TODO*/) {
 }
 
 // Struct ActionOCGState
@@ -339,11 +389,17 @@ func (v ActionOCGState) p() *C.PopplerActionOCGState {
 func (v ActionOCGState) Type() (result int /*TODO*/) {
 	return
 }
+func (v ActionOCGState) SetType(value int /*TODO*/) {
+}
 func (v ActionOCGState) Title() (result int /*TODO*/) {
 	return
 }
+func (v ActionOCGState) SetTitle(value int /*TODO*/) {
+}
 func (v ActionOCGState) StateList() (result int /*TODO*/) {
 	return
+}
+func (v ActionOCGState) SetStateList(value int /*TODO*/) {
 }
 
 // Struct ActionRendition
@@ -364,15 +420,24 @@ func (v ActionRendition) p() *C.PopplerActionRendition {
 func (v ActionRendition) Type() (result int /*TODO*/) {
 	return
 }
+func (v ActionRendition) SetType(value int /*TODO*/) {
+}
 func (v ActionRendition) Title() (result int /*TODO*/) {
 	return
+}
+func (v ActionRendition) SetTitle(value int /*TODO*/) {
 }
 func (v ActionRendition) Op() (result int32) {
 	result = int32(v.p().op)
 	return
 }
+func (v ActionRendition) SetOp(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().op)) = value
+}
 func (v ActionRendition) Media() (result int /*TODO*/) {
 	return
+}
+func (v ActionRendition) SetMedia(value int /*TODO*/) {
 }
 
 // Enum ActionType
@@ -415,11 +480,17 @@ func (v ActionUri) p() *C.PopplerActionUri {
 func (v ActionUri) Type() (result int /*TODO*/) {
 	return
 }
+func (v ActionUri) SetType(value int /*TODO*/) {
+}
 func (v ActionUri) Title() (result int /*TODO*/) {
 	return
 }
+func (v ActionUri) SetTitle(value int /*TODO*/) {
+}
 func (v ActionUri) Uri() (result int /*TODO*/) {
 	return
+}
+func (v ActionUri) SetUri(value int /*TODO*/) {
 }
 
 // Object Annot
@@ -711,29 +782,49 @@ func (v AnnotCalloutLine) Multiline() (result bool) {
 	result = gi.Int2Bool(int(v.p().multiline))
 	return
 }
+func (v AnnotCalloutLine) SetMultiline(value bool) {
+}
 func (v AnnotCalloutLine) X1() (result float64) {
 	result = float64(v.p().x1)
 	return
+}
+func (v AnnotCalloutLine) SetX1(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x1)) = value
 }
 func (v AnnotCalloutLine) Y1() (result float64) {
 	result = float64(v.p().y1)
 	return
 }
+func (v AnnotCalloutLine) SetY1(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y1)) = value
+}
 func (v AnnotCalloutLine) X2() (result float64) {
 	result = float64(v.p().x2)
 	return
+}
+func (v AnnotCalloutLine) SetX2(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x2)) = value
 }
 func (v AnnotCalloutLine) Y2() (result float64) {
 	result = float64(v.p().y2)
 	return
 }
+func (v AnnotCalloutLine) SetY2(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y2)) = value
+}
 func (v AnnotCalloutLine) X3() (result float64) {
 	result = float64(v.p().x3)
 	return
 }
+func (v AnnotCalloutLine) SetX3(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x3)) = value
+}
 func (v AnnotCalloutLine) Y3() (result float64) {
 	result = float64(v.p().y3)
 	return
+}
+func (v AnnotCalloutLine) SetY3(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y3)) = value
 }
 
 // Object AnnotCircle
@@ -1095,8 +1186,12 @@ func (v AnnotMapping) p() *C.PopplerAnnotMapping {
 func (v AnnotMapping) Area() (result int /*TODO*/) {
 	return
 }
+func (v AnnotMapping) SetArea(value int /*TODO*/) {
+}
 func (v AnnotMapping) Annot() (result int /*TODO*/) {
 	return
+}
+func (v AnnotMapping) SetAnnot(value int /*TODO*/) {
 }
 
 // Object AnnotMarkup
@@ -2059,13 +2154,22 @@ func (v Color) Red() (result uint16) {
 	result = uint16(v.p().red)
 	return
 }
+func (v Color) SetRed(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().red)) = value
+}
 func (v Color) Green() (result uint16) {
 	result = uint16(v.p().green)
 	return
 }
+func (v Color) SetGreen(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().green)) = value
+}
 func (v Color) Blue() (result uint16) {
 	result = uint16(v.p().blue)
 	return
+}
+func (v Color) SetBlue(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().blue)) = value
 }
 
 // Struct Dest
@@ -2117,32 +2221,54 @@ func (v Dest) p() *C.PopplerDest {
 func (v Dest) Type() (result int /*TODO*/) {
 	return
 }
+func (v Dest) SetType(value int /*TODO*/) {
+}
 func (v Dest) PageNum() (result int32) {
 	result = int32(v.p().page_num)
 	return
+}
+func (v Dest) SetPageNum(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().page_num)) = value
 }
 func (v Dest) Left() (result float64) {
 	result = float64(v.p().left)
 	return
 }
+func (v Dest) SetLeft(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().left)) = value
+}
 func (v Dest) Bottom() (result float64) {
 	result = float64(v.p().bottom)
 	return
+}
+func (v Dest) SetBottom(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().bottom)) = value
 }
 func (v Dest) Right() (result float64) {
 	result = float64(v.p().right)
 	return
 }
+func (v Dest) SetRight(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().right)) = value
+}
 func (v Dest) Top() (result float64) {
 	result = float64(v.p().top)
 	return
+}
+func (v Dest) SetTop(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().top)) = value
 }
 func (v Dest) Zoom() (result float64) {
 	result = float64(v.p().zoom)
 	return
 }
+func (v Dest) SetZoom(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().zoom)) = value
+}
 func (v Dest) NamedDest() (result int /*TODO*/) {
 	return
+}
+func (v Dest) SetNamedDest(value int /*TODO*/) {
 }
 
 // TODO: ignore struct Dest field change_left, bits(=1) > 0
@@ -4064,8 +4190,12 @@ func (v FormFieldMapping) p() *C.PopplerFormFieldMapping {
 func (v FormFieldMapping) Area() (result int /*TODO*/) {
 	return
 }
+func (v FormFieldMapping) SetArea(value int /*TODO*/) {
+}
 func (v FormFieldMapping) Field() (result int /*TODO*/) {
 	return
+}
+func (v FormFieldMapping) SetField(value int /*TODO*/) {
 }
 
 // Enum FormFieldType
@@ -4163,9 +4293,14 @@ func (v ImageMapping) p() *C.PopplerImageMapping {
 func (v ImageMapping) Area() (result int /*TODO*/) {
 	return
 }
+func (v ImageMapping) SetArea(value int /*TODO*/) {
+}
 func (v ImageMapping) ImageId() (result int32) {
 	result = int32(v.p().image_id)
 	return
+}
+func (v ImageMapping) SetImageId(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().image_id)) = value
 }
 
 // Struct IndexIter
@@ -4620,8 +4755,12 @@ func (v LinkMapping) p() *C.PopplerLinkMapping {
 func (v LinkMapping) Area() (result int /*TODO*/) {
 	return
 }
+func (v LinkMapping) SetArea(value int /*TODO*/) {
+}
 func (v LinkMapping) Action() (result int /*TODO*/) {
 	return
+}
+func (v LinkMapping) SetAction(value int /*TODO*/) {
 }
 
 // Object Media
@@ -5892,31 +6031,51 @@ func (v PageTransition) p() *C.PopplerPageTransition {
 func (v PageTransition) Type() (result int /*TODO*/) {
 	return
 }
+func (v PageTransition) SetType(value int /*TODO*/) {
+}
 func (v PageTransition) Alignment() (result int /*TODO*/) {
 	return
 }
+func (v PageTransition) SetAlignment(value int /*TODO*/) {
+}
 func (v PageTransition) Direction() (result int /*TODO*/) {
 	return
+}
+func (v PageTransition) SetDirection(value int /*TODO*/) {
 }
 func (v PageTransition) Duration() (result int32) {
 	result = int32(v.p().duration)
 	return
 }
+func (v PageTransition) SetDuration(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().duration)) = value
+}
 func (v PageTransition) Angle() (result int32) {
 	result = int32(v.p().angle)
 	return
+}
+func (v PageTransition) SetAngle(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().angle)) = value
 }
 func (v PageTransition) Scale() (result float64) {
 	result = float64(v.p().scale)
 	return
 }
+func (v PageTransition) SetScale(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().scale)) = value
+}
 func (v PageTransition) Rectangular() (result bool) {
 	result = gi.Int2Bool(int(v.p().rectangular))
 	return
 }
+func (v PageTransition) SetRectangular(value bool) {
+}
 func (v PageTransition) DurationReal() (result float64) {
 	result = float64(v.p().duration_real)
 	return
+}
+func (v PageTransition) SetDurationReal(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().duration_real)) = value
 }
 
 // Enum PageTransitionAlignment
@@ -6054,9 +6213,15 @@ func (v Point) X() (result float64) {
 	result = float64(v.p().x)
 	return
 }
+func (v Point) SetX(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v Point) Y() (result float64) {
 	result = float64(v.p().y)
 	return
+}
+func (v Point) SetY(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y)) = value
 }
 
 // Flags PrintFlags
@@ -6139,14 +6304,22 @@ func (v Quadrilateral) p() *C.PopplerQuadrilateral {
 func (v Quadrilateral) P1() (result int /*TODO*/) {
 	return
 }
+func (v Quadrilateral) SetP1(value int /*TODO*/) {
+}
 func (v Quadrilateral) P2() (result int /*TODO*/) {
 	return
+}
+func (v Quadrilateral) SetP2(value int /*TODO*/) {
 }
 func (v Quadrilateral) P3() (result int /*TODO*/) {
 	return
 }
+func (v Quadrilateral) SetP3(value int /*TODO*/) {
+}
 func (v Quadrilateral) P4() (result int /*TODO*/) {
 	return
+}
+func (v Quadrilateral) SetP4(value int /*TODO*/) {
 }
 
 // Struct Rectangle
@@ -6215,17 +6388,29 @@ func (v Rectangle) X1() (result float64) {
 	result = float64(v.p().x1)
 	return
 }
+func (v Rectangle) SetX1(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x1)) = value
+}
 func (v Rectangle) Y1() (result float64) {
 	result = float64(v.p().y1)
 	return
+}
+func (v Rectangle) SetY1(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y1)) = value
 }
 func (v Rectangle) X2() (result float64) {
 	result = float64(v.p().x2)
 	return
 }
+func (v Rectangle) SetX2(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().x2)) = value
+}
 func (v Rectangle) Y2() (result float64) {
 	result = float64(v.p().y2)
 	return
+}
+func (v Rectangle) SetY2(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().y2)) = value
 }
 
 // Enum SelectionStyle
@@ -7775,24 +7960,39 @@ func (v TextAttributes) p() *C.PopplerTextAttributes {
 func (v TextAttributes) FontName() (result int /*TODO*/) {
 	return
 }
+func (v TextAttributes) SetFontName(value int /*TODO*/) {
+}
 func (v TextAttributes) FontSize() (result float64) {
 	result = float64(v.p().font_size)
 	return
+}
+func (v TextAttributes) SetFontSize(value float64) {
+	*(*float64)(unsafe.Pointer(&v.p().font_size)) = value
 }
 func (v TextAttributes) IsUnderlined() (result bool) {
 	result = gi.Int2Bool(int(v.p().is_underlined))
 	return
 }
+func (v TextAttributes) SetIsUnderlined(value bool) {
+}
 func (v TextAttributes) Color() (result int /*TODO*/) {
 	return
+}
+func (v TextAttributes) SetColor(value int /*TODO*/) {
 }
 func (v TextAttributes) StartIndex() (result int32) {
 	result = int32(v.p().start_index)
 	return
 }
+func (v TextAttributes) SetStartIndex(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().start_index)) = value
+}
 func (v TextAttributes) EndIndex() (result int32) {
 	result = int32(v.p().end_index)
 	return
+}
+func (v TextAttributes) SetEndIndex(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().end_index)) = value
 }
 
 // Struct TextSpan

@@ -62,9 +62,14 @@ func (v Array) p() *C.GArray {
 func (v Array) Data() (result int /*TODO*/) {
 	return
 }
+func (v Array) SetData(value int /*TODO*/) {
+}
 func (v Array) Len() (result uint32) {
 	result = uint32(v.p().len)
 	return
+}
+func (v Array) SetLen(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().len)) = value
 }
 
 // Flags AsciiType
@@ -1624,9 +1629,14 @@ func (v ByteArray) p() *C.GByteArray {
 func (v ByteArray) Data() (result int /*TODO*/) {
 	return
 }
+func (v ByteArray) SetData(value int /*TODO*/) {
+}
 func (v ByteArray) Len() (result uint32) {
 	result = uint32(v.p().len)
 	return
+}
+func (v ByteArray) SetLen(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().len)) = value
 }
 
 // Struct Bytes
@@ -4289,9 +4299,14 @@ func (v DebugKey) p() *C.GDebugKey {
 func (v DebugKey) Key() (result int /*TODO*/) {
 	return
 }
+func (v DebugKey) SetKey(value int /*TODO*/) {
+}
 func (v DebugKey) Value() (result uint32) {
 	result = uint32(v.p().value)
 	return
+}
+func (v DebugKey) SetValue(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().value)) = value
 }
 
 type DestroyNotify func(data unsafe.Pointer)
@@ -4519,12 +4534,20 @@ func (v Error) Domain() (result uint32) {
 	result = uint32(v.p().domain)
 	return
 }
+func (v Error) SetDomain(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().domain)) = value
+}
 func (v Error) Code() (result int32) {
 	result = int32(v.p().code)
 	return
 }
+func (v Error) SetCode(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().code)) = value
+}
 func (v Error) Message() (result int /*TODO*/) {
 	return
+}
+func (v Error) SetMessage(value int /*TODO*/) {
 }
 
 // Enum ErrorType
@@ -5360,30 +5383,49 @@ func (v Hook) Data() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().data)
 	return
 }
+func (v Hook) SetData(value unsafe.Pointer) {
+}
 func (v Hook) Next() (result int /*TODO*/) {
 	return
 }
+func (v Hook) SetNext(value int /*TODO*/) {
+}
 func (v Hook) Prev() (result int /*TODO*/) {
 	return
+}
+func (v Hook) SetPrev(value int /*TODO*/) {
 }
 func (v Hook) RefCount() (result uint32) {
 	result = uint32(v.p().ref_count)
 	return
 }
+func (v Hook) SetRefCount(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().ref_count)) = value
+}
 func (v Hook) HookId() (result uint64) {
 	result = uint64(v.p().hook_id)
 	return
+}
+func (v Hook) SetHookId(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().hook_id)) = value
 }
 func (v Hook) Flags() (result uint32) {
 	result = uint32(v.p().flags)
 	return
 }
+func (v Hook) SetFlags(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().flags)) = value
+}
 func (v Hook) Func() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p()._func)
 	return
 }
+func (v Hook) SetFunc(value unsafe.Pointer) {
+}
 func (v Hook) Destroy() (result int /*TODO*/) {
 	return
+}
+func (v Hook) SetDestroy(value int /*TODO*/) {
 }
 
 type HookCheckFunc func(data unsafe.Pointer) (result bool)
@@ -5548,6 +5590,9 @@ func (v HookList) SeqId() (result uint64) {
 	result = uint64(v.p().seq_id)
 	return
 }
+func (v HookList) SetSeqId(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().seq_id)) = value
+}
 
 // TODO: ignore struct HookList field hook_size, bits(=16) > 0
 
@@ -5556,15 +5601,23 @@ func (v HookList) SeqId() (result uint64) {
 func (v HookList) Hooks() (result int /*TODO*/) {
 	return
 }
+func (v HookList) SetHooks(value int /*TODO*/) {
+}
 func (v HookList) Dummy3() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().dummy3)
 	return
 }
+func (v HookList) SetDummy3(value unsafe.Pointer) {
+}
 func (v HookList) FinalizeHook() (result int /*TODO*/) {
 	return
 }
+func (v HookList) SetFinalizeHook(value int /*TODO*/) {
+}
 func (v HookList) Dummy() (result int /*TODO*/) {
 	return
+}
+func (v HookList) SetDummy(value int /*TODO*/) {
 }
 
 type HookMarshaller func(hook Hook, marshal_data unsafe.Pointer)
@@ -7958,11 +8011,17 @@ func (v List) Data() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().data)
 	return
 }
+func (v List) SetData(value unsafe.Pointer) {
+}
 func (v List) Next() (result int /*TODO*/) {
 	return
 }
+func (v List) SetNext(value int /*TODO*/) {
+}
 func (v List) Prev() (result int /*TODO*/) {
 	return
+}
+func (v List) SetPrev(value int /*TODO*/) {
 }
 
 // Struct LogField
@@ -7983,13 +8042,20 @@ func (v LogField) p() *C.GLogField {
 func (v LogField) Key() (result int /*TODO*/) {
 	return
 }
+func (v LogField) SetKey(value int /*TODO*/) {
+}
 func (v LogField) Value() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().value)
 	return
 }
+func (v LogField) SetValue(value unsafe.Pointer) {
+}
 func (v LogField) Length() (result int64) {
 	result = int64(v.p().length)
 	return
+}
+func (v LogField) SetLength(value int64) {
+	*(*int64)(unsafe.Pointer(&v.p().length)) = value
 }
 
 type LogFunc func(log_domain string, log_level LogLevelFlags, message string)
@@ -9762,17 +9828,27 @@ func (v Node) Data() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().data)
 	return
 }
+func (v Node) SetData(value unsafe.Pointer) {
+}
 func (v Node) Next() (result int /*TODO*/) {
 	return
+}
+func (v Node) SetNext(value int /*TODO*/) {
 }
 func (v Node) Prev() (result int /*TODO*/) {
 	return
 }
+func (v Node) SetPrev(value int /*TODO*/) {
+}
 func (v Node) Parent() (result int /*TODO*/) {
 	return
 }
+func (v Node) SetParent(value int /*TODO*/) {
+}
 func (v Node) Children() (result int /*TODO*/) {
 	return
+}
+func (v Node) SetChildren(value int /*TODO*/) {
 }
 
 type NodeForeachFunc func(node Node, data unsafe.Pointer)
@@ -9886,9 +9962,13 @@ func (v Once) p() *C.GOnce {
 func (v Once) Status() (result int /*TODO*/) {
 	return
 }
+func (v Once) SetStatus(value int /*TODO*/) {
+}
 func (v Once) Retval() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().retval)
 	return
+}
+func (v Once) SetRetval(value unsafe.Pointer) {
 }
 
 // Enum OnceStatus
@@ -10343,26 +10423,42 @@ func (v OptionEntry) p() *C.GOptionEntry {
 func (v OptionEntry) LongName() (result int /*TODO*/) {
 	return
 }
+func (v OptionEntry) SetLongName(value int /*TODO*/) {
+}
 func (v OptionEntry) ShortName() (result int8) {
 	result = int8(v.p().short_name)
 	return
+}
+func (v OptionEntry) SetShortName(value int8) {
+	*(*int8)(unsafe.Pointer(&v.p().short_name)) = value
 }
 func (v OptionEntry) Flags() (result int32) {
 	result = int32(v.p().flags)
 	return
 }
+func (v OptionEntry) SetFlags(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().flags)) = value
+}
 func (v OptionEntry) Arg() (result int /*TODO*/) {
 	return
+}
+func (v OptionEntry) SetArg(value int /*TODO*/) {
 }
 func (v OptionEntry) ArgData() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().arg_data)
 	return
 }
+func (v OptionEntry) SetArgData(value unsafe.Pointer) {
+}
 func (v OptionEntry) Description() (result int /*TODO*/) {
 	return
 }
+func (v OptionEntry) SetDescription(value int /*TODO*/) {
+}
 func (v OptionEntry) ArgDescription() (result int /*TODO*/) {
 	return
+}
+func (v OptionEntry) SetArgDescription(value int /*TODO*/) {
 }
 
 // Enum OptionError
@@ -10653,13 +10749,22 @@ func (v PollFD) Fd() (result int32) {
 	result = int32(v.p().fd)
 	return
 }
+func (v PollFD) SetFd(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().fd)) = value
+}
 func (v PollFD) Events() (result uint16) {
 	result = uint16(v.p().events)
 	return
 }
+func (v PollFD) SetEvents(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().events)) = value
+}
 func (v PollFD) Revents() (result uint16) {
 	result = uint16(v.p().revents)
 	return
+}
+func (v PollFD) SetRevents(value uint16) {
+	*(*uint16)(unsafe.Pointer(&v.p().revents)) = value
 }
 
 type PollFunc func(ufds PollFD, nfsd uint32, timeout_ int32) (result int32)
@@ -10780,9 +10885,14 @@ func (v PtrArray) Pdata() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().pdata)
 	return
 }
+func (v PtrArray) SetPdata(value unsafe.Pointer) {
+}
 func (v PtrArray) Len() (result uint32) {
 	result = uint32(v.p().len)
 	return
+}
+func (v PtrArray) SetLen(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().len)) = value
 }
 
 // Struct Queue
@@ -11143,12 +11253,19 @@ func (v Queue) p() *C.GQueue {
 func (v Queue) Head() (result int /*TODO*/) {
 	return
 }
+func (v Queue) SetHead(value int /*TODO*/) {
+}
 func (v Queue) Tail() (result int /*TODO*/) {
 	return
+}
+func (v Queue) SetTail(value int /*TODO*/) {
 }
 func (v Queue) Length() (result uint32) {
 	result = uint32(v.p().length)
 	return
+}
+func (v Queue) SetLength(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().length)) = value
 }
 
 // Struct RWLock
@@ -12327,8 +12444,12 @@ func (v SList) Data() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().data)
 	return
 }
+func (v SList) SetData(value unsafe.Pointer) {
+}
 func (v SList) Next() (result int /*TODO*/) {
 	return
+}
+func (v SList) SetNext(value int /*TODO*/) {
 }
 
 // Struct Scanner
@@ -12675,50 +12796,84 @@ func (v Scanner) UserData() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().user_data)
 	return
 }
+func (v Scanner) SetUserData(value unsafe.Pointer) {
+}
 func (v Scanner) MaxParseErrors() (result uint32) {
 	result = uint32(v.p().max_parse_errors)
 	return
+}
+func (v Scanner) SetMaxParseErrors(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().max_parse_errors)) = value
 }
 func (v Scanner) ParseErrors() (result uint32) {
 	result = uint32(v.p().parse_errors)
 	return
 }
+func (v Scanner) SetParseErrors(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().parse_errors)) = value
+}
 func (v Scanner) InputName() (result int /*TODO*/) {
 	return
+}
+func (v Scanner) SetInputName(value int /*TODO*/) {
 }
 func (v Scanner) Qdata() (result int /*TODO*/) {
 	return
 }
+func (v Scanner) SetQdata(value int /*TODO*/) {
+}
 func (v Scanner) Config() (result int /*TODO*/) {
 	return
+}
+func (v Scanner) SetConfig(value int /*TODO*/) {
 }
 func (v Scanner) Token() (result int /*TODO*/) {
 	return
 }
+func (v Scanner) SetToken(value int /*TODO*/) {
+}
 func (v Scanner) Value() (result int /*TODO*/) {
 	return
+}
+func (v Scanner) SetValue(value int /*TODO*/) {
 }
 func (v Scanner) Line() (result uint32) {
 	result = uint32(v.p().line)
 	return
 }
+func (v Scanner) SetLine(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().line)) = value
+}
 func (v Scanner) Position() (result uint32) {
 	result = uint32(v.p().position)
 	return
 }
+func (v Scanner) SetPosition(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().position)) = value
+}
 func (v Scanner) NextToken() (result int /*TODO*/) {
 	return
 }
+func (v Scanner) SetNextToken(value int /*TODO*/) {
+}
 func (v Scanner) NextValue() (result int /*TODO*/) {
 	return
+}
+func (v Scanner) SetNextValue(value int /*TODO*/) {
 }
 func (v Scanner) NextLine() (result uint32) {
 	result = uint32(v.p().next_line)
 	return
 }
+func (v Scanner) SetNextLine(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().next_line)) = value
+}
 func (v Scanner) NextPosition() (result uint32) {
 	result = uint32(v.p().next_position)
 	return
+}
+func (v Scanner) SetNextPosition(value uint32) {
+	*(*uint32)(unsafe.Pointer(&v.p().next_position)) = value
 }
 func (v Scanner) SymbolTable() (result int /*TODO*/) {
 	return
@@ -12743,6 +12898,8 @@ func (v Scanner) ScopeId() (result uint32) {
 func (v Scanner) MsgHandler() (result int /*TODO*/) {
 	return
 }
+func (v Scanner) SetMsgHandler(value int /*TODO*/) {
+}
 
 // Struct ScannerConfig
 type ScannerConfig struct {
@@ -12762,14 +12919,22 @@ func (v ScannerConfig) p() *C.GScannerConfig {
 func (v ScannerConfig) CsetSkipCharacters() (result int /*TODO*/) {
 	return
 }
+func (v ScannerConfig) SetCsetSkipCharacters(value int /*TODO*/) {
+}
 func (v ScannerConfig) CsetIdentifierFirst() (result int /*TODO*/) {
 	return
+}
+func (v ScannerConfig) SetCsetIdentifierFirst(value int /*TODO*/) {
 }
 func (v ScannerConfig) CsetIdentifierNth() (result int /*TODO*/) {
 	return
 }
+func (v ScannerConfig) SetCsetIdentifierNth(value int /*TODO*/) {
+}
 func (v ScannerConfig) CpairCommentSingle() (result int /*TODO*/) {
 	return
+}
+func (v ScannerConfig) SetCpairCommentSingle(value int /*TODO*/) {
 }
 
 // TODO: ignore struct ScannerConfig field case_sensitive, bits(=1) > 0
@@ -14838,13 +15003,21 @@ func (v String) p() *C.GString {
 func (v String) Str() (result int /*TODO*/) {
 	return
 }
+func (v String) SetStr(value int /*TODO*/) {
+}
 func (v String) Len() (result uint64) {
 	result = uint64(v.p().len)
 	return
 }
+func (v String) SetLen(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().len)) = value
+}
 func (v String) AllocatedLen() (result uint64) {
 	result = uint64(v.p().allocated_len)
 	return
+}
+func (v String) SetAllocatedLen(value uint64) {
+	*(*uint64)(unsafe.Pointer(&v.p().allocated_len)) = value
 }
 
 // Struct StringChunk
@@ -14984,25 +15157,37 @@ func (v TestConfig) TestInitialized() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_initialized))
 	return
 }
+func (v TestConfig) SetTestInitialized(value bool) {
+}
 func (v TestConfig) TestQuick() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_quick))
 	return
+}
+func (v TestConfig) SetTestQuick(value bool) {
 }
 func (v TestConfig) TestPerf() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_perf))
 	return
 }
+func (v TestConfig) SetTestPerf(value bool) {
+}
 func (v TestConfig) TestVerbose() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_verbose))
 	return
+}
+func (v TestConfig) SetTestVerbose(value bool) {
 }
 func (v TestConfig) TestQuiet() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_quiet))
 	return
 }
+func (v TestConfig) SetTestQuiet(value bool) {
+}
 func (v TestConfig) TestUndefined() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_undefined))
 	return
+}
+func (v TestConfig) SetTestUndefined(value bool) {
 }
 
 type TestDataFunc func()
@@ -15635,13 +15820,19 @@ func (v ThreadPool) p() *C.GThreadPool {
 func (v ThreadPool) Func() (result int /*TODO*/) {
 	return
 }
+func (v ThreadPool) SetFunc(value int /*TODO*/) {
+}
 func (v ThreadPool) UserData() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().user_data)
 	return
 }
+func (v ThreadPool) SetUserData(value unsafe.Pointer) {
+}
 func (v ThreadPool) Exclusive() (result bool) {
 	result = gi.Int2Bool(int(v.p().exclusive))
 	return
+}
+func (v ThreadPool) SetExclusive(value bool) {
 }
 
 // Enum TimeType
@@ -15736,9 +15927,15 @@ func (v TimeVal) TvSec() (result int64) {
 	result = int64(v.p().tv_sec)
 	return
 }
+func (v TimeVal) SetTvSec(value int64) {
+	*(*int64)(unsafe.Pointer(&v.p().tv_sec)) = value
+}
 func (v TimeVal) TvUsec() (result int64) {
 	result = int64(v.p().tv_usec)
 	return
+}
+func (v TimeVal) SetTvUsec(value int64) {
+	*(*int64)(unsafe.Pointer(&v.p().tv_usec)) = value
 }
 
 // Struct TimeZone
@@ -16236,6 +16433,8 @@ func (v TrashStack) p() *C.GTrashStack {
 }
 func (v TrashStack) Next() (result int /*TODO*/) {
 	return
+}
+func (v TrashStack) SetNext(value int /*TODO*/) {
 }
 
 // Flags TraverseFlags

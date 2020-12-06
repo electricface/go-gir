@@ -579,17 +579,29 @@ func (v RectangleInt) X() (result int32) {
 	result = int32(v.p().x)
 	return
 }
+func (v RectangleInt) SetX(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().x)) = value
+}
 func (v RectangleInt) Y() (result int32) {
 	result = int32(v.p().y)
 	return
+}
+func (v RectangleInt) SetY(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().y)) = value
 }
 func (v RectangleInt) Width() (result int32) {
 	result = int32(v.p().width)
 	return
 }
+func (v RectangleInt) SetWidth(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().width)) = value
+}
 func (v RectangleInt) Height() (result int32) {
 	result = int32(v.p().height)
 	return
+}
+func (v RectangleInt) SetHeight(value int32) {
+	*(*int32)(unsafe.Pointer(&v.p().height)) = value
 }
 
 // cairo_image_surface_create
