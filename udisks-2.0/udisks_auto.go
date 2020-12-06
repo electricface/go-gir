@@ -1716,15 +1716,7 @@ func BlockProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name s
 
 // ignore GType struct BlockProxyClass
 
-// Struct BlockProxyPrivate
-type BlockProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func BlockProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(2, "BlockProxyPrivate")
-	return ret
-}
+// ignore private struct BlockProxyPrivate, type of BlockProxy is object
 
 // Object BlockSkeleton
 type BlockSkeleton struct {
@@ -1739,7 +1731,7 @@ type IBlockSkeleton interface{ P_BlockSkeleton() unsafe.Pointer }
 func (v BlockSkeleton) P_BlockSkeleton() unsafe.Pointer { return v.P }
 func (v BlockSkeleton) P_Block() unsafe.Pointer         { return v.P }
 func BlockSkeletonGetType() gi.GType {
-	ret := _I.GetGType(3, "BlockSkeleton")
+	ret := _I.GetGType(2, "BlockSkeleton")
 	return ret
 }
 
@@ -1761,15 +1753,7 @@ func NewBlockSkeleton() (result BlockSkeleton) {
 
 // ignore GType struct BlockSkeletonClass
 
-// Struct BlockSkeletonPrivate
-type BlockSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func BlockSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(4, "BlockSkeletonPrivate")
-	return ret
-}
+// ignore private struct BlockSkeletonPrivate, type of BlockSkeleton is object
 
 // Object Client
 type Client struct {
@@ -1786,7 +1770,7 @@ func (v Client) P_Client() unsafe.Pointer        { return v.P }
 func (v Client) P_AsyncInitable() unsafe.Pointer { return v.P }
 func (v Client) P_Initable() unsafe.Pointer      { return v.P }
 func ClientGetType() gi.GType {
-	ret := _I.GetGType(5, "Client")
+	ret := _I.GetGType(3, "Client")
 	return ret
 }
 
@@ -2754,7 +2738,7 @@ type IDrive interface{ P_Drive() unsafe.Pointer }
 
 func (v Drive) P_Drive() unsafe.Pointer { return v.P }
 func DriveGetType() gi.GType {
-	ret := _I.GetGType(6, "Drive")
+	ret := _I.GetGType(4, "Drive")
 	return ret
 }
 
@@ -3155,7 +3139,7 @@ type IDriveAta interface{ P_DriveAta() unsafe.Pointer }
 
 func (v DriveAta) P_DriveAta() unsafe.Pointer { return v.P }
 func DriveAtaGetType() gi.GType {
-	ret := _I.GetGType(7, "DriveAta")
+	ret := _I.GetGType(5, "DriveAta")
 	return ret
 }
 
@@ -4277,7 +4261,7 @@ type IDriveAtaProxy interface{ P_DriveAtaProxy() unsafe.Pointer }
 func (v DriveAtaProxy) P_DriveAtaProxy() unsafe.Pointer { return v.P }
 func (v DriveAtaProxy) P_DriveAta() unsafe.Pointer      { return v.P }
 func DriveAtaProxyGetType() gi.GType {
-	ret := _I.GetGType(8, "DriveAtaProxy")
+	ret := _I.GetGType(6, "DriveAtaProxy")
 	return ret
 }
 
@@ -4525,15 +4509,7 @@ func DriveAtaProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, nam
 
 // ignore GType struct DriveAtaProxyClass
 
-// Struct DriveAtaProxyPrivate
-type DriveAtaProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func DriveAtaProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(9, "DriveAtaProxyPrivate")
-	return ret
-}
+// ignore private struct DriveAtaProxyPrivate, type of DriveAtaProxy is object
 
 // Object DriveAtaSkeleton
 type DriveAtaSkeleton struct {
@@ -4548,7 +4524,7 @@ type IDriveAtaSkeleton interface{ P_DriveAtaSkeleton() unsafe.Pointer }
 func (v DriveAtaSkeleton) P_DriveAtaSkeleton() unsafe.Pointer { return v.P }
 func (v DriveAtaSkeleton) P_DriveAta() unsafe.Pointer         { return v.P }
 func DriveAtaSkeletonGetType() gi.GType {
-	ret := _I.GetGType(10, "DriveAtaSkeleton")
+	ret := _I.GetGType(7, "DriveAtaSkeleton")
 	return ret
 }
 
@@ -4570,15 +4546,7 @@ func NewDriveAtaSkeleton() (result DriveAtaSkeleton) {
 
 // ignore GType struct DriveAtaSkeletonClass
 
-// Struct DriveAtaSkeletonPrivate
-type DriveAtaSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func DriveAtaSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(11, "DriveAtaSkeletonPrivate")
-	return ret
-}
+// ignore private struct DriveAtaSkeletonPrivate, type of DriveAtaSkeleton is object
 
 // ignore GType struct DriveIface
 
@@ -4595,7 +4563,7 @@ type IDriveProxy interface{ P_DriveProxy() unsafe.Pointer }
 func (v DriveProxy) P_DriveProxy() unsafe.Pointer { return v.P }
 func (v DriveProxy) P_Drive() unsafe.Pointer      { return v.P }
 func DriveProxyGetType() gi.GType {
-	ret := _I.GetGType(12, "DriveProxy")
+	ret := _I.GetGType(8, "DriveProxy")
 	return ret
 }
 
@@ -4843,15 +4811,7 @@ func DriveProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name s
 
 // ignore GType struct DriveProxyClass
 
-// Struct DriveProxyPrivate
-type DriveProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func DriveProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(13, "DriveProxyPrivate")
-	return ret
-}
+// ignore private struct DriveProxyPrivate, type of DriveProxy is object
 
 // Object DriveSkeleton
 type DriveSkeleton struct {
@@ -4866,7 +4826,7 @@ type IDriveSkeleton interface{ P_DriveSkeleton() unsafe.Pointer }
 func (v DriveSkeleton) P_DriveSkeleton() unsafe.Pointer { return v.P }
 func (v DriveSkeleton) P_Drive() unsafe.Pointer         { return v.P }
 func DriveSkeletonGetType() gi.GType {
-	ret := _I.GetGType(14, "DriveSkeleton")
+	ret := _I.GetGType(9, "DriveSkeleton")
 	return ret
 }
 
@@ -4888,15 +4848,7 @@ func NewDriveSkeleton() (result DriveSkeleton) {
 
 // ignore GType struct DriveSkeletonClass
 
-// Struct DriveSkeletonPrivate
-type DriveSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func DriveSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(15, "DriveSkeletonPrivate")
-	return ret
-}
+// ignore private struct DriveSkeletonPrivate, type of DriveSkeleton is object
 
 // Interface Encrypted
 type Encrypted struct {
@@ -4908,7 +4860,7 @@ type IEncrypted interface{ P_Encrypted() unsafe.Pointer }
 
 func (v Encrypted) P_Encrypted() unsafe.Pointer { return v.P }
 func EncryptedGetType() gi.GType {
-	ret := _I.GetGType(16, "Encrypted")
+	ret := _I.GetGType(10, "Encrypted")
 	return ret
 }
 
@@ -5471,7 +5423,7 @@ type IEncryptedProxy interface{ P_EncryptedProxy() unsafe.Pointer }
 func (v EncryptedProxy) P_EncryptedProxy() unsafe.Pointer { return v.P }
 func (v EncryptedProxy) P_Encrypted() unsafe.Pointer      { return v.P }
 func EncryptedProxyGetType() gi.GType {
-	ret := _I.GetGType(17, "EncryptedProxy")
+	ret := _I.GetGType(11, "EncryptedProxy")
 	return ret
 }
 
@@ -5719,15 +5671,7 @@ func EncryptedProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, na
 
 // ignore GType struct EncryptedProxyClass
 
-// Struct EncryptedProxyPrivate
-type EncryptedProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func EncryptedProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(18, "EncryptedProxyPrivate")
-	return ret
-}
+// ignore private struct EncryptedProxyPrivate, type of EncryptedProxy is object
 
 // Object EncryptedSkeleton
 type EncryptedSkeleton struct {
@@ -5742,7 +5686,7 @@ type IEncryptedSkeleton interface{ P_EncryptedSkeleton() unsafe.Pointer }
 func (v EncryptedSkeleton) P_EncryptedSkeleton() unsafe.Pointer { return v.P }
 func (v EncryptedSkeleton) P_Encrypted() unsafe.Pointer         { return v.P }
 func EncryptedSkeletonGetType() gi.GType {
-	ret := _I.GetGType(19, "EncryptedSkeleton")
+	ret := _I.GetGType(12, "EncryptedSkeleton")
 	return ret
 }
 
@@ -5764,15 +5708,7 @@ func NewEncryptedSkeleton() (result EncryptedSkeleton) {
 
 // ignore GType struct EncryptedSkeletonClass
 
-// Struct EncryptedSkeletonPrivate
-type EncryptedSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func EncryptedSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(20, "EncryptedSkeletonPrivate")
-	return ret
-}
+// ignore private struct EncryptedSkeletonPrivate, type of EncryptedSkeleton is object
 
 // Enum Error
 type ErrorEnum int
@@ -5808,7 +5744,7 @@ const (
 )
 
 func ErrorGetType() gi.GType {
-	ret := _I.GetGType(21, "Error")
+	ret := _I.GetGType(13, "Error")
 	return ret
 }
 
@@ -5822,7 +5758,7 @@ type IFilesystem interface{ P_Filesystem() unsafe.Pointer }
 
 func (v Filesystem) P_Filesystem() unsafe.Pointer { return v.P }
 func FilesystemGetType() gi.GType {
-	ret := _I.GetGType(22, "Filesystem")
+	ret := _I.GetGType(14, "Filesystem")
 	return ret
 }
 
@@ -6729,7 +6665,7 @@ type IFilesystemProxy interface{ P_FilesystemProxy() unsafe.Pointer }
 func (v FilesystemProxy) P_FilesystemProxy() unsafe.Pointer { return v.P }
 func (v FilesystemProxy) P_Filesystem() unsafe.Pointer      { return v.P }
 func FilesystemProxyGetType() gi.GType {
-	ret := _I.GetGType(23, "FilesystemProxy")
+	ret := _I.GetGType(15, "FilesystemProxy")
 	return ret
 }
 
@@ -6977,15 +6913,7 @@ func FilesystemProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, n
 
 // ignore GType struct FilesystemProxyClass
 
-// Struct FilesystemProxyPrivate
-type FilesystemProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func FilesystemProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(24, "FilesystemProxyPrivate")
-	return ret
-}
+// ignore private struct FilesystemProxyPrivate, type of FilesystemProxy is object
 
 // Object FilesystemSkeleton
 type FilesystemSkeleton struct {
@@ -7000,7 +6928,7 @@ type IFilesystemSkeleton interface{ P_FilesystemSkeleton() unsafe.Pointer }
 func (v FilesystemSkeleton) P_FilesystemSkeleton() unsafe.Pointer { return v.P }
 func (v FilesystemSkeleton) P_Filesystem() unsafe.Pointer         { return v.P }
 func FilesystemSkeletonGetType() gi.GType {
-	ret := _I.GetGType(25, "FilesystemSkeleton")
+	ret := _I.GetGType(16, "FilesystemSkeleton")
 	return ret
 }
 
@@ -7022,15 +6950,7 @@ func NewFilesystemSkeleton() (result FilesystemSkeleton) {
 
 // ignore GType struct FilesystemSkeletonClass
 
-// Struct FilesystemSkeletonPrivate
-type FilesystemSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func FilesystemSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(26, "FilesystemSkeletonPrivate")
-	return ret
-}
+// ignore private struct FilesystemSkeletonPrivate, type of FilesystemSkeleton is object
 
 // Interface Job
 type Job struct {
@@ -7042,7 +6962,7 @@ type IJob interface{ P_Job() unsafe.Pointer }
 
 func (v Job) P_Job() unsafe.Pointer { return v.P }
 func JobGetType() gi.GType {
-	ret := _I.GetGType(27, "Job")
+	ret := _I.GetGType(17, "Job")
 	return ret
 }
 
@@ -7235,7 +7155,7 @@ type IJobProxy interface{ P_JobProxy() unsafe.Pointer }
 func (v JobProxy) P_JobProxy() unsafe.Pointer { return v.P }
 func (v JobProxy) P_Job() unsafe.Pointer      { return v.P }
 func JobProxyGetType() gi.GType {
-	ret := _I.GetGType(28, "JobProxy")
+	ret := _I.GetGType(18, "JobProxy")
 	return ret
 }
 
@@ -7483,15 +7403,7 @@ func JobProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name str
 
 // ignore GType struct JobProxyClass
 
-// Struct JobProxyPrivate
-type JobProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func JobProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(29, "JobProxyPrivate")
-	return ret
-}
+// ignore private struct JobProxyPrivate, type of JobProxy is object
 
 // Object JobSkeleton
 type JobSkeleton struct {
@@ -7506,7 +7418,7 @@ type IJobSkeleton interface{ P_JobSkeleton() unsafe.Pointer }
 func (v JobSkeleton) P_JobSkeleton() unsafe.Pointer { return v.P }
 func (v JobSkeleton) P_Job() unsafe.Pointer         { return v.P }
 func JobSkeletonGetType() gi.GType {
-	ret := _I.GetGType(30, "JobSkeleton")
+	ret := _I.GetGType(19, "JobSkeleton")
 	return ret
 }
 
@@ -7528,15 +7440,7 @@ func NewJobSkeleton() (result JobSkeleton) {
 
 // ignore GType struct JobSkeletonClass
 
-// Struct JobSkeletonPrivate
-type JobSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func JobSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(31, "JobSkeletonPrivate")
-	return ret
-}
+// ignore private struct JobSkeletonPrivate, type of JobSkeleton is object
 
 // Interface Loop
 type Loop struct {
@@ -7548,7 +7452,7 @@ type ILoop interface{ P_Loop() unsafe.Pointer }
 
 func (v Loop) P_Loop() unsafe.Pointer { return v.P }
 func LoopGetType() gi.GType {
-	ret := _I.GetGType(32, "Loop")
+	ret := _I.GetGType(20, "Loop")
 	return ret
 }
 
@@ -7840,7 +7744,7 @@ type ILoopProxy interface{ P_LoopProxy() unsafe.Pointer }
 func (v LoopProxy) P_LoopProxy() unsafe.Pointer { return v.P }
 func (v LoopProxy) P_Loop() unsafe.Pointer      { return v.P }
 func LoopProxyGetType() gi.GType {
-	ret := _I.GetGType(33, "LoopProxy")
+	ret := _I.GetGType(21, "LoopProxy")
 	return ret
 }
 
@@ -8088,15 +7992,7 @@ func LoopProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name st
 
 // ignore GType struct LoopProxyClass
 
-// Struct LoopProxyPrivate
-type LoopProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func LoopProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(34, "LoopProxyPrivate")
-	return ret
-}
+// ignore private struct LoopProxyPrivate, type of LoopProxy is object
 
 // Object LoopSkeleton
 type LoopSkeleton struct {
@@ -8111,7 +8007,7 @@ type ILoopSkeleton interface{ P_LoopSkeleton() unsafe.Pointer }
 func (v LoopSkeleton) P_LoopSkeleton() unsafe.Pointer { return v.P }
 func (v LoopSkeleton) P_Loop() unsafe.Pointer         { return v.P }
 func LoopSkeletonGetType() gi.GType {
-	ret := _I.GetGType(35, "LoopSkeleton")
+	ret := _I.GetGType(22, "LoopSkeleton")
 	return ret
 }
 
@@ -8133,15 +8029,7 @@ func NewLoopSkeleton() (result LoopSkeleton) {
 
 // ignore GType struct LoopSkeletonClass
 
-// Struct LoopSkeletonPrivate
-type LoopSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func LoopSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(36, "LoopSkeletonPrivate")
-	return ret
-}
+// ignore private struct LoopSkeletonPrivate, type of LoopSkeleton is object
 
 // Interface MDRaid
 type MDRaid struct {
@@ -8153,7 +8041,7 @@ type IMDRaid interface{ P_MDRaid() unsafe.Pointer }
 
 func (v MDRaid) P_MDRaid() unsafe.Pointer { return v.P }
 func MDRaidGetType() gi.GType {
-	ret := _I.GetGType(37, "MDRaid")
+	ret := _I.GetGType(23, "MDRaid")
 	return ret
 }
 
@@ -9049,7 +8937,7 @@ type IMDRaidProxy interface{ P_MDRaidProxy() unsafe.Pointer }
 func (v MDRaidProxy) P_MDRaidProxy() unsafe.Pointer { return v.P }
 func (v MDRaidProxy) P_MDRaid() unsafe.Pointer      { return v.P }
 func MDRaidProxyGetType() gi.GType {
-	ret := _I.GetGType(38, "MDRaidProxy")
+	ret := _I.GetGType(24, "MDRaidProxy")
 	return ret
 }
 
@@ -9297,15 +9185,7 @@ func MDRaidProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name 
 
 // ignore GType struct MDRaidProxyClass
 
-// Struct MDRaidProxyPrivate
-type MDRaidProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func MDRaidProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(39, "MDRaidProxyPrivate")
-	return ret
-}
+// ignore private struct MDRaidProxyPrivate, type of MDRaidProxy is object
 
 // Object MDRaidSkeleton
 type MDRaidSkeleton struct {
@@ -9320,7 +9200,7 @@ type IMDRaidSkeleton interface{ P_MDRaidSkeleton() unsafe.Pointer }
 func (v MDRaidSkeleton) P_MDRaidSkeleton() unsafe.Pointer { return v.P }
 func (v MDRaidSkeleton) P_MDRaid() unsafe.Pointer         { return v.P }
 func MDRaidSkeletonGetType() gi.GType {
-	ret := _I.GetGType(40, "MDRaidSkeleton")
+	ret := _I.GetGType(25, "MDRaidSkeleton")
 	return ret
 }
 
@@ -9342,15 +9222,7 @@ func NewMDRaidSkeleton() (result MDRaidSkeleton) {
 
 // ignore GType struct MDRaidSkeletonClass
 
-// Struct MDRaidSkeletonPrivate
-type MDRaidSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func MDRaidSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(41, "MDRaidSkeletonPrivate")
-	return ret
-}
+// ignore private struct MDRaidSkeletonPrivate, type of MDRaidSkeleton is object
 
 // Interface Manager
 type Manager struct {
@@ -9362,7 +9234,7 @@ type IManager interface{ P_Manager() unsafe.Pointer }
 
 func (v Manager) P_Manager() unsafe.Pointer { return v.P }
 func ManagerGetType() gi.GType {
-	ret := _I.GetGType(42, "Manager")
+	ret := _I.GetGType(26, "Manager")
 	return ret
 }
 
@@ -10635,7 +10507,7 @@ type IManagerProxy interface{ P_ManagerProxy() unsafe.Pointer }
 func (v ManagerProxy) P_ManagerProxy() unsafe.Pointer { return v.P }
 func (v ManagerProxy) P_Manager() unsafe.Pointer      { return v.P }
 func ManagerProxyGetType() gi.GType {
-	ret := _I.GetGType(43, "ManagerProxy")
+	ret := _I.GetGType(27, "ManagerProxy")
 	return ret
 }
 
@@ -10883,15 +10755,7 @@ func ManagerProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, name
 
 // ignore GType struct ManagerProxyClass
 
-// Struct ManagerProxyPrivate
-type ManagerProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func ManagerProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(44, "ManagerProxyPrivate")
-	return ret
-}
+// ignore private struct ManagerProxyPrivate, type of ManagerProxy is object
 
 // Object ManagerSkeleton
 type ManagerSkeleton struct {
@@ -10906,7 +10770,7 @@ type IManagerSkeleton interface{ P_ManagerSkeleton() unsafe.Pointer }
 func (v ManagerSkeleton) P_ManagerSkeleton() unsafe.Pointer { return v.P }
 func (v ManagerSkeleton) P_Manager() unsafe.Pointer         { return v.P }
 func ManagerSkeletonGetType() gi.GType {
-	ret := _I.GetGType(45, "ManagerSkeleton")
+	ret := _I.GetGType(28, "ManagerSkeleton")
 	return ret
 }
 
@@ -10928,15 +10792,7 @@ func NewManagerSkeleton() (result ManagerSkeleton) {
 
 // ignore GType struct ManagerSkeletonClass
 
-// Struct ManagerSkeletonPrivate
-type ManagerSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func ManagerSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(46, "ManagerSkeletonPrivate")
-	return ret
-}
+// ignore private struct ManagerSkeletonPrivate, type of ManagerSkeleton is object
 
 // Interface Object
 type Object struct {
@@ -10948,7 +10804,7 @@ type IObject interface{ P_Object() unsafe.Pointer }
 
 func (v Object) P_Object() unsafe.Pointer { return v.P }
 func ObjectGetType() gi.GType {
-	ret := _I.GetGType(47, "Object")
+	ret := _I.GetGType(29, "Object")
 	return ret
 }
 
@@ -11181,7 +11037,7 @@ type IObjectInfo interface{ P_ObjectInfo() unsafe.Pointer }
 
 func (v ObjectInfo) P_ObjectInfo() unsafe.Pointer { return v.P }
 func ObjectInfoGetType() gi.GType {
-	ret := _I.GetGType(48, "ObjectInfo")
+	ret := _I.GetGType(30, "ObjectInfo")
 	return ret
 }
 
@@ -11376,7 +11232,7 @@ type IObjectManagerClient interface{ P_ObjectManagerClient() unsafe.Pointer }
 
 func (v ObjectManagerClient) P_ObjectManagerClient() unsafe.Pointer { return v.P }
 func ObjectManagerClientGetType() gi.GType {
-	ret := _I.GetGType(49, "ObjectManagerClient")
+	ret := _I.GetGType(31, "ObjectManagerClient")
 	return ret
 }
 
@@ -11661,15 +11517,7 @@ func ObjectManagerClientNewForBus1(bus_type g.BusTypeEnum, flags g.DBusObjectMan
 
 // ignore GType struct ObjectManagerClientClass
 
-// Struct ObjectManagerClientPrivate
-type ObjectManagerClientPrivate struct {
-	P unsafe.Pointer
-}
-
-func ObjectManagerClientPrivateGetType() gi.GType {
-	ret := _I.GetGType(50, "ObjectManagerClientPrivate")
-	return ret
-}
+// ignore private struct ObjectManagerClientPrivate, type of ObjectManagerClient is object
 
 // Object ObjectProxy
 type ObjectProxy struct {
@@ -11684,7 +11532,7 @@ type IObjectProxy interface{ P_ObjectProxy() unsafe.Pointer }
 func (v ObjectProxy) P_ObjectProxy() unsafe.Pointer { return v.P }
 func (v ObjectProxy) P_Object() unsafe.Pointer      { return v.P }
 func ObjectProxyGetType() gi.GType {
-	ret := _I.GetGType(51, "ObjectProxy")
+	ret := _I.GetGType(32, "ObjectProxy")
 	return ret
 }
 
@@ -11719,15 +11567,7 @@ func NewObjectProxy(connection g.IDBusConnection, object_path string) (result Ob
 
 // ignore GType struct ObjectProxyClass
 
-// Struct ObjectProxyPrivate
-type ObjectProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func ObjectProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(52, "ObjectProxyPrivate")
-	return ret
-}
+// ignore private struct ObjectProxyPrivate, type of ObjectProxy is object
 
 // Object ObjectSkeleton
 type ObjectSkeleton struct {
@@ -11742,7 +11582,7 @@ type IObjectSkeleton interface{ P_ObjectSkeleton() unsafe.Pointer }
 func (v ObjectSkeleton) P_ObjectSkeleton() unsafe.Pointer { return v.P }
 func (v ObjectSkeleton) P_Object() unsafe.Pointer         { return v.P }
 func ObjectSkeletonGetType() gi.GType {
-	ret := _I.GetGType(53, "ObjectSkeleton")
+	ret := _I.GetGType(33, "ObjectSkeleton")
 	return ret
 }
 
@@ -12010,15 +11850,7 @@ func (v ObjectSkeleton) SetSwapspace(interface_ ISwapspace) {
 
 // ignore GType struct ObjectSkeletonClass
 
-// Struct ObjectSkeletonPrivate
-type ObjectSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func ObjectSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(54, "ObjectSkeletonPrivate")
-	return ret
-}
+// ignore private struct ObjectSkeletonPrivate, type of ObjectSkeleton is object
 
 // Interface Partition
 type Partition struct {
@@ -12030,7 +11862,7 @@ type IPartition interface{ P_Partition() unsafe.Pointer }
 
 func (v Partition) P_Partition() unsafe.Pointer { return v.P }
 func PartitionGetType() gi.GType {
-	ret := _I.GetGType(55, "Partition")
+	ret := _I.GetGType(34, "Partition")
 	return ret
 }
 
@@ -12690,7 +12522,7 @@ type IPartitionProxy interface{ P_PartitionProxy() unsafe.Pointer }
 func (v PartitionProxy) P_PartitionProxy() unsafe.Pointer { return v.P }
 func (v PartitionProxy) P_Partition() unsafe.Pointer      { return v.P }
 func PartitionProxyGetType() gi.GType {
-	ret := _I.GetGType(56, "PartitionProxy")
+	ret := _I.GetGType(35, "PartitionProxy")
 	return ret
 }
 
@@ -12938,15 +12770,7 @@ func PartitionProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, na
 
 // ignore GType struct PartitionProxyClass
 
-// Struct PartitionProxyPrivate
-type PartitionProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func PartitionProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(57, "PartitionProxyPrivate")
-	return ret
-}
+// ignore private struct PartitionProxyPrivate, type of PartitionProxy is object
 
 // Object PartitionSkeleton
 type PartitionSkeleton struct {
@@ -12961,7 +12785,7 @@ type IPartitionSkeleton interface{ P_PartitionSkeleton() unsafe.Pointer }
 func (v PartitionSkeleton) P_PartitionSkeleton() unsafe.Pointer { return v.P }
 func (v PartitionSkeleton) P_Partition() unsafe.Pointer         { return v.P }
 func PartitionSkeletonGetType() gi.GType {
-	ret := _I.GetGType(58, "PartitionSkeleton")
+	ret := _I.GetGType(36, "PartitionSkeleton")
 	return ret
 }
 
@@ -12983,15 +12807,7 @@ func NewPartitionSkeleton() (result PartitionSkeleton) {
 
 // ignore GType struct PartitionSkeletonClass
 
-// Struct PartitionSkeletonPrivate
-type PartitionSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func PartitionSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(59, "PartitionSkeletonPrivate")
-	return ret
-}
+// ignore private struct PartitionSkeletonPrivate, type of PartitionSkeleton is object
 
 // Interface PartitionTable
 type PartitionTable struct {
@@ -13003,7 +12819,7 @@ type IPartitionTable interface{ P_PartitionTable() unsafe.Pointer }
 
 func (v PartitionTable) P_PartitionTable() unsafe.Pointer { return v.P }
 func PartitionTableGetType() gi.GType {
-	ret := _I.GetGType(60, "PartitionTable")
+	ret := _I.GetGType(37, "PartitionTable")
 	return ret
 }
 
@@ -13395,7 +13211,7 @@ type IPartitionTableProxy interface{ P_PartitionTableProxy() unsafe.Pointer }
 func (v PartitionTableProxy) P_PartitionTableProxy() unsafe.Pointer { return v.P }
 func (v PartitionTableProxy) P_PartitionTable() unsafe.Pointer      { return v.P }
 func PartitionTableProxyGetType() gi.GType {
-	ret := _I.GetGType(61, "PartitionTableProxy")
+	ret := _I.GetGType(38, "PartitionTableProxy")
 	return ret
 }
 
@@ -13643,15 +13459,7 @@ func PartitionTableProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlag
 
 // ignore GType struct PartitionTableProxyClass
 
-// Struct PartitionTableProxyPrivate
-type PartitionTableProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func PartitionTableProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(62, "PartitionTableProxyPrivate")
-	return ret
-}
+// ignore private struct PartitionTableProxyPrivate, type of PartitionTableProxy is object
 
 // Object PartitionTableSkeleton
 type PartitionTableSkeleton struct {
@@ -13666,7 +13474,7 @@ type IPartitionTableSkeleton interface{ P_PartitionTableSkeleton() unsafe.Pointe
 func (v PartitionTableSkeleton) P_PartitionTableSkeleton() unsafe.Pointer { return v.P }
 func (v PartitionTableSkeleton) P_PartitionTable() unsafe.Pointer         { return v.P }
 func PartitionTableSkeletonGetType() gi.GType {
-	ret := _I.GetGType(63, "PartitionTableSkeleton")
+	ret := _I.GetGType(39, "PartitionTableSkeleton")
 	return ret
 }
 
@@ -13688,15 +13496,7 @@ func NewPartitionTableSkeleton() (result PartitionTableSkeleton) {
 
 // ignore GType struct PartitionTableSkeletonClass
 
-// Struct PartitionTableSkeletonPrivate
-type PartitionTableSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func PartitionTableSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(64, "PartitionTableSkeletonPrivate")
-	return ret
-}
+// ignore private struct PartitionTableSkeletonPrivate, type of PartitionTableSkeleton is object
 
 // Struct PartitionTypeInfo
 type PartitionTypeInfo struct {
@@ -13706,7 +13506,7 @@ type PartitionTypeInfo struct {
 const SizeOfStructPartitionTypeInfo = 32
 
 func PartitionTypeInfoGetType() gi.GType {
-	ret := _I.GetGType(65, "PartitionTypeInfo")
+	ret := _I.GetGType(40, "PartitionTypeInfo")
 	return ret
 }
 
@@ -13723,6 +13523,22 @@ func (v PartitionTypeInfo) Free() {
 	iv.Call(args, nil, nil)
 }
 
+func (v PartitionTypeInfo) p() *C.UDisksPartitionTypeInfo {
+	return (*C.UDisksPartitionTypeInfo)(v.P)
+}
+func (v PartitionTypeInfo) TableType() (result int /*TODO*/) {
+	return
+}
+func (v PartitionTypeInfo) TableSubtype() (result int /*TODO*/) {
+	return
+}
+func (v PartitionTypeInfo) Type() (result int /*TODO*/) {
+	return
+}
+func (v PartitionTypeInfo) Flags() (result int /*TODO*/) {
+	return
+}
+
 // Flags PartitionTypeInfoFlags
 type PartitionTypeInfoFlags int
 
@@ -13736,7 +13552,7 @@ const (
 )
 
 func PartitionTypeInfoFlagsGetType() gi.GType {
-	ret := _I.GetGType(66, "PartitionTypeInfoFlags")
+	ret := _I.GetGType(41, "PartitionTypeInfoFlags")
 	return ret
 }
 
@@ -13750,7 +13566,7 @@ type ISwapspace interface{ P_Swapspace() unsafe.Pointer }
 
 func (v Swapspace) P_Swapspace() unsafe.Pointer { return v.P }
 func SwapspaceGetType() gi.GType {
-	ret := _I.GetGType(67, "Swapspace")
+	ret := _I.GetGType(42, "Swapspace")
 	return ret
 }
 
@@ -14160,7 +13976,7 @@ type ISwapspaceProxy interface{ P_SwapspaceProxy() unsafe.Pointer }
 func (v SwapspaceProxy) P_SwapspaceProxy() unsafe.Pointer { return v.P }
 func (v SwapspaceProxy) P_Swapspace() unsafe.Pointer      { return v.P }
 func SwapspaceProxyGetType() gi.GType {
-	ret := _I.GetGType(68, "SwapspaceProxy")
+	ret := _I.GetGType(43, "SwapspaceProxy")
 	return ret
 }
 
@@ -14408,15 +14224,7 @@ func SwapspaceProxyNewForBus1(bus_type g.BusTypeEnum, flags g.DBusProxyFlags, na
 
 // ignore GType struct SwapspaceProxyClass
 
-// Struct SwapspaceProxyPrivate
-type SwapspaceProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func SwapspaceProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType(69, "SwapspaceProxyPrivate")
-	return ret
-}
+// ignore private struct SwapspaceProxyPrivate, type of SwapspaceProxy is object
 
 // Object SwapspaceSkeleton
 type SwapspaceSkeleton struct {
@@ -14431,7 +14239,7 @@ type ISwapspaceSkeleton interface{ P_SwapspaceSkeleton() unsafe.Pointer }
 func (v SwapspaceSkeleton) P_SwapspaceSkeleton() unsafe.Pointer { return v.P }
 func (v SwapspaceSkeleton) P_Swapspace() unsafe.Pointer         { return v.P }
 func SwapspaceSkeletonGetType() gi.GType {
-	ret := _I.GetGType(70, "SwapspaceSkeleton")
+	ret := _I.GetGType(44, "SwapspaceSkeleton")
 	return ret
 }
 
@@ -14453,15 +14261,7 @@ func NewSwapspaceSkeleton() (result SwapspaceSkeleton) {
 
 // ignore GType struct SwapspaceSkeletonClass
 
-// Struct SwapspaceSkeletonPrivate
-type SwapspaceSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func SwapspaceSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType(71, "SwapspaceSkeletonPrivate")
-	return ret
-}
+// ignore private struct SwapspaceSkeletonPrivate, type of SwapspaceSkeleton is object
 
 // udisks_block_interface_info
 //

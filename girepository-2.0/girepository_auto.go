@@ -84,6 +84,26 @@ func AttributeIterGetType() gi.GType {
 	return ret
 }
 
+func (v AttributeIter) p() *C.GIAttributeIter {
+	return (*C.GIAttributeIter)(v.P)
+}
+func (v AttributeIter) Data() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data)
+	return
+}
+func (v AttributeIter) Data2() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data2)
+	return
+}
+func (v AttributeIter) Data3() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data3)
+	return
+}
+func (v AttributeIter) Data4() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data4)
+	return
+}
+
 // Struct BaseInfo
 type BaseInfo struct {
 	P unsafe.Pointer
@@ -274,6 +294,41 @@ func (v BaseInfo) IterateAttributes(iterator int /*TODO:DIR_INOUT*/) (result boo
 	name = outArgs[0].String().Copy()
 	value = outArgs[1].String().Copy()
 	result = ret.Bool()
+	return
+}
+
+func (v BaseInfo) p() *C.GIBaseInfo {
+	return (*C.GIBaseInfo)(v.P)
+}
+func (v BaseInfo) Dummy1() (result int32) {
+	result = int32(v.p().dummy1)
+	return
+}
+func (v BaseInfo) Dummy2() (result int32) {
+	result = int32(v.p().dummy2)
+	return
+}
+func (v BaseInfo) Dummy3() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy3)
+	return
+}
+func (v BaseInfo) Dummy4() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy4)
+	return
+}
+func (v BaseInfo) Dummy5() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy5)
+	return
+}
+func (v BaseInfo) Dummy6() (result uint32) {
+	result = uint32(v.p().dummy6)
+	return
+}
+func (v BaseInfo) Dummy7() (result uint32) {
+	result = uint32(v.p().dummy7)
+	return
+}
+func (v BaseInfo) Padding() (result int /*TODO*/) {
 	return
 }
 
@@ -944,15 +999,7 @@ func RepositoryLoadFlagsGetType() gi.GType {
 	return ret
 }
 
-// Struct RepositoryPrivate
-type RepositoryPrivate struct {
-	P unsafe.Pointer
-}
-
-func RepositoryPrivateGetType() gi.GType {
-	ret := _I.GetGType(11, "RepositoryPrivate")
-	return ret
-}
+// ignore private struct RepositoryPrivate, type of Repository is object
 
 // Enum ScopeType
 type ScopeTypeEnum int
@@ -965,7 +1012,7 @@ const (
 )
 
 func ScopeTypeGetType() gi.GType {
-	ret := _I.GetGType(12, "ScopeType")
+	ret := _I.GetGType(11, "ScopeType")
 	return ret
 }
 
@@ -979,7 +1026,7 @@ const (
 )
 
 func TransferGetType() gi.GType {
-	ret := _I.GetGType(13, "Transfer")
+	ret := _I.GetGType(12, "Transfer")
 	return ret
 }
 
@@ -1012,7 +1059,7 @@ const (
 )
 
 func TypeTagGetType() gi.GType {
-	ret := _I.GetGType(14, "TypeTag")
+	ret := _I.GetGType(13, "TypeTag")
 	return ret
 }
 
@@ -1022,7 +1069,7 @@ type Typelib struct {
 }
 
 func TypelibGetType() gi.GType {
-	ret := _I.GetGType(15, "Typelib")
+	ret := _I.GetGType(14, "Typelib")
 	return ret
 }
 
@@ -1089,7 +1136,7 @@ type UnresolvedInfo struct {
 }
 
 func UnresolvedInfoGetType() gi.GType {
-	ret := _I.GetGType(16, "UnresolvedInfo")
+	ret := _I.GetGType(15, "UnresolvedInfo")
 	return ret
 }
 
@@ -1104,7 +1151,7 @@ const (
 )
 
 func VFuncInfoFlagsGetType() gi.GType {
-	ret := _I.GetGType(17, "VFuncInfoFlags")
+	ret := _I.GetGType(16, "VFuncInfoFlags")
 	return ret
 }
 
@@ -2404,7 +2451,7 @@ const (
 )
 
 func nvokeErrorGetType() gi.GType {
-	ret := _I.GetGType(18, "nvokeError")
+	ret := _I.GetGType(17, "nvokeError")
 	return ret
 }
 

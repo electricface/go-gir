@@ -60,6 +60,28 @@ func CharAttributesGetType() gi.GType {
 	return ret
 }
 
+func (v CharAttributes) p() *C.VteCharAttributes {
+	return (*C.VteCharAttributes)(v.P)
+}
+func (v CharAttributes) Row() (result int64) {
+	result = int64(v.p().row)
+	return
+}
+func (v CharAttributes) Column() (result int64) {
+	result = int64(v.p().column)
+	return
+}
+func (v CharAttributes) Fore() (result int /*TODO*/) {
+	return
+}
+func (v CharAttributes) Back() (result int /*TODO*/) {
+	return
+}
+
+// TODO: ignore struct CharAttributes field underline, bits(=1) > 0
+
+// TODO: ignore struct CharAttributes field strikethrough, bits(=1) > 0
+
 // Enum CursorBlinkMode
 type CursorBlinkModeEnum int
 
@@ -2728,15 +2750,7 @@ func (v Terminal) WriteContentsSync(stream g.IOutputStream, flags WriteFlagsEnum
 
 // ignore GType struct TerminalClass
 
-// Struct TerminalClassPrivate
-type TerminalClassPrivate struct {
-	P unsafe.Pointer
-}
-
-func TerminalClassPrivateGetType() gi.GType {
-	ret := _I.GetGType(11, "TerminalClassPrivate")
-	return ret
-}
+// ignore private struct TerminalClassPrivate, type of TerminalClass is struct
 
 type TerminalSpawnAsyncCallback func(terminal Terminal, pid int32) (error error)
 
@@ -2761,7 +2775,7 @@ const (
 )
 
 func TextBlinkModeGetType() gi.GType {
-	ret := _I.GetGType(12, "TextBlinkMode")
+	ret := _I.GetGType(11, "TextBlinkMode")
 	return ret
 }
 
@@ -2773,7 +2787,7 @@ const (
 )
 
 func WriteFlagsGetType() gi.GType {
-	ret := _I.GetGType(13, "WriteFlags")
+	ret := _I.GetGType(12, "WriteFlags")
 	return ret
 }
 

@@ -641,15 +641,7 @@ func (v AboutDialog) SetWrapLicense(wrap_license bool) {
 
 // ignore GType struct AboutDialogClass
 
-// Struct AboutDialogPrivate
-type AboutDialogPrivate struct {
-	P unsafe.Pointer
-}
-
-func AboutDialogPrivateGetType() gi.GType {
-	ret := _I.GetGType(1, "AboutDialogPrivate")
-	return ret
-}
+// ignore private struct AboutDialogPrivate, type of AboutDialog is object
 
 // Flags AccelFlags
 type AccelFlags int
@@ -661,7 +653,7 @@ const (
 )
 
 func AccelFlagsGetType() gi.GType {
-	ret := _I.GetGType(2, "AccelFlags")
+	ret := _I.GetGType(1, "AccelFlags")
 	return ret
 }
 
@@ -676,7 +668,7 @@ type IAccelGroup interface{ P_AccelGroup() unsafe.Pointer }
 
 func (v AccelGroup) P_AccelGroup() unsafe.Pointer { return v.P }
 func AccelGroupGetType() gi.GType {
-	ret := _I.GetGType(3, "AccelGroup")
+	ret := _I.GetGType(2, "AccelGroup")
 	return ret
 }
 
@@ -992,8 +984,22 @@ type AccelGroupEntry struct {
 const SizeOfStructAccelGroupEntry = 32
 
 func AccelGroupEntryGetType() gi.GType {
-	ret := _I.GetGType(4, "AccelGroupEntry")
+	ret := _I.GetGType(3, "AccelGroupEntry")
 	return ret
+}
+
+func (v AccelGroupEntry) p() *C.GtkAccelGroupEntry {
+	return (*C.GtkAccelGroupEntry)(v.P)
+}
+func (v AccelGroupEntry) Key() (result int /*TODO*/) {
+	return
+}
+func (v AccelGroupEntry) Closure() (result int /*TODO*/) {
+	return
+}
+func (v AccelGroupEntry) AccelPathQuark() (result uint32) {
+	result = uint32(v.p().accel_path_quark)
+	return
 }
 
 type AccelGroupFindFunc func(key AccelKey, closure g.Closure) (result bool)
@@ -1008,15 +1014,7 @@ func CallAccelGroupFindFunc(fn AccelGroupFindFunc, result unsafe.Pointer, args [
 	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
-// Struct AccelGroupPrivate
-type AccelGroupPrivate struct {
-	P unsafe.Pointer
-}
-
-func AccelGroupPrivateGetType() gi.GType {
-	ret := _I.GetGType(5, "AccelGroupPrivate")
-	return ret
-}
+// ignore private struct AccelGroupPrivate, type of AccelGroup is object
 
 // Struct AccelKey
 type AccelKey struct {
@@ -1026,9 +1024,22 @@ type AccelKey struct {
 const SizeOfStructAccelKey = 12
 
 func AccelKeyGetType() gi.GType {
-	ret := _I.GetGType(6, "AccelKey")
+	ret := _I.GetGType(4, "AccelKey")
 	return ret
 }
+
+func (v AccelKey) p() *C.GtkAccelKey {
+	return (*C.GtkAccelKey)(v.P)
+}
+func (v AccelKey) AccelKey() (result uint32) {
+	result = uint32(v.p().accel_key)
+	return
+}
+func (v AccelKey) AccelMods() (result int /*TODO*/) {
+	return
+}
+
+// TODO: ignore struct AccelKey field accel_flags, bits(=16) > 0
 
 // Object AccelLabel
 type AccelLabel struct {
@@ -1041,7 +1052,7 @@ type IAccelLabel interface{ P_AccelLabel() unsafe.Pointer }
 
 func (v AccelLabel) P_AccelLabel() unsafe.Pointer { return v.P }
 func AccelLabelGetType() gi.GType {
-	ret := _I.GetGType(7, "AccelLabel")
+	ret := _I.GetGType(5, "AccelLabel")
 	return ret
 }
 
@@ -1201,15 +1212,7 @@ func (v AccelLabel) SetAccelWidget(accel_widget IWidget) {
 
 // ignore GType struct AccelLabelClass
 
-// Struct AccelLabelPrivate
-type AccelLabelPrivate struct {
-	P unsafe.Pointer
-}
-
-func AccelLabelPrivateGetType() gi.GType {
-	ret := _I.GetGType(8, "AccelLabelPrivate")
-	return ret
-}
+// ignore private struct AccelLabelPrivate, type of AccelLabel is object
 
 // Object AccelMap
 type AccelMap struct {
@@ -1222,7 +1225,7 @@ type IAccelMap interface{ P_AccelMap() unsafe.Pointer }
 
 func (v AccelMap) P_AccelMap() unsafe.Pointer { return v.P }
 func AccelMapGetType() gi.GType {
-	ret := _I.GetGType(9, "AccelMap")
+	ret := _I.GetGType(6, "AccelMap")
 	return ret
 }
 
@@ -1534,7 +1537,7 @@ type IAccessible interface{ P_Accessible() unsafe.Pointer }
 
 func (v Accessible) P_Accessible() unsafe.Pointer { return v.P }
 func AccessibleGetType() gi.GType {
-	ret := _I.GetGType(10, "Accessible")
+	ret := _I.GetGType(7, "Accessible")
 	return ret
 }
 
@@ -1593,15 +1596,7 @@ func (v Accessible) SetWidget(widget IWidget) {
 
 // ignore GType struct AccessibleClass
 
-// Struct AccessiblePrivate
-type AccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func AccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(11, "AccessiblePrivate")
-	return ret
-}
+// ignore private struct AccessiblePrivate, type of Accessible is object
 
 // Object Action
 type Action struct {
@@ -1616,7 +1611,7 @@ type IAction interface{ P_Action() unsafe.Pointer }
 func (v Action) P_Action() unsafe.Pointer    { return v.P }
 func (v Action) P_Buildable() unsafe.Pointer { return v.P }
 func ActionGetType() gi.GType {
-	ret := _I.GetGType(12, "Action")
+	ret := _I.GetGType(8, "Action")
 	return ret
 }
 
@@ -2460,7 +2455,7 @@ type IActionBar interface{ P_ActionBar() unsafe.Pointer }
 
 func (v ActionBar) P_ActionBar() unsafe.Pointer { return v.P }
 func ActionBarGetType() gi.GType {
-	ret := _I.GetGType(13, "ActionBar")
+	ret := _I.GetGType(9, "ActionBar")
 	return ret
 }
 
@@ -2560,15 +2555,7 @@ func (v ActionBar) SetCenterWidget(center_widget IWidget) {
 
 // ignore GType struct ActionBarClass
 
-// Struct ActionBarPrivate
-type ActionBarPrivate struct {
-	P unsafe.Pointer
-}
-
-func ActionBarPrivateGetType() gi.GType {
-	ret := _I.GetGType(14, "ActionBarPrivate")
-	return ret
-}
+// ignore private struct ActionBarPrivate, type of ActionBar is object
 
 // ignore GType struct ActionClass
 
@@ -2582,8 +2569,30 @@ type ActionEntry struct {
 const SizeOfStructActionEntry = 48
 
 func ActionEntryGetType() gi.GType {
-	ret := _I.GetGType(15, "ActionEntry")
+	ret := _I.GetGType(10, "ActionEntry")
 	return ret
+}
+
+func (v ActionEntry) p() *C.GtkActionEntry {
+	return (*C.GtkActionEntry)(v.P)
+}
+func (v ActionEntry) Name() (result int /*TODO*/) {
+	return
+}
+func (v ActionEntry) StockId() (result int /*TODO*/) {
+	return
+}
+func (v ActionEntry) Label() (result int /*TODO*/) {
+	return
+}
+func (v ActionEntry) Accelerator() (result int /*TODO*/) {
+	return
+}
+func (v ActionEntry) Tooltip() (result int /*TODO*/) {
+	return
+}
+func (v ActionEntry) Callback() (result int /*TODO*/) {
+	return
 }
 
 // Object ActionGroup
@@ -2599,7 +2608,7 @@ type IActionGroup interface{ P_ActionGroup() unsafe.Pointer }
 func (v ActionGroup) P_ActionGroup() unsafe.Pointer { return v.P }
 func (v ActionGroup) P_Buildable() unsafe.Pointer   { return v.P }
 func ActionGroupGetType() gi.GType {
-	ret := _I.GetGType(16, "ActionGroup")
+	ret := _I.GetGType(11, "ActionGroup")
 	return ret
 }
 
@@ -2961,25 +2970,9 @@ func (v ActionGroup) TranslateString(string string) (result string) {
 
 // ignore GType struct ActionGroupClass
 
-// Struct ActionGroupPrivate
-type ActionGroupPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct ActionGroupPrivate, type of ActionGroup is object
 
-func ActionGroupPrivateGetType() gi.GType {
-	ret := _I.GetGType(17, "ActionGroupPrivate")
-	return ret
-}
-
-// Struct ActionPrivate
-type ActionPrivate struct {
-	P unsafe.Pointer
-}
-
-func ActionPrivateGetType() gi.GType {
-	ret := _I.GetGType(18, "ActionPrivate")
-	return ret
-}
+// ignore private struct ActionPrivate, type of Action is object
 
 // Interface Actionable
 type Actionable struct {
@@ -2991,7 +2984,7 @@ type IActionable interface{ P_Actionable() unsafe.Pointer }
 
 func (v Actionable) P_Actionable() unsafe.Pointer { return v.P }
 func ActionableGetType() gi.GType {
-	ret := _I.GetGType(19, "Actionable")
+	ret := _I.GetGType(12, "Actionable")
 	return ret
 }
 
@@ -3095,7 +3088,7 @@ type IActivatable interface{ P_Activatable() unsafe.Pointer }
 
 func (v Activatable) P_Activatable() unsafe.Pointer { return v.P }
 func ActivatableGetType() gi.GType {
-	ret := _I.GetGType(20, "Activatable")
+	ret := _I.GetGType(13, "Activatable")
 	return ret
 }
 
@@ -3236,7 +3229,7 @@ type IAdjustment interface{ P_Adjustment() unsafe.Pointer }
 
 func (v Adjustment) P_Adjustment() unsafe.Pointer { return v.P }
 func AdjustmentGetType() gi.GType {
-	ret := _I.GetGType(21, "Adjustment")
+	ret := _I.GetGType(14, "Adjustment")
 	return ret
 }
 
@@ -3579,15 +3572,7 @@ func (v Adjustment) ValueChanged() {
 
 // ignore GType struct AdjustmentClass
 
-// Struct AdjustmentPrivate
-type AdjustmentPrivate struct {
-	P unsafe.Pointer
-}
-
-func AdjustmentPrivateGetType() gi.GType {
-	ret := _I.GetGType(22, "AdjustmentPrivate")
-	return ret
-}
+// ignore private struct AdjustmentPrivate, type of Adjustment is object
 
 // Enum Align
 type AlignEnum int
@@ -3601,7 +3586,7 @@ const (
 )
 
 func AlignGetType() gi.GType {
-	ret := _I.GetGType(23, "Align")
+	ret := _I.GetGType(15, "Align")
 	return ret
 }
 
@@ -3616,7 +3601,7 @@ type IAlignment interface{ P_Alignment() unsafe.Pointer }
 
 func (v Alignment) P_Alignment() unsafe.Pointer { return v.P }
 func AlignmentGetType() gi.GType {
-	ret := _I.GetGType(24, "Alignment")
+	ret := _I.GetGType(16, "Alignment")
 	return ret
 }
 
@@ -3740,15 +3725,7 @@ func (v Alignment) SetPadding(padding_top uint32, padding_bottom uint32, padding
 
 // ignore GType struct AlignmentClass
 
-// Struct AlignmentPrivate
-type AlignmentPrivate struct {
-	P unsafe.Pointer
-}
-
-func AlignmentPrivateGetType() gi.GType {
-	ret := _I.GetGType(25, "AlignmentPrivate")
-	return ret
-}
+// ignore private struct AlignmentPrivate, type of Alignment is object
 
 // Interface AppChooser
 type AppChooser struct {
@@ -3760,7 +3737,7 @@ type IAppChooser interface{ P_AppChooser() unsafe.Pointer }
 
 func (v AppChooser) P_AppChooser() unsafe.Pointer { return v.P }
 func AppChooserGetType() gi.GType {
-	ret := _I.GetGType(26, "AppChooser")
+	ret := _I.GetGType(17, "AppChooser")
 	return ret
 }
 
@@ -3826,7 +3803,7 @@ type IAppChooserButton interface{ P_AppChooserButton() unsafe.Pointer }
 func (v AppChooserButton) P_AppChooserButton() unsafe.Pointer { return v.P }
 func (v AppChooserButton) P_AppChooser() unsafe.Pointer       { return v.P }
 func AppChooserButtonGetType() gi.GType {
-	ret := _I.GetGType(27, "AppChooserButton")
+	ret := _I.GetGType(18, "AppChooserButton")
 	return ret
 }
 
@@ -4019,15 +3996,7 @@ func (v AppChooserButton) SetShowDialogItem(setting bool) {
 
 // ignore GType struct AppChooserButtonClass
 
-// Struct AppChooserButtonPrivate
-type AppChooserButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func AppChooserButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(28, "AppChooserButtonPrivate")
-	return ret
-}
+// ignore private struct AppChooserButtonPrivate, type of AppChooserButton is object
 
 // Object AppChooserDialog
 type AppChooserDialog struct {
@@ -4042,7 +4011,7 @@ type IAppChooserDialog interface{ P_AppChooserDialog() unsafe.Pointer }
 func (v AppChooserDialog) P_AppChooserDialog() unsafe.Pointer { return v.P }
 func (v AppChooserDialog) P_AppChooser() unsafe.Pointer       { return v.P }
 func AppChooserDialogGetType() gi.GType {
-	ret := _I.GetGType(29, "AppChooserDialog")
+	ret := _I.GetGType(19, "AppChooserDialog")
 	return ret
 }
 
@@ -4168,15 +4137,7 @@ func (v AppChooserDialog) SetHeading(heading string) {
 
 // ignore GType struct AppChooserDialogClass
 
-// Struct AppChooserDialogPrivate
-type AppChooserDialogPrivate struct {
-	P unsafe.Pointer
-}
-
-func AppChooserDialogPrivateGetType() gi.GType {
-	ret := _I.GetGType(30, "AppChooserDialogPrivate")
-	return ret
-}
+// ignore private struct AppChooserDialogPrivate, type of AppChooserDialog is object
 
 // Object AppChooserWidget
 type AppChooserWidget struct {
@@ -4191,7 +4152,7 @@ type IAppChooserWidget interface{ P_AppChooserWidget() unsafe.Pointer }
 func (v AppChooserWidget) P_AppChooserWidget() unsafe.Pointer { return v.P }
 func (v AppChooserWidget) P_AppChooser() unsafe.Pointer       { return v.P }
 func AppChooserWidgetGetType() gi.GType {
-	ret := _I.GetGType(31, "AppChooserWidget")
+	ret := _I.GetGType(20, "AppChooserWidget")
 	return ret
 }
 
@@ -4425,15 +4386,7 @@ func (v AppChooserWidget) SetShowRecommended(setting bool) {
 
 // ignore GType struct AppChooserWidgetClass
 
-// Struct AppChooserWidgetPrivate
-type AppChooserWidgetPrivate struct {
-	P unsafe.Pointer
-}
-
-func AppChooserWidgetPrivateGetType() gi.GType {
-	ret := _I.GetGType(32, "AppChooserWidgetPrivate")
-	return ret
-}
+// ignore private struct AppChooserWidgetPrivate, type of AppChooserWidget is object
 
 // Object Application
 type Application struct {
@@ -4446,7 +4399,7 @@ type IApplication interface{ P_Application() unsafe.Pointer }
 
 func (v Application) P_Application() unsafe.Pointer { return v.P }
 func ApplicationGetType() gi.GType {
-	ret := _I.GetGType(33, "Application")
+	ret := _I.GetGType(21, "Application")
 	return ret
 }
 
@@ -4911,19 +4864,11 @@ const (
 )
 
 func ApplicationInhibitFlagsGetType() gi.GType {
-	ret := _I.GetGType(34, "ApplicationInhibitFlags")
+	ret := _I.GetGType(22, "ApplicationInhibitFlags")
 	return ret
 }
 
-// Struct ApplicationPrivate
-type ApplicationPrivate struct {
-	P unsafe.Pointer
-}
-
-func ApplicationPrivateGetType() gi.GType {
-	ret := _I.GetGType(35, "ApplicationPrivate")
-	return ret
-}
+// ignore private struct ApplicationPrivate, type of Application is object
 
 // Object ApplicationWindow
 type ApplicationWindow struct {
@@ -4940,7 +4885,7 @@ func (v ApplicationWindow) P_ApplicationWindow() unsafe.Pointer { return v.P }
 func (v ApplicationWindow) P_ActionGroup() unsafe.Pointer       { return v.P }
 func (v ApplicationWindow) P_ActionMap() unsafe.Pointer         { return v.P }
 func ApplicationWindowGetType() gi.GType {
-	ret := _I.GetGType(36, "ApplicationWindow")
+	ret := _I.GetGType(23, "ApplicationWindow")
 	return ret
 }
 
@@ -5060,15 +5005,7 @@ func (v ApplicationWindow) SetShowMenubar(show_menubar bool) {
 
 // ignore GType struct ApplicationWindowClass
 
-// Struct ApplicationWindowPrivate
-type ApplicationWindowPrivate struct {
-	P unsafe.Pointer
-}
-
-func ApplicationWindowPrivateGetType() gi.GType {
-	ret := _I.GetGType(37, "ApplicationWindowPrivate")
-	return ret
-}
+// ignore private struct ApplicationWindowPrivate, type of ApplicationWindow is object
 
 // Object Arrow
 type Arrow struct {
@@ -5081,7 +5018,7 @@ type IArrow interface{ P_Arrow() unsafe.Pointer }
 
 func (v Arrow) P_Arrow() unsafe.Pointer { return v.P }
 func ArrowGetType() gi.GType {
-	ret := _I.GetGType(38, "Arrow")
+	ret := _I.GetGType(24, "Arrow")
 	return ret
 }
 
@@ -5144,21 +5081,13 @@ type IArrowAccessible interface{ P_ArrowAccessible() unsafe.Pointer }
 func (v ArrowAccessible) P_ArrowAccessible() unsafe.Pointer { return v.P }
 func (v ArrowAccessible) P_Image() unsafe.Pointer           { return v.P }
 func ArrowAccessibleGetType() gi.GType {
-	ret := _I.GetGType(39, "ArrowAccessible")
+	ret := _I.GetGType(25, "ArrowAccessible")
 	return ret
 }
 
 // ignore GType struct ArrowAccessibleClass
 
-// Struct ArrowAccessiblePrivate
-type ArrowAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ArrowAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(40, "ArrowAccessiblePrivate")
-	return ret
-}
+// ignore private struct ArrowAccessiblePrivate, type of ArrowAccessible is object
 
 // ignore GType struct ArrowClass
 
@@ -5172,19 +5101,11 @@ const (
 )
 
 func ArrowPlacementGetType() gi.GType {
-	ret := _I.GetGType(41, "ArrowPlacement")
+	ret := _I.GetGType(26, "ArrowPlacement")
 	return ret
 }
 
-// Struct ArrowPrivate
-type ArrowPrivate struct {
-	P unsafe.Pointer
-}
-
-func ArrowPrivateGetType() gi.GType {
-	ret := _I.GetGType(42, "ArrowPrivate")
-	return ret
-}
+// ignore private struct ArrowPrivate, type of Arrow is object
 
 // Enum ArrowType
 type ArrowTypeEnum int
@@ -5198,7 +5119,7 @@ const (
 )
 
 func ArrowTypeGetType() gi.GType {
-	ret := _I.GetGType(43, "ArrowType")
+	ret := _I.GetGType(27, "ArrowType")
 	return ret
 }
 
@@ -5213,7 +5134,7 @@ type IAspectFrame interface{ P_AspectFrame() unsafe.Pointer }
 
 func (v AspectFrame) P_AspectFrame() unsafe.Pointer { return v.P }
 func AspectFrameGetType() gi.GType {
-	ret := _I.GetGType(44, "AspectFrame")
+	ret := _I.GetGType(28, "AspectFrame")
 	return ret
 }
 
@@ -5278,15 +5199,7 @@ func (v AspectFrame) Set(xalign float32, yalign float32, ratio float32, obey_chi
 
 // ignore GType struct AspectFrameClass
 
-// Struct AspectFramePrivate
-type AspectFramePrivate struct {
-	P unsafe.Pointer
-}
-
-func AspectFramePrivateGetType() gi.GType {
-	ret := _I.GetGType(45, "AspectFramePrivate")
-	return ret
-}
+// ignore private struct AspectFramePrivate, type of AspectFrame is object
 
 // Object Assistant
 type Assistant struct {
@@ -5299,7 +5212,7 @@ type IAssistant interface{ P_Assistant() unsafe.Pointer }
 
 func (v Assistant) P_Assistant() unsafe.Pointer { return v.P }
 func AssistantGetType() gi.GType {
-	ret := _I.GetGType(46, "Assistant")
+	ret := _I.GetGType(29, "Assistant")
 	return ret
 }
 
@@ -5941,19 +5854,11 @@ const (
 )
 
 func AssistantPageTypeGetType() gi.GType {
-	ret := _I.GetGType(47, "AssistantPageType")
+	ret := _I.GetGType(30, "AssistantPageType")
 	return ret
 }
 
-// Struct AssistantPrivate
-type AssistantPrivate struct {
-	P unsafe.Pointer
-}
-
-func AssistantPrivateGetType() gi.GType {
-	ret := _I.GetGType(48, "AssistantPrivate")
-	return ret
-}
+// ignore private struct AssistantPrivate, type of Assistant is object
 
 // Flags AttachOptions
 type AttachOptionsFlags int
@@ -5965,7 +5870,7 @@ const (
 )
 
 func AttachOptionsGetType() gi.GType {
-	ret := _I.GetGType(49, "AttachOptions")
+	ret := _I.GetGType(31, "AttachOptions")
 	return ret
 }
 
@@ -5979,7 +5884,7 @@ const (
 )
 
 func BaselinePositionGetType() gi.GType {
-	ret := _I.GetGType(50, "BaselinePosition")
+	ret := _I.GetGType(32, "BaselinePosition")
 	return ret
 }
 
@@ -5994,7 +5899,7 @@ type IBin interface{ P_Bin() unsafe.Pointer }
 
 func (v Bin) P_Bin() unsafe.Pointer { return v.P }
 func BinGetType() gi.GType {
-	ret := _I.GetGType(51, "Bin")
+	ret := _I.GetGType(33, "Bin")
 	return ret
 }
 
@@ -6018,15 +5923,7 @@ func (v Bin) GetChild() (result Widget) {
 
 // ignore GType struct BinClass
 
-// Struct BinPrivate
-type BinPrivate struct {
-	P unsafe.Pointer
-}
-
-func BinPrivateGetType() gi.GType {
-	ret := _I.GetGType(52, "BinPrivate")
-	return ret
-}
+// ignore private struct BinPrivate, type of Bin is object
 
 // Struct BindingArg
 type BindingArg struct {
@@ -6036,8 +5933,16 @@ type BindingArg struct {
 const SizeOfStructBindingArg = 8
 
 func BindingArgGetType() gi.GType {
-	ret := _I.GetGType(53, "BindingArg")
+	ret := _I.GetGType(34, "BindingArg")
 	return ret
+}
+
+func (v BindingArg) p() *C.GtkBindingArg {
+	return (*C.GtkBindingArg)(v.P)
+}
+func (v BindingArg) ArgType() (result gi.GType) {
+	result = gi.GType(v.p().arg_type)
+	return
 }
 
 // Struct BindingEntry
@@ -6048,7 +5953,7 @@ type BindingEntry struct {
 const SizeOfStructBindingEntry = 56
 
 func BindingEntryGetType() gi.GType {
-	ret := _I.GetGType(54, "BindingEntry")
+	ret := _I.GetGType(35, "BindingEntry")
 	return ret
 }
 
@@ -6148,6 +6053,36 @@ func BindingEntrySkip1(binding_set BindingSet, keyval uint32, modifiers gdk.Modi
 	iv.Call(args, nil, nil)
 }
 
+func (v BindingEntry) p() *C.GtkBindingEntry {
+	return (*C.GtkBindingEntry)(v.P)
+}
+func (v BindingEntry) Keyval() (result uint32) {
+	result = uint32(v.p().keyval)
+	return
+}
+func (v BindingEntry) Modifiers() (result int /*TODO*/) {
+	return
+}
+func (v BindingEntry) BindingSet() (result int /*TODO*/) {
+	return
+}
+
+// TODO: ignore struct BindingEntry field destroyed, bits(=1) > 0
+
+// TODO: ignore struct BindingEntry field in_emission, bits(=1) > 0
+
+// TODO: ignore struct BindingEntry field marks_unbound, bits(=1) > 0
+
+func (v BindingEntry) SetNext() (result int /*TODO*/) {
+	return
+}
+func (v BindingEntry) HashNext() (result int /*TODO*/) {
+	return
+}
+func (v BindingEntry) Signals() (result int /*TODO*/) {
+	return
+}
+
 // Struct BindingSet
 type BindingSet struct {
 	P unsafe.Pointer
@@ -6156,7 +6091,7 @@ type BindingSet struct {
 const SizeOfStructBindingSet = 64
 
 func BindingSetGetType() gi.GType {
-	ret := _I.GetGType(55, "BindingSet")
+	ret := _I.GetGType(36, "BindingSet")
 	return ret
 }
 
@@ -6239,6 +6174,34 @@ func BindingSetFind1(set_name string) (result BindingSet) {
 	return
 }
 
+func (v BindingSet) p() *C.GtkBindingSet {
+	return (*C.GtkBindingSet)(v.P)
+}
+func (v BindingSet) SetName() (result int /*TODO*/) {
+	return
+}
+func (v BindingSet) Priority() (result int32) {
+	result = int32(v.p().priority)
+	return
+}
+func (v BindingSet) WidgetPathPspecs() (result int /*TODO*/) {
+	return
+}
+func (v BindingSet) WidgetClassPspecs() (result int /*TODO*/) {
+	return
+}
+func (v BindingSet) ClassBranchPspecs() (result int /*TODO*/) {
+	return
+}
+func (v BindingSet) Entries() (result int /*TODO*/) {
+	return
+}
+func (v BindingSet) Current() (result int /*TODO*/) {
+	return
+}
+
+// TODO: ignore struct BindingSet field parsed, bits(=1) > 0
+
 // Struct BindingSignal
 type BindingSignal struct {
 	P unsafe.Pointer
@@ -6247,8 +6210,25 @@ type BindingSignal struct {
 const SizeOfStructBindingSignal = 32
 
 func BindingSignalGetType() gi.GType {
-	ret := _I.GetGType(56, "BindingSignal")
+	ret := _I.GetGType(37, "BindingSignal")
 	return ret
+}
+
+func (v BindingSignal) p() *C.GtkBindingSignal {
+	return (*C.GtkBindingSignal)(v.P)
+}
+func (v BindingSignal) Next() (result int /*TODO*/) {
+	return
+}
+func (v BindingSignal) SignalName() (result int /*TODO*/) {
+	return
+}
+func (v BindingSignal) NArgs() (result uint32) {
+	result = uint32(v.p().n_args)
+	return
+}
+func (v BindingSignal) Args() (result int /*TODO*/) {
+	return
 }
 
 // Object BooleanCellAccessible
@@ -6262,21 +6242,13 @@ type IBooleanCellAccessible interface{ P_BooleanCellAccessible() unsafe.Pointer 
 
 func (v BooleanCellAccessible) P_BooleanCellAccessible() unsafe.Pointer { return v.P }
 func BooleanCellAccessibleGetType() gi.GType {
-	ret := _I.GetGType(57, "BooleanCellAccessible")
+	ret := _I.GetGType(38, "BooleanCellAccessible")
 	return ret
 }
 
 // ignore GType struct BooleanCellAccessibleClass
 
-// Struct BooleanCellAccessiblePrivate
-type BooleanCellAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func BooleanCellAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(58, "BooleanCellAccessiblePrivate")
-	return ret
-}
+// ignore private struct BooleanCellAccessiblePrivate, type of BooleanCellAccessible is object
 
 // Struct Border
 type Border struct {
@@ -6286,7 +6258,7 @@ type Border struct {
 const SizeOfStructBorder = 8
 
 func BorderGetType() gi.GType {
-	ret := _I.GetGType(59, "Border")
+	ret := _I.GetGType(39, "Border")
 	return ret
 }
 
@@ -6337,6 +6309,26 @@ func (v Border) Free() {
 	iv.Call(args, nil, nil)
 }
 
+func (v Border) p() *C.GtkBorder {
+	return (*C.GtkBorder)(v.P)
+}
+func (v Border) Left() (result int16) {
+	result = int16(v.p().left)
+	return
+}
+func (v Border) Right() (result int16) {
+	result = int16(v.p().right)
+	return
+}
+func (v Border) Top() (result int16) {
+	result = int16(v.p().top)
+	return
+}
+func (v Border) Bottom() (result int16) {
+	result = int16(v.p().bottom)
+	return
+}
+
 // Enum BorderStyle
 type BorderStyleEnum int
 
@@ -6354,7 +6346,7 @@ const (
 )
 
 func BorderStyleGetType() gi.GType {
-	ret := _I.GetGType(60, "BorderStyle")
+	ret := _I.GetGType(40, "BorderStyle")
 	return ret
 }
 
@@ -6371,7 +6363,7 @@ type IBox interface{ P_Box() unsafe.Pointer }
 func (v Box) P_Box() unsafe.Pointer        { return v.P }
 func (v Box) P_Orientable() unsafe.Pointer { return v.P }
 func BoxGetType() gi.GType {
-	ret := _I.GetGType(61, "Box")
+	ret := _I.GetGType(41, "Box")
 	return ret
 }
 
@@ -6691,15 +6683,7 @@ func (v Box) SetSpacing(spacing int32) {
 
 // ignore GType struct BoxClass
 
-// Struct BoxPrivate
-type BoxPrivate struct {
-	P unsafe.Pointer
-}
-
-func BoxPrivateGetType() gi.GType {
-	ret := _I.GetGType(62, "BoxPrivate")
-	return ret
-}
+// ignore private struct BoxPrivate, type of Box is object
 
 // Interface Buildable
 type Buildable struct {
@@ -6711,7 +6695,7 @@ type IBuildable interface{ P_Buildable() unsafe.Pointer }
 
 func (v Buildable) P_Buildable() unsafe.Pointer { return v.P }
 func BuildableGetType() gi.GType {
-	ret := _I.GetGType(63, "Buildable")
+	ret := _I.GetGType(42, "Buildable")
 	return ret
 }
 
@@ -7019,7 +7003,7 @@ type IBuilder interface{ P_Builder() unsafe.Pointer }
 
 func (v Builder) P_Builder() unsafe.Pointer { return v.P }
 func BuilderGetType() gi.GType {
-	ret := _I.GetGType(64, "Builder")
+	ret := _I.GetGType(43, "Builder")
 	return ret
 }
 
@@ -7652,19 +7636,11 @@ const (
 )
 
 func BuilderErrorGetType() gi.GType {
-	ret := _I.GetGType(65, "BuilderError")
+	ret := _I.GetGType(44, "BuilderError")
 	return ret
 }
 
-// Struct BuilderPrivate
-type BuilderPrivate struct {
-	P unsafe.Pointer
-}
-
-func BuilderPrivateGetType() gi.GType {
-	ret := _I.GetGType(66, "BuilderPrivate")
-	return ret
-}
+// ignore private struct BuilderPrivate, type of Builder is object
 
 // Object Button
 type Button struct {
@@ -7681,7 +7657,7 @@ func (v Button) P_Button() unsafe.Pointer      { return v.P }
 func (v Button) P_Actionable() unsafe.Pointer  { return v.P }
 func (v Button) P_Activatable() unsafe.Pointer { return v.P }
 func ButtonGetType() gi.GType {
-	ret := _I.GetGType(67, "Button")
+	ret := _I.GetGType(45, "Button")
 	return ret
 }
 
@@ -8232,21 +8208,13 @@ func (v ButtonAccessible) P_ButtonAccessible() unsafe.Pointer { return v.P }
 func (v ButtonAccessible) P_Action() unsafe.Pointer           { return v.P }
 func (v ButtonAccessible) P_Image() unsafe.Pointer            { return v.P }
 func ButtonAccessibleGetType() gi.GType {
-	ret := _I.GetGType(68, "ButtonAccessible")
+	ret := _I.GetGType(46, "ButtonAccessible")
 	return ret
 }
 
 // ignore GType struct ButtonAccessibleClass
 
-// Struct ButtonAccessiblePrivate
-type ButtonAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ButtonAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(69, "ButtonAccessiblePrivate")
-	return ret
-}
+// ignore private struct ButtonAccessiblePrivate, type of ButtonAccessible is object
 
 // Object ButtonBox
 type ButtonBox struct {
@@ -8259,7 +8227,7 @@ type IButtonBox interface{ P_ButtonBox() unsafe.Pointer }
 
 func (v ButtonBox) P_ButtonBox() unsafe.Pointer { return v.P }
 func ButtonBoxGetType() gi.GType {
-	ret := _I.GetGType(70, "ButtonBox")
+	ret := _I.GetGType(47, "ButtonBox")
 	return ret
 }
 
@@ -8415,15 +8383,7 @@ func (v ButtonBox) SetLayout(layout_style ButtonBoxStyleEnum) {
 
 // ignore GType struct ButtonBoxClass
 
-// Struct ButtonBoxPrivate
-type ButtonBoxPrivate struct {
-	P unsafe.Pointer
-}
-
-func ButtonBoxPrivateGetType() gi.GType {
-	ret := _I.GetGType(71, "ButtonBoxPrivate")
-	return ret
-}
+// ignore private struct ButtonBoxPrivate, type of ButtonBox is object
 
 // Enum ButtonBoxStyle
 type ButtonBoxStyleEnum int
@@ -8438,21 +8398,13 @@ const (
 )
 
 func ButtonBoxStyleGetType() gi.GType {
-	ret := _I.GetGType(72, "ButtonBoxStyle")
+	ret := _I.GetGType(48, "ButtonBoxStyle")
 	return ret
 }
 
 // ignore GType struct ButtonClass
 
-// Struct ButtonPrivate
-type ButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func ButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(73, "ButtonPrivate")
-	return ret
-}
+// ignore private struct ButtonPrivate, type of Button is object
 
 // Enum ButtonRole
 type ButtonRoleEnum int
@@ -8464,7 +8416,7 @@ const (
 )
 
 func ButtonRoleGetType() gi.GType {
-	ret := _I.GetGType(74, "ButtonRole")
+	ret := _I.GetGType(49, "ButtonRole")
 	return ret
 }
 
@@ -8481,7 +8433,7 @@ const (
 )
 
 func ButtonsTypeGetType() gi.GType {
-	ret := _I.GetGType(75, "ButtonsType")
+	ret := _I.GetGType(50, "ButtonsType")
 	return ret
 }
 
@@ -8496,7 +8448,7 @@ type ICalendar interface{ P_Calendar() unsafe.Pointer }
 
 func (v Calendar) P_Calendar() unsafe.Pointer { return v.P }
 func CalendarGetType() gi.GType {
-	ret := _I.GetGType(76, "Calendar")
+	ret := _I.GetGType(51, "Calendar")
 	return ret
 }
 
@@ -8805,19 +8757,11 @@ const (
 )
 
 func CalendarDisplayOptionsGetType() gi.GType {
-	ret := _I.GetGType(77, "CalendarDisplayOptions")
+	ret := _I.GetGType(52, "CalendarDisplayOptions")
 	return ret
 }
 
-// Struct CalendarPrivate
-type CalendarPrivate struct {
-	P unsafe.Pointer
-}
-
-func CalendarPrivateGetType() gi.GType {
-	ret := _I.GetGType(78, "CalendarPrivate")
-	return ret
-}
+// ignore private struct CalendarPrivate, type of Calendar is object
 
 type Callback func(widget Widget)
 
@@ -8846,7 +8790,7 @@ func (v CellAccessible) P_Action() unsafe.Pointer         { return v.P }
 func (v CellAccessible) P_Component() unsafe.Pointer      { return v.P }
 func (v CellAccessible) P_TableCell() unsafe.Pointer      { return v.P }
 func CellAccessibleGetType() gi.GType {
-	ret := _I.GetGType(79, "CellAccessible")
+	ret := _I.GetGType(53, "CellAccessible")
 	return ret
 }
 
@@ -8862,7 +8806,7 @@ type ICellAccessibleParent interface{ P_CellAccessibleParent() unsafe.Pointer }
 
 func (v CellAccessibleParent) P_CellAccessibleParent() unsafe.Pointer { return v.P }
 func CellAccessibleParentGetType() gi.GType {
-	ret := _I.GetGType(80, "CellAccessibleParent")
+	ret := _I.GetGType(54, "CellAccessibleParent")
 	return ret
 }
 
@@ -9164,15 +9108,7 @@ func (v *CellAccessibleParentIfc) UpdateRelationset(cell ICellAccessible, relati
 
 // ignore GType struct CellAccessibleParentIface
 
-// Struct CellAccessiblePrivate
-type CellAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func CellAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(81, "CellAccessiblePrivate")
-	return ret
-}
+// ignore private struct CellAccessiblePrivate, type of CellAccessible is object
 
 type CellAllocCallback func(renderer CellRenderer, cell_area gdk.Rectangle, cell_background gdk.Rectangle) (result bool)
 
@@ -9202,7 +9138,7 @@ func (v CellArea) P_CellArea() unsafe.Pointer   { return v.P }
 func (v CellArea) P_Buildable() unsafe.Pointer  { return v.P }
 func (v CellArea) P_CellLayout() unsafe.Pointer { return v.P }
 func CellAreaGetType() gi.GType {
-	ret := _I.GetGType(82, "CellArea")
+	ret := _I.GetGType(55, "CellArea")
 	return ret
 }
 
@@ -10346,7 +10282,7 @@ type ICellAreaBox interface{ P_CellAreaBox() unsafe.Pointer }
 func (v CellAreaBox) P_CellAreaBox() unsafe.Pointer { return v.P }
 func (v CellAreaBox) P_Orientable() unsafe.Pointer  { return v.P }
 func CellAreaBoxGetType() gi.GType {
-	ret := _I.GetGType(83, "CellAreaBox")
+	ret := _I.GetGType(56, "CellAreaBox")
 	return ret
 }
 
@@ -10460,15 +10396,7 @@ func (v CellAreaBox) SetSpacing(spacing int32) {
 
 // ignore GType struct CellAreaBoxClass
 
-// Struct CellAreaBoxPrivate
-type CellAreaBoxPrivate struct {
-	P unsafe.Pointer
-}
-
-func CellAreaBoxPrivateGetType() gi.GType {
-	ret := _I.GetGType(84, "CellAreaBoxPrivate")
-	return ret
-}
+// ignore private struct CellAreaBoxPrivate, type of CellAreaBox is object
 
 // Struct CellAreaClass
 type CellAreaClass struct {
@@ -10478,7 +10406,7 @@ type CellAreaClass struct {
 const SizeOfStructCellAreaClass = 352
 
 func CellAreaClassGetType() gi.GType {
-	ret := _I.GetGType(85, "CellAreaClass")
+	ret := _I.GetGType(57, "CellAreaClass")
 	return ret
 }
 
@@ -10553,6 +10481,102 @@ func (v CellAreaClass) ListCellProperties() (result gi.PointerArray) {
 	return
 }
 
+func (v CellAreaClass) p() *C.GtkCellAreaClass {
+	return (*C.GtkCellAreaClass)(v.P)
+}
+func (v CellAreaClass) ParentClass() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) Add() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) Remove() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) Foreach() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) ForeachAlloc() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) Event() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) Render() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) ApplyAttributes() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) CreateContext() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) CopyContext() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) GetRequestMode() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) GetPreferredWidth() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) GetPreferredHeightForWidth() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) GetPreferredHeight() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) GetPreferredWidthForHeight() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) SetCellProperty() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) GetCellProperty() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) Focus() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) IsActivatable() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) Activate() (result int /*TODO*/) {
+	return
+}
+func (v CellAreaClass) _GtkReserved1() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved1)
+	return
+}
+func (v CellAreaClass) _GtkReserved2() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved2)
+	return
+}
+func (v CellAreaClass) _GtkReserved3() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved3)
+	return
+}
+func (v CellAreaClass) _GtkReserved4() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved4)
+	return
+}
+func (v CellAreaClass) _GtkReserved5() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved5)
+	return
+}
+func (v CellAreaClass) _GtkReserved6() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved6)
+	return
+}
+func (v CellAreaClass) _GtkReserved7() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved7)
+	return
+}
+func (v CellAreaClass) _GtkReserved8() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved8)
+	return
+}
+
 // Object CellAreaContext
 type CellAreaContext struct {
 	g.Object
@@ -10564,7 +10588,7 @@ type ICellAreaContext interface{ P_CellAreaContext() unsafe.Pointer }
 
 func (v CellAreaContext) P_CellAreaContext() unsafe.Pointer { return v.P }
 func CellAreaContextGetType() gi.GType {
-	ret := _I.GetGType(86, "CellAreaContext")
+	ret := _I.GetGType(58, "CellAreaContext")
 	return ret
 }
 
@@ -10779,25 +10803,9 @@ func (v CellAreaContext) Reset() {
 
 // ignore GType struct CellAreaContextClass
 
-// Struct CellAreaContextPrivate
-type CellAreaContextPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct CellAreaContextPrivate, type of CellAreaContext is object
 
-func CellAreaContextPrivateGetType() gi.GType {
-	ret := _I.GetGType(87, "CellAreaContextPrivate")
-	return ret
-}
-
-// Struct CellAreaPrivate
-type CellAreaPrivate struct {
-	P unsafe.Pointer
-}
-
-func CellAreaPrivateGetType() gi.GType {
-	ret := _I.GetGType(88, "CellAreaPrivate")
-	return ret
-}
+// ignore private struct CellAreaPrivate, type of CellArea is object
 
 type CellCallback func(renderer CellRenderer) (result bool)
 
@@ -10820,7 +10828,7 @@ type ICellEditable interface{ P_CellEditable() unsafe.Pointer }
 
 func (v CellEditable) P_CellEditable() unsafe.Pointer { return v.P }
 func CellEditableGetType() gi.GType {
-	ret := _I.GetGType(89, "CellEditable")
+	ret := _I.GetGType(59, "CellEditable")
 	return ret
 }
 
@@ -10878,7 +10886,7 @@ type ICellLayout interface{ P_CellLayout() unsafe.Pointer }
 
 func (v CellLayout) P_CellLayout() unsafe.Pointer { return v.P }
 func CellLayoutGetType() gi.GType {
-	ret := _I.GetGType(90, "CellLayout")
+	ret := _I.GetGType(60, "CellLayout")
 	return ret
 }
 
@@ -11112,7 +11120,7 @@ type ICellRenderer interface{ P_CellRenderer() unsafe.Pointer }
 
 func (v CellRenderer) P_CellRenderer() unsafe.Pointer { return v.P }
 func CellRendererGetType() gi.GType {
-	ret := _I.GetGType(91, "CellRenderer")
+	ret := _I.GetGType(61, "CellRenderer")
 	return ret
 }
 
@@ -11741,7 +11749,7 @@ type ICellRendererAccel interface{ P_CellRendererAccel() unsafe.Pointer }
 
 func (v CellRendererAccel) P_CellRendererAccel() unsafe.Pointer { return v.P }
 func CellRendererAccelGetType() gi.GType {
-	ret := _I.GetGType(92, "CellRendererAccel")
+	ret := _I.GetGType(62, "CellRendererAccel")
 	return ret
 }
 
@@ -11772,19 +11780,11 @@ const (
 )
 
 func CellRendererAccelModeGetType() gi.GType {
-	ret := _I.GetGType(93, "CellRendererAccelMode")
+	ret := _I.GetGType(63, "CellRendererAccelMode")
 	return ret
 }
 
-// Struct CellRendererAccelPrivate
-type CellRendererAccelPrivate struct {
-	P unsafe.Pointer
-}
-
-func CellRendererAccelPrivateGetType() gi.GType {
-	ret := _I.GetGType(94, "CellRendererAccelPrivate")
-	return ret
-}
+// ignore private struct CellRendererAccelPrivate, type of CellRendererAccel is object
 
 // Struct CellRendererClass
 type CellRendererClass struct {
@@ -11794,7 +11794,7 @@ type CellRendererClass struct {
 const SizeOfStructCellRendererClass = 264
 
 func CellRendererClassGetType() gi.GType {
-	ret := _I.GetGType(95, "CellRendererClass")
+	ret := _I.GetGType(64, "CellRendererClass")
 	return ret
 }
 
@@ -11814,15 +11814,65 @@ func (v CellRendererClass) SetAccessibleType(type1 gi.GType) {
 	iv.Call(args, nil, nil)
 }
 
-// Struct CellRendererClassPrivate
-type CellRendererClassPrivate struct {
-	P unsafe.Pointer
+func (v CellRendererClass) p() *C.GtkCellRendererClass {
+	return (*C.GtkCellRendererClass)(v.P)
+}
+func (v CellRendererClass) ParentClass() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) GetRequestMode() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) GetPreferredWidth() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) GetPreferredHeightForWidth() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) GetPreferredHeight() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) GetPreferredWidthForHeight() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) GetAlignedArea() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) GetSize() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) Render() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) Activate() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) StartEditing() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) EditingCanceled() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) EditingStarted() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) Priv() (result int /*TODO*/) {
+	return
+}
+func (v CellRendererClass) _GtkReserved2() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved2)
+	return
+}
+func (v CellRendererClass) _GtkReserved3() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved3)
+	return
+}
+func (v CellRendererClass) _GtkReserved4() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved4)
+	return
 }
 
-func CellRendererClassPrivateGetType() gi.GType {
-	ret := _I.GetGType(96, "CellRendererClassPrivate")
-	return ret
-}
+// ignore private struct CellRendererClassPrivate, type of CellRendererClass is struct
 
 // Object CellRendererCombo
 type CellRendererCombo struct {
@@ -11835,7 +11885,7 @@ type ICellRendererCombo interface{ P_CellRendererCombo() unsafe.Pointer }
 
 func (v CellRendererCombo) P_CellRendererCombo() unsafe.Pointer { return v.P }
 func CellRendererComboGetType() gi.GType {
-	ret := _I.GetGType(97, "CellRendererCombo")
+	ret := _I.GetGType(65, "CellRendererCombo")
 	return ret
 }
 
@@ -11857,15 +11907,7 @@ func NewCellRendererCombo() (result CellRendererCombo) {
 
 // ignore GType struct CellRendererComboClass
 
-// Struct CellRendererComboPrivate
-type CellRendererComboPrivate struct {
-	P unsafe.Pointer
-}
-
-func CellRendererComboPrivateGetType() gi.GType {
-	ret := _I.GetGType(98, "CellRendererComboPrivate")
-	return ret
-}
+// ignore private struct CellRendererComboPrivate, type of CellRendererCombo is object
 
 // Enum CellRendererMode
 type CellRendererModeEnum int
@@ -11877,7 +11919,7 @@ const (
 )
 
 func CellRendererModeGetType() gi.GType {
-	ret := _I.GetGType(99, "CellRendererMode")
+	ret := _I.GetGType(66, "CellRendererMode")
 	return ret
 }
 
@@ -11892,7 +11934,7 @@ type ICellRendererPixbuf interface{ P_CellRendererPixbuf() unsafe.Pointer }
 
 func (v CellRendererPixbuf) P_CellRendererPixbuf() unsafe.Pointer { return v.P }
 func CellRendererPixbufGetType() gi.GType {
-	ret := _I.GetGType(100, "CellRendererPixbuf")
+	ret := _I.GetGType(67, "CellRendererPixbuf")
 	return ret
 }
 
@@ -11914,25 +11956,9 @@ func NewCellRendererPixbuf() (result CellRendererPixbuf) {
 
 // ignore GType struct CellRendererPixbufClass
 
-// Struct CellRendererPixbufPrivate
-type CellRendererPixbufPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct CellRendererPixbufPrivate, type of CellRendererPixbuf is object
 
-func CellRendererPixbufPrivateGetType() gi.GType {
-	ret := _I.GetGType(101, "CellRendererPixbufPrivate")
-	return ret
-}
-
-// Struct CellRendererPrivate
-type CellRendererPrivate struct {
-	P unsafe.Pointer
-}
-
-func CellRendererPrivateGetType() gi.GType {
-	ret := _I.GetGType(102, "CellRendererPrivate")
-	return ret
-}
+// ignore private struct CellRendererPrivate, type of CellRenderer is object
 
 // Object CellRendererProgress
 type CellRendererProgress struct {
@@ -11947,7 +11973,7 @@ type ICellRendererProgress interface{ P_CellRendererProgress() unsafe.Pointer }
 func (v CellRendererProgress) P_CellRendererProgress() unsafe.Pointer { return v.P }
 func (v CellRendererProgress) P_Orientable() unsafe.Pointer           { return v.P }
 func CellRendererProgressGetType() gi.GType {
-	ret := _I.GetGType(103, "CellRendererProgress")
+	ret := _I.GetGType(68, "CellRendererProgress")
 	return ret
 }
 
@@ -11969,15 +11995,7 @@ func NewCellRendererProgress() (result CellRendererProgress) {
 
 // ignore GType struct CellRendererProgressClass
 
-// Struct CellRendererProgressPrivate
-type CellRendererProgressPrivate struct {
-	P unsafe.Pointer
-}
-
-func CellRendererProgressPrivateGetType() gi.GType {
-	ret := _I.GetGType(104, "CellRendererProgressPrivate")
-	return ret
-}
+// ignore private struct CellRendererProgressPrivate, type of CellRendererProgress is object
 
 // Object CellRendererSpin
 type CellRendererSpin struct {
@@ -11990,7 +12008,7 @@ type ICellRendererSpin interface{ P_CellRendererSpin() unsafe.Pointer }
 
 func (v CellRendererSpin) P_CellRendererSpin() unsafe.Pointer { return v.P }
 func CellRendererSpinGetType() gi.GType {
-	ret := _I.GetGType(105, "CellRendererSpin")
+	ret := _I.GetGType(69, "CellRendererSpin")
 	return ret
 }
 
@@ -12012,15 +12030,7 @@ func NewCellRendererSpin() (result CellRendererSpin) {
 
 // ignore GType struct CellRendererSpinClass
 
-// Struct CellRendererSpinPrivate
-type CellRendererSpinPrivate struct {
-	P unsafe.Pointer
-}
-
-func CellRendererSpinPrivateGetType() gi.GType {
-	ret := _I.GetGType(106, "CellRendererSpinPrivate")
-	return ret
-}
+// ignore private struct CellRendererSpinPrivate, type of CellRendererSpin is object
 
 // Object CellRendererSpinner
 type CellRendererSpinner struct {
@@ -12033,7 +12043,7 @@ type ICellRendererSpinner interface{ P_CellRendererSpinner() unsafe.Pointer }
 
 func (v CellRendererSpinner) P_CellRendererSpinner() unsafe.Pointer { return v.P }
 func CellRendererSpinnerGetType() gi.GType {
-	ret := _I.GetGType(107, "CellRendererSpinner")
+	ret := _I.GetGType(70, "CellRendererSpinner")
 	return ret
 }
 
@@ -12055,15 +12065,7 @@ func NewCellRendererSpinner() (result CellRendererSpinner) {
 
 // ignore GType struct CellRendererSpinnerClass
 
-// Struct CellRendererSpinnerPrivate
-type CellRendererSpinnerPrivate struct {
-	P unsafe.Pointer
-}
-
-func CellRendererSpinnerPrivateGetType() gi.GType {
-	ret := _I.GetGType(108, "CellRendererSpinnerPrivate")
-	return ret
-}
+// ignore private struct CellRendererSpinnerPrivate, type of CellRendererSpinner is object
 
 // Flags CellRendererState
 type CellRendererStateFlags int
@@ -12079,7 +12081,7 @@ const (
 )
 
 func CellRendererStateGetType() gi.GType {
-	ret := _I.GetGType(109, "CellRendererState")
+	ret := _I.GetGType(71, "CellRendererState")
 	return ret
 }
 
@@ -12094,7 +12096,7 @@ type ICellRendererText interface{ P_CellRendererText() unsafe.Pointer }
 
 func (v CellRendererText) P_CellRendererText() unsafe.Pointer { return v.P }
 func CellRendererTextGetType() gi.GType {
-	ret := _I.GetGType(110, "CellRendererText")
+	ret := _I.GetGType(72, "CellRendererText")
 	return ret
 }
 
@@ -12132,15 +12134,7 @@ func (v CellRendererText) SetFixedHeightFromFont(number_of_rows int32) {
 
 // ignore GType struct CellRendererTextClass
 
-// Struct CellRendererTextPrivate
-type CellRendererTextPrivate struct {
-	P unsafe.Pointer
-}
-
-func CellRendererTextPrivateGetType() gi.GType {
-	ret := _I.GetGType(111, "CellRendererTextPrivate")
-	return ret
-}
+// ignore private struct CellRendererTextPrivate, type of CellRendererText is object
 
 // Object CellRendererToggle
 type CellRendererToggle struct {
@@ -12153,7 +12147,7 @@ type ICellRendererToggle interface{ P_CellRendererToggle() unsafe.Pointer }
 
 func (v CellRendererToggle) P_CellRendererToggle() unsafe.Pointer { return v.P }
 func CellRendererToggleGetType() gi.GType {
-	ret := _I.GetGType(112, "CellRendererToggle")
+	ret := _I.GetGType(73, "CellRendererToggle")
 	return ret
 }
 
@@ -12277,15 +12271,7 @@ func (v CellRendererToggle) SetRadio(radio bool) {
 
 // ignore GType struct CellRendererToggleClass
 
-// Struct CellRendererTogglePrivate
-type CellRendererTogglePrivate struct {
-	P unsafe.Pointer
-}
-
-func CellRendererTogglePrivateGetType() gi.GType {
-	ret := _I.GetGType(113, "CellRendererTogglePrivate")
-	return ret
-}
+// ignore private struct CellRendererTogglePrivate, type of CellRendererToggle is object
 
 // Object CellView
 type CellView struct {
@@ -12302,7 +12288,7 @@ func (v CellView) P_CellView() unsafe.Pointer   { return v.P }
 func (v CellView) P_CellLayout() unsafe.Pointer { return v.P }
 func (v CellView) P_Orientable() unsafe.Pointer { return v.P }
 func CellViewGetType() gi.GType {
-	ret := _I.GetGType(114, "CellView")
+	ret := _I.GetGType(74, "CellView")
 	return ret
 }
 
@@ -12623,15 +12609,7 @@ func (v CellView) SetModel(model ITreeModel) {
 
 // ignore GType struct CellViewClass
 
-// Struct CellViewPrivate
-type CellViewPrivate struct {
-	P unsafe.Pointer
-}
-
-func CellViewPrivateGetType() gi.GType {
-	ret := _I.GetGType(115, "CellViewPrivate")
-	return ret
-}
+// ignore private struct CellViewPrivate, type of CellView is object
 
 // Object CheckButton
 type CheckButton struct {
@@ -12644,7 +12622,7 @@ type ICheckButton interface{ P_CheckButton() unsafe.Pointer }
 
 func (v CheckButton) P_CheckButton() unsafe.Pointer { return v.P }
 func CheckButtonGetType() gi.GType {
-	ret := _I.GetGType(116, "CheckButton")
+	ret := _I.GetGType(75, "CheckButton")
 	return ret
 }
 
@@ -12721,7 +12699,7 @@ type ICheckMenuItem interface{ P_CheckMenuItem() unsafe.Pointer }
 
 func (v CheckMenuItem) P_CheckMenuItem() unsafe.Pointer { return v.P }
 func CheckMenuItemGetType() gi.GType {
-	ret := _I.GetGType(117, "CheckMenuItem")
+	ret := _I.GetGType(76, "CheckMenuItem")
 	return ret
 }
 
@@ -12911,33 +12889,17 @@ type ICheckMenuItemAccessible interface{ P_CheckMenuItemAccessible() unsafe.Poin
 
 func (v CheckMenuItemAccessible) P_CheckMenuItemAccessible() unsafe.Pointer { return v.P }
 func CheckMenuItemAccessibleGetType() gi.GType {
-	ret := _I.GetGType(118, "CheckMenuItemAccessible")
+	ret := _I.GetGType(77, "CheckMenuItemAccessible")
 	return ret
 }
 
 // ignore GType struct CheckMenuItemAccessibleClass
 
-// Struct CheckMenuItemAccessiblePrivate
-type CheckMenuItemAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func CheckMenuItemAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(119, "CheckMenuItemAccessiblePrivate")
-	return ret
-}
+// ignore private struct CheckMenuItemAccessiblePrivate, type of CheckMenuItemAccessible is object
 
 // ignore GType struct CheckMenuItemClass
 
-// Struct CheckMenuItemPrivate
-type CheckMenuItemPrivate struct {
-	P unsafe.Pointer
-}
-
-func CheckMenuItemPrivateGetType() gi.GType {
-	ret := _I.GetGType(120, "CheckMenuItemPrivate")
-	return ret
-}
+// ignore private struct CheckMenuItemPrivate, type of CheckMenuItem is object
 
 // Object Clipboard
 type Clipboard struct {
@@ -12950,7 +12912,7 @@ type IClipboard interface{ P_Clipboard() unsafe.Pointer }
 
 func (v Clipboard) P_Clipboard() unsafe.Pointer { return v.P }
 func ClipboardGetType() gi.GType {
-	ret := _I.GetGType(121, "Clipboard")
+	ret := _I.GetGType(78, "Clipboard")
 	return ret
 }
 
@@ -13666,7 +13628,7 @@ type IColorButton interface{ P_ColorButton() unsafe.Pointer }
 func (v ColorButton) P_ColorButton() unsafe.Pointer  { return v.P }
 func (v ColorButton) P_ColorChooser() unsafe.Pointer { return v.P }
 func ColorButtonGetType() gi.GType {
-	ret := _I.GetGType(122, "ColorButton")
+	ret := _I.GetGType(79, "ColorButton")
 	return ret
 }
 
@@ -13878,15 +13840,7 @@ func (v ColorButton) SetUseAlpha(use_alpha bool) {
 
 // ignore GType struct ColorButtonClass
 
-// Struct ColorButtonPrivate
-type ColorButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func ColorButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(123, "ColorButtonPrivate")
-	return ret
-}
+// ignore private struct ColorButtonPrivate, type of ColorButton is object
 
 // Interface ColorChooser
 type ColorChooser struct {
@@ -13898,7 +13852,7 @@ type IColorChooser interface{ P_ColorChooser() unsafe.Pointer }
 
 func (v ColorChooser) P_ColorChooser() unsafe.Pointer { return v.P }
 func ColorChooserGetType() gi.GType {
-	ret := _I.GetGType(124, "ColorChooser")
+	ret := _I.GetGType(80, "ColorChooser")
 	return ret
 }
 
@@ -14006,7 +13960,7 @@ type IColorChooserDialog interface{ P_ColorChooserDialog() unsafe.Pointer }
 func (v ColorChooserDialog) P_ColorChooserDialog() unsafe.Pointer { return v.P }
 func (v ColorChooserDialog) P_ColorChooser() unsafe.Pointer       { return v.P }
 func ColorChooserDialogGetType() gi.GType {
-	ret := _I.GetGType(125, "ColorChooserDialog")
+	ret := _I.GetGType(81, "ColorChooserDialog")
 	return ret
 }
 
@@ -14041,15 +13995,7 @@ func NewColorChooserDialog(title string, parent IWindow) (result ColorChooserDia
 
 // ignore GType struct ColorChooserDialogClass
 
-// Struct ColorChooserDialogPrivate
-type ColorChooserDialogPrivate struct {
-	P unsafe.Pointer
-}
-
-func ColorChooserDialogPrivateGetType() gi.GType {
-	ret := _I.GetGType(126, "ColorChooserDialogPrivate")
-	return ret
-}
+// ignore private struct ColorChooserDialogPrivate, type of ColorChooserDialog is object
 
 // ignore GType struct ColorChooserInterface
 
@@ -14066,7 +14012,7 @@ type IColorChooserWidget interface{ P_ColorChooserWidget() unsafe.Pointer }
 func (v ColorChooserWidget) P_ColorChooserWidget() unsafe.Pointer { return v.P }
 func (v ColorChooserWidget) P_ColorChooser() unsafe.Pointer       { return v.P }
 func ColorChooserWidgetGetType() gi.GType {
-	ret := _I.GetGType(127, "ColorChooserWidget")
+	ret := _I.GetGType(82, "ColorChooserWidget")
 	return ret
 }
 
@@ -14088,15 +14034,7 @@ func NewColorChooserWidget() (result ColorChooserWidget) {
 
 // ignore GType struct ColorChooserWidgetClass
 
-// Struct ColorChooserWidgetPrivate
-type ColorChooserWidgetPrivate struct {
-	P unsafe.Pointer
-}
-
-func ColorChooserWidgetPrivateGetType() gi.GType {
-	ret := _I.GetGType(128, "ColorChooserWidgetPrivate")
-	return ret
-}
+// ignore private struct ColorChooserWidgetPrivate, type of ColorChooserWidget is object
 
 // Object ColorSelection
 type ColorSelection struct {
@@ -14109,7 +14047,7 @@ type IColorSelection interface{ P_ColorSelection() unsafe.Pointer }
 
 func (v ColorSelection) P_ColorSelection() unsafe.Pointer { return v.P }
 func ColorSelectionGetType() gi.GType {
-	ret := _I.GetGType(129, "ColorSelection")
+	ret := _I.GetGType(83, "ColorSelection")
 	return ret
 }
 
@@ -14511,7 +14449,7 @@ type IColorSelectionDialog interface{ P_ColorSelectionDialog() unsafe.Pointer }
 
 func (v ColorSelectionDialog) P_ColorSelectionDialog() unsafe.Pointer { return v.P }
 func ColorSelectionDialogGetType() gi.GType {
-	ret := _I.GetGType(130, "ColorSelectionDialog")
+	ret := _I.GetGType(84, "ColorSelectionDialog")
 	return ret
 }
 
@@ -14557,25 +14495,9 @@ func (v ColorSelectionDialog) GetColorSelection() (result Widget) {
 
 // ignore GType struct ColorSelectionDialogClass
 
-// Struct ColorSelectionDialogPrivate
-type ColorSelectionDialogPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct ColorSelectionDialogPrivate, type of ColorSelectionDialog is object
 
-func ColorSelectionDialogPrivateGetType() gi.GType {
-	ret := _I.GetGType(131, "ColorSelectionDialogPrivate")
-	return ret
-}
-
-// Struct ColorSelectionPrivate
-type ColorSelectionPrivate struct {
-	P unsafe.Pointer
-}
-
-func ColorSelectionPrivateGetType() gi.GType {
-	ret := _I.GetGType(132, "ColorSelectionPrivate")
-	return ret
-}
+// ignore private struct ColorSelectionPrivate, type of ColorSelection is object
 
 // Object ComboBox
 type ComboBox struct {
@@ -14592,7 +14514,7 @@ func (v ComboBox) P_ComboBox() unsafe.Pointer     { return v.P }
 func (v ComboBox) P_CellEditable() unsafe.Pointer { return v.P }
 func (v ComboBox) P_CellLayout() unsafe.Pointer   { return v.P }
 func ComboBoxGetType() gi.GType {
-	ret := _I.GetGType(133, "ComboBox")
+	ret := _I.GetGType(85, "ComboBox")
 	return ret
 }
 
@@ -15356,33 +15278,17 @@ func (v ComboBoxAccessible) P_ComboBoxAccessible() unsafe.Pointer { return v.P }
 func (v ComboBoxAccessible) P_Action() unsafe.Pointer             { return v.P }
 func (v ComboBoxAccessible) P_Selection() unsafe.Pointer          { return v.P }
 func ComboBoxAccessibleGetType() gi.GType {
-	ret := _I.GetGType(134, "ComboBoxAccessible")
+	ret := _I.GetGType(86, "ComboBoxAccessible")
 	return ret
 }
 
 // ignore GType struct ComboBoxAccessibleClass
 
-// Struct ComboBoxAccessiblePrivate
-type ComboBoxAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ComboBoxAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(135, "ComboBoxAccessiblePrivate")
-	return ret
-}
+// ignore private struct ComboBoxAccessiblePrivate, type of ComboBoxAccessible is object
 
 // ignore GType struct ComboBoxClass
 
-// Struct ComboBoxPrivate
-type ComboBoxPrivate struct {
-	P unsafe.Pointer
-}
-
-func ComboBoxPrivateGetType() gi.GType {
-	ret := _I.GetGType(136, "ComboBoxPrivate")
-	return ret
-}
+// ignore private struct ComboBoxPrivate, type of ComboBox is object
 
 // Object ComboBoxText
 type ComboBoxText struct {
@@ -15395,7 +15301,7 @@ type IComboBoxText interface{ P_ComboBoxText() unsafe.Pointer }
 
 func (v ComboBoxText) P_ComboBoxText() unsafe.Pointer { return v.P }
 func ComboBoxTextGetType() gi.GType {
-	ret := _I.GetGType(137, "ComboBoxText")
+	ret := _I.GetGType(87, "ComboBoxText")
 	return ret
 }
 
@@ -15609,15 +15515,7 @@ func (v ComboBoxText) RemoveAll() {
 
 // ignore GType struct ComboBoxTextClass
 
-// Struct ComboBoxTextPrivate
-type ComboBoxTextPrivate struct {
-	P unsafe.Pointer
-}
-
-func ComboBoxTextPrivateGetType() gi.GType {
-	ret := _I.GetGType(138, "ComboBoxTextPrivate")
-	return ret
-}
+// ignore private struct ComboBoxTextPrivate, type of ComboBoxText is object
 
 // Object Container
 type Container struct {
@@ -15630,7 +15528,7 @@ type IContainer interface{ P_Container() unsafe.Pointer }
 
 func (v Container) P_Container() unsafe.Pointer { return v.P }
 func ContainerGetType() gi.GType {
-	ret := _I.GetGType(139, "Container")
+	ret := _I.GetGType(88, "Container")
 	return ret
 }
 
@@ -16225,21 +16123,13 @@ type IContainerAccessible interface{ P_ContainerAccessible() unsafe.Pointer }
 
 func (v ContainerAccessible) P_ContainerAccessible() unsafe.Pointer { return v.P }
 func ContainerAccessibleGetType() gi.GType {
-	ret := _I.GetGType(140, "ContainerAccessible")
+	ret := _I.GetGType(89, "ContainerAccessible")
 	return ret
 }
 
 // ignore GType struct ContainerAccessibleClass
 
-// Struct ContainerAccessiblePrivate
-type ContainerAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ContainerAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(141, "ContainerAccessiblePrivate")
-	return ret
-}
+// ignore private struct ContainerAccessiblePrivate, type of ContainerAccessible is object
 
 // Object ContainerCellAccessible
 type ContainerCellAccessible struct {
@@ -16252,7 +16142,7 @@ type IContainerCellAccessible interface{ P_ContainerCellAccessible() unsafe.Poin
 
 func (v ContainerCellAccessible) P_ContainerCellAccessible() unsafe.Pointer { return v.P }
 func ContainerCellAccessibleGetType() gi.GType {
-	ret := _I.GetGType(142, "ContainerCellAccessible")
+	ret := _I.GetGType(90, "ContainerCellAccessible")
 	return ret
 }
 
@@ -16332,15 +16222,7 @@ func (v ContainerCellAccessible) RemoveChild(child ICellAccessible) {
 
 // ignore GType struct ContainerCellAccessibleClass
 
-// Struct ContainerCellAccessiblePrivate
-type ContainerCellAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ContainerCellAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(143, "ContainerCellAccessiblePrivate")
-	return ret
-}
+// ignore private struct ContainerCellAccessiblePrivate, type of ContainerCellAccessible is object
 
 // Struct ContainerClass
 type ContainerClass struct {
@@ -16350,7 +16232,7 @@ type ContainerClass struct {
 const SizeOfStructContainerClass = 976
 
 func ContainerClassGetType() gi.GType {
-	ret := _I.GetGType(144, "ContainerClass")
+	ret := _I.GetGType(91, "ContainerClass")
 	return ret
 }
 
@@ -16457,15 +16339,79 @@ func (v ContainerClass) ListChildProperties() (result gi.PointerArray) {
 	return
 }
 
-// Struct ContainerPrivate
-type ContainerPrivate struct {
-	P unsafe.Pointer
+func (v ContainerClass) p() *C.GtkContainerClass {
+	return (*C.GtkContainerClass)(v.P)
+}
+func (v ContainerClass) ParentClass() (result int /*TODO*/) {
+	return
+}
+func (v ContainerClass) Add() (result int /*TODO*/) {
+	return
+}
+func (v ContainerClass) Remove() (result int /*TODO*/) {
+	return
+}
+func (v ContainerClass) CheckResize() (result int /*TODO*/) {
+	return
+}
+func (v ContainerClass) Forall() (result int /*TODO*/) {
+	return
+}
+func (v ContainerClass) SetFocusChild() (result int /*TODO*/) {
+	return
+}
+func (v ContainerClass) ChildType() (result int /*TODO*/) {
+	return
+}
+func (v ContainerClass) CompositeName() (result int /*TODO*/) {
+	return
+}
+func (v ContainerClass) SetChildProperty() (result int /*TODO*/) {
+	return
+}
+func (v ContainerClass) GetChildProperty() (result int /*TODO*/) {
+	return
+}
+func (v ContainerClass) GetPathForChild() (result int /*TODO*/) {
+	return
 }
 
-func ContainerPrivateGetType() gi.GType {
-	ret := _I.GetGType(145, "ContainerPrivate")
-	return ret
+// TODO: ignore struct ContainerClass field _handle_border_width, bits(=1) > 0
+
+func (v ContainerClass) _GtkReserved1() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved1)
+	return
 }
+func (v ContainerClass) _GtkReserved2() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved2)
+	return
+}
+func (v ContainerClass) _GtkReserved3() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved3)
+	return
+}
+func (v ContainerClass) _GtkReserved4() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved4)
+	return
+}
+func (v ContainerClass) _GtkReserved5() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved5)
+	return
+}
+func (v ContainerClass) _GtkReserved6() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved6)
+	return
+}
+func (v ContainerClass) _GtkReserved7() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved7)
+	return
+}
+func (v ContainerClass) _GtkReserved8() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved8)
+	return
+}
+
+// ignore private struct ContainerPrivate, type of Container is object
 
 // Enum CornerType
 type CornerTypeEnum int
@@ -16478,7 +16424,7 @@ const (
 )
 
 func CornerTypeGetType() gi.GType {
-	ret := _I.GetGType(146, "CornerType")
+	ret := _I.GetGType(92, "CornerType")
 	return ret
 }
 
@@ -16495,7 +16441,7 @@ type ICssProvider interface{ P_CssProvider() unsafe.Pointer }
 func (v CssProvider) P_CssProvider() unsafe.Pointer   { return v.P }
 func (v CssProvider) P_StyleProvider() unsafe.Pointer { return v.P }
 func CssProviderGetType() gi.GType {
-	ret := _I.GetGType(147, "CssProvider")
+	ret := _I.GetGType(93, "CssProvider")
 	return ret
 }
 
@@ -16689,19 +16635,11 @@ const (
 )
 
 func CssProviderErrorGetType() gi.GType {
-	ret := _I.GetGType(148, "CssProviderError")
+	ret := _I.GetGType(94, "CssProviderError")
 	return ret
 }
 
-// Struct CssProviderPrivate
-type CssProviderPrivate struct {
-	P unsafe.Pointer
-}
-
-func CssProviderPrivateGetType() gi.GType {
-	ret := _I.GetGType(149, "CssProviderPrivate")
-	return ret
-}
+// ignore private struct CssProviderPrivate, type of CssProvider is object
 
 // Struct CssSection
 type CssSection struct {
@@ -16709,7 +16647,7 @@ type CssSection struct {
 }
 
 func CssSectionGetType() gi.GType {
-	ret := _I.GetGType(150, "CssSection")
+	ret := _I.GetGType(95, "CssSection")
 	return ret
 }
 
@@ -16886,7 +16824,7 @@ const (
 )
 
 func CssSectionTypeGetType() gi.GType {
-	ret := _I.GetGType(151, "CssSectionType")
+	ret := _I.GetGType(96, "CssSectionType")
 	return ret
 }
 
@@ -16919,7 +16857,7 @@ const (
 )
 
 func DebugFlagGetType() gi.GType {
-	ret := _I.GetGType(152, "DebugFlag")
+	ret := _I.GetGType(97, "DebugFlag")
 	return ret
 }
 
@@ -16938,7 +16876,7 @@ const (
 )
 
 func DeleteTypeGetType() gi.GType {
-	ret := _I.GetGType(153, "DeleteType")
+	ret := _I.GetGType(98, "DeleteType")
 	return ret
 }
 
@@ -16953,7 +16891,7 @@ const (
 )
 
 func DestDefaultsGetType() gi.GType {
-	ret := _I.GetGType(154, "DestDefaults")
+	ret := _I.GetGType(99, "DestDefaults")
 	return ret
 }
 
@@ -16968,7 +16906,7 @@ type IDialog interface{ P_Dialog() unsafe.Pointer }
 
 func (v Dialog) P_Dialog() unsafe.Pointer { return v.P }
 func DialogGetType() gi.GType {
-	ret := _I.GetGType(155, "Dialog")
+	ret := _I.GetGType(100, "Dialog")
 	return ret
 }
 
@@ -17241,19 +17179,11 @@ const (
 )
 
 func DialogFlagsGetType() gi.GType {
-	ret := _I.GetGType(156, "DialogFlags")
+	ret := _I.GetGType(101, "DialogFlags")
 	return ret
 }
 
-// Struct DialogPrivate
-type DialogPrivate struct {
-	P unsafe.Pointer
-}
-
-func DialogPrivateGetType() gi.GType {
-	ret := _I.GetGType(157, "DialogPrivate")
-	return ret
-}
+// ignore private struct DialogPrivate, type of Dialog is object
 
 // Enum DirectionType
 type DirectionTypeEnum int
@@ -17268,7 +17198,7 @@ const (
 )
 
 func DirectionTypeGetType() gi.GType {
-	ret := _I.GetGType(158, "DirectionType")
+	ret := _I.GetGType(102, "DirectionType")
 	return ret
 }
 
@@ -17285,7 +17215,7 @@ const (
 )
 
 func DragResultGetType() gi.GType {
-	ret := _I.GetGType(159, "DragResult")
+	ret := _I.GetGType(103, "DragResult")
 	return ret
 }
 
@@ -17300,7 +17230,7 @@ type IDrawingArea interface{ P_DrawingArea() unsafe.Pointer }
 
 func (v DrawingArea) P_DrawingArea() unsafe.Pointer { return v.P }
 func DrawingAreaGetType() gi.GType {
-	ret := _I.GetGType(160, "DrawingArea")
+	ret := _I.GetGType(104, "DrawingArea")
 	return ret
 }
 
@@ -17332,7 +17262,7 @@ type IEditable interface{ P_Editable() unsafe.Pointer }
 
 func (v Editable) P_Editable() unsafe.Pointer { return v.P }
 func EditableGetType() gi.GType {
-	ret := _I.GetGType(161, "Editable")
+	ret := _I.GetGType(105, "Editable")
 	return ret
 }
 
@@ -17586,7 +17516,7 @@ func (v Entry) P_Entry() unsafe.Pointer        { return v.P }
 func (v Entry) P_CellEditable() unsafe.Pointer { return v.P }
 func (v Entry) P_Editable() unsafe.Pointer     { return v.P }
 func EntryGetType() gi.GType {
-	ret := _I.GetGType(162, "Entry")
+	ret := _I.GetGType(106, "Entry")
 	return ret
 }
 
@@ -19015,21 +18945,13 @@ func (v EntryAccessible) P_Action() unsafe.Pointer          { return v.P }
 func (v EntryAccessible) P_EditableText() unsafe.Pointer    { return v.P }
 func (v EntryAccessible) P_Text() unsafe.Pointer            { return v.P }
 func EntryAccessibleGetType() gi.GType {
-	ret := _I.GetGType(163, "EntryAccessible")
+	ret := _I.GetGType(107, "EntryAccessible")
 	return ret
 }
 
 // ignore GType struct EntryAccessibleClass
 
-// Struct EntryAccessiblePrivate
-type EntryAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func EntryAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(164, "EntryAccessiblePrivate")
-	return ret
-}
+// ignore private struct EntryAccessiblePrivate, type of EntryAccessible is object
 
 // Object EntryBuffer
 type EntryBuffer struct {
@@ -19042,7 +18964,7 @@ type IEntryBuffer interface{ P_EntryBuffer() unsafe.Pointer }
 
 func (v EntryBuffer) P_EntryBuffer() unsafe.Pointer { return v.P }
 func EntryBufferGetType() gi.GType {
-	ret := _I.GetGType(165, "EntryBuffer")
+	ret := _I.GetGType(108, "EntryBuffer")
 	return ret
 }
 
@@ -19278,15 +19200,7 @@ func (v EntryBuffer) SetText(chars string, n_chars int32) {
 
 // ignore GType struct EntryBufferClass
 
-// Struct EntryBufferPrivate
-type EntryBufferPrivate struct {
-	P unsafe.Pointer
-}
-
-func EntryBufferPrivateGetType() gi.GType {
-	ret := _I.GetGType(166, "EntryBufferPrivate")
-	return ret
-}
+// ignore private struct EntryBufferPrivate, type of EntryBuffer is object
 
 // ignore GType struct EntryClass
 
@@ -19305,7 +19219,7 @@ func (v EntryCompletion) P_EntryCompletion() unsafe.Pointer { return v.P }
 func (v EntryCompletion) P_Buildable() unsafe.Pointer       { return v.P }
 func (v EntryCompletion) P_CellLayout() unsafe.Pointer      { return v.P }
 func EntryCompletionGetType() gi.GType {
-	ret := _I.GetGType(167, "EntryCompletion")
+	ret := _I.GetGType(109, "EntryCompletion")
 	return ret
 }
 
@@ -19814,15 +19728,7 @@ func CallEntryCompletionMatchFunc(fn EntryCompletionMatchFunc, result unsafe.Poi
 	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
-// Struct EntryCompletionPrivate
-type EntryCompletionPrivate struct {
-	P unsafe.Pointer
-}
-
-func EntryCompletionPrivateGetType() gi.GType {
-	ret := _I.GetGType(168, "EntryCompletionPrivate")
-	return ret
-}
+// ignore private struct EntryCompletionPrivate, type of EntryCompletion is object
 
 // Object EntryIconAccessible
 type EntryIconAccessible struct {
@@ -19839,7 +19745,7 @@ func (v EntryIconAccessible) P_EntryIconAccessible() unsafe.Pointer { return v.P
 func (v EntryIconAccessible) P_Action() unsafe.Pointer              { return v.P }
 func (v EntryIconAccessible) P_Component() unsafe.Pointer           { return v.P }
 func EntryIconAccessibleGetType() gi.GType {
-	ret := _I.GetGType(169, "EntryIconAccessible")
+	ret := _I.GetGType(110, "EntryIconAccessible")
 	return ret
 }
 
@@ -19852,19 +19758,11 @@ const (
 )
 
 func EntryIconPositionGetType() gi.GType {
-	ret := _I.GetGType(170, "EntryIconPosition")
+	ret := _I.GetGType(111, "EntryIconPosition")
 	return ret
 }
 
-// Struct EntryPrivate
-type EntryPrivate struct {
-	P unsafe.Pointer
-}
-
-func EntryPrivateGetType() gi.GType {
-	ret := _I.GetGType(171, "EntryPrivate")
-	return ret
-}
+// ignore private struct EntryPrivate, type of Entry is object
 
 // Object EventBox
 type EventBox struct {
@@ -19877,7 +19775,7 @@ type IEventBox interface{ P_EventBox() unsafe.Pointer }
 
 func (v EventBox) P_EventBox() unsafe.Pointer { return v.P }
 func EventBoxGetType() gi.GType {
-	ret := _I.GetGType(172, "EventBox")
+	ret := _I.GetGType(112, "EventBox")
 	return ret
 }
 
@@ -19967,15 +19865,7 @@ func (v EventBox) SetVisibleWindow(visible_window bool) {
 
 // ignore GType struct EventBoxClass
 
-// Struct EventBoxPrivate
-type EventBoxPrivate struct {
-	P unsafe.Pointer
-}
-
-func EventBoxPrivateGetType() gi.GType {
-	ret := _I.GetGType(173, "EventBoxPrivate")
-	return ret
-}
+// ignore private struct EventBoxPrivate, type of EventBox is object
 
 // Object EventController
 type EventController struct {
@@ -19988,7 +19878,7 @@ type IEventController interface{ P_EventController() unsafe.Pointer }
 
 func (v EventController) P_EventController() unsafe.Pointer { return v.P }
 func EventControllerGetType() gi.GType {
-	ret := _I.GetGType(174, "EventController")
+	ret := _I.GetGType(113, "EventController")
 	return ret
 }
 
@@ -20091,7 +19981,7 @@ type IEventControllerKey interface{ P_EventControllerKey() unsafe.Pointer }
 
 func (v EventControllerKey) P_EventControllerKey() unsafe.Pointer { return v.P }
 func EventControllerKeyGetType() gi.GType {
-	ret := _I.GetGType(175, "EventControllerKey")
+	ret := _I.GetGType(114, "EventControllerKey")
 	return ret
 }
 
@@ -20213,7 +20103,7 @@ type IEventControllerMotion interface{ P_EventControllerMotion() unsafe.Pointer 
 
 func (v EventControllerMotion) P_EventControllerMotion() unsafe.Pointer { return v.P }
 func EventControllerMotionGetType() gi.GType {
-	ret := _I.GetGType(176, "EventControllerMotion")
+	ret := _I.GetGType(115, "EventControllerMotion")
 	return ret
 }
 
@@ -20254,7 +20144,7 @@ type IEventControllerScroll interface{ P_EventControllerScroll() unsafe.Pointer 
 
 func (v EventControllerScroll) P_EventControllerScroll() unsafe.Pointer { return v.P }
 func EventControllerScrollGetType() gi.GType {
-	ret := _I.GetGType(177, "EventControllerScroll")
+	ret := _I.GetGType(116, "EventControllerScroll")
 	return ret
 }
 
@@ -20334,7 +20224,7 @@ const (
 )
 
 func EventControllerScrollFlagsGetType() gi.GType {
-	ret := _I.GetGType(178, "EventControllerScrollFlags")
+	ret := _I.GetGType(117, "EventControllerScrollFlags")
 	return ret
 }
 
@@ -20348,7 +20238,7 @@ const (
 )
 
 func EventSequenceStateGetType() gi.GType {
-	ret := _I.GetGType(179, "EventSequenceState")
+	ret := _I.GetGType(118, "EventSequenceState")
 	return ret
 }
 
@@ -20363,7 +20253,7 @@ type IExpander interface{ P_Expander() unsafe.Pointer }
 
 func (v Expander) P_Expander() unsafe.Pointer { return v.P }
 func ExpanderGetType() gi.GType {
-	ret := _I.GetGType(180, "Expander")
+	ret := _I.GetGType(119, "Expander")
 	return ret
 }
 
@@ -20706,33 +20596,17 @@ type IExpanderAccessible interface{ P_ExpanderAccessible() unsafe.Pointer }
 func (v ExpanderAccessible) P_ExpanderAccessible() unsafe.Pointer { return v.P }
 func (v ExpanderAccessible) P_Action() unsafe.Pointer             { return v.P }
 func ExpanderAccessibleGetType() gi.GType {
-	ret := _I.GetGType(181, "ExpanderAccessible")
+	ret := _I.GetGType(120, "ExpanderAccessible")
 	return ret
 }
 
 // ignore GType struct ExpanderAccessibleClass
 
-// Struct ExpanderAccessiblePrivate
-type ExpanderAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ExpanderAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(182, "ExpanderAccessiblePrivate")
-	return ret
-}
+// ignore private struct ExpanderAccessiblePrivate, type of ExpanderAccessible is object
 
 // ignore GType struct ExpanderClass
 
-// Struct ExpanderPrivate
-type ExpanderPrivate struct {
-	P unsafe.Pointer
-}
-
-func ExpanderPrivateGetType() gi.GType {
-	ret := _I.GetGType(183, "ExpanderPrivate")
-	return ret
-}
+// ignore private struct ExpanderPrivate, type of Expander is object
 
 // Enum ExpanderStyle
 type ExpanderStyleEnum int
@@ -20745,7 +20619,7 @@ const (
 )
 
 func ExpanderStyleGetType() gi.GType {
-	ret := _I.GetGType(184, "ExpanderStyle")
+	ret := _I.GetGType(121, "ExpanderStyle")
 	return ret
 }
 
@@ -20759,7 +20633,7 @@ type IFileChooser interface{ P_FileChooser() unsafe.Pointer }
 
 func (v FileChooser) P_FileChooser() unsafe.Pointer { return v.P }
 func FileChooserGetType() gi.GType {
-	ret := _I.GetGType(185, "FileChooser")
+	ret := _I.GetGType(122, "FileChooser")
 	return ret
 }
 
@@ -22000,7 +21874,7 @@ const (
 )
 
 func FileChooserActionGetType() gi.GType {
-	ret := _I.GetGType(186, "FileChooserAction")
+	ret := _I.GetGType(123, "FileChooserAction")
 	return ret
 }
 
@@ -22017,7 +21891,7 @@ type IFileChooserButton interface{ P_FileChooserButton() unsafe.Pointer }
 func (v FileChooserButton) P_FileChooserButton() unsafe.Pointer { return v.P }
 func (v FileChooserButton) P_FileChooser() unsafe.Pointer       { return v.P }
 func FileChooserButtonGetType() gi.GType {
-	ret := _I.GetGType(187, "FileChooserButton")
+	ret := _I.GetGType(124, "FileChooserButton")
 	return ret
 }
 
@@ -22180,15 +22054,7 @@ func (v FileChooserButton) SetWidthChars(n_chars int32) {
 
 // ignore GType struct FileChooserButtonClass
 
-// Struct FileChooserButtonPrivate
-type FileChooserButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func FileChooserButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(188, "FileChooserButtonPrivate")
-	return ret
-}
+// ignore private struct FileChooserButtonPrivate, type of FileChooserButton is object
 
 // Enum FileChooserConfirmation
 type FileChooserConfirmationEnum int
@@ -22200,7 +22066,7 @@ const (
 )
 
 func FileChooserConfirmationGetType() gi.GType {
-	ret := _I.GetGType(189, "FileChooserConfirmation")
+	ret := _I.GetGType(125, "FileChooserConfirmation")
 	return ret
 }
 
@@ -22217,21 +22083,13 @@ type IFileChooserDialog interface{ P_FileChooserDialog() unsafe.Pointer }
 func (v FileChooserDialog) P_FileChooserDialog() unsafe.Pointer { return v.P }
 func (v FileChooserDialog) P_FileChooser() unsafe.Pointer       { return v.P }
 func FileChooserDialogGetType() gi.GType {
-	ret := _I.GetGType(190, "FileChooserDialog")
+	ret := _I.GetGType(126, "FileChooserDialog")
 	return ret
 }
 
 // ignore GType struct FileChooserDialogClass
 
-// Struct FileChooserDialogPrivate
-type FileChooserDialogPrivate struct {
-	P unsafe.Pointer
-}
-
-func FileChooserDialogPrivateGetType() gi.GType {
-	ret := _I.GetGType(191, "FileChooserDialogPrivate")
-	return ret
-}
+// ignore private struct FileChooserDialogPrivate, type of FileChooserDialog is object
 
 // Enum FileChooserError
 type FileChooserErrorEnum int
@@ -22244,7 +22102,7 @@ const (
 )
 
 func FileChooserErrorGetType() gi.GType {
-	ret := _I.GetGType(192, "FileChooserError")
+	ret := _I.GetGType(127, "FileChooserError")
 	return ret
 }
 
@@ -22261,7 +22119,7 @@ type IFileChooserNative interface{ P_FileChooserNative() unsafe.Pointer }
 func (v FileChooserNative) P_FileChooserNative() unsafe.Pointer { return v.P }
 func (v FileChooserNative) P_FileChooser() unsafe.Pointer       { return v.P }
 func FileChooserNativeGetType() gi.GType {
-	ret := _I.GetGType(193, "FileChooserNative")
+	ret := _I.GetGType(128, "FileChooserNative")
 	return ret
 }
 
@@ -22394,7 +22252,7 @@ type IFileChooserWidget interface{ P_FileChooserWidget() unsafe.Pointer }
 func (v FileChooserWidget) P_FileChooserWidget() unsafe.Pointer { return v.P }
 func (v FileChooserWidget) P_FileChooser() unsafe.Pointer       { return v.P }
 func FileChooserWidgetGetType() gi.GType {
-	ret := _I.GetGType(194, "FileChooserWidget")
+	ret := _I.GetGType(129, "FileChooserWidget")
 	return ret
 }
 
@@ -22420,15 +22278,7 @@ func NewFileChooserWidget(action FileChooserActionEnum) (result FileChooserWidge
 
 // ignore GType struct FileChooserWidgetClass
 
-// Struct FileChooserWidgetPrivate
-type FileChooserWidgetPrivate struct {
-	P unsafe.Pointer
-}
-
-func FileChooserWidgetPrivateGetType() gi.GType {
-	ret := _I.GetGType(195, "FileChooserWidgetPrivate")
-	return ret
-}
+// ignore private struct FileChooserWidgetPrivate, type of FileChooserWidget is object
 
 // Object FileFilter
 type FileFilter struct {
@@ -22443,7 +22293,7 @@ type IFileFilter interface{ P_FileFilter() unsafe.Pointer }
 func (v FileFilter) P_FileFilter() unsafe.Pointer { return v.P }
 func (v FileFilter) P_Buildable() unsafe.Pointer  { return v.P }
 func FileFilterGetType() gi.GType {
-	ret := _I.GetGType(196, "FileFilter")
+	ret := _I.GetGType(130, "FileFilter")
 	return ret
 }
 
@@ -22670,7 +22520,7 @@ const (
 )
 
 func FileFilterFlagsGetType() gi.GType {
-	ret := _I.GetGType(197, "FileFilterFlags")
+	ret := _I.GetGType(131, "FileFilterFlags")
 	return ret
 }
 
@@ -22693,8 +22543,27 @@ type FileFilterInfo struct {
 const SizeOfStructFileFilterInfo = 40
 
 func FileFilterInfoGetType() gi.GType {
-	ret := _I.GetGType(198, "FileFilterInfo")
+	ret := _I.GetGType(132, "FileFilterInfo")
 	return ret
+}
+
+func (v FileFilterInfo) p() *C.GtkFileFilterInfo {
+	return (*C.GtkFileFilterInfo)(v.P)
+}
+func (v FileFilterInfo) Contains() (result int /*TODO*/) {
+	return
+}
+func (v FileFilterInfo) Filename() (result int /*TODO*/) {
+	return
+}
+func (v FileFilterInfo) Uri() (result int /*TODO*/) {
+	return
+}
+func (v FileFilterInfo) DisplayName() (result int /*TODO*/) {
+	return
+}
+func (v FileFilterInfo) MimeType() (result int /*TODO*/) {
+	return
 }
 
 // Object Fixed
@@ -22708,7 +22577,7 @@ type IFixed interface{ P_Fixed() unsafe.Pointer }
 
 func (v Fixed) P_Fixed() unsafe.Pointer { return v.P }
 func FixedGetType() gi.GType {
-	ret := _I.GetGType(199, "Fixed")
+	ret := _I.GetGType(133, "Fixed")
 	return ret
 }
 
@@ -22788,21 +22657,28 @@ type FixedChild struct {
 const SizeOfStructFixedChild = 16
 
 func FixedChildGetType() gi.GType {
-	ret := _I.GetGType(200, "FixedChild")
+	ret := _I.GetGType(134, "FixedChild")
 	return ret
+}
+
+func (v FixedChild) p() *C.GtkFixedChild {
+	return (*C.GtkFixedChild)(v.P)
+}
+func (v FixedChild) Widget() (result int /*TODO*/) {
+	return
+}
+func (v FixedChild) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v FixedChild) Y() (result int32) {
+	result = int32(v.p().y)
+	return
 }
 
 // ignore GType struct FixedClass
 
-// Struct FixedPrivate
-type FixedPrivate struct {
-	P unsafe.Pointer
-}
-
-func FixedPrivateGetType() gi.GType {
-	ret := _I.GetGType(201, "FixedPrivate")
-	return ret
-}
+// ignore private struct FixedPrivate, type of Fixed is object
 
 // Object FlowBox
 type FlowBox struct {
@@ -22817,7 +22693,7 @@ type IFlowBox interface{ P_FlowBox() unsafe.Pointer }
 func (v FlowBox) P_FlowBox() unsafe.Pointer    { return v.P }
 func (v FlowBox) P_Orientable() unsafe.Pointer { return v.P }
 func FlowBoxGetType() gi.GType {
-	ret := _I.GetGType(202, "FlowBox")
+	ret := _I.GetGType(135, "FlowBox")
 	return ret
 }
 
@@ -23435,21 +23311,13 @@ type IFlowBoxAccessible interface{ P_FlowBoxAccessible() unsafe.Pointer }
 func (v FlowBoxAccessible) P_FlowBoxAccessible() unsafe.Pointer { return v.P }
 func (v FlowBoxAccessible) P_Selection() unsafe.Pointer         { return v.P }
 func FlowBoxAccessibleGetType() gi.GType {
-	ret := _I.GetGType(203, "FlowBoxAccessible")
+	ret := _I.GetGType(136, "FlowBoxAccessible")
 	return ret
 }
 
 // ignore GType struct FlowBoxAccessibleClass
 
-// Struct FlowBoxAccessiblePrivate
-type FlowBoxAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func FlowBoxAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(204, "FlowBoxAccessiblePrivate")
-	return ret
-}
+// ignore private struct FlowBoxAccessiblePrivate, type of FlowBoxAccessible is object
 
 // Object FlowBoxChild
 type FlowBoxChild struct {
@@ -23462,7 +23330,7 @@ type IFlowBoxChild interface{ P_FlowBoxChild() unsafe.Pointer }
 
 func (v FlowBoxChild) P_FlowBoxChild() unsafe.Pointer { return v.P }
 func FlowBoxChildGetType() gi.GType {
-	ret := _I.GetGType(205, "FlowBoxChild")
+	ret := _I.GetGType(137, "FlowBoxChild")
 	return ret
 }
 
@@ -23542,7 +23410,7 @@ type IFlowBoxChildAccessible interface{ P_FlowBoxChildAccessible() unsafe.Pointe
 
 func (v FlowBoxChildAccessible) P_FlowBoxChildAccessible() unsafe.Pointer { return v.P }
 func FlowBoxChildAccessibleGetType() gi.GType {
-	ret := _I.GetGType(206, "FlowBoxChildAccessible")
+	ret := _I.GetGType(138, "FlowBoxChildAccessible")
 	return ret
 }
 
@@ -23610,7 +23478,7 @@ type IFontButton interface{ P_FontButton() unsafe.Pointer }
 func (v FontButton) P_FontButton() unsafe.Pointer  { return v.P }
 func (v FontButton) P_FontChooser() unsafe.Pointer { return v.P }
 func FontButtonGetType() gi.GType {
-	ret := _I.GetGType(207, "FontButton")
+	ret := _I.GetGType(139, "FontButton")
 	return ret
 }
 
@@ -23871,15 +23739,7 @@ func (v FontButton) SetUseSize(use_size bool) {
 
 // ignore GType struct FontButtonClass
 
-// Struct FontButtonPrivate
-type FontButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func FontButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(208, "FontButtonPrivate")
-	return ret
-}
+// ignore private struct FontButtonPrivate, type of FontButton is object
 
 // Interface FontChooser
 type FontChooser struct {
@@ -23891,7 +23751,7 @@ type IFontChooser interface{ P_FontChooser() unsafe.Pointer }
 
 func (v FontChooser) P_FontChooser() unsafe.Pointer { return v.P }
 func FontChooserGetType() gi.GType {
-	ret := _I.GetGType(209, "FontChooser")
+	ret := _I.GetGType(140, "FontChooser")
 	return ret
 }
 
@@ -24259,7 +24119,7 @@ type IFontChooserDialog interface{ P_FontChooserDialog() unsafe.Pointer }
 func (v FontChooserDialog) P_FontChooserDialog() unsafe.Pointer { return v.P }
 func (v FontChooserDialog) P_FontChooser() unsafe.Pointer       { return v.P }
 func FontChooserDialogGetType() gi.GType {
-	ret := _I.GetGType(210, "FontChooserDialog")
+	ret := _I.GetGType(141, "FontChooserDialog")
 	return ret
 }
 
@@ -24294,15 +24154,7 @@ func NewFontChooserDialog(title string, parent IWindow) (result FontChooserDialo
 
 // ignore GType struct FontChooserDialogClass
 
-// Struct FontChooserDialogPrivate
-type FontChooserDialogPrivate struct {
-	P unsafe.Pointer
-}
-
-func FontChooserDialogPrivateGetType() gi.GType {
-	ret := _I.GetGType(211, "FontChooserDialogPrivate")
-	return ret
-}
+// ignore private struct FontChooserDialogPrivate, type of FontChooserDialog is object
 
 // ignore GType struct FontChooserIface
 
@@ -24318,7 +24170,7 @@ const (
 )
 
 func FontChooserLevelGetType() gi.GType {
-	ret := _I.GetGType(212, "FontChooserLevel")
+	ret := _I.GetGType(142, "FontChooserLevel")
 	return ret
 }
 
@@ -24335,7 +24187,7 @@ type IFontChooserWidget interface{ P_FontChooserWidget() unsafe.Pointer }
 func (v FontChooserWidget) P_FontChooserWidget() unsafe.Pointer { return v.P }
 func (v FontChooserWidget) P_FontChooser() unsafe.Pointer       { return v.P }
 func FontChooserWidgetGetType() gi.GType {
-	ret := _I.GetGType(213, "FontChooserWidget")
+	ret := _I.GetGType(143, "FontChooserWidget")
 	return ret
 }
 
@@ -24357,15 +24209,7 @@ func NewFontChooserWidget() (result FontChooserWidget) {
 
 // ignore GType struct FontChooserWidgetClass
 
-// Struct FontChooserWidgetPrivate
-type FontChooserWidgetPrivate struct {
-	P unsafe.Pointer
-}
-
-func FontChooserWidgetPrivateGetType() gi.GType {
-	ret := _I.GetGType(214, "FontChooserWidgetPrivate")
-	return ret
-}
+// ignore private struct FontChooserWidgetPrivate, type of FontChooserWidget is object
 
 type FontFilterFunc func(family pango.FontFamily, face pango.FontFace) (result bool)
 
@@ -24390,7 +24234,7 @@ type IFontSelection interface{ P_FontSelection() unsafe.Pointer }
 
 func (v FontSelection) P_FontSelection() unsafe.Pointer { return v.P }
 func FontSelectionGetType() gi.GType {
-	ret := _I.GetGType(215, "FontSelection")
+	ret := _I.GetGType(144, "FontSelection")
 	return ret
 }
 
@@ -24670,7 +24514,7 @@ type IFontSelectionDialog interface{ P_FontSelectionDialog() unsafe.Pointer }
 
 func (v FontSelectionDialog) P_FontSelectionDialog() unsafe.Pointer { return v.P }
 func FontSelectionDialogGetType() gi.GType {
-	ret := _I.GetGType(216, "FontSelectionDialog")
+	ret := _I.GetGType(145, "FontSelectionDialog")
 	return ret
 }
 
@@ -24845,25 +24689,9 @@ func (v FontSelectionDialog) SetPreviewText(text string) {
 
 // ignore GType struct FontSelectionDialogClass
 
-// Struct FontSelectionDialogPrivate
-type FontSelectionDialogPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct FontSelectionDialogPrivate, type of FontSelectionDialog is object
 
-func FontSelectionDialogPrivateGetType() gi.GType {
-	ret := _I.GetGType(217, "FontSelectionDialogPrivate")
-	return ret
-}
-
-// Struct FontSelectionPrivate
-type FontSelectionPrivate struct {
-	P unsafe.Pointer
-}
-
-func FontSelectionPrivateGetType() gi.GType {
-	ret := _I.GetGType(218, "FontSelectionPrivate")
-	return ret
-}
+// ignore private struct FontSelectionPrivate, type of FontSelection is object
 
 // Object Frame
 type Frame struct {
@@ -24876,7 +24704,7 @@ type IFrame interface{ P_Frame() unsafe.Pointer }
 
 func (v Frame) P_Frame() unsafe.Pointer { return v.P }
 func FrameGetType() gi.GType {
-	ret := _I.GetGType(219, "Frame")
+	ret := _I.GetGType(146, "Frame")
 	return ret
 }
 
@@ -25063,33 +24891,17 @@ type IFrameAccessible interface{ P_FrameAccessible() unsafe.Pointer }
 
 func (v FrameAccessible) P_FrameAccessible() unsafe.Pointer { return v.P }
 func FrameAccessibleGetType() gi.GType {
-	ret := _I.GetGType(220, "FrameAccessible")
+	ret := _I.GetGType(147, "FrameAccessible")
 	return ret
 }
 
 // ignore GType struct FrameAccessibleClass
 
-// Struct FrameAccessiblePrivate
-type FrameAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func FrameAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(221, "FrameAccessiblePrivate")
-	return ret
-}
+// ignore private struct FrameAccessiblePrivate, type of FrameAccessible is object
 
 // ignore GType struct FrameClass
 
-// Struct FramePrivate
-type FramePrivate struct {
-	P unsafe.Pointer
-}
-
-func FramePrivateGetType() gi.GType {
-	ret := _I.GetGType(222, "FramePrivate")
-	return ret
-}
+// ignore private struct FramePrivate, type of Frame is object
 
 // Object GLArea
 type GLArea struct {
@@ -25102,7 +24914,7 @@ type IGLArea interface{ P_GLArea() unsafe.Pointer }
 
 func (v GLArea) P_GLArea() unsafe.Pointer { return v.P }
 func GLAreaGetType() gi.GType {
-	ret := _I.GetGType(223, "GLArea")
+	ret := _I.GetGType(148, "GLArea")
 	return ret
 }
 
@@ -25438,7 +25250,7 @@ type IGesture interface{ P_Gesture() unsafe.Pointer }
 
 func (v Gesture) P_Gesture() unsafe.Pointer { return v.P }
 func GestureGetType() gi.GType {
-	ret := _I.GetGType(224, "Gesture")
+	ret := _I.GetGType(149, "Gesture")
 	return ret
 }
 
@@ -25845,7 +25657,7 @@ type IGestureDrag interface{ P_GestureDrag() unsafe.Pointer }
 
 func (v GestureDrag) P_GestureDrag() unsafe.Pointer { return v.P }
 func GestureDragGetType() gi.GType {
-	ret := _I.GetGType(225, "GestureDrag")
+	ret := _I.GetGType(150, "GestureDrag")
 	return ret
 }
 
@@ -25940,7 +25752,7 @@ type IGestureLongPress interface{ P_GestureLongPress() unsafe.Pointer }
 
 func (v GestureLongPress) P_GestureLongPress() unsafe.Pointer { return v.P }
 func GestureLongPressGetType() gi.GType {
-	ret := _I.GetGType(226, "GestureLongPress")
+	ret := _I.GetGType(151, "GestureLongPress")
 	return ret
 }
 
@@ -25981,7 +25793,7 @@ type IGestureMultiPress interface{ P_GestureMultiPress() unsafe.Pointer }
 
 func (v GestureMultiPress) P_GestureMultiPress() unsafe.Pointer { return v.P }
 func GestureMultiPressGetType() gi.GType {
-	ret := _I.GetGType(227, "GestureMultiPress")
+	ret := _I.GetGType(152, "GestureMultiPress")
 	return ret
 }
 
@@ -26059,7 +25871,7 @@ type IGesturePan interface{ P_GesturePan() unsafe.Pointer }
 
 func (v GesturePan) P_GesturePan() unsafe.Pointer { return v.P }
 func GesturePanGetType() gi.GType {
-	ret := _I.GetGType(228, "GesturePan")
+	ret := _I.GetGType(153, "GesturePan")
 	return ret
 }
 
@@ -26137,7 +25949,7 @@ type IGestureRotate interface{ P_GestureRotate() unsafe.Pointer }
 
 func (v GestureRotate) P_GestureRotate() unsafe.Pointer { return v.P }
 func GestureRotateGetType() gi.GType {
-	ret := _I.GetGType(229, "GestureRotate")
+	ret := _I.GetGType(154, "GestureRotate")
 	return ret
 }
 
@@ -26196,7 +26008,7 @@ type IGestureSingle interface{ P_GestureSingle() unsafe.Pointer }
 
 func (v GestureSingle) P_GestureSingle() unsafe.Pointer { return v.P }
 func GestureSingleGetType() gi.GType {
-	ret := _I.GetGType(230, "GestureSingle")
+	ret := _I.GetGType(155, "GestureSingle")
 	return ret
 }
 
@@ -26351,7 +26163,7 @@ type IGestureStylus interface{ P_GestureStylus() unsafe.Pointer }
 
 func (v GestureStylus) P_GestureStylus() unsafe.Pointer { return v.P }
 func GestureStylusGetType() gi.GType {
-	ret := _I.GetGType(231, "GestureStylus")
+	ret := _I.GetGType(156, "GestureStylus")
 	return ret
 }
 
@@ -26462,7 +26274,7 @@ type IGestureSwipe interface{ P_GestureSwipe() unsafe.Pointer }
 
 func (v GestureSwipe) P_GestureSwipe() unsafe.Pointer { return v.P }
 func GestureSwipeGetType() gi.GType {
-	ret := _I.GetGType(232, "GestureSwipe")
+	ret := _I.GetGType(157, "GestureSwipe")
 	return ret
 }
 
@@ -26530,7 +26342,7 @@ type IGestureZoom interface{ P_GestureZoom() unsafe.Pointer }
 
 func (v GestureZoom) P_GestureZoom() unsafe.Pointer { return v.P }
 func GestureZoomGetType() gi.GType {
-	ret := _I.GetGType(233, "GestureZoom")
+	ret := _I.GetGType(158, "GestureZoom")
 	return ret
 }
 
@@ -26584,7 +26396,7 @@ type Gradient struct {
 }
 
 func GradientGetType() gi.GType {
-	ret := _I.GetGType(234, "Gradient")
+	ret := _I.GetGType(159, "Gradient")
 	return ret
 }
 
@@ -26802,7 +26614,7 @@ type IGrid interface{ P_Grid() unsafe.Pointer }
 func (v Grid) P_Grid() unsafe.Pointer       { return v.P }
 func (v Grid) P_Orientable() unsafe.Pointer { return v.P }
 func GridGetType() gi.GType {
-	ret := _I.GetGType(235, "Grid")
+	ret := _I.GetGType(160, "Grid")
 	return ret
 }
 
@@ -27213,15 +27025,7 @@ func (v Grid) SetRowSpacing(spacing uint32) {
 
 // ignore GType struct GridClass
 
-// Struct GridPrivate
-type GridPrivate struct {
-	P unsafe.Pointer
-}
-
-func GridPrivateGetType() gi.GType {
-	ret := _I.GetGType(236, "GridPrivate")
-	return ret
-}
+// ignore private struct GridPrivate, type of Grid is object
 
 // Object HBox
 type HBox struct {
@@ -27234,7 +27038,7 @@ type IHBox interface{ P_HBox() unsafe.Pointer }
 
 func (v HBox) P_HBox() unsafe.Pointer { return v.P }
 func HBoxGetType() gi.GType {
-	ret := _I.GetGType(237, "HBox")
+	ret := _I.GetGType(161, "HBox")
 	return ret
 }
 
@@ -27276,7 +27080,7 @@ type IHButtonBox interface{ P_HButtonBox() unsafe.Pointer }
 
 func (v HButtonBox) P_HButtonBox() unsafe.Pointer { return v.P }
 func HButtonBoxGetType() gi.GType {
-	ret := _I.GetGType(238, "HButtonBox")
+	ret := _I.GetGType(162, "HButtonBox")
 	return ret
 }
 
@@ -27311,7 +27115,7 @@ type IHPaned interface{ P_HPaned() unsafe.Pointer }
 
 func (v HPaned) P_HPaned() unsafe.Pointer { return v.P }
 func HPanedGetType() gi.GType {
-	ret := _I.GetGType(239, "HPaned")
+	ret := _I.GetGType(163, "HPaned")
 	return ret
 }
 
@@ -27346,7 +27150,7 @@ type IHSV interface{ P_HSV() unsafe.Pointer }
 
 func (v HSV) P_HSV() unsafe.Pointer { return v.P }
 func HSVGetType() gi.GType {
-	ret := _I.GetGType(240, "HSV")
+	ret := _I.GetGType(164, "HSV")
 	return ret
 }
 
@@ -27512,15 +27316,7 @@ func (v HSV) SetMetrics(size int32, ring_width int32) {
 
 // ignore GType struct HSVClass
 
-// Struct HSVPrivate
-type HSVPrivate struct {
-	P unsafe.Pointer
-}
-
-func HSVPrivateGetType() gi.GType {
-	ret := _I.GetGType(241, "HSVPrivate")
-	return ret
-}
+// ignore private struct HSVPrivate, type of HSV is object
 
 // Object HScale
 type HScale struct {
@@ -27533,7 +27329,7 @@ type IHScale interface{ P_HScale() unsafe.Pointer }
 
 func (v HScale) P_HScale() unsafe.Pointer { return v.P }
 func HScaleGetType() gi.GType {
-	ret := _I.GetGType(242, "HScale")
+	ret := _I.GetGType(165, "HScale")
 	return ret
 }
 
@@ -27604,7 +27400,7 @@ type IHScrollbar interface{ P_HScrollbar() unsafe.Pointer }
 
 func (v HScrollbar) P_HScrollbar() unsafe.Pointer { return v.P }
 func HScrollbarGetType() gi.GType {
-	ret := _I.GetGType(243, "HScrollbar")
+	ret := _I.GetGType(166, "HScrollbar")
 	return ret
 }
 
@@ -27647,7 +27443,7 @@ type IHSeparator interface{ P_HSeparator() unsafe.Pointer }
 
 func (v HSeparator) P_HSeparator() unsafe.Pointer { return v.P }
 func HSeparatorGetType() gi.GType {
-	ret := _I.GetGType(244, "HSeparator")
+	ret := _I.GetGType(167, "HSeparator")
 	return ret
 }
 
@@ -27682,7 +27478,7 @@ type IHandleBox interface{ P_HandleBox() unsafe.Pointer }
 
 func (v HandleBox) P_HandleBox() unsafe.Pointer { return v.P }
 func HandleBoxGetType() gi.GType {
-	ret := _I.GetGType(245, "HandleBox")
+	ret := _I.GetGType(168, "HandleBox")
 	return ret
 }
 
@@ -27840,15 +27636,7 @@ func (v HandleBox) SetSnapEdge(edge PositionTypeEnum) {
 
 // ignore GType struct HandleBoxClass
 
-// Struct HandleBoxPrivate
-type HandleBoxPrivate struct {
-	P unsafe.Pointer
-}
-
-func HandleBoxPrivateGetType() gi.GType {
-	ret := _I.GetGType(246, "HandleBoxPrivate")
-	return ret
-}
+// ignore private struct HandleBoxPrivate, type of HandleBox is object
 
 // Object HeaderBar
 type HeaderBar struct {
@@ -27861,7 +27649,7 @@ type IHeaderBar interface{ P_HeaderBar() unsafe.Pointer }
 
 func (v HeaderBar) P_HeaderBar() unsafe.Pointer { return v.P }
 func HeaderBarGetType() gi.GType {
-	ret := _I.GetGType(247, "HeaderBar")
+	ret := _I.GetGType(169, "HeaderBar")
 	return ret
 }
 
@@ -28137,15 +27925,7 @@ func (v HeaderBar) SetTitle(title string) {
 
 // ignore GType struct HeaderBarClass
 
-// Struct HeaderBarPrivate
-type HeaderBarPrivate struct {
-	P unsafe.Pointer
-}
-
-func HeaderBarPrivateGetType() gi.GType {
-	ret := _I.GetGType(248, "HeaderBarPrivate")
-	return ret
-}
+// ignore private struct HeaderBarPrivate, type of HeaderBar is object
 
 // Object IMContext
 type IMContext struct {
@@ -28158,7 +27938,7 @@ type IIMContext interface{ P_IMContext() unsafe.Pointer }
 
 func (v IMContext) P_IMContext() unsafe.Pointer { return v.P }
 func IMContextGetType() gi.GType {
-	ret := _I.GetGType(249, "IMContext")
+	ret := _I.GetGType(170, "IMContext")
 	return ret
 }
 
@@ -28386,8 +28166,27 @@ type IMContextInfo struct {
 const SizeOfStructIMContextInfo = 40
 
 func IMContextInfoGetType() gi.GType {
-	ret := _I.GetGType(250, "IMContextInfo")
+	ret := _I.GetGType(171, "IMContextInfo")
 	return ret
+}
+
+func (v IMContextInfo) p() *C.GtkIMContextInfo {
+	return (*C.GtkIMContextInfo)(v.P)
+}
+func (v IMContextInfo) ContextId() (result int /*TODO*/) {
+	return
+}
+func (v IMContextInfo) ContextName() (result int /*TODO*/) {
+	return
+}
+func (v IMContextInfo) Domain() (result int /*TODO*/) {
+	return
+}
+func (v IMContextInfo) DomainDirname() (result int /*TODO*/) {
+	return
+}
+func (v IMContextInfo) DefaultLocales() (result int /*TODO*/) {
+	return
 }
 
 // Object IMContextSimple
@@ -28401,7 +28200,7 @@ type IIMContextSimple interface{ P_IMContextSimple() unsafe.Pointer }
 
 func (v IMContextSimple) P_IMContextSimple() unsafe.Pointer { return v.P }
 func IMContextSimpleGetType() gi.GType {
-	ret := _I.GetGType(251, "IMContextSimple")
+	ret := _I.GetGType(172, "IMContextSimple")
 	return ret
 }
 
@@ -28441,15 +28240,7 @@ func (v IMContextSimple) AddComposeFile(compose_file string) {
 
 // ignore GType struct IMContextSimpleClass
 
-// Struct IMContextSimplePrivate
-type IMContextSimplePrivate struct {
-	P unsafe.Pointer
-}
-
-func IMContextSimplePrivateGetType() gi.GType {
-	ret := _I.GetGType(252, "IMContextSimplePrivate")
-	return ret
-}
+// ignore private struct IMContextSimplePrivate, type of IMContextSimple is object
 
 // Object IMMulticontext
 type IMMulticontext struct {
@@ -28462,7 +28253,7 @@ type IIMMulticontext interface{ P_IMMulticontext() unsafe.Pointer }
 
 func (v IMMulticontext) P_IMMulticontext() unsafe.Pointer { return v.P }
 func IMMulticontextGetType() gi.GType {
-	ret := _I.GetGType(253, "IMMulticontext")
+	ret := _I.GetGType(173, "IMMulticontext")
 	return ret
 }
 
@@ -28542,15 +28333,7 @@ func (v IMMulticontext) SetContextId(context_id string) {
 
 // ignore GType struct IMMulticontextClass
 
-// Struct IMMulticontextPrivate
-type IMMulticontextPrivate struct {
-	P unsafe.Pointer
-}
-
-func IMMulticontextPrivateGetType() gi.GType {
-	ret := _I.GetGType(254, "IMMulticontextPrivate")
-	return ret
-}
+// ignore private struct IMMulticontextPrivate, type of IMMulticontext is object
 
 // Deprecated
 //
@@ -28564,7 +28347,7 @@ const (
 )
 
 func IMPreeditStyleGetType() gi.GType {
-	ret := _I.GetGType(255, "IMPreeditStyle")
+	ret := _I.GetGType(174, "IMPreeditStyle")
 	return ret
 }
 
@@ -28580,7 +28363,7 @@ const (
 )
 
 func IMStatusStyleGetType() gi.GType {
-	ret := _I.GetGType(256, "IMStatusStyle")
+	ret := _I.GetGType(175, "IMStatusStyle")
 	return ret
 }
 
@@ -28597,7 +28380,7 @@ type IIconFactory interface{ P_IconFactory() unsafe.Pointer }
 func (v IconFactory) P_IconFactory() unsafe.Pointer { return v.P }
 func (v IconFactory) P_Buildable() unsafe.Pointer   { return v.P }
 func IconFactoryGetType() gi.GType {
-	ret := _I.GetGType(257, "IconFactory")
+	ret := _I.GetGType(176, "IconFactory")
 	return ret
 }
 
@@ -28723,15 +28506,7 @@ func (v IconFactory) RemoveDefault() {
 
 // ignore GType struct IconFactoryClass
 
-// Struct IconFactoryPrivate
-type IconFactoryPrivate struct {
-	P unsafe.Pointer
-}
-
-func IconFactoryPrivateGetType() gi.GType {
-	ret := _I.GetGType(258, "IconFactoryPrivate")
-	return ret
-}
+// ignore private struct IconFactoryPrivate, type of IconFactory is object
 
 // Object IconInfo
 type IconInfo struct {
@@ -28744,7 +28519,7 @@ type IIconInfo interface{ P_IconInfo() unsafe.Pointer }
 
 func (v IconInfo) P_IconInfo() unsafe.Pointer { return v.P }
 func IconInfoGetType() gi.GType {
-	ret := _I.GetGType(259, "IconInfo")
+	ret := _I.GetGType(177, "IconInfo")
 	return ret
 }
 
@@ -29341,7 +29116,7 @@ const (
 )
 
 func IconLookupFlagsGetType() gi.GType {
-	ret := _I.GetGType(260, "IconLookupFlags")
+	ret := _I.GetGType(178, "IconLookupFlags")
 	return ret
 }
 
@@ -29351,7 +29126,7 @@ type IconSet struct {
 }
 
 func IconSetGetType() gi.GType {
-	ret := _I.GetGType(261, "IconSet")
+	ret := _I.GetGType(179, "IconSet")
 	return ret
 }
 
@@ -29632,7 +29407,7 @@ const (
 )
 
 func IconSizeGetType() gi.GType {
-	ret := _I.GetGType(262, "IconSize")
+	ret := _I.GetGType(180, "IconSize")
 	return ret
 }
 
@@ -29642,7 +29417,7 @@ type IconSource struct {
 }
 
 func IconSourceGetType() gi.GType {
-	ret := _I.GetGType(263, "IconSource")
+	ret := _I.GetGType(181, "IconSource")
 	return ret
 }
 
@@ -30060,7 +29835,7 @@ type IIconTheme interface{ P_IconTheme() unsafe.Pointer }
 
 func (v IconTheme) P_IconTheme() unsafe.Pointer { return v.P }
 func IconThemeGetType() gi.GType {
-	ret := _I.GetGType(264, "IconTheme")
+	ret := _I.GetGType(182, "IconTheme")
 	return ret
 }
 
@@ -30709,19 +30484,11 @@ const (
 )
 
 func IconThemeErrorGetType() gi.GType {
-	ret := _I.GetGType(265, "IconThemeError")
+	ret := _I.GetGType(183, "IconThemeError")
 	return ret
 }
 
-// Struct IconThemePrivate
-type IconThemePrivate struct {
-	P unsafe.Pointer
-}
-
-func IconThemePrivateGetType() gi.GType {
-	ret := _I.GetGType(266, "IconThemePrivate")
-	return ret
-}
+// ignore private struct IconThemePrivate, type of IconTheme is object
 
 // Object IconView
 type IconView struct {
@@ -30738,7 +30505,7 @@ func (v IconView) P_IconView() unsafe.Pointer   { return v.P }
 func (v IconView) P_CellLayout() unsafe.Pointer { return v.P }
 func (v IconView) P_Scrollable() unsafe.Pointer { return v.P }
 func IconViewGetType() gi.GType {
-	ret := _I.GetGType(267, "IconView")
+	ret := _I.GetGType(184, "IconView")
 	return ret
 }
 
@@ -32032,21 +31799,13 @@ type IIconViewAccessible interface{ P_IconViewAccessible() unsafe.Pointer }
 func (v IconViewAccessible) P_IconViewAccessible() unsafe.Pointer { return v.P }
 func (v IconViewAccessible) P_Selection() unsafe.Pointer          { return v.P }
 func IconViewAccessibleGetType() gi.GType {
-	ret := _I.GetGType(268, "IconViewAccessible")
+	ret := _I.GetGType(185, "IconViewAccessible")
 	return ret
 }
 
 // ignore GType struct IconViewAccessibleClass
 
-// Struct IconViewAccessiblePrivate
-type IconViewAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func IconViewAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(269, "IconViewAccessiblePrivate")
-	return ret
-}
+// ignore private struct IconViewAccessiblePrivate, type of IconViewAccessible is object
 
 // ignore GType struct IconViewClass
 
@@ -32063,7 +31822,7 @@ const (
 )
 
 func IconViewDropPositionGetType() gi.GType {
-	ret := _I.GetGType(270, "IconViewDropPosition")
+	ret := _I.GetGType(186, "IconViewDropPosition")
 	return ret
 }
 
@@ -32078,15 +31837,7 @@ func CallIconViewForeachFunc(fn IconViewForeachFunc, result unsafe.Pointer, args
 	fn(icon_view, path)
 }
 
-// Struct IconViewPrivate
-type IconViewPrivate struct {
-	P unsafe.Pointer
-}
-
-func IconViewPrivateGetType() gi.GType {
-	ret := _I.GetGType(271, "IconViewPrivate")
-	return ret
-}
+// ignore private struct IconViewPrivate, type of IconView is object
 
 // Object Image
 type Image struct {
@@ -32099,7 +31850,7 @@ type IImage interface{ P_Image() unsafe.Pointer }
 
 func (v Image) P_Image() unsafe.Pointer { return v.P }
 func ImageGetType() gi.GType {
-	ret := _I.GetGType(272, "Image")
+	ret := _I.GetGType(187, "Image")
 	return ret
 }
 
@@ -32725,21 +32476,13 @@ type IImageAccessible interface{ P_ImageAccessible() unsafe.Pointer }
 func (v ImageAccessible) P_ImageAccessible() unsafe.Pointer { return v.P }
 func (v ImageAccessible) P_Image() unsafe.Pointer           { return v.P }
 func ImageAccessibleGetType() gi.GType {
-	ret := _I.GetGType(273, "ImageAccessible")
+	ret := _I.GetGType(188, "ImageAccessible")
 	return ret
 }
 
 // ignore GType struct ImageAccessibleClass
 
-// Struct ImageAccessiblePrivate
-type ImageAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ImageAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(274, "ImageAccessiblePrivate")
-	return ret
-}
+// ignore private struct ImageAccessiblePrivate, type of ImageAccessible is object
 
 // Object ImageCellAccessible
 type ImageCellAccessible struct {
@@ -32754,21 +32497,13 @@ type IImageCellAccessible interface{ P_ImageCellAccessible() unsafe.Pointer }
 func (v ImageCellAccessible) P_ImageCellAccessible() unsafe.Pointer { return v.P }
 func (v ImageCellAccessible) P_Image() unsafe.Pointer               { return v.P }
 func ImageCellAccessibleGetType() gi.GType {
-	ret := _I.GetGType(275, "ImageCellAccessible")
+	ret := _I.GetGType(189, "ImageCellAccessible")
 	return ret
 }
 
 // ignore GType struct ImageCellAccessibleClass
 
-// Struct ImageCellAccessiblePrivate
-type ImageCellAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ImageCellAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(276, "ImageCellAccessiblePrivate")
-	return ret
-}
+// ignore private struct ImageCellAccessiblePrivate, type of ImageCellAccessible is object
 
 // ignore GType struct ImageClass
 
@@ -32783,7 +32518,7 @@ type IImageMenuItem interface{ P_ImageMenuItem() unsafe.Pointer }
 
 func (v ImageMenuItem) P_ImageMenuItem() unsafe.Pointer { return v.P }
 func ImageMenuItemGetType() gi.GType {
-	ret := _I.GetGType(277, "ImageMenuItem")
+	ret := _I.GetGType(190, "ImageMenuItem")
 	return ret
 }
 
@@ -33026,25 +32761,9 @@ func (v ImageMenuItem) SetUseStock(use_stock bool) {
 
 // ignore GType struct ImageMenuItemClass
 
-// Struct ImageMenuItemPrivate
-type ImageMenuItemPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct ImageMenuItemPrivate, type of ImageMenuItem is object
 
-func ImageMenuItemPrivateGetType() gi.GType {
-	ret := _I.GetGType(278, "ImageMenuItemPrivate")
-	return ret
-}
-
-// Struct ImagePrivate
-type ImagePrivate struct {
-	P unsafe.Pointer
-}
-
-func ImagePrivateGetType() gi.GType {
-	ret := _I.GetGType(279, "ImagePrivate")
-	return ret
-}
+// ignore private struct ImagePrivate, type of Image is object
 
 // Enum ImageType
 type ImageTypeEnum int
@@ -33061,7 +32780,7 @@ const (
 )
 
 func ImageTypeGetType() gi.GType {
-	ret := _I.GetGType(280, "ImageType")
+	ret := _I.GetGType(191, "ImageType")
 	return ret
 }
 
@@ -33076,7 +32795,7 @@ type IInfoBar interface{ P_InfoBar() unsafe.Pointer }
 
 func (v InfoBar) P_InfoBar() unsafe.Pointer { return v.P }
 func InfoBarGetType() gi.GType {
-	ret := _I.GetGType(281, "InfoBar")
+	ret := _I.GetGType(192, "InfoBar")
 	return ret
 }
 
@@ -33336,15 +33055,7 @@ func (v InfoBar) SetShowCloseButton(setting bool) {
 
 // ignore GType struct InfoBarClass
 
-// Struct InfoBarPrivate
-type InfoBarPrivate struct {
-	P unsafe.Pointer
-}
-
-func InfoBarPrivateGetType() gi.GType {
-	ret := _I.GetGType(282, "InfoBarPrivate")
-	return ret
-}
+// ignore private struct InfoBarPrivate, type of InfoBar is object
 
 // Flags InputHints
 type InputHintsFlags int
@@ -33365,7 +33076,7 @@ const (
 )
 
 func InputHintsGetType() gi.GType {
-	ret := _I.GetGType(283, "InputHints")
+	ret := _I.GetGType(193, "InputHints")
 	return ret
 }
 
@@ -33386,7 +33097,7 @@ const (
 )
 
 func InputPurposeGetType() gi.GType {
-	ret := _I.GetGType(284, "InputPurpose")
+	ret := _I.GetGType(194, "InputPurpose")
 	return ret
 }
 
@@ -33401,7 +33112,7 @@ type IInvisible interface{ P_Invisible() unsafe.Pointer }
 
 func (v Invisible) P_Invisible() unsafe.Pointer { return v.P }
 func InvisibleGetType() gi.GType {
-	ret := _I.GetGType(285, "Invisible")
+	ret := _I.GetGType(195, "Invisible")
 	return ret
 }
 
@@ -33485,15 +33196,7 @@ func (v Invisible) SetScreen(screen gdk.IScreen) {
 
 // ignore GType struct InvisibleClass
 
-// Struct InvisiblePrivate
-type InvisiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func InvisiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(286, "InvisiblePrivate")
-	return ret
-}
+// ignore private struct InvisiblePrivate, type of Invisible is object
 
 // Flags JunctionSides
 type JunctionSidesFlags int
@@ -33511,7 +33214,7 @@ const (
 )
 
 func JunctionSidesGetType() gi.GType {
-	ret := _I.GetGType(287, "JunctionSides")
+	ret := _I.GetGType(196, "JunctionSides")
 	return ret
 }
 
@@ -33526,7 +33229,7 @@ const (
 )
 
 func JustificationGetType() gi.GType {
-	ret := _I.GetGType(288, "Justification")
+	ret := _I.GetGType(197, "Justification")
 	return ret
 }
 
@@ -33553,7 +33256,7 @@ type ILabel interface{ P_Label() unsafe.Pointer }
 
 func (v Label) P_Label() unsafe.Pointer { return v.P }
 func LabelGetType() gi.GType {
-	ret := _I.GetGType(289, "Label")
+	ret := _I.GetGType(198, "Label")
 	return ret
 }
 
@@ -34465,33 +34168,17 @@ func (v LabelAccessible) P_LabelAccessible() unsafe.Pointer { return v.P }
 func (v LabelAccessible) P_Hypertext() unsafe.Pointer       { return v.P }
 func (v LabelAccessible) P_Text() unsafe.Pointer            { return v.P }
 func LabelAccessibleGetType() gi.GType {
-	ret := _I.GetGType(290, "LabelAccessible")
+	ret := _I.GetGType(199, "LabelAccessible")
 	return ret
 }
 
 // ignore GType struct LabelAccessibleClass
 
-// Struct LabelAccessiblePrivate
-type LabelAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func LabelAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(291, "LabelAccessiblePrivate")
-	return ret
-}
+// ignore private struct LabelAccessiblePrivate, type of LabelAccessible is object
 
 // ignore GType struct LabelClass
 
-// Struct LabelPrivate
-type LabelPrivate struct {
-	P unsafe.Pointer
-}
-
-func LabelPrivateGetType() gi.GType {
-	ret := _I.GetGType(292, "LabelPrivate")
-	return ret
-}
+// ignore private struct LabelPrivate, type of Label is object
 
 // Struct LabelSelectionInfo
 type LabelSelectionInfo struct {
@@ -34499,7 +34186,7 @@ type LabelSelectionInfo struct {
 }
 
 func LabelSelectionInfoGetType() gi.GType {
-	ret := _I.GetGType(293, "LabelSelectionInfo")
+	ret := _I.GetGType(200, "LabelSelectionInfo")
 	return ret
 }
 
@@ -34516,7 +34203,7 @@ type ILayout interface{ P_Layout() unsafe.Pointer }
 func (v Layout) P_Layout() unsafe.Pointer     { return v.P }
 func (v Layout) P_Scrollable() unsafe.Pointer { return v.P }
 func LayoutGetType() gi.GType {
-	ret := _I.GetGType(294, "Layout")
+	ret := _I.GetGType(201, "Layout")
 	return ret
 }
 
@@ -34749,15 +34436,7 @@ func (v Layout) SetVadjustment(adjustment IAdjustment) {
 
 // ignore GType struct LayoutClass
 
-// Struct LayoutPrivate
-type LayoutPrivate struct {
-	P unsafe.Pointer
-}
-
-func LayoutPrivateGetType() gi.GType {
-	ret := _I.GetGType(295, "LayoutPrivate")
-	return ret
-}
+// ignore private struct LayoutPrivate, type of Layout is object
 
 // Object LevelBar
 type LevelBar struct {
@@ -34772,7 +34451,7 @@ type ILevelBar interface{ P_LevelBar() unsafe.Pointer }
 func (v LevelBar) P_LevelBar() unsafe.Pointer   { return v.P }
 func (v LevelBar) P_Orientable() unsafe.Pointer { return v.P }
 func LevelBarGetType() gi.GType {
-	ret := _I.GetGType(296, "LevelBar")
+	ret := _I.GetGType(202, "LevelBar")
 	return ret
 }
 
@@ -35065,21 +34744,13 @@ type ILevelBarAccessible interface{ P_LevelBarAccessible() unsafe.Pointer }
 func (v LevelBarAccessible) P_LevelBarAccessible() unsafe.Pointer { return v.P }
 func (v LevelBarAccessible) P_Value() unsafe.Pointer              { return v.P }
 func LevelBarAccessibleGetType() gi.GType {
-	ret := _I.GetGType(297, "LevelBarAccessible")
+	ret := _I.GetGType(203, "LevelBarAccessible")
 	return ret
 }
 
 // ignore GType struct LevelBarAccessibleClass
 
-// Struct LevelBarAccessiblePrivate
-type LevelBarAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func LevelBarAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(298, "LevelBarAccessiblePrivate")
-	return ret
-}
+// ignore private struct LevelBarAccessiblePrivate, type of LevelBarAccessible is object
 
 // ignore GType struct LevelBarClass
 
@@ -35092,19 +34763,11 @@ const (
 )
 
 func LevelBarModeGetType() gi.GType {
-	ret := _I.GetGType(299, "LevelBarMode")
+	ret := _I.GetGType(204, "LevelBarMode")
 	return ret
 }
 
-// Struct LevelBarPrivate
-type LevelBarPrivate struct {
-	P unsafe.Pointer
-}
-
-func LevelBarPrivateGetType() gi.GType {
-	ret := _I.GetGType(300, "LevelBarPrivate")
-	return ret
-}
+// ignore private struct LevelBarPrivate, type of LevelBar is object
 
 // Enum License
 type LicenseEnum int
@@ -35128,7 +34791,7 @@ const (
 )
 
 func LicenseGetType() gi.GType {
-	ret := _I.GetGType(301, "License")
+	ret := _I.GetGType(205, "License")
 	return ret
 }
 
@@ -35143,7 +34806,7 @@ type ILinkButton interface{ P_LinkButton() unsafe.Pointer }
 
 func (v LinkButton) P_LinkButton() unsafe.Pointer { return v.P }
 func LinkButtonGetType() gi.GType {
-	ret := _I.GetGType(302, "LinkButton")
+	ret := _I.GetGType(206, "LinkButton")
 	return ret
 }
 
@@ -35279,33 +34942,17 @@ type ILinkButtonAccessible interface{ P_LinkButtonAccessible() unsafe.Pointer }
 func (v LinkButtonAccessible) P_LinkButtonAccessible() unsafe.Pointer { return v.P }
 func (v LinkButtonAccessible) P_HyperlinkImpl() unsafe.Pointer        { return v.P }
 func LinkButtonAccessibleGetType() gi.GType {
-	ret := _I.GetGType(303, "LinkButtonAccessible")
+	ret := _I.GetGType(207, "LinkButtonAccessible")
 	return ret
 }
 
 // ignore GType struct LinkButtonAccessibleClass
 
-// Struct LinkButtonAccessiblePrivate
-type LinkButtonAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func LinkButtonAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(304, "LinkButtonAccessiblePrivate")
-	return ret
-}
+// ignore private struct LinkButtonAccessiblePrivate, type of LinkButtonAccessible is object
 
 // ignore GType struct LinkButtonClass
 
-// Struct LinkButtonPrivate
-type LinkButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func LinkButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(305, "LinkButtonPrivate")
-	return ret
-}
+// ignore private struct LinkButtonPrivate, type of LinkButton is object
 
 // Object ListBox
 type ListBox struct {
@@ -35318,7 +34965,7 @@ type IListBox interface{ P_ListBox() unsafe.Pointer }
 
 func (v ListBox) P_ListBox() unsafe.Pointer { return v.P }
 func ListBoxGetType() gi.GType {
-	ret := _I.GetGType(306, "ListBox")
+	ret := _I.GetGType(208, "ListBox")
 	return ret
 }
 
@@ -35896,21 +35543,13 @@ type IListBoxAccessible interface{ P_ListBoxAccessible() unsafe.Pointer }
 func (v ListBoxAccessible) P_ListBoxAccessible() unsafe.Pointer { return v.P }
 func (v ListBoxAccessible) P_Selection() unsafe.Pointer         { return v.P }
 func ListBoxAccessibleGetType() gi.GType {
-	ret := _I.GetGType(307, "ListBoxAccessible")
+	ret := _I.GetGType(209, "ListBoxAccessible")
 	return ret
 }
 
 // ignore GType struct ListBoxAccessibleClass
 
-// Struct ListBoxAccessiblePrivate
-type ListBoxAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ListBoxAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(308, "ListBoxAccessiblePrivate")
-	return ret
-}
+// ignore private struct ListBoxAccessiblePrivate, type of ListBoxAccessible is object
 
 // ignore GType struct ListBoxClass
 
@@ -35960,7 +35599,7 @@ type IListBoxRow interface{ P_ListBoxRow() unsafe.Pointer }
 func (v ListBoxRow) P_ListBoxRow() unsafe.Pointer { return v.P }
 func (v ListBoxRow) P_Actionable() unsafe.Pointer { return v.P }
 func ListBoxRowGetType() gi.GType {
-	ret := _I.GetGType(309, "ListBoxRow")
+	ret := _I.GetGType(210, "ListBoxRow")
 	return ret
 }
 
@@ -36146,7 +35785,7 @@ type IListBoxRowAccessible interface{ P_ListBoxRowAccessible() unsafe.Pointer }
 
 func (v ListBoxRowAccessible) P_ListBoxRowAccessible() unsafe.Pointer { return v.P }
 func ListBoxRowAccessibleGetType() gi.GType {
-	ret := _I.GetGType(310, "ListBoxRowAccessible")
+	ret := _I.GetGType(211, "ListBoxRowAccessible")
 	return ret
 }
 
@@ -36198,7 +35837,7 @@ func (v ListStore) P_TreeDragSource() unsafe.Pointer { return v.P }
 func (v ListStore) P_TreeModel() unsafe.Pointer      { return v.P }
 func (v ListStore) P_TreeSortable() unsafe.Pointer   { return v.P }
 func ListStoreGetType() gi.GType {
-	ret := _I.GetGType(311, "ListStore")
+	ret := _I.GetGType(212, "ListStore")
 	return ret
 }
 
@@ -36538,15 +36177,7 @@ func (v ListStore) Swap(a TreeIter, b TreeIter) {
 
 // ignore GType struct ListStoreClass
 
-// Struct ListStorePrivate
-type ListStorePrivate struct {
-	P unsafe.Pointer
-}
-
-func ListStorePrivateGetType() gi.GType {
-	ret := _I.GetGType(312, "ListStorePrivate")
-	return ret
-}
+// ignore private struct ListStorePrivate, type of ListStore is object
 
 // Object LockButton
 type LockButton struct {
@@ -36559,7 +36190,7 @@ type ILockButton interface{ P_LockButton() unsafe.Pointer }
 
 func (v LockButton) P_LockButton() unsafe.Pointer { return v.P }
 func LockButtonGetType() gi.GType {
-	ret := _I.GetGType(313, "LockButton")
+	ret := _I.GetGType(213, "LockButton")
 	return ret
 }
 
@@ -36636,33 +36267,17 @@ type ILockButtonAccessible interface{ P_LockButtonAccessible() unsafe.Pointer }
 
 func (v LockButtonAccessible) P_LockButtonAccessible() unsafe.Pointer { return v.P }
 func LockButtonAccessibleGetType() gi.GType {
-	ret := _I.GetGType(314, "LockButtonAccessible")
+	ret := _I.GetGType(214, "LockButtonAccessible")
 	return ret
 }
 
 // ignore GType struct LockButtonAccessibleClass
 
-// Struct LockButtonAccessiblePrivate
-type LockButtonAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func LockButtonAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(315, "LockButtonAccessiblePrivate")
-	return ret
-}
+// ignore private struct LockButtonAccessiblePrivate, type of LockButtonAccessible is object
 
 // ignore GType struct LockButtonClass
 
-// Struct LockButtonPrivate
-type LockButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func LockButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(316, "LockButtonPrivate")
-	return ret
-}
+// ignore private struct LockButtonPrivate, type of LockButton is object
 
 // Object Menu
 type Menu struct {
@@ -36675,7 +36290,7 @@ type IMenu interface{ P_Menu() unsafe.Pointer }
 
 func (v Menu) P_Menu() unsafe.Pointer { return v.P }
 func MenuGetType() gi.GType {
-	ret := _I.GetGType(317, "Menu")
+	ret := _I.GetGType(215, "Menu")
 	return ret
 }
 
@@ -37377,21 +36992,13 @@ type IMenuAccessible interface{ P_MenuAccessible() unsafe.Pointer }
 
 func (v MenuAccessible) P_MenuAccessible() unsafe.Pointer { return v.P }
 func MenuAccessibleGetType() gi.GType {
-	ret := _I.GetGType(318, "MenuAccessible")
+	ret := _I.GetGType(216, "MenuAccessible")
 	return ret
 }
 
 // ignore GType struct MenuAccessibleClass
 
-// Struct MenuAccessiblePrivate
-type MenuAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(319, "MenuAccessiblePrivate")
-	return ret
-}
+// ignore private struct MenuAccessiblePrivate, type of MenuAccessible is object
 
 // Object MenuBar
 type MenuBar struct {
@@ -37404,7 +37011,7 @@ type IMenuBar interface{ P_MenuBar() unsafe.Pointer }
 
 func (v MenuBar) P_MenuBar() unsafe.Pointer { return v.P }
 func MenuBarGetType() gi.GType {
-	ret := _I.GetGType(320, "MenuBar")
+	ret := _I.GetGType(217, "MenuBar")
 	return ret
 }
 
@@ -37518,15 +37125,7 @@ func (v MenuBar) SetPackDirection(pack_dir PackDirectionEnum) {
 
 // ignore GType struct MenuBarClass
 
-// Struct MenuBarPrivate
-type MenuBarPrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuBarPrivateGetType() gi.GType {
-	ret := _I.GetGType(321, "MenuBarPrivate")
-	return ret
-}
+// ignore private struct MenuBarPrivate, type of MenuBar is object
 
 // Object MenuButton
 type MenuButton struct {
@@ -37539,7 +37138,7 @@ type IMenuButton interface{ P_MenuButton() unsafe.Pointer }
 
 func (v MenuButton) P_MenuButton() unsafe.Pointer { return v.P }
 func MenuButtonGetType() gi.GType {
-	ret := _I.GetGType(322, "MenuButton")
+	ret := _I.GetGType(218, "MenuButton")
 	return ret
 }
 
@@ -37790,33 +37389,17 @@ type IMenuButtonAccessible interface{ P_MenuButtonAccessible() unsafe.Pointer }
 
 func (v MenuButtonAccessible) P_MenuButtonAccessible() unsafe.Pointer { return v.P }
 func MenuButtonAccessibleGetType() gi.GType {
-	ret := _I.GetGType(323, "MenuButtonAccessible")
+	ret := _I.GetGType(219, "MenuButtonAccessible")
 	return ret
 }
 
 // ignore GType struct MenuButtonAccessibleClass
 
-// Struct MenuButtonAccessiblePrivate
-type MenuButtonAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuButtonAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(324, "MenuButtonAccessiblePrivate")
-	return ret
-}
+// ignore private struct MenuButtonAccessiblePrivate, type of MenuButtonAccessible is object
 
 // ignore GType struct MenuButtonClass
 
-// Struct MenuButtonPrivate
-type MenuButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(325, "MenuButtonPrivate")
-	return ret
-}
+// ignore private struct MenuButtonPrivate, type of MenuButton is object
 
 // ignore GType struct MenuClass
 
@@ -37842,7 +37425,7 @@ const (
 )
 
 func MenuDirectionTypeGetType() gi.GType {
-	ret := _I.GetGType(326, "MenuDirectionType")
+	ret := _I.GetGType(220, "MenuDirectionType")
 	return ret
 }
 
@@ -37861,7 +37444,7 @@ func (v MenuItem) P_MenuItem() unsafe.Pointer    { return v.P }
 func (v MenuItem) P_Actionable() unsafe.Pointer  { return v.P }
 func (v MenuItem) P_Activatable() unsafe.Pointer { return v.P }
 func MenuItemGetType() gi.GType {
-	ret := _I.GetGType(327, "MenuItem")
+	ret := _I.GetGType(221, "MenuItem")
 	return ret
 }
 
@@ -38227,33 +37810,17 @@ func (v MenuItemAccessible) P_MenuItemAccessible() unsafe.Pointer { return v.P }
 func (v MenuItemAccessible) P_Action() unsafe.Pointer             { return v.P }
 func (v MenuItemAccessible) P_Selection() unsafe.Pointer          { return v.P }
 func MenuItemAccessibleGetType() gi.GType {
-	ret := _I.GetGType(328, "MenuItemAccessible")
+	ret := _I.GetGType(222, "MenuItemAccessible")
 	return ret
 }
 
 // ignore GType struct MenuItemAccessibleClass
 
-// Struct MenuItemAccessiblePrivate
-type MenuItemAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuItemAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(329, "MenuItemAccessiblePrivate")
-	return ret
-}
+// ignore private struct MenuItemAccessiblePrivate, type of MenuItemAccessible is object
 
 // ignore GType struct MenuItemClass
 
-// Struct MenuItemPrivate
-type MenuItemPrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuItemPrivateGetType() gi.GType {
-	ret := _I.GetGType(330, "MenuItemPrivate")
-	return ret
-}
+// ignore private struct MenuItemPrivate, type of MenuItem is object
 
 type MenuPositionFunc func(menu Menu, x unsafe.Pointer /*TODO_CB dir:inout tag: gint32, isPtr: false*/, y unsafe.Pointer /*TODO_CB dir:inout tag: gint32, isPtr: false*/) (push_in bool)
 
@@ -38269,15 +37836,7 @@ func CallMenuPositionFunc(fn MenuPositionFunc, result unsafe.Pointer, args []uns
 	*push_in = int32(gi.Bool2Int(fn_ret_push_in))
 }
 
-// Struct MenuPrivate
-type MenuPrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuPrivateGetType() gi.GType {
-	ret := _I.GetGType(331, "MenuPrivate")
-	return ret
-}
+// ignore private struct MenuPrivate, type of Menu is object
 
 // Object MenuShell
 type MenuShell struct {
@@ -38290,7 +37849,7 @@ type IMenuShell interface{ P_MenuShell() unsafe.Pointer }
 
 func (v MenuShell) P_MenuShell() unsafe.Pointer { return v.P }
 func MenuShellGetType() gi.GType {
-	ret := _I.GetGType(332, "MenuShell")
+	ret := _I.GetGType(223, "MenuShell")
 	return ret
 }
 
@@ -38566,33 +38125,17 @@ type IMenuShellAccessible interface{ P_MenuShellAccessible() unsafe.Pointer }
 func (v MenuShellAccessible) P_MenuShellAccessible() unsafe.Pointer { return v.P }
 func (v MenuShellAccessible) P_Selection() unsafe.Pointer           { return v.P }
 func MenuShellAccessibleGetType() gi.GType {
-	ret := _I.GetGType(333, "MenuShellAccessible")
+	ret := _I.GetGType(224, "MenuShellAccessible")
 	return ret
 }
 
 // ignore GType struct MenuShellAccessibleClass
 
-// Struct MenuShellAccessiblePrivate
-type MenuShellAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuShellAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(334, "MenuShellAccessiblePrivate")
-	return ret
-}
+// ignore private struct MenuShellAccessiblePrivate, type of MenuShellAccessible is object
 
 // ignore GType struct MenuShellClass
 
-// Struct MenuShellPrivate
-type MenuShellPrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuShellPrivateGetType() gi.GType {
-	ret := _I.GetGType(335, "MenuShellPrivate")
-	return ret
-}
+// ignore private struct MenuShellPrivate, type of MenuShell is object
 
 // Object MenuToolButton
 type MenuToolButton struct {
@@ -38605,7 +38148,7 @@ type IMenuToolButton interface{ P_MenuToolButton() unsafe.Pointer }
 
 func (v MenuToolButton) P_MenuToolButton() unsafe.Pointer { return v.P }
 func MenuToolButtonGetType() gi.GType {
-	ret := _I.GetGType(336, "MenuToolButton")
+	ret := _I.GetGType(225, "MenuToolButton")
 	return ret
 }
 
@@ -38738,15 +38281,7 @@ func (v MenuToolButton) SetMenu(menu IWidget) {
 
 // ignore GType struct MenuToolButtonClass
 
-// Struct MenuToolButtonPrivate
-type MenuToolButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuToolButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(337, "MenuToolButtonPrivate")
-	return ret
-}
+// ignore private struct MenuToolButtonPrivate, type of MenuToolButton is object
 
 // Object MessageDialog
 type MessageDialog struct {
@@ -38759,7 +38294,7 @@ type IMessageDialog interface{ P_MessageDialog() unsafe.Pointer }
 
 func (v MessageDialog) P_MessageDialog() unsafe.Pointer { return v.P }
 func MessageDialogGetType() gi.GType {
-	ret := _I.GetGType(338, "MessageDialog")
+	ret := _I.GetGType(226, "MessageDialog")
 	return ret
 }
 
@@ -38843,15 +38378,7 @@ func (v MessageDialog) SetMarkup(str string) {
 
 // ignore GType struct MessageDialogClass
 
-// Struct MessageDialogPrivate
-type MessageDialogPrivate struct {
-	P unsafe.Pointer
-}
-
-func MessageDialogPrivateGetType() gi.GType {
-	ret := _I.GetGType(339, "MessageDialogPrivate")
-	return ret
-}
+// ignore private struct MessageDialogPrivate, type of MessageDialog is object
 
 // Enum MessageType
 type MessageTypeEnum int
@@ -38865,7 +38392,7 @@ const (
 )
 
 func MessageTypeGetType() gi.GType {
-	ret := _I.GetGType(340, "MessageType")
+	ret := _I.GetGType(227, "MessageType")
 	return ret
 }
 
@@ -38880,7 +38407,7 @@ type IMisc interface{ P_Misc() unsafe.Pointer }
 
 func (v Misc) P_Misc() unsafe.Pointer { return v.P }
 func MiscGetType() gi.GType {
-	ret := _I.GetGType(341, "Misc")
+	ret := _I.GetGType(228, "Misc")
 	return ret
 }
 
@@ -38978,15 +38505,7 @@ func (v Misc) SetPadding(xpad int32, ypad int32) {
 
 // ignore GType struct MiscClass
 
-// Struct MiscPrivate
-type MiscPrivate struct {
-	P unsafe.Pointer
-}
-
-func MiscPrivateGetType() gi.GType {
-	ret := _I.GetGType(342, "MiscPrivate")
-	return ret
-}
+// ignore private struct MiscPrivate, type of Misc is object
 
 // Object ModelButton
 type ModelButton struct {
@@ -38999,7 +38518,7 @@ type IModelButton interface{ P_ModelButton() unsafe.Pointer }
 
 func (v ModelButton) P_ModelButton() unsafe.Pointer { return v.P }
 func ModelButtonGetType() gi.GType {
-	ret := _I.GetGType(343, "ModelButton")
+	ret := _I.GetGType(229, "ModelButton")
 	return ret
 }
 
@@ -39051,7 +38570,7 @@ type IMountOperation interface{ P_MountOperation() unsafe.Pointer }
 
 func (v MountOperation) P_MountOperation() unsafe.Pointer { return v.P }
 func MountOperationGetType() gi.GType {
-	ret := _I.GetGType(344, "MountOperation")
+	ret := _I.GetGType(230, "MountOperation")
 	return ret
 }
 
@@ -39175,15 +38694,7 @@ func (v MountOperation) SetScreen(screen gdk.IScreen) {
 
 // ignore GType struct MountOperationClass
 
-// Struct MountOperationPrivate
-type MountOperationPrivate struct {
-	P unsafe.Pointer
-}
-
-func MountOperationPrivateGetType() gi.GType {
-	ret := _I.GetGType(345, "MountOperationPrivate")
-	return ret
-}
+// ignore private struct MountOperationPrivate, type of MountOperation is object
 
 // Enum MovementStep
 type MovementStepEnum int
@@ -39202,7 +38713,7 @@ const (
 )
 
 func MovementStepGetType() gi.GType {
-	ret := _I.GetGType(346, "MovementStep")
+	ret := _I.GetGType(231, "MovementStep")
 	return ret
 }
 
@@ -39217,7 +38728,7 @@ type INativeDialog interface{ P_NativeDialog() unsafe.Pointer }
 
 func (v NativeDialog) P_NativeDialog() unsafe.Pointer { return v.P }
 func NativeDialogGetType() gi.GType {
-	ret := _I.GetGType(347, "NativeDialog")
+	ret := _I.GetGType(232, "NativeDialog")
 	return ret
 }
 
@@ -39417,7 +38928,7 @@ type INotebook interface{ P_Notebook() unsafe.Pointer }
 
 func (v Notebook) P_Notebook() unsafe.Pointer { return v.P }
 func NotebookGetType() gi.GType {
-	ret := _I.GetGType(348, "Notebook")
+	ret := _I.GetGType(233, "Notebook")
 	return ret
 }
 
@@ -40434,21 +39945,13 @@ type INotebookAccessible interface{ P_NotebookAccessible() unsafe.Pointer }
 func (v NotebookAccessible) P_NotebookAccessible() unsafe.Pointer { return v.P }
 func (v NotebookAccessible) P_Selection() unsafe.Pointer          { return v.P }
 func NotebookAccessibleGetType() gi.GType {
-	ret := _I.GetGType(349, "NotebookAccessible")
+	ret := _I.GetGType(234, "NotebookAccessible")
 	return ret
 }
 
 // ignore GType struct NotebookAccessibleClass
 
-// Struct NotebookAccessiblePrivate
-type NotebookAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func NotebookAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(350, "NotebookAccessiblePrivate")
-	return ret
-}
+// ignore private struct NotebookAccessiblePrivate, type of NotebookAccessible is object
 
 // ignore GType struct NotebookClass
 
@@ -40465,7 +39968,7 @@ type INotebookPageAccessible interface{ P_NotebookPageAccessible() unsafe.Pointe
 func (v NotebookPageAccessible) P_NotebookPageAccessible() unsafe.Pointer { return v.P }
 func (v NotebookPageAccessible) P_Component() unsafe.Pointer              { return v.P }
 func NotebookPageAccessibleGetType() gi.GType {
-	ret := _I.GetGType(351, "NotebookPageAccessible")
+	ret := _I.GetGType(235, "NotebookPageAccessible")
 	return ret
 }
 
@@ -40515,25 +40018,9 @@ func (v NotebookPageAccessible) Invalidate() {
 
 // ignore GType struct NotebookPageAccessibleClass
 
-// Struct NotebookPageAccessiblePrivate
-type NotebookPageAccessiblePrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct NotebookPageAccessiblePrivate, type of NotebookPageAccessible is object
 
-func NotebookPageAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(352, "NotebookPageAccessiblePrivate")
-	return ret
-}
-
-// Struct NotebookPrivate
-type NotebookPrivate struct {
-	P unsafe.Pointer
-}
-
-func NotebookPrivateGetType() gi.GType {
-	ret := _I.GetGType(353, "NotebookPrivate")
-	return ret
-}
+// ignore private struct NotebookPrivate, type of Notebook is object
 
 // Enum NotebookTab
 type NotebookTabEnum int
@@ -40544,7 +40031,7 @@ const (
 )
 
 func NotebookTabGetType() gi.GType {
-	ret := _I.GetGType(354, "NotebookTab")
+	ret := _I.GetGType(236, "NotebookTab")
 	return ret
 }
 
@@ -40563,7 +40050,7 @@ const (
 )
 
 func NumberUpLayoutGetType() gi.GType {
-	ret := _I.GetGType(355, "NumberUpLayout")
+	ret := _I.GetGType(237, "NumberUpLayout")
 	return ret
 }
 
@@ -40578,7 +40065,7 @@ type INumerableIcon interface{ P_NumerableIcon() unsafe.Pointer }
 
 func (v NumerableIcon) P_NumerableIcon() unsafe.Pointer { return v.P }
 func NumerableIconGetType() gi.GType {
-	ret := _I.GetGType(356, "NumerableIcon")
+	ret := _I.GetGType(238, "NumerableIcon")
 	return ret
 }
 
@@ -40845,15 +40332,7 @@ func (v NumerableIcon) SetStyleContext(style IStyleContext) {
 
 // ignore GType struct NumerableIconClass
 
-// Struct NumerableIconPrivate
-type NumerableIconPrivate struct {
-	P unsafe.Pointer
-}
-
-func NumerableIconPrivateGetType() gi.GType {
-	ret := _I.GetGType(357, "NumerableIconPrivate")
-	return ret
-}
+// ignore private struct NumerableIconPrivate, type of NumerableIcon is object
 
 // Object OffscreenWindow
 type OffscreenWindow struct {
@@ -40866,7 +40345,7 @@ type IOffscreenWindow interface{ P_OffscreenWindow() unsafe.Pointer }
 
 func (v OffscreenWindow) P_OffscreenWindow() unsafe.Pointer { return v.P }
 func OffscreenWindowGetType() gi.GType {
-	ret := _I.GetGType(358, "OffscreenWindow")
+	ret := _I.GetGType(239, "OffscreenWindow")
 	return ret
 }
 
@@ -40934,7 +40413,7 @@ type IOrientable interface{ P_Orientable() unsafe.Pointer }
 
 func (v Orientable) P_Orientable() unsafe.Pointer { return v.P }
 func OrientableGetType() gi.GType {
-	ret := _I.GetGType(359, "Orientable")
+	ret := _I.GetGType(240, "Orientable")
 	return ret
 }
 
@@ -40983,7 +40462,7 @@ const (
 )
 
 func OrientationGetType() gi.GType {
-	ret := _I.GetGType(360, "Orientation")
+	ret := _I.GetGType(241, "Orientation")
 	return ret
 }
 
@@ -40998,7 +40477,7 @@ type IOverlay interface{ P_Overlay() unsafe.Pointer }
 
 func (v Overlay) P_Overlay() unsafe.Pointer { return v.P }
 func OverlayGetType() gi.GType {
-	ret := _I.GetGType(361, "Overlay")
+	ret := _I.GetGType(242, "Overlay")
 	return ret
 }
 
@@ -41111,15 +40590,7 @@ func (v Overlay) SetOverlayPassThrough(widget IWidget, pass_through bool) {
 
 // ignore GType struct OverlayClass
 
-// Struct OverlayPrivate
-type OverlayPrivate struct {
-	P unsafe.Pointer
-}
-
-func OverlayPrivateGetType() gi.GType {
-	ret := _I.GetGType(362, "OverlayPrivate")
-	return ret
-}
+// ignore private struct OverlayPrivate, type of Overlay is object
 
 // Enum PackDirection
 type PackDirectionEnum int
@@ -41132,7 +40603,7 @@ const (
 )
 
 func PackDirectionGetType() gi.GType {
-	ret := _I.GetGType(363, "PackDirection")
+	ret := _I.GetGType(243, "PackDirection")
 	return ret
 }
 
@@ -41145,7 +40616,7 @@ const (
 )
 
 func PackTypeGetType() gi.GType {
-	ret := _I.GetGType(364, "PackType")
+	ret := _I.GetGType(244, "PackType")
 	return ret
 }
 
@@ -41157,8 +40628,29 @@ type PadActionEntry struct {
 const SizeOfStructPadActionEntry = 32
 
 func PadActionEntryGetType() gi.GType {
-	ret := _I.GetGType(365, "PadActionEntry")
+	ret := _I.GetGType(245, "PadActionEntry")
 	return ret
+}
+
+func (v PadActionEntry) p() *C.GtkPadActionEntry {
+	return (*C.GtkPadActionEntry)(v.P)
+}
+func (v PadActionEntry) Type() (result int /*TODO*/) {
+	return
+}
+func (v PadActionEntry) Index() (result int32) {
+	result = int32(v.p().index)
+	return
+}
+func (v PadActionEntry) Mode() (result int32) {
+	result = int32(v.p().mode)
+	return
+}
+func (v PadActionEntry) Label() (result int /*TODO*/) {
+	return
+}
+func (v PadActionEntry) ActionName() (result int /*TODO*/) {
+	return
 }
 
 // Enum PadActionType
@@ -41171,7 +40663,7 @@ const (
 )
 
 func PadActionTypeGetType() gi.GType {
-	ret := _I.GetGType(366, "PadActionType")
+	ret := _I.GetGType(246, "PadActionType")
 	return ret
 }
 
@@ -41186,7 +40678,7 @@ type IPadController interface{ P_PadController() unsafe.Pointer }
 
 func (v PadController) P_PadController() unsafe.Pointer { return v.P }
 func PadControllerGetType() gi.GType {
-	ret := _I.GetGType(367, "PadController")
+	ret := _I.GetGType(247, "PadController")
 	return ret
 }
 
@@ -41292,7 +40784,7 @@ const (
 )
 
 func PageOrientationGetType() gi.GType {
-	ret := _I.GetGType(368, "PageOrientation")
+	ret := _I.GetGType(248, "PageOrientation")
 	return ret
 }
 
@@ -41304,8 +40796,20 @@ type PageRange struct {
 const SizeOfStructPageRange = 8
 
 func PageRangeGetType() gi.GType {
-	ret := _I.GetGType(369, "PageRange")
+	ret := _I.GetGType(249, "PageRange")
 	return ret
+}
+
+func (v PageRange) p() *C.GtkPageRange {
+	return (*C.GtkPageRange)(v.P)
+}
+func (v PageRange) Start() (result int32) {
+	result = int32(v.p().start)
+	return
+}
+func (v PageRange) End() (result int32) {
+	result = int32(v.p().end)
+	return
 }
 
 // Enum PageSet
@@ -41318,7 +40822,7 @@ const (
 )
 
 func PageSetGetType() gi.GType {
-	ret := _I.GetGType(370, "PageSet")
+	ret := _I.GetGType(250, "PageSet")
 	return ret
 }
 
@@ -41333,7 +40837,7 @@ type IPageSetup interface{ P_PageSetup() unsafe.Pointer }
 
 func (v PageSetup) P_PageSetup() unsafe.Pointer { return v.P }
 func PageSetupGetType() gi.GType {
-	ret := _I.GetGType(371, "PageSetup")
+	ret := _I.GetGType(251, "PageSetup")
 	return ret
 }
 
@@ -41908,7 +41412,7 @@ const (
 )
 
 func PanDirectionGetType() gi.GType {
-	ret := _I.GetGType(372, "PanDirection")
+	ret := _I.GetGType(252, "PanDirection")
 	return ret
 }
 
@@ -41925,7 +41429,7 @@ type IPaned interface{ P_Paned() unsafe.Pointer }
 func (v Paned) P_Paned() unsafe.Pointer      { return v.P }
 func (v Paned) P_Orientable() unsafe.Pointer { return v.P }
 func PanedGetType() gi.GType {
-	ret := _I.GetGType(373, "Paned")
+	ret := _I.GetGType(253, "Paned")
 	return ret
 }
 
@@ -42176,33 +41680,17 @@ type IPanedAccessible interface{ P_PanedAccessible() unsafe.Pointer }
 func (v PanedAccessible) P_PanedAccessible() unsafe.Pointer { return v.P }
 func (v PanedAccessible) P_Value() unsafe.Pointer           { return v.P }
 func PanedAccessibleGetType() gi.GType {
-	ret := _I.GetGType(374, "PanedAccessible")
+	ret := _I.GetGType(254, "PanedAccessible")
 	return ret
 }
 
 // ignore GType struct PanedAccessibleClass
 
-// Struct PanedAccessiblePrivate
-type PanedAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func PanedAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(375, "PanedAccessiblePrivate")
-	return ret
-}
+// ignore private struct PanedAccessiblePrivate, type of PanedAccessible is object
 
 // ignore GType struct PanedClass
 
-// Struct PanedPrivate
-type PanedPrivate struct {
-	P unsafe.Pointer
-}
-
-func PanedPrivateGetType() gi.GType {
-	ret := _I.GetGType(376, "PanedPrivate")
-	return ret
-}
+// ignore private struct PanedPrivate, type of Paned is object
 
 // Struct PaperSize
 type PaperSize struct {
@@ -42210,7 +41698,7 @@ type PaperSize struct {
 }
 
 func PaperSizeGetType() gi.GType {
-	ret := _I.GetGType(377, "PaperSize")
+	ret := _I.GetGType(255, "PaperSize")
 	return ret
 }
 
@@ -42760,7 +42248,7 @@ const (
 )
 
 func PathPriorityTypeGetType() gi.GType {
-	ret := _I.GetGType(378, "PathPriorityType")
+	ret := _I.GetGType(256, "PathPriorityType")
 	return ret
 }
 
@@ -42776,7 +42264,7 @@ const (
 )
 
 func PathTypeGetType() gi.GType {
-	ret := _I.GetGType(379, "PathType")
+	ret := _I.GetGType(257, "PathType")
 	return ret
 }
 
@@ -42790,7 +42278,7 @@ const (
 )
 
 func PlacesOpenFlagsGetType() gi.GType {
-	ret := _I.GetGType(380, "PlacesOpenFlags")
+	ret := _I.GetGType(258, "PlacesOpenFlags")
 	return ret
 }
 
@@ -42805,7 +42293,7 @@ type IPlacesSidebar interface{ P_PlacesSidebar() unsafe.Pointer }
 
 func (v PlacesSidebar) P_PlacesSidebar() unsafe.Pointer { return v.P }
 func PlacesSidebarGetType() gi.GType {
-	ret := _I.GetGType(381, "PlacesSidebar")
+	ret := _I.GetGType(259, "PlacesSidebar")
 	return ret
 }
 
@@ -43288,7 +42776,7 @@ type IPlug interface{ P_Plug() unsafe.Pointer }
 
 func (v Plug) P_Plug() unsafe.Pointer { return v.P }
 func PlugGetType() gi.GType {
-	ret := _I.GetGType(382, "Plug")
+	ret := _I.GetGType(260, "Plug")
 	return ret
 }
 
@@ -43434,15 +42922,7 @@ func (v Plug) GetSocketWindow() (result gdk.Window) {
 
 // ignore GType struct PlugClass
 
-// Struct PlugPrivate
-type PlugPrivate struct {
-	P unsafe.Pointer
-}
-
-func PlugPrivateGetType() gi.GType {
-	ret := _I.GetGType(383, "PlugPrivate")
-	return ret
-}
+// ignore private struct PlugPrivate, type of Plug is object
 
 // Enum PolicyType
 type PolicyTypeEnum int
@@ -43455,7 +42935,7 @@ const (
 )
 
 func PolicyTypeGetType() gi.GType {
-	ret := _I.GetGType(384, "PolicyType")
+	ret := _I.GetGType(261, "PolicyType")
 	return ret
 }
 
@@ -43470,7 +42950,7 @@ type IPopover interface{ P_Popover() unsafe.Pointer }
 
 func (v Popover) P_Popover() unsafe.Pointer { return v.P }
 func PopoverGetType() gi.GType {
-	ret := _I.GetGType(385, "Popover")
+	ret := _I.GetGType(262, "Popover")
 	return ret
 }
 
@@ -43844,7 +43324,7 @@ type IPopoverAccessible interface{ P_PopoverAccessible() unsafe.Pointer }
 
 func (v PopoverAccessible) P_PopoverAccessible() unsafe.Pointer { return v.P }
 func PopoverAccessibleGetType() gi.GType {
-	ret := _I.GetGType(386, "PopoverAccessible")
+	ret := _I.GetGType(263, "PopoverAccessible")
 	return ret
 }
 
@@ -43861,7 +43341,7 @@ const (
 )
 
 func PopoverConstraintGetType() gi.GType {
-	ret := _I.GetGType(387, "PopoverConstraint")
+	ret := _I.GetGType(264, "PopoverConstraint")
 	return ret
 }
 
@@ -43876,7 +43356,7 @@ type IPopoverMenu interface{ P_PopoverMenu() unsafe.Pointer }
 
 func (v PopoverMenu) P_PopoverMenu() unsafe.Pointer { return v.P }
 func PopoverMenuGetType() gi.GType {
-	ret := _I.GetGType(388, "PopoverMenu")
+	ret := _I.GetGType(265, "PopoverMenu")
 	return ret
 }
 
@@ -43916,15 +43396,7 @@ func (v PopoverMenu) OpenSubmenu(name string) {
 
 // ignore GType struct PopoverMenuClass
 
-// Struct PopoverPrivate
-type PopoverPrivate struct {
-	P unsafe.Pointer
-}
-
-func PopoverPrivateGetType() gi.GType {
-	ret := _I.GetGType(389, "PopoverPrivate")
-	return ret
-}
+// ignore private struct PopoverPrivate, type of Popover is object
 
 // Enum PositionType
 type PositionTypeEnum int
@@ -43937,7 +43409,7 @@ const (
 )
 
 func PositionTypeGetType() gi.GType {
-	ret := _I.GetGType(390, "PositionType")
+	ret := _I.GetGType(266, "PositionType")
 	return ret
 }
 
@@ -43952,7 +43424,7 @@ type IPrintContext interface{ P_PrintContext() unsafe.Pointer }
 
 func (v PrintContext) P_PrintContext() unsafe.Pointer { return v.P }
 func PrintContextGetType() gi.GType {
-	ret := _I.GetGType(391, "PrintContext")
+	ret := _I.GetGType(267, "PrintContext")
 	return ret
 }
 
@@ -44185,7 +43657,7 @@ const (
 )
 
 func PrintDuplexGetType() gi.GType {
-	ret := _I.GetGType(392, "PrintDuplex")
+	ret := _I.GetGType(268, "PrintDuplex")
 	return ret
 }
 
@@ -44200,7 +43672,7 @@ const (
 )
 
 func PrintErrorGetType() gi.GType {
-	ret := _I.GetGType(393, "PrintError")
+	ret := _I.GetGType(269, "PrintError")
 	return ret
 }
 
@@ -44217,7 +43689,7 @@ type IPrintOperation interface{ P_PrintOperation() unsafe.Pointer }
 func (v PrintOperation) P_PrintOperation() unsafe.Pointer        { return v.P }
 func (v PrintOperation) P_PrintOperationPreview() unsafe.Pointer { return v.P }
 func PrintOperationGetType() gi.GType {
-	ret := _I.GetGType(394, "PrintOperation")
+	ret := _I.GetGType(270, "PrintOperation")
 	return ret
 }
 
@@ -44749,7 +44221,7 @@ const (
 )
 
 func PrintOperationActionGetType() gi.GType {
-	ret := _I.GetGType(395, "PrintOperationAction")
+	ret := _I.GetGType(271, "PrintOperationAction")
 	return ret
 }
 
@@ -44765,7 +44237,7 @@ type IPrintOperationPreview interface{ P_PrintOperationPreview() unsafe.Pointer 
 
 func (v PrintOperationPreview) P_PrintOperationPreview() unsafe.Pointer { return v.P }
 func PrintOperationPreviewGetType() gi.GType {
-	ret := _I.GetGType(396, "PrintOperationPreview")
+	ret := _I.GetGType(272, "PrintOperationPreview")
 	return ret
 }
 
@@ -44821,15 +44293,7 @@ func (v *PrintOperationPreviewIfc) RenderPage(page_nr int32) {
 
 // ignore GType struct PrintOperationPreviewIface
 
-// Struct PrintOperationPrivate
-type PrintOperationPrivate struct {
-	P unsafe.Pointer
-}
-
-func PrintOperationPrivateGetType() gi.GType {
-	ret := _I.GetGType(397, "PrintOperationPrivate")
-	return ret
-}
+// ignore private struct PrintOperationPrivate, type of PrintOperation is object
 
 // Enum PrintOperationResult
 type PrintOperationResultEnum int
@@ -44842,7 +44306,7 @@ const (
 )
 
 func PrintOperationResultGetType() gi.GType {
-	ret := _I.GetGType(398, "PrintOperationResult")
+	ret := _I.GetGType(273, "PrintOperationResult")
 	return ret
 }
 
@@ -44857,7 +44321,7 @@ const (
 )
 
 func PrintPagesGetType() gi.GType {
-	ret := _I.GetGType(399, "PrintPages")
+	ret := _I.GetGType(274, "PrintPages")
 	return ret
 }
 
@@ -44872,7 +44336,7 @@ const (
 )
 
 func PrintQualityGetType() gi.GType {
-	ret := _I.GetGType(400, "PrintQuality")
+	ret := _I.GetGType(275, "PrintQuality")
 	return ret
 }
 
@@ -44887,7 +44351,7 @@ type IPrintSettings interface{ P_PrintSettings() unsafe.Pointer }
 
 func (v PrintSettings) P_PrintSettings() unsafe.Pointer { return v.P }
 func PrintSettingsGetType() gi.GType {
-	ret := _I.GetGType(401, "PrintSettings")
+	ret := _I.GetGType(276, "PrintSettings")
 	return ret
 }
 
@@ -46395,7 +45859,7 @@ const (
 )
 
 func PrintStatusGetType() gi.GType {
-	ret := _I.GetGType(402, "PrintStatus")
+	ret := _I.GetGType(277, "PrintStatus")
 	return ret
 }
 
@@ -46412,7 +45876,7 @@ type IProgressBar interface{ P_ProgressBar() unsafe.Pointer }
 func (v ProgressBar) P_ProgressBar() unsafe.Pointer { return v.P }
 func (v ProgressBar) P_Orientable() unsafe.Pointer  { return v.P }
 func ProgressBarGetType() gi.GType {
-	ret := _I.GetGType(403, "ProgressBar")
+	ret := _I.GetGType(278, "ProgressBar")
 	return ret
 }
 
@@ -46664,33 +46128,17 @@ type IProgressBarAccessible interface{ P_ProgressBarAccessible() unsafe.Pointer 
 func (v ProgressBarAccessible) P_ProgressBarAccessible() unsafe.Pointer { return v.P }
 func (v ProgressBarAccessible) P_Value() unsafe.Pointer                 { return v.P }
 func ProgressBarAccessibleGetType() gi.GType {
-	ret := _I.GetGType(404, "ProgressBarAccessible")
+	ret := _I.GetGType(279, "ProgressBarAccessible")
 	return ret
 }
 
 // ignore GType struct ProgressBarAccessibleClass
 
-// Struct ProgressBarAccessiblePrivate
-type ProgressBarAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ProgressBarAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(405, "ProgressBarAccessiblePrivate")
-	return ret
-}
+// ignore private struct ProgressBarAccessiblePrivate, type of ProgressBarAccessible is object
 
 // ignore GType struct ProgressBarClass
 
-// Struct ProgressBarPrivate
-type ProgressBarPrivate struct {
-	P unsafe.Pointer
-}
-
-func ProgressBarPrivateGetType() gi.GType {
-	ret := _I.GetGType(406, "ProgressBarPrivate")
-	return ret
-}
+// ignore private struct ProgressBarPrivate, type of ProgressBar is object
 
 // Enum PropagationPhase
 type PropagationPhaseEnum int
@@ -46703,7 +46151,7 @@ const (
 )
 
 func PropagationPhaseGetType() gi.GType {
-	ret := _I.GetGType(407, "PropagationPhase")
+	ret := _I.GetGType(280, "PropagationPhase")
 	return ret
 }
 
@@ -46718,7 +46166,7 @@ type IRadioAction interface{ P_RadioAction() unsafe.Pointer }
 
 func (v RadioAction) P_RadioAction() unsafe.Pointer { return v.P }
 func RadioActionGetType() gi.GType {
-	ret := _I.GetGType(408, "RadioAction")
+	ret := _I.GetGType(281, "RadioAction")
 	return ret
 }
 
@@ -46874,19 +46322,34 @@ type RadioActionEntry struct {
 const SizeOfStructRadioActionEntry = 48
 
 func RadioActionEntryGetType() gi.GType {
-	ret := _I.GetGType(409, "RadioActionEntry")
+	ret := _I.GetGType(282, "RadioActionEntry")
 	return ret
 }
 
-// Struct RadioActionPrivate
-type RadioActionPrivate struct {
-	P unsafe.Pointer
+func (v RadioActionEntry) p() *C.GtkRadioActionEntry {
+	return (*C.GtkRadioActionEntry)(v.P)
+}
+func (v RadioActionEntry) Name() (result int /*TODO*/) {
+	return
+}
+func (v RadioActionEntry) StockId() (result int /*TODO*/) {
+	return
+}
+func (v RadioActionEntry) Label() (result int /*TODO*/) {
+	return
+}
+func (v RadioActionEntry) Accelerator() (result int /*TODO*/) {
+	return
+}
+func (v RadioActionEntry) Tooltip() (result int /*TODO*/) {
+	return
+}
+func (v RadioActionEntry) Value() (result int32) {
+	result = int32(v.p().value)
+	return
 }
 
-func RadioActionPrivateGetType() gi.GType {
-	ret := _I.GetGType(410, "RadioActionPrivate")
-	return ret
-}
+// ignore private struct RadioActionPrivate, type of RadioAction is object
 
 // Object RadioButton
 type RadioButton struct {
@@ -46899,7 +46362,7 @@ type IRadioButton interface{ P_RadioButton() unsafe.Pointer }
 
 func (v RadioButton) P_RadioButton() unsafe.Pointer { return v.P }
 func RadioButtonGetType() gi.GType {
-	ret := _I.GetGType(411, "RadioButton")
+	ret := _I.GetGType(283, "RadioButton")
 	return ret
 }
 
@@ -47120,33 +46583,17 @@ type IRadioButtonAccessible interface{ P_RadioButtonAccessible() unsafe.Pointer 
 
 func (v RadioButtonAccessible) P_RadioButtonAccessible() unsafe.Pointer { return v.P }
 func RadioButtonAccessibleGetType() gi.GType {
-	ret := _I.GetGType(412, "RadioButtonAccessible")
+	ret := _I.GetGType(284, "RadioButtonAccessible")
 	return ret
 }
 
 // ignore GType struct RadioButtonAccessibleClass
 
-// Struct RadioButtonAccessiblePrivate
-type RadioButtonAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func RadioButtonAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(413, "RadioButtonAccessiblePrivate")
-	return ret
-}
+// ignore private struct RadioButtonAccessiblePrivate, type of RadioButtonAccessible is object
 
 // ignore GType struct RadioButtonClass
 
-// Struct RadioButtonPrivate
-type RadioButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func RadioButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(414, "RadioButtonPrivate")
-	return ret
-}
+// ignore private struct RadioButtonPrivate, type of RadioButton is object
 
 // Object RadioMenuItem
 type RadioMenuItem struct {
@@ -47159,7 +46606,7 @@ type IRadioMenuItem interface{ P_RadioMenuItem() unsafe.Pointer }
 
 func (v RadioMenuItem) P_RadioMenuItem() unsafe.Pointer { return v.P }
 func RadioMenuItemGetType() gi.GType {
-	ret := _I.GetGType(415, "RadioMenuItem")
+	ret := _I.GetGType(285, "RadioMenuItem")
 	return ret
 }
 
@@ -47380,33 +46827,17 @@ type IRadioMenuItemAccessible interface{ P_RadioMenuItemAccessible() unsafe.Poin
 
 func (v RadioMenuItemAccessible) P_RadioMenuItemAccessible() unsafe.Pointer { return v.P }
 func RadioMenuItemAccessibleGetType() gi.GType {
-	ret := _I.GetGType(416, "RadioMenuItemAccessible")
+	ret := _I.GetGType(286, "RadioMenuItemAccessible")
 	return ret
 }
 
 // ignore GType struct RadioMenuItemAccessibleClass
 
-// Struct RadioMenuItemAccessiblePrivate
-type RadioMenuItemAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func RadioMenuItemAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(417, "RadioMenuItemAccessiblePrivate")
-	return ret
-}
+// ignore private struct RadioMenuItemAccessiblePrivate, type of RadioMenuItemAccessible is object
 
 // ignore GType struct RadioMenuItemClass
 
-// Struct RadioMenuItemPrivate
-type RadioMenuItemPrivate struct {
-	P unsafe.Pointer
-}
-
-func RadioMenuItemPrivateGetType() gi.GType {
-	ret := _I.GetGType(418, "RadioMenuItemPrivate")
-	return ret
-}
+// ignore private struct RadioMenuItemPrivate, type of RadioMenuItem is object
 
 // Object RadioToolButton
 type RadioToolButton struct {
@@ -47419,7 +46850,7 @@ type IRadioToolButton interface{ P_RadioToolButton() unsafe.Pointer }
 
 func (v RadioToolButton) P_RadioToolButton() unsafe.Pointer { return v.P }
 func RadioToolButtonGetType() gi.GType {
-	ret := _I.GetGType(419, "RadioToolButton")
+	ret := _I.GetGType(287, "RadioToolButton")
 	return ret
 }
 
@@ -47574,7 +47005,7 @@ type IRange interface{ P_Range() unsafe.Pointer }
 func (v Range) P_Range() unsafe.Pointer      { return v.P }
 func (v Range) P_Orientable() unsafe.Pointer { return v.P }
 func RangeGetType() gi.GType {
-	ret := _I.GetGType(420, "Range")
+	ret := _I.GetGType(288, "Range")
 	return ret
 }
 
@@ -48084,33 +47515,17 @@ type IRangeAccessible interface{ P_RangeAccessible() unsafe.Pointer }
 func (v RangeAccessible) P_RangeAccessible() unsafe.Pointer { return v.P }
 func (v RangeAccessible) P_Value() unsafe.Pointer           { return v.P }
 func RangeAccessibleGetType() gi.GType {
-	ret := _I.GetGType(421, "RangeAccessible")
+	ret := _I.GetGType(289, "RangeAccessible")
 	return ret
 }
 
 // ignore GType struct RangeAccessibleClass
 
-// Struct RangeAccessiblePrivate
-type RangeAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func RangeAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(422, "RangeAccessiblePrivate")
-	return ret
-}
+// ignore private struct RangeAccessiblePrivate, type of RangeAccessible is object
 
 // ignore GType struct RangeClass
 
-// Struct RangePrivate
-type RangePrivate struct {
-	P unsafe.Pointer
-}
-
-func RangePrivateGetType() gi.GType {
-	ret := _I.GetGType(423, "RangePrivate")
-	return ret
-}
+// ignore private struct RangePrivate, type of Range is object
 
 // Struct RcContext
 type RcContext struct {
@@ -48118,7 +47533,7 @@ type RcContext struct {
 }
 
 func RcContextGetType() gi.GType {
-	ret := _I.GetGType(424, "RcContext")
+	ret := _I.GetGType(290, "RcContext")
 	return ret
 }
 
@@ -48133,7 +47548,7 @@ const (
 )
 
 func RcFlagsGetType() gi.GType {
-	ret := _I.GetGType(425, "RcFlags")
+	ret := _I.GetGType(291, "RcFlags")
 	return ret
 }
 
@@ -48145,7 +47560,7 @@ type RcProperty struct {
 const SizeOfStructRcProperty = 40
 
 func RcPropertyGetType() gi.GType {
-	ret := _I.GetGType(426, "RcProperty")
+	ret := _I.GetGType(292, "RcProperty")
 	return ret
 }
 
@@ -48299,6 +47714,24 @@ func RcPropertyParseRequisition1(pspec g.IParamSpec, gstring g.String, property_
 	return
 }
 
+func (v RcProperty) p() *C.GtkRcProperty {
+	return (*C.GtkRcProperty)(v.P)
+}
+func (v RcProperty) TypeName() (result uint32) {
+	result = uint32(v.p().type_name)
+	return
+}
+func (v RcProperty) PropertyName() (result uint32) {
+	result = uint32(v.p().property_name)
+	return
+}
+func (v RcProperty) Origin() (result int /*TODO*/) {
+	return
+}
+func (v RcProperty) Value() (result int /*TODO*/) {
+	return
+}
+
 type RcPropertyParser func(pspec g.ParamSpec, rc_string g.String, property_value g.Value) (result bool)
 
 func CallRcPropertyParser(fn RcPropertyParser, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -48323,7 +47756,7 @@ type IRcStyle interface{ P_RcStyle() unsafe.Pointer }
 
 func (v RcStyle) P_RcStyle() unsafe.Pointer { return v.P }
 func RcStyleGetType() gi.GType {
-	ret := _I.GetGType(427, "RcStyle")
+	ret := _I.GetGType(293, "RcStyle")
 	return ret
 }
 
@@ -48416,7 +47849,7 @@ const (
 )
 
 func RcTokenTypeGetType() gi.GType {
-	ret := _I.GetGType(428, "RcTokenType")
+	ret := _I.GetGType(294, "RcTokenType")
 	return ret
 }
 
@@ -48433,7 +47866,7 @@ type IRecentAction interface{ P_RecentAction() unsafe.Pointer }
 func (v RecentAction) P_RecentAction() unsafe.Pointer  { return v.P }
 func (v RecentAction) P_RecentChooser() unsafe.Pointer { return v.P }
 func RecentActionGetType() gi.GType {
-	ret := _I.GetGType(429, "RecentAction")
+	ret := _I.GetGType(295, "RecentAction")
 	return ret
 }
 
@@ -48562,15 +47995,7 @@ func (v RecentAction) SetShowNumbers(show_numbers bool) {
 
 // ignore GType struct RecentActionClass
 
-// Struct RecentActionPrivate
-type RecentActionPrivate struct {
-	P unsafe.Pointer
-}
-
-func RecentActionPrivateGetType() gi.GType {
-	ret := _I.GetGType(430, "RecentActionPrivate")
-	return ret
-}
+// ignore private struct RecentActionPrivate, type of RecentAction is object
 
 // Interface RecentChooser
 type RecentChooser struct {
@@ -48582,7 +48007,7 @@ type IRecentChooser interface{ P_RecentChooser() unsafe.Pointer }
 
 func (v RecentChooser) P_RecentChooser() unsafe.Pointer { return v.P }
 func RecentChooserGetType() gi.GType {
-	ret := _I.GetGType(431, "RecentChooser")
+	ret := _I.GetGType(296, "RecentChooser")
 	return ret
 }
 
@@ -49172,21 +48597,13 @@ type IRecentChooserDialog interface{ P_RecentChooserDialog() unsafe.Pointer }
 func (v RecentChooserDialog) P_RecentChooserDialog() unsafe.Pointer { return v.P }
 func (v RecentChooserDialog) P_RecentChooser() unsafe.Pointer       { return v.P }
 func RecentChooserDialogGetType() gi.GType {
-	ret := _I.GetGType(432, "RecentChooserDialog")
+	ret := _I.GetGType(297, "RecentChooserDialog")
 	return ret
 }
 
 // ignore GType struct RecentChooserDialogClass
 
-// Struct RecentChooserDialogPrivate
-type RecentChooserDialogPrivate struct {
-	P unsafe.Pointer
-}
-
-func RecentChooserDialogPrivateGetType() gi.GType {
-	ret := _I.GetGType(433, "RecentChooserDialogPrivate")
-	return ret
-}
+// ignore private struct RecentChooserDialogPrivate, type of RecentChooserDialog is object
 
 // Enum RecentChooserError
 type RecentChooserErrorEnum int
@@ -49197,7 +48614,7 @@ const (
 )
 
 func RecentChooserErrorGetType() gi.GType {
-	ret := _I.GetGType(434, "RecentChooserError")
+	ret := _I.GetGType(298, "RecentChooserError")
 	return ret
 }
 
@@ -49218,7 +48635,7 @@ func (v RecentChooserMenu) P_RecentChooserMenu() unsafe.Pointer { return v.P }
 func (v RecentChooserMenu) P_Activatable() unsafe.Pointer       { return v.P }
 func (v RecentChooserMenu) P_RecentChooser() unsafe.Pointer     { return v.P }
 func RecentChooserMenuGetType() gi.GType {
-	ret := _I.GetGType(435, "RecentChooserMenu")
+	ret := _I.GetGType(299, "RecentChooserMenu")
 	return ret
 }
 
@@ -49298,15 +48715,7 @@ func (v RecentChooserMenu) SetShowNumbers(show_numbers bool) {
 
 // ignore GType struct RecentChooserMenuClass
 
-// Struct RecentChooserMenuPrivate
-type RecentChooserMenuPrivate struct {
-	P unsafe.Pointer
-}
-
-func RecentChooserMenuPrivateGetType() gi.GType {
-	ret := _I.GetGType(436, "RecentChooserMenuPrivate")
-	return ret
-}
+// ignore private struct RecentChooserMenuPrivate, type of RecentChooserMenu is object
 
 // Object RecentChooserWidget
 type RecentChooserWidget struct {
@@ -49321,7 +48730,7 @@ type IRecentChooserWidget interface{ P_RecentChooserWidget() unsafe.Pointer }
 func (v RecentChooserWidget) P_RecentChooserWidget() unsafe.Pointer { return v.P }
 func (v RecentChooserWidget) P_RecentChooser() unsafe.Pointer       { return v.P }
 func RecentChooserWidgetGetType() gi.GType {
-	ret := _I.GetGType(437, "RecentChooserWidget")
+	ret := _I.GetGType(300, "RecentChooserWidget")
 	return ret
 }
 
@@ -49367,15 +48776,7 @@ func NewRecentChooserWidgetForManager(manager IRecentManager) (result RecentChoo
 
 // ignore GType struct RecentChooserWidgetClass
 
-// Struct RecentChooserWidgetPrivate
-type RecentChooserWidgetPrivate struct {
-	P unsafe.Pointer
-}
-
-func RecentChooserWidgetPrivateGetType() gi.GType {
-	ret := _I.GetGType(438, "RecentChooserWidgetPrivate")
-	return ret
-}
+// ignore private struct RecentChooserWidgetPrivate, type of RecentChooserWidget is object
 
 // Struct RecentData
 type RecentData struct {
@@ -49385,8 +48786,34 @@ type RecentData struct {
 const SizeOfStructRecentData = 56
 
 func RecentDataGetType() gi.GType {
-	ret := _I.GetGType(439, "RecentData")
+	ret := _I.GetGType(301, "RecentData")
 	return ret
+}
+
+func (v RecentData) p() *C.GtkRecentData {
+	return (*C.GtkRecentData)(v.P)
+}
+func (v RecentData) DisplayName() (result int /*TODO*/) {
+	return
+}
+func (v RecentData) Description() (result int /*TODO*/) {
+	return
+}
+func (v RecentData) MimeType() (result int /*TODO*/) {
+	return
+}
+func (v RecentData) AppName() (result int /*TODO*/) {
+	return
+}
+func (v RecentData) AppExec() (result int /*TODO*/) {
+	return
+}
+func (v RecentData) Groups() (result int /*TODO*/) {
+	return
+}
+func (v RecentData) IsPrivate() (result bool) {
+	result = gi.Int2Bool(int(v.p().is_private))
+	return
 }
 
 // Object RecentFilter
@@ -49402,7 +48829,7 @@ type IRecentFilter interface{ P_RecentFilter() unsafe.Pointer }
 func (v RecentFilter) P_RecentFilter() unsafe.Pointer { return v.P }
 func (v RecentFilter) P_Buildable() unsafe.Pointer    { return v.P }
 func RecentFilterGetType() gi.GType {
-	ret := _I.GetGType(440, "RecentFilter")
+	ret := _I.GetGType(302, "RecentFilter")
 	return ret
 }
 
@@ -49645,7 +49072,7 @@ const (
 )
 
 func RecentFilterFlagsGetType() gi.GType {
-	ret := _I.GetGType(441, "RecentFilterFlags")
+	ret := _I.GetGType(303, "RecentFilterFlags")
 	return ret
 }
 
@@ -49668,8 +49095,34 @@ type RecentFilterInfo struct {
 const SizeOfStructRecentFilterInfo = 56
 
 func RecentFilterInfoGetType() gi.GType {
-	ret := _I.GetGType(442, "RecentFilterInfo")
+	ret := _I.GetGType(304, "RecentFilterInfo")
 	return ret
+}
+
+func (v RecentFilterInfo) p() *C.GtkRecentFilterInfo {
+	return (*C.GtkRecentFilterInfo)(v.P)
+}
+func (v RecentFilterInfo) Contains() (result int /*TODO*/) {
+	return
+}
+func (v RecentFilterInfo) Uri() (result int /*TODO*/) {
+	return
+}
+func (v RecentFilterInfo) DisplayName() (result int /*TODO*/) {
+	return
+}
+func (v RecentFilterInfo) MimeType() (result int /*TODO*/) {
+	return
+}
+func (v RecentFilterInfo) Applications() (result int /*TODO*/) {
+	return
+}
+func (v RecentFilterInfo) Groups() (result int /*TODO*/) {
+	return
+}
+func (v RecentFilterInfo) Age() (result int32) {
+	result = int32(v.p().age)
+	return
 }
 
 // Struct RecentInfo
@@ -49678,7 +49131,7 @@ type RecentInfo struct {
 }
 
 func RecentInfoGetType() gi.GType {
-	ret := _I.GetGType(443, "RecentInfo")
+	ret := _I.GetGType(305, "RecentInfo")
 	return ret
 }
 
@@ -50195,7 +49648,7 @@ type IRecentManager interface{ P_RecentManager() unsafe.Pointer }
 
 func (v RecentManager) P_RecentManager() unsafe.Pointer { return v.P }
 func RecentManagerGetType() gi.GType {
-	ret := _I.GetGType(444, "RecentManager")
+	ret := _I.GetGType(306, "RecentManager")
 	return ret
 }
 
@@ -50437,19 +49890,11 @@ const (
 )
 
 func RecentManagerErrorGetType() gi.GType {
-	ret := _I.GetGType(445, "RecentManagerError")
+	ret := _I.GetGType(307, "RecentManagerError")
 	return ret
 }
 
-// Struct RecentManagerPrivate
-type RecentManagerPrivate struct {
-	P unsafe.Pointer
-}
-
-func RecentManagerPrivateGetType() gi.GType {
-	ret := _I.GetGType(446, "RecentManagerPrivate")
-	return ret
-}
+// ignore private struct RecentManagerPrivate, type of RecentManager is object
 
 type RecentSortFunc func(a RecentInfo, b RecentInfo) (result int32)
 
@@ -50474,7 +49919,7 @@ const (
 )
 
 func RecentSortTypeGetType() gi.GType {
-	ret := _I.GetGType(447, "RecentSortType")
+	ret := _I.GetGType(308, "RecentSortType")
 	return ret
 }
 
@@ -50491,7 +49936,7 @@ const (
 )
 
 func RegionFlagsGetType() gi.GType {
-	ret := _I.GetGType(448, "RegionFlags")
+	ret := _I.GetGType(309, "RegionFlags")
 	return ret
 }
 
@@ -50505,7 +49950,7 @@ const (
 )
 
 func ReliefStyleGetType() gi.GType {
-	ret := _I.GetGType(449, "ReliefStyle")
+	ret := _I.GetGType(310, "ReliefStyle")
 	return ret
 }
 
@@ -50520,7 +49965,7 @@ type IRendererCellAccessible interface{ P_RendererCellAccessible() unsafe.Pointe
 
 func (v RendererCellAccessible) P_RendererCellAccessible() unsafe.Pointer { return v.P }
 func RendererCellAccessibleGetType() gi.GType {
-	ret := _I.GetGType(450, "RendererCellAccessible")
+	ret := _I.GetGType(311, "RendererCellAccessible")
 	return ret
 }
 
@@ -50550,15 +49995,7 @@ func NewRendererCellAccessible(renderer ICellRenderer) (result RendererCellAcces
 
 // ignore GType struct RendererCellAccessibleClass
 
-// Struct RendererCellAccessiblePrivate
-type RendererCellAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func RendererCellAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(451, "RendererCellAccessiblePrivate")
-	return ret
-}
+// ignore private struct RendererCellAccessiblePrivate, type of RendererCellAccessible is object
 
 // Struct RequestedSize
 type RequestedSize struct {
@@ -50568,8 +50005,24 @@ type RequestedSize struct {
 const SizeOfStructRequestedSize = 16
 
 func RequestedSizeGetType() gi.GType {
-	ret := _I.GetGType(452, "RequestedSize")
+	ret := _I.GetGType(312, "RequestedSize")
 	return ret
+}
+
+func (v RequestedSize) p() *C.GtkRequestedSize {
+	return (*C.GtkRequestedSize)(v.P)
+}
+func (v RequestedSize) Data() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data)
+	return
+}
+func (v RequestedSize) MinimumSize() (result int32) {
+	result = int32(v.p().minimum_size)
+	return
+}
+func (v RequestedSize) NaturalSize() (result int32) {
+	result = int32(v.p().natural_size)
+	return
 }
 
 // Struct Requisition
@@ -50580,7 +50033,7 @@ type Requisition struct {
 const SizeOfStructRequisition = 8
 
 func RequisitionGetType() gi.GType {
-	ret := _I.GetGType(453, "Requisition")
+	ret := _I.GetGType(313, "Requisition")
 	return ret
 }
 
@@ -50631,6 +50084,18 @@ func (v Requisition) Free() {
 	iv.Call(args, nil, nil)
 }
 
+func (v Requisition) p() *C.GtkRequisition {
+	return (*C.GtkRequisition)(v.P)
+}
+func (v Requisition) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v Requisition) Height() (result int32) {
+	result = int32(v.p().height)
+	return
+}
+
 // Enum ResizeMode
 type ResizeModeEnum int
 
@@ -50641,7 +50106,7 @@ const (
 )
 
 func ResizeModeGetType() gi.GType {
-	ret := _I.GetGType(454, "ResizeMode")
+	ret := _I.GetGType(314, "ResizeMode")
 	return ret
 }
 
@@ -50663,7 +50128,7 @@ const (
 )
 
 func ResponseTypeGetType() gi.GType {
-	ret := _I.GetGType(455, "ResponseType")
+	ret := _I.GetGType(315, "ResponseType")
 	return ret
 }
 
@@ -50678,7 +50143,7 @@ type IRevealer interface{ P_Revealer() unsafe.Pointer }
 
 func (v Revealer) P_Revealer() unsafe.Pointer { return v.P }
 func RevealerGetType() gi.GType {
-	ret := _I.GetGType(456, "Revealer")
+	ret := _I.GetGType(316, "Revealer")
 	return ret
 }
 
@@ -50833,7 +50298,7 @@ const (
 )
 
 func RevealerTransitionTypeGetType() gi.GType {
-	ret := _I.GetGType(457, "RevealerTransitionType")
+	ret := _I.GetGType(317, "RevealerTransitionType")
 	return ret
 }
 
@@ -50848,7 +50313,7 @@ type IScale interface{ P_Scale() unsafe.Pointer }
 
 func (v Scale) P_Scale() unsafe.Pointer { return v.P }
 func ScaleGetType() gi.GType {
-	ret := _I.GetGType(458, "Scale")
+	ret := _I.GetGType(318, "Scale")
 	return ret
 }
 
@@ -51133,21 +50598,13 @@ type IScaleAccessible interface{ P_ScaleAccessible() unsafe.Pointer }
 
 func (v ScaleAccessible) P_ScaleAccessible() unsafe.Pointer { return v.P }
 func ScaleAccessibleGetType() gi.GType {
-	ret := _I.GetGType(459, "ScaleAccessible")
+	ret := _I.GetGType(319, "ScaleAccessible")
 	return ret
 }
 
 // ignore GType struct ScaleAccessibleClass
 
-// Struct ScaleAccessiblePrivate
-type ScaleAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ScaleAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(460, "ScaleAccessiblePrivate")
-	return ret
-}
+// ignore private struct ScaleAccessiblePrivate, type of ScaleAccessible is object
 
 // Object ScaleButton
 type ScaleButton struct {
@@ -51162,7 +50619,7 @@ type IScaleButton interface{ P_ScaleButton() unsafe.Pointer }
 func (v ScaleButton) P_ScaleButton() unsafe.Pointer { return v.P }
 func (v ScaleButton) P_Orientable() unsafe.Pointer  { return v.P }
 func ScaleButtonGetType() gi.GType {
-	ret := _I.GetGType(461, "ScaleButton")
+	ret := _I.GetGType(320, "ScaleButton")
 	return ret
 }
 
@@ -51353,45 +50810,21 @@ type IScaleButtonAccessible interface{ P_ScaleButtonAccessible() unsafe.Pointer 
 func (v ScaleButtonAccessible) P_ScaleButtonAccessible() unsafe.Pointer { return v.P }
 func (v ScaleButtonAccessible) P_Value() unsafe.Pointer                 { return v.P }
 func ScaleButtonAccessibleGetType() gi.GType {
-	ret := _I.GetGType(462, "ScaleButtonAccessible")
+	ret := _I.GetGType(321, "ScaleButtonAccessible")
 	return ret
 }
 
 // ignore GType struct ScaleButtonAccessibleClass
 
-// Struct ScaleButtonAccessiblePrivate
-type ScaleButtonAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ScaleButtonAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(463, "ScaleButtonAccessiblePrivate")
-	return ret
-}
+// ignore private struct ScaleButtonAccessiblePrivate, type of ScaleButtonAccessible is object
 
 // ignore GType struct ScaleButtonClass
 
-// Struct ScaleButtonPrivate
-type ScaleButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func ScaleButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(464, "ScaleButtonPrivate")
-	return ret
-}
+// ignore private struct ScaleButtonPrivate, type of ScaleButton is object
 
 // ignore GType struct ScaleClass
 
-// Struct ScalePrivate
-type ScalePrivate struct {
-	P unsafe.Pointer
-}
-
-func ScalePrivateGetType() gi.GType {
-	ret := _I.GetGType(465, "ScalePrivate")
-	return ret
-}
+// ignore private struct ScalePrivate, type of Scale is object
 
 // Enum ScrollStep
 type ScrollStepEnum int
@@ -51406,7 +50839,7 @@ const (
 )
 
 func ScrollStepGetType() gi.GType {
-	ret := _I.GetGType(466, "ScrollStep")
+	ret := _I.GetGType(322, "ScrollStep")
 	return ret
 }
 
@@ -51433,7 +50866,7 @@ const (
 )
 
 func ScrollTypeGetType() gi.GType {
-	ret := _I.GetGType(467, "ScrollType")
+	ret := _I.GetGType(323, "ScrollType")
 	return ret
 }
 
@@ -51447,7 +50880,7 @@ type IScrollable interface{ P_Scrollable() unsafe.Pointer }
 
 func (v Scrollable) P_Scrollable() unsafe.Pointer { return v.P }
 func ScrollableGetType() gi.GType {
-	ret := _I.GetGType(468, "Scrollable")
+	ret := _I.GetGType(324, "Scrollable")
 	return ret
 }
 
@@ -51627,7 +51060,7 @@ const (
 )
 
 func ScrollablePolicyGetType() gi.GType {
-	ret := _I.GetGType(469, "ScrollablePolicy")
+	ret := _I.GetGType(325, "ScrollablePolicy")
 	return ret
 }
 
@@ -51642,7 +51075,7 @@ type IScrollbar interface{ P_Scrollbar() unsafe.Pointer }
 
 func (v Scrollbar) P_Scrollbar() unsafe.Pointer { return v.P }
 func ScrollbarGetType() gi.GType {
-	ret := _I.GetGType(470, "Scrollbar")
+	ret := _I.GetGType(326, "Scrollbar")
 	return ret
 }
 
@@ -51686,7 +51119,7 @@ type IScrolledWindow interface{ P_ScrolledWindow() unsafe.Pointer }
 
 func (v ScrolledWindow) P_ScrolledWindow() unsafe.Pointer { return v.P }
 func ScrolledWindowGetType() gi.GType {
-	ret := _I.GetGType(471, "ScrolledWindow")
+	ret := _I.GetGType(327, "ScrolledWindow")
 	return ret
 }
 
@@ -52295,33 +51728,17 @@ type IScrolledWindowAccessible interface{ P_ScrolledWindowAccessible() unsafe.Po
 
 func (v ScrolledWindowAccessible) P_ScrolledWindowAccessible() unsafe.Pointer { return v.P }
 func ScrolledWindowAccessibleGetType() gi.GType {
-	ret := _I.GetGType(472, "ScrolledWindowAccessible")
+	ret := _I.GetGType(328, "ScrolledWindowAccessible")
 	return ret
 }
 
 // ignore GType struct ScrolledWindowAccessibleClass
 
-// Struct ScrolledWindowAccessiblePrivate
-type ScrolledWindowAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ScrolledWindowAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(473, "ScrolledWindowAccessiblePrivate")
-	return ret
-}
+// ignore private struct ScrolledWindowAccessiblePrivate, type of ScrolledWindowAccessible is object
 
 // ignore GType struct ScrolledWindowClass
 
-// Struct ScrolledWindowPrivate
-type ScrolledWindowPrivate struct {
-	P unsafe.Pointer
-}
-
-func ScrolledWindowPrivateGetType() gi.GType {
-	ret := _I.GetGType(474, "ScrolledWindowPrivate")
-	return ret
-}
+// ignore private struct ScrolledWindowPrivate, type of ScrolledWindow is object
 
 // Object SearchBar
 type SearchBar struct {
@@ -52334,7 +51751,7 @@ type ISearchBar interface{ P_SearchBar() unsafe.Pointer }
 
 func (v SearchBar) P_SearchBar() unsafe.Pointer { return v.P }
 func SearchBarGetType() gi.GType {
-	ret := _I.GetGType(475, "SearchBar")
+	ret := _I.GetGType(329, "SearchBar")
 	return ret
 }
 
@@ -52476,7 +51893,7 @@ type ISearchEntry interface{ P_SearchEntry() unsafe.Pointer }
 
 func (v SearchEntry) P_SearchEntry() unsafe.Pointer { return v.P }
 func SearchEntryGetType() gi.GType {
-	ret := _I.GetGType(476, "SearchEntry")
+	ret := _I.GetGType(330, "SearchEntry")
 	return ret
 }
 
@@ -52525,7 +51942,7 @@ type SelectionData struct {
 }
 
 func SelectionDataGetType() gi.GType {
-	ret := _I.GetGType(477, "SelectionData")
+	ret := _I.GetGType(331, "SelectionData")
 	return ret
 }
 
@@ -52968,7 +52385,7 @@ const (
 )
 
 func SelectionModeGetType() gi.GType {
-	ret := _I.GetGType(478, "SelectionMode")
+	ret := _I.GetGType(332, "SelectionMode")
 	return ret
 }
 
@@ -52982,7 +52399,7 @@ const (
 )
 
 func SensitivityTypeGetType() gi.GType {
-	ret := _I.GetGType(479, "SensitivityType")
+	ret := _I.GetGType(333, "SensitivityType")
 	return ret
 }
 
@@ -52999,7 +52416,7 @@ type ISeparator interface{ P_Separator() unsafe.Pointer }
 func (v Separator) P_Separator() unsafe.Pointer  { return v.P }
 func (v Separator) P_Orientable() unsafe.Pointer { return v.P }
 func SeparatorGetType() gi.GType {
-	ret := _I.GetGType(480, "Separator")
+	ret := _I.GetGType(334, "Separator")
 	return ret
 }
 
@@ -53036,7 +52453,7 @@ type ISeparatorMenuItem interface{ P_SeparatorMenuItem() unsafe.Pointer }
 
 func (v SeparatorMenuItem) P_SeparatorMenuItem() unsafe.Pointer { return v.P }
 func SeparatorMenuItemGetType() gi.GType {
-	ret := _I.GetGType(481, "SeparatorMenuItem")
+	ret := _I.GetGType(335, "SeparatorMenuItem")
 	return ret
 }
 
@@ -53058,15 +52475,7 @@ func NewSeparatorMenuItem() (result SeparatorMenuItem) {
 
 // ignore GType struct SeparatorMenuItemClass
 
-// Struct SeparatorPrivate
-type SeparatorPrivate struct {
-	P unsafe.Pointer
-}
-
-func SeparatorPrivateGetType() gi.GType {
-	ret := _I.GetGType(482, "SeparatorPrivate")
-	return ret
-}
+// ignore private struct SeparatorPrivate, type of Separator is object
 
 // Object SeparatorToolItem
 type SeparatorToolItem struct {
@@ -53079,7 +52488,7 @@ type ISeparatorToolItem interface{ P_SeparatorToolItem() unsafe.Pointer }
 
 func (v SeparatorToolItem) P_SeparatorToolItem() unsafe.Pointer { return v.P }
 func SeparatorToolItemGetType() gi.GType {
-	ret := _I.GetGType(483, "SeparatorToolItem")
+	ret := _I.GetGType(336, "SeparatorToolItem")
 	return ret
 }
 
@@ -53135,15 +52544,7 @@ func (v SeparatorToolItem) SetDraw(draw bool) {
 
 // ignore GType struct SeparatorToolItemClass
 
-// Struct SeparatorToolItemPrivate
-type SeparatorToolItemPrivate struct {
-	P unsafe.Pointer
-}
-
-func SeparatorToolItemPrivateGetType() gi.GType {
-	ret := _I.GetGType(484, "SeparatorToolItemPrivate")
-	return ret
-}
+// ignore private struct SeparatorToolItemPrivate, type of SeparatorToolItem is object
 
 // Object Settings
 type Settings struct {
@@ -53158,7 +52559,7 @@ type ISettings interface{ P_Settings() unsafe.Pointer }
 func (v Settings) P_Settings() unsafe.Pointer      { return v.P }
 func (v Settings) P_StyleProvider() unsafe.Pointer { return v.P }
 func SettingsGetType() gi.GType {
-	ret := _I.GetGType(485, "Settings")
+	ret := _I.GetGType(337, "Settings")
 	return ret
 }
 
@@ -53386,15 +52787,7 @@ func (v Settings) SetStringProperty(name string, v_string string, origin string)
 
 // ignore GType struct SettingsClass
 
-// Struct SettingsPrivate
-type SettingsPrivate struct {
-	P unsafe.Pointer
-}
-
-func SettingsPrivateGetType() gi.GType {
-	ret := _I.GetGType(486, "SettingsPrivate")
-	return ret
-}
+// ignore private struct SettingsPrivate, type of Settings is object
 
 // Struct SettingsValue
 type SettingsValue struct {
@@ -53404,8 +52797,18 @@ type SettingsValue struct {
 const SizeOfStructSettingsValue = 32
 
 func SettingsValueGetType() gi.GType {
-	ret := _I.GetGType(487, "SettingsValue")
+	ret := _I.GetGType(338, "SettingsValue")
 	return ret
+}
+
+func (v SettingsValue) p() *C.GtkSettingsValue {
+	return (*C.GtkSettingsValue)(v.P)
+}
+func (v SettingsValue) Origin() (result int /*TODO*/) {
+	return
+}
+func (v SettingsValue) Value() (result int /*TODO*/) {
+	return
 }
 
 // Enum ShadowType
@@ -53420,7 +52823,7 @@ const (
 )
 
 func ShadowTypeGetType() gi.GType {
-	ret := _I.GetGType(488, "ShadowType")
+	ret := _I.GetGType(339, "ShadowType")
 	return ret
 }
 
@@ -53435,7 +52838,7 @@ type IShortcutLabel interface{ P_ShortcutLabel() unsafe.Pointer }
 
 func (v ShortcutLabel) P_ShortcutLabel() unsafe.Pointer { return v.P }
 func ShortcutLabelGetType() gi.GType {
-	ret := _I.GetGType(489, "ShortcutLabel")
+	ret := _I.GetGType(340, "ShortcutLabel")
 	return ret
 }
 
@@ -53550,7 +52953,7 @@ const (
 )
 
 func ShortcutTypeGetType() gi.GType {
-	ret := _I.GetGType(490, "ShortcutType")
+	ret := _I.GetGType(341, "ShortcutType")
 	return ret
 }
 
@@ -53565,7 +52968,7 @@ type IShortcutsGroup interface{ P_ShortcutsGroup() unsafe.Pointer }
 
 func (v ShortcutsGroup) P_ShortcutsGroup() unsafe.Pointer { return v.P }
 func ShortcutsGroupGetType() gi.GType {
-	ret := _I.GetGType(491, "ShortcutsGroup")
+	ret := _I.GetGType(342, "ShortcutsGroup")
 	return ret
 }
 
@@ -53582,7 +52985,7 @@ type IShortcutsSection interface{ P_ShortcutsSection() unsafe.Pointer }
 
 func (v ShortcutsSection) P_ShortcutsSection() unsafe.Pointer { return v.P }
 func ShortcutsSectionGetType() gi.GType {
-	ret := _I.GetGType(492, "ShortcutsSection")
+	ret := _I.GetGType(343, "ShortcutsSection")
 	return ret
 }
 
@@ -53599,7 +53002,7 @@ type IShortcutsShortcut interface{ P_ShortcutsShortcut() unsafe.Pointer }
 
 func (v ShortcutsShortcut) P_ShortcutsShortcut() unsafe.Pointer { return v.P }
 func ShortcutsShortcutGetType() gi.GType {
-	ret := _I.GetGType(493, "ShortcutsShortcut")
+	ret := _I.GetGType(344, "ShortcutsShortcut")
 	return ret
 }
 
@@ -53616,7 +53019,7 @@ type IShortcutsWindow interface{ P_ShortcutsWindow() unsafe.Pointer }
 
 func (v ShortcutsWindow) P_ShortcutsWindow() unsafe.Pointer { return v.P }
 func ShortcutsWindowGetType() gi.GType {
-	ret := _I.GetGType(494, "ShortcutsWindow")
+	ret := _I.GetGType(345, "ShortcutsWindow")
 	return ret
 }
 
@@ -53635,7 +53038,7 @@ type ISizeGroup interface{ P_SizeGroup() unsafe.Pointer }
 func (v SizeGroup) P_SizeGroup() unsafe.Pointer { return v.P }
 func (v SizeGroup) P_Buildable() unsafe.Pointer { return v.P }
 func SizeGroupGetType() gi.GType {
-	ret := _I.GetGType(495, "SizeGroup")
+	ret := _I.GetGType(346, "SizeGroup")
 	return ret
 }
 
@@ -53802,19 +53205,11 @@ const (
 )
 
 func SizeGroupModeGetType() gi.GType {
-	ret := _I.GetGType(496, "SizeGroupMode")
+	ret := _I.GetGType(347, "SizeGroupMode")
 	return ret
 }
 
-// Struct SizeGroupPrivate
-type SizeGroupPrivate struct {
-	P unsafe.Pointer
-}
-
-func SizeGroupPrivateGetType() gi.GType {
-	ret := _I.GetGType(497, "SizeGroupPrivate")
-	return ret
-}
+// ignore private struct SizeGroupPrivate, type of SizeGroup is object
 
 // Enum SizeRequestMode
 type SizeRequestModeEnum int
@@ -53826,7 +53221,7 @@ const (
 )
 
 func SizeRequestModeGetType() gi.GType {
-	ret := _I.GetGType(498, "SizeRequestMode")
+	ret := _I.GetGType(348, "SizeRequestMode")
 	return ret
 }
 
@@ -53841,7 +53236,7 @@ type ISocket interface{ P_Socket() unsafe.Pointer }
 
 func (v Socket) P_Socket() unsafe.Pointer { return v.P }
 func SocketGetType() gi.GType {
-	ret := _I.GetGType(499, "Socket")
+	ret := _I.GetGType(349, "Socket")
 	return ret
 }
 
@@ -53915,15 +53310,7 @@ func (v Socket) GetPlugWindow() (result gdk.Window) {
 
 // ignore GType struct SocketClass
 
-// Struct SocketPrivate
-type SocketPrivate struct {
-	P unsafe.Pointer
-}
-
-func SocketPrivateGetType() gi.GType {
-	ret := _I.GetGType(500, "SocketPrivate")
-	return ret
-}
+// ignore private struct SocketPrivate, type of Socket is object
 
 // Enum SortType
 type SortTypeEnum int
@@ -53934,7 +53321,7 @@ const (
 )
 
 func SortTypeGetType() gi.GType {
-	ret := _I.GetGType(501, "SortType")
+	ret := _I.GetGType(350, "SortType")
 	return ret
 }
 
@@ -53951,7 +53338,7 @@ type ISpinButton interface{ P_SpinButton() unsafe.Pointer }
 func (v SpinButton) P_SpinButton() unsafe.Pointer { return v.P }
 func (v SpinButton) P_Orientable() unsafe.Pointer { return v.P }
 func SpinButtonGetType() gi.GType {
-	ret := _I.GetGType(502, "SpinButton")
+	ret := _I.GetGType(351, "SpinButton")
 	return ret
 }
 
@@ -54426,33 +53813,17 @@ type ISpinButtonAccessible interface{ P_SpinButtonAccessible() unsafe.Pointer }
 func (v SpinButtonAccessible) P_SpinButtonAccessible() unsafe.Pointer { return v.P }
 func (v SpinButtonAccessible) P_Value() unsafe.Pointer                { return v.P }
 func SpinButtonAccessibleGetType() gi.GType {
-	ret := _I.GetGType(503, "SpinButtonAccessible")
+	ret := _I.GetGType(352, "SpinButtonAccessible")
 	return ret
 }
 
 // ignore GType struct SpinButtonAccessibleClass
 
-// Struct SpinButtonAccessiblePrivate
-type SpinButtonAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func SpinButtonAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(504, "SpinButtonAccessiblePrivate")
-	return ret
-}
+// ignore private struct SpinButtonAccessiblePrivate, type of SpinButtonAccessible is object
 
 // ignore GType struct SpinButtonClass
 
-// Struct SpinButtonPrivate
-type SpinButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func SpinButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(505, "SpinButtonPrivate")
-	return ret
-}
+// ignore private struct SpinButtonPrivate, type of SpinButton is object
 
 // Enum SpinButtonUpdatePolicy
 type SpinButtonUpdatePolicyEnum int
@@ -54463,7 +53834,7 @@ const (
 )
 
 func SpinButtonUpdatePolicyGetType() gi.GType {
-	ret := _I.GetGType(506, "SpinButtonUpdatePolicy")
+	ret := _I.GetGType(353, "SpinButtonUpdatePolicy")
 	return ret
 }
 
@@ -54481,7 +53852,7 @@ const (
 )
 
 func SpinTypeGetType() gi.GType {
-	ret := _I.GetGType(507, "SpinType")
+	ret := _I.GetGType(354, "SpinType")
 	return ret
 }
 
@@ -54496,7 +53867,7 @@ type ISpinner interface{ P_Spinner() unsafe.Pointer }
 
 func (v Spinner) P_Spinner() unsafe.Pointer { return v.P }
 func SpinnerGetType() gi.GType {
-	ret := _I.GetGType(508, "Spinner")
+	ret := _I.GetGType(355, "Spinner")
 	return ret
 }
 
@@ -54555,33 +53926,17 @@ type ISpinnerAccessible interface{ P_SpinnerAccessible() unsafe.Pointer }
 func (v SpinnerAccessible) P_SpinnerAccessible() unsafe.Pointer { return v.P }
 func (v SpinnerAccessible) P_Image() unsafe.Pointer             { return v.P }
 func SpinnerAccessibleGetType() gi.GType {
-	ret := _I.GetGType(509, "SpinnerAccessible")
+	ret := _I.GetGType(356, "SpinnerAccessible")
 	return ret
 }
 
 // ignore GType struct SpinnerAccessibleClass
 
-// Struct SpinnerAccessiblePrivate
-type SpinnerAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func SpinnerAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(510, "SpinnerAccessiblePrivate")
-	return ret
-}
+// ignore private struct SpinnerAccessiblePrivate, type of SpinnerAccessible is object
 
 // ignore GType struct SpinnerClass
 
-// Struct SpinnerPrivate
-type SpinnerPrivate struct {
-	P unsafe.Pointer
-}
-
-func SpinnerPrivateGetType() gi.GType {
-	ret := _I.GetGType(511, "SpinnerPrivate")
-	return ret
-}
+// ignore private struct SpinnerPrivate, type of Spinner is object
 
 // Object Stack
 type Stack struct {
@@ -54594,7 +53949,7 @@ type IStack interface{ P_Stack() unsafe.Pointer }
 
 func (v Stack) P_Stack() unsafe.Pointer { return v.P }
 func StackGetType() gi.GType {
-	ret := _I.GetGType(512, "Stack")
+	ret := _I.GetGType(357, "Stack")
 	return ret
 }
 
@@ -55020,7 +54375,7 @@ type IStackAccessible interface{ P_StackAccessible() unsafe.Pointer }
 
 func (v StackAccessible) P_StackAccessible() unsafe.Pointer { return v.P }
 func StackAccessibleGetType() gi.GType {
-	ret := _I.GetGType(513, "StackAccessible")
+	ret := _I.GetGType(358, "StackAccessible")
 	return ret
 }
 
@@ -55039,7 +54394,7 @@ type IStackSidebar interface{ P_StackSidebar() unsafe.Pointer }
 
 func (v StackSidebar) P_StackSidebar() unsafe.Pointer { return v.P }
 func StackSidebarGetType() gi.GType {
-	ret := _I.GetGType(514, "StackSidebar")
+	ret := _I.GetGType(359, "StackSidebar")
 	return ret
 }
 
@@ -55099,15 +54454,7 @@ func (v StackSidebar) SetStack(stack IStack) {
 
 // ignore GType struct StackSidebarClass
 
-// Struct StackSidebarPrivate
-type StackSidebarPrivate struct {
-	P unsafe.Pointer
-}
-
-func StackSidebarPrivateGetType() gi.GType {
-	ret := _I.GetGType(515, "StackSidebarPrivate")
-	return ret
-}
+// ignore private struct StackSidebarPrivate, type of StackSidebar is object
 
 // Object StackSwitcher
 type StackSwitcher struct {
@@ -55120,7 +54467,7 @@ type IStackSwitcher interface{ P_StackSwitcher() unsafe.Pointer }
 
 func (v StackSwitcher) P_StackSwitcher() unsafe.Pointer { return v.P }
 func StackSwitcherGetType() gi.GType {
-	ret := _I.GetGType(516, "StackSwitcher")
+	ret := _I.GetGType(360, "StackSwitcher")
 	return ret
 }
 
@@ -55207,7 +54554,7 @@ const (
 )
 
 func StackTransitionTypeGetType() gi.GType {
-	ret := _I.GetGType(517, "StackTransitionType")
+	ret := _I.GetGType(361, "StackTransitionType")
 	return ret
 }
 
@@ -55232,7 +54579,7 @@ const (
 )
 
 func StateFlagsGetType() gi.GType {
-	ret := _I.GetGType(518, "StateFlags")
+	ret := _I.GetGType(362, "StateFlags")
 	return ret
 }
 
@@ -55252,7 +54599,7 @@ const (
 )
 
 func StateTypeGetType() gi.GType {
-	ret := _I.GetGType(519, "StateType")
+	ret := _I.GetGType(363, "StateType")
 	return ret
 }
 
@@ -55267,7 +54614,7 @@ type IStatusIcon interface{ P_StatusIcon() unsafe.Pointer }
 
 func (v StatusIcon) P_StatusIcon() unsafe.Pointer { return v.P }
 func StatusIconGetType() gi.GType {
-	ret := _I.GetGType(520, "StatusIcon")
+	ret := _I.GetGType(364, "StatusIcon")
 	return ret
 }
 
@@ -56007,15 +55354,7 @@ func (v StatusIcon) SetVisible(visible bool) {
 
 // ignore GType struct StatusIconClass
 
-// Struct StatusIconPrivate
-type StatusIconPrivate struct {
-	P unsafe.Pointer
-}
-
-func StatusIconPrivateGetType() gi.GType {
-	ret := _I.GetGType(521, "StatusIconPrivate")
-	return ret
-}
+// ignore private struct StatusIconPrivate, type of StatusIcon is object
 
 // Object Statusbar
 type Statusbar struct {
@@ -56028,7 +55367,7 @@ type IStatusbar interface{ P_Statusbar() unsafe.Pointer }
 
 func (v Statusbar) P_Statusbar() unsafe.Pointer { return v.P }
 func StatusbarGetType() gi.GType {
-	ret := _I.GetGType(522, "Statusbar")
+	ret := _I.GetGType(365, "Statusbar")
 	return ret
 }
 
@@ -56177,33 +55516,17 @@ type IStatusbarAccessible interface{ P_StatusbarAccessible() unsafe.Pointer }
 
 func (v StatusbarAccessible) P_StatusbarAccessible() unsafe.Pointer { return v.P }
 func StatusbarAccessibleGetType() gi.GType {
-	ret := _I.GetGType(523, "StatusbarAccessible")
+	ret := _I.GetGType(366, "StatusbarAccessible")
 	return ret
 }
 
 // ignore GType struct StatusbarAccessibleClass
 
-// Struct StatusbarAccessiblePrivate
-type StatusbarAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func StatusbarAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(524, "StatusbarAccessiblePrivate")
-	return ret
-}
+// ignore private struct StatusbarAccessiblePrivate, type of StatusbarAccessible is object
 
 // ignore GType struct StatusbarClass
 
-// Struct StatusbarPrivate
-type StatusbarPrivate struct {
-	P unsafe.Pointer
-}
-
-func StatusbarPrivateGetType() gi.GType {
-	ret := _I.GetGType(525, "StatusbarPrivate")
-	return ret
-}
+// ignore private struct StatusbarPrivate, type of Statusbar is object
 
 // Deprecated
 //
@@ -56215,7 +55538,7 @@ type StockItem struct {
 const SizeOfStructStockItem = 32
 
 func StockItemGetType() gi.GType {
-	ret := _I.GetGType(526, "StockItem")
+	ret := _I.GetGType(367, "StockItem")
 	return ret
 }
 
@@ -56234,6 +55557,26 @@ func (v StockItem) Free() {
 	iv.Call(args, nil, nil)
 }
 
+func (v StockItem) p() *C.GtkStockItem {
+	return (*C.GtkStockItem)(v.P)
+}
+func (v StockItem) StockId() (result int /*TODO*/) {
+	return
+}
+func (v StockItem) Label() (result int /*TODO*/) {
+	return
+}
+func (v StockItem) Modifier() (result int /*TODO*/) {
+	return
+}
+func (v StockItem) Keyval() (result uint32) {
+	result = uint32(v.p().keyval)
+	return
+}
+func (v StockItem) TranslationDomain() (result int /*TODO*/) {
+	return
+}
+
 // Object Style
 type Style struct {
 	g.Object
@@ -56245,7 +55588,7 @@ type IStyle interface{ P_Style() unsafe.Pointer }
 
 func (v Style) P_Style() unsafe.Pointer { return v.P }
 func StyleGetType() gi.GType {
-	ret := _I.GetGType(527, "Style")
+	ret := _I.GetGType(368, "Style")
 	return ret
 }
 
@@ -56519,7 +55862,7 @@ type IStyleContext interface{ P_StyleContext() unsafe.Pointer }
 
 func (v StyleContext) P_StyleContext() unsafe.Pointer { return v.P }
 func StyleContextGetType() gi.GType {
-	ret := _I.GetGType(528, "StyleContext")
+	ret := _I.GetGType(369, "StyleContext")
 	return ret
 }
 
@@ -57608,19 +56951,11 @@ const (
 )
 
 func StyleContextPrintFlagsGetType() gi.GType {
-	ret := _I.GetGType(529, "StyleContextPrintFlags")
+	ret := _I.GetGType(370, "StyleContextPrintFlags")
 	return ret
 }
 
-// Struct StyleContextPrivate
-type StyleContextPrivate struct {
-	P unsafe.Pointer
-}
-
-func StyleContextPrivateGetType() gi.GType {
-	ret := _I.GetGType(530, "StyleContextPrivate")
-	return ret
-}
+// ignore private struct StyleContextPrivate, type of StyleContext is object
 
 // Object StyleProperties
 type StyleProperties struct {
@@ -57635,7 +56970,7 @@ type IStyleProperties interface{ P_StyleProperties() unsafe.Pointer }
 func (v StyleProperties) P_StyleProperties() unsafe.Pointer { return v.P }
 func (v StyleProperties) P_StyleProvider() unsafe.Pointer   { return v.P }
 func StylePropertiesGetType() gi.GType {
-	ret := _I.GetGType(531, "StyleProperties")
+	ret := _I.GetGType(371, "StyleProperties")
 	return ret
 }
 
@@ -57827,15 +57162,7 @@ func (v StyleProperties) UnsetProperty(property string, state StateFlags) {
 
 // ignore GType struct StylePropertiesClass
 
-// Struct StylePropertiesPrivate
-type StylePropertiesPrivate struct {
-	P unsafe.Pointer
-}
-
-func StylePropertiesPrivateGetType() gi.GType {
-	ret := _I.GetGType(532, "StylePropertiesPrivate")
-	return ret
-}
+// ignore private struct StylePropertiesPrivate, type of StyleProperties is object
 
 type StylePropertyParser func(string string, value g.Value) (result bool)
 
@@ -57859,7 +57186,7 @@ type IStyleProvider interface{ P_StyleProvider() unsafe.Pointer }
 
 func (v StyleProvider) P_StyleProvider() unsafe.Pointer { return v.P }
 func StyleProviderGetType() gi.GType {
-	ret := _I.GetGType(533, "StyleProvider")
+	ret := _I.GetGType(372, "StyleProvider")
 	return ret
 }
 
@@ -57960,7 +57287,7 @@ func (v Switch) P_Switch() unsafe.Pointer      { return v.P }
 func (v Switch) P_Actionable() unsafe.Pointer  { return v.P }
 func (v Switch) P_Activatable() unsafe.Pointer { return v.P }
 func SwitchGetType() gi.GType {
-	ret := _I.GetGType(534, "Switch")
+	ret := _I.GetGType(373, "Switch")
 	return ret
 }
 
@@ -58061,33 +57388,17 @@ type ISwitchAccessible interface{ P_SwitchAccessible() unsafe.Pointer }
 func (v SwitchAccessible) P_SwitchAccessible() unsafe.Pointer { return v.P }
 func (v SwitchAccessible) P_Action() unsafe.Pointer           { return v.P }
 func SwitchAccessibleGetType() gi.GType {
-	ret := _I.GetGType(535, "SwitchAccessible")
+	ret := _I.GetGType(374, "SwitchAccessible")
 	return ret
 }
 
 // ignore GType struct SwitchAccessibleClass
 
-// Struct SwitchAccessiblePrivate
-type SwitchAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func SwitchAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(536, "SwitchAccessiblePrivate")
-	return ret
-}
+// ignore private struct SwitchAccessiblePrivate, type of SwitchAccessible is object
 
 // ignore GType struct SwitchClass
 
-// Struct SwitchPrivate
-type SwitchPrivate struct {
-	P unsafe.Pointer
-}
-
-func SwitchPrivateGetType() gi.GType {
-	ret := _I.GetGType(537, "SwitchPrivate")
-	return ret
-}
+// ignore private struct SwitchPrivate, type of Switch is object
 
 // Struct SymbolicColor
 type SymbolicColor struct {
@@ -58095,7 +57406,7 @@ type SymbolicColor struct {
 }
 
 func SymbolicColorGetType() gi.GType {
-	ret := _I.GetGType(538, "SymbolicColor")
+	ret := _I.GetGType(375, "SymbolicColor")
 	return ret
 }
 
@@ -58346,7 +57657,7 @@ type ITable interface{ P_Table() unsafe.Pointer }
 
 func (v Table) P_Table() unsafe.Pointer { return v.P }
 func TableGetType() gi.GType {
-	ret := _I.GetGType(539, "Table")
+	ret := _I.GetGType(376, "Table")
 	return ret
 }
 
@@ -58714,21 +58025,56 @@ type TableChild struct {
 const SizeOfStructTableChild = 48
 
 func TableChildGetType() gi.GType {
-	ret := _I.GetGType(540, "TableChild")
+	ret := _I.GetGType(377, "TableChild")
 	return ret
 }
+
+func (v TableChild) p() *C.GtkTableChild {
+	return (*C.GtkTableChild)(v.P)
+}
+func (v TableChild) Widget() (result int /*TODO*/) {
+	return
+}
+func (v TableChild) LeftAttach() (result uint16) {
+	result = uint16(v.p().left_attach)
+	return
+}
+func (v TableChild) RightAttach() (result uint16) {
+	result = uint16(v.p().right_attach)
+	return
+}
+func (v TableChild) TopAttach() (result uint16) {
+	result = uint16(v.p().top_attach)
+	return
+}
+func (v TableChild) BottomAttach() (result uint16) {
+	result = uint16(v.p().bottom_attach)
+	return
+}
+func (v TableChild) Xpadding() (result uint16) {
+	result = uint16(v.p().xpadding)
+	return
+}
+func (v TableChild) Ypadding() (result uint16) {
+	result = uint16(v.p().ypadding)
+	return
+}
+
+// TODO: ignore struct TableChild field xexpand, bits(=1) > 0
+
+// TODO: ignore struct TableChild field yexpand, bits(=1) > 0
+
+// TODO: ignore struct TableChild field xshrink, bits(=1) > 0
+
+// TODO: ignore struct TableChild field yshrink, bits(=1) > 0
+
+// TODO: ignore struct TableChild field xfill, bits(=1) > 0
+
+// TODO: ignore struct TableChild field yfill, bits(=1) > 0
 
 // ignore GType struct TableClass
 
-// Struct TablePrivate
-type TablePrivate struct {
-	P unsafe.Pointer
-}
-
-func TablePrivateGetType() gi.GType {
-	ret := _I.GetGType(541, "TablePrivate")
-	return ret
-}
+// ignore private struct TablePrivate, type of Table is object
 
 // Struct TableRowCol
 type TableRowCol struct {
@@ -58738,9 +58084,35 @@ type TableRowCol struct {
 const SizeOfStructTableRowCol = 28
 
 func TableRowColGetType() gi.GType {
-	ret := _I.GetGType(542, "TableRowCol")
+	ret := _I.GetGType(378, "TableRowCol")
 	return ret
 }
+
+func (v TableRowCol) p() *C.GtkTableRowCol {
+	return (*C.GtkTableRowCol)(v.P)
+}
+func (v TableRowCol) Requisition() (result uint16) {
+	result = uint16(v.p().requisition)
+	return
+}
+func (v TableRowCol) Allocation() (result uint16) {
+	result = uint16(v.p().allocation)
+	return
+}
+func (v TableRowCol) Spacing() (result uint16) {
+	result = uint16(v.p().spacing)
+	return
+}
+
+// TODO: ignore struct TableRowCol field need_expand, bits(=1) > 0
+
+// TODO: ignore struct TableRowCol field need_shrink, bits(=1) > 0
+
+// TODO: ignore struct TableRowCol field expand, bits(=1) > 0
+
+// TODO: ignore struct TableRowCol field shrink, bits(=1) > 0
+
+// TODO: ignore struct TableRowCol field empty, bits(=1) > 0
 
 // Struct TargetEntry
 type TargetEntry struct {
@@ -58750,7 +58122,7 @@ type TargetEntry struct {
 const SizeOfStructTargetEntry = 16
 
 func TargetEntryGetType() gi.GType {
-	ret := _I.GetGType(543, "TargetEntry")
+	ret := _I.GetGType(379, "TargetEntry")
 	return ret
 }
 
@@ -58813,6 +58185,21 @@ func (v TargetEntry) Free() {
 	iv.Call(args, nil, nil)
 }
 
+func (v TargetEntry) p() *C.GtkTargetEntry {
+	return (*C.GtkTargetEntry)(v.P)
+}
+func (v TargetEntry) Target() (result int /*TODO*/) {
+	return
+}
+func (v TargetEntry) Flags() (result uint32) {
+	result = uint32(v.p().flags)
+	return
+}
+func (v TargetEntry) Info() (result uint32) {
+	result = uint32(v.p().info)
+	return
+}
+
 // Flags TargetFlags
 type TargetFlags int
 
@@ -58824,7 +58211,7 @@ const (
 )
 
 func TargetFlagsGetType() gi.GType {
-	ret := _I.GetGType(544, "TargetFlags")
+	ret := _I.GetGType(380, "TargetFlags")
 	return ret
 }
 
@@ -58834,7 +58221,7 @@ type TargetList struct {
 }
 
 func TargetListGetType() gi.GType {
-	ret := _I.GetGType(545, "TargetList")
+	ret := _I.GetGType(381, "TargetList")
 	return ret
 }
 
@@ -59060,8 +58447,23 @@ type TargetPair struct {
 const SizeOfStructTargetPair = 16
 
 func TargetPairGetType() gi.GType {
-	ret := _I.GetGType(546, "TargetPair")
+	ret := _I.GetGType(382, "TargetPair")
 	return ret
+}
+
+func (v TargetPair) p() *C.GtkTargetPair {
+	return (*C.GtkTargetPair)(v.P)
+}
+func (v TargetPair) Target() (result int /*TODO*/) {
+	return
+}
+func (v TargetPair) Flags() (result uint32) {
+	result = uint32(v.p().flags)
+	return
+}
+func (v TargetPair) Info() (result uint32) {
+	result = uint32(v.p().info)
+	return
 }
 
 // Object TearoffMenuItem
@@ -59075,7 +58477,7 @@ type ITearoffMenuItem interface{ P_TearoffMenuItem() unsafe.Pointer }
 
 func (v TearoffMenuItem) P_TearoffMenuItem() unsafe.Pointer { return v.P }
 func TearoffMenuItemGetType() gi.GType {
-	ret := _I.GetGType(547, "TearoffMenuItem")
+	ret := _I.GetGType(383, "TearoffMenuItem")
 	return ret
 }
 
@@ -59099,15 +58501,7 @@ func NewTearoffMenuItem() (result TearoffMenuItem) {
 
 // ignore GType struct TearoffMenuItemClass
 
-// Struct TearoffMenuItemPrivate
-type TearoffMenuItemPrivate struct {
-	P unsafe.Pointer
-}
-
-func TearoffMenuItemPrivateGetType() gi.GType {
-	ret := _I.GetGType(548, "TearoffMenuItemPrivate")
-	return ret
-}
+// ignore private struct TearoffMenuItemPrivate, type of TearoffMenuItem is object
 
 // Struct TextAppearance
 type TextAppearance struct {
@@ -59117,9 +58511,33 @@ type TextAppearance struct {
 const SizeOfStructTextAppearance = 48
 
 func TextAppearanceGetType() gi.GType {
-	ret := _I.GetGType(549, "TextAppearance")
+	ret := _I.GetGType(384, "TextAppearance")
 	return ret
 }
+
+func (v TextAppearance) p() *C.GtkTextAppearance {
+	return (*C.GtkTextAppearance)(v.P)
+}
+func (v TextAppearance) BgColor() (result int /*TODO*/) {
+	return
+}
+func (v TextAppearance) FgColor() (result int /*TODO*/) {
+	return
+}
+func (v TextAppearance) Rise() (result int32) {
+	result = int32(v.p().rise)
+	return
+}
+
+// TODO: ignore struct TextAppearance field underline, bits(=4) > 0
+
+// TODO: ignore struct TextAppearance field strikethrough, bits(=1) > 0
+
+// TODO: ignore struct TextAppearance field draw_bg, bits(=1) > 0
+
+// TODO: ignore struct TextAppearance field inside_selection, bits(=1) > 0
+
+// TODO: ignore struct TextAppearance field is_text, bits(=1) > 0
 
 // Struct TextAttributes
 type TextAttributes struct {
@@ -59129,7 +58547,7 @@ type TextAttributes struct {
 const SizeOfStructTextAttributes = 168
 
 func TextAttributesGetType() gi.GType {
-	ret := _I.GetGType(550, "TextAttributes")
+	ret := _I.GetGType(385, "TextAttributes")
 	return ret
 }
 
@@ -59214,13 +58632,89 @@ func (v TextAttributes) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+func (v TextAttributes) p() *C.GtkTextAttributes {
+	return (*C.GtkTextAttributes)(v.P)
+}
+func (v TextAttributes) Refcount() (result uint32) {
+	result = uint32(v.p().refcount)
+	return
+}
+func (v TextAttributes) Appearance() (result int /*TODO*/) {
+	return
+}
+func (v TextAttributes) Justification() (result int /*TODO*/) {
+	return
+}
+func (v TextAttributes) Direction() (result int /*TODO*/) {
+	return
+}
+func (v TextAttributes) Font() (result int /*TODO*/) {
+	return
+}
+func (v TextAttributes) FontScale() (result float64) {
+	result = float64(v.p().font_scale)
+	return
+}
+func (v TextAttributes) LeftMargin() (result int32) {
+	result = int32(v.p().left_margin)
+	return
+}
+func (v TextAttributes) RightMargin() (result int32) {
+	result = int32(v.p().right_margin)
+	return
+}
+func (v TextAttributes) Indent() (result int32) {
+	result = int32(v.p().indent)
+	return
+}
+func (v TextAttributes) PixelsAboveLines() (result int32) {
+	result = int32(v.p().pixels_above_lines)
+	return
+}
+func (v TextAttributes) PixelsBelowLines() (result int32) {
+	result = int32(v.p().pixels_below_lines)
+	return
+}
+func (v TextAttributes) PixelsInsideWrap() (result int32) {
+	result = int32(v.p().pixels_inside_wrap)
+	return
+}
+func (v TextAttributes) Tabs() (result int /*TODO*/) {
+	return
+}
+func (v TextAttributes) WrapMode() (result int /*TODO*/) {
+	return
+}
+func (v TextAttributes) Language() (result int /*TODO*/) {
+	return
+}
+func (v TextAttributes) PgBgColor() (result int /*TODO*/) {
+	return
+}
+
+// TODO: ignore struct TextAttributes field invisible, bits(=1) > 0
+
+// TODO: ignore struct TextAttributes field bg_full_height, bits(=1) > 0
+
+// TODO: ignore struct TextAttributes field editable, bits(=1) > 0
+
+// TODO: ignore struct TextAttributes field no_fallback, bits(=1) > 0
+
+func (v TextAttributes) PgBgRgba() (result int /*TODO*/) {
+	return
+}
+func (v TextAttributes) LetterSpacing() (result int32) {
+	result = int32(v.p().letter_spacing)
+	return
+}
+
 // Struct TextBTree
 type TextBTree struct {
 	P unsafe.Pointer
 }
 
 func TextBTreeGetType() gi.GType {
-	ret := _I.GetGType(551, "TextBTree")
+	ret := _I.GetGType(386, "TextBTree")
 	return ret
 }
 
@@ -59235,7 +58729,7 @@ type ITextBuffer interface{ P_TextBuffer() unsafe.Pointer }
 
 func (v TextBuffer) P_TextBuffer() unsafe.Pointer { return v.P }
 func TextBufferGetType() gi.GType {
-	ret := _I.GetGType(552, "TextBuffer")
+	ret := _I.GetGType(387, "TextBuffer")
 	return ret
 }
 
@@ -60859,15 +60353,7 @@ func CallTextBufferDeserializeFunc(fn TextBufferDeserializeFunc, result unsafe.P
 	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
-// Struct TextBufferPrivate
-type TextBufferPrivate struct {
-	P unsafe.Pointer
-}
-
-func TextBufferPrivateGetType() gi.GType {
-	ret := _I.GetGType(553, "TextBufferPrivate")
-	return ret
-}
+// ignore private struct TextBufferPrivate, type of TextBuffer is object
 
 type TextBufferSerializeFunc func(register_buffer TextBuffer, content_buffer TextBuffer, start TextIter, end TextIter, length *uint64) (result unsafe.Pointer /*TODO_CB ret tag: guint8, isPtr: true*/)
 
@@ -60894,7 +60380,7 @@ const (
 )
 
 func TextBufferTargetInfoGetType() gi.GType {
-	ret := _I.GetGType(554, "TextBufferTargetInfo")
+	ret := _I.GetGType(388, "TextBufferTargetInfo")
 	return ret
 }
 
@@ -60911,21 +60397,13 @@ type ITextCellAccessible interface{ P_TextCellAccessible() unsafe.Pointer }
 func (v TextCellAccessible) P_TextCellAccessible() unsafe.Pointer { return v.P }
 func (v TextCellAccessible) P_Text() unsafe.Pointer               { return v.P }
 func TextCellAccessibleGetType() gi.GType {
-	ret := _I.GetGType(555, "TextCellAccessible")
+	ret := _I.GetGType(389, "TextCellAccessible")
 	return ret
 }
 
 // ignore GType struct TextCellAccessibleClass
 
-// Struct TextCellAccessiblePrivate
-type TextCellAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func TextCellAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(556, "TextCellAccessiblePrivate")
-	return ret
-}
+// ignore private struct TextCellAccessiblePrivate, type of TextCellAccessible is object
 
 type TextCharPredicate func(ch rune) (result bool)
 
@@ -60949,7 +60427,7 @@ type ITextChildAnchor interface{ P_TextChildAnchor() unsafe.Pointer }
 
 func (v TextChildAnchor) P_TextChildAnchor() unsafe.Pointer { return v.P }
 func TextChildAnchorGetType() gi.GType {
-	ret := _I.GetGType(557, "TextChildAnchor")
+	ret := _I.GetGType(390, "TextChildAnchor")
 	return ret
 }
 
@@ -61017,7 +60495,7 @@ const (
 )
 
 func TextDirectionGetType() gi.GType {
-	ret := _I.GetGType(558, "TextDirection")
+	ret := _I.GetGType(391, "TextDirection")
 	return ret
 }
 
@@ -61030,7 +60508,7 @@ const (
 )
 
 func TextExtendSelectionGetType() gi.GType {
-	ret := _I.GetGType(559, "TextExtendSelection")
+	ret := _I.GetGType(392, "TextExtendSelection")
 	return ret
 }
 
@@ -61042,7 +60520,7 @@ type TextIter struct {
 const SizeOfStructTextIter = 80
 
 func TextIterGetType() gi.GType {
-	ret := _I.GetGType(560, "TextIter")
+	ret := _I.GetGType(393, "TextIter")
 	return ret
 }
 
@@ -62883,6 +62361,66 @@ func (v TextIter) TogglesTag(tag ITextTag) (result bool) {
 	return
 }
 
+func (v TextIter) p() *C.GtkTextIter {
+	return (*C.GtkTextIter)(v.P)
+}
+func (v TextIter) Dummy1() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy1)
+	return
+}
+func (v TextIter) Dummy2() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy2)
+	return
+}
+func (v TextIter) Dummy3() (result int32) {
+	result = int32(v.p().dummy3)
+	return
+}
+func (v TextIter) Dummy4() (result int32) {
+	result = int32(v.p().dummy4)
+	return
+}
+func (v TextIter) Dummy5() (result int32) {
+	result = int32(v.p().dummy5)
+	return
+}
+func (v TextIter) Dummy6() (result int32) {
+	result = int32(v.p().dummy6)
+	return
+}
+func (v TextIter) Dummy7() (result int32) {
+	result = int32(v.p().dummy7)
+	return
+}
+func (v TextIter) Dummy8() (result int32) {
+	result = int32(v.p().dummy8)
+	return
+}
+func (v TextIter) Dummy9() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy9)
+	return
+}
+func (v TextIter) Dummy10() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy10)
+	return
+}
+func (v TextIter) Dummy11() (result int32) {
+	result = int32(v.p().dummy11)
+	return
+}
+func (v TextIter) Dummy12() (result int32) {
+	result = int32(v.p().dummy12)
+	return
+}
+func (v TextIter) Dummy13() (result int32) {
+	result = int32(v.p().dummy13)
+	return
+}
+func (v TextIter) Dummy14() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy14)
+	return
+}
+
 // Object TextMark
 type TextMark struct {
 	g.Object
@@ -62894,7 +62432,7 @@ type ITextMark interface{ P_TextMark() unsafe.Pointer }
 
 func (v TextMark) P_TextMark() unsafe.Pointer { return v.P }
 func TextMarkGetType() gi.GType {
-	ret := _I.GetGType(561, "TextMark")
+	ret := _I.GetGType(394, "TextMark")
 	return ret
 }
 
@@ -63041,7 +62579,7 @@ const (
 )
 
 func TextSearchFlagsGetType() gi.GType {
-	ret := _I.GetGType(562, "TextSearchFlags")
+	ret := _I.GetGType(395, "TextSearchFlags")
 	return ret
 }
 
@@ -63056,7 +62594,7 @@ type ITextTag interface{ P_TextTag() unsafe.Pointer }
 
 func (v TextTag) P_TextTag() unsafe.Pointer { return v.P }
 func TextTagGetType() gi.GType {
-	ret := _I.GetGType(563, "TextTag")
+	ret := _I.GetGType(396, "TextTag")
 	return ret
 }
 
@@ -63165,15 +62703,7 @@ func (v TextTag) SetPriority(priority int32) {
 
 // ignore GType struct TextTagClass
 
-// Struct TextTagPrivate
-type TextTagPrivate struct {
-	P unsafe.Pointer
-}
-
-func TextTagPrivateGetType() gi.GType {
-	ret := _I.GetGType(564, "TextTagPrivate")
-	return ret
-}
+// ignore private struct TextTagPrivate, type of TextTag is object
 
 // Object TextTagTable
 type TextTagTable struct {
@@ -63188,7 +62718,7 @@ type ITextTagTable interface{ P_TextTagTable() unsafe.Pointer }
 func (v TextTagTable) P_TextTagTable() unsafe.Pointer { return v.P }
 func (v TextTagTable) P_Buildable() unsafe.Pointer    { return v.P }
 func TextTagTableGetType() gi.GType {
-	ret := _I.GetGType(565, "TextTagTable")
+	ret := _I.GetGType(397, "TextTagTable")
 	return ret
 }
 
@@ -63335,15 +62865,7 @@ func CallTextTagTableForeach(fn TextTagTableForeach, result unsafe.Pointer, args
 	fn(tag)
 }
 
-// Struct TextTagTablePrivate
-type TextTagTablePrivate struct {
-	P unsafe.Pointer
-}
-
-func TextTagTablePrivateGetType() gi.GType {
-	ret := _I.GetGType(566, "TextTagTablePrivate")
-	return ret
-}
+// ignore private struct TextTagTablePrivate, type of TextTagTable is object
 
 // Object TextView
 type TextView struct {
@@ -63358,7 +62880,7 @@ type ITextView interface{ P_TextView() unsafe.Pointer }
 func (v TextView) P_TextView() unsafe.Pointer   { return v.P }
 func (v TextView) P_Scrollable() unsafe.Pointer { return v.P }
 func TextViewGetType() gi.GType {
-	ret := _I.GetGType(567, "TextView")
+	ret := _I.GetGType(398, "TextView")
 	return ret
 }
 
@@ -64830,21 +64352,13 @@ func (v TextViewAccessible) P_EditableText() unsafe.Pointer       { return v.P }
 func (v TextViewAccessible) P_StreamableContent() unsafe.Pointer  { return v.P }
 func (v TextViewAccessible) P_Text() unsafe.Pointer               { return v.P }
 func TextViewAccessibleGetType() gi.GType {
-	ret := _I.GetGType(568, "TextViewAccessible")
+	ret := _I.GetGType(399, "TextViewAccessible")
 	return ret
 }
 
 // ignore GType struct TextViewAccessibleClass
 
-// Struct TextViewAccessiblePrivate
-type TextViewAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func TextViewAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(569, "TextViewAccessiblePrivate")
-	return ret
-}
+// ignore private struct TextViewAccessiblePrivate, type of TextViewAccessible is object
 
 // ignore GType struct TextViewClass
 
@@ -64859,19 +64373,11 @@ const (
 )
 
 func TextViewLayerGetType() gi.GType {
-	ret := _I.GetGType(570, "TextViewLayer")
+	ret := _I.GetGType(400, "TextViewLayer")
 	return ret
 }
 
-// Struct TextViewPrivate
-type TextViewPrivate struct {
-	P unsafe.Pointer
-}
-
-func TextViewPrivateGetType() gi.GType {
-	ret := _I.GetGType(571, "TextViewPrivate")
-	return ret
-}
+// ignore private struct TextViewPrivate, type of TextView is object
 
 // Enum TextWindowType
 type TextWindowTypeEnum int
@@ -64887,7 +64393,7 @@ const (
 )
 
 func TextWindowTypeGetType() gi.GType {
-	ret := _I.GetGType(572, "TextWindowType")
+	ret := _I.GetGType(401, "TextWindowType")
 	return ret
 }
 
@@ -64897,7 +64403,7 @@ type ThemeEngine struct {
 }
 
 func ThemeEngineGetType() gi.GType {
-	ret := _I.GetGType(573, "ThemeEngine")
+	ret := _I.GetGType(402, "ThemeEngine")
 	return ret
 }
 
@@ -64912,7 +64418,7 @@ type IThemingEngine interface{ P_ThemingEngine() unsafe.Pointer }
 
 func (v ThemingEngine) P_ThemingEngine() unsafe.Pointer { return v.P }
 func ThemingEngineGetType() gi.GType {
-	ret := _I.GetGType(574, "ThemingEngine")
+	ret := _I.GetGType(403, "ThemingEngine")
 	return ret
 }
 
@@ -65351,15 +64857,7 @@ func (v ThemingEngine) StateIsRunning(state StateTypeEnum) (result bool, progres
 
 // ignore GType struct ThemingEngineClass
 
-// Struct ThemingEnginePrivate
-type ThemingEnginePrivate struct {
-	P unsafe.Pointer
-}
-
-func ThemingEnginePrivateGetType() gi.GType {
-	ret := _I.GetGType(575, "ThemingEnginePrivate")
-	return ret
-}
+// ignore private struct ThemingEnginePrivate, type of ThemingEngine is object
 
 type TickCallback func(widget Widget, frame_clock gdk.FrameClock) (result bool)
 
@@ -65384,7 +64882,7 @@ type IToggleAction interface{ P_ToggleAction() unsafe.Pointer }
 
 func (v ToggleAction) P_ToggleAction() unsafe.Pointer { return v.P }
 func ToggleActionGetType() gi.GType {
-	ret := _I.GetGType(576, "ToggleAction")
+	ret := _I.GetGType(404, "ToggleAction")
 	return ret
 }
 
@@ -65530,19 +65028,37 @@ type ToggleActionEntry struct {
 const SizeOfStructToggleActionEntry = 56
 
 func ToggleActionEntryGetType() gi.GType {
-	ret := _I.GetGType(577, "ToggleActionEntry")
+	ret := _I.GetGType(405, "ToggleActionEntry")
 	return ret
 }
 
-// Struct ToggleActionPrivate
-type ToggleActionPrivate struct {
-	P unsafe.Pointer
+func (v ToggleActionEntry) p() *C.GtkToggleActionEntry {
+	return (*C.GtkToggleActionEntry)(v.P)
+}
+func (v ToggleActionEntry) Name() (result int /*TODO*/) {
+	return
+}
+func (v ToggleActionEntry) StockId() (result int /*TODO*/) {
+	return
+}
+func (v ToggleActionEntry) Label() (result int /*TODO*/) {
+	return
+}
+func (v ToggleActionEntry) Accelerator() (result int /*TODO*/) {
+	return
+}
+func (v ToggleActionEntry) Tooltip() (result int /*TODO*/) {
+	return
+}
+func (v ToggleActionEntry) Callback() (result int /*TODO*/) {
+	return
+}
+func (v ToggleActionEntry) IsActive() (result bool) {
+	result = gi.Int2Bool(int(v.p().is_active))
+	return
 }
 
-func ToggleActionPrivateGetType() gi.GType {
-	ret := _I.GetGType(578, "ToggleActionPrivate")
-	return ret
-}
+// ignore private struct ToggleActionPrivate, type of ToggleAction is object
 
 // Object ToggleButton
 type ToggleButton struct {
@@ -65555,7 +65071,7 @@ type IToggleButton interface{ P_ToggleButton() unsafe.Pointer }
 
 func (v ToggleButton) P_ToggleButton() unsafe.Pointer { return v.P }
 func ToggleButtonGetType() gi.GType {
-	ret := _I.GetGType(579, "ToggleButton")
+	ret := _I.GetGType(406, "ToggleButton")
 	return ret
 }
 
@@ -65745,33 +65261,17 @@ type IToggleButtonAccessible interface{ P_ToggleButtonAccessible() unsafe.Pointe
 
 func (v ToggleButtonAccessible) P_ToggleButtonAccessible() unsafe.Pointer { return v.P }
 func ToggleButtonAccessibleGetType() gi.GType {
-	ret := _I.GetGType(580, "ToggleButtonAccessible")
+	ret := _I.GetGType(407, "ToggleButtonAccessible")
 	return ret
 }
 
 // ignore GType struct ToggleButtonAccessibleClass
 
-// Struct ToggleButtonAccessiblePrivate
-type ToggleButtonAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ToggleButtonAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(581, "ToggleButtonAccessiblePrivate")
-	return ret
-}
+// ignore private struct ToggleButtonAccessiblePrivate, type of ToggleButtonAccessible is object
 
 // ignore GType struct ToggleButtonClass
 
-// Struct ToggleButtonPrivate
-type ToggleButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func ToggleButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(582, "ToggleButtonPrivate")
-	return ret
-}
+// ignore private struct ToggleButtonPrivate, type of ToggleButton is object
 
 // Object ToggleToolButton
 type ToggleToolButton struct {
@@ -65784,7 +65284,7 @@ type IToggleToolButton interface{ P_ToggleToolButton() unsafe.Pointer }
 
 func (v ToggleToolButton) P_ToggleToolButton() unsafe.Pointer { return v.P }
 func ToggleToolButtonGetType() gi.GType {
-	ret := _I.GetGType(583, "ToggleToolButton")
+	ret := _I.GetGType(408, "ToggleToolButton")
 	return ret
 }
 
@@ -65864,15 +65364,7 @@ func (v ToggleToolButton) SetActive(is_active bool) {
 
 // ignore GType struct ToggleToolButtonClass
 
-// Struct ToggleToolButtonPrivate
-type ToggleToolButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func ToggleToolButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(584, "ToggleToolButtonPrivate")
-	return ret
-}
+// ignore private struct ToggleToolButtonPrivate, type of ToggleToolButton is object
 
 // Object ToolButton
 type ToolButton struct {
@@ -65887,7 +65379,7 @@ type IToolButton interface{ P_ToolButton() unsafe.Pointer }
 func (v ToolButton) P_ToolButton() unsafe.Pointer { return v.P }
 func (v ToolButton) P_Actionable() unsafe.Pointer { return v.P }
 func ToolButtonGetType() gi.GType {
-	ret := _I.GetGType(585, "ToolButton")
+	ret := _I.GetGType(409, "ToolButton")
 	return ret
 }
 
@@ -66168,15 +65660,7 @@ func (v ToolButton) SetUseUnderline(use_underline bool) {
 
 // ignore GType struct ToolButtonClass
 
-// Struct ToolButtonPrivate
-type ToolButtonPrivate struct {
-	P unsafe.Pointer
-}
-
-func ToolButtonPrivateGetType() gi.GType {
-	ret := _I.GetGType(586, "ToolButtonPrivate")
-	return ret
-}
+// ignore private struct ToolButtonPrivate, type of ToolButton is object
 
 // Object ToolItem
 type ToolItem struct {
@@ -66191,7 +65675,7 @@ type IToolItem interface{ P_ToolItem() unsafe.Pointer }
 func (v ToolItem) P_ToolItem() unsafe.Pointer    { return v.P }
 func (v ToolItem) P_Activatable() unsafe.Pointer { return v.P }
 func ToolItemGetType() gi.GType {
-	ret := _I.GetGType(587, "ToolItem")
+	ret := _I.GetGType(410, "ToolItem")
 	return ret
 }
 
@@ -66702,7 +66186,7 @@ type IToolItemGroup interface{ P_ToolItemGroup() unsafe.Pointer }
 func (v ToolItemGroup) P_ToolItemGroup() unsafe.Pointer { return v.P }
 func (v ToolItemGroup) P_ToolShell() unsafe.Pointer     { return v.P }
 func ToolItemGroupGetType() gi.GType {
-	ret := _I.GetGType(588, "ToolItemGroup")
+	ret := _I.GetGType(411, "ToolItemGroup")
 	return ret
 }
 
@@ -67040,25 +66524,9 @@ func (v ToolItemGroup) SetLabelWidget(label_widget IWidget) {
 
 // ignore GType struct ToolItemGroupClass
 
-// Struct ToolItemGroupPrivate
-type ToolItemGroupPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct ToolItemGroupPrivate, type of ToolItemGroup is object
 
-func ToolItemGroupPrivateGetType() gi.GType {
-	ret := _I.GetGType(589, "ToolItemGroupPrivate")
-	return ret
-}
-
-// Struct ToolItemPrivate
-type ToolItemPrivate struct {
-	P unsafe.Pointer
-}
-
-func ToolItemPrivateGetType() gi.GType {
-	ret := _I.GetGType(590, "ToolItemPrivate")
-	return ret
-}
+// ignore private struct ToolItemPrivate, type of ToolItem is object
 
 // Object ToolPalette
 type ToolPalette struct {
@@ -67075,7 +66543,7 @@ func (v ToolPalette) P_ToolPalette() unsafe.Pointer { return v.P }
 func (v ToolPalette) P_Orientable() unsafe.Pointer  { return v.P }
 func (v ToolPalette) P_Scrollable() unsafe.Pointer  { return v.P }
 func ToolPaletteGetType() gi.GType {
-	ret := _I.GetGType(591, "ToolPalette")
+	ret := _I.GetGType(412, "ToolPalette")
 	return ret
 }
 
@@ -67530,19 +66998,11 @@ const (
 )
 
 func ToolPaletteDragTargetsGetType() gi.GType {
-	ret := _I.GetGType(592, "ToolPaletteDragTargets")
+	ret := _I.GetGType(413, "ToolPaletteDragTargets")
 	return ret
 }
 
-// Struct ToolPalettePrivate
-type ToolPalettePrivate struct {
-	P unsafe.Pointer
-}
-
-func ToolPalettePrivateGetType() gi.GType {
-	ret := _I.GetGType(593, "ToolPalettePrivate")
-	return ret
-}
+// ignore private struct ToolPalettePrivate, type of ToolPalette is object
 
 // Interface ToolShell
 type ToolShell struct {
@@ -67554,7 +67014,7 @@ type IToolShell interface{ P_ToolShell() unsafe.Pointer }
 
 func (v ToolShell) P_ToolShell() unsafe.Pointer { return v.P }
 func ToolShellGetType() gi.GType {
-	ret := _I.GetGType(594, "ToolShell")
+	ret := _I.GetGType(414, "ToolShell")
 	return ret
 }
 
@@ -67732,7 +67192,7 @@ func (v Toolbar) P_Toolbar() unsafe.Pointer    { return v.P }
 func (v Toolbar) P_Orientable() unsafe.Pointer { return v.P }
 func (v Toolbar) P_ToolShell() unsafe.Pointer  { return v.P }
 func ToolbarGetType() gi.GType {
-	ret := _I.GetGType(595, "Toolbar")
+	ret := _I.GetGType(415, "Toolbar")
 	return ret
 }
 
@@ -68034,15 +67494,7 @@ func (v Toolbar) UnsetStyle() {
 
 // ignore GType struct ToolbarClass
 
-// Struct ToolbarPrivate
-type ToolbarPrivate struct {
-	P unsafe.Pointer
-}
-
-func ToolbarPrivateGetType() gi.GType {
-	ret := _I.GetGType(596, "ToolbarPrivate")
-	return ret
-}
+// ignore private struct ToolbarPrivate, type of Toolbar is object
 
 // Deprecated
 //
@@ -68055,7 +67507,7 @@ const (
 )
 
 func ToolbarSpaceStyleGetType() gi.GType {
-	ret := _I.GetGType(597, "ToolbarSpaceStyle")
+	ret := _I.GetGType(416, "ToolbarSpaceStyle")
 	return ret
 }
 
@@ -68070,7 +67522,7 @@ const (
 )
 
 func ToolbarStyleGetType() gi.GType {
-	ret := _I.GetGType(598, "ToolbarStyle")
+	ret := _I.GetGType(417, "ToolbarStyle")
 	return ret
 }
 
@@ -68085,7 +67537,7 @@ type ITooltip interface{ P_Tooltip() unsafe.Pointer }
 
 func (v Tooltip) P_Tooltip() unsafe.Pointer { return v.P }
 func TooltipGetType() gi.GType {
-	ret := _I.GetGType(599, "Tooltip")
+	ret := _I.GetGType(418, "Tooltip")
 	return ret
 }
 
@@ -68278,7 +67730,7 @@ type IToplevelAccessible interface{ P_ToplevelAccessible() unsafe.Pointer }
 
 func (v ToplevelAccessible) P_ToplevelAccessible() unsafe.Pointer { return v.P }
 func ToplevelAccessibleGetType() gi.GType {
-	ret := _I.GetGType(600, "ToplevelAccessible")
+	ret := _I.GetGType(419, "ToplevelAccessible")
 	return ret
 }
 
@@ -68302,15 +67754,7 @@ func (v ToplevelAccessible) GetChildren() (result g.List) {
 
 // ignore GType struct ToplevelAccessibleClass
 
-// Struct ToplevelAccessiblePrivate
-type ToplevelAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func ToplevelAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(601, "ToplevelAccessiblePrivate")
-	return ret
-}
+// ignore private struct ToplevelAccessiblePrivate, type of ToplevelAccessible is object
 
 type TranslateFunc func(path string) (result string)
 
@@ -68358,7 +67802,7 @@ type ITreeDragDest interface{ P_TreeDragDest() unsafe.Pointer }
 
 func (v TreeDragDest) P_TreeDragDest() unsafe.Pointer { return v.P }
 func TreeDragDestGetType() gi.GType {
-	ret := _I.GetGType(602, "TreeDragDest")
+	ret := _I.GetGType(420, "TreeDragDest")
 	return ret
 }
 
@@ -68422,7 +67866,7 @@ type ITreeDragSource interface{ P_TreeDragSource() unsafe.Pointer }
 
 func (v TreeDragSource) P_TreeDragSource() unsafe.Pointer { return v.P }
 func TreeDragSourceGetType() gi.GType {
-	ret := _I.GetGType(603, "TreeDragSource")
+	ret := _I.GetGType(421, "TreeDragSource")
 	return ret
 }
 
@@ -68502,7 +67946,7 @@ type TreeIter struct {
 const SizeOfStructTreeIter = 32
 
 func TreeIterGetType() gi.GType {
-	ret := _I.GetGType(604, "TreeIter")
+	ret := _I.GetGType(422, "TreeIter")
 	return ret
 }
 
@@ -68537,6 +67981,26 @@ func (v TreeIter) Free() {
 	iv.Call(args, nil, nil)
 }
 
+func (v TreeIter) p() *C.GtkTreeIter {
+	return (*C.GtkTreeIter)(v.P)
+}
+func (v TreeIter) Stamp() (result int32) {
+	result = int32(v.p().stamp)
+	return
+}
+func (v TreeIter) UserData() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().user_data)
+	return
+}
+func (v TreeIter) UserData2() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().user_data2)
+	return
+}
+func (v TreeIter) UserData3() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().user_data3)
+	return
+}
+
 type TreeIterCompareFunc func(model TreeModel, a TreeIter, b TreeIter) (result int32)
 
 func CallTreeIterCompareFunc(fn TreeIterCompareFunc, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -68560,7 +68024,7 @@ type ITreeModel interface{ P_TreeModel() unsafe.Pointer }
 
 func (v TreeModel) P_TreeModel() unsafe.Pointer { return v.P }
 func TreeModelGetType() gi.GType {
-	ret := _I.GetGType(605, "TreeModel")
+	ret := _I.GetGType(423, "TreeModel")
 	return ret
 }
 
@@ -69128,7 +68592,7 @@ func (v TreeModelFilter) P_TreeModelFilter() unsafe.Pointer { return v.P }
 func (v TreeModelFilter) P_TreeDragSource() unsafe.Pointer  { return v.P }
 func (v TreeModelFilter) P_TreeModel() unsafe.Pointer       { return v.P }
 func TreeModelFilterGetType() gi.GType {
-	ret := _I.GetGType(606, "TreeModelFilter")
+	ret := _I.GetGType(424, "TreeModelFilter")
 	return ret
 }
 
@@ -69361,15 +68825,7 @@ func CallTreeModelFilterModifyFunc(fn TreeModelFilterModifyFunc, result unsafe.P
 	*value = fn_ret_value
 }
 
-// Struct TreeModelFilterPrivate
-type TreeModelFilterPrivate struct {
-	P unsafe.Pointer
-}
-
-func TreeModelFilterPrivateGetType() gi.GType {
-	ret := _I.GetGType(607, "TreeModelFilterPrivate")
-	return ret
-}
+// ignore private struct TreeModelFilterPrivate, type of TreeModelFilter is object
 
 type TreeModelFilterVisibleFunc func(model TreeModel, iter TreeIter) (result bool)
 
@@ -69392,7 +68848,7 @@ const (
 )
 
 func TreeModelFlagsGetType() gi.GType {
-	ret := _I.GetGType(608, "TreeModelFlags")
+	ret := _I.GetGType(425, "TreeModelFlags")
 	return ret
 }
 
@@ -69428,7 +68884,7 @@ func (v TreeModelSort) P_TreeDragSource() unsafe.Pointer { return v.P }
 func (v TreeModelSort) P_TreeModel() unsafe.Pointer      { return v.P }
 func (v TreeModelSort) P_TreeSortable() unsafe.Pointer   { return v.P }
 func TreeModelSortGetType() gi.GType {
-	ret := _I.GetGType(609, "TreeModelSort")
+	ret := _I.GetGType(426, "TreeModelSort")
 	return ret
 }
 
@@ -69584,15 +69040,7 @@ func (v TreeModelSort) ResetDefaultSortFunc() {
 
 // ignore GType struct TreeModelSortClass
 
-// Struct TreeModelSortPrivate
-type TreeModelSortPrivate struct {
-	P unsafe.Pointer
-}
-
-func TreeModelSortPrivateGetType() gi.GType {
-	ret := _I.GetGType(610, "TreeModelSortPrivate")
-	return ret
-}
+// ignore private struct TreeModelSortPrivate, type of TreeModelSort is object
 
 // Struct TreePath
 type TreePath struct {
@@ -69600,7 +69048,7 @@ type TreePath struct {
 }
 
 func TreePathGetType() gi.GType {
-	ret := _I.GetGType(611, "TreePath")
+	ret := _I.GetGType(427, "TreePath")
 	return ret
 }
 
@@ -69936,7 +69384,7 @@ type TreeRowReference struct {
 }
 
 func TreeRowReferenceGetType() gi.GType {
-	ret := _I.GetGType(612, "TreeRowReference")
+	ret := _I.GetGType(428, "TreeRowReference")
 	return ret
 }
 
@@ -70141,7 +69589,7 @@ type ITreeSelection interface{ P_TreeSelection() unsafe.Pointer }
 
 func (v TreeSelection) P_TreeSelection() unsafe.Pointer { return v.P }
 func TreeSelectionGetType() gi.GType {
-	ret := _I.GetGType(613, "TreeSelection")
+	ret := _I.GetGType(429, "TreeSelection")
 	return ret
 }
 
@@ -70522,15 +69970,7 @@ func CallTreeSelectionFunc(fn TreeSelectionFunc, result unsafe.Pointer, args []u
 	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
-// Struct TreeSelectionPrivate
-type TreeSelectionPrivate struct {
-	P unsafe.Pointer
-}
-
-func TreeSelectionPrivateGetType() gi.GType {
-	ret := _I.GetGType(614, "TreeSelectionPrivate")
-	return ret
-}
+// ignore private struct TreeSelectionPrivate, type of TreeSelection is object
 
 // Interface TreeSortable
 type TreeSortable struct {
@@ -70542,7 +69982,7 @@ type ITreeSortable interface{ P_TreeSortable() unsafe.Pointer }
 
 func (v TreeSortable) P_TreeSortable() unsafe.Pointer { return v.P }
 func TreeSortableGetType() gi.GType {
-	ret := _I.GetGType(615, "TreeSortable")
+	ret := _I.GetGType(430, "TreeSortable")
 	return ret
 }
 
@@ -70711,7 +70151,7 @@ func (v TreeStore) P_TreeDragSource() unsafe.Pointer { return v.P }
 func (v TreeStore) P_TreeModel() unsafe.Pointer      { return v.P }
 func (v TreeStore) P_TreeSortable() unsafe.Pointer   { return v.P }
 func TreeStoreGetType() gi.GType {
-	ret := _I.GetGType(616, "TreeStore")
+	ret := _I.GetGType(431, "TreeStore")
 	return ret
 }
 
@@ -71098,15 +70538,7 @@ func (v TreeStore) Swap(a TreeIter, b TreeIter) {
 
 // ignore GType struct TreeStoreClass
 
-// Struct TreeStorePrivate
-type TreeStorePrivate struct {
-	P unsafe.Pointer
-}
-
-func TreeStorePrivateGetType() gi.GType {
-	ret := _I.GetGType(617, "TreeStorePrivate")
-	return ret
-}
+// ignore private struct TreeStorePrivate, type of TreeStore is object
 
 // Object TreeView
 type TreeView struct {
@@ -71121,7 +70553,7 @@ type ITreeView interface{ P_TreeView() unsafe.Pointer }
 func (v TreeView) P_TreeView() unsafe.Pointer   { return v.P }
 func (v TreeView) P_Scrollable() unsafe.Pointer { return v.P }
 func TreeViewGetType() gi.GType {
-	ret := _I.GetGType(618, "TreeView")
+	ret := _I.GetGType(432, "TreeView")
 	return ret
 }
 
@@ -73275,21 +72707,13 @@ func (v TreeViewAccessible) P_Selection() unsafe.Pointer            { return v.P
 func (v TreeViewAccessible) P_Table() unsafe.Pointer                { return v.P }
 func (v TreeViewAccessible) P_CellAccessibleParent() unsafe.Pointer { return v.P }
 func TreeViewAccessibleGetType() gi.GType {
-	ret := _I.GetGType(619, "TreeViewAccessible")
+	ret := _I.GetGType(433, "TreeViewAccessible")
 	return ret
 }
 
 // ignore GType struct TreeViewAccessibleClass
 
-// Struct TreeViewAccessiblePrivate
-type TreeViewAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func TreeViewAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(620, "TreeViewAccessiblePrivate")
-	return ret
-}
+// ignore private struct TreeViewAccessiblePrivate, type of TreeViewAccessible is object
 
 // ignore GType struct TreeViewClass
 
@@ -73308,7 +72732,7 @@ func (v TreeViewColumn) P_TreeViewColumn() unsafe.Pointer { return v.P }
 func (v TreeViewColumn) P_Buildable() unsafe.Pointer      { return v.P }
 func (v TreeViewColumn) P_CellLayout() unsafe.Pointer     { return v.P }
 func TreeViewColumnGetType() gi.GType {
-	ret := _I.GetGType(621, "TreeViewColumn")
+	ret := _I.GetGType(434, "TreeViewColumn")
 	return ret
 }
 
@@ -74296,15 +73720,7 @@ func CallTreeViewColumnDropFunc(fn TreeViewColumnDropFunc, result unsafe.Pointer
 	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
-// Struct TreeViewColumnPrivate
-type TreeViewColumnPrivate struct {
-	P unsafe.Pointer
-}
-
-func TreeViewColumnPrivateGetType() gi.GType {
-	ret := _I.GetGType(622, "TreeViewColumnPrivate")
-	return ret
-}
+// ignore private struct TreeViewColumnPrivate, type of TreeViewColumn is object
 
 // Enum TreeViewColumnSizing
 type TreeViewColumnSizingEnum int
@@ -74316,7 +73732,7 @@ const (
 )
 
 func TreeViewColumnSizingGetType() gi.GType {
-	ret := _I.GetGType(623, "TreeViewColumnSizing")
+	ret := _I.GetGType(435, "TreeViewColumnSizing")
 	return ret
 }
 
@@ -74331,7 +73747,7 @@ const (
 )
 
 func TreeViewDropPositionGetType() gi.GType {
-	ret := _I.GetGType(624, "TreeViewDropPosition")
+	ret := _I.GetGType(436, "TreeViewDropPosition")
 	return ret
 }
 
@@ -74346,7 +73762,7 @@ const (
 )
 
 func TreeViewGridLinesGetType() gi.GType {
-	ret := _I.GetGType(625, "TreeViewGridLines")
+	ret := _I.GetGType(437, "TreeViewGridLines")
 	return ret
 }
 
@@ -74361,15 +73777,7 @@ func CallTreeViewMappingFunc(fn TreeViewMappingFunc, result unsafe.Pointer, args
 	fn(tree_view, path)
 }
 
-// Struct TreeViewPrivate
-type TreeViewPrivate struct {
-	P unsafe.Pointer
-}
-
-func TreeViewPrivateGetType() gi.GType {
-	ret := _I.GetGType(626, "TreeViewPrivate")
-	return ret
-}
+// ignore private struct TreeViewPrivate, type of TreeView is object
 
 type TreeViewRowSeparatorFunc func(model TreeModel, iter TreeIter) (result bool)
 
@@ -74421,7 +73829,7 @@ type IUIManager interface{ P_UIManager() unsafe.Pointer }
 func (v UIManager) P_UIManager() unsafe.Pointer { return v.P }
 func (v UIManager) P_Buildable() unsafe.Pointer { return v.P }
 func UIManagerGetType() gi.GType {
-	ret := _I.GetGType(627, "UIManager")
+	ret := _I.GetGType(438, "UIManager")
 	return ret
 }
 
@@ -74859,19 +74267,11 @@ const (
 )
 
 func UIManagerItemTypeGetType() gi.GType {
-	ret := _I.GetGType(628, "UIManagerItemType")
+	ret := _I.GetGType(439, "UIManagerItemType")
 	return ret
 }
 
-// Struct UIManagerPrivate
-type UIManagerPrivate struct {
-	P unsafe.Pointer
-}
-
-func UIManagerPrivateGetType() gi.GType {
-	ret := _I.GetGType(629, "UIManagerPrivate")
-	return ret
-}
+// ignore private struct UIManagerPrivate, type of UIManager is object
 
 // Enum Unit
 type UnitEnum int
@@ -74884,7 +74284,7 @@ const (
 )
 
 func UnitGetType() gi.GType {
-	ret := _I.GetGType(630, "Unit")
+	ret := _I.GetGType(440, "Unit")
 	return ret
 }
 
@@ -74899,7 +74299,7 @@ type IVBox interface{ P_VBox() unsafe.Pointer }
 
 func (v VBox) P_VBox() unsafe.Pointer { return v.P }
 func VBoxGetType() gi.GType {
-	ret := _I.GetGType(631, "VBox")
+	ret := _I.GetGType(441, "VBox")
 	return ret
 }
 
@@ -74941,7 +74341,7 @@ type IVButtonBox interface{ P_VButtonBox() unsafe.Pointer }
 
 func (v VButtonBox) P_VButtonBox() unsafe.Pointer { return v.P }
 func VButtonBoxGetType() gi.GType {
-	ret := _I.GetGType(632, "VButtonBox")
+	ret := _I.GetGType(442, "VButtonBox")
 	return ret
 }
 
@@ -74976,7 +74376,7 @@ type IVPaned interface{ P_VPaned() unsafe.Pointer }
 
 func (v VPaned) P_VPaned() unsafe.Pointer { return v.P }
 func VPanedGetType() gi.GType {
-	ret := _I.GetGType(633, "VPaned")
+	ret := _I.GetGType(443, "VPaned")
 	return ret
 }
 
@@ -75011,7 +74411,7 @@ type IVScale interface{ P_VScale() unsafe.Pointer }
 
 func (v VScale) P_VScale() unsafe.Pointer { return v.P }
 func VScaleGetType() gi.GType {
-	ret := _I.GetGType(634, "VScale")
+	ret := _I.GetGType(444, "VScale")
 	return ret
 }
 
@@ -75082,7 +74482,7 @@ type IVScrollbar interface{ P_VScrollbar() unsafe.Pointer }
 
 func (v VScrollbar) P_VScrollbar() unsafe.Pointer { return v.P }
 func VScrollbarGetType() gi.GType {
-	ret := _I.GetGType(635, "VScrollbar")
+	ret := _I.GetGType(445, "VScrollbar")
 	return ret
 }
 
@@ -75125,7 +74525,7 @@ type IVSeparator interface{ P_VSeparator() unsafe.Pointer }
 
 func (v VSeparator) P_VSeparator() unsafe.Pointer { return v.P }
 func VSeparatorGetType() gi.GType {
-	ret := _I.GetGType(636, "VSeparator")
+	ret := _I.GetGType(446, "VSeparator")
 	return ret
 }
 
@@ -75162,7 +74562,7 @@ type IViewport interface{ P_Viewport() unsafe.Pointer }
 func (v Viewport) P_Viewport() unsafe.Pointer   { return v.P }
 func (v Viewport) P_Scrollable() unsafe.Pointer { return v.P }
 func ViewportGetType() gi.GType {
-	ret := _I.GetGType(637, "Viewport")
+	ret := _I.GetGType(447, "Viewport")
 	return ret
 }
 
@@ -75353,15 +74753,7 @@ func (v Viewport) SetVadjustment(adjustment IAdjustment) {
 
 // ignore GType struct ViewportClass
 
-// Struct ViewportPrivate
-type ViewportPrivate struct {
-	P unsafe.Pointer
-}
-
-func ViewportPrivateGetType() gi.GType {
-	ret := _I.GetGType(638, "ViewportPrivate")
-	return ret
-}
+// ignore private struct ViewportPrivate, type of Viewport is object
 
 // Object VolumeButton
 type VolumeButton struct {
@@ -75374,7 +74766,7 @@ type IVolumeButton interface{ P_VolumeButton() unsafe.Pointer }
 
 func (v VolumeButton) P_VolumeButton() unsafe.Pointer { return v.P }
 func VolumeButtonGetType() gi.GType {
-	ret := _I.GetGType(639, "VolumeButton")
+	ret := _I.GetGType(448, "VolumeButton")
 	return ret
 }
 
@@ -75411,7 +74803,7 @@ func (v Widget) P_Widget() unsafe.Pointer           { return v.P }
 func (v Widget) P_ImplementorIface() unsafe.Pointer { return v.P }
 func (v Widget) P_Buildable() unsafe.Pointer        { return v.P }
 func WidgetGetType() gi.GType {
-	ret := _I.GetGType(640, "Widget")
+	ret := _I.GetGType(449, "Widget")
 	return ret
 }
 
@@ -80410,21 +79802,13 @@ type IWidgetAccessible interface{ P_WidgetAccessible() unsafe.Pointer }
 func (v WidgetAccessible) P_WidgetAccessible() unsafe.Pointer { return v.P }
 func (v WidgetAccessible) P_Component() unsafe.Pointer        { return v.P }
 func WidgetAccessibleGetType() gi.GType {
-	ret := _I.GetGType(641, "WidgetAccessible")
+	ret := _I.GetGType(450, "WidgetAccessible")
 	return ret
 }
 
 // ignore GType struct WidgetAccessibleClass
 
-// Struct WidgetAccessiblePrivate
-type WidgetAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func WidgetAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(642, "WidgetAccessiblePrivate")
-	return ret
-}
+// ignore private struct WidgetAccessiblePrivate, type of WidgetAccessible is object
 
 // Struct WidgetClass
 type WidgetClass struct {
@@ -80434,7 +79818,7 @@ type WidgetClass struct {
 const SizeOfStructWidgetClass = 824
 
 func WidgetClassGetType() gi.GType {
-	ret := _I.GetGType(643, "WidgetClass")
+	ret := _I.GetGType(451, "WidgetClass")
 	return ret
 }
 
@@ -80692,15 +80076,275 @@ func (v WidgetClass) SetTemplateFromResource(resource_name string) {
 	gi.Free(c_resource_name)
 }
 
-// Struct WidgetClassPrivate
-type WidgetClassPrivate struct {
-	P unsafe.Pointer
+func (v WidgetClass) p() *C.GtkWidgetClass {
+	return (*C.GtkWidgetClass)(v.P)
+}
+func (v WidgetClass) ParentClass() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ActivateSignal() (result uint32) {
+	result = uint32(v.p().activate_signal)
+	return
+}
+func (v WidgetClass) DispatchChildPropertiesChanged() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Destroy() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Show() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ShowAll() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Hide() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Map() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Unmap() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Realize() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Unrealize() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) SizeAllocate() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) StateChanged() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) StateFlagsChanged() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ParentSet() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) HierarchyChanged() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) StyleSet() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DirectionChanged() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) GrabNotify() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ChildNotify() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Draw() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) GetRequestMode() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) GetPreferredHeight() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) GetPreferredWidthForHeight() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) GetPreferredWidth() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) GetPreferredHeightForWidth() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) MnemonicActivate() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) GrabFocus() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Focus() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) MoveFocus() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) KeynavFailed() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Event() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ButtonPressEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ButtonReleaseEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ScrollEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) MotionNotifyEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DeleteEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DestroyEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) KeyPressEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) KeyReleaseEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) EnterNotifyEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) LeaveNotifyEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ConfigureEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) FocusInEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) FocusOutEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) MapEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) UnmapEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) PropertyNotifyEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) SelectionClearEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) SelectionRequestEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) SelectionNotifyEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ProximityInEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ProximityOutEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) VisibilityNotifyEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) WindowStateEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DamageEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) GrabBrokenEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) SelectionGet() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) SelectionReceived() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DragBegin() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DragEnd() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DragDataGet() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DragDataDelete() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DragLeave() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DragMotion() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DragDrop() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DragDataReceived() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) DragFailed() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) PopupMenu() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ShowHelp() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) GetAccessible() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ScreenChanged() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) CanActivateAccel() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) CompositedChanged() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) QueryTooltip() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) ComputeExpand() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) AdjustSizeRequest() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) AdjustSizeAllocation() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) StyleUpdated() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) TouchEvent() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) GetPreferredHeightAndBaselineForWidth() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) AdjustBaselineRequest() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) AdjustBaselineAllocation() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) QueueDrawRegion() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) Priv() (result int /*TODO*/) {
+	return
+}
+func (v WidgetClass) _GtkReserved6() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved6)
+	return
+}
+func (v WidgetClass) _GtkReserved7() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._gtk_reserved7)
+	return
 }
 
-func WidgetClassPrivateGetType() gi.GType {
-	ret := _I.GetGType(644, "WidgetClassPrivate")
-	return ret
-}
+// ignore private struct WidgetClassPrivate, type of WidgetClass is struct
 
 // Enum WidgetHelpType
 type WidgetHelpTypeEnum int
@@ -80711,7 +80355,7 @@ const (
 )
 
 func WidgetHelpTypeGetType() gi.GType {
-	ret := _I.GetGType(645, "WidgetHelpType")
+	ret := _I.GetGType(452, "WidgetHelpType")
 	return ret
 }
 
@@ -80721,7 +80365,7 @@ type WidgetPath struct {
 }
 
 func WidgetPathGetType() gi.GType {
-	ret := _I.GetGType(646, "WidgetPath")
+	ret := _I.GetGType(453, "WidgetPath")
 	return ret
 }
 
@@ -81524,15 +81168,7 @@ func (v WidgetPath) Unref() {
 	iv.Call(args, nil, nil)
 }
 
-// Struct WidgetPrivate
-type WidgetPrivate struct {
-	P unsafe.Pointer
-}
-
-func WidgetPrivateGetType() gi.GType {
-	ret := _I.GetGType(647, "WidgetPrivate")
-	return ret
-}
+// ignore private struct WidgetPrivate, type of Widget is object
 
 // Object Window
 type Window struct {
@@ -81545,7 +81181,7 @@ type IWindow interface{ P_Window() unsafe.Pointer }
 
 func (v Window) P_Window() unsafe.Pointer { return v.P }
 func WindowGetType() gi.GType {
-	ret := _I.GetGType(648, "Window")
+	ret := _I.GetGType(454, "Window")
 	return ret
 }
 
@@ -83728,21 +83364,13 @@ type IWindowAccessible interface{ P_WindowAccessible() unsafe.Pointer }
 func (v WindowAccessible) P_WindowAccessible() unsafe.Pointer { return v.P }
 func (v WindowAccessible) P_Window() unsafe.Pointer           { return v.P }
 func WindowAccessibleGetType() gi.GType {
-	ret := _I.GetGType(649, "WindowAccessible")
+	ret := _I.GetGType(455, "WindowAccessible")
 	return ret
 }
 
 // ignore GType struct WindowAccessibleClass
 
-// Struct WindowAccessiblePrivate
-type WindowAccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func WindowAccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(650, "WindowAccessiblePrivate")
-	return ret
-}
+// ignore private struct WindowAccessiblePrivate, type of WindowAccessible is object
 
 // ignore GType struct WindowClass
 
@@ -83752,7 +83380,7 @@ type WindowGeometryInfo struct {
 }
 
 func WindowGeometryInfoGetType() gi.GType {
-	ret := _I.GetGType(651, "WindowGeometryInfo")
+	ret := _I.GetGType(456, "WindowGeometryInfo")
 	return ret
 }
 
@@ -83767,7 +83395,7 @@ type IWindowGroup interface{ P_WindowGroup() unsafe.Pointer }
 
 func (v WindowGroup) P_WindowGroup() unsafe.Pointer { return v.P }
 func WindowGroupGetType() gi.GType {
-	ret := _I.GetGType(652, "WindowGroup")
+	ret := _I.GetGType(457, "WindowGroup")
 	return ret
 }
 
@@ -83890,15 +83518,7 @@ func (v WindowGroup) RemoveWindow(window IWindow) {
 
 // ignore GType struct WindowGroupClass
 
-// Struct WindowGroupPrivate
-type WindowGroupPrivate struct {
-	P unsafe.Pointer
-}
-
-func WindowGroupPrivateGetType() gi.GType {
-	ret := _I.GetGType(653, "WindowGroupPrivate")
-	return ret
-}
+// ignore private struct WindowGroupPrivate, type of WindowGroup is object
 
 // Enum WindowPosition
 type WindowPositionEnum int
@@ -83912,19 +83532,11 @@ const (
 )
 
 func WindowPositionGetType() gi.GType {
-	ret := _I.GetGType(654, "WindowPosition")
+	ret := _I.GetGType(458, "WindowPosition")
 	return ret
 }
 
-// Struct WindowPrivate
-type WindowPrivate struct {
-	P unsafe.Pointer
-}
-
-func WindowPrivateGetType() gi.GType {
-	ret := _I.GetGType(655, "WindowPrivate")
-	return ret
-}
+// ignore private struct WindowPrivate, type of Window is object
 
 // Enum WindowType
 type WindowTypeEnum int
@@ -83935,7 +83547,7 @@ const (
 )
 
 func WindowTypeGetType() gi.GType {
-	ret := _I.GetGType(656, "WindowType")
+	ret := _I.GetGType(459, "WindowType")
 	return ret
 }
 
@@ -83950,7 +83562,7 @@ const (
 )
 
 func WrapModeGetType() gi.GType {
-	ret := _I.GetGType(657, "WrapMode")
+	ret := _I.GetGType(460, "WrapMode")
 	return ret
 }
 

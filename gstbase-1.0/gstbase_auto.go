@@ -911,25 +911,9 @@ func (v AggregatorPad) PopBuffer() (result gst.Buffer) {
 
 // ignore GType struct AggregatorPadClass
 
-// Struct AggregatorPadPrivate
-type AggregatorPadPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct AggregatorPadPrivate, type of AggregatorPad is object
 
-func AggregatorPadPrivateGetType() gi.GType {
-	ret := _I.GetGType(3, "AggregatorPadPrivate")
-	return ret
-}
-
-// Struct AggregatorPrivate
-type AggregatorPrivate struct {
-	P unsafe.Pointer
-}
-
-func AggregatorPrivateGetType() gi.GType {
-	ret := _I.GetGType(4, "AggregatorPrivate")
-	return ret
-}
+// ignore private struct AggregatorPrivate, type of Aggregator is object
 
 // Object BaseParse
 type BaseParse struct {
@@ -942,7 +926,7 @@ type IBaseParse interface{ P_BaseParse() unsafe.Pointer }
 
 func (v BaseParse) P_BaseParse() unsafe.Pointer { return v.P }
 func BaseParseGetType() gi.GType {
-	ret := _I.GetGType(5, "BaseParse")
+	ret := _I.GetGType(3, "BaseParse")
 	return ret
 }
 
@@ -1289,7 +1273,7 @@ type BaseParseFrame struct {
 const SizeOfStructBaseParseFrame = 72
 
 func BaseParseFrameGetType() gi.GType {
-	ret := _I.GetGType(6, "BaseParseFrame")
+	ret := _I.GetGType(4, "BaseParseFrame")
 	return ret
 }
 
@@ -1363,6 +1347,42 @@ func (v BaseParseFrame) Init() {
 	iv.Call(args, nil, nil)
 }
 
+func (v BaseParseFrame) p() *C.GstBaseParseFrame {
+	return (*C.GstBaseParseFrame)(v.P)
+}
+func (v BaseParseFrame) Buffer() (result int /*TODO*/) {
+	return
+}
+func (v BaseParseFrame) OutBuffer() (result int /*TODO*/) {
+	return
+}
+func (v BaseParseFrame) Flags() (result uint32) {
+	result = uint32(v.p().flags)
+	return
+}
+func (v BaseParseFrame) Offset() (result uint64) {
+	result = uint64(v.p().offset)
+	return
+}
+func (v BaseParseFrame) Overhead() (result int32) {
+	result = int32(v.p().overhead)
+	return
+}
+func (v BaseParseFrame) Size() (result int32) {
+	result = int32(v.p().size)
+	return
+}
+func (v BaseParseFrame) _GstReservedI() (result int /*TODO*/) {
+	return
+}
+func (v BaseParseFrame) _GstReservedP() (result int /*TODO*/) {
+	return
+}
+func (v BaseParseFrame) _PrivateFlags() (result uint32) {
+	result = uint32(v.p()._private_flags)
+	return
+}
+
 // Flags BaseParseFrameFlags
 type BaseParseFrameFlags int
 
@@ -1376,19 +1396,11 @@ const (
 )
 
 func BaseParseFrameFlagsGetType() gi.GType {
-	ret := _I.GetGType(7, "BaseParseFrameFlags")
+	ret := _I.GetGType(5, "BaseParseFrameFlags")
 	return ret
 }
 
-// Struct BaseParsePrivate
-type BaseParsePrivate struct {
-	P unsafe.Pointer
-}
-
-func BaseParsePrivateGetType() gi.GType {
-	ret := _I.GetGType(8, "BaseParsePrivate")
-	return ret
-}
+// ignore private struct BaseParsePrivate, type of BaseParse is object
 
 // Object BaseSink
 type BaseSink struct {
@@ -1401,7 +1413,7 @@ type IBaseSink interface{ P_BaseSink() unsafe.Pointer }
 
 func (v BaseSink) P_BaseSink() unsafe.Pointer { return v.P }
 func BaseSinkGetType() gi.GType {
-	ret := _I.GetGType(9, "BaseSink")
+	ret := _I.GetGType(6, "BaseSink")
 	return ret
 }
 
@@ -1943,15 +1955,7 @@ func (v BaseSink) WaitPreroll() (result gst.FlowReturnEnum) {
 
 // ignore GType struct BaseSinkClass
 
-// Struct BaseSinkPrivate
-type BaseSinkPrivate struct {
-	P unsafe.Pointer
-}
-
-func BaseSinkPrivateGetType() gi.GType {
-	ret := _I.GetGType(10, "BaseSinkPrivate")
-	return ret
-}
+// ignore private struct BaseSinkPrivate, type of BaseSink is object
 
 // Object BaseSrc
 type BaseSrc struct {
@@ -1964,7 +1968,7 @@ type IBaseSrc interface{ P_BaseSrc() unsafe.Pointer }
 
 func (v BaseSrc) P_BaseSrc() unsafe.Pointer { return v.P }
 func BaseSrcGetType() gi.GType {
-	ret := _I.GetGType(11, "BaseSrc")
+	ret := _I.GetGType(7, "BaseSrc")
 	return ret
 }
 
@@ -2351,19 +2355,11 @@ const (
 )
 
 func BaseSrcFlagsGetType() gi.GType {
-	ret := _I.GetGType(12, "BaseSrcFlags")
+	ret := _I.GetGType(8, "BaseSrcFlags")
 	return ret
 }
 
-// Struct BaseSrcPrivate
-type BaseSrcPrivate struct {
-	P unsafe.Pointer
-}
-
-func BaseSrcPrivateGetType() gi.GType {
-	ret := _I.GetGType(13, "BaseSrcPrivate")
-	return ret
-}
+// ignore private struct BaseSrcPrivate, type of BaseSrc is object
 
 // Object BaseTransform
 type BaseTransform struct {
@@ -2376,7 +2372,7 @@ type IBaseTransform interface{ P_BaseTransform() unsafe.Pointer }
 
 func (v BaseTransform) P_BaseTransform() unsafe.Pointer { return v.P }
 func BaseTransformGetType() gi.GType {
-	ret := _I.GetGType(14, "BaseTransform")
+	ret := _I.GetGType(9, "BaseTransform")
 	return ret
 }
 
@@ -2625,15 +2621,7 @@ func (v BaseTransform) UpdateSrcCaps(updated_caps gst.Caps) (result bool) {
 
 // ignore GType struct BaseTransformClass
 
-// Struct BaseTransformPrivate
-type BaseTransformPrivate struct {
-	P unsafe.Pointer
-}
-
-func BaseTransformPrivateGetType() gi.GType {
-	ret := _I.GetGType(15, "BaseTransformPrivate")
-	return ret
-}
+// ignore private struct BaseTransformPrivate, type of BaseTransform is object
 
 // Struct BitReader
 type BitReader struct {
@@ -2643,7 +2631,7 @@ type BitReader struct {
 const SizeOfStructBitReader = 56
 
 func BitReaderGetType() gi.GType {
-	ret := _I.GetGType(16, "BitReader")
+	ret := _I.GetGType(10, "BitReader")
 	return ret
 }
 
@@ -3001,6 +2989,28 @@ func (v BitReader) SkipToByte() (result bool) {
 	return
 }
 
+func (v BitReader) p() *C.GstBitReader {
+	return (*C.GstBitReader)(v.P)
+}
+func (v BitReader) Data() (result int /*TODO*/) {
+	return
+}
+func (v BitReader) Size() (result uint32) {
+	result = uint32(v.p().size)
+	return
+}
+func (v BitReader) Byte() (result uint32) {
+	result = uint32(v.p().byte)
+	return
+}
+func (v BitReader) Bit() (result uint32) {
+	result = uint32(v.p().bit)
+	return
+}
+func (v BitReader) _GstReserved() (result int /*TODO*/) {
+	return
+}
+
 // Struct ByteReader
 type ByteReader struct {
 	P unsafe.Pointer
@@ -3009,7 +3019,7 @@ type ByteReader struct {
 const SizeOfStructByteReader = 48
 
 func ByteReaderGetType() gi.GType {
-	ret := _I.GetGType(17, "ByteReader")
+	ret := _I.GetGType(11, "ByteReader")
 	return ret
 }
 
@@ -4477,6 +4487,24 @@ func (v ByteReader) SkipStringUtf8() (result bool) {
 	return
 }
 
+func (v ByteReader) p() *C.GstByteReader {
+	return (*C.GstByteReader)(v.P)
+}
+func (v ByteReader) Data() (result int /*TODO*/) {
+	return
+}
+func (v ByteReader) Size() (result uint32) {
+	result = uint32(v.p().size)
+	return
+}
+func (v ByteReader) Byte() (result uint32) {
+	result = uint32(v.p().byte)
+	return
+}
+func (v ByteReader) _GstReserved() (result int /*TODO*/) {
+	return
+}
+
 // Struct ByteWriter
 type ByteWriter struct {
 	P unsafe.Pointer
@@ -4485,7 +4513,7 @@ type ByteWriter struct {
 const SizeOfStructByteWriter = 96
 
 func ByteWriterGetType() gi.GType {
-	ret := _I.GetGType(18, "ByteWriter")
+	ret := _I.GetGType(12, "ByteWriter")
 	return ret
 }
 
@@ -5282,6 +5310,28 @@ func (v ByteWriter) ResetAndGetData() (result gi.Uint8Array) {
 	return
 }
 
+func (v ByteWriter) p() *C.GstByteWriter {
+	return (*C.GstByteWriter)(v.P)
+}
+func (v ByteWriter) Parent() (result int /*TODO*/) {
+	return
+}
+func (v ByteWriter) AllocSize() (result uint32) {
+	result = uint32(v.p().alloc_size)
+	return
+}
+func (v ByteWriter) Fixed() (result bool) {
+	result = gi.Int2Bool(int(v.p().fixed))
+	return
+}
+func (v ByteWriter) Owned() (result bool) {
+	result = gi.Int2Bool(int(v.p().owned))
+	return
+}
+func (v ByteWriter) _GstReserved() (result int /*TODO*/) {
+	return
+}
+
 // Struct CollectData
 type CollectData struct {
 	P unsafe.Pointer
@@ -5290,8 +5340,34 @@ type CollectData struct {
 const SizeOfStructCollectData = 168
 
 func CollectDataGetType() gi.GType {
-	ret := _I.GetGType(19, "CollectData")
+	ret := _I.GetGType(13, "CollectData")
 	return ret
+}
+
+func (v CollectData) p() *C.GstCollectData {
+	return (*C.GstCollectData)(v.P)
+}
+func (v CollectData) Collect() (result int /*TODO*/) {
+	return
+}
+func (v CollectData) Pad() (result int /*TODO*/) {
+	return
+}
+func (v CollectData) Buffer() (result int /*TODO*/) {
+	return
+}
+func (v CollectData) Pos() (result uint32) {
+	result = uint32(v.p().pos)
+	return
+}
+func (v CollectData) Segment() (result int /*TODO*/) {
+	return
+}
+func (v CollectData) State() (result int /*TODO*/) {
+	return
+}
+func (v CollectData) Priv() (result int /*TODO*/) {
+	return
 }
 
 type CollectDataDestroyNotify func(data CollectData)
@@ -5304,15 +5380,7 @@ func CallCollectDataDestroyNotify(fn CollectDataDestroyNotify, result unsafe.Poi
 	fn(data)
 }
 
-// Struct CollectDataPrivate
-type CollectDataPrivate struct {
-	P unsafe.Pointer
-}
-
-func CollectDataPrivateGetType() gi.GType {
-	ret := _I.GetGType(20, "CollectDataPrivate")
-	return ret
-}
+// ignore private struct CollectDataPrivate, type of CollectData is struct
 
 // Object CollectPads
 type CollectPads struct {
@@ -5325,7 +5393,7 @@ type ICollectPads interface{ P_CollectPads() unsafe.Pointer }
 
 func (v CollectPads) P_CollectPads() unsafe.Pointer { return v.P }
 func CollectPadsGetType() gi.GType {
-	ret := _I.GetGType(21, "CollectPads")
+	ret := _I.GetGType(14, "CollectPads")
 	return ret
 }
 
@@ -6001,15 +6069,7 @@ func CallCollectPadsFunction(fn CollectPadsFunction, result unsafe.Pointer, args
 	*(*gst.FlowReturnEnum)(result) = fnRet
 }
 
-// Struct CollectPadsPrivate
-type CollectPadsPrivate struct {
-	P unsafe.Pointer
-}
-
-func CollectPadsPrivateGetType() gi.GType {
-	ret := _I.GetGType(22, "CollectPadsPrivate")
-	return ret
-}
+// ignore private struct CollectPadsPrivate, type of CollectPads is object
 
 type CollectPadsQueryFunction func(pads CollectPads, pad CollectData, query gst.Query) (result bool)
 
@@ -6036,7 +6096,7 @@ const (
 )
 
 func CollectPadsStateFlagsGetType() gi.GType {
-	ret := _I.GetGType(23, "CollectPadsStateFlags")
+	ret := _I.GetGType(15, "CollectPadsStateFlags")
 	return ret
 }
 
@@ -6051,7 +6111,7 @@ type IDataQueue interface{ P_DataQueue() unsafe.Pointer }
 
 func (v DataQueue) P_DataQueue() unsafe.Pointer { return v.P }
 func DataQueueGetType() gi.GType {
-	ret := _I.GetGType(24, "DataQueue")
+	ret := _I.GetGType(16, "DataQueue")
 	return ret
 }
 
@@ -6079,15 +6139,7 @@ func CallDataQueueFullCallback(fn DataQueueFullCallback, result unsafe.Pointer, 
 	fn(queue, checkdata)
 }
 
-// Struct DataQueuePrivate
-type DataQueuePrivate struct {
-	P unsafe.Pointer
-}
-
-func DataQueuePrivateGetType() gi.GType {
-	ret := _I.GetGType(25, "DataQueuePrivate")
-	return ret
-}
+// ignore private struct DataQueuePrivate, type of DataQueue is object
 
 // Struct FlowCombiner
 type FlowCombiner struct {
@@ -6095,7 +6147,7 @@ type FlowCombiner struct {
 }
 
 func FlowCombinerGetType() gi.GType {
-	ret := _I.GetGType(26, "FlowCombiner")
+	ret := _I.GetGType(17, "FlowCombiner")
 	return ret
 }
 
@@ -6285,7 +6337,7 @@ type IPushSrc interface{ P_PushSrc() unsafe.Pointer }
 
 func (v PushSrc) P_PushSrc() unsafe.Pointer { return v.P }
 func PushSrcGetType() gi.GType {
-	ret := _I.GetGType(27, "PushSrc")
+	ret := _I.GetGType(18, "PushSrc")
 	return ret
 }
 

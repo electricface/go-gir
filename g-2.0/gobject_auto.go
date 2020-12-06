@@ -75,7 +75,7 @@ type IBinding interface{ P_Binding() unsafe.Pointer }
 
 func (v Binding) P_Binding() unsafe.Pointer { return v.P }
 func BindingGetType() gi.GType {
-	ret := _I.GetGType1(130, "GObject", "Binding")
+	ret := _I.GetGType1(129, "GObject", "Binding")
 	return ret
 }
 
@@ -193,7 +193,7 @@ const (
 )
 
 func BindingFlagsGetType() gi.GType {
-	ret := _I.GetGType1(131, "GObject", "BindingFlags")
+	ret := _I.GetGType1(130, "GObject", "BindingFlags")
 	return ret
 }
 
@@ -239,7 +239,7 @@ type CClosure struct {
 const SizeOfStructCClosure = 72
 
 func CClosureGetType() gi.GType {
-	ret := _I.GetGType1(132, "GObject", "CClosure")
+	ret := _I.GetGType1(131, "GObject", "CClosure")
 	return ret
 }
 
@@ -933,6 +933,17 @@ func CClosureMarshalGeneric1(closure Closure, return_gvalue Value, n_param_value
 	iv.Call(args, nil, nil)
 }
 
+func (v CClosure) p() *C.GCClosure {
+	return (*C.GCClosure)(v.P)
+}
+func (v CClosure) Closure() (result int /*TODO*/) {
+	return
+}
+func (v CClosure) Callback() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().callback)
+	return
+}
+
 type Callback func()
 
 func CallCallback(fn Callback, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -972,7 +983,7 @@ type Closure struct {
 const SizeOfStructClosure = 64
 
 func ClosureGetType() gi.GType {
-	ret := _I.GetGType1(133, "GObject", "Closure")
+	ret := _I.GetGType1(132, "GObject", "Closure")
 	return ret
 }
 
@@ -1108,6 +1119,41 @@ func (v Closure) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+func (v Closure) p() *C.GClosure {
+	return (*C.GClosure)(v.P)
+}
+
+// TODO: ignore struct Closure field ref_count, bits(=15) > 0
+
+// TODO: ignore struct Closure field meta_marshal_nouse, bits(=1) > 0
+
+// TODO: ignore struct Closure field n_guards, bits(=1) > 0
+
+// TODO: ignore struct Closure field n_fnotifiers, bits(=2) > 0
+
+// TODO: ignore struct Closure field n_inotifiers, bits(=8) > 0
+
+// TODO: ignore struct Closure field in_inotify, bits(=1) > 0
+
+// TODO: ignore struct Closure field floating, bits(=1) > 0
+
+// TODO: ignore struct Closure field derivative_flag, bits(=1) > 0
+
+// TODO: ignore struct Closure field in_marshal, bits(=1) > 0
+
+// TODO: ignore struct Closure field is_invalid, bits(=1) > 0
+
+func (v Closure) Marshal() (result int /*TODO*/) {
+	return
+}
+func (v Closure) Data() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data)
+	return
+}
+func (v Closure) Notifiers() (result int /*TODO*/) {
+	return
+}
+
 type ClosureMarshal func(closure Closure, return_value Value, n_param_values uint32, param_values unsafe.Pointer, invocation_hint unsafe.Pointer, marshal_data unsafe.Pointer)
 
 func CallClosureMarshal(fn ClosureMarshal, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -1142,8 +1188,19 @@ type ClosureNotifyData struct {
 const SizeOfStructClosureNotifyData = 16
 
 func ClosureNotifyDataGetType() gi.GType {
-	ret := _I.GetGType1(134, "GObject", "ClosureNotifyData")
+	ret := _I.GetGType1(133, "GObject", "ClosureNotifyData")
 	return ret
+}
+
+func (v ClosureNotifyData) p() *C.GClosureNotifyData {
+	return (*C.GClosureNotifyData)(v.P)
+}
+func (v ClosureNotifyData) Data() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data)
+	return
+}
+func (v ClosureNotifyData) Notify() (result int /*TODO*/) {
+	return
 }
 
 // Flags ConnectFlags
@@ -1155,7 +1212,7 @@ const (
 )
 
 func ConnectFlagsGetType() gi.GType {
-	ret := _I.GetGType1(135, "GObject", "ConnectFlags")
+	ret := _I.GetGType1(134, "GObject", "ConnectFlags")
 	return ret
 }
 
@@ -1167,8 +1224,30 @@ type EnumClass struct {
 const SizeOfStructEnumClass = 32
 
 func EnumClassGetType() gi.GType {
-	ret := _I.GetGType1(136, "GObject", "EnumClass")
+	ret := _I.GetGType1(135, "GObject", "EnumClass")
 	return ret
+}
+
+func (v EnumClass) p() *C.GEnumClass {
+	return (*C.GEnumClass)(v.P)
+}
+func (v EnumClass) GTypeClass() (result int /*TODO*/) {
+	return
+}
+func (v EnumClass) Minimum() (result int32) {
+	result = int32(v.p().minimum)
+	return
+}
+func (v EnumClass) Maximum() (result int32) {
+	result = int32(v.p().maximum)
+	return
+}
+func (v EnumClass) NValues() (result uint32) {
+	result = uint32(v.p().n_values)
+	return
+}
+func (v EnumClass) Values() (result int /*TODO*/) {
+	return
 }
 
 // Struct EnumValue
@@ -1179,8 +1258,22 @@ type EnumValue struct {
 const SizeOfStructEnumValue = 24
 
 func EnumValueGetType() gi.GType {
-	ret := _I.GetGType1(137, "GObject", "EnumValue")
+	ret := _I.GetGType1(136, "GObject", "EnumValue")
 	return ret
+}
+
+func (v EnumValue) p() *C.GEnumValue {
+	return (*C.GEnumValue)(v.P)
+}
+func (v EnumValue) Value() (result int32) {
+	result = int32(v.p().value)
+	return
+}
+func (v EnumValue) ValueName() (result int /*TODO*/) {
+	return
+}
+func (v EnumValue) ValueNick() (result int /*TODO*/) {
+	return
 }
 
 // Struct FlagsClass
@@ -1191,8 +1284,26 @@ type FlagsClass struct {
 const SizeOfStructFlagsClass = 24
 
 func FlagsClassGetType() gi.GType {
-	ret := _I.GetGType1(138, "GObject", "FlagsClass")
+	ret := _I.GetGType1(137, "GObject", "FlagsClass")
 	return ret
+}
+
+func (v FlagsClass) p() *C.GFlagsClass {
+	return (*C.GFlagsClass)(v.P)
+}
+func (v FlagsClass) GTypeClass() (result int /*TODO*/) {
+	return
+}
+func (v FlagsClass) Mask() (result uint32) {
+	result = uint32(v.p().mask)
+	return
+}
+func (v FlagsClass) NValues() (result uint32) {
+	result = uint32(v.p().n_values)
+	return
+}
+func (v FlagsClass) Values() (result int /*TODO*/) {
+	return
 }
 
 // Struct FlagsValue
@@ -1203,8 +1314,22 @@ type FlagsValue struct {
 const SizeOfStructFlagsValue = 24
 
 func FlagsValueGetType() gi.GType {
-	ret := _I.GetGType1(139, "GObject", "FlagsValue")
+	ret := _I.GetGType1(138, "GObject", "FlagsValue")
 	return ret
+}
+
+func (v FlagsValue) p() *C.GFlagsValue {
+	return (*C.GFlagsValue)(v.P)
+}
+func (v FlagsValue) Value() (result uint32) {
+	result = uint32(v.p().value)
+	return
+}
+func (v FlagsValue) ValueName() (result int /*TODO*/) {
+	return
+}
+func (v FlagsValue) ValueNick() (result int /*TODO*/) {
+	return
 }
 
 // Object InitiallyUnowned
@@ -1218,7 +1343,7 @@ type IInitiallyUnowned interface{ P_InitiallyUnowned() unsafe.Pointer }
 
 func (v InitiallyUnowned) P_InitiallyUnowned() unsafe.Pointer { return v.P }
 func InitiallyUnownedGetType() gi.GType {
-	ret := _I.GetGType1(140, "GObject", "InitiallyUnowned")
+	ret := _I.GetGType1(139, "GObject", "InitiallyUnowned")
 	return ret
 }
 
@@ -1254,8 +1379,22 @@ type InterfaceInfo struct {
 const SizeOfStructInterfaceInfo = 24
 
 func InterfaceInfoGetType() gi.GType {
-	ret := _I.GetGType1(141, "GObject", "InterfaceInfo")
+	ret := _I.GetGType1(140, "GObject", "InterfaceInfo")
 	return ret
+}
+
+func (v InterfaceInfo) p() *C.GInterfaceInfo {
+	return (*C.GInterfaceInfo)(v.P)
+}
+func (v InterfaceInfo) InterfaceInit() (result int /*TODO*/) {
+	return
+}
+func (v InterfaceInfo) InterfaceFinalize() (result int /*TODO*/) {
+	return
+}
+func (v InterfaceInfo) InterfaceData() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().interface_data)
+	return
 }
 
 type InterfaceInitFunc func(g_iface TypeInterface, iface_data unsafe.Pointer)
@@ -1280,7 +1419,7 @@ type IObject interface{ P_Object() unsafe.Pointer }
 
 func (v Object) P_Object() unsafe.Pointer { return v.P }
 func ObjectGetType() gi.GType {
-	ret := _I.GetGType1(142, "GObject", "Object")
+	ret := _I.GetGType1(141, "GObject", "Object")
 	return ret
 }
 
@@ -1845,7 +1984,7 @@ type ObjectClass struct {
 const SizeOfStructObjectClass = 136
 
 func ObjectClassGetType() gi.GType {
-	ret := _I.GetGType1(143, "GObject", "ObjectClass")
+	ret := _I.GetGType1(142, "GObject", "ObjectClass")
 	return ret
 }
 
@@ -1960,6 +2099,48 @@ func (v ObjectClass) OverrideProperty(property_id uint32, name string) {
 	gi.Free(c_name)
 }
 
+func (v ObjectClass) p() *C.GObjectClass {
+	return (*C.GObjectClass)(v.P)
+}
+func (v ObjectClass) GTypeClass() (result int /*TODO*/) {
+	return
+}
+func (v ObjectClass) ConstructProperties() (result int /*TODO*/) {
+	return
+}
+func (v ObjectClass) Constructor() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().constructor)
+	return
+}
+func (v ObjectClass) SetProperty() (result int /*TODO*/) {
+	return
+}
+func (v ObjectClass) GetProperty() (result int /*TODO*/) {
+	return
+}
+func (v ObjectClass) Dispose() (result int /*TODO*/) {
+	return
+}
+func (v ObjectClass) Finalize() (result int /*TODO*/) {
+	return
+}
+func (v ObjectClass) DispatchPropertiesChanged() (result int /*TODO*/) {
+	return
+}
+func (v ObjectClass) Notify() (result int /*TODO*/) {
+	return
+}
+func (v ObjectClass) Constructed() (result int /*TODO*/) {
+	return
+}
+func (v ObjectClass) Flags() (result uint64) {
+	result = uint64(v.p().flags)
+	return
+}
+func (v ObjectClass) Pdummy() (result int /*TODO*/) {
+	return
+}
+
 // Struct ObjectConstructParam
 type ObjectConstructParam struct {
 	P unsafe.Pointer
@@ -1968,8 +2149,18 @@ type ObjectConstructParam struct {
 const SizeOfStructObjectConstructParam = 16
 
 func ObjectConstructParamGetType() gi.GType {
-	ret := _I.GetGType1(144, "GObject", "ObjectConstructParam")
+	ret := _I.GetGType1(143, "GObject", "ObjectConstructParam")
 	return ret
+}
+
+func (v ObjectConstructParam) p() *C.GObjectConstructParam {
+	return (*C.GObjectConstructParam)(v.P)
+}
+func (v ObjectConstructParam) Pspec() (result int /*TODO*/) {
+	return
+}
+func (v ObjectConstructParam) Value() (result int /*TODO*/) {
+	return
 }
 
 type ObjectFinalizeFunc func(object Object)
@@ -2027,7 +2218,7 @@ const (
 )
 
 func ParamFlagsGetType() gi.GType {
-	ret := _I.GetGType1(145, "GObject", "ParamFlags")
+	ret := _I.GetGType1(144, "GObject", "ParamFlags")
 	return ret
 }
 
@@ -2042,7 +2233,7 @@ type IParamSpec interface{ P_ParamSpec() unsafe.Pointer }
 
 func (v ParamSpec) P_ParamSpec() unsafe.Pointer { return v.P }
 func ParamSpecGetType() gi.GType {
-	ret := _I.GetGType1(146, "GObject", "ParamSpec")
+	ret := _I.GetGType1(145, "GObject", "ParamSpec")
 	return ret
 }
 
@@ -2239,7 +2430,7 @@ type IParamSpecBoolean interface{ P_ParamSpecBoolean() unsafe.Pointer }
 
 func (v ParamSpecBoolean) P_ParamSpecBoolean() unsafe.Pointer { return v.P }
 func ParamSpecBooleanGetType() gi.GType {
-	ret := _I.GetGType1(147, "GObject", "ParamSpecBoolean")
+	ret := _I.GetGType1(146, "GObject", "ParamSpecBoolean")
 	return ret
 }
 
@@ -2254,7 +2445,7 @@ type IParamSpecBoxed interface{ P_ParamSpecBoxed() unsafe.Pointer }
 
 func (v ParamSpecBoxed) P_ParamSpecBoxed() unsafe.Pointer { return v.P }
 func ParamSpecBoxedGetType() gi.GType {
-	ret := _I.GetGType1(148, "GObject", "ParamSpecBoxed")
+	ret := _I.GetGType1(147, "GObject", "ParamSpecBoxed")
 	return ret
 }
 
@@ -2269,7 +2460,7 @@ type IParamSpecChar interface{ P_ParamSpecChar() unsafe.Pointer }
 
 func (v ParamSpecChar) P_ParamSpecChar() unsafe.Pointer { return v.P }
 func ParamSpecCharGetType() gi.GType {
-	ret := _I.GetGType1(149, "GObject", "ParamSpecChar")
+	ret := _I.GetGType1(148, "GObject", "ParamSpecChar")
 	return ret
 }
 
@@ -2286,7 +2477,7 @@ type IParamSpecDouble interface{ P_ParamSpecDouble() unsafe.Pointer }
 
 func (v ParamSpecDouble) P_ParamSpecDouble() unsafe.Pointer { return v.P }
 func ParamSpecDoubleGetType() gi.GType {
-	ret := _I.GetGType1(150, "GObject", "ParamSpecDouble")
+	ret := _I.GetGType1(149, "GObject", "ParamSpecDouble")
 	return ret
 }
 
@@ -2301,7 +2492,7 @@ type IParamSpecEnum interface{ P_ParamSpecEnum() unsafe.Pointer }
 
 func (v ParamSpecEnum) P_ParamSpecEnum() unsafe.Pointer { return v.P }
 func ParamSpecEnumGetType() gi.GType {
-	ret := _I.GetGType1(151, "GObject", "ParamSpecEnum")
+	ret := _I.GetGType1(150, "GObject", "ParamSpecEnum")
 	return ret
 }
 
@@ -2316,7 +2507,7 @@ type IParamSpecFlags interface{ P_ParamSpecFlags() unsafe.Pointer }
 
 func (v ParamSpecFlags) P_ParamSpecFlags() unsafe.Pointer { return v.P }
 func ParamSpecFlagsGetType() gi.GType {
-	ret := _I.GetGType1(152, "GObject", "ParamSpecFlags")
+	ret := _I.GetGType1(151, "GObject", "ParamSpecFlags")
 	return ret
 }
 
@@ -2331,7 +2522,7 @@ type IParamSpecFloat interface{ P_ParamSpecFloat() unsafe.Pointer }
 
 func (v ParamSpecFloat) P_ParamSpecFloat() unsafe.Pointer { return v.P }
 func ParamSpecFloatGetType() gi.GType {
-	ret := _I.GetGType1(153, "GObject", "ParamSpecFloat")
+	ret := _I.GetGType1(152, "GObject", "ParamSpecFloat")
 	return ret
 }
 
@@ -2346,7 +2537,7 @@ type IParamSpecGType interface{ P_ParamSpecGType() unsafe.Pointer }
 
 func (v ParamSpecGType) P_ParamSpecGType() unsafe.Pointer { return v.P }
 func ParamSpecGTypeGetType() gi.GType {
-	ret := _I.GetGType1(154, "GObject", "ParamSpecGType")
+	ret := _I.GetGType1(153, "GObject", "ParamSpecGType")
 	return ret
 }
 
@@ -2361,7 +2552,7 @@ type IParamSpecInt interface{ P_ParamSpecInt() unsafe.Pointer }
 
 func (v ParamSpecInt) P_ParamSpecInt() unsafe.Pointer { return v.P }
 func ParamSpecIntGetType() gi.GType {
-	ret := _I.GetGType1(155, "GObject", "ParamSpecInt")
+	ret := _I.GetGType1(154, "GObject", "ParamSpecInt")
 	return ret
 }
 
@@ -2376,7 +2567,7 @@ type IParamSpecInt64 interface{ P_ParamSpecInt64() unsafe.Pointer }
 
 func (v ParamSpecInt64) P_ParamSpecInt64() unsafe.Pointer { return v.P }
 func ParamSpecInt64GetType() gi.GType {
-	ret := _I.GetGType1(156, "GObject", "ParamSpecInt64")
+	ret := _I.GetGType1(155, "GObject", "ParamSpecInt64")
 	return ret
 }
 
@@ -2391,7 +2582,7 @@ type IParamSpecLong interface{ P_ParamSpecLong() unsafe.Pointer }
 
 func (v ParamSpecLong) P_ParamSpecLong() unsafe.Pointer { return v.P }
 func ParamSpecLongGetType() gi.GType {
-	ret := _I.GetGType1(157, "GObject", "ParamSpecLong")
+	ret := _I.GetGType1(156, "GObject", "ParamSpecLong")
 	return ret
 }
 
@@ -2406,7 +2597,7 @@ type IParamSpecObject interface{ P_ParamSpecObject() unsafe.Pointer }
 
 func (v ParamSpecObject) P_ParamSpecObject() unsafe.Pointer { return v.P }
 func ParamSpecObjectGetType() gi.GType {
-	ret := _I.GetGType1(158, "GObject", "ParamSpecObject")
+	ret := _I.GetGType1(157, "GObject", "ParamSpecObject")
 	return ret
 }
 
@@ -2421,7 +2612,7 @@ type IParamSpecOverride interface{ P_ParamSpecOverride() unsafe.Pointer }
 
 func (v ParamSpecOverride) P_ParamSpecOverride() unsafe.Pointer { return v.P }
 func ParamSpecOverrideGetType() gi.GType {
-	ret := _I.GetGType1(159, "GObject", "ParamSpecOverride")
+	ret := _I.GetGType1(158, "GObject", "ParamSpecOverride")
 	return ret
 }
 
@@ -2436,7 +2627,7 @@ type IParamSpecParam interface{ P_ParamSpecParam() unsafe.Pointer }
 
 func (v ParamSpecParam) P_ParamSpecParam() unsafe.Pointer { return v.P }
 func ParamSpecParamGetType() gi.GType {
-	ret := _I.GetGType1(160, "GObject", "ParamSpecParam")
+	ret := _I.GetGType1(159, "GObject", "ParamSpecParam")
 	return ret
 }
 
@@ -2451,7 +2642,7 @@ type IParamSpecPointer interface{ P_ParamSpecPointer() unsafe.Pointer }
 
 func (v ParamSpecPointer) P_ParamSpecPointer() unsafe.Pointer { return v.P }
 func ParamSpecPointerGetType() gi.GType {
-	ret := _I.GetGType1(161, "GObject", "ParamSpecPointer")
+	ret := _I.GetGType1(160, "GObject", "ParamSpecPointer")
 	return ret
 }
 
@@ -2461,7 +2652,7 @@ type ParamSpecPool struct {
 }
 
 func ParamSpecPoolGetType() gi.GType {
-	ret := _I.GetGType1(162, "GObject", "ParamSpecPool")
+	ret := _I.GetGType1(161, "GObject", "ParamSpecPool")
 	return ret
 }
 
@@ -2617,7 +2808,7 @@ type IParamSpecString interface{ P_ParamSpecString() unsafe.Pointer }
 
 func (v ParamSpecString) P_ParamSpecString() unsafe.Pointer { return v.P }
 func ParamSpecStringGetType() gi.GType {
-	ret := _I.GetGType1(163, "GObject", "ParamSpecString")
+	ret := _I.GetGType1(162, "GObject", "ParamSpecString")
 	return ret
 }
 
@@ -2629,8 +2820,39 @@ type ParamSpecTypeInfo struct {
 const SizeOfStructParamSpecTypeInfo = 56
 
 func ParamSpecTypeInfoGetType() gi.GType {
-	ret := _I.GetGType1(164, "GObject", "ParamSpecTypeInfo")
+	ret := _I.GetGType1(163, "GObject", "ParamSpecTypeInfo")
 	return ret
+}
+
+func (v ParamSpecTypeInfo) p() *C.GParamSpecTypeInfo {
+	return (*C.GParamSpecTypeInfo)(v.P)
+}
+func (v ParamSpecTypeInfo) InstanceSize() (result uint16) {
+	result = uint16(v.p().instance_size)
+	return
+}
+func (v ParamSpecTypeInfo) NPreallocs() (result uint16) {
+	result = uint16(v.p().n_preallocs)
+	return
+}
+func (v ParamSpecTypeInfo) InstanceInit() (result int /*TODO*/) {
+	return
+}
+func (v ParamSpecTypeInfo) ValueType() (result gi.GType) {
+	result = gi.GType(v.p().value_type)
+	return
+}
+func (v ParamSpecTypeInfo) Finalize() (result int /*TODO*/) {
+	return
+}
+func (v ParamSpecTypeInfo) ValueSetDefault() (result int /*TODO*/) {
+	return
+}
+func (v ParamSpecTypeInfo) ValueValidate() (result int /*TODO*/) {
+	return
+}
+func (v ParamSpecTypeInfo) ValuesCmp() (result int /*TODO*/) {
+	return
 }
 
 // Object ParamSpecUChar
@@ -2644,7 +2866,7 @@ type IParamSpecUChar interface{ P_ParamSpecUChar() unsafe.Pointer }
 
 func (v ParamSpecUChar) P_ParamSpecUChar() unsafe.Pointer { return v.P }
 func ParamSpecUCharGetType() gi.GType {
-	ret := _I.GetGType1(165, "GObject", "ParamSpecUChar")
+	ret := _I.GetGType1(164, "GObject", "ParamSpecUChar")
 	return ret
 }
 
@@ -2659,7 +2881,7 @@ type IParamSpecUInt interface{ P_ParamSpecUInt() unsafe.Pointer }
 
 func (v ParamSpecUInt) P_ParamSpecUInt() unsafe.Pointer { return v.P }
 func ParamSpecUIntGetType() gi.GType {
-	ret := _I.GetGType1(166, "GObject", "ParamSpecUInt")
+	ret := _I.GetGType1(165, "GObject", "ParamSpecUInt")
 	return ret
 }
 
@@ -2674,7 +2896,7 @@ type IParamSpecUInt64 interface{ P_ParamSpecUInt64() unsafe.Pointer }
 
 func (v ParamSpecUInt64) P_ParamSpecUInt64() unsafe.Pointer { return v.P }
 func ParamSpecUInt64GetType() gi.GType {
-	ret := _I.GetGType1(167, "GObject", "ParamSpecUInt64")
+	ret := _I.GetGType1(166, "GObject", "ParamSpecUInt64")
 	return ret
 }
 
@@ -2689,7 +2911,7 @@ type IParamSpecULong interface{ P_ParamSpecULong() unsafe.Pointer }
 
 func (v ParamSpecULong) P_ParamSpecULong() unsafe.Pointer { return v.P }
 func ParamSpecULongGetType() gi.GType {
-	ret := _I.GetGType1(168, "GObject", "ParamSpecULong")
+	ret := _I.GetGType1(167, "GObject", "ParamSpecULong")
 	return ret
 }
 
@@ -2704,7 +2926,7 @@ type IParamSpecUnichar interface{ P_ParamSpecUnichar() unsafe.Pointer }
 
 func (v ParamSpecUnichar) P_ParamSpecUnichar() unsafe.Pointer { return v.P }
 func ParamSpecUnicharGetType() gi.GType {
-	ret := _I.GetGType1(169, "GObject", "ParamSpecUnichar")
+	ret := _I.GetGType1(168, "GObject", "ParamSpecUnichar")
 	return ret
 }
 
@@ -2719,7 +2941,7 @@ type IParamSpecValueArray interface{ P_ParamSpecValueArray() unsafe.Pointer }
 
 func (v ParamSpecValueArray) P_ParamSpecValueArray() unsafe.Pointer { return v.P }
 func ParamSpecValueArrayGetType() gi.GType {
-	ret := _I.GetGType1(170, "GObject", "ParamSpecValueArray")
+	ret := _I.GetGType1(169, "GObject", "ParamSpecValueArray")
 	return ret
 }
 
@@ -2734,7 +2956,7 @@ type IParamSpecVariant interface{ P_ParamSpecVariant() unsafe.Pointer }
 
 func (v ParamSpecVariant) P_ParamSpecVariant() unsafe.Pointer { return v.P }
 func ParamSpecVariantGetType() gi.GType {
-	ret := _I.GetGType1(171, "GObject", "ParamSpecVariant")
+	ret := _I.GetGType1(170, "GObject", "ParamSpecVariant")
 	return ret
 }
 
@@ -2748,8 +2970,18 @@ type Parameter struct {
 const SizeOfStructParameter = 32
 
 func ParameterGetType() gi.GType {
-	ret := _I.GetGType1(172, "GObject", "Parameter")
+	ret := _I.GetGType1(171, "GObject", "Parameter")
 	return ret
+}
+
+func (v Parameter) p() *C.GParameter {
+	return (*C.GParameter)(v.P)
+}
+func (v Parameter) Name() (result int /*TODO*/) {
+	return
+}
+func (v Parameter) Value() (result int /*TODO*/) {
+	return
 }
 
 type SignalAccumulator func(ihint SignalInvocationHint, return_accu Value, handler_return Value, data unsafe.Pointer) (result bool)
@@ -2796,7 +3028,7 @@ const (
 )
 
 func SignalFlagsGetType() gi.GType {
-	ret := _I.GetGType1(173, "GObject", "SignalFlags")
+	ret := _I.GetGType1(172, "GObject", "SignalFlags")
 	return ret
 }
 
@@ -2808,8 +3040,23 @@ type SignalInvocationHint struct {
 const SizeOfStructSignalInvocationHint = 12
 
 func SignalInvocationHintGetType() gi.GType {
-	ret := _I.GetGType1(174, "GObject", "SignalInvocationHint")
+	ret := _I.GetGType1(173, "GObject", "SignalInvocationHint")
 	return ret
+}
+
+func (v SignalInvocationHint) p() *C.GSignalInvocationHint {
+	return (*C.GSignalInvocationHint)(v.P)
+}
+func (v SignalInvocationHint) SignalId() (result uint32) {
+	result = uint32(v.p().signal_id)
+	return
+}
+func (v SignalInvocationHint) Detail() (result uint32) {
+	result = uint32(v.p().detail)
+	return
+}
+func (v SignalInvocationHint) RunType() (result int /*TODO*/) {
+	return
 }
 
 // Flags SignalMatchType
@@ -2825,7 +3072,7 @@ const (
 )
 
 func SignalMatchTypeGetType() gi.GType {
-	ret := _I.GetGType1(175, "GObject", "SignalMatchType")
+	ret := _I.GetGType1(174, "GObject", "SignalMatchType")
 	return ret
 }
 
@@ -2837,8 +3084,37 @@ type SignalQuery struct {
 const SizeOfStructSignalQuery = 56
 
 func SignalQueryGetType() gi.GType {
-	ret := _I.GetGType1(176, "GObject", "SignalQuery")
+	ret := _I.GetGType1(175, "GObject", "SignalQuery")
 	return ret
+}
+
+func (v SignalQuery) p() *C.GSignalQuery {
+	return (*C.GSignalQuery)(v.P)
+}
+func (v SignalQuery) SignalId() (result uint32) {
+	result = uint32(v.p().signal_id)
+	return
+}
+func (v SignalQuery) SignalName() (result int /*TODO*/) {
+	return
+}
+func (v SignalQuery) Itype() (result gi.GType) {
+	result = gi.GType(v.p().itype)
+	return
+}
+func (v SignalQuery) SignalFlags() (result int /*TODO*/) {
+	return
+}
+func (v SignalQuery) ReturnType() (result gi.GType) {
+	result = gi.GType(v.p().return_type)
+	return
+}
+func (v SignalQuery) NParams() (result uint32) {
+	result = uint32(v.p().n_params)
+	return
+}
+func (v SignalQuery) ParamTypes() (result int /*TODO*/) {
+	return
 }
 
 type ToggleNotify func(data unsafe.Pointer, object Object, is_last_ref bool)
@@ -2861,7 +3137,7 @@ type TypeCValue struct {
 const SizeOfUnionTypeCValue = 8
 
 func TypeCValueGetType() gi.GType {
-	ret := _I.GetGType1(177, "GObject", "TypeCValue")
+	ret := _I.GetGType1(176, "GObject", "TypeCValue")
 	return ret
 }
 
@@ -2873,7 +3149,7 @@ type TypeClass struct {
 const SizeOfStructTypeClass = 8
 
 func TypeClassGetType() gi.GType {
-	ret := _I.GetGType1(178, "GObject", "TypeClass")
+	ret := _I.GetGType1(177, "GObject", "TypeClass")
 	return ret
 }
 
@@ -3025,6 +3301,14 @@ func TypeClassRef1(type1 gi.GType) (result TypeClass) {
 	return
 }
 
+func (v TypeClass) p() *C.GTypeClass {
+	return (*C.GTypeClass)(v.P)
+}
+func (v TypeClass) GType() (result gi.GType) {
+	result = gi.GType(v.p().g_type)
+	return
+}
+
 type TypeClassCacheFunc func(cache_data unsafe.Pointer, g_class TypeClass) (result bool)
 
 func CallTypeClassCacheFunc(fn TypeClassCacheFunc, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -3051,7 +3335,7 @@ const (
 )
 
 func TypeDebugFlagsGetType() gi.GType {
-	ret := _I.GetGType1(179, "GObject", "TypeDebugFlags")
+	ret := _I.GetGType1(178, "GObject", "TypeDebugFlags")
 	return ret
 }
 
@@ -3064,7 +3348,7 @@ const (
 )
 
 func TypeFlagsGetType() gi.GType {
-	ret := _I.GetGType1(180, "GObject", "TypeFlags")
+	ret := _I.GetGType1(179, "GObject", "TypeFlags")
 	return ret
 }
 
@@ -3079,7 +3363,7 @@ const (
 )
 
 func TypeFundamentalFlagsGetType() gi.GType {
-	ret := _I.GetGType1(181, "GObject", "TypeFundamentalFlags")
+	ret := _I.GetGType1(180, "GObject", "TypeFundamentalFlags")
 	return ret
 }
 
@@ -3091,8 +3375,15 @@ type TypeFundamentalInfo struct {
 const SizeOfStructTypeFundamentalInfo = 4
 
 func TypeFundamentalInfoGetType() gi.GType {
-	ret := _I.GetGType1(182, "GObject", "TypeFundamentalInfo")
+	ret := _I.GetGType1(181, "GObject", "TypeFundamentalInfo")
 	return ret
+}
+
+func (v TypeFundamentalInfo) p() *C.GTypeFundamentalInfo {
+	return (*C.GTypeFundamentalInfo)(v.P)
+}
+func (v TypeFundamentalInfo) TypeFlags() (result int /*TODO*/) {
+	return
 }
 
 // Struct TypeInfo
@@ -3103,8 +3394,46 @@ type TypeInfo struct {
 const SizeOfStructTypeInfo = 72
 
 func TypeInfoGetType() gi.GType {
-	ret := _I.GetGType1(183, "GObject", "TypeInfo")
+	ret := _I.GetGType1(182, "GObject", "TypeInfo")
 	return ret
+}
+
+func (v TypeInfo) p() *C.GTypeInfo {
+	return (*C.GTypeInfo)(v.P)
+}
+func (v TypeInfo) ClassSize() (result uint16) {
+	result = uint16(v.p().class_size)
+	return
+}
+func (v TypeInfo) BaseInit() (result int /*TODO*/) {
+	return
+}
+func (v TypeInfo) BaseFinalize() (result int /*TODO*/) {
+	return
+}
+func (v TypeInfo) ClassInit() (result int /*TODO*/) {
+	return
+}
+func (v TypeInfo) ClassFinalize() (result int /*TODO*/) {
+	return
+}
+func (v TypeInfo) ClassData() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().class_data)
+	return
+}
+func (v TypeInfo) InstanceSize() (result uint16) {
+	result = uint16(v.p().instance_size)
+	return
+}
+func (v TypeInfo) NPreallocs() (result uint16) {
+	result = uint16(v.p().n_preallocs)
+	return
+}
+func (v TypeInfo) InstanceInit() (result int /*TODO*/) {
+	return
+}
+func (v TypeInfo) ValueTable() (result int /*TODO*/) {
+	return
 }
 
 // Struct TypeInstance
@@ -3115,7 +3444,7 @@ type TypeInstance struct {
 const SizeOfStructTypeInstance = 8
 
 func TypeInstanceGetType() gi.GType {
-	ret := _I.GetGType1(184, "GObject", "TypeInstance")
+	ret := _I.GetGType1(183, "GObject", "TypeInstance")
 	return ret
 }
 
@@ -3140,6 +3469,13 @@ func (v TypeInstance) GetPrivate(private_type gi.GType) (result unsafe.Pointer) 
 	return
 }
 
+func (v TypeInstance) p() *C.GTypeInstance {
+	return (*C.GTypeInstance)(v.P)
+}
+func (v TypeInstance) GClass() (result int /*TODO*/) {
+	return
+}
+
 // Struct TypeInterface
 type TypeInterface struct {
 	P unsafe.Pointer
@@ -3148,7 +3484,7 @@ type TypeInterface struct {
 const SizeOfStructTypeInterface = 16
 
 func TypeInterfaceGetType() gi.GType {
-	ret := _I.GetGType1(185, "GObject", "TypeInterface")
+	ret := _I.GetGType1(184, "GObject", "TypeInterface")
 	return ret
 }
 
@@ -3261,6 +3597,18 @@ func TypeInterfacePrerequisites1(interface_type gi.GType) (result gi.GTypeArray)
 	return
 }
 
+func (v TypeInterface) p() *C.GTypeInterface {
+	return (*C.GTypeInterface)(v.P)
+}
+func (v TypeInterface) GType() (result gi.GType) {
+	result = gi.GType(v.p().g_type)
+	return
+}
+func (v TypeInterface) GInstanceType() (result gi.GType) {
+	result = gi.GType(v.p().g_instance_type)
+	return
+}
+
 type TypeInterfaceCheckFunc func(check_data unsafe.Pointer, g_iface TypeInterface)
 
 func CallTypeInterfaceCheckFunc(fn TypeInterfaceCheckFunc, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -3285,7 +3633,7 @@ type ITypeModule interface{ P_TypeModule() unsafe.Pointer }
 func (v TypeModule) P_TypeModule() unsafe.Pointer { return v.P }
 func (v TypeModule) P_TypePlugin() unsafe.Pointer { return v.P }
 func TypeModuleGetType() gi.GType {
-	ret := _I.GetGType1(186, "GObject", "TypeModule")
+	ret := _I.GetGType1(185, "GObject", "TypeModule")
 	return ret
 }
 
@@ -3456,7 +3804,7 @@ type ITypePlugin interface{ P_TypePlugin() unsafe.Pointer }
 
 func (v TypePlugin) P_TypePlugin() unsafe.Pointer { return v.P }
 func TypePluginGetType() gi.GType {
-	ret := _I.GetGType1(187, "GObject", "TypePlugin")
+	ret := _I.GetGType1(186, "GObject", "TypePlugin")
 	return ret
 }
 
@@ -3530,7 +3878,7 @@ func (v *TypePluginIfc) Use() {
 	iv.Call(args, nil, nil)
 }
 
-// ignore Class struct TypePluginClass, type of TypePlugin is interface
+// ignore class struct TypePluginClass, type of TypePlugin is interface
 
 type TypePluginCompleteInterfaceInfo func(plugin TypePlugin, instance_type gi.GType, interface_type gi.GType, info InterfaceInfo)
 
@@ -3586,8 +3934,27 @@ type TypeQuery struct {
 const SizeOfStructTypeQuery = 24
 
 func TypeQueryGetType() gi.GType {
-	ret := _I.GetGType1(188, "GObject", "TypeQuery")
+	ret := _I.GetGType1(187, "GObject", "TypeQuery")
 	return ret
+}
+
+func (v TypeQuery) p() *C.GTypeQuery {
+	return (*C.GTypeQuery)(v.P)
+}
+func (v TypeQuery) Type() (result gi.GType) {
+	result = gi.GType(v.p()._type)
+	return
+}
+func (v TypeQuery) TypeName() (result int /*TODO*/) {
+	return
+}
+func (v TypeQuery) ClassSize() (result uint32) {
+	result = uint32(v.p().class_size)
+	return
+}
+func (v TypeQuery) InstanceSize() (result uint32) {
+	result = uint32(v.p().instance_size)
+	return
 }
 
 // Struct TypeValueTable
@@ -3598,8 +3965,36 @@ type TypeValueTable struct {
 const SizeOfStructTypeValueTable = 64
 
 func TypeValueTableGetType() gi.GType {
-	ret := _I.GetGType1(189, "GObject", "TypeValueTable")
+	ret := _I.GetGType1(188, "GObject", "TypeValueTable")
 	return ret
+}
+
+func (v TypeValueTable) p() *C.GTypeValueTable {
+	return (*C.GTypeValueTable)(v.P)
+}
+func (v TypeValueTable) ValueInit() (result int /*TODO*/) {
+	return
+}
+func (v TypeValueTable) ValueFree() (result int /*TODO*/) {
+	return
+}
+func (v TypeValueTable) ValueCopy() (result int /*TODO*/) {
+	return
+}
+func (v TypeValueTable) ValuePeekPointer() (result int /*TODO*/) {
+	return
+}
+func (v TypeValueTable) CollectFormat() (result int /*TODO*/) {
+	return
+}
+func (v TypeValueTable) CollectValue() (result int /*TODO*/) {
+	return
+}
+func (v TypeValueTable) LcopyFormat() (result int /*TODO*/) {
+	return
+}
+func (v TypeValueTable) LcopyValue() (result int /*TODO*/) {
+	return
 }
 
 // Struct Value
@@ -3610,7 +4005,7 @@ type Value struct {
 const SizeOfStructValue = 24
 
 func ValueGetType() gi.GType {
-	ret := _I.GetGType1(190, "GObject", "Value")
+	ret := _I.GetGType1(189, "GObject", "Value")
 	return ret
 }
 
@@ -4641,6 +5036,17 @@ func ValueTypeTransformable1(src_type gi.GType, dest_type gi.GType) (result bool
 	return
 }
 
+func (v Value) p() *C.GValue {
+	return (*C.GValue)(v.P)
+}
+func (v Value) GType() (result gi.GType) {
+	result = gi.GType(v.p().g_type)
+	return
+}
+func (v Value) Data() (result int /*TODO*/) {
+	return
+}
+
 // Struct ValueArray
 type ValueArray struct {
 	P unsafe.Pointer
@@ -4649,7 +5055,7 @@ type ValueArray struct {
 const SizeOfStructValueArray = 24
 
 func ValueArrayGetType() gi.GType {
-	ret := _I.GetGType1(191, "GObject", "ValueArray")
+	ret := _I.GetGType1(190, "GObject", "ValueArray")
 	return ret
 }
 
@@ -4849,6 +5255,21 @@ func (v ValueArray) Sort(compare_func CompareDataFunc) (result ValueArray) {
 	return
 }
 
+func (v ValueArray) p() *C.GValueArray {
+	return (*C.GValueArray)(v.P)
+}
+func (v ValueArray) NValues() (result uint32) {
+	result = uint32(v.p().n_values)
+	return
+}
+func (v ValueArray) Values() (result int /*TODO*/) {
+	return
+}
+func (v ValueArray) NPrealloced() (result uint32) {
+	result = uint32(v.p().n_prealloced)
+	return
+}
+
 type ValueTransform func(src_value Value, dest_value Value)
 
 func CallValueTransform(fn ValueTransform, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -4877,7 +5298,7 @@ type WeakRef struct {
 }
 
 func WeakRefGetType() gi.GType {
-	ret := _I.GetGType1(192, "GObject", "WeakRef")
+	ret := _I.GetGType1(191, "GObject", "WeakRef")
 	return ret
 }
 
@@ -4889,7 +5310,7 @@ type _Value__data__union struct {
 const SizeOfUnion_Value__data__union = 8
 
 func _Value__data__unionGetType() gi.GType {
-	ret := _I.GetGType1(193, "GObject", "_Value__data__union")
+	ret := _I.GetGType1(192, "GObject", "_Value__data__union")
 	return ret
 }
 

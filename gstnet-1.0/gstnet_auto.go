@@ -74,6 +74,16 @@ func NetAddressMetaGetInfo1() (result gst.MetaInfo) {
 	return
 }
 
+func (v NetAddressMeta) p() *C.GstNetAddressMeta {
+	return (*C.GstNetAddressMeta)(v.P)
+}
+func (v NetAddressMeta) Meta() (result int /*TODO*/) {
+	return
+}
+func (v NetAddressMeta) Addr() (result int /*TODO*/) {
+	return
+}
+
 // Object NetClientClock
 type NetClientClock struct {
 	gst.SystemClock
@@ -124,15 +134,7 @@ func NewNetClientClock(name string, remote_address string, remote_port int32, ba
 
 // ignore GType struct NetClientClockClass
 
-// Struct NetClientClockPrivate
-type NetClientClockPrivate struct {
-	P unsafe.Pointer
-}
-
-func NetClientClockPrivateGetType() gi.GType {
-	ret := _I.GetGType(2, "NetClientClockPrivate")
-	return ret
-}
+// ignore private struct NetClientClockPrivate, type of NetClientClock is object
 
 // Struct NetControlMessageMeta
 type NetControlMessageMeta struct {
@@ -142,7 +144,7 @@ type NetControlMessageMeta struct {
 const SizeOfStructNetControlMessageMeta = 24
 
 func NetControlMessageMetaGetType() gi.GType {
-	ret := _I.GetGType(3, "NetControlMessageMeta")
+	ret := _I.GetGType(2, "NetControlMessageMeta")
 	return ret
 }
 
@@ -162,6 +164,16 @@ func NetControlMessageMetaGetInfo1() (result gst.MetaInfo) {
 	return
 }
 
+func (v NetControlMessageMeta) p() *C.GstNetControlMessageMeta {
+	return (*C.GstNetControlMessageMeta)(v.P)
+}
+func (v NetControlMessageMeta) Meta() (result int /*TODO*/) {
+	return
+}
+func (v NetControlMessageMeta) Message() (result int /*TODO*/) {
+	return
+}
+
 // Struct NetTimePacket
 type NetTimePacket struct {
 	P unsafe.Pointer
@@ -170,7 +182,7 @@ type NetTimePacket struct {
 const SizeOfStructNetTimePacket = 16
 
 func NetTimePacketGetType() gi.GType {
-	ret := _I.GetGType(4, "NetTimePacket")
+	ret := _I.GetGType(3, "NetTimePacket")
 	return ret
 }
 
@@ -307,6 +319,18 @@ func NetTimePacketReceive1(socket g.ISocket) (result NetTimePacket, src_address 
 	return
 }
 
+func (v NetTimePacket) p() *C.GstNetTimePacket {
+	return (*C.GstNetTimePacket)(v.P)
+}
+func (v NetTimePacket) LocalTime() (result uint64) {
+	result = uint64(v.p().local_time)
+	return
+}
+func (v NetTimePacket) RemoteTime() (result uint64) {
+	result = uint64(v.p().remote_time)
+	return
+}
+
 // Object NetTimeProvider
 type NetTimeProvider struct {
 	g.InitableIfc
@@ -320,7 +344,7 @@ type INetTimeProvider interface{ P_NetTimeProvider() unsafe.Pointer }
 func (v NetTimeProvider) P_NetTimeProvider() unsafe.Pointer { return v.P }
 func (v NetTimeProvider) P_Initable() unsafe.Pointer        { return v.P }
 func NetTimeProviderGetType() gi.GType {
-	ret := _I.GetGType(5, "NetTimeProvider")
+	ret := _I.GetGType(4, "NetTimeProvider")
 	return ret
 }
 
@@ -358,15 +382,7 @@ func NewNetTimeProvider(clock gst.IClock, address string, port int32) (result Ne
 
 // ignore GType struct NetTimeProviderClass
 
-// Struct NetTimeProviderPrivate
-type NetTimeProviderPrivate struct {
-	P unsafe.Pointer
-}
-
-func NetTimeProviderPrivateGetType() gi.GType {
-	ret := _I.GetGType(6, "NetTimeProviderPrivate")
-	return ret
-}
+// ignore private struct NetTimeProviderPrivate, type of NetTimeProvider is object
 
 // Object NtpClock
 type NtpClock struct {
@@ -379,7 +395,7 @@ type INtpClock interface{ P_NtpClock() unsafe.Pointer }
 
 func (v NtpClock) P_NtpClock() unsafe.Pointer { return v.P }
 func NtpClockGetType() gi.GType {
-	ret := _I.GetGType(7, "NtpClock")
+	ret := _I.GetGType(5, "NtpClock")
 	return ret
 }
 
@@ -429,7 +445,7 @@ type IPtpClock interface{ P_PtpClock() unsafe.Pointer }
 
 func (v PtpClock) P_PtpClock() unsafe.Pointer { return v.P }
 func PtpClockGetType() gi.GType {
-	ret := _I.GetGType(8, "PtpClock")
+	ret := _I.GetGType(6, "PtpClock")
 	return ret
 }
 
@@ -460,15 +476,7 @@ func NewPtpClock(name string, domain uint32) (result PtpClock) {
 
 // ignore GType struct PtpClockClass
 
-// Struct PtpClockPrivate
-type PtpClockPrivate struct {
-	P unsafe.Pointer
-}
-
-func PtpClockPrivateGetType() gi.GType {
-	ret := _I.GetGType(9, "PtpClockPrivate")
-	return ret
-}
+// ignore private struct PtpClockPrivate, type of PtpClock is object
 
 type PtpStatisticsCallback func(domain uint8, stats gst.Structure) (result bool)
 

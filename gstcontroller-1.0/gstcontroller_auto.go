@@ -163,6 +163,18 @@ func (v ControlPoint) Free() {
 	iv.Call(args, nil, nil)
 }
 
+func (v ControlPoint) p() *C.GstControlPoint {
+	return (*C.GstControlPoint)(v.P)
+}
+func (v ControlPoint) Timestamp() (result uint64) {
+	result = uint64(v.p().timestamp)
+	return
+}
+func (v ControlPoint) Value() (result float64) {
+	result = float64(v.p().value)
+	return
+}
+
 // Object DirectControlBinding
 type DirectControlBinding struct {
 	gst.ControlBinding
@@ -309,15 +321,7 @@ func NewInterpolationControlSource() (result InterpolationControlSource) {
 
 // ignore GType struct InterpolationControlSourceClass
 
-// Struct InterpolationControlSourcePrivate
-type InterpolationControlSourcePrivate struct {
-	P unsafe.Pointer
-}
-
-func InterpolationControlSourcePrivateGetType() gi.GType {
-	ret := _I.GetGType(4, "InterpolationControlSourcePrivate")
-	return ret
-}
+// ignore private struct InterpolationControlSourcePrivate, type of InterpolationControlSource is object
 
 // Enum InterpolationMode
 type InterpolationModeEnum int
@@ -330,7 +334,7 @@ const (
 )
 
 func InterpolationModeGetType() gi.GType {
-	ret := _I.GetGType(5, "InterpolationMode")
+	ret := _I.GetGType(4, "InterpolationMode")
 	return ret
 }
 
@@ -345,7 +349,7 @@ type ILFOControlSource interface{ P_LFOControlSource() unsafe.Pointer }
 
 func (v LFOControlSource) P_LFOControlSource() unsafe.Pointer { return v.P }
 func LFOControlSourceGetType() gi.GType {
-	ret := _I.GetGType(6, "LFOControlSource")
+	ret := _I.GetGType(5, "LFOControlSource")
 	return ret
 }
 
@@ -367,15 +371,7 @@ func NewLFOControlSource() (result LFOControlSource) {
 
 // ignore GType struct LFOControlSourceClass
 
-// Struct LFOControlSourcePrivate
-type LFOControlSourcePrivate struct {
-	P unsafe.Pointer
-}
-
-func LFOControlSourcePrivateGetType() gi.GType {
-	ret := _I.GetGType(7, "LFOControlSourcePrivate")
-	return ret
-}
+// ignore private struct LFOControlSourcePrivate, type of LFOControlSource is object
 
 // Enum LFOWaveform
 type LFOWaveformEnum int
@@ -389,7 +385,7 @@ const (
 )
 
 func LFOWaveformGetType() gi.GType {
-	ret := _I.GetGType(8, "LFOWaveform")
+	ret := _I.GetGType(6, "LFOWaveform")
 	return ret
 }
 
@@ -404,7 +400,7 @@ type IProxyControlBinding interface{ P_ProxyControlBinding() unsafe.Pointer }
 
 func (v ProxyControlBinding) P_ProxyControlBinding() unsafe.Pointer { return v.P }
 func ProxyControlBindingGetType() gi.GType {
-	ret := _I.GetGType(9, "ProxyControlBinding")
+	ret := _I.GetGType(7, "ProxyControlBinding")
 	return ret
 }
 
@@ -462,7 +458,7 @@ type ITimedValueControlSource interface{ P_TimedValueControlSource() unsafe.Poin
 
 func (v TimedValueControlSource) P_TimedValueControlSource() unsafe.Pointer { return v.P }
 func TimedValueControlSourceGetType() gi.GType {
-	ret := _I.GetGType(10, "TimedValueControlSource")
+	ret := _I.GetGType(8, "TimedValueControlSource")
 	return ret
 }
 
@@ -604,15 +600,7 @@ func (v TimedValueControlSource) UnsetAll() {
 
 // ignore GType struct TimedValueControlSourceClass
 
-// Struct TimedValueControlSourcePrivate
-type TimedValueControlSourcePrivate struct {
-	P unsafe.Pointer
-}
-
-func TimedValueControlSourcePrivateGetType() gi.GType {
-	ret := _I.GetGType(11, "TimedValueControlSourcePrivate")
-	return ret
-}
+// ignore private struct TimedValueControlSourcePrivate, type of TimedValueControlSource is object
 
 // Object TriggerControlSource
 type TriggerControlSource struct {
@@ -625,7 +613,7 @@ type ITriggerControlSource interface{ P_TriggerControlSource() unsafe.Pointer }
 
 func (v TriggerControlSource) P_TriggerControlSource() unsafe.Pointer { return v.P }
 func TriggerControlSourceGetType() gi.GType {
-	ret := _I.GetGType(12, "TriggerControlSource")
+	ret := _I.GetGType(9, "TriggerControlSource")
 	return ret
 }
 
@@ -647,15 +635,7 @@ func NewTriggerControlSource() (result TriggerControlSource) {
 
 // ignore GType struct TriggerControlSourceClass
 
-// Struct TriggerControlSourcePrivate
-type TriggerControlSourcePrivate struct {
-	P unsafe.Pointer
-}
-
-func TriggerControlSourcePrivateGetType() gi.GType {
-	ret := _I.GetGType(13, "TriggerControlSourcePrivate")
-	return ret
-}
+// ignore private struct TriggerControlSourcePrivate, type of TriggerControlSource is object
 
 // gst_timed_value_control_invalidate_cache
 //

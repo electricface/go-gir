@@ -25,6 +25,9 @@ package pango
 
 /*
 #cgo pkg-config: pango
+#define PANGO_ENABLE_ENGINE
+#define PANGO_ENABLE_BACKEND
+#include <pango/pango-modules.h>
 #include <pango/pango.h>
 */
 import "C"
@@ -71,6 +74,41 @@ func AnalysisGetType() gi.GType {
 	return ret
 }
 
+func (v Analysis) p() *C.PangoAnalysis {
+	return (*C.PangoAnalysis)(v.P)
+}
+func (v Analysis) ShapeEngine() (result int /*TODO*/) {
+	return
+}
+func (v Analysis) LangEngine() (result int /*TODO*/) {
+	return
+}
+func (v Analysis) Font() (result int /*TODO*/) {
+	return
+}
+func (v Analysis) Level() (result uint8) {
+	result = uint8(v.p().level)
+	return
+}
+func (v Analysis) Gravity() (result uint8) {
+	result = uint8(v.p().gravity)
+	return
+}
+func (v Analysis) Flags() (result uint8) {
+	result = uint8(v.p().flags)
+	return
+}
+func (v Analysis) Script() (result uint8) {
+	result = uint8(v.p().script)
+	return
+}
+func (v Analysis) Language() (result int /*TODO*/) {
+	return
+}
+func (v Analysis) ExtraAttrs() (result int /*TODO*/) {
+	return
+}
+
 // Struct AttrClass
 type AttrClass struct {
 	P unsafe.Pointer
@@ -83,6 +121,23 @@ func AttrClassGetType() gi.GType {
 	return ret
 }
 
+func (v AttrClass) p() *C.PangoAttrClass {
+	return (*C.PangoAttrClass)(v.P)
+}
+func (v AttrClass) Type() (result int /*TODO*/) {
+	return
+}
+func (v AttrClass) Copy() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().copy)
+	return
+}
+func (v AttrClass) Destroy() (result int /*TODO*/) {
+	return
+}
+func (v AttrClass) Equal() (result int /*TODO*/) {
+	return
+}
+
 // Struct AttrColor
 type AttrColor struct {
 	P unsafe.Pointer
@@ -93,6 +148,16 @@ const SizeOfStructAttrColor = 24
 func AttrColorGetType() gi.GType {
 	ret := _I.GetGType(3, "AttrColor")
 	return ret
+}
+
+func (v AttrColor) p() *C.PangoAttrColor {
+	return (*C.PangoAttrColor)(v.P)
+}
+func (v AttrColor) Attr() (result int /*TODO*/) {
+	return
+}
+func (v AttrColor) Color() (result int /*TODO*/) {
+	return
 }
 
 type AttrDataCopyFunc func() (result unsafe.Pointer)
@@ -128,6 +193,17 @@ func AttrFloatGetType() gi.GType {
 	return ret
 }
 
+func (v AttrFloat) p() *C.PangoAttrFloat {
+	return (*C.PangoAttrFloat)(v.P)
+}
+func (v AttrFloat) Attr() (result int /*TODO*/) {
+	return
+}
+func (v AttrFloat) Value() (result float64) {
+	result = float64(v.p().value)
+	return
+}
+
 // Struct AttrFontDesc
 type AttrFontDesc struct {
 	P unsafe.Pointer
@@ -138,6 +214,16 @@ const SizeOfStructAttrFontDesc = 24
 func AttrFontDescGetType() gi.GType {
 	ret := _I.GetGType(5, "AttrFontDesc")
 	return ret
+}
+
+func (v AttrFontDesc) p() *C.PangoAttrFontDesc {
+	return (*C.PangoAttrFontDesc)(v.P)
+}
+func (v AttrFontDesc) Attr() (result int /*TODO*/) {
+	return
+}
+func (v AttrFontDesc) Desc() (result int /*TODO*/) {
+	return
 }
 
 // Struct AttrFontFeatures
@@ -152,6 +238,16 @@ func AttrFontFeaturesGetType() gi.GType {
 	return ret
 }
 
+func (v AttrFontFeatures) p() *C.PangoAttrFontFeatures {
+	return (*C.PangoAttrFontFeatures)(v.P)
+}
+func (v AttrFontFeatures) Attr() (result int /*TODO*/) {
+	return
+}
+func (v AttrFontFeatures) Features() (result int /*TODO*/) {
+	return
+}
+
 // Struct AttrInt
 type AttrInt struct {
 	P unsafe.Pointer
@@ -162,6 +258,17 @@ const SizeOfStructAttrInt = 24
 func AttrIntGetType() gi.GType {
 	ret := _I.GetGType(7, "AttrInt")
 	return ret
+}
+
+func (v AttrInt) p() *C.PangoAttrInt {
+	return (*C.PangoAttrInt)(v.P)
+}
+func (v AttrInt) Attr() (result int /*TODO*/) {
+	return
+}
+func (v AttrInt) Value() (result int32) {
+	result = int32(v.p().value)
+	return
 }
 
 // Struct AttrIterator
@@ -278,6 +385,16 @@ const SizeOfStructAttrLanguage = 24
 func AttrLanguageGetType() gi.GType {
 	ret := _I.GetGType(9, "AttrLanguage")
 	return ret
+}
+
+func (v AttrLanguage) p() *C.PangoAttrLanguage {
+	return (*C.PangoAttrLanguage)(v.P)
+}
+func (v AttrLanguage) Attr() (result int /*TODO*/) {
+	return
+}
+func (v AttrLanguage) Value() (result int /*TODO*/) {
+	return
 }
 
 // Struct AttrList
@@ -471,6 +588,29 @@ func AttrShapeGetType() gi.GType {
 	return ret
 }
 
+func (v AttrShape) p() *C.PangoAttrShape {
+	return (*C.PangoAttrShape)(v.P)
+}
+func (v AttrShape) Attr() (result int /*TODO*/) {
+	return
+}
+func (v AttrShape) InkRect() (result int /*TODO*/) {
+	return
+}
+func (v AttrShape) LogicalRect() (result int /*TODO*/) {
+	return
+}
+func (v AttrShape) Data() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data)
+	return
+}
+func (v AttrShape) CopyFunc() (result int /*TODO*/) {
+	return
+}
+func (v AttrShape) DestroyFunc() (result int /*TODO*/) {
+	return
+}
+
 // Struct AttrSize
 type AttrSize struct {
 	P unsafe.Pointer
@@ -483,6 +623,19 @@ func AttrSizeGetType() gi.GType {
 	return ret
 }
 
+func (v AttrSize) p() *C.PangoAttrSize {
+	return (*C.PangoAttrSize)(v.P)
+}
+func (v AttrSize) Attr() (result int /*TODO*/) {
+	return
+}
+func (v AttrSize) Size() (result int32) {
+	result = int32(v.p().size)
+	return
+}
+
+// TODO: ignore struct AttrSize field absolute, bits(=1) > 0
+
 // Struct AttrString
 type AttrString struct {
 	P unsafe.Pointer
@@ -493,6 +646,16 @@ const SizeOfStructAttrString = 24
 func AttrStringGetType() gi.GType {
 	ret := _I.GetGType(13, "AttrString")
 	return ret
+}
+
+func (v AttrString) p() *C.PangoAttrString {
+	return (*C.PangoAttrString)(v.P)
+}
+func (v AttrString) Attr() (result int /*TODO*/) {
+	return
+}
+func (v AttrString) Value() (result int /*TODO*/) {
+	return
 }
 
 // Enum AttrType
@@ -592,6 +755,21 @@ func (v Attribute) Init(klass AttrClass) {
 	arg_klass := gi.NewPointerArgument(klass.P)
 	args := []gi.Argument{arg_v, arg_klass}
 	iv.Call(args, nil, nil)
+}
+
+func (v Attribute) p() *C.PangoAttribute {
+	return (*C.PangoAttribute)(v.P)
+}
+func (v Attribute) Klass() (result int /*TODO*/) {
+	return
+}
+func (v Attribute) StartIndex() (result uint32) {
+	result = uint32(v.p().start_index)
+	return
+}
+func (v Attribute) EndIndex() (result uint32) {
+	result = uint32(v.p().end_index)
+	return
 }
 
 // Enum BidiType
@@ -705,6 +883,22 @@ func (v Color) ToString() (result string) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.String().Take()
+	return
+}
+
+func (v Color) p() *C.PangoColor {
+	return (*C.PangoColor)(v.P)
+}
+func (v Color) Red() (result uint16) {
+	result = uint16(v.p().red)
+	return
+}
+func (v Color) Green() (result uint16) {
+	result = uint16(v.p().green)
+	return
+}
+func (v Color) Blue() (result uint16) {
+	result = uint16(v.p().blue)
 	return
 }
 
@@ -1313,6 +1507,26 @@ func EngineInfoGetType() gi.GType {
 	return ret
 }
 
+func (v EngineInfo) p() *C.PangoEngineInfo {
+	return (*C.PangoEngineInfo)(v.P)
+}
+func (v EngineInfo) Id() (result int /*TODO*/) {
+	return
+}
+func (v EngineInfo) EngineType() (result int /*TODO*/) {
+	return
+}
+func (v EngineInfo) RenderType() (result int /*TODO*/) {
+	return
+}
+func (v EngineInfo) Scripts() (result int /*TODO*/) {
+	return
+}
+func (v EngineInfo) NScripts() (result int32) {
+	result = int32(v.p().n_scripts)
+	return
+}
+
 // Deprecated
 //
 // Object EngineLang
@@ -1344,6 +1558,16 @@ const SizeOfStructEngineScriptInfo = 16
 func EngineScriptInfoGetType() gi.GType {
 	ret := _I.GetGType(26, "EngineScriptInfo")
 	return ret
+}
+
+func (v EngineScriptInfo) p() *C.PangoEngineScriptInfo {
+	return (*C.PangoEngineScriptInfo)(v.P)
+}
+func (v EngineScriptInfo) Script() (result int /*TODO*/) {
+	return
+}
+func (v EngineScriptInfo) Langs() (result int /*TODO*/) {
+	return
 }
 
 // Deprecated
@@ -2704,6 +2928,46 @@ func (v FontMetrics) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+func (v FontMetrics) p() *C.PangoFontMetrics {
+	return (*C.PangoFontMetrics)(v.P)
+}
+func (v FontMetrics) RefCount() (result uint32) {
+	result = uint32(v.p().ref_count)
+	return
+}
+func (v FontMetrics) Ascent() (result int32) {
+	result = int32(v.p().ascent)
+	return
+}
+func (v FontMetrics) Descent() (result int32) {
+	result = int32(v.p().descent)
+	return
+}
+func (v FontMetrics) ApproximateCharWidth() (result int32) {
+	result = int32(v.p().approximate_char_width)
+	return
+}
+func (v FontMetrics) ApproximateDigitWidth() (result int32) {
+	result = int32(v.p().approximate_digit_width)
+	return
+}
+func (v FontMetrics) UnderlinePosition() (result int32) {
+	result = int32(v.p().underline_position)
+	return
+}
+func (v FontMetrics) UnderlineThickness() (result int32) {
+	result = int32(v.p().underline_thickness)
+	return
+}
+func (v FontMetrics) StrikethroughPosition() (result int32) {
+	result = int32(v.p().strikethrough_position)
+	return
+}
+func (v FontMetrics) StrikethroughThickness() (result int32) {
+	result = int32(v.p().strikethrough_thickness)
+	return
+}
+
 // Object Fontset
 type Fontset struct {
 	g.Object
@@ -2888,6 +3152,22 @@ func GlyphGeometryGetType() gi.GType {
 	return ret
 }
 
+func (v GlyphGeometry) p() *C.PangoGlyphGeometry {
+	return (*C.PangoGlyphGeometry)(v.P)
+}
+func (v GlyphGeometry) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v GlyphGeometry) XOffset() (result int32) {
+	result = int32(v.p().x_offset)
+	return
+}
+func (v GlyphGeometry) YOffset() (result int32) {
+	result = int32(v.p().y_offset)
+	return
+}
+
 // Struct GlyphInfo
 type GlyphInfo struct {
 	P unsafe.Pointer
@@ -2898,6 +3178,20 @@ const SizeOfStructGlyphInfo = 20
 func GlyphInfoGetType() gi.GType {
 	ret := _I.GetGType(38, "GlyphInfo")
 	return ret
+}
+
+func (v GlyphInfo) p() *C.PangoGlyphInfo {
+	return (*C.PangoGlyphInfo)(v.P)
+}
+func (v GlyphInfo) Glyph() (result uint32) {
+	result = uint32(v.p().glyph)
+	return
+}
+func (v GlyphInfo) Geometry() (result int /*TODO*/) {
+	return
+}
+func (v GlyphInfo) Attr() (result int /*TODO*/) {
+	return
 }
 
 // Struct GlyphItem
@@ -3040,6 +3334,16 @@ func (v GlyphItem) Split(text string, split_index int32) (result GlyphItem) {
 	return
 }
 
+func (v GlyphItem) p() *C.PangoGlyphItem {
+	return (*C.PangoGlyphItem)(v.P)
+}
+func (v GlyphItem) Item() (result int /*TODO*/) {
+	return
+}
+func (v GlyphItem) Glyphs() (result int /*TODO*/) {
+	return
+}
+
 // Struct GlyphItemIter
 type GlyphItemIter struct {
 	P unsafe.Pointer
@@ -3168,6 +3472,40 @@ func (v GlyphItemIter) PrevCluster() (result bool) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Bool()
+	return
+}
+
+func (v GlyphItemIter) p() *C.PangoGlyphItemIter {
+	return (*C.PangoGlyphItemIter)(v.P)
+}
+func (v GlyphItemIter) GlyphItem() (result int /*TODO*/) {
+	return
+}
+func (v GlyphItemIter) Text() (result int /*TODO*/) {
+	return
+}
+func (v GlyphItemIter) StartGlyph() (result int32) {
+	result = int32(v.p().start_glyph)
+	return
+}
+func (v GlyphItemIter) StartIndex() (result int32) {
+	result = int32(v.p().start_index)
+	return
+}
+func (v GlyphItemIter) StartChar() (result int32) {
+	result = int32(v.p().start_char)
+	return
+}
+func (v GlyphItemIter) EndGlyph() (result int32) {
+	result = int32(v.p().end_glyph)
+	return
+}
+func (v GlyphItemIter) EndIndex() (result int32) {
+	result = int32(v.p().end_index)
+	return
+}
+func (v GlyphItemIter) EndChar() (result int32) {
+	result = int32(v.p().end_char)
 	return
 }
 
@@ -3422,6 +3760,24 @@ func (v GlyphString) XToIndex(text string, length int32, analysis Analysis, x_po
 	return
 }
 
+func (v GlyphString) p() *C.PangoGlyphString {
+	return (*C.PangoGlyphString)(v.P)
+}
+func (v GlyphString) NumGlyphs() (result int32) {
+	result = int32(v.p().num_glyphs)
+	return
+}
+func (v GlyphString) Glyphs() (result int /*TODO*/) {
+	return
+}
+func (v GlyphString) LogClusters() (result int /*TODO*/) {
+	return
+}
+func (v GlyphString) Space() (result int32) {
+	result = int32(v.p().space)
+	return
+}
+
 // Struct GlyphVisAttr
 type GlyphVisAttr struct {
 	P unsafe.Pointer
@@ -3433,6 +3789,12 @@ func GlyphVisAttrGetType() gi.GType {
 	ret := _I.GetGType(42, "GlyphVisAttr")
 	return ret
 }
+
+func (v GlyphVisAttr) p() *C.PangoGlyphVisAttr {
+	return (*C.PangoGlyphVisAttr)(v.P)
+}
+
+// TODO: ignore struct GlyphVisAttr field is_cluster_start, bits(=1) > 0
 
 // Enum Gravity
 type GravityEnum int
@@ -3476,6 +3838,23 @@ const SizeOfStructIncludedModule = 32
 func IncludedModuleGetType() gi.GType {
 	ret := _I.GetGType(45, "IncludedModule")
 	return ret
+}
+
+func (v IncludedModule) p() *C.PangoIncludedModule {
+	return (*C.PangoIncludedModule)(v.P)
+}
+func (v IncludedModule) List() (result int /*TODO*/) {
+	return
+}
+func (v IncludedModule) Init() (result int /*TODO*/) {
+	return
+}
+func (v IncludedModule) Exit() (result int /*TODO*/) {
+	return
+}
+func (v IncludedModule) Create() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().create)
+	return
 }
 
 // Struct Item
@@ -3558,6 +3937,25 @@ func (v Item) Split(split_index int32, split_offset int32) (result Item) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result.P = ret.Pointer()
+	return
+}
+
+func (v Item) p() *C.PangoItem {
+	return (*C.PangoItem)(v.P)
+}
+func (v Item) Offset() (result int32) {
+	result = int32(v.p().offset)
+	return
+}
+func (v Item) Length() (result int32) {
+	result = int32(v.p().length)
+	return
+}
+func (v Item) NumChars() (result int32) {
+	result = int32(v.p().num_chars)
+	return
+}
+func (v Item) Analysis() (result int /*TODO*/) {
 	return
 }
 
@@ -5370,6 +5768,28 @@ func (v LayoutLine) XToIndex(x_pos int32) (result bool, index_ int32, trailing i
 	return
 }
 
+func (v LayoutLine) p() *C.PangoLayoutLine {
+	return (*C.PangoLayoutLine)(v.P)
+}
+func (v LayoutLine) Layout() (result int /*TODO*/) {
+	return
+}
+func (v LayoutLine) StartIndex() (result int32) {
+	result = int32(v.p().start_index)
+	return
+}
+func (v LayoutLine) Length() (result int32) {
+	result = int32(v.p().length)
+	return
+}
+func (v LayoutLine) Runs() (result int /*TODO*/) {
+	return
+}
+
+// TODO: ignore struct LayoutLine field is_paragraph_start, bits(=1) > 0
+
+// TODO: ignore struct LayoutLine field resolved_dir, bits(=3) > 0
+
 // Struct LogAttr
 type LogAttr struct {
 	P unsafe.Pointer
@@ -5381,6 +5801,36 @@ func LogAttrGetType() gi.GType {
 	ret := _I.GetGType(51, "LogAttr")
 	return ret
 }
+
+func (v LogAttr) p() *C.PangoLogAttr {
+	return (*C.PangoLogAttr)(v.P)
+}
+
+// TODO: ignore struct LogAttr field is_line_break, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_mandatory_break, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_char_break, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_white, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_cursor_position, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_word_start, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_word_end, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_sentence_boundary, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_sentence_start, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_sentence_end, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field backspace_deletes_character, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_expandable_space, bits(=1) > 0
+
+// TODO: ignore struct LogAttr field is_word_boundary, bits(=1) > 0
 
 // Struct Map
 type Map struct {
@@ -5624,6 +6074,34 @@ func (v Matrix) Translate(tx float64, ty float64) {
 	iv.Call(args, nil, nil)
 }
 
+func (v Matrix) p() *C.PangoMatrix {
+	return (*C.PangoMatrix)(v.P)
+}
+func (v Matrix) Xx() (result float64) {
+	result = float64(v.p().xx)
+	return
+}
+func (v Matrix) Xy() (result float64) {
+	result = float64(v.p().xy)
+	return
+}
+func (v Matrix) Yx() (result float64) {
+	result = float64(v.p().yx)
+	return
+}
+func (v Matrix) Yy() (result float64) {
+	result = float64(v.p().yy)
+	return
+}
+func (v Matrix) X0() (result float64) {
+	result = float64(v.p().x0)
+	return
+}
+func (v Matrix) Y0() (result float64) {
+	result = float64(v.p().y0)
+	return
+}
+
 // Struct Rectangle
 type Rectangle struct {
 	P unsafe.Pointer
@@ -5634,6 +6112,26 @@ const SizeOfStructRectangle = 16
 func RectangleGetType() gi.GType {
 	ret := _I.GetGType(55, "Rectangle")
 	return ret
+}
+
+func (v Rectangle) p() *C.PangoRectangle {
+	return (*C.PangoRectangle)(v.P)
+}
+func (v Rectangle) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v Rectangle) Y() (result int32) {
+	result = int32(v.p().y)
+	return
+}
+func (v Rectangle) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v Rectangle) Height() (result int32) {
+	result = int32(v.p().height)
+	return
 }
 
 // Enum RenderPart
@@ -6080,15 +6578,7 @@ func (v Renderer) SetMatrix(matrix Matrix) {
 
 // ignore GType struct RendererClass
 
-// Struct RendererPrivate
-type RendererPrivate struct {
-	P unsafe.Pointer
-}
-
-func RendererPrivateGetType() gi.GType {
-	ret := _I.GetGType(58, "RendererPrivate")
-	return ret
-}
+// ignore private struct RendererPrivate, type of Renderer is object
 
 // Enum Script
 type ScriptEnum int
@@ -6215,7 +6705,7 @@ const (
 )
 
 func ScriptGetType() gi.GType {
-	ret := _I.GetGType(59, "Script")
+	ret := _I.GetGType(58, "Script")
 	return ret
 }
 
@@ -6225,7 +6715,7 @@ type ScriptIter struct {
 }
 
 func ScriptIterGetType() gi.GType {
-	ret := _I.GetGType(60, "ScriptIter")
+	ret := _I.GetGType(59, "ScriptIter")
 	return ret
 }
 
@@ -6303,7 +6793,7 @@ const (
 )
 
 func StretchGetType() gi.GType {
-	ret := _I.GetGType(61, "Stretch")
+	ret := _I.GetGType(60, "Stretch")
 	return ret
 }
 
@@ -6317,7 +6807,7 @@ const (
 )
 
 func StyleGetType() gi.GType {
-	ret := _I.GetGType(62, "Style")
+	ret := _I.GetGType(61, "Style")
 	return ret
 }
 
@@ -6329,7 +6819,7 @@ const (
 )
 
 func TabAlignGetType() gi.GType {
-	ret := _I.GetGType(63, "TabAlign")
+	ret := _I.GetGType(62, "TabAlign")
 	return ret
 }
 
@@ -6339,7 +6829,7 @@ type TabArray struct {
 }
 
 func TabArrayGetType() gi.GType {
-	ret := _I.GetGType(64, "TabArray")
+	ret := _I.GetGType(63, "TabArray")
 	return ret
 }
 
@@ -6532,7 +7022,7 @@ const (
 )
 
 func UnderlineGetType() gi.GType {
-	ret := _I.GetGType(65, "Underline")
+	ret := _I.GetGType(64, "Underline")
 	return ret
 }
 
@@ -6545,7 +7035,7 @@ const (
 )
 
 func VariantGetType() gi.GType {
-	ret := _I.GetGType(66, "Variant")
+	ret := _I.GetGType(65, "Variant")
 	return ret
 }
 
@@ -6568,7 +7058,7 @@ const (
 )
 
 func WeightGetType() gi.GType {
-	ret := _I.GetGType(67, "Weight")
+	ret := _I.GetGType(66, "Weight")
 	return ret
 }
 
@@ -6582,7 +7072,7 @@ const (
 )
 
 func WrapModeGetType() gi.GType {
-	ret := _I.GetGType(68, "WrapMode")
+	ret := _I.GetGType(67, "WrapMode")
 	return ret
 }
 

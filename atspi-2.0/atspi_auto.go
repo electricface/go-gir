@@ -790,15 +790,7 @@ func (v Accessible) SetCacheMask(mask CacheFlags) {
 
 // ignore GType struct AccessibleClass
 
-// Struct AccessiblePrivate
-type AccessiblePrivate struct {
-	P unsafe.Pointer
-}
-
-func AccessiblePrivateGetType() gi.GType {
-	ret := _I.GetGType(1, "AccessiblePrivate")
-	return ret
-}
+// ignore private struct AccessiblePrivate, type of Accessible is object
 
 // Interface Action
 type Action struct {
@@ -810,7 +802,7 @@ type IAction interface{ P_Action() unsafe.Pointer }
 
 func (v Action) P_Action() unsafe.Pointer { return v.P }
 func ActionGetType() gi.GType {
-	ret := _I.GetGType(2, "Action")
+	ret := _I.GetGType(1, "Action")
 	return ret
 }
 
@@ -961,11 +953,45 @@ type Application struct {
 const SizeOfStructApplication = 96
 
 func ApplicationGetType() gi.GType {
-	ret := _I.GetGType(3, "Application")
+	ret := _I.GetGType(2, "Application")
 	return ret
 }
 
-// ignore Class struct ApplicationClass, type of Application is struct
+func (v Application) p() *C.AtspiApplication {
+	return (*C.AtspiApplication)(v.P)
+}
+func (v Application) Parent() (result int /*TODO*/) {
+	return
+}
+func (v Application) Hash() (result int /*TODO*/) {
+	return
+}
+func (v Application) BusName() (result int /*TODO*/) {
+	return
+}
+func (v Application) Bus() (result int /*TODO*/) {
+	return
+}
+func (v Application) Root() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().root)
+	return
+}
+func (v Application) Cache() (result int /*TODO*/) {
+	return
+}
+func (v Application) ToolkitName() (result int /*TODO*/) {
+	return
+}
+func (v Application) ToolkitVersion() (result int /*TODO*/) {
+	return
+}
+func (v Application) AtspiVersion() (result int /*TODO*/) {
+	return
+}
+
+// denied field Application.time_added
+
+// ignore class struct ApplicationClass, type of Application is struct
 
 // Flags Cache
 type CacheFlags int
@@ -986,7 +1012,7 @@ const (
 )
 
 func CacheGetType() gi.GType {
-	ret := _I.GetGType(4, "Cache")
+	ret := _I.GetGType(3, "Cache")
 	return ret
 }
 
@@ -1000,7 +1026,7 @@ type ICollection interface{ P_Collection() unsafe.Pointer }
 
 func (v Collection) P_Collection() unsafe.Pointer { return v.P }
 func CollectionGetType() gi.GType {
-	ret := _I.GetGType(5, "Collection")
+	ret := _I.GetGType(4, "Collection")
 	return ret
 }
 
@@ -1195,7 +1221,7 @@ const (
 )
 
 func CollectionMatchTypeGetType() gi.GType {
-	ret := _I.GetGType(6, "CollectionMatchType")
+	ret := _I.GetGType(5, "CollectionMatchType")
 	return ret
 }
 
@@ -1214,7 +1240,7 @@ const (
 )
 
 func CollectionSortOrderGetType() gi.GType {
-	ret := _I.GetGType(7, "CollectionSortOrder")
+	ret := _I.GetGType(6, "CollectionSortOrder")
 	return ret
 }
 
@@ -1229,7 +1255,7 @@ const (
 )
 
 func CollectionTreeTraversalTypeGetType() gi.GType {
-	ret := _I.GetGType(8, "CollectionTreeTraversalType")
+	ret := _I.GetGType(7, "CollectionTreeTraversalType")
 	return ret
 }
 
@@ -1243,7 +1269,7 @@ type IComponent interface{ P_Component() unsafe.Pointer }
 
 func (v Component) P_Component() unsafe.Pointer { return v.P }
 func ComponentGetType() gi.GType {
-	ret := _I.GetGType(9, "Component")
+	ret := _I.GetGType(8, "Component")
 	return ret
 }
 
@@ -1609,7 +1635,7 @@ const (
 )
 
 func ComponentLayerGetType() gi.GType {
-	ret := _I.GetGType(10, "ComponentLayer")
+	ret := _I.GetGType(9, "ComponentLayer")
 	return ret
 }
 
@@ -1623,7 +1649,7 @@ const (
 )
 
 func CoordTypeGetType() gi.GType {
-	ret := _I.GetGType(11, "CoordType")
+	ret := _I.GetGType(10, "CoordType")
 	return ret
 }
 
@@ -1635,8 +1661,38 @@ type DeviceEvent struct {
 const SizeOfStructDeviceEvent = 32
 
 func DeviceEventGetType() gi.GType {
-	ret := _I.GetGType(12, "DeviceEvent")
+	ret := _I.GetGType(11, "DeviceEvent")
 	return ret
+}
+
+func (v DeviceEvent) p() *C.AtspiDeviceEvent {
+	return (*C.AtspiDeviceEvent)(v.P)
+}
+func (v DeviceEvent) Type() (result int /*TODO*/) {
+	return
+}
+func (v DeviceEvent) Id() (result uint32) {
+	result = uint32(v.p().id)
+	return
+}
+func (v DeviceEvent) HwCode() (result uint16) {
+	result = uint16(v.p().hw_code)
+	return
+}
+func (v DeviceEvent) Modifiers() (result uint16) {
+	result = uint16(v.p().modifiers)
+	return
+}
+func (v DeviceEvent) Timestamp() (result uint32) {
+	result = uint32(v.p().timestamp)
+	return
+}
+func (v DeviceEvent) EventString() (result int /*TODO*/) {
+	return
+}
+func (v DeviceEvent) IsText() (result bool) {
+	result = gi.Int2Bool(int(v.p().is_text))
+	return
 }
 
 // Object DeviceListener
@@ -1650,7 +1706,7 @@ type IDeviceListener interface{ P_DeviceListener() unsafe.Pointer }
 
 func (v DeviceListener) P_DeviceListener() unsafe.Pointer { return v.P }
 func DeviceListenerGetType() gi.GType {
-	ret := _I.GetGType(13, "DeviceListener")
+	ret := _I.GetGType(12, "DeviceListener")
 	return ret
 }
 
@@ -1780,7 +1836,7 @@ type IDocument interface{ P_Document() unsafe.Pointer }
 
 func (v Document) P_Document() unsafe.Pointer { return v.P }
 func DocumentGetType() gi.GType {
-	ret := _I.GetGType(14, "Document")
+	ret := _I.GetGType(13, "Document")
 	return ret
 }
 
@@ -1903,7 +1959,7 @@ type IEditableText interface{ P_EditableText() unsafe.Pointer }
 
 func (v EditableText) P_EditableText() unsafe.Pointer { return v.P }
 func EditableTextGetType() gi.GType {
-	ret := _I.GetGType(15, "EditableText")
+	ret := _I.GetGType(14, "EditableText")
 	return ret
 }
 
@@ -2072,7 +2128,7 @@ type Event struct {
 const SizeOfStructEvent = 48
 
 func EventGetType() gi.GType {
-	ret := _I.GetGType(16, "Event")
+	ret := _I.GetGType(15, "Event")
 	return ret
 }
 
@@ -2098,6 +2154,27 @@ func EventQuit1() {
 	iv.Call(nil, nil, nil)
 }
 
+func (v Event) p() *C.AtspiEvent {
+	return (*C.AtspiEvent)(v.P)
+}
+func (v Event) Type() (result int /*TODO*/) {
+	return
+}
+func (v Event) Source() (result int /*TODO*/) {
+	return
+}
+func (v Event) Detail1() (result int32) {
+	result = int32(v.p().detail1)
+	return
+}
+func (v Event) Detail2() (result int32) {
+	result = int32(v.p().detail2)
+	return
+}
+func (v Event) AnyData() (result int /*TODO*/) {
+	return
+}
+
 // Object EventListener
 type EventListener struct {
 	g.Object
@@ -2109,7 +2186,7 @@ type IEventListener interface{ P_EventListener() unsafe.Pointer }
 
 func (v EventListener) P_EventListener() unsafe.Pointer { return v.P }
 func EventListenerGetType() gi.GType {
-	ret := _I.GetGType(17, "EventListener")
+	ret := _I.GetGType(16, "EventListener")
 	return ret
 }
 
@@ -2373,8 +2450,24 @@ type EventListenerMode struct {
 const SizeOfStructEventListenerMode = 12
 
 func EventListenerModeGetType() gi.GType {
-	ret := _I.GetGType(18, "EventListenerMode")
+	ret := _I.GetGType(17, "EventListenerMode")
 	return ret
+}
+
+func (v EventListenerMode) p() *C.AtspiEventListenerMode {
+	return (*C.AtspiEventListenerMode)(v.P)
+}
+func (v EventListenerMode) Synchronous() (result bool) {
+	result = gi.Int2Bool(int(v.p().synchronous))
+	return
+}
+func (v EventListenerMode) Preemptive() (result bool) {
+	result = gi.Int2Bool(int(v.p().preemptive))
+	return
+}
+func (v EventListenerMode) Global() (result bool) {
+	result = gi.Int2Bool(int(v.p().global))
+	return
 }
 
 type EventListenerSimpleCB func(event Event)
@@ -2398,7 +2491,7 @@ const (
 )
 
 func EventTypeGetType() gi.GType {
-	ret := _I.GetGType(19, "EventType")
+	ret := _I.GetGType(18, "EventType")
 	return ret
 }
 
@@ -2413,7 +2506,7 @@ type IHyperlink interface{ P_Hyperlink() unsafe.Pointer }
 
 func (v Hyperlink) P_Hyperlink() unsafe.Pointer { return v.P }
 func HyperlinkGetType() gi.GType {
-	ret := _I.GetGType(20, "Hyperlink")
+	ret := _I.GetGType(19, "Hyperlink")
 	return ret
 }
 
@@ -2575,7 +2668,7 @@ type IHypertext interface{ P_Hypertext() unsafe.Pointer }
 
 func (v Hypertext) P_Hypertext() unsafe.Pointer { return v.P }
 func HypertextGetType() gi.GType {
-	ret := _I.GetGType(21, "Hypertext")
+	ret := _I.GetGType(20, "Hypertext")
 	return ret
 }
 
@@ -2655,7 +2748,7 @@ type IImage interface{ P_Image() unsafe.Pointer }
 
 func (v Image) P_Image() unsafe.Pointer { return v.P }
 func ImageGetType() gi.GType {
-	ret := _I.GetGType(22, "Image")
+	ret := _I.GetGType(21, "Image")
 	return ret
 }
 
@@ -2773,8 +2866,27 @@ type KeyDefinition struct {
 const SizeOfStructKeyDefinition = 24
 
 func KeyDefinitionGetType() gi.GType {
-	ret := _I.GetGType(23, "KeyDefinition")
+	ret := _I.GetGType(22, "KeyDefinition")
 	return ret
+}
+
+func (v KeyDefinition) p() *C.AtspiKeyDefinition {
+	return (*C.AtspiKeyDefinition)(v.P)
+}
+func (v KeyDefinition) Keycode() (result int32) {
+	result = int32(v.p().keycode)
+	return
+}
+func (v KeyDefinition) Keysym() (result int32) {
+	result = int32(v.p().keysym)
+	return
+}
+func (v KeyDefinition) Keystring() (result int /*TODO*/) {
+	return
+}
+func (v KeyDefinition) Unused() (result int32) {
+	result = int32(v.p().unused)
+	return
 }
 
 // Enum KeyEventType
@@ -2786,7 +2898,7 @@ const (
 )
 
 func KeyEventTypeGetType() gi.GType {
-	ret := _I.GetGType(24, "KeyEventType")
+	ret := _I.GetGType(23, "KeyEventType")
 	return ret
 }
 
@@ -2801,7 +2913,7 @@ const (
 )
 
 func KeyListenerSyncTypeGetType() gi.GType {
-	ret := _I.GetGType(25, "KeyListenerSyncType")
+	ret := _I.GetGType(24, "KeyListenerSyncType")
 	return ret
 }
 
@@ -2813,8 +2925,25 @@ type KeySet struct {
 const SizeOfStructKeySet = 32
 
 func KeySetGetType() gi.GType {
-	ret := _I.GetGType(26, "KeySet")
+	ret := _I.GetGType(25, "KeySet")
 	return ret
+}
+
+func (v KeySet) p() *C.AtspiKeySet {
+	return (*C.AtspiKeySet)(v.P)
+}
+func (v KeySet) Keysyms() (result int /*TODO*/) {
+	return
+}
+func (v KeySet) Keycodes() (result int /*TODO*/) {
+	return
+}
+func (v KeySet) Keystrings() (result int /*TODO*/) {
+	return
+}
+func (v KeySet) Len() (result int16) {
+	result = int16(v.p().len)
+	return
 }
 
 // Enum KeySynthType
@@ -2831,7 +2960,7 @@ const (
 )
 
 func KeySynthTypeGetType() gi.GType {
-	ret := _I.GetGType(27, "KeySynthType")
+	ret := _I.GetGType(26, "KeySynthType")
 	return ret
 }
 
@@ -2848,7 +2977,7 @@ const (
 )
 
 func LocaleTypeGetType() gi.GType {
-	ret := _I.GetGType(28, "LocaleType")
+	ret := _I.GetGType(27, "LocaleType")
 	return ret
 }
 
@@ -2863,7 +2992,7 @@ type IMatchRule interface{ P_MatchRule() unsafe.Pointer }
 
 func (v MatchRule) P_MatchRule() unsafe.Pointer { return v.P }
 func MatchRuleGetType() gi.GType {
-	ret := _I.GetGType(29, "MatchRule")
+	ret := _I.GetGType(28, "MatchRule")
 	return ret
 }
 
@@ -2932,7 +3061,7 @@ const (
 )
 
 func ModifierTypeGetType() gi.GType {
-	ret := _I.GetGType(30, "ModifierType")
+	ret := _I.GetGType(29, "ModifierType")
 	return ret
 }
 
@@ -2947,7 +3076,7 @@ type IObject interface{ P_Object() unsafe.Pointer }
 
 func (v Object) P_Object() unsafe.Pointer { return v.P }
 func ObjectGetType() gi.GType {
-	ret := _I.GetGType(31, "Object")
+	ret := _I.GetGType(30, "Object")
 	return ret
 }
 
@@ -2961,7 +3090,7 @@ type Point struct {
 const SizeOfStructPoint = 8
 
 func PointGetType() gi.GType {
-	ret := _I.GetGType(32, "Point")
+	ret := _I.GetGType(31, "Point")
 	return ret
 }
 
@@ -2983,6 +3112,18 @@ func (v Point) Copy() (result Point) {
 	return
 }
 
+func (v Point) p() *C.AtspiPoint {
+	return (*C.AtspiPoint)(v.P)
+}
+func (v Point) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v Point) Y() (result int32) {
+	result = int32(v.p().y)
+	return
+}
+
 // Struct Range
 type Range struct {
 	P unsafe.Pointer
@@ -2991,7 +3132,7 @@ type Range struct {
 const SizeOfStructRange = 8
 
 func RangeGetType() gi.GType {
-	ret := _I.GetGType(33, "Range")
+	ret := _I.GetGType(32, "Range")
 	return ret
 }
 
@@ -3013,6 +3154,18 @@ func (v Range) Copy() (result Range) {
 	return
 }
 
+func (v Range) p() *C.AtspiRange {
+	return (*C.AtspiRange)(v.P)
+}
+func (v Range) StartOffset() (result int32) {
+	result = int32(v.p().start_offset)
+	return
+}
+func (v Range) EndOffset() (result int32) {
+	result = int32(v.p().end_offset)
+	return
+}
+
 // Struct Rect
 type Rect struct {
 	P unsafe.Pointer
@@ -3021,7 +3174,7 @@ type Rect struct {
 const SizeOfStructRect = 16
 
 func RectGetType() gi.GType {
-	ret := _I.GetGType(34, "Rect")
+	ret := _I.GetGType(33, "Rect")
 	return ret
 }
 
@@ -3043,6 +3196,26 @@ func (v Rect) Copy() (result Rect) {
 	return
 }
 
+func (v Rect) p() *C.AtspiRect {
+	return (*C.AtspiRect)(v.P)
+}
+func (v Rect) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v Rect) Y() (result int32) {
+	result = int32(v.p().y)
+	return
+}
+func (v Rect) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v Rect) Height() (result int32) {
+	result = int32(v.p().height)
+	return
+}
+
 // Object Relation
 type Relation struct {
 	g.Object
@@ -3054,7 +3227,7 @@ type IRelation interface{ P_Relation() unsafe.Pointer }
 
 func (v Relation) P_Relation() unsafe.Pointer { return v.P }
 func RelationGetType() gi.GType {
-	ret := _I.GetGType(35, "Relation")
+	ret := _I.GetGType(34, "Relation")
 	return ret
 }
 
@@ -3148,7 +3321,7 @@ const (
 )
 
 func RelationTypeGetType() gi.GType {
-	ret := _I.GetGType(36, "RelationType")
+	ret := _I.GetGType(35, "RelationType")
 	return ret
 }
 
@@ -3285,7 +3458,7 @@ const (
 )
 
 func RoleGetType() gi.GType {
-	ret := _I.GetGType(37, "Role")
+	ret := _I.GetGType(36, "Role")
 	return ret
 }
 
@@ -3303,7 +3476,7 @@ const (
 )
 
 func ScrollTypeGetType() gi.GType {
-	ret := _I.GetGType(38, "ScrollType")
+	ret := _I.GetGType(37, "ScrollType")
 	return ret
 }
 
@@ -3317,7 +3490,7 @@ type ISelection interface{ P_Selection() unsafe.Pointer }
 
 func (v Selection) P_Selection() unsafe.Pointer { return v.P }
 func SelectionGetType() gi.GType {
-	ret := _I.GetGType(39, "Selection")
+	ret := _I.GetGType(38, "Selection")
 	return ret
 }
 
@@ -3507,7 +3680,7 @@ type IStateSet interface{ P_StateSet() unsafe.Pointer }
 
 func (v StateSet) P_StateSet() unsafe.Pointer { return v.P }
 func StateSetGetType() gi.GType {
-	ret := _I.GetGType(40, "StateSet")
+	ret := _I.GetGType(39, "StateSet")
 	return ret
 }
 
@@ -3745,7 +3918,7 @@ const (
 )
 
 func StateTypeGetType() gi.GType {
-	ret := _I.GetGType(41, "StateType")
+	ret := _I.GetGType(40, "StateType")
 	return ret
 }
 
@@ -3759,7 +3932,7 @@ type ITable interface{ P_Table() unsafe.Pointer }
 
 func (v Table) P_Table() unsafe.Pointer { return v.P }
 func TableGetType() gi.GType {
-	ret := _I.GetGType(42, "Table")
+	ret := _I.GetGType(41, "Table")
 	return ret
 }
 
@@ -4382,7 +4555,7 @@ type ITableCell interface{ P_TableCell() unsafe.Pointer }
 
 func (v TableCell) P_TableCell() unsafe.Pointer { return v.P }
 func TableCellGetType() gi.GType {
-	ret := _I.GetGType(43, "TableCell")
+	ret := _I.GetGType(42, "TableCell")
 	return ret
 }
 
@@ -4576,7 +4749,7 @@ type IText interface{ P_Text() unsafe.Pointer }
 
 func (v Text) P_Text() unsafe.Pointer { return v.P }
 func TextGetType() gi.GType {
-	ret := _I.GetGType(44, "Text")
+	ret := _I.GetGType(43, "Text")
 	return ret
 }
 
@@ -5175,7 +5348,7 @@ const (
 )
 
 func TextBoundaryTypeGetType() gi.GType {
-	ret := _I.GetGType(45, "TextBoundaryType")
+	ret := _I.GetGType(44, "TextBoundaryType")
 	return ret
 }
 
@@ -5190,7 +5363,7 @@ const (
 )
 
 func TextClipTypeGetType() gi.GType {
-	ret := _I.GetGType(46, "TextClipType")
+	ret := _I.GetGType(45, "TextClipType")
 	return ret
 }
 
@@ -5206,7 +5379,7 @@ const (
 )
 
 func TextGranularityGetType() gi.GType {
-	ret := _I.GetGType(47, "TextGranularity")
+	ret := _I.GetGType(46, "TextGranularity")
 	return ret
 }
 
@@ -5218,8 +5391,23 @@ type TextRange struct {
 const SizeOfStructTextRange = 16
 
 func TextRangeGetType() gi.GType {
-	ret := _I.GetGType(48, "TextRange")
+	ret := _I.GetGType(47, "TextRange")
 	return ret
+}
+
+func (v TextRange) p() *C.AtspiTextRange {
+	return (*C.AtspiTextRange)(v.P)
+}
+func (v TextRange) StartOffset() (result int32) {
+	result = int32(v.p().start_offset)
+	return
+}
+func (v TextRange) EndOffset() (result int32) {
+	result = int32(v.p().end_offset)
+	return
+}
+func (v TextRange) Content() (result int /*TODO*/) {
+	return
 }
 
 // Interface Value
@@ -5232,7 +5420,7 @@ type IValue interface{ P_Value() unsafe.Pointer }
 
 func (v Value) P_Value() unsafe.Pointer { return v.P }
 func ValueGetType() gi.GType {
-	ret := _I.GetGType(49, "Value")
+	ret := _I.GetGType(48, "Value")
 	return ret
 }
 

@@ -482,6 +482,26 @@ func ColorParse1(spec string, color Color) (result bool) {
 	return
 }
 
+func (v Color) p() *C.GdkColor {
+	return (*C.GdkColor)(v.P)
+}
+func (v Color) Pixel() (result uint32) {
+	result = uint32(v.p().pixel)
+	return
+}
+func (v Color) Red() (result uint16) {
+	result = uint16(v.p().red)
+	return
+}
+func (v Color) Green() (result uint16) {
+	result = uint16(v.p().green)
+	return
+}
+func (v Color) Blue() (result uint16) {
+	result = uint16(v.p().blue)
+	return
+}
+
 // Enum CrossingMode
 type CrossingModeEnum int
 
@@ -4067,6 +4087,20 @@ func EventAnyGetType() gi.GType {
 	return ret
 }
 
+func (v EventAny) p() *C.GdkEventAny {
+	return (*C.GdkEventAny)(v.P)
+}
+func (v EventAny) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventAny) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventAny) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+
 // Struct EventButton
 type EventButton struct {
 	P unsafe.Pointer
@@ -4077,6 +4111,53 @@ const SizeOfStructEventButton = 80
 func EventButtonGetType() gi.GType {
 	ret := _I.GetGType(26, "EventButton")
 	return ret
+}
+
+func (v EventButton) p() *C.GdkEventButton {
+	return (*C.GdkEventButton)(v.P)
+}
+func (v EventButton) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventButton) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventButton) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventButton) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventButton) X() (result float64) {
+	result = float64(v.p().x)
+	return
+}
+func (v EventButton) Y() (result float64) {
+	result = float64(v.p().y)
+	return
+}
+func (v EventButton) Axes() (result int /*TODO*/) {
+	return
+}
+func (v EventButton) State() (result int /*TODO*/) {
+	return
+}
+func (v EventButton) Button() (result uint32) {
+	result = uint32(v.p().button)
+	return
+}
+func (v EventButton) Device() (result int /*TODO*/) {
+	return
+}
+func (v EventButton) XRoot() (result float64) {
+	result = float64(v.p().x_root)
+	return
+}
+func (v EventButton) YRoot() (result float64) {
+	result = float64(v.p().y_root)
+	return
 }
 
 // Struct EventConfigure
@@ -4091,6 +4172,36 @@ func EventConfigureGetType() gi.GType {
 	return ret
 }
 
+func (v EventConfigure) p() *C.GdkEventConfigure {
+	return (*C.GdkEventConfigure)(v.P)
+}
+func (v EventConfigure) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventConfigure) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventConfigure) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventConfigure) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v EventConfigure) Y() (result int32) {
+	result = int32(v.p().y)
+	return
+}
+func (v EventConfigure) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v EventConfigure) Height() (result int32) {
+	result = int32(v.p().height)
+	return
+}
+
 // Struct EventCrossing
 type EventCrossing struct {
 	P unsafe.Pointer
@@ -4101,6 +4212,56 @@ const SizeOfStructEventCrossing = 88
 func EventCrossingGetType() gi.GType {
 	ret := _I.GetGType(28, "EventCrossing")
 	return ret
+}
+
+func (v EventCrossing) p() *C.GdkEventCrossing {
+	return (*C.GdkEventCrossing)(v.P)
+}
+func (v EventCrossing) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventCrossing) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventCrossing) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventCrossing) Subwindow() (result int /*TODO*/) {
+	return
+}
+func (v EventCrossing) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventCrossing) X() (result float64) {
+	result = float64(v.p().x)
+	return
+}
+func (v EventCrossing) Y() (result float64) {
+	result = float64(v.p().y)
+	return
+}
+func (v EventCrossing) XRoot() (result float64) {
+	result = float64(v.p().x_root)
+	return
+}
+func (v EventCrossing) YRoot() (result float64) {
+	result = float64(v.p().y_root)
+	return
+}
+func (v EventCrossing) Mode() (result int /*TODO*/) {
+	return
+}
+func (v EventCrossing) Detail() (result int /*TODO*/) {
+	return
+}
+func (v EventCrossing) Focus() (result bool) {
+	result = gi.Int2Bool(int(v.p().focus))
+	return
+}
+func (v EventCrossing) State() (result int /*TODO*/) {
+	return
 }
 
 // Struct EventDND
@@ -4115,6 +4276,35 @@ func EventDNDGetType() gi.GType {
 	return ret
 }
 
+func (v EventDND) p() *C.GdkEventDND {
+	return (*C.GdkEventDND)(v.P)
+}
+func (v EventDND) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventDND) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventDND) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventDND) Context() (result int /*TODO*/) {
+	return
+}
+func (v EventDND) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventDND) XRoot() (result int16) {
+	result = int16(v.p().x_root)
+	return
+}
+func (v EventDND) YRoot() (result int16) {
+	result = int16(v.p().y_root)
+	return
+}
+
 // Struct EventExpose
 type EventExpose struct {
 	P unsafe.Pointer
@@ -4127,6 +4317,30 @@ func EventExposeGetType() gi.GType {
 	return ret
 }
 
+func (v EventExpose) p() *C.GdkEventExpose {
+	return (*C.GdkEventExpose)(v.P)
+}
+func (v EventExpose) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventExpose) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventExpose) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventExpose) Area() (result int /*TODO*/) {
+	return
+}
+func (v EventExpose) Region() (result int /*TODO*/) {
+	return
+}
+func (v EventExpose) Count() (result int32) {
+	result = int32(v.p().count)
+	return
+}
+
 // Struct EventFocus
 type EventFocus struct {
 	P unsafe.Pointer
@@ -4137,6 +4351,24 @@ const SizeOfStructEventFocus = 24
 func EventFocusGetType() gi.GType {
 	ret := _I.GetGType(31, "EventFocus")
 	return ret
+}
+
+func (v EventFocus) p() *C.GdkEventFocus {
+	return (*C.GdkEventFocus)(v.P)
+}
+func (v EventFocus) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventFocus) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventFocus) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventFocus) In() (result int16) {
+	result = int16(v.p().in)
+	return
 }
 
 type EventFunc func(event Event)
@@ -4161,6 +4393,31 @@ func EventGrabBrokenGetType() gi.GType {
 	return ret
 }
 
+func (v EventGrabBroken) p() *C.GdkEventGrabBroken {
+	return (*C.GdkEventGrabBroken)(v.P)
+}
+func (v EventGrabBroken) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventGrabBroken) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventGrabBroken) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventGrabBroken) Keyboard() (result bool) {
+	result = gi.Int2Bool(int(v.p().keyboard))
+	return
+}
+func (v EventGrabBroken) Implicit() (result bool) {
+	result = gi.Int2Bool(int(v.p().implicit))
+	return
+}
+func (v EventGrabBroken) GrabWindow() (result int /*TODO*/) {
+	return
+}
+
 // Struct EventKey
 type EventKey struct {
 	P unsafe.Pointer
@@ -4172,6 +4429,48 @@ func EventKeyGetType() gi.GType {
 	ret := _I.GetGType(33, "EventKey")
 	return ret
 }
+
+func (v EventKey) p() *C.GdkEventKey {
+	return (*C.GdkEventKey)(v.P)
+}
+func (v EventKey) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventKey) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventKey) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventKey) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventKey) State() (result int /*TODO*/) {
+	return
+}
+func (v EventKey) Keyval() (result uint32) {
+	result = uint32(v.p().keyval)
+	return
+}
+func (v EventKey) Length() (result int32) {
+	result = int32(v.p().length)
+	return
+}
+func (v EventKey) String() (result int /*TODO*/) {
+	return
+}
+func (v EventKey) HardwareKeycode() (result uint16) {
+	result = uint16(v.p().hardware_keycode)
+	return
+}
+func (v EventKey) Group() (result uint8) {
+	result = uint8(v.p().group)
+	return
+}
+
+// TODO: ignore struct EventKey field is_modifier, bits(=1) > 0
 
 // Flags EventMask
 type EventMaskFlags int
@@ -4222,6 +4521,53 @@ func EventMotionGetType() gi.GType {
 	return ret
 }
 
+func (v EventMotion) p() *C.GdkEventMotion {
+	return (*C.GdkEventMotion)(v.P)
+}
+func (v EventMotion) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventMotion) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventMotion) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventMotion) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventMotion) X() (result float64) {
+	result = float64(v.p().x)
+	return
+}
+func (v EventMotion) Y() (result float64) {
+	result = float64(v.p().y)
+	return
+}
+func (v EventMotion) Axes() (result int /*TODO*/) {
+	return
+}
+func (v EventMotion) State() (result int /*TODO*/) {
+	return
+}
+func (v EventMotion) IsHint() (result int16) {
+	result = int16(v.p().is_hint)
+	return
+}
+func (v EventMotion) Device() (result int /*TODO*/) {
+	return
+}
+func (v EventMotion) XRoot() (result float64) {
+	result = float64(v.p().x_root)
+	return
+}
+func (v EventMotion) YRoot() (result float64) {
+	result = float64(v.p().y_root)
+	return
+}
+
 // Struct EventOwnerChange
 type EventOwnerChange struct {
 	P unsafe.Pointer
@@ -4232,6 +4578,37 @@ const SizeOfStructEventOwnerChange = 56
 func EventOwnerChangeGetType() gi.GType {
 	ret := _I.GetGType(36, "EventOwnerChange")
 	return ret
+}
+
+func (v EventOwnerChange) p() *C.GdkEventOwnerChange {
+	return (*C.GdkEventOwnerChange)(v.P)
+}
+func (v EventOwnerChange) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventOwnerChange) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventOwnerChange) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventOwnerChange) Owner() (result int /*TODO*/) {
+	return
+}
+func (v EventOwnerChange) Reason() (result int /*TODO*/) {
+	return
+}
+func (v EventOwnerChange) Selection() (result int /*TODO*/) {
+	return
+}
+func (v EventOwnerChange) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventOwnerChange) SelectionTime() (result uint32) {
+	result = uint32(v.p().selection_time)
+	return
 }
 
 // Struct EventPadAxis
@@ -4246,6 +4623,40 @@ func EventPadAxisGetType() gi.GType {
 	return ret
 }
 
+func (v EventPadAxis) p() *C.GdkEventPadAxis {
+	return (*C.GdkEventPadAxis)(v.P)
+}
+func (v EventPadAxis) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventPadAxis) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventPadAxis) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventPadAxis) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventPadAxis) Group() (result uint32) {
+	result = uint32(v.p().group)
+	return
+}
+func (v EventPadAxis) Index() (result uint32) {
+	result = uint32(v.p().index)
+	return
+}
+func (v EventPadAxis) Mode() (result uint32) {
+	result = uint32(v.p().mode)
+	return
+}
+func (v EventPadAxis) Value() (result float64) {
+	result = float64(v.p().value)
+	return
+}
+
 // Struct EventPadButton
 type EventPadButton struct {
 	P unsafe.Pointer
@@ -4256,6 +4667,36 @@ const SizeOfStructEventPadButton = 40
 func EventPadButtonGetType() gi.GType {
 	ret := _I.GetGType(38, "EventPadButton")
 	return ret
+}
+
+func (v EventPadButton) p() *C.GdkEventPadButton {
+	return (*C.GdkEventPadButton)(v.P)
+}
+func (v EventPadButton) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventPadButton) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventPadButton) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventPadButton) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventPadButton) Group() (result uint32) {
+	result = uint32(v.p().group)
+	return
+}
+func (v EventPadButton) Button() (result uint32) {
+	result = uint32(v.p().button)
+	return
+}
+func (v EventPadButton) Mode() (result uint32) {
+	result = uint32(v.p().mode)
+	return
 }
 
 // Struct EventPadGroupMode
@@ -4270,6 +4711,32 @@ func EventPadGroupModeGetType() gi.GType {
 	return ret
 }
 
+func (v EventPadGroupMode) p() *C.GdkEventPadGroupMode {
+	return (*C.GdkEventPadGroupMode)(v.P)
+}
+func (v EventPadGroupMode) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventPadGroupMode) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventPadGroupMode) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventPadGroupMode) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventPadGroupMode) Group() (result uint32) {
+	result = uint32(v.p().group)
+	return
+}
+func (v EventPadGroupMode) Mode() (result uint32) {
+	result = uint32(v.p().mode)
+	return
+}
+
 // Struct EventProperty
 type EventProperty struct {
 	P unsafe.Pointer
@@ -4280,6 +4747,30 @@ const SizeOfStructEventProperty = 40
 func EventPropertyGetType() gi.GType {
 	ret := _I.GetGType(40, "EventProperty")
 	return ret
+}
+
+func (v EventProperty) p() *C.GdkEventProperty {
+	return (*C.GdkEventProperty)(v.P)
+}
+func (v EventProperty) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventProperty) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventProperty) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventProperty) Atom() (result int /*TODO*/) {
+	return
+}
+func (v EventProperty) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventProperty) State() (result int /*TODO*/) {
+	return
 }
 
 // Struct EventProximity
@@ -4294,6 +4785,27 @@ func EventProximityGetType() gi.GType {
 	return ret
 }
 
+func (v EventProximity) p() *C.GdkEventProximity {
+	return (*C.GdkEventProximity)(v.P)
+}
+func (v EventProximity) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventProximity) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventProximity) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventProximity) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventProximity) Device() (result int /*TODO*/) {
+	return
+}
+
 // Struct EventScroll
 type EventScroll struct {
 	P unsafe.Pointer
@@ -4306,6 +4818,59 @@ func EventScrollGetType() gi.GType {
 	return ret
 }
 
+func (v EventScroll) p() *C.GdkEventScroll {
+	return (*C.GdkEventScroll)(v.P)
+}
+func (v EventScroll) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventScroll) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventScroll) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventScroll) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventScroll) X() (result float64) {
+	result = float64(v.p().x)
+	return
+}
+func (v EventScroll) Y() (result float64) {
+	result = float64(v.p().y)
+	return
+}
+func (v EventScroll) State() (result int /*TODO*/) {
+	return
+}
+func (v EventScroll) Direction() (result int /*TODO*/) {
+	return
+}
+func (v EventScroll) Device() (result int /*TODO*/) {
+	return
+}
+func (v EventScroll) XRoot() (result float64) {
+	result = float64(v.p().x_root)
+	return
+}
+func (v EventScroll) YRoot() (result float64) {
+	result = float64(v.p().y_root)
+	return
+}
+func (v EventScroll) DeltaX() (result float64) {
+	result = float64(v.p().delta_x)
+	return
+}
+func (v EventScroll) DeltaY() (result float64) {
+	result = float64(v.p().delta_y)
+	return
+}
+
+// TODO: ignore struct EventScroll field is_stop, bits(=1) > 0
+
 // Struct EventSelection
 type EventSelection struct {
 	P unsafe.Pointer
@@ -4316,6 +4881,36 @@ const SizeOfStructEventSelection = 64
 func EventSelectionGetType() gi.GType {
 	ret := _I.GetGType(43, "EventSelection")
 	return ret
+}
+
+func (v EventSelection) p() *C.GdkEventSelection {
+	return (*C.GdkEventSelection)(v.P)
+}
+func (v EventSelection) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventSelection) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventSelection) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventSelection) Selection() (result int /*TODO*/) {
+	return
+}
+func (v EventSelection) Target() (result int /*TODO*/) {
+	return
+}
+func (v EventSelection) Property() (result int /*TODO*/) {
+	return
+}
+func (v EventSelection) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventSelection) Requestor() (result int /*TODO*/) {
+	return
 }
 
 // Struct EventSequence
@@ -4340,6 +4935,26 @@ func EventSettingGetType() gi.GType {
 	return ret
 }
 
+func (v EventSetting) p() *C.GdkEventSetting {
+	return (*C.GdkEventSetting)(v.P)
+}
+func (v EventSetting) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventSetting) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventSetting) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventSetting) Action() (result int /*TODO*/) {
+	return
+}
+func (v EventSetting) Name() (result int /*TODO*/) {
+	return
+}
+
 // Struct EventTouch
 type EventTouch struct {
 	P unsafe.Pointer
@@ -4350,6 +4965,56 @@ const SizeOfStructEventTouch = 96
 func EventTouchGetType() gi.GType {
 	ret := _I.GetGType(46, "EventTouch")
 	return ret
+}
+
+func (v EventTouch) p() *C.GdkEventTouch {
+	return (*C.GdkEventTouch)(v.P)
+}
+func (v EventTouch) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventTouch) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventTouch) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventTouch) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventTouch) X() (result float64) {
+	result = float64(v.p().x)
+	return
+}
+func (v EventTouch) Y() (result float64) {
+	result = float64(v.p().y)
+	return
+}
+func (v EventTouch) Axes() (result int /*TODO*/) {
+	return
+}
+func (v EventTouch) State() (result int /*TODO*/) {
+	return
+}
+func (v EventTouch) Sequence() (result int /*TODO*/) {
+	return
+}
+func (v EventTouch) EmulatingPointer() (result bool) {
+	result = gi.Int2Bool(int(v.p().emulating_pointer))
+	return
+}
+func (v EventTouch) Device() (result int /*TODO*/) {
+	return
+}
+func (v EventTouch) XRoot() (result float64) {
+	result = float64(v.p().x_root)
+	return
+}
+func (v EventTouch) YRoot() (result float64) {
+	result = float64(v.p().y_root)
+	return
 }
 
 // Struct EventTouchpadPinch
@@ -4364,6 +5029,67 @@ func EventTouchpadPinchGetType() gi.GType {
 	return ret
 }
 
+func (v EventTouchpadPinch) p() *C.GdkEventTouchpadPinch {
+	return (*C.GdkEventTouchpadPinch)(v.P)
+}
+func (v EventTouchpadPinch) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventTouchpadPinch) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventTouchpadPinch) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventTouchpadPinch) Phase() (result int8) {
+	result = int8(v.p().phase)
+	return
+}
+func (v EventTouchpadPinch) NFingers() (result int8) {
+	result = int8(v.p().n_fingers)
+	return
+}
+func (v EventTouchpadPinch) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventTouchpadPinch) X() (result float64) {
+	result = float64(v.p().x)
+	return
+}
+func (v EventTouchpadPinch) Y() (result float64) {
+	result = float64(v.p().y)
+	return
+}
+func (v EventTouchpadPinch) Dx() (result float64) {
+	result = float64(v.p().dx)
+	return
+}
+func (v EventTouchpadPinch) Dy() (result float64) {
+	result = float64(v.p().dy)
+	return
+}
+func (v EventTouchpadPinch) AngleDelta() (result float64) {
+	result = float64(v.p().angle_delta)
+	return
+}
+func (v EventTouchpadPinch) Scale() (result float64) {
+	result = float64(v.p().scale)
+	return
+}
+func (v EventTouchpadPinch) XRoot() (result float64) {
+	result = float64(v.p().x_root)
+	return
+}
+func (v EventTouchpadPinch) YRoot() (result float64) {
+	result = float64(v.p().y_root)
+	return
+}
+func (v EventTouchpadPinch) State() (result int /*TODO*/) {
+	return
+}
+
 // Struct EventTouchpadSwipe
 type EventTouchpadSwipe struct {
 	P unsafe.Pointer
@@ -4374,6 +5100,59 @@ const SizeOfStructEventTouchpadSwipe = 80
 func EventTouchpadSwipeGetType() gi.GType {
 	ret := _I.GetGType(48, "EventTouchpadSwipe")
 	return ret
+}
+
+func (v EventTouchpadSwipe) p() *C.GdkEventTouchpadSwipe {
+	return (*C.GdkEventTouchpadSwipe)(v.P)
+}
+func (v EventTouchpadSwipe) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventTouchpadSwipe) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventTouchpadSwipe) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventTouchpadSwipe) Phase() (result int8) {
+	result = int8(v.p().phase)
+	return
+}
+func (v EventTouchpadSwipe) NFingers() (result int8) {
+	result = int8(v.p().n_fingers)
+	return
+}
+func (v EventTouchpadSwipe) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v EventTouchpadSwipe) X() (result float64) {
+	result = float64(v.p().x)
+	return
+}
+func (v EventTouchpadSwipe) Y() (result float64) {
+	result = float64(v.p().y)
+	return
+}
+func (v EventTouchpadSwipe) Dx() (result float64) {
+	result = float64(v.p().dx)
+	return
+}
+func (v EventTouchpadSwipe) Dy() (result float64) {
+	result = float64(v.p().dy)
+	return
+}
+func (v EventTouchpadSwipe) XRoot() (result float64) {
+	result = float64(v.p().x_root)
+	return
+}
+func (v EventTouchpadSwipe) YRoot() (result float64) {
+	result = float64(v.p().y_root)
+	return
+}
+func (v EventTouchpadSwipe) State() (result int /*TODO*/) {
+	return
 }
 
 // Enum EventType
@@ -4452,6 +5231,23 @@ func EventVisibilityGetType() gi.GType {
 	return ret
 }
 
+func (v EventVisibility) p() *C.GdkEventVisibility {
+	return (*C.GdkEventVisibility)(v.P)
+}
+func (v EventVisibility) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventVisibility) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventVisibility) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventVisibility) State() (result int /*TODO*/) {
+	return
+}
+
 // Struct EventWindowState
 type EventWindowState struct {
 	P unsafe.Pointer
@@ -4462,6 +5258,26 @@ const SizeOfStructEventWindowState = 32
 func EventWindowStateGetType() gi.GType {
 	ret := _I.GetGType(51, "EventWindowState")
 	return ret
+}
+
+func (v EventWindowState) p() *C.GdkEventWindowState {
+	return (*C.GdkEventWindowState)(v.P)
+}
+func (v EventWindowState) Type() (result int /*TODO*/) {
+	return
+}
+func (v EventWindowState) Window() (result int /*TODO*/) {
+	return
+}
+func (v EventWindowState) SendEvent() (result int8) {
+	result = int8(v.p().send_event)
+	return
+}
+func (v EventWindowState) ChangedMask() (result int /*TODO*/) {
+	return
+}
+func (v EventWindowState) NewWindowState() (result int /*TODO*/) {
+	return
 }
 
 type FilterFunc func(xevent unsafe.Pointer, event Event) (result FilterReturnEnum)
@@ -4687,15 +5503,7 @@ func FrameClockPhaseGetType() gi.GType {
 	return ret
 }
 
-// Struct FrameClockPrivate
-type FrameClockPrivate struct {
-	P unsafe.Pointer
-}
-
-func FrameClockPrivateGetType() gi.GType {
-	ret := _I.GetGType(55, "FrameClockPrivate")
-	return ret
-}
+// ignore private struct FrameClockPrivate, type of FrameClock is object
 
 // Struct FrameTimings
 type FrameTimings struct {
@@ -4703,7 +5511,7 @@ type FrameTimings struct {
 }
 
 func FrameTimingsGetType() gi.GType {
-	ret := _I.GetGType(56, "FrameTimings")
+	ret := _I.GetGType(55, "FrameTimings")
 	return ret
 }
 
@@ -4855,7 +5663,7 @@ const (
 )
 
 func FullscreenModeGetType() gi.GType {
-	ret := _I.GetGType(57, "FullscreenMode")
+	ret := _I.GetGType(56, "FullscreenMode")
 	return ret
 }
 
@@ -4870,7 +5678,7 @@ type IGLContext interface{ P_GLContext() unsafe.Pointer }
 
 func (v GLContext) P_GLContext() unsafe.Pointer { return v.P }
 func GLContextGetType() gi.GType {
-	ret := _I.GetGType(58, "GLContext")
+	ret := _I.GetGType(57, "GLContext")
 	return ret
 }
 
@@ -5183,7 +5991,7 @@ const (
 )
 
 func GLErrorGetType() gi.GType {
-	ret := _I.GetGType(59, "GLError")
+	ret := _I.GetGType(58, "GLError")
 	return ret
 }
 
@@ -5195,8 +6003,55 @@ type Geometry struct {
 const SizeOfStructGeometry = 56
 
 func GeometryGetType() gi.GType {
-	ret := _I.GetGType(60, "Geometry")
+	ret := _I.GetGType(59, "Geometry")
 	return ret
+}
+
+func (v Geometry) p() *C.GdkGeometry {
+	return (*C.GdkGeometry)(v.P)
+}
+func (v Geometry) MinWidth() (result int32) {
+	result = int32(v.p().min_width)
+	return
+}
+func (v Geometry) MinHeight() (result int32) {
+	result = int32(v.p().min_height)
+	return
+}
+func (v Geometry) MaxWidth() (result int32) {
+	result = int32(v.p().max_width)
+	return
+}
+func (v Geometry) MaxHeight() (result int32) {
+	result = int32(v.p().max_height)
+	return
+}
+func (v Geometry) BaseWidth() (result int32) {
+	result = int32(v.p().base_width)
+	return
+}
+func (v Geometry) BaseHeight() (result int32) {
+	result = int32(v.p().base_height)
+	return
+}
+func (v Geometry) WidthInc() (result int32) {
+	result = int32(v.p().width_inc)
+	return
+}
+func (v Geometry) HeightInc() (result int32) {
+	result = int32(v.p().height_inc)
+	return
+}
+func (v Geometry) MinAspect() (result float64) {
+	result = float64(v.p().min_aspect)
+	return
+}
+func (v Geometry) MaxAspect() (result float64) {
+	result = float64(v.p().max_aspect)
+	return
+}
+func (v Geometry) WinGravity() (result int /*TODO*/) {
+	return
 }
 
 // Enum GrabOwnership
@@ -5209,7 +6064,7 @@ const (
 )
 
 func GrabOwnershipGetType() gi.GType {
-	ret := _I.GetGType(61, "GrabOwnership")
+	ret := _I.GetGType(60, "GrabOwnership")
 	return ret
 }
 
@@ -5226,7 +6081,7 @@ const (
 )
 
 func GrabStatusGetType() gi.GType {
-	ret := _I.GetGType(62, "GrabStatus")
+	ret := _I.GetGType(61, "GrabStatus")
 	return ret
 }
 
@@ -5247,7 +6102,7 @@ const (
 )
 
 func GravityGetType() gi.GType {
-	ret := _I.GetGType(63, "Gravity")
+	ret := _I.GetGType(62, "Gravity")
 	return ret
 }
 
@@ -5261,7 +6116,7 @@ const (
 )
 
 func InputModeGetType() gi.GType {
-	ret := _I.GetGType(64, "InputMode")
+	ret := _I.GetGType(63, "InputMode")
 	return ret
 }
 
@@ -5281,7 +6136,7 @@ const (
 )
 
 func InputSourceGetType() gi.GType {
-	ret := _I.GetGType(65, "InputSource")
+	ret := _I.GetGType(64, "InputSource")
 	return ret
 }
 
@@ -5296,7 +6151,7 @@ type IKeymap interface{ P_Keymap() unsafe.Pointer }
 
 func (v Keymap) P_Keymap() unsafe.Pointer { return v.P }
 func KeymapGetType() gi.GType {
-	ret := _I.GetGType(66, "Keymap")
+	ret := _I.GetGType(65, "Keymap")
 	return ret
 }
 
@@ -5650,8 +6505,24 @@ type KeymapKey struct {
 const SizeOfStructKeymapKey = 12
 
 func KeymapKeyGetType() gi.GType {
-	ret := _I.GetGType(67, "KeymapKey")
+	ret := _I.GetGType(66, "KeymapKey")
 	return ret
+}
+
+func (v KeymapKey) p() *C.GdkKeymapKey {
+	return (*C.GdkKeymapKey)(v.P)
+}
+func (v KeymapKey) Keycode() (result uint32) {
+	result = uint32(v.p().keycode)
+	return
+}
+func (v KeymapKey) Group() (result int32) {
+	result = int32(v.p().group)
+	return
+}
+func (v KeymapKey) Level() (result int32) {
+	result = int32(v.p().level)
+	return
 }
 
 // Enum ModifierIntent
@@ -5668,7 +6539,7 @@ const (
 )
 
 func ModifierIntentGetType() gi.GType {
-	ret := _I.GetGType(68, "ModifierIntent")
+	ret := _I.GetGType(67, "ModifierIntent")
 	return ret
 }
 
@@ -5711,7 +6582,7 @@ const (
 )
 
 func ModifierTypeGetType() gi.GType {
-	ret := _I.GetGType(69, "ModifierType")
+	ret := _I.GetGType(68, "ModifierType")
 	return ret
 }
 
@@ -5726,7 +6597,7 @@ type IMonitor interface{ P_Monitor() unsafe.Pointer }
 
 func (v Monitor) P_Monitor() unsafe.Pointer { return v.P }
 func MonitorGetType() gi.GType {
-	ret := _I.GetGType(70, "Monitor")
+	ret := _I.GetGType(69, "Monitor")
 	return ret
 }
 
@@ -5939,7 +6810,7 @@ const (
 )
 
 func NotifyTypeGetType() gi.GType {
-	ret := _I.GetGType(71, "NotifyType")
+	ret := _I.GetGType(70, "NotifyType")
 	return ret
 }
 
@@ -5953,7 +6824,7 @@ const (
 )
 
 func OwnerChangeGetType() gi.GType {
-	ret := _I.GetGType(72, "OwnerChange")
+	ret := _I.GetGType(71, "OwnerChange")
 	return ret
 }
 
@@ -5965,8 +6836,20 @@ type Point struct {
 const SizeOfStructPoint = 8
 
 func PointGetType() gi.GType {
-	ret := _I.GetGType(73, "Point")
+	ret := _I.GetGType(72, "Point")
 	return ret
+}
+
+func (v Point) p() *C.GdkPoint {
+	return (*C.GdkPoint)(v.P)
+}
+func (v Point) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v Point) Y() (result int32) {
+	result = int32(v.p().y)
+	return
 }
 
 // Enum PropMode
@@ -5979,7 +6862,7 @@ const (
 )
 
 func PropModeGetType() gi.GType {
-	ret := _I.GetGType(74, "PropMode")
+	ret := _I.GetGType(73, "PropMode")
 	return ret
 }
 
@@ -5992,7 +6875,7 @@ const (
 )
 
 func PropertyStateGetType() gi.GType {
-	ret := _I.GetGType(75, "PropertyState")
+	ret := _I.GetGType(74, "PropertyState")
 	return ret
 }
 
@@ -6004,7 +6887,7 @@ type RGBA struct {
 const SizeOfStructRGBA = 32
 
 func RGBAGetType() gi.GType {
-	ret := _I.GetGType(76, "RGBA")
+	ret := _I.GetGType(75, "RGBA")
 	return ret
 }
 
@@ -6119,6 +7002,26 @@ func (v RGBA) ToString() (result string) {
 	return
 }
 
+func (v RGBA) p() *C.GdkRGBA {
+	return (*C.GdkRGBA)(v.P)
+}
+func (v RGBA) Red() (result float64) {
+	result = float64(v.p().red)
+	return
+}
+func (v RGBA) Green() (result float64) {
+	result = float64(v.p().green)
+	return
+}
+func (v RGBA) Blue() (result float64) {
+	result = float64(v.p().blue)
+	return
+}
+func (v RGBA) Alpha() (result float64) {
+	result = float64(v.p().alpha)
+	return
+}
+
 // Struct Rectangle
 type Rectangle struct {
 	P unsafe.Pointer
@@ -6127,7 +7030,7 @@ type Rectangle struct {
 const SizeOfStructRectangle = 16
 
 func RectangleGetType() gi.GType {
-	ret := _I.GetGType(77, "Rectangle")
+	ret := _I.GetGType(76, "Rectangle")
 	return ret
 }
 
@@ -6195,6 +7098,26 @@ func (v Rectangle) Union(src2 Rectangle, dest Rectangle) {
 	iv.Call(args, nil, nil)
 }
 
+func (v Rectangle) p() *C.GdkRectangle {
+	return (*C.GdkRectangle)(v.P)
+}
+func (v Rectangle) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v Rectangle) Y() (result int32) {
+	result = int32(v.p().y)
+	return
+}
+func (v Rectangle) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v Rectangle) Height() (result int32) {
+	result = int32(v.p().height)
+	return
+}
+
 // Object Screen
 type Screen struct {
 	g.Object
@@ -6206,7 +7129,7 @@ type IScreen interface{ P_Screen() unsafe.Pointer }
 
 func (v Screen) P_Screen() unsafe.Pointer { return v.P }
 func ScreenGetType() gi.GType {
-	ret := _I.GetGType(78, "Screen")
+	ret := _I.GetGType(77, "Screen")
 	return ret
 }
 
@@ -6915,7 +7838,7 @@ const (
 )
 
 func ScrollDirectionGetType() gi.GType {
-	ret := _I.GetGType(79, "ScrollDirection")
+	ret := _I.GetGType(78, "ScrollDirection")
 	return ret
 }
 
@@ -6930,7 +7853,7 @@ type ISeat interface{ P_Seat() unsafe.Pointer }
 
 func (v Seat) P_Seat() unsafe.Pointer { return v.P }
 func SeatGetType() gi.GType {
-	ret := _I.GetGType(80, "Seat")
+	ret := _I.GetGType(79, "Seat")
 	return ret
 }
 
@@ -7111,7 +8034,7 @@ const (
 )
 
 func SeatCapabilitiesGetType() gi.GType {
-	ret := _I.GetGType(81, "SeatCapabilities")
+	ret := _I.GetGType(80, "SeatCapabilities")
 	return ret
 }
 
@@ -7136,7 +8059,7 @@ const (
 )
 
 func SettingActionGetType() gi.GType {
-	ret := _I.GetGType(82, "SettingAction")
+	ret := _I.GetGType(81, "SettingAction")
 	return ret
 }
 
@@ -7152,7 +8075,7 @@ const (
 )
 
 func StatusGetType() gi.GType {
-	ret := _I.GetGType(83, "Status")
+	ret := _I.GetGType(82, "Status")
 	return ret
 }
 
@@ -7169,7 +8092,7 @@ const (
 )
 
 func SubpixelLayoutGetType() gi.GType {
-	ret := _I.GetGType(84, "SubpixelLayout")
+	ret := _I.GetGType(83, "SubpixelLayout")
 	return ret
 }
 
@@ -7181,8 +8104,19 @@ type TimeCoord struct {
 const SizeOfStructTimeCoord = 1032
 
 func TimeCoordGetType() gi.GType {
-	ret := _I.GetGType(85, "TimeCoord")
+	ret := _I.GetGType(84, "TimeCoord")
 	return ret
+}
+
+func (v TimeCoord) p() *C.GdkTimeCoord {
+	return (*C.GdkTimeCoord)(v.P)
+}
+func (v TimeCoord) Time() (result uint32) {
+	result = uint32(v.p().time)
+	return
+}
+func (v TimeCoord) Axes() (result int /*TODO*/) {
+	return
 }
 
 // Enum TouchpadGesturePhase
@@ -7196,7 +8130,7 @@ const (
 )
 
 func TouchpadGesturePhaseGetType() gi.GType {
-	ret := _I.GetGType(86, "TouchpadGesturePhase")
+	ret := _I.GetGType(85, "TouchpadGesturePhase")
 	return ret
 }
 
@@ -7210,7 +8144,7 @@ const (
 )
 
 func VisibilityStateGetType() gi.GType {
-	ret := _I.GetGType(87, "VisibilityState")
+	ret := _I.GetGType(86, "VisibilityState")
 	return ret
 }
 
@@ -7225,7 +8159,7 @@ type IVisual interface{ P_Visual() unsafe.Pointer }
 
 func (v Visual) P_Visual() unsafe.Pointer { return v.P }
 func VisualGetType() gi.GType {
-	ret := _I.GetGType(88, "Visual")
+	ret := _I.GetGType(87, "Visual")
 	return ret
 }
 
@@ -7578,7 +8512,7 @@ const (
 )
 
 func VisualTypeGetType() gi.GType {
-	ret := _I.GetGType(89, "VisualType")
+	ret := _I.GetGType(88, "VisualType")
 	return ret
 }
 
@@ -7596,7 +8530,7 @@ const (
 )
 
 func WMDecorationGetType() gi.GType {
-	ret := _I.GetGType(90, "WMDecoration")
+	ret := _I.GetGType(89, "WMDecoration")
 	return ret
 }
 
@@ -7613,7 +8547,7 @@ const (
 )
 
 func WMFunctionGetType() gi.GType {
-	ret := _I.GetGType(91, "WMFunction")
+	ret := _I.GetGType(90, "WMFunction")
 	return ret
 }
 
@@ -7628,7 +8562,7 @@ type IWindow interface{ P_Window() unsafe.Pointer }
 
 func (v Window) P_Window() unsafe.Pointer { return v.P }
 func WindowGetType() gi.GType {
-	ret := _I.GetGType(92, "Window")
+	ret := _I.GetGType(91, "Window")
 	return ret
 }
 
@@ -10675,8 +11609,60 @@ type WindowAttr struct {
 const SizeOfStructWindowAttr = 80
 
 func WindowAttrGetType() gi.GType {
-	ret := _I.GetGType(93, "WindowAttr")
+	ret := _I.GetGType(92, "WindowAttr")
 	return ret
+}
+
+func (v WindowAttr) p() *C.GdkWindowAttr {
+	return (*C.GdkWindowAttr)(v.P)
+}
+func (v WindowAttr) Title() (result int /*TODO*/) {
+	return
+}
+func (v WindowAttr) EventMask() (result int32) {
+	result = int32(v.p().event_mask)
+	return
+}
+func (v WindowAttr) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v WindowAttr) Y() (result int32) {
+	result = int32(v.p().y)
+	return
+}
+func (v WindowAttr) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v WindowAttr) Height() (result int32) {
+	result = int32(v.p().height)
+	return
+}
+func (v WindowAttr) Wclass() (result int /*TODO*/) {
+	return
+}
+func (v WindowAttr) Visual() (result int /*TODO*/) {
+	return
+}
+func (v WindowAttr) WindowType() (result int /*TODO*/) {
+	return
+}
+func (v WindowAttr) Cursor() (result int /*TODO*/) {
+	return
+}
+func (v WindowAttr) WmclassName() (result int /*TODO*/) {
+	return
+}
+func (v WindowAttr) WmclassClass() (result int /*TODO*/) {
+	return
+}
+func (v WindowAttr) OverrideRedirect() (result bool) {
+	result = gi.Int2Bool(int(v.p().override_redirect))
+	return
+}
+func (v WindowAttr) TypeHint() (result int /*TODO*/) {
+	return
 }
 
 // Flags WindowAttributesType
@@ -10694,7 +11680,7 @@ const (
 )
 
 func WindowAttributesTypeGetType() gi.GType {
-	ret := _I.GetGType(94, "WindowAttributesType")
+	ret := _I.GetGType(93, "WindowAttributesType")
 	return ret
 }
 
@@ -10726,7 +11712,7 @@ const (
 )
 
 func WindowEdgeGetType() gi.GType {
-	ret := _I.GetGType(95, "WindowEdge")
+	ret := _I.GetGType(94, "WindowEdge")
 	return ret
 }
 
@@ -10746,7 +11732,7 @@ const (
 )
 
 func WindowHintsGetType() gi.GType {
-	ret := _I.GetGType(96, "WindowHints")
+	ret := _I.GetGType(95, "WindowHints")
 	return ret
 }
 
@@ -10767,7 +11753,7 @@ type WindowRedirect struct {
 }
 
 func WindowRedirectGetType() gi.GType {
-	ret := _I.GetGType(97, "WindowRedirect")
+	ret := _I.GetGType(96, "WindowRedirect")
 	return ret
 }
 
@@ -10795,7 +11781,7 @@ const (
 )
 
 func WindowStateGetType() gi.GType {
-	ret := _I.GetGType(98, "WindowState")
+	ret := _I.GetGType(97, "WindowState")
 	return ret
 }
 
@@ -10813,7 +11799,7 @@ const (
 )
 
 func WindowTypeGetType() gi.GType {
-	ret := _I.GetGType(99, "WindowType")
+	ret := _I.GetGType(98, "WindowType")
 	return ret
 }
 
@@ -10838,7 +11824,7 @@ const (
 )
 
 func WindowTypeHintGetType() gi.GType {
-	ret := _I.GetGType(100, "WindowTypeHint")
+	ret := _I.GetGType(99, "WindowTypeHint")
 	return ret
 }
 
@@ -10851,7 +11837,7 @@ const (
 )
 
 func WindowWindowClassGetType() gi.GType {
-	ret := _I.GetGType(101, "WindowWindowClass")
+	ret := _I.GetGType(100, "WindowWindowClass")
 	return ret
 }
 

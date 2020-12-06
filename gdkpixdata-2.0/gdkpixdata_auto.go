@@ -141,6 +141,37 @@ func (v Pixdata) ToCsource(name string, dump_type PixdataDumpTypeFlags) (result 
 	return
 }
 
+func (v Pixdata) p() *C.GdkPixdata {
+	return (*C.GdkPixdata)(v.P)
+}
+func (v Pixdata) Magic() (result uint32) {
+	result = uint32(v.p().magic)
+	return
+}
+func (v Pixdata) Length() (result int32) {
+	result = int32(v.p().length)
+	return
+}
+func (v Pixdata) PixdataType() (result uint32) {
+	result = uint32(v.p().pixdata_type)
+	return
+}
+func (v Pixdata) Rowstride() (result uint32) {
+	result = uint32(v.p().rowstride)
+	return
+}
+func (v Pixdata) Width() (result uint32) {
+	result = uint32(v.p().width)
+	return
+}
+func (v Pixdata) Height() (result uint32) {
+	result = uint32(v.p().height)
+	return
+}
+func (v Pixdata) PixelData() (result int /*TODO*/) {
+	return
+}
+
 // Flags PixdataDumpType
 type PixdataDumpTypeFlags int
 

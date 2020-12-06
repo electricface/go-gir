@@ -23,6 +23,11 @@
 
 package gom
 
+/*
+#cgo pkg-config: gom-1.0
+#include <gom/gom.h>
+*/
+import "C"
 import "github.com/linuxdeepin/go-gir/g-2.0"
 import "github.com/linuxdeepin/go-gir/gi"
 import "log"
@@ -338,15 +343,7 @@ func CallAdapterCallback(fn AdapterCallback, result unsafe.Pointer, args []unsaf
 
 // ignore GType struct AdapterClass
 
-// Struct AdapterPrivate
-type AdapterPrivate struct {
-	P unsafe.Pointer
-}
-
-func AdapterPrivateGetType() gi.GType {
-	ret := _I.GetGType(1, "AdapterPrivate")
-	return ret
-}
+// ignore private struct AdapterPrivate, type of Adapter is object
 
 // Object Command
 type Command struct {
@@ -359,7 +356,7 @@ type ICommand interface{ P_Command() unsafe.Pointer }
 
 func (v Command) P_Command() unsafe.Pointer { return v.P }
 func CommandGetType() gi.GType {
-	ret := _I.GetGType(2, "Command")
+	ret := _I.GetGType(1, "Command")
 	return ret
 }
 
@@ -609,7 +606,7 @@ type ICommandBuilder interface{ P_CommandBuilder() unsafe.Pointer }
 
 func (v CommandBuilder) P_CommandBuilder() unsafe.Pointer { return v.P }
 func CommandBuilderGetType() gi.GType {
-	ret := _I.GetGType(3, "CommandBuilder")
+	ret := _I.GetGType(2, "CommandBuilder")
 	return ret
 }
 
@@ -740,27 +737,11 @@ func (v CommandBuilder) BuildUpdate(resource IResource) (result Command) {
 
 // ignore GType struct CommandBuilderClass
 
-// Struct CommandBuilderPrivate
-type CommandBuilderPrivate struct {
-	P unsafe.Pointer
-}
-
-func CommandBuilderPrivateGetType() gi.GType {
-	ret := _I.GetGType(4, "CommandBuilderPrivate")
-	return ret
-}
+// ignore private struct CommandBuilderPrivate, type of CommandBuilder is object
 
 // ignore GType struct CommandClass
 
-// Struct CommandPrivate
-type CommandPrivate struct {
-	P unsafe.Pointer
-}
-
-func CommandPrivateGetType() gi.GType {
-	ret := _I.GetGType(5, "CommandPrivate")
-	return ret
-}
+// ignore private struct CommandPrivate, type of Command is object
 
 // Object Cursor
 type Cursor struct {
@@ -773,7 +754,7 @@ type ICursor interface{ P_Cursor() unsafe.Pointer }
 
 func (v Cursor) P_Cursor() unsafe.Pointer { return v.P }
 func CursorGetType() gi.GType {
-	ret := _I.GetGType(6, "Cursor")
+	ret := _I.GetGType(3, "Cursor")
 	return ret
 }
 
@@ -1023,15 +1004,7 @@ func (v Cursor) Next() (result bool) {
 
 // ignore GType struct CursorClass
 
-// Struct CursorPrivate
-type CursorPrivate struct {
-	P unsafe.Pointer
-}
-
-func CursorPrivateGetType() gi.GType {
-	ret := _I.GetGType(7, "CursorPrivate")
-	return ret
-}
+// ignore private struct CursorPrivate, type of Cursor is object
 
 // Enum Error
 type ErrorEnum int
@@ -1045,7 +1018,7 @@ const (
 )
 
 func ErrorGetType() gi.GType {
-	ret := _I.GetGType(8, "Error")
+	ret := _I.GetGType(4, "Error")
 	return ret
 }
 
@@ -1060,7 +1033,7 @@ type IFilter interface{ P_Filter() unsafe.Pointer }
 
 func (v Filter) P_Filter() unsafe.Pointer { return v.P }
 func FilterGetType() gi.GType {
-	ret := _I.GetGType(9, "Filter")
+	ret := _I.GetGType(5, "Filter")
 	return ret
 }
 
@@ -1534,19 +1507,11 @@ const (
 )
 
 func FilterModeGetType() gi.GType {
-	ret := _I.GetGType(10, "FilterMode")
+	ret := _I.GetGType(6, "FilterMode")
 	return ret
 }
 
-// Struct FilterPrivate
-type FilterPrivate struct {
-	P unsafe.Pointer
-}
-
-func FilterPrivateGetType() gi.GType {
-	ret := _I.GetGType(11, "FilterPrivate")
-	return ret
-}
+// ignore private struct FilterPrivate, type of Filter is object
 
 // Object Repository
 type Repository struct {
@@ -1559,7 +1524,7 @@ type IRepository interface{ P_Repository() unsafe.Pointer }
 
 func (v Repository) P_Repository() unsafe.Pointer { return v.P }
 func RepositoryGetType() gi.GType {
-	ret := _I.GetGType(12, "Repository")
+	ret := _I.GetGType(7, "Repository")
 	return ret
 }
 
@@ -2085,15 +2050,7 @@ func CallRepositoryMigrator(fn RepositoryMigrator, result unsafe.Pointer, args [
 	*(*int32)(result) = int32(gi.Bool2Int(fnRet))
 }
 
-// Struct RepositoryPrivate
-type RepositoryPrivate struct {
-	P unsafe.Pointer
-}
-
-func RepositoryPrivateGetType() gi.GType {
-	ret := _I.GetGType(13, "RepositoryPrivate")
-	return ret
-}
+// ignore private struct RepositoryPrivate, type of Repository is object
 
 // Object Resource
 type Resource struct {
@@ -2106,7 +2063,7 @@ type IResource interface{ P_Resource() unsafe.Pointer }
 
 func (v Resource) P_Resource() unsafe.Pointer { return v.P }
 func ResourceGetType() gi.GType {
-	ret := _I.GetGType(14, "Resource")
+	ret := _I.GetGType(8, "Resource")
 	return ret
 }
 
@@ -2463,7 +2420,7 @@ type ResourceClass struct {
 const SizeOfStructResourceClass = 264
 
 func ResourceClassGetType() gi.GType {
-	ret := _I.GetGType(15, "ResourceClass")
+	ret := _I.GetGType(9, "ResourceClass")
 	return ret
 }
 
@@ -2673,6 +2630,19 @@ func (v ResourceClass) SetUnique(property_name string) {
 	gi.Free(c_property_name)
 }
 
+func (v ResourceClass) p() *C.GomResourceClass {
+	return (*C.GomResourceClass)(v.P)
+}
+func (v ResourceClass) ParentClass() (result int /*TODO*/) {
+	return
+}
+func (v ResourceClass) PrimaryKey() (result int /*TODO*/) {
+	return
+}
+func (v ResourceClass) Table() (result int /*TODO*/) {
+	return
+}
+
 type ResourceFromBytesFunc func(bytes g.Bytes, value g.Value)
 
 func CallResourceFromBytesFunc(fn ResourceFromBytesFunc, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -2695,7 +2665,7 @@ type IResourceGroup interface{ P_ResourceGroup() unsafe.Pointer }
 
 func (v ResourceGroup) P_ResourceGroup() unsafe.Pointer { return v.P }
 func ResourceGroupGetType() gi.GType {
-	ret := _I.GetGType(16, "ResourceGroup")
+	ret := _I.GetGType(10, "ResourceGroup")
 	return ret
 }
 
@@ -3041,25 +3011,9 @@ func (v ResourceGroup) WriteSync() (result bool, err error) {
 
 // ignore GType struct ResourceGroupClass
 
-// Struct ResourceGroupPrivate
-type ResourceGroupPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct ResourceGroupPrivate, type of ResourceGroup is object
 
-func ResourceGroupPrivateGetType() gi.GType {
-	ret := _I.GetGType(17, "ResourceGroupPrivate")
-	return ret
-}
-
-// Struct ResourcePrivate
-type ResourcePrivate struct {
-	P unsafe.Pointer
-}
-
-func ResourcePrivateGetType() gi.GType {
-	ret := _I.GetGType(18, "ResourcePrivate")
-	return ret
-}
+// ignore private struct ResourcePrivate, type of Resource is object
 
 type ResourceToBytesFunc func(value g.Value) (result g.Bytes)
 
@@ -3083,7 +3037,7 @@ type ISorting interface{ P_Sorting() unsafe.Pointer }
 
 func (v Sorting) P_Sorting() unsafe.Pointer { return v.P }
 func SortingGetType() gi.GType {
-	ret := _I.GetGType(19, "Sorting")
+	ret := _I.GetGType(11, "Sorting")
 	return ret
 }
 
@@ -3143,19 +3097,11 @@ const (
 )
 
 func SortingModeGetType() gi.GType {
-	ret := _I.GetGType(20, "SortingMode")
+	ret := _I.GetGType(12, "SortingMode")
 	return ret
 }
 
-// Struct SortingPrivate
-type SortingPrivate struct {
-	P unsafe.Pointer
-}
-
-func SortingPrivateGetType() gi.GType {
-	ret := _I.GetGType(21, "SortingPrivate")
-	return ret
-}
+// ignore private struct SortingPrivate, type of Sorting is object
 
 // gom_error_quark
 //

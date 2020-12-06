@@ -56,6 +56,17 @@ func ArrayGetType() gi.GType {
 	return ret
 }
 
+func (v Array) p() *C.GArray {
+	return (*C.GArray)(v.P)
+}
+func (v Array) Data() (result int /*TODO*/) {
+	return
+}
+func (v Array) Len() (result uint32) {
+	result = uint32(v.p().len)
+	return
+}
+
 // Flags AsciiType
 type AsciiTypeFlags int
 
@@ -1607,6 +1618,17 @@ func ByteArrayUnref1(array ByteArray) {
 	iv.Call(args, nil, nil)
 }
 
+func (v ByteArray) p() *C.GByteArray {
+	return (*C.GByteArray)(v.P)
+}
+func (v ByteArray) Data() (result int /*TODO*/) {
+	return
+}
+func (v ByteArray) Len() (result uint32) {
+	result = uint32(v.p().len)
+	return
+}
+
 // Struct Bytes
 type Bytes struct {
 	P unsafe.Pointer
@@ -2157,6 +2179,17 @@ func (v Cond) WaitUntil(mutex Mutex, end_time int64) (result bool) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Bool()
+	return
+}
+
+func (v Cond) p() *C.GCond {
+	return (*C.GCond)(v.P)
+}
+func (v Cond) P0() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().p)
+	return
+}
+func (v Cond) I() (result int /*TODO*/) {
 	return
 }
 
@@ -3133,6 +3166,22 @@ func DateValidYear1(year uint16) (result bool) {
 	result = ret.Bool()
 	return
 }
+
+func (v Date) p() *C.GDate {
+	return (*C.GDate)(v.P)
+}
+
+// TODO: ignore struct Date field julian_days, bits(=32) > 0
+
+// TODO: ignore struct Date field julian, bits(=1) > 0
+
+// TODO: ignore struct Date field dmy, bits(=1) > 0
+
+// TODO: ignore struct Date field day, bits(=6) > 0
+
+// TODO: ignore struct Date field month, bits(=4) > 0
+
+// TODO: ignore struct Date field year, bits(=16) > 0
 
 // Enum DateDMY
 type DateDMYEnum int
@@ -4234,6 +4283,17 @@ func DebugKeyGetType() gi.GType {
 	return ret
 }
 
+func (v DebugKey) p() *C.GDebugKey {
+	return (*C.GDebugKey)(v.P)
+}
+func (v DebugKey) Key() (result int /*TODO*/) {
+	return
+}
+func (v DebugKey) Value() (result uint32) {
+	result = uint32(v.p().value)
+	return
+}
+
 type DestroyNotify func(data unsafe.Pointer)
 
 func CallDestroyNotify(fn DestroyNotify, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -4449,6 +4509,21 @@ func (v Error) Matches(domain uint32, code int32) (result bool) {
 	var ret gi.Argument
 	iv.Call(args, &ret, nil)
 	result = ret.Bool()
+	return
+}
+
+func (v Error) p() *C.GError {
+	return (*C.GError)(v.P)
+}
+func (v Error) Domain() (result uint32) {
+	result = uint32(v.p().domain)
+	return
+}
+func (v Error) Code() (result int32) {
+	result = int32(v.p().code)
+	return
+}
+func (v Error) Message() (result int /*TODO*/) {
 	return
 }
 
@@ -5022,6 +5097,34 @@ func (v HashTableIter) Steal() {
 	iv.Call(args, nil, nil)
 }
 
+func (v HashTableIter) p() *C.GHashTableIter {
+	return (*C.GHashTableIter)(v.P)
+}
+func (v HashTableIter) Dummy1() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy1)
+	return
+}
+func (v HashTableIter) Dummy2() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy2)
+	return
+}
+func (v HashTableIter) Dummy3() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy3)
+	return
+}
+func (v HashTableIter) Dummy4() (result int32) {
+	result = int32(v.p().dummy4)
+	return
+}
+func (v HashTableIter) Dummy5() (result bool) {
+	result = gi.Int2Bool(int(v.p().dummy5))
+	return
+}
+func (v HashTableIter) Dummy6() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy6)
+	return
+}
+
 // Struct Hmac
 type Hmac struct {
 	P unsafe.Pointer
@@ -5250,6 +5353,39 @@ func HookUnref1(hook_list HookList, hook Hook) {
 	iv.Call(args, nil, nil)
 }
 
+func (v Hook) p() *C.GHook {
+	return (*C.GHook)(v.P)
+}
+func (v Hook) Data() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data)
+	return
+}
+func (v Hook) Next() (result int /*TODO*/) {
+	return
+}
+func (v Hook) Prev() (result int /*TODO*/) {
+	return
+}
+func (v Hook) RefCount() (result uint32) {
+	result = uint32(v.p().ref_count)
+	return
+}
+func (v Hook) HookId() (result uint64) {
+	result = uint64(v.p().hook_id)
+	return
+}
+func (v Hook) Flags() (result uint32) {
+	result = uint32(v.p().flags)
+	return
+}
+func (v Hook) Func() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p()._func)
+	return
+}
+func (v Hook) Destroy() (result int /*TODO*/) {
+	return
+}
+
 type HookCheckFunc func(data unsafe.Pointer) (result bool)
 
 func CallHookCheckFunc(fn HookCheckFunc, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -5403,6 +5539,32 @@ func (v HookList) InvokeCheck(may_recurse bool) {
 	arg_may_recurse := gi.NewBoolArgument(may_recurse)
 	args := []gi.Argument{arg_v, arg_may_recurse}
 	iv.Call(args, nil, nil)
+}
+
+func (v HookList) p() *C.GHookList {
+	return (*C.GHookList)(v.P)
+}
+func (v HookList) SeqId() (result uint64) {
+	result = uint64(v.p().seq_id)
+	return
+}
+
+// TODO: ignore struct HookList field hook_size, bits(=16) > 0
+
+// TODO: ignore struct HookList field is_setup, bits(=1) > 0
+
+func (v HookList) Hooks() (result int /*TODO*/) {
+	return
+}
+func (v HookList) Dummy3() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy3)
+	return
+}
+func (v HookList) FinalizeHook() (result int /*TODO*/) {
+	return
+}
+func (v HookList) Dummy() (result int /*TODO*/) {
+	return
 }
 
 type HookMarshaller func(hook Hook, marshal_data unsafe.Pointer)
@@ -6189,6 +6351,72 @@ func IOChannelErrorQuark1() (result uint32) {
 	return
 }
 
+func (v IOChannel) p() *C.GIOChannel {
+	return (*C.GIOChannel)(v.P)
+}
+func (v IOChannel) RefCount() (result int32) {
+	result = int32(v.p().ref_count)
+	return
+}
+func (v IOChannel) Funcs() (result int /*TODO*/) {
+	return
+}
+func (v IOChannel) Encoding() (result int /*TODO*/) {
+	return
+}
+func (v IOChannel) ReadCd() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().read_cd)
+	return
+}
+func (v IOChannel) WriteCd() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().write_cd)
+	return
+}
+func (v IOChannel) LineTerm() (result int /*TODO*/) {
+	return
+}
+func (v IOChannel) LineTermLen() (result uint32) {
+	result = uint32(v.p().line_term_len)
+	return
+}
+func (v IOChannel) BufSize() (result uint64) {
+	result = uint64(v.p().buf_size)
+	return
+}
+func (v IOChannel) ReadBuf() (result int /*TODO*/) {
+	return
+}
+func (v IOChannel) EncodedReadBuf() (result int /*TODO*/) {
+	return
+}
+func (v IOChannel) WriteBuf() (result int /*TODO*/) {
+	return
+}
+func (v IOChannel) PartialWriteBuf() (result int /*TODO*/) {
+	return
+}
+
+// TODO: ignore struct IOChannel field use_buffer, bits(=1) > 0
+
+// TODO: ignore struct IOChannel field do_encode, bits(=1) > 0
+
+// TODO: ignore struct IOChannel field close_on_unref, bits(=1) > 0
+
+// TODO: ignore struct IOChannel field is_readable, bits(=1) > 0
+
+// TODO: ignore struct IOChannel field is_writeable, bits(=1) > 0
+
+// TODO: ignore struct IOChannel field is_seekable, bits(=1) > 0
+
+func (v IOChannel) Reserved1() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().reserved1)
+	return
+}
+func (v IOChannel) Reserved2() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().reserved2)
+	return
+}
+
 // Enum IOChannelError
 type IOChannelErrorEnum int
 
@@ -6284,6 +6512,34 @@ const SizeOfStructIOFuncs = 64
 func IOFuncsGetType() gi.GType {
 	ret := _I.GetGType(37, "IOFuncs")
 	return ret
+}
+
+func (v IOFuncs) p() *C.GIOFuncs {
+	return (*C.GIOFuncs)(v.P)
+}
+func (v IOFuncs) IoRead() (result int /*TODO*/) {
+	return
+}
+func (v IOFuncs) IoWrite() (result int /*TODO*/) {
+	return
+}
+func (v IOFuncs) IoSeek() (result int /*TODO*/) {
+	return
+}
+func (v IOFuncs) IoClose() (result int /*TODO*/) {
+	return
+}
+func (v IOFuncs) IoCreateWatch() (result int /*TODO*/) {
+	return
+}
+func (v IOFuncs) IoFree() (result int /*TODO*/) {
+	return
+}
+func (v IOFuncs) IoSetFlags() (result int /*TODO*/) {
+	return
+}
+func (v IOFuncs) IoGetFlags() (result int /*TODO*/) {
+	return
 }
 
 // Enum IOStatus
@@ -7695,6 +7951,20 @@ func ListGetType() gi.GType {
 	return ret
 }
 
+func (v List) p() *C.GList {
+	return (*C.GList)(v.P)
+}
+func (v List) Data() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data)
+	return
+}
+func (v List) Next() (result int /*TODO*/) {
+	return
+}
+func (v List) Prev() (result int /*TODO*/) {
+	return
+}
+
 // Struct LogField
 type LogField struct {
 	P unsafe.Pointer
@@ -7705,6 +7975,21 @@ const SizeOfStructLogField = 24
 func LogFieldGetType() gi.GType {
 	ret := _I.GetGType(43, "LogField")
 	return ret
+}
+
+func (v LogField) p() *C.GLogField {
+	return (*C.GLogField)(v.P)
+}
+func (v LogField) Key() (result int /*TODO*/) {
+	return
+}
+func (v LogField) Value() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().value)
+	return
+}
+func (v LogField) Length() (result int64) {
+	result = int64(v.p().length)
+	return
 }
 
 type LogFunc func(log_domain string, log_level LogLevelFlags, message string)
@@ -8832,6 +9117,25 @@ func MarkupParserGetType() gi.GType {
 	return ret
 }
 
+func (v MarkupParser) p() *C.GMarkupParser {
+	return (*C.GMarkupParser)(v.P)
+}
+func (v MarkupParser) StartElement() (result int /*TODO*/) {
+	return
+}
+func (v MarkupParser) EndElement() (result int /*TODO*/) {
+	return
+}
+func (v MarkupParser) Text() (result int /*TODO*/) {
+	return
+}
+func (v MarkupParser) Passthrough() (result int /*TODO*/) {
+	return
+}
+func (v MarkupParser) Error() (result int /*TODO*/) {
+	return
+}
+
 // Struct MatchInfo
 type MatchInfo struct {
 	P unsafe.Pointer
@@ -9158,6 +9462,28 @@ func MemVTableGetType() gi.GType {
 	return ret
 }
 
+func (v MemVTable) p() *C.GMemVTable {
+	return (*C.GMemVTable)(v.P)
+}
+func (v MemVTable) Malloc() (result int /*TODO*/) {
+	return
+}
+func (v MemVTable) Realloc() (result int /*TODO*/) {
+	return
+}
+func (v MemVTable) Free() (result int /*TODO*/) {
+	return
+}
+func (v MemVTable) Calloc() (result int /*TODO*/) {
+	return
+}
+func (v MemVTable) TryMalloc() (result int /*TODO*/) {
+	return
+}
+func (v MemVTable) TryRealloc() (result int /*TODO*/) {
+	return
+}
+
 // Union Mutex
 type Mutex struct {
 	P unsafe.Pointer
@@ -9429,6 +9755,26 @@ func (v Node) Unlink() {
 	iv.Call(args, nil, nil)
 }
 
+func (v Node) p() *C.GNode {
+	return (*C.GNode)(v.P)
+}
+func (v Node) Data() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data)
+	return
+}
+func (v Node) Next() (result int /*TODO*/) {
+	return
+}
+func (v Node) Prev() (result int /*TODO*/) {
+	return
+}
+func (v Node) Parent() (result int /*TODO*/) {
+	return
+}
+func (v Node) Children() (result int /*TODO*/) {
+	return
+}
+
 type NodeForeachFunc func(node Node, data unsafe.Pointer)
 
 func CallNodeForeachFunc(fn NodeForeachFunc, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -9532,6 +9878,17 @@ func OnceInitLeave1(location unsafe.Pointer, result uint64) {
 	arg_result := gi.NewUint64Argument(result)
 	args := []gi.Argument{arg_location, arg_result}
 	iv.Call(args, nil, nil)
+}
+
+func (v Once) p() *C.GOnce {
+	return (*C.GOnce)(v.P)
+}
+func (v Once) Status() (result int /*TODO*/) {
+	return
+}
+func (v Once) Retval() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().retval)
+	return
 }
 
 // Enum OnceStatus
@@ -9980,6 +10337,34 @@ func OptionEntryGetType() gi.GType {
 	return ret
 }
 
+func (v OptionEntry) p() *C.GOptionEntry {
+	return (*C.GOptionEntry)(v.P)
+}
+func (v OptionEntry) LongName() (result int /*TODO*/) {
+	return
+}
+func (v OptionEntry) ShortName() (result int8) {
+	result = int8(v.p().short_name)
+	return
+}
+func (v OptionEntry) Flags() (result int32) {
+	result = int32(v.p().flags)
+	return
+}
+func (v OptionEntry) Arg() (result int /*TODO*/) {
+	return
+}
+func (v OptionEntry) ArgData() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().arg_data)
+	return
+}
+func (v OptionEntry) Description() (result int /*TODO*/) {
+	return
+}
+func (v OptionEntry) ArgDescription() (result int /*TODO*/) {
+	return
+}
+
 // Enum OptionError
 type OptionErrorEnum int
 
@@ -10261,6 +10646,22 @@ func PollFDGetType() gi.GType {
 	return ret
 }
 
+func (v PollFD) p() *C.GPollFD {
+	return (*C.GPollFD)(v.P)
+}
+func (v PollFD) Fd() (result int32) {
+	result = int32(v.p().fd)
+	return
+}
+func (v PollFD) Events() (result uint16) {
+	result = uint16(v.p().events)
+	return
+}
+func (v PollFD) Revents() (result uint16) {
+	result = uint16(v.p().revents)
+	return
+}
+
 type PollFunc func(ufds PollFD, nfsd uint32, timeout_ int32) (result int32)
 
 func CallPollFunc(fn PollFunc, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -10346,6 +10747,20 @@ func (v Private) Set(value unsafe.Pointer) {
 	iv.Call(args, nil, nil)
 }
 
+func (v Private) p() *C.GPrivate {
+	return (*C.GPrivate)(v.P)
+}
+func (v Private) P0() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().p)
+	return
+}
+func (v Private) Notify() (result int /*TODO*/) {
+	return
+}
+func (v Private) Future() (result int /*TODO*/) {
+	return
+}
+
 // Struct PtrArray
 type PtrArray struct {
 	P unsafe.Pointer
@@ -10356,6 +10771,18 @@ const SizeOfStructPtrArray = 16
 func PtrArrayGetType() gi.GType {
 	ret := _I.GetGType(71, "PtrArray")
 	return ret
+}
+
+func (v PtrArray) p() *C.GPtrArray {
+	return (*C.GPtrArray)(v.P)
+}
+func (v PtrArray) Pdata() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().pdata)
+	return
+}
+func (v PtrArray) Len() (result uint32) {
+	result = uint32(v.p().len)
+	return
 }
 
 // Struct Queue
@@ -10710,6 +11137,20 @@ func (v Queue) Reverse() {
 	iv.Call(args, nil, nil)
 }
 
+func (v Queue) p() *C.GQueue {
+	return (*C.GQueue)(v.P)
+}
+func (v Queue) Head() (result int /*TODO*/) {
+	return
+}
+func (v Queue) Tail() (result int /*TODO*/) {
+	return
+}
+func (v Queue) Length() (result uint32) {
+	result = uint32(v.p().length)
+	return
+}
+
 // Struct RWLock
 type RWLock struct {
 	P unsafe.Pointer
@@ -10834,6 +11275,17 @@ func (v RWLock) WriterUnlock() {
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
 	iv.Call(args, nil, nil)
+}
+
+func (v RWLock) p() *C.GRWLock {
+	return (*C.GRWLock)(v.P)
+}
+func (v RWLock) P0() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().p)
+	return
+}
+func (v RWLock) I() (result int /*TODO*/) {
+	return
 }
 
 // Struct Rand
@@ -11058,6 +11510,17 @@ func (v RecMutex) Unlock() {
 	arg_v := gi.NewPointerArgument(v.P)
 	args := []gi.Argument{arg_v}
 	iv.Call(args, nil, nil)
+}
+
+func (v RecMutex) p() *C.GRecMutex {
+	return (*C.GRecMutex)(v.P)
+}
+func (v RecMutex) P0() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().p)
+	return
+}
+func (v RecMutex) I() (result int /*TODO*/) {
+	return
 }
 
 // Struct Regex
@@ -11857,6 +12320,17 @@ func SListGetType() gi.GType {
 	return ret
 }
 
+func (v SList) p() *C.GSList {
+	return (*C.GSList)(v.P)
+}
+func (v SList) Data() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().data)
+	return
+}
+func (v SList) Next() (result int /*TODO*/) {
+	return
+}
+
 // Struct Scanner
 type Scanner struct {
 	P unsafe.Pointer
@@ -12194,6 +12668,82 @@ func (v Scanner) UnexpToken(expected_token TokenTypeEnum, identifier_spec string
 	gi.Free(c_message)
 }
 
+func (v Scanner) p() *C.GScanner {
+	return (*C.GScanner)(v.P)
+}
+func (v Scanner) UserData() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().user_data)
+	return
+}
+func (v Scanner) MaxParseErrors() (result uint32) {
+	result = uint32(v.p().max_parse_errors)
+	return
+}
+func (v Scanner) ParseErrors() (result uint32) {
+	result = uint32(v.p().parse_errors)
+	return
+}
+func (v Scanner) InputName() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) Qdata() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) Config() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) Token() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) Value() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) Line() (result uint32) {
+	result = uint32(v.p().line)
+	return
+}
+func (v Scanner) Position() (result uint32) {
+	result = uint32(v.p().position)
+	return
+}
+func (v Scanner) NextToken() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) NextValue() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) NextLine() (result uint32) {
+	result = uint32(v.p().next_line)
+	return
+}
+func (v Scanner) NextPosition() (result uint32) {
+	result = uint32(v.p().next_position)
+	return
+}
+func (v Scanner) SymbolTable() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) InputFd() (result int32) {
+	result = int32(v.p().input_fd)
+	return
+}
+func (v Scanner) Text() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) TextEnd() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) Buffer() (result int /*TODO*/) {
+	return
+}
+func (v Scanner) ScopeId() (result uint32) {
+	result = uint32(v.p().scope_id)
+	return
+}
+func (v Scanner) MsgHandler() (result int /*TODO*/) {
+	return
+}
+
 // Struct ScannerConfig
 type ScannerConfig struct {
 	P unsafe.Pointer
@@ -12204,6 +12754,71 @@ const SizeOfStructScannerConfig = 128
 func ScannerConfigGetType() gi.GType {
 	ret := _I.GetGType(82, "ScannerConfig")
 	return ret
+}
+
+func (v ScannerConfig) p() *C.GScannerConfig {
+	return (*C.GScannerConfig)(v.P)
+}
+func (v ScannerConfig) CsetSkipCharacters() (result int /*TODO*/) {
+	return
+}
+func (v ScannerConfig) CsetIdentifierFirst() (result int /*TODO*/) {
+	return
+}
+func (v ScannerConfig) CsetIdentifierNth() (result int /*TODO*/) {
+	return
+}
+func (v ScannerConfig) CpairCommentSingle() (result int /*TODO*/) {
+	return
+}
+
+// TODO: ignore struct ScannerConfig field case_sensitive, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field skip_comment_multi, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field skip_comment_single, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_comment_multi, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_identifier, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_identifier_1char, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_identifier_NULL, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_symbols, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_binary, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_octal, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_float, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_hex, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_hex_dollar, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_string_sq, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scan_string_dq, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field numbers_2_int, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field int_2_float, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field identifier_2_string, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field char_2_token, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field symbol_2_token, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field scope_0_fallback, bits(=1) > 0
+
+// TODO: ignore struct ScannerConfig field store_int64, bits(=1) > 0
+
+func (v ScannerConfig) PaddingDummy() (result uint32) {
+	result = uint32(v.p().padding_dummy)
+	return
 }
 
 type ScannerMsgFunc func(scanner Scanner, message string, error bool)
@@ -13389,6 +14004,54 @@ func SourceSetNameById1(tag uint32, name string) {
 	gi.Free(c_name)
 }
 
+func (v Source) p() *C.GSource {
+	return (*C.GSource)(v.P)
+}
+func (v Source) CallbackData() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().callback_data)
+	return
+}
+func (v Source) CallbackFuncs() (result int /*TODO*/) {
+	return
+}
+func (v Source) SourceFuncs() (result int /*TODO*/) {
+	return
+}
+func (v Source) RefCount() (result uint32) {
+	result = uint32(v.p().ref_count)
+	return
+}
+func (v Source) Context() (result int /*TODO*/) {
+	return
+}
+func (v Source) Priority() (result int32) {
+	result = int32(v.p().priority)
+	return
+}
+func (v Source) Flags() (result uint32) {
+	result = uint32(v.p().flags)
+	return
+}
+func (v Source) SourceId() (result uint32) {
+	result = uint32(v.p().source_id)
+	return
+}
+func (v Source) PollFds() (result int /*TODO*/) {
+	return
+}
+func (v Source) Prev() (result int /*TODO*/) {
+	return
+}
+func (v Source) Next() (result int /*TODO*/) {
+	return
+}
+func (v Source) Name() (result int /*TODO*/) {
+	return
+}
+func (v Source) Priv() (result int /*TODO*/) {
+	return
+}
+
 // Struct SourceCallbackFuncs
 type SourceCallbackFuncs struct {
 	P unsafe.Pointer
@@ -13399,6 +14062,20 @@ const SizeOfStructSourceCallbackFuncs = 24
 func SourceCallbackFuncsGetType() gi.GType {
 	ret := _I.GetGType(89, "SourceCallbackFuncs")
 	return ret
+}
+
+func (v SourceCallbackFuncs) p() *C.GSourceCallbackFuncs {
+	return (*C.GSourceCallbackFuncs)(v.P)
+}
+func (v SourceCallbackFuncs) Ref() (result int /*TODO*/) {
+	return
+}
+func (v SourceCallbackFuncs) Unref() (result int /*TODO*/) {
+	return
+}
+func (v SourceCallbackFuncs) Get() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().get)
+	return
 }
 
 type SourceDummyMarshal func()
@@ -13432,15 +14109,30 @@ func SourceFuncsGetType() gi.GType {
 	return ret
 }
 
-// Struct SourcePrivate
-type SourcePrivate struct {
-	P unsafe.Pointer
+func (v SourceFuncs) p() *C.GSourceFuncs {
+	return (*C.GSourceFuncs)(v.P)
+}
+func (v SourceFuncs) Prepare() (result int /*TODO*/) {
+	return
+}
+func (v SourceFuncs) Check() (result int /*TODO*/) {
+	return
+}
+func (v SourceFuncs) Dispatch() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dispatch)
+	return
+}
+func (v SourceFuncs) Finalize() (result int /*TODO*/) {
+	return
+}
+func (v SourceFuncs) ClosureCallback() (result int /*TODO*/) {
+	return
+}
+func (v SourceFuncs) ClosureMarshal() (result int /*TODO*/) {
+	return
 }
 
-func SourcePrivateGetType() gi.GType {
-	ret := _I.GetGType(91, "SourcePrivate")
-	return ret
-}
+// ignore private struct SourcePrivate, type of Source is struct
 
 type SpawnChildSetupFunc func()
 
@@ -13479,7 +14171,7 @@ const (
 )
 
 func SpawnErrorGetType() gi.GType {
-	ret := _I.GetGType(92, "SpawnError")
+	ret := _I.GetGType(91, "SpawnError")
 	return ret
 }
 
@@ -13500,7 +14192,7 @@ const (
 )
 
 func SpawnFlagsGetType() gi.GType {
-	ret := _I.GetGType(93, "SpawnFlags")
+	ret := _I.GetGType(92, "SpawnFlags")
 	return ret
 }
 
@@ -13510,7 +14202,7 @@ type StatBuf struct {
 }
 
 func StatBufGetType() gi.GType {
-	ret := _I.GetGType(94, "StatBuf")
+	ret := _I.GetGType(93, "StatBuf")
 	return ret
 }
 
@@ -13522,7 +14214,7 @@ type String struct {
 const SizeOfStructString = 24
 
 func StringGetType() gi.GType {
-	ret := _I.GetGType(95, "String")
+	ret := _I.GetGType(94, "String")
 	return ret
 }
 
@@ -14140,13 +14832,28 @@ func (v String) Up() (result String) {
 	return
 }
 
+func (v String) p() *C.GString {
+	return (*C.GString)(v.P)
+}
+func (v String) Str() (result int /*TODO*/) {
+	return
+}
+func (v String) Len() (result uint64) {
+	result = uint64(v.p().len)
+	return
+}
+func (v String) AllocatedLen() (result uint64) {
+	result = uint64(v.p().allocated_len)
+	return
+}
+
 // Struct StringChunk
 type StringChunk struct {
 	P unsafe.Pointer
 }
 
 func StringChunkGetType() gi.GType {
-	ret := _I.GetGType(96, "StringChunk")
+	ret := _I.GetGType(95, "StringChunk")
 	return ret
 }
 
@@ -14254,7 +14961,7 @@ type TestCase struct {
 }
 
 func TestCaseGetType() gi.GType {
-	ret := _I.GetGType(97, "TestCase")
+	ret := _I.GetGType(96, "TestCase")
 	return ret
 }
 
@@ -14266,8 +14973,36 @@ type TestConfig struct {
 const SizeOfStructTestConfig = 24
 
 func TestConfigGetType() gi.GType {
-	ret := _I.GetGType(98, "TestConfig")
+	ret := _I.GetGType(97, "TestConfig")
 	return ret
+}
+
+func (v TestConfig) p() *C.GTestConfig {
+	return (*C.GTestConfig)(v.P)
+}
+func (v TestConfig) TestInitialized() (result bool) {
+	result = gi.Int2Bool(int(v.p().test_initialized))
+	return
+}
+func (v TestConfig) TestQuick() (result bool) {
+	result = gi.Int2Bool(int(v.p().test_quick))
+	return
+}
+func (v TestConfig) TestPerf() (result bool) {
+	result = gi.Int2Bool(int(v.p().test_perf))
+	return
+}
+func (v TestConfig) TestVerbose() (result bool) {
+	result = gi.Int2Bool(int(v.p().test_verbose))
+	return
+}
+func (v TestConfig) TestQuiet() (result bool) {
+	result = gi.Int2Bool(int(v.p().test_quiet))
+	return
+}
+func (v TestConfig) TestUndefined() (result bool) {
+	result = gi.Int2Bool(int(v.p().test_undefined))
+	return
 }
 
 type TestDataFunc func()
@@ -14288,7 +15023,7 @@ const (
 )
 
 func TestFileTypeGetType() gi.GType {
-	ret := _I.GetGType(99, "TestFileType")
+	ret := _I.GetGType(98, "TestFileType")
 	return ret
 }
 
@@ -14319,7 +15054,7 @@ type TestLogBuffer struct {
 const SizeOfStructTestLogBuffer = 16
 
 func TestLogBufferGetType() gi.GType {
-	ret := _I.GetGType(100, "TestLogBuffer")
+	ret := _I.GetGType(99, "TestLogBuffer")
 	return ret
 }
 
@@ -14355,6 +15090,16 @@ func (v TestLogBuffer) Push(n_bytes uint32, bytes uint8) {
 	iv.Call(args, nil, nil)
 }
 
+func (v TestLogBuffer) p() *C.GTestLogBuffer {
+	return (*C.GTestLogBuffer)(v.P)
+}
+func (v TestLogBuffer) Data() (result int /*TODO*/) {
+	return
+}
+func (v TestLogBuffer) Msgs() (result int /*TODO*/) {
+	return
+}
+
 type TestLogFatalFunc func(log_domain string, log_level LogLevelFlags, message string) (result bool)
 
 func CallTestLogFatalFunc(fn TestLogFatalFunc, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -14376,7 +15121,7 @@ type TestLogMsg struct {
 const SizeOfStructTestLogMsg = 32
 
 func TestLogMsgGetType() gi.GType {
-	ret := _I.GetGType(101, "TestLogMsg")
+	ret := _I.GetGType(100, "TestLogMsg")
 	return ret
 }
 
@@ -14412,7 +15157,7 @@ const (
 )
 
 func TestLogTypeGetType() gi.GType {
-	ret := _I.GetGType(102, "TestLogType")
+	ret := _I.GetGType(101, "TestLogType")
 	return ret
 }
 
@@ -14427,7 +15172,7 @@ const (
 )
 
 func TestResultGetType() gi.GType {
-	ret := _I.GetGType(103, "TestResult")
+	ret := _I.GetGType(102, "TestResult")
 	return ret
 }
 
@@ -14441,7 +15186,7 @@ const (
 )
 
 func TestSubprocessFlagsGetType() gi.GType {
-	ret := _I.GetGType(104, "TestSubprocessFlags")
+	ret := _I.GetGType(103, "TestSubprocessFlags")
 	return ret
 }
 
@@ -14451,7 +15196,7 @@ type TestSuite struct {
 }
 
 func TestSuiteGetType() gi.GType {
-	ret := _I.GetGType(105, "TestSuite")
+	ret := _I.GetGType(104, "TestSuite")
 	return ret
 }
 
@@ -14499,7 +15244,7 @@ const (
 )
 
 func TestTrapFlagsGetType() gi.GType {
-	ret := _I.GetGType(106, "TestTrapFlags")
+	ret := _I.GetGType(105, "TestTrapFlags")
 	return ret
 }
 
@@ -14509,7 +15254,7 @@ type Thread struct {
 }
 
 func ThreadGetType() gi.GType {
-	ret := _I.GetGType(107, "Thread")
+	ret := _I.GetGType(106, "Thread")
 	return ret
 }
 
@@ -14628,7 +15373,7 @@ const (
 )
 
 func ThreadErrorGetType() gi.GType {
-	ret := _I.GetGType(108, "ThreadError")
+	ret := _I.GetGType(107, "ThreadError")
 	return ret
 }
 
@@ -14651,7 +15396,7 @@ type ThreadPool struct {
 const SizeOfStructThreadPool = 24
 
 func ThreadPoolGetType() gi.GType {
-	ret := _I.GetGType(109, "ThreadPool")
+	ret := _I.GetGType(108, "ThreadPool")
 	return ret
 }
 
@@ -14884,6 +15629,21 @@ func ThreadPoolStopUnusedThreads1() {
 	iv.Call(nil, nil, nil)
 }
 
+func (v ThreadPool) p() *C.GThreadPool {
+	return (*C.GThreadPool)(v.P)
+}
+func (v ThreadPool) Func() (result int /*TODO*/) {
+	return
+}
+func (v ThreadPool) UserData() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().user_data)
+	return
+}
+func (v ThreadPool) Exclusive() (result bool) {
+	result = gi.Int2Bool(int(v.p().exclusive))
+	return
+}
+
 // Enum TimeType
 type TimeTypeEnum int
 
@@ -14894,7 +15654,7 @@ const (
 )
 
 func TimeTypeGetType() gi.GType {
-	ret := _I.GetGType(110, "TimeType")
+	ret := _I.GetGType(109, "TimeType")
 	return ret
 }
 
@@ -14906,7 +15666,7 @@ type TimeVal struct {
 const SizeOfStructTimeVal = 16
 
 func TimeValGetType() gi.GType {
-	ret := _I.GetGType(111, "TimeVal")
+	ret := _I.GetGType(110, "TimeVal")
 	return ret
 }
 
@@ -14969,13 +15729,25 @@ func TimeValFromIso86011(iso_date string, time_ TimeVal) (result bool) {
 	return
 }
 
+func (v TimeVal) p() *C.GTimeVal {
+	return (*C.GTimeVal)(v.P)
+}
+func (v TimeVal) TvSec() (result int64) {
+	result = int64(v.p().tv_sec)
+	return
+}
+func (v TimeVal) TvUsec() (result int64) {
+	result = int64(v.p().tv_usec)
+	return
+}
+
 // Struct TimeZone
 type TimeZone struct {
 	P unsafe.Pointer
 }
 
 func TimeZoneGetType() gi.GType {
-	ret := _I.GetGType(112, "TimeZone")
+	ret := _I.GetGType(111, "TimeZone")
 	return ret
 }
 
@@ -15219,7 +15991,7 @@ type Timer struct {
 }
 
 func TimerGetType() gi.GType {
-	ret := _I.GetGType(113, "Timer")
+	ret := _I.GetGType(112, "Timer")
 	return ret
 }
 
@@ -15339,7 +16111,7 @@ const (
 )
 
 func TokenTypeGetType() gi.GType {
-	ret := _I.GetGType(114, "TokenType")
+	ret := _I.GetGType(113, "TokenType")
 	return ret
 }
 
@@ -15351,7 +16123,7 @@ type TokenValue struct {
 const SizeOfUnionTokenValue = 8
 
 func TokenValueGetType() gi.GType {
-	ret := _I.GetGType(115, "TokenValue")
+	ret := _I.GetGType(114, "TokenValue")
 	return ret
 }
 
@@ -15377,7 +16149,7 @@ type TrashStack struct {
 const SizeOfStructTrashStack = 8
 
 func TrashStackGetType() gi.GType {
-	ret := _I.GetGType(116, "TrashStack")
+	ret := _I.GetGType(115, "TrashStack")
 	return ret
 }
 
@@ -15459,6 +16231,13 @@ func (v TrashStack) Push(data_p unsafe.Pointer) {
 	iv.Call(args, nil, nil)
 }
 
+func (v TrashStack) p() *C.GTrashStack {
+	return (*C.GTrashStack)(v.P)
+}
+func (v TrashStack) Next() (result int /*TODO*/) {
+	return
+}
+
 // Flags TraverseFlags
 type TraverseFlags int
 
@@ -15472,7 +16251,7 @@ const (
 )
 
 func TraverseFlagsGetType() gi.GType {
-	ret := _I.GetGType(117, "TraverseFlags")
+	ret := _I.GetGType(116, "TraverseFlags")
 	return ret
 }
 
@@ -15500,7 +16279,7 @@ const (
 )
 
 func TraverseTypeGetType() gi.GType {
-	ret := _I.GetGType(118, "TraverseType")
+	ret := _I.GetGType(117, "TraverseType")
 	return ret
 }
 
@@ -15510,7 +16289,7 @@ type Tree struct {
 }
 
 func TreeGetType() gi.GType {
-	ret := _I.GetGType(119, "Tree")
+	ret := _I.GetGType(118, "Tree")
 	return ret
 }
 
@@ -15754,7 +16533,7 @@ const (
 )
 
 func UnicodeBreakTypeGetType() gi.GType {
-	ret := _I.GetGType(120, "UnicodeBreakType")
+	ret := _I.GetGType(119, "UnicodeBreakType")
 	return ret
 }
 
@@ -15915,7 +16694,7 @@ const (
 )
 
 func UnicodeScriptGetType() gi.GType {
-	ret := _I.GetGType(121, "UnicodeScript")
+	ret := _I.GetGType(120, "UnicodeScript")
 	return ret
 }
 
@@ -15956,7 +16735,7 @@ const (
 )
 
 func UnicodeTypeGetType() gi.GType {
-	ret := _I.GetGType(122, "UnicodeType")
+	ret := _I.GetGType(121, "UnicodeType")
 	return ret
 }
 
@@ -15988,7 +16767,7 @@ const (
 )
 
 func UserDirectoryGetType() gi.GType {
-	ret := _I.GetGType(123, "UserDirectory")
+	ret := _I.GetGType(122, "UserDirectory")
 	return ret
 }
 
@@ -15998,7 +16777,7 @@ type Variant struct {
 }
 
 func VariantGetType() gi.GType {
-	ret := _I.GetGType(124, "Variant")
+	ret := _I.GetGType(123, "Variant")
 	return ret
 }
 
@@ -17650,7 +18429,7 @@ type VariantBuilder struct {
 }
 
 func VariantBuilderGetType() gi.GType {
-	ret := _I.GetGType(125, "VariantBuilder")
+	ret := _I.GetGType(124, "VariantBuilder")
 	return ret
 }
 
@@ -17793,7 +18572,7 @@ const (
 )
 
 func VariantClassGetType() gi.GType {
-	ret := _I.GetGType(126, "VariantClass")
+	ret := _I.GetGType(125, "VariantClass")
 	return ret
 }
 
@@ -17803,7 +18582,7 @@ type VariantDict struct {
 }
 
 func VariantDictGetType() gi.GType {
-	ret := _I.GetGType(127, "VariantDict")
+	ret := _I.GetGType(126, "VariantDict")
 	return ret
 }
 
@@ -18007,7 +18786,7 @@ const (
 )
 
 func VariantParseErrorGetType() gi.GType {
-	ret := _I.GetGType(128, "VariantParseError")
+	ret := _I.GetGType(127, "VariantParseError")
 	return ret
 }
 
@@ -18017,7 +18796,7 @@ type VariantType struct {
 }
 
 func VariantTypeGetType() gi.GType {
-	ret := _I.GetGType(129, "VariantType")
+	ret := _I.GetGType(128, "VariantType")
 	return ret
 }
 

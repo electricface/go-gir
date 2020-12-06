@@ -237,6 +237,16 @@ func AttributeSetFree1(attrib_set g.SList) {
 	iv.Call(args, nil, nil)
 }
 
+func (v Attribute) p() *C.AtkAttribute {
+	return (*C.AtkAttribute)(v.P)
+}
+func (v Attribute) Name() (result int /*TODO*/) {
+	return
+}
+func (v Attribute) Value() (result int /*TODO*/) {
+	return
+}
+
 // Interface Component
 type Component struct {
 	ComponentIfc
@@ -1539,6 +1549,37 @@ func KeyEventStructGetType() gi.GType {
 	return ret
 }
 
+func (v KeyEventStruct) p() *C.AtkKeyEventStruct {
+	return (*C.AtkKeyEventStruct)(v.P)
+}
+func (v KeyEventStruct) Type() (result int32) {
+	result = int32(v.p()._type)
+	return
+}
+func (v KeyEventStruct) State() (result uint32) {
+	result = uint32(v.p().state)
+	return
+}
+func (v KeyEventStruct) Keyval() (result uint32) {
+	result = uint32(v.p().keyval)
+	return
+}
+func (v KeyEventStruct) Length() (result int32) {
+	result = int32(v.p().length)
+	return
+}
+func (v KeyEventStruct) String() (result int /*TODO*/) {
+	return
+}
+func (v KeyEventStruct) Keycode() (result uint16) {
+	result = uint16(v.p().keycode)
+	return
+}
+func (v KeyEventStruct) Timestamp() (result uint32) {
+	result = uint32(v.p().timestamp)
+	return
+}
+
 // Enum KeyEventType
 type KeyEventTypeEnum int
 
@@ -2352,6 +2393,19 @@ func PropertyValuesGetType() gi.GType {
 	return ret
 }
 
+func (v PropertyValues) p() *C.AtkPropertyValues {
+	return (*C.AtkPropertyValues)(v.P)
+}
+func (v PropertyValues) PropertyName() (result int /*TODO*/) {
+	return
+}
+func (v PropertyValues) OldValue() (result int /*TODO*/) {
+	return
+}
+func (v PropertyValues) NewValue() (result int /*TODO*/) {
+	return
+}
+
 // Struct Range
 type Range struct {
 	P unsafe.Pointer
@@ -2485,6 +2539,26 @@ const SizeOfStructRectangle = 16
 func RectangleGetType() gi.GType {
 	ret := _I.GetGType(25, "Rectangle")
 	return ret
+}
+
+func (v Rectangle) p() *C.AtkRectangle {
+	return (*C.AtkRectangle)(v.P)
+}
+func (v Rectangle) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v Rectangle) Y() (result int32) {
+	result = int32(v.p().y)
+	return
+}
+func (v Rectangle) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v Rectangle) Height() (result int32) {
+	result = int32(v.p().height)
+	return
 }
 
 // Object Registry
@@ -5170,6 +5244,24 @@ func TextRangeGetType() gi.GType {
 	return ret
 }
 
+func (v TextRange) p() *C.AtkTextRange {
+	return (*C.AtkTextRange)(v.P)
+}
+func (v TextRange) Bounds() (result int /*TODO*/) {
+	return
+}
+func (v TextRange) StartOffset() (result int32) {
+	result = int32(v.p().start_offset)
+	return
+}
+func (v TextRange) EndOffset() (result int32) {
+	result = int32(v.p().end_offset)
+	return
+}
+func (v TextRange) Content() (result int /*TODO*/) {
+	return
+}
+
 // Struct TextRectangle
 type TextRectangle struct {
 	P unsafe.Pointer
@@ -5180,6 +5272,26 @@ const SizeOfStructTextRectangle = 16
 func TextRectangleGetType() gi.GType {
 	ret := _I.GetGType(45, "TextRectangle")
 	return ret
+}
+
+func (v TextRectangle) p() *C.AtkTextRectangle {
+	return (*C.AtkTextRectangle)(v.P)
+}
+func (v TextRectangle) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v TextRectangle) Y() (result int32) {
+	result = int32(v.p().y)
+	return
+}
+func (v TextRectangle) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v TextRectangle) Height() (result int32) {
+	result = int32(v.p().height)
+	return
 }
 
 // Object Util

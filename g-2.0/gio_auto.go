@@ -64,7 +64,7 @@ type IAction interface{ P_Action() unsafe.Pointer }
 
 func (v Action) P_Action() unsafe.Pointer { return v.P }
 func ActionGetType() gi.GType {
-	ret := _I.GetGType1(194, "Gio", "Action")
+	ret := _I.GetGType1(193, "Gio", "Action")
 	return ret
 }
 
@@ -295,8 +295,30 @@ type ActionEntry struct {
 const SizeOfStructActionEntry = 64
 
 func ActionEntryGetType() gi.GType {
-	ret := _I.GetGType1(195, "Gio", "ActionEntry")
+	ret := _I.GetGType1(194, "Gio", "ActionEntry")
 	return ret
+}
+
+func (v ActionEntry) p() *C.GActionEntry {
+	return (*C.GActionEntry)(v.P)
+}
+func (v ActionEntry) Name() (result int /*TODO*/) {
+	return
+}
+func (v ActionEntry) Activate() (result int /*TODO*/) {
+	return
+}
+func (v ActionEntry) ParameterType() (result int /*TODO*/) {
+	return
+}
+func (v ActionEntry) State() (result int /*TODO*/) {
+	return
+}
+func (v ActionEntry) ChangeState() (result int /*TODO*/) {
+	return
+}
+func (v ActionEntry) Padding() (result int /*TODO*/) {
+	return
 }
 
 // Interface ActionGroup
@@ -309,7 +331,7 @@ type IActionGroup interface{ P_ActionGroup() unsafe.Pointer }
 
 func (v ActionGroup) P_ActionGroup() unsafe.Pointer { return v.P }
 func ActionGroupGetType() gi.GType {
-	ret := _I.GetGType1(196, "Gio", "ActionGroup")
+	ret := _I.GetGType1(195, "Gio", "ActionGroup")
 	return ret
 }
 
@@ -648,7 +670,7 @@ type IActionMap interface{ P_ActionMap() unsafe.Pointer }
 
 func (v ActionMap) P_ActionMap() unsafe.Pointer { return v.P }
 func ActionMapGetType() gi.GType {
-	ret := _I.GetGType1(197, "Gio", "ActionMap")
+	ret := _I.GetGType1(196, "Gio", "ActionMap")
 	return ret
 }
 
@@ -747,7 +769,7 @@ type IAppInfo interface{ P_AppInfo() unsafe.Pointer }
 
 func (v AppInfo) P_AppInfo() unsafe.Pointer { return v.P }
 func AppInfoGetType() gi.GType {
-	ret := _I.GetGType1(198, "Gio", "AppInfo")
+	ret := _I.GetGType1(197, "Gio", "AppInfo")
 	return ret
 }
 
@@ -1523,7 +1545,7 @@ const (
 )
 
 func AppInfoCreateFlagsGetType() gi.GType {
-	ret := _I.GetGType1(199, "Gio", "AppInfoCreateFlags")
+	ret := _I.GetGType1(198, "Gio", "AppInfoCreateFlags")
 	return ret
 }
 
@@ -1540,7 +1562,7 @@ type IAppInfoMonitor interface{ P_AppInfoMonitor() unsafe.Pointer }
 
 func (v AppInfoMonitor) P_AppInfoMonitor() unsafe.Pointer { return v.P }
 func AppInfoMonitorGetType() gi.GType {
-	ret := _I.GetGType1(200, "Gio", "AppInfoMonitor")
+	ret := _I.GetGType1(199, "Gio", "AppInfoMonitor")
 	return ret
 }
 
@@ -1571,7 +1593,7 @@ type IAppLaunchContext interface{ P_AppLaunchContext() unsafe.Pointer }
 
 func (v AppLaunchContext) P_AppLaunchContext() unsafe.Pointer { return v.P }
 func AppLaunchContextGetType() gi.GType {
-	ret := _I.GetGType1(201, "Gio", "AppLaunchContext")
+	ret := _I.GetGType1(200, "Gio", "AppLaunchContext")
 	return ret
 }
 
@@ -1727,15 +1749,7 @@ func (v AppLaunchContext) Unsetenv(variable string) {
 
 // ignore GType struct AppLaunchContextClass
 
-// Struct AppLaunchContextPrivate
-type AppLaunchContextPrivate struct {
-	P unsafe.Pointer
-}
-
-func AppLaunchContextPrivateGetType() gi.GType {
-	ret := _I.GetGType1(202, "Gio", "AppLaunchContextPrivate")
-	return ret
-}
+// ignore private struct AppLaunchContextPrivate, type of AppLaunchContext is object
 
 // Object Application
 type Application struct {
@@ -1752,7 +1766,7 @@ func (v Application) P_Application() unsafe.Pointer { return v.P }
 func (v Application) P_ActionGroup() unsafe.Pointer { return v.P }
 func (v Application) P_ActionMap() unsafe.Pointer   { return v.P }
 func ApplicationGetType() gi.GType {
-	ret := _I.GetGType1(203, "Gio", "Application")
+	ret := _I.GetGType1(201, "Gio", "Application")
 	return ret
 }
 
@@ -2466,7 +2480,7 @@ type IApplicationCommandLine interface{ P_ApplicationCommandLine() unsafe.Pointe
 
 func (v ApplicationCommandLine) P_ApplicationCommandLine() unsafe.Pointer { return v.P }
 func ApplicationCommandLineGetType() gi.GType {
-	ret := _I.GetGType1(204, "Gio", "ApplicationCommandLine")
+	ret := _I.GetGType1(202, "Gio", "ApplicationCommandLine")
 	return ret
 }
 
@@ -2686,15 +2700,7 @@ func (v ApplicationCommandLine) SetExitStatus(exit_status int32) {
 
 // ignore GType struct ApplicationCommandLineClass
 
-// Struct ApplicationCommandLinePrivate
-type ApplicationCommandLinePrivate struct {
-	P unsafe.Pointer
-}
-
-func ApplicationCommandLinePrivateGetType() gi.GType {
-	ret := _I.GetGType1(205, "Gio", "ApplicationCommandLinePrivate")
-	return ret
-}
+// ignore private struct ApplicationCommandLinePrivate, type of ApplicationCommandLine is object
 
 // Flags ApplicationFlags
 type ApplicationFlags int
@@ -2711,19 +2717,11 @@ const (
 )
 
 func ApplicationFlagsGetType() gi.GType {
-	ret := _I.GetGType1(206, "Gio", "ApplicationFlags")
+	ret := _I.GetGType1(203, "Gio", "ApplicationFlags")
 	return ret
 }
 
-// Struct ApplicationPrivate
-type ApplicationPrivate struct {
-	P unsafe.Pointer
-}
-
-func ApplicationPrivateGetType() gi.GType {
-	ret := _I.GetGType1(207, "Gio", "ApplicationPrivate")
-	return ret
-}
+// ignore private struct ApplicationPrivate, type of Application is object
 
 // Flags AskPasswordFlags
 type AskPasswordFlags int
@@ -2738,7 +2736,7 @@ const (
 )
 
 func AskPasswordFlagsGetType() gi.GType {
-	ret := _I.GetGType1(208, "Gio", "AskPasswordFlags")
+	ret := _I.GetGType1(204, "Gio", "AskPasswordFlags")
 	return ret
 }
 
@@ -2752,7 +2750,7 @@ type IAsyncInitable interface{ P_AsyncInitable() unsafe.Pointer }
 
 func (v AsyncInitable) P_AsyncInitable() unsafe.Pointer { return v.P }
 func AsyncInitableGetType() gi.GType {
-	ret := _I.GetGType1(209, "Gio", "AsyncInitable")
+	ret := _I.GetGType1(205, "Gio", "AsyncInitable")
 	return ret
 }
 
@@ -2917,7 +2915,7 @@ type IAsyncResult interface{ P_AsyncResult() unsafe.Pointer }
 
 func (v AsyncResult) P_AsyncResult() unsafe.Pointer { return v.P }
 func AsyncResultGetType() gi.GType {
-	ret := _I.GetGType1(210, "Gio", "AsyncResult")
+	ret := _I.GetGType1(206, "Gio", "AsyncResult")
 	return ret
 }
 
@@ -3013,7 +3011,7 @@ type IBufferedInputStream interface{ P_BufferedInputStream() unsafe.Pointer }
 func (v BufferedInputStream) P_BufferedInputStream() unsafe.Pointer { return v.P }
 func (v BufferedInputStream) P_Seekable() unsafe.Pointer            { return v.P }
 func BufferedInputStreamGetType() gi.GType {
-	ret := _I.GetGType1(211, "Gio", "BufferedInputStream")
+	ret := _I.GetGType1(207, "Gio", "BufferedInputStream")
 	return ret
 }
 
@@ -3298,15 +3296,7 @@ func (v BufferedInputStream) SetBufferSize(size uint64) {
 
 // ignore GType struct BufferedInputStreamClass
 
-// Struct BufferedInputStreamPrivate
-type BufferedInputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func BufferedInputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(212, "Gio", "BufferedInputStreamPrivate")
-	return ret
-}
+// ignore private struct BufferedInputStreamPrivate, type of BufferedInputStream is object
 
 // Object BufferedOutputStream
 type BufferedOutputStream struct {
@@ -3321,7 +3311,7 @@ type IBufferedOutputStream interface{ P_BufferedOutputStream() unsafe.Pointer }
 func (v BufferedOutputStream) P_BufferedOutputStream() unsafe.Pointer { return v.P }
 func (v BufferedOutputStream) P_Seekable() unsafe.Pointer             { return v.P }
 func BufferedOutputStreamGetType() gi.GType {
-	ret := _I.GetGType1(213, "Gio", "BufferedOutputStream")
+	ret := _I.GetGType1(208, "Gio", "BufferedOutputStream")
 	return ret
 }
 
@@ -3446,15 +3436,7 @@ func (v BufferedOutputStream) SetBufferSize(size uint64) {
 
 // ignore GType struct BufferedOutputStreamClass
 
-// Struct BufferedOutputStreamPrivate
-type BufferedOutputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func BufferedOutputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(214, "Gio", "BufferedOutputStreamPrivate")
-	return ret
-}
+// ignore private struct BufferedOutputStreamPrivate, type of BufferedOutputStream is object
 
 type BusAcquiredCallback func(connection DBusConnection, name string)
 
@@ -3512,7 +3494,7 @@ const (
 )
 
 func BusNameOwnerFlagsGetType() gi.GType {
-	ret := _I.GetGType1(215, "Gio", "BusNameOwnerFlags")
+	ret := _I.GetGType1(209, "Gio", "BusNameOwnerFlags")
 	return ret
 }
 
@@ -3536,7 +3518,7 @@ const (
 )
 
 func BusNameWatcherFlagsGetType() gi.GType {
-	ret := _I.GetGType1(216, "Gio", "BusNameWatcherFlags")
+	ret := _I.GetGType1(210, "Gio", "BusNameWatcherFlags")
 	return ret
 }
 
@@ -3551,7 +3533,7 @@ const (
 )
 
 func BusTypeGetType() gi.GType {
-	ret := _I.GetGType1(217, "Gio", "BusType")
+	ret := _I.GetGType1(211, "Gio", "BusType")
 	return ret
 }
 
@@ -3570,7 +3552,7 @@ func (v BytesIcon) P_BytesIcon() unsafe.Pointer    { return v.P }
 func (v BytesIcon) P_Icon() unsafe.Pointer         { return v.P }
 func (v BytesIcon) P_LoadableIcon() unsafe.Pointer { return v.P }
 func BytesIconGetType() gi.GType {
-	ret := _I.GetGType1(218, "Gio", "BytesIcon")
+	ret := _I.GetGType1(212, "Gio", "BytesIcon")
 	return ret
 }
 
@@ -3623,7 +3605,7 @@ type ICancellable interface{ P_Cancellable() unsafe.Pointer }
 
 func (v Cancellable) P_Cancellable() unsafe.Pointer { return v.P }
 func CancellableGetType() gi.GType {
-	ret := _I.GetGType1(219, "Gio", "Cancellable")
+	ret := _I.GetGType1(213, "Gio", "Cancellable")
 	return ret
 }
 
@@ -3855,15 +3837,7 @@ func (v Cancellable) SetErrorIfCancelled() (result bool, err error) {
 
 // ignore GType struct CancellableClass
 
-// Struct CancellablePrivate
-type CancellablePrivate struct {
-	P unsafe.Pointer
-}
-
-func CancellablePrivateGetType() gi.GType {
-	ret := _I.GetGType1(220, "Gio", "CancellablePrivate")
-	return ret
-}
+// ignore private struct CancellablePrivate, type of Cancellable is object
 
 type CancellableSourceFunc func(cancellable Cancellable) (result bool)
 
@@ -3891,7 +3865,7 @@ func (v CharsetConverter) P_CharsetConverter() unsafe.Pointer { return v.P }
 func (v CharsetConverter) P_Converter() unsafe.Pointer        { return v.P }
 func (v CharsetConverter) P_Initable() unsafe.Pointer         { return v.P }
 func CharsetConverterGetType() gi.GType {
-	ret := _I.GetGType1(221, "Gio", "CharsetConverter")
+	ret := _I.GetGType1(214, "Gio", "CharsetConverter")
 	return ret
 }
 
@@ -3988,7 +3962,7 @@ type IConverter interface{ P_Converter() unsafe.Pointer }
 
 func (v Converter) P_Converter() unsafe.Pointer { return v.P }
 func ConverterGetType() gi.GType {
-	ret := _I.GetGType1(222, "Gio", "Converter")
+	ret := _I.GetGType1(215, "Gio", "Converter")
 	return ret
 }
 
@@ -4058,7 +4032,7 @@ const (
 )
 
 func ConverterFlagsGetType() gi.GType {
-	ret := _I.GetGType1(223, "Gio", "ConverterFlags")
+	ret := _I.GetGType1(216, "Gio", "ConverterFlags")
 	return ret
 }
 
@@ -4077,7 +4051,7 @@ type IConverterInputStream interface{ P_ConverterInputStream() unsafe.Pointer }
 func (v ConverterInputStream) P_ConverterInputStream() unsafe.Pointer { return v.P }
 func (v ConverterInputStream) P_PollableInputStream() unsafe.Pointer  { return v.P }
 func ConverterInputStreamGetType() gi.GType {
-	ret := _I.GetGType1(224, "Gio", "ConverterInputStream")
+	ret := _I.GetGType1(217, "Gio", "ConverterInputStream")
 	return ret
 }
 
@@ -4132,15 +4106,7 @@ func (v ConverterInputStream) GetConverter() (result Converter) {
 
 // ignore GType struct ConverterInputStreamClass
 
-// Struct ConverterInputStreamPrivate
-type ConverterInputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func ConverterInputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(225, "Gio", "ConverterInputStreamPrivate")
-	return ret
-}
+// ignore private struct ConverterInputStreamPrivate, type of ConverterInputStream is object
 
 // Object ConverterOutputStream
 type ConverterOutputStream struct {
@@ -4155,7 +4121,7 @@ type IConverterOutputStream interface{ P_ConverterOutputStream() unsafe.Pointer 
 func (v ConverterOutputStream) P_ConverterOutputStream() unsafe.Pointer { return v.P }
 func (v ConverterOutputStream) P_PollableOutputStream() unsafe.Pointer  { return v.P }
 func ConverterOutputStreamGetType() gi.GType {
-	ret := _I.GetGType1(226, "Gio", "ConverterOutputStream")
+	ret := _I.GetGType1(218, "Gio", "ConverterOutputStream")
 	return ret
 }
 
@@ -4210,15 +4176,7 @@ func (v ConverterOutputStream) GetConverter() (result Converter) {
 
 // ignore GType struct ConverterOutputStreamClass
 
-// Struct ConverterOutputStreamPrivate
-type ConverterOutputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func ConverterOutputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(227, "Gio", "ConverterOutputStreamPrivate")
-	return ret
-}
+// ignore private struct ConverterOutputStreamPrivate, type of ConverterOutputStream is object
 
 // Enum ConverterResult
 type ConverterResultEnum int
@@ -4231,7 +4189,7 @@ const (
 )
 
 func ConverterResultGetType() gi.GType {
-	ret := _I.GetGType1(228, "Gio", "ConverterResult")
+	ret := _I.GetGType1(219, "Gio", "ConverterResult")
 	return ret
 }
 
@@ -4246,7 +4204,7 @@ type ICredentials interface{ P_Credentials() unsafe.Pointer }
 
 func (v Credentials) P_Credentials() unsafe.Pointer { return v.P }
 func CredentialsGetType() gi.GType {
-	ret := _I.GetGType1(229, "Gio", "Credentials")
+	ret := _I.GetGType1(220, "Gio", "Credentials")
 	return ret
 }
 
@@ -4408,7 +4366,7 @@ const (
 )
 
 func CredentialsTypeGetType() gi.GType {
-	ret := _I.GetGType1(230, "Gio", "CredentialsType")
+	ret := _I.GetGType1(221, "Gio", "CredentialsType")
 	return ret
 }
 
@@ -4427,7 +4385,7 @@ func (v DBusActionGroup) P_DBusActionGroup() unsafe.Pointer   { return v.P }
 func (v DBusActionGroup) P_ActionGroup() unsafe.Pointer       { return v.P }
 func (v DBusActionGroup) P_RemoteActionGroup() unsafe.Pointer { return v.P }
 func DBusActionGroupGetType() gi.GType {
-	ret := _I.GetGType1(231, "Gio", "DBusActionGroup")
+	ret := _I.GetGType1(222, "Gio", "DBusActionGroup")
 	return ret
 }
 
@@ -4473,7 +4431,7 @@ type DBusAnnotationInfo struct {
 const SizeOfStructDBusAnnotationInfo = 32
 
 func DBusAnnotationInfoGetType() gi.GType {
-	ret := _I.GetGType1(232, "Gio", "DBusAnnotationInfo")
+	ret := _I.GetGType1(223, "Gio", "DBusAnnotationInfo")
 	return ret
 }
 
@@ -4533,6 +4491,23 @@ func DBusAnnotationInfoLookup1(annotations gi.PointerArray, name string) (result
 	return
 }
 
+func (v DBusAnnotationInfo) p() *C.GDBusAnnotationInfo {
+	return (*C.GDBusAnnotationInfo)(v.P)
+}
+func (v DBusAnnotationInfo) RefCount() (result int32) {
+	result = int32(v.p().ref_count)
+	return
+}
+func (v DBusAnnotationInfo) Key() (result int /*TODO*/) {
+	return
+}
+func (v DBusAnnotationInfo) Value() (result int /*TODO*/) {
+	return
+}
+func (v DBusAnnotationInfo) Annotations() (result int /*TODO*/) {
+	return
+}
+
 // Struct DBusArgInfo
 type DBusArgInfo struct {
 	P unsafe.Pointer
@@ -4541,7 +4516,7 @@ type DBusArgInfo struct {
 const SizeOfStructDBusArgInfo = 32
 
 func DBusArgInfoGetType() gi.GType {
-	ret := _I.GetGType1(233, "Gio", "DBusArgInfo")
+	ret := _I.GetGType1(224, "Gio", "DBusArgInfo")
 	return ret
 }
 
@@ -4576,6 +4551,23 @@ func (v DBusArgInfo) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+func (v DBusArgInfo) p() *C.GDBusArgInfo {
+	return (*C.GDBusArgInfo)(v.P)
+}
+func (v DBusArgInfo) RefCount() (result int32) {
+	result = int32(v.p().ref_count)
+	return
+}
+func (v DBusArgInfo) Name() (result int /*TODO*/) {
+	return
+}
+func (v DBusArgInfo) Signature() (result int /*TODO*/) {
+	return
+}
+func (v DBusArgInfo) Annotations() (result int /*TODO*/) {
+	return
+}
+
 // Object DBusAuthObserver
 type DBusAuthObserver struct {
 	Object
@@ -4587,7 +4579,7 @@ type IDBusAuthObserver interface{ P_DBusAuthObserver() unsafe.Pointer }
 
 func (v DBusAuthObserver) P_DBusAuthObserver() unsafe.Pointer { return v.P }
 func DBusAuthObserverGetType() gi.GType {
-	ret := _I.GetGType1(234, "Gio", "DBusAuthObserver")
+	ret := _I.GetGType1(225, "Gio", "DBusAuthObserver")
 	return ret
 }
 
@@ -4672,7 +4664,7 @@ const (
 )
 
 func DBusCallFlagsGetType() gi.GType {
-	ret := _I.GetGType1(235, "Gio", "DBusCallFlags")
+	ret := _I.GetGType1(226, "Gio", "DBusCallFlags")
 	return ret
 }
 
@@ -4685,7 +4677,7 @@ const (
 )
 
 func DBusCapabilityFlagsGetType() gi.GType {
-	ret := _I.GetGType1(236, "Gio", "DBusCapabilityFlags")
+	ret := _I.GetGType1(227, "Gio", "DBusCapabilityFlags")
 	return ret
 }
 
@@ -4704,7 +4696,7 @@ func (v DBusConnection) P_DBusConnection() unsafe.Pointer { return v.P }
 func (v DBusConnection) P_AsyncInitable() unsafe.Pointer  { return v.P }
 func (v DBusConnection) P_Initable() unsafe.Pointer       { return v.P }
 func DBusConnectionGetType() gi.GType {
-	ret := _I.GetGType1(237, "Gio", "DBusConnection")
+	ret := _I.GetGType1(228, "Gio", "DBusConnection")
 	return ret
 }
 
@@ -6193,7 +6185,7 @@ const (
 )
 
 func DBusConnectionFlagsGetType() gi.GType {
-	ret := _I.GetGType1(238, "Gio", "DBusConnectionFlags")
+	ret := _I.GetGType1(229, "Gio", "DBusConnectionFlags")
 	return ret
 }
 
@@ -6249,7 +6241,7 @@ const (
 )
 
 func DBusErrorGetType() gi.GType {
-	ret := _I.GetGType1(239, "Gio", "DBusError")
+	ret := _I.GetGType1(230, "Gio", "DBusError")
 	return ret
 }
 
@@ -6261,8 +6253,19 @@ type DBusErrorEntry struct {
 const SizeOfStructDBusErrorEntry = 16
 
 func DBusErrorEntryGetType() gi.GType {
-	ret := _I.GetGType1(240, "Gio", "DBusErrorEntry")
+	ret := _I.GetGType1(231, "Gio", "DBusErrorEntry")
 	return ret
+}
+
+func (v DBusErrorEntry) p() *C.GDBusErrorEntry {
+	return (*C.GDBusErrorEntry)(v.P)
+}
+func (v DBusErrorEntry) ErrorCode() (result int32) {
+	result = int32(v.p().error_code)
+	return
+}
+func (v DBusErrorEntry) DbusErrorName() (result int /*TODO*/) {
+	return
 }
 
 // Interface DBusInterface
@@ -6275,7 +6278,7 @@ type IDBusInterface interface{ P_DBusInterface() unsafe.Pointer }
 
 func (v DBusInterface) P_DBusInterface() unsafe.Pointer { return v.P }
 func DBusInterfaceGetType() gi.GType {
-	ret := _I.GetGType1(241, "Gio", "DBusInterface")
+	ret := _I.GetGType1(232, "Gio", "DBusInterface")
 	return ret
 }
 
@@ -6361,7 +6364,7 @@ type DBusInterfaceInfo struct {
 const SizeOfStructDBusInterfaceInfo = 48
 
 func DBusInterfaceInfoGetType() gi.GType {
-	ret := _I.GetGType1(242, "Gio", "DBusInterfaceInfo")
+	ret := _I.GetGType1(233, "Gio", "DBusInterfaceInfo")
 	return ret
 }
 
@@ -6510,6 +6513,29 @@ func (v DBusInterfaceInfo) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+func (v DBusInterfaceInfo) p() *C.GDBusInterfaceInfo {
+	return (*C.GDBusInterfaceInfo)(v.P)
+}
+func (v DBusInterfaceInfo) RefCount() (result int32) {
+	result = int32(v.p().ref_count)
+	return
+}
+func (v DBusInterfaceInfo) Name() (result int /*TODO*/) {
+	return
+}
+func (v DBusInterfaceInfo) Methods() (result int /*TODO*/) {
+	return
+}
+func (v DBusInterfaceInfo) Signals() (result int /*TODO*/) {
+	return
+}
+func (v DBusInterfaceInfo) Properties() (result int /*TODO*/) {
+	return
+}
+func (v DBusInterfaceInfo) Annotations() (result int /*TODO*/) {
+	return
+}
+
 type DBusInterfaceMethodCallFunc func(connection DBusConnection, sender string, object_path string, interface_name string, method_name string, parameters Variant, invocation DBusMethodInvocation)
 
 func CallDBusInterfaceMethodCallFunc(fn DBusInterfaceMethodCallFunc, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -6556,7 +6582,7 @@ type IDBusInterfaceSkeleton interface{ P_DBusInterfaceSkeleton() unsafe.Pointer 
 func (v DBusInterfaceSkeleton) P_DBusInterfaceSkeleton() unsafe.Pointer { return v.P }
 func (v DBusInterfaceSkeleton) P_DBusInterface() unsafe.Pointer         { return v.P }
 func DBusInterfaceSkeletonGetType() gi.GType {
-	ret := _I.GetGType1(243, "Gio", "DBusInterfaceSkeleton")
+	ret := _I.GetGType1(234, "Gio", "DBusInterfaceSkeleton")
 	return ret
 }
 
@@ -6798,19 +6824,11 @@ const (
 )
 
 func DBusInterfaceSkeletonFlagsGetType() gi.GType {
-	ret := _I.GetGType1(244, "Gio", "DBusInterfaceSkeletonFlags")
+	ret := _I.GetGType1(235, "Gio", "DBusInterfaceSkeletonFlags")
 	return ret
 }
 
-// Struct DBusInterfaceSkeletonPrivate
-type DBusInterfaceSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func DBusInterfaceSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType1(245, "Gio", "DBusInterfaceSkeletonPrivate")
-	return ret
-}
+// ignore private struct DBusInterfaceSkeletonPrivate, type of DBusInterfaceSkeleton is object
 
 // Struct DBusInterfaceVTable
 type DBusInterfaceVTable struct {
@@ -6820,8 +6838,24 @@ type DBusInterfaceVTable struct {
 const SizeOfStructDBusInterfaceVTable = 88
 
 func DBusInterfaceVTableGetType() gi.GType {
-	ret := _I.GetGType1(246, "Gio", "DBusInterfaceVTable")
+	ret := _I.GetGType1(236, "Gio", "DBusInterfaceVTable")
 	return ret
+}
+
+func (v DBusInterfaceVTable) p() *C.GDBusInterfaceVTable {
+	return (*C.GDBusInterfaceVTable)(v.P)
+}
+func (v DBusInterfaceVTable) MethodCall() (result int /*TODO*/) {
+	return
+}
+func (v DBusInterfaceVTable) GetProperty() (result int /*TODO*/) {
+	return
+}
+func (v DBusInterfaceVTable) SetProperty() (result int /*TODO*/) {
+	return
+}
+func (v DBusInterfaceVTable) Padding() (result int /*TODO*/) {
+	return
 }
 
 // Object DBusMenuModel
@@ -6835,7 +6869,7 @@ type IDBusMenuModel interface{ P_DBusMenuModel() unsafe.Pointer }
 
 func (v DBusMenuModel) P_DBusMenuModel() unsafe.Pointer { return v.P }
 func DBusMenuModelGetType() gi.GType {
-	ret := _I.GetGType1(247, "Gio", "DBusMenuModel")
+	ret := _I.GetGType1(237, "Gio", "DBusMenuModel")
 	return ret
 }
 
@@ -6884,7 +6918,7 @@ type IDBusMessage interface{ P_DBusMessage() unsafe.Pointer }
 
 func (v DBusMessage) P_DBusMessage() unsafe.Pointer { return v.P }
 func DBusMessageGetType() gi.GType {
-	ret := _I.GetGType1(248, "Gio", "DBusMessage")
+	ret := _I.GetGType1(238, "Gio", "DBusMessage")
 	return ret
 }
 
@@ -7807,7 +7841,7 @@ const (
 )
 
 func DBusMessageByteOrderGetType() gi.GType {
-	ret := _I.GetGType1(249, "Gio", "DBusMessageByteOrder")
+	ret := _I.GetGType1(239, "Gio", "DBusMessageByteOrder")
 	return ret
 }
 
@@ -7835,7 +7869,7 @@ const (
 )
 
 func DBusMessageFlagsGetType() gi.GType {
-	ret := _I.GetGType1(250, "Gio", "DBusMessageFlags")
+	ret := _I.GetGType1(240, "Gio", "DBusMessageFlags")
 	return ret
 }
 
@@ -7856,7 +7890,7 @@ const (
 )
 
 func DBusMessageHeaderFieldGetType() gi.GType {
-	ret := _I.GetGType1(251, "Gio", "DBusMessageHeaderField")
+	ret := _I.GetGType1(241, "Gio", "DBusMessageHeaderField")
 	return ret
 }
 
@@ -7872,7 +7906,7 @@ const (
 )
 
 func DBusMessageTypeGetType() gi.GType {
-	ret := _I.GetGType1(252, "Gio", "DBusMessageType")
+	ret := _I.GetGType1(242, "Gio", "DBusMessageType")
 	return ret
 }
 
@@ -7884,7 +7918,7 @@ type DBusMethodInfo struct {
 const SizeOfStructDBusMethodInfo = 40
 
 func DBusMethodInfoGetType() gi.GType {
-	ret := _I.GetGType1(253, "Gio", "DBusMethodInfo")
+	ret := _I.GetGType1(243, "Gio", "DBusMethodInfo")
 	return ret
 }
 
@@ -7919,6 +7953,26 @@ func (v DBusMethodInfo) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+func (v DBusMethodInfo) p() *C.GDBusMethodInfo {
+	return (*C.GDBusMethodInfo)(v.P)
+}
+func (v DBusMethodInfo) RefCount() (result int32) {
+	result = int32(v.p().ref_count)
+	return
+}
+func (v DBusMethodInfo) Name() (result int /*TODO*/) {
+	return
+}
+func (v DBusMethodInfo) InArgs() (result int /*TODO*/) {
+	return
+}
+func (v DBusMethodInfo) OutArgs() (result int /*TODO*/) {
+	return
+}
+func (v DBusMethodInfo) Annotations() (result int /*TODO*/) {
+	return
+}
+
 // Object DBusMethodInvocation
 type DBusMethodInvocation struct {
 	Object
@@ -7930,7 +7984,7 @@ type IDBusMethodInvocation interface{ P_DBusMethodInvocation() unsafe.Pointer }
 
 func (v DBusMethodInvocation) P_DBusMethodInvocation() unsafe.Pointer { return v.P }
 func DBusMethodInvocationGetType() gi.GType {
-	ret := _I.GetGType1(254, "Gio", "DBusMethodInvocation")
+	ret := _I.GetGType1(244, "Gio", "DBusMethodInvocation")
 	return ret
 }
 
@@ -8206,7 +8260,7 @@ type DBusNodeInfo struct {
 const SizeOfStructDBusNodeInfo = 40
 
 func DBusNodeInfoGetType() gi.GType {
-	ret := _I.GetGType1(255, "Gio", "DBusNodeInfo")
+	ret := _I.GetGType1(245, "Gio", "DBusNodeInfo")
 	return ret
 }
 
@@ -8307,6 +8361,26 @@ func (v DBusNodeInfo) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+func (v DBusNodeInfo) p() *C.GDBusNodeInfo {
+	return (*C.GDBusNodeInfo)(v.P)
+}
+func (v DBusNodeInfo) RefCount() (result int32) {
+	result = int32(v.p().ref_count)
+	return
+}
+func (v DBusNodeInfo) Path() (result int /*TODO*/) {
+	return
+}
+func (v DBusNodeInfo) Interfaces() (result int /*TODO*/) {
+	return
+}
+func (v DBusNodeInfo) Nodes() (result int /*TODO*/) {
+	return
+}
+func (v DBusNodeInfo) Annotations() (result int /*TODO*/) {
+	return
+}
+
 // Interface DBusObject
 type DBusObject struct {
 	DBusObjectIfc
@@ -8317,7 +8391,7 @@ type IDBusObject interface{ P_DBusObject() unsafe.Pointer }
 
 func (v DBusObject) P_DBusObject() unsafe.Pointer { return v.P }
 func DBusObjectGetType() gi.GType {
-	ret := _I.GetGType1(256, "Gio", "DBusObject")
+	ret := _I.GetGType1(246, "Gio", "DBusObject")
 	return ret
 }
 
@@ -8392,7 +8466,7 @@ type IDBusObjectManager interface{ P_DBusObjectManager() unsafe.Pointer }
 
 func (v DBusObjectManager) P_DBusObjectManager() unsafe.Pointer { return v.P }
 func DBusObjectManagerGetType() gi.GType {
-	ret := _I.GetGType1(257, "Gio", "DBusObjectManager")
+	ret := _I.GetGType1(247, "Gio", "DBusObjectManager")
 	return ret
 }
 
@@ -8500,7 +8574,7 @@ func (v DBusObjectManagerClient) P_AsyncInitable() unsafe.Pointer           { re
 func (v DBusObjectManagerClient) P_DBusObjectManager() unsafe.Pointer       { return v.P }
 func (v DBusObjectManagerClient) P_Initable() unsafe.Pointer                { return v.P }
 func DBusObjectManagerClientGetType() gi.GType {
-	ret := _I.GetGType1(258, "Gio", "DBusObjectManagerClient")
+	ret := _I.GetGType1(248, "Gio", "DBusObjectManagerClient")
 	return ret
 }
 
@@ -8901,19 +8975,11 @@ const (
 )
 
 func DBusObjectManagerClientFlagsGetType() gi.GType {
-	ret := _I.GetGType1(259, "Gio", "DBusObjectManagerClientFlags")
+	ret := _I.GetGType1(249, "Gio", "DBusObjectManagerClientFlags")
 	return ret
 }
 
-// Struct DBusObjectManagerClientPrivate
-type DBusObjectManagerClientPrivate struct {
-	P unsafe.Pointer
-}
-
-func DBusObjectManagerClientPrivateGetType() gi.GType {
-	ret := _I.GetGType1(260, "Gio", "DBusObjectManagerClientPrivate")
-	return ret
-}
+// ignore private struct DBusObjectManagerClientPrivate, type of DBusObjectManagerClient is object
 
 // ignore GType struct DBusObjectManagerIface
 
@@ -8930,7 +8996,7 @@ type IDBusObjectManagerServer interface{ P_DBusObjectManagerServer() unsafe.Poin
 func (v DBusObjectManagerServer) P_DBusObjectManagerServer() unsafe.Pointer { return v.P }
 func (v DBusObjectManagerServer) P_DBusObjectManager() unsafe.Pointer       { return v.P }
 func DBusObjectManagerServerGetType() gi.GType {
-	ret := _I.GetGType1(261, "Gio", "DBusObjectManagerServer")
+	ret := _I.GetGType1(250, "Gio", "DBusObjectManagerServer")
 	return ret
 }
 
@@ -9084,15 +9150,7 @@ func (v DBusObjectManagerServer) Unexport(object_path string) (result bool) {
 
 // ignore GType struct DBusObjectManagerServerClass
 
-// Struct DBusObjectManagerServerPrivate
-type DBusObjectManagerServerPrivate struct {
-	P unsafe.Pointer
-}
-
-func DBusObjectManagerServerPrivateGetType() gi.GType {
-	ret := _I.GetGType1(262, "Gio", "DBusObjectManagerServerPrivate")
-	return ret
-}
+// ignore private struct DBusObjectManagerServerPrivate, type of DBusObjectManagerServer is object
 
 // Object DBusObjectProxy
 type DBusObjectProxy struct {
@@ -9107,7 +9165,7 @@ type IDBusObjectProxy interface{ P_DBusObjectProxy() unsafe.Pointer }
 func (v DBusObjectProxy) P_DBusObjectProxy() unsafe.Pointer { return v.P }
 func (v DBusObjectProxy) P_DBusObject() unsafe.Pointer      { return v.P }
 func DBusObjectProxyGetType() gi.GType {
-	ret := _I.GetGType1(263, "Gio", "DBusObjectProxy")
+	ret := _I.GetGType1(251, "Gio", "DBusObjectProxy")
 	return ret
 }
 
@@ -9160,15 +9218,7 @@ func (v DBusObjectProxy) GetConnection() (result DBusConnection) {
 
 // ignore GType struct DBusObjectProxyClass
 
-// Struct DBusObjectProxyPrivate
-type DBusObjectProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func DBusObjectProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType1(264, "Gio", "DBusObjectProxyPrivate")
-	return ret
-}
+// ignore private struct DBusObjectProxyPrivate, type of DBusObjectProxy is object
 
 // Object DBusObjectSkeleton
 type DBusObjectSkeleton struct {
@@ -9183,7 +9233,7 @@ type IDBusObjectSkeleton interface{ P_DBusObjectSkeleton() unsafe.Pointer }
 func (v DBusObjectSkeleton) P_DBusObjectSkeleton() unsafe.Pointer { return v.P }
 func (v DBusObjectSkeleton) P_DBusObject() unsafe.Pointer         { return v.P }
 func DBusObjectSkeletonGetType() gi.GType {
-	ret := _I.GetGType1(265, "Gio", "DBusObjectSkeleton")
+	ret := _I.GetGType1(252, "Gio", "DBusObjectSkeleton")
 	return ret
 }
 
@@ -9300,15 +9350,7 @@ func (v DBusObjectSkeleton) SetObjectPath(object_path string) {
 
 // ignore GType struct DBusObjectSkeletonClass
 
-// Struct DBusObjectSkeletonPrivate
-type DBusObjectSkeletonPrivate struct {
-	P unsafe.Pointer
-}
-
-func DBusObjectSkeletonPrivateGetType() gi.GType {
-	ret := _I.GetGType1(266, "Gio", "DBusObjectSkeletonPrivate")
-	return ret
-}
+// ignore private struct DBusObjectSkeletonPrivate, type of DBusObjectSkeleton is object
 
 // Struct DBusPropertyInfo
 type DBusPropertyInfo struct {
@@ -9318,7 +9360,7 @@ type DBusPropertyInfo struct {
 const SizeOfStructDBusPropertyInfo = 40
 
 func DBusPropertyInfoGetType() gi.GType {
-	ret := _I.GetGType1(267, "Gio", "DBusPropertyInfo")
+	ret := _I.GetGType1(253, "Gio", "DBusPropertyInfo")
 	return ret
 }
 
@@ -9353,6 +9395,26 @@ func (v DBusPropertyInfo) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+func (v DBusPropertyInfo) p() *C.GDBusPropertyInfo {
+	return (*C.GDBusPropertyInfo)(v.P)
+}
+func (v DBusPropertyInfo) RefCount() (result int32) {
+	result = int32(v.p().ref_count)
+	return
+}
+func (v DBusPropertyInfo) Name() (result int /*TODO*/) {
+	return
+}
+func (v DBusPropertyInfo) Signature() (result int /*TODO*/) {
+	return
+}
+func (v DBusPropertyInfo) Flags() (result int /*TODO*/) {
+	return
+}
+func (v DBusPropertyInfo) Annotations() (result int /*TODO*/) {
+	return
+}
+
 // Flags DBusPropertyInfoFlags
 type DBusPropertyInfoFlags int
 
@@ -9363,7 +9425,7 @@ const (
 )
 
 func DBusPropertyInfoFlagsGetType() gi.GType {
-	ret := _I.GetGType1(268, "Gio", "DBusPropertyInfoFlags")
+	ret := _I.GetGType1(254, "Gio", "DBusPropertyInfoFlags")
 	return ret
 }
 
@@ -9384,7 +9446,7 @@ func (v DBusProxy) P_AsyncInitable() unsafe.Pointer { return v.P }
 func (v DBusProxy) P_DBusInterface() unsafe.Pointer { return v.P }
 func (v DBusProxy) P_Initable() unsafe.Pointer      { return v.P }
 func DBusProxyGetType() gi.GType {
-	ret := _I.GetGType1(269, "Gio", "DBusProxy")
+	ret := _I.GetGType1(255, "Gio", "DBusProxy")
 	return ret
 }
 
@@ -10170,19 +10232,11 @@ const (
 )
 
 func DBusProxyFlagsGetType() gi.GType {
-	ret := _I.GetGType1(270, "Gio", "DBusProxyFlags")
+	ret := _I.GetGType1(256, "Gio", "DBusProxyFlags")
 	return ret
 }
 
-// Struct DBusProxyPrivate
-type DBusProxyPrivate struct {
-	P unsafe.Pointer
-}
-
-func DBusProxyPrivateGetType() gi.GType {
-	ret := _I.GetGType1(271, "Gio", "DBusProxyPrivate")
-	return ret
-}
+// ignore private struct DBusProxyPrivate, type of DBusProxy is object
 
 type DBusProxyTypeFunc func(manager DBusObjectManagerClient, object_path string, interface_name string) (result gi.GType)
 
@@ -10206,7 +10260,7 @@ const (
 )
 
 func DBusSendMessageFlagsGetType() gi.GType {
-	ret := _I.GetGType1(272, "Gio", "DBusSendMessageFlags")
+	ret := _I.GetGType1(257, "Gio", "DBusSendMessageFlags")
 	return ret
 }
 
@@ -10223,7 +10277,7 @@ type IDBusServer interface{ P_DBusServer() unsafe.Pointer }
 func (v DBusServer) P_DBusServer() unsafe.Pointer { return v.P }
 func (v DBusServer) P_Initable() unsafe.Pointer   { return v.P }
 func DBusServerGetType() gi.GType {
-	ret := _I.GetGType1(273, "Gio", "DBusServer")
+	ret := _I.GetGType1(258, "Gio", "DBusServer")
 	return ret
 }
 
@@ -10381,7 +10435,7 @@ const (
 )
 
 func DBusServerFlagsGetType() gi.GType {
-	ret := _I.GetGType1(274, "Gio", "DBusServerFlags")
+	ret := _I.GetGType1(259, "Gio", "DBusServerFlags")
 	return ret
 }
 
@@ -10411,7 +10465,7 @@ const (
 )
 
 func DBusSignalFlagsGetType() gi.GType {
-	ret := _I.GetGType1(275, "Gio", "DBusSignalFlags")
+	ret := _I.GetGType1(260, "Gio", "DBusSignalFlags")
 	return ret
 }
 
@@ -10423,7 +10477,7 @@ type DBusSignalInfo struct {
 const SizeOfStructDBusSignalInfo = 32
 
 func DBusSignalInfoGetType() gi.GType {
-	ret := _I.GetGType1(276, "Gio", "DBusSignalInfo")
+	ret := _I.GetGType1(261, "Gio", "DBusSignalInfo")
 	return ret
 }
 
@@ -10458,6 +10512,23 @@ func (v DBusSignalInfo) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+func (v DBusSignalInfo) p() *C.GDBusSignalInfo {
+	return (*C.GDBusSignalInfo)(v.P)
+}
+func (v DBusSignalInfo) RefCount() (result int32) {
+	result = int32(v.p().ref_count)
+	return
+}
+func (v DBusSignalInfo) Name() (result int /*TODO*/) {
+	return
+}
+func (v DBusSignalInfo) Args() (result int /*TODO*/) {
+	return
+}
+func (v DBusSignalInfo) Annotations() (result int /*TODO*/) {
+	return
+}
+
 type DBusSubtreeDispatchFunc func(connection DBusConnection, sender string, object_path string, interface_name string, node string, out_user_data unsafe.Pointer) (result DBusInterfaceVTable)
 
 func CallDBusSubtreeDispatchFunc(fn DBusSubtreeDispatchFunc, result unsafe.Pointer, args []unsafe.Pointer) {
@@ -10483,7 +10554,7 @@ const (
 )
 
 func DBusSubtreeFlagsGetType() gi.GType {
-	ret := _I.GetGType1(277, "Gio", "DBusSubtreeFlags")
+	ret := _I.GetGType1(262, "Gio", "DBusSubtreeFlags")
 	return ret
 }
 
@@ -10509,8 +10580,25 @@ type DBusSubtreeVTable struct {
 const SizeOfStructDBusSubtreeVTable = 88
 
 func DBusSubtreeVTableGetType() gi.GType {
-	ret := _I.GetGType1(278, "Gio", "DBusSubtreeVTable")
+	ret := _I.GetGType1(263, "Gio", "DBusSubtreeVTable")
 	return ret
+}
+
+func (v DBusSubtreeVTable) p() *C.GDBusSubtreeVTable {
+	return (*C.GDBusSubtreeVTable)(v.P)
+}
+func (v DBusSubtreeVTable) Enumerate() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().enumerate)
+	return
+}
+func (v DBusSubtreeVTable) Introspect() (result int /*TODO*/) {
+	return
+}
+func (v DBusSubtreeVTable) Dispatch() (result int /*TODO*/) {
+	return
+}
+func (v DBusSubtreeVTable) Padding() (result int /*TODO*/) {
+	return
 }
 
 // Object DataInputStream
@@ -10524,7 +10612,7 @@ type IDataInputStream interface{ P_DataInputStream() unsafe.Pointer }
 
 func (v DataInputStream) P_DataInputStream() unsafe.Pointer { return v.P }
 func DataInputStreamGetType() gi.GType {
-	ret := _I.GetGType1(279, "Gio", "DataInputStream")
+	ret := _I.GetGType1(264, "Gio", "DataInputStream")
 	return ret
 }
 
@@ -11204,15 +11292,7 @@ func (v DataInputStream) SetNewlineType(type1 DataStreamNewlineTypeEnum) {
 
 // ignore GType struct DataInputStreamClass
 
-// Struct DataInputStreamPrivate
-type DataInputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func DataInputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(280, "Gio", "DataInputStreamPrivate")
-	return ret
-}
+// ignore private struct DataInputStreamPrivate, type of DataInputStream is object
 
 // Object DataOutputStream
 type DataOutputStream struct {
@@ -11227,7 +11307,7 @@ type IDataOutputStream interface{ P_DataOutputStream() unsafe.Pointer }
 func (v DataOutputStream) P_DataOutputStream() unsafe.Pointer { return v.P }
 func (v DataOutputStream) P_Seekable() unsafe.Pointer         { return v.P }
 func DataOutputStreamGetType() gi.GType {
-	ret := _I.GetGType1(281, "Gio", "DataOutputStream")
+	ret := _I.GetGType1(265, "Gio", "DataOutputStream")
 	return ret
 }
 
@@ -11533,15 +11613,7 @@ func (v DataOutputStream) SetByteOrder(order DataStreamByteOrderEnum) {
 
 // ignore GType struct DataOutputStreamClass
 
-// Struct DataOutputStreamPrivate
-type DataOutputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func DataOutputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(282, "Gio", "DataOutputStreamPrivate")
-	return ret
-}
+// ignore private struct DataOutputStreamPrivate, type of DataOutputStream is object
 
 // Enum DataStreamByteOrder
 type DataStreamByteOrderEnum int
@@ -11553,7 +11625,7 @@ const (
 )
 
 func DataStreamByteOrderGetType() gi.GType {
-	ret := _I.GetGType1(283, "Gio", "DataStreamByteOrder")
+	ret := _I.GetGType1(266, "Gio", "DataStreamByteOrder")
 	return ret
 }
 
@@ -11568,7 +11640,7 @@ const (
 )
 
 func DataStreamNewlineTypeGetType() gi.GType {
-	ret := _I.GetGType1(284, "Gio", "DataStreamNewlineType")
+	ret := _I.GetGType1(267, "Gio", "DataStreamNewlineType")
 	return ret
 }
 
@@ -11582,7 +11654,7 @@ type IDatagramBased interface{ P_DatagramBased() unsafe.Pointer }
 
 func (v DatagramBased) P_DatagramBased() unsafe.Pointer { return v.P }
 func DatagramBasedGetType() gi.GType {
-	ret := _I.GetGType1(285, "Gio", "DatagramBased")
+	ret := _I.GetGType1(268, "Gio", "DatagramBased")
 	return ret
 }
 
@@ -11773,7 +11845,7 @@ type IDesktopAppInfo interface{ P_DesktopAppInfo() unsafe.Pointer }
 func (v DesktopAppInfo) P_DesktopAppInfo() unsafe.Pointer { return v.P }
 func (v DesktopAppInfo) P_AppInfo() unsafe.Pointer        { return v.P }
 func DesktopAppInfoGetType() gi.GType {
-	ret := _I.GetGType1(286, "Gio", "DesktopAppInfo")
+	ret := _I.GetGType1(269, "Gio", "DesktopAppInfo")
 	return ret
 }
 
@@ -12361,7 +12433,7 @@ type IDesktopAppInfoLookup interface{ P_DesktopAppInfoLookup() unsafe.Pointer }
 
 func (v DesktopAppInfoLookup) P_DesktopAppInfoLookup() unsafe.Pointer { return v.P }
 func DesktopAppInfoLookupGetType() gi.GType {
-	ret := _I.GetGType1(287, "Gio", "DesktopAppInfoLookup")
+	ret := _I.GetGType1(270, "Gio", "DesktopAppInfoLookup")
 	return ret
 }
 
@@ -12413,7 +12485,7 @@ type IDrive interface{ P_Drive() unsafe.Pointer }
 
 func (v Drive) P_Drive() unsafe.Pointer { return v.P }
 func DriveGetType() gi.GType {
-	ret := _I.GetGType1(288, "Gio", "Drive")
+	ret := _I.GetGType1(271, "Gio", "Drive")
 	return ret
 }
 
@@ -13099,7 +13171,7 @@ const (
 )
 
 func DriveStartFlagsGetType() gi.GType {
-	ret := _I.GetGType1(289, "Gio", "DriveStartFlags")
+	ret := _I.GetGType1(272, "Gio", "DriveStartFlags")
 	return ret
 }
 
@@ -13115,7 +13187,7 @@ const (
 )
 
 func DriveStartStopTypeGetType() gi.GType {
-	ret := _I.GetGType1(290, "Gio", "DriveStartStopType")
+	ret := _I.GetGType1(273, "Gio", "DriveStartStopType")
 	return ret
 }
 
@@ -13129,7 +13201,7 @@ type IDtlsClientConnection interface{ P_DtlsClientConnection() unsafe.Pointer }
 
 func (v DtlsClientConnection) P_DtlsClientConnection() unsafe.Pointer { return v.P }
 func DtlsClientConnectionGetType() gi.GType {
-	ret := _I.GetGType1(291, "Gio", "DtlsClientConnection")
+	ret := _I.GetGType1(274, "Gio", "DtlsClientConnection")
 	return ret
 }
 
@@ -13268,7 +13340,7 @@ type IDtlsConnection interface{ P_DtlsConnection() unsafe.Pointer }
 
 func (v DtlsConnection) P_DtlsConnection() unsafe.Pointer { return v.P }
 func DtlsConnectionGetType() gi.GType {
-	ret := _I.GetGType1(292, "Gio", "DtlsConnection")
+	ret := _I.GetGType1(275, "Gio", "DtlsConnection")
 	return ret
 }
 
@@ -13815,7 +13887,7 @@ type IDtlsServerConnection interface{ P_DtlsServerConnection() unsafe.Pointer }
 
 func (v DtlsServerConnection) P_DtlsServerConnection() unsafe.Pointer { return v.P }
 func DtlsServerConnectionGetType() gi.GType {
-	ret := _I.GetGType1(293, "Gio", "DtlsServerConnection")
+	ret := _I.GetGType1(276, "Gio", "DtlsServerConnection")
 	return ret
 }
 
@@ -13867,7 +13939,7 @@ type IEmblem interface{ P_Emblem() unsafe.Pointer }
 func (v Emblem) P_Emblem() unsafe.Pointer { return v.P }
 func (v Emblem) P_Icon() unsafe.Pointer   { return v.P }
 func EmblemGetType() gi.GType {
-	ret := _I.GetGType1(294, "Gio", "Emblem")
+	ret := _I.GetGType1(277, "Gio", "Emblem")
 	return ret
 }
 
@@ -13971,7 +14043,7 @@ const (
 )
 
 func EmblemOriginGetType() gi.GType {
-	ret := _I.GetGType1(295, "Gio", "EmblemOrigin")
+	ret := _I.GetGType1(278, "Gio", "EmblemOrigin")
 	return ret
 }
 
@@ -13988,7 +14060,7 @@ type IEmblemedIcon interface{ P_EmblemedIcon() unsafe.Pointer }
 func (v EmblemedIcon) P_EmblemedIcon() unsafe.Pointer { return v.P }
 func (v EmblemedIcon) P_Icon() unsafe.Pointer         { return v.P }
 func EmblemedIconGetType() gi.GType {
-	ret := _I.GetGType1(296, "Gio", "EmblemedIcon")
+	ret := _I.GetGType1(279, "Gio", "EmblemedIcon")
 	return ret
 }
 
@@ -14094,15 +14166,7 @@ func (v EmblemedIcon) GetIcon() (result Icon) {
 
 // ignore GType struct EmblemedIconClass
 
-// Struct EmblemedIconPrivate
-type EmblemedIconPrivate struct {
-	P unsafe.Pointer
-}
-
-func EmblemedIconPrivateGetType() gi.GType {
-	ret := _I.GetGType1(297, "Gio", "EmblemedIconPrivate")
-	return ret
-}
+// ignore private struct EmblemedIconPrivate, type of EmblemedIcon is object
 
 // Interface File
 type File struct {
@@ -14114,7 +14178,7 @@ type IFile interface{ P_File() unsafe.Pointer }
 
 func (v File) P_File() unsafe.Pointer { return v.P }
 func FileGetType() gi.GType {
-	ret := _I.GetGType1(298, "Gio", "File")
+	ret := _I.GetGType1(280, "Gio", "File")
 	return ret
 }
 
@@ -18138,8 +18202,21 @@ type FileAttributeInfo struct {
 const SizeOfStructFileAttributeInfo = 16
 
 func FileAttributeInfoGetType() gi.GType {
-	ret := _I.GetGType1(299, "Gio", "FileAttributeInfo")
+	ret := _I.GetGType1(281, "Gio", "FileAttributeInfo")
 	return ret
+}
+
+func (v FileAttributeInfo) p() *C.GFileAttributeInfo {
+	return (*C.GFileAttributeInfo)(v.P)
+}
+func (v FileAttributeInfo) Name() (result int /*TODO*/) {
+	return
+}
+func (v FileAttributeInfo) Type() (result int /*TODO*/) {
+	return
+}
+func (v FileAttributeInfo) Flags() (result int /*TODO*/) {
+	return
 }
 
 // Flags FileAttributeInfoFlags
@@ -18152,7 +18229,7 @@ const (
 )
 
 func FileAttributeInfoFlagsGetType() gi.GType {
-	ret := _I.GetGType1(300, "Gio", "FileAttributeInfoFlags")
+	ret := _I.GetGType1(282, "Gio", "FileAttributeInfoFlags")
 	return ret
 }
 
@@ -18164,7 +18241,7 @@ type FileAttributeInfoList struct {
 const SizeOfStructFileAttributeInfoList = 16
 
 func FileAttributeInfoListGetType() gi.GType {
-	ret := _I.GetGType1(301, "Gio", "FileAttributeInfoList")
+	ret := _I.GetGType1(283, "Gio", "FileAttributeInfoList")
 	return ret
 }
 
@@ -18280,13 +18357,24 @@ func (v FileAttributeInfoList) Unref() {
 	iv.Call(args, nil, nil)
 }
 
+func (v FileAttributeInfoList) p() *C.GFileAttributeInfoList {
+	return (*C.GFileAttributeInfoList)(v.P)
+}
+func (v FileAttributeInfoList) Infos() (result int /*TODO*/) {
+	return
+}
+func (v FileAttributeInfoList) NInfos() (result int32) {
+	result = int32(v.p().n_infos)
+	return
+}
+
 // Struct FileAttributeMatcher
 type FileAttributeMatcher struct {
 	P unsafe.Pointer
 }
 
 func FileAttributeMatcherGetType() gi.GType {
-	ret := _I.GetGType1(302, "Gio", "FileAttributeMatcher")
+	ret := _I.GetGType1(284, "Gio", "FileAttributeMatcher")
 	return ret
 }
 
@@ -18479,7 +18567,7 @@ const (
 )
 
 func FileAttributeStatusGetType() gi.GType {
-	ret := _I.GetGType1(303, "Gio", "FileAttributeStatus")
+	ret := _I.GetGType1(285, "Gio", "FileAttributeStatus")
 	return ret
 }
 
@@ -18500,7 +18588,7 @@ const (
 )
 
 func FileAttributeTypeGetType() gi.GType {
-	ret := _I.GetGType1(304, "Gio", "FileAttributeType")
+	ret := _I.GetGType1(286, "Gio", "FileAttributeType")
 	return ret
 }
 
@@ -18518,7 +18606,7 @@ const (
 )
 
 func FileCopyFlagsGetType() gi.GType {
-	ret := _I.GetGType1(305, "Gio", "FileCopyFlags")
+	ret := _I.GetGType1(287, "Gio", "FileCopyFlags")
 	return ret
 }
 
@@ -18532,7 +18620,7 @@ const (
 )
 
 func FileCreateFlagsGetType() gi.GType {
-	ret := _I.GetGType1(306, "Gio", "FileCreateFlags")
+	ret := _I.GetGType1(288, "Gio", "FileCreateFlags")
 	return ret
 }
 
@@ -18546,7 +18634,7 @@ type IFileDescriptorBased interface{ P_FileDescriptorBased() unsafe.Pointer }
 
 func (v FileDescriptorBased) P_FileDescriptorBased() unsafe.Pointer { return v.P }
 func FileDescriptorBasedGetType() gi.GType {
-	ret := _I.GetGType1(307, "Gio", "FileDescriptorBased")
+	ret := _I.GetGType1(289, "Gio", "FileDescriptorBased")
 	return ret
 }
 
@@ -18581,7 +18669,7 @@ type IFileEnumerator interface{ P_FileEnumerator() unsafe.Pointer }
 
 func (v FileEnumerator) P_FileEnumerator() unsafe.Pointer { return v.P }
 func FileEnumeratorGetType() gi.GType {
-	ret := _I.GetGType1(308, "Gio", "FileEnumerator")
+	ret := _I.GetGType1(290, "Gio", "FileEnumerator")
 	return ret
 }
 
@@ -18902,15 +18990,7 @@ func (v FileEnumerator) SetPending(pending bool) {
 
 // ignore GType struct FileEnumeratorClass
 
-// Struct FileEnumeratorPrivate
-type FileEnumeratorPrivate struct {
-	P unsafe.Pointer
-}
-
-func FileEnumeratorPrivateGetType() gi.GType {
-	ret := _I.GetGType1(309, "Gio", "FileEnumeratorPrivate")
-	return ret
-}
+// ignore private struct FileEnumeratorPrivate, type of FileEnumerator is object
 
 // Object FileIOStream
 type FileIOStream struct {
@@ -18925,7 +19005,7 @@ type IFileIOStream interface{ P_FileIOStream() unsafe.Pointer }
 func (v FileIOStream) P_FileIOStream() unsafe.Pointer { return v.P }
 func (v FileIOStream) P_Seekable() unsafe.Pointer     { return v.P }
 func FileIOStreamGetType() gi.GType {
-	ret := _I.GetGType1(310, "Gio", "FileIOStream")
+	ret := _I.GetGType1(291, "Gio", "FileIOStream")
 	return ret
 }
 
@@ -19050,15 +19130,7 @@ func (v FileIOStream) QueryInfoFinish(result IAsyncResult) (result1 FileInfo, er
 
 // ignore GType struct FileIOStreamClass
 
-// Struct FileIOStreamPrivate
-type FileIOStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func FileIOStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(311, "Gio", "FileIOStreamPrivate")
-	return ret
-}
+// ignore private struct FileIOStreamPrivate, type of FileIOStream is object
 
 // Object FileIcon
 type FileIcon struct {
@@ -19075,7 +19147,7 @@ func (v FileIcon) P_FileIcon() unsafe.Pointer     { return v.P }
 func (v FileIcon) P_Icon() unsafe.Pointer         { return v.P }
 func (v FileIcon) P_LoadableIcon() unsafe.Pointer { return v.P }
 func FileIconGetType() gi.GType {
-	ret := _I.GetGType1(312, "Gio", "FileIcon")
+	ret := _I.GetGType1(292, "Gio", "FileIcon")
 	return ret
 }
 
@@ -19136,7 +19208,7 @@ type IFileInfo interface{ P_FileInfo() unsafe.Pointer }
 
 func (v FileInfo) P_FileInfo() unsafe.Pointer { return v.P }
 func FileInfoGetType() gi.GType {
-	ret := _I.GetGType1(313, "Gio", "FileInfo")
+	ret := _I.GetGType1(293, "Gio", "FileInfo")
 	return ret
 }
 
@@ -20411,7 +20483,7 @@ type IFileInputStream interface{ P_FileInputStream() unsafe.Pointer }
 func (v FileInputStream) P_FileInputStream() unsafe.Pointer { return v.P }
 func (v FileInputStream) P_Seekable() unsafe.Pointer        { return v.P }
 func FileInputStreamGetType() gi.GType {
-	ret := _I.GetGType1(314, "Gio", "FileInputStream")
+	ret := _I.GetGType1(294, "Gio", "FileInputStream")
 	return ret
 }
 
@@ -20518,15 +20590,7 @@ func (v FileInputStream) QueryInfoFinish(result IAsyncResult) (result1 FileInfo,
 
 // ignore GType struct FileInputStreamClass
 
-// Struct FileInputStreamPrivate
-type FileInputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func FileInputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(315, "Gio", "FileInputStreamPrivate")
-	return ret
-}
+// ignore private struct FileInputStreamPrivate, type of FileInputStream is object
 
 // Flags FileMeasureFlags
 type FileMeasureFlags int
@@ -20539,7 +20603,7 @@ const (
 )
 
 func FileMeasureFlagsGetType() gi.GType {
-	ret := _I.GetGType1(316, "Gio", "FileMeasureFlags")
+	ret := _I.GetGType1(295, "Gio", "FileMeasureFlags")
 	return ret
 }
 
@@ -20567,7 +20631,7 @@ type IFileMonitor interface{ P_FileMonitor() unsafe.Pointer }
 
 func (v FileMonitor) P_FileMonitor() unsafe.Pointer { return v.P }
 func FileMonitorGetType() gi.GType {
-	ret := _I.GetGType1(317, "Gio", "FileMonitor")
+	ret := _I.GetGType1(296, "Gio", "FileMonitor")
 	return ret
 }
 
@@ -20673,7 +20737,7 @@ const (
 )
 
 func FileMonitorEventGetType() gi.GType {
-	ret := _I.GetGType1(318, "Gio", "FileMonitorEvent")
+	ret := _I.GetGType1(297, "Gio", "FileMonitorEvent")
 	return ret
 }
 
@@ -20689,19 +20753,11 @@ const (
 )
 
 func FileMonitorFlagsGetType() gi.GType {
-	ret := _I.GetGType1(319, "Gio", "FileMonitorFlags")
+	ret := _I.GetGType1(298, "Gio", "FileMonitorFlags")
 	return ret
 }
 
-// Struct FileMonitorPrivate
-type FileMonitorPrivate struct {
-	P unsafe.Pointer
-}
-
-func FileMonitorPrivateGetType() gi.GType {
-	ret := _I.GetGType1(320, "Gio", "FileMonitorPrivate")
-	return ret
-}
+// ignore private struct FileMonitorPrivate, type of FileMonitor is object
 
 // Object FileOutputStream
 type FileOutputStream struct {
@@ -20716,7 +20772,7 @@ type IFileOutputStream interface{ P_FileOutputStream() unsafe.Pointer }
 func (v FileOutputStream) P_FileOutputStream() unsafe.Pointer { return v.P }
 func (v FileOutputStream) P_Seekable() unsafe.Pointer         { return v.P }
 func FileOutputStreamGetType() gi.GType {
-	ret := _I.GetGType1(321, "Gio", "FileOutputStream")
+	ret := _I.GetGType1(299, "Gio", "FileOutputStream")
 	return ret
 }
 
@@ -20841,15 +20897,7 @@ func (v FileOutputStream) QueryInfoFinish(result IAsyncResult) (result1 FileInfo
 
 // ignore GType struct FileOutputStreamClass
 
-// Struct FileOutputStreamPrivate
-type FileOutputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func FileOutputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(322, "Gio", "FileOutputStreamPrivate")
-	return ret
-}
+// ignore private struct FileOutputStreamPrivate, type of FileOutputStream is object
 
 type FileProgressCallback func(current_num_bytes int64, total_num_bytes int64)
 
@@ -20871,7 +20919,7 @@ const (
 )
 
 func FileQueryInfoFlagsGetType() gi.GType {
-	ret := _I.GetGType1(323, "Gio", "FileQueryInfoFlags")
+	ret := _I.GetGType1(300, "Gio", "FileQueryInfoFlags")
 	return ret
 }
 
@@ -20901,7 +20949,7 @@ const (
 )
 
 func FileTypeGetType() gi.GType {
-	ret := _I.GetGType1(324, "Gio", "FileType")
+	ret := _I.GetGType1(301, "Gio", "FileType")
 	return ret
 }
 
@@ -20916,7 +20964,7 @@ type IFilenameCompleter interface{ P_FilenameCompleter() unsafe.Pointer }
 
 func (v FilenameCompleter) P_FilenameCompleter() unsafe.Pointer { return v.P }
 func FilenameCompleterGetType() gi.GType {
-	ret := _I.GetGType1(325, "Gio", "FilenameCompleter")
+	ret := _I.GetGType1(302, "Gio", "FilenameCompleter")
 	return ret
 }
 
@@ -21011,7 +21059,7 @@ const (
 )
 
 func FilesystemPreviewTypeGetType() gi.GType {
-	ret := _I.GetGType1(326, "Gio", "FilesystemPreviewType")
+	ret := _I.GetGType1(303, "Gio", "FilesystemPreviewType")
 	return ret
 }
 
@@ -21026,7 +21074,7 @@ type IFilterInputStream interface{ P_FilterInputStream() unsafe.Pointer }
 
 func (v FilterInputStream) P_FilterInputStream() unsafe.Pointer { return v.P }
 func FilterInputStreamGetType() gi.GType {
-	ret := _I.GetGType1(327, "Gio", "FilterInputStream")
+	ret := _I.GetGType1(304, "Gio", "FilterInputStream")
 	return ret
 }
 
@@ -21095,7 +21143,7 @@ type IFilterOutputStream interface{ P_FilterOutputStream() unsafe.Pointer }
 
 func (v FilterOutputStream) P_FilterOutputStream() unsafe.Pointer { return v.P }
 func FilterOutputStreamGetType() gi.GType {
-	ret := _I.GetGType1(328, "Gio", "FilterOutputStream")
+	ret := _I.GetGType1(305, "Gio", "FilterOutputStream")
 	return ret
 }
 
@@ -21208,7 +21256,7 @@ const (
 )
 
 func IOErrorEnumGetType() gi.GType {
-	ret := _I.GetGType1(329, "Gio", "IOErrorEnum")
+	ret := _I.GetGType1(306, "Gio", "IOErrorEnum")
 	return ret
 }
 
@@ -21218,7 +21266,7 @@ type IOExtension struct {
 }
 
 func IOExtensionGetType() gi.GType {
-	ret := _I.GetGType1(330, "Gio", "IOExtension")
+	ret := _I.GetGType1(307, "Gio", "IOExtension")
 	return ret
 }
 
@@ -21282,7 +21330,7 @@ type IOExtensionPoint struct {
 }
 
 func IOExtensionPointGetType() gi.GType {
-	ret := _I.GetGType1(331, "Gio", "IOExtensionPoint")
+	ret := _I.GetGType1(308, "Gio", "IOExtensionPoint")
 	return ret
 }
 
@@ -21449,7 +21497,7 @@ type IIOModule interface{ P_IOModule() unsafe.Pointer }
 
 func (v IOModule) P_IOModule() unsafe.Pointer { return v.P }
 func IOModuleGetType() gi.GType {
-	ret := _I.GetGType1(332, "Gio", "IOModule")
+	ret := _I.GetGType1(309, "Gio", "IOModule")
 	return ret
 }
 
@@ -21526,7 +21574,7 @@ type IOModuleScope struct {
 }
 
 func IOModuleScopeGetType() gi.GType {
-	ret := _I.GetGType1(333, "Gio", "IOModuleScope")
+	ret := _I.GetGType1(310, "Gio", "IOModuleScope")
 	return ret
 }
 
@@ -21570,7 +21618,7 @@ const (
 )
 
 func IOModuleScopeFlagsGetType() gi.GType {
-	ret := _I.GetGType1(334, "Gio", "IOModuleScopeFlags")
+	ret := _I.GetGType1(311, "Gio", "IOModuleScopeFlags")
 	return ret
 }
 
@@ -21580,7 +21628,7 @@ type IOSchedulerJob struct {
 }
 
 func IOSchedulerJobGetType() gi.GType {
-	ret := _I.GetGType1(335, "Gio", "IOSchedulerJob")
+	ret := _I.GetGType1(312, "Gio", "IOSchedulerJob")
 	return ret
 }
 
@@ -21678,7 +21726,7 @@ type IIOStream interface{ P_IOStream() unsafe.Pointer }
 
 func (v IOStream) P_IOStream() unsafe.Pointer { return v.P }
 func IOStreamGetType() gi.GType {
-	ret := _I.GetGType1(336, "Gio", "IOStream")
+	ret := _I.GetGType1(313, "Gio", "IOStream")
 	return ret
 }
 
@@ -21957,21 +22005,13 @@ type IOStreamAdapter struct {
 }
 
 func IOStreamAdapterGetType() gi.GType {
-	ret := _I.GetGType1(337, "Gio", "IOStreamAdapter")
+	ret := _I.GetGType1(314, "Gio", "IOStreamAdapter")
 	return ret
 }
 
 // ignore GType struct IOStreamClass
 
-// Struct IOStreamPrivate
-type IOStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func IOStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(338, "Gio", "IOStreamPrivate")
-	return ret
-}
+// ignore private struct IOStreamPrivate, type of IOStream is object
 
 // Flags IOStreamSpliceFlags
 type IOStreamSpliceFlags int
@@ -21984,7 +22024,7 @@ const (
 )
 
 func IOStreamSpliceFlagsGetType() gi.GType {
-	ret := _I.GetGType1(339, "Gio", "IOStreamSpliceFlags")
+	ret := _I.GetGType1(315, "Gio", "IOStreamSpliceFlags")
 	return ret
 }
 
@@ -21998,7 +22038,7 @@ type IIcon interface{ P_Icon() unsafe.Pointer }
 
 func (v Icon) P_Icon() unsafe.Pointer { return v.P }
 func IconGetType() gi.GType {
-	ret := _I.GetGType1(340, "Gio", "Icon")
+	ret := _I.GetGType1(316, "Gio", "Icon")
 	return ret
 }
 
@@ -22140,7 +22180,7 @@ type IInetAddress interface{ P_InetAddress() unsafe.Pointer }
 
 func (v InetAddress) P_InetAddress() unsafe.Pointer { return v.P }
 func InetAddressGetType() gi.GType {
-	ret := _I.GetGType1(341, "Gio", "InetAddress")
+	ret := _I.GetGType1(317, "Gio", "InetAddress")
 	return ret
 }
 
@@ -22503,7 +22543,7 @@ type IInetAddressMask interface{ P_InetAddressMask() unsafe.Pointer }
 func (v InetAddressMask) P_InetAddressMask() unsafe.Pointer { return v.P }
 func (v InetAddressMask) P_Initable() unsafe.Pointer        { return v.P }
 func InetAddressMaskGetType() gi.GType {
-	ret := _I.GetGType1(342, "Gio", "InetAddressMask")
+	ret := _I.GetGType1(318, "Gio", "InetAddressMask")
 	return ret
 }
 
@@ -22684,25 +22724,9 @@ func (v InetAddressMask) ToString() (result string) {
 
 // ignore GType struct InetAddressMaskClass
 
-// Struct InetAddressMaskPrivate
-type InetAddressMaskPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct InetAddressMaskPrivate, type of InetAddressMask is object
 
-func InetAddressMaskPrivateGetType() gi.GType {
-	ret := _I.GetGType1(343, "Gio", "InetAddressMaskPrivate")
-	return ret
-}
-
-// Struct InetAddressPrivate
-type InetAddressPrivate struct {
-	P unsafe.Pointer
-}
-
-func InetAddressPrivateGetType() gi.GType {
-	ret := _I.GetGType1(344, "Gio", "InetAddressPrivate")
-	return ret
-}
+// ignore private struct InetAddressPrivate, type of InetAddress is object
 
 // Object InetSocketAddress
 type InetSocketAddress struct {
@@ -22715,7 +22739,7 @@ type IInetSocketAddress interface{ P_InetSocketAddress() unsafe.Pointer }
 
 func (v InetSocketAddress) P_InetSocketAddress() unsafe.Pointer { return v.P }
 func InetSocketAddressGetType() gi.GType {
-	ret := _I.GetGType1(345, "Gio", "InetSocketAddress")
+	ret := _I.GetGType1(319, "Gio", "InetSocketAddress")
 	return ret
 }
 
@@ -22845,15 +22869,7 @@ func (v InetSocketAddress) GetScopeId() (result uint32) {
 
 // ignore GType struct InetSocketAddressClass
 
-// Struct InetSocketAddressPrivate
-type InetSocketAddressPrivate struct {
-	P unsafe.Pointer
-}
-
-func InetSocketAddressPrivateGetType() gi.GType {
-	ret := _I.GetGType1(346, "Gio", "InetSocketAddressPrivate")
-	return ret
-}
+// ignore private struct InetSocketAddressPrivate, type of InetSocketAddress is object
 
 // Interface Initable
 type Initable struct {
@@ -22865,7 +22881,7 @@ type IInitable interface{ P_Initable() unsafe.Pointer }
 
 func (v Initable) P_Initable() unsafe.Pointer { return v.P }
 func InitableGetType() gi.GType {
-	ret := _I.GetGType1(347, "Gio", "Initable")
+	ret := _I.GetGType1(320, "Gio", "Initable")
 	return ret
 }
 
@@ -22943,8 +22959,36 @@ type InputMessage struct {
 const SizeOfStructInputMessage = 56
 
 func InputMessageGetType() gi.GType {
-	ret := _I.GetGType1(348, "Gio", "InputMessage")
+	ret := _I.GetGType1(321, "Gio", "InputMessage")
 	return ret
+}
+
+func (v InputMessage) p() *C.GInputMessage {
+	return (*C.GInputMessage)(v.P)
+}
+func (v InputMessage) Address() (result int /*TODO*/) {
+	return
+}
+func (v InputMessage) Vectors() (result int /*TODO*/) {
+	return
+}
+func (v InputMessage) NumVectors() (result uint32) {
+	result = uint32(v.p().num_vectors)
+	return
+}
+func (v InputMessage) BytesReceived() (result uint64) {
+	result = uint64(v.p().bytes_received)
+	return
+}
+func (v InputMessage) Flags() (result int32) {
+	result = int32(v.p().flags)
+	return
+}
+func (v InputMessage) ControlMessages() (result int /*TODO*/) {
+	return
+}
+func (v InputMessage) NumControlMessages() (result int /*TODO*/) {
+	return
 }
 
 // Object InputStream
@@ -22958,7 +23002,7 @@ type IInputStream interface{ P_InputStream() unsafe.Pointer }
 
 func (v InputStream) P_InputStream() unsafe.Pointer { return v.P }
 func InputStreamGetType() gi.GType {
-	ret := _I.GetGType1(349, "Gio", "InputStream")
+	ret := _I.GetGType1(322, "Gio", "InputStream")
 	return ret
 }
 
@@ -23532,15 +23576,7 @@ func (v InputStream) SkipFinish(result IAsyncResult) (result1 int64, err error) 
 
 // ignore GType struct InputStreamClass
 
-// Struct InputStreamPrivate
-type InputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func InputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(350, "Gio", "InputStreamPrivate")
-	return ret
-}
+// ignore private struct InputStreamPrivate, type of InputStream is object
 
 // Struct InputVector
 type InputVector struct {
@@ -23550,8 +23586,20 @@ type InputVector struct {
 const SizeOfStructInputVector = 16
 
 func InputVectorGetType() gi.GType {
-	ret := _I.GetGType1(351, "Gio", "InputVector")
+	ret := _I.GetGType1(323, "Gio", "InputVector")
 	return ret
+}
+
+func (v InputVector) p() *C.GInputVector {
+	return (*C.GInputVector)(v.P)
+}
+func (v InputVector) Buffer() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().buffer)
+	return
+}
+func (v InputVector) Size() (result uint64) {
+	result = uint64(v.p().size)
+	return
 }
 
 // Interface ListModel
@@ -23564,7 +23612,7 @@ type IListModel interface{ P_ListModel() unsafe.Pointer }
 
 func (v ListModel) P_ListModel() unsafe.Pointer { return v.P }
 func ListModelGetType() gi.GType {
-	ret := _I.GetGType1(352, "Gio", "ListModel")
+	ret := _I.GetGType1(324, "Gio", "ListModel")
 	return ret
 }
 
@@ -23662,7 +23710,7 @@ type IListStore interface{ P_ListStore() unsafe.Pointer }
 func (v ListStore) P_ListStore() unsafe.Pointer { return v.P }
 func (v ListStore) P_ListModel() unsafe.Pointer { return v.P }
 func ListStoreGetType() gi.GType {
-	ret := _I.GetGType1(353, "Gio", "ListStore")
+	ret := _I.GetGType1(325, "Gio", "ListStore")
 	return ret
 }
 
@@ -23865,7 +23913,7 @@ type ILoadableIcon interface{ P_LoadableIcon() unsafe.Pointer }
 
 func (v LoadableIcon) P_LoadableIcon() unsafe.Pointer { return v.P }
 func LoadableIconGetType() gi.GType {
-	ret := _I.GetGType1(354, "Gio", "LoadableIcon")
+	ret := _I.GetGType1(326, "Gio", "LoadableIcon")
 	return ret
 }
 
@@ -23988,7 +24036,7 @@ func (v MemoryInputStream) P_MemoryInputStream() unsafe.Pointer   { return v.P }
 func (v MemoryInputStream) P_PollableInputStream() unsafe.Pointer { return v.P }
 func (v MemoryInputStream) P_Seekable() unsafe.Pointer            { return v.P }
 func MemoryInputStreamGetType() gi.GType {
-	ret := _I.GetGType1(355, "Gio", "MemoryInputStream")
+	ret := _I.GetGType1(327, "Gio", "MemoryInputStream")
 	return ret
 }
 
@@ -24110,15 +24158,7 @@ func (v MemoryInputStream) AddData(data gi.Uint8Array, len1 int64, destroy Destr
 
 // ignore GType struct MemoryInputStreamClass
 
-// Struct MemoryInputStreamPrivate
-type MemoryInputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func MemoryInputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(356, "Gio", "MemoryInputStreamPrivate")
-	return ret
-}
+// ignore private struct MemoryInputStreamPrivate, type of MemoryInputStream is object
 
 // Object MemoryOutputStream
 type MemoryOutputStream struct {
@@ -24135,7 +24175,7 @@ func (v MemoryOutputStream) P_MemoryOutputStream() unsafe.Pointer   { return v.P
 func (v MemoryOutputStream) P_PollableOutputStream() unsafe.Pointer { return v.P }
 func (v MemoryOutputStream) P_Seekable() unsafe.Pointer             { return v.P }
 func MemoryOutputStreamGetType() gi.GType {
-	ret := _I.GetGType1(357, "Gio", "MemoryOutputStream")
+	ret := _I.GetGType1(328, "Gio", "MemoryOutputStream")
 	return ret
 }
 
@@ -24247,15 +24287,7 @@ func (v MemoryOutputStream) StealData() (result unsafe.Pointer) {
 
 // ignore GType struct MemoryOutputStreamClass
 
-// Struct MemoryOutputStreamPrivate
-type MemoryOutputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func MemoryOutputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(358, "Gio", "MemoryOutputStreamPrivate")
-	return ret
-}
+// ignore private struct MemoryOutputStreamPrivate, type of MemoryOutputStream is object
 
 // Object Menu
 type Menu struct {
@@ -24268,7 +24300,7 @@ type IMenu interface{ P_Menu() unsafe.Pointer }
 
 func (v Menu) P_Menu() unsafe.Pointer { return v.P }
 func MenuGetType() gi.GType {
-	ret := _I.GetGType1(359, "Gio", "Menu")
+	ret := _I.GetGType1(329, "Gio", "Menu")
 	return ret
 }
 
@@ -24632,7 +24664,7 @@ type IMenuAttributeIter interface{ P_MenuAttributeIter() unsafe.Pointer }
 
 func (v MenuAttributeIter) P_MenuAttributeIter() unsafe.Pointer { return v.P }
 func MenuAttributeIterGetType() gi.GType {
-	ret := _I.GetGType1(360, "Gio", "MenuAttributeIter")
+	ret := _I.GetGType1(330, "Gio", "MenuAttributeIter")
 	return ret
 }
 
@@ -24719,15 +24751,7 @@ func (v MenuAttributeIter) Next() (result bool) {
 
 // ignore GType struct MenuAttributeIterClass
 
-// Struct MenuAttributeIterPrivate
-type MenuAttributeIterPrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuAttributeIterPrivateGetType() gi.GType {
-	ret := _I.GetGType1(361, "Gio", "MenuAttributeIterPrivate")
-	return ret
-}
+// ignore private struct MenuAttributeIterPrivate, type of MenuAttributeIter is object
 
 // Object MenuItem
 type MenuItem struct {
@@ -24740,7 +24764,7 @@ type IMenuItem interface{ P_MenuItem() unsafe.Pointer }
 
 func (v MenuItem) P_MenuItem() unsafe.Pointer { return v.P }
 func MenuItemGetType() gi.GType {
-	ret := _I.GetGType1(362, "Gio", "MenuItem")
+	ret := _I.GetGType1(331, "Gio", "MenuItem")
 	return ret
 }
 
@@ -25079,7 +25103,7 @@ type IMenuLinkIter interface{ P_MenuLinkIter() unsafe.Pointer }
 
 func (v MenuLinkIter) P_MenuLinkIter() unsafe.Pointer { return v.P }
 func MenuLinkIterGetType() gi.GType {
-	ret := _I.GetGType1(363, "Gio", "MenuLinkIter")
+	ret := _I.GetGType1(332, "Gio", "MenuLinkIter")
 	return ret
 }
 
@@ -25166,15 +25190,7 @@ func (v MenuLinkIter) Next() (result bool) {
 
 // ignore GType struct MenuLinkIterClass
 
-// Struct MenuLinkIterPrivate
-type MenuLinkIterPrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuLinkIterPrivateGetType() gi.GType {
-	ret := _I.GetGType1(364, "Gio", "MenuLinkIterPrivate")
-	return ret
-}
+// ignore private struct MenuLinkIterPrivate, type of MenuLinkIter is object
 
 // Object MenuModel
 type MenuModel struct {
@@ -25187,7 +25203,7 @@ type IMenuModel interface{ P_MenuModel() unsafe.Pointer }
 
 func (v MenuModel) P_MenuModel() unsafe.Pointer { return v.P }
 func MenuModelGetType() gi.GType {
-	ret := _I.GetGType1(365, "Gio", "MenuModel")
+	ret := _I.GetGType1(333, "Gio", "MenuModel")
 	return ret
 }
 
@@ -25348,15 +25364,7 @@ func (v MenuModel) IterateItemLinks(item_index int32) (result MenuLinkIter) {
 
 // ignore GType struct MenuModelClass
 
-// Struct MenuModelPrivate
-type MenuModelPrivate struct {
-	P unsafe.Pointer
-}
-
-func MenuModelPrivateGetType() gi.GType {
-	ret := _I.GetGType1(366, "Gio", "MenuModelPrivate")
-	return ret
-}
+// ignore private struct MenuModelPrivate, type of MenuModel is object
 
 // Interface Mount
 type Mount struct {
@@ -25368,7 +25376,7 @@ type IMount interface{ P_Mount() unsafe.Pointer }
 
 func (v Mount) P_Mount() unsafe.Pointer { return v.P }
 func MountGetType() gi.GType {
-	ret := _I.GetGType1(367, "Gio", "Mount")
+	ret := _I.GetGType1(334, "Gio", "Mount")
 	return ret
 }
 
@@ -26069,7 +26077,7 @@ const (
 )
 
 func MountMountFlagsGetType() gi.GType {
-	ret := _I.GetGType1(368, "Gio", "MountMountFlags")
+	ret := _I.GetGType1(335, "Gio", "MountMountFlags")
 	return ret
 }
 
@@ -26084,7 +26092,7 @@ type IMountOperation interface{ P_MountOperation() unsafe.Pointer }
 
 func (v MountOperation) P_MountOperation() unsafe.Pointer { return v.P }
 func MountOperationGetType() gi.GType {
-	ret := _I.GetGType1(369, "Gio", "MountOperation")
+	ret := _I.GetGType1(336, "Gio", "MountOperation")
 	return ret
 }
 
@@ -26434,15 +26442,7 @@ func (v MountOperation) SetUsername(username string) {
 
 // ignore GType struct MountOperationClass
 
-// Struct MountOperationPrivate
-type MountOperationPrivate struct {
-	P unsafe.Pointer
-}
-
-func MountOperationPrivateGetType() gi.GType {
-	ret := _I.GetGType1(370, "Gio", "MountOperationPrivate")
-	return ret
-}
+// ignore private struct MountOperationPrivate, type of MountOperation is object
 
 // Enum MountOperationResult
 type MountOperationResultEnum int
@@ -26454,7 +26454,7 @@ const (
 )
 
 func MountOperationResultGetType() gi.GType {
-	ret := _I.GetGType1(371, "Gio", "MountOperationResult")
+	ret := _I.GetGType1(337, "Gio", "MountOperationResult")
 	return ret
 }
 
@@ -26467,7 +26467,7 @@ const (
 )
 
 func MountUnmountFlagsGetType() gi.GType {
-	ret := _I.GetGType1(372, "Gio", "MountUnmountFlags")
+	ret := _I.GetGType1(338, "Gio", "MountUnmountFlags")
 	return ret
 }
 
@@ -26477,7 +26477,7 @@ type NativeSocketAddress struct {
 }
 
 func NativeSocketAddressGetType() gi.GType {
-	ret := _I.GetGType1(373, "Gio", "NativeSocketAddress")
+	ret := _I.GetGType1(339, "Gio", "NativeSocketAddress")
 	return ret
 }
 
@@ -26492,7 +26492,7 @@ type INativeVolumeMonitor interface{ P_NativeVolumeMonitor() unsafe.Pointer }
 
 func (v NativeVolumeMonitor) P_NativeVolumeMonitor() unsafe.Pointer { return v.P }
 func NativeVolumeMonitorGetType() gi.GType {
-	ret := _I.GetGType1(374, "Gio", "NativeVolumeMonitor")
+	ret := _I.GetGType1(340, "Gio", "NativeVolumeMonitor")
 	return ret
 }
 
@@ -26511,7 +26511,7 @@ type INetworkAddress interface{ P_NetworkAddress() unsafe.Pointer }
 func (v NetworkAddress) P_NetworkAddress() unsafe.Pointer    { return v.P }
 func (v NetworkAddress) P_SocketConnectable() unsafe.Pointer { return v.P }
 func NetworkAddressGetType() gi.GType {
-	ret := _I.GetGType1(375, "Gio", "NetworkAddress")
+	ret := _I.GetGType1(341, "Gio", "NetworkAddress")
 	return ret
 }
 
@@ -26670,15 +26670,7 @@ func (v NetworkAddress) GetScheme() (result string) {
 
 // ignore GType struct NetworkAddressClass
 
-// Struct NetworkAddressPrivate
-type NetworkAddressPrivate struct {
-	P unsafe.Pointer
-}
-
-func NetworkAddressPrivateGetType() gi.GType {
-	ret := _I.GetGType1(376, "Gio", "NetworkAddressPrivate")
-	return ret
-}
+// ignore private struct NetworkAddressPrivate, type of NetworkAddress is object
 
 // Enum NetworkConnectivity
 type NetworkConnectivityEnum int
@@ -26691,7 +26683,7 @@ const (
 )
 
 func NetworkConnectivityGetType() gi.GType {
-	ret := _I.GetGType1(377, "Gio", "NetworkConnectivity")
+	ret := _I.GetGType1(342, "Gio", "NetworkConnectivity")
 	return ret
 }
 
@@ -26705,7 +26697,7 @@ type INetworkMonitor interface{ P_NetworkMonitor() unsafe.Pointer }
 
 func (v NetworkMonitor) P_NetworkMonitor() unsafe.Pointer { return v.P }
 func NetworkMonitorGetType() gi.GType {
-	ret := _I.GetGType1(378, "Gio", "NetworkMonitor")
+	ret := _I.GetGType1(343, "Gio", "NetworkMonitor")
 	return ret
 }
 
@@ -26896,7 +26888,7 @@ type INetworkService interface{ P_NetworkService() unsafe.Pointer }
 func (v NetworkService) P_NetworkService() unsafe.Pointer    { return v.P }
 func (v NetworkService) P_SocketConnectable() unsafe.Pointer { return v.P }
 func NetworkServiceGetType() gi.GType {
-	ret := _I.GetGType1(379, "Gio", "NetworkService")
+	ret := _I.GetGType1(344, "Gio", "NetworkService")
 	return ret
 }
 
@@ -27024,15 +27016,7 @@ func (v NetworkService) SetScheme(scheme string) {
 
 // ignore GType struct NetworkServiceClass
 
-// Struct NetworkServicePrivate
-type NetworkServicePrivate struct {
-	P unsafe.Pointer
-}
-
-func NetworkServicePrivateGetType() gi.GType {
-	ret := _I.GetGType1(380, "Gio", "NetworkServicePrivate")
-	return ret
-}
+// ignore private struct NetworkServicePrivate, type of NetworkService is object
 
 // Object Notification
 type Notification struct {
@@ -27045,7 +27029,7 @@ type INotification interface{ P_Notification() unsafe.Pointer }
 
 func (v Notification) P_Notification() unsafe.Pointer { return v.P }
 func NotificationGetType() gi.GType {
-	ret := _I.GetGType1(381, "Gio", "Notification")
+	ret := _I.GetGType1(345, "Gio", "Notification")
 	return ret
 }
 
@@ -27260,7 +27244,7 @@ const (
 )
 
 func NotificationPriorityGetType() gi.GType {
-	ret := _I.GetGType1(382, "Gio", "NotificationPriority")
+	ret := _I.GetGType1(346, "Gio", "NotificationPriority")
 	return ret
 }
 
@@ -27272,8 +27256,33 @@ type OutputMessage struct {
 const SizeOfStructOutputMessage = 40
 
 func OutputMessageGetType() gi.GType {
-	ret := _I.GetGType1(383, "Gio", "OutputMessage")
+	ret := _I.GetGType1(347, "Gio", "OutputMessage")
 	return ret
+}
+
+func (v OutputMessage) p() *C.GOutputMessage {
+	return (*C.GOutputMessage)(v.P)
+}
+func (v OutputMessage) Address() (result int /*TODO*/) {
+	return
+}
+func (v OutputMessage) Vectors() (result int /*TODO*/) {
+	return
+}
+func (v OutputMessage) NumVectors() (result uint32) {
+	result = uint32(v.p().num_vectors)
+	return
+}
+func (v OutputMessage) BytesSent() (result uint32) {
+	result = uint32(v.p().bytes_sent)
+	return
+}
+func (v OutputMessage) ControlMessages() (result int /*TODO*/) {
+	return
+}
+func (v OutputMessage) NumControlMessages() (result uint32) {
+	result = uint32(v.p().num_control_messages)
+	return
 }
 
 // Object OutputStream
@@ -27287,7 +27296,7 @@ type IOutputStream interface{ P_OutputStream() unsafe.Pointer }
 
 func (v OutputStream) P_OutputStream() unsafe.Pointer { return v.P }
 func OutputStreamGetType() gi.GType {
-	ret := _I.GetGType1(384, "Gio", "OutputStream")
+	ret := _I.GetGType1(348, "Gio", "OutputStream")
 	return ret
 }
 
@@ -27984,15 +27993,7 @@ func (v OutputStream) WriteFinish(result IAsyncResult) (result1 int64, err error
 
 // ignore GType struct OutputStreamClass
 
-// Struct OutputStreamPrivate
-type OutputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func OutputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(385, "Gio", "OutputStreamPrivate")
-	return ret
-}
+// ignore private struct OutputStreamPrivate, type of OutputStream is object
 
 // Flags OutputStreamSpliceFlags
 type OutputStreamSpliceFlags int
@@ -28004,7 +28005,7 @@ const (
 )
 
 func OutputStreamSpliceFlagsGetType() gi.GType {
-	ret := _I.GetGType1(386, "Gio", "OutputStreamSpliceFlags")
+	ret := _I.GetGType1(349, "Gio", "OutputStreamSpliceFlags")
 	return ret
 }
 
@@ -28016,8 +28017,20 @@ type OutputVector struct {
 const SizeOfStructOutputVector = 16
 
 func OutputVectorGetType() gi.GType {
-	ret := _I.GetGType1(387, "Gio", "OutputVector")
+	ret := _I.GetGType1(350, "Gio", "OutputVector")
 	return ret
+}
+
+func (v OutputVector) p() *C.GOutputVector {
+	return (*C.GOutputVector)(v.P)
+}
+func (v OutputVector) Buffer() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().buffer)
+	return
+}
+func (v OutputVector) Size() (result uint64) {
+	result = uint64(v.p().size)
+	return
 }
 
 // Enum PasswordSave
@@ -28030,7 +28043,7 @@ const (
 )
 
 func PasswordSaveGetType() gi.GType {
-	ret := _I.GetGType1(388, "Gio", "PasswordSave")
+	ret := _I.GetGType1(351, "Gio", "PasswordSave")
 	return ret
 }
 
@@ -28045,7 +28058,7 @@ type IPermission interface{ P_Permission() unsafe.Pointer }
 
 func (v Permission) P_Permission() unsafe.Pointer { return v.P }
 func PermissionGetType() gi.GType {
-	ret := _I.GetGType1(389, "Gio", "Permission")
+	ret := _I.GetGType1(352, "Gio", "Permission")
 	return ret
 }
 
@@ -28303,15 +28316,7 @@ func (v Permission) ReleaseFinish(result IAsyncResult) (result1 bool, err error)
 
 // ignore GType struct PermissionClass
 
-// Struct PermissionPrivate
-type PermissionPrivate struct {
-	P unsafe.Pointer
-}
-
-func PermissionPrivateGetType() gi.GType {
-	ret := _I.GetGType1(390, "Gio", "PermissionPrivate")
-	return ret
-}
+// ignore private struct PermissionPrivate, type of Permission is object
 
 // Interface PollableInputStream
 type PollableInputStream struct {
@@ -28323,7 +28328,7 @@ type IPollableInputStream interface{ P_PollableInputStream() unsafe.Pointer }
 
 func (v PollableInputStream) P_PollableInputStream() unsafe.Pointer { return v.P }
 func PollableInputStreamGetType() gi.GType {
-	ret := _I.GetGType1(391, "Gio", "PollableInputStream")
+	ret := _I.GetGType1(353, "Gio", "PollableInputStream")
 	return ret
 }
 
@@ -28433,7 +28438,7 @@ type IPollableOutputStream interface{ P_PollableOutputStream() unsafe.Pointer }
 
 func (v PollableOutputStream) P_PollableOutputStream() unsafe.Pointer { return v.P }
 func PollableOutputStreamGetType() gi.GType {
-	ret := _I.GetGType1(392, "Gio", "PollableOutputStream")
+	ret := _I.GetGType1(354, "Gio", "PollableOutputStream")
 	return ret
 }
 
@@ -28557,7 +28562,7 @@ type IPropertyAction interface{ P_PropertyAction() unsafe.Pointer }
 func (v PropertyAction) P_PropertyAction() unsafe.Pointer { return v.P }
 func (v PropertyAction) P_Action() unsafe.Pointer         { return v.P }
 func PropertyActionGetType() gi.GType {
-	ret := _I.GetGType1(393, "Gio", "PropertyAction")
+	ret := _I.GetGType1(355, "Gio", "PropertyAction")
 	return ret
 }
 
@@ -28605,7 +28610,7 @@ type IProxy interface{ P_Proxy() unsafe.Pointer }
 
 func (v Proxy) P_Proxy() unsafe.Pointer { return v.P }
 func ProxyGetType() gi.GType {
-	ret := _I.GetGType1(394, "Gio", "Proxy")
+	ret := _I.GetGType1(356, "Gio", "Proxy")
 	return ret
 }
 
@@ -28776,7 +28781,7 @@ type IProxyAddress interface{ P_ProxyAddress() unsafe.Pointer }
 
 func (v ProxyAddress) P_ProxyAddress() unsafe.Pointer { return v.P }
 func ProxyAddressGetType() gi.GType {
-	ret := _I.GetGType1(395, "Gio", "ProxyAddress")
+	ret := _I.GetGType1(357, "Gio", "ProxyAddress")
 	return ret
 }
 
@@ -28969,31 +28974,15 @@ type IProxyAddressEnumerator interface{ P_ProxyAddressEnumerator() unsafe.Pointe
 
 func (v ProxyAddressEnumerator) P_ProxyAddressEnumerator() unsafe.Pointer { return v.P }
 func ProxyAddressEnumeratorGetType() gi.GType {
-	ret := _I.GetGType1(396, "Gio", "ProxyAddressEnumerator")
+	ret := _I.GetGType1(358, "Gio", "ProxyAddressEnumerator")
 	return ret
 }
 
 // ignore GType struct ProxyAddressEnumeratorClass
 
-// Struct ProxyAddressEnumeratorPrivate
-type ProxyAddressEnumeratorPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct ProxyAddressEnumeratorPrivate, type of ProxyAddressEnumerator is object
 
-func ProxyAddressEnumeratorPrivateGetType() gi.GType {
-	ret := _I.GetGType1(397, "Gio", "ProxyAddressEnumeratorPrivate")
-	return ret
-}
-
-// Struct ProxyAddressPrivate
-type ProxyAddressPrivate struct {
-	P unsafe.Pointer
-}
-
-func ProxyAddressPrivateGetType() gi.GType {
-	ret := _I.GetGType1(398, "Gio", "ProxyAddressPrivate")
-	return ret
-}
+// ignore private struct ProxyAddressPrivate, type of ProxyAddress is object
 
 // ignore GType struct ProxyInterface
 
@@ -29007,7 +28996,7 @@ type IProxyResolver interface{ P_ProxyResolver() unsafe.Pointer }
 
 func (v ProxyResolver) P_ProxyResolver() unsafe.Pointer { return v.P }
 func ProxyResolverGetType() gi.GType {
-	ret := _I.GetGType1(399, "Gio", "ProxyResolver")
+	ret := _I.GetGType1(359, "Gio", "ProxyResolver")
 	return ret
 }
 
@@ -29169,7 +29158,7 @@ type IRemoteActionGroup interface{ P_RemoteActionGroup() unsafe.Pointer }
 
 func (v RemoteActionGroup) P_RemoteActionGroup() unsafe.Pointer { return v.P }
 func RemoteActionGroupGetType() gi.GType {
-	ret := _I.GetGType1(400, "Gio", "RemoteActionGroup")
+	ret := _I.GetGType1(360, "Gio", "RemoteActionGroup")
 	return ret
 }
 
@@ -29234,7 +29223,7 @@ type IResolver interface{ P_Resolver() unsafe.Pointer }
 
 func (v Resolver) P_Resolver() unsafe.Pointer { return v.P }
 func ResolverGetType() gi.GType {
-	ret := _I.GetGType1(401, "Gio", "Resolver")
+	ret := _I.GetGType1(361, "Gio", "Resolver")
 	return ret
 }
 
@@ -29701,19 +29690,11 @@ const (
 )
 
 func ResolverErrorGetType() gi.GType {
-	ret := _I.GetGType1(402, "Gio", "ResolverError")
+	ret := _I.GetGType1(362, "Gio", "ResolverError")
 	return ret
 }
 
-// Struct ResolverPrivate
-type ResolverPrivate struct {
-	P unsafe.Pointer
-}
-
-func ResolverPrivateGetType() gi.GType {
-	ret := _I.GetGType1(403, "Gio", "ResolverPrivate")
-	return ret
-}
+// ignore private struct ResolverPrivate, type of Resolver is object
 
 // Enum ResolverRecordType
 type ResolverRecordTypeEnum int
@@ -29727,7 +29708,7 @@ const (
 )
 
 func ResolverRecordTypeGetType() gi.GType {
-	ret := _I.GetGType1(404, "Gio", "ResolverRecordType")
+	ret := _I.GetGType1(363, "Gio", "ResolverRecordType")
 	return ret
 }
 
@@ -29737,7 +29718,7 @@ type Resource struct {
 }
 
 func ResourceGetType() gi.GType {
-	ret := _I.GetGType1(405, "Gio", "Resource")
+	ret := _I.GetGType1(364, "Gio", "Resource")
 	return ret
 }
 
@@ -29974,7 +29955,7 @@ const (
 )
 
 func ResourceErrorGetType() gi.GType {
-	ret := _I.GetGType1(406, "Gio", "ResourceError")
+	ret := _I.GetGType1(365, "Gio", "ResourceError")
 	return ret
 }
 
@@ -29987,7 +29968,7 @@ const (
 )
 
 func ResourceFlagsGetType() gi.GType {
-	ret := _I.GetGType1(407, "Gio", "ResourceFlags")
+	ret := _I.GetGType1(366, "Gio", "ResourceFlags")
 	return ret
 }
 
@@ -29999,7 +29980,7 @@ const (
 )
 
 func ResourceLookupFlagsGetType() gi.GType {
-	ret := _I.GetGType1(408, "Gio", "ResourceLookupFlags")
+	ret := _I.GetGType1(367, "Gio", "ResourceLookupFlags")
 	return ret
 }
 
@@ -30013,7 +29994,7 @@ type ISeekable interface{ P_Seekable() unsafe.Pointer }
 
 func (v Seekable) P_Seekable() unsafe.Pointer { return v.P }
 func SeekableGetType() gi.GType {
-	ret := _I.GetGType1(409, "Gio", "Seekable")
+	ret := _I.GetGType1(368, "Gio", "Seekable")
 	return ret
 }
 
@@ -30147,7 +30128,7 @@ type ISettings interface{ P_Settings() unsafe.Pointer }
 
 func (v Settings) P_Settings() unsafe.Pointer { return v.P }
 func SettingsGetType() gi.GType {
-	ret := _I.GetGType1(410, "Gio", "Settings")
+	ret := _I.GetGType1(369, "Gio", "Settings")
 	return ret
 }
 
@@ -31307,7 +31288,7 @@ type ISettingsBackend interface{ P_SettingsBackend() unsafe.Pointer }
 
 func (v SettingsBackend) P_SettingsBackend() unsafe.Pointer { return v.P }
 func SettingsBackendGetType() gi.GType {
-	ret := _I.GetGType1(411, "Gio", "SettingsBackend")
+	ret := _I.GetGType1(370, "Gio", "SettingsBackend")
 	return ret
 }
 
@@ -31481,15 +31462,7 @@ func (v SettingsBackend) WritableChanged(key string) {
 
 // ignore GType struct SettingsBackendClass
 
-// Struct SettingsBackendPrivate
-type SettingsBackendPrivate struct {
-	P unsafe.Pointer
-}
-
-func SettingsBackendPrivateGetType() gi.GType {
-	ret := _I.GetGType1(412, "Gio", "SettingsBackendPrivate")
-	return ret
-}
+// ignore private struct SettingsBackendPrivate, type of SettingsBackend is object
 
 // Flags SettingsBindFlags
 type SettingsBindFlags int
@@ -31504,7 +31477,7 @@ const (
 )
 
 func SettingsBindFlagsGetType() gi.GType {
-	ret := _I.GetGType1(413, "Gio", "SettingsBindFlags")
+	ret := _I.GetGType1(371, "Gio", "SettingsBindFlags")
 	return ret
 }
 
@@ -31547,15 +31520,7 @@ func CallSettingsGetMapping(fn SettingsGetMapping, result unsafe.Pointer, args [
 	*result1 = fn_ret_result1
 }
 
-// Struct SettingsPrivate
-type SettingsPrivate struct {
-	P unsafe.Pointer
-}
-
-func SettingsPrivateGetType() gi.GType {
-	ret := _I.GetGType1(414, "Gio", "SettingsPrivate")
-	return ret
-}
+// ignore private struct SettingsPrivate, type of Settings is object
 
 // Struct SettingsSchema
 type SettingsSchema struct {
@@ -31563,7 +31528,7 @@ type SettingsSchema struct {
 }
 
 func SettingsSchemaGetType() gi.GType {
-	ret := _I.GetGType1(415, "Gio", "SettingsSchema")
+	ret := _I.GetGType1(372, "Gio", "SettingsSchema")
 	return ret
 }
 
@@ -31724,7 +31689,7 @@ type SettingsSchemaKey struct {
 }
 
 func SettingsSchemaKeyGetType() gi.GType {
-	ret := _I.GetGType1(416, "Gio", "SettingsSchemaKey")
+	ret := _I.GetGType1(373, "Gio", "SettingsSchemaKey")
 	return ret
 }
 
@@ -31894,7 +31859,7 @@ type SettingsSchemaSource struct {
 }
 
 func SettingsSchemaSourceGetType() gi.GType {
-	ret := _I.GetGType1(417, "Gio", "SettingsSchemaSource")
+	ret := _I.GetGType1(374, "Gio", "SettingsSchemaSource")
 	return ret
 }
 
@@ -32040,7 +32005,7 @@ type ISimpleAction interface{ P_SimpleAction() unsafe.Pointer }
 func (v SimpleAction) P_SimpleAction() unsafe.Pointer { return v.P }
 func (v SimpleAction) P_Action() unsafe.Pointer       { return v.P }
 func SimpleActionGetType() gi.GType {
-	ret := _I.GetGType1(418, "Gio", "SimpleAction")
+	ret := _I.GetGType1(375, "Gio", "SimpleAction")
 	return ret
 }
 
@@ -32160,7 +32125,7 @@ func (v SimpleActionGroup) P_SimpleActionGroup() unsafe.Pointer { return v.P }
 func (v SimpleActionGroup) P_ActionGroup() unsafe.Pointer       { return v.P }
 func (v SimpleActionGroup) P_ActionMap() unsafe.Pointer         { return v.P }
 func SimpleActionGroupGetType() gi.GType {
-	ret := _I.GetGType1(419, "Gio", "SimpleActionGroup")
+	ret := _I.GetGType1(376, "Gio", "SimpleActionGroup")
 	return ret
 }
 
@@ -32273,15 +32238,7 @@ func (v SimpleActionGroup) Remove(action_name string) {
 
 // ignore GType struct SimpleActionGroupClass
 
-// Struct SimpleActionGroupPrivate
-type SimpleActionGroupPrivate struct {
-	P unsafe.Pointer
-}
-
-func SimpleActionGroupPrivateGetType() gi.GType {
-	ret := _I.GetGType1(420, "Gio", "SimpleActionGroupPrivate")
-	return ret
-}
+// ignore private struct SimpleActionGroupPrivate, type of SimpleActionGroup is object
 
 // Object SimpleAsyncResult
 type SimpleAsyncResult struct {
@@ -32296,7 +32253,7 @@ type ISimpleAsyncResult interface{ P_SimpleAsyncResult() unsafe.Pointer }
 func (v SimpleAsyncResult) P_SimpleAsyncResult() unsafe.Pointer { return v.P }
 func (v SimpleAsyncResult) P_AsyncResult() unsafe.Pointer       { return v.P }
 func SimpleAsyncResultGetType() gi.GType {
-	ret := _I.GetGType1(421, "Gio", "SimpleAsyncResult")
+	ret := _I.GetGType1(377, "Gio", "SimpleAsyncResult")
 	return ret
 }
 
@@ -32633,7 +32590,7 @@ type ISimpleIOStream interface{ P_SimpleIOStream() unsafe.Pointer }
 
 func (v SimpleIOStream) P_SimpleIOStream() unsafe.Pointer { return v.P }
 func SimpleIOStreamGetType() gi.GType {
-	ret := _I.GetGType1(422, "Gio", "SimpleIOStream")
+	ret := _I.GetGType1(378, "Gio", "SimpleIOStream")
 	return ret
 }
 
@@ -32679,7 +32636,7 @@ type ISimplePermission interface{ P_SimplePermission() unsafe.Pointer }
 
 func (v SimplePermission) P_SimplePermission() unsafe.Pointer { return v.P }
 func SimplePermissionGetType() gi.GType {
-	ret := _I.GetGType1(423, "Gio", "SimplePermission")
+	ret := _I.GetGType1(379, "Gio", "SimplePermission")
 	return ret
 }
 
@@ -32716,7 +32673,7 @@ type ISimpleProxyResolver interface{ P_SimpleProxyResolver() unsafe.Pointer }
 func (v SimpleProxyResolver) P_SimpleProxyResolver() unsafe.Pointer { return v.P }
 func (v SimpleProxyResolver) P_ProxyResolver() unsafe.Pointer       { return v.P }
 func SimpleProxyResolverGetType() gi.GType {
-	ret := _I.GetGType1(424, "Gio", "SimpleProxyResolver")
+	ret := _I.GetGType1(380, "Gio", "SimpleProxyResolver")
 	return ret
 }
 
@@ -32808,15 +32765,7 @@ func (v SimpleProxyResolver) SetUriProxy(uri_scheme string, proxy string) {
 
 // ignore GType struct SimpleProxyResolverClass
 
-// Struct SimpleProxyResolverPrivate
-type SimpleProxyResolverPrivate struct {
-	P unsafe.Pointer
-}
-
-func SimpleProxyResolverPrivateGetType() gi.GType {
-	ret := _I.GetGType1(425, "Gio", "SimpleProxyResolverPrivate")
-	return ret
-}
+// ignore private struct SimpleProxyResolverPrivate, type of SimpleProxyResolver is object
 
 // Object Socket
 type Socket struct {
@@ -32833,7 +32782,7 @@ func (v Socket) P_Socket() unsafe.Pointer        { return v.P }
 func (v Socket) P_DatagramBased() unsafe.Pointer { return v.P }
 func (v Socket) P_Initable() unsafe.Pointer      { return v.P }
 func SocketGetType() gi.GType {
-	ret := _I.GetGType1(426, "Gio", "Socket")
+	ret := _I.GetGType1(381, "Gio", "Socket")
 	return ret
 }
 
@@ -34248,7 +34197,7 @@ type ISocketAddress interface{ P_SocketAddress() unsafe.Pointer }
 func (v SocketAddress) P_SocketAddress() unsafe.Pointer     { return v.P }
 func (v SocketAddress) P_SocketConnectable() unsafe.Pointer { return v.P }
 func SocketAddressGetType() gi.GType {
-	ret := _I.GetGType1(427, "Gio", "SocketAddress")
+	ret := _I.GetGType1(382, "Gio", "SocketAddress")
 	return ret
 }
 
@@ -34350,7 +34299,7 @@ type ISocketAddressEnumerator interface{ P_SocketAddressEnumerator() unsafe.Poin
 
 func (v SocketAddressEnumerator) P_SocketAddressEnumerator() unsafe.Pointer { return v.P }
 func SocketAddressEnumeratorGetType() gi.GType {
-	ret := _I.GetGType1(428, "Gio", "SocketAddressEnumerator")
+	ret := _I.GetGType1(383, "Gio", "SocketAddressEnumerator")
 	return ret
 }
 
@@ -34457,7 +34406,7 @@ type ISocketClient interface{ P_SocketClient() unsafe.Pointer }
 
 func (v SocketClient) P_SocketClient() unsafe.Pointer { return v.P }
 func SocketClientGetType() gi.GType {
-	ret := _I.GetGType1(429, "Gio", "SocketClient")
+	ret := _I.GetGType1(384, "Gio", "SocketClient")
 	return ret
 }
 
@@ -35245,19 +35194,11 @@ const (
 )
 
 func SocketClientEventGetType() gi.GType {
-	ret := _I.GetGType1(430, "Gio", "SocketClientEvent")
+	ret := _I.GetGType1(385, "Gio", "SocketClientEvent")
 	return ret
 }
 
-// Struct SocketClientPrivate
-type SocketClientPrivate struct {
-	P unsafe.Pointer
-}
-
-func SocketClientPrivateGetType() gi.GType {
-	ret := _I.GetGType1(431, "Gio", "SocketClientPrivate")
-	return ret
-}
+// ignore private struct SocketClientPrivate, type of SocketClient is object
 
 // Interface SocketConnectable
 type SocketConnectable struct {
@@ -35269,7 +35210,7 @@ type ISocketConnectable interface{ P_SocketConnectable() unsafe.Pointer }
 
 func (v SocketConnectable) P_SocketConnectable() unsafe.Pointer { return v.P }
 func SocketConnectableGetType() gi.GType {
-	ret := _I.GetGType1(432, "Gio", "SocketConnectable")
+	ret := _I.GetGType1(386, "Gio", "SocketConnectable")
 	return ret
 }
 
@@ -35340,7 +35281,7 @@ type ISocketConnection interface{ P_SocketConnection() unsafe.Pointer }
 
 func (v SocketConnection) P_SocketConnection() unsafe.Pointer { return v.P }
 func SocketConnectionGetType() gi.GType {
-	ret := _I.GetGType1(433, "Gio", "SocketConnection")
+	ret := _I.GetGType1(387, "Gio", "SocketConnection")
 	return ret
 }
 
@@ -35574,15 +35515,7 @@ func (v SocketConnection) IsConnected() (result bool) {
 
 // ignore GType struct SocketConnectionClass
 
-// Struct SocketConnectionPrivate
-type SocketConnectionPrivate struct {
-	P unsafe.Pointer
-}
-
-func SocketConnectionPrivateGetType() gi.GType {
-	ret := _I.GetGType1(434, "Gio", "SocketConnectionPrivate")
-	return ret
-}
+// ignore private struct SocketConnectionPrivate, type of SocketConnection is object
 
 // Object SocketControlMessage
 type SocketControlMessage struct {
@@ -35595,7 +35528,7 @@ type ISocketControlMessage interface{ P_SocketControlMessage() unsafe.Pointer }
 
 func (v SocketControlMessage) P_SocketControlMessage() unsafe.Pointer { return v.P }
 func SocketControlMessageGetType() gi.GType {
-	ret := _I.GetGType1(435, "Gio", "SocketControlMessage")
+	ret := _I.GetGType1(388, "Gio", "SocketControlMessage")
 	return ret
 }
 
@@ -35700,15 +35633,7 @@ func (v SocketControlMessage) Serialize(data unsafe.Pointer) {
 
 // ignore GType struct SocketControlMessageClass
 
-// Struct SocketControlMessagePrivate
-type SocketControlMessagePrivate struct {
-	P unsafe.Pointer
-}
-
-func SocketControlMessagePrivateGetType() gi.GType {
-	ret := _I.GetGType1(436, "Gio", "SocketControlMessagePrivate")
-	return ret
-}
+// ignore private struct SocketControlMessagePrivate, type of SocketControlMessage is object
 
 // Enum SocketFamily
 type SocketFamilyEnum int
@@ -35721,7 +35646,7 @@ const (
 )
 
 func SocketFamilyGetType() gi.GType {
-	ret := _I.GetGType1(437, "Gio", "SocketFamily")
+	ret := _I.GetGType1(389, "Gio", "SocketFamily")
 	return ret
 }
 
@@ -35736,7 +35661,7 @@ type ISocketListener interface{ P_SocketListener() unsafe.Pointer }
 
 func (v SocketListener) P_SocketListener() unsafe.Pointer { return v.P }
 func SocketListenerGetType() gi.GType {
-	ret := _I.GetGType1(438, "Gio", "SocketListener")
+	ret := _I.GetGType1(390, "Gio", "SocketListener")
 	return ret
 }
 
@@ -36125,19 +36050,11 @@ const (
 )
 
 func SocketListenerEventGetType() gi.GType {
-	ret := _I.GetGType1(439, "Gio", "SocketListenerEvent")
+	ret := _I.GetGType1(391, "Gio", "SocketListenerEvent")
 	return ret
 }
 
-// Struct SocketListenerPrivate
-type SocketListenerPrivate struct {
-	P unsafe.Pointer
-}
-
-func SocketListenerPrivateGetType() gi.GType {
-	ret := _I.GetGType1(440, "Gio", "SocketListenerPrivate")
-	return ret
-}
+// ignore private struct SocketListenerPrivate, type of SocketListener is object
 
 // Flags SocketMsgFlags
 type SocketMsgFlags int
@@ -36150,19 +36067,11 @@ const (
 )
 
 func SocketMsgFlagsGetType() gi.GType {
-	ret := _I.GetGType1(441, "Gio", "SocketMsgFlags")
+	ret := _I.GetGType1(392, "Gio", "SocketMsgFlags")
 	return ret
 }
 
-// Struct SocketPrivate
-type SocketPrivate struct {
-	P unsafe.Pointer
-}
-
-func SocketPrivateGetType() gi.GType {
-	ret := _I.GetGType1(442, "Gio", "SocketPrivate")
-	return ret
-}
+// ignore private struct SocketPrivate, type of Socket is object
 
 // Enum SocketProtocol
 type SocketProtocolEnum int
@@ -36176,7 +36085,7 @@ const (
 )
 
 func SocketProtocolGetType() gi.GType {
-	ret := _I.GetGType1(443, "Gio", "SocketProtocol")
+	ret := _I.GetGType1(393, "Gio", "SocketProtocol")
 	return ret
 }
 
@@ -36191,7 +36100,7 @@ type ISocketService interface{ P_SocketService() unsafe.Pointer }
 
 func (v SocketService) P_SocketService() unsafe.Pointer { return v.P }
 func SocketServiceGetType() gi.GType {
-	ret := _I.GetGType1(444, "Gio", "SocketService")
+	ret := _I.GetGType1(394, "Gio", "SocketService")
 	return ret
 }
 
@@ -36257,15 +36166,7 @@ func (v SocketService) Stop() {
 
 // ignore GType struct SocketServiceClass
 
-// Struct SocketServicePrivate
-type SocketServicePrivate struct {
-	P unsafe.Pointer
-}
-
-func SocketServicePrivateGetType() gi.GType {
-	ret := _I.GetGType1(445, "Gio", "SocketServicePrivate")
-	return ret
-}
+// ignore private struct SocketServicePrivate, type of SocketService is object
 
 type SocketSourceFunc func(socket Socket, condition IOConditionFlags) (result bool)
 
@@ -36290,7 +36191,7 @@ const (
 )
 
 func SocketTypeGetType() gi.GType {
-	ret := _I.GetGType1(446, "Gio", "SocketType")
+	ret := _I.GetGType1(395, "Gio", "SocketType")
 	return ret
 }
 
@@ -36300,7 +36201,7 @@ type SrvTarget struct {
 }
 
 func SrvTargetGetType() gi.GType {
-	ret := _I.GetGType1(447, "Gio", "SrvTarget")
+	ret := _I.GetGType1(396, "Gio", "SrvTarget")
 	return ret
 }
 
@@ -36446,7 +36347,7 @@ type StaticResource struct {
 const SizeOfStructStaticResource = 40
 
 func StaticResourceGetType() gi.GType {
-	ret := _I.GetGType1(448, "Gio", "StaticResource")
+	ret := _I.GetGType1(397, "Gio", "StaticResource")
 	return ret
 }
 
@@ -36494,6 +36395,27 @@ func (v StaticResource) Init() {
 	iv.Call(args, nil, nil)
 }
 
+func (v StaticResource) p() *C.GStaticResource {
+	return (*C.GStaticResource)(v.P)
+}
+func (v StaticResource) Data() (result int /*TODO*/) {
+	return
+}
+func (v StaticResource) DataLen() (result uint64) {
+	result = uint64(v.p().data_len)
+	return
+}
+func (v StaticResource) Resource() (result int /*TODO*/) {
+	return
+}
+func (v StaticResource) Next() (result int /*TODO*/) {
+	return
+}
+func (v StaticResource) Padding() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().padding)
+	return
+}
+
 // Object Subprocess
 type Subprocess struct {
 	InitableIfc
@@ -36507,7 +36429,7 @@ type ISubprocess interface{ P_Subprocess() unsafe.Pointer }
 func (v Subprocess) P_Subprocess() unsafe.Pointer { return v.P }
 func (v Subprocess) P_Initable() unsafe.Pointer   { return v.P }
 func SubprocessGetType() gi.GType {
-	ret := _I.GetGType1(449, "Gio", "Subprocess")
+	ret := _I.GetGType1(398, "Gio", "Subprocess")
 	return ret
 }
 
@@ -37161,7 +37083,7 @@ const (
 )
 
 func SubprocessFlagsGetType() gi.GType {
-	ret := _I.GetGType1(450, "Gio", "SubprocessFlags")
+	ret := _I.GetGType1(399, "Gio", "SubprocessFlags")
 	return ret
 }
 
@@ -37176,7 +37098,7 @@ type ISubprocessLauncher interface{ P_SubprocessLauncher() unsafe.Pointer }
 
 func (v SubprocessLauncher) P_SubprocessLauncher() unsafe.Pointer { return v.P }
 func SubprocessLauncherGetType() gi.GType {
-	ret := _I.GetGType1(451, "Gio", "SubprocessLauncher")
+	ret := _I.GetGType1(400, "Gio", "SubprocessLauncher")
 	return ret
 }
 
@@ -37474,7 +37396,7 @@ type ITask interface{ P_Task() unsafe.Pointer }
 func (v Task) P_Task() unsafe.Pointer        { return v.P }
 func (v Task) P_AsyncResult() unsafe.Pointer { return v.P }
 func TaskGetType() gi.GType {
-	ret := _I.GetGType1(452, "Gio", "Task")
+	ret := _I.GetGType1(401, "Gio", "Task")
 	return ret
 }
 
@@ -38048,7 +37970,7 @@ type ITcpConnection interface{ P_TcpConnection() unsafe.Pointer }
 
 func (v TcpConnection) P_TcpConnection() unsafe.Pointer { return v.P }
 func TcpConnectionGetType() gi.GType {
-	ret := _I.GetGType1(453, "Gio", "TcpConnection")
+	ret := _I.GetGType1(402, "Gio", "TcpConnection")
 	return ret
 }
 
@@ -38088,15 +38010,7 @@ func (v TcpConnection) SetGracefulDisconnect(graceful_disconnect bool) {
 
 // ignore GType struct TcpConnectionClass
 
-// Struct TcpConnectionPrivate
-type TcpConnectionPrivate struct {
-	P unsafe.Pointer
-}
-
-func TcpConnectionPrivateGetType() gi.GType {
-	ret := _I.GetGType1(454, "Gio", "TcpConnectionPrivate")
-	return ret
-}
+// ignore private struct TcpConnectionPrivate, type of TcpConnection is object
 
 // Object TcpWrapperConnection
 type TcpWrapperConnection struct {
@@ -38109,7 +38023,7 @@ type ITcpWrapperConnection interface{ P_TcpWrapperConnection() unsafe.Pointer }
 
 func (v TcpWrapperConnection) P_TcpWrapperConnection() unsafe.Pointer { return v.P }
 func TcpWrapperConnectionGetType() gi.GType {
-	ret := _I.GetGType1(455, "Gio", "TcpWrapperConnection")
+	ret := _I.GetGType1(403, "Gio", "TcpWrapperConnection")
 	return ret
 }
 
@@ -38164,15 +38078,7 @@ func (v TcpWrapperConnection) GetBaseIoStream() (result IOStream) {
 
 // ignore GType struct TcpWrapperConnectionClass
 
-// Struct TcpWrapperConnectionPrivate
-type TcpWrapperConnectionPrivate struct {
-	P unsafe.Pointer
-}
-
-func TcpWrapperConnectionPrivateGetType() gi.GType {
-	ret := _I.GetGType1(456, "Gio", "TcpWrapperConnectionPrivate")
-	return ret
-}
+// ignore private struct TcpWrapperConnectionPrivate, type of TcpWrapperConnection is object
 
 // Object TestDBus
 type TestDBus struct {
@@ -38185,7 +38091,7 @@ type ITestDBus interface{ P_TestDBus() unsafe.Pointer }
 
 func (v TestDBus) P_TestDBus() unsafe.Pointer { return v.P }
 func TestDBusGetType() gi.GType {
-	ret := _I.GetGType1(457, "Gio", "TestDBus")
+	ret := _I.GetGType1(404, "Gio", "TestDBus")
 	return ret
 }
 
@@ -38321,7 +38227,7 @@ const (
 )
 
 func TestDBusFlagsGetType() gi.GType {
-	ret := _I.GetGType1(458, "Gio", "TestDBusFlags")
+	ret := _I.GetGType1(405, "Gio", "TestDBusFlags")
 	return ret
 }
 
@@ -38338,7 +38244,7 @@ type IThemedIcon interface{ P_ThemedIcon() unsafe.Pointer }
 func (v ThemedIcon) P_ThemedIcon() unsafe.Pointer { return v.P }
 func (v ThemedIcon) P_Icon() unsafe.Pointer       { return v.P }
 func ThemedIconGetType() gi.GType {
-	ret := _I.GetGType1(459, "Gio", "ThemedIcon")
+	ret := _I.GetGType1(406, "Gio", "ThemedIcon")
 	return ret
 }
 
@@ -38477,7 +38383,7 @@ type IThreadedSocketService interface{ P_ThreadedSocketService() unsafe.Pointer 
 
 func (v ThreadedSocketService) P_ThreadedSocketService() unsafe.Pointer { return v.P }
 func ThreadedSocketServiceGetType() gi.GType {
-	ret := _I.GetGType1(460, "Gio", "ThreadedSocketService")
+	ret := _I.GetGType1(407, "Gio", "ThreadedSocketService")
 	return ret
 }
 
@@ -38503,15 +38409,7 @@ func NewThreadedSocketService(max_threads int32) (result ThreadedSocketService) 
 
 // ignore GType struct ThreadedSocketServiceClass
 
-// Struct ThreadedSocketServicePrivate
-type ThreadedSocketServicePrivate struct {
-	P unsafe.Pointer
-}
-
-func ThreadedSocketServicePrivateGetType() gi.GType {
-	ret := _I.GetGType1(461, "Gio", "ThreadedSocketServicePrivate")
-	return ret
-}
+// ignore private struct ThreadedSocketServicePrivate, type of ThreadedSocketService is object
 
 // Enum TlsAuthenticationMode
 type TlsAuthenticationModeEnum int
@@ -38523,7 +38421,7 @@ const (
 )
 
 func TlsAuthenticationModeGetType() gi.GType {
-	ret := _I.GetGType1(462, "Gio", "TlsAuthenticationMode")
+	ret := _I.GetGType1(408, "Gio", "TlsAuthenticationMode")
 	return ret
 }
 
@@ -38537,7 +38435,7 @@ type ITlsBackend interface{ P_TlsBackend() unsafe.Pointer }
 
 func (v TlsBackend) P_TlsBackend() unsafe.Pointer { return v.P }
 func TlsBackendGetType() gi.GType {
-	ret := _I.GetGType1(463, "Gio", "TlsBackend")
+	ret := _I.GetGType1(409, "Gio", "TlsBackend")
 	return ret
 }
 
@@ -38732,7 +38630,7 @@ type ITlsCertificate interface{ P_TlsCertificate() unsafe.Pointer }
 
 func (v TlsCertificate) P_TlsCertificate() unsafe.Pointer { return v.P }
 func TlsCertificateGetType() gi.GType {
-	ret := _I.GetGType1(464, "Gio", "TlsCertificate")
+	ret := _I.GetGType1(410, "Gio", "TlsCertificate")
 	return ret
 }
 
@@ -38932,19 +38830,11 @@ const (
 )
 
 func TlsCertificateFlagsGetType() gi.GType {
-	ret := _I.GetGType1(465, "Gio", "TlsCertificateFlags")
+	ret := _I.GetGType1(411, "Gio", "TlsCertificateFlags")
 	return ret
 }
 
-// Struct TlsCertificatePrivate
-type TlsCertificatePrivate struct {
-	P unsafe.Pointer
-}
-
-func TlsCertificatePrivateGetType() gi.GType {
-	ret := _I.GetGType1(466, "Gio", "TlsCertificatePrivate")
-	return ret
-}
+// ignore private struct TlsCertificatePrivate, type of TlsCertificate is object
 
 // Enum TlsCertificateRequestFlags
 type TlsCertificateRequestFlagsEnum int
@@ -38954,7 +38844,7 @@ const (
 )
 
 func TlsCertificateRequestFlagsGetType() gi.GType {
-	ret := _I.GetGType1(467, "Gio", "TlsCertificateRequestFlags")
+	ret := _I.GetGType1(412, "Gio", "TlsCertificateRequestFlags")
 	return ret
 }
 
@@ -38968,7 +38858,7 @@ type ITlsClientConnection interface{ P_TlsClientConnection() unsafe.Pointer }
 
 func (v TlsClientConnection) P_TlsClientConnection() unsafe.Pointer { return v.P }
 func TlsClientConnectionGetType() gi.GType {
-	ret := _I.GetGType1(468, "Gio", "TlsClientConnection")
+	ret := _I.GetGType1(413, "Gio", "TlsClientConnection")
 	return ret
 }
 
@@ -39166,7 +39056,7 @@ type ITlsConnection interface{ P_TlsConnection() unsafe.Pointer }
 
 func (v TlsConnection) P_TlsConnection() unsafe.Pointer { return v.P }
 func TlsConnectionGetType() gi.GType {
-	ret := _I.GetGType1(469, "Gio", "TlsConnection")
+	ret := _I.GetGType1(414, "Gio", "TlsConnection")
 	return ret
 }
 
@@ -39547,15 +39437,7 @@ func (v TlsConnection) SetUseSystemCertdb(use_system_certdb bool) {
 
 // ignore GType struct TlsConnectionClass
 
-// Struct TlsConnectionPrivate
-type TlsConnectionPrivate struct {
-	P unsafe.Pointer
-}
-
-func TlsConnectionPrivateGetType() gi.GType {
-	ret := _I.GetGType1(470, "Gio", "TlsConnectionPrivate")
-	return ret
-}
+// ignore private struct TlsConnectionPrivate, type of TlsConnection is object
 
 // Object TlsDatabase
 type TlsDatabase struct {
@@ -39568,7 +39450,7 @@ type ITlsDatabase interface{ P_TlsDatabase() unsafe.Pointer }
 
 func (v TlsDatabase) P_TlsDatabase() unsafe.Pointer { return v.P }
 func TlsDatabaseGetType() gi.GType {
-	ret := _I.GetGType1(471, "Gio", "TlsDatabase")
+	ret := _I.GetGType1(415, "Gio", "TlsDatabase")
 	return ret
 }
 
@@ -40108,19 +39990,11 @@ const (
 )
 
 func TlsDatabaseLookupFlagsGetType() gi.GType {
-	ret := _I.GetGType1(472, "Gio", "TlsDatabaseLookupFlags")
+	ret := _I.GetGType1(416, "Gio", "TlsDatabaseLookupFlags")
 	return ret
 }
 
-// Struct TlsDatabasePrivate
-type TlsDatabasePrivate struct {
-	P unsafe.Pointer
-}
-
-func TlsDatabasePrivateGetType() gi.GType {
-	ret := _I.GetGType1(473, "Gio", "TlsDatabasePrivate")
-	return ret
-}
+// ignore private struct TlsDatabasePrivate, type of TlsDatabase is object
 
 // Flags TlsDatabaseVerifyFlags
 type TlsDatabaseVerifyFlags int
@@ -40130,7 +40004,7 @@ const (
 )
 
 func TlsDatabaseVerifyFlagsGetType() gi.GType {
-	ret := _I.GetGType1(474, "Gio", "TlsDatabaseVerifyFlags")
+	ret := _I.GetGType1(417, "Gio", "TlsDatabaseVerifyFlags")
 	return ret
 }
 
@@ -40148,7 +40022,7 @@ const (
 )
 
 func TlsErrorGetType() gi.GType {
-	ret := _I.GetGType1(475, "Gio", "TlsError")
+	ret := _I.GetGType1(418, "Gio", "TlsError")
 	return ret
 }
 
@@ -40162,7 +40036,7 @@ type ITlsFileDatabase interface{ P_TlsFileDatabase() unsafe.Pointer }
 
 func (v TlsFileDatabase) P_TlsFileDatabase() unsafe.Pointer { return v.P }
 func TlsFileDatabaseGetType() gi.GType {
-	ret := _I.GetGType1(476, "Gio", "TlsFileDatabase")
+	ret := _I.GetGType1(419, "Gio", "TlsFileDatabase")
 	return ret
 }
 
@@ -40203,7 +40077,7 @@ type ITlsInteraction interface{ P_TlsInteraction() unsafe.Pointer }
 
 func (v TlsInteraction) P_TlsInteraction() unsafe.Pointer { return v.P }
 func TlsInteractionGetType() gi.GType {
-	ret := _I.GetGType1(477, "Gio", "TlsInteraction")
+	ret := _I.GetGType1(420, "Gio", "TlsInteraction")
 	return ret
 }
 
@@ -40490,15 +40364,7 @@ func (v TlsInteraction) RequestCertificateFinish(result IAsyncResult) (result1 T
 
 // ignore GType struct TlsInteractionClass
 
-// Struct TlsInteractionPrivate
-type TlsInteractionPrivate struct {
-	P unsafe.Pointer
-}
-
-func TlsInteractionPrivateGetType() gi.GType {
-	ret := _I.GetGType1(478, "Gio", "TlsInteractionPrivate")
-	return ret
-}
+// ignore private struct TlsInteractionPrivate, type of TlsInteraction is object
 
 // Enum TlsInteractionResult
 type TlsInteractionResultEnum int
@@ -40510,7 +40376,7 @@ const (
 )
 
 func TlsInteractionResultGetType() gi.GType {
-	ret := _I.GetGType1(479, "Gio", "TlsInteractionResult")
+	ret := _I.GetGType1(421, "Gio", "TlsInteractionResult")
 	return ret
 }
 
@@ -40525,7 +40391,7 @@ type ITlsPassword interface{ P_TlsPassword() unsafe.Pointer }
 
 func (v TlsPassword) P_TlsPassword() unsafe.Pointer { return v.P }
 func TlsPasswordGetType() gi.GType {
-	ret := _I.GetGType1(480, "Gio", "TlsPassword")
+	ret := _I.GetGType1(422, "Gio", "TlsPassword")
 	return ret
 }
 
@@ -40743,19 +40609,11 @@ const (
 )
 
 func TlsPasswordFlagsGetType() gi.GType {
-	ret := _I.GetGType1(481, "Gio", "TlsPasswordFlags")
+	ret := _I.GetGType1(423, "Gio", "TlsPasswordFlags")
 	return ret
 }
 
-// Struct TlsPasswordPrivate
-type TlsPasswordPrivate struct {
-	P unsafe.Pointer
-}
-
-func TlsPasswordPrivateGetType() gi.GType {
-	ret := _I.GetGType1(482, "Gio", "TlsPasswordPrivate")
-	return ret
-}
+// ignore private struct TlsPasswordPrivate, type of TlsPassword is object
 
 // Enum TlsRehandshakeMode
 type TlsRehandshakeModeEnum int
@@ -40767,7 +40625,7 @@ const (
 )
 
 func TlsRehandshakeModeGetType() gi.GType {
-	ret := _I.GetGType1(483, "Gio", "TlsRehandshakeMode")
+	ret := _I.GetGType1(424, "Gio", "TlsRehandshakeMode")
 	return ret
 }
 
@@ -40781,7 +40639,7 @@ type ITlsServerConnection interface{ P_TlsServerConnection() unsafe.Pointer }
 
 func (v TlsServerConnection) P_TlsServerConnection() unsafe.Pointer { return v.P }
 func TlsServerConnectionGetType() gi.GType {
-	ret := _I.GetGType1(484, "Gio", "TlsServerConnection")
+	ret := _I.GetGType1(425, "Gio", "TlsServerConnection")
 	return ret
 }
 
@@ -40831,7 +40689,7 @@ type IUnixConnection interface{ P_UnixConnection() unsafe.Pointer }
 
 func (v UnixConnection) P_UnixConnection() unsafe.Pointer { return v.P }
 func UnixConnectionGetType() gi.GType {
-	ret := _I.GetGType1(485, "Gio", "UnixConnection")
+	ret := _I.GetGType1(426, "Gio", "UnixConnection")
 	return ret
 }
 
@@ -41070,15 +40928,7 @@ func (v UnixConnection) SendFd(fd int32, cancellable ICancellable) (result bool,
 
 // ignore GType struct UnixConnectionClass
 
-// Struct UnixConnectionPrivate
-type UnixConnectionPrivate struct {
-	P unsafe.Pointer
-}
-
-func UnixConnectionPrivateGetType() gi.GType {
-	ret := _I.GetGType1(486, "Gio", "UnixConnectionPrivate")
-	return ret
-}
+// ignore private struct UnixConnectionPrivate, type of UnixConnection is object
 
 // Object UnixCredentialsMessage
 type UnixCredentialsMessage struct {
@@ -41091,7 +40941,7 @@ type IUnixCredentialsMessage interface{ P_UnixCredentialsMessage() unsafe.Pointe
 
 func (v UnixCredentialsMessage) P_UnixCredentialsMessage() unsafe.Pointer { return v.P }
 func UnixCredentialsMessageGetType() gi.GType {
-	ret := _I.GetGType1(487, "Gio", "UnixCredentialsMessage")
+	ret := _I.GetGType1(427, "Gio", "UnixCredentialsMessage")
 	return ret
 }
 
@@ -41171,15 +41021,7 @@ func (v UnixCredentialsMessage) GetCredentials() (result Credentials) {
 
 // ignore GType struct UnixCredentialsMessageClass
 
-// Struct UnixCredentialsMessagePrivate
-type UnixCredentialsMessagePrivate struct {
-	P unsafe.Pointer
-}
-
-func UnixCredentialsMessagePrivateGetType() gi.GType {
-	ret := _I.GetGType1(488, "Gio", "UnixCredentialsMessagePrivate")
-	return ret
-}
+// ignore private struct UnixCredentialsMessagePrivate, type of UnixCredentialsMessage is object
 
 // Object UnixFDList
 type UnixFDList struct {
@@ -41192,7 +41034,7 @@ type IUnixFDList interface{ P_UnixFDList() unsafe.Pointer }
 
 func (v UnixFDList) P_UnixFDList() unsafe.Pointer { return v.P }
 func UnixFDListGetType() gi.GType {
-	ret := _I.GetGType1(489, "Gio", "UnixFDList")
+	ret := _I.GetGType1(428, "Gio", "UnixFDList")
 	return ret
 }
 
@@ -41351,15 +41193,7 @@ func (v UnixFDList) StealFds() (result gi.Int32Array) {
 
 // ignore GType struct UnixFDListClass
 
-// Struct UnixFDListPrivate
-type UnixFDListPrivate struct {
-	P unsafe.Pointer
-}
-
-func UnixFDListPrivateGetType() gi.GType {
-	ret := _I.GetGType1(490, "Gio", "UnixFDListPrivate")
-	return ret
-}
+// ignore private struct UnixFDListPrivate, type of UnixFDList is object
 
 // Object UnixFDMessage
 type UnixFDMessage struct {
@@ -41372,7 +41206,7 @@ type IUnixFDMessage interface{ P_UnixFDMessage() unsafe.Pointer }
 
 func (v UnixFDMessage) P_UnixFDMessage() unsafe.Pointer { return v.P }
 func UnixFDMessageGetType() gi.GType {
-	ret := _I.GetGType1(491, "Gio", "UnixFDMessage")
+	ret := _I.GetGType1(429, "Gio", "UnixFDMessage")
 	return ret
 }
 
@@ -41484,15 +41318,7 @@ func (v UnixFDMessage) StealFds() (result gi.Int32Array) {
 
 // ignore GType struct UnixFDMessageClass
 
-// Struct UnixFDMessagePrivate
-type UnixFDMessagePrivate struct {
-	P unsafe.Pointer
-}
-
-func UnixFDMessagePrivateGetType() gi.GType {
-	ret := _I.GetGType1(492, "Gio", "UnixFDMessagePrivate")
-	return ret
-}
+// ignore private struct UnixFDMessagePrivate, type of UnixFDMessage is object
 
 // Object UnixInputStream
 type UnixInputStream struct {
@@ -41509,7 +41335,7 @@ func (v UnixInputStream) P_UnixInputStream() unsafe.Pointer     { return v.P }
 func (v UnixInputStream) P_FileDescriptorBased() unsafe.Pointer { return v.P }
 func (v UnixInputStream) P_PollableInputStream() unsafe.Pointer { return v.P }
 func UnixInputStreamGetType() gi.GType {
-	ret := _I.GetGType1(493, "Gio", "UnixInputStream")
+	ret := _I.GetGType1(430, "Gio", "UnixInputStream")
 	return ret
 }
 
@@ -41590,15 +41416,7 @@ func (v UnixInputStream) SetCloseFd(close_fd bool) {
 
 // ignore GType struct UnixInputStreamClass
 
-// Struct UnixInputStreamPrivate
-type UnixInputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func UnixInputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(494, "Gio", "UnixInputStreamPrivate")
-	return ret
-}
+// ignore private struct UnixInputStreamPrivate, type of UnixInputStream is object
 
 // Struct UnixMountEntry
 type UnixMountEntry struct {
@@ -41606,7 +41424,7 @@ type UnixMountEntry struct {
 }
 
 func UnixMountEntryGetType() gi.GType {
-	ret := _I.GetGType1(495, "Gio", "UnixMountEntry")
+	ret := _I.GetGType1(431, "Gio", "UnixMountEntry")
 	return ret
 }
 
@@ -41621,7 +41439,7 @@ type IUnixMountMonitor interface{ P_UnixMountMonitor() unsafe.Pointer }
 
 func (v UnixMountMonitor) P_UnixMountMonitor() unsafe.Pointer { return v.P }
 func UnixMountMonitorGetType() gi.GType {
-	ret := _I.GetGType1(496, "Gio", "UnixMountMonitor")
+	ret := _I.GetGType1(432, "Gio", "UnixMountMonitor")
 	return ret
 }
 
@@ -41685,7 +41503,7 @@ type UnixMountPoint struct {
 }
 
 func UnixMountPointGetType() gi.GType {
-	ret := _I.GetGType1(497, "Gio", "UnixMountPoint")
+	ret := _I.GetGType1(433, "Gio", "UnixMountPoint")
 	return ret
 }
 
@@ -41954,7 +41772,7 @@ func (v UnixOutputStream) P_UnixOutputStream() unsafe.Pointer     { return v.P }
 func (v UnixOutputStream) P_FileDescriptorBased() unsafe.Pointer  { return v.P }
 func (v UnixOutputStream) P_PollableOutputStream() unsafe.Pointer { return v.P }
 func UnixOutputStreamGetType() gi.GType {
-	ret := _I.GetGType1(498, "Gio", "UnixOutputStream")
+	ret := _I.GetGType1(434, "Gio", "UnixOutputStream")
 	return ret
 }
 
@@ -42035,15 +41853,7 @@ func (v UnixOutputStream) SetCloseFd(close_fd bool) {
 
 // ignore GType struct UnixOutputStreamClass
 
-// Struct UnixOutputStreamPrivate
-type UnixOutputStreamPrivate struct {
-	P unsafe.Pointer
-}
-
-func UnixOutputStreamPrivateGetType() gi.GType {
-	ret := _I.GetGType1(499, "Gio", "UnixOutputStreamPrivate")
-	return ret
-}
+// ignore private struct UnixOutputStreamPrivate, type of UnixOutputStream is object
 
 // Object UnixSocketAddress
 type UnixSocketAddress struct {
@@ -42056,7 +41866,7 @@ type IUnixSocketAddress interface{ P_UnixSocketAddress() unsafe.Pointer }
 
 func (v UnixSocketAddress) P_UnixSocketAddress() unsafe.Pointer { return v.P }
 func UnixSocketAddressGetType() gi.GType {
-	ret := _I.GetGType1(500, "Gio", "UnixSocketAddress")
+	ret := _I.GetGType1(435, "Gio", "UnixSocketAddress")
 	return ret
 }
 
@@ -42225,15 +42035,7 @@ func (v UnixSocketAddress) GetPathLen() (result uint64) {
 
 // ignore GType struct UnixSocketAddressClass
 
-// Struct UnixSocketAddressPrivate
-type UnixSocketAddressPrivate struct {
-	P unsafe.Pointer
-}
-
-func UnixSocketAddressPrivateGetType() gi.GType {
-	ret := _I.GetGType1(501, "Gio", "UnixSocketAddressPrivate")
-	return ret
-}
+// ignore private struct UnixSocketAddressPrivate, type of UnixSocketAddress is object
 
 // Enum UnixSocketAddressType
 type UnixSocketAddressTypeEnum int
@@ -42247,7 +42049,7 @@ const (
 )
 
 func UnixSocketAddressTypeGetType() gi.GType {
-	ret := _I.GetGType1(502, "Gio", "UnixSocketAddressType")
+	ret := _I.GetGType1(436, "Gio", "UnixSocketAddressType")
 	return ret
 }
 
@@ -42262,7 +42064,7 @@ type IVfs interface{ P_Vfs() unsafe.Pointer }
 
 func (v Vfs) P_Vfs() unsafe.Pointer { return v.P }
 func VfsGetType() gi.GType {
-	ret := _I.GetGType1(503, "Gio", "Vfs")
+	ret := _I.GetGType1(437, "Gio", "Vfs")
 	return ret
 }
 
@@ -42510,7 +42312,7 @@ type IVolume interface{ P_Volume() unsafe.Pointer }
 
 func (v Volume) P_Volume() unsafe.Pointer { return v.P }
 func VolumeGetType() gi.GType {
-	ret := _I.GetGType1(504, "Gio", "Volume")
+	ret := _I.GetGType1(438, "Gio", "Volume")
 	return ret
 }
 
@@ -42977,7 +42779,7 @@ type IVolumeMonitor interface{ P_VolumeMonitor() unsafe.Pointer }
 
 func (v VolumeMonitor) P_VolumeMonitor() unsafe.Pointer { return v.P }
 func VolumeMonitorGetType() gi.GType {
-	ret := _I.GetGType1(505, "Gio", "VolumeMonitor")
+	ret := _I.GetGType1(439, "Gio", "VolumeMonitor")
 	return ret
 }
 
@@ -43138,7 +42940,7 @@ type IZlibCompressor interface{ P_ZlibCompressor() unsafe.Pointer }
 func (v ZlibCompressor) P_ZlibCompressor() unsafe.Pointer { return v.P }
 func (v ZlibCompressor) P_Converter() unsafe.Pointer      { return v.P }
 func ZlibCompressorGetType() gi.GType {
-	ret := _I.GetGType1(506, "Gio", "ZlibCompressor")
+	ret := _I.GetGType1(440, "Gio", "ZlibCompressor")
 	return ret
 }
 
@@ -43215,7 +43017,7 @@ const (
 )
 
 func ZlibCompressorFormatGetType() gi.GType {
-	ret := _I.GetGType1(507, "Gio", "ZlibCompressorFormat")
+	ret := _I.GetGType1(441, "Gio", "ZlibCompressorFormat")
 	return ret
 }
 
@@ -43232,7 +43034,7 @@ type IZlibDecompressor interface{ P_ZlibDecompressor() unsafe.Pointer }
 func (v ZlibDecompressor) P_ZlibDecompressor() unsafe.Pointer { return v.P }
 func (v ZlibDecompressor) P_Converter() unsafe.Pointer        { return v.P }
 func ZlibDecompressorGetType() gi.GType {
-	ret := _I.GetGType1(508, "Gio", "ZlibDecompressor")
+	ret := _I.GetGType1(442, "Gio", "ZlibDecompressor")
 	return ret
 }
 

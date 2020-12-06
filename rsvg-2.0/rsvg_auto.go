@@ -59,6 +59,26 @@ func DimensionDataGetType() gi.GType {
 	return ret
 }
 
+func (v DimensionData) p() *C.RsvgDimensionData {
+	return (*C.RsvgDimensionData)(v.P)
+}
+func (v DimensionData) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v DimensionData) Height() (result int32) {
+	result = int32(v.p().height)
+	return
+}
+func (v DimensionData) Em() (result float64) {
+	result = float64(v.p().em)
+	return
+}
+func (v DimensionData) Ex() (result float64) {
+	result = float64(v.p().ex)
+	return
+}
+
 // Enum Error
 type ErrorEnum int
 
@@ -632,15 +652,7 @@ func HandleFlagsGetType() gi.GType {
 	return ret
 }
 
-// Struct HandlePrivate
-type HandlePrivate struct {
-	P unsafe.Pointer
-}
-
-func HandlePrivateGetType() gi.GType {
-	ret := _I.GetGType(4, "HandlePrivate")
-	return ret
-}
+// ignore private struct HandlePrivate, type of Handle is object
 
 // Struct PositionData
 type PositionData struct {
@@ -650,8 +662,20 @@ type PositionData struct {
 const SizeOfStructPositionData = 8
 
 func PositionDataGetType() gi.GType {
-	ret := _I.GetGType(5, "PositionData")
+	ret := _I.GetGType(4, "PositionData")
 	return ret
+}
+
+func (v PositionData) p() *C.RsvgPositionData {
+	return (*C.RsvgPositionData)(v.P)
+}
+func (v PositionData) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v PositionData) Y() (result int32) {
+	result = int32(v.p().y)
+	return
 }
 
 // rsvg_cleanup

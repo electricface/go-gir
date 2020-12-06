@@ -203,15 +203,7 @@ func (v Client) QueryBySysfsPath(sysfs_path string) (result Device) {
 
 // ignore GType struct ClientClass
 
-// Struct ClientPrivate
-type ClientPrivate struct {
-	P unsafe.Pointer
-}
-
-func ClientPrivateGetType() gi.GType {
-	ret := _I.GetGType(1, "ClientPrivate")
-	return ret
-}
+// ignore private struct ClientPrivate, type of Client is object
 
 // Object Device
 type Device struct {
@@ -224,7 +216,7 @@ type IDevice interface{ P_Device() unsafe.Pointer }
 
 func (v Device) P_Device() unsafe.Pointer { return v.P }
 func DeviceGetType() gi.GType {
-	ret := _I.GetGType(2, "Device")
+	ret := _I.GetGType(1, "Device")
 	return ret
 }
 
@@ -910,15 +902,7 @@ func (v Device) HasSysfsAttr(key string) (result bool) {
 
 // ignore GType struct DeviceClass
 
-// Struct DevicePrivate
-type DevicePrivate struct {
-	P unsafe.Pointer
-}
-
-func DevicePrivateGetType() gi.GType {
-	ret := _I.GetGType(3, "DevicePrivate")
-	return ret
-}
+// ignore private struct DevicePrivate, type of Device is object
 
 // Enum DeviceType
 type DeviceTypeEnum int
@@ -930,7 +914,7 @@ const (
 )
 
 func DeviceTypeGetType() gi.GType {
-	ret := _I.GetGType(4, "DeviceType")
+	ret := _I.GetGType(2, "DeviceType")
 	return ret
 }
 
@@ -945,7 +929,7 @@ type IEnumerator interface{ P_Enumerator() unsafe.Pointer }
 
 func (v Enumerator) P_Enumerator() unsafe.Pointer { return v.P }
 func EnumeratorGetType() gi.GType {
-	ret := _I.GetGType(5, "Enumerator")
+	ret := _I.GetGType(3, "Enumerator")
 	return ret
 }
 
@@ -1210,15 +1194,7 @@ func (v Enumerator) Execute() (result g.List) {
 
 // ignore GType struct EnumeratorClass
 
-// Struct EnumeratorPrivate
-type EnumeratorPrivate struct {
-	P unsafe.Pointer
-}
-
-func EnumeratorPrivateGetType() gi.GType {
-	ret := _I.GetGType(6, "EnumeratorPrivate")
-	return ret
-}
+// ignore private struct EnumeratorPrivate, type of Enumerator is object
 
 // constants
 const ()

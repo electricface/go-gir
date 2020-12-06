@@ -824,15 +824,7 @@ func (v Buffer) Undo() {
 
 // ignore GType struct BufferClass
 
-// Struct BufferPrivate
-type BufferPrivate struct {
-	P unsafe.Pointer
-}
-
-func BufferPrivateGetType() gi.GType {
-	ret := _I.GetGType(3, "BufferPrivate")
-	return ret
-}
+// ignore private struct BufferPrivate, type of Buffer is object
 
 // Enum ChangeCaseType
 type ChangeCaseTypeEnum int
@@ -845,7 +837,7 @@ const (
 )
 
 func ChangeCaseTypeGetType() gi.GType {
-	ret := _I.GetGType(4, "ChangeCaseType")
+	ret := _I.GetGType(3, "ChangeCaseType")
 	return ret
 }
 
@@ -862,7 +854,7 @@ type ICompletion interface{ P_Completion() unsafe.Pointer }
 func (v Completion) P_Completion() unsafe.Pointer { return v.P }
 func (v Completion) P_Buildable() unsafe.Pointer  { return v.P }
 func CompletionGetType() gi.GType {
-	ret := _I.GetGType(5, "Completion")
+	ret := _I.GetGType(4, "Completion")
 	return ret
 }
 
@@ -1072,7 +1064,7 @@ const (
 )
 
 func CompletionActivationGetType() gi.GType {
-	ret := _I.GetGType(6, "CompletionActivation")
+	ret := _I.GetGType(5, "CompletionActivation")
 	return ret
 }
 
@@ -1089,7 +1081,7 @@ type ICompletionContext interface{ P_CompletionContext() unsafe.Pointer }
 
 func (v CompletionContext) P_CompletionContext() unsafe.Pointer { return v.P }
 func CompletionContextGetType() gi.GType {
-	ret := _I.GetGType(7, "CompletionContext")
+	ret := _I.GetGType(6, "CompletionContext")
 	return ret
 }
 
@@ -1160,15 +1152,7 @@ func (v CompletionContext) GetIter(iter gtk.TextIter) (result bool) {
 
 // ignore GType struct CompletionContextClass
 
-// Struct CompletionContextPrivate
-type CompletionContextPrivate struct {
-	P unsafe.Pointer
-}
-
-func CompletionContextPrivateGetType() gi.GType {
-	ret := _I.GetGType(8, "CompletionContextPrivate")
-	return ret
-}
+// ignore private struct CompletionContextPrivate, type of CompletionContext is object
 
 // Enum CompletionError
 type CompletionErrorEnum int
@@ -1179,7 +1163,7 @@ const (
 )
 
 func CompletionErrorGetType() gi.GType {
-	ret := _I.GetGType(9, "CompletionError")
+	ret := _I.GetGType(7, "CompletionError")
 	return ret
 }
 
@@ -1194,7 +1178,7 @@ type ICompletionInfo interface{ P_CompletionInfo() unsafe.Pointer }
 
 func (v CompletionInfo) P_CompletionInfo() unsafe.Pointer { return v.P }
 func CompletionInfoGetType() gi.GType {
-	ret := _I.GetGType(10, "CompletionInfo")
+	ret := _I.GetGType(8, "CompletionInfo")
 	return ret
 }
 
@@ -1239,15 +1223,7 @@ func (v CompletionInfo) MoveToIter(view gtk.ITextView, iter gtk.TextIter) {
 
 // ignore GType struct CompletionInfoClass
 
-// Struct CompletionInfoPrivate
-type CompletionInfoPrivate struct {
-	P unsafe.Pointer
-}
-
-func CompletionInfoPrivateGetType() gi.GType {
-	ret := _I.GetGType(11, "CompletionInfoPrivate")
-	return ret
-}
+// ignore private struct CompletionInfoPrivate, type of CompletionInfo is object
 
 // Object CompletionItem
 type CompletionItem struct {
@@ -1262,7 +1238,7 @@ type ICompletionItem interface{ P_CompletionItem() unsafe.Pointer }
 func (v CompletionItem) P_CompletionItem() unsafe.Pointer     { return v.P }
 func (v CompletionItem) P_CompletionProposal() unsafe.Pointer { return v.P }
 func CompletionItemGetType() gi.GType {
-	ret := _I.GetGType(12, "CompletionItem")
+	ret := _I.GetGType(9, "CompletionItem")
 	return ret
 }
 
@@ -1414,25 +1390,9 @@ func (v CompletionItem) SetText(text string) {
 
 // ignore GType struct CompletionItemClass
 
-// Struct CompletionItemPrivate
-type CompletionItemPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct CompletionItemPrivate, type of CompletionItem is object
 
-func CompletionItemPrivateGetType() gi.GType {
-	ret := _I.GetGType(13, "CompletionItemPrivate")
-	return ret
-}
-
-// Struct CompletionPrivate
-type CompletionPrivate struct {
-	P unsafe.Pointer
-}
-
-func CompletionPrivateGetType() gi.GType {
-	ret := _I.GetGType(14, "CompletionPrivate")
-	return ret
-}
+// ignore private struct CompletionPrivate, type of Completion is object
 
 // Interface CompletionProposal
 type CompletionProposal struct {
@@ -1444,7 +1404,7 @@ type ICompletionProposal interface{ P_CompletionProposal() unsafe.Pointer }
 
 func (v CompletionProposal) P_CompletionProposal() unsafe.Pointer { return v.P }
 func CompletionProposalGetType() gi.GType {
-	ret := _I.GetGType(15, "CompletionProposal")
+	ret := _I.GetGType(10, "CompletionProposal")
 	return ret
 }
 
@@ -1642,7 +1602,7 @@ type ICompletionProvider interface{ P_CompletionProvider() unsafe.Pointer }
 
 func (v CompletionProvider) P_CompletionProvider() unsafe.Pointer { return v.P }
 func CompletionProviderGetType() gi.GType {
-	ret := _I.GetGType(16, "CompletionProvider")
+	ret := _I.GetGType(11, "CompletionProvider")
 	return ret
 }
 
@@ -1947,7 +1907,7 @@ type ICompletionWords interface{ P_CompletionWords() unsafe.Pointer }
 func (v CompletionWords) P_CompletionWords() unsafe.Pointer    { return v.P }
 func (v CompletionWords) P_CompletionProvider() unsafe.Pointer { return v.P }
 func CompletionWordsGetType() gi.GType {
-	ret := _I.GetGType(17, "CompletionWords")
+	ret := _I.GetGType(12, "CompletionWords")
 	return ret
 }
 
@@ -2022,15 +1982,7 @@ func (v CompletionWords) Unregister(buffer gtk.ITextBuffer) {
 
 // ignore GType struct CompletionWordsClass
 
-// Struct CompletionWordsPrivate
-type CompletionWordsPrivate struct {
-	P unsafe.Pointer
-}
-
-func CompletionWordsPrivateGetType() gi.GType {
-	ret := _I.GetGType(18, "CompletionWordsPrivate")
-	return ret
-}
+// ignore private struct CompletionWordsPrivate, type of CompletionWords is object
 
 // Enum CompressionType
 type CompressionTypeEnum int
@@ -2041,7 +1993,7 @@ const (
 )
 
 func CompressionTypeGetType() gi.GType {
-	ret := _I.GetGType(19, "CompressionType")
+	ret := _I.GetGType(13, "CompressionType")
 	return ret
 }
 
@@ -2051,7 +2003,7 @@ type Encoding struct {
 }
 
 func EncodingGetType() gi.GType {
-	ret := _I.GetGType(20, "Encoding")
+	ret := _I.GetGType(14, "Encoding")
 	return ret
 }
 
@@ -2237,7 +2189,7 @@ type IFile interface{ P_File() unsafe.Pointer }
 
 func (v File) P_File() unsafe.Pointer { return v.P }
 func FileGetType() gi.GType {
-	ret := _I.GetGType(21, "File")
+	ret := _I.GetGType(15, "File")
 	return ret
 }
 
@@ -2447,7 +2399,7 @@ type IFileLoader interface{ P_FileLoader() unsafe.Pointer }
 
 func (v FileLoader) P_FileLoader() unsafe.Pointer { return v.P }
 func FileLoaderGetType() gi.GType {
-	ret := _I.GetGType(22, "FileLoader")
+	ret := _I.GetGType(16, "FileLoader")
 	return ret
 }
 
@@ -2756,29 +2708,13 @@ const (
 )
 
 func FileLoaderErrorGetType() gi.GType {
-	ret := _I.GetGType(23, "FileLoaderError")
+	ret := _I.GetGType(17, "FileLoaderError")
 	return ret
 }
 
-// Struct FileLoaderPrivate
-type FileLoaderPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct FileLoaderPrivate, type of FileLoader is object
 
-func FileLoaderPrivateGetType() gi.GType {
-	ret := _I.GetGType(24, "FileLoaderPrivate")
-	return ret
-}
-
-// Struct FilePrivate
-type FilePrivate struct {
-	P unsafe.Pointer
-}
-
-func FilePrivateGetType() gi.GType {
-	ret := _I.GetGType(25, "FilePrivate")
-	return ret
-}
+// ignore private struct FilePrivate, type of File is object
 
 // Object FileSaver
 type FileSaver struct {
@@ -2791,7 +2727,7 @@ type IFileSaver interface{ P_FileSaver() unsafe.Pointer }
 
 func (v FileSaver) P_FileSaver() unsafe.Pointer { return v.P }
 func FileSaverGetType() gi.GType {
-	ret := _I.GetGType(26, "FileSaver")
+	ret := _I.GetGType(18, "FileSaver")
 	return ret
 }
 
@@ -3147,7 +3083,7 @@ const (
 )
 
 func FileSaverErrorGetType() gi.GType {
-	ret := _I.GetGType(27, "FileSaverError")
+	ret := _I.GetGType(19, "FileSaverError")
 	return ret
 }
 
@@ -3162,19 +3098,11 @@ const (
 )
 
 func FileSaverFlagsGetType() gi.GType {
-	ret := _I.GetGType(28, "FileSaverFlags")
+	ret := _I.GetGType(20, "FileSaverFlags")
 	return ret
 }
 
-// Struct FileSaverPrivate
-type FileSaverPrivate struct {
-	P unsafe.Pointer
-}
-
-func FileSaverPrivateGetType() gi.GType {
-	ret := _I.GetGType(29, "FileSaverPrivate")
-	return ret
-}
+// ignore private struct FileSaverPrivate, type of FileSaver is object
 
 // Object Gutter
 type Gutter struct {
@@ -3187,7 +3115,7 @@ type IGutter interface{ P_Gutter() unsafe.Pointer }
 
 func (v Gutter) P_Gutter() unsafe.Pointer { return v.P }
 func GutterGetType() gi.GType {
-	ret := _I.GetGType(30, "Gutter")
+	ret := _I.GetGType(21, "Gutter")
 	return ret
 }
 
@@ -3337,15 +3265,7 @@ func (v Gutter) Reorder(renderer IGutterRenderer, position int32) {
 
 // ignore GType struct GutterClass
 
-// Struct GutterPrivate
-type GutterPrivate struct {
-	P unsafe.Pointer
-}
-
-func GutterPrivateGetType() gi.GType {
-	ret := _I.GetGType(31, "GutterPrivate")
-	return ret
-}
+// ignore private struct GutterPrivate, type of Gutter is object
 
 // Object GutterRenderer
 type GutterRenderer struct {
@@ -3358,7 +3278,7 @@ type IGutterRenderer interface{ P_GutterRenderer() unsafe.Pointer }
 
 func (v GutterRenderer) P_GutterRenderer() unsafe.Pointer { return v.P }
 func GutterRendererGetType() gi.GType {
-	ret := _I.GetGType(32, "GutterRenderer")
+	ret := _I.GetGType(22, "GutterRenderer")
 	return ret
 }
 
@@ -3824,7 +3744,7 @@ const (
 )
 
 func GutterRendererAlignmentModeGetType() gi.GType {
-	ret := _I.GetGType(33, "GutterRendererAlignmentMode")
+	ret := _I.GetGType(23, "GutterRendererAlignmentMode")
 	return ret
 }
 
@@ -3841,7 +3761,7 @@ type IGutterRendererPixbuf interface{ P_GutterRendererPixbuf() unsafe.Pointer }
 
 func (v GutterRendererPixbuf) P_GutterRendererPixbuf() unsafe.Pointer { return v.P }
 func GutterRendererPixbufGetType() gi.GType {
-	ret := _I.GetGType(34, "GutterRendererPixbuf")
+	ret := _I.GetGType(24, "GutterRendererPixbuf")
 	return ret
 }
 
@@ -3975,25 +3895,9 @@ func (v GutterRendererPixbuf) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 
 // ignore GType struct GutterRendererPixbufClass
 
-// Struct GutterRendererPixbufPrivate
-type GutterRendererPixbufPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct GutterRendererPixbufPrivate, type of GutterRendererPixbuf is object
 
-func GutterRendererPixbufPrivateGetType() gi.GType {
-	ret := _I.GetGType(35, "GutterRendererPixbufPrivate")
-	return ret
-}
-
-// Struct GutterRendererPrivate
-type GutterRendererPrivate struct {
-	P unsafe.Pointer
-}
-
-func GutterRendererPrivateGetType() gi.GType {
-	ret := _I.GetGType(36, "GutterRendererPrivate")
-	return ret
-}
+// ignore private struct GutterRendererPrivate, type of GutterRenderer is object
 
 // Flags GutterRendererState
 type GutterRendererStateFlags int
@@ -4006,7 +3910,7 @@ const (
 )
 
 func GutterRendererStateGetType() gi.GType {
-	ret := _I.GetGType(37, "GutterRendererState")
+	ret := _I.GetGType(25, "GutterRendererState")
 	return ret
 }
 
@@ -4021,7 +3925,7 @@ type IGutterRendererText interface{ P_GutterRendererText() unsafe.Pointer }
 
 func (v GutterRendererText) P_GutterRendererText() unsafe.Pointer { return v.P }
 func GutterRendererTextGetType() gi.GType {
-	ret := _I.GetGType(38, "GutterRendererText")
+	ret := _I.GetGType(26, "GutterRendererText")
 	return ret
 }
 
@@ -4141,15 +4045,7 @@ func (v GutterRendererText) SetText(text string, length int32) {
 
 // ignore GType struct GutterRendererTextClass
 
-// Struct GutterRendererTextPrivate
-type GutterRendererTextPrivate struct {
-	P unsafe.Pointer
-}
-
-func GutterRendererTextPrivateGetType() gi.GType {
-	ret := _I.GetGType(39, "GutterRendererTextPrivate")
-	return ret
-}
+// ignore private struct GutterRendererTextPrivate, type of GutterRendererText is object
 
 // Object Language
 type Language struct {
@@ -4162,7 +4058,7 @@ type ILanguage interface{ P_Language() unsafe.Pointer }
 
 func (v Language) P_Language() unsafe.Pointer { return v.P }
 func LanguageGetType() gi.GType {
-	ret := _I.GetGType(40, "Language")
+	ret := _I.GetGType(27, "Language")
 	return ret
 }
 
@@ -4377,7 +4273,7 @@ type ILanguageManager interface{ P_LanguageManager() unsafe.Pointer }
 
 func (v LanguageManager) P_LanguageManager() unsafe.Pointer { return v.P }
 func LanguageManagerGetType() gi.GType {
-	ret := _I.GetGType(41, "LanguageManager")
+	ret := _I.GetGType(28, "LanguageManager")
 	return ret
 }
 
@@ -4520,25 +4416,9 @@ func (v LanguageManager) SetSearchPath(dirs gi.CStrArray) {
 
 // ignore GType struct LanguageManagerClass
 
-// Struct LanguageManagerPrivate
-type LanguageManagerPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct LanguageManagerPrivate, type of LanguageManager is object
 
-func LanguageManagerPrivateGetType() gi.GType {
-	ret := _I.GetGType(42, "LanguageManagerPrivate")
-	return ret
-}
-
-// Struct LanguagePrivate
-type LanguagePrivate struct {
-	P unsafe.Pointer
-}
-
-func LanguagePrivateGetType() gi.GType {
-	ret := _I.GetGType(43, "LanguagePrivate")
-	return ret
-}
+// ignore private struct LanguagePrivate, type of Language is object
 
 // Object Map
 type Map struct {
@@ -4551,7 +4431,7 @@ type IMap interface{ P_Map() unsafe.Pointer }
 
 func (v Map) P_Map() unsafe.Pointer { return v.P }
 func MapGetType() gi.GType {
-	ret := _I.GetGType(44, "Map")
+	ret := _I.GetGType(29, "Map")
 	return ret
 }
 
@@ -4622,7 +4502,7 @@ type IMark interface{ P_Mark() unsafe.Pointer }
 
 func (v Mark) P_Mark() unsafe.Pointer { return v.P }
 func MarkGetType() gi.GType {
-	ret := _I.GetGType(45, "Mark")
+	ret := _I.GetGType(30, "Mark")
 	return ret
 }
 
@@ -4728,7 +4608,7 @@ type IMarkAttributes interface{ P_MarkAttributes() unsafe.Pointer }
 
 func (v MarkAttributes) P_MarkAttributes() unsafe.Pointer { return v.P }
 func MarkAttributesGetType() gi.GType {
-	ret := _I.GetGType(46, "MarkAttributes")
+	ret := _I.GetGType(31, "MarkAttributes")
 	return ret
 }
 
@@ -4977,27 +4857,11 @@ func (v MarkAttributes) SetPixbuf(pixbuf gdkpixbuf.IPixbuf) {
 
 // ignore GType struct MarkAttributesClass
 
-// Struct MarkAttributesPrivate
-type MarkAttributesPrivate struct {
-	P unsafe.Pointer
-}
-
-func MarkAttributesPrivateGetType() gi.GType {
-	ret := _I.GetGType(47, "MarkAttributesPrivate")
-	return ret
-}
+// ignore private struct MarkAttributesPrivate, type of MarkAttributes is object
 
 // ignore GType struct MarkClass
 
-// Struct MarkPrivate
-type MarkPrivate struct {
-	P unsafe.Pointer
-}
-
-func MarkPrivateGetType() gi.GType {
-	ret := _I.GetGType(48, "MarkPrivate")
-	return ret
-}
+// ignore private struct MarkPrivate, type of Mark is object
 
 // Enum NewlineType
 type NewlineTypeEnum int
@@ -5009,7 +4873,7 @@ const (
 )
 
 func NewlineTypeGetType() gi.GType {
-	ret := _I.GetGType(49, "NewlineType")
+	ret := _I.GetGType(32, "NewlineType")
 	return ret
 }
 
@@ -5024,7 +4888,7 @@ type IPrintCompositor interface{ P_PrintCompositor() unsafe.Pointer }
 
 func (v PrintCompositor) P_PrintCompositor() unsafe.Pointer { return v.P }
 func PrintCompositorGetType() gi.GType {
-	ret := _I.GetGType(50, "PrintCompositor")
+	ret := _I.GetGType(33, "PrintCompositor")
 	return ret
 }
 
@@ -5750,15 +5614,7 @@ func (v PrintCompositor) SetWrapMode(wrap_mode gtk.WrapModeEnum) {
 
 // ignore GType struct PrintCompositorClass
 
-// Struct PrintCompositorPrivate
-type PrintCompositorPrivate struct {
-	P unsafe.Pointer
-}
-
-func PrintCompositorPrivateGetType() gi.GType {
-	ret := _I.GetGType(51, "PrintCompositorPrivate")
-	return ret
-}
+// ignore private struct PrintCompositorPrivate, type of PrintCompositor is object
 
 // Object Region
 type Region struct {
@@ -5771,7 +5627,7 @@ type IRegion interface{ P_Region() unsafe.Pointer }
 
 func (v Region) P_Region() unsafe.Pointer { return v.P }
 func RegionGetType() gi.GType {
-	ret := _I.GetGType(52, "Region")
+	ret := _I.GetGType(34, "Region")
 	return ret
 }
 
@@ -6030,7 +5886,7 @@ type RegionIter struct {
 const SizeOfStructRegionIter = 24
 
 func RegionIterGetType() gi.GType {
-	ret := _I.GetGType(53, "RegionIter")
+	ret := _I.GetGType(35, "RegionIter")
 	return ret
 }
 
@@ -6094,6 +5950,22 @@ func (v RegionIter) Next() (result bool) {
 	return
 }
 
+func (v RegionIter) p() *C.GtkSourceRegionIter {
+	return (*C.GtkSourceRegionIter)(v.P)
+}
+func (v RegionIter) Dummy1() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy1)
+	return
+}
+func (v RegionIter) Dummy2() (result uint32) {
+	result = uint32(v.p().dummy2)
+	return
+}
+func (v RegionIter) Dummy3() (result unsafe.Pointer) {
+	result = unsafe.Pointer(v.p().dummy3)
+	return
+}
+
 // Object SearchContext
 type SearchContext struct {
 	g.Object
@@ -6105,7 +5977,7 @@ type ISearchContext interface{ P_SearchContext() unsafe.Pointer }
 
 func (v SearchContext) P_SearchContext() unsafe.Pointer { return v.P }
 func SearchContextGetType() gi.GType {
-	ret := _I.GetGType(54, "SearchContext")
+	ret := _I.GetGType(36, "SearchContext")
 	return ret
 }
 
@@ -6584,15 +6456,7 @@ func (v SearchContext) SetMatchStyle(match_style IStyle) {
 
 // ignore GType struct SearchContextClass
 
-// Struct SearchContextPrivate
-type SearchContextPrivate struct {
-	P unsafe.Pointer
-}
-
-func SearchContextPrivateGetType() gi.GType {
-	ret := _I.GetGType(55, "SearchContextPrivate")
-	return ret
-}
+// ignore private struct SearchContextPrivate, type of SearchContext is object
 
 // Object SearchSettings
 type SearchSettings struct {
@@ -6605,7 +6469,7 @@ type ISearchSettings interface{ P_SearchSettings() unsafe.Pointer }
 
 func (v SearchSettings) P_SearchSettings() unsafe.Pointer { return v.P }
 func SearchSettingsGetType() gi.GType {
-	ret := _I.GetGType(56, "SearchSettings")
+	ret := _I.GetGType(37, "SearchSettings")
 	return ret
 }
 
@@ -6799,15 +6663,7 @@ func (v SearchSettings) SetWrapAround(wrap_around bool) {
 
 // ignore GType struct SearchSettingsClass
 
-// Struct SearchSettingsPrivate
-type SearchSettingsPrivate struct {
-	P unsafe.Pointer
-}
-
-func SearchSettingsPrivateGetType() gi.GType {
-	ret := _I.GetGType(57, "SearchSettingsPrivate")
-	return ret
-}
+// ignore private struct SearchSettingsPrivate, type of SearchSettings is object
 
 // Enum SmartHomeEndType
 type SmartHomeEndTypeEnum int
@@ -6820,7 +6676,7 @@ const (
 )
 
 func SmartHomeEndTypeGetType() gi.GType {
-	ret := _I.GetGType(58, "SmartHomeEndType")
+	ret := _I.GetGType(38, "SmartHomeEndType")
 	return ret
 }
 
@@ -6835,7 +6691,7 @@ const (
 )
 
 func SortFlagsGetType() gi.GType {
-	ret := _I.GetGType(59, "SortFlags")
+	ret := _I.GetGType(39, "SortFlags")
 	return ret
 }
 
@@ -6850,7 +6706,7 @@ type ISpaceDrawer interface{ P_SpaceDrawer() unsafe.Pointer }
 
 func (v SpaceDrawer) P_SpaceDrawer() unsafe.Pointer { return v.P }
 func SpaceDrawerGetType() gi.GType {
-	ret := _I.GetGType(60, "SpaceDrawer")
+	ret := _I.GetGType(40, "SpaceDrawer")
 	return ret
 }
 
@@ -7008,15 +6864,7 @@ func (v SpaceDrawer) SetTypesForLocations(locations SpaceLocationFlags, types Sp
 
 // ignore GType struct SpaceDrawerClass
 
-// Struct SpaceDrawerPrivate
-type SpaceDrawerPrivate struct {
-	P unsafe.Pointer
-}
-
-func SpaceDrawerPrivateGetType() gi.GType {
-	ret := _I.GetGType(61, "SpaceDrawerPrivate")
-	return ret
-}
+// ignore private struct SpaceDrawerPrivate, type of SpaceDrawer is object
 
 // Flags SpaceLocationFlags
 type SpaceLocationFlags int
@@ -7030,7 +6878,7 @@ const (
 )
 
 func SpaceLocationFlagsGetType() gi.GType {
-	ret := _I.GetGType(62, "SpaceLocationFlags")
+	ret := _I.GetGType(41, "SpaceLocationFlags")
 	return ret
 }
 
@@ -7047,7 +6895,7 @@ const (
 )
 
 func SpaceTypeFlagsGetType() gi.GType {
-	ret := _I.GetGType(63, "SpaceTypeFlags")
+	ret := _I.GetGType(42, "SpaceTypeFlags")
 	return ret
 }
 
@@ -7062,7 +6910,7 @@ type IStyle interface{ P_Style() unsafe.Pointer }
 
 func (v Style) P_Style() unsafe.Pointer { return v.P }
 func StyleGetType() gi.GType {
-	ret := _I.GetGType(64, "Style")
+	ret := _I.GetGType(43, "Style")
 	return ret
 }
 
@@ -7117,7 +6965,7 @@ type IStyleScheme interface{ P_StyleScheme() unsafe.Pointer }
 
 func (v StyleScheme) P_StyleScheme() unsafe.Pointer { return v.P }
 func StyleSchemeGetType() gi.GType {
-	ret := _I.GetGType(65, "StyleScheme")
+	ret := _I.GetGType(44, "StyleScheme")
 	return ret
 }
 
@@ -7245,7 +7093,7 @@ type IStyleSchemeChooser interface{ P_StyleSchemeChooser() unsafe.Pointer }
 
 func (v StyleSchemeChooser) P_StyleSchemeChooser() unsafe.Pointer { return v.P }
 func StyleSchemeChooserGetType() gi.GType {
-	ret := _I.GetGType(66, "StyleSchemeChooser")
+	ret := _I.GetGType(45, "StyleSchemeChooser")
 	return ret
 }
 
@@ -7300,7 +7148,7 @@ type IStyleSchemeChooserButton interface{ P_StyleSchemeChooserButton() unsafe.Po
 func (v StyleSchemeChooserButton) P_StyleSchemeChooserButton() unsafe.Pointer { return v.P }
 func (v StyleSchemeChooserButton) P_StyleSchemeChooser() unsafe.Pointer       { return v.P }
 func StyleSchemeChooserButtonGetType() gi.GType {
-	ret := _I.GetGType(67, "StyleSchemeChooserButton")
+	ret := _I.GetGType(46, "StyleSchemeChooserButton")
 	return ret
 }
 
@@ -7337,7 +7185,7 @@ type IStyleSchemeChooserWidget interface{ P_StyleSchemeChooserWidget() unsafe.Po
 func (v StyleSchemeChooserWidget) P_StyleSchemeChooserWidget() unsafe.Pointer { return v.P }
 func (v StyleSchemeChooserWidget) P_StyleSchemeChooser() unsafe.Pointer       { return v.P }
 func StyleSchemeChooserWidgetGetType() gi.GType {
-	ret := _I.GetGType(68, "StyleSchemeChooserWidget")
+	ret := _I.GetGType(47, "StyleSchemeChooserWidget")
 	return ret
 }
 
@@ -7372,7 +7220,7 @@ type IStyleSchemeManager interface{ P_StyleSchemeManager() unsafe.Pointer }
 
 func (v StyleSchemeManager) P_StyleSchemeManager() unsafe.Pointer { return v.P }
 func StyleSchemeManagerGetType() gi.GType {
-	ret := _I.GetGType(69, "StyleSchemeManager")
+	ret := _I.GetGType(48, "StyleSchemeManager")
 	return ret
 }
 
@@ -7536,25 +7384,9 @@ func (v StyleSchemeManager) SetSearchPath(path gi.CStrArray) {
 
 // ignore GType struct StyleSchemeManagerClass
 
-// Struct StyleSchemeManagerPrivate
-type StyleSchemeManagerPrivate struct {
-	P unsafe.Pointer
-}
+// ignore private struct StyleSchemeManagerPrivate, type of StyleSchemeManager is object
 
-func StyleSchemeManagerPrivateGetType() gi.GType {
-	ret := _I.GetGType(70, "StyleSchemeManagerPrivate")
-	return ret
-}
-
-// Struct StyleSchemePrivate
-type StyleSchemePrivate struct {
-	P unsafe.Pointer
-}
-
-func StyleSchemePrivateGetType() gi.GType {
-	ret := _I.GetGType(71, "StyleSchemePrivate")
-	return ret
-}
+// ignore private struct StyleSchemePrivate, type of StyleScheme is object
 
 // Object Tag
 type Tag struct {
@@ -7567,7 +7399,7 @@ type ITag interface{ P_Tag() unsafe.Pointer }
 
 func (v Tag) P_Tag() unsafe.Pointer { return v.P }
 func TagGetType() gi.GType {
-	ret := _I.GetGType(72, "Tag")
+	ret := _I.GetGType(49, "Tag")
 	return ret
 }
 
@@ -7605,7 +7437,7 @@ type IUndoManager interface{ P_UndoManager() unsafe.Pointer }
 
 func (v UndoManager) P_UndoManager() unsafe.Pointer { return v.P }
 func UndoManagerGetType() gi.GType {
-	ret := _I.GetGType(73, "UndoManager")
+	ret := _I.GetGType(50, "UndoManager")
 	return ret
 }
 
@@ -7736,7 +7568,7 @@ type IView interface{ P_View() unsafe.Pointer }
 
 func (v View) P_View() unsafe.Pointer { return v.P }
 func ViewGetType() gi.GType {
-	ret := _I.GetGType(74, "View")
+	ret := _I.GetGType(51, "View")
 	return ret
 }
 
@@ -8403,19 +8235,11 @@ const (
 )
 
 func ViewGutterPositionGetType() gi.GType {
-	ret := _I.GetGType(75, "ViewGutterPosition")
+	ret := _I.GetGType(52, "ViewGutterPosition")
 	return ret
 }
 
-// Struct ViewPrivate
-type ViewPrivate struct {
-	P unsafe.Pointer
-}
-
-func ViewPrivateGetType() gi.GType {
-	ret := _I.GetGType(76, "ViewPrivate")
-	return ret
-}
+// ignore private struct ViewPrivate, type of View is object
 
 // gtk_source_completion_error_quark
 //

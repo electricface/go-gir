@@ -25,6 +25,7 @@ package cairo
 
 /*
 #cgo pkg-config: cairo-gobject
+#include <cairo.h>
 */
 import "C"
 import "github.com/linuxdeepin/go-gir/gi"
@@ -569,6 +570,26 @@ const SizeOfStructRectangleInt = 16
 func RectangleIntGetType() gi.GType {
 	ret := _I.GetGType(32, "RectangleInt")
 	return ret
+}
+
+func (v RectangleInt) p() *C.cairo_rectangle_int_t {
+	return (*C.cairo_rectangle_int_t)(v.P)
+}
+func (v RectangleInt) X() (result int32) {
+	result = int32(v.p().x)
+	return
+}
+func (v RectangleInt) Y() (result int32) {
+	result = int32(v.p().y)
+	return
+}
+func (v RectangleInt) Width() (result int32) {
+	result = int32(v.p().width)
+	return
+}
+func (v RectangleInt) Height() (result int32) {
+	result = int32(v.p().height)
+	return
 }
 
 // cairo_image_surface_create
