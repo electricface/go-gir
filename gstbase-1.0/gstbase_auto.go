@@ -5362,12 +5362,14 @@ func (v ByteWriter) Fixed() (result bool) {
 	return
 }
 func (v ByteWriter) SetFixed(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().fixed)) = int32(gi.Bool2Int(value))
 }
 func (v ByteWriter) Owned() (result bool) {
 	result = gi.Int2Bool(int(v.p().owned))
 	return
 }
 func (v ByteWriter) SetOwned(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().owned)) = int32(gi.Bool2Int(value))
 }
 func (v ByteWriter) _GstReserved() (result int /*TODO*/) {
 	return

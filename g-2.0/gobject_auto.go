@@ -946,6 +946,7 @@ func (v CClosure) Callback() (result unsafe.Pointer) {
 	return
 }
 func (v CClosure) SetCallback(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().callback)) = value
 }
 
 type Callback func()
@@ -1204,6 +1205,7 @@ func (v ClosureNotifyData) Data() (result unsafe.Pointer) {
 	return
 }
 func (v ClosureNotifyData) SetData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().data)) = value
 }
 func (v ClosureNotifyData) Notify() (result int /*TODO*/) {
 	return
@@ -1293,15 +1295,25 @@ func (v EnumValue) Value() (result int32) {
 func (v EnumValue) SetValue(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().value)) = value
 }
-func (v EnumValue) ValueName() (result int /*TODO*/) {
+func (v EnumValue) ValueName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().value_name))
 	return
 }
-func (v EnumValue) SetValueName(value int /*TODO*/) {
+func (v EnumValue) SetValueName(value string) {
+	if unsafe.Pointer(v.p().value_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().value_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().value_name)) = gi.CString(value)
 }
-func (v EnumValue) ValueNick() (result int /*TODO*/) {
+func (v EnumValue) ValueNick() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().value_nick))
 	return
 }
-func (v EnumValue) SetValueNick(value int /*TODO*/) {
+func (v EnumValue) SetValueNick(value string) {
+	if unsafe.Pointer(v.p().value_nick) != nil {
+		gi.Free(unsafe.Pointer(v.p().value_nick))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().value_nick)) = gi.CString(value)
 }
 
 // Struct FlagsClass
@@ -1366,15 +1378,25 @@ func (v FlagsValue) Value() (result uint32) {
 func (v FlagsValue) SetValue(value uint32) {
 	*(*uint32)(unsafe.Pointer(&v.p().value)) = value
 }
-func (v FlagsValue) ValueName() (result int /*TODO*/) {
+func (v FlagsValue) ValueName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().value_name))
 	return
 }
-func (v FlagsValue) SetValueName(value int /*TODO*/) {
+func (v FlagsValue) SetValueName(value string) {
+	if unsafe.Pointer(v.p().value_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().value_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().value_name)) = gi.CString(value)
 }
-func (v FlagsValue) ValueNick() (result int /*TODO*/) {
+func (v FlagsValue) ValueNick() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().value_nick))
 	return
 }
-func (v FlagsValue) SetValueNick(value int /*TODO*/) {
+func (v FlagsValue) SetValueNick(value string) {
+	if unsafe.Pointer(v.p().value_nick) != nil {
+		gi.Free(unsafe.Pointer(v.p().value_nick))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().value_nick)) = gi.CString(value)
 }
 
 // Object InitiallyUnowned
@@ -1446,6 +1468,7 @@ func (v InterfaceInfo) InterfaceData() (result unsafe.Pointer) {
 	return
 }
 func (v InterfaceInfo) SetInterfaceData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().interface_data)) = value
 }
 
 type InterfaceInitFunc func(g_iface TypeInterface, iface_data unsafe.Pointer)
@@ -3040,10 +3063,15 @@ func ParameterGetType() gi.GType {
 func (v Parameter) p() *C.GParameter {
 	return (*C.GParameter)(v.P)
 }
-func (v Parameter) Name() (result int /*TODO*/) {
+func (v Parameter) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v Parameter) SetName(value int /*TODO*/) {
+func (v Parameter) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
 func (v Parameter) Value() (result int /*TODO*/) {
 	return
@@ -3173,10 +3201,15 @@ func (v SignalQuery) SignalId() (result uint32) {
 func (v SignalQuery) SetSignalId(value uint32) {
 	*(*uint32)(unsafe.Pointer(&v.p().signal_id)) = value
 }
-func (v SignalQuery) SignalName() (result int /*TODO*/) {
+func (v SignalQuery) SignalName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().signal_name))
 	return
 }
-func (v SignalQuery) SetSignalName(value int /*TODO*/) {
+func (v SignalQuery) SetSignalName(value string) {
+	if unsafe.Pointer(v.p().signal_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().signal_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().signal_name)) = gi.CString(value)
 }
 func (v SignalQuery) Itype() (result gi.GType) {
 	result = gi.GType(v.p().itype)
@@ -3526,6 +3559,7 @@ func (v TypeInfo) ClassData() (result unsafe.Pointer) {
 	return
 }
 func (v TypeInfo) SetClassData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().class_data)) = value
 }
 func (v TypeInfo) InstanceSize() (result uint16) {
 	result = uint16(v.p().instance_size)
@@ -4063,10 +4097,15 @@ func (v TypeQuery) Type() (result gi.GType) {
 }
 func (v TypeQuery) SetType(value gi.GType) {
 }
-func (v TypeQuery) TypeName() (result int /*TODO*/) {
+func (v TypeQuery) TypeName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().type_name))
 	return
 }
-func (v TypeQuery) SetTypeName(value int /*TODO*/) {
+func (v TypeQuery) SetTypeName(value string) {
+	if unsafe.Pointer(v.p().type_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().type_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().type_name)) = gi.CString(value)
 }
 func (v TypeQuery) ClassSize() (result uint32) {
 	result = uint32(v.p().class_size)
@@ -4110,18 +4149,28 @@ func (v TypeValueTable) ValueCopy() (result int /*TODO*/) {
 func (v TypeValueTable) ValuePeekPointer() (result int /*TODO*/) {
 	return
 }
-func (v TypeValueTable) CollectFormat() (result int /*TODO*/) {
+func (v TypeValueTable) CollectFormat() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().collect_format))
 	return
 }
-func (v TypeValueTable) SetCollectFormat(value int /*TODO*/) {
+func (v TypeValueTable) SetCollectFormat(value string) {
+	if unsafe.Pointer(v.p().collect_format) != nil {
+		gi.Free(unsafe.Pointer(v.p().collect_format))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().collect_format)) = gi.CString(value)
 }
 func (v TypeValueTable) CollectValue() (result int /*TODO*/) {
 	return
 }
-func (v TypeValueTable) LcopyFormat() (result int /*TODO*/) {
+func (v TypeValueTable) LcopyFormat() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().lcopy_format))
 	return
 }
-func (v TypeValueTable) SetLcopyFormat(value int /*TODO*/) {
+func (v TypeValueTable) SetLcopyFormat(value string) {
+	if unsafe.Pointer(v.p().lcopy_format) != nil {
+		gi.Free(unsafe.Pointer(v.p().lcopy_format))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().lcopy_format)) = gi.CString(value)
 }
 func (v TypeValueTable) LcopyValue() (result int /*TODO*/) {
 	return

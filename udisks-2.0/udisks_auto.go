@@ -13526,20 +13526,35 @@ func (v PartitionTypeInfo) Free() {
 func (v PartitionTypeInfo) p() *C.UDisksPartitionTypeInfo {
 	return (*C.UDisksPartitionTypeInfo)(v.P)
 }
-func (v PartitionTypeInfo) TableType() (result int /*TODO*/) {
+func (v PartitionTypeInfo) TableType() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().table_type))
 	return
 }
-func (v PartitionTypeInfo) SetTableType(value int /*TODO*/) {
+func (v PartitionTypeInfo) SetTableType(value string) {
+	if unsafe.Pointer(v.p().table_type) != nil {
+		gi.Free(unsafe.Pointer(v.p().table_type))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().table_type)) = gi.CString(value)
 }
-func (v PartitionTypeInfo) TableSubtype() (result int /*TODO*/) {
+func (v PartitionTypeInfo) TableSubtype() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().table_subtype))
 	return
 }
-func (v PartitionTypeInfo) SetTableSubtype(value int /*TODO*/) {
+func (v PartitionTypeInfo) SetTableSubtype(value string) {
+	if unsafe.Pointer(v.p().table_subtype) != nil {
+		gi.Free(unsafe.Pointer(v.p().table_subtype))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().table_subtype)) = gi.CString(value)
 }
-func (v PartitionTypeInfo) Type() (result int /*TODO*/) {
+func (v PartitionTypeInfo) Type() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p()._type))
 	return
 }
-func (v PartitionTypeInfo) SetType(value int /*TODO*/) {
+func (v PartitionTypeInfo) SetType(value string) {
+	if unsafe.Pointer(v.p()._type) != nil {
+		gi.Free(unsafe.Pointer(v.p()._type))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p()._type)) = gi.CString(value)
 }
 func (v PartitionTypeInfo) Flags() (result int /*TODO*/) {
 	return

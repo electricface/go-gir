@@ -283,10 +283,15 @@ func (v AttrFontFeatures) Attr() (result int /*TODO*/) {
 }
 func (v AttrFontFeatures) SetAttr(value int /*TODO*/) {
 }
-func (v AttrFontFeatures) Features() (result int /*TODO*/) {
+func (v AttrFontFeatures) Features() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().features))
 	return
 }
-func (v AttrFontFeatures) SetFeatures(value int /*TODO*/) {
+func (v AttrFontFeatures) SetFeatures(value string) {
+	if unsafe.Pointer(v.p().features) != nil {
+		gi.Free(unsafe.Pointer(v.p().features))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().features)) = gi.CString(value)
 }
 
 // Struct AttrInt
@@ -661,6 +666,7 @@ func (v AttrShape) Data() (result unsafe.Pointer) {
 	return
 }
 func (v AttrShape) SetData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().data)) = value
 }
 func (v AttrShape) CopyFunc() (result int /*TODO*/) {
 	return
@@ -723,10 +729,15 @@ func (v AttrString) Attr() (result int /*TODO*/) {
 }
 func (v AttrString) SetAttr(value int /*TODO*/) {
 }
-func (v AttrString) Value() (result int /*TODO*/) {
+func (v AttrString) Value() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().value))
 	return
 }
-func (v AttrString) SetValue(value int /*TODO*/) {
+func (v AttrString) SetValue(value string) {
+	if unsafe.Pointer(v.p().value) != nil {
+		gi.Free(unsafe.Pointer(v.p().value))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().value)) = gi.CString(value)
 }
 
 // Enum AttrType
@@ -1598,20 +1609,35 @@ func EngineInfoGetType() gi.GType {
 func (v EngineInfo) p() *C.PangoEngineInfo {
 	return (*C.PangoEngineInfo)(v.P)
 }
-func (v EngineInfo) Id() (result int /*TODO*/) {
+func (v EngineInfo) Id() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().id))
 	return
 }
-func (v EngineInfo) SetId(value int /*TODO*/) {
+func (v EngineInfo) SetId(value string) {
+	if unsafe.Pointer(v.p().id) != nil {
+		gi.Free(unsafe.Pointer(v.p().id))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().id)) = gi.CString(value)
 }
-func (v EngineInfo) EngineType() (result int /*TODO*/) {
+func (v EngineInfo) EngineType() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().engine_type))
 	return
 }
-func (v EngineInfo) SetEngineType(value int /*TODO*/) {
+func (v EngineInfo) SetEngineType(value string) {
+	if unsafe.Pointer(v.p().engine_type) != nil {
+		gi.Free(unsafe.Pointer(v.p().engine_type))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().engine_type)) = gi.CString(value)
 }
-func (v EngineInfo) RenderType() (result int /*TODO*/) {
+func (v EngineInfo) RenderType() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().render_type))
 	return
 }
-func (v EngineInfo) SetRenderType(value int /*TODO*/) {
+func (v EngineInfo) SetRenderType(value string) {
+	if unsafe.Pointer(v.p().render_type) != nil {
+		gi.Free(unsafe.Pointer(v.p().render_type))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().render_type)) = gi.CString(value)
 }
 func (v EngineInfo) Scripts() (result int /*TODO*/) {
 	return
@@ -1667,10 +1693,15 @@ func (v EngineScriptInfo) Script() (result int /*TODO*/) {
 }
 func (v EngineScriptInfo) SetScript(value int /*TODO*/) {
 }
-func (v EngineScriptInfo) Langs() (result int /*TODO*/) {
+func (v EngineScriptInfo) Langs() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().langs))
 	return
 }
-func (v EngineScriptInfo) SetLangs(value int /*TODO*/) {
+func (v EngineScriptInfo) SetLangs(value string) {
+	if unsafe.Pointer(v.p().langs) != nil {
+		gi.Free(unsafe.Pointer(v.p().langs))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().langs)) = gi.CString(value)
 }
 
 // Deprecated
@@ -3606,10 +3637,15 @@ func (v GlyphItemIter) GlyphItem() (result int /*TODO*/) {
 }
 func (v GlyphItemIter) SetGlyphItem(value int /*TODO*/) {
 }
-func (v GlyphItemIter) Text() (result int /*TODO*/) {
+func (v GlyphItemIter) Text() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().text))
 	return
 }
-func (v GlyphItemIter) SetText(value int /*TODO*/) {
+func (v GlyphItemIter) SetText(value string) {
+	if unsafe.Pointer(v.p().text) != nil {
+		gi.Free(unsafe.Pointer(v.p().text))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().text)) = gi.CString(value)
 }
 func (v GlyphItemIter) StartGlyph() (result int32) {
 	result = int32(v.p().start_glyph)

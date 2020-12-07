@@ -59,10 +59,15 @@ func ArrayGetType() gi.GType {
 func (v Array) p() *C.GArray {
 	return (*C.GArray)(v.P)
 }
-func (v Array) Data() (result int /*TODO*/) {
+func (v Array) Data() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().data))
 	return
 }
-func (v Array) SetData(value int /*TODO*/) {
+func (v Array) SetData(value string) {
+	if unsafe.Pointer(v.p().data) != nil {
+		gi.Free(unsafe.Pointer(v.p().data))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().data)) = gi.CString(value)
 }
 func (v Array) Len() (result uint32) {
 	result = uint32(v.p().len)
@@ -4296,10 +4301,15 @@ func DebugKeyGetType() gi.GType {
 func (v DebugKey) p() *C.GDebugKey {
 	return (*C.GDebugKey)(v.P)
 }
-func (v DebugKey) Key() (result int /*TODO*/) {
+func (v DebugKey) Key() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().key))
 	return
 }
-func (v DebugKey) SetKey(value int /*TODO*/) {
+func (v DebugKey) SetKey(value string) {
+	if unsafe.Pointer(v.p().key) != nil {
+		gi.Free(unsafe.Pointer(v.p().key))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().key)) = gi.CString(value)
 }
 func (v DebugKey) Value() (result uint32) {
 	result = uint32(v.p().value)
@@ -4544,10 +4554,15 @@ func (v Error) Code() (result int32) {
 func (v Error) SetCode(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().code)) = value
 }
-func (v Error) Message() (result int /*TODO*/) {
+func (v Error) Message() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().message))
 	return
 }
-func (v Error) SetMessage(value int /*TODO*/) {
+func (v Error) SetMessage(value string) {
+	if unsafe.Pointer(v.p().message) != nil {
+		gi.Free(unsafe.Pointer(v.p().message))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().message)) = gi.CString(value)
 }
 
 // Enum ErrorType
@@ -5384,6 +5399,7 @@ func (v Hook) Data() (result unsafe.Pointer) {
 	return
 }
 func (v Hook) SetData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().data)) = value
 }
 func (v Hook) Next() (result int /*TODO*/) {
 	return
@@ -5421,6 +5437,7 @@ func (v Hook) Func() (result unsafe.Pointer) {
 	return
 }
 func (v Hook) SetFunc(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p()._func)) = value
 }
 func (v Hook) Destroy() (result int /*TODO*/) {
 	return
@@ -5608,6 +5625,7 @@ func (v HookList) Dummy3() (result unsafe.Pointer) {
 	return
 }
 func (v HookList) SetDummy3(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().dummy3)) = value
 }
 func (v HookList) FinalizeHook() (result int /*TODO*/) {
 	return
@@ -6414,7 +6432,8 @@ func (v IOChannel) RefCount() (result int32) {
 func (v IOChannel) Funcs() (result int /*TODO*/) {
 	return
 }
-func (v IOChannel) Encoding() (result int /*TODO*/) {
+func (v IOChannel) Encoding() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().encoding))
 	return
 }
 func (v IOChannel) ReadCd() (result unsafe.Pointer) {
@@ -6425,7 +6444,8 @@ func (v IOChannel) WriteCd() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().write_cd)
 	return
 }
-func (v IOChannel) LineTerm() (result int /*TODO*/) {
+func (v IOChannel) LineTerm() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().line_term))
 	return
 }
 func (v IOChannel) LineTermLen() (result uint32) {
@@ -8012,6 +8032,7 @@ func (v List) Data() (result unsafe.Pointer) {
 	return
 }
 func (v List) SetData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().data)) = value
 }
 func (v List) Next() (result int /*TODO*/) {
 	return
@@ -8039,16 +8060,22 @@ func LogFieldGetType() gi.GType {
 func (v LogField) p() *C.GLogField {
 	return (*C.GLogField)(v.P)
 }
-func (v LogField) Key() (result int /*TODO*/) {
+func (v LogField) Key() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().key))
 	return
 }
-func (v LogField) SetKey(value int /*TODO*/) {
+func (v LogField) SetKey(value string) {
+	if unsafe.Pointer(v.p().key) != nil {
+		gi.Free(unsafe.Pointer(v.p().key))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().key)) = gi.CString(value)
 }
 func (v LogField) Value() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().value)
 	return
 }
 func (v LogField) SetValue(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().value)) = value
 }
 func (v LogField) Length() (result int64) {
 	result = int64(v.p().length)
@@ -9829,6 +9856,7 @@ func (v Node) Data() (result unsafe.Pointer) {
 	return
 }
 func (v Node) SetData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().data)) = value
 }
 func (v Node) Next() (result int /*TODO*/) {
 	return
@@ -9969,6 +9997,7 @@ func (v Once) Retval() (result unsafe.Pointer) {
 	return
 }
 func (v Once) SetRetval(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().retval)) = value
 }
 
 // Enum OnceStatus
@@ -10420,10 +10449,15 @@ func OptionEntryGetType() gi.GType {
 func (v OptionEntry) p() *C.GOptionEntry {
 	return (*C.GOptionEntry)(v.P)
 }
-func (v OptionEntry) LongName() (result int /*TODO*/) {
+func (v OptionEntry) LongName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().long_name))
 	return
 }
-func (v OptionEntry) SetLongName(value int /*TODO*/) {
+func (v OptionEntry) SetLongName(value string) {
+	if unsafe.Pointer(v.p().long_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().long_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().long_name)) = gi.CString(value)
 }
 func (v OptionEntry) ShortName() (result int8) {
 	result = int8(v.p().short_name)
@@ -10449,16 +10483,27 @@ func (v OptionEntry) ArgData() (result unsafe.Pointer) {
 	return
 }
 func (v OptionEntry) SetArgData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().arg_data)) = value
 }
-func (v OptionEntry) Description() (result int /*TODO*/) {
+func (v OptionEntry) Description() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().description))
 	return
 }
-func (v OptionEntry) SetDescription(value int /*TODO*/) {
+func (v OptionEntry) SetDescription(value string) {
+	if unsafe.Pointer(v.p().description) != nil {
+		gi.Free(unsafe.Pointer(v.p().description))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().description)) = gi.CString(value)
 }
-func (v OptionEntry) ArgDescription() (result int /*TODO*/) {
+func (v OptionEntry) ArgDescription() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().arg_description))
 	return
 }
-func (v OptionEntry) SetArgDescription(value int /*TODO*/) {
+func (v OptionEntry) SetArgDescription(value string) {
+	if unsafe.Pointer(v.p().arg_description) != nil {
+		gi.Free(unsafe.Pointer(v.p().arg_description))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().arg_description)) = gi.CString(value)
 }
 
 // Enum OptionError
@@ -10886,6 +10931,7 @@ func (v PtrArray) Pdata() (result unsafe.Pointer) {
 	return
 }
 func (v PtrArray) SetPdata(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().pdata)) = value
 }
 func (v PtrArray) Len() (result uint32) {
 	result = uint32(v.p().len)
@@ -12445,6 +12491,7 @@ func (v SList) Data() (result unsafe.Pointer) {
 	return
 }
 func (v SList) SetData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().data)) = value
 }
 func (v SList) Next() (result int /*TODO*/) {
 	return
@@ -12797,6 +12844,7 @@ func (v Scanner) UserData() (result unsafe.Pointer) {
 	return
 }
 func (v Scanner) SetUserData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().user_data)) = value
 }
 func (v Scanner) MaxParseErrors() (result uint32) {
 	result = uint32(v.p().max_parse_errors)
@@ -12812,10 +12860,15 @@ func (v Scanner) ParseErrors() (result uint32) {
 func (v Scanner) SetParseErrors(value uint32) {
 	*(*uint32)(unsafe.Pointer(&v.p().parse_errors)) = value
 }
-func (v Scanner) InputName() (result int /*TODO*/) {
+func (v Scanner) InputName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().input_name))
 	return
 }
-func (v Scanner) SetInputName(value int /*TODO*/) {
+func (v Scanner) SetInputName(value string) {
+	if unsafe.Pointer(v.p().input_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().input_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().input_name)) = gi.CString(value)
 }
 func (v Scanner) Qdata() (result int /*TODO*/) {
 	return
@@ -12882,13 +12935,16 @@ func (v Scanner) InputFd() (result int32) {
 	result = int32(v.p().input_fd)
 	return
 }
-func (v Scanner) Text() (result int /*TODO*/) {
+func (v Scanner) Text() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().text))
 	return
 }
-func (v Scanner) TextEnd() (result int /*TODO*/) {
+func (v Scanner) TextEnd() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().text_end))
 	return
 }
-func (v Scanner) Buffer() (result int /*TODO*/) {
+func (v Scanner) Buffer() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().buffer))
 	return
 }
 func (v Scanner) ScopeId() (result uint32) {
@@ -12916,25 +12972,45 @@ func ScannerConfigGetType() gi.GType {
 func (v ScannerConfig) p() *C.GScannerConfig {
 	return (*C.GScannerConfig)(v.P)
 }
-func (v ScannerConfig) CsetSkipCharacters() (result int /*TODO*/) {
+func (v ScannerConfig) CsetSkipCharacters() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().cset_skip_characters))
 	return
 }
-func (v ScannerConfig) SetCsetSkipCharacters(value int /*TODO*/) {
+func (v ScannerConfig) SetCsetSkipCharacters(value string) {
+	if unsafe.Pointer(v.p().cset_skip_characters) != nil {
+		gi.Free(unsafe.Pointer(v.p().cset_skip_characters))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().cset_skip_characters)) = gi.CString(value)
 }
-func (v ScannerConfig) CsetIdentifierFirst() (result int /*TODO*/) {
+func (v ScannerConfig) CsetIdentifierFirst() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().cset_identifier_first))
 	return
 }
-func (v ScannerConfig) SetCsetIdentifierFirst(value int /*TODO*/) {
+func (v ScannerConfig) SetCsetIdentifierFirst(value string) {
+	if unsafe.Pointer(v.p().cset_identifier_first) != nil {
+		gi.Free(unsafe.Pointer(v.p().cset_identifier_first))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().cset_identifier_first)) = gi.CString(value)
 }
-func (v ScannerConfig) CsetIdentifierNth() (result int /*TODO*/) {
+func (v ScannerConfig) CsetIdentifierNth() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().cset_identifier_nth))
 	return
 }
-func (v ScannerConfig) SetCsetIdentifierNth(value int /*TODO*/) {
+func (v ScannerConfig) SetCsetIdentifierNth(value string) {
+	if unsafe.Pointer(v.p().cset_identifier_nth) != nil {
+		gi.Free(unsafe.Pointer(v.p().cset_identifier_nth))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().cset_identifier_nth)) = gi.CString(value)
 }
-func (v ScannerConfig) CpairCommentSingle() (result int /*TODO*/) {
+func (v ScannerConfig) CpairCommentSingle() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().cpair_comment_single))
 	return
 }
-func (v ScannerConfig) SetCpairCommentSingle(value int /*TODO*/) {
+func (v ScannerConfig) SetCpairCommentSingle(value string) {
+	if unsafe.Pointer(v.p().cpair_comment_single) != nil {
+		gi.Free(unsafe.Pointer(v.p().cpair_comment_single))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().cpair_comment_single)) = gi.CString(value)
 }
 
 // TODO: ignore struct ScannerConfig field case_sensitive, bits(=1) > 0
@@ -14210,7 +14286,8 @@ func (v Source) Prev() (result int /*TODO*/) {
 func (v Source) Next() (result int /*TODO*/) {
 	return
 }
-func (v Source) Name() (result int /*TODO*/) {
+func (v Source) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
 func (v Source) Priv() (result int /*TODO*/) {
@@ -15000,10 +15077,15 @@ func (v String) Up() (result String) {
 func (v String) p() *C.GString {
 	return (*C.GString)(v.P)
 }
-func (v String) Str() (result int /*TODO*/) {
+func (v String) Str() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().str))
 	return
 }
-func (v String) SetStr(value int /*TODO*/) {
+func (v String) SetStr(value string) {
+	if unsafe.Pointer(v.p().str) != nil {
+		gi.Free(unsafe.Pointer(v.p().str))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().str)) = gi.CString(value)
 }
 func (v String) Len() (result uint64) {
 	result = uint64(v.p().len)
@@ -15158,36 +15240,42 @@ func (v TestConfig) TestInitialized() (result bool) {
 	return
 }
 func (v TestConfig) SetTestInitialized(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().test_initialized)) = int32(gi.Bool2Int(value))
 }
 func (v TestConfig) TestQuick() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_quick))
 	return
 }
 func (v TestConfig) SetTestQuick(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().test_quick)) = int32(gi.Bool2Int(value))
 }
 func (v TestConfig) TestPerf() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_perf))
 	return
 }
 func (v TestConfig) SetTestPerf(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().test_perf)) = int32(gi.Bool2Int(value))
 }
 func (v TestConfig) TestVerbose() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_verbose))
 	return
 }
 func (v TestConfig) SetTestVerbose(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().test_verbose)) = int32(gi.Bool2Int(value))
 }
 func (v TestConfig) TestQuiet() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_quiet))
 	return
 }
 func (v TestConfig) SetTestQuiet(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().test_quiet)) = int32(gi.Bool2Int(value))
 }
 func (v TestConfig) TestUndefined() (result bool) {
 	result = gi.Int2Bool(int(v.p().test_undefined))
 	return
 }
 func (v TestConfig) SetTestUndefined(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().test_undefined)) = int32(gi.Bool2Int(value))
 }
 
 type TestDataFunc func()
@@ -15827,12 +15915,14 @@ func (v ThreadPool) UserData() (result unsafe.Pointer) {
 	return
 }
 func (v ThreadPool) SetUserData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().user_data)) = value
 }
 func (v ThreadPool) Exclusive() (result bool) {
 	result = gi.Int2Bool(int(v.p().exclusive))
 	return
 }
 func (v ThreadPool) SetExclusive(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().exclusive)) = int32(gi.Bool2Int(value))
 }
 
 // Enum TimeType

@@ -109,10 +109,15 @@ func (v ActionAny) Type() (result int /*TODO*/) {
 }
 func (v ActionAny) SetType(value int /*TODO*/) {
 }
-func (v ActionAny) Title() (result int /*TODO*/) {
+func (v ActionAny) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v ActionAny) SetTitle(value int /*TODO*/) {
+func (v ActionAny) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
 
 // Struct ActionGotoDest
@@ -135,10 +140,15 @@ func (v ActionGotoDest) Type() (result int /*TODO*/) {
 }
 func (v ActionGotoDest) SetType(value int /*TODO*/) {
 }
-func (v ActionGotoDest) Title() (result int /*TODO*/) {
+func (v ActionGotoDest) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v ActionGotoDest) SetTitle(value int /*TODO*/) {
+func (v ActionGotoDest) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
 func (v ActionGotoDest) Dest() (result int /*TODO*/) {
 	return
@@ -166,15 +176,25 @@ func (v ActionGotoRemote) Type() (result int /*TODO*/) {
 }
 func (v ActionGotoRemote) SetType(value int /*TODO*/) {
 }
-func (v ActionGotoRemote) Title() (result int /*TODO*/) {
+func (v ActionGotoRemote) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v ActionGotoRemote) SetTitle(value int /*TODO*/) {
+func (v ActionGotoRemote) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
-func (v ActionGotoRemote) FileName() (result int /*TODO*/) {
+func (v ActionGotoRemote) FileName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().file_name))
 	return
 }
-func (v ActionGotoRemote) SetFileName(value int /*TODO*/) {
+func (v ActionGotoRemote) SetFileName(value string) {
+	if unsafe.Pointer(v.p().file_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().file_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().file_name)) = gi.CString(value)
 }
 func (v ActionGotoRemote) Dest() (result int /*TODO*/) {
 	return
@@ -202,15 +222,25 @@ func (v ActionJavascript) Type() (result int /*TODO*/) {
 }
 func (v ActionJavascript) SetType(value int /*TODO*/) {
 }
-func (v ActionJavascript) Title() (result int /*TODO*/) {
+func (v ActionJavascript) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v ActionJavascript) SetTitle(value int /*TODO*/) {
+func (v ActionJavascript) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
-func (v ActionJavascript) Script() (result int /*TODO*/) {
+func (v ActionJavascript) Script() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().script))
 	return
 }
-func (v ActionJavascript) SetScript(value int /*TODO*/) {
+func (v ActionJavascript) SetScript(value string) {
+	if unsafe.Pointer(v.p().script) != nil {
+		gi.Free(unsafe.Pointer(v.p().script))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().script)) = gi.CString(value)
 }
 
 // Struct ActionLaunch
@@ -233,20 +263,35 @@ func (v ActionLaunch) Type() (result int /*TODO*/) {
 }
 func (v ActionLaunch) SetType(value int /*TODO*/) {
 }
-func (v ActionLaunch) Title() (result int /*TODO*/) {
+func (v ActionLaunch) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v ActionLaunch) SetTitle(value int /*TODO*/) {
+func (v ActionLaunch) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
-func (v ActionLaunch) FileName() (result int /*TODO*/) {
+func (v ActionLaunch) FileName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().file_name))
 	return
 }
-func (v ActionLaunch) SetFileName(value int /*TODO*/) {
+func (v ActionLaunch) SetFileName(value string) {
+	if unsafe.Pointer(v.p().file_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().file_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().file_name)) = gi.CString(value)
 }
-func (v ActionLaunch) Params() (result int /*TODO*/) {
+func (v ActionLaunch) Params() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().params))
 	return
 }
-func (v ActionLaunch) SetParams(value int /*TODO*/) {
+func (v ActionLaunch) SetParams(value string) {
+	if unsafe.Pointer(v.p().params) != nil {
+		gi.Free(unsafe.Pointer(v.p().params))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().params)) = gi.CString(value)
 }
 
 // Struct ActionLayer
@@ -309,10 +354,15 @@ func (v ActionMovie) Type() (result int /*TODO*/) {
 }
 func (v ActionMovie) SetType(value int /*TODO*/) {
 }
-func (v ActionMovie) Title() (result int /*TODO*/) {
+func (v ActionMovie) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v ActionMovie) SetTitle(value int /*TODO*/) {
+func (v ActionMovie) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
 func (v ActionMovie) Operation() (result int /*TODO*/) {
 	return
@@ -360,15 +410,25 @@ func (v ActionNamed) Type() (result int /*TODO*/) {
 }
 func (v ActionNamed) SetType(value int /*TODO*/) {
 }
-func (v ActionNamed) Title() (result int /*TODO*/) {
+func (v ActionNamed) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v ActionNamed) SetTitle(value int /*TODO*/) {
+func (v ActionNamed) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
-func (v ActionNamed) NamedDest() (result int /*TODO*/) {
+func (v ActionNamed) NamedDest() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().named_dest))
 	return
 }
-func (v ActionNamed) SetNamedDest(value int /*TODO*/) {
+func (v ActionNamed) SetNamedDest(value string) {
+	if unsafe.Pointer(v.p().named_dest) != nil {
+		gi.Free(unsafe.Pointer(v.p().named_dest))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().named_dest)) = gi.CString(value)
 }
 
 // Struct ActionOCGState
@@ -391,10 +451,15 @@ func (v ActionOCGState) Type() (result int /*TODO*/) {
 }
 func (v ActionOCGState) SetType(value int /*TODO*/) {
 }
-func (v ActionOCGState) Title() (result int /*TODO*/) {
+func (v ActionOCGState) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v ActionOCGState) SetTitle(value int /*TODO*/) {
+func (v ActionOCGState) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
 func (v ActionOCGState) StateList() (result int /*TODO*/) {
 	return
@@ -422,10 +487,15 @@ func (v ActionRendition) Type() (result int /*TODO*/) {
 }
 func (v ActionRendition) SetType(value int /*TODO*/) {
 }
-func (v ActionRendition) Title() (result int /*TODO*/) {
+func (v ActionRendition) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v ActionRendition) SetTitle(value int /*TODO*/) {
+func (v ActionRendition) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
 func (v ActionRendition) Op() (result int32) {
 	result = int32(v.p().op)
@@ -482,15 +552,25 @@ func (v ActionUri) Type() (result int /*TODO*/) {
 }
 func (v ActionUri) SetType(value int /*TODO*/) {
 }
-func (v ActionUri) Title() (result int /*TODO*/) {
+func (v ActionUri) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v ActionUri) SetTitle(value int /*TODO*/) {
+func (v ActionUri) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
-func (v ActionUri) Uri() (result int /*TODO*/) {
+func (v ActionUri) Uri() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().uri))
 	return
 }
-func (v ActionUri) SetUri(value int /*TODO*/) {
+func (v ActionUri) SetUri(value string) {
+	if unsafe.Pointer(v.p().uri) != nil {
+		gi.Free(unsafe.Pointer(v.p().uri))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().uri)) = gi.CString(value)
 }
 
 // Object Annot
@@ -783,6 +863,7 @@ func (v AnnotCalloutLine) Multiline() (result bool) {
 	return
 }
 func (v AnnotCalloutLine) SetMultiline(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().multiline)) = int32(gi.Bool2Int(value))
 }
 func (v AnnotCalloutLine) X1() (result float64) {
 	result = float64(v.p().x1)
@@ -2265,10 +2346,15 @@ func (v Dest) Zoom() (result float64) {
 func (v Dest) SetZoom(value float64) {
 	*(*float64)(unsafe.Pointer(&v.p().zoom)) = value
 }
-func (v Dest) NamedDest() (result int /*TODO*/) {
+func (v Dest) NamedDest() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().named_dest))
 	return
 }
-func (v Dest) SetNamedDest(value int /*TODO*/) {
+func (v Dest) SetNamedDest(value string) {
+	if unsafe.Pointer(v.p().named_dest) != nil {
+		gi.Free(unsafe.Pointer(v.p().named_dest))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().named_dest)) = gi.CString(value)
 }
 
 // TODO: ignore struct Dest field change_left, bits(=1) > 0
@@ -6069,6 +6155,7 @@ func (v PageTransition) Rectangular() (result bool) {
 	return
 }
 func (v PageTransition) SetRectangular(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().rectangular)) = int32(gi.Bool2Int(value))
 }
 func (v PageTransition) DurationReal() (result float64) {
 	result = float64(v.p().duration_real)
@@ -7957,10 +8044,15 @@ func (v TextAttributes) Free() {
 func (v TextAttributes) p() *C.PopplerTextAttributes {
 	return (*C.PopplerTextAttributes)(v.P)
 }
-func (v TextAttributes) FontName() (result int /*TODO*/) {
+func (v TextAttributes) FontName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().font_name))
 	return
 }
-func (v TextAttributes) SetFontName(value int /*TODO*/) {
+func (v TextAttributes) SetFontName(value string) {
+	if unsafe.Pointer(v.p().font_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().font_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().font_name)) = gi.CString(value)
 }
 func (v TextAttributes) FontSize() (result float64) {
 	result = float64(v.p().font_size)
@@ -7974,6 +8066,7 @@ func (v TextAttributes) IsUnderlined() (result bool) {
 	return
 }
 func (v TextAttributes) SetIsUnderlined(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().is_underlined)) = int32(gi.Bool2Int(value))
 }
 func (v TextAttributes) Color() (result int /*TODO*/) {
 	return

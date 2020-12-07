@@ -302,23 +302,38 @@ func ActionEntryGetType() gi.GType {
 func (v ActionEntry) p() *C.GActionEntry {
 	return (*C.GActionEntry)(v.P)
 }
-func (v ActionEntry) Name() (result int /*TODO*/) {
+func (v ActionEntry) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v ActionEntry) SetName(value int /*TODO*/) {
+func (v ActionEntry) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
 func (v ActionEntry) Activate() (result int /*TODO*/) {
 	return
 }
-func (v ActionEntry) ParameterType() (result int /*TODO*/) {
+func (v ActionEntry) ParameterType() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().parameter_type))
 	return
 }
-func (v ActionEntry) SetParameterType(value int /*TODO*/) {
+func (v ActionEntry) SetParameterType(value string) {
+	if unsafe.Pointer(v.p().parameter_type) != nil {
+		gi.Free(unsafe.Pointer(v.p().parameter_type))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().parameter_type)) = gi.CString(value)
 }
-func (v ActionEntry) State() (result int /*TODO*/) {
+func (v ActionEntry) State() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().state))
 	return
 }
-func (v ActionEntry) SetState(value int /*TODO*/) {
+func (v ActionEntry) SetState(value string) {
+	if unsafe.Pointer(v.p().state) != nil {
+		gi.Free(unsafe.Pointer(v.p().state))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().state)) = gi.CString(value)
 }
 func (v ActionEntry) ChangeState() (result int /*TODO*/) {
 	return
@@ -4507,15 +4522,25 @@ func (v DBusAnnotationInfo) RefCount() (result int32) {
 func (v DBusAnnotationInfo) SetRefCount(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
 }
-func (v DBusAnnotationInfo) Key() (result int /*TODO*/) {
+func (v DBusAnnotationInfo) Key() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().key))
 	return
 }
-func (v DBusAnnotationInfo) SetKey(value int /*TODO*/) {
+func (v DBusAnnotationInfo) SetKey(value string) {
+	if unsafe.Pointer(v.p().key) != nil {
+		gi.Free(unsafe.Pointer(v.p().key))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().key)) = gi.CString(value)
 }
-func (v DBusAnnotationInfo) Value() (result int /*TODO*/) {
+func (v DBusAnnotationInfo) Value() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().value))
 	return
 }
-func (v DBusAnnotationInfo) SetValue(value int /*TODO*/) {
+func (v DBusAnnotationInfo) SetValue(value string) {
+	if unsafe.Pointer(v.p().value) != nil {
+		gi.Free(unsafe.Pointer(v.p().value))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().value)) = gi.CString(value)
 }
 func (v DBusAnnotationInfo) Annotations() (result int /*TODO*/) {
 	return
@@ -4576,15 +4601,25 @@ func (v DBusArgInfo) RefCount() (result int32) {
 func (v DBusArgInfo) SetRefCount(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
 }
-func (v DBusArgInfo) Name() (result int /*TODO*/) {
+func (v DBusArgInfo) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v DBusArgInfo) SetName(value int /*TODO*/) {
+func (v DBusArgInfo) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
-func (v DBusArgInfo) Signature() (result int /*TODO*/) {
+func (v DBusArgInfo) Signature() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().signature))
 	return
 }
-func (v DBusArgInfo) SetSignature(value int /*TODO*/) {
+func (v DBusArgInfo) SetSignature(value string) {
+	if unsafe.Pointer(v.p().signature) != nil {
+		gi.Free(unsafe.Pointer(v.p().signature))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().signature)) = gi.CString(value)
 }
 func (v DBusArgInfo) Annotations() (result int /*TODO*/) {
 	return
@@ -6291,10 +6326,15 @@ func (v DBusErrorEntry) ErrorCode() (result int32) {
 func (v DBusErrorEntry) SetErrorCode(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().error_code)) = value
 }
-func (v DBusErrorEntry) DbusErrorName() (result int /*TODO*/) {
+func (v DBusErrorEntry) DbusErrorName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().dbus_error_name))
 	return
 }
-func (v DBusErrorEntry) SetDbusErrorName(value int /*TODO*/) {
+func (v DBusErrorEntry) SetDbusErrorName(value string) {
+	if unsafe.Pointer(v.p().dbus_error_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().dbus_error_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().dbus_error_name)) = gi.CString(value)
 }
 
 // Interface DBusInterface
@@ -6552,10 +6592,15 @@ func (v DBusInterfaceInfo) RefCount() (result int32) {
 func (v DBusInterfaceInfo) SetRefCount(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
 }
-func (v DBusInterfaceInfo) Name() (result int /*TODO*/) {
+func (v DBusInterfaceInfo) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v DBusInterfaceInfo) SetName(value int /*TODO*/) {
+func (v DBusInterfaceInfo) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
 func (v DBusInterfaceInfo) Methods() (result int /*TODO*/) {
 	return
@@ -8011,10 +8056,15 @@ func (v DBusMethodInfo) RefCount() (result int32) {
 func (v DBusMethodInfo) SetRefCount(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
 }
-func (v DBusMethodInfo) Name() (result int /*TODO*/) {
+func (v DBusMethodInfo) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v DBusMethodInfo) SetName(value int /*TODO*/) {
+func (v DBusMethodInfo) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
 func (v DBusMethodInfo) InArgs() (result int /*TODO*/) {
 	return
@@ -8430,10 +8480,15 @@ func (v DBusNodeInfo) RefCount() (result int32) {
 func (v DBusNodeInfo) SetRefCount(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
 }
-func (v DBusNodeInfo) Path() (result int /*TODO*/) {
+func (v DBusNodeInfo) Path() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().path))
 	return
 }
-func (v DBusNodeInfo) SetPath(value int /*TODO*/) {
+func (v DBusNodeInfo) SetPath(value string) {
+	if unsafe.Pointer(v.p().path) != nil {
+		gi.Free(unsafe.Pointer(v.p().path))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().path)) = gi.CString(value)
 }
 func (v DBusNodeInfo) Interfaces() (result int /*TODO*/) {
 	return
@@ -9475,15 +9530,25 @@ func (v DBusPropertyInfo) RefCount() (result int32) {
 func (v DBusPropertyInfo) SetRefCount(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
 }
-func (v DBusPropertyInfo) Name() (result int /*TODO*/) {
+func (v DBusPropertyInfo) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v DBusPropertyInfo) SetName(value int /*TODO*/) {
+func (v DBusPropertyInfo) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
-func (v DBusPropertyInfo) Signature() (result int /*TODO*/) {
+func (v DBusPropertyInfo) Signature() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().signature))
 	return
 }
-func (v DBusPropertyInfo) SetSignature(value int /*TODO*/) {
+func (v DBusPropertyInfo) SetSignature(value string) {
+	if unsafe.Pointer(v.p().signature) != nil {
+		gi.Free(unsafe.Pointer(v.p().signature))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().signature)) = gi.CString(value)
 }
 func (v DBusPropertyInfo) Flags() (result int /*TODO*/) {
 	return
@@ -10603,10 +10668,15 @@ func (v DBusSignalInfo) RefCount() (result int32) {
 func (v DBusSignalInfo) SetRefCount(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().ref_count)) = value
 }
-func (v DBusSignalInfo) Name() (result int /*TODO*/) {
+func (v DBusSignalInfo) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v DBusSignalInfo) SetName(value int /*TODO*/) {
+func (v DBusSignalInfo) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
 func (v DBusSignalInfo) Args() (result int /*TODO*/) {
 	return
@@ -10682,6 +10752,7 @@ func (v DBusSubtreeVTable) Enumerate() (result unsafe.Pointer) {
 	return
 }
 func (v DBusSubtreeVTable) SetEnumerate(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().enumerate)) = value
 }
 func (v DBusSubtreeVTable) Introspect() (result int /*TODO*/) {
 	return
@@ -18305,10 +18376,15 @@ func FileAttributeInfoGetType() gi.GType {
 func (v FileAttributeInfo) p() *C.GFileAttributeInfo {
 	return (*C.GFileAttributeInfo)(v.P)
 }
-func (v FileAttributeInfo) Name() (result int /*TODO*/) {
+func (v FileAttributeInfo) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v FileAttributeInfo) SetName(value int /*TODO*/) {
+func (v FileAttributeInfo) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
 func (v FileAttributeInfo) Type() (result int /*TODO*/) {
 	return
@@ -23722,6 +23798,7 @@ func (v InputVector) Buffer() (result unsafe.Pointer) {
 	return
 }
 func (v InputVector) SetBuffer(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().buffer)) = value
 }
 func (v InputVector) Size() (result uint64) {
 	result = uint64(v.p().size)
@@ -28173,6 +28250,7 @@ func (v OutputVector) Buffer() (result unsafe.Pointer) {
 	return
 }
 func (v OutputVector) SetBuffer(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().buffer)) = value
 }
 func (v OutputVector) Size() (result uint64) {
 	result = uint64(v.p().size)

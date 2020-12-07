@@ -240,15 +240,25 @@ func AttributeSetFree1(attrib_set g.SList) {
 func (v Attribute) p() *C.AtkAttribute {
 	return (*C.AtkAttribute)(v.P)
 }
-func (v Attribute) Name() (result int /*TODO*/) {
+func (v Attribute) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v Attribute) SetName(value int /*TODO*/) {
+func (v Attribute) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
-func (v Attribute) Value() (result int /*TODO*/) {
+func (v Attribute) Value() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().value))
 	return
 }
-func (v Attribute) SetValue(value int /*TODO*/) {
+func (v Attribute) SetValue(value string) {
+	if unsafe.Pointer(v.p().value) != nil {
+		gi.Free(unsafe.Pointer(v.p().value))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().value)) = gi.CString(value)
 }
 
 // Interface Component
@@ -1584,10 +1594,15 @@ func (v KeyEventStruct) Length() (result int32) {
 func (v KeyEventStruct) SetLength(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().length)) = value
 }
-func (v KeyEventStruct) String() (result int /*TODO*/) {
+func (v KeyEventStruct) String() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().string))
 	return
 }
-func (v KeyEventStruct) SetString(value int /*TODO*/) {
+func (v KeyEventStruct) SetString(value string) {
+	if unsafe.Pointer(v.p().string) != nil {
+		gi.Free(unsafe.Pointer(v.p().string))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().string)) = gi.CString(value)
 }
 func (v KeyEventStruct) Keycode() (result uint16) {
 	result = uint16(v.p().keycode)
@@ -2420,10 +2435,15 @@ func PropertyValuesGetType() gi.GType {
 func (v PropertyValues) p() *C.AtkPropertyValues {
 	return (*C.AtkPropertyValues)(v.P)
 }
-func (v PropertyValues) PropertyName() (result int /*TODO*/) {
+func (v PropertyValues) PropertyName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().property_name))
 	return
 }
-func (v PropertyValues) SetPropertyName(value int /*TODO*/) {
+func (v PropertyValues) SetPropertyName(value string) {
+	if unsafe.Pointer(v.p().property_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().property_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().property_name)) = gi.CString(value)
 }
 func (v PropertyValues) OldValue() (result int /*TODO*/) {
 	return
@@ -5308,10 +5328,15 @@ func (v TextRange) EndOffset() (result int32) {
 func (v TextRange) SetEndOffset(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().end_offset)) = value
 }
-func (v TextRange) Content() (result int /*TODO*/) {
+func (v TextRange) Content() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().content))
 	return
 }
-func (v TextRange) SetContent(value int /*TODO*/) {
+func (v TextRange) SetContent(value string) {
+	if unsafe.Pointer(v.p().content) != nil {
+		gi.Free(unsafe.Pointer(v.p().content))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().content)) = gi.CString(value)
 }
 
 // Struct TextRectangle

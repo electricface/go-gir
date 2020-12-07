@@ -970,10 +970,15 @@ func (v Application) Hash() (result int /*TODO*/) {
 }
 func (v Application) SetHash(value int /*TODO*/) {
 }
-func (v Application) BusName() (result int /*TODO*/) {
+func (v Application) BusName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().bus_name))
 	return
 }
-func (v Application) SetBusName(value int /*TODO*/) {
+func (v Application) SetBusName(value string) {
+	if unsafe.Pointer(v.p().bus_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().bus_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().bus_name)) = gi.CString(value)
 }
 func (v Application) Bus() (result int /*TODO*/) {
 	return
@@ -985,26 +990,42 @@ func (v Application) Root() (result unsafe.Pointer) {
 	return
 }
 func (v Application) SetRoot(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().root)) = value
 }
 func (v Application) Cache() (result int /*TODO*/) {
 	return
 }
 func (v Application) SetCache(value int /*TODO*/) {
 }
-func (v Application) ToolkitName() (result int /*TODO*/) {
+func (v Application) ToolkitName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().toolkit_name))
 	return
 }
-func (v Application) SetToolkitName(value int /*TODO*/) {
+func (v Application) SetToolkitName(value string) {
+	if unsafe.Pointer(v.p().toolkit_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().toolkit_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().toolkit_name)) = gi.CString(value)
 }
-func (v Application) ToolkitVersion() (result int /*TODO*/) {
+func (v Application) ToolkitVersion() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().toolkit_version))
 	return
 }
-func (v Application) SetToolkitVersion(value int /*TODO*/) {
+func (v Application) SetToolkitVersion(value string) {
+	if unsafe.Pointer(v.p().toolkit_version) != nil {
+		gi.Free(unsafe.Pointer(v.p().toolkit_version))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().toolkit_version)) = gi.CString(value)
 }
-func (v Application) AtspiVersion() (result int /*TODO*/) {
+func (v Application) AtspiVersion() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().atspi_version))
 	return
 }
-func (v Application) SetAtspiVersion(value int /*TODO*/) {
+func (v Application) SetAtspiVersion(value string) {
+	if unsafe.Pointer(v.p().atspi_version) != nil {
+		gi.Free(unsafe.Pointer(v.p().atspi_version))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().atspi_version)) = gi.CString(value)
 }
 
 // denied field Application.time_added
@@ -1719,16 +1740,22 @@ func (v DeviceEvent) Timestamp() (result uint32) {
 func (v DeviceEvent) SetTimestamp(value uint32) {
 	*(*uint32)(unsafe.Pointer(&v.p().timestamp)) = value
 }
-func (v DeviceEvent) EventString() (result int /*TODO*/) {
+func (v DeviceEvent) EventString() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().event_string))
 	return
 }
-func (v DeviceEvent) SetEventString(value int /*TODO*/) {
+func (v DeviceEvent) SetEventString(value string) {
+	if unsafe.Pointer(v.p().event_string) != nil {
+		gi.Free(unsafe.Pointer(v.p().event_string))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().event_string)) = gi.CString(value)
 }
 func (v DeviceEvent) IsText() (result bool) {
 	result = gi.Int2Bool(int(v.p().is_text))
 	return
 }
 func (v DeviceEvent) SetIsText(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().is_text)) = int32(gi.Bool2Int(value))
 }
 
 // Object DeviceListener
@@ -2193,10 +2220,15 @@ func EventQuit1() {
 func (v Event) p() *C.AtspiEvent {
 	return (*C.AtspiEvent)(v.P)
 }
-func (v Event) Type() (result int /*TODO*/) {
+func (v Event) Type() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p()._type))
 	return
 }
-func (v Event) SetType(value int /*TODO*/) {
+func (v Event) SetType(value string) {
+	if unsafe.Pointer(v.p()._type) != nil {
+		gi.Free(unsafe.Pointer(v.p()._type))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p()._type)) = gi.CString(value)
 }
 func (v Event) Source() (result int /*TODO*/) {
 	return
@@ -2510,18 +2542,21 @@ func (v EventListenerMode) Synchronous() (result bool) {
 	return
 }
 func (v EventListenerMode) SetSynchronous(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().synchronous)) = int32(gi.Bool2Int(value))
 }
 func (v EventListenerMode) Preemptive() (result bool) {
 	result = gi.Int2Bool(int(v.p().preemptive))
 	return
 }
 func (v EventListenerMode) SetPreemptive(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().preemptive)) = int32(gi.Bool2Int(value))
 }
 func (v EventListenerMode) Global() (result bool) {
 	result = gi.Int2Bool(int(v.p().global))
 	return
 }
 func (v EventListenerMode) SetGlobal(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().global)) = int32(gi.Bool2Int(value))
 }
 
 type EventListenerSimpleCB func(event Event)
@@ -2941,10 +2976,15 @@ func (v KeyDefinition) Keysym() (result int32) {
 func (v KeyDefinition) SetKeysym(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().keysym)) = value
 }
-func (v KeyDefinition) Keystring() (result int /*TODO*/) {
+func (v KeyDefinition) Keystring() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().keystring))
 	return
 }
-func (v KeyDefinition) SetKeystring(value int /*TODO*/) {
+func (v KeyDefinition) SetKeystring(value string) {
+	if unsafe.Pointer(v.p().keystring) != nil {
+		gi.Free(unsafe.Pointer(v.p().keystring))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().keystring)) = gi.CString(value)
 }
 func (v KeyDefinition) Unused() (result int32) {
 	result = int32(v.p().unused)
@@ -3007,10 +3047,15 @@ func (v KeySet) Keycodes() (result int /*TODO*/) {
 }
 func (v KeySet) SetKeycodes(value int /*TODO*/) {
 }
-func (v KeySet) Keystrings() (result int /*TODO*/) {
+func (v KeySet) Keystrings() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().keystrings))
 	return
 }
-func (v KeySet) SetKeystrings(value int /*TODO*/) {
+func (v KeySet) SetKeystrings(value string) {
+	if unsafe.Pointer(v.p().keystrings) != nil {
+		gi.Free(unsafe.Pointer(v.p().keystrings))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().keystrings)) = gi.CString(value)
 }
 func (v KeySet) Len() (result int16) {
 	result = int16(v.p().len)
@@ -5510,10 +5555,15 @@ func (v TextRange) EndOffset() (result int32) {
 func (v TextRange) SetEndOffset(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().end_offset)) = value
 }
-func (v TextRange) Content() (result int /*TODO*/) {
+func (v TextRange) Content() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().content))
 	return
 }
-func (v TextRange) SetContent(value int /*TODO*/) {
+func (v TextRange) SetContent(value string) {
+	if unsafe.Pointer(v.p().content) != nil {
+		gi.Free(unsafe.Pointer(v.p().content))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().content)) = gi.CString(value)
 }
 
 // Interface Value

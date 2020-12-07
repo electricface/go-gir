@@ -4358,6 +4358,7 @@ func (v EventCrossing) Focus() (result bool) {
 	return
 }
 func (v EventCrossing) SetFocus(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().focus)) = int32(gi.Bool2Int(value))
 }
 func (v EventCrossing) State() (result int /*TODO*/) {
 	return
@@ -4561,12 +4562,14 @@ func (v EventGrabBroken) Keyboard() (result bool) {
 	return
 }
 func (v EventGrabBroken) SetKeyboard(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().keyboard)) = int32(gi.Bool2Int(value))
 }
 func (v EventGrabBroken) Implicit() (result bool) {
 	result = gi.Int2Bool(int(v.p().implicit))
 	return
 }
 func (v EventGrabBroken) SetImplicit(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().implicit)) = int32(gi.Bool2Int(value))
 }
 func (v EventGrabBroken) GrabWindow() (result int /*TODO*/) {
 	return
@@ -4632,10 +4635,15 @@ func (v EventKey) Length() (result int32) {
 func (v EventKey) SetLength(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().length)) = value
 }
-func (v EventKey) String() (result int /*TODO*/) {
+func (v EventKey) String() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().string))
 	return
 }
-func (v EventKey) SetString(value int /*TODO*/) {
+func (v EventKey) SetString(value string) {
+	if unsafe.Pointer(v.p().string) != nil {
+		gi.Free(unsafe.Pointer(v.p().string))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().string)) = gi.CString(value)
 }
 func (v EventKey) HardwareKeycode() (result uint16) {
 	result = uint16(v.p().hardware_keycode)
@@ -5327,10 +5335,15 @@ func (v EventSetting) Action() (result int /*TODO*/) {
 }
 func (v EventSetting) SetAction(value int /*TODO*/) {
 }
-func (v EventSetting) Name() (result int /*TODO*/) {
+func (v EventSetting) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v EventSetting) SetName(value int /*TODO*/) {
+func (v EventSetting) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
 
 // Struct EventTouch
@@ -5406,6 +5419,7 @@ func (v EventTouch) EmulatingPointer() (result bool) {
 	return
 }
 func (v EventTouch) SetEmulatingPointer(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().emulating_pointer)) = int32(gi.Bool2Int(value))
 }
 func (v EventTouch) Device() (result int /*TODO*/) {
 	return
@@ -12200,10 +12214,15 @@ func WindowAttrGetType() gi.GType {
 func (v WindowAttr) p() *C.GdkWindowAttr {
 	return (*C.GdkWindowAttr)(v.P)
 }
-func (v WindowAttr) Title() (result int /*TODO*/) {
+func (v WindowAttr) Title() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().title))
 	return
 }
-func (v WindowAttr) SetTitle(value int /*TODO*/) {
+func (v WindowAttr) SetTitle(value string) {
+	if unsafe.Pointer(v.p().title) != nil {
+		gi.Free(unsafe.Pointer(v.p().title))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().title)) = gi.CString(value)
 }
 func (v WindowAttr) EventMask() (result int32) {
 	result = int32(v.p().event_mask)
@@ -12260,21 +12279,32 @@ func (v WindowAttr) Cursor() (result int /*TODO*/) {
 }
 func (v WindowAttr) SetCursor(value int /*TODO*/) {
 }
-func (v WindowAttr) WmclassName() (result int /*TODO*/) {
+func (v WindowAttr) WmclassName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().wmclass_name))
 	return
 }
-func (v WindowAttr) SetWmclassName(value int /*TODO*/) {
+func (v WindowAttr) SetWmclassName(value string) {
+	if unsafe.Pointer(v.p().wmclass_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().wmclass_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().wmclass_name)) = gi.CString(value)
 }
-func (v WindowAttr) WmclassClass() (result int /*TODO*/) {
+func (v WindowAttr) WmclassClass() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().wmclass_class))
 	return
 }
-func (v WindowAttr) SetWmclassClass(value int /*TODO*/) {
+func (v WindowAttr) SetWmclassClass(value string) {
+	if unsafe.Pointer(v.p().wmclass_class) != nil {
+		gi.Free(unsafe.Pointer(v.p().wmclass_class))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().wmclass_class)) = gi.CString(value)
 }
 func (v WindowAttr) OverrideRedirect() (result bool) {
 	result = gi.Int2Bool(int(v.p().override_redirect))
 	return
 }
 func (v WindowAttr) SetOverrideRedirect(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().override_redirect)) = int32(gi.Bool2Int(value))
 }
 func (v WindowAttr) TypeHint() (result int /*TODO*/) {
 	return

@@ -5641,6 +5641,7 @@ func (v ClockEntry) UserData() (result unsafe.Pointer) {
 	return
 }
 func (v ClockEntry) SetUserData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().user_data)) = value
 }
 func (v ClockEntry) DestroyData() (result int /*TODO*/) {
 	return
@@ -5652,12 +5653,14 @@ func (v ClockEntry) Unscheduled() (result bool) {
 	return
 }
 func (v ClockEntry) SetUnscheduled(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().unscheduled)) = int32(gi.Bool2Int(value))
 }
 func (v ClockEntry) WokenUp() (result bool) {
 	result = gi.Int2Bool(int(v.p().woken_up))
 	return
 }
 func (v ClockEntry) SetWokenUp(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().woken_up)) = int32(gi.Bool2Int(value))
 }
 func (v ClockEntry) _GstReserved() (result int /*TODO*/) {
 	return
@@ -6838,10 +6841,12 @@ func (v DebugCategory) Color() (result uint32) {
 	result = uint32(v.p().color)
 	return
 }
-func (v DebugCategory) Name() (result int /*TODO*/) {
+func (v DebugCategory) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v DebugCategory) Description() (result int /*TODO*/) {
+func (v DebugCategory) Description() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().description))
 	return
 }
 
@@ -11884,15 +11889,25 @@ func (v FormatDefinition) Value() (result int /*TODO*/) {
 }
 func (v FormatDefinition) SetValue(value int /*TODO*/) {
 }
-func (v FormatDefinition) Nick() (result int /*TODO*/) {
+func (v FormatDefinition) Nick() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().nick))
 	return
 }
-func (v FormatDefinition) SetNick(value int /*TODO*/) {
+func (v FormatDefinition) SetNick(value string) {
+	if unsafe.Pointer(v.p().nick) != nil {
+		gi.Free(unsafe.Pointer(v.p().nick))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().nick)) = gi.CString(value)
 }
-func (v FormatDefinition) Description() (result int /*TODO*/) {
+func (v FormatDefinition) Description() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().description))
 	return
 }
-func (v FormatDefinition) SetDescription(value int /*TODO*/) {
+func (v FormatDefinition) SetDescription(value string) {
+	if unsafe.Pointer(v.p().description) != nil {
+		gi.Free(unsafe.Pointer(v.p().description))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().description)) = gi.CString(value)
 }
 func (v FormatDefinition) Quark() (result uint32) {
 	result = uint32(v.p().quark)
@@ -16006,6 +16021,7 @@ func (v MetaTransformCopy) Region() (result bool) {
 	return
 }
 func (v MetaTransformCopy) SetRegion(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().region)) = int32(gi.Bool2Int(value))
 }
 func (v MetaTransformCopy) Offset() (result uint64) {
 	result = uint64(v.p().offset)
@@ -16253,6 +16269,7 @@ func (v MiniObject) Copy() (result unsafe.Pointer) {
 	return
 }
 func (v MiniObject) SetCopy(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().copy)) = value
 }
 func (v MiniObject) Dispose() (result int /*TODO*/) {
 	return
@@ -19244,6 +19261,7 @@ func (v PadProbeInfo) Data() (result unsafe.Pointer) {
 	return
 }
 func (v PadProbeInfo) SetData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().data)) = value
 }
 func (v PadProbeInfo) Offset() (result uint64) {
 	result = uint64(v.p().offset)
@@ -20553,50 +20571,90 @@ func (v PluginDesc) MinorVersion() (result int32) {
 func (v PluginDesc) SetMinorVersion(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().minor_version)) = value
 }
-func (v PluginDesc) Name() (result int /*TODO*/) {
+func (v PluginDesc) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v PluginDesc) SetName(value int /*TODO*/) {
+func (v PluginDesc) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
-func (v PluginDesc) Description() (result int /*TODO*/) {
+func (v PluginDesc) Description() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().description))
 	return
 }
-func (v PluginDesc) SetDescription(value int /*TODO*/) {
+func (v PluginDesc) SetDescription(value string) {
+	if unsafe.Pointer(v.p().description) != nil {
+		gi.Free(unsafe.Pointer(v.p().description))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().description)) = gi.CString(value)
 }
 func (v PluginDesc) PluginInit() (result int /*TODO*/) {
 	return
 }
 func (v PluginDesc) SetPluginInit(value int /*TODO*/) {
 }
-func (v PluginDesc) Version() (result int /*TODO*/) {
+func (v PluginDesc) Version() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().version))
 	return
 }
-func (v PluginDesc) SetVersion(value int /*TODO*/) {
+func (v PluginDesc) SetVersion(value string) {
+	if unsafe.Pointer(v.p().version) != nil {
+		gi.Free(unsafe.Pointer(v.p().version))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().version)) = gi.CString(value)
 }
-func (v PluginDesc) License() (result int /*TODO*/) {
+func (v PluginDesc) License() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().license))
 	return
 }
-func (v PluginDesc) SetLicense(value int /*TODO*/) {
+func (v PluginDesc) SetLicense(value string) {
+	if unsafe.Pointer(v.p().license) != nil {
+		gi.Free(unsafe.Pointer(v.p().license))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().license)) = gi.CString(value)
 }
-func (v PluginDesc) Source() (result int /*TODO*/) {
+func (v PluginDesc) Source() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().source))
 	return
 }
-func (v PluginDesc) SetSource(value int /*TODO*/) {
+func (v PluginDesc) SetSource(value string) {
+	if unsafe.Pointer(v.p().source) != nil {
+		gi.Free(unsafe.Pointer(v.p().source))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().source)) = gi.CString(value)
 }
-func (v PluginDesc) Package() (result int /*TODO*/) {
+func (v PluginDesc) Package() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p()._package))
 	return
 }
-func (v PluginDesc) SetPackage(value int /*TODO*/) {
+func (v PluginDesc) SetPackage(value string) {
+	if unsafe.Pointer(v.p()._package) != nil {
+		gi.Free(unsafe.Pointer(v.p()._package))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p()._package)) = gi.CString(value)
 }
-func (v PluginDesc) Origin() (result int /*TODO*/) {
+func (v PluginDesc) Origin() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().origin))
 	return
 }
-func (v PluginDesc) SetOrigin(value int /*TODO*/) {
+func (v PluginDesc) SetOrigin(value string) {
+	if unsafe.Pointer(v.p().origin) != nil {
+		gi.Free(unsafe.Pointer(v.p().origin))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().origin)) = gi.CString(value)
 }
-func (v PluginDesc) ReleaseDatetime() (result int /*TODO*/) {
+func (v PluginDesc) ReleaseDatetime() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().release_datetime))
 	return
 }
-func (v PluginDesc) SetReleaseDatetime(value int /*TODO*/) {
+func (v PluginDesc) SetReleaseDatetime(value string) {
+	if unsafe.Pointer(v.p().release_datetime) != nil {
+		gi.Free(unsafe.Pointer(v.p().release_datetime))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().release_datetime)) = gi.CString(value)
 }
 func (v PluginDesc) _GstReserved() (result int /*TODO*/) {
 	return
@@ -25211,10 +25269,15 @@ func (v StaticCaps) Caps() (result int /*TODO*/) {
 }
 func (v StaticCaps) SetCaps(value int /*TODO*/) {
 }
-func (v StaticCaps) String() (result int /*TODO*/) {
+func (v StaticCaps) String() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().string))
 	return
 }
-func (v StaticCaps) SetString(value int /*TODO*/) {
+func (v StaticCaps) SetString(value string) {
+	if unsafe.Pointer(v.p().string) != nil {
+		gi.Free(unsafe.Pointer(v.p().string))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().string)) = gi.CString(value)
 }
 func (v StaticCaps) _GstReserved() (result int /*TODO*/) {
 	return
@@ -25268,10 +25331,15 @@ func (v StaticPadTemplate) GetCaps() (result Caps) {
 func (v StaticPadTemplate) p() *C.GstStaticPadTemplate {
 	return (*C.GstStaticPadTemplate)(v.P)
 }
-func (v StaticPadTemplate) NameTemplate() (result int /*TODO*/) {
+func (v StaticPadTemplate) NameTemplate() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name_template))
 	return
 }
-func (v StaticPadTemplate) SetNameTemplate(value int /*TODO*/) {
+func (v StaticPadTemplate) SetNameTemplate(value string) {
+	if unsafe.Pointer(v.p().name_template) != nil {
+		gi.Free(unsafe.Pointer(v.p().name_template))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name_template)) = gi.CString(value)
 }
 func (v StaticPadTemplate) Direction() (result int /*TODO*/) {
 	return
@@ -29841,6 +29909,7 @@ func (v TypeFind) Data() (result unsafe.Pointer) {
 	return
 }
 func (v TypeFind) SetData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().data)) = value
 }
 
 // denied field TypeFind.get_length

@@ -2588,30 +2588,55 @@ func ActionEntryGetType() gi.GType {
 func (v ActionEntry) p() *C.GtkActionEntry {
 	return (*C.GtkActionEntry)(v.P)
 }
-func (v ActionEntry) Name() (result int /*TODO*/) {
+func (v ActionEntry) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v ActionEntry) SetName(value int /*TODO*/) {
+func (v ActionEntry) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
-func (v ActionEntry) StockId() (result int /*TODO*/) {
+func (v ActionEntry) StockId() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().stock_id))
 	return
 }
-func (v ActionEntry) SetStockId(value int /*TODO*/) {
+func (v ActionEntry) SetStockId(value string) {
+	if unsafe.Pointer(v.p().stock_id) != nil {
+		gi.Free(unsafe.Pointer(v.p().stock_id))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().stock_id)) = gi.CString(value)
 }
-func (v ActionEntry) Label() (result int /*TODO*/) {
+func (v ActionEntry) Label() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().label))
 	return
 }
-func (v ActionEntry) SetLabel(value int /*TODO*/) {
+func (v ActionEntry) SetLabel(value string) {
+	if unsafe.Pointer(v.p().label) != nil {
+		gi.Free(unsafe.Pointer(v.p().label))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().label)) = gi.CString(value)
 }
-func (v ActionEntry) Accelerator() (result int /*TODO*/) {
+func (v ActionEntry) Accelerator() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().accelerator))
 	return
 }
-func (v ActionEntry) SetAccelerator(value int /*TODO*/) {
+func (v ActionEntry) SetAccelerator(value string) {
+	if unsafe.Pointer(v.p().accelerator) != nil {
+		gi.Free(unsafe.Pointer(v.p().accelerator))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().accelerator)) = gi.CString(value)
 }
-func (v ActionEntry) Tooltip() (result int /*TODO*/) {
+func (v ActionEntry) Tooltip() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().tooltip))
 	return
 }
-func (v ActionEntry) SetTooltip(value int /*TODO*/) {
+func (v ActionEntry) SetTooltip(value string) {
+	if unsafe.Pointer(v.p().tooltip) != nil {
+		gi.Free(unsafe.Pointer(v.p().tooltip))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().tooltip)) = gi.CString(value)
 }
 func (v ActionEntry) Callback() (result int /*TODO*/) {
 	return
@@ -6216,10 +6241,15 @@ func BindingSetFind1(set_name string) (result BindingSet) {
 func (v BindingSet) p() *C.GtkBindingSet {
 	return (*C.GtkBindingSet)(v.P)
 }
-func (v BindingSet) SetName() (result int /*TODO*/) {
+func (v BindingSet) SetName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().set_name))
 	return
 }
-func (v BindingSet) SetSetName(value int /*TODO*/) {
+func (v BindingSet) SetSetName(value string) {
+	if unsafe.Pointer(v.p().set_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().set_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().set_name)) = gi.CString(value)
 }
 func (v BindingSet) Priority() (result int32) {
 	result = int32(v.p().priority)
@@ -6276,10 +6306,15 @@ func (v BindingSignal) Next() (result int /*TODO*/) {
 }
 func (v BindingSignal) SetNext(value int /*TODO*/) {
 }
-func (v BindingSignal) SignalName() (result int /*TODO*/) {
+func (v BindingSignal) SignalName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().signal_name))
 	return
 }
-func (v BindingSignal) SetSignalName(value int /*TODO*/) {
+func (v BindingSignal) SetSignalName(value string) {
+	if unsafe.Pointer(v.p().signal_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().signal_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().signal_name)) = gi.CString(value)
 }
 func (v BindingSignal) NArgs() (result uint32) {
 	result = uint32(v.p().n_args)
@@ -22630,25 +22665,45 @@ func (v FileFilterInfo) Contains() (result int /*TODO*/) {
 }
 func (v FileFilterInfo) SetContains(value int /*TODO*/) {
 }
-func (v FileFilterInfo) Filename() (result int /*TODO*/) {
+func (v FileFilterInfo) Filename() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().filename))
 	return
 }
-func (v FileFilterInfo) SetFilename(value int /*TODO*/) {
+func (v FileFilterInfo) SetFilename(value string) {
+	if unsafe.Pointer(v.p().filename) != nil {
+		gi.Free(unsafe.Pointer(v.p().filename))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().filename)) = gi.CString(value)
 }
-func (v FileFilterInfo) Uri() (result int /*TODO*/) {
+func (v FileFilterInfo) Uri() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().uri))
 	return
 }
-func (v FileFilterInfo) SetUri(value int /*TODO*/) {
+func (v FileFilterInfo) SetUri(value string) {
+	if unsafe.Pointer(v.p().uri) != nil {
+		gi.Free(unsafe.Pointer(v.p().uri))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().uri)) = gi.CString(value)
 }
-func (v FileFilterInfo) DisplayName() (result int /*TODO*/) {
+func (v FileFilterInfo) DisplayName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().display_name))
 	return
 }
-func (v FileFilterInfo) SetDisplayName(value int /*TODO*/) {
+func (v FileFilterInfo) SetDisplayName(value string) {
+	if unsafe.Pointer(v.p().display_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().display_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().display_name)) = gi.CString(value)
 }
-func (v FileFilterInfo) MimeType() (result int /*TODO*/) {
+func (v FileFilterInfo) MimeType() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().mime_type))
 	return
 }
-func (v FileFilterInfo) SetMimeType(value int /*TODO*/) {
+func (v FileFilterInfo) SetMimeType(value string) {
+	if unsafe.Pointer(v.p().mime_type) != nil {
+		gi.Free(unsafe.Pointer(v.p().mime_type))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().mime_type)) = gi.CString(value)
 }
 
 // Object Fixed
@@ -28266,30 +28321,55 @@ func IMContextInfoGetType() gi.GType {
 func (v IMContextInfo) p() *C.GtkIMContextInfo {
 	return (*C.GtkIMContextInfo)(v.P)
 }
-func (v IMContextInfo) ContextId() (result int /*TODO*/) {
+func (v IMContextInfo) ContextId() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().context_id))
 	return
 }
-func (v IMContextInfo) SetContextId(value int /*TODO*/) {
+func (v IMContextInfo) SetContextId(value string) {
+	if unsafe.Pointer(v.p().context_id) != nil {
+		gi.Free(unsafe.Pointer(v.p().context_id))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().context_id)) = gi.CString(value)
 }
-func (v IMContextInfo) ContextName() (result int /*TODO*/) {
+func (v IMContextInfo) ContextName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().context_name))
 	return
 }
-func (v IMContextInfo) SetContextName(value int /*TODO*/) {
+func (v IMContextInfo) SetContextName(value string) {
+	if unsafe.Pointer(v.p().context_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().context_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().context_name)) = gi.CString(value)
 }
-func (v IMContextInfo) Domain() (result int /*TODO*/) {
+func (v IMContextInfo) Domain() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().domain))
 	return
 }
-func (v IMContextInfo) SetDomain(value int /*TODO*/) {
+func (v IMContextInfo) SetDomain(value string) {
+	if unsafe.Pointer(v.p().domain) != nil {
+		gi.Free(unsafe.Pointer(v.p().domain))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().domain)) = gi.CString(value)
 }
-func (v IMContextInfo) DomainDirname() (result int /*TODO*/) {
+func (v IMContextInfo) DomainDirname() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().domain_dirname))
 	return
 }
-func (v IMContextInfo) SetDomainDirname(value int /*TODO*/) {
+func (v IMContextInfo) SetDomainDirname(value string) {
+	if unsafe.Pointer(v.p().domain_dirname) != nil {
+		gi.Free(unsafe.Pointer(v.p().domain_dirname))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().domain_dirname)) = gi.CString(value)
 }
-func (v IMContextInfo) DefaultLocales() (result int /*TODO*/) {
+func (v IMContextInfo) DefaultLocales() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().default_locales))
 	return
 }
-func (v IMContextInfo) SetDefaultLocales(value int /*TODO*/) {
+func (v IMContextInfo) SetDefaultLocales(value string) {
+	if unsafe.Pointer(v.p().default_locales) != nil {
+		gi.Free(unsafe.Pointer(v.p().default_locales))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().default_locales)) = gi.CString(value)
 }
 
 // Object IMContextSimple
@@ -40757,15 +40837,25 @@ func (v PadActionEntry) Mode() (result int32) {
 func (v PadActionEntry) SetMode(value int32) {
 	*(*int32)(unsafe.Pointer(&v.p().mode)) = value
 }
-func (v PadActionEntry) Label() (result int /*TODO*/) {
+func (v PadActionEntry) Label() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().label))
 	return
 }
-func (v PadActionEntry) SetLabel(value int /*TODO*/) {
+func (v PadActionEntry) SetLabel(value string) {
+	if unsafe.Pointer(v.p().label) != nil {
+		gi.Free(unsafe.Pointer(v.p().label))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().label)) = gi.CString(value)
 }
-func (v PadActionEntry) ActionName() (result int /*TODO*/) {
+func (v PadActionEntry) ActionName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().action_name))
 	return
 }
-func (v PadActionEntry) SetActionName(value int /*TODO*/) {
+func (v PadActionEntry) SetActionName(value string) {
+	if unsafe.Pointer(v.p().action_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().action_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().action_name)) = gi.CString(value)
 }
 
 // Enum PadActionType
@@ -46450,30 +46540,55 @@ func RadioActionEntryGetType() gi.GType {
 func (v RadioActionEntry) p() *C.GtkRadioActionEntry {
 	return (*C.GtkRadioActionEntry)(v.P)
 }
-func (v RadioActionEntry) Name() (result int /*TODO*/) {
+func (v RadioActionEntry) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v RadioActionEntry) SetName(value int /*TODO*/) {
+func (v RadioActionEntry) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
-func (v RadioActionEntry) StockId() (result int /*TODO*/) {
+func (v RadioActionEntry) StockId() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().stock_id))
 	return
 }
-func (v RadioActionEntry) SetStockId(value int /*TODO*/) {
+func (v RadioActionEntry) SetStockId(value string) {
+	if unsafe.Pointer(v.p().stock_id) != nil {
+		gi.Free(unsafe.Pointer(v.p().stock_id))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().stock_id)) = gi.CString(value)
 }
-func (v RadioActionEntry) Label() (result int /*TODO*/) {
+func (v RadioActionEntry) Label() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().label))
 	return
 }
-func (v RadioActionEntry) SetLabel(value int /*TODO*/) {
+func (v RadioActionEntry) SetLabel(value string) {
+	if unsafe.Pointer(v.p().label) != nil {
+		gi.Free(unsafe.Pointer(v.p().label))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().label)) = gi.CString(value)
 }
-func (v RadioActionEntry) Accelerator() (result int /*TODO*/) {
+func (v RadioActionEntry) Accelerator() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().accelerator))
 	return
 }
-func (v RadioActionEntry) SetAccelerator(value int /*TODO*/) {
+func (v RadioActionEntry) SetAccelerator(value string) {
+	if unsafe.Pointer(v.p().accelerator) != nil {
+		gi.Free(unsafe.Pointer(v.p().accelerator))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().accelerator)) = gi.CString(value)
 }
-func (v RadioActionEntry) Tooltip() (result int /*TODO*/) {
+func (v RadioActionEntry) Tooltip() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().tooltip))
 	return
 }
-func (v RadioActionEntry) SetTooltip(value int /*TODO*/) {
+func (v RadioActionEntry) SetTooltip(value string) {
+	if unsafe.Pointer(v.p().tooltip) != nil {
+		gi.Free(unsafe.Pointer(v.p().tooltip))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().tooltip)) = gi.CString(value)
 }
 func (v RadioActionEntry) Value() (result int32) {
 	result = int32(v.p().value)
@@ -47865,10 +47980,15 @@ func (v RcProperty) PropertyName() (result uint32) {
 func (v RcProperty) SetPropertyName(value uint32) {
 	*(*uint32)(unsafe.Pointer(&v.p().property_name)) = value
 }
-func (v RcProperty) Origin() (result int /*TODO*/) {
+func (v RcProperty) Origin() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().origin))
 	return
 }
-func (v RcProperty) SetOrigin(value int /*TODO*/) {
+func (v RcProperty) SetOrigin(value string) {
+	if unsafe.Pointer(v.p().origin) != nil {
+		gi.Free(unsafe.Pointer(v.p().origin))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().origin)) = gi.CString(value)
 }
 func (v RcProperty) Value() (result int /*TODO*/) {
 	return
@@ -48937,30 +49057,55 @@ func RecentDataGetType() gi.GType {
 func (v RecentData) p() *C.GtkRecentData {
 	return (*C.GtkRecentData)(v.P)
 }
-func (v RecentData) DisplayName() (result int /*TODO*/) {
+func (v RecentData) DisplayName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().display_name))
 	return
 }
-func (v RecentData) SetDisplayName(value int /*TODO*/) {
+func (v RecentData) SetDisplayName(value string) {
+	if unsafe.Pointer(v.p().display_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().display_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().display_name)) = gi.CString(value)
 }
-func (v RecentData) Description() (result int /*TODO*/) {
+func (v RecentData) Description() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().description))
 	return
 }
-func (v RecentData) SetDescription(value int /*TODO*/) {
+func (v RecentData) SetDescription(value string) {
+	if unsafe.Pointer(v.p().description) != nil {
+		gi.Free(unsafe.Pointer(v.p().description))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().description)) = gi.CString(value)
 }
-func (v RecentData) MimeType() (result int /*TODO*/) {
+func (v RecentData) MimeType() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().mime_type))
 	return
 }
-func (v RecentData) SetMimeType(value int /*TODO*/) {
+func (v RecentData) SetMimeType(value string) {
+	if unsafe.Pointer(v.p().mime_type) != nil {
+		gi.Free(unsafe.Pointer(v.p().mime_type))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().mime_type)) = gi.CString(value)
 }
-func (v RecentData) AppName() (result int /*TODO*/) {
+func (v RecentData) AppName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().app_name))
 	return
 }
-func (v RecentData) SetAppName(value int /*TODO*/) {
+func (v RecentData) SetAppName(value string) {
+	if unsafe.Pointer(v.p().app_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().app_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().app_name)) = gi.CString(value)
 }
-func (v RecentData) AppExec() (result int /*TODO*/) {
+func (v RecentData) AppExec() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().app_exec))
 	return
 }
-func (v RecentData) SetAppExec(value int /*TODO*/) {
+func (v RecentData) SetAppExec(value string) {
+	if unsafe.Pointer(v.p().app_exec) != nil {
+		gi.Free(unsafe.Pointer(v.p().app_exec))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().app_exec)) = gi.CString(value)
 }
 func (v RecentData) Groups() (result int /*TODO*/) {
 	return
@@ -48972,6 +49117,7 @@ func (v RecentData) IsPrivate() (result bool) {
 	return
 }
 func (v RecentData) SetIsPrivate(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().is_private)) = int32(gi.Bool2Int(value))
 }
 
 // Object RecentFilter
@@ -49265,20 +49411,35 @@ func (v RecentFilterInfo) Contains() (result int /*TODO*/) {
 }
 func (v RecentFilterInfo) SetContains(value int /*TODO*/) {
 }
-func (v RecentFilterInfo) Uri() (result int /*TODO*/) {
+func (v RecentFilterInfo) Uri() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().uri))
 	return
 }
-func (v RecentFilterInfo) SetUri(value int /*TODO*/) {
+func (v RecentFilterInfo) SetUri(value string) {
+	if unsafe.Pointer(v.p().uri) != nil {
+		gi.Free(unsafe.Pointer(v.p().uri))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().uri)) = gi.CString(value)
 }
-func (v RecentFilterInfo) DisplayName() (result int /*TODO*/) {
+func (v RecentFilterInfo) DisplayName() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().display_name))
 	return
 }
-func (v RecentFilterInfo) SetDisplayName(value int /*TODO*/) {
+func (v RecentFilterInfo) SetDisplayName(value string) {
+	if unsafe.Pointer(v.p().display_name) != nil {
+		gi.Free(unsafe.Pointer(v.p().display_name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().display_name)) = gi.CString(value)
 }
-func (v RecentFilterInfo) MimeType() (result int /*TODO*/) {
+func (v RecentFilterInfo) MimeType() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().mime_type))
 	return
 }
-func (v RecentFilterInfo) SetMimeType(value int /*TODO*/) {
+func (v RecentFilterInfo) SetMimeType(value string) {
+	if unsafe.Pointer(v.p().mime_type) != nil {
+		gi.Free(unsafe.Pointer(v.p().mime_type))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().mime_type)) = gi.CString(value)
 }
 func (v RecentFilterInfo) Applications() (result int /*TODO*/) {
 	return
@@ -50190,6 +50351,7 @@ func (v RequestedSize) Data() (result unsafe.Pointer) {
 	return
 }
 func (v RequestedSize) SetData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().data)) = value
 }
 func (v RequestedSize) MinimumSize() (result int32) {
 	result = int32(v.p().minimum_size)
@@ -52991,10 +53153,15 @@ func SettingsValueGetType() gi.GType {
 func (v SettingsValue) p() *C.GtkSettingsValue {
 	return (*C.GtkSettingsValue)(v.P)
 }
-func (v SettingsValue) Origin() (result int /*TODO*/) {
+func (v SettingsValue) Origin() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().origin))
 	return
 }
-func (v SettingsValue) SetOrigin(value int /*TODO*/) {
+func (v SettingsValue) SetOrigin(value string) {
+	if unsafe.Pointer(v.p().origin) != nil {
+		gi.Free(unsafe.Pointer(v.p().origin))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().origin)) = gi.CString(value)
 }
 func (v SettingsValue) Value() (result int /*TODO*/) {
 	return
@@ -55751,15 +55918,25 @@ func (v StockItem) Free() {
 func (v StockItem) p() *C.GtkStockItem {
 	return (*C.GtkStockItem)(v.P)
 }
-func (v StockItem) StockId() (result int /*TODO*/) {
+func (v StockItem) StockId() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().stock_id))
 	return
 }
-func (v StockItem) SetStockId(value int /*TODO*/) {
+func (v StockItem) SetStockId(value string) {
+	if unsafe.Pointer(v.p().stock_id) != nil {
+		gi.Free(unsafe.Pointer(v.p().stock_id))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().stock_id)) = gi.CString(value)
 }
-func (v StockItem) Label() (result int /*TODO*/) {
+func (v StockItem) Label() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().label))
 	return
 }
-func (v StockItem) SetLabel(value int /*TODO*/) {
+func (v StockItem) SetLabel(value string) {
+	if unsafe.Pointer(v.p().label) != nil {
+		gi.Free(unsafe.Pointer(v.p().label))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().label)) = gi.CString(value)
 }
 func (v StockItem) Modifier() (result int /*TODO*/) {
 	return
@@ -55773,10 +55950,15 @@ func (v StockItem) Keyval() (result uint32) {
 func (v StockItem) SetKeyval(value uint32) {
 	*(*uint32)(unsafe.Pointer(&v.p().keyval)) = value
 }
-func (v StockItem) TranslationDomain() (result int /*TODO*/) {
+func (v StockItem) TranslationDomain() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().translation_domain))
 	return
 }
-func (v StockItem) SetTranslationDomain(value int /*TODO*/) {
+func (v StockItem) SetTranslationDomain(value string) {
+	if unsafe.Pointer(v.p().translation_domain) != nil {
+		gi.Free(unsafe.Pointer(v.p().translation_domain))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().translation_domain)) = gi.CString(value)
 }
 
 // Object Style
@@ -58419,10 +58601,15 @@ func (v TargetEntry) Free() {
 func (v TargetEntry) p() *C.GtkTargetEntry {
 	return (*C.GtkTargetEntry)(v.P)
 }
-func (v TargetEntry) Target() (result int /*TODO*/) {
+func (v TargetEntry) Target() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().target))
 	return
 }
-func (v TargetEntry) SetTarget(value int /*TODO*/) {
+func (v TargetEntry) SetTarget(value string) {
+	if unsafe.Pointer(v.p().target) != nil {
+		gi.Free(unsafe.Pointer(v.p().target))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().target)) = gi.CString(value)
 }
 func (v TargetEntry) Flags() (result uint32) {
 	result = uint32(v.p().flags)
@@ -65327,30 +65514,55 @@ func ToggleActionEntryGetType() gi.GType {
 func (v ToggleActionEntry) p() *C.GtkToggleActionEntry {
 	return (*C.GtkToggleActionEntry)(v.P)
 }
-func (v ToggleActionEntry) Name() (result int /*TODO*/) {
+func (v ToggleActionEntry) Name() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().name))
 	return
 }
-func (v ToggleActionEntry) SetName(value int /*TODO*/) {
+func (v ToggleActionEntry) SetName(value string) {
+	if unsafe.Pointer(v.p().name) != nil {
+		gi.Free(unsafe.Pointer(v.p().name))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().name)) = gi.CString(value)
 }
-func (v ToggleActionEntry) StockId() (result int /*TODO*/) {
+func (v ToggleActionEntry) StockId() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().stock_id))
 	return
 }
-func (v ToggleActionEntry) SetStockId(value int /*TODO*/) {
+func (v ToggleActionEntry) SetStockId(value string) {
+	if unsafe.Pointer(v.p().stock_id) != nil {
+		gi.Free(unsafe.Pointer(v.p().stock_id))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().stock_id)) = gi.CString(value)
 }
-func (v ToggleActionEntry) Label() (result int /*TODO*/) {
+func (v ToggleActionEntry) Label() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().label))
 	return
 }
-func (v ToggleActionEntry) SetLabel(value int /*TODO*/) {
+func (v ToggleActionEntry) SetLabel(value string) {
+	if unsafe.Pointer(v.p().label) != nil {
+		gi.Free(unsafe.Pointer(v.p().label))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().label)) = gi.CString(value)
 }
-func (v ToggleActionEntry) Accelerator() (result int /*TODO*/) {
+func (v ToggleActionEntry) Accelerator() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().accelerator))
 	return
 }
-func (v ToggleActionEntry) SetAccelerator(value int /*TODO*/) {
+func (v ToggleActionEntry) SetAccelerator(value string) {
+	if unsafe.Pointer(v.p().accelerator) != nil {
+		gi.Free(unsafe.Pointer(v.p().accelerator))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().accelerator)) = gi.CString(value)
 }
-func (v ToggleActionEntry) Tooltip() (result int /*TODO*/) {
+func (v ToggleActionEntry) Tooltip() (result string) {
+	result = gi.GoString(unsafe.Pointer(v.p().tooltip))
 	return
 }
-func (v ToggleActionEntry) SetTooltip(value int /*TODO*/) {
+func (v ToggleActionEntry) SetTooltip(value string) {
+	if unsafe.Pointer(v.p().tooltip) != nil {
+		gi.Free(unsafe.Pointer(v.p().tooltip))
+	}
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().tooltip)) = gi.CString(value)
 }
 func (v ToggleActionEntry) Callback() (result int /*TODO*/) {
 	return
@@ -65362,6 +65574,7 @@ func (v ToggleActionEntry) IsActive() (result bool) {
 	return
 }
 func (v ToggleActionEntry) SetIsActive(value bool) {
+	*(*int32)(unsafe.Pointer(&v.p().is_active)) = int32(gi.Bool2Int(value))
 }
 
 // ignore private struct ToggleActionPrivate, type of ToggleAction is object
@@ -68302,18 +68515,21 @@ func (v TreeIter) UserData() (result unsafe.Pointer) {
 	return
 }
 func (v TreeIter) SetUserData(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().user_data)) = value
 }
 func (v TreeIter) UserData2() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().user_data2)
 	return
 }
 func (v TreeIter) SetUserData2(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().user_data2)) = value
 }
 func (v TreeIter) UserData3() (result unsafe.Pointer) {
 	result = unsafe.Pointer(v.p().user_data3)
 	return
 }
 func (v TreeIter) SetUserData3(value unsafe.Pointer) {
+	*(*unsafe.Pointer)(unsafe.Pointer(&v.p().user_data3)) = value
 }
 
 type TreeIterCompareFunc func(model TreeModel, a TreeIter, b TreeIter) (result int32)
