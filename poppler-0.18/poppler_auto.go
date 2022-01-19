@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 ~ 2020 Uniontech Software Technology Co.,Ltd
+ * Copyright (C) 2019 ~ 2022 Uniontech Software Technology Co.,Ltd
  *
  * Author:
  *
@@ -28,9 +28,9 @@ package poppler
 #include <poppler.h>
 */
 import "C"
-import "github.com/linuxdeepin/go-gir/cairo-1.0"
-import "github.com/linuxdeepin/go-gir/g-2.0"
-import "github.com/linuxdeepin/go-gir/gi"
+import "github.com/electricface/go-gir/cairo-1.0"
+import "github.com/electricface/go-gir/g-2.0"
+import "github.com/electricface/go-gir/gi"
 import "log"
 import "unsafe"
 

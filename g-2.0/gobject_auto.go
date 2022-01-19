@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 ~ 2020 Uniontech Software Technology Co.,Ltd
+ * Copyright (C) 2019 ~ 2022 Uniontech Software Technology Co.,Ltd
  *
  * Author:
  *
@@ -28,7 +28,7 @@ package g
 #include <glib-object.h>
 */
 import "C"
-import "github.com/linuxdeepin/go-gir/gi"
+import "github.com/electricface/go-gir/gi"
 import "log"
 import "unsafe"
 

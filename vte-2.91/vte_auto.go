@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 ~ 2020 Uniontech Software Technology Co.,Ltd
+ * Copyright (C) 2019 ~ 2022 Uniontech Software Technology Co.,Ltd
  *
  * Author:
  *
@@ -28,11 +28,11 @@ package vte
 #include <vte/vte.h>
 */
 import "C"
-import "github.com/linuxdeepin/go-gir/g-2.0"
-import "github.com/linuxdeepin/go-gir/gdk-3.0"
-import "github.com/linuxdeepin/go-gir/gi"
-import "github.com/linuxdeepin/go-gir/gtk-3.0"
-import "github.com/linuxdeepin/go-gir/pango-1.0"
+import "github.com/electricface/go-gir/g-2.0"
+import "github.com/electricface/go-gir/gdk-3.0"
+import "github.com/electricface/go-gir/gi"
+import "github.com/electricface/go-gir/gtk-3.0"
+import "github.com/electricface/go-gir/pango-1.0"
 import "log"
 import "unsafe"
 
